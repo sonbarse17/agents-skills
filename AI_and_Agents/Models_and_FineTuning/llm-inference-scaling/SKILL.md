@@ -20,7 +20,7 @@ depends_on:
 
 # LLM Inference Scaling
 
-Scale LLM inference horizontally on [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) with GPU-aware [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md), request queuing, and cost-efficient spot instance strategies.
+Scale LLM inference horizontally on [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) with GPU-aware [autoscaling](../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md), request queuing, and cost-efficient spot instance strategies.
 
 ## When to Use This Skill
 
@@ -28,7 +28,7 @@ Use this skill when:
 - LLM API traffic is unpredictable and you need to scale up/down automatically
 - Managing a fleet of vLLM or TGI inference pods on [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
 - Reducing inference costs with spot/preemptible GPU instances
-- Implementing queue-based [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) for batch inference jobs
+- Implementing queue-based [autoscaling](../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) for batch inference jobs
 - Building a multi-model serving platform that shares GPU resources
 
 ## Prerequisites
@@ -122,7 +122,7 @@ spec:
               key: token
 ```
 
-## KEDA [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) on Prometheus Metrics
+## KEDA [Autoscaling](../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) on Prometheus Metrics
 
 ```yaml
 apiVersion: keda.sh/v1alpha1

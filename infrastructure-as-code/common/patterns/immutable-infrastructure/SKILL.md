@@ -83,7 +83,7 @@ rebuilding from that [commit](../../../../ci-cd/common/git-workflow/commit/SKILL
 ## 3. Replace instances to deploy, don't reconfigure them
 
 Deploying a change means launching new instances from the new image and retiring the old ones —
-via a rolling update, blue-green swap, or [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) group refresh — not pushing new config to
+via a rolling update, blue-green swap, or [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) group refresh — not pushing new config to
 instances that keep running. See `[deployment-strategies](../../../../ci-cd/common/deployment/deployment-strategies/SKILL.md)` for the mechanics of how that rollout
 happens safely at the traffic-shifting level.
 

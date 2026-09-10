@@ -609,7 +609,7 @@ list_compartments() {
 - Configure **load balancer** with session persistence and health checks for zero-downtime deployments
 - Use **OCI Object Storage** with standard tier for frequently accessed data, infrequent tier for logs
 - Tune **OKE worker node shapes** by workload: `VM.Standard.E5.Flex` for general, `BM.Optimized3.36` for AI/ML
-- Enable **[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)** on OKE node pools with cluster autoscaler and spot instances for batch workloads
+- Enable **[autoscaling](../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)** on OKE node pools with cluster autoscaler and spot instances for batch workloads
 - Use **OCI Cache (Redis)** for session state and query result caching instead of local instance storage
 
 ## Security Considerations

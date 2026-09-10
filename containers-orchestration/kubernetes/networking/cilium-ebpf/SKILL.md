@@ -148,7 +148,7 @@ spec:
   ingress:
     - fromEndpoints:
         - matchLabels:
-            app: [api-gateway](../../../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md)
+            app: [api-gateway](../../../../Software_Engineering_and_Other/Backend/api-gateway/api-gateway/SKILL.md)
       toPorts:
         - ports:
             - port: "8080"
@@ -187,7 +187,7 @@ spec:
   ingress:
     - fromEndpoints:
         - matchLabels:
-            app: [api-gateway](../../../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md)
+            app: [api-gateway](../../../../Software_Engineering_and_Other/Backend/api-gateway/api-gateway/SKILL.md)
       toPorts:
         - ports:
             - port: "8080"

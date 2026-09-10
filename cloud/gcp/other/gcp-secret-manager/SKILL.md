@@ -328,7 +328,7 @@ def list_secrets(project_id: str, filter_str: str = "") -> list:
 # Usage
 creds = get_json_secret("my-project", "db-credentials")
 connection_string = (
-    f"[postgresql](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)://{creds['username']}:{creds['password']}"
+    f"[postgresql](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)://{creds['username']}:{creds['password']}"
     f"@{creds['host']}:{creds['port']}/mydb"
 )
 ```

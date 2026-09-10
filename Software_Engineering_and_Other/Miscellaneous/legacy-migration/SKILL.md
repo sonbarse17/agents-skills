@@ -429,7 +429,7 @@ comparator = DualWriteComparator()
 {
   "name": "legacy-db-connector",
   "config": {
-    "connector.class": "io.debezium.connector.[postgresql](../../Backend/postgresql/SKILL.md).PostgresConnector",
+    "connector.class": "io.debezium.connector.[postgresql](../../Databases/postgresql/SKILL.md).PostgresConnector",
     "database.hostname": "legacy-db.example.com",
     "database.port": "5432",
     "database.user": "cdc_user",

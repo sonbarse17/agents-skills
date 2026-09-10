@@ -69,8 +69,8 @@ and sizing.
   `get.k3s.io` (or a pre-downloaded binary/air-gapped bundle for edge
   sites with no internet access — K3s explicitly supports air-gapped
   installs via a bundled image tarball).
-- For multi-server HA: either an external SQL datastore ([MySQL](../../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md),
-  [PostgreSQL](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md), or the officially supported etcd-compatible options) or
+- For multi-server HA: either an external SQL datastore ([MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md),
+  [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md), or the officially supported etcd-compatible options) or
   K3s's embedded etcd, plus a fixed registration address (a load
   balancer or DNS name, not a single server's IP) for agents to join
   through.
@@ -94,7 +94,7 @@ and sizing.
      control-plane HA with no external database to operate, at the cost
      of etcd's own quorum requirements (need an odd number ≥ 3 server
      nodes to tolerate a single node loss).
-   - **Multi-server, external datastore ([MySQL](../../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)/[PostgreSQL](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md))**: control
+   - **Multi-server, external datastore ([MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)/[PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md))**: control
      plane HA backed by a database the team already operates/backs up
      — a reasonable choice when etcd operational expertise isn't
      available in-house but a managed/existing RDBMS is.

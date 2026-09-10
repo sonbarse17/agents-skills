@@ -127,10 +127,10 @@ maintainers:
   - name: DevOps Team
     email: devops@example.com
 dependencies:
-  - name: [postgresql](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)
+  - name: [postgresql](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)
     version: "15.5.2"
     repository: "https://charts.bitnami.com/bitnami"
-    condition: [postgresql](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md).enabled
+    condition: [postgresql](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md).enabled
     tags:
       - database
   - name: redis
@@ -204,8 +204,8 @@ resources:
     cpu: 250m
     memory: 256Mi
 
-# @section [Autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)
-[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md):
+# @section [Autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)
+[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md):
   enabled: true
   minReplicas: 3
   maxReplicas: 20
@@ -283,8 +283,8 @@ metadata:
     {{- include "my-app.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
-  {{- if .Values.[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md).enabled }}
-  replicas: {{ .Values.[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md).minReplicas }}
+  {{- if .Values.[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md).enabled }}
+  replicas: {{ .Values.[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md).minReplicas }}
   {{- end }}
   selector:
     matchLabels:

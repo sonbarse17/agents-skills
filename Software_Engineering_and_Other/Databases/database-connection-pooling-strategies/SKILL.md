@@ -41,7 +41,7 @@ serve (which should stay well under the database's practical [capacity](../../..
 This skill covers the pooling-mode decision that generalizes across
 engines (transaction vs. session vs. statement pooling), and the two
 dominant tools that implement it for the two most common relational
-engines — **PgBouncer** for [PostgreSQL](../../Backend/postgresql/SKILL.md) and **ProxySQL** for [MySQL](../../Backend/mysql/SKILL.md)/
+engines — **PgBouncer** for [PostgreSQL](../postgresql/SKILL.md) and **ProxySQL** for [MySQL](../mysql/SKILL.md)/
 MariaDB — plus the failover-aware routing patterns that make a pooler
 also useful as an application-transparent HA layer, not just a
 connection multiplexer.
@@ -56,21 +56,21 @@ connection multiplexer.
   mode breaks.
 - Diagnosing prepared statements, session-level `SET` variables, or
   advisory locks behaving unexpectedly under a pooled connection.
-- Setting up ProxySQL in front of a [MySQL](../../Backend/mysql/SKILL.md)/MariaDB replication or Galera
+- Setting up ProxySQL in front of a [MySQL](../mysql/SKILL.md)/MariaDB replication or Galera
   topology for read/write splitting or failover-aware routing.
 - Deciding whether to add a pooler at all for a given workload/database
   engine, versus relying on the database's own native connection
-  handling (e.g. [PostgreSQL](../../Backend/postgresql/SKILL.md)'s process-per-connection model vs. [MySQL](../../Backend/mysql/SKILL.md)'s
+  handling (e.g. [PostgreSQL](../postgresql/SKILL.md)'s process-per-connection model vs. [MySQL](../mysql/SKILL.md)'s
   thread-per-connection model have different practical connection
   ceilings before a pooler becomes necessary).
 
 ## Prerequisites & environment
 
 - A target database's actual connection-handling model understood
-  before sizing anything: [PostgreSQL](../../Backend/postgresql/SKILL.md) forks an OS process per
+  before sizing anything: [PostgreSQL](../postgresql/SKILL.md) forks an OS process per
   connection (higher per-connection memory/context-switch cost, lower
   practical `max_connections` ceiling before performance degrades);
-  [MySQL](../../Backend/mysql/SKILL.md)/MariaDB use a thread per connection (generally cheaper per
+  [MySQL](../mysql/SKILL.md)/MariaDB use a thread per connection (generally cheaper per
   connection, higher realistic ceiling, but still finite).
 - PgBouncer 1.18+ or ProxySQL 2.x assumed for the configuration syntax
   below.
@@ -80,8 +80,8 @@ connection multiplexer.
   deployed redundantly (typically as a sidecar per application host, or
   as a small fleet behind a load balancer).
 - Visibility into current connection counts and pool utilization on the
-  target database (`pg_stat_activity` for [PostgreSQL](../../Backend/postgresql/SKILL.md),
-  `SHOW STATUS LIKE 'Threads_connected'` for [MySQL](../../Backend/mysql/SKILL.md)/MariaDB) to size
+  target database (`pg_stat_activity` for [PostgreSQL](../postgresql/SKILL.md),
+  `SHOW STATUS LIKE 'Threads_connected'` for [MySQL](../mysql/SKILL.md)/MariaDB) to size
   against real demand rather than a guess.
 - For failover-aware routing: an understanding of the underlying HA
   topology (see
@@ -124,7 +124,7 @@ migration runner or a session relying on temp tables/advisory locks
 needs session pooling even if the rest of the fleet uses transaction
 mode.
 
-### 2. Configure PgBouncer for [PostgreSQL](../../Backend/postgresql/SKILL.md)
+### 2. Configure PgBouncer for [PostgreSQL](../postgresql/SKILL.md)
 
 ```ini
 # pgbouncer.ini
@@ -140,17 +140,17 @@ reserve_pool_size = 5
 reserve_pool_timeout = 3
 ```
 `default_pool_size` — the actual backend connections PgBouncer holds
-open per database/user pair — is what determines load on [PostgreSQL](../../Backend/postgresql/SKILL.md)'s
+open per database/user pair — is what determines load on [PostgreSQL](../postgresql/SKILL.md)'s
 `max_connections`, not `max_client_conn`. Size it against
 `(core_count * 2) + effective_spindle_count` as a starting heuristic for
 CPU-bound OLTP workloads, well under `max_connections`, then validate
-against measured [PostgreSQL](../../Backend/postgresql/SKILL.md)-side connection counts and query latency
+against measured [PostgreSQL](../postgresql/SKILL.md)-side connection counts and query latency
 rather than trusting the heuristic blindly. `reserve_pool_size` gives a
 small burst allowance above `default_pool_size` for transient spikes,
 activated only after `reserve_pool_timeout` of queueing — a safety
 valve, not a substitute for correct baseline sizing.
 
-### 3. Configure ProxySQL for [MySQL](../../Backend/mysql/SKILL.md)/MariaDB
+### 3. Configure ProxySQL for [MySQL](../mysql/SKILL.md)/MariaDB
 
 ```sql
 -- ProxySQL admin interface (port 6032) — configure backend servers
@@ -162,10 +162,10 @@ INSERT INTO mysql_query_rules (rule_id, active, match_pattern, destination_hostg
 VALUES (100, 1, '^SELECT.*FOR UPDATE$', 10, 1),
        (200, 1, '^SELECT', 20, 1);
 
-LOAD [MYSQL](../../Backend/mysql/SKILL.md) SERVERS TO RUNTIME;
-LOAD [MYSQL](../../Backend/mysql/SKILL.md) QUERY RULES TO RUNTIME;
-SAVE [MYSQL](../../Backend/mysql/SKILL.md) SERVERS TO DISK;
-SAVE [MYSQL](../../Backend/mysql/SKILL.md) QUERY RULES TO DISK;
+LOAD [MYSQL](../mysql/SKILL.md) SERVERS TO RUNTIME;
+LOAD [MYSQL](../mysql/SKILL.md) QUERY RULES TO RUNTIME;
+SAVE [MYSQL](../mysql/SKILL.md) SERVERS TO DISK;
+SAVE [MYSQL](../mysql/SKILL.md) QUERY RULES TO DISK;
 ```
 ProxySQL is meaningfully more than a connection pool — it's a
 query-aware proxy that can route based on query pattern (the `SELECT ...
@@ -176,7 +176,7 @@ per-hostgroup connection pool sizing similarly to PgBouncer's
 `default_pool_size`:
 ```sql
 UPDATE mysql_servers SET max_connections = 50 WHERE hostgroup_id = 10;
-LOAD [MYSQL](../../Backend/mysql/SKILL.md) SERVERS TO RUNTIME;
+LOAD [MYSQL](../mysql/SKILL.md) SERVERS TO RUNTIME;
 ```
 Every configuration change must be explicitly `LOAD`ed to runtime and
 `SAVE`d to disk — a change left only in the in-memory admin tables
@@ -197,12 +197,12 @@ and update routing without the application knowing a failover happened:
 -- current primary automatically via read_only status, not a static config entry
 INSERT INTO mysql_replication_hostgroups (writer_hostgroup, reader_hostgroup, check_type)
 VALUES (10, 20, 'read_only');
-LOAD [MYSQL](../../Backend/mysql/SKILL.md) SERVERS TO RUNTIME;
+LOAD [MYSQL](../mysql/SKILL.md) SERVERS TO RUNTIME;
 ```
 With `mysql_replication_hostgroups` configured, ProxySQL periodically
 checks each backend's `read_only` variable and automatically moves a
 newly-promoted primary into the writer hostgroup — this is what makes a
-[MySQL](../../Backend/mysql/SKILL.md)/MariaDB failover (whether via Orchestrator, Galera's own
+[MySQL](../mysql/SKILL.md)/MariaDB failover (whether via Orchestrator, Galera's own
 membership, or manual promotion) transparent to the application, which
 only ever talks to ProxySQL's stable endpoint.
 
@@ -268,7 +268,7 @@ database backend that more pooled connections would only make worse.
 - **Symptom:** ProxySQL's query routing rules appear correct in the
   admin tables but have no effect on actual traffic.
   **Fix:** The rules were inserted into the admin schema but never
-  promoted to runtime. Always run `LOAD [MYSQL](../../Backend/mysql/SKILL.md) QUERY RULES TO RUNTIME;`
+  promoted to runtime. Always run `LOAD [MYSQL](../mysql/SKILL.md) QUERY RULES TO RUNTIME;`
   (and the equivalent for servers/variables) after any change, and
   `SAVE ... TO DISK` so the change survives a ProxySQL restart.
 
@@ -315,7 +315,7 @@ database backend that more pooled connections would only make worse.
 
 ## Worked example
 
-**Scenario:** A checkout service on [MySQL](../../Backend/mysql/SKILL.md)/MariaDB with a primary and
+**Scenario:** A checkout service on [MySQL](../mysql/SKILL.md)/MariaDB with a primary and
 two read replicas currently has every application instance connecting
 directly to the primary for all reads and writes, and is hitting
 `max_connections` during traffic spikes. The team introduces ProxySQL
@@ -329,7 +329,7 @@ for pooling and read/write splitting.
    INSERT INTO mysql_servers (hostgroup_id, hostname, port) VALUES (20, '<REPLICA2_HOST>', 3306);
    INSERT INTO mysql_replication_hostgroups (writer_hostgroup, reader_hostgroup, check_type)
      VALUES (10, 20, 'read_only');
-   LOAD [MYSQL](../../Backend/mysql/SKILL.md) SERVERS TO RUNTIME; SAVE [MYSQL](../../Backend/mysql/SKILL.md) SERVERS TO DISK;
+   LOAD [MYSQL](../mysql/SKILL.md) SERVERS TO RUNTIME; SAVE [MYSQL](../mysql/SKILL.md) SERVERS TO DISK;
    ```
 2. Add query rules routing non-locking `SELECT`s to the reader
    hostgroup, everything else (writes, `SELECT ... FOR UPDATE`) to the
@@ -353,7 +353,7 @@ for pooling and read/write splitting.
 
 ## Cross-references
 
-- [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — PgBouncer sizing and pool-mode guidance in the context of broader [PostgreSQL](../../Backend/postgresql/SKILL.md) operational tuning.
-- [mysql-mariadb-operations-and-performance-tuning](../[mysql-mariadb-operations-and-performance-tuning](../[mysql](../../Backend/mysql/SKILL.md)-mariadb-operations-and-[performance-tuning](../../Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — the [MySQL](../../Backend/mysql/SKILL.md)/MariaDB-side connection and replication concepts (thread-per-connection model, replica lag) that ProxySQL routing decisions here depend on.
+- [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — PgBouncer sizing and pool-mode guidance in the context of broader [PostgreSQL](../postgresql/SKILL.md) operational tuning.
+- [mysql-mariadb-operations-and-performance-tuning](../[mysql-mariadb-operations-and-performance-tuning](../[mysql](../../Backend/mysql/SKILL.md)-mariadb-operations-and-[performance-tuning](../../Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — the [MySQL](../mysql/SKILL.md)/MariaDB-side connection and replication concepts (thread-per-connection model, replica lag) that ProxySQL routing decisions here depend on.
 - [mysql-mariadb-high-availability-and-replication](../[mysql-mariadb-high-availability-and-replication](../[mysql](../../Backend/mysql/SKILL.md)-mariadb-high-availability-and-replication/SKILL.md)/SKILL.md) — the Galera/Group Replication failover mechanics that ProxySQL's `mysql_replication_hostgroups` automatic routing tracks.
 - [postgresql-configuration-validation](../[postgresql-configuration-validation](../../Miscellaneous/[postgresql](../../Backend/postgresql/SKILL.md)-configuration-validation/SKILL.md)/SKILL.md) — validates the `max_connections`/pooler-sizing math this skill's pool configurations depend on before rollout.

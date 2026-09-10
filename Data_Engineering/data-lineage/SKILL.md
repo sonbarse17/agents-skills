@@ -126,7 +126,7 @@ openlineage:
   enabled: true
   url: http://marquez:5000
   namespace: prod_warehouse
-  dataset_namespace: [postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)://warehouse:5432/prod
+  dataset_namespace: [postgresql](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)://warehouse:5432/prod
 
 # dbt_project.yml
 vars:
@@ -183,7 +183,7 @@ services:
 curl http://localhost:5000/api/v1/namespaces/prod_warehouse/datasets
 
 # Get lineage for a dataset
-curl http://localhost:5000/api/v1/lineage?nodeId=[postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)://warehouse:5432/prod.public.orders
+curl http://localhost:5000/api/v1/lineage?nodeId=[postgresql](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)://warehouse:5432/prod.public.orders
 
 # List recent runs
 curl http://localhost:5000/api/v1/namespaces/prod_warehouse/jobs

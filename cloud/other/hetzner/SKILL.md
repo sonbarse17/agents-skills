@@ -470,7 +470,7 @@ Cost-saving strategies:
 | Flexibility | OS from ISO, full control | Pre-installed images, API-driven |
 | Provisioning | Hours (manual setup) | Seconds (API, Terraform) |
 | Cost | Lower at high utilization | Higher per-hour, pay-as-you-go |
-| [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) | Not supported | Supported via API/Terraform |
+| [Autoscaling](../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) | Not supported | Supported via API/Terraform |
 | Network | Single server, BGP possible | Private network, floating IPs |
 | Best for | Workloads needing raw throughput | Variable workloads, ephemeral |
 

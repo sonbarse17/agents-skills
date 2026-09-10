@@ -246,7 +246,7 @@ ssh -J ops@bastion,deploy@10.0.1.10 dba@10.0.2.50
 
 ```bash
 # Local port forward: access remote service on localhost
-# Access remote [PostgreSQL](../../Backend/postgresql/SKILL.md) (10.0.2.50:5432) via bastion at localhost:5432
+# Access remote [PostgreSQL](../../Databases/postgresql/SKILL.md) (10.0.2.50:5432) via bastion at localhost:5432
 ssh -L 5432:10.0.2.50:5432 ops@bastion.example.com -N
 
 # Remote port forward: expose local service to the remote network

@@ -87,7 +87,7 @@ Determine which service and quota to check based on the investigation context:
 | Amazon SNS | `sns` |
 | Amazon ElastiCache | `elasticache` |
 | Amazon OpenSearch Service | `es` |
-| Auto Scaling | `[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)` |
+| Auto Scaling | `[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)` |
 
 If you do not know the service code, use:
 

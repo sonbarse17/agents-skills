@@ -101,9 +101,9 @@ const options: AzureMonitorOpenTelemetryOptions = {
   instrumentationOptions: {
     azureSdk: { enabled: true },
     http: { enabled: true },
-    [mongoDb](../../../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md): { enabled: true },
-    [mySql](../../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md): { enabled: true },
-    [postgreSql](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md): { enabled: true },
+    [mongoDb](../../../../Software_Engineering_and_Other/Databases/mongodb/SKILL.md): { enabled: true },
+    [mySql](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md): { enabled: true },
+    [postgreSql](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md): { enabled: true },
     redis: { enabled: true },
     bunyan: { enabled: false },
     winston: { enabled: false }

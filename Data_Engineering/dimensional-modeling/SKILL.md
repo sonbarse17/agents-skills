@@ -500,7 +500,7 @@ CREATE TABLE agg_daily_product_sales (
 ```
 
 #### Bitmap Indexes
-Use bitmap indexes on low-cardinality dimension columns in data warehouse databases that support them (Oracle, [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) with extensions). Efficient for: columns with few distinct values (gender, status, region), columns used in WHERE clauses, columns used in GROUP BY. Not for: high-cardinality columns, OLTP workloads with frequent updates.
+Use bitmap indexes on low-cardinality dimension columns in data warehouse databases that support them (Oracle, [PostgreSQL](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) with extensions). Efficient for: columns with few distinct values (gender, status, region), columns used in WHERE clauses, columns used in GROUP BY. Not for: high-cardinality columns, OLTP workloads with frequent updates.
 
 ### Common Anti-Patterns
 

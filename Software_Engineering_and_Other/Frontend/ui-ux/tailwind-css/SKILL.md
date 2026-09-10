@@ -397,7 +397,7 @@ Arbitrary values should be reserved for truly one-off cases (e.g., a specific me
 - `../../../Global_References/responsive-patterns.md` -- Responsive Patterns Reference
 - `../../../Global_References/utility-first.md` -- Utility-First CSS Reference
 - `references/[tailwind-design-system](../tailwind-design-system/SKILL.md).md` -- Tailwind Design System Integration
-- `../../../Global_References/tailwind-[performance-optimization](../../../Backend/performance-optimization/SKILL.md).md` -- Tailwind Performance & Build Optimization
+- `../../../Global_References/tailwind-[performance-optimization](../../../Backend/patterns/performance-optimization/SKILL.md).md` -- Tailwind Performance & Build Optimization
 
 ## Handoff
 No artifact produced unless requested.

@@ -71,7 +71,7 @@ Dynamic Masking: {role-based, query-time}
 Tokenization: {format-preserving / random / [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-based}
 
 ### Column-Level Security
-Database: {[PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) / BigQuery / Snowflake}
+Database: {[PostgreSQL](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) / BigQuery / Snowflake}
 Method: {row-level security / column ACL / dynamic masking}
 Roles: [{role: accessible columns}]
 
@@ -109,11 +109,11 @@ Define classification levels: Public (no impact), Internal (minor), Confidential
 
 ### Step 4: Data Masking
 - **Static masking**: Create de-identified copies of production data for dev/test. Permanent transformation.
-- **Dynamic masking**: Mask at query time based on role. No data modification. Use [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) `col_a > masking_column`.
+- **Dynamic masking**: Mask at query time based on role. No data modification. Use [PostgreSQL](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) `col_a > masking_column`.
 - **Tokenization**: Replace sensitive data with tokens. [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-based (lookup table) or format-preserving (algorithmic).
 
 ### Step 5: Column-Level Security
-[PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md): Row-Level Security (RLS) policies per table. BigQuery: column ACL on authorized views. Snowflake: dynamic data masking with masking policies. Grant access based on data classification and role.
+[PostgreSQL](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md): Row-Level Security (RLS) policies per table. BigQuery: column ACL on authorized views. Snowflake: dynamic data masking with masking policies. Grant access based on data classification and role.
 
 ### Step 6: Anonymization
 - **k-anonymity**: Each record indistinguishable from k-1 others. Generalize or suppress quasi-identifiers.
@@ -262,7 +262,7 @@ de_identification:
 
 ## Data Security Implementation Examples
 
-### [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) Column-Level Encryption
+### [PostgreSQL](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) Column-Level Encryption
 ```sql
 -- Enable pgcrypto extension
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
@@ -297,7 +297,7 @@ END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 ```
 
-### [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) Row-Level Security
+### [PostgreSQL](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) Row-Level Security
 ```sql
 -- Enable RLS on table
 ALTER TABLE customer_records ENABLE ROW LEVEL SECURITY;

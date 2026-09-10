@@ -573,7 +573,7 @@ What type of sensitive data?
 
 ## Performance Optimization
 
-- **Eager masking at query level**: Apply masking in SQL queries ([PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) column-level encryption, views with masking). Avoids fetching and masking in application code.
+- **Eager masking at query level**: Apply masking in SQL queries ([PostgreSQL](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) column-level encryption, views with masking). Avoids fetching and masking in application code.
 - **Caching token mappings**: Use in-memory cache for frequently accessed token-to-value mappings. TTL-based expiration with proactive invalidation. Reduces token [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) lookup latency by 90%.
 - **Async PII detection pipeline**: Run PII detection asynchronously for new data ingestion. Use a work queue for large batch processing. Stream results back for masking rule generation.
 

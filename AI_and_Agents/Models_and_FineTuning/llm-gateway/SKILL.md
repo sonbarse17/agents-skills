@@ -35,7 +35,7 @@ Use this skill when:
 ## Prerequisites
 
 - [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) and [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Compose
-- A [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) or SQLite database (for LiteLLM state)
+- A [PostgreSQL](../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) or SQLite database (for LiteLLM state)
 - LLM API keys (OpenAI, Anthropic, etc.) or self-hosted vLLM endpoints
 - Optional: Redis for caching and rate limiting
 
@@ -127,7 +127,7 @@ litellm_settings:
 
 general_settings:
   master_key: os.environ/LITELLM_MASTER_KEY
-  database_url: [postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)://litellm:password@postgres:5432/litellm
+  database_url: [postgresql](../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)://litellm:password@postgres:5432/litellm
   store_model_in_db: true
 ```
 
@@ -146,7 +146,7 @@ services:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
       - LITELLM_MASTER_KEY=${LITELLM_MASTER_KEY}
-      - DATABASE_URL=[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)://litellm:password@postgres:5432/litellm
+      - DATABASE_URL=[postgresql](../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)://litellm:password@postgres:5432/litellm
     depends_on:
       postgres:
         condition: service_healthy
@@ -161,7 +161,7 @@ services:
       POSTGRES_USER: litellm
       POSTGRES_PASSWORD: password
     volumes:
-      - postgres-data:/var/lib/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/data
+      - postgres-data:/var/lib/[postgresql](../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U litellm"]
       interval: 5s

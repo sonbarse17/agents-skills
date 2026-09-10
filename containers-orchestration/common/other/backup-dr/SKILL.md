@@ -126,7 +126,7 @@ Identify workload tiers → Set RPO/RTO → Implement 3-2-1 backup → Automate 
 workloads:
   - name: production-database
     tier: 1
-    type: [postgresql](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)
+    type: [postgresql](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)
     rpo: 15m
     rto: 1h
     backup_frequency: continuous_wal
@@ -273,11 +273,11 @@ resource "aws_backup_global_settings" "org_settings" {
 }
 ```
 
-### Step 3: Database Backup Automation ([PostgreSQL](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md))
+### Step 3: Database Backup Automation ([PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md))
 ```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 #!/usr/bin/env python3
 # backup/db_backup.py
-"""Automated [PostgreSQL](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) backup with WAL archiving and offsite replication."""
+"""Automated [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) backup with WAL archiving and offsite replication."""
 
 import os
 import sys
@@ -311,7 +311,7 @@ def create_full_backup():
     # Use pg_dump with custom format for parallel restore support
     cmd = [
         "pg_dump",
-        f"--dbname=[postgresql](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)://{DB_USER}@{DB_HOST}:{DB_PORT}/{DB_NAME}",
+        f"--dbname=[postgresql](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)://{DB_USER}@{DB_HOST}:{DB_PORT}/{DB_NAME}",
         "--format=custom",      # Custom format for pg_restore
         "--compress=9",         # Max compression
         "--verbose",
@@ -376,7 +376,7 @@ def verify_backup_integrity(backup_file):
 
 def backup_wal():
     """Archive WAL segments for point-in-time recovery."""
-    wal_dir = Path("/var/lib/[postgresql](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/16/main/pg_wal")
+    wal_dir = Path("/var/lib/[postgresql](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)/16/main/pg_wal")
     s3_client = boto3.client("s3")
     cutoff = datetime.utcnow() - timedelta(hours=WAL_RETENTION_HOURS)
 
@@ -492,7 +492,7 @@ aws route53 change-resource-record-sets \
   }'
 
 # Scale up DR application fleet
-aws [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) update-auto-scaling-group \
+aws [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) update-auto-scaling-group \
   --auto-scaling-group-name dr-app-asg \
   --min-size 3 \
   --max-size 20 \

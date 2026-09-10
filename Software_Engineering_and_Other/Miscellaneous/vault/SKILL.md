@@ -148,14 +148,14 @@ vault kv destroy secret/myapp/config
 vault kv undelete -versions=1 secret/myapp/config
 ```
 
-### Step 3: Dynamic Database Secrets — [PostgreSQL](../../Backend/postgresql/SKILL.md)
+### Step 3: Dynamic Database Secrets — [PostgreSQL](../../Databases/postgresql/SKILL.md)
 ```bash
 vault secrets enable database
 
 vault write database/config/postgres-prod \
-  plugin_name=[postgresql](../../Backend/postgresql/SKILL.md)-database-plugin \
+  plugin_name=[postgresql](../../Databases/postgresql/SKILL.md)-database-plugin \
   allowed_roles="app-role,readonly-role" \
-  connection_url="[postgresql](../../Backend/postgresql/SKILL.md)://{{username}}:{{password}}@postgres:5432/app" \
+  connection_url="[postgresql](../../Databases/postgresql/SKILL.md)://{{username}}:{{password}}@postgres:5432/app" \
   username="vault_admin" \
   password="vault_pass"
 
@@ -183,15 +183,15 @@ vault lease revoke database/creds/app-role/abc123
 
 ### Step 4: Dynamic Database Secrets — AWS RDS
 ```bash
-vault write database/config/[mysql](../../Backend/mysql/SKILL.md)-prod \
-  plugin_name=[mysql](../../Backend/mysql/SKILL.md)-database-plugin \
-  allowed_roles="app-[mysql](../../Backend/mysql/SKILL.md)" \
-  connection_url="{{username}}:{{password}}@tcp([mysql](../../Backend/mysql/SKILL.md).example.com:3306)/" \
+vault write database/config/[mysql](../../Databases/mysql/SKILL.md)-prod \
+  plugin_name=[mysql](../../Databases/mysql/SKILL.md)-database-plugin \
+  allowed_roles="app-[mysql](../../Databases/mysql/SKILL.md)" \
+  connection_url="{{username}}:{{password}}@tcp([mysql](../../Databases/mysql/SKILL.md).example.com:3306)/" \
   username="vault_admin" \
   password="vault_pass"
 
-vault write database/roles/app-[mysql](../../Backend/mysql/SKILL.md) \
-  db_name=[mysql](../../Backend/mysql/SKILL.md)-prod \
+vault write database/roles/app-[mysql](../../Databases/mysql/SKILL.md) \
+  db_name=[mysql](../../Databases/mysql/SKILL.md)-prod \
   creation_statements="CREATE USER '{{name}}'@'%' IDENTIFIED BY '{{password}}'; GRANT SELECT ON app.* TO '{{name}}'@'%';" \
   default_ttl="30m" \
   max_ttl="4h"
@@ -481,8 +481,8 @@ resource "vault_database_secret_backend_connection" "postgres" {
   name          = "postgres-prod"
   allowed_roles = ["app-role"]
 
-  [postgresql](../../Backend/postgresql/SKILL.md) {
-    connection_url = "[postgresql](../../Backend/postgresql/SKILL.md)://{{username}}:{{password}}@postgres:5432/app"
+  [postgresql](../../Databases/postgresql/SKILL.md) {
+    connection_url = "[postgresql](../../Databases/postgresql/SKILL.md)://{{username}}:{{password}}@postgres:5432/app"
     username       = "vault_admin"
     password       = var.db_admin_password
   }

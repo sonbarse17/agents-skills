@@ -455,7 +455,7 @@ job "api" {
 }
 ```
 
-### Step 8: CSI Volume ([PostgreSQL](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) on Nomad)
+### Step 8: CSI Volume ([PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) on Nomad)
 ```hcl
 # Register volume first:
 # nomad volume create volume.hcl
@@ -512,7 +512,7 @@ job "postgres" {
       }
       volume_mount {
         volume      = "data"
-        destination = "/var/lib/[postgresql](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/data"
+        destination = "/var/lib/[postgresql](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)/data"
       }
       env {
         POSTGRES_PASSWORD = "{{ with secret \"secret/data/postgres\" }}{{ .Data.data.password }}{{ end }}"
@@ -527,7 +527,7 @@ job "postgres" {
 }
 ```
 
-### Step 9: [Autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)
+### Step 9: [Autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)
 ```hcl
 # autoscaler.hcl (Nomad Autoscaler configuration)
 apm "prometheus" {
@@ -673,7 +673,7 @@ Key metrics to alert on:
   - references/nomad-job-spec.md — Nomad Job Specification Reference
   - references/nomad-consul-connect.md — Consul Connect with Nomad
   - references/nomad-csi.md — CSI Volume Integration
-  - references/nomad-[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md).md — Nomad Autoscaler
+  - references/nomad-[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md).md — Nomad Autoscaler
   - references/nomad-security.md — ACLs and [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Integration
 ## Handoff
 - `devops-consul` for Consul service discovery and Connect mesh.

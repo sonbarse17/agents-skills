@@ -150,10 +150,10 @@ models:
 ```bash
 # Diff tables across environments
 data-diff \
-  --warehouse-type [postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) \
-  --warehouse-type [postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) \
-  --warehouse-conn "[postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)://user:pass@prod:5432/warehouse" \
-  --warehouse-conn "[postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)://user:pass@staging:5432/warehouse" \
+  --warehouse-type [postgresql](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) \
+  --warehouse-type [postgresql](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) \
+  --warehouse-conn "[postgresql](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)://user:pass@prod:5432/warehouse" \
+  --warehouse-conn "[postgresql](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)://user:pass@staging:5432/warehouse" \
   "SELECT order_id, customer_id, amount, status FROM orders WHERE order_date >= '2026-05-01'" \
   "SELECT order_id, customer_id, amount, status FROM orders WHERE order_date >= '2026-05-01'" \
   -k order_id
@@ -337,7 +337,7 @@ jobs:
       - name: data-diff regression
         run: |
           data-diff \
-            --warehouse-type [postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) \
+            --warehouse-type [postgresql](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) \
             --warehouse-conn "${{ secrets.PROD_DB }}" \
             --warehouse-conn "${{ secrets.STAGING_DB }}" \
             "SELECT * FROM orders WHERE order_date >= CURRENT_DATE - 7" \

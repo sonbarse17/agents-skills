@@ -23,11 +23,11 @@ depends_on:
   - mongodb
 ---
 
-# [MongoDB](../../Backend/mongodb/SKILL.md) Configuration Validation
+# [MongoDB](../mongodb/SKILL.md) Configuration Validation
 
 ## Purpose
 
-[MongoDB](../../Backend/mongodb/SKILL.md)'s flexibility — reconfiguring a replica set, resharding a
+[MongoDB](../mongodb/SKILL.md)'s flexibility — reconfiguring a replica set, resharding a
 collection, adding an index — makes it easy to apply a change that looks
 fine in the shell but has a consequence that only surfaces under
 production load: a replica set reconfiguration that breaks voting quorum
@@ -47,7 +47,7 @@ those changes, complementing the operational depth in
   collection.
 - Before changing `writeConcern`/`readConcern` defaults, or introducing a
   `readPreference` change to an application that reads from secondaries.
-- As a review gate for [infrastructure-as-code](../../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) that manages [MongoDB](../../Backend/mongodb/SKILL.md)
+- As a review gate for [infrastructure-as-code](../../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) that manages [MongoDB](../mongodb/SKILL.md)
   replica set/sharding topology.
 
 ## Prerequisites & environment
@@ -56,7 +56,7 @@ those changes, complementing the operational depth in
   (`rs.conf()`, `rs.status()`, `sh.status()`, `db.collection.stats()`);
   `clusterAdmin`/`dbAdmin` only needed to actually apply validated
   changes.
-- [MongoDB](../../Backend/mongodb/SKILL.md) 5.0+ assumed for command syntax below; note explicitly where
+- [MongoDB](../mongodb/SKILL.md) 5.0+ assumed for command syntax below; note explicitly where
   behavior differs on older supported versions (e.g. `reshardCollection`
   requires 4.4+, `replSetResizeOplog` requires 3.6+).
 - Access to representative production data (or a realistic sample) for
@@ -78,7 +78,7 @@ cfg.members.forEach(m => print(m.host, m.votes, m.priority, m.arbiterOnly))
 ```
 A replica set needs a **majority of voting members** reachable to elect
 a primary and to accept majority-acknowledged writes. Validate:
-- Total voting members should be odd (max 7 voting members is a [MongoDB](../../Backend/mongodb/SKILL.md)
+- Total voting members should be odd (max 7 voting members is a [MongoDB](../mongodb/SKILL.md)
   hard limit) — an even number of voters risks an election tie with no
   majority achievable, stalling failover indefinitely until the tie is
   broken by a member coming back.
@@ -131,7 +131,7 @@ db.orders.stats().count          // collection size
 db.currentOp({ "command.createIndexes": { $exists: true } })  // check for an in-progress build
 ```
 Confirm the index build will run in the background/online mode
-appropriate to the [MongoDB](../../Backend/mongodb/SKILL.md) version in use (default online builds since
+appropriate to the [MongoDB](../mongodb/SKILL.md) version in use (default online builds since
 4.2), and — critically — confirm it will be run as a **rolling build**
 (secondaries first, each stepped out of the effective read path via
 `readPreference` before its build starts, then the primary) for a large
@@ -184,7 +184,7 @@ key validation specifically) before scheduling the production change.
   durability requirements as a finding to flag, not a silent default to
   accept.
 - Bake shard-key and index-build validation into the review process for
-  [infrastructure-as-code](../../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md)-managed [MongoDB](../../Backend/mongodb/SKILL.md) schemas/topology, not just as
+  [infrastructure-as-code](../../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md)-managed [MongoDB](../mongodb/SKILL.md) schemas/topology, not just as
   manual shell-command review.
 
 ## Common pitfalls
@@ -280,5 +280,5 @@ support a new reporting query.
 ## Cross-references
 
 - [mongodb-operations-and-scaling](../[mongodb-operations-and-scaling](../[mongodb](../../Backend/mongodb/SKILL.md)-operations-and-scaling/SKILL.md)/SKILL.md) — the operational depth (shard key mechanics, replica set election tuning, index build behavior) this skill's validation checks are grounded in.
-- [postgresql-configuration-validation](../[postgresql-configuration-validation](../../Miscellaneous/[postgresql](../../Backend/postgresql/SKILL.md)-configuration-validation/SKILL.md)/SKILL.md) — comparable pre-production configuration validation discipline applied to [PostgreSQL](../../Backend/postgresql/SKILL.md), useful as a pattern reference in a polyglot database environment.
+- [postgresql-configuration-validation](../[postgresql-configuration-validation](../../Miscellaneous/[postgresql](../../Backend/postgresql/SKILL.md)-configuration-validation/SKILL.md)/SKILL.md) — comparable pre-production configuration validation discipline applied to [PostgreSQL](../postgresql/SKILL.md), useful as a pattern reference in a polyglot database environment.
 - [redis-configuration-validation](../[redis-configuration-validation](../redis-configuration-validation/SKILL.md)/SKILL.md) — comparable validation approach for Redis maxmemory/eviction/cluster settings, if the same platform runs both.

@@ -184,7 +184,7 @@ the underlying problem.
   avoid paging on transient replication catch-up after a routine broker
   restart.
 - Use static group membership (`group.instance.id`) for consumer
-  deployments that restart routinely (rolling deploys, [autoscaling](../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)) to
+  deployments that restart routinely (rolling deploys, [autoscaling](../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)) to
   avoid unnecessary full rebalances on every restart.
 - Instrument the consuming application with its own processing-latency
   metrics per stage (deserialize, business logic, downstream call,

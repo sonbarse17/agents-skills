@@ -69,14 +69,14 @@ Infrastructure deployed via Bicep, AKS cluster operational, pipeline passing, ne
 | Container, simple | Container Instances | Quick, burst | Manual |
 | Full OS control | Virtual Machines | Legacy, custom OS | VMSS |
 
-### Database: Azure SQL vs Cosmos DB vs [PostgreSQL](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) vs SQL Managed Instance
+### Database: Azure SQL vs Cosmos DB vs [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) vs SQL Managed Instance
 | Requirement | Recommended | HA Model |
 |---|---|---|
 | SQL Server compatible, <4TB | Azure SQL Database (DTU) | Active geo-replication |
 | SQL Server compatible, >4TB | Azure SQL Database (vCore) | Zone-redundant |
 | SQL Server, full instance | SQL Managed Instance | Auto-failover groups |
 | NoSQL, multi-model | Cosmos DB | Multi-region writes |
-| [PostgreSQL](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/[MySQL](../../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) | Azure Database for [PostgreSQL](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) | Read replicas |
+| [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)/[MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) | Azure Database for [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) | Read replicas |
 | Cache | Azure Cache for Redis | Premium with clustering |
 
 ### Networking: VNet Hub-Spoke vs Virtual WAN vs Azure Front Door

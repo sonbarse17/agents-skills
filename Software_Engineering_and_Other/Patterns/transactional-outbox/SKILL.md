@@ -42,7 +42,7 @@ Guarantee reliable event publication by writing events to an outbox table within
 Exact user phrases: "outbox", "transactional outbox", "outbox pattern", "reliable event publishing", "dual write", "CDC outbox", "message relay", "publish events", "exactly-once publish", "debezium outbox".
 
 ### Input Context
-- Database technology ([PostgreSQL](../../Backend/postgresql/SKILL.md), [MySQL](../../Backend/mysql/SKILL.md), SQL Server, etc.).
+- Database technology ([PostgreSQL](../../Databases/postgresql/SKILL.md), [MySQL](../../Databases/mysql/SKILL.md), SQL Server, etc.).
 - Message broker (Kafka, RabbitMQ, SQS, etc.).
 - Whether dual-write (DB + broker) is a current problem.
 - Current event publishing mechanism.
@@ -82,7 +82,7 @@ What throughput do you need?
   ├── High throughput (>1000 events/sec), need near real-time
   │   └── CDC relay (Debezium) — tail the WAL, no polling overhead
   └── Moderate throughput, want logical replication, no extra infra
-      └── [PostgreSQL](../../Backend/postgresql/SKILL.md) LISTEN/NOTIFY + polling as fallback
+      └── [PostgreSQL](../../Databases/postgresql/SKILL.md) LISTEN/NOTIFY + polling as fallback
 ```
 
 ### When to Use Outbox Pattern
@@ -191,7 +191,7 @@ class OutboxRelay {
 For high-throughput systems, use CDC instead of polling:
 
 ```
-Application -> [PostgreSQL](../../Backend/postgresql/SKILL.md) WAL -> Debezium connector -> Kafka -> Consumer
+Application -> [PostgreSQL](../../Databases/postgresql/SKILL.md) WAL -> Debezium connector -> Kafka -> Consumer
 
 1. Application writes business data + outbox row in same transaction
 2. Debezium reads the WAL and captures the outbox insert
@@ -206,7 +206,7 @@ Debezium outbox configuration:
 {
   "name": "order-service-connector",
   "config": {
-    "connector.class": "io.debezium.connector.[postgresql](../../Backend/postgresql/SKILL.md).PostgresConnector",
+    "connector.class": "io.debezium.connector.[postgresql](../../Databases/postgresql/SKILL.md).PostgresConnector",
     "database.hostname": "postgres",
     "database.port": "5432",
     "database.user": "debezium",
@@ -332,7 +332,7 @@ DELETE FROM outbox_messages
 | Anti-Pattern | Why It's Bad | Fix |
 |-------------|-------------|-----|
 | Publishing directly from request handler | If broker is down, event is lost. DB tx fails, but user already got response | Use outbox: write to DB first, relay separately |
-| Same transaction, different DB | Outbox in [PostgreSQL](../../Backend/postgresql/SKILL.md), business data in [MySQL](../../Backend/mysql/SKILL.md) — no atomicity | Keep outbox in same DB as business data |
+| Same transaction, different DB | Outbox in [PostgreSQL](../../Databases/postgresql/SKILL.md), business data in [MySQL](../../Databases/mysql/SKILL.md) — no atomicity | Keep outbox in same DB as business data |
 | No dedup in consumer | At-least-once delivery causes duplicate processing | Check idempotency key before processing |
 | Long-running relay blocking | Single relay thread blocks if one message fails to publish | Individual message retry, skip failures, process batch |
 | Deleting outbox immediately after publish | Lose [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail, cannot replay | Archive after 7 days, keep for replay capability |
@@ -396,7 +396,7 @@ CREATE TABLE outbox_messages (
 -- Enforces: events for same aggregate are published in order
 ```
 
-## [PostgreSQL](../../Backend/postgresql/SKILL.md) LISTEN/NOTIFY as Lightweight Relay
+## [PostgreSQL](../../Databases/postgresql/SKILL.md) LISTEN/NOTIFY as Lightweight Relay
 
 ```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Hybrid approach: NOTIFY for low latency, polling as fallback

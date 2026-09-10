@@ -66,7 +66,7 @@ Assess each gate and mark **PASS / FAIL / N/A** with evidence.
   big-bang on a critical service), a **tested rollback path**, immutable
   artifact promoted (not rebuilt at deploy), DB migrations backward-compatible
   and reversible, feature flags for risky changes.
-- **Reliability** — health/readiness probes, [autoscaling](../../Backend/autoscaling/SKILL.md) and [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) for
+- **Reliability** — health/readiness probes, [autoscaling](../../Backend/patterns/autoscaling/SKILL.md) and [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) for
   expected load (load-tested if high-stakes), no single points of failure,
   graceful degradation of dependencies, timeouts/retries/circuit breakers.
 - **[Observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)** — golden-signal metrics, [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) for the release,

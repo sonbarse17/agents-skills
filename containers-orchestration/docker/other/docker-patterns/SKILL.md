@@ -224,7 +224,7 @@ services:
   db:
     image: postgres:16-alpine
     volumes:
-      - pgdata:/var/lib/[postgresql](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/data
+      - pgdata:/var/lib/[postgresql](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)/data
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: ${DB_PASSWORD:?error}
@@ -292,7 +292,7 @@ USER 65534
 HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
   CMD wget --no-verbose --tries=1 --spider http://localhost:3000/health || exit 1
 
-# [MySQL](../../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)/Postgres
+# [MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)/Postgres
 HEALTHCHECK --interval=5s --timeout=5s --retries=5 \
   CMD pg_isready -U user -d app || exit 1
 
@@ -516,7 +516,7 @@ services:
   db:
     image: postgres:16-alpine
     volumes:
-      - pgdata:/var/lib/[postgresql](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/data
+      - pgdata:/var/lib/[postgresql](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U user -d app"]
       interval: 5s

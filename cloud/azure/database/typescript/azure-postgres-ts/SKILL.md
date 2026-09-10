@@ -22,9 +22,9 @@ depends_on:
   - commit
 ---
 
-# Azure [PostgreSQL](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) for [TypeScript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) (node-postgres)
+# Azure [PostgreSQL](../../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) for [TypeScript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) (node-postgres)
 
-Connect to Azure Database for [PostgreSQL](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) Flexible Server using the `pg` (node-postgres) package with support for password and Microsoft Entra ID (passwordless) authentication.
+Connect to Azure Database for [PostgreSQL](../../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) Flexible Server using the `pg` (node-postgres) package with support for password and Microsoft Entra ID (passwordless) authentication.
 
 ## Installation
 
@@ -87,7 +87,7 @@ const credential = new DefaultAzureCredential({requiredEnvVars: ["AZURE_TOKEN_CR
 //   managedIdentityClientId: process.env.AZURE_POSTGRESQL_CLIENTID
 // });
 
-// Acquire access token for Azure [PostgreSQL](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)
+// Acquire access token for Azure [PostgreSQL](../../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)
 const tokenResponse = await credential.getToken(
   "https://ossrdbms-aad.database.windows.net/.default"
 );
@@ -393,7 +393,7 @@ try {
         console.error("Server unavailable, retry later");
         break;
       default:
-        console.error(`[PostgreSQL](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) error ${error.code}: ${error.message}`);
+        console.error(`[PostgreSQL](../../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) error ${error.code}: ${error.message}`);
     }
   }
   throw error;
@@ -444,7 +444,7 @@ pool.on("error", (err, client) => {
 | Setting | Value | Description |
 |---------|-------|-------------|
 | `ssl.rejectUnauthorized` | `true` | Always use SSL for Azure |
-| Default port | `5432` | Standard [PostgreSQL](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) port |
+| Default port | `5432` | Standard [PostgreSQL](../../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) port |
 | PgBouncer port | `6432` | Use when PgBouncer enabled |
 | Token scope | `https://ossrdbms-aad.database.windows.net/.default` | Entra ID token scope |
 | Token lifetime | ~1 hour | Refresh before expiry |
@@ -457,7 +457,7 @@ pool.on("error", (err, client) => {
 | Medium (production) | 20-30 | 30000 |
 | Heavy (high concurrency) | 50-100 | 10000 |
 
-> **Note**: Azure [PostgreSQL](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) has connection limits based on SKU. Check your tier's max connections.
+> **Note**: Azure [PostgreSQL](../../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) has connection limits based on SKU. Check your tier's max connections.
 
 ## Best Practices
 
@@ -494,5 +494,5 @@ import {
 | node-postgres Docs | https://node-postgres.com |
 | npm Package | https://www.npmjs.com/package/pg |
 | [GitHub](../../../../../ci-cd/github-actions/other/github/SKILL.md) Repository | https://[github](../../../../../ci-cd/github-actions/other/github/SKILL.md).com/brianc/node-postgres |
-| Azure [PostgreSQL](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) Docs | https://learn.microsoft.com/azure/[postgresql](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/flexible-server/ |
-| Passwordless Connection | https://learn.microsoft.com/azure/[postgresql](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/flexible-server/how-to-connect-with-managed-identity |
+| Azure [PostgreSQL](../../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) Docs | https://learn.microsoft.com/azure/[postgresql](../../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)/flexible-server/ |
+| Passwordless Connection | https://learn.microsoft.com/azure/[postgresql](../../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)/flexible-server/how-to-connect-with-managed-identity |

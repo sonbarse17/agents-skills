@@ -77,12 +77,12 @@ Survey these categories; for large estates dispatch parallel read-only subagents
 shape, plus Hard Rules 3 and 5 verbatim (subagents do not inherit them).
 
 - **Reliability** — single points of failure, no health checks/probes, missing
-  [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md), no backups or untested restores, missing multi-AZ, tight
+  [autoscaling](../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md), no backups or untested restores, missing multi-AZ, tight
   coupling, no timeouts/retries/circuit breakers.
 - **Security** — public exposure, over-broad IAM, missing encryption at
   rest/in transit, unpatched base images, secrets in code, no network
   segmentation. (Deep dive: `/[security-review](../../../Security/security-review/SKILL.md)`.)
-- **Cost** — idle/over-provisioned resources, no [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md), unattached
+- **Cost** — idle/over-provisioned resources, no [autoscaling](../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md), unattached
   volumes, old snapshots, missing lifecycle policies. (Deep dive: `/cost`.)
 - **[Observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)** — missing metrics/logs/traces, no SLOs, alert gaps or
   noise, no [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) for critical paths. (Deep dive: `/[observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)`.)

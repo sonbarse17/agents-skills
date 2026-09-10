@@ -65,7 +65,7 @@ services:
       POSTGRES_PASSWORD: secret
       POSTGRES_DB: myapp
     volumes:
-      - postgres-data:/var/lib/[postgresql](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/data
+      - postgres-data:/var/lib/[postgresql](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)/data
     ports:
       - "5432:5432"
 
@@ -409,7 +409,7 @@ services:
   db:
     image: postgres:15
     volumes:
-      - postgres-data:/var/lib/[postgresql](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/data
+      - postgres-data:/var/lib/[postgresql](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)/data
       - ./init-scripts:/[docker](../../../docker/other/docker/SKILL.md)-entrypoint-initdb.d:ro
     environment:
       POSTGRES_DB: myapp

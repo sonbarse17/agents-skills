@@ -19,11 +19,11 @@ depends_on:
 
 # PlanetScale
 
-Use PlanetScale for [serverless](../../Patterns/serverless/SKILL.md) [MySQL](../../Backend/mysql/SKILL.md)-compatible databases with non-blocking schema change workflows built on Vitess.
+Use PlanetScale for [serverless](../../Patterns/serverless/SKILL.md) [MySQL](../mysql/SKILL.md)-compatible databases with non-blocking schema change workflows built on Vitess.
 
 ## When to Use
 
-- You need a managed [MySQL](../../Backend/mysql/SKILL.md)-compatible database with zero-downtime migrations.
+- You need a managed [MySQL](../mysql/SKILL.md)-compatible database with zero-downtime migrations.
 - Your team wants Git-like branching for schema development.
 - You are building a [serverless](../../Patterns/serverless/SKILL.md) or edge application that benefits from connection pooling.
 - You need horizontal sharding without managing Vitess directly.
@@ -139,7 +139,7 @@ pscale branch delete my-app add-users-table
 pscale password create my-app main production-creds
 
 # Output includes host, username, and password for the connection string:
-# [mysql](../../Backend/mysql/SKILL.md)://USERNAME:PASSWORD@HOST/my-app?sslmode=verify_identity
+# [mysql](../mysql/SKILL.md)://USERNAME:PASSWORD@HOST/my-app?sslmode=verify_identity
 
 # Proxy a branch to localhost for local development (no password needed)
 pscale connect my-app add-users-table --port 3306
@@ -149,10 +149,10 @@ pscale connect my-app add-users-table --port 3306
 
 ```bash
 # .env (local development using pscale connect)
-DATABASE_URL="[mysql](../../Backend/mysql/SKILL.md)://root@127.0.0.1:3306/my-app"
+DATABASE_URL="[mysql](../mysql/SKILL.md)://root@127.0.0.1:3306/my-app"
 
 # .env.production (using PlanetScale connection string)
-DATABASE_URL="[mysql](../../Backend/mysql/SKILL.md)://USERNAME:PASSWORD@us-east.connect.psdb.cloud/my-app?sslaccept=strict"
+DATABASE_URL="[mysql](../mysql/SKILL.md)://USERNAME:PASSWORD@us-east.connect.psdb.cloud/my-app?sslaccept=strict"
 ```
 
 ## Prisma Integration
@@ -160,7 +160,7 @@ DATABASE_URL="[mysql](../../Backend/mysql/SKILL.md)://USERNAME:PASSWORD@us-east.
 ```prisma
 // prisma/schema.prisma
 datasource db {
-  provider     = "[mysql](../../Backend/mysql/SKILL.md)"
+  provider     = "[mysql](../mysql/SKILL.md)"
   url          = env("DATABASE_URL")
   relationMode = "prisma"   // required — PlanetScale does not support foreign keys
 }
@@ -230,15 +230,15 @@ EXPLAIN SELECT * FROM orders WHERE user_id = 42 AND status = 'paid';
 
 ## [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Setup for Local Development
 
-Use a plain [MySQL](../../Backend/mysql/SKILL.md) 8 container to mirror PlanetScale locally when you are offline or want fast iteration without the CLI proxy.
+Use a plain [MySQL](../mysql/SKILL.md) 8 container to mirror PlanetScale locally when you are offline or want fast iteration without the CLI proxy.
 
 ```yaml
 # [docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml
 version: "3.9"
 
 services:
-  [mysql](../../Backend/mysql/SKILL.md):
-    image: [mysql](../../Backend/mysql/SKILL.md):8.0
+  [mysql](../mysql/SKILL.md):
+    image: [mysql](../mysql/SKILL.md):8.0
     restart: unless-stopped
     ports:
       - "3306:3306"
@@ -248,7 +248,7 @@ services:
       MYSQL_USER: myapp
       MYSQL_PASSWORD: secret
     volumes:
-      - mysql_data:/var/lib/[mysql](../../Backend/mysql/SKILL.md)
+      - mysql_data:/var/lib/[mysql](../mysql/SKILL.md)
       - ./init.sql:/[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-entrypoint-initdb.d/init.sql
     command: >
       --default-authentication-plugin=mysql_native_password
@@ -261,7 +261,7 @@ volumes:
 
 ```bash
 [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) compose up -d
-[mysql](../../Backend/mysql/SKILL.md) -h 127.0.0.1 -u myapp -psecret my-app
+[mysql](../mysql/SKILL.md) -h 127.0.0.1 -u myapp -psecret my-app
 ```
 
 ## Production Best Practices
@@ -286,6 +286,6 @@ volumes:
 
 ## Related Skills
 
-- [mysql](../[mysql](../../Backend/mysql/SKILL.md)/) - [MySQL](../../Backend/mysql/SKILL.md) tuning fundamentals
+- [mysql](../[mysql](../../Backend/mysql/SKILL.md)/) - [MySQL](../mysql/SKILL.md) tuning fundamentals
 - [database-backups](../[database-backups](../database-backups/SKILL.md)/) - Recovery planning
 - [postgresql](../[postgresql](../../Backend/postgresql/SKILL.md)/) - Alternative relational database

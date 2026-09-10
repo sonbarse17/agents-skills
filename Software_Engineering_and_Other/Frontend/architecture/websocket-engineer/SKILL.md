@@ -177,7 +177,7 @@ When implementing WebSocket features, provide:
 
 ## Knowledge Reference
 
-Socket.IO, ws, uWebSockets.js, Redis adapter, sticky sessions, nginx WebSocket proxy, JWT over WebSocket, rooms/namespaces, acknowledgments, binary data, compression, heartbeat, backpressure, horizontal pod [autoscaling](../../../Backend/autoscaling/SKILL.md)
+Socket.IO, ws, uWebSockets.js, Redis adapter, sticky sessions, nginx WebSocket proxy, JWT over WebSocket, rooms/namespaces, acknowledgments, binary data, compression, heartbeat, backpressure, horizontal pod [autoscaling](../../../Backend/patterns/autoscaling/SKILL.md)
 
 [Documentation](https://jeffallan.[github](../../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/api-architecture/websocket-engineer/)
 

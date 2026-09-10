@@ -79,7 +79,7 @@ No preamble. No postamble. No explanations. Compress output — why use many tok
 | hx-get fragment swap | Simple data fetch, GET semantics | Read operations, lazy load |
 | hx-post form with validation | Form submission, 422 errors | Mutations with validation |
 | hx-boost on links/forms | Full-page SPA-like navigation | Enhancing existing HTML |
-| hx-trigger="every 10s" | Polling for updates | Real-time-ish [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) |
+| hx-trigger="every 10s" | Polling for updates | Real-time-ish [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) |
 | hx-trigger="revealed" | Lazy load below fold | Performance optimization |
 | hx-trigger="intersect" | Viewport-based loading | Infinite scroll |
 | Server-Sent Events (hx-sse) | Server push | Real-time notifications |
@@ -238,7 +238,7 @@ For client-only UI state (modals, toggles, theme), pair htmx with Alpine.js:
 
 Since htmx is primarily server-driven, testing focuses on the backend:
 
-```[python](../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/SKILL.md)
 # pytest example for Django + htmx
 def test_contact_list_htmx(client):
     response = client.get('/contacts', HTTP_HX_REQUEST='true')
@@ -324,7 +324,7 @@ Fundamental architecture change (client to server rendering). Best for content-h
 ## Server Integration Patterns
 
 ### Django
-```[python](../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/SKILL.md)
 def contact_list(request):
     if request.htmx:
         return render(request, 'contacts/_list.html', {'contacts': Contact.objects.all()})
@@ -372,7 +372,7 @@ app.get('/contacts', (req, res) => {
 
 1. htmx DevTools browser extension
 2. `hyperscript` — companion language (optional)
-3. `[alpinejs](../alpinejs/SKILL.md)` — complementary for client interactivity
+3. `[alpinejs](../../../Frontend/frameworks/alpinejs/SKILL.md)` — complementary for client interactivity
 4. `django-htmx` — Django middleware
 5. `flask-htmx` — Flask extension
 6. `laravel-htmx` — Laravel package
@@ -456,7 +456,7 @@ Carry forward: hx-trigger/hx-target/hx-swap pattern, HTML-fragment responses, HA
 
 ### Server-Side Handler Pattern
 
-```[python](../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/SKILL.md)
 from flask import Blueprint, request, render_template, jsonify
 
 htmx = Blueprint('htmx', __name__)

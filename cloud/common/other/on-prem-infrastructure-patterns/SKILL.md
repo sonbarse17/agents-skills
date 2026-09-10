@@ -227,7 +227,7 @@ disconnected islands.
    cheaper). Document the decision and revisit it — it is not permanent.
 
 9. **[Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-plan with real lead-time headroom.** Unlike cloud
-   [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md), a [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) or vSphere cluster [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) shortfall means
+   [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md), a [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) or vSphere cluster [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) shortfall means
    weeks-to-months of hardware procurement, not minutes. Track
    utilization trends and trigger procurement well before a cluster
    reaches the threshold where DRS/HA admission control starts rejecting

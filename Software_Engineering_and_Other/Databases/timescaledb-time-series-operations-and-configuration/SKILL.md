@@ -27,18 +27,18 @@ depends_on:
 
 ## Purpose
 
-TimescaleDB is a [PostgreSQL](../../Backend/postgresql/SKILL.md) extension, not a separate database engine —
+TimescaleDB is a [PostgreSQL](../postgresql/SKILL.md) extension, not a separate database engine —
 it adds **hypertables** (transparently partitioned by time, and
 optionally by an additional "space" dimension) on top of ordinary
-[PostgreSQL](../../Backend/postgresql/SKILL.md) tables, along with continuous aggregates, compression, and
+[PostgreSQL](../postgresql/SKILL.md) tables, along with continuous aggregates, compression, and
 retention policies purpose-built for time-series workloads (metrics,
 events, IoT telemetry, financial ticks). Because it's a normal
-[PostgreSQL](../../Backend/postgresql/SKILL.md) table underneath, everything in
+[PostgreSQL](../postgresql/SKILL.md) table underneath, everything in
 [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md)
 (vacuum, replication, connection pooling, `EXPLAIN`-driven index tuning)
 still applies unchanged — this skill covers only what's genuinely
 different: chunk sizing, continuous aggregates, and compression/
-retention policies that a plain [PostgreSQL](../../Backend/postgresql/SKILL.md) table doesn't have.
+retention policies that a plain [PostgreSQL](../postgresql/SKILL.md) table doesn't have.
 
 ## When to use
 
@@ -58,7 +58,7 @@ retention policies that a plain [PostgreSQL](../../Backend/postgresql/SKILL.md) 
 
 ## Prerequisites & environment
 
-- TimescaleDB 2.x on [PostgreSQL](../../Backend/postgresql/SKILL.md) 13+ assumed for the syntax below —
+- TimescaleDB 2.x on [PostgreSQL](../postgresql/SKILL.md) 13+ assumed for the syntax below —
   continuous aggregates' materialization model changed significantly
   between TimescaleDB 1.x and 2.x (2.x's `CREATE MATERIALIZED VIEW ...
   WITH (timescaledb.continuous)` replaced the older `cagg` API), so
@@ -67,7 +67,7 @@ retention policies that a plain [PostgreSQL](../../Backend/postgresql/SKILL.md) 
   (`CREATE EXTENSION IF NOT EXISTS timescaledb;`) — this requires
   superuser or a role with `CREATE` on the database, and
   `shared_preload_libraries` must include `timescaledb` (a restart-
-  required `[postgresql](../../Backend/postgresql/SKILL.md).conf` change), which should be validated via
+  required `[postgresql](../postgresql/SKILL.md).conf` change), which should be validated via
   [postgresql-configuration-validation](../[postgresql-configuration-validation](../../Miscellaneous/[postgresql](../../Backend/postgresql/SKILL.md)-configuration-validation/SKILL.md)/SKILL.md)
   before applying to production.
 - TimescaleDB's background worker scheduler enabled (default when the
@@ -233,7 +233,7 @@ SELECT add_retention_policy('metrics', INTERVAL '90 days');
 - Choose the initial chunk interval based on a realistic ingest-rate
   estimate and the "recent chunks fit in ~25% of RAM" heuristic before
   the table accumulates data at the wrong size — treat this as the
-  single hardest-to-fix decision in this skill, on par with [MongoDB](../../Backend/mongodb/SKILL.md)
+  single hardest-to-fix decision in this skill, on par with [MongoDB](../mongodb/SKILL.md)
   shard key selection in
   [mongodb-operations-and-scaling](../[mongodb-operations-and-scaling](../[mongodb](../../Backend/mongodb/SKILL.md)-operations-and-scaling/SKILL.md)/SKILL.md).
 - Set `compress_segmentby`/`compress_orderby` to match real query
@@ -247,7 +247,7 @@ SELECT add_retention_policy('metrics', INTERVAL '90 days');
   other data-deletion operation — never enable one on a production
   table without confirming the retention window against actual
   compliance/business requirements first.
-- Keep ordinary [PostgreSQL](../../Backend/postgresql/SKILL.md) operational practice (autovacuum tuning,
+- Keep ordinary [PostgreSQL](../postgresql/SKILL.md) operational practice (autovacuum tuning,
   `pg_stat_statements`-driven query analysis, connection pooling)
   applied to the underlying database — a hypertable doesn't exempt the
   instance from anything in
@@ -374,7 +374,7 @@ several billion rows over the past year.
 
 ## Cross-references
 
-- [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — the underlying [PostgreSQL](../../Backend/postgresql/SKILL.md) vacuum, replication, and query-tuning practice that still applies unchanged to a hypertable's constituent chunk tables.
+- [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — the underlying [PostgreSQL](../postgresql/SKILL.md) vacuum, replication, and query-tuning practice that still applies unchanged to a hypertable's constituent chunk tables.
 - [postgresql-configuration-validation](../[postgresql-configuration-validation](../../Miscellaneous/[postgresql](../../Backend/postgresql/SKILL.md)-configuration-validation/SKILL.md)/SKILL.md) — validates the `shared_preload_libraries`/memory settings change required to enable the TimescaleDB extension before it reaches production.
-- [clickhouse-analytical-database-operations](../[clickhouse-analytical-database-operations](../clickhouse-analytical-[database-operations](../database-operations/SKILL.md)/SKILL.md)/SKILL.md) — a purpose-built OLAP alternative for time-series/analytical workloads when a [PostgreSQL](../../Backend/postgresql/SKILL.md)-based extension no longer scales for the required ingest rate or query concurrency.
+- [clickhouse-analytical-database-operations](../[clickhouse-analytical-database-operations](../clickhouse-analytical-[database-operations](../database-operations/SKILL.md)/SKILL.md)/SKILL.md) — a purpose-built OLAP alternative for time-series/analytical workloads when a [PostgreSQL](../postgresql/SKILL.md)-based extension no longer scales for the required ingest rate or query concurrency.
 - [database-[backup-and-restore](../../../containers-orchestration/common/other/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies](../database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md) — archive-before-drop discipline for data that a TimescaleDB retention policy would otherwise permanently delete.

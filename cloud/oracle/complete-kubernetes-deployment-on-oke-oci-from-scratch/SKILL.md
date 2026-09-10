@@ -123,7 +123,7 @@ integration decisions.
    after creation**: **Basic** (no extra control-plane cost, but no
    workload identity, no cluster autoscaler flexibility beyond simple
    pool sizing) vs. **Enhanced** (adds workload identity federation, more
-   [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) options, and OKE virtual nodes) — Enhanced is required if
+   [autoscaling](../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) options, and OKE virtual nodes) — Enhanced is required if
    Phase 5/7's workload identity is in scope at all:
    ```bash
    oci ce cluster create \

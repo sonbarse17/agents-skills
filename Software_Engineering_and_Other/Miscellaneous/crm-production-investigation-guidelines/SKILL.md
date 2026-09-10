@@ -60,7 +60,7 @@ CRM APPLICATION ARCHITECTURE:
 
 - Frontend: React app on CloudFront
 - API: REST API via API Gateway → Lambda ([Python](../../Languages/python/SKILL.md))
-- Database: Aurora DSQL ([PostgreSQL](../../Backend/postgresql/SKILL.md)-compatible) behind RDS Proxy
+- Database: Aurora DSQL ([PostgreSQL](../../Databases/postgresql/SKILL.md)-compatible) behind RDS Proxy
 - Async Processing: SQS notification queue → Queue consumer Lambda (Node.js)
 - Event Processing: CRM event processor Lambda (Node.js) for pipeline events
 - [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md): CloudWatch Metrics, CloudWatch Logs, [Datadog](../../../observability-monitoring-logging/datadog/other/datadog/SKILL.md)

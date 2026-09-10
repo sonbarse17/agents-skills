@@ -184,7 +184,7 @@ than an emergent mess of one-off peering connections.
   management burden.
 - **Route through private endpoints for managed services** rather than
   allowing public-endpoint access with an IP allowlist — allowlists rot
-  as source IPs change (NAT gateway IP rotation, [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)).
+  as source IPs change (NAT gateway IP rotation, [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)).
 - Treat **cross-cloud VPNs as a stopgap for moderate, steady traffic**,
   not high-throughput data pipelines — for sustained large data transfer
   between clouds, evaluate a dedicated interconnect or a data-transfer

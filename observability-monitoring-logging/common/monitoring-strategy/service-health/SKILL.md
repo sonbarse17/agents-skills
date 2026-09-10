@@ -186,7 +186,7 @@ caps rows and tokens):
 
 ```esql
 FROM traces*apm*,traces*otel*
-| WHERE service.name == "[api-gateway](../../../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md)"
+| WHERE service.name == "[api-gateway](../../../../Software_Engineering_and_Other/Backend/api-gateway/api-gateway/SKILL.md)"
   AND @timestamp >= "2025-03-01T00:00:00Z" AND @timestamp <= "2025-03-01T23:59:59Z"
 | STATS request_count = COUNT(*), failures = COUNT(*) WHERE event.outcome == "failure" BY BUCKET(@timestamp, 1 hour)
 | EVAL error_rate = failures / request_count

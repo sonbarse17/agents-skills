@@ -65,7 +65,7 @@ though both live in the same broad segment.
 
 - **Default every workload to zero allowed connections**, then add exactly what its function
   requires.
-- **Tie policy to workload identity**, not IP, so policy survives [autoscaling](../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md), rescheduling,
+- **Tie policy to workload identity**, not IP, so policy survives [autoscaling](../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md), rescheduling,
   and IP churn.
 
 **Done when:** a compromised workload's lateral movement options are limited to the specific

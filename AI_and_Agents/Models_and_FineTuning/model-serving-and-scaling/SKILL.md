@@ -40,7 +40,7 @@ rollout to 100% of traffic) actually live.
 
 - The user is choosing a serving pattern (online/real-time, batch, or
   streaming) for a model or deciding between them for a given use case.
-- The user needs to set up or tune [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) for a model inference
+- The user needs to set up or tune [autoscaling](../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) for a model inference
   endpoint ([Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) HPA, KServe, SageMaker endpoints, Vertex AI
   endpoints, or a custom autoscaler).
 - The user is trying to reduce inference latency (cold start, batching,
@@ -90,11 +90,11 @@ rollout to 100% of traffic) actually live.
 2. **Right-size the serving hardware to the model and SLO**, validated with
    a load test on realistic input shapes — don't extrapolate from a single
    warm request.
-3. **Configure [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) on a signal that reflects actual load**, not just
+3. **Configure [autoscaling](../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) on a signal that reflects actual load**, not just
    CPU utilization for GPU-bound or I/O-bound inference workloads. Example
    [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) HPA using a custom metric (requests-in-flight or queue depth):
    ```yaml
-   apiVersion: [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/v2
+   apiVersion: [autoscaling](../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)/v2
    kind: HorizontalPodAutoscaler
    metadata:
      name: fraud-scorer-hpa
@@ -175,7 +175,7 @@ rollout to 100% of traffic) actually live.
   meaningful latency/cost reductions are often available at acceptable
   quality cost, but validate the quality impact on your actual eval set
   before committing, not just on published leaderboard numbers.
-- Keep serving configuration (replica counts, [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) thresholds,
+- Keep serving configuration (replica counts, [autoscaling](../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) thresholds,
   hardware type) in version control alongside the model version it's tuned
   for — these are coupled and should change together deliberately, not
   drift independently.
@@ -202,7 +202,7 @@ rollout to 100% of traffic) actually live.
   serving; reserve scale-to-zero for genuinely latency-tolerant batch/async
   workloads.
 
-- **Symptom:** [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) is configured on CPU utilization for a GPU-bound
+- **Symptom:** [Autoscaling](../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) is configured on CPU utilization for a GPU-bound
   model server, so the autoscaler never triggers even though GPU is
   saturated and request queues are growing, causing latency to degrade
   silently under load.
@@ -232,7 +232,7 @@ to replace version 13 in production.
    the target hardware (2 vCPU / 4 GB per replica), confirming p95 latency
    of 38 ms and identifying that 6 replicas comfortably cover peak load with
    headroom.
-3. **[Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md):** HPA configured with `minReplicas: 4` (covers steady-state
+3. **[Autoscaling](../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md):** HPA configured with `minReplicas: 4` (covers steady-state
    traffic with no cold start), `maxReplicas: 20`, scaling on
    `inference_requests_in_flight`.
 4. **Shadow phase (24h):** version 14 receives a mirrored copy of production

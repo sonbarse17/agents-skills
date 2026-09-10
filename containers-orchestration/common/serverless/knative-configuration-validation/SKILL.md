@@ -45,7 +45,7 @@ gates Lambda configuration before it ships.
 ## When to use
 
 - Before merging or applying a change to a Knative `Service`/`Revision`
-  manifest, especially one touching [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) annotations or the
+  manifest, especially one touching [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) annotations or the
   `traffic` block.
 - Reviewing a [GitOps](../../gitops/gitops/SKILL.md) PR ([ArgoCD](../../../argocd/other/argocd/SKILL.md)/Flux-managed) that modifies Knative
   Serving resources.
@@ -80,9 +80,9 @@ gates Lambda configuration before it ships.
    ```bash
    [kubectl](../../../kubernetes/other/kubectl/SKILL.md) get ksvc checkout-api -n prod -o json | \
      jq '.spec.template.metadata.annotations | {
-       min: ."[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md).knative.dev/min-scale",
-       max: ."[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md).knative.dev/max-scale",
-       target: ."[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md).knative.dev/target"
+       min: ."[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md).knative.dev/min-scale",
+       max: ."[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md).knative.dev/max-scale",
+       target: ."[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md).knative.dev/target"
      }'
    ```
    Flag as findings: `min-scale` greater than `max-scale` (a
@@ -95,7 +95,7 @@ gates Lambda configuration before it ships.
 2. **Validate every container in the revision template sets both
    `resources.requests` and `resources.limits`.** An unset
    `resources.requests` means the [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) scheduler can pack the pod
-   anywhere regardless of actual usage, and Knative's own [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)
+   anywhere regardless of actual usage, and Knative's own [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)
    decisions (concurrency-based, not CPU-based) don't protect against a
    resource-starved pod that looks "up" but is thrashing:
    ```bash
@@ -149,7 +149,7 @@ gates Lambda configuration before it ships.
    set -euo pipefail
    SVC=checkout-api
    NS=prod
-   MAX=$([kubectl](../../../kubernetes/other/kubectl/SKILL.md) get ksvc "$SVC" -n "$NS" -o jsonpath='{.spec.template.metadata.annotations.[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)\.knative\.dev/max-scale}')
+   MAX=$([kubectl](../../../kubernetes/other/kubectl/SKILL.md) get ksvc "$SVC" -n "$NS" -o jsonpath='{.spec.template.metadata.annotations.[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)\.knative\.dev/max-scale}')
    if [ -z "$MAX" ]; then
      echo "FAIL: $SVC has no max-scale set — unbounded scaling risk"
      exit 1
@@ -237,7 +237,7 @@ production traffic to an unvalidated revision.
 
 Validation run against the proposed manifest:
 ```bash
-$ jq '.spec.template.metadata.annotations."[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md).knative.dev/max-scale"' proposed-checkout-api.json
+$ jq '.spec.template.metadata.annotations."[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md).knative.dev/max-scale"' proposed-checkout-api.json
 null
 $ jq '[.spec.traffic[].percent] | add' proposed-checkout-api.json
 100

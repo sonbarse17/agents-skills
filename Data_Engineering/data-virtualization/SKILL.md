@@ -157,9 +157,9 @@ hive.config.resources=/etc/hadoop/core-site.xml
 hive.allow-drop-table=false
 hive.parallel-partitioned-bucketed-writes=true
 
-# etc/catalog/postgres.properties ([PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md))
-connector.name=[postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)
-connection-url=jdbc:[postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)://postgres-prod:5432/analytics
+# etc/catalog/postgres.properties ([PostgreSQL](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md))
+connector.name=[postgresql](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)
+connection-url=jdbc:[postgresql](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)://postgres-prod:5432/analytics
 connection-user=${POSTGRES_USER}
 connection-password=${POSTGRES_PASSWORD}
 
@@ -169,10 +169,10 @@ kafka.nodes=kafka-broker:9092,kafka-broker:9093
 kafka.table-names=orders,events
 kafka.hide-internal-columns=false
 
-# etc/catalog/[mongodb](../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md).properties ([MongoDB](../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md))
-connector.name=[mongodb](../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md)
-[mongodb](../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md).connection-url=[mongodb](../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md)://${MONGO_USER}:${MONGO_PASS}@mongo-prod:27017
-[mongodb](../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md).read-preference=primaryPreferred
+# etc/catalog/[mongodb](../../Software_Engineering_and_Other/Databases/mongodb/SKILL.md).properties ([MongoDB](../../Software_Engineering_and_Other/Databases/mongodb/SKILL.md))
+connector.name=[mongodb](../../Software_Engineering_and_Other/Databases/mongodb/SKILL.md)
+[mongodb](../../Software_Engineering_and_Other/Databases/mongodb/SKILL.md).connection-url=[mongodb](../../Software_Engineering_and_Other/Databases/mongodb/SKILL.md)://${MONGO_USER}:${MONGO_PASS}@mongo-prod:27017
+[mongodb](../../Software_Engineering_and_Other/Databases/mongodb/SKILL.md).read-preference=primaryPreferred
 
 # etc/catalog/elasticsearch.properties
 connector.name=elasticsearch
@@ -193,12 +193,12 @@ Credentials stored in secrets manager ([Vault](../../Software_Engineering_and_Ot
 
 | Source | Pushdown | Capabilities |
 |---|---|---|
-| **[PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)** | Full SQL pushdown (filter, agg, join, sort, limit) | Predicate, aggregation, limit |
+| **[PostgreSQL](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)** | Full SQL pushdown (filter, agg, join, sort, limit) | Predicate, aggregation, limit |
 | **Hive/Iceberg** | Partial pushdown (partition pruning, filter) | Partition filter, row filter |
-| **[MongoDB](../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md)** | Partial (filter, project) | Predicate pushdown only |
+| **[MongoDB](../../Software_Engineering_and_Other/Databases/mongodb/SKILL.md)** | Partial (filter, project) | Predicate pushdown only |
 | **Kafka** | N/A (stream data) | Topic + partition filter only |
 | **Elasticsearch** | Full (query DSL → filter/agg) | Predicate, aggregation |
-| **[MySQL](../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)** | Full SQL pushdown | Predicate, aggregation, limit |
+| **[MySQL](../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)** | Full SQL pushdown | Predicate, aggregation, limit |
 | **SQL Server** | Full SQL pushdown | Predicate, aggregation, limit, top N |
 | **BigQuery** | Full SQL pushdown | Predicate, aggregation, limit |
 | **Snowflake** | Full SQL pushdown | Predicate, aggregation, limit |
@@ -214,13 +214,13 @@ pushdown_project_enabled=true
 pushdown_topn_enabled=true
 
 # Per-connector pushdown overrides
-connector.name=[postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)
+connector.name=[postgresql](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)
 pushdown_filter_enabled=true
 pushdown_aggregation_enabled=true
 
-connector.name=[mongodb](../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md)
+connector.name=[mongodb](../../Software_Engineering_and_Other/Databases/mongodb/SKILL.md)
 pushdown_filter_enabled=true
-pushdown_aggregation_enabled=false  # [MongoDB](../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md) aggregation pushdown limited
+pushdown_aggregation_enabled=false  # [MongoDB](../../Software_Engineering_and_Other/Databases/mongodb/SKILL.md) aggregation pushdown limited
 ```
 
 ### Step 5: Cross-Source Join Strategy
@@ -229,7 +229,7 @@ pushdown_aggregation_enabled=false  # [MongoDB](../../Software_Engineering_and_O
 Broadcast join: small table (< 1GB) sent to all workers for in-memory hash join. Use when: one side is small (dimension table), join key has low cardinality. Partitioned join: both sides partitioned by join key across workers. Use when: both sides are large (fact-to-fact join). Colocated join: both tables stored on same worker (same connector). Use when: tables are in same source system.
 
 ```sql
--- Cross-source join: orders (Postgres) + customers (Hive) + payments ([MongoDB](../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md))
+-- Cross-source join: orders (Postgres) + customers (Hive) + payments ([MongoDB](../../Software_Engineering_and_Other/Databases/mongodb/SKILL.md))
 SELECT
     o.order_id,
     o.total_amount,
@@ -237,7 +237,7 @@ SELECT
     p.payment_status
 FROM postgres.analytics.orders o
 JOIN hive.dimensions.customers c ON o.customer_id = c.customer_id
-LEFT JOIN [mongodb](../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md).payments.transactions p ON o.order_id = p.order_id
+LEFT JOIN [mongodb](../../Software_Engineering_and_Other/Databases/mongodb/SKILL.md).payments.transactions p ON o.order_id = p.order_id
 WHERE o.created_at >= DATE '2026-05-01';
 ```
 
@@ -449,7 +449,7 @@ alluxio.worker.tieredstore.level0.dirs.quota=500GB
 SELECT customer_id, SUM(amount)
 FROM postgres.analytics.orders;  -- Scans all rows
 
--- Good: push aggregation to [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) (if enabled)
+-- Good: push aggregation to [PostgreSQL](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) (if enabled)
 -- Trino translates to: SELECT customer_id, SUM(amount) FROM orders GROUP BY customer_id
 ```
 
@@ -536,9 +536,9 @@ SELECT
     c.name AS customer_name,
     r.review_score
 FROM iceberg.datalake.orders o
-JOIN [postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md).ecommerce.customers c
+JOIN [postgresql](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md).ecommerce.customers c
     ON o.customer_id = c.id
-LEFT JOIN [mongodb](../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md).reviews.reviews r
+LEFT JOIN [mongodb](../../Software_Engineering_and_Other/Databases/mongodb/SKILL.md).reviews.reviews r
     ON o.order_id = r.order_id
 WHERE o.order_date >= DATE '2024-01-01'
   AND o.status = 'shipped'

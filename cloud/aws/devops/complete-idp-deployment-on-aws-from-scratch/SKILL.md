@@ -109,10 +109,10 @@ before anything is deployed to it. Record the cluster's OIDC provider ARN
 for cluster provisioning, node group design, and the IRSA trust-policy
 walkthrough specifically.
 
-**Phase 3 — Backstage on EKS, backed by RDS [PostgreSQL](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md).** Package
+**Phase 3 — Backstage on EKS, backed by RDS [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md).** Package
 Backstage as a Helm chart (Backstage's own scaffolded output is a Node
 app; wrap its container image in a chart rather than hand-writing raw
-manifests) and deploy it against an RDS [PostgreSQL](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) instance — Multi-AZ for
+manifests) and deploy it against an RDS [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) instance — Multi-AZ for
 anything beyond a pilot — as the catalog database, with the Backstage pod
 authenticating to RDS via IAM database authentication through the IRSA
 role from Phase 2 rather than a static password baked into a Secret. Any

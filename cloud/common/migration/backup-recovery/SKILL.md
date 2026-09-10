@@ -152,7 +152,7 @@ chmod 600 /etc/restic/password.txt
 restic backup /data --repo /backup/restic-repo --password-file /etc/restic/password.txt
 
 # Backup multiple directories
-restic backup /data /etc /var/lib/[postgresql](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) \
+restic backup /data /etc /var/lib/[postgresql](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) \
   --repo s3:s3.amazonaws.com/my-backup-bucket \
   --password-file /etc/restic/password.txt
 
@@ -273,7 +273,7 @@ LOG="/var/log/restic-backup.log"
 
 echo "$(date): Starting backup" >> "$LOG"
 
-restic backup /data /etc /var/lib/[postgresql](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) \
+restic backup /data /etc /var/lib/[postgresql](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) \
   --exclude-file=/etc/restic/excludes.txt \
   --tag "$(hostname)" --tag daily \
   --verbose >> "$LOG" 2>&1
@@ -340,20 +340,20 @@ journalctl -u restic-backup.service -f
 ## Database Backups with Restic
 
 ```bash
-# [PostgreSQL](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md): stream dump directly into restic (no temp file)
+# [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md): stream dump directly into restic (no temp file)
 pg_dump -U postgres -Fc mydb | restic backup --stdin --stdin-filename mydb.dump \
   --tag postgres --tag mydb \
   --repo s3:s3.amazonaws.com/my-backup-bucket \
   --password-file /etc/restic/password.txt
 
-# [MySQL](../../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) / MariaDB: stream dump into restic
+# [MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) / MariaDB: stream dump into restic
 mysqldump --all-databases --single-transaction | \
   restic backup --stdin --stdin-filename all-databases.sql \
-  --tag [mysql](../../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) \
+  --tag [mysql](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) \
   --repo s3:s3.amazonaws.com/my-backup-bucket \
   --password-file /etc/restic/password.txt
 
-# Restore [PostgreSQL](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) from restic
+# Restore [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) from restic
 restic dump latest mydb.dump \
   --repo s3:s3.amazonaws.com/my-backup-bucket \
   --password-file /etc/restic/password.txt \

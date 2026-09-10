@@ -396,7 +396,7 @@ job.
 ## Worked example
 
 **Scenario:** A platform team wants application teams to self-service
-provision [PostgreSQL](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) databases via a `DatabaseClaim`, without any team
+provision [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) databases via a `DatabaseClaim`, without any team
 needing to know AWS RDS's actual API surface, and with production
 databases protected from accidental deletion.
 

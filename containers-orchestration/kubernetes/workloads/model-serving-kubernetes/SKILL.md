@@ -21,14 +21,14 @@ depends_on:
 
 # Model Serving on [Kubernetes](../../other/kubernetes/SKILL.md)
 
-Production ML model serving with KServe and Triton — canary deployments, [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md), and GPU-aware scheduling.
+Production ML model serving with KServe and Triton — canary deployments, [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md), and GPU-aware scheduling.
 
 ## When to Use This Skill
 
 Use this skill when:
 - Serving scikit-learn, PyTorch, TensorFlow, or ONNX models at scale
 - Implementing canary deployments and A/B testing for ML models
-- [Autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) inference pods based on request rate or GPU metrics
+- [Autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) inference pods based on request rate or GPU metrics
 - Deploying LLMs with Triton or KServe on [Kubernetes](../../other/kubernetes/SKILL.md)
 - Managing multiple model versions with traffic splitting
 
@@ -179,7 +179,7 @@ spec:
   -p='[{"op":"remove","path":"/spec/predictor/canaryTrafficPercent"}]'
 ```
 
-## [Autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) with KEDA
+## [Autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) with KEDA
 
 ```yaml
 apiVersion: keda.sh/v1alpha1
@@ -321,6 +321,6 @@ curl -X POST http://triton:8000/v2/repository/models/text-classifier/unload
 ## Related Skills
 
 - [vllm-server](../../../infrastructure/local-ai/[vllm-server](../vllm-server/SKILL.md)/) - vLLM for LLM serving
-- [llm-inference-scaling](../../../infrastructure/local-ai/[llm-inference-scaling](../llm-inference-scaling/SKILL.md)/) - KEDA [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)
+- [llm-inference-scaling](../../../infrastructure/local-ai/[llm-inference-scaling](../llm-inference-scaling/SKILL.md)/) - KEDA [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)
 - [kubernetes-ops](../[kubernetes-ops](../../../DevOps_and_Cloud/Containers_and_Orchestration/[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-ops/SKILL.md)/) - Core [Kubernetes](../../other/kubernetes/SKILL.md) operations
 - [gpu-server-management](../../../infrastructure/servers/[gpu-server-management](../gpu-server-management/SKILL.md)/) - GPU nodes

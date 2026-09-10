@@ -94,8 +94,8 @@ rotation, and trust domain federation.
   `prod.example.internal`) — this is embedded in every SPIFFE ID issued
   under it and is expensive to change later since it's baked into every
   workload's identity and every relying party's trust configuration.
-- A **SPIRE Server** deployment with a datastore (SQL — [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) or
-  [MySQL](../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) — for anything beyond a single-node trial; the default embedded
+- A **SPIRE Server** deployment with a datastore (SQL — [PostgreSQL](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) or
+  [MySQL](../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) — for anything beyond a single-node trial; the default embedded
   SQLite is not intended for production HA) and an upstream CA
   configuration — either SPIRE's self-signed root, or an upstream
   authority (a [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) PKI mount via SPIRE's `upstream_authority` plugin,

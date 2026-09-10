@@ -126,17 +126,17 @@ ui = true
 # Enable database engine
 [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) secrets enable database
 
-# Configure [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) connection
-[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) write database/config/[postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) \
-  plugin_name=[postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-database-plugin \
-  connection_url="[postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)://{{username}}:{{password}}@localhost:5432/mydb" \
+# Configure [PostgreSQL](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) connection
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) write database/config/[postgresql](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) \
+  plugin_name=[postgresql](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)-database-plugin \
+  connection_url="[postgresql](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)://{{username}}:{{password}}@localhost:5432/mydb" \
   allowed_roles="readonly,readwrite" \
   username="[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)" \
   password="[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-password"
 
 # Create role
 [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) write database/roles/readonly \
-  db_name=[postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) \
+  db_name=[postgresql](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) \
   creation_statements="CREATE ROLE \"{{name}}\" WITH LOGIN PASSWORD '{{password}}' VALID UNTIL '{{expiration}}'; \
     GRANT SELECT ON ALL TABLES IN SCHEMA public TO \"{{name}}\";" \
   default_ttl="1h" \

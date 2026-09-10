@@ -136,7 +136,7 @@ Query error received?
 - Polling for real-time data via `refetchInterval`.
 - Dependent queries: enable second query only when first has data.
 
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../common/typescript/SKILL.md)
 // TanStack Query v5 — basic setup
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -165,7 +165,7 @@ function App() {
 - Mutation side effects via callbacks: `onMutate`, `onError`, `onSettled`.
 - Show optimistic UI state during mutation.
 
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../common/typescript/SKILL.md)
 // Optimistic update pattern
 function useAddTodo() {
   const queryClient = useQueryClient()
@@ -203,7 +203,7 @@ function useAddTodo() {
 - Infinite scroll: IntersectionObserver triggers `fetchNextPage`.
 - Loading states: `isFetchingNextPage` vs `isLoading`.
 
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../common/typescript/SKILL.md)
 // Infinite scroll with cursor pagination
 function useInfiniteProducts() {
   return useInfiniteQuery({
@@ -247,7 +247,7 @@ function ProductList() {
 - Display stale data when refetch fails — never show blank screen.
 - Refetch on reconnect via `refetchOnReconnect: true`.
 
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../common/typescript/SKILL.md)
 // Global error handling
 const queryClient = new QueryClient({
   queryCache: new QueryCache({
@@ -273,7 +273,7 @@ const queryClient = new QueryClient({
 - Cache key uniquely identifies data — include all params.
 - Persist cache to localStorage for offline resilience.
 
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../common/typescript/SKILL.md)
 // Per-query staleTime configuration
 const useUser = (id: string) => useQuery({
   queryKey: ['users', id],
@@ -291,7 +291,7 @@ const useStockPrice = (symbol: string) => useQuery({
 ```
 
 ### 7. Query Key Design
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../common/typescript/SKILL.md)
 // Hierarchical key structure
 ['todos']                          // All todos
 ['todos', todoId]                  // Single todo
@@ -301,7 +301,7 @@ const useStockPrice = (symbol: string) => useQuery({
 ```
 
 ### 8. Prefetching for Instant UX
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../common/typescript/SKILL.md)
 // Prefetch on hover
 function ProductLink({ id }: { id: string }) {
   const queryClient = useQueryClient()
@@ -333,7 +333,7 @@ useEffect(() => {
 ```
 
 ### 9. Cache Persistence (Offline Support)
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../common/typescript/SKILL.md)
 import { createSyncStoragePersister } from '@tanstack/query-sync-storage-persister'
 import { persistQueryClient } from '@tanstack/react-query-persist-client'
 
@@ -419,7 +419,7 @@ Does the data need to update in real-time?
 ## Tooling
 
 1. `@tanstack/react-query-devtools` — visual cache inspector, query toggle, data explorer.
-2. `@[sentry](../../../observability-monitoring-logging/sentry/other/sentry/SKILL.md)` integration — capture query failures as breadcrumbs.
+2. `@[sentry](../../../../observability-monitoring-logging/sentry/other/sentry/SKILL.md)` integration — capture query failures as breadcrumbs.
 3. React Query ESLint plugin — enforce query key naming conventions.
 4. `@tanstack/query-sync-storage-persister` — persist cache to localStorage/AsyncStorage.
 5. `@tanstack/query-broadcast-client-experimental` — sync cache across tabs.
@@ -446,7 +446,7 @@ Does the data need to update in real-time?
   - ../../../Global_References/react-query-patterns.md — React Query Patterns
   - ../../../Global_References/swr-patterns.md — SWR Patterns
   - ../../../Global_References/tanstack-query.md — TanStack Query
-  - ../../../Global_References/data-fetching-[caching-strategies](../../Miscellaneous/caching-strategies/SKILL.md).md — Caching Strategies Reference
+  - ../../../Global_References/data-fetching-[caching-strategies](../../../Miscellaneous/caching-strategies/SKILL.md).md — Caching Strategies Reference
   - ../../../Global_References/data-fetching-error-handling.md — Error Handling Reference
 
 ## Handoff
@@ -503,7 +503,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
+### [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -517,7 +517,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/performance/profiling/SKILL.md) | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../performance/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -533,12 +533,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### [Profiling](../../Frontend/performance/profiling/SKILL.md) Methodology
+### [Profiling](../../performance/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing ([OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -547,7 +547,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
+- Repudiation: [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -555,13 +555,13 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) signing
+- Signed commits: GPG or SSH [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager ([Vault](../../Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../../Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
+- Access [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 

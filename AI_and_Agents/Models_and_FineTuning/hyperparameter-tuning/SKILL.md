@@ -283,9 +283,9 @@ results = tuner.fit()
 Local multi-core: n_jobs=-1. Dask distributed: wrap Optuna with DaskStorage. Ray distributed: tune.run(resources_per_trial). [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md): each trial as K8s job. Fault tolerance: checkpoint to shared filesystem.
 
 ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
-# Optuna distributed with [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)
+# Optuna distributed with [PostgreSQL](../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)
 study = optuna.create_study(
-    storage="[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)://user:pass@host/db",
+    storage="[postgresql](../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)://user:pass@host/db",
     study_name="distributed_tuning",
     load_if_exists=True,
 )
@@ -521,7 +521,7 @@ def custom_prune_callback(study, trial):
 |-----------|----------|-------------|---------|----------------|---------------|
 | Optuna | Yes | Yes | Yes | Yes | Built-in dashboard |
 | Ray Tune | Yes | Yes | Yes (ASHA, Median) | Yes | TensorBoard integrated |
-| Hyperopt | Yes | Yes ([MongoDB](../../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md)) | No | Manual | Limited |
+| Hyperopt | Yes | Yes ([MongoDB](../../../Software_Engineering_and_Other/Databases/mongodb/SKILL.md)) | No | Manual | Limited |
 | SMAC3 | No | No | No | Manual | Built-in |
 | Katib (K8s) | Yes | Yes | Yes (Median, ASHA) | Yes | K8s-native |
 | Weights & Biases | Yes | No | Yes | Yes | Rich sweeps UI |

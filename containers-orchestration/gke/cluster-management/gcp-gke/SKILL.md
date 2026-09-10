@@ -55,7 +55,7 @@ gcloud components install [kubectl](../../../kubernetes/other/kubectl/SKILL.md)
 gcloud container clusters create prod-cluster \
   --region=us-central1 --num-nodes=2 \
   --machine-type=e2-standard-4 --disk-size=100 \
-  --enable-[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) --min-nodes=1 --max-nodes=5 \
+  --enable-[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) --min-nodes=1 --max-nodes=5 \
   --enable-autorepair --enable-autoupgrade \
   --release-channel=regular \
   --workload-pool=${PROJECT_ID}.svc.id.goog \
@@ -83,7 +83,7 @@ gcloud container clusters create-auto autopilot-prod \
 gcloud container node-pools create highmem-pool \
   --cluster=prod-cluster --region=us-central1 \
   --machine-type=n2-highmem-8 --disk-size=200 --disk-type=pd-ssd \
-  --num-nodes=1 --enable-[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) --min-nodes=0 --max-nodes=4 \
+  --num-nodes=1 --enable-[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) --min-nodes=0 --max-nodes=4 \
   --node-labels=workload=memory-intensive \
   --node-taints=dedicated=highmem:NoSchedule
 
@@ -92,14 +92,14 @@ gcloud container node-pools create gpu-pool \
   --cluster=prod-cluster --region=us-central1 \
   --machine-type=n1-standard-8 \
   --accelerator=type=nvidia-tesla-t4,count=1 \
-  --num-nodes=0 --enable-[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) --min-nodes=0 --max-nodes=4 \
+  --num-nodes=0 --enable-[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) --min-nodes=0 --max-nodes=4 \
   --node-taints=nvidia.com/gpu=present:NoSchedule
 
 # Spot pool for batch workloads
 gcloud container node-pools create spot-pool \
   --cluster=prod-cluster --region=us-central1 \
   --machine-type=e2-standard-4 --spot \
-  --num-nodes=0 --enable-[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) --min-nodes=0 --max-nodes=20 \
+  --num-nodes=0 --enable-[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) --min-nodes=0 --max-nodes=20 \
   --node-taints=cloud.google.com/gke-spot=true:NoSchedule
 ```
 
@@ -243,7 +243,7 @@ resource "google_container_node_pool" "primary" {
   location = "us-central1"
 
   initial_node_count = 2
-  [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) { min_node_count = 1; max_node_count = 5 }
+  [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) { min_node_count = 1; max_node_count = 5 }
   management  { auto_repair = true; auto_upgrade = true }
 
   node_config {

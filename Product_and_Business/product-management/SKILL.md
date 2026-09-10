@@ -68,7 +68,7 @@ API Product Mission:
 
 | Model | Description | Example | Best For |
 |-------|-------------|---------|----------|
-| Free | No charge, drive ecosystem adoption | [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) API | Platform lock-in, ecosystem growth |
+| Free | No charge, drive ecosystem adoption | [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) API | Platform lock-in, ecosystem growth |
 | Usage-based | Pay per request/unit | Stripe ($0.025/call) | Variable usage patterns |
 | Tiered | Different plans with limits | Google Maps API | Predictable consumption segments |
 | Freemium | Free tier + paid premium | Slack API | Bottom-up adoption |
@@ -212,8 +212,8 @@ curl -H "X-API-Key: $API_KEY" \
      | jq '.'
 ```
 
-```[python](../../Languages/python/SKILL.md)
-# [Python](../../Languages/python/SKILL.md) quickstart
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+# [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) quickstart
 import os
 from example_api_client import ApiClient
 
@@ -224,7 +224,7 @@ for user in users:
 ```
 
 #### SDK Design Principles
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Intuitive client — follows natural language patterns
 const client = new ApiClient({ apiKey: "sk-..." });
 
@@ -254,7 +254,7 @@ try {
 ### API Monetization
 
 #### Usage Tracking Architecture
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 class UsageTracker:
     def record(self, api_key: str, endpoint: str, method: str, status: int, latency_ms: int):
         event = {
@@ -361,7 +361,7 @@ WHERE timestamp BETWEEN NOW() - INTERVAL '60 days' AND NOW() - INTERVAL '30 days
 ```
 
 #### API Product Scorecard
-```[python](../../Languages/python/SKILL.md)
+```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 class ApiProductScorecard:
     def compute(self, metrics: dict) -> dict:
         weights = {
@@ -426,7 +426,7 @@ api_catalog:
     p99_latency: 150ms
     error_rate: 0.2%
     documentation_url: /docs/users
-    sdk_coverage: [python, [typescript](../../Frontend/common/typescript/SKILL.md), go, java]
+    sdk_coverage: [python, [typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md), go, java]
 
   - name: Payments API
     version: v2
@@ -449,7 +449,7 @@ api_catalog:
 ### Highlights
 - 12% MoM growth in active consumers (now 1,200)
 - v3 API reaches 99.95% uptime (above 99.9% SLO)
-- New [TypeScript](../../Frontend/common/typescript/SKILL.md) SDK published — 40% adoption in first month
+- New [TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) SDK published — 40% adoption in first month
 
 ### Version Migration Status
 | Version | Status | Consumers | Actions Required |
@@ -498,8 +498,8 @@ trade_off_format:
 
   costs:
     - "Developer portal v2 delayed to Q3"
-    - "[Python](../../Languages/python/SKILL.md) SDK improvements deferred to Q3"
-    - "Mobile SDKs (iOS/[Android](../../../Mobile/android/SKILL.md)) deferred to Q1 2027"
+    - "[Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) SDK improvements deferred to Q3"
+    - "Mobile SDKs (iOS/[Android](../../Mobile/android/SKILL.md)) deferred to Q1 2027"
 
   risk:
     - "No remaining [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) for unplanned work"
@@ -530,7 +530,7 @@ launch_day_checklist:
     - Deploy to production
     - Verify health check returns 200
     - Execute test queries against production
-    - Confirm [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) data flowing
+    - Confirm [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) data flowing
 
   communicate:
     - Publish blog post and changelog
@@ -614,7 +614,7 @@ tier_design:
     purpose: Strategic partnerships, high-value accounts
     limits: Custom, SLA-backed (99.99%), dedicated support
     price: Custom (annual contract)
-    features: SSO/SAML, [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, dedicated SLAs, custom integrations
+    features: SSO/SAML, [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs, dedicated SLAs, custom integrations
 ```
 
 ### Pricing Psychology
@@ -625,18 +625,18 @@ tier_design:
 - **Annual discounts**: 15-20% discount for annual commitments (improves retention, cash flow)
 
 ## References
-- [Product Management Fundamentals](../../../Global_References/product-management-fundamentals.md) — API product management fundamentals: lifecycle, maturity model, strategy canvas, governance
-- [Product Management Advanced](../../../Global_References/product-management-advanced.md) — Advanced API product strategy: consumer insights, SLA management, partnership programs
-- [API Lifecycle Management](../../../Global_References/api-lifecycle-management.md) — Full lifecycle: design to sunset, versioning, migration
-- [API Strategy](../../../Global_References/api-strategy.md) — API business models, strategy canvas, governance
-- [Developer Experience](../../../Product_and_Business/developer-experience/SKILL.md).md) — DX principles, SDKs, documentation, error messages
-- [Developer Portal](../../../Global_References/developer-portal.md) — Developer portal design, self-service onboarding, analytics
-- [Monetization](../../../Global_References/monetization.md) — Pricing models, usage tracking, rate limiting tiers
-- [Product Metrics](../../../Global_References/product-metrics.md) — Adoption, DX, reliability, and business metrics with [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)
-- [API Consumer Insights](../../../Global_References/api-consumer-insights.md) — Consumer lifecycle, health scoring, churn prediction
-- [API Governance](../../../Global_References/api-governance.md) — Governance framework, API council, design standards
-- [API Stakeholder Management](../../../Global_References/api-stakeholder-management.md) — Stakeholder mapping, communication, escalation
-- [API Launch Playbook](../../../Global_References/api-launch-playbook.md) — Launch planning, execution, metrics, retrospective
+- [Product Management Fundamentals](../../Global_References/product-management-fundamentals.md) — API product management fundamentals: lifecycle, maturity model, strategy canvas, governance
+- [Product Management Advanced](../../Global_References/product-management-advanced.md) — Advanced API product strategy: consumer insights, SLA management, partnership programs
+- [API Lifecycle Management](../../Global_References/api-lifecycle-management.md) — Full lifecycle: design to sunset, versioning, migration
+- [API Strategy](../../Global_References/api-strategy.md) — API business models, strategy canvas, governance
+- [Developer Experience](../developer-experience/SKILL.md).md) — DX principles, SDKs, documentation, error messages
+- [Developer Portal](../../Global_References/developer-portal.md) — Developer portal design, self-service onboarding, analytics
+- [Monetization](../../Global_References/monetization.md) — Pricing models, usage tracking, rate limiting tiers
+- [Product Metrics](../../Global_References/product-metrics.md) — Adoption, DX, reliability, and business metrics with [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)
+- [API Consumer Insights](../../Global_References/api-consumer-insights.md) — Consumer lifecycle, health scoring, churn prediction
+- [API Governance](../../Global_References/api-governance.md) — Governance framework, API council, design standards
+- [API Stakeholder Management](../../Global_References/api-stakeholder-management.md) — Stakeholder mapping, communication, escalation
+- [API Launch Playbook](../../Global_References/api-launch-playbook.md) — Launch planning, execution, metrics, retrospective
 
 <!-- COMPRESSION FOOTER -->
 <!--

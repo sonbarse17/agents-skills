@@ -27,7 +27,7 @@ Run resilient and cost-efficient GPU clusters for production AI workloads.
 - Setting up GPU node pools in [Kubernetes](../../other/kubernetes/SKILL.md) for AI inference or training
 - Configuring NVIDIA device plugin and GPU operator
 - Implementing MIG partitioning to share GPUs across workloads
-- Building GPU-aware [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) policies
+- Building GPU-aware [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) policies
 - [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) GPU health with DCGM and Prometheus
 - Troubleshooting GPU scheduling, driver, or OOM issues
 
@@ -362,11 +362,11 @@ spec:
               value: "all"
 ```
 
-## GPU [Autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)
+## GPU [Autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)
 
 ```yaml
 # gpu-hpa.yaml
-apiVersion: [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/v2
+apiVersion: [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: llm-inference-hpa

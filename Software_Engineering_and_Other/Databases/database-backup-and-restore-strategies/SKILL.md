@@ -35,9 +35,9 @@ recover" [incident](../../../observability-monitoring-logging/common/incident-de
 own logs/exit code) but produced an artifact that was never actually
 tested end-to-end against a real restore. This skill covers the
 dominant backup tooling for the three most common relational/document
-engines — **pg_dump**/**pg_basebackup** for [PostgreSQL](../../Backend/postgresql/SKILL.md),
-**mysqldump**/**Percona XtraBackup** for [MySQL](../../Backend/mysql/SKILL.md)/MariaDB, and
-**mongodump**/**mongorestore** for [MongoDB](../../Backend/mongodb/SKILL.md) — the logical-vs-physical
+engines — **pg_dump**/**pg_basebackup** for [PostgreSQL](../postgresql/SKILL.md),
+**mysqldump**/**Percona XtraBackup** for [MySQL](../mysql/SKILL.md)/MariaDB, and
+**mongodump**/**mongorestore** for [MongoDB](../mongodb/SKILL.md) — the logical-vs-physical
 backup trade-off that applies across all of them, and the restore-
 testing discipline that turns a backup process into an actual, provable
 recovery capability rather than an assumption.
@@ -80,8 +80,8 @@ recovery capability rather than an assumption.
   validated only by re-reading the archive's own metadata, without an
   independent restore, does not confirm the backup is usable.
 - For point-in-time recovery specifically: continuous WAL archiving
-  ([PostgreSQL](../../Backend/postgresql/SKILL.md)), binary log retention ([MySQL](../../Backend/mysql/SKILL.md)/MariaDB), or oplog-based
-  replication ([MongoDB](../../Backend/mongodb/SKILL.md)) already configured and retained for at least as
+  ([PostgreSQL](../postgresql/SKILL.md)), binary log retention ([MySQL](../mysql/SKILL.md)/MariaDB), or oplog-based
+  replication ([MongoDB](../mongodb/SKILL.md)) already configured and retained for at least as
   long as the interval between full backups — PITR requires the
   continuous log, not just periodic full snapshots.
 
@@ -114,7 +114,7 @@ primary strategy, with logical dumps reserved for smaller
 databases, ad hoc data extraction, or as a supplementary,
 version-portable safety net alongside the primary physical strategy.
 
-### 2. [PostgreSQL](../../Backend/postgresql/SKILL.md): pg_dump for logical, pg_basebackup + WAL archiving for physical/PITR
+### 2. [PostgreSQL](../postgresql/SKILL.md): pg_dump for logical, pg_basebackup + WAL archiving for physical/PITR
 
 ```bash
 # Logical: portable, human-inspectable, slow to restore at scale
@@ -130,7 +130,7 @@ shipping WAL segments to durable storage) so a restore can replay WAL
 up to any specific target timestamp/LSN, not just the base backup's
 moment:
 ```ini
-# [postgresql](../../Backend/postgresql/SKILL.md).conf on the source
+# [postgresql](../postgresql/SKILL.md).conf on the source
 archive_mode = on
 archive_command = 'cp %p /archive/wal/%f'   # or a script shipping to object storage
 ```
@@ -144,7 +144,7 @@ Validate this against the more general replication/WAL guidance in
 since WAL retention sizing and archiving overlap directly with
 replication slot management there.
 
-### 3. [MySQL](../../Backend/mysql/SKILL.md)/MariaDB: mysqldump for logical, XtraBackup for physical/hot backups
+### 3. [MySQL](../mysql/SKILL.md)/MariaDB: mysqldump for logical, XtraBackup for physical/hot backups
 
 ```bash
 # Logical: fine for smaller databases, or extracting a specific schema/table
@@ -162,7 +162,7 @@ xtrabackup --prepare --target-dir=/backup/full   # applies redo log to make the 
 ```
 XtraBackup's `--prepare` step is not optional — a backup directory that
 hasn't been prepared is not yet consistent and cannot be safely used to
-start a [MySQL](../../Backend/mysql/SKILL.md) instance from; always confirm `--prepare` completed
+start a [MySQL](../mysql/SKILL.md) instance from; always confirm `--prepare` completed
 successfully (check its exit code and log output for
 "completed OK") before considering the backup restore-ready. For
 point-in-time recovery, retain binary logs covering at least the
@@ -171,16 +171,16 @@ recorded position forward:
 ```bash
 mysqlbinlog --start-datetime="2026-07-28 00:00:00" \
   --stop-datetime="2026-07-28 14:32:00" \
-  binlog.000123 | [mysql](../../Backend/mysql/SKILL.md) -u <USER> -p appdb
+  binlog.000123 | [mysql](../mysql/SKILL.md) -u <USER> -p appdb
 ```
 
-### 4. [MongoDB](../../Backend/mongodb/SKILL.md): mongodump/mongorestore, and oplog-based point-in-time recovery
+### 4. [MongoDB](../mongodb/SKILL.md): mongodump/mongorestore, and oplog-based point-in-time recovery
 
 ```bash
-mongodump --uri="[mongodb](../../Backend/mongodb/SKILL.md)://<HOST>:27017" --db=appdb --out=/backup/appdb
+mongodump --uri="[mongodb](../mongodb/SKILL.md)://<HOST>:27017" --db=appdb --out=/backup/appdb
 ```
 ```bash
-mongorestore --uri="[mongodb](../../Backend/mongodb/SKILL.md)://<TARGET_HOST>:27017" --db=appdb /backup/appdb/appdb
+mongorestore --uri="[mongodb](../mongodb/SKILL.md)://<TARGET_HOST>:27017" --db=appdb /backup/appdb/appdb
 ```
 `mongodump` against a replica set member (rather than the primary)
 avoids adding backup load to the node serving live writes, but confirm
@@ -193,7 +193,7 @@ forward to a consistent point matching when the dump completed, rather
 than a data set that's inconsistent across collections captured at
 slightly different moments during a long-running dump.
 ```bash
-mongodump --uri="[mongodb](../../Backend/mongodb/SKILL.md)://<HOST>:27017" --oplog --out=/backup/appdb
+mongodump --uri="[mongodb](../mongodb/SKILL.md)://<HOST>:27017" --oplog --out=/backup/appdb
 mongorestore --oplogReplay /backup/appdb
 ```
 For a sharded cluster, back up each shard's replica set independently
@@ -281,7 +281,7 @@ from in practice.
   hot-backup approach instead for a large production database where
   even a brief mysqldump-induced slowdown is unacceptable.
 
-- **Symptom:** A Percona XtraBackup restore fails to start [MySQL](../../Backend/mysql/SKILL.md), or
+- **Symptom:** A Percona XtraBackup restore fails to start [MySQL](../mysql/SKILL.md), or
   starts but is missing recent transactions.
   **Fix:** The `--prepare` step was skipped or failed silently, leaving
   the backup directory in an inconsistent, unprepared state — a raw
@@ -322,7 +322,7 @@ from in practice.
 ## Worked example
 
 **Scenario:** A team discovers, during a post-[incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) review, that
-their [PostgreSQL](../../Backend/postgresql/SKILL.md) production database (600GB) has been backed up nightly
+their [PostgreSQL](../postgresql/SKILL.md) production database (600GB) has been backed up nightly
 via `pg_dump` for two years, but no restore has ever been tested, and
 the last [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) took over 14 hours to (partially) recover from
 because the logical restore was far slower than anyone expected.
@@ -359,7 +359,7 @@ because the logical restore was far slower than anyone expected.
 
 ## Cross-references
 
-- [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — WAL/replication-slot management that overlaps directly with continuous WAL archiving for [PostgreSQL](../../Backend/postgresql/SKILL.md) point-in-time recovery.
-- [mysql-mariadb-operations-and-performance-tuning](../[mysql-mariadb-operations-and-performance-tuning](../[mysql](../../Backend/mysql/SKILL.md)-mariadb-operations-and-[performance-tuning](../../Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — binary log retention and GTID-based replication that a [MySQL](../../Backend/mysql/SKILL.md)/MariaDB point-in-time recovery strategy depends on.
+- [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — WAL/replication-slot management that overlaps directly with continuous WAL archiving for [PostgreSQL](../postgresql/SKILL.md) point-in-time recovery.
+- [mysql-mariadb-operations-and-performance-tuning](../[mysql-mariadb-operations-and-performance-tuning](../[mysql](../../Backend/mysql/SKILL.md)-mariadb-operations-and-[performance-tuning](../../Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — binary log retention and GTID-based replication that a [MySQL](../mysql/SKILL.md)/MariaDB point-in-time recovery strategy depends on.
 - [mongodb-operations-and-scaling](../[mongodb-operations-and-scaling](../[mongodb](../../Backend/mongodb/SKILL.md)-operations-and-scaling/SKILL.md)/SKILL.md) — oplog window sizing, which directly bounds how far back `mongodump --oplog`-based point-in-time recovery can reach.
 - [timescaledb-time-series-operations-and-configuration](../[timescaledb-time-series-operations-and-configuration](../timescaledb-time-series-operations-and-configuration/SKILL.md)/SKILL.md) — retention policies there permanently drop chunks; this skill's archive-before-drop discipline is the safety net that should precede enabling one on data with any retention requirement.

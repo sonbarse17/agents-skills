@@ -177,8 +177,8 @@ type BackupJobSpec struct {
 }
 
 type BackupSource struct {
-    // Type of source: "postgres", "[mysql](../../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)", "filesystem", "volume"
-    // +kubebuilder:validation:Enum=postgres;[mysql](../../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md);filesystem;volume
+    // Type of source: "postgres", "[mysql](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)", "filesystem", "volume"
+    // +kubebuilder:validation:Enum=postgres;[mysql](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md);filesystem;volume
     Type string `json:"type"`
 
     // Namespace where the source is located
@@ -525,7 +525,7 @@ func (r *BackupJob) ValidateDelete() (admission.Warnings, error) {
 func (r *BackupJob) validateBackupJob() (admission.Warnings, error) {
     // Validate source type
     validSources := map[string]bool{
-        "postgres": true, "[mysql](../../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)": true, "filesystem": true, "volume": true,
+        "postgres": true, "[mysql](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)": true, "filesystem": true, "volume": true,
     }
     if !validSources[r.Spec.Source.Type] {
         return nil, fmt.Errorf("invalid source type: %s", r.Spec.Source.Type)

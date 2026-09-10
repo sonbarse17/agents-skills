@@ -25,7 +25,7 @@ Use Convex to build type-safe backend logic with realtime data sync.
 ## When to Use This Skill
 
 Use this skill when:
-- Building real-time collaborative apps (chat, [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), multiplayer)
+- Building real-time collaborative apps (chat, [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), multiplayer)
 - Need a backend with zero infrastructure management
 - Want type-safe server functions with automatic caching
 - Building AI apps that need reactive data (agent status, streaming results)
@@ -50,7 +50,7 @@ npm create convex@latest
 
 ## Schema Definition
 
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../../Frontend/common/typescript/SKILL.md)
 // convex/schema.ts
 import { defineSchema, defineTable } from "convex/server";
 import { v } from "convex/values";
@@ -86,7 +86,7 @@ export default defineSchema({
 
 ## Queries (Real-Time Reads)
 
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../../Frontend/common/typescript/SKILL.md)
 // convex/messages.ts
 import { query } from "./_generated/server";
 import { v } from "convex/values";
@@ -116,7 +116,7 @@ export const listByChannel = query({
 
 ## Mutations (Writes)
 
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../../Frontend/common/typescript/SKILL.md)
 // convex/messages.ts
 import { mutation } from "./_generated/server";
 import { v } from "convex/values";
@@ -149,7 +149,7 @@ export const send = mutation({
 
 ## Actions (External APIs, AI)
 
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../../Frontend/common/typescript/SKILL.md)
 // convex/ai.ts
 import { action } from "./_generated/server";
 import { v } from "convex/values";
@@ -189,7 +189,7 @@ export const generateResponse = action({
 
 ## Scheduled Functions (Cron Jobs)
 
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../../Frontend/common/typescript/SKILL.md)
 // convex/crons.ts
 import { cronJobs } from "convex/server";
 import { internal } from "./_generated/api";
@@ -207,7 +207,7 @@ export default crons;
 
 ## Auth Integration
 
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../../Frontend/common/typescript/SKILL.md)
 // convex/auth.config.ts
 export default {
   providers: [
@@ -219,7 +219,7 @@ export default {
 };
 ```
 
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../../Frontend/common/typescript/SKILL.md)
 // React client setup
 import { ConvexProviderWithClerk } from "convex/react-clerk";
 import { ClerkProvider, useAuth } from "@clerk/clerk-react";
@@ -237,7 +237,7 @@ function App() {
 
 ## React Client Usage
 
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../../Frontend/common/typescript/SKILL.md)
 // src/components/Chat.tsx
 import { useQuery, useMutation } from "convex/react";
 import { api } from "../convex/_generated/api";
@@ -288,7 +288,7 @@ npx convex run messages:listByChannel '{"channelId": "abc123"}'
 
 ## File Storage
 
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../../Frontend/common/typescript/SKILL.md)
 // convex/files.ts
 import { mutation, query } from "./_generated/server";
 import { v } from "convex/values";

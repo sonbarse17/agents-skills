@@ -24,7 +24,7 @@ depends_on:
   - kubernetes
 ---
 
-# Karpenter Cluster [Autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)
+# Karpenter Cluster [Autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)
 
 ## Purpose
 

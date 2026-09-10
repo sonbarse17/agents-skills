@@ -48,7 +48,7 @@ Use this skill when:
 | **T**ampering | Modifying data in transit or at rest | Integrity | HMAC, digital signatures, checksums, immutable logs |
 | **R**epudiation | Denying having performed an action | Non-repudiation | [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging, digital signatures, tamper-evident logs |
 | **I**nformation Disclosure | Exposing data to unauthorized parties | Confidentiality | Encryption (TLS, AES), access controls, data masking |
-| **D**enial of Service | Making service unavailable | Availability | Rate limiting, [autoscaling](../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md), CDN, circuit breakers |
+| **D**enial of Service | Making service unavailable | Availability | Rate limiting, [autoscaling](../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md), CDN, circuit breakers |
 | **E**levation of Privilege | Gaining unauthorized higher access | Authorization | RBAC, principle of least privilege, input validation |
 
 ## STRIDE Worksheet Template

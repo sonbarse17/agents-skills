@@ -286,9 +286,9 @@ config:
         iceberg.catalog.type: hive
         iceberg.file-format: PARQUET
         hive.metastore.uri: thrift://hive-metastore:9083
-    [postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md):
-      - connector.name: [postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)
-        connection-url: jdbc:[postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)://prod-db:5432/analytics
+    [postgresql](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md):
+      - connector.name: [postgresql](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)
+        connection-url: jdbc:[postgresql](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)://prod-db:5432/analytics
         connection-user: trino
         connection-password: ${TRINO_PG_PASSWORD}
 additionalCatalogs:

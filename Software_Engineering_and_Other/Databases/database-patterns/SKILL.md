@@ -42,7 +42,7 @@ Exact user phrases: "database design", "schema design", "query optimization", "s
 
 ### Input Context
 Before activating, verify:
-- The database type is known ([PostgreSQL](../../Backend/postgresql/SKILL.md), [MySQL](../../Backend/mysql/SKILL.md), [MongoDB](../../Backend/mongodb/SKILL.md), SQLite).
+- The database type is known ([PostgreSQL](../postgresql/SKILL.md), [MySQL](../mysql/SKILL.md), [MongoDB](../mongodb/SKILL.md), SQLite).
 - The ORM or query framework is known (TypeORM, Prisma, SQLAlchemy, Diesel, GORM, Spring Data JDBC/JPA).
 - The specific schema, query, or problem is described.
 
@@ -332,7 +332,7 @@ EXPLAIN ANALYZE SELECT * FROM orders WHERE customer_id = '123' AND status = 'pen
 
 ### Connection Pool Configuration
 ```yaml
-# [PostgreSQL](../../Backend/postgresql/SKILL.md) connection pool
+# [PostgreSQL](../postgresql/SKILL.md) connection pool
 pool:
   min: 2          # Keep at least 2 connections
   max: 20         # Max connections (CPU cores × 2 + disk)

@@ -75,7 +75,7 @@ If the user is unsure, use safe defaults.
 ## Workflow
 
 ### 1. Cluster Type
-- **AKS Automatic** (default): Best for most production workloads, provides a curated experience with pre-configured best practices for security, reliability, and performance. Use unless you have specific custom requirements for networking, [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md), or node pool configurations not supported by Node Auto-Provisioning (NAP).
+- **AKS Automatic** (default): Best for most production workloads, provides a curated experience with pre-configured best practices for security, reliability, and performance. Use unless you have specific custom requirements for networking, [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md), or node pool configurations not supported by Node Auto-Provisioning (NAP).
 - **AKS Standard**: Use if you need full control over environment configuration, which requires additional overhead to set up and manage.
 
 ### 2. Networking (Pod IP, Egress, Ingress, Dataplane)
@@ -122,7 +122,7 @@ If the user is unsure, use safe defaults.
 ### 6. Performance
 - Use **Ephemeral OS disks** (`--node-osdisk-type Ephemeral`) for faster node startup
 - Select **Azure Linux** as node OS (smaller footprint, faster boot)
-- Enable **KEDA** for event-driven [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) beyond HPA
+- Enable **KEDA** for event-driven [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) beyond HPA
 
 ### 7. Node Pools & Compute
 - **Dedicated system node pool**: At least 2 nodes, tainted for system workloads only (`CriticalAddonsOnly`)

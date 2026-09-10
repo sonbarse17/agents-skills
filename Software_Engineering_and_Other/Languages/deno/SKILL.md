@@ -588,7 +588,7 @@ Load test with `autocannon` or `wrk` against the compiled binary. Use `deno benc
 - Use deno.land/x or JSR imports via deno.json import map. Avoid raw URLs in source files.
 - Standard library (std/) preferred over npm equivalents (std/http, std/log, std/testing).
 - Fresh islands for client-side interactivity. [Preact](../../Frontend/frameworks/preact/SKILL.md) components for server-only rendering.
-- Deno KV for simple state, [PostgreSQL](../../Backend/postgresql/SKILL.md) driver for complex persistence.
+- Deno KV for simple state, [PostgreSQL](../../Databases/postgresql/SKILL.md) driver for complex persistence.
 - deno fmt and deno lint in CI. Check before [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md).
 - Compile binaries with `deno compile` for [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-less deployment.
 - All env vars loaded via `std/dotenv` in dev, env vars in production.

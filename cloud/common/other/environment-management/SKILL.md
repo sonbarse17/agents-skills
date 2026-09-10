@@ -90,7 +90,7 @@ and defended, with no undocumented divergence left over.
 
 Running every non-prod environment at full production scale is expensive and rarely necessary —
 but shrinking it so far that it stops catching real bugs (single-instance when prod is clustered,
-no [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) when prod scales) makes staging a false signal that's worse than no staging at
+no [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) when prod scales) makes staging a false signal that's worse than no staging at
 all. The goal is the cheapest version that still exercises the architecture prod actually runs.
 See `[cost-optimization](../../cost/cost-optimization/SKILL.md)` for the broader spend-control discipline this borrows from.
 

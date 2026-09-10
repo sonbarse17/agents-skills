@@ -25,11 +25,11 @@ depends_on:
   - postgresql-operations-and-performance-tuning
 ---
 
-# [PostgreSQL](../../Backend/postgresql/SKILL.md) Configuration Validation
+# [PostgreSQL](../../Databases/postgresql/SKILL.md) Configuration Validation
 
 ## Purpose
 
-A [PostgreSQL](../../Backend/postgresql/SKILL.md) configuration change that looks correct in isolation can
+A [PostgreSQL](../../Databases/postgresql/SKILL.md) configuration change that looks correct in isolation can
 still be unsafe in context: a `max_connections` bump that overcommits
 available RAM once `work_mem` is multiplied out, a `wal_level` change
 applied with `pg_ctl reload` when it actually requires a full restart, or
@@ -43,7 +43,7 @@ doesn't produce an outage instead of an improvement.
 
 ## When to use
 
-- Before applying any `[postgresql](../../Backend/postgresql/SKILL.md).conf` change (or `ALTER SYSTEM`) to a
+- Before applying any `[postgresql](../../Databases/postgresql/SKILL.md).conf` change (or `ALTER SYSTEM`) to a
   production or shared staging instance, especially `max_connections`,
   `shared_buffers`, `work_mem`, `wal_level`, or anything touching
   replication.
@@ -58,8 +58,8 @@ doesn't produce an outage instead of an improvement.
   database's `max_connections` with headroom for superuser/[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
   connections.
 - As a PR/change-review gate for [infrastructure-as-code](../../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) that manages
-  [PostgreSQL](../../Backend/postgresql/SKILL.md) configuration (e.g. a Terraform/[Ansible](../../../infrastructure-as-code/ansible/other/ansible/SKILL.md)-managed
-  `[postgresql](../../Backend/postgresql/SKILL.md).conf` template).
+  [PostgreSQL](../../Databases/postgresql/SKILL.md) configuration (e.g. a Terraform/[Ansible](../../../infrastructure-as-code/ansible/other/ansible/SKILL.md)-managed
+  `[postgresql](../../Databases/postgresql/SKILL.md).conf` template).
 
 ## Prerequisites & environment
 
@@ -72,7 +72,7 @@ doesn't produce an outage instead of an improvement.
 - Knowledge of the host's actual RAM/CPU (from the cloud provider
   console, `free -h`, or infra-as-code) to validate memory-related
   settings against real [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), not just internal consistency.
-- The current `pg_hba.conf` and `[postgresql](../../Backend/postgresql/SKILL.md).conf` (or the values
+- The current `pg_hba.conf` and `[postgresql](../../Databases/postgresql/SKILL.md).conf` (or the values
   currently loaded, via `SHOW ALL` / `pg_settings`) to diff against the
   proposed change rather than validating the proposed change in a
   vacuum.
@@ -95,7 +95,7 @@ WHERE name IN ('max_connections', 'shared_buffers', 'wal_level',
 - `context = 'postmaster'` (e.g. `max_connections`, `shared_buffers`,
   `wal_level`, `max_wal_senders`, `max_worker_processes`): requires a
   full server **restart** — a `SELECT pg_reload_conf()` or `pg_ctl
-  reload` will silently accept the new value into `[postgresql](../../Backend/postgresql/SKILL.md).conf` but
+  reload` will silently accept the new value into `[postgresql](../../Databases/postgresql/SKILL.md).conf` but
   the running instance keeps the old value until restarted. Flag any
   change to a `postmaster`-context parameter explicitly as
   restart-required in the review, since this is the single most common
@@ -237,7 +237,7 @@ change in a maintenance window.
   temporary durability trade-off, not a permanent fix.
 
 - **Symptom:** A `work_mem` increase that looked safe per-connection
-  causes intermittent out-of-memory kills of the [PostgreSQL](../../Backend/postgresql/SKILL.md) process
+  causes intermittent out-of-memory kills of the [PostgreSQL](../../Databases/postgresql/SKILL.md) process
   under peak load.
   **Fix:** `work_mem` is multiplied by concurrent sort/hash operations
   across all active connections, not a single global cap — re-validate

@@ -65,7 +65,7 @@ a fragile script that only the original author can rerun correctly.
 - Access to the data source(s), feature store (see
   [feature-store-design](../[feature-store-design](../../../Data_Engineering/feature-store-design/SKILL.md)/SKILL.md)), and experiment
   tracking backend (see [experiment-tracking](../[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)/SKILL.md)).
-- Compute resources for training steps (GPU/CPU pool, [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) cluster, or
+- Compute resources for training steps (GPU/CPU pool, [autoscaling](../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) cluster, or
   managed training jobs) provisioned or requestable by the pipeline.
 - A model registry endpoint to register the pipeline's output (see
   [model-packaging-and-versioning](../[model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)/SKILL.md)).

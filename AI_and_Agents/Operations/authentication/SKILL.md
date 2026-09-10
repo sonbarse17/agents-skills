@@ -43,7 +43,7 @@ Exact phrases: "auth", "authentication", "login", "signup", "JWT", "OAuth", "rou
 
 ### Input Context
 - Framework (React, Vue, Angular, Svelte)
-- Auth provider (Auth0, Clerk, [Supabase](../../../Software_Engineering_and_Other/Backend/supabase/SKILL.md), [Firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md), Cognito, custom)
+- Auth provider (Auth0, Clerk, [Supabase](../../../Software_Engineering_and_Other/Backend/data-access/supabase/SKILL.md), [Firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md), Cognito, custom)
 - OAuth or credentials-based flow
 - Session strategy (JWT + refresh token vs httpOnly cookie)
 - Route protection pattern (middleware, wrapper, guard)
@@ -90,7 +90,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 Team size and requirements?
   |-- Solo / small team, need quick setup -->
   |     |-- Want hosted auth UI? --> Clerk or Auth0
-  |     |-- Want database integration? --> [Supabase](../../../Software_Engineering_and_Other/Backend/supabase/SKILL.md) Auth
+  |     |-- Want database integration? --> [Supabase](../../../Software_Engineering_and_Other/Backend/data-access/supabase/SKILL.md) Auth
   |     |-- Need social login quick? --> [Firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) Auth
   |-- Mid-size team, need control -->
   |     |-- Using AWS? --> Cognito
@@ -136,9 +136,9 @@ import { Auth0Provider } from '@auth0/auth0-react'
   <App />
 </Auth0Provider>
 
-// [Supabase](../../../Software_Engineering_and_Other/Backend/supabase/SKILL.md)
-import { createClient } from '@[supabase](../../../Software_Engineering_and_Other/Backend/supabase/SKILL.md)/[supabase](../../../Software_Engineering_and_Other/Backend/supabase/SKILL.md)-js'
-const [supabase](../../../Software_Engineering_and_Other/Backend/supabase/SKILL.md) = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+// [Supabase](../../../Software_Engineering_and_Other/Backend/data-access/supabase/SKILL.md)
+import { createClient } from '@[supabase](../../../Software_Engineering_and_Other/Backend/data-access/supabase/SKILL.md)/[supabase](../../../Software_Engineering_and_Other/Backend/data-access/supabase/SKILL.md)-js'
+const [supabase](../../../Software_Engineering_and_Other/Backend/data-access/supabase/SKILL.md) = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
 
 // Custom JWT
 const login = async (email: string, password: string) => {
@@ -456,29 +456,29 @@ function Profile() {
 }
 ```
 
-#### [Supabase](../../../Software_Engineering_and_Other/Backend/supabase/SKILL.md)
+#### [Supabase](../../../Software_Engineering_and_Other/Backend/data-access/supabase/SKILL.md)
 ```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
-import { createClient, User } from '@[supabase](../../../Software_Engineering_and_Other/Backend/supabase/SKILL.md)/[supabase](../../../Software_Engineering_and_Other/Backend/supabase/SKILL.md)-js'
+import { createClient, User } from '@[supabase](../../../Software_Engineering_and_Other/Backend/data-access/supabase/SKILL.md)/[supabase](../../../Software_Engineering_and_Other/Backend/data-access/supabase/SKILL.md)-js'
 
-const [supabase](../../../Software_Engineering_and_Other/Backend/supabase/SKILL.md) = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+const [supabase](../../../Software_Engineering_and_Other/Backend/data-access/supabase/SKILL.md) = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
 
 function useSupabaseAuth() {
   const [user, setUser] = useState<User | null>(null)
 
   useEffect(() => {
-    [supabase](../../../Software_Engineering_and_Other/Backend/supabase/SKILL.md).auth.getSession().then(({ data: { session } }) => {
+    [supabase](../../../Software_Engineering_and_Other/Backend/data-access/supabase/SKILL.md).auth.getSession().then(({ data: { session } }) => {
       setUser(session?.user ?? null)
     })
-    const { data: { subscription } } = [supabase](../../../Software_Engineering_and_Other/Backend/supabase/SKILL.md).auth.onAuthStateChange((_event, session) => {
+    const { data: { subscription } } = [supabase](../../../Software_Engineering_and_Other/Backend/data-access/supabase/SKILL.md).auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null)
     })
     return () => subscription.unsubscribe()
   }, [])
 
-  const loginWithGoogle = () => [supabase](../../../Software_Engineering_and_Other/Backend/supabase/SKILL.md).auth.signInWithOAuth({ provider: 'google' })
+  const loginWithGoogle = () => [supabase](../../../Software_Engineering_and_Other/Backend/data-access/supabase/SKILL.md).auth.signInWithOAuth({ provider: 'google' })
   const loginWithEmail = (email: string, password: string) =>
-    [supabase](../../../Software_Engineering_and_Other/Backend/supabase/SKILL.md).auth.signInWithPassword({ email, password })
-  const logout = () => [supabase](../../../Software_Engineering_and_Other/Backend/supabase/SKILL.md).auth.signOut()
+    [supabase](../../../Software_Engineering_and_Other/Backend/data-access/supabase/SKILL.md).auth.signInWithPassword({ email, password })
+  const logout = () => [supabase](../../../Software_Engineering_and_Other/Backend/data-access/supabase/SKILL.md).auth.signOut()
 
   return { user, loginWithGoogle, loginWithEmail, logout }
 }
@@ -500,7 +500,7 @@ function useSupabaseAuth() {
 |----------|-------------|--------------|-----|-----|---------|
 | Auth0 | OIDC, OAuth2, SAML | 50+ providers | Yes | Yes | Free tier: 7K users |
 | Clerk | OIDC, OAuth2 | 10+ providers | Yes | Yes | Free tier: 5K users |
-| [Supabase](../../../Software_Engineering_and_Other/Backend/supabase/SKILL.md) | OAuth2, email/pw | 10+ providers | Yes | No | Free tier: 50K users |
+| [Supabase](../../../Software_Engineering_and_Other/Backend/data-access/supabase/SKILL.md) | OAuth2, email/pw | 10+ providers | Yes | No | Free tier: 50K users |
 | [Firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) | OAuth2, email/pw, phone | 10+ providers | Yes | No | Free tier: 10K auth |
 | Cognito | OIDC, SAML, OAuth2 | Social + SAML | Yes | Yes | Per MAU pricing |
 | Custom JWT | Email/password | Manual | Manual | Manual | Infrastructure cost |

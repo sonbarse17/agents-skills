@@ -139,10 +139,10 @@ Cap at 5 per primary — beyond that, fan out via cascading or use a sharded pri
 Always use semi-sync for same-AZ standby (ack from ≥1 replica before [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)), async for cross-region.
 GTID/LSN-based replication so promotion is deterministic.
 ```ini
-# [MySQL](../../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) primary (my.cnf) — semi-sync, GTID, row-based
+# [MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) primary (my.cnf) — semi-sync, GTID, row-based
 [mysqld]
 server_id = 1
-log_bin = [mysql](../../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)-bin
+log_bin = [mysql](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)-bin
 binlog_format = ROW
 gtid_mode = ON
 enforce_gtid_consistency = ON
@@ -167,7 +167,7 @@ plugin_load_add = semisync_slave.so
 rpl_semi_sync_slave_enabled = 1
 ```
 ```conf
-# [PostgreSQL](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) primary — streaming + slot, synchronous_commit per workload
+# [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) primary — streaming + slot, synchronous_commit per workload
 wal_level = replica
 max_wal_senders = 10
 max_replication_slots = 10
@@ -208,7 +208,7 @@ backend be_app
 
 backend be_db_reads
   balance roundrobin
-  option [mysql](../../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)-check user haproxy_check
+  option [mysql](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)-check user haproxy_check
   server replica-1 10.0.1.20:3306 check
   server replica-2 10.0.2.20:3306 check
   server replica-3 10.0.3.20:3306 check backup   # last resort
@@ -310,7 +310,7 @@ Phase 4 CONTRACT  (release N+2, after bake)
   - Drop OLD column / table (after retention window for rollback)
 ```
 ```sql
--- Phase 1: [PostgreSQL](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) safe DDL
+-- Phase 1: [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) safe DDL
 ALTER TABLE orders ADD COLUMN customer_uuid uuid NULL;            -- instant
 CREATE INDEX CONCURRENTLY idx_orders_customer_uuid ON orders(customer_uuid);
 -- DO NOT: ADD COLUMN ... NOT NULL DEFAULT  (rewrites table on old PG)
@@ -363,7 +363,7 @@ Group size   Failures tolerated   Notes
 5            2                    standard prod
 7            3                    geo-distributed
 ```
-Use etcd / Consul / ZooKeeper / Raft built into the DB (CockroachDB, TiDB, [MongoDB](../../../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md)). Lease-based leader.
+Use etcd / Consul / ZooKeeper / Raft built into the DB (CockroachDB, TiDB, [MongoDB](../../../../Software_Engineering_and_Other/Databases/mongodb/SKILL.md)). Lease-based leader.
 Fencing token on every primary action so a zombie old-primary cannot [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md).
 
 ### Step 10: Failover [Runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) (RPO/RTO Targets)
@@ -482,7 +482,7 @@ spec:
 ### Pattern: Semi-Sync Replication with Auto-Failover
 
 ```ini
-# Patroni configuration for [PostgreSQL](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) HA
+# Patroni configuration for [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) HA
 scope: mydb
 namespace: /service/
 name: pg-primary
@@ -500,7 +500,7 @@ bootstrap:
     loop_wait: 10
     retry_timeout: 10
     maximum_lag_on_failover: 1048576  # 1MB
-    [postgresql](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md):
+    [postgresql](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md):
       use_pg_rewind: true
       parameters:
         wal_level: replica
@@ -508,11 +508,11 @@ bootstrap:
         wal_log_hints: "on"
         synchronous_standby_names: "ANY 1 (pg-replica-1, pg-replica-2)"
 
-[postgresql](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md):
+[postgresql](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md):
   listen: 0.0.0.0:5432
   connect_address: 10.0.1.10:5432
-  data_dir: /data/[postgresql](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)
-  bin_dir: /usr/lib/[postgresql](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/16/bin
+  data_dir: /data/[postgresql](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)
+  bin_dir: /usr/lib/[postgresql](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)/16/bin
   authentication:
     replication:
       username: replicator
@@ -548,7 +548,7 @@ bootstrap:
 
 ## Performance Optimization
 
-- Connection pooling with PgBouncer: reduce [PostgreSQL](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) connection overhead. Transaction pooling mode.
+- Connection pooling with PgBouncer: reduce [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) connection overhead. Transaction pooling mode.
 - Read replicas for reporting: offload analytics queries from primary. Allow 5-10 replicas.
 - Database connection limit: 100 per application instance. Queue with `pgbouncer` for spikes.
 - Caching layer at LB: cache GET responses for 30s. Reduces application load by 30-50%.
@@ -563,7 +563,7 @@ bootstrap:
 - Network segmentation: app and DB in private subnets. Bastion host for admin access.
 - Backup encryption: S3 bucket with SSE-KMS. Cross-region backup copy encrypted with different key.
 - Access control: database credentials in [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md). Rotated every 30 days. Application reads at startup.
-- [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging: all schema changes logged. DDL triggers in [PostgreSQL](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md). Review weekly.
+- [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging: all schema changes logged. DDL triggers in [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md). Review weekly.
 - Failover authentication: failover commands require MFA. Human-in-the-loop for manual promotion.
 - WAF in front of LB: rate limiting, SQL injection protection, IP blocklist for known bad actors.
 ## Handoff

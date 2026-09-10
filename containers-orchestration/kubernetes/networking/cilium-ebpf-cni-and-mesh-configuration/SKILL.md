@@ -32,7 +32,7 @@ Cilium sits at a different layer than the other meshes in this domain:
 it's first a **CNI plugin** — the thing actually wiring up pod
 networking — built on eBPF programs attached to the kernel's networking
 hooks instead of iptables rules, which is what lets it also replace
-kube-proxy's `Service` [load-balancing](../../../../Software_Engineering_and_Other/Backend/load-balancing/SKILL.md) and implement L3/L4/L7 network
+kube-proxy's `Service` [load-balancing](../../../../Software_Engineering_and_Other/Backend/patterns/load-balancing/SKILL.md) and implement L3/L4/L7 network
 policy without per-pod sidecar proxies for most of that functionality.
 Its newer [service-mesh](../../../common/service-mesh/service-mesh/SKILL.md) capability builds on the same eBPF datapath (plus
 Envoy for L7 cases that need it) rather than injecting a sidecar into

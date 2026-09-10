@@ -186,7 +186,7 @@ Use a limited set of group values in the response to avoid explosion (e.g. top N
 ```json
 POST /_query
 {
-  "query": "FROM logs-* METADATA _id, _index | WHERE @timestamp >= NOW() - 1 hour AND @timestamp <= NOW() | WHERE KQL(\"service.name: [api-gateway](../../../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md)\") | SORT @timestamp DESC | LIMIT 20"
+  "query": "FROM logs-* METADATA _id, _index | WHERE @timestamp >= NOW() - 1 hour AND @timestamp <= NOW() | WHERE KQL(\"service.name: [api-gateway](../../../../Software_Engineering_and_Other/Backend/api-gateway/api-gateway/SKILL.md)\") | SORT @timestamp DESC | LIMIT 20"
 }
 ```
 

@@ -223,7 +223,7 @@ spec:
       kind: Deployment
       jsonPointers:
         - /spec/replicas  # Ignore replica count drift from HPA
-    - group: [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)
+    - group: [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)
       kind: HorizontalPodAutoscaler
       jsonPointers:
         - /spec/metrics  # HPA may have different metrics

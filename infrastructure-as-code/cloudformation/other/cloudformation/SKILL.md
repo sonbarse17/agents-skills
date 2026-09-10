@@ -111,7 +111,7 @@ Resources:
           - !Ref SecurityGroup
 
   AutoScalingGroup:
-    Type: AWS::[AutoScaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)::AutoScalingGroup
+    Type: AWS::[AutoScaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)::AutoScalingGroup
     Properties:
       AutoScalingGroupName: !Sub '${Environment}-web-asg'
       LaunchTemplate:

@@ -355,7 +355,7 @@ alternative is covered there.
 
 **Scenario:** Stand up Rook-Ceph across 3 worker nodes each with one
 free 500GiB block device, then provide both block storage for a
-[PostgreSQL](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) StatefulSet and a shared CephFS volume for a CI artifact
+[PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) StatefulSet and a shared CephFS volume for a CI artifact
 cache.
 
 ```bash

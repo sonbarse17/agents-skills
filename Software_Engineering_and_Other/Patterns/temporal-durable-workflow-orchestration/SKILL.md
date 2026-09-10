@@ -83,7 +83,7 @@ production is covered separately in
 - A running **Temporal Server** (Temporal Cloud, or self-hosted via
   `[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) compose` / the `temporal` Helm chart) reachable from worker
   processes — self-hosted deployments also need a supported persistence
-  store ([PostgreSQL](../../Backend/postgresql/SKILL.md), [MySQL](../../Backend/mysql/SKILL.md), or Cassandra) and, for production, Elasticsearch
+  store ([PostgreSQL](../../Databases/postgresql/SKILL.md), [MySQL](../../Databases/mysql/SKILL.md), or Cassandra) and, for production, Elasticsearch
   or OpenSearch if visibility/advanced search (`temporal workflow list`
   filters) is required.
 - A Temporal SDK matching the language the workflow/activity code is

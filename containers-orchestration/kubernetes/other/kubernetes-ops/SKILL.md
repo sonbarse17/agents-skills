@@ -255,7 +255,7 @@ stringData:
 # Manual scaling
 [kubectl](../kubectl/SKILL.md) scale deployment myapp --replicas=5
 
-# [Autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)
+# [Autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)
 [kubectl](../kubectl/SKILL.md) autoscale deployment myapp \
   --min=2 --max=10 \
   --cpu-percent=80
@@ -264,7 +264,7 @@ stringData:
 ## Horizontal Pod Autoscaler
 
 ```yaml
-apiVersion: [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/v2
+apiVersion: [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: myapp
@@ -344,7 +344,7 @@ spec:
         - containerPort: 5432
         volumeMounts:
         - name: data
-          mountPath: /var/lib/[postgresql](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/data
+          mountPath: /var/lib/[postgresql](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)/data
   volumeClaimTemplates:
   - metadata:
       name: data

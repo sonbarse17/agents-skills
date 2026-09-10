@@ -138,11 +138,11 @@ jobs:
       - name: Run migrations
         run: npx prisma migrate deploy
         env:
-          DATABASE_URL: [postgresql](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)://ci_user:${{ secrets.CI_DB_PASSWORD }}@localhost:5432/testdb
+          DATABASE_URL: [postgresql](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)://ci_user:${{ secrets.CI_DB_PASSWORD }}@localhost:5432/testdb
       - name: Integration tests
         run: npm run test:integration
         env:
-          DATABASE_URL: [postgresql](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)://ci_user:${{ secrets.CI_DB_PASSWORD }}@localhost:5432/testdb
+          DATABASE_URL: [postgresql](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)://ci_user:${{ secrets.CI_DB_PASSWORD }}@localhost:5432/testdb
 ```
 
 > **Note:** Even for CI-only test databases, use [GitHub](../../../github-actions/other/github/SKILL.md) Secrets for credentials rather than hardcoding values. This builds good habits and prevents accidental reuse of test credentials in other contexts.

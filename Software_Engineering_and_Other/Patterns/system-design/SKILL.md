@@ -155,7 +155,7 @@ graph TD
     C -->|Round Robin| D[App Server 1]
     C -->|Round Robin| E[App Server 2]
     D -->|Read| F[(Redis Cache)]
-    E -->|Write| G[([PostgreSQL](../../Backend/postgresql/SKILL.md) Master)]
+    E -->|Write| G[([PostgreSQL](../../Databases/postgresql/SKILL.md) Master)]
     G -->|Async Rep| H[(Postgres Replica)]
 ```
 
@@ -227,7 +227,7 @@ graph TD
     C -->|Round Robin| D[App Server 1]
     C -->|Round Robin| E[App Server 2]
     D -->|Read| F[(Redis Cache)]
-    E -->|Write| G[([PostgreSQL](../../Backend/postgresql/SKILL.md) Master)]
+    E -->|Write| G[([PostgreSQL](../../Databases/postgresql/SKILL.md) Master)]
     G -->|Async Rep| H[(Postgres Replica)]
 ```
 

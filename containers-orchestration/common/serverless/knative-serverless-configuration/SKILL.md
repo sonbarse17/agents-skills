@@ -45,7 +45,7 @@ and event routing (as opposed to request-driven serving) is covered in
 
 - Standing up a new Knative `Service` for an HTTP workload that should
   scale to zero when idle.
-- Tuning [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) behavior (`target` concurrency, min/max scale,
+- Tuning [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) behavior (`target` concurrency, min/max scale,
   scale-down delay) for a revision that either cold-starts too often or
   never scales down.
 - Splitting traffic between two revisions for a canary rollout or
@@ -87,9 +87,9 @@ and event routing (as opposed to request-driven serving) is covered in
      template:
        metadata:
          annotations:
-           [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md).knative.dev/target: "50"
-           [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md).knative.dev/min-scale: "1"
-           [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md).knative.dev/max-scale: "20"
+           [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md).knative.dev/target: "50"
+           [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md).knative.dev/min-scale: "1"
+           [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md).knative.dev/max-scale: "20"
        spec:
          containers:
            - image: registry.example.com/checkout-api:1.4.2
@@ -103,25 +103,25 @@ and event routing (as opposed to request-driven serving) is covered in
    with a changed `spec.template` produces a new `Revision`
    (`checkout-api-00002`, etc.) without touching prior revisions.
 
-2. **Set [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) annotations to match the workload's actual
+2. **Set [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) annotations to match the workload's actual
    concurrency profile**, not defaults copied from an example:
-   - `[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md).knative.dev/target` — the concurrent-request target
+   - `[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md).knative.dev/target` — the concurrent-request target
      per pod the autoscaler tries to maintain; too high causes latency
      spikes under burst, too low over-provisions pods.
-   - `[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md).knative.dev/min-scale` — floor on replica count; `0`
+   - `[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md).knative.dev/min-scale` — floor on replica count; `0`
      enables true scale-to-zero (accepting a cold start on the next
      request after idle), `1`+ keeps at least that many pods warm.
-   - `[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md).knative.dev/max-scale` — ceiling on replica count,
+   - `[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md).knative.dev/max-scale` — ceiling on replica count,
      sized against downstream [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) exactly as with any autoscaler.
-   - `[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md).knative.dev/scale-down-delay` — how long to wait
+   - `[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md).knative.dev/scale-down-delay` — how long to wait
      before scaling down after load drops, avoiding thrashing on bursty
      traffic.
    ```yaml
    annotations:
-     [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md).knative.dev/target: "50"
-     [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md).knative.dev/min-scale: "0"
-     [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md).knative.dev/max-scale: "20"
-     [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md).knative.dev/scale-down-delay: "30s"
+     [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md).knative.dev/target: "50"
+     [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md).knative.dev/min-scale: "0"
+     [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md).knative.dev/max-scale: "20"
+     [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md).knative.dev/scale-down-delay: "30s"
    ```
 
 3. **Split traffic across revisions explicitly**, rather than always
@@ -209,8 +209,8 @@ and event routing (as opposed to request-driven serving) is covered in
   a rollback is a `traffic` patch, not a rebuild — but prune very old,
   unused revisions periodically since each retained revision's pods can
   still be scaled up and consumes cluster resources when active.
-- Pair Knative Serving's own [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) with cluster-level node
-  [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) — a `max-scale` that's achievable in principle but can't
+- Pair Knative Serving's own [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) with cluster-level node
+  [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) — a `max-scale` that's achievable in principle but can't
   actually schedule new pods due to node [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) limits behaves the
   same as a `max-scale` that's too low.
 
@@ -278,9 +278,9 @@ spec:
     metadata:
       name: checkout-api-00002
       annotations:
-        [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md).knative.dev/target: "50"
-        [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md).knative.dev/min-scale: "1"
-        [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md).knative.dev/max-scale: "20"
+        [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md).knative.dev/target: "50"
+        [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md).knative.dev/min-scale: "1"
+        [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md).knative.dev/max-scale: "20"
     spec:
       timeoutSeconds: 30
       containers:
@@ -318,6 +318,6 @@ for an immediate rollback patch if a problem surfaces after full cutover.
 
 ## Cross-references
 
-- [knative-configuration-validation](../[knative-configuration-validation](../knative-configuration-validation/SKILL.md)/SKILL.md) — validating the Service/Revision config and [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) annotations shown here before they reach production.
+- [knative-configuration-validation](../[knative-configuration-validation](../knative-configuration-validation/SKILL.md)/SKILL.md) — validating the Service/Revision config and [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) annotations shown here before they reach production.
 - [knative-eventing-configuration](../[knative-eventing-configuration](../../Cloud_Providers/knative-eventing-configuration/SKILL.md)/SKILL.md) — the event-driven (as opposed to request-driven) Knative component, for brokers/triggers/sources instead of HTTP Services.
 - [google-cloud-functions-configuration](../[google-cloud-functions-configuration](../../Cloud_Providers/google-cloud-functions-configuration/SKILL.md)/SKILL.md) — Cloud Run/Cloud Functions Gen2 implements a managed variant of the same scale-to-zero, revision-based model shown here.

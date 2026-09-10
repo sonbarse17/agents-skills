@@ -32,7 +32,7 @@ depends_on:
 # Model Serving Agent
 
 ## Purpose
-Design model serving architecture with framework selection, deployment strategy, [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md), and inference optimization for production workloads.
+Design model serving architecture with framework selection, deployment strategy, [autoscaling](../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md), and inference optimization for production workloads.
 
 ## Architecture/Decision Trees
 
@@ -69,7 +69,7 @@ Risk tolerance and traffic pattern
       └── A/B Testing (traffic split by user/region, statistical comparison)
 ```
 
-### [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) Strategy
+### [Autoscaling](../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) Strategy
 ```
 Workload pattern
   ├── Predictable traffic → Scheduled scaling (cron-based min/max)
@@ -97,13 +97,13 @@ Latency/throughput requirement
 ## Agent Protocol
 
 ### Trigger
-User request includes: model serving, TorchServe, BentoML, Ray Serve, Seldon Core, KServe, inference, model deployment, A/B testing, [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md), canary deploy, model versioning, prediction, inference API.
+User request includes: model serving, TorchServe, BentoML, Ray Serve, Seldon Core, KServe, inference, model deployment, A/B testing, [autoscaling](../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md), canary deploy, model versioning, prediction, inference API.
 
 ### Protocol
 1. Identify model framework and inference requirements.
 2. Select serving framework based on model type, scale, and feature needs.
 3. Design deployment strategy: canary, blue-green, or A/B testing.
-4. Configure [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) with metrics and thresholds.
+4. Configure [autoscaling](../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) with metrics and thresholds.
 5. Define model versioning scheme and rollback procedure.
 6. Optimize inference: batching, quantization, kernel fusion.
 
@@ -122,7 +122,7 @@ Strategy: {canary / blue-green / rolling}
 Replicas: {min} - {max}
 Model Version: {current} | Previous: {previous}
 
-### [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)
+### [Autoscaling](../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)
 Metric: {CPU / GPU / RPS / latency}
 Threshold: {value}
 
@@ -136,7 +136,7 @@ No preamble. No postamble. No explanations. No filler. Compress output.
 ### Completion Criteria
 - [ ] Serving framework selected with rationale based on model type.
 - [ ] Deployment strategy defined with traffic split and [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
-- [ ] [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) configured with metrics and thresholds.
+- [ ] [Autoscaling](../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) configured with metrics and thresholds.
 - [ ] Model versioning scheme with rollback procedure.
 - [ ] Inference optimization applied (batching, quantization).
 - [ ] Health checks and readiness probes configured.
@@ -184,7 +184,7 @@ svc = bentoml.Server("prediction_service:latest")
 svc.start()
 ```
 
-### Step 3: Configure [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)
+### Step 3: Configure [Autoscaling](../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)
 ```yaml
 # KServe InferenceService
 apiVersion: serving.kserve.io/v1beta1
@@ -285,7 +285,7 @@ class ABTestRouter:
 ## Anti-Patterns
 
 - **100% cutover without canary**: Always use traffic splitting for new model versions.
-- **[Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) on CPU**: CPU is a lagging indicator for inference. Use concurrency or RPS.
+- **[Autoscaling](../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) on CPU**: CPU is a lagging indicator for inference. Use concurrency or RPS.
 - **Not retaining previous model versions**: Keep last 2 versions for rollback.
 - **Batching without latency budget**: Batch beyond user tolerance → timeout errors.
 - **Missing health endpoints**: Every serving endpoint needs /health and /ready.
@@ -401,9 +401,9 @@ spec:
               - image: model-c-server
 ```
 
-## [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) Configuration — Production Ready
+## [Autoscaling](../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) Configuration — Production Ready
 
-### KServe with Knative [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)
+### KServe with Knative [Autoscaling](../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)
 ```yaml
 apiVersion: serving.kserve.io/v1beta1
 kind: InferenceService
@@ -427,7 +427,7 @@ spec:
             memory: 4Gi
 ```
 
-### [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) Decision Table
+### [Autoscaling](../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) Decision Table
 | Workload Pattern | Metric | Scale Target | Strategy |
 |-----------------|--------|-------------|----------|
 | Real-time API, steady | Concurrency | 5-10 | HPA with concurrency |
@@ -438,7 +438,7 @@ spec:
 
 ### HPA with Custom Metrics
 ```yaml
-apiVersion: [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/v2
+apiVersion: [autoscaling](../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: model-hpa
@@ -505,7 +505,7 @@ class PredictionCache:
 ## Model Serving Anti-Patterns
 1. **No traffic splitting**: Every deploy is a full cutover, no gradual rollout
    Fix: Always use canary or blue-green for model changes
-2. **CPU-based [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) for models**: CPU is a poor proxy for inference load
+2. **CPU-based [autoscaling](../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) for models**: CPU is a poor proxy for inference load
    Fix: Scale on concurrency or RPS
 3. **No request batching**: Every prediction is a separate HTTP call
    Fix: Smart batching with max latency budget
@@ -516,7 +516,7 @@ class PredictionCache:
 
 ## Serving Framework Comparison
 
-| Framework | GPU Support | [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) | Batching | Model Versioning | Community |
+| Framework | GPU Support | [Autoscaling](../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) | Batching | Model Versioning | Community |
 |-----------|-------------|-------------|----------|-----------------|-----------|
 | KServe | Yes | Knative | Smart batch | Multiple strategies | Large |
 | Seldon Core | Yes | Custom HPA | Custom | Graph-based | Medium |
@@ -529,7 +529,7 @@ class PredictionCache:
 ## Rules
 - Serving framework matches model framework.
 - Deployment strategy uses traffic splitting.
-- [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) based on concurrency or RPS, not CPU.
+- [Autoscaling](../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) based on concurrency or RPS, not CPU.
 - Every model version retains previous 2 for rollback.
 - Batching with max latency budget.
 - Health checks at /health and /ready.

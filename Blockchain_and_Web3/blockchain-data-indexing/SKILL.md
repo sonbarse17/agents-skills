@@ -443,7 +443,7 @@ class Indexer:
 Blockchain Indexing Strategy
 ├── Indexing granularity?
 │   ├── Full chain → The Graph (subgraphs) / QuickNode streaming
-│   ├── Event-specific → Custom indexer (ethers.js + [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md))
+│   ├── Event-specific → Custom indexer (ethers.js + [PostgreSQL](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md))
 │   └── Real-time + historical → Goldsky (subgraph + pipeline)
 ├── Query interface?
 │   ├── GraphQL → The Graph subgraph (standard for dApps)
@@ -491,7 +491,7 @@ dataSources:
       file: ./src/mapping.ts
 ```
 
-### Custom Indexer with [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)
+### Custom Indexer with [PostgreSQL](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)
 ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # blockchain-data-indexing/custom_indexer.py
 from web3 import Web3

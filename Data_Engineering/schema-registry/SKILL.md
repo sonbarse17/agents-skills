@@ -404,7 +404,7 @@ registry_cluster:
 
 # Apicurio Registry deployment (alternative, multi-format)
 apicurio_registry:
-  storage: "sql"  # [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md), SQL Server, or Kafka
+  storage: "sql"  # [PostgreSQL](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md), SQL Server, or Kafka
   formats: ["AVRO", "PROTOBUF", "JSON_SCHEMA", "ASYNCAPI", "OPENAPI"]
   rules:
     global: ["VALIDITY", "COMPATIBILITY"]

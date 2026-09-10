@@ -42,7 +42,7 @@ User request includes: `Micronaut`, `micronaut framework`, `micronaut DI`, `micr
 - JDK version (17+, 21+)
 - Micronaut version (4.x)
 - Build tool (Gradle, Maven)
-- Database (JDBC, R2DBC, [MongoDB](../mongodb/SKILL.md))
+- Database (JDBC, R2DBC, [MongoDB](../../../Databases/mongodb/SKILL.md))
 - Features (Reactive, Declarative Client, AOT, Security)
 
 ### Output Artifact
@@ -124,7 +124,7 @@ dependencies {
     implementation 'io.micronaut.data:micronaut-data-jdbc'
     implementation 'io.micronaut.sql:micronaut-jdbc-hikari'
     implementation 'io.micronaut:micronaut-validation'
-    runtimeOnly 'org.[postgresql](../postgresql/SKILL.md):[postgresql](../postgresql/SKILL.md)'
+    runtimeOnly 'org.[postgresql](../../../Databases/postgresql/SKILL.md):[postgresql](../../../Databases/postgresql/SKILL.md)'
     testImplementation 'io.micronaut.test:micronaut-test-junit5'
 }
 ```
@@ -154,8 +154,8 @@ micronaut:
 
 datasources:
   default:
-    url: ${JDBC_URL:`jdbc:[postgresql](../postgresql/SKILL.md)://localhost:5432/mydb`}
-    driverClassName: org.[postgresql](../postgresql/SKILL.md).Driver
+    url: ${JDBC_URL:`jdbc:[postgresql](../../../Databases/postgresql/SKILL.md)://localhost:5432/mydb`}
+    driverClassName: org.[postgresql](../../../Databases/postgresql/SKILL.md).Driver
     username: ${DB_USER:postgres}
     password: ${DB_PASS:postgres}
     schema-generate: NONE
@@ -401,7 +401,7 @@ public record AppConfig(
 - Native image: `gradlew nativeCompile` (requires GraalVM)
 - Test native: `gradlew nativeTest`
 
-### [Observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
+### [Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
 ```java
 // Export metrics via Prometheus
 @Factory
@@ -449,7 +449,7 @@ public class DatabaseHealthIndicator implements HealthIndicator {
 - CORS: configure in `application.yml` with `micronaut.server.cors`
 - Rate limiting: `micronaut-ratelimiter-core` or gateway-level
 - Input validation: `@Valid` + Jakarta Validation annotations
-- Secrets: `micronaut-config-[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)` or environment variables; never hardcoded
+- Secrets: `micronaut-config-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)` or environment variables; never hardcoded
 
 ## Testing Strategies
 
@@ -520,7 +520,7 @@ class ConfigBuilder {
 - [ ] Production build with optimizations enabled
 - [ ] Environment variables configured per environment
 - [ ] Health check endpoint responds correctly
-- [ ] Error tracking and [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) integrated
+- [ ] Error tracking and [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) integrated
 - [ ] Logging level configured (not debug in production)
 - [ ] Resource limits configured
 - [ ] Database migrations applied
@@ -528,7 +528,7 @@ class ConfigBuilder {
 - [ ] Feature flags toggled appropriately
 - [ ] Rollback plan documented and tested
 
-### [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
+### [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% | Critical | Rollback or fix |

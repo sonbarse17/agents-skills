@@ -101,7 +101,7 @@ graph TD
     Client["Client (Web/Mobile)"] --> Gateway["API Gateway"]
     Gateway --> AuthSvc["Auth Service"]
     Gateway --> OrderSvc["Order Service"]
-    OrderSvc --> DB[("Orders DB\n([PostgreSQL](../../Backend/postgresql/SKILL.md))")]
+    OrderSvc --> DB[("Orders DB\n([PostgreSQL](../../Databases/postgresql/SKILL.md))")]
     OrderSvc --> Queue["Message Queue\n(RabbitMQ)"]
     Queue --> NotifySvc["Notification Service"]
 ```
@@ -109,7 +109,7 @@ graph TD
 ### ADR Example
 
 ```markdown
-# ADR-001: Use [PostgreSQL](../../Backend/postgresql/SKILL.md) for Order Storage
+# ADR-001: Use [PostgreSQL](../../Databases/postgresql/SKILL.md) for Order Storage
 
 ## Status
 Accepted
@@ -119,10 +119,10 @@ The Order Service requires ACID-compliant transactions and complex relational qu
 across orders, line items, and customers.
 
 ## Decision
-Use [PostgreSQL](../../Backend/postgresql/SKILL.md) as the primary datastore for the Order Service.
+Use [PostgreSQL](../../Databases/postgresql/SKILL.md) as the primary datastore for the Order Service.
 
 ## Alternatives Considered
-- **[MongoDB](../../Backend/mongodb/SKILL.md)** — flexible schema, but lacks strong ACID guarantees across documents.
+- **[MongoDB](../../Databases/mongodb/SKILL.md)** — flexible schema, but lacks strong ACID guarantees across documents.
 - **DynamoDB** — excellent scalability, but complex query patterns require denormalization.
 
 ## Consequences

@@ -96,7 +96,7 @@ spec:
   - from:
     - source:
         principals:
-        - "cluster.local/ns/ai-inference/sa/[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md)"
+        - "cluster.local/ns/ai-inference/sa/[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/api-gateway/SKILL.md)"
         - "cluster.local/ns/ai-inference/sa/orchestrator"
     to:
     - operation:

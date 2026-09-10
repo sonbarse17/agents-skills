@@ -147,7 +147,7 @@ sqlmap -u "http://example.com/page?id=1" --technique=BEUSTQ
 sqlmap -u "http://example.com/page?id=1" --fingerprint
 
 # Force specific DBMS
-sqlmap -u "http://example.com/page?id=1" --dbms=[mysql](../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)
+sqlmap -u "http://example.com/page?id=1" --dbms=[mysql](../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)
 ```
 
 **Injection Techniques**:

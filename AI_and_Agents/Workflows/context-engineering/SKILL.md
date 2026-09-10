@@ -56,7 +56,7 @@ Create a rules file that persists across sessions. This is the highest-leverage 
 
 ## Tech Stack
 - React 18, [TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) 5, Vite, Tailwind CSS 4
-- Node.js 22, Express, [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md), Prisma
+- Node.js 22, Express, [PostgreSQL](../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md), Prisma
 
 ## Commands
 - Build: `npm run build`
@@ -196,7 +196,7 @@ For richer context, use Model Context Protocol servers:
 |-----------|-----------------|
 | **Context7** | Auto-fetches relevant documentation for libraries |
 | **Chrome DevTools** | Live browser state, DOM, console, network |
-| **[PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)** | Direct database schema and query results |
+| **[PostgreSQL](../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)** | Direct database schema and query results |
 | **Filesystem** | Project file access and search |
 | **[GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)** | Issue, PR, and repository context |
 

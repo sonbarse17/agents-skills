@@ -80,7 +80,7 @@ Structured integration test files with:
 ```
 Is this dependency your own service/infrastructure?
 ├── YES → Use real (containerized) for testing
-│   ├── Database → TestContainers ([PostgreSQL](../../Backend/postgresql/SKILL.md), [MySQL](../../Backend/mysql/SKILL.md), etc.)
+│   ├── Database → TestContainers ([PostgreSQL](../../Databases/postgresql/SKILL.md), [MySQL](../../Databases/mysql/SKILL.md), etc.)
 │   ├── Message queue → TestContainers (Kafka, RabbitMQ)
 │   ├── Cache → TestContainers (Redis)
 │   └── Object storage → TestContainers (MinIO)
@@ -113,7 +113,7 @@ Does CI support [Docker](../../../containers-orchestration/docker/other/docker/S
 
 ## Common Pitfalls
 
-1. **In-memory database substitutes**: H2/SQLite are not [PostgreSQL](../../Backend/postgresql/SKILL.md)/[MySQL](../../Backend/mysql/SKILL.md) — different SQL dialect, constraints, and transaction behavior. Always use the real database in a container
+1. **In-memory database substitutes**: H2/SQLite are not [PostgreSQL](../../Databases/postgresql/SKILL.md)/[MySQL](../../Databases/mysql/SKILL.md) — different SQL dialect, constraints, and transaction behavior. Always use the real database in a container
 2. **No data cleanup**: Tests that leave data behind cause non-deterministic failures in subsequent tests. Implement truncation, delete-by-run-id, or fresh containers
 3. **Hardcoded connection parameters**: Hardcoded ports, hosts, or credentials prevent parallel execution. Use dynamic ports and environment-aware configuration
 4. **Missing wait strategies**: Tests that access containers before they're ready fail intermittently. Always use proper wait strategies (log message, HTTP health check, port listening)
@@ -349,7 +349,7 @@ jobs:
 ## Integration Testing Anti-Patterns
 
 ### Anti-Pattern: In-Memory Database Substitutes
-Using H2 for [PostgreSQL](../../Backend/postgresql/SKILL.md) or SQLite for [MySQL](../../Backend/mysql/SKILL.md). In-memory substitutes have different SQL dialects, constraint behaviors, and transaction semantics. Tests pass with H2 but fail with [PostgreSQL](../../Backend/postgresql/SKILL.md) in production. Always use the real database in a container.
+Using H2 for [PostgreSQL](../../Databases/postgresql/SKILL.md) or SQLite for [MySQL](../../Databases/mysql/SKILL.md). In-memory substitutes have different SQL dialects, constraint behaviors, and transaction semantics. Tests pass with H2 but fail with [PostgreSQL](../../Databases/postgresql/SKILL.md) in production. Always use the real database in a container.
 
 ### Anti-Pattern: No Wait Strategy
 Accessing containers before they're ready produces non-deterministic failures. Never use fixed `Thread.sleep()`. Use predicate-based wait strategies: wait for log message ("database system is ready to accept connections"), HTTP health check, or port listening.

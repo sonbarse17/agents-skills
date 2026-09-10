@@ -180,7 +180,7 @@ at; use "Investigate" to know what else should corroborate.
 | **Priority preemption storm** | Production pods terminating with `preempted-by` annotation         | New `PriorityClass` with `globalDefault:true` caused cascade. Check `kube-scheduler` events.                                            |
 | **PDB drain deadlock**        | Node drain stuck indefinitely; HTTP 429 from Eviction API          | PDB `minAvailable`/`maxUnavailable` too strict. No default drain timeout. Manual PDB deletion unblocks.                                 |
 
-### [Autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) & admission
+### [Autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) & admission
 
 | Mode                          | Pivotal signal                                                     | Investigate                                                                                                                                        |
 | ----------------------------- | ------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |

@@ -80,7 +80,7 @@ Master Stripe payment processing integration for robust, PCI-compliant payment f
 
 ## Quick Start
 
-```[python](../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/SKILL.md)
 import stripe
 
 stripe.api_key = "sk_test_..."
@@ -115,7 +115,7 @@ Detailed pattern documentation lives in `../../../Global_References/stripe-integ
 
 ## Testing
 
-```[python](../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/SKILL.md)
 # Use test mode keys
 stripe.api_key = "sk_test_..."
 

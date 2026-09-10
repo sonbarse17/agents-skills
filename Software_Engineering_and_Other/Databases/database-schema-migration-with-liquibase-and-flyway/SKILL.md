@@ -162,7 +162,7 @@ fixes it forward, rather than editing history.
   run: [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run -d --name pg-test -e POSTGRES_PASSWORD=<TEST_DB_PASSWORD> -p 5432:5432 postgres:16
 
 - name: Apply migrations from clean state
-  run: flyway -url=jdbc:[postgresql](../../Backend/postgresql/SKILL.md)://localhost:5432/testdb -user=postgres migrate
+  run: flyway -url=jdbc:[postgresql](../postgresql/SKILL.md)://localhost:5432/testdb -user=postgres migrate
 
 - name: Verify resulting schema matches expectation
   run: psql -h localhost -U postgres -d testdb -c "\d+ users"
@@ -251,10 +251,10 @@ UPDATE DATABASECHANGELOGLOCK SET LOCKED = FALSE, LOCKGRANTED = NULL, LOCKEDBY = 
 > migration to apply against the wrong assumed baseline, potentially
 > silently.
 
-Note that DDL transactionality differs by engine: [PostgreSQL](../../Backend/postgresql/SKILL.md) wraps most
+Note that DDL transactionality differs by engine: [PostgreSQL](../postgresql/SKILL.md) wraps most
 DDL in a transaction that rolls back cleanly on failure (so a failed
 migration often leaves the schema exactly as it was before), while
-[MySQL](../../Backend/mysql/SKILL.md)'s DDL is largely non-transactional (each statement commits
+[MySQL](../mysql/SKILL.md)'s DDL is largely non-transactional (each statement commits
 immediately, so a multi-statement migration that fails partway through
 can leave a genuinely mixed schema state) — validate which applies to
 your engine before assuming a failed migration left no partial effect.
@@ -297,7 +297,7 @@ your engine before assuming a failed migration left no partial effect.
   scale their lock duration with table size, not just row-by-row
   complexity. Validate long-running DDL against a production-sized
   staging copy, and prefer online/concurrent variants (e.g.
-  `CREATE INDEX CONCURRENTLY` in [PostgreSQL](../../Backend/postgresql/SKILL.md)) where the engine
+  `CREATE INDEX CONCURRENTLY` in [PostgreSQL](../postgresql/SKILL.md)) where the engine
   and migration tool both support expressing that in the migration.
 
 - **Symptom:** A "rollback" of a migration that dropped a column
@@ -390,6 +390,6 @@ during rollout. The team uses Flyway.
 
 ## Cross-references
 
-- [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — the underlying [PostgreSQL](../../Backend/postgresql/SKILL.md) mechanics (`CREATE INDEX CONCURRENTLY`, lock behavior, vacuum impact of large `UPDATE`/backfill statements) that a migration's DDL should be validated against for lock/performance safety.
+- [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — the underlying [PostgreSQL](../postgresql/SKILL.md) mechanics (`CREATE INDEX CONCURRENTLY`, lock behavior, vacuum impact of large `UPDATE`/backfill statements) that a migration's DDL should be validated against for lock/performance safety.
 - [postgresql-high-availability-and-failover](../[postgresql-high-availability-and-failover](../../../AI_and_Agents/Workflows/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-high-availability-and-failover/SKILL.md)/SKILL.md) — migrations must target the current Patroni-elected primary through the same connection-routing layer as application traffic, not a specific node hostname, to avoid applying DDL to the wrong node during a failover window.
-- [mongodb-operations-and-scaling](../[mongodb-operations-and-scaling](../../../Software_Engineering_and_Other/Databases/[mongodb](../../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md)-operations-and-scaling/SKILL.md)/SKILL.md) — [MongoDB](../../Backend/mongodb/SKILL.md) is schemaless, but index and shard-key changes there deserve the same tracked, reviewed, forward-planned change process described here rather than ad hoc shell commands.
+- [mongodb-operations-and-scaling](../[mongodb-operations-and-scaling](../../../Software_Engineering_and_Other/Databases/[mongodb](../../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md)-operations-and-scaling/SKILL.md)/SKILL.md) — [MongoDB](../mongodb/SKILL.md) is schemaless, but index and shard-key changes there deserve the same tracked, reviewed, forward-planned change process described here rather than ad hoc shell commands.

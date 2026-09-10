@@ -320,7 +320,7 @@ GET logs-*/_search
         { "range": { "@timestamp": { "gte": "now-1h" } } }
       ],
       "filter": [
-        { "term": { "service": "[api-gateway](../../../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md)" } }
+        { "term": { "service": "[api-gateway](../../../../Software_Engineering_and_Other/Backend/api-gateway/api-gateway/SKILL.md)" } }
       ]
     }
   }
@@ -373,7 +373,7 @@ GET logs-*/_search
 
 Create saved searches for common queries:
 - `level:ERROR` - All errors
-- `service:[api-gateway](../../../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md) AND level:ERROR` - API gateway errors
+- `service:[api-gateway](../../../../Software_Engineering_and_Other/Backend/api-gateway/api-gateway/SKILL.md) AND level:ERROR` - API gateway errors
 - `response_time:>1000` - Slow requests
 
 ### Visualizations

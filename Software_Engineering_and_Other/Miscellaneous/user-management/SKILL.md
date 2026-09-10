@@ -170,7 +170,7 @@ deploy ALL=(ALL) NOPASSWD: ALL
 jsmith ALL=(myapp) NOPASSWD: /opt/myapp/bin/*
 
 # Restrict to specific hosts (useful with centralized sudoers)
-jsmith dbservers=(root) /usr/bin/systemctl restart [postgresql](../../Backend/postgresql/SKILL.md)
+jsmith dbservers=(root) /usr/bin/systemctl restart [postgresql](../../Databases/postgresql/SKILL.md)
 
 # Log all sudo commands to a dedicated file
 Defaults log_output

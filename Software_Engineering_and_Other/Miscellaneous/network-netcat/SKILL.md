@@ -134,10 +134,10 @@ timeout 2 nc <target-ip> <port>
 **Service-specific banner grabbing**:
 
 ```bash
-# [MySQL](../../Backend/mysql/SKILL.md) banner
+# [MySQL](../../Databases/mysql/SKILL.md) banner
 nc <target-ip> 3306
 
-# [PostgreSQL](../../Backend/postgresql/SKILL.md) banner
+# [PostgreSQL](../../Databases/postgresql/SKILL.md) banner
 nc <target-ip> 5432
 
 # SMB/CIFS banner

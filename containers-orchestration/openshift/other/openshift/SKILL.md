@@ -113,7 +113,7 @@ oc new-app https://[github](../../../../ci-cd/github-actions/other/github/SKILL.
 oc get templates -n openshift
 
 # Deploy from template
-oc new-app [postgresql](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-persistent \
+oc new-app [postgresql](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)-persistent \
   -p POSTGRESQL_USER=user \
   -p POSTGRESQL_PASSWORD=secret \
   -p POSTGRESQL_DATABASE=mydb

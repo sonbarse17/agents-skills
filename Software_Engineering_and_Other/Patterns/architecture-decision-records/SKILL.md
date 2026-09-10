@@ -61,7 +61,7 @@ Proposed → Accepted → Deprecated → Superseded
 ### Template 1: Standard ADR (MADR Format)
 
 ```markdown
-# ADR-0001: Use [PostgreSQL](../../Backend/postgresql/SKILL.md) as Primary Database
+# ADR-0001: Use [PostgreSQL](../../Databases/postgresql/SKILL.md) as Primary Database
 
 ## Status
 
@@ -78,7 +78,7 @@ will handle:
 - Full-text search for products
 - Geospatial queries for store locator
 
-The team has experience with [MySQL](../../Backend/mysql/SKILL.md), [PostgreSQL](../../Backend/postgresql/SKILL.md), and [MongoDB](../../Backend/mongodb/SKILL.md). We need ACID
+The team has experience with [MySQL](../../Databases/mysql/SKILL.md), [PostgreSQL](../../Databases/postgresql/SKILL.md), and [MongoDB](../../Databases/mongodb/SKILL.md). We need ACID
 compliance for financial transactions.
 
 ## Decision Drivers
@@ -91,19 +91,19 @@ compliance for financial transactions.
 
 ## Considered Options
 
-### Option 1: [PostgreSQL](../../Backend/postgresql/SKILL.md)
+### Option 1: [PostgreSQL](../../Databases/postgresql/SKILL.md)
 
 - **Pros**: ACID compliant, excellent JSON support (JSONB), built-in full-text
   search, PostGIS for geospatial, team has experience
-- **Cons**: Slightly more complex replication setup than [MySQL](../../Backend/mysql/SKILL.md)
+- **Cons**: Slightly more complex replication setup than [MySQL](../../Databases/mysql/SKILL.md)
 
-### Option 2: [MySQL](../../Backend/mysql/SKILL.md)
+### Option 2: [MySQL](../../Databases/mysql/SKILL.md)
 
 - **Pros**: Very familiar to team, simple replication, large community
 - **Cons**: Weaker JSON support, no built-in full-text search (need
   Elasticsearch), no geospatial without extensions
 
-### Option 3: [MongoDB](../../Backend/mongodb/SKILL.md)
+### Option 3: [MongoDB](../../Databases/mongodb/SKILL.md)
 
 - **Pros**: Flexible schema, native JSON, horizontal scaling
 - **Cons**: No ACID for multi-document transactions (at decision time),
@@ -111,11 +111,11 @@ compliance for financial transactions.
 
 ## Decision
 
-We will use **[PostgreSQL](../../Backend/postgresql/SKILL.md) 15** as our primary database.
+We will use **[PostgreSQL](../../Databases/postgresql/SKILL.md) 15** as our primary database.
 
 ## Rationale
 
-[PostgreSQL](../../Backend/postgresql/SKILL.md) provides the best balance of:
+[PostgreSQL](../../Databases/postgresql/SKILL.md) provides the best balance of:
 
 1. **ACID compliance** essential for e-commerce transactions
 2. **Built-in capabilities** (full-text search, JSONB, PostGIS) reduce
@@ -137,9 +137,9 @@ additional services (no separate Elasticsearch needed).
 
 ### Negative
 
-- Need to learn [PostgreSQL](../../Backend/postgresql/SKILL.md)-specific features (JSONB, full-text search syntax)
+- Need to learn [PostgreSQL](../../Databases/postgresql/SKILL.md)-specific features (JSONB, full-text search syntax)
 - Vertical scaling limits may require read replicas sooner
-- Some team members need [PostgreSQL](../../Backend/postgresql/SKILL.md)-specific training
+- Some team members need [PostgreSQL](../../Databases/postgresql/SKILL.md)-specific training
 
 ### Risks
 
@@ -160,8 +160,8 @@ additional services (no separate Elasticsearch needed).
 
 ## References
 
-- [PostgreSQL JSON Documentation](https://www.[postgresql](../../Backend/postgresql/SKILL.md).org/docs/current/datatype-json.html)
-- [PostgreSQL Full Text Search](https://www.[postgresql](../../Backend/postgresql/SKILL.md).org/docs/current/textsearch.html)
+- [PostgreSQL JSON Documentation](https://www.[postgresql](../../Databases/postgresql/SKILL.md).org/docs/current/datatype-json.html)
+- [PostgreSQL Full Text Search](https://www.[postgresql](../../Databases/postgresql/SKILL.md).org/docs/current/textsearch.html)
 - Internal: Performance benchmarks in `/docs/benchmarks/database-comparison.md`
 ```
 
@@ -211,7 +211,7 @@ accepting that **we need to manage Kong infrastructure ourselves**.
 ### Template 4: ADR for Deprecation
 
 ```markdown
-# ADR-0020: Deprecate [MongoDB](../../Backend/mongodb/SKILL.md) in Favor of [PostgreSQL](../../Backend/postgresql/SKILL.md)
+# ADR-0020: Deprecate [MongoDB](../../Databases/mongodb/SKILL.md) in Favor of [PostgreSQL](../../Databases/postgresql/SKILL.md)
 
 ## Status
 
@@ -219,24 +219,24 @@ Accepted (Supersedes ADR-0003)
 
 ## Context
 
-ADR-0003 (2021) chose [MongoDB](../../Backend/mongodb/SKILL.md) for user profile storage due to schema flexibility
+ADR-0003 (2021) chose [MongoDB](../../Databases/mongodb/SKILL.md) for user profile storage due to schema flexibility
 needs. Since then:
 
-- [MongoDB](../../Backend/mongodb/SKILL.md)'s multi-document transactions remain problematic for our use case
+- [MongoDB](../../Databases/mongodb/SKILL.md)'s multi-document transactions remain problematic for our use case
 - Our schema has stabilized and rarely changes
-- We now have [PostgreSQL](../../Backend/postgresql/SKILL.md) expertise from other services
+- We now have [PostgreSQL](../../Databases/postgresql/SKILL.md) expertise from other services
 - Maintaining two databases increases operational burden
 
 ## Decision
 
-Deprecate [MongoDB](../../Backend/mongodb/SKILL.md) and migrate user profiles to [PostgreSQL](../../Backend/postgresql/SKILL.md).
+Deprecate [MongoDB](../../Databases/mongodb/SKILL.md) and migrate user profiles to [PostgreSQL](../../Databases/postgresql/SKILL.md).
 
 ## Migration Plan
 
-1. **Phase 1** (Week 1-2): Create [PostgreSQL](../../Backend/postgresql/SKILL.md) schema, dual-write enabled
+1. **Phase 1** (Week 1-2): Create [PostgreSQL](../../Databases/postgresql/SKILL.md) schema, dual-write enabled
 2. **Phase 2** (Week 3-4): Backfill historical data, validate consistency
-3. **Phase 3** (Week 5): Switch reads to [PostgreSQL](../../Backend/postgresql/SKILL.md), monitor
-4. **Phase 4** (Week 6): Remove [MongoDB](../../Backend/mongodb/SKILL.md) writes, decommission
+3. **Phase 3** (Week 5): Switch reads to [PostgreSQL](../../Databases/postgresql/SKILL.md), monitor
+4. **Phase 4** (Week 6): Remove [MongoDB](../../Databases/mongodb/SKILL.md) writes, decommission
 
 ## Consequences
 
@@ -244,7 +244,7 @@ Deprecate [MongoDB](../../Backend/mongodb/SKILL.md) and migrate user profiles to
 
 - Single database technology reduces operational complexity
 - ACID transactions for user data
-- Team can focus [PostgreSQL](../../Backend/postgresql/SKILL.md) expertise
+- Team can focus [PostgreSQL](../../Databases/postgresql/SKILL.md) expertise
 
 ### Negative
 
@@ -345,10 +345,10 @@ docs/
 ├── adr/
 │   ├── README.md           # Index and guidelines
 │   ├── template.md         # Team's ADR template
-│   ├── 0001-use-[postgresql](../../Backend/postgresql/SKILL.md).md
+│   ├── 0001-use-[postgresql](../../Databases/postgresql/SKILL.md).md
 │   ├── 0002-caching-strategy.md
-│   ├── 0003-[mongodb](../../Backend/mongodb/SKILL.md)-user-profiles.md  # [DEPRECATED]
-│   └── 0020-deprecate-[mongodb](../../Backend/mongodb/SKILL.md).md      # Supersedes 0003
+│   ├── 0003-[mongodb](../../Databases/mongodb/SKILL.md)-user-profiles.md  # [DEPRECATED]
+│   └── 0020-deprecate-[mongodb](../../Databases/mongodb/SKILL.md).md      # Supersedes 0003
 ```
 
 ### ADR Index (README.md)
@@ -362,10 +362,10 @@ This directory contains Architecture Decision Records (ADRs) for [Project Name].
 
 | ADR                                   | Title                              | Status     | Date       |
 | ------------------------------------- | ---------------------------------- | ---------- | ---------- |
-| [0001](0001-use-[postgresql](../../Backend/postgresql/SKILL.md).md)        | Use [PostgreSQL](../../Backend/postgresql/SKILL.md) as Primary Database | Accepted   | 2024-01-10 |
+| [0001](0001-use-[postgresql](../../Databases/postgresql/SKILL.md).md)        | Use [PostgreSQL](../../Databases/postgresql/SKILL.md) as Primary Database | Accepted   | 2024-01-10 |
 | [0002](0002-caching-strategy.md)      | Caching Strategy with Redis        | Accepted   | 2024-01-12 |
-| [0003](0003-[mongodb](../../Backend/mongodb/SKILL.md)-user-profiles.md) | [MongoDB](../../Backend/mongodb/SKILL.md) for User Profiles          | Deprecated | 2023-06-15 |
-| [0020](0020-deprecate-[mongodb](../../Backend/mongodb/SKILL.md).md)     | Deprecate [MongoDB](../../Backend/mongodb/SKILL.md)                  | Accepted   | 2024-01-15 |
+| [0003](0003-[mongodb](../../Databases/mongodb/SKILL.md)-user-profiles.md) | [MongoDB](../../Databases/mongodb/SKILL.md) for User Profiles          | Deprecated | 2023-06-15 |
+| [0020](0020-deprecate-[mongodb](../../Databases/mongodb/SKILL.md).md)     | Deprecate [MongoDB](../../Databases/mongodb/SKILL.md)                  | Accepted   | 2024-01-15 |
 
 ## Creating a New ADR
 
@@ -393,10 +393,10 @@ brew install adr-tools
 adr init docs/adr
 
 # Create new ADR
-adr new "Use [PostgreSQL](../../Backend/postgresql/SKILL.md) as Primary Database"
+adr new "Use [PostgreSQL](../../Databases/postgresql/SKILL.md) as Primary Database"
 
 # Supersede an ADR
-adr new -s 3 "Deprecate [MongoDB](../../Backend/mongodb/SKILL.md) in Favor of [PostgreSQL](../../Backend/postgresql/SKILL.md)"
+adr new -s 3 "Deprecate [MongoDB](../../Databases/mongodb/SKILL.md) in Favor of [PostgreSQL](../../Databases/postgresql/SKILL.md)"
 
 # Generate table of contents
 adr generate toc > docs/adr/README.md

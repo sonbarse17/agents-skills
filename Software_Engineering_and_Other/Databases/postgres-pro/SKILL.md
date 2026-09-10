@@ -25,16 +25,16 @@ depends_on:
   - deploy
 ---
 
-# [PostgreSQL](../../Backend/postgresql/SKILL.md) Pro
+# [PostgreSQL](../postgresql/SKILL.md) Pro
 
-Senior [PostgreSQL](../../Backend/postgresql/SKILL.md) expert with deep expertise in database administration, performance optimization, and advanced [PostgreSQL](../../Backend/postgresql/SKILL.md) features.
+Senior [PostgreSQL](../postgresql/SKILL.md) expert with deep expertise in database administration, performance optimization, and advanced [PostgreSQL](../postgresql/SKILL.md) features.
 
 ## When to Use This Skill
 
 - Analyzing and optimizing slow queries with EXPLAIN
 - Implementing JSONB storage and indexing strategies
 - Setting up streaming or logical replication
-- Configuring and using [PostgreSQL](../../Backend/postgresql/SKILL.md) extensions
+- Configuring and using [PostgreSQL](../postgresql/SKILL.md) extensions
 - Tuning VACUUM, ANALYZE, and autovacuum
 - [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) database health with pg_stat views
 - Designing indexes for optimal performance
@@ -152,7 +152,7 @@ FROM pg_stat_replication;
 
 ## Output Templates
 
-When implementing [PostgreSQL](../../Backend/postgresql/SKILL.md) solutions, provide:
+When implementing [PostgreSQL](../postgresql/SKILL.md) solutions, provide:
 1. Query with `EXPLAIN (ANALYZE, BUFFERS)` output and interpretation
 2. Index definitions with rationale and pre/post verification
 3. Configuration changes with before/after values
@@ -161,7 +161,7 @@ When implementing [PostgreSQL](../../Backend/postgresql/SKILL.md) solutions, pro
 
 ## Knowledge Reference
 
-[PostgreSQL](../../Backend/postgresql/SKILL.md) 12-16, EXPLAIN ANALYZE, B-tree/GIN/GiST/BRIN indexes, JSONB operators, streaming replication, logical replication, VACUUM/ANALYZE, pg_stat views, PostGIS, pgvector, pg_trgm, WAL archiving, PITR
+[PostgreSQL](../postgresql/SKILL.md) 12-16, EXPLAIN ANALYZE, B-tree/GIN/GiST/BRIN indexes, JSONB operators, streaming replication, logical replication, VACUUM/ANALYZE, pg_stat views, PostGIS, pgvector, pg_trgm, WAL archiving, PITR
 
 [Documentation](https://jeffallan.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/infrastructure/postgres-pro/)
 

@@ -49,14 +49,14 @@ Load detailed guidance based on context:
 |-------|-----------|-----------|
 | JSDoc Typing | `../../../Global_References/jsdoc-typing.md` | JSDoc types, @typedef, @param, type hints |
 | Composables | `../../../Global_References/composables-patterns.md` | custom composables, ref, reactive, lifecycle hooks |
-| Components | `../../../Global_References/[vue-expert](../../../Backend/vue-expert/SKILL.md)-js_component-architecture.md` | props, emits, slots, provide/inject |
-| State | `../../../Global_References/[vue-expert](../../../Backend/vue-expert/SKILL.md)-js_state-management.md` | Pinia, stores, reactive state |
-| Testing | `../../../Global_References/[vue-expert](../../../Backend/vue-expert/SKILL.md)-js_testing-patterns.md` | Vitest, component testing, mocking |
+| Components | `../../../Global_References/[vue-expert](../vue-expert/SKILL.md)-js_component-architecture.md` | props, emits, slots, provide/inject |
+| State | `../../../Global_References/[vue-expert](../vue-expert/SKILL.md)-js_state-management.md` | Pinia, stores, reactive state |
+| Testing | `../../../Global_References/[vue-expert](../vue-expert/SKILL.md)-js_testing-patterns.md` | Vitest, component testing, mocking |
 
-**For shared Vue concepts, defer to [vue-expert](../../../Backend/vue-expert/SKILL.md):**
-- `../[vue-expert](../../../Backend/vue-expert/SKILL.md)/references/composition-api.md` - Core reactivity patterns
-- `../[vue-expert](../../../Backend/vue-expert/SKILL.md)/references/components.md` - Props, emits, slots
-- `../[vue-expert](../../../Backend/vue-expert/SKILL.md)/../../../Global_References/[vue-expert](../../../Backend/vue-expert/SKILL.md)-js_state-management.md` - Pinia stores
+**For shared Vue concepts, defer to [vue-expert](../vue-expert/SKILL.md):**
+- `../[vue-expert](../vue-expert/SKILL.md)/references/composition-api.md` - Core reactivity patterns
+- `../[vue-expert](../vue-expert/SKILL.md)/references/components.md` - Props, emits, slots
+- `../[vue-expert](../vue-expert/SKILL.md)/../../../Global_References/[vue-expert](../vue-expert/SKILL.md)-js_state-management.md` - Pinia stores
 
 ## Code Patterns
 
@@ -161,7 +161,7 @@ export function useCounter(initial = 0, step = 1) {
 - Annotate every public function with `@param` and `@returns`
 - Use `@typedef` for complex object shapes shared across files
 - Use `@type` annotations for reactive variables
-- Follow [vue-expert](../../../Backend/vue-expert/SKILL.md) patterns adapted for JavaScript
+- Follow [vue-expert](../vue-expert/SKILL.md) patterns adapted for JavaScript
 
 ### MUST NOT DO
 - Use [TypeScript](../../common/typescript/SKILL.md) syntax (no `<script setup lang="ts">`)
@@ -183,5 +183,5 @@ When implementing Vue features in JavaScript:
 
 Vue 3 Composition API, JSDoc, ESM modules, Pinia, Vue Router 4, Vite, VueUse, Vitest, Vue Test Utils, JavaScript ES2022+
 
-[Documentation](https://jeffallan.[github](../../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/frontend/[vue-expert](../../../Backend/vue-expert/SKILL.md)-js/)
+[Documentation](https://jeffallan.[github](../../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/frontend/[vue-expert](../vue-expert/SKILL.md)-js/)
 

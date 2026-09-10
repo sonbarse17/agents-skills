@@ -44,9 +44,9 @@ Create, manage, and monitor systemd services and timers. Covers unit file author
 [Unit]
 Description=MyApp Production Server
 Documentation=https://docs.example.com/myapp
-After=network-online.target [postgresql](../../Backend/postgresql/SKILL.md).service
+After=network-online.target [postgresql](../../Databases/postgresql/SKILL.md).service
 Wants=network-online.target
-Requires=[postgresql](../../Backend/postgresql/SKILL.md).service
+Requires=[postgresql](../../Databases/postgresql/SKILL.md).service
 
 [Service]
 Type=notify

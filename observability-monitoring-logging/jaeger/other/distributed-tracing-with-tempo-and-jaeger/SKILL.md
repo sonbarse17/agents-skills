@@ -99,7 +99,7 @@ rather than repeats.
 - Clarity on the sampling decision *before* provisioning storage
   [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) — tail-based sampling requires seeing every span of a trace
   before deciding to keep it, which has different infrastructure
-  implications (a [load-balancing](../../../../Software_Engineering_and_Other/Backend/load-balancing/SKILL.md) exporter routing by trace ID, more
+  implications (a [load-balancing](../../../../Software_Engineering_and_Other/Backend/patterns/load-balancing/SKILL.md) exporter routing by trace ID, more
   Collector-side buffering) than head-based sampling decided once at
   the start of a trace.
 - Tempo 2.x if relying on TraceQL (introduced in Tempo 2.0) as the
@@ -210,7 +210,7 @@ rather than repeats.
    Tail-based sampling is the right default for production systems where
    the rare slow/erroring request is exactly what an investigation needs
    to find — but it only works correctly if every span for a given trace
-   ID reaches the same Collector replica (see the [load-balancing](../../../../Software_Engineering_and_Other/Backend/load-balancing/SKILL.md) exporter
+   ID reaches the same Collector replica (see the [load-balancing](../../../../Software_Engineering_and_Other/Backend/patterns/load-balancing/SKILL.md) exporter
    note in
    [opentelemetry-instrumentation-and-collector-configuration](../[opentelemetry-instrumentation-and-collector-configuration](../../../Software_Engineering_and_Other/Frontend/[opentelemetry](../opentelemetry/SKILL.md)-instrumentation-and-collector-configuration/SKILL.md)/SKILL.md)).
 
@@ -291,7 +291,7 @@ rather than repeats.
    { .service.name = "checkout-service" && duration > 500ms && status = error }
    ```
    ```traceql
-   { .service.name = "payments-service" } >> { .db.system = "[postgresql](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)" && duration > 200ms }
+   { .service.name = "payments-service" } >> { .db.system = "[postgresql](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)" && duration > 200ms }
    ```
    The second example finds traces where a `payments-service` span has a
    descendant Postgres span slower than 200ms — a structural query no
@@ -356,7 +356,7 @@ rather than repeats.
   multiple stateless Collector replicas sit behind a plain round-robin
   load balancer, a trace's spans scatter across replicas and no single
   replica ever sees the whole trace to make a keep/drop decision. Route
-  by trace ID with a [load-balancing](../../../../Software_Engineering_and_Other/Backend/load-balancing/SKILL.md) exporter (see
+  by trace ID with a [load-balancing](../../../../Software_Engineering_and_Other/Backend/patterns/load-balancing/SKILL.md) exporter (see
   [opentelemetry-instrumentation-and-collector-configuration](../[opentelemetry-instrumentation-and-collector-configuration](../../../Software_Engineering_and_Other/Frontend/[opentelemetry](../opentelemetry/SKILL.md)-instrumentation-and-collector-configuration/SKILL.md)/SKILL.md))
   so tail sampling actually has complete traces to evaluate.
 
@@ -416,7 +416,7 @@ trace-to-metrics correlation in Grafana.
 2. The Collector gateway (configured per
    [opentelemetry-instrumentation-and-collector-configuration](../[opentelemetry-instrumentation-and-collector-configuration](../../../Software_Engineering_and_Other/Frontend/[opentelemetry](../opentelemetry/SKILL.md)-instrumentation-and-collector-configuration/SKILL.md)/SKILL.md))
    applies tail sampling — all errors, all requests over 500ms, plus a
-   10% baseline — and exports via `otlp/tempo`, with a [load-balancing](../../../../Software_Engineering_and_Other/Backend/load-balancing/SKILL.md)
+   10% baseline — and exports via `otlp/tempo`, with a [load-balancing](../../../../Software_Engineering_and_Other/Backend/patterns/load-balancing/SKILL.md)
    exporter routing by `traceID` so tail sampling sees complete traces.
 3. Grafana's Tempo datasource is provisioned with `tracesToLogsV2`
    pointed at the Loki datasource, matching on `trace_id` in the same
@@ -436,7 +436,7 @@ trace-to-metrics correlation in Grafana.
 
 ## Cross-references
 
-- [opentelemetry-instrumentation-and-collector-configuration](../[opentelemetry-instrumentation-and-collector-configuration](../../../Software_Engineering_and_Other/Frontend/[opentelemetry](../opentelemetry/SKILL.md)-instrumentation-and-collector-configuration/SKILL.md)/SKILL.md) — the feeder layer: instrumenting applications and configuring the Collector pipeline (including the [load-balancing](../../../../Software_Engineering_and_Other/Backend/load-balancing/SKILL.md) exporter tail sampling depends on) that produces the spans this backend stores and queries.
+- [opentelemetry-instrumentation-and-collector-configuration](../[opentelemetry-instrumentation-and-collector-configuration](../../../Software_Engineering_and_Other/Frontend/[opentelemetry](../opentelemetry/SKILL.md)-instrumentation-and-collector-configuration/SKILL.md)/SKILL.md) — the feeder layer: instrumenting applications and configuring the Collector pipeline (including the [load-balancing](../../../../Software_Engineering_and_Other/Backend/patterns/load-balancing/SKILL.md) exporter tail sampling depends on) that produces the spans this backend stores and queries.
 - [prometheus-and-grafana-[monitoring](../../../common/monitoring-strategy/monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack](../../Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md) — the metrics backend and Grafana instance this skill's trace-to-metrics correlation and exemplar configuration integrate with.
 - [incident-investigation-using-metrics-logs-traces](../[incident-investigation-using-metrics-logs-traces](../[incident](../incident/SKILL.md)-investigation-using-metrics-logs-traces/SKILL.md)/SKILL.md) — the cross-signal investigative workflow that depends on the trace-to-logs/trace-to-metrics correlation this skill configures at the backend.
 - [loki-log-aggregation-configuration](../[loki-log-aggregation-configuration](../loki-log-aggregation-configuration/SKILL.md)/SKILL.md) — the log backend this skill's trace-to-logs correlation queries against, including the label-cardinality discipline that also applies to the `trace_id` correlation query.

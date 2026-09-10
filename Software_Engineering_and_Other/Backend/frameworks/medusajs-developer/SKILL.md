@@ -120,7 +120,7 @@ npx medusa db:migrate --clean-snapshots
 ## Development Patterns
 
 ### Module Structure
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../../Frontend/common/typescript/SKILL.md)
 // src/modules/my-module/models/post.ts
 import { model } from "@medusajs/framework/utils"
 
@@ -135,7 +135,7 @@ export default Post
 ```
 
 ### API Route Example
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../../Frontend/common/typescript/SKILL.md)
 // src/api/posts/route.ts
 import { MedusaRequest, MedusaResponse } from "@medusajs/framework/http"
 
@@ -155,7 +155,7 @@ export const POST = async (req: MedusaRequest, res: MedusaResponse) => {
 ```
 
 ### Scheduled Job Example
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../../Frontend/common/typescript/SKILL.md)
 // src/jobs/sync-inventory.ts
 import { MedusaContainer } from "@medusajs/framework/types"
 
@@ -174,7 +174,7 @@ export const config = {
 
 ### 1. Project Setup
 - Use MedusaJS CLI for project initialization
-- Follow [TypeScript](../../Frontend/common/typescript/SKILL.md) best practices
+- Follow [TypeScript](../../../Frontend/common/typescript/SKILL.md) best practices
 - Implement proper error handling
 - Set up comprehensive testing
 
@@ -225,7 +225,7 @@ export const config = {
 2. Create necessary data models
 3. Implement workflow orchestration
 4. Add event handlers for state changes
-5. Create [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
+5. Create [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 6. Document workflow behavior
 
 ## Troubleshooting
@@ -593,7 +593,7 @@ npx create-medusa-app@latest my-store
 
 - Official MedusaJS Documentation
 - Community Discord and Forums
-- [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Repository and Examples
+- [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Repository and Examples
 - Plugin Marketplace
 - Developer Tools and CLI Commands
 

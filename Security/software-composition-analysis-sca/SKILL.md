@@ -56,7 +56,7 @@ that was never updated.
 - The user needs a Software Bill of Materials (SBOM) as an input — SCA
   tools frequently consume or produce SBOMs; for SBOM *generation* and
   supply-chain provenance specifically, see
-  [supply-chain-security-slsa-sbom](../[supply-chain-security-slsa-sbom](../../../Security/[supply-chain-security](../../../Security/supply-chain-security/SKILL.md)-slsa-sbom/SKILL.md)/SKILL.md).
+  [supply-chain-security-slsa-sbom](../supply-chain-security/SKILL.md)-slsa-sbom/SKILL.md)/SKILL.md).
 - The user wants to enforce a license-compliance policy (e.g. block
   GPL-licensed dependencies in a proprietary product).
 - The user needs to distinguish a container image's OS-package
@@ -165,7 +165,7 @@ that was never updated.
    ```
 
 7. **Feed results into the same triage/ticketing pipeline as SAST/DAST**
-   findings (see [secure-cicd-gates](../[secure-cicd-gates](../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md)) so
+   findings (see [secure-cicd-gates](../secure-cicd-gates/SKILL.md)/SKILL.md)) so
    dependency vulnerabilities aren't managed in a separate, disconnected
    process from other security findings.
 
@@ -188,9 +188,9 @@ that was never updated.
   deadline effectively means "never fix."
 - Treat a clean SCA report as necessary, not sufficient — it only knows
   about *publicly disclosed* vulnerabilities in *known* components; pair
-  it with [sast-integration](../[sast-integration](../../../Security/sast-integration/SKILL.md)/SKILL.md) for code you
+  it with [sast-integration](../sast-integration/SKILL.md)/SKILL.md) for code you
   wrote yourself and
-  [supply-chain-security-slsa-sbom](../[supply-chain-security-slsa-sbom](../../../Security/[supply-chain-security](../../../Security/supply-chain-security/SKILL.md)-slsa-sbom/SKILL.md)/SKILL.md)
+  [supply-chain-security-slsa-sbom](../supply-chain-security/SKILL.md)-slsa-sbom/SKILL.md)/SKILL.md)
   for provenance/tampering risks a vulnerability scan doesn't address.
 - Regenerate scans on a schedule (not just on dependency change) — new
   CVEs are disclosed against *already-installed* versions constantly, so
@@ -298,12 +298,12 @@ the updated lockfile, and re-run the scan to confirm it clears.
 
 ## Cross-references
 
-- [supply-chain-security-slsa-sbom](../[supply-chain-security-slsa-sbom](../../../Security/[supply-chain-security](../../../Security/supply-chain-security/SKILL.md)-slsa-sbom/SKILL.md)/SKILL.md) —
+- [supply-chain-security-slsa-sbom](../supply-chain-security/SKILL.md)-slsa-sbom/SKILL.md)/SKILL.md) —
   SBOM generation and provenance attestation, which SCA tools often
   consume as input or produce as a byproduct.
-- [sast-integration](../[sast-integration](../../../Security/sast-integration/SKILL.md)/SKILL.md) — analyzes your own
+- [sast-integration](../sast-integration/SKILL.md)/SKILL.md) — analyzes your own
   source code rather than third-party dependencies; the two are
   complementary, not overlapping.
-- [secure-cicd-gates](../[secure-cicd-gates](../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — how to combine SCA
+- [secure-cicd-gates](../secure-cicd-gates/SKILL.md)/SKILL.md) — how to combine SCA
   with SAST/DAST into one coherent set of pipeline gates and a single
   triage workflow.

@@ -31,19 +31,19 @@ depends_on:
   - apis
 ---
 
-# [Kubernetes](../../other/kubernetes/SKILL.md) [Autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)
+# [Kubernetes](../../other/kubernetes/SKILL.md) [Autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)
 
 ## Purpose
-Design, implement, and optimize [Kubernetes](../../other/kubernetes/SKILL.md) [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) strategies using HPA, VPA, Keda, and Cluster Autoscaler to achieve cost-efficient, responsive, and reliable workloads.
+Design, implement, and optimize [Kubernetes](../../other/kubernetes/SKILL.md) [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) strategies using HPA, VPA, Keda, and Cluster Autoscaler to achieve cost-efficient, responsive, and reliable workloads.
 
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "HPA", "VPA", "Keda", "Cluster Autoscaler", "[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)", "horizontal pod autoscaler", "vertical pod autoscaler", "Keda scaler", "pod scaling", "node scaling", "predictive scaling", "[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) strategy".
+Exact user phrases: "HPA", "VPA", "Keda", "Cluster Autoscaler", "[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)", "horizontal pod autoscaler", "vertical pod autoscaler", "Keda scaler", "pod scaling", "node scaling", "predictive scaling", "[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) strategy".
 
 ### Input Context
 Before activating, verify:
-- [Kubernetes](../../other/kubernetes/SKILL.md) version and available [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) APIs.
+- [Kubernetes](../../other/kubernetes/SKILL.md) version and available [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) APIs.
 - Workload characteristics (stateless, stateful, batch, event-driven).
 - Metric sources (Prometheus, custom metrics API, external metrics API).
 - Node group configuration (instance types, min/max sizes, spot vs. on-demand).
@@ -53,7 +53,7 @@ Before activating, verify:
 Writes to YAML manifests for HPA, VPA, ScaledObject, ScaledJob, and ClusterAutoscaler configuration.
 
 ### Response Format
-YAML manifests with appropriate apiVersion and [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) parameters.
+YAML manifests with appropriate apiVersion and [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) parameters.
 
 ### Completion Criteria
 This skill is complete when:
@@ -87,7 +87,7 @@ Deploy metrics-server → Create HPA with CPU target → Add custom metric → C
 
 ### Step 2: HPA Configuration with Behavior
 ```yaml
-apiVersion: [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/v2
+apiVersion: [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: app-hpa
@@ -132,7 +132,7 @@ spec:
 
 ### Step 3: Custom and External Metrics HPA
 ```yaml
-apiVersion: [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/v2
+apiVersion: [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: app-custom-metrics
@@ -183,7 +183,7 @@ spec:
 | `Recreate` | Updates on recreate, similar to Auto | When pod restart triggers reallocation |
 
 ```yaml
-apiVersion: [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md).k8s.io/v1
+apiVersion: [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md).k8s.io/v1
 kind: VerticalPodAutoscaler
 metadata:
   name: app-vpa
@@ -480,16 +480,16 @@ spec:
 - Karpenter not provisioning: `[kubectl](../../other/kubectl/SKILL.md) logs -n karpenter karpenter`, check EC2NodeClass subnet/security group selectors.
 
 ## References
-  - ../../../Global_References/[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)-strategies.md — Combined [Autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) Strategy
+  - ../../../Global_References/[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)-strategies.md — Combined [Autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) Strategy
   - ../../../Global_References/cluster-autoscaler.md — Cluster Autoscaler
   - ../../../Global_References/hpa-patterns.md — Horizontal Pod Autoscaler (HPA)
   - ../../../Global_References/keda-scalers.md — Keda Scalers
-  - ../../../Global_References/[kubernetes](../../other/kubernetes/SKILL.md)-[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)-advanced.md — [Kubernetes](../../other/kubernetes/SKILL.md) [Autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) Advanced Topics
-  - ../../../Global_References/[kubernetes](../../other/kubernetes/SKILL.md)-[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)-fundamentals.md — [Kubernetes](../../other/kubernetes/SKILL.md) [Autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) Fundamentals
+  - ../../../Global_References/[kubernetes](../../other/kubernetes/SKILL.md)-[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)-advanced.md — [Kubernetes](../../other/kubernetes/SKILL.md) [Autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) Advanced Topics
+  - ../../../Global_References/[kubernetes](../../other/kubernetes/SKILL.md)-[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)-fundamentals.md — [Kubernetes](../../other/kubernetes/SKILL.md) [Autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) Fundamentals
   - ../../../Global_References/vpa-config.md — Vertical Pod Autoscaler (VPA)
 ## Handoff
 After completing this skill:
-- Next skill: **devops-[apm-observability](../../../AI_and_Agents/Operations/apm-[observability](../../Observability_and_SecOps/observability/SKILL.md)/SKILL.md)** — [Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) to monitor and inform [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)
+- Next skill: **devops-[apm-observability](../../../AI_and_Agents/Operations/apm-[observability](../../Observability_and_SecOps/observability/SKILL.md)/SKILL.md)** — [Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) to monitor and inform [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)
 - Pass context: HPA metric names, VPA recommendations, Keda scaler configuration, node group names
 
 ## Architecture Decision Trees
@@ -520,7 +520,7 @@ After completing this skill:
 ### YAML: HPA with Custom Prometheus Metrics
 
 ```yaml
-apiVersion: [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/v2
+apiVersion: [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: app-hpa
@@ -629,7 +629,7 @@ simulate_scale_up() {
 - Set **resource requests = limits** for burstable workloads to avoid VPA conflicts with HPA
 - Enable **cluster-proportional-autoscaler** for DNS and addon components
 - Monitor **HPA readiness** — an unhealthy pod under HPA doesn't count toward metrics
-- Use **predictive [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)** ([Kubernetes](../../other/kubernetes/SKILL.md) Event-driven [Autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) with forecasting) for slow-moving metrics
+- Use **predictive [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)** ([Kubernetes](../../other/kubernetes/SKILL.md) Event-driven [Autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) with forecasting) for slow-moving metrics
 
 ## Anti-Patterns
 

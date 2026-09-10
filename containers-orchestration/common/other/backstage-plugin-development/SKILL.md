@@ -32,7 +32,7 @@ depends_on:
 Backstage's catalog, TechDocs, and Software Templates cover the platform's
 baseline needs, but the moment a platform team wants to surface something
 that doesn't already have a plugin — an internal cost-allocation report, a
-custom deployment-approval workflow, a proprietary [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) tool's live
+custom deployment-approval workflow, a proprietary [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) tool's live
 status — the answer is a custom plugin, not a catalog annotation. Writing
 one badly (a frontend page that calls an external API directly with a
 hardcoded token, or a backend route bolted onto `packages/backend` instead
@@ -44,7 +44,7 @@ can extend it, and it fails predictably instead of silently. This skill
 covers scaffolding, structuring, wiring, and locally testing a custom
 Backstage plugin — it assumes the baseline catalog/TechDocs/Software
 Template setup from
-[backstage-developer-portal](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[backstage-developer-portal](../../../containers-orchestration/common/other/backstage-developer-portal/SKILL.md)/SKILL.md)
+[backstage-developer-portal](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[backstage-developer-portal](../backstage-developer-portal/SKILL.md)/SKILL.md)
 is already in place and does not repeat it.
 
 ## When to use
@@ -68,13 +68,13 @@ is already in place and does not repeat it.
 ## Prerequisites & environment
 
 - A working Backstage app created via `@backstage/create-app` (or an
-  existing [monorepo](../../Frontend/build-tools/monorepo/SKILL.md) with `packages/app`, `packages/backend`, and a
-  `plugins/` directory) — plugin development happens inside that [monorepo](../../Frontend/build-tools/monorepo/SKILL.md),
+  existing [monorepo](../../../../Software_Engineering_and_Other/Frontend/build-tools/monorepo/SKILL.md) with `packages/app`, `packages/backend`, and a
+  `plugins/` directory) — plugin development happens inside that [monorepo](../../../../Software_Engineering_and_Other/Frontend/build-tools/monorepo/SKILL.md),
   not as a standalone project.
 - Node.js and Yarn versions matching the app's `package.json` `engines`
   field — Backstage pins these tightly, and a mismatched Node version is a
   common source of `yarn new`/`yarn start` failures.
-- Backstage CLI tooling available via the [monorepo](../../Frontend/build-tools/monorepo/SKILL.md)'s dev dependencies
+- Backstage CLI tooling available via the [monorepo](../../../../Software_Engineering_and_Other/Frontend/build-tools/monorepo/SKILL.md)'s dev dependencies
   (`@backstage/cli`) — `yarn new` and `yarn start` are invoked through
   Yarn workspace scripts, not a globally installed CLI.
 - Familiarity with the **new backend system** (`createBackendPlugin`,
@@ -83,15 +83,15 @@ is already in place and does not repeat it.
   its 2023+ releases), the legacy `createRouter`-based backend plugin
   style is deprecated for new plugins; check `packages/backend/src/index.ts`
   to confirm which system the app is on before writing new backend code.
-- [TypeScript](../../Frontend/common/typescript/SKILL.md) familiarity — Backstage plugins are [TypeScript](../../Frontend/common/typescript/SKILL.md)-first, and the
+- [TypeScript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) familiarity — Backstage plugins are [TypeScript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)-first, and the
   scaffolded plugin templates assume it.
-- Write access to the [monorepo](../../Frontend/build-tools/monorepo/SKILL.md) (internal plugins are almost always
+- Write access to the [monorepo](../../../../Software_Engineering_and_Other/Frontend/build-tools/monorepo/SKILL.md) (internal plugins are almost always
   committed there, not published to npm).
 
 ## Step-by-step guidance
 
 1. **Scaffold a new frontend plugin** with the Backstage CLI's interactive
-   generator, run from the [monorepo](../../Frontend/build-tools/monorepo/SKILL.md) root:
+   generator, run from the [monorepo](../../../../Software_Engineering_and_Other/Frontend/build-tools/monorepo/SKILL.md) root:
    ```bash
    yarn new
    # ? What do you want to create? Plugin
@@ -117,7 +117,7 @@ is already in place and does not repeat it.
 
 3. **Define the frontend plugin and its route** in `src/plugin.ts` and
    `src/routes.ts`:
-   ```[typescript](../../Frontend/common/typescript/SKILL.md)
+   ```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
    // plugins/cost-insights-lite/src/routes.ts
    import { createRouteRef } from '@backstage/core-plugin-api';
 
@@ -125,7 +125,7 @@ is already in place and does not repeat it.
      id: 'cost-insights-lite',
    });
    ```
-   ```[typescript](../../Frontend/common/typescript/SKILL.md)
+   ```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
    // plugins/cost-insights-lite/src/plugin.ts
    import {
      createPlugin,
@@ -163,7 +163,7 @@ is already in place and does not repeat it.
 4. **Define the API client contract** via `createApiRef` so the page
    component never talks to `fetch()` directly — it depends on an
    interface the app wires an implementation into:
-   ```[typescript](../../Frontend/common/typescript/SKILL.md)
+   ```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
    // plugins/cost-insights-lite/src/api.ts
    import { createApiRef, DiscoveryApi, FetchApi } from '@backstage/core-plugin-api';
 
@@ -197,7 +197,7 @@ is already in place and does not repeat it.
 
 5. **Write the backend plugin on the new backend system**, declaring only
    the `coreServices` it actually needs:
-   ```[typescript](../../Frontend/common/typescript/SKILL.md)
+   ```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
    // plugins/cost-insights-lite-backend/src/plugin.ts
    import { createBackendPlugin, coreServices } from '@backstage/backend-plugin-api';
    import { createRouter } from './router';
@@ -221,7 +221,7 @@ is already in place and does not repeat it.
    });
    ```
    Register it in the app's backend entrypoint, `packages/backend/src/index.ts`:
-   ```[typescript](../../Frontend/common/typescript/SKILL.md)
+   ```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
    backend.add(import('@internal/plugin-cost-insights-lite-backend'));
    ```
    This one line is the only change `packages/backend` needs — the plugin
@@ -261,13 +261,13 @@ is already in place and does not repeat it.
    root to verify it inside the full app (catalog context, real
    `discoveryApi` resolving the real backend, entity-page routing).
 
-8. **Version and ship as part of the [monorepo](../../Frontend/build-tools/monorepo/SKILL.md) release**, not an
+8. **Version and ship as part of the [monorepo](../../../../Software_Engineering_and_Other/Frontend/build-tools/monorepo/SKILL.md) release**, not an
    independent npm publish: internal plugins are pinned to the app's
    Backstage core version by living in the same Yarn workspace, so a
    `yarn backstage-cli versions:bump` that upgrades core packages
-   upgrades the plugin's dependency versions in the same [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) — see the
+   upgrades the plugin's dependency versions in the same [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) — see the
    version-pinning guidance already covered in
-   [backstage-developer-portal](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[backstage-developer-portal](../../../containers-orchestration/common/other/backstage-developer-portal/SKILL.md)/SKILL.md),
+   [backstage-developer-portal](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[backstage-developer-portal](../backstage-developer-portal/SKILL.md)/SKILL.md),
    which applies unchanged here.
 
 ## Best practices
@@ -297,7 +297,7 @@ is already in place and does not repeat it.
 - **Prefer extending an existing community plugin (fork or contribute
   upstream) over building a near-duplicate from scratch** — check the
   Backstage plugin marketplace before scaffolding a new plugin for
-  something like [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) status, cost insight, or CI status, which
+  something like [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) status, cost insight, or CI status, which
   already have maintained community implementations.
 - **Don't put business logic that belongs to an existing internal service
   inside the Backstage backend plugin** — the backend plugin should be a
@@ -364,7 +364,7 @@ letting a developer approve a request without leaving Backstage.
    service, declaring `coreServices.logger`, `coreServices.httpRouter`,
    and `coreServices.httpAuth` (to forward the calling user's identity to
    the approvals service so "who approved this" is accurate):
-   ```[typescript](../../Frontend/common/typescript/SKILL.md)
+   ```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
    env.registerInit({
      deps: {
        logger: coreServices.logger,
@@ -400,6 +400,6 @@ code bolted onto `packages/app`/`packages/backend` directly.
 
 ## Cross-references
 
-- [backstage-developer-portal](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[backstage-developer-portal](../../../containers-orchestration/common/other/backstage-developer-portal/SKILL.md)/SKILL.md) — the baseline catalog/TechDocs/Software Template setup this plugin work is built on top of; read that first, it's not repeated here.
+- [backstage-developer-portal](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[backstage-developer-portal](../backstage-developer-portal/SKILL.md)/SKILL.md) — the baseline catalog/TechDocs/Software Template setup this plugin work is built on top of; read that first, it's not repeated here.
 - [platform-self-service-api-and-workflow-design](../[platform-self-service-api-and-workflow-design](../../../Product_and_Business/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md) — a common reason to write a custom plugin is to give a self-service provisioning workflow's API a first-class UI and Scaffolder action inside Backstage.
 - [platform-engineering-team-topology-and-operating-model](../[platform-engineering-team-topology-and-operating-model](../../../Product_and_Business/[platform-engineering](../../Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md) — who on the platform team owns building/maintaining plugins, and why plugin development should be run like product work for internal customers rather than a side project.

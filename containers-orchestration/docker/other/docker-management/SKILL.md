@@ -338,7 +338,7 @@ services:
     environment:
       POSTGRES_PASSWORD: secret
     volumes:
-      - db-data:/var/lib/[postgresql](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/data
+      - db-data:/var/lib/[postgresql](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)/data
 
 volumes:
   app-data:

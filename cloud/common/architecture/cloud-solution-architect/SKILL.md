@@ -38,7 +38,7 @@ Design well-architected, production-grade cloud systems following Azure Architec
 | 1 | **Design for self-healing** | Retry with backoff, circuit breaker, bulkhead isolation, health endpoint [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), graceful degradation |
 | 2 | **Make all things redundant** | Eliminate single points of failure, use availability zones, deploy multi-region, replicate data |
 | 3 | **Minimize coordination** | Decouple services, use async messaging, embrace eventual consistency, use domain events |
-| 4 | **Design to scale out** | Horizontal scaling, [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) rules, stateless services, avoid session stickiness, partition workloads |
+| 4 | **Design to scale out** | Horizontal scaling, [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) rules, stateless services, avoid session stickiness, partition workloads |
 | 5 | **Partition around limits** | Data partitioning (shard/hash/range), respect compute & network limits, use CDNs for static content |
 | 6 | **Design for operations** | Structured logging, distributed tracing, metrics & [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) automation, infrastructure as code |
 | 7 | **Use managed services** | Prefer PaaS over IaaS, reduce operational burden, leverage built-in HA/DR/scaling |
@@ -160,7 +160,7 @@ For each technology area, evaluate: **requirements → constraints → tradeoffs
 |------|-------------|-------------------|
 | **Compute** | App Service, Functions, Container Apps, AKS, VMs, Batch | Hosting model, scaling, cost, team skills |
 | **Storage** | Blob Storage, Data Lake, Files, Disks, Managed Lustre | Access patterns, throughput, cost tier |
-| **Data stores** | SQL Database, Cosmos DB, [PostgreSQL](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md), Redis, Table Storage | Consistency model, query patterns, scale |
+| **Data stores** | SQL Database, Cosmos DB, [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md), Redis, Table Storage | Consistency model, query patterns, scale |
 | **Messaging** | Service Bus, Event Hubs, Event Grid, Queue Storage | Ordering, throughput, pub/sub vs queue |
 | **Networking** | Front Door, Application Gateway, Load Balancer, Traffic Manager | Global vs regional, L4 vs L7, WAF |
 | **AI services** | Azure OpenAI, AI Search, AI Foundry, Document Intelligence | Model needs, data grounding, orchestration |
@@ -176,7 +176,7 @@ See [Technology Choices Reference](../../../../Global_References/technology-choi
 |----------|-------------|
 | **API design** | RESTful conventions, resource-oriented URIs, HATEOAS, versioning via URL path or header |
 | **API implementation** | Async operations, pagination, idempotent PUT/DELETE, content negotiation, ETag caching |
-| **[Autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)** | Scale on metrics (CPU, queue depth, custom), cool-down periods, predictive scaling, scale-in protection |
+| **[Autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)** | Scale on metrics (CPU, queue depth, custom), cool-down periods, predictive scaling, scale-in protection |
 | **Background jobs** | Use queues or scheduled triggers, idempotent processing, poison message handling, graceful shutdown |
 | **Caching** | Cache-aside pattern, TTL policies, cache invalidation strategies, distributed cache for multi-instance |
 | **CDN** | Static asset offloading, cache-busting with versioned URLs, geo-distribution, HTTPS enforcement |

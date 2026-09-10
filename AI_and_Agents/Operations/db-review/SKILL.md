@@ -57,7 +57,7 @@ specific to database work.
 3. **Every schema change is judged on lock behaviour, not just correctness.**
    For each migration, state the lock it takes, what it blocks, how long it holds
    at the table's actual row count, and whether it is safe under load. Engine and
-   version matter (`ADD COLUMN … DEFAULT` is cheap on [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) 11+ and a
+   version matter (`ADD COLUMN … DEFAULT` is cheap on [PostgreSQL](../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) 11+ and a
    rewrite before it) — name the engine and version you are reasoning about.
 4. **Reversibility is explicit.** Classify each change: reversible, reversible
    only with data loss, or irreversible (dropping a column, narrowing a type,
@@ -89,8 +89,8 @@ specific to database work.
 
 - **Migration safety** — blocking DDL under load (`ALTER TABLE` rewrites, adding
   a `NOT NULL` column without a safe default, type narrowing), index creation
-  without `CONCURRENTLY` ([PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)) or `ALGORITHM=INPLACE`/gh-ost/pt-osc
-  ([MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)), `ACCESS EXCLUSIVE` locks queueing behind a long-running query and
+  without `CONCURRENTLY` ([PostgreSQL](../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)) or `ALGORITHM=INPLACE`/gh-ost/pt-osc
+  ([MySQL](../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)), `ACCESS EXCLUSIVE` locks queueing behind a long-running query and
   blocking all readers, missing `lock_timeout`/`statement_timeout` on the
   migration session, adding a foreign key that validates the whole table,
   renaming or dropping a column still referenced by running code.

@@ -21,7 +21,7 @@ depends_on:
 
 # Autoscaling
 
-Autoscaling in [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) is a control loop stacked on a control loop: the HPA watches a metric and
+Autoscaling in [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) is a control loop stacked on a control loop: the HPA watches a metric and
 adjusts replica count, the scheduler places those replicas, and the cluster autoscaler watches for
 unschedulable pods and adds nodes. Every layer depends on the one below reporting truthfully — an
 HPA scaling on a metric that doesn't reflect real load, or replicas whose requests don't reflect
@@ -100,7 +100,7 @@ users experience the worst of an unhandled spike.
   a request shape (e.g. huge memory, tiny CPU) that doesn't match any available instance type will
   stay Pending forever, autoscaler or not.
 - **Bin-packing and node group choice** affect both cost and scale-up latency — that tradeoff is
-  covered from the cost angle in `[cost-optimization](../../../cloud/common/cost/cost-optimization/SKILL.md)` and `[rightsizing](../../../cloud/common/cost/rightsizing/SKILL.md)`.
+  covered from the cost angle in `[cost-optimization](../../../../cloud/common/cost/cost-optimization/SKILL.md)` and `[rightsizing](../../../../cloud/common/cost/rightsizing/SKILL.md)`.
 
 **Done when:** you've confirmed, under a load test, that the cluster autoscaler actually adds
 [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) fast enough for the workload's real spike shape.

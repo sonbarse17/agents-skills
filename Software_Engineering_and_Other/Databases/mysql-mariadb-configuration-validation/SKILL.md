@@ -24,11 +24,11 @@ depends_on:
   - mysql
 ---
 
-# [MySQL](../../Backend/mysql/SKILL.md)/MariaDB Configuration Validation
+# [MySQL](../mysql/SKILL.md)/MariaDB Configuration Validation
 
 ## Purpose
 
-A [MySQL](../../Backend/mysql/SKILL.md) or MariaDB configuration change that looks correct in isolation
+A [MySQL](../mysql/SKILL.md) or MariaDB configuration change that looks correct in isolation
 can still be unsafe in context: a `SET GLOBAL` change that only affects
 new sessions and silently leaves existing connections on the old value,
 a `max_connections` bump that overcommits RAM once
@@ -55,12 +55,12 @@ doesn't produce an outage instead of an improvement.
   GTID), to confirm `server_id`, `log_bin`, `gtid_mode`, and
   `enforce_gtid_consistency` are mutually consistent across every node
   in the topology.
-- Before changing ProxySQL (or another [MySQL](../../Backend/mysql/SKILL.md)-aware pooler) connection
+- Before changing ProxySQL (or another [MySQL](../mysql/SKILL.md)-aware pooler) connection
   pool sizes, to confirm the new backend pool size still fits under the
   database's `max_connections` with headroom for replication and
   [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) connections.
 - As a PR/change-review gate for [infrastructure-as-code](../../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) that manages
-  [MySQL](../../Backend/mysql/SKILL.md)/MariaDB configuration.
+  [MySQL](../mysql/SKILL.md)/MariaDB configuration.
 
 ## Prerequisites & environment
 
@@ -78,7 +78,7 @@ doesn't produce an outage instead of an improvement.
   replicas, their `server_id` values, and whether GTID mode is uniform
   across all of them) — mismatched `gtid_mode` between source and
   replica is a common, entirely preventable outage.
-- [MySQL](../../Backend/mysql/SKILL.md) 8.0+ or MariaDB 10.5+ assumed for `SET PERSIST` /
+- [MySQL](../mysql/SKILL.md) 8.0+ or MariaDB 10.5+ assumed for `SET PERSIST` /
   `SET GLOBAL ... PERSIST` availability; on older versions a dynamic
   `SET GLOBAL` change does not survive a restart unless also written to
   `my.cnf` by hand — validate which mechanism a proposed change actually
@@ -98,7 +98,7 @@ value came from a compiled default, `my.cnf`, a command-line option, or
 a persisted `SET PERSIST` — this distinguishes "changed in the config
 file but not yet loaded" from "changed live but will revert on restart."
 Some variables are dynamic but only partially so:
-`innodb_buffer_pool_size` can be resized online ([MySQL](../../Backend/mysql/SKILL.md) 5.7.5+/MariaDB
+`innodb_buffer_pool_size` can be resized online ([MySQL](../mysql/SKILL.md) 5.7.5+/MariaDB
 10.5+ support `SET GLOBAL innodb_buffer_pool_size = ...`), but the resize
 happens in chunks (`innodb_buffer_pool_chunk_size`) and can take
 significant time and I/O for a large pool — treat a large buffer pool
@@ -158,7 +158,7 @@ SHOW VARIABLES LIKE 'log_bin';
 - `gtid_mode` must match across source and every replica before GTID
   replication is enabled — a mismatched mode (e.g. source at `ON`,
   replica still at `OFF`) breaks `CHANGE REPLICATION SOURCE TO
-  SOURCE_AUTO_POSITION = 1` outright. [MySQL](../../Backend/mysql/SKILL.md)'s transition supports
+  SOURCE_AUTO_POSITION = 1` outright. [MySQL](../mysql/SKILL.md)'s transition supports
   intermediate states (`OFF_PERMISSIVE`, `ON_PERMISSIVE`) specifically
   to allow a rolling migration — validate every node passes through the
   same sequence in the same order, not a subset jumping straight to
@@ -172,7 +172,7 @@ SHOW VARIABLES LIKE 'log_bin';
 
 ```sql
 SHOW GRANTS FOR 'app_user'@'%';
-SELECT user, host FROM [mysql](../../Backend/mysql/SKILL.md).user WHERE user = 'app_user';
+SELECT user, host FROM [mysql](../mysql/SKILL.md).user WHERE user = 'app_user';
 ```
 Before tightening a grant's host scope (e.g. from `'app_user'@'%'` to
 `'app_user'@'10.0.1.0/255.255.255.0'`), confirm every real connecting
@@ -204,10 +204,10 @@ production change in a maintenance window.
 - Require every node in a replication topology to be validated for a
   unique `server_id` before it's brought online, ideally enforced by
   infra-as-code templating rather than manual entry.
-- Roll out a `gtid_mode` transition through [MySQL](../../Backend/mysql/SKILL.md)'s documented
+- Roll out a `gtid_mode` transition through [MySQL](../mysql/SKILL.md)'s documented
   intermediate states (`OFF` → `OFF_PERMISSIVE` → `ON_PERMISSIVE` →
   `ON`) across every node in lockstep, never skip a node or a stage.
-- Bake this validation into CI for infra-as-code-managed [MySQL](../../Backend/mysql/SKILL.md)/MariaDB
+- Bake this validation into CI for infra-as-code-managed [MySQL](../mysql/SKILL.md)/MariaDB
   config (asserting no restart-required parameter changed without an
   explicit flag in the PR) rather than relying on a reviewer to check by
   hand every time.
@@ -238,7 +238,7 @@ production change in a maintenance window.
   replica through the same permissive-mode transition first. Roll back
   to `OFF_PERMISSIVE`/`ON_PERMISSIVE` on all nodes, bring every replica
   through the same sequence in lockstep, and only set `ON` everywhere
-  once all nodes confirm the intermediate state, per [MySQL](../../Backend/mysql/SKILL.md)'s documented
+  once all nodes confirm the intermediate state, per [MySQL](../mysql/SKILL.md)'s documented
   GTID migration procedure.
 
 - **Symptom:** Connections from a specific application host are
@@ -248,7 +248,7 @@ production change in a maintenance window.
   **Fix:** `max_user_connections` for that specific account is set
   lower than the actual concurrent connection count from that host (a
   per-account cap, separate from the global ceiling). Check `SHOW GRANTS`
-  and `[mysql](../../Backend/mysql/SKILL.md).user.max_user_connections` for the specific account, not
+  and `[mysql](../mysql/SKILL.md).user.max_user_connections` for the specific account, not
   just the global variable.
 
 - **Symptom:** A change request proposes tightening `bind_address` and
@@ -269,7 +269,7 @@ production change in a maintenance window.
 ## Worked example
 
 **Scenario:** A change request proposes bumping `max_connections` from
-200 to 800 on a production [MySQL](../../Backend/mysql/SKILL.md) 8.0 primary to "fix connection
+200 to 800 on a production [MySQL](../mysql/SKILL.md) 8.0 primary to "fix connection
 exhaustion errors," alongside doubling `innodb_buffer_pool_size` from
 8GB to 16GB on a host with 32GB RAM, and enabling `gtid_mode` on a
 topology that currently has two replicas still running on file/position
@@ -308,4 +308,4 @@ replication.
 
 - [mysql-mariadb-operations-and-performance-tuning](../[mysql-mariadb-operations-and-performance-tuning](../[mysql](../../Backend/mysql/SKILL.md)-mariadb-operations-and-[performance-tuning](../../Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — the operational tuning work (replication mode, buffer pool sizing, indexing) whose proposed config changes this skill validates before rollout.
 - [mysql-mariadb-high-availability-and-replication](../[mysql-mariadb-high-availability-and-replication](../[mysql](../../Backend/mysql/SKILL.md)-mariadb-high-availability-and-replication/SKILL.md)/SKILL.md) — validates the GTID/`server_id` configuration this skill checks in the context of a full Galera/Group Replication HA topology.
-- [postgresql-configuration-validation](../[postgresql-configuration-validation](../../Miscellaneous/[postgresql](../../Backend/postgresql/SKILL.md)-configuration-validation/SKILL.md)/SKILL.md) — the equivalent pre-production config-review discipline for [PostgreSQL](../../Backend/postgresql/SKILL.md), useful as a comparison when both engines coexist in the same platform.
+- [postgresql-configuration-validation](../[postgresql-configuration-validation](../../Miscellaneous/[postgresql](../../Backend/postgresql/SKILL.md)-configuration-validation/SKILL.md)/SKILL.md) — the equivalent pre-production config-review discipline for [PostgreSQL](../postgresql/SKILL.md), useful as a comparison when both engines coexist in the same platform.

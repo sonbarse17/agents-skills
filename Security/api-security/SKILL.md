@@ -446,7 +446,7 @@ Health check, metrics, and admin endpoints exposed without authentication. `/act
   - ../../../Global_References/oauth2-deep-dive.md — OAuth2 Deep Dive
 ## Handoff
 `[security-sast-dast](../sast-dast/SKILL.md)` for API-specific DAST scanning
-`[backend-api-design](../../Software_Engineering_and_Other/Backend/api-design/SKILL.md)` for endpoint design and versioning
+`[backend-api-design](../../Software_Engineering_and_Other/Backend/api-design/api-design/SKILL.md)` for endpoint design and versioning
 ## Implementation Patterns
 
 ### Observer Pattern for Event Handling

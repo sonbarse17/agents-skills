@@ -39,7 +39,7 @@ pricing (from cloud provider billing APIs or custom pricing sheets) with
 actual [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) resource **requests and usage** at the pod/container
 level, then rolls that up by namespace, label, deployment, or any other
 [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) concept — turning an opaque node-level bill into per-team
-showback and chargeback numbers, and giving [rightsizing](../rightsizing/SKILL.md) and [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)
+showback and chargeback numbers, and giving [rightsizing](../rightsizing/SKILL.md) and [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)
 decisions a cost dimension instead of just a utilization one. This skill
 is [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-specific allocation; for the broader cross-cloud FinOps
 practices (tagging discipline, commitment discounts, anomaly response)
@@ -178,7 +178,7 @@ below.
    with the dollar amount attached, which lands better than a raw
    utilization percentage.
 
-8. **Feed cost signals into [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/node-shape decisions.** Query
+8. **Feed cost signals into [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)/node-shape decisions.** Query
    Kubecost's cluster-level `savings` recommendations
    (`/model/savings/requestSizingV2`) and cross-reference with node-pool
    composition: workloads that are cost-sensitive and interruption-

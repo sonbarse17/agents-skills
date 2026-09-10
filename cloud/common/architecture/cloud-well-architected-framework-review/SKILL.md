@@ -148,7 +148,7 @@ a substitute for the standards-mapping and legal/[audit](../../../../AI_and_Agen
 5. **Identify cross-pillar trade-offs explicitly.** Well-Architected
    reviews frequently surface tensions — e.g. a reliability improvement
    (multi-region active-active) that directly increases cost, or a cost
-   optimization (aggressive [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) to zero) that increases latency
+   optimization (aggressive [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) to zero) that increases latency
    variance. Document the trade-off and who decided how to resolve it
    rather than optimizing one pillar in isolation.
 6. **Convert every finding into a backlog item** with: pillar, finding,
@@ -243,7 +243,7 @@ Scoring scale: 1 (significant gaps) – 5 (best-practice aligned).
 | Operational excellence | 3/5 | Deploys via CI/CD, but no automated rollback; on-call [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) exists but last updated 14 months ago | [Runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) stale; no automated rollback on failed deploy |
 | Security | 4/5 | IAM roles scoped per-service, secrets in [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), but one legacy EC2 instance still uses a long-lived static credential | Legacy instance not yet migrated to federated/instance-role auth |
 | Reliability | 2/5 | Primary RDS instance is single-AZ; no documented/tested failover; RTO target of 1 hour is unverified | Single-AZ database is a single point of failure against the stated RTO |
-| Performance efficiency | 4/5 | [Autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) configured with headroom, p99 latency within SLO for 11 of 12 months | Minor: cache hit ratio below target during flash-sale traffic spikes |
+| Performance efficiency | 4/5 | [Autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) configured with headroom, p99 latency within SLO for 11 of 12 months | Minor: cache hit ratio below target during flash-sale traffic spikes |
 | Cost optimization | 2/5 | <30% of compute spend covered by Savings Plans/Reserved Instances; several oversized instances flagged idle >30 days | Low commitment coverage and unaddressed idle-resource findings |
 | Sustainability | 2/5 | Workload runs in a single region chosen for latency, not evaluated for carbon intensity; several dev/test resources run 24/7 unnecessarily | No non-prod scheduling; region carbon-intensity not evaluated |
 

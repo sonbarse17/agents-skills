@@ -34,7 +34,7 @@ Deploy and manage Amazon EC2 compute instances for production, staging, and deve
 ## Prerequisites
 
 - AWS CLI v2 installed and configured (`aws configure`)
-- IAM permissions: `ec2:*`, `[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md):*`, `elasticloadbalancing:*`, `iam:PassRole`
+- IAM permissions: `ec2:*`, `[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md):*`, `elasticloadbalancing:*`, `iam:PassRole`
 - An existing VPC with subnets (see [aws-vpc](../[aws-vpc](../aws-vpc/SKILL.md)/))
 - SSH key pair created (`aws ec2 create-key-pair --key-name my-key --query 'KeyMaterial' --output text > my-key.pem`)
 
@@ -171,7 +171,7 @@ aws ec2 modify-launch-template \
 
 ```bash
 # Create ASG with mixed instances (on-demand + spot)
-aws [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) create-auto-scaling-group \
+aws [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) create-auto-scaling-group \
   --auto-scaling-group-name web-asg \
   --mixed-instances-policy '{
     "LaunchTemplate": {
@@ -202,7 +202,7 @@ aws [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling
   ]'
 
 # Create target tracking scaling policy (target 60% CPU)
-aws [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) put-scaling-policy \
+aws [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) put-scaling-policy \
   --auto-scaling-group-name web-asg \
   --policy-name cpu-target-tracking \
   --policy-type TargetTrackingScaling \
@@ -216,13 +216,13 @@ aws [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling
   }'
 
 # Create scheduled scaling for known traffic patterns
-aws [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) put-scheduled-update-group-action \
+aws [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) put-scheduled-update-group-action \
   --auto-scaling-group-name web-asg \
   --scheduled-action-name scale-up-morning \
   --recurrence "0 8 * * MON-FRI" \
   --min-size 4 --max-size 20 --desired-[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) 8
 
-aws [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) put-scheduled-update-group-action \
+aws [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) put-scheduled-update-group-action \
   --auto-scaling-group-name web-asg \
   --scheduled-action-name scale-down-evening \
   --recurrence "0 20 * * MON-FRI" \

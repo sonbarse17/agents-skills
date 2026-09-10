@@ -58,7 +58,7 @@ that infrastructure is covered by
   workloads that don't need a full GPU (inference, notebooks, small
   fine-tuning jobs).
 - Designing GPU node pools — which GPU SKU per pool, taints/tolerations,
-  [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) behavior, and how training and serving workloads should be
+  [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) behavior, and how training and serving workloads should be
   separated or shared across pools.
 - Reducing GPU fragmentation or idle spend caused by poor bin-packing
   (many nodes running one small job each instead of packed onto fewer
@@ -155,7 +155,7 @@ that infrastructure is covered by
 4. **Design node pools around workload shape, not just GPU SKU.** Separate
    pools for training (larger GPUs, full-card or large MIG slices, tolerant
    of longer scheduling latency) and serving (smaller MIG slices or
-   time-sliced GPUs, low-latency [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)) prevent a long-running
+   time-sliced GPUs, low-latency [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)) prevent a long-running
    training job from starving a latency-sensitive serving deployment of
    [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), and vice versa:
    ```yaml
@@ -204,7 +204,7 @@ that infrastructure is covered by
    the cluster autoscaler/Karpenter scale down empty nodes) is usually
    cheaper. See
    [karpenter-cluster-autoscaling](../../../[observability](../../Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[karpenter-cluster-autoscaling](../../Containers_and_Orchestration/karpenter-cluster-[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/SKILL.md)/SKILL.md)
-   for consolidation-aware node [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) that complements this.
+   for consolidation-aware node [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) that complements this.
 
 6. **Enable time-slicing or MPS for workloads that tolerate GPU sharing**
    without hard MIG isolation (e.g. many low-traffic inference replicas):
@@ -424,7 +424,7 @@ spread thin across more nodes than needed.
 
 - [gpu-accelerator-configuration-validation](../[gpu-accelerator-configuration-validation](../gpu-accelerator-configuration-validation/SKILL.md)/SKILL.md) — validating that a specific job's resource requests/tolerations actually match this infrastructure before it runs, catching silent CPU fallback.
 - [training-pipeline-orchestration](../[training-pipeline-orchestration](../../../AI_and_Agents/Models_and_FineTuning/training-pipeline-orchestration/SKILL.md)/SKILL.md) — the pipeline layer that submits training jobs onto the GPU infrastructure built here.
-- [model-serving-and-scaling](../[model-serving-and-scaling](../../../AI_and_Agents/Models_and_FineTuning/model-serving-and-scaling/SKILL.md)/SKILL.md) — serving-side [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) and latency concerns for workloads running on the serving GPU pool.
+- [model-serving-and-scaling](../[model-serving-and-scaling](../../../AI_and_Agents/Models_and_FineTuning/model-serving-and-scaling/SKILL.md)/SKILL.md) — serving-side [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) and latency concerns for workloads running on the serving GPU pool.
 - [ray-distributed-ml-orchestration](../[ray-distributed-ml-orchestration](../../../Data_Engineering/ray-distributed-ml-orchestration/SKILL.md)/SKILL.md) and [kubeflow-[ml-pipeline](../../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../[kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../../Containers_and_Orchestration/kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md) — orchestration tools that schedule distributed training/serving workloads onto this GPU infrastructure.
-- [karpenter-cluster-autoscaling](../../../[observability](../../Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[karpenter-cluster-autoscaling](../../Containers_and_Orchestration/karpenter-cluster-[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/SKILL.md)/SKILL.md) — node-level [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) and consolidation that complements the bin-packing strategy here.
+- [karpenter-cluster-autoscaling](../../../[observability](../../Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[karpenter-cluster-autoscaling](../../Containers_and_Orchestration/karpenter-cluster-[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/SKILL.md)/SKILL.md) — node-level [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) and consolidation that complements the bin-packing strategy here.
 - [managed-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-eks-aks-gke](../../Containers_and_Orchestration/managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md) — cloud-provider-specific GPU node pool/AMI considerations that interact with the GPU Operator install choice.

@@ -71,7 +71,7 @@ Direct file write. No response text.
 ### Design-First vs Code-First vs Hybrid
 | Approach | Pros | Cons | Best For |
 |---|---|---|---|
-| Design-first | Contract before code, stakeholder review, language-agnostic spec | Can diverge from implementation | Public APIs, multiple consumers, [microservices](../../Patterns/microservices/SKILL.md) |
+| Design-first | Contract before code, stakeholder review, language-agnostic spec | Can diverge from implementation | Public APIs, multiple consumers, [microservices](../../../Patterns/microservices/SKILL.md) |
 | Code-first | Always in sync, less duplication | Spec polluted with implementation details | Internal APIs, single consumer, fast iteration |
 | Hybrid | Spec is single source of truth, code generates from spec | Requires discipline | Most production APIs |
 
@@ -99,7 +99,7 @@ Direct file write. No response text.
 | Swagger UI | Open source, customizable | Basic UX, no search |
 | Redoc | Beautiful, search, code samples | Read-only (no try-it) |
 | Stoplight Elements | Components-based, try-it | Less UI flexibility |
-| Postman | Collections, testing, [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) | Vendor lock-in |
+| Postman | Collections, testing, [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) | Vendor lock-in |
 | readme.io | Hosted, analytics, guides | SaaS, paid tiers |
 | Backstage (API docs) | Integrated portal | Requires Backstage setup |
 
@@ -422,7 +422,7 @@ rules:
 # dredd.yml
 dry-run: null
 hookfiles: ./tests/hooks/*.py
-language: [python](../../Languages/python/SKILL.md)
+language: [python](../../../Languages/python/SKILL.md)
 server: npm run start:test
 server-wait: 3
 init: false
@@ -444,7 +444,7 @@ path: []
 hooks-worker-timeout: 5000
 sandbox: false
 ```
-```[python](../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/SKILL.md)
 # tests/hooks/hooks.py
 import dredd_hooks as hooks
 import json
@@ -469,7 +469,7 @@ def set_auth_header(transaction):
 
 ### Step 5: CI/CD Integration
 ```yaml
-# .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/api-docs.yml
+# .[github](../../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/api-docs.yml
 name: API Documentation Checks
 on:
   pull_request:
@@ -510,7 +510,7 @@ jobs:
   build-docs:
     needs: [lint, validate-examples]
     runs-on: ubuntu-latest
-    if: [github](../../../ci-cd/github-actions/other/github/SKILL.md).ref == 'refs/heads/main'
+    if: [github](../../../../ci-cd/github-actions/other/github/SKILL.md).ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v4
       - run: npm install -g redoc-cli
@@ -611,7 +611,7 @@ No deprecation policy or sunset headers. Consumers get no warning before breakin
 - Review spec changes in PRs using rendered diff tools.
 - Maintain an API style guide (Spectral ruleset).
 - Register new APIs in a service catalog (Backstage, API portal).
-- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) deprecated endpoints quarterly.
+- [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) deprecated endpoints quarterly.
 
 ## Troubleshooting
 
@@ -630,7 +630,7 @@ No deprecation policy or sunset headers. Consumers get no warning before breakin
 - Every schema must have `type` and `properties`.
 - Use `$ref` for reusable components — no inline schema duplication.
 - Pin OpenAPI version (3.0.3 or 3.1.0) — never use "3.0" without patch.
-- Lint with Spectral using `spectral:oas` ruleset before every [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md).
+- Lint with Spectral using `spectral:oas` ruleset before every [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md).
 - Every 4xx response must include a documented error schema.
 - No "see source code" in descriptions — API docs must be self-contained.
 

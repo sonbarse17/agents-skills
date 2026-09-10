@@ -540,7 +540,7 @@ Messages fail, go to DLQ, but nobody monitors it. DLQ messages accumulate and ev
 - ../../../Global_References/etl-integration.md -- ETL Integration Patterns
 - ../../../Global_References/enterprise-integration-architecture.md -- Enterprise Integration Architecture
   - ../../../Global_References/event-driven-integration.md -- Event-Driven Integration
-  - ../../../Global_References/[api-gateway](../../Backend/api-gateway/SKILL.md)-patterns.md -- API Gateway Patterns
+  - ../../../Global_References/[api-gateway](../../Backend/api-gateway/api-gateway/SKILL.md)-patterns.md -- API Gateway Patterns
 
 ## Handoff
 For [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) integration SLAs, hand off to `[enterprise-sla-management](../../../observability-monitoring-logging/common/sli-slo-sla/sla-management/SKILL.md)`. For data governance across integrations, hand off to `[enterprise-data-governance](../../../Data_Engineering/data-governance/SKILL.md)`.

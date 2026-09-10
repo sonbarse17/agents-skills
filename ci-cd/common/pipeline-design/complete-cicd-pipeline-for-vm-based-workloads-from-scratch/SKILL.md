@@ -170,12 +170,12 @@ all.
 ### Phase 5a — Deploy: blue-green instance-group/ASG swap (immutable path)
 
 ```bash
-aws [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) create-launch-template-version \
+aws [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) create-launch-template-version \
   --launch-template-name payments-api-lt \
   --source-version 1 \
   --launch-template-data "{\"ImageId\":\"${NEW_AMI_ID}\"}"
 
-aws [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) start-instance-refresh \
+aws [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) start-instance-refresh \
   --auto-scaling-group-name payments-api-asg \
   --preferences '{"MinHealthyPercentage": 90, "InstanceWarmup": 120}'
 ```
@@ -237,7 +237,7 @@ runs against production.
 
 ### Phase 6 — Verify
 
-Immutable path: `aws [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) describe-instance-refreshes` shows
+Immutable path: `aws [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) describe-instance-refreshes` shows
 `Successful`, and the target group's healthy-host count matches the ASG's
 desired [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md). Mutable path: re-run the playbook's health-check task
 against the full inventory, or a separate smoke-test job, to confirm every
@@ -278,7 +278,7 @@ batch converged, not just the last one [Ansible](../../../../infrastructure-as-c
   **Fix:** This is the destructive-step warning in Phase 5a in practice —
   set `MinHealthyPercentage` conservatively and watch the refresh's
   progress on the first batch before it proceeds; if it's already
-  underway and failing, `aws [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) cancel-instance-refresh` halts
+  underway and failing, `aws [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) cancel-instance-refresh` halts
   further replacement, and a second instance refresh targeting the prior
   launch template version is the rollback path (there is no automatic
   revert).
@@ -357,14 +357,14 @@ jobs:
       - run: packer build -var "build_number=${{ [github](../../../github-actions/other/github/SKILL.md).sha }}" payments-api.pkr.hcl
       - run: |
           NEW_AMI_ID=$(cat manifest.json | jq -r '.builds[-1].artifact_id' | cut -d: -f2)
-          aws [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) create-launch-template-version \
+          aws [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) create-launch-template-version \
             --launch-template-name payments-api-lt --source-version 1 \
             --launch-template-data "{\"ImageId\":\"$NEW_AMI_ID\"}"
-          aws [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) start-instance-refresh \
+          aws [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) start-instance-refresh \
             --auto-scaling-group-name payments-api-asg \
             --preferences '{"MinHealthyPercentage": 90, "InstanceWarmup": 120}'
 ```
-`aws [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) describe-instance-refreshes --auto-scaling-group-name
+`aws [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) describe-instance-refreshes --auto-scaling-group-name
 payments-api-asg` is polled (or alerted on) until `Status: Successful`,
 confirming every instance in the ASG is now running the new AMI — with
 `MinHealthyPercentage: 90` ensuring the ALB always has enough healthy

@@ -283,7 +283,7 @@ done
 ## Virtual Machine Scale Sets
 
 ```bash
-# Create VMSS with [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)
+# Create VMSS with [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)
 az vmss create \
   --resource-group compute-rg \
   --name myapp-vmss \

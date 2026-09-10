@@ -227,7 +227,7 @@ services:
     ports:
       - "9000:9000"
     environment:
-      - SONAR_JDBC_URL=jdbc:[postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)://db:5432/sonar
+      - SONAR_JDBC_URL=jdbc:[postgresql](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)://db:5432/sonar
       - SONAR_JDBC_USERNAME=sonar
       - SONAR_JDBC_PASSWORD=sonar
     volumes:
@@ -243,7 +243,7 @@ services:
       - POSTGRES_PASSWORD=sonar
       - POSTGRES_DB=sonar
     volumes:
-      - postgresql_data:/var/lib/[postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/data
+      - postgresql_data:/var/lib/[postgresql](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)/data
 
 volumes:
   sonarqube_data:

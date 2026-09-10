@@ -59,13 +59,13 @@ Load detailed guidance based on context:
 |-------|-----------|-----------|
 | Query Optimization | `../../../Global_References/database-optimizer_query-optimization.md` | Analyzing slow queries, execution plans |
 | Index Strategies | `../../../Global_References/index-strategies.md` | Designing indexes, covering indexes |
-| [PostgreSQL](../../Backend/postgresql/SKILL.md) Tuning | `../../../Global_References/[postgresql](../../Backend/postgresql/SKILL.md)-tuning.md` | [PostgreSQL](../../Backend/postgresql/SKILL.md)-specific optimizations |
-| [MySQL](../../Backend/mysql/SKILL.md) Tuning | `../../../Global_References/[mysql](../../Backend/mysql/SKILL.md)-tuning.md` | [MySQL](../../Backend/mysql/SKILL.md)-specific optimizations |
+| [PostgreSQL](../postgresql/SKILL.md) Tuning | `../../../Global_References/[postgresql](../postgresql/SKILL.md)-tuning.md` | [PostgreSQL](../postgresql/SKILL.md)-specific optimizations |
+| [MySQL](../mysql/SKILL.md) Tuning | `../../../Global_References/[mysql](../mysql/SKILL.md)-tuning.md` | [MySQL](../mysql/SKILL.md)-specific optimizations |
 | [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) & Analysis | `../../../Global_References/[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-analysis.md` | Performance metrics, diagnostics |
 
 ## Common Operations & Examples
 
-### Identify Top Slow Queries ([PostgreSQL](../../Backend/postgresql/SKILL.md))
+### Identify Top Slow Queries ([PostgreSQL](../postgresql/SKILL.md))
 ```sql
 -- Requires pg_stat_statements extension
 SELECT query,
@@ -122,7 +122,7 @@ FROM   pg_stat_user_indexes
 WHERE  relname = 'orders';
 ```
 
-### [MySQL](../../Backend/mysql/SKILL.md): Find Slow Queries
+### [MySQL](../mysql/SKILL.md): Find Slow Queries
 ```sql
 -- Inspect slow query log candidates
 SELECT * FROM performance_schema.events_statements_summary_by_digest
@@ -139,7 +139,7 @@ SELECT * FROM orders WHERE status = 'pending' AND created_at > NOW() - INTERVAL 
 ### MUST DO
 - Capture `EXPLAIN (ANALYZE, BUFFERS)` output **before** optimizing — this is the baseline
 - Measure performance before and after every change
-- Create indexes with `CONCURRENTLY` ([PostgreSQL](../../Backend/postgresql/SKILL.md)) to avoid table locks
+- Create indexes with `CONCURRENTLY` ([PostgreSQL](../postgresql/SKILL.md)) to avoid table locks
 - Test in non-production; roll back if write performance or replication lag worsens
 - Document all optimization decisions with before/after metrics
 - Run `ANALYZE` after bulk data changes to refresh statistics

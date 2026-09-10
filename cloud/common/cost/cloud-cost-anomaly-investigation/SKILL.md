@@ -84,7 +84,7 @@ step 1 for standing that up first.
   [cloud-cost-finops-optimization](../[cloud-cost-finops-optimization](../cloud-cost-finops-optimization/SKILL.md)/SKILL.md)
   for closing tagging gaps.
 - Knowledge of (or access to) a change log/deploy history (CI/CD deploy
-  events, Terraform apply history, [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) group activity history)
+  events, Terraform apply history, [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) group activity history)
   to correlate a cost change with a specific engineering event, not just
   a calendar date.
 
@@ -196,7 +196,7 @@ step 1 for standing that up first.
      and time window).
    - The CI/CD deploy history or Terraform state history for the same
      window — a cost step-change that lines up with a deploy timestamp is
-     almost always attributable to that change (a new [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) max, a
+     almost always attributable to that change (a new [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) max, a
      larger instance type, a new always-on resource, a misconfigured
      retry loop generating excess API calls/data transfer).
 
@@ -306,7 +306,7 @@ step 1 for standing that up first.
   **Fix:** The finding stopped at the service level instead of the
   specific resource/tag/root-cause level, so nothing specific could be
   monitored going forward. Push every investigation down to a named
-  resource and a named root cause (a specific [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) group's max
+  resource and a named root cause (a specific [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) group's max
   size, a specific misconfigured retry loop), and set a scoped anomaly
   monitor on that dimension afterward.
 
@@ -345,7 +345,7 @@ the current billing cycle.
    Compute Cloud - Compute," not a gradual ramp across multiple services.
 2. Narrow by `USAGE_TYPE` (step 2): the increase is almost entirely
    `BoxUsage:m5.4xlarge` in `eu-west-1`, not spread across instance
-   types — pointing at a specific [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) group or fleet, not
+   types — pointing at a specific [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) group or fleet, not
    general traffic growth.
 3. Group by the `team` cost-allocation tag (step 3): 95% of the new
    `m5.4xlarge` spend carries `team=search-indexing`.
@@ -356,7 +356,7 @@ the current billing cycle.
 5. Confirm with the `search-indexing` team lead (step 5): the change was
    an accidental copy-paste in a Terraform PR meant to raise a *different*
    ASG's max size for an unrelated load test; the `search-indexing` ASG's
-   actual [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) demand never required more than ~12 instances, so
+   actual [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) demand never required more than ~12 instances, so
    the fleet scaled up to near the new (wrong) ceiling under normal load
    and stayed there.
 6. Fix: revert the `MaxSize` to 10 via the same Terraform-managed

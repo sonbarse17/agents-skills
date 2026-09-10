@@ -125,8 +125,8 @@ cloud's own load balancer, ACM/managed-cert service, and managed database
 — this phase exists specifically because this variant deliberately avoids
 those.
 
-**Phase 3 — Backstage on the cluster, backed by in-cluster [PostgreSQL](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md).**
-Package Backstage as a Helm chart and deploy it against a [PostgreSQL](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)
+**Phase 3 — Backstage on the cluster, backed by in-cluster [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md).**
+Package Backstage as a Helm chart and deploy it against a [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)
 instance running as a StatefulSet inside the same cluster (or a
 CloudNativePG-style operator-managed instance, still in-cluster) rather
 than any cloud-managed database service — this is the phase where the
@@ -260,7 +260,7 @@ and
 
 - **Symptom:** The in-cluster Postgres catalog database (Phase 3) runs out
   of disk and Backstage goes fully read-only with no warning beforehand.
-  **Fix:** There's no cloud-managed storage-[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) safety net in this
+  **Fix:** There's no cloud-managed storage-[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) safety net in this
   variant; set up a PVC usage alert well below [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) and a documented
   volume-expansion [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) (`[kubectl](../kubectl/SKILL.md) edit pvc` with a CSI driver that
   supports online expansion) before this becomes a production [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md),

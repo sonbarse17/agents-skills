@@ -135,8 +135,8 @@ gcloud compute instance-groups managed create web-mig \
   --region=us-central1 \
   --health-check=http-health-check --initial-delay=120
 
-# Configure [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)
-gcloud compute instance-groups managed set-[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) web-mig \
+# Configure [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)
+gcloud compute instance-groups managed set-[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) web-mig \
   --region=us-central1 \
   --min-num-replicas=2 --max-num-replicas=10 \
   --target-cpu-utilization=0.65 --cool-down-period=90

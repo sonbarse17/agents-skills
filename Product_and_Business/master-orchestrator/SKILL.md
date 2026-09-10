@@ -111,7 +111,7 @@ State: docs/prd exists, no docs/decisions or docs/specs.
 
 State: Architecture docs exist, user describes a backend task.
   1. Detect stack (read package.json / Cargo.toml / go.mod / requirements.txt / pom.xml)
-  2. Route to {stack}-architecture and [backend-api-design](../../Software_Engineering_and_Other/Backend/api-design/SKILL.md)
+  2. Route to {stack}-architecture and [backend-api-design](../../Software_Engineering_and_Other/Backend/api-design/api-design/SKILL.md)
 
 State: Architecture docs exist, user describes a frontend task.
   1. Detect framework (read package.json for react/next/vue/angular)
@@ -231,17 +231,17 @@ State: Ruby on Rails stack detected (Gemfile, rails).
 
 State: PHP stack detected (composer.json, PHP files).
   1. Read composer.json for framework.
-  2. Route to [php-laravel](../../Software_Engineering_and_Other/Backend/laravel/SKILL.md) if "laravel/framework" in require.
-  3. Route to [php-zend](../../Software_Engineering_and_Other/Backend/zend/SKILL.md) if "laminas/laminas-mvc" or "zendframework/zend-mvc" in require.
+  2. Route to [php-laravel](../../Software_Engineering_and_Other/Backend/frameworks/laravel/SKILL.md) if "laravel/framework" in require.
+  3. Route to [php-zend](../../Software_Engineering_and_Other/Backend/frameworks/zend/SKILL.md) if "laminas/laminas-mvc" or "zendframework/zend-mvc" in require.
   4. Route to [php-pure](../../Software_Engineering_and_Other/Miscellaneous/pure/SKILL.md) otherwise.
   Reason: "PHP stack detected. Routing to appropriate PHP framework."
 
 State: User asks about Laravel, Artisan, Eloquent, Blade.
-  Route: [php-laravel](../../Software_Engineering_and_Other/Backend/laravel/SKILL.md)
+  Route: [php-laravel](../../Software_Engineering_and_Other/Backend/frameworks/laravel/SKILL.md)
   Reason: "Laravel framework request."
 
 State: User asks about Zend, Laminas, Zend Framework, ZF3.
-  Route: [php-zend](../../Software_Engineering_and_Other/Backend/zend/SKILL.md)
+  Route: [php-zend](../../Software_Engineering_and_Other/Backend/frameworks/zend/SKILL.md)
   Reason: "Zend/Laminas framework request."
 
 State: User asks about plain PHP, pure PHP, PHP without framework, PSR-7, PSR-15.
@@ -265,11 +265,11 @@ State: [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) 
   Reason: "Flask backend detected."
 
 State: User asks about Hono, Hono backend, Hono middleware.
-  Route: [nodejs-hono](../../Software_Engineering_and_Other/Backend/hono/SKILL.md)
+  Route: [nodejs-hono](../../Software_Engineering_and_Other/Backend/frameworks/hono/SKILL.md)
   Reason: "Hono backend request."
 
 State: User asks about Fastify, Fastify backend, Fastify plugins.
-  Route: [nodejs-fastify](../../Software_Engineering_and_Other/Backend/fastify/SKILL.md)
+  Route: [nodejs-fastify](../../Software_Engineering_and_Other/Backend/frameworks/fastify/SKILL.md)
   Reason: "Fastify backend request."
 
 State: Deno stack detected with Oak (oak in imports).
@@ -281,12 +281,12 @@ State: Swift stack detected with Vapor (Vapor in Package.swift).
   Reason: "Swift Vapor backend detected."
 
 State: Scala stack detected with Play (Play Framework in build.sbt).
-  Route: [scala-play](../../Software_Engineering_and_Other/Backend/play/SKILL.md)
+  Route: [scala-play](../../Software_Engineering_and_Other/Backend/frameworks/play/SKILL.md)
   Reason: "Scala Play backend detected."
 
-State: Java stack detected with [Micronaut](../../Software_Engineering_and_Other/Backend/micronaut/SKILL.md) ([micronaut](../../Software_Engineering_and_Other/Backend/micronaut/SKILL.md) in build config).
-  Route: java-[micronaut](../../Software_Engineering_and_Other/Backend/micronaut/SKILL.md)
-  Reason: "[Micronaut](../../Software_Engineering_and_Other/Backend/micronaut/SKILL.md) backend detected."
+State: Java stack detected with [Micronaut](../../Software_Engineering_and_Other/Backend/frameworks/micronaut/SKILL.md) ([micronaut](../../Software_Engineering_and_Other/Backend/frameworks/micronaut/SKILL.md) in build config).
+  Route: java-[micronaut](../../Software_Engineering_and_Other/Backend/frameworks/micronaut/SKILL.md)
+  Reason: "[Micronaut](../../Software_Engineering_and_Other/Backend/frameworks/micronaut/SKILL.md) backend detected."
 
 State: Java stack detected with Quarkus (quarkus in build config).
   Route: java-quarkus
@@ -437,7 +437,7 @@ State: User asks about Dependabot, Renovate, dependency updates, vulnerability s
   Reason: "Dependency management automation request."
 
 State: User asks about API documentation, Swagger, OpenAPI, API spec generation.
-  Route: [api-documentation](../../Software_Engineering_and_Other/Backend/api-documentation/SKILL.md)
+  Route: [api-documentation](../../Software_Engineering_and_Other/Backend/api-design/api-documentation/SKILL.md)
   Reason: "API documentation generation request."
 
 State: User asks about [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md), tracing, [OpenTelemetry](../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md), distributed tracing, span.
@@ -449,7 +449,7 @@ State: User asks about caching, Redis cache, CDN, cache strategy, cache invalida
   Reason: "Caching strategy and implementation request."
 
 State: User asks about API gateway, Kong, Nginx reverse proxy, AWS API Gateway, gateway pattern, BFF, API proxy, gateway aggregation.
-  Route: [api-gateway](../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md)
+  Route: [api-gateway](../../Software_Engineering_and_Other/Backend/api-gateway/api-gateway/SKILL.md)
   Reason: "API gateway configuration request."
 
 State: User asks about rate limiting, throttling, API rate limit, backpressure.
@@ -469,7 +469,7 @@ State: User asks about accessibility, a11y, WCAG, screen reader, ARIA.
   Reason: "Frontend accessibility request."
 
 State: User asks about design system, component library, Storybook, tokens.
-  Route: [frontend-design-system](../../Software_Engineering_and_Other/Backend/design-system/SKILL.md)
+  Route: [frontend-design-system](../../Software_Engineering_and_Other/Frontend/ui-ux/design-system/SKILL.md)
   Reason: "Design system and component library request."
 
 State: User asks about frontend performance, Core Web Vitals, Lighthouse, LCP, CLS, INP.
@@ -629,7 +629,7 @@ State: User asks about resilience, circuit breaker, retry, bulkhead, rate limiti
   Reason: "Resilience patterns request."
 
 State: User asks about OpenAPI, Swagger, API specification.
-  Route: [backend-openapi-documentation](../../Software_Engineering_and_Other/Backend/openapi-documentation/SKILL.md)
+  Route: [backend-openapi-documentation](../../Software_Engineering_and_Other/Backend/api-design/openapi-documentation/SKILL.md)
   Reason: "OpenAPI documentation request."
 
 State: User asks about contract testing, Pact, consumer-driven contracts.
@@ -637,7 +637,7 @@ State: User asks about contract testing, Pact, consumer-driven contracts.
   Reason: "Contract testing request."
 
 State: User asks about idempotency, idempotent API, duplicate detection.
-  Route: [backend-idempotency](../../Software_Engineering_and_Other/Backend/idempotency/SKILL.md)
+  Route: [backend-idempotency](../../Software_Engineering_and_Other/Backend/patterns/idempotency/SKILL.md)
   Reason: "Idempotency request."
 
 State: User asks about distributed lock, Redlock, distributed mutex, lease.
@@ -645,11 +645,11 @@ State: User asks about distributed lock, Redlock, distributed mutex, lease.
   Reason: "Distributed locking request."
 
 State: User asks about webhook, webhook delivery, outgoing webhook.
-  Route: [backend-webhooks](../../Software_Engineering_and_Other/Backend/webhooks/SKILL.md)
+  Route: [backend-webhooks](../../Software_Engineering_and_Other/Backend/patterns/webhooks/SKILL.md)
   Reason: "Webhook request."
 
 State: User asks about API versioning, version strategy, versioning header.
-  Route: [backend-api-versioning](../../Software_Engineering_and_Other/Backend/api-versioning/SKILL.md)
+  Route: [backend-api-versioning](../../Software_Engineering_and_Other/Backend/api-design/api-versioning/SKILL.md)
   Reason: "API versioning request."
 
 State: User asks about scheduled tasks, cron jobs, Quartz, job scheduling.
@@ -661,7 +661,7 @@ State: User asks about [multi-tenancy](../../containers-orchestration/common/oth
   Reason: "[Multi-tenancy](../../containers-orchestration/common/other/multi-tenancy/SKILL.md) request."
 
 State: User asks about BFF, Backend for Frontend, BFF pattern.
-  Route: [backend-bff-pattern](../../Software_Engineering_and_Other/Backend/bff-pattern/SKILL.md)
+  Route: [backend-bff-pattern](../../Software_Engineering_and_Other/Backend/api-gateway/bff-pattern/SKILL.md)
   Reason: "BFF pattern request."
 
 State: User asks about data masking, data redaction, PII masking.
@@ -935,7 +935,7 @@ State: User asks about data versioning, DVC, data version control, dataset versi
   Reason: "Data versioning request."
 
 State: User asks about data API, Hasura, data access API, GraphQL data API.
-  Route: [data-data-api](../../Software_Engineering_and_Other/Backend/data-api/SKILL.md)
+  Route: [data-data-api](../../Software_Engineering_and_Other/Backend/api-design/data-api/SKILL.md)
   Reason: "Data API request."
 
 State: User asks about data virtualization, Trino, Presto, federated query, data federation.
@@ -946,11 +946,11 @@ State: User asks about schema registry, Avro, schema evolution, schema compatibi
   Route: [data-schema-registry](../../Data_Engineering/schema-registry/SKILL.md)
   Reason: "Schema registry request."
 
-State: User asks about relational database, [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md), [MySQL](../../Software_Engineering_and_Other/Backend/mysql/SKILL.md), SQL Server, database design.
+State: User asks about relational database, [PostgreSQL](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md), [MySQL](../../Software_Engineering_and_Other/Databases/mysql/SKILL.md), SQL Server, database design.
   Route: [data-relational-database](../../Software_Engineering_and_Other/Databases/relational-database/SKILL.md)
   Reason: "Relational database request."
 
-State: User asks about NoSQL, [MongoDB](../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md), Cassandra, DynamoDB, document database.
+State: User asks about NoSQL, [MongoDB](../../Software_Engineering_and_Other/Databases/mongodb/SKILL.md), Cassandra, DynamoDB, document database.
   Route: [data-nosql-database](../../Software_Engineering_and_Other/Databases/nosql-database/SKILL.md)
   Reason: "NoSQL database request."
 
@@ -1032,9 +1032,9 @@ State: User asks about [CircleCI](../../ci-cd/circleci/other/circleci/SKILL.md),
   Route: devops-[circleci](../../ci-cd/circleci/other/circleci/SKILL.md)
   Reason: "[CircleCI](../../ci-cd/circleci/other/circleci/SKILL.md) request."
 
-State: User asks about [autoscaling](../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md), HPA, VPA, Keda, Cluster Autoscaler, pod [autoscaling](../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md), node [autoscaling](../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md), [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) scaling.
-  Route: [devops-[kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-autoscaling](../../DevOps_and_Cloud/Containers_and_Orchestration/[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-[autoscaling](../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/SKILL.md)
-  Reason: "[Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) [autoscaling](../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) request."
+State: User asks about [autoscaling](../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md), HPA, VPA, Keda, Cluster Autoscaler, pod [autoscaling](../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md), node [autoscaling](../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md), [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) scaling.
+  Route: [devops-[kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-autoscaling](../../DevOps_and_Cloud/Containers_and_Orchestration/[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-[autoscaling](../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)/SKILL.md)
+  Reason: "[Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) [autoscaling](../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) request."
 
 State: User asks about APM, [Datadog](../../observability-monitoring-logging/datadog/other/datadog/SKILL.md), New Relic, application [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), APM instrumentation, synthetic [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) platform.
   Route: devops-[apm-observability](../../AI_and_Agents/Operations/apm-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)
@@ -1151,15 +1151,15 @@ State: User asks about Svelte core, Svelte runes, Svelte 5.
   Reason: "Svelte core request."
 
 State: User asks about animation, motion, Framer Motion, GSAP.
-  Route: [frontend-animation](../../Software_Engineering_and_Other/Backend/animation/SKILL.md)
+  Route: [frontend-animation](../../Software_Engineering_and_Other/Frontend/ui-ux/animation/SKILL.md)
   Reason: "Animation request."
 
 State: User asks about forms, form validation, React Hook Form.
-  Route: [frontend-form-handling](../../Software_Engineering_and_Other/Backend/form-handling/SKILL.md)
+  Route: [frontend-form-handling](../../Software_Engineering_and_Other/Frontend/ui-ux/form-handling/SKILL.md)
   Reason: "Form handling request."
 
 State: User asks about data fetching, TanStack Query, SWR, server state.
-  Route: [frontend-data-fetching](../../Software_Engineering_and_Other/Backend/data-fetching/SKILL.md)
+  Route: [frontend-data-fetching](../../Software_Engineering_and_Other/Frontend/state-management/data-fetching/SKILL.md)
   Reason: "Data fetching request."
 
 State: User asks about bundler, Vite, Webpack, build tools.
@@ -1255,7 +1255,7 @@ State: User asks about tech debt, technical debt, code debt.
   Reason: "Tech debt tracker request."
 
 State: User asks about API client, curl command, HTTP request generation.
-  Route: [dev-loop-api-client-generator](../../Software_Engineering_and_Other/Backend/api-client-generator/SKILL.md)
+  Route: [dev-loop-api-client-generator](../../Software_Engineering_and_Other/Backend/api-design/api-client-generator/SKILL.md)
   Reason: "API client request."
 
 State: User asks about OKR, KPI, goals, key results.
@@ -1487,7 +1487,7 @@ State: User asks about payment processing, payment gateway, Stripe, PayPal, subs
   Reason: "Payment processing request."
 
 State: User asks about shopping cart, checkout flow, cart management, order management, coupon system, discount engine, tax calculation.
-  Route: [ecommerce-checkout-cart](../../Software_Engineering_and_Other/Backend/checkout-cart/SKILL.md)
+  Route: [ecommerce-checkout-cart](../../Software_Engineering_and_Other/Backend/payments/checkout-cart/SKILL.md)
   Reason: "Checkout and cart request."
 
 State: User asks about GraphQL Federation, Apollo Federation, federated schema, subgraph, supergraph, schema composition, distributed GraphQL.
@@ -1495,11 +1495,11 @@ State: User asks about GraphQL Federation, Apollo Federation, federated schema, 
   Reason: "GraphQL Federation request."
 
 State: User asks about API product management, API strategy, API monetization, developer portal, API lifecycle, API deprecation, API as product.
-  Route: [api-product-management](../../Software_Engineering_and_Other/Backend/product-management/SKILL.md)
+  Route: [api-product-management](../product-management/SKILL.md)
   Reason: "API product management request."
 
 State: User asks about WebRTC, real-time video/audio, media streaming, SFU, MCU, signaling server, TURN/STUN, live streaming, real-time communication.
-  Route: [backend-web-real-time](../../Software_Engineering_and_Other/Backend/web-real-time/SKILL.md)
+  Route: [backend-web-real-time](../../Software_Engineering_and_Other/Backend/patterns/web-real-time/SKILL.md)
   Reason: "Web real-time communication request."
 
 ### Step 3: Detect Backend Stack
@@ -1512,11 +1512,11 @@ Read project files:
 - Gemfile -> backend-rails
 - requirements.txt: if fastapi present -> [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-fastapi; if django present -> [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-django; if flask present -> [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-flask
 - pyproject.toml: if django present -> [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)-django
-- pom.xml -> backend-spring-boot-architecture; if quarkus present -> java-quarkus; if [micronaut](../../Software_Engineering_and_Other/Backend/micronaut/SKILL.md) present -> java-[micronaut](../../Software_Engineering_and_Other/Backend/micronaut/SKILL.md)
+- pom.xml -> backend-spring-boot-architecture; if quarkus present -> java-quarkus; if [micronaut](../../Software_Engineering_and_Other/Backend/frameworks/micronaut/SKILL.md) present -> java-[micronaut](../../Software_Engineering_and_Other/Backend/frameworks/micronaut/SKILL.md)
 - build.gradle -> backend-spring-boot-architecture; if kotlin -> backend-kotlin-architecture
 - build.gradle.kts: if kotlin and [android](../../Mobile/android/SKILL.md) -> mobile-[android](../../Mobile/android/SKILL.md); if kotlin only -> backend-kotlin-architecture
 - *.csproj or *.sln -> dotnet-architecture
-- composer.json: if symfony in require -> php-symfony; if laravel in require -> [php-laravel](../../Software_Engineering_and_Other/Backend/laravel/SKILL.md); if laminas/zend -> [php-zend](../../Software_Engineering_and_Other/Backend/zend/SKILL.md); else -> [php-pure](../../Software_Engineering_and_Other/Miscellaneous/pure/SKILL.md)
+- composer.json: if symfony in require -> php-symfony; if laravel in require -> [php-laravel](../../Software_Engineering_and_Other/Backend/frameworks/laravel/SKILL.md); if laminas/zend -> [php-zend](../../Software_Engineering_and_Other/Backend/frameworks/zend/SKILL.md); else -> [php-pure](../../Software_Engineering_and_Other/Miscellaneous/pure/SKILL.md)
 - Package.swift: if vapor in deps -> swift-vapor
 - mix.exs -> backend-[elixir](../../Software_Engineering_and_Other/Languages/elixir/SKILL.md)
 - deno.json / deno.lock -> backend-deno

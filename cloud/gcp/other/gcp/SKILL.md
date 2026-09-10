@@ -82,7 +82,7 @@ GKE cluster running, Cloud Run service deployed, networking secured, CI/CD pipel
 
 | Requirement | Service | Best For |
 |---|---|---|
-| Relational, managed | Cloud SQL | [MySQL](../../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md), [PostgreSQL](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md), SQL Server |
+| Relational, managed | Cloud SQL | [MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md), [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md), SQL Server |
 | NoSQL, high throughput | Firestore / Bigtable | Real-time, IoT, large-scale |
 | Data warehouse | BigQuery | Analytics, reporting, ML |
 | In-memory, cache | Memorystore | Redis, Memcached |
@@ -236,7 +236,7 @@ resource "google_container_node_pool" "primary_nodes" {
   project  = google_project.production.project_id
 
   initial_node_count = 3
-  [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) {
+  [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) {
     min_node_count = 1
     max_node_count = 5
   }

@@ -64,7 +64,7 @@ YAML manifests, shell commands, and architecture decisions with no extraneous ex
 - [ ] Upgrade strategy documented (version skew, node pool strategy)
 - [ ] Backup/DR strategy defined (etcd backup, Velero, restore test)
 - [ ] [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and logging infrastructure specified
-- [ ] Cluster [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) configured (Cluster Autoscaler or Karpenter)
+- [ ] Cluster [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) configured (Cluster Autoscaler or Karpenter)
 
 ## Architecture / Decision Trees
 
@@ -249,7 +249,7 @@ rules:
   - apiGroups: ["networking.k8s.io"]
     resources: ["ingresses", "networkpolicies"]
     verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
-  - apiGroups: ["[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)"]
+  - apiGroups: ["[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)"]
     resources: ["horizontalpodautoscalers"]
     verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
   - apiGroups: ["rbac.authorization.k8s.io"]
@@ -471,7 +471,7 @@ spec:
       - default
 ```
 
-### Step 8: Cluster [Autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)
+### Step 8: Cluster [Autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)
 
 ```yaml
 # Cluster Autoscaler (AWS)
@@ -492,7 +492,7 @@ spec:
     spec:
       serviceAccountName: cluster-autoscaler
       containers:
-        - image: registry.k8s.io/[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/cluster-autoscaler:v1.30.0
+        - image: registry.k8s.io/[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)/cluster-autoscaler:v1.30.0
           name: cluster-autoscaler
           command:
             - ./cluster-autoscaler

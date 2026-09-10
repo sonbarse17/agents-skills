@@ -144,10 +144,10 @@ gcloud compute forwarding-rules create web-https \
 gcloud compute backend-services create internal-backend \
   --protocol=TCP --region=us-central1 \
   --health-checks=web-hc --health-checks-region=us-central1 \
-  --[load-balancing](../../../../Software_Engineering_and_Other/Backend/load-balancing/SKILL.md)-scheme=INTERNAL
+  --[load-balancing](../../../../Software_Engineering_and_Other/Backend/patterns/load-balancing/SKILL.md)-scheme=INTERNAL
 
 gcloud compute forwarding-rules create internal-lb \
-  --region=us-central1 --[load-balancing](../../../../Software_Engineering_and_Other/Backend/load-balancing/SKILL.md)-scheme=INTERNAL \
+  --region=us-central1 --[load-balancing](../../../../Software_Engineering_and_Other/Backend/patterns/load-balancing/SKILL.md)-scheme=INTERNAL \
   --network=prod-vpc --subnet=us-subnet \
   --backend-service=internal-backend --ports=8080
 ```

@@ -550,7 +550,7 @@ search.fit(X_train, y_train, eval_set=[(X_val, y_val)])
 - **Prediction [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**: Track prediction distribution drift vs training. Alert when serving distribution deviates significantly.
 
 ### Infrastructure
-- **Scaling**: Batch predictions via async workers or streaming. Real-time predictions via REST endpoint with [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md).
+- **Scaling**: Batch predictions via async workers or streaming. Real-time predictions via REST endpoint with [autoscaling](../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md).
 - **Latency**: Set latency budgets (p99 < 100ms for real-time). Pre-compute predictions for slow features.
 - **Fallback**: Serve cached predictions when model is unavailable. Degrade gracefully to simpler baseline model.
 

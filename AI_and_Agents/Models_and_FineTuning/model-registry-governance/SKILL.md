@@ -50,9 +50,9 @@ Create a trustworthy system of record for model artifacts, prompts, adapters, an
 # Install MLflow with required backends
 pip install mlflow[extras] psycopg2-binary boto3
 
-# Start MLflow tracking server with [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) backend and S3 artifact store
+# Start MLflow tracking server with [PostgreSQL](../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) backend and S3 artifact store
 mlflow server \
-  --backend-store-uri [postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)://mlflow:password@db:5432/mlflow \
+  --backend-store-uri [postgresql](../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)://mlflow:password@db:5432/mlflow \
   --default-artifact-root s3://mlflow-artifacts/models \
   --host 0.0.0.0 \
   --port 5000 \
@@ -66,7 +66,7 @@ services:
     image: ghcr.io/mlflow/mlflow:2.12.0
     command: >
       mlflow server
-      --backend-store-uri [postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)://mlflow:${DB_PASSWORD}@db:5432/mlflow
+      --backend-store-uri [postgresql](../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)://mlflow:${DB_PASSWORD}@db:5432/mlflow
       --default-artifact-root s3://mlflow-artifacts/models
       --host 0.0.0.0
       --port 5000
@@ -86,7 +86,7 @@ services:
       POSTGRES_USER: mlflow
       POSTGRES_PASSWORD: ${DB_PASSWORD}
     volumes:
-      - pgdata:/var/lib/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/data
+      - pgdata:/var/lib/[postgresql](../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)/data
 
 volumes:
   pgdata:

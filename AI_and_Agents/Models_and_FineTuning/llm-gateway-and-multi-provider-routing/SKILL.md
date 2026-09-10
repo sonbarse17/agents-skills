@@ -63,7 +63,7 @@ correctly.
 - Setting per-team, per-project, or per-API-key budgets and rate limits
   that need to be enforced consistently across multiple providers, not
   per-provider in each provider's own console.
-- [Load-balancing](../../../Software_Engineering_and_Other/Backend/load-balancing/SKILL.md) traffic across multiple API keys/deployments of the
+- [Load-balancing](../../../Software_Engineering_and_Other/Backend/patterns/load-balancing/SKILL.md) traffic across multiple API keys/deployments of the
   same model to work around a single key's rate limit.
 - Needing one place to see aggregate spend and usage across providers,
   rather than reconciling separate invoices/[dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) per vendor.

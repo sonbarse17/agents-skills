@@ -33,7 +33,7 @@ Task arrives
     ├── Have a spec, need tasks? ──────→ [planning-and-task-breakdown](../../Patterns/planning-and-task-breakdown/SKILL.md)
     ├── Implementing code? ────────────→ [incremental-implementation](../../Patterns/incremental-implementation/SKILL.md)
     │   ├── UI work? ─────────────────→ [frontend-ui-engineering](../../Frontend/architecture/frontend-ui-engineering/SKILL.md)
-    │   ├── API work? ────────────────→ [api-and-interface-design](../../Backend/api-and-interface-design/SKILL.md)
+    │   ├── API work? ────────────────→ [api-and-interface-design](../../Backend/api-design/api-and-interface-design/SKILL.md)
     │   ├── Need better context? ─────→ [context-engineering](../../../AI_and_Agents/Workflows/context-engineering/SKILL.md)
     │   ├── Need doc-verified code? ───→ [source-driven-development](../../Patterns/source-driven-development/SKILL.md)
     │   └── Stakes high / unfamiliar code? ──→ [doubt-driven-development](../../Patterns/doubt-driven-development/SKILL.md)
@@ -43,7 +43,7 @@ Task arrives
     ├── Reviewing code? ───────────────→ [code-review-and-quality](../../Patterns/[code-review](../code-review/SKILL.md)-and-quality/SKILL.md)
     │   ├── Too complex? ─────────────→ [code-simplification](../../Patterns/code-simplification/SKILL.md)
     │   ├── Security concerns? ───────→ [security-and-hardening](../../../Security/security-and-hardening/SKILL.md)
-    │   └── Performance concerns? ────→ [performance-optimization](../../Backend/performance-optimization/SKILL.md)
+    │   └── Performance concerns? ────→ [performance-optimization](../../Backend/patterns/performance-optimization/SKILL.md)
     ├── Committing/branching? ─────────→ [git-workflow-and-versioning](../../../DevOps_and_Cloud/CI_CD/[git-workflow](../../../DevOps_and_Cloud/CI_CD/git-workflow/SKILL.md)-and-versioning/SKILL.md)
     ├── CI/CD pipeline work? ──────────→ [ci-cd-and-automation](../../../ci-cd/common/pipeline-design/ci-cd-and-automation/SKILL.md)
     ├── Deprecating/migrating? ────────→ [deprecation-and-migration](../../Patterns/deprecation-and-migration/SKILL.md)
@@ -186,14 +186,14 @@ Not every task needs every skill. A bug fix might only need: `[debugging-and-err
 | Build | [doubt-driven-development](../../Patterns/doubt-driven-development/SKILL.md) | Adversarial fresh-context review of every non-trivial decision |
 | Build | [context-engineering](../../../AI_and_Agents/Workflows/context-engineering/SKILL.md) | Right context at the right time |
 | Build | [frontend-ui-engineering](../../Frontend/architecture/frontend-ui-engineering/SKILL.md) | Production-quality UI with accessibility |
-| Build | [api-and-interface-design](../../Backend/api-and-interface-design/SKILL.md) | Stable interfaces with clear contracts |
+| Build | [api-and-interface-design](../../Backend/api-design/api-and-interface-design/SKILL.md) | Stable interfaces with clear contracts |
 | Verify | [test-driven-development](../../Patterns/test-driven-development/SKILL.md) | Failing test first, then make it pass |
 | Verify | [browser-testing-with-devtools](../../Frontend/testing/browser-testing-with-devtools/SKILL.md) | Chrome DevTools MCP for runtime verification |
 | Verify | [debugging-and-error-recovery](../../Patterns/debugging-and-error-recovery/SKILL.md) | Reproduce → localize → fix → guard |
 | Review | [code-review-and-quality](../../Patterns/[code-review](../code-review/SKILL.md)-and-quality/SKILL.md) | Five-axis review with quality gates |
 | Review | [code-simplification](../../Patterns/code-simplification/SKILL.md) | Preserve behavior while reducing unnecessary complexity |
 | Review | [security-and-hardening](../../../Security/security-and-hardening/SKILL.md) | OWASP prevention, input validation, least privilege |
-| Review | [performance-optimization](../../Backend/performance-optimization/SKILL.md) | Measure first, optimize only what matters |
+| Review | [performance-optimization](../../Backend/patterns/performance-optimization/SKILL.md) | Measure first, optimize only what matters |
 | Ship | [git-workflow-and-versioning](../../../DevOps_and_Cloud/CI_CD/[git-workflow](../../../DevOps_and_Cloud/CI_CD/git-workflow/SKILL.md)-and-versioning/SKILL.md) | Atomic commits, clean history |
 | Ship | [ci-cd-and-automation](../../../ci-cd/common/pipeline-design/ci-cd-and-automation/SKILL.md) | Automated quality gates on every change |
 | Ship | [deprecation-and-migration](../../Patterns/deprecation-and-migration/SKILL.md) | Remove old systems and migrate users safely |

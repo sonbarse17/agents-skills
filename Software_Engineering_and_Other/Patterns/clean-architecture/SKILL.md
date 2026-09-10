@@ -557,6 +557,6 @@ interface ICacheService {
   - ../../../Global_References/use-case-patterns.md — Use Case Patterns
 ## Handoff
 No artifact produced.
-Next skill: [backend-api-design](../../Backend/api-design/SKILL.md) — after layers are defined, design API contracts that respect layer boundaries.
+Next skill: [backend-api-design](../../Backend/api-design/api-design/SKILL.md) — after layers are defined, design API contracts that respect layer boundaries.
 Carry forward: stack, layer decisions, interface definitions.
 

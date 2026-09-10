@@ -731,7 +731,7 @@ const resolvers = {
   Query: {
     users: async (_, __, { tracer }) => {
       return tracer.startActiveSpan('users.query', (span) => {
-        span.setAttribute('db.system', '[postgresql](../../Backend/postgresql/SKILL.md)');
+        span.setAttribute('db.system', '[postgresql](../../Databases/postgresql/SKILL.md)');
         span.setAttribute('db.table', 'users');
         span.setAttribute('query.plan', 'index_scan');
         return db.users.findAll();

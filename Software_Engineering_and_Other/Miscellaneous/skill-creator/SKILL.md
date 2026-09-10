@@ -232,7 +232,7 @@ Every [Python](../../Languages/python/SKILL.md) Azure SDK skill MUST open its `#
 - Do not paraphrase or restructure the wording — the consistency across skills is the point.
 - If the SDK does not support Entra ID at all (rare — e.g. some legacy speech REST endpoints, websocket APIs that require subscription keys), keep rule #2 (context managers) and replace rule #1 with a single sentence noting the SDK requires API-key auth and explaining why Entra is not yet available.
 - If the SDK is async-only (e.g. `[azure-ai](../../../DevOps_and_Cloud/Cloud_Providers/[azure-ai](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-voicelive`), keep both rules but show only the async form in the bullets.
-- Skip the callout entirely for non-Azure [Python](../../Languages/python/SKILL.md) skills with no client lifecycle (e.g. `[pydantic-models-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/[pydantic-models-py](../../Backend/pydantic-models-py/SKILL.md)/SKILL.md)`).
+- Skip the callout entirely for non-Azure [Python](../../Languages/python/SKILL.md) skills with no client lifecycle (e.g. `[pydantic-models-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/[pydantic-models-py](../../Backend/common/pydantic-models-py/SKILL.md)/SKILL.md)`).
 
 **Code sample enforcement.** Every client construction in the skill body must demonstrate both rules:
 
@@ -1162,7 +1162,7 @@ ls .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/plugins/azure-
 - Always use `[microsoft-docs](../../../cloud/azure/other/microsoft-docs/SKILL.md)` MCP first for current Microsoft Learn API guidance.
 - Verify the installed package version with `pip show <package>`, then inspect the installed package or official API reference to verify every symbol and signature used in snippets.
 - For Azure SDK skills, prefer package overview + official SDK repo examples.
-- For non-Azure [Python](../../Languages/python/SKILL.md) skills in this plugin (for example `[fastapi-router-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/[fastapi-router-py](../../Backend/fastapi-router-py/SKILL.md)/SKILL.md)`, `[pydantic-models-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/[pydantic-models-py](../../Backend/pydantic-models-py/SKILL.md)/SKILL.md)`), keep language-specific best-practice variants and skip Azure-specific auth callouts when lifecycle/auth is not applicable.
+- For non-Azure [Python](../../Languages/python/SKILL.md) skills in this plugin (for example `[fastapi-router-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/[fastapi-router-py](../../Backend/frameworks/fastapi-router-py/SKILL.md)/SKILL.md)`, `[pydantic-models-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/[pydantic-models-py](../../Backend/common/pydantic-models-py/SKILL.md)/SKILL.md)`), keep language-specific best-practice variants and skip Azure-specific auth callouts when lifecycle/auth is not applicable.
 
 3. **Apply [Python](../../Languages/python/SKILL.md) enforcement rules consistently**
 

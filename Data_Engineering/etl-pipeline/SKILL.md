@@ -127,7 +127,7 @@ default_args = {
 with DAG(
     'etl_orders_daily',
     default_args=default_args,
-    description='Daily orders ETL from [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) to warehouse',
+    description='Daily orders ETL from [PostgreSQL](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) to warehouse',
     schedule='0 3 * * *',  # Daily 3 AM
     start_date=datetime(2026, 1, 1),
     catchup=False,

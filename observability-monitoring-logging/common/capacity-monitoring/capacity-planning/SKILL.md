@@ -22,11 +22,11 @@ depends_on:
 
 # [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) Planning
 
-[Autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) handles the minutes-to-hours timescale of load fluctuation. [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) planning
+[Autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) handles the minutes-to-hours timescale of load fluctuation. [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) planning
 handles the weeks-to-months timescale where the thing you're short on isn't compute headroom
 but lead time — a database that needs a resize scheduled during a maintenance window, a quota
 increase that takes two weeks to approve, a new region that takes a quarter to stand up.
-[Autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) can't add [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) that doesn't exist yet in the account, the budget, or the
+[Autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) can't add [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) that doesn't exist yet in the account, the budget, or the
 vendor relationship.
 
 The recurring failure is planning for the average and getting surprised by the peak. Average

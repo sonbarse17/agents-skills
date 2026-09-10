@@ -206,7 +206,7 @@ spec:
                   properties:
                     engine:
                       type: string
-                      enum: ["postgres", "[mysql](../../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)"]
+                      enum: ["postgres", "[mysql](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)"]
                       default: "postgres"
                     engineVersion:
                       type: string
@@ -375,7 +375,7 @@ spec:
         database:
           title: Database
           type: string
-          enum: ["none", "postgres", "[mysql](../../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)"]
+          enum: ["none", "postgres", "[mysql](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)"]
           default: "none"
         cacheLayer:
           title: Cache
@@ -465,7 +465,7 @@ golden-path-nodejs/
   "description": "A new microservice",
   "owner_team": "platform",
   "port": "3000",
-  "database": ["none", "postgres", "[mysql](../../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)"],
+  "database": ["none", "postgres", "[mysql](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)"],
   "node_version": "18"
 }
 ```

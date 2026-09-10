@@ -109,7 +109,7 @@ For EACH cluster, gather the following data. **Try K8s API first, then AWS API a
 - `resources_list(apiVersion="apps/v1", kind="Deployment")` — all deployments
 - `resources_get(apiVersion="apps/v1", kind="Deployment", name=<name>, namespace=<ns>)` — full spec: probes, resources, securityContext, topologySpreadConstraints, terminationGracePeriodSeconds
 - `resources_list(apiVersion="apps/v1", kind="StatefulSet")` — statefulsets
-- `resources_list(apiVersion="[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/v2", kind="HorizontalPodAutoscaler")` — HPAs
+- `resources_list(apiVersion="[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)/v2", kind="HorizontalPodAutoscaler")` — HPAs
 - `resources_list(apiVersion="policy/v1", kind="PodDisruptionBudget")` — PDBs
 - `pods_top` — actual pod resource usage vs requests
 - `pods_list(fieldSelector="status.phase!=Running,status.phase!=Succeeded")` — failing pods
@@ -235,7 +235,7 @@ Cluster services: CoreDNS scaled, metrics-server, addon versions
 Workloads: HPA configured, resource requests set, pod restart count (>50 in 7d → MEDIUM, >200 → HIGH)
 
 **Data Plane Scaling** (Ref: https://docs.aws.amazon.com/eks/latest/best-practices/scale-data-plane.html):
-- Automatic [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) configured (Karpenter preferred)
+- Automatic [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) configured (Karpenter preferred)
 - Instance type diversity (avoid single type)
 - T-series burstable in production → MEDIUM
 - AMI update automation (EKS optimized/Bottlerocket, age check)

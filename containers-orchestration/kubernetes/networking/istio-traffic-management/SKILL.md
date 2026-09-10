@@ -275,7 +275,7 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
-  name: [load-balancing](../../../../Software_Engineering_and_Other/Backend/load-balancing/SKILL.md)
+  name: [load-balancing](../../../../Software_Engineering_and_Other/Backend/patterns/load-balancing/SKILL.md)
 spec:
   host: my-service
   trafficPolicy:

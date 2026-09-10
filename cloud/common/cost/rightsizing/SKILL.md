@@ -58,19 +58,19 @@ typical Tuesday.
 **Done when:** the sizing decision states which percentile was used and why it fits the workload's
 traffic shape.
 
-## 3. Prefer [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) to a fixed guess wherever demand varies
+## 3. Prefer [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) to a fixed guess wherever demand varies
 
 A fixed size is a bet that usage stays flat — true for very few real workloads. Where demand
-varies meaningfully by time of day, day of week, or event, [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) adapts [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) to the
+varies meaningfully by time of day, day of week, or event, [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) adapts [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) to the
 actual curve instead of provisioning for the peak all day and wasting the difference the rest of
-the time. See `[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)` for the mechanics of scaling policies and cooldowns.
+the time. See `[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)` for the mechanics of scaling policies and cooldowns.
 
 - **Fixed [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) fits workloads with genuinely flat, predictable demand** — a fixed-size batch
   cluster with a known job size, for instance.
-- **[Autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) fits everything else** — anything with a daily cycle, a weekly cycle, or bursty
+- **[Autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) fits everything else** — anything with a daily cycle, a weekly cycle, or bursty
   traffic.
 
-**Done when:** every workload with variable demand runs on [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) instead of a fixed size
+**Done when:** every workload with variable demand runs on [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) instead of a fixed size
 picked to cover its peak.
 
 ## 4. Treat downsizing as a queue, not a one-time sweep
@@ -108,4 +108,4 @@ holds up under real traffic.
 State which resources were resized, the percentile and window the sizing was based on, and how
 much provisioned [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) was removed. Name the honest gap — usually a workload whose traffic
 pattern is too irregular to trust a percentile-based estimate yet, or one still pending
-[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) migration — rather than claiming the whole fleet is now optimally sized.
+[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) migration — rather than claiming the whole fleet is now optimally sized.

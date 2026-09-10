@@ -161,7 +161,7 @@ ray_config:
     min: 4
     max: 32
     resources: { CPU: 8, memory: 32GB }
-    [autoscaling](../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md):
+    [autoscaling](../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md):
       target_num_workers: 16
       idle_timeout_minutes: 5
       upscaling_speed: 1.0
@@ -538,7 +538,7 @@ t_env.execute_sql("""
 - **Shuffle tuning**: Configure `spark.shuffle.partitions` = 2x-3x cluster cores; monitor shuffle spill to disk.
 - **Flink checkpointing**: Set checkpoint interval = 1 min with exactly-once semantics; store in durable backend (S3).
 - **Task parallelism**: Set parallelism = 2x-3x cores per node for CPU-bound tasks; adjust for IO-bound tasks.
-- **Cluster [autoscaling](../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)**: Configure Spark on K8s with cluster autoscaler; min 2, max 20 nodes.
+- **Cluster [autoscaling](../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)**: Configure Spark on K8s with cluster autoscaler; min 2, max 20 nodes.
 
 ## Anti-Patterns
 

@@ -334,7 +334,7 @@ ASGI config: `uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers 4 --limi
 
 ## Testing with Pytest Advanced Patterns
 
-Beyond basic tests: (a) `pytest-asyncio` with `@pytest.mark.asyncio` for async test functions, (b) `pytest-cov` for coverage reports with branch coverage, (c) `pytest-xdist` for parallel test execution (`-n auto`), (d) `pytest-timeout` to prevent hung tests (`--timeout=30`), (e) `pytest-socket` to disable network calls in unit tests, (f) `pytest-env` to set required environment variables. Factory fixtures: use `factory_boy` to create test data (UserFactory, OrderFactory) with `Faker` attributes. Integration tests: use `Testcontainers` for real [PostgreSQL](../../Backend/postgresql/SKILL.md)/Redis in [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md), or `httpx.AsyncClient` with `ASGITransport` for API testing without network.
+Beyond basic tests: (a) `pytest-asyncio` with `@pytest.mark.asyncio` for async test functions, (b) `pytest-cov` for coverage reports with branch coverage, (c) `pytest-xdist` for parallel test execution (`-n auto`), (d) `pytest-timeout` to prevent hung tests (`--timeout=30`), (e) `pytest-socket` to disable network calls in unit tests, (f) `pytest-env` to set required environment variables. Factory fixtures: use `factory_boy` to create test data (UserFactory, OrderFactory) with `Faker` attributes. Integration tests: use `Testcontainers` for real [PostgreSQL](../../Databases/postgresql/SKILL.md)/Redis in [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md), or `httpx.AsyncClient` with `ASGITransport` for API testing without network.
 
 ## Code Examples — FastAPI with SQLAlchemy
 ```python
@@ -346,7 +346,7 @@ from contextlib import asynccontextmanager
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Startup
-    engine = create_async_engine("[postgresql](../../Backend/postgresql/SKILL.md)+asyncpg://user:pass@localhost/db")
+    engine = create_async_engine("[postgresql](../../Databases/postgresql/SKILL.md)+asyncpg://user:pass@localhost/db")
     app.state.async_session = async_sessionmaker(engine, expire_on_commit=False)
     yield
     # Shutdown

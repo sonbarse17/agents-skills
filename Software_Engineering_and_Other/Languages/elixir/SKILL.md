@@ -38,7 +38,7 @@ Keywords: `elixir build`, `mix`, `phoenix`, `ecto`, `otp`, `supervision tree`, `
 
 ### Input Context
 - Project type (Phoenix web app, OTP app, Nerves firmware, CLI tool)
-- Database ([PostgreSQL](../../Backend/postgresql/SKILL.md) via Ecto, ETS, Mnesia)
+- Database ([PostgreSQL](../../Databases/postgresql/SKILL.md) via Ecto, ETS, Mnesia)
 - Deployment target ([bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md), [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md), Fly.io, Gigalixir)
 
 ## Decision Trees
@@ -48,7 +48,7 @@ Keywords: `elixir build`, `mix`, `phoenix`, `ecto`, `otp`, `supervision tree`, `
 What are you building?
 ├── Web app with real-time features → Phoenix (LiveView, PubSub, Channels)
 ├── Real-time API / WebSocket server → Phoenix Channels or simply GenServer + WebSock
-├── Background job processor → Oban (persistent, [PostgreSQL](../../Backend/postgresql/SKILL.md)-backed jobs)
+├── Background job processor → Oban (persistent, [PostgreSQL](../../Databases/postgresql/SKILL.md)-backed jobs)
 ├── CLI tool → Mix escript.build (self-contained binary) or Burrito
 ├── Firmware / IoT → Nerves (Raspberry Pi, BeagleBone, embedded Linux)
 └── Distributed system → OTP with :global / Horde / Swarm for node discovery
@@ -57,7 +57,7 @@ What are you building?
 ### Data Store Selection
 ```
 Data access pattern?
-├── Relational, complex queries → Ecto + [PostgreSQL](../../Backend/postgresql/SKILL.md) (Phoenix standard)
+├── Relational, complex queries → Ecto + [PostgreSQL](../../Databases/postgresql/SKILL.md) (Phoenix standard)
 ├── In-memory, fast lookups → ETS (:ets, DETS for disk)
 ├── Process-local state → Agent, GenServer state
 ├── Distributed, replicated → Mnesia (built-in, eventually consistent)

@@ -347,7 +347,7 @@ Property placement decision:
 
 Graph vs relational: graph excels at many-to-many relationships, variable-depth traversals, and path queries. Relational excels at aggregate queries, strict schemas, and ACID-compliant transactions over known relationships. Use graph when the value is in the connections, not just the entities.
 
-Graph vs document ([MongoDB](../../Backend/mongodb/SKILL.md)): document stores embed related data, limiting traversal to one level. Graph stores normalize relationships, enabling arbitrary-depth traversal. Use graph for highly connected data, document for aggregate-root patterns.
+Graph vs document ([MongoDB](../mongodb/SKILL.md)): document stores embed related data, limiting traversal to one level. Graph stores normalize relationships, enabling arbitrary-depth traversal. Use graph for highly connected data, document for aggregate-root patterns.
 
 ## Performance
 

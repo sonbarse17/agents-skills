@@ -87,7 +87,7 @@ Every request must carry tenant context through all layers:
 
 3. Application Code: Access tenant ID from request context. Use for data access filtering, feature flag evaluation, rate limit enforcement, and cache key scoping.
 
-4. Database: Pass tenant ID via session variables or connection parameters ([PostgreSQL](../../Backend/postgresql/SKILL.md) SET, [MySQL](../../Backend/mysql/SKILL.md) variable). Apply RLS policies or connection routing based on tenant ID.
+4. Database: Pass tenant ID via session variables or connection parameters ([PostgreSQL](../../Databases/postgresql/SKILL.md) SET, [MySQL](../../Databases/mysql/SKILL.md) variable). Apply RLS policies or connection routing based on tenant ID.
 
 5. Cache: Prefix cache keys with tenant ID. Use Redis key-space per tenant when isolation is critical.
 
@@ -227,7 +227,7 @@ Enforcement layers:
 - API Gateway: Validate tenant ID in request, reject misrouted requests
 - Application: Middleware extracts and injects tenant ID into downstream calls
 - ORM/Data Layer: All queries include tenant_id filter (row-level) or use tenant-specific connection (DB/schema level)
-- Database: Row-Level Security policies ([PostgreSQL](../../Backend/postgresql/SKILL.md) RLS, SQL Server Row-Level Security) as defense-in-depth
+- Database: Row-Level Security policies ([PostgreSQL](../../Databases/postgresql/SKILL.md) RLS, SQL Server Row-Level Security) as defense-in-depth
 - Storage: Per-tenant encryption keys (KMS key per tenant) for maximum isolation
 
 Testing data isolation: security tests should verify that Tenant A cannot access Tenant B data through any API, query, or export. Use penetration testing specifically targeting tenant boundary violations.
@@ -416,7 +416,7 @@ Estimated time: 3-5 minutes
 - Terraform for tenant infrastructure provisioning
 - [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) with tenant namespaces for compute isolation
 - AWS KMS / Azure Key [Vault](../../Miscellaneous/vault/SKILL.md) for per-tenant encryption key management
-- [PostgreSQL](../../Backend/postgresql/SKILL.md) Row-Level Security for database isolation
+- [PostgreSQL](../../Databases/postgresql/SKILL.md) Row-Level Security for database isolation
 - Redis with tenant key prefixes for cache isolation
 - Kong / APISIX for API gateway tenant routing
 - OpenPolicyAgent / OPA for tenant access policy enforcement
@@ -460,7 +460,7 @@ A SaaS platform expanding into EU and Asia faced data residency requirements (GD
 
 ## Implementation Patterns
 
-### Pattern: Row-Level Security with [PostgreSQL](../../Backend/postgresql/SKILL.md) RLS
+### Pattern: Row-Level Security with [PostgreSQL](../../Databases/postgresql/SKILL.md) RLS
 
 ```sql
 -- Enable RLS on tenant-scoped tables

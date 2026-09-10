@@ -105,7 +105,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 
 1. **Provider Selection & Setup**: Choose provider based on volume, cost, feature needs. Configure SMTP credentials or API keys as environment variables.
 
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../../Frontend/common/typescript/SKILL.md)
 // Resend example
 import { Resend } from 'resend';
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -118,7 +118,7 @@ await resend.emails.send({
 });
 ```
 
-```[python](../../Languages/python/SKILL.md)
+```[python](../../../Languages/python/SKILL.md)
 # SES with boto3
 import boto3
 from botocore.exceptions import ClientError
@@ -166,7 +166,7 @@ response = ses.send_email(
 
 3. **Deliverability Configuration**: Set up SPF, DKIM, and DMARC DNS records for your sending domain.
 
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../../Frontend/common/typescript/SKILL.md)
 // SPF record (TXT): v=spf1 include:amazonses.com include:sendgrid.net ~all
 // DKIM record (TXT): Selector and public key from provider
 // DMARC record (TXT): v=DMARC1; p=quarantine; rua=mailto:dmarc@yourdomain.com
@@ -174,7 +174,7 @@ response = ses.send_email(
 
 4. **Webhook Handling**: Process delivery events — bounces, complaints, opens, clicks.
 
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../../Frontend/common/typescript/SKILL.md)
 // SendGrid event webhook
 app.post('/webhooks/email', (req, res) => {
   const events = req.body;
@@ -197,7 +197,7 @@ app.post('/webhooks/email', (req, res) => {
 
 5. **Rate Limiting & Quotas**: Enforce sending limits per recipient, per domain, per hour.
 
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../../Frontend/common/typescript/SKILL.md)
 class EmailRateLimiter {
   private limits: Map<string, number[]> = new Map();
 
@@ -220,7 +220,7 @@ class EmailRateLimiter {
 
 6. **Template Management**: Version templates, support localization, store in database or file system.
 
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../../Frontend/common/typescript/SKILL.md)
 interface EmailTemplate {
   id: string;
   type: 'welcome' | 'reset_password' | 'invoice' | 'notification';
@@ -249,7 +249,7 @@ services:
 
 ### Pattern: Queue-Based Email Worker with Retry
 
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../../Frontend/common/typescript/SKILL.md)
 // email-queue.ts
 import { Queue, Worker } from 'bullmq';
 import Redis from 'ioredis';
@@ -305,7 +305,7 @@ const worker = new Worker<EmailJob>('transactional-email', async (job) => {
 
 ### Pattern: Provider Abstraction (Strategy Pattern)
 
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../../Frontend/common/typescript/SKILL.md)
 // providers/provider-interface.ts
 interface EmailProvider {
   name: string;
@@ -333,7 +333,7 @@ export class ResendProvider implements EmailProvider {
   }
 
   async verifyAddress(email: string) {
-    const { data } = await this.client.contacts.create({ email, audienceId: '[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)' });
+    const { data } = await this.client.contacts.create({ email, audienceId: '[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)' });
     return !!data;
   }
 
@@ -377,7 +377,7 @@ export class SesProvider implements EmailProvider {
 
 ### Pattern: MJML Template with Handlebars
 
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../../Frontend/common/typescript/SKILL.md)
 // template-engine.ts
 import Handlebars from 'handlebars';
 import mjml from 'mjml';
@@ -431,10 +431,10 @@ class EmailTemplateEngine {
 - Rate limit per provider: track usage and failover to secondary provider at 80% quota
 - Template caching: compile MJML → HTML at deploy time, not at send time
 
-### [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+### [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - Metrics: send rate, delivery rate, bounce rate, complaint rate, open rate, click rate, latency p50/p95/p99
 - Alerts: bounce rate >3%, complaint rate >0.1%, queue depth >10K, any provider returning 5xx
-- [Dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md): Grafana with email funnel (enqueued → sent → delivered → opened → clicked)
+- [Dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md): Grafana with email funnel (enqueued → sent → delivered → opened → clicked)
 
 ## Anti-Patterns
 
@@ -451,7 +451,7 @@ class EmailTemplateEngine {
 
 ## Security Considerations
 
-- Store API keys in secrets manager (AWS Secrets Manager, HashiCorp [Vault](../../Miscellaneous/vault/SKILL.md)), never in code or env files committed to git
+- Store API keys in secrets manager (AWS Secrets Manager, HashiCorp [Vault](../../../Miscellaneous/vault/SKILL.md)), never in code or env files committed to git
 - Rotate SMTP credentials and API keys every 90 days
 - Validate all email addresses against allow-list for security-critical emails (password reset, 2FA)
 - Implement HMAC-signed unsubscribe links to prevent abuse unsubscribe
@@ -462,7 +462,7 @@ class EmailTemplateEngine {
 
 ## Testing Strategies
 
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../../Frontend/common/typescript/SKILL.md)
 import { describe, it, expect, beforeAll } from 'vitest';
 import { MailHog } from 'mailhog';
 
@@ -518,7 +518,7 @@ async function testEmailDelivery() {
 
 - Use MailHog in CI for integration testing without real email delivery
 - Test all 10+ email clients with Email on Acid or Litmus before going live
-- Validate SPF/DKIM/DMARC records with `checkdmarc` [Python](../../Languages/python/SKILL.md) library in CI
+- Validate SPF/DKIM/DMARC records with `checkdmarc` [Python](../../../Languages/python/SKILL.md) library in CI
 - Load test: send 10K emails through queue, measure throughput and worker utilization
 - A/B test subject lines and sender names for open rate optimization
 

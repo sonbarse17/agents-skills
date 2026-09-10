@@ -365,7 +365,7 @@ Dry-run validation, staging first:
 cd live/staging/app-tier
 terragrunt plan
 # Plan: 1 to add, 1 to change, 0 to destroy
-# (new [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) group resource, launch template updated in place)
+# (new [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) group resource, launch template updated in place)
 ```
 
 Repeated identically in `dev`, then reviewed in a PR, then applied to

@@ -57,7 +57,7 @@ identity provider, with the gateway only checking, not issuing or storing.
   backends don't re-implement token parsing.
 - **Never let the gateway silently downgrade auth failures to "allow"** on a validation error —
   fail closed, not open.
-- **Full identity and authorization policy design** lives in `[iam-access-management](../../../cloud/common/identity/iam-access-management/SKILL.md)`; the gateway
+- **Full identity and authorization policy design** lives in `[iam-access-management](../../../../cloud/common/identity/iam-access-management/SKILL.md)`; the gateway
   enforces decisions, it doesn't define them.
 
 **Done when:** every backend behind the gateway can trust that an authenticated request has
@@ -101,12 +101,12 @@ A gateway that terminates every request for every service is now on the critical
 them — its [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), its deploy cadence, and its uptime become the platform's. That's an acceptable
 tradeoff deliberately made, not a default that should go unexamined as traffic grows.
 
-- **[Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-test the gateway itself**, not just the backends behind it — see `[load-testing](../../../observability-monitoring-logging/common/capacity-monitoring/load-testing/SKILL.md)`.
+- **[Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-test the gateway itself**, not just the backends behind it — see `[load-testing](../../../../observability-monitoring-logging/common/capacity-monitoring/load-testing/SKILL.md)`.
 - **Deploy the gateway with the same rigor as any other production service** (canary, rollback,
   redundancy across zones) since an outage here takes down everything behind it.
 - **Consider a service mesh for internal traffic** once east-west volume between services
   outgrows what routing through a single north-south gateway makes sense for — see
-  `[service-mesh](../../../containers-orchestration/common/service-mesh/service-mesh/SKILL.md)`.
+  `[service-mesh](../../../../containers-orchestration/common/service-mesh/service-mesh/SKILL.md)`.
 
 **Done when:** you can state the gateway's own [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) limit and what happens to all backend
 traffic if it degrades.

@@ -502,7 +502,7 @@ describe("OrderService", () => {
 
 Integration tests verify real database operations and HTTP endpoints using `supertest` and a test database instance. Always truncate tables in `beforeEach` and tear down in `afterAll`.
 
-For full API integration test examples (supertest + [PostgreSQL](../../Backend/postgresql/SKILL.md)) and database repository integration tests, see [../../../Global_References/advanced-testing-patterns.md](../../../Global_References/advanced-testing-patterns.md).
+For full API integration test examples (supertest + [PostgreSQL](../../Databases/postgresql/SKILL.md)) and database repository integration tests, see [../../../Global_References/advanced-testing-patterns.md](../../../Global_References/advanced-testing-patterns.md).
 
 ## Frontend Testing with Testing Library
 

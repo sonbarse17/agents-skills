@@ -215,7 +215,7 @@ distribution, not just total dataset size.
   replica placement is actually fault-tolerant.
 - Recompute Sentinel quorum and leader-majority math after every change
   to Sentinel count, the same way replica-set voting math must be
-  recomputed after any [MongoDB](../../Backend/mongodb/SKILL.md) membership change.
+  recomputed after any [MongoDB](../mongodb/SKILL.md) membership change.
 - Bake `CONFIG REWRITE` (or the infra-as-code equivalent of updating the
   source-of-truth `redis.conf`) into the same change as any `CONFIG SET`
   applied live, so the file and the running instance never silently
@@ -316,4 +316,4 @@ survive a restart without silently vanishing, per the product team).
 
 - [redis-operations-and-cluster-management](../[redis-operations-and-cluster-management](../redis-operations-and-cluster-management/SKILL.md)/SKILL.md) — the operational mechanics (persistence, cluster topology, memory management) this skill's validation checks are grounded in.
 - [redis-caching-strategy-and-invalidation-patterns](../[redis-caching-strategy-and-invalidation-patterns](../redis-caching-strategy-and-invalidation-patterns/SKILL.md)/SKILL.md) — validates the *policy* layer here against the actual caching pattern in use (e.g. whether TTL strategy assumed by `volatile-*` matches the application's cache-aside/write-through design).
-- [mongodb-configuration-validation](../[mongodb-configuration-validation](../[mongodb](../../Backend/mongodb/SKILL.md)-configuration-validation/SKILL.md)/SKILL.md) — comparable pre-production configuration validation discipline (quorum math, replica placement, staged rollout) applied to [MongoDB](../../Backend/mongodb/SKILL.md), useful as a pattern reference in a polyglot environment.
+- [mongodb-configuration-validation](../[mongodb-configuration-validation](../[mongodb](../../Backend/mongodb/SKILL.md)-configuration-validation/SKILL.md)/SKILL.md) — comparable pre-production configuration validation discipline (quorum math, replica placement, staged rollout) applied to [MongoDB](../mongodb/SKILL.md), useful as a pattern reference in a polyglot environment.

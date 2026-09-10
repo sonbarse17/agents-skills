@@ -178,8 +178,8 @@ dotnet-gcdump collect -p <pid> -o heap.gcdump
 ### Step 3: Profile Database Queries
 
 ```sql
--- [PostgreSQL](../../Backend/postgresql/SKILL.md): slow query log
--- In [postgresql](../../Backend/postgresql/SKILL.md).conf:
+-- [PostgreSQL](../../Databases/postgresql/SKILL.md): slow query log
+-- In [postgresql](../../Databases/postgresql/SKILL.md).conf:
 log_min_duration_statement = 200  -- Log queries taking >200ms
 log_connections = on
 log_disconnections = on
@@ -210,7 +210,7 @@ LIMIT 10;  -- Unused indexes
 ```
 
 ```bash
-# [MongoDB](../../Backend/mongodb/SKILL.md): slow query profiler
+# [MongoDB](../../Databases/mongodb/SKILL.md): slow query profiler
 db.setProfilingLevel(1, { slowms: 100 })
 db.system.profile.find({ millis: { $gt: 200 } }).sort({ ts: -1 }).limit(10)
 

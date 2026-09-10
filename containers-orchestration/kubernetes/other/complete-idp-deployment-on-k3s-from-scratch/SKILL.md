@@ -90,7 +90,7 @@ running a separate etcd cluster the team has no [capacity](../../../AI_and_Agent
 move to the embedded-etcd HA model (3 server nodes) if uptime actually
 requires it. Size node resource requests deliberately against real
 hardware, not a cloud default — an edge device or small VM has no
-node-[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) safety net. See
+node-[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) safety net. See
 [lightweight-[kubernetes](../kubernetes/SKILL.md)-k3s](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[lightweight-[kubernetes](../kubernetes/SKILL.md)-k3s](../../Containers_and_Orchestration/lightweight-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-k3s/SKILL.md)/SKILL.md)
 for the datastore decision, install commands, and air-gapped install path
 if the site has no direct internet access.

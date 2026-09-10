@@ -190,7 +190,7 @@ resource "google_container_node_pool" "primary" {
   location = var.region
 
   initial_node_count = var.initial_node_count
-  [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) { min_node_count = var.min_nodes; max_node_count = var.max_nodes }
+  [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) { min_node_count = var.min_nodes; max_node_count = var.max_nodes }
   management  { auto_repair = true; auto_upgrade = true }
 
   node_config {

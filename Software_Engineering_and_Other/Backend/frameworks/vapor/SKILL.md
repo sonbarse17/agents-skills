@@ -39,8 +39,8 @@ User request includes: `vapor`, `vapor backend`, `vapor swift`, `fluent`, `vapor
 ### Input Context
 - Swift version (5.9+)
 - Vapor version (4.x)
-- Database driver (Fluent — [PostgreSQL](../postgresql/SKILL.md), [MySQL](../mysql/SKILL.md), SQLite, [MongoDB](../mongodb/SKILL.md))
-- Hosting (Vapor Cloud, [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md), bare metal)
+- Database driver (Fluent — [PostgreSQL](../../../Databases/postgresql/SKILL.md), [MySQL](../../../Databases/mysql/SKILL.md), SQLite, [MongoDB](../../../Databases/mongodb/SKILL.md))
+- Hosting (Vapor Cloud, [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md), bare metal)
 - Features (REST, WebSocket, APNs, Leaf templates)
 
 ### Output Artifact
@@ -83,9 +83,9 @@ mkdir OrderService && cd OrderService
 swift package init --type executable
 
 # Add Vapor and Fluent
-swift package add https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/vapor/vapor
-swift package add https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/vapor/fluent
-swift package add https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/vapor/fluent-postgres-driver
+swift package add https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/vapor/vapor
+swift package add https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/vapor/fluent
+swift package add https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/vapor/fluent-postgres-driver
 ```
 
 ### Step 2: Package.swift
@@ -97,11 +97,11 @@ let package = Package(
   name: "OrderService",
   platforms: [.macOS(.v13)],
   dependencies: [
-    .package(url: "https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/vapor/vapor", from: "4.90.0"),
-    .package(url: "https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/vapor/fluent", from: "4.9.0"),
-    .package(url: "https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/vapor/fluent-postgres-driver", from: "2.8.0"),
-    .package(url: "https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/vapor/leaf", from: "4.3.0"),
-    .package(url: "https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/vapor/jwt", from: "4.3.0"),
+    .package(url: "https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/vapor/vapor", from: "4.90.0"),
+    .package(url: "https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/vapor/fluent", from: "4.9.0"),
+    .package(url: "https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/vapor/fluent-postgres-driver", from: "2.8.0"),
+    .package(url: "https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/vapor/leaf", from: "4.3.0"),
+    .package(url: "https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/vapor/jwt", from: "4.3.0"),
   ],
   targets: [
     .executableTarget(
@@ -507,10 +507,10 @@ final class OrderControllerTests: XCTestCase {
 ### Database Selection
 ```
 Need production-grade relational DB?
-  +-- Yes -> [PostgreSQL](../postgresql/SKILL.md) (FluentPostgresDriver)
+  +-- Yes -> [PostgreSQL](../../../Databases/postgresql/SKILL.md) (FluentPostgresDriver)
   +-- No  -> Need embedded/simple?
       +-- Yes -> SQLite (FluentSQLiteDriver)
-      +-- No  -> [MySQL](../mysql/SKILL.md) or [MongoDB](../mongodb/SKILL.md)
+      +-- No  -> [MySQL](../../../Databases/mysql/SKILL.md) or [MongoDB](../../../Databases/mongodb/SKILL.md)
 ```
 
 ### Project Structure
@@ -573,7 +573,7 @@ First-party mobile/web app?
 |---|---|---|---|
 | Async support | async/await | async/await | Callbacks |
 | ORM | Fluent | None (raw SQL) | SwiftKuery |
-| Template engine | Leaf | None | [Stencil](../../Frontend/frameworks/stencil/SKILL.md) |
+| Template engine | Leaf | None | [Stencil](../../../Frontend/frameworks/stencil/SKILL.md) |
 | WebSocket | Built-in | Via plugin | Built-in |
 | Community size | Large | Small | Deprecated |
 | macOS deployment | First-class | First-class | First-class |
@@ -582,7 +582,7 @@ First-party mobile/web app?
 
 ## Performance
 
-- Vapor 4 achieves ~80k req/s on modern hardware with [PostgreSQL](../postgresql/SKILL.md) (simple queries).
+- Vapor 4 achieves ~80k req/s on modern hardware with [PostgreSQL](../../../Databases/postgresql/SKILL.md) (simple queries).
 - Connection pooling: Configure `maxConnectionsPerEventLoop` (default 2). Increase for high-throughput workloads.
 - Keep-alive reduces latency by 40% for repeated requests.
 - Leaf template caching in production: set `app.leaf.cache = .enabled`.
@@ -601,7 +601,7 @@ First-party mobile/web app?
 | **APNS** | Apple Push Notification service |
 | **Queues** | Background job processing (Redis, DB) |
 | **Redis** | Caching and session storage |
-| **[Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)** | Containerized deployment |
+| **[Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)** | Containerized deployment |
 | **SwiftLint** | Code style enforcement |
 | **swift-format** | Code formatting |
 

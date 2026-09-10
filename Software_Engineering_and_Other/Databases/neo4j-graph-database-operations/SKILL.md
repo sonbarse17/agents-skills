@@ -106,7 +106,7 @@ RETURN avg(orderCount), max(orderCount), percentileCont(orderCount, 0.99);
 ```
 A **super-node** (a single node with an extremely high relationship
 count — e.g. a "country" node connected to millions of customer nodes)
-is Neo4j's rough equivalent of a Cassandra hot partition or a [MongoDB](../../Backend/mongodb/SKILL.md)
+is Neo4j's rough equivalent of a Cassandra hot partition or a [MongoDB](../mongodb/SKILL.md)
 low-cardinality shard key: any traversal through that node becomes
 expensive regardless of indexing, since the traversal must still
 enumerate a huge relationship set. Identify and redesign around
@@ -124,7 +124,7 @@ WHERE p.category = 'electronics'
 RETURN o.orderId, p.name;
 ```
 `PROFILE` (runs the query and reports actual row counts per operator) is
-the Cypher equivalent of [PostgreSQL](../../Backend/postgresql/SKILL.md)'s `EXPLAIN ANALYZE` — use it, not
+the Cypher equivalent of [PostgreSQL](../postgresql/SKILL.md)'s `EXPLAIN ANALYZE` — use it, not
 `EXPLAIN` alone (which only estimates), to find the real bottleneck.
 Look for a `NodeByLabelScan` (full label scan, analogous to a `Seq
 Scan`) where an index-backed `NodeIndexSeek` is expected — this
@@ -343,5 +343,5 @@ majority of users.
 ## Cross-references
 
 - [arangodb-multi-model-database-operations](../[arangodb-multi-model-database-operations](../arangodb-multi-model-[database-operations](../database-operations/SKILL.md)/SKILL.md)/SKILL.md) — a distinct multi-model engine (graph plus document plus key-value in one database) rather than Neo4j's graph-only architecture — relevant when a workload needs both graph traversal and general document storage without running two separate databases.
-- [postgresql-high-availability-and-failover](../[postgresql-high-availability-and-failover](../../../AI_and_Agents/Workflows/[postgresql](../../Backend/postgresql/SKILL.md)-high-availability-and-failover/SKILL.md)/SKILL.md) — comparable quorum-based leader-election and failover concerns (Raft in Neo4j's causal cluster vs. Patroni/etcd-based failover in [PostgreSQL](../../Backend/postgresql/SKILL.md)), useful as a conceptual parallel.
+- [postgresql-high-availability-and-failover](../[postgresql-high-availability-and-failover](../../../AI_and_Agents/Workflows/[postgresql](../../Backend/postgresql/SKILL.md)-high-availability-and-failover/SKILL.md)/SKILL.md) — comparable quorum-based leader-election and failover concerns (Raft in Neo4j's causal cluster vs. Patroni/etcd-based failover in [PostgreSQL](../postgresql/SKILL.md)), useful as a conceptual parallel.
 - [database-[backup-and-restore](../../../containers-orchestration/common/other/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies](../database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md) — backup/restore-testing discipline that should back up any destructive Cypher operation (`DETACH DELETE`, a dropped constraint) against a production graph.

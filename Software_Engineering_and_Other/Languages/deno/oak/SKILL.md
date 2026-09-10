@@ -40,7 +40,7 @@ User request includes: `oak`, `oak backend`, `deno oak`, `oak middleware`, `oak 
 - Deno version (1.40+)
 - Oak version (13.x)
 - Language ([TypeScript](../../../Frontend/common/typescript/SKILL.md))
-- Database (Deno KV, [MongoDB](../../../Backend/mongodb/SKILL.md) via deno_mongo, [PostgreSQL](../../../Backend/postgresql/SKILL.md) via deno_postgres)
+- Database (Deno KV, [MongoDB](../../../Databases/mongodb/SKILL.md) via deno_mongo, [PostgreSQL](../../../Databases/postgresql/SKILL.md) via deno_postgres)
 - Templating (eta, deno mustache)
 - Deployment (Deno Deploy, self-hosted)
 

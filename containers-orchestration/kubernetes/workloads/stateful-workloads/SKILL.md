@@ -49,7 +49,7 @@ make the workload stateful-aware, backed up, or replicated on its own.
   the stateful application's own responsibility, or an operator's (see `[operators-and-crds](../operators-and-crds/SKILL.md)`)
   built specifically for that system.
 - **Scale StatefulSets deliberately, not automatically** — adding or removing a stateful
-  member usually requires a rebalance or resync that [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) logic knows nothing about.
+  member usually requires a rebalance or resync that [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) logic knows nothing about.
 
 **Done when:** each stateful pod has a stable identity the application actually depends on, not
 just a default StatefulSet used out of habit for something that could be a Deployment.

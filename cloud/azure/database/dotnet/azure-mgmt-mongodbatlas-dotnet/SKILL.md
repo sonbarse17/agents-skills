@@ -22,7 +22,7 @@ depends_on:
 
 # Azure.ResourceManager.MongoDBAtlas SDK
 
-Manage [MongoDB](../../../../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md) Atlas Organizations as Azure ARM resources with unified billing through Azure Marketplace.
+Manage [MongoDB](../../../../../Software_Engineering_and_Other/Databases/mongodb/SKILL.md) Atlas Organizations as Azure ARM resources with unified billing through Azure Marketplace.
 
 ## Package Information
 
@@ -31,7 +31,7 @@ Manage [MongoDB](../../../../../Software_Engineering_and_Other/Backend/mongodb/S
 | Package | `Azure.ResourceManager.MongoDBAtlas` |
 | Version | 1.0.0 (GA) |
 | API Version | 2025-06-01 |
-| Resource Type | `[MongoDB](../../../../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md).Atlas/organizations` |
+| Resource Type | `[MongoDB](../../../../../Software_Engineering_and_Other/Databases/mongodb/SKILL.md).Atlas/organizations` |
 | NuGet | [Azure.ResourceManager.MongoDBAtlas](https://www.nuget.org/packages/Azure.ResourceManager.MongoDBAtlas) |
 
 ## Installation
@@ -44,13 +44,13 @@ dotnet add package Azure.ResourceManager
 
 ## Important Scope Limitation
 
-This SDK manages **[MongoDB](../../../../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md) Atlas Organizations as Azure ARM resources** for marketplace integration. It does NOT directly manage:
+This SDK manages **[MongoDB](../../../../../Software_Engineering_and_Other/Databases/mongodb/SKILL.md) Atlas Organizations as Azure ARM resources** for marketplace integration. It does NOT directly manage:
 - Atlas clusters
 - Databases
 - Collections
 - Users/roles
 
-For cluster management, use the [MongoDB](../../../../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md) Atlas API directly after creating the organization.
+For cluster management, use the [MongoDB](../../../../../Software_Engineering_and_Other/Databases/mongodb/SKILL.md) Atlas API directly after creating the organization.
 
 ## Environment Variables
 
@@ -92,7 +92,7 @@ var armClient = new ArmClient(credential);
 | `MongoDBAtlasMarketplaceDetails` | Azure Marketplace subscription details |
 | `MongoDBAtlasOfferDetails` | Marketplace offer configuration |
 | `MongoDBAtlasUserDetails` | User information for the organization |
-| `MongoDBAtlasPartnerProperties` | [MongoDB](../../../../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md)-specific properties (org name, ID) |
+| `MongoDBAtlasPartnerProperties` | [MongoDB](../../../../../Software_Engineering_and_Other/Databases/mongodb/SKILL.md)-specific properties (org name, ID) |
 
 ## Workflows
 
@@ -121,7 +121,7 @@ var organizationData = new MongoDBAtlasOrganizationData(location)
         marketplace: new MongoDBAtlasMarketplaceDetails(
             subscriptionId: "your-azure-subscription-id",
             offerDetails: new MongoDBAtlasOfferDetails(
-                publisherId: "[mongodb](../../../../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md)",
+                publisherId: "[mongodb](../../../../../Software_Engineering_and_Other/Databases/mongodb/SKILL.md)",
                 offerId: "mongodb_atlas_azure_native_prod",
                 planId: "private_plan",
                 planName: "Pay as You Go (Free) (Private)",
@@ -248,7 +248,7 @@ await organization.DeleteAsync(WaitUntil.Completed);
 |----------|------|-------------|
 | `Marketplace` | `MongoDBAtlasMarketplaceDetails` | Required. Marketplace subscription details |
 | `User` | `MongoDBAtlasUserDetails` | Required. Organization admin user |
-| `PartnerProperties` | `MongoDBAtlasPartnerProperties` | [MongoDB](../../../../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md)-specific properties |
+| `PartnerProperties` | `MongoDBAtlasPartnerProperties` | [MongoDB](../../../../../Software_Engineering_and_Other/Databases/mongodb/SKILL.md)-specific properties |
 | `ProvisioningState` | `MongoDBAtlasResourceProvisioningState` | Read-only. Current provisioning state |
 
 ### MongoDBAtlasMarketplaceDetails
@@ -263,7 +263,7 @@ await organization.DeleteAsync(WaitUntil.Completed);
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `PublisherId` | `string` | Required. Publisher ID (typically "[mongodb](../../../../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md)") |
+| `PublisherId` | `string` | Required. Publisher ID (typically "[mongodb](../../../../../Software_Engineering_and_Other/Databases/mongodb/SKILL.md)") |
 | `OfferId` | `string` | Required. Offer ID |
 | `PlanId` | `string` | Required. Plan ID |
 | `PlanName` | `string` | Required. Display name of the plan |
@@ -283,8 +283,8 @@ await organization.DeleteAsync(WaitUntil.Completed);
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `OrganizationName` | `string` | Name of the [MongoDB](../../../../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md) Atlas organization |
-| `OrganizationId` | `string` | Read-only. [MongoDB](../../../../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md) Atlas organization ID |
+| `OrganizationName` | `string` | Name of the [MongoDB](../../../../../Software_Engineering_and_Other/Databases/mongodb/SKILL.md) Atlas organization |
+| `OrganizationId` | `string` | Read-only. [MongoDB](../../../../../Software_Engineering_and_Other/Databases/mongodb/SKILL.md) Atlas organization ID |
 
 ## Provisioning States
 
@@ -381,6 +381,6 @@ var response = await orgResource.GetAsync();
 
 ## Related Resources
 
-- [Microsoft Learn: [MongoDB](../../../../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md) Atlas on Azure](https://learn.microsoft.com/en-us/azure/partner-solutions/[mongodb](../../../../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md)-atlas/)
+- [Microsoft Learn: [MongoDB](../../../../../Software_Engineering_and_Other/Databases/mongodb/SKILL.md) Atlas on Azure](https://learn.microsoft.com/en-us/azure/partner-solutions/[mongodb](../../../../../Software_Engineering_and_Other/Databases/mongodb/SKILL.md)-atlas/)
 - [API Reference](https://learn.microsoft.com/en-us/dotnet/api/azure.resourcemanager.mongodbatlas)
 - [Azure SDK for .NET](https://[github](../../../../../ci-cd/github-actions/other/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/mongodbatlas)

@@ -101,7 +101,7 @@ can serve any request; reach for stickiness only when that's genuinely not feasi
 
 - **Stickiness concentrates load** on whichever backends happen to hold the busiest sessions.
 - **A backend replacement drops sticky sessions** unless state lives outside the process — see
-  `[caching-strategies](../../Miscellaneous/caching-strategies/SKILL.md)` for externalizing that state properly.
+  `[caching-strategies](../../../Miscellaneous/caching-strategies/SKILL.md)` for externalizing that state properly.
 - **Cookie-based affinity survives client IP changes**; IP-based affinity breaks behind NAT or
   mobile networks where source IP shifts mid-session.
 

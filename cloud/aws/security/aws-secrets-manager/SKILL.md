@@ -263,7 +263,7 @@ def finish_secret(client, secret_arn, token):
 ```hcl
 resource "aws_lambda_function" "rotation" {
   filename         = "rotation_function.zip"
-  function_name    = "secrets-rotation-[postgresql](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)"
+  function_name    = "secrets-rotation-[postgresql](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)"
   role             = aws_iam_role.rotation.arn
   handler          = "rotation_function.lambda_handler"
   runtime          = "python3.11"
@@ -324,7 +324,7 @@ def get_cached_secret(secret_name: str) -> dict:
 # Usage
 creds = get_secret("myapp/production/database")
 connection_string = (
-    f"[postgresql](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)://{creds['username']}:{creds['password']}"
+    f"[postgresql](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)://{creds['username']}:{creds['password']}"
     f"@{creds['host']}:{creds['port']}/{creds['dbname']}"
 )
 ```

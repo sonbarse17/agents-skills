@@ -148,10 +148,10 @@ SMB         - 0xFF 0x53 0x4D 0x42 ("SMB" signature)
 SSH         - "SSH-2.0" banner
 FTP         - "220 " response, "USER " command
 SMTP        - "220 " banner, "EHLO" command
-[MySQL](../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)       - 0x00 length prefix, protocol version
-[PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)  - 0x00 0x00 0x00 startup length
+[MySQL](../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)       - 0x00 length prefix, protocol version
+[PostgreSQL](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)  - 0x00 0x00 0x00 startup length
 Redis       - "*" RESP array prefix
-[MongoDB](../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md)     - BSON documents with specific header
+[MongoDB](../../Software_Engineering_and_Other/Databases/mongodb/SKILL.md)     - BSON documents with specific header
 ```
 
 ### Protocol Header Patterns

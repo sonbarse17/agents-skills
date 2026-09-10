@@ -40,7 +40,7 @@ a plugin on a Service applies to every Route pointing at it, a plugin
 on a Route applies only there, and a global plugin applies everywhere
 including routes you didn't intend. This skill covers building this
 object model — declaratively via `kong.yml`/CRDs (the reproducible,
-[GitOps](../../../containers-orchestration/common/gitops/gitops/SKILL.md)-friendly path) or imperatively via the Admin API — and the
+[GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md)-friendly path) or imperatively via the Admin API — and the
 plugin configurations most teams reach for first: rate-limiting and
 authentication. Validating that a declarative config or CRD set is
 correct before deploy is a distinct, deeper topic — see
@@ -58,7 +58,7 @@ correct before deploy is a distinct, deeper topic — see
   `response-transformer`) to adapt a client's expected payload shape to
   what the upstream actually returns, or vice versa.
 - Migrating a hand-run set of `curl` calls against the Admin API into a
-  declarative `kong.yml` file or [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) CRDs for reproducibility.
+  declarative `kong.yml` file or [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) CRDs for reproducibility.
 - Diagnosing a `502 Bad Gateway`/`503 Service Unavailable` from Kong, or
   a plugin that isn't firing on the route it's expected to.
 - Deciding whether Kong (an API gateway focused on north-south,
@@ -69,13 +69,13 @@ correct before deploy is a distinct, deeper topic — see
 
 ## Prerequisites & environment
 
-- Kong Gateway (OSS or Enterprise) installed — standalone ([Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)/VM,
+- Kong Gateway (OSS or Enterprise) installed — standalone ([Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)/VM,
   fronted by a Postgres or Cassandra datastore, or in DB-less mode) or
-  on [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) via the **Kong Ingress Controller (KIC)**, which maps
-  Kong's Service/Route/Plugin model onto [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) `Ingress` +
+  on [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) via the **Kong Ingress Controller (KIC)**, which maps
+  Kong's Service/Route/Plugin model onto [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) `Ingress` +
   `KongPlugin`/`KongClusterPlugin`/`KongIngress` CRDs.
   `rate-limiting-advanced`, some auth plugins' more advanced modes, and
-  clustering/Vitals [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) differ between OSS and Enterprise — check
+  clustering/Vitals [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) differ between OSS and Enterprise — check
   which tier a given plugin belongs to before assuming it's available.
 - Network access to Kong's Admin API (default port `8001`, `8444` for
   TLS) for imperative configuration or CI-driven declarative sync — this
@@ -85,9 +85,9 @@ correct before deploy is a distinct, deeper topic — see
 - For DB-less/declarative mode: `deck` (decK), Kong's CLI for diffing
   and syncing `kong.yml` against a running Kong instance
   (`deck sync`, `deck diff`, `deck validate`).
-- For [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md): the Kong Ingress Controller installed and its CRDs
+- For [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md): the Kong Ingress Controller installed and its CRDs
   (`KongPlugin`, `KongClusterPlugin`, `KongIngress`, `KongConsumer`)
-  registered, plus a standard [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) `Ingress` resource per route (or
+  registered, plus a standard [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) `Ingress` resource per route (or
   Kong's native `HTTPRoute`/Gateway API support on newer KIC versions).
 - A rate-limiting plugin backed by a shared store (Redis) rather than
   the in-memory `local` policy for any multi-node Kong deployment — the
@@ -123,7 +123,7 @@ correct before deploy is a distinct, deeper topic — see
            methods: ["GET", "POST"]
    ```
 
-2. **On [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), express the same model as an `Ingress` plus Kong
+2. **On [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), express the same model as an `Ingress` plus Kong
    CRDs**, with the Kong Ingress Controller reconciling them into the
    equivalent Service/Route:
    ```yaml
@@ -244,7 +244,7 @@ correct before deploy is a distinct, deeper topic — see
   a security header) — an accidental global plugin is a common source
   of "why did this break every route" incidents.
 - Manage Kong configuration declaratively (`kong.yml` + `deck`, or
-  [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) CRDs in Git) rather than a history of imperative `curl`
+  [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) CRDs in Git) rather than a history of imperative `curl`
   calls against the Admin API — the latter has no diff, no review, and
   no record of who changed what.
 - Always back rate-limiting with a shared counter (`redis` or
@@ -266,7 +266,7 @@ correct before deploy is a distinct, deeper topic — see
   fit — see
   [service-mesh-istio](../../../[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[service-mesh-istio](../../Frontend/[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-istio/SKILL.md)/SKILL.md)
   and
-  [linkerd-[service-mesh](../../../containers-orchestration/common/service-mesh/service-mesh/SKILL.md)-configuration](../[linkerd-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../../Frontend/linkerd-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-configuration/SKILL.md)/SKILL.md)
+  [linkerd-[service-mesh](../../../../containers-orchestration/common/service-mesh/service-mesh/SKILL.md)-configuration](../[linkerd-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../../Frontend/linkerd-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-configuration/SKILL.md)/SKILL.md)
   for that comparison rather than trying to make Kong do both jobs.
 
 ## Common pitfalls
@@ -377,4 +377,4 @@ per-node one.
 - [kong-configuration-validation](../[kong-configuration-validation](../../../DevOps_and_Cloud/Containers_and_Orchestration/kong-configuration-validation/SKILL.md)/SKILL.md) — validating this declarative config/CRD set before it reaches production.
 - [api-gateway-rate-limiting-and-quota-management](../[api-gateway-rate-limiting-and-quota-management](../[api-gateway](../api-gateway/SKILL.md)-rate-limiting-and-quota-management/SKILL.md)/SKILL.md) — the deeper, cross-tool strategy (algorithm choice, per-client vs. global scoping) behind the `rate-limiting` plugin configuration here.
 - [apigee-api-management-and-governance](../[apigee-api-management-and-governance](../apigee-api-management-and-governance/SKILL.md)/SKILL.md) — the enterprise API-management alternative when the need grows beyond gateway routing/plugins into full lifecycle governance, monetization, and versioning at scale.
-- [service-mesh-istio](../../../[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[service-mesh-istio](../../Frontend/[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-istio/SKILL.md)/SKILL.md) — the [service-mesh](../../../containers-orchestration/common/service-mesh/service-mesh/SKILL.md) comparison point for east-west traffic, versus Kong's north-south, edge-facing role.
+- [service-mesh-istio](../../../[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[service-mesh-istio](../../Frontend/[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-istio/SKILL.md)/SKILL.md) — the [service-mesh](../../../../containers-orchestration/common/service-mesh/service-mesh/SKILL.md) comparison point for east-west traffic, versus Kong's north-south, edge-facing role.

@@ -94,8 +94,8 @@ scale unless it also exposes the signals an orchestrator needs. Handle `SIGTERM`
 shutdown instead of relying on `SIGKILL` after a timeout. Expose a liveness and readiness
 distinction — a process that is running but not yet able to serve traffic should fail readiness,
 not liveness. Set resource requests informed by real usage, not guesses, so the scheduler can
-place the container sensibly; the scheduling and [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) behavior itself belongs to
-`[kubernetes-operations](../[kubernetes](../kubernetes/SKILL.md)-operations/SKILL.md)` and `[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)`.
+place the container sensibly; the scheduling and [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) behavior itself belongs to
+`[kubernetes-operations](../[kubernetes](../kubernetes/SKILL.md)-operations/SKILL.md)` and `[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)`.
 
 - **Trap `SIGTERM`** and finish in-flight work within the orchestrator's grace period.
 - **Expose separate health endpoints** for startup, liveness, and readiness where the runtime

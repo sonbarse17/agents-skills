@@ -43,7 +43,7 @@ Exact user phrases: "idempotency", "idempotent", "idempotency key", "exactly-onc
 
 ### Input Context
 - Which endpoints need idempotency guarantees.
-- Existing data store (Redis, [PostgreSQL](../postgresql/SKILL.md), DynamoDB).
+- Existing data store (Redis, [PostgreSQL](../../../Databases/postgresql/SKILL.md), DynamoDB).
 - Current retry configuration.
 
 ### Output Artifact
@@ -109,11 +109,11 @@ What are your latency and consistency requirements?
   │   ├── PRO: Low latency, built-in TTL
   │   ├── CON: Data loss on node fail (if not persisted)
   │   └── Use when: High-throughput, short TTL (< 24h)
-  ├── [PostgreSQL](../postgresql/SKILL.md) → Durable, transactional, complex queries
+  ├── [PostgreSQL](../../../Databases/postgresql/SKILL.md) → Durable, transactional, complex queries
   │   ├── PRO: ACID compliant, survives crashes
   │   ├── CON: Slower (~5-10ms), requires cleanup job
   │   └── Use when: Financial operations, long TTL (> 24h)
-  └── DynamoDB → [Serverless](../../Patterns/serverless/SKILL.md), auto-scaling, TTL built-in
+  └── DynamoDB → [Serverless](../../../Patterns/serverless/SKILL.md), auto-scaling, TTL built-in
       ├── PRO: No ops, pay-per-use
       ├── CON: Eventually consistent by default
       └── Use when: AWS ecosystem, variable throughput
@@ -146,7 +146,7 @@ async function handleRequest(req, res) {
 When two requests with the same key arrive simultaneously, only one should succeed. Use database-level locking:
 
 ```sql
--- [PostgreSQL](../postgresql/SKILL.md): INSERT ... ON CONFLICT
+-- [PostgreSQL](../../../Databases/postgresql/SKILL.md): INSERT ... ON CONFLICT
 INSERT INTO idempotency_keys (key, status, body, created_at)
 VALUES ($1, 'pending', null, NOW())
 ON CONFLICT (key) DO NOTHING
@@ -154,7 +154,7 @@ RETURNING *;
 -- If no row returned, another request holds the key — return 409 Conflict
 ```
 
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../../Frontend/common/typescript/SKILL.md)
 // Redis: SET NX with TTL
 const acquired = await redis.set(`idempotency:${key}`, 'pending', {
   NX: true,
@@ -175,7 +175,7 @@ After processing, update the idempotency row with the result:
 UPDATE idempotency_keys SET status = 'completed', body = $2, updated_at = NOW() WHERE key = $1;
 ```
 
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../../Frontend/common/typescript/SKILL.md)
 // Store result in Redis
 await redis.set(`idempotency:${key}:result`, JSON.stringify(result), { EX: 3600 });
 ```
@@ -203,17 +203,17 @@ async function handleWithIdempotency(req, res) {
 ```
 
 ### Step 6: Clean Up Expired Keys
-Use a TTL index (Redis) or a background job ([PostgreSQL](../postgresql/SKILL.md)) to delete keys after the TTL window:
+Use a TTL index (Redis) or a background job ([PostgreSQL](../../../Databases/postgresql/SKILL.md)) to delete keys after the TTL window:
 
 ```sql
--- [PostgreSQL](../postgresql/SKILL.md): background cleanup
+-- [PostgreSQL](../../../Databases/postgresql/SKILL.md): background cleanup
 DELETE FROM idempotency_keys WHERE created_at < NOW() - INTERVAL '24 hours';
 ```
 
 ## Implementation Patterns
 
 ### Express Middleware Pattern
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../../Frontend/common/typescript/SKILL.md)
 function idempotencyMiddleware(store: IdempotencyStore, ttl: number = 86400) {
   return async (req: Request, res: Response, next: NextFunction) => {
     if (['GET', 'HEAD', 'OPTIONS'].includes(req.method)) return next();
@@ -239,7 +239,7 @@ function idempotencyMiddleware(store: IdempotencyStore, ttl: number = 86400) {
 ```
 
 ### Decorator Pattern (NestJS)
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../../Frontend/common/typescript/SKILL.md)
 @Post()
 @Idempotent({ ttl: 3600 })
 async createOrder(@Body() dto: CreateOrderDto): Promise<Order> {
@@ -266,7 +266,7 @@ function Idempotent(options: { ttl?: number } = {}) {
 ```
 
 ### Database-Backed Idempotency
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../../Frontend/common/typescript/SKILL.md)
 class PostgresIdempotencyStore {
   constructor(private pool: Pool) {}
 
@@ -306,8 +306,8 @@ class PostgresIdempotencyStore {
 |---------|---------|------------|-----|------|----------|
 | In-memory (Map) | <1μs | None | Manual | Free | Single-node, dev |
 | Redis | ~1ms | Configurable | Built-in | Low-Med | High-throughput |
-| [PostgreSQL](../postgresql/SKILL.md) | ~5ms | Full | Manual | Low | Financial, durable |
-| DynamoDB | ~10ms | Full | Built-in | Per-use | [Serverless](../../Patterns/serverless/SKILL.md), AWS |
+| [PostgreSQL](../../../Databases/postgresql/SKILL.md) | ~5ms | Full | Manual | Low | Financial, durable |
+| DynamoDB | ~10ms | Full | Built-in | Per-use | [Serverless](../../../Patterns/serverless/SKILL.md), AWS |
 | Memcached | ~1ms | None | Built-in | Low | Simple caching |
 
 ### Race Condition Handling
@@ -317,7 +317,7 @@ Concurrent requests with the same key must be handled:
 2. **Lock-based**: Acquire a distributed lock on the key. First holder processes, others wait.
 3. **Optimistic**: Use CAS (compare-and-swap) to update the key record.
 
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../../Frontend/common/typescript/SKILL.md)
 // Wait pattern: poll for completion
 async function handleConcurrent(key: string, maxWaitMs = 5000): Promise<Response> {
   const pollInterval = 100;
@@ -339,7 +339,7 @@ async function handleConcurrent(key: string, maxWaitMs = 5000): Promise<Response
 
 ### Key Entropy
 Idempotency keys must be unpredictable. Never use sequential integers or timestamps:
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../../Frontend/common/typescript/SKILL.md)
 // GOOD: UUID v4 — random, unpredictable
 const key = crypto.randomUUID();
 
@@ -352,7 +352,7 @@ const key = `${timestamp}-${counter++}`;
 
 ### Key Validation
 Validate idempotency keys on input — never process a malformed key:
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../../Frontend/common/typescript/SKILL.md)
 function validateIdempotencyKey(key: string): boolean {
   // UUID format check
   const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-7][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
@@ -366,7 +366,7 @@ Without careful design, idempotency keys can enable replay attacks:
 - Always include a timestamp in the idempotency record
 - Reject keys older than the TTL window (even if they haven't expired)
 - Rate-limit idempotency key submissions per client
-- Log all idempotency key hits for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+- Log all idempotency key hits for [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)
 
 ## Performance
 
@@ -381,7 +381,7 @@ Without careful design, idempotency keys can enable replay attacks:
 |---------|---------|----------|-------------|
 | In-memory | 1M+ | 1M+ | <100μs |
 | Redis | 100K | 100K | ~1ms |
-| [PostgreSQL](../postgresql/SKILL.md) | 10K | 5K | ~5ms |
+| [PostgreSQL](../../../Databases/postgresql/SKILL.md) | 10K | 5K | ~5ms |
 
 ### Cache Eviction
 For Redis-based storage, configure eviction policy:
@@ -398,7 +398,7 @@ maxmemory: 512mb                # Cap idempotency storage
 4. **Application-level dedup only**: Idempotency must be enforced at the database level with unique constraints, not application-level locking.
 5. **Reusing keys across different requests**: Each unique operation gets its own idempotency key. Reusing keys across different request bodies causes false deduplication.
 6. **Idempotency on GET/HEAD**: These are naturally idempotent. Adding idempotency key requirements to read endpoints adds complexity with no benefit.
-7. **No [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) on deduplication rate**: A high deduplication rate indicates excessive client retries or network issues. Monitor idempotency key hit rate as a signal.
+7. **No [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) on deduplication rate**: A high deduplication rate indicates excessive client retries or network issues. Monitor idempotency key hit rate as a signal.
 
 ## Design Pattern Comparison
 
@@ -417,7 +417,7 @@ maxmemory: 512mb                # Cap idempotency storage
 - Return the same response for the same key within the TTL window — including error responses.
 - Use database-level uniqueness for the idempotency key column, not application-level locking.
 - Never reuse idempotency keys across different request bodies.
-- Log idempotency key hits for [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md).
+- Log idempotency key hits for [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md).
 - GET, HEAD, OPTIONS are inherently idempotent — no key needed.
 - Validate idempotency key format before processing.
 - Monitor idempotency key hit rate as a signal of client reliability.
@@ -488,7 +488,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
+### [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -502,7 +502,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/performance/profiling/SKILL.md) | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../../Frontend/performance/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -518,12 +518,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### [Profiling](../../Frontend/performance/profiling/SKILL.md) Methodology
+### [Profiling](../../../Frontend/performance/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing ([OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -532,7 +532,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
+- Repudiation: [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -540,13 +540,13 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) signing
+- Signed commits: GPG or SSH [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager ([Vault](../../Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../../Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
+- Access [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -555,8 +555,8 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
+- Log security-relevant events for [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
+- Design for [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

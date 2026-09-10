@@ -37,7 +37,7 @@ depends_on:
 
 Every other skill in this "complete deployment" set assumes [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) —
 for good reason, since [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md)' namespace/RBAC/quota primitives are
-what make [multi-tenancy](../../../common/other/multi-tenancy/SKILL.md), self-service provisioning, and [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)
+what make [multi-tenancy](../../../common/other/multi-tenancy/SKILL.md), self-service provisioning, and [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)
 tractable at platform scale. This skill is for teams that genuinely
 aren't there yet: a handful of services, a small number of developers, and
 [Docker](../docker/SKILL.md) Compose as the only deployment substrate in production or
@@ -46,7 +46,7 @@ below: **this is a starting point, not an Internal Developer Platform.**
 It gives a team a service catalog, a repeatable way to scaffold new
 services, and Dapr's cross-service building blocks without requiring a
 [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) cluster — but it explicitly does not give them tenant
-isolation beyond the OS/container boundary, [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md), self-healing, or
+isolation beyond the OS/container boundary, [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md), self-healing, or
 automated infrastructure self-service. Naming that gap plainly, and
 naming the point at which a team should stop extending this and adopt one
 of the [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md)-based variants instead, is this skill's actual job.
@@ -65,7 +65,7 @@ of the [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md)-based variant
   deciding when the team has actually outgrown this approach.
 - Documenting, for a team already on this path, exactly what production
   guarantees they do not currently have (so an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) isn't the first
-  time anyone realizes [multi-tenancy](../../../common/other/multi-tenancy/SKILL.md) or [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) was never built).
+  time anyone realizes [multi-tenancy](../../../common/other/multi-tenancy/SKILL.md) or [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) was never built).
 
 ## Prerequisites & environment
 
@@ -174,7 +174,7 @@ State this to the team as a running list, not a footnote:
   to
   [multi-tenancy-and-team-workspace-design-for-idp](../[multi-tenancy-and-team-workspace-design-for-idp](../../../Software_Engineering_and_Other/Miscellaneous/[multi-tenancy](../multi-tenancy/SKILL.md)-and-team-workspace-design-for-idp/SKILL.md)/SKILL.md),
   none of which has an equivalent here.
-- **No [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) and no self-healing.** A crashed container restarts
+- **No [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) and no self-healing.** A crashed container restarts
   per its `restart:` policy, if configured, but there is no horizontal
   scaling and no node-level rescheduling if a host fails outright.
 - **No automated, policy-gated self-service infrastructure

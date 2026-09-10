@@ -224,7 +224,7 @@ nodetool decommission   # run on the node being removed — streams its data OUT
 ## Best practices
 
 - Design partition keys to bound growth (a natural bucketing dimension
-  like a time window, matching this repo's guidance for [MongoDB](../../Backend/mongodb/SKILL.md) shard
+  like a time window, matching this repo's guidance for [MongoDB](../mongodb/SKILL.md) shard
   keys in
   [mongodb-operations-and-scaling](../[mongodb-operations-and-scaling](../[mongodb](../../Backend/mongodb/SKILL.md)-operations-and-scaling/SKILL.md)/SKILL.md))
   rather than an unbounded, ever-growing key — this is the single

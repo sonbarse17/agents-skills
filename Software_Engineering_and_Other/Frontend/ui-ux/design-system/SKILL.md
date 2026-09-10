@@ -186,7 +186,7 @@ Component tokens (scoped):
 Components never reference dark-mode values directly. They reference semantic tokens which change under `[data-theme="dark"]`.
 
 ### Step 4: Component API Design Rules
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../common/typescript/SKILL.md)
 interface ButtonProps {
   // Variants (use CVA)
   variant: 'primary' | 'secondary' | 'ghost' | 'danger'
@@ -209,7 +209,7 @@ interface ButtonProps {
 ```
 
 ### Step 5: CVA Variant Pattern
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../common/typescript/SKILL.md)
 import { cva, type VariantProps } from 'class-variance-authority'
 
 const buttonVariants = cva(
@@ -316,7 +316,7 @@ Every component in the design system must:
 - Expose ARIA attributes for screen readers
 - Support prefers-reduced-motion
 
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../common/typescript/SKILL.md)
 // Base focus style mixin for all components
 const focusVisible = 'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600'
 
@@ -397,7 +397,7 @@ A well-designed design system component library should add:
 
 ### Token Management
 - **Style Dictionary**: Amazon's build-time token transformation tool. Input JSON, output CSS/JS/anything.
-- **Tokens Studio (Figma plugin)**: Design token editor in Figma. Syncs to [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) via JSON.
+- **Tokens Studio (Figma plugin)**: Design token editor in Figma. Syncs to [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) via JSON.
 - **Specify**: Design token management platform with Figma and code integrations.
 - **Theo**: Salesforce's token transformer (predecessor to Style Dictionary).
 
@@ -437,7 +437,7 @@ A well-designed design system component library should add:
 
 ## Handoff
 No artifact produced.
-Next skill: [frontend-state-management](../../Frontend/state-management/state-management/SKILL.md) -- state architecture for the design system.
+Next skill: [frontend-state-management](../../state-management/state-management/SKILL.md) -- state architecture for the design system.
 Carry forward: token definitions, component API rules, dark mode strategy.
 ## Implementation Patterns
 
@@ -491,7 +491,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
+### [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -505,7 +505,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/performance/profiling/SKILL.md) | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../performance/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -521,12 +521,12 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### [Profiling](../../Frontend/performance/profiling/SKILL.md) Methodology
+### [Profiling](../../performance/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing ([OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -535,7 +535,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
+- Repudiation: [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -543,13 +543,13 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) signing
+- Signed commits: GPG or SSH [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager ([Vault](../../Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../../Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
+- Access [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 

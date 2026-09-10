@@ -47,7 +47,7 @@ mesh-level traffic policies covered in
 and
 [linkerd-[service-mesh](../../../containers-orchestration/common/service-mesh/service-mesh/SKILL.md)-configuration](../[linkerd-[service-mesh](../service-mesh/SKILL.md)-configuration](../../../Software_Engineering_and_Other/Frontend/linkerd-[service-mesh](../service-mesh/SKILL.md)-configuration/SKILL.md)/SKILL.md),
 both of which have first-class gRPC support worth reaching for instead
-of hand-rolling client-side retry/[load-balancing](../../Backend/load-balancing/SKILL.md) logic.
+of hand-rolling client-side retry/[load-balancing](../../Backend/patterns/load-balancing/SKILL.md) logic.
 
 ## When to use
 
@@ -57,7 +57,7 @@ of hand-rolling client-side retry/[load-balancing](../../Backend/load-balancing/
 - A long-lived gRPC stream (server-streaming or bidi) disconnects
   reliably after a fixed interval, suggesting a keepalive or connection
   lifetime setting rather than an application bug.
-- Traffic to a gRPC service isn't [load-balancing](../../Backend/load-balancing/SKILL.md) evenly across backend
+- Traffic to a gRPC service isn't [load-balancing](../../Backend/patterns/load-balancing/SKILL.md) evenly across backend
   pods/instances even though the client is configured to call a
   Service with multiple healthy endpoints.
 - A client fails to deserialize responses (or the server fails to
@@ -180,7 +180,7 @@ of hand-rolling client-side retry/[load-balancing](../../Backend/load-balancing/
    ```
    Fix by moving to client-side (per-RPC) load balancing — a gRPC
    client configured with a resolver that returns multiple backend
-   addresses and a `round_robin` (or similar) [load-balancing](../../Backend/load-balancing/SKILL.md) policy —
+   addresses and a `round_robin` (or similar) [load-balancing](../../Backend/patterns/load-balancing/SKILL.md) policy —
    or by fronting the service with an L7/gRPC-aware proxy (a service
    mesh sidecar, or an Ingress/load balancer with explicit gRPC/HTTP2
    support) that can distribute individual streams, not just TCP
@@ -257,7 +257,7 @@ of hand-rolling client-side retry/[load-balancing](../../Backend/load-balancing/
   number, changing a field's type, or changing `repeated`/`optional`
   semantics in an incompatible way breaks wire compatibility regardless
   of how the change reads in a diff.
-- Prefer a service mesh's built-in gRPC-aware retry/[load-balancing](../../Backend/load-balancing/SKILL.md)/
+- Prefer a service mesh's built-in gRPC-aware retry/[load-balancing](../../Backend/patterns/load-balancing/SKILL.md)/
   timeout policy (Istio's `VirtualService` timeout/retry, Linkerd's
   `ServiceProfile`) over hand-rolled client-side retry logic where a
   mesh is already in place — see
@@ -362,7 +362,7 @@ Root causes and fixes:
    that call site) rather than blindly propagating the inherited
    deadline downstream.
 2. `checkout-service`'s gRPC client was configured with a single static
-   target address and no [load-balancing](../../Backend/load-balancing/SKILL.md) policy, so its one long-lived
+   target address and no [load-balancing](../../Backend/patterns/load-balancing/SKILL.md) policy, so its one long-lived
    HTTP/2 connection to `payments-api` pinned all traffic to whichever
    pod it first connected to. Fix: configure the client with a
    [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-DNS-based resolver returning all backend pod IPs and
@@ -375,6 +375,6 @@ and CPU load spread evenly across all three replicas.
 
 ## Cross-references
 
-- [service-mesh-istio](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[service-mesh-istio](../../../Software_Engineering_and_Other/Frontend/[service-mesh](../service-mesh/SKILL.md)-istio/SKILL.md)/SKILL.md) — mesh-level gRPC-aware timeout, retry, and [load-balancing](../../Backend/load-balancing/SKILL.md) configuration (`VirtualService` timeout/retries, `DestinationRule` [load-balancing](../../Backend/load-balancing/SKILL.md) policy) as an alternative to hand-rolled client-side logic.
+- [service-mesh-istio](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[service-mesh-istio](../../../Software_Engineering_and_Other/Frontend/[service-mesh](../service-mesh/SKILL.md)-istio/SKILL.md)/SKILL.md) — mesh-level gRPC-aware timeout, retry, and [load-balancing](../../Backend/patterns/load-balancing/SKILL.md) configuration (`VirtualService` timeout/retries, `DestinationRule` [load-balancing](../../Backend/patterns/load-balancing/SKILL.md) policy) as an alternative to hand-rolled client-side logic.
 - [linkerd-[service-mesh](../../../containers-orchestration/common/service-mesh/service-mesh/SKILL.md)-configuration](../[linkerd-[service-mesh](../service-mesh/SKILL.md)-configuration](../../../Software_Engineering_and_Other/Frontend/linkerd-[service-mesh](../service-mesh/SKILL.md)-configuration/SKILL.md)/SKILL.md) — Linkerd's `ServiceProfile`-based per-route timeout/retry configuration, which is gRPC-aware and solves the same class of problem at the mesh layer.
-- [kong-[api-gateway](../../Backend/api-gateway/SKILL.md)-configuration](../[kong-[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md)-configuration](../../../Software_Engineering_and_Other/Backend/kong-[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md)-configuration/SKILL.md)/SKILL.md) — configuring a gateway's upstream to actually speak gRPC/HTTP2 rather than falling back to HTTP/1.1, relevant to the intermediary-awareness check in step 6.
+- [kong-[api-gateway](../../Backend/api-gateway/api-gateway/SKILL.md)-configuration](../[kong-[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md)-configuration](../../../Software_Engineering_and_Other/Backend/kong-[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md)-configuration/SKILL.md)/SKILL.md) — configuring a gateway's upstream to actually speak gRPC/HTTP2 rather than falling back to HTTP/1.1, relevant to the intermediary-awareness check in step 6.

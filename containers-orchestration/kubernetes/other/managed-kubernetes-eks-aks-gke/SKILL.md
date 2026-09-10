@@ -53,7 +53,7 @@ account/org structure already exists.
   long-lived static credential.
 - Comparing EKS/AKS/GKE feature parity for a specific requirement before
   a cloud/cluster-topology decision.
-- Setting up cluster [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) (Cluster Autoscaler or each cloud's
+- Setting up cluster [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) (Cluster Autoscaler or each cloud's
   Karpenter-equivalent/native autoscaler) and sizing node pools.
 - Troubleshooting a pod that can't reach a cloud API despite the node's
   underlying instance profile/managed identity apparently being correct.
@@ -124,7 +124,7 @@ account/org structure already exists.
    spot/preemptible node pools with taints for interruption-tolerant
    batch workloads, keeping stateful/critical workloads off spot [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md).
 
-3. **Set up cluster [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)** appropriate to the node group model —
+3. **Set up cluster [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)** appropriate to the node group model —
    Cluster Autoscaler (works across all three, watches for unschedulable
    pods) or a cloud-native alternative (Karpenter on EKS gives faster,
    more bin-packing-aware scale-out than the classic Cluster Autoscaler):

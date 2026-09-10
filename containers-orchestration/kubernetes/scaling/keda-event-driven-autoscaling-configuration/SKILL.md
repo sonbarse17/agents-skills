@@ -26,7 +26,7 @@ depends_on:
   - monitoring
 ---
 
-# KEDA Event-Driven [Autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) Configuration
+# KEDA Event-Driven [Autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) Configuration
 
 ## Purpose
 
@@ -417,5 +417,5 @@ consumer warm for the next order.
 
 - [keda-configuration-validation](../[keda-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/keda-configuration-validation/SKILL.md)/SKILL.md) — validating this `ScaledObject`/`TriggerAuthentication` configuration (auth, thresholds, cooldowns) before it reaches production.
 - [kubernetes-operator-development](../[kubernetes-operator-development](../[kubernetes](../kubernetes/SKILL.md)-operator-development/SKILL.md)/SKILL.md) — the CRD/controller/reconciliation pattern KEDA itself is built on, useful background when debugging KEDA operator behavior directly.
-- [karpenter-cluster-autoscaling](../../../[observability](../../Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[karpenter-cluster-autoscaling](../karpenter-cluster-[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/SKILL.md)/SKILL.md) — node-level [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) that complements KEDA's pod-level scaling; KEDA decides replica count, Karpenter provisions the nodes for them.
+- [karpenter-cluster-autoscaling](../../../[observability](../../Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[karpenter-cluster-autoscaling](../karpenter-cluster-[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/SKILL.md)/SKILL.md) — node-level [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) that complements KEDA's pod-level scaling; KEDA decides replica count, Karpenter provisions the nodes for them.
 - [kafka-consumer-lag-and-partition-troubleshooting](../../../messaging-and-data-orchestration/skills/[kafka-consumer-lag-and-partition-troubleshooting](../kafka-consumer-lag-and-partition-troubleshooting/SKILL.md)/SKILL.md) — diagnosing the underlying Kafka lag signal this skill's Kafka trigger consumes, when lag behaves unexpectedly independent of KEDA.

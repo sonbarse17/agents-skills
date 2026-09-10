@@ -65,7 +65,7 @@ specific to cost work.
 ### Phase 2 — Review checklist
 
 - **Compute right-sizing** — instances/pods with chronically low CPU/mem
-  utilization, oversized types, no [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) on variable load, GPU instances
+  utilization, oversized types, no [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) on variable load, GPU instances
   idle, dev/staging running 24/7 (schedule them off).
 - **Purchasing** — heavy on-demand where Savings Plans / Reserved Instances /
   committed-use discounts fit steady baseline load, no Spot for fault-tolerant/
@@ -119,7 +119,7 @@ Effort keywords (`quick` / `standard` / `deep`) and the shared `<focus>` and
 ## Related skills
 
 - `/[terraform-review](../../../../infrastructure-as-code/terraform/troubleshooting/terraform-review/SKILL.md)` — where the wasteful resource is declared, and how to change it.
-- `/[k8s-review](../../../../containers-orchestration/kubernetes/troubleshooting/k8s-review/SKILL.md)` — requests/limits, [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md), and bin-packing waste.
+- `/[k8s-review](../../../../containers-orchestration/kubernetes/troubleshooting/k8s-review/SKILL.md)` — requests/limits, [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md), and bin-packing waste.
 - `/[observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)` — log retention and metric cardinality spend, and the
   utilization data this skill depends on.
 - `/[dr-review](../../../../containers-orchestration/common/other/dr-review/SKILL.md)` — before cutting retention or replicas, check the recovery bar.

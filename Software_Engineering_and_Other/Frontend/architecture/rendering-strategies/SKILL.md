@@ -37,7 +37,7 @@ depends_on:
 # Frontend Rendering Strategies
 
 ## Purpose
-Select and implement the correct rendering strategy for each route: CSR for highly interactive [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), SSR for personalized content, SSG for marketing pages, ISR for content that changes on a schedule, and RSC for React apps needing zero-bundle data fetching.
+Select and implement the correct rendering strategy for each route: CSR for highly interactive [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), SSR for personalized content, SSG for marketing pages, ISR for content that changes on a schedule, and RSC for React apps needing zero-bundle data fetching.
 
 ## Agent Protocol
 
@@ -45,10 +45,10 @@ Select and implement the correct rendering strategy for each route: CSR for high
 Exact phrases: "rendering strategy", "CSR", "SSR", "SSG", "ISR", "RSC", "React Server Components", "server-side rendering", "static site generation", "incremental static regeneration", "hydration", "progressive hydration", "streaming SSR", "edge rendering".
 
 ### Input Context
-- Framework (Next.js, Astro, Nuxt, Remix, Gatsby, [SvelteKit](../../Frontend/frameworks/sveltekit/SKILL.md), vanilla)
+- Framework (Next.js, Astro, Nuxt, Remix, Gatsby, [SvelteKit](../../frameworks/sveltekit/SKILL.md), vanilla)
 - Per-route requirements: data freshness, SEO significance, interactivity level
 - Authentication requirements (SSR for personalized, SSG for public pages)
-- Hosting/deployment platform capabilities ([serverless](../../Patterns/serverless/SKILL.md), edge, static)
+- Hosting/deployment platform capabilities ([serverless](../../../Patterns/serverless/SKILL.md), edge, static)
 - Team familiarity with server components
 
 ### Output Artifact
@@ -175,7 +175,7 @@ For each route:
 | Interactivity | High (SPA) | High (hydrates) | Medium (hydrates) | Medium (hydrates) | High (islands) |
 
 ### 3. Next.js Strategy by Route
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../common/typescript/SKILL.md)
 // SSG (marketing, blog)
 export const dynamic = 'force-static'
 export const revalidate = false
@@ -215,7 +215,7 @@ const posts = await fetchPosts()
 ```
 
 ### 5. Nuxt Universal Rendering
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../common/typescript/SKILL.md)
 // Per-route strategy (Nuxt 3)
 export default defineNuxtConfig({
   routeRules: {
@@ -228,7 +228,7 @@ export default defineNuxtConfig({
 ```
 
 ### 6. Hydration Strategies
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../common/typescript/SKILL.md)
 // Full hydration (default) — entire page becomes interactive
 // Pro: simple, everything works. Con: expensive for content-heavy pages.
 
@@ -246,7 +246,7 @@ export default defineNuxtConfig({
 ```
 
 ### 7. Streaming SSR
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../common/typescript/SKILL.md)
 // Next.js App Router — streaming by default
 async function ProductPage({ params }: { params: { id: string } }) {
   const product = await getProduct(params.id)
@@ -264,7 +264,7 @@ async function ProductPage({ params }: { params: { id: string } }) {
 ```
 
 ### 7b. ISR with On-Demand Revalidation
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../common/typescript/SKILL.md)
 // Revalidate on content change, not on timer
 // app/api/revalidate/route.ts
 export async function POST(request: Request) {
@@ -283,7 +283,7 @@ curl -X POST https://example.com/api/revalidate \
 ```
 
 ### 7c. React Server Components Patterns
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../common/typescript/SKILL.md)
 // Server Component — fetches data, no JS sent to client
 // app/products/page.tsx (no "use client")
 import { ProductCard } from './product-card'
@@ -340,7 +340,7 @@ export function ProductCard({ product }: { product: { id: string; name: string; 
 | Per-route | `dynamic` export | `loader` per route | `routeRules` | Per-page config |
 
 ### 7e. Combined Strategy: SSG + Client Fetch
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../common/typescript/SKILL.md)
 // Best for: blog posts with comment sections, product pages with reviews
 // SSG renders the static content, client fetches dynamic data
 
@@ -393,7 +393,7 @@ function CommentSection({ postId }: { postId: string }) {
 |----------|--------|---------|-------------|-------------------|
 | SSG | ✓ | ✓ | ✓ | ✓ Best |
 | ISR | ✓ (built-in) | Partial | Manual Lambda | ✗ |
-| SSR | ✓ ([serverless](../../Patterns/serverless/SKILL.md)) | ✓ ([serverless](../../Patterns/serverless/SKILL.md)) | ✓ (Lambda) | ✗ |
+| SSR | ✓ ([serverless](../../../Patterns/serverless/SKILL.md)) | ✓ ([serverless](../../../Patterns/serverless/SKILL.md)) | ✓ (Lambda) | ✗ |
 | CSR | ✓ | ✓ | ✓ | ✓ |
 
 ## Common Pitfalls
@@ -432,7 +432,7 @@ Fully hydrating a mostly-static blog page wastes bandwidth and CPU. Use islands 
 
 ### Performance Optimization Patterns
 
-```[typescript](../../Frontend/common/typescript/SKILL.md)
+```[typescript](../../common/typescript/SKILL.md)
 // 1. Preload critical assets for SSG/ISR pages
 // app/layout.tsx
 export default function RootLayout({ children }: { children: React.ReactNode }) {

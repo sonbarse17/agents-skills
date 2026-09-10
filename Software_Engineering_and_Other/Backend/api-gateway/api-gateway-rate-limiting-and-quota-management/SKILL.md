@@ -39,7 +39,7 @@ allowance is safe versus how much it just delays the same overload, and
 how (or whether) the counter is kept consistent across multiple gateway
 nodes. Getting these wrong produces two opposite failures that are
 equally bad: a limit so tight it throttles legitimate traffic and gets
-"temporarily" raised during an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) until it's effectively
+"temporarily" raised during an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) until it's effectively
 meaningless, or a limit so loose (or inconsistently enforced across
 nodes) that it fails to protect the backend it was meant to protect at
 all. This skill covers that vendor-neutral strategy layer — the
@@ -244,7 +244,7 @@ and
   response so well-behaved clients can back off correctly instead of
   hammering the gateway harder.
 - Monitor rejection rate per client/tier continuously, and investigate
-  before adjusting — a limit raised reactively during every [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
+  before adjusting — a limit raised reactively during every [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
   eventually protects nothing.
 
 ## Common pitfalls
@@ -261,7 +261,7 @@ and
 - **Symptom:** A rate limit sized from "round numbers that seemed
   reasonable" either constantly throttles normal usage (frequent
   support complaints) or never triggers at all even during a known
-  abuse [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
+  abuse [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
   **Fix:** The limit wasn't sized from real observed traffic. Pull
   actual p95/p99 per-client request-rate data and re-derive the
   burst/refill (or window) size from it, rather than guessing and then
@@ -277,12 +277,12 @@ and
 
 - **Symptom:** During a traffic spike, an on-call engineer doubles or
   removes the rate limit for the affected client "to stop the 429s,"
-  the [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) resolves, and the change is never reverted.
+  the [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) resolves, and the change is never reverted.
   **Fix:** This is a real, standing risk once left in place — the limit
   no longer protects the backend from that client (or anyone using the
-  same raised ceiling) going forward. Treat any [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-time limit
+  same raised ceiling) going forward. Treat any [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-time limit
   change as temporary and explicitly tracked for revert, and once the
-  [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) is over, investigate whether the real fix is a legitimate
+  [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) is over, investigate whether the real fix is a legitimate
   tier increase (a deliberate, reviewed change) or addressing an actual
   misbehaving client (a retry loop, a missing cache) rather than leaving
   the emergency value in place by default.
@@ -326,7 +326,7 @@ Design:
   `X-RateLimit-Remaining`/quota-remaining headers so partner clients can
   observe how close they are to either limit and back off accordingly.
 
-[Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md): a dashboard tracking 429 rate per partner and per limit type
+[Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md): a dashboard tracking 429 rate per partner and per limit type
 (rate-limit vs. quota) separately, so a partner hitting their monthly
 quota (a contract conversation) is distinguishable at a glance from a
 partner triggering the per-second rate-limit (likely a retry loop or a

@@ -220,7 +220,7 @@ aws ecs execute-command \
 
 ```bash
 # Register ECS service as a scalable target
-aws application-[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) register-scalable-target \
+aws application-[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) register-scalable-target \
   --service-namespace ecs \
   --resource-id service/production/myapp \
   --scalable-dimension ecs:service:DesiredCount \
@@ -228,7 +228,7 @@ aws application-[autoscaling](../../../../Software_Engineering_and_Other/Backend
   --max-[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) 20
 
 # Target tracking policy - scale on CPU utilization
-aws application-[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) put-scaling-policy \
+aws application-[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) put-scaling-policy \
   --service-namespace ecs \
   --resource-id service/production/myapp \
   --scalable-dimension ecs:service:DesiredCount \
@@ -244,7 +244,7 @@ aws application-[autoscaling](../../../../Software_Engineering_and_Other/Backend
   }'
 
 # Scale on request count per target (ALB)
-aws application-[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) put-scaling-policy \
+aws application-[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) put-scaling-policy \
   --service-namespace ecs \
   --resource-id service/production/myapp \
   --scalable-dimension ecs:service:DesiredCount \

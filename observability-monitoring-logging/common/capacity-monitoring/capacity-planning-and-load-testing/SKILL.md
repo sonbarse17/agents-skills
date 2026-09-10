@@ -41,13 +41,13 @@ skill covers forecasting demand, choosing the right test type (load,
 stress, soak) for the question being asked, instrumenting the *whole*
 request path during a test (not just app-tier CPU/memory) so the real
 bottleneck is found instead of assumed, and turning test results into
-concrete, evidence-based [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) and [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) triggers.
+concrete, evidence-based [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) and [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) triggers.
 
 ## When to use
 
 - Validating [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) before a known high-traffic event (product launch,
   marketing campaign, seasonal peak).
-- Setting or revisiting [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) thresholds (HPA target metrics,
+- Setting or revisiting [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) thresholds (HPA target metrics,
   connection pool sizes, thread pool limits) that were previously set by
   guesswork or copied defaults.
 - "It works fine in staging but falls over in production under real
@@ -204,7 +204,7 @@ concrete, evidence-based [autoscaling](../../../../Software_Engineering_and_Othe
   only manifest after hours of sustained load.
 - Treat load-test-derived [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) numbers as an input to cost/FinOps
   conversations too — a validated [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) ceiling should inform reserved
-  [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) purchases, not just [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) config.
+  [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) purchases, not just [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) config.
 
 ## Common pitfalls
 
@@ -239,7 +239,7 @@ concrete, evidence-based [autoscaling](../../../../Software_Engineering_and_Othe
   moderate sustained load alongside the shorter peak-load test — this is
   the only test type designed to catch time-dependent degradation.
 
-- **Symptom:** [Autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) is configured with the default 70% CPU target
+- **Symptom:** [Autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) is configured with the default 70% CPU target
   "because that's what the docs suggested," with no test evidence behind
   it, and the service still degrades under real peak load.
   **Fix:** Derive the scaling trigger directly from where the test

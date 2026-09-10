@@ -62,7 +62,7 @@ only one built to multiplex many HTTP services behind one entrypoint.
 
 - **Default to ClusterIP** and put Ingress in front for anything HTTP(S) that needs external access.
 - **LoadBalancer per Service** doesn't scale cost-wise past a handful of services — that's what
-  Ingress controllers and, if you need L4 too, an `[api-gateway](../../../../Software_Engineering_and_Other/Backend/api-gateway/SKILL.md)` are for.
+  Ingress controllers and, if you need L4 too, an `[api-gateway](../../../../Software_Engineering_and_Other/Backend/api-gateway/api-gateway/SKILL.md)` are for.
 - **headless Services** (`clusterIP: None`) exist for direct pod-to-pod discovery, notably
   StatefulSets — see `[kubernetes-storage](../[kubernetes](../kubernetes/SKILL.md)-storage/SKILL.md)`.
 

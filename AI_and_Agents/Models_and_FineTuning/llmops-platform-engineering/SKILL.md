@@ -358,7 +358,7 @@ spec:
       port: 8080
       targetPort: 8080
 ---
-apiVersion: [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/v2
+apiVersion: [autoscaling](../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: llm-inference-hpa

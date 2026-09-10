@@ -49,7 +49,7 @@ TTL strategy chosen here, see
 ## When to use
 
 - Designing a new caching layer for a service backed by a database
-  ([PostgreSQL](../../Backend/postgresql/SKILL.md), [MongoDB](../../Backend/mongodb/SKILL.md), etc.) and choosing between cache-aside,
+  ([PostgreSQL](../postgresql/SKILL.md), [MongoDB](../mongodb/SKILL.md), etc.) and choosing between cache-aside,
   write-through, or write-behind.
 - Deciding TTL strategy for a cache — fixed vs. sliding expiration, and
   whether to jitter TTLs to avoid synchronized mass expiry.
