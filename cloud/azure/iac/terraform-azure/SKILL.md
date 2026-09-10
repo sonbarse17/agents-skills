@@ -19,7 +19,7 @@ depends_on:
 
 # Terraform Azure
 
-Provision and manage Azure infrastructure with Terraform using the AzureRM provider. Covers provider configuration, remote state, resource groups, VNets, AKS, Key [Vault](../../../../Security/vault/SKILL.md), complete .tf file examples, and production workflows.
+Provision and manage Azure infrastructure with Terraform using the AzureRM provider. Covers provider configuration, remote state, resource groups, VNets, AKS, Key [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md), complete .tf file examples, and production workflows.
 
 ## When to Use
 
@@ -336,7 +336,7 @@ resource "azurerm_kubernetes_cluster_node_pool" "app" {
 }
 ```
 
-## Key [Vault](../../../../Security/vault/SKILL.md)
+## Key [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md)
 
 ### keyvault.tf
 
@@ -498,7 +498,7 @@ terraform fmt -recursive
 # Plan changes for a specific environment
 terraform plan \
   -var-file="terraform.prod.tfvars" \
-  -var="sql_admin_password=$(az keyvault secret show --[vault](../../../../Security/vault/SKILL.md)-name ops-[vault](../../../../Security/vault/SKILL.md) --name sql-pass --query value -o tsv)" \
+  -var="sql_admin_password=$(az keyvault secret show --[vault](../../../../Security/cryptography-secrets/vault/SKILL.md)-name ops-[vault](../../../../Security/cryptography-secrets/vault/SKILL.md) --name sql-pass --query value -o tsv)" \
   -out=tfplan
 
 # Apply the saved plan

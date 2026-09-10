@@ -87,7 +87,7 @@ git revert <bad-[commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)>
 
 Config belongs in Git; secret values do not, even encrypted-at-rest-in-a-private-repo is not good
 enough once you consider history, forks, and CI log leakage. Reference secrets from Git — a
-`SealedSecret`, an `ExternalSecret` pointing at a [vault](../../../../Security/vault/SKILL.md), an SOPS-encrypted file if you truly must
+`SealedSecret`, an `ExternalSecret` pointing at a [vault](../../../../Security/cryptography-secrets/vault/SKILL.md), an SOPS-encrypted file if you truly must
 [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) ciphertext — rather than storing plaintext or something trivially reversible. The rule is
 simple: a leaked clone of this repo should leak zero credentials. See `[secrets-management](../../../../cloud/common/security/secrets-management/SKILL.md)` for the
 storage and rotation mechanics this skill deliberately does not cover.

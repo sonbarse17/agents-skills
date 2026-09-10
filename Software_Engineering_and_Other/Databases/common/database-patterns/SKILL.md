@@ -425,7 +425,7 @@ GRANT USAGE ON SEQUENCE orders_id_seq TO app_user;
   - references/transaction-isolation.md — Transaction Isolation Levels
 ## Handoff
 No artifact produced.
-Next skill: [backend-auth-patterns](../../../../Security/auth-patterns/SKILL.md) — secure the data layer.
+Next skill: [backend-auth-patterns](../../../../Security/identity-access/auth-patterns/SKILL.md) — secure the data layer.
 Carry forward: schema design, repository interfaces, database type, ORM framework.
 ## Implementation Patterns
 
@@ -535,7 +535,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager ([Vault](../../../../Security/vault/SKILL.md), AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../../../Security/cryptography-secrets/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
 - Access [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets

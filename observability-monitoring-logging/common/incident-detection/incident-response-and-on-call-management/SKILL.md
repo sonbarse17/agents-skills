@@ -185,7 +185,7 @@ rotation doesn't quietly burn out whoever happens to get paged the most.
 - If an [incident](../incident/SKILL.md)'s root cause involves a compromised dependency, leaked
   credential, or a bypassed security gate, loop in the security [incident](../incident/SKILL.md)
   path alongside the normal IC structure — see
-  [secure-cicd-gates](../../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md)
+  [secure-cicd-gates](../../../../Security/common/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../../Security/app-security/secure-cicd-gates/SKILL.md)/SKILL.md)
   for the pipeline-gate context a security-flavored [incident](../incident/SKILL.md) usually
   needs to reference (what gate should have caught this, and why didn't
   it block).
@@ -267,4 +267,4 @@ rotation doesn't quietly burn out whoever happens to get paged the most.
 - [blameless-postmortem-and-root-cause-analysis](../[blameless-postmortem-and-root-cause-analysis](../blameless-postmortem-and-[root-cause-analysis](../../../DevOps_and_Cloud/Observability_and_SecOps/root-cause-analysis/SKILL.md)/SKILL.md)/SKILL.md) — the scribe's live timeline and the [incident](../incident/SKILL.md)'s severity/impact feed directly into the postmortem.
 - [toil-reduction-and-operational-automation](../[toil-reduction-and-operational-automation](../[toil-reduction](../../../DevOps_and_Cloud/Observability_and_SecOps/toil-reduction/SKILL.md)-and-operational-automation/SKILL.md)/SKILL.md) — chronic noisy/low-value pages found during on-call load reviews are toil to be automated or eliminated, not just tolerated.
 - [blue-green-canary-deployments](../../../devops/skills/[blue-green-canary-deployments](../../../DevOps_and_Cloud/CI_CD/blue-green-canary-deployments/SKILL.md)/SKILL.md) — rollback/traffic-shift mechanics commonly used as the mitigation step during an [incident](../incident/SKILL.md).
-- [secure-cicd-gates](../../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — reference when an [incident](../incident/SKILL.md)'s root cause has a security angle (compromised dependency, bypassed pipeline gate) to reason about which gate should have caught it.
+- [secure-cicd-gates](../../../../Security/common/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../../Security/app-security/secure-cicd-gates/SKILL.md)/SKILL.md) — reference when an [incident](../incident/SKILL.md)'s root cause has a security angle (compromised dependency, bypassed pipeline gate) to reason about which gate should have caught it.

@@ -270,7 +270,7 @@ versus when Rego's generality is worth the learning-curve cost.
   `mutate`/`generate` (defaulting fields, auto-provisioning companion
   resources) — these are first-class Kyverno concepts that are more
   awkward to express in OPA/Gatekeeper. Choose OPA/Gatekeeper
-  ([opa-gatekeeper-policy-authoring](../[opa-gatekeeper-policy-authoring](../../../Security/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md))
+  ([opa-gatekeeper-policy-authoring](../../../../Security/policy-as-code/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md))
   when policies need to run outside [Kubernetes](../../other/kubernetes/SKILL.md) too (CI-time Terraform
   plan checks via Conftest, API authorization), when logic is complex
   enough that Rego's real programming constructs (helper functions,
@@ -345,7 +345,7 @@ versus when Rego's generality is worth the learning-curve cost.
   newer `ClusterCleanupPolicy`/JSON payload support, some non-[Kubernetes](../../other/kubernetes/SKILL.md)
   JSON validation) — but non-[Kubernetes](../../other/kubernetes/SKILL.md) IaC gating (Terraform plan JSON,
   arbitrary CI artifacts) is squarely OPA/Conftest's use case as covered
-  in [policy-as-code-guardrails](../../../../Security/devsecops/SKILL.md)/skills/[policy-as-code-guardrails](../../../../Security/policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md).
+  in [policy-as-code-guardrails](../../../../Security/common/devsecops/SKILL.md)/skills/[policy-as-code-guardrails](../../../../Security/policy-as-code/policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md).
   Use Kyverno for [Kubernetes](../../other/kubernetes/SKILL.md)-native admission policy and OPA/Conftest for
   IaC/CI-time checks rather than forcing one engine to do both.
 
@@ -462,7 +462,7 @@ is passing for all existing Pods before the team flips it from `[Audit](../../..
 
 ## Cross-references
 
-- [opa-gatekeeper-policy-authoring](../[opa-gatekeeper-policy-authoring](../../../Security/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md) —
+- [opa-gatekeeper-policy-authoring](../../../../Security/policy-as-code/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md) —
   the Rego-based alternative; read this to decide which engine fits a
   given team/use case, especially for non-[Kubernetes](../../other/kubernetes/SKILL.md) (CI/IaC) policy
   needs Kyverno doesn't cover.
@@ -471,9 +471,9 @@ is passing for all existing Pods before the team flips it from `[Audit](../../..
   configuration checks (resource limits, probes, security context) that
   may cover a policy before it's worth writing a custom Kyverno rule for
   it.
-- [policy-as-code-guardrails](../../../../Security/devsecops/SKILL.md)/skills/[policy-as-code-guardrails](../../../../Security/policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md) —
-  the broader [policy-as-code](../../../../Security/policy-as-code/SKILL.md) rationale and [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-before-enforce
+- [policy-as-code-guardrails](../../../../Security/common/devsecops/SKILL.md)/skills/[policy-as-code-guardrails](../../../../Security/policy-as-code/policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md) —
+  the broader [policy-as-code](../../../../Security/policy-as-code/policy-as-code/SKILL.md) rationale and [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-before-enforce
   discipline this skill's rollout steps follow.
-- [secure-cicd-gates](../../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) —
+- [secure-cicd-gates](../../../../Security/common/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../../Security/app-security/secure-cicd-gates/SKILL.md)/SKILL.md) —
   where Kyverno's admission-time enforcement fits relative to earlier
   CI-time pipeline gates.

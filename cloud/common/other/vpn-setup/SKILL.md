@@ -433,6 +433,6 @@ aws ec2 describe-vpn-connections \
 
 ## Related Skills
 
-- [zero-trust](../[zero-trust](../../../Security/zero-trust/SKILL.md)/) - Modern access patterns
+- [zero-trust](../../../../Security/identity-access/zero-trust/SKILL.md)/) - Modern access patterns
 - [ssl-tls-management](../[ssl-tls-management](../../../Software_Engineering_and_Other/Frontend/ssl-tls-management/SKILL.md)/) - Certificate management
 - [firewall-config](../[firewall-config](../firewall-config/SKILL.md)/) - Network access control

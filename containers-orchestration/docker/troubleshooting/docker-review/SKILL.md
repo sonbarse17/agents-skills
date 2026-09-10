@@ -117,7 +117,7 @@ Effort keywords (`quick` / `standard` / `deep`) and the shared `<focus>` and
 
 - `/[k8s-review](../../../kubernetes/troubleshooting/k8s-review/SKILL.md)` — how the image is run (securityContext, probes, resources).
 - `/[pipeline-review](../../../../ci-cd/common/pipeline-design/pipeline-review/SKILL.md)` — how and where the image is built, signed, and promoted.
-- `/[security-review](../../../../Security/security-review/SKILL.md)` — depth on CVE triage and supply-chain provenance.
+- `/[security-review](../../../../Security/common/security-review/SKILL.md)` — depth on CVE triage and supply-chain provenance.
 
 ## Before you finish
 

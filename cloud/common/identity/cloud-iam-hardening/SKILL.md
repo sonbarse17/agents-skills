@@ -150,7 +150,7 @@ long-lived keys) are identical even though the primitives differ.
 
 5. **Design break-glass access deliberately, not implicitly.** Create a
    small number of emergency-access identities (e.g. an AWS IAM user held
-   in a sealed/rotated-after-use credential [vault](../../../../Security/vault/SKILL.md), or an Azure emergency
+   in a sealed/rotated-after-use credential [vault](../../../../Security/cryptography-secrets/vault/SKILL.md), or an Azure emergency
    access account excluded from Conditional Access) with wide permissions
    but wired to trigger a high-priority alert on every use, and require a
    post-use [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) review.

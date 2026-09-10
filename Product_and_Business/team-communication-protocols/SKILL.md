@@ -155,7 +155,7 @@ Find team members by reading the config file:
 {
   "members": [
     {
-      "name": "[security-reviewer](../../Security/security-reviewer/SKILL.md)",
+      "name": "[security-reviewer](../../Security/common/security-reviewer/SKILL.md)",
       "agentId": "uuid-here",
       "agentType": "team-reviewer"
     },

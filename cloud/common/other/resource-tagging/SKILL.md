@@ -63,7 +63,7 @@ untagged resource before it exists rather than flagging it after the fact.
 - **Apply the same enforcement to manual console changes** as to automated pipelines, or the
   policy only covers the traffic that was already disciplined.
 
-See `[policy-as-code](../../../../Security/policy-as-code/SKILL.md)` for how to express and gate on rules like this.
+See `[policy-as-code](../../../../Security/policy-as-code/policy-as-code/SKILL.md)` for how to express and gate on rules like this.
 
 **Done when:** a resource missing a required tag cannot be created through any normal path.
 

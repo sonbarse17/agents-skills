@@ -96,9 +96,9 @@ requests instead of unbounded memory growth.
 
 mTLS gives both sides cryptographic proof of identity at the connection level, independent of
 whatever the application-layer payload claims. This matters most for internal traffic that's often
-assumed trusted by default — the [zero-trust](../../../../Security/zero-trust/SKILL.md) position is that network location proves nothing, and
+assumed trusted by default — the [zero-trust](../../../../Security/identity-access/zero-trust/SKILL.md) position is that network location proves nothing, and
 every hop should verify identity explicitly rather than relying on being inside a perimeter. See
-`[zero-trust](../../../../Security/zero-trust/SKILL.md)` for the broader posture this is one implementation of.
+`[zero-trust](../../../../Security/identity-access/zero-trust/SKILL.md)` for the broader posture this is one implementation of.
 
 **Done when:** service-to-service traffic is authenticated by certificate, not by network location
 alone, and certificate rotation is automated rather than a manual chore someone forgets.

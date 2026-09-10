@@ -75,7 +75,7 @@ reviewed by a human against what the change was intended to do.
 
 A policy check that runs and reports violations without blocking the change is documentation, not
 enforcement — it gets ignored under deadline pressure exactly when it matters most. See
-`[policy-as-code](../../../../Security/policy-as-code/SKILL.md)` for writing the rules; this skill is about making sure they actually stop a bad
+`[policy-as-code](../../../../Security/policy-as-code/policy-as-code/SKILL.md)` for writing the rules; this skill is about making sure they actually stop a bad
 change rather than just noting it happened.
 
 - **Block the pipeline on a policy failure** for anything above a defined severity — no public S3

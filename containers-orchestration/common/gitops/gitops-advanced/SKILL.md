@@ -48,7 +48,7 @@ Exact user phrases: "[GitOps](../gitops/SKILL.md) advanced", "multi-cluster [Git
 - Git provider ([GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md), GitLab, Bitbucket)
 - Current [ArgoCD](../../../argocd/other/argocd/SKILL.md)/Flux version
 - Existing cluster topology (hub-spoke, peer-to-peer)
-- Secrets management approach (SOPS, SealedSecrets, External Secrets, [Vault](../../../../Security/vault/SKILL.md))
+- Secrets management approach (SOPS, SealedSecrets, External Secrets, [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md))
 - Team structure and RBAC requirements
 - Compliance/[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) requirements
 - CI/CD pipeline tooling
@@ -866,5 +866,5 @@ Retry strategy:
 - references/config-management-plugins.md — [ArgoCD](../../../argocd/other/argocd/SKILL.md) Config Management Plugins
 
 ## Handoff
-Related skills: [progressive-delivery](../../../../ci-cd/common/deployment/progressive-delivery/SKILL.md) (Argo Rollouts with [GitOps](../gitops/SKILL.md)), [argo-cd](../../../argocd/other/argo-cd/SKILL.md) (basic [ArgoCD](../../../argocd/other/argocd/SKILL.md) setup), [gitops](../gitops/SKILL.md) ([GitOps](../gitops/SKILL.md) fundamentals), [kubernetes](../../../kubernetes/other/kubernetes/SKILL.md)-patterns (K8s resources), [policy-as-code](../../../../Security/policy-as-code/SKILL.md) (policy enforcement), crossplane (infrastructure composition), cluster-api (cluster provisioning).
+Related skills: [progressive-delivery](../../../../ci-cd/common/deployment/progressive-delivery/SKILL.md) (Argo Rollouts with [GitOps](../gitops/SKILL.md)), [argo-cd](../../../argocd/other/argo-cd/SKILL.md) (basic [ArgoCD](../../../argocd/other/argocd/SKILL.md) setup), [gitops](../gitops/SKILL.md) ([GitOps](../gitops/SKILL.md) fundamentals), [kubernetes](../../../kubernetes/other/kubernetes/SKILL.md)-patterns (K8s resources), [policy-as-code](../../../../Security/policy-as-code/policy-as-code/SKILL.md) (policy enforcement), crossplane (infrastructure composition), cluster-api (cluster provisioning).
 

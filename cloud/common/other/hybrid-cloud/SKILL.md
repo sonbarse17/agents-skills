@@ -576,7 +576,7 @@ sync_dns_zones() {
 
 - Encrypt **all traffic** between sites with IPsec VPN or MACsec for dedicated connections
 - Use **PrivateLink / VPC Endpoints** for cloud services — never traverse public internet
-- Implement **[zero-trust](../../../../Security/zero-trust/SKILL.md)** for hybrid: every cross-site call must authenticate and authorize
+- Implement **[zero-trust](../../../../Security/identity-access/zero-trust/SKILL.md)** for hybrid: every cross-site call must authenticate and authorize
 - Harden **VPN appliances** with certificate-based auth instead of pre-shared keys
 - Centralize **[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging** from all environments into a single SIEM (Splunk, Sentinel)
 - Use **SCPs / Azure Policy** to enforce hybrid connectivity standards across cloud accounts
@@ -689,7 +689,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager ([Vault](../../../../Security/vault/SKILL.md), AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../../../Security/cryptography-secrets/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
 - Access [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets

@@ -76,7 +76,7 @@ or an admission controller like Kyverno/OPA Gatekeeper turns "we ask people not 
   and a defined seccomp profile — treat it as the namespace-wide floor, not an aspiration.
 - **Custom policy beyond PSS** (require specific labels, block `:latest` tags, require resource
   limits) is what OPA/Kyverno add — write policies as code and test them like code; broader
-  organizational policy patterns live in `[policy-as-code](../../../../Security/policy-as-code/SKILL.md)`.
+  organizational policy patterns live in `[policy-as-code](../../../../Security/policy-as-code/policy-as-code/SKILL.md)`.
 - **Warn-then-enforce rollout**: label a namespace `[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)`/`warn` first, watch violations in logs,
   then flip to `enforce` — flipping straight to enforce breaks things you didn't know existed.
 
@@ -94,7 +94,7 @@ solving.
   most self-managed clusters.
 - **RBAC on `secrets` resources** should be as tight as anything in rule 1 — read access to Secrets
   is equivalent to read access to whatever they protect.
-- **For rotation, external stores, and injection patterns** ([Vault](../../../../Security/vault/SKILL.md), cloud KMS, External Secrets
+- **For rotation, external stores, and injection patterns** ([Vault](../../../../Security/cryptography-secrets/vault/SKILL.md), cloud KMS, External Secrets
   Operator), that's the deeper subject of `[secrets-management](../../../../cloud/common/security/secrets-management/SKILL.md)` — this skill only covers the
   in-cluster storage posture.
 
@@ -103,7 +103,7 @@ plaintext file in version control.
 
 ## 5. Verify what you run, not just what you scanned
 
-Scanning an image for CVEs (`[image-scanning](../../../../Security/image-scanning/SKILL.md)`) tells you what's inside it; provenance tells you the
+Scanning an image for CVEs (`[image-scanning](../../../../Security/scanning/image-scanning/SKILL.md)`) tells you what's inside it; provenance tells you the
 image you're running is the one you built, not something swapped in the registry or a compromised
 CI step. Without signature verification at admission, a scanned-clean image and a tampered one are
 indistinguishable to the cluster.
@@ -112,7 +112,7 @@ indistinguishable to the cluster.
   via admission policy — an unsigned or wrongly-signed image should be rejected, not logged.
 - **Pin by digest, not tag**, for anything security-sensitive — tags are mutable pointers.
 - **Supply-chain provenance beyond the cluster boundary** — SBOMs, build attestation — is
-  `[supply-chain-security](../../../../Security/supply-chain-security/SKILL.md)`; this rule is only about what the admission controller checks before
+  `[supply-chain-security](../../../../Security/supply-chain/supply-chain-security/SKILL.md)`; this rule is only about what the admission controller checks before
   scheduling.
 
 **Done when:** the admission controller rejects an unsigned or unverified image in a test run.

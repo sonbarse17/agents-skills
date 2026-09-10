@@ -468,7 +468,7 @@ aws secretsmanager put-resource-policy \
 
 ## Related Skills
 
-- [hashicorp-vault](../[hashicorp-vault](../../../Security/hashicorp-[vault](../../../Security/vault/SKILL.md)/SKILL.md)/) - [Multi-cloud](../../../common/other/multi-cloud/SKILL.md) secrets
+- [hashicorp-vault](../../../../Security/cryptography-secrets/vault/SKILL.md)/SKILL.md)/) - [Multi-cloud](../../../common/other/multi-cloud/SKILL.md) secrets
 - [aws-iam](../../../infrastructure/cloud-aws/[aws-iam](../aws-iam/SKILL.md)/) - IAM policies
 - [azure-keyvault](../[azure-keyvault](../azure-keyvault/SKILL.md)/) - Azure secret management
 - [gcp-secret-manager](../[gcp-secret-manager](../gcp-secret-manager/SKILL.md)/) - GCP secret management

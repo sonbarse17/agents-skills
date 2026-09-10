@@ -237,9 +237,9 @@ ignore:
 
 ```bash
 # Enable scan on push
-aws ecr put-[image-scanning](../../../../Security/image-scanning/SKILL.md)-configuration \
+aws ecr put-[image-scanning](../../../../Security/scanning/image-scanning/SKILL.md)-configuration \
   --repository-name myapp \
-  --[image-scanning](../../../../Security/image-scanning/SKILL.md)-configuration scanOnPush=true
+  --[image-scanning](../../../../Security/scanning/image-scanning/SKILL.md)-configuration scanOnPush=true
 
 # Get scan findings
 aws ecr describe-image-scan-findings \
@@ -272,7 +272,7 @@ az acr repository show \
 # Enable vulnerability scanning
 gcloud artifacts repositories update myrepo \
   --location=us-central1 \
-  --enable-[vulnerability-scanning](../../../../Security/vulnerability-scanning/SKILL.md)
+  --enable-[vulnerability-scanning](../../../../Security/scanning/vulnerability-scanning/SKILL.md)
 
 # View vulnerabilities
 gcloud artifacts [docker](../../other/docker/SKILL.md) images describe \

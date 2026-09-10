@@ -329,4 +329,4 @@ before any of the 30 consumer repos' pipelines run it.
 
 - [jenkins-declarative-pipeline-per-repo](../[jenkins-declarative-pipeline-per-repo](../[jenkins](../jenkins/SKILL.md)-declarative-pipeline-per-repo/SKILL.md)/SKILL.md) — where `script {}` blocks containing this Groovy typically live for a single repo.
 - [jenkins-centralized-shared-library](../[jenkins-centralized-shared-library](../[jenkins](../jenkins/SKILL.md)-centralized-shared-library/SKILL.md)/SKILL.md) — the `vars/`/`src/` structure this Groovy code is organized into at org scale.
-- [secure-cicd-gates](../../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — general pipeline security-gate design, complementary to the script-sandbox security boundary covered here.
+- [secure-cicd-gates](../../../../Security/common/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../../Security/app-security/secure-cicd-gates/SKILL.md)/SKILL.md) — general pipeline security-gate design, complementary to the script-sandbox security boundary covered here.

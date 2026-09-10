@@ -113,7 +113,7 @@ repoint `v1` to something else entirely, and every pipeline using that tag inher
 the next run with no review. Pin to a [commit](../../git-workflow/commit/SKILL.md) SHA, which is immutable, and update deliberately
 with a reviewed diff rather than silently trusting whatever the tag currently resolves to. This
 is the CI-specific instance of a pattern this collection also covers for container base images in
-`[image-scanning](../../../../Security/image-scanning/SKILL.md)`.
+`[image-scanning](../../../../Security/scanning/image-scanning/SKILL.md)`.
 
 ```yaml
 # fragile: v4 can be repointed by the action's maintainer, or their compromised account

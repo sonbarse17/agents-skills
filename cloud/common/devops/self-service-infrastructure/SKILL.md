@@ -46,7 +46,7 @@ person.
   See `[terraform-modules](../../../../infrastructure-as-code/terraform/modules/terraform-modules/SKILL.md)` for how the underlying module itself should be parameterized to make
   this tiering mechanical rather than manual.
 - **Auto-approve within guardrails**: size limits, allowed regions, required tags, budget caps
-  enforced by `[policy-as-code](../../../../Security/policy-as-code/SKILL.md)`, not by a reviewer reading a form.
+  enforced by `[policy-as-code](../../../../Security/policy-as-code/policy-as-code/SKILL.md)`, not by a reviewer reading a form.
 - **Route only the exceptions to a human** — anything outside the guardrails, not everything.
 
 **Done when:** the majority of infrastructure requests provision without a human touching them,

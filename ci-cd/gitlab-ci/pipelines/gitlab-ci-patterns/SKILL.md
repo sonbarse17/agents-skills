@@ -195,7 +195,7 @@ apply:
 ```yaml
 include:
   - template: Security/SAST.[gitlab-ci](../gitlab-ci/SKILL.md).yml
-  - template: Security/[Dependency-Scanning](../../../../Security/dependency-scanning/SKILL.md).[gitlab-ci](../gitlab-ci/SKILL.md).yml
+  - template: Security/[Dependency-Scanning](../../../../Security/scanning/dependency-scanning/SKILL.md).[gitlab-ci](../gitlab-ci/SKILL.md).yml
   - template: Security/[Container-Scanning](../../../../containers-orchestration/docker/security/container-scanning/SKILL.md).[gitlab-ci](../gitlab-ci/SKILL.md).yml
 
 trivy-scan:

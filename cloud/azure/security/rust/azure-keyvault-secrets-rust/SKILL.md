@@ -20,13 +20,13 @@ depends_on:
   - github
 ---
 
-# Azure Key [Vault](../../../../../Security/vault/SKILL.md) Secrets library for Rust
+# Azure Key [Vault](../../../../../Security/cryptography-secrets/vault/SKILL.md) Secrets library for Rust
 
 Secure storage for passwords, API keys, and connection strings.
 
 Use this skill when:
 
-- An app needs to store or retrieve secrets from Azure Key [Vault](../../../../../Security/vault/SKILL.md) in Rust
+- An app needs to store or retrieve secrets from Azure Key [Vault](../../../../../Security/cryptography-secrets/vault/SKILL.md) in Rust
 - You need to set, get, update, or delete secrets
 - You need to list secret properties with pagination
 - You need error handling for missing secrets
@@ -44,7 +44,7 @@ cargo add azure_security_keyvault_secrets azure_identity tokio futures
 ## Environment Variables
 
 ```bash
-AZURE_KEYVAULT_URL=https://<[vault](../../../../../Security/vault/SKILL.md)-name>.[vault](../../../../../Security/vault/SKILL.md).azure.net/ # Required for all operations
+AZURE_KEYVAULT_URL=https://<[vault](../../../../../Security/cryptography-secrets/vault/SKILL.md)-name>.[vault](../../../../../Security/cryptography-secrets/vault/SKILL.md).azure.net/ # Required for all operations
 ```
 
 ## Authentication
@@ -60,7 +60,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Local dev: DeveloperToolsCredential. Production: use ManagedIdentityCredential.
     let credential = DeveloperToolsCredential::new(None)?;
     let client = SecretClient::new(
-        "https://<[vault](../../../../../Security/vault/SKILL.md)-name>.[vault](../../../../../Security/vault/SKILL.md).azure.net/",
+        "https://<[vault](../../../../../Security/cryptography-secrets/vault/SKILL.md)-name>.[vault](../../../../../Security/cryptography-secrets/vault/SKILL.md).azure.net/",
         credential.clone(),
         None,
     )?;
@@ -159,8 +159,8 @@ For Entra ID auth, assign one of these roles:
 
 | Role                        | Access                 |
 | --------------------------- | ---------------------- |
-| `Key [Vault](../../../../../Security/vault/SKILL.md) Secrets User`    | Read secrets           |
-| `Key [Vault](../../../../../Security/vault/SKILL.md) Secrets Officer` | Full secret management |
+| `Key [Vault](../../../../../Security/cryptography-secrets/vault/SKILL.md) Secrets User`    | Read secrets           |
+| `Key [Vault](../../../../../Security/cryptography-secrets/vault/SKILL.md) Secrets Officer` | Full secret management |
 
 ## Best Practices
 

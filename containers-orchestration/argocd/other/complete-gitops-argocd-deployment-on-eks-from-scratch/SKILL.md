@@ -268,7 +268,7 @@ credentials.
   — always terminate through Ingress + cert-manager so TLS and access
   logging are consistent with every other service on the cluster.
 - Default to manual sync until the config repo's own CI (SAST/SCA gates
-  per [secure-cicd-gates](../../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md))
+  per [secure-cicd-gates](../../../../Security/common/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../../Security/app-security/secure-cicd-gates/SKILL.md)/SKILL.md))
   is trusted, then promote to `automated` per environment.
 
 ## Common pitfalls

@@ -45,7 +45,7 @@ Exact user phrases: "AWS", "EC2", "S3", "RDS", "Lambda", "VPC", "IAM", "Well-Arc
 Before activating, verify:
 - AWS region and account structure (single vs multi-account, Organizations).
 - Service primitives needed (compute, storage, database, [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md), container).
-- Authentication method (CLI profile, IAM role, SSO, aws-[vault](../../../../Security/vault/SKILL.md), OIDC).
+- Authentication method (CLI profile, IAM role, SSO, aws-[vault](../../../../Security/cryptography-secrets/vault/SKILL.md), OIDC).
 - Compliance/security requirements (HIPAA, SOC2, PCI DSS, FedRAMP).
 - Budget constraints (Pay-As-You-Go vs Reserved vs Savings Plans).
 
@@ -517,7 +517,7 @@ Storing AWS access keys in code, config files, or environment variables. Use IAM
 | [CloudFormation](../../../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md) rollback | Resource limit or IAM permission | Check CloudTrail for specific error |
 
 ## Rules & Constraints
-- Never hardcode AWS credentials — use IAM roles, SSO, or aws-[vault](../../../../Security/vault/SKILL.md).
+- Never hardcode AWS credentials — use IAM roles, SSO, or aws-[vault](../../../../Security/cryptography-secrets/vault/SKILL.md).
 - Always enable S3 bucket versioning and encryption.
 - Every S3 bucket must have public access blocked unless explicitly required.
 - Use Security Groups over NACLs for instance-level traffic control.

@@ -183,12 +183,12 @@ workloads:
 ```terraform
 # backup/aws-backup.tf
 resource "aws_backup_vault" "primary" {
-  name        = "primary-backup-[vault](../../../../Security/vault/SKILL.md)"
+  name        = "primary-backup-[vault](../../../../Security/cryptography-secrets/vault/SKILL.md)"
   kms_key_arn = aws_kms_key.backup.arn
 }
 
 resource "aws_backup_vault" "dr" {
-  name        = "dr-backup-[vault](../../../../Security/vault/SKILL.md)"
+  name        = "dr-backup-[vault](../../../../Security/cryptography-secrets/vault/SKILL.md)"
   kms_key_arn = aws_kms_key.backup_dr.arn
 }
 
@@ -681,8 +681,8 @@ Silent backup failures going undetected for weeks. Monitor backup success rates,
 |---|---|---|
 | Backup fails mid-way | Storage full or network timeout | Check disk space; increase timeout |
 | Restore slow | No parallelism in restore tool | Use --jobs=N with pg_restore |
-| Cross-region copy fails | IAM role missing permissions | Check [vault](../../../../Security/vault/SKILL.md) policy and KMS key permissions |
-| Snapshot deletion blocked | Lock policy or retention lock | Check backup [vault](../../../../Security/vault/SKILL.md) lock and retention settings |
+| Cross-region copy fails | IAM role missing permissions | Check [vault](../../../../Security/cryptography-secrets/vault/SKILL.md) policy and KMS key permissions |
+| Snapshot deletion blocked | Lock policy or retention lock | Check backup [vault](../../../../Security/cryptography-secrets/vault/SKILL.md) lock and retention settings |
 | Backup size unexpectedly large | No deduplication or compression | Enable compression; check for log bloat |
 | Validation test fails | Data corruption during backup | Create fresh full backup; check storage integrity |
 

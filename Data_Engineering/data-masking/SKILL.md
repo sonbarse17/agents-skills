@@ -224,7 +224,7 @@ function maskByRole(user: User, viewer: Viewer): Partial<User> {
 
 ### Key Management
 - Never store encryption keys in the codebase or environment variables
-- Use a KMS (AWS KMS, HashiCorp [Vault](../../Security/vault/SKILL.md), Azure Key [Vault](../../Security/vault/SKILL.md))
+- Use a KMS (AWS KMS, HashiCorp [Vault](../../Security/cryptography-secrets/vault/SKILL.md), Azure Key [Vault](../../Security/cryptography-secrets/vault/SKILL.md))
 - Rotate keys on a schedule (90 days recommended)
 - Support key versioning for dual-write during rotation
 
@@ -257,7 +257,7 @@ class KeyManager {
 |-----------|---------------|-------|
 | AES-256-GCM encrypt | ~50μs per field | Negligible for most apps |
 | AES-256-GCM decrypt | ~50μs per field | Negligible for most apps |
-| Tokenization | ~1-5ms (network calls) | Depends on [vault](../../Security/vault/SKILL.md) latency |
+| Tokenization | ~1-5ms (network calls) | Depends on [vault](../../Security/cryptography-secrets/vault/SKILL.md) latency |
 | Masking | <1μs | No performance concern |
 | KMS key retrieval | ~10-50ms | Cache keys with TTL |
 
@@ -566,7 +566,7 @@ What type of sensitive data?
 |---|---|---|
 | Masking before logging only | Data leaked in other channels | Mask at the source (API response, DB query) |
 | Same masking for all roles | Over-redaction for authorized users | Role-based dynamic masking |
-| No tokenization mapping loss | Can't reconstruct for legitimate use | Token [vault](../../Security/vault/SKILL.md) with access [audit](../../AI_and_Agents/Operations/audit/SKILL.md) |
+| No tokenization mapping loss | Can't reconstruct for legitimate use | Token [vault](../../Security/cryptography-secrets/vault/SKILL.md) with access [audit](../../AI_and_Agents/Operations/audit/SKILL.md) |
 | Masking but not encrypting backups | Data exposed at rest | Encrypt backups with KMS-managed keys |
 | Manual field-by-field rules | Human error misses fields | Automated PII detection + rule engine |
 | Storing masking config in code | Config access = data exposure | Store in config service with access control |
@@ -574,6 +574,6 @@ What type of sensitive data?
 ## Performance Optimization
 
 - **Eager masking at query level**: Apply masking in SQL queries ([PostgreSQL](../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) column-level encryption, views with masking). Avoids fetching and masking in application code.
-- **Caching token mappings**: Use in-memory cache for frequently accessed token-to-value mappings. TTL-based expiration with proactive invalidation. Reduces token [vault](../../Security/vault/SKILL.md) lookup latency by 90%.
+- **Caching token mappings**: Use in-memory cache for frequently accessed token-to-value mappings. TTL-based expiration with proactive invalidation. Reduces token [vault](../../Security/cryptography-secrets/vault/SKILL.md) lookup latency by 90%.
 - **Async PII detection pipeline**: Run PII detection asynchronously for new data ingestion. Use a work queue for large batch processing. Stream results back for masking rule generation.
 

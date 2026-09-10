@@ -75,7 +75,7 @@ A digest tells you the image is unchanged since push; a signature tells you *who
 images at build time (cosign or the registry's native signing) and enforce signature verification
 at deploy time via admission control, so an image that reached the registry through some path
 other than your pipeline — a compromised credential, a manual push — gets rejected before it runs.
-Signing is about provenance of the artifact; what's *inside* it is `[image-scanning](../../../../Security/image-scanning/SKILL.md)`'s concern, and
+Signing is about provenance of the artifact; what's *inside* it is `[image-scanning](../../../../Security/scanning/image-scanning/SKILL.md)`'s concern, and
 the two should run as separate, complementary gates.
 
 **Done when:** a deploy of an unsigned or invalidly-signed image is rejected, not just logged.

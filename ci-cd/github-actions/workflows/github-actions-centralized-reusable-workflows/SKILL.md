@@ -323,4 +323,4 @@ one-line PR, instead of 40 separate workflow-file rewrites to add the
 
 - [github-actions-single-repo-workflows](../[github-actions-single-repo-workflows](../[github-actions](../[github](../github/SKILL.md)-actions/SKILL.md)-single-repo-workflows/SKILL.md)/SKILL.md) — the per-repo workflow/composite-action pattern this centralizes once duplicated across repos.
 - [jenkins-centralized-shared-library](../[jenkins-centralized-shared-library](../[jenkins](../jenkins/SKILL.md)-centralized-shared-library/SKILL.md)/SKILL.md) — the equivalent centralization pattern and versioning discipline on [Jenkins](../../../jenkins/other/jenkins/SKILL.md).
-- [secure-cicd-gates](../../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — designing the security-scan stage this reusable workflow enforces consistently across all callers.
+- [secure-cicd-gates](../../../../Security/common/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../../Security/app-security/secure-cicd-gates/SKILL.md)/SKILL.md) — designing the security-scan stage this reusable workflow enforces consistently across all callers.

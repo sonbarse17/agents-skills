@@ -47,7 +47,7 @@ Exact user phrases: "helm", "helm chart", "helm template", "helm install", "helm
 - Chart purpose (app, infrastructure, library).
 - [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) version and distribution.
 - CI/CD system ([GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, [ArgoCD](../../../argocd/other/argocd/SKILL.md)).
-- Secrets management (SOPS, SealedSecrets, External Secrets, [Vault](../../../../Security/vault/SKILL.md)).
+- Secrets management (SOPS, SealedSecrets, External Secrets, [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md)).
 - Multi-environment strategy.
 
 ### Output Artifact

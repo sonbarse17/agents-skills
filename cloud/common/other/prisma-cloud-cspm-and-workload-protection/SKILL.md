@@ -88,7 +88,7 @@ capabilities and where each one's blind spots require the others.
   built on it) or the Prisma Cloud IaC scan API/CI plugin, plus a
   Prisma Cloud access key (API key ID + secret) for API-based scans —
   store as CI secrets, never inline. See
-  [secrets-management](../../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../security/secrets-management/SKILL.md)/SKILL.md).
+  [secrets-management](../../../../Security/common/devsecops/SKILL.md)/skills/[secrets-management](../../security/secrets-management/SKILL.md)/SKILL.md).
 - For Workload Protection: outbound network connectivity from each
   host/cluster to the Prisma Cloud Compute console (self-hosted
   Compute console or the SaaS one), and sufficient privilege to deploy
@@ -327,6 +327,6 @@ production EKS cluster.
 - [sysdig-secure-runtime-security](../[sysdig-secure-runtime-security](../../../AI_and_Agents/Workflows/sysdig-secure-runtime-security/SKILL.md)/SKILL.md) —
   a comparable runtime-protection approach (Falco-rule-based) worth
   understanding alongside Prisma's Defender agent model.
-- [container-image-hardening](../../../../Security/devsecops/SKILL.md)/skills/[container-image-hardening](../../../../containers-orchestration/docker/security/container-image-hardening/SKILL.md)/SKILL.md) —
+- [container-image-hardening](../../../../Security/common/devsecops/SKILL.md)/skills/[container-image-hardening](../../../../containers-orchestration/docker/security/container-image-hardening/SKILL.md)/SKILL.md) —
   reducing what both Defender's image scanning and CSPM have to find in
   workload images in the first place.

@@ -229,7 +229,7 @@ resource "ibm_cos_bucket" "archive" {
   bucket_name           = "app-archive-bucket"
   resource_instance_id  = ibm_resource_instance.cos.id
   region_location       = var.region
-  storage_class         = "[vault](../../../Security/vault/SKILL.md)"
+  storage_class         = "[vault](../../../Security/cryptography-secrets/vault/SKILL.md)"
 }
 ```
 
@@ -429,7 +429,7 @@ resource "ibm_en_destination" "pagerduty" {
 - Using classic infrastructure (non-VPC) for new workloads — VPC is the future.
 - No resource group tagging — cost allocation is opaque.
 - Public service endpoints for databases — increases attack surface.
-- Default COS storage class for everything — use [vault](../../../Security/vault/SKILL.md)/cold [vault](../../../Security/vault/SKILL.md) for archives.
+- Default COS storage class for everything — use [vault](../../../Security/cryptography-secrets/vault/SKILL.md)/cold [vault](../../../Security/cryptography-secrets/vault/SKILL.md) for archives.
 - Manual IAM key rotation — automate with Terraform or CLI scripts.
 - Single-zone IKS cluster — no HA, downtime during zone maintenance.
 - No Activity Tracker — can't [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) changes for compliance.
@@ -687,7 +687,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager ([Vault](../../../Security/vault/SKILL.md), AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../../Security/cryptography-secrets/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
 - Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets

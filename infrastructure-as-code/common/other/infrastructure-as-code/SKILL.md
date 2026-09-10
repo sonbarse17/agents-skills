@@ -49,7 +49,7 @@ provider default that shifted, a variable that resolved to something unexpected.
 - **Treat "no changes" as a result to verify, not skip** — if you expected a change and got none,
   something upstream is wrong.
 - **Never apply a plan you didn't personally read**, even in CI — a human or a policy gate (see
-  `[policy-as-code](../../../../Security/policy-as-code/SKILL.md)`) should see the diff before it lands.
+  `[policy-as-code](../../../../Security/policy-as-code/policy-as-code/SKILL.md)`) should see the diff before it lands.
 
 **Done when:** the plan output for every production apply is attached to its approval record, so
 what was approved can be compared against what was applied.

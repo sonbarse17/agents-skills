@@ -809,7 +809,7 @@ volumes:
 - Session cleanup: periodic deletion of expired sessions
 - Health checks: ping CLI server, restart if unresponsive
 - Persistent storage: mount `~/.copilot/session-state/` for containers
-- Secret management: use [Vault](../../../Security/vault/SKILL.md)/K8s Secrets for tokens
+- Secret management: use [Vault](../../../Security/cryptography-secrets/vault/SKILL.md)/K8s Secrets for tokens
 - Session locking: Redis or similar for shared session access
 - Graceful shutdown: drain active sessions before stopping CLI
 

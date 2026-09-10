@@ -81,7 +81,7 @@ shape, plus Hard Rules 3 and 5 verbatim (subagents do not inherit them).
   coupling, no timeouts/retries/circuit breakers.
 - **Security** — public exposure, over-broad IAM, missing encryption at
   rest/in transit, unpatched base images, secrets in code, no network
-  segmentation. (Deep dive: `/[security-review](../../../Security/security-review/SKILL.md)`.)
+  segmentation. (Deep dive: `/[security-review](../../../Security/common/security-review/SKILL.md)`.)
 - **Cost** — idle/over-provisioned resources, no [autoscaling](../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md), unattached
   volumes, old snapshots, missing lifecycle policies. (Deep dive: `/cost`.)
 - **[Observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)** — missing metrics/logs/traces, no SLOs, alert gaps or
@@ -129,7 +129,7 @@ Effort keywords (`quick` / `standard` / `deep`) and the shared `<focus>` and
 This skill is the front door; depth belongs to the specialists. Route per the
 [contract's routing table](../docs/skill-contract.md#6-cross-skill-routing) —
 `/[k8s-review](../../../containers-orchestration/kubernetes/troubleshooting/k8s-review/SKILL.md)`, `/[terraform-review](../../../infrastructure-as-code/terraform/troubleshooting/terraform-review/SKILL.md)`, `/[pipeline-review](../../../ci-cd/common/pipeline-design/pipeline-review/SKILL.md)`, `/[docker-review](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-review/SKILL.md)`,
-`/[observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)`, `/[security-review](../../../Security/security-review/SKILL.md)`, `/cost`, `/[dr-review](../../../containers-orchestration/common/other/dr-review/SKILL.md)`, `/[db-review](../db-review/SKILL.md)`. If
+`/[observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)`, `/[security-review](../../../Security/common/security-review/SKILL.md)`, `/cost`, `/[dr-review](../../../containers-orchestration/common/other/dr-review/SKILL.md)`, `/[db-review](../db-review/SKILL.md)`. If
 production is broken right now, stop and use `/[incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)` instead.
 
 ## Before you finish

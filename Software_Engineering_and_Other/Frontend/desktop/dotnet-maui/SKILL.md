@@ -409,7 +409,7 @@ builder.Services.AddSingleton<IDeviceInfo, IosDeviceInfo>();
 - **Missing `#if` on platform APIs**: `[Android](../../../../Mobile/android/SKILL.md).Graphics.Color` in shared code compiles on all targets but throws on iOS. Always guard platform-specific types with `#if [ANDROID](../../../../Mobile/android/SKILL.md)`, `#if IOS`.
 - **Nested layouts in ListView**: ListView/CollectionView with complex nested layouts (Grid in StackLayout in Frame) kills scroll performance. Flatten hierarchy for list items.
 - **No `x:DataType` on DataTemplate**: Reflection-based bindings in lists are 3-5x slower than compiled bindings. Always set `x:DataType` on ItemTemplate DataTemplate.
-- **Storing secrets in code**: API keys, connection strings in source code. Use Azure Key [Vault](../../../../Security/vault/SKILL.md), [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Secrets, or `Secrets.json` (user secrets in development). Never [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) secrets.
+- **Storing secrets in code**: API keys, connection strings in source code. Use Azure Key [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md), [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Secrets, or `Secrets.json` (user secrets in development). Never [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) secrets.
 - **Over-engineering with Prism**: Prism adds significant complexity for most apps. CommunityToolkit.Mvvm covers 90% of MVVM needs with less overhead.
 
 ## Configuration Reference
@@ -545,7 +545,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager ([Vault](../../../../Security/vault/SKILL.md), AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../../../Security/cryptography-secrets/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
 - Access [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets

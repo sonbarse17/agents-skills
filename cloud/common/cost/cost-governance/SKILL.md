@@ -40,7 +40,7 @@ Pillar 1 - Governance Structure: Define cost center hierarchy, assign budget own
 
 Pillar 2 - [Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md): Implement real-time cost visibility through native cloud tools and third-party platforms. Build [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) per cost center, service, and resource type. Track unit economics (cost per transaction, per user, per API call).
 
-Pillar 3 - Validation: Enforce tagging policy through [policy-as-code](../../../../Security/policy-as-code/SKILL.md). Use preventive controls (SCPs, organization policies) to block non-compliant resource creation. Implement detective controls (scheduled compliance scans).
+Pillar 3 - Validation: Enforce tagging policy through [policy-as-code](../../../../Security/policy-as-code/policy-as-code/SKILL.md). Use preventive controls (SCPs, organization policies) to block non-compliant resource creation. Implement detective controls (scheduled compliance scans).
 
 Pillar 4 - Enforcement: Configure budget alerts at graduated thresholds. Implement automated actions (stop non-critical resources, send notifications, create tickets) when budgets are exceeded.
 
@@ -152,7 +152,7 @@ No preamble. No postamble. No explanations.
 ## Workflow
 
 ### Step 1: Cost Allocation
-Define mandatory resource tags (cost-center, environment, owner, project, service). Enforce tags via [policy-as-code](../../../../Security/policy-as-code/SKILL.md) (Azure Policy, AWS SCP, GCP Organization Policy). Create cost center hierarchy mapped to business units. Use cost categories for untagged resource grouping.
+Define mandatory resource tags (cost-center, environment, owner, project, service). Enforce tags via [policy-as-code](../../../../Security/policy-as-code/policy-as-code/SKILL.md) (Azure Policy, AWS SCP, GCP Organization Policy). Create cost center hierarchy mapped to business units. Use cost categories for untagged resource grouping.
 
 Tag design principles:
 - Tag key names should be consistent across all cloud providers
@@ -211,7 +211,7 @@ Optimization categories ranked by effort-to-impact:
 
 Track savings with methodology: baseline cost (pre-optimization) minus actual cost (post-optimization), adjusted for usage changes. Report gross savings and net savings (after RI/SP costs).
 
-### Example: [Policy-as-Code](../../../../Security/policy-as-code/SKILL.md) for Tag Enforcement
+### Example: [Policy-as-Code](../../../../Security/policy-as-code/policy-as-code/SKILL.md) for Tag Enforcement
 ```hcl
 # AWS SCP to deny creation of untagged resources
 policy {
@@ -423,7 +423,7 @@ print(ue.report())
 - Azure Cost Management + Billing for Azure environments
 - GCP Cost Management tools
 - CloudHealth / Vantage / CloudZero for [multi-cloud](../../other/multi-cloud/SKILL.md) cost platforms
-- Terraform + Sentinel / OPA for [policy-as-code](../../../../Security/policy-as-code/SKILL.md) enforcement
+- Terraform + Sentinel / OPA for [policy-as-code](../../../../Security/policy-as-code/policy-as-code/SKILL.md) enforcement
 - PagerDuty / OpsGenie for budget alert routing
 - Tableau / Power BI for cost reporting and analytics
 
@@ -438,7 +438,7 @@ print(ue.report())
 
 ## Code Examples
 
-### [Policy-as-Code](../../../../Security/policy-as-code/SKILL.md): Tag Enforcement (Open Policy Agent/Rego)
+### [Policy-as-Code](../../../../Security/policy-as-code/policy-as-code/SKILL.md): Tag Enforcement (Open Policy Agent/Rego)
 ```rego
 package terraform.cost_tags
 

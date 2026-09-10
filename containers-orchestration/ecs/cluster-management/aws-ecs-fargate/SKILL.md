@@ -64,7 +64,7 @@ aws ecs describe-clusters --clusters production --include STATISTICS ATTACHMENTS
 # Create ECR repository
 aws ecr create-repository \
   --repository-name myapp \
-  --[image-scanning](../../../../Security/image-scanning/SKILL.md)-configuration scanOnPush=true \
+  --[image-scanning](../../../../Security/scanning/image-scanning/SKILL.md)-configuration scanOnPush=true \
   --encryption-configuration encryptionType=KMS
 
 # Authenticate [Docker](../../../docker/other/docker/SKILL.md) to ECR

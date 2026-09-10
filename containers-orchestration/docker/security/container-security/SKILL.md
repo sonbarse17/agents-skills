@@ -500,7 +500,7 @@ Manual triage does not scale beyond 10-20 images. Automate vulnerability scannin
 - Daily rescan of deployed images
 
 ### Level 4: Optimized
-- [Policy-as-code](../../../../Security/policy-as-code/SKILL.md) with [GitOps](../../../common/gitops/gitops/SKILL.md)-driven admission (Kyverno/OPA in CI)
+- [Policy-as-code](../../../../Security/policy-as-code/policy-as-code/SKILL.md) with [GitOps](../../../common/gitops/gitops/SKILL.md)-driven admission (Kyverno/OPA in CI)
 - Behavioral analysis with Tracee for advanced threat detection
 - Automated CVE remediation with PR creation
 - Reachability-aware vulnerability prioritization
@@ -526,7 +526,7 @@ Manual triage does not scale beyond 10-20 images. Automate vulnerability scannin
 ## References
 - ../../../Global_References/container-security-fundamentals.md -- Container Security Fundamentals
 - ../../../Global_References/container-security-advanced.md -- Container Security Advanced Topics
-- ../../../Global_References/container-[vulnerability-scanning](../../../../Security/vulnerability-scanning/SKILL.md).md -- Container Vulnerability Scanning
+- ../../../Global_References/container-[vulnerability-scanning](../../../../Security/scanning/vulnerability-scanning/SKILL.md).md -- Container Vulnerability Scanning
 - ../../../Global_References/image-security.md -- Image Security
 - ../../../Global_References/runtime-security.md -- Runtime Security
 - ../../../Global_References/admission-controller-policies.md -- Admission Controller Policies
@@ -535,5 +535,5 @@ Manual triage does not scale beyond 10-20 images. Automate vulnerability scannin
 
 ## Handoff
 security-[secrets-management](../../../../cloud/common/security/secrets-management/SKILL.md) for credential injection
-[security-api-security](../../../../Security/api-security/SKILL.md) for gateway and service mesh policies
+[security-api-security](../../../../Security/app-security/api-security/SKILL.md) for gateway and service mesh policies
 

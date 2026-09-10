@@ -117,7 +117,7 @@ Effort keywords (`quick` / `standard` / `deep`) and the shared `<focus>` and
 ## Related skills
 
 - `/[docker-review](../../Containers_and_Orchestration/[docker](../../Containers_and_Orchestration/docker/SKILL.md)-review/SKILL.md)` — the image build the pipeline invokes.
-- `/[security-review](../../../../Security/security-review/SKILL.md)` — depth on supply chain, OIDC, and secret scoping.
+- `/[security-review](../../../../Security/common/security-review/SKILL.md)` — depth on supply chain, OIDC, and secret scoping.
 - `/[release-readiness](../release-readiness/SKILL.md)` — whether the flow actually gates production.
 - `/[observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)` — deploy annotations and post-deploy verification signals.
 

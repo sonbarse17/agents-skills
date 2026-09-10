@@ -430,8 +430,8 @@ Maintain immutable records of:
 
 ## Related Skills
 
-- [sbom-supply-chain](../../../security/scanning/[sbom-supply-chain](../../../Security/sbom-supply-chain/SKILL.md)/) - Provenance and signing
-- [policy-as-code](../../../compliance/governance/[policy-as-code](../../../Security/policy-as-code/SKILL.md)/) - Enforce governance with policy engines
+- [sbom-supply-chain](../../../Security/supply-chain/sbom-supply-chain/SKILL.md)/) - Provenance and signing
+- [policy-as-code](../../../Security/policy-as-code/policy-as-code/SKILL.md)/) - Enforce governance with policy engines
 - [llm-fine-tuning](../../../infrastructure/local-ai/[llm-fine-tuning](../llm-fine-tuning/SKILL.md)/) - Version adapters and training outputs
 - [llmops-platform-engineering](../[llmops-platform-engineering](../llmops-[platform-engineering](../../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md)/SKILL.md)/) - Platform CI/CD and promotion workflows
 - [ai-sre-[incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-response](../[ai-sre-[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response](../../../DevOps_and_Cloud/Observability_and_SecOps/ai-sre-[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)/SKILL.md)/) - [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response for model issues

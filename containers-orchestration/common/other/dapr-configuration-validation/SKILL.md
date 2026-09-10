@@ -70,7 +70,7 @@ plays for Knative Serving.
   confirming it's the *correct* set of apps still requires a human
   reviewer with that context.
 - Awareness of which secret store/reference mechanism the organization
-  standardizes on ([Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) Secrets, [Vault](../../../../Security/vault/SKILL.md), a cloud KMS-backed
+  standardizes on ([Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) Secrets, [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md), a cloud KMS-backed
   store) so inline-secret detection knows what a *correct* reference
   looks like, not just that a `secretKeyRef` exists syntactically.
 

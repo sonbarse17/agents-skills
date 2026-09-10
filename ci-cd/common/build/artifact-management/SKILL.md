@@ -108,7 +108,7 @@ pipeline away from a supply-chain [incident](../../../../observability-monitorin
 push new artifacts) from promotion access (only the deploy pipeline, gated appropriately, can
 move a digest into a production-referenced state) from read access (runtime pulls should be
 read-only). This is a narrower, artifact-specific instance of the concerns in `[pipeline-security](../../pipeline-design/pipeline-security/SKILL.md)`
-and `[supply-chain-security](../../../../Security/supply-chain-security/SKILL.md)` — worth restating here because registry permissions are so often left
+and `[supply-chain-security](../../../../Security/supply-chain/supply-chain-security/SKILL.md)` — worth restating here because registry permissions are so often left
 at their overly permissive defaults.
 
 **Done when:** no single compromised credential can both push a new artifact and cause it to be

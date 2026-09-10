@@ -453,7 +453,7 @@ Private networking for all inter-component communication. VPC/subnet isolation: 
 Service accounts for cross-component auth (Spark → S3, Trino → Hive Metastore). OAuth2/OIDC for user authentication to query engines and catalogs. RBAC: roles with least-privilege access to data assets. Row-level security: apply in query engine (Trino view security, Spark column masking). [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) all data access via catalog lineage.
 
 ### Data Encryption
-Encryption at rest: SSE-S3/KMS for object stores, envelope encryption for sensitive columns. Encryption in transit: TLS 1.3 for all component communication. Key management: KMS (AWS KMS, GCP Cloud KMS, Azure Key [Vault](../../Security/vault/SKILL.md)). Bring Your Own Key (BYOK) for compliance.
+Encryption at rest: SSE-S3/KMS for object stores, envelope encryption for sensitive columns. Encryption in transit: TLS 1.3 for all component communication. Key management: KMS (AWS KMS, GCP Cloud KMS, Azure Key [Vault](../../Security/cryptography-secrets/vault/SKILL.md)). Bring Your Own Key (BYOK) for compliance.
 
 ## Platform [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
@@ -597,7 +597,7 @@ stack:
 
 - **IAM hierarchy**: Define IAM roles per domain with least privilege; platform-admin role heavily restricted.
 - **Network security**: Deploy platform in private VPC with VPC endpoints for S3, Glue, and other services.
-- **Secrets management**: Centralize secrets in [Vault](../../Security/vault/SKILL.md)/AWS Secrets Manager; never in config files or env vars.
+- **Secrets management**: Centralize secrets in [Vault](../../Security/cryptography-secrets/vault/SKILL.md)/AWS Secrets Manager; never in config files or env vars.
 - **Data encryption**: SSE-S3 default for all storage; KMS for sensitive datasets with key rotation.
 - **Compliance**: Encrypt [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs for 7-year retention; support GDPR right-to-deletion workflows.
 

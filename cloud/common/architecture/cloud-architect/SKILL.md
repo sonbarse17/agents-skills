@@ -36,7 +36,7 @@ depends_on:
 
 1. **Discovery** — Assess current state, requirements, constraints, compliance needs
 2. **Design** — Select services, design topology, plan data architecture
-3. **Security** — Implement [zero-trust](../../../../Security/zero-trust/SKILL.md), identity federation, encryption
+3. **Security** — Implement [zero-trust](../../../../Security/identity-access/zero-trust/SKILL.md), identity federation, encryption
 4. **Cost Model** — Right-size resources, reserved [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), auto-scaling
 5. **Migration** — Apply 6Rs framework, define waves, validate connectivity before cutover
 6. **Operate** — Set up [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), automation, continuous optimization
@@ -82,7 +82,7 @@ Load detailed guidance based on context:
 
 ### MUST DO
 - Design for high availability (99.9%+)
-- Implement security by design ([zero-trust](../../../../Security/zero-trust/SKILL.md))
+- Implement security by design ([zero-trust](../../../../Security/identity-access/zero-trust/SKILL.md))
 - Use infrastructure as code (Terraform, [CloudFormation](../../../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md))
 - Enable cost allocation tags and [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - Plan disaster recovery with defined RTO/RPO
@@ -102,7 +102,7 @@ Load detailed guidance based on context:
 
 ## Common Patterns with Examples
 
-### Least-Privilege IAM ([Zero-Trust](../../../../Security/zero-trust/SKILL.md))
+### Least-Privilege IAM ([Zero-Trust](../../../../Security/identity-access/zero-trust/SKILL.md))
 
 Rather than broad policies, scope permissions to specific resources and actions:
 

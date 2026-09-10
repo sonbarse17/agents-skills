@@ -446,7 +446,7 @@ await webTest.DeleteAsync(WaitUntil.Completed);
 2. **Link to Log Analytics** — Store data in Log Analytics for better querying
 3. **Set appropriate retention** — Balance cost vs. data availability
 4. **Use sampling** — Reduce costs for high-volume applications
-5. **Store connection string securely** — Use Key [Vault](../../../../Security/vault/SKILL.md) or managed identity
+5. **Store connection string securely** — Use Key [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md) or managed identity
 6. **Enable multiple test locations** — For accurate availability [monitoring](../../../common/monitoring-strategy/monitoring/SKILL.md)
 7. **Use workbooks** — For custom [dashboards](../../../common/dashboard-design/dashboards/SKILL.md) and analysis
 8. **Set up alerts** — Based on availability tests and metrics

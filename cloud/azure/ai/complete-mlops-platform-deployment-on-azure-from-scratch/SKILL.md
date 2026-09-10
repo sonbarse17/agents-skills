@@ -88,7 +88,7 @@ sequence where the choice actually diverges.
   approved in the target region **before** the training pipeline phase —
   Azure GPU quota approval can take days and is a common source of a
   stalled first training run if requested late.
-- A storage account and Key [Vault](../../../../Security/vault/SKILL.md) already provisioned (or provisioned as
+- A storage account and Key [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md) already provisioned (or provisioned as
   part of Phase 3) for the Azure ML workspace's default datastore and
   secrets — decide this before Phase 4, not improvised per phase.
 
@@ -120,7 +120,7 @@ integration decisions between phases.
    - **AKS+Kubeflow (brief alternative)**: provision AKS per
      [managed-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-eks-aks-gke](../../Containers_and_Orchestration/managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md)
      (Azure AD Workload Identity for pod-level access to Blob Storage/Key
-     [Vault](../../../../Security/vault/SKILL.md)) and run Kubeflow Pipelines per
+     [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md)) and run Kubeflow Pipelines per
      [kubeflow-[ml-pipeline](../../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../[kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../../Containers_and_Orchestration/kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md)
      on top, with GPU node pools per
      [gpu-accelerator-infrastructure-for-ml-training](../[gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md)/SKILL.md)
@@ -129,7 +129,7 @@ integration decisions between phases.
      other clouds and wants a consistent operating model.
 
 3. **Phase 3 — Azure ML workspace and GPU compute clusters.** Create the
-   workspace (linked storage account, Key [Vault](../../../../Security/vault/SKILL.md), Application Insights,
+   workspace (linked storage account, Key [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md), Application Insights,
    container registry) and a GPU-backed compute cluster sized to the
    approved quota from Phase 1:
    ```bash

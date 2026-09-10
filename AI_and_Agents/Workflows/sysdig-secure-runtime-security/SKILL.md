@@ -87,7 +87,7 @@ or misconfiguration at all.
 - Registry/CI access for image scanning integration (Sysdig CLI
   scanner, `sysdig-cli-scanner`, or the Sysdig Secure [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)
   Action/[Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md) plugin) with a Sysdig API token stored as a CI secret.
-  See [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md).
+  See [secrets-management](../../../Security/common/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md).
 - A defined [incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md) escalation path (on-call rotation,
   ticketing/paging integration) before enabling high-severity runtime
   [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) — an unactioned runtime alert is strictly worse than no
@@ -211,7 +211,7 @@ or misconfiguration at all.
 - Reduce what runtime detection has to catch in the first place by
   hardening images and enforcing non-root/read-only/dropped-capability
   pod settings — see
-  [container-image-hardening](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[container-image-hardening](../../../containers-orchestration/docker/security/container-image-hardening/SKILL.md)/SKILL.md);
+  [container-image-hardening](../../../Security/common/devsecops/SKILL.md)/skills/[container-image-hardening](../../../containers-orchestration/docker/security/container-image-hardening/SKILL.md)/SKILL.md);
   a hardened, distroless, non-root container gives an attacker far less
   room to trigger the kind of process/file-system behavior runtime
   rules look for in the first place.
@@ -220,7 +220,7 @@ or misconfiguration at all.
   stored/retained) before the first real high-severity alert fires —
   improvising containment during a live [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) is where blanket,
   destructive actions get taken under pressure.
-- Run CIS Benchmark and [image-scanning](../../../Security/image-scanning/SKILL.md) checks on a recurring schedule,
+- Run CIS Benchmark and [image-scanning](../../../Security/scanning/image-scanning/SKILL.md) checks on a recurring schedule,
   not only once at rollout — configuration drift and newly disclosed
   CVEs make yesterday's clean compliance/scan report stale quickly.
 - Treat runtime detection as the last layer of defense, not the primary
@@ -269,7 +269,7 @@ or misconfiguration at all.
   scanned — a `:latest` tag or a mutable tag re-pushed after the scan
   ran means the deployed artifact may differ from the scanned one;
   scan and deploy the same immutable, digest-referenced image (see
-  [container-image-hardening](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[container-image-hardening](../../../containers-orchestration/docker/security/container-image-hardening/SKILL.md)/SKILL.md)
+  [container-image-hardening](../../../Security/common/devsecops/SKILL.md)/skills/[container-image-hardening](../../../containers-orchestration/docker/security/container-image-hardening/SKILL.md)/SKILL.md)
   on digest pinning) so "scanned" and "running" are guaranteed to be
   identical.
 
@@ -339,7 +339,7 @@ API dependencies:
 
 ## Cross-references
 
-- [container-image-hardening](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[container-image-hardening](../../../containers-orchestration/docker/security/container-image-hardening/SKILL.md)/SKILL.md) —
+- [container-image-hardening](../../../Security/common/devsecops/SKILL.md)/skills/[container-image-hardening](../../../containers-orchestration/docker/security/container-image-hardening/SKILL.md)/SKILL.md) —
   reducing attack surface (non-root, read-only, dropped capabilities,
   digest-pinned images) so there is less for runtime detection to catch
   and less an attacker can do once inside.
@@ -351,6 +351,6 @@ API dependencies:
   a comparable CNAPP with its own agent-based workload protection
   (Defender) and CSPM posture layer, worth understanding as an
   alternative or complementary platform to Sysdig Secure.
-- [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md) —
-  storing the Sysdig API/access tokens used for CI [image-scanning](../../../Security/image-scanning/SKILL.md)
+- [secrets-management](../../../Security/common/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md) —
+  storing the Sysdig API/access tokens used for CI [image-scanning](../../../Security/scanning/image-scanning/SKILL.md)
   integration and agent enrollment.

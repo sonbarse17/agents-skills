@@ -340,4 +340,4 @@ fi
 - [terraform-aws](../../cloud-aws/[terraform-aws](../terraform-aws/SKILL.md)/) — AWS IaC patterns (works with both)
 - [terraform-azure](../../cloud-azure/[terraform-azure](../terraform-azure/SKILL.md)/) — Azure IaC patterns
 - [terraform-gcp](../../cloud-gcp/[terraform-gcp](../terraform-gcp/SKILL.md)/) — GCP IaC patterns
-- [policy-as-code](../../../compliance/governance/[policy-as-code](../../../Security/policy-as-code/SKILL.md)/) — OPA policy checks for IaC
+- [policy-as-code](../../../../Security/policy-as-code/policy-as-code/SKILL.md)/) — OPA policy checks for IaC

@@ -562,7 +562,7 @@ bootstrap:
 - Database encryption at rest: AWS RDS encryption / Azure TDE. Key rotation every 12 months.
 - Network segmentation: app and DB in private subnets. Bastion host for admin access.
 - Backup encryption: S3 bucket with SSE-KMS. Cross-region backup copy encrypted with different key.
-- Access control: database credentials in [Vault](../../../../Security/vault/SKILL.md). Rotated every 30 days. Application reads at startup.
+- Access control: database credentials in [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md). Rotated every 30 days. Application reads at startup.
 - [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging: all schema changes logged. DDL triggers in [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md). Review weekly.
 - Failover authentication: failover commands require MFA. Human-in-the-loop for manual promotion.
 - WAF in front of LB: rate limiting, SQL injection protection, IP blocklist for known bad actors.

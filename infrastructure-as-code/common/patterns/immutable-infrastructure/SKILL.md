@@ -74,7 +74,7 @@ build {
   instance can be traced back to exact source.
 - **Rebuild from a clean base every time**, never by patching a previous image in place — the same
   cattle principle applies one level up, to the image itself.
-- **Scan the image before it's promoted** — see `[image-scanning](../../../../Security/image-scanning/SKILL.md)` for the [vulnerability-scanning](../../../../DevOps_and_Cloud/Observability_and_SecOps/vulnerability-scanning/SKILL.md)
+- **Scan the image before it's promoted** — see `[image-scanning](../../../../Security/scanning/image-scanning/SKILL.md)` for the [vulnerability-scanning](../../../../DevOps_and_Cloud/Observability_and_SecOps/vulnerability-scanning/SKILL.md)
   step this pipeline should include.
 
 **Done when:** every image in use can be traced to a specific pipeline run and source [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md), and

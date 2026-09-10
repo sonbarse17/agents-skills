@@ -542,8 +542,8 @@ docs/** @team/tech-writers
 - `../../../Global_References/code-review-fundamentals.md` -- Code Review Fundamentals
 - `../../../Global_References/code-review_review-checklist.md` -- Code Review Checklist
 - `../../../Global_References/review-workflow.md` -- Code Review Workflow
-- `../../../Global_References/[security-review](../../../../Security/security-review/SKILL.md)-checklist.md` -- Security Review Checklist
-- `../../../Global_References/[security-review](../../../../Security/security-review/SKILL.md)-guide.md` -- Security Review Guide
+- `../../../Global_References/[security-review](../../../../Security/common/security-review/SKILL.md)-checklist.md` -- Security Review Checklist
+- `../../../Global_References/[security-review](../../../../Security/common/security-review/SKILL.md)-guide.md` -- Security Review Guide
 - `../../../Global_References/code-review-checklist.md` -- Comprehensive Code Review Checklist
 - `../../../Global_References/code-review-[workflow-automation](../../../../Software_Engineering_and_Other/Patterns/workflow/workflow-automation/SKILL.md).md` -- Code Review Workflow and Automation
 

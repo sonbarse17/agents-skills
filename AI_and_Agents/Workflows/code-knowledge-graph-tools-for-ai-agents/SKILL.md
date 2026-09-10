@@ -103,7 +103,7 @@ specific pre-built ones).
   tier. This is not a fully permissive open-source license and should be
   flagged to whoever approves tooling for a commercial product, the same
   way you'd flag a GPL/AGPL dependency in
-  [software-composition-analysis-sca](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../Security/software-composition-analysis-sca/SKILL.md)/SKILL.md).
+  [software-composition-analysis-sca](../../../Security/common/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../Security/scanning/software-composition-analysis-sca/SKILL.md)/SKILL.md).
 
 ## Step-by-step guidance
 
@@ -243,7 +243,7 @@ specific pre-built ones).
   adoption, not after — this is exactly the kind of license-compliance gap
   a dependency/SCA license policy should catch; treat it the same as any
   other non-permissive license finding in
-  [software-composition-analysis-sca](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../Security/software-composition-analysis-sca/SKILL.md)/SKILL.md)
+  [software-composition-analysis-sca](../../../Security/common/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../Security/scanning/software-composition-analysis-sca/SKILL.md)/SKILL.md)
   rather than discovering it downstream.
 
 - **Symptom:** An agent given access to a code-graph tool's MCP server still
@@ -335,4 +335,4 @@ alongside code.
 - [rag-pipeline-design](../[rag-pipeline-design](../../Models_and_FineTuning/rag-pipeline-design/SKILL.md)/SKILL.md) — semantic retrieval over document/code text, a distinct concern from these tools' structural graph indexing; the two are complementary when a corpus needs both kinds of lookup.
 - [vector-[database-operations](../../../Software_Engineering_and_Other/Databases/common/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../../Infrastructure/vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md) — operating the vector-store layer underneath a RAG pipeline, relevant if you pair one of these code-graph tools with a separate semantic-search index rather than relying on Graphify's built-in vector component alone.
 - [agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md) — the general principle of giving an agent narrow, well-described tools; applies directly to how these tools' MCP surfaces (17 tools for GitNexus vs. one for CodeGraph) get selected correctly by a model.
-- [software-composition-analysis-sca](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../Security/software-composition-analysis-sca/SKILL.md)/SKILL.md) — the general discipline of checking dependency licenses before adoption, directly relevant to GitNexus's noncommercial license restriction.
+- [software-composition-analysis-sca](../../../Security/common/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../Security/scanning/software-composition-analysis-sca/SKILL.md)/SKILL.md) — the general discipline of checking dependency licenses before adoption, directly relevant to GitNexus's noncommercial license restriction.

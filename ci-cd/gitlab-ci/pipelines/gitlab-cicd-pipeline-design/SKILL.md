@@ -323,4 +323,4 @@ merge and an authorized manual trigger.
 
 - [ci-cd-pipeline-design](../../../devops/skills/[ci-cd-pipeline-design](../ci-cd-pipeline-design/SKILL.md)/SKILL.md) — vendor-neutral stage/gate/caching concepts this file implements in GitLab's specific syntax.
 - [github-actions-centralized-reusable-workflows](../[github-actions-centralized-reusable-workflows](../[github-actions](../[github](../github/SKILL.md)-actions/SKILL.md)-centralized-reusable-workflows/SKILL.md)/SKILL.md) — the closest [GitHub](../../../github-actions/other/github/SKILL.md) Actions analog to GitLab's `include: project:` shared-template pattern.
-- [secure-cicd-gates](../../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — designing the severity/blocking policy for scan jobs added into this pipeline's stages.
+- [secure-cicd-gates](../../../../Security/common/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../../Security/app-security/secure-cicd-gates/SKILL.md)/SKILL.md) — designing the severity/blocking policy for scan jobs added into this pipeline's stages.

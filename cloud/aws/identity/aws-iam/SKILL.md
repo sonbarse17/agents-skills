@@ -455,4 +455,4 @@ resource "aws_iam_policy" "boundary" {
 - [aws-ec2](../[aws-ec2](../aws-ec2/SKILL.md)/) - Instance profiles and roles
 - [aws-lambda](../[aws-lambda](../aws-lambda/SKILL.md)/) - Lambda execution roles
 - [aws-ecs-fargate](../[aws-ecs-fargate](../aws-ecs-fargate/SKILL.md)/) - ECS task and execution roles
-- [access-review](../../../compliance/governance/[access-review](../../../Security/access-review/SKILL.md)/) - Access auditing and governance
+- [access-review](../../../../Security/identity-access/access-review/SKILL.md)/) - Access auditing and governance

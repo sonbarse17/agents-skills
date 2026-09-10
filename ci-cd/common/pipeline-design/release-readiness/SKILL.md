@@ -74,7 +74,7 @@ Assess each gate and mark **PASS / FAIL / N/A** with evidence.
   correlate a regression with the rollout, logs with correlation IDs.
 - **Security** — no unresolved high/critical vulns on the release path, secrets
   handled correctly, least-privilege for new permissions, security review done
-  for sensitive changes. (Defer depth to `/[security-review](../../../../Security/security-review/SKILL.md)`.)
+  for sensitive changes. (Defer depth to `/[security-review](../../../../Security/common/security-review/SKILL.md)`.)
 - **Operational** — a [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) for the new/changed failure modes, on-call aware
   and briefed, dependencies and downstreams notified, SLO/error-budget headroom
   to absorb a bad deploy, a clear owner.

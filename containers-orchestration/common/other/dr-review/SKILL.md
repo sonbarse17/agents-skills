@@ -95,7 +95,7 @@ specific to recovery work.
   edited by hand, dependencies (KMS key, VPC, security groups) that must be
   recreated before data can be restored.
 - **Durability & isolation** — backups in the same account/region/bucket as the
-  primary, no immutability (Object Lock / [vault](../../../../Security/vault/SKILL.md) lock / WORM), backup credentials
+  primary, no immutability (Object Lock / [vault](../../../../Security/cryptography-secrets/vault/SKILL.md) lock / WORM), backup credentials
   that can also delete backups (ransomware and rogue-automation path), no
   cross-account copy, encryption keys not replicated to the recovery region.
 - **Verification** — no restore test in the last N months, tests that restore but
@@ -166,7 +166,7 @@ Effort keywords (`quick` / `standard` / `deep`) and the shared `<focus>` and
 
 - `/[terraform-review](../../../../infrastructure-as-code/terraform/troubleshooting/terraform-review/SKILL.md)` — where backup, retention, and protection settings are declared.
 - `/[db-review](../../../../AI_and_Agents/Operations/db-review/SKILL.md)` — PITR, migration safety, and the data-loss paths inside the database.
-- `/[security-review](../../../../Security/security-review/SKILL.md)` — backup credential scoping, immutability, ransomware resilience.
+- `/[security-review](../../../../Security/common/security-review/SKILL.md)` — backup credential scoping, immutability, ransomware resilience.
 - `/cost` — retention is a spend/recovery trade-off; decide it here, price it there.
 - `/[runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)` — turn the restore procedure into an on-call-ready document.
 - `/[incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)` — if data is being lost right now, use that skill first.

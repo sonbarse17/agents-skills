@@ -42,7 +42,7 @@ Task arrives
     ├── Something broke? ──────────────→ [debugging-and-error-recovery](../../../Patterns/debugging/debugging-and-error-recovery/SKILL.md)
     ├── Reviewing code? ───────────────→ [code-review-and-quality](../../Patterns/[code-review](../code-review/SKILL.md)-and-quality/SKILL.md)
     │   ├── Too complex? ─────────────→ [code-simplification](../../../Patterns/dev-practice/code-simplification/SKILL.md)
-    │   ├── Security concerns? ───────→ [security-and-hardening](../../../../Security/security-and-hardening/SKILL.md)
+    │   ├── Security concerns? ───────→ [security-and-hardening](../../../../Security/common/security-and-hardening/SKILL.md)
     │   └── Performance concerns? ────→ [performance-optimization](../../../Backend/patterns/performance-optimization/SKILL.md)
     ├── Committing/branching? ─────────→ [git-workflow-and-versioning](../../../DevOps_and_Cloud/CI_CD/[git-workflow](../../../DevOps_and_Cloud/CI_CD/git-workflow/SKILL.md)-and-versioning/SKILL.md)
     ├── CI/CD pipeline work? ──────────→ [ci-cd-and-automation](../../../../ci-cd/common/pipeline-design/ci-cd-and-automation/SKILL.md)
@@ -192,7 +192,7 @@ Not every task needs every skill. A bug fix might only need: `[debugging-and-err
 | Verify | [debugging-and-error-recovery](../../../Patterns/debugging/debugging-and-error-recovery/SKILL.md) | Reproduce → localize → fix → guard |
 | Review | [code-review-and-quality](../../Patterns/[code-review](../code-review/SKILL.md)-and-quality/SKILL.md) | Five-axis review with quality gates |
 | Review | [code-simplification](../../../Patterns/dev-practice/code-simplification/SKILL.md) | Preserve behavior while reducing unnecessary complexity |
-| Review | [security-and-hardening](../../../../Security/security-and-hardening/SKILL.md) | OWASP prevention, input validation, least privilege |
+| Review | [security-and-hardening](../../../../Security/common/security-and-hardening/SKILL.md) | OWASP prevention, input validation, least privilege |
 | Review | [performance-optimization](../../../Backend/patterns/performance-optimization/SKILL.md) | Measure first, optimize only what matters |
 | Ship | [git-workflow-and-versioning](../../../DevOps_and_Cloud/CI_CD/[git-workflow](../../../DevOps_and_Cloud/CI_CD/git-workflow/SKILL.md)-and-versioning/SKILL.md) | Atomic commits, clean history |
 | Ship | [ci-cd-and-automation](../../../../ci-cd/common/pipeline-design/ci-cd-and-automation/SKILL.md) | Automated quality gates on every change |

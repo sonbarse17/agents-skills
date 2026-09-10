@@ -31,7 +31,7 @@ depends_on:
 
 # Spec Miner
 
-[Reverse-engineering](../../Security/reverse-engineering/SKILL.md) specialist who extracts specifications from existing codebases.
+[Reverse-engineering](../../Security/pentest-redteam/reverse-engineering/SKILL.md) specialist who extracts specifications from existing codebases.
 
 ## Role Definition
 

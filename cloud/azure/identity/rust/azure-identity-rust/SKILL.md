@@ -72,7 +72,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Local dev: DeveloperToolsCredential. Production: use ManagedIdentityCredential.
     let credential = DeveloperToolsCredential::new(None)?;
     let client = SecretClient::new(
-        "https://<[vault](../../../../../Security/vault/SKILL.md)-name>.[vault](../../../../../Security/vault/SKILL.md).azure.net/",
+        "https://<[vault](../../../../../Security/cryptography-secrets/vault/SKILL.md)-name>.[vault](../../../../../Security/cryptography-secrets/vault/SKILL.md).azure.net/",
         credential.clone(),
         None,
     )?;
@@ -143,7 +143,7 @@ let credential = ClientSecretCredential::new(
 4. **Never hardcode credentials** — use environment variables for service principals
 5. **Clone credentials** — pass `credential.clone()` when constructing multiple clients; credentials are `Arc`-wrapped
 6. **Reuse clients** — clients are thread-safe; create once, share across tasks
-7. **Assign RBAC roles** — ensure the identity has appropriate roles for the target service (e.g., "Key [Vault](../../../../../Security/vault/SKILL.md) Secrets User" for secret reads)
+7. **Assign RBAC roles** — ensure the identity has appropriate roles for the target service (e.g., "Key [Vault](../../../../../Security/cryptography-secrets/vault/SKILL.md) Secrets User" for secret reads)
 8. **Run `cargo clippy -- -D warnings`** when the prompt, eval, or CI expects lint-clean output; Rust trajectory graders can fail on style lints even after compiler errors are fixed
 9. **Future-proof `#[non_exhaustive]` SDK models** — when constructing SDK model/options structs, end the initializer with `..Default::default()` (add `#[allow(clippy::needless_update)]`) and use a `_` wildcard arm when matching SDK enums, so new service-added fields/variants don't break your build
 

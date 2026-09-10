@@ -124,7 +124,7 @@ Package Backstage as a Helm chart and deploy it against an OCI Database
 with [PostgreSQL](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) instance (multi-AZ within the region beyond a pilot) as
 the catalog database, with the Backstage backend pod's node covered by
 the Phase 2 Dynamic Group so it can call
-`secrets-retrieval` on OCI [Vault](../../../Security/vault/SKILL.md) for the DB credential via a Resource
+`secrets-retrieval` on OCI [Vault](../../../Security/cryptography-secrets/vault/SKILL.md) for the DB credential via a Resource
 Principal — never an embedded connection string. Chart packaging follows
 [helm-chart-authoring](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[helm-chart-authoring](../../../containers-orchestration/helm/charts/helm-chart-authoring/SKILL.md)/SKILL.md);
 custom backend/frontend logic follows
@@ -271,7 +271,7 @@ one quarter.
 3. **Phase 3:** Backstage is packaged as `charts/backstage-meridian`,
    deployed against an OCI Database with [PostgreSQL](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) instance
    `meridian-backstage-catalog` (multi-AZ), with the backend pod reading
-   its DB credential from OCI [Vault](../../../Security/vault/SKILL.md) via the Phase 2 Resource Principal.
+   its DB credential from OCI [Vault](../../../Security/cryptography-secrets/vault/SKILL.md) via the Phase 2 Resource Principal.
 4. **Phase 4:** A "Node.js service" golden-path template is authored,
    producing a Dockerfile, a [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions workflow, and a documented IAM
    policy-statement request template for the service's own Dynamic Group

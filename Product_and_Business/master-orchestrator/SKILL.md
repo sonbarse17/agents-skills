@@ -177,8 +177,8 @@ State: User asks about security team, appsec, vulnerability management, security
   Route: management-security
   Reason: "Security team operations request."
 
-State: User asks about [pentesting](../../Security/pentesting/SKILL.md), penetration test, vulnerability assessment, bug bounty.
-  Route: management-[pentesting](../../Security/pentesting/SKILL.md)
+State: User asks about [pentesting](../../Security/pentest-redteam/pentesting/SKILL.md), penetration test, vulnerability assessment, bug bounty.
+  Route: management-[pentesting](../../Security/pentest-redteam/pentesting/SKILL.md)
   Reason: "Penetration testing and reporting request."
 
 State: User asks about alert rules, alert fatigue, notification routing, Prometheus alerts, Grafana alerts.
@@ -416,9 +416,9 @@ State: User asks about [GitOps](../../containers-orchestration/common/gitops/git
   Route: devops-[gitops](../../containers-orchestration/common/gitops/gitops/SKILL.md)
   Reason: "[GitOps](../../containers-orchestration/common/gitops/gitops/SKILL.md) deployment strategy request."
 
-State: User asks about [Vault](../../Security/vault/SKILL.md), secrets management, HashiCorp [Vault](../../Security/vault/SKILL.md), secret storage.
-  Route: devops-[vault](../../Security/vault/SKILL.md)
-  Reason: "[Vault](../../Security/vault/SKILL.md) secrets management request."
+State: User asks about [Vault](../../Security/cryptography-secrets/vault/SKILL.md), secrets management, HashiCorp [Vault](../../Security/cryptography-secrets/vault/SKILL.md), secret storage.
+  Route: devops-[vault](../../Security/cryptography-secrets/vault/SKILL.md)
+  Reason: "[Vault](../../Security/cryptography-secrets/vault/SKILL.md) secrets management request."
 
 State: User asks about AWS, EC2, S3, Lambda, RDS, cloud infrastructure.
   Route: devops-aws
@@ -553,7 +553,7 @@ State: User asks about mobile performance, app slow, jank, frame drop, memory le
   Reason: "Mobile performance optimization request."
 
 State: User asks about mobile security, secure storage, certificate pinning, OWASP mobile, root detection, biometric.
-  Route: [mobile-security](../../Security/security/SKILL.md)
+  Route: [mobile-security](../../Security/common/security/SKILL.md)
   Reason: "Mobile security implementation request."
 
 State: User asks about mobile networking, API client mobile, offline first, GraphQL mobile, REST client, caching mobile, pagination.
@@ -1009,7 +1009,7 @@ State: User asks about progressive delivery, canary deployment, blue-green, traf
   Reason: "Progressive delivery request."
 
 State: User asks about policy as code, OPA, Rego, Kyverno, admission controller, policy enforcement, guardrails, policy testing.
-  Route: devops-[policy-as-code](../../Security/policy-as-code/SKILL.md)
+  Route: devops-[policy-as-code](../../Security/policy-as-code/policy-as-code/SKILL.md)
   Reason: "Policy as code request."
 
 State: User asks about cloud migration, lift-and-shift, rehost, replatform, refactor, 6 Rs migration, legacy to cloud, data center migration.
@@ -1071,11 +1071,11 @@ State: User asks about Hetzner, Hetzner Cloud, Hetzner dedicated server, Hetzner
 ### New Security Skills
 
 State: User asks about data security, data protection, encryption at rest, data masking, data classification.
-  Route: [security-data-security](../../Security/data-security/SKILL.md)
+  Route: [security-data-security](../../Security/app-security/data-security/SKILL.md)
   Reason: "Data security request."
 
 State: User asks about Zero Trust, zero trust architecture, ZTA, BeyondCorp, never trust always verify, identity-aware proxy, microsegmentation.
-  Route: [zero-trust](../../Security/zero-trust/SKILL.md)
+  Route: [zero-trust](../../Security/identity-access/zero-trust/SKILL.md)
   Reason: "Zero Trust architecture request."
 
 State: User asks about CSPM, cloud security posture management, Wiz, Prisma Cloud, cloud compliance, cloud misconfiguration, CIEM.
@@ -1083,7 +1083,7 @@ State: User asks about CSPM, cloud security posture management, Wiz, Prisma Clou
   Reason: "CSPM request."
 
 State: User asks about penetration testing, pentest, ethical hacking, vulnerability assessment, security testing, web app pentest, network pentest, cloud pentest.
-  Route: [penetration-testing](../../Security/penetration-testing/SKILL.md)
+  Route: [penetration-testing](../../Security/pentest-redteam/penetration-testing/SKILL.md)
   Reason: "Penetration testing request."
 
 State: User asks about IAM governance, identity governance, access certification, privileged access management, identity lifecycle, join/move/leave, access review.
@@ -1091,11 +1091,11 @@ State: User asks about IAM governance, identity governance, access certification
   Reason: "IAM governance request."
 
 State: User asks about SOC operations, SOC tier, SOC structure, SOC [runbook](../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md), security operations center, SOC shift.
-  Route: [soc-operations](../../Security/soc-operations/SKILL.md)
+  Route: [soc-operations](../../Security/incident-response/soc-operations/SKILL.md)
   Reason: "SOC operations request."
 
 State: User asks about SIEM, correlation rule, detection rule, log ingestion, SIEM architecture, Splunk, Elastic SIEM, Wazuh, Sentinel.
-  Route: [siem-engineering](../../Security/siem-engineering/SKILL.md)
+  Route: [siem-engineering](../../Security/incident-response/siem-engineering/SKILL.md)
   Reason: "SIEM engineering request."
 
 State: User asks about SOAR, playbook automation, security automation, SOAR playbook, [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) automation.
@@ -1103,15 +1103,15 @@ State: User asks about SOAR, playbook automation, security automation, SOAR play
   Reason: "SOAR automation request."
 
 State: User asks about threat intelligence, CTI, threat feed, IoC, TTP, threat actor, MITRE ATT&CK, OSINT, threat intel lifecycle.
-  Route: [threat-intelligence](../../Security/threat-intelligence/SKILL.md)
+  Route: [threat-intelligence](../../Security/incident-response/threat-intelligence/SKILL.md)
   Reason: "Threat intelligence request."
 
 State: User asks about EDR, XDR, endpoint detection, endpoint response, CrowdStrike, Defender, SentinelOne, endpoint security.
-  Route: [edr-xdr](../../Security/edr-xdr/SKILL.md)
+  Route: [edr-xdr](../../Security/incident-response/edr-xdr/SKILL.md)
   Reason: "EDR/XDR request."
 
 State: User asks about authentication, authorization, JWT, OAuth, SSO, RBAC.
-  Route: [backend-auth-patterns](../../Security/auth-patterns/SKILL.md)
+  Route: [backend-auth-patterns](../../Security/identity-access/auth-patterns/SKILL.md)
   Reason: "Authentication and authorization patterns request."
 
 State: User asks about clean architecture, hexagonal, onion, ports and adapters, dependency rule.
@@ -1195,7 +1195,7 @@ State: User asks about offline-first, offline sync, connectivity.
   Reason: "Offline-first request."
 
 State: User asks about biometrics, Face ID, fingerprint, local auth.
-  Route: [mobile-biometrics](../../Security/biometrics/SKILL.md)
+  Route: [mobile-biometrics](../../Security/identity-access/biometrics/SKILL.md)
   Reason: "Biometrics request."
 
 State: User asks about maps, location, GPS, map integration.
@@ -1267,7 +1267,7 @@ State: User asks about sprint retro, retrospective, retro.
   Reason: "Sprint retro request."
 
 State: User asks about risk management, risk register, risk assessment.
-  Route: [management-risk-management](../../Security/risk-management/SKILL.md)
+  Route: [management-risk-management](../../Security/common/risk-management/SKILL.md)
   Reason: "Risk management request."
 
 State: User asks about roadmap, product roadmap, feature roadmap.
@@ -1315,7 +1315,7 @@ State: User asks about legacy migration, strangler fig, system migration.
   Reason: "Legacy migration request."
 
 State: User asks about identity provider, IdP, SSO, SAML, OIDC, Keycloak.
-  Route: [enterprise-identity-provider](../../Security/identity-provider/SKILL.md)
+  Route: [enterprise-identity-provider](../../Security/identity-access/identity-provider/SKILL.md)
   Reason: "Identity provider request."
 
 State: User asks about cost governance, cloud cost, FinOps, budget management.
@@ -1379,14 +1379,14 @@ State: User asks about AI evaluation, LLM eval, RAGAS, hallucination test.
   Reason: "AI evaluation request."
 
 State: User asks about SAST, DAST, static analysis, Semgrep, SonarQube, code scanning.
-  Route: [security-sast-dast](../../Security/sast-dast/SKILL.md)
+  Route: [security-sast-dast](../../Security/scanning/sast-dast/SKILL.md)
   Reason: "SAST/DAST request."
 
 State: User asks about SBOM, software bill of materials, supply chain security.
-  Route: [security-sbom](../../Security/sbom/SKILL.md)
+  Route: [security-sbom](../../Security/supply-chain/sbom/SKILL.md)
   Reason: "SBOM request."
 
-State: User asks about secrets management, secret scanning, GitLeaks, [vault](../../Security/vault/SKILL.md).
+State: User asks about secrets management, secret scanning, GitLeaks, [vault](../../Security/cryptography-secrets/vault/SKILL.md).
   Route: security-[secrets-management](../../cloud/common/security/secrets-management/SKILL.md)
   Reason: "Secrets management request."
 
@@ -1395,7 +1395,7 @@ State: User asks about container security, image scanning, Trivy, admission cont
   Reason: "Container security request."
 
 State: User asks about API security, OWASP API top 10, rate limiting.
-  Route: [security-api-security](../../Security/api-security/SKILL.md)
+  Route: [security-api-security](../../Security/app-security/api-security/SKILL.md)
   Reason: "API security request."
 
 State: User asks about ETL, data pipeline, Airflow, dbt, data transformation.

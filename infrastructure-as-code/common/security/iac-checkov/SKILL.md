@@ -559,7 +559,7 @@ python3 scripts/checkov_scan.py \
   --compliance CIS,PCI-DSS
 ```
 
-### Pattern 3: [Policy-as-Code](../../../../Security/policy-as-code/SKILL.md) Repository
+### Pattern 3: [Policy-as-Code](../../../../Security/policy-as-code/policy-as-code/SKILL.md) Repository
 
 Maintain centralized policy repository:
 

@@ -77,7 +77,7 @@ misconfiguration before hours or days of compute are wasted.
   for TensorFlow) to add in-job fail-fast checks.
 - If enforcing validation via admission policy: OPA Gatekeeper or Kyverno
   already installed in the cluster — see
-  [opa-gatekeeper-policy-authoring](../../../policy-and-governance-tooling/skills/[opa-gatekeeper-policy-authoring](../../../Security/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md).
+  [opa-gatekeeper-policy-authoring](../../../../Security/policy-as-code/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md).
 
 ## Step-by-step guidance
 
@@ -380,4 +380,4 @@ Corrected manifest adds the missing `limits`:
 - [training-pipeline-orchestration](../[training-pipeline-orchestration](../../../AI_and_Agents/Models_and_FineTuning/training-pipeline-orchestration/SKILL.md)/SKILL.md) — where GPU resource requests should be templated consistently across pipeline steps rather than hand-copied per job.
 - [kubeflow-[ml-pipeline](../../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../[kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../../Containers_and_Orchestration/kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md) and [ray-distributed-ml-orchestration](../[ray-distributed-ml-orchestration](../../../Data_Engineering/ray-distributed-ml-orchestration/SKILL.md)/SKILL.md) — orchestrators whose component/task GPU resource declarations should be validated with this checklist before a pipeline run.
 - [pod-crashloop-and-oom-troubleshooting](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[pod-crashloop-and-oom-troubleshooting](../../../../containers-orchestration/kubernetes/troubleshooting/pod-crashloop-and-oom-troubleshooting/SKILL.md)/SKILL.md) — general [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) pod failure diagnosis, complementary when a GPU pod fails outright rather than silently falling back.
-- [opa-gatekeeper-policy-authoring](../../../policy-and-governance-tooling/skills/[opa-gatekeeper-policy-authoring](../../../Security/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md) — authoring the admission-time policies referenced in step 7 as OPA/Rego instead of Kyverno.
+- [opa-gatekeeper-policy-authoring](../../../../Security/policy-as-code/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md) — authoring the admission-time policies referenced in step 7 as OPA/Rego instead of Kyverno.

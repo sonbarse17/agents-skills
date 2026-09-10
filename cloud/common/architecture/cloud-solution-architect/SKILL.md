@@ -42,7 +42,7 @@ Design well-architected, production-grade cloud systems following Azure Architec
 | 5 | **Partition around limits** | Data partitioning (shard/hash/range), respect compute & network limits, use CDNs for static content |
 | 6 | **Design for operations** | Structured logging, distributed tracing, metrics & [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) automation, infrastructure as code |
 | 7 | **Use managed services** | Prefer PaaS over IaaS, reduce operational burden, leverage built-in HA/DR/scaling |
-| 8 | **Use an identity service** | Microsoft Entra ID, managed identity, RBAC, avoid storing credentials, [zero-trust](../../../../Security/zero-trust/SKILL.md) principles |
+| 8 | **Use an identity service** | Microsoft Entra ID, managed identity, RBAC, avoid storing credentials, [zero-trust](../../../../Security/identity-access/zero-trust/SKILL.md) principles |
 | 9 | **Design for evolution** | Loose coupling, versioned APIs, backward compatibility, async messaging for integration, feature flags |
 | 10 | **Build for business needs** | Define SLAs/SLOs, establish RTO/RPO targets, domain-driven design, cost modeling, composite SLAs |
 
@@ -222,7 +222,7 @@ For workloads targeting **99.99%+ SLO**, address these design areas:
 | **Data platform** | Multi-region Cosmos DB, zone-redundant SQL, async replication, conflict resolution |
 | **Deployment & testing** | Blue-green deployments, canary releases, chaos engineering, automated rollback |
 | **Health modeling** | Composite health scores, dependency health tracking, automated remediation, SLI [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) |
-| **Security** | [Zero-trust](../../../../Security/zero-trust/SKILL.md), managed identity everywhere, key rotation, WAF policies, threat modeling |
+| **Security** | [Zero-trust](../../../../Security/identity-access/zero-trust/SKILL.md), managed identity everywhere, key rotation, WAF policies, threat modeling |
 | **Operational procedures** | Automated [runbooks](../../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md), [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response playbooks, game days, postmortems |
 
 See [Mission-Critical Reference](../../../../Global_References/mission-critical.md) for detailed guidance.
@@ -285,7 +285,7 @@ Select relevant patterns from the 44 cloud design patterns based on identified c
 
 - **Identity & access** — Microsoft Entra ID, managed identity, RBAC
 - **[Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)** — Application Insights, Azure Monitor, Log Analytics
-- **Security** — Network segmentation, encryption at rest/in transit, Key [Vault](../../../../Security/vault/SKILL.md)
+- **Security** — Network segmentation, encryption at rest/in transit, Key [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md)
 - **CI/CD** — [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions, Azure DevOps Pipelines, infrastructure as code
 
 ### Step 6: Validate Against WAF Pillars

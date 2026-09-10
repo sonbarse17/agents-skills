@@ -70,7 +70,7 @@ click deploy" in one sentence, the platform has hidden something it shouldn't ha
   [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) YAML the platform produced.
 - **Keep debugging primitives available**: logs, `[kubectl](../../containers-orchestration/kubernetes/other/kubectl/SKILL.md)`, and direct dashboard access should
   never require a platform-team ticket to reach.
-- **Never abstract security boundaries** into invisibility — see `[policy-as-code](../../Security/policy-as-code/SKILL.md)` for keeping
+- **Never abstract security boundaries** into invisibility — see `[policy-as-code](../../Security/policy-as-code/policy-as-code/SKILL.md)` for keeping
   guardrails legible instead of magic.
 
 **Done when:** a developer can explain what infrastructure their service actually runs on without

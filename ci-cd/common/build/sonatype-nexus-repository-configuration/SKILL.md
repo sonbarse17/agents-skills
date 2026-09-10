@@ -344,7 +344,7 @@ addition transparent to every existing consumer.
 
 ## Cross-references
 
-- [jfrog-artifactory-configuration](../[jfrog-artifactory-configuration](../jfrog-artifactory-configuration/SKILL.md)/SKILL.md) — the comparable commercial alternative, including where Artifactory's repository model and Xray [security-scanning](../../../../Security/security-scanning/SKILL.md) integration differ from Nexus's approach.
+- [jfrog-artifactory-configuration](../[jfrog-artifactory-configuration](../jfrog-artifactory-configuration/SKILL.md)/SKILL.md) — the comparable commercial alternative, including where Artifactory's repository model and Xray [security-scanning](../../../../Security/scanning/security-scanning/SKILL.md) integration differ from Nexus's approach.
 - [artifact-and-dependency-management](../[artifact-and-dependency-management](../../Frontend/artifact-and-[dependency-management](../dependency-management/SKILL.md)/SKILL.md)/SKILL.md) — the vendor-neutral concepts (why a private registry matters, lockfile discipline, retention policy design, publish/read credential separation) that this skill implements concretely in Nexus.
 - [container-build-and-release](../[container-build-and-release](../../../DevOps_and_Cloud/Containers_and_Orchestration/container-build-and-release/SKILL.md)/SKILL.md) — the container build workflow that publishes to a [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) hosted repository configured here.
 - [ci-cd-pipeline-design](../[ci-cd-pipeline-design](../../../DevOps_and_Cloud/CI_CD/ci-cd-pipeline-design/SKILL.md)/SKILL.md) — where registry configuration fits into the broader build/publish pipeline stage sequence.

@@ -401,5 +401,5 @@ if __name__ == "__main__":
 ## Related Skills
 
 - [github-actions](../../ci-cd/[github-actions](../../../DevOps_and_Cloud/CI_CD/[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-actions/SKILL.md)/) — Eval automation in CI
-- [ai-agent-security](../../../security/ai/[ai-agent-security](../../../Security/ai-agent-security/SKILL.md)/) — Security-focused eval cases
+- [ai-agent-security](../../../Security/ai-security/ai-agent-security/SKILL.md)/) — Security-focused eval cases
 - [agent-observability](../[agent-observability](../../Operations/agent-[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)/) — Production quality [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)

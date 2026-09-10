@@ -74,7 +74,7 @@ correctly.
   to, stored as secrets in your secrets manager and injected into the
   gateway's runtime — never committed to the gateway's config file in
   plaintext (see
-  [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md)).
+  [secrets-management](../../../Security/common/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md)).
 - A decision on gateway placement: a managed SaaS gateway (Portkey,
   OpenRouter) that calls providers on your behalf, versus a self-hosted
   proxy (LiteLLM proxy, or an internal equivalent) that you deploy and
@@ -265,7 +265,7 @@ correctly.
 - Store every provider credential as a secret injected at runtime, and
   rotate gateway-held credentials on the same cadence as any other
   production API key (see
-  [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md)).
+  [secrets-management](../../../Security/common/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md)).
 - Treat a self-hosted gateway (LiteLLM proxy or equivalent) as a
   production service in its own right — give it its own health checks,
   its own on-call visibility, and redundancy, since it now sits on the
@@ -382,5 +382,5 @@ directly instead of silently failing every downstream agent.
 - [llm-cost-and-latency-optimization](../[llm-cost-and-latency-optimization](../llm-cost-and-latency-optimization/SKILL.md)/SKILL.md) — the deliberate cost/latency tuning layer above routing; this skill only covers moving traffic between providers, not shrinking what's sent per call.
 - [agent-cost-and-latency-spike-investigation](../[agent-cost-and-latency-spike-investigation](../../Workflows/agent-cost-and-latency-spike-investigation/SKILL.md)/SKILL.md) — the fast-triage workflow to run when a spike is provider- or routing-correlated rather than workflow-specific.
 - [agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md) — where gateway placement fits into an agent system's overall architecture.
-- [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md) — storing and rotating the provider credentials a gateway holds.
+- [secrets-management](../../../Security/common/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md) — storing and rotating the provider credentials a gateway holds.
 - [prometheus-and-grafana-[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md) — wiring the gateway's routing/cost/error metrics into [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) and alerts.

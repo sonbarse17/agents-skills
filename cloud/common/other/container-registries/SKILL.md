@@ -78,7 +78,7 @@ Configure in [Docker](../../../../containers-orchestration/docker/other/docker/S
 # Create repository
 aws ecr create-repository \
   --repository-name myapp \
-  --[image-scanning](../../../../Security/image-scanning/SKILL.md)-configuration scanOnPush=true \
+  --[image-scanning](../../../../Security/scanning/image-scanning/SKILL.md)-configuration scanOnPush=true \
   --encryption-configuration encryptionType=AES256
 
 # Get registry URI
@@ -358,9 +358,9 @@ tar xzvf harbor-online-installer-v2.9.0.tgz
 
 ```bash
 # ECR - Enable scan on push
-aws ecr put-[image-scanning](../../../../Security/image-scanning/SKILL.md)-configuration \
+aws ecr put-[image-scanning](../../../../Security/scanning/image-scanning/SKILL.md)-configuration \
   --repository-name myapp \
-  --[image-scanning](../../../../Security/image-scanning/SKILL.md)-configuration scanOnPush=true
+  --[image-scanning](../../../../Security/scanning/image-scanning/SKILL.md)-configuration scanOnPush=true
 
 # Get scan results
 aws ecr describe-image-scan-findings \

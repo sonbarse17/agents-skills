@@ -78,9 +78,9 @@ reintroduce direct cluster credentials into CI.
 - Write access (a bot/service account, ideally opening a PR rather than
   pushing directly) from the application repo's CI to the config repo.
 - SAST/SCA tooling chosen per
-  [sast-integration](../../../../Security/devsecops/SKILL.md)/skills/[sast-integration](../../../../Security/sast-integration/SKILL.md)/SKILL.md)
+  [sast-integration](../../../../Security/common/devsecops/SKILL.md)/skills/[sast-integration](../../../../Security/scanning/sast-integration/SKILL.md)/SKILL.md)
   and
-  [software-composition-analysis-sca](../../../../Security/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../../Security/software-composition-analysis-sca/SKILL.md)/SKILL.md).
+  [software-composition-analysis-sca](../../../../Security/common/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../../Security/scanning/software-composition-analysis-sca/SKILL.md)/SKILL.md).
 
 ## Step-by-step guidance
 
@@ -106,9 +106,9 @@ machine image, not a container layer).
 ### Phase 3 — SAST and SCA gates, scoped to the diff
 
 Per
-[sast-integration](../../../../Security/devsecops/SKILL.md)/skills/[sast-integration](../../../../Security/sast-integration/SKILL.md)/SKILL.md)
+[sast-integration](../../../../Security/common/devsecops/SKILL.md)/skills/[sast-integration](../../../../Security/scanning/sast-integration/SKILL.md)/SKILL.md)
 and
-[software-composition-analysis-sca](../../../../Security/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../../Security/software-composition-analysis-sca/SKILL.md)/SKILL.md),
+[software-composition-analysis-sca](../../../../Security/common/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../../Security/scanning/software-composition-analysis-sca/SKILL.md)/SKILL.md),
 run diff-aware static analysis and a dependency/lockfile scan **before**
 the image is pushed anywhere — failing fast on a critical finding before
 spending registry storage and pipeline minutes on an image that won't
@@ -150,7 +150,7 @@ Only after Phase 3 passes:
             ghcr.io/example/payments-api:${{ [github](../../../../ci-cd/github-actions/other/github/SKILL.md).sha }}
 ```
 A follow-on image scan (per
-[software-composition-analysis-sca](../../../../Security/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../../Security/software-composition-analysis-sca/SKILL.md)/SKILL.md)'s
+[software-composition-analysis-sca](../../../../Security/common/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../../Security/scanning/software-composition-analysis-sca/SKILL.md)/SKILL.md)'s
 container-image scanning step) on the pushed digest catches base-image
 CVEs the filesystem scan in Phase 3 couldn't see.
 
@@ -215,7 +215,7 @@ notification wired from Argo CD/Flux) for the actual rollout outcome.
 - Keep the "update manifests" step's credential (a fine-grained PAT or
   deploy key scoped to one repo) rotated and audited exactly like any
   other CI secret, per
-  [secrets-management](../../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../security/secrets-management/SKILL.md)/SKILL.md).
+  [secrets-management](../../../../Security/common/devsecops/SKILL.md)/skills/[secrets-management](../../security/secrets-management/SKILL.md)/SKILL.md).
 
 ## Common pitfalls
 
@@ -324,9 +324,9 @@ the CI pipeline itself never held a cluster credential at any point.
 ## Cross-references
 
 - [container-build-and-release](../../../devops/skills/[container-build-and-release](../../Containers_and_Orchestration/container-build-and-release/SKILL.md)/SKILL.md) — Dockerfile/image-build mechanics used in Phase 2.
-- [sast-integration](../../../../Security/devsecops/SKILL.md)/skills/[sast-integration](../../../../Security/sast-integration/SKILL.md)/SKILL.md) and [software-composition-analysis-sca](../../../../Security/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../../Security/software-composition-analysis-sca/SKILL.md)/SKILL.md) — the Phase 3 scan mechanics.
+- [sast-integration](../../../../Security/common/devsecops/SKILL.md)/skills/[sast-integration](../../../../Security/scanning/sast-integration/SKILL.md)/SKILL.md) and [software-composition-analysis-sca](../../../../Security/common/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../../Security/scanning/software-composition-analysis-sca/SKILL.md)/SKILL.md) — the Phase 3 scan mechanics.
 - [github-actions-single-repo-workflows](../[github-actions-single-repo-workflows](../../CI_CD/[github-actions](../../CI_CD/[github](../../CI_CD/github/SKILL.md)-actions/SKILL.md)-single-repo-workflows/SKILL.md)/SKILL.md) and [jenkins-declarative-pipeline-per-repo](../[jenkins-declarative-pipeline-per-repo](../../CI_CD/[jenkins](../../CI_CD/jenkins/SKILL.md)-declarative-pipeline-per-repo/SKILL.md)/SKILL.md) — the concrete pipeline-authoring syntax this skill sequences.
 - [gitops-workflow](../../../devops/skills/[gitops-workflow](../../Containers_and_Orchestration/[gitops](../../Containers_and_Orchestration/gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md) — the [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md) handoff concept Phase 5 implements.
 - [argocd-application-configuration](../../../[gitops](../../Containers_and_Orchestration/gitops/SKILL.md)-argo-ecosystem/skills/[argocd-application-configuration](../../Containers_and_Orchestration/[argocd](../../Containers_and_Orchestration/argocd/SKILL.md)-application-configuration/SKILL.md)/SKILL.md) — the operator-side reconciliation that consumes this pipeline's manifests-repo [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md).
-- [secure-cicd-gates](../../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — orchestrating the Phase 3 gates alongside other security checks without duplication.
+- [secure-cicd-gates](../../../../Security/common/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../../Security/app-security/secure-cicd-gates/SKILL.md)/SKILL.md) — orchestrating the Phase 3 gates alongside other security checks without duplication.
 - [complete-[cicd-pipeline](../../../../ci-cd/common/pipeline-design/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-from-scratch](../[complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-from-scratch](../complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-from-scratch/SKILL.md)/SKILL.md) and [complete-[cicd-pipeline](../../../../ci-cd/common/pipeline-design/cicd-pipeline/SKILL.md)-for-vm-based-workloads-from-scratch](../[complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-for-vm-based-workloads-from-scratch](../../CI_CD/complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-for-vm-based-workloads-from-scratch/SKILL.md)/SKILL.md) — the same source-to-deploy shape for a fundamentally different build artifact and deploy mechanism.

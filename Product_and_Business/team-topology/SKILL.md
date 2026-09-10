@@ -576,7 +576,7 @@ For OKR alignment with team topology, hand off to [management-okr-kpi](../okr-kp
 
 ### Team Security
 - **Access control**: Implement team-based IAM roles. Follow least-privilege for cross-team access.
-- **Secrets management**: Each team manages its own secrets. No cross-team secret sharing without [vault](../../Security/vault/SKILL.md)-based access.
+- **Secrets management**: Each team manages its own secrets. No cross-team secret sharing without [vault](../../Security/cryptography-secrets/vault/SKILL.md)-based access.
 - **Security champions**: Designate security champion per team. Champion attends security guild and disseminates practices.
 
 ### Cross-Team Security

@@ -543,7 +543,7 @@ Check [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) → lint SQL (sq
 - Document all design decisions and trade-offs in ADRs.
 
 ## References
-  - ../../../Global_References/data-[vault](../../Security/vault/SKILL.md)-patterns.md — Data [Vault](../../Security/vault/SKILL.md) Patterns
+  - ../../../Global_References/data-[vault](../../Security/cryptography-secrets/vault/SKILL.md)-patterns.md — Data [Vault](../../Security/cryptography-secrets/vault/SKILL.md) Patterns
   - ../../../Global_References/dimensional-modeling.md — Dimensional Modeling
   - ../../../Global_References/domain-driven-data-modeling.md — Domain-Driven Data Modeling
   - ../../../Global_References/data-modeling_graph-modeling.md — Graph Modeling

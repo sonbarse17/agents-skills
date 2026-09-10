@@ -579,7 +579,7 @@ async function createOrderWithItems(orderData: OrderInput, items: ItemInput[]) {
 - SQL injection: Drizzle parameterizes all queries. Never use `sql` template tag with user input.
 - Input validation: Zod schemas before passing to Drizzle. Validate types and constraints.
 - Connection encryption: `ssl: true` for production. Reject unauthorized certs.
-- Credential management: environment variables or [vault](../../../../Security/vault/SKILL.md). Never in code or config files.
+- Credential management: environment variables or [vault](../../../../Security/cryptography-secrets/vault/SKILL.md). Never in code or config files.
 - Row-level security: enable via `sql` template with tenant context. Enforce per query.
 - [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging: trigger-based tracking for sensitive tables. Log all mutations.
 - Schema access: read-only user for reports. Separate migration user. Least privilege.
@@ -620,7 +620,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager ([Vault](../../../../Security/vault/SKILL.md), AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../../../Security/cryptography-secrets/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
 - Access [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets

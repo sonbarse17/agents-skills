@@ -415,7 +415,7 @@ Estimated time: 3-5 minutes
 ### Tools Reference
 - Terraform for tenant infrastructure provisioning
 - [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) with tenant namespaces for compute isolation
-- AWS KMS / Azure Key [Vault](../../../../Security/vault/SKILL.md) for per-tenant encryption key management
+- AWS KMS / Azure Key [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md) for per-tenant encryption key management
 - [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md) Row-Level Security for database isolation
 - Redis with tenant key prefixes for cache isolation
 - Kong / APISIX for API gateway tenant routing

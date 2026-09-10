@@ -145,7 +145,7 @@ Standup: same time daily, same platform, same format (yesterday/today/blocks), â
 | EM | Provision access, assign buddy | Welcome, team intro | Weekly 1:1 | Normal cadence |
 | Buddy | Block calendar, prepare pairing | Pair on setup + walkthrough | Pair on first PR, daily check-in | Async, tapering |
 | Tech Lead | Prepare arch walkthrough | Architecture tour (60 min) | Review first PR | Normal rotation |
-| DevOps | Verify IAM, [vault](../../../../Security/vault/SKILL.md) access | Unblock setup issues | Monitor access needs | On-call shadowing |
+| DevOps | Verify IAM, [vault](../../../../Security/cryptography-secrets/vault/SKILL.md) access | Unblock setup issues | Monitor access needs | On-call shadowing |
 | New Dev | Read project docs | Setup, first test run | First PR merged | First independent ticket |
 
 ## Rules

@@ -43,7 +43,7 @@ and check it against a large ruleset of cloud-security best practices. This
 is a narrower, IaC-specific scope than Snyk's multi-product platform
 (`snyk iac test` covers similar ground as one of three Snyk scan types
 alongside dependency and container scanning — see
-[snyk-vulnerability-and-license-scanning](../[snyk-vulnerability-and-license-scanning](../../../Security/snyk-vulnerability-and-license-scanning/SKILL.md)/SKILL.md))
+[snyk-vulnerability-and-license-scanning](../../../../Security/scanning/snyk-vulnerability-and-license-scanning/SKILL.md)/SKILL.md))
 and a different concern entirely from generic dependency scanning (see
 [software-composition-analysis-sca](../[software-composition-analysis-sca](../../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md)):
 Checkov/tfsec don't care what packages your application depends on, only
@@ -92,7 +92,7 @@ full per-seat licensing for that purpose alone.
 - A defined severity threshold and a documented suppression policy (who can
   approve a suppression, with what justification and expiry) agreed before
   wiring a hard PR-blocking gate — the same prerequisite called out in
-  [snyk-vulnerability-and-license-scanning](../[snyk-vulnerability-and-license-scanning](../../../Security/snyk-vulnerability-and-license-scanning/SKILL.md)/SKILL.md)
+  [snyk-vulnerability-and-license-scanning](../../../../Security/scanning/snyk-vulnerability-and-license-scanning/SKILL.md)/SKILL.md)
   applies here: an unowned gate either blocks everything or is routed
   around entirely.
 - CI runner with no cloud credentials required for the scan step itself
@@ -155,7 +155,7 @@ full per-seat licensing for that purpose alone.
    actual blocking gate long-term — two blocking scanners with no
    severity-reconciliation rule produces the same "which gate do we trust"
    confusion described in
-   [snyk-vulnerability-and-license-scanning](../[snyk-vulnerability-and-license-scanning](../../../Security/snyk-vulnerability-and-license-scanning/SKILL.md)/SKILL.md).
+   [snyk-vulnerability-and-license-scanning](../../../../Security/scanning/snyk-vulnerability-and-license-scanning/SKILL.md)/SKILL.md).
 
 4. **Suppress a specific finding with justification and an ID-scoped
    inline comment**, never a directory-wide skip, in Checkov:
@@ -227,7 +227,7 @@ full per-seat licensing for that purpose alone.
 - Treat a Checkov/tfsec finding the same as any other security finding for
   triage purposes — feed it into the same backlog/severity process as
   SAST/DAST/SCA findings (see
-  [secure-cicd-gates](../[secure-cicd-gates](../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md)) rather than running
+  [secure-cicd-gates](../../../../Security/app-security/secure-cicd-gates/SKILL.md)/SKILL.md)) rather than running
   IaC scanning as an isolated, disconnected process nobody else on the
   security team sees.
 - Require every suppression to carry an explicit reason and a reviewer,
@@ -292,7 +292,7 @@ full per-seat licensing for that purpose alone.
   as complementary, reconciling differences manually) rather than treating
   disagreement as a bug in either tool; the same reconciliation principle
   applies across any pair of security scanners per
-  [snyk-vulnerability-and-license-scanning](../[snyk-vulnerability-and-license-scanning](../../../Security/snyk-vulnerability-and-license-scanning/SKILL.md)/SKILL.md).
+  [snyk-vulnerability-and-license-scanning](../../../../Security/scanning/snyk-vulnerability-and-license-scanning/SKILL.md)/SKILL.md).
 
 - **Symptom:** A previously-passing pipeline starts failing a Checkov/tfsec
   scan after a routine scanner version bump, with no infrastructure change.
@@ -372,8 +372,8 @@ before provisioning.
 
 ## Cross-references
 
-- [snyk-vulnerability-and-license-scanning](../[snyk-vulnerability-and-license-scanning](../../../Security/snyk-vulnerability-and-license-scanning/SKILL.md)/SKILL.md) — Snyk IaC covers similar misconfiguration ground as one of Snyk's three scan types under one commercial platform/license; compare against Checkov/tfsec's free, dedicated, IaC-only scope when per-seat licensing for a broader platform isn't justified by IaC scanning alone.
+- [snyk-vulnerability-and-license-scanning](../../../../Security/scanning/snyk-vulnerability-and-license-scanning/SKILL.md)/SKILL.md) — Snyk IaC covers similar misconfiguration ground as one of Snyk's three scan types under one commercial platform/license; compare against Checkov/tfsec's free, dedicated, IaC-only scope when per-seat licensing for a broader platform isn't justified by IaC scanning alone.
 - [software-composition-analysis-sca](../[software-composition-analysis-sca](../../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md) — a different finding class entirely (known-vulnerable third-party dependencies) from IaC misconfiguration; the two are complementary, not overlapping.
-- [sast-integration](../[sast-integration](../../../Security/sast-integration/SKILL.md)/SKILL.md) — analyzes your own application source code for vulnerability patterns, a different target than the infrastructure definitions Checkov/tfsec scan.
-- [secure-cicd-gates](../[secure-cicd-gates](../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — combining IaC scanning with SAST/DAST/SCA into one coherent pipeline gate and triage workflow rather than a standalone, disconnected process.
+- [sast-integration](../../../../Security/scanning/sast-integration/SKILL.md)/SKILL.md) — analyzes your own application source code for vulnerability patterns, a different target than the infrastructure definitions Checkov/tfsec scan.
+- [secure-cicd-gates](../../../../Security/app-security/secure-cicd-gates/SKILL.md)/SKILL.md) — combining IaC scanning with SAST/DAST/SCA into one coherent pipeline gate and triage workflow rather than a standalone, disconnected process.
 - [infrastructure-as-code-terraform](../../../devops/skills/[infrastructure-as-code-terraform](../[infrastructure-as-code](../infrastructure-as-code/SKILL.md)-terraform/SKILL.md)/SKILL.md) — the Terraform authoring workflow (modules, state, plan review) that Checkov/tfsec scan; this skill doesn't repeat Terraform structuring guidance.

@@ -336,5 +336,5 @@ volumes. A daily Velero `Schedule` backup exists.
 ## Cross-references
 
 - [prometheus-and-grafana-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack](../prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
-- [kubernetes-network-policy-zero-trust](../[kubernetes-network-policy-zero-trust](../[kubernetes](../kubernetes/SKILL.md)-network-policy-[zero-trust](../../../../Security/zero-trust/SKILL.md)/SKILL.md)/SKILL.md)
+- [kubernetes-network-policy-zero-trust](../[kubernetes-network-policy-zero-trust](../[kubernetes](../kubernetes/SKILL.md)-network-policy-[zero-trust](../../../../Security/identity-access/zero-trust/SKILL.md)/SKILL.md)/SKILL.md)
 - [disaster-recovery-and-backup-strategy](../../../cloud/skills/[disaster-recovery-and-backup-strategy](../../Cloud_Providers/[disaster-recovery](../../Observability_and_SecOps/disaster-recovery/SKILL.md)-and-backup-strategy/SKILL.md)/SKILL.md)

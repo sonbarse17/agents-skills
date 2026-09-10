@@ -75,7 +75,7 @@ types/classes, and Resource Graph diffing for Resource Definition changes.
 - A policy engine for org-specific rules beyond the base schema — Conftest
   (Open Policy Agent) is the common choice for checking YAML/JSON against
   Rego policies in CI; see
-  [opa-gatekeeper-policy-authoring](../../../policy-and-governance-tooling/skills/[opa-gatekeeper-policy-authoring](../../../Security/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md)
+  [opa-gatekeeper-policy-authoring](../../../../Security/policy-as-code/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md)
   for Rego authoring if the org already runs Gatekeeper for [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md)
   admission and wants to reuse the same policy language.
 - A non-production Humanitec Environment (e.g. `ci-validate`) with a full
@@ -322,4 +322,4 @@ changing the existing `postgres-[aws-rds](../../../../cloud/aws/database/aws-rds
 
 - [humanitec-score-workload-specification](../humanitec-score-workload-specification/SKILL.md)/SKILL.md) — the `score.yaml` authoring practices and Resource Definition binding model this validation layer checks against.
 - [golden-path-template-validation-and-testing](../[golden-path-template-validation-and-testing](../golden-path-template-validation-and-testing/SKILL.md)/SKILL.md) — the equivalent end-to-end validation discipline applied to golden-path scaffolding templates rather than a single Score spec.
-- [opa-gatekeeper-policy-authoring](../../../policy-and-governance-tooling/skills/[opa-gatekeeper-policy-authoring](../../../Security/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md) — Rego policy-authoring detail if the org wants to share policy logic between Score-spec validation and [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) admission control.
+- [opa-gatekeeper-policy-authoring](../../../../Security/policy-as-code/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md) — Rego policy-authoring detail if the org wants to share policy logic between Score-spec validation and [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) admission control.

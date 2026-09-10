@@ -225,7 +225,7 @@ platform access matches its infrastructure access.
    leaves a real gap.
 
 6. **Scope secrets per namespace and per tenant in whatever secret store
-   backs the cluster** ([Vault](../../../../Security/vault/SKILL.md), cloud KMS-backed secret managers,
+   backs the cluster** ([Vault](../../../../Security/cryptography-secrets/vault/SKILL.md), cloud KMS-backed secret managers,
    sealed-secrets) — a secrets engine path convention like
    `secret/data/<team>/<environment>/*` with policies scoped to match, so
    a namespace's RBAC boundary and its secrets-access boundary are the

@@ -48,7 +48,7 @@ pre-built ones from the community Kubewarden Policy Hub instead of
 writing one from scratch), the `ClusterAdmissionPolicy`/`AdmissionPolicy`
 CRDs, monitor-mode rollout before enforcing, and — critically — where
 Kubewarden fits relative to
-[opa-gatekeeper-policy-authoring](../../../policy-and-governance-tooling/skills/[opa-gatekeeper-policy-authoring](../../../Security/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md)
+[opa-gatekeeper-policy-authoring](../../../../Security/policy-as-code/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md)
 and
 [kyverno-policy-management](../../../policy-and-governance-tooling/skills/[kyverno-policy-management](../kyverno-policy-management/SKILL.md)/SKILL.md),
 which solve the same admission-control problem with different authoring
@@ -279,7 +279,7 @@ and distribution models.
   genuinely benefits from real language constructs (external libraries,
   complex control flow) that are awkward in either alternative. Choose
   OPA/Gatekeeper
-  ([opa-gatekeeper-policy-authoring](../../../policy-and-governance-tooling/skills/[opa-gatekeeper-policy-authoring](../../../Security/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md))
+  ([opa-gatekeeper-policy-authoring](../../../../Security/policy-as-code/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md))
   when the org needs the same policy engine to also gate non-[Kubernetes](../../other/kubernetes/SKILL.md)
   artifacts (Terraform plans via Conftest) or has already standardized
   on Rego. Choose Kyverno
@@ -416,7 +416,7 @@ reviewed update to the `module` field.
 
 ## Cross-references
 
-- [opa-gatekeeper-policy-authoring](../../../policy-and-governance-tooling/skills/[opa-gatekeeper-policy-authoring](../../../Security/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md) —
+- [opa-gatekeeper-policy-authoring](../../../../Security/policy-as-code/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md) —
   the Rego-based alternative engine; read this to compare authoring
   model and rollout discipline (both share the [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-before-enforce
   pattern) when deciding between the two for a given team.
@@ -428,6 +428,6 @@ reviewed update to the `module` field.
   admission-time policy enforcement — a resource that passes a
   Kubewarden policy can still misbehave at runtime, which Falco is
   positioned to catch.
-- [falco-configuration-validation](../../../../Security/falco-configuration-validation/SKILL.md)/SKILL.md) —
+- [falco-configuration-validation](../../../../Security/incident-response/falco-configuration-validation/SKILL.md)/SKILL.md) —
   the same [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-before-enforce validation philosophy applied to Falco
   rules instead of admission policy.

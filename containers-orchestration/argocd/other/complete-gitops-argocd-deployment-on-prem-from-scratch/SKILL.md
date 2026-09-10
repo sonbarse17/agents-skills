@@ -40,7 +40,7 @@ self-managed or [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bar
 there is no cloud STS to federate against. This is the genuine mechanical
 difference this skill exists to cover: cluster access has to fall back to
 [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md)-native `ServiceAccount` tokens and RBAC, ideally made
-short-lived via HashiCorp [Vault](../../../../Security/vault/SKILL.md)'s [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) secrets engine rather than a
+short-lived via HashiCorp [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md)'s [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) secrets engine rather than a
 permanent bearer token; private registry authentication needs an
 explicit `imagePullSecret`/credential-helper flow instead of an IRSA/
 Workload-Identity-backed pull; and the Ingress/TLS layer needs a
@@ -56,7 +56,7 @@ variants and is not repeated here.
   nothing [GitOps](../../../common/gitops/gitops/SKILL.md)-related installed, needing a working Argo CD + first
   deployed app + multi-environment rollout by the end of the session, with
   no cloud provider IAM available.
-- The user explicitly wants cluster-access credentials issued by [Vault](../../../../Security/vault/SKILL.md)
+- The user explicitly wants cluster-access credentials issued by [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md)
   (short-lived) instead of a permanent [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) Secret bearer token.
 - Standing up a second/third on-prem environment (a separate physical
   cluster or air-gapped site) for a service already [GitOps](../../../common/gitops/gitops/SKILL.md)-managed
@@ -82,10 +82,10 @@ variants and is not repeated here.
 - A private container registry (Harbor, Nexus, or similar) already
   reachable from the cluster, with credentials available.
 - Optional but recommended for anything beyond a small/dev deployment: a
-  running [Vault](../../../../Security/vault/SKILL.md) cluster — see
-  [vault-operations-and-pki-engine-configuration](../../../../Security/security-scanning/SKILL.md)-tooling/skills/[vault-operations-and-pki-engine-configuration](../[vault](../../../Security/vault/SKILL.md)-operations-and-pki-engine-configuration/SKILL.md)/SKILL.md)
+  running [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md) cluster — see
+  [vault-operations-and-pki-engine-configuration](../../../../Security/scanning/security-scanning/SKILL.md)-tooling/skills/[vault-operations-and-pki-engine-configuration](../../../../Security/cryptography-secrets/vault/SKILL.md)-operations-and-pki-engine-configuration/SKILL.md)/SKILL.md)
   for standing it up, and
-  [secrets-management](../../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md)
+  [secrets-management](../../../../Security/common/devsecops/SKILL.md)/skills/[secrets-management](../../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md)
   for the general dynamic-secrets pattern this skill applies specifically
   to Argo CD's cluster-access credentials.
 - A Git repository already reachable from the cluster's network path
@@ -119,7 +119,7 @@ helm install [argocd](../argocd/SKILL.md) argo/[argo-cd](../argo-cd/SKILL.md) \
 Identical to the cloud variants — the install itself has no cloud
 dependency.
 
-### Phase 2 — Cluster access without cloud IAM: ServiceAccount + RBAC, optionally [Vault](../../../../Security/vault/SKILL.md)-issued
+### Phase 2 — Cluster access without cloud IAM: ServiceAccount + RBAC, optionally [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md)-issued
 
 There is no OIDC-federated STS token to lean on here, so cluster access
 for any *additional* destination cluster (a second physical site) falls
@@ -163,23 +163,23 @@ The naive version of this uses the ServiceAccount's long-lived token
 Secret directly in the hub's cluster registration `Secret` — functional,
 but a permanent, non-rotating credential is exactly the failure mode
 IRSA/Workload Identity exist to avoid on cloud. **Where the operational
-maturity to run [Vault](../../../../Security/vault/SKILL.md) already exists, prefer short-lived, [Vault](../../../../Security/vault/SKILL.md)-brokered
-credentials instead**: configure [Vault](../../../../Security/vault/SKILL.md)'s [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) secrets engine (or a
+maturity to run [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md) already exists, prefer short-lived, [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md)-brokered
+credentials instead**: configure [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md)'s [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) secrets engine (or a
 scheduled rotation job) to periodically mint a fresh token for
 `[argocd](../argocd/SKILL.md)-manager` and update the hub's cluster `Secret` via an External
 Secrets Operator sync rather than a token that's valid forever:
 ```bash
-[vault](../../../../Security/vault/SKILL.md) write auth/[kubernetes](../../../kubernetes/other/kubernetes/SKILL.md)/config \
+[vault](../../../../Security/cryptography-secrets/vault/SKILL.md) write auth/[kubernetes](../../../kubernetes/other/kubernetes/SKILL.md)/config \
   kubernetes_host="https://<spoke-api-server>:6443"
-[vault](../../../../Security/vault/SKILL.md) policy write [argocd](../argocd/SKILL.md)-manager-policy - <<EOF
+[vault](../../../../Security/cryptography-secrets/vault/SKILL.md) policy write [argocd](../argocd/SKILL.md)-manager-policy - <<EOF
 path "[kubernetes](../../../kubernetes/other/kubernetes/SKILL.md)/creds/[argocd](../argocd/SKILL.md)-manager" { capabilities = ["read"] }
 EOF
 ```
 See
-[vault-operations-and-pki-engine-configuration](../../../../Security/security-scanning/SKILL.md)-tooling/skills/[vault-operations-and-pki-engine-configuration](../[vault](../../../Security/vault/SKILL.md)-operations-and-pki-engine-configuration/SKILL.md)/SKILL.md)
-for standing up [Vault](../../../../Security/vault/SKILL.md)'s PKI/auth engines, and
-[sealed-secrets-and-external-secrets-operator](../../../../Security/security-scanning/SKILL.md)-tooling/skills/[sealed-secrets-and-external-secrets-operator](../../../kubernetes/security/sealed-secrets-and-external-secrets-operator/SKILL.md)/SKILL.md)
-for the `ExternalSecret` that syncs the [Vault](../../../../Security/vault/SKILL.md)-issued credential into the
+[vault-operations-and-pki-engine-configuration](../../../../Security/scanning/security-scanning/SKILL.md)-tooling/skills/[vault-operations-and-pki-engine-configuration](../../../../Security/cryptography-secrets/vault/SKILL.md)-operations-and-pki-engine-configuration/SKILL.md)/SKILL.md)
+for standing up [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md)'s PKI/auth engines, and
+[sealed-secrets-and-external-secrets-operator](../../../../Security/scanning/security-scanning/SKILL.md)-tooling/skills/[sealed-secrets-and-external-secrets-operator](../../../kubernetes/security/sealed-secrets-and-external-secrets-operator/SKILL.md)/SKILL.md)
+for the `ExternalSecret` that syncs the [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md)-issued credential into the
 hub's `[argocd](../argocd/SKILL.md)`-namespace cluster registration `Secret`.
 
 ### Phase 3 — Private registry auth and MetalLB-fronted Ingress/TLS
@@ -196,7 +196,7 @@ there is no cloud IAM-to-registry federation:
 ```
 Prefer a **Harbor robot account** (scoped to pull-only on specific
 projects) over a personal account's credentials, and source
-`HARBOR_ROBOT_TOKEN` from [Vault](../../../../Security/vault/SKILL.md)/`[secrets-management](../../../../cloud/common/security/secrets-management/SKILL.md)`, never hardcoded.
+`HARBOR_ROBOT_TOKEN` from [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md)/`[secrets-management](../../../../cloud/common/security/secrets-management/SKILL.md)`, never hardcoded.
 
 For Ingress, install
 [metallb-[bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[metallb-[bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration/SKILL.md)/SKILL.md)
@@ -206,15 +206,15 @@ then front `[argocd](../argocd/SKILL.md)-server` with
 TLS is the other on-prem-specific divergence: with no publicly resolvable
 DNS name for an ACME HTTP-01/DNS-01 challenge, issue from an **internal CA**
 via [cert-manager-tls-automation](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[cert-manager-tls-automation](../../../kubernetes/security/cert-manager-tls-automation/SKILL.md)/SKILL.md)'s
-private-CA `Issuer` pattern (backed by [Vault](../../../../Security/vault/SKILL.md)'s PKI engine, if available)
+private-CA `Issuer` pattern (backed by [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md)'s PKI engine, if available)
 instead of Let's Encrypt:
 ```yaml
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
-metadata: { name: internal-[vault](../../../../Security/vault/SKILL.md)-ca }
+metadata: { name: internal-[vault](../../../../Security/cryptography-secrets/vault/SKILL.md)-ca }
 spec:
-  [vault](../../../../Security/vault/SKILL.md):
-    server: https://[vault](../../../../Security/vault/SKILL.md).internal.example.com:8200
+  [vault](../../../../Security/cryptography-secrets/vault/SKILL.md):
+    server: https://[vault](../../../../Security/cryptography-secrets/vault/SKILL.md).internal.example.com:8200
     path: pki_int/sign/[argocd](../argocd/SKILL.md)
     auth:
       [kubernetes](../../../kubernetes/other/kubernetes/SKILL.md):
@@ -239,7 +239,7 @@ in full:
 Per [argocd-applicationset-patterns](../[argocd-applicationset-patterns](../[argocd](../argocd/SKILL.md)-applicationset-patterns/SKILL.md)/SKILL.md);
 if staging and prod are separate physical clusters/sites, use the Cluster
 generator filtered by label, with each site's registration reusing the
-ServiceAccount/RBAC (or [Vault](../../../../Security/vault/SKILL.md)-brokered) pattern from Phase 2.
+ServiceAccount/RBAC (or [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md)-brokered) pattern from Phase 2.
 
 ### Phase 6 — Sync policy and health checks, deliberately
 
@@ -264,7 +264,7 @@ trusting the Ingress is actually serving valid TLS.
 ## Best practices
 
 - Treat a static ServiceAccount token used for cross-cluster registration
-  as an interim state, not the end state — plan the [Vault](../../../../Security/vault/SKILL.md)-brokered
+  as an interim state, not the end state — plan the [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md)-brokered
   rotation path (Phase 2) before the fleet grows past a handful of
   clusters, since manually rotating tokens across many clusters doesn't
   scale and a leaked long-lived token has an unbounded blast radius.
@@ -279,7 +279,7 @@ trusting the Ingress is actually serving valid TLS.
   `LoadBalancer` Service *before* installing `ingress-nginx` — debugging
   "Ingress isn't reachable" is much harder once both layers are stacked
   and unverified.
-- Prefer an internal CA (via cert-manager's `ca`/`[vault](../../../../Security/vault/SKILL.md)` Issuer types) over
+- Prefer an internal CA (via cert-manager's `ca`/`[vault](../../../../Security/cryptography-secrets/vault/SKILL.md)` Issuer types) over
   self-signed per-service certs for anything beyond a single throwaway
   test — an internal CA's trust bundle can be distributed once to clients,
   where self-signed certs require per-service trust exceptions.
@@ -301,7 +301,7 @@ trusting the Ingress is actually serving valid TLS.
   **Fix:** A raw ServiceAccount token Secret does not auto-renew on
   clusters configured with bounded token lifetimes — either re-mint and
   update the hub's cluster `Secret` manually on a schedule, or migrate to
-  the [Vault](../../../../Security/vault/SKILL.md)-brokered rotation pattern in Phase 2 so renewal is automatic.
+  the [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md)-brokered rotation pattern in Phase 2 so renewal is automatic.
 
 - **Symptom:** A Harbor `imagePullSecret` worked at initial setup and later
   every pod pull starts failing with `unauthorized` across the whole
@@ -319,7 +319,7 @@ trusting the Ingress is actually serving valid TLS.
   always run the first sync manually with `--dry-run` (Phase 4) before
   enabling `automated` in a later, deliberate step (Phase 6).
 
-- **Symptom:** cert-manager's internal-CA `ClusterIssuer` ([Vault](../../../../Security/vault/SKILL.md)-backed)
+- **Symptom:** cert-manager's internal-CA `ClusterIssuer` ([Vault](../../../../Security/cryptography-secrets/vault/SKILL.md)-backed)
   issues certificates that browsers/clients reject as untrusted, even
   though `[kubectl](../../../kubernetes/other/kubectl/SKILL.md) describe certificate` shows `Ready: True`.
   **Fix:** `Ready: True` only confirms cert-manager successfully obtained
@@ -333,7 +333,7 @@ trusting the Ingress is actually serving valid TLS.
 
 **Scenario:** Stand up Argo CD from scratch on a self-managed `payments-prod`
 kubeadm cluster with no cloud provider, using Harbor for private images,
-[Vault](../../../../Security/vault/SKILL.md) for both PKI and Argo CD's own cross-cluster credential rotation,
+[Vault](../../../../Security/cryptography-secrets/vault/SKILL.md) for both PKI and Argo CD's own cross-cluster credential rotation,
 and MetalLB + Ingress for external access.
 
 ```bash
@@ -364,7 +364,7 @@ clusters (full YAML in
 [argocd-applicationset-patterns](../[argocd-applicationset-patterns](../[argocd](../argocd/SKILL.md)-applicationset-patterns/SKILL.md)/SKILL.md)),
 and Phase 6 promotes staging's sync policy to `automated` once verified —
 identical decision structure to the cloud variants, just built on
-ServiceAccount/RBAC and [Vault](../../../../Security/vault/SKILL.md)-issued credentials instead of IRSA/Workload
+ServiceAccount/RBAC and [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md)-issued credentials instead of IRSA/Workload
 Identity.
 
 ## Cross-references
@@ -372,8 +372,8 @@ Identity.
 - [on-prem-infrastructure-patterns](../../../cloud/skills/[on-prem-infrastructure-patterns](../../Cloud_Providers/on-prem-infrastructure-patterns/SKILL.md)/SKILL.md) — [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)/VMware cluster provisioning this skill assumes and builds on.
 - [argocd-application-configuration](../[argocd-application-configuration](../[argocd](../argocd/SKILL.md)-application-configuration/SKILL.md)/SKILL.md) — full depth on the `Application` spec used in Phase 4/6.
 - [argocd-applicationset-patterns](../[argocd-applicationset-patterns](../[argocd](../argocd/SKILL.md)-applicationset-patterns/SKILL.md)/SKILL.md) — generator mechanics used in Phase 5.
-- [gitops-multi-cluster-management](../[gitops-multi-cluster-management](../[gitops](../gitops/SKILL.md)-multi-cluster-management/SKILL.md)/SKILL.md) — hub-and-spoke registration pattern this skill's Phase 2 adapts with ServiceAccount/RBAC and [Vault](../../../../Security/vault/SKILL.md)-issued credentials.
+- [gitops-multi-cluster-management](../[gitops-multi-cluster-management](../[gitops](../gitops/SKILL.md)-multi-cluster-management/SKILL.md)/SKILL.md) — hub-and-spoke registration pattern this skill's Phase 2 adapts with ServiceAccount/RBAC and [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md)-issued credentials.
 - [metallb-[bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[metallb-[bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration/SKILL.md)/SKILL.md) and [ingress-nginx-configuration](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[ingress-nginx-configuration](../../../kubernetes/networking/ingress-nginx-configuration/SKILL.md)/SKILL.md) — the [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) LB/Ingress layer Phase 3 depends on.
 - [cert-manager-tls-automation](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[cert-manager-tls-automation](../../../kubernetes/security/cert-manager-tls-automation/SKILL.md)/SKILL.md) — the internal-CA `Issuer` pattern used instead of public ACME issuance.
-- [vault-operations-and-pki-engine-configuration](../../../../Security/security-scanning/SKILL.md)-tooling/skills/[vault-operations-and-pki-engine-configuration](../[vault](../../../Security/vault/SKILL.md)-operations-and-pki-engine-configuration/SKILL.md)/SKILL.md) and [sealed-secrets-and-external-secrets-operator](../../../../Security/security-scanning/SKILL.md)-tooling/skills/[sealed-secrets-and-external-secrets-operator](../../../kubernetes/security/sealed-secrets-and-external-secrets-operator/SKILL.md)/SKILL.md) — standing up [Vault](../../../../Security/vault/SKILL.md) and syncing its issued credentials into Argo CD's cluster registration.
+- [vault-operations-and-pki-engine-configuration](../../../../Security/scanning/security-scanning/SKILL.md)-tooling/skills/[vault-operations-and-pki-engine-configuration](../../../../Security/cryptography-secrets/vault/SKILL.md)-operations-and-pki-engine-configuration/SKILL.md)/SKILL.md) and [sealed-secrets-and-external-secrets-operator](../../../../Security/scanning/security-scanning/SKILL.md)-tooling/skills/[sealed-secrets-and-external-secrets-operator](../../../kubernetes/security/sealed-secrets-and-external-secrets-operator/SKILL.md)/SKILL.md) — standing up [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md) and syncing its issued credentials into Argo CD's cluster registration.
 - [gitops-workflow](../../../devops/skills/[gitops-workflow](../[gitops](../gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md) — the vendor-neutral [GitOps](../../../common/gitops/gitops/SKILL.md) concepts this on-prem [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) implements.

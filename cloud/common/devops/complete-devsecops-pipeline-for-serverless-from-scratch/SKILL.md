@@ -27,11 +27,11 @@ depends_on:
   - devsecops
 ---
 
-# Complete [DevSecOps](../../../../Security/devsecops/SKILL.md) Pipeline Deployment for [Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md), From Scratch
+# Complete [DevSecOps](../../../../Security/common/devsecops/SKILL.md) Pipeline Deployment for [Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md), From Scratch
 
 ## Purpose
 
-A [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) [DevSecOps](../../../../Security/devsecops/SKILL.md) pipeline's gate sequence differs from the
+A [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) [DevSecOps](../../../../Security/common/devsecops/SKILL.md) pipeline's gate sequence differs from the
 [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) variant of this skill in two structural ways. First, its SCA
 surface is proportionally larger and riskier: a Lambda zip bundles its
 **entire** transitive dependency tree directly into the one artifact that
@@ -45,7 +45,7 @@ bounds what a compromised function can actually do, in the same way an
 admission policy bounds what a compromised pod can do in [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).
 Secrets, too, follow a different model from both other variants: fetched
 directly from a managed secrets service (AWS Secrets Manager/Parameter
-Store, Azure Key [Vault](../../../../Security/vault/SKILL.md)) by the function's own runtime code using its
+Store, Azure Key [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md)) by the function's own runtime code using its
 execution role's identity, never baked into the zip and never pulled by
 an in-cluster operator (there is no cluster).
 
@@ -73,16 +73,16 @@ an in-cluster operator (there is no cluster).
   [complete-[cicd-pipeline](../../../../ci-cd/common/pipeline-design/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-from-scratch](../../../cicd-tooling/skills/[complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-from-scratch](../complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-from-scratch/SKILL.md)/SKILL.md)
   for that base pipeline; this skill adds the security-gate layer onto it.
 - SAST and SCA tooling chosen per
-  [sast-integration](../[sast-integration](../../../Security/sast-integration/SKILL.md)/SKILL.md) and
+  [sast-integration](../../../../Security/scanning/sast-integration/SKILL.md)/SKILL.md) and
   [software-composition-analysis-sca](../[software-composition-analysis-sca](../../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md).
 - Artifact-signing tooling (Sigstore/cosign, or AWS Signer for Lambda)
   per
-  [supply-chain-security-slsa-sbom](../[supply-chain-security-slsa-sbom](../../../Security/[supply-chain-security](../../../Security/supply-chain-security/SKILL.md)-slsa-sbom/SKILL.md)/SKILL.md).
+  [supply-chain-security-slsa-sbom](../../../../Security/supply-chain/supply-chain-security/SKILL.md)-slsa-sbom/SKILL.md)/SKILL.md).
 - IAM least-privilege review practice per
   [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)/SKILL.md)
   and the execution-role scoping guidance in
   [aws-lambda-packaging-and-configuration](../../../[serverless](../../Containers_and_Orchestration/serverless/SKILL.md)-and-alternative-compute/skills/[aws-lambda-packaging-and-configuration](../[aws-lambda](../aws-lambda/SKILL.md)-packaging-and-configuration/SKILL.md)/SKILL.md).
-- A managed secrets service (AWS Secrets Manager, Azure Key [Vault](../../../../Security/vault/SKILL.md)) already
+- A managed secrets service (AWS Secrets Manager, Azure Key [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md)) already
   provisioned, per
   [secrets-management](../[secrets-management](../secrets-management/SKILL.md)/SKILL.md).
 
@@ -90,7 +90,7 @@ an in-cluster operator (there is no cluster).
 
 ### Phase 1 — SAST on the diff (PR-time)
 
-Per [sast-integration](../[sast-integration](../../../Security/sast-integration/SKILL.md)/SKILL.md): unchanged from any
+Per [sast-integration](../../../../Security/scanning/sast-integration/SKILL.md)/SKILL.md): unchanged from any
 other pipeline.
 
 ### Phase 2 — SCA against the fully-resolved, packaged dependency tree
@@ -124,7 +124,7 @@ accordingly, per
 Sign the built zip (or the container image, if using Lambda's
 container-image packaging option) so its provenance is verifiable before
 deploy, per
-[supply-chain-security-slsa-sbom](../[supply-chain-security-slsa-sbom](../../../Security/[supply-chain-security](../../../Security/supply-chain-security/SKILL.md)-slsa-sbom/SKILL.md)/SKILL.md):
+[supply-chain-security-slsa-sbom](../../../../Security/supply-chain/supply-chain-security/SKILL.md)-slsa-sbom/SKILL.md)/SKILL.md):
 ```bash
 cosign sign-blob --key awskms:///alias/lambda-signing-key \
   --output-signature function.zip.sig function.zip
@@ -141,7 +141,7 @@ refuses to update the function's code from an unsigned or
 signature-mismatched package — this is a deploy-time technical control,
 not just a CI-side check, and is the [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) equivalent of requiring an
 admission-controller-verified signed image in [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) (per
-[supply-chain-security-slsa-sbom](../[supply-chain-security-slsa-sbom](../../../Security/[supply-chain-security](../../../Security/supply-chain-security/SKILL.md)-slsa-sbom/SKILL.md)/SKILL.md)).
+[supply-chain-security-slsa-sbom](../../../../Security/supply-chain/supply-chain-security/SKILL.md)-slsa-sbom/SKILL.md)/SKILL.md)).
 
 ### Phase 4 — Least-privilege execution-role scoping as the primary release gate
 
@@ -273,7 +273,7 @@ reviewed — no drift introduced by a manual console edit after deploy.
 
 ## Worked example
 
-**Scenario:** `payments-webhook` gets its full [DevSecOps](../../../../Security/devsecops/SKILL.md) gate sequence:
+**Scenario:** `payments-webhook` gets its full [DevSecOps](../../../../Security/common/devsecops/SKILL.md) gate sequence:
 SAST/SCA on the packaged dependency tree, cosign signing of the zip, an
 IAM-role-diff review gate before deploy, and its database credential
 fetched at runtime from AWS Secrets Manager instead of baked into the
@@ -281,7 +281,7 @@ package.
 
 ```yaml
 jobs:
-  sast: { /* per [sast-integration](../../../../Security/sast-integration/SKILL.md) */ }
+  sast: { /* per [sast-integration](../../../../Security/scanning/sast-integration/SKILL.md) */ }
   build: { /* zip packaging, per the base [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) CI/CD skill */ }
 
   sca:
@@ -320,14 +320,14 @@ jobs:
 exactly `payments-webhook/prod/db` at invoke time; its execution role
 (reviewed by the `iam-role-diff-gate` job whenever `template.yaml`'s IAM
 statements change) grants nothing broader — no secret value, signing key,
-or [vault](../../../../Security/vault/SKILL.md) token is ever present in the CI pipeline itself.
+or [vault](../../../../Security/cryptography-secrets/vault/SKILL.md) token is ever present in the CI pipeline itself.
 
 ## Cross-references
 
 - [complete-[cicd-pipeline](../../../../ci-cd/common/pipeline-design/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-from-scratch](../../../cicd-tooling/skills/[complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-from-scratch](../complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-from-scratch/SKILL.md)/SKILL.md) — the base packaging/deploy pipeline this skill adds security gates onto.
-- [sast-integration](../[sast-integration](../../../Security/sast-integration/SKILL.md)/SKILL.md) and [software-composition-analysis-sca](../[software-composition-analysis-sca](../../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md) — Phase 1-2 gate mechanics.
-- [supply-chain-security-slsa-sbom](../[supply-chain-security-slsa-sbom](../../../Security/[supply-chain-security](../../../Security/supply-chain-security/SKILL.md)-slsa-sbom/SKILL.md)/SKILL.md) — Phase 3's signing/provenance mechanics.
+- [sast-integration](../../../../Security/scanning/sast-integration/SKILL.md)/SKILL.md) and [software-composition-analysis-sca](../[software-composition-analysis-sca](../../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md) — Phase 1-2 gate mechanics.
+- [supply-chain-security-slsa-sbom](../../../../Security/supply-chain/supply-chain-security/SKILL.md)-slsa-sbom/SKILL.md)/SKILL.md) — Phase 3's signing/provenance mechanics.
 - [aws-lambda-packaging-and-configuration](../../../[serverless](../../Containers_and_Orchestration/serverless/SKILL.md)-and-alternative-compute/skills/[aws-lambda-packaging-and-configuration](../[aws-lambda](../aws-lambda/SKILL.md)-packaging-and-configuration/SKILL.md)/SKILL.md) — execution-role least-privilege design referenced in Phase 4.
 - [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)/SKILL.md) — the least-privilege review principles Phase 4's gate applies.
 - [secrets-management](../[secrets-management](../secrets-management/SKILL.md)/SKILL.md) — the managed-secrets-service pattern used in Phase 6.
-- [complete-[devsecops](../../../../Security/devsecops/SKILL.md)-pipeline-for-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-from-scratch](../[complete-[devsecops](../../../Security/devsecops/SKILL.md)-pipeline-for-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-from-scratch](../complete-[devsecops](../../../Security/devsecops/SKILL.md)-pipeline-for-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-from-scratch/SKILL.md)/SKILL.md) and [complete-[devsecops](../../../../Security/devsecops/SKILL.md)-pipeline-for-vm-based-workloads-from-scratch](../[complete-[devsecops](../../../Security/devsecops/SKILL.md)-pipeline-for-vm-based-workloads-from-scratch](../../CI_CD/complete-[devsecops](../../../Security/devsecops/SKILL.md)-pipeline-for-vm-based-workloads-from-scratch/SKILL.md)/SKILL.md) — the same gate-sequencing goal with fundamentally different primary gates and secrets models.
+- [complete-[devsecops](../../../../Security/common/devsecops/SKILL.md)-pipeline-for-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-from-scratch](../../../../Security/common/devsecops/SKILL.md)-pipeline-for-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-from-scratch](../../../../Security/common/devsecops/SKILL.md)-pipeline-for-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-from-scratch/SKILL.md)/SKILL.md) and [complete-[devsecops](../../../../Security/common/devsecops/SKILL.md)-pipeline-for-vm-based-workloads-from-scratch](../../../../Security/common/devsecops/SKILL.md)-pipeline-for-vm-based-workloads-from-scratch](../../../../Security/common/devsecops/SKILL.md)-pipeline-for-vm-based-workloads-from-scratch/SKILL.md)/SKILL.md) — the same gate-sequencing goal with fundamentally different primary gates and secrets models.

@@ -119,7 +119,7 @@ specific to database work.
 - **Security & access** — the app connecting as superuser/owner instead of a
   least-privilege role, shared credentials across services, no TLS enforced, no
   [audit](../audit/SKILL.md) logging on sensitive tables, PII unencrypted or logged.
-  (Deep dive: `/[security-review](../../../Security/security-review/SKILL.md)`.)
+  (Deep dive: `/[security-review](../../../Security/common/security-review/SKILL.md)`.)
 - **[Observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)** — no metrics for connections, lag, slow queries, or lock
   waits; no alert on replication lag or on migration failure.
   (Deep dive: `/[observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)`.)
@@ -186,7 +186,7 @@ Effort keywords (`quick` / `standard` / `deep`) and the shared `<focus>` and
 - `/[release-readiness](../../../ci-cd/common/pipeline-design/release-readiness/SKILL.md)` — this skill supplies the migration gate verdict.
 - `/[terraform-review](../../../infrastructure-as-code/terraform/troubleshooting/terraform-review/SKILL.md)` — where the instance, parameter group, and protections are declared.
 - `/[observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)` — lag, lock-wait, and slow-query signals this review depends on.
-- `/[security-review](../../../Security/security-review/SKILL.md)` — credential scoping, encryption, and [audit](../audit/SKILL.md) logging depth.
+- `/[security-review](../../../Security/common/security-review/SKILL.md)` — credential scoping, encryption, and [audit](../audit/SKILL.md) logging depth.
 - `/cost` — instance right-sizing and storage/IOPS spend.
 
 ## Before you finish

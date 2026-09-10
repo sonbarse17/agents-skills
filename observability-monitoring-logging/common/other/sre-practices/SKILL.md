@@ -460,7 +460,7 @@ production_readiness_review:
 
     security:
       - "OWASP Top 10 vulnerabilities reviewed"
-      - "Secrets stored in [Vault](../../../../Security/vault/SKILL.md), not in code or env"
+      - "Secrets stored in [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md), not in code or env"
       - "Principle of least privilege for IAM/service accounts"
       - "Dependency vulnerabilities scanned and remediated"
       - "TLS termination configured"

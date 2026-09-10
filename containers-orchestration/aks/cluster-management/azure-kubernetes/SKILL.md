@@ -102,7 +102,7 @@ If the user is unsure, use safe defaults.
 
 ### 3. Security
 - Use **Microsoft Entra ID** everywhere (control plane, Workload Identity for pods, node access). Avoid static credentials.
-- Azure Key [Vault](../../../../Security/vault/SKILL.md) via **Secrets Store CSI Driver** for secrets
+- Azure Key [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md) via **Secrets Store CSI Driver** for secrets
 - Enable **Azure Policy** + **Deployment Safeguards**
 - Enable **Encryption at rest** for etcd/API server; **in-transit** for node-to-node
 - Allow only signed, policy-approved images (Azure Policy + Ratify), prefer **Azure Container Registry**

@@ -460,7 +460,7 @@ jobs:
   - references/dev-container-features.md — Dev Container Features Reference
   - references/dev-container-multi-service.md — Multi-Service Dev Container Reference
 ## Handoff
-Hand off to `dev-loop-[git-workflow](../../../../ci-cd/common/git-workflow/git-workflow/SKILL.md)` for Git credential configuration. Hand off to `[dev-loop-security-auditor](../../../../Security/security-auditor/SKILL.md)` for container security.
+Hand off to `dev-loop-[git-workflow](../../../../ci-cd/common/git-workflow/git-workflow/SKILL.md)` for Git credential configuration. Hand off to `[dev-loop-security-auditor](../../../../Security/common/security-auditor/SKILL.md)` for container security.
 
 ## Architecture Decision Trees
 

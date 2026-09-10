@@ -460,7 +460,7 @@ DeFi Protocol Design
 ├── Protocol type?
 │   ├── DEX → AMM (Uniswap v2/v3, Curve) / Orderbook (dYdX, Serum)
 │   ├── Lending → Pool-based (Aave, Compound) / Isolated (Morpho)
-│   ├── Yield → [Vault](../../Security/vault/SKILL.md) strategy (Yearn) / Auto-compounder
+│   ├── Yield → [Vault](../../Security/cryptography-secrets/vault/SKILL.md) strategy (Yearn) / Auto-compounder
 │   └── Derivatives → Perpetuals (GMX, Synthetix) / Options (Opyn)
 ├── AMM curve?
 │   ├── Constant product → x*y=k (Uniswap v2) — simple, capital inefficient

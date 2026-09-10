@@ -34,7 +34,7 @@ That default is convenient for getting a cluster running and dangerous
 in production: a single compromised or vulnerable pod can reach any
 other workload's ports, including internal admin endpoints, databases,
 and the [Kubernetes](../../other/kubernetes/SKILL.md) API server itself, with no additional access
-required. `NetworkPolicy` resources implement [zero-trust](../../../../Security/zero-trust/SKILL.md) micro-
+required. `NetworkPolicy` resources implement [zero-trust](../../../../Security/identity-access/zero-trust/SKILL.md) micro-
 segmentation inside the cluster: deny all traffic by default, then
 explicitly allow only the specific pod-to-pod and pod-to-external
 paths a workload actually needs. This requires a CNI plugin that
@@ -52,7 +52,7 @@ CNI-specific skill referenced below for that layer.
 ## When to use
 
 - Establishing default-deny network segmentation for a namespace or
-  cluster as a [zero-trust](../../../../Security/zero-trust/SKILL.md) baseline.
+  cluster as a [zero-trust](../../../../Security/identity-access/zero-trust/SKILL.md) baseline.
 - Writing an allow-rule so a specific service can reach only the
   database, cache, or upstream API it actually depends on — nothing
   else.
@@ -283,7 +283,7 @@ CNI-specific skill referenced below for that layer.
 - **Write the narrowest allow-rule that satisfies the real dependency**
   (specific `podSelector` + specific port), not a broad
   `namespaceSelector: {}` with no pod selector or port restriction —
-  the latter defeats the purpose of [zero-trust](../../../../Security/zero-trust/SKILL.md) segmentation.
+  the latter defeats the purpose of [zero-trust](../../../../Security/identity-access/zero-trust/SKILL.md) segmentation.
 - **Block the cloud metadata endpoint (`169.254.169.254`) by default**
   for workloads that don't need instance-role credentials — it's one
   of the highest-value single rules for limiting SSRF/pivot blast
@@ -365,7 +365,7 @@ CNI-specific skill referenced below for that layer.
 
 **Scenario:** The `payments` namespace currently has no `NetworkPolicy`
 at all — every pod in the cluster can reach `payments-db` and
-`payments-api` directly. A security review flags this as a [zero-trust](../../../../Security/zero-trust/SKILL.md)
+`payments-api` directly. A security review flags this as a [zero-trust](../../../../Security/identity-access/zero-trust/SKILL.md)
 gap ahead of a compliance [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md), and the team needs default-deny
 segmentation without breaking the ingress path or DNS.
 

@@ -444,7 +444,7 @@ npm (package-lock.json): npm standard, deterministic. yarn (yarn.lock): yarn spe
 - ../../../Global_References/dependency-management-fundamentals.md -- Dependency Management Fundamentals
 - ../../../Global_References/renovate-config.md -- Renovate Configuration
 - ../../../Global_References/update-strategies.md -- Update Strategies
-- ../../../Global_References/[vulnerability-scanning](../../../../Security/vulnerability-scanning/SKILL.md).md -- Vulnerability Scanning
+- ../../../Global_References/[vulnerability-scanning](../../../../Security/scanning/vulnerability-scanning/SKILL.md).md -- Vulnerability Scanning
 
 ## Handoff
 After completing this skill:

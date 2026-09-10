@@ -27,11 +27,11 @@ depends_on:
   - vault
 ---
 
-# Complete [DevSecOps](../../../../Security/devsecops/SKILL.md) Pipeline Deployment for VM-Based Workloads, From Scratch
+# Complete [DevSecOps](../../../../Security/common/devsecops/SKILL.md) Pipeline Deployment for VM-Based Workloads, From Scratch
 
 ## Purpose
 
-A VM-based [DevSecOps](../../../../Security/devsecops/SKILL.md) pipeline has a gate sequence with a genuinely
+A VM-based [DevSecOps](../../../../Security/common/devsecops/SKILL.md) pipeline has a gate sequence with a genuinely
 different time dimension from the [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) and [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) variants of
 this skill. Those two are almost entirely **per-deploy** gates: a scan
 runs, a decision is made, an artifact ships. A VM fleet built on
@@ -42,7 +42,7 @@ or accumulate newly-disclosed CVEs for months while sitting unchanged in
 an Auto Scaling Group, so patch/drift detection has to run as its own
 recurring check, independent of whether a new deploy happens at all.
 Secrets follow yet another distinct model here too: applied by a
-config-management tool ([Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) [Vault](../../../../Security/vault/SKILL.md)) at provision/config-push time,
+config-management tool ([Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md)) at provision/config-push time,
 encrypted at rest in the same repo as the playbooks, rather than a
 cluster-side operator ([Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)) or a runtime API call to a managed
 secrets service ([serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)).
@@ -71,12 +71,12 @@ secrets service ([serverless](../../../../Software_Engineering_and_Other/Pattern
   [complete-[cicd-pipeline](../cicd-pipeline/SKILL.md)-for-vm-based-workloads-from-scratch](../../../cicd-tooling/skills/[complete-[cicd-pipeline](../cicd-pipeline/SKILL.md)-for-vm-based-workloads-from-scratch](../complete-[cicd-pipeline](../cicd-pipeline/SKILL.md)-for-vm-based-workloads-from-scratch/SKILL.md)/SKILL.md)
   for that base pipeline; this skill adds the security-gate layer onto it.
 - SAST and SCA tooling chosen per
-  [sast-integration](../[sast-integration](../../../Security/sast-integration/SKILL.md)/SKILL.md) and
+  [sast-integration](../../../../Security/scanning/sast-integration/SKILL.md)/SKILL.md) and
   [software-composition-analysis-sca](../[software-composition-analysis-sca](../../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md).
 - A CIS benchmark scanner — `kube-bench`'s non-[Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) sibling tooling,
   OpenSCAP, or a cloud-native CIS scanner — per
   [cis-benchmarks-hardening](../../../standards-and-compliance-frameworks/skills/[cis-benchmarks-hardening](../../../Security/[cis-benchmarks](../../Observability_and_SecOps/cis-benchmarks/SKILL.md)-hardening/SKILL.md)/SKILL.md).
-- [Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) ≥ 2.15 with `[ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md)-[vault](../../../../Security/vault/SKILL.md)` for secrets encryption, per
+- [Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) ≥ 2.15 with `[ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md)-[vault](../../../../Security/cryptography-secrets/vault/SKILL.md)` for secrets encryption, per
   [ansible-playbook-and-role-design](../../../iac-and-automation-tooling/skills/[ansible-playbook-and-role-design](../../Infrastructure_as_Code/[ansible](../../Infrastructure_as_Code/ansible/SKILL.md)-playbook-and-role-design/SKILL.md)/SKILL.md).
 - A scheduled job runner (a nightly/weekly CI cron trigger, or a fleet
   management tool) capable of running patch/drift checks against live,
@@ -89,7 +89,7 @@ secrets service ([serverless](../../../../Software_Engineering_and_Other/Pattern
 
 ### Phase 1 — SAST on the diff (PR-time)
 
-Per [sast-integration](../[sast-integration](../../../Security/sast-integration/SKILL.md)/SKILL.md): unchanged from any
+Per [sast-integration](../../../../Security/scanning/sast-integration/SKILL.md)/SKILL.md): unchanged from any
 other pipeline.
 
 ### Phase 2 — SCA on the application dependency tree (PR-time)
@@ -130,7 +130,7 @@ the machine-image analog of
 non-root/read-only/minimal-base discipline, applied to a whole bootable OS
 instead of a container layer.
 
-### Phase 4 — Config-management-applied secrets via [Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) [Vault](../../../../Security/vault/SKILL.md), never plaintext
+### Phase 4 — Config-management-applied secrets via [Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md), never plaintext
 
 Where [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) fetches secrets cluster-side and [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) fetches them
 via a runtime API call, the VM-based model applies secrets at
@@ -138,10 +138,10 @@ config-push/provision time through [Ansible](../../../../infrastructure-as-code/
 encrypted at rest in the same repo as the playbooks — never a plaintext
 variable file:
 ```bash
-[ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md)-[vault](../../../../Security/vault/SKILL.md) encrypt group_vars/prod/[vault](../../../../Security/vault/SKILL.md).yml
+[ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md)-[vault](../../../../Security/cryptography-secrets/vault/SKILL.md) encrypt group_vars/prod/[vault](../../../../Security/cryptography-secrets/vault/SKILL.md).yml
 ```
 ```yaml
-# group_vars/prod/[vault](../../../../Security/vault/SKILL.md).yml (encrypted at rest via [ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md)-[vault](../../../../Security/vault/SKILL.md))
+# group_vars/prod/[vault](../../../../Security/cryptography-secrets/vault/SKILL.md).yml (encrypted at rest via [ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md)-[vault](../../../../Security/cryptography-secrets/vault/SKILL.md))
 vault_db_password: "S3cr3tValueNeverPlaintextInGit"
 ```
 ```yaml
@@ -153,10 +153,10 @@ vault_db_password: "S3cr3tValueNeverPlaintextInGit"
     mode: "0600"
   no_log: true
 ```
-The playbook run itself decrypts `[vault](../../../../Security/vault/SKILL.md).yml` using a [vault](../../../../Security/vault/SKILL.md) password
-supplied out-of-band (a CI secret referencing the [vault](../../../../Security/vault/SKILL.md) password, or
-better, `--[vault](../../../../Security/vault/SKILL.md)-id` backed by a secrets manager lookup) — the encrypted
-file is safe to [commit](../../git-workflow/commit/SKILL.md), but the [vault](../../../../Security/vault/SKILL.md) password itself follows the same
+The playbook run itself decrypts `[vault](../../../../Security/cryptography-secrets/vault/SKILL.md).yml` using a [vault](../../../../Security/cryptography-secrets/vault/SKILL.md) password
+supplied out-of-band (a CI secret referencing the [vault](../../../../Security/cryptography-secrets/vault/SKILL.md) password, or
+better, `--[vault](../../../../Security/cryptography-secrets/vault/SKILL.md)-id` backed by a secrets manager lookup) — the encrypted
+file is safe to [commit](../../git-workflow/commit/SKILL.md), but the [vault](../../../../Security/cryptography-secrets/vault/SKILL.md) password itself follows the same
 never-hardcoded discipline as any other credential, per
 [secrets-management](../[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md)/SKILL.md) and
 [ansible-playbook-and-role-design](../../../iac-and-automation-tooling/skills/[ansible-playbook-and-role-design](../../Infrastructure_as_Code/[ansible](../../Infrastructure_as_Code/ansible/SKILL.md)-playbook-and-role-design/SKILL.md)/SKILL.md).
@@ -233,7 +233,7 @@ it's treated as routine.
   still needs patch scanning during that entire window, since new CVEs are
   disclosed against already-running versions constantly.
 - Never [commit](../../git-workflow/commit/SKILL.md) an unencrypted [Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) variables file "temporarily" —
-  `[ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md)-[vault](../../../../Security/vault/SKILL.md) encrypt` before the first [commit](../../git-workflow/commit/SKILL.md), not after a secret
+  `[ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md)-[vault](../../../../Security/cryptography-secrets/vault/SKILL.md) encrypt` before the first [commit](../../git-workflow/commit/SKILL.md), not after a secret
   is discovered in git history; treat a plaintext secret found in a vars
   file with the same rotate-first response as any other leaked credential,
   per [secrets-management](../[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md)/SKILL.md).
@@ -254,9 +254,9 @@ it's treated as routine.
   Add the scheduled scan, and treat "last CIS scan date" as a tracked
   fleet metric, not a one-time checkbox.
 
-- **Symptom:** An [Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) `group_vars/prod/[vault](../../../../Security/vault/SKILL.md).yml` was committed
+- **Symptom:** An [Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) `group_vars/prod/[vault](../../../../Security/cryptography-secrets/vault/SKILL.md).yml` was committed
   unencrypted "just for local testing," and by the time someone notices
-  and runs `[ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md)-[vault](../../../../Security/vault/SKILL.md) encrypt`, the plaintext secret is already in git
+  and runs `[ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md)-[vault](../../../../Security/cryptography-secrets/vault/SKILL.md) encrypt`, the plaintext secret is already in git
   history.
   **Fix:** Treat it as a leaked credential exactly like any other secret
   — rotate the underlying value at its source system first, then encrypt
@@ -290,16 +290,16 @@ it's treated as routine.
 
 ## Worked example
 
-**Scenario:** `payments-api`'s VM fleet gets its full [DevSecOps](../../../../Security/devsecops/SKILL.md) gate
+**Scenario:** `payments-api`'s VM fleet gets its full [DevSecOps](../../../../Security/common/devsecops/SKILL.md) gate
 sequence: SAST/SCA at PR time, CIS-hardening baked into the golden AMI,
-database credentials applied via [Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) [Vault](../../../../Security/vault/SKILL.md), and a nightly
+database credentials applied via [Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md), and a nightly
 patch/drift-detection job independent of the deploy pipeline.
 
 ```yaml
 # .[github](../../../github-actions/other/github/SKILL.md)/workflows/ci-cd.yml (build/bake/deploy jobs per the base VM CI/CD skill)
 jobs:
-  sast: { /* per [sast-integration](../../../../Security/sast-integration/SKILL.md) */ }
-  sca: { /* per [software-composition-analysis-sca](../../../../Security/software-composition-analysis-sca/SKILL.md) */ }
+  sast: { /* per [sast-integration](../../../../Security/scanning/sast-integration/SKILL.md) */ }
+  sca: { /* per [software-composition-analysis-sca](../../../../Security/scanning/software-composition-analysis-sca/SKILL.md) */ }
   bake-and-scan-image:
     needs: [sast, sca]
     runs-on: ubuntu-latest
@@ -317,7 +317,7 @@ jobs:
       - uses: actions/checkout@v4
       - run: |
           [ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md)-playbook -i inventories/prod deploy.yml \
-            --[vault](../../../../Security/vault/SKILL.md)-password-file <(aws secretsmanager get-secret-value --secret-id [ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md)-[vault](../../../../Security/vault/SKILL.md)-prod --query SecretString --output text)
+            --[vault](../../../../Security/cryptography-secrets/vault/SKILL.md)-password-file <(aws secretsmanager get-secret-value --secret-id [ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md)-[vault](../../../../Security/cryptography-secrets/vault/SKILL.md)-prod --query SecretString --output text)
 ```
 ```yaml
 # .[github](../../../github-actions/other/github/SKILL.md)/workflows/fleet-patch-and-drift-scan.yml — independent schedule
@@ -340,10 +340,10 @@ of the per-deploy gate sequence above it.
 ## Cross-references
 
 - [complete-[cicd-pipeline](../cicd-pipeline/SKILL.md)-for-vm-based-workloads-from-scratch](../../../cicd-tooling/skills/[complete-[cicd-pipeline](../cicd-pipeline/SKILL.md)-for-vm-based-workloads-from-scratch](../complete-[cicd-pipeline](../cicd-pipeline/SKILL.md)-for-vm-based-workloads-from-scratch/SKILL.md)/SKILL.md) — the base image-baking/deploy pipeline this skill adds security gates onto.
-- [sast-integration](../[sast-integration](../../../Security/sast-integration/SKILL.md)/SKILL.md) and [software-composition-analysis-sca](../[software-composition-analysis-sca](../../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md) — Phase 1-2 gate mechanics.
+- [sast-integration](../../../../Security/scanning/sast-integration/SKILL.md)/SKILL.md) and [software-composition-analysis-sca](../[software-composition-analysis-sca](../../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md) — Phase 1-2 gate mechanics.
 - [cis-benchmarks-hardening](../../../standards-and-compliance-frameworks/skills/[cis-benchmarks-hardening](../../../Security/[cis-benchmarks](../../Observability_and_SecOps/cis-benchmarks/SKILL.md)-hardening/SKILL.md)/SKILL.md) — Phase 3's golden-image CIS scanning and waiver-process mechanics.
 - [container-image-hardening](../[container-image-hardening](../../Containers_and_Orchestration/container-image-hardening/SKILL.md)/SKILL.md) — the container-image analog of Phase 3's hardening discipline, for contrast.
-- [ansible-playbook-and-role-design](../../../iac-and-automation-tooling/skills/[ansible-playbook-and-role-design](../../Infrastructure_as_Code/[ansible](../../Infrastructure_as_Code/ansible/SKILL.md)-playbook-and-role-design/SKILL.md)/SKILL.md) — [Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) [Vault](../../../../Security/vault/SKILL.md) and idempotency mechanics used in Phase 4/6.
-- [secrets-management](../[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md)/SKILL.md) — general secrets-handling discipline Phase 4 applies via [Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) [Vault](../../../../Security/vault/SKILL.md) specifically.
+- [ansible-playbook-and-role-design](../../../iac-and-automation-tooling/skills/[ansible-playbook-and-role-design](../../Infrastructure_as_Code/[ansible](../../Infrastructure_as_Code/ansible/SKILL.md)-playbook-and-role-design/SKILL.md)/SKILL.md) — [Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md) and idempotency mechanics used in Phase 4/6.
+- [secrets-management](../[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md)/SKILL.md) — general secrets-handling discipline Phase 4 applies via [Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md) specifically.
 - [cloud-resource-post-provisioning-validation-and-drift-detection](../../../cloud/skills/[cloud-resource-post-provisioning-validation-and-drift-detection](../../Observability_and_SecOps/cloud-resource-post-provisioning-validation-and-drift-detection/SKILL.md)/SKILL.md) — infrastructure-level (not just host-level) drift detection that complements Phase 6.
-- [complete-[devsecops](../../../../Security/devsecops/SKILL.md)-pipeline-for-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-from-scratch](../[complete-[devsecops](../../../Security/devsecops/SKILL.md)-pipeline-for-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-from-scratch](../../Cloud_Providers/complete-[devsecops](../../../Security/devsecops/SKILL.md)-pipeline-for-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-from-scratch/SKILL.md)/SKILL.md) and [complete-[devsecops](../../../../Security/devsecops/SKILL.md)-pipeline-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-from-scratch](../[complete-[devsecops](../../../Security/devsecops/SKILL.md)-pipeline-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-from-scratch](../../Cloud_Providers/complete-[devsecops](../../../Security/devsecops/SKILL.md)-pipeline-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-from-scratch/SKILL.md)/SKILL.md) — the same gate-sequencing goal with fundamentally different primary gates and secrets models.
+- [complete-[devsecops](../../../../Security/common/devsecops/SKILL.md)-pipeline-for-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-from-scratch](../../../../Security/common/devsecops/SKILL.md)-pipeline-for-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-from-scratch](../../../../Security/common/devsecops/SKILL.md)-pipeline-for-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-from-scratch/SKILL.md)/SKILL.md) and [complete-[devsecops](../../../../Security/common/devsecops/SKILL.md)-pipeline-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-from-scratch](../../../../Security/common/devsecops/SKILL.md)-pipeline-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-from-scratch](../../../../Security/common/devsecops/SKILL.md)-pipeline-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-from-scratch/SKILL.md)/SKILL.md) — the same gate-sequencing goal with fundamentally different primary gates and secrets models.

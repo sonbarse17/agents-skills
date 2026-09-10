@@ -276,7 +276,7 @@ encryption_requirements:
     description: "Replace PAN with non-reversible token to reduce CDE scope"
     implementation:
       - Use format-preserving tokens (same length/format as PAN)
-      - Token [vault](../../../../Security/vault/SKILL.md) in isolated CDE segment
+      - Token [vault](../../../../Security/cryptography-secrets/vault/SKILL.md) in isolated CDE segment
       - Token-to-PAN mapping encrypted and access-controlled
       - De-tokenization requires authenticated API call
       - Log all de-tokenization requests

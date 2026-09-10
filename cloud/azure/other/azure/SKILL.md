@@ -564,7 +564,7 @@ resource policyAssignmentLocations 'Microsoft.Authorization/policyAssignments@20
 | Networking - CDN | Azure Front Door / CDN | CloudFront |
 | DNS | Azure DNS | Route53 |
 | IAM | Azure AD + RBAC | IAM |
-| Key Management | Key [Vault](../../../../Security/vault/SKILL.md) | KMS |
+| Key Management | Key [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md) | KMS |
 | [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) | Azure Monitor | CloudWatch |
 | CI/CD | Azure DevOps Pipelines | CodePipeline |
 | IaC | Bicep/ARM | [CloudFormation](../../../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md)/CDK |
@@ -597,7 +597,7 @@ No budgets, no alerts, no tags for cost allocation. Azure costs can spiral witho
 - Use Azure AD Conditional Access with MFA for all administrative access.
 - Enable Diagnostic Settings on all resources for [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging.
 - Use Azure Policy to enforce HTTPS, deny public IPs on NSGs, require encryption.
-- Use Key [Vault](../../../../Security/vault/SKILL.md) with soft-delete and purge protection enabled.
+- Use Key [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md) with soft-delete and purge protection enabled.
 - Enable network security groups with just-in-time (JIT) VM access.
 - Use Azure RBAC with least privilege; [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) role assignments quarterly.
 
@@ -625,12 +625,12 @@ No budgets, no alerts, no tags for cost allocation. Azure costs can spiral witho
 | Azure DevOps pipeline fails | Service Principal expired | Rotate SP secret or use Workload Identity |
 | Bicep deployment fails | Module not found | Verify module registry path and version |
 | Azure Policy non-compliant | Resource missing required tag | Add tags; check policy definition |
-| Key [Vault](../../../../Security/vault/SKILL.md) access denied | Missing access policy | Add service principal/managed identity to KV |
+| Key [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md) access denied | Missing access policy | Add service principal/managed identity to KV |
 
 ## Rules
 1. Bicep over ARM JSON for all new IaC.
 2. Managed identities over service principals for Azure resource auth.
-3. Private endpoints for all PaaS services (SQL, Storage, ACR, Key [Vault](../../../../Security/vault/SKILL.md)).
+3. Private endpoints for all PaaS services (SQL, Storage, ACR, Key [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md)).
 4. Azure Policy for compliance enforcement at resource creation.
 5. AKS with Azure CNI and Azure AD integration.
 6. Cost allocation via resource tags — every resource gets mandatory tags.

@@ -75,7 +75,7 @@ Does the change fit the system's design?
 
 ### 4. Security
 
-For detailed security guidance, see `[security-and-hardening](../../../../Security/security-and-hardening/SKILL.md)`. Does the change introduce vulnerabilities?
+For detailed security guidance, see `[security-and-hardening](../../../../Security/common/security-and-hardening/SKILL.md)`. Does the change introduce vulnerabilities?
 
 - Is user input validated and sanitized?
 - Are secrets kept out of code, logs, and version control?
@@ -309,7 +309,7 @@ Part of code review is dependency review:
 4. **Mind the transitive graph.** Most installed packages are ones nobody chose directly. Review the lockfile diff, not just `package.json`; a single direct bump can pull in dozens of indirect changes.
 5. **Keep the lockfile honest.** [Commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) it, review its diff, and never hand-edit it. The lockfile is the thing that actually pins what ships.
 
-For triaging `npm [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)` findings and supply-chain risk (typosquatting, compromised maintainers), follow the `[security-and-hardening](../../../../Security/security-and-hardening/SKILL.md)` skill — this section covers the upgrade *workflow*, that one covers the security verdict.
+For triaging `npm [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)` findings and supply-chain risk (typosquatting, compromised maintainers), follow the `[security-and-hardening](../../../../Security/common/security-and-hardening/SKILL.md)` skill — this section covers the upgrade *workflow*, that one covers the security verdict.
 
 ## The Review Checklist
 

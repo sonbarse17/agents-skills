@@ -308,5 +308,5 @@ jobs:
 
 - [cloudflare-workers](../[cloudflare-workers](../cloudflare-workers/SKILL.md)/) - Edge backend logic and API routes
 - [cloudflare-r2](../[cloudflare-r2](../cloudflare-r2/SKILL.md)/) - Object storage for assets and uploads
-- [cloudflare-zero-trust](../[cloudflare-zero-trust](../cloudflare-[zero-trust](../../../Security/zero-trust/SKILL.md)/SKILL.md)/) - Protect preview deployments with Access policies
+- [cloudflare-zero-trust](../../../Security/identity-access/zero-trust/SKILL.md)/SKILL.md)/) - Protect preview deployments with Access policies
 - [cdn-setup](../../networking/[cdn-setup](../cdn-setup/SKILL.md)/) - General CDN configuration patterns

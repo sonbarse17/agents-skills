@@ -120,7 +120,7 @@ Effort keywords (`quick` / `standard` / `deep`) and the shared `<focus>` and
 
 ## Related skills
 
-- `/[security-review](../../../../Security/security-review/SKILL.md)` — depth on IAM policy design and network exposure.
+- `/[security-review](../../../../Security/common/security-review/SKILL.md)` — depth on IAM policy design and network exposure.
 - `/cost` — right-sizing and purchasing decisions for the resources declared here.
 - `/[k8s-review](../../../../containers-orchestration/kubernetes/troubleshooting/k8s-review/SKILL.md)` — the workloads running on the cluster this code provisions.
 - `/[dr-review](../../../../DevOps_and_Cloud/Observability_and_SecOps/dr-review/SKILL.md)` — backup, restore, and the recovery story for stateful resources.

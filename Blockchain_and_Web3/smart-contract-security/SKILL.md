@@ -18,7 +18,7 @@ Use the Checks-Effects-Interactions pattern and OpenZeppelin's `ReentrancyGuard`
 ```solidity
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
-contract [Vault](../../Security/vault/SKILL.md) is ReentrancyGuard {
+contract [Vault](../../Security/cryptography-secrets/vault/SKILL.md) is ReentrancyGuard {
     mapping(address => uint) public balances;
 
     function withdraw() external nonReentrant {

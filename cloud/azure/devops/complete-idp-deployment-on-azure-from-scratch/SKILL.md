@@ -104,13 +104,13 @@ Flexible Server.** Package Backstage as a Helm chart and deploy it against
 a Flexible Server instance (zone-redundant HA beyond a pilot) as the
 catalog database, with the Backstage pod's [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) ServiceAccount
 federated to a Microsoft Entra ID (Azure AD) application that has
-`Key [Vault](../../../../Security/vault/SKILL.md) Secrets User` on the [vault](../../../../Security/vault/SKILL.md) holding the database credential —
+`Key [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md) Secrets User` on the [vault](../../../../Security/cryptography-secrets/vault/SKILL.md) holding the database credential —
 never a connection string in a plain Secret. Chart packaging and
 values-schema design follow
 [helm-chart-authoring](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[helm-chart-authoring](../../../../containers-orchestration/helm/charts/helm-chart-authoring/SKILL.md)/SKILL.md);
 any custom auth provider or backend plugin follows
 [backstage-plugin-development](../[backstage-plugin-development](../../../Software_Engineering_and_Other/Backend/backstage-plugin-development/SKILL.md)/SKILL.md).
-Mount the credential via the Azure Key [Vault](../../../../Security/vault/SKILL.md) Provider for Secrets Store
+Mount the credential via the Azure Key [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md) Provider for Secrets Store
 CSI Driver rather than syncing it into a [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Secret at rest.
 
 **Phase 4 — Golden-path template design.** Author the first golden-path
@@ -255,7 +255,7 @@ over one quarter.
    deployed against Flexible Server `contoso-backstage-catalog`
    (zone-redundant, `Standard_D2ds_v5`), with the backend's
    ServiceAccount `backstage-backend` federated to an Entra ID app with
-   `Key [Vault](../../../../Security/vault/SKILL.md) Secrets User` on the [vault](../../../../Security/vault/SKILL.md) holding the DB credential.
+   `Key [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md) Secrets User` on the [vault](../../../../Security/cryptography-secrets/vault/SKILL.md) holding the DB credential.
 4. **Phase 4:** A "Node.js service" golden-path template is authored,
    producing a Dockerfile, a [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions workflow, and a
    `ServiceAccount` manifest annotated

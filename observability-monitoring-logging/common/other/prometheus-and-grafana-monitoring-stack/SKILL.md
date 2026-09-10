@@ -417,4 +417,4 @@ customer-impacting error rates, not on every blip.
 
 - [kubecost-cost-visibility](../[kubecost-cost-visibility](../../Cloud_Providers/kubecost-cost-visibility/SKILL.md)/SKILL.md)
 - [karpenter-cluster-autoscaling](../[karpenter-cluster-autoscaling](../karpenter-cluster-[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/SKILL.md)/SKILL.md)
-- [kubernetes-network-policy-zero-trust](../[kubernetes-network-policy-zero-trust](../[kubernetes](../kubernetes/SKILL.md)-network-policy-[zero-trust](../../../../Security/zero-trust/SKILL.md)/SKILL.md)/SKILL.md)
+- [kubernetes-network-policy-zero-trust](../[kubernetes-network-policy-zero-trust](../[kubernetes](../kubernetes/SKILL.md)-network-policy-[zero-trust](../../../../Security/identity-access/zero-trust/SKILL.md)/SKILL.md)/SKILL.md)

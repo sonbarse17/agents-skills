@@ -557,7 +557,7 @@ def estimate_fee(target_blocks, mempool_entries):
 12. MAST tree depth must be balanced for optimal Taproot script path spend
 13. PSBT (BIP-174) supports multi-party signing without sharing private keys
 14. Anchor outputs are essential for Lightning force-close fee bumping
-15. AssumeUTXO enables [zero-trust](../../Security/zero-trust/SKILL.md) initial sync for new nodes
+15. AssumeUTXO enables [zero-trust](../../Security/identity-access/zero-trust/SKILL.md) initial sync for new nodes
 16. Standard transactions must use the standardness checks, not just consensus rules
 17. CPFP and RBF are the two transaction replacement strategies — implement both
 18. Coin selection in wallets should prefer UTXO consolidation to prevent dust buildup

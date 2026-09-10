@@ -322,7 +322,7 @@ labels: ["tech-debt", "needs-triage"]
   - references/tech-debt-tracker-metrics.md — Tech Debt Metrics Reference
   - references/tech-debt-tracker-prioritization.md — Tech Debt Prioritization Reference
 ## Handoff
-Hand off to `[dev-loop-refactor-guide](../refactor-guide/SKILL.md)` for refactoring implementation of debt items. Hand off to `[dev-loop-security-auditor](../../../../Security/security-auditor/SKILL.md)` for security-related debt.
+Hand off to `[dev-loop-refactor-guide](../refactor-guide/SKILL.md)` for refactoring implementation of debt items. Hand off to `[dev-loop-security-auditor](../../../../Security/common/security-auditor/SKILL.md)` for security-related debt.
 
 ## Implementation Patterns
 

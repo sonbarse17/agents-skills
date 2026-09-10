@@ -558,7 +558,7 @@ end
 
 ### Configuration Management
 - Use `config/runtime.exs` for all env-dependent config. `config/prod.exs` for compile-time config only.
-- Secrets in environment variables or [Vault](../../../../Security/vault/SKILL.md). Never [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) `.secret` files.
+- Secrets in environment variables or [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md). Never [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) `.secret` files.
 - Release config: `RELEASE_CONFIG_DIR` points to external config directory. Overrides at runtime without rebuild.
 - Feature flags via persistent_term or a GenServer loaded from DB at boot. Toggle without restart.
 

@@ -532,7 +532,7 @@ How many instances are in production?
 
 ### Authentication
 - Method: {API Key / OAuth2 / Basic Auth / Mutual TLS}
-- Credential storage: {[vault](../../Security/vault/SKILL.md) / environment variable / secret manager}
+- Credential storage: {[vault](../../Security/cryptography-secrets/vault/SKILL.md) / environment variable / secret manager}
 - Rotation policy: {frequency}
 
 ### Endpoints

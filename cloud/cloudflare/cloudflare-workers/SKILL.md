@@ -406,4 +406,4 @@ routes = [
 
 - [cloudflare-pages](../[cloudflare-pages](../cloudflare-pages/SKILL.md)/) - Frontend deployments with Pages Functions
 - [cloudflare-r2](../[cloudflare-r2](../cloudflare-r2/SKILL.md)/) - Object storage at the edge
-- [cloudflare-zero-trust](../[cloudflare-zero-trust](../cloudflare-[zero-trust](../../../Security/zero-trust/SKILL.md)/SKILL.md)/) - Protect Worker endpoints with Access
+- [cloudflare-zero-trust](../../../Security/identity-access/zero-trust/SKILL.md)/SKILL.md)/) - Protect Worker endpoints with Access

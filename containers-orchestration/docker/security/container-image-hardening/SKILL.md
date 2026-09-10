@@ -91,7 +91,7 @@ there to scan and what's exploitable if a vulnerability is found.
     final runtime image, sometimes needed as a build stage.
 - [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) cluster (if hardening deploy-time `securityContext`) with
   admission-policy enforcement optional but recommended — see
-  [policy-as-code-guardrails](../[policy-as-code-guardrails](../../../Security/[policy-as-code](../../../Security/policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md) to
+  [policy-as-code-guardrails](../../../../Security/policy-as-code/policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md) to
   make these properties mandatory rather than best-effort.
 
 ## Step-by-step guidance
@@ -186,7 +186,7 @@ there to scan and what's exploitable if a vulnerability is found.
    Dockerfile with `USER app` can still be overridden by a [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) pod
    spec with `runAsUser: 0`; enforce the deploy-time properties via an
    admission policy (see
-   [policy-as-code-guardrails](../[policy-as-code-guardrails](../../../Security/[policy-as-code](../../../Security/policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md))
+   [policy-as-code-guardrails](../../../../Security/policy-as-code/policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md))
    so the Dockerfile's intent can't be silently undone at deploy time.
 
 ## Best practices
@@ -257,7 +257,7 @@ there to scan and what's exploitable if a vulnerability is found.
   instruction. Set and enforce `runAsNonRoot: true` in the pod
   `securityContext` and consider an admission policy to prevent this
   override cluster-wide (see
-  [policy-as-code-guardrails](../[policy-as-code-guardrails](../../../Security/[policy-as-code](../../../Security/policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md)).
+  [policy-as-code-guardrails](../../../../Security/policy-as-code/policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md)).
 
 - **Symptom:** Image size and vulnerability count barely improve after
   switching base images, and the SCA scan still shows the same dozens of
@@ -339,10 +339,10 @@ to keep that guarantee from being quietly overridden.
 - [software-composition-analysis-sca](../[software-composition-analysis-sca](../../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md) —
   scanning the resulting image for known vulnerabilities in whatever
   base-image packages and dependencies remain.
-- [supply-chain-security-slsa-sbom](../[supply-chain-security-slsa-sbom](../../../Security/[supply-chain-security](../../../Security/supply-chain-security/SKILL.md)-slsa-sbom/SKILL.md)/SKILL.md) —
+- [supply-chain-security-slsa-sbom](../../../../Security/supply-chain/supply-chain-security/SKILL.md)-slsa-sbom/SKILL.md)/SKILL.md) —
   generating an SBOM and signing the hardened image so its provenance
   can be verified downstream.
-- [policy-as-code-guardrails](../[policy-as-code-guardrails](../../../Security/[policy-as-code](../../../Security/policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md) —
+- [policy-as-code-guardrails](../../../../Security/policy-as-code/policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md) —
   enforcing non-root/read-only/dropped-capabilities requirements at
   [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) admission time so a hardened Dockerfile's properties can't
   be silently overridden by a pod spec.

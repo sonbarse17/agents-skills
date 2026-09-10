@@ -212,7 +212,7 @@ investing in custom policy authoring for gaps neither tool covers.
 - Treat Polaris as the fast first pass for well-known [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
   configuration hygiene (limits, probes, security context, image tags),
   and reserve custom OPA/Kyverno policy authoring
-  ([opa-gatekeeper-policy-authoring](../[opa-gatekeeper-policy-authoring](../../../Security/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md),
+  ([opa-gatekeeper-policy-authoring](../../../Security/policy-as-code/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md),
   [kyverno-policy-management](../[kyverno-policy-management](../../../DevOps_and_Cloud/Containers_and_Orchestration/kyverno-policy-management/SKILL.md)/SKILL.md)) for
   organization-specific rules Polaris doesn't have a built-in check for
   (custom label schemas, internal registry allowlists, business-specific
@@ -274,7 +274,7 @@ investing in custom policy authoring for gaps neither tool covers.
   internal-only compliance rule about required annotations).
   **Fix:** Polaris's check set is a curated, generic best-practices list —
   it is not a substitute for organization-specific policy. Use
-  [opa-gatekeeper-policy-authoring](../[opa-gatekeeper-policy-authoring](../../../Security/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md)
+  [opa-gatekeeper-policy-authoring](../../../Security/policy-as-code/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md)
   or [kyverno-policy-management](../[kyverno-policy-management](../../../DevOps_and_Cloud/Containers_and_Orchestration/kyverno-policy-management/SKILL.md)/SKILL.md)
   to add custom checks for anything specific to your org that Polaris
   doesn't cover, rather than treating a good Polaris score as full policy
@@ -352,14 +352,14 @@ re-runs `polaris [audit](../../Operations/audit/SKILL.md)`, and confirms `memory
 
 ## Cross-references
 
-- [opa-gatekeeper-policy-authoring](../[opa-gatekeeper-policy-authoring](../../../Security/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md) —
+- [opa-gatekeeper-policy-authoring](../../../Security/policy-as-code/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md) —
   for organization-specific rules Polaris's built-in checks don't cover,
   authored as Rego ConstraintTemplates.
 - [kyverno-policy-management](../[kyverno-policy-management](../../../DevOps_and_Cloud/Containers_and_Orchestration/kyverno-policy-management/SKILL.md)/SKILL.md) — a
   YAML-native alternative for the same class of custom policy, without
   Rego.
-- [policy-as-code-guardrails](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[policy-as-code-guardrails](../../../Security/policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md) —
+- [policy-as-code-guardrails](../../../Security/common/devsecops/SKILL.md)/skills/[policy-as-code-guardrails](../../../Security/policy-as-code/policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md) —
   the broader [audit](../../Operations/audit/SKILL.md)-before-enforce discipline this skill's webhook
   guidance follows.
-- [secure-cicd-gates](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) —
+- [secure-cicd-gates](../../../Security/common/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../Security/app-security/secure-cicd-gates/SKILL.md)/SKILL.md) —
   where a Polaris CLI scan fits as a PR-time or pre-deploy pipeline stage.

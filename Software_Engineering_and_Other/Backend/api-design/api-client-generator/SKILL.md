@@ -518,7 +518,7 @@ What language/framework?
 ## Security Considerations
 
 ### Authentication
-- **Credential injection**: Never hardcode API keys. Use environment variables or secret managers ([Vault](../../../../Security/vault/SKILL.md), AWS Secrets Manager).
+- **Credential injection**: Never hardcode API keys. Use environment variables or secret managers ([Vault](../../../../Security/cryptography-secrets/vault/SKILL.md), AWS Secrets Manager).
 - **Token refresh**: Handle OAuth2 token refresh transparently. Re-authenticate on 401 responses before retrying.
 - **Certificate pinning**: Pin TLS certificates in mobile/high-security clients to prevent MITM.
 

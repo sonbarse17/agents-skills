@@ -217,7 +217,7 @@ behavior.
   a whole, adding/removing a matrix entry silently changes which check
   names exist; point required checks at a summary/gate job instead
   (mirroring the `gate-summary` pattern in
-  [secure-cicd-gates](../../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md)).
+  [secure-cicd-gates](../../../../Security/common/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../../Security/app-security/secure-cicd-gates/SKILL.md)/SKILL.md)).
 
 - **Symptom:** A workflow that ran safely for months suddenly executes
   unexpected code or exfiltrates a secret after a third-party action
@@ -326,4 +326,4 @@ entries in `test` never requires updating the required-checks list.
 
 - [github-actions-centralized-reusable-workflows](../[github-actions-centralized-reusable-workflows](../[github-actions](../[github](../github/SKILL.md)-actions/SKILL.md)-centralized-reusable-workflows/SKILL.md)/SKILL.md) — promote this pattern to `workflow_call` once it's duplicated across multiple repos.
 - [ci-cd-pipeline-design](../../../devops/skills/[ci-cd-pipeline-design](../ci-cd-pipeline-design/SKILL.md)/SKILL.md) — vendor-neutral stage layout and gating concepts this workflow implements.
-- [secure-cicd-gates](../../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — designing the `gate` job's blocking rules and adding security scan steps.
+- [secure-cicd-gates](../../../../Security/common/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../../Security/app-security/secure-cicd-gates/SKILL.md)/SKILL.md) — designing the `gate` job's blocking rules and adding security scan steps.

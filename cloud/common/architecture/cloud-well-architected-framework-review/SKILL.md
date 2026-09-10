@@ -128,7 +128,7 @@ a substitute for the standards-mapping and legal/[audit](../../../../AI_and_Agen
      transit, network segmentation, secrets handling, patch/vulnerability
      management — this pillar overlaps directly with
      [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)/SKILL.md),
-     [secrets-management](../../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../security/secrets-management/SKILL.md)/SKILL.md),
+     [secrets-management](../../../../Security/common/devsecops/SKILL.md)/skills/[secrets-management](../../security/secrets-management/SKILL.md)/SKILL.md),
      and [cis-benchmarks-hardening](../[cis-benchmarks-hardening](../../../Security/[cis-benchmarks](../../Observability_and_SecOps/cis-benchmarks/SKILL.md)-hardening/SKILL.md)/SKILL.md).
    - *Reliability*: RTO/RPO targets and whether they're actually met,
      multi-AZ/region design, backup testing — cross-reference
@@ -241,7 +241,7 @@ Scoring scale: 1 (significant gaps) – 5 (best-practice aligned).
 | Pillar | Score | Key evidence | Top finding |
 |---|---|---|---|
 | Operational excellence | 3/5 | Deploys via CI/CD, but no automated rollback; on-call [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) exists but last updated 14 months ago | [Runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) stale; no automated rollback on failed deploy |
-| Security | 4/5 | IAM roles scoped per-service, secrets in [Vault](../../../../Security/vault/SKILL.md), but one legacy EC2 instance still uses a long-lived static credential | Legacy instance not yet migrated to federated/instance-role auth |
+| Security | 4/5 | IAM roles scoped per-service, secrets in [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md), but one legacy EC2 instance still uses a long-lived static credential | Legacy instance not yet migrated to federated/instance-role auth |
 | Reliability | 2/5 | Primary RDS instance is single-AZ; no documented/tested failover; RTO target of 1 hour is unverified | Single-AZ database is a single point of failure against the stated RTO |
 | Performance efficiency | 4/5 | [Autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) configured with headroom, p99 latency within SLO for 11 of 12 months | Minor: cache hit ratio below target during flash-sale traffic spikes |
 | Cost optimization | 2/5 | <30% of compute spend covered by Savings Plans/Reserved Instances; several oversized instances flagged idle >30 days | Low commitment coverage and unaddressed idle-resource findings |

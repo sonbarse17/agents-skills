@@ -460,5 +460,5 @@ fi
 
 - [linux-hardening](../../hardening/[linux-hardening](../../Observability_and_SecOps/linux-hardening/SKILL.md)/) - System security
 - [aws-vpc](../../../infrastructure/cloud-aws/[aws-vpc](../aws-vpc/SKILL.md)/) - AWS networking
-- [zero-trust](../[zero-trust](../../../Security/zero-trust/SKILL.md)/) - Identity-based access patterns
+- [zero-trust](../../../../Security/identity-access/zero-trust/SKILL.md)/) - Identity-based access patterns
 - [vpn-setup](../[vpn-setup](../vpn-setup/SKILL.md)/) - Secure tunnel configuration

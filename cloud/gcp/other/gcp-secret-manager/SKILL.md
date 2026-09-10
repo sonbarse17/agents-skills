@@ -514,7 +514,7 @@ resource "google_secret_manager_secret_iam_member" "app_accessor" {
 
 ## Related Skills
 
-- [hashicorp-vault](../[hashicorp-vault](../../../Security/hashicorp-[vault](../../../Security/vault/SKILL.md)/SKILL.md)/) - [Multi-cloud](../../../common/other/multi-cloud/SKILL.md) secrets
+- [hashicorp-vault](../../../../Security/cryptography-secrets/vault/SKILL.md)/SKILL.md)/) - [Multi-cloud](../../../common/other/multi-cloud/SKILL.md) secrets
 - [gcp-gke](../../../infrastructure/cloud-gcp/[gcp-gke](../../Containers_and_Orchestration/gcp-gke/SKILL.md)/) - GKE integration
 - [aws-secrets-manager](../[aws-secrets-manager](../aws-secrets-manager/SKILL.md)/) - AWS secret management
 - [azure-keyvault](../[azure-keyvault](../azure-keyvault/SKILL.md)/) - Azure secret management

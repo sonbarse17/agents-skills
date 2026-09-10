@@ -73,7 +73,7 @@ regularly.
   not solely per-resource configuration; see the relevant
   `*-landing-zone-setup` skill.
 - A key management strategy decided (cloud-managed keys vs.
-  customer-managed keys in AWS KMS / Azure Key [Vault](../../../../Security/vault/SKILL.md) / GCP Cloud KMS) —
+  customer-managed keys in AWS KMS / Azure Key [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md) / GCP Cloud KMS) —
   customer-managed keys add operational overhead (rotation, access
   policy) but are often required for regulated data.
 
@@ -122,7 +122,7 @@ regularly.
      ```
    - **Azure Blob**: set the storage account's public network access and
      "allow blob public access" to disabled, enforce HTTPS-only traffic,
-     and use a customer-managed key in Key [Vault](../../../../Security/vault/SKILL.md) if required by
+     and use a customer-managed key in Key [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md) if required by
      compliance scope.
    - **GCP Cloud Storage**: enable uniform bucket-level access (disables
      legacy per-object ACLs), set the bucket's public access prevention

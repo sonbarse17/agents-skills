@@ -51,7 +51,7 @@ currently holds them.
 
 A static access key is valid until someone remembers to rotate or revoke it — which in practice
 means indefinitely. Short-lived, dynamically issued credentials (STS tokens, workload identity
-federation, [Vault](../../../../Security/vault/SKILL.md) dynamic secrets) expire on their own, so a leaked credential has a small,
+federation, [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md) dynamic secrets) expire on their own, so a leaked credential has a small,
 bounded blast radius instead of an unbounded one. This is the same rotation principle as
 `[secrets-management](../../security/secrets-management/SKILL.md)`, applied to identity and access rather than application secrets.
 

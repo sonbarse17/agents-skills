@@ -75,8 +75,8 @@ a change to every production host at once).
 - `[ansible](../ansible/SKILL.md)-lint` and `yamllint` for static checks; `molecule` (with a
   [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) or [Podman](../../../../containers-orchestration/podman/other/podman/SKILL.md) driver) for role testing is recommended for any role
   used beyond a single one-off playbook.
-- A [vault](../../../../Security/vault/SKILL.md) password (or an integration with a secrets manager via a [vault](../../../../Security/vault/SKILL.md)
-  password script) for any playbook referencing [Ansible](../ansible/SKILL.md) [Vault](../../../../Security/vault/SKILL.md)-encrypted
+- A [vault](../../../../Security/cryptography-secrets/vault/SKILL.md) password (or an integration with a secrets manager via a [vault](../../../../Security/cryptography-secrets/vault/SKILL.md)
+  password script) for any playbook referencing [Ansible](../ansible/SKILL.md) [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md)-encrypted
   variables — never a plaintext password committed to the repo.
 - Least-privilege: the SSH/become user [Ansible](../ansible/SKILL.md) connects as should have
   only the `sudo`/`become` rights the playbook's tasks actually need, not
@@ -177,26 +177,26 @@ a change to every production host at once).
    nginx_worker_connections: 4096
    ```
 
-4. **Encrypt secrets with [Ansible](../ansible/SKILL.md) [Vault](../../../../Security/vault/SKILL.md)** — never plaintext credentials in
-   a playbook or inventory. Show the *pattern*, not a real [vault](../../../../Security/vault/SKILL.md) password:
+4. **Encrypt secrets with [Ansible](../ansible/SKILL.md) [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md)** — never plaintext credentials in
+   a playbook or inventory. Show the *pattern*, not a real [vault](../../../../Security/cryptography-secrets/vault/SKILL.md) password:
    ```bash
-   [ansible](../ansible/SKILL.md)-[vault](../../../../Security/vault/SKILL.md) create group_vars/prod/[vault](../../../../Security/vault/SKILL.md).yml
+   [ansible](../ansible/SKILL.md)-[vault](../../../../Security/cryptography-secrets/vault/SKILL.md) create group_vars/prod/[vault](../../../../Security/cryptography-secrets/vault/SKILL.md).yml
    # Editor opens; contents are encrypted at rest once saved, e.g.:
    #   vault_db_password: "REPLACE_WITH_ACTUAL_SECRET"
    ```
    Reference the vaulted variable from a plain (non-encrypted) variable so
-   `group_vars/prod/[vault](../../../../Security/vault/SKILL.md).yml` stays fully encrypted while
+   `group_vars/prod/[vault](../../../../Security/cryptography-secrets/vault/SKILL.md).yml` stays fully encrypted while
    `group_vars/prod/vars.yml` stays diffable in version control:
    ```yaml
    # group_vars/prod/vars.yml (plaintext, safe to [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md))
    db_password: "{{ vault_db_password }}"
    ```
-   Run with the [vault](../../../../Security/vault/SKILL.md) password supplied out-of-band (a password manager,
-   CI secret store, or `--[vault](../../../../Security/vault/SKILL.md)-password-file` pointing at a file that is
+   Run with the [vault](../../../../Security/cryptography-secrets/vault/SKILL.md) password supplied out-of-band (a password manager,
+   CI secret store, or `--[vault](../../../../Security/cryptography-secrets/vault/SKILL.md)-password-file` pointing at a file that is
    itself not committed):
    ```bash
    [ansible](../ansible/SKILL.md)-playbook -i inventories/prod/hosts.yml playbooks/site.yml \
-     --[vault](../../../../Security/vault/SKILL.md)-password-file /run/secrets/[ansible](../ansible/SKILL.md)-[vault](../../../../Security/vault/SKILL.md)-pass
+     --[vault](../../../../Security/cryptography-secrets/vault/SKILL.md)-password-file /run/secrets/[ansible](../ansible/SKILL.md)-[vault](../../../../Security/cryptography-secrets/vault/SKILL.md)-pass
    ```
 
 5. **Dry-run before any production apply.**
@@ -276,7 +276,7 @@ a change to every production host at once).
 - Use `molecule test` to run a role's task list against a disposable
   container/VM in CI, asserting both convergence and idempotency (a
   second `molecule converge` run should report zero changes).
-- Never [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) an unencrypted [vault](../../../../Security/vault/SKILL.md) password file or embed it in a
+- Never [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) an unencrypted [vault](../../../../Security/cryptography-secrets/vault/SKILL.md) password file or embed it in a
   playbook; inject it at run time from a secrets manager or CI's native
   secret store.
 
@@ -297,13 +297,13 @@ a change to every production host at once).
   and always pass `-i <specific-inventory>` explicitly rather than
   relying on an `[ansible](../ansible/SKILL.md).cfg` default that could point anywhere.
 
-- **Symptom:** `[ansible](../ansible/SKILL.md)-[vault](../../../../Security/vault/SKILL.md)`-encrypted variables show up as ciphertext
+- **Symptom:** `[ansible](../ansible/SKILL.md)-[vault](../../../../Security/cryptography-secrets/vault/SKILL.md)`-encrypted variables show up as ciphertext
   errors ("Decryption failed") when running from CI.
-  **Fix:** The [vault](../../../../Security/vault/SKILL.md) password isn't reaching the CI runner, or multiple
-  [vault](../../../../Security/vault/SKILL.md) IDs are in use without `--[vault](../../../../Security/vault/SKILL.md)-id` disambiguating them. Confirm
-  the CI job injects `--[vault](../../../../Security/vault/SKILL.md)-password-file` (backed by the CI's secret
-  store, never a file committed to the repo) and that the [vault](../../../../Security/vault/SKILL.md) ID label
-  matches what encrypted the variable if multiple [vault](../../../../Security/vault/SKILL.md) passwords are in
+  **Fix:** The [vault](../../../../Security/cryptography-secrets/vault/SKILL.md) password isn't reaching the CI runner, or multiple
+  [vault](../../../../Security/cryptography-secrets/vault/SKILL.md) IDs are in use without `--[vault](../../../../Security/cryptography-secrets/vault/SKILL.md)-id` disambiguating them. Confirm
+  the CI job injects `--[vault](../../../../Security/cryptography-secrets/vault/SKILL.md)-password-file` (backed by the CI's secret
+  store, never a file committed to the repo) and that the [vault](../../../../Security/cryptography-secrets/vault/SKILL.md) ID label
+  matches what encrypted the variable if multiple [vault](../../../../Security/cryptography-secrets/vault/SKILL.md) passwords are in
   play.
 
 - **Symptom:** A task that installs a package works on one host group but
@@ -328,7 +328,7 @@ a change to every production host at once).
 
 **Scenario:** Roll out an updated nginx configuration (a new
 `client_max_body_size`) to the `webservers` group in `prod`, with a
-[vault](../../../../Security/vault/SKILL.md)-encrypted TLS certificate passphrase referenced by the role, dry-run
+[vault](../../../../Security/cryptography-secrets/vault/SKILL.md)-encrypted TLS certificate passphrase referenced by the role, dry-run
 first, then a batched rollout.
 
 `roles/nginx/templates/nginx.conf.j2`:
@@ -341,9 +341,9 @@ server {
 }
 ```
 
-`inventories/prod/group_vars/webservers/[vault](../../../../Security/vault/SKILL.md).yml` (encrypted with
-`[ansible](../ansible/SKILL.md)-[vault](../../../../Security/vault/SKILL.md) create`, shown here only as the *pattern* — replace with a
-real [vault](../../../../Security/vault/SKILL.md)-managed secret, never [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) plaintext):
+`inventories/prod/group_vars/webservers/[vault](../../../../Security/cryptography-secrets/vault/SKILL.md).yml` (encrypted with
+`[ansible](../ansible/SKILL.md)-[vault](../../../../Security/cryptography-secrets/vault/SKILL.md) create`, shown here only as the *pattern* — replace with a
+real [vault](../../../../Security/cryptography-secrets/vault/SKILL.md)-managed secret, never [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) plaintext):
 ```yaml
 vault_tls_passphrase: "REPLACE_WITH_ACTUAL_SECRET"
 ```
@@ -369,20 +369,20 @@ tls_passphrase: "{{ vault_tls_passphrase }}"
 Dry run, then batched rollout:
 ```bash
 [ansible](../ansible/SKILL.md)-playbook -i inventories/prod/hosts.yml playbooks/site.yml \
-  --[vault](../../../../Security/vault/SKILL.md)-password-file /run/secrets/[ansible](../ansible/SKILL.md)-[vault](../../../../Security/vault/SKILL.md)-pass \
+  --[vault](../../../../Security/cryptography-secrets/vault/SKILL.md)-password-file /run/secrets/[ansible](../ansible/SKILL.md)-[vault](../../../../Security/cryptography-secrets/vault/SKILL.md)-pass \
   --check --diff --limit webservers
 # Review: 12 hosts, "changed: nginx.conf client_max_body_size 10m -> 25m",
 # 0 failures.
 
 [ansible](../ansible/SKILL.md)-playbook -i inventories/prod/hosts.yml playbooks/site.yml \
-  --[vault](../../../../Security/vault/SKILL.md)-password-file /run/secrets/[ansible](../ansible/SKILL.md)-[vault](../../../../Security/vault/SKILL.md)-pass
+  --[vault](../../../../Security/cryptography-secrets/vault/SKILL.md)-password-file /run/secrets/[ansible](../ansible/SKILL.md)-[vault](../../../../Security/cryptography-secrets/vault/SKILL.md)-pass
 # serial: 25% => 3 hosts at a time; halts automatically if failures
 # exceed 10% of the batch.
 ```
 A follow-up idempotency check confirms convergence:
 ```bash
 [ansible](../ansible/SKILL.md)-playbook -i inventories/prod/hosts.yml playbooks/site.yml \
-  --[vault](../../../../Security/vault/SKILL.md)-password-file /run/secrets/[ansible](../ansible/SKILL.md)-[vault](../../../../Security/vault/SKILL.md)-pass
+  --[vault](../../../../Security/cryptography-secrets/vault/SKILL.md)-password-file /run/secrets/[ansible](../ansible/SKILL.md)-[vault](../../../../Security/cryptography-secrets/vault/SKILL.md)-pass
 # PLAY RECAP: changed=0 across all 12 hosts.
 ```
 
