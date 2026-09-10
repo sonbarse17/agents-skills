@@ -85,7 +85,7 @@ rather than repeats.
   anything beyond a small single-node/local-disk deployment, and
   familiarity with Tempo's block-based storage model (`compactor`,
   `ingester`, `querier`, `distributor` components — deployable
-  monolithically for small setups or as separate [microservices](../../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) at
+  monolithically for small setups or as separate [microservices](../../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md) at
   scale).
 - **For Jaeger:** a supported storage backend already provisioned —
   Elasticsearch/OpenSearch for production-scale deployments with rich

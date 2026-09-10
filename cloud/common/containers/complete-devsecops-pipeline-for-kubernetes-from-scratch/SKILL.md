@@ -31,7 +31,7 @@ depends_on:
 ## Purpose
 
 A [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-targeted [DevSecOps](../../../../Security/devsecops/SKILL.md) pipeline has a gate sequence with two
-properties the [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) and VM variants of this skill don't share: a
+properties the [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) and VM variants of this skill don't share: a
 **[policy-as-code](../../../../Security/policy-as-code/SKILL.md) admission gate** (OPA/Kyverno) sits between the built
 artifact and the [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md) handoff, checking the *manifests* themselves
 (non-root, resource limits, approved registries, required labels) rather
@@ -39,7 +39,7 @@ than only the image contents — and **secrets never need to be present in
 the pipeline at all**, because an External Secrets Operator running
 in-cluster pulls them directly from a [vault](../../../../Security/vault/SKILL.md) at deploy time, decoupled
 entirely from CI. This is a materially different secrets model from
-[serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) (a managed secrets service the function's execution role reads
+[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) (a managed secrets service the function's execution role reads
 at invoke time) and VM-based (config-management-applied secrets baked in
 at config-push time). This skill sequences SAST → SCA → image scan →
 policy gate → [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md) handoff into one coherent walkthrough; each gate's
@@ -56,7 +56,7 @@ own mechanics are covered in depth by the linked skills.
 - The user wants to understand exactly where a [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-specific policy
   gate (OPA/Kyverno) fits relative to the [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md) handoff, and why
   [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)'s primary "last line of defense" gate is admission policy
-  rather than IAM role scoping (the [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) variant's equivalent) or
+  rather than IAM role scoping (the [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) variant's equivalent) or
   golden-image hardening (the VM variant's equivalent).
 - Diagnosing why a hardened container image (per
   [container-image-hardening](../[container-image-hardening](../../Containers_and_Orchestration/container-image-hardening/SKILL.md)/SKILL.md)) is
@@ -125,7 +125,7 @@ the image is actually built.
 ### Phase 4 — [Policy-as-code](../../../../Security/policy-as-code/SKILL.md) admission gate, before the [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md) handoff
 
 This is the [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-specific gate with no direct equivalent in the
-[serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) or VM variants: check the **rendered [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) manifests**
+[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) or VM variants: check the **rendered [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) manifests**
 (not just the image) against an OPA/Conftest or Kyverno policy set in CI,
 *before* they're committed to the [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md) config repo — catching a
 violation (missing resource limits, `runAsUser: 0`, an unapproved
@@ -328,4 +328,4 @@ fresh from [Vault](../../../../Security/vault/SKILL.md), entirely outside this p
 - [policy-as-code-guardrails](../[policy-as-code-guardrails](../../../Security/[policy-as-code](../../../Security/policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md), [kyverno-policy-management](../../../policy-and-governance-tooling/skills/[kyverno-policy-management](../../Containers_and_Orchestration/kyverno-policy-management/SKILL.md)/SKILL.md), [opa-gatekeeper-policy-authoring](../../../policy-and-governance-tooling/skills/[opa-gatekeeper-policy-authoring](../../../Security/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md) — Phase 4's policy engine mechanics.
 - [sealed-secrets-and-external-secrets-operator](../../../../Security/security-scanning/SKILL.md)-tooling/skills/[sealed-secrets-and-external-secrets-operator](../../../../containers-orchestration/kubernetes/security/sealed-secrets-and-external-secrets-operator/SKILL.md)/SKILL.md) and [secrets-management](../[secrets-management](../secrets-management/SKILL.md)/SKILL.md) — Phase 6's secrets model.
 - [secure-cicd-gates](../[secure-cicd-gates](../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — the orchestration principles (severity thresholds, blocking vs. warn) this gate sequence follows.
-- [complete-[devsecops](../../../../Security/devsecops/SKILL.md)-pipeline-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-from-scratch](../[complete-[devsecops](../../../Security/devsecops/SKILL.md)-pipeline-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-from-scratch](../complete-[devsecops](../../../Security/devsecops/SKILL.md)-pipeline-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-from-scratch/SKILL.md)/SKILL.md) and [complete-[devsecops](../../../../Security/devsecops/SKILL.md)-pipeline-for-vm-based-workloads-from-scratch](../[complete-[devsecops](../../../Security/devsecops/SKILL.md)-pipeline-for-vm-based-workloads-from-scratch](../../CI_CD/complete-[devsecops](../../../Security/devsecops/SKILL.md)-pipeline-for-vm-based-workloads-from-scratch/SKILL.md)/SKILL.md) — the same gate-sequencing goal with fundamentally different primary gates and secrets models.
+- [complete-[devsecops](../../../../Security/devsecops/SKILL.md)-pipeline-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-from-scratch](../[complete-[devsecops](../../../Security/devsecops/SKILL.md)-pipeline-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-from-scratch](../complete-[devsecops](../../../Security/devsecops/SKILL.md)-pipeline-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-from-scratch/SKILL.md)/SKILL.md) and [complete-[devsecops](../../../../Security/devsecops/SKILL.md)-pipeline-for-vm-based-workloads-from-scratch](../[complete-[devsecops](../../../Security/devsecops/SKILL.md)-pipeline-for-vm-based-workloads-from-scratch](../../CI_CD/complete-[devsecops](../../../Security/devsecops/SKILL.md)-pipeline-for-vm-based-workloads-from-scratch/SKILL.md)/SKILL.md) — the same gate-sequencing goal with fundamentally different primary gates and secrets models.

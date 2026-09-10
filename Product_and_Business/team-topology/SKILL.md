@@ -229,7 +229,7 @@ Component teams (teams organized by technical layer) create integration hell. Fe
 | Org Pattern | System Pattern | Good For |
 |-------------|---------------|----------|
 | Single team | Monolith | Startups, simple domains |
-| N stream-aligned teams | N [microservices](../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) | Large products with clear domain boundaries |
+| N stream-aligned teams | N [microservices](../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md) | Large products with clear domain boundaries |
 | Platform team + stream teams | Platform + services | Shared infrastructure needs |
 | Enabling team + stream teams | Capability building | Skill gaps, new technology adoption |
 

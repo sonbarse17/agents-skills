@@ -38,7 +38,7 @@ This means: every public behavior — including undocumented quirks, error messa
 
 - **Be intentional about what you expose.** Every observable behavior is a potential commitment.
 - **Don't leak implementation details.** If users can observe it, they will depend on it.
-- **Plan for deprecation at design time.** See `[deprecation-and-migration](../../../Patterns/deprecation-and-migration/SKILL.md)` for how to safely remove things users depend on.
+- **Plan for deprecation at design time.** See `[deprecation-and-migration](../../../Patterns/dev-practice/deprecation-and-migration/SKILL.md)` for how to safely remove things users depend on.
 - **Tests are not enough.** Even with perfect contract tests, Hyrum's Law means "safe" changes can break real users who depend on undocumented behavior.
 
 ### The One-Version Rule

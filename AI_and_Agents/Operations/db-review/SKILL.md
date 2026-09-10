@@ -104,7 +104,7 @@ specific to database work.
 - **Connections & pooling** — `max_connections` vs. the sum of app pool sizes ×
   replicas (the classic `too many connections` outage), pooler transaction-mode
   incompatible with prepared statements or session state, no connection lifetime
-  or idle timeout, [serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)/lambda fan-out without a pooler, pool exhaustion on
+  or idle timeout, [serverless](../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)/lambda fan-out without a pooler, pool exhaustion on
   slow queries with no timeout.
 - **Indexing & queries** — missing index on a foreign key or a hot filter
   (evidence: `EXPLAIN` showing a seq scan on a large table, or `pg_stat_user_tables`),

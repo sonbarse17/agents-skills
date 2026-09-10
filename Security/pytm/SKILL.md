@@ -143,7 +143,7 @@ Define system architecture programmatically:
 ```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from pytm import TM, Server, Datastore, Dataflow, Boundary, Actor, Lambda
 
-tm = TM("[Microservices](../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) Architecture")
+tm = TM("[Microservices](../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md) Architecture")
 
 # Cloud boundaries
 internet = Boundary("Internet")
@@ -155,7 +155,7 @@ api_gateway.inBoundary = cloud_vpc
 api_gateway.implementsAuthentication = True
 api_gateway.implementsAuthorization = True
 
-# [Microservices](../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md)
+# [Microservices](../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md)
 auth_service = Lambda("Auth Service")
 auth_service.inBoundary = cloud_vpc
 
@@ -294,7 +294,7 @@ Log the following for security governance:
 ### Assets (`assets/`)
 
 - `templates/web_application.py` - Web application threat model template
-- `templates/[microservices](../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md).py` - [Microservices](../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) architecture template
+- `templates/[microservices](../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md).py` - [Microservices](../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md) architecture template
 - `templates/mobile_app.py` - Mobile application threat model template
 - `templates/iot_system.py` - IoT system threat model template
 - `dfd_styles.json` - Custom graphviz styling for professional diagrams
@@ -344,17 +344,17 @@ Dataflow(app, db, "SQL/TLS").data = "user data, transactions"
 tm.process()
 ```
 
-### Pattern 2: Cloud Native [Microservices](../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md)
+### Pattern 2: Cloud Native [Microservices](../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md)
 
 ```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from pytm import TM, Lambda, Datastore, Dataflow, Boundary, Actor
 
-tm = TM("Cloud [Microservices](../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md)")
+tm = TM("Cloud [Microservices](../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md)")
 
 cloud = Boundary("Cloud Provider VPC")
 user = Actor("Mobile App")
 
-# [Serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) functions
+# [Serverless](../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) functions
 api_gateway = Lambda("API Gateway")
 api_gateway.inBoundary = cloud
 api_gateway.implementsAPI = True
@@ -448,7 +448,7 @@ Trust boundary crossings require extra scrutiny:
 
 - **Infrastructure as Code**: Threat model Terraform/[CloudFormation](../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md) templates
 - **Container Security**: Model container orchestration and service mesh
-- **API Design**: Threat model API gateway and [microservices](../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) communication
+- **API Design**: Threat model API gateway and [microservices](../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md) communication
 - **Secrets Management**: Model key management and secrets distribution
 
 ## Troubleshooting

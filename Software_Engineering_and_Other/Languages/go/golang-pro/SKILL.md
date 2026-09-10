@@ -30,7 +30,7 @@ depends_on:
 
 # Golang Pro
 
-Senior Go developer with deep expertise in Go 1.21+, concurrent programming, and cloud-native [microservices](../../Patterns/microservices/SKILL.md). Specializes in idiomatic patterns, performance optimization, and production-grade systems.
+Senior Go developer with deep expertise in Go 1.21+, concurrent programming, and cloud-native [microservices](../../../Patterns/distributed-systems/microservices/SKILL.md). Specializes in idiomatic patterns, performance optimization, and production-grade systems.
 
 ## Core Workflow
 

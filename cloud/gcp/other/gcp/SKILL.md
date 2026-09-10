@@ -60,12 +60,12 @@ GKE cluster running, Cloud Run service deployed, networking secured, CI/CD pipel
 | Stateful / complex | GKE (Standard) | Custom node pools, GPUs, StatefulSets |
 | Simple event-driven | Cloud Functions (2nd gen) | Eventarc, Pub/Sub, Storage triggers |
 | Batch / background | Cloud Run Jobs | Containerized batch, retries, timeout |
-| Data warehouse | BigQuery | [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md), slot commitments, BI Engine |
+| Data warehouse | BigQuery | [Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md), slot commitments, BI Engine |
 | ML training | GKE with GPUs | Custom hardware, distributed training |
 | Web hosting | Cloud Storage + LB | Static sites, CDN, global LB |
 
 ### GKE Cluster Mode Decision Tree
-- Small team, no node management: Autopilot ([serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md), PSA enforced, pay-per-pod).
+- Small team, no node management: Autopilot ([serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md), PSA enforced, pay-per-pod).
 - Full control, custom hardware: Standard with node pools, taints, GPUs.
 - Multi-region HA: Regional cluster in 3 zones.
 - Cost-sensitive: Preemptible/Spot node pools for batch.
@@ -553,7 +553,7 @@ Setting max-instances too high risks cost spikes under load. Setting min-instanc
 - ../../../Global_References/gcp-fundamentals.md -- Gcp Fundamentals
 - ../../../Global_References/[gcp-gke](../../../../containers-orchestration/gke/cluster-management/gcp-gke/SKILL.md).md -- GCP GKE
 - ../../../Global_References/gcp-infrastructure.md -- Google Cloud Infrastructure
-- ../../../Global_References/gcp-[serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md).md -- GCP [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)
+- ../../../Global_References/gcp-[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md).md -- GCP [Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)
 
 ## Handoff
 Hand off to GCP for Google Cloud-specific provisioning or CI/CD. Hand off to terraform for [multi-cloud](../../../common/other/multi-cloud/SKILL.md) IaC. Hand off to [kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-patterns for workload manifests on GKE.

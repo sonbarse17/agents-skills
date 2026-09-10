@@ -33,7 +33,7 @@ depends_on:
 ## Core Workflow
 
 1. **Analyze requirements** — Identify service boundaries, APIs, data models, security needs
-2. **Design architecture** — Plan [microservices](../../../Patterns/microservices/SKILL.md), data access, cloud integration, security; confirm design before coding
+2. **Design architecture** — Plan [microservices](../../../Patterns/distributed-systems/microservices/SKILL.md), data access, cloud integration, security; confirm design before coding
 3. **Implement** — Create services with constructor injection and layered architecture (see Quick Start below)
 4. **Secure** — Add Spring Security, OAuth2, method security, CORS configuration; verify security rules compile and pass tests. If compilation or tests fail: review error output, fix the failing rule or configuration, and re-run before proceeding
 5. **Test** — Write unit, integration, and slice tests; run `./mvnw test` (or `./gradlew test`) and confirm all pass before proceeding. If tests fail: review the stack trace, isolate the failing assertion or component, fix the issue, and re-run the full suite

@@ -27,11 +27,11 @@ depends_on:
   - devsecops
 ---
 
-# Complete [DevSecOps](../../../../Security/devsecops/SKILL.md) Pipeline Deployment for [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md), From Scratch
+# Complete [DevSecOps](../../../../Security/devsecops/SKILL.md) Pipeline Deployment for [Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md), From Scratch
 
 ## Purpose
 
-A [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) [DevSecOps](../../../../Security/devsecops/SKILL.md) pipeline's gate sequence differs from the
+A [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) [DevSecOps](../../../../Security/devsecops/SKILL.md) pipeline's gate sequence differs from the
 [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) variant of this skill in two structural ways. First, its SCA
 surface is proportionally larger and riskier: a Lambda zip bundles its
 **entire** transitive dependency tree directly into the one artifact that
@@ -51,13 +51,13 @@ an in-cluster operator (there is no cluster).
 
 ## When to use
 
-- A [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) pipeline has individual security tools bolted on ad hoc,
+- A [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) pipeline has individual security tools bolted on ad hoc,
   and the user wants the full gate sequence — including execution-role
   scoping as a release gate and package signing — designed coherently
   from scratch.
 - The user is building a new Lambda-based service's pipeline and wants
   security gates designed in from the start.
-- The user wants to understand why a [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) pipeline's primary release
+- The user wants to understand why a [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) pipeline's primary release
   gate is IAM role scope rather than a [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-style admission policy,
   and how that changes what "the security review before shipping" actually
   checks.
@@ -68,9 +68,9 @@ an in-cluster operator (there is no cluster).
 ## Prerequisites & environment
 
 - A working CI/CD pipeline that already packages a zip/layer, uploads it,
-  and deploys via SAM/[Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) Framework with alias-based traffic
+  and deploys via SAM/[Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) Framework with alias-based traffic
   shifting — see
-  [complete-[cicd-pipeline](../../../../ci-cd/common/pipeline-design/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-from-scratch](../../../cicd-tooling/skills/[complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-from-scratch](../complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-from-scratch/SKILL.md)/SKILL.md)
+  [complete-[cicd-pipeline](../../../../ci-cd/common/pipeline-design/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-from-scratch](../../../cicd-tooling/skills/[complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-from-scratch](../complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-from-scratch/SKILL.md)/SKILL.md)
   for that base pipeline; this skill adds the security-gate layer onto it.
 - SAST and SCA tooling chosen per
   [sast-integration](../[sast-integration](../../../Security/sast-integration/SKILL.md)/SKILL.md) and
@@ -95,7 +95,7 @@ other pipeline.
 
 ### Phase 2 — SCA against the fully-resolved, packaged dependency tree
 
-This is where the [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-specific risk lives. Scan **after** the
+This is where the [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-specific risk lives. Scan **after** the
 install/bundle step (`pip install -t package/`, `npm ci --omit=dev`), not
 just the top-level manifest, since the entire resolved tree ships as one
 artifact with no separate layer boundary the way a container image has
@@ -139,14 +139,14 @@ aws lambda update-function-code --function-name payments-webhook \
 With a `CodeSigningConfig` attached and set to `Enforce`, Lambda itself
 refuses to update the function's code from an unsigned or
 signature-mismatched package — this is a deploy-time technical control,
-not just a CI-side check, and is the [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) equivalent of requiring an
+not just a CI-side check, and is the [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) equivalent of requiring an
 admission-controller-verified signed image in [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) (per
 [supply-chain-security-slsa-sbom](../[supply-chain-security-slsa-sbom](../../../Security/[supply-chain-security](../../../Security/supply-chain-security/SKILL.md)-slsa-sbom/SKILL.md)/SKILL.md)).
 
 ### Phase 4 — Least-privilege execution-role scoping as the primary release gate
 
 Where the [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) variant's primary pre-deploy gate is a policy check
-on the rendered manifest, the [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) equivalent is a **diff review of
+on the rendered manifest, the [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) equivalent is a **diff review of
 the function's execution role** against what it actually calls — since
 there's no cluster-side admission control to catch an over-broad grant
 after the fact, this has to be caught before the role change ships:
@@ -174,8 +174,8 @@ least-privilege guidance — resource-ARN-scoped statements, not
 
 ### Phase 5 — Deploy (unchanged from the base CI/CD pipeline)
 
-Package upload, SAM/[Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) Framework deploy, alias-based canary — per
-[complete-[cicd-pipeline](../../../../ci-cd/common/pipeline-design/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-from-scratch](../../../cicd-tooling/skills/[complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-from-scratch](../complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-from-scratch/SKILL.md)/SKILL.md).
+Package upload, SAM/[Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) Framework deploy, alias-based canary — per
+[complete-[cicd-pipeline](../../../../ci-cd/common/pipeline-design/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-from-scratch](../../../cicd-tooling/skills/[complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-from-scratch](../complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-from-scratch/SKILL.md)/SKILL.md).
 
 ### Phase 6 — Secrets: fetched by the function at runtime, never baked in
 
@@ -250,7 +250,7 @@ reviewed — no drift introduced by a manual console edit after deploy.
   never appeared in the scan.
   **Fix:** Scan the unpacked, fully-resolved package after the
   install/bundle step, not the manifest alone — identical lesson to the
-  base CI/CD [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) skill, restated here because it's specifically the
+  base CI/CD [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) skill, restated here because it's specifically the
   SCA gate this pipeline depends on catching.
 
 - **Symptom:** Code signing is configured with `CodeSigningConfig.Policy:
@@ -282,7 +282,7 @@ package.
 ```yaml
 jobs:
   sast: { /* per [sast-integration](../../../../Security/sast-integration/SKILL.md) */ }
-  build: { /* zip packaging, per the base [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) CI/CD skill */ }
+  build: { /* zip packaging, per the base [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) CI/CD skill */ }
 
   sca:
     needs: build
@@ -324,7 +324,7 @@ or [vault](../../../../Security/vault/SKILL.md) token is ever present in the CI 
 
 ## Cross-references
 
-- [complete-[cicd-pipeline](../../../../ci-cd/common/pipeline-design/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-from-scratch](../../../cicd-tooling/skills/[complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-from-scratch](../complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-from-scratch/SKILL.md)/SKILL.md) — the base packaging/deploy pipeline this skill adds security gates onto.
+- [complete-[cicd-pipeline](../../../../ci-cd/common/pipeline-design/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-from-scratch](../../../cicd-tooling/skills/[complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-from-scratch](../complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-from-scratch/SKILL.md)/SKILL.md) — the base packaging/deploy pipeline this skill adds security gates onto.
 - [sast-integration](../[sast-integration](../../../Security/sast-integration/SKILL.md)/SKILL.md) and [software-composition-analysis-sca](../[software-composition-analysis-sca](../../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md) — Phase 1-2 gate mechanics.
 - [supply-chain-security-slsa-sbom](../[supply-chain-security-slsa-sbom](../../../Security/[supply-chain-security](../../../Security/supply-chain-security/SKILL.md)-slsa-sbom/SKILL.md)/SKILL.md) — Phase 3's signing/provenance mechanics.
 - [aws-lambda-packaging-and-configuration](../../../[serverless](../../Containers_and_Orchestration/serverless/SKILL.md)-and-alternative-compute/skills/[aws-lambda-packaging-and-configuration](../[aws-lambda](../aws-lambda/SKILL.md)-packaging-and-configuration/SKILL.md)/SKILL.md) — execution-role least-privilege design referenced in Phase 4.

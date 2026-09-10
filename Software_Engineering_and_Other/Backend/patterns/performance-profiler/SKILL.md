@@ -70,7 +70,7 @@ What is the performance symptom?
 │   → Cache strategy → N+1 query → index → pagination
 ├── High CPU usage → CPU [profiling](../../../Frontend/performance/profiling/SKILL.md)
 │   → Sampling profiler → hot functions → algorithm optimization
-│   → Worker threads → [microservices](../../../Patterns/microservices/SKILL.md) → resource limits
+│   → Worker threads → [microservices](../../../Patterns/distributed-systems/microservices/SKILL.md) → resource limits
 ├── Memory growth / leak → Memory [profiling](../../../Frontend/performance/profiling/SKILL.md)
 │   → Heap dump → retained size → leak suspect → fix
 │   → Event listener cleanup → cache size → object pooling
@@ -603,5 +603,5 @@ What's the impact/effort ratio?
 - **Lazy loading and code splitting**: Split bundles by route. Defer non-critical JavaScript. Load images lazily with IntersectionObserver. Use dynamic imports for rarely-used modules.
 
 ## Handoff
-Hand off to `[dev-loop-debugging-strategy](../../../Patterns/debugging-strategy/SKILL.md)` if [profiling](../../../Frontend/performance/profiling/SKILL.md) reveals a bug. Hand off to `dev-loop-[code-review](../../../../ci-cd/common/other/code-review/SKILL.md)` for code-level optimization review. Hand off to `[dev-loop-refactor-guide](../../../Patterns/refactor-guide/SKILL.md)` for performance-related refactoring.
+Hand off to `[dev-loop-debugging-strategy](../../../Patterns/debugging/debugging-strategy/SKILL.md)` if [profiling](../../../Frontend/performance/profiling/SKILL.md) reveals a bug. Hand off to `dev-loop-[code-review](../../../../ci-cd/common/other/code-review/SKILL.md)` for code-level optimization review. Hand off to `[dev-loop-refactor-guide](../../../Patterns/dev-practice/refactor-guide/SKILL.md)` for performance-related refactoring.
 

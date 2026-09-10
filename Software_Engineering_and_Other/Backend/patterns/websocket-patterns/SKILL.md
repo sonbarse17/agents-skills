@@ -452,7 +452,7 @@ class ConnectionRateLimiter {
   - ../../../Global_References/ws-vs-sse.md — WebSocket vs SSE (Server-Sent Events)
 ## Handoff
 No artifact produced unless requested.
-Next skill: [backend-message-queue](../../../Patterns/message-queue/SKILL.md) — if real-time events need to be persisted or fanned out to other services.
+Next skill: [backend-message-queue](../../../Patterns/distributed-systems/message-queue/SKILL.md) — if real-time events need to be persisted or fanned out to other services.
 Carry forward: message schemas, room model, auth mechanism, scaling strategy.
 ## Implementation Patterns
 

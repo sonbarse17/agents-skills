@@ -556,7 +556,7 @@ sync_dns_zones() {
 
 - Assuming **cloud is always cheaper** — repatriate steady-state workloads to on-prem when cost analysis favors it
 - Using **different IaC tools** for on-prem and cloud — Terraform/[Pulumi](../../../../infrastructure-as-code/pulumi/other/pulumi/SKILL.md) should manage both uniformly
-- Ignoring **latency** between sites — chatty [microservices](../../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) across WAN links degrade performance
+- Ignoring **latency** between sites — chatty [microservices](../../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md) across WAN links degrade performance
 - Managing **separate identity stores** — federate everything to a single IdP
 - Treating **hybrid as temporary** — hybrid is a long-term architecture, plan for it
 - Skipping **cost governance** — egress charges and dual-running resources balloon budgets

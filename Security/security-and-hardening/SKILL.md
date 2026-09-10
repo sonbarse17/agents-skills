@@ -385,7 +385,7 @@ Securing data is "can an attacker read it?" Privacy is "should *we* even hold it
 - **Get consent before collection or third-party sharing**, and make it auditable. Sending PII to an analytics/ad/LLM vendor is "sharing" — the user's choice gates it, and the vendor needs a data-processing agreement.
 - **Localize defaults, don't hardcode one region's law.** Data-residency and rules differ by user location; make the policy a configurable boundary, not an assumption.
 
-When data crosses a trust boundary, validate it as untrusted (see Input Validation above); when a privacy [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) exposes personal data, the breach-notification clock is part of the postmortem — follow the `[debugging-and-error-recovery](../../Software_Engineering_and_Other/Patterns/debugging-and-error-recovery/SKILL.md)` skill.
+When data crosses a trust boundary, validate it as untrusted (see Input Validation above); when a privacy [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) exposes personal data, the breach-notification clock is part of the postmortem — follow the `[debugging-and-error-recovery](../../Software_Engineering_and_Other/Patterns/debugging/debugging-and-error-recovery/SKILL.md)` skill.
 
 ## Securing AI / LLM Features
 

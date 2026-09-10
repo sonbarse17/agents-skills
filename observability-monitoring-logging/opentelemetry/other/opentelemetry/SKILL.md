@@ -24,7 +24,7 @@ Adopt vendor-neutral telemetry with consistent instrumentation across services.
 
 ## When to Use This Skill
 
-- Debugging latency across [microservices](../../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md)
+- Debugging latency across [microservices](../../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md)
 - Standardizing [observability](../../../common/fundamentals/observability/SKILL.md) data model and naming
 - Sending telemetry to Prometheus, Grafana, [Datadog](../../../datadog/other/datadog/SKILL.md), or OTLP backends
 - Building SLO [dashboards](../../../common/dashboard-design/dashboards/SKILL.md) with trace-to-log correlation

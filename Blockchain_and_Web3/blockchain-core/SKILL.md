@@ -461,7 +461,7 @@ func (mp *Mempool) Add(tx *Transaction) bool {
   - references/blockchain-fork-choice.md — Fork Choice Rules
   - references/light-client-protocols.md — Light Client Protocols
   - references/transaction-ordering-policies.md — Transaction Ordering Policies
-  - references/mempool-[design-patterns](../../Software_Engineering_and_Other/Patterns/design-patterns/SKILL.md).md — Mempool Design Patterns
+  - references/mempool-[design-patterns](../../Software_Engineering_and_Other/Patterns/architecture/design-patterns/SKILL.md).md — Mempool Design Patterns
 
 ## Architecture Decision Trees
 

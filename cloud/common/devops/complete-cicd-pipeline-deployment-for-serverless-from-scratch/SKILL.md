@@ -26,11 +26,11 @@ depends_on:
   - python
 ---
 
-# Complete CI/CD Pipeline Deployment for [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md), From Scratch
+# Complete CI/CD Pipeline Deployment for [Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md), From Scratch
 
 ## Purpose
 
-A [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) pipeline's build artifact and deploy mechanics are both
+A [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) pipeline's build artifact and deploy mechanics are both
 fundamentally different from the [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) and VM variants of this skill:
 the build step produces a **zip archive or a set of Lambda layers**, not a
 container image or a machine image, and the deploy step **is** the
@@ -47,10 +47,10 @@ sequenced here.
 
 - A new Lambda-based (or equivalent FaaS) service has no pipeline yet, and
   the team wants source-to-deployed-with-canary wired up in one pass.
-- An existing [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) deploy is a manual `zip` + console upload, and the
+- An existing [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) deploy is a manual `zip` + console upload, and the
   user wants it automated end-to-end with security gates and a safe
   traffic-shift rollout.
-- The user wants to understand exactly how a [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) pipeline's
+- The user wants to understand exactly how a [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) pipeline's
   packaging and rollout mechanics differ from a container/[Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
   pipeline (the point most often gotten wrong when someone tries to reuse
   a [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) pipeline template for a Lambda function).
@@ -68,10 +68,10 @@ sequenced here.
   group) only — least-privilege, per
   [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)/SKILL.md)
   — never a broad account-wide deploy role.
-- A deploy framework chosen: AWS SAM, [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) Framework, or CDK all
+- A deploy framework chosen: AWS SAM, [Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) Framework, or CDK all
   wrap the underlying `CreateFunction`/`UpdateFunctionCode`/alias API
   calls; examples below use SAM (`sam build`/`sam deploy`) since it's the
-  most directly AWS-native, with a [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) Framework note where the
+  most directly AWS-native, with a [Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) Framework note where the
   shape differs.
 - [aws-lambda-packaging-and-configuration](../../../[serverless](../../Containers_and_Orchestration/serverless/SKILL.md)-and-alternative-compute/skills/[aws-lambda-packaging-and-configuration](../[aws-lambda](../aws-lambda/SKILL.md)-packaging-and-configuration/SKILL.md)/SKILL.md)
   already read for the packaging/IAM-role mechanics this pipeline
@@ -119,7 +119,7 @@ layer, per
 Function dependency trees bundled directly into the zip (all of
 `node_modules`/site-packages, not just what a slim container runtime
 image would carry) are frequently the largest attack-surface component of
-a [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) package — scan the packaged dependency tree, not just the
+a [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) package — scan the packaged dependency tree, not just the
 application's own source:
 ```yaml
   sast:
@@ -148,12 +148,12 @@ ended up bundled into the deployed artifact.
 ```bash
 aws s3 cp function.zip s3://payments-api-artifacts/${GITHUB_SHA}/function.zip
 ```
-SAM/[Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) Framework typically wrap this upload internally as part of
-`sam deploy`/`[serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) deploy`; shown explicitly here since the
+SAM/[Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) Framework typically wrap this upload internally as part of
+`sam deploy`/`[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) deploy`; shown explicitly here since the
 artifact-upload step is itself part of what differs from a container
 pipeline's registry push.
 
-### Phase 5 — Deploy via SAM/[Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) Framework, publishing a new version
+### Phase 5 — Deploy via SAM/[Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) Framework, publishing a new version
 
 ```bash
 sam build
@@ -170,7 +170,7 @@ aliases and traffic-shifting target, per
 
 ### Phase 6 — Canary traffic shift via a weighted alias — not a [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) rollout
 
-This is the [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-specific rollout mechanic: instead of a Service
+This is the [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-specific rollout mechanic: instead of a Service
 selector flip or a percentage-weighted `Rollout` CR routing between pods,
 Lambda shifts a percentage of **invocations** between two published
 function *versions* under one alias, either via SAM's built-in
@@ -183,7 +183,7 @@ applied to its Lambda deployment type instead:
 # template.yaml (SAM)
 Resources:
   PaymentsApiFunction:
-    Type: AWS::[Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)::Function
+    Type: AWS::[Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)::Function
     Properties:
       AutoPublishAlias: prod
       DeploymentPreference:
@@ -214,7 +214,7 @@ back to the prior value, depending on outcome.
 ## Best practices
 
 - Scan the fully resolved, unpacked deployment package (Phase 3), not just
-  the top-level manifest — a [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) zip bundles its entire dependency
+  the top-level manifest — a [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) zip bundles its entire dependency
   tree directly, unlike a container image where OS-level and
   application-level dependencies are scanned as separate layers.
 - Publish immutable versions on every deploy and target aliases in every
@@ -264,7 +264,7 @@ back to the prior value, depending on outcome.
   that never showed up in the scan.
   **Fix:** Scan the *unpacked, fully-resolved* deployment package (Phase
   3) after the install/bundle step, not just the top-level manifest —
-  this is the [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-specific version of the "scan lockfiles, not
+  this is the [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-specific version of the "scan lockfiles, not
   manifests" guidance in
   [software-composition-analysis-sca](../../../../Security/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../../Security/software-composition-analysis-sca/SKILL.md)/SKILL.md),
   made more consequential because the entire dependency tree ships inside

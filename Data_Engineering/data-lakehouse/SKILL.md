@@ -379,7 +379,7 @@ Scalability considerations: Bronze layer scales horizontally with object storage
 # Query engine optimization by workload
 optimization:
   bi_dashboards:
-    engine: "Databricks SQL Warehouse ([serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md))"
+    engine: "Databricks SQL Warehouse ([serverless](../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md))"
     config:
       - use_photon: true  # Vectorized engine (2-10x faster)
       - warehouse_size: "SMALL to LARGE"  # Scale based on concurrency
@@ -454,7 +454,7 @@ lakehouse_platforms:
     formats: "Iceberg (via Athena), Delta (via Spark)"
     engines: "Athena, Spark on EMR, Redshift Spectrum"
     ml_integration: "SageMaker"
-    strengths: ["AWS-native", "[Serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) Athena queries", "Low cost"]
+    strengths: ["AWS-native", "[Serverless](../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) Athena queries", "Low cost"]
     weaknesses: ["Decoupled components", "Less integrated than Databricks"]
 ```
 
@@ -505,7 +505,7 @@ Primary ecosystem?
   - ../../../Global_References/lakehouse-platform.md — Lakehouse Platform Reference
   - ../../../Global_References/lakehouse-query-engines.md — Lakehouse Query Engines
   - ../../../Global_References/medallion-architecture.md — Medallion Architecture Reference
-  - ../../../Global_References/lakehouse-[architecture-patterns](../../Software_Engineering_and_Other/Patterns/architecture-patterns/SKILL.md).md — Lakehouse Architecture Patterns
+  - ../../../Global_References/lakehouse-[architecture-patterns](../../Software_Engineering_and_Other/Patterns/architecture/architecture-patterns/SKILL.md).md — Lakehouse Architecture Patterns
   - ../../../Global_References/lakehouse-[performance-optimization](../../Software_Engineering_and_Other/Backend/patterns/performance-optimization/SKILL.md).md — Performance Optimization Reference
 ## Architecture Decision Trees
 

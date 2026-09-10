@@ -320,7 +320,7 @@ A changelog is not `git log`. It's the curated, consumer-facing answer to "what 
 - `GET /v1/tasks/all` — use the paginated `GET /v1/tasks` (removal in 2.0)
 ```
 
-Write the entry in the same change that makes the change, while the impact is fresh — not reconstructed from [commit](../commit/SKILL.md) archaeology at release time. Breaking changes get a migration note and a deprecation window (follow the `[deprecation-and-migration](../../../../Software_Engineering_and_Other/Patterns/deprecation-and-migration/SKILL.md)` skill); shipping the actual release is the `[shipping-and-launch](../../../../Product_and_Business/shipping-and-launch/SKILL.md)` skill's job — this section is the versioning contract that feeds it.
+Write the entry in the same change that makes the change, while the impact is fresh — not reconstructed from [commit](../commit/SKILL.md) archaeology at release time. Breaking changes get a migration note and a deprecation window (follow the `[deprecation-and-migration](../../../../Software_Engineering_and_Other/Patterns/dev-practice/deprecation-and-migration/SKILL.md)` skill); shipping the actual release is the `[shipping-and-launch](../../../../Product_and_Business/shipping-and-launch/SKILL.md)` skill's job — this section is the versioning contract that feeds it.
 
 ## Common Rationalizations
 

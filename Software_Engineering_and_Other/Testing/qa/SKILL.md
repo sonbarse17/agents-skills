@@ -389,7 +389,7 @@ A growing e-commerce platform had 1,200 E2E tests with a 40% flake rate. Tests f
 A healthcare SaaS company needed to release quickly while maintaining HIPAA compliance. They implemented risk-based testing: critical path tests (authentication, authorization, data access) ran on every [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md); full regression ran nightly; compliance [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) suite ran weekly. This balanced speed and compliance. [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) findings related to testing were reduced by 80%.
 
 ### Case Study 4: Retail — Shift-Left with Contract Testing
-A retail company implemented consumer-driven contract testing (Pact) for [microservices](../../Patterns/microservices/SKILL.md). Integration issues between services dropped 90%. Developer feedback cycle reduced from days to minutes. The contract test suite caught breaking changes before they reached staging.
+A retail company implemented consumer-driven contract testing (Pact) for [microservices](../../Patterns/distributed-systems/microservices/SKILL.md). Integration issues between services dropped 90%. Developer feedback cycle reduced from days to minutes. The contract test suite caught breaking changes before they reached staging.
 
 ## Rules
 
@@ -434,7 +434,7 @@ After completing this skill:
 | Test data strategy | Production clone (realistic) | Synthetic data (controlled) | Privacy compliance, data volume |
 
 ### Automation Framework Decision
-- [Microservices](../../Patterns/microservices/SKILL.md) API → REST Assured + Postman/Newman
+- [Microservices](../../Patterns/distributed-systems/microservices/SKILL.md) API → REST Assured + Postman/Newman
 - Frontend-heavy SPA → Playwright or Cypress
 - Mobile app → Appium + Maestro
 - Legacy monolith → Selenium + JUnit

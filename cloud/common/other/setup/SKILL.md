@@ -42,7 +42,7 @@ appear in conversation history.
 
 If the user indicates they do not have an Elastic Cloud account yet, propose starting a free trial at
 [Elastic Cloud free trial](https://cloud.elastic.co/registration). The trial provides 14 days of full access to Elastic
-Cloud [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) with no credit card required. Once the user has registered and logged in, proceed with API key
+Cloud [Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) with no credit card required. Once the user has registered and logged in, proceed with API key
 generation below.
 
 Direct the user to:
@@ -50,7 +50,7 @@ Direct the user to:
 1. Generate a key at [Elastic Cloud API keys](https://cloud.elastic.co/account/keys). Only **Organization owners** can
    create and manage Cloud API keys.
 1. When creating this key, include **Project Admin** privileges or higher (Org Owner) so it can create and manage
-   [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) projects.
+   [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) projects.
 1. Create a `.env` file in the project root (recommended — works in sandboxed agent shells):
 
 ```bash
@@ -85,7 +85,7 @@ Ask the user if they want a different region. To list available regions:
 
 ```bash
 curl -s -H "Authorization: ApiKey ${EC_API_KEY}" \
-  "${EC_BASE_URL}/api/v1/[serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)/regions" | python3 -m json.tool
+  "${EC_BASE_URL}/api/v1/[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)/regions" | python3 -m json.tool
 ```
 
 ### Step 3: Validate connection
@@ -94,7 +94,7 @@ Confirm the API key works by calling the regions endpoint:
 
 ```bash
 curl -sf -H "Authorization: ApiKey ${EC_API_KEY}" \
-  "${EC_BASE_URL}/api/v1/[serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)/regions" > /dev/null && echo "Authenticated." || echo "Authentication failed."
+  "${EC_BASE_URL}/api/v1/[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)/regions" > /dev/null && echo "Authenticated." || echo "Authentication failed."
 ```
 
 If validation fails, check:

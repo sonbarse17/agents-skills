@@ -42,7 +42,7 @@ User request includes: `flask`, `flask backend`, `flask blueprint`, `flask app f
 - Database ORM (SQLAlchemy, Peewee)
 - API style (REST, Flask-RESTx)
 - Template engine (Jinja2, none for SPA)
-- Deployment (Gunicorn, uWSGI, [serverless](../../../Patterns/serverless/SKILL.md))
+- Deployment (Gunicorn, uWSGI, [serverless](../../../Patterns/data-performance/serverless/SKILL.md))
 
 ### Output Artifact
 A markdown document containing:

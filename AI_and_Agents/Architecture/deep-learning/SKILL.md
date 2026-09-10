@@ -480,7 +480,7 @@ Scalability: single GPU for models up to 7B params (quantized). 4-8 GPUs for 7B-
   - ../../../Global_References/generative-models.md — Generative Models
   - ../../../Global_References/pytorch-tensorflow.md — PyTorch and TensorFlow Reference
   - ../../../Global_References/training-optimization.md — Training Optimization Reference
-  - ../../../Global_References/deep-learning-[architecture-patterns](../../../Software_Engineering_and_Other/Patterns/architecture-patterns/SKILL.md).md — Deep Learning Architecture Patterns
+  - ../../../Global_References/deep-learning-[architecture-patterns](../../../Software_Engineering_and_Other/Patterns/architecture/architecture-patterns/SKILL.md).md — Deep Learning Architecture Patterns
   - ../../../Global_References/deep-learning-training-optimization.md — Training Optimization Deep Dive
 ## Handoff
 `ml-[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)` for logging deep learning experiments

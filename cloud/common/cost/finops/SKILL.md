@@ -86,7 +86,7 @@ Tagging enforced, budgets active, right-sizing recommendations implemented, cost
 | Storage (lifecycle, unattached) | 20-40% savings | Low | Medium |
 | Data transfer (egress, cross-region) | 30-50% savings | Medium | High |
 | Database (right-sizing, RI) | 25-50% savings | Medium | High |
-| [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) (over-provisioned memory/timeout) | 20-30% savings | Low | Medium |
+| [Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) (over-provisioned memory/timeout) | 20-30% savings | Low | Medium |
 
 ## Core Workflow
 

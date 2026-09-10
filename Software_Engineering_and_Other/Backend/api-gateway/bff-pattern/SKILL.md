@@ -42,7 +42,7 @@ Exact user phrases: "BFF", "Backend for Frontend", "API gateway", "gateway speci
 
 ### Input Context
 - Client types consuming the API (web, iOS, [Android](../../../../Mobile/android/SKILL.md), third-party).
-- Backend [microservices](../../../Patterns/microservices/SKILL.md) architecture.
+- Backend [microservices](../../../Patterns/distributed-systems/microservices/SKILL.md) architecture.
 - Latency and data shape requirements per client.
 
 ### Output Artifact

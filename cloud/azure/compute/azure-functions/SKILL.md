@@ -20,7 +20,7 @@ depends_on:
 
 # Azure Functions
 
-Build and deploy [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) applications with Azure Functions. Covers function app creation, trigger and binding configuration, deployment strategies, real code examples in [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) and Node.js, and production best practices.
+Build and deploy [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) applications with Azure Functions. Covers function app creation, trigger and binding configuration, deployment strategies, real code examples in [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) and Node.js, and production best practices.
 
 ## When to Use
 
@@ -28,7 +28,7 @@ Build and deploy [serverless](../../../../Software_Engineering_and_Other/Pattern
 - You are building APIs, webhooks, or background processing pipelines.
 - You want per-execution billing without managing servers.
 - You need to respond to Azure service events (Blob Storage, Service Bus, Cosmos DB changes).
-- You are implementing lightweight [microservices](../../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) or scheduled tasks.
+- You are implementing lightweight [microservices](../../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md) or scheduled tasks.
 
 ## Prerequisites
 

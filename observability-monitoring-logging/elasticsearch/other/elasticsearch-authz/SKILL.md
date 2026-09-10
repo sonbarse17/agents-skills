@@ -31,7 +31,7 @@ For authentication methods and API key management, see the **[elasticsearch-auth
 
 For detailed API endpoints, see [../../../Global_References/elasticsearch-authz_api-reference.md](../../../../Global_References/elasticsearch-authz_api-reference.md).
 
-> **Deployment note:** Feature availability differs between self-managed, ECH, and [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md). See
+> **Deployment note:** Feature availability differs between self-managed, ECH, and [Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md). See
 > [Deployment Compatibility](#deployment-compatibility) for details.
 
 ## Jobs to Be Done
@@ -74,7 +74,7 @@ Extract from the prompt:
 | **Access level** | Read, write, manage, or a specific set of privileges                      |
 | **Scope**        | All documents/fields, or restricted by region, department, sensitivity?   |
 | **Kibana?**      | Does the request mention any Kibana feature ([dashboards](../../../common/dashboard-design/dashboards/SKILL.md), Discover, etc.)  |
-| **Deployment?**  | Self-managed, ECH, or [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)? [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) has a different user model.  |
+| **Deployment?**  | Self-managed, ECH, or [Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)? [Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) has a different user model.  |
 
 ### Step 2 — Check for existing roles
 
@@ -98,7 +98,7 @@ Kibana API if Kibana features are involved (see [Choosing the right API](#choosi
 | **New native user**      | Create the user with the role and a strong generated password. (Self-managed / ECH only.)                                            |
 | **Existing native user** | Fetch current roles, append the new role, update the user with the full array. (Self-managed / ECH only.)                            |
 | **External realm user**  | Create a role mapping that matches the user's realm attributes to the role. (Self-managed / ECH only.)                               |
-| **[Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) user**      | Use the **[cloud-access-management](../../../../cloud/common/identity/access-management/SKILL.md)** skill. Assign a predefined role or create a custom role first, then assign it via the Cloud API. |
+| **[Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) user**      | Use the **[cloud-access-management](../../../../cloud/common/identity/access-management/SKILL.md)** skill. Assign a predefined role or create a custom role first, then assign it via the Cloud API. |
 
 ### Example decomposition
 
@@ -113,7 +113,7 @@ Confirm each step with the user if the request is ambiguous.
 
 ## Manage Native Users
 
-> Native user management applies to self-managed and ECH deployments. On [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md), users are managed at the
+> Native user management applies to self-managed and ECH deployments. On [Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md), users are managed at the
 > organization level — skip this section.
 
 ### Create a user
@@ -318,8 +318,8 @@ unrestricted role overrides DLS/FLS intent.
 
 ## Assign Roles to Users
 
-> Self-managed and ECH only. On [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md), use the **[cloud-access-management](../../../../cloud/common/identity/access-management/SKILL.md)** skill — see
-> [Serverless User Access](#[serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-user-access).
+> Self-managed and ECH only. On [Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md), use the **[cloud-access-management](../../../../cloud/common/identity/access-management/SKILL.md)** skill — see
+> [Serverless User Access](#[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-user-access).
 
 Update the user with the new `roles` array:
 
@@ -356,8 +356,8 @@ curl -X POST "${ELASTICSEARCH_URL}/_security/user/_has_privileges" \
 
 ## Manage Role Mappings
 
-> Role mappings are **not available** on [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) (both ES API and Kibana UI are disabled). Use the
-> **[cloud-access-management](../../../../cloud/common/identity/access-management/SKILL.md)** skill instead — see [Serverless User Access](#[serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-user-access).
+> Role mappings are **not available** on [Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) (both ES API and Kibana UI are disabled). Use the
+> **[cloud-access-management](../../../../cloud/common/identity/access-management/SKILL.md)** skill instead — see [Serverless User Access](#[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-user-access).
 
 Role mappings assign external-realm users (LDAP, AD, SAML, PKI) to roles based on attribute rules. Self-managed and ECH
 only. For supported rule operators and resource fields, see
@@ -429,9 +429,9 @@ curl "${ELASTICSEARCH_URL}/_security/role_mapping" <auth_flags>
 curl -X DELETE "${ELASTICSEARCH_URL}/_security/role_mapping/saml-default-access" <auth_flags>
 ```
 
-## [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) User Access
+## [Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) User Access
 
-On [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md), there are no native users or role mappings. Users receive project access through Cloud-level role
+On [Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md), there are no native users or role mappings. Users receive project access through Cloud-level role
 assignments.
 
 - **Predefined roles** (e.g. `admin`, `developer`, `viewer`) cover common access patterns. If one fits, assign it
@@ -439,7 +439,7 @@ assignments.
 - **Custom roles** are required when the user needs fine-grained access (specific indices, Kibana features, DLS/FLS).
   Create the custom role using the Elasticsearch API or Kibana API (same as self-managed — see
   [Manage Roles](#manage-roles)), then assign it to the user alongside a predefined base role via the Cloud API.
-- **Run-as** privileges are unavailable in [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) custom roles.
+- **Run-as** privileges are unavailable in [Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) custom roles.
 
 Use the **[cloud-access-management](../../../../cloud/common/identity/access-management/SKILL.md)** skill for the full workflow (inviting users, assigning roles, managing Cloud API
 keys, and verifying access). This skill handles only role definition; [cloud-access-management](../../../../cloud/common/identity/access-management/SKILL.md) handles user assignment.
@@ -470,7 +470,7 @@ access and `kibana[].feature` for dashboard and Discover read access on all spac
 1. Create `apm-reader` role with `indices: [{ names: ["apm-*"], privileges: ["read", "view_index_metadata"] }]`.
 1. `PUT /_security/user/alice` with `"roles": ["viewer", "apm-reader"]` (include all roles).
 
-### Grant a [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) user read-write access with Kibana [dashboards](../../../common/dashboard-design/dashboards/SKILL.md)
+### Grant a [Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) user read-write access with Kibana [dashboards](../../../common/dashboard-design/dashboards/SKILL.md)
 
 **Request:** "Give `alice@example.com` read-write access to the `colors` index and let her use [dashboards](../../../common/dashboard-design/dashboards/SKILL.md) and Discover."
 
@@ -544,5 +544,5 @@ Prefer fine-grained privileges (`manage_ingest_pipelines`, `monitor`) over broad
 ## Deployment Compatibility
 
 See [../../../Global_References/deployment-compatibility.md](../../../../Global_References/deployment-compatibility.md) for a feature matrix and detailed
-notes on self-managed, ECH, and [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) deployment differences.
+notes on self-managed, ECH, and [Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) deployment differences.
 

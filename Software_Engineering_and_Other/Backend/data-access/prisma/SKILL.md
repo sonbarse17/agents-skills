@@ -41,7 +41,7 @@ User request includes: `prisma`, `prisma schema`, `prisma migrate`, `prisma clie
 - Database ([PostgreSQL](../../../Databases/relational/postgresql/SKILL.md), [MySQL](../../../Databases/relational/mysql/SKILL.md), SQLite, SQL Server, [MongoDB](../../../Databases/nosql/mongodb/SKILL.md))
 - Prisma version (5.x, 6.x)
 - Schema complexity (relations, enums, composite keys)
-- Deployment (Node.js, [serverless](../../../Patterns/serverless/SKILL.md), edge)
+- Deployment (Node.js, [serverless](../../../Patterns/data-performance/serverless/SKILL.md), edge)
 
 ### Output Artifact
 Schema definition, query examples, migration setup, middleware patterns, performance optimizations.
@@ -54,7 +54,7 @@ Produce artifact directly. No preamble, no postamble, no explanations.
 - Migrations generated and applied
 - Queries use select, include, and where efficiently
 - Middleware (interactive transactions, extensions) configured
-- Connection pooling for [serverless](../../../Patterns/serverless/SKILL.md) or production
+- Connection pooling for [serverless](../../../Patterns/data-performance/serverless/SKILL.md) or production
 
 ### Max Response Length
 4096 tokens
@@ -381,12 +381,12 @@ main()
 
 ## Production Considerations
 
-### Connection Pooling ([Serverless](../../../Patterns/serverless/SKILL.md))
+### Connection Pooling ([Serverless](../../../Patterns/data-performance/serverless/SKILL.md))
 
 ```[typescript](../../../Frontend/common/typescript/SKILL.md)
-// Connection pool for [serverless](../../../Patterns/serverless/SKILL.md) (Vercel, Lambda)
+// Connection pool for [serverless](../../../Patterns/data-performance/serverless/SKILL.md) (Vercel, Lambda)
 import { PrismaClient } from '@prisma/client';
-import { Pool } from '@neondatabase/[serverless](../../../Patterns/serverless/SKILL.md)';
+import { Pool } from '@neondatabase/[serverless](../../../Patterns/data-performance/serverless/SKILL.md)';
 import { PrismaNeon } from '@prisma/adapter-neon';
 
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
@@ -428,7 +428,7 @@ try {
 | Full object in select | Overfetches data, slower queries | Select only needed fields |
 | Nested create without `createMany` | Multiple round trips | Use `createMany` for batch inserts |
 | Missing `@updatedAt` | No auto-update timestamp | Always add `@updatedAt` on mutable models |
-| No connection pooling for [serverless](../../../Patterns/serverless/SKILL.md) | Cold starts, connection exhaustion | Use Prisma Accelerate or pgBouncer |
+| No connection pooling for [serverless](../../../Patterns/data-performance/serverless/SKILL.md) | Cold starts, connection exhaustion | Use Prisma Accelerate or pgBouncer |
 | N+1 via loop queries | Sequential DB calls | Use `include` or batch with `findMany` |
 | Schema drift (manual DB changes) | Out of sync with Prisma schema | Always use Prisma Migrate |
 
@@ -474,7 +474,7 @@ Use separate test database with test user. Use `prisma migrate deploy` in CI. Us
 - Soft deletes via `deletedAt` + middleware filter — never hard delete user data.
 - `$transaction` for atomic multi-table operations.
 - `$extends` for cross-cutting concerns (soft delete, [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md), computed fields).
-- No `prisma.$disconnect()` in [serverless](../../../Patterns/serverless/SKILL.md) handlers — let adapter handle pooling.
+- No `prisma.$disconnect()` in [serverless](../../../Patterns/data-performance/serverless/SKILL.md) handlers — let adapter handle pooling.
 - Index all foreign keys and frequently queried columns.
 
 ## References

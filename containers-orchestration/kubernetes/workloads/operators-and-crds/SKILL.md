@@ -93,7 +93,7 @@ operator captures.
   layer is often the right middle ground, rather than reimplementing the whole reconciliation logic.
 - **Sometimes the answer is neither**: a scheduled Job or a CI pipeline step handles genuinely
   one-shot operational tasks better than a long-running controller watching for a rare event — see
-  `[scheduled-jobs](../../../../Software_Engineering_and_Other/Patterns/scheduled-jobs/SKILL.md)` and `[workflow-automation](../../../../Software_Engineering_and_Other/Patterns/workflow-automation/SKILL.md)`.
+  `[scheduled-jobs](../../../../Software_Engineering_and_Other/Patterns/workflow/scheduled-jobs/SKILL.md)` and `[workflow-automation](../../../../Software_Engineering_and_Other/Patterns/workflow/workflow-automation/SKILL.md)`.
 
 **Done when:** you can name the specific gap an existing operator didn't cover, if you built one, or
 name which existing operator you adopted instead of building.

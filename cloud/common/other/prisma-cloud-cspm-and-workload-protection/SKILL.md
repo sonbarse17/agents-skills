@@ -43,7 +43,7 @@ scanning** evaluates the same class of misconfiguration *before* it's
 ever deployed, against Terraform/[CloudFormation](../../../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md)/ARM source, using an
 engine built on the open-source Checkov project. **Workload Protection**
 requires installing a Defender agent onto hosts, container runtimes, or
-[serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) functions to observe and enforce behavior at runtime — a
+[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) functions to observe and enforce behavior at runtime — a
 fundamentally different data source (agent telemetry) from CSPM's
 API-polling model. A team that stops at CSPM alone has visibility into
 *configuration* drift but zero visibility into what's actually happening
@@ -61,7 +61,7 @@ capabilities and where each one's blind spots require the others.
   before merge/apply, using Prisma Cloud's IaC scanning (`checkov` CLI
   or the Prisma Cloud IaC scan API/[GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) App).
 - The user wants to deploy Prisma Cloud **Defender agents** to hosts,
-  a [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster, or [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) functions for runtime workload
+  a [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster, or [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) functions for runtime workload
   protection, and needs to understand what that adds beyond CSPM alone.
 - The user is triaging a Prisma Cloud alert and needs to know whether
   it's a posture (CSPM) finding, an IaC finding, or a runtime
@@ -93,7 +93,7 @@ capabilities and where each one's blind spots require the others.
   host/cluster to the Prisma Cloud Compute console (self-hosted
   Compute console or the SaaS one), and sufficient privilege to deploy
   a DaemonSet ([Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)), a host agent package, or a Lambda
-  layer/extension ([serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)) — Defender agents typically need
+  layer/extension ([serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)) — Defender agents typically need
   elevated (often privileged, for container-runtime visibility) access
   on the host, which is a materially different trust boundary than
   CSPM's read-only cloud API access and should be reviewed accordingly.

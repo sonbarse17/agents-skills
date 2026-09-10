@@ -27,7 +27,7 @@ Deploy and manage production-grade [Kubernetes](../../../kubernetes/other/kubern
 - You need managed [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) without maintaining control plane infrastructure.
 - Your workloads require container orchestration with auto-scaling.
 - You need tight integration with Azure AD, Key [Vault](../../../../Security/vault/SKILL.md), and Container Registry.
-- You are running [microservices](../../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) that require service mesh, ingress, or network policies.
+- You are running [microservices](../../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md) that require service mesh, ingress, or network policies.
 - You need GPU or spot node pools for specialized or cost-optimized workloads.
 
 ## Prerequisites

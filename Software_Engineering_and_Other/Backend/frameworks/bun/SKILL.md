@@ -59,7 +59,7 @@ Decision: Bun for new projects prioritizing DX and speed. Node.js for max ecosys
 | [TypeScript](../../../Frontend/common/typescript/SKILL.md) | Manual | Full (Eden) | Full (TypeBox) | Partial |
 | Plugins | None | Rich | Growing | Largest |
 | Learning curve | Low | Medium | Low | Low |
-| Best for | APIs, [microservices](../../../Patterns/microservices/SKILL.md) | Full-stack [TypeScript](../../../Frontend/common/typescript/SKILL.md) | Edge, Workers, API | Migration from Node |
+| Best for | APIs, [microservices](../../../Patterns/distributed-systems/microservices/SKILL.md) | Full-stack [TypeScript](../../../Frontend/common/typescript/SKILL.md) | Edge, Workers, API | Migration from Node |
 
 Decision: Elysia for new full-stack [TypeScript](../../../Frontend/common/typescript/SKILL.md) apps. Bun.serve for minimal APIs. Hono for edge/Cloudflare Workers.
 

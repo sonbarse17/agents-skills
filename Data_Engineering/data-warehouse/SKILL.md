@@ -79,13 +79,13 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 Snowflake is a fully-managed cloud data warehouse with separated compute and storage. Key features: auto-scaling warehouses (XS to 6XL), automatic clustering, zero-copy cloning, time travel (up to 90 days), data sharing, and Snowpark for [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/Java/Scala processing. Snowflake uses a columnar storage format with automatic micro-partitioning. Compute is billed per second while active; storage is billed per TB per month. Best for: organizations that want minimal operational overhead, need data sharing capabilities, or require [multi-cloud](../../cloud/common/other/multi-cloud/SKILL.md) support.
 
 ### BigQuery
-BigQuery is Google Cloud's [serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) data warehouse. Key features: automatic partitioning and clustering, unlimited storage with no management, BI Engine for cached dashboard queries, BigQuery ML for in-database ML, and slot-based pricing. BigQuery separates compute (slots) from storage. Queries scan data on demand — there is no compute cluster to manage. Pricing is per byte scanned (on-demand) or per slot (flat-rate). Best for: GCP-native organizations, teams that want zero infrastructure management, and ad-hoc analytics at petabyte scale.
+BigQuery is Google Cloud's [serverless](../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) data warehouse. Key features: automatic partitioning and clustering, unlimited storage with no management, BI Engine for cached dashboard queries, BigQuery ML for in-database ML, and slot-based pricing. BigQuery separates compute (slots) from storage. Queries scan data on demand — there is no compute cluster to manage. Pricing is per byte scanned (on-demand) or per slot (flat-rate). Best for: GCP-native organizations, teams that want zero infrastructure management, and ad-hoc analytics at petabyte scale.
 
 ### Redshift
 Redshift is AWS's cloud data warehouse. Key features: RA3 nodes with managed storage, concurrency scaling for burst traffic, Spectrum for querying S3 data, AQUA for accelerated queries, and materialized views. Redshift uses a traditional clustered architecture with leader and compute nodes. Distribution styles (KEY, EVEN, ALL) and sort keys require manual optimization. Best for: AWS-native organizations, high-concurrency workloads, and teams with SQL expertise who want granular control over performance.
 
 ### Databricks SQL
-Databricks SQL provides a lakehouse architecture combining data lake and warehouse capabilities. Key features: Delta Lake for ACID transactions on data lakes, Photon engine for accelerated SQL, [serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) SQL warehouses, and [Unity](../../Game_Development/unity/SKILL.md) Catalog for governance. Databricks SQL queries data directly from cloud storage (S3, ADLS, GCS) in Delta Lake format. Best for: organizations with existing Databricks investments, ML and analytics convergence, and open-format data lake requirements.
+Databricks SQL provides a lakehouse architecture combining data lake and warehouse capabilities. Key features: Delta Lake for ACID transactions on data lakes, Photon engine for accelerated SQL, [serverless](../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) SQL warehouses, and [Unity](../../Game_Development/unity/SKILL.md) Catalog for governance. Databricks SQL queries data directly from cloud storage (S3, ADLS, GCS) in Delta Lake format. Best for: organizations with existing Databricks investments, ML and analytics convergence, and open-format data lake requirements.
 
 ## Dimensional Modeling
 
@@ -121,7 +121,7 @@ Filter early — push WHERE clauses to subqueries. Avoid SELECT * — specify ne
 | Factor | Snowflake | BigQuery | Redshift | Databricks SQL |
 |---|---|---|---|---|
 | Cloud | AWS, Azure, GCP | GCP only | AWS only | AWS, Azure, GCP |
-| Management effort | Low | None ([serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)) | Medium | Low ([serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) option) |
+| Management effort | Low | None ([serverless](../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)) | Medium | Low ([serverless](../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) option) |
 | Scaling model | Multi-cluster warehouses | Automatic slots | Concurrency scaling | Auto-scaling warehouses |
 | Query performance | Good (auto-clustering) | Excellent (columnar) | Excellent (sort keys) | Very good (Photon) |
 | Concurrency | Multi-cluster | Automatic | Concurrency scaling | Auto-scaling |
@@ -133,7 +133,7 @@ Filter early — push WHERE clauses to subqueries. Avoid SELECT * — specify ne
 ### When to Choose Each Platform
 **Snowflake**: [Multi-cloud](../../cloud/common/other/multi-cloud/SKILL.md) strategy, cross-org data sharing, minimal operational overhead, zero-copy cloning for dev/test.
 
-**BigQuery**: GCP-native, zero infrastructure management, petabyte-scale ad-hoc analytics, [serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) scaling.
+**BigQuery**: GCP-native, zero infrastructure management, petabyte-scale ad-hoc analytics, [serverless](../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) scaling.
 
 **Redshift**: AWS-native, high-concurrency BI workloads, granular performance tuning control, concurrency scaling.
 
@@ -338,9 +338,9 @@ warehouse_selection:
     pricing: "Per-second billing, $2-4/credit"
   
   bigquery:
-    strengths: ["[Serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) (no cluster management)", "BigLake for lake integration", "ML in SQL", "Real-time with streaming inserts"]
+    strengths: ["[Serverless](../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) (no cluster management)", "BigLake for lake integration", "ML in SQL", "Real-time with streaming inserts"]
     weaknesses: ["Slot contention with no reservation", "Expensive storage", "No index tuning"]
-    best_for: "[Serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) analytics, Google Cloud-native, ML on warehouse"
+    best_for: "[Serverless](../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) analytics, Google Cloud-native, ML on warehouse"
     pricing: "Per-byte scanned or flat-rate slots"
   
   redshift:
@@ -351,9 +351,9 @@ warehouse_selection:
   
   databricks_sql:
     strengths: ["Lakehouse (Delta Lake)", "[Unity](../../Game_Development/unity/SKILL.md) Catalog", "ML integration", "Auto-scaling SQL warehouses"]
-    weaknesses: ["[Serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) concurrency limits", "DBU cost at scale", "Phoenix ([serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)) still maturing"]
+    weaknesses: ["[Serverless](../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) concurrency limits", "DBU cost at scale", "Phoenix ([serverless](../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)) still maturing"]
     best_for: "Lakehouse architecture, unified batch/ML/BI workloads"
-    pricing: "Per-DBU (photon: $0.55/DBU, [serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md): $1.10/DBU)"
+    pricing: "Per-DBU (photon: $0.55/DBU, [serverless](../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md): $1.10/DBU)"
   
   clickhouse:
     strengths: ["Fastest columnar engine", "Real-time ingestion", "Compression (5-10x)", "Materialized views on ingestion"]
@@ -429,7 +429,7 @@ CREATE TABLE fct_orders (
 ```
 Primary workload characteristics?
 ├── [Multi-cloud](../../cloud/common/other/multi-cloud/SKILL.md), high concurrency, data sharing → Snowflake
-├── [Serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) preferred, Google Cloud → BigQuery
+├── [Serverless](../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) preferred, Google Cloud → BigQuery
 ├── Cost-sensitive large-scale, AWS-native → Redshift
 ├── Lakehouse with ML, Databricks ecosystem → Databricks SQL
 ├── Real-time sub-second on event data → ClickHouse

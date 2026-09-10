@@ -32,7 +32,7 @@ depends_on:
 ## Purpose
 
 SonarQube (self-hosted) and SonarCloud (its SaaS counterpart) analyze
-source code for both security vulnerabilities and [code-quality](../../../Software_Engineering_and_Other/Miscellaneous/skills-main/skills/[code-quality](../../../Software_Engineering_and_Other/Patterns/code-quality/SKILL.md)/SKILL.md) issues
+source code for both security vulnerabilities and [code-quality](../../Software_Engineering_and_Other/Patterns/dev-practice/code-quality/SKILL.md)/SKILL.md) issues
 (bugs, code smells, duplication, cyclomatic complexity) in a single
 platform, and — unlike a pure SAST tool — attach a maintainability
 rating and a "technical debt" time estimate to what it finds. Its

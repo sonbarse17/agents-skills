@@ -503,7 +503,7 @@ After completing this skill:
 | Response time | ~30-60s | ~60-180s (restart required) | ~5-15s |
 | Use case | Web apps, stateless | Stateful, batch | Queue-based, event-driven |
 | Coordination | Works with CA | Conflicts with HPA | Works with CA + HPA |
-| Recommendation | Default for most workloads | Long-lived pods with variable needs | [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-style, async workloads |
+| Recommendation | Default for most workloads | Long-lived pods with variable needs | [Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-style, async workloads |
 
 ### Cluster Autoscaler vs Karpenter
 

@@ -644,5 +644,5 @@ Onboarding documents should be updated after each new hire:
 5. Track "time to first PR" as a team KPI — if it trends up, investigate friction
 
 ## Handoff
-[core-context-compressor](../../../Patterns/context-compressor/SKILL.md) — summary of setup knowledge, architecture understanding, and config for continuing work
+[core-context-compressor](../../../Patterns/dev-practice/context-compressor/SKILL.md) — summary of setup knowledge, architecture understanding, and config for continuing work
 

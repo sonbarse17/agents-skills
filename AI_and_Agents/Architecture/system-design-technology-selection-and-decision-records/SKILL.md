@@ -169,7 +169,7 @@ ignoring the other.
 5. **Design system boundaries around team/service ownership that will
    actually hold**, not an idealized decomposition that ignores which
    team can realistically own which piece — a beautifully decomposed set
-   of [microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) that no team is staffed to operate individually is a
+   of [microservices](../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md) that no team is staffed to operate individually is a
    worse outcome than a coarser boundary matched to real team
    [capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), echoing the "thinnest viable" sizing discipline in
    [platform-engineering-team-topology-and-operating-model](../../../[internal-developer-platform](../../../Product_and_Business/internal-developer-platform/SKILL.md)/skills/[platform-engineering-team-topology-and-operating-model](../../../containers-orchestration/common/other/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md).
@@ -287,7 +287,7 @@ ignoring the other.
   documentation.
 
 - **Symptom:** A system is decomposed into a textbook-ideal set of
-  fine-grained [microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md), but no individual team has the staffing to
+  fine-grained [microservices](../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md), but no individual team has the staffing to
   own more than one or two of them, and cross-service coordination
   overhead ends up slower than the monolith it replaced.
   **Fix:** Design service boundaries around what teams can realistically
@@ -360,6 +360,6 @@ notifications) that currently communicate via brittle direct HTTP calls.
 ## Cross-references
 
 - [technical-roadmap-ownership-and-cross-team-coordination](../[technical-roadmap-ownership-and-cross-team-coordination](../../../Product_and_Business/technical-roadmap-ownership-and-cross-team-coordination/SKILL.md)/SKILL.md) — the lead-level work that sequences and resources implementation of the architecture and technology decisions made here across individual teams' roadmaps.
-- [independent-solution-design-and-technical-review](../[independent-solution-design-and-technical-review](../../../Software_Engineering_and_Other/Patterns/independent-solution-design-and-technical-review/SKILL.md)/SKILL.md) — the senior-level design work that operates within the architectural constraints and technology choices this skill sets, and the escalation source when a senior engineer's design can't be met within existing constraints.
+- [independent-solution-design-and-technical-review](../../../Software_Engineering_and_Other/Patterns/architecture/independent-solution-design-and-technical-review/SKILL.md)/SKILL.md) — the senior-level design work that operates within the architectural constraints and technology choices this skill sets, and the escalation source when a senior engineer's design can't be met within existing constraints.
 - [cloud-well-architected-framework-review](../../../standards-and-compliance-frameworks/skills/[cloud-well-architected-framework-review](../../../DevOps_and_Cloud/Cloud_Providers/cloud-well-architected-framework-review/SKILL.md)/SKILL.md) — a structured, pillar-based way to [audit](../../Operations/audit/SKILL.md) an existing workload's architecture against reliability/cost/security/performance trade-offs, complementary to this skill's forward-looking design and technology-selection focus.
 - [platform-engineering-team-topology-and-operating-model](../../../[internal-developer-platform](../../../Product_and_Business/internal-developer-platform/SKILL.md)/skills/[platform-engineering-team-topology-and-operating-model](../../../containers-orchestration/common/other/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md) — the team-ownership and "thinnest viable platform" sizing discipline this skill's service-boundary design (step 5) should align with.

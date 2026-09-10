@@ -122,7 +122,7 @@ integration decisions between phases.
    - **SageMaker-centric (brief alternative)**: SageMaker Training Jobs
      (managed GPU instances, no node pool to operate), SageMaker
      Pipelines for orchestration, SageMaker Model Registry, and SageMaker
-     real-time/[serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) endpoints for serving — trades control for far
+     real-time/[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) endpoints for serving — trades control for far
      less infrastructure to operate. Every phase below has a SageMaker
      equivalent noted inline for teams choosing this path instead.
 

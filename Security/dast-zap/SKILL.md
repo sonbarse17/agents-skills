@@ -256,7 +256,7 @@ The bundled `assets/zap_automation.yaml` template includes:
 
 - Use **baseline scans** for every [commit](../../ci-cd/common/git-workflow/commit/SKILL.md)/PR (low false positives)
 - Run **full scans** on staging environments before production deployment
-- Configure **API scans** for [microservices](../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) and REST endpoints
+- Configure **API scans** for [microservices](../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md) and REST endpoints
 - Set **failure thresholds** to break builds on high-severity findings
 - Generate **SARIF reports** for [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Security tab integration
 

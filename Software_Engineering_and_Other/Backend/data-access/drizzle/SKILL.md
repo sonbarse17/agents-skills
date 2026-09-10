@@ -42,7 +42,7 @@ User request includes: `drizzle`, `drizzle orm`, `drizzle schema`, `drizzle migr
 - Database ([PostgreSQL](../../../Databases/relational/postgresql/SKILL.md), [MySQL](../../../Databases/relational/mysql/SKILL.md), SQLite, Turso)
 - Drizzle version (0.30+)
 - Runtime (Node.js, Bun, Cloudflare Workers, Neon)
-- Deployment ([serverless](../../../Patterns/serverless/SKILL.md), edge, traditional)
+- Deployment ([serverless](../../../Patterns/data-performance/serverless/SKILL.md), edge, traditional)
 
 ### Output Artifact
 Schema definition, query examples, migration setup, relation config, connection management.
@@ -55,7 +55,7 @@ Produce artifact directly. No preamble, no postamble, no explanations.
 - Relations defined with drizzle-orm relations
 - Migrations generated and applied with drizzle-kit
 - Queries use prepared statements for production
-- Connection configured for target environment (Node, [serverless](../../../Patterns/serverless/SKILL.md), edge)
+- Connection configured for target environment (Node, [serverless](../../../Patterns/data-performance/serverless/SKILL.md), edge)
 
 ### Max Response Length
 4096 tokens
@@ -80,10 +80,10 @@ Decision: Performance + SQL control + edge → Drizzle. Rich ORM features + auto
 
 | Database | Driver | Drizzle Package | Best For |
 |----------|--------|----------------|----------|
-| [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md) | `pg` or `@neondatabase/[serverless](../../../Patterns/serverless/SKILL.md)` | `drizzle-orm/pg-core` | Full-featured RDBMS |
+| [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md) | `pg` or `@neondatabase/[serverless](../../../Patterns/data-performance/serverless/SKILL.md)` | `drizzle-orm/pg-core` | Full-featured RDBMS |
 | [MySQL](../../../Databases/relational/mysql/SKILL.md) | `mysql2` | `drizzle-orm/[mysql](../../../Databases/relational/mysql/SKILL.md)-core` | [PlanetScale](../../../Databases/nosql/planetscale/SKILL.md), traditional [MySQL](../../../Databases/relational/mysql/SKILL.md) |
 | SQLite | `better-sqlite3` or `@libsql/client` | `drizzle-orm/sqlite-core` | Turso, local, edge |
-| [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md) ([serverless](../../../Patterns/serverless/SKILL.md)) | `@vercel/postgres` | `drizzle-orm/vercel-postgres` | Vercel edge functions |
+| [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md) ([serverless](../../../Patterns/data-performance/serverless/SKILL.md)) | `@vercel/postgres` | `drizzle-orm/vercel-postgres` | Vercel edge functions |
 
 ## Workflow
 
@@ -279,12 +279,12 @@ export default {
 } satisfies Config;
 ```
 
-### Step 6: Edge/[Serverless](../../../Patterns/serverless/SKILL.md) Connection
+### Step 6: Edge/[Serverless](../../../Patterns/data-performance/serverless/SKILL.md) Connection
 
 ```[typescript](../../../Frontend/common/typescript/SKILL.md)
-// src/db/edge.ts — Neon [serverless](../../../Patterns/serverless/SKILL.md)
+// src/db/edge.ts — Neon [serverless](../../../Patterns/data-performance/serverless/SKILL.md)
 import { drizzle } from 'drizzle-orm/neon-http';
-import { neon } from '@neondatabase/[serverless](../../../Patterns/serverless/SKILL.md)';
+import { neon } from '@neondatabase/[serverless](../../../Patterns/data-performance/serverless/SKILL.md)';
 import * as schema from './schema';
 
 const sql = neon(process.env.DATABASE_URL!);
@@ -406,7 +406,7 @@ Use `TEST_DATABASE_URL` for test isolation. Run tests with `--pool=forks` for pa
 
 ## References
   - ../../../Global_References/drizzle-advanced.md — Advanced Drizzle Patterns
-  - ../../../Global_References/drizzle-edge-deployment.md — Edge and [Serverless](../../../Patterns/serverless/SKILL.md) Deployment
+  - ../../../Global_References/drizzle-edge-deployment.md — Edge and [Serverless](../../../Patterns/data-performance/serverless/SKILL.md) Deployment
   - ../../../Global_References/drizzle-relations.md — Relation Patterns
   - ../../../Global_References/migration-patterns.md — Migration Strategies
   - ../../../Global_References/drizzle_query-optimization.md — Query Optimization

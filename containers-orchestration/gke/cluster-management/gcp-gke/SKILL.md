@@ -23,7 +23,7 @@ Deploy, operate, and scale managed [Kubernetes](../../../kubernetes/other/kubern
 
 ## When to Use
 
-- Running containerized [microservices](../../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) at scale with automatic scaling and healing
+- Running containerized [microservices](../../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md) at scale with automatic scaling and healing
 - Workloads requiring fine-grained orchestration, service mesh, or custom scheduling
 - Teams already invested in [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) tooling (Helm, Argo CD, Flux)
 - When Cloud Run's request-based model does not fit (long-running, stateful workloads)

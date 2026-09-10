@@ -28,8 +28,8 @@ Design robust, secure deployment pipelines that balance speed with safety throug
 
 ### What You Provide
 
-- **Application type**: Language/runtime, containerized or [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md), monolith or [microservices](../../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md)
-- **Deployment target**: [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), ECS, VMs, [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md), or platform-as-a-service
+- **Application type**: Language/runtime, containerized or [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md), monolith or [microservices](../../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md)
+- **Deployment target**: [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), ECS, VMs, [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md), or platform-as-a-service
 - **Environment topology**: Number of environments (dev/staging/prod), region layout, air-gap requirements
 - **Rollout requirements**: Acceptable downtime, rollback SLA, traffic splitting needs, canary vs blue-green preference
 - **Gate constraints**: Approval teams, required test coverage thresholds, compliance scans (SAST, DAST, SCA)

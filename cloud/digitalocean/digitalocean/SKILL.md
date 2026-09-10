@@ -65,7 +65,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions.
 ### Compute Decision Tree
 - Simple app, no container orchestration: Droplets with load balancer.
 - Containerized apps, need orchestration: DOKS (DigitalOcean [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)).
-- [Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) / PaaS: App Platform (build from [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md), auto-deploy).
+- [Serverless](../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) / PaaS: App Platform (build from [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md), auto-deploy).
 - Batch / background jobs: Droplets or Functions.
 - GPU / ML workloads: Droplets with GPU plans.
 

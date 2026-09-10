@@ -101,7 +101,7 @@ Because this repo has no dedicated OKE skill, provision the cluster
 directly: create the OKE cluster in the `platform` compartment with a
 pinned [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) version and a managed node pool sized for Backstage's
 steady backend load (OKE also offers virtual node pools for
-[serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-style scaling, worth considering for bursty CI workloads
+[serverless](../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-style scaling, worth considering for bursty CI workloads
 scaffolded later, but the platform-tooling node pool itself should be
 sized for predictable steady load). Configure workload identity using
 OCI's **Dynamic Groups** and **Resource Principals** — the OCI analog to

@@ -233,5 +233,5 @@ projections, not a round number picked without data.
 ## Cross-references
 
 - [aws-lambda-packaging-and-configuration](../[aws-lambda-packaging-and-configuration](../[aws-lambda](../aws-lambda/SKILL.md)-packaging-and-configuration/SKILL.md)/SKILL.md) — how the memory, timeout, VPC, and IAM configuration validated here is built in the first place.
-- [dapr-configuration-validation](../[dapr-configuration-validation](../../CI_CD/dapr-configuration-validation/SKILL.md)/SKILL.md) — the same pre-deploy validation discipline applied to Dapr component configs in a polyglot [microservices](../../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) context.
+- [dapr-configuration-validation](../[dapr-configuration-validation](../../CI_CD/dapr-configuration-validation/SKILL.md)/SKILL.md) — the same pre-deploy validation discipline applied to Dapr component configs in a polyglot [microservices](../../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md) context.
 - [knative-configuration-validation](../[knative-configuration-validation](../../Containers_and_Orchestration/knative-configuration-validation/SKILL.md)/SKILL.md) — the equivalent pre-deploy validation pattern for Knative Service/Revision configuration on [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).

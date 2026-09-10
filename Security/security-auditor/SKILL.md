@@ -574,5 +574,5 @@ What do you need to test?
 - **SBOM generation**: Generate a Software Bill of Materials (SPDX or CycloneDX format) after each build. Use SBOM for post-deployment vulnerability correlation without re-scanning.
 
 ## Handoff
-Hand off to `dev-loop-[code-review](../../ci-cd/common/other/code-review/SKILL.md)` for secure code review. Hand off to `[dev-loop-tech-debt-tracker](../../Software_Engineering_and_Other/Patterns/tech-debt-tracker/SKILL.md)` for security debt tracking.
+Hand off to `dev-loop-[code-review](../../ci-cd/common/other/code-review/SKILL.md)` for secure code review. Hand off to `[dev-loop-tech-debt-tracker](../../Software_Engineering_and_Other/Patterns/dev-practice/tech-debt-tracker/SKILL.md)` for security debt tracking.
 

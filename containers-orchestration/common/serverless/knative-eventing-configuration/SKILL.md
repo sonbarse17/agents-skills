@@ -32,7 +32,7 @@ it's a CloudEvents-native publish/subscribe layer for routing events
 between producers (Sources) and consumers (Services or other sinks)
 through a **Broker**, with **Triggers** declaring filtered subscriptions,
 rather than the request/response, scale-to-zero model covered in
-[knative-[serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-configuration](../[knative-[serverless](../../Containers_and_Orchestration/serverless/SKILL.md)-configuration](../../Containers_and_Orchestration/knative-[serverless](../../Containers_and_Orchestration/serverless/SKILL.md)-configuration/SKILL.md)/SKILL.md).
+[knative-[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-configuration](../[knative-[serverless](../../Containers_and_Orchestration/serverless/SKILL.md)-configuration](../../Containers_and_Orchestration/knative-[serverless](../../Containers_and_Orchestration/serverless/SKILL.md)-configuration/SKILL.md)/SKILL.md).
 Conflating the two is a common source of confusion: a Knative `Service`
 still receiving events via a Trigger scales the same way as any other
 Knative Service, but the routing, filtering, retry, and dead-lettering
@@ -329,6 +329,6 @@ across every subscriber.
 
 ## Cross-references
 
-- [knative-[serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-configuration](../[knative-[serverless](../../Containers_and_Orchestration/serverless/SKILL.md)-configuration](../../Containers_and_Orchestration/knative-[serverless](../../Containers_and_Orchestration/serverless/SKILL.md)-configuration/SKILL.md)/SKILL.md) — the request-driven Serving model that Eventing's subscribers (typically Knative Services) run on.
+- [knative-[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-configuration](../[knative-[serverless](../../Containers_and_Orchestration/serverless/SKILL.md)-configuration](../../Containers_and_Orchestration/knative-[serverless](../../Containers_and_Orchestration/serverless/SKILL.md)-configuration/SKILL.md)/SKILL.md) — the request-driven Serving model that Eventing's subscribers (typically Knative Services) run on.
 - [knative-configuration-validation](../[knative-configuration-validation](../../Containers_and_Orchestration/knative-configuration-validation/SKILL.md)/SKILL.md) — pre-deploy validation approach for Knative Serving config, extendable to Broker/Trigger manifests.
 - [dapr-distributed-runtime-configuration](../[dapr-distributed-runtime-configuration](../../../Software_Engineering_and_Other/Frontend/dapr-distributed-runtime-configuration/SKILL.md)/SKILL.md) — Dapr's pub/sub building block covers similar event-routing needs via a sidecar model instead of Knative's Broker/Trigger CRDs, useful when comparing approaches for polyglot workloads.

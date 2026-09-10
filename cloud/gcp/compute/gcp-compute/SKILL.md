@@ -46,7 +46,7 @@ gcloud services enable compute.googleapis.com
 
 | Family | Example | vCPUs | Memory | Use Case |
 |--------|---------|-------|--------|----------|
-| E2 | e2-micro | 0.25 | 1 GB | Dev/test, [microservices](../../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) |
+| E2 | e2-micro | 0.25 | 1 GB | Dev/test, [microservices](../../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md) |
 | E2 | e2-medium | 1 | 4 GB | Light web servers |
 | N2 | n2-standard-4 | 4 | 16 GB | General-purpose production |
 | N2 | n2-highmem-8 | 8 | 64 GB | In-memory caches, databases |

@@ -32,7 +32,7 @@ depends_on:
 ## Purpose
 
 A VM-based [DevSecOps](../../../../Security/devsecops/SKILL.md) pipeline has a gate sequence with a genuinely
-different time dimension from the [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) and [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) variants of
+different time dimension from the [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) and [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) variants of
 this skill. Those two are almost entirely **per-deploy** gates: a scan
 runs, a decision is made, an artifact ships. A VM fleet built on
 long-lived, immutable golden images additionally needs an **ongoing**
@@ -45,7 +45,7 @@ Secrets follow yet another distinct model here too: applied by a
 config-management tool ([Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) [Vault](../../../../Security/vault/SKILL.md)) at provision/config-push time,
 encrypted at rest in the same repo as the playbooks, rather than a
 cluster-side operator ([Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)) or a runtime API call to a managed
-secrets service ([serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)).
+secrets service ([serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)).
 
 ## When to use
 
@@ -58,7 +58,7 @@ secrets service ([serverless](../../../../Software_Engineering_and_Other/Pattern
 - The user wants to understand why a VM-based pipeline needs a
   *recurring*, deploy-independent security gate in addition to its
   per-deploy scans — the property that most distinguishes it from the
-  [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) and [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) variants.
+  [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) and [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) variants.
 - Diagnosing why a golden AMI that passed CIS benchmark scanning at bake
   time is now failing a compliance [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) months later with no code change
   in between.
@@ -132,7 +132,7 @@ instead of a container layer.
 
 ### Phase 4 — Config-management-applied secrets via [Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) [Vault](../../../../Security/vault/SKILL.md), never plaintext
 
-Where [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) fetches secrets cluster-side and [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) fetches them
+Where [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) fetches secrets cluster-side and [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) fetches them
 via a runtime API call, the VM-based model applies secrets at
 config-push/provision time through [Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md), with the secret values
 encrypted at rest in the same repo as the playbooks — never a plaintext
@@ -170,7 +170,7 @@ Blue-green instance refresh or [Ansible](../../../../infrastructure-as-code/ansi
 
 ### Phase 6 — Ongoing patch/drift detection, independent of any single deploy
 
-This is the gate with no equivalent in the [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) or [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)
+This is the gate with no equivalent in the [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) or [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)
 variants: a golden image or a fleet of long-lived VMs can silently
 accumulate risk (new CVEs disclosed against already-installed package
 versions, manual `ssh`-and-fix drift from the golden config, a security
@@ -346,4 +346,4 @@ of the per-deploy gate sequence above it.
 - [ansible-playbook-and-role-design](../../../iac-and-automation-tooling/skills/[ansible-playbook-and-role-design](../../Infrastructure_as_Code/[ansible](../../Infrastructure_as_Code/ansible/SKILL.md)-playbook-and-role-design/SKILL.md)/SKILL.md) — [Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) [Vault](../../../../Security/vault/SKILL.md) and idempotency mechanics used in Phase 4/6.
 - [secrets-management](../[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md)/SKILL.md) — general secrets-handling discipline Phase 4 applies via [Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) [Vault](../../../../Security/vault/SKILL.md) specifically.
 - [cloud-resource-post-provisioning-validation-and-drift-detection](../../../cloud/skills/[cloud-resource-post-provisioning-validation-and-drift-detection](../../Observability_and_SecOps/cloud-resource-post-provisioning-validation-and-drift-detection/SKILL.md)/SKILL.md) — infrastructure-level (not just host-level) drift detection that complements Phase 6.
-- [complete-[devsecops](../../../../Security/devsecops/SKILL.md)-pipeline-for-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-from-scratch](../[complete-[devsecops](../../../Security/devsecops/SKILL.md)-pipeline-for-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-from-scratch](../../Cloud_Providers/complete-[devsecops](../../../Security/devsecops/SKILL.md)-pipeline-for-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-from-scratch/SKILL.md)/SKILL.md) and [complete-[devsecops](../../../../Security/devsecops/SKILL.md)-pipeline-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-from-scratch](../[complete-[devsecops](../../../Security/devsecops/SKILL.md)-pipeline-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-from-scratch](../../Cloud_Providers/complete-[devsecops](../../../Security/devsecops/SKILL.md)-pipeline-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-from-scratch/SKILL.md)/SKILL.md) — the same gate-sequencing goal with fundamentally different primary gates and secrets models.
+- [complete-[devsecops](../../../../Security/devsecops/SKILL.md)-pipeline-for-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-from-scratch](../[complete-[devsecops](../../../Security/devsecops/SKILL.md)-pipeline-for-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-from-scratch](../../Cloud_Providers/complete-[devsecops](../../../Security/devsecops/SKILL.md)-pipeline-for-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-from-scratch/SKILL.md)/SKILL.md) and [complete-[devsecops](../../../../Security/devsecops/SKILL.md)-pipeline-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-from-scratch](../[complete-[devsecops](../../../Security/devsecops/SKILL.md)-pipeline-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-from-scratch](../../Cloud_Providers/complete-[devsecops](../../../Security/devsecops/SKILL.md)-pipeline-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-from-scratch/SKILL.md)/SKILL.md) — the same gate-sequencing goal with fundamentally different primary gates and secrets models.

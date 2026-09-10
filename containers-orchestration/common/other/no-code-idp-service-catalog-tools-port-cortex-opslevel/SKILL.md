@@ -325,7 +325,7 @@ the catalog and scorecards correctly in whichever product is chosen.
 ## Worked example
 
 **Scenario:** A 40-engineer platform team at a mid-size SaaS company is
-deciding how to stand up a service catalog for 120 [microservices](../../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md). They have
+deciding how to stand up a service catalog for 120 [microservices](../../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md). They have
 one platform engineer with light frontend experience and no dedicated
 frontend team. They need: an ownership map, a production-readiness
 scorecard, and a self-service "scaffold new service" action — all live

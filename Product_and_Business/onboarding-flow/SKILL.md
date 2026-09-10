@@ -409,7 +409,7 @@ Impact: Activation 12% to 34%, D30 retention improved 25%
   - ../../../Global_References/onboarding-flow-advanced.md — Onboarding Flow Advanced Topics
   - ../../../Global_References/onboarding-flow-fundamentals.md — Onboarding Flow Fundamentals
   - ../../../Global_References/onboarding-patterns.md — Onboarding Patterns
-  - references/onboarding-flow-[design-patterns](../../Software_Engineering_and_Other/Patterns/design-patterns/SKILL.md).md — Onboarding Flow Design Patterns
+  - references/onboarding-flow-[design-patterns](../../Software_Engineering_and_Other/Patterns/architecture/design-patterns/SKILL.md).md — Onboarding Flow Design Patterns
   - references/onboarding-metrics-optimization.md — Onboarding Metrics and Optimization
 ## Handoff
 For analytics tracking of onboarding metrics, hand off to `[product-analytics](../analytics/SKILL.md)`. For A/B testing onboarding changes, hand off to `[product-ab-testing](../ab-testing/SKILL.md)`.

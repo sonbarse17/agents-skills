@@ -20,7 +20,7 @@ depends_on:
 
 # GCP Cloud Functions
 
-Build and deploy event-driven [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) applications with Google Cloud Functions (Gen1 and Gen2).
+Build and deploy event-driven [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) applications with Google Cloud Functions (Gen1 and Gen2).
 
 ## When to Use
 
@@ -28,7 +28,7 @@ Build and deploy event-driven [serverless](../../../../Software_Engineering_and_
 - Reacting to events from Pub/Sub, Cloud Storage, Firestore, or Eventarc
 - Running scheduled tasks (cron) without maintaining a server
 - Building data-processing pipelines triggered by file uploads
-- Prototyping [microservices](../../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) before committing to Cloud Run or GKE
+- Prototyping [microservices](../../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md) before committing to Cloud Run or GKE
 
 ## Prerequisites
 
@@ -276,4 +276,4 @@ resource "google_cloudfunctions2_function" "processor" {
 - **[gcp-networking](../../networking/gcp-networking/SKILL.md)** - VPC connectors for accessing private resources from functions
 - **[gcp-cloud-sql](../../database/gcp-cloud-sql/SKILL.md)** - Connecting Cloud Functions to managed databases
 - **[terraform-gcp](../../iac/terraform-gcp/SKILL.md)** - Deploy Cloud Functions with Infrastructure as Code
-- **[gcp-gke](../../../../containers-orchestration/gke/cluster-management/gcp-gke/SKILL.md)** - When workloads outgrow [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) and need [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
+- **[gcp-gke](../../../../containers-orchestration/gke/cluster-management/gcp-gke/SKILL.md)** - When workloads outgrow [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) and need [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)

@@ -40,7 +40,7 @@ Design cloud-agnostic architectures and make informed decisions about service se
 | EC2     | Virtual Machines    | Compute Engine  | Compute             | IaaS VMs           |
 | ECS     | Container Instances | Cloud Run       | Container Instances | Containers         |
 | EKS     | AKS                 | GKE             | OKE                 | [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)         |
-| Lambda  | Functions           | Cloud Functions | Functions           | [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)         |
+| Lambda  | Functions           | Cloud Functions | Functions           | [Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)         |
 | Fargate | Container Apps      | Cloud Run       | Container Instances | Managed containers |
 
 ### Storage Services
@@ -132,7 +132,7 @@ AWS / Azure / GCP / OCI
 1. Use reserved/committed [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) (30-70% savings)
 2. Leverage spot/preemptible instances
 3. Right-size resources
-4. Use [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) for variable workloads
+4. Use [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) for variable workloads
 5. Optimize data transfer costs
 6. Implement lifecycle policies
 7. Use cost allocation tags

@@ -85,7 +85,7 @@ construction.
 
 ## 5. Name the lock-in and decide if it's worth it
 
-A managed queue, a proprietary database API, a provider-specific [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) trigger — each buys
+A managed queue, a proprietary database API, a provider-specific [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) trigger — each buys
 convenience by binding you to one vendor's implementation. That is frequently a good trade: the
 switching cost you're avoiding by not building portability you'll never use is real. It is a bad
 trade only when you can't articulate why you took it. Do not build abstraction layers "just in

@@ -54,15 +54,15 @@ Design well-architected, production-grade cloud systems following Azure Architec
 |-------|-------------|-------------|--------------|
 | **N-tier** | Horizontal layers (presentation, business, data) | Traditional enterprise apps, lift-and-shift | App Service, SQL Database, VNets |
 | **Web-Queue-Worker** | Web frontend → message queue → backend worker | Moderate-complexity apps with long-running tasks | App Service, Service Bus, Functions |
-| **[Microservices](../../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md)** | Small autonomous services, bounded contexts, independent deploy | Complex domains, independent team scaling | AKS, Container Apps, API Management |
+| **[Microservices](../../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md)** | Small autonomous services, bounded contexts, independent deploy | Complex domains, independent team scaling | AKS, Container Apps, API Management |
 | **Event-driven** | Pub/sub model, event producers/consumers | Real-time processing, IoT, reactive systems | Event Hubs, Event Grid, Functions |
 | **Big data** | Batch + stream processing pipeline | Analytics, ML pipelines, large-scale data | Synapse, Data Factory, Databricks |
 | **Big compute** | HPC, parallel processing | Simulations, modeling, rendering, genomics | Batch, CycleCloud, HPC VMs |
 
 ### Selection Criteria
 
-- **Domain complexity** → [Microservices](../../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) (high), N-tier (low-medium)
-- **Team autonomy** → [Microservices](../../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) (independent teams), N-tier (single team)
+- **Domain complexity** → [Microservices](../../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md) (high), N-tier (low-medium)
+- **Team autonomy** → [Microservices](../../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md) (independent teams), N-tier (single team)
 - **Data volume** → Big data (TB+), others (GB)
 - **Latency requirements** → Event-driven (real-time), Web-Queue-Worker (tolerant)
 
@@ -97,7 +97,7 @@ Design well-architected, production-grade cloud systems following Azure Architec
 | **Health Endpoint [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)** | Expose health checks for load balancers and orchestrators | R, OE |
 | **Leader Election** | Coordinate distributed instances by electing a leader | R |
 | **Retry** | Handle transient faults by retrying with exponential backoff | R |
-| **Saga** | Manage data consistency across [microservices](../../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) with compensating transactions | R |
+| **Saga** | Manage data consistency across [microservices](../../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md) with compensating transactions | R |
 | **Scheduler Agent Supervisor** | Coordinate distributed actions with retry and failure handling | R |
 
 ### Data Management
@@ -146,7 +146,7 @@ Design well-architected, production-grade cloud systems following Azure Architec
 | **Gateway Routing** | Route requests to multiple backends using a single endpoint | OE |
 | **Geode** | Deploy backends to multiple regions for active-active serving | R, PE |
 
-See [Design Patterns Reference](../../../../Software_Engineering_and_Other/Patterns/design-patterns/SKILL.md).md) for detailed implementation guidance.
+See [Design Patterns Reference](../../../../Software_Engineering_and_Other/Patterns/architecture/design-patterns/SKILL.md).md) for detailed implementation guidance.
 
 ---
 
@@ -315,7 +315,7 @@ Use Architecture Decision Records (ADRs):
 
 ## References
 
-- [Design Patterns Reference](../../../../Software_Engineering_and_Other/Patterns/design-patterns/SKILL.md).md) — Detailed pattern implementations
+- [Design Patterns Reference](../../../../Software_Engineering_and_Other/Patterns/architecture/design-patterns/SKILL.md).md) — Detailed pattern implementations
 - [Technology Choices Reference](../../../../Global_References/technology-choices.md) — Decision trees for Azure services
 - [Best Practices Reference](../../../../Global_References/best-practices.md) — Implementation guidance
 - [Mission-Critical Reference](../../../../Global_References/mission-critical.md) — High-availability design

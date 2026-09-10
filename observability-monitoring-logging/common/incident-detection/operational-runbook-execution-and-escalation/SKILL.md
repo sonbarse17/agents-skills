@@ -63,7 +63,7 @@ what turns [runbook](../runbook/SKILL.md)-following into real operational judgme
 - You are new to an on-call rotation and need a concrete model for what
   "doing the job well" looks like at this level, as distinct from the
   independent design/RCA work covered at the next level in
-  [independent-solution-design-and-technical-review](../[independent-solution-design-and-technical-review](../../../Software_Engineering_and_Other/Patterns/independent-solution-design-and-technical-review/SKILL.md)/SKILL.md).
+  [independent-solution-design-and-technical-review](../../../../Software_Engineering_and_Other/Patterns/architecture/independent-solution-design-and-technical-review/SKILL.md)/SKILL.md).
 
 ## Prerequisites & environment
 
@@ -206,7 +206,7 @@ what turns [runbook](../runbook/SKILL.md)-following into real operational judgme
   every deviation you noted — reviewing that log periodically is how
   judgment about *why* the [runbook](../runbook/SKILL.md) says what it says actually builds over
   time, ahead of eventually working more independently as covered in
-  [independent-solution-design-and-technical-review](../[independent-solution-design-and-technical-review](../../../Software_Engineering_and_Other/Patterns/independent-solution-design-and-technical-review/SKILL.md)/SKILL.md).
+  [independent-solution-design-and-technical-review](../../../../Software_Engineering_and_Other/Patterns/architecture/independent-solution-design-and-technical-review/SKILL.md)/SKILL.md).
 
 ## Common pitfalls
 
@@ -294,7 +294,7 @@ the on-call rotation for a junior engineer's first solo overnight shift.
 8. Secondary on-call (a senior engineer) picks it up, and — because this
    didn't have a documented fix beyond the [runbook](../runbook/SKILL.md)'s scope — proceeds
    under
-   [independent-solution-design-and-technical-review](../[independent-solution-design-and-technical-review](../../../Software_Engineering_and_Other/Patterns/independent-solution-design-and-technical-review/SKILL.md)/SKILL.md)'s
+   [independent-solution-design-and-technical-review](../../../../Software_Engineering_and_Other/Patterns/architecture/independent-solution-design-and-technical-review/SKILL.md)/SKILL.md)'s
    root-cause process rather than the [runbook](../runbook/SKILL.md).
 9. **After stand-down**, the junior engineer logs the deviation in the
    [incident](../incident/SKILL.md) ticket: "[runbook](../runbook/SKILL.md)'s restart step resolved symptoms for ~12
@@ -305,7 +305,7 @@ the on-call rotation for a junior engineer's first solo overnight shift.
 
 ## Cross-references
 
-- [independent-solution-design-and-technical-review](../[independent-solution-design-and-technical-review](../../../Software_Engineering_and_Other/Patterns/independent-solution-design-and-technical-review/SKILL.md)/SKILL.md) — the next level of practice: what happens once an issue is escalated past a [runbook](../runbook/SKILL.md)'s scope, including root-cause analysis on incidents with no existing [runbook](../runbook/SKILL.md).
+- [independent-solution-design-and-technical-review](../../../../Software_Engineering_and_Other/Patterns/architecture/independent-solution-design-and-technical-review/SKILL.md)/SKILL.md) — the next level of practice: what happens once an issue is escalated past a [runbook](../runbook/SKILL.md)'s scope, including root-cause analysis on incidents with no existing [runbook](../runbook/SKILL.md).
 - [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../../Software_Engineering_and_Other/Frontend/[incident-response](../../Observability_and_SecOps/[incident](../../Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../alerting/on-call-management/SKILL.md)/SKILL.md)/SKILL.md) — the severity levels, paging behavior, and escalation timeouts this skill's triage and escalation steps operate within.
 - [blameless-postmortem-and-root-cause-analysis](../../../site-reliability-engineering/skills/[blameless-postmortem-and-root-cause-analysis](../../../Software_Engineering_and_Other/Frontend/blameless-postmortem-and-[root-cause-analysis](../../Observability_and_SecOps/root-cause-analysis/SKILL.md)/SKILL.md)/SKILL.md) — where a logged [runbook](../runbook/SKILL.md) deviation or a recurring escalation trigger typically ends up feeding a formal postmortem's action items.
 - [pipeline-failure-triage-and-recovery](../../../devops/skills/[pipeline-failure-triage-and-recovery](../pipeline-failure-triage-and-recovery/SKILL.md)/SKILL.md) — the equivalent first-response triage discipline (classify before acting, narrowest safe recovery action) applied specifically to a failed CI/CD pipeline run rather than a production alert.

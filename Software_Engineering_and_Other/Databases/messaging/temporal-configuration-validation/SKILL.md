@@ -30,7 +30,7 @@ depends_on:
 
 A Temporal workflow can be authored correctly — deterministic, with
 sensible activities and compensation logic as covered in
-[temporal-durable-workflow-orchestration](../[temporal-durable-workflow-orchestration](../../Patterns/temporal-durable-workflow-orchestration/SKILL.md)/SKILL.md)
+[temporal-durable-workflow-orchestration](../../../Patterns/workflow/temporal-durable-workflow-orchestration/SKILL.md)/SKILL.md)
 — and still fail in production because of configuration sitting outside
 the workflow code itself: a worker polling the wrong (or no) task queue,
 an activity timeout too tight for its real-world latency distribution, a
@@ -44,7 +44,7 @@ configuration surface — task queues, timeouts/retries, and namespace
 settings — before a Temporal-backed service goes live, as a
 complement to (not a replacement for) the workflow/activity authoring
 guidance in
-[temporal-durable-workflow-orchestration](../[temporal-durable-workflow-orchestration](../../Patterns/temporal-durable-workflow-orchestration/SKILL.md)/SKILL.md).
+[temporal-durable-workflow-orchestration](../../../Patterns/workflow/temporal-durable-workflow-orchestration/SKILL.md)/SKILL.md).
 
 ## When to use
 
@@ -76,7 +76,7 @@ guidance in
 - Familiarity with the workflow/activity code being validated (or the
   ability to grep it) to cross-check declared timeouts/retry policies
   against what
-  [temporal-durable-workflow-orchestration](../[temporal-durable-workflow-orchestration](../../Patterns/temporal-durable-workflow-orchestration/SKILL.md)/SKILL.md)
+  [temporal-durable-workflow-orchestration](../../../Patterns/workflow/temporal-durable-workflow-orchestration/SKILL.md)/SKILL.md)
   recommends per activity.
 - For namespace validation: awareness of the organization's actual
   operational/compliance requirement for how long workflow history must
@@ -237,7 +237,7 @@ guidance in
    the same task queue with no compatibility guarantee — this is the
    configuration-level complement to the code-level `GetVersion`
    patching discipline in
-   [temporal-durable-workflow-orchestration](../[temporal-durable-workflow-orchestration](../../Patterns/temporal-durable-workflow-orchestration/SKILL.md)/SKILL.md).
+   [temporal-durable-workflow-orchestration](../../../Patterns/workflow/temporal-durable-workflow-orchestration/SKILL.md)/SKILL.md).
 
 9. **Run a replay test against real production history as a pre-deploy
    CI gate**, not just unit tests against mocked activities — this is
@@ -335,7 +335,7 @@ guidance in
 
 **Scenario:** Pre-production readiness review for the
 `order-fulfillment` workflow from
-[temporal-durable-workflow-orchestration](../[temporal-durable-workflow-orchestration](../../Patterns/temporal-durable-workflow-orchestration/SKILL.md)/SKILL.md)
+[temporal-durable-workflow-orchestration](../../../Patterns/workflow/temporal-durable-workflow-orchestration/SKILL.md)/SKILL.md)
 before it goes live for real customer orders.
 
 1. Task queue check:
@@ -384,6 +384,6 @@ before it goes live for real customer orders.
 
 ## Cross-references
 
-- [temporal-durable-workflow-orchestration](../[temporal-durable-workflow-orchestration](../../Patterns/temporal-durable-workflow-orchestration/SKILL.md)/SKILL.md) — authoring the workflow/activity/signal code this skill validates the configuration around, including the `GetVersion` patching discipline this skill's Build ID checks complement.
+- [temporal-durable-workflow-orchestration](../../../Patterns/workflow/temporal-durable-workflow-orchestration/SKILL.md)/SKILL.md) — authoring the workflow/activity/signal code this skill validates the configuration around, including the `GetVersion` patching discipline this skill's Build ID checks complement.
 - [kafka-configuration-validation](../[kafka-configuration-validation](../kafka-configuration-validation/SKILL.md)/SKILL.md) — a comparable pre-production configuration-validation discipline (topic/consumer-group settings checked before go-live) for the messaging side of a system a Temporal workflow might integrate with.
 - [airflow-scheduler-and-dag-troubleshooting](../[airflow-scheduler-and-dag-troubleshooting](../../../AI_and_Agents/Workflows/airflow-scheduler-and-dag-troubleshooting/SKILL.md)/SKILL.md) — a comparable "diagnose a stuck orchestration unit" workflow for Airflow's scheduler, useful for contrasting how a stuck DAG run is diagnosed versus a stuck Temporal workflow (task queue pollers) covered here.

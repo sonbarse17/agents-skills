@@ -35,10 +35,10 @@ plan` Terraform module can still define an S3 bucket with public read
 access, a security group open to `0.0.0.0/0` on all ports, an IAM policy
 granting `*:*`, or an unencrypted RDS instance — none of which Terraform
 itself will refuse to apply, and none of which a dependency scanner or a
-[code-quality](../../../Software_Engineering_and_Other/Miscellaneous/skills-main/skills/[code-quality](../../../Software_Engineering_and_Other/Patterns/code-quality/SKILL.md)/SKILL.md) linter is positioned to catch. **Checkov** and **tfsec** are
+[code-quality](../../../../Software_Engineering_and_Other/Patterns/dev-practice/code-quality/SKILL.md)/SKILL.md) linter is positioned to catch. **Checkov** and **tfsec** are
 purpose-built, static-analysis scanners for exactly this: they parse
 Terraform (and, for Checkov, [CloudFormation](../../../cloudformation/other/cloudformation/SKILL.md), [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) manifests, ARM/Bicep,
-[Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) Framework, and Dockerfiles) *before* any resource is provisioned,
+[Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) Framework, and Dockerfiles) *before* any resource is provisioned,
 and check it against a large ruleset of cloud-security best practices. This
 is a narrower, IaC-specific scope than Snyk's multi-product platform
 (`snyk iac test` covers similar ground as one of three Snyk scan types
@@ -79,7 +79,7 @@ full per-seat licensing for that purpose alone.
   statically.
 - **Checkov** (`pip install checkov` or the container image
   `bridgecrew/checkov`) — [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-based, broadest format coverage
-  (Terraform, [CloudFormation](../../../cloudformation/other/cloudformation/SKILL.md), [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), Helm, ARM/Bicep, [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)
+  (Terraform, [CloudFormation](../../../cloudformation/other/cloudformation/SKILL.md), [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), Helm, ARM/Bicep, [Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)
   Framework, Dockerfile, and plain YAML/JSON for some checks).
 - **tfsec** (a standalone Go binary, or via `brew install tfsec` /
   container image) — Terraform-only, narrower format scope but often

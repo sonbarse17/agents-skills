@@ -39,7 +39,7 @@ Exact user phrases: "contract testing", "Pact", "Spring Cloud Contract", "consum
 
 ### Input Context
 Before activating, verify:
-- Service architecture (monolith, [microservices](../../Patterns/microservices/SKILL.md), event-driven)
+- Service architecture (monolith, [microservices](../../Patterns/distributed-systems/microservices/SKILL.md), event-driven)
 - Consumer and provider service names
 - Communication protocol (HTTP REST, gRPC, async messaging)
 - Existing test frameworks and CI setup

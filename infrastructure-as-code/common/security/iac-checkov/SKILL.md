@@ -111,7 +111,7 @@ checkov --list-frameworks
 
 # Output:
 # terraform, [cloudformation](../../../cloudformation/other/cloudformation/SKILL.md), [kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), dockerfile, helm,
-# [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md), arm, secrets, [ansible](../../../ansible/other/ansible/SKILL.md), github_actions, gitlab_ci
+# [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md), arm, secrets, [ansible](../../../ansible/other/ansible/SKILL.md), github_actions, gitlab_ci
 ```
 
 **Scope Considerations:**
@@ -422,7 +422,7 @@ checkov -d ./helm-chart --framework helm
 checkov -f ./[cloudformation](../../../cloudformation/other/cloudformation/SKILL.md)/stack.yaml --framework [cloudformation](../../../cloudformation/other/cloudformation/SKILL.md)
 
 # Scan AWS SAM template
-checkov -f ./sam-template.yaml --framework [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)
+checkov -f ./sam-template.yaml --framework [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)
 ```
 
 ### Dockerfile

@@ -355,7 +355,7 @@ Zachman: 6x6 matrix ontology for classifying EA artifacts. ArchiMate: visual mod
 ## Case Studies
 
 ### Case Study 1: TOGAF ADM for Financial Services Transformation
-A large bank with 40+ legacy systems needed to modernize their customer onboarding process. Using TOGAF ADM, the EA team started with Phase A (Architecture Vision) to align stakeholders across retail banking, compliance, and IT. Phase B documented the as-is business process requiring 14 system touchpoints and 3-day onboarding time. Phase C mapped data entities (customer, KYC documents, account products) and identified 7 redundant data stores. Phase D designed the target technology architecture with an API gateway, event-driven [microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md), and a customer data platform.
+A large bank with 40+ legacy systems needed to modernize their customer onboarding process. Using TOGAF ADM, the EA team started with Phase A (Architecture Vision) to align stakeholders across retail banking, compliance, and IT. Phase B documented the as-is business process requiring 14 system touchpoints and 3-day onboarding time. Phase C mapped data entities (customer, KYC documents, account products) and identified 7 redundant data stores. Phase D designed the target technology architecture with an API gateway, event-driven [microservices](../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md), and a customer data platform.
 
 Gap analysis revealed 23 capability gaps between baseline and target. Phase E grouped these into 4 work packages: customer portal, KYC automation, account opening engine, and integration layer. Phase F created a 3-phase migration plan progressing from quick wins (portal UX) through core transformation (KYC automation) to full platform. Architecture governance through Phase G ensured each work package maintained compliance with the target architecture. Phase H established quarterly architecture reviews.
 
@@ -521,4 +521,4 @@ zachman_adm_mapping:
 - Architecture decision [audit](../../Operations/audit/SKILL.md): all ADM phase decisions logged with timestamp, author, rationale.
 
 ## Handoff
-For implementation projects, hand off to `[enterprise-architecture-governance](../../../Software_Engineering_and_Other/Patterns/architecture-governance/SKILL.md)` for review board decisions, or `enterprise-[vendor-management](../../../Product_and_Business/vendor-management/SKILL.md)` for technology procurement alignment.
+For implementation projects, hand off to `[enterprise-architecture-governance](../../../Software_Engineering_and_Other/Patterns/architecture/architecture-governance/SKILL.md)` for review board decisions, or `enterprise-[vendor-management](../../../Product_and_Business/vendor-management/SKILL.md)` for technology procurement alignment.

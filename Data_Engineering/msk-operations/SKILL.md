@@ -55,7 +55,7 @@ Activate this skill when the user asks to:
 - Advise on Kafka client (producer / consumer) configuration when the client is
   connecting to an MSK cluster.
 
-Do **not** activate this skill for MSK Connect, MSK [Serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md), or MSK Replicator
+Do **not** activate this skill for MSK Connect, MSK [Serverless](../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md), or MSK Replicator
 — those are separate services with their own operational surfaces.
 
 ## Broker Type Determination

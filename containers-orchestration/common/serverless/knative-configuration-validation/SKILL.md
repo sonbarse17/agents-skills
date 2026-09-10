@@ -36,7 +36,7 @@ unvalidated revision, or a timeout shorter than the workload's real
 latency all pass schema validation and only surface later as an
 [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), a cost overrun, or a silent outage. This skill is the
 pre-deploy gate for Knative Serving configuration, complementing
-[knative-[serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-configuration](../[knative-[serverless](../serverless/SKILL.md)-configuration](../knative-[serverless](../serverless/SKILL.md)-configuration/SKILL.md)/SKILL.md),
+[knative-[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-configuration](../[knative-[serverless](../serverless/SKILL.md)-configuration](../knative-[serverless](../serverless/SKILL.md)-configuration/SKILL.md)/SKILL.md),
 which covers how to build that configuration in the first place, the
 same way
 [aws-lambda-configuration-validation](../[aws-lambda-configuration-validation](../../Cloud_Providers/[aws-lambda](../../Cloud_Providers/aws-lambda/SKILL.md)-configuration-validation/SKILL.md)/SKILL.md)
@@ -258,6 +258,6 @@ error-rate and latency metrics are reviewed at the smaller percentage.
 
 ## Cross-references
 
-- [knative-[serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-configuration](../[knative-[serverless](../serverless/SKILL.md)-configuration](../knative-[serverless](../serverless/SKILL.md)-configuration/SKILL.md)/SKILL.md) — how the Service/Revision/traffic configuration validated here is built and operated.
+- [knative-[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-configuration](../[knative-[serverless](../serverless/SKILL.md)-configuration](../knative-[serverless](../serverless/SKILL.md)-configuration/SKILL.md)/SKILL.md) — how the Service/Revision/traffic configuration validated here is built and operated.
 - [aws-lambda-configuration-validation](../[aws-lambda-configuration-validation](../../Cloud_Providers/[aws-lambda](../../Cloud_Providers/aws-lambda/SKILL.md)-configuration-validation/SKILL.md)/SKILL.md) — the same pre-deploy validation discipline applied to AWS Lambda configuration.
 - [dapr-configuration-validation](../[dapr-configuration-validation](../../CI_CD/dapr-configuration-validation/SKILL.md)/SKILL.md) — equivalent pre-deploy validation for Dapr component configs, often deployed alongside Knative on the same cluster.

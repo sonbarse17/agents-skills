@@ -147,7 +147,7 @@ No preamble. No postamble. No explanations. No filler. Compress output.
 - **TorchServe**: PyTorch-native, built-in model archive, metrics. Best for PyTorch models.
 - **BentoML**: Framework-agnostic, [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-first, OpenAPI spec. Best for [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) ML ecosystem.
 - **Ray Serve**: Distributed, composition of models, [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-native. Best for complex pipelines.
-- **KServe**: [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-native, [serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md), auto-scaling to zero. Best for K8s infra.
+- **KServe**: [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-native, [serverless](../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md), auto-scaling to zero. Best for K8s infra.
 - **Seldon Core**: Multi-framework, explainability, outlier detection. Best for advanced ML features.
 
 ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
@@ -309,7 +309,7 @@ class ABTestRouter:
 - Batch jobs: reduce to zero replicas when idle.
 
 ### Cost Optimization
-- [Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) (KServe): scale to zero when idle.
+- [Serverless](../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) (KServe): scale to zero when idle.
 - GPU: use spot instances for batch inference.
 - Cache frequent predictions (response cache).
 - Right-size instances: profile before deploying.
@@ -543,7 +543,7 @@ class PredictionCache:
   - ../../../Global_References/model-serving-advanced.md — Model Serving Advanced Topics
   - ../../../Global_References/model-serving-fundamentals.md — Model Serving Fundamentals
   - ../../../Global_References/model-versioning.md — Model Versioning & Deployment Strategies
-  - ../../../Global_References/[serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-inference.md — [Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) Model Inference
+  - ../../../Global_References/[serverless](../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-inference.md — [Serverless](../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) Model Inference
   - ../../../Global_References/serving-frameworks.md — Serving Frameworks Comparison
 ## Handoff
 For model building and packaging, hand off to `ml-[ml-pipeline](../../Workflows/ml-pipeline/SKILL.md)`. For [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) inference metrics, hand off to `devops/[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)`.

@@ -481,13 +481,13 @@ Project Initialization Strategy
 ├── [Monorepo](../../../Frontend/build-tools/monorepo/SKILL.md) needed?
 │   ├── Yes → Turborepo / Nx / pnpm workspaces
 │   ├── Single package → Simple single-package setup
-│   └── [Microservices](../../../Patterns/microservices/SKILL.md) → Nx with buildable libraries
+│   └── [Microservices](../../../Patterns/distributed-systems/microservices/SKILL.md) → Nx with buildable libraries
 ├── Testing strategy?
 │   ├── Unit + E2E → Vitest + Playwright
 │   ├── Unit only → Vitest
 │   └── Type-safe mocks → Node Test Runner + testdouble
 └── Deployment target?
-    ├── [Serverless](../../../Patterns/serverless/SKILL.md) → AWS Lambda / Vercel / Netlify
+    ├── [Serverless](../../../Patterns/data-performance/serverless/SKILL.md) → AWS Lambda / Vercel / Netlify
     ├── Container → [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) + [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) Compose + K8s manifests
     └── Edge → Cloudflare Workers / Deno Deploy
 ```

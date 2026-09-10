@@ -62,7 +62,7 @@ Before activating, verify:
 - Current architecture: single node? master-slave? multi-AZ? multi-region?
 - Database engine + replication mode (sync, semi-sync, async)
 - Load balancer layer (L4 TCP, L7 HTTP) and current health-check semantics
-- Deployment model (bare metal, VM, [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md), [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md))
+- Deployment model (bare metal, VM, [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md), [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md))
 - Migration cadence (per-day / per-week) and current downtime per release
 - Read/write ratio, peak TPS, dataset size, max acceptable replication lag
 - Team size and on-call [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) (drives automation vs manual [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) split)

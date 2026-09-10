@@ -144,16 +144,16 @@ State: User asks about SOLID, OOP, DRY, GRASP, or design principles.
   Reason: "Object-oriented or software design principles request."
 
 State: User asks about design patterns, GoF, pattern selection, creational/structural/behavioral.
-  Route: [design-patterns](../../Software_Engineering_and_Other/Patterns/design-patterns/SKILL.md)
+  Route: [design-patterns](../../Software_Engineering_and_Other/Patterns/architecture/design-patterns/SKILL.md)
   Reason: "Design pattern selection or implementation request."
 
 State: User asks about solution architecture, high-level design, system design, HLD, architecture overview, architecture decision, tech stack decision, cross-cutting concerns.
   Route: solution-architecture
   Reason: "Solution architecture request."
 
-State: User asks about [microservices](../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md), saga, CQRS, event sourcing, service decomposition.
-  Route: backend-[microservices](../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md)
-  Reason: "[Microservices](../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) architecture and distributed patterns request."
+State: User asks about [microservices](../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md), saga, CQRS, event sourcing, service decomposition.
+  Route: backend-[microservices](../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md)
+  Reason: "[Microservices](../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md) architecture and distributed patterns request."
 
 State: User asks about [microfrontend](../../Software_Engineering_and_Other/Frontend/architecture/microfrontend/SKILL.md), Module Federation, frontend composition.
   Route: frontend-[microfrontend](../../Software_Engineering_and_Other/Frontend/architecture/microfrontend/SKILL.md)
@@ -361,7 +361,7 @@ State: React detected and Next.js in dependencies.
   Reason: "React Next.js request."
 
 State: Vue detected and user asks about Vue project structure, Vue architecture.
-  Route: [vue-architecture](../../Software_Engineering_and_Other/Patterns/architecture/SKILL.md)
+  Route: [vue-architecture](../../Software_Engineering_and_Other/Patterns/architecture/architecture/SKILL.md)
   Reason: "Vue architecture request."
 
 State: Vue detected and Nuxt in dependencies.
@@ -424,9 +424,9 @@ State: User asks about AWS, EC2, S3, Lambda, RDS, cloud infrastructure.
   Route: devops-aws
   Reason: "AWS cloud infrastructure request."
 
-State: User asks about [serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md), Lambda, Cloud Functions, FaaS.
-  Route: devops-[serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)
-  Reason: "[Serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) architecture request."
+State: User asks about [serverless](../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md), Lambda, Cloud Functions, FaaS.
+  Route: devops-[serverless](../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)
+  Reason: "[Serverless](../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) architecture request."
 
 State: User asks about [monorepo](../../Software_Engineering_and_Other/Frontend/build-tools/monorepo/SKILL.md), Nx, Turborepo, workspace organization.
   Route: devops-[monorepo](../../Software_Engineering_and_Other/Frontend/build-tools/monorepo/SKILL.md)
@@ -445,7 +445,7 @@ State: User asks about [observability](../../observability-monitoring-logging/co
   Reason: "[Observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) and distributed tracing request."
 
 State: User asks about caching, Redis cache, CDN, cache strategy, cache invalidation.
-  Route: [backend-caching](../../Software_Engineering_and_Other/Patterns/caching/SKILL.md)
+  Route: [backend-caching](../../Software_Engineering_and_Other/Patterns/data-performance/caching/SKILL.md)
   Reason: "Caching strategy and implementation request."
 
 State: User asks about API gateway, Kong, Nginx reverse proxy, AWS API Gateway, gateway pattern, BFF, API proxy, gateway aggregation.
@@ -541,7 +541,7 @@ State: User says React Native, Expo, RN, react-native, Hermes.
   Reason: "React Native cross-platform development request."
 
 State: User asks about mobile pattern, mobile architecture, MVVM, MVI, mobile project structure, Clean Architecture mobile.
-  Route: [mobile-patterns](../../Software_Engineering_and_Other/Patterns/patterns/SKILL.md)
+  Route: [mobile-patterns](../../Mobile/patterns/SKILL.md)
   Reason: "Mobile architecture pattern request."
 
 State: User asks about mobile testing, widget test, component test mobile, golden test, XCUITest, Espresso, Detox.
@@ -589,15 +589,15 @@ State: User says init, scaffold, new project, start fresh, project setup.
   Reason: "Project initialization request."
 
 State: User asks about GraphQL, Apollo, schema design, resolver patterns.
-  Route: [backend-graphql-patterns](../../Software_Engineering_and_Other/Patterns/graphql-patterns/SKILL.md)
+  Route: [backend-graphql-patterns](../../Software_Engineering_and_Other/Patterns/api-rpc/graphql-patterns/SKILL.md)
   Reason: "GraphQL request."
 
 State: User asks about background jobs, task queues, workers, scheduled tasks.
-  Route: [backend-background-jobs](../../Software_Engineering_and_Other/Patterns/background-jobs/SKILL.md)
+  Route: [backend-background-jobs](../../Software_Engineering_and_Other/Patterns/workflow/background-jobs/SKILL.md)
   Reason: "Background job request."
 
 State: User asks about search, Elasticsearch, Meilisearch, search indexing.
-  Route: [backend-search-patterns](../../Software_Engineering_and_Other/Patterns/search-patterns/SKILL.md)
+  Route: [backend-search-patterns](../../Software_Engineering_and_Other/Patterns/data-performance/search-patterns/SKILL.md)
   Reason: "Search request."
 
 State: User asks about data streaming, Kafka, stream processing, event streaming.
@@ -641,7 +641,7 @@ State: User asks about idempotency, idempotent API, duplicate detection.
   Reason: "Idempotency request."
 
 State: User asks about distributed lock, Redlock, distributed mutex, lease.
-  Route: [backend-distributed-locking](../../Software_Engineering_and_Other/Patterns/distributed-locking/SKILL.md)
+  Route: [backend-distributed-locking](../../Software_Engineering_and_Other/Patterns/distributed-systems/distributed-locking/SKILL.md)
   Reason: "Distributed locking request."
 
 State: User asks about webhook, webhook delivery, outgoing webhook.
@@ -653,7 +653,7 @@ State: User asks about API versioning, version strategy, versioning header.
   Reason: "API versioning request."
 
 State: User asks about scheduled tasks, cron jobs, Quartz, job scheduling.
-  Route: [backend-scheduling-cron](../../Software_Engineering_and_Other/Patterns/scheduling-cron/SKILL.md)
+  Route: [backend-scheduling-cron](../../Software_Engineering_and_Other/Patterns/workflow/scheduling-cron/SKILL.md)
   Reason: "Scheduling/cron request."
 
 State: User asks about [multi-tenancy](../../containers-orchestration/common/other/multi-tenancy/SKILL.md), multi-tenant architecture, tenant isolation backend.
@@ -673,11 +673,11 @@ State: User asks about [audit](../../AI_and_Agents/Operations/audit/SKILL.md) lo
   Reason: "[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging request."
 
 State: User asks about plugin architecture, plugin system, extension point.
-  Route: [backend-plugin-architecture](../../Software_Engineering_and_Other/Patterns/plugin-architecture/SKILL.md)
+  Route: [backend-plugin-architecture](../../Software_Engineering_and_Other/Patterns/architecture/plugin-architecture/SKILL.md)
   Reason: "Plugin architecture request."
 
 State: User asks about CQRS, command query segregation, read model, write model, command handler, query handler, materialized view.
-  Route: [backend-cqrs-patterns](../../Software_Engineering_and_Other/Patterns/cqrs-patterns/SKILL.md)
+  Route: [backend-cqrs-patterns](../../Software_Engineering_and_Other/Patterns/distributed-systems/cqrs-patterns/SKILL.md)
   Reason: "CQRS patterns request."
 
 State: User asks about event sourcing, event store, event stream, rehydrate, event replay, projection rebuild, append-only log.
@@ -689,7 +689,7 @@ State: User asks about saga, distributed transaction, choreography saga, orchest
   Reason: "Saga patterns request."
 
 State: User asks about transactional outbox, outbox pattern, reliable event publishing, dual write, CDC outbox, message relay, outbox table.
-  Route: [backend-transactional-outbox](../../Software_Engineering_and_Other/Patterns/transactional-outbox/SKILL.md)
+  Route: [backend-transactional-outbox](../../Software_Engineering_and_Other/Patterns/distributed-systems/transactional-outbox/SKILL.md)
   Reason: "Transactional outbox request."
 
 State: User asks about Remix, Remix routing, Remix loaders/actions.
@@ -1115,7 +1115,7 @@ State: User asks about authentication, authorization, JWT, OAuth, SSO, RBAC.
   Reason: "Authentication and authorization patterns request."
 
 State: User asks about clean architecture, hexagonal, onion, ports and adapters, dependency rule.
-  Route: [backend-clean-architecture](../../Software_Engineering_and_Other/Patterns/clean-architecture/SKILL.md)
+  Route: [backend-clean-architecture](../../Software_Engineering_and_Other/Patterns/architecture/clean-architecture/SKILL.md)
   Reason: "Clean architecture patterns request."
 
 State: User asks about database design, SQL, migrations, ORM, schema design, indexing.
@@ -1123,7 +1123,7 @@ State: User asks about database design, SQL, migrations, ORM, schema design, ind
   Reason: "Database design patterns request."
 
 State: User asks about event-driven, messaging, Kafka, RabbitMQ, pub-sub, event bus.
-  Route: [backend-event-driven](../../Software_Engineering_and_Other/Patterns/event-driven/SKILL.md)
+  Route: [backend-event-driven](../../Software_Engineering_and_Other/Patterns/distributed-systems/event-driven/SKILL.md)
   Reason: "Event-driven architecture request."
 
 State: User asks about gRPC, protobuf, streaming, bidirectional RPC.
@@ -1251,7 +1251,7 @@ State: User asks about dev container, devcontainer, dev environment.
   Reason: "Dev container request."
 
 State: User asks about tech debt, technical debt, code debt.
-  Route: [dev-loop-tech-debt-tracker](../../Software_Engineering_and_Other/Patterns/tech-debt-tracker/SKILL.md)
+  Route: [dev-loop-tech-debt-tracker](../../Software_Engineering_and_Other/Patterns/dev-practice/tech-debt-tracker/SKILL.md)
   Reason: "Tech debt tracker request."
 
 State: User asks about API client, curl command, HTTP request generation.
@@ -1287,7 +1287,7 @@ State: User asks about onboarding, new developer setup, getting started.
   Reason: "Onboarding request."
 
 State: User asks about context compression, token budget, summarize.
-  Route: [core-context-compressor](../../Software_Engineering_and_Other/Patterns/context-compressor/SKILL.md)
+  Route: [core-context-compressor](../../Software_Engineering_and_Other/Patterns/dev-practice/context-compressor/SKILL.md)
   Reason: "Context compression request."
 
 State: User asks about compliance, [audit](../../AI_and_Agents/Operations/audit/SKILL.md), SOC2, ISO27001, GDPR.
@@ -1295,11 +1295,11 @@ State: User asks about compliance, [audit](../../AI_and_Agents/Operations/audit/
   Reason: "Compliance/[audit](../../AI_and_Agents/Operations/audit/SKILL.md) request."
 
 State: User asks about multi-tenant, SaaS architecture, tenant isolation.
-  Route: [enterprise-multi-tenant](../../Software_Engineering_and_Other/Patterns/multi-tenant/SKILL.md)
+  Route: [enterprise-multi-tenant](../../Software_Engineering_and_Other/Patterns/distributed-systems/multi-tenant/SKILL.md)
   Reason: "Multi-tenant request."
 
 State: User asks about enterprise integration, legacy integration, ESB.
-  Route: [enterprise-integration-patterns](../../Software_Engineering_and_Other/Patterns/integration-patterns/SKILL.md)
+  Route: [enterprise-integration-patterns](../../Software_Engineering_and_Other/Patterns/dev-practice/integration-patterns/SKILL.md)
   Reason: "Enterprise integration request."
 
 State: User asks about data governance, data classification, data lineage.
@@ -1491,7 +1491,7 @@ State: User asks about shopping cart, checkout flow, cart management, order mana
   Reason: "Checkout and cart request."
 
 State: User asks about GraphQL Federation, Apollo Federation, federated schema, subgraph, supergraph, schema composition, distributed GraphQL.
-  Route: [api-graphql-federation](../../Software_Engineering_and_Other/Patterns/graphql-federation/SKILL.md)
+  Route: [api-graphql-federation](../../Software_Engineering_and_Other/Patterns/distributed-systems/graphql-federation/SKILL.md)
   Reason: "GraphQL Federation request."
 
 State: User asks about API product management, API strategy, API monetization, developer portal, API lifecycle, API deprecation, API as product.
@@ -1527,7 +1527,7 @@ Read project files:
 - package.json: if @sveltejs/kit present -> frontend-[sveltekit](../../Software_Engineering_and_Other/Frontend/frameworks/sveltekit/SKILL.md)
 - package.json: if next present -> [react-nextjs](../../Software_Engineering_and_Other/Frontend/frameworks/nextjs/SKILL.md)
 - package.json: if react present but no next -> react-architecture
-- package.json: if vue present -> [vue-architecture](../../Software_Engineering_and_Other/Patterns/architecture/SKILL.md)
+- package.json: if vue present -> [vue-architecture](../../Software_Engineering_and_Other/Patterns/architecture/architecture/SKILL.md)
 - package.json: if nuxt present -> [vue-nuxt](../../Software_Engineering_and_Other/Frontend/frameworks/nuxt/SKILL.md)
 - package.json: if @angular/core -> angular-architecture
 - angular.json -> angular-architecture

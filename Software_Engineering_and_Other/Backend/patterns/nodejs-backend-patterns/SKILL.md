@@ -23,7 +23,7 @@ Comprehensive guidance for building scalable, maintainable, and production-ready
 ## When to Use This Skill
 
 - Building REST APIs or GraphQL servers
-- Creating [microservices](../../../Patterns/microservices/SKILL.md) with Node.js
+- Creating [microservices](../../../Patterns/distributed-systems/microservices/SKILL.md) with Node.js
 - Implementing authentication and authorization
 - Designing scalable backend architectures
 - Setting up middleware and error handling

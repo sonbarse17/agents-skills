@@ -47,7 +47,7 @@ account/org structure already exists.
 - Provisioning a new EKS, AKS, or GKE cluster and deciding control-plane
   version, networking mode, and node group/pool layout.
 - Choosing between managed node groups/pools, self-managed nodes, and
-  [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) node options (Fargate, AKS/GKE Autopilot) per workload.
+  [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) node options (Fargate, AKS/GKE Autopilot) per workload.
 - Giving a pod least-privilege access to a cloud API (S3, Blob Storage,
   Cloud Storage; a managed database; a secrets manager) without a
   long-lived static credential.
@@ -119,7 +119,7 @@ account/org structure already exists.
    eksctl create nodegroup --cluster payments-prod --name general \
      --node-type m6i.large --nodes-min 3 --nodes-max 10 --managed
    ```
-   Use Fargate (EKS), Autopilot (GKE), or AKS's virtual-node/[serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)
+   Use Fargate (EKS), Autopilot (GKE), or AKS's virtual-node/[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)
    options for bursty, low-ops-overhead workloads; use dedicated
    spot/preemptible node pools with taints for interruption-tolerant
    batch workloads, keeping stateful/critical workloads off spot [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md).

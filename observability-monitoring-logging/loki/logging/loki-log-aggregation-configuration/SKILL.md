@@ -56,7 +56,7 @@ place.
   `per-stream rate limit exceeded`) or silently dropping expected log
   volume.
 - Scaling Loki from a single-binary/small setup to handle materially
-  higher log volume, and deciding on simple-scalable vs. [microservices](../../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md)
+  higher log volume, and deciding on simple-scalable vs. [microservices](../../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md)
   deployment mode.
 - Migrating or configuring the [object-storage](../../../../cloud/common/storage/object-storage/SKILL.md) backend (S3/GCS/Azure Blob)
   and the index/chunk schema version that governs it.
@@ -92,7 +92,7 @@ place.
      deployments — the right default for most production [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
      setups once volume grows past what single-binary comfortably
      handles.
-   - **[Microservices](../../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md):** every Loki component (distributor, ingester,
+   - **[Microservices](../../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md):** every Loki component (distributor, ingester,
      querier, query-frontend, compactor, etc.) scaled independently —
      reserve for genuinely large multi-team/high-volume deployments; it's
      meaningfully more operational surface area than most teams need.
@@ -245,9 +245,9 @@ place.
   deployment — it has better query performance and is the schema Loki
   development is focused on going forward.
 - Choose simple-scalable mode as the default production target on
-  [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) rather than jumping straight to full [microservices](../../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) mode —
+  [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) rather than jumping straight to full [microservices](../../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md) mode —
   most teams never need the extra operational surface area
-  [microservices](../../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) mode adds.
+  [microservices](../../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md) mode adds.
 - Monitor `loki_discarded_samples_total` by `reason` as a standing
   dashboard panel/alert, not just when someone reports missing logs —
   silent ingestion drops are otherwise invisible until someone notices

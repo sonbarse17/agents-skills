@@ -97,7 +97,7 @@ Goal: Minimize changes to application code?
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: legacy migration, system migration, strangler fig, legacy modernization, monolith to [microservices](../../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md), database migration, data migration, lift and shift, replatform, rehost, refactor legacy, legacy decommission.
+Exact user phrases: legacy migration, system migration, strangler fig, legacy modernization, monolith to [microservices](../../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md), database migration, data migration, lift and shift, replatform, rehost, refactor legacy, legacy decommission.
 
 ### Input Context
 - What is the source system and target platform?
@@ -289,8 +289,8 @@ Practice 7: Communicate migration progress to stakeholders weekly. Visibility bu
 
 ## Case Studies
 
-### Case Study 1: Monolith to [Microservices](../../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) (Strangler Fig)
-A financial services company migrated a 15-year-old Java monolith handling 50M daily transactions. Using strangler fig with an API gateway routing layer, they extracted 12 [microservices](../../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) over 18 months. Each extraction began with an anti-corruption layer, followed by dual-write, then cutover. The monolith was decommissioned after 14 months of parallel operation. Zero customer-facing incidents during migration. Performance improved 3x for migrated services.
+### Case Study 1: Monolith to [Microservices](../../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md) (Strangler Fig)
+A financial services company migrated a 15-year-old Java monolith handling 50M daily transactions. Using strangler fig with an API gateway routing layer, they extracted 12 [microservices](../../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md) over 18 months. Each extraction began with an anti-corruption layer, followed by dual-write, then cutover. The monolith was decommissioned after 14 months of parallel operation. Zero customer-facing incidents during migration. Performance improved 3x for migrated services.
 
 ### Case Study 2: Healthcare CRM (Parallel Run)
 A healthcare SaaS provider migrated from a legacy on-premises CRM to a cloud-native platform. Using parallel run with real-time comparison, both systems processed identical traffic for 6 weeks. The comparison engine flagged 847 discrepancies in the first week, revealing 3 critical data transformation bugs. After the 6-week validation period, cutover completed in 4 hours with no rollback required.
@@ -455,7 +455,7 @@ comparator = DualWriteComparator()
 ### Migration Rollback Plan Template (YAML)
 ```yaml
 rollback_plan:
-  migration_id: "monolith-to-[microservices](../../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md)-v2"
+  migration_id: "monolith-to-[microservices](../../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md)-v2"
   trigger_conditions:
     - error_rate_baseline_pct: 0.5
     - error_rate_threshold: 2.0  # > 2% error rate triggers rollback
@@ -523,5 +523,5 @@ Scheduling the cutover during end-of-quarter close, Black Friday, or product lau
   - ../../../Global_References/strangler-fig.md -- Strangler Fig Pattern
   - ../../../Global_References/testing-migration.md -- Testing Legacy Migrations
 ## Handoff
-For integration patterns during strangler fig, hand off to `[enterprise-integration-patterns](../../../../Software_Engineering_and_Other/Patterns/integration-patterns/SKILL.md)`. For data governance during migration, hand off to `[enterprise-data-governance](../../../../Data_Engineering/data-governance/SKILL.md)`.
+For integration patterns during strangler fig, hand off to `[enterprise-integration-patterns](../../../../Software_Engineering_and_Other/Patterns/dev-practice/integration-patterns/SKILL.md)`. For data governance during migration, hand off to `[enterprise-data-governance](../../../../Data_Engineering/data-governance/SKILL.md)`.
 

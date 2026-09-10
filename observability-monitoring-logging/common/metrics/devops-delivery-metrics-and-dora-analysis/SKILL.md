@@ -72,7 +72,7 @@ that is almost always a systemic, cross-team property.
 - A consistent definition, agreed across teams, of what counts as "a
   change" and "a deployment to production" before comparing any numbers —
   teams that deploy a monolith once a day and teams that deploy 50
-  independent [microservices](../../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) are not directly comparable without care.
+  independent [microservices](../../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md) are not directly comparable without care.
 - Enough historical [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)/PR/deploy timestamp data (ideally several
   months) to compute lead time and deployment frequency trends rather
   than a single noisy data point.
@@ -233,7 +233,7 @@ that is almost always a systemic, cross-team property.
 - **Symptom:** Two teams' DORA numbers are compared directly in a
   leadership review, and the team with a monolithic, higher-risk
   architecture looks bad next to a team running independent
-  [microservices](../../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) with much smaller per-deploy blast radius.
+  [microservices](../../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md) with much smaller per-deploy blast radius.
   **Fix:** DORA numbers are only meaningful compared against a team's own
   trend over time, not directly against a different team with a
   materially different architecture and deploy unit — present trends,

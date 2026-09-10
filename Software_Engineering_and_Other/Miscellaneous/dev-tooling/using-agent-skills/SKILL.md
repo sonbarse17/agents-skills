@@ -27,26 +27,26 @@ When a task arrives, identify the development phase and apply the corresponding 
 ```
 Task arrives
     │
-    ├── Don't know what you want yet? ──────→ [interview-me](../../../Patterns/interview-me/SKILL.md)
+    ├── Don't know what you want yet? ──────→ [interview-me](../../../Patterns/dev-practice/interview-me/SKILL.md)
     ├── Have a rough concept, need variants? → [idea-refine](../../../../Product_and_Business/idea-refine/SKILL.md)
-    ├── New project/feature/change? ──→ [spec-driven-development](../../../Patterns/spec-driven-development/SKILL.md)
-    ├── Have a spec, need tasks? ──────→ [planning-and-task-breakdown](../../../Patterns/planning-and-task-breakdown/SKILL.md)
-    ├── Implementing code? ────────────→ [incremental-implementation](../../../Patterns/incremental-implementation/SKILL.md)
+    ├── New project/feature/change? ──→ [spec-driven-development](../../../Patterns/dev-practice/spec-driven-development/SKILL.md)
+    ├── Have a spec, need tasks? ──────→ [planning-and-task-breakdown](../../../Patterns/dev-practice/planning-and-task-breakdown/SKILL.md)
+    ├── Implementing code? ────────────→ [incremental-implementation](../../../Patterns/dev-practice/incremental-implementation/SKILL.md)
     │   ├── UI work? ─────────────────→ [frontend-ui-engineering](../../../Frontend/architecture/frontend-ui-engineering/SKILL.md)
     │   ├── API work? ────────────────→ [api-and-interface-design](../../../Backend/api-design/api-and-interface-design/SKILL.md)
     │   ├── Need better context? ─────→ [context-engineering](../../../../AI_and_Agents/Workflows/context-engineering/SKILL.md)
-    │   ├── Need doc-verified code? ───→ [source-driven-development](../../../Patterns/source-driven-development/SKILL.md)
-    │   └── Stakes high / unfamiliar code? ──→ [doubt-driven-development](../../../Patterns/doubt-driven-development/SKILL.md)
-    ├── Writing/running tests? ────────→ [test-driven-development](../../../Patterns/test-driven-development/SKILL.md)
+    │   ├── Need doc-verified code? ───→ [source-driven-development](../../../Patterns/dev-practice/source-driven-development/SKILL.md)
+    │   └── Stakes high / unfamiliar code? ──→ [doubt-driven-development](../../../Patterns/dev-practice/doubt-driven-development/SKILL.md)
+    ├── Writing/running tests? ────────→ [test-driven-development](../../../Patterns/dev-practice/test-driven-development/SKILL.md)
     │   └── Browser-based? ───────────→ [browser-testing-with-devtools](../../../Frontend/testing/browser-testing-with-devtools/SKILL.md)
-    ├── Something broke? ──────────────→ [debugging-and-error-recovery](../../../Patterns/debugging-and-error-recovery/SKILL.md)
+    ├── Something broke? ──────────────→ [debugging-and-error-recovery](../../../Patterns/debugging/debugging-and-error-recovery/SKILL.md)
     ├── Reviewing code? ───────────────→ [code-review-and-quality](../../Patterns/[code-review](../code-review/SKILL.md)-and-quality/SKILL.md)
-    │   ├── Too complex? ─────────────→ [code-simplification](../../../Patterns/code-simplification/SKILL.md)
+    │   ├── Too complex? ─────────────→ [code-simplification](../../../Patterns/dev-practice/code-simplification/SKILL.md)
     │   ├── Security concerns? ───────→ [security-and-hardening](../../../../Security/security-and-hardening/SKILL.md)
     │   └── Performance concerns? ────→ [performance-optimization](../../../Backend/patterns/performance-optimization/SKILL.md)
     ├── Committing/branching? ─────────→ [git-workflow-and-versioning](../../../DevOps_and_Cloud/CI_CD/[git-workflow](../../../DevOps_and_Cloud/CI_CD/git-workflow/SKILL.md)-and-versioning/SKILL.md)
     ├── CI/CD pipeline work? ──────────→ [ci-cd-and-automation](../../../../ci-cd/common/pipeline-design/ci-cd-and-automation/SKILL.md)
-    ├── Deprecating/migrating? ────────→ [deprecation-and-migration](../../../Patterns/deprecation-and-migration/SKILL.md)
+    ├── Deprecating/migrating? ────────→ [deprecation-and-migration](../../../Patterns/dev-practice/deprecation-and-migration/SKILL.md)
     ├── Writing docs/ADRs? ───────────→ [documentation-and-adrs](../../../../Product_and_Business/documentation-and-adrs/SKILL.md)
     ├── Adding logs/metrics/alerts? ───→ [observability-and-instrumentation](../../../DevOps_and_Cloud/Observability_and_SecOps/[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-instrumentation/SKILL.md)
     └── Deploying/launching? ─────────→ [shipping-and-launch](../../../../Product_and_Business/shipping-and-launch/SKILL.md)
@@ -144,59 +144,59 @@ These are the subtle errors that look like productivity but create problems:
 
 2. **Skills are workflows, not suggestions.** Follow the steps in order. Don't skip verification steps.
 
-3. **Multiple skills can apply.** A feature implementation might involve `[idea-refine](../../../../Product_and_Business/idea-refine/SKILL.md)` → `[spec-driven-development](../../../Patterns/spec-driven-development/SKILL.md)` → `[planning-and-task-breakdown](../../../Patterns/planning-and-task-breakdown/SKILL.md)` → `[incremental-implementation](../../../Patterns/incremental-implementation/SKILL.md)` → `[test-driven-development](../../../Patterns/test-driven-development/SKILL.md)` → `[code-review-and-quality](../../Patterns/[code-review](../code-review/SKILL.md)-and-quality/SKILL.md)` → `[code-simplification](../../../Patterns/code-simplification/SKILL.md)` → `[shipping-and-launch](../../../../Product_and_Business/shipping-and-launch/SKILL.md)` in sequence.
+3. **Multiple skills can apply.** A feature implementation might involve `[idea-refine](../../../../Product_and_Business/idea-refine/SKILL.md)` → `[spec-driven-development](../../../Patterns/dev-practice/spec-driven-development/SKILL.md)` → `[planning-and-task-breakdown](../../../Patterns/dev-practice/planning-and-task-breakdown/SKILL.md)` → `[incremental-implementation](../../../Patterns/dev-practice/incremental-implementation/SKILL.md)` → `[test-driven-development](../../../Patterns/dev-practice/test-driven-development/SKILL.md)` → `[code-review-and-quality](../../Patterns/[code-review](../code-review/SKILL.md)-and-quality/SKILL.md)` → `[code-simplification](../../../Patterns/dev-practice/code-simplification/SKILL.md)` → `[shipping-and-launch](../../../../Product_and_Business/shipping-and-launch/SKILL.md)` in sequence.
 
-4. **When in doubt, start with a spec.** If the task is non-trivial and there's no spec, begin with `[spec-driven-development](../../../Patterns/spec-driven-development/SKILL.md)`.
+4. **When in doubt, start with a spec.** If the task is non-trivial and there's no spec, begin with `[spec-driven-development](../../../Patterns/dev-practice/spec-driven-development/SKILL.md)`.
 
 ## Lifecycle Sequence
 
 For a complete feature, the typical skill sequence is:
 
 ```
-1.  [interview-me](../../../Patterns/interview-me/SKILL.md)                → Extract what the user actually wants
+1.  [interview-me](../../../Patterns/dev-practice/interview-me/SKILL.md)                → Extract what the user actually wants
 2.  [idea-refine](../../../../Product_and_Business/idea-refine/SKILL.md)                 → Refine vague ideas
-3.  [spec-driven-development](../../../Patterns/spec-driven-development/SKILL.md)     → Define what we're building
-4.  [planning-and-task-breakdown](../../../Patterns/planning-and-task-breakdown/SKILL.md) → Break into verifiable chunks
+3.  [spec-driven-development](../../../Patterns/dev-practice/spec-driven-development/SKILL.md)     → Define what we're building
+4.  [planning-and-task-breakdown](../../../Patterns/dev-practice/planning-and-task-breakdown/SKILL.md) → Break into verifiable chunks
 5.  [context-engineering](../../../../AI_and_Agents/Workflows/context-engineering/SKILL.md)         → Load the right context
-6.  [source-driven-development](../../../Patterns/source-driven-development/SKILL.md)   → Verify against official docs
-7.  [incremental-implementation](../../../Patterns/incremental-implementation/SKILL.md)  → Build slice by slice
+6.  [source-driven-development](../../../Patterns/dev-practice/source-driven-development/SKILL.md)   → Verify against official docs
+7.  [incremental-implementation](../../../Patterns/dev-practice/incremental-implementation/SKILL.md)  → Build slice by slice
 8.  [observability-and-instrumentation](../../../DevOps_and_Cloud/Observability_and_SecOps/[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-instrumentation/SKILL.md) → Instrument as you build (runs parallel with 7-9, not after)
-9.  [doubt-driven-development](../../../Patterns/doubt-driven-development/SKILL.md)    → Cross-examine non-trivial decisions in-flight
-10. [test-driven-development](../../../Patterns/test-driven-development/SKILL.md)     → Prove each slice works
+9.  [doubt-driven-development](../../../Patterns/dev-practice/doubt-driven-development/SKILL.md)    → Cross-examine non-trivial decisions in-flight
+10. [test-driven-development](../../../Patterns/dev-practice/test-driven-development/SKILL.md)     → Prove each slice works
 11. [code-review-and-quality](../../Patterns/[code-review](../code-review/SKILL.md)-and-quality/SKILL.md)     → Review before merge
-12. [code-simplification](../../../Patterns/code-simplification/SKILL.md)         → Reduce unnecessary complexity while preserving behavior
+12. [code-simplification](../../../Patterns/dev-practice/code-simplification/SKILL.md)         → Reduce unnecessary complexity while preserving behavior
 13. [git-workflow-and-versioning](../../../DevOps_and_Cloud/CI_CD/[git-workflow](../../../DevOps_and_Cloud/CI_CD/git-workflow/SKILL.md)-and-versioning/SKILL.md) → Clean [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) history
 14. [documentation-and-adrs](../../../../Product_and_Business/documentation-and-adrs/SKILL.md)      → Document decisions
-15. [deprecation-and-migration](../../../Patterns/deprecation-and-migration/SKILL.md)   → Retire old systems and move users safely when needed
+15. [deprecation-and-migration](../../../Patterns/dev-practice/deprecation-and-migration/SKILL.md)   → Retire old systems and move users safely when needed
 16. [shipping-and-launch](../../../../Product_and_Business/shipping-and-launch/SKILL.md)         → Deploy safely
 ```
 
-Not every task needs every skill. A bug fix might only need: `[debugging-and-error-recovery](../../../Patterns/debugging-and-error-recovery/SKILL.md)` → `[test-driven-development](../../../Patterns/test-driven-development/SKILL.md)` → `[code-review-and-quality](../../Patterns/[code-review](../code-review/SKILL.md)-and-quality/SKILL.md)`.
+Not every task needs every skill. A bug fix might only need: `[debugging-and-error-recovery](../../../Patterns/debugging/debugging-and-error-recovery/SKILL.md)` → `[test-driven-development](../../../Patterns/dev-practice/test-driven-development/SKILL.md)` → `[code-review-and-quality](../../Patterns/[code-review](../code-review/SKILL.md)-and-quality/SKILL.md)`.
 
 ## Quick Reference
 
 | Phase | Skill | One-Line Summary |
 |-------|-------|-----------------|
-| Define | [interview-me](../../../Patterns/interview-me/SKILL.md) | Surface what the user actually wants before any plan, spec, or code exists |
+| Define | [interview-me](../../../Patterns/dev-practice/interview-me/SKILL.md) | Surface what the user actually wants before any plan, spec, or code exists |
 | Define | [idea-refine](../../../../Product_and_Business/idea-refine/SKILL.md) | Refine ideas through structured divergent and convergent thinking |
-| Define | [spec-driven-development](../../../Patterns/spec-driven-development/SKILL.md) | Requirements and acceptance criteria before code |
-| Plan | [planning-and-task-breakdown](../../../Patterns/planning-and-task-breakdown/SKILL.md) | Decompose into small, verifiable tasks |
-| Build | [incremental-implementation](../../../Patterns/incremental-implementation/SKILL.md) | Thin vertical slices, test each before expanding |
-| Build | [source-driven-development](../../../Patterns/source-driven-development/SKILL.md) | Verify against official docs before implementing |
-| Build | [doubt-driven-development](../../../Patterns/doubt-driven-development/SKILL.md) | Adversarial fresh-context review of every non-trivial decision |
+| Define | [spec-driven-development](../../../Patterns/dev-practice/spec-driven-development/SKILL.md) | Requirements and acceptance criteria before code |
+| Plan | [planning-and-task-breakdown](../../../Patterns/dev-practice/planning-and-task-breakdown/SKILL.md) | Decompose into small, verifiable tasks |
+| Build | [incremental-implementation](../../../Patterns/dev-practice/incremental-implementation/SKILL.md) | Thin vertical slices, test each before expanding |
+| Build | [source-driven-development](../../../Patterns/dev-practice/source-driven-development/SKILL.md) | Verify against official docs before implementing |
+| Build | [doubt-driven-development](../../../Patterns/dev-practice/doubt-driven-development/SKILL.md) | Adversarial fresh-context review of every non-trivial decision |
 | Build | [context-engineering](../../../../AI_and_Agents/Workflows/context-engineering/SKILL.md) | Right context at the right time |
 | Build | [frontend-ui-engineering](../../../Frontend/architecture/frontend-ui-engineering/SKILL.md) | Production-quality UI with accessibility |
 | Build | [api-and-interface-design](../../../Backend/api-design/api-and-interface-design/SKILL.md) | Stable interfaces with clear contracts |
-| Verify | [test-driven-development](../../../Patterns/test-driven-development/SKILL.md) | Failing test first, then make it pass |
+| Verify | [test-driven-development](../../../Patterns/dev-practice/test-driven-development/SKILL.md) | Failing test first, then make it pass |
 | Verify | [browser-testing-with-devtools](../../../Frontend/testing/browser-testing-with-devtools/SKILL.md) | Chrome DevTools MCP for runtime verification |
-| Verify | [debugging-and-error-recovery](../../../Patterns/debugging-and-error-recovery/SKILL.md) | Reproduce → localize → fix → guard |
+| Verify | [debugging-and-error-recovery](../../../Patterns/debugging/debugging-and-error-recovery/SKILL.md) | Reproduce → localize → fix → guard |
 | Review | [code-review-and-quality](../../Patterns/[code-review](../code-review/SKILL.md)-and-quality/SKILL.md) | Five-axis review with quality gates |
-| Review | [code-simplification](../../../Patterns/code-simplification/SKILL.md) | Preserve behavior while reducing unnecessary complexity |
+| Review | [code-simplification](../../../Patterns/dev-practice/code-simplification/SKILL.md) | Preserve behavior while reducing unnecessary complexity |
 | Review | [security-and-hardening](../../../../Security/security-and-hardening/SKILL.md) | OWASP prevention, input validation, least privilege |
 | Review | [performance-optimization](../../../Backend/patterns/performance-optimization/SKILL.md) | Measure first, optimize only what matters |
 | Ship | [git-workflow-and-versioning](../../../DevOps_and_Cloud/CI_CD/[git-workflow](../../../DevOps_and_Cloud/CI_CD/git-workflow/SKILL.md)-and-versioning/SKILL.md) | Atomic commits, clean history |
 | Ship | [ci-cd-and-automation](../../../../ci-cd/common/pipeline-design/ci-cd-and-automation/SKILL.md) | Automated quality gates on every change |
-| Ship | [deprecation-and-migration](../../../Patterns/deprecation-and-migration/SKILL.md) | Remove old systems and migrate users safely |
+| Ship | [deprecation-and-migration](../../../Patterns/dev-practice/deprecation-and-migration/SKILL.md) | Remove old systems and migrate users safely |
 | Ship | [documentation-and-adrs](../../../../Product_and_Business/documentation-and-adrs/SKILL.md) | Document the why, not just the what |
 | Ship | [observability-and-instrumentation](../../../DevOps_and_Cloud/Observability_and_SecOps/[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-instrumentation/SKILL.md) | Structured logs, RED metrics, traces, symptom-based alerts |
 | Ship | [shipping-and-launch](../../../../Product_and_Business/shipping-and-launch/SKILL.md) | Pre-launch checklist, [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), rollback plan |

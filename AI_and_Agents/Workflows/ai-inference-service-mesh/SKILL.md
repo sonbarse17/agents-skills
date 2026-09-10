@@ -19,7 +19,7 @@ depends_on:
 
 # AI Inference Service Mesh
 
-Apply Istio/Linkerd mesh controls to secure and optimize east-west AI traffic across inference [microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md).
+Apply Istio/Linkerd mesh controls to secure and optimize east-west AI traffic across inference [microservices](../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md).
 
 ## Why Mesh for AI
 

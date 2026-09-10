@@ -107,7 +107,7 @@ threats:
     existing_controls:
       - "Generic error pages in production"
     gaps:
-      - "Some [microservices](../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) return raw exceptions"
+      - "Some [microservices](../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md) return raw exceptions"
     recommended_mitigations:
       - "Centralized error handling middleware"
       - "Error response schema validation"

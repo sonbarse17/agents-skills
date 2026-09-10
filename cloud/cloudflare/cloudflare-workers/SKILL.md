@@ -23,7 +23,7 @@ Deploy JavaScript and [TypeScript](../../../Software_Engineering_and_Other/Front
 
 ## When to Use
 
-- Building lightweight APIs and [microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) at the edge.
+- Building lightweight APIs and [microservices](../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md) at the edge.
 - Adding middleware (auth, rate limiting, header injection) in front of origin servers.
 - Running cron jobs on a schedule without maintaining infrastructure.
 - Processing webhooks, image transformations, or A/B testing logic.

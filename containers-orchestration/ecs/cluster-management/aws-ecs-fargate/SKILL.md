@@ -19,12 +19,12 @@ depends_on:
 
 # AWS ECS & Fargate
 
-Run containerized applications on Amazon ECS with Fargate [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) compute or EC2 launch type.
+Run containerized applications on Amazon ECS with Fargate [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) compute or EC2 launch type.
 
 ## When to Use This Skill
 
 - Deploying [Docker](../../../docker/other/docker/SKILL.md) containers to AWS without managing servers (Fargate)
-- Running [microservices](../../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) with service discovery and load balancing
+- Running [microservices](../../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md) with service discovery and load balancing
 - Setting up blue/green or rolling deployments for containerized apps
 - Configuring auto-scaling for container workloads
 - Migrating from [docker-compose](../../Containers_and_Orchestration/[docker](../../Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md) or [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) to ECS

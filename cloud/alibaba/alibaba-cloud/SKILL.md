@@ -44,7 +44,7 @@ Exact user phrases: "Alibaba Cloud", "Aliyun", "ECS", "ACK", "OSS", "SLB", "RDS"
 ### Input Context
 Before activating, verify:
 - Region and zone preference (Alibaba Cloud has 30+ regions; China regions require ICP license).
-- Service type needed: compute (ECS/ECI), container (ACK/ASK), [serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) (FC/SAE).
+- Service type needed: compute (ECS/ECI), container (ACK/ASK), [serverless](../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) (FC/SAE).
 - Authentication method (RAM user key, STS token, RAM role).
 - Compliance requirements (ISO 27001, SOC 2, PCI DSS, MLPS in China).
 - Network topology (VPC with NAT gateway vs Internet gateway, VPN/CEN for hybrid).
@@ -73,10 +73,10 @@ Direct file write. No response text.
 | Workload Profile | Recommended Service | Key Consideration |
 |---|---|---|
 | Stateful VM, custom OS | ECS (Elastic Compute Service) | Full OS control, dedicated instance |
-| Batch job, short-lived container | ECI (Elastic Container Instance) | [Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) container, pay-per-second |
+| Batch job, short-lived container | ECI (Elastic Container Instance) | [Serverless](../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) container, pay-per-second |
 | [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) orchestration | ACK (Container Service for K8s) | Managed K8s, integrates with SLB/NAS |
-| [Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) K8s (no nodes) | ASK ([Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) K8s) | No node management, auto-scaling |
-| [Microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) on K8s | SAE ([Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) App Engine) | War/Jar/Image deploy, auto-scaling |
+| [Serverless](../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) K8s (no nodes) | ASK ([Serverless](../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) K8s) | No node management, auto-scaling |
+| [Microservices](../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md) on K8s | SAE ([Serverless](../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) App Engine) | War/Jar/Image deploy, auto-scaling |
 | Event-driven function | FC (Function Compute) | Pay-per-invocation, HTTP/OSS triggers |
 
 ### Database: RDS vs PolarDB vs Redis vs [MongoDB](../../../Software_Engineering_and_Other/Databases/nosql/mongodb/SKILL.md) vs HBase
@@ -340,8 +340,8 @@ resource "alicloud_cms_alarm" "disk_usage" {
 |---|---|---|---|
 | Compute VM | ECS | EC2 | Compute Engine |
 | Container K8s | ACK | EKS | GKE |
-| [Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) Container | ASK ([Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) K8s) | Fargate | Cloud Run |
-| [Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) Function | FC (Function Compute) | Lambda | Cloud Functions |
+| [Serverless](../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) Container | ASK ([Serverless](../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) K8s) | Fargate | Cloud Run |
+| [Serverless](../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) Function | FC (Function Compute) | Lambda | Cloud Functions |
 | Object Storage | OSS | S3 | Cloud Storage |
 | RDBMS | RDS / PolarDB | RDS / Aurora | Cloud SQL |
 | NoSQL (document) | [MongoDB](../../../Software_Engineering_and_Other/Databases/nosql/mongodb/SKILL.md) | DynamoDB | Firestore |

@@ -23,7 +23,7 @@ depends_on:
   - kubernetes
 ---
 
-# Knative [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) Configuration
+# Knative [Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) Configuration
 
 ## Purpose
 
@@ -33,7 +33,7 @@ managed FaaS platforms to any container running on [Kubernetes](../../../kuberne
 each revision scales independently based on concurrent request load
 (down to zero when idle), and traffic is explicitly split across
 revisions rather than always routing to "latest." This is the
-foundation-level skill for running [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) workloads on
+foundation-level skill for running [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) workloads on
 self-managed or on-prem [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) without depending on a cloud
 provider's FaaS product; validating the resulting config before deploy
 is covered separately in

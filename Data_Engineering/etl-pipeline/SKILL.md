@@ -506,7 +506,7 @@ Source → Extract Task
 | Dagster | [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) | Event-driven, asset-focused | Data platform teams, asset lineage |
 | Prefect | [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) | Cloud or self-hosted | Teams wanting [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-native, modern UX |
 | Kestra | YAML | Event-driven | YAML-first teams, declarative pipelines |
-| AWS Step Functions | JSON/ASL | Event-driven | AWS-native [serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) pipelines |
+| AWS Step Functions | JSON/ASL | Event-driven | AWS-native [serverless](../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) pipelines |
 | Azure Data Factory | JSON/UI | Cloud-native | Azure shops, no-code ETL |
 
 ## Additional ETL Tools
@@ -521,7 +521,7 @@ Mage.ai is a modern open-source ETL tool with [Python](../../Software_Engineerin
 Kestra uses declarative YAML for pipeline definitions with a powerful orchestration engine. Supports batch and event-driven workflows with built-in error handling, retries, and SLA [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md). Plugin ecosystem covers ETL, dbt, [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md), and cloud services.
 
 ### Cloud ETL Services
-AWS Glue: [serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) Spark-based ETL with schema crawler and auto-generated catalog. Azure Data Factory: 90+ built-in connectors with mapping data flows and trigger-based orchestration. GCP Dataflow: fully-managed Apache Beam for batch and streaming with auto-scaling and exactly-once semantics.
+AWS Glue: [serverless](../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) Spark-based ETL with schema crawler and auto-generated catalog. Azure Data Factory: 90+ built-in connectors with mapping data flows and trigger-based orchestration. GCP Dataflow: fully-managed Apache Beam for batch and streaming with auto-scaling and exactly-once semantics.
 
 ## Pipeline CI/CD
 

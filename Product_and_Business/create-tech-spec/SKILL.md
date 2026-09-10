@@ -142,7 +142,7 @@ Read `docs/prd.md` for requirements. Read `docs/decisions/` for architecture con
 
 **Context diagram elements**:
 - External systems (third-party APIs, client applications)
-- Internal services (monolith modules, [microservices](../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md))
+- Internal services (monolith modules, [microservices](../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md))
 - Data stores (databases, caches, file storage)
 - Communication protocols (HTTP, gRPC, message queues, WebSocket)
 - Data flow direction (request/response, push/pull)

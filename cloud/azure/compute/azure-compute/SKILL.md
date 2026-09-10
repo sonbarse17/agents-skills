@@ -35,7 +35,7 @@ Routes Azure VM and Virtual Machine Scale Set (VMSS) requests to the right workf
 - User asks about **[Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) Reservation Groups** (CRG) — reserve, guarantee [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), pre-provision
 - User asks about **Essential Machine Management** (EMM) — machine enrollment, monitor
 
-**Disambiguate with `[azure-prepare](../[azure-prepare](../azure-skills/skills/azure-prepare/SKILL.md)/SKILL.md)`:** if the user wants to deploy an **application** ([Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) service, web app, API, [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) workload), route to `[azure-prepare](../[azure-prepare](../azure-skills/skills/azure-prepare/SKILL.md)/SKILL.md)`. `vm-creator` is for **bare VM/VMSS infrastructure** only.
+**Disambiguate with `[azure-prepare](../[azure-prepare](../azure-skills/skills/azure-prepare/SKILL.md)/SKILL.md)`:** if the user wants to deploy an **application** ([Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) service, web app, API, [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) workload), route to `[azure-prepare](../[azure-prepare](../azure-skills/skills/azure-prepare/SKILL.md)/SKILL.md)`. `vm-creator` is for **bare VM/VMSS infrastructure** only.
 
 ## Routing
 

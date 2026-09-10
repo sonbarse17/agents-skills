@@ -24,7 +24,7 @@ Comprehensive guidance for implementing asynchronous [Python](../python/SKILL.md
 - Creating web scrapers with concurrent requests
 - Developing real-time applications (WebSocket servers, chat systems)
 - Processing multiple independent tasks simultaneously
-- Building [microservices](../../Patterns/microservices/SKILL.md) with async communication
+- Building [microservices](../../../Patterns/distributed-systems/microservices/SKILL.md) with async communication
 - Optimizing I/O-bound workloads
 - Implementing async background tasks and queues
 

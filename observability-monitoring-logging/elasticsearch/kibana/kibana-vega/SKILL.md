@@ -27,7 +27,7 @@ Create and manage Kibana [dashboards](../../../common/dashboard-design/dashboard
 Vega is a declarative visualization grammar for creating custom charts in Kibana. Combined with ES|QL queries, it
 enables highly customized visualizations beyond standard Kibana charts.
 
-**Important Version Requirement:** This skill strictly supports **ES|QL data sources** and requires **[Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) Kibana
+**Important Version Requirement:** This skill strictly supports **ES|QL data sources** and requires **[Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) Kibana
 or version 9.4+ (SNAPSHOT)**. It will not work reliably on older versions or with older Lucene/KQL data source
 definitions.
 

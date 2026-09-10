@@ -115,7 +115,7 @@ connection pool limits, and GC pauses only appear under real traffic shape. Conf
 - **Check for new bottlenecks introduced by the fix** — a bigger cache can trade latency for
   memory pressure elsewhere.
 - **Watch resource cost alongside speed** — a change that halves latency by doubling instance
-  count is a scaling decision, not a tuning win; that tradeoff belongs in `[scalability-design](../../../Patterns/scalability-design/SKILL.md)`.
+  count is a scaling decision, not a tuning win; that tradeoff belongs in `[scalability-design](../../../Patterns/architecture/scalability-design/SKILL.md)`.
 
 **Done when:** the improvement holds under a load test that matches the original baseline's
 concurrency and duration.

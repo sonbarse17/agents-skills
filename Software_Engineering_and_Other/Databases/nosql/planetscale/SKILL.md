@@ -19,13 +19,13 @@ depends_on:
 
 # PlanetScale
 
-Use PlanetScale for [serverless](../../../Patterns/serverless/SKILL.md) [MySQL](../../relational/mysql/SKILL.md)-compatible databases with non-blocking schema change workflows built on Vitess.
+Use PlanetScale for [serverless](../../../Patterns/data-performance/serverless/SKILL.md) [MySQL](../../relational/mysql/SKILL.md)-compatible databases with non-blocking schema change workflows built on Vitess.
 
 ## When to Use
 
 - You need a managed [MySQL](../../relational/mysql/SKILL.md)-compatible database with zero-downtime migrations.
 - Your team wants Git-like branching for schema development.
-- You are building a [serverless](../../../Patterns/serverless/SKILL.md) or edge application that benefits from connection pooling.
+- You are building a [serverless](../../../Patterns/data-performance/serverless/SKILL.md) or edge application that benefits from connection pooling.
 - You need horizontal sharding without managing Vitess directly.
 
 ## Prerequisites
@@ -268,7 +268,7 @@ volumes:
 
 - Keep every schema change backward compatible; deploy the schema first, then the application code.
 - Use deploy request reviews as a gate; require at least one approval before merging.
-- Enable connection pooling (`@planetscale/database` driver or Prisma Data Proxy) for [serverless](../../../Patterns/serverless/SKILL.md) workloads.
+- Enable connection pooling (`@planetscale/database` driver or Prisma Data Proxy) for [serverless](../../../Patterns/data-performance/serverless/SKILL.md) workloads.
 - Monitor query insights weekly and add indexes for queries exceeding 100 ms.
 - Set branch promotion rules so only specific team members can deploy to `main`.
 - Use read-only regions to reduce latency for geographically distributed reads.
@@ -281,7 +281,7 @@ volumes:
 | Deploy request shows "schema conflict" | Concurrent branch changes to the same table | Rebase: delete branch, recreate from current `main`, reapply changes |
 | `foreign key constraint` error | PlanetScale does not support foreign keys | Use `relationMode = "prisma"` or remove FK definitions |
 | High latency on reads | No index on queried column | Add index via a new branch and deploy request |
-| `max connections` exceeded | Connection pooling not enabled | Use `@planetscale/database` [serverless](../../../Patterns/serverless/SKILL.md) driver or PgBouncer-style proxy |
+| `max connections` exceeded | Connection pooling not enabled | Use `@planetscale/database` [serverless](../../../Patterns/data-performance/serverless/SKILL.md) driver or PgBouncer-style proxy |
 | `pscale connect` hangs | Firewall blocking outbound TLS | Allow outbound 443 to `*.psdb.cloud` |
 
 ## Related Skills

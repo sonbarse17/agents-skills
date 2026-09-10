@@ -45,7 +45,7 @@ Exact user phrases: "APM", "[observability](../../../observability-monitoring-lo
 ### Input Context
 Before activating, verify:
 - Stack/language (for SDK selection: Java, [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md), Go, Node.js, .NET).
-- Infrastructure type ([Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), VMs, [serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)).
+- Infrastructure type ([Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), VMs, [serverless](../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)).
 - Existing [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) tools (if migrating from legacy).
 - Budget constraints ([observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) tools can be expensive).
 - Compliance requirements (log retention, [audit](../audit/SKILL.md) trails, PII masking).

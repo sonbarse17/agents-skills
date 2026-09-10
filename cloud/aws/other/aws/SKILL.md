@@ -44,7 +44,7 @@ Exact user phrases: "AWS", "EC2", "S3", "RDS", "Lambda", "VPC", "IAM", "Well-Arc
 ### Input Context
 Before activating, verify:
 - AWS region and account structure (single vs multi-account, Organizations).
-- Service primitives needed (compute, storage, database, [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md), container).
+- Service primitives needed (compute, storage, database, [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md), container).
 - Authentication method (CLI profile, IAM role, SSO, aws-[vault](../../../../Security/vault/SKILL.md), OIDC).
 - Compliance/security requirements (HIPAA, SOC2, PCI DSS, FedRAMP).
 - Budget constraints (Pay-As-You-Go vs Reserved vs Savings Plans).
@@ -77,7 +77,7 @@ Direct file write. No response text.
 | Short-lived, event-driven | Lambda | <15min execution, event sources | Per-invocation + duration |
 | Container, orchestrated | ECS on Fargate | No K8s complexity, containers only | Per-task vCPU/memory |
 | Container, full K8s | EKS (managed node groups) | Need K8s ecosystem, multi-service | Per-cluster + node costs |
-| Container, [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) K8s | EKS with Fargate profiles | No node management | Per-pod (Fargate pricing) |
+| Container, [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) K8s | EKS with Fargate profiles | No node management | Per-pod (Fargate pricing) |
 | Web app, simple deploy | App Runner | From source/[GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md), no infra config | Per-instance + traffic |
 | Batch, flexible | AWS Batch | Job scheduling, queue-based | Per-job compute |
 
@@ -86,7 +86,7 @@ Direct file write. No response text.
 |---|---|---|---|
 | Relational (SQL) | RDS Multi-AZ | Standard OLTP, <16TB | Synchronous standby |
 | Relational (high perf) | Aurora | >16TB, 6-way replication | 6 copies across 3 AZs |
-| Key-Value / Document | DynamoDB | [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md), auto-scaling, single-digit ms | Auto-replicated 3 AZs |
+| Key-Value / Document | DynamoDB | [Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md), auto-scaling, single-digit ms | Auto-replicated 3 AZs |
 | Cache | ElastiCache (Redis) | Sub-millisecond reads, session store | Multi-AZ with replicas |
 | Graph | Neptune | Social graphs, fraud detection | Multi-AZ |
 | Time series | Timestream | IoT, DevOps metrics | Auto-tiered storage |

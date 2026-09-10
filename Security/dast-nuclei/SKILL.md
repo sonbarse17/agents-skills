@@ -512,7 +512,7 @@ nuclei -u https://production-app.com \
 - **Security Platforms**: Defect Dojo, Splunk, ELK Stack, SIEM platforms (via JSON export)
 - **Notification**: Slack, Microsoft Teams, Discord, PagerDuty, email (via webhook scripts)
 - **SDLC**: Pre-deployment scanning, security regression testing, vulnerability [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
-- **Cloud Platforms**: AWS Lambda, Google Cloud Functions, Azure Functions ([serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) scanning)
+- **Cloud Platforms**: AWS Lambda, Google Cloud Functions, Azure Functions ([serverless](../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) scanning)
 - **Reporting**: HTML, JSON, JSONL, SARIF, Markdown, CSV formats
 
 ## Troubleshooting

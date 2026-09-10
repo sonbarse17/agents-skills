@@ -153,7 +153,7 @@ threshold checks, but that validation itself is out of scope here.
    ```
    Running this inside the cluster means the load test's own network hop
    to the target is the same internal-service-to-internal-service path
-   real production traffic between [microservices](../../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) takes — a load test run
+   real production traffic between [microservices](../../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md) takes — a load test run
    from outside the cluster instead measures the cluster's Ingress/LB
    path, which is a different (and often more favorable) bottleneck
    profile.

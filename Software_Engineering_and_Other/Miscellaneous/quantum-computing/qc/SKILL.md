@@ -432,7 +432,7 @@ An open-source project with 500+ contributors needed consistent quality across P
 ## References
 
 - ../../../Global_References/inspection-process.md — Formal inspection process with roles and defect classification
-- ../../../Global_References/qc-advanced.md — QC advanced topics including [microservices](../../../Patterns/microservices/SKILL.md), security, and DevOps
+- ../../../Global_References/qc-advanced.md — QC advanced topics including [microservices](../../../Patterns/distributed-systems/microservices/SKILL.md), security, and DevOps
 - ../../../Global_References/qc-checklists.md — Comprehensive checklists for code review, security, and deployment
 - ../../../Global_References/qc-fundamentals.md — Core QC concepts and terminology
 - ../../../Global_References/quality-gates-matrix.md — Quality gate definitions per language (JS, [Python](../../../Languages/python/python/SKILL.md), Go, Rust)

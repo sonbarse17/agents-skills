@@ -246,7 +246,7 @@ Ref: [DB Instance Performance](https://docs.aws.amazon.com/AmazonRDS/latest/User
 - `BinLogDiskUsage` growth without retention bounds → MEDIUM.
 - **Performance Insights** disabled → MEDIUM (free 7-day tier should always be on).
 - **Enhanced [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)** disabled or interval > 60s for production → MEDIUM.
-- **Connection pooling**: high connection churn / no RDS Proxy → MEDIUM for [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) / many-client workloads.
+- **Connection pooling**: high connection churn / no RDS Proxy → MEDIUM for [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) / many-client workloads.
 
 ### 9.4 Cost Optimization
 Ref: [Cost-Optimized Architectures](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_BestPractices.html#CHAP_BestPractices.Optimization)
@@ -367,7 +367,7 @@ Current vs latest minor / latest major. Flag EOL.
 - **Oracle** — BYOL tracking, SGA/PGA sizing, AWR, tablespace autoextend.
 - **SQL Server** — tempdb file count (1 per vCPU up to 8), MAXDOP, cost threshold for
   parallelism, Always On AGs vs Multi-AZ.
-- **Aurora** — [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) v2 ACU floor/ceiling, Global Database for DR, fast clones,
+- **Aurora** — [Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) v2 ACU floor/ceiling, Global Database for DR, fast clones,
   Backtrack ([MySQL](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) only), cluster cache management.
 
 ## Known API Quirks (recorded so the agent doesn't trip on them)

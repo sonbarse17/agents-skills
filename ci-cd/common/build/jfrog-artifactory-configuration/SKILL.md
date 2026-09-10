@@ -184,9 +184,9 @@ which this skill cross-references throughout rather than repeating.
    scanning *stored* artifacts, distinct from scanning source code before
    it's built (SAST) or scanning a dependency manifest before it's
    published — see
-   [software-composition-analysis-sca](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../../Security/software-composition-analysis-sca/SKILL.md)/SKILL.md)
+   [software-composition-analysis-sca](../../../../Security/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../../Security/software-composition-analysis-sca/SKILL.md)/SKILL.md)
    for the vendor-neutral SCA concept and
-   [snyk-vulnerability-and-license-scanning](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[snyk-vulnerability-and-license-scanning](../../../../Security/snyk-vulnerability-and-license-scanning/SKILL.md)/SKILL.md)
+   [snyk-vulnerability-and-license-scanning](../../../../Security/devsecops/SKILL.md)/skills/[snyk-vulnerability-and-license-scanning](../../../../Security/snyk-vulnerability-and-license-scanning/SKILL.md)/SKILL.md)
    for a comparable commercial scanner covering similar license-policy
    ground from a different product.
 
@@ -314,6 +314,6 @@ remediation/triage workflow instead of being retroactively purged.
 
 - [sonatype-nexus-repository-configuration](../[sonatype-nexus-repository-configuration](../sonatype-nexus-repository-configuration/SKILL.md)/SKILL.md) — the comparable open-source-rooted alternative; this skill maps Artifactory's local/remote/virtual model directly onto Nexus's hosted/proxy/group model throughout.
 - [artifact-and-dependency-management](../[artifact-and-dependency-management](../../Frontend/artifact-and-[dependency-management](../dependency-management/SKILL.md)/SKILL.md)/SKILL.md) — the vendor-neutral registry concepts (retention policy design, publish/read credential separation, lockfile discipline) this skill implements concretely in Artifactory.
-- [software-composition-analysis-sca](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../../Security/software-composition-analysis-sca/SKILL.md)/SKILL.md) — the vendor-neutral [dependency-scanning](../../../../Security/dependency-scanning/SKILL.md) concept that Xray implements for artifacts already stored in Artifactory.
-- [snyk-vulnerability-and-license-scanning](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[snyk-vulnerability-and-license-scanning](../../../../Security/snyk-vulnerability-and-license-scanning/SKILL.md)/SKILL.md) — a comparable commercial scanner covering similar vulnerability/license-policy ground as Xray, useful for a direct feature/cost comparison.
+- [software-composition-analysis-sca](../../../../Security/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../../Security/software-composition-analysis-sca/SKILL.md)/SKILL.md) — the vendor-neutral [dependency-scanning](../../../../Security/dependency-scanning/SKILL.md) concept that Xray implements for artifacts already stored in Artifactory.
+- [snyk-vulnerability-and-license-scanning](../../../../Security/devsecops/SKILL.md)/skills/[snyk-vulnerability-and-license-scanning](../../../../Security/snyk-vulnerability-and-license-scanning/SKILL.md)/SKILL.md) — a comparable commercial scanner covering similar vulnerability/license-policy ground as Xray, useful for a direct feature/cost comparison.
 - [container-build-and-release](../[container-build-and-release](../../../DevOps_and_Cloud/Containers_and_Orchestration/container-build-and-release/SKILL.md)/SKILL.md) — the container build workflow that publishes to an Artifactory [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) local repository configured here.

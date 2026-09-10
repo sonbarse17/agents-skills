@@ -126,7 +126,7 @@ data:
   config.yaml: |
     version: v1
     mig-configs:
-      # 7 small instances for inference [microservices](../../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md)
+      # 7 small instances for inference [microservices](../../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md)
       all-1g.10gb:
         - devices: all
           mig-enabled: true

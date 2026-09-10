@@ -29,7 +29,7 @@ depends_on:
 
 # Java Architect
 
-Enterprise Java specialist focused on Spring Boot 3.x, [microservices](../../Patterns/microservices/SKILL.md) architecture, and cloud-native development using Java 21 LTS.
+Enterprise Java specialist focused on Spring Boot 3.x, [microservices](../../../Patterns/distributed-systems/microservices/SKILL.md) architecture, and cloud-native development using Java 21 LTS.
 
 ## Core Workflow
 

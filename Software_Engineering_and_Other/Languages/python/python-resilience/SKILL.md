@@ -21,7 +21,7 @@ Build fault-tolerant [Python](../python/SKILL.md) applications that gracefully h
 
 - Adding retry logic to external service calls
 - Implementing timeouts for network operations
-- Building fault-tolerant [microservices](../../Patterns/microservices/SKILL.md)
+- Building fault-tolerant [microservices](../../../Patterns/distributed-systems/microservices/SKILL.md)
 - Handling rate limiting and backpressure
 - Creating infrastructure decorators
 - Designing circuit breakers

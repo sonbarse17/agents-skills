@@ -92,7 +92,7 @@ Is the resource ephemeral (dev/test)?
 | Low | Medium | Right-size over-provisioned instances | Week 2-3 |
 | Medium | High | Purchase RIs/SPs for stable workloads | Month 1 |
 | Medium | Medium | Storage tiering (hot→cold→archive) | Month 2 |
-| High | High | Architecture redesign ([serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md), [containerization](../../../../containers-orchestration/docker/other/containerization/SKILL.md)) | Quarter 2+ |
+| High | High | Architecture redesign ([serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md), [containerization](../../../../containers-orchestration/docker/other/containerization/SKILL.md)) | Quarter 2+ |
 | High | Medium | Data transfer optimization (CDN, compression) | Quarter 2-3 |
 
 ## Agent Protocol
@@ -593,5 +593,5 @@ A mid-market company moved from FinOps maturity Level 1 (Crawl) to Level 3 (Run)
   - ../../../Global_References/cost-governance-practices.md -- Cloud Cost Governance Practices
   - ../../../Global_References/ri-savings-plan-strategy.md -- Reserved Instance and Savings Plan Strategy
 ## Handoff
-For multi-tenant cost tracking, hand off to `[enterprise-multi-tenant](../../../../Software_Engineering_and_Other/Patterns/multi-tenant/SKILL.md)`. For compliance cost reporting, hand off to `[enterprise-compliance-audit](../../Observability_and_SecOps/compliance-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)/SKILL.md)`.
+For multi-tenant cost tracking, hand off to `[enterprise-multi-tenant](../../../../Software_Engineering_and_Other/Patterns/distributed-systems/multi-tenant/SKILL.md)`. For compliance cost reporting, hand off to `[enterprise-compliance-audit](../../Observability_and_SecOps/compliance-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)/SKILL.md)`.
 

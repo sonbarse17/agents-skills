@@ -474,7 +474,7 @@ Hand off to `dev-loop-[git-workflow](../../../../ci-cd/common/git-workflow/git-w
 
 ### Multi-Service Topology
 - **[Monorepo](../../../../Software_Engineering_and_Other/Frontend/build-tools/monorepo/SKILL.md) single container**: Simple, one DevContainer.json. Good for small projects.
-- **[Docker](../docker/SKILL.md) Compose multi-container**: Service-per-container with depends_on. Use for [microservices](../../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md).
+- **[Docker](../docker/SKILL.md) Compose multi-container**: Service-per-container with depends_on. Use for [microservices](../../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md).
 - **[Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) Dev environment**: Dev runs in-cluster with hot-reload. For cloud-native teams.
 
 ## Implementation Patterns

@@ -26,7 +26,7 @@ A reference checklist of common mistakes and anti-patterns in [Python](../python
 - Establishing team coding standards
 - Refactoring legacy code
 
-**Note:** This skill focuses on what to avoid. For guidance on positive patterns and architecture, see the `[python-design-patterns](../../Patterns/[python](../python/SKILL.md)-[design-patterns](../../Patterns/design-patterns/SKILL.md)/SKILL.md)` skill.
+**Note:** This skill focuses on what to avoid. For guidance on positive patterns and architecture, see the `[python-design-patterns](../../Patterns/[python](../python/SKILL.md)-[design-patterns](../../../Patterns/architecture/design-patterns/SKILL.md)/SKILL.md)` skill.
 
 ## Infrastructure Anti-Patterns
 

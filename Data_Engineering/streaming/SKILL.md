@@ -454,7 +454,7 @@ Producer → Kafka Topic (domain events) → Multiple Consumer Groups:
   └── Group C: ksqlDB → Push Query → Real-time Dashboard
 ```
 
-### [Microservices](../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) Communication Pattern
+### [Microservices](../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md) Communication Pattern
 ```
 Service A → Kafka Topic (command/event) → Service B
   ├── Service B processes event → Publishes result event

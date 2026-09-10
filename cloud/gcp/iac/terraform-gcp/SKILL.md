@@ -360,4 +360,4 @@ terraform state mv google_compute_instance.old google_compute_instance.new
 - **[gcp-gke](../../../../containers-orchestration/gke/cluster-management/gcp-gke/SKILL.md)** - GKE cluster provisioning with Terraform modules
 - **[gcp-cloud-sql](../../database/gcp-cloud-sql/SKILL.md)** - Cloud SQL instance management via Terraform
 - **[gcp-compute](../../compute/gcp-compute/SKILL.md)** - Compute Engine resources defined in Terraform
-- **[gcp-cloud-functions](../../compute/gcp-cloud-functions/SKILL.md)** - [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) function deployment with Terraform
+- **[gcp-cloud-functions](../../compute/gcp-cloud-functions/SKILL.md)** - [Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) function deployment with Terraform

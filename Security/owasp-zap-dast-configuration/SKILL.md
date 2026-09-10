@@ -268,7 +268,7 @@ relative to SAST/SCA, and vendor-neutral CI wiring — see
   or single-test-user perspective; pair it with
   [trivy-vulnerability-scanning](../[trivy-vulnerability-scanning](../../../Security/trivy-[vulnerability-scanning](../../../DevOps_and_Cloud/Observability_and_SecOps/vulnerability-scanning/SKILL.md)/SKILL.md)/SKILL.md)
   for dependency/image CVEs and
-  [sonarqube-[code-quality](../../Miscellaneous/skills-main/skills/[code-quality](../../Patterns/code-quality/SKILL.md)/SKILL.md)-and-security](../[sonarqube-[code-quality](../../Miscellaneous/skills-main/skills/[code-quality](../../Patterns/code-quality/SKILL.md)/SKILL.md)-and-security](../../../DevOps_and_Cloud/Cloud_Providers/sonarqube-[code-quality](../../Miscellaneous/skills-main/skills/[code-quality](../../Patterns/code-quality/SKILL.md)/SKILL.md)-and-security/SKILL.md)/SKILL.md)
+  [sonarqube-[code-quality](../../Software_Engineering_and_Other/Patterns/dev-practice/code-quality/SKILL.md)/SKILL.md)-and-security](../../Software_Engineering_and_Other/Patterns/dev-practice/code-quality/SKILL.md)/SKILL.md)-and-security](../../Software_Engineering_and_Other/Patterns/dev-practice/code-quality/SKILL.md)/SKILL.md)-and-security/SKILL.md)/SKILL.md)
   or another SAST tool for code-level issues ZAP cannot see from the
   outside.
 
@@ -410,7 +410,7 @@ the finding clears before merge.
 - [trivy-vulnerability-scanning](../[trivy-vulnerability-scanning](../../../Security/trivy-[vulnerability-scanning](../../../DevOps_and_Cloud/Observability_and_SecOps/vulnerability-scanning/SKILL.md)/SKILL.md)/SKILL.md) —
   covers dependency and image CVEs that a black-box DAST scan like ZAP
   cannot see from the outside.
-- [sonarqube-[code-quality](../../Miscellaneous/skills-main/skills/[code-quality](../../Patterns/code-quality/SKILL.md)/SKILL.md)-and-security](../[sonarqube-[code-quality](../../Miscellaneous/skills-main/skills/[code-quality](../../Patterns/code-quality/SKILL.md)/SKILL.md)-and-security](../../../DevOps_and_Cloud/Cloud_Providers/sonarqube-[code-quality](../../Miscellaneous/skills-main/skills/[code-quality](../../Patterns/code-quality/SKILL.md)/SKILL.md)-and-security/SKILL.md)/SKILL.md) —
+- [sonarqube-[code-quality](../../Software_Engineering_and_Other/Patterns/dev-practice/code-quality/SKILL.md)/SKILL.md)-and-security](../../Software_Engineering_and_Other/Patterns/dev-practice/code-quality/SKILL.md)/SKILL.md)-and-security](../../Software_Engineering_and_Other/Patterns/dev-practice/code-quality/SKILL.md)/SKILL.md)-and-security/SKILL.md)/SKILL.md) —
   static, source-level analysis that runs earlier in the pipeline and
   finds a different, complementary class of issues to ZAP's runtime
   scanning.

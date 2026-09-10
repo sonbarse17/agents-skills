@@ -181,7 +181,7 @@ tool with a mature [audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail 
      before confirming.
    - **Not an Issue** — analyzed and determined to be a false positive
      or non-exploitable in context; requires a rationale comment.
-   - **Bad Practice / Reliability Issue** — a real [code-quality](../../Miscellaneous/skills-main/skills/[code-quality](../../Patterns/code-quality/SKILL.md)/SKILL.md) concern
+   - **Bad Practice / Reliability Issue** — a real [code-quality](../../Software_Engineering_and_Other/Patterns/dev-practice/code-quality/SKILL.md)/SKILL.md) concern
      but not a security vulnerability per se.
    Every non-"Exploitable" triage decision should carry a short [audit](../../AI_and_Agents/Operations/audit/SKILL.md)
    comment — this triage history is itself often the compliance
@@ -204,7 +204,7 @@ tool with a mature [audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail 
    manageable on a large codebase — a full clean translate+scan on
    every [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) is often impractical; consider a full scan on a nightly
    or release-gate cadence with a lighter/faster complementary tool
-   (e.g. [sonarqube-[code-quality](../../Miscellaneous/skills-main/skills/[code-quality](../../Patterns/code-quality/SKILL.md)/SKILL.md)-and-security](../[sonarqube-[code-quality](../../Miscellaneous/skills-main/skills/[code-quality](../../Patterns/code-quality/SKILL.md)/SKILL.md)-and-security](../../../DevOps_and_Cloud/Cloud_Providers/sonarqube-[code-quality](../../Miscellaneous/skills-main/skills/[code-quality](../../Patterns/code-quality/SKILL.md)/SKILL.md)-and-security/SKILL.md)/SKILL.md)
+   (e.g. [sonarqube-[code-quality](../../Software_Engineering_and_Other/Patterns/dev-practice/code-quality/SKILL.md)/SKILL.md)-and-security](../../Software_Engineering_and_Other/Patterns/dev-practice/code-quality/SKILL.md)/SKILL.md)-and-security](../../Software_Engineering_and_Other/Patterns/dev-practice/code-quality/SKILL.md)/SKILL.md)-and-security/SKILL.md)/SKILL.md)
    or a Semgrep-based check per
    [sast-integration](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[sast-integration](../sast-integration/SKILL.md)/SKILL.md))
    running on every PR for faster feedback.
@@ -233,7 +233,7 @@ tool with a mature [audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail 
   large [monorepo](../../Software_Engineering_and_Other/Frontend/build-tools/monorepo/SKILL.md).
 - Treat Fortify's deep dataflow strength as complementary to, not a
   replacement for, breadth-oriented tools —
-  [sonarqube-[code-quality](../../Miscellaneous/skills-main/skills/[code-quality](../../Patterns/code-quality/SKILL.md)/SKILL.md)-and-security](../[sonarqube-[code-quality](../../Miscellaneous/skills-main/skills/[code-quality](../../Patterns/code-quality/SKILL.md)/SKILL.md)-and-security](../../../DevOps_and_Cloud/Cloud_Providers/sonarqube-[code-quality](../../Miscellaneous/skills-main/skills/[code-quality](../../Patterns/code-quality/SKILL.md)/SKILL.md)-and-security/SKILL.md)/SKILL.md)
+  [sonarqube-[code-quality](../../Software_Engineering_and_Other/Patterns/dev-practice/code-quality/SKILL.md)/SKILL.md)-and-security](../../Software_Engineering_and_Other/Patterns/dev-practice/code-quality/SKILL.md)/SKILL.md)-and-security](../../Software_Engineering_and_Other/Patterns/dev-practice/code-quality/SKILL.md)/SKILL.md)-and-security/SKILL.md)/SKILL.md)
   or a multi-language SAST tool often covers more ecosystems/frameworks
   out of the box with less setup, while Fortify goes deeper on the
   languages it fully supports.
@@ -341,7 +341,7 @@ reappearing as a new, separately-audited finding.
   the tool-agnostic SAST concept, and specifically the faster
   lightweight-scanner-for-PR-feedback pattern meant to pair with
   Fortify's slower, deeper full scans.
-- [sonarqube-[code-quality](../../Miscellaneous/skills-main/skills/[code-quality](../../Patterns/code-quality/SKILL.md)/SKILL.md)-and-security](../[sonarqube-[code-quality](../../Miscellaneous/skills-main/skills/[code-quality](../../Patterns/code-quality/SKILL.md)/SKILL.md)-and-security](../../../DevOps_and_Cloud/Cloud_Providers/sonarqube-[code-quality](../../Miscellaneous/skills-main/skills/[code-quality](../../Patterns/code-quality/SKILL.md)/SKILL.md)-and-security/SKILL.md)/SKILL.md) —
+- [sonarqube-[code-quality](../../Software_Engineering_and_Other/Patterns/dev-practice/code-quality/SKILL.md)/SKILL.md)-and-security](../../Software_Engineering_and_Other/Patterns/dev-practice/code-quality/SKILL.md)/SKILL.md)-and-security](../../Software_Engineering_and_Other/Patterns/dev-practice/code-quality/SKILL.md)/SKILL.md)-and-security/SKILL.md)/SKILL.md) —
   a broader-coverage, faster, more cloud-native alternative worth
   running alongside Fortify rather than choosing exclusively one or the
   other in most enterprise stacks.

@@ -27,7 +27,7 @@ Ship web apps quickly with preview environments and managed edge infrastructure.
 Use this skill when:
 - Deploying Next.js, [SvelteKit](../../../Software_Engineering_and_Other/Frontend/frameworks/sveltekit/SKILL.md), Nuxt, or static sites
 - Setting up preview environments for every PR
-- Configuring edge functions and [serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) APIs
+- Configuring edge functions and [serverless](../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) APIs
 - Managing environment variables across preview/production
 - Setting up custom domains and redirects
 
@@ -280,7 +280,7 @@ export default function RootLayout({ children }) {
 |-------|---------|
 | Build fails | Check `vercel logs`, verify Node.js version in `engines` field |
 | Env vars missing | Run `vercel env pull`, check variable scope (preview vs production) |
-| Edge function timeout | Edge has 30s limit; move heavy work to [serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) (no `runtime = 'edge'`) |
+| Edge function timeout | Edge has 30s limit; move heavy work to [serverless](../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) (no `runtime = 'edge'`) |
 | Cold starts slow | Use edge runtime where possible, reduce bundle size |
 | Domain not working | Check DNS propagation, verify `vercel domains` configuration |
 

@@ -47,7 +47,7 @@ Split work by functional component:
 - User profile module
 - Notification module
 
-**Best for**: [Microservices](../../../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md), modular architectures
+**Best for**: [Microservices](../../../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md), modular architectures
 
 ### By Concern
 

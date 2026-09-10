@@ -155,9 +155,9 @@ only available for Security Solution cases. Pass `--sync-alerts false` when crea
 The Kibana API enforces rate limits. When attaching multiple alerts, the `attach-alerts` batch command automatically
 handles 429 responses with retry. If using `attach-alert` one at a time, space calls ~10 seconds apart.
 
-### `find --search` on [Serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)
+### `find --search` on [Serverless](../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)
 
-The `find --search` parameter may return 500 errors on Kibana [Serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) deployments. Use `find --tags` for filtering
+The `find --search` parameter may return 500 errors on Kibana [Serverless](../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) deployments. Use `find --tags` for filtering
 instead, or `list` to browse recent cases.
 
 ### `find --tags` requires exact match

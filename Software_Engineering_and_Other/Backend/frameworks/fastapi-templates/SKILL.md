@@ -22,7 +22,7 @@ Production-ready FastAPI project structures with async patterns, dependency inje
 
 - Starting new FastAPI projects from scratch
 - Implementing async REST APIs with [Python](../../../Languages/python/python/SKILL.md)
-- Building high-performance web services and [microservices](../../../Patterns/microservices/SKILL.md)
+- Building high-performance web services and [microservices](../../../Patterns/distributed-systems/microservices/SKILL.md)
 - Creating async applications with [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md), [MongoDB](../../../Databases/nosql/mongodb/SKILL.md)
 - Setting up API projects with proper structure and testing
 

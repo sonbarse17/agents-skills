@@ -77,7 +77,7 @@ Create VPC with public/private subnets → Deploy IKS cluster with 3 worker node
 | Option | Use Case | Management |
 |--------|----------|------------|
 | **IKS (IBM [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Service)** | Containerized workloads | Managed control plane |
-| **Code Engine** | [Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) containers, batch jobs | Fully managed, scale-to-zero |
+| **Code Engine** | [Serverless](../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) containers, batch jobs | Fully managed, scale-to-zero |
 | **VSI (Virtual Server Instance)** | Traditional apps, legacy | Self-managed OS |
 | **Bare Metal** | High-performance, licensed DBs | Self-managed, dedicated |
 | **Cloud Foundry** | PaaS apps (legacy) | Managed runtime |
@@ -420,7 +420,7 @@ resource "ibm_en_destination" "pagerduty" {
 - Satellite locations require 3+ hosts for control plane HA.
 - Direct Link supports 1 Gbps, 5 Gbps, and 10 Gbps connections at minimum.
 - IBM Cloud Databases for [PostgreSQL](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) supports read replicas across zones.
-- Use Code Engine for batch jobs and [serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) workloads to reduce compute costs.
+- Use Code Engine for batch jobs and [serverless](../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) workloads to reduce compute costs.
 - VPC file shares are available via VPC file storage service (NFS).
 - IAM trusted profiles allow assigning service IDs based on conditions.
 - Activity Tracker routing: send to COS bucket for long-term retention.

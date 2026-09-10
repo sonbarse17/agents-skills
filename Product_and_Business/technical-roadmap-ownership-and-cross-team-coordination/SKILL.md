@@ -33,7 +33,7 @@ depends_on:
 
 A tech lead's job shifts from "design and ship one thing well" (the
 senior-level work in
-[independent-solution-design-and-technical-review](../[independent-solution-design-and-technical-review](../../Software_Engineering_and_Other/Patterns/independent-solution-design-and-technical-review/SKILL.md)/SKILL.md))
+[independent-solution-design-and-technical-review](../../Software_Engineering_and_Other/Patterns/architecture/independent-solution-design-and-technical-review/SKILL.md)/SKILL.md))
 to "decide what the team builds, in what order, and make that work
 alongside other teams pulling on shared resources in different
 directions" — without the unilateral authority an architect or manager
@@ -318,7 +318,7 @@ quarter's roadmap, and mid-quarter a conflict emerges with the
 
 ## Cross-references
 
-- [independent-solution-design-and-technical-review](../[independent-solution-design-and-technical-review](../../Software_Engineering_and_Other/Patterns/independent-solution-design-and-technical-review/SKILL.md)/SKILL.md) — the senior-level design and review work this skill sequences and prioritizes across a roadmap, rather than executing directly.
+- [independent-solution-design-and-technical-review](../../Software_Engineering_and_Other/Patterns/architecture/independent-solution-design-and-technical-review/SKILL.md)/SKILL.md) — the senior-level design and review work this skill sequences and prioritizes across a roadmap, rather than executing directly.
 - [system-design-technology-selection-and-decision-records](../[system-design-technology-selection-and-decision-records](../../AI_and_Agents/Architecture/system-design-technology-selection-and-decision-records/SKILL.md)/SKILL.md) — the architect-level escalation path for a cross-team conflict or constraint question that can't be resolved by influence alone, and for standards that need to become an organization-wide architectural decision rather than a bottom-up pilot.
 - [platform-engineering-team-topology-and-operating-model](../../../[internal-developer-platform](../internal-developer-platform/SKILL.md)/skills/[platform-engineering-team-topology-and-operating-model](../[platform-engineering](../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md) — the "thinnest viable platform" sizing discipline this skill's platform-investment bucket should draw on when deciding what's worth building versus what's scope creep.
 - [blameless-postmortem-and-root-cause-analysis](../../../site-reliability-engineering/skills/[blameless-postmortem-and-root-cause-analysis](../../Software_Engineering_and_Other/Frontend/blameless-postmortem-and-[root-cause-analysis](../../DevOps_and_Cloud/Observability_and_SecOps/root-cause-analysis/SKILL.md)/SKILL.md)/SKILL.md) — where recurring, unimplemented action items typically surface as the concrete evidence behind a technical-debt inventory item's priority.

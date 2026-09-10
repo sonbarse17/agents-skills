@@ -70,7 +70,7 @@ pattern itself, which this skill doesn't repeat).
 - Estimated corpus size (vector count), expected query QPS, and expected
   write (upsert) rate — sizing decisions below depend on having real
   numbers, not guesses.
-- For Pinecone: an account with pod-based or [serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) index access
+- For Pinecone: an account with pod-based or [serverless](../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) index access
   ([capacity](../deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)/scaling mechanics differ between the two — check current
   Pinecone documentation for which applies to your plan, since this has
   changed over time).
@@ -131,7 +131,7 @@ pattern itself, which this skill doesn't repeat).
    # Pinecone: HNSW internals are managed for you on pod-based indexes;
    # the primary tunable is pod type/size and top_k at query time rather
    # than raw M/ef parameters — check current Pinecone docs for what's
-   # exposed on your index type (pod-based vs. [serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)).
+   # exposed on your index type (pod-based vs. [serverless](../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)).
    ```
 
 3. **Shard/partition the corpus deliberately, not by default.** Options

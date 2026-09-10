@@ -71,7 +71,7 @@ Direct file write. No response text.
 ### Design-First vs Code-First vs Hybrid
 | Approach | Pros | Cons | Best For |
 |---|---|---|---|
-| Design-first | Contract before code, stakeholder review, language-agnostic spec | Can diverge from implementation | Public APIs, multiple consumers, [microservices](../../../Patterns/microservices/SKILL.md) |
+| Design-first | Contract before code, stakeholder review, language-agnostic spec | Can diverge from implementation | Public APIs, multiple consumers, [microservices](../../../Patterns/distributed-systems/microservices/SKILL.md) |
 | Code-first | Always in sync, less duplication | Spec polluted with implementation details | Internal APIs, single consumer, fast iteration |
 | Hybrid | Spec is single source of truth, code generates from spec | Requires discipline | Most production APIs |
 

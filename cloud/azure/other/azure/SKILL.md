@@ -552,7 +552,7 @@ resource policyAssignmentLocations 'Microsoft.Authorization/policyAssignments@20
 |---|---|---|
 | Compute - VMs | Virtual Machines | EC2 |
 | Compute - Containers | AKS | EKS |
-| Compute - [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) | Azure Functions | Lambda |
+| Compute - [Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) | Azure Functions | Lambda |
 | Compute - PaaS Web | App Service | Elastic Beanstalk |
 | Storage - Object | Blob Storage | S3 |
 | Storage - Block | Disk Storage | EBS |

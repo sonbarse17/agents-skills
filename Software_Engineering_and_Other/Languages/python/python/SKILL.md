@@ -40,7 +40,7 @@ Keywords: `python build`, `pip`, `poetry`, `uv`, `pyproject.toml`, `venv`, `mypy
 - Project type (CLI tool, web API, data pipeline, library)
 - Build system (setuptools, poetry, pdm, uv)
 - Python version requirements
-- Deployment target ([serverless](../../Patterns/serverless/SKILL.md), container, VPS)
+- Deployment target ([serverless](../../../Patterns/data-performance/serverless/SKILL.md), container, VPS)
 
 ### Output Artifact
 Build configuration, dependency management setup, project structure, test configuration, and deployment config tailored to project type.
@@ -418,7 +418,7 @@ Recommendation: use `uv` for new projects (2024+), Poetry for established teams,
 ### Deployment Target Decision Tree
 ```
 Deploying a Python web app?
-├── [Serverless](../../Patterns/serverless/SKILL.md) → AWS Lambda + Mangum (FastAPI adapter)
+├── [Serverless](../../../Patterns/data-performance/serverless/SKILL.md) → AWS Lambda + Mangum (FastAPI adapter)
 │   Cold start: 200-500ms (provisioned concurrency: 50ms)
 │   Limits: 10GB RAM, 15min timeout, 50MB zip + 250MB /tmp
 │   Best for: low-traffic APIs, spiky workloads

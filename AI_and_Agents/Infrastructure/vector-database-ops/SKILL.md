@@ -39,7 +39,7 @@ Use this skill when:
 | **Qdrant** | High-performance, rich filtering, self-hosted | Self / Cloud | Excellent | Very High |
 | **Weaviate** | Schema-first, hybrid search, multi-modal | Self / Cloud | Good | High |
 | **pgvector** | Already on Postgres, simple use cases | Self | Good | Medium |
-| **Pinecone** | Zero-ops managed, [serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) | Managed only | Good | Very High |
+| **Pinecone** | Zero-ops managed, [serverless](../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) | Managed only | Good | Very High |
 | **Chroma** | Local dev, prototyping | Self only | Basic | Low-Medium |
 
 ## Qdrant — Production Deployment
