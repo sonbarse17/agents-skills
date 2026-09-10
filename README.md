@@ -8,7 +8,7 @@ This repository serves as a centralized "brain" or runbook collection, enabling 
 
 ## 📂 Repository Structure
 
-The skills are organized into a domain-based taxonomy of **8 top-level categories**, each broken into tool- or topic-specific subfolders. Every subfolder ends in a `common/` (or `other/`) bucket for content that doesn't belong to any single tool.
+The skills are organized into a domain-based taxonomy of **7 top-level categories**, each broken into tool- or topic-specific subfolders. Every subfolder ends in a `common/` (or `other/`) bucket for content that doesn't belong to any single tool, and each category keeps its own shared reference material in a `references/` subfolder rather than a separate top-level location.
 
 ### ☁️ `DevOps_and_Cloud/` (762 skills)
 All cloud, CI/CD, container-orchestration, IaC, and observability skills, nested under one parent.
