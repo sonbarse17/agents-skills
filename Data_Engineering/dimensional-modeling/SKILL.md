@@ -391,7 +391,7 @@ CREATE TABLE sat_customer_detail (
 ```
 
 #### Data [Vault](../../Security/cryptography-secrets/vault/SKILL.md) Pros and Cons
-Pros: scalable for enterprise EDW, [audit](../../AI_and_Agents/Operations/audit/SKILL.md)-friendly (source tracking), resilient to source changes (add satellites), parallel loading, handles heterogeneous sources. Cons: complex to query (many joins), requires transformation for BI consumption, overkill for small-medium warehouses, limited tool support.
+Pros: scalable for enterprise EDW, [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)-friendly (source tracking), resilient to source changes (add satellites), parallel loading, handles heterogeneous sources. Cons: complex to query (many joins), requires transformation for BI consumption, overkill for small-medium warehouses, limited tool support.
 
 #### Raw [Vault](../../Security/cryptography-secrets/vault/SKILL.md) vs Business [Vault](../../Security/cryptography-secrets/vault/SKILL.md)
 Raw [Vault](../../Security/cryptography-secrets/vault/SKILL.md): mirrors source data as-is, no business rules, no aggregation, preserves historical accuracy. Business [Vault](../../Security/cryptography-secrets/vault/SKILL.md): adds business rules, derived data, reference data, bridging tables. Pattern: load raw [vault](../../Security/cryptography-secrets/vault/SKILL.md) from sources, then transform to business [vault](../../Security/cryptography-secrets/vault/SKILL.md), then to star schema marts.

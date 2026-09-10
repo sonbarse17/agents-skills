@@ -340,7 +340,7 @@ while IFS=',' read -r username fullname groups shell; do
 done < "$CSV_FILE"
 ```
 
-### Quick Access [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Commands
+### Quick Access [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) Commands
 
 ```bash
 # List non-system users (UID >= 1000)

@@ -473,7 +473,7 @@ Use `navigator.storage.estimate()` to check available and used storage.
 - Chrome DevTools > Network > Size column shows cache source (memory cache / disk cache / service worker / network)
 - `navigator.storage.estimate()` shows storage usage
 - Workbox generates debug logs in development mode
-- Lighthouse "uses efficient cache policy" [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)
+- Lighthouse "uses efficient cache policy" [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)
 
 ## Security Considerations
 

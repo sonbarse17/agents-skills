@@ -429,7 +429,7 @@ function AnimatedComponent() {
 ### Case Study 1: E-commerce Micro-interaction Overhaul Increases Conversion 12%
 An e-commerce site had no micro-interactions — buttons simply changed appearance without animation. They implemented purposeful micro-interactions: hover animations on product cards (300ms, ease-out, shadow lift), button press feedback (100ms, scale 0.95), cart add confirmation (badge bounce animation), and smooth page transitions between categories. The result: 12% increase in add-to-cart rate, 8% increase in conversion, and a 5% decrease in bounce rate. Users perceived the site as faster and more responsive even though actual load times hadn't changed.
 
-Method: Systematic micro-interaction [audit](../../AI_and_Agents/Operations/audit/SKILL.md) and redesign
+Method: Systematic micro-interaction [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) and redesign
 Key insight: Perceived performance (mediated by animation) matters as much as actual performance
 Impact: Add-to-cart +12%, conversion +8%, bounce -5%
 
@@ -443,7 +443,7 @@ Impact: Satisfaction score +22%, animation dev time -40%
 ### Case Study 3: Lottie Optimization for Mobile Performance
 A mobile app used Lottie animations for onboarding illustrations but users experienced jank on mid-range [Android](../../Mobile/android/SKILL.md) devices. Analysis showed Lottie files were averaging 120KB each with 2000+ keyframes. After optimization — reducing to 6 keyframes per animation, removing unused layers, using solid fills instead of gradients, and converting complex shapes to simpler paths — file sizes dropped to 18KB average and frame rate improved from 30fps to 58fps on target devices.
 
-Method: Lottie file optimization [audit](../../AI_and_Agents/Operations/audit/SKILL.md) and reconstruction
+Method: Lottie file optimization [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) and reconstruction
 Key insight: Animation file size and complexity directly impact runtime performance
 Impact: File size 120KB to 18KB, frame rate 30fps to 58fps on mid-range devices
 
@@ -574,7 +574,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
+- Repudiation: [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -588,7 +588,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Secrets Management
 - Secrets never in code — always in secrets manager ([Vault](../../Security/cryptography-secrets/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access [audit](../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
+- Access [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 

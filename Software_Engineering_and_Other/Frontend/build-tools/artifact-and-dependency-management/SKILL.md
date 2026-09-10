@@ -160,7 +160,7 @@ trustworthy.
    deletion, and prefer `delete-only-untagged-versions`/dry-run modes
    before enabling deletion of tagged versions.
 
-7. **[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) what's actually in use vs. what's stored.** Periodically cross
+7. **[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) what's actually in use vs. what's stored.** Periodically cross
    reference deployed image digests/package versions against what's in
    the registry so retention policy decisions are based on real usage,
    not guesses.

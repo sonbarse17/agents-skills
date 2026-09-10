@@ -40,7 +40,7 @@ clusters, using
 Cluster generator to template per-cluster `Application`s automatically.
 This matters operationally because it turns fleet management from "how do
 we remember to update every cluster" into "how do we register/label a
-cluster correctly once," and it centralizes the [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail and RBAC
+cluster correctly once," and it centralizes the [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail and RBAC
 boundary for who can change what, where.
 
 ## When to use
@@ -327,7 +327,7 @@ boundary for who can change what, where.
   to cluster-admin "to avoid RBAC troubleshooting," and a later
   investigation found the hub's compromise blast radius included every
   spoke with that same broad role.
-  **Fix:** [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) every spoke's `ClusterRole` bound to the hub's service
+  **Fix:** [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) every spoke's `ClusterRole` bound to the hub's service
   account and narrow each to the specific resource kinds/namespaces that
   spoke's workloads require (step 2) — treat "cluster-admin on the spoke"
   as a finding to remediate, not an acceptable operational shortcut.

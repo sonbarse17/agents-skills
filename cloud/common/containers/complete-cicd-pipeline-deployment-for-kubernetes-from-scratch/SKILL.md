@@ -208,7 +208,7 @@ notification wired from Argo CD/Flux) for the actual rollout outcome.
   [argocd-application-configuration](../../../[gitops](../../Containers_and_Orchestration/gitops/SKILL.md)-argo-ecosystem/skills/[argocd-application-configuration](../../Containers_and_Orchestration/[argocd](../../Containers_and_Orchestration/argocd/SKILL.md)-application-configuration/SKILL.md)/SKILL.md).
 - Tag the image with the exact [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) SHA the manifests-repo [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)
   references, so the Git history of the config repo is a complete,
-  traceable [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail of what's running where at any point in time.
+  traceable [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail of what's running where at any point in time.
 - Run the container-image scan (post-push, on the actual digest) as a
   separate gate from the pre-push filesystem SCA scan — they catch
   different things (application dependencies vs. base-image OS packages).

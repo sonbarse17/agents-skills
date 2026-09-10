@@ -20,7 +20,7 @@ depends_on:
 
 # CIS Benchmarks
 
-Implement and [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) CIS security benchmarks.
+Implement and [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) CIS security benchmarks.
 
 ## When to Use This Skill
 
@@ -52,11 +52,11 @@ oscap xccdf eval \
 # Install
 apt install lynis
 
-# Run [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
-lynis [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) system
+# Run [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
+lynis [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) system
 
 # Generate report
-lynis [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) system --report-file /tmp/lynis-report.dat
+lynis [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) system --report-file /tmp/lynis-report.dat
 ```
 
 ### InSpec

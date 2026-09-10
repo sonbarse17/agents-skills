@@ -497,7 +497,7 @@ resource "azurerm_role_assignment" "app_secrets_user" {
 - Enable diagnostic logging and forward to SIEM
 - Use premium SKU for HSM-backed key operations
 - Implement key rotation policies for all encryption keys
-- Regularly [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) access with Azure Activity logs
+- Regularly [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) access with Azure Activity logs
 - Tag all [vault](../../../../Security/cryptography-secrets/vault/SKILL.md) resources for cost and ownership tracking
 
 ## Related Skills

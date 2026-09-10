@@ -229,7 +229,7 @@ changes actually take effect.
   Spec class.
 - Run the Specs publish step itself from a CI job (a Bamboo plan, or even
   a [GitHub](../../../github-actions/other/github/SKILL.md) Actions/[Jenkins](../../../jenkins/other/jenkins/SKILL.md) job) rather than a developer's laptop, so plan
-  changes go through the same review/[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail as code changes.
+  changes go through the same review/[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail as code changes.
 - Use manual stages (`.manual()` in Java Specs, or the equivalent
   approval configuration in YAML) for production deploy stages so a human
   gate exists before the "Deploy to Production" stage runs, mirroring the

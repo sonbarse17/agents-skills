@@ -86,7 +86,7 @@ Progress:
 [ ] 3. Set severity threshold for build failures
 [ ] 4. Run scan on each [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) or pull request
 [ ] 5. Parse results and fail build on high-severity findings
-[ ] 6. Generate security reports for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail
+[ ] 6. Generate security reports for [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail
 [ ] 7. Track remediation progress over time
 
 Work through each step systematically. Check off completed items.
@@ -217,7 +217,7 @@ Add custom security rules:
 
 - **Sensitive Data Handling**: Horusec scans for exposed secrets. Ensure scan results are stored securely and access is restricted to authorized personnel only
 - **Access Control**: Limit access to Horusec configuration files and scan results. Use read-only mounts in [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) for source code scanning
-- **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging**: Log all scan executions, findings, and risk acceptance decisions for compliance auditing
+- **[Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logging**: Log all scan executions, findings, and risk acceptance decisions for compliance auditing
 - **Compliance**: Integrates with SOC2, PCI-DSS, and GDPR compliance by identifying vulnerabilities and tracking remediation
 - **Safe Defaults**: Configure severity thresholds appropriate for your risk tolerance. Start with MEDIUM or HIGH to reduce noise
 

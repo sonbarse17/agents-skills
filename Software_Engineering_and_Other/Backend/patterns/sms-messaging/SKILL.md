@@ -570,7 +570,7 @@ class DeliveryAggregator {
 | No delivery tracking | Blind to failures. Customers don't receive messages. | Webhook handler + real-time status dashboard |
 | OTP in plaintext database | Breach exposes all OTP codes. | bcrypt hash. In-memory TTL cache as alternative |
 | Shared short codes | Carrier filtering, reputation issues. | Dedicated long codes for transactional messaging |
-| Sending without consent check | TCPA fines up to $1500 per message. | Consent check before every send. [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail of consent. |
+| Sending without consent check | TCPA fines up to $1500 per message. | Consent check before every send. [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail of consent. |
 | Blocking on send | SMS API latency adds to page load time. | Async send with queue. Webhook for status. |
 
 ## Performance Optimization
@@ -593,5 +593,5 @@ class DeliveryAggregator {
 - TLS for all provider API calls. mTLS for high-security environments.
 - Webhook signatures: validate Twilio `X-Twilio-Signature` header. Reject unsigned webhooks.
 - Data retention: message logs retained per regulatory requirements. Purge after compliance window.
-- Consent records: immutable append-only log. Export for regulatory [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) within 24 hours.
+- Consent records: immutable append-only log. Export for regulatory [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) within 24 hours.
 

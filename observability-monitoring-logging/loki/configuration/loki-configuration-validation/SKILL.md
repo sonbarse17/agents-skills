@@ -38,7 +38,7 @@ retention setting that silently does nothing because the compactor isn't
 enabled. This skill covers validating a Loki config **before** it's
 deployed: structural/schema checks via Loki's own `-verify-config` flag,
 a pre-deploy review checklist for the specific fields most likely to
-cause silent ingestion rejection, and a lightweight cardinality [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)
+cause silent ingestion rejection, and a lightweight cardinality [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)
 against a candidate label design. It assumes the config's actual content
 decisions (deployment mode, schema/storage choice, retention design) are
 made per
@@ -72,7 +72,7 @@ before rollout, not about designing it from scratch.
   render the final config before validating it, since the raw
   `values.yaml` alone isn't the actual Loki config).
 - Read access to a running Loki instance's `/metrics` endpoint (or its
-  Prometheus-scraped metrics) for the cardinality-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) and post-deploy
+  Prometheus-scraped metrics) for the cardinality-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) and post-deploy
   confirmation steps — validation of intent is not a substitute for
   confirming actual behavior against real data.
 - Familiarity with the config fields being validated — see
@@ -134,7 +134,7 @@ before rollout, not about designing it from scratch.
      requirement that was actually agreed, and cross-check step 5 that
      the compactor will actually enforce it.
 
-4. **[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) label cardinality for any new/changed label** before the
+4. **[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) label cardinality for any new/changed label** before the
    config or the app instrumentation change ships, using a running
    instance's existing data as a proxy where available:
    ```bash

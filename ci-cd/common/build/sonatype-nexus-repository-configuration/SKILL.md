@@ -285,7 +285,7 @@ and for a direct product comparison see
   **Fix:** Set the hosted release repository's deployment policy to
   "Disable redeploy" so this is rejected at publish time going forward;
   for the already-corrupted version, republish under a new patch version
-  rather than trying to restore exact original bytes, and [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) which
+  rather than trying to restore exact original bytes, and [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) which
   builds consumed the corrupted artifact in the meantime.
 
 - **Symptom:** The Nexus blob store fills to [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) unexpectedly, causing

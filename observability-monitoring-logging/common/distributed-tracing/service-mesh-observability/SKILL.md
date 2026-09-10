@@ -40,7 +40,7 @@ Complete guide to [observability](../../fundamentals/observability/SKILL.md) pat
 │ • Request rate  │ • Span context  │ • Access logs   │
 │ • Error rate    │ • Latency       │ • Error details │
 │ • Latency P50   │ • Dependencies  │ • Debug info    │
-│ • Saturation    │ • Bottlenecks   │ • [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail   │
+│ • Saturation    │ • Bottlenecks   │ • [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail   │
 └─────────────────┴─────────────────┴─────────────────┘
 ```
 

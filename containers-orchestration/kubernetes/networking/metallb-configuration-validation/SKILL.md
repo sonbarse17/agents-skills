@@ -43,7 +43,7 @@ CRD's `Ready` status over `ceph status` in
 This skill covers the validation checks — pool [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), BGP peer state,
 and true external reachability — that should run before depending on a
 MetalLB configuration built per
-[metallb-[bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../[metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../../../DevOps_and_Cloud/Containers_and_Orchestration/metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration/SKILL.md)/SKILL.md)
+[metallb-[bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)-load-balancer-configuration](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)-load-balancer-configuration](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)-load-balancer-configuration/SKILL.md)/SKILL.md)
 in production.
 
 ## When to use
@@ -65,7 +65,7 @@ in production.
 ## Prerequisites & environment
 
 - A MetalLB deployment already configured per
-  [metallb-[bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../[metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../../../DevOps_and_Cloud/Containers_and_Orchestration/metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration/SKILL.md)/SKILL.md),
+  [metallb-[bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)-load-balancer-configuration](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)-load-balancer-configuration](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)-load-balancer-configuration/SKILL.md)/SKILL.md),
   with `[kubectl](../../other/kubectl/SKILL.md)` access to the `metallb-system` namespace.
 - For BGP-mode validation: read access to the upstream router's BGP
   neighbor status (via its own CLI/API, or coordination with whoever
@@ -263,7 +263,7 @@ in production.
 ## Worked example
 
 **Scenario:** `payments-api`'s `LoadBalancer` Service (configured per
-[metallb-[bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../[metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../../../DevOps_and_Cloud/Containers_and_Orchestration/metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration/SKILL.md)/SKILL.md)'s
+[metallb-[bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)-load-balancer-configuration](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)-load-balancer-configuration](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)-load-balancer-configuration/SKILL.md)/SKILL.md)'s
 worked example) shows `EXTERNAL-IP: 10.0.0.210`, but a customer reports
 intermittent timeouts reaching it.
 
@@ -304,7 +304,7 @@ intermittent timeouts reaching it.
 
 ## Cross-references
 
-- [metallb-[bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../[metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../../../DevOps_and_Cloud/Containers_and_Orchestration/metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration/SKILL.md)/SKILL.md) — the configuration (IP pools, Layer2/BGP mode, peering) this skill validates.
+- [metallb-[bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)-load-balancer-configuration](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)-load-balancer-configuration](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)-load-balancer-configuration/SKILL.md)/SKILL.md) — the configuration (IP pools, Layer2/BGP mode, peering) this skill validates.
 - [rook-ceph-configuration-validation](../[rook-ceph-configuration-validation](../../../DevOps_and_Cloud/Observability_and_SecOps/rook-ceph-configuration-validation/SKILL.md)/SKILL.md) — the same "CRD status vs. actual system health" validation pattern applied to storage instead of networking.
 - [cni-networking-calico-flannel](../[cni-networking-calico-flannel](../../../DevOps_and_Cloud/Containers_and_Orchestration/cni-networking-calico-flannel/SKILL.md)/SKILL.md) — a structurally similar BGP-session validation workflow (`calicoctl node status`), for pod-network BGP rather than MetalLB's service-IP BGP.
 - [prometheus-and-grafana-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md) — continuous [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) on MetalLB's pool-utilization and peer-state metrics.

@@ -273,7 +273,7 @@ CREATE TABLE bank_transfer_payments (
 ### Step 6: Temporal Tables
 
 #### Strategy Selection
-Valid time: when the fact was true in reality. Transaction time: when the fact was recorded in the database. Bi-temporal: both valid and transaction time. Decision: valid time for business reporting (report sales as of fiscal date), transaction time for [audit](../../AI_and_Agents/Operations/audit/SKILL.md) (show data as it appeared yesterday), bi-temporal for regulated industries needing both.
+Valid time: when the fact was true in reality. Transaction time: when the fact was recorded in the database. Bi-temporal: both valid and transaction time. Decision: valid time for business reporting (report sales as of fiscal date), transaction time for [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) (show data as it appeared yesterday), bi-temporal for regulated industries needing both.
 
 #### Implementation Patterns
 
@@ -532,7 +532,7 @@ Check [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) → lint SQL (sq
 - 3NF is the default. Denormalize only when performance-measured.
 - Surrogate keys default. Natural keys only for stable identifiers.
 - Prefer soft delete unless data retention law requires hard delete.
-- [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) columns (created_at, updated_at, created_by) on every table.
+- [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) columns (created_at, updated_at, created_by) on every table.
 - Every foreign key must be indexed.
 - Graph properties used in WHERE and traversal must have indexes.
 - Temporal tables use valid_from/valid_to or PERIOD FOR.

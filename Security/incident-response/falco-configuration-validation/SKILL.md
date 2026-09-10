@@ -122,7 +122,7 @@ to depend on before it's live.
          webhookurl: "${VALIDATION_SLACK_WEBHOOK_URL}"
          minimumpriority: "notice"      # everything, including the new rule, logged here for review
    ```
-   > **Warning — enforce-without-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) risk:** enabling a new or
+   > **Warning — enforce-without-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) risk:** enabling a new or
    > materially changed Falco rule directly at a priority that pages
    > on-call, with no prior observation window against real traffic, is
    > the single most common cause of Falco alert fatigue. Always run a
@@ -371,7 +371,7 @@ security team's rules repository.
   gate for; read that skill first for rule syntax and the underlying
   detection mechanics.
 - [kubewarden-admission-policy-configuration](../[kubewarden-admission-policy-configuration](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubewarden-admission-policy-configuration/SKILL.md)/SKILL.md) —
-  a comparable [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-before-enforce rollout discipline applied to
+  a comparable [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-before-enforce rollout discipline applied to
   admission-time WASM policy rather than runtime syscall detection.
 - [vault-configuration-validation](../[vault-configuration-validation](../../../Security/[vault](../vault/SKILL.md)-configuration-validation/SKILL.md)/SKILL.md) —
   the same "validate before it's trusted in production" philosophy

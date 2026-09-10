@@ -246,9 +246,9 @@ Save artifacts in YAML format and import via Velociraptor UI or command line.
 
 - **Sensitive Data Handling**: VQL queries can collect credentials, PII, and sensitive files. Implement data minimization - only collect necessary evidence. Use encryption for evidence transport and storage.
 
-- **Access Control**: Velociraptor server access provides significant endpoint control. Implement RBAC, [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) all queries, and restrict administrative access. Use client certificates for authentication.
+- **Access Control**: Velociraptor server access provides significant endpoint control. Implement RBAC, [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) all queries, and restrict administrative access. Use client certificates for authentication.
 
-- **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging**: All VQL queries, hunts, and collections are logged. Enable [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail for compliance. Document investigation scope and approvals.
+- **[Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logging**: All VQL queries, hunts, and collections are logged. Enable [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail for compliance. Document investigation scope and approvals.
 
 - **Compliance**: Ensure evidence collection follows organizational policies and legal requirements. Document chain of custody for forensic investigations. Consider data sovereignty for multi-region deployments.
 

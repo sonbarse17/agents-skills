@@ -66,7 +66,7 @@ subscription/project" isolation the cloud variants can lean on.
 
 ## Prerequisites & environment
 
-- A virtualization baseline (vSphere, or [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) via PXE/MAAS) already
+- A virtualization baseline (vSphere, or [bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md) via PXE/MAAS) already
   standardized, with inventory-as-code (IPAM/DCIM) covering the nodes this
   cluster will run on.
 - Enough physical/VM [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) provisioned with real lead time — unlike
@@ -93,7 +93,7 @@ subscription/project" isolation the cloud variants can lean on.
 
 **Phase 1 — On-prem infrastructure baseline.** Establish inventory-as-code
 before touching hardware, choose and standardize the virtualization
-platform (vSphere is the common baseline; [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) via PXE/MAAS/Redfish
+platform (vSphere is the common baseline; [bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md) via PXE/MAAS/Redfish
 is the alternative), automate provisioning rather than hand-installing
 OSes, and decide the hybrid connectivity model back to any cloud
 dependency that remains (even an air-gapped site sometimes needs a
@@ -239,7 +239,7 @@ and
   real air-gapped site.
   **Fix:** Some step in the template's CI pipeline or Dockerfile has an
   unmirrored dependency (a base image tag not yet in the Phase 3 registry,
-  an npm/yarn package resolving against the public registry). [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) the
+  an npm/yarn package resolving against the public registry). [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) the
   full dependency chain against the site's actual network policy, not
   just against what worked during development, and add any missing
   artifact to the mirror before re-publishing the template.
@@ -271,7 +271,7 @@ and
   **Fix:** This is what happens when Phase 8 is treated as a later
   hardening pass instead of a prerequisite to onboarding a second tenant.
   Retrofit namespace-scoped RBAC and a default-deny NetworkPolicy
-  immediately, and [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) every self-service request made before the fix
+  immediately, and [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) every self-service request made before the fix
   for improperly-scoped access.
 
 - **Symptom:** A platform engineer runs `[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) delete namespace` against
@@ -292,7 +292,7 @@ and
 segmented on-prem environment with no reliable outbound internet access
 and must self-host its entire IDP.
 
-1. **Phase 1:** Inventory-as-code models three racks of [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) hosts;
+1. **Phase 1:** Inventory-as-code models three racks of [bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md) hosts;
    PXE-based automated provisioning installs the base OS; [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
    planning reserves headroom for one full node failure without service
    loss.

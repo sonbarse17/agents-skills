@@ -38,7 +38,7 @@ Guide cross-chain protocol selection, bridge architecture, and interoperability 
 ### Input Context
 - Problem type (asset transfer/message passing/data query/atomic execution)
 - Source and destination chains with finality models
-- Security requirements (trust minimization, [audit](../../AI_and_Agents/Operations/audit/SKILL.md) level, value secured)
+- Security requirements (trust minimization, [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) level, value secured)
 - Performance needs (latency, throughput, cost budget)
 - Existing infrastructure (current bridge usage, token standards)
 
@@ -524,7 +524,7 @@ class CrossChainRelayer:
 - **Message replay protection**: Include originating chain ID, nonce, and block number in message digest.
 - **Oracle manipulation**: Use multiple oracle sources for exchange rates; TWAP-based pricing.
 - **Bridge contract upgradeability**: Timelock + multisig for bridge upgrades; pause before upgrade.
-- **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) requirements**: Bridge contracts require multiple audits; formal verification for critical paths.
+- **[Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) requirements**: Bridge contracts require multiple audits; formal verification for critical paths.
 
 ## Phase: blockchain → blockchain-cross-chain
 

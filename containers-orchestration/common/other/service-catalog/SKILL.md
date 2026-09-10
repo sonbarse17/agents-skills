@@ -73,11 +73,11 @@ turns "someone should update the catalog" into an enforced gate, the same way `[
 turns security review from a suggestion into a required check.
 
 **Done when:** a service with a missing owner field fails its CI pipeline, not just a quarterly
-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) spreadsheet.
+[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) spreadsheet.
 
 ## 4. Make discovery the default reason people open it
 
-A catalog only survives if people open it to find things, not just to satisfy an [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md). Index
+A catalog only survives if people open it to find things, not just to satisfy an [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md). Index
 service dependencies, API contracts, and [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) links alongside ownership, so "what does this
 depend on" and "how do I call this service" are answered in the same place as "who owns it." A
 catalog that only answers ownership questions gets bookmarked by one team and forgotten by
@@ -92,14 +92,14 @@ everyone else.
 **Done when:** a developer unfamiliar with a service can find its owner, dependencies, and
 [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) in under thirty seconds without asking anyone.
 
-## 5. [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) for orphans on a schedule, not by accident
+## 5. [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) for orphans on a schedule, not by accident
 
 Teams get reorged, services get deprecated, and the catalog entry outlives both unless something
-actively checks. Run a scheduled [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) that flags services with no recent deploys, an owner group
+actively checks. Run a scheduled [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) that flags services with no recent deploys, an owner group
 that no longer exists, or a tier mismatched to actual traffic, and route those flags to a real
 person, not a dashboard nobody watches.
 
-**Done when:** every catalog entry has been touched or reviewed within the [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)'s staleness
+**Done when:** every catalog entry has been touched or reviewed within the [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)'s staleness
 window, with zero entries pointing to owner groups that no longer exist.
 
 ## Report

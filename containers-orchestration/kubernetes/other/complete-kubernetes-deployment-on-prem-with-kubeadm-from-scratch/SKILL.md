@@ -50,7 +50,7 @@ control-plane VIP and etcd topology are actually settled, so a later
 control-plane change disrupts already-configured networking. This skill
 sequences the physical/network prerequisites, kubeadm HA bootstrap,
 MetalLB, CNI, ingress, cert-manager, conformance validation, etcd backup,
-and a first workload into one ordered path for [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)/on-prem
+and a first workload into one ordered path for [bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)/on-prem
 specifically.
 
 ## When to use
@@ -64,7 +64,7 @@ specifically.
   ever taken).
 - Rebuilding a reference on-prem cluster (a second site, a DR cluster)
   that should follow the same sequence as a known-good first cluster.
-- Deciding, deliberately, the [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-specific answers to problems a
+- Deciding, deliberately, the [bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)-specific answers to problems a
   cloud-managed cluster would otherwise solve automatically: which CNI,
   how `LoadBalancer` Services get a real address, and where TLS trust
   comes from.
@@ -100,12 +100,12 @@ specifically.
 ## Step-by-step guidance
 
 This is the phase sequence. Each phase links to the skill that covers its
-full depth; the text here covers only on-prem/[bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-specific
+full depth; the text here covers only on-prem/[bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)-specific
 sequencing and integration decisions.
 
 1. **Phase 1 — Physical/network prerequisites and IP planning.** Confirm
    inventory-as-code, out-of-band management isolation, and the
-   virtualization/[bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) provisioning pipeline are in place per
+   virtualization/[bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md) provisioning pipeline are in place per
    [on-prem-infrastructure-patterns](../../../cloud/skills/[on-prem-infrastructure-patterns](../../Cloud_Providers/on-prem-infrastructure-patterns/SKILL.md)/SKILL.md).
    Reserve, in one place, every IP range this deployment will need:
    the pod CIDR (Phase 3), the control-plane VIP (Phase 2), and the
@@ -156,7 +156,7 @@ sequencing and integration decisions.
    bare metal has no cloud API to allocate a real load balancer, so
    every `Service` of `type: LoadBalancer` sits `EXTERNAL-IP: <pending>`
    forever without something to satisfy that request. See
-   [metallb-[bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../[metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration/SKILL.md)/SKILL.md)
+   [metallb-[bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)-load-balancer-configuration](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)-load-balancer-configuration](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)-load-balancer-configuration/SKILL.md)/SKILL.md)
    for the full Layer2-vs-BGP decision and IP pool setup:
    ```bash
    [kubectl](../kubectl/SKILL.md) apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14.8/config/manifests/metallb-native.yaml
@@ -398,7 +398,7 @@ etcd-restore [runbook](../../../../observability-monitoring-logging/common/incid
 - [container-runtime-[docker](../../../docker/other/docker/SKILL.md)-containerd](../[container-runtime-[docker](../docker/SKILL.md)-containerd](../container-runtime-[docker](../docker/SKILL.md)-containerd/SKILL.md)/SKILL.md) — installing/configuring the container runtime kubeadm requires on every node before Phase 2.
 - [kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../[kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../[kubernetes](../kubernetes/SKILL.md)-cluster-provisioning-with-kubeadm-and-cluster-api/SKILL.md)/SKILL.md) — full detail for Phase 2's kubeadm HA bootstrap and Phase 9's upgrade sequence.
 - [cni-networking-calico-flannel](../[cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)/SKILL.md) — full detail for Phase 3's CNI choice and installation.
-- [metallb-[bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../[metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration/SKILL.md)/SKILL.md) — full detail for Phase 4's Layer2/BGP mode and IP pool setup.
+- [metallb-[bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)-load-balancer-configuration](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)-load-balancer-configuration](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)-load-balancer-configuration/SKILL.md)/SKILL.md) — full detail for Phase 4's Layer2/BGP mode and IP pool setup.
 - [ingress-nginx-configuration](../[ingress-nginx-configuration](../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md) — full detail for Phase 5's controller install and Ingress configuration.
 - [cert-manager-tls-automation](../[cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md)/SKILL.md) — full detail for Phase 6's internal-CA and ACME Issuer setup.
 - [kubernetes-cluster-post-provision-conformance-validation](../[kubernetes-cluster-post-provision-conformance-validation](../[kubernetes](../kubernetes/SKILL.md)-cluster-post-provision-conformance-validation/SKILL.md)/SKILL.md) — full detail for Phase 7's validation gate.

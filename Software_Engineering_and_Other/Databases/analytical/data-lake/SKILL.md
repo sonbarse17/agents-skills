@@ -298,7 +298,7 @@ CALL run_clustering(
 # Keep enough for concurrent read isolation + time travel queries
 vacuum:
   retention_hours: 168  # 7 days
-  # For compliance: extend based on [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) requirements
+  # For compliance: extend based on [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) requirements
   # For testing environments: reduce to 24h
   # NEVER vacuum concurrently with active write operations
 
@@ -408,7 +408,7 @@ spark.sql.hive.convertMetastoreParquet: true
 
 # Iceberg write optimizations
 write.distribution-mode: hash                 # hash, range, none
-write.wap.enabled: false                      # Write-[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-Publish
+write.wap.enabled: false                      # Write-[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-Publish
 write.merge.mode: merge-on-read               # Default for Iceberg updates
 
 # Delta write optimizations
@@ -583,7 +583,7 @@ catalog:
 
 - **Table ACLs**: Use Ranger/Atlas for lake table-level authorization; restrict `DROP TABLE` permissions.
 - **Data encryption**: Enable S3 server-side encryption (SSE-S3 or SSE-KMS) for lake storage.
-- **[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail**: Log all DDL operations, compaction runs, and schema changes to AWS CloudTrail.
+- **[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail**: Log all DDL operations, compaction runs, and schema changes to AWS CloudTrail.
 - **Credential management**: Use IAM roles for Spark/Trino access to lake storage; rotate keys.
 - **Network isolation**: Deploy lake storage in VPC endpoints; no public S3 access to data lake buckets.
 

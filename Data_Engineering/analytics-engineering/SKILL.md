@@ -562,7 +562,7 @@ FROM {{ ref('stg_customers') }}
 |---|---|---|
 | dbt models without tests | Undetected quality issues | Test every model with generic + singular tests |
 | No source freshness checks | Stale data propagated | Configure source freshness for all sources |
-| Manual dbt run in production | Inconsistent state, no [audit](../../AI_and_Agents/Operations/audit/SKILL.md) | CI/CD for all production runs |
+| Manual dbt run in production | Inconsistent state, no [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) | CI/CD for all production runs |
 | Single monolithic dbt project | Long run times, tight coupling | Split into domain-specific sub-projects |
 | Ignoring dbt performance | Full refresh on every run | Use incremental models for large tables |
 
@@ -580,10 +580,10 @@ FROM {{ ref('stg_customers') }}
 - **RBAC**: Use dbt Cloud RBAC for project-level access; service tokens for CI/CD.
 - **Data masking**: Implement Snowflake dynamic masking policies for PII in production models.
 - **Schema isolation**: Separate dev/staging/prod schemas; restrict prod write access to CI/CD service account.
-- **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md)**: Log all dbt runs with artifacts; store in cloud storage for compliance review.
+- **[Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)**: Log all dbt runs with artifacts; store in cloud storage for compliance review.
 
 ## Handoff
 `[data-science-statistical-analysis](../statistical-analysis/SKILL.md)` for analytical statistical methods
-`[data-science-experimentation](../../AI_and_Agents/Models_and_FineTuning/experimentation/SKILL.md)` for experiment metric pipelines
+`[data-science-experimentation](../../AI_and_Agents/Models_and_FineTuning/evaluation/experimentation/SKILL.md)` for experiment metric pipelines
 `data-quality` for data quality testing and [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 

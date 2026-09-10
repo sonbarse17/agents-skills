@@ -43,13 +43,13 @@ vendor-maintained Security Rulepacks. This buys genuinely deep
 taint-tracking (following untrusted input across function and even
 file boundaries) at the cost of needing to mirror the real build
 process closely, materially slower scans than a lightweight pattern
-matcher, and an [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) workflow (Fortify [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Workbench, or its
+matcher, and an [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) workflow (Fortify [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Workbench, or its
 web-based counterpart in Fortify Software Security Center/SSC) built
 around human triage of findings into confirmed categories rather than a
 lightweight suppress-and-move-on model. Organizations reach for Fortify
 specifically for compliance-driven and regulated environments (defense,
 finance, government) where an auditable, enterprise-supported on-prem
-tool with a mature [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail is a requirement, not just a preference
+tool with a mature [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail is a requirement, not just a preference
 — understanding that trade-off is the core of using it well.
 
 ## When to use
@@ -59,7 +59,7 @@ tool with a mature [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) tra
 - The user needs to integrate Fortify into [Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md), Azure DevOps, or
   another enterprise CI system, uploading results to Fortify Software
   Security Center (SSC) for centralized tracking.
-- The user is triaging findings in Fortify [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Workbench and needs to
+- The user is triaging findings in Fortify [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Workbench and needs to
   understand the difference between marking something "Not an Issue,"
   "Reliability Issue," "Bad Practice," or a confirmed "Suspicious"/
   "Exploitable" vulnerability.
@@ -71,8 +71,8 @@ tool with a mature [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) tra
   environment, and needs the concrete operational differences (not just
   a feature checklist).
 - The user needs to justify or track compliance evidence (e.g. for an
-  [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)) that static analysis was run and findings were triaged by a
-  human, which Fortify's [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) workflow is specifically built to
+  [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)) that static analysis was run and findings were triaged by a
+  human, which Fortify's [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) workflow is specifically built to
   produce.
 
 ## Prerequisites & environment
@@ -89,7 +89,7 @@ tool with a mature [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) tra
   needs to observe a real build (or a close proxy of one) to resolve
   types and build accurate dataflow; interpreted languages (JavaScript,
   [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)) translate more directly from source without a compile step.
-- Fortify [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Workbench (desktop) or Fortify Software Security Center
+- Fortify [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Workbench (desktop) or Fortify Software Security Center
   (SSC, the server-based centralized results/triage/reporting
   platform) for reviewing scan results — a raw `.fpr` (Fortify Project
   Results) file is not intended to be read directly.
@@ -173,7 +173,7 @@ tool with a mature [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) tra
    }
    ```
 
-5. **Triage in Fortify [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Workbench (or SSC's web [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) view)**,
+5. **Triage in Fortify [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Workbench (or SSC's web [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) view)**,
    using Fortify's specific triage taxonomy rather than a generic
    "dismiss" action:
    - **Exploitable** — confirmed real vulnerability; track to fix.
@@ -183,9 +183,9 @@ tool with a mature [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) tra
      or non-exploitable in context; requires a rationale comment.
    - **Bad Practice / Reliability Issue** — a real [code-quality](../../../Software_Engineering_and_Other/Patterns/dev-practice/code-quality/SKILL.md)/SKILL.md) concern
      but not a security vulnerability per se.
-   Every non-"Exploitable" triage decision should carry a short [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+   Every non-"Exploitable" triage decision should carry a short [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
    comment — this triage history is itself often the compliance
-   artifact an [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) is looking for, not just the final finding count.
+   artifact an [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) is looking for, not just the final finding count.
 
 6. **Tune Security Rulepacks and add custom rules** for
    organization-specific sinks/sources (e.g. an internal logging
@@ -216,9 +216,9 @@ tool with a mature [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) tra
   (wrong classpath, missing include paths, an incomplete Maven profile)
   silently produces an incomplete or misleading scan, not an error you'll
   necessarily notice.
-- Budget for Fortify's [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) workflow as a first-class, ongoing
+- Budget for Fortify's [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) workflow as a first-class, ongoing
   activity, not a one-time gate — its differentiator versus a
-  lightweight SAST tool is the structured human-triage [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail; a
+  lightweight SAST tool is the structured human-triage [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail; a
   team that never triages just accumulates an ever-growing pile of
   Not-Yet-Audited findings with none of Fortify's actual value realized.
 - Keep Security Rulepacks current on a defined update cadence — an
@@ -257,7 +257,7 @@ tool with a mature [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) tra
   trusting scan results — a broken translate produces a technically
   successful but nearly-empty scan, not an obvious failure.
 
-- **Symptom:** Fortify [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Workbench shows thousands of
+- **Symptom:** Fortify [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Workbench shows thousands of
   Not-Yet-Audited findings and the team's response is to bulk-suppress
   entire categories to make the number manageable.
   **Fix:** Bulk-suppressing a whole rule category discards genuine
@@ -283,7 +283,7 @@ tool with a mature [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) tra
   shifts enough (refactor, line-number drift) that Fortify's finding
   fingerprinting treats it as new rather than matching the previously
   audited instance — review triage decisions on a schedule after major
-  refactors specifically, and confirm SSC's [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) history is being
+  refactors specifically, and confirm SSC's [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) history is being
   carried forward correctly between scans rather than treating each
   `.fpr` upload as fully independent.
 
@@ -299,7 +299,7 @@ tool with a mature [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) tra
 ## Worked example
 
 A financial-services team with an on-premises Java [monorepo](../../../Software_Engineering_and_Other/Frontend/build-tools/monorepo/SKILL.md) integrates
-Fortify SCA into [Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md) with a nightly full scan and SSC-based [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+Fortify SCA into [Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md) with a nightly full scan and SSC-based [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
 workflow, alongside a faster per-PR Semgrep gate for quick feedback.
 
 Jenkinsfile (nightly full scan stage, abbreviated from step 4):
@@ -319,7 +319,7 @@ stage('Fortify Full Scan (nightly)') {
 }
 ```
 
-Sample confirmed finding in SSC after [audit](../../../AI_and_Agents/Operations/audit/SKILL.md):
+Sample confirmed finding in SSC after [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md):
 ```
 Category: SQL Injection
 Priority: Critical
@@ -332,7 +332,7 @@ Analyzer trace: HTTP Request Parameter "accountId" (Source)
 ```
 Remediation: replace `Statement` with a `PreparedStatement` and bind
 `accountId` as a parameter; re-run the translate+scan and confirm the
-finding transitions to "Fixed" in SSC's [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) history rather than
+finding transitions to "Fixed" in SSC's [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) history rather than
 reappearing as a new, separately-audited finding.
 
 ## Cross-references

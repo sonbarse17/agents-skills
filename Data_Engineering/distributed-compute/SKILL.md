@@ -561,7 +561,7 @@ t_env.execute_sql("""
 ## Security Considerations
 
 - **Cluster isolation**: Use separate Spark/Flink clusters per environment (dev, staging, prod) via [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) namespaces.
-- **Job authentication**: Require service accounts for job submission; [audit](../../AI_and_Agents/Operations/audit/SKILL.md) who submits which job.
+- **Job authentication**: Require service accounts for job submission; [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) who submits which job.
 - **Data access control**: Enforce Spark SQL `GRANT/REVOKE` via Apache Ranger for table-level access.
 - **Credential injection**: Pass storage credentials via [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) secrets, never in code; use IAM roles.
 - **Network security**: Restrict cluster communication to private VPC; no public endpoints for Spark UI.

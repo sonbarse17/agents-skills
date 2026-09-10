@@ -168,7 +168,7 @@ rather than the graph-construction mechanics themselves.
    ```
    Enforce a minimum-metadata policy (every dataset must have an owner and
    at least one classification tag) as part of the ingestion pipeline or a
-   scheduled [audit](../../AI_and_Agents/Operations/audit/SKILL.md), rather than treating tagging as optional best-effort
+   scheduled [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md), rather than treating tagging as optional best-effort
    documentation.
 
 5. **Classify sensitive data explicitly and treat the tag as
@@ -254,7 +254,7 @@ rather than the graph-construction mechanics themselves.
   **Warning:** This is exactly the dangerous action this skill's impact
   analysis step exists to prevent — a deployed model's rollback target
   (see
-  [production-model-rollback-procedure](../[production-model-rollback-procedure](../../AI_and_Agents/Models_and_FineTuning/production-model-rollback-procedure/SKILL.md)/SKILL.md))
+  [production-model-rollback-procedure](../../AI_and_Agents/Models_and_FineTuning/llmops/production-model-rollback-procedure/SKILL.md)/SKILL.md))
   or an infrequently-run batch job can both depend on an artifact that
   looks unused by recent-activity metrics alone.
   **Fix:** Always run the catalog's downstream-lineage query (step 7)
@@ -296,7 +296,7 @@ rather than the graph-construction mechanics themselves.
   and nobody can say who to ask about a specific dataset months later.
   **Fix:** Enforce ownership assignment as a required step of the
   ingestion or onboarding process (a CI check against the ingestion recipe
-  or a scheduled [audit](../../AI_and_Agents/Operations/audit/SKILL.md) query for entities with an empty `ownership`
+  or a scheduled [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) query for entities with an empty `ownership`
   aspect), rather than treating owner assignment as an optional follow-up
   that competes with other priorities and never happens.
 
@@ -331,7 +331,7 @@ Retiring `fraud-scorer` model version `v11` (superseded by `v14`):
 # 1. Impact analysis first — who/what still depends on v11?
 datahub get --urn "urn:li:mlModel:(urn:li:dataPlatform:mlflow,fraud-scorer-v11,PROD)" --aspect upstreamLineage
 # Result: no active serving deployment references v11, but the
-# [production-model-rollback-procedure](../../AI_and_Agents/Models_and_FineTuning/production-model-rollback-procedure/SKILL.md) [runbook](../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) lists v11 as the last
+# [production-model-rollback-procedure](../../AI_and_Agents/Models_and_FineTuning/llmops/production-model-rollback-procedure/SKILL.md) [runbook](../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) lists v11 as the last
 # known-good rollback target for v12's [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) two months ago.
 ```
 Given that finding, the artifact is marked deprecated with a grace period
@@ -351,6 +351,6 @@ immediately at the cost of removing a legitimate [incident-response](../../DevOp
 
 - [data-and-model-lineage](../[data-and-model-lineage](../data-and-model-lineage/SKILL.md)/SKILL.md) — the lineage-graph construction and root-cause/impact-analysis concepts this skill's catalog layers governance (ownership, classification, deprecation workflow) on top of.
 - [feature-store-design](../[feature-store-design](../feature-store-design/SKILL.md)/SKILL.md) — feature definitions that should be cataloged as `MLFeatureTable`/`MLFeature` entities alongside the datasets and models covered here.
-- [model-packaging-and-versioning](../[model-packaging-and-versioning](../../AI_and_Agents/Models_and_FineTuning/model-packaging-and-versioning/SKILL.md)/SKILL.md) — the registry versioning scheme whose entries this skill catalogs and governs.
-- [production-model-rollback-procedure](../[production-model-rollback-procedure](../../AI_and_Agents/Models_and_FineTuning/production-model-rollback-procedure/SKILL.md)/SKILL.md) — why an "old" model version may still be a required rollback target, directly relevant to the deprecation/deletion warning above.
-- [security-compliance-mapping-soc2-iso-pci-nist](../../../standards-and-compliance-frameworks/skills/[security-compliance-mapping-soc2-iso-pci-nist](../../DevOps_and_Cloud/Observability_and_SecOps/security-compliance-mapping-soc2-iso-pci-nist/SKILL.md)/SKILL.md) — the compliance frameworks that typically require the ownership/classification/[audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail this catalog layer provides evidence for.
+- [model-packaging-and-versioning](../../AI_and_Agents/Models_and_FineTuning/llmops/model-packaging-and-versioning/SKILL.md)/SKILL.md) — the registry versioning scheme whose entries this skill catalogs and governs.
+- [production-model-rollback-procedure](../../AI_and_Agents/Models_and_FineTuning/llmops/production-model-rollback-procedure/SKILL.md)/SKILL.md) — why an "old" model version may still be a required rollback target, directly relevant to the deprecation/deletion warning above.
+- [security-compliance-mapping-soc2-iso-pci-nist](../../../standards-and-compliance-frameworks/skills/[security-compliance-mapping-soc2-iso-pci-nist](../../DevOps_and_Cloud/Observability_and_SecOps/security-compliance-mapping-soc2-iso-pci-nist/SKILL.md)/SKILL.md) — the compliance frameworks that typically require the ownership/classification/[audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) trail this catalog layer provides evidence for.

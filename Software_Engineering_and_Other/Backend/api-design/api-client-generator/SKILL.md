@@ -527,7 +527,7 @@ What language/framework?
 - **Encryption at rest**: Encrypt cached API responses containing PII. Use envelope encryption with per-tenant keys.
 - **Input validation**: Validate all inputs client-side before sending. Prevent injection attacks on string parameters.
 
-### [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) & Compliance
+### [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) & Compliance
 - **Request logging**: Log all API requests with timestamps, endpoints, and status codes. Exclude sensitive payloads.
 - **Rate limit awareness**: Respect Retry-After headers. Implement client-side rate limiting to avoid abuse flags.
 - **Compliance headers**: Add required compliance headers (GDPR consent, data residency) automatically.

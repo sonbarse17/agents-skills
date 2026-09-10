@@ -110,7 +110,7 @@ If the user is unsure, use safe defaults.
 
 ### 4. [Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
 - Use Managed Prometheus and Container Insights with Grafana for AKS [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) (logs + metrics).
-- Enable Diagnostic Settings to collect control plane logs and [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs in a Log Analytics workspace for security [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and troubleshooting.
+- Enable Diagnostic Settings to collect control plane logs and [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs in a Log Analytics workspace for security [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and troubleshooting.
 - For other [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and troubleshooting tools, use features like the Agentic CLI for AKS, Application Insights, Resource Health Center, AppLens detectors, and Azure Advisors.
 
 ### 5. Upgrades & Patching

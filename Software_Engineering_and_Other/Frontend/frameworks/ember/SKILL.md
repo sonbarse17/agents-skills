@@ -319,7 +319,7 @@ export default class PostsController extends Controller {
 ## Build & Bundle Considerations
 
 - Ember CLI uses Broccoli.js as the build pipeline.
-- Addons add to bundle size — [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) `package.json` periodically.
+- Addons add to bundle size — [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) `package.json` periodically.
 - Use `ember-auto-import` for npm package imports.
 - `ember-cli-code-coverage` for tracking unused code.
 - Lazy load engines with `ember-engines` for large feature areas.
@@ -548,5 +548,5 @@ Is the route data-driven (model-dependent)?
 - **Safe strings**: Use `{{someProperty}}` for auto-escaped output. For trusted HTML, use `{{{htmlContent}}}` only after sanitization via `ember-cli-htmlbars` or DOMPurify. Never triple-stash user content.
 - **CSRF protection**: Ember Data automatically reads CSRF token from meta tag. Ensure backend sets `<meta name="csrf-token" content="...">`. For non-ember-data requests, read the meta tag and include in headers.
 - **Content Security Policy**: Configure CSP in `config/content-security-policy.js`. Ember's `ember-cli-build` can inject meta CSP tags. Set `script-src 'self'` and use nonces for inline scripts in production.
-- **Dependency auditing**: Run `ember-cli-deprecation-workflow` to track deprecations. Use `npm [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)` or `yarn [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)` in CI. Pin major dependency versions. Avoid deprecated Ember addons without active maintenance.
+- **Dependency auditing**: Run `ember-cli-deprecation-workflow` to track deprecations. Use `npm [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)` or `yarn [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)` in CI. Pin major dependency versions. Avoid deprecated Ember addons without active maintenance.
 

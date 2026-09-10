@@ -348,7 +348,7 @@ CNI-specific skill referenced below for that layer.
   from any policy immediately widens access regardless of other
   stricter policies. If a non-bypassable baseline is required, enforce
   it via Calico `GlobalNetworkPolicy` in a higher-order tier (step 6),
-  and [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) namespace-level policies on a schedule for accidental
+  and [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) namespace-level policies on a schedule for accidental
   over-broad rules in the meantime.
 
 - **Symptom:** Egress is blocked to the internet, but a compromised pod
@@ -366,7 +366,7 @@ CNI-specific skill referenced below for that layer.
 **Scenario:** The `payments` namespace currently has no `NetworkPolicy`
 at all — every pod in the cluster can reach `payments-db` and
 `payments-api` directly. A security review flags this as a [zero-trust](../../../../Security/identity-access/zero-trust/SKILL.md)
-gap ahead of a compliance [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md), and the team needs default-deny
+gap ahead of a compliance [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md), and the team needs default-deny
 segmentation without breaking the ingress path or DNS.
 
 1. In a staging cluster first, apply the default-deny-all policy (step

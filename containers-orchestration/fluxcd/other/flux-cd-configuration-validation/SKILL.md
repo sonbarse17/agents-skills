@@ -273,7 +273,7 @@ correctly once something has reconciled (or failed to).
   dry run using a CI credential that also has cluster-admin write
   access, and later that same credential is used (intentionally or by
   a compromised pipeline step) to apply changes directly to the
-  cluster, bypassing Flux's own reconciliation and [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail.
+  cluster, bypassing Flux's own reconciliation and [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail.
   **Fix:** This defeats the credential-scoping purpose of [GitOps](../../../common/gitops/gitops/SKILL.md)
   entirely — validation/diff tooling should run with read-only cluster
   credentials only; if a CI runner needs write access for some other

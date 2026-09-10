@@ -93,7 +93,7 @@ automation is trustworthy rather than a new source of unsupervised risk.
    *eliminates* the toil going forward.
 
 2. **Measure the toil budget.** Track time spent by category (survey,
-   ticket tags, or a calendar/on-call-retro [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)) over a period (2-4
+   ticket tags, or a calendar/on-call-retro [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)) over a period (2-4
    weeks is usually enough to see a pattern). Compare the toil percentage
    against the commonly cited Google SRE guideline of keeping toil under
    roughly **50%** of an operations/SRE engineer's time — treat it as a
@@ -137,7 +137,7 @@ automation is trustworthy rather than a new source of unsupervised risk.
      remediation" action).
    - **Level 4 — Fully autonomous self-healing:** the system detects and
      remediates without a human in the loop, within explicit safety
-     limits (rate limits, circuit breakers, [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging) and with
+     limits (rate limits, circuit breakers, [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging) and with
      [alerting](../../alerting/alerting/SKILL.md) if the automation itself fails.
 
    Example Level 1→2 step — a liveness probe closes half the gap for the
@@ -215,7 +215,7 @@ automation is trustworthy rather than a new source of unsupervised risk.
 - **Symptom:** Every planning conversation about "we need more time to
   automate" is met with skepticism because there's no data, just a
   feeling that on-call is busy.
-  **Fix:** Actually measure toil (ticket tags, survey, or retro [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md))
+  **Fix:** Actually measure toil (ticket tags, survey, or retro [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md))
   and report it as a percentage against the ~50% guideline explicitly —
   a number is far harder to wave away than a feeling.
 

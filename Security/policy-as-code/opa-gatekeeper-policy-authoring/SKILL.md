@@ -40,7 +40,7 @@ more **Constraints** (a concrete resource specifying which Rego template to
 apply, to which resources, with which parameter values, in `deny` or
 `dryrun` enforcement action). This skill covers the actual mechanics of
 writing and testing that Rego, structuring templates so they're reusable
-across teams via parameters, and the [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-before-enforce rollout
+across teams via parameters, and the [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-before-enforce rollout
 discipline that keeps a new policy from taking down a legitimate
 deployment. It assumes the reader already understands *why* policy as
 code matters operationally — see
@@ -163,7 +163,7 @@ and rollout mechanics.
    }
    ```
    Test the exact shape with `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) create --dry-run=server -o json` or
-   by checking the [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs of a recently created resource, rather than
+   by checking the [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs of a recently created resource, rather than
    guessing at the schema.
 
 4. **Unit-test the Rego with `opa test`** before deploying, covering both
@@ -316,11 +316,11 @@ and rollout mechanics.
   on-call staff can execute without needing to understand Rego under
   pressure.
 
-- **Symptom:** [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) mode (`dryrun`) shows zero violations for weeks, so
+- **Symptom:** [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) mode (`dryrun`) shows zero violations for weeks, so
   the team assumes the policy is safe to enforce — then enforcing it
   immediately blocks a deploy from a workflow that only runs quarterly
   (e.g. a batch job or a DR failover) and wasn't exercised during the
-  [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) window.
+  [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) window.
   **Fix:** Make sure the dry-run review window covers infrequent but
   legitimate deploy paths, not just the common daily/weekly cadence, or
   explicitly flag the gap and stage a longer or targeted dry-run for
@@ -435,7 +435,7 @@ from CI or a direct `[kubectl](../../../containers-orchestration/kubernetes/othe
   and right-sizing that complements (and can precede) writing custom
   Gatekeeper policies for the same properties.
 - [policy-as-code-guardrails](../../../[devsecops](../devsecops/SKILL.md)/skills/[policy-as-code-guardrails](../[policy-as-code](../policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md) —
-  the broader rationale for policy as code, [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-first rollout
+  the broader rationale for policy as code, [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-first rollout
   discipline, and how admission policy fits alongside CI-time IaC checks.
 - [secure-cicd-gates](../../../[devsecops](../devsecops/SKILL.md)/skills/[secure-cicd-gates](../../app-security/secure-cicd-gates/SKILL.md)/SKILL.md) —
   where admission-time enforcement fits relative to earlier pipeline

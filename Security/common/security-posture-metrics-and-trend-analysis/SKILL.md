@@ -47,7 +47,7 @@ distribution (not just size), false-positive rate per tool/rule,
 exception-list growth and renewal frequency, and gate override/bypass
 frequency. Done well, this becomes the evidence base for both internal
 prioritization decisions and external reporting (leadership updates,
-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)/compliance evidence); done poorly (vanity metrics like raw finding
+[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)/compliance evidence); done poorly (vanity metrics like raw finding
 count, or metrics collected but never reviewed), it becomes a dashboard
 nobody trusts or acts on.
 
@@ -255,7 +255,7 @@ nobody trusts or acts on.
   right before the reporting period, without individual review.
   **Fix:** Cross-check MTTR trend against the false-positive-rate and
   exception-count trends in the same period — a sudden MTTR
-  improvement paired with a spike in either is a signal to [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) the
+  improvement paired with a spike in either is a signal to [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) the
   underlying dispositions rather than take the improved MTTR at face
   value.
 

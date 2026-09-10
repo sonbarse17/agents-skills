@@ -147,9 +147,9 @@ severity, owner, and last-verified date. [Runbooks](../runbooks/SKILL.md) decay 
 staleness visible. Then tell the user which alerts should be updated to link the
 new runbook (that edit is theirs, or a `/[observability](../../fundamentals/observability/SKILL.md)` plan).
 
-## [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) mode
+## [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) mode
 
-Invoked with `[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)`, this skill reviews **existing** [runbooks](../runbooks/SKILL.md) instead of writing
+Invoked with `[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)`, this skill reviews **existing** [runbooks](../runbooks/SKILL.md) instead of writing
 one. Findings use the canonical table with category `DOC` (or `OPS`):
 
 | # | Finding | Category | Impact | Effort | Risk | Conf | Evidence |
@@ -174,7 +174,7 @@ Effort keywords (`quick` / `standard` / `deep`) behave as defined in the
   link them.
 - `from-[incident](../incident/SKILL.md) <investigation file>` → turn a completed investigation into the
   runbook for that failure mode.
-- `[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)` → review existing [runbooks](../runbooks/SKILL.md) for staleness and coverage gaps (above).
+- `[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)` → review existing [runbooks](../runbooks/SKILL.md) for staleness and coverage gaps (above).
 - `quick` → symptom, first 60 seconds, one safest mitigation, escalation.
 - `deep` → full triage tree, every mitigation, verification, and past-[incident](../incident/SKILL.md)
   history.
@@ -185,7 +185,7 @@ Effort keywords (`quick` / `standard` / `deep`) behave as defined in the
   links belong in the alert definitions.
 - `/[incident](../incident/SKILL.md)` — a completed investigation is the best raw material for a runbook.
 - `/[dr-review](../../../../containers-orchestration/common/other/dr-review/SKILL.md)` — restore and failover procedures deserve their own [runbooks](../runbooks/SKILL.md).
-- `/[db-review](../../../../AI_and_Agents/Operations/db-review/SKILL.md)`, `/[k8s-review](../../../../containers-orchestration/kubernetes/troubleshooting/k8s-review/SKILL.md)` — the durable fix that makes a runbook unnecessary.
+- `/[db-review](../../../../AI_and_Agents/Operations/common/db-review/SKILL.md)`, `/[k8s-review](../../../../containers-orchestration/kubernetes/troubleshooting/k8s-review/SKILL.md)` — the durable fix that makes a runbook unnecessary.
 
 ## Before you finish
 

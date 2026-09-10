@@ -475,7 +475,7 @@ Team size and metadata requirements?
 │   ├── [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/Spark/Airflow stack → DataHub (best lineage support)
 │   └── dbt-native stack → OpenMetadata (dbt integration)
 ├── Large enterprise, compliance-driven
-│   └── DataHub or Atlan (strong governance, RBAC, [audit](../../AI_and_Agents/Operations/audit/SKILL.md))
+│   └── DataHub or Atlan (strong governance, RBAC, [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md))
 └── Hadoop/Hive-centric ecosystem
     └── Apache Atlas (native Hive/HBase/Spark integration)
 ```
@@ -613,7 +613,7 @@ index:
 ## Security Considerations
 
 - **PII classification**: Auto-tag columns with PII/PCI using regex patterns; restrict discovery by role.
-- **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail**: Log all catalog searches, views, and ownership changes for compliance.
+- **[Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) trail**: Log all catalog searches, views, and ownership changes for compliance.
 - **API security**: Require service tokens with least privilege; rotate tokens every 90 days.
 - **Data masking**: Preview queries run on sampled masked data; never expose raw sensitive values.
 - **RBAC integration**: Sync catalog roles from enterprise IdP (Okta, Azure AD) via SCIM.

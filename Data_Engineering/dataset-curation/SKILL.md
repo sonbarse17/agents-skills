@@ -40,9 +40,9 @@ training.
 |---|---|---|
 | SFT, single-turn | Instruct (`instruction`/`response` or `prompt`/`completion`) | ~1,000+ floor |
 | SFT, multi-turn | Conversation / ChatML `messages` list | ~1,000+ floor |
-| DPO / ORPO | Preference pair (`prompt`, `chosen`, `rejected`) | Method-dependent, see `[preference-optimization](../../AI_and_Agents/Models_and_FineTuning/preference-optimization/SKILL.md)` |
-| KTO | Unpaired (`prompt`, `completion`, `label`) | Method-dependent, see `[preference-optimization](../../AI_and_Agents/Models_and_FineTuning/preference-optimization/SKILL.md)` |
-| GRPO / RLVR | Prompt-only (`prompt` + verifier metadata) | Method-dependent, see `[grpo-rlvr-training](../../AI_and_Agents/Models_and_FineTuning/grpo-rlvr-training/SKILL.md)` |
+| DPO / ORPO | Preference pair (`prompt`, `chosen`, `rejected`) | Method-dependent, see `[preference-optimization](../../AI_and_Agents/Models_and_FineTuning/fine-tuning/preference-optimization/SKILL.md)` |
+| KTO | Unpaired (`prompt`, `completion`, `label`) | Method-dependent, see `[preference-optimization](../../AI_and_Agents/Models_and_FineTuning/fine-tuning/preference-optimization/SKILL.md)` |
+| GRPO / RLVR | Prompt-only (`prompt` + verifier metadata) | Method-dependent, see `[grpo-rlvr-training](../../AI_and_Agents/Models_and_FineTuning/fine-tuning/grpo-rlvr-training/SKILL.md)` |
 
 - **~1,000+ rows is the recommended floor for SFT**,
   not a target. Below it, a handful of low-quality
@@ -167,7 +167,7 @@ documentation; it MUST carry these fields:
 
 - **Provenance** — where every row came from (real
   source(s), synthetic method(s), or both),
-  traceable to `[trace-to-training-data](../../AI_and_Agents/Models_and_FineTuning/trace-to-training-data/SKILL.md)` output.
+  traceable to `[trace-to-training-data](../../AI_and_Agents/Models_and_FineTuning/fine-tuning/trace-to-training-data/SKILL.md)` output.
 - **Counts** — total rows, and rows per split
   (train/eval/held-out) if split.
 - **Synthetic/real ratio** — the measured ratio,
@@ -178,7 +178,7 @@ documentation; it MUST carry these fields:
 - **Template used** — the exact chat template
   string/identifier, kept consistent through
   inference and eval — this is what ties an
-  `[eval-harness-first](../../AI_and_Agents/Models_and_FineTuning/eval-harness-first/SKILL.md)` run back to the checkpoint.
+  `[eval-harness-first](../../AI_and_Agents/Models_and_FineTuning/evaluation/eval-harness-first/SKILL.md)` run back to the checkpoint.
 - **Packing config** — whether packing was used,
   max sequence length, and confirmation the
   5–10-sequence manual inspection above was done.
@@ -208,9 +208,9 @@ Before handing off to `/finetune`, confirm:
   and teacher→student distillation pattern.
 
 Related skills: `[finetuning-method-selection](../../AI_and_Agents/Models_and_FineTuning/[finetuning](../../AI_and_Agents/Models_and_FineTuning/[finetuning](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/finetuning/SKILL.md)/SKILL.md)-method-selection/SKILL.md)` routes
-here; `[lora-qlora-recipes](../../AI_and_Agents/Models_and_FineTuning/lora-qlora-recipes/SKILL.md)`, `[vision-sft](../../AI_and_Agents/Models_and_FineTuning/vision-sft/SKILL.md)`, and
-`[preference-optimization](../../AI_and_Agents/Models_and_FineTuning/preference-optimization/SKILL.md)` consume the datasets this
-skill produces; `[trace-to-training-data](../../AI_and_Agents/Models_and_FineTuning/trace-to-training-data/SKILL.md)` is the
+here; `[lora-qlora-recipes](../../AI_and_Agents/Models_and_FineTuning/fine-tuning/lora-qlora-recipes/SKILL.md)`, `[vision-sft](../../AI_and_Agents/Models_and_FineTuning/fine-tuning/vision-sft/SKILL.md)`, and
+`[preference-optimization](../../AI_and_Agents/Models_and_FineTuning/fine-tuning/preference-optimization/SKILL.md)` consume the datasets this
+skill produces; `[trace-to-training-data](../../AI_and_Agents/Models_and_FineTuning/fine-tuning/trace-to-training-data/SKILL.md)` is the
 provenance source for graded-trajectory datasets;
-`[eval-harness-first](../../AI_and_Agents/Models_and_FineTuning/eval-harness-first/SKILL.md)` grades the resulting checkpoint.
+`[eval-harness-first](../../AI_and_Agents/Models_and_FineTuning/evaluation/eval-harness-first/SKILL.md)` grades the resulting checkpoint.
 

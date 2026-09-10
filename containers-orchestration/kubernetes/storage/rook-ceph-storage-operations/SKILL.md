@@ -32,7 +32,7 @@ depends_on:
 Rook is a [Kubernetes](../../other/kubernetes/SKILL.md) operator that turns raw block devices attached to
 cluster nodes into a fully-managed Ceph cluster, then exposes that
 cluster's storage back to [Kubernetes](../../other/kubernetes/SKILL.md) as ordinary StorageClasses — giving
-on-prem or [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) clusters the same self-service, dynamically
+on-prem or [bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md) clusters the same self-service, dynamically
 provisioned persistent storage that cloud providers offer natively via
 EBS/Persistent Disk/managed disks. This matters operationally because
 Ceph itself is a complex, stateful distributed system (OSDs, monitors,
@@ -52,7 +52,7 @@ alternative is covered there.
 ## When to use
 
 - Standing up persistent, dynamically-provisioned storage on a
-  [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) or on-prem [Kubernetes](../../other/kubernetes/SKILL.md) cluster with no cloud [block-storage](../../../../cloud/common/storage/block-storage/SKILL.md)
+  [bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md) or on-prem [Kubernetes](../../other/kubernetes/SKILL.md) cluster with no cloud [block-storage](../../../../cloud/common/storage/block-storage/SKILL.md)
   service available.
 - Deciding OSD device placement and count per node for a new
   `CephCluster`.

@@ -438,7 +438,7 @@ Cost-saving strategies:
 - Using default public network without firewall — all ports exposed by default.
 - No private network for inter-server traffic — incurs bandwidth costs.
 - Running production on CX11 (2 GB RAM) — OOM under load.
-- Manual SSH configuration — no repeatability, no [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail.
+- Manual SSH configuration — no repeatability, no [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail.
 - Not setting up backups — Hetzner doesn't auto-backup your data.
 - Over-provisioning with dedicated servers when Cloud would be sufficient.
 - Ignoring IPv6 — dual-stack is free and reduces IPv4 address scarcity.
@@ -466,7 +466,7 @@ Cost-saving strategies:
 
 | Decision | Dedicated Server (Hetzner) | Cloud Instance (Hetzner Cloud) |
 |---|---|---|
-| Performance | Full [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) (no neighbors) | Virtualized (shared hypervisor) |
+| Performance | Full [bare-metal](../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md) (no neighbors) | Virtualized (shared hypervisor) |
 | Flexibility | OS from ISO, full control | Pre-installed images, API-driven |
 | Provisioning | Hours (manual setup) | Seconds (API, Terraform) |
 | Cost | Lower at high utilization | Higher per-hour, pay-as-you-go |
@@ -606,5 +606,5 @@ delete_old_snapshots() {
 - Restrict **HCloud API tokens** to IP allowlist (office IPs, CI runner IPs only)
 - Set up **fail2ban** on dedicated servers to protect against brute force SSH attempts
 - Use **Storage Box snapshots** via Borg backup — snapshots are immutable and encrypt at rest
-- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) **team member access** to Hetzner project — remove keys and tokens on offboarding
+- [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) **team member access** to Hetzner project — remove keys and tokens on offboarding
 

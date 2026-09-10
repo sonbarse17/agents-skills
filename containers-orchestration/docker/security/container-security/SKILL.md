@@ -137,9 +137,9 @@ Key policies:
 
 OPA/Gatekeeper: alternative using Rego language. Better for complex cross-resource policies.
 
-Dry-run mode: 7 days before enforcement. [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) violations, tune rules, then enforce.
+Dry-run mode: 7 days before enforcement. [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) violations, tune rules, then enforce.
 
-Pod Security Standards: Restricted profile. [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) -> warn -> enforce rollout sequence.
+Pod Security Standards: Restricted profile. [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) -> warn -> enforce rollout sequence.
 
 ### Step 6: Runtime Security
 Falco: syscall-level [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md). Driver: `driver.kind=modern-bpf` for performance.
@@ -212,7 +212,7 @@ Images scanned at build time can have new CVEs discovered hours later. Daily res
 Using the same base image for months accumulates vulnerabilities. Update base images monthly minimum. Use automated base image update tools. Pin base image SHA for reproducibility.
 
 ### Pitfall 3: Admission Control Without Dry Run
-Enforcing admission policies without dry-run breaks existing workloads. Use dry-run mode for 7-14 days before enforcement. [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) violations, tune rules, notify teams.
+Enforcing admission policies without dry-run breaks existing workloads. Use dry-run mode for 7-14 days before enforcement. [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) violations, tune rules, notify teams.
 
 ### Pitfall 4: Runtime Security Without [Alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 Falco detects events but they go to /var/log/syslog by default. Without alert pipeline, events are invisible. Configure Falcosidekick. Route critical alerts to PagerDuty.
@@ -297,7 +297,7 @@ Keyless (Cosign OIDC): no key management, CI provider identity, cloud CI suitabl
 - Review vulnerability exceptions and expiry
 - Tune Falco rules (false positive reduction)
 - Update base images
-- Review admission [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs
+- Review admission [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs
 - Patch confirmed vulnerabilities
 
 ### Monthly Operations
@@ -419,7 +419,7 @@ spec:
 ## Container Security Anti-Patterns
 
 ### Anti-Pattern: Using :latest Tag
-`latest` tag is ambiguous — point to different images over time. No traceability, no rollback, no [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md). Use semantic versioning (`v1.2.3`) or [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) SHA (`sha-abc123`) for immutable references. Enforce with admission controller blocking `latest`.
+`latest` tag is ambiguous — point to different images over time. No traceability, no rollback, no [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md). Use semantic versioning (`v1.2.3`) or [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) SHA (`sha-abc123`) for immutable references. Enforce with admission controller blocking `latest`.
 
 ### Anti-Pattern: Blindly Trusting Base Images
 Pulling base images from [Docker](../../other/docker/SKILL.md) Hub without verification. Base images can contain malware, outdated packages, or backdoors. Use only verified official images. Pin to digest. Scan base images before building. Use [Docker](../../other/docker/SKILL.md) Content Trust or Cosign verification.
@@ -457,7 +457,7 @@ Manual triage does not scale beyond 10-20 images. Automate vulnerability scannin
 - [ ] Review vulnerability exception requests and expiry
 - [ ] Tune Falco rules for false positives
 - [ ] Update base images to latest patch versions
-- [ ] Review admission control [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs
+- [ ] Review admission control [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs
 - [ ] Patch confirmed vulnerabilities within SLA
 
 ### Monthly Operations

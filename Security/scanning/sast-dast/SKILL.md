@@ -175,7 +175,7 @@ Snyk Code is a SAST tool integrated into the Snyk platform. It is particularly s
 OWASP ZAP (Zed Attack Proxy) is the recommended default DAST tool. It is free, open-source, and community-maintained. ZAP can be run as a desktop application, a daemon for CI integration, or a [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) container. Scan modes: automated scan (spider → passive → active), API scan (import OpenAPI/GraphQL schema), and baseline scan (passive-only, safe for production). ZAP supports authenticated scanning via context-based session management, bearer token injection, and form-based authentication. The HUD (Heads-Up Display) mode provides browser-based interaction for manual testing. Key strengths: free and open-source, extensive active scan rules, API scanning, and [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-native CI integration.
 
 ### Burp Suite
-Burp Suite is the professional standard for web application security testing. The Community Edition includes an HTTP proxy, repeater, decoder, and scanner. The Professional Edition adds automated scanning, advanced vulnerability detection, and CI integration. Burp's scanning phases: crawl (discover all endpoints), [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) (automated vulnerability checks), and intruder (targeted fuzzing). Extensions from the BApp Store extend functionality: Autorize for auth bypass detection, JSON Web Tokens for JWT manipulation, and ActiveScan++ for enhanced scan coverage. Key strengths: manual testing workflow, extensive extension ecosystem, and industry-standard tooling.
+Burp Suite is the professional standard for web application security testing. The Community Edition includes an HTTP proxy, repeater, decoder, and scanner. The Professional Edition adds automated scanning, advanced vulnerability detection, and CI integration. Burp's scanning phases: crawl (discover all endpoints), [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) (automated vulnerability checks), and intruder (targeted fuzzing). Extensions from the BApp Store extend functionality: Autorize for auth bypass detection, JSON Web Tokens for JWT manipulation, and ActiveScan++ for enhanced scan coverage. Key strengths: manual testing workflow, extensive extension ecosystem, and industry-standard tooling.
 
 ### Acunetix
 Acunetix is a commercial DAST tool with deep scanning capabilities. It is known for its comprehensive vulnerability database covering over 7000 vulnerabilities. Acunetix supports multi-step form authentication, macro recording for complex login sequences, and integration with issue trackers (Jira, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Issues). Key strengths: deep scanning for complex vulnerabilities, macro-based authentication, and enterprise reporting.
@@ -186,7 +186,7 @@ Acunetix is a commercial DAST tool with deep scanning capabilities. It is known 
 Semgrep: best for custom rule writing, multi-language, fast. SonarQube: best for quality gates, technical debt tracking, broad language support. CodeQL: best for deep interprocedural analysis, variant analysis. Checkmarx/Fortify: enterprise-grade with compliance reporting. Default choice: Semgrep for SAST + SonarQube for quality gates.
 
 ### Step 2: Rule Configuration
-Enable built-in rule packs: Semgrep `p/security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)`, `p/owasp-top-ten`, `p/command-injection`. Write custom rules for project-specific patterns: hardcoded secrets, dangerous function usage, missing authorization checks, SQL injection via ORM bypass. Rule severity: ERROR (must fix), WARN (should fix), INFO (suggested). False positives: tag with `fp` metadata and documented reason.
+Enable built-in rule packs: Semgrep `p/security-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)`, `p/owasp-top-ten`, `p/command-injection`. Write custom rules for project-specific patterns: hardcoded secrets, dangerous function usage, missing authorization checks, SQL injection via ORM bypass. Rule severity: ERROR (must fix), WARN (should fix), INFO (suggested). False positives: tag with `fp` metadata and documented reason.
 
 ### Step 3: CI Integration
 SAST runs on every PR — diff-aware scanning for changed files only. Full scan on main branch daily. Quality gates: 0 ERROR severity findings, WARN count must not increase, coverage threshold for new code. DAST runs on staging deployment — weekly full scan, on-demand for critical releases. Pipeline blocks on critical findings.
@@ -227,7 +227,7 @@ Map SAST findings to affected endpoints in DAST scope. Prioritize findings that 
 | Feature | OWASP ZAP | Burp Suite | Acunetix |
 |---|---|---|---|
 | Cost | Free | Community: free, Pro: $449/year | Commercial (custom pricing) |
-| Scan modes | Automated, API, Baseline | Crawl, [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md), Intruder | DeepScan, QuickScan |
+| Scan modes | Automated, API, Baseline | Crawl, [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md), Intruder | DeepScan, QuickScan |
 | CI integration | [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) + CLI action | Pro only (REST API) | Yes (CLI + REST API) |
 | Authentication | Context-based, form, token | Macro-based, form, token | Macro recording |
 | API scanning | OpenAPI, GraphQL, SOAP | OpenAPI via extension | OpenAPI, GraphQL |
@@ -343,7 +343,7 @@ SAST finds issues early in development (shift-left) with file/line precision. DA
 - CodeQL database build: 5-30min depending on language and codebase size. Query execution: 1-10min.
 - SonarQube scan: 15-60min for full codebase. New code analysis: <5min for PR.
 - ZAP baseline scan: 15-30min for typical app. ZAP active scan: 2-4h for medium app.
-- Burp Suite scan: 4-8h for full [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) of medium application.
+- Burp Suite scan: 4-8h for full [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) of medium application.
 - Acunetix scan: 2-6h for full deep scan.
 - CI pipeline time budget: SAST <5min, DAST baseline <30min, DAST active (nightly).
 - Resource usage: SAST tools need 1-4GB RAM per concurrent scan. DAST tools need 2-8GB.
@@ -421,7 +421,7 @@ jobs:
         uses: semgrep/semgrep-action@v1
         with:
           config: >-
-            p/security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+            p/security-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
             p/owasp-top-ten
             .semgrep/rules/
           auditOn: push

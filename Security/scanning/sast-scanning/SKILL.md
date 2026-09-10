@@ -67,7 +67,7 @@ brew install semgrep
 semgrep --config auto .
 
 # Run specific rulesets
-semgrep --config p/security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) .
+semgrep --config p/security-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) .
 semgrep --config p/owasp-top-ten .
 semgrep --config p/ci .
 

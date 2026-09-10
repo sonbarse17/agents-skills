@@ -202,13 +202,13 @@ Reviewdog posts findings as inline comments on the pull request:
   - Use CODEOWNERS to require security team approval for reviewdog config changes
   - Restrict who can modify `.reviewdog.yml` configuration
 
-- **[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Logging**:
+- **[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logging**:
   - Log all security findings to SIEM or security [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) platform
   - Track when findings are introduced and resolved
   - Monitor for bypassed security checks
 
 - **Compliance**:
-  - Maintains [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail of security reviews (SOC2, ISO27001)
+  - Maintains [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail of security reviews (SOC2, ISO27001)
   - Enforces security policy compliance in code review
   - Supports compliance reporting through CI/CD artifacts
 
@@ -266,12 +266,12 @@ Block PRs based on severity thresholds:
 ```yaml
 - name: Critical findings - Block PR
   run: |
-    semgrep --config=p/security-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) --severity=ERROR --json | \
+    semgrep --config=p/security-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) --severity=ERROR --json | \
       reviewdog -f=semgrep -level=error -fail-on-error -reporter=[github](../../../github-actions/other/github/SKILL.md)-pr-review
 
 - name: Medium findings - Comment only
   run: |
-    semgrep --config=p/security-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) --severity=WARNING --json | \
+    semgrep --config=p/security-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) --severity=WARNING --json | \
       reviewdog -f=semgrep -level=warning -reporter=[github](../../../github-actions/other/github/SKILL.md)-pr-review
 ```
 

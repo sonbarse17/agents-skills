@@ -177,7 +177,7 @@ the initial `if (flag.isEnabled())` wiring.
    unreliable.
 
 5. **Track flag debt as a first-class metric, not an afterthought.** Run
-   a periodic [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) (scripted against the platform's API) for flags at
+   a periodic [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) (scripted against the platform's API) for flags at
    100%/0% rollout for longer than a defined threshold (e.g. 30 days) with
    no experiment/ops tag:
    ```bash
@@ -269,7 +269,7 @@ the initial `if (flag.isEnabled())` wiring.
   still in the codebase, and three more flags have since been layered
   on top of the same code path, producing nested conditionals nobody can
   reason about.
-  **Fix:** This is flag debt — run the periodic stale-flag [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) (step 5)
+  **Fix:** This is flag debt — run the periodic stale-flag [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) (step 5)
   and treat "flag has been at a terminal value for N days" as an
   actionable backlog item with the same priority as other tech debt, not
   a someday task.

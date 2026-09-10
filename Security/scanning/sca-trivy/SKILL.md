@@ -223,7 +223,7 @@ SBOM use cases:
 - **CI/CD integration**: Secure API tokens and registry credentials in secrets management
 - **Report storage**: Restrict access to vulnerability reports and SBOM artifacts
 
-### [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging
+### [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logging
 
 Log the following for compliance and [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response:
 - Scan execution timestamps and scope (image, filesystem, repository)

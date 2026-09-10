@@ -570,7 +570,7 @@ describe('Contracts', () => {
 | Domain-aligned | One subgraph per bounded context | Each domain team owns 1 subgraph | Clear domain boundaries, DDD org |
 | Split by volatility | Seperate read vs write subgraphs | Platform + domain teams | High read/write asymmetry |
 | API gateway pattern | Subgraph wraps existing REST/gRPC | Integration team owns gateway | Legacy system integration |
-| Shared subgraph | Cross-cutting concerns (auth, [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)) | Platform team | truly shared capabilities |
+| Shared subgraph | Cross-cutting concerns (auth, [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)) | Platform team | truly shared capabilities |
 
 ### Team API Contract
 ```yaml

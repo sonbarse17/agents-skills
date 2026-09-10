@@ -249,7 +249,7 @@ reports into one answered by automated health signals before full rollout.
   downstream service or the database breaks once the old version is
   fully retired.
   **Fix:** This usually means a backward-incompatible schema or contract
-  change shipped as part of the release — [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) for migrations that
+  change shipped as part of the release — [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) for migrations that
   aren't safe for both versions to run against simultaneously, and adopt
   an expand/contract pattern for future schema changes.
 

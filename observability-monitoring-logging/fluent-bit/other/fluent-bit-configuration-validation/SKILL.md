@@ -133,7 +133,7 @@ which this skill assumes is already designed and does not repeat.
    ```
    Confirm specifically: does `kube.payments.*` catch every payments
    pod's tag after the `[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)` filter's `kube_tag_prefix`
-   rewrites it? Does `kube.security-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md).*` **not** also catch
+   rewrites it? Does `kube.security-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md).*` **not** also catch
    payments logs (an overly broad pattern silently duplicating output
    across destinations)? Verify both directions — under-matching
    (logs that should route somewhere don't) and over-matching (logs
@@ -287,14 +287,14 @@ renamed `payments-batch` service's logs.
    ```
 2. Dry-run against a fixture file containing sample lines from both
    `payments-api` and the newly renamed `payments-batch`, plus a
-   `security-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)` line that must **not** be caught by the changed
+   `security-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)` line that must **not** be caught by the changed
    pattern:
    ```bash
    fluent-bit -c rendered.yaml -o stdout -m '*' < fixtures/sample-lines.log
    ```
 3. Output confirms `payments-api` and `payments-batch` lines both now
    route to the `loki` output as intended — the pattern change works
-   as designed. But it also shows a `security-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-payments-reconciliation`
+   as designed. But it also shows a `security-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-payments-reconciliation`
    service's logs (an unrelated service with "payments" in its name)
    now unexpectedly routing to the same Loki output — over-matching
    caught before merge.
@@ -306,9 +306,9 @@ renamed `payments-batch` service's logs.
    group optional and re-tested until all five samples parse correctly.
 5. The `Match` pattern is corrected to `kube.*payments-api*` OR an
    explicit second entry for `kube.*payments-batch*`, re-validated with
-   the dry-run to confirm `security-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-payments-reconciliation` is
+   the dry-run to confirm `security-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-payments-reconciliation` is
    now correctly excluded.
-6. CI is updated to include the `security-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-payments-reconciliation`
+6. CI is updated to include the `security-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-payments-reconciliation`
    sample line in the fixture set permanently, so this specific
    over-matching regression is caught automatically on any future
    `Match` pattern change.

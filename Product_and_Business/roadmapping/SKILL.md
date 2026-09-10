@@ -68,7 +68,7 @@ NOW (Q2 2026)                    NEXT (Q3 2026)                  LATER (Q4 2026-
 │   └── Interactive docs         │   └── React Native             │   └── Local compliance
 └── Enterprise Features          └── Advanced Analytics           └── Ecosystem Platform
     ├── SSO/SAML                     ├── Custom [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)            ├── Partner marketplace
-    ├── [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs                   ├── Export pipelines             ├── Developer community
+    ├── [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) logs                   ├── Export pipelines             ├── Developer community
     └── RBAC                         └── SLA reporting                └── Revenue sharing
 ```
 
@@ -600,7 +600,7 @@ risk_communication:
   format: "If → Then"
   examples:
     - "If we invest in multi-region, then we must delay the mobile SDK by one quarter."
-    - "If the security [audit](../../AI_and_Agents/Operations/audit/SKILL.md) reveals critical findings, then we will reprioritize Q3 scope."
+    - "If the security [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) reveals critical findings, then we will reprioritize Q3 scope."
     - "If the [TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) SDK pilot shows strong adoption, then we will accelerate [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) and Go SDKs."
 
   when_to_communicate:

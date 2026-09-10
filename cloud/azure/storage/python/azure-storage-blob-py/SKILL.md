@@ -43,7 +43,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 > **🔑 Two rules apply to every code sample below:**
 >
-> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
+> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../../../AI_and_Agents/Operations/common/audit/SKILL.md) and rotation.
 >    - Local dev: `DefaultAzureCredential` works as-is.
 >    - Production: set `AZURE_TOKEN_CREDENTIALS=prod` (or `AZURE_TOKEN_CREDENTIALS=<specific_credential>`) to constrain the credential chain to production-safe credentials.
 > 2. **Wrap every client in a context manager** so HTTP transports, sockets, and token caches are released deterministically:
@@ -179,7 +179,7 @@ with BlobClient(
 
 ## SAS Tokens (User Delegation)
 
-Generate SAS tokens with a **user delegation key** signed by Microsoft Entra ID — never with an account key. This keeps SAS issuance tied to Entra [audit](../../../../../AI_and_Agents/Operations/audit/SKILL.md)/rotation.
+Generate SAS tokens with a **user delegation key** signed by Microsoft Entra ID — never with an account key. This keeps SAS issuance tied to Entra [audit](../../../../../AI_and_Agents/Operations/common/audit/SKILL.md)/rotation.
 
 ```[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from datetime import datetime, timedelta, timezone

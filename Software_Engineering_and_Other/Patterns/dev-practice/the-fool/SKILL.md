@@ -81,7 +81,7 @@ Use `AskUserQuestion` to let the user choose how to challenge their idea.
 | Dialectic and synthesis | `../../../Global_References/dialectic-synthesis.md` | "Argue the other side" selected |
 | Pre-mortem analysis | `../../../Global_References/pre-mortem-analysis.md` | "Find the failure modes" selected |
 | Red team adversarial | `../../../Global_References/red-team-adversarial.md` | "Attack this" selected |
-| Evidence [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) | `../../../Global_References/evidence-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md).md` | "Test the evidence" selected |
+| Evidence [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) | `../../../Global_References/evidence-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md).md` | "Test the evidence" selected |
 | Mode selection guide | `../../../Global_References/mode-selection-guide.md` | "You choose" selected or auto-recommend needed |
 
 ## Constraints

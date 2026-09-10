@@ -99,7 +99,7 @@ Dimension tables are normalized into sub-dimensions. Reduces data redundancy and
 Transaction facts: one row per event (order, click, transaction). Fully additive. Periodic snapshot facts: one row per period (daily account balance, monthly inventory). Semi-additive — additive across dimensions but not time. Cumulative snapshot facts: one row per process lifecycle (order-to-delivery pipeline). Used for pipeline analysis and cycle time measurement.
 
 ### Slowly Changing Dimensions
-SCD Type 0 (retain original): never change — used for immutable [audit](../../AI_and_Agents/Operations/audit/SKILL.md) data. SCD Type 1 (overwrite): replace old value — no history, used for corrections. SCD Type 2 (add new row): full history with valid_from, valid_to, is_current — the default for most dimensions. SCD Type 3 (add new column): limited history via previous value column.
+SCD Type 0 (retain original): never change — used for immutable [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) data. SCD Type 1 (overwrite): replace old value — no history, used for corrections. SCD Type 2 (add new row): full history with valid_from, valid_to, is_current — the default for most dimensions. SCD Type 3 (add new column): limited history via previous value column.
 
 ## Table Design
 
@@ -569,9 +569,9 @@ FROM {{ ref('stg_customers') }}
 - **Access control**: Use RBAC with role hierarchy (admin → developer → analyst → viewer); never use account-level admin.
 - **Network policies**: Restrict warehouse access to corporate IP ranges; use private link for VPC access.
 - **Data encryption**: Enable automatic encryption (Snowflake Tri-Secret, BigQuery CMEK) with customer-managed keys.
-- **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md)**: Enable query logging (Snowflake ACCOUNT_USAGE, BigQuery [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs) with 90-day retention.
+- **[Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)**: Enable query logging (Snowflake ACCOUNT_USAGE, BigQuery [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) logs) with 90-day retention.
 
 ## Handoff
 `[data-etl-pipeline](../etl-pipeline/SKILL.md)` for loading data into the warehouse schema
-`[data-bi-tools](../../AI_and_Agents/Models_and_FineTuning/bi-tools/SKILL.md)` for connecting [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) to the data model
+`[data-bi-tools](../bi-tools/SKILL.md)` for connecting [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) to the data model
 

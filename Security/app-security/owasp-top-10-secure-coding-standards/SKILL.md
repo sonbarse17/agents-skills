@@ -159,7 +159,7 @@ ten, and definitely not custom business-logic abuse.
   as their primary job.
 - Log security-relevant events (auth failures, access-control denials,
   input validation failures) with enough detail to support both
-  detection and later forensic/[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) needs — this addresses "Security
+  detection and later forensic/[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) needs — this addresses "Security
   Logging and [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Failures" directly and is also evidence
   commonly requested for SOC 2/ISO 27001/PCI-DSS log-[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) criteria.
 - Revisit the guideline set when OWASP publishes a new Top 10 edition —

@@ -34,7 +34,7 @@ contract [Vault](../../Security/cryptography-secrets/vault/SKILL.md) is Reentran
 ## Flashloan Attack Prevention
 Use decentralized oracles (Chainlink) or TWAP (Uniswap V3) to prevent price manipulation.
 
-## Security [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Workflow
+## Security [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) Workflow
 ```[mermaid](../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD

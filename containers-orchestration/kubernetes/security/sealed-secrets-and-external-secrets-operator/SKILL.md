@@ -315,7 +315,7 @@ model fits the team's operating model better.
 - Prefer External Secrets Operator over Sealed Secrets when the
   organization already runs a centralized secrets manager ([Vault](../../../../Security/cryptography-secrets/vault/SKILL.md), cloud
   secret manager) — ESO avoids putting even ciphertext of a secret in
-  git and centralizes rotation/[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) in the system of record; prefer
+  git and centralizes rotation/[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) in the system of record; prefer
   Sealed Secrets when there's no centralized secrets manager and the
   goal is specifically "make [Kubernetes](../../other/kubernetes/SKILL.md) Secrets git-committable" with
   minimal additional infrastructure.

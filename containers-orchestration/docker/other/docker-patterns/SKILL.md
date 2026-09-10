@@ -81,7 +81,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions.
 - System dependencies needed: alpine with apk or slim with apt.
 - Development: full image with dev tools + mounted source as volume.
 - Production: minimal image, no shell, no package manager.
-- Security [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) required: distroless (no shell, no apt)
+- Security [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) required: distroless (no shell, no apt)
 
 ### [Docker](../docker/SKILL.md) Compose Profile Decision Tree
 
@@ -570,7 +570,7 @@ volumes:
 - Scan **all images** with Trivy or Snyk before pushing to registry — fail on critical CVEs
 - Use **distroless** or scratch base images to minimize attack surface
 - Sign **images** with cosign and verify signatures before deployment
-- Run **[Docker](../docker/SKILL.md) Bench Security** regularly to [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) host and daemon configuration
+- Run **[Docker](../docker/SKILL.md) Bench Security** regularly to [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) host and daemon configuration
 - Enable **user namespace remapping** (`userns-remap`) on [Docker](../docker/SKILL.md) daemon for extra isolation
 - Never mount **[Docker](../docker/SKILL.md) socket** (`/var/run/[docker](../docker/SKILL.md).sock`) in containers — use remote API with TLS
 - Set **seccomp** and **AppArmor** profiles to restrict container syscall access

@@ -44,7 +44,7 @@ Ship with confidence. The goal is not just to deploy — it's to deploy safely, 
 ### Security
 
 - [ ] No secrets in code or version control
-- [ ] The ecosystem's dependency [audit](../../AI_and_Agents/Operations/audit/SKILL.md) (`npm [audit](../../AI_and_Agents/Operations/audit/SKILL.md)`, `pip-[audit](../../AI_and_Agents/Operations/audit/SKILL.md)`, `cargo [audit](../../AI_and_Agents/Operations/audit/SKILL.md)`, ...) shows no critical or high vulnerabilities
+- [ ] The ecosystem's dependency [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) (`npm [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)`, `pip-[audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)`, `cargo [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)`, ...) shows no critical or high vulnerabilities
 - [ ] Input validation on all user-facing endpoints
 - [ ] Authentication and authorization checks in place
 - [ ] Security headers configured (CSP, HSTS, etc.)

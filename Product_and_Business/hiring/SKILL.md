@@ -499,7 +499,7 @@ This offer expires {date}. Please sign and return by {deadline}.
 - **Offer velocity**: Target < 5 business days from final interview to offer. Have offer approval pre-authorized for strong candidates.
 
 ### Legal Compliance
-- **Structured interviews**: Use same questions for all candidates for same role. Document interview process for [audit](../../AI_and_Agents/Operations/audit/SKILL.md).
+- **Structured interviews**: Use same questions for all candidates for same role. Document interview process for [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md).
 - **EEO compliance**: Track diversity metrics across pipeline. Review for adverse impact on protected groups.
 - **Data retention**: Store candidate data per GDPR/CCPA requirements. Auto-delete after 12 months post-decision.
 

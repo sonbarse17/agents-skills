@@ -47,7 +47,7 @@ and sizing.
 - Standing up [Kubernetes](../kubernetes/SKILL.md) on edge devices (industrial gateways, retail
   POS, IoT hubs) with limited CPU/RAM and often no reliable connectivity
   to a central control plane.
-- Running [Kubernetes](../kubernetes/SKILL.md) on a small on-prem VM or [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) box where a
+- Running [Kubernetes](../kubernetes/SKILL.md) on a small on-prem VM or [bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md) box where a
   full multi-node kubeadm cluster's control-plane overhead isn't
   justified.
 - Local development or CI ephemeral clusters needing a fast-starting,

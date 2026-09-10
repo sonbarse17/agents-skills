@@ -84,7 +84,7 @@ Best practices for composing multi-agent teams, selecting team sizes, choosing a
 - **Size**: 4 reviewers
 - **Agents**: 4x `team-reviewer`
 - **Default dimensions**: OWASP/vulnerabilities, auth/access control, dependencies/supply chain, secrets/configuration
-- **Use when**: Comprehensive security [audit](../../AI_and_Agents/Operations/audit/SKILL.md) covering multiple attack surfaces
+- **Use when**: Comprehensive security [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) covering multiple attack surfaces
 
 ### Migration Team
 

@@ -12,7 +12,7 @@ depends_on:
 
 # PPTX Slide Specification
 
-Author final coordinates directly in `layout_tree`. No renderer may decide placement, shrink text, or infer layout after the [audit](../../AI_and_Agents/Operations/audit/SKILL.md).
+Author final coordinates directly in `layout_tree`. No renderer may decide placement, shrink text, or infer layout after the [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md).
 
 ## Required contract
 

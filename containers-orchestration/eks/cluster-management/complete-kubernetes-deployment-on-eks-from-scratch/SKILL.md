@@ -246,7 +246,7 @@ integration decisions.
   cluster, not a mix of remembered CLI invocations — this is what makes
   Phase reproduction for a second cluster (DR, new region) fast and
   correct.
-- Route every phase's [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-relevant logs (EKS control-plane logs,
+- Route every phase's [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-relevant logs (EKS control-plane logs,
   cert-manager events, Ingress access logs) to the landing zone's central
   logging destination from day one, not as an afterthought once the
   cluster is already handling production traffic.

@@ -243,7 +243,7 @@ After deploying, verify health and security posture:
 # Verify resource usage vs. limits
 [kubectl](../kubectl/SKILL.md) top pods -n my-namespace
 
-# [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) RBAC permissions for a service account
+# [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) RBAC permissions for a service account
 [kubectl](../kubectl/SKILL.md) auth can-i --list --as=system:serviceaccount:my-namespace:my-app-sa
 
 # Roll back a failed deployment

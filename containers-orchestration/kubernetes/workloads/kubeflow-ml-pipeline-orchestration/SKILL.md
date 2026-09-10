@@ -29,7 +29,7 @@ depends_on:
 
 ## Purpose
 
-[training-pipeline-orchestration](../[training-pipeline-orchestration](../../../AI_and_Agents/Models_and_FineTuning/training-pipeline-orchestration/SKILL.md)/SKILL.md)
+[training-pipeline-orchestration](../../../../AI_and_Agents/Models_and_FineTuning/llmops/training-pipeline-orchestration/SKILL.md)/SKILL.md)
 covers the vendor-neutral concepts of DAG-based ML pipelines — stages,
 gates, reproducibility — that apply regardless of which orchestrator runs
 them. This skill is tool-specific: it covers Kubeflow Pipelines (KFP), a
@@ -131,7 +131,7 @@ service.
    ```
    `dsl.If` (KFP v2's conditional control flow) implements the "gate before
    registration" pattern from
-   [training-pipeline-orchestration](../[training-pipeline-orchestration](../../../AI_and_Agents/Models_and_FineTuning/training-pipeline-orchestration/SKILL.md)/SKILL.md)
+   [training-pipeline-orchestration](../../../../AI_and_Agents/Models_and_FineTuning/llmops/training-pipeline-orchestration/SKILL.md)/SKILL.md)
    in KFP-specific syntax.
 
 3. **Compile the pipeline to its IR YAML** and inspect it before running —
@@ -263,7 +263,7 @@ service.
 - Register the resulting model from a gated (`dsl.If`) conditional step
   tied to an evaluation metric threshold, consistent with the promotion
   gates covered in
-  [model-packaging-and-versioning](../[model-packaging-and-versioning](../../../AI_and_Agents/Models_and_FineTuning/model-packaging-and-versioning/SKILL.md)/SKILL.md),
+  [model-packaging-and-versioning](../../../../AI_and_Agents/Models_and_FineTuning/llmops/model-packaging-and-versioning/SKILL.md)/SKILL.md),
   rather than always registering regardless of evaluation outcome.
 
 ## Common pitfalls
@@ -385,9 +385,9 @@ silently promote a worse model.
 
 ## Cross-references
 
-- [training-pipeline-orchestration](../[training-pipeline-orchestration](../../../AI_and_Agents/Models_and_FineTuning/training-pipeline-orchestration/SKILL.md)/SKILL.md) — the vendor-neutral DAG/gate/reproducibility concepts this skill implements in KFP-specific terms; read that first if choosing between orchestrators.
+- [training-pipeline-orchestration](../../../../AI_and_Agents/Models_and_FineTuning/llmops/training-pipeline-orchestration/SKILL.md)/SKILL.md) — the vendor-neutral DAG/gate/reproducibility concepts this skill implements in KFP-specific terms; read that first if choosing between orchestrators.
 - [ray-distributed-ml-orchestration](../[ray-distributed-ml-orchestration](../../../Data_Engineering/ray-distributed-ml-orchestration/SKILL.md)/SKILL.md) — an alternative, [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-native distributed orchestration paradigm to consider instead of or alongside Kubeflow Pipelines.
 - [gpu-accelerator-infrastructure-for-ml-training](../[gpu-accelerator-infrastructure-for-ml-training](../../Cloud_Providers/gpu-accelerator-infrastructure-for-ml-training/SKILL.md)/SKILL.md) and [gpu-accelerator-configuration-validation](../[gpu-accelerator-configuration-validation](../../Cloud_Providers/gpu-accelerator-configuration-validation/SKILL.md)/SKILL.md) — the GPU scheduling infrastructure and validation checklist that KFP component-level accelerator requests must be checked against.
 - [experiment-tracking](../[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)/SKILL.md) — pairing KFP's built-in run/metrics tracking with a dedicated experiment tracker for richer comparison across runs.
-- [model-packaging-and-versioning](../[model-packaging-and-versioning](../../../AI_and_Agents/Models_and_FineTuning/model-packaging-and-versioning/SKILL.md)/SKILL.md) — the registration step's target scheme for the conditional `register` component.
+- [model-packaging-and-versioning](../../../../AI_and_Agents/Models_and_FineTuning/llmops/model-packaging-and-versioning/SKILL.md)/SKILL.md) — the registration step's target scheme for the conditional `register` component.
 - [argo-workflows-pipeline-design](../../../[gitops](../gitops/SKILL.md)-argo-ecosystem/skills/[argo-workflows-pipeline-design](../../../argocd/other/argo-workflows-pipeline-design/SKILL.md)/SKILL.md) — the underlying workflow engine KFP compiles to, useful when debugging a run at the raw `Workflow` object level.

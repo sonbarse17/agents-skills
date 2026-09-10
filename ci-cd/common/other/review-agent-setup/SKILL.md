@@ -103,7 +103,7 @@ export REVIEW_APPROVAL_FLAG=./.never-approve
 ```
 
 Any tool call matching a forbid rule will be denied; approved windows have
-no effect. Useful for CI or for a locked-down [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) run.
+no effect. Useful for CI or for a locked-down [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) run.
 
 ## Verifying the chain
 

@@ -50,7 +50,7 @@ Exact user phrases: "[GitOps](../gitops/SKILL.md) advanced", "multi-cluster [Git
 - Existing cluster topology (hub-spoke, peer-to-peer)
 - Secrets management approach (SOPS, SealedSecrets, External Secrets, [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md))
 - Team structure and RBAC requirements
-- Compliance/[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) requirements
+- Compliance/[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) requirements
 - CI/CD pipeline tooling
 
 ### Output Artifact

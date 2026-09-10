@@ -61,7 +61,7 @@ read-through at initial setup.
   service onboarding, to confirm assignment routing still resolves
   correctly for every in-scope Configuration Item.
 - Periodically (e.g. quarterly, or alongside a broader on-call/escalation
-  [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)) as a standing check rather than only reactively.
+  [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)) as a standing check rather than only reactively.
 - Investigating "why did this [incident](../incident/SKILL.md) land in the wrong assignment
   group" or "why did the Emergency Change approval take 40 minutes
   instead of the target 15" after the fact, to distinguish a structural
@@ -102,7 +102,7 @@ read-through at initial setup.
 - A place to run this validation on a recurring schedule (a scheduled
   Flow Designer subflow, a scripted job against the Table API, or a CI
   job in whatever pipeline manages ServiceNow configuration as code) so
-  it's a standing [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md), not a one-off manual review.
+  it's a standing [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md), not a one-off manual review.
 
 ## Step-by-step guidance
 
@@ -263,7 +263,7 @@ read-through at initial setup.
   "emergency-cab-approvers" group who's actually still active happens
   to be unreachable.
   **Fix:** This is exactly the single-point-of-failure condition step 3
-  checks for — [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) approval-group membership for active, currently-
+  checks for — [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) approval-group membership for active, currently-
   reachable members (not just group size) on a recurring basis, and
   require at least two genuinely independent, reachable approvers
   before depending on the group during a real [incident](../incident/SKILL.md).
@@ -356,7 +356,7 @@ Emergency Change path.
   schedules instead of ServiceNow workflow/approval configuration.
 - [chatops-[runbook](../runbook/SKILL.md)-automation](../[chatops-[runbook](../runbook/SKILL.md)-automation](../../../Software_Engineering_and_Other/Frontend/chatops-[runbook](../runbook/SKILL.md)-automation/SKILL.md)/SKILL.md) —
   a natural destination for this validation's findings (a scheduled bot
-  post to the ops/platform channel) once a recurring [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) job is set
+  post to the ops/platform channel) once a recurring [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) job is set
   up.
 - [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../../Software_Engineering_and_Other/Frontend/[incident-response](../[incident](../incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../alerting/on-call-management/SKILL.md)/SKILL.md)/SKILL.md) —
   the broader [incident](../incident/SKILL.md)-command process this ITSM configuration supports;

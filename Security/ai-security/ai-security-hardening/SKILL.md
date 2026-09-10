@@ -272,13 +272,13 @@ spec:
   # (allow only internal cluster traffic)
 ```
 
-## [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging
+## [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logging
 
 ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import structlog
 from datetime import datetime, timezone
 
-audit_log = structlog.get_logger("ai.[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)")
+audit_log = structlog.get_logger("ai.[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)")
 
 def log_llm_interaction(
     user_id: str,
@@ -326,5 +326,5 @@ def log_llm_interaction(
 - [hashicorp-vault](../../cryptography-secrets/vault/SKILL.md)/SKILL.md)/) - Secrets management for API keys
 - [network-security](../../network/) - Network-level controls
 - [linux-hardening](../../hardening/[linux-hardening](../../DevOps_and_Cloud/Observability_and_SecOps/linux-hardening/SKILL.md)/) - Host hardening
-- [agent-observability](../../../devops/ai/[agent-observability](../../AI_and_Agents/Operations/agent-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)/) - AI [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging
-- [llm-gateway](../../../infrastructure/networking/[llm-gateway](../../AI_and_Agents/Models_and_FineTuning/llm-gateway/SKILL.md)/) - Centralized access control
+- [agent-observability](../../../devops/ai/[agent-observability](../../AI_and_Agents/Operations/agent-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)/) - AI [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging
+- [llm-gateway](../../../AI_and_Agents/Models_and_FineTuning/llm-platform/llm-gateway/SKILL.md)/) - Centralized access control

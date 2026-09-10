@@ -216,7 +216,7 @@ Every [Python](../../../Languages/python/python/SKILL.md) Azure SDK skill MUST o
 
 > **🔑 Two rules apply to every code sample below:**
 >
-> 1. **Prefer `DefaultAzureCredential` for local development.** It works as-is with Azure CLI / VS Code / Developer CLI. For production, either constrain `DefaultAzureCredential` to production-safe credentials or use a specific credential directly. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
+> 1. **Prefer `DefaultAzureCredential` for local development.** It works as-is with Azure CLI / VS Code / Developer CLI. For production, either constrain `DefaultAzureCredential` to production-safe credentials or use a specific credential directly. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) and rotation.
 >    - Local dev: `DefaultAzureCredential` works as-is.
 >    - Production: set `AZURE_TOKEN_CREDENTIALS=prod` (or `AZURE_TOKEN_CREDENTIALS=<specific_credential>`) to constrain the credential chain to production-safe credentials.
 > 2. **Wrap every client in a context manager** so HTTP transports, sockets, and token caches are released deterministically:
@@ -410,7 +410,7 @@ Use a token counter or model playground to measure each section. Compare to the 
 - [ ] No restating official docs (code first, link to [microsoft-docs](../../../../cloud/azure/other/microsoft-docs/SKILL.md))
 - [ ] No verbose prose (examples first, minimal text)
 
-**3. Example count [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md):**
+**3. Example count [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md):**
 
 - [ ] 1 complete example per hero scenario / core workflow documented in SKILL.md. For [Python](../../../Languages/python/python/SKILL.md) SDKs that support both sync and async, the paired sync + async examples for the same workflow count as one workflow, not two.
 - [ ] Feature table includes 3-5 core methods (not comprehensive API)
@@ -643,7 +643,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 > **🔑 Two rules apply to every code sample below:**
 >
-> 1. **Prefer `DefaultAzureCredential` for local development.** It works as-is with Azure CLI / VS Code / Developer CLI. For production, either constrain `DefaultAzureCredential` to production-safe credentials or use a specific credential directly. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
+> 1. **Prefer `DefaultAzureCredential` for local development.** It works as-is with Azure CLI / VS Code / Developer CLI. For production, either constrain `DefaultAzureCredential` to production-safe credentials or use a specific credential directly. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) and rotation.
 >    - Local dev: `DefaultAzureCredential` works as-is.
 >    - Production: set `AZURE_TOKEN_CREDENTIALS=prod` (or `AZURE_TOKEN_CREDENTIALS=<specific_credential>`) to constrain the credential chain to production-safe credentials.
 > 2. **Wrap every client in a context manager** so HTTP transports, sockets, and token caches are released deterministically:
@@ -936,7 +936,7 @@ client = MyClient(endpoint, api_key="hardcoded") # Security risk
 #### ❌ INCORRECT: Connection string / account key when Entra is supported
 
 \`\`\`python
-client = MyClient.from_connection_string(os.environ["CONNECTION_STRING"]) # Bypasses Entra [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)/rotation
+client = MyClient.from_connection_string(os.environ["CONNECTION_STRING"]) # Bypasses Entra [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)/rotation
 \`\`\`
 
 #### ❌ INCORRECT: Bare client without context manager

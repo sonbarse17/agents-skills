@@ -258,7 +258,7 @@ Report includes:
 - **Diagram artifacts**: Control distribution of DFDs showing system architecture
 - **Mitigation tracking**: Integrate with secure issue tracking systems
 
-### [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging
+### [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logging
 
 Log the following for security governance:
 - Threat model creation and modification history

@@ -143,13 +143,13 @@ requirements:
     "9.5": "POI devices protected from tampering"
 
   req_10_logging:
-    "10.1": "[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging processes defined"
-    "10.2": "[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs record required events"
-    "10.3": "[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs protected from destruction and modification"
-    "10.4": "[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs reviewed for anomalies"
-    "10.5": "[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) log history retained"
+    "10.1": "[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging processes defined"
+    "10.2": "[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs record required events"
+    "10.3": "[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs protected from destruction and modification"
+    "10.4": "[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs reviewed for anomalies"
+    "10.5": "[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) log history retained"
     "10.6": "Time synchronization mechanisms configured"
-    "10.7": "[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs retained for at least 12 months (3 months immediately available)"
+    "10.7": "[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs retained for at least 12 months (3 months immediately available)"
 
   req_11_testing:
     "11.1": "Security testing processes defined"
@@ -325,10 +325,10 @@ aide --check  # Compare against baseline
 required_audit_events:
   "10.2.1": "All individual user accesses to cardholder data"
   "10.2.2": "All actions taken by any individual with root or admin privileges"
-  "10.2.3": "Access to all [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trails"
+  "10.2.3": "Access to all [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trails"
   "10.2.4": "Invalid logical access attempts"
   "10.2.5": "Changes to identification and authentication credentials"
-  "10.2.6": "Initialization, stopping, or pausing of [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs"
+  "10.2.6": "Initialization, stopping, or pausing of [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs"
   "10.2.7": "Creation and deletion of system-level objects"
 
 log_entry_requirements:
@@ -395,7 +395,7 @@ pci_dss_checklist:
     - [ ] Access reviewed at least every 6 months
 
   [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md):
-    - [ ] [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs capture all required events (Req 10.2)
+    - [ ] [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs capture all required events (Req 10.2)
     - [ ] Log entries include all required fields (Req 10.3)
     - [ ] Logs protected from modification
     - [ ] Logs retained 12 months (3 months immediately available)

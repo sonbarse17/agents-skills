@@ -133,7 +133,7 @@ storage backend changes).
    }
    ```
    ```bash
-   # [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) whether the root token is still in routine use — it should
+   # [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) whether the root token is still in routine use — it should
    # only ever be used for initial setup/emergency recovery, then revoked
    [vault](../vault/SKILL.md) token lookup   # inspect the token currently in use for policy/display_name
    ```
@@ -370,5 +370,5 @@ of truth and the live cluster state in sync from the outset.
   scoped, expiring exception rather than approving it as permanent
   policy.
 - [opa-gatekeeper-policy-authoring](../../../policy-and-governance-tooling/skills/[opa-gatekeeper-policy-authoring](../opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md) —
-  a comparable [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-before-enforce/least-privilege review discipline
+  a comparable [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-before-enforce/least-privilege review discipline
   applied to [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) admission policy rather than [Vault](../vault/SKILL.md) ACL policy.

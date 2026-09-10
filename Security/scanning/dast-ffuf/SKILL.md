@@ -386,7 +386,7 @@ ffuf -u https://target.com/FUZZ -w wordlist.txt -o results -of all
 
 - **Sensitive Data Handling**: Discovered files may contain credentials, API keys, or PII. Handle findings securely and report responsibly
 - **Access Control**: Only fuzz applications with proper authorization. Obtain written permission before testing third-party systems
-- **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging**: Log all fuzzing activities including targets, wordlists used, and findings for compliance and [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trails
+- **[Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logging**: Log all fuzzing activities including targets, wordlists used, and findings for compliance and [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) trails
 - **Compliance**: Ensure fuzzing activities comply with bug bounty program rules, penetration testing agreements, and legal requirements
 - **Safe Defaults**: Use reasonable rate limits to avoid DoS conditions. Start with small wordlists before scaling up
 

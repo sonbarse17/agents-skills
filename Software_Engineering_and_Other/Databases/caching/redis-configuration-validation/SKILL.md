@@ -95,7 +95,7 @@ redis-cli CONFIG GET maxmemory
   use is genuinely safe to evict at any time, not assumed to be.
 - If the instance stores a **mix** of disposable and non-disposable
   data, only a `volatile-*` policy is safe, and it must be paired with a
-  concrete [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) that every non-disposable key genuinely has no TTL and
+  concrete [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) that every non-disposable key genuinely has no TTL and
   every disposable key genuinely does:
   ```bash
   redis-cli --scan --pattern 'session:*' | head -20 | xargs -I{} redis-cli TTL {}
@@ -228,11 +228,11 @@ distribution, not just total dataset size.
   that must not silently disappear, and a memory-pressure event evicted
   them under `allkeys-lru`.
   **Fix:** The `maxmemory-policy` was validated against an assumption
-  ("it's a cache") rather than the actual keyspace contents. [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) real
+  ("it's a cache") rather than the actual keyspace contents. [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) real
   key prefixes in use (`--scan --pattern`) before approving an
   `allkeys-*` policy, and require any non-disposable use case to either
   move to its own instance or use a validated `volatile-*` policy with a
-  confirmed TTL [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md).
+  confirmed TTL [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md).
 
 - **Symptom:** A Redis Cluster passes every health check
   (`CLUSTER NODES` shows every shard with a replica) but an AZ outage
@@ -290,7 +290,7 @@ survive a restart without silently vanishing, per the product team).
    would be evicted under memory pressure exactly like catalog cache
    entries. Flag as blocking; recommend either splitting cart data to a
    separate instance/policy, or moving to `volatile-lru` with a
-   confirmed TTL [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) showing catalog-cache keys have TTLs and cart
+   confirmed TTL [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) showing catalog-cache keys have TTLs and cart
    keys do not (making carts eviction-exempt) — team confirms carts
    should also expire, just on a longer, explicit TTL (24h), resolving
    the conflict cleanly under `volatile-lru`.

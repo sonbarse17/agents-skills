@@ -93,7 +93,7 @@ catches what enforcement missed.
 - **Assign an expiry to remediation**, not an open-ended backlog item nobody owns.
 
 **Done when:** the untagged-resource count is tracked over time and trending down, not discovered
-fresh in every [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md).
+fresh in every [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md).
 
 ## 5. Treat tag values as data with an owner, not free text
 

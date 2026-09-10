@@ -229,7 +229,7 @@ grype <image> --db /path/to/database
 - **Access Control**: Grype requires [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) socket access when scanning container images.
   Restrict permissions to prevent unauthorized image access.
 
-- **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging**: Log all Grype scans with timestamps, target details, and operator identity
+- **[Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logging**: Log all Grype scans with timestamps, target details, and operator identity
   for compliance and [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response. Archive scan results for historical vulnerability tracking.
 
 - **Compliance**: Regular vulnerability scanning supports SOC2, PCI-DSS, NIST 800-53, and ISO 27001

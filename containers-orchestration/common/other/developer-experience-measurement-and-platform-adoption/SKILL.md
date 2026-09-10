@@ -68,7 +68,7 @@ actually working.
   where attribution suppresses honest negative feedback.
 - Telemetry sources already emitting events the platform can query:
   CI/CD pipeline logs (deploy frequency, lead time), the software catalog's
-  own [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) log (template usage, self-service action invocations), and
+  own [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) log (template usage, self-service action invocations), and
   version-control provider APIs (time from repo creation to first merged
   PR, as a proxy for time-to-first-contribution).
 - A place to route both signals together — a BI tool or a simple

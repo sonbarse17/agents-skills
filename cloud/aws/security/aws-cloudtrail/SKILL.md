@@ -17,11 +17,11 @@ depends_on:
 
 # AWS CloudTrail
 
-[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) AWS account activity with CloudTrail for compliance, security investigation, and operational troubleshooting.
+[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) AWS account activity with CloudTrail for compliance, security investigation, and operational troubleshooting.
 
 ## When to Use
 
-- Enabling organization-wide [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging across all AWS accounts
+- Enabling organization-wide [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging across all AWS accounts
 - Investigating security incidents or unauthorized API activity
 - Meeting compliance requirements for SOC 2, HIPAA, PCI DSS, or FedRAMP
 - Setting up automated [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) on sensitive AWS API calls
@@ -32,12 +32,12 @@ depends_on:
 ```bash
 # Create the S3 bucket for log storage
 aws s3api create-bucket \
-  --bucket org-cloudtrail-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-logs \
+  --bucket org-cloudtrail-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-logs \
   --region us-east-1
 
 # Apply bucket policy allowing CloudTrail to write
 aws s3api put-bucket-policy \
-  --bucket org-cloudtrail-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-logs \
+  --bucket org-cloudtrail-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-logs \
   --policy '{
     "Version": "2012-10-17",
     "Statement": [
@@ -46,14 +46,14 @@ aws s3api put-bucket-policy \
         "Effect": "Allow",
         "Principal": {"Service": "cloudtrail.amazonaws.com"},
         "Action": "s3:GetBucketAcl",
-        "Resource": "arn:aws:s3:::org-cloudtrail-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-logs"
+        "Resource": "arn:aws:s3:::org-cloudtrail-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-logs"
       },
       {
         "Sid": "AWSCloudTrailWrite",
         "Effect": "Allow",
         "Principal": {"Service": "cloudtrail.amazonaws.com"},
         "Action": "s3:PutObject",
-        "Resource": "arn:aws:s3:::org-cloudtrail-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-logs/AWSLogs/*",
+        "Resource": "arn:aws:s3:::org-cloudtrail-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-logs/AWSLogs/*",
         "Condition": {
           "StringEquals": {"s3:x-amz-acl": "bucket-owner-full-control"}
         }
@@ -61,27 +61,27 @@ aws s3api put-bucket-policy \
     ]
   }'
 
-# Block public access on the [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) bucket
+# Block public access on the [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) bucket
 aws s3api put-public-access-block \
-  --bucket org-cloudtrail-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-logs \
+  --bucket org-cloudtrail-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-logs \
   --public-access-block-configuration \
     BlockPublicAcls=true,IgnorePublicAcls=true,BlockPublicPolicy=true,RestrictPublicBuckets=true
 
 # Enable versioning for tamper protection
 aws s3api put-bucket-versioning \
-  --bucket org-cloudtrail-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-logs \
+  --bucket org-cloudtrail-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-logs \
   --versioning-configuration Status=Enabled
 
 # Enable server-side encryption
 aws s3api put-bucket-encryption \
-  --bucket org-cloudtrail-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-logs \
+  --bucket org-cloudtrail-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-logs \
   --server-side-encryption-configuration '{
     "Rules": [{"ApplyServerSideEncryptionByDefault": {"SSEAlgorithm": "aws:kms", "KMSMasterKeyID": "alias/cloudtrail-key"}}]
   }'
 
 # Set lifecycle policy for log retention
 aws s3api put-bucket-lifecycle-configuration \
-  --bucket org-cloudtrail-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-logs \
+  --bucket org-cloudtrail-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-logs \
   --lifecycle-configuration '{
     "Rules": [
       {
@@ -103,8 +103,8 @@ aws s3api put-bucket-lifecycle-configuration \
 
 # Create the organization trail
 aws cloudtrail create-trail \
-  --name org-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-trail \
-  --s3-bucket-name org-cloudtrail-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-logs \
+  --name org-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-trail \
+  --s3-bucket-name org-cloudtrail-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-logs \
   --is-organization-trail \
   --is-multi-region-trail \
   --enable-log-file-validation \
@@ -113,7 +113,7 @@ aws cloudtrail create-trail \
   --cloud-watch-logs-role-arn arn:aws:iam::123456789012:role/CloudTrail-CWLogs-Role
 
 # Start logging
-aws cloudtrail start-logging --name org-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-trail
+aws cloudtrail start-logging --name org-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-trail
 ```
 
 ## Event Selectors for Management and Data Events
@@ -121,7 +121,7 @@ aws cloudtrail start-logging --name org-[audit](../../../../AI_and_Agents/Operat
 ```bash
 # Configure advanced event selectors for granular control
 aws cloudtrail put-event-selectors \
-  --trail-name org-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-trail \
+  --trail-name org-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-trail \
   --advanced-event-selectors '[
     {
       "Name": "AllManagementEvents",
@@ -264,7 +264,7 @@ CREATE EXTERNAL TABLE IF NOT EXISTS cloudtrail_logs (
 )
 PARTITIONED BY (region STRING, year STRING, month STRING, day STRING)
 ROW FORMAT SERDE 'org.apache.hive.hcatalog.data.JsonSerDe'
-LOCATION 's3://org-cloudtrail-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-logs/AWSLogs/123456789012/CloudTrail/';
+LOCATION 's3://org-cloudtrail-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-logs/AWSLogs/123456789012/CloudTrail/';
 
 -- Find all delete operations in the last 7 days
 SELECT eventTime, userIdentity.arn, eventName, sourceIPAddress,
@@ -321,7 +321,7 @@ ORDER BY eventTime DESC;
 ```bash
 # Create an event data store for long-term queryable storage
 aws cloudtrail create-event-data-store \
-  --name org-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-event-store \
+  --name org-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-event-store \
   --multi-region-enabled \
   --organization-enabled \
   --retention-period 2555 \
@@ -359,22 +359,22 @@ ORDER BY event_count DESC;
 ```bash
 # Validate log file integrity for a date range
 aws cloudtrail validate-logs \
-  --trail-arn arn:aws:cloudtrail:us-east-1:123456789012:trail/org-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-trail \
+  --trail-arn arn:aws:cloudtrail:us-east-1:123456789012:trail/org-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-trail \
   --start-time "2024-01-01T00:00:00Z" \
   --end-time "2024-01-31T23:59:59Z"
 
 # Check trail status
-aws cloudtrail get-trail-status --name org-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-trail
+aws cloudtrail get-trail-status --name org-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-trail
 
 # Describe the trail configuration
-aws cloudtrail describe-trails --trail-name-list org-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-trail
+aws cloudtrail describe-trails --trail-name-list org-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-trail
 ```
 
 ## Terraform Configuration
 
 ```hcl
 resource "aws_cloudtrail" "org_trail" {
-  name                          = "org-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-trail"
+  name                          = "org-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-trail"
   s3_bucket_name                = aws_s3_bucket.cloudtrail.id
   is_organization_trail         = true
   is_multi_region_trail         = true

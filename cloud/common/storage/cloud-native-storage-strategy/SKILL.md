@@ -168,7 +168,7 @@ regularly.
    must survive accidental overwrite or deletion** — S3 Versioning +
    Object Lock (compliance or governance mode), Azure Blob immutability
    policies, or GCP Bucket Lock — particularly for backup targets,
-   [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs, and anything subject to a regulatory retention
+   [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs, and anything subject to a regulatory retention
    requirement (WORM).
 
 6. **Monitor cost and access patterns continuously.** Use S3 Storage
@@ -279,7 +279,7 @@ storage cost line item.
    the expiration to align with the actual required retention (not
    shorter than compliance mandates).
 3. Enable S3 Block Public Access at the account level and confirm
-   default SSE-KMS encryption is applied bucket-wide, since the [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)
+   default SSE-KMS encryption is applied bucket-wide, since the [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)
    also flagged that the bucket previously had no explicit encryption
    configuration (relying on account defaults that changed over time).
 4. Roll out the lifecycle policy to a 10% sample of prefixes first,

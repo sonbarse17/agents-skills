@@ -34,7 +34,7 @@ When responding to requests about Azure AI Language Conversations:
 
 > **🔑 Two rules apply to every code sample below:**
 >
-> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
+> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../../../AI_and_Agents/Operations/common/audit/SKILL.md) and rotation.
 >    - Local dev: `DefaultAzureCredential` works as-is.
 >    - Production: set `AZURE_TOKEN_CREDENTIALS=prod` (or `AZURE_TOKEN_CREDENTIALS=<specific_credential>`) to constrain the credential chain to production-safe credentials.
 > 2. **Wrap every client in a context manager** so HTTP transports, sockets, and token caches are released deterministically:
@@ -65,7 +65,7 @@ with ConversationAnalysisClient(endpoint, AzureKeyCredential(key)) as client:
 ## Best Practices
 - **Pick sync OR async and stay consistent.** Do not mix `azure.ai.language.conversations` sync clients with `azure.ai.language.conversations.aio` async clients in the same call path. Choose one mode per module.
 - **Always use context managers for clients and async credentials.** Wrap every client in `with ConversationAnalysisClient(...) as client:` (sync) or `async with ConversationAnalysisClient(...) as client:` (async). For async `DefaultAzureCredential` from `azure.identity.aio`, also use `async with credential:` so tokens and transports are cleaned up.
-- **Use `DefaultAzureCredential`** for portable auth across local dev and Azure (avoid API keys; they bypass Entra [audit](../../../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation).
+- **Use `DefaultAzureCredential`** for portable auth across local dev and Azure (avoid API keys; they bypass Entra [audit](../../../../../AI_and_Agents/Operations/common/audit/SKILL.md) and rotation).
 - Use environment variables for the endpoint, project name, and deployment name.
 - Clearly map the `participantId` and `id` in the `conversationItem` payload.
 

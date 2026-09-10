@@ -314,7 +314,7 @@ Features keep getting pushed to the next quarter without explanation. Track defe
 | RICE score correlation | High-RICE features deliver > expected impact | Post-launch measurement |
 | Deferred feature rate | < 20% of features pushed more than 1 quarter | Track across quarters |
 | Stakeholder satisfaction | > 80% feel roadmap reflects their priorities | Quarterly survey |
-| Monthly update compliance | 100% of months have status report | Calendar [audit](../../AI_and_Agents/Operations/audit/SKILL.md) |
+| Monthly update compliance | 100% of months have status report | Calendar [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) |
 | Buffer utilization | Actual buffer usage 15-25% | [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) tracking |
 
 ## Models
@@ -546,7 +546,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
+- Repudiation: [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -560,7 +560,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Secrets Management
 - Secrets never in code — always in secrets manager ([Vault](../../Security/cryptography-secrets/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access [audit](../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
+- Access [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -569,7 +569,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for [audit](../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
+- Log security-relevant events for [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
 - Design for [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.

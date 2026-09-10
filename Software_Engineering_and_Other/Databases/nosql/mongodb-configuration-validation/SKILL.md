@@ -148,7 +148,7 @@ db.orders.insertOne({...}, { writeConcern: { w: "majority", wtimeout: 5000 } })
 - `w: 1` (default in some driver configs) acknowledges a write once the
   primary applies it, with no guarantee it's replicated anywhere —
   survivable data loss on primary failure. Validate that any collection
-  storing data where loss is unacceptable (financial, [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)) uses
+  storing data where loss is unacceptable (financial, [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)) uses
   `w: "majority"` explicitly, not an inherited driver default.
 - Validate `wtimeout` is set to a sane, non-zero value — an unbounded
   wait for majority acknowledgment during a replica set election or

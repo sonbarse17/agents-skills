@@ -45,8 +45,8 @@ Use this skill when:
 | Snyk | Commercial/Free | Many | Comprehensive SCA |
 | Dependabot | Free ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)) | Many | Automated PRs |
 | OWASP Dep-Check | OSS | Many | Free scanning |
-| npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) | Built-in | Node.js | Quick checks |
-| pip-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) | OSS | [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) | [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) projects |
+| npm [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) | Built-in | Node.js | Quick checks |
+| pip-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) | OSS | [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) | [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) projects |
 | Trivy | OSS | Many | Container deps |
 
 ## Snyk
@@ -274,43 +274,43 @@ dependency-check --project "MyProject" \
 
 ## Language-Specific Tools
 
-### Node.js (npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md))
+### Node.js (npm [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md))
 
 ```bash
-# Run [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
-npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+# Run [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
+npm [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
 
 # JSON output
-npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) --json
+npm [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) --json
 
 # Fix automatically
-npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) fix
+npm [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) fix
 
 # Fix with breaking changes
-npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) fix --force
+npm [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) fix --force
 
 # Production only
-npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) --production
+npm [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) --production
 ```
 
-### [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) (pip-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md))
+### [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) (pip-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md))
 
 ```bash
 # Install
-pip install pip-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+pip install pip-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
 
 # Scan installed packages
-pip-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+pip-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
 
 # Scan requirements file
-pip-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) -r requirements.txt
+pip-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) -r requirements.txt
 
 # Output formats
-pip-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) --format json
-pip-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) --format cyclonedx-json
+pip-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) --format json
+pip-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) --format cyclonedx-json
 
 # Fix vulnerabilities
-pip-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) --fix
+pip-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) --fix
 ```
 
 ### Go (govulncheck)
@@ -326,20 +326,20 @@ govulncheck ./...
 govulncheck -json ./...
 ```
 
-### Ruby (bundler-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md))
+### Ruby (bundler-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md))
 
 ```bash
 # Install
-gem install bundler-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+gem install bundler-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
 
 # Update database
-bundle-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) update
+bundle-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) update
 
-# Run [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
-bundle-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) check
+# Run [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
+bundle-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) check
 
 # Output format
-bundle-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) check --format json
+bundle-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) check --format json
 ```
 
 ## SBOM Generation
@@ -392,8 +392,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
-        run: npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) --[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-level=high
+      - name: npm [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
+        run: npm [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) --[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-level=high
 
       - name: Snyk scan
         uses: snyk/actions/node@master

@@ -183,7 +183,7 @@ integration decisions between phases.
    DAG with Vertex AI Pipelines (KFP SDK compiled and submitted to the
    Vertex AI Pipelines backend), applying the vendor-neutral gate/
    reproducibility principles from
-   [training-pipeline-orchestration](../[training-pipeline-orchestration](../../../AI_and_Agents/Models_and_FineTuning/training-pipeline-orchestration/SKILL.md)/SKILL.md)
+   [training-pipeline-orchestration](../../../../AI_and_Agents/Models_and_FineTuning/llmops/training-pipeline-orchestration/SKILL.md)/SKILL.md)
    and the KFP authoring patterns from
    [kubeflow-[ml-pipeline](../../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../[kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../../Containers_and_Orchestration/kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md)
    (Vertex AI Pipelines uses the same KFP SDK, targeting a different
@@ -215,7 +215,7 @@ integration decisions between phases.
 7. **Phase 7 — model registry and packaging.** Register the pipeline's
    output model to the Vertex AI Model Registry, applying the promotion-
    gate discipline from
-   [model-packaging-and-versioning](../[model-packaging-and-versioning](../../../AI_and_Agents/Models_and_FineTuning/model-packaging-and-versioning/SKILL.md)/SKILL.md):
+   [model-packaging-and-versioning](../../../../AI_and_Agents/Models_and_FineTuning/llmops/model-packaging-and-versioning/SKILL.md)/SKILL.md):
    ```bash
    gcloud ai models upload --region=us-central1 \
      --display-name=fraud-scorer --version-aliases=default \
@@ -229,7 +229,7 @@ integration decisions between phases.
 8. **Phase 8 — serving and scaling.** Deploy the Phase 7 registered model
    to a Vertex AI endpoint with a traffic split, applying the canary
    rollout discipline from
-   [model-serving-and-scaling](../[model-serving-and-scaling](../../../AI_and_Agents/Models_and_FineTuning/model-serving-and-scaling/SKILL.md)/SKILL.md):
+   [model-serving-and-scaling](../../../../AI_and_Agents/Models_and_FineTuning/inference-serving/model-serving-and-scaling/SKILL.md)/SKILL.md):
    ```bash
    gcloud ai endpoints [deploy-model](../../../AI_and_Agents/Infrastructure/[deploy-model](../azure-skills/skills/microsoft-foundry/models/deploy-model/SKILL.md)/SKILL.md) <ENDPOINT_ID> \
      --region=us-central1 --model=<MODEL_ID> \
@@ -240,7 +240,7 @@ integration decisions between phases.
    Do not shift the traffic split past this initial 5% until Phase 9's
    [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) is confirmed collecting data. (GKE+Kubeflow alternative:
    KServe `InferenceService` per
-   [model-serving-and-scaling](../[model-serving-and-scaling](../../../AI_and_Agents/Models_and_FineTuning/model-serving-and-scaling/SKILL.md)/SKILL.md).)
+   [model-serving-and-scaling](../../../../AI_and_Agents/Models_and_FineTuning/inference-serving/model-serving-and-scaling/SKILL.md)/SKILL.md).)
 
 9. **Phase 9 — [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and drift detection.** Enable Vertex AI Model
    [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) on the endpoint (or a self-managed Evidently job reading
@@ -371,7 +371,7 @@ The Phase 9 [monitoring](../../../../observability-monitoring-logging/common/mon
 5% traffic; the team ramps to 100% and keeps the previous model version
 deployed at a minimal instance count for a two-week rollback window,
 mirroring the soak-period discipline in
-[model-serving-and-scaling](../[model-serving-and-scaling](../../../AI_and_Agents/Models_and_FineTuning/model-serving-and-scaling/SKILL.md)/SKILL.md).
+[model-serving-and-scaling](../../../../AI_and_Agents/Models_and_FineTuning/inference-serving/model-serving-and-scaling/SKILL.md)/SKILL.md).
 
 ## Cross-references
 
@@ -381,7 +381,7 @@ mirroring the soak-period discipline in
 - [kubeflow-[ml-pipeline](../../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../[kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../../Containers_and_Orchestration/kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md) — the KFP SDK patterns Phase 6's Vertex AI Pipelines and the GKE+Kubeflow alternative both build on.
 - [experiment-tracking](../[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)/SKILL.md) — Phase 4's logging discipline, applied to Vertex AI Experiments.
 - [feature-store-design](../[feature-store-design](../../../Data_Engineering/feature-store-design/SKILL.md)/SKILL.md) — Phase 5's optional feature layer.
-- [training-pipeline-orchestration](../[training-pipeline-orchestration](../../../AI_and_Agents/Models_and_FineTuning/training-pipeline-orchestration/SKILL.md)/SKILL.md) — Phase 6's vendor-neutral DAG/gate principles.
-- [model-packaging-and-versioning](../[model-packaging-and-versioning](../../../AI_and_Agents/Models_and_FineTuning/model-packaging-and-versioning/SKILL.md)/SKILL.md) — Phase 7's registry and promotion gates.
-- [model-serving-and-scaling](../[model-serving-and-scaling](../../../AI_and_Agents/Models_and_FineTuning/model-serving-and-scaling/SKILL.md)/SKILL.md) — Phase 8's canary/traffic-split rollout.
+- [training-pipeline-orchestration](../../../../AI_and_Agents/Models_and_FineTuning/llmops/training-pipeline-orchestration/SKILL.md)/SKILL.md) — Phase 6's vendor-neutral DAG/gate principles.
+- [model-packaging-and-versioning](../../../../AI_and_Agents/Models_and_FineTuning/llmops/model-packaging-and-versioning/SKILL.md)/SKILL.md) — Phase 7's registry and promotion gates.
+- [model-serving-and-scaling](../../../../AI_and_Agents/Models_and_FineTuning/inference-serving/model-serving-and-scaling/SKILL.md)/SKILL.md) — Phase 8's canary/traffic-split rollout.
 - [model-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md) — Phase 9's drift/quality [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).

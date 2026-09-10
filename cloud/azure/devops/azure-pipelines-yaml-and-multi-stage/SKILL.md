@@ -191,7 +191,7 @@ which apply here too but aren't repeated.
 
 - Use `deployment` jobs with named **environments** for anything that
   should have an approval gate and a deployment history — a plain `job`
-  running a deploy script has neither, and there's no [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail of
+  running a deploy script has neither, and there's no [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail of
   who deployed what, when.
 - Keep environment approval lists current as team membership changes; an
   approval gate whose only approver left the team blocks every future
@@ -245,7 +245,7 @@ which apply here too but aren't repeated.
 
 **Scenario:** `checkout-api` builds once, then deploys through staging
 and production with a required approval before production, using named
-environments for the [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail.
+environments for the [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail.
 
 ```yaml
 # azure-pipelines.yml

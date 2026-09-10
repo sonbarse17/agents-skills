@@ -128,8 +128,8 @@ acl {
   enabled = true
 }
 
-# [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging
-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) {
+# [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging
+[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) {
   enabled = true
 }
 ```
@@ -613,8 +613,8 @@ Nomad metrics (Prometheus endpoint: :4646/v1/metrics):
   - nomad.client.allocation.memory.usage
   - nomad.client.allocation.cpu.percent
 
-[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging:
-  - Enable [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) log on servers
+[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging:
+  - Enable [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) log on servers
   - Log to file or syslog
   - Ship to Loki / Elasticsearch for centralized access
 
@@ -648,7 +648,7 @@ Key metrics to alert on:
 - CSI volumes need the Nomad CSI plugin installed and running as a system job.
 - Nomad Autoscaler requires Prometheus for metric queries.
 - Use `NOMAD_UPSTREAM_ADDR_<service>` env vars for Consul Connect upstream discovery.
-- [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) log to a separate volume — log volume can spike during attacks.
+- [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) log to a separate volume — log volume can spike during attacks.
 - Set `address_mode = "driver"` in service definitions for bridge network support.
 - Use `host_volume` for persistent data; prefer CSI for production.
 - Parameterized jobs support `payload` as a tar.gz for build artifacts.
@@ -664,7 +664,7 @@ Key metrics to alert on:
 - Not setting `check_restart` — unhealthy containers keep running.
 - Using `canary` without `auto_promote = false` — manual gate needed.
 - CSI volumes without proper plugin setup — volume registration fails silently.
-- No [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging — compliance violations go undetected.
+- No [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging — compliance violations go undetected.
 
 ## References
   - ../../../Global_References/nomad-advanced.md — Nomad Advanced Topics

@@ -577,7 +577,7 @@ Need message persistence and guaranteed delivery?
 1. **Autowiring enabled for all services** — manual wiring only for third-party bundles.
 2. **Doctrine entities with typed properties and attributes** (not annotations).
 3. **Messenger for async tasks** (emails, notifications, processing).
-4. **EventSubscriber for cross-cutting concerns** ([audit](../../../../AI_and_Agents/Operations/audit/SKILL.md), logging).
+4. **EventSubscriber for cross-cutting concerns** ([audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md), logging).
 5. **Flex recipes manage all package configuration** — avoid manual config.
 6. **PHPUnit with WebTestCase for functional tests**.
 7. **DTO layer between request and entity** — never persist raw request data.
@@ -633,7 +633,7 @@ Need message persistence and guaranteed delivery?
 - Autowiring enabled for all services — manual wiring only for third-party bundles.
 - Doctrine entities with typed properties and attributes (not annotations).
 - Messenger for async tasks (emails, notifications, processing).
-- EventSubscriber for cross-cutting concerns ([audit](../../../../AI_and_Agents/Operations/audit/SKILL.md), logging).
+- EventSubscriber for cross-cutting concerns ([audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md), logging).
 - Flex recipes manage all package configuration — avoid manual config.
 - PHPUnit with WebTestCase for functional tests.
 - #[AsController], #[AsRepository], #[AsCommand] attributes for automatic service registration.

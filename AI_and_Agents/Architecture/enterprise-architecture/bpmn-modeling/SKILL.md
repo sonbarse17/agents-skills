@@ -370,7 +370,7 @@ Hit Policy: UNIQUE (only one rule matches)
 |--------|--------|-------------|
 | Process cycle time reduction | >30% | Before/after comparison |
 | Error rate reduction | >50% | Exception path frequency |
-| Automation coverage | >80% of deterministic tasks | Task type [audit](../../../Operations/audit/SKILL.md) |
+| Automation coverage | >80% of deterministic tasks | Task type [audit](../../../Operations/common/audit/SKILL.md) |
 | Stakeholder understanding | >90% can explain diagram | Survey |
 | Model accuracy | Matches reality within 5% deviation | Process mining comparison |
 

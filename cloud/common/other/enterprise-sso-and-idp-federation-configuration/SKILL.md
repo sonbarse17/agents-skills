@@ -232,7 +232,7 @@ via SSO, not machine-to-machine or cloud-resource authorization.
    Confirm the IdP is configured to push a **deactivation** (`active:
    false` via `PATCH`) on termination, not just creation on hire — SCIM
    deprovisioning is the half of the integration most often left
-   untested until an offboarding [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) finds a terminated employee still
+   untested until an offboarding [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) finds a terminated employee still
    able to log in.
 
 7. **Federate a second IdP without disrupting the first**, scoping each
@@ -310,7 +310,7 @@ via SSO, not machine-to-machine or cloud-resource authorization.
   set to `admin` (or the group filter/regex is too permissive and
   unintentionally matches an unrelated group name). Set the default
   role to the least-privileged option and tighten the group-matching
-  filter, then [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) any other user currently authenticated under the
+  filter, then [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) any other user currently authenticated under the
   same broad default.
 
 - **Symptom:** An employee is terminated and removed from the IdP

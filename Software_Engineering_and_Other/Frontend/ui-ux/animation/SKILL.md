@@ -436,7 +436,7 @@ The browser promotes elements to GPU compositor layers when `will-change`, 3D tr
 - Chrome DevTools Performance tab: record animation sequence, check FPS counter, look for red frames
 - `performance.now()` markers around animation callbacks: log durations
 - `requestAnimationFrame` callback timestamps: monitor frame spacing (delta > 20ms indicates jank)
-- Lighthouse: "animations are smooth" [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)
+- Lighthouse: "animations are smooth" [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)
 - Web Vitals: Cumulative Layout Shift (CLS) must stay below 0.1
 
 ## Security Considerations

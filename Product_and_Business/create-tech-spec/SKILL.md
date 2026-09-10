@@ -238,7 +238,7 @@ DROP TABLE IF EXISTS {entity};
 - Migration DDL provided
 - Rollback DDL provided
 - Data migration strategy for existing records
-- [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) fields included (created_at, updated_at, created_by)
+- [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) fields included (created_at, updated_at, created_by)
 
 ### Step 5: Performance Targets
 | Metric | Target | Measurement | Load Test Scenario |
@@ -519,11 +519,11 @@ How many instances are in production?
 - [ ] CSRF protection (state-changing endpoints)
 - [ ] CORS policy configured
 
-### [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Trail
+### [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) Trail
 - [ ] All state-changing operations logged
-- [ ] [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) log includes: who, what, when, result
-- [ ] [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs are immutable
-- [ ] [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) log retention policy
+- [ ] [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) log includes: who, what, when, result
+- [ ] [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) logs are immutable
+- [ ] [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) log retention policy
 ```
 
 ### Integration Contract Template
@@ -569,7 +569,7 @@ How many instances are in production?
 
 ### Pattern 6: Security-Focused Spec
 **When**: Feature handling sensitive data, authentication, authorization, or PII
-**Process**: Cover data classification, encryption requirements, access control model, [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging, compliance requirements (GDPR, SOC2, HIPAA), penetration testing scope, dependency vulnerability assessment
+**Process**: Cover data classification, encryption requirements, access control model, [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) logging, compliance requirements (GDPR, SOC2, HIPAA), penetration testing scope, dependency vulnerability assessment
 **Output**: Spec with security review sign-off required before implementation
 
 ### Pattern 7: Performance-Critical Spec

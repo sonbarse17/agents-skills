@@ -82,7 +82,7 @@ Phase 4: Policy Evaluation
 2. Check conditions
 3. Calculate final decision
 
-Phase 5: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging
+Phase 5: [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logging
 1. Format log entry
 2. Add context
 3. Write to stream
@@ -99,7 +99,7 @@ Phase 6: Response
 | Role missing | Claim not mapped | Check mapping config |
 | Policy failure | Condition not met | Review policy rules |
 | High latency | DB slow | Add caching |
-| [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) failed | Stream full | Increase [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) |
+| [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) failed | Stream full | Increase [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) |
 | Unknown error | Unhandled exception | Check logs |
 
 ## Complete Execution Scenario
@@ -121,7 +121,7 @@ Request -> Valid Token -> Role Admin -> Allow Action
 4. [RBAC Decision Matrix](../../../Global_References/rbac_decision_matrix.md)
 5. [RBAC Policy Evaluation](../../../Global_References/rbac_policy_evaluation.md)
 6. [OIDC Token Validation](../../../Global_References/oidc_token_validation.md)
-7. [RBAC [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging](../../../Global_References/rbac_audit_logging.md)
+7. [RBAC [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logging](../../../Global_References/rbac_audit_logging.md)
 8. [RBAC Integration Patterns](../../../Global_References/rbac_integration_patterns.md)
 
 ## Handoff

@@ -149,7 +149,7 @@ sprint.
      a reasonable minimum age (e.g. 14-30 days) — a volume detached
      yesterday during an in-progress migration is not the same as one
      detached for six months.
-   - Check **CloudTrail/Activity Log/Cloud [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Logs** for the
+   - Check **CloudTrail/Activity Log/Cloud [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logs** for the
      resource ID to see who detached/created it and why, if the event is
      still within retention.
    - For Elastic IPs/Public IPs specifically, check whether it's
@@ -162,7 +162,7 @@ sprint.
      [Infrastructure-as-code](../../../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) and AMI/image build configs for the
      snapshot/disk ID.
 
-4. **Notify the owner (or last-known owner from tags/[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs) with a
+4. **Notify the owner (or last-known owner from tags/[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs) with a
    grace period before deleting**, rather than deleting immediately on
    finding a candidate:
    ```bash
@@ -225,7 +225,7 @@ sprint.
 ## Best practices
 
 - **Attachment/association state is a necessary but not sufficient
-  signal** — always corroborate with age, tags, [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-log history, and
+  signal** — always corroborate with age, tags, [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-log history, and
   DR/backup policy before calling anything a confirmed orphan.
 - **Always insert a tagged grace period between "identified as a
   candidate" and "deleted"** — a notify-then-wait step costs a few days
@@ -248,7 +248,7 @@ sprint.
 - **Treat a resource with no tags as higher risk, not lower** — an
   untagged resource is more likely to be a forgotten manual creation
   from years ago than a well-managed, safe-to-delete artifact; slow down
-  and dig into [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-log history rather than treating tag absence as
+  and dig into [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-log history rather than treating tag absence as
   "nobody will miss it."
 
 ## Common pitfalls
@@ -259,7 +259,7 @@ sprint.
   **Fix:** **Never auto-delete storage resources flagged as idle without
   a grace period, notification, and human confirmation** — this is
   destructive and often irreversible. Always run candidates through the
-  tag/[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-log/DR-policy cross-check (steps 2-3) and the notify-then-
+  tag/[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-log/DR-policy cross-check (steps 2-3) and the notify-then-
   wait grace period (step 4) before any deletion, especially for
   anything that held data.
 

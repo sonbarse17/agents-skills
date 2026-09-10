@@ -552,7 +552,7 @@ class HybridSearch:
 - **Authentication**: Enable Elasticsearch built-in security or OpenID Connect; disable anonymous access.
 - **Authorization**: Use role-based access control with index-level permissions; restrict field-level for sensitive data.
 - **Encryption**: Enable TLS for all transport and HTTP layers; encrypt at rest with Elasticsearch native encryption.
-- **[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging**: Enable [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs for all search queries and index operations; forward to SIEM.
+- **[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging**: Enable [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs for all search queries and index operations; forward to SIEM.
 - **Network security**: Deploy search cluster in private VPC; use WAF for public search endpoints.
 
 ## Handoff

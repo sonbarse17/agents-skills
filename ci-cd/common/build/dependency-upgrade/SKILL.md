@@ -45,17 +45,17 @@ PATCH: Bug fixes, backward compatible
 
 ## Dependency Analysis
 
-### [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Dependencies
+### [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) Dependencies
 
 ```bash
 # npm
 npm outdated
-npm [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)
-npm [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) fix
+npm [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)
+npm [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) fix
 
 # yarn
 yarn outdated
-yarn [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)
+yarn [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)
 
 # Check for major updates
 npx npm-check-updates

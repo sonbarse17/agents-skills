@@ -47,9 +47,9 @@ long-lived keys) are identical even though the primitives differ.
   authenticate to cloud APIs without storing static access keys/service
   account keys as secrets.
 - Investigating "who can do X" or "why does this role have this
-  permission" during an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) or [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md).
+  permission" during an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) or [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md).
 - Implementing break-glass emergency access that bypasses normal SSO/MFA
-  flows only when genuinely needed, with full [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging.
+  flows only when genuinely needed, with full [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging.
 - Running a quarterly or post-[incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) access review to find unused
   permissions, stale credentials, or orphaned service principals.
 - Responding to a cloud security posture finding like "N IAM users have
@@ -59,7 +59,7 @@ long-lived keys) are identical even though the primitives differ.
 ## Prerequisites & environment
 
 - Read access to the relevant IAM surface: AWS IAM Access Analyzer /
-  CloudTrail, Azure AD sign-in + [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs / Entra Permissions
+  CloudTrail, Azure AD sign-in + [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs / Entra Permissions
   Management, or GCP IAM Recommender / Policy Analyzer — these tools
   generate the "what's actually used" data that least-privilege
   redesigns depend on; don't guess permissions from documentation alone.
@@ -159,7 +159,7 @@ long-lived keys) are identical even though the primitives differ.
    Analyzer / IAM Recommender / Azure Permissions Management scan on a
    schedule (weekly, in CI) and fail a pipeline or open a ticket when a
    new unused-permission finding appears, rather than relying on an
-   annual manual [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md).
+   annual manual [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md).
 
 7. **Review and prune on a cadence.** Quarterly at minimum: revoke access
    for anyone who changed teams/left, delete unused roles/service
@@ -186,7 +186,7 @@ long-lived keys) are identical even though the primitives differ.
   Terraform changes the same way you would for application code — IAM
   is production infrastructure.
 - Avoid **policy sprawl from copy-pasted "just in case" permissions** —
-  every `*` in an `Action` or `Resource` field is a future [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) finding.
+  every `*` in an `Action` or `Resource` field is a future [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) finding.
 
 ## Common pitfalls
 
@@ -196,7 +196,7 @@ long-lived keys) are identical even though the primitives differ.
   **Fix:** Access-usage reports only reflect the lookback window queried
   (often 90 days). Before tightening a policy used by infrequent
   workloads, either extend the lookback, deploy the tightened policy in
-  monitor/[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) mode first (AWS IAM Access Analyzer policy generation,
+  monitor/[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) mode first (AWS IAM Access Analyzer policy generation,
   GCP `dry-run` mode is not natively available so stage in a non-prod
   project), or keep the change behind a feature flag with a fast
   rollback path.
@@ -226,7 +226,7 @@ long-lived keys) are identical even though the primitives differ.
   operations because the "proper" federated path is slower or less
   convenient.
   **Fix:** This defeats the purpose of break-glass and erodes its
-  [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-trail value. Treat repeated break-glass use as a signal that the
+  [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-trail value. Treat repeated break-glass use as a signal that the
   standard access path is missing a legitimate permission — fix the
   standard path (add a scoped permission or a JIT elevation option)
   rather than normalizing the emergency path.

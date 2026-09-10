@@ -248,7 +248,7 @@ Decide: Hash Function
 - Use Shamir's trick for multi-scalar multiplication (faster than separate)
 - Validate infinity point as valid (not a failure condition)
 
-### Cryptographic [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Checklist
+### Cryptographic [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) Checklist
 - [ ] Known-Answer Tests (KATs) pass against NIST/BSI/standard test vectors
 - [ ] No secret-dependent branching (constant-time) in any operation using private key data
 - [ ] ECDSA nonces generated deterministically per RFC 6979
@@ -656,6 +656,6 @@ Key concern: Harvest now, decrypt later attacks
 
 ## Handoff
 blockchain-cryptography → [blockchain-core](../blockchain-core/SKILL.md) (for protocol-level crypto integration)
-blockchain-cryptography → [blockchain-security](../blockchain-security/SKILL.md) (for cryptographic [audit](../../AI_and_Agents/Operations/audit/SKILL.md) methodology)
+blockchain-cryptography → [blockchain-security](../blockchain-security/SKILL.md) (for cryptographic [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) methodology)
 blockchain-cryptography → [blockchain-application](../blockchain-application/SKILL.md) (for zk-proof integration in contracts)
 

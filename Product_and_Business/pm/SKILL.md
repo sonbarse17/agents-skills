@@ -137,7 +137,7 @@ Velocity: {n} / {n} points (on track / at risk / behind)
 
 ### Next
 - STORY-45: Export to PDF
-- STORY-46: [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) log viewer
+- STORY-46: [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) log viewer
 ```
 
 ### Step 5: Retrospective

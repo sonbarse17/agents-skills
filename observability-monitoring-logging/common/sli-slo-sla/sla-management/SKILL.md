@@ -224,7 +224,7 @@ Stage 3 — Improvement: review targets quarterly, analyze breach patterns, inve
 - Weekly: Error budget status in engineering standup. Burn rate trend review. Feature freeze status check.
 - Monthly: SLA attainment report reviewed by engineering management. Service credit cost analysis. Top breach causes identified.
 - Quarterly: SLO target review with engineering + product + executives. Tier structure assessment. Error budget policy adjustment. [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) planning for reliability improvements.
-- Annually: Full SLA framework [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md). Competitive benchmark. Customer satisfaction correlation analysis. Framework version update.
+- Annually: Full SLA framework [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md). Competitive benchmark. Customer satisfaction correlation analysis. Framework version update.
 
 #### SLA Governance Roles
 - SLO Owner: Defines and maintains SLO targets per service. Reviews attainment. Proposes adjustments.
@@ -593,11 +593,11 @@ class ErrorBudget:
 - SLA report data: internal use only unless shared per contract. Access controlled per customer.
 - Error budget API: authenticated. Write access for service owners only. Read for all engineers.
 - [Alerting](../../alerting/alerting/SKILL.md) webhooks: signed payloads. HMAC verification. TLS for all alert destinations.
-- Service credit automation: calculations logged. Dual approval for credits > $10K. [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail.
+- Service credit automation: calculations logged. Dual approval for credits > $10K. [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail.
 - SLO measurement data: immutable metrics database. Tamper-evident via append-only storage.
 - Customer SLA portal: HTTPS only. Session timeout 15 minutes. Per-customer data isolation.
 - [Incident](../../incident-detection/incident/SKILL.md) data: PII scrubbed from public status page. Customer-specific details in private portal only.
-- Metric retention: raw metrics 90 days. Aggregated 7 years for SLA [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) compliance.
+- Metric retention: raw metrics 90 days. Aggregated 7 years for SLA [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) compliance.
 
 ## Handoff
-For compliance-related SLA requirements, hand off to `[enterprise-compliance-audit](../compliance-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)/SKILL.md)`. For cost implications of SLA tiers and service credits, hand off to `[enterprise-cost-governance](../../../../cloud/common/cost/cost-governance/SKILL.md)`. For [incident](../../incident-detection/incident/SKILL.md) response processes triggered by burn rate alerts, hand off to `enterprise-[incident-response](../[incident](../incident/SKILL.md)-response/SKILL.md)`.
+For compliance-related SLA requirements, hand off to `[enterprise-compliance-audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)/SKILL.md)`. For cost implications of SLA tiers and service credits, hand off to `[enterprise-cost-governance](../../../../cloud/common/cost/cost-governance/SKILL.md)`. For [incident](../../incident-detection/incident/SKILL.md) response processes triggered by burn rate alerts, hand off to `enterprise-[incident-response](../[incident](../incident/SKILL.md)-response/SKILL.md)`.

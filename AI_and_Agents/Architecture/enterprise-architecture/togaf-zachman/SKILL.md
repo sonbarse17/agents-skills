@@ -104,7 +104,7 @@ Capture, track, and prioritize requirements throughout ADM. Assess requirements 
    - NO -> Use Zachman for classification and gap analysis. Descriptive rather than prescriptive.
 
 2. Is the organization in a highly regulated industry (finance, healthcare, government)?
-   - YES -> Use TOGAF. Its governance framework and phase gate reviews align with regulatory compliance requirements. Supplement with Zachman rows for [audit](../../../Operations/audit/SKILL.md) trail completeness.
+   - YES -> Use TOGAF. Its governance framework and phase gate reviews align with regulatory compliance requirements. Supplement with Zachman rows for [audit](../../../Operations/common/audit/SKILL.md) trail completeness.
    - NO -> Consider lighter framework. If still need structure: tailored TOGAF (remove heavy deliverables, focus on value-adding artifacts). If need holistic classification: Zachman.
 
 3. Are you documenting current architecture or designing future architecture?
@@ -200,7 +200,7 @@ Capture, track, and prioritize requirements throughout ADM. Assess requirements 
 | Architecture Metamodel | Entity-relationship definitions | Standardize representation |
 | Architecture Landscape | Baseline + target views | Current and future state |
 | Reference Library | Standards, patterns, building blocks | Reusable assets |
-| Governance Log | Review decisions, waivers, changes | [Audit](../../../Operations/audit/SKILL.md) trail |
+| Governance Log | Review decisions, waivers, changes | [Audit](../../../Operations/common/audit/SKILL.md) trail |
 | Requirements Repository | Stakeholder requirements, traceability | Impact analysis |
 
 ## Governance Framework
@@ -366,7 +366,7 @@ A healthcare organization needed to understand their complete data landscape for
 
 Row 1 (Executive): Identified 5 key data domains — patient records, billing, clinical research, operational, regulatory reporting. Row 2 (Business Owner): Mapped 34 business entities with their lifecycle and ownership. Row 3 (Architect): Created logical data model with entity relationships, cardinality, and data flows. Row 4 (Engineer): Documented physical database schemas across 12 systems including EHR, billing, and lab systems. Row 5 (Technician): Detailed configuration of database servers, backup policies, and data retention rules. Row 6 (User): Catalogued actual data instances, volumes, and growth rates.
 
-The Zachman analysis revealed: 3 data entities with no clear owner (governance gap), 2 systems storing duplicate patient demographic data (redundancy), and 1 critical data flow with no backup path (resiliency gap). Remediation: assigned data owners, consolidated patient data into master data management system, and added failover for the critical data flow. Passed HIPAA [audit](../../../Operations/audit/SKILL.md) with zero findings related to data governance.
+The Zachman analysis revealed: 3 data entities with no clear owner (governance gap), 2 systems storing duplicate patient demographic data (redundancy), and 1 critical data flow with no backup path (resiliency gap). Remediation: assigned data owners, consolidated patient data into master data management system, and added failover for the critical data flow. Passed HIPAA [audit](../../../Operations/common/audit/SKILL.md) with zero findings related to data governance.
 
 ### Case Study 3: Hybrid TOGAF-Zachman for Cloud Migration
 A retail company with 200+ applications planned a 3-year cloud migration. The EA team used TOGAF ADM for the migration method and Zachman for architecture completeness. Phase A (Vision) established the cloud strategy and stakeholder alignment. Phase B-D used Zachman's What/How/Where columns to document the current application portfolio (What applications exist, How they integrate, Where they run). This revealed 35 applications with unknown dependencies and 12 applications running on unsupported OS versions.
@@ -513,12 +513,12 @@ zachman_adm_mapping:
 ## Security Considerations
 
 - Architecture repository access: role-based (viewer, contributor, architect, admin).
-- Phase gate approvals: recorded with digital signature. Non-repudiation for [audit](../../../Operations/audit/SKILL.md).
+- Phase gate approvals: recorded with digital signature. Non-repudiation for [audit](../../../Operations/common/audit/SKILL.md).
 - Security architecture artifacts: classified as internal confidential. Restricted distribution.
 - Third-party architecture sharing: sanitized viewpoints only. No internal network details.
 - Compliance tracking: all phase gates include security architecture review checklist.
 - Repository backup: encrypted. Point-in-time recovery. 90-day retention for daily, 7-year for annual.
-- Architecture decision [audit](../../../Operations/audit/SKILL.md): all ADM phase decisions logged with timestamp, author, rationale.
+- Architecture decision [audit](../../../Operations/common/audit/SKILL.md): all ADM phase decisions logged with timestamp, author, rationale.
 
 ## Handoff
 For implementation projects, hand off to `[enterprise-architecture-governance](../../../../Software_Engineering_and_Other/Patterns/architecture/architecture-governance/SKILL.md)` for review board decisions, or `enterprise-[vendor-management](../../../../Product_and_Business/vendor-management/SKILL.md)` for technology procurement alignment.

@@ -400,7 +400,7 @@ Platform team responsibilities:
 When: One team helps another build capability in a specific area
 Example: Enabling (SRE) team helps stream-aligned team adopt [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
 Process:
-  Week 1: Assessment — current state, gaps, skills [audit](../../AI_and_Agents/Operations/audit/SKILL.md)
+  Week 1: Assessment — current state, gaps, skills [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)
   Week 2-3: Pairing — SRE pairs with dev team on implementing metrics
   Week 4: Guided — dev team implements independently, SRE reviews
   Week 5: Handoff — dev team owns, SRE available for questions
@@ -439,7 +439,7 @@ Agenda:
 6. Identify dependencies (30 min) — what interactions remain across teams
 ```
 
-### Interaction Mode [Audit](../../AI_and_Agents/Operations/audit/SKILL.md)
+### Interaction Mode [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)
 ```
 Quarterly activity:
 1. List all team-to-team interactions

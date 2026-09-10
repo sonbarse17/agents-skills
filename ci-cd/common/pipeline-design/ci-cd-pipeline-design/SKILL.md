@@ -223,7 +223,7 @@ change.
 ## Common pitfalls
 
 - **Symptom:** Pipeline is green but a bug reaches production anyway.
-  **Fix:** [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) whether the job that "should have" caught it is actually
+  **Fix:** [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) whether the job that "should have" caught it is actually
   a *required* status check, not just a job that runs — non-required jobs
   can fail without blocking merge.
 
@@ -244,7 +244,7 @@ change.
   `-x` shell trace).
   **Fix:** Store secrets only in the platform's secret store, reference
   them as `${{ secrets.NAME }}` / `${SECRET_NAME}` masked CI/CD variables,
-  and [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs for accidental `echo`/`env`/`printenv` dumps of the
+  and [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs for accidental `echo`/`env`/`printenv` dumps of the
   environment.
 
 - **Symptom:** Self-hosted runner has stale tooling and pipeline behavior

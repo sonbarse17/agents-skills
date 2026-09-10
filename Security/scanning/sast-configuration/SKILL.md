@@ -89,7 +89,7 @@ codeql database create mydb --language=[python](../../../Software_Engineering_an
   uses: returntocorp/semgrep-action@v1
   with:
     config: >-
-      p/security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+      p/security-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
       p/owasp-top-ten
 ```
 

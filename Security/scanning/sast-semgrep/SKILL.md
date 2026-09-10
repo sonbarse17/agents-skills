@@ -106,14 +106,14 @@ semgrep --config="p/owasp-top-ten" /path/to/code
 - **Access Control**: Semgrep scans require read access to source code. Restrict scan
   result access to authorized security and development teams.
 
-- **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging**: Log all scan executions with timestamps, user, [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) hash, and
+- **[Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logging**: Log all scan executions with timestamps, user, [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) hash, and
   findings count for compliance auditing.
 
 - **Compliance**: SAST scanning supports SOC2, PCI-DSS, and GDPR compliance requirements.
   Maintain scan history and remediation tracking.
 
 - **Safe Defaults**: Use `--config=auto` for balanced detection. For security-critical
-  applications, use `--config="p/security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)"` for comprehensive coverage.
+  applications, use `--config="p/security-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)"` for comprehensive coverage.
 
 ## Language Support
 
@@ -149,7 +149,7 @@ Semgrep supports 30+ languages including:
 
 ```bash
 # Run comprehensive scan and generate report
-scripts/semgrep_scan.py --config security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) \
+scripts/semgrep_scan.py --config security-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) \
   --output results.json \
   --format json \
   --severity HIGH CRITICAL
@@ -168,7 +168,7 @@ scripts/diff_scan.sh --fail-on high \
 
 ```bash
 # Search for specific vulnerability patterns
-semgrep --config "r/javascript.lang.security.[audit](../../../AI_and_Agents/Operations/audit/SKILL.md).xss" \
+semgrep --config "r/javascript.lang.security.[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md).xss" \
   --json /path/to/code | jq '.results'
 ```
 
@@ -252,7 +252,7 @@ semgrep --config "p/owasp-top-ten" --exclude-rule "generic.*"
 ### Issue: Missing Vulnerabilities
 
 **Solution**:
-- Use comprehensive rulesets: `p/security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)` or `p/owasp-top-ten`
+- Use comprehensive rulesets: `p/security-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)` or `p/owasp-top-ten`
 - Consult `../../../Global_References/rule_library.md` for specialized rules
 - Create custom rules for organization-specific patterns
 - Combine with dynamic analysis (DAST) and dependency scanning

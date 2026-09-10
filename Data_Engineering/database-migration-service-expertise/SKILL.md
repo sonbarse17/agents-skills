@@ -33,7 +33,7 @@ aligned with AWS Well-Architected principles.
 ## When to Use
 
 Activate this skill when the user asks to:
-- Review, [audit](../../AI_and_Agents/Operations/audit/SKILL.md), or assess DMS configurations
+- Review, [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md), or assess DMS configurations
 - Check DMS best practices compliance
 - Troubleshoot DMS task failures, latency, or connectivity issues
 - Evaluate DMS cost optimization opportunities

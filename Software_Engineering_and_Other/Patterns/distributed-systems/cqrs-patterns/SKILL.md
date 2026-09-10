@@ -509,7 +509,7 @@ describe('GetOrderQueryHandler', () => {
 | Same database, different models | Simpler operations, strong consistency | Shared contention, less optimization |
 | Mediator pattern | Decoupled handlers, pipeline behaviors | Indirect dispatch, framework overhead |
 | Event-driven projections | Scalable, resilient | Eventual consistency, projection delay |
-| Combined CQRS + ES | Full [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail, temporal queries | Complex event store management |
+| Combined CQRS + ES | Full [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail, temporal queries | Complex event store management |
 
 ## Rules
 - Commands never return data. They return success or failure. Queries never cause side effects.

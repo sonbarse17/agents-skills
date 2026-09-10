@@ -275,7 +275,7 @@ no gaps, no single point of failure — is a separate concern covered in
   before it falls through to a policy-wide "notify everyone" — see the
   dedicated validation skill for how to check this systematically rather
   than by inspection.
-- Set schedule timezones explicitly and [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) them whenever a rotation
+- Set schedule timezones explicitly and [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) them whenever a rotation
   member relocates — an inherited default timezone is a common source of
   off-hours pages landing at the wrong local time.
 - Deduplicate as close to the alert source as practical (a stable
@@ -322,7 +322,7 @@ no gaps, no single point of failure — is a separate concern covered in
   (often UTC), so the "9am–5pm local" rotation actually runs on a
   4-8 hour offset from what the team intended.
   **Fix:** Set `time_zone`/`timezone` explicitly on every schedule at
-  creation time, and [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) existing schedules whenever a rotation
+  creation time, and [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) existing schedules whenever a rotation
   member's location changes.
 
 - **Symptom:** A maintenance window is set on an entire service to
@@ -339,7 +339,7 @@ no gaps, no single point of failure — is a separate concern covered in
   never gets notified.
   **Fix:** Require every on-call-eligible user to configure at least two
   escalating contact methods (push → SMS → phone call) and periodically
-  [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) for users with only one configured.
+  [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) for users with only one configured.
 
 ## Worked example
 

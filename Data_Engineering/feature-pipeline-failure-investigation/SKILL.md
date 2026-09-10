@@ -28,7 +28,7 @@ depends_on:
 
 ## Purpose
 
-[training-pipeline-orchestration](../[training-pipeline-orchestration](../../AI_and_Agents/Models_and_FineTuning/training-pipeline-orchestration/SKILL.md)/SKILL.md)
+[training-pipeline-orchestration](../../AI_and_Agents/Models_and_FineTuning/llmops/training-pipeline-orchestration/SKILL.md)/SKILL.md)
 covers designing a resilient, idempotent training DAG; this skill covers
 the specific overnight-failure moment: a scheduled feature computation/
 materialization job broke, and right now predictions are being served on
@@ -52,7 +52,7 @@ safest thing to do with live traffic in the next fifteen minutes.
 - Diagnosing why a feature view's online-store timestamps are older than
   expected, or why a job's row counts look wrong.
 - A drift alert triage (see
-  [model-drift-alert-triage](../[model-drift-alert-triage](../../AI_and_Agents/Models_and_FineTuning/model-drift-alert-triage/SKILL.md)/SKILL.md)) has
+  [model-drift-alert-triage](../../AI_and_Agents/Models_and_FineTuning/llmops/model-drift-alert-triage/SKILL.md)/SKILL.md)) has
   pointed at an upstream pipeline problem rather than genuine model drift.
 
 ## Prerequisites & environment
@@ -125,12 +125,12 @@ safest thing to do with live traffic in the next fifteen minutes.
    idempotently** — rerun the materialization job for the exact gap,
    writing to a versioned output rather than mutating a shared location in
    place, so a retried backfill can't double-write or corrupt data (see
-   [training-pipeline-orchestration](../[training-pipeline-orchestration](../../AI_and_Agents/Models_and_FineTuning/training-pipeline-orchestration/SKILL.md)/SKILL.md)
+   [training-pipeline-orchestration](../../AI_and_Agents/Models_and_FineTuning/llmops/training-pipeline-orchestration/SKILL.md)/SKILL.md)
    for the idempotent-retry pattern this mirrors).
 7. **Verify recovery** — confirm feature freshness is back within
    tolerance, and confirm any drift alerts that fired during the outage
    (see
-   [model-drift-alert-triage](../[model-drift-alert-triage](../../AI_and_Agents/Models_and_FineTuning/model-drift-alert-triage/SKILL.md)/SKILL.md))
+   [model-drift-alert-triage](../../AI_and_Agents/Models_and_FineTuning/llmops/model-drift-alert-triage/SKILL.md)/SKILL.md))
    were staleness-driven and resolve on their own once fresh data flows
    again, rather than being separately misdiagnosed as model drift.
 8. **Close the loop**: add or tighten the feature-freshness SLA/alert if
@@ -172,7 +172,7 @@ safest thing to do with live traffic in the next fifteen minutes.
   cause is this feature pipeline silently failing overnight.
   **Fix:** Always check upstream feature pipeline freshness as an early
   step whenever a drift alert fires — see
-  [model-drift-alert-triage](../[model-drift-alert-triage](../../AI_and_Agents/Models_and_FineTuning/model-drift-alert-triage/SKILL.md)/SKILL.md) — before
+  [model-drift-alert-triage](../../AI_and_Agents/Models_and_FineTuning/llmops/model-drift-alert-triage/SKILL.md)/SKILL.md) — before
   concluding the model needs retraining or rollback.
 
 - **Symptom:** After the root cause is fixed, the job simply resumes going
@@ -231,7 +231,7 @@ fresher than 22:00 UTC the previous day by the time on-call is paged at
    cached-fallback routing is removed; a drift alert that had briefly
    fired on `avg_rating_30d` during the stale window is confirmed
    staleness-driven (per
-   [model-drift-alert-triage](../[model-drift-alert-triage](../../AI_and_Agents/Models_and_FineTuning/model-drift-alert-triage/SKILL.md)/SKILL.md)) and
+   [model-drift-alert-triage](../../AI_and_Agents/Models_and_FineTuning/llmops/model-drift-alert-triage/SKILL.md)/SKILL.md)) and
    resolves on its own once fresh data flows again.
 7. **Close the loop:** a freshness SLA/alert is added for `driver_stats`
    specifically, since this failure mode wasn't previously monitored.
@@ -239,8 +239,8 @@ fresher than 22:00 UTC the previous day by the time on-call is paged at
 ## Cross-references
 
 - [feature-store-design](../[feature-store-design](../feature-store-design/SKILL.md)/SKILL.md) — the feature store/materialization design this investigation diagnoses failures within.
-- [training-pipeline-orchestration](../[training-pipeline-orchestration](../../AI_and_Agents/Models_and_FineTuning/training-pipeline-orchestration/SKILL.md)/SKILL.md) — the idempotent-retry and DAG design patterns this skill's backfill step relies on.
+- [training-pipeline-orchestration](../../AI_and_Agents/Models_and_FineTuning/llmops/training-pipeline-orchestration/SKILL.md)/SKILL.md) — the idempotent-retry and DAG design patterns this skill's backfill step relies on.
 - [data-and-model-lineage](../[data-and-model-lineage](../data-and-model-lineage/SKILL.md)/SKILL.md) — tracing exactly which models and downstream artifacts consume the affected feature view.
-- [model-drift-alert-triage](../[model-drift-alert-triage](../../AI_and_Agents/Models_and_FineTuning/model-drift-alert-triage/SKILL.md)/SKILL.md) — the triage process that often routes here when a drift alert turns out to be staleness, not drift.
-- [production-model-rollback-procedure](../[production-model-rollback-procedure](../../AI_and_Agents/Models_and_FineTuning/production-model-rollback-procedure/SKILL.md)/SKILL.md) — the escalation path if the pipeline outage's downstream impact is severe enough to warrant rolling back the model itself rather than mitigating features.
+- [model-drift-alert-triage](../../AI_and_Agents/Models_and_FineTuning/llmops/model-drift-alert-triage/SKILL.md)/SKILL.md) — the triage process that often routes here when a drift alert turns out to be staleness, not drift.
+- [production-model-rollback-procedure](../../AI_and_Agents/Models_and_FineTuning/llmops/production-model-rollback-procedure/SKILL.md)/SKILL.md) — the escalation path if the pipeline outage's downstream impact is severe enough to warrant rolling back the model itself rather than mitigating features.
 - [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../Software_Engineering_and_Other/Frontend/[incident-response](../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../observability-monitoring-logging/common/alerting/on-call-management/SKILL.md)/SKILL.md)/SKILL.md) — [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) structure for customer-facing impact from a feature pipeline outage.

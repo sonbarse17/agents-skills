@@ -75,7 +75,7 @@ gdpr_principles:
       description: "Appropriate security measures"
       implementation:
         - Encryption at rest and in transit
-        - Access controls and [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging
+        - Access controls and [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging
         - Pseudonymization where appropriate
 
     accountability:
@@ -128,7 +128,7 @@ processing_activity:
     - AES-256 encryption at rest
     - TLS 1.3 in transit
     - Role-based access control
-    - [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging of all access
+    - [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging of all access
   dpia_required: false
   last_reviewed: "2024-06-01"
 
@@ -182,7 +182,7 @@ class ConsentManager:
 
     def record_consent(self, user_id, purpose, granted, source,
                        privacy_policy_version, ip_address=None):
-        """Record a consent decision with full [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail."""
+        """Record a consent decision with full [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail."""
         consent_record = {
             "user_id": user_id,
             "purpose": purpose.value,
@@ -193,7 +193,7 @@ class ConsentManager:
             "ip_address": ip_address,
             "withdrawal_timestamp": None,
         }
-        # Store with immutable [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail
+        # Store with immutable [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail
         consent_record["record_hash"] = hashlib.sha256(
             json.dumps(consent_record, sort_keys=True).encode()
         ).hexdigest()
@@ -399,7 +399,7 @@ dpa_requirements:
       - Assistance with data subject rights requests
       - Assistance with security obligations (Art. 32-36)
       - Deletion or return of data after service ends
-      - [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and inspection rights for the controller
+      - [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) and inspection rights for the controller
 
   sub_processor_management:
     - [ ] List of current sub-processors provided by processor
@@ -465,7 +465,7 @@ dpia_template:
           likelihood: "medium"
           severity: "high"
           risk_level: "high"
-          existing_controls: "Encryption, access controls, [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs"
+          existing_controls: "Encryption, access controls, [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs"
           residual_risk: "medium"
 
         - risk: "Accidental data loss or destruction"
@@ -494,7 +494,7 @@ dpia_template:
         - [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response procedures
         - Regular access reviews
       [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md):
-        - [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging of all data access
+        - [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging of all data access
         - Anomaly detection for unusual access patterns
         - Regular compliance testing
 
@@ -538,7 +538,7 @@ gdpr_compliance_checklist:
     - [ ] Encryption at rest and in transit for all personal data
     - [ ] Pseudonymization applied where feasible
     - [ ] Access controls enforce least privilege
-    - [ ] [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging of personal data access
+    - [ ] [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging of personal data access
     - [ ] Data retention automated with defined schedules
     - [ ] Secure deletion procedures verified
 
@@ -568,4 +568,4 @@ gdpr_compliance_checklist:
 - Ensure data processing agreements are signed with every processor before sharing personal data
 - Implement automated retention enforcement to prevent storage beyond defined periods
 - Train all staff who handle personal data, not just the IT and legal teams
-- Regularly [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) data flows to discover shadow processing or undocumented data stores
+- Regularly [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) data flows to discover shadow processing or undocumented data stores

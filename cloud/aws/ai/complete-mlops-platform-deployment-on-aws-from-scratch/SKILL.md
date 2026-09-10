@@ -179,7 +179,7 @@ integration decisions between phases.
 
 6. **Phase 6 — training pipeline orchestration on Kubeflow Pipelines.**
    Author the retraining DAG per
-   [training-pipeline-orchestration](../[training-pipeline-orchestration](../../../AI_and_Agents/Models_and_FineTuning/training-pipeline-orchestration/SKILL.md)/SKILL.md)'s
+   [training-pipeline-orchestration](../../../../AI_and_Agents/Models_and_FineTuning/llmops/training-pipeline-orchestration/SKILL.md)/SKILL.md)'s
    vendor-neutral gate/reproducibility principles, implemented concretely
    with the KFP SDK per
    [kubeflow-[ml-pipeline](../../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../[kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../../Containers_and_Orchestration/kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md):
@@ -198,7 +198,7 @@ integration decisions between phases.
 7. **Phase 7 — model registry and packaging.** Wire the pipeline's
    conditional registration step to MLflow Model Registry (from Phase 4's
    MLflow instance) per
-   [model-packaging-and-versioning](../[model-packaging-and-versioning](../../../AI_and_Agents/Models_and_FineTuning/model-packaging-and-versioning/SKILL.md)/SKILL.md),
+   [model-packaging-and-versioning](../../../../AI_and_Agents/Models_and_FineTuning/llmops/model-packaging-and-versioning/SKILL.md)/SKILL.md),
    with dev → staging → production stages and lineage tags carrying the
    Phase 6 pipeline run ID. Confirm the registry's S3 artifact bucket has
    its own retention policy independent of any generic "delete objects
@@ -210,7 +210,7 @@ integration decisions between phases.
 
 8. **Phase 8 — serving and scaling.** Deploy KServe on the Phase 3 serving
    GPU node pool (separate from the training pool) per
-   [model-serving-and-scaling](../[model-serving-and-scaling](../../../AI_and_Agents/Models_and_FineTuning/model-serving-and-scaling/SKILL.md)/SKILL.md),
+   [model-serving-and-scaling](../../../../AI_and_Agents/Models_and_FineTuning/inference-serving/model-serving-and-scaling/SKILL.md)/SKILL.md),
    referencing the exact registered model version from Phase 7 — never a
    raw S3 path that bypasses the registry:
    ```yaml
@@ -225,7 +225,7 @@ integration decisions between phases.
          storageUri: "s3://ml-platform-mlflow-artifacts/models/fraud-scorer/14"
    ```
    Roll out via canary (5% → 25% → 100%) exactly as
-   [model-serving-and-scaling](../[model-serving-and-scaling](../../../AI_and_Agents/Models_and_FineTuning/model-serving-and-scaling/SKILL.md)/SKILL.md)
+   [model-serving-and-scaling](../../../../AI_and_Agents/Models_and_FineTuning/inference-serving/model-serving-and-scaling/SKILL.md)/SKILL.md)
    describes — and do not proceed past 5% until Phase 9's [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) is
    confirmed live (see Common pitfalls). (SageMaker alternative: a
    SageMaker real-time endpoint with production variants for canary
@@ -380,9 +380,9 @@ minutes.
 - [gpu-accelerator-infrastructure-for-ml-training](../[gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md)/SKILL.md) — Phase 3's GPU Operator install and training/serving node pool design.
 - [experiment-tracking](../[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)/SKILL.md) — Phase 4's MLflow setup and run-logging discipline.
 - [feature-store-design](../[feature-store-design](../../../Data_Engineering/feature-store-design/SKILL.md)/SKILL.md) — Phase 5's optional feature layer.
-- [training-pipeline-orchestration](../[training-pipeline-orchestration](../../../AI_and_Agents/Models_and_FineTuning/training-pipeline-orchestration/SKILL.md)/SKILL.md) — Phase 6's vendor-neutral DAG/gate principles.
+- [training-pipeline-orchestration](../../../../AI_and_Agents/Models_and_FineTuning/llmops/training-pipeline-orchestration/SKILL.md)/SKILL.md) — Phase 6's vendor-neutral DAG/gate principles.
 - [kubeflow-[ml-pipeline](../../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../[kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../../Containers_and_Orchestration/kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md) — Phase 6's KFP-specific implementation.
-- [model-packaging-and-versioning](../[model-packaging-and-versioning](../../../AI_and_Agents/Models_and_FineTuning/model-packaging-and-versioning/SKILL.md)/SKILL.md) — Phase 7's registry and promotion gates.
-- [model-serving-and-scaling](../[model-serving-and-scaling](../../../AI_and_Agents/Models_and_FineTuning/model-serving-and-scaling/SKILL.md)/SKILL.md) — Phase 8's KServe canary/shadow rollout.
+- [model-packaging-and-versioning](../../../../AI_and_Agents/Models_and_FineTuning/llmops/model-packaging-and-versioning/SKILL.md)/SKILL.md) — Phase 7's registry and promotion gates.
+- [model-serving-and-scaling](../../../../AI_and_Agents/Models_and_FineTuning/inference-serving/model-serving-and-scaling/SKILL.md)/SKILL.md) — Phase 8's KServe canary/shadow rollout.
 - [model-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md) — Phase 9's drift/quality [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
 - [gpu-accelerator-configuration-validation](../[gpu-accelerator-configuration-validation](../gpu-accelerator-configuration-validation/SKILL.md)/SKILL.md) — validating individual job GPU resource requests referenced in Phase 3/6.

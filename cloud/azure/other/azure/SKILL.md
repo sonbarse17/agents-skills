@@ -595,11 +595,11 @@ No budgets, no alerts, no tags for cost allocation. Azure costs can spiral witho
 ### Security
 - Enable Azure Defender (Microsoft Defender for Cloud) on all subscriptions.
 - Use Azure AD Conditional Access with MFA for all administrative access.
-- Enable Diagnostic Settings on all resources for [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging.
+- Enable Diagnostic Settings on all resources for [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging.
 - Use Azure Policy to enforce HTTPS, deny public IPs on NSGs, require encryption.
 - Use Key [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md) with soft-delete and purge protection enabled.
 - Enable network security groups with just-in-time (JIT) VM access.
-- Use Azure RBAC with least privilege; [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) role assignments quarterly.
+- Use Azure RBAC with least privilege; [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) role assignments quarterly.
 
 ### Cost Optimization
 - Use Azure Reservations (1yr/3yr) for predictable VMs and SQL databases (20-60% savings).
@@ -635,7 +635,7 @@ No budgets, no alerts, no tags for cost allocation. Azure costs can spiral witho
 5. AKS with Azure CNI and Azure AD integration.
 6. Cost allocation via resource tags — every resource gets mandatory tags.
 7. Deployment slots for zero-downtime App Service deployments.
-8. Diagnostic settings enabled on all services for [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) and [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
+8. Diagnostic settings enabled on all services for [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) and [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
 9. Resource locks (CanNotDelete) on production resource groups.
 10. Azure Defender enabled on all subscriptions.
 11. Budget alerts at 50%, 80%, 100%, 200% of forecast.

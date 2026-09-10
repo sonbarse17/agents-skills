@@ -229,7 +229,7 @@ re-deriving them.
   **Fix:** This is exactly what the length/TTL-bound validation step is
   meant to catch — re-run validation periodically (not just at initial
   rollout) against queues that may have been created or had policies
-  changed since the last [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md), and treat any unbounded production queue
+  changed since the last [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md), and treat any unbounded production queue
   discovered later as a finding requiring the same remediation as if
   caught at go-live.
 

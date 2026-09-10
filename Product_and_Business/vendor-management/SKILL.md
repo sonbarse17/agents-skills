@@ -50,7 +50,7 @@ vendor_risk_tiers:
       - Data processing agreement (DPA)
       - Business associate agreement (BAA) if PHI
       - Security SLA with breach notification timeline
-      - Right to [audit](../../AI_and_Agents/Operations/audit/SKILL.md) clause
+      - Right to [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) clause
       - Cyber insurance requirements
     examples:
       - Cloud infrastructure providers (AWS, Azure, GCP)
@@ -124,7 +124,7 @@ security_questionnaire:
       - "Do you conduct annual security risk assessments?"
       - "Do you have a security awareness training program?"
       - "What compliance certifications do you hold? (SOC 2, ISO 27001, etc.)"
-      - "When was your last external security [audit](../../AI_and_Agents/Operations/audit/SKILL.md)?"
+      - "When was your last external security [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)?"
       - "Do you carry cyber liability insurance? What coverage limits?"
     evidence_requested:
       - Information security policy (or summary)
@@ -442,7 +442,7 @@ vendor_lifecycle:
 
     step_4_provision:
       - Configure integration with least privilege access
-      - Enable [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging for vendor access
+      - Enable [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) logging for vendor access
       - Add to vendor registry
       - Schedule first reassessment
 
@@ -505,7 +505,7 @@ vendor_management_checklist:
     - [ ] Assessment findings tracked to remediation
     - [ ] Vendor risk reported to management quarterly
     - [ ] Offboarding includes data destruction verification
-    - [ ] Evidence retained for compliance [audit](../../AI_and_Agents/Operations/audit/SKILL.md) (3+ years)
+    - [ ] Evidence retained for compliance [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) (3+ years)
 ```
 
 ## Best Practices
@@ -513,7 +513,7 @@ vendor_management_checklist:
 - Tier vendors by risk before investing assessment effort: not every vendor needs a full security review
 - Use standardized questionnaires (SIG, CAIQ, or consistent custom template) for comparable assessments
 - Review SOC 2 Type II reports thoroughly, including complementary user entity controls
-- Include right-to-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) clauses in contracts for critical vendors even if you do not exercise them frequently
+- Include right-to-[audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) clauses in contracts for critical vendors even if you do not exercise them frequently
 - Monitor vendor status pages and set up alerts for outages affecting your services
 - Track sub-processor changes: your vendor's vendor is part of your supply chain risk
 - Maintain a vendor registry as a single source of truth for all vendor relationships

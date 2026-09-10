@@ -403,7 +403,7 @@ signed_by_ci if {
 - Sign all release artifacts with keyless signing (Sigstore/Fulcio)
 - Attach SBOMs as in-toto attestations to container images
 - Scan SBOMs for vulnerabilities in CI and block on critical findings
-- Archive SBOMs for every release for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response
+- Archive SBOMs for every release for [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) and [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response
 - Enforce signature verification in admission controllers (Kyverno, OPA)
 - Monitor for new CVEs against stored SBOMs continuously
 - Include SBOM generation in every build pipeline, not just releases

@@ -90,7 +90,7 @@ security_rule:
       - Automatic logoff (addressable)
       - Encryption and decryption (addressable)
 
-    164.312_b: "[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Controls"
+    164.312_b: "[Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Controls"
     actions:
       - Implement hardware/software/procedural mechanisms to record and examine access (required)
 
@@ -158,7 +158,7 @@ encryption_requirements:
     - [ ] Customer-managed KMS keys for PHI data stores
     - [ ] Key rotation enabled (annual minimum)
     - [ ] Key access restricted to authorized roles only
-    - [ ] Key usage audited via CloudTrail / [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs
+    - [ ] Key usage audited via CloudTrail / [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs
     - [ ] Key deletion protection enabled
 
 access_control:
@@ -257,7 +257,7 @@ aws s3api put-bucket-logging --bucket phi-data-bucket \
   --bucket-logging-status '{"LoggingEnabled": {"TargetBucket": "phi-access-logs", "TargetPrefix": "phi-data-bucket/"}}'
 
 # Enable CloudTrail data events for PHI buckets
-aws cloudtrail put-event-selectors --trail-name hipaa-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-trail \
+aws cloudtrail put-event-selectors --trail-name hipaa-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-trail \
   --advanced-event-selectors '[{
     "Name": "PHI-S3-DataEvents",
     "FieldSelectors": [
@@ -353,9 +353,9 @@ THRESHOLD=$(date -d '90 days ago' +%Y-%m-%dT%H:%M:%S 2>/dev/null || date -v-90d 
 aws iam get-credential-report --output text --query Content | base64 -d | \
   awk -F, -v t="$THRESHOLD" 'NR>1 && $11!="N/A" && $11<t {print "WARN: Stale access key for "$1}'
 
-echo "--- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Controls ---"
+echo "--- [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Controls ---"
 # Verify CloudTrail is logging
-CT_STATUS=$(aws cloudtrail get-trail-status --name hipaa-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-trail --query 'IsLogging' --output text)
+CT_STATUS=$(aws cloudtrail get-trail-status --name hipaa-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-trail --query 'IsLogging' --output text)
 [ "$CT_STATUS" = "True" ] && echo "PASS: CloudTrail active" || echo "FAIL: CloudTrail not logging"
 
 # Verify VPC flow logs
@@ -388,7 +388,7 @@ hipaa_compliance_checklist:
     - [ ] Sanction policy documented and communicated
     - [ ] Contingency plan (backup, DR, emergency mode) documented
     - [ ] Business associate agreements signed for all applicable vendors
-    - [ ] Periodic evaluation/[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) scheduled
+    - [ ] Periodic evaluation/[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) scheduled
 
   technical:
     - [ ] Unique user identification enforced
@@ -396,7 +396,7 @@ hipaa_compliance_checklist:
     - [ ] Automatic logoff configured (15-minute timeout)
     - [ ] Encryption at rest (AES-256) for all PHI stores
     - [ ] Encryption in transit (TLS 1.2+) for all PHI transmission
-    - [ ] [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging enabled for all PHI access
+    - [ ] [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging enabled for all PHI access
     - [ ] Log retention configured for 6+ years
     - [ ] Integrity controls on PHI (checksums, signatures)
     - [ ] Emergency access (break-glass) procedure tested
@@ -430,7 +430,7 @@ hipaa_compliance_checklist:
 - Use only HIPAA-eligible cloud services and sign BAAs before deploying PHI workloads
 - Encrypt all PHI at rest and in transit with no exceptions
 - Implement the minimum necessary standard: grant access only to the PHI needed for each role
-- Maintain [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs of all PHI access for a minimum of 6 years
+- Maintain [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs of all PHI access for a minimum of 6 years
 - Train all workforce members on HIPAA policies at onboarding and annually
 - Test contingency plans (backup restore, DR failover, emergency access) at least annually
 - Track all Business Associate Agreements in a central registry with review dates

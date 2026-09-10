@@ -85,7 +85,7 @@ malicious PR to steal a secret it should never see.
 
 - **Never grant secrets to fork-triggered PR workflows** by default — this is the single most
   common secret-leak vector in public and semi-public repos.
-- **Mask and never log** secret values, and [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) that debug/verbose flags don't defeat masking.
+- **Mask and never log** secret values, and [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) that debug/verbose flags don't defeat masking.
 - **Scope secrets per environment**, not one giant shared secret bag every job can read.
 
 **Done when:** a malicious pull request from an outside contributor cannot access any production

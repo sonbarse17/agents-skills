@@ -90,7 +90,7 @@ Direct file write. No response text.
 | Cache | ElastiCache (Redis) | Sub-millisecond reads, session store | Multi-AZ with replicas |
 | Graph | Neptune | Social graphs, fraud detection | Multi-AZ |
 | Time series | Timestream | IoT, DevOps metrics | Auto-tiered storage |
-| Ledger | QLDB | Immutable [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail | Auto-replicated |
+| Ledger | QLDB | Immutable [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail | Auto-replicated |
 
 ### Storage: S3 vs EBS vs EFS vs FSx
 | Use Case | Recommended | Performance | Max Size |
@@ -501,7 +501,7 @@ Storing AWS access keys in code, config files, or environment variables. Use IAM
 
 ### Multi-Account Strategy
 - Use AWS Organizations with SCPs (Service Control Policies).
-- Separate accounts: Network (shared services), Log Archive, Security ([audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)), Dev/Test/Prod per workload.
+- Separate accounts: Network (shared services), Log Archive, Security ([audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)), Dev/Test/Prod per workload.
 - Use IAM Roles for cross-account access, never IAM users.
 - Deploy CloudTrail organization trail in Log Archive account.
 

@@ -548,7 +548,7 @@ Showing 5-year projections with dollar precision when year 5 estimates are essen
 | Payback period | < 3 years | Cumulative cash flow | Focus on quicker wins |
 | Sensitivity pass | NPV positive at ±20% | Sensitivity table | Strengthen business case |
 | Build vs buy delta | > 20% advantage | Compare TCO options | Re-evaluate both options |
-| Assumption accuracy | Within 20% of actual 1yr | Post-implementation [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) | Improve estimation process |
+| Assumption accuracy | Within 20% of actual 1yr | Post-implementation [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) | Improve estimation process |
 | Stakeholder confidence | > 80% agree with recommendation | Survey reviewers | Address concerns in analysis |
 
 ## CBA Quality Checklist

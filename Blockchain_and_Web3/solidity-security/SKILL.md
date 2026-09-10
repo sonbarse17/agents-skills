@@ -81,7 +81,7 @@ describe("Security Tests", function () {
 });
 ```
 
-## [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Preparation
+## [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) Preparation
 
 ```solidity
 contract WellDocumentedContract {

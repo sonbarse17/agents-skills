@@ -227,7 +227,7 @@ state, `@NonCPS` usage) that recur in pipeline code.
   long-running pipeline, often after several stages have already
   succeeded.
   **Fix:** A class instance held in a pipeline-scoped variable across
-  steps must implement `Serializable`; [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) `src/` classes referenced
+  steps must implement `Serializable`; [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) `src/` classes referenced
   from `vars/*.groovy` and add `implements Serializable`, or mark
   genuinely non-serializable fields (e.g. a network client) `transient`
   and re-initialize them lazily.

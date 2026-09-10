@@ -1,0 +1,466 @@
+[
+  {
+    "relPath": "AI_and_Agents\\Workflows\\abac",
+    "entryFile": "SKILL.md",
+    "name": "abac",
+    "root": "AI_and_Agents/Workflows",
+    "action": "RELOCATE",
+    "newPath": "Security/identity-access/abac"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\agent-bad-response-triage-and-root-cause-classification",
+    "entryFile": "SKILL.md",
+    "name": "agent-bad-response-triage-and-root-cause-classification",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/agent-diagnostics/agent-bad-response-triage-and-root-cause-classification"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\agent-builder",
+    "entryFile": "SKILL.md",
+    "name": "agent-builder",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/agent-development/agent-builder"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\agent-cost-and-latency-spike-investigation",
+    "entryFile": "SKILL.md",
+    "name": "agent-cost-and-latency-spike-investigation",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/agent-diagnostics/agent-cost-and-latency-spike-investigation"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\agent-evals",
+    "entryFile": "SKILL.md",
+    "name": "agent-evals",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/evaluation/agent-evals"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\agent-implementation-plan",
+    "entryFile": "SKILL.md",
+    "name": "agent-implementation-plan",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/agent-development/agent-implementation-plan"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\agent-task-checklist",
+    "entryFile": "SKILL.md",
+    "name": "agent-task-checklist",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/agent-development/agent-task-checklist"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\agent-tool-call-loop-diagnosis-and-circuit-breaking",
+    "entryFile": "SKILL.md",
+    "name": "agent-tool-call-loop-diagnosis-and-circuit-breaking",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/agent-diagnostics/agent-tool-call-loop-diagnosis-and-circuit-breaking"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\agent-walkthrough-report",
+    "entryFile": "SKILL.md",
+    "name": "agent-walkthrough-report",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/agent-development/agent-walkthrough-report"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\agentic-workflows",
+    "entryFile": "SKILL.md",
+    "name": "agentic-workflows",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/agent-development/agentic-workflows"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\ai",
+    "entryFile": "README.md",
+    "name": "ai",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/agent-development/ai"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\ai-agents",
+    "entryFile": "SKILL.md",
+    "name": "ai-agents",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/agent-development/ai-agents"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\ai-architect",
+    "entryFile": "SKILL.md",
+    "name": "ai-architect",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/applied-ai/ai-architect"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\ai-content-optimization",
+    "entryFile": "SKILL.md",
+    "name": "ai-content-optimization",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/applied-ai/ai-content-optimization"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\ai-debt-detector",
+    "entryFile": "SKILL.md",
+    "name": "ai-debt-detector",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/agent-diagnostics/ai-debt-detector"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\ai-inference-service-mesh",
+    "entryFile": "SKILL.md",
+    "name": "ai-inference-service-mesh",
+    "root": "AI_and_Agents/Workflows",
+    "action": "RELOCATE",
+    "newPath": "containers-orchestration/common/service-mesh/ai-inference-service-mesh"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\ai-pipeline-orchestration",
+    "entryFile": "SKILL.md",
+    "name": "ai-pipeline-orchestration",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/pipelines/ai-pipeline-orchestration"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\ai-saas",
+    "entryFile": "SKILL.md",
+    "name": "ai-saas",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/applied-ai/ai-saas"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\ai-testing",
+    "entryFile": "SKILL.md",
+    "name": "ai-testing",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/evaluation/ai-testing"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\airflow-dag-authoring-and-validation",
+    "entryFile": "SKILL.md",
+    "name": "airflow-dag-authoring-and-validation",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/pipelines/airflow-dag-authoring-and-validation"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\airflow-dag-patterns",
+    "entryFile": "SKILL.md",
+    "name": "airflow-dag-patterns",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/pipelines/airflow-dag-patterns"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\airflow-scheduler-and-dag-troubleshooting",
+    "entryFile": "SKILL.md",
+    "name": "airflow-scheduler-and-dag-troubleshooting",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/pipelines/airflow-scheduler-and-dag-troubleshooting"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\avoid-ai-writing",
+    "entryFile": "SKILL.md",
+    "name": "avoid-ai-writing",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/prompt-engineering/avoid-ai-writing"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\chain-of-thought",
+    "entryFile": "SKILL.md",
+    "name": "chain-of-thought",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/prompt-engineering/chain-of-thought"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\chef-puppet-saltstack-legacy-config-management",
+    "entryFile": "SKILL.md",
+    "name": "chef-puppet-saltstack-legacy-config-management",
+    "root": "AI_and_Agents/Workflows",
+    "action": "RELOCATE",
+    "newPath": "infrastructure-as-code/ansible/other/chef-puppet-saltstack-legacy-config-management"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\cli-developer",
+    "entryFile": "SKILL.md",
+    "name": "cli-developer",
+    "root": "AI_and_Agents/Workflows",
+    "action": "RELOCATE",
+    "newPath": "Software_Engineering_and_Other/Backend/common/cli-developer"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\code-knowledge-graph-tools-for-ai-agents",
+    "entryFile": "SKILL.md",
+    "name": "code-knowledge-graph-tools-for-ai-agents",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/agent-development/code-knowledge-graph-tools-for-ai-agents"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\context-engineering",
+    "entryFile": "SKILL.md",
+    "name": "context-engineering",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/prompt-engineering/context-engineering"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\copilot-sdk",
+    "entryFile": "SKILL.md",
+    "name": "copilot-sdk",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/applied-ai/copilot-sdk"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\crewai-and-autogen-multi-agent-frameworks",
+    "entryFile": "SKILL.md",
+    "name": "crewai-and-autogen-multi-agent-frameworks",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/multi-agent/crewai-and-autogen-multi-agent-frameworks"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\deep-research",
+    "entryFile": "SKILL.md",
+    "name": "deep-research",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/applied-ai/deep-research"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\dns-management",
+    "entryFile": "SKILL.md",
+    "name": "dns-management",
+    "root": "AI_and_Agents/Workflows",
+    "action": "RELOCATE",
+    "newPath": "containers-orchestration/common/other/dns-management"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\ebpf-engineering",
+    "entryFile": "SKILL.md",
+    "name": "ebpf-engineering",
+    "root": "AI_and_Agents/Workflows",
+    "action": "RELOCATE",
+    "newPath": "containers-orchestration/kubernetes/networking/ebpf-engineering"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\evaluation-methodology",
+    "entryFile": "SKILL.md",
+    "name": "evaluation-methodology",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/evaluation/evaluation-methodology"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\fairwinds-polaris-and-goldilocks",
+    "entryFile": "SKILL.md",
+    "name": "fairwinds-polaris-and-goldilocks",
+    "root": "AI_and_Agents/Workflows",
+    "action": "RELOCATE",
+    "newPath": "containers-orchestration/kubernetes/security/fairwinds-polaris-and-goldilocks"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\few-shot-prompting",
+    "entryFile": "SKILL.md",
+    "name": "few-shot-prompting",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/prompt-engineering/few-shot-prompting"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\github-issue-creator",
+    "entryFile": "SKILL.md",
+    "name": "github-issue-creator",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/applied-ai/github-issue-creator"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\langchain-patterns",
+    "entryFile": "SKILL.md",
+    "name": "langchain-patterns",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/agent-development/langchain-patterns"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\m365-agents-py",
+    "entryFile": "SKILL.md",
+    "name": "m365-agents-py",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/applied-ai/m365-agents-py"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\m365-agents-ts",
+    "entryFile": "SKILL.md",
+    "name": "m365-agents-ts",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/applied-ai/m365-agents-ts"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\ml-pipeline",
+    "entryFile": "SKILL.md",
+    "name": "ml-pipeline",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/pipelines/ml-pipeline"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\ml-pipeline-workflow",
+    "entryFile": "SKILL.md",
+    "name": "ml-pipeline-workflow",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/pipelines/ml-pipeline-workflow"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\multi-agent-orchestration",
+    "entryFile": "SKILL.md",
+    "name": "multi-agent-orchestration",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/multi-agent/multi-agent-orchestration"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\multi-agent-topology",
+    "entryFile": "SKILL.md",
+    "name": "multi-agent-topology",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/multi-agent/multi-agent-topology"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\parallel-feature-development",
+    "entryFile": "SKILL.md",
+    "name": "parallel-feature-development",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/multi-agent/parallel-feature-development"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\postgresql-high-availability-and-failover",
+    "entryFile": "SKILL.md",
+    "name": "postgresql-high-availability-and-failover",
+    "root": "AI_and_Agents/Workflows",
+    "action": "RELOCATE",
+    "newPath": "Software_Engineering_and_Other/Databases/relational/postgresql-high-availability-and-failover"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\prompt-and-context-engineering",
+    "entryFile": "SKILL.md",
+    "name": "prompt-and-context-engineering",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/prompt-engineering/prompt-and-context-engineering"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\prompt-engineer",
+    "entryFile": "SKILL.md",
+    "name": "prompt-engineer",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/prompt-engineering/prompt-engineer"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\prompt-engineering",
+    "entryFile": "SKILL.md",
+    "name": "prompt-engineering",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/prompt-engineering/prompt-engineering"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\prompt-engineering-patterns",
+    "entryFile": "SKILL.md",
+    "name": "prompt-engineering-patterns",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/prompt-engineering/prompt-engineering-patterns"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\promql-query-authoring",
+    "entryFile": "SKILL.md",
+    "name": "promql-query-authoring",
+    "root": "AI_and_Agents/Workflows",
+    "action": "RELOCATE",
+    "newPath": "observability-monitoring-logging/prometheus/configuration/promql-query-authoring"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\refactor-module",
+    "entryFile": "SKILL.md",
+    "name": "refactor-module",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/applied-ai/refactor-module"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\sql-pro",
+    "entryFile": "SKILL.md",
+    "name": "sql-pro",
+    "root": "AI_and_Agents/Workflows",
+    "action": "RELOCATE",
+    "newPath": "Software_Engineering_and_Other/Databases/relational/sql-pro"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\sysdig-secure-runtime-security",
+    "entryFile": "SKILL.md",
+    "name": "sysdig-secure-runtime-security",
+    "root": "AI_and_Agents/Workflows",
+    "action": "RELOCATE",
+    "newPath": "Security/incident-response/sysdig-secure-runtime-security"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\task-coordination-strategies",
+    "entryFile": "SKILL.md",
+    "name": "task-coordination-strategies",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/multi-agent/task-coordination-strategies"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\tool-calling-principles",
+    "entryFile": "SKILL.md",
+    "name": "tool-calling-principles",
+    "root": "AI_and_Agents/Workflows",
+    "action": "MOVE",
+    "newPath": "AI_and_Agents/Workflows/agent-development/tool-calling-principles"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\vuln-defectdojo",
+    "entryFile": "SKILL.md",
+    "name": "vuln-defectdojo",
+    "root": "AI_and_Agents/Workflows",
+    "action": "RELOCATE",
+    "newPath": "Security/scanning/vuln-defectdojo"
+  },
+  {
+    "relPath": "AI_and_Agents\\Workflows\\vulnerability-management",
+    "entryFile": "SKILL.md",
+    "name": "vulnerability-management",
+    "root": "AI_and_Agents/Workflows",
+    "action": "RELOCATE",
+    "newPath": "Security/scanning/vulnerability-management"
+  }
+]

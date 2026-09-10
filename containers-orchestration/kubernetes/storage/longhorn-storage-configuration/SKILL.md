@@ -50,7 +50,7 @@ Purpose section.
 ## When to use
 
 - Providing dynamically-provisioned, replicated block storage on a
-  [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) or on-prem cluster where object storage and shared
+  [bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md) or on-prem cluster where object storage and shared
   filesystems aren't required.
 - Choosing between [Longhorn](../longhorn/SKILL.md) and Rook-Ceph for a new cluster's storage
   layer.
@@ -321,7 +321,7 @@ Purpose section.
 ## Worked example
 
 **Scenario:** Provide replicated block storage for a Redis cluster on a
-5-node [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) cluster, with daily backups to S3, and validate
+5-node [bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md) cluster, with daily backups to S3, and validate
 recovery after simulating a node failure.
 
 ```bash

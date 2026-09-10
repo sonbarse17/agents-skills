@@ -43,7 +43,7 @@ CQRS separates the data modification (Command) and data retrieval (Query) pipeli
 
 Instead of storing the current state of an entity, Event Sourcing stores a purely append-only log of immutable domain events. The current state is derived by replaying the event stream (Left Fold).
 
-- **Immutability:** Data is never updated or deleted. This guarantees an unimpeachable [audit](../../../../../AI_and_Agents/Operations/audit/SKILL.md) trail.
+- **Immutability:** Data is never updated or deleted. This guarantees an unimpeachable [audit](../../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail.
 - **Snapshots:** To avoid replaying millions of events for an entity, snapshots of the current state are periodically materialized.
 - **Synergy with CQRS:** Event Sourcing naturally pairs with CQRS. The event store acts as the Command model, and event handlers build the Query model projections.
 

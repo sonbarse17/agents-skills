@@ -184,7 +184,7 @@ place.
   Consul instance in CI rather than only validating syntax — semantic
   correctness (does this intention actually allow the right caller)
   can't be confirmed by schema validation alone.
-- Periodically [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) `consul intention list` [datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/datacenter/SKILL.md)-wide for
+- Periodically [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) `consul intention list` [datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/datacenter/SKILL.md)-wide for
   wildcard `allow` rules that have outlived their original purpose —
   intention sprawl is as real a risk here as `AuthorizationPolicy`/
   `NetworkPolicy` sprawl in other meshes.

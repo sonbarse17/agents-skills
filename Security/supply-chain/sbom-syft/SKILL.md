@@ -312,7 +312,7 @@ cat full-sbom.json | jq '.artifacts | group_by(.type) | map({type: .[0].type, co
 
 - **Sensitive Data Handling**: SBOMs may contain internal package names and versions. Store SBOMs securely and restrict access to authorized personnel
 - **Access Control**: Limit SBOM generation and access to build systems. Use read-only credentials for registry access
-- **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging**: Log SBOM generation events, distribution, and access for compliance tracking
+- **[Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logging**: Log SBOM generation events, distribution, and access for compliance tracking
 - **Compliance**: SBOMs support compliance with Executive Order 14028 (Software Supply Chain Security), NIST guidelines, and OWASP recommendations
 - **Safe Defaults**: Use signed attestations for production SBOMs to ensure integrity and provenance
 

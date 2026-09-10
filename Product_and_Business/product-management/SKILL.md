@@ -614,7 +614,7 @@ tier_design:
     purpose: Strategic partnerships, high-value accounts
     limits: Custom, SLA-backed (99.99%), dedicated support
     price: Custom (annual contract)
-    features: SSO/SAML, [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs, dedicated SLAs, custom integrations
+    features: SSO/SAML, [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) logs, dedicated SLAs, custom integrations
 ```
 
 ### Pricing Psychology

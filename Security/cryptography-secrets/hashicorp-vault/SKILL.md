@@ -382,7 +382,7 @@ spec:
 
 - Use short-lived tokens
 - Implement auto-unseal
-- Enable [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging
+- Enable [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging
 - Use namespaces for isolation
 - Rotate root tokens regularly
 - Implement least-privilege policies

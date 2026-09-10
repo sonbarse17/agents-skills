@@ -477,7 +477,7 @@ AUDIT_LOG="/var/log/modsec/modsec_audit.log"
 TIMEFRAME="24h"
 
 echo "=== WAF Tuning Report ==="
-echo "Analyzing last ${TIMEFRAME} of [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs"
+echo "Analyzing last ${TIMEFRAME} of [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs"
 echo ""
 
 # Top blocked rules
@@ -506,7 +506,7 @@ grep -oP 'id "\K[0-9]+' "$AUDIT_LOG" | sort | uniq -c | sort -rn | \
 
 | Problem | Cause | Solution |
 |---------|-------|----------|
-| Legitimate requests blocked | False positives from CRS rules | Set `SecRuleEngine DetectionOnly` first; review [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) log; add exclusions |
+| Legitimate requests blocked | False positives from CRS rules | Set `SecRuleEngine DetectionOnly` first; review [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) log; add exclusions |
 | WAF not blocking attacks | Rules in detection-only mode | Switch `SecRuleEngine On` after tuning period |
 | High latency with WAF enabled | Response body inspection overhead | Disable `SecResponseBodyAccess` if not needed; reduce `paranoia_level` |
 | AWS WAF rules not matching | Rule priority order wrong | Lower priority number = evaluated first; reorder rules |
@@ -525,7 +525,7 @@ grep -oP 'id "\K[0-9]+' "$AUDIT_LOG" | sort | uniq -c | sort -rn | \
 - Set appropriate rate limits per endpoint
 - Maintain exclusion rules documentation with justifications
 - Test WAF rules with known attack payloads before deploying
-- Keep [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs for at least 90 days for forensic analysis
+- Keep [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs for at least 90 days for forensic analysis
 
 ## Related Skills
 

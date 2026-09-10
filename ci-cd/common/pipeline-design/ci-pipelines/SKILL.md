@@ -105,7 +105,7 @@ advisory checks (a nightly-only integration suite, a slow visual regression test
 non-blocking reports, not required statuses — a required check that's flaky trains people to
 click "re-run" without reading the failure, which defeats the entire point of requiring it.
 
-- **[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) required checks quarterly** — delete ones nobody remembers the purpose of.
+- **[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) required checks quarterly** — delete ones nobody remembers the purpose of.
 - **A flaky required check gets fixed or demoted within days**, not left flaky indefinitely.
 - **New required checks get introduced as non-blocking first**, promoted to required once they've
   proven stable for real PRs.

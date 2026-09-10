@@ -43,7 +43,7 @@ jobs:
         uses: returntocorp/semgrep-action@v1
         
       - name: Dependency Scan
-        run: npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) --[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-level=high
+        run: npm [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) --[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-level=high
         
       - name: Container Scan
         uses: aquasecurity/trivy-action@master

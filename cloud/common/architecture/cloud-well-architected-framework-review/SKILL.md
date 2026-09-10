@@ -50,8 +50,8 @@ revisits. This skill guides that review process generically, applicable
 regardless of which provider's framework or tool is used, and is explicit
 that a Well-Architected review is a self-assessment or peer/solutions-
 architect-led review — it produces engineering recommendations and risk
-prioritization, not a compliance certification, a security [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) finding, or
-a substitute for the standards-mapping and legal/[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) processes covered in
+prioritization, not a compliance certification, a security [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) finding, or
+a substitute for the standards-mapping and legal/[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) processes covered in
 [security-compliance-mapping-soc2-iso-pci-nist](../[security-compliance-mapping-soc2-iso-pci-nist](../../Observability_and_SecOps/security-compliance-mapping-soc2-iso-pci-nist/SKILL.md)/SKILL.md).
 
 ## When to use
@@ -217,12 +217,12 @@ a substitute for the standards-mapping and legal/[audit](../../../../AI_and_Agen
   should carry an explicit [cost-optimization](../../cost/cost-optimization/SKILL.md) counter-entry and a
   documented decision, not surface as a surprise later.
 - **Symptom:** The review is treated as a compliance deliverable ("we did
-  our Well-Architected review, we're good for [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)") and handed to a
+  our Well-Architected review, we're good for [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)") and handed to a
   customer or auditor as evidence of security/compliance posture.
   **Fix:** A Well-Architected review is an internal architecture and risk
   health check run by the team (optionally with the cloud provider's
   solutions architects) — it is not a certification and does not
-  substitute for a SOC 2/ISO 27001/PCI-DSS [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md); route compliance-mapping
+  substitute for a SOC 2/ISO 27001/PCI-DSS [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md); route compliance-mapping
   needs to
   [security-compliance-mapping-soc2-iso-pci-nist](../[security-compliance-mapping-soc2-iso-pci-nist](../../Observability_and_SecOps/security-compliance-mapping-soc2-iso-pci-nist/SKILL.md)/SKILL.md)
   and be explicit with stakeholders about the difference.
@@ -270,7 +270,7 @@ out), with the same pillar scorecard re-run to track deltas.
 ## Cross-references
 
 - [cis-benchmarks-hardening](../[cis-benchmarks-hardening](../../../Security/[cis-benchmarks](../../Observability_and_SecOps/cis-benchmarks/SKILL.md)-hardening/SKILL.md)/SKILL.md) — infrastructure/OS-level hardening evidence that feeds the security pillar.
-- [security-compliance-mapping-soc2-iso-pci-nist](../[security-compliance-mapping-soc2-iso-pci-nist](../../Observability_and_SecOps/security-compliance-mapping-soc2-iso-pci-nist/SKILL.md)/SKILL.md) — where to go if the review's security findings need to be mapped to a formal compliance framework for [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) purposes.
+- [security-compliance-mapping-soc2-iso-pci-nist](../[security-compliance-mapping-soc2-iso-pci-nist](../../Observability_and_SecOps/security-compliance-mapping-soc2-iso-pci-nist/SKILL.md)/SKILL.md) — where to go if the review's security findings need to be mapped to a formal compliance framework for [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) purposes.
 - [owasp-top-10-secure-coding-standards](../[owasp-top-10-secure-coding-standards](../owasp-top-10-secure-coding-standards/SKILL.md)/SKILL.md) — application-layer security depth beyond what a workload-level security pillar review typically covers.
 - [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)/SKILL.md) — detailed remediation for security-pillar IAM findings.
 - [cloud-cost-finops-optimization](../../../cloud/skills/[cloud-cost-finops-optimization](../cloud-cost-finops-optimization/SKILL.md)/SKILL.md) — detailed remediation for [cost-optimization](../../cost/cost-optimization/SKILL.md)-pillar findings.

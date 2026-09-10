@@ -252,7 +252,7 @@ cloud resources — that can be trusted in CI or handed to another engineer.
   source — take them as arguments/environment variables
   (`AWS_PROFILE`, `--region`) so the same script runs safely across
   accounts/environments without code changes.
-- Pin dependency versions (`boto3>=1.34,<2`) and run `pip-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)` or
+- Pin dependency versions (`boto3>=1.34,<2`) and run `pip-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)` or
   equivalent in CI so a script's own dependencies don't become the
   vulnerability.
 - Prefer `pathlib.Path` over string path manipulation, and

@@ -36,7 +36,7 @@ depends_on:
 - Run azqr or Azure Quick Review for compliance assessment
 - Validate Azure resource configuration against best practices
 - Identify orphaned or misconfigured resources
-- [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Key [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md) keys, secrets, and certificates for expiration
+- [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) Key [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md) keys, secrets, and certificates for expiration
 
 ## Skill Activation Triggers
 
@@ -48,7 +48,7 @@ Activate this skill when user wants to:
 - Review Azure security posture
 - "Show me expired certificates/keys/secrets in my Key [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md)"
 - "Check what's expiring in the next 30 days"
-- "[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) my Key [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md) for compliance"
+- "[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) my Key [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md) for compliance"
 - "Find secrets without expiration dates"
 - "Check certificate expiration dates"
 
@@ -62,7 +62,7 @@ Activate this skill when user wants to:
 | Assessment | Reference |
 |------------|-----------|
 | Comprehensive Compliance (azqr) | [../../../Global_References/azure-quick-review.md](../../../../Global_References/azure-quick-review.md) |
-| Key [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md) Expiration | [../../../Global_References/[azure-keyvault](../azure-keyvault/SKILL.md)-expiration-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md).md](../../../Global_References/[azure-keyvault](../azure-keyvault/SKILL.md)-expiration-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md).md) |
+| Key [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md) Expiration | [../../../Global_References/[azure-keyvault](../azure-keyvault/SKILL.md)-expiration-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md).md](../../../Global_References/[azure-keyvault](../azure-keyvault/SKILL.md)-expiration-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md).md) |
 | Resource Graph Queries | [../../../Global_References/azure-compliance_azure-resource-graph.md](../../../../Global_References/azure-compliance_azure-resource-graph.md) |
 
 ## MCP Tools

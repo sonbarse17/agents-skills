@@ -436,7 +436,7 @@ try {
 - Raw queries (`$queryRawUnsafe`) risk SQL injection — use `$queryRaw` with parameterized templates
 - Prisma validates input types, but always validate business rules in application layer
 - Connection string in `.env` — never committed to repo
-- [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging via Prisma middleware for sensitive models
+- [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging via Prisma middleware for sensitive models
 - Field-level `@map` for column obfuscation not needed — use DB-level encryption
 - Use `select` to avoid exposing sensitive fields (password hash, etc.)
 
@@ -473,7 +473,7 @@ Use separate test database with test user. Use `prisma migrate deploy` in CI. Us
 - `select` over `include` for production queries — minimize data transfer.
 - Soft deletes via `deletedAt` + middleware filter — never hard delete user data.
 - `$transaction` for atomic multi-table operations.
-- `$extends` for cross-cutting concerns (soft delete, [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md), computed fields).
+- `$extends` for cross-cutting concerns (soft delete, [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md), computed fields).
 - No `prisma.$disconnect()` in [serverless](../../../Patterns/data-performance/serverless/SKILL.md) handlers — let adapter handle pooling.
 - Index all foreign keys and frequently queried columns.
 

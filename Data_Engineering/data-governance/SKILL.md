@@ -45,7 +45,7 @@ Pillar 3 - Trace: Map end-to-end data lineage from source to consumption. Enable
 
 Pillar 4 - Measure: Define quality dimensions and SLAs per dataset. Implement automated quality [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md). Report quality scorecards and alert on breaches.
 
-Pillar 5 - Retain: Define retention schedules per classification. Implement automated purge with dry-run mode. Support legal hold overrides. Maintain [audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail.
+Pillar 5 - Retain: Define retention schedules per classification. Implement automated purge with dry-run mode. Support legal hold overrides. Maintain [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) trail.
 
 ### Data Governance Operating Model
 | Model | Decision Authority | Best For |
@@ -136,7 +136,7 @@ Map data flow from source -> transformation -> consumption. Capture at column le
 Define quality dimensions: completeness (no nulls required), accuracy (matches source of truth), timeliness (within SLA), consistency (same value across systems), uniqueness (no duplicates), validity (conforms to format). Set targets per dataset. Monitor with automated pipelines (Great Expectations, dbt tests, custom checks). Report quality scorecards. Alert on SLA breaches.
 
 ### Step 5: Data Retention and Purge
-Define retention schedules per classification (PII: 6 years, logs: 90 days, business records: 7 years). Implement automated purge pipeline. Legal hold overrides retention. Verify purge completeness with reconciliation. Dry-run mode before execution. Maintain [audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail of all purge operations. Schedule quarterly retention review.
+Define retention schedules per classification (PII: 6 years, logs: 90 days, business records: 7 years). Implement automated purge pipeline. Legal hold overrides retention. Verify purge completeness with reconciliation. Dry-run mode before execution. Maintain [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) trail of all purge operations. Schedule quarterly retention review.
 
 ## Architecture / Decision Trees
 
@@ -160,12 +160,12 @@ Define retention schedules per classification (PII: 6 years, logs: 90 days, busi
 
 ### Classification Level Access Controls
 
-| Level | Encryption | Access Control | [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) | Retention |
+| Level | Encryption | Access Control | [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) | Retention |
 |---|---|---|---|---|
 | Public | None | None | None | Optional |
 | Internal | At rest (default) | Auth required | Error events | 90 days |
 | Confidential | At rest + transit | Role-based | All access logged | 3 years |
-| Restricted | At rest + transit + field-level | Explicit approval per use | Immutable [audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail | Per regulation |
+| Restricted | At rest + transit + field-level | Explicit approval per use | Immutable [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) trail | Per regulation |
 
 ### Quality Dimension Priority
 
@@ -193,7 +193,7 @@ Without clear data ownership, no one is accountable for quality, classification,
 Quality checks without targets are noise. Set specific SLAs: completeness > 99.9%, timeliness < 15min from source, accuracy matches source of truth > 99.99%. Track SLA adherence in [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md). Escalate breaches to data owners.
 
 ### Pitfall 5: Retention Without Purge Automation
-Defining retention policies without automated purge is just documentation. Data accumulates beyond retention. Implement automated purge pipelines. Dry-run mode for first month. Verify purge completeness. Maintain [audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail.
+Defining retention policies without automated purge is just documentation. Data accumulates beyond retention. Implement automated purge pipelines. Dry-run mode for first month. Verify purge completeness. Maintain [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) trail.
 
 ### Pitfall 6: Ignoring Data Contracts
 Without data contracts, producers change schemas and break consumers. Define contracts between producer and consumer: schema, freshness SLA, row count bounds. Validate contracts in CI. Notify consumers of pending changes.
@@ -232,7 +232,7 @@ Trying to capture lineage for every dataset is overwhelming. Start with critical
 - Dry-run mode before purge execution
 - Legal hold mechanism overrides retention
 - Purge verification with reconciliation count
-- Immutable [audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail of all purge operations
+- Immutable [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) trail of all purge operations
 - Quarterly retention policy review
 
 ## Compared With
@@ -253,7 +253,7 @@ Data Governance: policies for all data in the enterprise. MDM: specialized pract
 | GDPR Art. 5 | Data minimization, purpose limitation | Classification, retention |
 | GDPR Art. 17 | Right to erasure | Retention, purge automation |
 | GDPR Art. 30 | Records of processing | Data catalog, lineage |
-| HIPAA 164.312 | Access controls, [audit](../../AI_and_Agents/Operations/audit/SKILL.md) controls | Classification, access logging |
+| HIPAA 164.312 | Access controls, [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) controls | Classification, access logging |
 | HIPAA 164.314 | Business associate agreements | Data contracts |
 | PCI DSS Req. 3 | Protect stored cardholder data | Classification, encryption at rest |
 | SOX 404 | Financial reporting controls | Data quality, lineage |
@@ -265,7 +265,7 @@ Data Governance: policies for all data in the enterprise. MDM: specialized pract
 - Weekly: data steward review of quality alerts and exceptions
 - Monthly: quality scorecards, retention compliance report
 - Quarterly: classification review, ownership review, policy updates
-- Annually: full governance framework [audit](../../AI_and_Agents/Operations/audit/SKILL.md)
+- Annually: full governance framework [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)
 
 ### Data Owner Responsibilities
 - Define data meaning and business rules
@@ -384,7 +384,7 @@ scorecard.add_dimension("Consistency", 99.5, 99.5, weight=1.0)
 print(scorecard.report())
 ```
 
-### Compliance [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Preparation
+### Compliance [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) Preparation
 1. Maintain data classification register
 2. Document retention schedules and purge logs
 3. Keep lineage documentation for critical data
@@ -412,10 +412,10 @@ class PIIAutomatedClassifier:
     }
 
     CLASSIFICATION_ACCESS = {
-        "public": {"encrypt_at_rest": False, "encrypt_in_transit": False, "[audit](../../AI_and_Agents/Operations/audit/SKILL.md)": False, "retention_days": 0},
-        "internal": {"encrypt_at_rest": True, "encrypt_in_transit": True, "[audit](../../AI_and_Agents/Operations/audit/SKILL.md)": "errors_only", "retention_days": 90},
-        "confidential": {"encrypt_at_rest": True, "encrypt_in_transit": True, "[audit](../../AI_and_Agents/Operations/audit/SKILL.md)": "all_access", "retention_days": 1095},
-        "restricted": {"encrypt_at_rest": True, "encrypt_in_transit": True, "[audit](../../AI_and_Agents/Operations/audit/SKILL.md)": "immutable_trail", "retention_days": 2190},
+        "public": {"encrypt_at_rest": False, "encrypt_in_transit": False, "[audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)": False, "retention_days": 0},
+        "internal": {"encrypt_at_rest": True, "encrypt_in_transit": True, "[audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)": "errors_only", "retention_days": 90},
+        "confidential": {"encrypt_at_rest": True, "encrypt_in_transit": True, "[audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)": "all_access", "retention_days": 1095},
+        "restricted": {"encrypt_at_rest": True, "encrypt_in_transit": True, "[audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)": "immutable_trail", "retention_days": 2190},
     }
 
     def __init__(self, schema_registry_url: str):
@@ -532,7 +532,7 @@ retention_policies:
 ## Anti-Patterns
 
 ### Anti-Pattern 1: Governance by Spreadsheet
-Managing data classification, lineage, and quality in shared spreadsheets. Spreadsheets are stale the moment they're saved, have no enforcement, and no [audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail. Use automated tools: data catalogs, schema registries, quality monitors.
+Managing data classification, lineage, and quality in shared spreadsheets. Spreadsheets are stale the moment they're saved, have no enforcement, and no [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) trail. Use automated tools: data catalogs, schema registries, quality monitors.
 
 ### Anti-Pattern 2: Classifying Everything as Restricted
 When everything is Restricted, nothing is. Teams bypass controls because they're too burdensome. Default to Internal. Use automated discovery to find and escalate only genuinely sensitive data. Review quarterly.
@@ -560,7 +560,7 @@ Trying to capture lineage for every column in every table. Teams burn out mainta
 - Automated scanning for sensitive data must run weekly
 - Access reviews for Restricted data conducted quarterly
 - Retention schedules reviewed and updated annually
-- All purge operations logged with immutable [audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail
+- All purge operations logged with immutable [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) trail
 
 ## References
 - ../../../Global_References/data-governance-fundamentals.md -- Data Governance Fundamentals
@@ -574,5 +574,5 @@ Trying to capture lineage for every column in every table. Teams burn out mainta
   - ../../../Global_References/data-contracts.md -- Data Contracts and Sharing Agreements
 
 ## Handoff
-For compliance requirements on data handling, hand off to `[enterprise-compliance-audit](../../AI_and_Agents/Operations/audit/SKILL.md)/SKILL.md)`. For multi-tenant data isolation, hand off to `[enterprise-multi-tenant](../../Software_Engineering_and_Other/Patterns/distributed-systems/multi-tenant/SKILL.md)`.
+For compliance requirements on data handling, hand off to `[enterprise-compliance-audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)/SKILL.md)`. For multi-tenant data isolation, hand off to `[enterprise-multi-tenant](../../Software_Engineering_and_Other/Patterns/distributed-systems/multi-tenant/SKILL.md)`.
 

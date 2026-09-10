@@ -60,7 +60,7 @@ flowchart TD
         eBPFHook -->|3. Executes| eBPFProg[eBPF Program]
         eBPFProg -->|4. Evaluates Policy| PolicyEval{Policy Match?}
         PolicyEval -->|5a. Block: Return Error| LSMEnforce[Syscall Denied - ENOPERM]
-        PolicyEval -->|5b. Allow & [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md)| eBPFMap[(eBPF Ring Buffer / Map)]
+        PolicyEval -->|5b. Allow & [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)| eBPFMap[(eBPF Ring Buffer / Map)]
     end
     
     LSMEnforce -.-> UserSpace

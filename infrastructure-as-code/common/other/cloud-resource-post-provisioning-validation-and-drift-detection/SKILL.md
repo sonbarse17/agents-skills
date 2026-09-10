@@ -81,7 +81,7 @@ landing-zone skills).
   encryption requirements, public-access blocks).
 - Azure Policy assigned at the Management Group/subscription scope with
   the relevant built-in or custom policy definitions (tagging, allowed
-  locations, required diagnostic settings) in an [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) or deny effect.
+  locations, required diagnostic settings) in an [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) or deny effect.
 - GCP equivalent: Organization Policy constraints plus Security Command
   Center's Security Health Analytics / Policy Controller (if using
   Anthos Config Management/GKE), or a scheduled `gcloud asset
@@ -268,7 +268,7 @@ landing-zone skills).
   console edit, a separate automation, an AWS-side attribute
   auto-updating). Run `terraform plan -refresh-only` first to isolate
   drift from pending config changes, and check CloudTrail/Activity
-  Log/Cloud [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Logs for the resource ID over the relevant window to
+  Log/Cloud [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logs for the resource ID over the relevant window to
   identify who or what made the out-of-band change before assuming
   tooling is at fault.
 
@@ -318,7 +318,7 @@ landing-zone skills).
 
 ## Worked example
 
-**Scenario:** A quarterly infrastructure [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) is scheduled for the
+**Scenario:** A quarterly infrastructure [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) is scheduled for the
 `payments-prod` AWS account ahead of a compliance review, to confirm
 provisioned resources match Terraform-declared intent and required
 guardrails (encryption, tagging, no public S3 buckets) are actually
@@ -364,7 +364,7 @@ enforced.
    scheduled, change-triggered Config rule evaluation plus a follow-up
    process requiring [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-related manual changes to be tracked in a
    ticket with an explicit revert date, rather than relying on the next
-   quarterly [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) to catch it.
+   quarterly [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) to catch it.
 
 ## Cross-references
 

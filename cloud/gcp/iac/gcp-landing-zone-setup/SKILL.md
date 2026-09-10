@@ -33,7 +33,7 @@ independently, but with no inherent hierarchy unless one is imposed through
 Resource Manager folders. Without a landing zone, organizations accumulate
 hundreds of ungoverned projects with inconsistent Organization Policies,
 no shared VPC, and IAM bindings granted directly at the project level with
-no [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail of why. This skill defines a landing zone aligned to
+no [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail of why. This skill defines a landing zone aligned to
 Google's **enterprise foundations blueprint**: a folder hierarchy that
 encodes environment and business-unit boundaries, Organization Policy
 constraints enforced top-down, Shared VPC for centralized networking, and
@@ -165,10 +165,10 @@ network-connected the moment they're created.
 
 6. **Enable an organization-wide log sink** to a centralized project
    (`fldr-common`) using an aggregated log sink at the Organization node,
-   so every project's Admin Activity and Data Access [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs land in
+   so every project's Admin Activity and Data Access [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs land in
    one place regardless of which folder the project sits in:
    ```bash
-   gcloud logging sinks create org-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-sink \
+   gcloud logging sinks create org-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-sink \
      bigquery.googleapis.com/projects/prj-logging/datasets/audit_logs \
      --organization=<ORG_ID> --include-children \
      --log-filter='logName:"logs/cloudaudit.googleapis.com"'
@@ -184,7 +184,7 @@ network-connected the moment they're created.
 8. **Validate with a canary project**: vend one throwaway project through
    the factory, confirm Organization Policy constraints show as enforced
    (`gcloud resource-manager org-policies describe`), Shared VPC
-   attachment succeeded, and the aggregated log sink captured its [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)
+   attachment succeeded, and the aggregated log sink captured its [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)
    logs, then delete it.
 
 ## Best practices

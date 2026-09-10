@@ -124,7 +124,7 @@ decisions between phases.
 3. **Phase 3 — LLM gateway and multi-provider routing.** Stand up an LLM
    gateway (LiteLLM proxy, Portkey, or an equivalent) in front of the
    chosen provider(s) per
-   [llm-gateway-and-multi-provider-routing](../[llm-gateway-and-multi-provider-routing](../../../AI_and_Agents/Models_and_FineTuning/[llm-gateway](../../../AI_and_Agents/Models_and_FineTuning/llm-gateway/SKILL.md)-and-multi-provider-routing/SKILL.md)/SKILL.md),
+   [llm-gateway-and-multi-provider-routing](../../../../AI_and_Agents/Models_and_FineTuning/llm-platform/llm-gateway/SKILL.md)-and-multi-provider-routing/SKILL.md)/SKILL.md),
    with the Phase 2 agent code calling a logical model-group name through
    the gateway rather than a provider SDK directly:
    ```yaml
@@ -143,7 +143,7 @@ decisions between phases.
 
 4. **Phase 4 — RAG pipeline and managed vector database.** Design the
    chunking, embedding, and retrieval pattern per
-   [rag-pipeline-design](../[rag-pipeline-design](../../../AI_and_Agents/Models_and_FineTuning/rag-pipeline-design/SKILL.md)/SKILL.md) **before**
+   [rag-pipeline-design](../../../../AI_and_Agents/Models_and_FineTuning/rag-embeddings/rag-pipeline-design/SKILL.md)/SKILL.md) **before**
    provisioning and locking in the managed vector database's index
    configuration per
    [vector-[database-operations](../../../../Software_Engineering_and_Other/Databases/common/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../../../AI_and_Agents/Infrastructure/vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md)
@@ -165,7 +165,7 @@ decisions between phases.
 
 5. **Phase 5 — MCP servers for tool access.** Build and connect MCP
    servers exposing the agent's tools per
-   [mcp-server-development](../[mcp-server-development](../../../AI_and_Agents/Infrastructure/mcp-server-development/SKILL.md)/SKILL.md), with each
+   [mcp-server-development](../../../../AI_and_Agents/Infrastructure/mcp/mcp-server-development/SKILL.md)/SKILL.md), with each
    server's backend credential scoped to least privilege for the specific
    tool surface it exposes — never the landing zone's broad default
    workload role reused for convenience. Classify every tool per the
@@ -176,7 +176,7 @@ decisions between phases.
 
 6. **Phase 6 — evaluation harness and guardrails.** Build the offline
    eval set and runtime guardrail layer per
-   [agent-evaluation-and-guardrails](../[agent-evaluation-and-guardrails](../../../AI_and_Agents/Models_and_FineTuning/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md)
+   [agent-evaluation-and-guardrails](../../../../AI_and_Agents/Models_and_FineTuning/evaluation/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md)
    **before** the Phase 3–5 stack (gateway, RAG, MCP tools) is exposed to
    real production traffic — include adversarial cases specifically for
    RAG-content injection (Phase 4) and MCP-tool-output injection (Phase 5)
@@ -187,7 +187,7 @@ decisions between phases.
    cost, latency, and fallback-trigger metrics at the Phase 3 gateway,
    and apply the structural cost/latency levers (context trimming,
    prompt caching, right-sized models per step, batching) from
-   [llm-cost-and-latency-optimization](../[llm-cost-and-latency-optimization](../../../AI_and_Agents/Models_and_FineTuning/llm-cost-and-latency-optimization/SKILL.md)/SKILL.md).
+   [llm-cost-and-latency-optimization](../../../../AI_and_Agents/Models_and_FineTuning/llm-platform/llm-cost-and-latency-optimization/SKILL.md)/SKILL.md).
    Wire this to alert on **per-provider** spend and fallback-trigger rate,
    not only an aggregate total — a prolonged failover to the Phase 3
    fallback provider is invisible in an aggregate cost view until the
@@ -318,9 +318,9 @@ this skill are designed to produce.
 
 - [aws-landing-zone-setup](../../../cloud/skills/[aws-landing-zone-setup](../aws-landing-zone-setup/SKILL.md)/SKILL.md), [azure-landing-zone-setup](../../../cloud/skills/[azure-landing-zone-setup](../azure-landing-zone-setup/SKILL.md)/SKILL.md), [gcp-landing-zone-setup](../../../cloud/skills/[gcp-landing-zone-setup](../gcp-landing-zone-setup/SKILL.md)/SKILL.md) — Phase 1's account/subscription/project and network-guardrail foundation.
 - [agent-architecture-design](../../../../AI_and_Agents/Architecture/agent-patterns/agent-architecture-design/SKILL.md)/SKILL.md) — Phase 2's control-loop, termination, and tool-boundary design.
-- [llm-gateway-and-multi-provider-routing](../[llm-gateway-and-multi-provider-routing](../../../AI_and_Agents/Models_and_FineTuning/[llm-gateway](../../../AI_and_Agents/Models_and_FineTuning/llm-gateway/SKILL.md)-and-multi-provider-routing/SKILL.md)/SKILL.md) — Phase 3's gateway/fallback configuration.
-- [rag-pipeline-design](../[rag-pipeline-design](../../../AI_and_Agents/Models_and_FineTuning/rag-pipeline-design/SKILL.md)/SKILL.md) — Phase 4's chunking/embedding/retrieval design.
+- [llm-gateway-and-multi-provider-routing](../../../../AI_and_Agents/Models_and_FineTuning/llm-platform/llm-gateway/SKILL.md)-and-multi-provider-routing/SKILL.md)/SKILL.md) — Phase 3's gateway/fallback configuration.
+- [rag-pipeline-design](../../../../AI_and_Agents/Models_and_FineTuning/rag-embeddings/rag-pipeline-design/SKILL.md)/SKILL.md) — Phase 4's chunking/embedding/retrieval design.
 - [vector-[database-operations](../../../../Software_Engineering_and_Other/Databases/common/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../../../AI_and_Agents/Infrastructure/vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md) — Phase 4's managed vector index configuration and scaling.
-- [mcp-server-development](../[mcp-server-development](../../../AI_and_Agents/Infrastructure/mcp-server-development/SKILL.md)/SKILL.md) — Phase 5's tool-server build and credential scoping.
-- [agent-evaluation-and-guardrails](../[agent-evaluation-and-guardrails](../../../AI_and_Agents/Models_and_FineTuning/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md) — Phase 6's offline eval harness and runtime guardrails.
-- [llm-cost-and-latency-optimization](../[llm-cost-and-latency-optimization](../../../AI_and_Agents/Models_and_FineTuning/llm-cost-and-latency-optimization/SKILL.md)/SKILL.md) — Phase 7's structural cost/latency levers.
+- [mcp-server-development](../../../../AI_and_Agents/Infrastructure/mcp/mcp-server-development/SKILL.md)/SKILL.md) — Phase 5's tool-server build and credential scoping.
+- [agent-evaluation-and-guardrails](../../../../AI_and_Agents/Models_and_FineTuning/evaluation/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md) — Phase 6's offline eval harness and runtime guardrails.
+- [llm-cost-and-latency-optimization](../../../../AI_and_Agents/Models_and_FineTuning/llm-platform/llm-cost-and-latency-optimization/SKILL.md)/SKILL.md) — Phase 7's structural cost/latency levers.

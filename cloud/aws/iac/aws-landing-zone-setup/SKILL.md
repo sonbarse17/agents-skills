@@ -32,11 +32,11 @@ A landing zone is the multi-account foundation an organization builds once
 and every application team builds on top of afterward: account structure,
 identity, network, logging, and guardrails. Getting it wrong is expensive to
 unwind — teams end up with flat single-account sprawl, inconsistent
-tagging, no centralized [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail, and no policy enforcement boundary
+tagging, no centralized [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail, and no policy enforcement boundary
 between "sandbox" and "production." This skill defines a repeatable,
 Control-Tower-based AWS landing zone so new accounts are vended consistently,
 guardrails are enforced at the Organizational Unit (OU) level instead of
-per-account, and security/[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) teams get a single pane of glass without
+per-account, and security/[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) teams get a single pane of glass without
 blocking developer velocity.
 
 ## When to use
@@ -71,7 +71,7 @@ blocking developer velocity.
 - A registered root/parent domain or subdomain delegation if you plan
   per-account Route 53 zones.
 - Budget for the mandatory Control Tower resources: a Log Archive account
-  and an [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) account are created automatically and incur S3/CloudTrail/
+  and an [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) account are created automatically and incur S3/CloudTrail/
   Config costs even when idle.
 
 ## Step-by-step guidance
@@ -82,7 +82,7 @@ blocking developer velocity.
    Root
    ├── Security OU
    │   ├── Log Archive (AWS-managed by Control Tower)
-   │   └── [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) (AWS-managed by Control Tower)
+   │   └── [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) (AWS-managed by Control Tower)
    ├── Infrastructure OU
    │   ├── Network (Transit Gateway hub, Route 53 Resolver)
    │   └── Shared Services (CI/CD runners, artifact registries)
@@ -107,7 +107,7 @@ blocking developer velocity.
 
 3. **Bootstrap Control Tower** in the management account via the console
    or the `aws-ia/aws-ia-landing-zone-accelerator` reference architecture.
-   Control Tower will provision the Log Archive and [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) accounts and
+   Control Tower will provision the Log Archive and [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) accounts and
    enable AWS Config, CloudTrail (org trail), and mandatory guardrails
    automatically.
 
@@ -172,7 +172,7 @@ blocking developer velocity.
 6. **Centralize logging and security tooling.** Ensure the org-wide
    CloudTrail trail and AWS Config aggregator write to the Log Archive
    account, and delegate GuardDuty, Security Hub, and IAM Access Analyzer
-   administration to the [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) account via
+   administration to the [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) account via
    `organizations:RegisterDelegatedAdministrator` so account teams cannot
    disable them.
 
@@ -251,7 +251,7 @@ proper landing zone before launching a second product line.
 2. Invite `legacy-prod` into the new Organization as a member account
    under `Workloads/Prod`.
 3. Enable Control Tower in the Management account; it provisions
-   `log-archive` and `[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)` accounts automatically.
+   `log-archive` and `[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)` accounts automatically.
 4. Attach the region-restriction and root-lockout SCPs (shown above) to
    `Root` and the `Workloads` OU.
 5. Use AFT to vend `checkout-prod` and `checkout-staging` for the new
@@ -259,7 +259,7 @@ proper landing zone before launching a second product line.
    respectively — each arrives with CloudTrail, Config, GuardDuty
    delegation, and an IAM Identity Center permission set for the
    `checkout-team` group already wired up.
-6. Register the [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) account as delegated administrator for GuardDuty and
+6. Register the [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) account as delegated administrator for GuardDuty and
    Security Hub so `checkout-team` engineers (who only have
    `PowerUserAccess` in their own account) cannot disable org-wide
    security tooling.

@@ -187,7 +187,7 @@ or the tracing backend's own storage/sampling/correlation concerns (see
    > with a different propagator (e.g. legacy B3 while everything else
    > uses W3C Trace Context), that service becomes an invisible break in
    > every trace passing through it — the trace doesn't error, it just
-   > silently splits into two disconnected traces at that hop. [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)
+   > silently splits into two disconnected traces at that hop. [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)
    > propagator configuration explicitly when onboarding any
    > legacy/third-party service into an existing trace topology.
 
@@ -375,7 +375,7 @@ or the tracing backend's own storage/sampling/correlation concerns (see
   commercial APM's proprietary protocol) so application code never
   couples to a specific backend.
 - Standardize the context-propagation format across every service in the
-  organization and [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) it explicitly whenever a new/legacy/third-party
+  organization and [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) it explicitly whenever a new/legacy/third-party
   service is onboarded into an existing trace topology.
 - Always put `memory_limiter` first in every pipeline's processor list —
   treat any pipeline missing it as a production risk, not a minor

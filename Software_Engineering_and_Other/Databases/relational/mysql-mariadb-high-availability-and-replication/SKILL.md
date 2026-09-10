@@ -323,7 +323,7 @@ across three AZs.
    to whichever node currently reports healthy `wsrep_local_state = 4`
    (Synced), with automatic failover between nodes on health-check
    failure — application connection strings point only at ProxySQL.
-4. [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) application code for retry-on-1213 handling; find the payment
+4. [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) application code for retry-on-1213 handling; find the payment
    settlement service lacks it, add exponential-backoff retry around
    the [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) path specifically for deadlock-class errors before
    go-live.

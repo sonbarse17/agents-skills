@@ -200,7 +200,7 @@ verification passed at some point" as sufficient.
   **Fix:** Almost always a stale deployment record — the broker thinks
   an old version of the other service is deployed because
   `record-deployment` wasn't called after its last deploy (step 3);
-  [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) whether every service's deploy pipeline actually calls
+  [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) whether every service's deploy pipeline actually calls
   `record-deployment` on success, not just on the service being checked.
 
 - **Symptom:** A provider team disables Pact verification/`can-i-deploy`

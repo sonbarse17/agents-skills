@@ -89,7 +89,7 @@ Design and implement CI/CD pipelines with proper stages, dependency caching, par
 |---|---|---|---|
 | SAST (Static Analysis) | SonarQube, Semgrep, CodeQL, Snyk Code | After checkout | 5-15 min |
 | DAST (Dynamic) | OWASP ZAP, Burp Suite | After deploy to staging | 10-30 min |
-| Dependency scan | OWASP DC, Snyk, Trivy, npm [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) | After install | 2-5 min |
+| Dependency scan | OWASP DC, Snyk, Trivy, npm [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) | After install | 2-5 min |
 | Container scan | Trivy, Clair, Snyk Container, Grype | After [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) build | 2-10 min |
 | IaC scan | Checkov, tfsec, KICS, Terrascan | After infrastructure code | 1-3 min |
 | Secret scan | Gitleaks, TruffleHog, GitGuardian | On every [commit](../../git-workflow/commit/SKILL.md) | 1-3 min |
@@ -148,7 +148,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: npm ci
-      - run: npm [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) --[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-level=high
+      - run: npm [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) --[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-level=high
       - uses: aquasecurity/trivy-action@master
         with:
           scan-type: 'fs'
@@ -417,7 +417,7 @@ Pipeline runs for 30+ min before failing at end. Fail fast: lint first, then bui
 - Scan container images before registry push.
 - Scan IaC templates for misconfigurations.
 - Use OIDC/Workload Identity instead of static credentials.
-- [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) pipeline access and changes regularly.
+- [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) pipeline access and changes regularly.
 - Sign build artifacts and images (cosign).
 
 ### Performance
@@ -430,7 +430,7 @@ Pipeline runs for 30+ min before failing at end. Fail fast: lint first, then bui
 ### Governance
 - Require PR approval before pipeline trigger.
 - Enforce branch protection rules.
-- [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) pipeline changes via code review.
+- [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) pipeline changes via code review.
 - Use pipeline templates/shared configs across teams.
 - Define deployment freeze windows.
 
@@ -574,5 +574,5 @@ promote_to_prod "$@"
 - Rotate CI/CD tokens and service account credentials every 30 days
 - Scan **[infrastructure-as-code](../../../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md)** (Terraform, Helm) for misconfigurations using Checkov
 - Restrict **pipeline trigger** permissions to trusted actors only
-- [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) **pipeline logs** centrally and alert on suspicious activity (exfiltrated env vars)
+- [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) **pipeline logs** centrally and alert on suspicious activity (exfiltrated env vars)
 

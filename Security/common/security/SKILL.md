@@ -101,7 +101,7 @@ What data does the app handle?
 │   └── Network security config hardened
 ├── Health data (HIPAA)
 │   ├── All of the above +
-│   ├── [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging for all data access
+│   ├── [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging for all data access
 │   ├── BAA agreement with cloud providers
 │   ├── Encryption at rest + in transit (always)
 │   └── Penetration testing required before launch

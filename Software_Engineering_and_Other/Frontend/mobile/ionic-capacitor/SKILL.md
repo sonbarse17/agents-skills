@@ -289,12 +289,12 @@ The WebView is the bottleneck in Ionic apps. Optimize for 60fps scrolling and sm
 - **CSS containment**: `contain: layout style paint` on off-screen components prevents the browser from recalculating layout/style/paint for elements outside the viewport. Apply to static sidebars, headers, footers.
 - **`ion-img` over `<img>`**: Ionic's image component uses IntersectionObserver for lazy loading — images outside viewport don't load. Set `--lazy-load-threshold` for pre-load buffer. Fallback: `loading="lazy"` attribute on native `<img>`.
 - **Virtual scrolling**: `ion-virtual-scroll` renders only visible items + buffer. For lists >100 items, always use virtual scrolling. Configure `approxItemHeight` for smoother scroll. Replaced with `ion-list` + `virtual-scroll` in newer Ionic versions; consider `cdk-virtual-scroll-viewport` from Angular CDK for Angular projects.
-- **Reduce DOM node count**: Target <1500 DOM nodes for good performance. [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) with Chrome DevTools Elements panel. Replace nested `<div>` chains with CSS Grid/Flexbox single-layer layouts. Use `ion-item` directly without wrapping in extra `<div>` elements.
+- **Reduce DOM node count**: Target <1500 DOM nodes for good performance. [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) with Chrome DevTools Elements panel. Replace nested `<div>` chains with CSS Grid/Flexbox single-layer layouts. Use `ion-item` directly without wrapping in extra `<div>` elements.
 - **WebView pool ([Android](../../../../Mobile/android/SKILL.md))**: [Android](../../../../Mobile/android/SKILL.md) WebView instances consume ~100MB each. If the app opens secondary WebViews (for external links, in-app browsers), reuse the existing WebView instance or use Custom Tabs (Chrome custom tabs) instead.
 
 ### JavaScript Bundle Optimization
 
-- **Tree-shaking**: Ionic components tree-shake with Vite by default — but only if you import from specific paths: `import { IonButton } from '@ionic/react'` instead of importing everything. [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) with `vite-plugin-inspect` or `webpack-bundle-analyzer`.
+- **Tree-shaking**: Ionic components tree-shake with Vite by default — but only if you import from specific paths: `import { IonButton } from '@ionic/react'` instead of importing everything. [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) with `vite-plugin-inspect` or `webpack-bundle-analyzer`.
 - **Lazy load routes**: Framework-specific lazy loading. Angular: `loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule)`. React: `React.lazy(() => import('./OrdersPage'))`. Vue: `() => import('./OrdersPage.vue')`.
 - **Capacitor plugin tree-shaking**: Capacitor plugins register at build time; unused plugins don't add JS overhead. However, native SDKs ([Android](../../../../Mobile/android/SKILL.md) `build.gradle` dependencies, iOS Pods) always add binary size. Remove unused plugins from `package.json` and run `npx cap sync`.
 - **Preload critical chunks**: Use `<link rel="modulepreload">` for the app shell and first-route modules. Reduces waterfall of module loading. Configure in `vite.config.ts` via `optimizeDeps.include`.
@@ -595,7 +595,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
+- Repudiation: [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -609,7 +609,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Secrets Management
 - Secrets never in code — always in secrets manager ([Vault](../../../../Security/cryptography-secrets/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
+- Access [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -618,7 +618,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
+- Log security-relevant events for [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
 - Design for [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.

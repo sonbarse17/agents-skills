@@ -121,7 +121,7 @@ guidance in
    worker pool), verify a worker is registered specifically for that
    queue — don't assume the workflow's own worker also covers it.
 
-3. **[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) every activity for an explicit timeout appropriate to its
+3. **[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) every activity for an explicit timeout appropriate to its
    real latency**, treating a missing or default-only timeout as a
    finding, not an acceptable gap:
    ```go
@@ -145,7 +145,7 @@ guidance in
    effectively unbounded total duration if `MaximumAttempts` is also
    unset.
 
-4. **[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) every retry policy for a bounded `MaximumAttempts` or a
+4. **[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) every retry policy for a bounded `MaximumAttempts` or a
    sane `MaximumInterval`**, and confirm genuinely non-retryable error
    types are actually listed:
    ```go
@@ -347,7 +347,7 @@ before it goes live for real customer orders.
    `TASK_QUEUE=order-fulfillment-tq` matching the workflow-starter code
    exactly.
 
-2. Timeout/retry [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) of each activity (`ReserveInventory`,
+2. Timeout/retry [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) of each activity (`ReserveInventory`,
    `ChargePayment`, `ReleaseInventory`, `ShipOrder`) confirms each has an
    explicit `StartToCloseTimeout`, a `MaximumAttempts` bound, and
    `ChargePayment` specifically lists `CardDeclinedError` under

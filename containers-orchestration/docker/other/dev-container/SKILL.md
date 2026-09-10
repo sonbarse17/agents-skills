@@ -558,7 +558,7 @@ CMD ["node", "dist/server.js"]
 
 ### Supply Chain
 - **Image scanning**: Scan base images with Trivy/Snyk before use. Pin to digest, not tag.
-- **Dependency [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)**: Run npm [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)/pip [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) in postCreateCommand. Fail on critical vulnerabilities.
+- **Dependency [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)**: Run npm [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)/pip [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) in postCreateCommand. Fail on critical vulnerabilities.
 - **Signature verification**: Verify image signatures with cosign. Use [Docker](../docker/SKILL.md) Content Trust for pull.
 
 ### Secrets Management

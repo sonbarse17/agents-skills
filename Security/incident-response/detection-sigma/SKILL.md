@@ -196,7 +196,7 @@ For implementing compliance [monitoring](../../../observability-monitoring-loggi
 4. **Generate Compliance Report**
    - Document detection coverage by control
    - Include sample queries and expected alerts
-   - Maintain [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail for compliance evidence
+   - Maintain [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail for compliance evidence
 
 ## Rule Structure Reference
 
@@ -309,9 +309,9 @@ detection:
 
 - **Access Control**: Detection rules reveal defensive capabilities to adversaries. Implement role-based access for rule repositories. Limit rule modification to authorized detection engineers.
 
-- **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging**: Log all rule deployments, modifications, and deletions. Track who deployed which rules to which systems. Maintain change history for compliance auditing.
+- **[Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logging**: Log all rule deployments, modifications, and deletions. Track who deployed which rules to which systems. Maintain change history for compliance auditing.
 
-- **Compliance**: Sigma rules support compliance [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (PCI-DSS 10.2, NIST SP 800-53 AU family, ISO 27001 A.12.4). Document rule-to-control mappings for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) evidence.
+- **Compliance**: Sigma rules support compliance [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (PCI-DSS 10.2, NIST SP 800-53 AU family, ISO 27001 A.12.4). Document rule-to-control mappings for [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) evidence.
 
 - **Safe Defaults**: Use conservative false positive filtering in production. Start rules at "experimental" status. Test thoroughly in test environment before production deployment.
 
@@ -342,7 +342,7 @@ detection:
 
 - `assets/compliance-rules/` - Compliance-focused rule templates
   - `pci-dss-[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).yml` - PCI-DSS [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) requirements
-  - `nist-800-53-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md).yml` - NIST 800-53 [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging requirements
+  - `nist-800-53-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md).yml` - NIST 800-53 [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging requirements
   - `iso27001-logging.yml` - ISO 27001 logging and [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 ## Common Detection Patterns

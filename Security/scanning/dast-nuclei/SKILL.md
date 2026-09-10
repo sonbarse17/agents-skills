@@ -411,7 +411,7 @@ http:
 - **Sensitive Data**: Scan results may contain sensitive URLs, parameters, and application details - sanitize before sharing
 - **False Positives**: Manually verify all critical and high severity findings before raising security incidents
 - **Access Control**: Restrict access to scan results and templates containing organization-specific vulnerability patterns
-- **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging**: Log all scan executions, targets, findings severity, and remediation actions for compliance
+- **[Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logging**: Log all scan executions, targets, findings severity, and remediation actions for compliance
 - **Legal Compliance**: Adhere to computer fraud and abuse laws; unauthorized scanning may violate laws
 - **Credentials Management**: Never hardcode credentials in templates; use environment variables or secrets management
 - **Scope Validation**: Double-check target lists to avoid scanning third-party or out-of-scope systems

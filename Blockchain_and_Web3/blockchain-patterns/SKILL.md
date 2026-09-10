@@ -98,7 +98,7 @@ Pattern recommendation with:
 ### Phase 4: Integration and Testing
 13. Test pattern with all standard interfaces (ERC-165 support)
 14. Fork-test against mainnet state (simulate real-world interactions)
-15. [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) pattern interactions (composability risks, circular dependencies)
+15. [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) pattern interactions (composability risks, circular dependencies)
 16. Deploy with proper initialization and ownership transfer
 
 ## Architecture / Decision Trees

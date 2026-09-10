@@ -60,7 +60,7 @@ Protection: {mask|encrypt|tokenize|anonymize|redact}
 - [ ] All sensitive fields identified and classified.
 - [ ] Protection strategy chosen per classification.
 - [ ] Masking/encryption implemented at the application or database layer.
-- [ ] [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) log of data access recorded.
+- [ ] [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) log of data access recorded.
 - [ ] Right-to-deletion workflow for GDPR Article 17.
 
 ### Max Response Length
@@ -313,10 +313,10 @@ async function findByEmail(email: string): Promise<User | null> {
 | Public | Product names, prices | None |
 | Internal | Employee emails, team names | Mask on external display |
 | Confidential | Customer names, phone numbers | Encrypt at rest |
-| Restricted | SSN, passport numbers, medical records | Encrypt + mask + [audit](../../AI_and_Agents/Operations/audit/SKILL.md) |
+| Restricted | SSN, passport numbers, medical records | Encrypt + mask + [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) |
 | Regulated | Credit card numbers, health info | Tokenize + PCI/HIPAA controls |
 
-### [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Requirements
+### [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) Requirements
 Log every access to classified data:
 ```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 async function readWithAudit(userId: string, fieldName: string): Promise<string> {
@@ -351,13 +351,13 @@ async function readWithAudit(userId: string, fieldName: string): Promise<string>
 - Encryption keys must be stored in a KMS, never in the codebase.
 - Support the right to be forgotten: anonymize, do not cascade delete.
 - Classify data at the schema level with database comments or tags.
-- [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) every read of sensitive data.
+- [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) every read of sensitive data.
 - Encrypt backups and have key escrow for disaster recovery.
 - Test masking/encryption with automated integration tests.
 
 ## References
   - ../../../Global_References/data-classification.md — Data Classification
-  - ../../../Global_References/data-masking-[audit](../../AI_and_Agents/Operations/audit/SKILL.md).md — Data Masking [Audit](../../AI_and_Agents/Operations/audit/SKILL.md)
+  - ../../../Global_References/data-masking-[audit](../../AI_and_Agents/Operations/common/audit/SKILL.md).md — Data Masking [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)
   - ../../../Global_References/data-masking-advanced.md — Data Masking Advanced Patterns
   - ../../../Global_References/data-masking-compliance.md — Data Masking Compliance
   - ../../../Global_References/data-masking-fundamentals.md — Data Masking Fundamentals
@@ -369,7 +369,7 @@ async function readWithAudit(userId: string, fieldName: string): Promise<string>
   - ../../../Global_References/pii-detection.md — PII Detection
 ## Handoff
 No artifact produced unless requested.
-Next skill: [audit-logging](../../DevOps_and_Cloud/Observability_and_SecOps/[audit](../../AI_and_Agents/Operations/audit/SKILL.md)-logging/SKILL.md) — log all access to sensitive data for compliance.
+Next skill: [audit-logging](../../AI_and_Agents/Operations/common/audit/SKILL.md)-logging/SKILL.md) — log all access to sensitive data for compliance.
 Carry forward: data classification map, encryption strategy, tokenization approach.
 
 ## Implementation Patterns
@@ -566,7 +566,7 @@ What type of sensitive data?
 |---|---|---|
 | Masking before logging only | Data leaked in other channels | Mask at the source (API response, DB query) |
 | Same masking for all roles | Over-redaction for authorized users | Role-based dynamic masking |
-| No tokenization mapping loss | Can't reconstruct for legitimate use | Token [vault](../../Security/cryptography-secrets/vault/SKILL.md) with access [audit](../../AI_and_Agents/Operations/audit/SKILL.md) |
+| No tokenization mapping loss | Can't reconstruct for legitimate use | Token [vault](../../Security/cryptography-secrets/vault/SKILL.md) with access [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) |
 | Masking but not encrypting backups | Data exposed at rest | Encrypt backups with KMS-managed keys |
 | Manual field-by-field rules | Human error misses fields | Automated PII detection + rule engine |
 | Storing masking config in code | Config access = data exposure | Store in config service with access control |

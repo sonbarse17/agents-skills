@@ -551,7 +551,7 @@ class EventIndexer:
 - **RPC authentication**: Use API keys with rate limits; rotate keys quarterly; use private RPC endpoints.
 - **Database access**: Separate read/write credentials; read-only for query endpoints.
 - **Input validation**: Validate event data before insert; reject malformed log entries.
-- **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail**: Log all indexing jobs with parameters (range, contract, status) for traceability.
+- **[Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) trail**: Log all indexing jobs with parameters (range, contract, status) for traceability.
 - **Backup**: Daily database backups; point-in-time recovery for 7-day window.
 
 ## Phase: blockchain → blockchain-data-indexing

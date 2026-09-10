@@ -659,7 +659,7 @@ Silent backup failures going undetected for weeks. Monitor backup success rates,
 - Use separate AWS account for backup storage with restricted access.
 - Enable MFA delete on S3 backup buckets.
 - Rotate backup encryption keys annually.
-- [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) backup access logs quarterly (CloudTrail + Athena).
+- [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) backup access logs quarterly (CloudTrail + Athena).
 
 ### Cost Optimization
 - Use tiered backup storage: hot (7d), warm (30d), cold (90d), archive (365d+).
@@ -671,7 +671,7 @@ Silent backup failures going undetected for weeks. Monitor backup success rates,
 
 ### Compliance
 - HIPAA: require encryption, access logging, backup retention >= 6 years.
-- PCI DSS: require backups of cardholder data, annual restore testing, [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trails.
+- PCI DSS: require backups of cardholder data, annual restore testing, [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trails.
 - SOC 2: backup availability controls, change management for backup config.
 - GDPR: right to erasure includes backup copies. Implement purge procedures.
 

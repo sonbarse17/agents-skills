@@ -176,7 +176,7 @@ metadata:
 spec:
   containers:
     - name: model
-      image: registry.internal/[vllm-server](../../../../AI_and_Agents/Models_and_FineTuning/vllm-server/SKILL.md):latest
+      image: registry.internal/[vllm-server](../../../../AI_and_Agents/Models_and_FineTuning/inference-serving/vllm-server/SKILL.md):latest
       resources:
         limits:
           nvidia.com/mig-1g.10gb: 1
@@ -347,7 +347,7 @@ spec:
                 topologyKey: [kubernetes](../../other/kubernetes/SKILL.md).io/hostname
       containers:
         - name: vllm
-          image: registry.internal/[vllm-server](../../../../AI_and_Agents/Models_and_FineTuning/vllm-server/SKILL.md):0.4.1
+          image: registry.internal/[vllm-server](../../../../AI_and_Agents/Models_and_FineTuning/inference-serving/vllm-server/SKILL.md):0.4.1
           resources:
             requests:
               nvidia.com/gpu: 1
@@ -456,8 +456,8 @@ data:
 
 ## Related Skills
 
-- [llm-inference-scaling](../[llm-inference-scaling](../../../AI_and_Agents/Models_and_FineTuning/llm-inference-scaling/SKILL.md)/) - Autoscale inference workloads
+- [llm-inference-scaling](../../../../AI_and_Agents/Models_and_FineTuning/inference-serving/llm-inference-scaling/SKILL.md)/) - Autoscale inference workloads
 - [model-serving-kubernetes](../../../devops/orchestration/[model-serving-kubernetes](../../../AI_and_Agents/Models_and_FineTuning/model-serving-[kubernetes](../kubernetes/SKILL.md)/SKILL.md)/) - Production model serving patterns
-- [gpu-server-management](../../servers/[gpu-server-management](../../../AI_and_Agents/Models_and_FineTuning/gpu-server-management/SKILL.md)/) - Host-level GPU management fundamentals
-- [multi-tenant-llm-hosting](../[multi-tenant-llm-hosting](../../../AI_and_Agents/Models_and_FineTuning/multi-tenant-llm-hosting/SKILL.md)/) - Multi-tenant GPU sharing
+- [gpu-server-management](../../../../AI_and_Agents/Models_and_FineTuning/llm-platform/gpu-server-management/SKILL.md)/) - Host-level GPU management fundamentals
+- [multi-tenant-llm-hosting](../../../../AI_and_Agents/Models_and_FineTuning/inference-serving/multi-tenant-llm-hosting/SKILL.md)/) - Multi-tenant GPU sharing
 - [llm-cost-optimization](../../../devops/ai/[llm-cost-optimization](../../../AI_and_Agents/Models_and_FineTuning/llm-[cost-optimization](../../Cloud_Providers/cost-optimization/SKILL.md)/SKILL.md)/) - Cost optimization strategies

@@ -463,7 +463,7 @@ versioning:
     - CI must pass (shellcheck for scripts, markdown lint)
     - Reviewer confirms they can follow the steps independently
 
-  retention: "Git history serves as full [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail — never delete old versions"
+  retention: "Git history serves as full [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail — never delete old versions"
 ```
 
 ## [Runbook](../runbook/SKILL.md) Index Template

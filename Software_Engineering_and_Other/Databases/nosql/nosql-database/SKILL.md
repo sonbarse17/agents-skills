@@ -279,7 +279,7 @@ commitlog_archiving:
 ```
 
 ### Step 9: Security and Access Control
-[MongoDB](../mongodb/SKILL.md): SCRAM-SHA-256 authentication, x.509 certificate auth, LDAP/Kerberos integration, field-level encryption, [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging. Cassandra: role-based access control with CQL GRANT/REVOKE, mTLS for inter-node encryption, system_auth keyspace replication across all datacenters. DynamoDB: IAM policies for table-level access, VPC endpoints for network isolation, KMS encryption at rest, DAX encryption in transit.
+[MongoDB](../mongodb/SKILL.md): SCRAM-SHA-256 authentication, x.509 certificate auth, LDAP/Kerberos integration, field-level encryption, [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging. Cassandra: role-based access control with CQL GRANT/REVOKE, mTLS for inter-node encryption, system_auth keyspace replication across all datacenters. DynamoDB: IAM policies for table-level access, VPC endpoints for network isolation, KMS encryption at rest, DAX encryption in transit.
 
 ```cql
 -- Cassandra RBAC

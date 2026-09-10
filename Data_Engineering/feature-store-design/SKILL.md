@@ -70,7 +70,7 @@ diagnose after the fact.
   distinct from "when was this row loaded."
 - Access to the training pipeline and serving pipeline codebases, since the
   feature store's value depends on both consuming it identically (see
-  [training-pipeline-orchestration](../[training-pipeline-orchestration](../../AI_and_Agents/Models_and_FineTuning/training-pipeline-orchestration/SKILL.md)/SKILL.md)).
+  [training-pipeline-orchestration](../../AI_and_Agents/Models_and_FineTuning/llmops/training-pipeline-orchestration/SKILL.md)/SKILL.md)).
 
 ## Step-by-step guidance
 
@@ -144,7 +144,7 @@ diagnose after the fact.
    ```
 5. **Version feature definitions** alongside a schema/semver similar to model
    versioning (see
-   [model-packaging-and-versioning](../[model-packaging-and-versioning](../../AI_and_Agents/Models_and_FineTuning/model-packaging-and-versioning/SKILL.md)/SKILL.md)):
+   [model-packaging-and-versioning](../../AI_and_Agents/Models_and_FineTuning/llmops/model-packaging-and-versioning/SKILL.md)/SKILL.md)):
    changing a feature's computation logic (e.g. window from 7d to 14d) should
    bump a feature view version and be tracked so historical training runs
    remain reproducible against the definition they were trained with.
@@ -255,7 +255,7 @@ A ride-hailing company builds a feature store for a driver-acceptance model.
 
 ## Cross-references
 
-- [training-pipeline-orchestration](../[training-pipeline-orchestration](../../AI_and_Agents/Models_and_FineTuning/training-pipeline-orchestration/SKILL.md)/SKILL.md)
+- [training-pipeline-orchestration](../../AI_and_Agents/Models_and_FineTuning/llmops/training-pipeline-orchestration/SKILL.md)/SKILL.md)
 - [data-and-model-lineage](../[data-and-model-lineage](../data-and-model-lineage/SKILL.md)/SKILL.md)
 - [model-[monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md)
 - [experiment-tracking](../[experiment-tracking](../experiment-tracking/SKILL.md)/SKILL.md)

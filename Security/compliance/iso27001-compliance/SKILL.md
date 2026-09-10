@@ -25,7 +25,7 @@ Implement an Information Security Management System (ISMS) aligned with ISO/IEC 
 ## When to Use
 
 - Establishing an ISMS for the first time in an organization
-- Preparing for ISO 27001 certification [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+- Preparing for ISO 27001 certification [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
 - Conducting risk assessments and developing risk treatment plans
 - Creating the Statement of Applicability (SoA)
 - Transitioning from ISO 27001:2013 to the 2022 revision
@@ -64,7 +64,7 @@ pdca_cycle:
     - Address nonconformities with corrective actions
     - Implement continual improvement initiatives
     - Update risk assessment based on changes
-    - Refine controls based on [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) findings
+    - Refine controls based on [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) findings
     - Communicate improvements to stakeholders
 ```
 
@@ -316,7 +316,7 @@ soa_template:
       implementation: "OWASP guidelines, security code review, automated linting"
 ```
 
-## Internal [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Program
+## Internal [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Program
 
 ```yaml
 internal_audit:
@@ -375,7 +375,7 @@ management_review:
     - "Status of actions from previous management reviews"
     - "Changes in external and internal issues relevant to the ISMS"
     - "Information security performance (metrics and KPIs)"
-    - "[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) results (internal and external)"
+    - "[Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) results (internal and external)"
     - "[Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) trends and nonconformities"
     - "Risk assessment results and risk treatment plan status"
     - "Interested party feedback"
@@ -392,7 +392,7 @@ management_review:
     - "Vulnerability remediation SLA compliance"
     - "Security awareness training completion rate"
     - "Access review completion rate"
-    - "[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) finding closure rate"
+    - "[Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) finding closure rate"
     - "Risk treatment plan progress"
     - "Patch compliance percentage"
 ```
@@ -409,15 +409,15 @@ certification_checklist:
     - [ ] Risk treatment plan developed
     - [ ] Statement of Applicability completed
     - [ ] ISMS objectives defined with measurable targets
-    - [ ] Internal [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) program established
-    - [ ] At least one full internal [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) completed
+    - [ ] Internal [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) program established
+    - [ ] At least one full internal [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) completed
     - [ ] Management review conducted with minutes documented
     - [ ] Document control process in place
 
   stage_2_audit_preparation:
     - [ ] All Annex A controls implemented per SoA
     - [ ] Evidence of control operation for 3+ months
-    - [ ] Corrective actions from internal [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) tracked and closed
+    - [ ] Corrective actions from internal [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) tracked and closed
     - [ ] Security awareness training delivered and recorded
     - [ ] [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) management process operational with records
     - [ ] Supplier security assessments performed
@@ -426,8 +426,8 @@ certification_checklist:
     - [ ] Employees aware of security policy and their responsibilities
 
   surveillance_audit_readiness:
-    - [ ] All corrective actions from certification [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) closed
-    - [ ] Continuous internal [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) schedule maintained
+    - [ ] All corrective actions from certification [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) closed
+    - [ ] Continuous internal [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) schedule maintained
     - [ ] Management reviews conducted per schedule
     - [ ] Risk register updated with new threats and changes
     - [ ] Metrics demonstrate ISMS effectiveness
@@ -444,5 +444,5 @@ certification_checklist:
 - Hold management review meetings quarterly rather than only annually
 - Integrate ISO 27001 controls into daily operations rather than treating them as a separate compliance exercise
 - Use metrics and KPIs to demonstrate ISMS effectiveness to auditors and management
-- Plan for the 3-year certification cycle: certification [audit](../../../AI_and_Agents/Operations/audit/SKILL.md), then two surveillance audits
-- Start collecting evidence of control operation at least 3 months before the Stage 2 [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+- Plan for the 3-year certification cycle: certification [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md), then two surveillance audits
+- Start collecting evidence of control operation at least 3 months before the Stage 2 [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)

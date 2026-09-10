@@ -519,7 +519,7 @@ class DatabasePool:
 - **Authentication**: Use `scram-sha-256` for [PostgreSQL](../postgresql/SKILL.md) password auth; disable `trust` and `md5` in production.
 - **SSL/TLS**: Enforce SSL for all client connections; set `ssl_min_protocol_version = 'TLSv1.3'`.
 - **Row-level security**: Enable RLS on multi-tenant tables; policy based on `current_setting('app.tenant_id')`.
-- **[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging**: Enable `pgaudit` extension; log all DDL and DML on sensitive tables.
+- **[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging**: Enable `pgaudit` extension; log all DDL and DML on sensitive tables.
 - **Encryption at rest**: Use TDE or disk-level encryption (LUKS, EBS encryption) for database storage.
 - **Secret rotation**: Rotate DB passwords every 90 days; use [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md) for dynamic credentials (short-lived leases).
 

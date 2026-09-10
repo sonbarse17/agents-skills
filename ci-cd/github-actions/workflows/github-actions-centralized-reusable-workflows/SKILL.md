@@ -186,7 +186,7 @@ standardized pipeline rather than diverging copies.
    without their own review.
 
 8. **Enforce adoption, don't just offer it**, via a required organization
-   ruleset or a periodic [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) (e.g. a scheduled workflow that scans repos
+   ruleset or a periodic [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) (e.g. a scheduled workflow that scans repos
    for `.[github](../../other/github/SKILL.md)/workflows/*.yml` files that don't call the standard
    reusable workflow) if the goal is a hard organization-wide standard
    rather than an opt-in convenience.
@@ -200,7 +200,7 @@ standardized pipeline rather than diverging copies.
   well-documented (a table in the library repo's README); every input
   should have a sensible `default` unless it's genuinely required.
 - Prefer named `secrets:` passing over `secrets: inherit` for anything
-  security-sensitive, so an [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) of the reusable workflow's YAML alone
+  security-sensitive, so an [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) of the reusable workflow's YAML alone
   shows exactly what secrets it can touch.
 - Give the reusable-workflow repo its own tests: a workflow in that same
   repo that calls the reusable workflow against a throwaway/sample

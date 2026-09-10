@@ -27,10 +27,10 @@ evaluated automatically against every plan or admission request prevents the vio
 landing at all, regardless of who wrote the change or whether they read the wiki.
 
 The shift this skill is about is from *auditing* infrastructure after the fact to *rejecting*
-bad infrastructure before it's ever applied. An [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) finding is a cleanup task; a policy failure
+bad infrastructure before it's ever applied. An [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) finding is a cleanup task; a policy failure
 is a change that never happened.
 
-**A policy that only runs in a nightly [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) report is a compliance artifact. A policy that
+**A policy that only runs in a nightly [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) report is a compliance artifact. A policy that
 blocks the pipeline is a guardrail. Prefer the guardrail.**
 
 ## 1. Put the check where the change is still reversible
@@ -56,7 +56,7 @@ deny[msg] {
 **Done when:** a plan or manifest violating a written policy cannot be applied through the normal
 pipeline path, full stop.
 
-## 2. Start every new policy in [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) mode
+## 2. Start every new policy in [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) mode
 
 A brand-new policy enforced immediately as a hard block will, with near certainty, break some
 legitimate change nobody anticipated when writing the rule — and the first thing anyone learns
@@ -70,8 +70,8 @@ against real traffic for a stretch, then flip it to enforcing.
 - **Only promote to enforcing once the false-positive rate is near zero**, or the org will start
   routing around policy instead of respecting it.
 
-**Done when:** every enforcing policy spent a defined [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-only period first, with its
-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-period findings reviewed and resolved.
+**Done when:** every enforcing policy spent a defined [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-only period first, with its
+[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-period findings reviewed and resolved.
 
 ## 3. Write policies against realistic inputs, not the happiest path
 
@@ -116,7 +116,7 @@ policy, and every current exception has an owner and an expiry.
 
 ## Report
 
-State which policies are enforcing versus still in [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) mode, and what each one actually
-prevents. Name the honest gap — usually a policy still in [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-only mode past its promotion
+State which policies are enforcing versus still in [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) mode, and what each one actually
+prevents. Name the honest gap — usually a policy still in [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-only mode past its promotion
 date, an exception with no expiry, or a rule with no failing-case test — rather than presenting
 policy coverage as complete.

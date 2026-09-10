@@ -238,7 +238,7 @@ See `../../../Global_References/custom_policies.md` for advanced policy developm
 
 ### Step 6: Generate Compliance Reports
 
-Create reports for [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) and compliance:
+Create reports for [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) and compliance:
 
 ```bash
 # Generate comprehensive report
@@ -492,7 +492,7 @@ checkov -d ./terraform --framework secrets
 - **Custom Policy Management**: Version control custom policies and review changes
 - **Compliance Alignment**: Map organizational requirements to Checkov policies
 - **Secrets Management**: Never [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) secrets; use secret managers and rotation policies
-- **[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Logging**: Log all scan results and policy suppressions for compliance audits
+- **[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logging**: Log all scan results and policy suppressions for compliance audits
 - **False Positive Review**: Regularly review suppressed findings to ensure they remain valid
 - **Policy Updates**: Keep Checkov updated to receive new security policies
 

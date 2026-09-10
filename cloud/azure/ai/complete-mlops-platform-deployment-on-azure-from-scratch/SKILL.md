@@ -172,7 +172,7 @@ integration decisions between phases.
 6. **Phase 6 — training pipeline orchestration.** Author the retraining
    DAG using Azure ML Pipelines (`[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-ml` SDK v2), applying the
    vendor-neutral gate/reproducibility principles from
-   [training-pipeline-orchestration](../[training-pipeline-orchestration](../../../AI_and_Agents/Models_and_FineTuning/training-pipeline-orchestration/SKILL.md)/SKILL.md):
+   [training-pipeline-orchestration](../../../../AI_and_Agents/Models_and_FineTuning/llmops/training-pipeline-orchestration/SKILL.md)/SKILL.md):
    ```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    from azure.ai.ml import dsl, Input
 
@@ -194,7 +194,7 @@ integration decisions between phases.
 7. **Phase 7 — model registry and packaging.** Register the pipeline's
    output model to the Azure ML Model Registry, applying the promotion-
    gate discipline from
-   [model-packaging-and-versioning](../[model-packaging-and-versioning](../../../AI_and_Agents/Models_and_FineTuning/model-packaging-and-versioning/SKILL.md)/SKILL.md):
+   [model-packaging-and-versioning](../../../../AI_and_Agents/Models_and_FineTuning/llmops/model-packaging-and-versioning/SKILL.md)/SKILL.md):
    ```bash
    az ml model create --name fraud-scorer --version 14 --type mlflow_model \
      --path azureml://jobs/<job-id>/outputs/model \
@@ -207,7 +207,7 @@ integration decisions between phases.
 8. **Phase 8 — serving and scaling.** Deploy a managed online endpoint
    referencing the Phase 7 registered model, applying the canary rollout
    discipline from
-   [model-serving-and-scaling](../[model-serving-and-scaling](../../../AI_and_Agents/Models_and_FineTuning/model-serving-and-scaling/SKILL.md)/SKILL.md):
+   [model-serving-and-scaling](../../../../AI_and_Agents/Models_and_FineTuning/inference-serving/model-serving-and-scaling/SKILL.md)/SKILL.md):
    ```bash
    az ml online-deployment create --name fraud-scorer-v14 \
      --endpoint-name fraud-scorer-endpoint --model fraud-scorer:14 \
@@ -218,7 +218,7 @@ integration decisions between phases.
    Do not shift traffic past this initial 5% split until Phase 9's
    [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) is confirmed collecting data against this endpoint. (AKS
    +Kubeflow alternative: KServe `InferenceService` per
-   [model-serving-and-scaling](../[model-serving-and-scaling](../../../AI_and_Agents/Models_and_FineTuning/model-serving-and-scaling/SKILL.md)/SKILL.md).)
+   [model-serving-and-scaling](../../../../AI_and_Agents/Models_and_FineTuning/inference-serving/model-serving-and-scaling/SKILL.md)/SKILL.md).)
 
 9. **Phase 9 — [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and drift detection.** Enable Azure ML's data
    drift [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (or a self-managed Evidently job reading endpoint
@@ -354,7 +354,7 @@ within the first hour of the 5% canary; three days later, with drift and
 quality metrics stable, traffic is ramped to 100% and version 2's
 deployment is scaled down (not deleted) for a two-week rollback window,
 following the same soak-period discipline described in
-[model-serving-and-scaling](../[model-serving-and-scaling](../../../AI_and_Agents/Models_and_FineTuning/model-serving-and-scaling/SKILL.md)/SKILL.md).
+[model-serving-and-scaling](../../../../AI_and_Agents/Models_and_FineTuning/inference-serving/model-serving-and-scaling/SKILL.md)/SKILL.md).
 
 ## Cross-references
 
@@ -364,7 +364,7 @@ following the same soak-period discipline described in
 - [kubeflow-[ml-pipeline](../../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../[kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../../Containers_and_Orchestration/kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md) — the KFP-specific implementation for the AKS+Kubeflow alternative to Phase 6.
 - [experiment-tracking](../[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)/SKILL.md) — Phase 4's logging discipline, applied to Azure ML's built-in MLflow-compatible tracking.
 - [feature-store-design](../[feature-store-design](../../../Data_Engineering/feature-store-design/SKILL.md)/SKILL.md) — Phase 5's optional feature layer.
-- [training-pipeline-orchestration](../[training-pipeline-orchestration](../../../AI_and_Agents/Models_and_FineTuning/training-pipeline-orchestration/SKILL.md)/SKILL.md) — Phase 6's vendor-neutral DAG/gate principles.
-- [model-packaging-and-versioning](../[model-packaging-and-versioning](../../../AI_and_Agents/Models_and_FineTuning/model-packaging-and-versioning/SKILL.md)/SKILL.md) — Phase 7's registry and promotion gates.
-- [model-serving-and-scaling](../[model-serving-and-scaling](../../../AI_and_Agents/Models_and_FineTuning/model-serving-and-scaling/SKILL.md)/SKILL.md) — Phase 8's canary/traffic-split rollout.
+- [training-pipeline-orchestration](../../../../AI_and_Agents/Models_and_FineTuning/llmops/training-pipeline-orchestration/SKILL.md)/SKILL.md) — Phase 6's vendor-neutral DAG/gate principles.
+- [model-packaging-and-versioning](../../../../AI_and_Agents/Models_and_FineTuning/llmops/model-packaging-and-versioning/SKILL.md)/SKILL.md) — Phase 7's registry and promotion gates.
+- [model-serving-and-scaling](../../../../AI_and_Agents/Models_and_FineTuning/inference-serving/model-serving-and-scaling/SKILL.md)/SKILL.md) — Phase 8's canary/traffic-split rollout.
 - [model-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md) — Phase 9's drift/quality [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).

@@ -274,7 +274,7 @@ and finance wants a monthly chargeback report.
 2. Confirm allocation data via the Allocation API and spot-check that
    `cpuCost + ramCost + pvCost` roughly reconciles with the actual AWS
    invoice for the node group over the same window.
-3. Run a label-coverage [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md): 92% of pods carry a `team` label; the
+3. Run a label-coverage [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md): 92% of pods carry a `team` label; the
    remaining 8% (mostly cluster add-ons and a couple of unlabeled jobs)
    are backfilled with labels before proceeding.
 4. Query `aggregate=label:team&shareIdle=true&shareTenancyCosts=true`

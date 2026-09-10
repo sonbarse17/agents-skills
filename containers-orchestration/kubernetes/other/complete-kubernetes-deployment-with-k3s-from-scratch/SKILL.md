@@ -39,7 +39,7 @@ and pre-decided — which means the end-to-end deployment sequence for K3s
 looks different in kind, not just in vendor-specific detail, from EKS/
 AKS/GKE/OKE or a self-managed kubeadm cluster: several phases that are
 mandatory elsewhere (install a CNI, install an Ingress controller, solve
-the [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) LoadBalancer problem) are instead "confirm the bundled
+the [bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md) LoadBalancer problem) are instead "confirm the bundled
 default is acceptable, or deliberately disable and replace it." Getting
 this sequence wrong most commonly means either fighting K3s's own
 defaults without realizing they're what's causing the odd behavior, or
@@ -157,7 +157,7 @@ integration decisions.
    - **Swap to ingress-nginx (see
      [ingress-nginx-configuration](../[ingress-nginx-configuration](../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md))
      and MetalLB (see
-     [metallb-[bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../[metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration/SKILL.md)/SKILL.md))**
+     [metallb-[bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)-load-balancer-configuration](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)-load-balancer-configuration](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)-load-balancer-configuration/SKILL.md)/SKILL.md))**
      when standardizing configuration across K3s and other on-prem/
      kubeadm clusters, or when ServiceLB's limitations (no real
      multi-node load spreading, coarse failover) are a real constraint —
@@ -380,7 +380,7 @@ from Phase 8 is active before the site is considered handed off.
 - [on-prem-infrastructure-patterns](../../../cloud/skills/[on-prem-infrastructure-patterns](../../Cloud_Providers/on-prem-infrastructure-patterns/SKILL.md)/SKILL.md) — inventory/out-of-band management discipline for physical edge hardware hosting K3s.
 - [cni-networking-calico-flannel](../[cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)/SKILL.md) — the Calico alternative to K3s's bundled Flannel referenced in Phase 3.
 - [ingress-nginx-configuration](../[ingress-nginx-configuration](../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md) — full detail for swapping Traefik for ingress-nginx in Phase 4.
-- [metallb-[bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../[metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration/SKILL.md)/SKILL.md) — full detail for swapping ServiceLB for MetalLB in Phase 4.
+- [metallb-[bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)-load-balancer-configuration](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)-load-balancer-configuration](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)-load-balancer-configuration/SKILL.md)/SKILL.md) — full detail for swapping ServiceLB for MetalLB in Phase 4.
 - [cert-manager-tls-automation](../[cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md)/SKILL.md) — full detail for Phase 5's Issuer/Certificate setup, both the ACME and private-CA paths.
 - [kubernetes-cluster-post-provision-conformance-validation](../[kubernetes-cluster-post-provision-conformance-validation](../[kubernetes](../kubernetes/SKILL.md)-cluster-post-provision-conformance-validation/SKILL.md)/SKILL.md) — the base validation procedure Phase 6 scales down for K3s's footprint.
 - [etcd-backup-restore-and-cluster-health](../[etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md) — full detail for the embedded-etcd backup/restore/quorum-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) referenced in Phases 6 and 8.

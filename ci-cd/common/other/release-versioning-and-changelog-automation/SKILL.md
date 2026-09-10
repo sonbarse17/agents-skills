@@ -227,7 +227,7 @@ risky the upgrade is.
 
 - **Symptom:** Consumers of a library keep getting broken by "minor"
   version bumps.
-  **Fix:** [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) recent releases for commits marked `feat` that actually
+  **Fix:** [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) recent releases for commits marked `feat` that actually
   removed or changed existing behavior without a `!`/`BREAKING CHANGE:`
   marker — this is a [commit](../../git-workflow/commit/SKILL.md)-discipline problem, not a tooling problem;
   retrain contributors (and consider a PR template reminder) on when a

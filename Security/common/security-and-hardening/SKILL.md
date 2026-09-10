@@ -43,7 +43,7 @@ Controls bolted on without a threat model are guesses. Before hardening, spend f
 |---|---|---|
 | **S**poofing | Can someone impersonate a user/service? | Authentication, signature verification |
 | **T**ampering | Can data be altered in transit or at rest? | Integrity checks, parameterized queries, HTTPS |
-| **R**epudiation | Can an action be denied later? | [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging of security events |
+| **R**epudiation | Can an action be denied later? | [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging of security events |
 | **I**nformation disclosure | Can data leak? | Encryption, field allowlists, generic errors |
 | **D**enial of service | Can it be overwhelmed? | Rate limiting, input size caps, timeouts |
 | **E**levation of privilege | Can a user gain rights they shouldn't? | Authorization checks, least privilege |
@@ -63,7 +63,7 @@ If you can't name the trust boundaries for a feature, you're not ready to secure
 - **Hash passwords** with bcrypt/scrypt/argon2 (never store plaintext)
 - **Set security headers** (CSP, HSTS, X-Frame-Options, X-Content-Type-Options)
 - **Use httpOnly, secure, sameSite cookies** for sessions
-- **Run the detected package manager's native [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)** against the committed lockfile before every release
+- **Run the detected package manager's native [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)** against the committed lockfile before every release
 
 ### Ask First (Requires Human Approval)
 
@@ -282,12 +282,12 @@ function validateUpload(file: UploadedFile) {
 }
 ```
 
-## Triaging Dependency [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Results
+## Triaging Dependency [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Results
 
 Package-manager audits report known advisories; they do not prove a package is trustworthy or that vulnerable code is reachable. Use this decision tree:
 
 ```
-The native package-manager [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) reports a vulnerability
+The native package-manager [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) reports a vulnerability
 ├── Severity: critical or high
 │   ├── Is the vulnerable code reachable in runtime, build, test, or deployment paths?
 │   │   ├── YES --> Fix immediately (update, patch, or replace the dependency)
@@ -318,8 +318,8 @@ Do not assume npm or treat the nearest manifest as the install root. Apply this 
 
 Audits only find known advisories; they do not catch a newly malicious or typosquatted package. Therefore:
 
-- **Never apply forced [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) remediation automatically** (`npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) fix --force` or equivalent). Preview the remediation, read changelogs, and test each resulting upgrade; forced fixes may cross declared dependency ranges.
-- **Verify registry signatures and provenance where supported** (`npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) signatures`, `pnpm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) signatures`) and treat absence as a signal to investigate, not automatic proof of compromise.
+- **Never apply forced [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) remediation automatically** (`npm [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) fix --force` or equivalent). Preview the remediation, read changelogs, and test each resulting upgrade; forced fixes may cross declared dependency ranges.
+- **Verify registry signatures and provenance where supported** (`npm [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) signatures`, `pnpm [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) signatures`) and treat absence as a signal to investigate, not automatic proof of compromise.
 - **Review new dependencies, lockfile diffs, and script-policy changes together** — ownership, maintenance, release age, provenance, transitive graph, and typosquats such as `cross-env` vs `crossenv` (OWASP **A06**, **LLM03**).
 
 ## Rate Limiting
@@ -376,7 +376,7 @@ Securing data is "can an attacker read it?" Privacy is "should *we* even hold it
 |---|---|---|
 | **Non-personal** | Aggregates, anonymized counts | Normal handling |
 | **Personal (PII)** | Name, email, IP, device/user IDs | Minimize, access-control, include in export/delete |
-| **Sensitive** | Health, finance, location, biometrics, gov IDs, anything about minors | Extra basis to collect, stricter access, often encryption + [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging |
+| **Sensitive** | Health, finance, location, biometrics, gov IDs, anything about minors | Extra basis to collect, stricter access, often encryption + [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging |
 
 **Operating rules:**
 - **Minimize and set a purpose.** Collect a field only against a stated use. "It might be useful later" is not a purpose — it's latent breach scope. Don't log PII into telemetry (the `[observability-and-instrumentation](../../DevOps_and_Cloud/Observability_and_SecOps/[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-instrumentation/SKILL.md)` skill makes the same point from the ops side).
@@ -451,7 +451,7 @@ container.textContent = await llm.reply(userMessage);
 
 ### Supply Chain
 - [ ] One authoritative lockfile committed; CI uses that manager's frozen/immutable install
-- [ ] Native [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) triaged by reachability and fix risk; dependency install scripts blocked unless explicitly approved
+- [ ] Native [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) triaged by reachability and fix risk; dependency install scripts blocked unless explicitly approved
 - [ ] New dependencies reviewed (ownership, provenance, release age, transitive graph)
 
 ### AI / LLM (if used)
@@ -474,7 +474,7 @@ For detailed security checklists and pre-[commit](../../../ci-cd/common/git-work
 | "It's just a prototype" | Prototypes become production. Security habits from day one. |
 | "Threat modeling is overkill here" | Five minutes of "how would I attack this?" prevents the design flaws no control can patch later. |
 | "It's just LLM output, it's only text" | That "text" can be a SQL statement, a script tag, or a shell command. Treat it like any untrusted input. |
-| "The [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) passed, so the dependency is safe" | Audits match known advisories. They do not detect a newly malicious package or make unreviewed install scripts safe to execute. |
+| "The [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) passed, so the dependency is safe" | Audits match known advisories. They do not detect a newly malicious package or make unreviewed install scripts safe to execute. |
 | "Collect it now, we might need it later" | Data you don't hold can't be breached, subpoenaed, or mis-deleted. "Might need it" is breach scope, not a purpose. |
 | "We'll handle deletion requests manually" | Manual erasure misses backups, caches, and analytics copies. If the schema can't find a user's data, you can't honor the request — design for it. |
 | "Compliance is legal's problem, not ours" | Export, deletion, retention, and consent are schema and code. Legal can't bolt them on after you've smeared PII across ten systems. |
@@ -499,7 +499,7 @@ For detailed security checklists and pre-[commit](../../../ci-cd/common/git-work
 
 After implementing security-relevant code:
 
-- [ ] The native [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) has no unmitigated reachable critical/high findings; CI preserves the authoritative lockfile and blocks unreviewed dependency scripts
+- [ ] The native [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) has no unmitigated reachable critical/high findings; CI preserves the authoritative lockfile and blocks unreviewed dependency scripts
 - [ ] No secrets in source code or git history
 - [ ] All user input validated at system boundaries
 - [ ] Authentication and authorization checked on every protected endpoint

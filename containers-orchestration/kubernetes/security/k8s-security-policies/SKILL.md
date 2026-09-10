@@ -43,7 +43,7 @@ metadata:
   name: privileged-ns
   labels:
     pod-security.[kubernetes](../../other/kubernetes/SKILL.md).io/enforce: privileged
-    pod-security.[kubernetes](../../other/kubernetes/SKILL.md).io/[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md): privileged
+    pod-security.[kubernetes](../../other/kubernetes/SKILL.md).io/[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md): privileged
     pod-security.[kubernetes](../../other/kubernetes/SKILL.md).io/warn: privileged
 ```
 
@@ -56,7 +56,7 @@ metadata:
   name: baseline-ns
   labels:
     pod-security.[kubernetes](../../other/kubernetes/SKILL.md).io/enforce: baseline
-    pod-security.[kubernetes](../../other/kubernetes/SKILL.md).io/[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md): baseline
+    pod-security.[kubernetes](../../other/kubernetes/SKILL.md).io/[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md): baseline
     pod-security.[kubernetes](../../other/kubernetes/SKILL.md).io/warn: baseline
 ```
 
@@ -69,7 +69,7 @@ metadata:
   name: restricted-ns
   labels:
     pod-security.[kubernetes](../../other/kubernetes/SKILL.md).io/enforce: restricted
-    pod-security.[kubernetes](../../other/kubernetes/SKILL.md).io/[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md): restricted
+    pod-security.[kubernetes](../../other/kubernetes/SKILL.md).io/[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md): restricted
     pod-security.[kubernetes](../../other/kubernetes/SKILL.md).io/warn: restricted
 ```
 
@@ -312,7 +312,7 @@ spec:
 6. **Use read-only root filesystem**
 7. **Drop all capabilities** unless needed
 8. **Implement resource quotas** and limit ranges
-9. **Enable [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging** for security events
+9. **Enable [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging** for security events
 10. **Regular security scanning** of images
 
 ## Compliance Frameworks
@@ -320,7 +320,7 @@ spec:
 ### CIS [Kubernetes](../../other/kubernetes/SKILL.md) Benchmark
 
 - Use RBAC authorization
-- Enable [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging
+- Enable [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging
 - Use Pod Security Standards
 - Configure network policies
 - Implement secrets encryption at rest

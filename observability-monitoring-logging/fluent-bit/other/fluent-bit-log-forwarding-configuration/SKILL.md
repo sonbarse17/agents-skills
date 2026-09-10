@@ -57,7 +57,7 @@ see
 - Writing a custom parser for an application's log format (multiline
   stack traces, a custom timestamp format, JSON with nested fields).
 - Routing different log streams to different destinations (e.g.
-  application logs to Loki, [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs to S3 for compliance retention,
+  application logs to Loki, [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs to S3 for compliance retention,
   security-relevant logs to Elasticsearch/OpenSearch) from the same
   Fluent Bit pipeline.
 - Fluent Bit is dropping logs, falling behind, or a node running it is
@@ -186,14 +186,14 @@ see
          line_format: json
 
        - name: es
-         match: kube.security-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md).*
+         match: kube.security-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md).*
          host: opensearch.security.svc
          port: 9200
-         index: security-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)
+         index: security-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)
          suppress_type_name: on
 
        - name: s3
-         match: kube.compliance-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md).*
+         match: kube.compliance-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md).*
          bucket: <S3_BUCKET_NAME>
          region: <AWS_REGION>
          total_file_size: 50M
@@ -225,7 +225,7 @@ see
    disk when memory limits are reached, trading some latency/disk usage
    for not silently dropping logs during a downstream outage — worth it
    for anything where log loss during an [incident](../../../common/incident-detection/incident/SKILL.md) is unacceptable
-   ([audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)/compliance streams especially).
+   ([audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)/compliance streams especially).
 
 7. **Set retry and backoff behavior on outputs** so a transient
    destination outage doesn't either drop data immediately or retry so
@@ -268,7 +268,7 @@ see
   output's `labels` — namespace and app/service name, not pod name, pod
   IP, or any per-request value.
 - Enable `storage.type: filesystem` buffering for any log stream where
-  loss during a downstream outage is unacceptable ([audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)/compliance
+  loss during a downstream outage is unacceptable ([audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)/compliance
   logs, anything feeding a security pipeline) — accept the in-memory-only
   default only for genuinely disposable/best-effort telemetry.
 - Route different log classes to the backend suited to their access
@@ -333,21 +333,21 @@ see
   filter itself is broken.
 
 - **Symptom:** Two teams' logs, meant to go to two different outputs
-  (e.g. `payments` to Loki, `security-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)` to Elasticsearch), both end
+  (e.g. `payments` to Loki, `security-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)` to Elasticsearch), both end
   up in both destinations.
   **Fix:** Both outputs' `match` patterns are broader than intended
   (e.g. both using `kube.*` instead of a properly scoped tag), so every
   output matches every input. Scope `match` patterns as narrowly as the
   actual tag structure allows (`kube.payments.*` vs.
-  `kube.security-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md).*`), and verify with the stdout dry-run before
+  `kube.security-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md).*`), and verify with the stdout dry-run before
   rolling out to production destinations.
 
 ## Worked example
 
 **Scenario:** A [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster needs Fluent Bit configured to: ship
 `payments` namespace application logs to Loki with [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) metadata,
-ship `security-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)` namespace logs to OpenSearch, and archive
-`compliance-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)` namespace logs to S3 for 7-year retention — with
+ship `security-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)` namespace logs to OpenSearch, and archive
+`compliance-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)` namespace logs to S3 for 7-year retention — with
 filesystem buffering so a Loki maintenance window doesn't lose payments
 logs.
 
@@ -387,14 +387,14 @@ pipeline:
       retry_limit: 5
 
     - name: es
-      match: kube.var.log.containers.*security-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)*
+      match: kube.var.log.containers.*security-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)*
       host: opensearch.security.svc
       port: 9200
-      index: security-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)
+      index: security-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)
       retry_limit: 3
 
     - name: s3
-      match: kube.var.log.containers.*compliance-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)*
+      match: kube.var.log.containers.*compliance-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)*
       bucket: <S3_BUCKET_NAME>
       region: <AWS_REGION>
       total_file_size: 100M

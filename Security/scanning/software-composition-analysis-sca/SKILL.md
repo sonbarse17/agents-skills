@@ -79,7 +79,7 @@ that was never updated.
     filesystem-aware.
   - **OWASP Dependency-Check** — mature, Java/`.NET`-centric roots but
     supports other ecosystems; NVD-based.
-  - Ecosystem-native: `npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)`, `pip-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)`, `bundler-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)`, `govulncheck`
+  - Ecosystem-native: `npm [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)`, `pip-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)`, `bundler-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)`, `govulncheck`
     (Go) — good lightweight first line, but each only understands its own
     ecosystem, so a polyglot repo needs multiple tools or a
     multi-ecosystem scanner (Trivy/Grype) as well.

@@ -53,7 +53,7 @@ Pull Request Opened
 │   ↓ pass         │
 │   E2E (optional) │  Playwright/Cypress
 │   ↓ pass         │
-│   SECURITY [AUDIT](../../../../AI_and_Agents/Operations/audit/SKILL.md) │  npm [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)
+│   SECURITY [AUDIT](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) │  npm [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)
 │   ↓ pass         │
 │   BUNDLE SIZE    │  bundlesize check
 └─────────────────┘
@@ -104,8 +104,8 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Security [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)
-        run: npm [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) --[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-level=high
+      - name: Security [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)
+        run: npm [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) --[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-level=high
 ```
 
 ### With Database Integration Tests
@@ -392,7 +392,7 @@ jobs:
 
 After setting up or modifying CI:
 
-- [ ] All quality gates are present (lint, types, tests, build, [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md))
+- [ ] All quality gates are present (lint, types, tests, build, [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md))
 - [ ] Pipeline runs on every PR and push to main
 - [ ] Failures block merge (branch protection configured)
 - [ ] CI results feed back into the development loop

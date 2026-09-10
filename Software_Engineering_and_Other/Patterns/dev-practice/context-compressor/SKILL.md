@@ -507,7 +507,7 @@ Context Compression Strategy
 - **Secrets in context**: Never include API keys, tokens, or credentials in context summaries.
 - **PII exclusion**: Strip user-identifiable information from error logs and decision rationales.
 - **Access control**: Store context files in private repo/bucket; encrypt if containing sensitive decisions.
-- **[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail**: All context updates are version-controlled (git); rollback if incorrect decisions propagate.
+- **[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail**: All context updates are version-controlled (git); rollback if incorrect decisions propagate.
 - **Retention**: Archive contexts > 90 days; purge sessions with security-sensitive content.
 
 ## Handoff

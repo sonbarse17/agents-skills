@@ -450,7 +450,7 @@ Layer that queries across sources without moving data. Dremio, Starburst (Trino)
 Private networking for all inter-component communication. VPC/subnet isolation: data plane in private subnets, control plane in private with limited egress. S3 VPC Endpoints or Gateway Endpoints for accessing object stores without public internet. K8s network policies for pod-to-pod traffic. TLS termination at ingress.
 
 ### Authentication and Authorization
-Service accounts for cross-component auth (Spark → S3, Trino → Hive Metastore). OAuth2/OIDC for user authentication to query engines and catalogs. RBAC: roles with least-privilege access to data assets. Row-level security: apply in query engine (Trino view security, Spark column masking). [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) all data access via catalog lineage.
+Service accounts for cross-component auth (Spark → S3, Trino → Hive Metastore). OAuth2/OIDC for user authentication to query engines and catalogs. RBAC: roles with least-privilege access to data assets. Row-level security: apply in query engine (Trino view security, Spark column masking). [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) all data access via catalog lineage.
 
 ### Data Encryption
 Encryption at rest: SSE-S3/KMS for object stores, envelope encryption for sensitive columns. Encryption in transit: TLS 1.3 for all component communication. Key management: KMS (AWS KMS, GCP Cloud KMS, Azure Key [Vault](../../Security/cryptography-secrets/vault/SKILL.md)). Bring Your Own Key (BYOK) for compliance.
@@ -599,7 +599,7 @@ stack:
 - **Network security**: Deploy platform in private VPC with VPC endpoints for S3, Glue, and other services.
 - **Secrets management**: Centralize secrets in [Vault](../../Security/cryptography-secrets/vault/SKILL.md)/AWS Secrets Manager; never in config files or env vars.
 - **Data encryption**: SSE-S3 default for all storage; KMS for sensitive datasets with key rotation.
-- **Compliance**: Encrypt [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs for 7-year retention; support GDPR right-to-deletion workflows.
+- **Compliance**: Encrypt [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) logs for 7-year retention; support GDPR right-to-deletion workflows.
 
 ## Handoff
 For ETL pipeline implementation, hand off to `etl-pipeline`. For data warehouse modeling, hand off to `data-warehouse`. For streaming, hand off to `streaming`.

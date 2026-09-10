@@ -559,7 +559,7 @@ WHERE total_amount < 0
 - **Test data de-identification**: Use synthetic or masked data in CI; never [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) production PII to test seeds.
 - **Credential isolation**: Use separate test DB credentials with read-only access; rotate CI secrets.
 - **Test artifact storage**: Encrypt test result artifacts at rest; purge CI logs after 90 days.
-- **Access control**: Restrict test environment modification to pipeline maintainers; [audit](../../AI_and_Agents/Operations/audit/SKILL.md) test data changes.
+- **Access control**: Restrict test environment modification to pipeline maintainers; [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) test data changes.
 - **Compliance**: Ensure test data complies with data retention policies; purge test schemas after 7 days.
 
 ## Handoff

@@ -122,7 +122,7 @@ What happens when the job fails?
 
 | Type | Delivery Guarantee | Max Delay | Persistence | Use Case |
 |------|-------------------|-----------|-------------|----------|
-| Fire-and-forget | At-most-once | None | Optional | Email notification, [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) log |
+| Fire-and-forget | At-most-once | None | Optional | Email notification, [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) log |
 | Delayed | At-least-once | Arbitrary | Required | Payment reminder in 24h |
 | Scheduled (cron) | At-least-once | N/A | Required | Daily report generation |
 | Recurring (interval) | At-least-once | N/A | Required | Health check every 5 min |
@@ -582,7 +582,7 @@ Fix: Return 202 Accepted immediately. Use webhook or polling for result.
 ### Access Control
 - Queue admin UI requires authentication
 - Separate queue management permissions from job processing
-- [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) log all enqueue/dequeue/replay operations
+- [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) log all enqueue/dequeue/replay operations
 - Rate limit enqueue operations per source
 
 ### Network Security

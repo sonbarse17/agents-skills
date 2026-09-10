@@ -26,7 +26,7 @@ GitOps is not "we keep our YAML in Git." It is a specific operational model: a c
 the cluster continuously pulls desired state from a repo and reconciles reality toward it, so the
 repo is not documentation of what was deployed — it is the only correct description of what should
 be deployed, and anything else is drift waiting to be corrected. That shift from push to pull is
-what makes the rest of the practice fall into place: [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail, rollback, and promotion all
+what makes the rest of the practice fall into place: [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail, rollback, and promotion all
 become Git operations instead of pipeline scripts.
 
 **If the cluster state and the repo disagree, the cluster is wrong, not the repo.**

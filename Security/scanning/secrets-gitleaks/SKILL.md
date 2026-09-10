@@ -90,7 +90,7 @@ gitleaks detect --report-path findings.json --report-format json
 gitleaks detect --report-path findings.sarif --report-format sarif
 ```
 
-**When to use**: Initial security [audit](../../../AI_and_Agents/Operations/audit/SKILL.md), compliance checks, [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response.
+**When to use**: Initial security [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md), compliance checks, [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response.
 
 ### 2. Pre-[Commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) Hook Protection
 
@@ -215,7 +215,7 @@ Use bundled configuration templates in `assets/`:
 - **Report Access**: Restrict access to scan reports containing sensitive findings
 - **Baseline Files**: Baseline JSON files contain secret metadata - protect with same controls as findings
 
-### [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging
+### [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logging
 
 Log the following for compliance and [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response:
 - Scan execution timestamps and scope (repository, branch, [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) range)
@@ -258,26 +258,26 @@ Log the following for compliance and [incident](../../../observability-monitorin
 
 ## Common Patterns
 
-### Pattern 1: Initial Repository [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+### Pattern 1: Initial Repository [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
 
 First-time secret scanning for security assessment:
 
 ```bash
 # 1. Clone repository with full history
-git clone --mirror https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/org/repo.git [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-repo
-cd [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-repo
+git clone --mirror https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/org/repo.git [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-repo
+cd [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-repo
 
 # 2. Run comprehensive scan
-gitleaks detect --report-path [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-report.json --report-format json -v
+gitleaks detect --report-path [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-report.json --report-format json -v
 
 # 3. Generate human-readable report
-./scripts/scan_and_report.py --input [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-report.json --format markdown --output [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-report.md
+./scripts/scan_and_report.py --input [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-report.json --format markdown --output [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-report.md
 
 # 4. Review findings and classify false positives
 # Edit .gitleaks.toml to add allowlist entries
 
 # 5. Create baseline for future scans
-cp [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-report.json baseline.json
+cp [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-report.json baseline.json
 ```
 
 ### Pattern 2: Developer Workstation Setup
@@ -364,7 +364,7 @@ tags = ["password", "database", "acme-internal"]
 ### CI/CD Integration
 
 - **[GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions**: Use `gitleaks/gitleaks-action@v2` for native integration with Security tab
-- **GitLab CI**: [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-based scanning with artifact retention for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trails
+- **GitLab CI**: [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-based scanning with artifact retention for [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) trails
 - **[Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md)**: Execute via [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) or installed binary in pipeline stages
 - **[CircleCI](../../../ci-cd/circleci/other/circleci/SKILL.md)**: [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) executor with orb support
 - **Azure Pipelines**: Task-based integration with results publishing
@@ -440,7 +440,7 @@ tags = ["password", "database", "acme-internal"]
 3. Force-push cleaned history: `git push --force`
 4. Notify all contributors to rebase/re-clone
 5. See `../../../Global_References/remediation_guide.md` for detailed procedures
-6. Document [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) in security [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) log
+6. Document [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) in security [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) log
 
 ### Issue: Custom Secret Patterns Not Detected
 

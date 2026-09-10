@@ -192,7 +192,7 @@ dfs.permissions.enabled: true
 ### Step 8: Security
 
 #### Encryption at Rest
-Server-side encryption: SSE-S3 (AES-256, S3-managed keys), SSE-KMS (AWS KMS-managed keys), SSE-C (customer-provided keys). Client-side encryption: encrypt before upload, decrypt after download. For compliance: SSE-KMS with [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging.
+Server-side encryption: SSE-S3 (AES-256, S3-managed keys), SSE-KMS (AWS KMS-managed keys), SSE-C (customer-provided keys). Client-side encryption: encrypt before upload, decrypt after download. For compliance: SSE-KMS with [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging.
 
 #### Encryption in Transit
 TLS 1.2+ for all S3/ADLS/GCS API calls. Enforce HTTPS-only bucket policies. HDFS: enable SSL for RPC and data transfer.
@@ -395,7 +395,7 @@ object_lock_examples:
 # - Per-region buckets with IAM restrictions
 # - S3 bucket policies denying cross-region replication for sensitive data
 # - MinIO multi-tenant deployment per region
-# - Regular [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) to verify no data leaves allowed regions
+# - Regular [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) to verify no data leaves allowed regions
 ```
 
 ### Step 12: Cost Modeling
@@ -546,7 +546,7 @@ Compliance requirement?
 │   └── Same-region replication (SRR) + backup to another AZ
 ├── GDPR right to erasure
 │   ├── Replicate selectively (no unnecessary copies)
-│   └── Document replication topology for [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)
+│   └── Document replication topology for [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)
 └── No compliance requirement
     └── No replication — rely on cloud provider durability
 ```

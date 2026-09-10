@@ -407,7 +407,7 @@ resource "ibm_en_destination" "pagerduty" {
 - Every IKS cluster must have both public and private service endpoints enabled.
 - COS buckets must have HMAC or IAM-based access — never anonymous.
 - Tag all resources with cost-accounting tags (environment, project, owner).
-- Enable Activity Tracker for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging on all production resources.
+- Enable Activity Tracker for [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging on all production resources.
 - Prefer reserved instances for steady-state compute to save up to 55%.
 - Use IBM Cloud Shell for ephemeral CLI access without key management.
 - Set budget alerts on all resource groups before deploying production workloads.
@@ -432,7 +432,7 @@ resource "ibm_en_destination" "pagerduty" {
 - Default COS storage class for everything — use [vault](../../../Security/cryptography-secrets/vault/SKILL.md)/cold [vault](../../../Security/cryptography-secrets/vault/SKILL.md) for archives.
 - Manual IAM key rotation — automate with Terraform or CLI scripts.
 - Single-zone IKS cluster — no HA, downtime during zone maintenance.
-- No Activity Tracker — can't [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) changes for compliance.
+- No Activity Tracker — can't [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) changes for compliance.
 - Using IBM Cloud Internet Services without CDN caching configuration.
 - VPC peering for multi-VPC connectivity — Transit Gateway scales better.
 - Ignoring IBM Cloud Secrets Manager — plaintext API keys in code.
@@ -578,7 +578,7 @@ list_all_resources() {
 - Encrypt **COS buckets** with IBM Key Protect and enable Object Lock for immutability
 - Enable **Hyper Protect Crypto Services** for applications requiring HSM-backed keys
 - Deploy **IBM Cloud Internet Services** WAF for all web-facing applications
-- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) **IAM policy changes** with Activity Tracker alerts for privilege escalation attempts
+- [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) **IAM policy changes** with Activity Tracker alerts for privilege escalation attempts
 ## Implementation Patterns
 
 ### Observer Pattern for Event Handling
@@ -675,7 +675,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
+- Repudiation: [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -689,7 +689,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Secrets Management
 - Secrets never in code — always in secrets manager ([Vault](../../../Security/cryptography-secrets/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
+- Access [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -698,7 +698,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
+- Log security-relevant events for [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
 - Design for [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.

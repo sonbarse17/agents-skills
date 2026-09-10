@@ -98,7 +98,7 @@ vulnerabilities, and a hit blocks the build.
 
 A scan result that lives only in a CI log disappears the moment anyone asks "was this image
 scanned before it deployed six weeks ago." Attach scan results and pass/fail status to the image
-as attestations or in an artifact store tied to the image digest, so provenance and [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+as attestations or in an artifact store tied to the image digest, so provenance and [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
 questions can be answered later. Broader supply-chain provenance and signing live in
 `[supply-chain-security](../../supply-chain/supply-chain-security/SKILL.md)` and `[container-registry](../../../containers-orchestration/docker/registry/container-registry/SKILL.md)`; this step is only about not losing the scan
 evidence you already generated.

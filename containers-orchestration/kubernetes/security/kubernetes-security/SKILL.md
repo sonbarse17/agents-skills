@@ -40,7 +40,7 @@ grant than "edit everything."
 - **Prefer Role+RoleBinding over ClusterRole+ClusterRoleBinding** unless the permission genuinely
   spans namespaces — cluster-scoped grants are the ones that turn one compromised namespace into a
   cluster-wide [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
-- **[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) with `[kubectl](../../other/kubectl/SKILL.md) auth can-i --list --as=<sa>`** rather than reading YAML and hoping — it's
+- **[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) with `[kubectl](../../other/kubectl/SKILL.md) auth can-i --list --as=<sa>`** rather than reading YAML and hoping — it's
   the ground truth the API server actually enforces.
 - **Service accounts, not user credentials**, should hold workload permissions; humans get scoped
   roles through your identity provider, see `[iam-access-management](../../../../cloud/common/identity/iam-access-management/SKILL.md)`.
@@ -77,7 +77,7 @@ or an admission controller like Kyverno/OPA Gatekeeper turns "we ask people not 
 - **Custom policy beyond PSS** (require specific labels, block `:latest` tags, require resource
   limits) is what OPA/Kyverno add — write policies as code and test them like code; broader
   organizational policy patterns live in `[policy-as-code](../../../../Security/policy-as-code/policy-as-code/SKILL.md)`.
-- **Warn-then-enforce rollout**: label a namespace `[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)`/`warn` first, watch violations in logs,
+- **Warn-then-enforce rollout**: label a namespace `[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)`/`warn` first, watch violations in logs,
   then flip to `enforce` — flipping straight to enforce breaks things you didn't know existed.
 
 **Done when:** every namespace has an enforced Pod Security Standard label, and no exceptions exist
@@ -121,6 +121,6 @@ indistinguishable to the cluster.
 
 State the RBAC scope granted to each workload identity, whether automount is disabled by default,
 which Pod Security Standard is enforced per namespace, the secrets-at-rest encryption status, and
-whether image signature verification is active. Call out any namespace still in [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)/warn mode
+whether image signature verification is active. Call out any namespace still in [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)/warn mode
 instead of enforce, or any workload still holding broader RBAC than it uses — naming the gap beats
 implying the cluster is fully locked down.

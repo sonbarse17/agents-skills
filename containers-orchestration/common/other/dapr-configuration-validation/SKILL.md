@@ -217,7 +217,7 @@ plays for Knative Serving.
 
 - **Symptom:** A component intended only for a staging environment is
   found configured with a production backend's connection details (or
-  vice versa) during an [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md).
+  vice versa) during an [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md).
   **Fix:** Component manifests weren't namespaced/labeled clearly per
   environment, or an environment-specific overlay was applied to the
   wrong target; validate component `metadata` values (hostnames,

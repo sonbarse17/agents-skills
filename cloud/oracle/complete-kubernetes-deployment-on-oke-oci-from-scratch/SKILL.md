@@ -249,7 +249,7 @@ integration decisions.
    fully Oracle-managed for both Basic and Enhanced tiers — the
    procedures in
    [etcd-backup-restore-and-cluster-health](../[etcd-backup-restore-and-cluster-health](../../Containers_and_Orchestration/etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md)
-   do not apply; rely on OCI [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs routed through the Service
+   do not apply; rely on OCI [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs routed through the Service
    Connector Hub to the landing zone's central `Security` compartment
    bucket instead.
 

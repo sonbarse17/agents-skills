@@ -64,7 +64,7 @@ Payment architecture design, gateway integration plan, PCI DSS compliance scope 
 {rules engine, 3DS, velocity checks, address verification}
 
 ### Compliance Controls
-{PCI DSS controls, data handling, tokenization, [audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail}
+{PCI DSS controls, data handling, tokenization, [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) trail}
 ```
 
 No preamble. No postamble. No explanations.
@@ -129,18 +129,18 @@ No preamble. No postamble. No explanations.
 ### PCI DSS Compliance Scope Decision Tree
 
 1. How is payment data handled?
-   - Direct API (Stripe Elements, PayPal SDK): Payment data goes directly from browser to gateway. Server never sees card data. Lowest PCI scope (SAQ A). No PCI [audit](../../AI_and_Agents/Operations/audit/SKILL.md) needed for most cases.
-   - Server-side API: Card data passes through your server to gateway. Full PCI scope (SAQ D). Annual QSA [audit](../../AI_and_Agents/Operations/audit/SKILL.md) required. Significant compliance burden.
+   - Direct API (Stripe Elements, PayPal SDK): Payment data goes directly from browser to gateway. Server never sees card data. Lowest PCI scope (SAQ A). No PCI [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) needed for most cases.
+   - Server-side API: Card data passes through your server to gateway. Full PCI scope (SAQ D). Annual QSA [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) required. Significant compliance burden.
    - Self-hosted payment form: Payment form on your server collecting card data. Full PCI scope. Strongly discouraged.
 
 2. What is the annual transaction volume?
-   - > 6M/year: Level 1. Full QSA [audit](../../AI_and_Agents/Operations/audit/SKILL.md), ASV scan quarterly, ROC report. Most stringent requirements.
+   - > 6M/year: Level 1. Full QSA [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md), ASV scan quarterly, ROC report. Most stringent requirements.
    - 1-6M/year: Level 2. SAQ D + ASV scan quarterly. QSA may be required depending on acquirer.
    - 20K-1M/year: Level 3. SAQ + ASV scan quarterly. Self-assessment with validation.
    - < 20K/year: Level 4. SAQ (self-assessment). ASV scan quarterly if e-commerce.
 
 3. Are you storing any cardholder data?
-   - YES -> Extremely limited circumstances (recurring payments without token). Requires PCI DSS 3.4 encryption, access control, key management, [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging. Highest compliance burden. Use tokenization instead.
+   - YES -> Extremely limited circumstances (recurring payments without token). Requires PCI DSS 3.4 encryption, access control, key management, [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) logging. Highest compliance burden. Use tokenization instead.
    - NO -> Tokenization via gateway reduces scope. All compliance requirements apply to token storage instead of raw PAN data.
 
 ## Workflow
@@ -352,7 +352,7 @@ payment_errors:
 
 #### PCI DSS Compliance Maintenance
 - Quarterly: ASV vulnerability scan of external-facing IP addresses.
-- Annual: SAQ validation or QSA [audit](../../AI_and_Agents/Operations/audit/SKILL.md) (depending on level).
+- Annual: SAQ validation or QSA [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) (depending on level).
 - Continuous: Monitor PCI scope changes (new integrations, data flows).
 - Event-driven: Scope review when adding new payment methods or changing gateway.
 - Training: Annual PCI DSS awareness training for developers handling payment-related code.
@@ -437,7 +437,7 @@ Practice 8: Implement gateway failover for critical payments. If primary gateway
 - [ ] Fraud rules tested (velocity, AVS, CVV, IP)
 
 ### Compliance
-- [ ] PCI DSS SAQ completed or QSA [audit](../../AI_and_Agents/Operations/audit/SKILL.md) scheduled
+- [ ] PCI DSS SAQ completed or QSA [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) scheduled
 - [ ] ASV scan passed (quarterly)
 - [ ] Data handling review: no card data stored on servers
 - [ ] Tokenization verified
@@ -454,7 +454,7 @@ Practice 8: Implement gateway failover for critical payments. If primary gateway
 ## PCI DSS Compliance Levels
 | Level | Transaction Volume | Requirements |
 |-------|-------------------|--------------|
-| 1 | > 6M/year | Full QSA [audit](../../AI_and_Agents/Operations/audit/SKILL.md), ASV scan quarterly, ROC report |
+| 1 | > 6M/year | Full QSA [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md), ASV scan quarterly, ROC report |
 | 2 | 1-6M/year | SAQ D + ASV scan quarterly, quarterly self-assessment |
 | 3 | 20k-1M/year | SAQ + ASV scan quarterly, annual self-assessment |
 | 4 | < 20k/year | SAQ (self-assessment), ASV scan quarterly |
@@ -537,7 +537,7 @@ async function handleStripeWebhook(req: Request, res: Response): Promise<void> {
 ### Compliance Operations
 - PCI DSS SAQ A (most common for hosted fields): self-assessment questionnaire. ASV scan quarterly.
 - Card data handling: NEVER log card numbers, CVV, or track data. Mask in logs: `****` + last 4.
-- Data retention: transaction records kept 7 years for tax/[audit](../../AI_and_Agents/Operations/audit/SKILL.md). Token references kept indefinitely.
+- Data retention: transaction records kept 7 years for tax/[audit](../../AI_and_Agents/Operations/common/audit/SKILL.md). Token references kept indefinitely.
 - KYC records for high-risk merchants: retain for 5 years after account closure.
 
 ## Anti-Patterns

@@ -39,7 +39,7 @@ Keywords: `elixir build`, `mix`, `phoenix`, `ecto`, `otp`, `supervision tree`, `
 ### Input Context
 - Project type (Phoenix web app, OTP app, Nerves firmware, CLI tool)
 - Database ([PostgreSQL](../../Databases/relational/postgresql/SKILL.md) via Ecto, ETS, Mnesia)
-- Deployment target ([bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md), [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md), Fly.io, Gigalixir)
+- Deployment target ([bare-metal](../../../Miscellaneous/systems-low-level/bare-metal/SKILL.md), [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md), Fly.io, Gigalixir)
 
 ## Decision Trees
 
@@ -599,6 +599,6 @@ end
 - SQL injection protection: Ecto parameterized queries. Never raw `Ecto.Adapters.SQL.query!(Repo, "SELECT ... #{unsafe}")`.
 - LiveView: autoload `:current_user` in assigns. Verify on every handle_event/handle_params.
 - Rate limiting: `ExRated` with GenServer-backed bucket. Apply to auth, signup, password-reset endpoints.
-- Dependency [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): `mix hex.[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)` in CI. Fail on known vulnerabilities.
+- Dependency [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md): `mix hex.[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)` in CI. Fail on known vulnerabilities.
 - Secrets: `config/runtime.exs` reads from environment. Never `config/prod.exs` with hardcoded values.
 

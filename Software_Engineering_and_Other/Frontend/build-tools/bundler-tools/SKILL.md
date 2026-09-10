@@ -278,7 +278,7 @@ module.exports = {
 - Build-time constants: `__VERSION__`, `__COMMIT_HASH__`, `__BUILD_TIME__`.
 
 ### 7. Migrating Between Bundlers
-1. [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) all bundler-specific plugins and replace with framework-native alternatives
+1. [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) all bundler-specific plugins and replace with framework-native alternatives
 2. Migrate PostCSS config to framework-native CSS handling
 3. Replace `process.env.*` with `import.meta.env.*` (Vite) or inject via define
 4. Update import paths for asset resolution

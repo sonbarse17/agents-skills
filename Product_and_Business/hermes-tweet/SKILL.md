@@ -64,7 +64,7 @@ draw, or media operation.
 
 Ask for these inputs before selecting routes:
 
-- Objective: research, [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), support triage, giveaway [audit](../../AI_and_Agents/Operations/audit/SKILL.md), or action prep
+- Objective: research, [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), support triage, giveaway [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md), or action prep
 - Target: account handle, tweet URL, keyword, list, monitor, or trend
 - Time window and freshness needs
 - Whether any private or state-changing operation is in scope

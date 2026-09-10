@@ -224,10 +224,10 @@ the [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md)
   after an expensive image build/push is still cheaper to fix than one
   caught only by admission rejection after the [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md) operator already
   tried to sync it.
-- Start new policy rules in Kyverno/Gatekeeper's [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)/report mode before
+- Start new policy rules in Kyverno/Gatekeeper's [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)/report mode before
   flipping to enforcing/blocking, per
   [policy-as-code-guardrails](../../../../Security/policy-as-code/policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md) — the
-  same [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-then-enforce rollout discipline applies to the CI-side
+  same [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-then-enforce rollout discipline applies to the CI-side
   `conftest` check.
 - Keep the CI-side policy check and the in-cluster admission policy
   defined from the **same** source files (one `policies/` directory

@@ -275,7 +275,7 @@ improve auditability, enable temporal queries, and support business analytics.
 
 Current challenges:
 
-1. [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) requirements need complete order history
+1. [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) requirements need complete order history
 2. "What was the order state at time X?" queries are impossible
 3. Analytics team needs event stream for real-time [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)
 4. Order state reconstruction for customer support is manual
@@ -296,7 +296,7 @@ OrderShipped { orderId, trackingNumber, timestamp }
 ### Projections
 
 - **CurrentOrderState**: Materialized view for queries
-- **OrderHistory**: Complete timeline for [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)
+- **OrderHistory**: Complete timeline for [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)
 - **DailyOrderMetrics**: Analytics aggregation
 
 ### Technology
@@ -313,7 +313,7 @@ OrderShipped { orderId, trackingNumber, timestamp }
 
 ## Alternatives
 
-1. **[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) tables**: Simpler but doesn't enable temporal queries
+1. **[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) tables**: Simpler but doesn't enable temporal queries
 2. **CDC from existing DB**: Complex, doesn't change data model
 3. **Hybrid**: Event source only for order state changes
 

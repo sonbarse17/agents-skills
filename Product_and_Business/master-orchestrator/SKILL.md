@@ -508,7 +508,7 @@ State: User asks about git workflow, branching strategy, rebase, merge, git flow
   Route: [git-workflow](../../ci-cd/common/git-workflow/git-workflow/SKILL.md)
   Reason: "Git workflow and branching strategy request."
 
-State: User asks about [profiling](../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md), performance [audit](../../AI_and_Agents/Operations/audit/SKILL.md), bottleneck, flamegraph, CPU profile.
+State: User asks about [profiling](../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md), performance [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md), bottleneck, flamegraph, CPU profile.
   Route: performance-profiler
   Reason: "Performance [profiling](../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md) request."
 
@@ -520,9 +520,9 @@ State: User asks about refactoring, code improvement, restructuring, technical d
   Route: refactor-guide
   Reason: "Code refactoring guide request."
 
-State: User asks about security [audit](../../AI_and_Agents/Operations/audit/SKILL.md), dependency check, SAST, DAST, vulnerability scan.
+State: User asks about security [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md), dependency check, SAST, DAST, vulnerability scan.
   Route: security-auditor
-  Reason: "Security [audit](../../AI_and_Agents/Operations/audit/SKILL.md) request."
+  Reason: "Security [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) request."
 
 State: User says iOS, Swift, SwiftUI, iPhone, iPad, Xcode.
   Route: mobile-ios
@@ -668,9 +668,9 @@ State: User asks about data masking, data redaction, PII masking.
   Route: [backend-data-masking](../../Data_Engineering/data-masking/SKILL.md)
   Reason: "Data masking request."
 
-State: User asks about [audit](../../AI_and_Agents/Operations/audit/SKILL.md) log, [audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail, [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging.
-  Route: backend-[audit-logging](../../DevOps_and_Cloud/Observability_and_SecOps/[audit](../../AI_and_Agents/Operations/audit/SKILL.md)-logging/SKILL.md)
-  Reason: "[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging request."
+State: User asks about [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) log, [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) trail, [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) logging.
+  Route: backend-[audit-logging](../../AI_and_Agents/Operations/common/audit/SKILL.md)-logging/SKILL.md)
+  Reason: "[Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) logging request."
 
 State: User asks about plugin architecture, plugin system, extension point.
   Route: [backend-plugin-architecture](../../Software_Engineering_and_Other/Patterns/architecture/plugin-architecture/SKILL.md)
@@ -751,7 +751,7 @@ State: User asks about experiment tracking, MLflow, experiment management.
   Reason: "Experiment tracking request."
 
 State: User asks about classical ML, scikit-learn, sklearn, regression, classification, clustering.
-  Route: [ml-classical-ml](../../AI_and_Agents/Models_and_FineTuning/classical-ml/SKILL.md)
+  Route: [ml-classical-ml](../../AI_and_Agents/Models_and_FineTuning/ml-domains/classical-ml/SKILL.md)
   Reason: "Classical ML request."
 
 State: User asks about deep learning, PyTorch, TensorFlow, neural networks, CNN, RNN, transformer.
@@ -763,27 +763,27 @@ State: User asks about feature engineering, feature creation, feature selection,
   Reason: "Feature engineering request."
 
 State: User asks about hyperparameter tuning, Optuna, grid search, Bayesian optimization.
-  Route: [ml-hyperparameter-tuning](../../AI_and_Agents/Models_and_FineTuning/hyperparameter-tuning/SKILL.md)
+  Route: [ml-hyperparameter-tuning](../../AI_and_Agents/Models_and_FineTuning/ml-domains/hyperparameter-tuning/SKILL.md)
   Reason: "Hyperparameter tuning request."
 
 State: User asks about model evaluation, confusion matrix, ROC AUC, precision recall, cross-validation.
-  Route: [ml-model-evaluation](../../AI_and_Agents/Models_and_FineTuning/model-evaluation/SKILL.md)
+  Route: [ml-model-evaluation](../../AI_and_Agents/Models_and_FineTuning/evaluation/model-evaluation/SKILL.md)
   Reason: "Model evaluation request."
 
 State: User asks about model interpretability, SHAP, LIME, explainable AI, feature importance.
-  Route: [ml-model-interpretability](../../AI_and_Agents/Models_and_FineTuning/model-interpretability/SKILL.md)
+  Route: [ml-model-interpretability](../../AI_and_Agents/Models_and_FineTuning/evaluation/model-interpretability/SKILL.md)
   Reason: "Model interpretability request."
 
 State: User asks about time series, Prophet, forecasting, seasonality, trend analysis.
-  Route: [ml-time-series](../../AI_and_Agents/Models_and_FineTuning/time-series/SKILL.md)
+  Route: [ml-time-series](../../AI_and_Agents/Models_and_FineTuning/ml-domains/time-series/SKILL.md)
   Reason: "Time series request."
 
 State: User asks about NLP, HuggingFace, transformers, text classification, NER, sentiment analysis.
-  Route: [ml-nlp](../../AI_and_Agents/Models_and_FineTuning/nlp/SKILL.md)
+  Route: [ml-nlp](../../AI_and_Agents/Models_and_FineTuning/ml-domains/nlp/SKILL.md)
   Reason: "NLP request."
 
 State: User asks about computer vision, YOLO, object detection, image classification, segmentation.
-  Route: [ml-computer-vision](../../AI_and_Agents/Models_and_FineTuning/computer-vision/SKILL.md)
+  Route: [ml-computer-vision](../../AI_and_Agents/Models_and_FineTuning/ml-domains/computer-vision/SKILL.md)
   Reason: "Computer vision request."
 
 State: User asks about recommender system, collaborative filtering, matrix factorization, content-based filtering.
@@ -791,7 +791,7 @@ State: User asks about recommender system, collaborative filtering, matrix facto
   Reason: "Recommender system request."
 
 State: User asks about anomaly detection, outlier detection, fraud detection, novelty detection.
-  Route: [ml-anomaly-detection](../../AI_and_Agents/Models_and_FineTuning/anomaly-detection/SKILL.md)
+  Route: [ml-anomaly-detection](../../AI_and_Agents/Models_and_FineTuning/ml-domains/anomaly-detection/SKILL.md)
   Reason: "Anomaly detection request."
 
 State: User asks about ML pipeline, Kubeflow, ML workflow, model training pipeline.
@@ -799,11 +799,11 @@ State: User asks about ML pipeline, Kubeflow, ML workflow, model training pipeli
   Reason: "ML pipeline request."
 
 State: User asks about feature store, Feast, feature serving, feature registry.
-  Route: [ml-feature-store](../../AI_and_Agents/Models_and_FineTuning/feature-store/SKILL.md)
+  Route: [ml-feature-store](../../AI_and_Agents/Models_and_FineTuning/common/feature-store/SKILL.md)
   Reason: "Feature store request."
 
 State: User asks about model serving, BentoML, Triton, model deployment, model inference.
-  Route: [ml-model-serving](../../AI_and_Agents/Models_and_FineTuning/model-serving/SKILL.md)
+  Route: [ml-model-serving](../../AI_and_Agents/Models_and_FineTuning/inference-serving/model-serving/SKILL.md)
   Reason: "Model serving request."
 
 State: User asks about math foundations, linear algebra, calculus, statistics for ML.
@@ -969,7 +969,7 @@ State: User asks about DataOps, data operations, data pipeline ops, data reliabi
   Reason: "DataOps request."
 
 State: User asks about MLOps, ML operations, model deployment pipeline, model [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
-  Route: [devops-mlops](../../AI_and_Agents/Models_and_FineTuning/mlops/SKILL.md)
+  Route: [devops-mlops](../../AI_and_Agents/Models_and_FineTuning/llmops/mlops/SKILL.md)
   Reason: "MLOps request."
 
 State: User asks about [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) for data, K8s data workloads, Spark on K8s, data on [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).
@@ -1290,9 +1290,9 @@ State: User asks about context compression, token budget, summarize.
   Route: [core-context-compressor](../../Software_Engineering_and_Other/Patterns/dev-practice/context-compressor/SKILL.md)
   Reason: "Context compression request."
 
-State: User asks about compliance, [audit](../../AI_and_Agents/Operations/audit/SKILL.md), SOC2, ISO27001, GDPR.
-  Route: [enterprise-compliance-audit](../../DevOps_and_Cloud/Observability_and_SecOps/compliance-[audit](../../AI_and_Agents/Operations/audit/SKILL.md)/SKILL.md)
-  Reason: "Compliance/[audit](../../AI_and_Agents/Operations/audit/SKILL.md) request."
+State: User asks about compliance, [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md), SOC2, ISO27001, GDPR.
+  Route: [enterprise-compliance-audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)/SKILL.md)
+  Reason: "Compliance/[audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) request."
 
 State: User asks about multi-tenant, SaaS architecture, tenant isolation.
   Route: [enterprise-multi-tenant](../../Software_Engineering_and_Other/Patterns/distributed-systems/multi-tenant/SKILL.md)
@@ -1407,7 +1407,7 @@ State: User asks about data warehouse, Snowflake, BigQuery, Redshift, dimensiona
   Reason: "Data warehouse request."
 
 State: User asks about BI, dashboard, Metabase, Superset, Looker.
-  Route: [data-bi-tools](../../AI_and_Agents/Models_and_FineTuning/bi-tools/SKILL.md)
+  Route: [data-bi-tools](../../Data_Engineering/bi-tools/SKILL.md)
   Reason: "BI tools request."
 
 State: User asks about data quality, Great Expectations, data validation, data contract.

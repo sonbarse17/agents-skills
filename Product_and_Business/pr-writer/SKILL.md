@@ -478,7 +478,7 @@ What's the risk level?
 │   └── 2+ reviewers including senior/principal
 │
 └── Critical (auth, payments, PII, breaking change)
-    ├── Full [audit](../../AI_and_Agents/Operations/audit/SKILL.md): security review + architecture review
+    ├── Full [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md): security review + architecture review
     └── Mandatory: 2+ reviewers, load test results, rollback plan
 ```
 

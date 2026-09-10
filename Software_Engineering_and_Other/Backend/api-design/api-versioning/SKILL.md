@@ -464,7 +464,7 @@ Versioning every single endpoint independently. Version at API level, not endpoi
 - Versioning information leakage: don't expose that a newer version exists if client is on old version
 - Ensure old versions still enforce current auth requirements
 - Security patches apply to all supported versions, not just latest
-- [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) log which version was used for every request
+- [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) log which version was used for every request
 - Old versions should not bypass rate limiting or WAF rules
 
 ## Performance Considerations

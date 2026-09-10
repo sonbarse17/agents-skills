@@ -198,7 +198,7 @@ the catalog and scorecards correctly in whichever product is chosen.
    ```
    Services must pass all rules at a level (and below) to be badged at
    that level; Cortex evaluates this continuously from ingested metadata,
-   not as a one-time manual [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md).
+   not as a one-time manual [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md).
 
 6. **Populate the OpsLevel catalog via `opslevel.yml` or Terraform**, not
    manual UI entry, so the catalog is diffable and PR-reviewable like the

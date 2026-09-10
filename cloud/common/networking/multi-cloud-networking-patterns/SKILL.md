@@ -210,7 +210,7 @@ than an emergent mess of one-off peering connections.
   **Fix:** The hub's route table/NSG allowed all spoke-to-spoke traffic
   by default instead of denying by default. Rebuild the routing/firewall
   policy to deny spoke-to-spoke traffic unless an explicit rule exists,
-  and [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) existing flows with VPC Flow Logs / NSG Flow Logs / VPC Flow
+  and [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) existing flows with VPC Flow Logs / NSG Flow Logs / VPC Flow
   Logs (GCP) to find any other unintended paths before tightening.
 
 - **Symptom:** A site-to-site VPN between two clouds connects but no

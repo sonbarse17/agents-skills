@@ -122,7 +122,7 @@ What happens if a message is lost?
 ### Step 1: Select Broker
 ```
 Kafka:      high throughput (100k+ msg/s), replay, log compaction, multi-consumer
-            Best for: event sourcing, analytics pipelines, [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs, CDC
+            Best for: event sourcing, analytics pipelines, [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs, CDC
 
 RabbitMQ:   flexible routing (exchanges, bindings), low latency, per-message ack
             Best for: task queues, RPC, complex routing, lower throughput

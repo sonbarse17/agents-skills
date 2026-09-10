@@ -154,9 +154,9 @@ controlPlaneEndpoint: "10.0.0.100:6443"
 apiServer:
   extraArgs:
     authorization-mode: "Node,RBAC"
-    [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-log-path: "/var/log/kubernetes/[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md).log"
-    [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-log-maxage: "30"
-    [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-log-maxbackup: "10"
+    [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-log-path: "/var/log/kubernetes/[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md).log"
+    [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-log-maxage: "30"
+    [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-log-maxbackup: "10"
     feature-gates: "PodSecurity=true"
 etcd:
   local:
@@ -272,7 +272,7 @@ metadata:
   name: production
   labels:
     pod-security.kubernetes.io/enforce: restricted
-    pod-security.kubernetes.io/[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md): restricted
+    pod-security.kubernetes.io/[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md): restricted
     pod-security.kubernetes.io/warn: restricted
 ---
 # Exemption for system-critical namespaces
@@ -282,7 +282,7 @@ metadata:
   name: kube-system
   labels:
     pod-security.kubernetes.io/enforce: privileged
-    pod-security.kubernetes.io/[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md): privileged
+    pod-security.kubernetes.io/[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md): privileged
     pod-security.kubernetes.io/warn: privileged
 ```
 
@@ -586,7 +586,7 @@ Procedure:
 
 - [ ] Control plane endpoint restricted to admin CIDR
 - [ ] etcd encrypted at rest + TLS for peer/client communication
-- [ ] [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging enabled with retention policy
+- [ ] [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging enabled with retention policy
 - [ ] Pod Security Standards enforced (restricted baseline)
 - [ ] Network Policies default-deny for all namespaces
 - [ ] ServiceAccount token automount disabled for most workloads

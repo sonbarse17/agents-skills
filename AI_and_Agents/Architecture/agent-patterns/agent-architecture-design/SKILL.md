@@ -109,7 +109,7 @@ vendor SDK is driving it.
                return AgentResult(status="done", output=response.text)
            if response.stop_reason == "tool_use":
                for call in response.tool_calls:
-                   result = dispatch_tool(call, allowlist=tools)  # see [agent-tool-use-patterns](../../../Models_and_FineTuning/agent-tool-use-patterns/SKILL.md)
+                   result = dispatch_tool(call, allowlist=tools)  # see [agent-tool-use-patterns](../../../Models_and_FineTuning/agent-patterns/agent-tool-use-patterns/SKILL.md)
                    state.messages.append(tool_result_message(call, result))
        return AgentResult(status="max_iterations_exceeded", partial=state.transcript)
    ```
@@ -154,7 +154,7 @@ vendor SDK is driving it.
   authentication logic.
 - Prefer fewer, well-scoped tools over many overlapping ones; tool
   proliferation increases both hallucinated tool calls and prompt size (see
-  [agent-tool-use-patterns](../[agent-tool-use-patterns](../../Models_and_FineTuning/agent-tool-use-patterns/SKILL.md)/SKILL.md)).
+  [agent-tool-use-patterns](../../../Models_and_FineTuning/agent-patterns/agent-tool-use-patterns/SKILL.md)/SKILL.md)).
 - Keep the system prompt's description of "what this agent is for" narrow.
   A narrowly scoped agent is both easier to evaluate and less prone to
   scope creep mid-task.
@@ -165,7 +165,7 @@ vendor SDK is driving it.
   latency matters — a cheaper/faster model can often execute a
   well-specified plan step, reserving the strongest model for planning and
   ambiguous judgment calls (see
-  [llm-cost-and-latency-optimization](../[llm-cost-and-latency-optimization](../../Models_and_FineTuning/llm-cost-and-latency-optimization/SKILL.md)/SKILL.md)).
+  [llm-cost-and-latency-optimization](../../../Models_and_FineTuning/llm-platform/llm-cost-and-latency-optimization/SKILL.md)/SKILL.md)).
 - Version your system prompt and tool schemas together; a tool schema
   change without a matching prompt update is a common source of silent
   regressions.
@@ -236,7 +236,7 @@ Loop bound: max 6 state transitions per ticket, 60s timeout per LLM call.
 Every transition emits a `ticket.state_changed` event with ticket id, from
 state, to state, and the tool calls made in that state — this is what an
 [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) dashboard and later
-[agent-evaluation-and-guardrails](../[agent-evaluation-and-guardrails](../../Models_and_FineTuning/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md)
+[agent-evaluation-and-guardrails](../../../Models_and_FineTuning/evaluation/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md)
 checks consume. The `send` state is the only place `send_reply` (an
 irreversible-write tool) is even present in the tool list passed to the
 model, so a prompt-injection attempt from ticket content cannot cause a
@@ -244,7 +244,7 @@ send from an earlier state — the tool literally isn't offered.
 
 ## Cross-references
 
-- [agent-tool-use-patterns](../[agent-tool-use-patterns](../../Models_and_FineTuning/agent-tool-use-patterns/SKILL.md)/SKILL.md)
+- [agent-tool-use-patterns](../../../Models_and_FineTuning/agent-patterns/agent-tool-use-patterns/SKILL.md)/SKILL.md)
 - [multi-agent-orchestration](../[multi-agent-orchestration](../../Workflows/multi-agent-orchestration/SKILL.md)/SKILL.md)
-- [agent-evaluation-and-guardrails](../[agent-evaluation-and-guardrails](../../Models_and_FineTuning/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md)
-- [mcp-server-development](../[mcp-server-development](../../Infrastructure/mcp-server-development/SKILL.md)/SKILL.md)
+- [agent-evaluation-and-guardrails](../../../Models_and_FineTuning/evaluation/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md)
+- [mcp-server-development](../../../Infrastructure/mcp/mcp-server-development/SKILL.md)/SKILL.md)

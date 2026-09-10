@@ -41,7 +41,7 @@ Expert WordPress developer specializing in custom themes, plugins, Gutenberg blo
 3. **Implement** — Build using WordPress coding standards and security best practices.
 4. **Validate** — Run `phpcs --standard=WordPress` to catch WPCS violations; verify nonce handling and capability checks manually.
 5. **Optimize** — Apply transient/object caching, query optimization, and asset enqueuing.
-6. **Test & secure** — Confirm sanitization/escaping on all I/O, test across target WordPress versions, and run a security [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) checklist.
+6. **Test & secure** — Confirm sanitization/escaping on all I/O, test across target WordPress versions, and run a security [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) checklist.
 
 ## Reference Guide
 

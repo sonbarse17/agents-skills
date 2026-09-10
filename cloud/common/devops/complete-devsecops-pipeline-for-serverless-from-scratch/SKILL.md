@@ -63,7 +63,7 @@ an in-cluster operator (there is no cluster).
   checks.
 - Diagnosing why a Lambda function's execution role has drifted broad
   ("just add the permission and move on") and needs to be pulled back to
-  least privilege as part of the pipeline, not a one-off [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md).
+  least privilege as part of the pipeline, not a one-off [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md).
 
 ## Prerequisites & environment
 
@@ -238,7 +238,7 @@ reviewed — no drift introduced by a manual console edit after deploy.
   remembers which of the function's code paths actually needs write
   access versus just read.
   **Fix:** This is exactly what the Phase 4 role-diff gate exists to
-  catch at the moment the change is proposed — [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) the current role
+  catch at the moment the change is proposed — [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) the current role
   against CloudTrail's actual API call history for the function
   (`aws cloudtrail lookup-events` filtered by the function's role) to
   determine real usage, then scope the policy down to those specific

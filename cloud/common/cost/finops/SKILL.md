@@ -522,7 +522,7 @@ check_tag_compliance() {
 - Control **IAM permissions** for cost data — restrict `ce:*`, `budgets:*`, `pricing:*` to FinOps team
 - Enable **AWS Organizations SCP** to prevent teams from launching expensive instance types
 - Set **billing alarms** with SNS notifications to Slack/PagerDuty on threshold breaches
-- [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) **resource creation** with CloudTrail and cross-reference with budget tag requirements
+- [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) **resource creation** with CloudTrail and cross-reference with budget tag requirements
 - Use **IAM roles** for programmatic cost API access instead of long-lived access keys
 - Restrict **permissions** to modify budgets and alerts to a small admin group
 - Monitor **cost anomaly** with AWS Cost Anomaly Detection or third-party FinOps platforms

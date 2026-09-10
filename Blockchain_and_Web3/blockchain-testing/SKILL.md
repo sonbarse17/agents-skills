@@ -29,23 +29,23 @@ depends_on:
 # Blockchain Testing
 
 ## Purpose
-Guide blockchain smart contract testing covering the full testing pyramid: unit tests, integration tests, fuzz tests, invariant tests, formal verification, and [audit](../../AI_and_Agents/Operations/audit/SKILL.md) preparation. Ensures contract correctness before deployment.
+Guide blockchain smart contract testing covering the full testing pyramid: unit tests, integration tests, fuzz tests, invariant tests, formal verification, and [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) preparation. Ensures contract correctness before deployment.
 
 ## Agent Protocol
 
 ### Trigger
-"smart contract test", "foundry test", "forge test", "hardhat test", "truffle test", "fuzz testing", "invariant testing", "property-based testing", "echidna", "certora", "formal verification", "[audit](../../AI_and_Agents/Operations/audit/SKILL.md) preparation", "blockchain testing", "web3 testing", "dapp testing", "contract [audit](../../AI_and_Agents/Operations/audit/SKILL.md)", "gas benchmark", "mainnet fork test", "integration test blockchain", "e2e blockchain test", "foundry cheatcode", "forge snapshot"
+"smart contract test", "foundry test", "forge test", "hardhat test", "truffle test", "fuzz testing", "invariant testing", "property-based testing", "echidna", "certora", "formal verification", "[audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) preparation", "blockchain testing", "web3 testing", "dapp testing", "contract [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)", "gas benchmark", "mainnet fork test", "integration test blockchain", "e2e blockchain test", "foundry cheatcode", "forge snapshot"
 
 ### Input Context
 - Smart contracts to test (with source files)
 - Framework preference (Foundry/Hardhat/Truffle)
-- Testing phase (unit/fuzz/invariant/formal/[audit](../../AI_and_Agents/Operations/audit/SKILL.md))
+- Testing phase (unit/fuzz/invariant/formal/[audit](../../AI_and_Agents/Operations/common/audit/SKILL.md))
 - Existing test suite and coverage
 - Target chains (EVM/Solana/Cosmos)
-- Security requirements ([audit](../../AI_and_Agents/Operations/audit/SKILL.md) timeline, TVL at risk)
+- Security requirements ([audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) timeline, TVL at risk)
 
 ### Output Artifact
-Testing strategy specification: framework setup, test organization, fuzz/invariant properties, gas benchmarking, and [audit](../../AI_and_Agents/Operations/audit/SKILL.md) preparation checklist.
+Testing strategy specification: framework setup, test organization, fuzz/invariant properties, gas benchmarking, and [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) preparation checklist.
 
 ### Response Format
 1. **Test strategy**: unit vs integration vs fuzz vs invariant vs formal (testing pyramid)
@@ -54,7 +54,7 @@ Testing strategy specification: framework setup, test organization, fuzz/invaria
 4. **Fuzz tests**: input ranges, invariant properties, assertion types
 5. **Integration tests**: mainnet fork, multi-contract flows, protocol composition
 6. **Gas & performance**: benchmark snapshot, optimization targets
-7. **Security [audit](../../AI_and_Agents/Operations/audit/SKILL.md)**: tooling (Slither, Mythril, Halmos), manual review checklist
+7. **Security [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)**: tooling (Slither, Mythril, Halmos), manual review checklist
 
 ### Completion Criteria
 - Unit tests cover all functions with boundary values and error cases
@@ -62,7 +62,7 @@ Testing strategy specification: framework setup, test organization, fuzz/invaria
 - Invariant tests capture protocol-level properties (solvency, access control, correctness)
 - Integration tests validate against mainnet fork with real protocol interactions
 - Gas benchmarks established and tracked in CI
-- [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) prep checklist completed (static analysis, fuzz, invariant, manual review)
+- [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) prep checklist completed (static analysis, fuzz, invariant, manual review)
 
 ### Max Response Length
 4000 tokens
@@ -325,7 +325,7 @@ contract GasBenchmark is Test {
 // testGasTransfer() (gas: ~48723)
 ```
 
-## Security [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Testing Flow
+## Security [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) Testing Flow
 
 ```
 Phase 1: Static Analysis
@@ -349,9 +349,9 @@ Phase 4: Integration
 └── Gas snapshot — cost regression check
 ```
 
-### [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Preparation Checklist
+### [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) Preparation Checklist
 ```markdown
-Pre-[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Checklist:
+Pre-[Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) Checklist:
 - [ ] All functions have unit tests with boundary conditions
 - [ ] Fuzz tests written for all numeric inputs (>10K runs each)
 - [ ] Invariant tests cover protocol-level properties
@@ -375,7 +375,7 @@ Pre-[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Checklist:
 5. Use Echidna or Foundry invariant tester for property-based testing
 6. Include gas benchmarks (forge snapshot) in CI to track gas cost regressions
 7. Simulate various network conditions: reorgs, failed txns, out-of-gas scenarios
-8. Before [audit](../../AI_and_Agents/Operations/audit/SKILL.md): full fuzz coverage, invariant tests, slither analysis, manual review checklist
+8. Before [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md): full fuzz coverage, invariant tests, slither analysis, manual review checklist
 9. Coverage is a guide, not a target — 100% coverage doesn't mean 100% correctness
 10. Always test on a testnet deployment before mainnet
 11. Bound fuzz inputs to realistic ranges — unbounded fuzzing wastes compute on unrealistic values
@@ -556,7 +556,7 @@ contract InvariantTest is Test {
 - **Test isolation**: Use `vm.prank` and `vm.startPrank` for isolated test contexts; reset state between tests.
 - **Mainnet state safety**: Never run fork tests on production RPC with write access; use read-only archives.
 - **Secrets in tests**: Store fork RPC URLs in env vars; never [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) API keys to test files.
-- **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) readiness**: Structure tests for auditor review; document test coverage and invariant rationale.
+- **[Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) readiness**: Structure tests for auditor review; document test coverage and invariant rationale.
 - **Test timeout**: Set test timeout (e.g., `forge test --no-match-contract "Fork" --timeout 300`) to prevent CI hangs.
 
 ## Phase

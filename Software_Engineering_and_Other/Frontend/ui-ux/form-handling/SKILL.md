@@ -219,7 +219,7 @@ All form fields have associated `<label>` elements. Error messages use `role="al
 | Dynamic invoice form with line items | React Hook Form | Zod | Client + server |
 | Settings page with auto-save | TanStack Form | Zod | Debounced server |
 | Admin dashboard with file uploads | React Hook Form | Zod | Client + server |
-| Enterprise signup with compliance | Formik or RHF | Yup | Client + server + [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) |
+| Enterprise signup with compliance | Formik or RHF | Yup | Client + server + [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) |
 | Angular app with complex validation | Angular Reactive | Built-in + Zod | Client + server |
 
 ## Validation Strategy Decision Tree
@@ -500,7 +500,7 @@ config:
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
+- Repudiation: [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -514,7 +514,7 @@ config:
 ### Secrets Management
 - Secrets never in code — always in secrets manager ([Vault](../../../../Security/cryptography-secrets/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
+- Access [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 

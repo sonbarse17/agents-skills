@@ -175,7 +175,7 @@ or the [incident](../incident/SKILL.md)-command process running in parallel (see
    ```
    Link the Change Request to the active [Incident](../incident/SKILL.md) record
    (`change_request.parent_incident` or a related-list relationship) so
-   the [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail shows exactly which [incident](../incident/SKILL.md) justified bypassing
+   the [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail shows exactly which [incident](../incident/SKILL.md) justified bypassing
    standard CAB timing.
 
 5. **Require an actual (even if fast) emergency-change approval, not a
@@ -184,7 +184,7 @@ or the [incident](../incident/SKILL.md)-command process running in parallel (see
    approver group (mirroring the paging tool's own on-call schedule) with
    a tight SLA (e.g. 15 minutes), rather than either (a) requiring the
    full weekly CAB — too slow for an active Sev1 — or (b) no approval at
-   all — which erases the [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail the whole ITSM integration exists
+   all — which erases the [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail the whole ITSM integration exists
    to provide.
 
 6. **Link recurring/unresolved incidents to a Problem record** for
@@ -217,7 +217,7 @@ or the [incident](../incident/SKILL.md)-command process running in parallel (see
   idempotent under retries and prevents duplicate records.
 - Keep Emergency Change approval fast (minutes, from a dedicated
   reachable approver group) but never optional — an emergency change
-  with zero approval defeats the [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) purpose ITSM integration exists
+  with zero approval defeats the [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) purpose ITSM integration exists
   for in the first place.
 - Drive assignment-group routing off CMDB CI ownership, and treat a
   stale/missing CI-to-team mapping as a data-quality bug to fix at the
@@ -310,7 +310,7 @@ an emergency Change Request for the rollback that mitigates it.
    ```
    The on-call emergency-CAB approver (a role staffed 24/7, distinct
    from the normal weekly CAB) approves within 6 minutes; the change
-   record (`CHG0031840`) is now the [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail for the rollback.
+   record (`CHG0031840`) is now the [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail for the rollback.
 
 3. The rollback completes and checkout's error rate recovers. The sync
    flow updates `INC0048213`'s `incident_state` to `6` (Resolved) when
@@ -333,5 +333,5 @@ an emergency Change Request for the rollback that mitigates it.
 
 - [servicenow-itsm-configuration-validation](../[servicenow-itsm-configuration-validation](../../../DevOps_and_Cloud/Observability_and_SecOps/servicenow-itsm-configuration-validation/SKILL.md)/SKILL.md) — validating that the assignment routing, approval workflow, and sync flows described here won't block or misroute a real [incident](../incident/SKILL.md) before depending on them.
 - [pagerduty-and-opsgenie-oncall-configuration](../[pagerduty-and-opsgenie-oncall-configuration](../../../DevOps_and_Cloud/Observability_and_SecOps/pagerduty-and-opsgenie-oncall-configuration/SKILL.md)/SKILL.md) — the paging-tool side this integration syncs against; escalation policies and services referenced by `correlation_id` here.
-- [chatops-[runbook](../runbook/SKILL.md)-automation](../[chatops-[runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)-automation](../../Frontend/chatops-[runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)-automation/SKILL.md)/SKILL.md) — automated [runbook](../runbook/SKILL.md) actions taken during the [incident](../incident/SKILL.md) this integration is tracking should also be reflected in the ServiceNow record for [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) purposes.
+- [chatops-[runbook](../runbook/SKILL.md)-automation](../[chatops-[runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)-automation](../../Frontend/chatops-[runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)-automation/SKILL.md)/SKILL.md) — automated [runbook](../runbook/SKILL.md) actions taken during the [incident](../incident/SKILL.md) this integration is tracking should also be reflected in the ServiceNow record for [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) purposes.
 - [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../Frontend/[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../alerting/on-call-management/SKILL.md)/SKILL.md)/SKILL.md) — the [Incident](../incident/SKILL.md) Command process and severity levels that drive when a ServiceNow record and emergency change get created in the first place.

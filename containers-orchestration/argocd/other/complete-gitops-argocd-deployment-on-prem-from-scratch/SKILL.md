@@ -36,7 +36,7 @@ The EKS/AKS/GKE variants of this skill all solve the same problem the same
 way: a cloud-native workload identity federation mechanism (IRSA, Azure AD
 Workload Identity, GKE Workload Identity Federation) lets Argo CD's own
 components authenticate without a long-lived static credential. On a
-self-managed or [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) cluster **that mechanism does not exist** —
+self-managed or [bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md) cluster **that mechanism does not exist** —
 there is no cloud STS to federate against. This is the genuine mechanical
 difference this skill exists to cover: cluster access has to fall back to
 [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md)-native `ServiceAccount` tokens and RBAC, ideally made
@@ -44,7 +44,7 @@ short-lived via HashiCorp [Vault](../../../../Security/cryptography-secrets/vaul
 permanent bearer token; private registry authentication needs an
 explicit `imagePullSecret`/credential-helper flow instead of an IRSA/
 Workload-Identity-backed pull; and the Ingress/TLS layer needs a
-[bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) load balancer (MetalLB) and often an internal CA instead of a
+[bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md) load balancer (MetalLB) and often an internal CA instead of a
 cloud LB and public ACME issuance. Everything else — the `Application`
 spec, `ApplicationSet` generators, sync policy — is identical to the cloud
 variants and is not repeated here.
@@ -70,13 +70,13 @@ variants and is not repeated here.
 ## Prerequisites & environment
 
 - A self-managed [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) cluster already provisioned and reachable via
-  `[kubectl](../../../kubernetes/other/kubectl/SKILL.md)` — [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)/VMware provisioning patterns are covered by
+  `[kubectl](../../../kubernetes/other/kubectl/SKILL.md)` — [bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)/VMware provisioning patterns are covered by
   [on-prem-infrastructure-patterns](../../../cloud/skills/[on-prem-infrastructure-patterns](../../Cloud_Providers/on-prem-infrastructure-patterns/SKILL.md)/SKILL.md)
   and are not repeated here; this skill starts from "the cluster exists."
 - `helm` ≥ 3.12, `[kubectl](../../../kubernetes/other/kubectl/SKILL.md)`, and cluster-admin access to create
   `ServiceAccount`s, `ClusterRole`s, and `ClusterRoleBinding`s.
-- A [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) load balancer already installed —
-  [metallb-[bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[metallb-[bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration/SKILL.md)/SKILL.md)
+- A [bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md) load balancer already installed —
+  [metallb-[bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)-load-balancer-configuration](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[metallb-[bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)-load-balancer-configuration](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)-load-balancer-configuration/SKILL.md)/SKILL.md)
   — since there is no cloud `LoadBalancer` Service type to fall back on for
   Ingress.
 - A private container registry (Harbor, Nexus, or similar) already
@@ -199,7 +199,7 @@ projects) over a personal account's credentials, and source
 `HARBOR_ROBOT_TOKEN` from [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md)/`[secrets-management](../../../../cloud/common/security/secrets-management/SKILL.md)`, never hardcoded.
 
 For Ingress, install
-[metallb-[bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[metallb-[bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration/SKILL.md)/SKILL.md)
+[metallb-[bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)-load-balancer-configuration](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[metallb-[bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)-load-balancer-configuration](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)-load-balancer-configuration/SKILL.md)/SKILL.md)
 first so `ingress-nginx`'s own Service can actually get an external IP,
 then front `[argocd](../argocd/SKILL.md)-server` with
 [ingress-nginx-configuration](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[ingress-nginx-configuration](../../../kubernetes/networking/ingress-nginx-configuration/SKILL.md)/SKILL.md).
@@ -288,9 +288,9 @@ trusting the Ingress is actually serving valid TLS.
 
 - **Symptom:** `ingress-nginx`'s own Service stays `<pending>` forever with
   no external IP, and every Ingress behind it is unreachable.
-  **Fix:** This is expected without MetalLB (or an equivalent [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)
+  **Fix:** This is expected without MetalLB (or an equivalent [bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)
   LB) installed and configured with an IP address pool — install
-  [metallb-[bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[metallb-[bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration/SKILL.md)/SKILL.md)
+  [metallb-[bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)-load-balancer-configuration](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[metallb-[bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)-load-balancer-configuration](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)-load-balancer-configuration/SKILL.md)/SKILL.md)
   and confirm a plain test `LoadBalancer` Service gets an IP before
   troubleshooting Ingress routing itself.
 
@@ -369,11 +369,11 @@ Identity.
 
 ## Cross-references
 
-- [on-prem-infrastructure-patterns](../../../cloud/skills/[on-prem-infrastructure-patterns](../../Cloud_Providers/on-prem-infrastructure-patterns/SKILL.md)/SKILL.md) — [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)/VMware cluster provisioning this skill assumes and builds on.
+- [on-prem-infrastructure-patterns](../../../cloud/skills/[on-prem-infrastructure-patterns](../../Cloud_Providers/on-prem-infrastructure-patterns/SKILL.md)/SKILL.md) — [bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)/VMware cluster provisioning this skill assumes and builds on.
 - [argocd-application-configuration](../[argocd-application-configuration](../[argocd](../argocd/SKILL.md)-application-configuration/SKILL.md)/SKILL.md) — full depth on the `Application` spec used in Phase 4/6.
 - [argocd-applicationset-patterns](../[argocd-applicationset-patterns](../[argocd](../argocd/SKILL.md)-applicationset-patterns/SKILL.md)/SKILL.md) — generator mechanics used in Phase 5.
 - [gitops-multi-cluster-management](../[gitops-multi-cluster-management](../[gitops](../gitops/SKILL.md)-multi-cluster-management/SKILL.md)/SKILL.md) — hub-and-spoke registration pattern this skill's Phase 2 adapts with ServiceAccount/RBAC and [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md)-issued credentials.
-- [metallb-[bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[metallb-[bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration/SKILL.md)/SKILL.md) and [ingress-nginx-configuration](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[ingress-nginx-configuration](../../../kubernetes/networking/ingress-nginx-configuration/SKILL.md)/SKILL.md) — the [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) LB/Ingress layer Phase 3 depends on.
+- [metallb-[bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)-load-balancer-configuration](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[metallb-[bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)-load-balancer-configuration](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)-load-balancer-configuration/SKILL.md)/SKILL.md) and [ingress-nginx-configuration](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[ingress-nginx-configuration](../../../kubernetes/networking/ingress-nginx-configuration/SKILL.md)/SKILL.md) — the [bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md) LB/Ingress layer Phase 3 depends on.
 - [cert-manager-tls-automation](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[cert-manager-tls-automation](../../../kubernetes/security/cert-manager-tls-automation/SKILL.md)/SKILL.md) — the internal-CA `Issuer` pattern used instead of public ACME issuance.
 - [vault-operations-and-pki-engine-configuration](../../../../Security/scanning/security-scanning/SKILL.md)-tooling/skills/[vault-operations-and-pki-engine-configuration](../../../../Security/cryptography-secrets/vault/SKILL.md)-operations-and-pki-engine-configuration/SKILL.md)/SKILL.md) and [sealed-secrets-and-external-secrets-operator](../../../../Security/scanning/security-scanning/SKILL.md)-tooling/skills/[sealed-secrets-and-external-secrets-operator](../../../kubernetes/security/sealed-secrets-and-external-secrets-operator/SKILL.md)/SKILL.md) — standing up [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md) and syncing its issued credentials into Argo CD's cluster registration.
 - [gitops-workflow](../../../devops/skills/[gitops-workflow](../[gitops](../gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md) — the vendor-neutral [GitOps](../../../common/gitops/gitops/SKILL.md) concepts this on-prem [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) implements.

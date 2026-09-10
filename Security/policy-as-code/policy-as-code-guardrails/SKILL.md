@@ -64,7 +64,7 @@ in; a policy engine is not a substitute for the underlying controls
 - The user is troubleshooting a policy that's too strict (blocking
   legitimate deploys) or too permissive (letting through what it should
   block), and needs help writing/testing Rego or Kyverno rules.
-- The user wants a "dry-run"/[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) mode before switching a new policy to
+- The user wants a "dry-run"/[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) mode before switching a new policy to
   enforcing, to avoid a surprise outage from a policy rollout.
 
 ## Prerequisites & environment
@@ -75,7 +75,7 @@ in; a policy engine is not a substitute for the underlying controls
   declarative language) but the most flexible and widely adopted option.
 - **Gatekeeper** — OPA's [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-native wrapper, providing
   `ConstraintTemplate`/`Constraint` CRDs so Rego policies integrate with
-  standard [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) admission webhooks and [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) results as native
+  standard [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) admission webhooks and [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) results as native
   resources.
 - **Kyverno** — [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-native alternative to OPA/Gatekeeper using
   plain YAML instead of Rego; lower learning curve for teams already
@@ -90,21 +90,21 @@ in; a policy engine is not a substitute for the underlying controls
 - A [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster with admission webhook support (standard in any
   reasonably current distribution) if enforcing at the cluster level;
   cluster-admin or equivalent to install Gatekeeper/Kyverno.
-- A staged rollout plan: **every new policy should run in `[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)`/`dry-run`
+- A staged rollout plan: **every new policy should run in `[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)`/`dry-run`
   mode first**, not `enforce`, to surface what it would have blocked
   against real traffic/manifests before it can cause an outage.
 
 ## Step-by-step guidance
 
-1. **Start with an [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-only policy** to see impact before blocking
-   anything. Kyverno example requiring non-root containers, in [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) mode:
+1. **Start with an [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-only policy** to see impact before blocking
+   anything. Kyverno example requiring non-root containers, in [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) mode:
    ```yaml
    apiVersion: kyverno.io/v1
    kind: ClusterPolicy
    metadata:
      name: require-run-as-non-root
    spec:
-     validationFailureAction: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md)   # start here, not Enforce
+     validationFailureAction: [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)   # start here, not Enforce
      rules:
        - name: check-runAsNonRoot
          match:
@@ -131,14 +131,14 @@ in; a policy engine is not a substitute for the underlying controls
    }
    ```
 
-3. **Review [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) results for a full deploy cycle** (at least a week, or
+3. **Review [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) results for a full deploy cycle** (at least a week, or
    however long covers your normal deployment cadence) before flipping to
    enforcing — this catches legitimate workloads the policy would have
    broken (e.g. a base image that genuinely needs root for a startup
    step) so you can add a scoped exception rather than breaking
    production on rollout day.
 
-4. **Switch to enforcing once [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) is clean**, and add a documented,
+4. **Switch to enforcing once [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) is clean**, and add a documented,
    narrowly-scoped exception mechanism for genuine exceptions rather than
    disabling the policy for a whole namespace:
    ```yaml
@@ -209,8 +209,8 @@ in; a policy engine is not a substitute for the underlying controls
 
 ## Best practices
 
-- Always roll out new policies in [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)/dry-run mode first, and review
-  actual [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) hits before enforcing — this is the single highest-value
+- Always roll out new policies in [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)/dry-run mode first, and review
+  actual [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) hits before enforcing — this is the single highest-value
   habit for avoiding "the new policy broke prod on a Friday."
 - Keep policies narrowly scoped and composable (one policy per concern:
   non-root, registry allowlist, resource limits) rather than one giant
@@ -238,10 +238,10 @@ in; a policy engine is not a substitute for the underlying controls
 - **Symptom:** A new Gatekeeper/Kyverno policy is deployed directly in
   `Enforce` mode and immediately blocks a legitimate deployment,
   triggering an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
-  **Fix:** Always deploy new policies in `[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md)`/`dry-run` first, review
+  **Fix:** Always deploy new policies in `[Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)`/`dry-run` first, review
   what they would have blocked over a representative time window, then
   switch to enforcing with documented exceptions for anything legitimate
-  the [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) surfaced.
+  the [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) surfaced.
 
 - **Symptom:** A Rego policy compiles and runs without error but never
   actually denies anything, even for input that should clearly violate
@@ -281,10 +281,10 @@ in; a policy engine is not a substitute for the underlying controls
 ## Worked example
 
 A platform team codifies three baseline [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) security requirements
-as Kyverno policies, rolling them out [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-first, plus an OPA/Conftest
+as Kyverno policies, rolling them out [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-first, plus an OPA/Conftest
 check blocking public S3 buckets in Terraform CI.
 
-`policies/require-non-root.yaml` (rolled out in [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md), then Enforce after
+`policies/require-non-root.yaml` (rolled out in [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md), then Enforce after
 a clean week):
 ```yaml
 apiVersion: kyverno.io/v1

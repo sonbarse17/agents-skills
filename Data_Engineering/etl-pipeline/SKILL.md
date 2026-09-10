@@ -262,7 +262,7 @@ models:
 | 1: Basic | Generic tests (unique, not_null) | Manual dbt test run | Key columns only |
 | 2: Defined | + accepted_values, relationships | CI pipeline step | All columns on marts |
 | 3: Managed | + custom generic tests, freshness tests | Blocking CI gate | All models, all columns |
-| 4: Measured | + singular tests, data contract tests | CI gate + weekly full [audit](../../AI_and_Agents/Operations/audit/SKILL.md) | Staging + intermediate + marts |
+| 4: Measured | + singular tests, data contract tests | CI gate + weekly full [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) | Staging + intermediate + marts |
 | 5: Optimized | + cross-model assertions, anomaly detection | CI gate + automated [alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) | Full lineage, all transforms |
 
 ### Documentation

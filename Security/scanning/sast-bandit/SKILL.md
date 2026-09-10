@@ -183,9 +183,9 @@ Use the bundled script `scripts/bandit_analyzer.py` for enhanced reporting with 
 
 - **Access Control**: Run Bandit in sandboxed CI/CD environments with read-only access to source code. Restrict write permissions to prevent tampering with security configurations.
 
-- **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging**: Log all Bandit executions with timestamps, scan scope, findings count, and operator identity for security auditing and compliance purposes.
+- **[Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logging**: Log all Bandit executions with timestamps, scan scope, findings count, and operator identity for security auditing and compliance purposes.
 
-- **Compliance**: Bandit supports SOC2, PCI-DSS, and GDPR compliance by identifying security weaknesses. Document scan frequency, remediation timelines, and exception approvals for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trails.
+- **Compliance**: Bandit supports SOC2, PCI-DSS, and GDPR compliance by identifying security weaknesses. Document scan frequency, remediation timelines, and exception approvals for [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) trails.
 
 - **False Positives**: Review LOW confidence findings manually. Use inline `# nosec` comments sparingly and document justifications in code review processes.
 

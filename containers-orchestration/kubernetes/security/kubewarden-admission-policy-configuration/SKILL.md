@@ -106,7 +106,7 @@ and distribution models.
   eval`/`gator test` for offline policy testing.
 - A rollout plan: **every new or changed `ClusterAdmissionPolicy` should
   be applied with `mode: monitor` first**, not `protect` — identical
-  discipline in spirit to Gatekeeper's `dryrun` and Kyverno's `[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)`,
+  discipline in spirit to Gatekeeper's `dryrun` and Kyverno's `[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)`,
   and for the same reason.
 - If policy signing is required (recommended for any policy pulled from
   a public registry rather than authored/reviewed in-house): `cosign`
@@ -204,7 +204,7 @@ and distribution models.
    Kubewarden's `monitor` mode logs what *would* have been rejected
    (visible in `policy-server`'s logs / an [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) pipeline) but
    admits every request regardless, exactly like Gatekeeper's `dryrun`
-   and Kyverno's `[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)` — review this output for at least one full
+   and Kyverno's `[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)` — review this output for at least one full
    deploy cycle before promoting.
 
 6. **Switch to `protect` (Kubewarden's enforce mode) once monitor is
@@ -291,7 +291,7 @@ and distribution models.
   of field-path/schema bugs that make a Rego or Kyverno policy silently
   never fire.
 - Always roll out via `monitor` → review → `protect`, never straight to
-  `protect`, mirroring the Gatekeeper/Kyverno [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-first discipline
+  `protect`, mirroring the Gatekeeper/Kyverno [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-first discipline
   exactly.
 - Verify policy artifact signatures (`cosign`/`sigstore`) for anything
   pulled from a registry outside direct organizational control — an
@@ -418,7 +418,7 @@ reviewed update to the `module` field.
 
 - [opa-gatekeeper-policy-authoring](../../../../Security/policy-as-code/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md) —
   the Rego-based alternative engine; read this to compare authoring
-  model and rollout discipline (both share the [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-before-enforce
+  model and rollout discipline (both share the [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-before-enforce
   pattern) when deciding between the two for a given team.
 - [kyverno-policy-management](../../../policy-and-governance-tooling/skills/[kyverno-policy-management](../kyverno-policy-management/SKILL.md)/SKILL.md) —
   the YAML-native alternative, notably stronger for `mutate`/`generate`
@@ -429,5 +429,5 @@ reviewed update to the `module` field.
   Kubewarden policy can still misbehave at runtime, which Falco is
   positioned to catch.
 - [falco-configuration-validation](../../../../Security/incident-response/falco-configuration-validation/SKILL.md)/SKILL.md) —
-  the same [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-before-enforce validation philosophy applied to Falco
+  the same [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-before-enforce validation philosophy applied to Falco
   rules instead of admission policy.

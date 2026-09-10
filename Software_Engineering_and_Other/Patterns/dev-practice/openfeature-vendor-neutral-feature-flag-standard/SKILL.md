@@ -274,7 +274,7 @@ behind OpenFeature or is called directly.
   **Fix:** Some call sites were bypassing OpenFeature and calling the
   vendor SDK directly (often for a vendor-specific feature OpenFeature's
   common API doesn't expose, like a vendor's specific experimentation
-  analytics call). [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) for direct vendor SDK imports outside the
+  analytics call). [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) for direct vendor SDK imports outside the
   provider-setup code, and either find the OpenFeature-standard
   equivalent or explicitly document the vendor-specific escape hatch as
   a deliberate, isolated exception rather than letting it spread.

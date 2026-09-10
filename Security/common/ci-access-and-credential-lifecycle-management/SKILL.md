@@ -52,7 +52,7 @@ and never removes them.
   was never time-boxed).
 - Setting up a recurring process so credential rotation and access review
   happen on a schedule instead of only reactively after an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) or
-  [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) finding.
+  [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) finding.
 - Deciding between a long-lived static credential and a short-lived/
   federated one for a new CI integration.
 
@@ -111,9 +111,9 @@ and never removes them.
 
 3. **Revoke reliably at the end date — verify, don't assume.** Build
    revocation into the same ticket/workflow that granted access, and
-   periodically [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) for grants past their stated end date:
+   periodically [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) for grants past their stated end date:
    ```bash
-   # Example [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): list repo collaborators and cross-reference against
+   # Example [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md): list repo collaborators and cross-reference against
    # active-contractor list / ticket due dates, flagging anything stale.
    gh api repos/<org>/<repo>/collaborators --jq '.[].login'
    ```
@@ -157,13 +157,13 @@ and never removes them.
    mandatory rotation rather than a "no expiry" token issued for
    convenience.
 
-6. **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) for orphaned credentials tied to decommissioned
+6. **[Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) for orphaned credentials tied to decommissioned
    integrations/service accounts** — a token whose owning
    pipeline/service was removed months ago but whose credential is still
    valid is a pure liability with no offsetting benefit. Cross-reference
    active tokens against active pipelines/integrations on a recurring
    schedule (quarterly is a reasonable default cadence), not only when
-   an [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) or [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) forces the question.
+   an [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) or [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) forces the question.
 
 7. **Log every grant and revocation** (who approved it, for what task,
    for how long, and when it was actually revoked) so an access review
@@ -186,16 +186,16 @@ and never removes them.
   auth failure.
 - Run a recurring (quarterly is reasonable) access review specifically
   looking for stale one-off grants and orphaned service-account
-  credentials, not only ad hoc when prompted by an [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) finding.
+  credentials, not only ad hoc when prompted by an [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) finding.
 - Scope every grant to the narrowest resource/permission that completes
   the specific task, never a broader role "to save a future request."
 
 ## Common pitfalls
 
 - **Symptom:** A contractor's repo access is still active months after
-  their engagement ended, discovered only during a security [audit](../../../AI_and_Agents/Operations/audit/SKILL.md).
+  their engagement ended, discovered only during a security [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md).
   **Fix:** Pair every access grant with an explicit revoke-by date
-  tracked in a ticket (step 1), and run a recurring [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+  tracked in a ticket (step 1), and run a recurring [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
   cross-referencing active grants against active engagements (step 3) —
   don't rely on someone remembering to remove access manually.
 
@@ -254,7 +254,7 @@ deployment key expires in 45 days.
    the new key works is the old key explicitly revoked in the [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) App
    settings — 15 days before its natural expiry, with no last-minute
    scramble.
-5. **Quarterly [audit](../../../AI_and_Agents/Operations/audit/SKILL.md):** the next scheduled access review cross-references
+5. **Quarterly [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md):** the next scheduled access review cross-references
    all current repo collaborators and CI credentials against active
    engagements and active pipelines, confirming no stale grants or
    orphaned credentials remain from either the vendor engagement or the

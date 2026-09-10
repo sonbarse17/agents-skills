@@ -155,7 +155,7 @@ RESPONDER: On-call AI platform engineer
      curl -s -o /dev/null -w "%{http_code}" https://api.provider.com/health
 4. If provider is down:
      a. Enable fallback model route in gateway config.
-     b. [kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) set env deployment/[llm-gateway](../../../../AI_and_Agents/Models_and_FineTuning/llm-gateway/SKILL.md) FALLBACK_ENABLED=true
+     b. [kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) set env deployment/[llm-gateway](../../../../AI_and_Agents/Models_and_FineTuning/llm-platform/llm-gateway/SKILL.md) FALLBACK_ENABLED=true
      c. Verify fallback traffic is flowing via Grafana dashboard.
 5. If self-hosted model is down:
      a. Check pod status: [kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get pods -l app=llm-inference -n ai
@@ -186,7 +186,7 @@ RESPONDER: On-call AI engineer + ML lead
 5. If recent prompt change:
      git revert <[commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)> && git push  # triggers [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md) redeploy
 6. Increase trace sampling to 100% for affected route:
-     [kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) set env deployment/[llm-gateway](../../../../AI_and_Agents/Models_and_FineTuning/llm-gateway/SKILL.md) TRACE_SAMPLE_RATE=1.0
+     [kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) set env deployment/[llm-gateway](../../../../AI_and_Agents/Models_and_FineTuning/llm-platform/llm-gateway/SKILL.md) TRACE_SAMPLE_RATE=1.0
 7. Run offline eval suite against current production:
      [python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) run_evals.py --target prod --suite quality --compare baseline
 8. Confirm metrics return to baseline before closing.
@@ -211,9 +211,9 @@ RESPONDER: On-call platform engineer
          rpm_limit: "60"
      '
 4. Enable semantic cache if disabled:
-     [kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) set env deployment/[llm-gateway](../../../../AI_and_Agents/Models_and_FineTuning/llm-gateway/SKILL.md) CACHE_ENABLED=true
+     [kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) set env deployment/[llm-gateway](../../../../AI_and_Agents/Models_and_FineTuning/llm-platform/llm-gateway/SKILL.md) CACHE_ENABLED=true
 5. Route traffic to cheaper model tier:
-     [kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) set env deployment/[llm-gateway](../../../../AI_and_Agents/Models_and_FineTuning/llm-gateway/SKILL.md) DEFAULT_MODEL=gpt-4o-mini
+     [kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) set env deployment/[llm-gateway](../../../../AI_and_Agents/Models_and_FineTuning/llm-platform/llm-gateway/SKILL.md) DEFAULT_MODEL=gpt-4o-mini
 6. Notify affected tenants of temporary limits.
 7. Open postmortem with cost attribution analysis.
 ```

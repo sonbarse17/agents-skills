@@ -47,7 +47,7 @@ Guide smart contract development across all major blockchain platforms. Covers l
 - Target blockchain and VM type (EVM/SVM/eUTxO/StarkNet/MoveVM)
 - Contract purpose (token/DeFi/NFT/oracle/governance/bridge)
 - Upgradeability requirements (proxy/non-upgradeable/beacon)
-- Security requirements ([audit](../../AI_and_Agents/Operations/audit/SKILL.md) level, formal verification need)
+- Security requirements ([audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) level, formal verification need)
 - Performance constraints (gas budget, compute units, TPS needs)
 - Existing dependencies (OpenZeppelin, Anchor libraries, Plutus contracts)
 
@@ -82,7 +82,7 @@ Smart contract platform:
 │   │   ├── Solidity: EVM chains (Ethereum, Polygon, Arbitrum, Optimism, Base, BSC)
 │   │   │   ├── Toolchain: Foundry (default), Hardhat (complex workflows)
 │   │   │   └── Libraries: OpenZeppelin, Solady
-│   │   └── Vyper: Simple contracts, [audit](../../AI_and_Agents/Operations/audit/SKILL.md)-friendliness prioritized
+│   │   └── Vyper: Simple contracts, [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)-friendliness prioritized
 │   │       └── Toolchain: ape, brownie
 │   ├── NO → Evaluate non-EVM chains
 │   │   ├── Solana → Rust + Anchor framework
@@ -118,7 +118,7 @@ EVM language choice:
 │   ├── Pros: Largest ecosystem, most tutorials, OpenZeppelin libs
 │   ├── Cons: More attack surface (implicit behavior, inheritance)
 │   └── Best for: Complex protocols, composability-focused
-├── Vyper ([audit](../../AI_and_Agents/Operations/audit/SKILL.md)-first projects)
+├── Vyper ([audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)-first projects)
 │   ├── Pros: Simpler, fewer foot-guns, explicit behavior
 │   ├── Cons: Smaller ecosystem, limited libraries
 │   └── Best for: Simple contracts, high-value vaults, DAO treasuries
@@ -563,5 +563,5 @@ contract CloneFactory {
 
 ## Handoff
 blockchain-application → [blockchain-testing](../blockchain-testing/SKILL.md) (for test strategy implementation)
-blockchain-application → [blockchain-security](../blockchain-security/SKILL.md) (for pre-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) review)
+blockchain-application → [blockchain-security](../blockchain-security/SKILL.md) (for pre-[audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) review)
 

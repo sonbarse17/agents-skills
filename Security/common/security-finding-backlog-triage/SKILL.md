@@ -239,7 +239,7 @@ expires.
   clear the backlog dashboard before a leadership review, without
   individually verifying each one.
   **Fix:** Require a specific justification per suppression (or per
-  batch of genuinely identical findings), and periodically [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) a
+  batch of genuinely identical findings), and periodically [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) a
   sample of "false positive" dispositions — a backlog that looks clean
   because of unverified mass-dismissal is worse than a visibly large,
   honestly-triaged one.

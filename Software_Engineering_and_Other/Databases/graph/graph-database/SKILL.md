@@ -509,7 +509,7 @@ class GraphEmbedding:
 - **Authentication**: Enforce Neo4j native auth or LDAP/SSO; disable default `neo4j/neo4j` credentials.
 - **Authorization**: Use Neo4j RBAC with roles (admin, architect, analyst, reader); apply to subgraphs.
 - **Encryption**: Enable TLS for all Bolt and HTTPS connections; Neo4j cluster internal encryption.
-- **[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)**: Log all Cypher queries with sensitive actions (CREATE, DELETE, DROP) to SIEM.
+- **[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)**: Log all Cypher queries with sensitive actions (CREATE, DELETE, DROP) to SIEM.
 - **Data masking**: Create read-only views that mask sensitive properties (email, SSN) for auditor roles.
 
 ## Handoff

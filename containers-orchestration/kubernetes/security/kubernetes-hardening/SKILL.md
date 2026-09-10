@@ -40,7 +40,7 @@ metadata:
   name: production
   labels:
     pod-security.[kubernetes](../../other/kubernetes/SKILL.md).io/enforce: restricted
-    pod-security.[kubernetes](../../other/kubernetes/SKILL.md).io/[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md): restricted
+    pod-security.[kubernetes](../../other/kubernetes/SKILL.md).io/[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md): restricted
     pod-security.[kubernetes](../../other/kubernetes/SKILL.md).io/warn: restricted
 ```
 
@@ -129,7 +129,7 @@ roleRef:
 - Enable Pod Security Standards
 - Implement network policies
 - Use RBAC with least privilege
-- Enable [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging
+- Enable [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging
 - Secure etcd with encryption
 - Use service mesh for mTLS
 - Regular security scanning

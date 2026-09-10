@@ -40,7 +40,7 @@ leans on at least one managed service somewhere in the stack — a managed
 [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) product, or all three. This skill is the path for teams that
 cannot or choose not to depend on any vendor-managed ML service at all:
 running on any [Kubernetes](../../other/kubernetes/SKILL.md) cluster (a cloud-provisioned one used purely for
-raw compute, an on-prem cluster, or a [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) lab cluster), with every
+raw compute, an on-prem cluster, or a [bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md) lab cluster), with every
 layer — GPU scheduling, experiment tracking, model registry, serving, and
 [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) — operated by the team itself. The tradeoff is real and this
 skill is explicit about it: full control and zero managed-service lock-in,
@@ -74,7 +74,7 @@ losing runs permanently, not just inconveniently.
 
 - A [Kubernetes](../../other/kubernetes/SKILL.md) cluster ≥ 1.24 already provisioned — this skill does
   **not** cover cluster bootstrap itself; for a self-managed on-prem/
-  [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) cluster see
+  [bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md) cluster see
   [kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../[kubernetes](../kubernetes/SKILL.md)-cluster-provisioning-with-kubeadm-and-cluster-api/SKILL.md)/SKILL.md),
   or provision a managed control plane (EKS/AKS/GKE) purely as raw compute
   per
@@ -153,7 +153,7 @@ alternative.
    (backend store), applying the run-logging discipline from
    [experiment-tracking](../[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)/SKILL.md) and the
    registry/promotion-gate discipline from
-   [model-packaging-and-versioning](../[model-packaging-and-versioning](../../../AI_and_Agents/Models_and_FineTuning/model-packaging-and-versioning/SKILL.md)/SKILL.md):
+   [model-packaging-and-versioning](../../../../AI_and_Agents/Models_and_FineTuning/llmops/model-packaging-and-versioning/SKILL.md)/SKILL.md):
    ```bash
    helm install mlflow community-charts/mlflow \
      --namespace mlflow --create-namespace \
@@ -174,7 +174,7 @@ alternative.
 5. **Phase 5 — training pipeline orchestration.** Author the retraining
    DAG on the Phase 3 engine, applying the vendor-neutral gate/
    reproducibility principles from
-   [training-pipeline-orchestration](../[training-pipeline-orchestration](../../../AI_and_Agents/Models_and_FineTuning/training-pipeline-orchestration/SKILL.md)/SKILL.md),
+   [training-pipeline-orchestration](../../../../AI_and_Agents/Models_and_FineTuning/llmops/training-pipeline-orchestration/SKILL.md)/SKILL.md),
    targeting the Phase 2 training node pool and logging to the Phase 4
    MLflow instance:
    ```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
@@ -200,7 +200,7 @@ alternative.
    Seldon Core, or a hand-rolled vLLM/Triton Deployment) on the Phase 2
    serving GPU node pool, referencing the Phase 4 registry's exact model
    version, applying the canary/shadow rollout discipline from
-   [model-serving-and-scaling](../[model-serving-and-scaling](../../../AI_and_Agents/Models_and_FineTuning/model-serving-and-scaling/SKILL.md)/SKILL.md):
+   [model-serving-and-scaling](../../../../AI_and_Agents/Models_and_FineTuning/inference-serving/model-serving-and-scaling/SKILL.md)/SKILL.md):
    ```yaml
    apiVersion: serving.kserve.io/v1beta1
    kind: InferenceService
@@ -311,7 +311,7 @@ alternative.
 
 **Scenario:** A regulated healthcare analytics company must run its ML
 platform with no dependency on any cloud-managed ML service (data
-residency and [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) requirements), on a [Kubernetes](../../other/kubernetes/SKILL.md) cluster provisioned via
+residency and [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) requirements), on a [Kubernetes](../../other/kubernetes/SKILL.md) cluster provisioned via
 kubeadm on their own hardware, to retrain and serve a readmission-risk
 model.
 
@@ -373,8 +373,8 @@ it.
 - [gpu-accelerator-infrastructure-for-ml-training](../[gpu-accelerator-infrastructure-for-ml-training](../../Cloud_Providers/gpu-accelerator-infrastructure-for-ml-training/SKILL.md)/SKILL.md) — Phase 2's GPU Operator install and training/serving node pool design.
 - [kubeflow-[ml-pipeline](../../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../[kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md) and [ray-distributed-ml-orchestration](../[ray-distributed-ml-orchestration](../../../Data_Engineering/ray-distributed-ml-orchestration/SKILL.md)/SKILL.md) — the two Phase 3 orchestration engine choices.
 - [experiment-tracking](../[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)/SKILL.md) — Phase 4's run-logging discipline.
-- [model-packaging-and-versioning](../[model-packaging-and-versioning](../../../AI_and_Agents/Models_and_FineTuning/model-packaging-and-versioning/SKILL.md)/SKILL.md) — Phase 4's registry and promotion-gate discipline.
-- [training-pipeline-orchestration](../[training-pipeline-orchestration](../../../AI_and_Agents/Models_and_FineTuning/training-pipeline-orchestration/SKILL.md)/SKILL.md) — Phase 5's vendor-neutral DAG/gate principles.
+- [model-packaging-and-versioning](../../../../AI_and_Agents/Models_and_FineTuning/llmops/model-packaging-and-versioning/SKILL.md)/SKILL.md) — Phase 4's registry and promotion-gate discipline.
+- [training-pipeline-orchestration](../../../../AI_and_Agents/Models_and_FineTuning/llmops/training-pipeline-orchestration/SKILL.md)/SKILL.md) — Phase 5's vendor-neutral DAG/gate principles.
 - [feature-store-design](../[feature-store-design](../../../Data_Engineering/feature-store-design/SKILL.md)/SKILL.md) — Phase 6's optional feature layer.
-- [model-serving-and-scaling](../[model-serving-and-scaling](../../../AI_and_Agents/Models_and_FineTuning/model-serving-and-scaling/SKILL.md)/SKILL.md) — Phase 7's canary/shadow rollout.
+- [model-serving-and-scaling](../../../../AI_and_Agents/Models_and_FineTuning/inference-serving/model-serving-and-scaling/SKILL.md)/SKILL.md) — Phase 7's canary/shadow rollout.
 - [model-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md) — Phase 8's drift/quality [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).

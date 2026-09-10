@@ -342,7 +342,7 @@ afterthought.
   **Fix:** Catalog registration was optional and coverage drifted well
   below 100% of active services, so the catalog frequently doesn't
   have the answer. Make registration mandatory in the golden path
-  (a CI gate requiring `catalog-info.yaml`) and run a periodic [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)
+  (a CI gate requiring `catalog-info.yaml`) and run a periodic [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)
   for services missing from the catalog (cross-reference the source-
   control org's repo list against registered `Component`s).
 

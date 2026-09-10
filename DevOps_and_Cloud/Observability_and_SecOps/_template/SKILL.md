@@ -94,7 +94,7 @@ When validation and iteration are needed:
 
 - **Sensitive Data Handling**: Guidance on handling secrets, credentials, PII
 - **Access Control**: Required permissions and authorization contexts
-- **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging**: What should be logged for security auditing
+- **[Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logging**: What should be logged for security auditing
 - **Compliance**: Relevant compliance requirements (SOC2, GDPR, etc.)
 
 ## Bundled Resources

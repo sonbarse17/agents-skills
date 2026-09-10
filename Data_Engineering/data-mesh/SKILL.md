@@ -220,7 +220,7 @@ Platform capability classification:
 - Lifecycle plane: orchestration, CI/CD, test environments
 - Discovery plane: catalog, schema registry, data product API
 - [Observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) plane: [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), logging, [alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md), cost tracking
-- Governance plane: policy engine, access control, [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging
+- Governance plane: policy engine, access control, [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) logging
 
 Define a clear interface contract between each plane and the domains. The platform team evolves these planes independently. Domains consume planes via APIs, not by accessing infrastructure directly.
 
@@ -533,7 +533,7 @@ async def query_data_product(
 - **Domain isolation**: Network isolate domain storage via VPC per domain; no cross-domain direct access.
 - **Data product auth**: Require OAuth 2.0 tokens for all data product API access; validate domain membership.
 - **PII tagging**: Require PII classification on every data product attribute; strip PII in non-privileged output ports.
-- **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md)**: Log all cross-domain data product queries and schema changes centrally.
+- **[Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)**: Log all cross-domain data product queries and schema changes centrally.
 - **Compliance by contract**: Encode compliance rules (GDPR retention, CCPA opt-out) in data product contract.
 
 ## Handoff

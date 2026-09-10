@@ -450,7 +450,7 @@ Spanning tree disables redundant links to prevent loops. Use MLAG/VPC for L2 red
 Storage traffic (Ceph, iSCSI, NFS) requires predictable throughput. Oversubscription above 5:1 creates contention. Design storage fabric at 1:1 or 3:1 maximum.
 
 ### Anti-Pattern 6: Manual Config Only
-Config drift, no [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail, no rollback capability. All changes must go through NetOps automation ([Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md), Nornir, Salt). Enable config backup with oxidized.
+Config drift, no [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail, no rollback capability. All changes must go through NetOps automation ([Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md), Nornir, Salt). Enable config backup with oxidized.
 
 ### Anti-Pattern 7: Flat Network (No L3 Segmentation)
 Broadcast storms, large blast radius, no tenant isolation. Use VLANs or VXLAN for segmentation. Route at the leaf layer — never stretch L2 across the fabric unnecessarily.

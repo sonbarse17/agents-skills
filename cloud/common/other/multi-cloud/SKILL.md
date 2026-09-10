@@ -66,7 +66,7 @@ not as a line item — which is exactly why it's the cost teams underestimate be
 **Done when:** the ongoing staffing cost of the second provider is stated as a number in the same
 document as the migration cost, and that document names the budget owner who signed off.
 
-## 4. [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) for accidental multi-cloud regularly
+## 4. [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) for accidental multi-cloud regularly
 
 Multi-cloud creeps in through acquisitions, a team standing up a proof-of-concept that never got
 decommissioned, or a SaaS vendor's infrastructure counting as a dependency. Each of these carries
@@ -75,7 +75,7 @@ decision. Periodically inventory what's actually running where, including vendor
 dependencies.
 
 **Done when:** every provider workloads or critical dependencies run on is a known, current
-entry in an inventory — not a surprise found during an [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md).
+entry in an inventory — not a surprise found during an [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md).
 
 ## 5. Keep provider-specific abstractions thin and swappable, not universal
 
@@ -102,5 +102,5 @@ never been drilled is the most common way the "reason" from step 1 turns out to 
 
 State the written reason for running on more than one provider, what is and isn't portable across
 them, and the estimated ongoing operational cost. Name any workload or dependency running on a
-second provider without a clear reason — that's the accidental multi-cloud the [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) should have
+second provider without a clear reason — that's the accidental multi-cloud the [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) should have
 caught, and it is more expensive than it looks.

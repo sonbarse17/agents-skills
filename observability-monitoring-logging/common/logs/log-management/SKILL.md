@@ -79,7 +79,7 @@ That single field collapses what used to be a cross-team log-grepping exercise i
 
 ## 5. Price retention by how long the question stays worth asking
 
-Keeping every log line at full fidelity forever is rarely worth the cost, and the right retention period differs by use: debug-level detail is often worthless after a day, INFO-level business events might matter for months for [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) purposes, and error logs sit somewhere in between. Tiering storage keeps cost proportional to how often data at that age actually gets queried.
+Keeping every log line at full fidelity forever is rarely worth the cost, and the right retention period differs by use: debug-level detail is often worthless after a day, INFO-level business events might matter for months for [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) purposes, and error logs sit somewhere in between. Tiering storage keeps cost proportional to how often data at that age actually gets queried.
 
 - **Hot and searchable for a short recent window** — the window where most real investigations actually happen.
 - **Cold and cheap for compliance-driven longer retention** — rarely queried, but sometimes legally required to exist.
@@ -93,7 +93,7 @@ Logs get copied, exported, and retained longer than almost anything else in the 
 
 - **Strip or mask known-sensitive fields at the logging library level** — auth headers, tokens, full card numbers — so it's structurally impossible to log them, not just discouraged.
 - **Treat a new sensitive field type as a library change**, not a per-call-site reminder that will eventually be forgotten.
-- **[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) existing logs periodically** for patterns that shouldn't be there, since the masking rule is only as good as its coverage.
+- **[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) existing logs periodically** for patterns that shouldn't be there, since the masking rule is only as good as its coverage.
 
 See `[secrets-management](../../../../cloud/common/security/secrets-management/SKILL.md)` for handling the credentials themselves upstream of this problem.
 

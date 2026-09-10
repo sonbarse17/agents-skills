@@ -412,7 +412,7 @@ export DOCKER_CONTENT_TRUST=1
 - Use immutable tags for production images
 - Configure cross-region replication for availability
 - Use service accounts/principals for CI/CD authentication
-- Enable [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging for compliance
+- Enable [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging for compliance
 - Implement image signing for supply chain security
 - Use pull-through cache to avoid rate limits
 

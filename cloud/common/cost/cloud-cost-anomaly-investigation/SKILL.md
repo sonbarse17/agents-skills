@@ -192,7 +192,7 @@ step 1 for standing that up first.
      created or resized the resource.
    - Azure Activity Log (`az monitor activity-log list --resource-group
      <RESOURCE_GROUP> --start-time 2026-07-19T00:00:00Z`).
-   - GCP Cloud [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Logs (`gcloud logging read` filtered to the resource
+   - GCP Cloud [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logs (`gcloud logging read` filtered to the resource
      and time window).
    - The CI/CD deploy history or Terraform state history for the same
      window — a cost step-change that lines up with a deploy timestamp is
@@ -263,7 +263,7 @@ step 1 for standing that up first.
   attribution slower than it should have been.
 - **Cross-reference cost data with change history (CloudTrail/Activity
   Log/deploy logs), not just billing data alone** — billing data tells
-  you *what* cost more; [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)/deploy logs tell you *why*, and only the
+  you *what* cost more; [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)/deploy logs tell you *why*, and only the
   combination lets you say "this is caused by X change."
 - **Never conflate "investigated" with "fixed"** — identifying the
   resource and team is the deliverable of this skill; the actual
@@ -284,8 +284,8 @@ step 1 for standing that up first.
   **Fix:** Group the Cost Explorer/Cost Management/BigQuery query by
   cost-allocation tag, not just service, immediately (step 3) — if the
   resource has no tag, that's the actual finding to report (a tagging
-  gap), and the resource-creation [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) log (CloudTrail/Activity
-  Log/Cloud [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Logs) becomes the fallback attribution path rather than
+  gap), and the resource-creation [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) log (CloudTrail/Activity
+  Log/Cloud [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logs) becomes the fallback attribution path rather than
   waiting on tags that don't exist.
 
 - **Symptom:** An engineer, under pressure to "fix the spike fast,"
@@ -327,9 +327,9 @@ step 1 for standing that up first.
   rolled past the date of the actual change, and correlation in step 4
   becomes guesswork.
   **Fix:** This is why the investigation needs to happen within days of
-  the anomaly alert, not at month-end — extend default [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-log
+  the anomaly alert, not at month-end — extend default [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-log
   retention (CloudTrail to a long-retention S3 bucket, Activity Log to a
-  Log Analytics workspace, Cloud [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Logs export to BigQuery) so a
+  Log Analytics workspace, Cloud [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logs export to BigQuery) so a
   slower-to-notice anomaly still has a change-history trail to
   correlate against.
 

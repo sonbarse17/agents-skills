@@ -285,7 +285,7 @@ chmod +x .git/hooks/pre-[commit](../../../ci-cd/common/git-workflow/commit/SKILL
 - **Report Storage**: Treat scan reports as internal documentation - may reveal security practices
 - **Trusted Registries**: Configure `trustedRegistries` to enforce approved base image sources
 
-### [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging
+### [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logging
 
 Log the following for compliance and security auditing:
 - Scan execution timestamps and Dockerfile paths
@@ -331,7 +331,7 @@ Log the following for compliance and security auditing:
 
 ## Common Patterns
 
-### Pattern 1: Initial Dockerfile Security [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+### Pattern 1: Initial Dockerfile Security [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
 
 First-time security assessment:
 

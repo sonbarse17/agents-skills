@@ -581,7 +581,7 @@ async function createOrderWithItems(orderData: OrderInput, items: ItemInput[]) {
 - Connection encryption: `ssl: true` for production. Reject unauthorized certs.
 - Credential management: environment variables or [vault](../../../../Security/cryptography-secrets/vault/SKILL.md). Never in code or config files.
 - Row-level security: enable via `sql` template with tenant context. Enforce per query.
-- [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging: trigger-based tracking for sensitive tables. Log all mutations.
+- [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging: trigger-based tracking for sensitive tables. Log all mutations.
 - Schema access: read-only user for reports. Separate migration user. Least privilege.
 ## Performance Optimization
 
@@ -608,7 +608,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
+- Repudiation: [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -622,6 +622,6 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Secrets Management
 - Secrets never in code — always in secrets manager ([Vault](../../../../Security/cryptography-secrets/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
+- Access [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets

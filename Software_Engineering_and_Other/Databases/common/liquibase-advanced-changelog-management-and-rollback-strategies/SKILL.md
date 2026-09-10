@@ -211,7 +211,7 @@ keeps individual files small and reduces merge conflicts on a single
 shared master file, while `includeAll`'s directory scan keeps the master
 changelog itself simple and rarely needing edits.
 
-### 5. [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) what actually applied, and why, when a deploy's behavior is confusing
+### 5. [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) what actually applied, and why, when a deploy's behavior is confusing
 
 ```bash
 liquibase status --contexts=staging
@@ -251,7 +251,7 @@ checksummed content, doesn't retroactively change what already ran).
   time period or owning team well before a single file becomes
   unmanageable.
 - Treat `DATABASECHANGELOG`'s recorded `contexts`/`labels` per applied
-  changeset as the [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail for "what ran where and why," not just
+  changeset as the [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail for "what ran where and why," not just
   the current changelog source.
 
 ## Common pitfalls
@@ -262,7 +262,7 @@ checksummed content, doesn't retroactively change what already ran).
   **Fix:** Context matching is exact-string — a typo or inconsistent
   casing (`"Staging"` vs. `"staging"`) between the changeset's `context`
   attribute and the deploy's `--contexts` flag silently fails to match
-  with no error raised. [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) `DATABASECHANGELOG.contexts` for the
+  with no error raised. [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) `DATABASECHANGELOG.contexts` for the
   actual recorded value against the deploy pipeline's actual flag value,
   and standardize on a documented, enforced vocabulary going forward.
 
@@ -338,7 +338,7 @@ partway through because an older changeset had no rollback defined.
    changesets for inconsistent context strings (finds several instances
    of `"Staging"` and `"stage"` that had been silently not matching
    `--contexts=staging` deploys) and correcting them.
-3. [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) all 300 changesets for missing `<rollback>` blocks; for
+3. [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) all 300 changesets for missing `<rollback>` blocks; for
    genuinely irreversible ones (a handful of historical `DROP COLUMN`
    operations), add explicit documented-empty rollbacks referencing the
    team's backup/restore [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) instead of leaving them undefined.

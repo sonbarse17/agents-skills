@@ -124,7 +124,7 @@ What is the risk score (P x I)?
 
 ### Step 1: Identify Risks
 
-Conduct structured brainstorming across all risk categories. Technical: tech debt accumulation slowing feature velocity, performance degradation under load, security vulnerabilities in dependencies, architectural decisions that limit future options, data loss scenarios, single points of failure in the system. Schedule: aggressive timeline estimates, external dependency delays, resource availability gaps at critical milestones, scope creep from unclear requirements, cascading delays on the critical path. Resource: team member unavailability (vacation, sick leave, turnover), key person dependency (only one person knows X), skill gaps for new technology adoption, burnout risk from sustained high velocity. External: vendor API deprecation or breaking changes, ecosystem shifts (framework deprecation, library abandonment), market changes that reduce demand, partner delays or failures. Compliance: new regulations affecting data handling, [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) findings with remediation deadlines, privacy requirements changes, accessibility mandates. Operational: deployment failures, missing [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), insufficient [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response [runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md), backup and restore gaps.
+Conduct structured brainstorming across all risk categories. Technical: tech debt accumulation slowing feature velocity, performance degradation under load, security vulnerabilities in dependencies, architectural decisions that limit future options, data loss scenarios, single points of failure in the system. Schedule: aggressive timeline estimates, external dependency delays, resource availability gaps at critical milestones, scope creep from unclear requirements, cascading delays on the critical path. Resource: team member unavailability (vacation, sick leave, turnover), key person dependency (only one person knows X), skill gaps for new technology adoption, burnout risk from sustained high velocity. External: vendor API deprecation or breaking changes, ecosystem shifts (framework deprecation, library abandonment), market changes that reduce demand, partner delays or failures. Compliance: new regulations affecting data handling, [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) findings with remediation deadlines, privacy requirements changes, accessibility mandates. Operational: deployment failures, missing [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), insufficient [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response [runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md), backup and restore gaps.
 
 ### Step 2: Categorize
 
@@ -238,7 +238,7 @@ Risks that are no longer relevant remain in the register as noise. Fix: review a
 - **Review the register every sprint** — The risk landscape changes weekly. A risk not updated in over a month is being ignored.
 - **Pre-define contingency plans before they are needed** — Plan B should be designed before the risk materializes.
 - **Include positive risks (opportunities)** — Not all risks are threats. An opportunity is a risk with a positive impact.
-- **Archive risks, never delete them** — Closed risks remain for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail and pattern recognition.
+- **Archive risks, never delete them** — Closed risks remain for [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail and pattern recognition.
 - **Make the top 5 risks visible** — Display on a team-visible board. Hidden risks are ignored risks.
 - **Use ranges for probability and impact, not point estimates** — Express uncertainty explicitly.
 - **Tailor risk communication to the audience** — Executives need top 5, teams need full register.
@@ -306,7 +306,7 @@ A fintech startup ignored regulatory risk until mid-project, when new KYC requir
 - **Review the register every sprint** — A risk not updated in a month is being ignored
 - **Pre-define contingency plans before they are needed** — Trigger conditions must be explicit
 - **Include positive risks (opportunities)** — Opportunities get response plans too
-- **Archive risks, never delete them** — Closure notes needed for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail
+- **Archive risks, never delete them** — Closure notes needed for [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail
 - **Make the top 5 risks visible** — Dashboard or team board, updated after each review
 - **Tailor communication to audience** — Executives get top 5, teams get full register
 - **Escalate critical risks immediately** — Do not wait for the next review
@@ -535,7 +535,7 @@ sprint-retro (the risk register is reviewed at every sprint retro), create-roadm
 |---|---|---|---|---|---|---|---|---|
 | R-001 | Key developer leaving | Resource | 4/5 | 5/5 | 20 | @tech-lead | Mitigate - cross-train | Active |
 | R-002 | Vendor bankruptcy | External | 2/5 | 4/5 | 8 | @procurement | Transfer - escrow contract | [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) |
-| R-003 | Data breach | Security | 3/5 | 5/5 | 15 | @cso | Mitigate - security [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) | Active |
+| R-003 | Data breach | Security | 3/5 | 5/5 | 15 | @cso | Mitigate - security [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) | Active |
 | R-004 | Schedule delay | Project | 4/5 | 3/5 | 12 | @pm | Accept - buffer in timeline | Active |
 `
 
@@ -577,7 +577,7 @@ sprint-retro (the risk register is reviewed at every sprint retro), create-roadm
 ### Tooling & Automation
 - **Risk dashboard**: Maintain real-time risk dashboard with RPN trends. Use color-coded heat maps for quick status.
 - **Automated triggers**: Link risk register to [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) tools. Auto-create risk tickets when incidents occur.
-- **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail**: Log all risk register changes. Maintain version history for compliance audits.
+- **[Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail**: Log all risk register changes. Maintain version history for compliance audits.
 
 ## Anti-Patterns
 
@@ -608,8 +608,8 @@ sprint-retro (the risk register is reviewed at every sprint retro), create-roadm
 - **Vulnerability details**: Store specific vulnerability information in separate secured system. Reference from risk register without exposing details.
 - **Third-party risk**: Encrypt third-party risk assessment data. Share only anonymized risk posture with partners.
 
-### Compliance & [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+### Compliance & [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
 - **Regulatory risks**: Tag risks linked to regulatory requirements (SOX, GDPR, HIPAA). Report compliance risk exposure separately.
-- **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) readiness**: Maintain risk register in [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-ready format. Support export to standard [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) formats.
+- **[Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) readiness**: Maintain risk register in [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-ready format. Support export to standard [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) formats.
 - **Board reporting**: Sanitize risk reports for board distribution. Omit operationally sensitive details, keep strategic view.
 

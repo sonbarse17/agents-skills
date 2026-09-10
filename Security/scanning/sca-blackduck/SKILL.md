@@ -145,8 +145,8 @@ Work through each step systematically. Check off completed items.
 - **Access Control**: Limit Black Duck access to authorized security and development teams.
   Use role-based access control (RBAC) for scan result visibility and policy management.
 
-- **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging**: Log all scan executions with timestamps, user, project version, and
-  findings count for compliance auditing. Enable Black Duck's built-in [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail.
+- **[Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logging**: Log all scan executions with timestamps, user, project version, and
+  findings count for compliance auditing. Enable Black Duck's built-in [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail.
 
 - **Compliance**: SCA scanning supports SOC2, PCI-DSS, GDPR, and HIPAA compliance by
   tracking third-party component risks. Generate SBOM for regulatory requirements.
@@ -218,7 +218,7 @@ bash <(curl -s -L https://detect.synopsys.com/detect.sh) \
   --detect.wait.for.results=true
 ```
 
-### Pattern 3: License Compliance [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+### Pattern 3: License Compliance [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
 
 ```bash
 # Generate license compliance report

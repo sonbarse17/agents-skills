@@ -365,14 +365,14 @@ Impact: Eye strain reports -40%, evening DAU +25%
 ### Case Study 2: Typography Overhaul Increases Readability Scores
 A news website used 14px body text with 1.4 line-height and 90ch max-width. Readability testing showed 65% comprehension. After increasing to 18px body text, 1.6 line-height, 70ch max-width, and using a more open typeface (system fonts → Inter), comprehension improved to 85%. Time-on-page increased 35% and scroll depth improved by 50%.
 
-Method: Typography [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) → scale adjustment → readability testing with 30 participants
+Method: Typography [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) → scale adjustment → readability testing with 30 participants
 Key insight: Readability improvements benefit all users, not just those with visual impairments
 Impact: Comprehension 65% to 85%, time-on-page +35%, scroll depth +50%
 
 ### Case Study 3: Spacing System Reduces Development Time
-An e-commerce team had 47 distinct spacing values across their CSS. Implementing an 8px-grid spacing system with 12 values eliminated all arbitrary spacing decisions. Developer productivity for layout tasks improved by 30%, and the visual consistency score (measured by design [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)) increased from 62% to 94% in 3 months.
+An e-commerce team had 47 distinct spacing values across their CSS. Implementing an 8px-grid spacing system with 12 values eliminated all arbitrary spacing decisions. Developer productivity for layout tasks improved by 30%, and the visual consistency score (measured by design [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)) increased from 62% to 94% in 3 months.
 
-Method: [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) all spacing → define 12-value 8px grid → codify in design tokens
+Method: [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) all spacing → define 12-value 8px grid → codify in design tokens
 Key insight: Constraining choices improves both consistency and velocity
 Impact: Dev velocity +30%, visual consistency 62% to 94%
 
@@ -572,7 +572,7 @@ Dark mode requires independent color tokens, not simple inversion:
 | Anti-Pattern | Symptom | Fix |
 |-------------|---------|-----|
 | **Decorative overload** | Drop shadows, gradients, and borders on every element | Every visual element must serve a function. Remove decoration that doesn't aid communication |
-| **Inconsistent visual language** | Different icons styles (line vs fill), different corner radii, inconsistent shadows | Adopt a design system with enforced visual rules; [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) regularly |
+| **Inconsistent visual language** | Different icons styles (line vs fill), different corner radii, inconsistent shadows | Adopt a design system with enforced visual rules; [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) regularly |
 | **80% gray text** | Light gray (#CCC, #999) body text on white background | Minimum 4.5:1 contrast. Use #666 or darker for body text |
 | **No visual hierarchy** | Everything is the same size and weight | Establish 3+ levels of typographic hierarchy; use color, whitespace, and size to create focal points |
 | **Ignoring the fold** | Critical content below viewport without indication | Place primary action and value proposition in the first viewport; use visual cues for scroll |
@@ -605,5 +605,5 @@ Dark mode requires independent color tokens, not simple inversion:
   - references/visual-design-color-system.md — Color System Reference
   - references/visual-design-dark-mode.md — Dark Mode Design Reference
 ## Handoff
-Hand off to `design-[design-systems](../design-systems/SKILL.md)` for token implementation. Hand off to `[design-brand-identity](../../../../Product_and_Business/brand-identity/SKILL.md)` for brand consistency. Hand off to `design-accessibility` for WCAG compliance [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md).
+Hand off to `design-[design-systems](../design-systems/SKILL.md)` for token implementation. Hand off to `[design-brand-identity](../../../../Product_and_Business/brand-identity/SKILL.md)` for brand consistency. Hand off to `design-accessibility` for WCAG compliance [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md).
 

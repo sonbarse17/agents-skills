@@ -235,7 +235,7 @@ Switch to Azure CLI when:
 
 ## Use Cases
 
-- **Log Analytics**: Application logs, system logs, [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs
+- **Log Analytics**: Application logs, system logs, [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs
 - **IoT Analytics**: Sensor data, device telemetry, real-time [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - **Security Analytics**: SIEM data, threat detection, security event correlation
 - **APM**: Application performance metrics, user behavior, error tracking

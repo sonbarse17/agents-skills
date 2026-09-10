@@ -582,7 +582,7 @@ git add . && git [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)
 
 ## Performance Optimization
 
-- **Minimal dependencies**: Pin exact versions for critical packages; [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) `node_modules` size.
+- **Minimal dependencies**: Pin exact versions for critical packages; [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) `node_modules` size.
 - **Tree-shaking**: Configure ESM with `sideEffects: false` in `package.json` for optimal bundle.
 - **Build caching**: Set up Turborepo/Nx caching for faster local and CI builds.
 - **Dev server**: Use Vite (esbuild-based) for sub-second HMR; avoid webpack for new projects.
@@ -590,7 +590,7 @@ git add . && git [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)
 
 ## Security Considerations
 
-- **Dependency auditing**: Run `npm [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)` or `pnpm [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)` on init; pin dependency versions with lockfile.
+- **Dependency auditing**: Run `npm [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)` or `pnpm [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)` on init; pin dependency versions with lockfile.
 - **Environment isolation**: Generate `.env` with placeholder values; never [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) actual secrets.
 - **[Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) security**: Use non-root user in Dockerfile; pin base image digests, not tags.
 - **Lint rules**: Include ESLint security plugin (`eslint-plugin-security`) for Node.js projects.

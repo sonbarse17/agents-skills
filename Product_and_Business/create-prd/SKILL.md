@@ -215,14 +215,14 @@ For each epic, create 3-5 user stories.
 | Performance | API response time | <200ms p95 | Load testing |
 | Performance | Page load time | <3s LCP | Lighthouse |
 | Security | Authentication | JWT with refresh rotation | Penetration test |
-| Security | Data encryption | AES-256 at rest, TLS 1.3 in transit | [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) |
+| Security | Data encryption | AES-256 at rest, TLS 1.3 in transit | [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) |
 | Scalability | Concurrent users | 10,000 | Load testing |
 | Availability | Uptime | 99.9% | [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) |
 | Compatibility | Browser support | Last 2 major versions | Automated testing |
 
 **Non-functional requirement categories to always include**:
 - **Performance**: Response times, throughput, resource usage
-- **Security**: Auth, encryption, compliance, [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging
+- **Security**: Auth, encryption, compliance, [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) logging
 - **Scalability**: Concurrent users, data volume, growth projections
 - **Availability**: Uptime SLAs, disaster recovery, backup strategy
 - **Compatibility**: Browser, device, OS, API version requirements
@@ -243,7 +243,7 @@ For each epic, create 3-5 user stories.
 ```
 
 **Customizing the DoD**:
-- Add project-specific items (e.g., "Accessibility [audit](../../AI_and_Agents/Operations/audit/SKILL.md) passed," "Security review completed")
+- Add project-specific items (e.g., "Accessibility [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) passed," "Security review completed")
 - Remove items not applicable (e.g., "Deployed to staging" for infrastructure-only work)
 - Add team-specific items (e.g., "Performance benchmark recorded")
 
@@ -561,7 +561,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
+- Repudiation: [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -575,7 +575,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Secrets Management
 - Secrets never in code — always in secrets manager ([Vault](../../Security/cryptography-secrets/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access [audit](../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
+- Access [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -584,7 +584,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for [audit](../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
+- Log security-relevant events for [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
 - Design for [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.

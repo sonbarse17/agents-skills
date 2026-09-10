@@ -251,7 +251,7 @@ Brokers, Triggers, and Sources specifically.
   events too.
   **Fix:** The new Trigger's filter was left too broad (or omitted),
   causing it to match events also delivered to the existing consumer's
-  own Trigger if their filters overlap unintentionally; [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) all
+  own Trigger if their filters overlap unintentionally; [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) all
   Triggers on the shared Broker for filter overlap, not just the newly
   added one, when diagnosing unexpected delivery.
 

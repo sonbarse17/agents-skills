@@ -529,7 +529,7 @@ interface ICacheService {
 | Separate application + domain layers | Clear separation of concerns | More files, more boilerplate |
 | CQRS with clean architecture | Optimized read/write models | Eventual consistency complexity |
 | Strict interface definitions | Testable, swappable implementations | Interface maintenance overhead |
-| Domain events | Loose coupling, [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail | Eventual consistency, debugging complexity |
+| Domain events | Loose coupling, [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail | Eventual consistency, debugging complexity |
 | Repository pattern | Abstracted data access | ORM feature leakage risk |
 
 ## Rules

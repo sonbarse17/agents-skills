@@ -355,7 +355,7 @@ STRIPE_KEY=sk_test_xxx
 - Enable budget alerts and quota [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) in GCP console
 - Move privileged logic into Cloud Functions (never trust the client)
 - Use App Check to prevent API abuse from non-app clients
-- Enable Firestore [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging for compliance
+- Enable Firestore [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging for compliance
 - Review OAuth consent screen settings
 
 ## Troubleshooting

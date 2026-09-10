@@ -254,8 +254,8 @@ account/org structure already exists.
   logging) — don't let broad workload-level permissions get attached at
   the node level "for convenience," since that grants it to every pod on
   the node regardless of that pod's own service account.
-- Enable and route control-plane [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs (EKS control plane logging,
-  AKS diagnostic settings, GKE [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs) to the same central log
+- Enable and route control-plane [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs (EKS control plane logging,
+  AKS diagnostic settings, GKE [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs) to the same central log
   destination your landing zone already established, rather than
   leaving them cluster-local and unreviewed.
 

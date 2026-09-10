@@ -409,4 +409,4 @@ spec:
 
 - [sbom-supply-chain](../../scanning/[sbom-supply-chain](../sbom-supply-chain/SKILL.md)/) - Generate SBOM and provenance evidence
 - [container-hardening](../../hardening/[container-hardening](../../DevOps_and_Cloud/Containers_and_Orchestration/container-hardening/SKILL.md)/) - Harden runtime container posture
-- [model-registry-governance](../../../devops/ai/[model-registry-governance](../../AI_and_Agents/Models_and_FineTuning/model-registry-governance/SKILL.md)/) - Controlled lifecycle and approvals
+- [model-registry-governance](../../../AI_and_Agents/Models_and_FineTuning/llmops/model-registry-governance/SKILL.md)/) - Controlled lifecycle and approvals

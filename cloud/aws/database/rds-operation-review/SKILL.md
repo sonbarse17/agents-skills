@@ -41,7 +41,7 @@ source role.
 ## When to Use
 
 Activate this skill when the user asks to:
-- Review, [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md), or assess RDS instances or Aurora clusters
+- Review, [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md), or assess RDS instances or Aurora clusters
 - Check RDS / Aurora best-practices compliance
 - Evaluate database security, cost, reliability, performance, or backups
 - Perform an RDS / Aurora operational readiness review (ORR)
@@ -216,7 +216,7 @@ Ref: [Security in Amazon RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserG
 - **Encryption in transit**: parameter `rds.force_ssl=1` (Postgres) / `require_secure_transport=ON` ([MySQL](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)/MariaDB) → MEDIUM if not set.
 - **IAM auth**: `IAMDatabaseAuthenticationEnabled=false` → MEDIUM. Master password in app code instead of Secrets Manager → HIGH.
 - **Secrets Manager rotation**: not enabled → MEDIUM.
-- **[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging**: engine [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs not in `EnabledCloudwatchLogsExports` → MEDIUM (HIGH for PCI/HIPAA scope).
+- **[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging**: engine [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs not in `EnabledCloudwatchLogsExports` → MEDIUM (HIGH for PCI/HIPAA scope).
 - **CMK rotation**: KMS key without automatic rotation → LOW.
 
 ### 9.2 Reliability
@@ -268,7 +268,7 @@ Ref: [Monitoring Amazon RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGu
 - **CloudWatch alarms**: missing alarms on `CPUUtilization`, `FreeStorageSpace`, `DatabaseConnections`, `FreeableMemory`, `ReplicaLag` → MEDIUM each.
 - **Event subscriptions**: no `rds.DescribeEventSubscriptions` covering this resource → MEDIUM.
 - **Engine version currency**: minor version not latest available → LOW; major version EOL/within 6 months → HIGH.
-- **Log exports**: engine error / slow / [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs not exported to CloudWatch → MEDIUM.
+- **Log exports**: engine error / slow / [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs not exported to CloudWatch → MEDIUM.
 - **Maintenance window**: not configured / overlaps business hours → LOW.
 - **Tagging**: missing operational tags (`Environment`, `Owner`, `[Runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)`, `OnCall`) → LOW.
 - **Drift**: parameters changed in default parameter group (impossible by design — use as a flag for non-default usage check).

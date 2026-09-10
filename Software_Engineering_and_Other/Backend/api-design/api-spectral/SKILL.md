@@ -597,7 +597,7 @@ For complete custom function development guide, see `references/custom_functions
 - **Secrets in Specs**: Never include actual credentials, API keys, or secrets in example values - use placeholder values only
 - **Compliance Mapping**: Document how Spectral rules map to compliance requirements (PCI-DSS, GDPR, HIPAA)
 - **Governance Enforcement**: Define exception process for legitimate rule violations with security team approval
-- **[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Logging**: Log all Spectral scans, findings, and remediation actions for security auditing
+- **[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logging**: Log all Spectral scans, findings, and remediation actions for security auditing
 - **Access Control**: Restrict modification of security rulesets to designated API security team members
 - **Continuous Validation**: Re-validate API specifications whenever they change or when new security rules are added
 

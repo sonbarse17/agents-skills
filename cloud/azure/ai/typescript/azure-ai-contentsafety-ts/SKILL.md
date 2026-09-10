@@ -316,5 +316,5 @@ import ContentSafetyClient, {
 1. **Always use isUnexpected()** - Type guard for error handling
 2. **Set appropriate thresholds** - Different categories may need different severity thresholds
 3. **Use blocklists for domain-specific terms** - Supplement AI detection with custom rules
-4. **Log moderation decisions** - Keep [audit](../../../../../AI_and_Agents/Operations/audit/SKILL.md) trail for compliance
+4. **Log moderation decisions** - Keep [audit](../../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail for compliance
 5. **Handle edge cases** - Empty text, very long text, unsupported image formats

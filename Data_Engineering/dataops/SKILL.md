@@ -86,7 +86,7 @@ No preamble. No postamble. No explanations.
 - Real-time transformations: streaming (Flink, Kafka Streams, Spark Streaming).
 - Legacy SQL exists: wrap incrementally in dbt.
 - Airflow exists in org: Airflow orchestrates, dbt transforms.
-- Large enterprise compliance: dbt Cloud (managed, RBAC, [audit](../../AI_and_Agents/Operations/audit/SKILL.md)).
+- Large enterprise compliance: dbt Cloud (managed, RBAC, [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)).
 
 ### CI/CD Architecture Options
 
@@ -478,10 +478,10 @@ dbt: transformation layer (SELECT statements). Airflow: orchestration layer (DAG
 - Update dbt version and test compatibility.
 - Review model performance and optimize slow queries.
 - Update package dependencies.
-- [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) contract definitions for completeness.
+- [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) contract definitions for completeness.
 
 ### Quarterly Tasks
-- Full test coverage [audit](../../AI_and_Agents/Operations/audit/SKILL.md).
+- Full test coverage [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md).
 - Data contract review and update.
 - Performance benchmark against baseline.
 - Disaster recovery drill (rollback from backup).
@@ -628,9 +628,9 @@ check_data_quality() {
 
 - Encrypt **data at rest** with KMS-managed keys and **data in transit** with TLS 1.3
 - Implement **column-level access control** for PII fields (SSN, email, phone)
-- [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) **data access** with query log analysis and alert on anomalous data exports
+- [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) **data access** with query log analysis and alert on anomalous data exports
 - Mask **sensitive data** in non-production environments using tokenization or hashing
 - Rotate **service account credentials** for data pipeline tools every 30 days
 - Use **private network endpoints** (VPC peering, PrivateLink) for data transfer
-- Enable **immutable [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs** for all data mutations with retention of 7+ years
+- Enable **immutable [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) logs** for all data mutations with retention of 7+ years
 

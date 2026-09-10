@@ -26,7 +26,7 @@ depends_on:
 
 # Microsoft Entra Agent ID
 
-Create and manage OAuth 2.0-capable identities for AI agents using Microsoft Graph. Every agent instance gets a distinct identity, [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail, and independently-scoped permission grants.
+Create and manage OAuth 2.0-capable identities for AI agents using Microsoft Graph. Every agent instance gets a distinct identity, [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail, and independently-scoped permission grants.
 
 ## Quick Reference
 
@@ -219,7 +219,7 @@ Agents authenticate at runtime using credentials configured on the **Blueprint**
 | **Client secret** | Local dev / testing | Password credential |
 | **Microsoft Entra SDK for AgentID** | Polyglot / 3P agents | Sidecar container acquires tokens over HTTP |
 
-For the two-step `fmi_path` exchange (parent token → per-Agent-Identity Graph token) that gives each agent instance a distinct `sub` claim and [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail, see [../../../../../Global_References/runtime-token-exchange.md](../../../../Global_References/runtime-token-exchange.md).
+For the two-step `fmi_path` exchange (parent token → per-Agent-Identity Graph token) that gives each agent instance a distinct `sub` claim and [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail, see [../../../../../Global_References/runtime-token-exchange.md](../../../../Global_References/runtime-token-exchange.md).
 
 For OBO (agent acting on behalf of a user), see [../../../../../Global_References/obo-blueprint-setup.md](../../../../Global_References/obo-blueprint-setup.md).
 

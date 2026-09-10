@@ -40,13 +40,13 @@ Guide blockchain-specific security analysis covering smart contract auditing, De
 ## Agent Protocol
 
 ### Trigger
-"blockchain security", "smart contract [audit](../../AI_and_Agents/Operations/audit/SKILL.md)", "DeFi security", "DeFi threat model", "blockchain threat modeling", "[audit](../../AI_and_Agents/Operations/audit/SKILL.md) methodology", "blockchain [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response", "emergency pause", "fork coordination", "bug bounty", "Immunefi", "Code4rena", "economic security", "game theory blockchain", "incentive analysis", "MEV security", "certora", "formal verification blockchain", "Halmos", "Scribble", "solidity security", "smart contract vulnerability", "blockchain exploit", "flash loan attack", "oracle manipulation", "reentrancy", "access control blockchain", "cross-chain security", "bridge security"
+"blockchain security", "smart contract [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)", "DeFi security", "DeFi threat model", "blockchain threat modeling", "[audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) methodology", "blockchain [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response", "emergency pause", "fork coordination", "bug bounty", "Immunefi", "Code4rena", "economic security", "game theory blockchain", "incentive analysis", "MEV security", "certora", "formal verification blockchain", "Halmos", "Scribble", "solidity security", "smart contract vulnerability", "blockchain exploit", "flash loan attack", "oracle manipulation", "reentrancy", "access control blockchain", "cross-chain security", "bridge security"
 
 ### Input Context
 - Smart contracts or protocol to analyze
 - Platform (EVM/Solana/Cosmos/Cardano)
-- Security objective ([audit](../../AI_and_Agents/Operations/audit/SKILL.md)/threat model/[incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response/pre-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) review)
-- Codebase location and [audit](../../AI_and_Agents/Operations/audit/SKILL.md) history
+- Security objective ([audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)/threat model/[incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response/pre-[audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) review)
+- Codebase location and [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) history
 - Previous incidents or vulnerabilities
 - TVL and risk exposure
 
@@ -55,7 +55,7 @@ Security analysis including: threat model, vulnerability findings, economic anal
 
 ### Response Format
 1. **Threat model**: assets, actors, attack vectors, trust assumptions, attack surface
-2. **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) approach**: methodology, tools, timeline, expected coverage
+2. **[Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) approach**: methodology, tools, timeline, expected coverage
 3. **Economic analysis**: incentive structures, game theory, exploit scenarios
 4. **Security controls**: mitigations, circuit breakers, [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 5. **Verification**: formal properties, invariants, proof techniques
@@ -76,19 +76,19 @@ Security analysis including: threat model, vulnerability findings, economic anal
 ### Security Assessment Type
 ```
 Security need:
-├── Pre-deployment [audit](../../AI_and_Agents/Operations/audit/SKILL.md)?
+├── Pre-deployment [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)?
 │   ├── Early stage → Threat modeling + architecture review
 │   │   ├── Identify trust assumptions
 │   │   ├── Map attack surface
 │   │   └── Design security controls
-│   ├── Mid-development → Full [audit](../../AI_and_Agents/Operations/audit/SKILL.md) (automated + manual + fuzz)
+│   ├── Mid-development → Full [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) (automated + manual + fuzz)
 │   │   ├── Slither + Mythril static analysis (first pass)
 │   │   ├── Manual line-by-line review (second pass)
 │   │   ├── Foundry fuzz + invariant tests (third pass)
 │   │   ├── Echidna/Medusa property-based fuzzing (fourth pass)
 │   │   └── Certora/Halmos formal verification (fifth pass)
-│   └── Pre-launch → Final [audit](../../AI_and_Agents/Operations/audit/SKILL.md) + bug bounty launch
-│       ├── Re-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) after fixes
+│   └── Pre-launch → Final [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) + bug bounty launch
+│       ├── Re-[audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) after fixes
 │       ├── Immunefi or Code4rena bounty program
 │       └── Emergency response plan
 ├── [Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response?
@@ -98,7 +98,7 @@ Security need:
 └── Ongoing security?
     ├── Continuous [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) → Forta, Tenderly alerts
     ├── Bug bounty management → VRT, severity classification
-    └── Periodic review → Quarterly parameter review, annual deep [audit](../../AI_and_Agents/Operations/audit/SKILL.md)
+    └── Periodic review → Quarterly parameter review, annual deep [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)
 ```
 
 ### Vulnerability Severity (Immunefi Standard)
@@ -237,10 +237,10 @@ function convertToShares(uint256 assets) public view returns (uint256) {
 }
 ```
 
-## [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Methodology
+## [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) Methodology
 
 ### Phase 1: Scope & Recon
-1. Define [audit](../../AI_and_Agents/Operations/audit/SKILL.md) scope: contracts, functions, interactions
+1. Define [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) scope: contracts, functions, interactions
 2. Review specification and architecture documentation
 3. Understand trust model: admin roles, upgrade paths, emergency mechanisms
 4. Set up local environment with all dependencies
@@ -275,7 +275,7 @@ function convertToShares(uint256 assets) public view returns (uint256) {
 23. Retest fixes after remediation
 24. Final report with methodology, findings, and risk assessment
 
-### [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Tools Comparison
+### [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) Tools Comparison
 | Tool | Type | Best For | Limitations |
 |------|------|----------|-------------|
 | Slither | Static analysis | First-pass vulnerability detection, inheritance analysis | False positives, limited deep logic |
@@ -398,7 +398,7 @@ contract Pausable {
 
 ## Rules
 1. Always start with threat modeling before writing any code — identify assets, trust boundaries, attack surfaces
-2. [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) pipeline: scope → manual review → automated tooling → fuzz/invariant → formal verification → report
+2. [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) pipeline: scope → manual review → automated tooling → fuzz/invariant → formal verification → report
 3. Economic security is as important as code security — analyze game theory and incentive alignment
 4. Bug bounty programs follow Immunefi severity: Critical (up to $1M+), High ($50K-$100K), Medium ($5K-$20K), Low ($1K-$5K)
 5. [Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response: freeze/pause contract → assess damage → communicate → fork coordination → post-mortem → compensation
@@ -458,9 +458,9 @@ invariant solvency()
 
 ```
 Blockchain Security Approach
-├── [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) phase?
+├── [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) phase?
 │   ├── Pre-development → Threat model + formal spec
-│   ├── Post-development → Smart contract [audit](../../AI_and_Agents/Operations/audit/SKILL.md) + fuzzing
+│   ├── Post-development → Smart contract [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) + fuzzing
 │   ├── Pre-deployment → Comprehensive security review + bug bounty
 │   └── Post-deployment → Continuous [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) + [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response
 ├── Vulnerability type?
@@ -471,7 +471,7 @@ Blockchain Security Approach
 ├── Formal verification needed?
 │   ├── Yes (high-value) → Certora / Halmos (rule-based verification)
 │   ├── Yes (ZK circuits) → Circom compiler checks, zkVerify
-│   └── No → Standard [audit](../../AI_and_Agents/Operations/audit/SKILL.md) + fuzz testing
+│   └── No → Standard [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) + fuzz testing
 └── Bug bounty program?
     ├── Yes → Immunefi / HackerOne (up to 10% of TVL)
     └── No → Internal audits only (higher residual risk)
@@ -530,7 +530,7 @@ contract TimelockController {
 
 ## Production Considerations
 
-- **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) frequency**: Full [audit](../../AI_and_Agents/Operations/audit/SKILL.md) before mainnet deploy; re-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) on major upgrade (> 20% code change).
+- **[Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) frequency**: Full [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) before mainnet deploy; re-[audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) on major upgrade (> 20% code change).
 - **Bug bounty**: Launch Immunefi bounty (up to 10% TVL); scope all contracts and frontend.
 - **[Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**: Deploy Forta/OpenZeppelin Defender Sentinel for transaction [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
 - **[Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response**: Pre-defined IR playbook; pause contracts within 30 min of exploit detection.
@@ -544,16 +544,16 @@ contract TimelockController {
 | Skipping threat model | Miss architecture-level vulnerabilities | Mandatory threat model before code |
 | Only automated audits | Miss logic bugs | Manual review + automated + fuzzing |
 | No timelock on upgrades | Compromised owner upgrades malicious code | Enforce minimum 48h timelock |
-| Fixing bugs without re-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) | New bugs introduced | Re-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) > 20% code changes |
+| Fixing bugs without re-[audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) | New bugs introduced | Re-[audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) > 20% code changes |
 | No pause mechanism | Can't stop exploit in progress | Implement pausable + emergency stop |
 
 ## Performance Optimization
 
 - **Gas-efficient access control**: Use bitmap-based roles (BitMaps) instead of array for role management.
 - **Batch verification**: Verify multiple signatures in single operation for multisig.
-- **Storage-efficient audits**: Use event-based [audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail instead of on-chain storage for non-critical logs.
+- **Storage-efficient audits**: Use event-based [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) trail instead of on-chain storage for non-critical logs.
 - **Off-chain [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**: Use The Graph subgraph for security [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md); avoid on-chain overhead.
-- **Selective [audit](../../AI_and_Agents/Operations/audit/SKILL.md) scope**: Focus formal verification on critical paths (token transfers, liquidations).
+- **Selective [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) scope**: Focus formal verification on critical paths (token transfers, liquidations).
 
 ## Security Considerations
 

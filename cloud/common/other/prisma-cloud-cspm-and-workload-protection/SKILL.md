@@ -222,7 +222,7 @@ capabilities and where each one's blind spots require the others.
   its own access-control decision, not an automatic extension of CSPM's
   read-only trust.
 - Map custom RQL policies and Defender runtime rules to a compliance
-  framework (CIS, PCI-DSS, SOC 2) explicitly where relevant, so [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)
+  framework (CIS, PCI-DSS, SOC 2) explicitly where relevant, so [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)
   evidence is a byproduct of normal [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) rather than a separate
   manual exercise.
 - Don't treat a clean CSPM dashboard as "no runtime risk" — CSPM cannot

@@ -205,7 +205,7 @@ belongs in Confluence, not buried in a comment thread — see
    Jira Automation rules ("when PR merged, transition to Done and
    comment with the merge [commit](../../git-workflow/commit/SKILL.md)") or a Jira/Bitbucket/[GitHub](../../../github-actions/other/github/SKILL.md) smart
    [commit](../../git-workflow/commit/SKILL.md) integration often cover the common cases without custom REST
-   code, and are easier for a team to [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)/maintain than a bespoke
+   code, and are easier for a team to [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)/maintain than a bespoke
    script. Reach for a custom `POST .../comment` call when the trigger
    or payload shape isn't something the built-in automation supports.
 

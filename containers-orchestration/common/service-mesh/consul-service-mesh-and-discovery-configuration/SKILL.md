@@ -51,7 +51,7 @@ see
 - Standing up Consul as the mesh and/or discovery layer for an estate
   that spans VMs and [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md), or multiple [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) clusters across
   cloud providers.
-- Registering non-[Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) services (VM-hosted, [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)) into the
+- Registering non-[Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) services (VM-hosted, [bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)) into the
   same catalog and mesh as [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md)-hosted services.
 - Writing or reviewing **intentions** that authorize (or deny)
   service-to-service mesh traffic.
@@ -75,7 +75,7 @@ see
   and (per pod) an Envoy sidecar proxy — Consul Connect's data plane is
   Envoy, not a custom proxy, so Envoy version compatibility with your
   Consul server version matters when upgrading either.
-- For VM/[bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) workloads: the `consul` agent running locally on
+- For VM/[bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md) workloads: the `consul` agent running locally on
   each host in client mode, registering local services via service
   definition files or the HTTP API.
 - ACLs enabled (`acl.enabled = true`) with a bootstrap token rotated out
@@ -110,7 +110,7 @@ see
    }
    ```
    `"connect": {"sidecar_service": {}}` is what enrolls this service into
-   the mesh with an auto-configured Envoy sidecar on a VM/[bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)
+   the mesh with an auto-configured Envoy sidecar on a VM/[bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)
    host; on [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) this is handled instead by the `consul-k8s`
    inject webhook via a pod annotation
    (`consul.hashicorp.com/connect-inject: "true"`).
@@ -232,7 +232,7 @@ see
 - Explicitly declare `exported-services` per peering relationship rather
   than assuming peered clusters see each other's whole catalog — peering
   is opt-in per service by design.
-- If most of the estate is [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md)-only with no VM/[bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) or
+- If most of the estate is [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md)-only with no VM/[bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md) or
   multi-[datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/datacenter/SKILL.md) requirement, weigh whether Consul's operational
   overhead (running and federating server clusters, agent placement on
   every VM) is worth it versus a [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md)-native mesh — see

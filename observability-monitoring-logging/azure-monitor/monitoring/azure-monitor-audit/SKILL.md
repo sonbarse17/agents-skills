@@ -17,13 +17,13 @@ depends_on:
   - cost
 ---
 
-# Azure Monitor [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)
+# Azure Monitor [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)
 
-[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Azure activity with Monitor, Activity Logs, and Log Analytics for compliance, security, and operational visibility.
+[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) Azure activity with Monitor, Activity Logs, and Log Analytics for compliance, security, and operational visibility.
 
 ## When to Use
 
-- Enabling centralized [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging across Azure subscriptions
+- Enabling centralized [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging across Azure subscriptions
 - Meeting compliance requirements for SOC 2, HIPAA, PCI DSS, or ISO 27001
 - Investigating security incidents or unauthorized activity in Azure
 - Setting up [alerting](../../../common/alerting/alerting/SKILL.md) on administrative and security events
@@ -32,30 +32,30 @@ depends_on:
 ## Create Log Analytics Workspace
 
 ```bash
-# Create resource group for [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) resources
+# Create resource group for [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) resources
 az group create \
-  --name rg-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) \
+  --name rg-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) \
   --location eastus
 
 # Create Log Analytics workspace
 az monitor log-analytics workspace create \
-  --resource-group rg-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) \
-  --workspace-name [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-workspace \
+  --resource-group rg-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) \
+  --workspace-name [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-workspace \
   --location eastus \
   --retention-time 365 \
   --sku PerGB2018
 
 # Get workspace ID for later use
 WORKSPACE_ID=$(az monitor log-analytics workspace show \
-  --resource-group rg-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) \
-  --workspace-name [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-workspace \
+  --resource-group rg-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) \
+  --workspace-name [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-workspace \
   --query id -o tsv)
 
-# Enable [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) solutions
+# Enable [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) solutions
 az monitor log-analytics solution create \
-  --resource-group rg-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) \
+  --resource-group rg-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) \
   --solution-type SecurityCenterFree \
-  --workspace [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-workspace
+  --workspace [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-workspace
 ```
 
 ## Configure Diagnostic Settings for Subscription Activity Log
@@ -80,7 +80,7 @@ az monitor diagnostic-settings subscription create \
 # Also archive to storage account for long-term retention
 az storage account create \
   --name auditlogsarchive \
-  --resource-group rg-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) \
+  --resource-group rg-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) \
   --location eastus \
   --sku Standard_GRS \
   --kind StorageV2 \
@@ -90,7 +90,7 @@ az storage account create \
 az monitor diagnostic-settings subscription create \
   --name activity-log-to-storage \
   --location global \
-  --storage-account /subscriptions/{sub}/resourceGroups/rg-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)/providers/Microsoft.Storage/storageAccounts/auditlogsarchive \
+  --storage-account /subscriptions/{sub}/resourceGroups/rg-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)/providers/Microsoft.Storage/storageAccounts/auditlogsarchive \
   --logs '[
     {"category": "Administrative", "enabled": true, "retentionPolicy": {"enabled": true, "days": 2555}},
     {"category": "Security", "enabled": true, "retentionPolicy": {"enabled": true, "days": 2555}}
@@ -102,7 +102,7 @@ az monitor diagnostic-settings subscription create \
 ```bash
 # Enable diagnostics for Azure Key [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md)
 az monitor diagnostic-settings create \
-  --name keyvault-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) \
+  --name keyvault-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) \
   --resource /subscriptions/{sub}/resourceGroups/{rg}/providers/Microsoft.KeyVault/vaults/{[vault](../../../../Security/cryptography-secrets/vault/SKILL.md)} \
   --workspace "$WORKSPACE_ID" \
   --logs '[
@@ -115,7 +115,7 @@ az monitor diagnostic-settings create \
 
 # Enable diagnostics for Azure SQL Database
 az monitor diagnostic-settings create \
-  --name sql-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) \
+  --name sql-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) \
   --resource /subscriptions/{sub}/resourceGroups/{rg}/providers/Microsoft.Sql/servers/{server}/databases/{db} \
   --workspace "$WORKSPACE_ID" \
   --logs '[
@@ -126,7 +126,7 @@ az monitor diagnostic-settings create \
 
 # Enable diagnostics for Azure App Service
 az monitor diagnostic-settings create \
-  --name appservice-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) \
+  --name appservice-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) \
   --resource /subscriptions/{sub}/resourceGroups/{rg}/providers/Microsoft.Web/sites/{app} \
   --workspace "$WORKSPACE_ID" \
   --logs '[
@@ -258,7 +258,7 @@ AuditLogs
 ```bash
 # Create action group for security notifications
 az monitor action-group create \
-  --resource-group rg-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) \
+  --resource-group rg-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) \
   --name security-team \
   --short-name SecTeam \
   --email-receivers name=SecurityLead email=security@example.com \
@@ -266,7 +266,7 @@ az monitor action-group create \
 
 # Alert on multiple failed sign-ins (brute force detection)
 az monitor scheduled-query create \
-  --resource-group rg-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) \
+  --resource-group rg-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) \
   --name brute-force-detection \
   --scopes "$WORKSPACE_ID" \
   --condition "count > 10" \
@@ -274,11 +274,11 @@ az monitor scheduled-query create \
   --evaluation-frequency 5m \
   --window-size 5m \
   --severity 2 \
-  --action-groups /subscriptions/{sub}/resourceGroups/rg-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)/providers/Microsoft.Insights/actionGroups/security-team
+  --action-groups /subscriptions/{sub}/resourceGroups/rg-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)/providers/Microsoft.Insights/actionGroups/security-team
 
 # Alert on Key [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md) secret access outside business hours
 az monitor scheduled-query create \
-  --resource-group rg-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) \
+  --resource-group rg-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) \
   --name keyvault-offhours-access \
   --scopes "$WORKSPACE_ID" \
   --condition "count > 0" \
@@ -286,14 +286,14 @@ az monitor scheduled-query create \
   --evaluation-frequency 15m \
   --window-size 15m \
   --severity 3 \
-  --action-groups /subscriptions/{sub}/resourceGroups/rg-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)/providers/Microsoft.Insights/actionGroups/security-team
+  --action-groups /subscriptions/{sub}/resourceGroups/rg-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)/providers/Microsoft.Insights/actionGroups/security-team
 
 # Alert on subscription-level administrative changes
 az monitor activity-log alert create \
-  --resource-group rg-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) \
+  --resource-group rg-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) \
   --name critical-admin-changes \
   --condition category=Administrative and operationName="Microsoft.Authorization/roleAssignments/write" \
-  --action-group /subscriptions/{sub}/resourceGroups/rg-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)/providers/Microsoft.Insights/actionGroups/security-team \
+  --action-group /subscriptions/{sub}/resourceGroups/rg-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)/providers/Microsoft.Insights/actionGroups/security-team \
   --description "Alert on new role assignments"
 ```
 
@@ -307,8 +307,8 @@ az monitor activity-log alert create \
   "location": "[resourceGroup().location]",
   "kind": "shared",
   "properties": {
-    "displayName": "Compliance [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Dashboard",
-    "serializedData": "{\"version\":\"Notebook/1.0\",\"items\":[{\"type\":1,\"content\":{\"json\":\"## Compliance [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Dashboard\"},\"name\":\"title\"},{\"type\":3,\"content\":{\"version\":\"KqlItem/1.0\",\"query\":\"SigninLogs | where TimeGenerated > ago(24h) | where ResultType != '0' | summarize count() by bin(TimeGenerated, 1h)\",\"size\":0,\"title\":\"Failed Sign-ins (24h)\",\"timeContext\":{\"durationMs\":86400000},\"queryType\":0},\"name\":\"failed-signins\"}]}"
+    "displayName": "Compliance [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) Dashboard",
+    "serializedData": "{\"version\":\"Notebook/1.0\",\"items\":[{\"type\":1,\"content\":{\"json\":\"## Compliance [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) Dashboard\"},\"name\":\"title\"},{\"type\":3,\"content\":{\"version\":\"KqlItem/1.0\",\"query\":\"SigninLogs | where TimeGenerated > ago(24h) | where ResultType != '0' | summarize count() by bin(TimeGenerated, 1h)\",\"size\":0,\"title\":\"Failed Sign-ins (24h)\",\"timeContext\":{\"durationMs\":86400000},\"queryType\":0},\"name\":\"failed-signins\"}]}"
   }
 }
 ```
@@ -326,11 +326,11 @@ azure_monitor_checklist:
   diagnostic_settings:
     - [ ] Subscription activity log exported to Log Analytics
     - [ ] Subscription activity log archived to storage account
-    - [ ] Key [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md) [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) events enabled
-    - [ ] Azure SQL [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging enabled
+    - [ ] Key [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md) [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) events enabled
+    - [ ] Azure SQL [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging enabled
     - [ ] NSG flow logs enabled
-    - [ ] App Service [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs enabled
-    - [ ] Azure AD sign-in and [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs connected
+    - [ ] App Service [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs enabled
+    - [ ] Azure AD sign-in and [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs connected
 
   policy_enforcement:
     - [ ] Azure Policy assigned to enforce diagnostic settings
@@ -354,7 +354,7 @@ azure_monitor_checklist:
 
 ## Best Practices
 
-- Centralize all [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) data into a single Log Analytics workspace per tenant
+- Centralize all [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) data into a single Log Analytics workspace per tenant
 - Archive logs to immutable storage for long-term retention and compliance
 - Use Azure Policy with DeployIfNotExists to enforce diagnostic settings on new resources
 - Create saved KQL queries for common investigation and compliance scenarios

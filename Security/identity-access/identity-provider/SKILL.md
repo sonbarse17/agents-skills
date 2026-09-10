@@ -44,7 +44,7 @@ Phase 3 - Integrate: Configure SSO for all applications. Establish directory syn
 
 Phase 4 - Secure: Enforce MFA, configure conditional access policies, implement session management. Set up brute force protection and anomaly detection.
 
-Phase 5 - Govern: Implement access certifications, entitlement reviews, and privilege escalation workflows. Stream [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) events to SIEM.
+Phase 5 - Govern: Implement access certifications, entitlement reviews, and privilege escalation workflows. Stream [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) events to SIEM.
 
 Phase 6 - Operate: Monitor IdP health, rotate secrets, review logs, test DR failover. Conduct periodic access reviews and policy updates.
 
@@ -130,7 +130,7 @@ Exact user phrases: identity provider, IdP, SSO, SAML, OIDC, Keycloak, Azure AD,
 - What is the current identity architecture and user count?
 
 ### Output Artifact
-IdP architecture document with SSO configuration, directory sync plan, security policy, and [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) framework.
+IdP architecture document with SSO configuration, directory sync plan, security policy, and [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) framework.
 
 ### Response Format
 ```
@@ -146,7 +146,7 @@ MFA: {enforcement scope}
 Session: {timeout / max lifetime}
 Conditional Access: {rules}
 
-### [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) & Governance
+### [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) & Governance
 {logging, review cadence, certification}
 ```
 
@@ -159,7 +159,7 @@ No preamble. No postamble. No explanations.
 - [ ] MFA enforced for all user groups
 - [ ] Session policies defined
 - [ ] Brute force protection configured
-- [ ] [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging enabled and monitored
+- [ ] [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging enabled and monitored
 - [ ] Access certification schedule established
 
 ### Max Response Length
@@ -213,7 +213,7 @@ Connect to upstream directory (LDAP, Active Directory). Provision users via SCIM
 ### Step 4: Security Configuration
 Enforce MFA for all users (TOTP, WebAuthn, or SMS fallback). Configure conditional access policies (geo-fencing, device compliance, trusted networks). Set session policies (idle timeout 15min, max lifetime 8h). Implement brute force protection (account lockout after 5 failures, progressive delay).
 
-### Step 5: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and Governance
+### Step 5: [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) and Governance
 Stream all IdP events to SIEM (logins, failures, role changes, MFA registration). Schedule quarterly access reviews with automated certification campaigns. Implement privilege escalation workflows with approval gates. Monitor for anomalous login patterns.
 
 ## Common Pitfalls
@@ -237,7 +237,7 @@ Federation between IdPs means one IdP's outage breaks access to all federated ap
 SMS-only MFA is weak (SIM swapping). TOTP-only requires app installation. Deploy multiple MFA methods: WebAuthn primary, TOTP backup, recovery codes for emergencies. Enforce phishing-resistant MFA (WebAuthn) for privileged accounts.
 
 ### Pitfall 7: Neglecting Service Account Security
-Machine accounts and service principals bypass MFA. They become the weakest link. Use short-lived tokens. Rotate client secrets frequently. [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) service account usage. Use managed identities (Azure) or IAM roles (AWS) over static credentials.
+Machine accounts and service principals bypass MFA. They become the weakest link. Use short-lived tokens. Rotate client secrets frequently. [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) service account usage. Use managed identities (Azure) or IAM roles (AWS) over static credentials.
 
 ## Best Practices
 
@@ -272,7 +272,7 @@ Machine accounts and service principals bypass MFA. They become the weakest link
 - Set session limits (15 min idle, 8h max)
 - Implement brute force protection with progressive delay
 - Monitor for account takeover indicators
-- Regular security [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) of IdP configuration
+- Regular security [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) of IdP configuration
 
 ## Compared With
 
@@ -283,16 +283,16 @@ Keycloak: full control, no per-user cost, complex ops. Azure AD: deep Office 365
 OIDC: modern (REST/JSON), simpler, native mobile/web support, better for OAuth2 integration. SAML: enterprise legacy (XML), complex, old but proven, broad enterprise app support. OIDC preferred for new integrations. SAML only when OIDC unsupported.
 
 ### SCIM vs Manual Provisioning
-SCIM: automated, standardized, real-time, reduces errors. Manual provisioning: error-prone, no real-time deprovisioning, [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) gap. SCIM mandatory for compliance (SOC2, SOX). No reason to use manual provisioning in modern environment.
+SCIM: automated, standardized, real-time, reduces errors. Manual provisioning: error-prone, no real-time deprovisioning, [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) gap. SCIM mandatory for compliance (SOC2, SOX). No reason to use manual provisioning in modern environment.
 
 ## Operations & Maintenance
 
 ### IdP Operations Tasks
 - Daily: review failed login attempts, monitor sync health
 - Weekly: review application access, check session compliance
-- Monthly: review [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, update client secrets
+- Monthly: review [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs, update client secrets
 - Quarterly: access certifications, policy review, disaster recovery test
-- Annually: penetration test, compliance [audit](../../../AI_and_Agents/Operations/audit/SKILL.md), IdP version upgrade
+- Annually: penetration test, compliance [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md), IdP version upgrade
 
 ### [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response for IdP
 1. Detect: users unable to login, [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) alert, SIEM alert
@@ -308,7 +308,7 @@ SCIM: automated, standardized, real-time, reduces errors. Manual provisioning: e
 2. Send certification to data owner with access list
 3. Owner reviews and certifies or revokes access
 4. Automatically revoke uncertified access after deadline
-5. Log certification results for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+5. Log certification results for [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
 6. Schedule next certification (quarterly for critical apps)
 
 ### Migration Between IdPs
@@ -496,7 +496,7 @@ SCIM sync configured for user creation but not deactivation. When an employee le
 - SCIM deprovisioning must trigger within 5 minutes of directory change
 - IdP must be highly available (multi-region for self-hosted)
 - Federation metadata must be signed and verified
-- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) events must be immutable and retained per compliance requirements
+- [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) events must be immutable and retained per compliance requirements
 - Client secrets rotated every 90 days minimum
 - Access certification conducted quarterly for critical applications
 - Service accounts must use short-lived tokens with minimal permissions
@@ -516,5 +516,5 @@ SCIM sync configured for user creation but not deactivation. When an employee le
   - ../../../Global_References/conditional-access-[zero-trust](../zero-trust/SKILL.md).md -- Conditional Access and [Zero-Trust](../zero-trust/SKILL.md) Identity
 
 ## Handoff
-For compliance requirements on identity governance, hand off to `[enterprise-compliance-audit](../../../DevOps_and_Cloud/Observability_and_SecOps/compliance-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)/SKILL.md)`. For cost tracking of IdP licensing, hand off to `[enterprise-cost-governance](../../../cloud/common/cost/cost-governance/SKILL.md)`.
+For compliance requirements on identity governance, hand off to `[enterprise-compliance-audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)/SKILL.md)`. For cost tracking of IdP licensing, hand off to `[enterprise-cost-governance](../../../cloud/common/cost/cost-governance/SKILL.md)`.
 

@@ -38,7 +38,7 @@ Use this skill when:
 
 - [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) 3.10+ for guardrail code examples
 - [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) or [Podman](../../../containers-orchestration/podman/other/podman/SKILL.md) for sandbox execution
-- [OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) collector for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging
+- [OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) collector for [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging
 - Familiarity with your agent framework (LangChain, CrewAI, Autogen, custom)
 - Access to policy engine (OPA/Cedar) for permission boundaries
 
@@ -50,7 +50,7 @@ AI agents introduce a unique threat surface. Apply STRIDE specifically to agenti
 |--------|----------------------|---------|
 | **Spoofing** | Attacker crafts input that mimics a trusted internal tool response | Signed tool responses, HMAC verification |
 | **Tampering** | Prompt injection modifies agent reasoning mid-chain | Input validation, prompt armoring |
-| **Repudiation** | Agent takes destructive action with no [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail | Immutable structured logging |
+| **Repudiation** | Agent takes destructive action with no [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail | Immutable structured logging |
 | **Information Disclosure** | Agent leaks PII, secrets, or internal architecture in responses | Output filtering, content classifiers |
 | **Denial of Service** | Adversarial prompt causes infinite tool loops or token exhaustion | Rate limits, token budgets, circuit breakers |
 | **Elevation of Privilege** | Agent escalates from read-only to write via chained tool calls | RBAC per tool, least-privilege scoping |
@@ -580,7 +580,7 @@ async def validate_agent_output(
     return response
 ```
 
-## [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging
+## [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logging
 
 Every agent action must produce a structured, immutable log entry. Use [OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) for distributed tracing across agent chains.
 
@@ -597,7 +597,7 @@ class AgentAuditLogger:
         self.service_name = service_name
 
     def log_event(self, event: dict) -> str:
-        """Emit a structured [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) log entry. Returns the event ID."""
+        """Emit a structured [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) log entry. Returns the event ID."""
         event_id = hashlib.sha256(
             f"{time.time_ns()}-{json.dumps(event, sort_keys=True)}".encode()
         ).hexdigest()[:16]
@@ -1159,7 +1159,7 @@ redis-cli --rdb "${INCIDENT_DIR}/redis-snapshot.rdb" || true
 echo "[+] Revoking agent [Vault](../../cryptography-secrets/vault/SKILL.md) tokens..."
 [vault](../../cryptography-secrets/vault/SKILL.md) token revoke -mode=orphan -prefix "agent-" || true
 
-# 4. Capture [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs for forensics
+# 4. Capture [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs for forensics
 if command -v [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) &> /dev/null; then
     [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) logs -l app=agent-platform --since=1h --all-containers \
       > "${INCIDENT_DIR}/k8s-agent-logs.txt" 2>&1 || true
@@ -1188,7 +1188,7 @@ cat /var/log/agent-incidents/*/agent-logs.txt | \
 cat /var/log/agent-incidents/*/agent-logs.txt | \
   jq -r 'select(.event_type == "input_validation" and (.matched_rules | contains(["instruction_override"]))) | .session_id' | sort -u
 
-# [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) all tool calls in a time window
+# [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) all tool calls in a time window
 cat /var/log/agent-incidents/*/agent-logs.txt | \
   jq -r 'select(.event_type == "tool_call" and .timestamp >= "2025-01-15T10:00:00" and .timestamp <= "2025-01-15T11:00:00") | [.timestamp, .session_id, .tool, .result_status] | @tsv'
 ```
@@ -1261,5 +1261,5 @@ redis-cli KEYS "agent:killswitch:*" | xargs -r redis-cli DEL
 - [threat-modeling](../../operations/[threat-modeling](../threat-modeling/SKILL.md)/) - Structured risk analysis
 - [agent-observability](../../../devops/ai/[agent-observability](../../AI_and_Agents/Operations/agent-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)/) - [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) agent systems
 - [agent-evals](../../../devops/ai/[agent-evals](../../AI_and_Agents/Workflows/agent-evals/SKILL.md)/) - Testing agent behavior
-- [audit-logging](../../../compliance/auditing/[audit-logging](../../DevOps_and_Cloud/Observability_and_SecOps/[audit](../../AI_and_Agents/Operations/audit/SKILL.md)-logging/SKILL.md)/) - Compliance [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trails
+- [audit-logging](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-logging/SKILL.md)/) - Compliance [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) trails
 - [policy-as-code](../../../compliance/governance/[policy-as-code](../policy-as-code/SKILL.md)/) - Automated policy enforcement

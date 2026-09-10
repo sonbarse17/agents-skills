@@ -262,8 +262,8 @@ Integration: connecting systems, message routing, protocol transformation. Orche
 ### Integration Health [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - Daily: review DLQ depth, check throughput, verify SLA compliance
 - Weekly: analyze error patterns, review circuit breaker state
-- Monthly: [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) review, schema compatibility [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)
-- Quarterly: integration [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md), deprecation planning
+- Monthly: [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) review, schema compatibility [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)
+- Quarterly: integration [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md), deprecation planning
 - As needed: update connection credentials, rotate certificates
 
 ### [Incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response for Integration Failures

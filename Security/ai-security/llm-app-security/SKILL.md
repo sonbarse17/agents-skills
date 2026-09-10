@@ -860,7 +860,7 @@ sum(increase(llm_cost_usd_total[1h])) by (model)
 
 ## Compliance
 
-LLM applications generate and process data that falls under GDPR, CCPA, SOC 2, and industry-specific regulations. Address data retention, right-to-forget, and [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trails.
+LLM applications generate and process data that falls under GDPR, CCPA, SOC 2, and industry-specific regulations. Address data retention, right-to-forget, and [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) trails.
 
 ### Data Retention Policy for LLM Logs
 
@@ -945,7 +945,7 @@ def delete_user_data(user_id: str, tenant_id: str, pc_index, redis_client):
     }
 ```
 
-### [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Trail Schema
+### [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Trail Schema
 
 ```sql
 CREATE TABLE llm_audit_log (
@@ -1017,7 +1017,7 @@ Use this as a pre-launch gate. Every item should be verified before production.
 - [ ] Data retention policies are enforced with automated purge jobs.
 - [ ] GDPR deletion workflow covers vector store, session store, and relational DB.
 - [ ] Only approved models from the allowlist are callable in production.
-- [ ] [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) log captures all security-relevant events with tenant and user context.
+- [ ] [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) log captures all security-relevant events with tenant and user context.
 
 ---
 

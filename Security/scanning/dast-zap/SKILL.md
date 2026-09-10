@@ -269,7 +269,7 @@ See `scripts/ci_integration.sh` for complete CI/CD integration examples.
 - **Sensitive Data**: Never include production credentials in scan configurations; use environment variables or secrets management
 - **Scan Timing**: Run active scans during maintenance windows or against dedicated testing environments
 - **Legal Compliance**: Adhere to computer fraud and abuse laws; unauthorized scanning may be illegal
-- **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging**: Log all scan executions, targets, findings, and remediation actions for compliance audits
+- **[Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logging**: Log all scan executions, targets, findings, and remediation actions for compliance audits
 - **Data Retention**: Sanitize scan reports before sharing; they may contain sensitive application data
 - **False Positives**: Manually verify findings before raising security incidents; DAST tools generate false positives
 

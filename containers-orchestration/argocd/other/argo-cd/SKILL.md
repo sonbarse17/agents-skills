@@ -577,7 +577,7 @@ Using `role:admin` for all users. Create least-privilege roles (readonly, sync-o
 - Restrict cluster access: only Argo CD control plane needs `cluster-admin`.
 - Use webhook secrets to validate git provider requests.
 - Disable `[argocd](../argocd/SKILL.md) admin` initial password; rotate immediately.
-- Enable [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging for all Argo CD operations.
+- Enable [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging for all Argo CD operations.
 - Use network policies to restrict Argo CD component communication.
 
 ### High Availability

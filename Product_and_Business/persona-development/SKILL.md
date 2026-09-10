@@ -192,7 +192,7 @@ Quarterly (light): 2-3 validation interviews, analytics check, support ticket re
   Update statistics, pain point priorities, behavioral data.
 
 Annually (full): 8-12 new interviews per persona, field validation survey (n=200+).
-  Full persona [audit](../../AI_and_Agents/Operations/audit/SKILL.md): revise attributes, goals, behaviors, needs.
+  Full persona [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md): revise attributes, goals, behaviors, needs.
   Present updated personas to entire product team.
   Archive previous version, publish changelog.
 

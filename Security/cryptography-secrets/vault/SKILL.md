@@ -238,8 +238,8 @@ path "transit/decrypt/ci-key" {
   capabilities = ["create", "update"]
 }
 
-# [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-log.hcl
-path "sys/[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)/*" {
+# [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-log.hcl
+path "sys/[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)/*" {
   capabilities = ["create", "read", "update", "delete", "list", "sudo"]
 }
 ```
@@ -427,22 +427,22 @@ metadata:
     vault.hashicorp.com/agent-run-as-group: "1000"
 ```
 
-### Step 11: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging
+### Step 11: [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logging
 ```bash
-# Enable file [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
-vault [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) enable file file_path=/vault/logs/[audit](../../../AI_and_Agents/Operations/audit/SKILL.md).log
+# Enable file [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
+vault [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) enable file file_path=/vault/logs/[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md).log
 
-# Enable syslog [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
-vault [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) enable syslog \
+# Enable syslog [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
+vault [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) enable syslog \
   facility="AUTH" \
   tag="vault" \
   log_level="info"
 
-# List [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) devices
-vault [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) list
+# List [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) devices
+vault [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) list
 
-# Disable [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
-vault [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) disable file/
+# Disable [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
+vault [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) disable file/
 ```
 
 ### Step 12: Terraform Provider for Vault
@@ -507,14 +507,14 @@ resource "vault_database_secret_backend_role" "app_role" {
 - Use `kv-v2` over `kv-v1` for secret versioning and delete protection
 - Store Vault unseal keys in a secure key management system, never in code
 - Use response wrapping for distributing secrets to CI/CD
-- Enable [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging in production
+- Enable [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging in production
 - Use auto-unseal (AWS KMS, Azure KeyVault, GCP KMS) in production
 - Set `max_lease_ttl` of 1h for dynamic secrets whenever possible
 
 ## Production Considerations
 - Deploy Vault with 3 or 5 nodes for HA with Raft storage.
 - Use auto-unseal with cloud KMS (AWS KMS, Azure KeyVault, GCP KMS).
-- Enable [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging to both file and syslog for redundancy.
+- Enable [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging to both file and syslog for redundancy.
 - Store unseal keys in a secure KMS (AWS Secrets Manager, Azure Key Vault).
 - Use Vault Agent sidecar for app secret injection instead of SDK.
 - Set conservative TTLs: 1h default, 24h max for dynamic secrets.
@@ -528,8 +528,8 @@ resource "vault_database_secret_backend_role" "app_role" {
 - No TTL on dynamic secrets — credentials never expire.
 - Overly permissive policies (wildcard `*` capabilities) — security risk.
 - Storing unseal keys alongside Vault config — defeats security purpose.
-- No [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging — can't trace who accessed which secret.
-- Using root token for daily operations — no [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail, no revocation.
+- No [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging — can't trace who accessed which secret.
+- Using root token for daily operations — no [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail, no revocation.
 - Not rotating transit keys — compromised key affects all encrypted data.
 - Manual secrets management — Vault is automated secrets, not a password manager.
 - Cross-mount policy bypass — ensuring policies restrict cross-path access.

@@ -125,7 +125,7 @@ Layer 4 (Extended): 2-8 hours, run pre-release
 3. Prioritize tests by risk score: business criticality + failure probability + change proximity
 4. Quarantine flaky tests immediately and fix within one sprint
 5. Add regression tests for every production bug fix (prevent re-introduction)
-6. Regularly [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) the regression suite: remove dead tests, consolidate duplicates
+6. Regularly [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) the regression suite: remove dead tests, consolidate duplicates
 7. Use time budgets with priority ordering for constrained execution windows
 8. Track regression metrics: pass rate, execution time, flakiness, risk coverage
 9. Automate regression selection and execution in CI pipeline
@@ -268,7 +268,7 @@ Failing to quarantine flaky tests erodes trust in the entire test suite. Develop
 Running regression tests manually is slow, error-prone, and doesn't scale. Every regression test must be automated. Manual testing has its place (exploratory, UAT) but regression is repetitive by definition.
 
 ### Anti-Pattern: Letting Suite Bloat
-Regression suites grow without bound as new features are added without removing obsolete tests. A 10,000-test suite that's never pruned has significant dead weight. [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) quarterly: remove tests for removed features, consolidate overlapping tests, retire flaky tests.
+Regression suites grow without bound as new features are added without removing obsolete tests. A 10,000-test suite that's never pruned has significant dead weight. [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) quarterly: remove tests for removed features, consolidate overlapping tests, retire flaky tests.
 
 ### Anti-Pattern: No Time Budget Management
 Without time budgets, regression suites grow unbounded. Each sprint adds tests but never removes them. Set a total suite time budget. When the budget is exceeded, prioritize: run highest risk tests first, defer low-risk tests to nightly.

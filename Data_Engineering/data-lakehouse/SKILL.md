@@ -240,7 +240,7 @@ WHERE table_name = 'silver.orders';
 ```
 
 ### Step 11: [Unity](../../Game_Development/unity/SKILL.md) Catalog Lineage and Discovery
-[Unity](../../Game_Development/unity/SKILL.md) Catalog automatically captures column-level lineage when using Databricks. Lineage is visible in Catalog Explorer and queryable via system tables. Enable lineage tracking on all production catalogs. Use system tables for access [audit](../../AI_and_Agents/Operations/audit/SKILL.md): `system.access.databricks_access` and `system.access.table_lineage`.
+[Unity](../../Game_Development/unity/SKILL.md) Catalog automatically captures column-level lineage when using Databricks. Lineage is visible in Catalog Explorer and queryable via system tables. Enable lineage tracking on all production catalogs. Use system tables for access [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md): `system.access.databricks_access` and `system.access.table_lineage`.
 
 ### Step 12: Lakehouse Federation
 Federate queries across multiple lakehouse instances using Trino or Databricks Lakehouse Federation. Register external data sources ([PostgreSQL](../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md), Snowflake, [MySQL](../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md), SQL Server) as foreign catalogs in [Unity](../../Game_Development/unity/SKILL.md) Catalog. This enables queries that join lakehouse data with operational databases without data movement.
@@ -488,7 +488,7 @@ Primary ecosystem?
 - Use liquid clustering over manual partitioning for new tables
 - Set bronze retention to match longest pipeline SLA
 - Column-level permissions for PII data in silver and gold
-- [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) [Unity](../../Game_Development/unity/SKILL.md) Catalog permissions quarterly
+- [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) [Unity](../../Game_Development/unity/SKILL.md) Catalog permissions quarterly
 - Deploy across at least two availability zones for HA
 - Monitor file sizes — target 256MB-1GB per file
 - Enable change data feed for gold tables consumed by streaming
@@ -581,7 +581,7 @@ sync:
 - **Table maintenance**: Schedule Iceberg `expire_snapshots` and `rewrite_data_files` / Delta `VACUUM` and `OPTIMIZE` as weekly jobs.
 - **Catalog consistency**: Run catalog sync between Nessie/Iceberg REST and Glue/Hive Metastore for cross-engine support.
 - **Cost governance**: Tag tables with owner and cost center; set storage lifecycle policies (bronze 30d, silver 90d, gold indefinite).
-- **Write [audit](../../AI_and_Agents/Operations/audit/SKILL.md)**: Track who wrote what via Spark listener or AWS CloudTrail for lakehouse write operations.
+- **Write [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)**: Track who wrote what via Spark listener or AWS CloudTrail for lakehouse write operations.
 - **Schema enforcement**: Enforce strict schema on write for silver/gold layers; schema on read for bronze.
 - **Time travel window**: Retain 7 days of snapshots for point-in-time queries; balance storage cost.
 
@@ -608,7 +608,7 @@ sync:
 - **Column-level security**: Use Iceberg column mapping or Delta column mapping for PII restriction.
 - **Access controls**: Enforce lakehouse access via SQL standard `GRANT`/`REVOKE` on table/catalog level.
 - **Encryption at rest**: Enable S3/ADLS encryption with customer-managed keys for lakehouse storage.
-- **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging**: Log all table reads and writes through Spark/Trino [audit](../../AI_and_Agents/Operations/audit/SKILL.md) hooks to SIEM.
+- **[Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) logging**: Log all table reads and writes through Spark/Trino [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) hooks to SIEM.
 - **Credential rotation**: Rotate storage access keys and catalog credentials every 90 days; use IAM roles.
 
 ## Handoff

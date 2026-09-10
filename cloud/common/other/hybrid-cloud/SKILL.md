@@ -400,7 +400,7 @@ Optimization strategies:
 - Never expose on-prem services to cloud without firewall inspection.
 - Use private IPs for all hybrid connectivity — avoid public internet.
 - Implement network segmentation: separate VRF per environment.
-- Monitor and [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) all cross-environment access with VPC Flow Logs.
+- Monitor and [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) all cross-environment access with VPC Flow Logs.
 - Rotate VPN pre-shared keys and API tokens regularly.
 
 ## Anti-Patterns
@@ -578,7 +578,7 @@ sync_dns_zones() {
 - Use **PrivateLink / VPC Endpoints** for cloud services — never traverse public internet
 - Implement **[zero-trust](../../../../Security/identity-access/zero-trust/SKILL.md)** for hybrid: every cross-site call must authenticate and authorize
 - Harden **VPN appliances** with certificate-based auth instead of pre-shared keys
-- Centralize **[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging** from all environments into a single SIEM (Splunk, Sentinel)
+- Centralize **[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging** from all environments into a single SIEM (Splunk, Sentinel)
 - Use **SCPs / Azure Policy** to enforce hybrid connectivity standards across cloud accounts
 - Rotate **VPN pre-shared keys** quarterly and revoke compromised customer gateways immediately
 ## Implementation Patterns
@@ -677,7 +677,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
+- Repudiation: [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -691,7 +691,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Secrets Management
 - Secrets never in code — always in secrets manager ([Vault](../../../../Security/cryptography-secrets/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
+- Access [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -700,7 +700,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
+- Log security-relevant events for [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
 - Design for [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.

@@ -60,7 +60,7 @@ secrets service ([serverless](../../../../Software_Engineering_and_Other/Pattern
   per-deploy scans — the property that most distinguishes it from the
   [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) and [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) variants.
 - Diagnosing why a golden AMI that passed CIS benchmark scanning at bake
-  time is now failing a compliance [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) months later with no code change
+  time is now failing a compliance [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) months later with no code change
   in between.
 
 ## Prerequisites & environment
@@ -245,7 +245,7 @@ it's treated as routine.
 ## Common pitfalls
 
 - **Symptom:** A golden AMI passed its CIS scan at bake time six months
-  ago, and a compliance [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) today finds several Level-1 findings on
+  ago, and a compliance [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) today finds several Level-1 findings on
   instances still running that same AMI.
   **Fix:** This is expected without a recurring gate — a CIS scan result
   is only valid as of the moment it ran; without Phase 6's scheduled
@@ -270,7 +270,7 @@ it's treated as routine.
   deploy, and the team starts ignoring the report entirely.
   **Fix:** This is usually a genuinely non-idempotent task (a `command:`/
   `shell:` task with no `changed_when` guard that [Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) can't evaluate
-  as idempotent) rather than real drift — [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) the flagged tasks for
+  as idempotent) rather than real drift — [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) the flagged tasks for
   idempotency per
   [ansible-playbook-and-role-design](../../../iac-and-automation-tooling/skills/[ansible-playbook-and-role-design](../../Infrastructure_as_Code/[ansible](../../Infrastructure_as_Code/ansible/SKILL.md)-playbook-and-role-design/SKILL.md)/SKILL.md)
   before concluding the hosts have actually drifted, since a

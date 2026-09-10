@@ -156,7 +156,7 @@ echo "Report generated in $OUTPUT_DIR"
 
 ```bash
 #!/usr/bin/env bash
-# [github](../../../ci-cd/github-actions/other/github/SKILL.md)-access-review.sh - [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) organization access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+# [github](../../../ci-cd/github-actions/other/github/SKILL.md)-access-review.sh - [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) organization access [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
 
 ORG="your-org"
 OUTPUT_DIR="./access-review/[github](../../../ci-cd/github-actions/other/github/SKILL.md)/$(date +%Y-%m)"
@@ -227,7 +227,7 @@ echo "Report generated in $OUTPUT_DIR"
 
 ```bash
 #!/usr/bin/env bash
-# okta-access-review.sh - Okta user and application access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+# okta-access-review.sh - Okta user and application access [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
 # Requires OKTA_DOMAIN and OKTA_API_TOKEN environment variables
 
 OUTPUT_DIR="./access-review/okta/$(date +%Y-%m)"
@@ -472,7 +472,7 @@ access_review_checklist:
     - [ ] Non-response escalations documented
     - [ ] Remediation actions summarized
     - [ ] Exception register updated
-    - [ ] Evidence archived for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) (retained 3+ years)
+    - [ ] Evidence archived for [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) (retained 3+ years)
     - [ ] Metrics compared to prior review cycle
 ```
 
@@ -487,4 +487,4 @@ access_review_checklist:
 - Review service accounts and API keys alongside human accounts to prevent credential sprawl
 - Document all exceptions with business justification, approver, and expiration date
 - Track review metrics over time: completion rates, revocation rates, time to remediate
-- Archive all access review evidence for a minimum of 3 years for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) purposes
+- Archive all access review evidence for a minimum of 3 years for [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) purposes

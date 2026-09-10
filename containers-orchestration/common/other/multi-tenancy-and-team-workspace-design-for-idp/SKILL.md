@@ -303,7 +303,7 @@ platform access matches its infrastructure access.
   to scope `checkout-team` to their own namespace was actually a
   `ClusterRoleBinding`, granting them read access to every other team's
   secrets cluster-wide.
-  **Fix:** [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) for `ClusterRoleBinding`/`ClusterRole` usage granted to
+  **Fix:** [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) for `ClusterRoleBinding`/`ClusterRole` usage granted to
   team groups and replace with namespace-scoped `Role`/`RoleBinding`
   (step 3) unless a capability is genuinely cluster-wide by nature (e.g.
   a platform-team's own operator) — a cluster-wide grant "to avoid
@@ -311,7 +311,7 @@ platform access matches its infrastructure access.
   over-grant.
 
 - **Symptom:** Two teams' pods on the same shared cluster can reach each
-  other's internal service endpoints directly, and a security [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) flags
+  other's internal service endpoints directly, and a security [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) flags
   this as a lateral-movement risk during an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) review.
   **Fix:** RBAC controls the [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) API, not pod-to-pod network
   traffic — add a default-deny `NetworkPolicy` per namespace (step 5) and

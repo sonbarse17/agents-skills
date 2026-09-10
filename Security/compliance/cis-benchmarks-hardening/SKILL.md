@@ -48,7 +48,7 @@ A passed scan is evidence of a hardening baseline; it is not by itself proof
 of "CIS compliance," since CIS does not issue compliance certifications for
 individual organizations — some cloud/SaaS compliance programs (e.g. FedRAMP,
 StateRAMP) reference CIS Benchmarks as a required baseline, but the actual
-attestation still comes from a separate [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) process.
+attestation still comes from a separate [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) process.
 
 ## When to use
 
@@ -104,7 +104,7 @@ attestation still comes from a separate [audit](../../../AI_and_Agents/Operation
     — most checks are read-only inspection, not exploitation.
 - An exception/waiver tracking mechanism — a spreadsheet is a starting
   point, but a ticket system or a version-controlled YAML/JSON waiver file
-  reviewed in pull requests is far more defensible in an [audit](../../../AI_and_Agents/Operations/audit/SKILL.md).
+  reviewed in pull requests is far more defensible in an [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md).
 
 ## Step-by-step guidance
 
@@ -138,7 +138,7 @@ attestation still comes from a separate [audit](../../../AI_and_Agents/Operation
    confirmed-compliant-with-that-check only.
 4. **Triage each FAIL/WARN against the benchmark's own rationale text**,
    not just the one-line check description — the full CIS Benchmark PDF/
-   spreadsheet gives the "Rationale," "[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md)," "Remediation," and "Impact"
+   spreadsheet gives the "Rationale," "[Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)," "Remediation," and "Impact"
    for each control, which is what determines whether the fix is safe to
    apply automatically.
 5. **Remediate what applies.** Common remediations: set kubelet
@@ -233,14 +233,14 @@ attestation still comes from a separate [audit](../../../AI_and_Agents/Operation
   affect authentication or networking; treat "safe to auto-remediate" as
   the exception, not the default.
 - **Symptom:** The organization cites "we ran a CIS Benchmark scan" as
-  evidence of compliance in a customer security questionnaire or [audit](../../../AI_and_Agents/Operations/audit/SKILL.md),
+  evidence of compliance in a customer security questionnaire or [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md),
   and the auditor pushes back.
   **Fix:** Be explicit that CIS does not certify individual organizations
   — a scan result is a technical hardening artifact, useful as supporting
   evidence for something like SOC 2 or ISO 27001 control testing (see
   [security-compliance-mapping-soc2-iso-pci-nist](../[security-compliance-mapping-soc2-iso-pci-nist](../../DevOps_and_Cloud/Observability_and_SecOps/security-compliance-mapping-soc2-iso-pci-nist/SKILL.md)/SKILL.md)),
   but the compliance attestation itself comes from a qualified third-party
-  [audit](../../../AI_and_Agents/Operations/audit/SKILL.md), not from the scan tool.
+  [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md), not from the scan tool.
 
 ## Worked example
 
@@ -300,12 +300,12 @@ Summary reported to the requester: "46 pass / 3 fail / 12 warn against CIS
 (1.2.1, 4.2.6); 1 fail converted to a reviewed, time-boxed exception
 (control-plane check, cloud-managed). This is a hardening baseline, not a
 compliance certification — see the compliance-mapping skill if this is
-feeding a SOC 2 / ISO 27001 [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)."
+feeding a SOC 2 / ISO 27001 [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)."
 
 ## Cross-references
 
 - [cloud-well-architected-framework-review](../[cloud-well-architected-framework-review](../../DevOps_and_Cloud/Cloud_Providers/cloud-well-architected-framework-review/SKILL.md)/SKILL.md) — broader workload review (security is one pillar) that CIS hardening findings feed into.
-- [security-compliance-mapping-soc2-iso-pci-nist](../[security-compliance-mapping-soc2-iso-pci-nist](../../DevOps_and_Cloud/Observability_and_SecOps/security-compliance-mapping-soc2-iso-pci-nist/SKILL.md)/SKILL.md) — mapping CIS scan evidence to formal framework controls for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) readiness.
+- [security-compliance-mapping-soc2-iso-pci-nist](../[security-compliance-mapping-soc2-iso-pci-nist](../../DevOps_and_Cloud/Observability_and_SecOps/security-compliance-mapping-soc2-iso-pci-nist/SKILL.md)/SKILL.md) — mapping CIS scan evidence to formal framework controls for [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) readiness.
 - [owasp-top-10-secure-coding-standards](../[owasp-top-10-secure-coding-standards](../../DevOps_and_Cloud/Cloud_Providers/owasp-top-10-secure-coding-standards/SKILL.md)/SKILL.md) — application-layer counterpart; CIS Benchmarks cover infrastructure/OS/platform configuration, not app code.
 - [container-image-hardening](../../../[devsecops](../devsecops/SKILL.md)/skills/[container-image-hardening](../../../containers-orchestration/docker/security/container-image-hardening/SKILL.md)/SKILL.md) — non-root users, read-only rootfs, and capability drops that satisfy many [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)/[Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) CIS controls at the image level.
 - [policy-as-code-guardrails](../../../[devsecops](../devsecops/SKILL.md)/skills/[policy-as-code-guardrails](../[policy-as-code](../policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md) — enforcing CIS-derived rules automatically via OPA/Kyverno admission control instead of relying solely on point-in-time scans.

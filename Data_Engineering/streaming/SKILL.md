@@ -494,7 +494,7 @@ Input Topic → Kafka Streams / Flink
 |---|---|---|---|
 | Business events | delete | 7 days | `orders.created.v1` |
 | CDC events | delete | 30 days | `postgres.orders.orders` |
-| [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) events | delete | 365 days | `[audit](../../AI_and_Agents/Operations/audit/SKILL.md).access.v1` |
+| [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) events | delete | 365 days | `[audit](../../AI_and_Agents/Operations/common/audit/SKILL.md).access.v1` |
 | Keyed state | compact | N/A (keep latest per key) | `customer.profile.v1` |
 | DLQ | delete | 90 days | `orders.created.v1.dlq` |
 | Logs | delete | 3 days | `app.logs.v1` |
@@ -507,7 +507,7 @@ Input Topic → Kafka Streams / Flink
 | Clickstream | 50000 msg/s | 500 B | 24 | 50000 * 500B = 25MB/s |
 | IoT sensor data | 100000 msg/s | 100 B | 48 | 100000 * 100B = 10MB/s |
 | CDC from Postgres | 100 msg/s | 5 KB | 3 | Low volume |
-| [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) log | 2000 msg/s | 1 KB | 12 | Moderate volume |
+| [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) log | 2000 msg/s | 1 KB | 12 | Moderate volume |
 
 ## Streaming SLA Targets
 
@@ -558,7 +558,7 @@ Both provide incremental materialized views on streaming data using [PostgreSQL]
 - Compacted topics for keyed state, delete retention for events
 - Watermarks account for out-of-order events
 - Alert on lag > 1000 or lag growing for 5+ minutes
-- Set retention based on replay and [audit](../../AI_and_Agents/Operations/audit/SKILL.md) requirements
+- Set retention based on replay and [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) requirements
 - Never auto-[commit](../../ci-cd/common/git-workflow/commit/SKILL.md) offsets in production
 - Test checkpointing by simulating broker failures
 - Monitor rebalance frequency as cluster health indicator

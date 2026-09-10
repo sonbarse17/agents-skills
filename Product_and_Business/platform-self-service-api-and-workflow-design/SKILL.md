@@ -296,7 +296,7 @@ optional UI decoration a determined developer (or a bug) can route around.
   deploy.
 - Persist request state transitions with who/when for every step
   (requested, policy-checked, approved-by, provisioned) — this is the
-  [audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail a security review or [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) retrospective will need, and
+  [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) trail a security review or [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) retrospective will need, and
   retrofitting it after the fact from application logs is far more work
   than building it in from the state-machine design in step 1.
 - Reject self-approval structurally (the approver-role check in step 4),
@@ -426,7 +426,7 @@ spec:
    provisioning API, tags the resulting RDS instance with
    `request_id=req_8f2a` and `approved_by=<approver>`, and updates the
    request row to `completed`.
-5. Six weeks later, a cost [audit](../../AI_and_Agents/Operations/audit/SKILL.md) queries the `self_service_requests`
+5. Six weeks later, a cost [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) queries the `self_service_requests`
    table and finds every production database traceable to a specific
    approved request — no orphaned resources with no request record,
    because the provisioning call in step 4 only ever fires from inside

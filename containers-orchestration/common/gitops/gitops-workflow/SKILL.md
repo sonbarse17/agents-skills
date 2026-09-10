@@ -30,7 +30,7 @@ depends_on:
 `helm upgrade` against a cluster) with a "pull-based" model where a
 reconciliation operator running inside the cluster continuously compares
 live state against the desired state declared in a Git repository, and
-converges toward it. This makes Git history the [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) log and rollback
+converges toward it. This makes Git history the [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) log and rollback
 mechanism for infrastructure and application state, eliminates
 credential sprawl (CI no longer needs cluster-admin), and detects/corrects
 configuration drift automatically. It matters operationally because it
@@ -178,7 +178,7 @@ Git.
 
 - Keep the config repo's history linear and meaningful — each [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)
   should represent one intentional desired-state change, since that
-  history *is* your deployment [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) log and rollback mechanism.
+  history *is* your deployment [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) log and rollback mechanism.
 - Use an "app-of-apps" (Argo CD) or a top-level `Kustomization` (Flux)
   pattern so bootstrapping a new cluster is "apply one root manifest,"
   not "manually register N applications."

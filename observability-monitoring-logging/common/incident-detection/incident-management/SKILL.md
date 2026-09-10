@@ -451,7 +451,7 @@ incident_management_checklist:
 
   compliance:
     - [ ] All SEV1/2 incidents have post-mortems
-    - [ ] [Incident](../incident/SKILL.md) log maintained for [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) evidence
+    - [ ] [Incident](../incident/SKILL.md) log maintained for [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) evidence
     - [ ] Metrics reported monthly
     - [ ] On-call health monitored (pages per person)
     - [ ] Annual [incident](../incident/SKILL.md) response training conducted

@@ -55,7 +55,7 @@ How many resource types need access control?
         ├── Yes → ReBAC (Zanzibar-style relationship tuples)
         └── No → ABAC (attribute-based policies for maximal flexibility)
 
-Regulatory requirements (SoD, [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md))?
+Regulatory requirements (SoD, [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md))?
 ├── Yes → Constrained RBAC with SoD enforcement
 └── No → Standard RBAC or ABAC
 
@@ -191,7 +191,7 @@ Permission types:
 | Data | `read own records only` | Query filter + row-level security |
 | Field | `view salary column` | GraphQL field resolver |
 | Environmental | `approve during business hours` | Policy condition |
-| Administrative | `deactivate user` | Admin guard + [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) |
+| Administrative | `deactivate user` | Admin guard + [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) |
 
 ### Step 4: Implement RBAC Core
 ```javascript
@@ -358,7 +358,7 @@ async function elevateRole(userId, targetRole, reason, durationMinutes) {
     approvedBy: approval.approvedBy,
     auditId: crypto.randomUUID()
   });
-  // Log [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) event
+  // Log [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) event
   await logSecurityEvent('role_elevation', {
     userId, targetRole, reason, durationMinutes, approvedBy: approval.approvedBy
   });
@@ -422,7 +422,7 @@ async function breakGlassAccess(userId, resourceId, reason) {
 | Super Admin | Unrestricted, cross-system | Platform-wide emergency, initial setup |
 | Org Admin | Full within one org unit | Subsidiary administration |
 | System Admin | Infrastructure only | DevOps, deployments |
-| [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Admin | Read-only + [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) log | Compliance, investigations |
+| [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) Admin | Read-only + [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) log | Compliance, investigations |
 | Support Admin | User management + read | Customer support |
 | Billing Admin | Finance + subscriptions | Billing operations |
 | Delegated Admin | Scoped subset of admin | Department leads managing their team |
@@ -481,7 +481,7 @@ user_has_role(user_id, role) {
 user_role(user_id) := data.roles[user_id]
 ```
 
-### Step 9: Test & [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Authorization
+### Step 9: Test & [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) Authorization
 
 **Permission matrix testing:**
 ```javascript
@@ -512,7 +512,7 @@ test('authorization matrix', () => {
 - Out-of-scope org → deny.
 - Rollback after elevation expires → previous perms restored.
 
-**[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) requirements:**
+**[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) requirements:**
 - Log every authorization decision (allowed or denied) with: timestamp, user, action, resource, decision, reason.
 - Log every role change, permission grant/revoke, elevation, delegation.
 - Weekly reports on denied access attempts (potential attacks).
@@ -526,14 +526,14 @@ test('authorization matrix', () => {
 ## Anti-Patterns
 
 1. **Role explosion**: Creating hundreds of roles for every unique permission combination. Fix → Use attributes for exceptions, keep roles to < 20.
-2. **Super admin everywhere**: Every admin is super admin. Fix → Follow least privilege: scoped admin roles (org-admin, [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-admin, support-admin).
+2. **Super admin everywhere**: Every admin is super admin. Fix → Follow least privilege: scoped admin roles (org-admin, [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-admin, support-admin).
 3. **Client-side authorization only**: Hiding UI buttons but not enforcing server-side. Fix → API gateway or middleware enforces every decision.
 4. **Permission check in domain logic**: Auth logic mixed with business logic. Fix → Authorization is infrastructure, enforced before domain.
 5. **Hardcoded user IDs in policies**: `if (user.id === 'admin-user')`. Fix → Never reference specific users — use roles and attributes.
 6. **No default deny**: Everything is allowed unless explicitly denied. Fix → Reverse: deny by default, explicitly allow.
 7. **Caching decisions indefinitely**: Cached allow/deny results become stale. Fix → Cache with TTL tied to token expiry or policy change events.
 8. **Ignoring delegation chain depth**: Delegated permissions cascade infinitely. Fix → Limit depth to 1 (direct delegation only) or max 3 hops.
-9. **Break-glass without notification**: Emergency access with no [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail. Fix → Always log, notify, and auto-expire.
+9. **Break-glass without notification**: Emergency access with no [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail. Fix → Always log, notify, and auto-expire.
 10. **Elevation never expires**: JIT roles that last forever. Fix → Always set TTL on elevation. Cron job to clean up expired.
 11. **Overly complex policies**: ABAC conditions that no one can understand or debug. Fix → Simpler RBAC + minimal ABAC. Document every condition.
 12. **Permissive wildcards**: `*.*` grants access to everything. Fix → Be explicit. Use wildcards only for true admin roles.
@@ -549,7 +549,7 @@ test('authorization matrix', () => {
 
 ### Privilege Escalation Vectors
 - **Horizontal**: User A reads User B's data. Mitigation → scope-based checks on every data access.
-- **Vertical**: User upgrades own role. Mitigation → role changes require [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail + approval.
+- **Vertical**: User upgrades own role. Mitigation → role changes require [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail + approval.
 - **Delegation abuse**: Delegate permissions to gain more than you have. Mitigation → delegation inherits delegator's scope, never exceeds.
 
 ### Timing Attacks on Authorization
@@ -692,7 +692,7 @@ func Authorize(engine *casbin.Enforcer) func(http.Handler) http.Handler {
 - Default deny: if no policy explicitly allows, access is denied.
 - Authorize at the right layer — data-level enforcement (RLS, query filter) is mandatory, UI hiding is optional UX.
 - Never trust client-side permissions. Always enforce server-side.
-- Role assignments and permission grants must have an [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail with who approved them.
+- Role assignments and permission grants must have an [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail with who approved them.
 - Temporary elevation must expire automatically. Never leave JIT roles permanent.
 - Break-glass access must notify security immediately and expire within 30 minutes.
 - Delegated permissions must not exceed the delegator's own permissions.
@@ -702,7 +702,7 @@ func Authorize(engine *casbin.Enforcer) func(http.Handler) http.Handler {
 - Default allow lists for known-safe operations (public endpoints, health checks). All else default deny.
 
 ## References
-  - ../../../Global_References/authorization-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md).md — Authorization [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)
+  - ../../../Global_References/authorization-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md).md — Authorization [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)
   - ../../../Global_References/authorization-delegation.md — Authorization Delegation
   - ../../../Global_References/authorization-fundamentals.md — Authorization Fundamentals
   - ../../../Global_References/authorization-advanced.md — Authorization Advanced

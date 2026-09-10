@@ -226,10 +226,10 @@ RTO, it's a guess.
 Retention has two distinct drivers that are easy to conflate: how far
 back you need to be able to *restore* for operational recovery (often
 weeks), and how long you're required to *retain* data for compliance/
-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) (often much longer, sometimes years). Configure them as
+[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) (often much longer, sometimes years). Configure them as
 separate policies rather than one retention setting serving both —
 a short operational-recovery retention window is fine for disaster
-recovery but inadequate for a compliance [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) requiring data from
+recovery but inadequate for a compliance [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) requiring data from
 eighteen months ago, and conversely, keeping every daily backup
 indefinitely "just in case" for compliance reasons is wasteful storage
 cost when only the most recent few weeks are ever actually restored

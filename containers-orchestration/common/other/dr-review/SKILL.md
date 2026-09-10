@@ -165,7 +165,7 @@ Effort keywords (`quick` / `standard` / `deep`) and the shared `<focus>` and
 ## Related skills
 
 - `/[terraform-review](../../../../infrastructure-as-code/terraform/troubleshooting/terraform-review/SKILL.md)` — where backup, retention, and protection settings are declared.
-- `/[db-review](../../../../AI_and_Agents/Operations/db-review/SKILL.md)` — PITR, migration safety, and the data-loss paths inside the database.
+- `/[db-review](../../../../AI_and_Agents/Operations/common/db-review/SKILL.md)` — PITR, migration safety, and the data-loss paths inside the database.
 - `/[security-review](../../../../Security/common/security-review/SKILL.md)` — backup credential scoping, immutability, ransomware resilience.
 - `/cost` — retention is a spend/recovery trade-off; decide it here, price it there.
 - `/[runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)` — turn the restore procedure into an on-call-ready document.

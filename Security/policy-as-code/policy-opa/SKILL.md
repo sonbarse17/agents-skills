@@ -281,10 +281,10 @@ Generate compliance reports using the bundled reporting script:
 
 ```bash
 # Generate compliance report
-./scripts/generate_report.py --policy policies/ --[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-logs [audit](../../../AI_and_Agents/Operations/audit/SKILL.md).json --output compliance-report.html
+./scripts/generate_report.py --policy policies/ --[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-logs [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md).json --output compliance-report.html
 
 # Export violations for SIEM integration
-./scripts/generate_report.py --policy policies/ --[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-logs [audit](../../../AI_and_Agents/Operations/audit/SKILL.md).json --format json --output violations.json
+./scripts/generate_report.py --policy policies/ --[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-logs [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md).json --format json --output violations.json
 ```
 
 ## Security Considerations
@@ -292,10 +292,10 @@ Generate compliance reports using the bundled reporting script:
 - **Policy Versioning**: Store policies in version control with change tracking and approval workflows
 - **Least Privilege**: Grant minimal permissions for policy evaluation - OPA should run with read-only access to configurations
 - **Sensitive Data**: Avoid embedding secrets in policies - use external data sources or encrypted configs
-- **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging**: Log all policy evaluations, violations, and exceptions for compliance auditing
+- **[Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logging**: Log all policy evaluations, violations, and exceptions for compliance auditing
 - **Policy Testing**: Maintain comprehensive test coverage (>80%) for all policy rules
 - **Separation of Duties**: Separate policy authors from policy enforcers; require peer review for policy changes
-- **Compliance Mapping**: Map policies to specific compliance controls (SOC2 CC6.1, PCI-DSS 8.2.1) for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) traceability
+- **Compliance Mapping**: Map policies to specific compliance controls (SOC2 CC6.1, PCI-DSS 8.2.1) for [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) traceability
 
 ## Bundled Resources
 
@@ -411,7 +411,7 @@ allow if {
 - **Terraform/IaC**: Pre-deployment validation using `conftest` or OPA CLI
 - **API Gateways**: Kong, Envoy, NGINX - authorize requests using OPA policies
 - **[Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)/SIEM**: Export policy violations to Splunk, ELK, [Datadog](../../../observability-monitoring-logging/datadog/other/datadog/SKILL.md) for security [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
-- **Compliance Tools**: Integrate with compliance platforms for control validation and [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trails
+- **Compliance Tools**: Integrate with compliance platforms for control validation and [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) trails
 
 ## Troubleshooting
 
@@ -428,7 +428,7 @@ allow if {
 **Solution**:
 - Verify Gatekeeper is running: `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get pods -n gatekeeper-system`
 - Check constraint status: `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get constraints`
-- Review [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs: `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) logs -n gatekeeper-system -l control-plane=controller-manager`
+- Review [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs: `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) logs -n gatekeeper-system -l control-plane=controller-manager`
 - Ensure constraint template is properly defined and matches policy expectations
 
 ### Issue: Policy Tests Failing

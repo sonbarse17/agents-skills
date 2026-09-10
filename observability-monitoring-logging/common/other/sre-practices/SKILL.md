@@ -139,7 +139,7 @@ slis:
 
   durability:
     definition: "Fraction of written data not lost"
-    measurement: "[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-based (not real-time metric)"
+    measurement: "[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-based (not real-time metric)"
     source: "Periodic integrity checks"
     threshold: "99.999999% (11 nines)"
 

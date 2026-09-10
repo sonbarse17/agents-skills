@@ -408,7 +408,7 @@ SLA breach documented in post-mortem with root cause.
 ### Step 8: Data Quality Ecosystem Tools
 re_data is an open-source framework that tracks row count, freshness, null rates, and distributions over time, building baselines for anomaly detection. Configure tables with YAML thresholds; auto-generates dbt tests from observed patterns. Use for automated baseline-driven quality [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) without manual expectations.
 
-dbt-[audit](../../AI_and_Agents/Operations/audit/SKILL.md)-helper is a dbt package that compares two relations row-by-row on specified columns, reporting differences, missing rows, and mismatches. Essential for validating refactored dbt models produce identical results to originals.
+dbt-[audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)-helper is a dbt package that compares two relations row-by-row on specified columns, reporting differences, missing rows, and mismatches. Essential for validating refactored dbt models produce identical results to originals.
 
 ODD (Open Data Discovery) is an open-source [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) platform ingesting metadata from data sources, tracking quality scores over time, with catalog and lineage. Integrates with dbt, Airflow, and Great Expectations. Use for centralized quality metric aggregation.
 
@@ -423,7 +423,7 @@ data-diff --dbs [postgresql](../../Software_Engineering_and_Other/Databases/rela
 ```
 
 ### Step 9: Extended [Observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) Integration
-Combine re_data (baseline tracking) + dbt-[audit](../../AI_and_Agents/Operations/audit/SKILL.md)-helper (migration validation) + ODD (centralized [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)) + data-diff (cross-database comparison). Pipeline: re_data profiles new tables → generates expectations → feeds ODD quality metrics → data-diff validates ETL output → dbt-[audit](../../AI_and_Agents/Operations/audit/SKILL.md)-helper validates refactoring → ODD alerts on score regression. This stack provides automated baselining, migration safety nets, and cross-system reconciliation without SaaS [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) costs.
+Combine re_data (baseline tracking) + dbt-[audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)-helper (migration validation) + ODD (centralized [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)) + data-diff (cross-database comparison). Pipeline: re_data profiles new tables → generates expectations → feeds ODD quality metrics → data-diff validates ETL output → dbt-[audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)-helper validates refactoring → ODD alerts on score regression. This stack provides automated baselining, migration safety nets, and cross-system reconciliation without SaaS [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) costs.
 
 ## Rules
 - Every critical table has a data contract
@@ -559,9 +559,9 @@ models:
 - **PII in expectations**: Never reference raw PII values in expectation parameters; use hashed references.
 - **Alert channels**: Encrypt Slack webhook URLs; avoid including sensitive data values in alert messages.
 - **Schema validation**: Validate quality results schema before writing to warehouse; reject malformed records.
-- **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail**: Log all quality configuration changes and threshold modifications for compliance.
+- **[Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) trail**: Log all quality configuration changes and threshold modifications for compliance.
 
 ## Handoff
 `[data-etl-pipeline](../etl-pipeline/SKILL.md)` for embedding quality checks into pipeline
-`[data-bi-tools](../../AI_and_Agents/Models_and_FineTuning/bi-tools/SKILL.md)` for displaying quality metadata on [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)
+`[data-bi-tools](../bi-tools/SKILL.md)` for displaying quality metadata on [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)
 

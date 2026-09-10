@@ -41,7 +41,7 @@ Apply this skill whenever you are:
   must be auditable.
 
 If your MCP server only runs locally over stdio for a single developer with no network
-exposure, you can relax some transport-layer controls -- but input validation and [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+exposure, you can relax some transport-layer controls -- but input validation and [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
 logging still apply.
 
 ---
@@ -651,7 +651,7 @@ export function consumeTokens(
 
 ---
 
-## 9. [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging
+## 9. [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logging
 
 ### 9.1 Structured Tool Invocation Logging
 

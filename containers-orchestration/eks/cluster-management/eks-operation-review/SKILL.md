@@ -32,7 +32,7 @@ Conduct a comprehensive operational review of Amazon EKS clusters aligned with t
 ## When to Use
 
 Activate this skill when the user asks to:
-- Review, [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md), or assess EKS clusters
+- Review, [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md), or assess EKS clusters
 - Check EKS best practices compliance
 - Evaluate EKS security, cost, reliability, networking, or scalability
 - Perform an EKS operational readiness review

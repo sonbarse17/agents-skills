@@ -41,7 +41,7 @@ resource when a triggering resource appears — e.g. a default
 `NetworkPolicy` or `ResourceQuota` whenever a new `Namespace` is created),
 both of which OPA/Gatekeeper handles less directly. This skill covers
 Kyverno's actual rule syntax across all three rule types, its
-`background`/`validationFailureAction` [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-vs-enforce controls, and
+`background`/`validationFailureAction` [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-vs-enforce controls, and
 `PolicyReport` output for visibility — and gives explicit guidance on
 when Kyverno's YAML-native approach is the better fit than OPA/Gatekeeper
 versus when Rego's generality is worth the learning-curve cost.
@@ -84,7 +84,7 @@ versus when Rego's generality is worth the learning-curve cost.
 - `kyverno` CLI installed locally for `kyverno test` (offline unit testing
   against sample resources) before deploying policies to a live cluster.
 - A rollout plan: **every new or changed policy must be applied with
-  `validationFailureAction: [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)` first**, not `Enforce` — identical
+  `validationFailureAction: [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)` first**, not `Enforce` — identical
   discipline to Gatekeeper's `dryrun`, and for the same reason (surfacing
   what a policy would have blocked before it can break a legitimate
   deploy).
@@ -96,7 +96,7 @@ versus when Rego's generality is worth the learning-curve cost.
 
 ## Step-by-step guidance
 
-1. **Write a `validate` rule in `[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)` mode first**, using Kyverno's
+1. **Write a `validate` rule in `[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)` mode first**, using Kyverno's
    `pattern` block (structural match against the resource) rather than
    Rego:
    ```yaml
@@ -105,7 +105,7 @@ versus when Rego's generality is worth the learning-curve cost.
    metadata:
      name: require-run-as-non-root
    spec:
-     validationFailureAction: [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)   # start here, not Enforce
+     validationFailureAction: [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)   # start here, not Enforce
      background: true                 # also evaluate existing resources, not just new admissions
      rules:
        - name: check-runAsNonRoot
@@ -138,13 +138,13 @@ versus when Rego's generality is worth the learning-curve cost.
    ```
 
 3. **Review `PolicyReport`/`ClusterPolicyReport` results** generated
-   during the [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) period before enforcing:
+   during the [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) period before enforcing:
    ```bash
    [kubectl](../../other/kubectl/SKILL.md) get clusterpolicyreport -o wide
    [kubectl](../../other/kubectl/SKILL.md) get policyreport -A -o jsonpath='{.items[*].summary}'
    ```
 
-4. **Switch to `Enforce` once [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) is clean**, with a documented,
+4. **Switch to `Enforce` once [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) is clean**, with a documented,
    time-boxed exclusion for genuine exceptions:
    ```yaml
    spec:
@@ -163,10 +163,10 @@ versus when Rego's generality is worth the learning-curve cost.
    > **Warning — destructive action risk:** switching `validationFailureAction`
    > to `Enforce` on a broadly-scoped `ClusterPolicy` blocks every
    > matching admission cluster-wide the moment it's applied — not just
-   > new deploys from CI, but any `[kubectl](../../other/kubectl/SKILL.md) apply`. Confirm the [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)
+   > new deploys from CI, but any `[kubectl](../../other/kubectl/SKILL.md) apply`. Confirm the [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)
    > period covered representative traffic and that a rollback
    > (`[kubectl](../../other/kubectl/SKILL.md) patch clusterpolicy <name> --type merge -p
-   > '{"spec":{"validationFailureAction":"[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)"}}'`) is understood by
+   > '{"spec":{"validationFailureAction":"[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)"}}'`) is understood by
    > on-call before enforcing against production namespaces.
 
 5. **Use `mutate` rules to inject or default fields** rather than only
@@ -290,7 +290,7 @@ versus when Rego's generality is worth the learning-curve cost.
   deletes/edits the generated resource, which is powerful but surprising
   if the team expects generated resources to be independent once
   created.
-- Roll out every new or changed policy `[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)` → review `PolicyReport` →
+- Roll out every new or changed policy `[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)` → review `PolicyReport` →
   `Enforce`, identically to the Gatekeeper `dryrun` → `deny` pattern —
   the two engines differ in syntax, not in the rollout discipline needed.
 - Keep one `ClusterPolicy` per concern (non-root, registry allowlist,
@@ -303,10 +303,10 @@ versus when Rego's generality is worth the learning-curve cost.
 - **Symptom:** A new `ClusterPolicy` is applied directly with
   `validationFailureAction: Enforce` and immediately blocks a legitimate
   deploy, triggering an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
-  **Fix:** Always deploy with `validationFailureAction: [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)` first,
+  **Fix:** Always deploy with `validationFailureAction: [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)` first,
   review `PolicyReport`/`ClusterPolicyReport` results for a representative
   period, then switch to `Enforce` with documented, time-boxed
-  `exclude` blocks for anything legitimate the [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) surfaced.
+  `exclude` blocks for anything legitimate the [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) surfaced.
 
 - **Symptom:** A `validate` rule with a `pattern` block never fails,
   even for a resource that clearly violates the intended rule.
@@ -356,7 +356,7 @@ no existing Rego investment) for three policies: validating non-root
 containers, defaulting a memory limit via mutation, and auto-generating a
 default-deny NetworkPolicy per namespace.
 
-`policies/require-non-root.yaml` ([Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md), then Enforce after a clean week):
+`policies/require-non-root.yaml` ([Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md), then Enforce after a clean week):
 ```yaml
 apiVersion: kyverno.io/v1
 kind: ClusterPolicy
@@ -457,7 +457,7 @@ results:
 After applying, creating a namespace `team-payments` automatically
 provisions `NetworkPolicy/default-deny-all` in that namespace, and
 `[kubectl](../../other/kubectl/SKILL.md) get policyreport -n team-payments` confirms the non-root policy
-is passing for all existing Pods before the team flips it from `[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)` to
+is passing for all existing Pods before the team flips it from `[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)` to
 `Enforce`.
 
 ## Cross-references
@@ -472,7 +472,7 @@ is passing for all existing Pods before the team flips it from `[Audit](../../..
   may cover a policy before it's worth writing a custom Kyverno rule for
   it.
 - [policy-as-code-guardrails](../../../../Security/common/devsecops/SKILL.md)/skills/[policy-as-code-guardrails](../../../../Security/policy-as-code/policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md) —
-  the broader [policy-as-code](../../../../Security/policy-as-code/policy-as-code/SKILL.md) rationale and [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-before-enforce
+  the broader [policy-as-code](../../../../Security/policy-as-code/policy-as-code/SKILL.md) rationale and [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-before-enforce
   discipline this skill's rollout steps follow.
 - [secure-cicd-gates](../../../../Security/common/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../../Security/app-security/secure-cicd-gates/SKILL.md)/SKILL.md) —
   where Kyverno's admission-time enforcement fits relative to earlier

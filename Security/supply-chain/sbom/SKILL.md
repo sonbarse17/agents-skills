@@ -84,7 +84,7 @@ Policy gates: block promotion from dev→staging if CRITICAL vulns, block stagin
 | CRITICAL | 9.0–10.0 | Block build. Patch SLA: 48 hours |
 | HIGH | 7.0–8.9 | Block promotion to prod. Patch SLA: 7 days |
 | MEDIUM | 4.0–6.9 | Warn. Review at next triage |
-| LOW | 0.1–3.9 | Allow. Log for quarterly [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) |
+| LOW | 0.1–3.9 | Allow. Log for quarterly [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) |
 
 ### Correlation Process
 1. Parse SBOM to extract package name, version, ecosystem.
@@ -207,7 +207,7 @@ Every dependency checked against allowlist. Block copyleft and unknown licenses.
 Sign SBOM with Sigstore Cosign. Keyless mode preferred. Verify attestation signature and predicate content before deployment. In-toto layout for multi-step build chains.
 
 ### Step 6: CI Pipeline Integration
-Generate SBOM after build, before image push. Store in artifact registry. Verify attestation in deployment pipeline. Gate deployment on vulnerability policy. Monthly full dependency [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) with SBOM diff report.
+Generate SBOM after build, before image push. Store in artifact registry. Verify attestation in deployment pipeline. Gate deployment on vulnerability policy. Monthly full dependency [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) with SBOM diff report.
 
 ### Step 7: Distribution & [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 Push SBOM to Dependency Track or Harbor for continuous [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md). Configure alerts for new vulnerabilities on deployed components. Weekly re-scan of all active SBOMs. Retention: current + last 3 releases.
@@ -407,7 +407,7 @@ Attacker pushes a malicious tag to a registry that overrides an existing version
 - Check attestation signatures for all new artifacts
 
 ### Weekly Operations
-- Full dependency [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) with SBOM diff
+- Full dependency [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) with SBOM diff
 - Update vulnerability databases
 - Review license policy violations
 - Triage new CVEs affecting deployed components
@@ -582,7 +582,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
+- Repudiation: [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -596,7 +596,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Secrets Management
 - Secrets never in code — always in secrets manager ([Vault](../../cryptography-secrets/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
+- Access [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -605,7 +605,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
+- Log security-relevant events for [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
 - Design for [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.

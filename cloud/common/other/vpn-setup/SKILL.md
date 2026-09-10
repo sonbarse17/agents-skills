@@ -427,7 +427,7 @@ aws ec2 describe-vpn-connections \
 - Segment VPN access by role using split tunneling or ACLs
 - Use pre-shared keys with WireGuard for post-quantum resistance
 - Keep VPN software updated to patch security vulnerabilities
-- Log all VPN connection events for [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) purposes
+- Log all VPN connection events for [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) purposes
 - Disable VPN access immediately when employees leave
 - Test failover for site-to-site VPN connections
 

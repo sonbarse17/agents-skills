@@ -332,7 +332,7 @@ az sql db threat-policy update \
   --email-account-admins true
 
 # Enable auditing to storage
-az sql server [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-policy update \
+az sql server [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-policy update \
   --resource-group database-rg \
   --name myapp-sqlserver \
   --state Enabled \
@@ -340,7 +340,7 @@ az sql server [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-polic
   --retention-days 90
 
 # Enable auditing to Log Analytics
-az sql server [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-policy update \
+az sql server [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-policy update \
   --resource-group database-rg \
   --name myapp-sqlserver \
   --state Enabled \
@@ -447,8 +447,8 @@ resource "azurerm_mssql_database" "main" {
     email_addresses            = ["security@example.com"]
     email_account_admins       = "Enabled"
     retention_days             = 90
-    storage_endpoint           = azurerm_storage_account.[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md).primary_blob_endpoint
-    storage_account_access_key = azurerm_storage_account.[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md).primary_access_key
+    storage_endpoint           = azurerm_storage_account.[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md).primary_blob_endpoint
+    storage_account_access_key = azurerm_storage_account.[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md).primary_access_key
   }
 
   tags = var.tags

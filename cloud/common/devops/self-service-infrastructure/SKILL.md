@@ -89,7 +89,7 @@ glass exception — not a standing credential anyone can reach for.
 A developer who doesn't see the projected monthly cost of what they're about to create has no way
 to make a good decision, and finds out three weeks later from `[cloud-budgeting](../../cost/cloud-budgeting/SKILL.md)` instead. Surface
 estimated cost and require an owner and cost-center tag at request time, before the resource
-exists, so accountability is attached at creation instead of reconstructed later during an [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md).
+exists, so accountability is attached at creation instead of reconstructed later during an [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md).
 
 **Done when:** every self-service request shows a cost estimate and requires an owner tag before
 it can be submitted.
@@ -99,7 +99,7 @@ it can be submitted.
 When something does go wrong — an over-provisioned instance, a resource in the wrong region — the
 first question is always "how did this get approved." If auto-approval decisions aren't logged
 with the policy that allowed them, you can't answer that question and you can't tell whether the
-guardrail itself needs tightening. Treat the approval log as an [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail, not just a debugging
+guardrail itself needs tightening. Treat the approval log as an [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail, not just a debugging
 convenience.
 
 **Done when:** for any provisioned resource, you can show which guardrail rule approved it and

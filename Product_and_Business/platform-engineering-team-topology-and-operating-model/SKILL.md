@@ -290,7 +290,7 @@ templates because "it's faster than waiting on DevOps."
    Leadership names the team's mandate explicitly: reduce stream-aligned
    teams' cognitive load via self-service, not process their requests
    faster.
-2. **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) ticket volume by category** over the last two quarters: 40% are
+2. **[Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) ticket volume by category** over the last two quarters: 40% are
    new-environment provisioning requests, 25% are DNS/routing changes,
    20% are CI runner configuration, 15% miscellaneous.
 3. **Scope a thinnest-viable-platform**: a self-service provisioning API

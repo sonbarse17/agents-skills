@@ -531,7 +531,7 @@ Prefer fine-grained privileges (`manage_ingest_pipelines`, `monitor`) over broad
 
 - Generate strong passwords by default: at least 16 characters mixing uppercase, lowercase, digits, and symbols (e.g.
   `X9k#mP2vL!qR7wZn`). Never use placeholder values like `changeme` or `password123`.
-- Prefer disabling users over deleting them to preserve [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail.
+- Prefer disabling users over deleting them to preserve [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail.
 - The `roles` array on a user is **replaced entirely** on update. Always fetch current roles before modifying.
 
 ### Role mapping best practices

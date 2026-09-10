@@ -140,7 +140,7 @@ canonical columns before they are routed:
 ## Related skills
 
 - `/[observability](../../fundamentals/observability/SKILL.md)` — a late or missing alert found here becomes a detection plan there.
-- `/[k8s-review](../../../../containers-orchestration/kubernetes/troubleshooting/k8s-review/SKILL.md)`, `/[terraform-review](../../../../infrastructure-as-code/terraform/troubleshooting/terraform-review/SKILL.md)`, `/[db-review](../../../../AI_and_Agents/Operations/db-review/SKILL.md)` — durable fixes for the failure mode.
+- `/[k8s-review](../../../../containers-orchestration/kubernetes/troubleshooting/k8s-review/SKILL.md)`, `/[terraform-review](../../../../infrastructure-as-code/terraform/troubleshooting/terraform-review/SKILL.md)`, `/[db-review](../../../../AI_and_Agents/Operations/common/db-review/SKILL.md)` — durable fixes for the failure mode.
 - `/[dr-review](../../../../containers-orchestration/common/other/dr-review/SKILL.md)` — if the incident exposed a broken backup, restore, or failover path.
 - `/[runbook](../runbook/SKILL.md)` — if no [runbook](../runbook/SKILL.md) existed for this failure mode, writing one is a follow-up.
 

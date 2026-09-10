@@ -385,13 +385,13 @@ aws ec2 describe-security-group-rules \
   --filters Name=group-id,Values=sg-0abc123
 ```
 
-## Firewall Rule [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Script
+## Firewall Rule [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) Script
 
 ```bash
 #!/bin/bash
-# firewall-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md).sh - [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) current firewall rules for common issues
+# firewall-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md).sh - [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) current firewall rules for common issues
 
-echo "=== Firewall [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Report ==="
+echo "=== Firewall [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) Report ==="
 echo "Date: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
 echo "Host: $(hostname)"
 echo ""

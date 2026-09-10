@@ -611,7 +611,7 @@ No deprecation policy or sunset headers. Consumers get no warning before breakin
 - Review spec changes in PRs using rendered diff tools.
 - Maintain an API style guide (Spectral ruleset).
 - Register new APIs in a service catalog (Backstage, API portal).
-- [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) deprecated endpoints quarterly.
+- [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) deprecated endpoints quarterly.
 
 ## Troubleshooting
 

@@ -29,7 +29,7 @@ Centralized identity management is not optional once your team exceeds a handful
 Reach for this skill when:
 
 - **First SSO setup** -- You are moving from individual app logins to centralized authentication.
-- **Compliance [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) preparation** -- SOC 2, ISO 27001, or HIPAA requires documented access controls, MFA enforcement, and [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs.
+- **Compliance [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) preparation** -- SOC 2, ISO 27001, or HIPAA requires documented access controls, MFA enforcement, and [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs.
 - **Team growth inflection** -- You are crossing 15-20 employees and manual onboarding/offboarding is becoming error-prone.
 - **Vendor security questionnaires** -- Customers are asking about your identity posture and you need to demonstrate controls.
 - **[Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response** -- You need to revoke access quickly across all systems for a departing or compromised user.
@@ -37,7 +37,7 @@ Reach for this skill when:
 Signs you are overdue:
 
 - Shared passwords in a spreadsheet or chat channel.
-- No central [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) log of who accessed what and when.
+- No central [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) log of who accessed what and when.
 - Offboarding takes more than one business day.
 - Developers have standing admin access to production.
 
@@ -691,12 +691,12 @@ az monitor activity-log alert create \
 
 ---
 
-## 9. [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) & Compliance
+## 9. [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) & Compliance
 
-### Login [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logs
+### Login [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logs
 
 ```bash
-# Google Workspace: Pull login [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs
+# Google Workspace: Pull login [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs
 gam report login user all start "2026-03-01" end "2026-03-24" \
   fields "actorEmail,ipAddress,loginType,isSecondFactor,isSuspicious"
 
@@ -837,7 +837,7 @@ aws sso-admin delete-account-assignment \
   --principal-id "$AWS_SSO_USER_ID"
 
 # Step 6: Document and log
-echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) | OFFBOARD | ${DEPARTING_USER} | all sessions revoked, account suspended, data transferred to manager@company.com" >> /var/log/offboarding-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md).log
+echo "$(date -u +%Y-%m-%dT%H:%M:%SZ) | OFFBOARD | ${DEPARTING_USER} | all sessions revoked, account suspended, data transferred to manager@company.com" >> /var/log/offboarding-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md).log
 ```
 
 ### Post-Offboarding Verification
@@ -859,7 +859,7 @@ curl -s -H "Authorization: SSWS ${OKTA_API_TOKEN}" \
 # [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)
 gh api "orgs/company/members/${DEPARTING_USER}" 2>&1 | grep -q "404" && echo "[OK] [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) removed" || echo "[FAIL] [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) still member"
 
-# Check for any remaining active sessions in [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs
+# Check for any remaining active sessions in [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs
 echo "=== Checking for post-offboard activity ==="
 curl -s -H "Authorization: SSWS ${OKTA_API_TOKEN}" \
   "${OKTA_ORG_URL}/api/v1/logs?filter=actor.alternateId+eq+\"${DEPARTING_USER}\"&since=$(date -u +%Y-%m-%dT%H:%M:%SZ)&limit=10" \
@@ -876,5 +876,5 @@ curl -s -H "Authorization: SSWS ${OKTA_API_TOKEN}" \
 | Suspend user | `gam update user suspended on` | `POST /lifecycle/deactivate` | `az ad user update --account-enabled false` |
 | Enforce MFA | `gam update org 2sv enforced` | MFA enrollment policy | Conditional access policy |
 | Revoke sessions | `gam user signout` | `DELETE /users/{id}/sessions` | `revokeSignInSessions` |
-| [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logins | `gam report login` | `GET /api/v1/logs` | `GET /auditLogs/signIns` |
+| [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logins | `gam report login` | `GET /api/v1/logs` | `GET /auditLogs/signIns` |
 | SCIM provision | Built-in for supported apps | App integration SCIM tab | Enterprise app provisioning |

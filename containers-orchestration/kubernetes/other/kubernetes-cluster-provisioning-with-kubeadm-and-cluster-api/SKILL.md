@@ -33,7 +33,7 @@ depends_on:
 ## Purpose
 
 Not every cluster runs on a managed control plane or a single-binary
-lightweight distribution: [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) fleets, on-prem data centers, and
+lightweight distribution: [bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md) fleets, on-prem data centers, and
 teams that need full control over control-plane composition still
 bootstrap clusters directly with **kubeadm** — the upstream, vendor-
 neutral tool for `init`/`join` that every managed and lightweight
@@ -47,7 +47,7 @@ provisioning, scaling, and upgrading many clusters follows one
 consistent, [GitOps](../../../common/gitops/gitops/SKILL.md)-able workflow regardless of the underlying
 infrastructure provider. This skill covers both: kubeadm for the
 single-cluster imperative bootstrap, and CAPI for managing cluster
-lifecycle declaratively at scale. It is the self-managed/[bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)
+lifecycle declaratively at scale. It is the self-managed/[bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)
 counterpart to
 [managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md)
 (cloud-managed control planes) and
@@ -58,7 +58,7 @@ every control-plane component, on infrastructure you operate yourself.
 
 ## When to use
 
-- Bootstrapping a brand-new self-managed or [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) cluster with
+- Bootstrapping a brand-new self-managed or [bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md) cluster with
   `kubeadm init`/`kubeadm join` rather than a managed or lightweight
   distribution.
 - Designing an HA control plane (stacked or external etcd, a load

@@ -387,7 +387,7 @@ await blockBlobClient.uploadFile("/path/to/document.pdf");
 
 ### Append Blob
 
-Optimized for append operations (logs, [audit](../../../../../AI_and_Agents/Operations/audit/SKILL.md) trails).
+Optimized for append operations (logs, [audit](../../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trails).
 
 ```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const appendBlobClient = containerClient.getAppendBlobClient("app.log");

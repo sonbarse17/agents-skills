@@ -218,7 +218,7 @@ equivalent.
    whose score consistently spikes right before a reporting deadline and
    drifts back down after, is a service worth a manual spot-check, not
    necessarily a genuine improvement. Periodically (e.g. quarterly)
-   manually [audit](../../AI_and_Agents/Operations/audit/SKILL.md) a random sample of high-scoring services against the
+   manually [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) a random sample of high-scoring services against the
    actual practice a check claims to verify (open the linked [runbook](../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) and
    read it, not just confirm the link resolves).
 
@@ -245,7 +245,7 @@ equivalent.
   genuinely dangerous gap can't be numerically offset by unrelated easy
   passes.
 - Treat the scorecard itself as an artifact to measure for gaming signal
-  — track score volatility and spot-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) high scorers — rather than
+  — track score volatility and spot-[audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) high scorers — rather than
   trusting a green check forever once it's been achieved once.
 - Make category ownership explicit (security owns the security category's
   rules, SRE owns production-readiness) so rule changes go through the
@@ -279,7 +279,7 @@ equivalent.
   low-weight passes (README, tags, naming convention) to clear the
   threshold anyway. Add both failed checks to `required_rules` for the
   tier the service was awarded, so a critical gap caps the tier
-  regardless of the weighted total, and [audit](../../AI_and_Agents/Operations/audit/SKILL.md) other "Gold" services for
+  regardless of the weighted total, and [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) other "Gold" services for
   the same blind spot.
 
 - **Symptom:** Scorecard compliance across the org climbs from 40% to 95%
@@ -289,7 +289,7 @@ equivalent.
   genuine improvement — cross-reference with
   [developer-experience-measurement-and-platform-adoption](../[developer-experience-measurement-and-platform-adoption](../../Software_Engineering_and_Other/Miscellaneous/[developer-experience](../developer-experience/SKILL.md)-measurement-and-platform-adoption/SKILL.md)/SKILL.md)'s
   guidance on treating a metric the team started optimizing directly as
-  compromised; spot-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) a sample of the newly-passing services against
+  compromised; spot-[audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) a sample of the newly-passing services against
   the actual underlying practice, and consider tracking score volatility
   itself as a dashboard metric so a future spike is visible in real time
   rather than only in hindsight.
@@ -317,7 +317,7 @@ equivalent.
 
 **Scenario:** A platform team is rolling out a Cortex Production
 Readiness scorecard across 80 services. An earlier, informal spreadsheet-
-based [audit](../../AI_and_Agents/Operations/audit/SKILL.md) found: most services have a README, about a third have any
+based [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) found: most services have a README, about a third have any
 kind of SLO defined, on-call rotations exist for high-tier services but
 several are single-person, and two services had a [runbook](../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) stub with no
 real content that nobody had opened in over a year.
@@ -329,14 +329,14 @@ real content that nobody had opened in over a year.
    step 1.
 2. [Runbook](../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) check upgraded to the machine-verified version from step 2
    (existence + freshness), directly closing the stub-file gap the
-   earlier informal [audit](../../AI_and_Agents/Operations/audit/SKILL.md) found.
+   earlier informal [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) found.
 3. Weighting applied per step 3: README weight 1, SLO weight 3, automated
    rollback weight 5, no-aged-criticals weight 5.
 4. Tier gating per step 4 — Gold requires both `automated rollback` and
    `no aged criticals` as `required_rules`, not just a high weighted sum.
 5. On-call check upgraded per step 5 to require ≥2 rotation members and
    an escalation policy, directly targeting the single-person-schedule
-   finding from the informal [audit](../../AI_and_Agents/Operations/audit/SKILL.md).
+   finding from the informal [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md).
 
 **Rollout:** Bronze entry bar set to "README + any on-call schedule at
 all" (what ~90% of services already clear), avoiding the unattainable-
@@ -347,7 +347,7 @@ target, not a launch-day expectation.
 
 **Quarter-two review:** Score volatility tracking (step 7) flags one
 service whose score jumped from 45 to 92 in the ten days before a
-leadership all-hands. A spot-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) finds its "[runbook](../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)" doc passed the
+leadership all-hands. A spot-[audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) finds its "[runbook](../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)" doc passed the
 freshness check because a script had been auto-touching the file's
 timestamp weekly without changing its content — a gaming pattern the
 freshness check alone didn't catch. The check is tightened to also

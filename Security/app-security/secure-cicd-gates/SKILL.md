@@ -107,7 +107,7 @@ rather than something developers route around.
      blocking the PR merge itself.
    - **Scheduled (nightly/weekly)**: DAST active/full scan, full
      dependency re-scan (to catch newly-disclosed CVEs against unchanged
-     code), policy [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-mode review.
+     code), policy [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-mode review.
 
 2. **Define one severity-to-action table** and apply it consistently
    across tools instead of letting each tool's default thresholds stand
@@ -227,7 +227,7 @@ rather than something developers route around.
 - **Symptom:** Security wants to add a new blocking gate; engineering
   pushes back that it will break every in-flight PR on rollout day.
   **Fix:** Roll out new gates in warn-only/report mode first (mirroring
-  the [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-mode pattern from
+  the [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-mode pattern from
   [policy-as-code-guardrails](../[policy-as-code-guardrails](../[policy-as-code](../policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md)),
   review the hit rate for a representative period, then flip to blocking
   once the false-positive rate is acceptable.

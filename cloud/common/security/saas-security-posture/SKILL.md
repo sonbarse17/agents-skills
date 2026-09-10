@@ -30,7 +30,7 @@ Secure every SaaS tool your company relies on with practical, command-driven har
 - **SaaS sprawl** — teams sign up for tools with company email and nobody tracks them.
 - **Post-[incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) hardening** — after phishing or credential leaks, tighten every surface.
 
-## 2. SaaS Inventory [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)
+## 2. SaaS Inventory [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)
 
 ### Google Workspace — OAuth Grants
 
@@ -119,12 +119,12 @@ gh api -X PUT /repos/{ORG}/{REPO}/branches/main/protection \
 }
 EOF
 
-# [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) PATs and revoke stale tokens
+# [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) PATs and revoke stale tokens
 gh api /orgs/{ORG}/personal-access-tokens --paginate \
   --jq '.[] | {owner: .owner.login, name: .token_name, expires: .token_expires_at}'
 gh api -X DELETE /orgs/{ORG}/personal-access-tokens/{PAT_ID}
 
-# [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) deploy keys and webhooks
+# [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) deploy keys and webhooks
 for repo in $(gh repo list {ORG} --limit 500 --json name -q '.[].name'); do
   gh api /repos/{ORG}/${repo}/keys --jq '.[] | {title: .title, read_only: .read_only}'
 done
@@ -159,7 +159,7 @@ curl -s -X POST -H "Authorization: Bearer ${SLACK_ADMIN_TOKEN}" \
   "https://slack.com/api/admin.teams.settings.setRetentionPolicy" \
   -d '{"team_id": "T0XXXXXXX", "retention_type": "all", "retention_duration": 365}'
 
-# [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Slack Connect shared channels
+# [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) Slack Connect shared channels
 curl -s -H "Authorization: Bearer ${SLACK_ADMIN_TOKEN}" \
   "https://slack.com/api/admin.conversations.search?search_channel_types=connect" \
   | jq '.conversations[] | {name: .name, is_ext_shared: .is_ext_shared}'
@@ -355,7 +355,7 @@ for domain in "${SHADOW_IT_DOMAINS[@]}"; do
 done
 ```
 
-### Google Workspace Login [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)
+### Google Workspace Login [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)
 
 ```bash
 gam report login parameters app_name \
@@ -396,7 +396,7 @@ echo "0 8 * * * root /usr/local/bin/shadow-it-check.sh" >> /etc/cron.d/shadow-it
 |---|--------|-------|
 | 1 | Enforce MFA/2FA everywhere | Google, [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md), AWS, Slack |
 | 2 | Enable SSO with your IdP | All tools |
-| 3 | [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) and revoke OAuth grants | Google, [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) |
+| 3 | [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) and revoke OAuth grants | Google, [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) |
 | 4 | Require Slack app approval | Slack |
 | 5 | Branch protection on main | [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) |
 | 6 | Secret scanning + push protection | [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) |

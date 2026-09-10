@@ -640,7 +640,7 @@ Onboarding documents should be updated after each new hire:
 1. New hire flags unclear docs during setup — file an issue immediately
 2. Buddy compiles "surprising" questions weekly — add to FAQ
 3. At end of onboarding, new hire submits PR to improve docs
-4. Quarterly, rotate a senior engineer to [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) and refresh onboarding materials
+4. Quarterly, rotate a senior engineer to [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) and refresh onboarding materials
 5. Track "time to first PR" as a team KPI — if it trends up, investigate friction
 
 ## Handoff

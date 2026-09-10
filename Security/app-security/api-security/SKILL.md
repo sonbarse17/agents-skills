@@ -37,7 +37,7 @@ OWASP API Top 10 threat modeling, authentication
 (JWT, OAuth2, API keys), rate limiting (token bucket,
 sliding window, per-user/per-endpoint), input validation
 (JSON schema, allowlist), WAF rules (ModSecurity CRS),
-request signing, and [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging.
+request signing, and [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging.
 
 ## Agent Protocol
 
@@ -47,7 +47,7 @@ Exact user phrases: "API security", "OWASP API Top 10",
 "API gateway", "WAF", "API abuse", "API threat modeling",
 "API protection", "API authentication", "API authorization",
 "API keys", "OAuth2 API", "API gateway config",
-"request signing", "API [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)", "GraphQL security".
+"request signing", "API [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)", "GraphQL security".
 
 ### Input Context
 Before activating, verify:
@@ -68,7 +68,7 @@ protection configuration, [monitoring](../../../observability-monitoring-logging
 # Rate limit policy
 # WAF rules
 # Auth middleware config
-# [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) log schema
+# [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) log schema
 ```
 
 No preamble. No postamble. No explanations. No filler/hedging/transitions.
@@ -81,7 +81,7 @@ Compress output — why use many token when few do trick.
 - [ ] Rate limiting policy with tiered quotas
 - [ ] Input validation rules for all endpoints
 - [ ] WAF rules for API-specific attacks
-- [ ] [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging and abuse [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) configured
+- [ ] [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging and abuse [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) configured
 - [ ] Request signing for critical operations
 
 ### Max Response Length
@@ -116,7 +116,7 @@ Use DTOs, whitelist updatable fields only.
 
 API7: Security misconfiguration.
 CORS misconfigured, debug endpoints exposed.
-[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) configs, disable debug in production.
+[Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) configs, disable debug in production.
 
 API8: Injection.
 SQL, NoSQL, command injection.
@@ -232,8 +232,8 @@ Prevents replay attacks, tampering, unauthorized source.
 Middleware at gateway or service mesh sidecar.
 Reference pattern: AWS Signature V4.
 
-### Step 7: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging and Abuse [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
-[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) events:
+### Step 7: [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logging and Abuse [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+[Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) events:
 Auth decisions (success, failure, reason).
 Privilege escalation.
 Sensitive data access.
@@ -368,7 +368,7 @@ Health check, metrics, and admin endpoints exposed without authentication. `/act
 - Basic auth or API keys
 - No rate limiting
 - No input validation
-- No [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging
+- No [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging
 - Default CORS policy
 
 ### Level 2: Standard
@@ -384,7 +384,7 @@ Health check, metrics, and admin endpoints exposed without authentication. `/act
 - Rate limiting per user + per endpoint (distributed)
 - WAF with API-specific rules
 - Request signing for critical operations
-- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging with [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
+- [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging with [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 
 ### Level 4: Optimized
 - [Zero-trust](../../identity-access/zero-trust/SKILL.md) API architecture
@@ -403,7 +403,7 @@ Health check, metrics, and admin endpoints exposed without authentication. `/act
 - Verify API gateway health
 
 ### Weekly Operations
-- Review [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs for suspicious access patterns
+- Review [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs for suspicious access patterns
 - Analyze rate limit hit distribution by consumer tier
 - Tune WAF rules for false positives
 - Review new API endpoints added in last week
@@ -419,7 +419,7 @@ Health check, metrics, and admin endpoints exposed without authentication. `/act
 1. Detect: rate limit breach, auth failure spike, WAF block surge, anomalous payload patterns
 2. Assess: identify affected endpoints, consumer, data potentially exposed
 3. Contain: revoke compromised keys, block IP/subnet, enable maintenance mode for affected endpoints
-4. Investigate: [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, WAF logs, gateway access logs
+4. Investigate: [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs, WAF logs, gateway access logs
 5. Remediate: patch vulnerability, update WAF rules, rotate all affected credentials
 6. Post-mortem: write [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) report, update threat model, improve detection rules
 
@@ -428,7 +428,7 @@ Health check, metrics, and admin endpoints exposed without authentication. `/act
 - JWT validated on every request — signature, expiry, issuer
 - Rate limits enforced at gateway, not application
 - Input validation rejects early, fails securely
-- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs include every auth decision
+- [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs include every auth decision
 - Default deny for endpoints unless explicitly permitted
 - API versioning: never remove old versions without migration
 - Sensitive data filtered from responses by default
@@ -543,7 +543,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
+- Repudiation: [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -557,7 +557,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Secrets Management
 - Secrets never in code — always in secrets manager ([Vault](../../cryptography-secrets/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
+- Access [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -566,7 +566,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
+- Log security-relevant events for [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
 - Design for [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.

@@ -235,16 +235,16 @@ the first `terraform apply`.
    Site-to-Site VPN as failover — never a VPN-only path for
    production-critical hybrid traffic.
 
-7. **Centralize [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and flow logs** by routing them through a Service
+7. **Centralize [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) and flow logs** by routing them through a Service
    Connector Hub into an Object Storage bucket in the `Security`
    compartment, with a retention rule so logs can't be shortened or
    deleted even by a compromised workload-compartment credential:
    ```bash
    oci sch service-connector create \
      --compartment-id <SECURITY_COMPARTMENT_OCID> \
-     --display-name "[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-log-archive" \
+     --display-name "[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-log-archive" \
      --source '{"kind":"logging","logSources":[{"compartmentId":"<TENANCY_OCID>","logGroupId":"_Audit_Include_Subcompartment"}]}' \
-     --target '{"kind":"objectStorage","namespace":"<OBJECT_STORAGE_NAMESPACE>","bucketName":"security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-logs"}'
+     --target '{"kind":"objectStorage","namespace":"<OBJECT_STORAGE_NAMESPACE>","bucketName":"security-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-logs"}'
    ```
 
 8. **Enable Cloud Guard tenancy-wide and layer Security Zones on
@@ -342,7 +342,7 @@ the first `terraform apply`.
   the hierarchy (unlike an AWS OU or GCP folder), nothing stops an
   engineer from creating a resource one level too high. Enforce leaf-only
   resource placement with a Security Zone recipe requiring resources to
-  live in a tagged "leaf" compartment, and periodically [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) with
+  live in a tagged "leaf" compartment, and periodically [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) with
   `oci search resource structured-search` for resources sitting in
   non-leaf compartments.
 
@@ -371,7 +371,7 @@ the first `terraform apply`.
 **Scenario:** A company with one flat OCI tenancy (all resources sitting
 in the root compartment, one shared Administrators-group login for
 everyone) needs a real landing zone before launching a second product
-line and before OCI resources fail their first security [audit](../../../AI_and_Agents/Operations/audit/SKILL.md).
+line and before OCI resources fail their first security [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md).
 
 1. Create the compartment hierarchy: `Security`, `Network`, `Workloads`
    (with `Production`/`NonProduction`), and `Sandbox`, all under the
@@ -392,7 +392,7 @@ line and before OCI resources fail their first security [audit](../../../AI_and_
    to `CheckoutTeam`, and a Dynamic Group granting the compartment's
    compute instances read access to [Vault](../../../Security/cryptography-secrets/vault/SKILL.md) secrets in `Security` — no
    embedded API keys anywhere in the deployment.
-6. Route [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and VCN Flow Logs through a Service Connector Hub into an
+6. Route [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) and VCN Flow Logs through a Service Connector Hub into an
    Object Storage bucket in `Security` with a retention rule, and set a
    compartment-scoped budget on `Sandbox`.
 7. Result: two product lines, a compliant compartment hierarchy, Security

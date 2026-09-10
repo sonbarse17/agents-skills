@@ -335,7 +335,7 @@ DELETE FROM outbox_messages
 | Same transaction, different DB | Outbox in [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md), business data in [MySQL](../../../Databases/relational/mysql/SKILL.md) — no atomicity | Keep outbox in same DB as business data |
 | No dedup in consumer | At-least-once delivery causes duplicate processing | Check idempotency key before processing |
 | Long-running relay blocking | Single relay thread blocks if one message fails to publish | Individual message retry, skip failures, process batch |
-| Deleting outbox immediately after publish | Lose [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail, cannot replay | Archive after 7 days, keep for replay capability |
+| Deleting outbox immediately after publish | Lose [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail, cannot replay | Archive after 7 days, keep for replay capability |
 
 ## Rules
 - Business operation and outbox insert MUST be in the same database transaction. If either fails, both roll back.

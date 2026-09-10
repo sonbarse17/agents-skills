@@ -233,7 +233,7 @@ resource "oci_identity_policy" "ops_policy" {
   description    = "Policy for DevOps team"
   statements = [
     "Allow group DevOpsTeam to manage all-resources in compartment team-compartment",
-    "Allow group DevOpsTeam to read [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-events in tenancy",
+    "Allow group DevOpsTeam to read [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-events in tenancy",
     "Allow group DevOpsTeam to use tag-namespaces in tenancy"
   ]
 }
@@ -424,7 +424,7 @@ resource "oci_monitoring_alarm" "cpu_high" {
 - Set up budgets and alerts before deploying production workloads.
 - Use OCI [Vault](../../../Security/cryptography-secrets/vault/SKILL.md) for secrets, API keys, and database passwords.
 - Prefer FastConnect over site-to-site VPN for production hybrid connectivity.
-- Enable OKE cluster [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs and ship to OCI Logging.
+- Enable OKE cluster [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs and ship to OCI Logging.
 
 ## Production Considerations
 - OCI regions are organized by realm (commercial, government, China). Choose the right realm.
@@ -474,7 +474,7 @@ resource "oci_monitoring_alarm" "cpu_high" {
 | User management | OCI console, manual | Central IdP (Okta, Azure AD) |
 | MFA | OCI built-in MFA | IdP-managed MFA |
 | Group sync | Manual or API | SCIM provisioning |
-| [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail | OCI [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs | IdP [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) + OCI [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) |
+| [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail | OCI [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs | IdP [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) + OCI [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) |
 | Complexity | Lower (in-platform) | Higher (IdP setup + mapping) |
 | Best for | Small teams, isolated OCI | Enterprise with SSO requirement |
 
@@ -620,7 +620,7 @@ list_compartments() {
 - Rotate **OCI API keys** every 90 days and use API key versioning for key rotation without downtime
 - Enable **Cloud Guard** with detector recipes for storage, networking, and IAM misconfigurations
 - Use **[Vault](../../../Security/cryptography-secrets/vault/SKILL.md) (HSM)** for master encryption keys and auto-rotate DEKs every 180 days
-- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) **IAM policy changes** with OCI [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs and stream to OCI Object Storage for retention
+- [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) **IAM policy changes** with OCI [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs and stream to OCI Object Storage for retention
 ## Implementation Patterns
 
 ### Observer Pattern for Event Handling
@@ -717,7 +717,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
+- Repudiation: [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -731,7 +731,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Secrets Management
 - Secrets never in code — always in secrets manager ([Vault](../../../Security/cryptography-secrets/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
+- Access [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -740,7 +740,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
+- Log security-relevant events for [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
 - Design for [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.

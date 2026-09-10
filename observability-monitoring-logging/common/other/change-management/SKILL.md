@@ -490,7 +490,7 @@ change_management_checklist:
     - [ ] Automated risk classification in CI/CD
     - [ ] Branch protection enforces required approvals
     - [ ] Deployment records captured automatically
-    - [ ] Change [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail preserved (PR history, approvals)
+    - [ ] Change [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail preserved (PR history, approvals)
 
   compliance:
     - [ ] All production changes have documented approval
@@ -498,7 +498,7 @@ change_management_checklist:
     - [ ] Post-implementation reviews conducted for failures
     - [ ] Emergency changes documented retroactively within 48 hours
     - [ ] Change metrics reported monthly
-    - [ ] [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail retained for compliance period (1-3 years)
+    - [ ] [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail retained for compliance period (1-3 years)
 ```
 
 ## Best Practices

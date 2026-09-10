@@ -350,7 +350,7 @@ resource "alicloud_cms_alarm" "disk_usage" {
 | WAF | WAF | WAF | Cloud Armor |
 | DNS | DNS (PrivateZone) | Route53 | Cloud DNS |
 | [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) | CloudMonitor | CloudWatch | Cloud [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) |
-| [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) | ActionTrail | CloudTrail | Cloud [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logs |
+| [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) | ActionTrail | CloudTrail | Cloud [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logs |
 | Key Management | KMS | KMS | Cloud KMS |
 | Container Registry | ACR | ECR | Artifact Registry |
 | Message Queue | MNS | SQS | Pub/Sub |
@@ -376,7 +376,7 @@ Embedding AccessKey ID/Secret in application code or configuration files. Always
 ## Production Considerations
 
 ### Security
-- Enable ActionTrail for all regions to [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) API calls.
+- Enable ActionTrail for all regions to [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) API calls.
 - Use RAM roles for cross-account access instead of sharing AccessKey pairs.
 - Enable SSL/TLS on SLB listeners; disable legacy protocols (SSLv3, TLS 1.0).
 - Use KMS for encryption of OSS buckets, RDS instances, and disk snapshots.
@@ -420,7 +420,7 @@ Embedding AccessKey ID/Secret in application code or configuration files. Always
 - Deploy ACK clusters with private SLB only; expose via Application Load Balancer (ALB).
 - Enable deletion protection on RDS and OSS buckets.
 - Use Alibaba Cloud CLI with `ram` profile for scripting, never plaintext keys.
-- Enable ActionTrail trail for all regions with OSS storage for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs.
+- Enable ActionTrail trail for all regions with OSS storage for [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs.
 
 ## Output Format
 Terraform HCL (alicloud provider), Alibaba Cloud CLI commands, RAM policy JSON, or ROS templates.

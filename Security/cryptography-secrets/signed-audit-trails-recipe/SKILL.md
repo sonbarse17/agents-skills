@@ -16,7 +16,7 @@ depends_on:
   - github
 ---
 
-# Signed [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Trails for Claude Code Tool Calls
+# Signed [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Trails for Claude Code Tool Calls
 
 Cookbook-style walkthrough for cryptographically signed receipts on every
 Claude Code tool call. This is the teaching skill. For the runtime

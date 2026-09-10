@@ -301,7 +301,7 @@ LIMIT 100000
 | Mode | Behavior | Use Case |
 |---|---|---|
 | `upsert` | Create or update by match key | Customer profiles, CRM contacts |
-| `append` | Always insert new rows | Event data, [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs |
+| `append` | Always insert new rows | Event data, [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) logs |
 | `replace` | Truncate destination and insert all rows | Small reference tables |
 | `merge` | Match and merge fields (Braze, Amplitude) | User identity resolution |
 | `mirror` | Full reconciliation: insert, update, delete to match source exactly | Product catalogs, inventory |
@@ -566,7 +566,7 @@ class ReverseETLSync:
 
 - **Credentials**: Store destination API keys in [Vault](../../Security/cryptography-secrets/vault/SKILL.md) or Secrets Manager; rotate keys quarterly.
 - **Data minimization**: Sync only minimum required fields per destination; never sync raw PII unless necessary.
-- **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail**: Log all sync operations including row count, fields synced, and destination.
+- **[Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) trail**: Log all sync operations including row count, fields synced, and destination.
 - **Compliance**: Ensure reverse ETL complies with data residency requirements; filter by region.
 - **Rate limit protection**: Implement circuit breaker for destination APIs to avoid being rate-limited or banned.
 

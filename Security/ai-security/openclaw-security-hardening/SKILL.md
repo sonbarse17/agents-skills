@@ -94,7 +94,7 @@ Do not publish raw OpenClaw service ports directly to the internet.
 
 ## Add Detection and Recovery Paths
 
-- Centralize auth, error, and [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs.
+- Centralize auth, error, and [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs.
 - Alert on brute-force attempts, token failures, and unusual outbound traffic.
 - Capture immutable backup snapshots of configs and prompt data retention settings.
 - Test rollback and restore procedures every release cycle.
@@ -117,5 +117,5 @@ Minimum operational [runbook](../../../observability-monitoring-logging/common/i
 ## Related Skills
 
 - [openclaw-local-mac-mini](../[openclaw-local-mac-mini](../openclaw-local-mac-mini/SKILL.md)/) - Local OpenClaw hosting setup
-- [multi-tenant-llm-hosting](../[multi-tenant-llm-hosting](../../AI_and_Agents/Models_and_FineTuning/multi-tenant-llm-hosting/SKILL.md)/) - Multi-tenant AI isolation patterns
+- [multi-tenant-llm-hosting](../../../AI_and_Agents/Models_and_FineTuning/inference-serving/multi-tenant-llm-hosting/SKILL.md)/) - Multi-tenant AI isolation patterns
 - [zero-trust](../../../security/network/[zero-trust](../zero-trust/SKILL.md)/) - Private access and identity-aware network controls

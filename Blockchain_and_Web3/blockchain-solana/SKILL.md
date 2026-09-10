@@ -484,7 +484,7 @@ pub struct Metadata {
 - [ ] Test on localnet first (solana-test-validator)
 - [ ] Deploy to devnet, verify with anchor test
 - [ ] Set upgrade authority to multi-sig (Squads)
-- [ ] Consider immutable program after final [audit](../../AI_and_Agents/Operations/audit/SKILL.md)
+- [ ] Consider immutable program after final [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)
 - [ ] Publish IDL for client SDK generation
 - [ ] Verify build is deterministic (solana-verify)
 - [ ] Configure program-derived addresses correctly

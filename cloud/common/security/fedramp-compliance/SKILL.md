@@ -28,7 +28,7 @@ Implement FedRAMP (Federal Risk and Authorization Management Program) requiremen
 - Implementing NIST 800-53 security controls for federal workloads
 - Establishing continuous [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (ConMon) processes
 - Managing Plan of Action and Milestones (POA&M) tracking
-- Preparing for a Third-Party Assessment Organization (3PAO) [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)
+- Preparing for a Third-Party Assessment Organization (3PAO) [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)
 - Operating a FedRAMP-authorized system and maintaining authorization
 
 ## Impact Levels
@@ -83,12 +83,12 @@ control_families:
     implementation_notes: "Map to IAM policies, RBAC, MFA enforcement"
 
   AU:
-    name: "[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) and Accountability"
+    name: "[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) and Accountability"
     key_controls:
-      AU-2: "[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Events - define auditable events"
-      AU-3: "Content of [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Records - ensure records contain required info"
-      AU-6: "[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Review, Analysis, and Reporting"
-      AU-12: "[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Generation - generate [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) records"
+      AU-2: "[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) Events - define auditable events"
+      AU-3: "Content of [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) Records - ensure records contain required info"
+      AU-6: "[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) Review, Analysis, and Reporting"
+      AU-12: "[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) Generation - generate [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) records"
     implementation_notes: "Map to CloudTrail, CloudWatch Logs, SIEM"
 
   AT:

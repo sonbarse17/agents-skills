@@ -55,6 +55,6 @@ flowchart TD
     K -- Yes --> L[Draft Exploit POC]
     L --> M[Formulate Mitigation]
     K -- No --> N[Review Edge Cases & Assembly]
-    N --> O[Finalize [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Report]
+    N --> O[Finalize [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) Report]
     M --> O
 ```

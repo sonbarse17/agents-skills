@@ -564,7 +564,7 @@ contract LendingPool {
 - **Oracle manipulation**: Use TWAP (30 min) for critical price feeds; circuit breaker on > 5% deviation.
 - **Flash loan attacks**: Check price deviation against multiple sources; use time-weighted prices.
 - **Economic security**: Formal verification of liquidation math; fuzz testing for edge cases.
-- **Composability risk**: [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) integration points with external protocols; whitelist allowed adapters.
+- **Composability risk**: [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) integration points with external protocols; whitelist allowed adapters.
 
 ## Phase
 blockchain → blockchain-defi

@@ -257,7 +257,7 @@ For each initiative estimate: annual cost (people, tech, operations), expected b
 Transparency: data collection and use is visible and explainable. Fairness: algorithms and decisions do not discriminate. Accountability: clear ownership for data ethics decisions. Privacy: data collected only with consent, used only for stated purpose. Security: data protected throughout its lifecycle.
 
 #### Ethical Review Process
-Triage: does the use case involve personal data, automated decisions, vulnerable populations, or regulatory implications? If yes → ethics review. Review: data ethics board reviews against principles, assesses risks, recommends mitigations. Approval: board approves, approves with conditions, or rejects. [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md): periodic [audit](../../AI_and_Agents/Operations/audit/SKILL.md) of approved use cases.
+Triage: does the use case involve personal data, automated decisions, vulnerable populations, or regulatory implications? If yes → ethics review. Review: data ethics board reviews against principles, assesses risks, recommends mitigations. Approval: board approves, approves with conditions, or rejects. [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md): periodic [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) of approved use cases.
 
 ### Step 8: Plan Change Management
 
@@ -268,7 +268,7 @@ Identify key stakeholders: executive sponsors (CDO, CEO, business heads), data p
 Kickoff: strategy announcement with CEO sponsorship — all-hands meeting, organizational email. Monthly: progress update to all stakeholders — metrics dashboard, milestone tracker, upcoming activities. Quarterly: governance council meeting — strategic review, priority adjustment, budget review. Annual: strategy refresh — survey, assessment, plan update.
 
 #### Resistance Management
-Common resistances: "data is IT's job" → reframe as business ownership with IT enablement. "we don't have time for governance" → show efficiency gains from quality data. "our data is terrible" → start with small wins to build confidence. "we already do this" → [audit](../../AI_and_Agents/Operations/audit/SKILL.md) current practices, show gap. "this will slow us down" → demonstrate fast-path for urgent requests.
+Common resistances: "data is IT's job" → reframe as business ownership with IT enablement. "we don't have time for governance" → show efficiency gains from quality data. "our data is terrible" → start with small wins to build confidence. "we already do this" → [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) current practices, show gap. "this will slow us down" → demonstrate fast-path for urgent requests.
 
 ## Decision Trees
 
@@ -356,7 +356,7 @@ Current literacy level?
 ## Industry-Specific Considerations
 
 ### Financial Services
-Regulatory focus: Basel III/IV, SOX, MiFID II, GDPR. Additional requirements: data lineage for [audit](../../AI_and_Agents/Operations/audit/SKILL.md) trails, model risk management for AI/ML, customer data privacy at core, BCBS 239 compliance for risk data aggregation. Strategy emphasis: risk data governance, regulatory reporting automation, customer 360 for cross-sell/upsell.
+Regulatory focus: Basel III/IV, SOX, MiFID II, GDPR. Additional requirements: data lineage for [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) trails, model risk management for AI/ML, customer data privacy at core, BCBS 239 compliance for risk data aggregation. Strategy emphasis: risk data governance, regulatory reporting automation, customer 360 for cross-sell/upsell.
 
 ### Healthcare
 Regulatory focus: HIPAA, HITECH, GDPR for patient data. Additional requirements: strict data classification (PHI, PII), data sharing agreements for research, interoperability standards (HL7 FHIR). Strategy emphasis: clinical data quality, interoperability, patient data privacy, analytics for population health.

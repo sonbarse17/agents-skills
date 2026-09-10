@@ -41,7 +41,7 @@ Guide zero-knowledge proof integration in blockchain systems covering proof syst
 - Proof system requirements (trusted setup? proof size? verification cost?)
 - Target blockchain (EVM/Solana/Cosmos/StarkNet)
 - Performance constraints (proving time, verification gas, proof size)
-- Security requirements (transparent vs PPTR, [audit](../../AI_and_Agents/Operations/audit/SKILL.md) history)
+- Security requirements (transparent vs PPTR, [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) history)
 
 ### Output Artifact
 ZK architecture specification: proof system selection, circuit design, prover infrastructure, verifier deployment, and integration plan.
@@ -54,7 +54,7 @@ ZK architecture specification: proof system selection, circuit design, prover in
 - Constraints: <number of constraints>
 - Proving Time: <time estimate>
 - Verification Gas: <gas cost on target chain>
-- Security: <trusted setup? [audit](../../AI_and_Agents/Operations/audit/SKILL.md)?>
+- Security: <trusted setup? [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)?>
 - Recommendation: <best approach for this use case>
 ```
 
@@ -565,7 +565,7 @@ contract Groth16Verifier {
 - **Trusted setup**: Verify MPC transcript contributions; use ceremony coordinator with transparency log.
 - **Replay protection**: Include domain separator and nullifier to prevent double-use of proofs.
 - **Oracle inputs**: Verify oracle-signed data as public inputs; validate timestamps and sources.
-- **Dependency [audit](../../AI_and_Agents/Operations/audit/SKILL.md)**: [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) all circom/Noir library code; pin versions and verify hashes.
+- **Dependency [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)**: [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) all circom/Noir library code; pin versions and verify hashes.
 - **DDoS protection**: Rate limit proof submission; verify proof cost before state changes.
 
 ## Phase: blockchain → blockchain-zk

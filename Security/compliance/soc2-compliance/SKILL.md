@@ -24,7 +24,7 @@ Implement SOC 2 Trust Services Criteria controls, evidence collection, and conti
 
 ## When to Use
 
-- Preparing for a SOC 2 Type I or Type II [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+- Preparing for a SOC 2 Type I or Type II [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
 - Mapping existing controls to Trust Services Criteria
 - Automating evidence collection for auditor requests
 - Building continuous compliance [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) into CI/CD
@@ -73,7 +73,7 @@ security_common_criteria:
     CC4.2: "Entity evaluates and communicates internal control deficiencies"
     evidence:
       - Continuous [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) dashboard screenshots
-      - Internal [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) reports
+      - Internal [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) reports
       - Vulnerability scan results
       - Penetration test reports
 
@@ -210,7 +210,7 @@ control_to_tool_mapping:
       - Deployment logs
     evidence_format:
       - PR with approvals and CI checks
-      - Deployment [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail
+      - Deployment [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail
       - Change advisory board meeting notes (if applicable)
 ```
 
@@ -219,7 +219,7 @@ control_to_tool_mapping:
 ```bash
 #!/usr/bin/env bash
 # collect-soc2-evidence.sh - Automated SOC 2 evidence collection
-# Run monthly or before [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) requests
+# Run monthly or before [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) requests
 
 EVIDENCE_DIR="./soc2-evidence/$(date +%Y-%m)"
 mkdir -p "$EVIDENCE_DIR"
@@ -258,7 +258,7 @@ done
 echo "=== CC7.2 - [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Evidence ==="
 
 # CloudTrail status
-aws cloudtrail get-trail-status --name org-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-trail \
+aws cloudtrail get-trail-status --name org-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-trail \
   > "$EVIDENCE_DIR/cloudtrail-status.json"
 
 # Active CloudWatch alarms
@@ -276,7 +276,7 @@ echo "=== CC8.1 - Change Management Evidence ==="
 gh run list --repo YOUR_ORG/YOUR_REPO --limit 50 --json conclusion,createdAt,displayTitle,headBranch \
   > "$EVIDENCE_DIR/recent-deployments.json"
 
-# Pull requests merged in [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) period
+# Pull requests merged in [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) period
 gh pr list --repo YOUR_ORG/YOUR_REPO --state merged --limit 100 \
   --json number,title,author,mergedBy,mergedAt,reviews \
   > "$EVIDENCE_DIR/merged-prs.json"
@@ -297,7 +297,7 @@ tar -czf "$EVIDENCE_DIR.tar.gz" "$EVIDENCE_DIR"
 echo "Archive: $EVIDENCE_DIR.tar.gz"
 ```
 
-## [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Preparation Timeline
+## [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Preparation Timeline
 
 ```yaml
 audit_prep_timeline:
@@ -324,12 +324,12 @@ audit_prep_timeline:
   1_month_before:
     - Prepare evidence request list responses
     - Organize evidence into auditor-friendly structure
-    - Brief key personnel on [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) interviews
+    - Brief key personnel on [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) interviews
     - Verify [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) show healthy state
     - Confirm [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response records are complete
 
   during_audit:
-    - Designate [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) liaison for request management
+    - Designate [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) liaison for request management
     - Provide timely evidence and clarifications
     - Track open auditor questions
     - Escalate issues to control owners promptly
@@ -339,7 +339,7 @@ audit_prep_timeline:
     - Create remediation plan for any exceptions
     - Communicate results to stakeholders
     - Update controls and processes based on findings
-    - Begin next [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) period evidence collection
+    - Begin next [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) period evidence collection
 ```
 
 ## Continuous Compliance [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
@@ -374,7 +374,7 @@ jobs:
 
       - name: Verify CloudTrail is logging
         run: |
-          STATUS=$(aws cloudtrail get-trail-status --name org-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-trail --query 'IsLogging' --output text)
+          STATUS=$(aws cloudtrail get-trail-status --name org-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-trail --query 'IsLogging' --output text)
           [ "$STATUS" = "True" ] || (echo "::error::CloudTrail logging stopped" && exit 1)
 
       - name: Check GuardDuty is enabled
@@ -390,8 +390,8 @@ jobs:
 - Map each control to a specific tool, owner, and evidence artifact for traceability
 - Implement continuous [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) rather than point-in-time checks for Type II readiness
 - Maintain a central evidence repository organized by control criteria
-- Conduct quarterly internal reviews to catch control drift before the [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) period
+- Conduct quarterly internal reviews to catch control drift before the [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) period
 - Keep policies living documents with version history and annual review dates
 - Train all employees on their role in maintaining SOC 2 controls
-- Use the [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) preparation timeline to avoid last-minute scrambling
+- Use the [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) preparation timeline to avoid last-minute scrambling
 - Treat each auditor exception as an improvement opportunity rather than a failure

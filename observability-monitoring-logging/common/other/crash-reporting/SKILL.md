@@ -421,7 +421,7 @@ class ANRDetector {
 
 - **Initializing crash SDK after other SDKs**: Crash in a third-party SDK before crash reporting is initialized = crash lost. Initialize crash reporting as the very first line of `application:didFinishLaunching`.
 - **Not testing crash reporting before release**: Crash reporting "works" in debug but fails in production (missing dSYM, different build config). Test crash on TestFlight/internal track build before production release.
-- **Logging sensitive data in breadcrumbs**: Breadcrumbs containing passwords, credit card numbers, or auth tokens are uploaded to crash servers. [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) breadcrumb data regularly.
+- **Logging sensitive data in breadcrumbs**: Breadcrumbs containing passwords, credit card numbers, or auth tokens are uploaded to crash servers. [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) breadcrumb data regularly.
 - **Too many breadcrumbs**: Setting max breadcrumbs to 1000 creates memory overhead. 200 is sufficient for crash context — any more is noise.
 - **Ignoring native crashes in cross-platform apps**: Flutter/React Native crash reporting often captures only the framework layer. Configure native crash handlers (iOS/[Android](../../../../Mobile/android/SKILL.md)) separately for full coverage.
 - **Setting `tracesSampleRate` too high**: Performance tracing at 100% sample rate creates significant overhead. 10-20% is sufficient for most apps. Only increase for targeted debugging.
@@ -599,7 +599,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
+- Repudiation: [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -613,7 +613,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Secrets Management
 - Secrets never in code — always in secrets manager ([Vault](../../../../Security/cryptography-secrets/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
+- Access [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -622,7 +622,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
+- Log security-relevant events for [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
 - Design for [observability](../../fundamentals/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.

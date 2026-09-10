@@ -272,7 +272,7 @@ or how to document the resulting work in Confluence (see
   within a few months, because there's no shared definition of what
   priority means, so it stops being useful for triage.
   **Fix:** Publish and enforce an impact × urgency rubric (see step 4)
-  and periodically [audit](../../AI_and_Agents/Operations/audit/SKILL.md) priority distribution — a healthy backlog is
+  and periodically [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) priority distribution — a healthy backlog is
   rarely more than 5-10% Highest.
 
 - **Symptom:** A bug is filed with just a title ("Checkout broken") and

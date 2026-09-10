@@ -18,15 +18,15 @@ depends_on:
   - kubernetes
 ---
 
-# [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Logging
+# [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logging
 
-Implement comprehensive [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging for compliance, security [monitoring](../../monitoring-strategy/monitoring/SKILL.md), and forensic analysis across infrastructure and applications.
+Implement comprehensive [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging for compliance, security [monitoring](../../monitoring-strategy/monitoring/SKILL.md), and forensic analysis across infrastructure and applications.
 
 ## When to Use
 
 - Setting up centralized logging for compliance frameworks (SOC 2, HIPAA, PCI DSS)
 - Implementing security event [monitoring](../../monitoring-strategy/monitoring/SKILL.md) and [alerting](../../alerting/alerting/SKILL.md)
-- Building [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trails for regulatory requirements
+- Building [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trails for regulatory requirements
 - Configuring log retention and tamper-proof storage
 - Integrating application logs with SIEM platforms
 
@@ -73,7 +73,7 @@ audit_events:
 ## Rsyslog Configuration for Centralized Logging
 
 ```bash
-# /etc/rsyslog.d/50-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md).conf
+# /etc/rsyslog.d/50-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md).conf
 
 # Load imfile module to read application logs
 module(load="imfile")
@@ -86,16 +86,16 @@ input(type="imfile"
   Facility="auth"
 )
 
-# Forward application [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs
+# Forward application [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs
 input(type="imfile"
-  File="/var/log/app/[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md).log"
-  Tag="app-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)"
+  File="/var/log/app/[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md).log"
+  Tag="app-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)"
   Severity="info"
   Facility="local0"
 )
 
 # Structured JSON template
-template(name="json-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)" type="list") {
+template(name="json-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)" type="list") {
   constant(value="{")
   constant(value="\"@timestamp\":\"")    property(name="timereported" dateFormat="rfc3339")
   constant(value="\",\"host\":\"")       property(name="hostname")
@@ -115,7 +115,7 @@ action(
   StreamDriver="gtls"
   StreamDriverMode="1"
   StreamDriverAuthMode="x509/name"
-  template="json-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)"
+  template="json-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)"
   queue.type="LinkedList"
   queue.size="50000"
   queue.filename="fwd_audit"
@@ -141,10 +141,10 @@ ForwardToSyslog=yes
 ```
 
 ```bash
-# Query journald for [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) events
-journalctl _TRANSPORT=[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) --since "24 hours ago" --output json-pretty
+# Query journald for [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) events
+journalctl _TRANSPORT=[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) --since "24 hours ago" --output json-pretty
 
-# Filter by specific [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) types
+# Filter by specific [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) types
 journalctl _AUDIT_TYPE=1112 --since today  # user login events
 journalctl _AUDIT_TYPE=1100 --since today  # user auth events
 
@@ -162,10 +162,10 @@ from datetime import datetime, timezone
 from functools import wraps
 
 class AuditLogger:
-    def __init__(self, service_name, logger_name="[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)"):
+    def __init__(self, service_name, logger_name="[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)"):
         self.service = service_name
         self.logger = logging.getLogger(logger_name)
-        handler = logging.FileHandler("/var/log/app/[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md).log")
+        handler = logging.FileHandler("/var/log/app/[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md).log")
         handler.setFormatter(logging.Formatter("%(message)s"))
         self.logger.addHandler(handler)
         self.logger.setLevel(logging.INFO)
@@ -218,7 +218,7 @@ class AuditLogger:
 
 
 def audit_trail(audit_logger, resource_name):
-    """Decorator to automatically [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) function calls."""
+    """Decorator to automatically [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) function calls."""
     def decorator(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
@@ -259,29 +259,29 @@ def audit_trail(audit_logger, resource_name):
 
 [INPUT]
     Name          tail
-    Path          /var/log/app/[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md).log
+    Path          /var/log/app/[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md).log
     Parser        json
-    Tag           [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md).app
+    Tag           [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md).app
     Refresh_Interval 5
     Rotate_Wait   30
 
 [INPUT]
     Name          systemd
-    Tag           [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md).system
-    Systemd_Filter _TRANSPORT=[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)
+    Tag           [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md).system
+    Systemd_Filter _TRANSPORT=[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)
 
 [FILTER]
     Name          modify
-    Match         [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md).*
+    Match         [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md).*
     Add           cluster ${CLUSTER_NAME}
     Add           node ${NODE_NAME}
 
 [OUTPUT]
     Name          es
-    Match         [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md).*
+    Match         [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md).*
     Host          elasticsearch.internal.example.com
     Port          9200
-    Index         [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-logs
+    Index         [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-logs
     Type          _doc
     tls           On
     tls.verify    On
@@ -289,9 +289,9 @@ def audit_trail(audit_logger, resource_name):
 
 [OUTPUT]
     Name          s3
-    Match         [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md).*
+    Match         [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md).*
     region        us-east-1
-    bucket        [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-logs-archive
+    bucket        [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-logs-archive
     total_file_size 50M
     upload_timeout  10m
     s3_key_format  /logs/%Y/%m/%d/$TAG/%H_%M_%S.gz
@@ -345,7 +345,7 @@ retention_requirements:
   soc2:
     minimum: 1 year
     recommended: 3 years
-    notes: "Based on [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) period and report requirements"
+    notes: "Based on [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) period and report requirements"
 
   hipaa:
     minimum: 6 years
@@ -390,7 +390,7 @@ verify_logs() {
         failures=$((failures + 1))
         curl -s -X POST "$ALERT_WEBHOOK" \
           -H "Content-Type: application/json" \
-          -d "{\"text\":\"ALERT: [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) log tamper detected on $(hostname): $filename\"}"
+          -d "{\"text\":\"ALERT: [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) log tamper detected on $(hostname): $filename\"}"
       fi
     else
       echo "MISSING: $filename"
@@ -419,11 +419,11 @@ esac
 siem_integration:
   log_sources:
     - [ ] Operating system auth logs (syslog, journald)
-    - [ ] Application [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs (structured JSON)
-    - [ ] Cloud provider [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trails (CloudTrail, Activity Log, [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Logs)
+    - [ ] Application [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs (structured JSON)
+    - [ ] Cloud provider [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trails (CloudTrail, Activity Log, [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logs)
     - [ ] Database query and access logs
     - [ ] Network flow logs and firewall logs
-    - [ ] Container and orchestrator logs ([Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md))
+    - [ ] Container and orchestrator logs ([Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md))
     - [ ] WAF and CDN access logs
     - [ ] VPN and remote access logs
 
@@ -457,8 +457,8 @@ siem_integration:
 - Implement hash chaining or digital signatures for log integrity verification
 - Define and enforce retention policies per compliance framework requirements
 - Set up real-time [alerting](../../alerting/alerting/SKILL.md) for high-severity security events
-- Separate [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs from application debug logs to reduce noise
-- Never log sensitive data (passwords, tokens, PII) in [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) entries
+- Separate [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs from application debug logs to reduce noise
+- Never log sensitive data (passwords, tokens, PII) in [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) entries
 - Monitor the logging pipeline itself to detect gaps in coverage
 - Regularly test log restoration from archives to verify recoverability
 - Rotate and compress logs to manage storage while meeting retention windows

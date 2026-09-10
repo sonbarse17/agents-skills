@@ -20,7 +20,7 @@ depends_on:
 
 # AI Coding Agent Guardrails
 
-Secure the use of AI coding agents across engineering teams. This skill covers permission boundaries, secret protection, sandbox isolation, code review gates, and [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trails for Claude Code, Cursor, Copilot, and Codex.
+Secure the use of AI coding agents across engineering teams. This skill covers permission boundaries, secret protection, sandbox isolation, code review gates, and [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) trails for Claude Code, Cursor, Copilot, and Codex.
 
 ---
 
@@ -39,7 +39,7 @@ Signs you need tighter guardrails:
 
 - Agents have committed secrets or credentials to version control
 - Agent-generated code has introduced vulnerabilities caught late in the pipeline
-- No clear [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail distinguishes human-written from AI-generated code
+- No clear [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail distinguishes human-written from AI-generated code
 - Developers are bypassing code review for "simple" agent changes
 - Agents are executing arbitrary shell commands in production-connected environments
 
@@ -743,7 +743,7 @@ networks:
 
 ---
 
-## [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Trail
+## [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Trail
 
 ### Git Trailers for AI-Generated Code
 
@@ -831,12 +831,12 @@ def log_pr_created(agent: str, pr_url: str, files_changed: list[str]) -> None:
 # log_pr_created("claude-code", "https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/org/repo/pull/99", ["src/main.py"])
 ```
 
-### Querying the [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Log
+### Querying the [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Log
 
 ```bash
 #!/bin/bash
-# query-agent-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md).sh
-# Query agent [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs for compliance reporting
+# query-agent-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md).sh
+# Query agent [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs for compliance reporting
 
 LOG_FILE="/var/log/ai-agents/agent-actions.jsonl"
 
@@ -920,7 +920,7 @@ policy:
     - "Modifying CI/CD pipelines or deployment configs"
     - "Changing [infrastructure-as-code](../../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) without human authorship"
     - "Accessing production databases or systems"
-    - "Modifying security controls or [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging"
+    - "Modifying security controls or [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging"
 ```
 
 ### CODEOWNERS for Agent Oversight
@@ -1144,6 +1144,6 @@ echo -e "${GREEN}PR validation passed.${NC}"
 | Sandbox isolation | [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md), seccomp, network=none | Contain agent execution |
 | Code review gates | [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions, branch protection | Enforce human review |
 | Network controls | iptables, Squid proxy | Limit agent internet access |
-| [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail | Git trailers, JSONL logger | Track AI-generated code |
+| [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail | Git trailers, JSONL logger | Track AI-generated code |
 | Test requirements | Coverage gates, mutation testing | Validate agent output quality |
 | Team policies | agent-policy.yaml, CODEOWNERS | Govern agent usage org-wide |

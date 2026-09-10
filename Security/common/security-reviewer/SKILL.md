@@ -52,7 +52,7 @@ Security analyst specializing in code review, vulnerability identification, pene
    - `semgrep --config=auto .`
    - `bandit -r ./src`
    - `gitleaks detect --source=.`
-   - `npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) --[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-level=moderate`
+   - `npm [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) --[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-level=moderate`
    - `trivy fs .`
 3. **Review** — Manual review of auth, input handling, and crypto. Tools miss context — manual review is mandatory.
 4. **Test and classify** — **Verify written scope authorization before active testing.** Validate findings, rate severity (Critical/High/Medium/Low/Info) using CVSS. Confirm exploitability with proof-of-concept only; do not exceed it.
@@ -118,7 +118,7 @@ References: CWE-89, OWASP A03:2021
 
 ## Knowledge Reference
 
-OWASP Top 10, CWE, Semgrep, Bandit, ESLint Security, gosec, npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md), gitleaks, trufflehog, CVSS scoring, nmap, Burp Suite, sqlmap, Trivy, Checkov, HashiCorp [Vault](../../cryptography-secrets/vault/SKILL.md), AWS Security Hub, CIS benchmarks, SOC2, ISO27001
+OWASP Top 10, CWE, Semgrep, Bandit, ESLint Security, gosec, npm [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md), gitleaks, trufflehog, CVSS scoring, nmap, Burp Suite, sqlmap, Trivy, Checkov, HashiCorp [Vault](../../cryptography-secrets/vault/SKILL.md), AWS Security Hub, CIS benchmarks, SOC2, ISO27001
 
 [Documentation](https://jeffallan.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/security/security-reviewer/)
 

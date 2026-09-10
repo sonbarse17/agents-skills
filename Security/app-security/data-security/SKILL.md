@@ -183,7 +183,7 @@ automated_classification:
     detective:
       - "Alert on unauthorized access attempts to classified data"
       - "Monitor data egress patterns for anomaly detection"
-      - "[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) all access to restricted data with immutable logs"
+      - "[Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) all access to restricted data with immutable logs"
 ```
 
 ### Privacy-by-Design Engineering Checklist
@@ -382,7 +382,7 @@ print(f"Private count: {private_count}")  # e.g., 1448.3
 ## Data Security Anti-Patterns
 
 ### Anti-Pattern: Encryption as Silver Bullet
-Encrypting data at rest without controlling access to decryption keys provides false security. If an application has the key and is compromised, the attacker can decrypt all data. Defense in depth: encrypt + access control + [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) + anomaly detection.
+Encrypting data at rest without controlling access to decryption keys provides false security. If an application has the key and is compromised, the attacker can decrypt all data. Defense in depth: encrypt + access control + [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) + anomaly detection.
 
 ### Anti-Pattern: Ignoring In-Use Encryption
 Encrypting at rest and in transit but processing data in plaintext in memory. Cold boot attacks, memory dumps, and compromised hosts can extract in-memory data. Use confidential computing (SGX, SEV, Nitro Enclaves) for sensitive processing. Minimize data in memory windows.
@@ -394,7 +394,7 @@ Using a single key for all data means compromising one key compromises everythin
 Creating masked copies of production data once but never refreshing them as production data changes. De-identified copies become stale and useless for testing. Refresh masked datasets on a schedule aligned with development cycles.
 
 ### Anti-Pattern: Tokenization Without [Vault](../../cryptography-secrets/vault/SKILL.md) Security
-Token vaults that are less secure than the original data store. Token [vault](../../cryptography-secrets/vault/SKILL.md) must have stronger security than the systems it protects: HSM-backed encryption, strict network isolation, dedicated access policies, and comprehensive [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging.
+Token vaults that are less secure than the original data store. Token [vault](../../cryptography-secrets/vault/SKILL.md) must have stronger security than the systems it protects: HSM-backed encryption, strict network isolation, dedicated access policies, and comprehensive [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging.
 
 ### Anti-Pattern: Anonymization Without Re-identification Testing
 Applying k-anonymity or differential privacy without testing against known attack vectors (linkage attacks, homogeneity attacks, differencing attacks). Validate anonymization with the same techniques an adversary would use. Re-test when new data is added.
@@ -456,7 +456,7 @@ Applying k-anonymity or differential privacy without testing against known attac
 1. Detect: DLP alert, anomalous data access, unauthorized data egress, encryption key compromise
 2. Assess: what data was exposed, classification level, affected users, regulatory implications
 3. Contain: revoke access, rotate keys, isolate affected data stores, block egress paths
-4. Investigate: [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, access patterns, data flow analysis
+4. Investigate: [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs, access patterns, data flow analysis
 5. Remediate: patch vulnerabilities, update policies, revoke credentials
 6. Notify: regulatory bodies (GDPR 72h), affected users, data protection authority
 7. Post-mortem: root cause analysis, policy updates, detection improvements
@@ -474,7 +474,7 @@ Applying k-anonymity or differential privacy without testing against known attac
 | Breach notification | Art. 33 | §1798.29 | Req 12.10 | §164.404 | — |
 | Retention limits | Art. 5(1)(e) | — | Req 3.1 | §164.316(b)(2)(i) | — |
 | Right to deletion | Art. 17 | §1798.105 | — | — | — |
-| [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging | Art. 30 | — | Req 10 | §164.312(b) | CC7.2 |
+| [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging | Art. 30 | — | Req 10 | §164.312(b) | CC7.2 |
 
 ## Rules
 - Encryption at rest is mandatory for all data containing PII
@@ -592,7 +592,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
+- Repudiation: [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -606,7 +606,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Secrets Management
 - Secrets never in code — always in secrets manager ([Vault](../../cryptography-secrets/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
+- Access [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -615,7 +615,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
+- Log security-relevant events for [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
 - Design for [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.

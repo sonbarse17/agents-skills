@@ -211,7 +211,7 @@ into the penalty formula.
 and signal that the author is trying to micromanage every output rather than providing
 principled guidance.
 
-**Fix:** [Audit](../../../../../AI_and_Agents/Operations/audit/SKILL.md) every MUST/ALWAYS/NEVER. Replace directive language with explanatory framing
+**Fix:** [Audit](../../../../../AI_and_Agents/Operations/common/audit/SKILL.md) every MUST/ALWAYS/NEVER. Replace directive language with explanatory framing
 where possible. Reserve hard constraints for genuine safety or correctness requirements. Target
 fewer than 10 such directives per 100 lines.
 
@@ -488,7 +488,7 @@ more composite-score gain per hour than all low-weight dimensions combined.
 
 ### Token Efficiency (weight 0.06)
 
-- [Audit](../../../../../AI_and_Agents/Operations/audit/SKILL.md) MUST/ALWAYS/NEVER count. Target < 1 per 10 lines.
+- [Audit](../../../../../AI_and_Agents/Operations/common/audit/SKILL.md) MUST/ALWAYS/NEVER count. Target < 1 per 10 lines.
 - Consolidate near-duplicate bullet points and repeated-structure tables.
 
 ### Robustness (weight 0.05)

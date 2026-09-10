@@ -294,7 +294,7 @@ place.
   **Fix:** Often an artifact of the older `boltdb-shipper` index store
   under sustained high stream counts, or `max_streams_per_user` being set
   far higher than the label design actually needs. Migrate to TSDB via a
-  new `schema_config` entry (never edit the old one) and re-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) label
+  new `schema_config` entry (never edit the old one) and re-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) label
   cardinality.
 
 - **Symptom:** After adding S3 as the storage backend, existing

@@ -324,7 +324,7 @@ Practice 8: Design tenant onboarding as self-service. Reduce time-to-value. Prov
 
 Practice 9: Plan for tenant data growth. A tenant that starts small may grow to need dedicated infrastructure. Build upgrade paths between isolation models. Make migration between models a first-class capability.
 
-Practice 10: Maintain tenant-level [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs. All access to tenant data must be logged with tenant ID. Enable tenant-specific [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail for compliance reporting. Support log export per tenant.
+Practice 10: Maintain tenant-level [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs. All access to tenant data must be logged with tenant ID. Enable tenant-specific [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail for compliance reporting. Support log export per tenant.
 
 ## Templates & Tools
 
@@ -425,13 +425,13 @@ Estimated time: 3-5 minutes
 ## Case Studies
 
 ### Case Study 1: HIPAA-Compliant Multi-Tenant Healthcare Platform
-A healthcare SaaS platform needed HIPAA compliance while serving 200 hospital customers. Each hospital required strict data isolation (PHI separation). The platform implemented DB-per-tenant for patient data (AES-256 encrypted at rest, per-tenant KMS keys) and shared schema for lookup data (states, ICD codes, drug databases). Tenant provisioning automated end-to-end with 5-minute setup time. [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging at tenant granularity. Passed HIPAA [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) with zero findings on data isolation controls.
+A healthcare SaaS platform needed HIPAA compliance while serving 200 hospital customers. Each hospital required strict data isolation (PHI separation). The platform implemented DB-per-tenant for patient data (AES-256 encrypted at rest, per-tenant KMS keys) and shared schema for lookup data (states, ICD codes, drug databases). Tenant provisioning automated end-to-end with 5-minute setup time. [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging at tenant granularity. Passed HIPAA [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) with zero findings on data isolation controls.
 
 ### Case Study 2: B2B SaaS Scaling from 50 to 5000 Tenants
 A B2B SaaS company started with DB-per-tenant for their initial 50 enterprise customers. When expanding to SMB market (target: 5000 tenants), the operational cost of managing 5000 databases was unsustainable. They migrated to a hybrid model: row-level for SMB tenants (4800), DB-per-tenant for enterprise (200). Migration took 4 months. Cost per tenant dropped 70%. Operational complexity reduced to manageable levels.
 
 ### Case Study 3: Multi-Tenant Data Breach Near-Miss
-A SaaS company with row-level tenant isolation discovered during a security [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) that their GraphQL resolver was not filtering by tenant_id. A malicious tenant could potentially query other tenants data. The vulnerability was caught in [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) before exploitation. Remediation: added tenant ID middleware at GraphQL layer, implemented RLS policies as defense-in-depth, and added automated tenant boundary tests to CI/CD. [Incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response: treated as security [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), notified affected tenants, accelerated penetration testing schedule.
+A SaaS company with row-level tenant isolation discovered during a security [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) that their GraphQL resolver was not filtering by tenant_id. A malicious tenant could potentially query other tenants data. The vulnerability was caught in [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) before exploitation. Remediation: added tenant ID middleware at GraphQL layer, implemented RLS policies as defense-in-depth, and added automated tenant boundary tests to CI/CD. [Incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response: treated as security [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), notified affected tenants, accelerated penetration testing schedule.
 
 ### Case Study 4: Global Data Residency Implementation
 A SaaS platform expanding into EU and Asia faced data residency requirements (GDPR in EU, data localization in China). They implemented tenant-level region selection during provisioning. EU tenants stored data in Frankfurt, Asian tenants in Singapore, US tenants in Virginia. Data classified by sensitivity: regulated data (PII) stayed in region, anonymized analytics could cross regions. Cross-region data access logged and audited. Compliance validated with annual audits per region.
@@ -446,7 +446,7 @@ A SaaS platform expanding into EU and Asia faced data residency requirements (GD
 - Cache keys always prefixed with tenant ID.
 - Rate limits and resource quotas enforced per tenant.
 - Tenant tenant context validated at every service boundary.
-- Tenant state changes logged with [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail.
+- Tenant state changes logged with [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail.
 - Tenant migration capability designed into architecture from day one.
 - Backup and restore granular per tenant.
 - Tenant data fully deletable (logs, caches, backups all covered).
@@ -547,9 +547,9 @@ class TenantCache {
 - Authentication: tenant-scoped JWT. Token includes tenant_id, validated on every request.
 - Authorization: middleware extracts tenant_id from token. Rejects multi-tenant queries without tenant context.
 - Data encryption: per-tenant KMS keys for DB-per-tenant model. Shared key with tenant_id context for row-level.
-- [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging: all data access logged with tenant_id. Tenant boundary violations treated as security [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
+- [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging: all data access logged with tenant_id. Tenant boundary violations treated as security [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 - Network isolation: per-tenant VPC for dedicated DB instances. VPC peering for shared services.
 - Backup isolation: per-tenant backup files. Encrypted with tenant-specific key. Cross-tenant restore blocked.
 - Deletion: soft-delete with 30-day grace. Full purge with validation. Backup purge after deletion confirmed.
 ## Handoff
-For compliance requirements on tenant isolation, hand off to `[enterprise-compliance-audit](../../../DevOps_and_Cloud/Observability_and_SecOps/compliance-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)/SKILL.md)`. For cost allocation per tenant, hand off to `[enterprise-cost-governance](../../../../cloud/common/cost/cost-governance/SKILL.md)`.
+For compliance requirements on tenant isolation, hand off to `[enterprise-compliance-audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)/SKILL.md)`. For cost allocation per tenant, hand off to `[enterprise-cost-governance](../../../../cloud/common/cost/cost-governance/SKILL.md)`.

@@ -406,7 +406,7 @@ An e-commerce company's checkout had 40% abandonment. BA analysis using process 
 A hospital needed a new patient scheduling system. The BA team used stakeholder analysis to identify 12 distinct user roles (patients, receptionists, nurses, doctors, administrators...). Each role had unique needs. Gherkin scenarios captured complex business rules (scheduling conflicts, insurance validation, room availability). Using scenario outlines with examples, they covered 80+ variations with 15 scenario templates.
 
 ### Case Study 3: Fintech Regulatory Reporting
-A fintech needed to implement new regulatory reporting requirements. The BA team created a requirements traceability matrix from regulation text through requirements to test cases. They used structured analysis to identify data lineage requirements (where data originates, transforms, and is reported). The traceability matrix proved invaluable during regulatory [audit](../../AI_and_Agents/Operations/audit/SKILL.md) — demonstrating complete coverage of every regulatory requirement.
+A fintech needed to implement new regulatory reporting requirements. The BA team created a requirements traceability matrix from regulation text through requirements to test cases. They used structured analysis to identify data lineage requirements (where data originates, transforms, and is reported). The traceability matrix proved invaluable during regulatory [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) — demonstrating complete coverage of every regulatory requirement.
 
 ### Case Study 4: Internal Tool Rationalization
 A company had 20+ internal tools for HR, IT, and Finance processes. BA analysis using Lean techniques discovered 60% of requirements were duplicated across tools. Lean BA workshops eliminated redundant features, standardized 40% of processes, and reduced the tool set from 20 to 8. Cost savings exceeded $500K annually.
@@ -529,10 +529,10 @@ Feature: User Authentication
 ### Sensitive Information
 - **Data classification**: Tag requirements containing PII, financial data, or trade secrets. Apply access controls to sensitive requirements.
 - **Third-party disclosure**: Never include vendor API keys or credentials in requirement docs. Use placeholder values.
-- **Security requirements**: Include security requirements (auth, encryption, [audit](../../AI_and_Agents/Operations/audit/SKILL.md)) for every feature touching sensitive data.
+- **Security requirements**: Include security requirements (auth, encryption, [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)) for every feature touching sensitive data.
 
-### Compliance & [Audit](../../AI_and_Agents/Operations/audit/SKILL.md)
+### Compliance & [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)
 - **Regulatory mapping**: Map requirements to regulatory controls (GDPR, SOC2, HIPAA). Maintain compliance traceability matrix.
-- **Approval trail**: Document who approved each requirement and when. Maintain immutable [audit](../../AI_and_Agents/Operations/audit/SKILL.md) log of changes.
+- **Approval trail**: Document who approved each requirement and when. Maintain immutable [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) log of changes.
 - **Access control**: Restrict requirement document access on need-to-know basis. Review access quarterly.
 

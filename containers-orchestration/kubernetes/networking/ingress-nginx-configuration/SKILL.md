@@ -62,7 +62,7 @@ loudly instead of silently.
   incompatibilities).
 - A way to get external traffic to the controller: a cloud
   `LoadBalancer` Service (managed clusters), `NodePort` + external LB,
-  or `hostNetwork`/`hostPort` for [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) without a cloud LB — decide
+  or `hostNetwork`/`hostPort` for [bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md) without a cloud LB — decide
   this before install since it changes the Helm values used.
 - `helm` ≥ 3.14 (installed via the official `ingress-nginx` chart) or
   the static manifest install method — prefer Helm for upgrade
@@ -88,7 +88,7 @@ loudly instead of silently.
      --set controller.ingressClassResource.name=nginx \
      --set controller.ingressClassResource.default=true
    ```
-   On [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) without a cloud load balancer, use
+   On [bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md) without a cloud load balancer, use
    `--set controller.hostNetwork=true --set controller.kind=DaemonSet`
    (or pair with MetalLB) instead of `LoadBalancer`, which will otherwise
    stay `<pending>` forever.

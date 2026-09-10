@@ -56,7 +56,7 @@ before an [incident](../../incident-detection/incident/SKILL.md) is the first ti
   being removed from every layer they were on.
 - Periodically (e.g. monthly, alongside the on-call load review in
   [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../../Software_Engineering_and_Other/Frontend/[incident-response](../[incident](../incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../on-call-management/SKILL.md)/SKILL.md)/SKILL.md))
-  as a standing [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md), not only reactively.
+  as a standing [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md), not only reactively.
 - Investigating "why didn't anyone get paged" after an [incident](../../incident-detection/incident/SKILL.md), to
   determine whether the escalation policy itself had a structural gap
   versus a one-off human/tooling failure.
@@ -75,7 +75,7 @@ before an [incident](../../incident-detection/incident/SKILL.md) is the first ti
   (add `requests` only if wiring it directly to the live API rather than
   exported JSON).
 - A place to run this on a schedule (CI cron job, a scheduled Lambda/
-  Cloud Function, or a cron on an ops host) so it's a recurring [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md),
+  Cloud Function, or a cron on an ops host) so it's a recurring [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md),
   not a manual one-off.
 - Familiarity with the escalation policy/schedule structures being
   validated — see
@@ -128,7 +128,7 @@ before an [incident](../../incident-detection/incident/SKILL.md) is the first ti
 
 7. **Run the reference script** (`scripts/check_escalation_coverage.py`)
    against exported policy JSON as a concrete starting point for either
-   a CI gate or a scheduled [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) job:
+   a CI gate or a scheduled [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) job:
    ```bash
    python3 scripts/check_escalation_coverage.py payments-escalation.json
    ```
@@ -192,7 +192,7 @@ before an [incident](../../incident-detection/incident/SKILL.md) is the first ti
   but was never removed — months later, pages meant for the original
   rotation member are still silently routed to the PTO-covering
   colleague, who has long since stopped expecting them.
-  **Fix:** [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) overrides for ones past their intended end date on the
+  **Fix:** [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) overrides for ones past their intended end date on the
   same cadence as the rest of the validation, and require overrides to
   always be created with an explicit end time rather than open-ended.
 
@@ -207,7 +207,7 @@ before an [incident](../../incident-detection/incident/SKILL.md) is the first ti
 
 ## Worked example
 
-**Scenario:** A monthly [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) job validates all escalation policies for
+**Scenario:** A monthly [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) job validates all escalation policies for
 the `payments` and `checkout` teams before the on-call load review.
 
 Exported policy for `checkout-team-escalation` (resolved schedule
@@ -263,5 +263,5 @@ confirm it now passes, and add this check as a required CI step whenever
 
 - [pagerduty-and-opsgenie-oncall-configuration](../[pagerduty-and-opsgenie-oncall-configuration](../pagerduty-and-opsgenie-oncall-configuration/SKILL.md)/SKILL.md) — how the escalation policies and schedules validated here are actually built and configured.
 - [servicenow-itsm-configuration-validation](../[servicenow-itsm-configuration-validation](../servicenow-itsm-configuration-validation/SKILL.md)/SKILL.md) — the same "validate before it blocks or misroutes a real [incident](../../incident-detection/incident/SKILL.md)" discipline applied to ServiceNow workflow/approval configuration.
-- [chatops-[runbook](../../incident-detection/runbook/SKILL.md)-automation](../[chatops-[runbook](../runbook/SKILL.md)-automation](../../../Software_Engineering_and_Other/Frontend/chatops-[runbook](../runbook/SKILL.md)-automation/SKILL.md)/SKILL.md) — a natural destination for this validation's findings (a scheduled bot post to the ops channel) and for the [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) job itself to be triggered from.
+- [chatops-[runbook](../../incident-detection/runbook/SKILL.md)-automation](../[chatops-[runbook](../runbook/SKILL.md)-automation](../../../Software_Engineering_and_Other/Frontend/chatops-[runbook](../runbook/SKILL.md)-automation/SKILL.md)/SKILL.md) — a natural destination for this validation's findings (a scheduled bot post to the ops channel) and for the [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) job itself to be triggered from.
 - [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../../Software_Engineering_and_Other/Frontend/[incident-response](../[incident](../incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../on-call-management/SKILL.md)/SKILL.md)/SKILL.md) — the on-call load review and escalation-timeout SLAs this validation should be run alongside.

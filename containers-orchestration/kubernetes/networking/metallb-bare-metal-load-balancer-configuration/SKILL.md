@@ -24,14 +24,14 @@ depends_on:
   - kubectl
 ---
 
-# MetalLB [Bare-Metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) Load Balancer Configuration
+# MetalLB [Bare-Metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md) Load Balancer Configuration
 
 ## Purpose
 
 A `Service` of `type: LoadBalancer` is meaningless on a cluster with no
 cloud provider integration — without something to satisfy that request,
 the Service sits with `EXTERNAL-IP: <pending>` forever. MetalLB fills
-exactly that gap for [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) and on-prem clusters by implementing the
+exactly that gap for [bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md) and on-prem clusters by implementing the
 load-balancer API itself: it watches for `LoadBalancer` Services,
 allocates an IP from a configured pool, and announces reachability to
 that IP using one of two fundamentally different mechanisms — Layer2
@@ -49,7 +49,7 @@ job.
 
 ## When to use
 
-- Standing up `LoadBalancer` Service support on a new [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)/on-prem
+- Standing up `LoadBalancer` Service support on a new [bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)/on-prem
   [Kubernetes](../../other/kubernetes/SKILL.md) cluster (kubeadm, K3s, Cluster API on bare metal) with no
   cloud load-balancer integration.
 - Deciding between Layer2 and BGP mode for a specific network
@@ -58,7 +58,7 @@ job.
   from which pool.
 - Setting up BGP peering between cluster nodes and upstream
   top-of-rack/router infrastructure.
-- Debugging a `LoadBalancer` Service stuck `<pending>` on a [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)
+- Debugging a `LoadBalancer` Service stuck `<pending>` on a [bare-metal](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)
   cluster.
 - Migrating a cluster from Layer2 to BGP mode (or the reverse) for
   better failover/load-spreading characteristics.
@@ -278,7 +278,7 @@ job.
   **Fix:** The MetalLB pool overlaps with a range still handed out by
   DHCP or statically assigned elsewhere — reserve the pool's range
   explicitly and remove it from DHCP scope before assigning it to
-  MetalLB, and [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) existing static assignments on that subnet before
+  MetalLB, and [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) existing static assignments on that subnet before
   the pool is put into production use.
 
 - **Symptom:** Failover after a node failure in Layer2 mode takes much

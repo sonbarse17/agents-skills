@@ -159,7 +159,7 @@ main (production data, immutable)
       ↓ merge via PR with data diff review
 ```
 
-Rules: no direct writes to `main`. All changes via branch → PR → data diff review → merge. `experiment/*` branches can diverge without merging. `dev/*` branches merge to main when ready. Tags for releases and [audit](../../AI_and_Agents/Operations/audit/SKILL.md) points.
+Rules: no direct writes to `main`. All changes via branch → PR → data diff review → merge. `experiment/*` branches can diverge without merging. `dev/*` branches merge to main when ready. Tags for releases and [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) points.
 
 ### Step 5: Experiment Reproducibility
 
@@ -470,7 +470,7 @@ Scale and workflow?
 ├── Experiment tracking with code + data + model
 │   └── MLflow (model registry) + DVC (data versioning)
 └── Compliance-driven data archiving
-    └── LakeFS (retention policies, GC, [audit](../../AI_and_Agents/Operations/audit/SKILL.md) trails)
+    └── LakeFS (retention policies, GC, [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) trails)
 ```
 
 ## Rules
@@ -594,7 +594,7 @@ stages:
 ## Security Considerations
 
 - **Branch access control**: Restrict write access to `production` branch; PR-based merges only.
-- **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail**: Log all Nessie branch operations (create, merge, delete) for compliance.
+- **[Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) trail**: Log all Nessie branch operations (create, merge, delete) for compliance.
 - **Snapshot ACLs**: Tag snapshots with sensitivity labels; strip PII columns in non-privileged branches.
 - **Encryption**: Encrypt Nessie catalog metadata at rest; use TLS for Nessie API connections.
 - **Backup**: Backup Nessie catalog metadata daily; test restore procedure quarterly.

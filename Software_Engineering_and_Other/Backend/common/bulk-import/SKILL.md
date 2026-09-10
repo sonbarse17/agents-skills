@@ -28,7 +28,7 @@ depends_on:
 # Bulk Import Skill
 
 ## Purpose
-Design robust bulk import systems that handle large CSV/Excel files with validation, progress tracking, error recovery, and [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trails.
+Design robust bulk import systems that handle large CSV/Excel files with validation, progress tracking, error recovery, and [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trails.
 
 ## Architecture Decision Trees
 
@@ -40,11 +40,11 @@ Design robust bulk import systems that handle large CSV/Excel files with validat
 | Performance | Fastest | Moderate (check per row) | Fast (truncate + insert) |
 | Idempotent | No | Yes (by dedup field) | No (destructive) |
 | Risk level | Low | Low | High (data loss) |
-| [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail | All inserts | Updates logged | Lost on truncate |
+| [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail | All inserts | Updates logged | Lost on truncate |
 | Rollback complexity | Simple (transaction) | Moderate | Complex (needs backup) |
 | Use case | New data ingestion | Sync with external system | Full reimport/replace |
 
-Decision: Upsert for production syncs. Insert for immutable [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) data. Replace only with pre-import backup.
+Decision: Upsert for production syncs. Insert for immutable [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) data. Replace only with pre-import backup.
 
 ### Parsing Strategy
 
@@ -100,7 +100,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 - [ ] Import template with downloadable sample file ready
 - [ ] Deduplication logic implemented (configurable per field)
 - [ ] Rollback mechanism for partial failures
-- [ ] Import history and [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) log stored
+- [ ] Import history and [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) log stored
 - [ ] Webhook notification on import completion
 - [ ] Rate limiting on import endpoints
 
@@ -554,7 +554,7 @@ async function notifyImportComplete(job: ImportJob): Promise<void> {
   - Mitigation: prefix dangerous-starting values with tab or single quote in CSV output
 - Rate limiting: per-user, per-hour import limits (e.g., 5 imports/hour, 500MB/hour total)
 - PII: mask sensitive fields in preview; enforce field-level access control
-- [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md): log every import action (upload, validate, confirm, cancel) with userId, timestamp, row count
+- [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md): log every import action (upload, validate, confirm, cancel) with userId, timestamp, row count
 - File retention: auto-delete uploaded files after 30 days; allow user-triggered immediate deletion
 
 ## Testing Strategies

@@ -272,7 +272,7 @@ GROUP BY user_email ORDER BY bytes_billed DESC;
   warehouse stays running is billed the same as a busy second. Lower
   `AUTO_SUSPEND` to the shortest value tolerable for the workload's
   query pattern (60 seconds is a common starting point for interactive
-  workloads) and [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) for any warehouse left permanently resumed by
+  workloads) and [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) for any warehouse left permanently resumed by
   habit.
 
 - **Symptom:** A BigQuery on-demand bill spikes dramatically for a query

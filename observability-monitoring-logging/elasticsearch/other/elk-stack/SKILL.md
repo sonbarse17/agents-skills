@@ -471,4 +471,4 @@ PUT _watcher/watch/error_alert
 
 - [loki-logging](../[loki-logging](../loki-logging/SKILL.md)/) - Alternative logging stack
 - [prometheus-grafana](../[prometheus-grafana](../../Cloud_Providers/prometheus-grafana/SKILL.md)/) - Metrics [monitoring](../../../common/monitoring-strategy/monitoring/SKILL.md)
-- [audit-logging](../../../compliance/auditing/[audit-logging](../[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-logging/SKILL.md)/) - Compliance logging
+- [audit-logging](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-logging/SKILL.md)/) - Compliance logging

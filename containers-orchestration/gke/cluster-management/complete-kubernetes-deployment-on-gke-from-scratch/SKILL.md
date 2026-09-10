@@ -233,7 +233,7 @@ integration decisions.
    **Note what does *not* apply here:** GKE's control plane and etcd are
    fully Google-managed — the procedures in
    [etcd-backup-restore-and-cluster-health](../[etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md)
-   do not apply; rely on GKE [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs routed to the landing zone's
+   do not apply; rely on GKE [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs routed to the landing zone's
    aggregated log sink instead.
 
 ## Best practices

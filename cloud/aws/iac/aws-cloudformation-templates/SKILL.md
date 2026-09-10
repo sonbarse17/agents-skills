@@ -250,7 +250,7 @@ module ecosystem, or a plan file reviewable outside the AWS console/CLI.
   or a policy gate whenever a template creates or modifies IAM.
 - Store templates and parameter files in version control, and drive
   `create-change-set`/`execute-change-set` from CI so every stack update
-  has a reviewable diff and an [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail, mirroring the plan-review gate
+  has a reviewable diff and an [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail, mirroring the plan-review gate
   described in
   [infrastructure-as-code-terraform](../../../devops/skills/[infrastructure-as-code-terraform](../[infrastructure-as-code](../infrastructure-as-code/SKILL.md)-terraform/SKILL.md)/SKILL.md).
 - Prefer many small, single-purpose stacks (network, data, app) over one

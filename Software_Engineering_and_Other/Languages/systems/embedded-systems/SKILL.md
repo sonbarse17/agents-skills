@@ -45,7 +45,7 @@ Load detailed guidance based on context:
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
 | RTOS Patterns | `../../../Global_References/rtos-patterns.md` | FreeRTOS tasks, queues, synchronization |
-| Microcontroller | `../../../Global_References/microcontroller-programming.md` | [Bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md), registers, peripherals, interrupts |
+| Microcontroller | `../../../Global_References/microcontroller-programming.md` | [Bare-metal](../../../Miscellaneous/systems-low-level/bare-metal/SKILL.md), registers, peripherals, interrupts |
 | Power Management | `../../../Global_References/power-optimization.md` | Sleep modes, low-power design, battery life |
 | Communication | `../../../Global_References/communication-protocols.md` | I2C, SPI, UART, CAN implementation |
 | Memory & Performance | `../../../Global_References/memory-optimization.md` | Code size, RAM usage, flash management |
@@ -139,7 +139,7 @@ void app_init(void) {
 }
 ```
 
-### GPIO + Timer-Interrupt Blink ([Bare-Metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) STM32)
+### GPIO + Timer-Interrupt Blink ([Bare-Metal](../../../Miscellaneous/systems-low-level/bare-metal/SKILL.md) STM32)
 
 ```c
 /* Demonstrates: clock enable, register-level GPIO, TIM2 interrupt */

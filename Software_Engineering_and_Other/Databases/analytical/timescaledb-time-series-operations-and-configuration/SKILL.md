@@ -307,7 +307,7 @@ SELECT add_retention_policy('metrics', INTERVAL '90 days');
 
 - **Symptom:** Someone runs `add_retention_policy` with an interval
   shorter than intended (a typo, or a misunderstanding of the required
-  compliance window), and older data required for an [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) is
+  compliance window), and older data required for an [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) is
   permanently dropped before anyone notices.
   **Fix:** This is an irreversible data-loss event once the policy's
   background job has run — chunks are dropped, not soft-deleted.

@@ -37,7 +37,7 @@ upstream. Two complementary practices address this: **SBOMs** (Software
 Bill of Materials) give visibility into exactly what components — and
 which versions — make up a given artifact, so that when a new
 vulnerability is disclosed you can answer "are we affected, and where"
-without an [audit](../../../AI_and_Agents/Operations/audit/SKILL.md); and **SLSA** (Supply-chain Levels for Software
+without an [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md); and **SLSA** (Supply-chain Levels for Software
 Artifacts) is a framework describing build-integrity practices (source
 control, isolated builds, provenance generation) that make it harder to
 tamper with an artifact undetected between source and consumption. Both
@@ -202,7 +202,7 @@ artifact was built, not that the code it contains is safe.
   verification proves the artifact matches what was signed and the
   signer's identity matches an expected pipeline — it does not prove the
   code is free of vulnerabilities or malicious logic. State this
-  explicitly when documenting controls for an [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) or customer, rather
+  explicitly when documenting controls for an [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) or customer, rather
   than implying "signed" means "safe."
 - Enforce verification at a real control point (admission controller,
   deploy-gate script) — an SBOM or signature nobody checks before

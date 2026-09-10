@@ -38,7 +38,7 @@ find the original and wrote a new one instead. This skill covers how to
 structure a page so it's actually readable (hierarchy, table of
 contents, purpose-built templates for [runbooks](../../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md)/design docs/postmortems),
 how to organize a space so pages have a findable home, the version/
-history discipline that keeps concurrent edits and [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trails sane,
+history discipline that keeps concurrent edits and [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trails sane,
 and how to do page creation/update programmatically via the Confluence
 REST API. It assumes the underlying work is already tracked in Jira —
 see
@@ -136,7 +136,7 @@ from any page this skill produces.
    operational** ([runbooks](../../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md) especially). A page with no named owner is a
    page nobody notices has gone stale. Track review-due dates with a
    label (`review-2026-q4`) or a "Last reviewed" line at the top of the
-   page, and [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) periodically for pages past due.
+   page, and [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) periodically for pages past due.
 
 8. **Create a page via the REST API:**
 
@@ -198,7 +198,7 @@ from any page this skill produces.
    }
    ```
 
-   Populating `version.message` gives page history a meaningful [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)
+   Populating `version.message` gives page history a meaningful [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)
    trail — "Update alert thresholds after AUTH-2231 [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)" is far
    more useful than the default blank entry when someone is scanning
    history for what changed and why.
@@ -222,7 +222,7 @@ from any page this skill produces.
   letting both persist.
 - Prefer updating the existing page's history over copying it to a new
   page for "v2" — Confluence's version history already gives you
-  before/after diffs; a `v2` page just splits the [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail.
+  before/after diffs; a `v2` page just splits the [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail.
 - Every page should be reachable by clicking from its space's home page
   through no more than a few hops — if it isn't, add the missing link
   rather than relying on search alone.
@@ -243,7 +243,7 @@ from any page this skill produces.
   longer match the deployed system, making an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) worse instead of
   better.
   **Fix:** Every operational page gets an explicit owner and a review-due
-  label/date at creation (see the [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) template); [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) for pages
+  label/date at creation (see the [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) template); [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) for pages
   past their review date on a recurring cadence, not reactively during
   the next [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 

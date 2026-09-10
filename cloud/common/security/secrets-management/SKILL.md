@@ -201,8 +201,8 @@ assessment).
   potentially cached image layers. Use environment variables sourced from
   a secrets manager, files mounted at runtime, or BuildKit secret mounts
   (`--mount=type=secret`) instead.
-- Mask and [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md): configure CI to mask known secret patterns in logs, and
-  enable [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging on the secrets manager ([Vault](../../../../Security/cryptography-secrets/vault/SKILL.md) [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) devices, cloud
+- Mask and [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md): configure CI to mask known secret patterns in logs, and
+  enable [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging on the secrets manager ([Vault](../../../../Security/cryptography-secrets/vault/SKILL.md) [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) devices, cloud
   CloudTrail/Activity Log) so every secret access is traceable.
 - Combine secret-scanning at [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) time (prevent), a secrets manager at
   runtime (contain), and a rotation policy (recover) — each addresses a

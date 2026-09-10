@@ -30,7 +30,7 @@ Invoke this skill when any of the following apply:
 
 - A dependency you consume has been flagged as compromised (e.g., advisories on OSV.dev, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Advisory Database, or vendor disclosure).
 - You observe suspicious behavior from a dependency: unexpected network calls, file system writes outside its scope, or new post-install scripts.
-- You are conducting a periodic supply chain security [audit](../../../AI_and_Agents/Operations/audit/SKILL.md).
+- You are conducting a periodic supply chain security [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md).
 - A CI/CD pipeline is behaving unexpectedly after a dependency update.
 - You are onboarding a new third-party dependency and want to verify its provenance.
 - You need to respond to an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) such as a typosquatted package or registry account takeover.
@@ -40,52 +40,52 @@ Invoke this skill when any of the following apply:
 
 ## 2. Detection
 
-### 2.1 npm [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+### 2.1 npm [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
 
 ```bash
-# Full [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) of installed packages
-npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+# Full [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) of installed packages
+npm [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
 
 # JSON output for programmatic processing
-npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) --json | jq '.vulnerabilities | to_entries[] | select(.value.severity == "critical")'
+npm [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) --json | jq '.vulnerabilities | to_entries[] | select(.value.severity == "critical")'
 
 # Fix automatically where possible
-npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) fix
+npm [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) fix
 
 # Check for known malicious packages via Socket.dev CLI
 npx socket scan --package-lock package-lock.json
 ```
 
-### 2.2 pip [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+### 2.2 pip [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
 
 ```bash
-# Install pip-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) (maintained by Google/OSSF)
-pip install pip-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+# Install pip-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) (maintained by Google/OSSF)
+pip install pip-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
 
-# [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) current environment against OSV.dev
-pip-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+# [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) current environment against OSV.dev
+pip-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
 
-# [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) a requirements file directly
-pip-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) -r requirements.txt --output json
+# [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) a requirements file directly
+pip-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) -r requirements.txt --output json
 
 # Check for typosquatting with bandersnatch or custom script
-pip-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) --strict --desc on
+pip-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) --strict --desc on
 ```
 
-### 2.3 Cargo [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+### 2.3 Cargo [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
 
 ```bash
-# Install cargo-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
-cargo install cargo-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+# Install cargo-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
+cargo install cargo-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
 
-# Run [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) against RustSec Advisory Database
-cargo [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+# Run [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) against RustSec Advisory Database
+cargo [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
 
 # JSON output for CI integration
-cargo [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) --json
+cargo [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) --json
 
 # Check for yanked crates
-cargo [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) --deny yanked
+cargo [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) --deny yanked
 ```
 
 ### 2.4 Sigstore / Cosign Verification
@@ -139,7 +139,7 @@ pip download <package>==<safe-version> --require-hashes -d ./vendor/
 cargo update -p some_crate --precise 1.2.3
 ```
 
-### Step 2: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Exposure
+### Step 2: [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Exposure
 
 ```bash
 # Determine which versions you pulled and when
@@ -182,7 +182,7 @@ STATUS: Contained -- pinned to safe version <safe-version>
 
 ACTIONS TAKEN:
 1. Pinned all repositories to last known-good version
-2. Initiated [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) of all systems that pulled affected versions
+2. Initiated [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) of all systems that pulled affected versions
 3. Scanning for indicators of compromise
 
 RECOMMENDED ACTIONS:
@@ -233,7 +233,7 @@ git diff --name-only origin/main...HEAD | grep -E "(package-lock|yarn.lock|Cargo
 npx socket scan --package-lock package-lock.json
 
 # [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md): check package names against popular packages
-pip-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) -r requirements.txt 2>&1 | grep -i "typosquat"
+pip-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) -r requirements.txt 2>&1 | grep -i "typosquat"
 
 # Custom check: compare package names to known popular packages
 # Flag anything with edit distance <= 2 from a top-1000 package
@@ -256,10 +256,10 @@ for pkg in lock.get('packages', {}):
 
 ```yaml
 # .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/lockfile-check.yml
-name: Lockfile [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+name: Lockfile [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
 on: pull_request
 jobs:
-  [audit](../../../AI_and_Agents/Operations/audit/SKILL.md):
+  [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md):
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -274,9 +274,9 @@ jobs:
               git diff origin/main...HEAD -- "$f" | head -100
             fi
           done
-      - name: Run npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+      - name: Run npm [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
         if: hashFiles('package-lock.json') != ''
-        run: npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) --[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-level=high
+        run: npm [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) --[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-level=high
 ```
 
 ---
@@ -307,11 +307,11 @@ pip-compile --generate-hashes requirements.in
 # Ensure your lockfile contains integrity fields:
 cat package-lock.json | jq '.packages | to_entries[] | select(.value.integrity == null) | .key'
 
-# Enable strict engine and [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) checks in .npmrc
+# Enable strict engine and [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) checks in .npmrc
 cat >> .npmrc << 'EOF'
 engine-strict=true
-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)=true
-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-level=high
+[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)=true
+[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-level=high
 EOF
 ```
 
@@ -327,7 +327,7 @@ cargo vet init
 # Certify a crate after review
 cargo vet certify serde 1.0.193
 
-# Import [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) results from trusted organizations
+# Import [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) results from trusted organizations
 cargo vet trust --all mozilla
 cargo vet trust --all google
 
@@ -573,7 +573,7 @@ spec:
 ### 9.2 Nexus Repository Firewall Rules
 
 ```bash
-# Enable Nexus Firewall [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) on a proxy repository
+# Enable Nexus Firewall [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) on a proxy repository
 curl -u admin:$NEXUS_PASSWORD -X PUT \
   "https://nexus.internal/service/rest/v1/security/content-selectors" \
   -H "Content-Type: application/json" \
@@ -735,7 +735,7 @@ fi
 [ ] Verify no additional packages were installed as transitive deps
 [ ] Dump and analyze DNS query logs for the exposure period
 [ ] Check for new cron jobs, systemd services, or scheduled tasks
-[ ] [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) all secrets/tokens that were accessible to the build environment
+[ ] [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) all secrets/tokens that were accessible to the build environment
 ```
 
 ### 11.2 Blast Radius Assessment
@@ -806,7 +806,7 @@ Advisory: <link to CVE or advisory>
 Timeline:
   - YYYY-MM-DD HH:MM: Compromised version published to registry
   - YYYY-MM-DD HH:MM: First installation in our environment (from CI logs)
-  - YYYY-MM-DD HH:MM: Compromise detected via <[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) tool / advisory / manual review>
+  - YYYY-MM-DD HH:MM: Compromise detected via <[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) tool / advisory / manual review>
   - YYYY-MM-DD HH:MM: Pinned to safe version across all repos
   - YYYY-MM-DD HH:MM: Completed IOC scan -- no evidence of exploitation
   - YYYY-MM-DD HH:MM: All exposed secrets rotated
@@ -838,9 +838,9 @@ Preventive Measures:
 
 | Task | Command |
 |------|---------|
-| [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) npm | `npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) --json` |
-| [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) pip | `pip-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) -r requirements.txt` |
-| [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) cargo | `cargo [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)` |
+| [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) npm | `npm [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) --json` |
+| [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) pip | `pip-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) -r requirements.txt` |
+| [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) cargo | `cargo [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)` |
 | Scan with OSV | `osv-scanner -r .` |
 | Verify cosign signature | `cosign verify --certificate-identity-regexp ... <image>` |
 | Verify SLSA provenance | `slsa-verifier verify-artifact ...` |

@@ -1,0 +1,116 @@
+---
+name: finetuning
+description: "Fine-tune models on Microsoft Foundry using SFT (supervised), DPO
+  (preference), or RFT (reinforcement with graders). Covers dataset preparation,
+  training job submission, deployment, and evaluation. USE FOR: fine-tune, SFT,
+  DPO, RFT, training data, grader, distillation, fine-tuned model, training job,
+  large file upload, calibrate grader, deploy fine-tuned model, evaluate
+  fine-tuned model. DO NOT USE FOR: general model deployment without fine-tuning
+  (use deploy-model), agent creation (use agents), prompt optimization without
+  training (use prompt-optimizer)."
+license: MIT
+metadata:
+  author: Microsoft
+  version: 0.0.0-placeholder
+tags:
+  - models_and_finetuning
+  - finetuning
+depends_on:
+  - python
+  - monitoring
+  - deploy
+  - cost
+  - deploy-model
+---
+
+# Fine-Tuning on Microsoft Foundry
+
+Fine-tune models using SFT (supervised), DPO (preference), or RFT (reinforcement with graders). Covers dataset prep, training, deployment, and evaluation.
+
+## When to Use
+
+Use this sub-skill when the user asks about:
+- Fine-tuning a model (SFT, DPO, or RFT)
+- Preparing, validating, or formatting training data
+- Submitting, [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), or diagnosing training jobs
+- Calibrating graders or pass thresholds for RFT
+- Deploying or evaluating a fine-tuned model
+- Choosing between training types (SFT vs DPO vs RFT)
+- Distillation, synthetic data generation, or dataset quality scoring
+- Large file uploads for training data
+- Cleaning up fine-tuning resources (files, deployments)
+
+**Do NOT use for:** General model deployment without fine-tuning (use [deploy-model](../../Infrastructure/[deploy-model](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/SKILL.md)/SKILL.md)), agent creation (use agents), prompt optimization without training (use prompt-optimizer).
+
+## Workflows
+
+| Stage | Guide |
+|-------|-------|
+| **Quick start** | [workflows/quickstart.md](workflows/quickstart.md) |
+| **Full pipeline** | [workflows/full-pipeline.md](workflows/full-pipeline.md) |
+| **Create data** | [workflows/dataset-creation.md](workflows/dataset-creation.md) |
+| **Iterate** | [workflows/iterative-training.md](workflows/iterative-training.md) |
+| **Diagnose** | [workflows/diagnose-poor-results.md](workflows/diagnose-poor-results.md) |
+
+## References
+
+| Topic | File |
+|-------|------|
+| SFT vs DPO vs RFT | [../../../Global_References/training-types.md](../../../../Global_References/training-types.md) |
+| Hyperparameters | [../../../Global_References/finetuning_hyperparameters.md](../../../../Global_References/finetuning_hyperparameters.md) |
+| Data formats | [../../../Global_References/dataset-formats.md](../../../../Global_References/dataset-formats.md) |
+| Grader design (RFT) | [../../../Global_References/grader-design.md](../../../../Global_References/grader-design.md) |
+| Reward hacking | [../../../Global_References/reward-hacking.md](../../../../Global_References/reward-hacking.md) |
+| Agentic RFT (tools) | [../../../Global_References/agentic-rft.md](../../../../Global_References/agentic-rft.md) |
+| Deployment | [../../../Global_References/finetuning_deployment.md](../../../../Global_References/finetuning_deployment.md) |
+| Training curves | [../../../Global_References/training-curves.md](../../../../Global_References/training-curves.md) |
+| Evaluation | [../../../Global_References/finetuning_evaluation.md](../../../../Global_References/finetuning_evaluation.md) |
+| Vision fine-tuning | [../../../Global_References/vision-fine-tuning.md](../../../../Global_References/vision-fine-tuning.md) |
+| Large file uploads | [../../../Global_References/large-file-uploads.md](../../../../Global_References/large-file-uploads.md) |
+| Platform gotchas | [../../../Global_References/platform-gotchas.md](../../../../Global_References/platform-gotchas.md) |
+
+## Scripts
+
+| Script | Purpose |
+|--------|---------|
+| `scripts/submit_training.py` | Submit SFT/DPO/RFT jobs |
+| `scripts/monitor_training.py` | Poll job until completion |
+| `scripts/calibrate_grader.py` | Find optimal RFT pass_threshold |
+| `scripts/check_training.py` | Analyze curves, list checkpoints |
+| `scripts/deploy_model.py` | Deploy via ARM REST API |
+| `scripts/evaluate_model.py` | LLM judge evaluation |
+| `scripts/convert_dataset.py` | Convert between SFT/DPO/RFT formats |
+| `scripts/generate_distillation_data.py` | Generate synthetic training data |
+| `scripts/score_dataset.py` | Quality scoring on training data |
+| `scripts/cleanup.py` | Delete old files and deployments |
+| `scripts/validate/` | Data validators (SFT, DPO, RFT) + stats |
+
+## Rules
+
+1. **Always baseline first** — evaluate the base model before fine-tuning
+2. **Validate data** before submitting — run `scripts/validate/validate_sft.py`
+3. **Calibrate RFT graders** — target 25-50% failure rate on the base model
+4. **Evaluate checkpoints** — don't blindly deploy the final one
+5. **Measure token cost** alongside accuracy when comparing models
+
+## Quick Reference
+
+| Task | Command |
+|------|---------|
+| Validate SFT data | `[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) scripts/validate/validate_sft.py data.jsonl` |
+| Submit SFT job | `[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) scripts/submit_training.py --model gpt-4.1-mini --training-file train.jsonl --validation-file val.jsonl --type sft` |
+| Monitor job | `[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) scripts/monitor_training.py --job-id ftjob-xxx` |
+| Analyze curves | `[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) scripts/check_training.py --job-id ftjob-xxx` |
+| Deploy model | `[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) scripts/deploy_model.py --model-id ft:gpt-4.1-mini:... --name my-eval` |
+| Evaluate model | `[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) scripts/evaluate_model.py --deployment-name my-eval --test-file test.jsonl` |
+
+## Error Handling
+
+| Error | Cause | Fix |
+|-------|-------|-----|
+| "API version not supported" | Older `openai` SDK on `/v1/` endpoint | Upgrade to `openai>=1.0` |
+| "does not support fine-tuning with Standard TrainingType" | OSS model needs `globalStandard` | Use `--use-rest` flag or script auto-falls back |
+| Job stuck in post-training eval | Under-provisioned tool endpoint (RFT) | Scale to S2+, enable Always On |
+| "DeploymentNotReady" after ARM succeeds | ARM/data-plane race condition | Delete and recreate deployment, wait 5 min |
+| Content safety block at deployment | PII-dense training data | Remove problematic document types |
+

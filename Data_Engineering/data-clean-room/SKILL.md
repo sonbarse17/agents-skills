@@ -73,7 +73,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 - [ ] Query constraints with row count and aggregation limits
 - [ ] Differential privacy budget (epsilon) configured
 - [ ] Output validation rules documented
-- [ ] [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging and compliance controls defined
+- [ ] [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) logging and compliance controls defined
 
 ### Max Response Length
 4096
@@ -89,7 +89,7 @@ A clean room is a controlled environment where multiple parties contribute data 
 1. **Join Key Service** — performs private set intersection to find common records without revealing non-matching records
 2. **Query Engine** — executes queries within configurable constraints (aggregation only, min row count thresholds)
 3. **Policy Engine** — enforces column-level access, output filters, and privacy budget
-4. **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Logger** — records all queries, results, and policy decisions
+4. **[Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) Logger** — records all queries, results, and policy decisions
 
 ### AWS Clean Rooms Example
 
@@ -373,7 +373,7 @@ CREATE TABLE clean_room_privacy_budget (
 }
 ```
 
-### [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Log Schema
+### [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) Log Schema
 
 ```sql
 CREATE TABLE clean_room_audit_log (
@@ -524,11 +524,11 @@ class PSIProtocol:
 - **Enclave attestation**: Verify TEE attestation documents before loading data into enclave.
 - **Input validation**: Sanitize all inputs to prevent SQL injection into clean room query engine.
 - **Output constraints**: Limit returned rows to N (e.g., 1000) and suppress cell counts < threshold (e.g., 10).
-- **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail**: Immutable log of all queries, epsilon consumption, and approved results for auditor review.
+- **[Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) trail**: Immutable log of all queries, epsilon consumption, and approved results for auditor review.
 - **Network isolation**: Deploy clean room in VPC with no internet access; data plane isolated from control plane.
 
 ## Handoff
 `data-data-security` for broader data security and encryption patterns
-`data-compliance-[audit](../../AI_and_Agents/Operations/audit/SKILL.md)` for regulatory compliance requirements affecting clean rooms
+`data-compliance-[audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)` for regulatory compliance requirements affecting clean rooms
 `data-data-sharing` for non-privacy-preserving data sharing patterns
 

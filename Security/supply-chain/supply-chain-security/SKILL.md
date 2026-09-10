@@ -39,7 +39,7 @@ dependency away from finding out the hard way.**
 
 A software bill of materials is the artifact's ingredient list — every direct and transitive
 dependency, its version, and its license. Without one, "are we affected by this new CVE"
-requires an emergency [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) instead of a query. Generate it as a build step (Syft, cdxgen, or
+requires an emergency [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) instead of a query. Generate it as a build step (Syft, cdxgen, or
 language-native tooling), not as a periodic manual exercise that's stale the moment it's
 produced.
 

@@ -202,7 +202,7 @@ bottleneck.
 ## Common pitfalls
 
 - **Symptom:** A change passes staging cleanly but breaks in production.
-  **Fix:** [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) for drift between staging and production beyond intended
+  **Fix:** [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) for drift between staging and production beyond intended
   config differences — mismatched downstream service versions, different
   data volume/shape, or a feature flag that's off in staging but on in
   production (or vice versa) are common causes; close the specific gap

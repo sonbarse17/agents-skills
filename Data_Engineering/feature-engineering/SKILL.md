@@ -506,7 +506,7 @@ feature_engineering:
   - ../../../Global_References/text-features.md — Text Feature Engineering
   - ../../../Global_References/validation-leakage.md — Feature Engineering Validation
 ## Handoff
-`[ml-classical-ml](../../AI_and_Agents/Models_and_FineTuning/classical-ml/SKILL.md)` for model training with engineered features
+`[ml-classical-ml](../../AI_and_Agents/Models_and_FineTuning/ml-domains/classical-ml/SKILL.md)` for model training with engineered features
 `[ml-deep-learning](../../AI_and_Agents/Architecture/ml-foundations/deep-learning/SKILL.md)` for deep learning feature extraction (embeddings)
 
 ## Architecture Decision Trees

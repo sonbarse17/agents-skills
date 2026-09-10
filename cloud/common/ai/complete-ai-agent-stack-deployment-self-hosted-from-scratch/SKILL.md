@@ -126,7 +126,7 @@ and the operational burden each phase adds versus a managed alternative.
 2. **Phase 2 — self-hosted LLM serving.** Deploy the chosen open-weight
    model with vLLM or TGI on the Phase 1 GPU pool, applying the
    batching-aware LLM serving guidance from
-   [model-serving-and-scaling](../../../mlops/skills/[model-serving-and-scaling](../../../AI_and_Agents/Models_and_FineTuning/model-serving-and-scaling/SKILL.md)/SKILL.md)
+   [model-serving-and-scaling](../../../../AI_and_Agents/Models_and_FineTuning/inference-serving/model-serving-and-scaling/SKILL.md)/SKILL.md)
    (that skill's LLM-specific guidance on continuous batching and
    KV-cache sizing applies directly here, even though it lives in the
    MLOps domain):
@@ -160,7 +160,7 @@ and the operational burden each phase adds versus a managed alternative.
 
 4. **Phase 4 — self-hosted vector database and RAG pipeline.** Design
    the chunking/embedding/retrieval pattern per
-   [rag-pipeline-design](../[rag-pipeline-design](../../../AI_and_Agents/Models_and_FineTuning/rag-pipeline-design/SKILL.md)/SKILL.md), then deploy a
+   [rag-pipeline-design](../../../../AI_and_Agents/Models_and_FineTuning/rag-embeddings/rag-pipeline-design/SKILL.md)/SKILL.md), then deploy a
    self-hosted Weaviate or Milvus cluster per
    [vector-[database-operations](../../../../Software_Engineering_and_Other/Databases/common/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../../../AI_and_Agents/Infrastructure/vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md)'s
    self-hosted guidance — sized, sharded, and **replicated** from the
@@ -177,7 +177,7 @@ and the operational burden each phase adds versus a managed alternative.
 
 5. **Phase 5 — self-hosted MCP servers.** Build and deploy MCP servers
    for tool access per
-   [mcp-server-development](../[mcp-server-development](../../../AI_and_Agents/Infrastructure/mcp-server-development/SKILL.md)/SKILL.md), on
+   [mcp-server-development](../../../../AI_and_Agents/Infrastructure/mcp/mcp-server-development/SKILL.md)/SKILL.md), on
    network infrastructure segmented from the Phase 1/2 GPU serving
    cluster's internal network — an MCP server sharing an unsegmented
    network with the model-serving control plane gives a compromised tool
@@ -188,7 +188,7 @@ and the operational burden each phase adds versus a managed alternative.
 
 6. **Phase 6 — evaluation harness and guardrails.** Build the offline
    eval set and runtime guardrail layer per
-   [agent-evaluation-and-guardrails](../[agent-evaluation-and-guardrails](../../../AI_and_Agents/Models_and_FineTuning/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md)
+   [agent-evaluation-and-guardrails](../../../../AI_and_Agents/Models_and_FineTuning/evaluation/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md)
    before Phase 2–5's full stack serves real traffic, including
    adversarial cases for RAG-content injection (Phase 4) and MCP-tool-
    output injection (Phase 5), exactly as on the cloud-managed path — the
@@ -198,7 +198,7 @@ and the operational burden each phase adds versus a managed alternative.
    managed path's per-token provider billing, self-hosted cost is
    dominated by GPU capital/amortized cost and utilization, not per-call
    spend — apply the structural levers from
-   [llm-cost-and-latency-optimization](../../../ai-agent/skills/[llm-cost-and-latency-optimization](../../../AI_and_Agents/Models_and_FineTuning/llm-cost-and-latency-optimization/SKILL.md)/SKILL.md)
+   [llm-cost-and-latency-optimization](../../../../AI_and_Agents/Models_and_FineTuning/llm-platform/llm-cost-and-latency-optimization/SKILL.md)/SKILL.md)
    (context trimming, batching, right-sized models per step) alongside
    GPU utilization [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (`DCGM_FI_DEV_GPU_UTIL`) from the Phase 1
    GPU infrastructure layer. A self-hosted GPU fleet sitting at 15%
@@ -331,11 +331,11 @@ flags as catastrophic on a single-replica self-hosted deployment.
 ## Cross-references
 
 - [gpu-accelerator-infrastructure-for-ml-training](../../../mlops/skills/[gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md)/SKILL.md) — Phase 1's GPU Operator install and serving node pool design (its guidance applies to inference-serving [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), not only training).
-- [model-serving-and-scaling](../../../mlops/skills/[model-serving-and-scaling](../../../AI_and_Agents/Models_and_FineTuning/model-serving-and-scaling/SKILL.md)/SKILL.md) — Phase 2's vLLM/TGI batching-aware LLM serving mechanics.
+- [model-serving-and-scaling](../../../../AI_and_Agents/Models_and_FineTuning/inference-serving/model-serving-and-scaling/SKILL.md)/SKILL.md) — Phase 2's vLLM/TGI batching-aware LLM serving mechanics.
 - [agent-architecture-design](../../../../AI_and_Agents/Architecture/agent-patterns/agent-architecture-design/SKILL.md)/SKILL.md) — Phase 3's control-loop, termination, and tool-boundary design.
-- [rag-pipeline-design](../[rag-pipeline-design](../../../AI_and_Agents/Models_and_FineTuning/rag-pipeline-design/SKILL.md)/SKILL.md) — Phase 4's chunking/embedding/retrieval design.
+- [rag-pipeline-design](../../../../AI_and_Agents/Models_and_FineTuning/rag-embeddings/rag-pipeline-design/SKILL.md)/SKILL.md) — Phase 4's chunking/embedding/retrieval design.
 - [vector-[database-operations](../../../../Software_Engineering_and_Other/Databases/common/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../../../AI_and_Agents/Infrastructure/vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md) — Phase 4's self-hosted Weaviate/Milvus sizing, sharding, and replication.
-- [mcp-server-development](../[mcp-server-development](../../../AI_and_Agents/Infrastructure/mcp-server-development/SKILL.md)/SKILL.md) — Phase 5's tool-server build, network segmentation, and credential scoping.
-- [agent-evaluation-and-guardrails](../[agent-evaluation-and-guardrails](../../../AI_and_Agents/Models_and_FineTuning/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md) — Phase 6's offline eval harness and runtime guardrails.
-- [llm-cost-and-latency-optimization](../[llm-cost-and-latency-optimization](../../../AI_and_Agents/Models_and_FineTuning/llm-cost-and-latency-optimization/SKILL.md)/SKILL.md) — Phase 7's structural cost/latency levers, applied alongside GPU utilization [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
+- [mcp-server-development](../../../../AI_and_Agents/Infrastructure/mcp/mcp-server-development/SKILL.md)/SKILL.md) — Phase 5's tool-server build, network segmentation, and credential scoping.
+- [agent-evaluation-and-guardrails](../../../../AI_and_Agents/Models_and_FineTuning/evaluation/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md) — Phase 6's offline eval harness and runtime guardrails.
+- [llm-cost-and-latency-optimization](../../../../AI_and_Agents/Models_and_FineTuning/llm-platform/llm-cost-and-latency-optimization/SKILL.md)/SKILL.md) — Phase 7's structural cost/latency levers, applied alongside GPU utilization [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
 - [complete-ai-agent-stack-deployment-cloud-managed-from-scratch](../[complete-ai-agent-stack-deployment-cloud-managed-from-scratch](../complete-ai-agent-stack-deployment-cloud-managed-from-scratch/SKILL.md)/SKILL.md) — the managed-service alternative to this entire path, for comparing total cost and operational burden before choosing between them.

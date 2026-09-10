@@ -129,6 +129,6 @@ The `references/` directory contains production-grade implementations not needed
 ## Related Skills
 
 - `[cqrs-implementation](../cqrs-implementation/SKILL.md)` — Pair sagas with CQRS for read-model updates after each step completes
-- `[event-store-design](../event-store-design/SKILL.md)` — Store saga events in an event store for full [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail and replay capability
+- `[event-store-design](../event-store-design/SKILL.md)` — Store saga events in an event store for full [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail and replay capability
 - `[workflow-orchestration-patterns](../../workflow/workflow-orchestration-patterns/SKILL.md)` — Higher-level workflow engines (Temporal, Conductor) that build on saga concepts
 

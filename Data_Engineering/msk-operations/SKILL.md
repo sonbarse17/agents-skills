@@ -42,7 +42,7 @@ reboots).
 
 Activate this skill when the user asks to:
 
-- Review, [audit](../../AI_and_Agents/Operations/audit/SKILL.md), or assess an MSK cluster for best practices, health, or
+- Review, [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md), or assess an MSK cluster for best practices, health, or
   operational readiness.
 - Troubleshoot an MSK cluster problem: high CPU, high produce/fetch latency,
   consumer lag, broker storage running out, TrafficShaping events, under-replicated
@@ -158,7 +158,7 @@ documentation. Do not size from memory.
 
 ## Operational Review Workflow
 
-Use this workflow when the user asks for a **review, [audit](../../AI_and_Agents/Operations/audit/SKILL.md), health check, or
+Use this workflow when the user asks for a **review, [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md), health check, or
 assessment** of an MSK cluster. The routing table above handles ad-hoc
 troubleshooting; this section produces a consistent, comprehensive report.
 

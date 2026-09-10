@@ -35,7 +35,7 @@ Systematically identify, assess, and remediate security vulnerabilities in appli
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "security [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)", "vulnerability scan", "security review", "dependency check", "SAST", "DAST", "penetration test", "CVE", "OWASP", "security assessment", "threat modeling".
+Exact user phrases: "security [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)", "vulnerability scan", "security review", "dependency check", "SAST", "DAST", "penetration test", "CVE", "OWASP", "security assessment", "threat modeling".
 
 ### Input Context
 - Application type (web app, API, mobile, desktop, CLI, library)
@@ -48,7 +48,7 @@ Exact user phrases: "security [audit](../../../AI_and_Agents/Operations/audit/SK
 - Recent security incidents or CVEs
 
 ### Output Artifact
-Security [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) report with identified vulnerabilities by severity, remediation steps, and priority.
+Security [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) report with identified vulnerabilities by severity, remediation steps, and priority.
 
 ### Completion Criteria
 - [ ] Dependency vulnerability scan completed
@@ -66,9 +66,9 @@ Security [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) report with i
 
 ## Framework/Methodology
 
-### Security [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Decision Tree
+### Security [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Decision Tree
 ```
-What is the [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) scope?
+What is the [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) scope?
 ├── Web application → OWASP Top 10 + dependency scan + SAST
 │   ├── Auth review (session management, MFA, password policies)
 │   ├── Input validation (XSS, SQL injection, CSRF, SSRF)
@@ -112,22 +112,22 @@ A10: Server-Side Request Forgery (SSRF)
 ### Step 1: Dependency Vulnerability Scan
 
 ```bash
-# npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
-npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)                    # List vulnerabilities
-npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) --[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-level=high # Only show high/critical
-npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) fix                # Auto-fix non-breaking updates
-npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) fix --force        # Force update (may break API)
+# npm [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
+npm [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)                    # List vulnerabilities
+npm [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) --[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-level=high # Only show high/critical
+npm [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) fix                # Auto-fix non-breaking updates
+npm [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) fix --force        # Force update (may break API)
 
-# Better: npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) + snyk
+# Better: npm [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) + snyk
 npx snyk test                # Deep dependency analysis
 npx snyk monitor             # Continuous [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 # pip
-pip-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)                    # Scan [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) dependencies
+pip-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)                    # Scan [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) dependencies
 safety check                 # Alternative [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) scanner
 
 # cargo (Rust)
-cargo [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)                  # [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Cargo.lock for CVEs
+cargo [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)                  # [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Cargo.lock for CVEs
 cargo deny check advisories  # More comprehensive (also license check)
 
 # go
@@ -271,7 +271,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
       - run: npm ci
-      - run: npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) --[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-level=high
+      - run: npm [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) --[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-level=high
         continue-on-error: true  # Don't block PRs, but flag
 
   sast:
@@ -324,7 +324,7 @@ priority_matrix:
 
 | Pitfall | Description | Prevention |
 |---------|-------------|------------|
-| Ignoring transitive dependencies | Direct deps are safe, sub-deps are vulnerable | Use `npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) --recursive`, `pip-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)` |
+| Ignoring transitive dependencies | Direct deps are safe, sub-deps are vulnerable | Use `npm [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) --recursive`, `pip-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)` |
 | False positives from scanners | Wasting time on non-exploitable findings | Triage findings, suppress with evidence |
 | No reproducible scan | Different results each run | Lock dependency versions, pin scanner version |
 | Only scanning at release | Vulnerabilities introduced between releases | PR-level scanning + weekly full scans |
@@ -385,7 +385,7 @@ class DependencyScanner:
     def scan_npm(self, project_path: str = ".") -> List[Vulnerability]:
         try:
             result = subprocess.run(
-                ["npm", "[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)", "--json"], capture_output=True, text=True, cwd=project_path
+                ["npm", "[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)", "--json"], capture_output=True, text=True, cwd=project_path
             )
             data = json.loads(result.stdout)
             for advisory_id, advisory in data.get("advisories", {}).items():
@@ -408,7 +408,7 @@ class DependencyScanner:
     def scan_python(self, requirements_file: str = "requirements.txt") -> List[Vulnerability]:
         try:
             result = subprocess.run(
-                ["pip-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)", "--requirement", requirements_file, "--format", "json"],
+                ["pip-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)", "--requirement", requirements_file, "--format", "json"],
                 capture_output=True, text=True
             )
             data = json.loads(result.stdout)
@@ -427,7 +427,7 @@ class DependencyScanner:
                     self.vulnerabilities.append(v)
             return self.vulnerabilities
         except (subprocess.CalledProcessError, json.JSONDecodeError, FileNotFoundError):
-            print("pip-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) not available or requirements file not found")
+            print("pip-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) not available or requirements file not found")
             return []
 
     def filter_critical(self) -> List[Vulnerability]:
@@ -442,7 +442,7 @@ class DependencyScanner:
 
     def generate_report(self) -> str:
         groups = self.group_by_severity()
-        lines = ["## Security [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Report\n"]
+        lines = ["## Security [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Report\n"]
         total = sum(len(g) for g in groups.values())
         lines.append(f"**Total Vulnerabilities**: {total}")
         for sev in ["critical", "high", "medium", "low"]:
@@ -533,7 +533,7 @@ What do you need to test?
 ├── Source code vulnerabilities (before deploy)
 │   ├── Static analysis (SAST) → Semgrep, CodeQL, SonarQube
 │   ├── Secrets detection → TruffleHog, GitLeaks, detect-secrets
-│   └── Dependency scanning → npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md), Dependabot, Snyk
+│   └── Dependency scanning → npm [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md), Dependabot, Snyk
 │
 ├── Running application vulnerabilities (after deploy)
 │   ├── Dynamic analysis (DAST) → OWASP ZAP, Burp Suite

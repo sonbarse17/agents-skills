@@ -47,7 +47,7 @@ Guide blockchain infrastructure operations: node deployment, RPC infrastructure,
 ### Input Context
 - Blockchain networks to support
 - Node types (archive/full/validator)
-- Infrastructure provider ([bare-metal](../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)/cloud/K8s)
+- Infrastructure provider ([bare-metal](../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md)/cloud/K8s)
 - Scale requirements (RPC load, number of chains, validators)
 - Security requirements (key management, access control, compliance)
 - Budget constraints
@@ -149,7 +149,7 @@ Role in MEV supply chain:
 │   └── Storage: gp3 EBS (800 MB/s 256K IOPS) or i4i instance store
 ├── GCP: Best for [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) (GKE), network performance
 │   └── Node types: n2-highmem-32, n2d-standard-64
-├── [Bare-metal](../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md): Best for validator nodes, MEV infrastructure
+├── [Bare-metal](../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md): Best for validator nodes, MEV infrastructure
 │   ├── Hetzner: AU$40/mo for AX102, great price-performance
 │   └── OVH: Advance series, good for archive nodes
 └── Dedicated blockchain infra providers
@@ -356,7 +356,7 @@ environments:
 ## Validator Key Compromise
 1. **Detect**: Alert on unexpected validator activity
 2. **Isolate**: Shut down validator node immediately
-3. **Investigate**: [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) access logs, key usage patterns
+3. **Investigate**: [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) access logs, key usage patterns
 4. **Recover**: Generate new validator keys, exit old validator
 5. **Report**: Notify the chain's security team, staking pool (if applicable)
 6. **Post-mortem**: Key rotation procedure review, HSM upgrade
@@ -364,7 +364,7 @@ environments:
 
 ## Rules
 1. Archive nodes for data availability, full nodes for RPC, validator nodes for consensus
-2. Use [Ansible](../../infrastructure-as-code/ansible/other/ansible/SKILL.md) for [bare-metal](../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md), Terraform for cloud, Helm for K8s
+2. Use [Ansible](../../infrastructure-as-code/ansible/other/ansible/SKILL.md) for [bare-metal](../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md), Terraform for cloud, Helm for K8s
 3. Always run ≥2 geographically distributed RPC nodes behind load balancer for HA
 4. CI/CD: Foundry forge tests + Slither static analysis + contract verification in one pipeline
 5. Monitor: sync status (block height lag), peer count, mempool size, RPC latency, validator status

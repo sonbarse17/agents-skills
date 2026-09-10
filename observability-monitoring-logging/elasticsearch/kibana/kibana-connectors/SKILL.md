@@ -272,7 +272,7 @@ Connectors serve as the integration layer across multiple Kibana workflows, not 
 | **On-call escalation**    | PagerDuty, Opsgenie                   | `trigger` on active, `resolve` on `Recovered`; always set a deduplication key  |
 | **Case management**       | Cases (system action)                 | UI-only; groups alerts into investigation Cases; can auto-push to ITSM         |
 | **Messaging / awareness** | Slack, Teams, Email                   | `onActionGroupChange` for [incident](../incident/SKILL.md) channels; summaries for [monitoring](../monitoring/SKILL.md) channels |
-| **[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging**         | Index                                 | `onActiveAlert` to write full alert time-series to Elasticsearch               |
+| **[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging**         | Index                                 | `onActiveAlert` to write full alert time-series to Elasticsearch               |
 | **AI workflows**          | OpenAI, Bedrock, Gemini, AI Connector | Powers Elastic AI Assistant and Attack Discovery; system-managed               |
 | **Custom integrations**   | Webhook                               | Generic HTTP outbound with Mustache-templated JSON body                        |
 
@@ -320,7 +320,7 @@ For detailed patterns, examples, and decision guidance for each workflow, see [w
     attachments, and assignees, use Cases rather than a direct Jira/ServiceNow connector. Cases gives you a native
     investigation UI and can still push to ITSM via the Case's external connection.
 
-12. **Use the Index connector for durable [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trails.** The Index connector writes to Elasticsearch, making alert
+12. **Use the Index connector for durable [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trails.** The Index connector writes to Elasticsearch, making alert
     history searchable and dashboardable. Pair it with an ILM policy on the target index to control retention.
 
 13. **Restrict connector access via Action settings.** Use `xpack.actions.enabledActionTypes` to allowlist only the
@@ -401,7 +401,7 @@ For detailed patterns, examples, and decision guidance for each workflow, see [w
 `POST /api/actions/connector/{id}/_execute` with a minimal params object to confirm connectivity before adding to any
 rule.
 
-**[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) connector usage before deletion:** "Remove the old email connector." `GET /api/actions/connectors`, inspect
+**[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) connector usage before deletion:** "Remove the old email connector." `GET /api/actions/connectors`, inspect
 `referenced_by_count` — if non-zero, reassign the referencing rules first, then `DELETE /api/actions/connector/{id}`.
 
 ## Guidelines

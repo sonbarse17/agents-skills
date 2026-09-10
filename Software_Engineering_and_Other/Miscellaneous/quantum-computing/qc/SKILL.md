@@ -86,7 +86,7 @@ Quality report: 25 lines. Gate configuration: 20 lines.
 | Security hotspots | 0 | SonarQube, CodeQL |
 | Test success rate | 100% | CI pipeline |
 | Lint errors | 0 | ESLint, Ruff, golangci-lint |
-| Dependency vulnerabilities | 0 critical/high | npm [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md), cargo [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md), govulncheck |
+| Dependency vulnerabilities | 0 critical/high | npm [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md), cargo [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md), govulncheck |
 
 ### Step 2: Quality Gate Configuration
 
@@ -186,7 +186,7 @@ jobs:
     steps:
       - run: npm run lint
       - run: npm run test -- --coverage
-      - run: npm [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) --[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-level=high
+      - run: npm [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) --[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-level=high
       - uses: sonarsource/sonarqube-scan-action@v2
 ```
 
@@ -248,12 +248,12 @@ What is your primary goal?
   │       └── Language? JS/TS → ESLint + Jest + SonarQube
   │       └── [Python](../../../Languages/python/python/SKILL.md) → Ruff + pytest-cov + SonarQube
   │       └── Go → golangci-lint + go test + govulncheck
-  │       └── Rust → clippy + cargo-tarpaulin + cargo-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)
+  │       └── Rust → clippy + cargo-tarpaulin + cargo-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)
   ├── Measure and reduce technical debt
   │   └── Use SQALE model with remediation cost estimation
   │       └── Track TD ratio (remediation cost / development cost)
   │       └── Target: TD ratio < 5%
-  ├── Prepare for external [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) or compliance
+  ├── Prepare for external [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) or compliance
   │   └── Use ISO 25010 with full documentation
   │       └── Map controls to quality characteristics
   │       └── Generate compliance evidence automatically
@@ -310,7 +310,7 @@ Running a quality improvement sprint and declaring victory creates a temporary s
 Using quality metrics to evaluate individual performance creates perverse incentives — engineers game the numbers instead of improving quality. Quality data is process data, not people data. Focus metrics on the system, not individuals.
 
 ### Pitfall 9: Ignoring Third-Party Dependencies
-Focusing quality efforts exclusively on first-party code while ignoring npm packages, PyPI dependencies, and container base images leaves significant risk unaddressed. Run `npm [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)`, `cargo [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)`, `govulncheck`, and container scanning in CI. Maintain an SBOM for every release.
+Focusing quality efforts exclusively on first-party code while ignoring npm packages, PyPI dependencies, and container base images leaves significant risk unaddressed. Run `npm [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)`, `cargo [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)`, `govulncheck`, and container scanning in CI. Maintain an SBOM for every release.
 
 ### Pitfall 10: Over-Automation of Reviews
 Automating every aspect of code review (format, lint, complexity, coverage) can create a false sense of security. Automated tools catch style and obvious bugs but miss architectural issues, design problems, and subtle logic errors. Automated gates are a floor, not a ceiling.
@@ -394,7 +394,7 @@ jobs:
       - uses: sonarsource/sonarqube-quality-gate-action@v2
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      - run: npm [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) --[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-level=high
+      - run: npm [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) --[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-level=high
 ```
 
 ## Case Studies

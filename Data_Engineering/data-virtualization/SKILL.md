@@ -484,7 +484,7 @@ WHERE o.total_amount > 1000;
 - Cross-source joins use broadcast for small tables, partitioned for large
 - Dynamic filtering enabled to reduce scanned data in multi-table queries
 - Connector credentials stored in secrets manager, never in config files
-- Query history logged for [audit](../../AI_and_Agents/Operations/audit/SKILL.md) and performance analysis
+- Query history logged for [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) and performance analysis
 - Resource groups enforce query concurrency limits per team
 - No full table scans on OLTP sources without explicit query rules
 - Each connector configured with timeouts and retry limits
@@ -594,7 +594,7 @@ virtual_dataset:
 - **Credential management**: Store data source credentials in Trino password [vault](../../Security/cryptography-secrets/vault/SKILL.md) or [Vault](../../Security/cryptography-secrets/vault/SKILL.md); never in catalog configs.
 - **Row-level security**: Implement Trino view-based RLS by appending `WHERE user_region = current_user_region()`.
 - **Network isolation**: Deploy Trino in same VPC as data sources; use VPC peering for cross-account sources.
-- **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md)**: Log all queries with source, user, and bytes scanned for cost and compliance tracking.
+- **[Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)**: Log all queries with source, user, and bytes scanned for cost and compliance tracking.
 - **TLS**: Enable TLS for all Trino client and interservice connections; mutual TLS for connector auth.
 
 ## Handoff

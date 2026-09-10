@@ -39,7 +39,7 @@ depends_on:
 5. **Validate** — `bundle exec rspec` must pass; `bundle exec rubocop` for style
    - If specs fail: check error output, fix failing examples, re-run with `--format documentation` for detail
    - If N+1 queries surface during review: add `includes`/`eager_load` (see Common Patterns) and re-run specs
-6. **Optimize** — [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) for N+1 queries, add missing indexes, add caching
+6. **Optimize** — [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) for N+1 queries, add missing indexes, add caching
 
 ## Reference Guide
 

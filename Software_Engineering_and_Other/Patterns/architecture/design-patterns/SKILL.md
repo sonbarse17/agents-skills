@@ -375,7 +375,7 @@ class Order {
 | Strategy + Factory | Behavioral + Creational | Pluggable algorithms with auto-selection |
 | Decorator + Proxy | Structural + Structural | Layered cross-cutting concerns |
 | Adapter + Factory | Structural + Creational | Third-party integration abstraction |
-| Saga + CQRS + Event Sourcing | Architectural + Architectural | Distributed transactions with [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) |
+| Saga + CQRS + Event Sourcing | Architectural + Architectural | Distributed transactions with [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) |
 | Chain of Responsibility + Composite | Behavioral + Structural | Request processing pipeline |
 
 ## Performance Considerations
@@ -386,11 +386,11 @@ class Order {
 - Command pattern with many commands — use command bus with async dispatch
 
 ## Security Considerations
-- Proxy pattern for access control (validation proxy, [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) proxy)
+- Proxy pattern for access control (validation proxy, [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) proxy)
 - Strategy pattern for role-based algorithm selection
 - Template Method for secure base implementation with overridable hooks
 - Factory pattern for input validation before object creation
-- Command pattern enables security [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail (every action is an object)
+- Command pattern enables security [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail (every action is an object)
 
 ## Rules
 - Identify axis of change before selecting pattern.
@@ -517,7 +517,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
+- Repudiation: [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -531,7 +531,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Secrets Management
 - Secrets never in code — always in secrets manager ([Vault](../../../../Security/cryptography-secrets/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
+- Access [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -540,7 +540,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
+- Log security-relevant events for [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
 - Design for [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.

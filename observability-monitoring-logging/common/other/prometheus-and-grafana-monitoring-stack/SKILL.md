@@ -366,7 +366,7 @@ a cluster rebuild.
   **Fix:** Retention (`--storage.tsdb.retention.time`/`.size`) wasn't
   bounded relative to actual disk size, or high-cardinality labels
   (e.g. a label containing a raw user ID or full URL path) blew up
-  the number of time series. Bound retention explicitly, and [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)
+  the number of time series. Bound retention explicitly, and [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)
   metrics/labels for unbounded cardinality before scraping them at
   scale.
 

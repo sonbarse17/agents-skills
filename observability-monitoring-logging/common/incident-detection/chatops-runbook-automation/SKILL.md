@@ -50,7 +50,7 @@ convenience into the [incident](../incident/SKILL.md)'s actual root cause. This 
 building the bot/automation layer (Slack/Teams integration,
 StackStorm/Rundeck-style [runbook](../runbook/SKILL.md) execution), permission-scoping who can
 run what, requiring an explicit confirmation step for destructive
-actions, and logging every execution for [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) — treating automation
+actions, and logging every execution for [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) — treating automation
 speed and safety as a design tradeoff to make deliberately, not an
 afterthought.
 
@@ -86,7 +86,7 @@ afterthought.
 - An automation execution backend: **StackStorm** (rule-based, open-
   source automation with a rich action/workflow model, self-hosted) or
   **Rundeck** (job-scheduling/[runbook](../runbook/SKILL.md)-execution focused, strong ACL and
-  [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-log support, both OSS and commercial editions) — or, for a
+  [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-log support, both OSS and commercial editions) — or, for a
   narrower/lighter need, a custom webhook handler invoking a script
   directly. Choose based on how much workflow complexity (multi-step
   [runbooks](../runbooks/SKILL.md), approval gates, conditional branching) the automation needs
@@ -105,7 +105,7 @@ afterthought.
   tokens, database credentials) — store via a secrets manager (see
   [secrets-management](../../../../Security/common/devsecops/SKILL.md)/skills/[secrets-management](../../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md)),
   never embedded in the bot's own chat-command handler code.
-- A durable [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) log destination (a dedicated `#chatops-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)` channel,
+- A durable [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) log destination (a dedicated `#chatops-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)` channel,
   a SIEM, or the execution backend's own history) that is separate from
   the ephemeral [incident](../incident/SKILL.md) channel — [incident](../incident/SKILL.md) channels get archived,
   renamed, or are simply hard to search months later.
@@ -124,7 +124,7 @@ afterthought.
    Tier 3 (destructive or hard-to-reverse): "rollback a production
      deploy", "failover a database", "delete a resource", "restart an
      entire service fleet" — require role-scoped access AND an explicit
-     confirmation step AND full [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging; never fully automated
+     confirmation step AND full [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging; never fully automated
      with no human trigger unless it's a pre-approved, narrowly-scoped
      auto-remediation with its own separate review.
    ```
@@ -196,7 +196,7 @@ afterthought.
    drifts from the actual on-call roster.
 
 5. **Wire StackStorm or Rundeck as the actual execution backend** when
-   [runbooks](../runbooks/SKILL.md) need multi-step logic or richer built-in [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)/ACL support
+   [runbooks](../runbooks/SKILL.md) need multi-step logic or richer built-in [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)/ACL support
    rather than a from-scratch webhook handler. StackStorm rule example
    (triggering a pre-defined action in response to a chat event):
    ```yaml
@@ -225,7 +225,7 @@ afterthought.
          allow: [run]
    ```
 
-6. **Log every executed action to a durable, searchable [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail**,
+6. **Log every executed action to a durable, searchable [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail**,
    including who confirmed it, what target, what the result was, and
    the [incident](../incident/SKILL.md) (if any) it was executed under:
    ```json
@@ -243,12 +243,12 @@ afterthought.
    Post a summary of the action back into the [incident](../incident/SKILL.md) channel *and*
    write the structured record to a durable log/SIEM — the [incident](../incident/SKILL.md)
    channel is for real-time visibility, the durable log is what a
-   postmortem or compliance [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) actually needs months later.
+   postmortem or compliance [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) actually needs months later.
 
 7. **Reflect ChatOps-executed changes into the ITSM record** when the
    org runs ServiceNow or an equivalent change-tracking system, so a
    production change made via chat during an [incident](../incident/SKILL.md) has the same
-   [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail as one made through the normal change process:
+   [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail as one made through the normal change process:
    ```http
    POST /api/now/table/[incident](../incident/SKILL.md)/<INCIDENT_SYS_ID>/comment
    { "comment": "ChatOps action executed: restart checkout-api-prod, confirmed by jane.doe, result: success" }
@@ -271,7 +271,7 @@ afterthought.
 - Classify every [runbook](../runbook/SKILL.md) action by risk tier before building any
   automation for it — this single decision (read-only vs. reversible
   vs. destructive) drives every other design choice (confirmation
-  requirement, RBAC scope, [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) depth) and should never be made
+  requirement, RBAC scope, [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) depth) and should never be made
   implicitly while writing the bot's code.
 - Require a genuinely separate confirmation step for any destructive or
   hard-to-reverse action — never treat the original command itself, or
@@ -284,14 +284,14 @@ afterthought.
   sync with who's actually on-call or actually left the team.
 - Keep the chat-side bot handler thin (validate, authorize, forward) and
   push real execution logic into a dedicated automation backend
-  (StackStorm/Rundeck) with its own ACL and [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) support — a bot that
+  (StackStorm/Rundeck) with its own ACL and [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) support — a bot that
   embeds direct `[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md)`/cloud-API calls in its own handler code is
-  harder to [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) and harder to secure than delegating to a purpose-
+  harder to [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) and harder to secure than delegating to a purpose-
   built execution layer.
 - Log every executed action to a durable destination outside the
   ephemeral [incident](../incident/SKILL.md) channel, and reflect production changes into the
   org's ITSM change record if one exists — an [incident](../incident/SKILL.md) channel that gets
-  archived a month later is not an acceptable sole [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail for a
+  archived a month later is not an acceptable sole [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail for a
   production change.
 - Time-box confirmation windows and expire stale pending confirmations
   — an open-ended "yes, still waiting for you to confirm" state is
@@ -329,7 +329,7 @@ afterthought.
   exactly which ChatOps actions were executed and by whom, but the only
   record is scrollback in an [incident](../incident/SKILL.md) Slack channel that's since been
   archived and is no longer searchable.
-  **Fix:** Write every executed action to a durable, structured [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)
+  **Fix:** Write every executed action to a durable, structured [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)
   log outside the [incident](../incident/SKILL.md) channel (step 6) at execution time, not
   after the fact — the [incident](../incident/SKILL.md) channel is for real-time visibility
   during the [incident](../incident/SKILL.md), not the system of record for what actually
@@ -397,7 +397,7 @@ action:
   parameters: { deployment: "checkout-api", namespace: "prod" }
 ```
 
-[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) record written on execution, plus a comment posted back to the
+[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) record written on execution, plus a comment posted back to the
 linked ServiceNow [incident](../incident/SKILL.md):
 ```json
 {
@@ -419,13 +419,13 @@ Result: the rollback that mitigates the Sev1 happens in under a minute
 from the [incident](../incident/SKILL.md) channel, with an explicit confirmation step that
 would have caught a mistyped target, scoped to only the on-call role
 authorized for production rollbacks, and durably logged both in the
-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) system and the ServiceNow [incident](../incident/SKILL.md) record for the postmortem.
+[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) system and the ServiceNow [incident](../incident/SKILL.md) record for the postmortem.
 
 ## Cross-references
 
 - [servicenow-itsm-integration](../servicenow-itsm-integration/SKILL.md)/SKILL.md) —
   where ChatOps-executed production changes should be reflected for
-  [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) purposes, and the Emergency Change pattern a Tier 3 ChatOps
+  [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) purposes, and the Emergency Change pattern a Tier 3 ChatOps
   action during an [incident](../incident/SKILL.md) should often also trigger.
 - [pagerduty-opsgenie-configuration-validation](../[pagerduty-opsgenie-configuration-validation](../../../DevOps_and_Cloud/Observability_and_SecOps/pagerduty-opsgenie-configuration-validation/SKILL.md)/SKILL.md) —
   this skill's validation findings are a natural destination for a

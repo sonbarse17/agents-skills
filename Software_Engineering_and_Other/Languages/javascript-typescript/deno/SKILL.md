@@ -509,7 +509,7 @@ export const logger = getLogger();
 ## Production Considerations
 
 ### Permission Hardening
-- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) permissions with `deno info --json` to list all used URLs and files
+- [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) permissions with `deno info --json` to list all used URLs and files
 - Use `--deny-env=AWS_SECRET_KEY` to block specific dangerous env access
 - In [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md), run as non-root user: `USER deno` after copy
 - For Fresh, only require `--allow-net --allow-read --allow-env`

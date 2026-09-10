@@ -69,7 +69,7 @@ an org chart.
 **Done when:** a scheduled review process has run at least once and produced revocations, not
 just a report nobody acted on.
 
-## 4. Give break-glass access an [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail, not a standing door
+## 4. Give break-glass access an [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail, not a standing door
 
 Emergency access to production needs to exist, but it should be an event, not a permanent open
 door. A break-glass path should require explicit invocation, log who used it and when, expire

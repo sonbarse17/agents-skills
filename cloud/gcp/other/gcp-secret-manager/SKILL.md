@@ -503,7 +503,7 @@ resource "google_secret_manager_secret_iam_member" "app_accessor" {
 
 - Use Workload Identity for GKE instead of exported service account keys
 - Implement IAM least-privilege at the individual secret level, not project level
-- Enable [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging for all secret access (Cloud [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Logs)
+- Enable [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging for all secret access (Cloud [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logs)
 - Use secret versions for safe rollback during rotation issues
 - Set expiration dates or TTLs on temporary secrets
 - Integrate with Cloud KMS for customer-managed encryption keys

@@ -40,7 +40,7 @@ Automate dependency updates, vulnerability scanning, and policy enforcement with
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "Dependabot", "Renovate", "dependencies", "lock file", "vulnerability scanning", "update strategy", "dependabot.yml", "dependency bump", "automated updates", "version pinning", "patch management", "supply chain security", "SBOM", "npm [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)".
+Exact user phrases: "Dependabot", "Renovate", "dependencies", "lock file", "vulnerability scanning", "update strategy", "dependabot.yml", "dependency bump", "automated updates", "version pinning", "patch management", "supply chain security", "SBOM", "npm [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)".
 
 ### Input Context
 - Package ecosystem (npm, pip, maven, go, cargo, nuget, [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md), terraform).
@@ -257,7 +257,7 @@ on:
     branches: [main]
 
 jobs:
-  [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md):
+  [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md):
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -265,7 +265,7 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - run: npm [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) --[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-level=high
+      - run: npm [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) --[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-level=high
 
   sbom:
     runs-on: ubuntu-latest
@@ -366,7 +366,7 @@ Using @v1 or @main for [GitHub](../../../github-actions/other/github/SKILL.md) A
 Dependabot or Renovate opens 50+ PRs overwhelming CI and reviewers. Set open-pull-requests-limit or prConcurrentLimit. Use grouped updates to reduce PR count.
 
 ### Anti-Pattern 6: Ignoring Transitive Dependencies
-Auditing only direct dependencies misses vulnerabilities in transitive dependencies. Use npm [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md), Dependabot alerts (which scan the full tree), or Renovate vulnerability alerts with OSV.
+Auditing only direct dependencies misses vulnerabilities in transitive dependencies. Use npm [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md), Dependabot alerts (which scan the full tree), or Renovate vulnerability alerts with OSV.
 
 ### Anti-Pattern 7: No Update Schedule
 Running updates daily creates noise. Running updates monthly misses critical security patches. Weekly schedule with security alerts on-demand is the recommended balance.
@@ -377,12 +377,12 @@ Running updates daily creates noise. Running updates monthly misses critical sec
 - Pin all dependency versions (never ranges like ^1.2.3 in production).
 - Use lock files for deterministic installs.
 - Sign commits and tags from Dependabot/Renovate.
-- Scan for malicious packages (Socket.dev, npm [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md), Snyk).
+- Scan for malicious packages (Socket.dev, npm [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md), Snyk).
 - Maintain an SBOM for every release.
 - Enable Dependabot security updates for critical and high alerts.
 
 ### CI Integration
-- Run npm [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) / pip [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) in CI on every PR.
+- Run npm [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) / pip [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) in CI on every PR.
 - Fail CI on critical and high vulnerabilities.
 - Block PRs that add dependencies with known vulnerabilities.
 - Require SBOM generation in release pipeline.
@@ -414,8 +414,8 @@ Running updates daily creates noise. Running updates monthly misses critical sec
 ### Dependabot vs Renovate vs Manual
 Dependabot: simplest setup, [GitHub](../../../github-actions/other/github/SKILL.md)-native, limited customization. Renovate: more configurable, grouped updates, regex manager, self-hostable. Manual: outdated immediately, no vulnerability [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md), human error prone. Start with Dependabot for simple projects, Renovate for complex monorepos.
 
-### npm [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) vs Snyk vs Trivy
-npm [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md): built-in, free, limited to npm ecosystem. Snyk: broader language coverage, fix PRs, license checks, paid. Trivy: open-source, fast, covers filesystem, containers, repos, SBOM. Use npm [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) as baseline, Trivy for CI scanning, Snyk for enterprise.
+### npm [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) vs Snyk vs Trivy
+npm [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md): built-in, free, limited to npm ecosystem. Snyk: broader language coverage, fix PRs, license checks, paid. Trivy: open-source, fast, covers filesystem, containers, repos, SBOM. Use npm [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) as baseline, Trivy for CI scanning, Snyk for enterprise.
 
 ### Lock Files by Ecosystem
 npm (package-lock.json): npm standard, deterministic. yarn (yarn.lock): yarn specific. pnpm (pnpm-lock.yaml): pnpm specific, efficient disk. Cargo.lock: Rust standard. go.sum: Go standard, checksum only. Gemfile.lock: Ruby standard. poetry.lock: [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) poetry.
@@ -430,11 +430,11 @@ npm (package-lock.json): npm standard, deterministic. yarn (yarn.lock): yarn spe
 ### Monthly Tasks
 - Review update configuration for new ecosystems.
 - Update Renovate/Dependabot to latest version.
-- [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) SBOM generation outputs.
+- [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) SBOM generation outputs.
 
 ### Quarterly Tasks
 - Review dependency licensing.
-- [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) transitive dependency footprint.
+- [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) transitive dependency footprint.
 - Update dependency policies based on new supply chain threats.
 - Test rollback of dependency update scenarios.
 
@@ -522,7 +522,7 @@ After completing this skill:
 }
 ```
 
-### Bash: Dependency [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Script
+### Bash: Dependency [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) Script
 
 ```bash
 #!/usr/bin/env bash
@@ -533,8 +533,8 @@ audit_dependencies() {
 
   case "$manifest" in
     package.json)
-      npm [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) --json > [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-report.json
-      jq '.vulnerabilities | to_entries | map(select(.value.severity == "critical")) | length' [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-report.json
+      npm [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) --json > [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-report.json
+      jq '.vulnerabilities | to_entries | map(select(.value.severity == "critical")) | length' [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-report.json
       ;;
     pom.xml)
       mvn org.owasp:dependency-check-maven:check \
@@ -542,7 +542,7 @@ audit_dependencies() {
         -Dformat=JSON
       ;;
     requirements.txt)
-      pip-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) --desc on --format json > [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-report.json
+      pip-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) --desc on --format json > [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-report.json
       ;;
   esac
 }

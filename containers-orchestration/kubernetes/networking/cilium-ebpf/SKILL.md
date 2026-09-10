@@ -496,7 +496,7 @@ resources:
 
 ## Security Considerations
 - CiliumNetworkPolicy with `policyEnforcementMode: always` prevents all traffic by default
-- Enable Hubble [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging for all dropped packets — store in SIEM for compliance
+- Enable Hubble [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging for all dropped packets — store in SIEM for compliance
 - Use toFQDN policies instead of allowing all egress — prevents data exfiltration via DNS
 - WireGuard encryption ensures node-to-node traffic is secure even on untrusted networks
 - Cilium identities are tied to [Kubernetes](../../other/kubernetes/SKILL.md) service accounts — never run containers as root
@@ -511,7 +511,7 @@ resources:
 - Enable encryption (WireGuard) for node-to-node traffic.
 - Use CiliumNetworkPolicy with L7 enforcement for critical services.
 - Apply CiliumClusterWideNetworkPolicy for baseline security (deny all by default).
-- Enable Hubble for network [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail.
+- Enable Hubble for network [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail.
 - Use toFQDN policies instead of allowing all egress to APNs.
 - Enable policy enforcement mode: always.
 

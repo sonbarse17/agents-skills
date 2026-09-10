@@ -41,7 +41,7 @@ Design and maintain SIEM infrastructure, onboard log sources, develop correlatio
 
 ### Input Context
 - SIEM platform (Splunk, Elastic, Sentinel, Wazuh, QRadar) and licensing model
-- Data sources: cloud [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, endpoint logs, network flows, application logs
+- Data sources: cloud [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs, endpoint logs, network flows, application logs
 - Ingestion volume: daily log volume (GB/day), peak ingestion rate, retention requirements
 - Compliance requirements: retention periods, data sovereignty, chain of custody
 - Existing detection rules and false positive rate
@@ -106,14 +106,14 @@ Tier 1 (Day 1-7): Must-have for baseline detection
 ├── Authentication: AD/LDAP, Okta, Azure AD, VPN
 ├── Endpoint: EDR (CrowdStrike, Defender, SentinelOne), Windows Event Logs
 ├── Network: Firewall, DNS, Proxy, IDS/IPS
-├── Cloud: CloudTrail (AWS), Activity Logs (Azure), [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logs (GCP)
+├── Cloud: CloudTrail (AWS), Activity Logs (Azure), [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logs (GCP)
 └── Email: M365 Exchange, Proofpoint, Mimecast
 
 Tier 2 (Week 2-4): Detect common attack patterns
 ├── Application: Web server (IIS, Nginx, Apache), API gateway
-├── Database: SQL Server, [PostgreSQL](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md), [MySQL](../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs
-├── Container: K8s [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) events
-├── SaaS: Salesforce, Slack, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs
+├── Database: SQL Server, [PostgreSQL](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md), [MySQL](../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs
+├── Container: K8s [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs, [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) events
+├── SaaS: Salesforce, Slack, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs
 └── Vulnerability: Scanner results (Nessus, Qualys, Rapid7)
 
 Tier 3 (Month 2-3): Advanced detection and forensics
@@ -363,7 +363,7 @@ recon
 <group name="linux_anomaly">
   <rule id="100001" level="12">
     <if_sid>550</if_sid>
-    <field name="[audit](../../../AI_and_Agents/Operations/audit/SKILL.md).key">user_login</field>
+    <field name="[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md).key">user_login</field>
     <field name="user" type="pcre2">^(?!root|deploy|monitor)</field>
     <description>SSH login from unexpected user account</description>
     <mitre>
@@ -513,7 +513,7 @@ index=windows EventCode=4625 LogonType=3
 | Authentication logs | 7 days | 30 days | 90 days | 1 year | High volume, important for investigations |
 | Endpoint logs (EDR) | 14 days | 60 days | 180 days | 2 years | High value for [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response |
 | Network logs | 7 days | 30 days | 90 days | 1 year | Medium volume, good for lateral movement |
-| Cloud [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs | 14 days | 60 days | 180 days | 3 years | Compliance requirement |
+| Cloud [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs | 14 days | 60 days | 180 days | 3 years | Compliance requirement |
 | Application logs | 3 days | 14 days | 30 days | 90 days | Use case dependent, often low value |
 | DNS logs | 7 days | 30 days | 90 days | 1 year | High value for C2 detection |
 | Threat intel feeds | N/A | Live | 7 days | 30 days | Keep fresh, refresh daily |
@@ -570,20 +570,20 @@ index=windows EventCode=4698 EventLog=Security        // Scheduled task creation
 index=syslog sourcetype=fortigate                     // FW logs - network connections
 ```
 
-### Step 8: Compliance and [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Readiness
+### Step 8: Compliance and [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Readiness
 
 **Log Retention Requirements:**
 
 | Regulation | Retention Requirement | Special Requirements |
 |------------|----------------------|---------------------|
-| PCI DSS 4.0 | 12 months (7 years for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trails) | Chronological ordering, cannot be altered |
+| PCI DSS 4.0 | 12 months (7 years for [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) trails) | Chronological ordering, cannot be altered |
 | SOC 2 | Policy-defined minimum (typically 90 days) | Access control, tamper detection |
 | HIPAA | 6 years | Access log review every 3 months |
 | GDPR | Duration of processing | Right to erasure, data minimization |
 | SOX | 7 years | Financial system logs |
 | NIST 800-53 | 1 year minimum, 3 years for critical | Offline backup, chain of custody |
 
-**[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-Readiness Checklist:**
+**[Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-Readiness Checklist:**
 - [ ] All data sources have documented log generation and retention
 - [ ] Log review process documented and followed
 - [ ] Access to SIEM logged and audited
@@ -637,7 +637,7 @@ Rules deployed and never reviewed accumulate noise. Quarterly use case review: r
 - Test correlation rules against historical data before production deployment
 - Automate enrichment with geoIP, asset DB, threat intel feeds (reduces analyst investigation time 40-60%)
 - Onboard log sources in priority order: authentication → endpoint → network → cloud → application
-- Implement chain of custody for forensic data: immutable logs, access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md), integrity verification
+- Implement chain of custody for forensic data: immutable logs, access [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md), integrity verification
 - Plan for 30-50% annual log volume growth in [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) planning
 - Document [runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md) for every detection use case: triage steps, investigation queries, response actions
 

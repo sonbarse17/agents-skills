@@ -128,11 +128,11 @@ improvised one.
 4. **Deploy through the pipeline's emergency path, not around the
    pipeline entirely.** Most CI/CD platforms support an explicit
    override that still logs who approved and what was skipped, rather
-   than a manual `scp`/SSH deploy that leaves no [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail:
+   than a manual `scp`/SSH deploy that leaves no [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail:
    ```yaml
    # [GitHub](../../../github-actions/other/github/SKILL.md) Actions: environment protection rule that allows a designated
    # "[incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-commander" team to bypass the standard required reviewers
-   # for this one environment, with the bypass itself [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-logged.
+   # for this one environment, with the bypass itself [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-logged.
    environment:
      name: production-hotfix
      # reviewers: [release-approvers]  # normally required
@@ -196,7 +196,7 @@ improvised one.
   production via SSH/manual artifact copy, bypassing the pipeline
   entirely "to save time."
   **Fix:**
-  > **Warning:** this is a destructive shortcut — it leaves no [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)
+  > **Warning:** this is a destructive shortcut — it leaves no [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)
   > trail of what was deployed, by whom, or with what verification, and
   > frequently turns out to be slower than the pipeline's own emergency
   > path once mistakes are accounted for. Use the pipeline's designated

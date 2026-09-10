@@ -25,17 +25,17 @@ depends_on:
   - python
 ---
 
-# Compliance [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Agent
+# Compliance [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Agent
 
 ## Purpose
 Guides compliance audits from framework selection through evidence packaging and remediation tracking.
 
 ## Framework/Methodology
 
-### [AUDIT](../../../AI_and_Agents/Operations/audit/SKILL.md)-READY Framework
-A six-phase approach to achieving and maintaining [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) readiness:
+### [AUDIT](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-READY Framework
+A six-phase approach to achieving and maintaining [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) readiness:
 
-Phase 1 - Align: Identify applicable frameworks based on business domain, data types, customer requirements, and geographic presence. Map framework requirements to system architecture. Determine [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) scope (systems, data, regions, shared infrastructure).
+Phase 1 - Align: Identify applicable frameworks based on business domain, data types, customer requirements, and geographic presence. Map framework requirements to system architecture. Determine [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) scope (systems, data, regions, shared infrastructure).
 
 Phase 2 - Understand: Map controls to system components. Group by control domain (access control, encryption, logging, change management, [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response). Document inherited controls from cloud providers and vendors.
 
@@ -53,7 +53,7 @@ Access Control (All frameworks): MFA, role-based access, least privilege, access
 
 Encryption (All frameworks): TLS for data in transit, AES-256 for data at rest, key management, certificate lifecycle management.
 
-Logging and [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (All frameworks): [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trails for admin actions, data access, configuration changes. Log retention per framework. [Alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) on security events.
+Logging and [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (All frameworks): [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) trails for admin actions, data access, configuration changes. Log retention per framework. [Alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) on security events.
 
 Change Management (SOC2, ISO 27001, PCI): Change approval workflow, separation of duties, emergency change process, back-out procedures, production access controls.
 
@@ -88,18 +88,18 @@ Which industry/regulation applies?
 | Policy documents | Manual | Signed PDFs with versions |
 
 ### Compliance Maturity Model
-| Level | Characteristics | [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Experience |
+| Level | Characteristics | [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Experience |
 |-------|----------------|-----------------|
 | 1 - Reactive | No formal controls, ad-hoc evidence | Painful, many findings |
 | 2 - Documented | Controls documented, manual evidence | Manageable, repeat findings |
 | 3 - Automated | Automated evidence collection, continuous [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) | Smooth, few findings |
 | 4 - Integrated | Compliance built into [DevSecOps](../../common/devsecops/SKILL.md), real-time [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) | Effortless, proactive |
-| 5 - Predictive | Risk-based controls, automated remediation | [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) in hours, not weeks |
+| 5 - Predictive | Risk-based controls, automated remediation | [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) in hours, not weeks |
 
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: compliance, [audit](../../../AI_and_Agents/Operations/audit/SKILL.md), SOC2, ISO27001, GDPR, HIPAA, [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail, compliance check, security [audit](../../../AI_and_Agents/Operations/audit/SKILL.md), regulatory compliance, [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) evidence, control mapping, compliance gap, evidence collection, auditor readiness.
+Exact user phrases: compliance, [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md), SOC2, ISO27001, GDPR, HIPAA, [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail, compliance check, security [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md), regulatory compliance, [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) evidence, control mapping, compliance gap, evidence collection, auditor readiness.
 
 ### Input Context
 Before activating, verify:
@@ -109,7 +109,7 @@ Before activating, verify:
 - What existing controls are already documented and operational?
 
 ### Output Artifact
-Compliance gap analysis + evidence collection checklist + [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) readiness report.
+Compliance gap analysis + evidence collection checklist + [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) readiness report.
 
 ### Response Format
 ```
@@ -138,7 +138,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions.
 - [ ] Evidence collection automated for all controls
 - [ ] Continuous [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) configured for critical controls
 - [ ] Remediation plan with owners and deadlines
-- [ ] [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) evidence package assembled and verified
+- [ ] [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) evidence package assembled and verified
 - [ ] Annual penetration test scheduled
 - [ ] Vendor due diligence documented
 
@@ -166,16 +166,16 @@ Gap severity definitions:
 - Critical: Control absence creates material risk. Immediate regulatory exposure. Remediation within 30 days.
 - High: Control partially implemented but with significant gaps. Remediation within 60 days.
 - Medium: Control implemented but not automated or fully documented. Remediation within 90 days.
-- Low: Control implemented with minor documentation or evidence gaps. Remediation before [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) starts.
+- Low: Control implemented with minor documentation or evidence gaps. Remediation before [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) starts.
 
 Gap analysis output should be a prioritized remediation plan with assigned owners, target dates, and estimated effort. Review with executive sponsor.
 
 ### Step 3: Evidence Collection Automation
-Configure structured logging at all system boundaries. Enable [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trails for admin actions, data access, and configuration changes. Implement access review workflows. Automate evidence gathering scripts. Timestamp and hash all evidence for immutability.
+Configure structured logging at all system boundaries. Enable [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) trails for admin actions, data access, and configuration changes. Implement access review workflows. Automate evidence gathering scripts. Timestamp and hash all evidence for immutability.
 
 Evidence types:
 - Configuration snapshots: [Infrastructure-as-Code](../../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) state files, CI/CD pipeline definitions
-- Log exports: System logs, [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, access logs, change logs
+- Log exports: System logs, [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs, access logs, change logs
 - Policy documents: Signed policies, procedure documents, [runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md)
 - Review records: Access review sign-offs, change advisory board minutes, risk assessment reports
 - Training records: Security awareness training completions, role-based training records
@@ -199,16 +199,16 @@ Continuous [monitoring](../../../observability-monitoring-logging/common/monitor
 
 [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) tools: AWS Config, Azure Policy, GCP Organization Policy, CSPM platforms (Wiz, Prisma Cloud, CrowdStrike), SIEM integration.
 
-### Step 5: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Preparation and Evidence Package
-Assemble evidence package mapped to each control. Prepare system description document. Conduct pre-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) walkthrough with stakeholders. Prepare evidence access for auditors. Schedule interview slots.
+### Step 5: [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Preparation and Evidence Package
+Assemble evidence package mapped to each control. Prepare system description document. Conduct pre-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) walkthrough with stakeholders. Prepare evidence access for auditors. Schedule interview slots.
 
-[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) preparation timeline:
-- T-90 days: Confirm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) scope and framework version. Update system description.
+[Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) preparation timeline:
+- T-90 days: Confirm [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) scope and framework version. Update system description.
 - T-60 days: Run internal readiness assessment. Remediate high-priority gaps.
-- T-30 days: Assemble evidence package. Run mock [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) interviews.
+- T-30 days: Assemble evidence package. Run mock [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) interviews.
 - T-14 days: Validate evidence accessibility. Confirm auditor schedule.
 - T-7 days: Pre-brief executive team. Distribute evidence access instructions.
-- T-0: [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) kickoff.
+- T-0: [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) kickoff.
 
 Evidence access: create a secure portal or shared drive with read-only access for auditors. Organize evidence by control. Include timestamps and hash verification.
 
@@ -221,7 +221,7 @@ Remediation workflow:
 3. Owner implements remediation
 4. Owner submits closure evidence
 5. Compliance team verifies remediation
-6. Internal [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) validates effectiveness
+6. Internal [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) validates effectiveness
 7. Finding closed and reported to auditor
 
 Track remediation metrics: open findings by severity, average time-to-close, findings aging, repeat findings (same issue recurring across audits).
@@ -230,31 +230,31 @@ Track remediation metrics: open findings by severity, average time-to-close, fin
 
 Pitfall 1: Treating compliance as a point-in-time exercise. Compliance is not a project with an end date. It is an ongoing program. Controls degrade, personnel change, architecture evolves. Continuous [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) is essential.
 
-Pitfall 2: Manual evidence collection. Gathering evidence manually before each [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) is time-consuming and error-prone. Automate evidence collection so it runs continuously. The [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) package should be available at all times.
+Pitfall 2: Manual evidence collection. Gathering evidence manually before each [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) is time-consuming and error-prone. Automate evidence collection so it runs continuously. The [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) package should be available at all times.
 
 Pitfall 3: Over-relying on inherited controls. Cloud provider certifications reduce scope but do not eliminate it. You still need to demonstrate you have configured the provider services correctly (shared responsibility model).
 
 Pitfall 4: Documenting controls but not operating them. A policy that no one follows is worse than no policy. Auditors will test operating effectiveness, not just design. Train teams and verify compliance.
 
-Pitfall 5: Not scoping the [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) correctly. Including too many systems increases cost and complexity. Excluding critical systems creates risk. Define scope boundaries clearly with system descriptions and data flow diagrams.
+Pitfall 5: Not scoping the [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) correctly. Including too many systems increases cost and complexity. Excluding critical systems creates risk. Define scope boundaries clearly with system descriptions and data flow diagrams.
 
 Pitfall 6: Ignoring vendor compliance. If a vendor processes data on your behalf, they are in scope. Vendor due diligence (SOC2 reports, ISO certificates, security questionnaires) must be current.
 
-Pitfall 7: No remediation follow-through. [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) findings that are not tracked to closure will recur. A formal remediation program with owners, deadlines, and verification is required.
+Pitfall 7: No remediation follow-through. [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) findings that are not tracked to closure will recur. A formal remediation program with owners, deadlines, and verification is required.
 
 ## Best Practices
 
 Practice 1: Build compliance into development workflows. [Infrastructure-as-Code](../../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) templates should enforce compliance defaults. CI/CD pipelines should run compliance checks. Pull request templates should include compliance review checklist.
 
-Practice 2: Automate evidence collection as early as possible. The goal is to have an [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-ready evidence package available on demand, not assembled in a panic before each [audit](../../../AI_and_Agents/Operations/audit/SKILL.md).
+Practice 2: Automate evidence collection as early as possible. The goal is to have an [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-ready evidence package available on demand, not assembled in a panic before each [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md).
 
 Practice 3: Maintain a single source of truth for control status. A compliance dashboard that maps each control to its implementation status, evidence location, and owner. Update in real-time as systems change.
 
-Practice 4: Run a pre-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) readiness assessment 60 days before the actual [audit](../../../AI_and_Agents/Operations/audit/SKILL.md). Use an internal team or external consultant. Identify gaps while there is still time to remediate.
+Practice 4: Run a pre-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) readiness assessment 60 days before the actual [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md). Use an internal team or external consultant. Identify gaps while there is still time to remediate.
 
 Practice 5: Train teams on compliance responsibilities. Developers should understand what controls apply to their code. Operations should understand evidence collection requirements. Security should understand [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) expectations.
 
-Practice 6: Conduct periodic tabletop audits. Walk through an [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) scenario with the team. Practice answering auditor questions, accessing evidence, and demonstrating controls.
+Practice 6: Conduct periodic tabletop audits. Walk through an [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) scenario with the team. Practice answering auditor questions, accessing evidence, and demonstrating controls.
 
 ## Standards Alignment
 
@@ -262,7 +262,7 @@ Practice 6: Conduct periodic tabletop audits. Walk through an [audit](../../../A
 |------------------|------|---------------|------|-------|-------------|
 | Access Control | CC6.1 | A.9 | Art. 32 | 164.312(a)(1) | Req. 7 |
 | Encryption | CC6.7 | A.8 | Art. 32 | 164.312(a)(2)(iv) | Req. 4 |
-| [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging | CC4.1 | A.12.4 | Art. 33 | 164.312(b) | Req. 10 |
+| [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logging | CC4.1 | A.12.4 | Art. 33 | 164.312(b) | Req. 10 |
 | Change Management | CC8.1 | A.12.1 | — | 164.310(a)(2) | Req. 6.4 |
 | [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response | CC7.3 | A.5.24 | Art. 33 | 164.308(a)(6) | Req. 12.10 |
 | Vulnerability Mgmt | CC7.1 | A.8.8 | Art. 32 | 164.308(a)(1)(ii) | Req. 6.3 |
@@ -270,10 +270,10 @@ Practice 6: Conduct periodic tabletop audits. Walk through an [audit](../../../A
 
 ## Templates & Tools
 
-### [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Readiness Checklist
+### [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Readiness Checklist
 ```
-## Pre-[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Preparation
-- [ ] [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) scope documented and approved
+## Pre-[Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Preparation
+- [ ] [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) scope documented and approved
 - [ ] System description current and accurate
 - [ ] Control matrix mapped to framework requirements
 - [ ] Evidence collection automated for all controls
@@ -287,28 +287,28 @@ Practice 6: Conduct periodic tabletop audits. Walk through an [audit](../../../A
 - [ ] Policy documents (signed, dated, current)
 - [ ] Procedure documents (operating procedures, [runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md))
 - [ ] Configuration evidence (IaC state, system configs)
-- [ ] Log evidence (access logs, [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs, change logs)
+- [ ] Log evidence (access logs, [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs, change logs)
 - [ ] Review evidence (access review sign-offs, CAB minutes)
 - [ ] Test evidence (pen test report, vulnerability scans, DR tests)
 - [ ] Training evidence (completion records, awareness training)
 
-## During [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
-- [ ] [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) kickoff completed with scope confirmation
+## During [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
+- [ ] [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) kickoff completed with scope confirmation
 - [ ] Evidence access provided to auditors
 - [ ] Interviews scheduled and attended
 - [ ] Requests for information responded within 24 hours
-- [ ] Daily debrief with [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) team
+- [ ] Daily debrief with [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) team
 - [ ] Preliminary findings reviewed
 ```
 
 ### Tools Reference
 - Vanta / Drata / Secureframe for automated compliance
 - Wiz / Prisma Cloud for CSPM and compliance scanning
-- AWS [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Manager for AWS-native compliance
+- AWS [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Manager for AWS-native compliance
 - Jira / Asana for remediation tracking
 - Confluence / Notion for policy documentation
 - Okta / Azure AD for access control evidence
-- Splunk / ELK for log management and [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trails
+- Splunk / ELK for log management and [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) trails
 
 ### Automated Compliance Testing Patterns
 ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
@@ -510,7 +510,7 @@ print(collector.snapshot_infra(infra_state))
 - Critical gaps (remediation < 30 days): {count}
 - High gaps (remediation < 60 days): {count}
 - Medium gaps (remediation < 90 days): {count}
-- Low gaps (before [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)): {count}
+- Low gaps (before [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)): {count}
 
 ### Readiness Score: {85/100}
 ```
@@ -520,8 +520,8 @@ print(collector.snapshot_infra(infra_state))
 ### Anti-Pattern 1: Compliance Theater
 Implementing controls that look good in documentation but have no operational reality. Examples: writing an access control policy without enforcing MFA, having a password policy that allows `Password123!`, maintaining a [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) that no one follows. Auditors increasingly test operating effectiveness, not just design.
 
-### Anti-Pattern 2: Point-in-Time [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Prep
-Scrambling for 6 weeks before the [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) to collect evidence. This is stressful, error-prone, and creates a "cleanup" culture. Real compliance is 365-day continuous evidence collection with automated tooling.
+### Anti-Pattern 2: Point-in-Time [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Prep
+Scrambling for 6 weeks before the [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) to collect evidence. This is stressful, error-prone, and creates a "cleanup" culture. Real compliance is 365-day continuous evidence collection with automated tooling.
 
 ### Anti-Pattern 3: Framework Proliferation
 Adopting every framework the business touches leads to hundreds of overlapping controls without consolidation. Teams become overwhelmed and compliance fatigue sets in. Use a unified control framework with framework-specific overlays.
@@ -535,13 +535,13 @@ Screenshots and PDFs without timestamps or hashes can be challenged by auditors.
 ## Case Studies
 
 ### Case Study 1: SOC2 Type II in 6 Months
-A SaaS startup needed SOC2 Type II for an enterprise customer within 6 months. Using an automated compliance platform, they mapped 120 controls, implemented 35 new technical controls, and automated evidence collection for 80% of controls. The internal readiness assessment at T-60 days identified 12 gaps which were remediated by T-14 days. The Type II [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) passed with zero findings. Total compliance program cost: under $50K.
+A SaaS startup needed SOC2 Type II for an enterprise customer within 6 months. Using an automated compliance platform, they mapped 120 controls, implemented 35 new technical controls, and automated evidence collection for 80% of controls. The internal readiness assessment at T-60 days identified 12 gaps which were remediated by T-14 days. The Type II [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) passed with zero findings. Total compliance program cost: under $50K.
 
 ### Case Study 2: Multi-Framework Alignment
-A healthcare SaaS company needed SOC2 + HIPAA + GDPR compliance simultaneously. By defining a unified control framework (270 controls total) with framework-specific overlays, they eliminated duplicate evidence collection. Each control had a primary framework mapping and cross-reference to other frameworks. The combined [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) program cost 30% less than three separate programs. [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) burden reduced from 6 weeks to 3 weeks.
+A healthcare SaaS company needed SOC2 + HIPAA + GDPR compliance simultaneously. By defining a unified control framework (270 controls total) with framework-specific overlays, they eliminated duplicate evidence collection. Each control had a primary framework mapping and cross-reference to other frameworks. The combined [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) program cost 30% less than three separate programs. [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) burden reduced from 6 weeks to 3 weeks.
 
-### Case Study 3: Failed [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Recovery
-A fintech company failed their SOC2 Type II [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) due to insufficient access control evidence. Gap analysis showed access reviews were conducted but not documented with sign-offs, and termination procedures were not consistently followed. The remediation program implemented automated access review workflows, termination verification, and quarterly reporting. The re-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) passed with one low-severity finding.
+### Case Study 3: Failed [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Recovery
+A fintech company failed their SOC2 Type II [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) due to insufficient access control evidence. Gap analysis showed access reviews were conducted but not documented with sign-offs, and termination procedures were not consistently followed. The remediation program implemented automated access review workflows, termination verification, and quarterly reporting. The re-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) passed with one low-severity finding.
 
 ## Rules
 - Evidence is immutable and timestamped with cryptographic hashes.
@@ -555,18 +555,18 @@ A fintech company failed their SOC2 Type II [audit](../../../AI_and_Agents/Opera
 - Control implementation must be verified by test evidence, not just design documentation.
 - Compliance training conducted at onboarding and annually thereafter.
 - Access reviews conducted quarterly for privileged access, annually for standard access.
-- Internal readiness assessment performed minimum 60 days before external [audit](../../../AI_and_Agents/Operations/audit/SKILL.md).
-- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) findings tracked in formal remediation program with owners and deadlines.
+- Internal readiness assessment performed minimum 60 days before external [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md).
+- [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) findings tracked in formal remediation program with owners and deadlines.
 - Cloud provider certifications reviewed annually for continued applicability.
 
 ## References
-  - ../../../Global_References/[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-automation.md -- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Automation
-  - ../../../Global_References/compliance-audit_audit-checklist.md -- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Checklist
-  - ../../../Global_References/[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-evidence.md -- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Evidence Collection and Preservation
-  - ../../../Global_References/compliance-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-advanced.md -- Compliance [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Advanced Topics
-  - ../../../Global_References/compliance-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-framework.md -- Compliance [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Framework Reference
+  - ../../../Global_References/[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-automation.md -- [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Automation
+  - ../../../Global_References/compliance-audit_audit-checklist.md -- [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Checklist
+  - ../../../Global_References/[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-evidence.md -- [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Evidence Collection and Preservation
+  - ../../../Global_References/compliance-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-advanced.md -- Compliance [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Advanced Topics
+  - ../../../Global_References/compliance-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-framework.md -- Compliance [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Framework Reference
   - ../../../Global_References/compliance-automation-tools.md -- Compliance Automation Tools Reference
-  - ../../../Global_References/compliance-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-fundamentals.md -- Compliance [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Fundamentals
+  - ../../../Global_References/compliance-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-fundamentals.md -- Compliance [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Fundamentals
   - ../../../Global_References/compliance-audit_compliance-frameworks.md -- Compliance Frameworks Reference
   - ../../../Global_References/compliance-[incident-response](../[incident](../incident/SKILL.md)-response/SKILL.md).md -- Compliance [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response and Breach Notification
 ## Handoff

@@ -143,7 +143,7 @@ codebase.
 5. **Add an inline suppression mechanism with mandatory justification**,
    not silent ignores. Semgrep example:
    ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
-   # nosemgrep: [python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md).lang.security.[audit](../../../AI_and_Agents/Operations/audit/SKILL.md).subprocess-shell-true
+   # nosemgrep: [python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md).lang.security.[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md).subprocess-shell-true
    # Justification: `cmd` is built from a fixed allowlist, see ALLOWED_CMDS above.
    subprocess.run(cmd, shell=True)
    ```

@@ -593,7 +593,7 @@ Using BDD for all testing needs including unit tests, integration tests, and per
 | Business readability score | >4/5 survey | Stakeholder survey | Rewrite scenarios; reduce technical language |
 | Orphan feature files | 0 in repo | Lint check | Add to CI lint stage; alert on detection |
 | Average steps per scenario | 4-7 steps | Code analysis | Review long scenarios; split where appropriate |
-| Scenario-to-requirement mapping | 100% traceable | Tag [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) | Enforce tag conventions; automated traceability check |
+| Scenario-to-requirement mapping | 100% traceable | Tag [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) | Enforce tag conventions; automated traceability check |
 
 ## Expanded SBE Process Detail
 

@@ -588,7 +588,7 @@ A B2B document generation API had flat-rate pricing at $199/month with a 5-docum
 New model: $29/month base + $10 per document. Light users saw 50-85% savings. Heavy users paid more but usage was predictable with a price cap at $199/month for unlimited. Results: signups increased 140% (low barrier). Light user churn reduced 45%. Heavy user revenue increased 35%. Overall revenue increased 28% due to volume growth.
 
 ### Case Study 5: Enterprise Tier as Growth Driver
-A B2B collaboration tool had two tiers: Free ($0) and Pro ($12/user/month). Enterprise sales were ad-hoc with no published pricing. The team created a published Enterprise tier at $35/user/month with SSO, advanced admin, [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs, and SLA. Enterprise tier was positioned as the anchor.
+A B2B collaboration tool had two tiers: Free ($0) and Pro ($12/user/month). Enterprise sales were ad-hoc with no published pricing. The team created a published Enterprise tier at $35/user/month with SSO, advanced admin, [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) logs, and SLA. Enterprise tier was positioned as the anchor.
 
 Impact: Pro tier conversion increased 18% (decoy effect). Enterprise direct sales increased 40% (published pricing reduced sales friction). 15% of new Pro signups came from organizations that would eventually upgrade to Enterprise. The Enterprise anchor made Pro feel like a safe, reasonable choice.
 

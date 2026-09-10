@@ -361,7 +361,7 @@ nc <host1-ip> 6666
 - **Egress Filtering**: Outbound connections may be blocked
 - **Port Selection**: Use common ports (80, 443, 53) to blend with normal traffic
 
-### [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Logging
+### [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logging
 
 Document all netcat activities:
 - Connection timestamps and duration
@@ -570,7 +570,7 @@ Enhance defensive posture:
 - Monitor for process execution from unusual locations
 - Deploy EDR solutions to detect reverse shell patterns
 - Enable egress filtering on firewalls
-- [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Sysmon Event ID 1 (Process Creation) for nc/ncat
+- [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) Sysmon Event ID 1 (Process Creation) for nc/ncat
 - Detect named pipe creation (Linux: mkfifo)
 - Monitor cron jobs and systemd services for suspicious entries
 

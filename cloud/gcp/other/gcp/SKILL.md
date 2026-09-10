@@ -509,7 +509,7 @@ Setting max-instances too high risks cost spikes under load. Setting min-instanc
 - Binary Authorization for container deployment attestation.
 - Secret Manager for secrets -- never in ConfigMaps or env vars.
 - IAM Conditions for time-bound, IP-restricted access.
-- Cloud [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Logs enabled for all services.
+- Cloud [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logs enabled for all services.
 
 ### Cost Optimization
 - Preemptible/Spot for stateless batch and worker workloads.
@@ -534,7 +534,7 @@ Setting max-instances too high risks cost spikes under load. Setting min-instanc
 - Cloud Build + Cloud Deploy for CI/CD with Skaffold.
 - Artifact Registry over Container Registry (new standard).
 - Resource labels for cost allocation and organization.
-- Cloud [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Logs enabled for all services.
+- Cloud [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logs enabled for all services.
 - IAM least privilege -- custom roles over predefined.
 - Budget alerts before any production deployment.
 - Shared VPC over peering for multi-project networking.

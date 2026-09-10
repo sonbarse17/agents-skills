@@ -37,7 +37,7 @@ them started" while the ticket to scope it down never gets filed, an
 on-call engineer's [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) break-fix grant that quietly becomes
 permanent. This skill covers that everyday operational transaction —
 receiving a request, granting the narrowest permission that satisfies it,
-attaching a hard expiry, and leaving an [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail that a review can
+attaching a hard expiry, and leaving an [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail that a review can
 reconstruct without asking "who approved this and why" — as a repeatable
 process, not a design exercise. It assumes the underlying policy/role
 structure already exists (or is designed per
@@ -73,7 +73,7 @@ structure.
 - A ticketing system (Jira, ServiceNow, or equivalent) or a version-
   controlled access-request record as the system of truth for the
   request — an access grant made only via console click-ops with no
-  linked ticket has no [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail.
+  linked ticket has no [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail.
 - Time-bound access mechanics available on the platform: AWS IAM
   Identity Center permission set assignments or IAM Conditions with a
   `aws:CurrentTime`/`aws:TokenIssueTime` expiry, Azure AD **Privileged
@@ -142,7 +142,7 @@ structure.
      --condition='expression=request.time < timestamp("2026-08-27T00:00:00Z"),title=contractor-temp-access,description=Expires 2026-08-27'
    ```
 
-3. **Record the grant in the [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail immediately**, linking: the
+3. **Record the grant in the [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail immediately**, linking: the
    ticket ID, the exact policy/role/condition applied, the expiry
    timestamp, and the approver — in the ticket itself and, ideally, as a
    tag/label on the IAM resource (`access-ticket=JIRA-1234`,
@@ -210,7 +210,7 @@ structure.
   humans forget, expiring conditions don't.
 - **Tag every temporary grant with its ticket ID and expiry** on the IAM
   object itself, not only in the ticketing system, so an access review
-  or `[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)` [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) can reconcile cloud-side reality against
+  or `[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)` [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) can reconcile cloud-side reality against
   the ticket trail without cross-referencing two systems by hand.
 - **Revoke access the same day someone's role or employment changes** —
   a scoped one-off grant left dangling after an offboarding is exactly
@@ -275,7 +275,7 @@ structure.
   access").
   **Fix:** This is a process-design failure, not just a queue-depth
   problem — it produces access equivalent to an ungoverned grant with
-  zero [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail. Set an SLA for routine, pre-approved-pattern requests
+  zero [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail. Set an SLA for routine, pre-approved-pattern requests
   (e.g. same-team standard onboarding access) to auto-approve or
   fast-track, reserving manual approval friction for genuinely unusual or
   high-privilege requests.
@@ -300,7 +300,7 @@ team build a report. They need read-only access to one S3 bucket
    `access-ticket=JIRA-4821`, `expires=2026-09-08`, `granted-by=<manager>`.
 4. The ticket is updated with the exact policy JSON applied and the
    expiry date, then closed as fulfilled — the ticket itself is now the
-   [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) record a review can pull up months later.
+   [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) record a review can pull up months later.
 5. A weekly scheduled script queries all IAM users/roles for an
    `expires=` tag in the past; when `jsmith`'s tag matches after
    2026-09-08, it opens a low-priority ticket confirming the grant either

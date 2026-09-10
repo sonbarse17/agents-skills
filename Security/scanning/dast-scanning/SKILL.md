@@ -242,7 +242,7 @@ class BurpScanner:
         """Create and start a new scan."""
         payload = {
             'scan_configurations': [
-                {'name': 'Crawl and [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) - Balanced'}
+                {'name': 'Crawl and [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) - Balanced'}
             ],
             'scope': {
                 'include': [{'rule': target_url}]

@@ -42,7 +42,7 @@ Exact user phrases: "structured logging", "JSON logging", "log format", "logging
 Before activating, verify:
 - Logging framework (Winston/Pino/Serilog/Log4j/logrus/zerolog)
 - Log aggregation system (Elasticsearch/Loki/CloudWatch/[Datadog](../../../datadog/other/datadog/SKILL.md))
-- Compliance requirements ([audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) log retention, PII handling, access logs)
+- Compliance requirements ([audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) log retention, PII handling, access logs)
 
 ### Output Artifact
 Logging schema and configuration as formatted text.
@@ -265,7 +265,7 @@ app.use((req, res, next) => {
 ```
 
 ### Step 5: PII Redaction
-Pattern-based redaction at the logger boundary (never in business logic). Redact: passwords, secrets, tokens, API keys, SSN, email addresses, credit card numbers, phone numbers. Masked format: `j***@example.com`, `****-****-****-1234`. Store reversible hash for [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) purposes.
+Pattern-based redaction at the logger boundary (never in business logic). Redact: passwords, secrets, tokens, API keys, SSN, email addresses, credit card numbers, phone numbers. Masked format: `j***@example.com`, `****-****-****-1234`. Store reversible hash for [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) purposes.
 
 ```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const REDACTION_PATTERNS = [
@@ -522,7 +522,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Threat Modeling (STRIDE)
 - Spoofing: Identity validation, authentication
 - Tampering: Integrity checks, digital signatures
-- Repudiation: [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs, non-repudiation
+- Repudiation: [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs, non-repudiation
 - Information disclosure: Encryption, access control
 - Denial of service: Rate limiting, resource quotas
 - Elevation of privilege: Principle of least privilege
@@ -536,7 +536,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Secrets Management
 - Secrets never in code — always in secrets manager ([Vault](../../../../Security/cryptography-secrets/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
-- Access [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
+- Access [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets
 - Principle of least privilege: each service gets only its own secrets
 
@@ -545,7 +545,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - All inputs validated, all outputs encoded, all errors handled.
 - Defend in depth — multiple layers of security controls.
 - Fail securely — errors default to safe behavior.
-- Log security-relevant events for [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
+- Log security-relevant events for [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
 - Design for [observability](../../fundamentals/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.

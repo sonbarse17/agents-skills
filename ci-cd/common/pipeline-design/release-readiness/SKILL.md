@@ -127,7 +127,7 @@ Effort keywords (`quick` / `standard` / `deep`) and the shared `<focus>` and
 
 ## Related skills
 
-- `/[k8s-review](../../../../containers-orchestration/kubernetes/troubleshooting/k8s-review/SKILL.md)`, `/[terraform-review](../../../../infrastructure-as-code/terraform/troubleshooting/terraform-review/SKILL.md)`, `/[pipeline-review](../pipeline-review/SKILL.md)`, `/[db-review](../../../../AI_and_Agents/Operations/db-review/SKILL.md)` — the
+- `/[k8s-review](../../../../containers-orchestration/kubernetes/troubleshooting/k8s-review/SKILL.md)`, `/[terraform-review](../../../../infrastructure-as-code/terraform/troubleshooting/terraform-review/SKILL.md)`, `/[pipeline-review](../pipeline-review/SKILL.md)`, `/[db-review](../../../../AI_and_Agents/Operations/common/db-review/SKILL.md)` — the
   domain depth behind a failed gate.
 - `/[observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)` — alert and dashboard gaps for this release.
 - `/[dr-review](../../../../containers-orchestration/common/other/dr-review/SKILL.md)` — restore and failover readiness for stateful services.
@@ -142,7 +142,7 @@ Effort keywords (`quick` / `standard` / `deep`) and the shared `<focus>` and
       not just that a command exists.
 - [ ] Artifact identity was checked: what was tested is byte-for-byte what deploys.
 - [ ] DB migration reversibility and backward compatibility were checked
-      explicitly (or routed to `/[db-review](../../../../AI_and_Agents/Operations/db-review/SKILL.md)`).
+      explicitly (or routed to `/[db-review](../../../../AI_and_Agents/Operations/common/db-review/SKILL.md)`).
 - [ ] The bar was calibrated to the service's criticality, and the calibration
       is stated out loud.
 - [ ] Hard blockers are separated from ship-with-follow-up, each with a plan.

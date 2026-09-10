@@ -333,7 +333,7 @@ export class ResendProvider implements EmailProvider {
   }
 
   async verifyAddress(email: string) {
-    const { data } = await this.client.contacts.create({ email, audienceId: '[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)' });
+    const { data } = await this.client.contacts.create({ email, audienceId: '[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)' });
     return !!data;
   }
 

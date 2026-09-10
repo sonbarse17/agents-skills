@@ -169,7 +169,7 @@ first place.
    grep -q "^- " diff.txt && { echo "unexpected deletions in diff"; cat diff.txt; exit 1; }
    ```
 
-8. **[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Admin API exposure as part of validation**, not just
+8. **[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) Admin API exposure as part of validation**, not just
    plugin/route correctness — an unauthenticated Admin API reachable
    outside a trusted network is a standing risk regardless of how
    correct the Route/Plugin config itself is:
@@ -199,7 +199,7 @@ first place.
   staging (expect 401 without credentials, 429 past the limit) before
   trusting a config read-back alone — a plugin can be present and
   correctly attached while still using the wrong header name or scope.
-- Periodically [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Admin API network exposure independent of any
+- Periodically [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) Admin API network exposure independent of any
   specific config change — it's a standing risk that doesn't show up in
   a `kong.yml`/CRD diff at all.
 

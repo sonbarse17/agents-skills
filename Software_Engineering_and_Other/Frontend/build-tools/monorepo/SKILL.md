@@ -518,7 +518,7 @@ jobs:
 - Turborepo remote cache over Vercel uses HTTPS — verify TLS configuration
 - pnpm workspace protocol (`workspace:^`) prevents accidental registry publishing of internal packages
 - Module boundary rules prevent accidental cross-scope imports that could leak internal APIs
-- [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) `nx.json` and `turbo.json` exposure in CI logs — tokens may appear in verbose output
+- [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) `nx.json` and `turbo.json` exposure in CI logs — tokens may appear in verbose output
 - Use `.nxignore` to prevent sensitive directories from being cached or distributed
 
 ## Production Considerations
@@ -528,7 +528,7 @@ jobs:
 - Run `nx graph --affected --base=main` before merge to validate dependency impact.
 - Configure Nx Cloud or Turborepo remote cache for faster CI across branches.
 - Use task distribution (Nx Agents) for large monorepos with 50+ projects.
-- Regularly [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) circular dependencies with `nx graph --watch`.
+- Regularly [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) circular dependencies with `nx graph --watch`.
 - Pin `tsconfig.paths` to enforce type-safe module resolution.
 - Use `pnpm` over `npm` or `yarn` for faster installs and disk efficiency.
 - Enable Nx task distribution via Nx Agents to parallelize across multiple machines.

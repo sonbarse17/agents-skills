@@ -603,7 +603,7 @@ class SQLLineageExtractor:
 
 - **Column sensitivity**: Tag sensitive columns in lineage with classification label (PII, PCI); strip from unprivileged views.
 - **Access controls**: Restrict lineage graph query API by role (analysts see table-level, engineers see column-level).
-- **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging**: Log all lineage queries and export operations for data governance compliance.
+- **[Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) logging**: Log all lineage queries and export operations for data governance compliance.
 - **Encryption at rest**: Encrypt lineage graph storage (AES-256) and Kafka topics at rest.
 - **Input validation**: Validate OpenLineage event schema before ingestion; reject malformed events.
 

@@ -521,7 +521,7 @@ class DataFlightClient:
 - **Schema validation**: Validate incoming Avro/Protobuf against schema registry to prevent malicious payloads.
 - **Data masking**: Mask PII columns at write time (Parquet mod encrypt or custom transform).
 - **Access control**: Apply file-level ACLs on data lake storage (S3 bucket policies, HDFS ACLs).
-- **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md)**: Log schema registry changes and file format conversions for compliance tracking.
+- **[Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)**: Log schema registry changes and file format conversions for compliance tracking.
 
 ## Handoff
 `[data-streaming](../streaming/SKILL.md)` for Kafka/Avro schema management and stream processing

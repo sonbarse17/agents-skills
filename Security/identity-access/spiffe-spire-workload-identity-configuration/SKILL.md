@@ -103,7 +103,7 @@ rotation, and trust domain federation.
   certificates chained to an already-trusted root.
 - A **SPIRE Agent** running on every node that hosts workloads needing an
   identity — deployed as a [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) DaemonSet for a [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster,
-  or as a system service on each VM/[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) host.
+  or as a system service on each VM/[bare-metal](../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/bare-metal/SKILL.md) host.
 - A **node attestation** mechanism appropriate to the environment — the
   [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) PSAT (Projected Service Account Token) node attestor for
   [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), the AWS/GCP/Azure node attestor plugins for cloud VM
@@ -360,7 +360,7 @@ rotation, and trust domain federation.
   (or an otherwise too-broad selector) rather than combining namespace
   with a service-account or pod-label selector specific to the intended
   workload (step 4). Tighten every registration entry to the narrowest
-  selector combination the workload attestor supports, and [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
+  selector combination the workload attestor supports, and [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
   existing entries for this exact broad-selector pattern.
 
 - **Symptom:** mTLS between two SPIRE-issued workloads succeeds even
@@ -394,7 +394,7 @@ rotation, and trust domain federation.
   genuinely need cross-domain access.
 
 - **Symptom:** A newly onboarded team stands up their own node
-  attestation using `join_token`, and months later an [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) can't
+  attestation using `join_token`, and months later an [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) can't
   explain what actually proves a node running under that token is the
   node it claims to be.
   **Fix:** `join_token` node attestation provides no cryptographic
