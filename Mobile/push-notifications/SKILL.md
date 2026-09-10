@@ -65,9 +65,9 @@ Which push service?
 ├── [Android](../android/SKILL.md)-only → FCM directly (required for Play Store apps)
 ├── iOS + [Android](../android/SKILL.md) → FCM (unified, single server endpoint)
 │   └── FCM handles APNs relay for iOS automatically
-├── Cross-platform (Flutter/RN) → [Firebase](../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) Cloud Messaging SDK
-│   └── flutter-fire / react-native-[firebase](../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) handles both platforms
-└── Need advanced analytics → [Firebase](../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) + BigQuery / custom analytics
+├── Cross-platform (Flutter/RN) → [Firebase](../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) Cloud Messaging SDK
+│   └── flutter-fire / react-native-[firebase](../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) handles both platforms
+└── Need advanced analytics → [Firebase](../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) + BigQuery / custom analytics
 ```
 
 ### Notification Type Selection
@@ -246,9 +246,9 @@ class PushService {
 }
 ```
 
-### React Native — @react-native-[firebase](../../Software_Engineering_and_Other/Databases/firebase/SKILL.md)/messaging
+### React Native — @react-native-[firebase](../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md)/messaging
 ```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
-import messaging from '@react-native-[firebase](../../Software_Engineering_and_Other/Databases/firebase/SKILL.md)/messaging';
+import messaging from '@react-native-[firebase](../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md)/messaging';
 import notifee, { AndroidImportance } from '@notifee/react-native';
 
 class PushService {
@@ -338,9 +338,9 @@ class MyFirebaseService : FirebaseMessagingService() {
 
 ## Server-Side Sending
 
-### Node.js — [Firebase](../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) Admin
+### Node.js — [Firebase](../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) Admin
 ```javascript
-const admin = require('[firebase](../../Software_Engineering_and_Other/Databases/firebase/SKILL.md)-admin');
+const admin = require('[firebase](../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md)-admin');
 admin.initializeApp({ credential: admin.credential.applicationDefault() });
 
 async function sendPush(userId, title, body, data = {}) {
@@ -661,7 +661,7 @@ Future<void> showLocalNotification({
 
 ## Testing Push Notifications
 - iOS: use `swcutil` or Xcode > Simulate Push Notification with `.apns` file
-- [Android](../android/SKILL.md): use [Firebase](../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) Console > Cloud Messaging > Send Test Message
+- [Android](../android/SKILL.md): use [Firebase](../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) Console > Cloud Messaging > Send Test Message
 - Test all three states: foreground, background, killed
 - Test permission flow: accept, deny, accept-then-deny-in-settings
 - Test rich media: image, video, audio attachments

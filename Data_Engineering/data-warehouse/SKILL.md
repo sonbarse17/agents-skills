@@ -316,7 +316,7 @@ FROM events GROUP BY event_type, event_date;
 ```
 
 ### TimescaleDB
-TimescaleDB is a time-series database built as a [PostgreSQL](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) extension. Hypertables auto-partition by time/space — each chunk is a standard PG table. Native compression (gorilla for floats, delta-delta for ints, dictionary for strings) reduces storage 90%+. Continuous aggregates auto-refresh materialized views for sub-second queries over years of data. Full [PostgreSQL](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) compatibility. Use for operational analytics (IoT, [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), financial tick data) needing PG compatibility.
+TimescaleDB is a time-series database built as a [PostgreSQL](../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) extension. Hypertables auto-partition by time/space — each chunk is a standard PG table. Native compression (gorilla for floats, delta-delta for ints, dictionary for strings) reduces storage 90%+. Continuous aggregates auto-refresh materialized views for sub-second queries over years of data. Full [PostgreSQL](../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) compatibility. Use for operational analytics (IoT, [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), financial tick data) needing PG compatibility.
 
 ```sql
 SELECT create_hypertable('sensor_data', 'time', chunk_time_interval => INTERVAL '1 day');
@@ -433,7 +433,7 @@ Primary workload characteristics?
 ├── Cost-sensitive large-scale, AWS-native → Redshift
 ├── Lakehouse with ML, Databricks ecosystem → Databricks SQL
 ├── Real-time sub-second on event data → ClickHouse
-└── Hybrid transaction/analytical → SingleStore or [MySQL](../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) HeatWave
+└── Hybrid transaction/analytical → SingleStore or [MySQL](../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) HeatWave
 ```
 
 ## Rules

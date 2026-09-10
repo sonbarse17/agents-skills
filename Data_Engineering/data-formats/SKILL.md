@@ -525,6 +525,6 @@ class DataFlightClient:
 
 ## Handoff
 `[data-streaming](../streaming/SKILL.md)` for Kafka/Avro schema management and stream processing
-`[data-data-lake](../../Software_Engineering_and_Other/Databases/data-lake/SKILL.md)` for Parquet/ORC file organization in data lake storage
+`[data-data-lake](../../Software_Engineering_and_Other/Databases/analytical/data-lake/SKILL.md)` for Parquet/ORC file organization in data lake storage
 `[data-data-lakehouse](../data-lakehouse/SKILL.md)` for table format (Iceberg, Delta Lake, Hudi) integration
 

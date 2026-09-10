@@ -422,7 +422,7 @@ When a provider verification fails, the affected consumer team must be notified 
 - Pact Broker operations: publish (< 500ms), verify CAN-I-DEPLOY (< 200ms), fetch contracts (< 200ms).
 - Pact Broker storage: contracts are JSON files 2-50KB each. 1000 contracts = 50MB.
 - CI pipeline impact: consumer contract tests add < 2 minutes. Provider verification adds < 5 minutes.
-- Pact Broker deployment: [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Compose with [PostgreSQL](../../Databases/postgresql/SKILL.md) backend. Minimum 1GB RAM, 2 CPU cores.
+- Pact Broker deployment: [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Compose with [PostgreSQL](../../Databases/relational/postgresql/SKILL.md) backend. Minimum 1GB RAM, 2 CPU cores.
 
 ## Rules
 - Every consumer-provider pair has its own Pact contract file

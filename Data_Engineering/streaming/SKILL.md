@@ -246,7 +246,7 @@ Never remove fields. New fields must have defaults for backward compatibility. U
 
 | Source Type | Tool | Configuration Key |
 |---|---|---|
-| Database CDC | Debezium | `connector.class=io.debezium.connector.[postgresql](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md).PostgresConnector` |
+| Database CDC | Debezium | `connector.class=io.debezium.connector.[postgresql](../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md).PostgresConnector` |
 | Application events | Kafka Producer | Direct API |
 | Log files | Filebeat/Logstash → Kafka | Filebeat Kafka output |
 | IoT/MQTT | MQTT Proxy → Kafka | Custom connector or bridge |
@@ -266,7 +266,7 @@ Never remove fields. New fields must have defaults for backward compatibility. U
 ## CDC with Debezium
 
 ### Debezium Architecture
-Debezium connects to database transaction logs (WAL for [PostgreSQL](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md), binlog for [MySQL](../../Software_Engineering_and_Other/Databases/mysql/SKILL.md), redo log for Oracle, change feed for SQL Server). Emits each row change as a separate Kafka message. Handles schema changes, snapshots, and continuous streaming.
+Debezium connects to database transaction logs (WAL for [PostgreSQL](../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md), binlog for [MySQL](../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md), redo log for Oracle, change feed for SQL Server). Emits each row change as a separate Kafka message. Handles schema changes, snapshots, and continuous streaming.
 
 #### Debezium Message Structure
 ```json
@@ -294,7 +294,7 @@ Debezium connects to database transaction logs (WAL for [PostgreSQL](../../Softw
 {
   "name": "postgres-orders-connector",
   "config": {
-    "connector.class": "io.debezium.connector.[postgresql](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md).PostgresConnector",
+    "connector.class": "io.debezium.connector.[postgresql](../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md).PostgresConnector",
     "database.hostname": "postgres-prod",
     "database.port": "5432",
     "database.user": "debezium",
@@ -546,7 +546,7 @@ Pulsar is a multi-tenant, high-throughput messaging platform with native geo-rep
 Redpanda is a Kafka-compatible streaming platform in C++ with a single binary (no ZooKeeper, no JVM). Achieves 10x lower latency and 6x higher throughput per node. Uses Raft-based consensus for HA, full Kafka API compatibility, and includes built-in Schema Registry, REST Proxy, and Connectors. Best for teams wanting Kafka compatibility with reduced ops overhead and lower TCO.
 
 ### Streaming Databases (Materialize, RisingWave)
-Both provide incremental materialized views on streaming data using [PostgreSQL](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)-compatible SQL. Materialize updates results incrementally as new data arrives without re-running queries, with persistent storage and exactly-once semantics. RisingWave is cloud-native with decoupled compute-storage and object store persistence. Both support `CREATE MATERIALIZED VIEW` on streams, window functions, stream-table joins, and JDBC/[PostgreSQL](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) wire protocol. Choose Materialize for Kafka-native SQL with strong consistency; RisingWave for large-scale persistence with PG compatibility.
+Both provide incremental materialized views on streaming data using [PostgreSQL](../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)-compatible SQL. Materialize updates results incrementally as new data arrives without re-running queries, with persistent storage and exactly-once semantics. RisingWave is cloud-native with decoupled compute-storage and object store persistence. Both support `CREATE MATERIALIZED VIEW` on streams, window functions, stream-table joins, and JDBC/[PostgreSQL](../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) wire protocol. Choose Materialize for Kafka-native SQL with strong consistency; RisingWave for large-scale persistence with PG compatibility.
 
 ## Rules
 - Exactly-once semantics for all critical streams

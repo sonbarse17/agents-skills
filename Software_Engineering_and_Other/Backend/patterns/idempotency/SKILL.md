@@ -43,7 +43,7 @@ Exact user phrases: "idempotency", "idempotent", "idempotency key", "exactly-onc
 
 ### Input Context
 - Which endpoints need idempotency guarantees.
-- Existing data store (Redis, [PostgreSQL](../../../Databases/postgresql/SKILL.md), DynamoDB).
+- Existing data store (Redis, [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md), DynamoDB).
 - Current retry configuration.
 
 ### Output Artifact
@@ -109,7 +109,7 @@ What are your latency and consistency requirements?
   │   ├── PRO: Low latency, built-in TTL
   │   ├── CON: Data loss on node fail (if not persisted)
   │   └── Use when: High-throughput, short TTL (< 24h)
-  ├── [PostgreSQL](../../../Databases/postgresql/SKILL.md) → Durable, transactional, complex queries
+  ├── [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md) → Durable, transactional, complex queries
   │   ├── PRO: ACID compliant, survives crashes
   │   ├── CON: Slower (~5-10ms), requires cleanup job
   │   └── Use when: Financial operations, long TTL (> 24h)
@@ -146,7 +146,7 @@ async function handleRequest(req, res) {
 When two requests with the same key arrive simultaneously, only one should succeed. Use database-level locking:
 
 ```sql
--- [PostgreSQL](../../../Databases/postgresql/SKILL.md): INSERT ... ON CONFLICT
+-- [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md): INSERT ... ON CONFLICT
 INSERT INTO idempotency_keys (key, status, body, created_at)
 VALUES ($1, 'pending', null, NOW())
 ON CONFLICT (key) DO NOTHING
@@ -203,10 +203,10 @@ async function handleWithIdempotency(req, res) {
 ```
 
 ### Step 6: Clean Up Expired Keys
-Use a TTL index (Redis) or a background job ([PostgreSQL](../../../Databases/postgresql/SKILL.md)) to delete keys after the TTL window:
+Use a TTL index (Redis) or a background job ([PostgreSQL](../../../Databases/relational/postgresql/SKILL.md)) to delete keys after the TTL window:
 
 ```sql
--- [PostgreSQL](../../../Databases/postgresql/SKILL.md): background cleanup
+-- [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md): background cleanup
 DELETE FROM idempotency_keys WHERE created_at < NOW() - INTERVAL '24 hours';
 ```
 
@@ -306,7 +306,7 @@ class PostgresIdempotencyStore {
 |---------|---------|------------|-----|------|----------|
 | In-memory (Map) | <1μs | None | Manual | Free | Single-node, dev |
 | Redis | ~1ms | Configurable | Built-in | Low-Med | High-throughput |
-| [PostgreSQL](../../../Databases/postgresql/SKILL.md) | ~5ms | Full | Manual | Low | Financial, durable |
+| [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md) | ~5ms | Full | Manual | Low | Financial, durable |
 | DynamoDB | ~10ms | Full | Built-in | Per-use | [Serverless](../../../Patterns/serverless/SKILL.md), AWS |
 | Memcached | ~1ms | None | Built-in | Low | Simple caching |
 
@@ -381,7 +381,7 @@ Without careful design, idempotency keys can enable replay attacks:
 |---------|---------|----------|-------------|
 | In-memory | 1M+ | 1M+ | <100μs |
 | Redis | 100K | 100K | ~1ms |
-| [PostgreSQL](../../../Databases/postgresql/SKILL.md) | 10K | 5K | ~5ms |
+| [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md) | 10K | 5K | ~5ms |
 
 ### Cache Eviction
 For Redis-based storage, configure eviction policy:

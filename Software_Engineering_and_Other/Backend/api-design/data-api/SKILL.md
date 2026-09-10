@@ -43,7 +43,7 @@ Design and deploy data APIs using Hasura (GraphQL) or PostgREST (REST) with auth
 Exact user phrases: "data API", "Hasura", "PostgREST", "WunderGraph", "GraphQL for data", "REST API for data", "instant API", "database API", "real-time API", "data authorization", "data gateway", "auto-generated API".
 
 ### Input Context
-- Database(s) to expose ([PostgreSQL](../../../Databases/postgresql/SKILL.md), [MySQL](../../../Databases/mysql/SKILL.md), SQL Server)
+- Database(s) to expose ([PostgreSQL](../../../Databases/relational/postgresql/SKILL.md), [MySQL](../../../Databases/relational/mysql/SKILL.md), SQL Server)
 - API style preference (GraphQL, REST, both)
 - Authentication provider (Auth0, Keycloak, Cognito, custom)
 - Authorization model (RBAC, column-level, row-level)
@@ -87,26 +87,26 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 
 | Tool | API Style | Database Support | Real-time | Auth |
 |---|---|---|---|---|
-| **Hasura** | GraphQL + REST | Postgres, [MySQL](../../../Databases/mysql/SKILL.md), SQL Server, BigQuery, Snowflake | Subscriptions, live queries | JWT, Webhook, OIDC |
-| **PostgREST** | REST | [PostgreSQL](../../../Databases/postgresql/SKILL.md) only | Webhooks (trigger) | JWT, API key, OAuth |
+| **Hasura** | GraphQL + REST | Postgres, [MySQL](../../../Databases/relational/mysql/SKILL.md), SQL Server, BigQuery, Snowflake | Subscriptions, live queries | JWT, Webhook, OIDC |
+| **PostgREST** | REST | [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md) only | Webhooks (trigger) | JWT, API key, OAuth |
 | **WunderGraph** | GraphQL + REST + RPC | Postgres + any OpenAPI/gRPC | Server-sent events | JWT, OIDC, API key |
 
 #### Decision Tree
 ```
 API style preference?
 ├── GraphQL (client-driven queries, subscriptions)
-│   ├── [PostgreSQL](../../../Databases/postgresql/SKILL.md) database → Hasura
-│   ├── Multiple databases ([MySQL](../../../Databases/mysql/SKILL.md), SQL Server, etc.) → Hasura
+│   ├── [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md) database → Hasura
+│   ├── Multiple databases ([MySQL](../../../Databases/relational/mysql/SKILL.md), SQL Server, etc.) → Hasura
 │   └── Polyglot backend (DB + external APIs) → WunderGraph
 ├── REST (simpler, broader client compatibility)
-│   ├── [PostgreSQL](../../../Databases/postgresql/SKILL.md) only → PostgREST
-│   └── [PostgreSQL](../../../Databases/postgresql/SKILL.md) with GraphQL also → Hasura (also serves REST)
+│   ├── [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md) only → PostgREST
+│   └── [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md) with GraphQL also → Hasura (also serves REST)
 └── RPC / [serverless](../../../Patterns/serverless/SKILL.md) functions
     ├── Database-centric → PostgREST with stored procedures
     └── Polyglot → WunderGraph with [TypeScript](../../../Frontend/common/typescript/SKILL.md) operations
 ```
 
-Default: Hasura for GraphQL (native subscriptions, broad DB support, built-in auth). PostgREST for REST-only [PostgreSQL](../../../Databases/postgresql/SKILL.md) stack. WunderGraph for polyglot backends combining data APIs with external services.
+Default: Hasura for GraphQL (native subscriptions, broad DB support, built-in auth). PostgREST for REST-only [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md) stack. WunderGraph for polyglot backends combining data APIs with external services.
 
 ### Step 2: Hasura Configuration
 
@@ -119,7 +119,7 @@ services:
     environment:
       POSTGRES_PASSWORD: ${PG_PASSWORD}
     volumes:
-      - pgdata:/var/lib/[postgresql](../../../Databases/postgresql/SKILL.md)/data
+      - pgdata:/var/lib/[postgresql](../../../Databases/relational/postgresql/SKILL.md)/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
@@ -211,7 +211,7 @@ tables:
           filter: {}
 ```
 
-### Step 4: Row-Level Security ([PostgreSQL](../../../Databases/postgresql/SKILL.md) + PostgREST)
+### Step 4: Row-Level Security ([PostgreSQL](../../../Databases/relational/postgresql/SKILL.md) + PostgREST)
 
 #### RLS Policy Design Patterns
 
@@ -320,7 +320,7 @@ events:
 #### PostgREST Notify Pattern
 
 ```sql
--- Use [PostgreSQL](../../../Databases/postgresql/SKILL.md) NOTIFY for real-time updates via PostgREST
+-- Use [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md) NOTIFY for real-time updates via PostgREST
 CREATE OR REPLACE FUNCTION notify_order_change()
 RETURNS TRIGGER AS $$
 BEGIN

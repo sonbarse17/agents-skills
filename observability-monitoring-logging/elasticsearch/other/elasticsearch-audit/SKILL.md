@@ -25,8 +25,8 @@ events such as authentication attempts, access grants and denials, role changes,
 compliance and [incident](../../../common/incident-detection/incident/SKILL.md) investigation.
 
 For Kibana [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging (saved object access, login/logout, space operations), see **[kibana-audit](../kibana-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)/SKILL.md)**. For authentication
-and API key management, see **[elasticsearch-authn](../../../../Software_Engineering_and_Other/Databases/elasticsearch-authn/SKILL.md)**. For roles and user management, see **[elasticsearch-authz](../elasticsearch-authz/SKILL.md)**. For
-diagnosing security errors, see **[elasticsearch-security-troubleshooting](../../../../Software_Engineering_and_Other/Databases/elasticsearch-security-troubleshooting/SKILL.md)**.
+and API key management, see **[elasticsearch-authn](../elasticsearch-authn/SKILL.md)**. For roles and user management, see **[elasticsearch-authz](../elasticsearch-authz/SKILL.md)**. For
+diagnosing security errors, see **[elasticsearch-security-troubleshooting](../elasticsearch-security-troubleshooting/SKILL.md)**.
 
 For detailed API endpoints and event types, see [../../../Global_References/elasticsearch-audit_api-reference.md](../../../../Global_References/elasticsearch-audit_api-reference.md).
 
@@ -49,7 +49,7 @@ For detailed API endpoints and event types, see [../../../Global_References/elas
 | Item                   | Description                                                                |
 | ---------------------- | -------------------------------------------------------------------------- |
 | **Elasticsearch URL**  | Cluster endpoint (e.g. `https://localhost:9200` or a Cloud deployment URL) |
-| **Authentication**     | Valid credentials (see the [elasticsearch-authn](../../../../Software_Engineering_and_Other/Databases/elasticsearch-authn/SKILL.md) skill)                      |
+| **Authentication**     | Valid credentials (see the [elasticsearch-authn](../elasticsearch-authn/SKILL.md) skill)                      |
 | **Cluster privileges** | `manage` cluster privilege to update cluster settings                      |
 | **License**            | [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging requires a gold, platinum, enterprise, or trial license      |
 

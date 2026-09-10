@@ -63,9 +63,9 @@ Code-first. One code block per platform (Swift, Kotlin, Dart/TS) with setup and 
 ### Crash Service Selection
 ```
 Budget and requirements?
-├── Free, Google ecosystem → [Firebase](../../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) Crashlytics
+├── Free, Google ecosystem → [Firebase](../../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) Crashlytics
 │   Pros: Free, Google Analytics integration, real-time alerts
-│   Cons: [Firebase](../../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) dependency, limited session replay
+│   Cons: [Firebase](../../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) dependency, limited session replay
 ├── Developer-friendly, cross-platform → [Sentry](../../../sentry/other/sentry/SKILL.md)
 │   Pros: Breadcrumbs, performance tracing, wide platform support
 │   Cons: Paid beyond free tier (5000 events/month), self-hosting option
@@ -84,7 +84,7 @@ Platform?
 │   Bitcode: upload dSYMs separately for recompiled slices
 ├── [Android](../../../../Mobile/android/SKILL.md) → ProGuard/R8 mapping file upload
 │   `mapping.txt` generated at build time
-│   Upload via [Firebase](../../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) CLI or Gradle plugin
+│   Upload via [Firebase](../../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) CLI or Gradle plugin
 ├── Flutter → Dart symbols + native dSYMs
 │   Both Dart and native layer need symbolication
 ├── React Native → Source maps upload
@@ -136,7 +136,7 @@ import * as [Sentry](../../../sentry/other/sentry/SKILL.md) from '@[sentry](../.
 });
 ```
 
-[Firebase](../../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) Crashlytics:
+[Firebase](../../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) Crashlytics:
 ```kotlin
 // [Android](../../../../Mobile/android/SKILL.md)
 FirebaseCrashlytics.getInstance().apply {
@@ -349,7 +349,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Upload ProGuard mapping
         run: |
-          find . -name "mapping.txt" -exec [firebase](../../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) crashlytics:upload:mapping \
+          find . -name "mapping.txt" -exec [firebase](../../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) crashlytics:upload:mapping \
             --app=1:123456:[android](../../../../Mobile/android/SKILL.md):abc123 {} \;
 
   upload-sourcemaps:

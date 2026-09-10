@@ -83,7 +83,7 @@ Do you have an operations team to run HA infrastructure?
 │   ├── Yes → Self-hosted (Keycloak, Authentik)
 │   └── No → Managed (Azure AD, Okta, Auth0)
 └── No → Are you fully on a single cloud provider?
-    ├── Yes → Cloud-native (Cognito, [Firebase](../../Databases/firebase/SKILL.md) Auth)
+    ├── Yes → Cloud-native (Cognito, [Firebase](../../Databases/nosql/firebase/SKILL.md) Auth)
     └── No → Managed (Azure AD, Okta, Auth0)
 ```
 

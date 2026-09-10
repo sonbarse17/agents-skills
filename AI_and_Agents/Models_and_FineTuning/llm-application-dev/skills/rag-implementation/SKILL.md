@@ -42,7 +42,7 @@ Master Retrieval-Augmented Generation (RAG) to build LLM applications that provi
 - **Milvus**: High performance, on-premise
 - **Chroma**: Lightweight, easy to use, local development
 - **Qdrant**: Fast, filtered search, Rust-based
-- **pgvector**: [PostgreSQL](../../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) extension, SQL integration
+- **pgvector**: [PostgreSQL](../../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) extension, SQL integration
 
 ### 2. Embeddings
 

@@ -23,7 +23,7 @@ Deploy and manage Amazon RDS relational databases with production-grade backups,
 
 ## When to Use This Skill
 
-- Provisioning a managed [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md), [MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md), MariaDB, Oracle, or SQL Server database
+- Provisioning a managed [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md), [MySQL](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md), MariaDB, Oracle, or SQL Server database
 - Setting up Multi-AZ deployments for high availability
 - Creating read replicas for horizontal read scaling
 - Configuring automated backups, snapshots, and point-in-time recovery
@@ -56,7 +56,7 @@ aws rds describe-db-subnet-groups \
 ## Create a Production Database
 
 ```bash
-# Create a [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) 16 Multi-AZ instance
+# Create a [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) 16 Multi-AZ instance
 aws rds create-db-instance \
   --db-instance-identifier production-api-db \
   --db-instance-class db.r6g.large \
@@ -83,7 +83,7 @@ aws rds create-db-instance \
   --[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-role-arn arn:aws:iam::123456789012:role/rds-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-role \
   --enable-performance-insights \
   --performance-insights-retention-period 7 \
-  --enable-cloudwatch-logs-exports '["[postgresql](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)","upgrade"]' \
+  --enable-cloudwatch-logs-exports '["[postgresql](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)","upgrade"]' \
   --tags '[
     {"Key":"Environment","Value":"production"},
     {"Key":"Team","Value":"backend"},
@@ -122,7 +122,7 @@ aws secretsmanager get-secret-value \
 aws rds create-db-parameter-group \
   --db-parameter-group-name production-pg16 \
   --db-parameter-group-family postgres16 \
-  --description "Production [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) 16 parameters"
+  --description "Production [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) 16 parameters"
 
 # Set performance parameters
 aws rds modify-db-parameter-group \
@@ -332,7 +332,7 @@ resource "aws_db_instance" "main" {
   monitoring_interval                   = 60
   monitoring_role_arn                   = aws_iam_role.rds_monitoring.arn
 
-  enabled_cloudwatch_logs_exports = ["[postgresql](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)", "upgrade"]
+  enabled_cloudwatch_logs_exports = ["[postgresql](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)", "upgrade"]
 
   tags = {
     Environment = "production"

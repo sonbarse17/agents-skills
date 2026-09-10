@@ -116,7 +116,7 @@ Three layers:
 - **Room** ([Android](../../../Mobile/android/SKILL.md)): compile-time SQL verification, Flow-based reactive queries, migrations
 - **SQLDelight** (KMP): cross-platform, type-safe, generates drivers for [Android](../../../Mobile/android/SKILL.md)/iOS/JVM
 - **CoreData** (iOS native): SwiftUI @FetchRequest, iCloud sync, lightweight migration
-- **Realm**: [MongoDB](../../Databases/mongodb/SKILL.md) Atlas Device Sync, real-time sync, larger binary
+- **Realm**: [MongoDB](../../Databases/nosql/mongodb/SKILL.md) Atlas Device Sync, real-time sync, larger binary
 - **WatermelonDB**: SQLite lazy loading for React Native
 - **MMKV**: Fast key-value, no schema, ideal for settings/cache
 

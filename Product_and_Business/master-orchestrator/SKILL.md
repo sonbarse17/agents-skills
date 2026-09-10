@@ -859,7 +859,7 @@ State: User asks about distributed compute, Spark, Dask, distributed processing,
   Reason: "Distributed compute request."
 
 State: User asks about data lake, Delta Lake, data lake architecture, lake storage.
-  Route: [data-data-lake](../../Software_Engineering_and_Other/Databases/data-lake/SKILL.md)
+  Route: [data-data-lake](../../Software_Engineering_and_Other/Databases/analytical/data-lake/SKILL.md)
   Reason: "Data lake request."
 
 State: User asks about data lakehouse, lakehouse architecture, medallion architecture, Delta Lake.
@@ -946,20 +946,20 @@ State: User asks about schema registry, Avro, schema evolution, schema compatibi
   Route: [data-schema-registry](../../Data_Engineering/schema-registry/SKILL.md)
   Reason: "Schema registry request."
 
-State: User asks about relational database, [PostgreSQL](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md), [MySQL](../../Software_Engineering_and_Other/Databases/mysql/SKILL.md), SQL Server, database design.
-  Route: [data-relational-database](../../Software_Engineering_and_Other/Databases/relational-database/SKILL.md)
+State: User asks about relational database, [PostgreSQL](../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md), [MySQL](../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md), SQL Server, database design.
+  Route: [data-relational-database](../../Software_Engineering_and_Other/Databases/relational/relational-database/SKILL.md)
   Reason: "Relational database request."
 
-State: User asks about NoSQL, [MongoDB](../../Software_Engineering_and_Other/Databases/mongodb/SKILL.md), Cassandra, DynamoDB, document database.
-  Route: [data-nosql-database](../../Software_Engineering_and_Other/Databases/nosql-database/SKILL.md)
+State: User asks about NoSQL, [MongoDB](../../Software_Engineering_and_Other/Databases/nosql/mongodb/SKILL.md), Cassandra, DynamoDB, document database.
+  Route: [data-nosql-database](../../Software_Engineering_and_Other/Databases/nosql/nosql-database/SKILL.md)
   Reason: "NoSQL database request."
 
 State: User asks about graph database, Neo4j, graph DB, Cypher, knowledge graph.
-  Route: [data-graph-database](../../Software_Engineering_and_Other/Databases/graph-database/SKILL.md)
+  Route: [data-graph-database](../../Software_Engineering_and_Other/Databases/graph/graph-database/SKILL.md)
   Reason: "Graph database request."
 
 State: User asks about search engine, Elasticsearch, Solr, full-text search, search index.
-  Route: [data-search-engine](../../Software_Engineering_and_Other/Databases/search-engine/SKILL.md)
+  Route: [data-search-engine](../../Software_Engineering_and_Other/Databases/analytical/search-engine/SKILL.md)
   Reason: "Search engine request."
 
 ### New DevOps Skills
@@ -1119,7 +1119,7 @@ State: User asks about clean architecture, hexagonal, onion, ports and adapters,
   Reason: "Clean architecture patterns request."
 
 State: User asks about database design, SQL, migrations, ORM, schema design, indexing.
-  Route: [backend-database-patterns](../../Software_Engineering_and_Other/Databases/database-patterns/SKILL.md)
+  Route: [backend-database-patterns](../../Software_Engineering_and_Other/Databases/common/database-patterns/SKILL.md)
   Reason: "Database design patterns request."
 
 State: User asks about event-driven, messaging, Kafka, RabbitMQ, pub-sub, event bus.
@@ -1206,7 +1206,7 @@ State: User asks about camera, photo, video, media capture.
   Route: [mobile-camera-media](../../Software_Engineering_and_Other/Miscellaneous/camera-media/SKILL.md)
   Reason: "Camera/media request."
 
-State: User asks about analytics, event tracking, [Firebase](../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) Analytics, telemetry.
+State: User asks about analytics, event tracking, [Firebase](../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) Analytics, telemetry.
   Route: mobile-analytics
   Reason: "Analytics request."
 
@@ -1239,7 +1239,7 @@ State: User asks about backup, disaster recovery, DR plan.
   Reason: "Backup/DR request."
 
 State: User asks about database migration, schema migration, Flyway, Liquibase.
-  Route: devops-[database-migration](../../Software_Engineering_and_Other/Databases/database-migration/SKILL.md)
+  Route: devops-[database-migration](../../Software_Engineering_and_Other/Databases/common/database-migration/SKILL.md)
   Reason: "Database migration request."
 
 State: User asks about PR description, pull request, write PR.

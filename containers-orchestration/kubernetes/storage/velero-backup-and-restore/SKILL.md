@@ -295,7 +295,7 @@ general [disaster-recovery](../../../common/other/disaster-recovery/SKILL.md) sk
 
 **Scenario:** An engineer runs `[kubectl](../../other/kubectl/SKILL.md) delete namespace payments`
 against the wrong cluster context, deleting the `payments` namespace and
-everything in it, including a [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) StatefulSet's persistent
+everything in it, including a [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) StatefulSet's persistent
 volumes. A daily Velero `Schedule` backup exists.
 
 1. Confirm the most recent backup and inspect it before restoring
@@ -313,7 +313,7 @@ volumes. A daily Velero `Schedule` backup exists.
      --from-backup payments-ns-daily-20260728030000 \
      --namespace-mappings payments:payments-recovery-check
    ```
-3. Confirm the [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) StatefulSet comes up healthy and data looks
+3. Confirm the [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) StatefulSet comes up healthy and data looks
    intact in the scratch namespace (connect and spot-check row counts
    against what's expected).
 4. Once verified, restore into the real `payments` namespace (which no

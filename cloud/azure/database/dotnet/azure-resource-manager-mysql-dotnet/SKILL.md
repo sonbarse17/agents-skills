@@ -20,28 +20,28 @@ depends_on:
   - github
 ---
 
-# Azure.ResourceManager.[MySql](../../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) (.NET)
+# Azure.ResourceManager.[MySql](../../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) (.NET)
 
-Azure Resource Manager SDK for managing [MySQL](../../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) Flexible Server deployments.
+Azure Resource Manager SDK for managing [MySQL](../../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) Flexible Server deployments.
 
 ## Installation
 
 ```bash
-dotnet add package Azure.ResourceManager.[MySql](../../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)
+dotnet add package Azure.ResourceManager.[MySql](../../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)
 dotnet add package Azure.Identity
 ```
 
 **Current Version**: v1.2.0 (GA)  
 **API Version**: 2023-12-30
 
-> **Note**: This skill focuses on [MySQL](../../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) Flexible Server. Single Server is deprecated and scheduled for retirement.
+> **Note**: This skill focuses on [MySQL](../../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) Flexible Server. Single Server is deprecated and scheduled for retirement.
 
 ## Environment Variables
 
 ```bash
 AZURE_SUBSCRIPTION_ID=<your-subscription-id>  # Required: Azure subscription ID
 AZURE_RESOURCE_GROUP=<your-resource-group>  # Required: resource group name
-AZURE_MYSQL_SERVER_NAME=<your-[mysql](../../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)-server>  # Required: [MySQL](../../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) Flexible Server name
+AZURE_MYSQL_SERVER_NAME=<your-[mysql](../../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)-server>  # Required: [MySQL](../../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) Flexible Server name
 AZURE_TOKEN_CREDENTIALS=prod  # Required only if DefaultAzureCredential is used in production
 ```
 
@@ -50,8 +50,8 @@ AZURE_TOKEN_CREDENTIALS=prod  # Required only if DefaultAzureCredential is used 
 ```csharp
 using Azure.Identity;
 using Azure.ResourceManager;
-using Azure.ResourceManager.[MySql](../../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md);
-using Azure.ResourceManager.[MySql](../../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md).FlexibleServers;
+using Azure.ResourceManager.[MySql](../../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md);
+using Azure.ResourceManager.[MySql](../../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md).FlexibleServers;
 
 // Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 var credential = new DefaultAzureCredential(
@@ -68,7 +68,7 @@ ArmClient client = new ArmClient(credential);
 ```
 Subscription
 └── ResourceGroup
-    └── MySqlFlexibleServer                 # [MySQL](../../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) Flexible Server instance
+    └── MySqlFlexibleServer                 # [MySQL](../../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) Flexible Server instance
         ├── MySqlFlexibleServerDatabase     # Database within the server
         ├── MySqlFlexibleServerFirewallRule # IP firewall rules
         ├── MySqlFlexibleServerConfiguration # Server parameters
@@ -79,11 +79,11 @@ Subscription
 
 ## Core Workflows
 
-### 1. Create [MySQL](../../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) Flexible Server
+### 1. Create [MySQL](../../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) Flexible Server
 
 ```csharp
-using Azure.ResourceManager.[MySql](../../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md).FlexibleServers;
-using Azure.ResourceManager.[MySql](../../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md).FlexibleServers.Models;
+using Azure.ResourceManager.[MySql](../../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md).FlexibleServers;
+using Azure.ResourceManager.[MySql](../../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md).FlexibleServers.Models;
 
 ResourceGroupResource resourceGroup = await client
     .GetDefaultSubscriptionAsync()
@@ -118,7 +118,7 @@ MySqlFlexibleServerData data = new MySqlFlexibleServerData(AzureLocation.EastUS)
 };
 
 ArmOperation<MySqlFlexibleServerResource> operation = await servers
-    .CreateOrUpdateAsync(WaitUntil.Completed, "my-[mysql](../../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)-server", data);
+    .CreateOrUpdateAsync(WaitUntil.Completed, "my-[mysql](../../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)-server", data);
 
 MySqlFlexibleServerResource server = operation.Value;
 Console.WriteLine($"Server created: {server.Data.FullyQualifiedDomainName}");
@@ -128,7 +128,7 @@ Console.WriteLine($"Server created: {server.Data.FullyQualifiedDomainName}");
 
 ```csharp
 MySqlFlexibleServerResource server = await resourceGroup
-    .GetMySqlFlexibleServerAsync("my-[mysql](../../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)-server");
+    .GetMySqlFlexibleServerAsync("my-[mysql](../../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)-server");
 
 MySqlFlexibleServerDatabaseCollection databases = server.GetMySqlFlexibleServerDatabases();
 
@@ -204,7 +204,7 @@ MySqlFlexibleServerAadAdministratorData adminData = new MySqlFlexibleServerAadAd
     Login = "aad-admin@contoso.com",
     Sid = Guid.Parse("<entra-object-id>"),
     TenantId = Guid.Parse("<tenant-id>"),
-    IdentityResourceId = new ResourceIdentifier("/subscriptions/.../userAssignedIdentities/[mysql](../../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)-identity")
+    IdentityResourceId = new ResourceIdentifier("/subscriptions/.../userAssignedIdentities/[mysql](../../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)-identity")
 };
 
 ArmOperation<MySqlFlexibleServerAadAdministratorResource> operation = await admins
@@ -251,14 +251,14 @@ MySqlFlexibleServerData restoreData = new MySqlFlexibleServerData(AzureLocation.
 };
 
 ArmOperation<MySqlFlexibleServerResource> operation = await servers
-    .CreateOrUpdateAsync(WaitUntil.Completed, "my-[mysql](../../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)-restored", restoreData);
+    .CreateOrUpdateAsync(WaitUntil.Completed, "my-[mysql](../../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)-restored", restoreData);
 ```
 
 ### 8. Stop and Start Server
 
 ```csharp
 MySqlFlexibleServerResource server = await resourceGroup
-    .GetMySqlFlexibleServerAsync("my-[mysql](../../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)-server");
+    .GetMySqlFlexibleServerAsync("my-[mysql](../../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)-server");
 
 // Stop server (saves costs when not in use)
 await server.StopAsync(WaitUntil.Completed);
@@ -278,7 +278,7 @@ await server.RestartAsync(WaitUntil.Completed, new MySqlFlexibleServerRestartPar
 
 ```csharp
 MySqlFlexibleServerResource server = await resourceGroup
-    .GetMySqlFlexibleServerAsync("my-[mysql](../../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)-server");
+    .GetMySqlFlexibleServerAsync("my-[mysql](../../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)-server");
 
 MySqlFlexibleServerPatch patch = new MySqlFlexibleServerPatch
 {
@@ -298,7 +298,7 @@ ArmOperation<MySqlFlexibleServerResource> operation = await server
 
 ```csharp
 MySqlFlexibleServerResource server = await resourceGroup
-    .GetMySqlFlexibleServerAsync("my-[mysql](../../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)-server");
+    .GetMySqlFlexibleServerAsync("my-[mysql](../../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)-server");
 
 await server.DeleteAsync(WaitUntil.Completed);
 ```
@@ -357,7 +357,7 @@ using Azure;
 try
 {
     ArmOperation<MySqlFlexibleServerResource> operation = await servers
-        .CreateOrUpdateAsync(WaitUntil.Completed, "my-[mysql](../../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)", data);
+        .CreateOrUpdateAsync(WaitUntil.Completed, "my-[mysql](../../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)", data);
 }
 catch (RequestFailedException ex) when (ex.Status == 409)
 {
@@ -401,15 +401,15 @@ string connectionString = $"Server={server.Data.FullyQualifiedDomainName};" +
 
 | SDK | Purpose | Install |
 |-----|---------|---------|
-| `Azure.ResourceManager.[MySql](../../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)` | [MySQL](../../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) management (this SDK) | `dotnet add package Azure.ResourceManager.[MySql](../../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)` |
-| `Azure.ResourceManager.[PostgreSql](../../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)` | [PostgreSQL](../../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) management | `dotnet add package Azure.ResourceManager.[PostgreSql](../../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)` |
-| `MySqlConnector` | [MySQL](../../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) data access | `dotnet add package MySqlConnector` |
+| `Azure.ResourceManager.[MySql](../../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)` | [MySQL](../../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) management (this SDK) | `dotnet add package Azure.ResourceManager.[MySql](../../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)` |
+| `Azure.ResourceManager.[PostgreSql](../../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)` | [PostgreSQL](../../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) management | `dotnet add package Azure.ResourceManager.[PostgreSql](../../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)` |
+| `MySqlConnector` | [MySQL](../../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) data access | `dotnet add package MySqlConnector` |
 
 ## Reference Links
 
 | Resource | URL |
 |----------|-----|
-| NuGet Package | https://www.nuget.org/packages/Azure.ResourceManager.[MySql](../../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) |
-| API Reference | https://learn.microsoft.com/dotnet/api/azure.resourcemanager.[mysql](../../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) |
-| Product Documentation | https://learn.microsoft.com/azure/[mysql](../../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)/flexible-server/ |
-| [GitHub](../../../../../ci-cd/github-actions/other/github/SKILL.md) Source | https://[github](../../../../../ci-cd/github-actions/other/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/[mysql](../../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)/Azure.ResourceManager.[MySql](../../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) |
+| NuGet Package | https://www.nuget.org/packages/Azure.ResourceManager.[MySql](../../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) |
+| API Reference | https://learn.microsoft.com/dotnet/api/azure.resourcemanager.[mysql](../../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) |
+| Product Documentation | https://learn.microsoft.com/azure/[mysql](../../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)/flexible-server/ |
+| [GitHub](../../../../../ci-cd/github-actions/other/github/SKILL.md) Source | https://[github](../../../../../ci-cd/github-actions/other/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/[mysql](../../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)/Azure.ResourceManager.[MySql](../../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) |

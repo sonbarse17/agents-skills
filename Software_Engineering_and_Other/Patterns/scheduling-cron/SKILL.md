@@ -43,7 +43,7 @@ Exact user phrases: "cron", "schedule", "scheduled task", "cron job", "job sched
 ### Input Context
 - Job definitions and their schedule (cron expressions).
 - Distributed environment ([Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), multi-instance).
-- Existing infrastructure (Redis, [PostgreSQL](../../Databases/postgresql/SKILL.md), ZooKeeper).
+- Existing infrastructure (Redis, [PostgreSQL](../../Databases/relational/postgresql/SKILL.md), ZooKeeper).
 
 ### Output Artifact
 Cron job configuration or scheduler code. No file unless requested.
@@ -90,7 +90,7 @@ What infrastructure is available?
   ├── Redis → SET NX with TTL for lock, Lua for atomic operations
   │   ├── PRO: Fast, built-in TTL, simple
   │   └── CON: Lock expiration on Redis failover
-  ├── [PostgreSQL](../../Databases/postgresql/SKILL.md) → Advisory locks or row-level locks
+  ├── [PostgreSQL](../../Databases/relational/postgresql/SKILL.md) → Advisory locks or row-level locks
   │   ├── PRO: Same DB as data, no extra infra
   │   └── CON: Lock contention impacts DB performance
   ├── ZooKeeper/etcd → Ephemeral znodes for leader election
@@ -172,7 +172,7 @@ class DistributedCron {
   }
 }
 
-// Option B: [PostgreSQL](../../Databases/postgresql/SKILL.md) advisory lock
+// Option B: [PostgreSQL](../../Databases/relational/postgresql/SKILL.md) advisory lock
 async function executeWithPgLock(job: Job): Promise<void> {
   const lockId = hashString(`cron:${job.name}`);
   const pool = new Pool({ connectionString: process.env.DATABASE_URL });
@@ -383,14 +383,14 @@ Common expressions:
 |-----------|---------|-------|
 | Cron expression parsing | <1ms | Cached after first parse |
 | Lock acquisition (Redis) | ~1-5ms | Network round-trip |
-| Lock acquisition ([PostgreSQL](../../Databases/postgresql/SKILL.md)) | ~1ms | In-DB advisory lock |
+| Lock acquisition ([PostgreSQL](../../Databases/relational/postgresql/SKILL.md)) | ~1ms | In-DB advisory lock |
 | Job handler | Varies | Business logic |
 | Metric recording | <1ms | In-process counter |
 
 ### Scheduler Throughput
 - Single scheduler process: 1000+ jobs per second (schedule evaluation)
 - Distributed lock overhead: ~5ms per job execution
-- [PostgreSQL](../../Databases/postgresql/SKILL.md) advisory lock: ~2ms per lock/unlock cycle
+- [PostgreSQL](../../Databases/relational/postgresql/SKILL.md) advisory lock: ~2ms per lock/unlock cycle
 
 ## Rules
 - Always specify timezone explicitly — never rely on server timezone.

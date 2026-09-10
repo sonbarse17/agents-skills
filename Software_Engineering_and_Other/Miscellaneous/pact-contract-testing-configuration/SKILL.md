@@ -64,7 +64,7 @@ gate deploys is covered separately in
   dependencies, and a corresponding library on the provider side for
   verification.
 - A running Pact Broker — self-hosted (`pactfoundation/pact-broker` "[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
-  image, backed by [PostgreSQL](../../Databases/postgresql/SKILL.md)) or the hosted PactFlow service — reachable
+  image, backed by [PostgreSQL](../../Databases/relational/postgresql/SKILL.md)) or the hosted PactFlow service — reachable
   from both the consumer's and provider's CI pipelines.
 - CI pipelines for both the consumer and provider repos capable of
   publishing pact files and running provider verification as a distinct

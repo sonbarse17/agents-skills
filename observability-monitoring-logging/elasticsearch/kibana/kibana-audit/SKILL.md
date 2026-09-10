@@ -25,7 +25,7 @@ events that Elasticsearch does not see: saved object CRUD ([dashboards](../../..
 login/logout, session expiry, space operations, and Kibana-level RBAC enforcement.
 
 For Elasticsearch [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging (authentication failures, access grants/denials, security config changes), see
-**[elasticsearch-audit](../elasticsearch-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)/SKILL.md)**. For authentication and API key management, see **[elasticsearch-authn](../../../../Software_Engineering_and_Other/Databases/elasticsearch-authn/SKILL.md)**. For roles and user
+**[elasticsearch-audit](../elasticsearch-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)/SKILL.md)**. For authentication and API key management, see **[elasticsearch-authn](../../other/elasticsearch-authn/SKILL.md)**. For roles and user
 management, see **[elasticsearch-authz](../../other/elasticsearch-authz/SKILL.md)**.
 
 For detailed event types, schema, and correlation queries, see

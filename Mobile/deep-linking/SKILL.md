@@ -80,8 +80,8 @@ Need to attribute installs?
 ├── Yes → Branch, Adjust, or AppsFlyer
 │   SDK stores click data before install, resolves on first launch
 │   Use for: referral programs, ad attribution, personalized onboarding
-├── Simple install tracking → [Firebase](../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) Dynamic Links (deprecated)
-│   Note: [Firebase](../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) Dynamic Links deprecated — migrate to Branch or custom
+├── Simple install tracking → [Firebase](../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) Dynamic Links (deprecated)
+│   Note: [Firebase](../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) Dynamic Links deprecated — migrate to Branch or custom
 └── No deferred needed → Standard universal links only
     App must be installed for links to work
 ```

@@ -119,7 +119,7 @@ If unresolved after [X] minutes:
 ## Example [Runbook](../runbook/SKILL.md) — Database Failover
 
 ````markdown
-# [Runbook](../runbook/SKILL.md): [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) Database Failover
+# [Runbook](../runbook/SKILL.md): [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) Database Failover
 
 **Owner:** Platform / DBA team
 **Last Reviewed:** 2025-06-15
@@ -130,7 +130,7 @@ If unresolved after [X] minutes:
 
 ## Overview
 
-Failover the primary [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) instance to the synchronous replica when
+Failover the primary [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) instance to the synchronous replica when
 the primary is unreachable or degraded. This [runbook](../runbook/SKILL.md) covers both planned
 (maintenance) and unplanned (emergency) failover.
 

@@ -27,7 +27,7 @@ depends_on:
 Manage Elasticsearch role-based access control: native users, roles, role assignment, and role mappings for external
 realms.
 
-For authentication methods and API key management, see the **[elasticsearch-authn](../../../../Software_Engineering_and_Other/Databases/elasticsearch-authn/SKILL.md)** skill.
+For authentication methods and API key management, see the **[elasticsearch-authn](../elasticsearch-authn/SKILL.md)** skill.
 
 For detailed API endpoints, see [../../../Global_References/elasticsearch-authz_api-reference.md](../../../../Global_References/elasticsearch-authz_api-reference.md).
 
@@ -53,7 +53,7 @@ For detailed API endpoints, see [../../../Global_References/elasticsearch-authz_
 | ---------------------- | -------------------------------------------------------------------------- |
 | **Elasticsearch URL**  | Cluster endpoint (e.g. `https://localhost:9200` or a Cloud deployment URL) |
 | **Kibana URL**         | Required only when setting Kibana feature/space privileges                 |
-| **Authentication**     | Valid credentials (see the [elasticsearch-authn](../../../../Software_Engineering_and_Other/Databases/elasticsearch-authn/SKILL.md) skill)                      |
+| **Authentication**     | Valid credentials (see the [elasticsearch-authn](../elasticsearch-authn/SKILL.md) skill)                      |
 | **Cluster privileges** | `manage_security` is required for user and role management operations      |
 
 Prompt the user for any missing values.

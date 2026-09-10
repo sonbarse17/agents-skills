@@ -239,7 +239,7 @@ nmap -p 53 --script=dns-nsid,dns-recursion <target-ip>
 nmap -p 80,443 --script=http-methods,http-robots.txt,http-title <target-ip>
 
 # Database enumeration
-nmap -p 3306 --script=[mysql](../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)-info <target-ip>
+nmap -p 3306 --script=[mysql](../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)-info <target-ip>
 nmap -p 5432 --script=pgsql-brute <target-ip>
 nmap -p 1433 --script=ms-sql-info <target-ip>
 ```
@@ -494,14 +494,14 @@ nmap -p 445 --script=smb-enum-shares,smb-enum-users -iL smb_hosts.txt -oA smb_sh
 # Scan for common database ports
 nmap -sV -p 1433,1521,3306,5432,5984,6379,9200,27017 <target-network>/24 -oA database_scan
 
-# [MySQL](../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) enumeration
-nmap -p 3306 --script=[mysql](../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)-info,[mysql](../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)-databases,[mysql](../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)-variables <target-ip>
+# [MySQL](../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) enumeration
+nmap -p 3306 --script=[mysql](../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)-info,[mysql](../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)-databases,[mysql](../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)-variables <target-ip>
 
-# [PostgreSQL](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) enumeration
+# [PostgreSQL](../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) enumeration
 nmap -p 5432 --script=pgsql-brute <target-ip>
 
-# [MongoDB](../../Software_Engineering_and_Other/Databases/mongodb/SKILL.md) enumeration
-nmap -p 27017 --script=[mongodb](../../Software_Engineering_and_Other/Databases/mongodb/SKILL.md)-info,[mongodb](../../Software_Engineering_and_Other/Databases/mongodb/SKILL.md)-databases <target-ip>
+# [MongoDB](../../Software_Engineering_and_Other/Databases/nosql/mongodb/SKILL.md) enumeration
+nmap -p 27017 --script=[mongodb](../../Software_Engineering_and_Other/Databases/nosql/mongodb/SKILL.md)-info,[mongodb](../../Software_Engineering_and_Other/Databases/nosql/mongodb/SKILL.md)-databases <target-ip>
 
 # Redis enumeration
 nmap -p 6379 --script=redis-info <target-ip>

@@ -82,7 +82,7 @@ GKE cluster running, Cloud Run service deployed, networking secured, CI/CD pipel
 
 | Requirement | Service | Best For |
 |---|---|---|
-| Relational, managed | Cloud SQL | [MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md), [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md), SQL Server |
+| Relational, managed | Cloud SQL | [MySQL](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md), [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md), SQL Server |
 | NoSQL, high throughput | Firestore / Bigtable | Real-time, IoT, large-scale |
 | Data warehouse | BigQuery | Analytics, reporting, ML |
 | In-memory, cache | Memorystore | Redis, Memcached |

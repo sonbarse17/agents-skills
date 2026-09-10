@@ -281,7 +281,7 @@ resource "ibm_iam_service_policy" "ci_policy" {
 ```hcl
 resource "ibm_resource_instance" "postgres" {
   name              = "postgres-prod"
-  service           = "databases-for-[postgresql](../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)"
+  service           = "databases-for-[postgresql](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)"
   plan              = "standard"
   location          = var.region
   resource_group_id = data.ibm_resource_group.rg.id
@@ -419,7 +419,7 @@ resource "ibm_en_destination" "pagerduty" {
 - COS cross-region buckets replicate to 3 regions — use for DR scenarios.
 - Satellite locations require 3+ hosts for control plane HA.
 - Direct Link supports 1 Gbps, 5 Gbps, and 10 Gbps connections at minimum.
-- IBM Cloud Databases for [PostgreSQL](../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) supports read replicas across zones.
+- IBM Cloud Databases for [PostgreSQL](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) supports read replicas across zones.
 - Use Code Engine for batch jobs and [serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) workloads to reduce compute costs.
 - VPC file shares are available via VPC file storage service (NFS).
 - IAM trusted profiles allow assigning service IDs based on conditions.

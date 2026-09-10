@@ -36,10 +36,10 @@ Design database schemas, write SQL-like queries, manage migrations, define relat
 ## Agent Protocol
 
 ### Trigger
-User request includes: `drizzle`, `drizzle orm`, `drizzle schema`, `drizzle migrate`, `drizzle query`, `drizzle relation`, `drizzle edge`, `drizzle neon`, `drizzle [planetscale](../../../Databases/planetscale/SKILL.md)`.
+User request includes: `drizzle`, `drizzle orm`, `drizzle schema`, `drizzle migrate`, `drizzle query`, `drizzle relation`, `drizzle edge`, `drizzle neon`, `drizzle [planetscale](../../../Databases/nosql/planetscale/SKILL.md)`.
 
 ### Input Context
-- Database ([PostgreSQL](../../../Databases/postgresql/SKILL.md), [MySQL](../../../Databases/mysql/SKILL.md), SQLite, Turso)
+- Database ([PostgreSQL](../../../Databases/relational/postgresql/SKILL.md), [MySQL](../../../Databases/relational/mysql/SKILL.md), SQLite, Turso)
 - Drizzle version (0.30+)
 - Runtime (Node.js, Bun, Cloudflare Workers, Neon)
 - Deployment ([serverless](../../../Patterns/serverless/SKILL.md), edge, traditional)
@@ -51,7 +51,7 @@ Schema definition, query examples, migration setup, relation config, connection 
 Produce artifact directly. No preamble, no postamble, no explanations.
 
 ### Completion Criteria
-- Schema defined with drizzle-orm/pg-core or [mysql](../../../Databases/mysql/SKILL.md)-core
+- Schema defined with drizzle-orm/pg-core or [mysql](../../../Databases/relational/mysql/SKILL.md)-core
 - Relations defined with drizzle-orm relations
 - Migrations generated and applied with drizzle-kit
 - Queries use prepared statements for production
@@ -71,7 +71,7 @@ Produce artifact directly. No preamble, no postamble, no explanations.
 | Type safety | Full (inferred from schema) | Full (generated types) |
 | SQL control | Direct SQL with types | Prisma Client abstractions |
 | Migrations | Drizzle Kit | Prisma Migrate |
-| Edge support | First-class (Neon, Turso, [PlanetScale](../../../Databases/planetscale/SKILL.md)) | Via adapter |
+| Edge support | First-class (Neon, Turso, [PlanetScale](../../../Databases/nosql/planetscale/SKILL.md)) | Via adapter |
 | Relations | Relations module (INSERT-friendly) | include/select |
 
 Decision: Performance + SQL control + edge → Drizzle. Rich ORM features + auto-complete → Prisma.
@@ -80,10 +80,10 @@ Decision: Performance + SQL control + edge → Drizzle. Rich ORM features + auto
 
 | Database | Driver | Drizzle Package | Best For |
 |----------|--------|----------------|----------|
-| [PostgreSQL](../../../Databases/postgresql/SKILL.md) | `pg` or `@neondatabase/[serverless](../../../Patterns/serverless/SKILL.md)` | `drizzle-orm/pg-core` | Full-featured RDBMS |
-| [MySQL](../../../Databases/mysql/SKILL.md) | `mysql2` | `drizzle-orm/[mysql](../../../Databases/mysql/SKILL.md)-core` | [PlanetScale](../../../Databases/planetscale/SKILL.md), traditional [MySQL](../../../Databases/mysql/SKILL.md) |
+| [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md) | `pg` or `@neondatabase/[serverless](../../../Patterns/serverless/SKILL.md)` | `drizzle-orm/pg-core` | Full-featured RDBMS |
+| [MySQL](../../../Databases/relational/mysql/SKILL.md) | `mysql2` | `drizzle-orm/[mysql](../../../Databases/relational/mysql/SKILL.md)-core` | [PlanetScale](../../../Databases/nosql/planetscale/SKILL.md), traditional [MySQL](../../../Databases/relational/mysql/SKILL.md) |
 | SQLite | `better-sqlite3` or `@libsql/client` | `drizzle-orm/sqlite-core` | Turso, local, edge |
-| [PostgreSQL](../../../Databases/postgresql/SKILL.md) ([serverless](../../../Patterns/serverless/SKILL.md)) | `@vercel/postgres` | `drizzle-orm/vercel-postgres` | Vercel edge functions |
+| [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md) ([serverless](../../../Patterns/serverless/SKILL.md)) | `@vercel/postgres` | `drizzle-orm/vercel-postgres` | Vercel edge functions |
 
 ## Workflow
 
@@ -272,7 +272,7 @@ import type { Config } from 'drizzle-kit';
 export default {
   schema: './src/db/schema/*.ts',
   out: './drizzle',
-  dialect: '[postgresql](../../../Databases/postgresql/SKILL.md)',
+  dialect: '[postgresql](../../../Databases/relational/postgresql/SKILL.md)',
   dbCredentials: {
     url: process.env.DATABASE_URL!,
   },

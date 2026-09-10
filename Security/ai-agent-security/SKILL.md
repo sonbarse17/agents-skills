@@ -503,7 +503,7 @@ PII_PATTERNS = {
     "private_key": r"-----BEGIN (?:RSA |EC |DSA )?PRIVATE KEY-----",
     "jwt": r"\beyJ[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}\b",
     "ipv4_internal": r"\b(?:10\.\d{1,3}\.\d{1,3}\.\d{1,3}|172\.(?:1[6-9]|2\d|3[01])\.\d{1,3}\.\d{1,3}|192\.168\.\d{1,3}\.\d{1,3})\b",
-    "connection_string": r"(?:[mongodb](../../Software_Engineering_and_Other/Databases/mongodb/SKILL.md)|postgres|[mysql](../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)|redis):\/\/[^\s\"']+",
+    "connection_string": r"(?:[mongodb](../../Software_Engineering_and_Other/Databases/nosql/mongodb/SKILL.md)|postgres|[mysql](../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)|redis):\/\/[^\s\"']+",
 }
 
 def scan_for_pii(text: str) -> list[PIIMatch]:

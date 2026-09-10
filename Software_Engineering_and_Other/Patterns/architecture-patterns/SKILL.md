@@ -57,11 +57,11 @@ Master proven backend architecture patterns including Clean Architecture, Hexago
 
 - **Domain Core**: Business logic lives here, framework-free
 - **Ports**: Abstract interfaces that define how the core interacts with the outside world (driving and driven)
-- **Adapters**: Concrete implementations of ports ([PostgreSQL](../../Databases/postgresql/SKILL.md) adapter, Stripe adapter, REST adapter)
+- **Adapters**: Concrete implementations of ports ([PostgreSQL](../../Databases/relational/postgresql/SKILL.md) adapter, Stripe adapter, REST adapter)
 
 **Benefits:**
 
-- Swap implementations without touching the core (e.g., replace [PostgreSQL](../../Databases/postgresql/SKILL.md) with DynamoDB)
+- Swap implementations without touching the core (e.g., replace [PostgreSQL](../../Databases/relational/postgresql/SKILL.md) with DynamoDB)
 - Use in-memory adapters in tests — no [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) required
 - Technology decisions deferred to the edges
 

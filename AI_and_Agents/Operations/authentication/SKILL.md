@@ -43,7 +43,7 @@ Exact phrases: "auth", "authentication", "login", "signup", "JWT", "OAuth", "rou
 
 ### Input Context
 - Framework (React, Vue, Angular, Svelte)
-- Auth provider (Auth0, Clerk, [Supabase](../../../Software_Engineering_and_Other/Backend/data-access/supabase/SKILL.md), [Firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md), Cognito, custom)
+- Auth provider (Auth0, Clerk, [Supabase](../../../Software_Engineering_and_Other/Backend/data-access/supabase/SKILL.md), [Firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md), Cognito, custom)
 - OAuth or credentials-based flow
 - Session strategy (JWT + refresh token vs httpOnly cookie)
 - Route protection pattern (middleware, wrapper, guard)
@@ -91,7 +91,7 @@ Team size and requirements?
   |-- Solo / small team, need quick setup -->
   |     |-- Want hosted auth UI? --> Clerk or Auth0
   |     |-- Want database integration? --> [Supabase](../../../Software_Engineering_and_Other/Backend/data-access/supabase/SKILL.md) Auth
-  |     |-- Need social login quick? --> [Firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) Auth
+  |     |-- Need social login quick? --> [Firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) Auth
   |-- Mid-size team, need control -->
   |     |-- Using AWS? --> Cognito
   |     |-- Need enterprise SSO? --> Auth0 or Azure AD B2C
@@ -501,7 +501,7 @@ function useSupabaseAuth() {
 | Auth0 | OIDC, OAuth2, SAML | 50+ providers | Yes | Yes | Free tier: 7K users |
 | Clerk | OIDC, OAuth2 | 10+ providers | Yes | Yes | Free tier: 5K users |
 | [Supabase](../../../Software_Engineering_and_Other/Backend/data-access/supabase/SKILL.md) | OAuth2, email/pw | 10+ providers | Yes | No | Free tier: 50K users |
-| [Firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) | OAuth2, email/pw, phone | 10+ providers | Yes | No | Free tier: 10K auth |
+| [Firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) | OAuth2, email/pw, phone | 10+ providers | Yes | No | Free tier: 10K auth |
 | Cognito | OIDC, SAML, OAuth2 | Social + SAML | Yes | Yes | Per MAU pricing |
 | Custom JWT | Email/password | Manual | Manual | Manual | Infrastructure cost |
 

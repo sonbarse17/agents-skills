@@ -34,7 +34,7 @@ pipeline engineering problem, distinct from the retrieval design
 question of *how* chunks should be shaped for good retrieval (covered
 in [rag-pipeline-design](../[rag-pipeline-design](../../Models_and_FineTuning/rag-pipeline-design/SKILL.md)/SKILL.md)) and from the
 index's own operational tuning (covered in
-[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md)).
+[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/common/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md)).
 This skill is specifically about the pipeline that runs chunking as a
 production job stage, batches embedding calls reliably at scale,
 upserts idempotently so a retried or partially-failed run doesn't
@@ -190,7 +190,7 @@ unreliable.
    query traffic** on the same index — a large backfill or full
    re-embed is a write-heavy burst that can degrade production query
    latency if run unthrottled during peak hours (see
-   [vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md)
+   [vector-[database-operations](../../../Software_Engineering_and_Other/Databases/common/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md)
    for the index-side write/query resource contention this throttling
    is protecting against):
    ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
@@ -277,7 +277,7 @@ unreliable.
   **Fix:** The bulk write and live queries are competing for the same
   index resources with no throttling. Throttle batch rate, schedule
   large backfills during lower-traffic windows, and see
-  [vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md)
+  [vector-[database-operations](../../../Software_Engineering_and_Other/Databases/common/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md)
   for separating write-path from query-path resource contention at the
   index-operations layer.
 
@@ -361,7 +361,7 @@ before the application's index alias is repointed.
 ## Cross-references
 
 - [rag-pipeline-design](../[rag-pipeline-design](../../Models_and_FineTuning/rag-pipeline-design/SKILL.md)/SKILL.md) — the retrieval-quality design decisions (chunk size/overlap, metadata to attach, re-index-on-change principle) this pipeline implements operationally without repeating the design rationale.
-- [vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md) — index-side write-path tuning (batch upsert sizing, avoiding hot partitions) that this pipeline's batching and throttling steps feed into.
+- [vector-[database-operations](../../../Software_Engineering_and_Other/Databases/common/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md) — index-side write-path tuning (batch upsert sizing, avoiding hot partitions) that this pipeline's batching and throttling steps feed into.
 - [vector-database-configuration-validation](../[vector-database-configuration-validation](../vector-database-configuration-validation/SKILL.md)/SKILL.md) — the pre-cutover recall/latency validation gate to run before repointing traffic to a corpus this pipeline fully re-processed.
 - [llm-cost-and-latency-optimization](../[llm-cost-and-latency-optimization](../../Models_and_FineTuning/llm-cost-and-latency-optimization/SKILL.md)/SKILL.md) — the batch-vs-synchronous cost/latency trade-off referenced in step 4, applied there to generation calls and here to embedding calls.
 - [agent-cost-and-latency-spike-investigation](../[agent-cost-and-latency-spike-investigation](../../Workflows/agent-cost-and-latency-spike-investigation/SKILL.md)/SKILL.md) — triaging a RAG workflow's cost/latency spike that correlates with a recent re-indexing run from this pipeline.

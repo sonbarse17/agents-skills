@@ -344,7 +344,7 @@ spec:
         - containerPort: 5432
         volumeMounts:
         - name: data
-          mountPath: /var/lib/[postgresql](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)/data
+          mountPath: /var/lib/[postgresql](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)/data
   volumeClaimTemplates:
   - metadata:
       name: data

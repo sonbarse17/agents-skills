@@ -323,7 +323,7 @@ Model detail vs frame rate:
 
 ### CI/CD Considerations
 
-- Run AR integration tests on real device farm ([Firebase](../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) Test Lab, AWS Device Farm)
+- Run AR integration tests on real device farm ([Firebase](../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) Test Lab, AWS Device Farm)
 - Validate 3D model bundle sizes in CI — fail if total >50MB
 - Verify performance budget with trace capture on each build
 - Test both LiDAR and non-LiDAR device paths

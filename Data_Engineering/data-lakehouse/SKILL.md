@@ -243,7 +243,7 @@ WHERE table_name = 'silver.orders';
 [Unity](../../Game_Development/unity/SKILL.md) Catalog automatically captures column-level lineage when using Databricks. Lineage is visible in Catalog Explorer and queryable via system tables. Enable lineage tracking on all production catalogs. Use system tables for access [audit](../../AI_and_Agents/Operations/audit/SKILL.md): `system.access.databricks_access` and `system.access.table_lineage`.
 
 ### Step 12: Lakehouse Federation
-Federate queries across multiple lakehouse instances using Trino or Databricks Lakehouse Federation. Register external data sources ([PostgreSQL](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md), Snowflake, [MySQL](../../Software_Engineering_and_Other/Databases/mysql/SKILL.md), SQL Server) as foreign catalogs in [Unity](../../Game_Development/unity/SKILL.md) Catalog. This enables queries that join lakehouse data with operational databases without data movement.
+Federate queries across multiple lakehouse instances using Trino or Databricks Lakehouse Federation. Register external data sources ([PostgreSQL](../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md), Snowflake, [MySQL](../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md), SQL Server) as foreign catalogs in [Unity](../../Game_Development/unity/SKILL.md) Catalog. This enables queries that join lakehouse data with operational databases without data movement.
 
 ## Architecture / Decision Trees
 
@@ -612,7 +612,7 @@ sync:
 - **Credential rotation**: Rotate storage access keys and catalog credentials every 90 days; use IAM roles.
 
 ## Handoff
-`[data-data-lake](../../Software_Engineering_and_Other/Databases/data-lake/SKILL.md)` for underlying table format operations (compaction, vacuum, Z-order)
+`[data-data-lake](../../Software_Engineering_and_Other/Databases/analytical/data-lake/SKILL.md)` for underlying table format operations (compaction, vacuum, Z-order)
 `[data-distributed-storage](../../cloud/common/storage/distributed-storage/SKILL.md)` for S3-compatible storage backend configuration
 `[data-data-quality](../data-quality/SKILL.md)` for validation rules and data contract enforcement
 

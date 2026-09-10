@@ -39,7 +39,7 @@ User request includes: `symfony`, `symfony backend`, `symfony bundle`, `doctrine
 ### Input Context
 - PHP version (8.1+)
 - Symfony version (6.4+, 7.x)
-- Database (Doctrine ORM, Doctrine [MongoDB](../../../Databases/mongodb/SKILL.md))
+- Database (Doctrine ORM, Doctrine [MongoDB](../../../Databases/nosql/mongodb/SKILL.md))
 - Template engine (Twig)
 - Queue (Messenger with Redis, Doctrine, AMQP)
 - API format (REST, GraphQL with API Platform)

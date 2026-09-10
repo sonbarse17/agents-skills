@@ -337,7 +337,7 @@ resource "aws_security_group" "db" {
   description = "Security group for database servers"
 
   ingress {
-    description     = "[PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) from app tier"
+    description     = "[PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) from app tier"
     from_port       = 5432
     to_port         = 5432
     protocol        = "tcp"
@@ -418,11 +418,11 @@ if iptables -L INPUT -n 2>/dev/null | grep -q "0.0.0.0/0.*dpt:22"; then
 fi
 
 if iptables -L INPUT -n 2>/dev/null | grep -q "0.0.0.0/0.*dpt:3306"; then
-    echo "CRITICAL: [MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) (port 3306) open to 0.0.0.0/0"
+    echo "CRITICAL: [MySQL](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) (port 3306) open to 0.0.0.0/0"
 fi
 
 if iptables -L INPUT -n 2>/dev/null | grep -q "0.0.0.0/0.*dpt:5432"; then
-    echo "CRITICAL: [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) (port 5432) open to 0.0.0.0/0"
+    echo "CRITICAL: [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) (port 5432) open to 0.0.0.0/0"
 fi
 
 # Check default policies

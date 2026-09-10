@@ -467,7 +467,7 @@ async def test_create_user(client):
     assert data["email"] == "test@test.com"
 ```
 
-Use `httpx.AsyncClient` with ASGI transport for integration tests. Use `pytest-asyncio` for async test support. Use `pytest-cov` for coverage. Use `TestContainers` for [PostgreSQL](../../../Databases/postgresql/SKILL.md) integration.
+Use `httpx.AsyncClient` with ASGI transport for integration tests. Use `pytest-asyncio` for async test support. Use `pytest-cov` for coverage. Use `TestContainers` for [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md) integration.
 
 ## Rules
 - FastAPI routers are thin. Input validation in Pydantic schemas. Business logic in use cases. Data access in repositories.

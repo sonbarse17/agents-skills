@@ -289,11 +289,11 @@ spec:
 ### Step 14: Database per Service Implementation
 
 ```[typescript](../../Frontend/common/typescript/SKILL.md)
-// Order Service — owns its [PostgreSQL](../../Databases/postgresql/SKILL.md) database
+// Order Service — owns its [PostgreSQL](../../Databases/relational/postgresql/SKILL.md) database
 // Schema: orders, order_items, order_events
 // No other service has direct DB access
 
-// Payment Service — owns its [PostgreSQL](../../Databases/postgresql/SKILL.md) database
+// Payment Service — owns its [PostgreSQL](../../Databases/relational/postgresql/SKILL.md) database
 // Schema: payments, refunds, payment_methods
 
 // Cross-service data access: via API calls only

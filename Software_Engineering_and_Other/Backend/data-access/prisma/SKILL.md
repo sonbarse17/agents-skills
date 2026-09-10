@@ -38,7 +38,7 @@ Design database schemas, write performant queries, manage migrations, implement 
 User request includes: `prisma`, `prisma schema`, `prisma migrate`, `prisma client`, `prisma relation`, `prisma middleware`, `prisma query`, `prisma performance`, `prisma seed`, `prisma studio`.
 
 ### Input Context
-- Database ([PostgreSQL](../../../Databases/postgresql/SKILL.md), [MySQL](../../../Databases/mysql/SKILL.md), SQLite, SQL Server, [MongoDB](../../../Databases/mongodb/SKILL.md))
+- Database ([PostgreSQL](../../../Databases/relational/postgresql/SKILL.md), [MySQL](../../../Databases/relational/mysql/SKILL.md), SQLite, SQL Server, [MongoDB](../../../Databases/nosql/mongodb/SKILL.md))
 - Prisma version (5.x, 6.x)
 - Schema complexity (relations, enums, composite keys)
 - Deployment (Node.js, [serverless](../../../Patterns/serverless/SKILL.md), edge)
@@ -99,7 +99,7 @@ generator client {
 }
 
 datasource db {
-  provider = "[postgresql](../../../Databases/postgresql/SKILL.md)"
+  provider = "[postgresql](../../../Databases/relational/postgresql/SKILL.md)"
   url      = env("DATABASE_URL")
 }
 

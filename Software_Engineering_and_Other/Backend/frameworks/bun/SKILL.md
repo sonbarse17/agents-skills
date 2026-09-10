@@ -65,7 +65,7 @@ Decision: Elysia for new full-stack [TypeScript](../../../Frontend/common/typesc
 
 ### Bun.sqlite vs External DB
 
-| Criterion | Bun.sqlite | [PostgreSQL](../../../Databases/postgresql/SKILL.md) | [MySQL](../../../Databases/mysql/SKILL.md) |
+| Criterion | Bun.sqlite | [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md) | [MySQL](../../../Databases/relational/mysql/SKILL.md) |
 |-----------|-----------|------------|-------|
 | Latency | <1ms (in-process) | 1-5ms (network) | 1-5ms (network) |
 | Concurrent writes | WAL mode (good) | Excellent | Excellent |
@@ -74,7 +74,7 @@ Decision: Elysia for new full-stack [TypeScript](../../../Frontend/common/typesc
 | Full-text search | FTS5 built-in | tsvector | Fulltext index |
 | Backup | .backup command | pg_dump/WAL archiving | mysqldump |
 
-Decision: Bun.sqlite for single-server, embedded, or dev. [PostgreSQL](../../../Databases/postgresql/SKILL.md) for production multi-server.
+Decision: Bun.sqlite for single-server, embedded, or dev. [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md) for production multi-server.
 
 ## Agent Protocol
 
@@ -84,7 +84,7 @@ User request includes: `Bun`, `bun runtime`, `bun.sh`, `bun run`, `bun test`, `b
 ### Input Context
 - Runtime (Bun, Bun in [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md))
 - Framework (Elysia, Hono, Express compatibility)
-- Database (Bun SQLite, [PostgreSQL](../../../Databases/postgresql/SKILL.md), [MySQL](../../../Databases/mysql/SKILL.md))
+- Database (Bun SQLite, [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md), [MySQL](../../../Databases/relational/mysql/SKILL.md))
 - Build target (API, CLI tool, script)
 
 ### Output Artifact

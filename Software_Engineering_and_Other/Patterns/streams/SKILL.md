@@ -40,7 +40,7 @@ For detailed endpoints and parameters, see [../../../Global_References/streams-a
 | Item               | Description                                                               |
 | ------------------ | ------------------------------------------------------------------------- |
 | **Kibana URL**     | Kibana endpoint (e.g. `https://localhost:5601` or a Cloud deployment URL) |
-| **Authentication** | API key or basic auth (see the [elasticsearch-authn](../../Databases/elasticsearch-authn/SKILL.md) skill)                 |
+| **Authentication** | API key or basic auth (see the [elasticsearch-authn](../../../observability-monitoring-logging/elasticsearch/other/elasticsearch-authn/SKILL.md) skill)                 |
 | **Privileges**     | `read_stream` for read operations; `manage_stream` for lifecycle APIs     |
 
 Use the space-scoped path `/s/{space_id}/api/streams` when operating in a non-default space. For role configuration

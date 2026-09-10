@@ -301,7 +301,7 @@ jobs:
 
 **Apple App Store**: Build IPA with `dotnet publish -f net8.0-ios -c Release`. Requires Apple Developer Program membership ($99/year). Distribution via App Store Connect: Xcode Organizer → Distribute App → App Store Connect. Or use `Transporter` app for IPA upload. TestFlight for beta distribution before production release.
 
-**App Center** (retired): Migrate to [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions + App Center Distribute (still available for distribution). Alternative: [Firebase](../../../Databases/firebase/SKILL.md) App Distribution for [Android](../../../../Mobile/android/SKILL.md) beta testing, TestFlight for iOS.
+**App Center** (retired): Migrate to [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions + App Center Distribute (still available for distribution). Alternative: [Firebase](../../../Databases/nosql/firebase/SKILL.md) App Distribution for [Android](../../../../Mobile/android/SKILL.md) beta testing, TestFlight for iOS.
 
 ### Versioning Strategy
 - `ApplicationVersion` ([Android](../../../../Mobile/android/SKILL.md)): integer, auto-increment per release.

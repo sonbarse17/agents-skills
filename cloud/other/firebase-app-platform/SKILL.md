@@ -18,9 +18,9 @@ depends_on:
   - monitoring
 ---
 
-# [Firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) App Platform
+# [Firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) App Platform
 
-Ship mobile and web backends with [Firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) managed services.
+Ship mobile and web backends with [Firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) managed services.
 
 ## When to Use This Skill
 
@@ -34,31 +34,31 @@ Use this skill when:
 ## Prerequisites
 
 - Node.js 18+
-- [Firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) CLI (`npm install -g [firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md)-tools`)
-- Google Cloud account ([Firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) is part of GCP)
-- A [Firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) project (create at console.[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md).google.com)
+- [Firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) CLI (`npm install -g [firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md)-tools`)
+- Google Cloud account ([Firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) is part of GCP)
+- A [Firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) project (create at console.[firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md).google.com)
 
 ## Quick Start
 
 ```bash
 # Install and authenticate
-npm install -g [firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md)-tools
-[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) login
+npm install -g [firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md)-tools
+[firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) login
 
 # Initialize in your project directory
-[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) init
+[firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) init
 # Select: Firestore, Functions, Hosting, Emulators
 
 # Start local emulators
-[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) emulators:start
+[firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) emulators:start
 
 # Deploy everything
-[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) deploy
+[firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) deploy
 
 # Deploy specific services
-[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) deploy --only functions
-[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) deploy --only hosting
-[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) deploy --only firestore:rules
+[firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) deploy --only functions
+[firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) deploy --only hosting
+[firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) deploy --only firestore:rules
 ```
 
 ## Firestore Database
@@ -106,7 +106,7 @@ service cloud.firestore {
 // lib/firestore.ts
 import { getFirestore, collection, doc, setDoc, getDoc,
          query, where, orderBy, limit, onSnapshot,
-         serverTimestamp, increment } from "[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md)/firestore";
+         serverTimestamp, increment } from "[firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md)/firestore";
 
 const db = getFirestore();
 
@@ -166,7 +166,7 @@ async function incrementViews(postId: string) {
 // lib/auth.ts
 import { getAuth, signInWithPopup, GoogleAuthProvider,
          createUserWithEmailAndPassword, signInWithEmailAndPassword,
-         signOut, onAuthStateChanged } from "[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md)/auth";
+         signOut, onAuthStateChanged } from "[firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md)/auth";
 
 const auth = getAuth();
 
@@ -197,10 +197,10 @@ onAuthStateChanged(auth, (user) => {
 
 ```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // functions/src/index.ts
-import { onRequest } from "[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md)-functions/v2/https";
-import { onDocumentCreated } from "[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md)-functions/v2/firestore";
-import { getFirestore } from "[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md)-admin/firestore";
-import { initializeApp } from "[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md)-admin/app";
+import { onRequest } from "[firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md)-functions/v2/https";
+import { onDocumentCreated } from "[firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md)-functions/v2/firestore";
+import { getFirestore } from "[firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md)-admin/firestore";
+import { initializeApp } from "[firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md)-admin/app";
 
 initializeApp();
 const db = getFirestore();
@@ -238,11 +238,11 @@ export const onMessageCreated = onDocumentCreated(
 ## Hosting
 
 ```json
-// [firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md).json
+// [firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md).json
 {
   "hosting": {
     "public": "dist",
-    "ignore": ["[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md).json", "**/.*", "**/node_modules/**"],
+    "ignore": ["[firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md).json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       { "source": "/api/**", "function": "api" },
       { "source": "**", "destination": "/index.html" }
@@ -269,20 +269,20 @@ export const onMessageCreated = onDocumentCreated(
 
 ```bash
 # Start all emulators
-[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) emulators:start
+[firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) emulators:start
 
 # Start specific emulators
-[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) emulators:start --only auth,firestore,functions
+[firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) emulators:start --only auth,firestore,functions
 
 # Export emulator data for persistence
-[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) emulators:export ./emulator-data
-[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) emulators:start --import=./emulator-data
+[firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) emulators:export ./emulator-data
+[firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) emulators:start --import=./emulator-data
 
 # Emulator UI at http://localhost:4000
 ```
 
 ```json
-// [firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md).json — emulator config
+// [firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md).json — emulator config
 {
   "emulators": {
     "auth": { "port": 9099 },
@@ -298,10 +298,10 @@ export const onMessageCreated = onDocumentCreated(
 
 ```bash
 # Set environment variables for functions
-[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) functions:config:set stripe.key="sk_live_xxx" app.name="MyApp"
+[firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) functions:config:set stripe.key="sk_live_xxx" app.name="MyApp"
 
 # View config
-[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) functions:config:get
+[firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) functions:config:get
 
 # Use in functions (v1)
 const stripeKey = functions.config().stripe.key;
@@ -318,13 +318,13 @@ STRIPE_KEY=sk_test_xxx
 
 ```bash
 # Create separate projects for each environment
-[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) use --add   # Add staging project alias
-[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) use staging # Switch to staging
-[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) use production
+[firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) use --add   # Add staging project alias
+[firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) use staging # Switch to staging
+[firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) use production
 
 # Deploy to specific project
-[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) deploy --project my-app-staging
-[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) deploy --project my-app-production
+[firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) deploy --project my-app-staging
+[firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) deploy --project my-app-production
 
 # .firebaserc
 {
@@ -338,20 +338,20 @@ STRIPE_KEY=sk_test_xxx
 ## CLI Reference
 
 ```bash
-[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) projects:list              # List all projects
-[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) deploy                      # Deploy everything
-[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) deploy --only functions     # Deploy only functions
-[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) deploy --only hosting       # Deploy only hosting
-[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) deploy --only firestore     # Deploy rules + indexes
-[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) functions:log               # View function logs
-[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) hosting:channel:create pr-123  # Preview channel
-[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) hosting:channel:delete pr-123
+[firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) projects:list              # List all projects
+[firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) deploy                      # Deploy everything
+[firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) deploy --only functions     # Deploy only functions
+[firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) deploy --only hosting       # Deploy only hosting
+[firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) deploy --only firestore     # Deploy rules + indexes
+[firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) functions:log               # View function logs
+[firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) hosting:channel:create pr-123  # Preview channel
+[firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) hosting:channel:delete pr-123
 ```
 
 ## Security Best Practices
 
 - Write strict Firestore security rules before any other code
-- Separate environments by [Firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) project (staging/production)
+- Separate environments by [Firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) project (staging/production)
 - Enable budget alerts and quota [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) in GCP console
 - Move privileged logic into Cloud Functions (never trust the client)
 - Use App Check to prevent API abuse from non-app clients
@@ -364,9 +364,9 @@ STRIPE_KEY=sk_test_xxx
 |-------|---------|
 | Permission denied | Check Firestore rules, verify auth state |
 | Function cold starts | Use min instances (`minInstances: 1`), optimize imports |
-| Emulator won't start | Check port conflicts, run `[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) emulators:start --debug` |
-| Deploy fails | Run `[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) deploy --debug`, check service account permissions |
-| Rules test failing | Use `[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) emulators:exec` to run rules unit tests |
+| Emulator won't start | Check port conflicts, run `[firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) emulators:start --debug` |
+| Deploy fails | Run `[firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) deploy --debug`, check service account permissions |
+| Rules test failing | Use `[firebase](../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) emulators:exec` to run rules unit tests |
 
 ## Related Skills
 

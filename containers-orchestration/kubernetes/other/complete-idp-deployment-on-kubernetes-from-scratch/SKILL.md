@@ -125,8 +125,8 @@ cloud's own load balancer, ACM/managed-cert service, and managed database
 — this phase exists specifically because this variant deliberately avoids
 those.
 
-**Phase 3 — Backstage on the cluster, backed by in-cluster [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md).**
-Package Backstage as a Helm chart and deploy it against a [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)
+**Phase 3 — Backstage on the cluster, backed by in-cluster [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md).**
+Package Backstage as a Helm chart and deploy it against a [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)
 instance running as a StatefulSet inside the same cluster (or a
 CloudNativePG-style operator-managed instance, still in-cluster) rather
 than any cloud-managed database service — this is the phase where the

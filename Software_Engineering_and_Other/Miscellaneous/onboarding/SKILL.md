@@ -581,7 +581,7 @@ git secrets --register-aws
 | Rust | Slow compile times | Use `mold` linker, `cargo-chef` for [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) builds |
 | Java | `Unsupported class file major version` | Mismatched JDK version — use `sdk use java 21.0.1` |
 | [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) | `context was canceled` | Check kubeconfig context: `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) config current-context`, increase `--request-timeout` |
-| [PostgreSQL](../../Databases/postgresql/SKILL.md) | `role "user" does not exist` | `createuser -s postgres` or set `PGUSER=postgres` in .env |
+| [PostgreSQL](../../Databases/relational/postgresql/SKILL.md) | `role "user" does not exist` | `createuser -s postgres` or set `PGUSER=postgres` in .env |
 | Redis | `NOAUTH Authentication required` | Set `REDIS_PASSWORD` in .env or disable password in dev |
 | Git | `fatal: refusing to merge unrelated histories` | `git pull origin main --allow-unrelated-histories` (one-time) |
 

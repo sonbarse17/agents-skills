@@ -581,7 +581,7 @@ test('authorization matrix', () => {
 
 ### Data-Level Authorization
 ```sql
--- Row-Level Security (RLS) in [PostgreSQL](../../../Databases/postgresql/SKILL.md)
+-- Row-Level Security (RLS) in [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md)
 CREATE POLICY tenant_isolation ON orders
   USING (tenant_id = current_setting('app.current_tenant_id'));
 

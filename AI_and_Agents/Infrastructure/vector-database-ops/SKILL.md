@@ -158,7 +158,7 @@ results = client.query_points(
 )
 ```
 
-## pgvector — [PostgreSQL](../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) Extension
+## pgvector — [PostgreSQL](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) Extension
 
 ```sql
 -- Enable extension
@@ -201,7 +201,7 @@ LIMIT 10;
   -e POSTGRES_PASSWORD=secret \
   -e POSTGRES_DB=vectordb \
   -p 5432:5432 \
-  -v pgvector-data:/var/lib/[postgresql](../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)/data \
+  -v pgvector-data:/var/lib/[postgresql](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)/data \
   pgvector/pgvector:pg16
 ```
 

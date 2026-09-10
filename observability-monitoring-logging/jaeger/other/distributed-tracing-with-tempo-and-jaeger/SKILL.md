@@ -291,7 +291,7 @@ rather than repeats.
    { .service.name = "checkout-service" && duration > 500ms && status = error }
    ```
    ```traceql
-   { .service.name = "payments-service" } >> { .db.system = "[postgresql](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)" && duration > 200ms }
+   { .service.name = "payments-service" } >> { .db.system = "[postgresql](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)" && duration > 200ms }
    ```
    The second example finds traces where a `payments-service` span has a
    descendant Postgres span slower than 200ms — a structural query no

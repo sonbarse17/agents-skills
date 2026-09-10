@@ -107,7 +107,7 @@ Create a minimal, deterministic reproduction:
 
 ```yaml
 reproduction_steps:
-  environment: "Node.js 20, macOS 14.5, [PostgreSQL](../../Databases/postgresql/SKILL.md) 16"
+  environment: "Node.js 20, macOS 14.5, [PostgreSQL](../../Databases/relational/postgresql/SKILL.md) 16"
   prerequisites:
     - "npm install"
     - "[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) compose up -d db"

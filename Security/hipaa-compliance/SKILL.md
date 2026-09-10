@@ -236,7 +236,7 @@ aws rds create-db-instance \
   --backup-retention-period 35 \
   --multi-az \
   --deletion-protection \
-  --enable-cloudwatch-logs-exports '["[postgresql](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)","upgrade"]' \
+  --enable-cloudwatch-logs-exports '["[postgresql](../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)","upgrade"]' \
   --tags Key=Compliance,Value=HIPAA Key=DataClassification,Value=PHI
 
 # Create S3 bucket with HIPAA controls

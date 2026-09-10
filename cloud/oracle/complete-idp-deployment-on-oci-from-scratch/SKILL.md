@@ -119,9 +119,9 @@ reference it. For general node-pool-sizing and workload-identity-as-a-
 [managed-[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-eks-aks-gke](../../Containers_and_Orchestration/managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md)'s
 node-group and workload-identity guidance still applies by analogy.
 
-**Phase 3 — Backstage on OKE, backed by OCI Database with [PostgreSQL](../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md).**
+**Phase 3 — Backstage on OKE, backed by OCI Database with [PostgreSQL](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md).**
 Package Backstage as a Helm chart and deploy it against an OCI Database
-with [PostgreSQL](../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) instance (multi-AZ within the region beyond a pilot) as
+with [PostgreSQL](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) instance (multi-AZ within the region beyond a pilot) as
 the catalog database, with the Backstage backend pod's node covered by
 the Phase 2 Dynamic Group so it can call
 `secrets-retrieval` on OCI [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) for the DB credential via a Resource
@@ -150,12 +150,12 @@ default. See
 
 **Phase 6 — Self-service API wired to OCI provisioning.** Build the
 Scaffolder custom actions that let a developer request an OCI Database
-with [PostgreSQL](../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) instance or a new Dynamic-Group-scoped IAM policy
+with [PostgreSQL](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) instance or a new Dynamic-Group-scoped IAM policy
 statement through the catalog. Model the request as an explicit state
 machine, gate production-tier database shapes and any IAM policy broader
 than a single named secret/compartment behind human approval, and keep
 policy/budget rules external. The OCI-specific provisioning call —
-creating the database instance via the Database with [PostgreSQL](../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) API using
+creating the database instance via the Database with [PostgreSQL](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) API using
 a Resource Principal scoped to the requesting team's compartment, and
 drafting (never auto-applying without review) the corresponding IAM
 policy statement scoping a Dynamic Group to that exact resource — is
@@ -269,7 +269,7 @@ one quarter.
    '<PLATFORM_COMPARTMENT_OCID>'}`, and an IAM policy granting it
    `use secret-family` scoped to the specific catalog-DB secret only.
 3. **Phase 3:** Backstage is packaged as `charts/backstage-meridian`,
-   deployed against an OCI Database with [PostgreSQL](../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) instance
+   deployed against an OCI Database with [PostgreSQL](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) instance
    `meridian-backstage-catalog` (multi-AZ), with the backend pod reading
    its DB credential from OCI [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) via the Phase 2 Resource Principal.
 4. **Phase 4:** A "Node.js service" golden-path template is authored,
@@ -282,7 +282,7 @@ one quarter.
 6. **Phase 6:** A Scaffolder action `custom:oci:provisionPostgresDb`
    checks an OPA policy (auto-approve the smallest shape/dev, require
    approval otherwise), and on approval provisions via the Database with
-   [PostgreSQL](../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) API using a Resource Principal scoped to the requesting
+   [PostgreSQL](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) API using a Resource Principal scoped to the requesting
    team's compartment.
 7. **Phase 7:** A scorecard adds a "Dynamic Group identity, not API key"
    check, weighted highly under Security.

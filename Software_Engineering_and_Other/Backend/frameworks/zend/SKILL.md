@@ -43,7 +43,7 @@ Exact user phrases: "Zend", "Zend Framework", "Laminas", "Laminas MVC", "Mezzio"
 ### Input Context
 - Framework version (Laminas 3.x, Mezzio 4.x, ZF3 migration).
 - PHP version (8.1+ required for Laminas 3).
-- Database ([MySQL](../../../Databases/mysql/SKILL.md), [PostgreSQL](../../../Databases/postgresql/SKILL.md) with laminas-db or Doctrine).
+- Database ([MySQL](../../../Databases/relational/mysql/SKILL.md), [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md) with laminas-db or Doctrine).
 - MVC vs Middleware (Laminas MVC vs Mezzio).
 - Existing modules and their dependencies.
 

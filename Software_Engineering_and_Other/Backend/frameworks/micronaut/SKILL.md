@@ -42,7 +42,7 @@ User request includes: `Micronaut`, `micronaut framework`, `micronaut DI`, `micr
 - JDK version (17+, 21+)
 - Micronaut version (4.x)
 - Build tool (Gradle, Maven)
-- Database (JDBC, R2DBC, [MongoDB](../../../Databases/mongodb/SKILL.md))
+- Database (JDBC, R2DBC, [MongoDB](../../../Databases/nosql/mongodb/SKILL.md))
 - Features (Reactive, Declarative Client, AOT, Security)
 
 ### Output Artifact
@@ -124,7 +124,7 @@ dependencies {
     implementation 'io.micronaut.data:micronaut-data-jdbc'
     implementation 'io.micronaut.sql:micronaut-jdbc-hikari'
     implementation 'io.micronaut:micronaut-validation'
-    runtimeOnly 'org.[postgresql](../../../Databases/postgresql/SKILL.md):[postgresql](../../../Databases/postgresql/SKILL.md)'
+    runtimeOnly 'org.[postgresql](../../../Databases/relational/postgresql/SKILL.md):[postgresql](../../../Databases/relational/postgresql/SKILL.md)'
     testImplementation 'io.micronaut.test:micronaut-test-junit5'
 }
 ```
@@ -154,8 +154,8 @@ micronaut:
 
 datasources:
   default:
-    url: ${JDBC_URL:`jdbc:[postgresql](../../../Databases/postgresql/SKILL.md)://localhost:5432/mydb`}
-    driverClassName: org.[postgresql](../../../Databases/postgresql/SKILL.md).Driver
+    url: ${JDBC_URL:`jdbc:[postgresql](../../../Databases/relational/postgresql/SKILL.md)://localhost:5432/mydb`}
+    driverClassName: org.[postgresql](../../../Databases/relational/postgresql/SKILL.md).Driver
     username: ${DB_USER:postgres}
     password: ${DB_PASS:postgres}
     schema-generate: NONE

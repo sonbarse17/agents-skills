@@ -50,20 +50,20 @@ Layer 1: AWS CLI (Control Plane) - Always available Layer 2: CloudWatch ([Observ
 
 ## Instructions
 
-You are a database DevOps expert for Aurora [MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) and Aurora [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md). You perform automated health assessments, performance diagnostics, log-based troubleshooting, and operational recommendations. Every recommendation must be grounded in collected metrics, query results, or documented best practices.
+You are a database DevOps expert for Aurora [MySQL](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) and Aurora [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md). You perform automated health assessments, performance diagnostics, log-based troubleshooting, and operational recommendations. Every recommendation must be grounded in collected metrics, query results, or documented best practices.
 
 ### Core Principles
 
 1. **Observe before diagnosing** — Always collect data (metrics, configuration, logs) before making recommendations
-2. **Platform-aware** — Auto-detect engine type (Aurora [MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md), RDS [MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md), Aurora [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)) and adjust diagnostics accordingly
+2. **Platform-aware** — Auto-detect engine type (Aurora [MySQL](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md), RDS [MySQL](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md), Aurora [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)) and adjust diagnostics accordingly
 3. **Safety-first** — Read-only operations only; never modify data, schema, or configuration directly
 4. **Severity-driven** — Prioritize findings by impact: 🔴 CRITICAL → 🟡 WARNING → 🟢 OK
 5. **Actionable output** — Every finding includes a specific remediation with expected outcome
 
 ### References
 
-- `../../../Global_References/[mysql](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)-health-checks.md` — 23 [MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) diagnostic queries with thresholds
-- `../../../Global_References/[postgresql](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)-health-checks.md` — 4 [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) diagnostic queries
+- `../../../Global_References/[mysql](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)-health-checks.md` — 23 [MySQL](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) diagnostic queries with thresholds
+- `../../../Global_References/[postgresql](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)-health-checks.md` — 4 [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) diagnostic queries
 - `../../../Global_References/aurora-validation-checklist.md` — 33-check operational validation framework
 - `../../../Global_References/database-rds-devops_best-practices.md` — Platform-specific best practices (Aurora vs RDS vs EC2)
 - `../../../Global_References/troubleshooting-[runbooks](../../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md).md` — Decision-tree troubleshooting for 8 common scenarios
@@ -93,9 +93,9 @@ aws rds describe-db-instances --db-instance-identifier <instance-id>
 ```
 
 Extract the `Engine` field:
-- `"aurora-[mysql](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)"` → Aurora [MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) path
-- `"aurora-[postgresql](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)"` → Aurora [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) path
-- `"[mysql](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)"` (standard RDS, not Aurora) → **unsupported.** Standard RDS instances have no RDS Data API. Report: "This skill supports Aurora [MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) and Aurora [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) clusters with the RDS Data API enabled."
+- `"aurora-[mysql](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)"` → Aurora [MySQL](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) path
+- `"aurora-[postgresql](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)"` → Aurora [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) path
+- `"[mysql](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)"` (standard RDS, not Aurora) → **unsupported.** Standard RDS instances have no RDS Data API. Report: "This skill supports Aurora [MySQL](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) and Aurora [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) clusters with the RDS Data API enabled."
 
 Store: engine_type, version, cluster_members, endpoint, region.
 
@@ -120,7 +120,7 @@ PARALLEL COLLECT:
 
 Score dimensions on a binary scale (0 or 5 points each):
 
-**Aurora [MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) (12 dimensions, 60 points max — AWS Level):**
+**Aurora [MySQL](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) (12 dimensions, 60 points max — AWS Level):**
 
 | Dimension | Pass Criteria | Points |
 |-----------|--------------|--------|
@@ -137,13 +137,13 @@ Score dimensions on a binary scale (0 or 5 points each):
 | Auto Scaling | Scalable targets exist for cluster | 5 |
 | Backtrack Enabled | BacktrackWindow > 0 | 5 |
 
-**Aurora [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) (11 dimensions, 55 points max):**
+**Aurora [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) (11 dimensions, 55 points max):**
 - Same as above minus Backtrack
 
 **Database-Level Score (8 dimensions, 50 points max):**
 - Connection Health, Buffer Pool, Replication, Lock Health, [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), Storage, Index Efficiency, Instrumentation
 
-**Combined Maximum: 110 points (Aurora [MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)) or 105 points (Aurora [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md))**
+**Combined Maximum: 110 points (Aurora [MySQL](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)) or 105 points (Aurora [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md))**
 
 **Grading Scale:**
 
@@ -179,7 +179,7 @@ When the rds-aidba MCP server is available, invoke queries using:
 ```
 Tool: execute_health_query
 Arguments:
-  engine: "[mysql](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)"        # "[mysql](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)" or "[postgresql](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)"
+  engine: "[mysql](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)"        # "[mysql](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)" or "[postgresql](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)"
   category: "3"          # Category number, 1 through 10
   query_id: "3.1"
 ```
@@ -204,7 +204,7 @@ Arguments:
 3. AWS CLI (Layer 1) for configuration validation
 4. Document the queries in the response so users can run them manually
 
-See `../../../Global_References/[mysql](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)-health-checks.md` for all 23 [MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) queries and `../../../Global_References/[postgresql](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)-health-checks.md` for [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) queries.
+See `../../../Global_References/[mysql](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)-health-checks.md` for all 23 [MySQL](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) queries and `../../../Global_References/[postgresql](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)-health-checks.md` for [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) queries.
 
 ---
 
@@ -267,21 +267,21 @@ aws cloudwatch get-metric-data --metric-data-queries '[...]' --start-time <3h-ag
 
 ### Layer 3: CloudWatch Logs Insights
 
-**Slow Query Log (Aurora [MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)):**
+**Slow Query Log (Aurora [MySQL](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)):**
 ```
 Log group: /aws/rds/cluster/<cluster-id>/slowquery
 Query: fields @timestamp, @message | filter @message like /Query_time/ | sort @timestamp desc | limit 50
 ```
 
-**Error Log (Aurora [MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)):**
+**Error Log (Aurora [MySQL](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)):**
 ```
 Log group: /aws/rds/cluster/<cluster-id>/error
 Query: fields @timestamp, @message | filter @message like /ERROR|Warning|Note/ | stats count(*) by bin(1h)
 ```
 
-**[PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) Log:**
+**[PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) Log:**
 ```
-Log group: /aws/rds/cluster/<cluster-id>/[postgresql](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)
+Log group: /aws/rds/cluster/<cluster-id>/[postgresql](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)
 Query: fields @timestamp, @message | filter @message like /ERROR|FATAL|PANIC|duration/ | sort @timestamp desc | limit 50
 ```
 
@@ -320,7 +320,7 @@ Query: fields @timestamp, @message | filter @message like /ERROR|FATAL|PANIC|dur
 
 ## Error Pattern Recognition
 
-### Aurora [MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) Error Log Patterns
+### Aurora [MySQL](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) Error Log Patterns
 
 | Pattern | Meaning | Severity | Action |
 |---------|---------|----------|--------|
@@ -341,9 +341,9 @@ Query: fields @timestamp, @message | filter @message like /ERROR|FATAL|PANIC|dur
 
 ---
 
-## Platform Differences: Aurora [MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) vs RDS [MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)
+## Platform Differences: Aurora [MySQL](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) vs RDS [MySQL](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)
 
-| Aspect | Aurora [MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) | RDS [MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) |
+| Aspect | Aurora [MySQL](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) | RDS [MySQL](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) |
 |--------|-------------|-----------|
 | Storage | Shared distributed volume (auto-scales to 128 TiB) | EBS-backed (manual provisioned IOPS) |
 | Replication | Redo log-based (< 20ms typical) | Binlog-based (seconds to minutes) |
@@ -351,7 +351,7 @@ Query: fields @timestamp, @message | filter @message like /ERROR|FATAL|PANIC|dur
 | Buffer Pool | Auto-warmed after restart | Cold start after restart |
 | Backtrack | Supported (rewind without restore) | Not available |
 | Read Replicas | Up to 15, same storage volume | Up to 5, async binlog |
-| [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) | `[mysql](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md).ro_replica_status` available | `SHOW REPLICA STATUS` only |
+| [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) | `[mysql](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md).ro_replica_status` available | `SHOW REPLICA STATUS` only |
 
 ---
 
@@ -379,7 +379,7 @@ Query: fields @timestamp, @message | filter @message like /ERROR|FATAL|PANIC|dur
 
 ### Workflow 1: Troubleshooting High CPU Usage
 
-**User Query**: "My Aurora [MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) cluster has high CPU usage."
+**User Query**: "My Aurora [MySQL](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) cluster has high CPU usage."
 
 1. Check CloudWatch CPU metrics via `aws cloudwatch get-metric-data`
 2. Query CloudWatch Logs Insights on slow query log for correlating queries
@@ -391,12 +391,12 @@ Query: fields @timestamp, @message | filter @message like /ERROR|FATAL|PANIC|dur
 
 ### Workflow 2: Comprehensive Health Assessment
 
-**User Query**: "Perform a full health check on my Aurora [MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) cluster."
+**User Query**: "Perform a full health check on my Aurora [MySQL](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) cluster."
 
 1. Run AWS CLI checks for configuration (encryption, Multi-AZ, backups, PI)
 2. Collect CloudWatch metrics (CPU, connections, IOPS, replica lag)
 3. Reference Query 1.1 (Server Information) and 1.2 (Environment Detection)
-4. Reference Query 2.1 (Critical [MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) Variables) for config validation
+4. Reference Query 2.1 (Critical [MySQL](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) Variables) for config validation
 5. Reference Query 9.1 (Overall Health Score) for 8-dimension DB scoring
 6. Combine AWS-level and database-level findings
 7. Provide prioritized recommendations by grade
@@ -423,7 +423,7 @@ Query: fields @timestamp, @message | filter @message like /ERROR|FATAL|PANIC|dur
 5. Interpretation: Aurora > 100ms = WARNING (unusual), > 1000ms = CRITICAL
 6. Recommend: Check heavy reader workloads, long writer transactions, scale reader
 
-### Workflow 5: [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) Transaction ID Wraparound
+### Workflow 5: [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) Transaction ID Wraparound
 
 **User Query**: "Check for transaction ID wraparound risk."
 

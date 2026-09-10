@@ -79,7 +79,7 @@ a Testcontainers suite that works fine on a developer's laptop.
   with JUnit 5, `testcontainers-[python](../../Languages/python/SKILL.md)`, `testcontainers-go`,
   `testcontainers-node`, or the corresponding module for the test
   framework in use) plus the specific **module** for each dependency
-  (e.g. `testcontainers-java`'s `[postgresql](../../Databases/postgresql/SKILL.md)`, `kafka`, and `redis`
+  (e.g. `testcontainers-java`'s `[postgresql](../../Databases/relational/postgresql/SKILL.md)`, `kafka`, and `redis`
   modules ship pre-built wait-strategy and configuration support rather
   than requiring a hand-rolled generic container setup).
 - Enough CI runner resource headroom (CPU, memory, and disk for pulled

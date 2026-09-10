@@ -80,7 +80,7 @@ Scan for project files. Detect components, `repo{}`, `detectedInfra[]`, `detecte
 
 > If no project files, no Dockerfile, AND no index.html → ⛔ read [zero-code-path.md](../../../../Global_References/zero-code-path.md).
 
-> ⛔ **Cloud SDK early gate.** Grep for `aws-sdk|@aws-sdk|boto3|google-cloud|@google-cloud|[firebase](../../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md)`. If functional deps found → read [cloud-sdk-migration.md](../../../../Global_References/cloud-sdk-migration.md), then `ask_user`: **"Redirect to Azure Cloud Migrate"** (set `routeToSkill: "[azure-cloud-migrate](../../Cloud_Providers/[azure-cloud-migrate](../../Cloud_Providers/azure-skills/skills/azure-cloud-migrate/SKILL.md)/SKILL.md)"`) · **"Continue evaluation anyway"** (finish readiness eval + SDK→Azure mapping, then STOP at Step 8 — no plan until the deps are swapped) · **"Cancel"**.
+> ⛔ **Cloud SDK early gate.** Grep for `aws-sdk|@aws-sdk|boto3|google-cloud|@google-cloud|[firebase](../../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md)`. If functional deps found → read [cloud-sdk-migration.md](../../../../Global_References/cloud-sdk-migration.md), then `ask_user`: **"Redirect to Azure Cloud Migrate"** (set `routeToSkill: "[azure-cloud-migrate](../../Cloud_Providers/[azure-cloud-migrate](../../Cloud_Providers/azure-skills/skills/azure-cloud-migrate/SKILL.md)/SKILL.md)"`) · **"Continue evaluation anyway"** (finish readiness eval + SDK→Azure mapping, then STOP at Step 8 — no plan until the deps are swapped) · **"Cancel"**.
 
 ### Step 3: Per-Component Evaluation
 

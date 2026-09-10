@@ -84,15 +84,15 @@ supports macOS, Windows, Linux, iOS, and [Android](../android/SKILL.md).
 version: "3.8"
 
 services:
-  [mysql](../../Software_Engineering_and_Other/Databases/mysql/SKILL.md):
-    image: [mysql](../../Software_Engineering_and_Other/Databases/mysql/SKILL.md):8.0
+  [mysql](../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md):
+    image: [mysql](../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md):8.0
     environment:
       MYSQL_ROOT_PASSWORD: "${FLEET_MYSQL_ROOT_PASSWORD}"
       MYSQL_DATABASE: fleet
       MYSQL_USER: fleet
       MYSQL_PASSWORD: "${FLEET_MYSQL_PASSWORD}"
     volumes:
-      - [mysql](../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)-data:/var/lib/[mysql](../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)
+      - [mysql](../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)-data:/var/lib/[mysql](../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)
     ports:
       - "3306:3306"
     healthcheck:
@@ -108,12 +108,12 @@ services:
   fleet:
     image: fleetdm/fleet:v4.47.0
     depends_on:
-      [mysql](../../Software_Engineering_and_Other/Databases/mysql/SKILL.md):
+      [mysql](../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md):
         condition: service_healthy
       redis:
         condition: service_started
     environment:
-      FLEET_MYSQL_ADDRESS: [mysql](../../Software_Engineering_and_Other/Databases/mysql/SKILL.md):3306
+      FLEET_MYSQL_ADDRESS: [mysql](../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md):3306
       FLEET_MYSQL_DATABASE: fleet
       FLEET_MYSQL_USERNAME: fleet
       FLEET_MYSQL_PASSWORD: "${FLEET_MYSQL_PASSWORD}"
@@ -129,7 +129,7 @@ services:
       - "8080:8080"
 
 volumes:
-  [mysql](../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)-data:
+  [mysql](../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)-data:
 ```
 
 ### 3.2 Initial setup

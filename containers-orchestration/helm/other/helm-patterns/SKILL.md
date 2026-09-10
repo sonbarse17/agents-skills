@@ -127,10 +127,10 @@ maintainers:
   - name: DevOps Team
     email: devops@example.com
 dependencies:
-  - name: [postgresql](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)
+  - name: [postgresql](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)
     version: "15.5.2"
     repository: "https://charts.bitnami.com/bitnami"
-    condition: [postgresql](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md).enabled
+    condition: [postgresql](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md).enabled
     tags:
       - database
   - name: redis

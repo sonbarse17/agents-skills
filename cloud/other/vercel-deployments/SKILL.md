@@ -114,15 +114,15 @@ vercel env rm SECRET_KEY production
 
 ```bash
 # Production — real credentials
-vercel env add DATABASE_URL production <<< "[postgresql](../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)://prod-host:5432/app"
+vercel env add DATABASE_URL production <<< "[postgresql](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)://prod-host:5432/app"
 vercel env add STRIPE_SECRET_KEY production
 
 # Preview — staging/test credentials
-vercel env add DATABASE_URL preview <<< "[postgresql](../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)://staging-host:5432/app"
+vercel env add DATABASE_URL preview <<< "[postgresql](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)://staging-host:5432/app"
 vercel env add STRIPE_SECRET_KEY preview   # Use test mode key
 
 # Development — local values
-vercel env add DATABASE_URL development <<< "[postgresql](../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)://localhost:5432/app"
+vercel env add DATABASE_URL development <<< "[postgresql](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)://localhost:5432/app"
 ```
 
 ## Edge Functions

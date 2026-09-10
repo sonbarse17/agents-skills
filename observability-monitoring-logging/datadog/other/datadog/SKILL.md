@@ -134,10 +134,10 @@ docker_labels_as_tags:
 
 ## Integration Configuration
 
-### [MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)
+### [MySQL](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)
 
 ```yaml
-# /etc/datadog-agent/conf.d/[mysql](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md).d/conf.yaml
+# /etc/datadog-agent/conf.d/[mysql](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md).d/conf.yaml
 init_config:
 
 instances:
@@ -152,7 +152,7 @@ instances:
       extra_status_metrics: true
 ```
 
-### [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)
+### [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)
 
 ```yaml
 # /etc/datadog-agent/conf.d/postgres.d/conf.yaml

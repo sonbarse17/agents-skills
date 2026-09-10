@@ -244,7 +244,7 @@ Migration types:
 Azure Arc:
   - Servers: Any Linux/Windows VM on-prem
   - [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md): AKS hybrid, K3s, Rancher
-  - Data: SQL Managed Instance, [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) Hyperscale
+  - Data: SQL Managed Instance, [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) Hyperscale
   - Policies: Azure Policy + Guest Configuration
   - Extensions: [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), security, custom scripts
 

@@ -416,7 +416,7 @@ data-diff is an open-source tool for diffing tables across databases using check
 
 ```bash
 # data-diff: compare tables across databases
-data-diff --dbs [postgresql](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)://user@pg-host/db snowflake://user@sf-account/db \
+data-diff --dbs [postgresql](../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)://user@pg-host/db snowflake://user@sf-account/db \
   --table public.orders public.orders \
   --key order_id \
   --columns status,total_amount,updated_at

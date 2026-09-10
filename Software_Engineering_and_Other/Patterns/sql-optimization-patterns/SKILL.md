@@ -35,7 +35,7 @@ Transform slow database queries into lightning-fast operations through systemati
 
 Understanding EXPLAIN output is fundamental to optimization.
 
-**[PostgreSQL](../../Databases/postgresql/SKILL.md) EXPLAIN:**
+**[PostgreSQL](../../Databases/relational/postgresql/SKILL.md) EXPLAIN:**
 
 ```sql
 -- Basic explain
@@ -170,7 +170,7 @@ Detailed pattern documentation lives in `../../../Global_References/sql-optimiza
 ANALYZE users;
 ANALYZE VERBOSE orders;
 
--- Vacuum ([PostgreSQL](../../Databases/postgresql/SKILL.md))
+-- Vacuum ([PostgreSQL](../../Databases/relational/postgresql/SKILL.md))
 VACUUM ANALYZE users;
 VACUUM FULL users;  -- Reclaim space (locks table)
 
@@ -192,13 +192,13 @@ REINDEX TABLE users;
 ## [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Queries
 
 ```sql
--- Find slow queries ([PostgreSQL](../../Databases/postgresql/SKILL.md))
+-- Find slow queries ([PostgreSQL](../../Databases/relational/postgresql/SKILL.md))
 SELECT query, calls, total_time, mean_time
 FROM pg_stat_statements
 ORDER BY mean_time DESC
 LIMIT 10;
 
--- Find missing indexes ([PostgreSQL](../../Databases/postgresql/SKILL.md))
+-- Find missing indexes ([PostgreSQL](../../Databases/relational/postgresql/SKILL.md))
 SELECT
     schemaname,
     tablename,
@@ -211,7 +211,7 @@ WHERE seq_scan > 0
 ORDER BY seq_tup_read DESC
 LIMIT 10;
 
--- Find unused indexes ([PostgreSQL](../../Databases/postgresql/SKILL.md))
+-- Find unused indexes ([PostgreSQL](../../Databases/relational/postgresql/SKILL.md))
 SELECT
     schemaname,
     tablename,

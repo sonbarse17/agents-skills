@@ -135,7 +135,7 @@ requiring its mirrored internal equivalent instead** — this is the single
 biggest source of "works everywhere else, fails here" surprises in an
 on-prem build.
 
-**Phase 4 — Backstage on the cluster, backed by self-hosted [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) on
+**Phase 4 — Backstage on the cluster, backed by self-hosted [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) on
 in-cluster block storage.** Package Backstage as a Helm chart, deploy it
 against a Postgres instance running in-cluster on Rook-Ceph or [Longhorn](../../../../containers-orchestration/kubernetes/storage/longhorn/SKILL.md)
 block storage (Rook-Ceph if object/shared-filesystem storage is also

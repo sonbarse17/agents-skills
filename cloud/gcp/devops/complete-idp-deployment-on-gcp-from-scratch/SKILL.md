@@ -100,9 +100,9 @@ ServiceAccounts to Google service accounts against this pool. See
 for GKE provisioning, node pool design, and the Workload Identity
 Federation walkthrough specifically.
 
-**Phase 3 — Backstage on GKE, backed by Cloud SQL for [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md).**
+**Phase 3 — Backstage on GKE, backed by Cloud SQL for [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md).**
 Package Backstage as a Helm chart and deploy it against a Cloud SQL for
-[PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) instance (regional/HA beyond a pilot) as the catalog database,
+[PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) instance (regional/HA beyond a pilot) as the catalog database,
 connecting via the Cloud SQL Auth Proxy sidecar rather than a public IP
 and static password. The Backstage backend's [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) ServiceAccount is
 bound (via Workload Identity Federation from Phase 2) to a Google service

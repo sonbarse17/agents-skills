@@ -87,7 +87,7 @@ Start with a high-level vision. Ask the human clarifying questions until require
 ASSUMPTIONS I'M MAKING:
 1. This is a web application (not native mobile)
 2. Authentication uses session-based cookies (not JWT)
-3. The database is [PostgreSQL](../../Databases/postgresql/SKILL.md) (based on existing Prisma schema)
+3. The database is [PostgreSQL](../../Databases/relational/postgresql/SKILL.md) (based on existing Prisma schema)
 4. We're targeting modern browsers only (no IE11)
 → Correct me now or I'll proceed with these.
 ```

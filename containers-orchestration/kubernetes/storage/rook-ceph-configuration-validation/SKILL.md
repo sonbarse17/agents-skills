@@ -278,7 +278,7 @@ and focuses purely on verifying its health, not on configuring it.
 
 ## Worked example
 
-**Scenario:** Before migrating a production [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) StatefulSet onto
+**Scenario:** Before migrating a production [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) StatefulSet onto
 an existing Rook-Ceph cluster that's been running for a few weeks,
 confirm it's genuinely healthy end-to-end.
 
@@ -326,7 +326,7 @@ destructive) rather than immediately adding hardware:
 ```
 Re-run `ceph status` after rebalancing completes — `health: HEALTH_OK`
 — then run the end-to-end PVC smoke test (step 8) to confirm CSI
-provisioning works, before greenlighting the [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) migration.
+provisioning works, before greenlighting the [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) migration.
 
 ## Cross-references
 

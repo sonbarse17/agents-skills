@@ -70,10 +70,10 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions.
 - GPU / ML workloads: Droplets with GPU plans.
 
 ### Database Decision Tree
-- Relational, need managed: Managed [PostgreSQL](../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) or [MySQL](../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md).
+- Relational, need managed: Managed [PostgreSQL](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) or [MySQL](../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md).
 - Key-value, caching: Managed Redis.
-- Document / NoSQL: Self-managed on Droplets (no managed [MongoDB](../../../Software_Engineering_and_Other/Databases/mongodb/SKILL.md)).
-- Time-series: Self-managed TimescaleDB on Managed [PostgreSQL](../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md).
+- Document / NoSQL: Self-managed on Droplets (no managed [MongoDB](../../../Software_Engineering_and_Other/Databases/nosql/mongodb/SKILL.md)).
+- Time-series: Self-managed TimescaleDB on Managed [PostgreSQL](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md).
 - Need HA: 2-3 node database cluster with standby.
 
 ### Storage Decision Tree
@@ -416,7 +416,7 @@ resource "digitalocean_monitor_alert" "disk" {
 | Droplet | EC2 | VM | Compute Engine |
 | DOKS | EKS | AKS | GKE |
 | Spaces | S3 | Blob Storage | Cloud Storage |
-| Managed [PostgreSQL](../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) | RDS | Database for [PostgreSQL](../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) | Cloud SQL |
+| Managed [PostgreSQL](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) | RDS | Database for [PostgreSQL](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) | Cloud SQL |
 | Managed Redis | ElastiCache | Cache for Redis | Memorystore |
 | App Platform | Elastic Beanstalk / App Runner | App Service | Cloud Run |
 | Container Registry | ECR | ACR | Artifact Registry |
@@ -450,7 +450,7 @@ Placing Droplets outside a VPC exposes them to the public internet by default. A
 A single-node managed database has no failover capability. If the node goes down, the database is unavailable until recovery is complete. Always use at least 2 nodes (standby) for production databases. 3 nodes with automatic failover for HA.
 
 ### Anti-Pattern 3: No Connection Pooling
-Direct database connections from application code exhaust database connection limits under load. Each Droplet or DOKS pod opens N connections to the database. Use PgBouncer (built-in connection pooling for DO Managed [PostgreSQL](../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)).
+Direct database connections from application code exhaust database connection limits under load. Each Droplet or DOKS pod opens N connections to the database. Use PgBouncer (built-in connection pooling for DO Managed [PostgreSQL](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)).
 
 ### Anti-Pattern 4: Ignoring Backups
 Without automated backups, data loss from accidental deletion, corruption, or failed migration is permanent. Enable backups on all Droplets, databases, and Spaces. Test backup restoration quarterly.

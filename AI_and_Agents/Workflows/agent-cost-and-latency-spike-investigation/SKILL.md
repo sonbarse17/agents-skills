@@ -128,7 +128,7 @@ multi-day optimization effort under [incident](../../../observability-monitoring
      duplicated content — see
      [vector-database-ingestion-pipeline-for-rag](../[vector-database-ingestion-pipeline-for-rag](../../Infrastructure/vector-database-ingestion-pipeline-for-rag/SKILL.md)/SKILL.md)
      and
-     [vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../../Infrastructure/vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md)
+     [vector-[database-operations](../../../Software_Engineering_and_Other/Databases/common/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../../Infrastructure/vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md)
      for query-side cost/latency levers (over-retrieval, `ef_search`
      misconfiguration).
 

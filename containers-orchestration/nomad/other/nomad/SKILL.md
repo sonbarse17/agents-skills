@@ -455,7 +455,7 @@ job "api" {
 }
 ```
 
-### Step 8: CSI Volume ([PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) on Nomad)
+### Step 8: CSI Volume ([PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) on Nomad)
 ```hcl
 # Register volume first:
 # nomad volume create volume.hcl
@@ -512,7 +512,7 @@ job "postgres" {
       }
       volume_mount {
         volume      = "data"
-        destination = "/var/lib/[postgresql](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)/data"
+        destination = "/var/lib/[postgresql](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)/data"
       }
       env {
         POSTGRES_PASSWORD = "{{ with secret \"secret/data/postgres\" }}{{ .Data.data.password }}{{ end }}"

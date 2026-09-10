@@ -292,7 +292,7 @@ admin `ELASTICSEARCH_USERNAME`/`ELASTICSEARCH_PASSWORD` needed to bootstrap an A
 The `admin` user has full privileges and cannot be modified in [serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) projects. **Do not proceed with Elasticsearch
 operations using admin credentials.** Create a scoped Elasticsearch API key with only the permissions the user needs.
 
-If the `[elasticsearch-authn](../../Software_Engineering_and_Other/Databases/elasticsearch-authn/SKILL.md)` skill is available, use it for API key creation — it covers the full lifecycle (create,
+If the `[elasticsearch-authn](../../observability-monitoring-logging/elasticsearch/other/elasticsearch-authn/SKILL.md)` skill is available, use it for API key creation — it covers the full lifecycle (create,
 grant, invalidate, query) and handles scoping privileges correctly. If the skill is not installed, ask the user to
 either install it or create the API key manually through **Kibana > Stack Management > API keys**. After creation, save
 the API key to `.elastic-credentials` using the project-specific header format (see `manage-project` skill's "Credential

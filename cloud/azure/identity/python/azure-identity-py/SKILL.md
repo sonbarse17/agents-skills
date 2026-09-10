@@ -396,7 +396,7 @@ with DefaultAzureCredential() as credential:
     token = credential.get_token("https://management.azure.com/.default")
     print(f"Token expires: {token.expires_on}")
 
-    # For Azure Database for [PostgreSQL](../../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)
+    # For Azure Database for [PostgreSQL](../../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)
     token = credential.get_token("https://ossrdbms-aad.database.windows.net/.default")
 ```
 

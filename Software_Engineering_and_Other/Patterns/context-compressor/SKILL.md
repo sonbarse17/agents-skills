@@ -104,7 +104,7 @@ For conversations spanning multiple compressed sessions, merge previous summary'
 
 2. **Extract essential information** — Technology choices (language, framework, database, queue, cache, infra service + why). Architecture decisions (structural choices, tradeoffs accepted, what was rejected). Configuration values (every env var, port, URL, connection string, feature flag). Bug root causes (what caused it, how fixed, tests added). User preferences (naming, indentation, semicolons, test framework, architecture patterns).
 
-3. **Compress format aggressively** — Bullet points exclusively. Strip all articles (the, a, an). Use consistent abbreviations. Use key-value pairs: `PORT=3000`. Use arrow notation for causality: `chose PG → JSONB support needed`. Use parentheses for alternatives: `chose PG (alt: [MySQL](../../Databases/mysql/SKILL.md) — rejected: no JSONB)`. No bold, italics, blockquotes, or decorative markdown.
+3. **Compress format aggressively** — Bullet points exclusively. Strip all articles (the, a, an). Use consistent abbreviations. Use key-value pairs: `PORT=3000`. Use arrow notation for causality: `chose PG → JSONB support needed`. Use parentheses for alternatives: `chose PG (alt: [MySQL](../../Databases/relational/mysql/SKILL.md) — rejected: no JSONB)`. No bold, italics, blockquotes, or decorative markdown.
 
 4. **Output structured summary** — 5 markdown H2 sections. Decisions: every decision with rationale, err on inclusion. Files Changed: sorted alphabetically by path. Current State: single line. Next Steps: numbered, ordered by dependency. Open Questions: each = `{question} → blocks {blocked item}`. Count lines. If over 50, sacrifice implementation specifics (line numbers, variable names, test assertions) before removing any decision or question.
 
@@ -169,7 +169,7 @@ Conversation type:
 ## Compression Examples
 | Verbose Original | Compressed |
 |---|---|
-| We decided to use [PostgreSQL](../../Databases/postgresql/SKILL.md) because it has better JSONB support for our flexible schema requirements. | PG over [MySQL](../../Databases/mysql/SKILL.md) — JSONB support needed |
+| We decided to use [PostgreSQL](../../Databases/relational/postgresql/SKILL.md) because it has better JSONB support for our flexible schema requirements. | PG over [MySQL](../../Databases/relational/mysql/SKILL.md) — JSONB support needed |
 | The user should set the LOG_LEVEL env var to debug to get more verbose logging. | LOG_LEVEL=debug |
 | We modified the auth middleware to check for JWT tokens in the Authorization header instead of the cookie. | auth middleware: JWT check moved from cookie to Authorization header |
 | After discussing with the team, we increased the timeout from 10 seconds to 30 seconds to handle the new batch endpoint. | timeout 10s → 30s (batch endpoint needs it) |
@@ -183,7 +183,7 @@ Conversation type:
 - Every bullet = choice + rationale
 - Alternatives in parentheses if explicitly considered
 - Group by domain prefix: `[DB]`, `[Auth]`, `[API]`, `[FE]`, `[Infra]`
-- Colon separates domain prefix from decision: `[DB] PG over [MySQL](../../Databases/mysql/SKILL.md) — JSONB support`
+- Colon separates domain prefix from decision: `[DB] PG over [MySQL](../../Databases/relational/mysql/SKILL.md) — JSONB support`
 - Never include "We decided to" preamble
 
 ### Files Changed Section

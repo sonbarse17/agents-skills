@@ -39,7 +39,7 @@ User request includes: `vapor`, `vapor backend`, `vapor swift`, `fluent`, `vapor
 ### Input Context
 - Swift version (5.9+)
 - Vapor version (4.x)
-- Database driver (Fluent — [PostgreSQL](../../../Databases/postgresql/SKILL.md), [MySQL](../../../Databases/mysql/SKILL.md), SQLite, [MongoDB](../../../Databases/mongodb/SKILL.md))
+- Database driver (Fluent — [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md), [MySQL](../../../Databases/relational/mysql/SKILL.md), SQLite, [MongoDB](../../../Databases/nosql/mongodb/SKILL.md))
 - Hosting (Vapor Cloud, [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md), bare metal)
 - Features (REST, WebSocket, APNs, Leaf templates)
 
@@ -507,10 +507,10 @@ final class OrderControllerTests: XCTestCase {
 ### Database Selection
 ```
 Need production-grade relational DB?
-  +-- Yes -> [PostgreSQL](../../../Databases/postgresql/SKILL.md) (FluentPostgresDriver)
+  +-- Yes -> [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md) (FluentPostgresDriver)
   +-- No  -> Need embedded/simple?
       +-- Yes -> SQLite (FluentSQLiteDriver)
-      +-- No  -> [MySQL](../../../Databases/mysql/SKILL.md) or [MongoDB](../../../Databases/mongodb/SKILL.md)
+      +-- No  -> [MySQL](../../../Databases/relational/mysql/SKILL.md) or [MongoDB](../../../Databases/nosql/mongodb/SKILL.md)
 ```
 
 ### Project Structure
@@ -582,7 +582,7 @@ First-party mobile/web app?
 
 ## Performance
 
-- Vapor 4 achieves ~80k req/s on modern hardware with [PostgreSQL](../../../Databases/postgresql/SKILL.md) (simple queries).
+- Vapor 4 achieves ~80k req/s on modern hardware with [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md) (simple queries).
 - Connection pooling: Configure `maxConnectionsPerEventLoop` (default 2). Increase for high-throughput workloads.
 - Keep-alive reduces latency by 40% for repeated requests.
 - Leaf template caching in production: set `app.leaf.cache = .enabled`.

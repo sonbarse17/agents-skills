@@ -233,7 +233,7 @@ Route by error category:
 Follow the appropriate diagnostic path using AWS CLI commands to gather evidence.
 
 ### Phase 3: Log Analysis
-Query CloudWatch Logs with engine-specific filter patterns (Oracle/[PostgreSQL](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)/[MySQL](../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)/SQL Server).
+Query CloudWatch Logs with engine-specific filter patterns (Oracle/[PostgreSQL](../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)/[MySQL](../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)/SQL Server).
 
 ## Step 6: Migration Cutover Guidance (When Applicable)
 

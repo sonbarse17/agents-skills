@@ -56,9 +56,9 @@ Design cloud-agnostic architectures and make informed decisions about service se
 
 | AWS         | Azure            | GCP           | OCI                 | Use Case        |
 | ----------- | ---------------- | ------------- | ------------------- | --------------- |
-| RDS         | SQL Database     | Cloud SQL     | [MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) HeatWave      | Managed SQL     |
+| RDS         | SQL Database     | Cloud SQL     | [MySQL](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) HeatWave      | Managed SQL     |
 | DynamoDB    | Cosmos DB        | Firestore     | NoSQL Database      | NoSQL           |
-| Aurora      | [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)/[MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) | Cloud Spanner | Autonomous Database | Distributed SQL |
+| Aurora      | [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)/[MySQL](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) | Cloud Spanner | Autonomous Database | Distributed SQL |
 | ElastiCache | Cache for Redis  | Memorystore   | OCI Cache           | Caching         |
 
 **Reference:** See `../../../Global_References/service-comparison.md` for complete comparison
@@ -90,7 +90,7 @@ Design cloud-agnostic architectures and make informed decisions about service se
 ### Pattern 4: Cloud-Agnostic Abstraction
 
 - [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) for compute
-- [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) for database
+- [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) for database
 - S3-compatible storage (MinIO)
 - Open source tools
 
@@ -99,7 +99,7 @@ Design cloud-agnostic architectures and make informed decisions about service se
 ### Use Cloud-Native Alternatives
 
 - **Compute:** [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) (EKS/AKS/GKE/OKE)
-- **Database:** [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)/[MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) (RDS/SQL Database/Cloud SQL/[MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) HeatWave)
+- **Database:** [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)/[MySQL](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) (RDS/SQL Database/Cloud SQL/[MySQL](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) HeatWave)
 - **Message Queue:** Apache Kafka or managed streaming (MSK/Event Hubs/Confluent/OCI Streaming)
 - **Cache:** Redis (ElastiCache/Azure Cache/Memorystore/OCI Cache)
 - **Object Storage:** S3-compatible API

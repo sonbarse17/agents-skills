@@ -921,6 +921,6 @@ async function fetchFromService(url: string): Promise<unknown> {
 
 ## Handoff
 No artifact produced unless requested.
-Next skill: [backend-database-patterns](../../../Databases/database-patterns/SKILL.md) — design the data layer for these APIs.
+Next skill: [backend-database-patterns](../../../Databases/common/database-patterns/SKILL.md) — design the data layer for these APIs.
 Carry forward: API contracts, resource definitions, auth requirements, pagination strategy.
 

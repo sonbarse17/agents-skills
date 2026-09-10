@@ -20,12 +20,12 @@ depends_on:
 
 # GCP Cloud SQL
 
-Deploy and manage fully managed relational databases ([PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md), [MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md), SQL Server) on Google Cloud.
+Deploy and manage fully managed relational databases ([PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md), [MySQL](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md), SQL Server) on Google Cloud.
 
 ## When to Use
 
 - Running production relational databases without managing replication, patching, or backups
-- Migrating on-premises [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) or [MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) workloads to a managed service
+- Migrating on-premises [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) or [MySQL](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) workloads to a managed service
 - Applications requiring ACID transactions, relational schemas, and SQL query support
 - Workloads that need automated high availability with regional failover
 
@@ -49,7 +49,7 @@ gcloud services enable sqladmin.googleapis.com servicenetworking.googleapis.com
 | db-custom-4-16384 | 4 | 16 GB | Medium production |
 | db-custom-8-32768 | 8 | 32 GB | High-traffic production |
 
-## Create a [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) Instance
+## Create a [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) Instance
 
 ```bash
 gcloud sql instances create prod-db \
@@ -70,10 +70,10 @@ gcloud sql users create appuser --instance=prod-db \
   --password=$(openssl rand -base64 24)
 ```
 
-## Create a [MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) Instance
+## Create a [MySQL](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) Instance
 
 ```bash
-gcloud sql instances create [mysql](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)-prod \
+gcloud sql instances create [mysql](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)-prod \
   --database-version=MYSQL_8_0 \
   --tier=db-custom-4-16384 --region=us-central1 \
   --availability-type=REGIONAL \

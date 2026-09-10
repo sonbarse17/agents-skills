@@ -85,7 +85,7 @@ an agent.
   `reset-credentials` exists solely to bootstrap a scoped API key — never use it for direct Elasticsearch operations.
   `load-credentials` excludes admin credentials by default; pass `--include-admin` only for key creation.
 - **Always prefer API keys.** Do not proceed with Elasticsearch operations until an `ELASTICSEARCH_API_KEY` is set. If
-  only admin credentials are available, create a scoped API key via `[elasticsearch-authn](../../Software_Engineering_and_Other/Databases/elasticsearch-authn/SKILL.md)`. If that skill is not
+  only admin credentials are available, create a scoped API key via `[elasticsearch-authn](../../observability-monitoring-logging/elasticsearch/other/elasticsearch-authn/SKILL.md)`. If that skill is not
   installed, ask the user to install it or create the key manually in **Kibana > Stack Management > API keys**.
 - **Identify projects by type and ID.** Every command requires both `--type` and `--id` (except `list`, which only needs
   `--type`).
@@ -218,7 +218,7 @@ curl -H "Authorization: ApiKey ${ELASTICSEARCH_API_KEY}" \
      --name "<project-name>" --include-admin)
    ```
 
-   Use the admin credentials to create a scoped Elasticsearch API key via `[elasticsearch-authn](../../Software_Engineering_and_Other/Databases/elasticsearch-authn/SKILL.md)` if available. If that
+   Use the admin credentials to create a scoped Elasticsearch API key via `[elasticsearch-authn](../../observability-monitoring-logging/elasticsearch/other/elasticsearch-authn/SKILL.md)` if available. If that
    skill is not installed, ask the user to install it or create the key manually in **Kibana > Stack Management > API
    keys**. Scope the key to only the privileges the user needs.
 
@@ -486,7 +486,7 @@ Agent: [runs: reset-credentials --type [observability](../../observability-monit
        Admin credentials loaded for API key creation. Creating a scoped Elasticsearch API key
        now — what access does it need?
 User: read-only on logs-*
-Agent: [creates scoped API key via [elasticsearch-authn](../../Software_Engineering_and_Other/Databases/elasticsearch-authn/SKILL.md) using admin credentials]
+Agent: [creates scoped API key via [elasticsearch-authn](../../observability-monitoring-logging/elasticsearch/other/elasticsearch-authn/SKILL.md) using admin credentials]
        [appends API key to .elastic-credentials with project header]
        [runs: eval $(load-credentials --name siem-prod)]
        [verifies against ELASTICSEARCH_URL]

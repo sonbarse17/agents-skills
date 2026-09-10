@@ -97,7 +97,7 @@ services:
       POSTGRES_USER: dev
       POSTGRES_PASSWORD: dev
     volumes:
-      - pgdata:/var/lib/[postgresql](../../Databases/postgresql/SKILL.md)/data
+      - pgdata:/var/lib/[postgresql](../../Databases/relational/postgresql/SKILL.md)/data
     ports:
       - "5432:5432"
 
@@ -223,7 +223,7 @@ curl -fsSL https://get.jetify.com/devbox | bash
 devbox init
 
 # Add packages
-devbox add nodejs@20 [python](../../Languages/python/SKILL.md)@3.12 [postgresql](../../Databases/postgresql/SKILL.md)@16
+devbox add nodejs@20 [python](../../Languages/python/SKILL.md)@3.12 [postgresql](../../Databases/relational/postgresql/SKILL.md)@16
 devbox add go@1.22 [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) helm
 
 # Enter shell
@@ -247,12 +247,12 @@ devbox run node --version
     "opentofu@1.8",
     "awscli2@2.15",
     "jq@1.7",
-    "[postgresql](../../Databases/postgresql/SKILL.md)@16",
+    "[postgresql](../../Databases/relational/postgresql/SKILL.md)@16",
     "redis@7"
   ],
   "env": {
     "PROJECT_ROOT": "$PWD",
-    "DATABASE_URL": "[postgresql](../../Databases/postgresql/SKILL.md)://localhost:5432/dev"
+    "DATABASE_URL": "[postgresql](../../Databases/relational/postgresql/SKILL.md)://localhost:5432/dev"
   },
   "shell": {
     "init_hook": [
@@ -262,8 +262,8 @@ devbox run node --version
     "scripts": {
       "dev": "npm run dev",
       "test": "npm test",
-      "db:start": "pg_ctl -D .devbox/virtenv/[postgresql](../../Databases/postgresql/SKILL.md)/data start",
-      "db:stop": "pg_ctl -D .devbox/virtenv/[postgresql](../../Databases/postgresql/SKILL.md)/data stop",
+      "db:start": "pg_ctl -D .devbox/virtenv/[postgresql](../../Databases/relational/postgresql/SKILL.md)/data start",
+      "db:stop": "pg_ctl -D .devbox/virtenv/[postgresql](../../Databases/relational/postgresql/SKILL.md)/data stop",
       "db:migrate": "npx prisma migrate dev"
     }
   }

@@ -79,13 +79,13 @@ Direct file write. No response text.
 | [Microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) on K8s | SAE ([Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) App Engine) | War/Jar/Image deploy, auto-scaling |
 | Event-driven function | FC (Function Compute) | Pay-per-invocation, HTTP/OSS triggers |
 
-### Database: RDS vs PolarDB vs Redis vs [MongoDB](../../../Software_Engineering_and_Other/Databases/mongodb/SKILL.md) vs HBase
+### Database: RDS vs PolarDB vs Redis vs [MongoDB](../../../Software_Engineering_and_Other/Databases/nosql/mongodb/SKILL.md) vs HBase
 | Requirement | Recommended | Reason |
 |---|---|---|
-| [MySQL](../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)/[PostgreSQL](../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) compatible | RDS or PolarDB | PolarDB has 6x [MySQL](../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) throughput |
+| [MySQL](../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)/[PostgreSQL](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) compatible | RDS or PolarDB | PolarDB has 6x [MySQL](../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) throughput |
 | High-throughput OLTP | PolarDB-X | Distributed SQL, auto-sharding |
 | In-memory cache | ApsaraDB for Redis | Redis-compatible, 256GB max |
-| Document store | ApsaraDB for [MongoDB](../../../Software_Engineering_and_Other/Databases/mongodb/SKILL.md) | [MongoDB](../../../Software_Engineering_and_Other/Databases/mongodb/SKILL.md) 4.x/5.x compatible |
+| Document store | ApsaraDB for [MongoDB](../../../Software_Engineering_and_Other/Databases/nosql/mongodb/SKILL.md) | [MongoDB](../../../Software_Engineering_and_Other/Databases/nosql/mongodb/SKILL.md) 4.x/5.x compatible |
 | Wide-column analytics | ApsaraDB for HBase | HBase compatible, hot/cold separation |
 
 ### Networking: Internet vs NAT vs VPN vs CEN
@@ -344,7 +344,7 @@ resource "alicloud_cms_alarm" "disk_usage" {
 | [Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) Function | FC (Function Compute) | Lambda | Cloud Functions |
 | Object Storage | OSS | S3 | Cloud Storage |
 | RDBMS | RDS / PolarDB | RDS / Aurora | Cloud SQL |
-| NoSQL (document) | [MongoDB](../../../Software_Engineering_and_Other/Databases/mongodb/SKILL.md) | DynamoDB | Firestore |
+| NoSQL (document) | [MongoDB](../../../Software_Engineering_and_Other/Databases/nosql/mongodb/SKILL.md) | DynamoDB | Firestore |
 | Cache | Redis (ApsaraDB) | ElastiCache | Memorystore |
 | Load Balancer | SLB | ELB/ALB | Cloud Load Balancer |
 | WAF | WAF | WAF | Cloud Armor |
@@ -512,7 +512,7 @@ PolicyDocument:
 - Enable **CDN** with Alibaba Cloud CDN for static asset delivery and DDoS shielding
 - Configure **SLB connection draining** and health checks for zero-downtime deployments
 - Use **Redis Tair** for session caching instead of local ECS memory (survives restarts)
-- Tune **RDS PG/[MySQL](../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)** connection pools with `max_connections = 200` and `innodb_buffer_pool_size = 70% of RAM`
+- Tune **RDS PG/[MySQL](../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)** connection pools with `max_connections = 200` and `innodb_buffer_pool_size = 70% of RAM`
 - Deploy **Container Service for [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) (ACK)** with cluster autoscaler for burst workloads
 - Set **ECS hibernate** for non-production instances to save compute costs while idle
 

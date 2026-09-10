@@ -160,7 +160,7 @@ For each technology area, evaluate: **requirements → constraints → tradeoffs
 |------|-------------|-------------------|
 | **Compute** | App Service, Functions, Container Apps, AKS, VMs, Batch | Hosting model, scaling, cost, team skills |
 | **Storage** | Blob Storage, Data Lake, Files, Disks, Managed Lustre | Access patterns, throughput, cost tier |
-| **Data stores** | SQL Database, Cosmos DB, [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md), Redis, Table Storage | Consistency model, query patterns, scale |
+| **Data stores** | SQL Database, Cosmos DB, [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md), Redis, Table Storage | Consistency model, query patterns, scale |
 | **Messaging** | Service Bus, Event Hubs, Event Grid, Queue Storage | Ordering, throughput, pub/sub vs queue |
 | **Networking** | Front Door, Application Gateway, Load Balancer, Traffic Manager | Global vs regional, L4 vs L7, WAF |
 | **AI services** | Azure OpenAI, AI Search, AI Foundry, Document Intelligence | Model needs, data grounding, orchestration |

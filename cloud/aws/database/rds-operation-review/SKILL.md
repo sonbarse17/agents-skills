@@ -170,7 +170,7 @@ Per database log group, scan with `logs.FilterLogEvents` for:
 | `connection limit exceeded` / `too many connections` | connection saturation |
 | `deadlock` / `lock wait timeout` | contention |
 | `slow query` / `duration: ` (Postgres slow log) | query performance |
-| `aborted connection` ([MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)) | client/network issues |
+| `aborted connection` ([MySQL](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)) | client/network issues |
 | `replication has stopped` / `IO_THREAD` errors | replication health |
 | `checkpoint` warnings / `archiver failed` | I/O / WAL issues |
 | `failed to connect` / `authentication failed` | auth/network |
@@ -213,7 +213,7 @@ Ref: [Security in Amazon RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserG
 
 - **Network exposure**: `PubliclyAccessible=true` → CRITICAL for production. Security groups with `0.0.0.0/0` ingress on the DB port → CRITICAL.
 - **Encryption at rest**: `StorageEncrypted=false` → HIGH (or CRITICAL for regulated workloads). Customer-managed KMS key preferred over AWS-managed.
-- **Encryption in transit**: parameter `rds.force_ssl=1` (Postgres) / `require_secure_transport=ON` ([MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)/MariaDB) → MEDIUM if not set.
+- **Encryption in transit**: parameter `rds.force_ssl=1` (Postgres) / `require_secure_transport=ON` ([MySQL](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)/MariaDB) → MEDIUM if not set.
 - **IAM auth**: `IAMDatabaseAuthenticationEnabled=false` → MEDIUM. Master password in app code instead of Secrets Manager → HIGH.
 - **Secrets Manager rotation**: not enabled → MEDIUM.
 - **[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging**: engine [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs not in `EnabledCloudwatchLogsExports` → MEDIUM (HIGH for PCI/HIPAA scope).
@@ -360,15 +360,15 @@ Current vs latest minor / latest major. Flag EOL.
 
 ## Engine-Specific Considerations
 
-- **[MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) / MariaDB** — `innodb_buffer_pool_size`, `max_connections`, slow query log,
+- **[MySQL](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) / MariaDB** — `innodb_buffer_pool_size`, `max_connections`, slow query log,
   binlog retention, deprecated `query_cache_type` on 8.0+.
-- **[PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)** — `shared_buffers`, `work_mem`, autovacuum, `pg_stat_statements`,
+- **[PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)** — `shared_buffers`, `work_mem`, autovacuum, `pg_stat_statements`,
   `log_min_duration_statement`, replication slots.
 - **Oracle** — BYOL tracking, SGA/PGA sizing, AWR, tablespace autoextend.
 - **SQL Server** — tempdb file count (1 per vCPU up to 8), MAXDOP, cost threshold for
   parallelism, Always On AGs vs Multi-AZ.
 - **Aurora** — [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) v2 ACU floor/ceiling, Global Database for DR, fast clones,
-  Backtrack ([MySQL](../../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) only), cluster cache management.
+  Backtrack ([MySQL](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) only), cluster cache management.
 
 ## Known API Quirks (recorded so the agent doesn't trip on them)
 

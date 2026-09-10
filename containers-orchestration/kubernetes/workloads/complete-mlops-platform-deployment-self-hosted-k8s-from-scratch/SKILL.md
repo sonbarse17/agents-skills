@@ -331,7 +331,7 @@ helm install gpu-operator nvidia/gpu-operator --namespace gpu-operator --create-
 # both with automated backups VERIFIED via a real test restore first
 helm install minio bitnami/minio --namespace storage --create-namespace \
   --set persistence.size=500Gi --set replicas=4
-helm install postgres bitnami/[postgresql](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) --namespace mlflow --create-namespace \
+helm install postgres bitnami/[postgresql](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) --namespace mlflow --create-namespace \
   --set primary.persistence.size=100Gi
 helm install mlflow community-charts/mlflow --namespace mlflow \
   --set backendStore.postgres.host=postgres.mlflow.svc.cluster.local \

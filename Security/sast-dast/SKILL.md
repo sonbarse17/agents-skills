@@ -390,7 +390,7 @@ rules:
 ```yaml
 # .semgrep/rules/security/nosql-injection.yml
 rules:
-  - id: [mongodb](../../Software_Engineering_and_Other/Databases/mongodb/SKILL.md)-nosql-injection
+  - id: [mongodb](../../Software_Engineering_and_Other/Databases/nosql/mongodb/SKILL.md)-nosql-injection
     patterns:
       - pattern: |
           $DB.find({ $KEY: { "\$where": $VAL } })

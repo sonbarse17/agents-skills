@@ -99,7 +99,7 @@ Phase 6 both construct federated credentials against it. See
 for AKS provisioning, node pool design, and the Workload Identity
 walkthrough specifically.
 
-**Phase 3 — Backstage on AKS, backed by Azure Database for [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)
+**Phase 3 — Backstage on AKS, backed by Azure Database for [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)
 Flexible Server.** Package Backstage as a Helm chart and deploy it against
 a Flexible Server instance (zone-redundant HA beyond a pilot) as the
 catalog database, with the Backstage pod's [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) ServiceAccount

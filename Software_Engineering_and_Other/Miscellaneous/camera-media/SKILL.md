@@ -266,7 +266,7 @@ Video editing capability needed?
 
 ### CI/CD Integration
 
-- Run camera tests on [Firebase](../../Databases/firebase/SKILL.md) Test Lab / AWS Device Farm
+- Run camera tests on [Firebase](../../Databases/nosql/firebase/SKILL.md) Test Lab / AWS Device Farm
 - Validate EXIF data is stripped in compressed output images
 - Verify compression produces files under target size (e.g., <500KB for upload)
 - Test QR scanning with low-resolution preview (640x480)

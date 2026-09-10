@@ -40,7 +40,7 @@ Exact user phrases: "dev container", "devcontainer.json", "development container
 ### Input Context
 - Language runtime (Node.js, [Python](../../Languages/python/SKILL.md), Go, Rust, Java, .NET, Ruby, PHP)
 - Build tools (npm, pip, cargo, maven, gradle, make, cmake)
-- Services needed ([PostgreSQL](../../Databases/postgresql/SKILL.md), Redis, [MySQL](../../Databases/mysql/SKILL.md), [MongoDB](../../Databases/mongodb/SKILL.md), RabbitMQ, Elasticsearch)
+- Services needed ([PostgreSQL](../../Databases/relational/postgresql/SKILL.md), Redis, [MySQL](../../Databases/relational/mysql/SKILL.md), [MongoDB](../../Databases/nosql/mongodb/SKILL.md), RabbitMQ, Elasticsearch)
 - VS Code extensions required for development
 - Post-create setup steps (npm install, database migrations, seed data)
 - Platform (VS Code, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Codespaces, JetBrains Remote, DevPod)
@@ -102,7 +102,7 @@ Container ([Docker](../../../containers-orchestration/docker/other/docker/SKILL.
     ↓
 [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Compose (optional multi-service)
 ├── App container
-├── [PostgreSQL](../../Databases/postgresql/SKILL.md) / [MySQL](../../Databases/mysql/SKILL.md) / [MongoDB](../../Databases/mongodb/SKILL.md)
+├── [PostgreSQL](../../Databases/relational/postgresql/SKILL.md) / [MySQL](../../Databases/relational/mysql/SKILL.md) / [MongoDB](../../Databases/nosql/mongodb/SKILL.md)
 ├── Redis / Memcached
 └── Other services
 ```
@@ -165,7 +165,7 @@ Container ([Docker](../../../containers-orchestration/docker/other/docker/SKILL.
 
   // Environment variables
   "remoteEnv": {
-    "DATABASE_URL": "[postgresql](../../Databases/postgresql/SKILL.md)://user:pass@localhost:5432/myapp",
+    "DATABASE_URL": "[postgresql](../../Databases/relational/postgresql/SKILL.md)://user:pass@localhost:5432/myapp",
     "REDIS_URL": "redis://localhost:6379",
     "NODE_ENV": "development"
   },
@@ -193,7 +193,7 @@ FROM mcr.microsoft.com/devcontainers/[typescript](../../Frontend/common/typescri
 # Install additional system packages
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get install -y --no-install-recommends \
-        [postgresql](../../Databases/postgresql/SKILL.md)-client \
+        [postgresql](../../Databases/relational/postgresql/SKILL.md)-client \
         redis-tools \
         ripgrep \
         fd-find \
@@ -223,7 +223,7 @@ services:
     volumes:
       - ..:/workspaces:cached
     environment:
-      DATABASE_URL: [postgresql](../../Databases/postgresql/SKILL.md)://user:pass@postgres:5432/myapp
+      DATABASE_URL: [postgresql](../../Databases/relational/postgresql/SKILL.md)://user:pass@postgres:5432/myapp
       REDIS_URL: redis://redis:6379
     # Overrides default command so things don't shut down
     command: sleep infinity
@@ -240,7 +240,7 @@ services:
     image: postgres:16-alpine
     restart: unless-stopped
     volumes:
-      - postgres-data:/var/lib/[postgresql](../../Databases/postgresql/SKILL.md)/data
+      - postgres-data:/var/lib/[postgresql](../../Databases/relational/postgresql/SKILL.md)/data
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: pass

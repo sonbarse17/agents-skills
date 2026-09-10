@@ -41,7 +41,7 @@ User request includes: `quarkus`, `quarkus backend`, `supersonic java`, `quarkus
 - JDK version (17+)
 - Build tool (Gradle, Maven)
 - Runtime (JIT, GraalVM native)
-- Extensions (RESTEasy Reactive, Hibernate, Kafka, [MongoDB](../../../Databases/mongodb/SKILL.md))
+- Extensions (RESTEasy Reactive, Hibernate, Kafka, [MongoDB](../../../Databases/nosql/mongodb/SKILL.md))
 - Deployment (JAR, native binary, container)
 
 ### Output Artifact
@@ -304,7 +304,7 @@ quarkus.log.level=INFO
 quarkus.log.console.enable=true
 
 # Datasource
-quarkus.datasource.db-kind=[postgresql](../../../Databases/postgresql/SKILL.md)
+quarkus.datasource.db-kind=[postgresql](../../../Databases/relational/postgresql/SKILL.md)
 quarkus.datasource.username=${DB_USER}
 quarkus.datasource.password=${DB_PASS}
 quarkus.datasource.reactive.url=${DB_URL}
@@ -330,7 +330,7 @@ quarkus.native.builder-image=graalvm:21
 
 # Dev Services (auto-starts containers in dev/test)
 quarkus.devservices.enabled=true
-quarkus.devservices.[postgresql](../../../Databases/postgresql/SKILL.md).image-name=postgres:15
+quarkus.devservices.[postgresql](../../../Databases/relational/postgresql/SKILL.md).image-name=postgres:15
 
 # CORS
 quarkus.http.cors=true

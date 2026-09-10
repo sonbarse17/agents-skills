@@ -114,7 +114,7 @@ Data complexity?
 Sync needed?
 ├── Yes → CloudKit + Core Data / SwiftData
 ├── No → Local persistence only
-└── Real-time → [Firebase](../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) Firestore
+└── Real-time → [Firebase](../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) Firestore
 ```
 
 ### Concurrency Model

@@ -111,7 +111,7 @@ Event storming: domain experts place sticky notes for domain events, commands, a
 ```
 Primary access pattern?
 ├── Fixed schema, complex joins, ACID required
-│   └── Relational database ([PostgreSQL](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md), [MySQL](../../Software_Engineering_and_Other/Databases/mysql/SKILL.md))
+│   └── Relational database ([PostgreSQL](../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md), [MySQL](../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md))
 ├── Highly connected data, variable-depth traversal
 │   └── Graph database (Neo4j, Neptune, Dgraph)
 ├── Both needed
@@ -128,7 +128,7 @@ ACID transactions, mature ecosystem, strong consistency, complex queries via SQL
 Variable-depth traversals (friend-of-friend, supply chain), path-finding (shortest route, influence path), highly connected data queries, schema flexibility. Best for: social networks, recommendation engines, fraud detection (ring analysis), knowledge graphs, network/infrastructure management.
 
 #### Hybrid Examples
-Customer data in [PostgreSQL](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) for transactional processing, replicated to Neo4j for recommendation and fraud. Product catalog in [PostgreSQL](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) for CMS, with graph for personalized product discovery. Reference data in both with synchronization via CDC.
+Customer data in [PostgreSQL](../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) for transactional processing, replicated to Neo4j for recommendation and fraud. Product catalog in [PostgreSQL](../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) for CMS, with graph for personalized product discovery. Reference data in both with synchronization via CDC.
 
 ### Step 3: Normalization
 
@@ -195,13 +195,13 @@ Rules: surrogate keys as default. Natural keys: ISO country codes, tax IDs, SSNs
 #### Primary Key Examples
 
 ```sql
--- UUID v7 ([PostgreSQL](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) with pg_uuidv7)
+-- UUID v7 ([PostgreSQL](../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) with pg_uuidv7)
 CREATE TABLE orders (
     id UUID DEFAULT uuid_generate_v7() PRIMARY KEY,
     created_at TIMESTAMPTZ DEFAULT now()
 );
 
--- SERIAL (compact, [PostgreSQL](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md))
+-- SERIAL (compact, [PostgreSQL](../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md))
 CREATE TABLE products (
     id BIGSERIAL PRIMARY KEY,
     name VARCHAR(200) NOT NULL
@@ -299,7 +299,7 @@ WHERE product_id = $1
 ```
 
 ```sql
--- [PostgreSQL](../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md) system-versioned temporal tables (PG 17+)
+-- [PostgreSQL](../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) system-versioned temporal tables (PG 17+)
 CREATE TABLE orders (
     id UUID PRIMARY KEY,
     status TEXT NOT NULL,
@@ -553,6 +553,6 @@ Check [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) → lint SQL (sq
   - ../../../Global_References/relational-modeling.md — Relational Modeling
 ## Handoff
 `[data-dimensional-modeling](../dimensional-modeling/SKILL.md)` for star schemas and dimensional models
-`[backend-database-patterns](../../Software_Engineering_and_Other/Databases/database-patterns/SKILL.md)` for query optimization and indexing
-`[data-nosql-database](../../Software_Engineering_and_Other/Databases/nosql-database/SKILL.md)` for document/column-family modeling
+`[backend-database-patterns](../../Software_Engineering_and_Other/Databases/common/database-patterns/SKILL.md)` for query optimization and indexing
+`[data-nosql-database](../../Software_Engineering_and_Other/Databases/nosql/nosql-database/SKILL.md)` for document/column-family modeling
 

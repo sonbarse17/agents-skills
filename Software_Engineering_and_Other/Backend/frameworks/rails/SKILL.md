@@ -41,7 +41,7 @@ User request includes: `Rails`, `Ruby on Rails`, `Rails API`, `ActiveRecord`, `R
 ### Input Context
 - Rails version (7.0+, 7.1+)
 - Ruby version (3.1+, 3.2+, 3.3+)
-- Database ([PostgreSQL](../../../Databases/postgresql/SKILL.md), [MySQL](../../../Databases/mysql/SKILL.md), SQLite)
+- Database ([PostgreSQL](../../../Databases/relational/postgresql/SKILL.md), [MySQL](../../../Databases/relational/mysql/SKILL.md), SQLite)
 - Mode (API-only, full MVC)
 - Auth (Devise, JWT, OAuth)
 - Background jobs (Sidekiq, GoodJob, Solid Queue)
@@ -94,7 +94,7 @@ Decision: Rails project → ActiveRecord. Heavy data pipeline → Sequel. Hexago
 ### Step 1: Rails API Setup
 
 ```bash
-rails new my_api --api --database=[postgresql](../../../Databases/postgresql/SKILL.md) --skip-test
+rails new my_api --api --database=[postgresql](../../../Databases/relational/postgresql/SKILL.md) --skip-test
 cd my_api
 ```
 

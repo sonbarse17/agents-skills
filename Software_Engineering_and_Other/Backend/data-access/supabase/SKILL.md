@@ -33,7 +33,7 @@ depends_on:
 # Supabase
 
 ## Purpose
-Build production backends on Supabase — [PostgreSQL](../../../Databases/postgresql/SKILL.md) schema design, Row Level Security policies, Auth providers, Realtime subscriptions, Storage buckets, and Edge Functions for [serverless](../../../Patterns/serverless/SKILL.md) compute.
+Build production backends on Supabase — [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md) schema design, Row Level Security policies, Auth providers, Realtime subscriptions, Storage buckets, and Edge Functions for [serverless](../../../Patterns/serverless/SKILL.md) compute.
 
 ## Agent Protocol
 
@@ -42,7 +42,7 @@ User request includes: `Supabase`, `Supabase database`, `RLS`, `Row Level Securi
 
 ### Input Context
 - Required Supabase features (DB, Auth, Realtime, Storage, Edge Functions)
-- [PostgreSQL](../../../Databases/postgresql/SKILL.md) schema requirements (tables, relations, indexes)
+- [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md) schema requirements (tables, relations, indexes)
 - Auth providers needed (email, OAuth, magic link, phone)
 - Estimated scale (concurrent users, data volume)
 
@@ -53,7 +53,7 @@ Supabase project config, SQL schema + RLS policies, client setup, edge function 
 Produce artifact directly. No preamble, no postamble, no explanations. No filler, no hedging, no transitions. Strip articles a/an/the where unambiguous. Compress output — why use many token when few do trick.
 
 ### Completion Criteria
-- [PostgreSQL](../../../Databases/postgresql/SKILL.md) schema defined with proper types, indexes, and relations
+- [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md) schema defined with proper types, indexes, and relations
 - RLS policies applied to every table (select, insert, update, delete)
 - Auth providers configured with proper redirect URLs
 - Realtime channels designed with proper filters
@@ -496,7 +496,7 @@ CREATE TRIGGER order_created_trigger
 
 ## References
   - ../../../Global_References/edge-functions.md — Edge Functions
-  - ../../../Global_References/postgres-rls.md — [PostgreSQL](../../../Databases/postgresql/SKILL.md) & Row Level Security
+  - ../../../Global_References/postgres-rls.md — [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md) & Row Level Security
   - ../../../Global_References/supabase-auth.md — Supabase Auth
   - ../../../Global_References/supabase-backup-migration.md — Supabase Backup and Migration
   - ../../../Global_References/supabase-realtime.md — Supabase Realtime

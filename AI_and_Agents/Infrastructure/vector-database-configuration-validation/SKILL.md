@@ -42,7 +42,7 @@ model, running a labeled recall evaluation against real queries, and
 gating a cutover behind that evaluation rather than a visual "looks
 right" review. It assumes the index's operational tuning (sharding,
 replication, HNSW parameter selection) is handled in
-[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md)
+[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/common/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md)
 and that vectors are arriving via
 [vector-database-ingestion-pipeline-for-rag](../[vector-database-ingestion-pipeline-for-rag](../vector-database-ingestion-pipeline-for-rag/SKILL.md)/SKILL.md) —
 this skill is specifically the pre-cutover validation gate sitting
@@ -184,7 +184,7 @@ between those two.
    change intended to hold at scale — recall and latency measured
    against a 1,000-vector test index do not reliably predict behavior
    at 20 million vectors (see
-   [vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md)
+   [vector-[database-operations](../../../Software_Engineering_and_Other/Databases/common/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md)
    for sizing/HNSW-tuning guidance this validation step should be run
    against once applied).
 
@@ -329,7 +329,7 @@ new index before repointing production traffic.
 
 ## Cross-references
 
-- [vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md) — the operational tuning (sharding, replication, HNSW parameters) this validation gate sits in front of before those settings serve production traffic.
+- [vector-[database-operations](../../../Software_Engineering_and_Other/Databases/common/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md) — the operational tuning (sharding, replication, HNSW parameters) this validation gate sits in front of before those settings serve production traffic.
 - [vector-database-ingestion-pipeline-for-rag](../[vector-database-ingestion-pipeline-for-rag](../vector-database-ingestion-pipeline-for-rag/SKILL.md)/SKILL.md) — the upstream pipeline that produces the vectors and re-embeds the corpus this skill validates before cutover.
 - [rag-pipeline-design](../[rag-pipeline-design](../../Models_and_FineTuning/rag-pipeline-design/SKILL.md)/SKILL.md) — where the labeled (query, expected document) eval set referenced throughout this skill is originally built and maintained.
 - [agent-evaluation-and-guardrails](../[agent-evaluation-and-guardrails](../../Models_and_FineTuning/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md) — general evaluation-harness discipline (thresholds decided in advance, regression gating) applied here specifically to retrieval recall.

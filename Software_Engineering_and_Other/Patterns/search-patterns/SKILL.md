@@ -478,7 +478,7 @@ const suggestQuery = {
   - ../../../Global_References/search-performance.md — Search Performance
   - ../../../Global_References/search-synonyms.md — Search Synonyms
 ## Handoff
-`[backend-database-patterns](../../Databases/database-patterns/SKILL.md)` for indexing source data schema design
+`[backend-database-patterns](../../Databases/common/database-patterns/SKILL.md)` for indexing source data schema design
 ## Implementation Patterns
 
 ### Observer Pattern for Event Handling

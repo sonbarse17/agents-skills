@@ -367,7 +367,7 @@ Practice 6: Publish governance metrics transparently. Share ARB decisions, excep
 ```
 | ID | Exception Description | Principle/Standard | Severity | Owner | Approval Date | Expiry | Status | Remediation Plan |
 |----|----------------------|-------------------|----------|-------|--------------|--------|--------|-----------------|
-| EX-001 | Use of [MongoDB](../../Databases/mongodb/SKILL.md) instead of RDS | Prefer managed SQL databases | Minor | Team A | 2025-01-15 | 2025-07-15 | Active | Migrate to Aurora by expiry |
+| EX-001 | Use of [MongoDB](../../Databases/nosql/mongodb/SKILL.md) instead of RDS | Prefer managed SQL databases | Minor | Team A | 2025-01-15 | 2025-07-15 | Active | Migrate to Aurora by expiry |
 ```
 
 ## Case Studies
@@ -446,7 +446,7 @@ jobs:
 # Initialize ADR tool
 adr init docs/architecture/decisions/
 adr new "Use Event-Driven Architecture for Order Processing"
-adr new "Adopt [PostgreSQL](../../Databases/postgresql/SKILL.md) as Primary Database"
+adr new "Adopt [PostgreSQL](../../Databases/relational/postgresql/SKILL.md) as Primary Database"
 adr new "Deprecate Legacy SOAP Integration" -s 2
 
 # Link ADRs
@@ -455,7 +455,7 @@ adr new -s 4 -s 5 "Migrate from Monolith to [Microservices](../microservices/SKI
 # Output
 # docs/architecture/decisions/
 #   0001-use-event-driven-architecture-for-order-processing.md
-#   0002-adopt-[postgresql](../../Databases/postgresql/SKILL.md)-as-primary-database.md
+#   0002-adopt-[postgresql](../../Databases/relational/postgresql/SKILL.md)-as-primary-database.md
 #   0003-deprecate-legacy-soap-integration.md
 #   0004-migrate-from-monolith-to-[microservices](../microservices/SKILL.md).md
 ```

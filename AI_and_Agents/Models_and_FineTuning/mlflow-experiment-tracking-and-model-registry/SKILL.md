@@ -47,7 +47,7 @@ it."
 ## When to use
 
 - Standing up a new MLflow tracking server and choosing a backend store
-  (SQLite/Postgres/[MySQL](../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)) and artifact store (S3/GCS/Azure Blob/NFS).
+  (SQLite/Postgres/[MySQL](../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)) and artifact store (S3/GCS/Azure Blob/NFS).
 - Registering a trained model to the Model Registry and moving it through
   `Staging` → `Production` → `Archived`, or adopting the newer alias/tag
   model that supersedes stages in recent MLflow versions.
@@ -71,7 +71,7 @@ it."
   API is available.
 - A backend store: `sqlite:///...` for local/single-user experimentation
   only, or a real SQLAlchemy-compatible database
-  (`[postgresql](../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)://`, `[mysql](../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md)://`) for any shared/team/production tracking
+  (`[postgresql](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)://`, `[mysql](../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)://`) for any shared/team/production tracking
   server. The plain local file store (`./mlruns`, MLflow's zero-config
   default) does not support the Model Registry and is unsafe under
   concurrent writers.
@@ -97,7 +97,7 @@ it."
    support and corrupts under concurrent writers:
    ```bash
    mlflow server \
-     --backend-store-uri [postgresql](../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)://mlflow:${MLFLOW_DB_PASSWORD}@mlflow-db.internal:5432/mlflow \
+     --backend-store-uri [postgresql](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)://mlflow:${MLFLOW_DB_PASSWORD}@mlflow-db.internal:5432/mlflow \
      --default-artifact-root s3://ml-artifacts-<ACCOUNT_ID>/mlflow \
      --host 0.0.0.0 \
      --port 5000
@@ -230,7 +230,7 @@ it."
 8. **Decide self-hosted vs. Databricks-managed deliberately, based on
    operational [capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), not default inertia:**
    - **Self-hosted** (`mlflow server` on your own compute, own Postgres/
-     [MySQL](../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md), own S3/GCS bucket): full control over cost and data locality,
+     [MySQL](../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md), own S3/GCS bucket): full control over cost and data locality,
      but your team owns HA, backups of the backend database, artifact
      store lifecycle policies, and access control (MLflow's own
      authentication is basic; most teams front it with a reverse proxy or
@@ -276,7 +276,7 @@ it."
 - **Symptom:** A team starts logging to MLflow's default local `./mlruns`
   file store from multiple machines/CI jobs, and runs occasionally go
   missing or the store becomes corrupted.
-  **Fix:** Stand up a real tracking server backed by Postgres/[MySQL](../../../Software_Engineering_and_Other/Databases/mysql/SKILL.md) before
+  **Fix:** Stand up a real tracking server backed by Postgres/[MySQL](../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) before
   more than one process writes concurrently — the file store has no
   concurrency guarantees and no Model Registry support.
 
@@ -326,7 +326,7 @@ XGBoost autologging and alias-based registry promotion.
 1. Tracking server, started once as shared infrastructure:
    ```bash
    mlflow server \
-     --backend-store-uri [postgresql](../../../Software_Engineering_and_Other/Databases/postgresql/SKILL.md)://mlflow:${MLFLOW_DB_PASSWORD}@mlflow-db.internal:5432/mlflow \
+     --backend-store-uri [postgresql](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)://mlflow:${MLFLOW_DB_PASSWORD}@mlflow-db.internal:5432/mlflow \
      --default-artifact-root s3://ml-artifacts-<ACCOUNT_ID>/mlflow \
      --host 0.0.0.0 --port 5000
    ```
