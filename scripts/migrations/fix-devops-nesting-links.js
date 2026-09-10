@@ -40,7 +40,7 @@ function walkMd(dir, out) {
 }
 
 const allMd = walkMd(REPO_ROOT, []);
-let filesChanged = 0, linksFixed = 0;
+let filesChanged = 0, linksFixed = 0, skippedUnresolved = 0;
 
 // Matches "(../)*<prefix>/rest/of/path" for any of the 5 moved prefixes,
 // stopping at whitespace, closing paren, or backtick - covers markdown
@@ -72,6 +72,16 @@ for (const f of allMd) {
     );
     if (!matchesMovedPrefix) return full;
     const resolvedNew = `DevOps_and_Cloud/${resolvedOld}`;
+    // Safety gate matching every other link-fixer this session: only rewrite
+    // when the computed target actually exists. Most of what this broader
+    // prefix-match regex catches turns out to be the well-documented
+    // pre-existing nested-bracket link corruption (e.g. "[x](../[y](path))")
+    // - this stops mid-path at a stray ")" and produces a target that never
+    // existed even before the move. Leave those untouched, as always.
+    if (!fs.existsSync(path.join(REPO_ROOT, resolvedNew))) {
+      skippedUnresolved++;
+      return full;
+    }
     let relPath = path.posix.relative(newDirPosix, resolvedNew);
     if (!relPath.startsWith('.')) relPath = './' + relPath;
     if (relPath === full) return full;
@@ -86,5 +96,5 @@ for (const f of allMd) {
   }
 }
 
-console.log('Files changed:', filesChanged, 'Links fixed:', linksFixed);
+console.log('Files changed:', filesChanged, 'Links fixed:', linksFixed, 'Skipped (target does not exist, likely pre-existing corruption):', skippedUnresolved);
 if (DRY_RUN) console.log('Dry run - no files written.');
