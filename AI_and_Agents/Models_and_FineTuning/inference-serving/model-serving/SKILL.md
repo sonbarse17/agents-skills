@@ -539,12 +539,12 @@ class PredictionCache:
 - Rollback validated with health checks.
 
 ## References
-  - ../../../../Global_References/AI_and_Agents/k8s-serving.md — [Kubernetes](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-Native Serving
-  - ../../../../Global_References/AI_and_Agents/model-serving-advanced.md — Model Serving Advanced Topics
-  - ../../../../Global_References/AI_and_Agents/model-serving-fundamentals.md — Model Serving Fundamentals
-  - ../../../../Global_References/AI_and_Agents/model-versioning.md — Model Versioning & Deployment Strategies
+  - ../../../references/k8s-serving.md — [Kubernetes](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-Native Serving
+  - ../../../references/model-serving-advanced.md — Model Serving Advanced Topics
+  - ../../../references/model-serving-fundamentals.md — Model Serving Fundamentals
+  - ../../../references/model-versioning.md — Model Versioning & Deployment Strategies
   - ../../../Global_References/[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-inference.md — [Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) Model Inference
-  - ../../../../Global_References/AI_and_Agents/serving-frameworks.md — Serving Frameworks Comparison
+  - ../../../references/serving-frameworks.md — Serving Frameworks Comparison
 ## Handoff
 For model building and packaging, hand off to `ml-[ml-pipeline](../../../Workflows/pipelines/ml-pipeline/SKILL.md)`. For [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) inference metrics, hand off to `devops/[monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)`.
 

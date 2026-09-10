@@ -405,12 +405,12 @@ Use `TEST_DATABASE_URL` for test isolation. Run tests with `--pool=forks` for pa
 - All `timestamp` columns have `$onUpdate` for mutation tracking.
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/drizzle-advanced.md — Advanced Drizzle Patterns
-  - ../../../../Global_References/Software_Engineering_and_Other/drizzle-edge-deployment.md — Edge and [Serverless](../../../Patterns/data-performance/serverless/SKILL.md) Deployment
-  - ../../../../Global_References/Software_Engineering_and_Other/drizzle-relations.md — Relation Patterns
-  - ../../../../Global_References/Software_Engineering_and_Other/migration-patterns.md — Migration Strategies
-  - ../../../../Global_References/Software_Engineering_and_Other/drizzle_query-optimization.md — Query Optimization
-  - ../../../../Global_References/Software_Engineering_and_Other/schema-types.md — Schema Design and Types
+  - ../../../references/drizzle-advanced.md — Advanced Drizzle Patterns
+  - ../../../references/drizzle-edge-deployment.md — Edge and [Serverless](../../../Patterns/data-performance/serverless/SKILL.md) Deployment
+  - ../../../references/drizzle-relations.md — Relation Patterns
+  - ../../../references/migration-patterns.md — Migration Strategies
+  - ../../../references/drizzle_query-optimization.md — Query Optimization
+  - ../../../references/schema-types.md — Schema Design and Types
 ## Handoff
 Hand off to `backend/nodejs/prisma/SKILL.md` for Prisma ORM or `backend/nodejs/patterns/SKILL.md` for advanced Node patterns.
 ## Implementation Patterns

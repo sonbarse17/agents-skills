@@ -588,10 +588,10 @@ function getName(user: User | null): string {
 - Never use non-null assertions (`!`) without a preceding null check.
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/ts-generics-patterns.md — [TypeScript](../../../Frontend/common/typescript/SKILL.md) Generics Patterns
-  - ../../../../Global_References/Software_Engineering_and_Other/ts-react-patterns.md — [TypeScript](../../../Frontend/common/typescript/SKILL.md) React Patterns
-  - ../../../../Global_References/Software_Engineering_and_Other/ts-type-safety.md — [TypeScript](../../../Frontend/common/typescript/SKILL.md) Type Safety Patterns
-  - ../../../../Global_References/Software_Engineering_and_Other/ts-utility-types.md — [TypeScript](../../../Frontend/common/typescript/SKILL.md) Utility Types
+  - ../../../references/ts-generics-patterns.md — [TypeScript](../../../Frontend/common/typescript/SKILL.md) Generics Patterns
+  - ../../../references/ts-react-patterns.md — [TypeScript](../../../Frontend/common/typescript/SKILL.md) React Patterns
+  - ../../../references/ts-type-safety.md — [TypeScript](../../../Frontend/common/typescript/SKILL.md) Type Safety Patterns
+  - ../../../references/ts-utility-types.md — [TypeScript](../../../Frontend/common/typescript/SKILL.md) Utility Types
   - ../../../Global_References/[typescript](../../../Frontend/common/typescript/SKILL.md)-advanced.md — Advanced [TypeScript](../../../Frontend/common/typescript/SKILL.md)
   - ../../../Global_References/[typescript](../../../Frontend/common/typescript/SKILL.md)-config.md — [TypeScript](../../../Frontend/common/typescript/SKILL.md) Configuration
 ## Handoff

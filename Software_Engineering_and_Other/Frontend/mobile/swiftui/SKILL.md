@@ -473,9 +473,9 @@ struct SettingsView: View {
 ```
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/swiftui-advanced.md — SwiftUI Advanced Topics
-  - ../../../../Global_References/Software_Engineering_and_Other/swiftui-fundamentals.md — SwiftUI Fundamentals
-  - ../../../../Global_References/Software_Engineering_and_Other/swiftui-macos-patterns.md — SwiftUI macOS Patterns Reference
+  - ../../../references/swiftui-advanced.md — SwiftUI Advanced Topics
+  - ../../../references/swiftui-fundamentals.md — SwiftUI Fundamentals
+  - ../../../references/swiftui-macos-patterns.md — SwiftUI macOS Patterns Reference
   - references/swiftui-navigation.md — SwiftUI Navigation Patterns Reference
 ## Handoff
 Hand off to `[desktop-appkit](../../desktop/appkit/SKILL.md)` for AppKit bridge details. Hand off to `design-accessibility` for VoiceOver testing.

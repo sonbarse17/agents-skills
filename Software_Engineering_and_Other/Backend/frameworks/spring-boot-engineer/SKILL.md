@@ -45,11 +45,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Web Layer | `../../../../Global_References/Software_Engineering_and_Other/web.md` | Controllers, REST APIs, validation, exception handling |
-| Data Access | `../../../../Global_References/Software_Engineering_and_Other/spring-boot-engineer_data.md` | Spring Data JPA, repositories, transactions, projections |
-| Security | `../../../../Global_References/Software_Engineering_and_Other/security.md` | Spring Security 6, OAuth2, JWT, method security |
-| Cloud Native | `../../../../Global_References/Software_Engineering_and_Other/cloud.md` | Spring Cloud, Config, Discovery, Gateway, resilience |
-| Testing | `../../../../Global_References/Software_Engineering_and_Other/spring-boot-engineer_testing.md` | @SpringBootTest, MockMvc, Testcontainers, test slices |
+| Web Layer | `../../../references/web.md` | Controllers, REST APIs, validation, exception handling |
+| Data Access | `../../../references/spring-boot-engineer_data.md` | Spring Data JPA, repositories, transactions, projections |
+| Security | `../../../references/security.md` | Spring Security 6, OAuth2, JWT, method security |
+| Cloud Native | `../../../references/cloud.md` | Spring Cloud, Config, Discovery, Gateway, resilience |
+| Testing | `../../../references/spring-boot-engineer_testing.md` | @SpringBootTest, MockMvc, Testcontainers, test slices |
 
 ## Quick Start — Minimal Working Structure
 

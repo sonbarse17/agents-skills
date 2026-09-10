@@ -443,12 +443,12 @@ Automatic retry should use exponential backoff. Retrying every 1s for 30 retries
 10. Network errors show a distinct "You appear to be offline" message vs application errors.
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/error-boundaries.md — Error Boundaries
-  - ../../../../Global_References/Software_Engineering_and_Other/error-boundary-patterns.md — Error Boundary Patterns
-  - ../../../../Global_References/Software_Engineering_and_Other/error-logging-best-practices.md — Error Logging Best Practices
+  - ../../../references/error-boundaries.md — Error Boundaries
+  - ../../../references/error-boundary-patterns.md — Error Boundary Patterns
+  - ../../../references/error-logging-best-practices.md — Error Logging Best Practices
   - ../../../Global_References/error-[monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Error [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
-  - ../../../../Global_References/Software_Engineering_and_Other/error-reporting.md — Error Reporting
-  - ../../../../Global_References/Software_Engineering_and_Other/error-ui-patterns.md — Error UI Patterns
+  - ../../../references/error-reporting.md — Error Reporting
+  - ../../../references/error-ui-patterns.md — Error UI Patterns
 ## Handoff
 No artifact produced unless requested.
 Next skill: `frontend-performance` — error boundaries affect perceived performance, coordinate loading/error states.

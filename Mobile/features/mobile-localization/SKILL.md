@@ -547,11 +547,11 @@ jobs:
 
 ## References
   - ../../../Global_References/[android](../../platforms/android/SKILL.md)-localization.md — [Android](../../platforms/android/SKILL.md) Localization
-  - ../../Global_References/Mobile/ios-localization.md — iOS Localization
-  - ../../Global_References/Mobile/l10n-workflow.md — Localization Workflow
-  - ../../Global_References/Mobile/mobile-localization-advanced.md — Mobile Localization Advanced Topics
-  - ../../Global_References/Mobile/mobile-localization-fundamentals.md — Mobile Localization Fundamentals
-  - ../../Global_References/Mobile/mobile-localization_rtl-support.md — Right-to-Left (RTL) Support
+  - ../../references/ios-localization.md — iOS Localization
+  - ../../references/l10n-workflow.md — Localization Workflow
+  - ../../references/mobile-localization-advanced.md — Mobile Localization Advanced Topics
+  - ../../references/mobile-localization-fundamentals.md — Mobile Localization Fundamentals
+  - ../../references/mobile-localization_rtl-support.md — Right-to-Left (RTL) Support
 ## Handoff
 - `mobile/[mobile-widgets](../mobile-widgets/SKILL.md)` — Widget localization and RTL support
 - `backend/transactional-email` — Email template localization patterns

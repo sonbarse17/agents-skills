@@ -508,14 +508,14 @@ The browser promotes elements to GPU compositor layers when `will-change`, 3D tr
 
 ## References
 
-- `../../../../Global_References/Software_Engineering_and_Other/animation-accessibility.md` -- Animation Accessibility
-- `../../../../Global_References/Software_Engineering_and_Other/animation-anatomy.md` -- Animation Anatomy
-- `../../../../Global_References/Software_Engineering_and_Other/animation_animation-libraries.md` -- Animation Libraries
-- `../../../../Global_References/Software_Engineering_and_Other/animation-performance.md` -- Animation Performance
-- `../../../../Global_References/Software_Engineering_and_Other/animation-techniques.md` -- Animation Techniques
-- `../../../../Global_References/Software_Engineering_and_Other/animation-tools.md` -- Animation Tools Reference
-- `../../../../Global_References/Software_Engineering_and_Other/web-animation-performance.md` -- Web Animation Performance & Compositing Deep Dive
-- `../../../../Global_References/Software_Engineering_and_Other/spring-gesture-animation.md` -- Spring Physics & Gesture Animation Patterns
+- `../../../references/animation-accessibility.md` -- Animation Accessibility
+- `../../../references/animation-anatomy.md` -- Animation Anatomy
+- `../../../references/animation_animation-libraries.md` -- Animation Libraries
+- `../../../references/animation-performance.md` -- Animation Performance
+- `../../../references/animation-techniques.md` -- Animation Techniques
+- `../../../references/animation-tools.md` -- Animation Tools Reference
+- `../../../references/web-animation-performance.md` -- Web Animation Performance & Compositing Deep Dive
+- `../../../references/spring-gesture-animation.md` -- Spring Physics & Gesture Animation Patterns
 
 ## Handoff
 

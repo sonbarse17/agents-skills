@@ -345,8 +345,8 @@ with SearchIndexerClient(endpoint, DefaultAzureCredential()) as indexer_client:
 
 | File | Contents |
 |------|----------|
-| [../../../../../Global_References/cloud/azure-search-documents-py_vector-search.md](../../../../../Global_References/cloud/azure-search-documents-py_vector-search.md) | HNSW configuration, integrated vectorization, multi-vector queries |
-| [../../../../../Global_References/cloud/semantic-ranking.md](../../../../../Global_References/cloud/semantic-ranking.md) | Semantic configuration, captions, answers, hybrid patterns |
+| [../../../../references/azure-search-documents-py_vector-search.md](../../../../references/azure-search-documents-py_vector-search.md) | HNSW configuration, integrated vectorization, multi-vector queries |
+| [../../../../references/semantic-ranking.md](../../../../references/semantic-ranking.md) | Semantic configuration, captions, answers, hybrid patterns |
 | [scripts/setup_vector_index.py](scripts/setup_vector_index.py) | CLI script to create vector-enabled search index |
 
 
@@ -507,7 +507,7 @@ results = search_client.search(
 
 ## Agentic Retrieval (Knowledge Bases)
 
-For LLM-powered Q&A with answer synthesis, see [../../../../../Global_References/cloud/agentic-retrieval.md](../../../../../Global_References/cloud/agentic-retrieval.md).
+For LLM-powered Q&A with answer synthesis, see [../../../../references/agentic-retrieval.md](../../../../references/agentic-retrieval.md).
 
 Key concepts:
 - **Knowledge Source**: Points to a search index

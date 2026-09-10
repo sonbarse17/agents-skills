@@ -474,14 +474,14 @@ Scalability: single GPU for models up to 7B params (quantized). 4-8 GPUs for 7B-
 - Use tensor shape comments: `# (batch, channels, height, width)`
 
 ## References
-  - ../../../../Global_References/AI_and_Agents/architectures.md — Modern Deep Learning Architectures
-  - ../../../../Global_References/AI_and_Agents/deep-learning-advanced.md — Deep Learning Advanced Topics
-  - ../../../../Global_References/AI_and_Agents/deep-learning-fundamentals.md — Deep Learning Fundamentals
-  - ../../../../Global_References/AI_and_Agents/generative-models.md — Generative Models
-  - ../../../../Global_References/AI_and_Agents/pytorch-tensorflow.md — PyTorch and TensorFlow Reference
-  - ../../../../Global_References/AI_and_Agents/training-optimization.md — Training Optimization Reference
+  - ../../../references/architectures.md — Modern Deep Learning Architectures
+  - ../../../references/deep-learning-advanced.md — Deep Learning Advanced Topics
+  - ../../../references/deep-learning-fundamentals.md — Deep Learning Fundamentals
+  - ../../../references/generative-models.md — Generative Models
+  - ../../../references/pytorch-tensorflow.md — PyTorch and TensorFlow Reference
+  - ../../../references/training-optimization.md — Training Optimization Reference
   - ../../../Global_References/deep-learning-[architecture-patterns](../../../../Software_Engineering_and_Other/Patterns/architecture/architecture-patterns/SKILL.md).md — Deep Learning Architecture Patterns
-  - ../../../../Global_References/AI_and_Agents/deep-learning-training-optimization.md — Training Optimization Deep Dive
+  - ../../../references/deep-learning-training-optimization.md — Training Optimization Deep Dive
 ## Handoff
 `ml-[experiment-tracking](../../../../Data_Engineering/experiment-tracking/SKILL.md)` for logging deep learning experiments
 `[ml-feature-engineering](../../../../Data_Engineering/feature-engineering/SKILL.md)` for deep learning feature extraction

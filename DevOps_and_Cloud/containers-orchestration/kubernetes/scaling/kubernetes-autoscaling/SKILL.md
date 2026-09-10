@@ -481,12 +481,12 @@ spec:
 
 ## References
   - ../../../Global_References/[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)-strategies.md — Combined [Autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) Strategy
-  - ../../../../Global_References/containers-orchestration/cluster-autoscaler.md — Cluster Autoscaler
-  - ../../../../Global_References/containers-orchestration/hpa-patterns.md — Horizontal Pod Autoscaler (HPA)
-  - ../../../../Global_References/containers-orchestration/keda-scalers.md — Keda Scalers
+  - ../../../references/cluster-autoscaler.md — Cluster Autoscaler
+  - ../../../references/hpa-patterns.md — Horizontal Pod Autoscaler (HPA)
+  - ../../../references/keda-scalers.md — Keda Scalers
   - ../../../Global_References/[kubernetes](../../other/kubernetes/SKILL.md)-[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)-advanced.md — [Kubernetes](../../other/kubernetes/SKILL.md) [Autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) Advanced Topics
   - ../../../Global_References/[kubernetes](../../other/kubernetes/SKILL.md)-[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)-fundamentals.md — [Kubernetes](../../other/kubernetes/SKILL.md) [Autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) Fundamentals
-  - ../../../../Global_References/containers-orchestration/vpa-config.md — Vertical Pod Autoscaler (VPA)
+  - ../../../references/vpa-config.md — Vertical Pod Autoscaler (VPA)
 ## Handoff
 After completing this skill:
 - Next skill: **devops-[apm-observability](../../../AI_and_Agents/Operations/apm-[observability](../../Observability_and_SecOps/observability/SKILL.md)/SKILL.md)** — [Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) to monitor and inform [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)

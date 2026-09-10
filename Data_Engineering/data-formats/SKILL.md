@@ -418,14 +418,14 @@ print(f"Result: {table.num_rows} rows, {table.num_columns} columns")
 - Use RLE encoding for boolean and low-cardinality enum columns
 
 ## References
-  - ../../Global_References/Data_Engineering/arrow-flight-protocol.md — Arrow Flight Protocol
-  - ../../Global_References/Data_Engineering/columnar-format-guide.md — Columnar Format Guide
-  - ../../Global_References/Data_Engineering/columnar-formats.md — Columnar Formats Deep Dive Reference
-  - ../../Global_References/Data_Engineering/compression-encoding.md — Compression and Encoding
-  - ../../Global_References/Data_Engineering/data-serialization-patterns.md — Data Serialization Patterns
-  - ../../Global_References/Data_Engineering/file-format-benchmarks.md — File Format Benchmarks
-  - ../../Global_References/Data_Engineering/format-migration-strategies.md — Format Migration Strategies
-  - ../../Global_References/Data_Engineering/data-formats_schema-evolution.md — Schema Evolution Reference
+  - ../references/arrow-flight-protocol.md — Arrow Flight Protocol
+  - ../references/columnar-format-guide.md — Columnar Format Guide
+  - ../references/columnar-formats.md — Columnar Formats Deep Dive Reference
+  - ../references/compression-encoding.md — Compression and Encoding
+  - ../references/data-serialization-patterns.md — Data Serialization Patterns
+  - ../references/file-format-benchmarks.md — File Format Benchmarks
+  - ../references/format-migration-strategies.md — Format Migration Strategies
+  - ../references/data-formats_schema-evolution.md — Schema Evolution Reference
 ## Architecture Decision Trees
 
 ```

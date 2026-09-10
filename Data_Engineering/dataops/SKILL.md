@@ -487,11 +487,11 @@ dbt: transformation layer (SELECT statements). Airflow: orchestration layer (DAG
 - Disaster recovery drill (rollback from backup).
 
 ## References
-- ../../Global_References/Data_Engineering/dataops-fundamentals.md -- Dataops Fundamentals
-- ../../Global_References/Data_Engineering/dataops-advanced.md -- Dataops Advanced Topics
-- ../../Global_References/Data_Engineering/data-cicd.md -- Data CI/CD
+- ../references/dataops-fundamentals.md -- Dataops Fundamentals
+- ../references/dataops-advanced.md -- Dataops Advanced Topics
+- ../references/data-cicd.md -- Data CI/CD
 - ../../../Global_References/[data-testing](../data-testing/SKILL.md).md -- Data Testing
-- ../../Global_References/Data_Engineering/data-contracts-ops.md -- Data Contracts Operations
+- ../references/data-contracts-ops.md -- Data Contracts Operations
 - ../../../Global_References/data-[observability](../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md).md -- DataOps [Observability](../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
 - references/dataops-pipeline-orchestration.md -- Pipeline Orchestration
 - references/dataops-data-quality-[monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md -- Data Quality [Monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)

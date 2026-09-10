@@ -47,11 +47,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Vector Databases | `../../../../Global_References/AI_and_Agents/vector-databases.md` | Comparing Pinecone, Weaviate, Chroma, pgvector, Qdrant |
-| Embedding Models | `../../../../Global_References/AI_and_Agents/embedding-models.md` | Selecting embeddings, fine-tuning, dimension trade-offs |
-| Chunking Strategies | `../../../../Global_References/AI_and_Agents/chunking-strategies.md` | Document splitting, overlap, semantic chunking |
-| Retrieval Optimization | `../../../../Global_References/AI_and_Agents/retrieval-optimization.md` | Hybrid search, reranking, query expansion, filtering |
-| RAG Evaluation | `../../../../Global_References/AI_and_Agents/rag-evaluation.md` | Metrics, evaluation frameworks, debugging retrieval |
+| Vector Databases | `../../../references/vector-databases.md` | Comparing Pinecone, Weaviate, Chroma, pgvector, Qdrant |
+| Embedding Models | `../../../references/embedding-models.md` | Selecting embeddings, fine-tuning, dimension trade-offs |
+| Chunking Strategies | `../../../references/chunking-strategies.md` | Document splitting, overlap, semantic chunking |
+| Retrieval Optimization | `../../../references/retrieval-optimization.md` | Hybrid search, reranking, query expansion, filtering |
+| RAG Evaluation | `../../../references/rag-evaluation.md` | Metrics, evaluation frameworks, debugging retrieval |
 
 ## Implementation Examples
 

@@ -513,17 +513,17 @@ Versioning every single endpoint independently. Version at API level, not endpoi
 - Use consumer-driven contracts to detect breaking changes before production
 
 ## References
-- `../../../../Global_References/Software_Engineering_and_Other/breaking-change-mgmt.md` — Identifying, documenting, and communicating breaking changes
-- `../../../../Global_References/Software_Engineering_and_Other/version-compatibility-testing.md` — Testing strategies for multi-version API compatibility
-- `../../../../Global_References/Software_Engineering_and_Other/version-discovery.md` — How clients discover available versions and their capabilities
-- `../../../../Global_References/Software_Engineering_and_Other/version-lifecycle.md` — Full version lifecycle from proposal to sunset
-- `../../../../Global_References/Software_Engineering_and_Other/version-migration-automation.md` — Automating client migration between API versions
-- `../../../../Global_References/Software_Engineering_and_Other/versioning-strategies.md` — Detailed comparison of URI, header, content-negotiation approaches
-- `../../../../Global_References/Software_Engineering_and_Other/api-versioning-strategies.md` — Comprehensive strategy selection guide with implementation details
-- `../../../../Global_References/Software_Engineering_and_Other/api-migration-deprecation.md` — Migration patterns and deprecation workflows in depth
-- `../../../../Global_References/Software_Engineering_and_Other/api-versioning-fundamentals.md` — API Versioning Fundamentals
-- `../../../../Global_References/Software_Engineering_and_Other/api-versioning-advanced.md` — API Versioning Advanced Patterns
-- `../../../../Global_References/Software_Engineering_and_Other/api-versioning-multi-protocol.md` — Versioning Across REST, GraphQL, gRPC, and Events
+- `../../../references/breaking-change-mgmt.md` — Identifying, documenting, and communicating breaking changes
+- `../../../references/version-compatibility-testing.md` — Testing strategies for multi-version API compatibility
+- `../../../references/version-discovery.md` — How clients discover available versions and their capabilities
+- `../../../references/version-lifecycle.md` — Full version lifecycle from proposal to sunset
+- `../../../references/version-migration-automation.md` — Automating client migration between API versions
+- `../../../references/versioning-strategies.md` — Detailed comparison of URI, header, content-negotiation approaches
+- `../../../references/api-versioning-strategies.md` — Comprehensive strategy selection guide with implementation details
+- `../../../references/api-migration-deprecation.md` — Migration patterns and deprecation workflows in depth
+- `../../../references/api-versioning-fundamentals.md` — API Versioning Fundamentals
+- `../../../references/api-versioning-advanced.md` — API Versioning Advanced Patterns
+- `../../../references/api-versioning-multi-protocol.md` — Versioning Across REST, GraphQL, gRPC, and Events
 
 ## Handoff
 No artifact produced unless requested.

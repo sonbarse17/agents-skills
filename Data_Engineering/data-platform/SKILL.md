@@ -482,14 +482,14 @@ Metrics: Prometheus + Grafana [dashboards](../../DevOps_and_Cloud/observability-
 
 ## References
   - ../../../Global_References/cross-[cloud-setup](../../DevOps_and_Cloud/cloud/common/other/setup/SKILL.md).md — Cross-Cloud Data Platform Setup
-  - ../../Global_References/Data_Engineering/data-catalog-virtualization.md — Data Catalog & Virtualization
-  - ../../Global_References/Data_Engineering/data-platform-advanced.md — Data Platform Advanced Topics
-  - ../../Global_References/Data_Engineering/data-platform-architecture.md — Data Platform Architecture
-  - ../../Global_References/Data_Engineering/data-platform-fundamentals.md — Data Platform Fundamentals
-  - ../../Global_References/Data_Engineering/k8s-for-data.md — [Kubernetes](../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) for Data Workloads
-  - ../../Global_References/Data_Engineering/platform-architecture.md — Data Platform Architecture
-  - ../../Global_References/Data_Engineering/platform-decision-tree.md — Platform Decision Tree
-  - ../../Global_References/Data_Engineering/platform-tools-comparison.md — Platform Tools Comparison
+  - ../references/data-catalog-virtualization.md — Data Catalog & Virtualization
+  - ../references/data-platform-advanced.md — Data Platform Advanced Topics
+  - ../references/data-platform-architecture.md — Data Platform Architecture
+  - ../references/data-platform-fundamentals.md — Data Platform Fundamentals
+  - ../references/k8s-for-data.md — [Kubernetes](../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) for Data Workloads
+  - ../references/platform-architecture.md — Data Platform Architecture
+  - ../references/platform-decision-tree.md — Platform Decision Tree
+  - ../references/platform-tools-comparison.md — Platform Tools Comparison
 ## Architecture Decision Trees
 
 ```

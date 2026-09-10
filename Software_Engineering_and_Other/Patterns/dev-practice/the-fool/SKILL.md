@@ -61,7 +61,7 @@ Use `AskUserQuestion` to let the user choose how to challenge their idea.
 - "Question assumptions" → Ask: "Expose my assumptions" (Socratic) vs "Test the evidence" (Falsification)
 - "Find weaknesses" → Ask: "Find failure modes" (Pre-mortem) vs "Attack this" (Red team)
 - "Build counter-arguments" → Skip step 2, proceed with Dialectic synthesis
-- "You choose" → Skip step 2, load `../../../../Global_References/Software_Engineering_and_Other/mode-selection-guide.md` and auto-recommend
+- "You choose" → Skip step 2, load `../../../references/mode-selection-guide.md` and auto-recommend
 
 ## 5 Reasoning Modes
 
@@ -77,12 +77,12 @@ Use `AskUserQuestion` to let the user choose how to challenge their idea.
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Socratic questioning | `../../../../Global_References/Software_Engineering_and_Other/socratic-questioning.md` | "Expose my assumptions" selected |
-| Dialectic and synthesis | `../../../../Global_References/Software_Engineering_and_Other/dialectic-synthesis.md` | "Argue the other side" selected |
-| Pre-mortem analysis | `../../../../Global_References/Software_Engineering_and_Other/pre-mortem-analysis.md` | "Find the failure modes" selected |
-| Red team adversarial | `../../../../Global_References/Software_Engineering_and_Other/red-team-adversarial.md` | "Attack this" selected |
+| Socratic questioning | `../../../references/socratic-questioning.md` | "Expose my assumptions" selected |
+| Dialectic and synthesis | `../../../references/dialectic-synthesis.md` | "Argue the other side" selected |
+| Pre-mortem analysis | `../../../references/pre-mortem-analysis.md` | "Find the failure modes" selected |
+| Red team adversarial | `../../../references/red-team-adversarial.md` | "Attack this" selected |
 | Evidence [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) | `../../../Global_References/evidence-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md).md` | "Test the evidence" selected |
-| Mode selection guide | `../../../../Global_References/Software_Engineering_and_Other/mode-selection-guide.md` | "You choose" selected or auto-recommend needed |
+| Mode selection guide | `../../../references/mode-selection-guide.md` | "You choose" selected or auto-recommend needed |
 
 ## Constraints
 

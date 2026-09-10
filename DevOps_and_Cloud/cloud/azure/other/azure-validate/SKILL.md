@@ -51,7 +51,7 @@ depends_on:
 
 1. Run after [azure-prepare](../[azure-prepare](../azure-skills/skills/azure-prepare/SKILL.md)/SKILL.md), before [azure-deploy](../azure-skills/skills/[azure-deploy](../../Infrastructure_as_Code/azure-deploy/SKILL.md)/SKILL.md)
 2. All checks must pass—do not deploy with failures
-3. ⛔ **Destructive actions require `ask_user`** — [global-rules](../../../../Global_References/cloud/azure-validate_global-rules.md)
+3. ⛔ **Destructive actions require `ask_user`** — [global-rules](../../../references/azure-validate_global-rules.md)
 
 ## Steps
 
@@ -66,7 +66,7 @@ pwsh references/scripts/workflow.ps1 -WorkspacePath <workspace-path>
 
 Each run prints the next action and the value to pass next. Perform the action, then re-run with that value (`-CompletedStep <value>` for pwsh, `--completed-step <value>` for bash). Repeat until it reports the [azure-validate](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/azure-validate/SKILL.md) workflow is complete.
 
-The steps reference recipe details in [references/recipes/README.md](references/recipes/README.md) and role checks in [../../../../Global_References/cloud/role-verification.md](../../../../Global_References/cloud/role-verification.md).
+The steps reference recipe details in [references/recipes/README.md](references/recipes/README.md) and role checks in [../../../references/role-verification.md](../../../references/role-verification.md).
 
 > **⛔ VALIDATION AUTHORITY**
 >

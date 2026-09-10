@@ -436,14 +436,14 @@ async function sendWhatsAppMessage(to: string, templateName: string, params: Rec
 20. Always implement rate limiting per provider to avoid carrier filtering.
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/2fa-sms.md — Two-Factor Authentication via SMS
-  - ../../../../Global_References/Software_Engineering_and_Other/compliance-analytics.md — Compliance and Analytics
-  - ../../../../Global_References/Software_Engineering_and_Other/sms-messaging-advanced.md — Sms Messaging Advanced Topics
-  - ../../../../Global_References/Software_Engineering_and_Other/sms-messaging-fundamentals.md — Sms Messaging Fundamentals
+  - ../../../references/2fa-sms.md — Two-Factor Authentication via SMS
+  - ../../../references/compliance-analytics.md — Compliance and Analytics
+  - ../../../references/sms-messaging-advanced.md — Sms Messaging Advanced Topics
+  - ../../../references/sms-messaging-fundamentals.md — Sms Messaging Fundamentals
   - ../../../Global_References/sms-messaging-[monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — SMS Messaging [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
-  - ../../../../Global_References/Software_Engineering_and_Other/sms-messaging-testing.md — SMS Messaging Testing
-  - ../../../../Global_References/Software_Engineering_and_Other/sms-providers.md — SMS Providers
-  - ../../../../Global_References/Software_Engineering_and_Other/whatsapp-api.md — WhatsApp API
+  - ../../../references/sms-messaging-testing.md — SMS Messaging Testing
+  - ../../../references/sms-providers.md — SMS Providers
+  - ../../../references/whatsapp-api.md — WhatsApp API
 ## Architecture Decision Trees
 
 ### Provider Selection

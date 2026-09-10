@@ -402,5 +402,5 @@ Use the Speech SDK or Batch Transcription API instead when you need:
 
 | File | Contents |
 |------|----------|
-| [../../../../../Global_References/cloud/pronunciation-assessment.md](../../../../../Global_References/cloud/pronunciation-assessment.md) | Pronunciation assessment parameters and scoring |
+| [../../../../references/pronunciation-assessment.md](../../../../references/pronunciation-assessment.md) | Pronunciation assessment parameters and scoring |
 

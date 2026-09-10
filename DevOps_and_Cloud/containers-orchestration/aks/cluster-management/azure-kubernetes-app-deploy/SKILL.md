@@ -34,15 +34,15 @@ depends_on:
 
 ## Workflow
 
-Requires: existing AKS cluster, `az login`, `[kubectl](../../../kubernetes/other/kubectl/SKILL.md)` configured. Follow `phases/quick-deploy.md`. On failure: `../../../../Global_References/containers-orchestration/rollback.md`.
+Requires: existing AKS cluster, `az login`, `[kubectl](../../../kubernetes/other/kubectl/SKILL.md)` configured. Follow `phases/quick-deploy.md`. On failure: `../../../references/rollback.md`.
 
 ## References
 
-- [detection.md](../../../../Global_References/containers-orchestration/detection.md) — framework/port/health detection
-- [safeguards.md](../../../../Global_References/containers-orchestration/safeguards.md) — DS001-DS013 checklist
-- [workload-identity.md](../../../../Global_References/containers-orchestration/workload-identity.md) — Workload Identity setup
-- [rollback.md](../../../../Global_References/containers-orchestration/rollback.md) — recovery procedures
-- [base-images.md](../../../../Global_References/containers-orchestration/base-images.md) — base image policy and `<LATEST_STABLE_*>` resolution
+- [detection.md](../../../references/detection.md) — framework/port/health detection
+- [safeguards.md](../../../references/safeguards.md) — DS001-DS013 checklist
+- [workload-identity.md](../../../references/workload-identity.md) — Workload Identity setup
+- [rollback.md](../../../references/rollback.md) — recovery procedures
+- [base-images.md](../../../references/base-images.md) — base image policy and `<LATEST_STABLE_*>` resolution
 
 ## Knowledge Packs
 

@@ -468,11 +468,11 @@ Deploying a Python web app?
 - **Rate limiting**: `slowapi` for FastAPI middleware rate limiting. Per-user/IP with Redis backend for distributed apps.
 
 ## References
-- `../../../../Global_References/Software_Engineering_and_Other/type-annotations.md` — Advanced type annotations, generics, protocols
-- `../../../../Global_References/Software_Engineering_and_Other/packaging-dependency.md` — Packaging, pyproject.toml, dependency management
-- `../../../../Global_References/Software_Engineering_and_Other/python-fundamentals.md` — Python Fundamentals
-- `../../../../Global_References/Software_Engineering_and_Other/python-advanced.md` — Advanced Python Patterns
-- `../../../../Global_References/Software_Engineering_and_Other/python-fastapi.md` — FastAPI Web Framework Guide
+- `../../../references/type-annotations.md` — Advanced type annotations, generics, protocols
+- `../../../references/packaging-dependency.md` — Packaging, pyproject.toml, dependency management
+- `../../../references/python-fundamentals.md` — Python Fundamentals
+- `../../../references/python-advanced.md` — Advanced Python Patterns
+- `../../../references/python-fastapi.md` — FastAPI Web Framework Guide
 
 ## Implementation Patterns
 

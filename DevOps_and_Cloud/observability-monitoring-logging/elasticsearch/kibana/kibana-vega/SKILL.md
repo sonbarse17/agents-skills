@@ -308,10 +308,10 @@ node scripts/kibana-vega.js visualizations delete <id>
 
 ## Full Documentation
 
-- [Dashboard Layout Reference](../../../../Global_References/observability-monitoring-logging/dashboard-layout-reference.md) — Grid system, layout patterns, design best
+- [Dashboard Layout Reference](../../../references/dashboard-layout-reference.md) — Grid system, layout patterns, design best
   practices
-- [Vega-Lite Reference](../../../../Global_References/observability-monitoring-logging/vega-lite-reference.md) — Complete Vega-Lite grammar, chart patterns, best practices
-- [ES|QL in Vega Reference](../../../../Global_References/observability-monitoring-logging/vega-esql-reference.md) — ES|QL data source configuration, time filtering,
+- [Vega-Lite Reference](../../../references/vega-lite-reference.md) — Complete Vega-Lite grammar, chart patterns, best practices
+- [ES|QL in Vega Reference](../../../references/vega-esql-reference.md) — ES|QL data source configuration, time filtering,
   parameters
 - [Example Specs](examples/) — Ready-to-use chart templates
 

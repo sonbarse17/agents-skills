@@ -415,16 +415,16 @@ metrics.histogram('events.latency_ms', latency, { eventType });
 - Monitor event latency, lag, and failure rates.
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/dead-letter-queue.md — Dead Letter Queue
-  - ../../../../Global_References/Software_Engineering_and_Other/event-driven-fundamentals.md — Event-Driven Fundamentals
-  - ../../../../Global_References/Software_Engineering_and_Other/event-driven-advanced.md — Event-Driven Advanced Patterns
+  - ../../../references/dead-letter-queue.md — Dead Letter Queue
+  - ../../../references/event-driven-fundamentals.md — Event-Driven Fundamentals
+  - ../../../references/event-driven-advanced.md — Event-Driven Advanced Patterns
   - ../../../Global_References/event-driven-[monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Event-Driven [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
-  - ../../../../Global_References/Software_Engineering_and_Other/event-driven-testing.md — Event-Driven Testing
-  - ../../../../Global_References/Software_Engineering_and_Other/event-governance.md — Event Governance
-  - ../../../../Global_References/Software_Engineering_and_Other/event-notification-patterns.md — Event Notification Patterns
-  - ../../../../Global_References/Software_Engineering_and_Other/event-schema-management.md — Event Schema Management
-  - ../../../../Global_References/Software_Engineering_and_Other/event-driven_messaging-patterns.md — Messaging & Event-Driven Patterns
-  - ../../../../Global_References/Software_Engineering_and_Other/saga-choreography.md — Saga and Choreography Patterns
+  - ../../../references/event-driven-testing.md — Event-Driven Testing
+  - ../../../references/event-governance.md — Event Governance
+  - ../../../references/event-notification-patterns.md — Event Notification Patterns
+  - ../../../references/event-schema-management.md — Event Schema Management
+  - ../../../references/event-driven_messaging-patterns.md — Messaging & Event-Driven Patterns
+  - ../../../references/saga-choreography.md — Saga and Choreography Patterns
 ## Handoff
 No artifact produced.
 Next skill: backend-testing — test event consumers, idempotency, DLQ handling.

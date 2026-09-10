@@ -29,7 +29,7 @@ Master React Native styling patterns, React Navigation, and Reanimated 3 to buil
 
 ## Detailed section: Core Concepts
 
-Originally a 6471-byte section in this SKILL.md. Moved to `../../../../Global_References/Software_Engineering_and_Other/react-native-design_details.md` to fit Codex's 8 KB skill body cap.
+Originally a 6471-byte section in this SKILL.md. Moved to `../../../references/react-native-design_details.md` to fit Codex's 8 KB skill body cap.
 
 ## Quick Start Component
 

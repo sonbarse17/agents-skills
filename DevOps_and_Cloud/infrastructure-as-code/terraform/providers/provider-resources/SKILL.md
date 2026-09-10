@@ -47,9 +47,9 @@ zero values, so naive migrations change behavior for existing users (use the
 `[provider-framework-migration](../[provider-framework-migration](../../../Software_Engineering_and_Other/Miscellaneous/agent-skills-main/plugins/terraform/skills/provider-framework-migration/SKILL.md)/SKILL.md)` skill, if available).
 
 **References** (load when needed):
-- `../../../../Global_References/infrastructure-as-code/provider-resources_design-principles.md` — what should (and should not) become a
+- `../../../references/provider-resources_design-principles.md` — what should (and should not) become a
   resource; data source semantics; relationship and async-task modeling
-- `../../../../Global_References/infrastructure-as-code/retries-and-waiters.md` — eventual consistency, retry
+- `../../../references/retries-and-waiters.md` — eventual consistency, retry
   patterns, and status/wait function structure
 
 ## File Structure
@@ -182,7 +182,7 @@ func (r *widgetResource) Create(ctx context.Context, req resource.CreateRequest,
     data.ID = types.StringPointerValue(output.ID)
 
     // For eventually consistent APIs, wait for the resource to be usable
-    // before returning — see ../../../../Global_References/infrastructure-as-code/retries-and-waiters.md.
+    // before returning — see ../../../references/retries-and-waiters.md.
 
     resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
@@ -298,7 +298,7 @@ comma-separated) and set each attribute explicitly.
 ## Resource Design Principles
 
 Before implementing, check the shape of the thing being modeled (full
-treatment in `../../../../Global_References/infrastructure-as-code/provider-resources_design-principles.md`):
+treatment in `../../../references/provider-resources_design-principles.md`):
 
 - A resource is the *smallest* useful building block; if the API offers
   CRUD for it, it likely deserves its own resource.
@@ -408,7 +408,7 @@ outputRaw, err := stateConf.WaitForStateContext(ctx)
 
 The full status/wait function pairs (create and delete waiters, failure-state
 handling, post-create not-found retries, eventual-consistency patterns) are
-in `../../../../Global_References/infrastructure-as-code/retries-and-waiters.md` — read it whenever the API is
+in `../../../references/retries-and-waiters.md` — read it whenever the API is
 asynchronous or eventually consistent.
 
 ## Testing

@@ -357,12 +357,12 @@ Cached server state should be normalized by ID to avoid duplication. TanStack Qu
 - If two pieces of state change together, they belong together. If they change independently, split them.
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/client-state.md — Client State
-  - ../../../../Global_References/Software_Engineering_and_Other/server-state.md — Server State
-  - ../../../../Global_References/Software_Engineering_and_Other/state-architecture.md — State Architecture Patterns
-  - ../../../../Global_References/Software_Engineering_and_Other/state-comparison.md — State Management Library Comparison
-  - ../../../../Global_References/Software_Engineering_and_Other/state-patterns.md — State Management Patterns
-  - ../../../../Global_References/Software_Engineering_and_Other/state-testing.md — State Testing Patterns
+  - ../../../references/client-state.md — Client State
+  - ../../../references/server-state.md — Server State
+  - ../../../references/state-architecture.md — State Architecture Patterns
+  - ../../../references/state-comparison.md — State Management Library Comparison
+  - ../../../references/state-patterns.md — State Management Patterns
+  - ../../../references/state-testing.md — State Testing Patterns
 ## Handoff
 No artifact produced.
 Next skill: frontend-performance — optimize rendering and bundle size.

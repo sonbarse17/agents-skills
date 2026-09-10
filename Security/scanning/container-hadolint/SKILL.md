@@ -227,7 +227,7 @@ hadolint -f json Dockerfile | jq '.[] | select(.level == "error")'
 - **DL3020**: Use COPY instead of ADD (prevents arbitrary URL fetching)
 - **DL3025**: Use JSON notation for CMD/ENTRYPOINT (prevents shell injection)
 
-See `../../../Global_References/Security/security_rules.md` for complete security rule catalog with CIS mappings.
+See `../../references/security_rules.md` for complete security rule catalog with CIS mappings.
 
 ### 5. Multi-Stage Build Validation
 

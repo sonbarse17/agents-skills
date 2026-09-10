@@ -101,7 +101,7 @@ with DAG(
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../../../Global_References/AI_and_Agents/airflow-dag-patterns_details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../references/airflow-dag-patterns_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 

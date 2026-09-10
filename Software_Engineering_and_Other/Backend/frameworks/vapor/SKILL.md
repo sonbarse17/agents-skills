@@ -623,14 +623,14 @@ First-party mobile/web app?
 - Fail fast at startup for missing required environment variables.
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/vapor-fluent-orm.md — Vapor Fluent ORM Reference
-  - ../../../../Global_References/Software_Engineering_and_Other/vapor-async-http.md — Vapor Async HTTP Reference
-  - ../../../../Global_References/Software_Engineering_and_Other/vapor-deployment.md — Vapor Deployment
-  - ../../../../Global_References/Software_Engineering_and_Other/vapor-fluent-guide.md — Vapor Fluent ORM Guide
-  - ../../../../Global_References/Software_Engineering_and_Other/vapor-middleware.md — Vapor Middleware Reference
-  - ../../../../Global_References/Software_Engineering_and_Other/vapor-security.md — Vapor Security Reference
-  - ../../../../Global_References/Software_Engineering_and_Other/vapor-setup.md — Vapor Setup Guide
-  - ../../../../Global_References/Software_Engineering_and_Other/vapor-testing.md — Vapor Testing
+  - ../../../references/vapor-fluent-orm.md — Vapor Fluent ORM Reference
+  - ../../../references/vapor-async-http.md — Vapor Async HTTP Reference
+  - ../../../references/vapor-deployment.md — Vapor Deployment
+  - ../../../references/vapor-fluent-guide.md — Vapor Fluent ORM Guide
+  - ../../../references/vapor-middleware.md — Vapor Middleware Reference
+  - ../../../references/vapor-security.md — Vapor Security Reference
+  - ../../../references/vapor-setup.md — Vapor Setup Guide
+  - ../../../references/vapor-testing.md — Vapor Testing
 
 ## Handoff
 Hand off to `backend/universal/api-response/SKILL.md` for API response standards.

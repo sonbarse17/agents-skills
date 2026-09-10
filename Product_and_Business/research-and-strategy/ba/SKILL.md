@@ -430,14 +430,14 @@ A company had 20+ internal tools for HR, IT, and Finance processes. BA analysis 
 
 ## References
 
-- ../../Global_References/Product_and_Business/ba-advanced.md — BA advanced topics and techniques
-- ../../Global_References/Product_and_Business/ba-fundamentals.md — BA fundamentals and core concepts
-- ../../Global_References/Product_and_Business/gherkin-patterns.md — Gherkin patterns for acceptance criteria
-- ../../Global_References/Product_and_Business/requirements-gathering.md — Requirements gathering techniques
-- ../../Global_References/Product_and_Business/story-splitting.md — Story splitting techniques and patterns
-- ../../Global_References/Product_and_Business/user-story-mapping.md — User story mapping methodology
-- ../../Global_References/Product_and_Business/ba-elicitation-techniques.md — Comprehensive elicitation techniques guide
-- ../../Global_References/Product_and_Business/ba-requirements-management.md — Requirements management lifecycle
+- ../../references/ba-advanced.md — BA advanced topics and techniques
+- ../../references/ba-fundamentals.md — BA fundamentals and core concepts
+- ../../references/gherkin-patterns.md — Gherkin patterns for acceptance criteria
+- ../../references/requirements-gathering.md — Requirements gathering techniques
+- ../../references/story-splitting.md — Story splitting techniques and patterns
+- ../../references/user-story-mapping.md — User story mapping methodology
+- ../../references/ba-elicitation-techniques.md — Comprehensive elicitation techniques guide
+- ../../references/ba-requirements-management.md — Requirements management lifecycle
 
 ## Handoff
 After completing this skill:

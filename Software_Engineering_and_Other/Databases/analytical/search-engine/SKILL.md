@@ -420,14 +420,14 @@ Solr is older but excels at faceted search and has a mature ecosystem. Elasticse
 - Use search templates client-side, not stored scripts
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/elasticsearch-architecture.md — Elasticsearch Architecture
-  - ../../../../Global_References/Software_Engineering_and_Other/modern-search-engines.md — Modern Search Engines — Meilisearch and Typesense
-  - ../../../../Global_References/Software_Engineering_and_Other/search-aggregation.md — Search Queries and Aggregations
-  - ../../../../Global_References/Software_Engineering_and_Other/search-engine-optimization.md — Search Engine Optimization Reference
-  - ../../../../Global_References/Software_Engineering_and_Other/search-operations.md — Search Operations
-  - ../../../../Global_References/Software_Engineering_and_Other/search-relevance-tuning.md — Search Relevance Tuning
-  - ../../../../Global_References/Software_Engineering_and_Other/search-engine-ranking-relevance.md — Ranking, relevance tuning, and scoring strategies
-  - ../../../../Global_References/Software_Engineering_and_Other/search-engine-distributed-architecture.md — Distributed architecture for search clusters
+  - ../../../references/elasticsearch-architecture.md — Elasticsearch Architecture
+  - ../../../references/modern-search-engines.md — Modern Search Engines — Meilisearch and Typesense
+  - ../../../references/search-aggregation.md — Search Queries and Aggregations
+  - ../../../references/search-engine-optimization.md — Search Engine Optimization Reference
+  - ../../../references/search-operations.md — Search Operations
+  - ../../../references/search-relevance-tuning.md — Search Relevance Tuning
+  - ../../../references/search-engine-ranking-relevance.md — Ranking, relevance tuning, and scoring strategies
+  - ../../../references/search-engine-distributed-architecture.md — Distributed architecture for search clusters
 ## Architecture Decision Trees
 
 ```

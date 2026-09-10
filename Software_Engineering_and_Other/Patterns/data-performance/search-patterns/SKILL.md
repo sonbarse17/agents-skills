@@ -469,14 +469,14 @@ const suggestQuery = {
 - Use search-as-you-type or completion suggester for autocomplete, not wildcard prefix queries
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/search-patterns_indexing-strategies.md — Indexing Strategies and Relevance
-  - ../../../../Global_References/Software_Engineering_and_Other/search-architecture.md — Search Architecture
-  - ../../../../Global_References/Software_Engineering_and_Other/search-engines.md — Search Engines Reference
-  - ../../../../Global_References/Software_Engineering_and_Other/search-faceted-navigation.md — Faceted Search Navigation
-  - ../../../../Global_References/Software_Engineering_and_Other/search-implementation.md — Search Implementation Patterns
-  - ../../../../Global_References/Software_Engineering_and_Other/search-optimization.md — Search Optimization and Performance
-  - ../../../../Global_References/Software_Engineering_and_Other/search-performance.md — Search Performance
-  - ../../../../Global_References/Software_Engineering_and_Other/search-synonyms.md — Search Synonyms
+  - ../../../references/search-patterns_indexing-strategies.md — Indexing Strategies and Relevance
+  - ../../../references/search-architecture.md — Search Architecture
+  - ../../../references/search-engines.md — Search Engines Reference
+  - ../../../references/search-faceted-navigation.md — Faceted Search Navigation
+  - ../../../references/search-implementation.md — Search Implementation Patterns
+  - ../../../references/search-optimization.md — Search Optimization and Performance
+  - ../../../references/search-performance.md — Search Performance
+  - ../../../references/search-synonyms.md — Search Synonyms
 ## Handoff
 `[backend-database-patterns](../../../Databases/common/database-patterns/SKILL.md)` for indexing source data schema design
 ## Implementation Patterns

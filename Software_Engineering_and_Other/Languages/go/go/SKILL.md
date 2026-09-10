@@ -494,11 +494,11 @@ func TestParseDuration(t *testing.T) {
 ```
 
 ## References
-- `../../../../Global_References/Software_Engineering_and_Other/context-cancellation.md` — Context propagation, timeout, cancellation patterns
-- `../../../../Global_References/Software_Engineering_and_Other/testing-benchmarking.md` — Testing, benchmarking, fuzzing, coverage
-- `../../../../Global_References/Software_Engineering_and_Other/go-fundamentals.md` — Go Fundamentals
-- `../../../../Global_References/Software_Engineering_and_Other/go-advanced.md` — Advanced Go Patterns
-- `../../../../Global_References/Software_Engineering_and_Other/go-http-server.md` — Go HTTP Server Patterns
+- `../../../references/context-cancellation.md` — Context propagation, timeout, cancellation patterns
+- `../../../references/testing-benchmarking.md` — Testing, benchmarking, fuzzing, coverage
+- `../../../references/go-fundamentals.md` — Go Fundamentals
+- `../../../references/go-advanced.md` — Advanced Go Patterns
+- `../../../references/go-http-server.md` — Go HTTP Server Patterns
 
 ## Implementation Patterns
 

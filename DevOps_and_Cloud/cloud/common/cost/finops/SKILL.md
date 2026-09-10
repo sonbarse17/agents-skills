@@ -397,12 +397,12 @@ Detection: weekly idle resource report. Investigation: identify owners via creat
 Detection: monthly RI report shows coverage dropped from 65% to 45%. Investigation: new workload without RI. Fix: purchase additional RI, adjust workload. Automation: alert when coverage under 50%.
 
 ## References
-- ../../../../Global_References/cloud/finops-fundamentals.md -- Finops Fundamentals
-- ../../../../Global_References/cloud/finops-advanced.md -- Finops Advanced Topics
-- ../../../../Global_References/cloud/finops-automation.md -- FinOps Automation
-- ../../../../Global_References/cloud/finops-governance.md -- FinOps Governance
-- ../../../../Global_References/cloud/finops-practices.md -- FinOps Practices
-- ../../../../Global_References/cloud/finops_cost-optimization.md -- Cost Optimization
+- ../../../references/finops-fundamentals.md -- Finops Fundamentals
+- ../../../references/finops-advanced.md -- Finops Advanced Topics
+- ../../../references/finops-automation.md -- FinOps Automation
+- ../../../references/finops-governance.md -- FinOps Governance
+- ../../../references/finops-practices.md -- FinOps Practices
+- ../../../references/finops_cost-optimization.md -- Cost Optimization
 - references/finops-maturity-model.md -- FinOps Maturity Model
 - references/finops-[cost-optimization](../cost-optimization/SKILL.md)-levers.md -- Cost Optimization Levers
 

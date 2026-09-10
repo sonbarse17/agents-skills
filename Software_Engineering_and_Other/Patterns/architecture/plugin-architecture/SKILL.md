@@ -507,13 +507,13 @@ class PluginResourceLimiter {
 - Use semantic versioning for plugin API compatibility.
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/plugin-implementation.md — Plugin Implementation
+  - ../../../references/plugin-implementation.md — Plugin Implementation
   - references/plugin-lifecycle.md — Plugin Lifecycle Reference
-  - ../../../../Global_References/Software_Engineering_and_Other/plugin-patterns.md — Plugin Patterns
-  - ../../../../Global_References/Software_Engineering_and_Other/plugin-security.md — Plugin Security Reference
-  - ../../../../Global_References/Software_Engineering_and_Other/plugin-system-design.md — Plugin Architecture Design
-  - ../../../../Global_References/Software_Engineering_and_Other/plugin-testing.md — Plugin Testing
-  - ../../../../Global_References/Software_Engineering_and_Other/plugin-versioning.md — Plugin API Versioning
+  - ../../../references/plugin-patterns.md — Plugin Patterns
+  - ../../../references/plugin-security.md — Plugin Security Reference
+  - ../../../references/plugin-system-design.md — Plugin Architecture Design
+  - ../../../references/plugin-testing.md — Plugin Testing
+  - ../../../references/plugin-versioning.md — Plugin API Versioning
 ## Handoff
 No artifact produced unless requested.
 Next skill: [observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) — add plugin lifecycle traces to the telemetry pipeline.

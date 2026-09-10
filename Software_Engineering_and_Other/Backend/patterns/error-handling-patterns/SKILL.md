@@ -61,7 +61,7 @@ Build resilient applications with robust error handling strategies that graceful
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../../../Global_References/Software_Engineering_and_Other/error-handling-patterns_details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../references/error-handling-patterns_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 

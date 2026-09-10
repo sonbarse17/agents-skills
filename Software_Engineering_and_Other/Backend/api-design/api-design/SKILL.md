@@ -910,14 +910,14 @@ async function fetchFromService(url: string): Promise<unknown> {
 - Use asynchronous communication for cross-service data that isn't request-critical.
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/api-design-documentation.md — API Design Documentation
-  - ../../../../Global_References/Software_Engineering_and_Other/api-design-security.md — API Design Security
-  - ../../../../Global_References/Software_Engineering_and_Other/api-error-handling.md — API Error Handling
-  - ../../../../Global_References/Software_Engineering_and_Other/api-pagination-filtering.md — API Pagination and Filtering
-  - ../../../../Global_References/Software_Engineering_and_Other/api-design-fundamentals.md — API Design Fundamentals
-  - ../../../../Global_References/Software_Engineering_and_Other/api-design-advanced.md — API Design Advanced Patterns
-  - ../../../../Global_References/Software_Engineering_and_Other/graphql-conventions.md — GraphQL Conventions
-  - ../../../../Global_References/Software_Engineering_and_Other/rest-conventions.md — REST API Conventions
+  - ../../../references/api-design-documentation.md — API Design Documentation
+  - ../../../references/api-design-security.md — API Design Security
+  - ../../../references/api-error-handling.md — API Error Handling
+  - ../../../references/api-pagination-filtering.md — API Pagination and Filtering
+  - ../../../references/api-design-fundamentals.md — API Design Fundamentals
+  - ../../../references/api-design-advanced.md — API Design Advanced Patterns
+  - ../../../references/graphql-conventions.md — GraphQL Conventions
+  - ../../../references/rest-conventions.md — REST API Conventions
 
 ## Handoff
 No artifact produced unless requested.

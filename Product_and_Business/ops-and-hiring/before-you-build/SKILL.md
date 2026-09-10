@@ -37,7 +37,7 @@ Review the idea across these risks:
 - **Distribution:** Is there a repeatable way to reach the target user?
 - **Feature adoption:** For feature work, will the feature change user behavior or just add surface area?
 
-If the verdict is not obvious, use `../../Global_References/Product_and_Business/risk-checklist.md` for deeper questions.
+If the verdict is not obvious, use `../../references/risk-checklist.md` for deeper questions.
 
 ## Output Format
 

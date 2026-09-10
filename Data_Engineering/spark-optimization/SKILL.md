@@ -81,7 +81,7 @@ result.write.mode("overwrite").parquet("s3://bucket/output/")
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../Global_References/Data_Engineering/spark-optimization_details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../references/spark-optimization_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 

@@ -421,14 +421,14 @@ Candidate: __________  Reference: __________  Relationship: __________
 - Score first, discuss second in every debrief session.
 
 ## References
-  - ../../Global_References/Product_and_Business/evaluation-rubric.md -- Evaluation Rubric
-  - ../../Global_References/Product_and_Business/hiring-advanced.md -- Hiring Advanced Topics
-  - ../../Global_References/Product_and_Business/hiring-fundamentals.md -- Hiring Fundamentals
-  - ../../Global_References/Product_and_Business/interview-process.md -- Interview Process Design
-  - ../../Global_References/Product_and_Business/interview-questions.md -- Interview Questions
-  - ../../Global_References/Product_and_Business/interview-rubrics.md -- Interview Rubrics
-  - ../../Global_References/Product_and_Business/hiring-interview-frameworks.md -- Hiring Interview Frameworks
-  - ../../Global_References/Product_and_Business/hiring-evaluation-decision.md -- Hiring Evaluation and Decision
+  - ../../references/evaluation-rubric.md -- Evaluation Rubric
+  - ../../references/hiring-advanced.md -- Hiring Advanced Topics
+  - ../../references/hiring-fundamentals.md -- Hiring Fundamentals
+  - ../../references/interview-process.md -- Interview Process Design
+  - ../../references/interview-questions.md -- Interview Questions
+  - ../../references/interview-rubrics.md -- Interview Rubrics
+  - ../../references/hiring-interview-frameworks.md -- Hiring Interview Frameworks
+  - ../../references/hiring-evaluation-decision.md -- Hiring Evaluation and Decision
 
 ## Handoff
 `management/[team-rules](../../planning-and-tracking/team-rules/SKILL.md)` for onboarding new hires

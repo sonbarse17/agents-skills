@@ -65,7 +65,7 @@ Build the right team at the right time with appropriate compensation and equity.
 
 ## Detailed section: Role-by-Role Planning
 
-Originally a 1720-byte section in this SKILL.md. Moved to `../../Global_References/Product_and_Business/team-composition-analysis_details.md` to fit Codex's 8 KB skill body cap.
+Originally a 1720-byte section in this SKILL.md. Moved to `../../references/team-composition-analysis_details.md` to fit Codex's 8 KB skill body cap.
 
 ## Compensation Strategy
 

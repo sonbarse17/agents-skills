@@ -496,14 +496,14 @@ def plot_learning_curve(model, X, y, train_sizes=np.linspace(0.1, 1.0, 10)):
 - Metric selection before seeing model results.
 
 ## References
-  - ../../../../Global_References/AI_and_Agents/model-evaluation_evaluation-metrics.md — Model Evaluation Metrics
-  - ../../../../Global_References/AI_and_Agents/evaluation-strategies.md — Evaluation Strategies
-  - ../../../../Global_References/AI_and_Agents/evaluation-techniques.md — Model Evaluation Techniques
-  - ../../../../Global_References/AI_and_Agents/metrics-guide.md — Metrics Guide
-  - ../../../../Global_References/AI_and_Agents/model-comparison.md — Model Comparison
-  - ../../../../Global_References/AI_and_Agents/model-evaluation-advanced.md — Model Evaluation Advanced Topics
-  - ../../../../Global_References/AI_and_Agents/model-evaluation-fundamentals.md — Model Evaluation Fundamentals
-  - ../../../../Global_References/AI_and_Agents/ranking-metrics.md — Ranking & Recommendation Evaluation
+  - ../../../references/model-evaluation_evaluation-metrics.md — Model Evaluation Metrics
+  - ../../../references/evaluation-strategies.md — Evaluation Strategies
+  - ../../../references/evaluation-techniques.md — Model Evaluation Techniques
+  - ../../../references/metrics-guide.md — Metrics Guide
+  - ../../../references/model-comparison.md — Model Comparison
+  - ../../../references/model-evaluation-advanced.md — Model Evaluation Advanced Topics
+  - ../../../references/model-evaluation-fundamentals.md — Model Evaluation Fundamentals
+  - ../../../references/ranking-metrics.md — Ranking & Recommendation Evaluation
 ## Handoff
 Hand off to ml-[experiment-tracking](../../../../Data_Engineering/experiment-tracking/SKILL.md) for logging evaluation results. Hand off to [ml-hyperparameter-tuning](../../ml-domains/hyperparameter-tuning/SKILL.md) if optimization needed.
 

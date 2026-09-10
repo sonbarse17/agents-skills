@@ -495,12 +495,12 @@ CREATE TRIGGER order_created_trigger
 - Enable branching for development workflows (`supabase branches`).
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/edge-functions.md — Edge Functions
-  - ../../../../Global_References/Software_Engineering_and_Other/postgres-rls.md — [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md) & Row Level Security
-  - ../../../../Global_References/Software_Engineering_and_Other/supabase-auth.md — Supabase Auth
-  - ../../../../Global_References/Software_Engineering_and_Other/supabase-backup-migration.md — Supabase Backup and Migration
-  - ../../../../Global_References/Software_Engineering_and_Other/supabase-realtime.md — Supabase Realtime
-  - ../../../../Global_References/Software_Engineering_and_Other/supabase-storage.md — Supabase Storage
+  - ../../../references/edge-functions.md — Edge Functions
+  - ../../../references/postgres-rls.md — [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md) & Row Level Security
+  - ../../../references/supabase-auth.md — Supabase Auth
+  - ../../../references/supabase-backup-migration.md — Supabase Backup and Migration
+  - ../../../references/supabase-realtime.md — Supabase Realtime
+  - ../../../references/supabase-storage.md — Supabase Storage
 ## Handoff
 Hand off to `ai/vector-databases/SKILL.md` for pgvector embedding workflows or `mobile/*/SKILL.md` for client SDK integration.
 ## Implementation Patterns

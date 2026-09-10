@@ -51,9 +51,9 @@ Activate this skill when user wants to:
 3. **Research before generating** — Load references and invoke related skills
 4. **Update plan progressively** — Mark steps complete as you go
 5. **Validate before deploy** — Invoke [azure-validate](../azure-skills/skills/[azure-validate](../azure-validate/SKILL.md)/SKILL.md) before [azure-deploy](../azure-skills/skills/[azure-deploy](../../Infrastructure_as_Code/azure-deploy/SKILL.md)/SKILL.md)
-6. **Confirm Azure context** — Use `ask_user` for subscription and location per [Azure Context](../../../../Global_References/cloud/azure-context.md)
-7. ❌ **Destructive actions require `ask_user`** — [Global Rules](../../../../Global_References/cloud/global-rules.md)
-8. ⛔ **NEVER delete user project or workspace directories** — When adding features to an existing project, MODIFY existing files. `azd init -t <template>` is for NEW projects only; do NOT run `azd init -t` in an existing workspace. Plain `azd init` (without a template argument) may be used in existing workspaces when appropriate. File deletions within a project (e.g., removing build artifacts or temp files) are permitted when appropriate, but NEVER delete the user's project or workspace directory itself. See [Global Rules](../../../../Global_References/cloud/global-rules.md).
+6. **Confirm Azure context** — Use `ask_user` for subscription and location per [Azure Context](../../../references/azure-context.md)
+7. ❌ **Destructive actions require `ask_user`** — [Global Rules](../../../references/global-rules.md)
+8. ⛔ **NEVER delete user project or workspace directories** — When adding features to an existing project, MODIFY existing files. `azd init -t <template>` is for NEW projects only; do NOT run `azd init -t` in an existing workspace. Plain `azd init` (without a template argument) may be used in existing workspaces when appropriate. File deletions within a project (e.g., removing build artifacts or temp files) are permitted when appropriate, but NEVER delete the user's project or workspace directory itself. See [Global Rules](../../../references/global-rules.md).
 9. **Scope: preparation only** — This skill generates infrastructure code and configuration files. Deployment execution (`azd up`, `azd deploy`, `terraform apply`) is handled by the **[azure-deploy](../azure-skills/skills/[azure-deploy](../../Infrastructure_as_Code/azure-deploy/SKILL.md)/SKILL.md)** skill, which provides built-in error recovery and deployment verification.
 10. ⛔ **SQL Server Bicep: NEVER generate `administratorLogin` or `administratorLoginPassword`** — not in direct properties, not in conditional/ternary branches, not anywhere in the file. Always use Entra-only authentication (`azureADOnlyAuthentication: true`) unconditionally. See [references/services/sql-database/bicep.md](references/services/sql-database/bicep.md).
 11. **Remove stale template IaC after conversion** — If you converted Bicep templates from the selected `azd` template into Terraform templates, remove the Bicep templates that were introduced by that `azd` template and are now fully replaced by Terraform equivalents. Do not remove user-authored Bicep files. Only remove those template-provided Bicep files after the Terraform IaC is complete and Terraform has been selected as the deployment path. Before handing off to [azure-validate](../azure-skills/skills/[azure-validate](../azure-validate/SKILL.md)/SKILL.md) skill, keep only the IaC templates required by the chosen deployment path.
@@ -89,11 +89,11 @@ Activate this skill when user wants to:
 | [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) + App Service (e.g., "deploy [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) to App Service", "Flask on Azure App Service", "publish [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) web app to App Service") | **[python-appservice-deploy](../azure-skills/skills/[python-appservice-deploy](../../../Software_Engineering_and_Other/Languages/[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-appservice-deploy/SKILL.md)/SKILL.md)** |
 | Lambda, AWS Lambda, migrate AWS, migrate GCP, Lambda to Functions, migrate from AWS, migrate from GCP | **[azure-cloud-migrate](../[azure-cloud-migrate](../azure-skills/skills/azure-cloud-migrate/SKILL.md)/SKILL.md)** |
 | Azure Functions, function app, [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) function, timer trigger, HTTP trigger, func new | Stay in **[azure-prepare](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/azure-prepare/SKILL.md)** — prefer Azure Functions templates in Step 4 |
-| APIM, API Management, API gateway, deploy APIM | Stay in **[azure-prepare](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/azure-prepare/SKILL.md)** — see [APIM Deployment Guide](../../../../Global_References/cloud/apim.md) |
+| APIM, API Management, API gateway, deploy APIM | Stay in **[azure-prepare](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/azure-prepare/SKILL.md)** — see [APIM Deployment Guide](../../../references/apim.md) |
 | AI gateway, AI gateway policy, AI gateway backend, AI gateway configuration | **[azure-aigateway](../[azure-aigateway](../azure-skills/skills/azure-aigateway/SKILL.md)/SKILL.md)** |
 | workflow, orchestration, multi-step, pipeline, fan-out/fan-in, saga, long-running process, durable, order processing | Stay in **[azure-prepare](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/azure-prepare/SKILL.md)** — select **durable** recipe in Step 4. **MUST** load [durable.md](references/services/functions/durable.md), [DTS reference](references/services/durable-task-scheduler/README.md), and [DTS Bicep patterns](references/services/durable-task-scheduler/bicep.md). |
 
-> ⚠️ Check the user's **prompt text** — not just existing code. Critical for greenfield projects with no codebase to scan. See [full routing table](../../../../Global_References/cloud/specialized-routing.md).
+> ⚠️ Check the user's **prompt text** — not just existing code. Critical for greenfield projects with no codebase to scan. See [full routing table](../../../references/specialized-routing.md).
 
 After the specialized skill completes, **resume [azure-prepare](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/azure-prepare/SKILL.md)** at Phase 1 Step 4 (Select Recipe) for remaining infrastructure, validation, and deployment.
 
@@ -105,15 +105,15 @@ Create `.azure/deployment-plan.md` by completing these steps. Do NOT generate an
 
 | # | Action | Reference |
 |---|--------|-----------|
-| 0 | If the prompt matches a specialized technology with a dedicated skill, invoke that skill first | [specialized-routing.md](../../../../Global_References/cloud/specialized-routing.md) |
-| 1 | **Analyze Workspace** — Determine mode: NEW, MODIFY, or MODERNIZE | [analyze.md](../../../../Global_References/cloud/analyze.md) |
-| 2 | **Gather Requirements** — Classification, scale, budget | [requirements.md](../../../../Global_References/cloud/requirements.md) |
-| 3 | **Scan Codebase** — Identify components, technologies, dependencies | [scan.md](../../../../Global_References/cloud/scan.md) |
-| 4 | **Select Recipe** — Choose AZD (default), AZCLI, Bicep, or Terraform | [recipe-selection.md](../../../../Global_References/cloud/recipe-selection.md) |
-| 5 | **Plan Architecture** — Select stack + map components to Azure services | [architecture.md](../../../../Global_References/cloud/azure-prepare_architecture.md) |
-| 6 | **Finalize Plan (MANDATORY)** - Use a file-write tool to finalize `.azure/deployment-plan.md` with all decisions from steps 1-5. Update the skeleton written at the start of Phase 1 with the complete content. The file must be fully populated before you present the plan to the user. | [plan-template.md](../../../../Global_References/cloud/plan-template.md) |
+| 0 | If the prompt matches a specialized technology with a dedicated skill, invoke that skill first | [specialized-routing.md](../../../references/specialized-routing.md) |
+| 1 | **Analyze Workspace** — Determine mode: NEW, MODIFY, or MODERNIZE | [analyze.md](../../../references/analyze.md) |
+| 2 | **Gather Requirements** — Classification, scale, budget | [requirements.md](../../../references/requirements.md) |
+| 3 | **Scan Codebase** — Identify components, technologies, dependencies | [scan.md](../../../references/scan.md) |
+| 4 | **Select Recipe** — Choose AZD (default), AZCLI, Bicep, or Terraform | [recipe-selection.md](../../../references/recipe-selection.md) |
+| 5 | **Plan Architecture** — Select stack + map components to Azure services | [architecture.md](../../../references/azure-prepare_architecture.md) |
+| 6 | **Finalize Plan (MANDATORY)** - Use a file-write tool to finalize `.azure/deployment-plan.md` with all decisions from steps 1-5. Update the skeleton written at the start of Phase 1 with the complete content. The file must be fully populated before you present the plan to the user. | [plan-template.md](../../../references/plan-template.md) |
 | 7 | **Present Plan** — Show plan to user and ask for approval | `.azure/deployment-plan.md` |
-| 8 | **Destructive actions require `ask_user`** | [Global Rules](../../../../Global_References/cloud/global-rules.md) |
+| 8 | **Destructive actions require `ask_user`** | [Global Rules](../../../references/global-rules.md) |
 
 ---
 
@@ -127,11 +127,11 @@ Execute the approved plan. Update `.azure/deployment-plan.md` status after each 
 
 | # | Action | Reference |
 |---|--------|-----------|
-| 1 | **Research Components** — Load service references + invoke related skills | [research.md](../../../../Global_References/cloud/research.md) |
-| 2 | **Confirm Azure Context** — Detect and confirm subscription + location and check the resource provisioning limit | [Azure Context](../../../../Global_References/cloud/azure-context.md) |
-| 3 | **Generate Artifacts** — Create infrastructure and configuration files | [generate.md](../../../../Global_References/cloud/generate.md) |
-| 4 | **Harden Security** — Apply security best practices | [security.md](../../../../Global_References/cloud/azure-prepare_security.md) |
-| 5 | **Functional Verification** — Verify the app works (UI + backend), locally if possible | [functional-verification.md](../../../../Global_References/cloud/functional-verification.md) |
+| 1 | **Research Components** — Load service references + invoke related skills | [research.md](../../../references/research.md) |
+| 2 | **Confirm Azure Context** — Detect and confirm subscription + location and check the resource provisioning limit | [Azure Context](../../../references/azure-context.md) |
+| 3 | **Generate Artifacts** — Create infrastructure and configuration files | [generate.md](../../../references/generate.md) |
+| 4 | **Harden Security** — Apply security best practices | [security.md](../../../references/azure-prepare_security.md) |
+| 5 | **Functional Verification** — Verify the app works (UI + backend), locally if possible | [functional-verification.md](../../../references/functional-verification.md) |
 | 6 | **⛔ Update Plan (MANDATORY before hand-off)** — Use the `edit` tool to change the Status in `.azure/deployment-plan.md` to `Ready for Validation`. You **MUST** complete this edit **BEFORE** invoking [azure-validate](../azure-skills/skills/[azure-validate](../azure-validate/SKILL.md)/SKILL.md). Do NOT skip this step. | `.azure/deployment-plan.md` |
 | 7 | **⛔ MANDATORY Hand Off** — Invoke **[azure-validate](../azure-skills/skills/[azure-validate](../azure-validate/SKILL.md)/SKILL.md)** skill. Your preparation work is done. Do NOT run `azd up`, `azd deploy`, or any deployment command directly — all deployment execution is handled by [azure-deploy](../azure-skills/skills/[azure-deploy](../../Infrastructure_as_Code/azure-deploy/SKILL.md)/SKILL.md) after [azure-validate](../azure-skills/skills/[azure-validate](../azure-validate/SKILL.md)/SKILL.md) completes. **PREREQUISITE:** Step 6 must be completed first — `.azure/deployment-plan.md` status must say `Ready for Validation`. | — |
 

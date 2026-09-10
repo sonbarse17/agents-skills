@@ -57,17 +57,17 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Workloads | `../../../../Global_References/containers-orchestration/workloads.md` | Deployments, StatefulSets, DaemonSets, Jobs, CronJobs |
+| Workloads | `../../../references/workloads.md` | Deployments, StatefulSets, DaemonSets, Jobs, CronJobs |
 | Networking | `../../../Global_References/[kubernetes](../kubernetes/SKILL.md)-specialist_networking.md` | Services, Ingress, NetworkPolicies, DNS |
 | Configuration | `../../../Global_References/[kubernetes](../kubernetes/SKILL.md)-specialist_configuration.md` | ConfigMaps, Secrets, environment variables |
-| Storage | `../../../../Global_References/containers-orchestration/storage.md` | PV, PVC, StorageClasses, CSI drivers |
+| Storage | `../../../references/storage.md` | PV, PVC, StorageClasses, CSI drivers |
 | Helm Charts | `../../../Global_References/[helm-charts](../../../helm/charts/helm-charts/SKILL.md).md` | Chart structure, values, templates, hooks, testing, repositories |
 | Troubleshooting | `../../../Global_References/[kubernetes](../kubernetes/SKILL.md)-specialist_troubleshooting.md` | [kubectl](../kubectl/SKILL.md) debug, logs, events, common issues |
-| Custom Operators | `../../../../Global_References/containers-orchestration/custom-operators.md` | CRD, Operator SDK, controller-runtime, reconciliation |
+| Custom Operators | `../../../references/custom-operators.md` | CRD, Operator SDK, controller-runtime, reconciliation |
 | Service Mesh | `../../../Global_References/[service-mesh](../../../common/service-mesh/service-mesh/SKILL.md).md` | Istio, Linkerd, traffic management, mTLS, canary |
 | [GitOps](../../../common/gitops/gitops/SKILL.md) | `../../../Global_References/[gitops](../../../common/gitops/gitops/SKILL.md).md` | [ArgoCD](../../../argocd/other/argocd/SKILL.md), Flux, progressive delivery, sealed secrets |
 | Cost Optimization | `../../../Global_References/[kubernetes](../kubernetes/SKILL.md)-specialist_cost-optimization.md` | VPA, HPA tuning, spot instances, quotas, right-sizing |
-| Multi-Cluster | `../../../../Global_References/containers-orchestration/multi-cluster.md` | Cluster API, federation, cross-cluster networking, DR |
+| Multi-Cluster | `../../../references/multi-cluster.md` | Cluster API, federation, cross-cluster networking, DR |
 
 ## Constraints
 

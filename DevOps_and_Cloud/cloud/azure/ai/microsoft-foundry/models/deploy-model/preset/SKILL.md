@@ -74,7 +74,7 @@ Automates intelligent Azure OpenAI model deployment by checking [capacity](../..
 | 6. Select Region + Project | User picks region; find or create project | `az cognitiveservices account list`, `az cognitiveservices account create` |
 | 7. Deploy | Generate unique name, calculate [capacity](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../[capacity](../../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) (50% available, min 50 TPM), create deployment | `az cognitiveservices account deployment create` |
 
-For detailed step-by-step instructions, see [workflow reference](../../../../../../../Global_References/AI_and_Agents/workflow.md).
+For detailed step-by-step instructions, see [workflow reference](../../../../../../../../AI_and_Agents/references/workflow.md).
 
 ---
 

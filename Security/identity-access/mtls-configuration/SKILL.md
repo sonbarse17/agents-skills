@@ -61,7 +61,7 @@ Root CA (Self-signed, long-lived)
 
 ## Templates and detailed worked examples
 
-Full template library and detailed worked examples live in `../../../Global_References/Security/mtls-configuration_details.md`. Read that file when you need the concrete templates.
+Full template library and detailed worked examples live in `../../references/mtls-configuration_details.md`. Read that file when you need the concrete templates.
 
 ## Best Practices
 

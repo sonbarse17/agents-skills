@@ -47,11 +47,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Concurrency | `../../../../Global_References/Software_Engineering_and_Other/concurrency.md` | Goroutines, channels, select, sync primitives |
-| Interfaces | `../../../../Global_References/Software_Engineering_and_Other/interfaces.md` | Interface design, io.Reader/Writer, composition |
-| Generics | `../../../../Global_References/Software_Engineering_and_Other/generics.md` | Type parameters, constraints, generic patterns |
-| Testing | `../../../../Global_References/Software_Engineering_and_Other/golang-pro_testing.md` | Table-driven tests, benchmarks, fuzzing |
-| Project Structure | `../../../../Global_References/Software_Engineering_and_Other/project-structure.md` | Module layout, internal packages, go.mod |
+| Concurrency | `../../../references/concurrency.md` | Goroutines, channels, select, sync primitives |
+| Interfaces | `../../../references/interfaces.md` | Interface design, io.Reader/Writer, composition |
+| Generics | `../../../references/generics.md` | Type parameters, constraints, generic patterns |
+| Testing | `../../../references/golang-pro_testing.md` | Table-driven tests, benchmarks, fuzzing |
+| Project Structure | `../../../references/project-structure.md` | Module layout, internal packages, go.mod |
 
 ## Core Pattern Example
 

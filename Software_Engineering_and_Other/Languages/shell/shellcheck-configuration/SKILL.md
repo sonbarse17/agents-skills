@@ -27,7 +27,7 @@ Comprehensive guidance for configuring and using ShellCheck to improve shell scr
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../../../Global_References/Software_Engineering_and_Other/shellcheck-configuration_details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../references/shellcheck-configuration_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 

@@ -30,7 +30,7 @@ covers all built-in realms, credential verification, and the full API key lifecy
 
 For roles, users, role assignment, and role mappings, see the **[elasticsearch-authz](../elasticsearch-authz/SKILL.md)** skill.
 
-For detailed API endpoints, see [../../../../Global_References/observability-monitoring-logging/elasticsearch-authn_api-reference.md](../../../../Global_References/observability-monitoring-logging/elasticsearch-authn_api-reference.md).
+For detailed API endpoints, see [../../../references/elasticsearch-authn_api-reference.md](../../../references/elasticsearch-authn_api-reference.md).
 
 > **Deployment note:** Not all realms are available on every deployment type. See
 > [Deployment Compatibility](#deployment-compatibility) for self-managed vs. ECH vs. [Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) details.

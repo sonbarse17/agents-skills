@@ -524,14 +524,14 @@ Manual triage does not scale beyond 10-20 images. Automate vulnerability scannin
 - Registry access restricted to approved publishers only
 
 ## References
-- ../../../../Global_References/containers-orchestration/container-security-fundamentals.md -- Container Security Fundamentals
-- ../../../../Global_References/containers-orchestration/container-security-advanced.md -- Container Security Advanced Topics
+- ../../../references/container-security-fundamentals.md -- Container Security Fundamentals
+- ../../../references/container-security-advanced.md -- Container Security Advanced Topics
 - ../../../Global_References/container-[vulnerability-scanning](../../../../Security/scanning/vulnerability-scanning/SKILL.md).md -- Container Vulnerability Scanning
-- ../../../../Global_References/containers-orchestration/image-security.md -- Image Security
-- ../../../../Global_References/containers-orchestration/runtime-security.md -- Runtime Security
-- ../../../../Global_References/containers-orchestration/admission-controller-policies.md -- Admission Controller Policies
-- ../../../../Global_References/containers-orchestration/container-image-security.md -- Container Image Security
-- ../../../../Global_References/containers-orchestration/container-runtime-security.md -- Container Runtime Security
+- ../../../references/image-security.md -- Image Security
+- ../../../references/runtime-security.md -- Runtime Security
+- ../../../references/admission-controller-policies.md -- Admission Controller Policies
+- ../../../references/container-image-security.md -- Container Image Security
+- ../../../references/container-runtime-security.md -- Container Runtime Security
 
 ## Handoff
 security-[secrets-management](../../../../cloud/common/security/secrets-management/SKILL.md) for credential injection

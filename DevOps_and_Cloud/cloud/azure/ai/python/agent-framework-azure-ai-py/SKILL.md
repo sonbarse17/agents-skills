@@ -364,8 +364,8 @@ if __name__ == "__main__":
 
 ## Reference Files
 
-- [../../../../../Global_References/cloud/tools.md](../../../../../Global_References/cloud/tools.md): Detailed hosted tool patterns
-- [../../../../../Global_References/cloud/mcp.md](../../../../../Global_References/cloud/mcp.md): MCP integration (hosted + local)
-- [../../../../../Global_References/cloud/threads.md](../../../../../Global_References/cloud/threads.md): Thread and conversation management
-- [../../../../../Global_References/cloud/advanced.md](../../../../../Global_References/cloud/advanced.md): OpenAPI, citations, structured outputs
+- [../../../../references/tools.md](../../../../references/tools.md): Detailed hosted tool patterns
+- [../../../../references/mcp.md](../../../../references/mcp.md): MCP integration (hosted + local)
+- [../../../../references/threads.md](../../../../references/threads.md): Thread and conversation management
+- [../../../../references/advanced.md](../../../../references/advanced.md): OpenAPI, citations, structured outputs
 

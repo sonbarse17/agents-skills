@@ -34,7 +34,7 @@ a step is a guess wearing a lab coat.
 **If you can't point to the metric that proves the change worked, you haven't tuned anything.**
 
 For the USE method applied resource-by-resource with the exact Linux commands, read
-`../../../../Global_References/Software_Engineering_and_Other/use-method.md`.
+`../../../references/use-method.md`.
 
 ## 1. Establish a baseline before touching anything
 

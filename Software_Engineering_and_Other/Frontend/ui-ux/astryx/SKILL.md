@@ -163,7 +163,7 @@ const styles = stylex.create({
 });
 ```
 
-See `../../../../Global_References/Software_Engineering_and_Other/tokens.md` for the complete token reference.
+See `../../../references/tokens.md` for the complete token reference.
 
 ## Styling
 
@@ -194,7 +194,7 @@ All `xstyle` values must come from `stylex.create()`. All `:hover` styles must u
 
 Import `@astryxdesign/core/tailwind-theme.css` once. Utilities like `text-primary`, `bg-surface`, `border-border`, `rounded-lg`, `shadow-md` resolve to active theme tokens. Pure CSS, zero JS.
 
-See `../../../../Global_References/Software_Engineering_and_Other/styling.md` for full styling guide and `../../../../Global_References/Software_Engineering_and_Other/styling-libraries.md` for library interop.
+See `../../../references/styling.md` for full styling guide and `../../../references/styling-libraries.md` for library interop.
 
 ## Layout
 
@@ -231,7 +231,7 @@ Container owns padding and child gaps. One content line per region. Contrast tig
 
 Lock what each region does as width changes: divide, reveal, resize, swap. Side panel becomes Dialog/BottomSheet via `useMediaQuery`. Nav becomes MobileNav at AppShell `mobileNav` breakpoint.
 
-See `../../../../Global_References/Software_Engineering_and_Other/layout.md` for the full layout guide.
+See `../../../references/layout.md` for the full layout guide.
 
 ## Theme System
 
@@ -283,7 +283,7 @@ const brandTheme = defineTheme({
 });
 ```
 
-See `../../../../Global_References/Software_Engineering_and_Other/astryx_theme.md` for defineTheme, component overrides, custom variants, nesting, and token utilities.
+See `../../../references/astryx_theme.md` for defineTheme, component overrides, custom variants, nesting, and token utilities.
 
 ## CLI
 
@@ -314,7 +314,7 @@ astryx init --features agents  # generate AI agent docs
 
 Every command supports `--json` (typed envelope), `--dense` (token-efficient for AI), and `--detail` (brief/compact/full).
 
-See `../../../../Global_References/Software_Engineering_and_Other/cli.md` for all commands, JSON API, programmatic API, and integrations.
+See `../../../references/cli.md` for all commands, JSON API, programmatic API, and integrations.
 
 ## Working with AI
 
@@ -349,7 +349,7 @@ Tools exposed: `search(query)` for discovering components/docs/templates, `get(n
 2. `astryx template --skeleton` — study the layout structure
 3. `astryx component <Name>` — read props and examples for every component used
 
-See `../../../../Global_References/Software_Engineering_and_Other/working-with-ai.md` for full AI integration guide.
+See `../../../references/working-with-ai.md` for full AI integration guide.
 
 ## Migration
 
@@ -365,7 +365,7 @@ Migrate incrementally: Theme + AppShell first, then one route at a time.
 8. Remove legacy Tailwind classes from completed surfaces
 9. Verify light/dark mode, keyboard nav, responsive layout
 
-See `../../../../Global_References/Software_Engineering_and_Other/migration.md` for the full migration guide.
+See `../../../references/migration.md` for the full migration guide.
 
 ## Common Gotchas
 
@@ -396,15 +396,15 @@ Checks: hardcoded hex colors, raw pixel spacing, `style={{}}` on raw elements, m
 
 ## Detailed References
 
-- `../../../../Global_References/Software_Engineering_and_Other/principles.md` — Design philosophy, rules, anti-patterns
-- `../../../../Global_References/Software_Engineering_and_Other/tokens.md` — Complete token reference (color, spacing, size, radius, shadow, motion, typography)
-- `../../../../Global_References/Software_Engineering_and_Other/styling.md` — xstyle prop, Tailwind bridge, className, compound components, data attributes, StyleX build setup
-- `../../../../Global_References/Software_Engineering_and_Other/styling-libraries.md` — Interop with Tailwind, StyleX, Panda, Chakra, MUI, Emotion, UnoCSS, CSS Modules, non-CSS
-- `../../../../Global_References/Software_Engineering_and_Other/layout.md` — Shell, navigation, structure, spacing, density, breakpoints
-- `../../../../Global_References/Software_Engineering_and_Other/astryx_theme.md` — defineTheme, extending, component overrides, custom variants, runtime vs built, nesting, token utilities, useTheme
-- `../../../../Global_References/Software_Engineering_and_Other/cli.md` — All commands, JSON API, programmatic API, doctor, integrations, configuration
-- `../../../../Global_References/Software_Engineering_and_Other/migration.md` — Migration order, CLI workflow, cascade layer safety, shadcn/Radix mapping, verification checklist
-- `../../../../Global_References/Software_Engineering_and_Other/working-with-ai.md` — Agent docs, MCP server, --dense flag, AI workflow, Cursor setup
+- `../../../references/principles.md` — Design philosophy, rules, anti-patterns
+- `../../../references/tokens.md` — Complete token reference (color, spacing, size, radius, shadow, motion, typography)
+- `../../../references/styling.md` — xstyle prop, Tailwind bridge, className, compound components, data attributes, StyleX build setup
+- `../../../references/styling-libraries.md` — Interop with Tailwind, StyleX, Panda, Chakra, MUI, Emotion, UnoCSS, CSS Modules, non-CSS
+- `../../../references/layout.md` — Shell, navigation, structure, spacing, density, breakpoints
+- `../../../references/astryx_theme.md` — defineTheme, extending, component overrides, custom variants, runtime vs built, nesting, token utilities, useTheme
+- `../../../references/cli.md` — All commands, JSON API, programmatic API, doctor, integrations, configuration
+- `../../../references/migration.md` — Migration order, CLI workflow, cascade layer safety, shadcn/Radix mapping, verification checklist
+- `../../../references/working-with-ai.md` — Agent docs, MCP server, --dense flag, AI workflow, Cursor setup
 
 ## Available Scripts
 

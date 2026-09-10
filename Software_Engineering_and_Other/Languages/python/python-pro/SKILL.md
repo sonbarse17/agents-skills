@@ -57,11 +57,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Type System | `../../../../Global_References/Software_Engineering_and_Other/type-system.md` | Type hints, mypy, generics, Protocol |
+| Type System | `../../../references/type-system.md` | Type hints, mypy, generics, Protocol |
 | Async Patterns | `../../../Global_References/[python](../python/SKILL.md)-pro_async-patterns.md` | async/await, asyncio, task groups |
-| Standard Library | `../../../../Global_References/Software_Engineering_and_Other/standard-library.md` | pathlib, dataclasses, functools, itertools |
+| Standard Library | `../../../references/standard-library.md` | pathlib, dataclasses, functools, itertools |
 | Testing | `../../../Global_References/[python](../python/SKILL.md)-pro_testing.md` | pytest, fixtures, mocking, parametrize |
-| Packaging | `../../../../Global_References/Software_Engineering_and_Other/packaging.md` | poetry, pip, pyproject.toml, distribution |
+| Packaging | `../../../references/packaging.md` | poetry, pip, pyproject.toml, distribution |
 
 ## Constraints
 

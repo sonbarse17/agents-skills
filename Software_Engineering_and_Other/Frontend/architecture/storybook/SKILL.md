@@ -496,12 +496,12 @@ export const A11yViolations: Story = {
 - Run aXe on every story — fail CI on critical/serious violations
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/addons-testing.md — Addons & Testing Reference
-  - ../../../../Global_References/Software_Engineering_and_Other/addons.md — Storybook Addons Reference
-  - ../../../../Global_References/Software_Engineering_and_Other/story-writing.md — Story Writing Reference
-  - ../../../../Global_References/Software_Engineering_and_Other/storybook-setup.md — Storybook Setup Reference
-  - ../../../../Global_References/Software_Engineering_and_Other/visual-testing.md — Visual Testing Reference
-  - ../../../../Global_References/Software_Engineering_and_Other/writing-stories.md — Writing Stories Reference
+  - ../../../references/addons-testing.md — Addons & Testing Reference
+  - ../../../references/addons.md — Storybook Addons Reference
+  - ../../../references/story-writing.md — Story Writing Reference
+  - ../../../references/storybook-setup.md — Storybook Setup Reference
+  - ../../../references/visual-testing.md — Visual Testing Reference
+  - ../../../references/writing-stories.md — Writing Stories Reference
 ## Handoff
 No artifact produced unless requested.
 Next skill: `frontend-pwa` (if the component needs offline support or a service worker)

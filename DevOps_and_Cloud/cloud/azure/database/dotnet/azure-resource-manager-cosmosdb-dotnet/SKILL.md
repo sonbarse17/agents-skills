@@ -257,9 +257,9 @@ catch (RequestFailedException ex)
 
 | File | When to Read |
 |------|--------------|
-| [../../../../../Global_References/cloud/account-management.md](../../../../../Global_References/cloud/account-management.md) | Account CRUD, failover, keys, connection strings, networking |
-| [../../../../../Global_References/cloud/sql-resources.md](../../../../../Global_References/cloud/sql-resources.md) | SQL databases, containers, stored procedures, triggers, UDFs |
-| [../../../../../Global_References/cloud/throughput.md](../../../../../Global_References/cloud/throughput.md) | Manual/autoscale throughput, migration between modes |
+| [../../../../references/account-management.md](../../../../references/account-management.md) | Account CRUD, failover, keys, connection strings, networking |
+| [../../../../references/sql-resources.md](../../../../references/sql-resources.md) | SQL databases, containers, stored procedures, triggers, UDFs |
+| [../../../../references/throughput.md](../../../../references/throughput.md) | Manual/autoscale throughput, migration between modes |
 
 ## Related SDKs
 

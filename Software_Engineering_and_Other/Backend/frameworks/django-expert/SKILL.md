@@ -55,11 +55,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Models | `../../../../Global_References/Software_Engineering_and_Other/models-orm.md` | Creating models, ORM queries, optimization |
-| Serializers | `../../../../Global_References/Software_Engineering_and_Other/drf-serializers.md` | DRF serializers, validation |
-| ViewSets | `../../../../Global_References/Software_Engineering_and_Other/viewsets-views.md` | Views, viewsets, async views |
-| Authentication | `../../../../Global_References/Software_Engineering_and_Other/django-expert_authentication.md` | JWT, permissions, SimpleJWT |
-| Testing | `../../../../Global_References/Software_Engineering_and_Other/testing-django.md` | APITestCase, fixtures, factories |
+| Models | `../../../references/models-orm.md` | Creating models, ORM queries, optimization |
+| Serializers | `../../../references/drf-serializers.md` | DRF serializers, validation |
+| ViewSets | `../../../references/viewsets-views.md` | Views, viewsets, async views |
+| Authentication | `../../../references/django-expert_authentication.md` | JWT, permissions, SimpleJWT |
+| Testing | `../../../references/testing-django.md` | APITestCase, fixtures, factories |
 
 ## Minimal Working Example
 

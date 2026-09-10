@@ -423,12 +423,12 @@ Impact: DAU +45%, support tickets -30%
 - Offer participants the option to review their quotes in context before publication
 
 ## References
-  - ../../Global_References/Product_and_Business/research-methods.md — Research Methods Reference
-  - ../../Global_References/Product_and_Business/synthesis-frameworks.md — Synthesis Frameworks Reference
-  - ../../Global_References/Product_and_Business/synthesis.md — Synthesis
-  - ../../Global_References/Product_and_Business/usability-testing-guide.md — Usability Testing Guide
-  - ../../Global_References/Product_and_Business/ux-research-advanced.md — Ux Research Advanced Topics
-  - ../../Global_References/Product_and_Business/ux-research-fundamentals.md — Ux Research Fundamentals
+  - ../../references/research-methods.md — Research Methods Reference
+  - ../../references/synthesis-frameworks.md — Synthesis Frameworks Reference
+  - ../../references/synthesis.md — Synthesis
+  - ../../references/usability-testing-guide.md — Usability Testing Guide
+  - ../../references/ux-research-advanced.md — Ux Research Advanced Topics
+  - ../../references/ux-research-fundamentals.md — Ux Research Fundamentals
   - references/ux-research-methods.md — UX Research Methods
   - references/ux-research-data-analysis.md — UX Research Data Analysis
 ## Handoff

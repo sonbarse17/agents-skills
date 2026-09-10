@@ -692,9 +692,9 @@ spec:
 | Learning curve | High | Medium | Medium-High |
 
 ## References
-- ../../../../Global_References/containers-orchestration/ingress-controllers.md — Ingress Controller Selection and Config
-- ../../../../Global_References/containers-orchestration/namespace-management.md — Namespace Strategy and Resource Quotas
-- ../../../../Global_References/containers-orchestration/pod-lifecycle.md — Pod Lifecycle, Init Containers, and Ephemeral Containers
+- ../../../references/ingress-controllers.md — Ingress Controller Selection and Config
+- ../../../references/namespace-management.md — Namespace Strategy and Resource Quotas
+- ../../../references/pod-lifecycle.md — Pod Lifecycle, Init Containers, and Ephemeral Containers
 - references/kubernetes-api-resources.md — API Resource Guide
 - references/[kubernetes-security](../../security/kubernetes-security/SKILL.md).md — Kubernetes Security Hardening
 - references/kubernetes-upgrades.md — Cluster Upgrade Procedures

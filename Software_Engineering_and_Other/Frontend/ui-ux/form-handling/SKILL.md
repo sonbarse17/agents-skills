@@ -415,12 +415,12 @@ Every keystroke in a controlled input re-renders the entire form. Use React Hook
 ---
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/form-accessibility.md — Form Accessibility
-  - ../../../../Global_References/Software_Engineering_and_Other/form-libraries.md — Form Libraries
-  - ../../../../Global_References/Software_Engineering_and_Other/form-security-patterns.md — Form Security Patterns
-  - ../../../../Global_References/Software_Engineering_and_Other/form-state.md — Form State
-  - ../../../../Global_References/Software_Engineering_and_Other/form-validation.md — Form Validation
-  - ../../../../Global_References/Software_Engineering_and_Other/validation-patterns.md — Validation Patterns
+  - ../../../references/form-accessibility.md — Form Accessibility
+  - ../../../references/form-libraries.md — Form Libraries
+  - ../../../references/form-security-patterns.md — Form Security Patterns
+  - ../../../references/form-state.md — Form State
+  - ../../../references/form-validation.md — Form Validation
+  - ../../../references/validation-patterns.md — Validation Patterns
 ## Handoff
 
 If form requires multi-step wizard with persisted draft state or server-side draft saving, flag for backend handoff. Otherwise deliver complete form implementation with schema, fields, validation, and submission handler.

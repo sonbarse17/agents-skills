@@ -142,7 +142,7 @@ Focus remediation efforts using this priority matrix:
 
 ### Step 5: Remediate Vulnerabilities
 
-For each finding, consult the bundled `../../../Global_References/Security/sast-bandit_remediation_guide.md` for secure coding patterns. Common remediation strategies:
+For each finding, consult the bundled `../../references/sast-bandit_remediation_guide.md` for secure coding patterns. Common remediation strategies:
 
 - **Hardcoded Secrets (B105, B106)**: Use environment variables or secret management services
 - **SQL Injection (B608)**: Use parameterized queries with SQLAlchemy or psycopg2

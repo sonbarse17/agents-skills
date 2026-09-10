@@ -467,17 +467,17 @@ App ready for AR release?
 ```
 
 ## References
-- ../../Global_References/Mobile/ar-core-arkit.md — ARCore vs ARKit Developer Guide
-- ../../Global_References/Mobile/ar-patterns.md — AR/VR Interaction Patterns
-- ../../Global_References/Mobile/ar-platforms.md — AR Platforms: ARKit vs ARCore
-- ../../Global_References/Mobile/arcore-implementation.md — ARCore Implementation
-- ../../Global_References/Mobile/arkit-implementation.md — ARKit Implementation
-- ../../Global_References/Mobile/vr-development.md — Mobile VR Development
-- ../../Global_References/Mobile/ar-vr-rendering-performance.md — Rendering optimization for AR/VR on mobile
+- ../../references/ar-core-arkit.md — ARCore vs ARKit Developer Guide
+- ../../references/ar-patterns.md — AR/VR Interaction Patterns
+- ../../references/ar-platforms.md — AR Platforms: ARKit vs ARCore
+- ../../references/arcore-implementation.md — ARCore Implementation
+- ../../references/arkit-implementation.md — ARKit Implementation
+- ../../references/vr-development.md — Mobile VR Development
+- ../../references/ar-vr-rendering-performance.md — Rendering optimization for AR/VR on mobile
 - ../../../Global_References/ar-vr-[interaction-design](../../Product_and_Business/[interaction-design](../../Software_Engineering_and_Other/Frontend/ui-design/skills/interaction-design/SKILL.md)/SKILL.md).md — Interaction design patterns for AR/VR experiences
-- ../../Global_References/Mobile/ar-vr-fundamentals.md — AR/VR Fundamentals
-- ../../Global_References/Mobile/ar-vr-advanced.md — Advanced AR/VR Patterns
-- ../../Global_References/Mobile/ar-vr-testing.md — AR/VR Testing Guide
+- ../../references/ar-vr-fundamentals.md — AR/VR Fundamentals
+- ../../references/ar-vr-advanced.md — Advanced AR/VR Patterns
+- ../../references/ar-vr-testing.md — AR/VR Testing Guide
 
 ## Handoff
 mobile/universal/testing for AR testing strategy (real device, varied lighting, occlusion scenarios)

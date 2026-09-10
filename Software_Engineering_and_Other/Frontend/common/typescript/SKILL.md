@@ -535,11 +535,11 @@ const orderRepo = new Repository(db, 'orders', OrderSchema);
 ```
 
 ## References
-- `../../../../Global_References/Software_Engineering_and_Other/module-resolution.md` — Module resolution strategies, ESM/CJS
-- `../../../../Global_References/Software_Engineering_and_Other/advanced-types-decorators.md` — Conditional types, template literals, mapped types, decorators
-- `../../../../Global_References/Software_Engineering_and_Other/typescript-fundamentals.md` — TypeScript Fundamentals
-- `../../../../Global_References/Software_Engineering_and_Other/typescript_typescript-advanced.md` — Advanced TypeScript Patterns
-- `../../../../Global_References/Software_Engineering_and_Other/typescript-zod.md` — Zod Runtime Validation Guide
+- `../../../references/module-resolution.md` — Module resolution strategies, ESM/CJS
+- `../../../references/advanced-types-decorators.md` — Conditional types, template literals, mapped types, decorators
+- `../../../references/typescript-fundamentals.md` — TypeScript Fundamentals
+- `../../../references/typescript_typescript-advanced.md` — Advanced TypeScript Patterns
+- `../../../references/typescript-zod.md` — Zod Runtime Validation Guide
 
 ## Handoff
 - `mobile/react-native` — React Native TypeScript patterns

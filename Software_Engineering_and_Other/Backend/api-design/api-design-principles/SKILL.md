@@ -84,7 +84,7 @@ Accept: application/vnd.api+json; version=1
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../../../Global_References/Software_Engineering_and_Other/api-design-principles_details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../references/api-design-principles_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 

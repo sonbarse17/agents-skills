@@ -90,7 +90,7 @@ function Header() {
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../../../Global_References/Software_Engineering_and_Other/react-state-management_details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../references/react-state-management_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 

@@ -55,10 +55,10 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Service Boundaries | `../../../../Global_References/Software_Engineering_and_Other/decomposition.md` | Monolith decomposition, bounded contexts, DDD |
-| Communication | `../../../../Global_References/Software_Engineering_and_Other/communication.md` | REST vs gRPC, async messaging, event-driven |
-| Resilience Patterns | `../../../../Global_References/Software_Engineering_and_Other/patterns.md` | Circuit breakers, saga, bulkhead, retry strategies |
-| Data Management | `../../../../Global_References/Software_Engineering_and_Other/data.md` | Database per service, event sourcing, CQRS |
+| Service Boundaries | `../../../references/decomposition.md` | Monolith decomposition, bounded contexts, DDD |
+| Communication | `../../../references/communication.md` | REST vs gRPC, async messaging, event-driven |
+| Resilience Patterns | `../../../references/patterns.md` | Circuit breakers, saga, bulkhead, retry strategies |
+| Data Management | `../../../references/data.md` | Database per service, event sourcing, CQRS |
 | [Observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) | `../../../Global_References/[observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md).md` | Distributed tracing, correlation IDs, metrics |
 
 ## Implementation Examples

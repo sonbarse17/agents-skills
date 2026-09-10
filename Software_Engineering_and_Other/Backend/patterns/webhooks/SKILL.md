@@ -515,14 +515,14 @@ async function rotateSecret(subscriptionId: string): Promise<void> {
 - Auto-disable consumers with > 10 consecutive failures.
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/webhook-delivery.md — Webhook Delivery System
+  - ../../../references/webhook-delivery.md — Webhook Delivery System
   - ../../../Global_References/webhook-[monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Webhook [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and Reliability
-  - ../../../../Global_References/Software_Engineering_and_Other/webhook-rate-limiting.md — Webhook Rate Limiting
-  - ../../../../Global_References/Software_Engineering_and_Other/webhook-scaling.md — Webhook Scaling
-  - ../../../../Global_References/Software_Engineering_and_Other/webhook-security.md — Webhook Security
-  - ../../../../Global_References/Software_Engineering_and_Other/webhook-setup.md — Webhook Setup
-  - ../../../../Global_References/Software_Engineering_and_Other/webhooks-architecture.md — Webhooks Architecture
-  - ../../../../Global_References/Software_Engineering_and_Other/webhooks-delivery.md — Webhook Security
+  - ../../../references/webhook-rate-limiting.md — Webhook Rate Limiting
+  - ../../../references/webhook-scaling.md — Webhook Scaling
+  - ../../../references/webhook-security.md — Webhook Security
+  - ../../../references/webhook-setup.md — Webhook Setup
+  - ../../../references/webhooks-architecture.md — Webhooks Architecture
+  - ../../../references/webhooks-delivery.md — Webhook Security
 ## Handoff
 No artifact produced unless requested.
 Next skill: api-versioning — manage version transitions for the webhook API.

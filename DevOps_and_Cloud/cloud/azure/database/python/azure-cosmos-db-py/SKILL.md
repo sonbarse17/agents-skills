@@ -148,7 +148,7 @@ async def get_container():
     return _cosmos_container
 ```
 
-**Full implementation**: See [../../../../../Global_References/cloud/client-setup.md](../../../../../Global_References/cloud/client-setup.md)
+**Full implementation**: See [../../../../references/client-setup.md](../../../../references/client-setup.md)
 
 ### 2. Pydantic Model Hierarchy
 
@@ -188,7 +188,7 @@ class ProjectService:
         return self._doc_to_model(doc)
 ```
 
-**Full patterns**: See [../../../../../Global_References/cloud/service-layer.md](../../../../../Global_References/cloud/service-layer.md)
+**Full patterns**: See [../../../../references/service-layer.md](../../../../references/service-layer.md)
 
 ## Core Principles
 
@@ -231,7 +231,7 @@ async def test_get_project_by_id_returns_project(mock_cosmos_container):
     assert result.name == "Test"
 ```
 
-**Full testing guide**: See [../../../../../Global_References/cloud/azure-cosmos-db-py_testing.md](../../../../../Global_References/cloud/azure-cosmos-db-py_testing.md)
+**Full testing guide**: See [../../../../references/azure-cosmos-db-py_testing.md](../../../../references/azure-cosmos-db-py_testing.md)
 
 ## Best Practices
 
@@ -242,11 +242,11 @@ async def test_get_project_by_id_returns_project(mock_cosmos_container):
 
 | File | When to Read |
 |------|--------------|
-| [../../../../../Global_References/cloud/client-setup.md](../../../../../Global_References/cloud/client-setup.md) | Setting up Cosmos client with dual auth, SSL config, singleton pattern |
-| [../../../../../Global_References/cloud/service-layer.md](../../../../../Global_References/cloud/service-layer.md) | Implementing full service class with CRUD, conversions, graceful degradation |
-| [../../../../../Global_References/cloud/azure-cosmos-db-py_testing.md](../../../../../Global_References/cloud/azure-cosmos-db-py_testing.md) | Writing pytest tests, mocking Cosmos, integration test setup |
-| [../../../../../Global_References/cloud/partitioning.md](../../../../../Global_References/cloud/partitioning.md) | Choosing partition keys, cross-partition queries, move operations |
-| [../../../../../Global_References/cloud/azure-cosmos-db-py_error-handling.md](../../../../../Global_References/cloud/azure-cosmos-db-py_error-handling.md) | Handling CosmosResourceNotFoundError, logging, HTTP error mapping |
+| [../../../../references/client-setup.md](../../../../references/client-setup.md) | Setting up Cosmos client with dual auth, SSL config, singleton pattern |
+| [../../../../references/service-layer.md](../../../../references/service-layer.md) | Implementing full service class with CRUD, conversions, graceful degradation |
+| [../../../../references/azure-cosmos-db-py_testing.md](../../../../references/azure-cosmos-db-py_testing.md) | Writing pytest tests, mocking Cosmos, integration test setup |
+| [../../../../references/partitioning.md](../../../../references/partitioning.md) | Choosing partition keys, cross-partition queries, move operations |
+| [../../../../references/azure-cosmos-db-py_error-handling.md](../../../../references/azure-cosmos-db-py_error-handling.md) | Handling CosmosResourceNotFoundError, logging, HTTP error mapping |
 
 ## Template Files
 

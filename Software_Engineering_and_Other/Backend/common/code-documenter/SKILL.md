@@ -121,12 +121,12 @@ Load detailed guidance based on context:
 |-------|-----------|-----------|
 | [Python](../../../Languages/python/python/SKILL.md) Docstrings | `../../../Global_References/[python](../../../Languages/python/python/SKILL.md)-docstrings.md` | Google, NumPy, Sphinx styles |
 | [TypeScript](../../../Frontend/common/typescript/SKILL.md) JSDoc | `../../../Global_References/[typescript](../../../Frontend/common/typescript/SKILL.md)-jsdoc.md` | JSDoc patterns, [TypeScript](../../../Frontend/common/typescript/SKILL.md) |
-| FastAPI/Django API | `../../../../Global_References/Software_Engineering_and_Other/api-docs-fastapi-django.md` | [Python](../../../Languages/python/python/SKILL.md) API documentation |
-| NestJS/Express API | `../../../../Global_References/Software_Engineering_and_Other/api-docs-nestjs-express.md` | Node.js API documentation |
-| Coverage Reports | `../../../../Global_References/Software_Engineering_and_Other/coverage-reports.md` | Generating documentation reports |
-| Documentation Systems | `../../../../Global_References/Software_Engineering_and_Other/documentation-systems.md` | Doc sites, static generators, search, testing |
-| Interactive API Docs | `../../../../Global_References/Software_Engineering_and_Other/interactive-api-docs.md` | OpenAPI 3.1, portals, GraphQL, WebSocket, gRPC, SDKs |
-| User Guides & Tutorials | `../../../../Global_References/Software_Engineering_and_Other/user-guides-tutorials.md` | Getting started, tutorials, troubleshooting, FAQs |
+| FastAPI/Django API | `../../../references/api-docs-fastapi-django.md` | [Python](../../../Languages/python/python/SKILL.md) API documentation |
+| NestJS/Express API | `../../../references/api-docs-nestjs-express.md` | Node.js API documentation |
+| Coverage Reports | `../../../references/coverage-reports.md` | Generating documentation reports |
+| Documentation Systems | `../../../references/documentation-systems.md` | Doc sites, static generators, search, testing |
+| Interactive API Docs | `../../../references/interactive-api-docs.md` | OpenAPI 3.1, portals, GraphQL, WebSocket, gRPC, SDKs |
+| User Guides & Tutorials | `../../../references/user-guides-tutorials.md` | Getting started, tutorials, troubleshooting, FAQs |
 
 ## Constraints
 

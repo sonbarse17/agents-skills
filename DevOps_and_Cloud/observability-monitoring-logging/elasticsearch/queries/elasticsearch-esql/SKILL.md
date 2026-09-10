@@ -39,7 +39,7 @@ ES|QL uses pipes (`|`) to chain commands:
 > **Version Compatibility:** ES|QL was introduced in 8.11 (tech preview) and became GA in 8.14. Features like
 > `LOOKUP JOIN` (8.18+), `MATCH` (8.17+), and `INLINE STATS` (9.2+) were added in later versions. On pre-8.18 clusters,
 > use `ENRICH` as a fallback for `LOOKUP JOIN` (see generation tips). `INLINE STATS` and counter-field `RATE()` have
-> **no fallback** before 9.2. Check [../../../../Global_References/observability-monitoring-logging/esql-version-history.md](../../../../Global_References/observability-monitoring-logging/esql-version-history.md) for feature
+> **no fallback** before 9.2. Check [../../../references/esql-version-history.md](../../../references/esql-version-history.md) for feature
 > availability by version.
 >
 > **Cluster Detection:** Use the `GET /` response to determine the cluster type and version:
@@ -56,7 +56,7 @@ ES|QL uses pipes (`|`) to chain commands:
 
 ### Environment Configuration
 
-See [Environment Setup](../../../../Global_References/observability-monitoring-logging/environment-setup.md) for full connection configuration options (Elastic Cloud,
+See [Environment Setup](../../../references/environment-setup.md) for full connection configuration options (Elastic Cloud,
 direct URL, basic auth, local development).
 
 Run `node scripts/esql.js test` to verify the connection. If the test fails, refer the user to the environment setup
@@ -122,7 +122,7 @@ node scripts/esql.js test
    The `schema` command reports the index mode. If it shows `Index mode: time_series`, the output includes the data
    stream name and copy-pasteable TS syntax — use `TS <data-stream>` (not `FROM`), `TBUCKET(interval)` (not
    `DATE_TRUNC`), and wrap counter fields with `SUM(RATE(...))`. Read the full TS section in
-   [Generation Tips](../../../../Global_References/observability-monitoring-logging/generation-tips.md) before writing any time series query. You can also check the index
+   [Generation Tips](../../../references/generation-tips.md) before writing any time series query. You can also check the index
    mode directly via the Elasticsearch index settings API:
 
    ```bash
@@ -132,7 +132,7 @@ node scripts/esql.js test
    For TSDS indices on 9.4+, prefer the in-language discovery commands `METRICS_INFO` and `TS_INFO` (both GA) over
    inspecting mappings — they enumerate the metric catalogue and the dimension labels of each time series directly. Both
    must follow `TS` and must precede `STATS`/`SORT`/`LIMIT`. See
-   [Time Series Queries](../../../../Global_References/observability-monitoring-logging/time-series-queries.md#metric-and-time-series-discovery).
+   [Time Series Queries](../../../references/time-series-queries.md#metric-and-time-series-discovery).
 
    ```bash
    node scripts/esql.js raw "TS metrics-tsds | METRICS_INFO | SORT metric_name" --tsv
@@ -145,23 +145,23 @@ node scripts/esql.js test
    - "spike," "dip," "anomaly," "when did X change" → `CHANGE_POINT value ON key`
    - "trend over time," "time series" → `STATS ... BY BUCKET(@timestamp, interval)` or `TS` for TSDB
    - "PromQL", "Prometheus query/dashboard/alert", `sum by (instance) (...)`, label matchers like `{cluster="prod"}` →
-     `PROMQL` source command (9.4+ preview); see [PROMQL Command](../../../../Global_References/observability-monitoring-logging/promql-command.md). Prefer `TS` for native
+     `PROMQL` source command (9.4+ preview); see [PROMQL Command](../../../references/promql-command.md). Prefer `TS` for native
      ES|QL phrasing.
    - "search," "find documents matching" → `MATCH` (default), `QSTR` (advanced boolean), `KQL` (Kibana migration). For
-     content/document relevance search, follow the [ES|QL Search Strategy](../../../../Global_References/observability-monitoring-logging/esql-search-strategy.md)
+     content/document relevance search, follow the [ES|QL Search Strategy](../../../references/esql-search-strategy.md)
    - "count," "average," "breakdown" → `STATS` with aggregation functions
 
 4. **Read the references** before generating queries:
-   - [Generation Tips](../../../../Global_References/observability-monitoring-logging/generation-tips.md) - key patterns (TS/TBUCKET/RATE, per-agg WHERE, LOOKUP JOIN,
+   - [Generation Tips](../../../references/generation-tips.md) - key patterns (TS/TBUCKET/RATE, per-agg WHERE, LOOKUP JOIN,
      CIDR_MATCH), common templates, and ambiguity handling
-   - [Time Series Queries](../../../../Global_References/observability-monitoring-logging/time-series-queries.md) - **read before any TS query**: inner/outer aggregation
+   - [Time Series Queries](../../../references/time-series-queries.md) - **read before any TS query**: inner/outer aggregation
      model, TBUCKET syntax, RATE constraints
-   - [PROMQL Command](../../../../Global_References/observability-monitoring-logging/promql-command.md) — **read before any PROMQL query**: options, output schema,
+   - [PROMQL Command](../../../references/promql-command.md) — **read before any PROMQL query**: options, output schema,
      limitations, and `PROMQL` vs `TS` decision matrix (9.4+ preview)
-   - [ES|QL Complete Reference](../../../../Global_References/observability-monitoring-logging/esql-reference.md) - full syntax for all commands and functions
-   - [ES|QL Search Strategy](../../../../Global_References/observability-monitoring-logging/esql-search-strategy.md) — for content/document relevance search (retrieve →
+   - [ES|QL Complete Reference](../../../references/esql-reference.md) - full syntax for all commands and functions
+   - [ES|QL Search Strategy](../../../references/esql-search-strategy.md) — for content/document relevance search (retrieve →
      fuse → rerank)
-   - [ES|QL Search Reference](../../../../Global_References/observability-monitoring-logging/esql-search.md) — for full-text search function syntax (MATCH, QSTR, KQL,
+   - [ES|QL Search Reference](../../../references/esql-search.md) — for full-text search function syntax (MATCH, QSTR, KQL,
      scoring)
 
 5. **Generate the query** following ES|QL syntax. Prefer the **simplest query** that answers the question — do not add
@@ -173,7 +173,7 @@ node scripts/esql.js test
    - Use `EVAL` for computed fields
    - Use `STATS ... BY` for aggregations
    - For time series metrics: `TS` with `SUM(RATE(...))` for counters, `AVG(...)` for gauges, and `TBUCKET(interval)`
-     for time bucketing — see the TS section in [Generation Tips](../../../../Global_References/observability-monitoring-logging/generation-tips.md) for the three critical
+     for time bucketing — see the TS section in [Generation Tips](../../../references/generation-tips.md) for the three critical
      syntax rules
    - For detecting spikes, dips, or anomalies, use `CHANGE_POINT` after time-bucketed aggregation
    - Add `SORT` and `LIMIT` as needed
@@ -187,7 +187,7 @@ node scripts/esql.js test
 ## ES|QL Quick Reference
 
 > **Version availability:** This section omits version annotations for readability. Check
-> [ES|QL Version History](../../../../Global_References/observability-monitoring-logging/esql-version-history.md) for feature availability by Elasticsearch version.
+> [ES|QL Version History](../../../references/esql-version-history.md) for feature availability by Elasticsearch version.
 
 ### Basic Structure
 
@@ -235,8 +235,8 @@ keyword equality filters (e.g., `category == "X"`) alongside `MATCH` unless the 
 `QSTR` only when you need advanced boolean logic, wildcards, or multi-field searches in a single expression. The first
 argument to `MATCH` must be **one** real field name — not a string listing several fields (e.g. `"title,content"`) and
 not multiple field arguments; combine fields with `MATCH(a, "q") OR MATCH(b, "q")`. `KQL` is available from 8.18/9.0+.
-For content/document search use cases, follow the [ES|QL Search Strategy](../../../../Global_References/observability-monitoring-logging/esql-search-strategy.md). See
-[ES|QL Search Reference](../../../../Global_References/observability-monitoring-logging/esql-search.md) for the full function guide.
+For content/document search use cases, follow the [ES|QL Search Strategy](../../../references/esql-search-strategy.md). See
+[ES|QL Search Reference](../../../references/esql-search.md) for the full function guide.
 
 ```esql
 FROM documents METADATA _score
@@ -312,7 +312,7 @@ migrating a Prometheus dashboard or alert. The `PROMQL` command accepts standard
 process. Range selectors are optional — when omitted, the window is `max(step, scrape_interval)`. Otherwise prefer `TS`
 (GA in 9.4). `PROMQL` does **not** support group modifiers, set operators (`or`/`and`/`unless`), or functions like
 `histogram_quantile`, `predict_linear`, and `label_join` — fall back to `TS` for those. See
-[PROMQL Command](../../../../Global_References/observability-monitoring-logging/promql-command.md) for the full reference.
+[PROMQL Command](../../../references/promql-command.md) for the full reference.
 
 ```esql
 // Adaptive Kibana query — date picker drives time range and step
@@ -327,7 +327,7 @@ PROMQL index=k8s step=1h bytes=(max by (cluster) (network.bytes_in))
 **Data enrichment with LOOKUP JOIN:** The basic `ON` clause matches fields by name in both indices
 (`LOOKUP JOIN idx ON field_name`). When the join key has a different name in the source, use `RENAME` first to align
 names. 9.2+ tech preview also supports expression predicates (`ON expr == expr`); see
-[ES|QL Complete Reference](../../../../Global_References/observability-monitoring-logging/esql-reference.md) for details. After `LOOKUP JOIN`, lookup columns are available
+[ES|QL Complete Reference](../../../references/esql-reference.md) for details. After `LOOKUP JOIN`, lookup columns are available
 by their **original field names** — do **not** table-qualify them (e.g., write `threat_level`, not
 `threat_intel.threat_level`). **Ordering tip:** when the question asks for top-N results, `SORT` and `LIMIT` _before_
 `LOOKUP JOIN` to reduce enrichment cost. For general listings or full enrichment, place `LOOKUP JOIN` right after
@@ -385,18 +385,18 @@ FROM logs-*
 
 For complete ES|QL syntax including all commands, functions, and operators, read:
 
-- [ES|QL Complete Reference](../../../../Global_References/observability-monitoring-logging/esql-reference.md)
-- [ES|QL Search Reference](../../../../Global_References/observability-monitoring-logging/esql-search.md) - Full-text search: MATCH, QSTR, KQL, MATCH_PHRASE, scoring,
+- [ES|QL Complete Reference](../../../references/esql-reference.md)
+- [ES|QL Search Reference](../../../references/esql-search.md) - Full-text search: MATCH, QSTR, KQL, MATCH_PHRASE, scoring,
   semantic search
-- [ES|QL Search Strategy](../../../../Global_References/observability-monitoring-logging/esql-search-strategy.md) - Relevance search strategy for content indices: retrieve
+- [ES|QL Search Strategy](../../../references/esql-search-strategy.md) - Relevance search strategy for content indices: retrieve
   → fuse → rerank
-- [ES|QL Version History](../../../../Global_References/observability-monitoring-logging/esql-version-history.md) - Feature availability by Elasticsearch version
-- [Query Patterns](../../../../Global_References/observability-monitoring-logging/elasticsearch-esql_query-patterns.md) - Natural language to ES|QL translation
-- [Generation Tips](../../../../Global_References/observability-monitoring-logging/generation-tips.md) - Best practices for query generation
-- [Time Series Queries](../../../../Global_References/observability-monitoring-logging/time-series-queries.md) - TS command, time series aggregation functions, TBUCKET
-- [PROMQL Command](../../../../Global_References/observability-monitoring-logging/promql-command.md) - PromQL source command for TSDS indices (9.4+ preview)
-- [DSL to ES|QL Migration](../../../../Global_References/observability-monitoring-logging/dsl-to-esql-migration.md) - Convert Query DSL to ES|QL
-- [Environment Setup](../../../../Global_References/observability-monitoring-logging/environment-setup.md) - Connection configuration options
+- [ES|QL Version History](../../../references/esql-version-history.md) - Feature availability by Elasticsearch version
+- [Query Patterns](../../../references/elasticsearch-esql_query-patterns.md) - Natural language to ES|QL translation
+- [Generation Tips](../../../references/generation-tips.md) - Best practices for query generation
+- [Time Series Queries](../../../references/time-series-queries.md) - TS command, time series aggregation functions, TBUCKET
+- [PROMQL Command](../../../references/promql-command.md) - PromQL source command for TSDS indices (9.4+ preview)
+- [DSL to ES|QL Migration](../../../references/dsl-to-esql-migration.md) - Convert Query DSL to ES|QL
+- [Environment Setup](../../../references/environment-setup.md) - Connection configuration options
 
 ## Error Handling
 

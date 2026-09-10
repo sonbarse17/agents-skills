@@ -480,12 +480,12 @@ Version N+1 released with backward compatibility period. Deprecation notice via 
 - Health-check endpoint returns database status and latency
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/data-api-error-handling.md — Data API Error Handling
-  - ../../../../Global_References/Software_Engineering_and_Other/data-api-patterns.md — Data API Patterns
-  - ../../../../Global_References/Software_Engineering_and_Other/data-api-security.md — Data API Security Reference
-  - ../../../../Global_References/Software_Engineering_and_Other/data-api-versioning.md — Data API Versioning
-  - ../../../../Global_References/Software_Engineering_and_Other/graphql-for-data.md — GraphQL for Data Reference
-  - ../../../../Global_References/Software_Engineering_and_Other/hasura-postgrest.md — Hasura & PostgREST
+  - ../../../references/data-api-error-handling.md — Data API Error Handling
+  - ../../../references/data-api-patterns.md — Data API Patterns
+  - ../../../references/data-api-security.md — Data API Security Reference
+  - ../../../references/data-api-versioning.md — Data API Versioning
+  - ../../../references/graphql-for-data.md — GraphQL for Data Reference
+  - ../../../references/hasura-postgrest.md — Hasura & PostgREST
 ## Architecture Decision Trees
 
 ```

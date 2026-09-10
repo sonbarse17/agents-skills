@@ -413,12 +413,12 @@ Use `app.request()` for HTTP testing without a server — works in Node, Bun, De
 - No `app.use` on individual route handlers — compose in module or use middleware function.
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/hono-custom-middleware.md — Custom Middleware
-  - ../../../../Global_References/Software_Engineering_and_Other/hono-deployment.md — Deployment Guide
-  - ../../../../Global_References/Software_Engineering_and_Other/hono-middleware.md — Middleware Reference
-  - ../../../../Global_References/Software_Engineering_and_Other/hono-rpc.md — RPC Client
-  - ../../../../Global_References/Software_Engineering_and_Other/hono-setup.md — Setup Guide
-  - ../../../../Global_References/Software_Engineering_and_Other/hono-testing.md — Testing Patterns
+  - ../../../references/hono-custom-middleware.md — Custom Middleware
+  - ../../../references/hono-deployment.md — Deployment Guide
+  - ../../../references/hono-middleware.md — Middleware Reference
+  - ../../../references/hono-rpc.md — RPC Client
+  - ../../../references/hono-setup.md — Setup Guide
+  - ../../../references/hono-testing.md — Testing Patterns
 ## Handoff
 Hand off to `backend/nodejs/drizzle/SKILL.md` for Drizzle ORM or `backend/nodejs/patterns/SKILL.md` for advanced Node patterns.
 ## Implementation Patterns

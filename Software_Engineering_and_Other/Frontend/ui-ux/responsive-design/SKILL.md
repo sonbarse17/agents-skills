@@ -27,7 +27,7 @@ Master modern responsive design techniques to create interfaces that adapt seaml
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../../../Global_References/Software_Engineering_and_Other/responsive-design_details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../references/responsive-design_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 

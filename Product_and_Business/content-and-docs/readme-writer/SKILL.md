@@ -392,8 +392,8 @@ MIT
 ```
 
 ## References
-  - ../../Global_References/Product_and_Business/readme-writer-advanced.md — README Writer Advanced Topics
-  - ../../Global_References/Product_and_Business/readme-writer-fundamentals.md — README Writer Fundamentals
+  - ../../references/readme-writer-advanced.md — README Writer Advanced Topics
+  - ../../references/readme-writer-fundamentals.md — README Writer Fundamentals
   - references/readme-writer-templates.md — README Templates Reference
   - references/readme-writer-style-guide.md — README Style Guide Reference
 ## Handoff

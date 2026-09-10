@@ -643,14 +643,14 @@ describe('Report Generation', () => {
 - Test file size limits: verify rejection of oversized requests
 
 ## Rules
-  - ../../Global_References/Product_and_Business/excel-csv-export.md — Excel and CSV Export
-  - ../../Global_References/Product_and_Business/pdf-generation.md — PDF Generation
-  - ../../Global_References/Product_and_Business/report-distribution.md — Report Distribution and Delivery
-  - ../../Global_References/Product_and_Business/report-generation-advanced.md — Report Generation Advanced Topics
-  - ../../Global_References/Product_and_Business/report-generation-fundamentals.md — Report Generation Fundamentals
-  - ../../Global_References/Product_and_Business/report-scheduling.md — Report Scheduling
-  - ../../Global_References/Product_and_Business/report-templates.md — Report Templates
-  - ../../Global_References/Product_and_Business/report-visualization.md — Report Visualization and Charts
+  - ../../references/excel-csv-export.md — Excel and CSV Export
+  - ../../references/pdf-generation.md — PDF Generation
+  - ../../references/report-distribution.md — Report Distribution and Delivery
+  - ../../references/report-generation-advanced.md — Report Generation Advanced Topics
+  - ../../references/report-generation-fundamentals.md — Report Generation Fundamentals
+  - ../../references/report-scheduling.md — Report Scheduling
+  - ../../references/report-templates.md — Report Templates
+  - ../../references/report-visualization.md — Report Visualization and Charts
 ## Handoff
 - `backend/bulk-import` — CSV/Excel parsing and validation patterns
 - `data/analytics` — Report data aggregation and query patterns

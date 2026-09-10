@@ -414,9 +414,9 @@ public class NumericStepper : UserControl
 ```
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/winforms-advanced.md — WinForms Advanced Topics
+  - ../../../references/winforms-advanced.md — WinForms Advanced Topics
   - references/winforms-data-binding.md — WinForms Data Binding Reference
-  - ../../../../Global_References/Software_Engineering_and_Other/winforms-fundamentals.md — WinForms Fundamentals
+  - ../../../references/winforms-fundamentals.md — WinForms Fundamentals
   - references/winforms-performance.md — WinForms Performance Reference
 ## Handoff
 Hand off to `desktop-winui3` for modern Windows UI migration. Hand off to `[desktop-wpf](../../../Frontend/desktop/wpf/SKILL.md)` for richer UI capabilities.

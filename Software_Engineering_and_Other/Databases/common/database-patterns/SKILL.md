@@ -413,15 +413,15 @@ GRANT USAGE ON SEQUENCE orders_id_seq TO app_user;
 - Always use native DB enums instead of VARCHAR with app-level validation.
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/connection-pooling.md — Connection Pooling
-  - ../../../../Global_References/Software_Engineering_and_Other/database-fundamentals.md — Database Patterns Fundamentals
+  - ../../../references/connection-pooling.md — Connection Pooling
+  - ../../../references/database-fundamentals.md — Database Patterns Fundamentals
   - ../../../Global_References/[database-migration](../database-migration/SKILL.md)-patterns.md — Database Migration Patterns
-  - ../../../../Global_References/Software_Engineering_and_Other/database-sharding.md — Database Sharding
-  - ../../../../Global_References/Software_Engineering_and_Other/database-patterns_database-testing.md — Database Testing
-  - ../../../../Global_References/Software_Engineering_and_Other/migration-guide.md — Database Migration Guide
-  - ../../../../Global_References/Software_Engineering_and_Other/migration-strategies.md — Migration Strategies
-  - ../../../../Global_References/Software_Engineering_and_Other/database-patterns_query-optimization.md — Database Query Optimization Guide
-  - ../../../../Global_References/Software_Engineering_and_Other/table-design-rules.md — Table Design Rules
+  - ../../../references/database-sharding.md — Database Sharding
+  - ../../../references/database-patterns_database-testing.md — Database Testing
+  - ../../../references/migration-guide.md — Database Migration Guide
+  - ../../../references/migration-strategies.md — Migration Strategies
+  - ../../../references/database-patterns_query-optimization.md — Database Query Optimization Guide
+  - ../../../references/table-design-rules.md — Table Design Rules
   - references/transaction-isolation.md — Transaction Isolation Levels
 ## Handoff
 No artifact produced.

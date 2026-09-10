@@ -366,9 +366,9 @@ describe('processOrder', () => {
 | Involve the team | Shared understanding of code quality standards |
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/refactor-guide-advanced.md — Refactoring Advanced Topics
+  - ../../../references/refactor-guide-advanced.md — Refactoring Advanced Topics
   - references/refactor-guide-code-smells.md — Code Smells Reference
-  - ../../../../Global_References/Software_Engineering_and_Other/refactor-guide-fundamentals.md — Refactoring Fundamentals
+  - ../../../references/refactor-guide-fundamentals.md — Refactoring Fundamentals
   - references/refactor-guide-techniques.md — Refactoring Techniques Reference
 ## Implementation Patterns
 
@@ -626,9 +626,9 @@ What's the goal and risk level?
 - **Incremental type annotation**: Use gradual type checking (e.g., mypy in non-strict mode). Add types to functions being refactored first. Let type checker catch regressions during refactoring.
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/refactor-guide-advanced.md — Refactoring Advanced Topics
+  - ../../../references/refactor-guide-advanced.md — Refactoring Advanced Topics
   - references/refactor-guide-code-smells.md — Code Smells Reference
-  - ../../../../Global_References/Software_Engineering_and_Other/refactor-guide-fundamentals.md — Refactoring Fundamentals
+  - ../../../references/refactor-guide-fundamentals.md — Refactoring Fundamentals
   - references/refactor-guide-techniques.md — Refactoring Techniques Reference
 
 ## Handoff

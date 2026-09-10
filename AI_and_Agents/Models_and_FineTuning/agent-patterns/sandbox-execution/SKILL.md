@@ -348,14 +348,14 @@ Agent Request: "Execute [Python](../../../../Software_Engineering_and_Other/Lang
 
 ## Reference Guides
 
-- [Sandbox-as-a-Tool Pattern](../../../../Global_References/AI_and_Agents/sandbox-as-tool-pattern.md) — Architecture for exposing sandboxes as composable agent tools
-- [Durable Execution Frameworks](../../../../Global_References/AI_and_Agents/durable-execution-frameworks.md) — Temporal, Restate, and durable execution patterns
-- [MicroVM Isolation](../../../../Global_References/AI_and_Agents/microvm-isolation.md) — gVisor, Kata Containers, and Firecracker deep dive
-- [Workspace Isolation](../../../../Global_References/AI_and_Agents/workspace-isolation.md) — Isolated workspace provisioning and management
-- [State Persistence & Snapshots](../../../../Global_References/AI_and_Agents/state-persistence-snapshots.md) — Snapshotting, forking, and state restoration
-- [Filesystem Sandboxing](../../../../Global_References/AI_and_Agents/filesystem-sandboxing.md) — Filesystem isolation, overlay mounts, and access policies
-- [Network Isolation Policies](../../../../Global_References/AI_and_Agents/network-isolation-policies.md) — Network segmentation and egress control
-- [Resource Quota Enforcement](../../../../Global_References/AI_and_Agents/resource-quota-enforcement.md) — CPU, memory, disk, and PID quota enforcement
+- [Sandbox-as-a-Tool Pattern](../../../references/sandbox-as-tool-pattern.md) — Architecture for exposing sandboxes as composable agent tools
+- [Durable Execution Frameworks](../../../references/durable-execution-frameworks.md) — Temporal, Restate, and durable execution patterns
+- [MicroVM Isolation](../../../references/microvm-isolation.md) — gVisor, Kata Containers, and Firecracker deep dive
+- [Workspace Isolation](../../../references/workspace-isolation.md) — Isolated workspace provisioning and management
+- [State Persistence & Snapshots](../../../references/state-persistence-snapshots.md) — Snapshotting, forking, and state restoration
+- [Filesystem Sandboxing](../../../references/filesystem-sandboxing.md) — Filesystem isolation, overlay mounts, and access policies
+- [Network Isolation Policies](../../../references/network-isolation-policies.md) — Network segmentation and egress control
+- [Resource Quota Enforcement](../../../references/resource-quota-enforcement.md) — CPU, memory, disk, and PID quota enforcement
 
 ## Handoff
 

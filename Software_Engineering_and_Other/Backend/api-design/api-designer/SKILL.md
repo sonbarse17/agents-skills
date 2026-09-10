@@ -43,11 +43,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| REST Patterns | `../../../../Global_References/Software_Engineering_and_Other/rest-patterns.md` | Resource design, HTTP methods, HATEOAS |
-| Versioning | `../../../../Global_References/Software_Engineering_and_Other/versioning.md` | API versions, deprecation, breaking changes |
-| Pagination | `../../../../Global_References/Software_Engineering_and_Other/pagination.md` | Cursor, offset, keyset pagination |
-| Error Handling | `../../../../Global_References/Software_Engineering_and_Other/error-handling.md` | Error responses, RFC 7807, status codes |
-| OpenAPI | `../../../../Global_References/Software_Engineering_and_Other/openapi.md` | OpenAPI 3.1, documentation, code generation |
+| REST Patterns | `../../../references/rest-patterns.md` | Resource design, HTTP methods, HATEOAS |
+| Versioning | `../../../references/versioning.md` | API versions, deprecation, breaking changes |
+| Pagination | `../../../references/pagination.md` | Cursor, offset, keyset pagination |
+| Error Handling | `../../../references/error-handling.md` | Error responses, RFC 7807, status codes |
+| OpenAPI | `../../../references/openapi.md` | OpenAPI 3.1, documentation, code generation |
 
 ## Constraints
 

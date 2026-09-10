@@ -310,7 +310,7 @@ except CosmosHttpResponseError as e:
 
 | File | Contents |
 |------|----------|
-| [../../../../../Global_References/cloud/azure-cosmos-py_partitioning.md](../../../../../Global_References/cloud/azure-cosmos-py_partitioning.md) | Partition key strategies, hierarchical keys, hot partition detection and mitigation |
-| [../../../../../Global_References/cloud/azure-cosmos-py_query-patterns.md](../../../../../Global_References/cloud/azure-cosmos-py_query-patterns.md) | Query optimization, aggregations, pagination, transactions, change feed |
+| [../../../../references/azure-cosmos-py_partitioning.md](../../../../references/azure-cosmos-py_partitioning.md) | Partition key strategies, hierarchical keys, hot partition detection and mitigation |
+| [../../../../references/azure-cosmos-py_query-patterns.md](../../../../references/azure-cosmos-py_query-patterns.md) | Query optimization, aggregations, pagination, transactions, change feed |
 | [scripts/setup_cosmos_container.py](scripts/setup_cosmos_container.py) | CLI tool for creating containers with partitioning, throughput, and indexing |
 

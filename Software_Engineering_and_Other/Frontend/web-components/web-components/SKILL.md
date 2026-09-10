@@ -411,12 +411,12 @@ Custom element names MUST contain a hyphen (e.g., `my-button`). Single-word name
 - Provide framework wrappers (React, Vue, Angular) for ergonomic usage — set properties via refs.
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/custom-elements.md — Custom Elements Reference
-  - ../../../../Global_References/Software_Engineering_and_Other/shadow-dom.md — Shadow DOM Reference
-  - ../../../../Global_References/Software_Engineering_and_Other/wc-performance.md — Web Component Performance
-  - ../../../../Global_References/Software_Engineering_and_Other/wc-testing.md — Web Component Testing
-  - ../../../../Global_References/Software_Engineering_and_Other/web-components-frameworks.md — Web Components in Frameworks
-  - ../../../../Global_References/Software_Engineering_and_Other/web-components-implementation.md — Web Components Implementation
+  - ../../../references/custom-elements.md — Custom Elements Reference
+  - ../../../references/shadow-dom.md — Shadow DOM Reference
+  - ../../../references/wc-performance.md — Web Component Performance
+  - ../../../references/wc-testing.md — Web Component Testing
+  - ../../../references/web-components-frameworks.md — Web Components in Frameworks
+  - ../../../references/web-components-implementation.md — Web Components Implementation
 ## Handoff
 No artifact produced.
 Next skill: [frontend-lit](../../frameworks/lit/SKILL.md) for Lit-based web components. Or frontend-universal-design-system for design token integration.

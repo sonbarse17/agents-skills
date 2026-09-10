@@ -44,11 +44,11 @@ Configure Azure API Management (APIM) as an AI Gateway for governing AI models, 
 
 | Policy | Purpose | Details |
 |--------|---------|---------|
-| `azure-openai-token-limit` | Cost control | [Model Policies](../../../../Global_References/cloud/policies.md#token-rate-limiting) |
-| `azure-openai-semantic-cache-lookup/store` | 60-80% cost savings | [Model Policies](../../../../Global_References/cloud/policies.md#semantic-caching) |
-| `azure-openai-emit-token-metric` | [Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) | [Model Policies](../../../../Global_References/cloud/policies.md#token-metrics) |
-| `llm-content-safety` | Safety & compliance | [Agent Policies](../../../../Global_References/cloud/policies.md#content-safety) |
-| `rate-limit-by-key` | MCP/tool protection | [Tool Policies](../../../../Global_References/cloud/policies.md#request-rate-limiting) |
+| `azure-openai-token-limit` | Cost control | [Model Policies](../../../references/policies.md#token-rate-limiting) |
+| `azure-openai-semantic-cache-lookup/store` | 60-80% cost savings | [Model Policies](../../../references/policies.md#semantic-caching) |
+| `azure-openai-emit-token-metric` | [Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) | [Model Policies](../../../references/policies.md#token-metrics) |
+| `llm-content-safety` | Safety & compliance | [Agent Policies](../../../references/policies.md#content-safety) |
+| `rate-limit-by-key` | MCP/tool protection | [Tool Policies](../../../references/policies.md#request-rate-limiting) |
 
 ---
 
@@ -86,7 +86,7 @@ curl -X POST "${GATEWAY_URL}/openai/deployments/<deployment>/chat/completions?ap
 
 ### Add AI Backend
 
-See [../../../../Global_References/cloud/azure-aigateway_patterns.md](../../../../Global_References/cloud/azure-aigateway_patterns.md#pattern-1-add-ai-model-backend) for full steps.
+See [../../../references/azure-aigateway_patterns.md](../../../references/azure-aigateway_patterns.md#pattern-1-add-ai-model-backend) for full steps.
 
 ```bash
 # Discover AI resources
@@ -112,7 +112,7 @@ Recommended policy order in `<inbound>`:
 5. **Backend Selection** - Load balancing
 6. **Metrics** - Token usage tracking
 
-See [../../../../Global_References/cloud/policies.md](../../../../Global_References/cloud/policies.md#combining-policies) for complete example.
+See [../../../references/policies.md](../../../references/policies.md#combining-policies) for complete example.
 
 ---
 
@@ -125,15 +125,15 @@ See [../../../../Global_References/cloud/policies.md](../../../../Global_Referen
 | Content false positives | Increase category thresholds (5-6) |
 | Backend auth 401 | Grant APIM "Cognitive Services User" role |
 
-See [../../../../Global_References/cloud/troubleshooting.md](../../../../Global_References/cloud/troubleshooting.md) for details.
+See [../../../references/troubleshooting.md](../../../references/troubleshooting.md) for details.
 
 ---
 
 ## References
 
-- [**Detailed Policies**](../../../../Global_References/cloud/policies.md) - Full policy examples
-- [**Configuration Patterns**](../../../../Global_References/cloud/azure-aigateway_patterns.md) - Step-by-step patterns
-- [**Troubleshooting**](../../../../Global_References/cloud/troubleshooting.md) - Common issues
+- [**Detailed Policies**](../../../references/policies.md) - Full policy examples
+- [**Configuration Patterns**](../../../references/azure-aigateway_patterns.md) - Step-by-step patterns
+- [**Troubleshooting**](../../../references/troubleshooting.md) - Common issues
 - [AI-Gateway Samples](https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/Azure-Samples/AI-Gateway)
 - [GenAI Gateway Docs](https://learn.microsoft.com/azure/api-management/genai-gateway-capabilities)
 

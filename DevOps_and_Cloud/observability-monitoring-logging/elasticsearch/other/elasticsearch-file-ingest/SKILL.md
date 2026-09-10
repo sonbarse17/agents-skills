@@ -340,8 +340,8 @@ Consider alternatives for:
 
 ## Additional Resources
 
-- [Common Patterns](../../../../Global_References/observability-monitoring-logging/elasticsearch-file-ingest_patterns.md) - Detailed examples for CSV loading, batch ingestion, enrichment, and more
-- [Troubleshooting](../../../../Global_References/observability-monitoring-logging/elasticsearch-file-ingest_troubleshooting.md) - Solutions for common issues
+- [Common Patterns](../../../references/elasticsearch-file-ingest_patterns.md) - Detailed examples for CSV loading, batch ingestion, enrichment, and more
+- [Troubleshooting](../../../references/elasticsearch-file-ingest_troubleshooting.md) - Solutions for common issues
 
 ## References
 

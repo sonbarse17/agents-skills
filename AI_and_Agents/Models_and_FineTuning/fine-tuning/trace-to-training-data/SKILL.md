@@ -224,5 +224,5 @@ pair to DPO pair, correction to
 SFT row, the rejection-sampling
 loop, and the goldens-holdout
 check — live in
-`../../../../Global_References/AI_and_Agents/conversion-recipes.md`.
+`../../../references/conversion-recipes.md`.
 

@@ -80,7 +80,7 @@ async fn fetch_data(url: &str) -> Result<String> {
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../../../Global_References/Software_Engineering_and_Other/rust-async-patterns_details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../references/rust-async-patterns_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 

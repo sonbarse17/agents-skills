@@ -538,13 +538,13 @@ docs/** @team/tech-writers
 
 ## References
 
-- `../../../../Global_References/ci-cd/code-review-advanced.md` -- Code Review Advanced Topics
-- `../../../../Global_References/ci-cd/code-review-fundamentals.md` -- Code Review Fundamentals
-- `../../../../Global_References/ci-cd/code-review_review-checklist.md` -- Code Review Checklist
-- `../../../../Global_References/ci-cd/review-workflow.md` -- Code Review Workflow
+- `../../../references/code-review-advanced.md` -- Code Review Advanced Topics
+- `../../../references/code-review-fundamentals.md` -- Code Review Fundamentals
+- `../../../references/code-review_review-checklist.md` -- Code Review Checklist
+- `../../../references/review-workflow.md` -- Code Review Workflow
 - `../../../Global_References/[security-review](../../../../Security/common/security-review/SKILL.md)-checklist.md` -- Security Review Checklist
 - `../../../Global_References/[security-review](../../../../Security/common/security-review/SKILL.md)-guide.md` -- Security Review Guide
-- `../../../../Global_References/ci-cd/code-review-checklist.md` -- Comprehensive Code Review Checklist
+- `../../../references/code-review-checklist.md` -- Comprehensive Code Review Checklist
 - `../../../Global_References/code-review-[workflow-automation](../../../../Software_Engineering_and_Other/Patterns/workflow/workflow-automation/SKILL.md).md` -- Code Review Workflow and Automation
 
 ## Handoff

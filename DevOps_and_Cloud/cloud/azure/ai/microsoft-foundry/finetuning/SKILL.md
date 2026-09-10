@@ -56,18 +56,18 @@ Use this sub-skill when the user asks about:
 
 | Topic | File |
 |-------|------|
-| SFT vs DPO vs RFT | [../../../../../Global_References/AI_and_Agents/training-types.md](../../../../../Global_References/AI_and_Agents/training-types.md) |
-| Hyperparameters | [../../../../../Global_References/AI_and_Agents/finetuning_hyperparameters.md](../../../../../Global_References/AI_and_Agents/finetuning_hyperparameters.md) |
-| Data formats | [../../../../../Global_References/AI_and_Agents/dataset-formats.md](../../../../../Global_References/AI_and_Agents/dataset-formats.md) |
-| Grader design (RFT) | [../../../../../Global_References/AI_and_Agents/grader-design.md](../../../../../Global_References/AI_and_Agents/grader-design.md) |
-| Reward hacking | [../../../../../Global_References/AI_and_Agents/reward-hacking.md](../../../../../Global_References/AI_and_Agents/reward-hacking.md) |
-| Agentic RFT (tools) | [../../../../../Global_References/AI_and_Agents/agentic-rft.md](../../../../../Global_References/AI_and_Agents/agentic-rft.md) |
-| Deployment | [../../../../../Global_References/AI_and_Agents/finetuning_deployment.md](../../../../../Global_References/AI_and_Agents/finetuning_deployment.md) |
-| Training curves | [../../../../../Global_References/AI_and_Agents/training-curves.md](../../../../../Global_References/AI_and_Agents/training-curves.md) |
-| Evaluation | [../../../../../Global_References/AI_and_Agents/finetuning_evaluation.md](../../../../../Global_References/AI_and_Agents/finetuning_evaluation.md) |
-| Vision fine-tuning | [../../../../../Global_References/AI_and_Agents/vision-fine-tuning.md](../../../../../Global_References/AI_and_Agents/vision-fine-tuning.md) |
-| Large file uploads | [../../../../../Global_References/AI_and_Agents/large-file-uploads.md](../../../../../Global_References/AI_and_Agents/large-file-uploads.md) |
-| Platform gotchas | [../../../../../Global_References/AI_and_Agents/platform-gotchas.md](../../../../../Global_References/AI_and_Agents/platform-gotchas.md) |
+| SFT vs DPO vs RFT | [../../../../../../AI_and_Agents/references/training-types.md](../../../../../../AI_and_Agents/references/training-types.md) |
+| Hyperparameters | [../../../../../../AI_and_Agents/references/finetuning_hyperparameters.md](../../../../../../AI_and_Agents/references/finetuning_hyperparameters.md) |
+| Data formats | [../../../../../../AI_and_Agents/references/dataset-formats.md](../../../../../../AI_and_Agents/references/dataset-formats.md) |
+| Grader design (RFT) | [../../../../../../AI_and_Agents/references/grader-design.md](../../../../../../AI_and_Agents/references/grader-design.md) |
+| Reward hacking | [../../../../../../AI_and_Agents/references/reward-hacking.md](../../../../../../AI_and_Agents/references/reward-hacking.md) |
+| Agentic RFT (tools) | [../../../../../../AI_and_Agents/references/agentic-rft.md](../../../../../../AI_and_Agents/references/agentic-rft.md) |
+| Deployment | [../../../../../../AI_and_Agents/references/finetuning_deployment.md](../../../../../../AI_and_Agents/references/finetuning_deployment.md) |
+| Training curves | [../../../../../../AI_and_Agents/references/training-curves.md](../../../../../../AI_and_Agents/references/training-curves.md) |
+| Evaluation | [../../../../../../AI_and_Agents/references/finetuning_evaluation.md](../../../../../../AI_and_Agents/references/finetuning_evaluation.md) |
+| Vision fine-tuning | [../../../../../../AI_and_Agents/references/vision-fine-tuning.md](../../../../../../AI_and_Agents/references/vision-fine-tuning.md) |
+| Large file uploads | [../../../../../../AI_and_Agents/references/large-file-uploads.md](../../../../../../AI_and_Agents/references/large-file-uploads.md) |
+| Platform gotchas | [../../../../../../AI_and_Agents/references/platform-gotchas.md](../../../../../../AI_and_Agents/references/platform-gotchas.md) |
 
 ## Scripts
 

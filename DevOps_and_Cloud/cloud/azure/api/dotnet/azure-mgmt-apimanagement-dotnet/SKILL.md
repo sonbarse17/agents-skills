@@ -319,9 +319,9 @@ catch (RequestFailedException ex)
 
 | File | When to Read |
 |------|--------------|
-| [../../../../../Global_References/cloud/service-management.md](../../../../../Global_References/cloud/service-management.md) | Service CRUD, SKUs, networking, backup/restore |
-| [../../../../../Global_References/cloud/apis-operations.md](../../../../../Global_References/cloud/apis-operations.md) | APIs, operations, schemas, versioning |
-| [../../../../../Global_References/cloud/products-subscriptions.md](../../../../../Global_References/cloud/products-subscriptions.md) | Products, subscriptions, access control |
+| [../../../../references/service-management.md](../../../../references/service-management.md) | Service CRUD, SKUs, networking, backup/restore |
+| [../../../../references/apis-operations.md](../../../../references/apis-operations.md) | APIs, operations, schemas, versioning |
+| [../../../../references/products-subscriptions.md](../../../../references/products-subscriptions.md) | Products, subscriptions, access control |
 | [references/policies.md](references/policies.md) | Policy XML patterns, scopes, common policies |
 
 ## Related Resources

@@ -52,9 +52,6 @@ General software development skills, frameworks, and patterns.
 ### 📊 `Data_Engineering/` (61 skills)
 ETL pipelines, data platforms, warehousing, data quality, streaming, and analytics engineering.
 
-### 📚 `Global_References/`
-Flat reference assets (docs, examples, configs) that skills link to for supporting material — grouped into subfolders matching the category of the skills that actually use them.
-
 ---
 
 ## 🛠️ Anatomy of a Skill
@@ -62,7 +59,7 @@ Flat reference assets (docs, examples, configs) that skills link to for supporti
 Each folder within these categories represents a distinct "Skill" and contains:
 
 - `SKILL.md` (or, for a minority of skills, `README.md`): the core prompt/instructions detailing when and how an AI agent should use this skill, plus any supporting scripts, templates, or assets that skill needs directly.
-- Cross-skill reference material lives centrally in `Global_References/` rather than per-skill, and skills link into it by relative path.
+- Shared reference material that multiple skills in a category link to lives in that category's own `references/` subfolder (e.g. `Security/references/`, `DevOps_and_Cloud/cloud/references/`), not in a separate top-level folder.
 
 ## 🚀 Usage
 

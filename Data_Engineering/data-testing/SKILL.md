@@ -460,14 +460,14 @@ What aspect of the data pipeline are we validating?
 - Match test type to data risk — schema failures block, quality failures alert
 
 ## References
-  - ../../Global_References/Data_Engineering/contract-driven-testing.md — Contract-Driven Testing
-  - ../../Global_References/Data_Engineering/data-comparison-tools.md — Data Comparison Tools
-  - ../../Global_References/Data_Engineering/data-quality-catalog.md — Data Quality Test Catalog Reference
-  - ../../Global_References/Data_Engineering/data-testing-performance.md — Data Testing Performance
-  - ../../Global_References/Data_Engineering/data-testing-pipeline.md — Data Testing Pipeline Integration
-  - ../../Global_References/Data_Engineering/dbt-testing-framework.md — dbt Testing Framework
-  - ../../Global_References/Data_Engineering/schema-testing.md — Schema Testing Reference
-  - ../../Global_References/Data_Engineering/testing-strategy-framework.md — Testing Strategy Framework
+  - ../references/contract-driven-testing.md — Contract-Driven Testing
+  - ../references/data-comparison-tools.md — Data Comparison Tools
+  - ../references/data-quality-catalog.md — Data Quality Test Catalog Reference
+  - ../references/data-testing-performance.md — Data Testing Performance
+  - ../references/data-testing-pipeline.md — Data Testing Pipeline Integration
+  - ../references/dbt-testing-framework.md — dbt Testing Framework
+  - ../references/schema-testing.md — Schema Testing Reference
+  - ../references/testing-strategy-framework.md — Testing Strategy Framework
 ## Architecture Decision Trees
 
 ```

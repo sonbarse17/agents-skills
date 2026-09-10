@@ -440,8 +440,8 @@ resource "ibm_en_destination" "pagerduty" {
 ## References
   - references/iks-[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).md — IKS Cluster and Worker Pool Management
   - references/ibm-vpc-networking.md — VPC, Subnets, ACLs, Security Groups
-  - ../../../Global_References/cloud/ibm-cloud-advanced.md — IBM Cloud Advanced Topics
-  - ../../../Global_References/cloud/ibm-cloud-fundamentals.md — IBM Cloud Fundamentals
+  - ../../references/ibm-cloud-advanced.md — IBM Cloud Advanced Topics
+  - ../../references/ibm-cloud-fundamentals.md — IBM Cloud Fundamentals
   - references/ibm-satellite.md — Satellite for Hybrid Deployments
   - references/ibm-cos.md — Cloud Object Storage Configuration
 ## Handoff

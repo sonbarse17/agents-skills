@@ -167,7 +167,7 @@ Tag searches are exact-match only. `find --tags "agent_id:abc123"` works, but pa
 ## Kibana Cases API reference
 
 For detailed API endpoints, request/response formats, and examples, see
-[../../../Global_References/Security/kibana-cases-api.md](../../../Global_References/Security/kibana-cases-api.md).
+[../../references/kibana-cases-api.md](../../references/kibana-cases-api.md).
 
 ## Examples
 

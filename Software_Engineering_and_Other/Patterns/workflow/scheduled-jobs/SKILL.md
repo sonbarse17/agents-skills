@@ -29,7 +29,7 @@ is also what makes it dangerous without deliberate guardrails.
 **Design a scheduled job assuming nobody is watching it run — because nobody is, until it breaks.**
 
 For cron syntax, DST pitfalls, locking, and [Kubernetes](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) CronJob settings, read
-`../../../../Global_References/Software_Engineering_and_Other/cron-patterns.md`.
+`../../../references/cron-patterns.md`.
 
 ## 1. Make the job idempotent, not just retry-friendly
 

@@ -77,5 +77,5 @@ async def delete_item(id: str) -> None:
 
 | File | Contents |
 |------|----------|
-| [../../../../Global_References/Software_Engineering_and_Other/fastapi-router-py_capabilities.md](../../../../Global_References/Software_Engineering_and_Other/fastapi-router-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
+| [../../../references/fastapi-router-py_capabilities.md](../../../references/fastapi-router-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
 

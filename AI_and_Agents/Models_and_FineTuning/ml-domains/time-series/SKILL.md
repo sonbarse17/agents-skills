@@ -414,14 +414,14 @@ def conformal_prediction(model, X_train, y_train, X_test, alpha=0.1):
 - Always plot residuals after fitting.
 
 ## References
-  - ../../../../Global_References/AI_and_Agents/classical-forecasting.md — Classical Forecasting
-  - ../../../../Global_References/AI_and_Agents/deep-learning-ts.md — Deep Learning for Time Series
-  - ../../../../Global_References/AI_and_Agents/feature-engineering.md — Time Series Feature Engineering
-  - ../../../../Global_References/AI_and_Agents/forecast-deep-learning.md — Deep Learning Forecasting
-  - ../../../../Global_References/AI_and_Agents/forecasting-methods.md — Time Series Forecasting
-  - ../../../../Global_References/AI_and_Agents/time-series-advanced.md — Time Series Advanced Topics
-  - ../../../../Global_References/AI_and_Agents/time-series-feature-store.md — Time Series Feature Store
-  - ../../../../Global_References/AI_and_Agents/time-series-fundamentals.md — Time Series Fundamentals
+  - ../../../references/classical-forecasting.md — Classical Forecasting
+  - ../../../references/deep-learning-ts.md — Deep Learning for Time Series
+  - ../../../references/feature-engineering.md — Time Series Feature Engineering
+  - ../../../references/forecast-deep-learning.md — Deep Learning Forecasting
+  - ../../../references/forecasting-methods.md — Time Series Forecasting
+  - ../../../references/time-series-advanced.md — Time Series Advanced Topics
+  - ../../../references/time-series-feature-store.md — Time Series Feature Store
+  - ../../../references/time-series-fundamentals.md — Time Series Fundamentals
 ## Handoff
 Hand off to [ml-feature-engineering](../../../../Data_Engineering/feature-engineering/SKILL.md) for advanced feature creation. For anomaly detection on residuals, hand off to [ml-anomaly-detection](../anomaly-detection/SKILL.md).
 ## Architecture Decision Trees

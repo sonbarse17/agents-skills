@@ -642,14 +642,14 @@ Threshold: >4.0 = Ready to launch, 3.0-4.0 = Revise, <3.0 = Redesign pricing
 | Discount policy change | Sales + Finance | 30 days | Sales team training |
 
 ## References
-  - ../../Global_References/Product_and_Business/packaging-tiers.md — Packaging and Tiers
-  - ../../Global_References/Product_and_Business/pricing-experimentation.md — Pricing Experimentation
-  - ../../Global_References/Product_and_Business/pricing-models.md — Pricing Models
-  - ../../Global_References/Product_and_Business/pricing-strategy-advanced.md — Pricing Strategy Advanced Topics
-  - ../../Global_References/Product_and_Business/pricing-strategy-fundamentals.md — Pricing Strategy Fundamentals
-  - ../../Global_References/Product_and_Business/willingness-to-pay.md — Willingness to Pay (WTP)
-  - ../../Global_References/Product_and_Business/pricing-models-tiering.md — Pricing Models and Tiering
-  - ../../Global_References/Product_and_Business/pricing-experimentation.md — Pricing Experimentation
+  - ../../references/packaging-tiers.md — Packaging and Tiers
+  - ../../references/pricing-experimentation.md — Pricing Experimentation
+  - ../../references/pricing-models.md — Pricing Models
+  - ../../references/pricing-strategy-advanced.md — Pricing Strategy Advanced Topics
+  - ../../references/pricing-strategy-fundamentals.md — Pricing Strategy Fundamentals
+  - ../../references/willingness-to-pay.md — Willingness to Pay (WTP)
+  - ../../references/pricing-models-tiering.md — Pricing Models and Tiering
+  - ../../references/pricing-experimentation.md — Pricing Experimentation
 ## Handoff
 For growth experiments on pricing, hand off to `[product-growth-engineering](../growth-engineering/SKILL.md)`. For GTM strategy for new pricing, hand off to `[product-go-to-market](../go-to-market/SKILL.md)`.
 

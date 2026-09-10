@@ -59,7 +59,7 @@ Incoming:
 
 ## Templates and detailed worked examples
 
-Full template library and detailed worked examples live in `../../../../Global_References/observability-monitoring-logging/on-call-handoff-patterns_details.md`. Read that file when you need the concrete templates.
+Full template library and detailed worked examples live in `../../../references/on-call-handoff-patterns_details.md`. Read that file when you need the concrete templates.
 
 ## Troubleshooting
 

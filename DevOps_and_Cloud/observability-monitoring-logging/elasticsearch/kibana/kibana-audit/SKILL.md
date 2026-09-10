@@ -29,7 +29,7 @@ For Elasticsearch [audit](../../../../AI_and_Agents/Operations/common/audit/SKIL
 management, see **[elasticsearch-authz](../../other/elasticsearch-authz/SKILL.md)**.
 
 For detailed event types, schema, and correlation queries, see
-[../../../../Global_References/observability-monitoring-logging/kibana-audit_api-reference.md](../../../../Global_References/observability-monitoring-logging/kibana-audit_api-reference.md).
+[../../../references/kibana-audit_api-reference.md](../../../references/kibana-audit_api-reference.md).
 
 > **Deployment note:** Kibana [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) configuration differs across deployment types. See
 > [Deployment Compatibility](#deployment-compatibility) for details.
@@ -108,7 +108,7 @@ Key event actions:
 | `space_delete`                     | A Kibana space was deleted                   | web            |
 | `space_get`                        | A Kibana space was retrieved                 | web            |
 
-See [../../../../Global_References/observability-monitoring-logging/kibana-audit_api-reference.md](../../../../Global_References/observability-monitoring-logging/kibana-audit_api-reference.md) for the complete event schema.
+See [../../../references/kibana-audit_api-reference.md](../../../references/kibana-audit_api-reference.md) for the complete event schema.
 
 ## Filter Policies
 

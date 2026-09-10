@@ -692,13 +692,13 @@ Rules deployed and never reviewed accumulate noise. Quarterly use case review: r
 - Weekly review of top 10 noisiest rules for FP reduction
 
 ## References
-  - ../../../Global_References/Security/correlation-rules.md — SIEM Correlation Rules
-  - ../../../Global_References/Security/detection-content.md — Detection Content Creation
-  - ../../../Global_References/Security/log-sources-ingestion.md — Log Source Ingestion
-  - ../../../Global_References/Security/siem-architecture.md — SIEM Architecture
-  - ../../../Global_References/Security/siem-engineering-advanced.md — Siem Engineering Advanced Topics
-  - ../../../Global_References/Security/siem-engineering-fundamentals.md — Siem Engineering Fundamentals
-  - ../../../Global_References/Security/siem-tuning.md — SIEM Tuning
+  - ../../references/correlation-rules.md — SIEM Correlation Rules
+  - ../../references/detection-content.md — Detection Content Creation
+  - ../../references/log-sources-ingestion.md — Log Source Ingestion
+  - ../../references/siem-architecture.md — SIEM Architecture
+  - ../../references/siem-engineering-advanced.md — Siem Engineering Advanced Topics
+  - ../../references/siem-engineering-fundamentals.md — Siem Engineering Fundamentals
+  - ../../references/siem-tuning.md — SIEM Tuning
 ## Handoff
 Use cases feed into [soc-operations](../soc-operations/SKILL.md) for triage workflows. Rules can be automated via soar-automation.
 

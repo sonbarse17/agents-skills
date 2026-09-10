@@ -36,11 +36,11 @@ Single skill covering all anomaly detection work against **Kibana Agent Builder*
 - Always-available: `platform.core.execute_esql` (plus additional platform tools for search, index mapping, and
   documentation — see `scripts/agent_builder_constants.json`)
 - ML API spec (if available): `.kibana_ai_openapi_spec_elasticsearch` — see
-  [../../../../Global_References/observability-monitoring-logging/anomaly-detection-openapi-spec-discover.md](../../../../Global_References/observability-monitoring-logging/anomaly-detection-openapi-spec-discover.md) for
+  [../../../references/anomaly-detection-openapi-spec-discover.md](../../../references/anomaly-detection-openapi-spec-discover.md) for
   discovery pattern.
 - **Run `ad_validate_ml_tool_permissions` first** when tools return empty/misleading results — missing privileges are
   the most common cause of false negatives. Full permissions matrix:
-  [../../../../Global_References/observability-monitoring-logging/permissions-matrix.md](../../../../Global_References/observability-monitoring-logging/permissions-matrix.md).
+  [../../../references/permissions-matrix.md](../../../references/permissions-matrix.md).
 
 ## Mode Selector
 
@@ -50,7 +50,7 @@ Single skill covering all anomaly detection work against **Kibana Agent Builder*
 | "Why score high/low?" / renormalization / model bounds / forecasts            | **Explain**                                                                                            |
 | Missing docs / memory limit / datafeed stopped / CCS / lifecycle / calendars  | **Troubleshoot**                                                                                       |
 | Create a job / configure a datafeed / start analysis / retrieve results       | **Manage**                                                                                             |
-| Security framing (attack chains, MITRE, exfil)                                | Investigate + [../../../../Global_References/observability-monitoring-logging/security-anomaly-expert.md](../../../../Global_References/observability-monitoring-logging/security-anomaly-expert.md)           |
+| Security framing (attack chains, MITRE, exfil)                                | Investigate + [../../../references/security-anomaly-expert.md](../../../references/security-anomaly-expert.md)           |
 | [Observability](../../../common/fundamentals/observability/SKILL.md)/SRE framing (degradation, [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md), deployment regression)      | Investigate + [../../../Global_References/[observability](../../../common/fundamentals/observability/SKILL.md)-anomaly-expert.md](../../../Global_References/[observability](../observability/SKILL.md)-anomaly-expert.md) |
 
 When a question spans modes: **Investigate → Explain → Troubleshoot**. Don't blend mode logic — finish one before moving
@@ -67,7 +67,7 @@ on.
 - Low scores across many jobs > one high score — composite cross-job signal often beats single-detector severity
 
 > Full score definitions, renormalization mechanics, and `anomaly_score_explanation` components:
-> [../../../../Global_References/observability-monitoring-logging/score-reference.md](../../../../Global_References/observability-monitoring-logging/score-reference.md).
+> [../../../references/score-reference.md](../../../references/score-reference.md).
 
 ## Core concepts
 
@@ -115,8 +115,8 @@ vs. anomaly window).
 
 Finish with a written RCA: **root cause entity · affected jobs · temporal progression · fault class
 (resource/network/application) · severity · recommended actions**. Worked example:
-[../../../../Global_References/observability-monitoring-logging/worked-example.md](../../../../Global_References/observability-monitoring-logging/worked-example.md). Full ES|QL templates and parameters:
-[../../../../Global_References/observability-monitoring-logging/investigate-anomaly-esql-tools.md](../../../../Global_References/observability-monitoring-logging/investigate-anomaly-esql-tools.md).
+[../../../references/worked-example.md](../../../references/worked-example.md). Full ES|QL templates and parameters:
+[../../../references/investigate-anomaly-esql-tools.md](../../../references/investigate-anomaly-esql-tools.md).
 
 ### Rules
 
@@ -195,7 +195,7 @@ Finish with a written RCA: **root cause entity · affected jobs · temporal prog
 5. **Weekly seasonality needs ≥3 weeks of training data** — flag young jobs as the cause.
 
 For detector function selection details, see
-[../../../../Global_References/observability-monitoring-logging/anomaly-detection-functions.md](../../../../Global_References/observability-monitoring-logging/anomaly-detection-functions.md).
+[../../../references/anomaly-detection-functions.md](../../../references/anomaly-detection-functions.md).
 
 ---
 
@@ -264,7 +264,7 @@ Recover a corrupted period without resetting the whole model: `ad_revert_model_s
 | Calendars              | `ad_get_calendar_events`, `ad_create_calendar_event`                                                                                                                                                    |
 
 Full parameter tables, ES|QL templates, and REST step lists:
-[../../../../Global_References/observability-monitoring-logging/troubleshoot-anomaly-tool-reference.md](../../../../Global_References/observability-monitoring-logging/troubleshoot-anomaly-tool-reference.md).
+[../../../references/troubleshoot-anomaly-tool-reference.md](../../../references/troubleshoot-anomaly-tool-reference.md).
 
 ### Rules
 
@@ -308,7 +308,7 @@ GET  _ml/anomaly_detectors/<job_id>/results/records  # 4. Read results
    | `query_delay`    | `"60s"`                                 | P95 ingest latency is higher                      |
 
 3. **Choose detector function** from user intent — full table in
-   [../../../../Global_References/observability-monitoring-logging/anomaly-detection-functions.md](../../../../Global_References/observability-monitoring-logging/anomaly-detection-functions.md):
+   [../../../references/anomaly-detection-functions.md](../../../references/anomaly-detection-functions.md):
    - "high CPU" / "unusually large" → `high_mean` or `high_sum`
    - "rare logins" / "unusual values" → `rare` (variants below)
    - "too many requests" / "spike in count" → `high_count`
@@ -331,7 +331,7 @@ GET  _ml/anomaly_detectors/<job_id>/results/records  # 4. Read results
 For **batch analysis on historical data**, pass `start` and `end` to the datafeed start call.
 
 > Worked examples (rare-username, DNS exfil, large-downloads) with full JSON bodies and datafeed filters:
-> [../../../../Global_References/observability-monitoring-logging/job-creation-recipes.md](../../../../Global_References/observability-monitoring-logging/job-creation-recipes.md).
+> [../../../references/job-creation-recipes.md](../../../references/job-creation-recipes.md).
 
 ### Rules
 
@@ -379,7 +379,7 @@ Workflow tool exclusions and prefixes live in `scripts/agent_builder_constants.j
 
 ES|QL tool specs live under `references/kibana/tools/esql/*.json`; workflow definitions under
 `references/kibana/workflows/*.yaml`. Each Mode section above lists the tools it uses. Full surface:
-[../../../../Global_References/observability-monitoring-logging/kibana-anomaly-detection_tools.md](../../../../Global_References/observability-monitoring-logging/kibana-anomaly-detection_tools.md) (ES|QL) and [../../../../Global_References/observability-monitoring-logging/workflow-tools.md](../../../../Global_References/observability-monitoring-logging/workflow-tools.md)
+[../../../references/kibana-anomaly-detection_tools.md](../../../references/kibana-anomaly-detection_tools.md) (ES|QL) and [../../../references/workflow-tools.md](../../../references/workflow-tools.md)
 (workflows).
 
 ### Key system indices

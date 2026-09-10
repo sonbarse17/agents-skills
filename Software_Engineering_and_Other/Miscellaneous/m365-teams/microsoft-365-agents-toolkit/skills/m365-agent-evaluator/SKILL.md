@@ -33,12 +33,12 @@ Do not recommend the old private `aka.ms` installer, global installs, bare `rune
 
 1. Identify the user goal: setup, dataset authoring, running evals, analyzing results, or updating an existing eval suite.
 2. Load only the reference needed for the current goal:
-   - `../../../../../../Global_References/Software_Engineering_and_Other/m365-agent-evaluator_workflow.md` for the end-to-end operator workflow and CLI commands.
-   - `../../../../../../Global_References/Software_Engineering_and_Other/azure-setup.md` for prerequisites, env files, and secret handling.
-   - `../../../../../../Global_References/Software_Engineering_and_Other/eval-templates.md` when creating or editing eval datasets.
-   - `../../../../../../Global_References/Software_Engineering_and_Other/pra-framework.md` when deciding what scenarios to generate.
-   - `../../../../../../Global_References/Software_Engineering_and_Other/result-analysis.md` after JSON/CSV/HTML results exist.
-   - `../../../../../../Global_References/Software_Engineering_and_Other/m365-agent-evaluator_guardrails.md` before writing files, handling secrets, clearing cache, signing out, or troubleshooting.
+   - `../../../../../references/m365-agent-evaluator_workflow.md` for the end-to-end operator workflow and CLI commands.
+   - `../../../../../references/azure-setup.md` for prerequisites, env files, and secret handling.
+   - `../../../../../references/eval-templates.md` when creating or editing eval datasets.
+   - `../../../../../references/pra-framework.md` when deciding what scenarios to generate.
+   - `../../../../../references/result-analysis.md` after JSON/CSV/HTML results exist.
+   - `../../../../../references/m365-agent-evaluator_guardrails.md` before writing files, handling secrets, clearing cache, signing out, or troubleshooting.
 3. Detect project shape:
    - ATK: `.env.local`, `.env.local.user`, `env\.env.local.user`, `m365agents.yml`, or `appPackage\declarativeAgent.json`.
    - Non-ATK: an eval dataset plus `M365_AGENT_ID`, `--m365-agent-id`, or a named environment file such as `env\.env.dev`.

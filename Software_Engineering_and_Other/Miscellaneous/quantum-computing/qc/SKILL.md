@@ -431,14 +431,14 @@ An open-source project with 500+ contributors needed consistent quality across P
 
 ## References
 
-- ../../../../Global_References/Software_Engineering_and_Other/inspection-process.md — Formal inspection process with roles and defect classification
-- ../../../../Global_References/Software_Engineering_and_Other/qc-advanced.md — QC advanced topics including [microservices](../../../Patterns/distributed-systems/microservices/SKILL.md), security, and DevOps
-- ../../../../Global_References/Software_Engineering_and_Other/qc-checklists.md — Comprehensive checklists for code review, security, and deployment
-- ../../../../Global_References/Software_Engineering_and_Other/qc-fundamentals.md — Core QC concepts and terminology
-- ../../../../Global_References/Software_Engineering_and_Other/quality-gates-matrix.md — Quality gate definitions per language (JS, [Python](../../../Languages/python/python/SKILL.md), Go, Rust)
-- ../../../../Global_References/Software_Engineering_and_Other/technical-debt-register.md — Technical debt register template with severity and effort
-- ../../../../Global_References/Software_Engineering_and_Other/qc-process-framework.md — QC process framework and maturity model
-- ../../../../Global_References/Software_Engineering_and_Other/qc-metrics-dashboard.md — Metrics-driven quality [dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) and KPIs
+- ../../../references/inspection-process.md — Formal inspection process with roles and defect classification
+- ../../../references/qc-advanced.md — QC advanced topics including [microservices](../../../Patterns/distributed-systems/microservices/SKILL.md), security, and DevOps
+- ../../../references/qc-checklists.md — Comprehensive checklists for code review, security, and deployment
+- ../../../references/qc-fundamentals.md — Core QC concepts and terminology
+- ../../../references/quality-gates-matrix.md — Quality gate definitions per language (JS, [Python](../../../Languages/python/python/SKILL.md), Go, Rust)
+- ../../../references/technical-debt-register.md — Technical debt register template with severity and effort
+- ../../../references/qc-process-framework.md — QC process framework and maturity model
+- ../../../references/qc-metrics-dashboard.md — Metrics-driven quality [dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) and KPIs
 
 ## Handoff
 After completing this skill:

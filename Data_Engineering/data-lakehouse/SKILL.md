@@ -497,14 +497,14 @@ Primary ecosystem?
 - Choose lakehouse platform based on ecosystem, ML needs, and open standards
 
 ## References
-  - ../../Global_References/Data_Engineering/lakehouse-architecture.md — Lakehouse Architecture Reference
-  - ../../Global_References/Data_Engineering/lakehouse-catalog-integration.md — Lakehouse Catalog Integration
-  - ../../Global_References/Data_Engineering/lakehouse-ecosystem-tools.md — Lakehouse Ecosystem Tools
-  - ../../Global_References/Data_Engineering/lakehouse-format-deep-dive.md — Lakehouse Format Deep Dive
+  - ../references/lakehouse-architecture.md — Lakehouse Architecture Reference
+  - ../references/lakehouse-catalog-integration.md — Lakehouse Catalog Integration
+  - ../references/lakehouse-ecosystem-tools.md — Lakehouse Ecosystem Tools
+  - ../references/lakehouse-format-deep-dive.md — Lakehouse Format Deep Dive
   - ../../../Global_References/lakehouse-[monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Lakehouse [Monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
-  - ../../Global_References/Data_Engineering/lakehouse-platform.md — Lakehouse Platform Reference
-  - ../../Global_References/Data_Engineering/lakehouse-query-engines.md — Lakehouse Query Engines
-  - ../../Global_References/Data_Engineering/medallion-architecture.md — Medallion Architecture Reference
+  - ../references/lakehouse-platform.md — Lakehouse Platform Reference
+  - ../references/lakehouse-query-engines.md — Lakehouse Query Engines
+  - ../references/medallion-architecture.md — Medallion Architecture Reference
   - ../../../Global_References/lakehouse-[architecture-patterns](../../Software_Engineering_and_Other/Patterns/architecture/architecture-patterns/SKILL.md).md — Lakehouse Architecture Patterns
   - ../../../Global_References/lakehouse-[performance-optimization](../../Software_Engineering_and_Other/Backend/patterns/performance-optimization/SKILL.md).md — Performance Optimization Reference
 ## Architecture Decision Trees

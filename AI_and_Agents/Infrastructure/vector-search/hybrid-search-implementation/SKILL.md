@@ -42,7 +42,7 @@ Query → ┬─► Vector Search ──► Candidates ─┐
 
 ## Templates and detailed worked examples
 
-Full template library and detailed worked examples live in `../../../../Global_References/AI_and_Agents/hybrid-search-implementation_details.md`. Read that file when you need the concrete templates.
+Full template library and detailed worked examples live in `../../../references/hybrid-search-implementation_details.md`. Read that file when you need the concrete templates.
 
 ## Best Practices
 

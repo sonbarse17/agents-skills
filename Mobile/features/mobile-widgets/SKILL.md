@@ -464,11 +464,11 @@ struct TodoWidget_Previews: PreviewProvider {
 
 ## References
   - ../../../Global_References/[android](../../platforms/android/SKILL.md)-app-widgets.md — [Android](../../platforms/android/SKILL.md) App Widgets
-  - ../../Global_References/Mobile/complications.md — Complications (Watch Widgets)
-  - ../../Global_References/Mobile/ios-widgetkit.md — iOS WidgetKit
-  - ../../Global_References/Mobile/mobile-widgets-advanced.md — Mobile Widgets Advanced Topics
-  - ../../Global_References/Mobile/mobile-widgets-fundamentals.md — Mobile Widgets Fundamentals
-  - ../../Global_References/Mobile/widget-refresh.md — Widget Refresh Strategy
+  - ../../references/complications.md — Complications (Watch Widgets)
+  - ../../references/ios-widgetkit.md — iOS WidgetKit
+  - ../../references/mobile-widgets-advanced.md — Mobile Widgets Advanced Topics
+  - ../../references/mobile-widgets-fundamentals.md — Mobile Widgets Fundamentals
+  - ../../references/widget-refresh.md — Widget Refresh Strategy
 ## Handoff
 - `mobile/[mobile-localization](../mobile-localization/SKILL.md)` — Widget string localization and RTL support
 - `design/ui-kit` — Widget design guidelines and brand consistency

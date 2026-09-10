@@ -349,9 +349,9 @@ priority_matrix:
 | Monitor for new CVEs | Subscribe to security advisories for dependencies |
 
 ## References
-  - ../../../Global_References/Security/security-auditor-advanced.md — Security Auditor Advanced Topics
+  - ../../references/security-auditor-advanced.md — Security Auditor Advanced Topics
   - references/security-auditor-api.md — API Security Testing Reference
-  - ../../../Global_References/Security/security-auditor-fundamentals.md — Security Auditor Fundamentals
+  - ../../references/security-auditor-fundamentals.md — Security Auditor Fundamentals
   - references/security-auditor-remediation.md — Security Remediation Reference
    - references/security-auditor-tools.md — Security Tools Reference
 

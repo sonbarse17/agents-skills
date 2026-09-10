@@ -414,12 +414,12 @@ export const config: Config = {
 - Mark props as `mutable: true` only when the component itself mutates them.
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/stencil-advanced.md — Stencil Advanced Topics
-  - ../../../../Global_References/Software_Engineering_and_Other/stencil-architecture.md — Stencil Architecture Patterns
-  - ../../../../Global_References/Software_Engineering_and_Other/stencil-components.md — Stencil Components & Patterns
-  - ../../../../Global_References/Software_Engineering_and_Other/stencil-deployment.md — Stencil Deployment
-  - ../../../../Global_References/Software_Engineering_and_Other/stencil-fundamentals.md — Stencil Fundamentals
-  - ../../../../Global_References/Software_Engineering_and_Other/stencil-setup.md — Stencil Setup Guide
+  - ../../../references/stencil-advanced.md — Stencil Advanced Topics
+  - ../../../references/stencil-architecture.md — Stencil Architecture Patterns
+  - ../../../references/stencil-components.md — Stencil Components & Patterns
+  - ../../../references/stencil-deployment.md — Stencil Deployment
+  - ../../../references/stencil-fundamentals.md — Stencil Fundamentals
+  - ../../../references/stencil-setup.md — Stencil Setup Guide
 
 ## Handoff
 No artifact produced.

@@ -59,12 +59,12 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Prompt Patterns | `../../../../Global_References/AI_and_Agents/prompt-patterns.md` | Zero-shot, few-shot, chain-of-thought, ReAct |
-| Optimization | `../../../../Global_References/AI_and_Agents/prompt-engineer_prompt-optimization.md` | Iterative refinement, A/B testing, token reduction |
-| Evaluation | `../../../../Global_References/AI_and_Agents/evaluation-frameworks.md` | Metrics, test suites, automated evaluation |
-| Structured Outputs | `../../../../Global_References/AI_and_Agents/structured-outputs.md` | JSON mode, function calling, schema design |
-| System Prompts | `../../../../Global_References/AI_and_Agents/prompt-engineer_system-prompts.md` | Persona design, guardrails, injection defense |
-| Context Management | `../../../../Global_References/AI_and_Agents/context-management.md` | Attention budget, degradation patterns, context optimization |
+| Prompt Patterns | `../../../references/prompt-patterns.md` | Zero-shot, few-shot, chain-of-thought, ReAct |
+| Optimization | `../../../references/prompt-engineer_prompt-optimization.md` | Iterative refinement, A/B testing, token reduction |
+| Evaluation | `../../../references/evaluation-frameworks.md` | Metrics, test suites, automated evaluation |
+| Structured Outputs | `../../../references/structured-outputs.md` | JSON mode, function calling, schema design |
+| System Prompts | `../../../references/prompt-engineer_system-prompts.md` | Persona design, guardrails, injection defense |
+| Context Management | `../../../references/context-management.md` | Attention budget, degradation patterns, context optimization |
 
 ## Prompt Examples
 

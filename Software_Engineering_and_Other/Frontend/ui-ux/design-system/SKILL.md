@@ -426,14 +426,14 @@ A well-designed design system component library should add:
 
 ## References
 
-- `../../../../Global_References/Software_Engineering_and_Other/component-api.md` -- Component API Design
-- `../../../../Global_References/Software_Engineering_and_Other/design-system_component-architecture.md` -- Component Architecture
-- `../../../../Global_References/Software_Engineering_and_Other/design-system-implementation.md` -- Design System Implementation
-- `../../../../Global_References/Software_Engineering_and_Other/design-system-testing.md` -- Design System Testing
-- `../../../../Global_References/Software_Engineering_and_Other/design-system_design-tokens.md` -- Design Tokens
-- `../../../../Global_References/Software_Engineering_and_Other/theme-implementation.md` -- Theme Implementation
-- `../../../../Global_References/Software_Engineering_and_Other/design-system-token-architecture.md` -- Design System Token Architecture
-- `../../../../Global_References/Software_Engineering_and_Other/design-system-component-library.md` -- Design System Component Library Architecture
+- `../../../references/component-api.md` -- Component API Design
+- `../../../references/design-system_component-architecture.md` -- Component Architecture
+- `../../../references/design-system-implementation.md` -- Design System Implementation
+- `../../../references/design-system-testing.md` -- Design System Testing
+- `../../../references/design-system_design-tokens.md` -- Design Tokens
+- `../../../references/theme-implementation.md` -- Theme Implementation
+- `../../../references/design-system-token-architecture.md` -- Design System Token Architecture
+- `../../../references/design-system-component-library.md` -- Design System Component Library Architecture
 
 ## Handoff
 No artifact produced.

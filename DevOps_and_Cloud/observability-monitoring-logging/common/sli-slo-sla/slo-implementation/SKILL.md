@@ -279,6 +279,6 @@ slo:http_availability:error_budget_remaining
 
 ## Additional patterns and templates
 
-More detailed templates and worked examples live in `../../../../Global_References/observability-monitoring-logging/slo-implementation_details.md`. Read that file for the full pattern library.
+More detailed templates and worked examples live in `../../../references/slo-implementation_details.md`. Read that file for the full pattern library.
 
 

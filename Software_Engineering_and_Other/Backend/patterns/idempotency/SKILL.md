@@ -424,14 +424,14 @@ maxmemory: 512mb                # Cap idempotency storage
 - Always include a timestamp in the idempotency record.
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/exactly-once-strategies.md — Exactly-Once Execution Strategies
-  - ../../../../Global_References/Software_Engineering_and_Other/idempotency-distributed.md — Distributed Idempotency
-  - ../../../../Global_References/Software_Engineering_and_Other/idempotency-failure-modes.md — Idempotency Failure Modes
-  - ../../../../Global_References/Software_Engineering_and_Other/idempotency-keys.md — Idempotency Keys
-  - ../../../../Global_References/Software_Engineering_and_Other/idempotency-middleware.md — Idempotency Middleware Patterns
-  - ../../../../Global_References/Software_Engineering_and_Other/idempotency-patterns.md — Idempotency Key Implementation Patterns
-  - ../../../../Global_References/Software_Engineering_and_Other/idempotency-storage.md — Idempotency Storage Backends
-  - ../../../../Global_References/Software_Engineering_and_Other/idempotency-testing.md — Idempotency Testing
+  - ../../../references/exactly-once-strategies.md — Exactly-Once Execution Strategies
+  - ../../../references/idempotency-distributed.md — Distributed Idempotency
+  - ../../../references/idempotency-failure-modes.md — Idempotency Failure Modes
+  - ../../../references/idempotency-keys.md — Idempotency Keys
+  - ../../../references/idempotency-middleware.md — Idempotency Middleware Patterns
+  - ../../../references/idempotency-patterns.md — Idempotency Key Implementation Patterns
+  - ../../../references/idempotency-storage.md — Idempotency Storage Backends
+  - ../../../references/idempotency-testing.md — Idempotency Testing
 ## Handoff
 No artifact produced unless requested.
 Next skill: distributed-locking — coordinate access to shared resources across services.

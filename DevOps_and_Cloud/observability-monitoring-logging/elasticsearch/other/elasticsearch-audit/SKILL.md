@@ -28,7 +28,7 @@ For Kibana [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) l
 and API key management, see **[elasticsearch-authn](../elasticsearch-authn/SKILL.md)**. For roles and user management, see **[elasticsearch-authz](../elasticsearch-authz/SKILL.md)**. For
 diagnosing security errors, see **[elasticsearch-security-troubleshooting](../elasticsearch-security-troubleshooting/SKILL.md)**.
 
-For detailed API endpoints and event types, see [../../../../Global_References/observability-monitoring-logging/elasticsearch-audit_api-reference.md](../../../../Global_References/observability-monitoring-logging/elasticsearch-audit_api-reference.md).
+For detailed API endpoints and event types, see [../../../references/elasticsearch-audit_api-reference.md](../../../references/elasticsearch-audit_api-reference.md).
 
 > **Deployment note:** [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging configuration differs across deployment types. See
 > [Deployment Compatibility](#deployment-compatibility) for details.
@@ -164,7 +164,7 @@ Excluding `access_granted` significantly reduces log volume on busy clusters —
 | `run_as_denied`           | A run-as impersonation was denied                          |
 | `security_config_change`  | A security setting was changed (role, user, API key, etc.) |
 
-See [../../../../Global_References/observability-monitoring-logging/elasticsearch-audit_api-reference.md](../../../../Global_References/observability-monitoring-logging/elasticsearch-audit_api-reference.md) for the complete event type list with field details.
+See [../../../references/elasticsearch-audit_api-reference.md](../../../references/elasticsearch-audit_api-reference.md) for the complete event type list with field details.
 
 ## Filter Policies
 
@@ -305,7 +305,7 @@ This captures role creation/deletion, user changes, API key operations, and role
 
 Use `terms` aggregations on `event.action` (with `size: 0`) to count events by type over a time window. To detect
 brute-force attempts, aggregate `authentication_failed` events by `source.ip` with `min_doc_count: 5`. See
-[../../../../Global_References/observability-monitoring-logging/elasticsearch-audit_api-reference.md](../../../../Global_References/observability-monitoring-logging/elasticsearch-audit_api-reference.md) for full aggregation query examples.
+[../../../references/elasticsearch-audit_api-reference.md](../../../references/elasticsearch-audit_api-reference.md) for full aggregation query examples.
 
 ## Correlate with Kibana [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logs
 

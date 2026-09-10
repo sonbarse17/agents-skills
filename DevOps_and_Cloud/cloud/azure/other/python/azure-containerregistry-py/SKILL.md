@@ -287,6 +287,6 @@ for manifest in client.list_manifest_properties("my-image"):
 
 | File | Contents |
 |------|----------|
-| [../../../../../Global_References/cloud/azure-containerregistry-py_capabilities.md](../../../../../Global_References/cloud/azure-containerregistry-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
-| [../../../../../Global_References/cloud/azure-containerregistry-py_non-hero-scenarios.md](../../../../../Global_References/cloud/azure-containerregistry-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
+| [../../../../references/azure-containerregistry-py_capabilities.md](../../../../references/azure-containerregistry-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
+| [../../../../references/azure-containerregistry-py_non-hero-scenarios.md](../../../../references/azure-containerregistry-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
 

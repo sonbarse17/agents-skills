@@ -152,7 +152,7 @@ JOIN orders o ON u.id = o.user_id;
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../../../Global_References/Software_Engineering_and_Other/sql-optimization-patterns_details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../references/sql-optimization-patterns_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 

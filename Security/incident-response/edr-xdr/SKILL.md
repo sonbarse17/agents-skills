@@ -401,13 +401,13 @@ A SaaS company using Microsoft 365 Defender (XDR) detected a low-confidence EDR 
 - Security tool exclusions reviewed quarterly for changes.
 
 ## References
-  - ../../../Global_References/Security/detection-engineering.md -- Detection Engineering
-  - ../../../Global_References/Security/edr-deployment.md -- EDR Deployment
-  - ../../../Global_References/Security/edr-detection-rules.md -- EDR Detection Rule Patterns
+  - ../../references/detection-engineering.md -- Detection Engineering
+  - ../../references/edr-deployment.md -- EDR Deployment
+  - ../../references/edr-detection-rules.md -- EDR Detection Rule Patterns
   - references/edr-detection-engineering.md -- EDR Detection Engineering Reference
-  - ../../../Global_References/Security/edr-platforms.md -- EDR/XDR Platform Comparison
-  - ../../../Global_References/Security/edr-xdr-advanced.md -- EDR/XDR Advanced Topics
-  - ../../../Global_References/Security/edr-xdr-fundamentals.md -- EDR/XDR Fundamentals
+  - ../../references/edr-platforms.md -- EDR/XDR Platform Comparison
+  - ../../references/edr-xdr-advanced.md -- EDR/XDR Advanced Topics
+  - ../../references/edr-xdr-fundamentals.md -- EDR/XDR Fundamentals
   - ../../../Global_References/[incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-investigation.md -- EDR [Incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Investigation
   - references/xdr-correlation-analytics.md -- XDR Correlation and Analytics Reference
 ## Handoff

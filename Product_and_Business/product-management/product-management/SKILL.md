@@ -625,18 +625,18 @@ tier_design:
 - **Annual discounts**: 15-20% discount for annual commitments (improves retention, cash flow)
 
 ## References
-- [Product Management Fundamentals](../../../Global_References/Product_and_Business/product-management-fundamentals.md) — API product management fundamentals: lifecycle, maturity model, strategy canvas, governance
-- [Product Management Advanced](../../../Global_References/Product_and_Business/product-management-advanced.md) — Advanced API product strategy: consumer insights, SLA management, partnership programs
-- [API Lifecycle Management](../../../Global_References/Product_and_Business/api-lifecycle-management.md) — Full lifecycle: design to sunset, versioning, migration
-- [API Strategy](../../../Global_References/Product_and_Business/api-strategy.md) — API business models, strategy canvas, governance
+- [Product Management Fundamentals](../../references/product-management-fundamentals.md) — API product management fundamentals: lifecycle, maturity model, strategy canvas, governance
+- [Product Management Advanced](../../references/product-management-advanced.md) — Advanced API product strategy: consumer insights, SLA management, partnership programs
+- [API Lifecycle Management](../../references/api-lifecycle-management.md) — Full lifecycle: design to sunset, versioning, migration
+- [API Strategy](../../references/api-strategy.md) — API business models, strategy canvas, governance
 - [Developer Experience](../../ops-and-hiring/developer-experience/SKILL.md).md) — DX principles, SDKs, documentation, error messages
-- [Developer Portal](../../../Global_References/Product_and_Business/developer-portal.md) — Developer portal design, self-service onboarding, analytics
-- [Monetization](../../../Global_References/Product_and_Business/monetization.md) — Pricing models, usage tracking, rate limiting tiers
-- [Product Metrics](../../../Global_References/Product_and_Business/product-metrics.md) — Adoption, DX, reliability, and business metrics with [dashboards](../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)
-- [API Consumer Insights](../../../Global_References/Product_and_Business/api-consumer-insights.md) — Consumer lifecycle, health scoring, churn prediction
-- [API Governance](../../../Global_References/Product_and_Business/api-governance.md) — Governance framework, API council, design standards
-- [API Stakeholder Management](../../../Global_References/Product_and_Business/api-stakeholder-management.md) — Stakeholder mapping, communication, escalation
-- [API Launch Playbook](../../../Global_References/Product_and_Business/api-launch-playbook.md) — Launch planning, execution, metrics, retrospective
+- [Developer Portal](../../references/developer-portal.md) — Developer portal design, self-service onboarding, analytics
+- [Monetization](../../references/monetization.md) — Pricing models, usage tracking, rate limiting tiers
+- [Product Metrics](../../references/product-metrics.md) — Adoption, DX, reliability, and business metrics with [dashboards](../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)
+- [API Consumer Insights](../../references/api-consumer-insights.md) — Consumer lifecycle, health scoring, churn prediction
+- [API Governance](../../references/api-governance.md) — Governance framework, API council, design standards
+- [API Stakeholder Management](../../references/api-stakeholder-management.md) — Stakeholder mapping, communication, escalation
+- [API Launch Playbook](../../references/api-launch-playbook.md) — Launch planning, execution, metrics, retrospective
 
 <!-- COMPRESSION FOOTER -->
 <!--

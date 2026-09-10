@@ -461,14 +461,14 @@ metrics:
 15. Each UAT session must have a trained facilitator who is not the developer
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/acceptance-testing_acceptance-criteria.md — Acceptance Criteria Deep Dive
-  - ../../../../Global_References/Software_Engineering_and_Other/acceptance-testing-advanced.md — Acceptance Testing Advanced Topics
-  - ../../../../Global_References/Software_Engineering_and_Other/acceptance-testing-fundamentals.md — Acceptance Testing Fundamentals
-  - ../../../../Global_References/Software_Engineering_and_Other/alpha-beta.md — Alpha and Beta Testing
-  - ../../../../Global_References/Software_Engineering_and_Other/beta-program-management.md — Beta Program Management
-  - ../../../../Global_References/Software_Engineering_and_Other/business-scenarios.md — Business Scenario Testing
-  - ../../../../Global_References/Software_Engineering_and_Other/gherkin-best-practices.md — Gherkin Best Practices
-  - ../../../../Global_References/Software_Engineering_and_Other/uat-process.md — User Acceptance Testing (UAT) Process
+  - ../../../references/acceptance-testing_acceptance-criteria.md — Acceptance Criteria Deep Dive
+  - ../../../references/acceptance-testing-advanced.md — Acceptance Testing Advanced Topics
+  - ../../../references/acceptance-testing-fundamentals.md — Acceptance Testing Fundamentals
+  - ../../../references/alpha-beta.md — Alpha and Beta Testing
+  - ../../../references/beta-program-management.md — Beta Program Management
+  - ../../../references/business-scenarios.md — Business Scenario Testing
+  - ../../../references/gherkin-best-practices.md — Gherkin Best Practices
+  - ../../../references/uat-process.md — User Acceptance Testing (UAT) Process
 ## Handoff
 After acceptance testing completion, hand off to:
 - `[quality-regression-testing](../../regression/regression-testing/SKILL.md)` — for regression suite updates from accepted changes

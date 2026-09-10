@@ -563,15 +563,15 @@ Seamless camera switching (front/back/ultrawide/tele)?
 ```
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/camera-apis.md — Camera APIs
-  - ../../../../Global_References/Software_Engineering_and_Other/camera-capture.md — Camera Capture
-  - ../../../../Global_References/Software_Engineering_and_Other/camera-media-capture.md — Camera & Media Capture Patterns
-  - ../../../../Global_References/Software_Engineering_and_Other/camera-permissions.md — Camera Permissions — iOS & [Android](../../../../Mobile/platforms/android/SKILL.md)
-  - ../../../../Global_References/Software_Engineering_and_Other/media-processing.md — Media Processing
-  - ../../../../Global_References/Software_Engineering_and_Other/video-recording.md — Video Recording — Mobile
-  - ../../../../Global_References/Software_Engineering_and_Other/camera-media-fundamentals.md — Camera & Media Fundamentals
-  - ../../../../Global_References/Software_Engineering_and_Other/camera-media-advanced.md — Advanced Camera & Media Patterns
-  - ../../../../Global_References/Software_Engineering_and_Other/camera-document-scanning.md — Document Scanning Guide
+  - ../../../references/camera-apis.md — Camera APIs
+  - ../../../references/camera-capture.md — Camera Capture
+  - ../../../references/camera-media-capture.md — Camera & Media Capture Patterns
+  - ../../../references/camera-permissions.md — Camera Permissions — iOS & [Android](../../../../Mobile/platforms/android/SKILL.md)
+  - ../../../references/media-processing.md — Media Processing
+  - ../../../references/video-recording.md — Video Recording — Mobile
+  - ../../../references/camera-media-fundamentals.md — Camera & Media Fundamentals
+  - ../../../references/camera-media-advanced.md — Advanced Camera & Media Patterns
+  - ../../../references/camera-document-scanning.md — Document Scanning Guide
 
 ## Handoff
 Hand off to [mobile-networking](../../../../Mobile/common/networking/SKILL.md) skill for upload progress tracking and retry logic, or mobile-storage for local media cache management.

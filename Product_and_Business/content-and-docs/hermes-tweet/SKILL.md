@@ -77,7 +77,7 @@ Ask for these inputs before selecting routes:
 3. Use `tweet_action` for private or state-changing routes only after explicit approval.
 4. Keep API keys in environment variables or the Hermes runtime env file.
 5. Do not paste credentials into prompts, issues, PR comments, or tool inputs.
-6. Load [workflow patterns](../../../Global_References/Product_and_Business/workflows.md) when the user asks for a
+6. Load [workflow patterns](../../references/workflows.md) when the user asks for a
    campaign, monitor, support, or giveaway workflow instead of a single read.
 
 ## Tool Model
@@ -165,7 +165,7 @@ The [social-publishing](../social-publishing/SKILL.md) plugin complements Hermes
 publishing. Hermes Tweet is focused on the Hermes Agent X/Twitter toolset and its
 read-first, approval-gated operating model.
 
-See [the endpoint and approval contract](../../../Global_References/Product_and_Business/endpoint-contract.md) when a
+See [the endpoint and approval contract](../../references/endpoint-contract.md) when a
 route boundary is unclear. See the official guide at
 https://[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/Xquik-dev/hermes-tweet#readme.
 

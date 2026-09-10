@@ -647,14 +647,14 @@ Fix: Return 202 Accepted immediately. Use webhook or polling for result.
 
 ## References
   - ../../../Global_References/job-[monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Background Job [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
-  - ../../../../Global_References/Software_Engineering_and_Other/job-patterns.md — Background Job Patterns
-  - ../../../../Global_References/Software_Engineering_and_Other/job-scheduling.md — Background Job Scheduling
-  - ../../../../Global_References/Software_Engineering_and_Other/job-testing.md — Background Job Testing
-  - ../../../../Global_References/Software_Engineering_and_Other/job-types.md — Job Types and Queue Patterns
-  - ../../../../Global_References/Software_Engineering_and_Other/queue-setup.md — Queue Setup and Scheduled Tasks
-  - ../../../../Global_References/Software_Engineering_and_Other/background-jobs-fundamentals.md — Background Jobs Fundamentals
-  - ../../../../Global_References/Software_Engineering_and_Other/background-jobs-advanced.md — Background Jobs Advanced Patterns
-  - ../../../../Global_References/Software_Engineering_and_Other/background-jobs-chaining.md — Job Chaining and Workflow Patterns
+  - ../../../references/job-patterns.md — Background Job Patterns
+  - ../../../references/job-scheduling.md — Background Job Scheduling
+  - ../../../references/job-testing.md — Background Job Testing
+  - ../../../references/job-types.md — Job Types and Queue Patterns
+  - ../../../references/queue-setup.md — Queue Setup and Scheduled Tasks
+  - ../../../references/background-jobs-fundamentals.md — Background Jobs Fundamentals
+  - ../../../references/background-jobs-advanced.md — Background Jobs Advanced Patterns
+  - ../../../references/background-jobs-chaining.md — Job Chaining and Workflow Patterns
 
 ## Handoff
 `[backend-event-driven](../../distributed-systems/event-driven/SKILL.md)` for job completion events and chained workflows

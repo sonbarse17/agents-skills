@@ -46,11 +46,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Spring Boot | `../../../../Global_References/Software_Engineering_and_Other/spring-boot-setup.md` | Project setup, configuration, starters |
-| Reactive | `../../../../Global_References/Software_Engineering_and_Other/reactive-webflux.md` | WebFlux, Project Reactor, R2DBC |
-| Data Access | `../../../../Global_References/Software_Engineering_and_Other/jpa-optimization.md` | JPA, Hibernate, query tuning |
-| Security | `../../../../Global_References/Software_Engineering_and_Other/spring-security.md` | OAuth2, JWT, method security |
-| Testing | `../../../../Global_References/Software_Engineering_and_Other/java-architect_testing-patterns.md` | JUnit 5, TestContainers, Mockito |
+| Spring Boot | `../../../references/spring-boot-setup.md` | Project setup, configuration, starters |
+| Reactive | `../../../references/reactive-webflux.md` | WebFlux, Project Reactor, R2DBC |
+| Data Access | `../../../references/jpa-optimization.md` | JPA, Hibernate, query tuning |
+| Security | `../../../references/spring-security.md` | OAuth2, JWT, method security |
+| Testing | `../../../references/java-architect_testing-patterns.md` | JUnit 5, TestContainers, Mockito |
 
 ## Constraints
 

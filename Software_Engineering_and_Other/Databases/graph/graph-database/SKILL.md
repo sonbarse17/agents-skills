@@ -408,14 +408,14 @@ Graph vs document ([MongoDB](../../nosql/mongodb/SKILL.md)): document stores emb
 - Document every relationship type with direction semantics
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/graph-algorithms.md — Graph Algorithms
-  - ../../../../Global_References/Software_Engineering_and_Other/graph-modeling.md — Graph Data Modeling
-  - ../../../../Global_References/Software_Engineering_and_Other/graph-performance.md — Graph Database Performance
-  - ../../../../Global_References/Software_Engineering_and_Other/graph-platforms.md — Graph Database Platforms
-  - ../../../../Global_References/Software_Engineering_and_Other/graph-use-cases.md — Graph Database Use Cases Reference
-  - ../../../../Global_References/Software_Engineering_and_Other/query-patterns.md — Graph Query Patterns Reference
+  - ../../../references/graph-algorithms.md — Graph Algorithms
+  - ../../../references/graph-modeling.md — Graph Data Modeling
+  - ../../../references/graph-performance.md — Graph Database Performance
+  - ../../../references/graph-platforms.md — Graph Database Platforms
+  - ../../../references/graph-use-cases.md — Graph Database Use Cases Reference
+  - ../../../references/query-patterns.md — Graph Query Patterns Reference
   - ../../../Global_References/graph-[data-modeling](../../../../Data_Engineering/data-modeling/SKILL.md).md — Graph Data Modeling Deep Dive
-  - ../../../../Global_References/Software_Engineering_and_Other/graph-query-performance.md — Query Performance Reference
+  - ../../../references/graph-query-performance.md — Query Performance Reference
 ## Architecture Decision Trees
 
 ```

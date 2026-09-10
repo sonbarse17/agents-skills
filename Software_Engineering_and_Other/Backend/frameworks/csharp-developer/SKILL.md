@@ -55,11 +55,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Modern C# | `../../../../Global_References/Software_Engineering_and_Other/modern-csharp.md` | Records, pattern matching, nullable types |
-| ASP.NET Core | `../../../../Global_References/Software_Engineering_and_Other/aspnet-core.md` | Minimal APIs, middleware, DI, routing |
-| Entity Framework | `../../../../Global_References/Software_Engineering_and_Other/csharp-developer_entity-framework.md` | EF Core, migrations, query optimization |
-| Blazor | `../../../../Global_References/Software_Engineering_and_Other/blazor.md` | Components, state management, interop |
-| Performance | `../../../../Global_References/Software_Engineering_and_Other/csharp-developer_performance.md` | Span<T>, async, memory optimization, AOT |
+| Modern C# | `../../../references/modern-csharp.md` | Records, pattern matching, nullable types |
+| ASP.NET Core | `../../../references/aspnet-core.md` | Minimal APIs, middleware, DI, routing |
+| Entity Framework | `../../../references/csharp-developer_entity-framework.md` | EF Core, migrations, query optimization |
+| Blazor | `../../../references/blazor.md` | Components, state management, interop |
+| Performance | `../../../references/csharp-developer_performance.md` | Span<T>, async, memory optimization, AOT |
 
 ## Constraints
 

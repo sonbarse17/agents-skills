@@ -166,7 +166,7 @@ For each technology area, evaluate: **requirements → constraints → tradeoffs
 | **AI services** | Azure OpenAI, AI Search, AI Foundry, Document Intelligence | Model needs, data grounding, orchestration |
 | **Containers** | Container Apps, AKS, Container Instances | Operational control vs simplicity |
 
-See [Technology Choices Reference](../../../../Global_References/cloud/technology-choices.md) for detailed decision trees.
+See [Technology Choices Reference](../../../references/technology-choices.md) for detailed decision trees.
 
 ---
 
@@ -187,7 +187,7 @@ See [Technology Choices Reference](../../../../Global_References/cloud/technolog
 | **[Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) & diagnostics** | Structured logging, distributed tracing (W3C Trace Context), metrics, alerts, [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) |
 | **Transient fault handling** | Retry with exponential backoff + jitter, circuit breaker, idempotency keys, timeout budgets |
 
-See [Best Practices Reference](../../../../Global_References/cloud/best-practices.md) for implementation details.
+See [Best Practices Reference](../../../references/best-practices.md) for implementation details.
 
 ---
 
@@ -225,7 +225,7 @@ For workloads targeting **99.99%+ SLO**, address these design areas:
 | **Security** | [Zero-trust](../../../../Security/identity-access/zero-trust/SKILL.md), managed identity everywhere, key rotation, WAF policies, threat modeling |
 | **Operational procedures** | Automated [runbooks](../../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md), [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response playbooks, game days, postmortems |
 
-See [Mission-Critical Reference](../../../../Global_References/cloud/mission-critical.md) for detailed guidance.
+See [Mission-Critical Reference](../../../references/mission-critical.md) for detailed guidance.
 
 ---
 
@@ -316,9 +316,9 @@ Use Architecture Decision Records (ADRs):
 ## References
 
 - [Design Patterns Reference](../../../../Software_Engineering_and_Other/Patterns/architecture/design-patterns/SKILL.md).md) — Detailed pattern implementations
-- [Technology Choices Reference](../../../../Global_References/cloud/technology-choices.md) — Decision trees for Azure services
-- [Best Practices Reference](../../../../Global_References/cloud/best-practices.md) — Implementation guidance
-- [Mission-Critical Reference](../../../../Global_References/cloud/mission-critical.md) — High-availability design
+- [Technology Choices Reference](../../../references/technology-choices.md) — Decision trees for Azure services
+- [Best Practices Reference](../../../references/best-practices.md) — Implementation guidance
+- [Mission-Critical Reference](../../../references/mission-critical.md) — High-availability design
 
 ---
 

@@ -674,12 +674,12 @@ Future<void> showLocalNotification({
 - Test delivery failure handling: register invalid token, verify cleanup
 
 ## References
-- `../../Global_References/Mobile/apns-guide.md` — APNs Guide
-- `../../Global_References/Mobile/fcm-guide.md` — FCM Guide
-- `../../Global_References/Mobile/local-notifications.md` — Local Notifications
-- `../../Global_References/Mobile/payload-design.md` — Payload Design
-- `../../Global_References/Mobile/permission-flow.md` — Permission Flow
-- `../../Global_References/Mobile/push-notifications.md` — Push Notifications Setup
+- `../../references/apns-guide.md` — APNs Guide
+- `../../references/fcm-guide.md` — FCM Guide
+- `../../references/local-notifications.md` — Local Notifications
+- `../../references/payload-design.md` — Payload Design
+- `../../references/permission-flow.md` — Permission Flow
+- `../../references/push-notifications.md` — Push Notifications Setup
 
 ## Handoff
 After push notification setup, hand off to:

@@ -28,7 +28,7 @@ depends_on:
 >
 > This skill assesses existing AKS clusters or local manifests for AKS Automatic compatibility.
 > For creating a new AKS Automatic cluster, use the `[azure-kubernetes](../../Cloud_Providers/azure-skills/skills/[azure-kubernetes](../azure-[kubernetes](../kubernetes/SKILL.md)/SKILL.md)/SKILL.md)` skill instead.
-> See [constraint spec](../../../../Global_References/containers-orchestration/constraint-spec-v1.yaml) for all safeguard rules, [common fixes](../../../../Global_References/containers-orchestration/common-fixes.md) for YAML patterns, [migration guide](../../../../Global_References/containers-orchestration/migration-guide-summary.md) for end-to-end steps, and [MCP integration](../../../../Global_References/containers-orchestration/mcp-integration.md) for tool details and fallback handling.
+> See [constraint spec](../../../references/constraint-spec-v1.yaml) for all safeguard rules, [common fixes](../../../references/common-fixes.md) for YAML patterns, [migration guide](../../../references/migration-guide-summary.md) for end-to-end steps, and [MCP integration](../../../references/mcp-integration.md) for tool details and fallback handling.
 
 You are an AKS Automatic compatibility assessment agent. Your job is to evaluate whether [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) workloads and cluster configurations are compatible with [AKS Automatic](https://learn.microsoft.com/en-us/azure/aks/intro-aks-automatic), identify issues, and help users fix them.
 
@@ -137,7 +137,7 @@ Then proceed to offline mode.
 
 #### Offline Mode
 
-Load the constraint spec from `../../../../Global_References/containers-orchestration/constraint-spec-v1.yaml` and evaluate each manifest. The check field tells you what to check for and what fields to check. The fix field will tell you any allowed values and possible fixes. You should evaluate each of the safeguards with each of the manifests to determine if the manifests are compatible. Suggest any fixes that are needed.
+Load the constraint spec from `../../../references/constraint-spec-v1.yaml` and evaluate each manifest. The check field tells you what to check for and what fields to check. The fix field will tell you any allowed values and possible fixes. You should evaluate each of the safeguards with each of the manifests to determine if the manifests are compatible. Suggest any fixes that are needed.
 
 Key Checks: 
 **Per container** (containers, initContainers, ephemeralContainers):
@@ -206,7 +206,7 @@ Per-issue format:
 - `safeguard-enforce-apparmor` — add AppArmor annotation
 - `safeguard-csi-driver-storage-class` — replace in-tree provisioner
 
-Use patterns in `../../../../Global_References/containers-orchestration/common-fixes.md` and generate a before/after diff. Starting resource values use safe defaults — VPA (enabled on Automatic) will auto-tune after deployment.
+Use patterns in `../../../references/common-fixes.md` and generate a before/after diff. Starting resource values use safe defaults — VPA (enabled on Automatic) will auto-tune after deployment.
 
 **LLM-reasoned fixes** (require app context; use `remediationGuide`):
 - `safeguard-images-no-latest` — correct tag is user- and release-specific; ask the user: _"What specific version tag or SHA digest should I pin this image to?"_ Do not guess
@@ -236,7 +236,7 @@ Your workloads are ready for AKS Automatic! Next steps:
 3. Perform the SKU switch — follow the migration guide.
 4. Verify — after migration, check all workloads are running and healthy.
 ```
-See `../../../../Global_References/containers-orchestration/migration-guide-summary.md` for the full migration checklist.
+See `../../../references/migration-guide-summary.md` for the full migration checklist.
 
 **Incompatible findings remain:** List blockers and offer three options: redesign workloads, keep on a separate AKS Standard cluster, or use Automatic for compatible + Standard for incompatible workloads.
 
@@ -256,10 +256,10 @@ See `../../../../Global_References/containers-orchestration/migration-guide-summ
 
 | File | When to load |
 |------|--------------|
-| `../../../../Global_References/containers-orchestration/constraint-spec-v1.yaml` | Always load for offline validation — all constraint IDs, severities, and fix patterns |
-| `../../../../Global_References/containers-orchestration/common-fixes.md` | When generating deterministic fixes — before/after YAML patterns |
-| `../../../../Global_References/containers-orchestration/migration-guide-summary.md` | When user asks about migration steps or after assessment is complete |
-| `../../../../Global_References/containers-orchestration/mcp-integration.md` | When troubleshooting MCP tool calls or debugging the fallback chain |
+| `../../../references/constraint-spec-v1.yaml` | Always load for offline validation — all constraint IDs, severities, and fix patterns |
+| `../../../references/common-fixes.md` | When generating deterministic fixes — before/after YAML patterns |
+| `../../../references/migration-guide-summary.md` | When user asks about migration steps or after assessment is complete |
+| `../../../references/mcp-integration.md` | When troubleshooting MCP tool calls or debugging the fallback chain |
 
 > ⚠️ **Warning:** This skill bundles **constraint spec v1.1.1** (2026-03-15), covering 23 cluster-level constraints, 21 active Deployment Safeguards policies (9 best practices policies, 12 Pod Security Standards policies), and 2 active mutators. Always note the spec version in assessment output.
 

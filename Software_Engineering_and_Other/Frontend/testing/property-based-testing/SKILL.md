@@ -401,15 +401,15 @@ Stateful property tests that share mutable state between command sequences produ
 18. Generator complexity must be documented — understand what shapes your generators produce
 
 ## References
-- ../../../../Global_References/Software_Engineering_and_Other/custom-generators.md — Custom Generators for Property-Based Testing
-- ../../../../Global_References/Software_Engineering_and_Other/property-based-testing-advanced.md — Advanced Property-Based Testing
-- ../../../../Global_References/Software_Engineering_and_Other/property-based-testing-fundamentals.md — Property Based Testing Fundamentals
-- ../../../../Global_References/Software_Engineering_and_Other/property-patterns.md — External Service Mocking with WireMock
-- ../../../../Global_References/Software_Engineering_and_Other/property-testing-architecture.md — PBT Architecture and System Design
-- ../../../../Global_References/Software_Engineering_and_Other/property-testing-decision-framework.md — PBT Decision Framework and Workflow Patterns
-- ../../../../Global_References/Software_Engineering_and_Other/shrinking-guide.md — Shrinking Strategy Guide
-- ../../../../Global_References/Software_Engineering_and_Other/stateful-testing-deep.md — Stateful Testing (Deep)
-- ../../../../Global_References/Software_Engineering_and_Other/stateful-testing.md — Stateful Property-Based Testing
+- ../../../references/custom-generators.md — Custom Generators for Property-Based Testing
+- ../../../references/property-based-testing-advanced.md — Advanced Property-Based Testing
+- ../../../references/property-based-testing-fundamentals.md — Property Based Testing Fundamentals
+- ../../../references/property-patterns.md — External Service Mocking with WireMock
+- ../../../references/property-testing-architecture.md — PBT Architecture and System Design
+- ../../../references/property-testing-decision-framework.md — PBT Decision Framework and Workflow Patterns
+- ../../../references/shrinking-guide.md — Shrinking Strategy Guide
+- ../../../references/stateful-testing-deep.md — Stateful Testing (Deep)
+- ../../../references/stateful-testing.md — Stateful Property-Based Testing
 
 ## Handoff
 After property-based testing, hand off to:

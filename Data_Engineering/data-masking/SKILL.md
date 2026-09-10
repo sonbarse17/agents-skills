@@ -356,17 +356,17 @@ async function readWithAudit(userId: string, fieldName: string): Promise<string>
 - Test masking/encryption with automated integration tests.
 
 ## References
-  - ../../Global_References/Data_Engineering/data-classification.md — Data Classification
+  - ../references/data-classification.md — Data Classification
   - ../../../Global_References/data-masking-[audit](../../AI_and_Agents/Operations/common/audit/SKILL.md).md — Data Masking [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)
-  - ../../Global_References/Data_Engineering/data-masking-advanced.md — Data Masking Advanced Patterns
-  - ../../Global_References/Data_Engineering/data-masking-compliance.md — Data Masking Compliance
-  - ../../Global_References/Data_Engineering/data-masking-fundamentals.md — Data Masking Fundamentals
-  - ../../Global_References/Data_Engineering/data-masking-performance.md — Data Masking Performance
-  - ../../Global_References/Data_Engineering/data-masking-techniques.md — Data Masking Techniques
-  - ../../Global_References/Data_Engineering/encryption-strategies.md — Encryption Strategies
-  - ../../Global_References/Data_Engineering/masking-patterns.md — Data Masking Patterns
+  - ../references/data-masking-advanced.md — Data Masking Advanced Patterns
+  - ../references/data-masking-compliance.md — Data Masking Compliance
+  - ../references/data-masking-fundamentals.md — Data Masking Fundamentals
+  - ../references/data-masking-performance.md — Data Masking Performance
+  - ../references/data-masking-techniques.md — Data Masking Techniques
+  - ../references/encryption-strategies.md — Encryption Strategies
+  - ../references/masking-patterns.md — Data Masking Patterns
   - references/pii-classification-deep.md — PII Classification Deep Dive
-  - ../../Global_References/Data_Engineering/pii-detection.md — PII Detection
+  - ../references/pii-detection.md — PII Detection
 ## Handoff
 No artifact produced unless requested.
 Next skill: [audit-logging](../../AI_and_Agents/Operations/common/audit/SKILL.md)-logging/SKILL.md) — log all access to sensitive data for compliance.

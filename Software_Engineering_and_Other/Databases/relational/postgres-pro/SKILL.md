@@ -81,11 +81,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Performance | `../../../../Global_References/Software_Engineering_and_Other/performance.md` | EXPLAIN ANALYZE, indexes, statistics, query tuning |
-| JSONB | `../../../../Global_References/Software_Engineering_and_Other/jsonb.md` | JSONB operators, indexing, GIN indexes, containment |
-| Extensions | `../../../../Global_References/Software_Engineering_and_Other/extensions.md` | PostGIS, pg_trgm, pgvector, uuid-ossp, pg_stat_statements |
-| Replication | `../../../../Global_References/Software_Engineering_and_Other/replication.md` | Streaming replication, logical replication, failover |
-| Maintenance | `../../../../Global_References/Software_Engineering_and_Other/maintenance.md` | VACUUM, ANALYZE, pg_stat views, [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), bloat |
+| Performance | `../../../references/performance.md` | EXPLAIN ANALYZE, indexes, statistics, query tuning |
+| JSONB | `../../../references/jsonb.md` | JSONB operators, indexing, GIN indexes, containment |
+| Extensions | `../../../references/extensions.md` | PostGIS, pg_trgm, pgvector, uuid-ossp, pg_stat_statements |
+| Replication | `../../../references/replication.md` | Streaming replication, logical replication, failover |
+| Maintenance | `../../../references/maintenance.md` | VACUUM, ANALYZE, pg_stat views, [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), bloat |
 
 ## Common Patterns
 

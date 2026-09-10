@@ -323,8 +323,8 @@ Hotfix tag: v2.0.1
 ```
 
 ## References
-  - ../../Global_References/Product_and_Business/pr-writer-advanced.md — PR Writer Advanced Topics
-  - ../../Global_References/Product_and_Business/pr-writer-fundamentals.md — PR Writer Fundamentals
+  - ../../references/pr-writer-advanced.md — PR Writer Advanced Topics
+  - ../../references/pr-writer-fundamentals.md — PR Writer Fundamentals
   - references/pr-writer-templates.md — PR Templates Reference
   - references/pr-writer-workflow.md — PR Workflow Reference
 ## Handoff

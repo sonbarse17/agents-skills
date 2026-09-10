@@ -153,7 +153,7 @@ Track headcount by department and role.
 
 ## Detailed section: Step-by-Step Process
 
-Originally a 2763-byte section in this SKILL.md. Moved to `../../../../Global_References/Product_and_Business/startup-financial-modeling_details.md` to fit Codex's 8 KB skill body cap.
+Originally a 2763-byte section in this SKILL.md. Moved to `../../../../references/startup-financial-modeling_details.md` to fit Codex's 8 KB skill body cap.
 
 ## Business Model Templates
 

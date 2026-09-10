@@ -45,10 +45,10 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| SLO/SLI | `../../../../Global_References/observability-monitoring-logging/slo-sli-management.md` | Defining SLOs, calculating error budgets |
-| Error Budgets | `../../../../Global_References/observability-monitoring-logging/error-budget-policy.md` | Managing budgets, burn rates, policies |
+| SLO/SLI | `../../../references/slo-sli-management.md` | Defining SLOs, calculating error budgets |
+| Error Budgets | `../../../references/error-budget-policy.md` | Managing budgets, burn rates, policies |
 | [Monitoring](../../monitoring-strategy/monitoring/SKILL.md) | `../../../Global_References/[monitoring](../../monitoring-strategy/monitoring/SKILL.md)-[alerting](../../alerting/alerting/SKILL.md).md` | Golden signals, alert design, [dashboards](../../dashboard-design/dashboards/SKILL.md) |
-| Automation | `../../../../Global_References/observability-monitoring-logging/automation-toil.md` | Toil reduction, automation patterns |
+| Automation | `../../../references/automation-toil.md` | Toil reduction, automation patterns |
 | Incidents | `../../../Global_References/[incident](../../incident-detection/incident/SKILL.md)-chaos.md` | [Incident](../../incident-detection/incident/SKILL.md) response, chaos engineering |
 
 ## Constraints

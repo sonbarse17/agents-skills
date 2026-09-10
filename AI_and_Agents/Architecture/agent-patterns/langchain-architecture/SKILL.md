@@ -195,7 +195,7 @@ result = await agent.ainvoke(
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../../../Global_References/AI_and_Agents/langchain-architecture_details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../references/langchain-architecture_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Testing Strategies
 

@@ -45,11 +45,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Components | `../../../../Global_References/Software_Engineering_and_Other/angular-architect_components.md` | Standalone components, signals, input/output |
-| RxJS | `../../../../Global_References/Software_Engineering_and_Other/rxjs.md` | Observables, operators, subjects, error handling |
-| NgRx | `../../../../Global_References/Software_Engineering_and_Other/ngrx.md` | Store, effects, selectors, entity adapter |
-| Routing | `../../../../Global_References/Software_Engineering_and_Other/angular-architect_routing.md` | Router config, guards, lazy loading, resolvers |
-| Testing | `../../../../Global_References/Software_Engineering_and_Other/angular-architect_testing.md` | TestBed, component tests, service tests |
+| Components | `../../../references/angular-architect_components.md` | Standalone components, signals, input/output |
+| RxJS | `../../../references/rxjs.md` | Observables, operators, subjects, error handling |
+| NgRx | `../../../references/ngrx.md` | Store, effects, selectors, entity adapter |
+| Routing | `../../../references/angular-architect_routing.md` | Router config, guards, lazy loading, resolvers |
+| Testing | `../../../references/angular-architect_testing.md` | TestBed, component tests, service tests |
 
 ## Key Patterns
 

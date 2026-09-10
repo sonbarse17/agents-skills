@@ -190,7 +190,7 @@ output "vpc_cidr_block" {
 9. **Test modules** with Terratest
 10. **Tag all resources** consistently
 
-**Reference:** See `../../../../Global_References/infrastructure-as-code/aws-modules.md` and `../../../../Global_References/infrastructure-as-code/oci-modules.md`
+**Reference:** See `../../../references/aws-modules.md` and `../../../references/oci-modules.md`
 
 ## Module Composition
 

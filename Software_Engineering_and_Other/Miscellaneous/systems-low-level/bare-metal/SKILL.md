@@ -932,12 +932,12 @@ Running servers with OEM firmware for years. Critical security fixes and stabili
 PXE/iPXE configuration, BMC automation scripts ([Python](../../../Languages/python/python/SKILL.md)/Bash), [Ansible](../../../../DevOps_and_Cloud/infrastructure-as-code/ansible/other/ansible/SKILL.md) burn-in playbooks, MAAS API scripts, RAID configuration scripts.
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/bare-metal-advanced.md
-  - ../../../../Global_References/Software_Engineering_and_Other/bare-metal-fundamentals.md
-  - ../../../../Global_References/Software_Engineering_and_Other/burn-in.md
-  - ../../../../Global_References/Software_Engineering_and_Other/firmware-lifecycle.md
-  - ../../../../Global_References/Software_Engineering_and_Other/ipmi-bmc.md
-  - ../../../../Global_References/Software_Engineering_and_Other/provisioning-pxe-maas.md
+  - ../../../references/bare-metal-advanced.md
+  - ../../../references/bare-metal-fundamentals.md
+  - ../../../references/burn-in.md
+  - ../../../references/firmware-lifecycle.md
+  - ../../../references/ipmi-bmc.md
+  - ../../../references/provisioning-pxe-maas.md
   - references/redfish-automation-guide.md
 
 ## Handoff

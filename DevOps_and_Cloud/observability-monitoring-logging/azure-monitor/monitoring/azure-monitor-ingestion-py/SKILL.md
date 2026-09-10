@@ -242,6 +242,6 @@ Stream names follow patterns:
 
 | File | Contents |
 |------|----------|
-| [../../../../Global_References/observability-monitoring-logging/azure-monitor-ingestion-py_capabilities.md](../../../../Global_References/observability-monitoring-logging/azure-monitor-ingestion-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
-| [../../../../Global_References/observability-monitoring-logging/azure-monitor-ingestion-py_non-hero-scenarios.md](../../../../Global_References/observability-monitoring-logging/azure-monitor-ingestion-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
+| [../../../references/azure-monitor-ingestion-py_capabilities.md](../../../references/azure-monitor-ingestion-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
+| [../../../references/azure-monitor-ingestion-py_non-hero-scenarios.md](../../../references/azure-monitor-ingestion-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
 

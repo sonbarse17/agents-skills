@@ -47,8 +47,8 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| JSDoc Typing | `../../../../Global_References/Software_Engineering_and_Other/jsdoc-typing.md` | JSDoc types, @typedef, @param, type hints |
-| Composables | `../../../../Global_References/Software_Engineering_and_Other/composables-patterns.md` | custom composables, ref, reactive, lifecycle hooks |
+| JSDoc Typing | `../../../references/jsdoc-typing.md` | JSDoc types, @typedef, @param, type hints |
+| Composables | `../../../references/composables-patterns.md` | custom composables, ref, reactive, lifecycle hooks |
 | Components | `../../../Global_References/[vue-expert](../vue-expert/SKILL.md)-js_component-architecture.md` | props, emits, slots, provide/inject |
 | State | `../../../Global_References/[vue-expert](../vue-expert/SKILL.md)-js_state-management.md` | Pinia, stores, reactive state |
 | Testing | `../../../Global_References/[vue-expert](../vue-expert/SKILL.md)-js_testing-patterns.md` | Vitest, component testing, mocking |

@@ -424,14 +424,14 @@ Client migration: run both versions simultaneously, migrate clients one by one
 - Use connection pooling for high-throughput scenarios.
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/grpc-error-handling.md — gRPC Error Handling
-  - ../../../../Global_References/Software_Engineering_and_Other/grpc-interceptors.md — gRPC Interceptors
-  - ../../../../Global_References/Software_Engineering_and_Other/grpc-performance.md — gRPC Performance
-  - ../../../../Global_References/Software_Engineering_and_Other/grpc-security.md — gRPC Security
-  - ../../../../Global_References/Software_Engineering_and_Other/grpc-streaming.md — gRPC Streaming Patterns
-  - ../../../../Global_References/Software_Engineering_and_Other/grpc-testing.md — gRPC Testing
-  - ../../../../Global_References/Software_Engineering_and_Other/grpc-vs-rest.md — gRPC vs REST
-  - ../../../../Global_References/Software_Engineering_and_Other/protobuf-basics.md — Protocol Buffer Basics
+  - ../../../references/grpc-error-handling.md — gRPC Error Handling
+  - ../../../references/grpc-interceptors.md — gRPC Interceptors
+  - ../../../references/grpc-performance.md — gRPC Performance
+  - ../../../references/grpc-security.md — gRPC Security
+  - ../../../references/grpc-streaming.md — gRPC Streaming Patterns
+  - ../../../references/grpc-testing.md — gRPC Testing
+  - ../../../references/grpc-vs-rest.md — gRPC vs REST
+  - ../../../references/protobuf-basics.md — Protocol Buffer Basics
 ## Handoff
 No artifact produced unless requested.
 Next skill: [backend-message-queue](../../distributed-systems/message-queue/SKILL.md) — if the service needs async communication or event-driven patterns.

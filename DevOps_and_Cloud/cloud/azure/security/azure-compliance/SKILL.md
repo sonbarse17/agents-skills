@@ -61,9 +61,9 @@ Activate this skill when user wants to:
 
 | Assessment | Reference |
 |------------|-----------|
-| Comprehensive Compliance (azqr) | [../../../../Global_References/cloud/azure-quick-review.md](../../../../Global_References/cloud/azure-quick-review.md) |
+| Comprehensive Compliance (azqr) | [../../../references/azure-quick-review.md](../../../references/azure-quick-review.md) |
 | Key [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md) Expiration | [../../../Global_References/[azure-keyvault](../azure-keyvault/SKILL.md)-expiration-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md).md](../../../Global_References/[azure-keyvault](../azure-keyvault/SKILL.md)-expiration-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md).md) |
-| Resource Graph Queries | [../../../../Global_References/cloud/azure-compliance_azure-resource-graph.md](../../../../Global_References/cloud/azure-compliance_azure-resource-graph.md) |
+| Resource Graph Queries | [../../../references/azure-compliance_azure-resource-graph.md](../../../references/azure-compliance_azure-resource-graph.md) |
 
 ## MCP Tools
 

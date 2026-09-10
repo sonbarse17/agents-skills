@@ -595,13 +595,13 @@ Dark mode requires independent color tokens, not simple inversion:
 | Dark mode spec | Color overrides for dark theme | Figma, Token Studio |
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/visual-design_color-theory.md — Color Theory Reference
-  - ../../../../Global_References/Software_Engineering_and_Other/layout-principles.md — Layout Principles Guide
-  - ../../../../Global_References/Software_Engineering_and_Other/spacing-grid.md — Spacing and Grid Systems Reference
-  - ../../../../Global_References/Software_Engineering_and_Other/typography.md — Typography Reference
-  - ../../../../Global_References/Software_Engineering_and_Other/visual-design-advanced.md — Visual Design Advanced Topics
-  - ../../../../Global_References/Software_Engineering_and_Other/visual-design-fundamentals.md — Visual Design Fundamentals
-  - ../../../../Global_References/Software_Engineering_and_Other/visual-hierarchy.md — Visual Hierarchy Reference
+  - ../../../references/visual-design_color-theory.md — Color Theory Reference
+  - ../../../references/layout-principles.md — Layout Principles Guide
+  - ../../../references/spacing-grid.md — Spacing and Grid Systems Reference
+  - ../../../references/typography.md — Typography Reference
+  - ../../../references/visual-design-advanced.md — Visual Design Advanced Topics
+  - ../../../references/visual-design-fundamentals.md — Visual Design Fundamentals
+  - ../../../references/visual-hierarchy.md — Visual Hierarchy Reference
   - references/visual-design-color-system.md — Color System Reference
   - references/visual-design-dark-mode.md — Dark Mode Design Reference
 ## Handoff

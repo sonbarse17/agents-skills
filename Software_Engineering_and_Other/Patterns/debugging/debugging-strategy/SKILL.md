@@ -311,8 +311,8 @@ techniques:
 ```
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/debugging-strategy-advanced.md — Debugging Strategy Advanced Topics
-  - ../../../../Global_References/Software_Engineering_and_Other/debugging-strategy-fundamentals.md — Debugging Strategy Fundamentals
+  - ../../../references/debugging-strategy-advanced.md — Debugging Strategy Advanced Topics
+  - ../../../references/debugging-strategy-fundamentals.md — Debugging Strategy Fundamentals
   - references/debugging-tools.md — Debugging Tools Reference
   - references/[root-cause-analysis](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/root-cause-analysis/root-cause-analysis/SKILL.md).md — Root Cause Analysis Reference
 ## Handoff

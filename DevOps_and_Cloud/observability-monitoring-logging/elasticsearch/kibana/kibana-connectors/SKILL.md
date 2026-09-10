@@ -276,7 +276,7 @@ Connectors serve as the integration layer across multiple Kibana workflows, not 
 | **AI workflows**          | OpenAI, Bedrock, Gemini, AI Connector | Powers Elastic AI Assistant and Attack Discovery; system-managed               |
 | **Custom integrations**   | Webhook                               | Generic HTTP outbound with Mustache-templated JSON body                        |
 
-For detailed patterns, examples, and decision guidance for each workflow, see [workflows.md](../../../../Global_References/observability-monitoring-logging/kibana-connectors_workflows.md).
+For detailed patterns, examples, and decision guidance for each workflow, see [workflows.md](../../../references/kibana-connectors_workflows.md).
 
 ## Best Practices
 

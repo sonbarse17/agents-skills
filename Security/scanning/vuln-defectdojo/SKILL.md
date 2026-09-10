@@ -123,7 +123,7 @@ See [assets/defectdojo-engagement-template.json](assets/defectdojo-engagement-te
   --engagement-id $EID --scan-type "Trivy Scan" trivy-new.json
 ```
 
-For the complete mapping of every SecOpsAgentKit tool to its DefectDojo parser name and required output format, see [../../../Global_References/Security/tool-parser-map.md](../../../Global_References/Security/tool-parser-map.md).
+For the complete mapping of every SecOpsAgentKit tool to its DefectDojo parser name and required output format, see [../../references/tool-parser-map.md](../../references/tool-parser-map.md).
 
 ### 3. CI/CD Pipeline Integration
 
@@ -150,7 +150,7 @@ Add an import step after each scanner in any pipeline:
 
 Progress:
 [ ] 1. Run all applicable scanners; save JSON output for each
-[ ] 2. Import each result file with correct `--scan-type` (see ../../../Global_References/Security/tool-parser-map.md)
+[ ] 2. Import each result file with correct `--scan-type` (see ../../references/tool-parser-map.md)
 [ ] 3. Review deduplicated findings in DefectDojo UI: **Engagements → Tests → Findings**
 [ ] 4. Triage: set severity, assign owner, and set SLA due dates
 [ ] 5. Risk-accept findings with business justification (required for SOC2/PCI-DSS evidence)
@@ -207,7 +207,7 @@ Before an [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md), filt
 
 ## Integration Points
 
-- **All SecOpsAgentKit scanners**: Parser names mapped in [../../../Global_References/Security/tool-parser-map.md](../../../Global_References/Security/tool-parser-map.md)
+- **All SecOpsAgentKit scanners**: Parser names mapped in [../../references/tool-parser-map.md](../../references/tool-parser-map.md)
 - **CI/CD**: [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../../DevOps_and_Cloud/ci-cd/jenkins/other/jenkins/SKILL.md), [CircleCI](../../../DevOps_and_Cloud/ci-cd/circleci/other/circleci/SKILL.md) — add import step after each scanner
 - **Issue Trackers**: DefectDojo pushes findings to JIRA, [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Issues via built-in integrations
 - **Notifications**: Slack and email alerts for new Critical/High findings via DefectDojo notification rules
@@ -225,7 +225,7 @@ Before an [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md), filt
 
 ### Issue: Scan type not recognized
 
-**Solution**: Parser names are case-sensitive. Check the exact value in [../../../Global_References/Security/tool-parser-map.md](../../../Global_References/Security/tool-parser-map.md). Use `curl "$DD_HOST/api/v2/importers/" -H "Authorization: Token $DD_API_KEY"` to list all available parsers.
+**Solution**: Parser names are case-sensitive. Check the exact value in [../../references/tool-parser-map.md](../../references/tool-parser-map.md). Use `curl "$DD_HOST/api/v2/importers/" -H "Authorization: Token $DD_API_KEY"` to list all available parsers.
 
 ## References
 

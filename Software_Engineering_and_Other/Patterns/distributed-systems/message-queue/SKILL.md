@@ -388,14 +388,14 @@ async function checkConsumerLag(admin: Admin, groupId: string): Promise<void> {
 - Use idempotent producers for Kafka (exactly-once semantics to broker).
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/broker-comparison.md — Message Broker Comparison
-  - ../../../../Global_References/Software_Engineering_and_Other/consumer-patterns.md — Consumer Patterns
-  - ../../../../Global_References/Software_Engineering_and_Other/kafka-patterns.md — Kafka Patterns
-  - ../../../../Global_References/Software_Engineering_and_Other/message-design.md — Message Schema Design
+  - ../../../references/broker-comparison.md — Message Broker Comparison
+  - ../../../references/consumer-patterns.md — Consumer Patterns
+  - ../../../references/kafka-patterns.md — Kafka Patterns
+  - ../../../references/message-design.md — Message Schema Design
   - ../../../Global_References/message-queue-[monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Message Queue [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
-  - ../../../../Global_References/Software_Engineering_and_Other/message-queue-security.md — Message Queue Security
-  - ../../../../Global_References/Software_Engineering_and_Other/producer-patterns.md — Producer Patterns
-  - ../../../../Global_References/Software_Engineering_and_Other/rabbitmq-patterns.md — RabbitMQ Patterns
+  - ../../../references/message-queue-security.md — Message Queue Security
+  - ../../../references/producer-patterns.md — Producer Patterns
+  - ../../../references/rabbitmq-patterns.md — RabbitMQ Patterns
 ## Handoff
 No artifact produced unless requested.
 Next skill: [backend-caching](../../data-performance/caching/SKILL.md) — if the event-driven system needs to cache materialized views or read models.

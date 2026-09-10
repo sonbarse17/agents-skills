@@ -50,11 +50,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Liquid Templating | `../../../../Global_References/Software_Engineering_and_Other/liquid-templating.md` | Theme development, template customization |
-| Storefront API | `../../../../Global_References/Software_Engineering_and_Other/storefront-api.md` | Headless commerce, Hydrogen, custom frontends |
-| App Development | `../../../../Global_References/Software_Engineering_and_Other/app-development.md` | Building Shopify apps, OAuth, webhooks |
-| Checkout Extensions | `../../../../Global_References/Software_Engineering_and_Other/checkout-customization.md` | Checkout UI extensions, Shopify Functions |
-| Performance | `../../../../Global_References/Software_Engineering_and_Other/shopify-expert_performance-optimization.md` | Theme speed, asset optimization, caching |
+| Liquid Templating | `../../../references/liquid-templating.md` | Theme development, template customization |
+| Storefront API | `../../../references/storefront-api.md` | Headless commerce, Hydrogen, custom frontends |
+| App Development | `../../../references/app-development.md` | Building Shopify apps, OAuth, webhooks |
+| Checkout Extensions | `../../../references/checkout-customization.md` | Checkout UI extensions, Shopify Functions |
+| Performance | `../../../references/shopify-expert_performance-optimization.md` | Theme speed, asset optimization, caching |
 
 ## Code Examples
 

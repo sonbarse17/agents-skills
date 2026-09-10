@@ -104,7 +104,7 @@ from any page this skill produces.
      owner, architecture/dependencies, common operations, alerts and
      what they mean, troubleshooting by symptom, escalation path.
    - **Postmortem** — see
-     [../../../../Global_References/Software_Engineering_and_Other/confluence-page-authoring-and-governance_postmortem-template.md](../../../../Global_References/Software_Engineering_and_Other/confluence-page-authoring-and-governance_postmortem-template.md):
+     [../../../references/confluence-page-authoring-and-governance_postmortem-template.md](../../../references/confluence-page-authoring-and-governance_postmortem-template.md):
      summary, impact, timeline, root cause, detection, what went well/
      wrong, action items each linked to a real Jira ticket.
    - **Design doc** — outline: Problem statement → Goals/non-goals →
@@ -320,7 +320,7 @@ PUT /wiki/rest/api/content/789012
 
 **Step 3 — create the postmortem page as a child of the space's
 "Postmortems" index page (id `654321`), using the template outline from
-[../../../../Global_References/Software_Engineering_and_Other/confluence-page-authoring-and-governance_postmortem-template.md](../../../../Global_References/Software_Engineering_and_Other/confluence-page-authoring-and-governance_postmortem-template.md):**
+[../../../references/confluence-page-authoring-and-governance_postmortem-template.md](../../../references/confluence-page-authoring-and-governance_postmortem-template.md):**
 
 ```http
 POST /wiki/rest/api/content

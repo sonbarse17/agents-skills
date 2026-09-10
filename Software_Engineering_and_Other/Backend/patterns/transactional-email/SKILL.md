@@ -523,14 +523,14 @@ async function testEmailDelivery() {
 - A/B test subject lines and sender names for open rate optimization
 
 ## Rules
-  - ../../../../Global_References/Software_Engineering_and_Other/deliverability.md — Email Deliverability
-  - ../../../../Global_References/Software_Engineering_and_Other/delivery-setup.md — Email Delivery Setup
-  - ../../../../Global_References/Software_Engineering_and_Other/email-analytics.md — Email Analytics
-  - ../../../../Global_References/Software_Engineering_and_Other/email-compliance.md — Email Compliance
-  - ../../../../Global_References/Software_Engineering_and_Other/email-testing.md — Email Testing
-  - ../../../../Global_References/Software_Engineering_and_Other/mjml-templates.md — MJML Email Templates
-  - ../../../../Global_References/Software_Engineering_and_Other/transactional-email-advanced.md — Transactional Email Advanced Topics
-  - ../../../../Global_References/Software_Engineering_and_Other/transactional-email-fundamentals.md — Transactional Email Fundamentals
+  - ../../../references/deliverability.md — Email Deliverability
+  - ../../../references/delivery-setup.md — Email Delivery Setup
+  - ../../../references/email-analytics.md — Email Analytics
+  - ../../../references/email-compliance.md — Email Compliance
+  - ../../../references/email-testing.md — Email Testing
+  - ../../../references/mjml-templates.md — MJML Email Templates
+  - ../../../references/transactional-email-advanced.md — Transactional Email Advanced Topics
+  - ../../../references/transactional-email-fundamentals.md — Transactional Email Fundamentals
 ## Handoff
 - `backend/sms-messaging` — Alternative messaging channel for 2FA and notifications
 - `data/analytics` — Email analytics and reporting integration

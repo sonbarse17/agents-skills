@@ -426,12 +426,12 @@ Embedding AccessKey ID/Secret in application code or configuration files. Always
 Terraform HCL (alicloud provider), Alibaba Cloud CLI commands, RAM policy JSON, or ROS templates.
 
 ## References
-  - ../../../Global_References/cloud/alibaba-cloud-advanced.md
-  - ../../../Global_References/cloud/alibaba-cloud-fundamentals.md
-  - ../../../Global_References/cloud/aliyun-database.md
-  - ../../../Global_References/cloud/aliyun-ecs-vpc.md
+  - ../../references/alibaba-cloud-advanced.md
+  - ../../references/alibaba-cloud-fundamentals.md
+  - ../../references/aliyun-database.md
+  - ../../references/aliyun-ecs-vpc.md
   - ../../../Global_References/aliyun-[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).md
-  - ../../../Global_References/cloud/aliyun-security.md
+  - ../../references/aliyun-security.md
   - references/network-comparison.md
 
 ## Handoff

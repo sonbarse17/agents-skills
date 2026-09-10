@@ -410,14 +410,14 @@ A retail company implemented consumer-driven contract testing (Pact) for [micros
 
 ## References
 
-- ../../../../Global_References/Software_Engineering_and_Other/defect-severity-matrix.md — Defect Severity & Priority Matrix
-- ../../../../Global_References/Software_Engineering_and_Other/qa-advanced.md — QA Advanced Topics
-- ../../../../Global_References/Software_Engineering_and_Other/qa-fundamentals.md — QA Fundamentals
-- ../../../../Global_References/Software_Engineering_and_Other/test-case-examples.md — Test Case Examples
-- ../../../../Global_References/Software_Engineering_and_Other/test-design-techniques.md — Test Design Techniques
-- ../../../../Global_References/Software_Engineering_and_Other/test-plan-template.md — Test Plan Template
-- ../../../../Global_References/Software_Engineering_and_Other/qa-strategy-planning.md — QA Strategy and Planning Guide
-- ../../../../Global_References/Software_Engineering_and_Other/qa-test-automation-framework.md — Test Automation Framework Reference
+- ../../../references/defect-severity-matrix.md — Defect Severity & Priority Matrix
+- ../../../references/qa-advanced.md — QA Advanced Topics
+- ../../../references/qa-fundamentals.md — QA Fundamentals
+- ../../../references/test-case-examples.md — Test Case Examples
+- ../../../references/test-design-techniques.md — Test Design Techniques
+- ../../../references/test-plan-template.md — Test Plan Template
+- ../../../references/qa-strategy-planning.md — QA Strategy and Planning Guide
+- ../../../references/qa-test-automation-framework.md — Test Automation Framework Reference
 
 ## Handoff
 After completing this skill:

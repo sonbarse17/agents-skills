@@ -46,11 +46,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Modern PHP | `../../../../Global_References/Software_Engineering_and_Other/modern-php-features.md` | Readonly, enums, attributes, fibers, types |
-| Laravel | `../../../../Global_References/Software_Engineering_and_Other/laravel-patterns.md` | Services, repositories, resources, jobs |
-| Symfony | `../../../../Global_References/Software_Engineering_and_Other/symfony-patterns.md` | DI, events, commands, voters |
-| Async PHP | `../../../../Global_References/Software_Engineering_and_Other/php-pro_async-patterns.md` | Swoole, ReactPHP, fibers, streams |
-| Testing | `../../../../Global_References/Software_Engineering_and_Other/testing-quality.md` | PHPUnit, PHPStan, Pest, mocking |
+| Modern PHP | `../../../references/modern-php-features.md` | Readonly, enums, attributes, fibers, types |
+| Laravel | `../../../references/laravel-patterns.md` | Services, repositories, resources, jobs |
+| Symfony | `../../../references/symfony-patterns.md` | DI, events, commands, voters |
+| Async PHP | `../../../references/php-pro_async-patterns.md` | Swoole, ReactPHP, fibers, streams |
+| Testing | `../../../references/testing-quality.md` | PHPUnit, PHPStan, Pest, mocking |
 
 ## Constraints
 

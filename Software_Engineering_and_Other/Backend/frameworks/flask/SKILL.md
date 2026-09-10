@@ -551,14 +551,14 @@ Server-rendered HTML?
 - Rate limiting on authentication endpoints to prevent brute force.
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/flask-application-factory.md — Flask Application Factory Pattern
-  - ../../../../Global_References/Software_Engineering_and_Other/flask-restful-api-design.md — Flask RESTful API Design
-  - ../../../../Global_References/Software_Engineering_and_Other/flask-blueprints-factories.md — Flask Blueprints and Application Factories
-  - ../../../../Global_References/Software_Engineering_and_Other/flask-deployment.md — Flask Deployment
-  - ../../../../Global_References/Software_Engineering_and_Other/flask-extensions.md — Flask Extensions
-  - ../../../../Global_References/Software_Engineering_and_Other/flask-security.md — Flask Security Reference
-  - ../../../../Global_References/Software_Engineering_and_Other/flask-setup.md — Flask Setup Guide
-  - ../../../../Global_References/Software_Engineering_and_Other/flask-testing.md — Flask Testing Reference
+  - ../../../references/flask-application-factory.md — Flask Application Factory Pattern
+  - ../../../references/flask-restful-api-design.md — Flask RESTful API Design
+  - ../../../references/flask-blueprints-factories.md — Flask Blueprints and Application Factories
+  - ../../../references/flask-deployment.md — Flask Deployment
+  - ../../../references/flask-extensions.md — Flask Extensions
+  - ../../../references/flask-security.md — Flask Security Reference
+  - ../../../references/flask-setup.md — Flask Setup Guide
+  - ../../../references/flask-testing.md — Flask Testing Reference
 
 ## Handoff
 Hand off to `backend/universal/api-response/SKILL.md` for API response standards.

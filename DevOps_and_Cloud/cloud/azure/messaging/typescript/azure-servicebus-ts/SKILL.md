@@ -248,6 +248,6 @@ const receiver = client.createReceiver("my-queue", { receiveMode: "receiveAndDel
 
 For detailed patterns, see:
 
-- [Queues vs Topics Patterns](../../../../../Global_References/cloud/queues-topics.md) - Queue/topic patterns, sessions, receive modes, message settlement
-- [Error Handling and Reliability](../../../../../Global_References/cloud/azure-servicebus-ts_error-handling.md) - ServiceBusError codes, DLQ handling, lock renewal, graceful shutdown
+- [Queues vs Topics Patterns](../../../../references/queues-topics.md) - Queue/topic patterns, sessions, receive modes, message settlement
+- [Error Handling and Reliability](../../../../references/azure-servicebus-ts_error-handling.md) - ServiceBusError codes, DLQ handling, lock renewal, graceful shutdown
 

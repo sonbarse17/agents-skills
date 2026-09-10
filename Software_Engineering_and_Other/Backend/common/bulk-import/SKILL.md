@@ -620,14 +620,14 @@ describe('Bulk Import', () => {
 ## Rules
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/bulk-export.md — Bulk Export
-  - ../../../../Global_References/Software_Engineering_and_Other/bulk-import-advanced.md — Bulk Import Advanced Topics
-  - ../../../../Global_References/Software_Engineering_and_Other/bulk-import-fundamentals.md — Bulk Import Fundamentals
-  - ../../../../Global_References/Software_Engineering_and_Other/csv-parsing.md — CSV Parsing
+  - ../../../references/bulk-export.md — Bulk Export
+  - ../../../references/bulk-import-advanced.md — Bulk Import Advanced Topics
+  - ../../../references/bulk-import-fundamentals.md — Bulk Import Fundamentals
+  - ../../../references/csv-parsing.md — CSV Parsing
   - ../../../Global_References/import-[monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Import [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
-  - ../../../../Global_References/Software_Engineering_and_Other/import-workflow.md — Import Workflow
-  - ../../../../Global_References/Software_Engineering_and_Other/rollback-recovery.md — Rollback and Recovery
-  - ../../../../Global_References/Software_Engineering_and_Other/validation-pipeline.md — Validation Pipeline
+  - ../../../references/import-workflow.md — Import Workflow
+  - ../../../references/rollback-recovery.md — Rollback and Recovery
+  - ../../../references/validation-pipeline.md — Validation Pipeline
 ## Handoff
 - `backend/report-generation` — Export/import round-trip patterns
 - `data/etl` — ETL pipeline integration for bulk imports

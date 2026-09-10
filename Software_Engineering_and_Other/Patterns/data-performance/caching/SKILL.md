@@ -600,15 +600,15 @@ Fix: Cache individual entities, compose at read time. Or use short TTL for query
 - Monitor evictions: if keys are evicted before TTL, cache is too small.
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/cache-invalidation.md — Cache Invalidation
+  - ../../../references/cache-invalidation.md — Cache Invalidation
   - ../../../Global_References/cache-[monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Cache [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
-  - ../../../../Global_References/Software_Engineering_and_Other/cache-strategies.md — Cache Strategies
-  - ../../../../Global_References/Software_Engineering_and_Other/cache-testing.md — Cache Testing
-  - ../../../../Global_References/Software_Engineering_and_Other/cdn-caching.md — CDN Caching
-  - ../../../../Global_References/Software_Engineering_and_Other/redis-patterns.md — Redis Patterns
-  - ../../../../Global_References/Software_Engineering_and_Other/caching-fundamentals.md — Caching Fundamentals
-  - ../../../../Global_References/Software_Engineering_and_Other/caching-advanced.md — Caching Advanced Patterns
-  - ../../../../Global_References/Software_Engineering_and_Other/caching-stampede-prevention.md — Cache Stampede Prevention
+  - ../../../references/cache-strategies.md — Cache Strategies
+  - ../../../references/cache-testing.md — Cache Testing
+  - ../../../references/cdn-caching.md — CDN Caching
+  - ../../../references/redis-patterns.md — Redis Patterns
+  - ../../../references/caching-fundamentals.md — Caching Fundamentals
+  - ../../../references/caching-advanced.md — Caching Advanced Patterns
+  - ../../../references/caching-stampede-prevention.md — Cache Stampede Prevention
 
 ## Handoff
 No artifact produced unless requested.

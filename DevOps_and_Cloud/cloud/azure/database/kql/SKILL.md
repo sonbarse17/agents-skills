@@ -59,7 +59,7 @@ Management commands can be followed by query operators (the output is tabular), 
 StormEvents | take 5 | .show tables
 ```
 
-When in doubt: if the first token starts with `.`, it's a management command. For a full catalog of schema exploration commands, see `../../../../Global_References/cloud/discovery-queries.md`.
+When in doubt: if the first token starts with `.`, it's a management command. For a full catalog of schema exploration commands, see `../../../references/discovery-queries.md`.
 
 ## 2. Dynamic Type Discipline
 
@@ -295,7 +295,7 @@ StormEvents
 | extend anomalies = series_decompose_anomalies(count_)
 ```
 
-For detailed examples and patterns, consult `../../../../Global_References/cloud/kql_advanced-patterns.md`.
+For detailed examples and patterns, consult `../../../references/kql_advanced-patterns.md`.
 
 ## 10. Self-Correction Lookup Table
 

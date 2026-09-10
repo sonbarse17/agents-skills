@@ -79,7 +79,7 @@ semgrep --config="p/owasp-top-ten" /path/to/code
 1. For pull requests or commits, run targeted scans on changed files
 2. Use `semgrep --diff` to scan only modified code
 3. Flag high-severity findings as blocking issues
-4. Provide inline remediation guidance from `../../../Global_References/Security/sast-semgrep_remediation_guide.md`
+4. Provide inline remediation guidance from `../../references/sast-semgrep_remediation_guide.md`
 5. Link findings to secure coding patterns
 
 ### Workflow 3: Custom Rule Development
@@ -133,9 +133,9 @@ Semgrep supports 30+ languages including:
 
 ### References
 
-- `../../../Global_References/Security/owasp_cwe_mapping.md` - OWASP Top 10 to CWE mapping with Semgrep rules
-- `../../../Global_References/Security/sast-semgrep_remediation_guide.md` - Vulnerability remediation patterns by category
-- `../../../Global_References/Security/rule_library.md` - Curated list of useful Semgrep rulesets
+- `../../references/owasp_cwe_mapping.md` - OWASP Top 10 to CWE mapping with Semgrep rules
+- `../../references/sast-semgrep_remediation_guide.md` - Vulnerability remediation patterns by category
+- `../../references/rule_library.md` - Curated list of useful Semgrep rulesets
 
 ### Assets
 
@@ -253,7 +253,7 @@ semgrep --config "p/owasp-top-ten" --exclude-rule "generic.*"
 
 **Solution**:
 - Use comprehensive rulesets: `p/security-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)` or `p/owasp-top-ten`
-- Consult `../../../Global_References/Security/rule_library.md` for specialized rules
+- Consult `../../references/rule_library.md` for specialized rules
 - Create custom rules for organization-specific patterns
 - Combine with dynamic analysis (DAST) and dependency scanning
 
@@ -261,7 +261,7 @@ semgrep --config "p/owasp-top-ten" --exclude-rule "generic.*"
 
 ### Creating Custom Rules
 
-See `../../../Global_References/Security/rule_library.md` for guidance on writing effective Semgrep rules.
+See `../../references/rule_library.md` for guidance on writing effective Semgrep rules.
 Use `assets/rule_template.yaml` as a starting point.
 
 Example rule structure:
@@ -283,7 +283,7 @@ rules:
 ### OWASP Top 10 Coverage
 
 This skill provides detection for all OWASP Top 10 2021 categories.
-See `../../../Global_References/Security/owasp_cwe_mapping.md` for complete coverage matrix.
+See `../../references/owasp_cwe_mapping.md` for complete coverage matrix.
 
 ## Best Practices
 

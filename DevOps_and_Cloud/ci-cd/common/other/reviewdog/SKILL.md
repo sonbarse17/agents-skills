@@ -361,7 +361,7 @@ grep -nH -R "eval(" . --include="*.py" | \
 - Convert tool output to supported format (checkstyle, sarif, rdjson, rdjsonl)
 - Use `-f=rdjson` for custom JSON output following reviewdog diagnostic format
 - Create errorformat pattern for text-based outputs
-- See `../../../../Global_References/ci-cd/reporter_formats.md` for format specifications
+- See `../../../references/reporter_formats.md` for format specifications
 
 ## Advanced Configuration
 

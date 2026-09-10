@@ -432,12 +432,12 @@ Cloud storage: higher cost per GB, no replica management, built-in HA (AWS handl
 - RBAC enabled for Longhorn API
 
 ## References
-- ../../../../Global_References/containers-orchestration/longhorn-fundamentals.md -- Longhorn Fundamentals
-- ../../../../Global_References/containers-orchestration/longhorn-advanced.md -- Longhorn Advanced Topics
-- ../../../../Global_References/containers-orchestration/longhorn-config.md -- Longhorn Configuration Reference
-- ../../../../Global_References/containers-orchestration/longhorn-manager.md -- Longhorn Management
-- ../../../../Global_References/containers-orchestration/longhorn-perf.md -- Longhorn Performance
-- ../../../../Global_References/containers-orchestration/longhorn-backup.md -- Longhorn Backup & DR
+- ../../../references/longhorn-fundamentals.md -- Longhorn Fundamentals
+- ../../../references/longhorn-advanced.md -- Longhorn Advanced Topics
+- ../../../references/longhorn-config.md -- Longhorn Configuration Reference
+- ../../../references/longhorn-manager.md -- Longhorn Management
+- ../../../references/longhorn-perf.md -- Longhorn Performance
+- ../../../references/longhorn-backup.md -- Longhorn Backup & DR
 - ../../../Global_References/longhorn-[disaster-recovery](../../../common/other/disaster-recovery/SKILL.md).md -- Longhorn Disaster Recovery
 - ../../../Global_References/longhorn-[performance-tuning](../../../../Software_Engineering_and_Other/Frontend/performance/performance-tuning/SKILL.md).md -- Longhorn Performance Tuning
 

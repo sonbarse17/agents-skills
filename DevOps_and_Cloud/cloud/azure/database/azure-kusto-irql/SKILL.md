@@ -244,7 +244,7 @@ Always output the complete KQL query in the chat response with Step 1 (connect) 
 <KQL_QUERY>
 ```
 
-If the user asks to save or open in Kusto Explorer, follow the procedure in [../../../../Global_References/cloud/KUSTO_EXPLORER_LAUNCH.md](../../../../Global_References/cloud/KUSTO_EXPLORER_LAUNCH.md). Key rules:
+If the user asks to save or open in Kusto Explorer, follow the procedure in [../../../references/KUSTO_EXPLORER_LAUNCH.md](../../../references/KUSTO_EXPLORER_LAUNCH.md). Key rules:
 
 - Use `ask_user` to confirm before writing files or launching executables
 - Display file contents in chat so the user can review before opening

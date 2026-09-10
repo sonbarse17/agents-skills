@@ -236,7 +236,7 @@ Ref: [High Availability for Amazon RDS](https://docs.aws.amazon.com/AmazonRDS/la
 ### 9.3 Performance
 Ref: [DB Instance Performance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Monitoring.html)
 
-7-day metric thresholds (full table in `../../../../Global_References/cloud/rds-operation-review_metrics-thresholds.md`):
+7-day metric thresholds (full table in `../../../references/rds-operation-review_metrics-thresholds.md`):
 - `CPUUtilization` avg > 70% → MEDIUM, > 90% → HIGH.
 - `FreeStorageSpace` < 20% allocated → HIGH, < 10% → CRITICAL.
 - `FreeableMemory` < 10% instance class memory → HIGH; sustained `SwapUsage` > 0 → MEDIUM.

@@ -71,7 +71,7 @@ Mode below, not a valid optimization.
   full-fine-tune LR.** For QLoRA specifically,
   **2e-4** is the standard starting point. Full
   hyperparameter tables and worked examples:
-  `../../../../Global_References/AI_and_Agents/hyperparameters.md`.
+  `../../../references/hyperparameters.md`.
 
 ### Rank by Task
 
@@ -105,7 +105,7 @@ for messages-shaped conversational SFT with
 `assistant_only_loss=True`, where Unsloth
 2026.7.x's compiled trainer has no messages-shaped
 path at all and the plain-TRL escape hatch
-(`../../../../Global_References/AI_and_Agents/unsloth-trl-mapping.md`) is the
+(`../../../references/unsloth-trl-mapping.md`) is the
 default for that combination, not a rare-regression
 fallback. Its out-of-the-box defaults, and why
 each one is set that way:
@@ -145,8 +145,8 @@ model = FastLanguageModel.get_peft_model(
 
 Exact kwarg names and their plain-TRL/PEFT
 equivalents, plus a full worked config including
-`SFTConfig`: `../../../../Global_References/AI_and_Agents/unsloth-trl-mapping.md`
-and `../../../../Global_References/AI_and_Agents/hyperparameters.md`.
+`SFTConfig`: `../../../references/unsloth-trl-mapping.md`
+and `../../../references/hyperparameters.md`.
 
 ## LoRA vs QLoRA vs Full FT
 
@@ -217,11 +217,11 @@ skill before debugging the training loop itself.
 
 ## References
 
-- `../../../../Global_References/AI_and_Agents/hyperparameters.md` — full rank/
+- `../../../references/hyperparameters.md` — full rank/
   alpha/LR tables by task type, rsLoRA notes,
   batch/packing interactions, and a complete
   worked Unsloth config block.
-- `../../../../Global_References/AI_and_Agents/unsloth-trl-mapping.md` — every
+- `../../../references/unsloth-trl-mapping.md` — every
   Unsloth kwarg mapped to its TRL/PEFT
   equivalent, current TRL API notes, and the
   escape-hatch rule for when to drop back to

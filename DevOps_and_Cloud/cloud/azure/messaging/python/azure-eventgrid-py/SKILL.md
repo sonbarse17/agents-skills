@@ -207,6 +207,6 @@ with EventGridPublisherClient(
 
 | File | Contents |
 |------|----------|
-| [../../../../../Global_References/cloud/capabilities.md](../../../../../Global_References/cloud/capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
-| [../../../../../Global_References/cloud/non-hero-scenarios.md](../../../../../Global_References/cloud/non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
+| [../../../../references/capabilities.md](../../../../references/capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
+| [../../../../references/non-hero-scenarios.md](../../../../references/non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
 

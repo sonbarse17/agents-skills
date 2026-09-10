@@ -544,13 +544,13 @@ Check [commit](../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md)
 
 ## References
   - ../../../Global_References/data-[vault](../../Security/cryptography-secrets/vault/SKILL.md)-patterns.md — Data [Vault](../../Security/cryptography-secrets/vault/SKILL.md) Patterns
-  - ../../Global_References/Data_Engineering/dimensional-modeling.md — Dimensional Modeling
-  - ../../Global_References/Data_Engineering/domain-driven-data-modeling.md — Domain-Driven Data Modeling
-  - ../../Global_References/Data_Engineering/data-modeling_graph-modeling.md — Graph Modeling
-  - ../../Global_References/Data_Engineering/modeling-best-practices.md — Data Modeling Best Practices
+  - ../references/dimensional-modeling.md — Dimensional Modeling
+  - ../references/domain-driven-data-modeling.md — Domain-Driven Data Modeling
+  - ../references/data-modeling_graph-modeling.md — Graph Modeling
+  - ../references/modeling-best-practices.md — Data Modeling Best Practices
   - ../../../Global_References/modeling-[change-management](../../DevOps_and_Cloud/observability-monitoring-logging/common/other/change-management/SKILL.md).md — Model Change Management
-  - ../../Global_References/Data_Engineering/modeling-data-contracts.md — Data Contracts in Modeling
-  - ../../Global_References/Data_Engineering/relational-modeling.md — Relational Modeling
+  - ../references/modeling-data-contracts.md — Data Contracts in Modeling
+  - ../references/relational-modeling.md — Relational Modeling
 ## Handoff
 `[data-dimensional-modeling](../dimensional-modeling/SKILL.md)` for star schemas and dimensional models
 `[backend-database-patterns](../../Software_Engineering_and_Other/Databases/common/database-patterns/SKILL.md)` for query optimization and indexing

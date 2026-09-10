@@ -499,12 +499,12 @@ feature_engineering:
 - Log feature importance and distribution for every training run
 
 ## References
-  - ../../Global_References/Data_Engineering/automated-fe.md — Automated Feature Engineering
-  - ../../Global_References/Data_Engineering/feature-encoding.md — Feature Encoding Reference
-  - ../../Global_References/Data_Engineering/feature-engineering-advanced.md — Feature Engineering Advanced Topics
-  - ../../Global_References/Data_Engineering/feature-engineering-fundamentals.md — Feature Engineering Fundamentals
-  - ../../Global_References/Data_Engineering/text-features.md — Text Feature Engineering
-  - ../../Global_References/Data_Engineering/validation-leakage.md — Feature Engineering Validation
+  - ../references/automated-fe.md — Automated Feature Engineering
+  - ../references/feature-encoding.md — Feature Encoding Reference
+  - ../references/feature-engineering-advanced.md — Feature Engineering Advanced Topics
+  - ../references/feature-engineering-fundamentals.md — Feature Engineering Fundamentals
+  - ../references/text-features.md — Text Feature Engineering
+  - ../references/validation-leakage.md — Feature Engineering Validation
 ## Handoff
 `[ml-classical-ml](../../AI_and_Agents/Models_and_FineTuning/ml-domains/classical-ml/SKILL.md)` for model training with engineered features
 `[ml-deep-learning](../../AI_and_Agents/Architecture/ml-foundations/deep-learning/SKILL.md)` for deep learning feature extraction (embeddings)

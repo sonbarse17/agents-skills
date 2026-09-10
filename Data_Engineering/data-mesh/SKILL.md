@@ -416,16 +416,16 @@ The platform tool stack must expose self-serve APIs. Domains should not need to 
 - Data products have a documented deprecation policy with consumer notification
 
 ## References
-  - ../../Global_References/Data_Engineering/data-product-template.md — Data Product Template
-  - ../../Global_References/Data_Engineering/domain-decomposition-patterns.md — Domain Decomposition Patterns
-  - ../../Global_References/Data_Engineering/mesh-data-product-implementation.md — Data Product Implementation
-  - ../../Global_References/Data_Engineering/mesh-data-product-lifecycle.md — Data Product Lifecycle
-  - ../../Global_References/Data_Engineering/mesh-federated-governance.md — Federated Governance Operating Model
-  - ../../Global_References/Data_Engineering/mesh-governance-operating-model.md — Mesh Governance Operating Model
-  - ../../Global_References/Data_Engineering/mesh-implementation.md — Data Mesh Implementation
-  - ../../Global_References/Data_Engineering/mesh-principles.md — Data Mesh Principles
-  - ../../Global_References/Data_Engineering/data-mesh-federated-governance.md — Data Mesh Federated Governance Deep Dive
-  - ../../Global_References/Data_Engineering/data-mesh-infrastructure-platform.md — Data Mesh Infrastructure Platform
+  - ../references/data-product-template.md — Data Product Template
+  - ../references/domain-decomposition-patterns.md — Domain Decomposition Patterns
+  - ../references/mesh-data-product-implementation.md — Data Product Implementation
+  - ../references/mesh-data-product-lifecycle.md — Data Product Lifecycle
+  - ../references/mesh-federated-governance.md — Federated Governance Operating Model
+  - ../references/mesh-governance-operating-model.md — Mesh Governance Operating Model
+  - ../references/mesh-implementation.md — Data Mesh Implementation
+  - ../references/mesh-principles.md — Data Mesh Principles
+  - ../references/data-mesh-federated-governance.md — Data Mesh Federated Governance Deep Dive
+  - ../references/data-mesh-infrastructure-platform.md — Data Mesh Infrastructure Platform
 ## Architecture Decision Trees
 
 ```

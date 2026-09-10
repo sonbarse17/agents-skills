@@ -71,15 +71,15 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| [GitHub](../../../github-actions/other/github/SKILL.md) Actions | `../../../../Global_References/ci-cd/devops-engineer_github-actions.md` | Setting up CI/CD pipelines, [GitHub](../../../github-actions/other/github/SKILL.md) workflows |
+| [GitHub](../../../github-actions/other/github/SKILL.md) Actions | `../../../references/devops-engineer_github-actions.md` | Setting up CI/CD pipelines, [GitHub](../../../github-actions/other/github/SKILL.md) workflows |
 | GitLab CI/CD | `../../../Global_References/[gitlab-ci](../../../gitlab-ci/pipelines/gitlab-ci/SKILL.md).md` | Setting up GitLab pipelines, `.[gitlab-ci](../../../gitlab-ci/pipelines/gitlab-ci/SKILL.md).yml`, DAG/`needs`, environments, runners |
 | [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) | `../../../Global_References/[docker-patterns](../../Containers_and_Orchestration/[docker](../../Containers_and_Orchestration/docker/SKILL.md)-patterns/SKILL.md).md` | Containerizing applications, writing Dockerfiles |
 | [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) | `../../../Global_References/[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).md` | K8s deployments, services, ingress, pods |
-| Terraform | `../../../../Global_References/ci-cd/terraform-iac.md` | Infrastructure as code, AWS/GCP provisioning |
-| Deployment | `../../../../Global_References/ci-cd/devops-engineer_deployment-strategies.md` | Blue-green, canary, rolling updates, rollback |
+| Terraform | `../../../references/terraform-iac.md` | Infrastructure as code, AWS/GCP provisioning |
+| Deployment | `../../../references/devops-engineer_deployment-strategies.md` | Blue-green, canary, rolling updates, rollback |
 | Platform | `../../../Global_References/[platform-engineering](../../../../containers-orchestration/common/other/platform-engineering/SKILL.md).md` | Self-service infra, developer portals, golden paths, Backstage |
-| Release | `../../../../Global_References/ci-cd/release-automation.md` | Artifact management, feature flags, multi-platform CI/CD |
-| Incidents | `../../../../Global_References/ci-cd/devops-engineer_incident-response.md` | Production outages, on-call, MTTR, postmortems, [runbooks](../../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md) |
+| Release | `../../../references/release-automation.md` | Artifact management, feature flags, multi-platform CI/CD |
+| Incidents | `../../../references/devops-engineer_incident-response.md` | Production outages, on-call, MTTR, postmortems, [runbooks](../../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md) |
 
 ## Constraints
 

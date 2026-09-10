@@ -561,12 +561,12 @@ class ListUsersHandler implements RequestHandlerInterface
 - Mezzio routing uses PSR-7/PSR-15 middleware; Laminas MVC uses MVC controllers.
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/laminas-auth.md — Laminas Authentication and Authorization
-  - ../../../../Global_References/Software_Engineering_and_Other/laminas-db-doctrine.md — Laminas DB & Doctrine
-  - ../../../../Global_References/Software_Engineering_and_Other/laminas-forms.md — Laminas Form and Validation Patterns
-  - ../../../../Global_References/Software_Engineering_and_Other/laminas-mvc.md — Laminas MVC Reference
-  - ../../../../Global_References/Software_Engineering_and_Other/mezzio-api.md — Mezzio API Development
-  - ../../../../Global_References/Software_Engineering_and_Other/zend-migration.md — Zend to Laminas Migration
+  - ../../../references/laminas-auth.md — Laminas Authentication and Authorization
+  - ../../../references/laminas-db-doctrine.md — Laminas DB & Doctrine
+  - ../../../references/laminas-forms.md — Laminas Form and Validation Patterns
+  - ../../../references/laminas-mvc.md — Laminas MVC Reference
+  - ../../../references/mezzio-api.md — Mezzio API Development
+  - ../../../references/zend-migration.md — Zend to Laminas Migration
 ## Handoff
 Next skill: [php-laravel](../laravel/SKILL.md) — if user prefers Laravel's opinionated conventions.
 Carry forward: PHP version, database driver, module structure, laminas vs zend namespace.

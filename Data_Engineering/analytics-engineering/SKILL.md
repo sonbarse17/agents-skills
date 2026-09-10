@@ -481,11 +481,11 @@ Source data characteristics?
 
 ## References
   - ../../../Global_References/[data-modeling](../data-modeling/SKILL.md).md — Data Modeling for Analytics Reference
-  - ../../Global_References/Data_Engineering/data-quality-testing.md — Data Quality Testing
-  - ../../Global_References/Data_Engineering/data-warehouse-architecture.md — Data Warehouse Architecture
-  - ../../Global_References/Data_Engineering/dbt-core.md — dbt Core Reference
-  - ../../Global_References/Data_Engineering/metrics-layer.md — Metrics Layer Reference
-  - ../../Global_References/Data_Engineering/sql-analytics.md — SQL for Analytics Reference
+  - ../references/data-quality-testing.md — Data Quality Testing
+  - ../references/data-warehouse-architecture.md — Data Warehouse Architecture
+  - ../references/dbt-core.md — dbt Core Reference
+  - ../references/metrics-layer.md — Metrics Layer Reference
+  - ../references/sql-analytics.md — SQL for Analytics Reference
 ## Architecture Decision Trees
 
 ```

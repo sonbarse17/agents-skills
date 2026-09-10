@@ -56,13 +56,13 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Server Components | `../../../../Global_References/Software_Engineering_and_Other/react-expert_server-components.md` | RSC patterns, Next.js App Router |
-| React 19 | `../../../../Global_References/Software_Engineering_and_Other/react-19-features.md` | use() hook, useActionState, forms |
-| State Management | `../../../../Global_References/Software_Engineering_and_Other/react-expert_state-management.md` | Context, Zustand, Redux, TanStack |
-| Hooks | `../../../../Global_References/Software_Engineering_and_Other/hooks-patterns.md` | Custom hooks, useEffect, useCallback |
-| Performance | `../../../../Global_References/Software_Engineering_and_Other/react-expert_performance.md` | memo, lazy, virtualization |
-| Testing | `../../../../Global_References/Software_Engineering_and_Other/testing-react.md` | Testing Library, mocking |
-| Class Migration | `../../../../Global_References/Software_Engineering_and_Other/migration-class-to-modern.md` | Converting class components to hooks/RSC |
+| Server Components | `../../../references/react-expert_server-components.md` | RSC patterns, Next.js App Router |
+| React 19 | `../../../references/react-19-features.md` | use() hook, useActionState, forms |
+| State Management | `../../../references/react-expert_state-management.md` | Context, Zustand, Redux, TanStack |
+| Hooks | `../../../references/hooks-patterns.md` | Custom hooks, useEffect, useCallback |
+| Performance | `../../../references/react-expert_performance.md` | memo, lazy, virtualization |
+| Testing | `../../../references/testing-react.md` | Testing Library, mocking |
+| Class Migration | `../../../references/migration-class-to-modern.md` | Converting class components to hooks/RSC |
 
 ## Key Patterns
 

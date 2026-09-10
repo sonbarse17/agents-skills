@@ -439,14 +439,14 @@ If every theme is "improve performance" or "fix bugs," the product is not evolvi
 - **analytics**: Define success metrics for each roadmap theme and track outcomes
 
 ## References
-- `../../Global_References/Product_and_Business/create-roadmap-fundamentals.md` — Roadmap Fundamentals
-- `../../Global_References/Product_and_Business/create-roadmap-advanced.md` — Roadmap Advanced Topics
-- `../../Global_References/Product_and_Business/roadmap-examples.md` — Roadmap Examples
-- `../../Global_References/Product_and_Business/roadmap-strategies.md` — Roadmap Strategies
-- `../../Global_References/Product_and_Business/roadmap-template.md` — Roadmap Template
-- `../../Global_References/Product_and_Business/roadmap-tools.md` — Roadmap Tools
-- `../../Global_References/Product_and_Business/roadmap-prioritization-methods.md` — Roadmap Prioritization Methods
-- `../../Global_References/Product_and_Business/roadmap-communication-stakeholder.md` — Roadmap Communication & Stakeholder Management
+- `../../references/create-roadmap-fundamentals.md` — Roadmap Fundamentals
+- `../../references/create-roadmap-advanced.md` — Roadmap Advanced Topics
+- `../../references/roadmap-examples.md` — Roadmap Examples
+- `../../references/roadmap-strategies.md` — Roadmap Strategies
+- `../../references/roadmap-template.md` — Roadmap Template
+- `../../references/roadmap-tools.md` — Roadmap Tools
+- `../../references/roadmap-prioritization-methods.md` — Roadmap Prioritization Methods
+- `../../references/roadmap-communication-stakeholder.md` — Roadmap Communication & Stakeholder Management
 
 ## Handoff
 [create-story](../../planning-and-tracking/create-story/SKILL.md), [create-tech-spec](../create-tech-spec/SKILL.md)

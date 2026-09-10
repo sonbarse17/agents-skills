@@ -27,7 +27,7 @@ Comprehensive guidance for writing production-ready Bash scripts using defensive
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../../../Global_References/Software_Engineering_and_Other/bash-defensive-patterns_details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../references/bash-defensive-patterns_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices Summary
 

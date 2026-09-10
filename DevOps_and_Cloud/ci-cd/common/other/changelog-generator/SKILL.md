@@ -381,8 +381,8 @@ conventionalChangelog(config)
 ```
 
 ## References
-  - ../../Global_References/Product_and_Business/changelog-generator-advanced.md — Changelog Generator Advanced Topics
-  - ../../Global_References/Product_and_Business/changelog-generator-fundamentals.md — Changelog Generator Fundamentals
+  - ../../../../../Product_and_Business/references/changelog-generator-advanced.md — Changelog Generator Advanced Topics
+  - ../../../../../Product_and_Business/references/changelog-generator-fundamentals.md — Changelog Generator Fundamentals
   - references/conventional-commits.md — Conventional Commits Reference
   - references/release-workflow.md — Release Workflow Reference
 ## Handoff

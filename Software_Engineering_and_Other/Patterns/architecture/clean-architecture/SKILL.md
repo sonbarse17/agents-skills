@@ -545,16 +545,16 @@ interface ICacheService {
 - Every public method in Domain should be unit-testable with zero mocks.
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/clean-arch-fundamentals.md — Clean Architecture Fundamentals
-  - ../../../../Global_References/Software_Engineering_and_Other/clean-arch-advanced.md — Clean Architecture Advanced Patterns
-  - ../../../../Global_References/Software_Engineering_and_Other/clean-arch-errors.md — Clean Architecture Error Handling
-  - ../../../../Global_References/Software_Engineering_and_Other/clean-arch-events.md — Clean Architecture Domain Events
-  - ../../../../Global_References/Software_Engineering_and_Other/clean-arch-testing.md — Clean Architecture Testing
-  - ../../../../Global_References/Software_Engineering_and_Other/dependency-injection.md — Dependency Injection
-  - ../../../../Global_References/Software_Engineering_and_Other/dependency-rule-deep.md — Dependency Rule Deep Dive
-  - ../../../../Global_References/Software_Engineering_and_Other/entity-boundaries.md — Entity Boundaries and Aggregate Design
-  - ../../../../Global_References/Software_Engineering_and_Other/layer-structure.md — Layer Structure
-  - ../../../../Global_References/Software_Engineering_and_Other/use-case-patterns.md — Use Case Patterns
+  - ../../../references/clean-arch-fundamentals.md — Clean Architecture Fundamentals
+  - ../../../references/clean-arch-advanced.md — Clean Architecture Advanced Patterns
+  - ../../../references/clean-arch-errors.md — Clean Architecture Error Handling
+  - ../../../references/clean-arch-events.md — Clean Architecture Domain Events
+  - ../../../references/clean-arch-testing.md — Clean Architecture Testing
+  - ../../../references/dependency-injection.md — Dependency Injection
+  - ../../../references/dependency-rule-deep.md — Dependency Rule Deep Dive
+  - ../../../references/entity-boundaries.md — Entity Boundaries and Aggregate Design
+  - ../../../references/layer-structure.md — Layer Structure
+  - ../../../references/use-case-patterns.md — Use Case Patterns
 ## Handoff
 No artifact produced.
 Next skill: [backend-api-design](../../../Backend/api-design/api-design/SKILL.md) — after layers are defined, design API contracts that respect layer boundaries.

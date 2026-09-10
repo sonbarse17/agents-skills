@@ -47,5 +47,5 @@ Install `defusedxml` from `requirements.txt` before using the bundled utilities.
 - Parse untrusted XML with `defusedxml`; do not enable entity expansion, DTD loading, or network access.
 - Treat theme colors as tokens unless fully resolved against the color scheme.
 
-See `../../../../Global_References/Software_Engineering_and_Other/reference-deck-analysis.md` for output shapes, `../../../../Global_References/Software_Engineering_and_Other/reference-deck-analysis-patterns.md` for documentation-only patterns, and `../../../../Global_References/Software_Engineering_and_Other/ooxml-parsing.md` for package part maps.
+See `../../../references/reference-deck-analysis.md` for output shapes, `../../../references/reference-deck-analysis-patterns.md` for documentation-only patterns, and `../../../references/ooxml-parsing.md` for package part maps.
 

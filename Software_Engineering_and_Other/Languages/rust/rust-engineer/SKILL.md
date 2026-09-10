@@ -47,11 +47,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Ownership | `../../../../Global_References/Software_Engineering_and_Other/ownership.md` | Lifetimes, borrowing, smart pointers, Pin |
-| Traits | `../../../../Global_References/Software_Engineering_and_Other/traits.md` | Trait design, generics, associated types, derive |
-| Error Handling | `../../../../Global_References/Software_Engineering_and_Other/rust-engineer_error-handling.md` | Result, Option, ?, custom errors, thiserror |
-| Async | `../../../../Global_References/Software_Engineering_and_Other/async.md` | async/await, tokio, futures, streams, concurrency |
-| Testing | `../../../../Global_References/Software_Engineering_and_Other/rust-engineer_testing.md` | Unit/integration tests, proptest, benchmarks |
+| Ownership | `../../../references/ownership.md` | Lifetimes, borrowing, smart pointers, Pin |
+| Traits | `../../../references/traits.md` | Trait design, generics, associated types, derive |
+| Error Handling | `../../../references/rust-engineer_error-handling.md` | Result, Option, ?, custom errors, thiserror |
+| Async | `../../../references/async.md` | async/await, tokio, futures, streams, concurrency |
+| Testing | `../../../references/rust-engineer_testing.md` | Unit/integration tests, proptest, benchmarks |
 
 ## Key Patterns with Examples
 

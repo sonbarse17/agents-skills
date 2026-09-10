@@ -116,14 +116,14 @@ Flow diagram
 5. Rule 5
 
 ## Reference Guides
-1. [Ref 1](../../../../Global_References/cloud/ref1.md)
-2. [Ref 2](../../../../Global_References/cloud/ref2.md)
-3. [Ref 3](../../../../Global_References/cloud/ref3.md)
-4. [Ref 4](../../../../Global_References/cloud/ref4.md)
-5. [Ref 5](../../../../Global_References/cloud/ref5.md)
-6. [Ref 6](../../../../Global_References/cloud/ref6.md)
-7. [Ref 7](../../../../Global_References/cloud/ref7.md)
-8. [Ref 8](../../../../Global_References/cloud/ref8.md)
+1. [Ref 1](../../../references/ref1.md)
+2. [Ref 2](../../../references/ref2.md)
+3. [Ref 3](../../../references/ref3.md)
+4. [Ref 4](../../../references/ref4.md)
+5. [Ref 5](../../../references/ref5.md)
+6. [Ref 6](../../../references/ref6.md)
+7. [Ref 7](../../../references/ref7.md)
+8. [Ref 8](../../../references/ref8.md)
 
 ## Handoff
 Refer to other skills.

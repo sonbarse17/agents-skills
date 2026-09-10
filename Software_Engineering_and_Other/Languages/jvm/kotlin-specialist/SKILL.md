@@ -48,11 +48,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Coroutines & Flow | `../../../../Global_References/Software_Engineering_and_Other/coroutines-flow.md` | Async operations, structured concurrency, Flow API |
-| Multiplatform | `../../../../Global_References/Software_Engineering_and_Other/multiplatform-kmp.md` | Shared code, expect/actual, platform setup |
+| Coroutines & Flow | `../../../references/coroutines-flow.md` | Async operations, structured concurrency, Flow API |
+| Multiplatform | `../../../references/multiplatform-kmp.md` | Shared code, expect/actual, platform setup |
 | [Android](../../../../Mobile/platforms/android/SKILL.md) & Compose | `../../../Global_References/[android](../../../../Mobile/platforms/android/SKILL.md)-compose.md` | Jetpack Compose, ViewModel, Material3, navigation |
-| Ktor Server | `../../../../Global_References/Software_Engineering_and_Other/ktor-server.md` | Routing, plugins, authentication, serialization |
-| DSL & Idioms | `../../../../Global_References/Software_Engineering_and_Other/dsl-idioms.md` | Type-safe builders, scope functions, delegates |
+| Ktor Server | `../../../references/ktor-server.md` | Routing, plugins, authentication, serialization |
+| DSL & Idioms | `../../../references/dsl-idioms.md` | Type-safe builders, scope functions, delegates |
 
 ## Key Patterns
 

@@ -237,7 +237,7 @@ curl -H "Authorization: ApiKey ${ELASTICSEARCH_API_KEY}" \
 
 ## Credential file format
 
-See [../../Global_References/Product_and_Business/credential-file-format.md](../../../Global_References/Product_and_Business/credential-file-format.md) for the full format specification.
+See [../../references/credential-file-format.md](../../references/credential-file-format.md) for the full format specification.
 
 ## Workflow: Load project credentials
 

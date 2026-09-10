@@ -457,14 +457,14 @@ create-brief --> [create-prd](../../product-management/create-prd/SKILL.md) --> 
 - **Value Proposition Canvas**: Maps user pains/gains to product features — useful for differentiating
 
 ## References
-- `../../Global_References/Product_and_Business/create-brief-fundamentals.md` — Brief Fundamentals
-- `../../Global_References/Product_and_Business/create-brief-advanced.md` — Brief Advanced Topics
-- `../../Global_References/Product_and_Business/brief-examples.md` — Brief Examples
-- `../../Global_References/Product_and_Business/brief-strategies.md` — Brief Writing Strategies
-- `../../Global_References/Product_and_Business/brief-template.md` — Product Brief Template
-- `../../Global_References/Product_and_Business/brief-templates.md` — Brief Templates
+- `../../references/create-brief-fundamentals.md` — Brief Fundamentals
+- `../../references/create-brief-advanced.md` — Brief Advanced Topics
+- `../../references/brief-examples.md` — Brief Examples
+- `../../references/brief-strategies.md` — Brief Writing Strategies
+- `../../references/brief-template.md` — Product Brief Template
+- `../../references/brief-templates.md` — Brief Templates
 - `references/brief-research-synthesis.md` — Research Synthesis for Briefs
-- `../../Global_References/Product_and_Business/brief-stakeholder-alignment.md` — Stakeholder Alignment for Briefs
+- `../../references/brief-stakeholder-alignment.md` — Stakeholder Alignment for Briefs
 
 ## Handoff
 Output: `docs/brief-{YYYY-MM-DD}.md`

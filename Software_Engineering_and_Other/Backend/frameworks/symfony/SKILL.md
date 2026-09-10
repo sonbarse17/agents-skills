@@ -646,12 +646,12 @@ Need message persistence and guaranteed delivery?
 ## References
   - references/symfony-doctrine-orm.md — Symfony Doctrine ORM Reference
   - references/symfony-messenger-queue.md — Symfony Messenger Queue Reference
-  - ../../../../Global_References/Software_Engineering_and_Other/symfony-architecture.md — Symfony Architecture
-  - ../../../../Global_References/Software_Engineering_and_Other/symfony-deployment.md — Symfony Deployment
-  - ../../../../Global_References/Software_Engineering_and_Other/symfony-doctrine.md — Symfony Doctrine Guide
-  - ../../../../Global_References/Software_Engineering_and_Other/symfony-security.md — Symfony Security Reference
-  - ../../../../Global_References/Software_Engineering_and_Other/symfony-setup.md — Symfony Setup Guide
-  - ../../../../Global_References/Software_Engineering_and_Other/symfony-testing.md — Symfony Testing Reference
+  - ../../../references/symfony-architecture.md — Symfony Architecture
+  - ../../../references/symfony-deployment.md — Symfony Deployment
+  - ../../../references/symfony-doctrine.md — Symfony Doctrine Guide
+  - ../../../references/symfony-security.md — Symfony Security Reference
+  - ../../../references/symfony-setup.md — Symfony Setup Guide
+  - ../../../references/symfony-testing.md — Symfony Testing Reference
 
 ## Handoff
 Hand off to `backend/universal/api-response/SKILL.md` for API response standards.

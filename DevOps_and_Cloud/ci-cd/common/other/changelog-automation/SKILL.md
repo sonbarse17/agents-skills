@@ -38,7 +38,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../Global_References/Product_and_Business/changelog-automation_details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../../../Product_and_Business/references/changelog-automation_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Summary
 

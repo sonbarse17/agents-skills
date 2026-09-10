@@ -35,7 +35,7 @@ discipline applies equally to [CloudFormation](../../../cloudformation/other/clo
 as code — it's infrastructure with extra steps.**
 
 For Terraform specifics — plan symbols, state operations, backends, forced replacement, and drift
-detection — read `../../../../Global_References/infrastructure-as-code/terraform.md`.
+detection — read `../../../references/terraform.md`.
 
 ## 1. Read every plan before you apply it
 

@@ -566,13 +566,13 @@ async function handleOrderCreated(event: OutboxEvent): Promise<void> {
 | CDC (Debezium, optimized) | ~100K msg/s | 5ms | 50ms | High |
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/deduplication-idempotency.md — Deduplication & Idempotency
-  - ../../../../Global_References/Software_Engineering_and_Other/message-relay-strategies.md — Message Relay Strategies
-  - ../../../../Global_References/Software_Engineering_and_Other/outbox-advanced-scenarios.md — Advanced Outbox Scenarios
-  - ../../../../Global_References/Software_Engineering_and_Other/outbox-alternatives.md — Outbox Pattern Alternatives
-  - ../../../../Global_References/Software_Engineering_and_Other/outbox-deployment.md — Outbox Deployment
-  - ../../../../Global_References/Software_Engineering_and_Other/outbox-implementation.md — Transactional Outbox Pattern
-  - ../../../../Global_References/Software_Engineering_and_Other/outbox-implementations.md — Outbox Implementations
+  - ../../../references/deduplication-idempotency.md — Deduplication & Idempotency
+  - ../../../references/message-relay-strategies.md — Message Relay Strategies
+  - ../../../references/outbox-advanced-scenarios.md — Advanced Outbox Scenarios
+  - ../../../references/outbox-alternatives.md — Outbox Pattern Alternatives
+  - ../../../references/outbox-deployment.md — Outbox Deployment
+  - ../../../references/outbox-implementation.md — Transactional Outbox Pattern
+  - ../../../references/outbox-implementations.md — Outbox Implementations
   - ../../../Global_References/outbox-[monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Outbox [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and Recovery
 ## Handoff
 No artifact produced.

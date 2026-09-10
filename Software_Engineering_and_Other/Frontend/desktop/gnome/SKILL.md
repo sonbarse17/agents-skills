@@ -449,8 +449,8 @@ status_page.set_description("Add your first item to get started");
 ```
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/gnome-advanced.md — GNOME Advanced Topics
-  - ../../../../Global_References/Software_Engineering_and_Other/gnome-fundamentals.md — GNOME Fundamentals
+  - ../../../references/gnome-advanced.md — GNOME Advanced Topics
+  - ../../../references/gnome-fundamentals.md — GNOME Fundamentals
   - references/gnome-hig.md — GNOME HIG Reference
   - references/gnome-shell-extension.md — GNOME Shell Extension Reference
 ## Handoff

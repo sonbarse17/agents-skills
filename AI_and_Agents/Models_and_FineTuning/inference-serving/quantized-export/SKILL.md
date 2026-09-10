@@ -167,7 +167,7 @@ work":**
    (quantized) export, byte match is expected
    to fail; the gate is task-grader verdict
    agreement instead — see
-   `../../../../Global_References/AI_and_Agents/export-commands.md`'s
+   `../../../references/export-commands.md`'s
    Smoke-Test Script Skeleton.
 
 Run this as a gate, not a manual check:
@@ -204,7 +204,7 @@ any quant-method or runtime version bump, not
 only after the first export. Runnable command
 sequences for every format plus the
 smoke-test script skeleton:
-`../../../../Global_References/AI_and_Agents/export-commands.md`.
+`../../../references/export-commands.md`.
 
 ## Related Skills
 

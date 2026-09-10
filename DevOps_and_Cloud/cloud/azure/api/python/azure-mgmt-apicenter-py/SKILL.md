@@ -292,6 +292,6 @@ metadata = client.metadata_schemas.create_or_update(
 
 | File | Contents |
 |------|----------|
-| [../../../../../Global_References/cloud/azure-mgmt-apicenter-py_capabilities.md](../../../../../Global_References/cloud/azure-mgmt-apicenter-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
-| [../../../../../Global_References/cloud/azure-mgmt-apicenter-py_non-hero-scenarios.md](../../../../../Global_References/cloud/azure-mgmt-apicenter-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
+| [../../../../references/azure-mgmt-apicenter-py_capabilities.md](../../../../references/azure-mgmt-apicenter-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
+| [../../../../references/azure-mgmt-apicenter-py_non-hero-scenarios.md](../../../../references/azure-mgmt-apicenter-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
 

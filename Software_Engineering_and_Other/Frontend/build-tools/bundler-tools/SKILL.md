@@ -503,14 +503,14 @@ jobs:
 
 ## References
 
-- `../../../../Global_References/Software_Engineering_and_Other/bundle-optimization.md` -- Bundle Optimization
-- `../../../../Global_References/Software_Engineering_and_Other/bundler-comparison.md` -- Bundler Comparison
-- `../../../../Global_References/Software_Engineering_and_Other/bundler-configuration.md` -- Bundler Configuration
-- `../../../../Global_References/Software_Engineering_and_Other/bundler-optimization.md` -- Bundler Optimization
-- `../../../../Global_References/Software_Engineering_and_Other/module-federation.md` -- Module Federation
-- `../../../../Global_References/Software_Engineering_and_Other/vite-config.md` -- Vite Configuration
+- `../../../references/bundle-optimization.md` -- Bundle Optimization
+- `../../../references/bundler-comparison.md` -- Bundler Comparison
+- `../../../references/bundler-configuration.md` -- Bundler Configuration
+- `../../../references/bundler-optimization.md` -- Bundler Optimization
+- `../../../references/module-federation.md` -- Module Federation
+- `../../../references/vite-config.md` -- Vite Configuration
 - `../../../Global_References/bundler-[performance-tuning](../../performance/performance-tuning/SKILL.md).md` -- Bundler Performance Tuning
-- `../../../../Global_References/Software_Engineering_and_Other/module-federation-code-splitting.md` -- Module Federation & Code Splitting
+- `../../../references/module-federation-code-splitting.md` -- Module Federation & Code Splitting
 
 ## Handoff
 

@@ -442,8 +442,8 @@ Brand colors must meet WCAG AA minimums:
 | Brand [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) report | Slide deck/PDF | Leadership | Consistency scores, violations, remediation plan |
 
 ## References
-  - ../../Global_References/Product_and_Business/brand-identity-advanced.md — Brand Identity Advanced Topics
-  - ../../Global_References/Product_and_Business/brand-identity-fundamentals.md — Brand Identity Fundamentals
+  - ../../references/brand-identity-advanced.md — Brand Identity Advanced Topics
+  - ../../references/brand-identity-fundamentals.md — Brand Identity Fundamentals
   - references/brand-messaging.md — Brand Messaging and Voice Reference
   - references/brand-touchpoint-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md).md — Brand Touchpoint [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Reference
   - references/logo-design.md — Logo Design Reference

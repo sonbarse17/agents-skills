@@ -483,12 +483,12 @@ Use `@MockBean` for repository mocking. Use `@MicronautTest(environments = "test
 - Native image: annotate all reflection-hungry classes with `@Introspected`.
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/micronaut-configuration.md — Micronaut Configuration
-  - ../../../../Global_References/Software_Engineering_and_Other/micronaut-data.md — Micronaut Data
-  - ../../../../Global_References/Software_Engineering_and_Other/micronaut-deployment.md — Deployment and Native Image
-  - ../../../../Global_References/Software_Engineering_and_Other/micronaut-security.md — Micronaut Security
-  - ../../../../Global_References/Software_Engineering_and_Other/micronaut-setup.md — Micronaut Setup Guide
-  - ../../../../Global_References/Software_Engineering_and_Other/micronaut-testing.md — Testing Micronaut Applications
+  - ../../../references/micronaut-configuration.md — Micronaut Configuration
+  - ../../../references/micronaut-data.md — Micronaut Data
+  - ../../../references/micronaut-deployment.md — Deployment and Native Image
+  - ../../../references/micronaut-security.md — Micronaut Security
+  - ../../../references/micronaut-setup.md — Micronaut Setup Guide
+  - ../../../references/micronaut-testing.md — Testing Micronaut Applications
 ## Handoff
 Hand off to `backend/spring-boot/architecture/SKILL.md` for Spring Boot patterns or `backend/universal/api-response/SKILL.md` for API response formatting.
 ## Implementation Patterns

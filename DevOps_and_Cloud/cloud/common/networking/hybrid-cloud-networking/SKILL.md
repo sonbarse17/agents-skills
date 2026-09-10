@@ -71,7 +71,7 @@ resource "aws_vpn_connection" "main" {
 - Lower latency, consistent bandwidth
 - More expensive, setup time required
 
-**Reference:** See `../../../../Global_References/cloud/direct-connect.md`
+**Reference:** See `../../../references/direct-connect.md`
 
 ### Azure Connectivity
 

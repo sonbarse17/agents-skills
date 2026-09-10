@@ -345,10 +345,10 @@ optimizations:
 | Check GC logs for memory issues | Allocation rate = GC frequency |
 
 ## References
-   - ../../../../Global_References/Software_Engineering_and_Other/performance-profiler-advanced.md — Performance Profiler Advanced Topics
+   - ../../../references/performance-profiler-advanced.md — Performance Profiler Advanced Topics
    - references/performance-profiler-database.md — Database [Profiling](../../../Frontend/performance/profiling/SKILL.md) Reference
    - references/performance-profiler-frontend.md — Frontend [Profiling](../../../Frontend/performance/profiling/SKILL.md) Reference
-   - ../../../../Global_References/Software_Engineering_and_Other/performance-profiler-fundamentals.md — Performance Profiler Fundamentals
+   - ../../../references/performance-profiler-fundamentals.md — Performance Profiler Fundamentals
 
 ## Implementation Patterns
 

@@ -56,7 +56,7 @@ Binary:                dimensions/8 bytes
 
 ## Templates and detailed worked examples
 
-Full template library and detailed worked examples live in `../../../../Global_References/AI_and_Agents/vector-index-tuning_details.md`. Read that file when you need the concrete templates.
+Full template library and detailed worked examples live in `../../../references/vector-index-tuning_details.md`. Read that file when you need the concrete templates.
 
 ## Best Practices
 

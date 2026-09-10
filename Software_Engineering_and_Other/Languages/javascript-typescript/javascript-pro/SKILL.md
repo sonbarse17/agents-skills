@@ -52,11 +52,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Modern Syntax | `../../../../Global_References/Software_Engineering_and_Other/modern-syntax.md` | ES2023+ features, optional chaining, private fields |
-| Async Patterns | `../../../../Global_References/Software_Engineering_and_Other/javascript-pro_async-patterns.md` | Promises, async/await, error handling, event loop |
-| Modules | `../../../../Global_References/Software_Engineering_and_Other/modules.md` | ESM vs CJS, dynamic imports, package.json exports |
-| Browser APIs | `../../../../Global_References/Software_Engineering_and_Other/browser-apis.md` | Fetch, Web Workers, Storage, IntersectionObserver |
-| Node Essentials | `../../../../Global_References/Software_Engineering_and_Other/node-essentials.md` | fs/promises, streams, EventEmitter, worker threads |
+| Modern Syntax | `../../../references/modern-syntax.md` | ES2023+ features, optional chaining, private fields |
+| Async Patterns | `../../../references/javascript-pro_async-patterns.md` | Promises, async/await, error handling, event loop |
+| Modules | `../../../references/modules.md` | ESM vs CJS, dynamic imports, package.json exports |
+| Browser APIs | `../../../references/browser-apis.md` | Fetch, Web Workers, Storage, IntersectionObserver |
+| Node Essentials | `../../../references/node-essentials.md` | fs/promises, streams, EventEmitter, worker threads |
 
 ## Constraints
 

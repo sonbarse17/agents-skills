@@ -750,12 +750,12 @@ func testAccessibilityLabels() {
 ```
 
 ## References
-- `../../Global_References/Mobile/testing_integration-testing.md` — Mobile Integration Testing
-- `../../Global_References/Mobile/manual-testing.md` — Manual Testing — Mobile
-- `../../Global_References/Mobile/mobile-testing-strategies.md` — Mobile Testing Strategies
-- `../../Global_References/Mobile/test-automation-frameworks.md` — Test Automation Frameworks
-- `../../Global_References/Mobile/ui-testing.md` — Mobile UI Testing
-- `../../Global_References/Mobile/testing_unit-testing.md` — Mobile Unit Testing
+- `../../references/testing_integration-testing.md` — Mobile Integration Testing
+- `../../references/manual-testing.md` — Manual Testing — Mobile
+- `../../references/mobile-testing-strategies.md` — Mobile Testing Strategies
+- `../../references/test-automation-frameworks.md` — Test Automation Frameworks
+- `../../references/ui-testing.md` — Mobile UI Testing
+- `../../references/testing_unit-testing.md` — Mobile Unit Testing
 
 ## Handoff
 After testing setup, hand off to:

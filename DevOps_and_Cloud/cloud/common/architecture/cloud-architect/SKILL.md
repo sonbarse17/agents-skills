@@ -72,11 +72,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| AWS Services | `../../../../Global_References/cloud/aws.md` | EC2, S3, Lambda, RDS, Well-Architected Framework |
-| Azure Services | `../../../../Global_References/cloud/azure.md` | VMs, Storage, Functions, SQL, Cloud Adoption Framework |
-| GCP Services | `../../../../Global_References/cloud/gcp.md` | Compute Engine, Cloud Storage, Cloud Functions, BigQuery |
+| AWS Services | `../../../references/aws.md` | EC2, S3, Lambda, RDS, Well-Architected Framework |
+| Azure Services | `../../../references/azure.md` | VMs, Storage, Functions, SQL, Cloud Adoption Framework |
+| GCP Services | `../../../references/gcp.md` | Compute Engine, Cloud Storage, Cloud Functions, BigQuery |
 | [Multi-Cloud](../../other/multi-cloud/SKILL.md) | `../../../Global_References/[multi-cloud](../../other/multi-cloud/SKILL.md).md` | Abstraction layers, portability, vendor lock-in mitigation |
-| Cost Optimization | `../../../../Global_References/cloud/cost.md` | Reserved instances, spot, right-sizing, FinOps practices |
+| Cost Optimization | `../../../references/cost.md` | Reserved instances, spot, right-sizing, FinOps practices |
 
 ## Constraints
 

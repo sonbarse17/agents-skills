@@ -397,11 +397,11 @@ CSS logical properties have negligible performance cost. Flipping layout on loca
 
 ## References
   - ../../../Global_References/i18n-[build-optimization](../../../../DevOps_and_Cloud/ci-cd/common/build/build-optimization/SKILL.md).md — i18n Build Optimization
-  - ../../../../Global_References/Software_Engineering_and_Other/i18n-implementation.md — i18n Implementation
-  - ../../../../Global_References/Software_Engineering_and_Other/i18n-libraries.md — i18n Libraries
-  - ../../../../Global_References/Software_Engineering_and_Other/i18n-testing.md — i18n Testing
-  - ../../../../Global_References/Software_Engineering_and_Other/i18n-workflow.md — i18n Workflow
-  - ../../../../Global_References/Software_Engineering_and_Other/rtl-support.md — RTL Support
+  - ../../../references/i18n-implementation.md — i18n Implementation
+  - ../../../references/i18n-libraries.md — i18n Libraries
+  - ../../../references/i18n-testing.md — i18n Testing
+  - ../../../references/i18n-workflow.md — i18n Workflow
+  - ../../../references/rtl-support.md — RTL Support
 ## Handoff
 No artifact produced unless requested.
 Next skill: `frontend-accessibility` — RTL a11y overlaps with i18n, pass locale direction config.

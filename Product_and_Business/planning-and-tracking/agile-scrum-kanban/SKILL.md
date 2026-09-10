@@ -103,14 +103,14 @@ Flow Diagram
 5. Celebrate wins
 
 ## Reference Guides
-- [Ref 1](../../../Global_References/Product_and_Business/ref_1.md)
-- [Ref 2](../../../Global_References/Product_and_Business/ref_1.md)
-- [Ref 3](../../../Global_References/Product_and_Business/ref_1.md)
-- [Ref 4](../../../Global_References/Product_and_Business/ref_1.md)
-- [Ref 5](../../../Global_References/Product_and_Business/ref_1.md)
-- [Ref 6](../../../Global_References/Product_and_Business/ref_1.md)
-- [Ref 7](../../../Global_References/Product_and_Business/ref_1.md)
-- [Ref 8](../../../Global_References/Product_and_Business/ref_1.md)
+- [Ref 1](../../references/ref_1.md)
+- [Ref 2](../../references/ref_1.md)
+- [Ref 3](../../references/ref_1.md)
+- [Ref 4](../../references/ref_1.md)
+- [Ref 5](../../references/ref_1.md)
+- [Ref 6](../../references/ref_1.md)
+- [Ref 7](../../references/ref_1.md)
+- [Ref 8](../../references/ref_1.md)
 
 ## Handoff
 - handoff to other skill
@@ -216,14 +216,14 @@ Flow Diagram
 5. Celebrate wins
 
 ## Reference Guides
-- [Ref 1](../../../Global_References/Product_and_Business/ref_1.md)
-- [Ref 2](../../../Global_References/Product_and_Business/ref_1.md)
-- [Ref 3](../../../Global_References/Product_and_Business/ref_1.md)
-- [Ref 4](../../../Global_References/Product_and_Business/ref_1.md)
-- [Ref 5](../../../Global_References/Product_and_Business/ref_1.md)
-- [Ref 6](../../../Global_References/Product_and_Business/ref_1.md)
-- [Ref 7](../../../Global_References/Product_and_Business/ref_1.md)
-- [Ref 8](../../../Global_References/Product_and_Business/ref_1.md)
+- [Ref 1](../../references/ref_1.md)
+- [Ref 2](../../references/ref_1.md)
+- [Ref 3](../../references/ref_1.md)
+- [Ref 4](../../references/ref_1.md)
+- [Ref 5](../../references/ref_1.md)
+- [Ref 6](../../references/ref_1.md)
+- [Ref 7](../../references/ref_1.md)
+- [Ref 8](../../references/ref_1.md)
 
 ## Handoff
 - handoff to other skill
@@ -329,14 +329,14 @@ Flow Diagram
 5. Celebrate wins
 
 ## Reference Guides
-- [Ref 1](../../../Global_References/Product_and_Business/ref_1.md)
-- [Ref 2](../../../Global_References/Product_and_Business/ref_1.md)
-- [Ref 3](../../../Global_References/Product_and_Business/ref_1.md)
-- [Ref 4](../../../Global_References/Product_and_Business/ref_1.md)
-- [Ref 5](../../../Global_References/Product_and_Business/ref_1.md)
-- [Ref 6](../../../Global_References/Product_and_Business/ref_1.md)
-- [Ref 7](../../../Global_References/Product_and_Business/ref_1.md)
-- [Ref 8](../../../Global_References/Product_and_Business/ref_1.md)
+- [Ref 1](../../references/ref_1.md)
+- [Ref 2](../../references/ref_1.md)
+- [Ref 3](../../references/ref_1.md)
+- [Ref 4](../../references/ref_1.md)
+- [Ref 5](../../references/ref_1.md)
+- [Ref 6](../../references/ref_1.md)
+- [Ref 7](../../references/ref_1.md)
+- [Ref 8](../../references/ref_1.md)
 
 ## Handoff
 - handoff to other skill
@@ -442,14 +442,14 @@ Flow Diagram
 5. Celebrate wins
 
 ## Reference Guides
-- [Ref 1](../../../Global_References/Product_and_Business/ref_1.md)
-- [Ref 2](../../../Global_References/Product_and_Business/ref_1.md)
-- [Ref 3](../../../Global_References/Product_and_Business/ref_1.md)
-- [Ref 4](../../../Global_References/Product_and_Business/ref_1.md)
-- [Ref 5](../../../Global_References/Product_and_Business/ref_1.md)
-- [Ref 6](../../../Global_References/Product_and_Business/ref_1.md)
-- [Ref 7](../../../Global_References/Product_and_Business/ref_1.md)
-- [Ref 8](../../../Global_References/Product_and_Business/ref_1.md)
+- [Ref 1](../../references/ref_1.md)
+- [Ref 2](../../references/ref_1.md)
+- [Ref 3](../../references/ref_1.md)
+- [Ref 4](../../references/ref_1.md)
+- [Ref 5](../../references/ref_1.md)
+- [Ref 6](../../references/ref_1.md)
+- [Ref 7](../../references/ref_1.md)
+- [Ref 8](../../references/ref_1.md)
 
 ## Handoff
 - handoff to other skill
@@ -555,14 +555,14 @@ Flow Diagram
 5. Celebrate wins
 
 ## Reference Guides
-- [Ref 1](../../../Global_References/Product_and_Business/ref_1.md)
-- [Ref 2](../../../Global_References/Product_and_Business/ref_1.md)
-- [Ref 3](../../../Global_References/Product_and_Business/ref_1.md)
-- [Ref 4](../../../Global_References/Product_and_Business/ref_1.md)
-- [Ref 5](../../../Global_References/Product_and_Business/ref_1.md)
-- [Ref 6](../../../Global_References/Product_and_Business/ref_1.md)
-- [Ref 7](../../../Global_References/Product_and_Business/ref_1.md)
-- [Ref 8](../../../Global_References/Product_and_Business/ref_1.md)
+- [Ref 1](../../references/ref_1.md)
+- [Ref 2](../../references/ref_1.md)
+- [Ref 3](../../references/ref_1.md)
+- [Ref 4](../../references/ref_1.md)
+- [Ref 5](../../references/ref_1.md)
+- [Ref 6](../../references/ref_1.md)
+- [Ref 7](../../references/ref_1.md)
+- [Ref 8](../../references/ref_1.md)
 
 ## Handoff
 - handoff to other skill

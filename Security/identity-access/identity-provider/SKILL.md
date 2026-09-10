@@ -505,12 +505,12 @@ SCIM sync configured for user creation but not deactivation. When an employee le
 - Emergency break-glass access procedure documented and tested
 
 ## References
-- ../../../Global_References/Security/identity-provider-fundamentals.md -- Identity Provider Fundamentals
-- ../../../Global_References/Security/identity-provider-advanced.md -- Identity Provider Advanced Topics
-- ../../../Global_References/Security/federation-sso.md -- Federation and SSO Patterns
-- ../../../Global_References/Security/saml-oidc.md -- SAML vs OIDC
-- ../../../Global_References/Security/idp-setup.md -- Identity Provider Setup
-- ../../../Global_References/Security/idp-migration.md -- Identity Provider Migration
+- ../../references/identity-provider-fundamentals.md -- Identity Provider Fundamentals
+- ../../references/identity-provider-advanced.md -- Identity Provider Advanced Topics
+- ../../references/federation-sso.md -- Federation and SSO Patterns
+- ../../references/saml-oidc.md -- SAML vs OIDC
+- ../../references/idp-setup.md -- Identity Provider Setup
+- ../../references/idp-migration.md -- Identity Provider Migration
 - references/idp-federation-scenarios.md -- Federation Scenarios
   - references/idp-security-best-practices.md -- IdP Security Best Practices
   - ../../../Global_References/conditional-access-[zero-trust](../zero-trust/SKILL.md).md -- Conditional Access and [Zero-Trust](../zero-trust/SKILL.md) Identity

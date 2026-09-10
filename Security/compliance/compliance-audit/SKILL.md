@@ -561,13 +561,13 @@ A fintech company failed their SOC2 Type II [audit](../../../AI_and_Agents/Opera
 
 ## References
   - ../../../Global_References/[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-automation.md -- [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Automation
-  - ../../../Global_References/Security/compliance-audit_audit-checklist.md -- [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Checklist
+  - ../../references/compliance-audit_audit-checklist.md -- [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Checklist
   - ../../../Global_References/[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-evidence.md -- [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Evidence Collection and Preservation
   - ../../../Global_References/compliance-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-advanced.md -- Compliance [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Advanced Topics
   - ../../../Global_References/compliance-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-framework.md -- Compliance [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Framework Reference
-  - ../../../Global_References/Security/compliance-automation-tools.md -- Compliance Automation Tools Reference
+  - ../../references/compliance-automation-tools.md -- Compliance Automation Tools Reference
   - ../../../Global_References/compliance-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-fundamentals.md -- Compliance [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Fundamentals
-  - ../../../Global_References/Security/compliance-audit_compliance-frameworks.md -- Compliance Frameworks Reference
+  - ../../references/compliance-audit_compliance-frameworks.md -- Compliance Frameworks Reference
   - ../../../Global_References/compliance-[incident-response](../[incident](../incident/SKILL.md)-response/SKILL.md).md -- Compliance [Incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response and Breach Notification
 ## Handoff
 For remediation implementation, hand off to `[enterprise-sla-management](../../../DevOps_and_Cloud/observability-monitoring-logging/common/sli-slo-sla/sla-management/SKILL.md)` for tracking remediation SLAs, or `[enterprise-cost-governance](../../../DevOps_and_Cloud/cloud/common/cost/cost-governance/SKILL.md)` for budgeting remediation costs.

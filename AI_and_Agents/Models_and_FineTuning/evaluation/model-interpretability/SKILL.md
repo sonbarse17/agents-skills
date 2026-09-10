@@ -572,14 +572,14 @@ PartialDependenceDisplay.from_estimator(
 - Attention weights alone are NOT explanations.
 
 ## References
-  - ../../../../Global_References/AI_and_Agents/fairml-auditing.md — Fairness & Model Auditing
-  - ../../../../Global_References/AI_and_Agents/global-explanations.md — Global Explanation Methods
-  - ../../../../Global_References/AI_and_Agents/global-interpretability.md — Global Interpretability
-  - ../../../../Global_References/AI_and_Agents/interpretability-visualization.md — Model Interpretability Visualization
-  - ../../../../Global_References/AI_and_Agents/local-interpretability.md — Local Interpretability
-  - ../../../../Global_References/AI_and_Agents/model-interpretability-advanced.md — Model Interpretability Advanced Topics
-  - ../../../../Global_References/AI_and_Agents/model-interpretability-fundamentals.md — Model Interpretability Fundamentals
-  - ../../../../Global_References/AI_and_Agents/shap-lime-pdp.md — Model Interpretability Methods
+  - ../../../references/fairml-auditing.md — Fairness & Model Auditing
+  - ../../../references/global-explanations.md — Global Explanation Methods
+  - ../../../references/global-interpretability.md — Global Interpretability
+  - ../../../references/interpretability-visualization.md — Model Interpretability Visualization
+  - ../../../references/local-interpretability.md — Local Interpretability
+  - ../../../references/model-interpretability-advanced.md — Model Interpretability Advanced Topics
+  - ../../../references/model-interpretability-fundamentals.md — Model Interpretability Fundamentals
+  - ../../../references/shap-lime-pdp.md — Model Interpretability Methods
 ## Handoff
 Hand off findings to [ml-model-evaluation](../model-evaluation/SKILL.md) if interpretability reveals data quality issues. For feature engineering improvements, hand off to [ml-feature-engineering](../../../../Data_Engineering/feature-engineering/SKILL.md).
 

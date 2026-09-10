@@ -149,6 +149,6 @@ results = await suite.evaluate(model=your_model, test_cases=test_cases)
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../../../Global_References/AI_and_Agents/llm-evaluation_details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../references/llm-evaluation_details.md`. Read that file when the navigation tier above is insufficient.
 
 

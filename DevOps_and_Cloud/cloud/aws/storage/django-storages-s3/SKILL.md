@@ -57,10 +57,10 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Settings & STORAGES | `../../../../Global_References/cloud/django-storages-s3_configuration.md` | Core settings, 4.2+ vs legacy, CloudFront |
-| Custom backends | `../../../../Global_References/cloud/custom-backends.md` | Public vs. private buckets, per-field storage |
-| Presigned URLs | `../../../../Global_References/cloud/presigned-urls.md` | Download links, direct browser uploads |
-| Testing & IAM | `../../../../Global_References/cloud/testing-storages.md` | Mocking S3, IAM policy, common pitfalls |
+| Settings & STORAGES | `../../../references/django-storages-s3_configuration.md` | Core settings, 4.2+ vs legacy, CloudFront |
+| Custom backends | `../../../references/custom-backends.md` | Public vs. private buckets, per-field storage |
+| Presigned URLs | `../../../references/presigned-urls.md` | Download links, direct browser uploads |
+| Testing & IAM | `../../../references/testing-storages.md` | Mocking S3, IAM policy, common pitfalls |
 
 ## Minimal Working Example
 

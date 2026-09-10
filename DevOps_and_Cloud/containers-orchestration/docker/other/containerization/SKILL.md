@@ -29,7 +29,7 @@ Aim for three properties: **small**, **reproducible**, and **least-privileged**.
 does not move one of those is not worth making.
 
 For language-specific multi-stage templates, distroless runtimes, and BuildKit cache and secret
-mounts, read `../../../../Global_References/containers-orchestration/dockerfile-patterns.md`.
+mounts, read `../../../references/dockerfile-patterns.md`.
 
 ## 1. Order layers by how often they change
 

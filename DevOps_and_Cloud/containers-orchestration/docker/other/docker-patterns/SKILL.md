@@ -432,7 +432,7 @@ alpine: smallest with apk, musl libc compatibility issues possible. slim: debian
 - ../../../Global_References/[docker](../docker/SKILL.md)-networking.md -- [Docker](../docker/SKILL.md) Networking
 - ../../../Global_References/[docker](../docker/SKILL.md)-patterns-advanced.md -- [Docker](../docker/SKILL.md) Patterns Advanced Topics
 - ../../../Global_References/[docker](../docker/SKILL.md)-patterns-fundamentals.md -- [Docker](../docker/SKILL.md) Patterns Fundamentals
-- ../../../../Global_References/containers-orchestration/dockerfile-guide.md -- Dockerfile Best Practices
+- ../../../references/dockerfile-guide.md -- Dockerfile Best Practices
 - ../../../Global_References/[image-optimization](../../../../Software_Engineering_and_Other/Frontend/ui-ux/image-optimization/SKILL.md).md -- Image Optimization
 
 ## Handoff

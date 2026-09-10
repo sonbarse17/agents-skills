@@ -357,6 +357,6 @@ for conn in connections:
 
 | File | Contents |
 |------|----------|
-| [../../../../../Global_References/cloud/azure-mgmt-botservice-py_capabilities.md](../../../../../Global_References/cloud/azure-mgmt-botservice-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
-| [../../../../../Global_References/cloud/azure-mgmt-botservice-py_non-hero-scenarios.md](../../../../../Global_References/cloud/azure-mgmt-botservice-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
+| [../../../../references/azure-mgmt-botservice-py_capabilities.md](../../../../references/azure-mgmt-botservice-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
+| [../../../../references/azure-mgmt-botservice-py_non-hero-scenarios.md](../../../../references/azure-mgmt-botservice-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
 

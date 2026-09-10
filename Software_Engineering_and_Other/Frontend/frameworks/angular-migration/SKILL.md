@@ -317,6 +317,6 @@ export class AppRoutingModule {}
 
 ## Additional patterns and templates
 
-More detailed templates and worked examples live in `../../../../Global_References/Software_Engineering_and_Other/angular-migration_details.md`. Read that file for the full pattern library.
+More detailed templates and worked examples live in `../../../references/angular-migration_details.md`. Read that file for the full pattern library.
 
 

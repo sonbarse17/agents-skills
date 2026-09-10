@@ -58,11 +58,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Modules | `../../../../Global_References/infrastructure-as-code/module-patterns.md` | Creating modules, inputs/outputs, versioning |
-| State | `../../../../Global_References/infrastructure-as-code/terraform-engineer_state-management.md` | Remote backends, locking, workspaces, migrations |
-| Providers | `../../../../Global_References/infrastructure-as-code/providers.md` | AWS/Azure/GCP configuration, authentication |
-| Testing | `../../../../Global_References/infrastructure-as-code/terraform-engineer_testing.md` | terraform plan, terratest, policy as code |
-| Best Practices | `../../../../Global_References/infrastructure-as-code/terraform-engineer_best-practices.md` | DRY patterns, naming, security, cost tracking |
+| Modules | `../../../references/module-patterns.md` | Creating modules, inputs/outputs, versioning |
+| State | `../../../references/terraform-engineer_state-management.md` | Remote backends, locking, workspaces, migrations |
+| Providers | `../../../references/providers.md` | AWS/Azure/GCP configuration, authentication |
+| Testing | `../../../references/terraform-engineer_testing.md` | terraform plan, terratest, policy as code |
+| Best Practices | `../../../references/terraform-engineer_best-practices.md` | DRY patterns, naming, security, cost tracking |
 
 ## Constraints
 

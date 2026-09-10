@@ -624,14 +624,14 @@ Running growth experiments that improve one metric at the expense of another. In
 | Friday | Share learnings, plan next week | Weekly growth brief |
 
 ## References
-  - ../../Global_References/Product_and_Business/activation-metrics.md — Activation Metrics
-  - ../../Global_References/Product_and_Business/growth-engineering-advanced.md — Growth Engineering Advanced Topics
-  - ../../Global_References/Product_and_Business/growth-engineering-fundamentals.md — Growth Engineering Fundamentals
-  - ../../Global_References/Product_and_Business/growth-experiment-design.md — Growth Experiment Design
-  - ../../Global_References/Product_and_Business/growth-experiments.md — Growth Experiments
-  - ../../Global_References/Product_and_Business/growth-loops.md — Growth Loops
-  - ../../Global_References/Product_and_Business/growth-metrics-funnel.md — Growth Metrics and Funnel Analysis
-  - ../../Global_References/Product_and_Business/viral-mechanics.md — Viral Mechanics
+  - ../../references/activation-metrics.md — Activation Metrics
+  - ../../references/growth-engineering-advanced.md — Growth Engineering Advanced Topics
+  - ../../references/growth-engineering-fundamentals.md — Growth Engineering Fundamentals
+  - ../../references/growth-experiment-design.md — Growth Experiment Design
+  - ../../references/growth-experiments.md — Growth Experiments
+  - ../../references/growth-loops.md — Growth Loops
+  - ../../references/growth-metrics-funnel.md — Growth Metrics and Funnel Analysis
+  - ../../references/viral-mechanics.md — Viral Mechanics
 
 ## Handoff
 For analytics tracking of growth metrics, hand off to `[product-analytics](../analytics/SKILL.md)`. For pricing and conversion experiments, hand off to `[product-pricing-strategy](../pricing-strategy/SKILL.md)`. For customer journey activation touchpoints, hand off to `[product-customer-journey](../../design-and-ux/customer-journey/SKILL.md)`. For A/B test experiment design, hand off to `[product-ab-testing](../ab-testing/SKILL.md)`.

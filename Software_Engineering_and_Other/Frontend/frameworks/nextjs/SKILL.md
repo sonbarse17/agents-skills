@@ -515,14 +515,14 @@ export const metadata: Metadata = { title: 'Page Title' }
 - Metadata on every page — use generateMetadata for dynamic routes.
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/app-router-architecture.md
-  - ../../../../Global_References/Software_Engineering_and_Other/app-router.md
-  - ../../../../Global_References/Software_Engineering_and_Other/middleware-edge.md
-  - ../../../../Global_References/Software_Engineering_and_Other/nextjs-data-fetching.md
-  - ../../../../Global_References/Software_Engineering_and_Other/nextjs-deployment.md
-  - ../../../../Global_References/Software_Engineering_and_Other/server-components.md
+  - ../../../references/app-router-architecture.md
+  - ../../../references/app-router.md
+  - ../../../references/middleware-edge.md
+  - ../../../references/nextjs-data-fetching.md
+  - ../../../references/nextjs-deployment.md
+  - ../../../references/server-components.md
   - ../../../Global_References/[nextjs-app-router-patterns](../nextjs-app-router-patterns/SKILL.md).md
-  - ../../../../Global_References/Software_Engineering_and_Other/nextjs-data-fetching-caching.md
+  - ../../../references/nextjs-data-fetching-caching.md
 
 ## Handoff
 No artifact produced.

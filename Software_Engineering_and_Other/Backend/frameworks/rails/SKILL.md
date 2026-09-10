@@ -485,14 +485,14 @@ Use `factory_bot_rails` for test data. Use `shoulda-matchers` for model specs. U
 - API mode Rails — no views, no cookies (token-based auth).
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/rails-active-record.md — ActiveRecord Best Practices
-  - ../../../../Global_References/Software_Engineering_and_Other/rails-api-conventions.md — Rails API Conventions
-  - ../../../../Global_References/Software_Engineering_and_Other/rails-api-design.md — Rails API Design
-  - ../../../../Global_References/Software_Engineering_and_Other/rails-background-jobs.md — Background Jobs
+  - ../../../references/rails-active-record.md — ActiveRecord Best Practices
+  - ../../../references/rails-api-conventions.md — Rails API Conventions
+  - ../../../references/rails-api-design.md — Rails API Design
+  - ../../../references/rails-background-jobs.md — Background Jobs
   - ../../../Global_References/rails-[performance-tuning](../../../Frontend/performance/performance-tuning/SKILL.md).md — Performance Tuning
-  - ../../../../Global_References/Software_Engineering_and_Other/rails-performance.md — Rails Performance
-  - ../../../../Global_References/Software_Engineering_and_Other/rails-security.md — Rails Security
-  - ../../../../Global_References/Software_Engineering_and_Other/rails-testing.md — Testing Rails Applications
+  - ../../../references/rails-performance.md — Rails Performance
+  - ../../../references/rails-security.md — Rails Security
+  - ../../../references/rails-testing.md — Testing Rails Applications
 ## Handoff
 Hand off to `backend/universal/api-response/SKILL.md` for API response formatting or `backend/universal/backend-testing/SKILL.md` for test patterns.
 ## Implementation Patterns

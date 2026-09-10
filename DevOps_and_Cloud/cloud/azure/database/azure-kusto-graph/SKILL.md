@@ -430,7 +430,7 @@ See [../../../Global_References/[azure-kusto](../azure-skills/skills/[azure-kust
 
 ## Practical Usage Scenarios
 
-See [../../../../Global_References/cloud/SCENARIOS.md](../../../../Global_References/cloud/SCENARIOS.md) for full worked examples including:
+See [../../../references/SCENARIOS.md](../../../references/SCENARIOS.md) for full worked examples including:
 - Reachability analysis (shortest paths to critical assets)
 - Network segmentation validation (connected components)
 - Blast radius of compromised accounts (variable-length path matching)
@@ -476,7 +476,7 @@ This ensures the output works in both Kusto Explorer (graph visualization) and A
 
 ### Optional: Save and Launch
 
-If the user asks to save or open the query in Kusto Explorer, follow the procedure in [../../../../Global_References/cloud/KUSTO_EXPLORER_LAUNCH.md](../../../../Global_References/cloud/KUSTO_EXPLORER_LAUNCH.md). Key rules:
+If the user asks to save or open the query in Kusto Explorer, follow the procedure in [../../../references/KUSTO_EXPLORER_LAUNCH.md](../../../references/KUSTO_EXPLORER_LAUNCH.md). Key rules:
 
 - **Always** use `ask_user` to confirm before writing files or launching executables
 - **Always** display the file contents in chat so the user can review before opening

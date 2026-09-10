@@ -577,13 +577,13 @@ monitored. Continuous improvement from retros.
 - Rules apply equally to all team members regardless of seniority
 
 ## References
-  - ../../Global_References/Product_and_Business/branch-strategy.md — Branch Strategy Reference
+  - ../../references/branch-strategy.md — Branch Strategy Reference
   - ../../../Global_References/[code-review](../../../DevOps_and_Cloud/ci-cd/common/other/code-review/SKILL.md)-protocol.md — Code Review Protocol Reference
-  - ../../Global_References/Product_and_Business/communication-protocol.md — Communication Protocol Reference
-  - ../../Global_References/Product_and_Business/team-rules_conflict-resolution.md — Conflict Resolution
-  - ../../Global_References/Product_and_Business/team-rules-advanced.md — Team Rules Advanced Topics
-  - ../../Global_References/Product_and_Business/team-rules-fundamentals.md — Team Rules Fundamentals
-  - ../../Global_References/Product_and_Business/working-agreements.md — Working Agreements
+  - ../../references/communication-protocol.md — Communication Protocol Reference
+  - ../../references/team-rules_conflict-resolution.md — Conflict Resolution
+  - ../../references/team-rules-advanced.md — Team Rules Advanced Topics
+  - ../../references/team-rules-fundamentals.md — Team Rules Fundamentals
+  - ../../references/working-agreements.md — Working Agreements
 ## Handoff
 
 Hand off to `management/pm/SKILL.md` for sprint planning and estimation ceremonies. Hand off to `management/qc/SKILL.md` for quality gates integration in CI pipeline.

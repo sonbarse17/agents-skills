@@ -626,12 +626,12 @@ Using `role:admin` for all users. Create least-privilege roles (readonly, sync-o
 Argo CD Application/ApplicationSet YAML, Project YAML, RBAC config, notification templates.
 
 ## References
-  - ../../../../Global_References/containers-orchestration/argo-cd-advanced.md
-  - ../../../../Global_References/containers-orchestration/argo-cd-application-sets.md
-  - ../../../../Global_References/containers-orchestration/argo-cd-fundamentals.md
-  - ../../../../Global_References/containers-orchestration/argo-cd-sync-strategies.md
+  - ../../../references/argo-cd-advanced.md
+  - ../../../references/argo-cd-application-sets.md
+  - ../../../references/argo-cd-fundamentals.md
+  - ../../../references/argo-cd-sync-strategies.md
   - ../../../Global_References/[argocd-operations](../../Observability_and_SecOps/[argocd](../argocd/SKILL.md)-operations/SKILL.md).md
-  - ../../../../Global_References/containers-orchestration/argo-cd_argocd-patterns.md
+  - ../../../references/argo-cd_argocd-patterns.md
   - ../../../Global_References/[argocd](../argocd/SKILL.md)-setup.md
   - references/[argocd](../argocd/SKILL.md)-rollouts-guide.md
 

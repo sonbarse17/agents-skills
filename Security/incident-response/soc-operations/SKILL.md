@@ -635,13 +635,13 @@ Staffing for average volume fails during incidents or campaigns. Build in 30% [c
 - Quarterly tabletop exercise with all tiers to validate processes
 
 ## References
-  - ../../../Global_References/Security/soc-metrics.md — SOC Metrics and Reporting
-  - ../../../Global_References/Security/soc-operations-advanced.md — Soc Operations Advanced Topics
-  - ../../../Global_References/Security/soc-operations-fundamentals.md — Soc Operations Fundamentals
+  - ../../references/soc-metrics.md — SOC Metrics and Reporting
+  - ../../references/soc-operations-advanced.md — Soc Operations Advanced Topics
+  - ../../references/soc-operations-fundamentals.md — Soc Operations Fundamentals
   - ../../../Global_References/soc-[runbooks](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md).md — SOC [Runbook](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) Templates
-  - ../../../Global_References/Security/soc-structure.md — SOC Structure
-  - ../../../Global_References/Security/threat-hunting.md — Threat Hunting in SOC
-  - ../../../Global_References/Security/triage-procedures.md — Alert Triage Procedures
+  - ../../references/soc-structure.md — SOC Structure
+  - ../../references/threat-hunting.md — Threat Hunting in SOC
+  - ../../references/triage-procedures.md — Alert Triage Procedures
 ## Handoff
 Output artifacts can be handed to devops-[monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) for SIEM integration, or management for org planning.
 

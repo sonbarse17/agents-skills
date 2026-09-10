@@ -636,14 +636,14 @@ reliability_maturity:
 | On-call | Devs share on-call | Devs own ops | Dedicated ops on-call |
 
 ## References
-- ../../../../Global_References/observability-monitoring-logging/sre-practices_error-budget-policy.md — Error Budget Policy Design
+- ../../../references/sre-practices_error-budget-policy.md — Error Budget Policy Design
 - ../../../Global_References/[incident](../../incident-detection/incident/SKILL.md)-analysis.md — [Incident](../../incident-detection/incident/SKILL.md) Analysis Framework
 - ../../../Global_References/[incident](../../incident-detection/incident/SKILL.md)-command.md — [Incident](../../incident-detection/incident/SKILL.md) Command Structure
-- ../../../../Global_References/observability-monitoring-logging/sli-slo-guide.md — SLI/SLO Definition Guide
-- ../../../../Global_References/observability-monitoring-logging/sre-practices-advanced.md — SRE Practices Advanced Topics
-- ../../../../Global_References/observability-monitoring-logging/sre-practices-fundamentals.md — SRE Practices Fundamentals
-- ../../../../Global_References/observability-monitoring-logging/sre-slos.md — SLO / SLI / SLA Definitions
-- ../../../../Global_References/observability-monitoring-logging/toil-automation.md — Toil Reduction Guide
+- ../../../references/sli-slo-guide.md — SLI/SLO Definition Guide
+- ../../../references/sre-practices-advanced.md — SRE Practices Advanced Topics
+- ../../../references/sre-practices-fundamentals.md — SRE Practices Fundamentals
+- ../../../references/sre-slos.md — SLO / SLI / SLA Definitions
+- ../../../references/toil-automation.md — Toil Reduction Guide
 - references/burn-rate-alerts.md — Multi-Window Burn Rate Alert Design
 - references/prr-checklist.md — Production Readiness Review Checklist
 - references/reliability-maturity.md — Reliability Maturity Model

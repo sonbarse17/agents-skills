@@ -403,14 +403,14 @@ CSS Layers solve specificity wars by letting you define priority order explicitl
 14. CSS Layers are used to manage cascade order explicitly.
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/container-queries.md — Container Queries
-  - ../../../../Global_References/Software_Engineering_and_Other/css-approaches.md — CSS Approaches
-  - ../../../../Global_References/Software_Engineering_and_Other/css-custom-properties.md — CSS Custom Properties
-  - ../../../../Global_References/Software_Engineering_and_Other/css-methodology.md — CSS Methodology
-  - ../../../../Global_References/Software_Engineering_and_Other/css-organization.md — CSS Organization
-  - ../../../../Global_References/Software_Engineering_and_Other/css-performance.md — CSS Performance
-  - ../../../../Global_References/Software_Engineering_and_Other/css-architecture-methodologies.md — CSS Architecture Methodologies
-  - ../../../../Global_References/Software_Engineering_and_Other/css-performance-bundle-optimization.md — CSS Performance Optimization
+  - ../../../references/container-queries.md — Container Queries
+  - ../../../references/css-approaches.md — CSS Approaches
+  - ../../../references/css-custom-properties.md — CSS Custom Properties
+  - ../../../references/css-methodology.md — CSS Methodology
+  - ../../../references/css-organization.md — CSS Organization
+  - ../../../references/css-performance.md — CSS Performance
+  - ../../../references/css-architecture-methodologies.md — CSS Architecture Methodologies
+  - ../../../references/css-performance-bundle-optimization.md — CSS Performance Optimization
 
 ## Handoff
 No artifact produced unless requested.

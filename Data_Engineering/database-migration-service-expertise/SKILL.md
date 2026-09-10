@@ -156,9 +156,9 @@ Query DMS scheduled changes and deprecation notices:
 
 Evaluate ALL collected data against these categories. Assign severity to every finding: CRITICAL, HIGH, MEDIUM, LOW, or INFO.
 
-Reference: `../../Global_References/Data_Engineering/dms-best-practices.md` for detailed best practices.
-Reference: `../../Global_References/Data_Engineering/dms-validation-checklist.md` for validation criteria and thresholds.
-Reference: `../../Global_References/Data_Engineering/dms-version-reference.md` for version lifecycle and known issues.
+Reference: `../references/dms-best-practices.md` for detailed best practices.
+Reference: `../references/dms-validation-checklist.md` for validation criteria and thresholds.
+Reference: `../references/dms-version-reference.md` for version lifecycle and known issues.
 
 ### 4.1 Instance Health (25 points)
 
@@ -213,7 +213,7 @@ Reference: `../../Global_References/Data_Engineering/dms-version-reference.md` f
 When the user reports an active issue, follow this structured approach:
 
 ### Phase 0: Version Check (Always First)
-Check DMS engine version and cross-reference with `../../Global_References/Data_Engineering/dms-version-reference.md` for known bugs.
+Check DMS engine version and cross-reference with `../references/dms-version-reference.md` for known bugs.
 
 ### Phase 1: Error Classification
 Route by error category:

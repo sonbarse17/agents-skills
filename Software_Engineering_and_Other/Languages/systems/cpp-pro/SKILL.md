@@ -43,11 +43,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Modern C++ Features | `../../../../Global_References/Software_Engineering_and_Other/modern-cpp.md` | C++20/23 features, concepts, ranges, coroutines |
-| Template Metaprogramming | `../../../../Global_References/Software_Engineering_and_Other/templates.md` | Variadic templates, SFINAE, type traits, CRTP |
-| Memory & Performance | `../../../../Global_References/Software_Engineering_and_Other/cpp-pro_memory-performance.md` | Allocators, SIMD, cache optimization, move semantics |
-| Concurrency | `../../../../Global_References/Software_Engineering_and_Other/cpp-pro_concurrency.md` | Atomics, lock-free structures, thread pools, coroutines |
-| Build & Tooling | `../../../../Global_References/Software_Engineering_and_Other/cpp-pro_build-tooling.md` | CMake, sanitizers, static analysis, testing |
+| Modern C++ Features | `../../../references/modern-cpp.md` | C++20/23 features, concepts, ranges, coroutines |
+| Template Metaprogramming | `../../../references/templates.md` | Variadic templates, SFINAE, type traits, CRTP |
+| Memory & Performance | `../../../references/cpp-pro_memory-performance.md` | Allocators, SIMD, cache optimization, move semantics |
+| Concurrency | `../../../references/cpp-pro_concurrency.md` | Atomics, lock-free structures, thread pools, coroutines |
+| Build & Tooling | `../../../references/cpp-pro_build-tooling.md` | CMake, sanitizers, static analysis, testing |
 
 ## Constraints
 

@@ -29,7 +29,7 @@ realms.
 
 For authentication methods and API key management, see the **[elasticsearch-authn](../elasticsearch-authn/SKILL.md)** skill.
 
-For detailed API endpoints, see [../../../../Global_References/observability-monitoring-logging/elasticsearch-authz_api-reference.md](../../../../Global_References/observability-monitoring-logging/elasticsearch-authz_api-reference.md).
+For detailed API endpoints, see [../../../references/elasticsearch-authz_api-reference.md](../../../references/elasticsearch-authz_api-reference.md).
 
 > **Deployment note:** Feature availability differs between self-managed, ECH, and [Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md). See
 > [Deployment Compatibility](#deployment-compatibility) for details.
@@ -304,7 +304,7 @@ same role works for all departments — no per-department role needed.
 For multi-valued attributes (e.g. a list of required programs), use `terms_set` with `minimum_should_match_field` to
 ensure the user holds all required attributes listed on the document. This enables complex ABAC policies — combining
 security levels, program lists, and certification dates — using a single role. See
-[../../../../Global_References/observability-monitoring-logging/elasticsearch-authz_api-reference.md](../../../../Global_References/observability-monitoring-logging/elasticsearch-authz_api-reference.md) for full `terms_set` ABAC examples including combined
+[../../../references/elasticsearch-authz_api-reference.md](../../../references/elasticsearch-authz_api-reference.md) for full `terms_set` ABAC examples including combined
 multi-condition policies and user metadata setup.
 
 ### Combining DLS and FLS
@@ -418,7 +418,7 @@ curl -X PUT "${ELASTICSEARCH_URL}/_security/role_mapping/ldap-group-roles" \
   }'
 ```
 
-See [../../../../Global_References/observability-monitoring-logging/elasticsearch-authz_api-reference.md](../../../../Global_References/observability-monitoring-logging/elasticsearch-authz_api-reference.md) for more Mustache patterns including realm-username
+See [../../../references/elasticsearch-authz_api-reference.md](../../../references/elasticsearch-authz_api-reference.md) for more Mustache patterns including realm-username
 derived roles and tiered group access.
 
 ### Get, list, and delete role mappings
@@ -517,7 +517,7 @@ The same role works for every department — each user sees only their departmen
 
 Never use internal action names (e.g. `indices:data/read/search`). Always use officially documented named privileges.
 Prefer fine-grained privileges (`manage_ingest_pipelines`, `monitor`) over broad ones (`manage`, `all`). See
-[../../../../Global_References/observability-monitoring-logging/elasticsearch-authz_api-reference.md](../../../../Global_References/observability-monitoring-logging/elasticsearch-authz_api-reference.md) for the full privilege reference tables.
+[../../../references/elasticsearch-authz_api-reference.md](../../../references/elasticsearch-authz_api-reference.md) for the full privilege reference tables.
 
 ### Role naming conventions
 
@@ -543,6 +543,6 @@ Prefer fine-grained privileges (`manage_ingest_pipelines`, `monitor`) over broad
 
 ## Deployment Compatibility
 
-See [../../../../Global_References/observability-monitoring-logging/deployment-compatibility.md](../../../../Global_References/observability-monitoring-logging/deployment-compatibility.md) for a feature matrix and detailed
+See [../../../references/deployment-compatibility.md](../../../references/deployment-compatibility.md) for a feature matrix and detailed
 notes on self-managed, ECH, and [Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) deployment differences.
 

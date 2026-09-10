@@ -644,14 +644,14 @@ No budgets, no alerts, no tags for cost allocation. Azure costs can spiral witho
 Bicep/ARM templates, Azure DevOps YAML pipeline definitions, AKS config, Azure CLI commands.
 
 ## References
-  - ../../../../Global_References/cloud/azure-advanced.md
+  - ../../../references/azure-advanced.md
   - ../../../Global_References/[azure-aks](../../../../containers-orchestration/aks/cluster-management/azure-aks/SKILL.md).md
   - ../../../Global_References/[azure-compute](../[azure-compute](../azure-skills/skills/azure-compute/SKILL.md)/SKILL.md).md
   - ../../../Global_References/[azure-devops](../../devops/azure-devops/SKILL.md)-pipelines.md
-  - ../../../../Global_References/cloud/azure-fundamentals.md
-  - ../../../../Global_References/cloud/azure-iac.md
+  - ../../../references/azure-fundamentals.md
+  - ../../../references/azure-iac.md
   - ../../../Global_References/[azure-networking](../../networking/azure-networking/SKILL.md).md
-  - ../../../../Global_References/cloud/azure-resource-management.md
+  - ../../../references/azure-resource-management.md
   - references/azure-policy-guide.md
 
 ## Handoff

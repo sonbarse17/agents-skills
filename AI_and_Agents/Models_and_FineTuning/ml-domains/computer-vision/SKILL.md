@@ -436,14 +436,14 @@ What task?
 - Mixed precision (AMP) gives ~2x speedup.
 
 ## References
-  - ../../../../Global_References/AI_and_Agents/computer-vision-advanced.md — Computer Vision Advanced Topics
-  - ../../../../Global_References/AI_and_Agents/computer-vision-fundamentals.md — Computer Vision Fundamentals
-  - ../../../../Global_References/AI_and_Agents/cv-deployment.md — CV Model Deployment
-  - ../../../../Global_References/AI_and_Agents/cv-pipeline.md — Computer Vision Pipeline
-  - ../../../../Global_References/AI_and_Agents/detection-segmentation.md — Detection & Segmentation
-  - ../../../../Global_References/AI_and_Agents/image-preprocessing.md — Image Preprocessing & Augmentation
-  - ../../../../Global_References/AI_and_Agents/image-segmentation.md — Image Segmentation
-  - ../../../../Global_References/AI_and_Agents/video-analysis.md — Video Analysis
+  - ../../../references/computer-vision-advanced.md — Computer Vision Advanced Topics
+  - ../../../references/computer-vision-fundamentals.md — Computer Vision Fundamentals
+  - ../../../references/cv-deployment.md — CV Model Deployment
+  - ../../../references/cv-pipeline.md — Computer Vision Pipeline
+  - ../../../references/detection-segmentation.md — Detection & Segmentation
+  - ../../../references/image-preprocessing.md — Image Preprocessing & Augmentation
+  - ../../../references/image-segmentation.md — Image Segmentation
+  - ../../../references/video-analysis.md — Video Analysis
 ## Handoff
 Hand off to ml-[experiment-tracking](../../../../Data_Engineering/experiment-tracking/SKILL.md) for training runs. For model deployment on edge devices, hand off to devops-ml-serving.
 

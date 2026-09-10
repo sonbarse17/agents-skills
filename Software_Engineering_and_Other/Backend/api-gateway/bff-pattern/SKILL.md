@@ -609,16 +609,16 @@ interface BffLogContext {
 - Cache invalidation via event-driven mechanisms (pub/sub, webhook).
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/bff-fundamentals.md — BFF Fundamentals
-  - ../../../../Global_References/Software_Engineering_and_Other/bff-advanced.md — BFF Advanced
-  - ../../../../Global_References/Software_Engineering_and_Other/bff-architecture.md — BFF Architecture
-  - ../../../../Global_References/Software_Engineering_and_Other/bff-auth-session.md — BFF Auth and Session Reference
-  - ../../../../Global_References/Software_Engineering_and_Other/bff-orchestration.md — BFF Orchestration Reference
-  - ../../../../Global_References/Software_Engineering_and_Other/bff-performance.md — BFF Performance
-  - ../../../../Global_References/Software_Engineering_and_Other/bff-security.md — BFF Security
-  - ../../../../Global_References/Software_Engineering_and_Other/bff-testing.md — BFF Testing
-  - ../../../../Global_References/Software_Engineering_and_Other/bff-implementation-strategies.md — BFF Implementation Strategies
-  - ../../../../Global_References/Software_Engineering_and_Other/bff-rate-limiting.md — BFF Rate Limiting and Load Shedding
+  - ../../../references/bff-fundamentals.md — BFF Fundamentals
+  - ../../../references/bff-advanced.md — BFF Advanced
+  - ../../../references/bff-architecture.md — BFF Architecture
+  - ../../../references/bff-auth-session.md — BFF Auth and Session Reference
+  - ../../../references/bff-orchestration.md — BFF Orchestration Reference
+  - ../../../references/bff-performance.md — BFF Performance
+  - ../../../references/bff-security.md — BFF Security
+  - ../../../references/bff-testing.md — BFF Testing
+  - ../../../references/bff-implementation-strategies.md — BFF Implementation Strategies
+  - ../../../references/bff-rate-limiting.md — BFF Rate Limiting and Load Shedding
 
 ## Handoff
 No artifact produced unless requested.

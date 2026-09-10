@@ -852,13 +852,13 @@ Retry strategy:
 | SSO/OIDC | Dex/Built-in | OIDC/[GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md)/GitLab |
 
 ## References
-- ../../../../Global_References/containers-orchestration/applicationset-generators.md — [ArgoCD](../../../argocd/other/argocd/SKILL.md) ApplicationSet Generators
+- ../../../references/applicationset-generators.md — [ArgoCD](../../../argocd/other/argocd/SKILL.md) ApplicationSet Generators
 - ../../../Global_References/[argocd](../../../argocd/other/argocd/SKILL.md)-image-updater.md — [ArgoCD](../../../argocd/other/argocd/SKILL.md) Image Updater
 - ../../../Global_References/[gitops](../gitops/SKILL.md)-advanced-advanced.md — [Gitops](../gitops/SKILL.md) Advanced Advanced Topics
 - ../../../Global_References/[gitops](../gitops/SKILL.md)-advanced-fundamentals.md — [Gitops](../gitops/SKILL.md) Advanced Fundamentals
 - ../../../Global_References/[gitops](../gitops/SKILL.md)-secrets.md — Secrets in [GitOps](../gitops/SKILL.md)
-- ../../../../Global_References/containers-orchestration/multi-cluster-management.md — Multi-Cluster [GitOps](../gitops/SKILL.md) Management
-- ../../../../Global_References/containers-orchestration/sync-phases-hooks.md — Sync Phases, Waves, and Hooks
+- ../../../references/multi-cluster-management.md — Multi-Cluster [GitOps](../gitops/SKILL.md) Management
+- ../../../references/sync-phases-hooks.md — Sync Phases, Waves, and Hooks
 - references/[argocd](../../../argocd/other/argocd/SKILL.md)-ha.md — [ArgoCD](../../../argocd/other/argocd/SKILL.md) High Availability Configuration
 - references/[argocd](../../../argocd/other/argocd/SKILL.md)-projects-rbac.md — [ArgoCD](../../../argocd/other/argocd/SKILL.md) Projects and RBAC
 - references/cluster-bootstrapping.md — Cluster Bootstrapping with [GitOps](../gitops/SKILL.md)

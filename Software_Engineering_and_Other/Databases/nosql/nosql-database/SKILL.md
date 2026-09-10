@@ -512,14 +512,14 @@ cassandra_modeling:
 - Model for access patterns before data shape — NoSQL is query-first design
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/document-db.md — Document Database Reference
-  - ../../../../Global_References/Software_Engineering_and_Other/dynamodb-couchbase.md — DynamoDB and Couchbase Reference
+  - ../../../references/document-db.md — Document Database Reference
+  - ../../../references/dynamodb-couchbase.md — DynamoDB and Couchbase Reference
   - ../../../Global_References/[mongodb](../mongodb/SKILL.md)-cassandra.md — [MongoDB](../mongodb/SKILL.md) and Cassandra Reference
-  - ../../../../Global_References/Software_Engineering_and_Other/nosql-cap-theorem.md — NoSQL CAP Theorem
+  - ../../../references/nosql-cap-theorem.md — NoSQL CAP Theorem
   - ../../../Global_References/nosql-[performance-tuning](../../../Frontend/performance/performance-tuning/SKILL.md).md — NoSQL Performance Tuning
-  - ../../../../Global_References/Software_Engineering_and_Other/wide-column.md — Wide-Column Database Reference
+  - ../../../references/wide-column.md — Wide-Column Database Reference
   - ../../../Global_References/nosql-[data-modeling](../../../../Data_Engineering/data-modeling/SKILL.md).md — Data modeling patterns for NoSQL databases
-  - ../../../../Global_References/Software_Engineering_and_Other/nosql-query-optimization.md — Query optimization and indexing strategies
+  - ../../../references/nosql-query-optimization.md — Query optimization and indexing strategies
 ## Handoff
 `[data-graph-database](../../graph/graph-database/SKILL.md)` for relationship-heavy queries
 `[data-search-engine](../../analytical/search-engine/SKILL.md)` for full-text search over NoSQL data

@@ -33,7 +33,7 @@ optimization) plus preference pairs or unpaired
 feedback, usually from an SFT checkpoint.
 **Output format:** a validated method choice plus
 a config — the kwarg values in
-`../../../../Global_References/AI_and_Agents/method-configs.md`, not free-form
+`../../../references/method-configs.md`, not free-form
 advice — that `[llm-finetuning](../llm-[finetuning](../[finetuning](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/finetuning/SKILL.md)/SKILL.md)/SKILL.md)-training-engineer`
 consumes directly.
 
@@ -190,13 +190,13 @@ Complete TRL config blocks per method —
 `DPOConfig`, `ORPOConfig`, `KTOConfig`, and the
 SimPO sweep grid — plus Unsloth wrappers and a
 catastrophic-forgetting note live in
-`../../../../Global_References/AI_and_Agents/method-configs.md`. Those configs use
+`../../../references/method-configs.md`. Those configs use
 the same current-TRL API conventions established
 in `[lora-qlora-recipes](../lora-qlora-recipes/SKILL.md)`'s
 `references/unsloth-trl-mapping.md`
 (`processing_class`, not `tokenizer=`).
 
-`../../../../Global_References/AI_and_Agents/method-configs.md` also carries the
+`../../../references/method-configs.md` also carries the
 catastrophic-forgetting note: a too-high learning
 rate is the usual cause when a preference-tuned
 checkpoint loses general capability, and the fix

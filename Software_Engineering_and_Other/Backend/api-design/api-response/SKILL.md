@@ -659,14 +659,14 @@ Retry-After: 30  (on 429 responses only)
 - Default deny: if an exception is unhandled, return 500, not a raw error.
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/api-response-formats.md — API Response Formats
-  - ../../../../Global_References/Software_Engineering_and_Other/api-response-testing.md — API Response Testing
-  - ../../../../Global_References/Software_Engineering_and_Other/api-response-validation.md — API Response Validation
-  - ../../../../Global_References/Software_Engineering_and_Other/client-api-calls.md — Client API Call Patterns
+  - ../../../references/api-response-formats.md — API Response Formats
+  - ../../../references/api-response-testing.md — API Response Testing
+  - ../../../references/api-response-validation.md — API Response Validation
+  - ../../../references/client-api-calls.md — Client API Call Patterns
   - ../../../Global_References/[error-handling-patterns](../../patterns/error-handling-patterns/SKILL.md).md — Error Handling Patterns Reference
-  - ../../../../Global_References/Software_Engineering_and_Other/response-envelope.md — Response Envelope Reference
-  - ../../../../Global_References/Software_Engineering_and_Other/api-response-fundamentals.md — API Response Fundamentals
-  - ../../../../Global_References/Software_Engineering_and_Other/api-response-advanced.md — API Response Advanced Patterns
+  - ../../../references/response-envelope.md — Response Envelope Reference
+  - ../../../references/api-response-fundamentals.md — API Response Fundamentals
+  - ../../../references/api-response-advanced.md — API Response Advanced Patterns
   - references/response-compression.md — Response Compression and Optimization
 
 ## Handoff

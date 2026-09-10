@@ -524,12 +524,12 @@ function useSupabaseAuth() {
 10. OAuth state parameter is always validated on callback to prevent CSRF on the redirect.
 
 ## References
-  - ../../../../Global_References/Software_Engineering_and_Other/auth-flows.md — Auth Flows
-  - ../../../../Global_References/Software_Engineering_and_Other/auth-providers.md — Auth Providers
-  - ../../../../Global_References/Software_Engineering_and_Other/auth-security.md — Auth Security
-  - ../../../../Global_References/Software_Engineering_and_Other/auth-ui-patterns.md — Authentication UI Patterns
-  - ../../../../Global_References/Software_Engineering_and_Other/oauth-pkce-flow.md — OAuth PKCE Flow
-  - ../../../../Global_References/Software_Engineering_and_Other/token-management.md — Token Management
+  - ../../../references/auth-flows.md — Auth Flows
+  - ../../../references/auth-providers.md — Auth Providers
+  - ../../../references/auth-security.md — Auth Security
+  - ../../../references/auth-ui-patterns.md — Authentication UI Patterns
+  - ../../../references/oauth-pkce-flow.md — OAuth PKCE Flow
+  - ../../../references/token-management.md — Token Management
 ## Handoff
 No artifact produced unless requested.
 Next skill: `frontend-security` — CSP headers, XSS prevention for auth pages.

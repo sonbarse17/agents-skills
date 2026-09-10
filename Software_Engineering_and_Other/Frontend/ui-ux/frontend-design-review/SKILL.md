@@ -130,19 +130,19 @@ Match implementation complexity to vision. Maximalist = elaborate code. Minimali
 
 ## Review Output Format
 
-See [../../../../Global_References/Software_Engineering_and_Other/review-output-format.md](../../../../Global_References/Software_Engineering_and_Other/review-output-format.md) for the full review template.
+See [../../../references/review-output-format.md](../../../references/review-output-format.md) for the full review template.
 
 ## Review Type Modifiers
 
-See [../../../../Global_References/Software_Engineering_and_Other/review-type-modifiers.md](../../../../Global_References/Software_Engineering_and_Other/review-type-modifiers.md) for context-specific review focus areas (PR, Creative, Design, Accessibility).
+See [../../../references/review-type-modifiers.md](../../../references/review-type-modifiers.md) for context-specific review focus areas (PR, Creative, Design, Accessibility).
 
 ## Quick Checklist
 
-See [../../../../Global_References/Software_Engineering_and_Other/quick-checklist.md](../../../../Global_References/Software_Engineering_and_Other/quick-checklist.md) for the pre-approval checklist covering design system compliance, aesthetic quality, frictionless, quality craft, and trustworthy pillars.
+See [../../../references/quick-checklist.md](../../../references/quick-checklist.md) for the pre-approval checklist covering design system compliance, aesthetic quality, frictionless, quality craft, and trustworthy pillars.
 
 ## Pattern Examples
 
-See [../../../../Global_References/Software_Engineering_and_Other/pattern-examples.md](../../../../Global_References/Software_Engineering_and_Other/pattern-examples.md) for good/bad examples of creative frontend and design system review work.
+See [../../../references/pattern-examples.md](../../../references/pattern-examples.md) for good/bad examples of creative frontend and design system review work.
 
 ---
 

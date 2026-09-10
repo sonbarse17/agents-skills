@@ -115,7 +115,7 @@ print(result.explanation)
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../../../Global_References/AI_and_Agents/prompt-engineering-patterns_details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../references/prompt-engineering-patterns_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 

@@ -583,15 +583,15 @@ A mid-market company moved from FinOps maturity Level 1 (Crawl) to Level 3 (Run)
 - Commitment purchases (RI/SP) require finance + engineering joint approval.
 
 ## References
-  - ../../../../Global_References/cloud/budget-anomaly.md -- Budget Management and Anomaly Detection
-  - ../../../../Global_References/cloud/budget-policies.md -- Budget Policies
-  - ../../../../Global_References/cloud/cost-governance_cost-allocation.md -- Cost Allocation Models
-  - ../../../../Global_References/cloud/cost-governance-advanced.md -- Cost Governance Advanced Topics
-  - ../../../../Global_References/cloud/cost-governance-framework.md -- Cost Governance Framework Reference
-  - ../../../../Global_References/cloud/cost-governance-cloud-finops.md -- Cloud FinOps and Cost Optimization
-  - ../../../../Global_References/cloud/cost-governance-fundamentals.md -- Cost Governance Fundamentals
-  - ../../../../Global_References/cloud/cost-governance-practices.md -- Cloud Cost Governance Practices
-  - ../../../../Global_References/cloud/ri-savings-plan-strategy.md -- Reserved Instance and Savings Plan Strategy
+  - ../../../references/budget-anomaly.md -- Budget Management and Anomaly Detection
+  - ../../../references/budget-policies.md -- Budget Policies
+  - ../../../references/cost-governance_cost-allocation.md -- Cost Allocation Models
+  - ../../../references/cost-governance-advanced.md -- Cost Governance Advanced Topics
+  - ../../../references/cost-governance-framework.md -- Cost Governance Framework Reference
+  - ../../../references/cost-governance-cloud-finops.md -- Cloud FinOps and Cost Optimization
+  - ../../../references/cost-governance-fundamentals.md -- Cost Governance Fundamentals
+  - ../../../references/cost-governance-practices.md -- Cloud Cost Governance Practices
+  - ../../../references/ri-savings-plan-strategy.md -- Reserved Instance and Savings Plan Strategy
 ## Handoff
 For multi-tenant cost tracking, hand off to `[enterprise-multi-tenant](../../../../Software_Engineering_and_Other/Patterns/distributed-systems/multi-tenant/SKILL.md)`. For compliance cost reporting, hand off to `[enterprise-compliance-audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)/SKILL.md)`.
 

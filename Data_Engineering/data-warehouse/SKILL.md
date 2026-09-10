@@ -452,14 +452,14 @@ Primary workload characteristics?
 - Choose warehouse based on workload, not just familiarity
 
 ## References
-  - ../../Global_References/Data_Engineering/clickhouse-analytics.md — ClickHouse for Real-Time Analytics
-  - ../../Global_References/Data_Engineering/modeling-optimization.md — Modeling and Optimization
-  - ../../Global_References/Data_Engineering/timescaledb-druid.md — TimescaleDB and Apache Druid
+  - ../references/clickhouse-analytics.md — ClickHouse for Real-Time Analytics
+  - ../references/modeling-optimization.md — Modeling and Optimization
+  - ../references/timescaledb-druid.md — TimescaleDB and Apache Druid
   - ../../../Global_References/warehouse-[cost-optimization](../../DevOps_and_Cloud/cloud/common/cost/cost-optimization/SKILL.md).md — Warehouse Cost Optimization
-  - ../../Global_References/Data_Engineering/warehouse-data-sharing.md — Warehouse Data Sharing
+  - ../references/warehouse-data-sharing.md — Warehouse Data Sharing
   - ../../../Global_References/warehouse-[observability](../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md).md — Warehouse [Observability](../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
-  - ../../Global_References/Data_Engineering/warehouse-platforms.md — Warehouse Platforms
-  - ../../Global_References/Data_Engineering/warehouse-security.md — Warehouse Security
+  - ../references/warehouse-platforms.md — Warehouse Platforms
+  - ../references/warehouse-security.md — Warehouse Security
 ## Architecture Decision Trees
 
 ```

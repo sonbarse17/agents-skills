@@ -122,12 +122,12 @@ When hunting for specific MITRE ATT&CK techniques:
 1. **Select Target Technique**
    - Identify technique from threat intelligence (e.g., T1055 - Process Injection)
    - Map technique to observable system artifacts
-   - See [../../../Global_References/Security/mitre-attack-queries.md](../../../Global_References/Security/mitre-attack-queries.md) for pre-built queries
+   - See [../../references/mitre-attack-queries.md](../../references/mitre-attack-queries.md) for pre-built queries
 
 2. **Build Detection Query**
    - Identify relevant osquery tables (processes, file_events, registry, etc.)
    - Join tables to correlate related artifacts
-   - Use [../../../Global_References/Security/table-guide.md](../../../Global_References/Security/table-guide.md) for schema reference
+   - Use [../../references/table-guide.md](../../references/table-guide.md) for schema reference
 
 3. **Execute Hunt**
    ```sql
@@ -331,10 +331,10 @@ SELECT hostname, computer_name, local_hostname FROM system_info;
 
 ### References
 
-- `../../../Global_References/Security/table-guide.md` - Comprehensive osquery table reference for forensic investigations
-- `../../../Global_References/Security/mitre-attack-queries.md` - Pre-built queries mapped to MITRE ATT&CK techniques
-- `../../../Global_References/Security/platform-differences.md` - Platform-specific tables and query variations (Linux/macOS/Windows)
-- `../../../Global_References/Security/osqueryd-deployment.md` - Deploy osqueryd for continuous [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and fleet management
+- `../../references/table-guide.md` - Comprehensive osquery table reference for forensic investigations
+- `../../references/mitre-attack-queries.md` - Pre-built queries mapped to MITRE ATT&CK techniques
+- `../../references/platform-differences.md` - Platform-specific tables and query variations (Linux/macOS/Windows)
+- `../../references/osqueryd-deployment.md` - Deploy osqueryd for continuous [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and fleet management
 
 ### Assets
 
@@ -456,7 +456,7 @@ Enrich findings with threat intel:
 **Solution**: Verify table availability and platform compatibility
 - Check table schema: `osqueryi ".schema processes"`
 - List available tables: `osqueryi ".tables"`
-- Review platform-specific tables in [../../../Global_References/Security/platform-differences.md](../../../Global_References/Security/platform-differences.md)
+- Review platform-specific tables in [../../references/platform-differences.md](../../references/platform-differences.md)
 - Some tables require specific osquery versions or kernel features
 
 ### Issue: High Resource Consumption
@@ -502,7 +502,7 @@ osquery enables detection and investigation of techniques across the ATT&CK matr
 - **Collection**: Detect archive creation and data staging (T1560, T1074)
 - **Exfiltration**: Identify unusual network connections and data transfers (T1041)
 
-See [../../../Global_References/Security/mitre-attack-queries.md](../../../Global_References/Security/mitre-attack-queries.md) for technique-specific detection queries.
+See [../../references/mitre-attack-queries.md](../../references/mitre-attack-queries.md) for technique-specific detection queries.
 
 ## References
 

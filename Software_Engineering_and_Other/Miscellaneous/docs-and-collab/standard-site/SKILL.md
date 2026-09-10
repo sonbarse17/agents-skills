@@ -176,11 +176,11 @@ Verification is separate from schema validation — a record can be schema-valid
 
 Load these when you need full schema details, edge cases, or examples for a specific lexicon:
 
-- `../../../../Global_References/Software_Engineering_and_Other/publication.md` — Full publication schema, blob handling, preferences, extensibility
-- `../../../../Global_References/Software_Engineering_and_Other/document.md` — Full document schema, contributor format, content union, links
-- `../../../../Global_References/Software_Engineering_and_Other/subscription.md` — Full subscription schema, AT-URI format
-- `../../../../Global_References/Software_Engineering_and_Other/recommend.md` — Full recommend schema, permissions
-- `../../../../Global_References/Software_Engineering_and_Other/theme.md` — Full theme schema, RGB/RGBA color types, contrast guidelines
+- `../../../references/publication.md` — Full publication schema, blob handling, preferences, extensibility
+- `../../../references/document.md` — Full document schema, contributor format, content union, links
+- `../../../references/subscription.md` — Full subscription schema, AT-URI format
+- `../../../references/recommend.md` — Full recommend schema, permissions
+- `../../../references/theme.md` — Full theme schema, RGB/RGBA color types, contrast guidelines
 
 ## Available Scripts
 

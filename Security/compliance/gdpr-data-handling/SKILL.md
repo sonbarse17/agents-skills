@@ -59,7 +59,7 @@ Right to Object (Art. 21)       ─┘
 
 ## Detailed worked examples and patterns
 
-Detailed sections (starting with `## Implementation Patterns`) live in `../../../Global_References/Security/gdpr-data-handling_details.md`. Read that file when the navigation summary above is insufficient.
+Detailed sections (starting with `## Implementation Patterns`) live in `../../references/gdpr-data-handling_details.md`. Read that file when the navigation summary above is insufficient.
 
 ## Best Practices
 

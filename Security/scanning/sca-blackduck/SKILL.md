@@ -101,7 +101,7 @@ Work through each step systematically. Check off completed items.
 2. For each vulnerability:
    - Check if fixed version is available
    - Review breaking changes in upgrade path
-   - Consult `../../../Global_References/Security/remediation_strategies.md` for vulnerability-specific guidance
+   - Consult `../../references/remediation_strategies.md` for vulnerability-specific guidance
 3. Apply dependency updates using package manager
 4. Re-scan to validate fixes
 5. Document any vulnerabilities accepted as risk with justification
@@ -180,10 +180,10 @@ Black Duck Detect automatically identifies and scans:
 
 ### References
 
-- `../../../Global_References/Security/cve_cwe_owasp_mapping.md` - CVE to CWE and OWASP Top 10 mapping
-- `../../../Global_References/Security/remediation_strategies.md` - Vulnerability remediation patterns and upgrade strategies
-- `../../../Global_References/Security/license_risk_guide.md` - License compliance risk assessment and legal guidance
-- `../../../Global_References/Security/supply_chain_threats.md` - Common supply chain attack patterns and mitigations
+- `../../references/cve_cwe_owasp_mapping.md` - CVE to CWE and OWASP Top 10 mapping
+- `../../references/remediation_strategies.md` - Vulnerability remediation patterns and upgrade strategies
+- `../../references/license_risk_guide.md` - License compliance risk assessment and legal guidance
+- `../../references/supply_chain_threats.md` - Common supply chain attack patterns and mitigations
 
 ### Assets
 
@@ -340,7 +340,7 @@ bash <(curl -s -L https://detect.synopsys.com/detect.sh) \
 
 **Solution**:
 - Review component licenses in Black Duck dashboard
-- Consult `../../../Global_References/Security/license_risk_guide.md` for risk assessment
+- Consult `../../references/license_risk_guide.md` for risk assessment
 - Replace high-risk licensed components with permissive alternatives
 - Obtain legal approval and document policy exceptions
 
@@ -364,7 +364,7 @@ bash <(curl -s -L https://detect.synopsys.com/detect.sh) \
 
 ### Vulnerability Analysis
 
-For detailed vulnerability research, consult `../../../Global_References/Security/remediation_strategies.md`.
+For detailed vulnerability research, consult `../../references/remediation_strategies.md`.
 
 Key remediation strategies:
 1. **Upgrade**: Update to fixed version (preferred)
@@ -375,7 +375,7 @@ Key remediation strategies:
 
 ### Supply Chain Security
 
-See `../../../Global_References/Security/supply_chain_threats.md` for comprehensive coverage of:
+See `../../references/supply_chain_threats.md` for comprehensive coverage of:
 - Dependency confusion attacks
 - Typosquatting and malicious packages
 - Compromised maintainer accounts
