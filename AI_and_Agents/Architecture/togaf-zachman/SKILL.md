@@ -148,7 +148,7 @@ Capture, track, and prioritize requirements throughout ADM. Assess requirements 
    - Architect (Row 3): System model logical. Requirements, data models, application logic. Deliverable: architecture specifications.
    - Engineer (Row 4): Technology model physical. Implementation details, platform specs. Deliverable: design documents.
    - Technician (Row 5): Detailed specifications. Configuration, deployment, operation. Deliverable: [runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md), configs.
-   - User (Row 6): Functioning system. Runtime view, actual instances. Deliverable: system documentation, [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md).
+   - User (Row 6): Functioning system. Runtime view, actual instances. Deliverable: system documentation, [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md).
 
 2. Which interrogative (column) is the focus?
    - What (Data): Data entities, information architecture. Prioritize for data-intensive initiatives.

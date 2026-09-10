@@ -71,7 +71,7 @@ SLO breach.
 - **Distinguish a fast, short burn from a slow, sustained one** — they call for different
   responses, one urgent, one a longer-term trend to fix.
 - **Make burn rate visible on a dashboard the whole team sees**, not something only surfaced
-  during a postmortem — see `[dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)`.
+  during a postmortem — see `[dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md)`.
 
 **Done when:** burn rate is monitored continuously and alerts fire before the budget is fully
 exhausted, not only after.

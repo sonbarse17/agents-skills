@@ -577,7 +577,7 @@ What's the impact/effort ratio?
 
 - **Continuous [profiling](../../Frontend/profiling/SKILL.md)**: Deploy always-on profilers like Pyroscope or Google Cloud Profiler. Provides flame graphs 24/7 without manual triggering. Distinguishes routine patterns from anomalies.
 - **APM integration**: Use Application Performance [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) ([Datadog](../../../DevOps_and_Cloud/Observability_and_SecOps/datadog/SKILL.md), New Relic, Grafana) for real-time trace sampling. Correlate slow traces with deployments, feature flags, and region.
-- **Performance budgets**: Set budgets for bundle size (JS/CSS), API latency (p95 < 200ms), and memory usage (< 500MB). Fail CI when budgets are exceeded. Publish to [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md).
+- **Performance budgets**: Set budgets for bundle size (JS/CSS), API latency (p95 < 200ms), and memory usage (< 500MB). Fail CI when budgets are exceeded. Publish to [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md).
 - **Synthetic [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: Set up synthetic transactions that exercise critical user journeys. Alert on latency regressions in top percentiles (p95, p99). Run from multiple geographic regions.
 
 ## Anti-Patterns

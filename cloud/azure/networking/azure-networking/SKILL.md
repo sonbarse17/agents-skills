@@ -206,19 +206,19 @@ az network vnet subnet update \
   --resource-group networking-rg \
   --vnet-name spoke-prod-vnet \
   --name web-subnet \
-  --[network-security](../../Containers_and_Orchestration/network-security/SKILL.md)-group web-nsg
+  --[network-security](../../../../DevOps_and_Cloud/Containers_and_Orchestration/network-security/SKILL.md)-group web-nsg
 
 az network vnet subnet update \
   --resource-group networking-rg \
   --vnet-name spoke-prod-vnet \
   --name app-subnet \
-  --[network-security](../../Containers_and_Orchestration/network-security/SKILL.md)-group app-nsg
+  --[network-security](../../../../DevOps_and_Cloud/Containers_and_Orchestration/network-security/SKILL.md)-group app-nsg
 
 az network vnet subnet update \
   --resource-group networking-rg \
   --vnet-name spoke-prod-vnet \
   --name data-subnet \
-  --[network-security](../../Containers_and_Orchestration/network-security/SKILL.md)-group data-nsg
+  --[network-security](../../../../DevOps_and_Cloud/Containers_and_Orchestration/network-security/SKILL.md)-group data-nsg
 
 # View effective NSG rules
 az network nic list-effective-nsg \
@@ -301,14 +301,14 @@ az network private-endpoint create \
   --group-id blob \
   --connection-name storage-blob-connection
 
-# Create private endpoint for Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
+# Create private endpoint for Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
 az network private-endpoint create \
   --resource-group networking-rg \
   --name kv-private-endpoint \
   --vnet-name spoke-prod-vnet \
   --subnet app-subnet \
   --private-connection-resource-id "/subscriptions/{sub}/resourceGroups/{rg}/providers/Microsoft.KeyVault/vaults/myvault" \
-  --group-id [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) \
+  --group-id [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) \
   --connection-name kv-connection
 ```
 
@@ -558,8 +558,8 @@ resource "azurerm_private_endpoint" "sql" {
 
 ## Related Skills
 
-- `[azure-vms](../azure-vms/SKILL.md)` -- VM network interface and NSG configuration.
-- `[azure-aks](../../Containers_and_Orchestration/azure-aks/SKILL.md)` -- AKS VNet integration with Azure CNI.
-- `[azure-sql](../azure-sql/SKILL.md)` -- Private endpoint configuration for database access.
-- `[terraform-azure](../../Infrastructure_as_Code/terraform-azure/SKILL.md)` -- Network infrastructure provisioning with Terraform.
-- `[azure-functions](../azure-functions/SKILL.md)` -- VNet integration for Premium plan functions.
+- `[azure-vms](../../compute/azure-vms/SKILL.md)` -- VM network interface and NSG configuration.
+- `[azure-aks](../../containers/azure-aks/SKILL.md)` -- AKS VNet integration with Azure CNI.
+- `[azure-sql](../../database/azure-sql/SKILL.md)` -- Private endpoint configuration for database access.
+- `[terraform-azure](../../iac/terraform-azure/SKILL.md)` -- Network infrastructure provisioning with Terraform.
+- `[azure-functions](../../compute/azure-functions/SKILL.md)` -- VNet integration for Premium plan functions.

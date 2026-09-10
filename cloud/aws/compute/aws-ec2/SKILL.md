@@ -34,7 +34,7 @@ Deploy and manage Amazon EC2 compute instances for production, staging, and deve
 ## Prerequisites
 
 - AWS CLI v2 installed and configured (`aws configure`)
-- IAM permissions: `ec2:*`, `[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md):*`, `elasticloadbalancing:*`, `iam:PassRole`
+- IAM permissions: `ec2:*`, `[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md):*`, `elasticloadbalancing:*`, `iam:PassRole`
 - An existing VPC with subnets (see [aws-vpc](../[aws-vpc](../aws-vpc/SKILL.md)/))
 - SSH key pair created (`aws ec2 create-key-pair --key-name my-key --query 'KeyMaterial' --output text > my-key.pem`)
 
@@ -114,7 +114,7 @@ wget https://aws-codedeploy-us-east-1.s3.us-east-1.amazonaws.com/latest/install
 chmod +x ./install
 ./install auto
 
-# Signal [CloudFormation](../../Infrastructure_as_Code/cloudformation/SKILL.md) (if launched via CFN)
+# Signal [CloudFormation](../../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md) (if launched via CFN)
 # /opt/aws/bin/cfn-signal -e $? --stack ${AWS::StackName} --resource ASG --region ${AWS::Region}
 ```
 
@@ -150,7 +150,7 @@ aws ec2 create-launch-template \
         {"Key": "ManagedBy", "Value": "launch-template"}
       ]
     }],
-    "[Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)": {"Enabled": true},
+    "[Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)": {"Enabled": true},
     "UserData": "'"$(base64 -w0 userdata.sh)"'"
   }'
 
@@ -171,7 +171,7 @@ aws ec2 modify-launch-template \
 
 ```bash
 # Create ASG with mixed instances (on-demand + spot)
-aws [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) create-auto-scaling-group \
+aws [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) create-auto-scaling-group \
   --auto-scaling-group-name web-asg \
   --mixed-instances-policy '{
     "LaunchTemplate": {
@@ -202,7 +202,7 @@ aws [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SK
   ]'
 
 # Create target tracking scaling policy (target 60% CPU)
-aws [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) put-scaling-policy \
+aws [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) put-scaling-policy \
   --auto-scaling-group-name web-asg \
   --policy-name cpu-target-tracking \
   --policy-type TargetTrackingScaling \
@@ -216,13 +216,13 @@ aws [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SK
   }'
 
 # Create scheduled scaling for known traffic patterns
-aws [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) put-scheduled-update-group-action \
+aws [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) put-scheduled-update-group-action \
   --auto-scaling-group-name web-asg \
   --scheduled-action-name scale-up-morning \
   --recurrence "0 8 * * MON-FRI" \
   --min-size 4 --max-size 20 --desired-[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) 8
 
-aws [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) put-scheduled-update-group-action \
+aws [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) put-scheduled-update-group-action \
   --auto-scaling-group-name web-asg \
   --scheduled-action-name scale-down-evening \
   --recurrence "0 20 * * MON-FRI" \
@@ -416,6 +416,6 @@ resource "aws_autoscaling_policy" "cpu" {
 
 - [aws-vpc](../[aws-vpc](../aws-vpc/SKILL.md)/) - VPC networking, subnets, and security groups
 - [aws-iam](../[aws-iam](../aws-iam/SKILL.md)/) - Instance profiles and roles
-- [aws-cost-optimization](../[aws-cost-optimization](../aws-[cost-optimization](../cost-optimization/SKILL.md)/SKILL.md)/) - [Rightsizing](../rightsizing/SKILL.md) and Spot strategies
+- [aws-cost-optimization](../[aws-cost-optimization](../aws-[cost-optimization](../cost-optimization/SKILL.md)/SKILL.md)/) - [Rightsizing](../../../common/cost/rightsizing/SKILL.md) and Spot strategies
 - [terraform-aws](../[terraform-aws](../../Infrastructure_as_Code/terraform-aws/SKILL.md)/) - Infrastructure as Code deployment
 - [cloudformation](../[cloudformation](../../Infrastructure_as_Code/cloudformation/SKILL.md)/) - AWS-native IaC templates

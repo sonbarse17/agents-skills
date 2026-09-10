@@ -32,7 +32,7 @@ Fine-tune models using SFT (supervised), DPO (preference), or RFT (reinforcement
 Use this sub-skill when the user asks about:
 - Fine-tuning a model (SFT, DPO, or RFT)
 - Preparing, validating, or formatting training data
-- Submitting, [monitoring](../../../../../Observability_and_SecOps/monitoring/SKILL.md), or diagnosing training jobs
+- Submitting, [monitoring](../../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), or diagnosing training jobs
 - Calibrating graders or pass thresholds for RFT
 - Deploying or evaluating a fine-tuned model
 - Choosing between training types (SFT vs DPO vs RFT)
@@ -56,18 +56,18 @@ Use this sub-skill when the user asks about:
 
 | Topic | File |
 |-------|------|
-| SFT vs DPO vs RFT | [../../../../../../Global_References/training-types.md](../../../../../../Global_References/training-types.md) |
-| Hyperparameters | [../../../../../../Global_References/finetuning_hyperparameters.md](../../../../../../Global_References/finetuning_hyperparameters.md) |
-| Data formats | [../../../../../../Global_References/dataset-formats.md](../../../../../../Global_References/dataset-formats.md) |
-| Grader design (RFT) | [../../../../../../Global_References/grader-design.md](../../../../../../Global_References/grader-design.md) |
-| Reward hacking | [../../../../../../Global_References/reward-hacking.md](../../../../../../Global_References/reward-hacking.md) |
-| Agentic RFT (tools) | [../../../../../../Global_References/agentic-rft.md](../../../../../../Global_References/agentic-rft.md) |
-| Deployment | [../../../../../../Global_References/finetuning_deployment.md](../../../../../../Global_References/finetuning_deployment.md) |
-| Training curves | [../../../../../../Global_References/training-curves.md](../../../../../../Global_References/training-curves.md) |
-| Evaluation | [../../../../../../Global_References/finetuning_evaluation.md](../../../../../../Global_References/finetuning_evaluation.md) |
-| Vision fine-tuning | [../../../../../../Global_References/vision-fine-tuning.md](../../../../../../Global_References/vision-fine-tuning.md) |
-| Large file uploads | [../../../../../../Global_References/large-file-uploads.md](../../../../../../Global_References/large-file-uploads.md) |
-| Platform gotchas | [../../../../../../Global_References/platform-gotchas.md](../../../../../../Global_References/platform-gotchas.md) |
+| SFT vs DPO vs RFT | [../../../../../../Global_References/training-types.md](../../../../../Global_References/training-types.md) |
+| Hyperparameters | [../../../../../../Global_References/finetuning_hyperparameters.md](../../../../../Global_References/finetuning_hyperparameters.md) |
+| Data formats | [../../../../../../Global_References/dataset-formats.md](../../../../../Global_References/dataset-formats.md) |
+| Grader design (RFT) | [../../../../../../Global_References/grader-design.md](../../../../../Global_References/grader-design.md) |
+| Reward hacking | [../../../../../../Global_References/reward-hacking.md](../../../../../Global_References/reward-hacking.md) |
+| Agentic RFT (tools) | [../../../../../../Global_References/agentic-rft.md](../../../../../Global_References/agentic-rft.md) |
+| Deployment | [../../../../../../Global_References/finetuning_deployment.md](../../../../../Global_References/finetuning_deployment.md) |
+| Training curves | [../../../../../../Global_References/training-curves.md](../../../../../Global_References/training-curves.md) |
+| Evaluation | [../../../../../../Global_References/finetuning_evaluation.md](../../../../../Global_References/finetuning_evaluation.md) |
+| Vision fine-tuning | [../../../../../../Global_References/vision-fine-tuning.md](../../../../../Global_References/vision-fine-tuning.md) |
+| Large file uploads | [../../../../../../Global_References/large-file-uploads.md](../../../../../Global_References/large-file-uploads.md) |
+| Platform gotchas | [../../../../../../Global_References/platform-gotchas.md](../../../../../Global_References/platform-gotchas.md) |
 
 ## Scripts
 
@@ -97,12 +97,12 @@ Use this sub-skill when the user asks about:
 
 | Task | Command |
 |------|---------|
-| Validate SFT data | `[python](../../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/validate/validate_sft.py data.jsonl` |
-| Submit SFT job | `[python](../../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/submit_training.py --model gpt-4.1-mini --training-file train.jsonl --validation-file val.jsonl --type sft` |
-| Monitor job | `[python](../../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/monitor_training.py --job-id ftjob-xxx` |
-| Analyze curves | `[python](../../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/check_training.py --job-id ftjob-xxx` |
-| Deploy model | `[python](../../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/deploy_model.py --model-id ft:gpt-4.1-mini:... --name my-eval` |
-| Evaluate model | `[python](../../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/evaluate_model.py --deployment-name my-eval --test-file test.jsonl` |
+| Validate SFT data | `[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/validate/validate_sft.py data.jsonl` |
+| Submit SFT job | `[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/submit_training.py --model gpt-4.1-mini --training-file train.jsonl --validation-file val.jsonl --type sft` |
+| Monitor job | `[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/monitor_training.py --job-id ftjob-xxx` |
+| Analyze curves | `[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/check_training.py --job-id ftjob-xxx` |
+| Deploy model | `[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/deploy_model.py --model-id ft:gpt-4.1-mini:... --name my-eval` |
+| Evaluate model | `[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) scripts/evaluate_model.py --deployment-name my-eval --test-file test.jsonl` |
 
 ## Error Handling
 

@@ -130,7 +130,7 @@ API: stale-while-revalidate
 ```
 
 **Option B: Network-first with cache fallback**
-Best for: Dynamic apps where freshness is critical ([dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), admin panels).
+Best for: Dynamic apps where freshness is critical ([dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), admin panels).
 ```
 Install: precache shell (minimal HTML, CSS, JS)
 Fetch: HTML and API always from network

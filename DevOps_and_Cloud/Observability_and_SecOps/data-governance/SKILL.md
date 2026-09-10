@@ -190,7 +190,7 @@ Classifying everything as Restricted renders classification meaningless. Reserve
 Without clear data ownership, no one is accountable for quality, classification, or retention. Assign business owner (who defines what data means), technical steward (who implements pipelines), and data custodian (who manages storage) per dataset.
 
 ### Pitfall 4: Quality [Monitoring](../monitoring/SKILL.md) Without SLAs
-Quality checks without targets are noise. Set specific SLAs: completeness > 99.9%, timeliness < 15min from source, accuracy matches source of truth > 99.99%. Track SLA adherence in [dashboards](../../Cloud_Providers/dashboards/SKILL.md). Escalate breaches to data owners.
+Quality checks without targets are noise. Set specific SLAs: completeness > 99.9%, timeliness < 15min from source, accuracy matches source of truth > 99.99%. Track SLA adherence in [dashboards](../dashboards/SKILL.md). Escalate breaches to data owners.
 
 ### Pitfall 5: Retention Without Purge Automation
 Defining retention policies without automated purge is just documentation. Data accumulates beyond retention. Implement automated purge pipelines. Dry-run mode for first month. Verify purge completeness. Maintain [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail.
@@ -551,7 +551,7 @@ Trying to capture lineage for every column in every table. Teams burn out mainta
 - PII detection must be automated in CI/CD pipelines
 - Schema changes must pass through registry with backward compatibility check
 - Data lineage must be updated when pipelines change
-- Quality [dashboards](../../Cloud_Providers/dashboards/SKILL.md) visible to data owners and stewards
+- Quality [dashboards](../dashboards/SKILL.md) visible to data owners and stewards
 - Retention purge must have dry-run mode before execution
 - Legal hold must be irrevocable until manually removed
 - Data contracts enforced between producer and consumer services

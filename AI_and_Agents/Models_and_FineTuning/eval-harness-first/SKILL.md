@@ -195,7 +195,7 @@ file before a run.
 
 ## Related Skills
 
-General-purpose evaluation guidance ([dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), A/B
+General-purpose evaluation guidance ([dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), A/B
 testing, non-fine-tuning harnesses) lives in the
 `llm-application-dev` plugin's `[llm-evaluation](../llm-application-dev/skills/[llm-evaluation](../llm-evaluation/SKILL.md)/SKILL.md)`
 skill — this skill covers only the fine-tuning

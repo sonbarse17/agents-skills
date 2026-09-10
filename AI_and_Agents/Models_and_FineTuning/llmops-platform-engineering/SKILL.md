@@ -49,7 +49,7 @@ Design and operate an internal LLM platform that supports rapid experimentation 
 
 1. **Control Plane**: model registry, prompt/version catalog, policy checks, eval pipeline.
 2. **Data Plane**: inference gateway, vector database, cache, feature store.
-3. **Ops Plane**: telemetry, [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md), SLO [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), cost analytics.
+3. **Ops Plane**: telemetry, [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md), SLO [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), cost analytics.
 4. **Security Plane**: IAM boundaries, secret rotation, content filters, [audit](../../Operations/audit/SKILL.md) logs.
 
 ## Model Promotion Pipeline

@@ -169,7 +169,7 @@ az cognitiveservices account deployment delete --name <account> --resource-group
 ## Related Skills
 
 - **[preset](../../../AI_and_Agents/Infrastructure/deploy-model/[preset](../../../AI_and_Agents/Models_and_FineTuning/[preset](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/preset/SKILL.md)/SKILL.md)/SKILL.md)** - Quick deployment to best region with automatic configuration
-- **[microsoft-foundry](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/SKILL.md)** - Parent skill for all Microsoft Foundry operations
+- **[microsoft-foundry](../../../cloud/azure/ai/microsoft-foundry/SKILL.md)** - Parent skill for all Microsoft Foundry operations
 - **[quota](../../../quota/quota.md)** — For quota viewing, increase requests, and troubleshooting quota errors, defer to this skill instead of duplicating guidance
 - **rbac** - Manage permissions and access control
 

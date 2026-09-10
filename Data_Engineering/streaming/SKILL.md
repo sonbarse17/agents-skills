@@ -436,7 +436,7 @@ Orders Streaming Pipeline
 | State management | Required (windowed, keyed) | Not needed |
 | Failure recovery | Checkpoint/savepoint | Re-run from start |
 | Cost | Higher (always-on infra) | Lower (scheduled compute) |
-| Use case | Real-time [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), alerts, CDC | Reports, ML training, backfill |
+| Use case | Real-time [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), alerts, CDC | Reports, ML training, backfill |
 
 ## Common Streaming Topology Patterns
 

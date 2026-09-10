@@ -76,7 +76,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 ## Warehouse Platforms
 
 ### Snowflake
-Snowflake is a fully-managed cloud data warehouse with separated compute and storage. Key features: auto-scaling warehouses (XS to 6XL), automatic clustering, zero-copy cloning, time travel (up to 90 days), data sharing, and Snowpark for [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)/Java/Scala processing. Snowflake uses a columnar storage format with automatic micro-partitioning. Compute is billed per second while active; storage is billed per TB per month. Best for: organizations that want minimal operational overhead, need data sharing capabilities, or require [multi-cloud](../../DevOps_and_Cloud/Cloud_Providers/multi-cloud/SKILL.md) support.
+Snowflake is a fully-managed cloud data warehouse with separated compute and storage. Key features: auto-scaling warehouses (XS to 6XL), automatic clustering, zero-copy cloning, time travel (up to 90 days), data sharing, and Snowpark for [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)/Java/Scala processing. Snowflake uses a columnar storage format with automatic micro-partitioning. Compute is billed per second while active; storage is billed per TB per month. Best for: organizations that want minimal operational overhead, need data sharing capabilities, or require [multi-cloud](../../cloud/common/other/multi-cloud/SKILL.md) support.
 
 ### BigQuery
 BigQuery is Google Cloud's [serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) data warehouse. Key features: automatic partitioning and clustering, unlimited storage with no management, BI Engine for cached dashboard queries, BigQuery ML for in-database ML, and slot-based pricing. BigQuery separates compute (slots) from storage. Queries scan data on demand — there is no compute cluster to manage. Pricing is per byte scanned (on-demand) or per slot (flat-rate). Best for: GCP-native organizations, teams that want zero infrastructure management, and ad-hoc analytics at petabyte scale.
@@ -131,7 +131,7 @@ Filter early — push WHERE clauses to subqueries. Avoid SELECT * — specify ne
 | Open formats | Proprietary | Proprietary | Proprietary | Delta Lake (open) |
 
 ### When to Choose Each Platform
-**Snowflake**: [Multi-cloud](../../DevOps_and_Cloud/Cloud_Providers/multi-cloud/SKILL.md) strategy, cross-org data sharing, minimal operational overhead, zero-copy cloning for dev/test.
+**Snowflake**: [Multi-cloud](../../cloud/common/other/multi-cloud/SKILL.md) strategy, cross-org data sharing, minimal operational overhead, zero-copy cloning for dev/test.
 
 **BigQuery**: GCP-native, zero infrastructure management, petabyte-scale ad-hoc analytics, [serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) scaling.
 
@@ -298,7 +298,7 @@ ALTER TABLE fact_orders RECLUSTER;
 ## Specialized Analytics Engines
 
 ### ClickHouse
-ClickHouse is a column-oriented OLAP database for real-time analytics. Uses columnar storage with vectorized query execution (SIMD), achieving 100-1000x faster queries than row-oriented databases on analytical workloads. Key features: MergeTree table engine family (ReplacingMergeTree for dedup, SummingMergeTree for pre-aggregation, CollapsingMergeTree for mutable state), incremental materialized views, distributed query across shards, and SQL with array/higher-order functions. Excels at: real-time [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), time-series analytics, log analytics, sub-second queries on billions of rows. Deploy alongside a primary warehouse for high-performance serving of pre-aggregated or real-time data.
+ClickHouse is a column-oriented OLAP database for real-time analytics. Uses columnar storage with vectorized query execution (SIMD), achieving 100-1000x faster queries than row-oriented databases on analytical workloads. Key features: MergeTree table engine family (ReplacingMergeTree for dedup, SummingMergeTree for pre-aggregation, CollapsingMergeTree for mutable state), incremental materialized views, distributed query across shards, and SQL with array/higher-order functions. Excels at: real-time [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), time-series analytics, log analytics, sub-second queries on billions of rows. Deploy alongside a primary warehouse for high-performance serving of pre-aggregated or real-time data.
 
 ```sql
 CREATE TABLE events (
@@ -325,7 +325,7 @@ SELECT add_continuous_aggregate_policy('hourly_avg', start_offset => INTERVAL '3
 ```
 
 ### Apache Druid
-Druid is a real-time analytical database for high-concurrency OLAP on streaming/batch data. Uses segment-centric architecture: data into time-bound segments, bitmap indexes for fast filtering, columnar format. Ingests from Kafka (real-time) and batch files. Key features: time-aligned segment granularity, ingestion-time rollup for pre-aggregation, sketch-based algorithms (HyperLogLog, Theta sketches) for fast distinct counts, sub-second latency at petabyte scale. Use for real-time analytics [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), user-facing embedded analytics, and ad-hoc OLAP on streaming event data.
+Druid is a real-time analytical database for high-concurrency OLAP on streaming/batch data. Uses segment-centric architecture: data into time-bound segments, bitmap indexes for fast filtering, columnar format. Ingests from Kafka (real-time) and batch files. Key features: time-aligned segment granularity, ingestion-time rollup for pre-aggregation, sketch-based algorithms (HyperLogLog, Theta sketches) for fast distinct counts, sub-second latency at petabyte scale. Use for real-time analytics [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), user-facing embedded analytics, and ad-hoc OLAP on streaming event data.
 
 ### Warehouse Selection Criteria
 
@@ -334,7 +334,7 @@ warehouse_selection:
   snowflake:
     strengths: ["Fully managed", "Separation of compute/storage", "Zero-copy cloning", "Time travel", "Data sharing"]
     weaknesses: ["Cost at scale ($/credit)", "No materialized views in standard edition", "Limited semi-structured (VARIANT)"]
-    best_for: "Enterprise [multi-cloud](../../DevOps_and_Cloud/Cloud_Providers/multi-cloud/SKILL.md), data sharing, concurrency-heavy workloads"
+    best_for: "Enterprise [multi-cloud](../../cloud/common/other/multi-cloud/SKILL.md), data sharing, concurrency-heavy workloads"
     pricing: "Per-second billing, $2-4/credit"
   
   bigquery:
@@ -428,7 +428,7 @@ CREATE TABLE fct_orders (
 #### Warehouse Selection
 ```
 Primary workload characteristics?
-├── [Multi-cloud](../../DevOps_and_Cloud/Cloud_Providers/multi-cloud/SKILL.md), high concurrency, data sharing → Snowflake
+├── [Multi-cloud](../../cloud/common/other/multi-cloud/SKILL.md), high concurrency, data sharing → Snowflake
 ├── [Serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) preferred, Google Cloud → BigQuery
 ├── Cost-sensitive large-scale, AWS-native → Redshift
 ├── Lakehouse with ML, Databricks ecosystem → Databricks SQL
@@ -455,7 +455,7 @@ Primary workload characteristics?
   - ../../../Global_References/clickhouse-analytics.md — ClickHouse for Real-Time Analytics
   - ../../../Global_References/modeling-optimization.md — Modeling and Optimization
   - ../../../Global_References/timescaledb-druid.md — TimescaleDB and Apache Druid
-  - ../../../Global_References/warehouse-[cost-optimization](../../DevOps_and_Cloud/Cloud_Providers/cost-optimization/SKILL.md).md — Warehouse Cost Optimization
+  - ../../../Global_References/warehouse-[cost-optimization](../../cloud/common/cost/cost-optimization/SKILL.md).md — Warehouse Cost Optimization
   - ../../../Global_References/warehouse-data-sharing.md — Warehouse Data Sharing
   - ../../../Global_References/warehouse-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md).md — Warehouse [Observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
   - ../../../Global_References/warehouse-platforms.md — Warehouse Platforms
@@ -543,7 +543,7 @@ FROM {{ ref('stg_customers') }}
 - **Clustering keys**: Define clustering on date columns and frequently filtered dimensions for faster scans.
 - **Auto-suspend**: Set warehouse auto-suspend to 5 min for dev, 30 min for prod to control cost.
 - **Query [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: Track warehouse credit consumption per query/user; alert on anomalous usage.
-- **Data freshness**: Publish last-loaded timestamp per table; [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) alert if data is stale > SLA.
+- **Data freshness**: Publish last-loaded timestamp per table; [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) alert if data is stale > SLA.
 
 ## Anti-Patterns
 
@@ -573,5 +573,5 @@ FROM {{ ref('stg_customers') }}
 
 ## Handoff
 `[data-etl-pipeline](../etl-pipeline/SKILL.md)` for loading data into the warehouse schema
-`[data-bi-tools](../../AI_and_Agents/Models_and_FineTuning/bi-tools/SKILL.md)` for connecting [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) to the data model
+`[data-bi-tools](../../AI_and_Agents/Models_and_FineTuning/bi-tools/SKILL.md)` for connecting [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) to the data model
 

@@ -21,7 +21,7 @@ depends_on:
 
 # Frontend UI Dark Theme ([TypeScript](../typescript/SKILL.md))
 
-A modern dark-themed React UI system using **Tailwind CSS** and **Framer Motion**. Designed for [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), admin panels, and data-rich applications with glassmorphism effects and tasteful animations.
+A modern dark-themed React UI system using **Tailwind CSS** and **Framer Motion**. Designed for [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), admin panels, and data-rich applications with glassmorphism effects and tasteful animations.
 
 ## Stack
 
@@ -599,7 +599,7 @@ export function PageTransition({ children }: PageTransitionProps) {
 
 ## Related Files
 
-- [Design Tokens](./../../../Global_References/frontend-ui-dark-ts_design-tokens.md) — Complete color system, spacing, typography scales
-- [Components](./../../../Global_References/components.md) — Button, Card, Input, Dialog, Tabs, and more
-- [Patterns](./../../../Global_References/frontend-ui-dark-ts_patterns.md) — Page layouts, navigation, lists, forms
+- [Design Tokens](../../../Global_References/frontend-ui-dark-ts_design-tokens.md) — Complete color system, spacing, typography scales
+- [Components](../../../Global_References/components.md) — Button, Card, Input, Dialog, Tabs, and more
+- [Patterns](../../../Global_References/frontend-ui-dark-ts_patterns.md) — Page layouts, navigation, lists, forms
 

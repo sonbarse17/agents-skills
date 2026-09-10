@@ -401,7 +401,7 @@ helm upgrade cilium cilium/cilium --namespace kube-system --reuse-values \
   --set hubble.metrics.enabled="{dns,drop,tcp,flow,icmp,http}" \
   --set hubble.metrics.destination=prometheus
 
-# Grafana [dashboards](../../Cloud_Providers/dashboards/SKILL.md) available at:
+# Grafana [dashboards](../../Observability_and_SecOps/dashboards/SKILL.md) available at:
 # https://[github](../../CI_CD/github/SKILL.md).com/cilium/cilium/tree/main/install/[kubernetes](../kubernetes/SKILL.md)/cilium/environment/hubble/grafana
 ```
 

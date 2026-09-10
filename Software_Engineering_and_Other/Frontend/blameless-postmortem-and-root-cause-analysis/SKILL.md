@@ -64,7 +64,7 @@ nobody revisits.
 ## Prerequisites & environment
 
 - A collected [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) record: the scribe's live timeline, relevant
-  [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)/logs, and the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) chat transcript (see
+  [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md)/logs, and the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) chat transcript (see
   [incident-response-and-on-call-management](../[incident-response-and-on-call-management](../[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../DevOps_and_Cloud/Observability_and_SecOps/on-call-management/SKILL.md)/SKILL.md)/SKILL.md)
   for how this is captured during the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) itself).
 - A shared, versioned template — see

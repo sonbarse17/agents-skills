@@ -153,5 +153,5 @@ Verify that the lead is using the `Agent` tool to spawn teammates and passing co
 
 ## Related Skills
 
-- [parallel-feature-development](../[parallel-feature-development](../[parallel-feature-development](../../../parallel-feature-development/SKILL.md)/SKILL.md)/SKILL.md) — Decompose work streams and assign file ownership once the team is composed
+- [parallel-feature-development](../parallel-feature-development/SKILL.md)/SKILL.md)/SKILL.md) — Decompose work streams and assign file ownership once the team is composed
 - [team-communication-protocols](../[team-communication-protocols](../[team-communication-protocols](../../../../../Product_and_Business/team-communication-protocols/SKILL.md)/SKILL.md)/SKILL.md) — Establish messaging norms and shutdown procedures for the assembled team

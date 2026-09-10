@@ -185,7 +185,7 @@ State: User asks about alert rules, alert fatigue, notification routing, Prometh
   Route: management-[alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
   Reason: "Alert rule design request."
 
-State: User asks about [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), Prometheus, Grafana, Loki, ELK, metrics, [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md).
+State: User asks about [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), Prometheus, Grafana, Loki, ELK, metrics, [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md).
   Route: devops-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
   Reason: "[Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) stack configuration request."
 
@@ -605,7 +605,7 @@ State: User asks about data streaming, Kafka, stream processing, event streaming
   Reason: "Data streaming request."
 
 State: User asks about file storage, object storage, S3, file upload.
-  Route: [backend-file-storage](../../DevOps_and_Cloud/Cloud_Providers/file-storage/SKILL.md)
+  Route: [backend-file-storage](../../cloud/common/storage/file-storage/SKILL.md)
   Reason: "File storage request."
 
 State: User asks about feature flags, feature toggles, canary release, gradual rollout.
@@ -833,7 +833,7 @@ State: User asks about AI testing, LLM testing, eval harness, model evaluation.
   Reason: "AI testing request."
 
 State: User asks about AI cost optimization, token efficiency, model quantization, inference cost.
-  Route: ai-ai-[cost-optimization](../../DevOps_and_Cloud/Cloud_Providers/cost-optimization/SKILL.md)
+  Route: ai-ai-[cost-optimization](../../cloud/common/cost/cost-optimization/SKILL.md)
   Reason: "AI cost optimization request."
 
 State: User asks about LangChain, LlamaIndex, LangGraph, chain, agent framework.
@@ -851,7 +851,7 @@ State: User asks about AI [observability](../../DevOps_and_Cloud/Observability_a
 ### New Data Skills
 
 State: User asks about distributed storage, HDFS, distributed file system, object storage.
-  Route: [data-distributed-storage](../../DevOps_and_Cloud/Cloud_Providers/distributed-storage/SKILL.md)
+  Route: [data-distributed-storage](../../cloud/common/storage/distributed-storage/SKILL.md)
   Reason: "Distributed storage request."
 
 State: User asks about distributed compute, Spark, Dask, distributed processing, cluster computing.
@@ -980,8 +980,8 @@ State: User asks about cloud cost optimization, cloud spend, cost reduction, clo
   Route: [cloud-cost-optimization](../../DevOps_and_Cloud/Cloud_Providers/cloud-[cost-optimization](../../DevOps_and_Cloud/Cloud_Providers/cost-optimization/SKILL.md)/SKILL.md)
   Reason: "Cloud cost optimization request."
 
-State: User asks about cloud architecture, landing zone, well-architected framework, cloud foundation, [multi-cloud](../../DevOps_and_Cloud/Cloud_Providers/multi-cloud/SKILL.md), cloud governance.
-  Route: [cloud-architecture](../../DevOps_and_Cloud/Cloud_Providers/cloud-architecture/SKILL.md)
+State: User asks about cloud architecture, landing zone, well-architected framework, cloud foundation, [multi-cloud](../../cloud/common/other/multi-cloud/SKILL.md), cloud governance.
+  Route: [cloud-architecture](../../cloud/common/architecture/cloud-architecture/SKILL.md)
   Reason: "Cloud architecture request."
 
 State: User asks about platform engineering, internal developer platform, IDP, Backstage, developer portal, golden path, platform team.
@@ -1013,7 +1013,7 @@ State: User asks about policy as code, OPA, Rego, Kyverno, admission controller,
   Reason: "Policy as code request."
 
 State: User asks about cloud migration, lift-and-shift, rehost, replatform, refactor, 6 Rs migration, legacy to cloud, data center migration.
-  Route: devops-[cloud-migration](../../DevOps_and_Cloud/Cloud_Providers/cloud-migration/SKILL.md)
+  Route: devops-[cloud-migration](../../cloud/common/migration/cloud-migration/SKILL.md)
   Reason: "Cloud migration request."
 
 State: User asks about [Pulumi](../../DevOps_and_Cloud/Infrastructure_as_Code/pulumi/SKILL.md), infrastructure as code with programming languages, [Pulumi](../../DevOps_and_Cloud/Infrastructure_as_Code/pulumi/SKILL.md) stack, [Pulumi](../../DevOps_and_Cloud/Infrastructure_as_Code/pulumi/SKILL.md) state.
@@ -1049,19 +1049,19 @@ State: User asks about [OpenTelemetry](../../DevOps_and_Cloud/Observability_and_
   Reason: "[OpenTelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) request."
 
 State: User asks about Oracle Cloud, OCI, OKE, Oracle [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Engine, Oracle database cloud.
-  Route: devops-[oracle-cloud](../../DevOps_and_Cloud/Cloud_Providers/oracle-cloud/SKILL.md)
+  Route: devops-[oracle-cloud](../../cloud/oracle/oracle-cloud/SKILL.md)
   Reason: "Oracle Cloud request."
 
-State: User asks about [DigitalOcean](../../DevOps_and_Cloud/Cloud_Providers/digitalocean/SKILL.md), DOKS, [DigitalOcean](../../DevOps_and_Cloud/Cloud_Providers/digitalocean/SKILL.md) App Platform, Droplet, [DigitalOcean](../../DevOps_and_Cloud/Cloud_Providers/digitalocean/SKILL.md) [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).
-  Route: devops-[digitalocean](../../DevOps_and_Cloud/Cloud_Providers/digitalocean/SKILL.md)
-  Reason: "[DigitalOcean](../../DevOps_and_Cloud/Cloud_Providers/digitalocean/SKILL.md) request."
+State: User asks about [DigitalOcean](../../cloud/digitalocean/digitalocean/SKILL.md), DOKS, [DigitalOcean](../../cloud/digitalocean/digitalocean/SKILL.md) App Platform, Droplet, [DigitalOcean](../../cloud/digitalocean/digitalocean/SKILL.md) [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).
+  Route: devops-[digitalocean](../../cloud/digitalocean/digitalocean/SKILL.md)
+  Reason: "[DigitalOcean](../../cloud/digitalocean/digitalocean/SKILL.md) request."
 
 State: User asks about IBM Cloud, IBM [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Service, IBM Cloud Foundry, IBM Cloud VPC.
-  Route: devops-[ibm-cloud](../../DevOps_and_Cloud/Cloud_Providers/ibm-cloud/SKILL.md)
+  Route: devops-[ibm-cloud](../../cloud/ibm/ibm-cloud/SKILL.md)
   Reason: "IBM Cloud request."
 
 State: User asks about Alibaba Cloud, Aliyun, ACK, Alibaba Cloud ECS, ApsaraDB.
-  Route: devops-[alibaba-cloud](../../DevOps_and_Cloud/Cloud_Providers/alibaba-cloud/SKILL.md)
+  Route: devops-[alibaba-cloud](../../cloud/alibaba/alibaba-cloud/SKILL.md)
   Reason: "Alibaba Cloud request."
 
 State: User asks about Hetzner, Hetzner Cloud, Hetzner dedicated server, Hetzner [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).
@@ -1215,11 +1215,11 @@ State: User asks about [ArgoCD](../../DevOps_and_Cloud/Containers_and_Orchestrat
   Reason: "[ArgoCD](../../DevOps_and_Cloud/Containers_and_Orchestration/argocd/SKILL.md)/[GitOps](../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) request."
 
 State: User asks about Azure, Microsoft Azure, AKS.
-  Route: [devops-azure](../../DevOps_and_Cloud/Cloud_Providers/azure/SKILL.md)
+  Route: [devops-azure](../../cloud/azure/other/azure/SKILL.md)
   Reason: "Azure request."
 
 State: User asks about GCP, Google Cloud, GKE.
-  Route: [devops-gcp](../../DevOps_and_Cloud/Cloud_Providers/gcp/SKILL.md)
+  Route: [devops-gcp](../../cloud/gcp/other/gcp/SKILL.md)
   Reason: "GCP request."
 
 State: User asks about chaos engineering, resilience testing, fault injection.
@@ -1231,7 +1231,7 @@ State: User asks about service mesh, Istio, Linkerd, mTLS.
   Reason: "Service mesh request."
 
 State: User asks about FinOps, cloud cost, cost optimization.
-  Route: [devops-finops](../../DevOps_and_Cloud/Cloud_Providers/finops/SKILL.md)
+  Route: [devops-finops](../../cloud/common/cost/finops/SKILL.md)
   Reason: "FinOps request."
 
 State: User asks about backup, disaster recovery, DR plan.
@@ -1319,7 +1319,7 @@ State: User asks about identity provider, IdP, SSO, SAML, OIDC, Keycloak.
   Reason: "Identity provider request."
 
 State: User asks about cost governance, cloud cost, FinOps, budget management.
-  Route: [enterprise-cost-governance](../../DevOps_and_Cloud/Cloud_Providers/cost-governance/SKILL.md)
+  Route: [enterprise-cost-governance](../../cloud/common/cost/cost-governance/SKILL.md)
   Reason: "Cost governance request."
 
 State: User asks about product analytics, event tracking, funnel, retention.
@@ -1387,7 +1387,7 @@ State: User asks about SBOM, software bill of materials, supply chain security.
   Reason: "SBOM request."
 
 State: User asks about secrets management, secret scanning, GitLeaks, [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).
-  Route: security-[secrets-management](../../DevOps_and_Cloud/Cloud_Providers/secrets-management/SKILL.md)
+  Route: security-[secrets-management](../../cloud/common/security/secrets-management/SKILL.md)
   Reason: "Secrets management request."
 
 State: User asks about container security, image scanning, Trivy, admission control.

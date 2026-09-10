@@ -67,7 +67,7 @@ NOW (Q2 2026)                    NEXT (Q3 2026)                  LATER (Q4 2026-
 │   ├── SDKs for TS/[Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)/Go    │   ├── [Android](../../Mobile/android/SKILL.md) SDK v2           │   ├── APAC region
 │   └── Interactive docs         │   └── React Native             │   └── Local compliance
 └── Enterprise Features          └── Advanced Analytics           └── Ecosystem Platform
-    ├── SSO/SAML                     ├── Custom [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)            ├── Partner marketplace
+    ├── SSO/SAML                     ├── Custom [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md)            ├── Partner marketplace
     ├── [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs                   ├── Export pipelines             ├── Developer community
     └── RBAC                         └── SLA reporting                └── Revenue sharing
 ```

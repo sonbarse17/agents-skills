@@ -21,7 +21,7 @@ depends_on:
   - audit
 ---
 
-# Azure Fabric Management SDK for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+# Azure Fabric Management SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 
 Manage Microsoft Fabric capacities and resources programmatically.
 
@@ -44,7 +44,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 > **🔑 Two rules apply to every code sample below:**
 >
-> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
+> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
 >    - Local dev: `DefaultAzureCredential` works as-is.
 >    - Production: set `AZURE_TOKEN_CREDENTIALS=prod` (or `AZURE_TOKEN_CREDENTIALS=<specific_credential>`) to constrain the credential chain to production-safe credentials.
 > 2. **Wrap every client in a context manager** so HTTP transports, sockets, and token caches are released deterministically:
@@ -53,7 +53,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 >
 > Snippets may abbreviate this setup, but production code should always follow both rules.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 from azure.mgmt.fabric import FabricMgmtClient
 import os
@@ -61,7 +61,7 @@ import os
 # Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 credential = DefaultAzureCredential(require_envvar=True)
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
+# See https://learn.microsoft.com/[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 
 with FabricMgmtClient(
@@ -74,7 +74,7 @@ with FabricMgmtClient(
 
 ## Create Fabric [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.mgmt.fabric import FabricMgmtClient
 from azure.mgmt.fabric.models import FabricCapacity, FabricCapacityProperties, CapacitySku
 from azure.identity import DefaultAzureCredential
@@ -110,7 +110,7 @@ print(f"[Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity]
 
 ## Get [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) Details
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) = client.fabric_capacities.get(
     resource_group_name=resource_group,
     capacity_name=capacity_name
@@ -124,7 +124,7 @@ print(f"Location: {[capacity](../../../AI_and_Agents/Infrastructure/deploy-model
 
 ## List Capacities in Resource Group
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 capacities = client.fabric_capacities.list_by_resource_group(
     resource_group_name=resource_group
 )
@@ -135,7 +135,7 @@ for [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../
 
 ## List All Capacities in Subscription
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 all_capacities = client.fabric_capacities.list_by_subscription()
 
 for [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) in all_capacities:
@@ -144,7 +144,7 @@ for [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../
 
 ## Update [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.mgmt.fabric.models import FabricCapacityUpdate, CapacitySku
 
 updated = client.fabric_capacities.begin_update(
@@ -166,7 +166,7 @@ print(f"Updated SKU: {updated.sku.name}")
 
 Pause [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) to stop billing:
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 client.fabric_capacities.begin_suspend(
     resource_group_name=resource_group,
     capacity_name=capacity_name
@@ -179,7 +179,7 @@ print("[Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](
 
 Resume a paused [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md):
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 client.fabric_capacities.begin_resume(
     resource_group_name=resource_group,
     capacity_name=capacity_name
@@ -190,7 +190,7 @@ print("[Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](
 
 ## Delete [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 client.fabric_capacities.begin_delete(
     resource_group_name=resource_group,
     capacity_name=capacity_name
@@ -201,7 +201,7 @@ print("[Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](
 
 ## Check Name Availability
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.mgmt.fabric.models import CheckNameAvailabilityRequest
 
 result = client.fabric_capacities.check_name_availability(
@@ -220,7 +220,7 @@ else:
 
 ## List Available SKUs
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 skus = client.fabric_capacities.list_skus(
     resource_group_name=resource_group,
     capacity_name=capacity_name
@@ -268,7 +268,7 @@ for sku in skus:
 
 All mutating operations are long-running (LRO). Use `.result()` to wait:
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Synchronous wait
 [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) = client.fabric_capacities.begin_create_or_update(...).result()
 
@@ -297,6 +297,6 @@ while not poller.done():
 
 | File | Contents |
 |------|----------|
-| [../../../Global_References/azure-mgmt-fabric-py_capabilities.md](../../../Global_References/azure-mgmt-fabric-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
-| [../../../Global_References/azure-mgmt-fabric-py_non-hero-scenarios.md](../../../Global_References/azure-mgmt-fabric-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
+| [../../../Global_References/azure-mgmt-fabric-py_capabilities.md](../../../../../Global_References/azure-mgmt-fabric-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
+| [../../../Global_References/azure-mgmt-fabric-py_non-hero-scenarios.md](../../../../../Global_References/azure-mgmt-fabric-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
 

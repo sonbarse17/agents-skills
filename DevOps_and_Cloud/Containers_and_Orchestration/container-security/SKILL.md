@@ -534,6 +534,6 @@ Manual triage does not scale beyond 10-20 images. Automate vulnerability scannin
 - ../../../Global_References/container-runtime-security.md -- Container Runtime Security
 
 ## Handoff
-security-[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md) for credential injection
+security-[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md) for credential injection
 [security-api-security](../../../Security/api-security/SKILL.md) for gateway and service mesh policies
 

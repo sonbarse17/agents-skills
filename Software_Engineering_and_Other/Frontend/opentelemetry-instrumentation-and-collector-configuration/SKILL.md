@@ -172,7 +172,7 @@ or the tracing backend's own storage/sampling/correlation concerns (see
    OTEL_RESOURCE_ATTRIBUTES="service.name=checkout-service,service.version=2.14.0,deployment.environment=production,service.namespace=commerce"
    ```
    Without a correct `service.name`, every service's telemetry shows up
-   as `unknown_service` in every downstream backend, making [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) and
+   as `unknown_service` in every downstream backend, making [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) and
    trace views unusable regardless of how well everything else is
    configured.
 

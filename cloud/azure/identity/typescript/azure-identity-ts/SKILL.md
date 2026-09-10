@@ -19,7 +19,7 @@ depends_on:
   - kubernetes
 ---
 
-# Azure Identity library for [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+# Azure Identity library for [TypeScript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 
 Authentication library for Azure SDK clients using Microsoft Entra ID.
 
@@ -52,7 +52,7 @@ AZURE_CLIENT_CERTIFICATE_PATH=/path/to/cert.pem
 AZURE_CLIENT_CERTIFICATE_PASSWORD=<optional-password>
 ```
 
-### Workload Identity ([Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md))
+### Workload Identity ([Kubernetes](../../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md))
 
 ```bash
 AZURE_TENANT_ID=<tenant-id>
@@ -62,7 +62,7 @@ AZURE_FEDERATED_TOKEN_FILE=/var/run/secrets/tokens/azure-identity
 
 ## DefaultAzureCredential (Recommended for Local Development)
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { DefaultAzureCredential, ManagedIdentityCredential } from "@azure/identity";
 
 // Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
@@ -85,7 +85,7 @@ See [DefaultAzureCredential overview](https://aka.ms/azsdk/js/identity/credentia
 
 ### System-Assigned
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { ManagedIdentityCredential } from "@azure/identity";
 
 const credential = new ManagedIdentityCredential();
@@ -93,7 +93,7 @@ const credential = new ManagedIdentityCredential();
 
 ### User-Assigned (by Client ID)
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const credential = new ManagedIdentityCredential({
   clientId: "<user-assigned-client-id>"
 });
@@ -101,7 +101,7 @@ const credential = new ManagedIdentityCredential({
 
 ### User-Assigned (by Resource ID)
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const credential = new ManagedIdentityCredential({
   resourceId: "/subscriptions/<sub>/resourceGroups/<rg>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<name>"
 });
@@ -109,7 +109,7 @@ const credential = new ManagedIdentityCredential({
 
 ### User-Assigned (by Object ID)
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const credential = new ManagedIdentityCredential({
   objectId: "<user-assigned-object-id>"
 });
@@ -119,7 +119,7 @@ const credential = new ManagedIdentityCredential({
 
 ### Client Secret
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { ClientSecretCredential } from "@azure/identity";
 
 const credential = new ClientSecretCredential(
@@ -131,7 +131,7 @@ const credential = new ClientSecretCredential(
 
 ### Client Certificate
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { ClientCertificateCredential } from "@azure/identity";
 
 const credential = new ClientCertificateCredential(
@@ -155,7 +155,7 @@ const credentialWithPwd = new ClientCertificateCredential(
 
 ### Browser-Based Login
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { InteractiveBrowserCredential } from "@azure/identity";
 
 const credential = new InteractiveBrowserCredential({
@@ -167,7 +167,7 @@ const credential = new InteractiveBrowserCredential({
 
 ### Device Code Flow
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { DeviceCodeCredential } from "@azure/identity";
 
 const credential = new DeviceCodeCredential({
@@ -182,7 +182,7 @@ const credential = new DeviceCodeCredential({
 
 ## Custom Credential Chain
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { 
   ChainedTokenCredential,
   ManagedIdentityCredential,
@@ -200,7 +200,7 @@ const credential = new ChainedTokenCredential(
 
 ### Visual Studio Code
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { useIdentityPlugin, VisualStudioCodeCredential } from "@azure/identity";
 import { vsCodePlugin } from "@azure/identity-vscode";
 
@@ -211,7 +211,7 @@ const credential = new VisualStudioCodeCredential();
 
 ### Azure CLI
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { AzureCliCredential } from "@azure/identity";
 
 const credential = new AzureCliCredential();
@@ -220,7 +220,7 @@ const credential = new AzureCliCredential();
 
 ### Azure Developer CLI
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { AzureDeveloperCliCredential } from "@azure/identity";
 
 const credential = new AzureDeveloperCliCredential();
@@ -229,7 +229,7 @@ const credential = new AzureDeveloperCliCredential();
 
 ### Azure PowerShell
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { AzurePowerShellCredential } from "@azure/identity";
 
 const credential = new AzurePowerShellCredential();
@@ -238,7 +238,7 @@ const credential = new AzurePowerShellCredential();
 
 ## Sovereign Clouds
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { ClientSecretCredential, AzureAuthorityHosts } from "@azure/identity";
 
 // Azure Government
@@ -256,7 +256,7 @@ const credentialChina = new ClientSecretCredential(
 
 ## Bearer Token Provider
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { DefaultAzureCredential, getBearerTokenProvider } from "@azure/identity";
 
 const credential = new DefaultAzureCredential({requiredEnvVars: ["AZURE_TOKEN_CREDENTIALS"]});
@@ -273,7 +273,7 @@ const token = await getAccessToken();
 
 ## Key Types
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import type { 
   TokenCredential, 
   AccessToken, 
@@ -298,7 +298,7 @@ import {
 
 ## Custom Credential Implementation
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import type { TokenCredential, AccessToken, GetTokenOptions } from "@azure/core-auth";
 
 class CustomCredential implements TokenCredential {
@@ -317,7 +317,7 @@ class CustomCredential implements TokenCredential {
 
 ## Debugging
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { setLogLevel, AzureLogger } from "@azure/logger";
 
 setLogLevel("verbose");

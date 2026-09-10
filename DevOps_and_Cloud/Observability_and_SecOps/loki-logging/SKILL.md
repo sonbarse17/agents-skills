@@ -28,7 +28,7 @@ Aggregate and query logs with Grafana Loki, the Prometheus-inspired logging syst
 Use this skill when:
 - Implementing cost-effective log aggregation
 - Building logging for [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) environments
-- Integrating logs with Grafana [dashboards](../../Cloud_Providers/dashboards/SKILL.md)
+- Integrating logs with Grafana [dashboards](../dashboards/SKILL.md)
 - Querying logs with label-based filtering
 - Preferring lighter-weight alternative to ELK
 

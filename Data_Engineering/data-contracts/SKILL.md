@@ -42,7 +42,7 @@ Exact user phrases: "data contract", "data agreement", "schema contract", "produ
 
 ### Input Context
 - Data producers (source systems, pipelines, data products)
-- Data consumers (analysts, ML models, [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), downstream systems)
+- Data consumers (analysts, ML models, [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), downstream systems)
 - Current schema management approach
 - Data platform and transformation tools
 - Compliance and governance requirements
@@ -197,7 +197,7 @@ Beyond schema validation, test contracts with Great Expectations suites. For eac
 
 ### Step 10: Contract Impact Analysis
 
-When a contract changes, compute the impact: which consumers are affected, which [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) reference the dataset, which downstream pipelines depend on it. Use the catalog's lineage graph to compute impact. Notify all affected parties before the change takes effect.
+When a contract changes, compute the impact: which consumers are affected, which [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) reference the dataset, which downstream pipelines depend on it. Use the catalog's lineage graph to compute impact. Notify all affected parties before the change takes effect.
 
 ## Architecture / Decision Trees
 
@@ -491,7 +491,7 @@ contract_api:
 #### Contract Enforcement Level
 ```
 Dataset criticality?
-├── Tier 1 (executive [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), financial, customer-facing)
+├── Tier 1 (executive [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), financial, customer-facing)
 │   ├── dbt contract enforced (build fails on mismatch)
 │   ├── CI/CD schema compatibility check required
 │   └── SLA [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) with PagerDuty alerts

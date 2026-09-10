@@ -180,7 +180,7 @@ multi-day optimization effort under [incident](../../../DevOps_and_Cloud/Observa
 
 ## Best practices
 
-- Segment cost and latency [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) by workflow/task type from the
+- Segment cost and latency [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) by workflow/task type from the
   start; an aggregate-only dashboard dilutes a severe single-workflow
   spike into an unremarkable overall trend.
 - Prefer a clean rollback to the last known-good configuration over a
@@ -253,7 +253,7 @@ jumps from roughly $0.04 to $0.31 overnight, with total request volume
 essentially unchanged; the on-call engineer is asked to investigate before
 anyone commits to a redesign.
 
-1. **Scope:** Cost [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) for two other agents sharing the same model
+1. **Scope:** Cost [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) for two other agents sharing the same model
    provider show no change — confirmed isolated to `contract-summarizer`,
    ruling out a provider-wide event.
 2. **Signal table:**

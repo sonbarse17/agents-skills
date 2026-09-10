@@ -45,7 +45,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 > **🔑 Two rules apply to every code sample below:**
 >
-> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
+> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
 >    - Local dev: `DefaultAzureCredential` works as-is.
 >    - Production: set `AZURE_TOKEN_CREDENTIALS=prod` (or `AZURE_TOKEN_CREDENTIALS=<specific_credential>`) to constrain the credential chain to production-safe credentials.
 > 2. **Wrap every client in a context manager** so HTTP transports, sockets, and token caches are released deterministically:
@@ -55,7 +55,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 > Snippets may abbreviate this setup, but production code should always follow both rules.
 
 **DefaultAzureCredential (preferred)**:
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import os
 from azure.cosmos import CosmosClient
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
@@ -63,7 +63,7 @@ from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 # Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 credential = DefaultAzureCredential(require_envvar=True)
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
+# See https://learn.microsoft.com/[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 
 with CosmosClient(
@@ -75,7 +75,7 @@ with CosmosClient(
 ```
 
 **Emulator (local development)**:
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.cosmos import CosmosClient
 
 with CosmosClient(
@@ -117,7 +117,7 @@ with CosmosClient(
 
 Create a singleton Cosmos client with dual authentication:
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # db/cosmos.py
 from azure.cosmos import CosmosClient
 from azure.identity import DefaultAzureCredential
@@ -148,13 +148,13 @@ async def get_container():
     return _cosmos_container
 ```
 
-**Full implementation**: See [../../../Global_References/client-setup.md](../../../Global_References/client-setup.md)
+**Full implementation**: See [../../../Global_References/client-setup.md](../../../../../Global_References/client-setup.md)
 
 ### 2. Pydantic Model Hierarchy
 
 Use five-tier model pattern for clean separation:
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 class ProjectBase(BaseModel):           # Shared fields
     name: str = Field(..., min_length=1, max_length=200)
 
@@ -174,7 +174,7 @@ class ProjectInDB(Project):             # Internal with docType
 
 ### 3. Service Layer Pattern
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 class ProjectService:
     def _use_cosmos(self) -> bool:
         return get_container() is not None
@@ -188,7 +188,7 @@ class ProjectService:
         return self._doc_to_model(doc)
 ```
 
-**Full patterns**: See [../../../Global_References/service-layer.md](../../../Global_References/service-layer.md)
+**Full patterns**: See [../../../Global_References/service-layer.md](../../../../../Global_References/service-layer.md)
 
 ## Core Principles
 
@@ -211,7 +211,7 @@ class ProjectService:
 
 Write tests BEFORE implementation using these patterns:
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 @pytest.fixture
 def mock_cosmos_container(mocker):
     container = mocker.MagicMock()
@@ -231,7 +231,7 @@ async def test_get_project_by_id_returns_project(mock_cosmos_container):
     assert result.name == "Test"
 ```
 
-**Full testing guide**: See [../../../Global_References/azure-cosmos-db-py_testing.md](../../../Global_References/azure-cosmos-db-py_testing.md)
+**Full testing guide**: See [../../../Global_References/azure-cosmos-db-py_testing.md](../../../../../Global_References/azure-cosmos-db-py_testing.md)
 
 ## Best Practices
 
@@ -242,11 +242,11 @@ async def test_get_project_by_id_returns_project(mock_cosmos_container):
 
 | File | When to Read |
 |------|--------------|
-| [../../../Global_References/client-setup.md](../../../Global_References/client-setup.md) | Setting up Cosmos client with dual auth, SSL config, singleton pattern |
-| [../../../Global_References/service-layer.md](../../../Global_References/service-layer.md) | Implementing full service class with CRUD, conversions, graceful degradation |
-| [../../../Global_References/azure-cosmos-db-py_testing.md](../../../Global_References/azure-cosmos-db-py_testing.md) | Writing pytest tests, mocking Cosmos, integration test setup |
-| [../../../Global_References/partitioning.md](../../../Global_References/partitioning.md) | Choosing partition keys, cross-partition queries, move operations |
-| [../../../Global_References/azure-cosmos-db-py_error-handling.md](../../../Global_References/azure-cosmos-db-py_error-handling.md) | Handling CosmosResourceNotFoundError, logging, HTTP error mapping |
+| [../../../Global_References/client-setup.md](../../../../../Global_References/client-setup.md) | Setting up Cosmos client with dual auth, SSL config, singleton pattern |
+| [../../../Global_References/service-layer.md](../../../../../Global_References/service-layer.md) | Implementing full service class with CRUD, conversions, graceful degradation |
+| [../../../Global_References/azure-cosmos-db-py_testing.md](../../../../../Global_References/azure-cosmos-db-py_testing.md) | Writing pytest tests, mocking Cosmos, integration test setup |
+| [../../../Global_References/partitioning.md](../../../../../Global_References/partitioning.md) | Choosing partition keys, cross-partition queries, move operations |
+| [../../../Global_References/azure-cosmos-db-py_error-handling.md](../../../../../Global_References/azure-cosmos-db-py_error-handling.md) | Handling CosmosResourceNotFoundError, logging, HTTP error mapping |
 
 ## Template Files
 

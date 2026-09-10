@@ -18,22 +18,22 @@ depends_on:
   - monitoring
 ---
 
-# Azure [Kubernetes](../kubernetes/SKILL.md) Service
+# Azure [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Service
 
-Deploy and manage production-grade [Kubernetes](../kubernetes/SKILL.md) clusters on Azure with AKS. Covers cluster creation, node pool management, networking, ingress controllers, [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md), security, and Terraform-based provisioning.
+Deploy and manage production-grade [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) clusters on Azure with AKS. Covers cluster creation, node pool management, networking, ingress controllers, [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), security, and Terraform-based provisioning.
 
 ## When to Use
 
-- You need managed [Kubernetes](../kubernetes/SKILL.md) without maintaining control plane infrastructure.
+- You need managed [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) without maintaining control plane infrastructure.
 - Your workloads require container orchestration with auto-scaling.
-- You need tight integration with Azure AD, Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), and Container Registry.
-- You are running [microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) that require service mesh, ingress, or network policies.
+- You need tight integration with Azure AD, Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), and Container Registry.
+- You are running [microservices](../../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) that require service mesh, ingress, or network policies.
 - You need GPU or spot node pools for specialized or cost-optimized workloads.
 
 ## Prerequisites
 
 ```bash
-# Install Azure CLI and [kubectl](../kubectl/SKILL.md)
+# Install Azure CLI and [kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 az aks install-cli
 
@@ -45,8 +45,8 @@ az account set --subscription "my-subscription-id"
 az provider register --namespace Microsoft.ContainerService
 az provider register --namespace Microsoft.OperationsManagement
 
-# Verify [kubectl](../kubectl/SKILL.md)
-[kubectl](../kubectl/SKILL.md) version --client
+# Verify [kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)
+[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) version --client
 ```
 
 ## Cluster Creation
@@ -83,8 +83,8 @@ az aks create \
 az aks get-credentials --resource-group myapp-rg --name myapp-aks
 
 # Verify cluster access
-[kubectl](../kubectl/SKILL.md) get nodes -o wide
-[kubectl](../kubectl/SKILL.md) cluster-info
+[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get nodes -o wide
+[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) cluster-info
 ```
 
 ### Private Cluster
@@ -163,7 +163,7 @@ az aks nodepool upgrade \
   --resource-group myapp-rg \
   --cluster-name myapp-aks \
   --name apppool \
-  --[kubernetes](../kubernetes/SKILL.md)-version 1.28.3
+  --[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-version 1.28.3
 
 # List node pools
 az aks nodepool list \
@@ -176,19 +176,19 @@ az aks nodepool list \
 
 ```bash
 # Install NGINX ingress controller via Helm
-helm repo add ingress-nginx https://[kubernetes](../kubernetes/SKILL.md).[github](../../CI_CD/github/SKILL.md).io/ingress-nginx
+helm repo add ingress-nginx https://[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).[github](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/ingress-nginx
 helm repo update
 
 helm install ingress-nginx ingress-nginx/ingress-nginx \
   --namespace ingress-nginx \
   --create-namespace \
   --set controller.replicaCount=2 \
-  --set controller.nodeSelector."[kubernetes](../kubernetes/SKILL.md)\.io/os"=linux \
-  --set controller.service.annotations."service\.beta\.[kubernetes](../kubernetes/SKILL.md)\.io/azure-load-balancer-health-probe-request-path"=/healthz \
+  --set controller.nodeSelector."[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)\.io/os"=linux \
+  --set controller.service.annotations."service\.beta\.[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)\.io/azure-load-balancer-health-probe-request-path"=/healthz \
   --set controller.service.externalTrafficPolicy=Local
 
 # Verify the ingress controller and get external IP
-[kubectl](../kubectl/SKILL.md) get svc -n ingress-nginx
+[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get svc -n ingress-nginx
 ```
 
 ### Ingress Resource Example
@@ -201,8 +201,8 @@ metadata:
   name: myapp-ingress
   namespace: myapp
   annotations:
-    nginx.ingress.[kubernetes](../kubernetes/SKILL.md).io/ssl-redirect: "true"
-    nginx.ingress.[kubernetes](../kubernetes/SKILL.md).io/proxy-body-size: "50m"
+    nginx.ingress.[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).io/ssl-redirect: "true"
+    nginx.ingress.[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).io/proxy-body-size: "50m"
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   ingressClassName: nginx
@@ -230,14 +230,14 @@ spec:
                   number: 80
 ```
 
-## [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) and Logging
+## [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and Logging
 
 ```bash
 # Enable Container Insights
 az aks enable-addons \
   --resource-group myapp-rg \
   --name myapp-aks \
-  --addons [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) \
+  --addons [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) \
   --workspace-resource-id "/subscriptions/{sub}/resourceGroups/{rg}/providers/Microsoft.OperationalInsights/workspaces/{workspace}"
 
 # Enable Azure Policy add-on
@@ -246,11 +246,11 @@ az aks enable-addons \
   --name myapp-aks \
   --addons azure-policy
 
-# Enable Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) secrets provider
+# Enable Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) secrets provider
 az aks enable-addons \
   --resource-group myapp-rg \
   --name myapp-aks \
-  --addons [azure-keyvault](../../Cloud_Providers/azure-keyvault/SKILL.md)-secrets-provider
+  --addons [azure-keyvault](../../security/azure-keyvault/SKILL.md)-secrets-provider
 
 # View cluster diagnostics
 az aks show \
@@ -260,9 +260,9 @@ az aks show \
   --output table
 
 # Install Prometheus + Grafana via Helm
-helm repo add prometheus-community https://prometheus-community.[github](../../CI_CD/github/SKILL.md).io/[helm-charts](../helm-charts/SKILL.md)
+helm repo add prometheus-community https://prometheus-community.[github](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/[helm-charts](../../../../DevOps_and_Cloud/Containers_and_Orchestration/helm-charts/SKILL.md)
 helm install kube-prometheus prometheus-community/kube-prometheus-stack \
-  --namespace [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) \
+  --namespace [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) \
   --create-namespace \
   --set grafana.adminPassword='SecureGrafanaP@ss'
 ```
@@ -289,7 +289,7 @@ az acr build \
   --file Dockerfile .
 
 # Verify pull access
-[kubectl](../kubectl/SKILL.md) run test --image=myappacr.azurecr.io/myapp:v1.0 --rm -it --restart=Never -- echo "ACR pull works"
+[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) run test --image=myappacr.azurecr.io/myapp:v1.0 --rm -it --restart=Never -- echo "ACR pull works"
 ```
 
 ## Terraform Configuration
@@ -370,7 +370,7 @@ resource "azurerm_kubernetes_cluster_node_pool" "app" {
 ## Cluster Upgrades
 
 ```bash
-# Check available [Kubernetes](../kubernetes/SKILL.md) versions
+# Check available [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) versions
 az aks get-upgrades \
   --resource-group myapp-rg \
   --name myapp-aks \
@@ -380,7 +380,7 @@ az aks get-upgrades \
 az aks upgrade \
   --resource-group myapp-rg \
   --name myapp-aks \
-  --[kubernetes](../kubernetes/SKILL.md)-version 1.28.3 \
+  --[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-version 1.28.3 \
   --control-plane-only
 
 # Then upgrade each node pool
@@ -388,7 +388,7 @@ az aks nodepool upgrade \
   --resource-group myapp-rg \
   --cluster-name myapp-aks \
   --name apppool \
-  --[kubernetes](../kubernetes/SKILL.md)-version 1.28.3
+  --[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-version 1.28.3
 
 # Check upgrade status
 az aks show \
@@ -401,18 +401,18 @@ az aks show \
 
 | Symptom | Cause | Fix |
 |---------|-------|-----|
-| Nodes in `NotReady` state | VM resource exhaustion or network issues | Run `[kubectl](../kubectl/SKILL.md) describe node <name>` and check events; scale up if needed |
+| Nodes in `NotReady` state | VM resource exhaustion or network issues | Run `[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) describe node <name>` and check events; scale up if needed |
 | Pods stuck in `Pending` | No available nodes or resource requests too high | Check autoscaler status with `az aks show`; adjust resource requests |
 | `ImagePullBackOff` error | ACR not attached or image tag wrong | Verify with `az aks check-acr --name myapp-aks --acr myappacr.azurecr.io` |
-| Ingress returns 404 | Service or path mismatch in Ingress spec | Verify `[kubectl](../kubectl/SKILL.md) get ingress` and service endpoints |
+| Ingress returns 404 | Service or path mismatch in Ingress spec | Verify `[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get ingress` and service endpoints |
 | Private cluster unreachable | No VPN or private endpoint configured | Use `az aks command invoke` or configure private DNS resolution |
 | Cluster autoscaler not scaling | Pod resource requests not set | Define CPU/memory requests on all pods so the scheduler can calculate demand |
-| Azure Policy violations blocking pods | Restrictive policies applied | Check `[kubectl](../kubectl/SKILL.md) get constrainttemplate` and adjust policy assignments |
-| Persistent volume not binding | StorageClass mismatch or zone issue | Verify `[kubectl](../kubectl/SKILL.md) get pvc` and ensure StorageClass matches node pool zones |
+| Azure Policy violations blocking pods | Restrictive policies applied | Check `[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get constrainttemplate` and adjust policy assignments |
+| Persistent volume not binding | StorageClass mismatch or zone issue | Verify `[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get pvc` and ensure StorageClass matches node pool zones |
 
 ## Related Skills
 
-- `[terraform-azure](../../Infrastructure_as_Code/terraform-azure/SKILL.md)` -- Provision AKS clusters with Terraform for repeatable infrastructure.
-- `[azure-networking](../../Cloud_Providers/azure-networking/SKILL.md)` -- VNet and subnet configuration required by Azure CNI.
-- `[arm-templates](../../Cloud_Providers/arm-templates/SKILL.md)` -- Bicep-based AKS deployment as an alternative to Terraform.
-- `[azure-vms](../../Cloud_Providers/azure-vms/SKILL.md)` -- Understanding VM sizes for node pool selection.
+- `[terraform-azure](../../iac/terraform-azure/SKILL.md)` -- Provision AKS clusters with Terraform for repeatable infrastructure.
+- `[azure-networking](../../networking/azure-networking/SKILL.md)` -- VNet and subnet configuration required by Azure CNI.
+- `[arm-templates](../../iac/arm-templates/SKILL.md)` -- Bicep-based AKS deployment as an alternative to Terraform.
+- `[azure-vms](../../compute/azure-vms/SKILL.md)` -- Understanding VM sizes for node pool selection.

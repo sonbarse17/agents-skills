@@ -54,7 +54,7 @@ states plainly rather than glossing over.
 
 - A platform team explicitly wants the self-service provisioning layer
   decoupled from any single cloud's IAM/database APIs, whether for
-  [multi-cloud](../../Cloud_Providers/multi-cloud/SKILL.md) portability or to avoid cloud-specific lock-in in the
+  [multi-cloud](../../../cloud/common/other/multi-cloud/SKILL.md) portability or to avoid cloud-specific lock-in in the
   platform's own core logic.
 - Standing up an IDP on a cluster whose underlying infrastructure isn't
   fixed yet, or that will run identically across more than one

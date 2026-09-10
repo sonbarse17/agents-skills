@@ -358,4 +358,4 @@ firewall-cmd --list-all
 - `[user-management](../user-management/SKILL.md)` -- Create and manage users, groups, and sudo
 - `[systemd-services](../systemd-services/SKILL.md)` -- Write and manage systemd unit files
 - `[performance-tuning](../../Frontend/performance-tuning/SKILL.md)` -- Kernel and application performance optimization
-- `[backup-recovery](../../../DevOps_and_Cloud/Cloud_Providers/backup-recovery/SKILL.md)` -- Protect server data with automated backups
+- `[backup-recovery](../../../cloud/common/migration/backup-recovery/SKILL.md)` -- Protect server data with automated backups

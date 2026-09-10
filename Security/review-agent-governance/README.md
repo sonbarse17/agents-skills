@@ -53,7 +53,7 @@ The default policy forbids (unless approved):
 - **`WebFetch` POSTs to `api.github.com`, `hooks.slack.com`, Discord**
 
 Everything else passes through. This plugin is focused on the review
-surface; use it alongside [protect-mcp](../protect-mcp/) if you want
+surface; use it alongside [protect-mcp](../protect-mcp) if you want
 general tool-call policy enforcement.
 
 ## Installation
@@ -166,7 +166,7 @@ the chain later can see exactly which actions were human-gated and when.
 
 This plugin focuses on review-surface actions specifically. For general
 policy enforcement across all Claude Code tool calls, install
-[protect-mcp](../protect-mcp/) alongside it. They compose naturally:
+[protect-mcp](../protect-mcp) alongside it. They compose naturally:
 
 - `protect-mcp` evaluates a general policy (e.g., deny `rm -rf`, restrict
   `Write` to project root) for every tool call
@@ -199,7 +199,7 @@ receipt was altered after signing, verification fails with exit 1.
 
 ## Related
 
-- [`protect-mcp`](../protect-mcp/) — general Cedar + receipt enforcement
+- [`protect-mcp`](../protect-mcp) — general Cedar + receipt enforcement
   for all Claude Code tool calls
 - [`protect-mcp` on npm](https://www.npmjs.com/package/protect-mcp) — the
   runtime this plugin depends on

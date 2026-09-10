@@ -213,7 +213,7 @@ CREATE TABLE orders_by_customer (
 ```
 
 ### Step 5: Consistency and CAP
-CAP trade-off: partition tolerance is mandatory (P), choose consistency (CP) or availability (AP). [MongoDB](../../Backend/mongodb/SKILL.md): primary reads (strong), secondary reads (eventual), majority write concern. Cassandra: ONE (high availability), QUORUM (balanced), ALL (strong). DynamoDB: eventually consistent reads (default), strongly consistent reads (1 WCU headroom). Use quorum-based reads for critical data, eventual for [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md).
+CAP trade-off: partition tolerance is mandatory (P), choose consistency (CP) or availability (AP). [MongoDB](../../Backend/mongodb/SKILL.md): primary reads (strong), secondary reads (eventual), majority write concern. Cassandra: ONE (high availability), QUORUM (balanced), ALL (strong). DynamoDB: eventually consistent reads (default), strongly consistent reads (1 WCU headroom). Use quorum-based reads for critical data, eventual for [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md).
 
 ```yaml
 # [MongoDB](../../Backend/mongodb/SKILL.md) write concern
@@ -504,7 +504,7 @@ cassandra_modeling:
 - Embed in [MongoDB](../../Backend/mongodb/SKILL.md) when sub-documents are accessed together
 - Shard key must have high cardinality and even distribution
 - Hashed shard keys for time-series to prevent hot spots
-- Use eventual consistency for read-heavy [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)
+- Use eventual consistency for read-heavy [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md)
 - Strong consistency for critical financial data
 - Denormalize to avoid reads spanning partitions
 - No cross-partition queries in Cassandra

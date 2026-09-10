@@ -68,7 +68,7 @@ docs.
   (or `INFORMATION_SCHEMA` for shorter retention), BigQuery's
   `INFORMATION_SCHEMA.JOBS` views and Cloud Billing export, Redshift's
   `STL_QUERY`/`SVL_QUERY_SUMMARY` system tables or Redshift's query
-  [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) in the console — all three require this for any cost-
+  [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) in the console — all three require this for any cost-
   attribution or slow-query diagnosis in this skill.
 - An understanding of the workload's actual query pattern (concurrent
   BI dashboard load vs. scheduled batch ETL vs. ad hoc analyst queries)
@@ -221,7 +221,7 @@ against actual join patterns, not guessed.
 All three warehouses make it possible to attribute spend to a specific
 team/workload — do this before reducing warehouse size, slots, or node
 count, since an undersized cut applied to the wrong workload just
-trades a cost problem for a performance [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md):
+trades a cost problem for a performance [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md):
 ```sql
 -- Snowflake: cost by warehouse over the last 30 days
 SELECT warehouse_name, sum(credits_used) AS credits
@@ -272,7 +272,7 @@ GROUP BY user_email ORDER BY bytes_billed DESC;
   warehouse stays running is billed the same as a busy second. Lower
   `AUTO_SUSPEND` to the shortest value tolerable for the workload's
   query pattern (60 seconds is a common starting point for interactive
-  workloads) and [audit](../../AI_and_Agents/Operations/audit/SKILL.md) for any warehouse left permanently resumed by
+  workloads) and [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) for any warehouse left permanently resumed by
   habit.
 
 - **Symptom:** A BigQuery on-demand bill spikes dramatically for a query
@@ -282,7 +282,7 @@ GROUP BY user_email ORDER BY bytes_billed DESC;
   BigQuery can prune), so the full table is scanned and billed
   regardless of the filter. Confirm via `total_bytes_processed` in the
   job's execution details, then partition the table by the dominant
-  filter column and re-point ETL/[dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) at the partitioned table.
+  filter column and re-point ETL/[dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) at the partitioned table.
 
 - **Symptom:** Redshift queries queue for a long time during business
   hours even though the cluster's CPU utilization doesn't look
@@ -295,7 +295,7 @@ GROUP BY user_email ORDER BY bytes_billed DESC;
   needed for what's actually a queue-configuration problem.
 
 - **Symptom:** A join between two large Redshift tables is far slower
-  than expected, with high network I/O visible in query [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
+  than expected, with high network I/O visible in query [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
   **Fix:** One or both tables use a `DISTKEY`/`DISTSTYLE` that doesn't
   align with the join column, forcing Redshift to redistribute rows
   across nodes at query time. Check `svv_table_info.diststyle` and
@@ -307,7 +307,7 @@ GROUP BY user_email ORDER BY bytes_billed DESC;
 - **Symptom:** Someone runs `TRUNCATE TABLE` or `DROP TABLE` directly
   against a production warehouse table (Snowflake, BigQuery, or
   Redshift) intending to clear staging data, and it turns out to be the
-  production fact table feeding live [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md).
+  production fact table feeding live [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md).
   **Fix:** This is an immediately destructive, and in most
   configurations irreversible outside of engine-specific time-travel/
   fail-safe windows, action.
@@ -321,7 +321,7 @@ GROUP BY user_email ORDER BY bytes_billed DESC;
   > object and environment, and restrict `TRUNCATE`/`DROP` privileges
   > on production schemas to a narrow role rather than broad analyst/
   > engineer access; see
-  > [database-[backup-and-restore](../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)-strategies](../../Software_Engineering_and_Other/Databases/database-[backup-and-restore](../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md)
+  > [database-[backup-and-restore](../../../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)-strategies](../../Software_Engineering_and_Other/Databases/database-[backup-and-restore](../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md)
   > for the restore-testing discipline that should back up whatever
   > time-travel window each engine provides.
 
@@ -373,5 +373,5 @@ corresponding growth in data volume.
 ## Cross-references
 
 - [clickhouse-analytical-database-operations](../[clickhouse-analytical-database-operations](../../Software_Engineering_and_Other/Databases/clickhouse-analytical-[database-operations](../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)/SKILL.md)/SKILL.md) — a self-hosted OLAP alternative to these three managed warehouses, useful when full operational control (at the cost of managing the cluster yourself) is preferred over a managed service's billing model.
-- [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../Software_Engineering_and_Other/Frontend/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — Redshift's query engine and much of its SQL surface derive from [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md), so `EXPLAIN`-driven query diagnosis concepts there carry over partially, though Redshift's columnar/MPP execution model differs materially from OLTP [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md).
-- [database-[backup-and-restore](../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)-strategies](../../Software_Engineering_and_Other/Databases/database-[backup-and-restore](../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md) — the restore-testing discipline that should back up each warehouse's time-travel/snapshot recovery window for accidental destructive DDL.
+- [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../../../Software_Engineering_and_Other/Frontend/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — Redshift's query engine and much of its SQL surface derive from [PostgreSQL](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md), so `EXPLAIN`-driven query diagnosis concepts there carry over partially, though Redshift's columnar/MPP execution model differs materially from OLTP [PostgreSQL](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md).
+- [database-[backup-and-restore](../../../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)-strategies](../../Software_Engineering_and_Other/Databases/database-[backup-and-restore](../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md) — the restore-testing discipline that should back up each warehouse's time-travel/snapshot recovery window for accidental destructive DDL.

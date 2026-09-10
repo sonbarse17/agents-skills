@@ -86,7 +86,7 @@ the exact source [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) and buil
 An unsigned artifact is indistinguishable from a tampered one once it leaves the build system.
 Sign container images, binaries, and packages (cosign/sigstore or equivalent) as a mandatory
 build step, using keys or an identity-based signing flow the build system controls — not a
-shared long-lived key sitting in a laptop. See `[secrets-management](../../DevOps_and_Cloud/Cloud_Providers/secrets-management/SKILL.md)` for how that signing key
+shared long-lived key sitting in a laptop. See `[secrets-management](../../cloud/common/security/secrets-management/SKILL.md)` for how that signing key
 itself should be stored and rotated.
 
 **Done when:** every artifact in the registry has an associated, verifiable signature.

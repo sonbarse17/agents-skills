@@ -35,7 +35,7 @@ Configure content delivery networks for fast, reliable global asset delivery wit
 - Origin server or S3/R2 bucket with content to serve.
 - AWS CLI configured (for CloudFront).
 - Cloudflare account with zone configured (for Cloudflare CDN).
-- Terraform 1.5+ (for [infrastructure-as-code](../../Infrastructure_as_Code/infrastructure-as-code/SKILL.md) examples).
+- Terraform 1.5+ (for [infrastructure-as-code](../../../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md) examples).
 
 ## AWS CloudFront
 
@@ -326,7 +326,7 @@ for url in "${URLS[@]}"; do
 done
 ```
 
-## [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) Cache Performance
+## [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) Cache Performance
 
 ```bash
 # Check cache status from response headers

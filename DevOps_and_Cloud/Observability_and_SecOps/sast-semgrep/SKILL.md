@@ -95,7 +95,7 @@ semgrep --config="p/owasp-top-ten" /path/to/code
 1. Add Semgrep to CI/CD pipeline using `assets/ci_config_examples/`
 2. Configure baseline scanning for pull requests
 3. Set severity thresholds (fail on CRITICAL/HIGH)
-4. Generate SARIF output for security [dashboards](../../Cloud_Providers/dashboards/SKILL.md)
+4. Generate SARIF output for security [dashboards](../dashboards/SKILL.md)
 5. Track metrics: vulnerabilities found, fix rate, false positives
 
 ## Security Considerations

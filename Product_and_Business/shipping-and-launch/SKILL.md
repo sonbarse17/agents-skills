@@ -288,7 +288,7 @@ Every deployment needs a rollback plan before it happens:
 |---|---|
 | "It works in staging, it'll work in production" | Production has different data, traffic patterns, and edge cases. Monitor after deploy. |
 | "We don't need feature flags for this" | Every feature benefits from a kill switch. Even "simple" changes can break things. |
-| "[Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) is overhead" | Not having [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) means you discover problems from user complaints instead of [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md). |
+| "[Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) is overhead" | Not having [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) means you discover problems from user complaints instead of [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md). |
 | "We'll add [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) later" | Add it before launch. You can't debug what you can't see. |
 | "Rolling back is admitting failure" | Rolling back is responsible engineering. Shipping a broken feature is the failure. |
 
@@ -309,7 +309,7 @@ Before deploying:
 - [ ] Pre-launch checklist completed (all sections green)
 - [ ] Feature flag configured (if applicable)
 - [ ] Rollback plan documented
-- [ ] [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) set up
+- [ ] [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) set up
 - [ ] Team notified of deployment
 
 After deploying:

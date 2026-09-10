@@ -48,7 +48,7 @@ The context window is a shared resource. Challenge each piece: "Does this justif
 ```markdown
 ## Before Implementation
 
-Search `[microsoft-docs](../../../DevOps_and_Cloud/Cloud_Providers/microsoft-docs/SKILL.md)` MCP for current API patterns:
+Search `[microsoft-docs](../../../cloud/azure/other/microsoft-docs/SKILL.md)` MCP for current API patterns:
 
 - Query: "[SDK name] [operation] [python](../../Languages/python/SKILL.md)"
 - Verify: Parameters match your installed SDK version
@@ -383,7 +383,7 @@ let client = BlobServiceClient::new(
 #### Anti-Pattern 4: "Restating Official Documentation"
 
 - ❌ **Don't**: "The CosmosClient constructor takes an endpoint (string) and credential (TokenCredential). The endpoint identifies the Azure Cosmos resource..."
-- ✅ **Do**: Show code: `client = CosmosClient(endpoint, credential)`. Link to official docs: `[microsoft-docs](../../../DevOps_and_Cloud/Cloud_Providers/microsoft-docs/SKILL.md)` MCP.
+- ✅ **Do**: Show code: `client = CosmosClient(endpoint, credential)`. Link to official docs: `[microsoft-docs](../../../cloud/azure/other/microsoft-docs/SKILL.md)` MCP.
 - **Token cost**: Verbose explanation = 50-100 tokens per parameter; large APIs waste 300+ tokens
 - **User impact**: Redundant; official docs are authoritative, skill should show usage not repeat them
 
@@ -407,7 +407,7 @@ Use a token counter or model playground to measure each section. Compare to the 
 - [ ] No exhaustive API reference (show 3-5 core methods, not 50)
 - [ ] No multiple solutions to one problem in SKILL.md
 - [ ] No beginner+intermediate+advanced mixed
-- [ ] No restating official docs (code first, link to [microsoft-docs](../../../DevOps_and_Cloud/Cloud_Providers/microsoft-docs/SKILL.md))
+- [ ] No restating official docs (code first, link to [microsoft-docs](../../../cloud/azure/other/microsoft-docs/SKILL.md))
 - [ ] No verbose prose (examples first, minimal text)
 
 **3. Example count [audit](../../../AI_and_Agents/Operations/audit/SKILL.md):**
@@ -551,7 +551,7 @@ Add both items verbatim (adapted only for language/SDK specifics) as the **first
 2. Cover the hero workflow (CRUD or primary operations), not every feature variant
 3. Show 1-2 examples per concept, not 3-5
 4. Use tables for API summary (credential types, RBAC roles, client hierarchy)
-5. Link to official docs via `[microsoft-docs](../../../DevOps_and_Cloud/Cloud_Providers/microsoft-docs/SKILL.md)` MCP instead of duplicating
+5. Link to official docs via `[microsoft-docs](../../../cloud/azure/other/microsoft-docs/SKILL.md)` MCP instead of duplicating
 6. Move advanced patterns to `/references/`
 7. Include `references/capabilities.md` and `references/non-hero-scenarios.md`
 
@@ -739,7 +739,7 @@ To create this skill, I need:
 **Search official docs first:**
 
 ```bash
-# Use [microsoft-docs](../../../DevOps_and_Cloud/Cloud_Providers/microsoft-docs/SKILL.md) MCP to get current API patterns
+# Use [microsoft-docs](../../../cloud/azure/other/microsoft-docs/SKILL.md) MCP to get current API patterns
 # Query: "[SDK name] [operation] [language]"
 # Verify: Parameters match the latest SDK version
 ```
@@ -769,10 +769,10 @@ Skills are organized by **language** and **product area** in the `skills/` direc
 | ------------- | --------------------------------------- | -------------------------------------------- |
 | `foundry`     | AI Foundry, agents, projects, inference | `[azure-ai](../../../DevOps_and_Cloud/Cloud_Providers/[azure-ai](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-agents-py`, `[azure-ai-projects-py](../../../DevOps_and_Cloud/Cloud_Providers/[azure-ai-projects-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/[azure-ai](../../../DevOps_and_Cloud/Cloud_Providers/[azure-ai](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-projects-py/SKILL.md)/SKILL.md)` |
 | `data`        | Storage, Cosmos DB, Tables, Data Lake   | `[azure-cosmos-py](../../../DevOps_and_Cloud/Cloud_Providers/[azure-cosmos-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/azure-cosmos-py/SKILL.md)/SKILL.md)`, `[azure-storage-blob-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/[azure-storage-blob-py](../../../DevOps_and_Cloud/Cloud_Providers/[azure-storage](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/[azure-storage](../../../DevOps_and_Cloud/Cloud_Providers/azure-storage/SKILL.md)/SKILL.md)-blob-py/SKILL.md)/SKILL.md)`   |
-| `messaging`   | Event Hubs, Service Bus, Event Grid     | `[azure-eventhub-py](../../../DevOps_and_Cloud/Cloud_Providers/[azure-eventhub-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/azure-eventhub-py/SKILL.md)/SKILL.md)`, `[azure-servicebus-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/[azure-servicebus-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-servicebus-py/SKILL.md)/SKILL.md)`   |
+| `messaging`   | Event Hubs, Service Bus, Event Grid     | `[azure-eventhub-py](../../../DevOps_and_Cloud/Cloud_Providers/[azure-eventhub-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/azure-eventhub-py/SKILL.md)/SKILL.md)`, `[azure-servicebus-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/[azure-servicebus-py](../../../cloud/azure/messaging/python/azure-servicebus-py/SKILL.md)/SKILL.md)`   |
 | `[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)`  | [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md), App Insights, Query      | `[azure-monitor-[opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)-py](../../../DevOps_and_Cloud/Cloud_Providers/[azure-monitor-[opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/azure-monitor-[opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)-py/SKILL.md)/SKILL.md)`             |
 | `identity`    | Authentication, DefaultAzureCredential  | `[azure-identity-py](../../../DevOps_and_Cloud/Cloud_Providers/[azure-identity-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/azure-identity-py/SKILL.md)/SKILL.md)`                          |
-| `security`    | Key [Vault](../vault/SKILL.md), secrets, keys, certificates  | `[azure-keyvault-py](../../../DevOps_and_Cloud/Cloud_Providers/[azure-keyvault-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/[azure-keyvault](../../../DevOps_and_Cloud/Cloud_Providers/azure-keyvault/SKILL.md)-py/SKILL.md)/SKILL.md)`                          |
+| `security`    | Key [Vault](../vault/SKILL.md), secrets, keys, certificates  | `[azure-keyvault-py](../../../DevOps_and_Cloud/Cloud_Providers/[azure-keyvault-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/[azure-keyvault](../../../cloud/azure/security/azure-keyvault/SKILL.md)-py/SKILL.md)/SKILL.md)`                          |
 | `integration` | API Management, App Configuration       | `[azure-appconfiguration-py](../../../DevOps_and_Cloud/Cloud_Providers/[azure-appconfiguration-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/azure-appconfiguration-py/SKILL.md)/SKILL.md)`                  |
 | `compute`     | Batch, ML compute                       | `[azure-compute-batch-java](../../../DevOps_and_Cloud/Cloud_Providers/[azure-compute-batch-java](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-java/skills/[azure-compute](../../../DevOps_and_Cloud/Cloud_Providers/[azure-compute](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/azure-compute/SKILL.md)/SKILL.md)-batch-java/SKILL.md)/SKILL.md)`                   |
 | `container`   | Container Registry, ACR                 | `[azure-containerregistry-py](../../../DevOps_and_Cloud/Cloud_Providers/[azure-containerregistry-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/azure-containerregistry-py/SKILL.md)/SKILL.md)`                 |
@@ -796,7 +796,7 @@ Skills are organized by **language** and **product area** in the `skills/` direc
 
 **For Azure SDK skills:**
 
-1. Search `[microsoft-docs](../../../DevOps_and_Cloud/Cloud_Providers/microsoft-docs/SKILL.md)` MCP for current API patterns
+1. Search `[microsoft-docs](../../../cloud/azure/other/microsoft-docs/SKILL.md)` MCP for current API patterns
 2. Verify against installed SDK version
 3. Follow the section order above
 4. Include cleanup code in examples
@@ -885,7 +885,7 @@ ls -la skills/[python](../../Languages/python/SKILL.md)/foundry/agents
 
 **Source materials** (in priority order):
 
-1. Official Microsoft Learn docs (via `[microsoft-docs](../../../DevOps_and_Cloud/Cloud_Providers/microsoft-docs/SKILL.md)` MCP)
+1. Official Microsoft Learn docs (via `[microsoft-docs](../../../cloud/azure/other/microsoft-docs/SKILL.md)` MCP)
 2. SDK source code from the repository
 3. Existing reference files in the skill
 
@@ -1159,7 +1159,7 @@ ls .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/plugins/azure-sdk-
 
 2. **For each skill, refresh from authoritative sources**
 
-- Always use `[microsoft-docs](../../../DevOps_and_Cloud/Cloud_Providers/microsoft-docs/SKILL.md)` MCP first for current Microsoft Learn API guidance.
+- Always use `[microsoft-docs](../../../cloud/azure/other/microsoft-docs/SKILL.md)` MCP first for current Microsoft Learn API guidance.
 - Verify the installed package version with `pip show <package>`, then inspect the installed package or official API reference to verify every symbol and signature used in snippets.
 - For Azure SDK skills, prefer package overview + official SDK repo examples.
 - For non-Azure [Python](../../Languages/python/SKILL.md) skills in this plugin (for example `[fastapi-router-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/[fastapi-router-py](../../Backend/fastapi-router-py/SKILL.md)/SKILL.md)`, `[pydantic-models-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/[pydantic-models-py](../../Backend/pydantic-models-py/SKILL.md)/SKILL.md)`), keep language-specific best-practice variants and skip Azure-specific auth callouts when lifecycle/auth is not applicable.
@@ -1286,7 +1286,7 @@ Before completing a skill:
 **Prerequisites:**
 
 - [ ] User provided SDK package name or documentation URL
-- [ ] Verified SDK patterns via `[microsoft-docs](../../../DevOps_and_Cloud/Cloud_Providers/microsoft-docs/SKILL.md)` MCP
+- [ ] Verified SDK patterns via `[microsoft-docs](../../../cloud/azure/other/microsoft-docs/SKILL.md)` MCP
 - [ ] Verified every snippet's API surface against the current official language-specific API reference for that SDK (Microsoft Learn where available, otherwise the upstream SDK repo — see canonical sources above)
 
 **Skill Creation:**
@@ -1321,5 +1321,5 @@ Before completing a skill:
 **Documentation:**
 
 - [ ] README.md skill catalog updated
-- [ ] Instructs to search `[microsoft-docs](../../../DevOps_and_Cloud/Cloud_Providers/microsoft-docs/SKILL.md)` MCP for current APIs
+- [ ] Instructs to search `[microsoft-docs](../../../cloud/azure/other/microsoft-docs/SKILL.md)` MCP for current APIs
 

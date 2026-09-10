@@ -54,7 +54,7 @@ losing runs permanently, not just inconveniently.
 ## When to use
 
 - Standing up an MLOps platform with a hard requirement of no managed
-  cloud ML service — regulatory, air-gapped, [multi-cloud](../../Cloud_Providers/multi-cloud/SKILL.md) portability, or
+  cloud ML service — regulatory, air-gapped, [multi-cloud](../../../cloud/common/other/multi-cloud/SKILL.md) portability, or
   cost reasons all commonly drive this.
 - Building a reference ML platform architecture that must run identically
   on any [Kubernetes](../kubernetes/SKILL.md) cluster regardless of which cloud (or no cloud)

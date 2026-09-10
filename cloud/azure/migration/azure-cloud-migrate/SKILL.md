@@ -34,8 +34,8 @@ depends_on:
 4. Use `mcp_azure_mcp_get_azure_bestpractices` and `mcp_azure_mcp_documentation` MCP tools
 5. Use the latest supported runtime for the target service
 6. Destructive actions require `ask_user` — [functions global-rules](references/services/functions/global-rules.md) | [app-service global-rules](references/services/app-service/global-rules.md)
-7. **Report progress to user** — During long-running operations (deployments, image pushes), provide resource-level status updates so the user is never left waiting without feedback — see [workflow-details.md](../../../Global_References/workflow-details.md)
-8. **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) service discovery in app code** — [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) DNS names (e.g., `http://order-service:3001`) do not resolve in Container Apps. During assessment, scan source code for hardcoded hostnames/ports in HTTP clients and flag them for env-var-driven URL injection
+7. **Report progress to user** — During long-running operations (deployments, image pushes), provide resource-level status updates so the user is never left waiting without feedback — see [workflow-details.md](../../../../Global_References/workflow-details.md)
+8. **[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) service discovery in app code** — [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) DNS names (e.g., `http://order-service:3001`) do not resolve in Container Apps. During assessment, scan source code for hardcoded hostnames/ports in HTTP clients and flag them for env-var-driven URL injection
 
 ## Migration Scenarios
 
@@ -46,7 +46,7 @@ depends_on:
 | Heroku | Azure App Service | [heroku-to-app-service.md](references/services/app-service/heroku-to-app-service.md) |
 | Google App Engine | Azure App Service | [app-engine-to-app-service.md](references/services/app-service/app-engine-to-app-service.md) |
 | AWS Fargate (ECS) | Azure Container Apps | [fargate-to-container-apps.md](references/services/container-apps/fargate-to-container-apps.md) ([assessment](references/services/container-apps/fargate-assessment-guide.md), [deployment](references/services/container-apps/fargate-deployment-guide.md)) |
-| [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) (GKE/EKS/Self-hosted) | Azure Container Apps | [k8s-to-container-apps.md](references/services/container-apps/k8s-to-container-apps.md) |
+| [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) (GKE/EKS/Self-hosted) | Azure Container Apps | [k8s-to-container-apps.md](references/services/container-apps/k8s-to-container-apps.md) |
 | GCP Cloud Run | Azure Container Apps | [cloudrun-to-container-apps.md](references/services/container-apps/cloudrun-to-container-apps.md) |
 | Spring Boot (Azure Spring Apps/VMs) | Azure Container Apps | [spring-apps-to-aca.md](references/services/container-apps/spring-apps-to-aca.md) |
 
@@ -64,5 +64,5 @@ All output goes to `<workspace-root-basename>-azure/` at workspace root, where `
 4. **Ask User** — "Migration complete. Test locally or deploy to Azure?"
 5. **Hand off** to [azure-prepare](../[azure-prepare](../azure-skills/skills/azure-prepare/SKILL.md)/SKILL.md) for infrastructure, testing, and deployment
 
-Track progress in `migration-status.md` — see [workflow-details.md](../../../Global_References/workflow-details.md).
+Track progress in `migration-status.md` — see [workflow-details.md](../../../../Global_References/workflow-details.md).
 

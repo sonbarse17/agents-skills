@@ -259,7 +259,7 @@ graph("SecurityGraph")
 | Data freshness | Always current | Snapshot at creation time |
 | Scale | Limited by query memory | Enterprise-scale |
 | Reuse | Rebuilt every query | Shared across users/queries |
-| Best for | Ad-hoc hunts, prototyping | Production workflows, [dashboards](../dashboards/SKILL.md) |
+| Best for | Ad-hoc hunts, prototyping | Production workflows, [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) |
 
 ## Security & Threat Hunting Examples
 
@@ -363,7 +363,7 @@ edges
 // <- stop here. Kusto Explorer renders the graph visually.
 ```
 
-To flatten back to a table for [dashboards](../dashboards/SKILL.md) or export, pipe through `graph-match | project` or `graph-to-table`.
+To flatten back to a table for [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) or export, pipe through `graph-match | project` or `graph-to-table`.
 
 ## Using with IRQL
 
@@ -430,7 +430,7 @@ See [../../../Global_References/[azure-kusto](../azure-skills/skills/[azure-kust
 
 ## Practical Usage Scenarios
 
-See [../../../Global_References/SCENARIOS.md](../../../Global_References/SCENARIOS.md) for full worked examples including:
+See [../../../Global_References/SCENARIOS.md](../../../../Global_References/SCENARIOS.md) for full worked examples including:
 - Reachability analysis (shortest paths to critical assets)
 - Network segmentation validation (connected components)
 - Blast radius of compromised accounts (variable-length path matching)
@@ -476,7 +476,7 @@ This ensures the output works in both Kusto Explorer (graph visualization) and A
 
 ### Optional: Save and Launch
 
-If the user asks to save or open the query in Kusto Explorer, follow the procedure in [../../../Global_References/KUSTO_EXPLORER_LAUNCH.md](../../../Global_References/KUSTO_EXPLORER_LAUNCH.md). Key rules:
+If the user asks to save or open the query in Kusto Explorer, follow the procedure in [../../../Global_References/KUSTO_EXPLORER_LAUNCH.md](../../../../Global_References/KUSTO_EXPLORER_LAUNCH.md). Key rules:
 
 - **Always** use `ask_user` to confirm before writing files or launching executables
 - **Always** display the file contents in chat so the user can review before opening

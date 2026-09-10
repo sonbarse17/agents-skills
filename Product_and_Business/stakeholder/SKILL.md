@@ -41,7 +41,7 @@ Develop a stakeholder management strategy that maps influence
 and interest (power/influence grid, salience model), establishes
 clear communication cadences with per-group channels, assigns
 decision accountability via RACI matrix, manages expectations
-through structured reporting (status [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), highlight
+through structured reporting (status [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), highlight
 reports, risk logs) and escalation paths, and builds feedback
 loops for continuous improvement.
 
@@ -121,7 +121,7 @@ Stakeholder identified
 │   └── Invite to demos and milestone reviews
 ├── Power ≥ 4 AND Interest < 4 → KEEP SATISFIED
 │   ├── Monthly executive summary, milestone briefings
-│   ├── One-page [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) with RAG status
+│   ├── One-page [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) with RAG status
 │   ├── Surface issues before they escalate
 │   └── Engage at decision points only
 ├── Power < 4 AND Interest ≥ 4 → KEEP INFORMED

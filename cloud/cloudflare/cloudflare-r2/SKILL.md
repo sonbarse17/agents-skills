@@ -26,7 +26,7 @@ S3-compatible object storage with zero egress fees, built on Cloudflare's global
 - Storing user uploads, media files, backups, or static assets.
 - Replacing AWS S3 to eliminate egress costs for read-heavy workloads.
 - Serving files at the edge via Workers or public bucket access.
-- Building [multi-cloud](../multi-cloud/SKILL.md) storage that avoids vendor lock-in (S3 API compatible).
+- Building [multi-cloud](../../common/other/multi-cloud/SKILL.md) storage that avoids vendor lock-in (S3 API compatible).
 - Storing ML model artifacts, training data, or inference results.
 
 ## Prerequisites

@@ -81,7 +81,7 @@ A secret written into any layer — even one later deleted in a subsequent `RUN`
 recoverable from the image history. Use build secrets (`RUN --mount=type=secret`) or inject
 credentials at runtime via the orchestrator's secret store, never `ARG`/`ENV` for anything
 sensitive, since both are visible in `[docker](../docker/SKILL.md) history` and image inspection. Managing where those
-secrets live long-term is `[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md)`'s job; this step is only about keeping them out of
+secrets live long-term is `[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)`'s job; this step is only about keeping them out of
 the artifact you push.
 
 **Done when:** `[docker](../docker/SKILL.md) history` and `[docker](../docker/SKILL.md) inspect` on the built image show no credentials, keys,

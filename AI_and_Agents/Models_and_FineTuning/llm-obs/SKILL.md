@@ -209,7 +209,7 @@ FROM traces*
 The [Amazon Bedrock AgentCore integration](https://www.elastic.co/docs/reference/integrations/aws_bedrock_agentcore)
 ships metrics to the `metrics-aws_bedrock_agentcore.metrics-*` data stream (time series index). Use **`TS`** for
 aggregations on time series data streams (Elasticsearch 9.2+); use a time range with **`TRANGE`** (9.3+). The
-integration’s [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) and
+integration’s [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) and
 [alerting rule templates](https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/elastic/integrations/tree/main/packages/aws_bedrock_agentcore/kibana/alerting_rule_template)
 Example: token usage (counter), invocations (counter), and average latency (gauge) by hour and agent:
 

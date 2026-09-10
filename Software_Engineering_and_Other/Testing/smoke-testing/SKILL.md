@@ -402,7 +402,7 @@ smoke_metrics:
 17. Smoke tests for staging may include write operations; production smoke is read-only
 18. Each smoke test must produce a clear pass/fail signal — no ambiguous results
 19. Canary deployments require smoke tests to pass before traffic shifting
-20. Smoke test results must feed into deployment health [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) automatically
+20. Smoke test results must feed into deployment health [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) automatically
 
 ## References
 - ../../../Global_References/bvt-strategy.md — Build Verification Testing (BVT)

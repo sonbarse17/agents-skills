@@ -30,7 +30,7 @@ depends_on:
 
 ## Purpose
 
-Chef, Puppet, and SaltStack were the dominant [configuration-management](../../../DevOps_and_Cloud/Cloud_Providers/configuration-management/SKILL.md)
+Chef, Puppet, and SaltStack were the dominant [configuration-management](../../../cloud/common/other/configuration-management/SKILL.md)
 tools before [Ansible](../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md)'s agentless, push-based model took over most new
 projects. All three are still running in production at plenty of large
 enterprises — often on systems that predate anyone currently on the team
@@ -44,7 +44,7 @@ Chef/Puppet/Salt estate, how the three differ from each other and from
 is actually worth it. It is not a pitch for greenfield adoption of any of
 the three; for that, see
 [ansible-playbook-and-role-design](../[ansible-playbook-and-role-design](../../../DevOps_and_Cloud/Infrastructure_as_Code/[ansible](../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md)-playbook-and-role-design/SKILL.md)/SKILL.md),
-which is the tool most new [configuration-management](../../../DevOps_and_Cloud/Cloud_Providers/configuration-management/SKILL.md) work in this space
+which is the tool most new [configuration-management](../../../cloud/common/other/configuration-management/SKILL.md) work in this space
 should default to today unless a specific existing estate says otherwise.
 
 ## When to use
@@ -241,7 +241,7 @@ should default to today unless a specific existing estate says otherwise.
      elsewhere.
    - A common pragmatic middle path: freeze the legacy tool's scope
      (stop adding new nodes/cookbooks to it), route all *new*
-     [configuration-management](../../../DevOps_and_Cloud/Cloud_Providers/configuration-management/SKILL.md) work through [Ansible](../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md), and let the legacy
+     [configuration-management](../../../cloud/common/other/configuration-management/SKILL.md) work through [Ansible](../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md), and let the legacy
      estate shrink by attrition as nodes are decommissioned/replaced,
      rather than committing to a big-bang rewrite.
 
@@ -303,7 +303,7 @@ should default to today unless a specific existing estate says otherwise.
   make the migration decision deliberately with real cost estimates
   rather than out of unfamiliarity-driven frustration.
 
-- **Symptom:** Two [configuration-management](../../../DevOps_and_Cloud/Cloud_Providers/configuration-management/SKILL.md) tools (e.g. a legacy Puppet
+- **Symptom:** Two [configuration-management](../../../cloud/common/other/configuration-management/SKILL.md) tools (e.g. a legacy Puppet
   estate and a newer [Ansible](../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md) rollout) both manage the same node, and
   changes made by one get silently reverted by the other's next
   scheduled/triggered run.
@@ -402,6 +402,6 @@ single fleet-wide push).
 
 ## Cross-references
 
-- [ansible-playbook-and-role-design](../[ansible-playbook-and-role-design](../../../DevOps_and_Cloud/Infrastructure_as_Code/[ansible](../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md)-playbook-and-role-design/SKILL.md)/SKILL.md) — the agentless, push-based default this skill assumes new [configuration-management](../../../DevOps_and_Cloud/Cloud_Providers/configuration-management/SKILL.md) work should target; the closest cross-tool comparison for idempotency and data/logic separation patterns.
+- [ansible-playbook-and-role-design](../[ansible-playbook-and-role-design](../../../DevOps_and_Cloud/Infrastructure_as_Code/[ansible](../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md)-playbook-and-role-design/SKILL.md)/SKILL.md) — the agentless, push-based default this skill assumes new [configuration-management](../../../cloud/common/other/configuration-management/SKILL.md) work should target; the closest cross-tool comparison for idempotency and data/logic separation patterns.
 - [infrastructure-as-code-terraform](../../../devops/skills/[infrastructure-as-code-terraform](../../../DevOps_and_Cloud/Infrastructure_as_Code/[infrastructure-as-code](../../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md)-terraform/SKILL.md)/SKILL.md) — the provisioning-layer counterpart; Chef/Puppet/Salt (like [Ansible](../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md)) configure hosts that already exist rather than creating/destroying infrastructure.
 - [python-automation-scripting-for-ops](../[python-automation-scripting-for-ops](../../../DevOps_and_Cloud/Cloud_Providers/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-automation-scripting-for-ops/SKILL.md)/SKILL.md) — a lighter-weight alternative worth considering for narrow one-off automation that doesn't justify a full config-management tool's agent/server overhead.

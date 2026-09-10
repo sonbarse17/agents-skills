@@ -75,7 +75,7 @@ Produce the artifact directly. No preamble, no postamble, no explanations. No fi
 | Tool | Purpose | When |
 |---|---|---|
 | **Prometheus** | Metrics collection + [alerting](../alerting/SKILL.md) | [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md), dynamic workloads |
-| **Grafana** | [Dashboards](../../Cloud_Providers/dashboards/SKILL.md) + visualization | Universal (any data source) |
+| **Grafana** | [Dashboards](../dashboards/SKILL.md) + visualization | Universal (any data source) |
 | **Loki** | Log aggregation (K8s native) | [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md), Prometheus ecosystem |
 | **ELK (Elasticsearch + Logstash + Kibana)** | Log aggregation + search | Complex log parsing, full-text search, SIEM |
 | **Tempo** | Distributed tracing | Need traces correlated with metrics/logs |
@@ -510,7 +510,7 @@ output.elasticsearch:
 
 ## Rules
 - Prometheus scrape configs use relabeling for [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) service discovery — never static targets for K8s workloads.
-- Grafana [dashboards](../../Cloud_Providers/dashboards/SKILL.md) organized by folder hierarchy: Infrastructure → Applications → Business → SLOs. No unorganized [dashboards](../../Cloud_Providers/dashboards/SKILL.md).
+- Grafana [dashboards](../dashboards/SKILL.md) organized by folder hierarchy: Infrastructure → Applications → Business → SLOs. No unorganized [dashboards](../dashboards/SKILL.md).
 - Loki labels limited to low-cardinality values — never use `pod` or `traceID` as mandatory labels.
 - Alertmanager routes segregated by severity: P0 → PagerDuty, P1 → Slack warning, P2 → Slack info, P3 → suppressed.
 - Every Prometheus alert has a `[runbook](../runbook/SKILL.md)` annotation pointing to a recovery procedure.

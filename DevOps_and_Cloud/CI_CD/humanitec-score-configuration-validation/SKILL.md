@@ -180,7 +180,7 @@ types/classes, and Resource Graph diffing for Resource Definition changes.
    Environments currently resolve the `type`/`class` you're about to
    change:
    ```bash
-   humctl score resources list --env production --res-def postgres-[aws-rds](../../Cloud_Providers/aws-rds/SKILL.md)
+   humctl score resources list --env production --res-def postgres-[aws-rds](../../../cloud/aws/database/aws-rds/SKILL.md)
    ```
    Every Application/Environment pair returned is a workload that will be
    affected the next time it deploys (or immediately, for Resource
@@ -285,7 +285,7 @@ types/classes, and Resource Graph diffing for Resource Definition changes.
 `resources.cache` entry (`type: redis`) to their `score.yaml`, targeting
 `production`. The platform team wants this caught in CI before it reaches
 a real deploy attempt, and also wants to know the blast radius before
-changing the existing `postgres-[aws-rds](../../Cloud_Providers/aws-rds/SKILL.md)` Resource Definition to bump
+changing the existing `postgres-[aws-rds](../../../cloud/aws/database/aws-rds/SKILL.md)` Resource Definition to bump
 `engine_version` for a CVE fix.
 
 1. The PR's CI workflow runs `score-compose generate score.yaml -o
@@ -310,9 +310,9 @@ changing the existing `postgres-[aws-rds](../../Cloud_Providers/aws-rds/SKILL.md
    to `ci-validate` (and, separately, confirms `production` already has a
    `redis-aws-elasticache` Definition bound). Dry-run now passes against
    both `ci-validate` and `production`.
-4. Separately, before bumping `postgres-[aws-rds](../../Cloud_Providers/aws-rds/SKILL.md)`'s `engine_version`, the
+4. Separately, before bumping `postgres-[aws-rds](../../../cloud/aws/database/aws-rds/SKILL.md)`'s `engine_version`, the
    platform engineer runs `humctl score resources list --env production
-   --res-def postgres-[aws-rds](../../Cloud_Providers/aws-rds/SKILL.md)` and gets back 14 Applications — including
+   --res-def postgres-[aws-rds](../../../cloud/aws/database/aws-rds/SKILL.md)` and gets back 14 Applications — including
    `checkout-api`. They open the Resource Definition change as its own PR,
    list those 14 services in the description, and route it through the
    same review as any shared infrastructure change, rather than merging it

@@ -475,4 +475,4 @@ catch (RequestFailedException ex)
 | API Reference | https://learn.microsoft.com/dotnet/api/azure.ai.openai |
 | Migration Guide (1.0→2.0) | https://learn.microsoft.com/azure/ai-services/openai/how-to/dotnet-migration |
 | Quickstart | https://learn.microsoft.com/azure/ai-services/openai/quickstart |
-| [GitHub](../../CI_CD/github/SKILL.md) Source | https://[github](../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/openai/Azure.AI.OpenAI |
+| [GitHub](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Source | https://[github](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/openai/Azure.AI.OpenAI |

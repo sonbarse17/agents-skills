@@ -51,7 +51,7 @@ merging or copying it forward — not by re-running a pipeline with a different 
 request from `staging/` into `prod/` is a promotion event with a diff, a reviewer, and a timestamp,
 which is a far stronger artifact than a [Jenkins](../../CI_CD/jenkins/SKILL.md) job log claiming the same thing happened. [Kustomize](../kustomize/SKILL.md)
 overlays or Helm values-per-environment both work; what matters is that the *mechanism* of promotion
-is a Git operation everyone can see. See `[environment-management](../../Cloud_Providers/environment-management/SKILL.md)` for how environments are defined
+is a Git operation everyone can see. See `[environment-management](../../../cloud/common/other/environment-management/SKILL.md)` for how environments are defined
 and `[release-management](../../CI_CD/release-management/SKILL.md)` for gating promotion on approvals or criteria.
 
 **Done when:** you can answer "what's different between staging and prod" with a single git diff.
@@ -89,7 +89,7 @@ Config belongs in Git; secret values do not, even encrypted-at-rest-in-a-private
 enough once you consider history, forks, and CI log leakage. Reference secrets from Git — a
 `SealedSecret`, an `ExternalSecret` pointing at a [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), an SOPS-encrypted file if you truly must
 [commit](../../CI_CD/commit/SKILL.md) ciphertext — rather than storing plaintext or something trivially reversible. The rule is
-simple: a leaked clone of this repo should leak zero credentials. See `[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md)` for the
+simple: a leaked clone of this repo should leak zero credentials. See `[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)` for the
 storage and rotation mechanics this skill deliberately does not cover.
 
 **Done when:** cloning this repo and reading every file yields no usable credential.

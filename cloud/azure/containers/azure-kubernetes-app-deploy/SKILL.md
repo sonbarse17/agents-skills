@@ -28,21 +28,21 @@ depends_on:
 
 # Deploy to AKS
 
-**Use when:** deploying a web app/API to AKS; containerizing for [Kubernetes](../kubernetes/SKILL.md); generating manifests; AKS CI/CD; DS001–DS013 failures.
+**Use when:** deploying a web app/API to AKS; containerizing for [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md); generating manifests; AKS CI/CD; DS001–DS013 failures.
 
-**Not for:** provisioning clusters (`[azure-kubernetes](../../Cloud_Providers/azure-skills/skills/[azure-kubernetes](../azure-[kubernetes](../kubernetes/SKILL.md)/SKILL.md)/SKILL.md)`), AKS Automatic readiness (`[azure-[kubernetes](../kubernetes/SKILL.md)-automatic-readiness](../../Cloud_Providers/azure-skills/skills/[azure-kubernetes](../../Cloud_Providers/azure-skills/skills/[azure-kubernetes](../azure-[kubernetes](../kubernetes/SKILL.md)/SKILL.md)/SKILL.md)/[azure-[kubernetes](../kubernetes/SKILL.md)-automatic-readiness](../[azure-kubernetes](../../Cloud_Providers/azure-skills/skills/[azure-kubernetes](../azure-[kubernetes](../kubernetes/SKILL.md)/SKILL.md)/SKILL.md)/[azure-[kubernetes](../kubernetes/SKILL.md)-automatic-readiness](../[azure-kubernetes](../../Cloud_Providers/azure-skills/skills/[azure-kubernetes](../azure-[kubernetes](../kubernetes/SKILL.md)/SKILL.md)/SKILL.md)-automatic-readiness/SKILL.md)/SKILL.md)/SKILL.md)`), non-AKS targets.
+**Not for:** provisioning clusters (`[azure-kubernetes](../../Cloud_Providers/azure-skills/skills/[azure-kubernetes](../azure-[kubernetes](../kubernetes/SKILL.md)/SKILL.md)/SKILL.md)`), AKS Automatic readiness (`[azure-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-automatic-readiness](../../Cloud_Providers/azure-skills/skills/[azure-kubernetes](../../Cloud_Providers/azure-skills/skills/[azure-kubernetes](../azure-[kubernetes](../kubernetes/SKILL.md)/SKILL.md)/SKILL.md)/[azure-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-automatic-readiness](../[azure-kubernetes](../../Cloud_Providers/azure-skills/skills/[azure-kubernetes](../azure-[kubernetes](../kubernetes/SKILL.md)/SKILL.md)/SKILL.md)/[azure-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-automatic-readiness](../[azure-kubernetes](../../Cloud_Providers/azure-skills/skills/[azure-kubernetes](../azure-[kubernetes](../kubernetes/SKILL.md)/SKILL.md)/SKILL.md)-automatic-readiness/SKILL.md)/SKILL.md)/SKILL.md)`), non-AKS targets.
 
 ## Workflow
 
-Requires: existing AKS cluster, `az login`, `[kubectl](../kubectl/SKILL.md)` configured. Follow `phases/quick-deploy.md`. On failure: `../../../Global_References/rollback.md`.
+Requires: existing AKS cluster, `az login`, `[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)` configured. Follow `phases/quick-deploy.md`. On failure: `../../../Global_References/rollback.md`.
 
 ## References
 
-- [detection.md](./../../../Global_References/detection.md) — framework/port/health detection
-- [safeguards.md](./../../../Global_References/safeguards.md) — DS001-DS013 checklist
-- [workload-identity.md](./../../../Global_References/workload-identity.md) — Workload Identity setup
-- [rollback.md](./../../../Global_References/rollback.md) — recovery procedures
-- [base-images.md](./../../../Global_References/base-images.md) — base image policy and `<LATEST_STABLE_*>` resolution
+- [detection.md](../../../../Global_References/detection.md) — framework/port/health detection
+- [safeguards.md](../../../../Global_References/safeguards.md) — DS001-DS013 checklist
+- [workload-identity.md](../../../../Global_References/workload-identity.md) — Workload Identity setup
+- [rollback.md](../../../../Global_References/rollback.md) — recovery procedures
+- [base-images.md](../../../../Global_References/base-images.md) — base image policy and `<LATEST_STABLE_*>` resolution
 
 ## Knowledge Packs
 
@@ -50,5 +50,5 @@ Load `knowledge-packs/frameworks/<framework>.md` per detected framework. Availab
 
 ## Templates
 
-`templates/` (dockerfiles/, k8s/, [github-actions](../../CI_CD/[github](../../CI_CD/github/SKILL.md)-actions/SKILL.md)/, [mermaid](../../../Product_and_Business/mermaid/SKILL.md)/).
+`templates/` (dockerfiles/, k8s/, [github-actions](../../CI_CD/[github](../../CI_CD/github/SKILL.md)-actions/SKILL.md)/, [mermaid](../../../../Product_and_Business/mermaid/SKILL.md)/).
 

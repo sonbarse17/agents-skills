@@ -21,7 +21,7 @@ depends_on:
   - azure-kusto-graph
 ---
 
-# IRQL -- [Incident](../../Observability_and_SecOps/incident/SKILL.md) Response Query Language
+# IRQL -- [Incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response Query Language
 
 Compose IRQL function pipelines from selector, extractor, and enricher building blocks. IRQL wraps raw KQL security tables behind intent-revealing, composable functions so analysts (and LLMs) can express hunts without memorizing schemas, cluster locations, or join keys.
 
@@ -244,7 +244,7 @@ Always output the complete KQL query in the chat response with Step 1 (connect) 
 <KQL_QUERY>
 ```
 
-If the user asks to save or open in Kusto Explorer, follow the procedure in [../../../Global_References/KUSTO_EXPLORER_LAUNCH.md](../../../Global_References/KUSTO_EXPLORER_LAUNCH.md). Key rules:
+If the user asks to save or open in Kusto Explorer, follow the procedure in [../../../Global_References/KUSTO_EXPLORER_LAUNCH.md](../../../../Global_References/KUSTO_EXPLORER_LAUNCH.md). Key rules:
 
 - Use `ask_user` to confirm before writing files or launching executables
 - Display file contents in chat so the user can review before opening

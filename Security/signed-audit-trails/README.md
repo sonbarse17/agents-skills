@@ -8,7 +8,7 @@ Claude Code tool call. Cookbook-style walkthrough with runnable examples.
 A **skill** (not a runtime hook): a set of instructions and examples that
 explain the pattern end-to-end. Use this when you are figuring out whether
 receipts are the right fit for your project. Once you know they are, install
-the [`protect-mcp`](../protect-mcp/) plugin for the actual hooks.
+the [`protect-mcp`](../protect-mcp) plugin for the actual hooks.
 
 ## When to use this plugin
 
@@ -19,7 +19,7 @@ the [`protect-mcp`](../protect-mcp/) plugin for the actual hooks.
 - **Walking a client or auditor** through a live demonstration of tamper
   detection
 
-For production use, the [`protect-mcp`](../protect-mcp/) plugin gives you the
+For production use, the [`protect-mcp`](../protect-mcp) plugin gives you the
 runtime hooks directly. This plugin is the skill file you invoke via
 `Skill` when you want the concept explained in-session.
 
@@ -48,8 +48,8 @@ A single skill file containing:
 
 ## Related plugins in this marketplace
 
-- [`protect-mcp`](../protect-mcp/) — the runtime hook implementation
-- [`review-agent-governance`](../review-agent-governance/) — require human
+- [`protect-mcp`](../protect-mcp) — the runtime hook implementation
+- [`review-agent-governance`](../review-agent-governance) — require human
   approval before review-surface actions; composes with protect-mcp
 
 ## License

@@ -175,7 +175,7 @@ full per-seat licensing for that purpose alone.
      protocol          = "tcp"
      cidr_blocks       = ["0.0.0.0/0"]
      security_group_id = aws_security_group.lb.id
-     #tfsec:ignore:[aws-vpc](../../Cloud_Providers/aws-vpc/SKILL.md)-no-public-ingress-sgr -- ALB health check endpoint, intentionally public on port 80 only
+     #tfsec:ignore:[aws-vpc](../../../cloud/aws/networking/aws-vpc/SKILL.md)-no-public-ingress-sgr -- ALB health check endpoint, intentionally public on port 80 only
    }
    ```
 

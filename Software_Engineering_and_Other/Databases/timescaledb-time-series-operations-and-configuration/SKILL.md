@@ -47,7 +47,7 @@ retention policies that a plain [PostgreSQL](../../Backend/postgresql/SKILL.md) 
 - Query performance degrades as a hypertable grows, especially queries
   scanning a wide time range or aggregating across many chunks.
 - Setting up continuous aggregates to pre-compute rollups (hourly/daily
-  averages, downsampled [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)) instead of aggregating raw data on
+  averages, downsampled [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md)) instead of aggregating raw data on
   every query.
 - Configuring compression for older chunks to reduce storage footprint
   and improve scan performance on cold data.
@@ -173,7 +173,7 @@ the most recent bucket the policy will materialize — this accounts for
 late-arriving data (a common reality in IoT/metrics ingestion where
 devices buffer and batch-send) that would otherwise be missed by a
 policy that materializes right up to the current instant. Query the
-aggregate directly for [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) instead of re-aggregating raw data:
+aggregate directly for [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) instead of re-aggregating raw data:
 ```sql
 SELECT bucket, avg_cpu FROM metrics_hourly
 WHERE device_id = 'device-42' AND bucket > now() - INTERVAL '7 days';

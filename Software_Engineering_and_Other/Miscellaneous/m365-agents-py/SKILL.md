@@ -28,7 +28,7 @@ Build enterprise agents for Microsoft 365, Teams, and Copilot Studio using the M
 
 ## Before implementation
 
-- Use the [microsoft-docs](../../../DevOps_and_Cloud/Cloud_Providers/microsoft-docs/SKILL.md) MCP to verify the latest API signatures for AgentApplication, start_agent_process, and authentication options.
+- Use the [microsoft-docs](../../../cloud/azure/other/microsoft-docs/SKILL.md) MCP to verify the latest API signatures for AgentApplication, start_agent_process, and authentication options.
 - Confirm package versions on PyPI for the microsoft-agents-\* packages you plan to use.
 
 ## Important Notice - Import Changes

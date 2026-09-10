@@ -277,7 +277,7 @@ Current challenges:
 
 1. [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) requirements need complete order history
 2. "What was the order state at time X?" queries are impossible
-3. Analytics team needs event stream for real-time [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)
+3. Analytics team needs event stream for real-time [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md)
 4. Order state reconstruction for customer support is manual
 
 ## Detailed Design

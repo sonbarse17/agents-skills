@@ -85,7 +85,7 @@ A service with fifteen SLOs has, in practice, zero SLOs that anyone can recite o
 
 - **Pick two or three** that best represent the user's experience of that service — usually one availability-shaped and one latency-shaped SLI.
 - **Resist adding an SLO for every metric that seems worth tracking** — that instinct is real, but the right home for it is a dashboard, not a budget-policy conversation.
-- **See `[dashboards](../../Cloud_Providers/dashboards/SKILL.md)`** for where the rest of that detail should live instead.
+- **See `[dashboards](../dashboards/SKILL.md)`** for where the rest of that detail should live instead.
 
 **Done when:** anyone on the team can name the service's SLOs from memory, without looking them up.
 

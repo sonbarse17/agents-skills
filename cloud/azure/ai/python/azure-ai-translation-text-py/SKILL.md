@@ -21,7 +21,7 @@ depends_on:
   - audit
 ---
 
-# Azure AI Text Translation SDK for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+# Azure AI Text Translation SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 
 Client library for Azure AI Translator text translation service for real-time text translation, transliteration, and language operations.
 
@@ -45,7 +45,7 @@ AZURE_TRANSLATOR_REGION=<your-region>  # e.g., eastus, westus2; required when au
 
 > **🔑 Two rules apply to every code sample below:**
 >
-> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
+> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
 >    - Local dev: `DefaultAzureCredential` works as-is.
 >    - Production: set `AZURE_TOKEN_CREDENTIALS=prod` (or `AZURE_TOKEN_CREDENTIALS=<specific_credential>`) to constrain the credential chain to production-safe credentials.
 > 2. **Wrap every client in a context manager** so HTTP transports, sockets, and token caches are released deterministically:
@@ -54,7 +54,7 @@ AZURE_TRANSLATOR_REGION=<your-region>  # e.g., eastus, westus2; required when au
 >
 > Snippets may abbreviate this setup, but production code should always follow both rules.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import os
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 from azure.ai.translation.text import TextTranslationClient
@@ -62,7 +62,7 @@ from azure.ai.translation.text import TextTranslationClient
 # Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 credential = DefaultAzureCredential(require_envvar=True)
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
+# See https://learn.microsoft.com/[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 
 with TextTranslationClient(
@@ -79,7 +79,7 @@ New code should use `DefaultAzureCredential` above. The Translator service has t
 - **Token-credential auth requires a custom subdomain endpoint** (`https://<resource>.cognitiveservices.azure.com`). If you only have the global endpoint (`https://api.cognitive.microsofttranslator.com`), you must either provision a custom subdomain or stay on the key-based path until you do.
 - **Key + region** is the canonical setup against the global endpoint. The region is sent as the `Ocp-Apim-Subscription-Region` header and is required whenever you use a multi-service or global Translator key.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import os
 from azure.core.credentials import AzureKeyCredential
 from azure.ai.translation.text import TextTranslationClient
@@ -101,7 +101,7 @@ with TextTranslationClient(
 
 ## Basic Translation
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Translate to a single language
 result = client.translate(
     body=["Hello, how are you?", "Welcome to Azure!"],
@@ -116,7 +116,7 @@ for item in result:
 
 ## Translate to Multiple Languages
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 result = client.translate(
     body=["Hello, world!"],
     to=["es", "fr", "de", "ja"]  # Spanish, French, German, Japanese
@@ -130,7 +130,7 @@ for item in result:
 
 ## Specify Source Language
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 result = client.translate(
     body=["Bonjour le monde"],
     from_parameter="fr",  # Source is French
@@ -140,7 +140,7 @@ result = client.translate(
 
 ## Language Detection
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 result = client.translate(
     body=["Hola, como estas?"],
     to=["en"]
@@ -156,7 +156,7 @@ for item in result:
 
 Convert text from one script to another:
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 result = client.transliterate(
     body=["konnichiwa"],
     language="ja",
@@ -173,7 +173,7 @@ for item in result:
 
 Find alternate translations and definitions:
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 result = client.lookup_dictionary_entries(
     body=["fly"],
     from_parameter="en",
@@ -192,7 +192,7 @@ for item in result:
 
 Get usage examples for translations:
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.ai.translation.text.models import DictionaryExampleTextItem
 
 result = client.lookup_dictionary_examples(
@@ -209,7 +209,7 @@ for item in result:
 
 ## Get Supported Languages
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Get all supported languages
 languages = client.get_supported_languages()
 
@@ -235,7 +235,7 @@ for code, lang in languages.dictionary.items():
 
 Identify sentence boundaries:
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 result = client.find_sentence_boundaries(
     body=["Hello! How are you? I hope you are well."],
     language="en"
@@ -247,7 +247,7 @@ for item in result:
 
 ## Translation Options
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 result = client.translate(
     body=["Hello, world!"],
     to=["de"],
@@ -269,7 +269,7 @@ for item in result:
 
 ## Async Client
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.ai.translation.text.aio import TextTranslationClient
 from azure.identity.aio import DefaultAzureCredential
 

@@ -27,7 +27,7 @@ Adopt vendor-neutral telemetry with consistent instrumentation across services.
 - Debugging latency across [microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md)
 - Standardizing [observability](../observability/SKILL.md) data model and naming
 - Sending telemetry to Prometheus, Grafana, [Datadog](../datadog/SKILL.md), or OTLP backends
-- Building SLO [dashboards](../../Cloud_Providers/dashboards/SKILL.md) with trace-to-log correlation
+- Building SLO [dashboards](../dashboards/SKILL.md) with trace-to-log correlation
 - Instrumenting [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) or Node.js applications with tracing and metrics
 - Setting up auto-instrumentation for existing services without code changes
 
@@ -45,7 +45,7 @@ Adopt vendor-neutral telemetry with consistent instrumentation across services.
 2. Add SDK or auto-instrumentation in each service.
 3. Run an OpenTelemetry Collector to receive, transform, and export telemetry.
 4. Validate cardinality and sampling to control cost.
-5. Create golden signals [dashboards](../../Cloud_Providers/dashboards/SKILL.md) and [alerting](../alerting/SKILL.md) from collected data.
+5. Create golden signals [dashboards](../dashboards/SKILL.md) and [alerting](../alerting/SKILL.md) from collected data.
 
 ## Collector Production Configuration
 

@@ -40,7 +40,7 @@ model that is "working" in every infrastructure sense while being wrong.
 ## When to use
 
 - The user wants to set up [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) for a model already in production
-  ([dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), alerts, SLOs on model quality, not just system health).
+  ([dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), alerts, SLOs on model quality, not just system health).
 - The user asks to detect data drift (input feature distribution shift),
   concept drift (the relationship between features and label changes), or
   prediction drift (output distribution shift).
@@ -178,7 +178,7 @@ model that is "working" in every infrastructure sense while being wrong.
   performance for weeks before anyone notices.
   **Fix:** Segment drift and quality [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) by relevant slices (region,
   device, customer tier, new vs. established users), not only in aggregate;
-  add slice-level [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) as a standard part of [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) setup, not an
+  add slice-level [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) as a standard part of [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) setup, not an
   afterthought.
 
 - **Symptom:** A retraining pipeline auto-triggers on a drift alert and

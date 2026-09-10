@@ -100,7 +100,7 @@ row take time proportional to data volume, and a large logical restore
 can take hours where a physical restore of the same data takes minutes.
 
 **Physical backups** (`pg_basebackup`, Percona XtraBackup, filesystem/
-[block-storage](../../../DevOps_and_Cloud/Cloud_Providers/block-storage/SKILL.md) snapshots) copy the database's actual on-disk files —
+[block-storage](../../../cloud/common/storage/block-storage/SKILL.md) snapshots) copy the database's actual on-disk files —
 much faster for both backup and restore at scale, since they don't
 serialize/deserialize every row, but the resulting artifact is tied to
 the same major engine version and (for some tools) similar

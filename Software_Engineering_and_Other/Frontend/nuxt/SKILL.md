@@ -286,7 +286,7 @@ export default defineNuxtConfig({
   modules: ['@pinia/nuxt', '@nuxtjs/tailwindcss', '@vueuse/nuxt'],
   css: ['~/assets/css/main.css'],
   nitro: {
-    [preset](../../../AI_and_Agents/Infrastructure/deploy-model/[preset](../../../AI_and_Agents/Models_and_FineTuning/[preset](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/preset/SKILL.md)/SKILL.md)/SKILL.md): 'vercel', // or 'node-server', '[cloudflare-pages](../../../DevOps_and_Cloud/Cloud_Providers/cloudflare-pages/SKILL.md)', 'netlify'
+    [preset](../../../AI_and_Agents/Infrastructure/deploy-model/[preset](../../../AI_and_Agents/Models_and_FineTuning/[preset](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/preset/SKILL.md)/SKILL.md)/SKILL.md): 'vercel', // or 'node-server', '[cloudflare-pages](../../../cloud/cloudflare/cloudflare-pages/SKILL.md)', 'netlify'
     storage: {
       redis: { driver: 'redis', host: process.env.REDIS_HOST },
     },

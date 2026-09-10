@@ -355,16 +355,16 @@ provider "aws" {
 }
 ```
 
-## [Multi-Cloud](../../DevOps_and_Cloud/Cloud_Providers/multi-cloud/SKILL.md) Discovery
+## [Multi-Cloud](../../cloud/common/other/multi-cloud/SKILL.md) Discovery
 
 ```bash
 #!/usr/bin/env bash
-# [multi-cloud](../../DevOps_and_Cloud/Cloud_Providers/multi-cloud/SKILL.md)-discovery.sh - Discover assets across AWS, Azure, and GCP
+# [multi-cloud](../../cloud/common/other/multi-cloud/SKILL.md)-discovery.sh - Discover assets across AWS, Azure, and GCP
 
-OUTPUT_DIR="./asset-inventory/[multi-cloud](../../DevOps_and_Cloud/Cloud_Providers/multi-cloud/SKILL.md)/$(date +%Y-%m-%d)"
+OUTPUT_DIR="./asset-inventory/[multi-cloud](../../cloud/common/other/multi-cloud/SKILL.md)/$(date +%Y-%m-%d)"
 mkdir -p "$OUTPUT_DIR"
 
-echo "=== [Multi-Cloud](../../DevOps_and_Cloud/Cloud_Providers/multi-cloud/SKILL.md) Asset Discovery ==="
+echo "=== [Multi-Cloud](../../cloud/common/other/multi-cloud/SKILL.md) Asset Discovery ==="
 
 # AWS - using Resource Groups Tagging API
 echo "--- AWS Resources ---"

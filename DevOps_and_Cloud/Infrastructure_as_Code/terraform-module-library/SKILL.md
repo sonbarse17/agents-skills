@@ -28,7 +28,7 @@ Create reusable, well-tested Terraform modules for common cloud infrastructure p
 - Build reusable infrastructure components
 - Standardize cloud resource provisioning
 - Implement infrastructure as code best practices
-- Create [multi-cloud](../../Cloud_Providers/multi-cloud/SKILL.md) compatible modules
+- Create [multi-cloud](../../../cloud/common/other/multi-cloud/SKILL.md) compatible modules
 - Establish organizational Terraform standards
 
 ## Module Structure
@@ -51,7 +51,7 @@ Create reusable, well-tested Terraform modules for common cloud infrastructure p
 └── oci/
     ├── vcn/
     ├── oke/
-    └── [object-storage](../../Cloud_Providers/object-storage/SKILL.md)/
+    └── [object-storage](../../../cloud/common/storage/object-storage/SKILL.md)/
 ```
 
 ## Standard Module Pattern
@@ -260,5 +260,5 @@ func TestVPCModule(t *testing.T) {
 ## Related Skills
 
 - `[multi-cloud-architecture](../../Cloud_Providers/multi-[cloud-architecture](../../Cloud_Providers/cloud-architecture/SKILL.md)/SKILL.md)` - For architectural decisions
-- `[cost-optimization](../../Cloud_Providers/cost-optimization/SKILL.md)` - For cost-effective designs
+- `[cost-optimization](../../../cloud/common/cost/cost-optimization/SKILL.md)` - For cost-effective designs
 

@@ -629,10 +629,10 @@ tier_design:
 - [Product Management Advanced](../../../Global_References/product-management-advanced.md) — Advanced API product strategy: consumer insights, SLA management, partnership programs
 - [API Lifecycle Management](../../../Global_References/api-lifecycle-management.md) — Full lifecycle: design to sunset, versioning, migration
 - [API Strategy](../../../Global_References/api-strategy.md) — API business models, strategy canvas, governance
-- [Developer Experience](../../../Global_References/[developer-experience](../../../Product_and_Business/developer-experience/SKILL.md).md) — DX principles, SDKs, documentation, error messages
+- [Developer Experience](../../../Product_and_Business/developer-experience/SKILL.md).md) — DX principles, SDKs, documentation, error messages
 - [Developer Portal](../../../Global_References/developer-portal.md) — Developer portal design, self-service onboarding, analytics
 - [Monetization](../../../Global_References/monetization.md) — Pricing models, usage tracking, rate limiting tiers
-- [Product Metrics](../../../Global_References/product-metrics.md) — Adoption, DX, reliability, and business metrics with [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)
+- [Product Metrics](../../../Global_References/product-metrics.md) — Adoption, DX, reliability, and business metrics with [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md)
 - [API Consumer Insights](../../../Global_References/api-consumer-insights.md) — Consumer lifecycle, health scoring, churn prediction
 - [API Governance](../../../Global_References/api-governance.md) — Governance framework, API council, design standards
 - [API Stakeholder Management](../../../Global_References/api-stakeholder-management.md) — Stakeholder mapping, communication, escalation

@@ -550,7 +550,7 @@ spec:
 - Set resource quotas per namespace per workload type.
 - Monitor Spark executors for shuffle spill to disk (indicates memory pressure).
 - For Airflow, prefer GitSync over DAG image embedding for faster iteration.
-- Use Prometheus + Grafana [dashboards](../../Cloud_Providers/dashboards/SKILL.md) for Spark executor resource utilization.
+- Use Prometheus + Grafana [dashboards](../../Observability_and_SecOps/dashboards/SKILL.md) for Spark executor resource utilization.
 
 ## Anti-Patterns
 - Running Spark driver and executor on same node — single point of failure.

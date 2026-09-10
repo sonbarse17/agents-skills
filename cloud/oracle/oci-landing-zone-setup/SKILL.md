@@ -206,7 +206,7 @@ the first `terraform apply`.
    This gives compute instances short-lived instance-principal
    authentication instead of long-lived API signing keys — apply the same
    "eliminate long-lived credentials" discipline covered in
-   `[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)`.
+   `[cloud-iam-hardening](../../common/identity/cloud-iam-hardening/SKILL.md)`.
 
 5. **Deploy the CIS OCI Landing Zone Terraform reference** (or the
    hand-rolled equivalent above at smaller scale) to get the compartment
@@ -295,7 +295,7 @@ the first `terraform apply`.
 - Prefer **Dynamic Groups + instance/resource principal authentication**
   over embedding API signing keys in workload configuration — this is
   OCI's version of eliminating long-lived credentials (see
-  `[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)`).
+  `[cloud-iam-hardening](../../common/identity/cloud-iam-hardening/SKILL.md)`).
 - Keep the **default Identity Domain for internal workforce identities**
   and create additional Identity Domains only for genuinely isolated
   populations (external partners, a B2C customer-facing app) — extra

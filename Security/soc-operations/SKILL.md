@@ -47,7 +47,7 @@ Define SOC structure, analyst workflows, tier responsibilities, escalation paths
 - Compliance requirements for [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response
 
 ### Output Artifact
-SOC structure definition, tier workflows, escalation matrices, shift handover templates, metrics [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md).
+SOC structure definition, tier workflows, escalation matrices, shift handover templates, metrics [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md).
 
 ### Response Format
 ```

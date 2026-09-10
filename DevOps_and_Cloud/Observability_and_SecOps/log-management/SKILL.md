@@ -47,7 +47,7 @@ Levels are an action filter, not a mood indicator:
 - **`INFO`** — a notable state change worth keeping around.
 - **`DEBUG`** — detail only useful while actively investigating.
 
-Getting this consistent matters more than getting it clever, because levels are what [alerting](../alerting/SKILL.md) and [dashboards](../../Cloud_Providers/dashboards/SKILL.md) filter on downstream. The failure mode in both directions is common:
+Getting this consistent matters more than getting it clever, because levels are what [alerting](../alerting/SKILL.md) and [dashboards](../dashboards/SKILL.md) filter on downstream. The failure mode in both directions is common:
 
 - **Logging expected, handled events at `ERROR`** — a retried request, a routine 404 — trains everyone to ignore that level entirely.
 - **Logging genuine failures at `WARN`** means they never surface in an error-rate alert built to watch `ERROR`.
@@ -95,7 +95,7 @@ Logs get copied, exported, and retained longer than almost anything else in the 
 - **Treat a new sensitive field type as a library change**, not a per-call-site reminder that will eventually be forgotten.
 - **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) existing logs periodically** for patterns that shouldn't be there, since the masking rule is only as good as its coverage.
 
-See `[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md)` for handling the credentials themselves upstream of this problem.
+See `[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)` for handling the credentials themselves upstream of this problem.
 
 **Done when:** a grep for known secret patterns across recent logs returns nothing, and the logging layer — not code review — is what prevents it.
 

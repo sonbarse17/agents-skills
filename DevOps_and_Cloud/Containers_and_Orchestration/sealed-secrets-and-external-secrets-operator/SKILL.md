@@ -88,7 +88,7 @@ model fits the team's operating model better.
   already populated with the real secret values (ESO syncs *from*
   [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)/AWS/Azure/GCP, it does not replace them), and a workload
   identity mechanism for the operator to authenticate to that backend —
-  see [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md)/SKILL.md)
+  see [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md)
   for the underlying secrets-manager setup and the general
   "why not hardcode secrets" rationale this skill assumes rather than
   restates.
@@ -206,7 +206,7 @@ model fits the team's operating model better.
    apiVersion: external-secrets.io/v1beta1
    kind: ClusterSecretStore
    metadata:
-     name: [aws-secrets-manager](../../Cloud_Providers/aws-secrets-manager/SKILL.md)
+     name: [aws-secrets-manager](../../../cloud/aws/security/aws-secrets-manager/SKILL.md)
    spec:
      provider:
        aws:
@@ -243,7 +243,7 @@ model fits the team's operating model better.
    apiVersion: external-secrets.io/v1beta1
    kind: ClusterSecretStore
    metadata:
-     name: [azure-keyvault](../../Cloud_Providers/azure-keyvault/SKILL.md)
+     name: [azure-keyvault](../../../cloud/azure/security/azure-keyvault/SKILL.md)
    spec:
      provider:
        azurekv:
@@ -265,7 +265,7 @@ model fits the team's operating model better.
    spec:
      refreshInterval: 1h
      secretStoreRef:
-       name: [aws-secrets-manager](../../Cloud_Providers/aws-secrets-manager/SKILL.md)
+       name: [aws-secrets-manager](../../../cloud/aws/security/aws-secrets-manager/SKILL.md)
        kind: ClusterSecretStore
      target:
        name: db-credentials      # the native Secret ESO creates/updates
@@ -291,7 +291,7 @@ model fits the team's operating model better.
     ```bash
     [kubectl](../kubectl/SKILL.md) get externalsecret db-credentials -n payments
     # NAME             STORE                  REFRESH INTERVAL   STATUS         READY
-    # db-credentials   [aws-secrets-manager](../../Cloud_Providers/aws-secrets-manager/SKILL.md)    1h                 SecretSynced   True
+    # db-credentials   [aws-secrets-manager](../../../cloud/aws/security/aws-secrets-manager/SKILL.md)    1h                 SecretSynced   True
     ```
 
 12. **Set `refreshInterval` deliberately** — short intervals (e.g.
@@ -423,7 +423,7 @@ metadata:
 spec:
   refreshInterval: 30m
   secretStoreRef:
-    name: [aws-secrets-manager](../../Cloud_Providers/aws-secrets-manager/SKILL.md)
+    name: [aws-secrets-manager](../../../cloud/aws/security/aws-secrets-manager/SKILL.md)
     kind: ClusterSecretStore
   target:
     name: payments-db-credentials
@@ -451,7 +451,7 @@ the "no plaintext secrets in git" requirement simultaneously.
 
 ## Cross-references
 
-- [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md)/SKILL.md) —
+- [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md) —
   the underlying "why not hardcode secrets" rationale, secrets-manager
   selection ([Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)/cloud/SOPS), and rotation/response workflow this
   skill assumes and builds the [Kubernetes](../kubernetes/SKILL.md)-native sync/encryption layer

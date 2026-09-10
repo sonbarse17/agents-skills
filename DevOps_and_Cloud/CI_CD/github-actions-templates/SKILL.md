@@ -337,4 +337,4 @@ jobs:
 
 - `[gitlab-ci-patterns](../[gitlab-ci](../gitlab-ci/SKILL.md)-patterns/SKILL.md)` - For GitLab CI workflows
 - `[deployment-pipeline-design](../deployment-pipeline-design/SKILL.md)` - For pipeline architecture
-- `[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md)` - For secrets handling
+- `[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)` - For secrets handling

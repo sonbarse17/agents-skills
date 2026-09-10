@@ -112,7 +112,7 @@ more conservatively here: tighter timeouts are wrong (the link is slower), but s
 breaking and explicit [monitoring](../monitoring/SKILL.md) of the link itself are right.
 
 **Done when:** the cross-boundary link has its own dedicated health signal, separate from the
-health of either side's internal services — see `[multi-cloud](../../Cloud_Providers/multi-cloud/SKILL.md)` for the broader architecture this
+health of either side's internal services — see `[multi-cloud](../../../cloud/common/other/multi-cloud/SKILL.md)` for the broader architecture this
 feeds into.
 
 ## Report

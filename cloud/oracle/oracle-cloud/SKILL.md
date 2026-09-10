@@ -37,12 +37,12 @@ depends_on:
 # Oracle Cloud Infrastructure (OCI)
 
 ## Purpose
-Manage Oracle Cloud Infrastructure resources: compute, networking, storage, IAM, OKE ([Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)), Autonomous Database, and cost governance.
+Manage Oracle Cloud Infrastructure resources: compute, networking, storage, IAM, OKE ([Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)), Autonomous Database, and cost governance.
 
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "oracle cloud", "oci", "oke", "oracle [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)", "autonomous database", "oci compute", "oci networking", "oci iam".
+Exact user phrases: "oracle cloud", "oci", "oke", "oracle [kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)", "autonomous database", "oci compute", "oci networking", "oci iam".
 
 ### Input Context
 Before activating, verify:
@@ -247,7 +247,7 @@ resource "oci_identity_dynamic_group" "compute" {
 }
 ```
 
-### Step 5: OKE (Oracle [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Engine)
+### Step 5: OKE (Oracle [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Engine)
 ```hcl
 resource "oci_containerengine_cluster" "oke" {
   compartment_id     = var.compartment_ocid
@@ -381,7 +381,7 @@ resource "oci_resourcemanager_stack" "infra" {
   description    = "Base infrastructure deployment"
   config_source {
     config_source_type = "GIT_CONFIG_SOURCE"
-    configuration_source_provider_id = oci_resourcemanager_configuration_source_provider.[github](../../CI_CD/github/SKILL.md).id
+    configuration_source_provider_id = oci_resourcemanager_configuration_source_provider.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).id
     branch_name = "main"
   }
 }
@@ -397,7 +397,7 @@ resource "oci_resourcemanager_job" "apply" {
 }
 ```
 
-### Step 10: [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) and Alerts
+### Step 10: [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and Alerts
 ```hcl
 resource "oci_monitoring_alarm" "cpu_high" {
   compartment_id     = var.compartment_ocid
@@ -459,11 +459,11 @@ resource "oci_monitoring_alarm" "cpu_high" {
   - ../../../Global_References/oracle-cloud-fundamentals.md — Oracle Cloud Fundamentals
 ## Handoff
 - `devops-terraform` for Terraform state and module patterns for OCI.
-- `devops-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)` for workload deployment on OKE clusters.
-- `devops-[docker](../../Containers_and_Orchestration/docker/SKILL.md)` for containerizing applications for OKE.
-- `devops-[hybrid-cloud](../hybrid-cloud/SKILL.md)` for connecting OCI with on-prem or other clouds.
+- `devops-[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)` for workload deployment on OKE clusters.
+- `devops-[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)` for containerizing applications for OKE.
+- `devops-[hybrid-cloud](../../common/other/hybrid-cloud/SKILL.md)` for connecting OCI with on-prem or other clouds.
 - `devops-[backup-dr](../../../Software_Engineering_and_Other/Frontend/backup-dr/SKILL.md)` for OCI-based backup and DR strategies.
-- `devops-[observability](../../Observability_and_SecOps/observability/SKILL.md)` for OCI logging and [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) integration.
+- `devops-[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)` for OCI logging and [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) integration.
 
 ## Architecture Decision Trees
 
@@ -673,7 +673,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../Observability_and_SecOps/alerting/SKILL.md)
+### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -708,7 +708,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing ([OpenTelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md))
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -725,7 +725,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH [commit](../../CI_CD/commit/SKILL.md) signing
+- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
@@ -742,6 +742,6 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - Fail securely — errors default to safe behavior.
 - Log security-relevant events for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for [observability](../../Observability_and_SecOps/observability/SKILL.md) from day one, not as an afterthought.
+- Design for [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

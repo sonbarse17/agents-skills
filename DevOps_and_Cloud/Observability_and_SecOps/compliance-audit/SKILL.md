@@ -93,7 +93,7 @@ Which industry/regulation applies?
 | 1 - Reactive | No formal controls, ad-hoc evidence | Painful, many findings |
 | 2 - Documented | Controls documented, manual evidence | Manageable, repeat findings |
 | 3 - Automated | Automated evidence collection, continuous [monitoring](../monitoring/SKILL.md) | Smooth, few findings |
-| 4 - Integrated | Compliance built into [DevSecOps](../../../Security/devsecops/SKILL.md), real-time [dashboards](../../Cloud_Providers/dashboards/SKILL.md) | Effortless, proactive |
+| 4 - Integrated | Compliance built into [DevSecOps](../../../Security/devsecops/SKILL.md), real-time [dashboards](../dashboards/SKILL.md) | Effortless, proactive |
 | 5 - Predictive | Risk-based controls, automated remediation | [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) in hours, not weeks |
 
 ## Agent Protocol
@@ -188,7 +188,7 @@ Evidence collection automation:
 - Maintain evidence index mapped to controls
 
 ### Step 4: Continuous Compliance [Monitoring](../monitoring/SKILL.md)
-Deploy compliance [dashboards](../../Cloud_Providers/dashboards/SKILL.md) showing real-time control status. Configure alerts for control failures. Schedule periodic evidence collection. Monitor access logs for anomalous patterns. Track remediation progress.
+Deploy compliance [dashboards](../dashboards/SKILL.md) showing real-time control status. Configure alerts for control failures. Schedule periodic evidence collection. Monitor access logs for anomalous patterns. Track remediation progress.
 
 Continuous [monitoring](../monitoring/SKILL.md) components:
 - Compliance posture dashboard (per framework, per control)
@@ -277,7 +277,7 @@ Practice 6: Conduct periodic tabletop audits. Walk through an [audit](../../../A
 - [ ] System description current and accurate
 - [ ] Control matrix mapped to framework requirements
 - [ ] Evidence collection automated for all controls
-- [ ] Continuous [monitoring](../monitoring/SKILL.md) [dashboards](../../Cloud_Providers/dashboards/SKILL.md) operational
+- [ ] Continuous [monitoring](../monitoring/SKILL.md) [dashboards](../dashboards/SKILL.md) operational
 - [ ] Penetration test completed (within 12 months)
 - [ ] Vendor due diligence documents current
 - [ ] Internal readiness assessment completed
@@ -570,5 +570,5 @@ A fintech company failed their SOC2 Type II [audit](../../../AI_and_Agents/Opera
   - ../../../Global_References/compliance-audit_compliance-frameworks.md -- Compliance Frameworks Reference
   - ../../../Global_References/compliance-[incident-response](../[incident](../incident/SKILL.md)-response/SKILL.md).md -- Compliance [Incident](../incident/SKILL.md) Response and Breach Notification
 ## Handoff
-For remediation implementation, hand off to `[enterprise-sla-management](../sla-management/SKILL.md)` for tracking remediation SLAs, or `[enterprise-cost-governance](../../Cloud_Providers/cost-governance/SKILL.md)` for budgeting remediation costs.
+For remediation implementation, hand off to `[enterprise-sla-management](../sla-management/SKILL.md)` for tracking remediation SLAs, or `[enterprise-cost-governance](../../../cloud/common/cost/cost-governance/SKILL.md)` for budgeting remediation costs.
 

@@ -367,7 +367,7 @@ Scalability: DVC works well for teams of 5-20 data scientists. LakeFS and Nessie
 ```yaml
 branching_strategy:
   main:
-    description: "Production data — serving [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), ML models, reports"
+    description: "Production data — serving [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), ML models, reports"
     access: "Read-only for most users, write via PR merge"
     retention: "Indefinite"
     

@@ -82,6 +82,6 @@ func take_damage(amount: int) -> void:
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../../Global_References/[godot-gdscript](../../../Game_Development/[godot](../../../Game_Development/godot/SKILL.md)-gdscript/SKILL.md)-patterns_details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../Global_References/[godot-gdscript](../../../Game_Development/godot/SKILL.md)-gdscript/SKILL.md)-patterns_details.md`. Read that file when the navigation tier above is insufficient.
 
 

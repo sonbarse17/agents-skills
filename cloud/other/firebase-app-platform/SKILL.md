@@ -28,7 +28,7 @@ Use this skill when:
 - Building mobile or web apps with real-time data sync
 - Need authentication with minimal backend code
 - Prototyping quickly with managed infrastructure
-- Building [serverless](../../Containers_and_Orchestration/serverless/SKILL.md) APIs with Cloud Functions
+- Building [serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) APIs with Cloud Functions
 - Hosting static sites or SPAs with CDN
 
 ## Prerequisites
@@ -352,7 +352,7 @@ STRIPE_KEY=sk_test_xxx
 
 - Write strict Firestore security rules before any other code
 - Separate environments by [Firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) project (staging/production)
-- Enable budget alerts and quota [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) in GCP console
+- Enable budget alerts and quota [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) in GCP console
 - Move privileged logic into Cloud Functions (never trust the client)
 - Use App Check to prevent API abuse from non-app clients
 - Enable Firestore [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging for compliance

@@ -19,17 +19,17 @@ depends_on:
 
 # AWS RDS
 
-Deploy and manage Amazon RDS relational databases with production-grade backups, replication, [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md), and security.
+Deploy and manage Amazon RDS relational databases with production-grade backups, replication, [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), and security.
 
 ## When to Use This Skill
 
-- Provisioning a managed [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md), [MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md), MariaDB, Oracle, or SQL Server database
+- Provisioning a managed [PostgreSQL](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md), [MySQL](../../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md), MariaDB, Oracle, or SQL Server database
 - Setting up Multi-AZ deployments for high availability
 - Creating read replicas for horizontal read scaling
 - Configuring automated backups, snapshots, and point-in-time recovery
 - Tuning database parameters for performance
 - Migrating from self-managed databases to RDS
-- [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) database performance and setting up alarms
+- [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) database performance and setting up alarms
 
 ## Prerequisites
 
@@ -56,7 +56,7 @@ aws rds describe-db-subnet-groups \
 ## Create a Production Database
 
 ```bash
-# Create a [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) 16 Multi-AZ instance
+# Create a [PostgreSQL](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) 16 Multi-AZ instance
 aws rds create-db-instance \
   --db-instance-identifier production-api-db \
   --db-instance-class db.r6g.large \
@@ -79,11 +79,11 @@ aws rds create-db-instance \
   --auto-minor-version-upgrade \
   --deletion-protection \
   --copy-tags-to-snapshot \
-  --[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-interval 60 \
-  --[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-role-arn arn:aws:iam::123456789012:role/rds-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-role \
+  --[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-interval 60 \
+  --[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-role-arn arn:aws:iam::123456789012:role/rds-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-role \
   --enable-performance-insights \
   --performance-insights-retention-period 7 \
-  --enable-cloudwatch-logs-exports '["[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)","upgrade"]' \
+  --enable-cloudwatch-logs-exports '["[postgresql](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)","upgrade"]' \
   --tags '[
     {"Key":"Environment","Value":"production"},
     {"Key":"Team","Value":"backend"},
@@ -122,7 +122,7 @@ aws secretsmanager get-secret-value \
 aws rds create-db-parameter-group \
   --db-parameter-group-name production-pg16 \
   --db-parameter-group-family postgres16 \
-  --description "Production [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) 16 parameters"
+  --description "Production [PostgreSQL](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) 16 parameters"
 
 # Set performance parameters
 aws rds modify-db-parameter-group \
@@ -155,8 +155,8 @@ aws rds create-db-instance-read-replica \
   --db-instance-class db.r6g.large \
   --availability-zone us-east-1b \
   --enable-performance-insights \
-  --[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-interval 60 \
-  --[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-role-arn arn:aws:iam::123456789012:role/rds-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-role
+  --[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-interval 60 \
+  --[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-role-arn arn:aws:iam::123456789012:role/rds-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-role
 
 # Create a cross-region read replica for DR
 aws rds create-db-instance-read-replica \
@@ -222,7 +222,7 @@ aws rds copy-db-snapshot \
 aws rds delete-db-snapshot --db-snapshot-identifier old-snapshot-name
 ```
 
-## [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) and Alarms
+## [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and Alarms
 
 ```bash
 # Set CPU utilization alarm
@@ -332,7 +332,7 @@ resource "aws_db_instance" "main" {
   monitoring_interval                   = 60
   monitoring_role_arn                   = aws_iam_role.rds_monitoring.arn
 
-  enabled_cloudwatch_logs_exports = ["[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)", "upgrade"]
+  enabled_cloudwatch_logs_exports = ["[postgresql](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)", "upgrade"]
 
   tags = {
     Environment = "production"

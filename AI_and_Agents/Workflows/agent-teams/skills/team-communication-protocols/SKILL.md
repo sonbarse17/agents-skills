@@ -155,7 +155,7 @@ Find team members by reading the config file:
 {
   "members": [
     {
-      "name": "[security-reviewer](../../../../../DevOps_and_Cloud/Cloud_Providers/security-reviewer/SKILL.md)",
+      "name": "[security-reviewer](../../../../../Security/security-reviewer/SKILL.md)",
       "agentId": "uuid-here",
       "agentType": "team-reviewer"
     },
@@ -193,4 +193,4 @@ This is a deadlock: both are blocked waiting for the other to finish first. The 
 ## Related Skills
 
 - [team-composition-patterns](../[team-composition-patterns](../[team-composition-patterns](../../../../../Product_and_Business/team-composition-patterns/SKILL.md)/SKILL.md)/SKILL.md) — Select agent types and team size before establishing communication norms
-- [parallel-feature-development](../[parallel-feature-development](../[parallel-feature-development](../../../parallel-feature-development/SKILL.md)/SKILL.md)/SKILL.md) — Use communication protocols to coordinate integration handoffs between parallel implementers
+- [parallel-feature-development](../parallel-feature-development/SKILL.md)/SKILL.md)/SKILL.md) — Use communication protocols to coordinate integration handoffs between parallel implementers

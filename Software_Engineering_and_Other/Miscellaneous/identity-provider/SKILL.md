@@ -516,5 +516,5 @@ SCIM sync configured for user creation but not deactivation. When an employee le
   - ../../../Global_References/conditional-access-[zero-trust](../../../Security/zero-trust/SKILL.md).md -- Conditional Access and [Zero-Trust](../../../Security/zero-trust/SKILL.md) Identity
 
 ## Handoff
-For compliance requirements on identity governance, hand off to `[enterprise-compliance-audit](../../../DevOps_and_Cloud/Observability_and_SecOps/compliance-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)/SKILL.md)`. For cost tracking of IdP licensing, hand off to `[enterprise-cost-governance](../../../DevOps_and_Cloud/Cloud_Providers/cost-governance/SKILL.md)`.
+For compliance requirements on identity governance, hand off to `[enterprise-compliance-audit](../../../DevOps_and_Cloud/Observability_and_SecOps/compliance-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)/SKILL.md)`. For cost tracking of IdP licensing, hand off to `[enterprise-cost-governance](../../../cloud/common/cost/cost-governance/SKILL.md)`.
 

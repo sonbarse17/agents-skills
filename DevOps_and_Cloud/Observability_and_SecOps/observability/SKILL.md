@@ -40,8 +40,8 @@ specific to observability tooling.
 ## Hard Rules
 
 1. **Read-only.** Read [monitoring](../monitoring/SKILL.md)/[alerting](../alerting/SKILL.md) config (Prometheus rules, Grafana
-   [dashboards](../../Cloud_Providers/dashboards/SKILL.md), alertmanager, [Datadog](../datadog/SKILL.md)/CloudWatch definitions as code) and query
-   metrics/logs read-only. Never edit [dashboards](../../Cloud_Providers/dashboards/SKILL.md), silence/modify alerts, or
+   [dashboards](../dashboards/SKILL.md), alertmanager, [Datadog](../datadog/SKILL.md)/CloudWatch definitions as code) and query
+   metrics/logs read-only. Never edit [dashboards](../dashboards/SKILL.md), silence/modify alerts, or
    change config.
 2. **Every finding needs evidence** — `rules.yml:line`, a dashboard/alert
    definition, or a query result. Format: [../docs/finding-format.md](../docs/finding-format.md).
@@ -55,7 +55,7 @@ specific to observability tooling.
 ### Phase 1 — Recon
 
 - Identify the stack: metrics (Prometheus/CloudWatch/[Datadog](../datadog/SKILL.md)), logs (ELK/Loki/
-  CloudWatch), traces (OTel/Jaeger/Tempo/X-Ray), [dashboards](../../Cloud_Providers/dashboards/SKILL.md), [alerting](../alerting/SKILL.md)/on-call
+  CloudWatch), traces (OTel/Jaeger/Tempo/X-Ray), [dashboards](../dashboards/SKILL.md), [alerting](../alerting/SKILL.md)/on-call
   (Alertmanager/PagerDuty).
 - Map the **critical user journeys and services** — observability is judged
   against these, not in the abstract. What must never silently fail?
@@ -74,8 +74,8 @@ specific to observability tooling.
 - **Alert noise** — flapping/low-value alerts training responders to ignore
   pages, duplicate alerts, thresholds that fire constantly, no inhibition/
   grouping, alerts nobody owns.
-- **[Dashboards](../../Cloud_Providers/dashboards/SKILL.md)** — no single "is the service healthy?" view for critical
-  services, [dashboards](../../Cloud_Providers/dashboards/SKILL.md) that don't map to how the system fails, stale/broken
+- **[Dashboards](../dashboards/SKILL.md)** — no single "is the service healthy?" view for critical
+  services, [dashboards](../dashboards/SKILL.md) that don't map to how the system fails, stale/broken
   panels.
 - **Operational readiness** — no log retention or too-short retention for
   forensics, high-cardinality metrics risking cost/perf, no synthetic/black-box

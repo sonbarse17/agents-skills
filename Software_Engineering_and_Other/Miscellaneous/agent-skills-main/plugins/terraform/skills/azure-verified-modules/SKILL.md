@@ -19,8 +19,8 @@ depends_on:
 This guide covers the mandatory requirements for Azure Verified Modules certification. These requirements ensure consistency, quality, and maintainability across Azure Terraform modules.
 
 **References:**
-- [Azure Verified Modules](https://azure.[github](../../../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/[Azure-Verified-Modules](../../../../../../../DevOps_and_Cloud/Infrastructure_as_Code/azure-verified-modules/SKILL.md)/)
-- [AVM Module Specifications](https://azure.[github](../../../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/[Azure-Verified-Modules](../../../../../../../DevOps_and_Cloud/Infrastructure_as_Code/azure-verified-modules/SKILL.md)/specs/module-specs/)
+- [Azure Verified Modules](https://azure.[github](../../../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/[Azure-Verified-Modules](../../../../../../../cloud/azure/iac/azure-verified-modules/SKILL.md)/)
+- [AVM Module Specifications](https://azure.[github](../../../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/[Azure-Verified-Modules](../../../../../../../cloud/azure/iac/azure-verified-modules/SKILL.md)/specs/module-specs/)
 
 ## Table of Contents
 

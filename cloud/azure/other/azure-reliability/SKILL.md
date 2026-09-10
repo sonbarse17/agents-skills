@@ -91,10 +91,10 @@ Two-step assessment: **platform-level discovery first, then per-service deep div
 
 | Platform check | Reference |
 |---|---|
-| Zone redundancy — discovery | [../../../Global_References/zone-redundancy-checks.md](../../../Global_References/zone-redundancy-checks.md) |
-| Storage redundancy (cross-service) | [../../../Global_References/storage-redundancy-checks.md](../../../Global_References/storage-redundancy-checks.md) |
-| Multi-region & global load balancers | [../../../Global_References/multi-region-checks.md](../../../Global_References/multi-region-checks.md) |
-| Front Door / Traffic Manager / App Insights probes | [../../../Global_References/health-probe-checks.md](../../../Global_References/health-probe-checks.md) |
+| Zone redundancy — discovery | [../../../Global_References/zone-redundancy-checks.md](../../../../Global_References/zone-redundancy-checks.md) |
+| Storage redundancy (cross-service) | [../../../Global_References/storage-redundancy-checks.md](../../../../Global_References/storage-redundancy-checks.md) |
+| Multi-region & global load balancers | [../../../Global_References/multi-region-checks.md](../../../../Global_References/multi-region-checks.md) |
+| Front Door / Traffic Manager / App Insights probes | [../../../Global_References/health-probe-checks.md](../../../../Global_References/health-probe-checks.md) |
 
 **Step 2 — Per-service deep dive.** For each compute resource discovered in Step 1, load the matching service reference. The service reference is the single source of truth for that service's plan/SKU rules, assessment queries, CLI commands, IaC patches (Bicep + Terraform + AVM), and reporting hints.
 
@@ -193,14 +193,14 @@ The exact CLI commands per service live in the per-service references — pick t
 |---|---|
 | Enable zone redundancy / configure health probes (Functions) | [references/services/functions/reliability.md](references/services/functions/reliability.md) |
 | Enable zone redundancy / configure health probes (App Service) | [references/services/app-service/reliability.md](references/services/app-service/reliability.md) |
-| Upgrade storage replication (cross-service) | [../../../Global_References/configure-storage.md](../../../Global_References/configure-storage.md) |
-| Set up multi-region (cross-service) | [../../../Global_References/configure-multi-region.md](../../../Global_References/configure-multi-region.md) |
-| Platform overview / verification | [../../../Global_References/configure-zone-redundancy.md](../../../Global_References/configure-zone-redundancy.md), [../../../Global_References/configure-health-probes.md](../../../Global_References/configure-health-probes.md) |
+| Upgrade storage replication (cross-service) | [../../../Global_References/configure-storage.md](../../../../Global_References/configure-storage.md) |
+| Set up multi-region (cross-service) | [../../../Global_References/configure-multi-region.md](../../../../Global_References/configure-multi-region.md) |
+| Platform overview / verification | [../../../Global_References/configure-zone-redundancy.md](../../../../Global_References/configure-zone-redundancy.md), [../../../Global_References/configure-health-probes.md](../../../../Global_References/configure-health-probes.md) |
 
 **Execution order — always quick wins first:**
 
 1. **Zone redundancy on compute** (fast, in-place property update on the App's plan).
-2. **Health probes** (Premium / Dedicated only — in-place; for FC1 / Consumption, follow the consent gate in [configure-health-probes.md](../../../Global_References/configure-health-probes.md)).
+2. **Health probes** (Premium / Dedicated only — in-place; for FC1 / Consumption, follow the consent gate in [configure-health-probes.md](../../../../Global_References/configure-health-probes.md)).
 3. **Verify** the compute changes succeeded before doing anything else.
 4. **⛔ STOP — Ask about storage upgrade.** Compute is now zone-redundant, but storage may still be LRS or GRS. Ask the user explicitly:
 
@@ -253,8 +253,8 @@ The IaC patching framework (detection, AVM-module guidance, deploy-order rule, s
 
 | IaC Type | Framework reference |
 |---|---|
-| Bicep | [../../../Global_References/iac-patching-bicep.md](../../../Global_References/iac-patching-bicep.md) |
-| Terraform | [../../../Global_References/iac-patching-terraform.md](../../../Global_References/iac-patching-terraform.md) |
+| Bicep | [../../../Global_References/iac-patching-bicep.md](../../../../Global_References/iac-patching-bicep.md) |
+| Terraform | [../../../Global_References/iac-patching-terraform.md](../../../../Global_References/iac-patching-terraform.md) |
 
 The actual **per-service compute patches** (Function App plan ZR, App Service Plan ZR, etc.) live in the per-service references — load the matching service file from Phase 2 for the exact Bicep / Terraform / AVM snippets. Only Azure Functions and App Service have per-service references in this skill version; Container Apps is out of scope.
 
@@ -323,7 +323,7 @@ After the migration completes, the skill patches the storage SKU in IaC and runs
 After changes are applied (CLI) or deployed (IaC), automatically re-run the assessment and show the **same feature-pivoted table** as Phase 3, with each feature row's status updated to reflect the new state. Briefly call out what changed since the previous run.
 
 ```
-🔄 Reliability Re-Assessment — rg-eventhubs-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-jan13 (eastus)
+🔄 Reliability Re-Assessment — rg-eventhubs-[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-jan13 (eastus)
 ───────────────────────────────────────────────────────────────────────────────────────
 Reliability Feature              Status      Resources
 ───────────────────────────────────────────────────────────────────────────────────────
@@ -358,7 +358,7 @@ The next step (optional) is multi-region failover with Azure Front Door:
 Do you want me to set up multi-region failover now? (yes / no / later)
 ```
 
-- **yes** → proceed with [../../../Global_References/configure-multi-region.md](../../../Global_References/configure-multi-region.md). Confirm secondary region choice with the user, then:
+- **yes** → proceed with [../../../Global_References/configure-multi-region.md](../../../../Global_References/configure-multi-region.md). Confirm secondary region choice with the user, then:
   1. Generate the multi-region IaC (Bicep / Terraform additions for the secondary region + Front Door).
   2. Confirm once with the user: `📦 Multi-region IaC generated. Ready to deploy with \`azd up\`. Proceed? (yes / no)`
   3. On **yes**, **the skill runs the deploy itself** (`azd up` / `az deployment group create` / `terraform apply`) and streams output. Do not stop and tell the user to run it.
@@ -374,7 +374,7 @@ Do you want me to set up multi-region failover now? (yes / no / later)
 | Critical | No zone redundancy AND production workload | Fix immediately |
 | High | LRS storage on zone-redundant compute | Fix within days |
 | Medium | No multi-region (single region but zone-redundant) | Plan for next sprint |
-| Low | Missing health probes or [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) gaps | Track and fix |
+| Low | Missing health probes or [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) gaps | Track and fix |
 
 ## Error Handling
 

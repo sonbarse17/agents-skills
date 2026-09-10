@@ -348,7 +348,7 @@ Deployment target?
 ├── [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) → Distroless [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) image
 │   Health: /healthz and /readyz endpoints
 │   Graceful shutdown with signal handling
-├── [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) → AWS Lambda ([aws-lambda](../../../DevOps_and_Cloud/Cloud_Providers/aws-lambda/SKILL.md)-go) / Cloud Functions
+├── [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) → AWS Lambda ([aws-lambda](../../../cloud/aws/compute/aws-lambda/SKILL.md)-go) / Cloud Functions
 │   Stateless handlers, no long-running goroutines
 └── Edge → WASM target or tinygo for WebAssembly
 ```

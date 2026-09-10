@@ -34,7 +34,7 @@ depends_on:
 # Data Lineage
 
 ## Purpose
-Capture, store, query, and visualize end-to-end data lineage from source systems through transformations to [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), supporting impact analysis, root cause investigation, and data governance compliance.
+Capture, store, query, and visualize end-to-end data lineage from source systems through transformations to [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), supporting impact analysis, root cause investigation, and data governance compliance.
 
 ## Agent Protocol
 
@@ -47,7 +47,7 @@ Before activating, verify:
 - Transformation tools (dbt, Airflow, Spark, custom SQL)
 - Existing lineage infrastructure (OpenLineage, DataHub, Amundsen, manual)
 - Compliance requirements (GDPR, SOX, BCBS 239)
-- Consumer tools (Looker, Tableau, custom [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md))
+- Consumer tools (Looker, Tableau, custom [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md))
 
 ### Output Artifact
 Lineage configuration with OpenLineage integration, Marquez deployment, column-level lineage SQL parser config, and impact analysis report.
@@ -421,7 +421,7 @@ lineage_ui:
     staging: "#2196F3"      # Blue — staging area
     intermediate: "#FF9800" # Orange — transformations
     mart: "#9C27B0"         # Purple — consumption layer
-    dashboard: "#F44336"    # Red — BI [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) / reports
+    dashboard: "#F44336"    # Red — BI [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) / reports
     failed: "#607D8B"       # Gray — failed dependencies
 ```
 

@@ -45,7 +45,7 @@ depends_on:
 4. **Migrate incrementally** — Apply strangler fig pattern with feature flags. Route traffic via a facade; shift load gradually.
    - *Validation checkpoint:* Verify error rates and latency metrics remain within baseline thresholds after each traffic increment (e.g., 5% → 25% → 50% → 100%).
 
-5. **Validate & iterate** — Run full test suite, review [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), and confirm business behavior is preserved before retiring legacy code.
+5. **Validate & iterate** — Run full test suite, review [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), and confirm business behavior is preserved before retiring legacy code.
    - *Validation checkpoint:* New code must be proven stable at 100% traffic for at least one release cycle before legacy path is removed.
 
 ## Reference Guide
@@ -146,7 +146,7 @@ When implementing modernization, provide:
 2. Migration plan (phases, rollback strategy, metrics)
 3. Implementation code (facades, adapters, new services)
 4. Test coverage (characterization, integration, e2e)
-5. [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) setup (metrics, alerts, [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md))
+5. [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) setup (metrics, alerts, [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md))
 
 ## Knowledge Reference
 

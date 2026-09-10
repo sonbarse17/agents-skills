@@ -28,7 +28,7 @@ Copy the template from [assets/template.py](assets/template.py) and replace plac
 
 ## Authentication Patterns
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Languages/python/SKILL.md)
 # Optional auth - returns None if not authenticated
 current_user: Optional[User] = Depends(get_current_user)
 
@@ -38,7 +38,7 @@ current_user: User = Depends(get_current_user_required)
 
 ## Response Models
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Languages/python/SKILL.md)
 @router.get("/items/{item_id}", response_model=Item)
 async def get_item(item_id: str) -> Item:
     ...
@@ -50,7 +50,7 @@ async def list_items() -> list[Item]:
 
 ## HTTP Status Codes
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Languages/python/SKILL.md)
 @router.post("/items", status_code=status.HTTP_201_CREATED)
 async def create_item(item: ItemCreate) -> Item:
   ...
@@ -77,5 +77,5 @@ async def delete_item(id: str) -> None:
 
 | File | Contents |
 |------|----------|
-| [../../../../../Global_References/fastapi-router-py_capabilities.md](../../../../../Global_References/fastapi-router-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
+| [../../../../../Global_References/fastapi-router-py_capabilities.md](../../../../Global_References/fastapi-router-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
 

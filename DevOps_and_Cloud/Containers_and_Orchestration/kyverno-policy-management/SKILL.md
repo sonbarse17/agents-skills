@@ -345,7 +345,7 @@ versus when Rego's generality is worth the learning-curve cost.
   newer `ClusterCleanupPolicy`/JSON payload support, some non-[Kubernetes](../kubernetes/SKILL.md)
   JSON validation) — but non-[Kubernetes](../kubernetes/SKILL.md) IaC gating (Terraform plan JSON,
   arbitrary CI artifacts) is squarely OPA/Conftest's use case as covered
-  in [policy-as-code-guardrails](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[policy-as-code-guardrails](../../../Security/[policy-as-code](../../../Security/policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md).
+  in [policy-as-code-guardrails](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[policy-as-code-guardrails](../../../Security/policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md).
   Use Kyverno for [Kubernetes](../kubernetes/SKILL.md)-native admission policy and OPA/Conftest for
   IaC/CI-time checks rather than forcing one engine to do both.
 
@@ -471,7 +471,7 @@ is passing for all existing Pods before the team flips it from `[Audit](../../..
   configuration checks (resource limits, probes, security context) that
   may cover a policy before it's worth writing a custom Kyverno rule for
   it.
-- [policy-as-code-guardrails](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[policy-as-code-guardrails](../../../Security/[policy-as-code](../../../Security/policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md) —
+- [policy-as-code-guardrails](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[policy-as-code-guardrails](../../../Security/policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md) —
   the broader [policy-as-code](../../../Security/policy-as-code/SKILL.md) rationale and [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-before-enforce
   discipline this skill's rollout steps follow.
 - [secure-cicd-gates](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) —

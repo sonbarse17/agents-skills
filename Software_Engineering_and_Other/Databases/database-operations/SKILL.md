@@ -78,7 +78,7 @@ A replica that only exists for failover is doing half its job. Routing read-heav
 replicas takes load off the primary, but it only works if the application tolerates the
 replication lag that comes with it.
 
-- **Route reads that can tolerate slight staleness to replicas** — [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), reports, list
+- **Route reads that can tolerate slight staleness to replicas** — [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), reports, list
   views — and keep reads that must be immediately consistent on the primary.
 - **Monitor replication lag as a first-class metric**, since an application silently reading
   stale data after a write is a correctness bug, not a performance quirk.

@@ -16,7 +16,7 @@ depends_on:
   - typescript
 ---
 
-# Azure Translation SDKs for [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+# Azure Translation SDKs for [TypeScript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 
 Text and document translation with REST-style clients.
 
@@ -43,7 +43,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 ### Authentication
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import TextTranslationClient, { TranslatorCredential } from "@azure-rest/ai-translation-text";
 
 // API Key + Region
@@ -59,7 +59,7 @@ const client2 = TextTranslationClient(credential);
 
 ### Translate Text
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import TextTranslationClient, { isUnexpected } from "@azure-rest/ai-translation-text";
 
 const response = await client.path("/translate").post({
@@ -90,7 +90,7 @@ for (const result of response.body.value) {
 
 ### Translate with Options
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const response = await client.path("/translate").post({
   body: {
     inputs: [
@@ -113,7 +113,7 @@ const response = await client.path("/translate").post({
 
 ### Get Supported Languages
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const response = await client.path("/languages").get();
 
 if (isUnexpected(response)) {
@@ -128,7 +128,7 @@ for (const [code, lang] of Object.entries(response.body.translation || {})) {
 
 ### Transliterate
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const response = await client.path("/transliterate").post({
   body: { inputs: [{ text: "这是个测试" }] },
   queryParameters: {
@@ -147,7 +147,7 @@ if (!isUnexpected(response)) {
 
 ### Detect Language
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const response = await client.path("/detect").post({
   body: { inputs: [{ text: "Bonjour le monde" }] },
 });
@@ -163,7 +163,7 @@ if (!isUnexpected(response)) {
 
 ### Authentication
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import DocumentTranslationClient from "@azure-rest/ai-translation-document";
 import { DefaultAzureCredential, ManagedIdentityCredential } from "@azure/identity";
 
@@ -184,7 +184,7 @@ const client2 = DocumentTranslationClient(endpoint, { key: "<api-key>" });
 
 ### Single Document Translation
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import DocumentTranslationClient from "@azure-rest/ai-translation-document";
 import { writeFile } from "node:fs/promises";
 
@@ -211,7 +211,7 @@ if (response.status === "200") {
 
 ### Batch Document Translation
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { ContainerSASPermissions, BlobServiceClient } from "@azure/storage-blob";
 
 // Generate SAS URLs for source and target containers
@@ -246,7 +246,7 @@ const operationId = new URL(response.headers["operation-location"])
 
 ### Get Translation Status
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { isUnexpected, paginate } from "@azure-rest/ai-translation-document";
 
 const statusResponse = await client.path("/document/batches/{id}", operationId).get();
@@ -269,7 +269,7 @@ for await (const doc of documents) {
 
 ### Get Supported Formats
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const response = await client.path("/document/formats").get();
 
 if (!isUnexpected(response)) {
@@ -281,7 +281,7 @@ if (!isUnexpected(response)) {
 
 ## Key Types
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Text Translation
 import type {
   TranslatorCredential,

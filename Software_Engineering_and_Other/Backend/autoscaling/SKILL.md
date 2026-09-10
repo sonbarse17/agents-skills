@@ -100,7 +100,7 @@ users experience the worst of an unhandled spike.
   a request shape (e.g. huge memory, tiny CPU) that doesn't match any available instance type will
   stay Pending forever, autoscaler or not.
 - **Bin-packing and node group choice** affect both cost and scale-up latency — that tradeoff is
-  covered from the cost angle in `[cost-optimization](../../../DevOps_and_Cloud/Cloud_Providers/cost-optimization/SKILL.md)` and `[rightsizing](../../../DevOps_and_Cloud/Cloud_Providers/rightsizing/SKILL.md)`.
+  covered from the cost angle in `[cost-optimization](../../../cloud/common/cost/cost-optimization/SKILL.md)` and `[rightsizing](../../../cloud/common/cost/rightsizing/SKILL.md)`.
 
 **Done when:** you've confirmed, under a load test, that the cluster autoscaler actually adds
 [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) fast enough for the workload's real spike shape.

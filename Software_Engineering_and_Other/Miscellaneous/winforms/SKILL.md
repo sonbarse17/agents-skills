@@ -73,7 +73,7 @@ What is the app complexity?
 ├── Moderate complexity (multi-form, reports, printing)
 │   → MDI parent with child forms
 │   → DataSet/DataTable for offline data, PrintDocument for reports
-├── Complex LOB ([dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), charts, real-time updates)
+├── Complex LOB ([dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), charts, real-time updates)
 │   → Custom user controls, UserControl composition
 │   → BackgroundWorker for async, Chart control or custom GDI+
 └── Legacy migration target (modernizing WinForms)

@@ -105,7 +105,7 @@ Performance critical?
   YES → Cilium (eBPF, direct routing, XDP acceleration)
   NO → Flannel (VXLAN overlay, simple)
 
-Multi-cluster / [multi-cloud](../../Cloud_Providers/multi-cloud/SKILL.md)?
+Multi-cluster / [multi-cloud](../../../cloud/common/other/multi-cloud/SKILL.md)?
   YES → Cilium ClusterMesh or Submariner
   NO → Calico (single-cluster is fine)
 ```

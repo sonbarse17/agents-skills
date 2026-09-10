@@ -52,7 +52,7 @@ alternative is covered there.
 ## When to use
 
 - Standing up persistent, dynamically-provisioned storage on a
-  [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) or on-prem [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) cluster with no cloud [block-storage](../../Cloud_Providers/block-storage/SKILL.md)
+  [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) or on-prem [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) cluster with no cloud [block-storage](../../../cloud/common/storage/block-storage/SKILL.md)
   service available.
 - Deciding OSD device placement and count per node for a new
   `CephCluster`.
@@ -431,7 +431,7 @@ spec:
 ## Cross-references
 
 - [rook-ceph-configuration-validation](../[rook-ceph-configuration-validation](../rook-ceph-configuration-validation/SKILL.md)/SKILL.md) — validating `ceph status`/OSD placement/PG health before trusting this cluster for production.
-- [longhorn-storage-configuration](../[longhorn-storage-configuration](../[longhorn](../longhorn/SKILL.md)-storage-configuration/SKILL.md)/SKILL.md) — a simpler [block-storage](../../Cloud_Providers/block-storage/SKILL.md)-only alternative when object storage and CephFS aren't required.
+- [longhorn-storage-configuration](../[longhorn-storage-configuration](../[longhorn](../longhorn/SKILL.md)-storage-configuration/SKILL.md)/SKILL.md) — a simpler [block-storage](../../../cloud/common/storage/block-storage/SKILL.md)-only alternative when object storage and CephFS aren't required.
 - [etcd-backup-restore-and-cluster-health](../[etcd-backup-restore-and-cluster-health](../../Containers_and_Orchestration/etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md) — the same quorum/failure-domain reasoning applied to etcd rather than Ceph monitors.
 - [cloud-native-storage-strategy](../../../cloud/skills/[cloud-native-storage-strategy](../../Cloud_Providers/cloud-native-storage-strategy/SKILL.md)/SKILL.md) — broader decision framework for choosing in-cluster storage (Rook/[Longhorn](../longhorn/SKILL.md)) vs. cloud-managed storage.
 - [velero-backup-and-restore](../../../[observability](../observability/SKILL.md)-and-platform-extras/skills/[velero-backup-and-restore](../../Containers_and_Orchestration/velero-[backup-and-restore](../../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)/SKILL.md)/SKILL.md) — backing up PVC data (including Rook-backed volumes) at the application/workload level.

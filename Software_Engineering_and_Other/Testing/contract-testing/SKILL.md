@@ -209,7 +209,7 @@ Provider Service Development
 | 2: Defined | Basic consumer tests | Single consumer, no broker, manual verification |
 | 3: Managed | Broker with CI integration | Pact Broker, CI verification, canary checks |
 | 4: Measured | Multi-service contracts | All services covered, webhook alerts, trend reports |
-| 5: Optimized | Cross-team contract governance | Contract review board, automated compatibility gates, SLA [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) |
+| 5: Optimized | Cross-team contract governance | Contract review board, automated compatibility gates, SLA [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) |
 
 ## Contract Testing Examples
 
@@ -414,7 +414,7 @@ When a provider verification fails, the affected consumer team must be notified 
 | 2: Defined | Basic consumer contracts | Single consumer-provider pair, Pact tests for critical endpoints, no broker, manual verification |
 | 3: Managed | Broker with CI gates | Pact Broker deployed, consumer contracts published in CI, provider verification in CI, can-i-deploy gating deployments |
 | 4: Measured | Multi-service contract coverage | All inter-service boundaries covered, webhook alerts on failures, version compatibility matrix tracked, canary release supported |
-| 5: Optimized | Contract-driven architecture | Contracts defined before implementation (contract-first), automated compatibility gates across environments, cross-team contract review board, SLA [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) |
+| 5: Optimized | Contract-driven architecture | Contracts defined before implementation (contract-first), automated compatibility gates across environments, cross-team contract review board, SLA [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) |
 
 ## Performance Considerations
 

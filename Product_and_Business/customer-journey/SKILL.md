@@ -260,7 +260,7 @@ Creating a journey map as a one-time exercise and never updating it. Customer be
 
 ### Measurement
 - Track both leading indicators (engagement, support volume, feature adoption) and lagging indicators (churn, LTV, NPS).
-- Design [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) with a hierarchy: overall health score → funnel metrics → stage-level CSAT → segment comparison.
+- Design [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) with a hierarchy: overall health score → funnel metrics → stage-level CSAT → segment comparison.
 - Set automated alerts for metrics dropping below threshold — intervene before churn accelerates.
 - Re-baseline after each optimization cycle to track improvement trajectory.
 - Document lessons learned from each experiment in a shared repository.

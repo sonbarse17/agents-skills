@@ -618,7 +618,7 @@ check_data_quality() {
 
 - Partition **large tables** by date and cluster by frequently filtered columns (customer_id, region)
 - Use **columnar file formats** (Parquet, ORC) with compression (snappy, zstd) instead of CSV/JSON
-- Enable **materialized views** in the warehouse for pre-aggregated [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)
+- Enable **materialized views** in the warehouse for pre-aggregated [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md)
 - Optimize **Spark shuffle** — set `spark.sql.adaptive.coalescePartitions.enabled = true`
 - Use **incremental loads** instead of full table refreshes for daily batch pipelines
 - Size **Airflow worker concurrency** based on task type (IO-bound vs CPU-bound)

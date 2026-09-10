@@ -268,7 +268,7 @@ batch converged, not just the last one [Ansible](../../Infrastructure_as_Code/an
 - Never bake secrets into the AMI itself (Packer provisioner scripts that
   echo/write credentials persist in the resulting image's filesystem) —
   fetch runtime secrets from a secrets manager at boot time instead, per
-  [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md)/SKILL.md).
+  [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md).
 
 ## Common pitfalls
 

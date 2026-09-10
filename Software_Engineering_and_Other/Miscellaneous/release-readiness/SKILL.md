@@ -38,7 +38,7 @@ specific to a go/no-go review.
 
 ## Hard Rules
 
-1. **Read-only.** Read code, IaC, pipelines, [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), [runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md); run
+1. **Read-only.** Read code, IaC, pipelines, [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), [runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md); run
    read-only checks only. Never deploy, promote, flip flags, or change config.
 2. **Every gate verdict is evidence-based** — cite the config, manifest,
    dashboard, or pipeline that proves a gate passes or fails.
@@ -69,7 +69,7 @@ Assess each gate and mark **PASS / FAIL / N/A** with evidence.
 - **Reliability** — health/readiness probes, [autoscaling](../../Backend/autoscaling/SKILL.md) and [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) for
   expected load (load-tested if high-stakes), no single points of failure,
   graceful degradation of dependencies, timeouts/retries/circuit breakers.
-- **[Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)** — golden-signal metrics, [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) for the release,
+- **[Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)** — golden-signal metrics, [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) for the release,
   **alerts that would catch this release going wrong**, deploy annotations to
   correlate a regression with the rollout, logs with correlation IDs.
 - **Security** — no unresolved high/critical vulns on the release path, secrets
@@ -121,7 +121,7 @@ Effort keywords (`quick` / `standard` / `deep`) and the shared `<focus>` and
 - Bare → full readiness review and go/no-go for the release in scope.
 - `quick` → the hard-blocker gates only (rollback, safe deploy, critical
   alerts, passing verification) for a fast go/no-go.
-- `deep` → every gate plus cross-checks against live config and [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md).
+- `deep` → every gate plus cross-checks against live config and [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md).
 - Focus (`rollback`, `[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)`, `security`, `[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)`) → that gate group.
 - `plan <description>` → spec one known blocker fix.
 

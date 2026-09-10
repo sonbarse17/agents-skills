@@ -23,7 +23,7 @@ depends_on:
   - deploy-model
 ---
 
-# @azure/storage-queue ([TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)/JavaScript)
+# @azure/storage-queue ([TypeScript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)/JavaScript)
 
 SDK for Azure Queue Storage operations — send, receive, peek, and manage messages in queues.
 
@@ -50,7 +50,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 ### Microsoft Entra Token Credential (Recommended)
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { QueueServiceClient } from "@azure/storage-queue";
 import { DefaultAzureCredential, ManagedIdentityCredential } from "@azure/identity";
 
@@ -69,7 +69,7 @@ const client = new QueueServiceClient(
 
 ### Connection String
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { QueueServiceClient } from "@azure/storage-queue";
 
 const client = QueueServiceClient.fromConnectionString(
@@ -79,7 +79,7 @@ const client = QueueServiceClient.fromConnectionString(
 
 ### StorageSharedKeyCredential (Node.js only)
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { QueueServiceClient, StorageSharedKeyCredential } from "@azure/storage-queue";
 
 const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME!;
@@ -94,7 +94,7 @@ const client = new QueueServiceClient(
 
 ### SAS Token
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { QueueServiceClient } from "@azure/storage-queue";
 
 const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME!;
@@ -117,7 +117,7 @@ QueueServiceClient (account level)
 
 ### Create Queue
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const queueClient = client.getQueueClient("my-queue");
 await queueClient.create();
 
@@ -127,7 +127,7 @@ await queueClient.createIfNotExists();
 
 ### List Queues
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 for await (const queue of client.listQueues()) {
   console.log(queue.name);
 }
@@ -140,7 +140,7 @@ for await (const queue of client.listQueues({ prefix: "task-" })) {
 
 ### Delete Queue
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 await queueClient.delete();
 
 // Or delete if exists
@@ -149,7 +149,7 @@ await queueClient.deleteIfExists();
 
 ### Get Queue Properties
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const properties = await queueClient.getProperties();
 console.log("Approximate message count:", properties.approximateMessagesCount);
 console.log("Metadata:", properties.metadata);
@@ -157,7 +157,7 @@ console.log("Metadata:", properties.metadata);
 
 ### Set Queue Metadata
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 await queueClient.setMetadata({
   department: "engineering",
   priority: "high",
@@ -168,7 +168,7 @@ await queueClient.setMetadata({
 
 ### Send Message
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const queueClient = client.getQueueClient("my-queue");
 
 // Simple message
@@ -187,7 +187,7 @@ await queueClient.sendMessage(JSON.stringify(task));
 
 ### Receive Messages
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Receive up to 32 messages (default: 1)
 const response = await queueClient.receiveMessages({
   numberOfMessages: 10,
@@ -211,7 +211,7 @@ for (const message of response.receivedMessageItems) {
 
 Peek without removing from queue (no visibility timeout).
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const response = await queueClient.peekMessages({
   numberOfMessages: 5,
 });
@@ -227,7 +227,7 @@ for (const message of response.peekedMessageItems) {
 
 Extend visibility timeout or update content.
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Receive a message
 const response = await queueClient.receiveMessages();
 const message = response.receivedMessageItems[0];
@@ -248,7 +248,7 @@ if (message) {
 
 ### Delete Message
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // After receiving
 const response = await queueClient.receiveMessages();
 const message = response.receivedMessageItems[0];
@@ -260,7 +260,7 @@ if (message) {
 
 ### Clear All Messages
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 await queueClient.clearMessages();
 ```
 
@@ -268,7 +268,7 @@ await queueClient.clearMessages();
 
 ### Basic Worker Pattern
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 async function processQueue(queueClient: QueueClient): Promise<void> {
   while (true) {
     const response = await queueClient.receiveMessages({
@@ -306,7 +306,7 @@ function sleep(ms: number): Promise<void> {
 
 ### Poison Message Handling
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const MAX_DEQUEUE_COUNT = 5;
 
 async function processWithPoisonHandling(
@@ -339,7 +339,7 @@ async function processWithPoisonHandling(
 
 ### Batch Processing with Visibility Extension
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 async function processBatchWithExtension(queueClient: QueueClient): Promise<void> {
   const response = await queueClient.receiveMessages({
     numberOfMessages: 1,
@@ -379,7 +379,7 @@ async function processBatchWithExtension(queueClient: QueueClient): Promise<void
 
 By default, messages are Base64 encoded. You can [customize](../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) this:
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { QueueClient } from "@azure/storage-queue";
 
 // Custom encoder/decoder for plain text
@@ -408,7 +408,7 @@ const customQueueClient = new QueueClient(
 
 ### Generate Queue SAS
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import {
   QueueSASPermissions,
   generateQueueSASQueryParameters,
@@ -432,7 +432,7 @@ const sasUrl = `https://${accountName}.queue.core.windows.net/my-queue?${sasToke
 
 ### Generate Account SAS
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import {
   AccountSASPermissions,
   AccountSASResourceTypes,
@@ -453,7 +453,7 @@ const sasToken = generateAccountSASQueryParameters(
 
 ## Error Handling
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { RestError } from "@azure/storage-queue";
 
 try {
@@ -481,9 +481,9 @@ try {
 }
 ```
 
-## [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) Types Reference
+## [TypeScript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) Types Reference
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import {
   // Clients
   QueueServiceClient,

@@ -397,7 +397,7 @@ Key insight: Cost-effective scale unmoderated testing catches issues quickly
 Impact: 8% checkout conversion recovered by fixing critical issues
 
 ### Case Study 3: Persona-Driven Redesign
-A B2B analytics platform had a single dashboard design for all users. UX research involving 18 interviews and a 200-person survey revealed 4 distinct user types with fundamentally different needs. The "Executive" persona needed high-level KPIs and trends; the "Analyst" persona needed raw data exploration and export. Creating persona-specific [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) increased daily active usage by 45% and reduced support tickets by 30%.
+A B2B analytics platform had a single dashboard design for all users. UX research involving 18 interviews and a 200-person survey revealed 4 distinct user types with fundamentally different needs. The "Executive" persona needed high-level KPIs and trends; the "Analyst" persona needed raw data exploration and export. Creating persona-specific [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) increased daily active usage by 45% and reduced support tickets by 30%.
 
 Method: 18 interviews + 200-response survey → 4 validated personas
 Key insight: One-size-fits-all design was serving no segment well

@@ -36,13 +36,13 @@ depends_on:
 
 An on-prem Internal Developer Platform inverts almost every assumption
 the four cloud-specific skills in this repo make: there is no landing
-zone with account-vending guardrails, no managed [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) control plane,
+zone with account-vending guardrails, no managed [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) control plane,
 no managed database, and — if the environment is air-gapped or
 network-restricted — no assumption of reachable public registries or SaaS
 identity providers. What replaces those is self-managed infrastructure the
 platform team is fully responsible for at every layer, and a self-service
 model built around internal identity (LDAP/AD) and internal-only approval
-rather than cloud IAM and cloud budget policy. [Multi-tenancy](../../Containers_and_Orchestration/multi-tenancy/SKILL.md) is treated as
+rather than cloud IAM and cloud budget policy. [Multi-tenancy](../../../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md) is treated as
 a first-class design phase here, not a later add-on, because a shared
 on-prem cluster has none of the cheap "just vend another account/
 subscription/project" isolation the cloud variants can lean on.
@@ -55,7 +55,7 @@ subscription/project" isolation the cloud variants can lean on.
 - Building an IDP for an air-gapped or low-connectivity site where image
   pulls, chart repositories, and package installs cannot assume live
   internet access.
-- Migrating a self-hosted [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) environment that already exists
+- Migrating a self-hosted [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) environment that already exists
   (kubeadm-provisioned, vSphere-hosted) toward a Backstage-based platform,
   rather than starting from a cloud landing zone.
 - Designing strong team/tenant isolation on a single shared on-prem
@@ -66,17 +66,17 @@ subscription/project" isolation the cloud variants can lean on.
 
 ## Prerequisites & environment
 
-- A virtualization baseline (vSphere, or [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) via PXE/MAAS) already
+- A virtualization baseline (vSphere, or [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) via PXE/MAAS) already
   standardized, with inventory-as-code (IPAM/DCIM) covering the nodes this
   cluster will run on.
 - Enough physical/VM [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) provisioned with real lead time — unlike
-  cloud, there's no on-demand node to add mid-[incident](../../Observability_and_SecOps/incident/SKILL.md); [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-plan with
+  cloud, there's no on-demand node to add mid-[incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md); [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-plan with
   actual procurement/allocation lead time in mind.
 - A private container registry (e.g., Harbor or an equivalent) reachable
   from every cluster node, pre-populated with mirrored copies of every
   base image, Helm chart, and CNCF tool image this build needs if the
   environment has no reliable outbound internet access.
-- `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md)`, `helm` ≥ 3.8, `etcdctl` matching the cluster's etcd version,
+- `[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)`, `helm` ≥ 3.8, `etcdctl` matching the cluster's etcd version,
   and (if adopting Cluster API) `clusterctl`, all available from an
   internal tooling host or bastion — not assumed to be freely
   downloadable at deploy time in an air-gapped site.
@@ -93,7 +93,7 @@ subscription/project" isolation the cloud variants can lean on.
 
 **Phase 1 — On-prem infrastructure baseline.** Establish inventory-as-code
 before touching hardware, choose and standardize the virtualization
-platform (vSphere is the common baseline; [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) via PXE/MAAS/Redfish
+platform (vSphere is the common baseline; [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) via PXE/MAAS/Redfish
 is the alternative), automate provisioning rather than hand-installing
 OSes, and decide the hybrid connectivity model back to any cloud
 dependency that remains (even an air-gapped site sometimes needs a
@@ -103,7 +103,7 @@ one-way path for patches). See
 variant** — under-provisioning discovered mid-build costs weeks of
 procurement lead time, not a changed instance type.
 
-**Phase 2 — Self-managed [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) cluster via kubeadm/Cluster API, with
+**Phase 2 — Self-managed [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cluster via kubeadm/Cluster API, with
 etcd health as an explicit ongoing concern.** Bootstrap the control plane
 with `kubeadm init`, decide stacked vs. external etcd for the control-plane
 HA model, and put a load balancer/VIP in front of the API server before
@@ -112,10 +112,10 @@ declaratively across many clusters/sites matters, layer Cluster API on
 top. See
 [kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../../Containers_and_Orchestration/[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-cluster-provisioning-with-kubeadm-and-cluster-api/SKILL.md)/SKILL.md).
 Because this cluster's control plane has no managed-service SLA behind
-it, treat etcd snapshot backups and quorum/health [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) as a
+it, treat etcd snapshot backups and quorum/health [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) as a
 standing operational phase from day one, not an [incident-response](../../Observability_and_SecOps/[incident](../../Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)
 afterthought — see
-[etcd-backup-restore-and-cluster-health](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[etcd-backup-restore-and-cluster-health](../../Containers_and_Orchestration/etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md).
+[etcd-backup-restore-and-cluster-health](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[etcd-backup-restore-and-cluster-health](../../../../DevOps_and_Cloud/Containers_and_Orchestration/etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md).
 This phase has no equivalent in the managed-cluster cloud variants, where
 the cloud provider owns etcd entirely.
 
@@ -123,9 +123,9 @@ the cloud provider owns etcd entirely.
 confirm) a private registry reachable from every node, expose it internally
 via ingress-nginx with a TLS certificate issued from an internal CA rather
 than public ACME — see
-[ingress-nginx-configuration](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[ingress-nginx-configuration](../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md)
+[ingress-nginx-configuration](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[ingress-nginx-configuration](../../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md)
 and
-[cert-manager-tls-automation](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[cert-manager-tls-automation](../../Containers_and_Orchestration/cert-manager-tls-automation/SKILL.md)/SKILL.md)
+[cert-manager-tls-automation](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[cert-manager-tls-automation](../../../../DevOps_and_Cloud/Containers_and_Orchestration/cert-manager-tls-automation/SKILL.md)/SKILL.md)
 for the private-CA issuance path specifically — and mirror every image and
 chart this build depends on (Backstage's own image, Postgres, any CNCF
 add-on) before assuming Phase 4 can simply `helm install` against a public
@@ -135,19 +135,19 @@ requiring its mirrored internal equivalent instead** — this is the single
 biggest source of "works everywhere else, fails here" surprises in an
 on-prem build.
 
-**Phase 4 — Backstage on the cluster, backed by self-hosted [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) on
+**Phase 4 — Backstage on the cluster, backed by self-hosted [PostgreSQL](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) on
 in-cluster block storage.** Package Backstage as a Helm chart, deploy it
-against a Postgres instance running in-cluster on Rook-Ceph or [Longhorn](../../Observability_and_SecOps/longhorn/SKILL.md)
+against a Postgres instance running in-cluster on Rook-Ceph or [Longhorn](../../../../DevOps_and_Cloud/Observability_and_SecOps/longhorn/SKILL.md)
 block storage (Rook-Ceph if object/shared-filesystem storage is also
-needed elsewhere on this cluster; [Longhorn](../../Observability_and_SecOps/longhorn/SKILL.md) if only replicated block
+needed elsewhere on this cluster; [Longhorn](../../../../DevOps_and_Cloud/Observability_and_SecOps/longhorn/SKILL.md) if only replicated block
 storage is required — see
-[rook-ceph-storage-operations](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[rook-ceph-storage-operations](../../Observability_and_SecOps/rook-ceph-storage-operations/SKILL.md)/SKILL.md)
+[rook-ceph-storage-operations](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[rook-ceph-storage-operations](../../../../DevOps_and_Cloud/Observability_and_SecOps/rook-ceph-storage-operations/SKILL.md)/SKILL.md)
 and
 [longhorn-storage-configuration](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[longhorn-storage-configuration](../../Observability_and_SecOps/[longhorn](../../Observability_and_SecOps/longhorn/SKILL.md)-storage-configuration/SKILL.md)/SKILL.md)
 for the tradeoff), and bind Backstage's own authentication to the site's
 existing LDAP/AD rather than a cloud identity provider. Chart packaging
 follows
-[helm-chart-authoring](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[helm-chart-authoring](../../Containers_and_Orchestration/helm-chart-authoring/SKILL.md)/SKILL.md);
+[helm-chart-authoring](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[helm-chart-authoring](../../../../DevOps_and_Cloud/Containers_and_Orchestration/helm-chart-authoring/SKILL.md)/SKILL.md);
 custom backend/frontend logic (very likely needed here for an LDAP/AD auth
 provider plugin) follows
 [backstage-plugin-development](../[backstage-plugin-development](../../../Software_Engineering_and_Other/Backend/backstage-plugin-development/SKILL.md)/SKILL.md).
@@ -183,7 +183,7 @@ estimate. Keep the same state-machine and server-side-gate pattern as the
 cloud variants. See
 [platform-self-service-api-and-workflow-design](../[platform-self-service-api-and-workflow-design](../../../Product_and_Business/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md).
 
-**Phase 8 — [Multi-tenancy](../../Containers_and_Orchestration/multi-tenancy/SKILL.md) and team workspace design, front and center.**
+**Phase 8 — [Multi-tenancy](../../../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md) and team workspace design, front and center.**
 Because this cluster has no cheap cloud-account-per-team escape hatch,
 decide the tenancy model deliberately before onboarding a second team:
 namespace-per-team with RBAC, ResourceQuotas, and default-deny
@@ -202,7 +202,7 @@ on-call rotation reachable internally), sequence rollout from a real pilot
 team, and size the platform team per the thinnest-viable-platform
 discipline. See
 [service-scorecards-and-maturity-model-design](../[service-scorecards-and-maturity-model-design](../../../Product_and_Business/service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md),
-[idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../[idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../../../Software_Engineering_and_Other/Miscellaneous/idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md),
+[idp-adoption-rollout-and-[change-management](../../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../[idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../../../Software_Engineering_and_Other/Miscellaneous/idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md),
 and
 [platform-engineering-team-topology-and-operating-model](../[platform-engineering-team-topology-and-operating-model](../../../Product_and_Business/[platform-engineering](../../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md).
 
@@ -215,7 +215,7 @@ and
 - Test an actual etcd restore from a Phase 2 snapshot before the cluster
   carries real workloads, not for the first time during a real control-
   plane failure — see
-  [etcd-backup-restore-and-cluster-health](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[etcd-backup-restore-and-cluster-health](../../Containers_and_Orchestration/etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md).
+  [etcd-backup-restore-and-cluster-health](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[etcd-backup-restore-and-cluster-health](../../../../DevOps_and_Cloud/Containers_and_Orchestration/etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md).
 - Decide Phase 8's tenancy model before Phase 7's self-service goes live
   for a second team — retrofitting namespace boundaries onto teams already
   sharing a cluster is materially harder than designing them in up front,
@@ -227,7 +227,7 @@ and
   recommends — an untested air-gapped install script that quietly reaches
   out to the public internet during a live cutover is a common and
   avoidable failure.
-- Keep an explicit [runbook](../../Observability_and_SecOps/runbook/SKILL.md) for procurement/[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) lead time next to
+- Keep an explicit [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) for procurement/[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) lead time next to
   Phase 1's inventory-as-code — a platform team used to cloud elasticity
   will otherwise plan Phase 7's self-service approval SLAs assuming
   [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) that isn't actually available on short notice.
@@ -239,7 +239,7 @@ and
   real air-gapped site.
   **Fix:** Some step in the template's CI pipeline or Dockerfile has an
   unmirrored dependency (a base image tag not yet in the Phase 3 registry,
-  an npm/yarn package resolving against the public registry). [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) the
+  an npm/yarn package resolving against the public registry). [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) the
   full dependency chain against the site's actual network policy, not
   just against what worked during development, and add any missing
   artifact to the mirror before re-publishing the template.
@@ -248,12 +248,12 @@ and
   quorum after a single node failure, taking the whole cluster — including
   Backstage and the self-service layer — down with it.
   **Fix:** This usually means the etcd cluster was left at an
-  even-numbered or too-small member count, or health/quorum [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
+  even-numbered or too-small member count, or health/quorum [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
   from
-  [etcd-backup-restore-and-cluster-health](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[etcd-backup-restore-and-cluster-health](../../Containers_and_Orchestration/etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md)
+  [etcd-backup-restore-and-cluster-health](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[etcd-backup-restore-and-cluster-health](../../../../DevOps_and_Cloud/Containers_and_Orchestration/etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md)
   was never actually wired up to alert before quorum was lost. Restore
   from the most recent verified snapshot, then correct the member count
-  and [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) gap before declaring the cluster production-ready again.
+  and [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) gap before declaring the cluster production-ready again.
 
 - **Symptom:** A team requests self-service infrastructure (Phase 7) and
   the request sits unactioned for over a week because the named approver
@@ -271,10 +271,10 @@ and
   **Fix:** This is what happens when Phase 8 is treated as a later
   hardening pass instead of a prerequisite to onboarding a second tenant.
   Retrofit namespace-scoped RBAC and a default-deny NetworkPolicy
-  immediately, and [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) every self-service request made before the fix
+  immediately, and [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) every self-service request made before the fix
   for improperly-scoped access.
 
-- **Symptom:** A platform engineer runs `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) delete namespace` against
+- **Symptom:** A platform engineer runs `[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) delete namespace` against
   what's believed to be a decommissioned team's workspace to reclaim
   [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), and it turns out another team's shared resources (a
   Crossplane-provisioned internal resource, a shared cache) were
@@ -292,7 +292,7 @@ and
 segmented on-prem environment with no reliable outbound internet access
 and must self-host its entire IDP.
 
-1. **Phase 1:** Inventory-as-code models three racks of [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) hosts;
+1. **Phase 1:** Inventory-as-code models three racks of [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) hosts;
    PXE-based automated provisioning installs the base OS; [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
    planning reserves headroom for one full node failure without service
    loss.
@@ -309,7 +309,7 @@ and must self-host its entire IDP.
    storage, authenticating developers via the site's existing Active
    Directory.
 5. **Phase 5:** A golden-path template's CI workflow runs on an internal
-   [Jenkins](../../CI_CD/jenkins/SKILL.md) instance and pulls its base image exclusively from
+   [Jenkins](../../../../DevOps_and_Cloud/CI_CD/jenkins/SKILL.md) instance and pulls its base image exclusively from
    `registry.internal.anchorage`.
 6. **Phase 6:** A validation pipeline scaffolds a test service on this
    same cluster's `ephemeral-validation` namespace and confirms zero
@@ -328,12 +328,12 @@ and must self-host its entire IDP.
 ## Cross-references
 
 - [on-prem-infrastructure-patterns](../../../cloud/skills/[on-prem-infrastructure-patterns](../on-prem-infrastructure-patterns/SKILL.md)/SKILL.md) — Phase 1.
-- [kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../../Containers_and_Orchestration/[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-cluster-provisioning-with-kubeadm-and-cluster-api/SKILL.md)/SKILL.md), [etcd-backup-restore-and-cluster-health](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[etcd-backup-restore-and-cluster-health](../../Containers_and_Orchestration/etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md) — Phase 2.
-- [ingress-nginx-configuration](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[ingress-nginx-configuration](../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md), [cert-manager-tls-automation](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[cert-manager-tls-automation](../../Containers_and_Orchestration/cert-manager-tls-automation/SKILL.md)/SKILL.md) — Phase 3.
-- [rook-ceph-storage-operations](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[rook-ceph-storage-operations](../../Observability_and_SecOps/rook-ceph-storage-operations/SKILL.md)/SKILL.md), [longhorn-storage-configuration](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[longhorn-storage-configuration](../../Observability_and_SecOps/[longhorn](../../Observability_and_SecOps/longhorn/SKILL.md)-storage-configuration/SKILL.md)/SKILL.md), [helm-chart-authoring](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[helm-chart-authoring](../../Containers_and_Orchestration/helm-chart-authoring/SKILL.md)/SKILL.md), [backstage-plugin-development](../[backstage-plugin-development](../../../Software_Engineering_and_Other/Backend/backstage-plugin-development/SKILL.md)/SKILL.md) — Phase 4.
+- [kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../../Containers_and_Orchestration/[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-cluster-provisioning-with-kubeadm-and-cluster-api/SKILL.md)/SKILL.md), [etcd-backup-restore-and-cluster-health](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[etcd-backup-restore-and-cluster-health](../../../../DevOps_and_Cloud/Containers_and_Orchestration/etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md) — Phase 2.
+- [ingress-nginx-configuration](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[ingress-nginx-configuration](../../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md), [cert-manager-tls-automation](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[cert-manager-tls-automation](../../../../DevOps_and_Cloud/Containers_and_Orchestration/cert-manager-tls-automation/SKILL.md)/SKILL.md) — Phase 3.
+- [rook-ceph-storage-operations](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[rook-ceph-storage-operations](../../../../DevOps_and_Cloud/Observability_and_SecOps/rook-ceph-storage-operations/SKILL.md)/SKILL.md), [longhorn-storage-configuration](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[longhorn-storage-configuration](../../Observability_and_SecOps/[longhorn](../../Observability_and_SecOps/longhorn/SKILL.md)-storage-configuration/SKILL.md)/SKILL.md), [helm-chart-authoring](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[helm-chart-authoring](../../../../DevOps_and_Cloud/Containers_and_Orchestration/helm-chart-authoring/SKILL.md)/SKILL.md), [backstage-plugin-development](../[backstage-plugin-development](../../../Software_Engineering_and_Other/Backend/backstage-plugin-development/SKILL.md)/SKILL.md) — Phase 4.
 - [golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../../../Product_and_Business/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md) — Phase 5.
 - [golden-path-template-validation-and-testing](../[golden-path-template-validation-and-testing](../../CI_CD/golden-path-template-validation-and-testing/SKILL.md)/SKILL.md) — Phase 6.
 - [platform-self-service-api-and-workflow-design](../[platform-self-service-api-and-workflow-design](../../../Product_and_Business/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md) — Phase 7.
 - [multi-tenancy-and-team-workspace-design-for-idp](../[multi-tenancy-and-team-workspace-design-for-idp](../../../Software_Engineering_and_Other/Miscellaneous/[multi-tenancy](../../Containers_and_Orchestration/multi-tenancy/SKILL.md)-and-team-workspace-design-for-idp/SKILL.md)/SKILL.md) — Phase 8.
-- [service-scorecards-and-maturity-model-design](../[service-scorecards-and-maturity-model-design](../../../Product_and_Business/service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md), [idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../[idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../../../Software_Engineering_and_Other/Miscellaneous/idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md), [platform-engineering-team-topology-and-operating-model](../[platform-engineering-team-topology-and-operating-model](../../../Product_and_Business/[platform-engineering](../../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md) — Phase 9.
+- [service-scorecards-and-maturity-model-design](../[service-scorecards-and-maturity-model-design](../../../Product_and_Business/service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md), [idp-adoption-rollout-and-[change-management](../../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../[idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../../../Software_Engineering_and_Other/Miscellaneous/idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md), [platform-engineering-team-topology-and-operating-model](../[platform-engineering-team-topology-and-operating-model](../../../Product_and_Business/[platform-engineering](../../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md) — Phase 9.
 - [complete-idp-deployment-on-k3s-from-scratch](../[complete-idp-deployment-on-k3s-from-scratch](../../CI_CD/complete-idp-deployment-on-k3s-from-scratch/SKILL.md)/SKILL.md) — the lighter-weight self-hosted variant for a single small site rather than a full regulated on-prem estate.

@@ -120,7 +120,7 @@ minority of components that genuinely can't be made stateless this way.
 Not everything belongs on this model — a handful of legacy systems or specialized appliances
 can't be cleanly re-imaged on every change without disproportionate cost. For those, converge
 them deliberately with configuration management instead of pretending they're immutable while
-secretly patching them by hand. See `[configuration-management](../../Cloud_Providers/configuration-management/SKILL.md)` for that model and how to choose
+secretly patching them by hand. See `[configuration-management](../../../cloud/common/other/configuration-management/SKILL.md)` for that model and how to choose
 between the two honestly.
 
 **Done when:** every host that isn't immutable has been explicitly designated as such, with a

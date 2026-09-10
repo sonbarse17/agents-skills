@@ -877,5 +877,5 @@ func init() {
 - references/olm-deployment.md — OLM Operator Deployment
 
 ## Handoff
-Related skills: [kubernetes](../kubernetes/SKILL.md)-patterns (K8s resource patterns), [helm-patterns](../helm-patterns/SKILL.md) (Helm chart design), [gitops](../gitops/SKILL.md)-advanced ([GitOps](../gitops/SKILL.md) with custom operators), [policy-as-code](../../../Security/policy-as-code/SKILL.md) (admission webhooks integration), [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) (operator metrics and [dashboards](../../Cloud_Providers/dashboards/SKILL.md)).
+Related skills: [kubernetes](../kubernetes/SKILL.md)-patterns (K8s resource patterns), [helm-patterns](../helm-patterns/SKILL.md) (Helm chart design), [gitops](../gitops/SKILL.md)-advanced ([GitOps](../gitops/SKILL.md) with custom operators), [policy-as-code](../../../Security/policy-as-code/SKILL.md) (admission webhooks integration), [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) (operator metrics and [dashboards](../../Observability_and_SecOps/dashboards/SKILL.md)).
 

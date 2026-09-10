@@ -392,7 +392,7 @@ Financial reporting, customer-facing data.
 PagerDuty notification.
 
 High: 99% quality score, 15-min alert SLA.
-Operational reports, team [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md).
+Operational reports, team [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md).
 Slack notification.
 
 Medium: 95% quality score, daily digest.
@@ -563,5 +563,5 @@ models:
 
 ## Handoff
 `[data-etl-pipeline](../etl-pipeline/SKILL.md)` for embedding quality checks into pipeline
-`[data-bi-tools](../../AI_and_Agents/Models_and_FineTuning/bi-tools/SKILL.md)` for displaying quality metadata on [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)
+`[data-bi-tools](../../AI_and_Agents/Models_and_FineTuning/bi-tools/SKILL.md)` for displaying quality metadata on [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md)
 

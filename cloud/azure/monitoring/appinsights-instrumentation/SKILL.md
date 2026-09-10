@@ -58,7 +58,7 @@ Find out the (programming language, application framework, hosting) tuple of the
 
 ### Prefer auto-instrument if possible
 
-If the app is a C# ASP.NET Core app hosted in Azure App Service, use [AUTO guide](../../../Global_References/auto.md) to help user auto-instrument the app.
+If the app is a C# ASP.NET Core app hosted in Azure App Service, use [AUTO guide](../../../../Global_References/auto.md) to help user auto-instrument the app.
 
 ### Manually instrument
 
@@ -75,16 +75,16 @@ No matter which option you choose, recommend the user to create the App Insights
 
 #### Modify application code
 
-- If the app is an ASP.NET Core app, see [ASPNETCORE guide](../../../Global_References/aspnetcore.md) for how to modify the C# code.
-- If the app is a Node.js app, see [NODEJS guide](../../../Global_References/nodejs.md) for how to modify the JavaScript/[TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) code.
-- If the app is a [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) app, see [PYTHON guide](../../../Global_References/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md).md) for how to modify the [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) code.
+- If the app is an ASP.NET Core app, see [ASPNETCORE guide](../../../../Global_References/aspnetcore.md) for how to modify the C# code.
+- If the app is a Node.js app, see [NODEJS guide](../../../../Global_References/nodejs.md) for how to modify the JavaScript/[TypeScript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) code.
+- If the app is a [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) app, see [PYTHON guide](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md).md) for how to modify the [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) code.
 
 ## SDK Quick References
 
-- **[OpenTelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md) Distro**: [Python](references/sdk/[azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-py](../[azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-py](../azure-sdk-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/skills/azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-py/SKILL.md)/SKILL.md).md) | [TypeScript](references/sdk/[azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-ts](../[azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-ts](../azure-sdk-[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)/skills/azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-ts/SKILL.md)/SKILL.md).md)
-- **[OpenTelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md) Exporter**: [Python](references/sdk/[azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-exporter-py](../[azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-exporter-py](../azure-sdk-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/skills/azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-exporter-py/SKILL.md)/SKILL.md).md) | [Java](references/sdk/[azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-exporter-java](../[azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-exporter-java](../azure-sdk-java/skills/azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-exporter-java/SKILL.md)/SKILL.md).md)
+- **[OpenTelemetry](../../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) Distro**: [Python](references/sdk/[azure-monitor-[opentelemetry](../../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)-py](../[azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-py](../azure-sdk-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/skills/azure-monitor-[opentelemetry](../../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)-py/SKILL.md)/SKILL.md).md) | [TypeScript](references/sdk/[azure-monitor-[opentelemetry](../../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)-ts](../[azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-ts](../azure-sdk-[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)/skills/azure-monitor-[opentelemetry](../../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)-ts/SKILL.md)/SKILL.md).md)
+- **[OpenTelemetry](../../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) Exporter**: [Python](references/sdk/[azure-monitor-[opentelemetry](../../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)-exporter-py](../[azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-exporter-py](../azure-sdk-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/skills/azure-monitor-[opentelemetry](../../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)-exporter-py/SKILL.md)/SKILL.md).md) | [Java](references/sdk/[azure-monitor-[opentelemetry](../../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)-exporter-java](../[azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-exporter-java](../azure-sdk-java/skills/azure-monitor-[opentelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md)-exporter-java/SKILL.md)/SKILL.md).md)
 
 ## Platform-Specific Guides
 
-- **Container Apps**: [Observability Guide](../../../Global_References/container-apps.md)
+- **Container Apps**: [Observability Guide](../../../../Global_References/container-apps.md)
 

@@ -536,7 +536,7 @@ BGP hold timers alone (30-120s) are too slow for modern DC failover. Always enab
   - references/bgp-automation.md — BGP Automation with [Ansible](../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md)
 ## Handoff
 - `devops-[datacenter](../datacenter/SKILL.md)` for physical cabling and patch panels.
-- `devops-[cdn-edge](../../../DevOps_and_Cloud/Cloud_Providers/cdn-edge/SKILL.md)` for global anycast and DDoS scrubbing.
-- `devops-[cloud-architecture](../../../DevOps_and_Cloud/Cloud_Providers/cloud-architecture/SKILL.md)` for cloud VPC and Transit Gateway alongside on-prem.
+- `devops-[cdn-edge](../../../cloud/common/networking/cdn-edge/SKILL.md)` for global anycast and DDoS scrubbing.
+- `devops-[cloud-architecture](../../../cloud/common/architecture/cloud-architecture/SKILL.md)` for cloud VPC and Transit Gateway alongside on-prem.
 - `[enterprise-high-availability](../../../DevOps_and_Cloud/Observability_and_SecOps/high-availability/SKILL.md)` for app-level LB and failover.
 

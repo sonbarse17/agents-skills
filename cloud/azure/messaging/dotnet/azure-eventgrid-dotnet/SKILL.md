@@ -504,4 +504,4 @@ catch (RequestFailedException)
 | API Reference | https://learn.microsoft.com/dotnet/api/azure.messaging.eventgrid |
 | Quickstart | https://learn.microsoft.com/azure/event-grid/custom-event-quickstart |
 | Pull Delivery | https://learn.microsoft.com/azure/event-grid/pull-delivery-overview |
-| [GitHub](../../CI_CD/github/SKILL.md) Source | https://[github](../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/eventgrid/Azure.Messaging.EventGrid |
+| [GitHub](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Source | https://[github](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/eventgrid/Azure.Messaging.EventGrid |

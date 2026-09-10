@@ -96,7 +96,7 @@ Primary requirement?
 │   └── Trino (vanilla)
 ├── Enterprise security, caching, managed service
 │   ├── On-prem / self-managed → Starburst Enterprise
-│   └── [Serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) [multi-cloud](../../DevOps_and_Cloud/Cloud_Providers/multi-cloud/SKILL.md) → Starburst Galaxy
+│   └── [Serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) [multi-cloud](../../cloud/common/other/multi-cloud/SKILL.md) → Starburst Galaxy
 ├── BI optimization, acceleration, self-service
 │   └── Dremio (Reflections, VDS, lineage)
 ├── Hadoop-native, older ecosystem
@@ -424,7 +424,7 @@ JOIN "s3"."lake"."orders" o ON c.customer_id = o.customer_id;
 ```
 
 #### Starburst Enterprise Features
-Data lake caching: auto-caches hot data from S3/ADLS/GCS to local SSD. Built-in RBAC: table/row/column-level via Ranger. Warp Speed native engine for faster queries. Security: Kerberos, LDAP, OAuth, TLS. Starburst Galaxy offers [serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) [multi-cloud](../../DevOps_and_Cloud/Cloud_Providers/multi-cloud/SKILL.md) managed service. Use Starburst for regulated enterprises needing enterprise security or [multi-cloud](../../DevOps_and_Cloud/Cloud_Providers/multi-cloud/SKILL.md) analytics with caching.
+Data lake caching: auto-caches hot data from S3/ADLS/GCS to local SSD. Built-in RBAC: table/row/column-level via Ranger. Warp Speed native engine for faster queries. Security: Kerberos, LDAP, OAuth, TLS. Starburst Galaxy offers [serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) [multi-cloud](../../cloud/common/other/multi-cloud/SKILL.md) managed service. Use Starburst for regulated enterprises needing enterprise security or [multi-cloud](../../cloud/common/other/multi-cloud/SKILL.md) analytics with caching.
 
 #### Alluxio — Data Virtualization Layer
 Alluxio is a virtual distributed file system that unifies data access across disparate storage. Acts as caching and metadata layer between compute engines and storage backends. Caches hot data on local SSDs/memory for 10-100x faster data access on repeated queries. Supports any storage (S3, ADLS, GCS, HDFS, NFS) and any compute (Spark, Trino, MapReduce, Flink). Namespace service provides a single mounted namespace across storage systems.
@@ -577,7 +577,7 @@ virtual_dataset:
 |---|---|---|
 | No predicate pushdown | Full table scan over network | Verify `EXPLAIN` shows source filters |
 | Too many live connections to sources | Source DB connection exhaustion | Use optimized connection pools |
-| No caching for BI [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) | Repeated expensive queries | Cache at virtualization layer |
+| No caching for BI [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) | Repeated expensive queries | Cache at virtualization layer |
 | Ignoring connector version compatibility | Query failures after upgrade | Test connector upgrades in staging |
 | Querying across cloud regions | High egress costs, slow | Co-locate engine with data sources |
 

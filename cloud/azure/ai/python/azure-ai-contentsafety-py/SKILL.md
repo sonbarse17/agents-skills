@@ -20,7 +20,7 @@ depends_on:
   - audit
 ---
 
-# Azure AI Content Safety SDK for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+# Azure AI Content Safety SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 
 Detect harmful user-generated and AI-generated content in applications.
 
@@ -42,7 +42,7 @@ CONTENT_SAFETY_KEY=<your-api-key>  # Only required for the legacy API-key auth p
 
 > **🔑 Two rules apply to every code sample below:**
 >
-> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
+> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
 >    - Local dev: `DefaultAzureCredential` works as-is.
 >    - Production: set `AZURE_TOKEN_CREDENTIALS=prod` (or `AZURE_TOKEN_CREDENTIALS=<specific_credential>`) to constrain the credential chain to production-safe credentials.
 > 2. **Wrap every client in a context manager** so HTTP transports, sockets, and token caches are released deterministically:
@@ -51,7 +51,7 @@ CONTENT_SAFETY_KEY=<your-api-key>  # Only required for the legacy API-key auth p
 >
 > Snippets may abbreviate this setup, but production code should always follow both rules.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import os
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 from azure.ai.contentsafety import ContentSafetyClient
@@ -60,7 +60,7 @@ from azure.ai.contentsafety.models import AnalyzeTextOptions
 # Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 credential = DefaultAzureCredential(require_envvar=True)
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
+# See https://learn.microsoft.com/[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 
 with ContentSafetyClient(
@@ -74,7 +74,7 @@ with ContentSafetyClient(
 
 New code should use `DefaultAzureCredential` above. Use `AzureKeyCredential` only if you have an existing keyed deployment that hasn't been migrated to Entra ID yet — for example, regulated environments still completing their Entra rollout.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import os
 from azure.core.credentials import AzureKeyCredential
 from azure.ai.contentsafety import ContentSafetyClient
@@ -91,7 +91,7 @@ The `BlocklistClient` accepts the same `AzureKeyCredential` if you also need to 
 
 ## Analyze Text
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.ai.contentsafety import ContentSafetyClient
 from azure.ai.contentsafety.models import AnalyzeTextOptions, TextCategory
 from azure.identity import DefaultAzureCredential
@@ -111,7 +111,7 @@ with ContentSafetyClient(endpoint, DefaultAzureCredential()) as client:
 
 ## Analyze Image
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.ai.contentsafety import ContentSafetyClient
 from azure.ai.contentsafety.models import AnalyzeImageOptions, ImageData
 from azure.identity import DefaultAzureCredential
@@ -134,7 +134,7 @@ with ContentSafetyClient(endpoint, DefaultAzureCredential()) as client:
 
 ### Image from URL
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.ai.contentsafety.models import AnalyzeImageOptions, ImageData
 
 request = AnalyzeImageOptions(
@@ -148,7 +148,7 @@ response = client.analyze_image(request)
 
 ### Create Blocklist
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.ai.contentsafety import BlocklistClient
 from azure.ai.contentsafety.models import TextBlocklist
 from azure.identity import DefaultAzureCredential
@@ -167,7 +167,7 @@ with BlocklistClient(endpoint, DefaultAzureCredential()) as blocklist_client:
 
 ### Add Block Items
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.ai.contentsafety.models import AddOrUpdateTextBlocklistItemsOptions, TextBlocklistItem
 
 items = AddOrUpdateTextBlocklistItemsOptions(
@@ -185,7 +185,7 @@ result = blocklist_client.add_or_update_blocklist_items(
 
 ### Analyze with Blocklist
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.ai.contentsafety.models import AnalyzeTextOptions
 
 request = AnalyzeTextOptions(
@@ -205,7 +205,7 @@ if response.blocklists_match:
 
 Text analysis returns 4 severity levels (0, 2, 4, 6) by default. For 8 levels (0-7):
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.ai.contentsafety.models import AnalyzeTextOptions, AnalyzeTextOutputType
 
 request = AnalyzeTextOptions(
@@ -247,7 +247,7 @@ request = AnalyzeTextOptions(
 4. **Set severity thresholds** appropriate for your use case
 5. **Handle multiple categories** — content can be harmful in multiple ways
 6. **Use halt_on_blocklist_hit** for immediate rejection
-7. **Log analysis results** for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and improvement
+7. **Log analysis results** for [audit](../../../../../AI_and_Agents/Operations/audit/SKILL.md) and improvement
 8. **Consider 8-severity mode** for finer-grained control
 9. **Pre-moderate AI outputs** before showing to users
 

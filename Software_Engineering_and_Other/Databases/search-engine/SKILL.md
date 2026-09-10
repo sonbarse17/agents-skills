@@ -264,7 +264,7 @@ Hot phase: full indexing, high IOPS, many replicas. Warm phase: read-only, merge
 ```
 
 ### Step 7: OpenSearch Differences
-OpenSearch is the open-source fork of Elasticsearch 7.10. API compatibility: most endpoints are identical. Key differences: Opensearch uses `opensearch.yml` instead of `elasticsearch.yml`, security plugin built-in (not X-Pack), `k-NN` plugin for vector search, PPL (Piped Processing Language) for SQL-like queries, [Dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) replaces Kibana, [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) and anomaly detection plugins built-in.
+OpenSearch is the open-source fork of Elasticsearch 7.10. API compatibility: most endpoints are identical. Key differences: Opensearch uses `opensearch.yml` instead of `elasticsearch.yml`, security plugin built-in (not X-Pack), `k-NN` plugin for vector search, PPL (Piped Processing Language) for SQL-like queries, [Dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) replaces Kibana, [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) and anomaly detection plugins built-in.
 
 ```sql
 -- OpenSearch PPL

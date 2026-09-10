@@ -378,7 +378,7 @@ More replicas = more storage overhead + more sync I/O. 3 replicas = 3x storage c
 OpenEBS offers Mayastor (NVMe-oF), Jiva, and cStor engines. Longhorn is simpler to operate (single engine type). OpenEBS Mayastor is faster for NVMe workloads. Longhorn has better built-in backup and DR features. Choose Longhorn for simplicity, OpenEBS Mayastor for performance.
 
 ### Longhorn vs Cloud Managed Storage (EBS, GCE PD)
-Cloud storage: higher cost per GB, no replica management, built-in HA (AWS handles replication). Longhorn: lower cost (use local disks), cross-cloud portability, snapshots and backup to S3. Longhorn best for on-premises, edge, or [multi-cloud](../../Cloud_Providers/multi-cloud/SKILL.md). Cloud storage best for single-cloud with deep AWS/Azure/GCP integration.
+Cloud storage: higher cost per GB, no replica management, built-in HA (AWS handles replication). Longhorn: lower cost (use local disks), cross-cloud portability, snapshots and backup to S3. Longhorn best for on-premises, edge, or [multi-cloud](../../../cloud/common/other/multi-cloud/SKILL.md). Cloud storage best for single-cloud with deep AWS/Azure/GCP integration.
 
 ## Operations & Maintenance
 

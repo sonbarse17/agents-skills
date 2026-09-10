@@ -151,7 +151,7 @@ rotation doesn't quietly burn out whoever happens to get paged the most.
    severity → mitigate (often a fast rollback or traffic shift — see
    [blue-green-canary-deployments](../../../devops/skills/[blue-green-canary-deployments](../../../DevOps_and_Cloud/CI_CD/blue-green-canary-deployments/SKILL.md)/SKILL.md)
    for the mechanics) → confirm steady state restored against the
-   service's SLO [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) → explicit stand-down/all-clear → hand the
+   service's SLO [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) → explicit stand-down/all-clear → hand the
    scribe's timeline to the postmortem process within 48-72 hours.
 
 6. **Monitor on-call health continuously**, not just after someone

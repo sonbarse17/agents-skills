@@ -87,7 +87,7 @@ access_review_workflow:
 
 ```bash
 #!/usr/bin/env bash
-# [aws-iam](../../DevOps_and_Cloud/Cloud_Providers/aws-iam/SKILL.md)-review.sh - Comprehensive IAM access review report
+# [aws-iam](../../cloud/aws/identity/aws-iam/SKILL.md)-review.sh - Comprehensive IAM access review report
 
 OUTPUT_DIR="./access-review/$(date +%Y-%m)"
 mkdir -p "$OUTPUT_DIR"
@@ -397,7 +397,7 @@ jobs:
           OKTA_DOMAIN: ${{ secrets.OKTA_DOMAIN }}
           OKTA_API_TOKEN: ${{ secrets.OKTA_API_TOKEN }}
         run: |
-          bash scripts/[aws-iam](../../DevOps_and_Cloud/Cloud_Providers/aws-iam/SKILL.md)-review.sh
+          bash scripts/[aws-iam](../../cloud/aws/identity/aws-iam/SKILL.md)-review.sh
           bash scripts/[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-access-review.sh
           bash scripts/okta-access-review.sh
 

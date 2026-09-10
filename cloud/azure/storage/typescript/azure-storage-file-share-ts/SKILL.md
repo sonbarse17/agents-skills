@@ -18,7 +18,7 @@ depends_on:
   - typescript
 ---
 
-# @azure/storage-file-share ([TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)/JavaScript)
+# @azure/storage-file-share ([TypeScript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)/JavaScript)
 
 SDK for Azure File Share operations — SMB file shares, directories, and file operations.
 
@@ -45,7 +45,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 ### Connection String (Simplest)
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { ShareServiceClient } from "@azure/storage-file-share";
 
 const client = ShareServiceClient.fromConnectionString(
@@ -55,7 +55,7 @@ const client = ShareServiceClient.fromConnectionString(
 
 ### StorageSharedKeyCredential (Node.js only)
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { ShareServiceClient, StorageSharedKeyCredential } from "@azure/storage-file-share";
 
 const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME!;
@@ -70,7 +70,7 @@ const client = new ShareServiceClient(
 
 ### Microsoft Entra Token Credential
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { ShareServiceClient } from "@azure/storage-file-share";
 import { DefaultAzureCredential, ManagedIdentityCredential } from "@azure/identity";
 
@@ -89,7 +89,7 @@ const client = new ShareServiceClient(
 
 ### SAS Token
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { ShareServiceClient } from "@azure/storage-file-share";
 
 const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME!;
@@ -113,7 +113,7 @@ ShareServiceClient (account level)
 
 ### Create Share
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const shareClient = client.getShareClient("my-share");
 await shareClient.create();
 
@@ -123,7 +123,7 @@ await shareClient.create({ quota: 100 });
 
 ### List Shares
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 for await (const share of client.listShares()) {
   console.log(share.name, share.properties.quota);
 }
@@ -136,7 +136,7 @@ for await (const share of client.listShares({ prefix: "logs-" })) {
 
 ### Delete Share
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 await shareClient.delete();
 
 // Delete if exists
@@ -145,7 +145,7 @@ await shareClient.deleteIfExists();
 
 ### Get Share Properties
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const properties = await shareClient.getProperties();
 console.log("Quota:", properties.quota, "GB");
 console.log("Last Modified:", properties.lastModified);
@@ -153,7 +153,7 @@ console.log("Last Modified:", properties.lastModified);
 
 ### Set Share Quota
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 await shareClient.setQuota(200); // 200 GB
 ```
 
@@ -161,7 +161,7 @@ await shareClient.setQuota(200); // 200 GB
 
 ### Create Directory
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const directoryClient = shareClient.getDirectoryClient("my-directory");
 await directoryClient.create();
 
@@ -172,7 +172,7 @@ await nestedDir.create();
 
 ### List Directories and Files
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const directoryClient = shareClient.getDirectoryClient("my-directory");
 
 for await (const item of directoryClient.listFilesAndDirectories()) {
@@ -186,7 +186,7 @@ for await (const item of directoryClient.listFilesAndDirectories()) {
 
 ### Delete Directory
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 await directoryClient.delete();
 
 // Delete if exists
@@ -195,7 +195,7 @@ await directoryClient.deleteIfExists();
 
 ### Check if Directory Exists
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const exists = await directoryClient.exists();
 if (!exists) {
   await directoryClient.create();
@@ -206,7 +206,7 @@ if (!exists) {
 
 ### Upload File (Simple)
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const fileClient = shareClient
   .getDirectoryClient("my-directory")
   .getFileClient("my-file.txt");
@@ -219,7 +219,7 @@ await fileClient.uploadRange(content, 0, content.length);
 
 ### Upload File (Node.js - from local file)
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import * as fs from "fs";
 import * as path from "path";
 
@@ -233,7 +233,7 @@ await fileClient.uploadFile(localFilePath);
 
 ### Upload File (Buffer)
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const buffer = Buffer.from("Hello, Azure Files!");
 const fileClient = shareClient.rootDirectoryClient.getFileClient("buffer-file.txt");
 
@@ -243,7 +243,7 @@ await fileClient.uploadRange(buffer, 0, buffer.length);
 
 ### Upload File (Stream)
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import * as fs from "fs";
 
 const fileClient = shareClient.rootDirectoryClient.getFileClient("streamed.txt");
@@ -256,7 +256,7 @@ await fileClient.uploadStream(readStream, fileSize, 4 * 1024 * 1024, 4); // 4MB 
 
 ### Download File
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const fileClient = shareClient
   .getDirectoryClient("my-directory")
   .getFileClient("my-file.txt");
@@ -273,14 +273,14 @@ const content = Buffer.concat(chunks).toString("utf-8");
 
 ### Download to File (Node.js)
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const fileClient = shareClient.rootDirectoryClient.getFileClient("my-file.txt");
 await fileClient.downloadToFile("/path/to/local/destination.txt");
 ```
 
 ### Download to Buffer (Node.js)
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const fileClient = shareClient.rootDirectoryClient.getFileClient("my-file.txt");
 const buffer = await fileClient.downloadToBuffer();
 console.log(buffer.toString());
@@ -288,7 +288,7 @@ console.log(buffer.toString());
 
 ### Delete File
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const fileClient = shareClient.rootDirectoryClient.getFileClient("my-file.txt");
 await fileClient.delete();
 
@@ -298,7 +298,7 @@ await fileClient.deleteIfExists();
 
 ### Copy File
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const sourceUrl = "https://account.file.core.windows.net/share/source.txt";
 const destFileClient = shareClient.rootDirectoryClient.getFileClient("destination.txt");
 
@@ -311,7 +311,7 @@ await copyPoller.pollUntilDone();
 
 ### Get File Properties
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const fileClient = shareClient.rootDirectoryClient.getFileClient("my-file.txt");
 const properties = await fileClient.getProperties();
 
@@ -323,7 +323,7 @@ console.log("ETag:", properties.etag);
 
 ### Set Metadata
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 await fileClient.setMetadata({
   author: "John Doe",
   category: "documents",
@@ -332,7 +332,7 @@ await fileClient.setMetadata({
 
 ### Set HTTP Headers
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 await fileClient.setHttpHeaders({
   fileContentType: "text/plain",
   fileCacheControl: "max-age=3600",
@@ -344,20 +344,20 @@ await fileClient.setHttpHeaders({
 
 ### Upload Range
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const data = Buffer.from("partial content");
 await fileClient.uploadRange(data, 100, data.length); // Write at offset 100
 ```
 
 ### Download Range
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const downloadResponse = await fileClient.download(100, 50); // offset 100, length 50
 ```
 
 ### Clear Range
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 await fileClient.clearRange(0, 100); // Clear first 100 bytes
 ```
 
@@ -365,14 +365,14 @@ await fileClient.clearRange(0, 100); // Clear first 100 bytes
 
 ### Create Snapshot
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const snapshotResponse = await shareClient.createSnapshot();
 console.log("Snapshot:", snapshotResponse.snapshot);
 ```
 
 ### Access Snapshot
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const snapshotShareClient = shareClient.withSnapshot(snapshotResponse.snapshot!);
 const snapshotFileClient = snapshotShareClient.rootDirectoryClient.getFileClient("file.txt");
 const content = await snapshotFileClient.downloadToBuffer();
@@ -380,7 +380,7 @@ const content = await snapshotFileClient.downloadToBuffer();
 
 ### Delete Snapshot
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 await shareClient.delete({ deleteSnapshots: "include" });
 ```
 
@@ -388,7 +388,7 @@ await shareClient.delete({ deleteSnapshots: "include" });
 
 ### Generate File SAS
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import {
   generateFileSASQueryParameters,
   FileSASPermissions,
@@ -412,7 +412,7 @@ const sasUrl = `https://${accountName}.file.core.windows.net/my-share/my-directo
 
 ### Generate Share SAS
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { ShareSASPermissions, generateFileSASQueryParameters } from "@azure/storage-file-share";
 
 const sasToken = generateFileSASQueryParameters(
@@ -427,7 +427,7 @@ const sasToken = generateFileSASQueryParameters(
 
 ## Error Handling
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { RestError } from "@azure/storage-file-share";
 
 try {
@@ -452,9 +452,9 @@ try {
 }
 ```
 
-## [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) Types Reference
+## [TypeScript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) Types Reference
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import {
   // Clients
   ShareServiceClient,

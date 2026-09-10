@@ -110,7 +110,7 @@ that structural and operating-model design.
    scanning, one golden-path scaffolding tier, catalog registration.
    Explicitly out of scope (revisit only if demand is demonstrated):
    multi-cluster failover, a custom internal PaaS UI, cost-allocation
-   [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), a bespoke secrets-rotation service.
+   [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), a bespoke secrets-rotation service.
    ```
    This mirrors the golden-path tiering discipline in
    [golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md)

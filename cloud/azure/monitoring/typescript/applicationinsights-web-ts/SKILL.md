@@ -26,13 +26,13 @@ depends_on:
 
 # Application Insights JavaScript SDK (Web) for [TypeScript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 
-Real User [Monitoring](../../../../Observability_and_SecOps/monitoring/SKILL.md) (RUM) for browser apps with `@microsoft/applicationinsights-web`. Auto-collects page views, AJAX/fetch dependencies, unhandled exceptions, and (with the Click Analytics plugin) clicks. Supports custom events, metrics, and **GenAI agent traces** that follow [OpenTelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md) GenAI semantic conventions and correlate to backend spans via W3C Trace Context.
+Real User [Monitoring](../../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) (RUM) for browser apps with `@microsoft/applicationinsights-web`. Auto-collects page views, AJAX/fetch dependencies, unhandled exceptions, and (with the Click Analytics plugin) clicks. Supports custom events, metrics, and **GenAI agent traces** that follow [OpenTelemetry](../../../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) GenAI semantic conventions and correlate to backend spans via W3C Trace Context.
 
-> **Distinct from `[azure-monitor-[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md)-ts](../../../[azure-monitor-[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md)-ts](../azure-monitor-[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md)-ts/SKILL.md)/SKILL.md)`**, which is for Node.js server apps. This skill is for **browser/web** code (and React Native).
+> **Distinct from `[azure-monitor-[opentelemetry](../../../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)-ts](../../../[azure-monitor-[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md)-ts](../azure-monitor-[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md)-ts/SKILL.md)/SKILL.md)`**, which is for Node.js server apps. This skill is for **browser/web** code (and React Native).
 
 ## Before Implementation
 
-Search `[microsoft-docs](../../../microsoft-docs/SKILL.md)` MCP for current API patterns:
+Search `[microsoft-docs](../../../other/microsoft-docs/SKILL.md)` MCP for current API patterns:
 
 - Query: "Application Insights JavaScript SDK setup"
 - Query: "Application Insights JavaScript SDK configuration"
@@ -213,13 +213,13 @@ Mark elements with `data-ai-*` attributes; clicks are emitted as Custom Events w
 
 ## Distributed Tracing (correlate to backend)
 
-Set `distributedTracingMode: 2` (`DistributedTracingModes.AI_AND_W3C`). The SDK adds `traceparent` (and legacy `Request-Id`) to outbound `fetch`/`XHR`. Backends instrumented with **[OpenTelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md)** (e.g. `@azure/monitor-[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md)`) auto-link to the browser's operation_Id.
+Set `distributedTracingMode: 2` (`DistributedTracingModes.AI_AND_W3C`). The SDK adds `traceparent` (and legacy `Request-Id`) to outbound `fetch`/`XHR`. Backends instrumented with **[OpenTelemetry](../../../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)** (e.g. `@azure/monitor-[opentelemetry](../../../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)`) auto-link to the browser's operation_Id.
 
 For cross-origin calls, also set `enableCorsCorrelation: true` and add the calling origin to the **CORS exposed headers** on the API.
 
 ## GenAI Agent Traces (OTel semantic conventions)
 
-When the browser invokes an AI agent (function-calling, tool-use, model calls direct from the client), emit App Insights **Dependency** telemetry whose attributes follow the [OpenTelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md) **GenAI semantic conventions** so they are queryable alongside backend agent spans in App Insights / Log Analytics.
+When the browser invokes an AI agent (function-calling, tool-use, model calls direct from the client), emit App Insights **Dependency** telemetry whose attributes follow the [OpenTelemetry](../../../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) **GenAI semantic conventions** so they are queryable alongside backend agent spans in App Insights / Log Analytics.
 
 **Set the opt-in env first** so backend instrumentations agree on the same schema version:
 
@@ -477,6 +477,6 @@ import {
 - [../../../../../Global_References/framework-extensions.md](../../../../../Global_References/framework-extensions.md) — React, React Native, Angular, Next.js, Vite recipes.
 - [../../../../../Global_References/configuration.md](../../../../../Global_References/configuration.md) — Full `IConfiguration` reference and tuning guide.
 - Microsoft Learn: <https://learn.microsoft.com/azure/azure-monitor/app/javascript-sdk>
-- ApplicationInsights-JS source: <https://[github](../../../../CI_CD/github/SKILL.md).com/microsoft/ApplicationInsights-JS>
-- OTel GenAI semantic conventions: <https://[opentelemetry](../../../../Observability_and_SecOps/opentelemetry/SKILL.md).io/docs/specs/semconv/gen-ai/>
+- ApplicationInsights-JS source: <https://[github](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/microsoft/ApplicationInsights-JS>
+- OTel GenAI semantic conventions: <https://[opentelemetry](../../../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md).io/docs/specs/semconv/gen-ai/>
 

@@ -215,7 +215,7 @@ budgets and pod-level guardrails.
    ```
 
 6. **Verify consolidation and bin-packing behavior** with
-   `[kubectl](../kubectl/SKILL.md) get nodeclaims` and node utilization [dashboards](../../Cloud_Providers/dashboards/SKILL.md) — Karpenter
+   `[kubectl](../kubectl/SKILL.md) get nodeclaims` and node utilization [dashboards](../../Observability_and_SecOps/dashboards/SKILL.md) — Karpenter
    should be replacing multiple underutilized nodes with fewer,
    better-packed ones over time, not just scaling up on demand and never
    scaling down.

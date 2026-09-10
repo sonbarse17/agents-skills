@@ -173,5 +173,5 @@ try {
 |----------|-----|
 | Product Docs | https://learn.microsoft.com/azure/ai-studio/ |
 | API Reference | https://learn.microsoft.com/rest/api/aifoundry/aiprojects/ |
-| [GitHub](../../CI_CD/github/SKILL.md) Source | https://[github](../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-java/tree/main/sdk/ai/[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-projects |
-| Samples | https://[github](../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-java/tree/main/sdk/ai/[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-projects/src/samples |
+| [GitHub](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Source | https://[github](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-java/tree/main/sdk/ai/[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-projects |
+| Samples | https://[github](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-java/tree/main/sdk/ai/[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-projects/src/samples |

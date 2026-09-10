@@ -356,7 +356,7 @@ jobs:
     imageToDeploy: 'myregistry.azurecr.io/myapp:$(Build.BuildId)'
 ```
 
-### Azure [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Service
+### Azure [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Service
 
 ```yaml
 - task: KubernetesManifest@0
@@ -371,10 +371,10 @@ jobs:
       myregistry.azurecr.io/myapp:$(Build.BuildId)
 ```
 
-## [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Builds
+## [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Builds
 
 ```yaml
-- task: [Docker](../../Containers_and_Orchestration/docker/SKILL.md)@2
+- task: [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)@2
   inputs:
     containerRegistry: 'my-acr-connection'
     repository: 'myapp'
@@ -409,7 +409,7 @@ sudo ./svc.sh start
 pool:
   name: 'my-self-hosted-pool'
   demands:
-    - [docker](../../Containers_and_Orchestration/docker/SKILL.md)
+    - [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
     - Agent.OS -equals Linux
 ```
 
@@ -439,6 +439,6 @@ pool:
 
 ## Related Skills
 
-- [github-actions](../[github-actions](../../CI_CD/[github](../../CI_CD/github/SKILL.md)-actions/SKILL.md)/) - [GitHub](../../CI_CD/github/SKILL.md) CI/CD alternative
+- [github-actions](../[github-actions](../../CI_CD/[github](../../CI_CD/github/SKILL.md)-actions/SKILL.md)/) - [GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) CI/CD alternative
 - [terraform-azure](../../../infrastructure/cloud-azure/[terraform-azure](../../Infrastructure_as_Code/terraform-azure/SKILL.md)/) - Azure IaC
 - [azure-aks](../../../infrastructure/cloud-azure/[azure-aks](../../Containers_and_Orchestration/azure-aks/SKILL.md)/) - AKS deployments

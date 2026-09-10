@@ -35,7 +35,7 @@ depends_on:
 1. **Assess reliability** - Review architecture, SLOs, incidents, toil levels
 2. **Define SLOs** - Identify meaningful SLIs and set appropriate targets
 3. **Verify alignment** - Confirm SLO targets reflect user expectations before proceeding
-4. **Implement [monitoring](../monitoring/SKILL.md)** - Build golden signal [dashboards](../../Cloud_Providers/dashboards/SKILL.md) and [alerting](../alerting/SKILL.md)
+4. **Implement [monitoring](../monitoring/SKILL.md)** - Build golden signal [dashboards](../dashboards/SKILL.md) and [alerting](../alerting/SKILL.md)
 5. **Automate toil** - Identify repetitive tasks and build automation
 6. **Test resilience** - Design and execute chaos experiments; verify recovery meets RTO/RPO targets before marking the experiment complete; validate recovery behavior end-to-end
 
@@ -47,7 +47,7 @@ Load detailed guidance based on context:
 |-------|-----------|-----------|
 | SLO/SLI | `../../../Global_References/slo-sli-management.md` | Defining SLOs, calculating error budgets |
 | Error Budgets | `../../../Global_References/error-budget-policy.md` | Managing budgets, burn rates, policies |
-| [Monitoring](../monitoring/SKILL.md) | `../../../Global_References/[monitoring](../monitoring/SKILL.md)-[alerting](../alerting/SKILL.md).md` | Golden signals, alert design, [dashboards](../../Cloud_Providers/dashboards/SKILL.md) |
+| [Monitoring](../monitoring/SKILL.md) | `../../../Global_References/[monitoring](../monitoring/SKILL.md)-[alerting](../alerting/SKILL.md).md` | Golden signals, alert design, [dashboards](../dashboards/SKILL.md) |
 | Automation | `../../../Global_References/automation-toil.md` | Toil reduction, automation patterns |
 | Incidents | `../../../Global_References/[incident](../incident/SKILL.md)-chaos.md` | [Incident](../incident/SKILL.md) response, chaos engineering |
 

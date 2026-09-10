@@ -43,14 +43,14 @@ long-lived keys) are identical even though the primitives differ.
 
 - Reducing an over-broad policy (e.g. `AdministratorAccess`, `Owner`,
   `roles/editor`) down to least privilege for a specific workload or team.
-- Setting up CI/CD pipelines ([GitHub](../../CI_CD/github/SKILL.md) Actions, GitLab CI, Azure DevOps) to
+- Setting up CI/CD pipelines ([GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions, GitLab CI, Azure DevOps) to
   authenticate to cloud APIs without storing static access keys/service
   account keys as secrets.
 - Investigating "who can do X" or "why does this role have this
-  permission" during an [incident](../../Observability_and_SecOps/incident/SKILL.md) or [audit](../../../AI_and_Agents/Operations/audit/SKILL.md).
+  permission" during an [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) or [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md).
 - Implementing break-glass emergency access that bypasses normal SSO/MFA
-  flows only when genuinely needed, with full [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging.
-- Running a quarterly or post-[incident](../../Observability_and_SecOps/incident/SKILL.md) access review to find unused
+  flows only when genuinely needed, with full [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging.
+- Running a quarterly or post-[incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) access review to find unused
   permissions, stale credentials, or orphaned service principals.
 - Responding to a cloud security posture finding like "N IAM users have
   console access keys older than 90 days" or "M service accounts have
@@ -59,17 +59,17 @@ long-lived keys) are identical even though the primitives differ.
 ## Prerequisites & environment
 
 - Read access to the relevant IAM surface: AWS IAM Access Analyzer /
-  CloudTrail, Azure AD sign-in + [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs / Entra Permissions
+  CloudTrail, Azure AD sign-in + [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs / Entra Permissions
   Management, or GCP IAM Recommender / Policy Analyzer — these tools
   generate the "what's actually used" data that least-privilege
   redesigns depend on; don't guess permissions from documentation alone.
 - For CI/CD federation: the CI platform must support OIDC token issuance
-  ([GitHub](../../CI_CD/github/SKILL.md) Actions, GitLab CI ≥ 15.7, [CircleCI](../../CI_CD/circleci/SKILL.md), Azure DevOps all do
+  ([GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions, GitLab CI ≥ 15.7, [CircleCI](../../../../DevOps_and_Cloud/CI_CD/circleci/SKILL.md), Azure DevOps all do
   natively as of 2024).
 - Terraform ≥ 1.5 (or the cloud-native IaC of choice) if policies are
   managed as code — strongly recommended over console-managed IAM once
   past a handful of roles.
-- Organizational agreement on a break-glass process owner and an [alerting](../../Observability_and_SecOps/alerting/SKILL.md)
+- Organizational agreement on a break-glass process owner and an [alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
   destination (e.g. a PagerDuty escalation) before implementing
   break-glass access, so its use is always followed up on.
 
@@ -142,7 +142,7 @@ long-lived keys) are identical even though the primitives differ.
      "role": "roles/owner",
      "members": ["user:oncall-engineer@example.com"],
      "condition": {
-       "title": "temporary-[incident](../../Observability_and_SecOps/incident/SKILL.md)-access",
+       "title": "temporary-[incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-access",
        "expression": "request.time < timestamp('2026-08-01T00:00:00Z')"
      }
    }
@@ -150,16 +150,16 @@ long-lived keys) are identical even though the primitives differ.
 
 5. **Design break-glass access deliberately, not implicitly.** Create a
    small number of emergency-access identities (e.g. an AWS IAM user held
-   in a sealed/rotated-after-use credential [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), or an Azure emergency
+   in a sealed/rotated-after-use credential [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), or an Azure emergency
    access account excluded from Conditional Access) with wide permissions
    but wired to trigger a high-priority alert on every use, and require a
-   post-use [incident](../../Observability_and_SecOps/incident/SKILL.md) review.
+   post-use [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) review.
 
 6. **Set up continuous drift detection**: run the IAM Access
    Analyzer / IAM Recommender / Azure Permissions Management scan on a
    schedule (weekly, in CI) and fail a pipeline or open a ticket when a
    new unused-permission finding appears, rather than relying on an
-   annual manual [audit](../../../AI_and_Agents/Operations/audit/SKILL.md).
+   annual manual [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md).
 
 7. **Review and prune on a cadence.** Quarterly at minimum: revoke access
    for anyone who changed teams/left, delete unused roles/service
@@ -186,7 +186,7 @@ long-lived keys) are identical even though the primitives differ.
   Terraform changes the same way you would for application code — IAM
   is production infrastructure.
 - Avoid **policy sprawl from copy-pasted "just in case" permissions** —
-  every `*` in an `Action` or `Resource` field is a future [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) finding.
+  every `*` in an `Action` or `Resource` field is a future [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) finding.
 
 ## Common pitfalls
 
@@ -196,7 +196,7 @@ long-lived keys) are identical even though the primitives differ.
   **Fix:** Access-usage reports only reflect the lookback window queried
   (often 90 days). Before tightening a policy used by infrequent
   workloads, either extend the lookback, deploy the tightened policy in
-  monitor/[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) mode first (AWS IAM Access Analyzer policy generation,
+  monitor/[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) mode first (AWS IAM Access Analyzer policy generation,
   GCP `dry-run` mode is not natively available so stage in a non-prod
   project), or keep the change behind a feature flag with a fast
   rollback path.
@@ -208,7 +208,7 @@ long-lived keys) are identical even though the primitives differ.
   **Fix:** Add environment- or branch-specific conditions instead of
   wildcarding the whole repo (e.g.
   `repo:example-org/checkout-service:environment:production`), and gate
-  production environments in the CI platform ([GitHub](../../CI_CD/github/SKILL.md) Environments,
+  production environments in the CI platform ([GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Environments,
   GitLab protected environments) so only protected branches can even
   request that OIDC token.
 
@@ -226,7 +226,7 @@ long-lived keys) are identical even though the primitives differ.
   operations because the "proper" federated path is slower or less
   convenient.
   **Fix:** This defeats the purpose of break-glass and erodes its
-  [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-trail value. Treat repeated break-glass use as a signal that the
+  [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-trail value. Treat repeated break-glass use as a signal that the
   standard access path is missing a legitimate permission — fix the
   standard path (add a scoped permission or a JIT elevation option)
   rather than normalizing the emergency path.
@@ -235,7 +235,7 @@ long-lived keys) are identical even though the primitives differ.
 
 **Scenario:** A security review finds that the `checkout-service`
 deployment pipeline authenticates to AWS using a long-lived IAM user
-access key stored as a [GitHub](../../CI_CD/github/SKILL.md) Actions secret, with `AdministratorAccess`
+access key stored as a [GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions secret, with `AdministratorAccess`
 attached "to avoid permission errors."
 
 1. Pull the IAM user's `generate-service-last-accessed-details` report —
@@ -247,10 +247,10 @@ attached "to avoid permission errors."
 3. Attach a custom policy to that role granting exactly the three
    services/actions found in step 1, scoped to the specific bucket ARN,
    ECS cluster/service ARN, and ECR repository ARN.
-4. Update the [GitHub](../../CI_CD/github/SKILL.md) Actions workflow to use
+4. Update the [GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions workflow to use
    `aws-actions/configure-aws-credentials` with `role-to-assume` instead
    of static `AWS_ACCESS_KEY_ID`/`AWS_SECRET_ACCESS_KEY` secrets, and
-   configure the workflow's `production` environment as a [GitHub](../../CI_CD/github/SKILL.md)
+   configure the workflow's `production` environment as a [GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)
    protected environment requiring a reviewer.
 5. Run the pipeline end-to-end against a staging environment to confirm
    the scoped role works, then delete the IAM user and its access key.

@@ -387,7 +387,7 @@ maintenance_review:
   - [ ] Version number incremented
   - [ ] Change log entry added
   - [ ] Related [runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md) section is up to date
-  - [ ] Links to [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) and docs are valid (not broken)
+  - [ ] Links to [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) and docs are valid (not broken)
 ```
 
 ## [Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) Testing Procedures

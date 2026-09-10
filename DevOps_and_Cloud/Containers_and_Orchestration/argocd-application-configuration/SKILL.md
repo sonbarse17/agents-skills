@@ -278,7 +278,7 @@ sync wave/phase ordering, hooks, and custom health checks.
 - Write custom health checks for every CRD your `Application`s manage that
   isn't in Argo CD's built-in list — an `Application` reporting `Healthy`
   the instant a custom resource is created (because Argo CD doesn't know
-  how to check it) hides real provisioning failures from [dashboards](../../Cloud_Providers/dashboards/SKILL.md) and
+  how to check it) hides real provisioning failures from [dashboards](../../Observability_and_SecOps/dashboards/SKILL.md) and
   alerts.
 - Set `retry.limit` and `backoff` explicitly on sync policy rather than
   leaving Argo CD to retry indefinitely against a resource that will never

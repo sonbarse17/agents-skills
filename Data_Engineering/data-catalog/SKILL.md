@@ -160,7 +160,7 @@ source:
       lineage_type: COLUMN
 ```
 
-Column-level lineage enables impact analysis: "which [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) break if I change this column?" and root cause analysis: "which source column caused this data quality issue?"
+Column-level lineage enables impact analysis: "which [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) break if I change this column?" and root cause analysis: "which source column caused this data quality issue?"
 
 ### Step 4: Business Glossary
 
@@ -277,13 +277,13 @@ Which sources first?
 - Monitor ingestion pipeline health and alert on failures within 24 hours.
 - Link business glossary terms to technical columns for complete discoverability.
 - Use catalog as the access request gateway for all data assets.
-- Tier data assets: Critical (C-level reports), Important (team [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)), Operational (internal tools).
+- Tier data assets: Critical (C-level reports), Important (team [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md)), Operational (internal tools).
 - Purge metadata for deleted datasets within 30 days.
 - Catalog should support both push (real-time API) and pull (scheduled ingestion) metadata collection.
 - Implement metadata quality scoring to drive improvement.
 - Use catalog API for automated metadata operations in CI/CD.
 - Set up catalog access for all data consumers (analysts, engineers, scientists).
-- Publish catalog usage [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) to demonstrate ROI.
+- Publish catalog usage [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) to demonstrate ROI.
 
 ## Compared With
 

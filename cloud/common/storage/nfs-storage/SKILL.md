@@ -19,12 +19,12 @@ depends_on:
 
 # NFS Storage
 
-Configure NFS servers and clients for network file sharing across Linux systems. Covers NFSv4 server setup, export options, client mounting, autofs for on-demand mounts, Kerberos security, performance tuning, and [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) integration.
+Configure NFS servers and clients for network file sharing across Linux systems. Covers NFSv4 server setup, export options, client mounting, autofs for on-demand mounts, Kerberos security, performance tuning, and [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) integration.
 
 ## When to Use
 
 - Sharing directories between multiple Linux servers (web farms, build clusters)
-- Providing shared storage for containerized workloads ([Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) ReadWriteMany)
+- Providing shared storage for containerized workloads ([Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) ReadWriteMany)
 - Centralizing home directories or application data across a fleet
 - Setting up a development environment with shared project files
 - Migrating from local storage to network-attached storage
@@ -259,7 +259,7 @@ systemctl restart nfs-server
 # These are auto-negotiated but can be adjusted
 echo 1048576 > /proc/fs/nfsd/max_block_size
 
-# Kernel network buffer tuning (see [performance-tuning](../../../Software_Engineering_and_Other/Frontend/performance-tuning/SKILL.md) skill)
+# Kernel network buffer tuning (see [performance-tuning](../../../../Software_Engineering_and_Other/Frontend/performance-tuning/SKILL.md) skill)
 sysctl -w net.core.rmem_max=134217728
 sysctl -w net.core.wmem_max=134217728
 ```
@@ -288,7 +288,7 @@ fio --name=nfs-test --directory=/mnt/data --ioengine=libaio --direct=1 \
   --rw=randrw --bs=4k --numjobs=4 --size=1G --runtime=60 --group_reporting
 ```
 
-## [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) NFS Integration
+## [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) NFS Integration
 
 ```yaml
 # nfs-pv.yaml -- Static PersistentVolume
@@ -322,7 +322,7 @@ spec:
 
 ```bash
 # For dynamic provisioning, install the NFS CSI driver via Helm
-helm repo add csi-driver-nfs https://raw.githubusercontent.com/[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-csi/csi-driver-nfs/master/charts
+helm repo add csi-driver-nfs https://raw.githubusercontent.com/[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-csi/csi-driver-nfs/master/charts
 helm install csi-driver-nfs csi-driver-nfs/csi-driver-nfs --namespace kube-system
 # Then create a StorageClass pointing to your NFS server and share path.
 ```
@@ -339,12 +339,12 @@ helm install csi-driver-nfs csi-driver-nfs/csi-driver-nfs --namespace kube-syste
 | Autofs not mounting | `systemctl status autofs`, `automount -v` | Check /etc/auto.master syntax, verify server is reachable |
 | NFSv4 ID mapping wrong | `id username` on both sides | Ensure matching domain in `/etc/idmapd.conf` |
 | Boot hangs waiting for NFS | Check fstab options | Add `_netdev` and `bg` options to fstab entry |
-| [Docker](../../Containers_and_Orchestration/docker/SKILL.md) volume mount fails | `[docker](../../Containers_and_Orchestration/docker/SKILL.md) volume inspect`, `dmesg` | Verify NFS client packages installed on [Docker](../../Containers_and_Orchestration/docker/SKILL.md) host |
+| [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) volume mount fails | `[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) volume inspect`, `dmesg` | Verify NFS client packages installed on [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) host |
 
 ## Related Skills
 
-- `[linux-administration](../../../Software_Engineering_and_Other/Miscellaneous/linux-administration/SKILL.md)` -- Server setup and network configuration
+- `[linux-administration](../../../../Software_Engineering_and_Other/Miscellaneous/linux-administration/SKILL.md)` -- Server setup and network configuration
 - `[block-storage](../block-storage/SKILL.md)` -- Underlying storage for NFS server data directories
-- `[performance-tuning](../../../Software_Engineering_and_Other/Frontend/performance-tuning/SKILL.md)` -- Kernel and network tuning for NFS throughput
-- `[backup-recovery](../backup-recovery/SKILL.md)` -- Backing up NFS-hosted data
+- `[performance-tuning](../../../../Software_Engineering_and_Other/Frontend/performance-tuning/SKILL.md)` -- Kernel and network tuning for NFS throughput
+- `[backup-recovery](../../migration/backup-recovery/SKILL.md)` -- Backing up NFS-hosted data
 - `[object-storage](../object-storage/SKILL.md)` -- Alternative storage model for cloud-native workloads

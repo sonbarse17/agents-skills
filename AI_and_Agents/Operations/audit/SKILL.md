@@ -85,7 +85,7 @@ shape, plus Hard Rules 3 and 5 verbatim (subagents do not inherit them).
 - **Cost** — idle/over-provisioned resources, no [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md), unattached
   volumes, old snapshots, missing lifecycle policies. (Deep dive: `/cost`.)
 - **[Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)** — missing metrics/logs/traces, no SLOs, alert gaps or
-  noise, no [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) for critical paths. (Deep dive: `/[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)`.)
+  noise, no [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) for critical paths. (Deep dive: `/[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)`.)
 - **Operability** — manual/toil-heavy processes, no IaC (click-ops drift), no
   rollback path, missing [runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md), inconsistent environments.
 

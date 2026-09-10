@@ -19,21 +19,21 @@ depends_on:
 
 # AWS ECS & Fargate
 
-Run containerized applications on Amazon ECS with Fargate [serverless](../../Containers_and_Orchestration/serverless/SKILL.md) compute or EC2 launch type.
+Run containerized applications on Amazon ECS with Fargate [serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) compute or EC2 launch type.
 
 ## When to Use This Skill
 
-- Deploying [Docker](../../Containers_and_Orchestration/docker/SKILL.md) containers to AWS without managing servers (Fargate)
-- Running [microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) with service discovery and load balancing
+- Deploying [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) containers to AWS without managing servers (Fargate)
+- Running [microservices](../../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) with service discovery and load balancing
 - Setting up blue/green or rolling deployments for containerized apps
 - Configuring auto-scaling for container workloads
-- Migrating from [docker-compose](../../Containers_and_Orchestration/[docker](../../Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md) or [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) to ECS
+- Migrating from [docker-compose](../../Containers_and_Orchestration/[docker](../../Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md) or [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) to ECS
 - Troubleshooting task failures, health check issues, or networking problems
 
 ## Prerequisites
 
 - AWS CLI v2 installed and configured
-- [Docker](../../Containers_and_Orchestration/docker/SKILL.md) installed for building and pushing images
+- [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) installed for building and pushing images
 - IAM permissions: `ecs:*`, `ecr:*`, `elasticloadbalancing:*`, `logs:*`, `iam:PassRole`
 - An ECR repository for storing container images
 - A VPC with subnets and an ALB (see [aws-vpc](../[aws-vpc](../aws-vpc/SKILL.md)/))
@@ -64,17 +64,17 @@ aws ecs describe-clusters --clusters production --include STATISTICS ATTACHMENTS
 # Create ECR repository
 aws ecr create-repository \
   --repository-name myapp \
-  --[image-scanning](../../../Security/image-scanning/SKILL.md)-configuration scanOnPush=true \
+  --[image-scanning](../../../../Security/image-scanning/SKILL.md)-configuration scanOnPush=true \
   --encryption-configuration encryptionType=KMS
 
-# Authenticate [Docker](../../Containers_and_Orchestration/docker/SKILL.md) to ECR
+# Authenticate [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) to ECR
 aws ecr get-login-password --region us-east-1 | \
-  [docker](../../Containers_and_Orchestration/docker/SKILL.md) login --username AWS --password-stdin 123456789012.dkr.ecr.us-east-1.amazonaws.com
+  [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) login --username AWS --password-stdin 123456789012.dkr.ecr.us-east-1.amazonaws.com
 
 # Build, tag, and push
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) build -t myapp:latest .
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) tag myapp:latest 123456789012.dkr.ecr.us-east-1.amazonaws.com/myapp:latest
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) push 123456789012.dkr.ecr.us-east-1.amazonaws.com/myapp:latest
+[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) build -t myapp:latest .
+[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) tag myapp:latest 123456789012.dkr.ecr.us-east-1.amazonaws.com/myapp:latest
+[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) push 123456789012.dkr.ecr.us-east-1.amazonaws.com/myapp:latest
 ```
 
 ## Task Definition
@@ -220,7 +220,7 @@ aws ecs execute-command \
 
 ```bash
 # Register ECS service as a scalable target
-aws application-[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) register-scalable-target \
+aws application-[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) register-scalable-target \
   --service-namespace ecs \
   --resource-id service/production/myapp \
   --scalable-dimension ecs:service:DesiredCount \
@@ -228,7 +228,7 @@ aws application-[autoscaling](../../../Software_Engineering_and_Other/Backend/au
   --max-[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) 20
 
 # Target tracking policy - scale on CPU utilization
-aws application-[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) put-scaling-policy \
+aws application-[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) put-scaling-policy \
   --service-namespace ecs \
   --resource-id service/production/myapp \
   --scalable-dimension ecs:service:DesiredCount \
@@ -244,7 +244,7 @@ aws application-[autoscaling](../../../Software_Engineering_and_Other/Backend/au
   }'
 
 # Scale on request count per target (ALB)
-aws application-[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) put-scaling-policy \
+aws application-[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) put-scaling-policy \
   --service-namespace ecs \
   --resource-id service/production/myapp \
   --scalable-dimension ecs:service:DesiredCount \

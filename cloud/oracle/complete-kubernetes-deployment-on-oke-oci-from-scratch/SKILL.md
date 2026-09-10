@@ -31,12 +31,12 @@ depends_on:
   - runbook
 ---
 
-# Complete [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Deployment on OKE (OCI) From Scratch
+# Complete [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Deployment on OKE (OCI) From Scratch
 
 ## Purpose
 
 OKE is the least "drop-in familiar" of the three major hyperscaler managed
-[Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) offerings covered elsewhere in this repository — it has no
+[Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) offerings covered elsewhere in this repository — it has no
 account/subscription/project isolation boundary (everything lives in one
 tenancy's Compartment hierarchy), its workload-identity federation
 mechanism is newer and only available on the Enhanced cluster tier, and
@@ -46,7 +46,7 @@ choosing a Basic cluster then discovering workload identity isn't
 available, or expecting a native cert-manager OCI DNS solver that doesn't
 exist — produces a cluster that looks provisioned right up until a later
 phase depends on a capability that was never actually available. This
-skill is the OCI-specific end-to-end [runbook](../../Observability_and_SecOps/runbook/SKILL.md): it sequences Compartment/
+skill is the OCI-specific end-to-end [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md): it sequences Compartment/
 Identity Domain prerequisites, OKE provisioning, VCN-Native pod
 networking, ingress, cert-manager via a webhook solver, conformance
 validation, a first workload, and a health baseline into one ordered
@@ -57,7 +57,7 @@ depth.
 
 - Deploying a brand-new OKE cluster into an OCI tenancy for the first
   time, where the Compartment hierarchy already exists but has no
-  [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) workload yet.
+  [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) workload yet.
 - Auditing an existing OKE rollout for a skipped or out-of-order phase
   (e.g. a Basic-tier cluster that can't support the workload identity
   binding a later phase assumed, or a cluster handed off with no
@@ -85,7 +85,7 @@ depth.
   will issue certificates for, and (since cert-manager has no built-in
   OCI DNS-01 provider) a deployed community webhook solver for OCI DNS
   before Phase 5 begins.
-- OCI CLI ≥ 3.40, `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md)`, and `helm` ≥ 3.14 authenticated against the
+- OCI CLI ≥ 3.40, `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)`, and `helm` ≥ 3.14 authenticated against the
   target tenancy/compartment.
 - A non-production compartment to rehearse this sequence in first — the
   Basic vs. Enhanced cluster tier decision in Phase 2 cannot be changed
@@ -128,7 +128,7 @@ integration decisions.
    ```bash
    oci ce cluster create \
      --name payments-prod --compartment-id <CHECKOUT_PROD_COMPARTMENT_OCID> \
-     --[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-version v1.30.1 --type ENHANCED_CLUSTER \
+     --[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-version v1.30.1 --type ENHANCED_CLUSTER \
      --vcn-id <VCN_OCID> --service-lb-subnet-ids '["<LB_SUBNET_OCID>"]'
    oci ce node-pool create \
      --cluster-id <CLUSTER_OCID> --compartment-id <CHECKOUT_PROD_COMPARTMENT_OCID> \
@@ -147,12 +147,12 @@ integration decisions.
    simpler to operate than the legacy **Flannel overlay** mode (still
    available for compatibility, but with no direct VCN routing/firewall
    visibility into pod traffic). Critically, **neither VCN-Native nor
-   Flannel-overlay mode enforces [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) `NetworkPolicy` on its own** —
+   Flannel-overlay mode enforces [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) `NetworkPolicy` on its own** —
    unlike GKE's Dataplane V2, OKE requires installing Calico explicitly
    if `NetworkPolicy` enforcement is a stated requirement:
    ```bash
-   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get pods -n kube-system -l name=oci-vcn-ip-native-cni
-   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) create -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/tigera-operator.yaml
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get pods -n kube-system -l name=oci-vcn-ip-native-cni
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) create -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/tigera-operator.yaml
    ```
    See
    [cni-networking-calico-flannel](../[cni-networking-calico-flannel](../../Containers_and_Orchestration/cni-networking-calico-flannel/SKILL.md)/SKILL.md)
@@ -285,7 +285,7 @@ integration decisions.
   Basic to Enhanced. Confirm the tier decision in Phase 2 explicitly
   before any later phase assumes workload identity is available.
 
-- **Symptom:** `NetworkPolicy` resources apply cleanly via `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md)` but
+- **Symptom:** `NetworkPolicy` resources apply cleanly via `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)` but
   traffic that should be denied still gets through on an OKE cluster.
   **Fix:** Neither VCN-Native pod networking nor Flannel-overlay mode
   enforces `NetworkPolicy` by default on OKE — this is a common
@@ -308,7 +308,7 @@ integration decisions.
 
 - **Symptom:** The cluster is declared "production ready" and handed off
   the same day Phase 2 completes, skipping Phase 6 — and a missing Calico
-  install (Phase 3) surfaces as a security [incident](../../Observability_and_SecOps/incident/SKILL.md) once a `NetworkPolicy`
+  install (Phase 3) surfaces as a security [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) once a `NetworkPolicy`
   that was assumed to be enforced turns out never to have been.
   **Fix:** Treat Phase 6 as a required gate, not optional, with the OKE-
   specific `NetworkPolicy` smoke test explicitly included — see
@@ -332,21 +332,21 @@ oci iam dynamic-group create --name cert-manager-workload-identity \
 # Phase 2 — Enhanced cluster + node pool
 oci ce cluster create --name payments-prod \
   --compartment-id <CHECKOUT_PROD_COMPARTMENT_OCID> \
-  --[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-version v1.30.1 --type ENHANCED_CLUSTER \
+  --[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-version v1.30.1 --type ENHANCED_CLUSTER \
   --vcn-id <VCN_OCID> --service-lb-subnet-ids '["<LB_SUBNET_OCID>"]'
 oci ce node-pool create --cluster-id <CLUSTER_OCID> \
   --compartment-id <CHECKOUT_PROD_COMPARTMENT_OCID> --name general \
   --node-shape VM.Standard.E5.Flex --size 3 --node-subnet-ids '["<NODE_SUBNET_OCID>"]'
 
 # Phase 3 — VCN-Native pod networking confirmed, Calico added for policy enforcement
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get pods -n kube-system -l name=oci-vcn-ip-native-cni
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) create -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/tigera-operator.yaml
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get pods -n kube-system -l name=oci-vcn-ip-native-cni
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) create -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/tigera-operator.yaml
 
 # Phase 4 — ingress-nginx via Helm
 helm install ingress-nginx ingress-nginx/ingress-nginx \
   --namespace ingress-nginx --create-namespace \
   --set controller.service.type=LoadBalancer
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get svc -n ingress-nginx ingress-nginx-controller   # note EXTERNAL-IP, create OCI DNS A record
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get svc -n ingress-nginx ingress-nginx-controller   # note EXTERNAL-IP, create OCI DNS A record
 
 # Phase 5 — finalize Dynamic Group with real cluster OCID, deploy webhook solver
 oci iam dynamic-group update --dynamic-group-id <DG_OCID> \
@@ -354,13 +354,13 @@ oci iam dynamic-group update --dynamic-group-id <DG_OCID> \
 helm install cert-manager jetstack/cert-manager \
   --namespace cert-manager --create-namespace --version v1.15.1 --set crds.enabled=true
 helm install cert-manager-webhook-oci oci-webhook/cert-manager-webhook-oci --namespace cert-manager
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply -f oci-dns-staging-issuer.yaml   # validate, then swap to prod
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f oci-dns-staging-issuer.yaml   # validate, then swap to prod
 
 # Phase 6 — validation gate, with an explicit NetworkPolicy smoke test
 sonobuoy run --mode quick --wait && sonobuoy results "$(sonobuoy retrieve)"
 sonobuoy run --mode certified-conformance --wait && sonobuoy results "$(sonobuoy retrieve)" --mode=report
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply -f netpol-default-deny.yaml -n payments
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) run probe --image=busybox:1.36 --rm -it --restart=Never -n payments -- \
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f netpol-default-deny.yaml -n payments
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) run probe --image=busybox:1.36 --rm -it --restart=Never -n payments -- \
   wget -qO- --timeout=2 payments-api:8080   # expect this to time out
 
 # Phase 7 — Dynamic Group for the workload + first deployment
@@ -371,8 +371,8 @@ helm upgrade --install payments-api oci://ghcr.io/example/charts/payments-api \
   --version 2.3.0 --namespace payments --create-namespace --atomic --timeout 5m
 
 # Phase 8 — health baseline
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get nodes
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get pdb -A
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get nodes
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get pdb -A
 ```
 
 `curl -I https://payments.example.com` returns `HTTP/2 200` with a
@@ -384,7 +384,7 @@ closing the specific gap OKE's native CNI modes leave open on their own.
 
 - [oci-landing-zone-setup](../../../cloud/skills/[oci-landing-zone-setup](../oci-landing-zone-setup/SKILL.md)/SKILL.md) — the tenancy/Compartment/Identity Domain/guardrail layer this sequence assumes already exists.
 - [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)/SKILL.md) — least-privilege design for every Dynamic Group and policy statement created across Phases 1, 5, and 7.
-- [managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../[managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../../Containers_and_Orchestration/managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md) — the analogous managed-[Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) workload-identity pattern (IRSA/Azure AD Workload Identity/Workload Identity Federation) this skill's OKE Dynamic Group binding parallels conceptually.
+- [managed-[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../[managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../../Containers_and_Orchestration/managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md) — the analogous managed-[Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) workload-identity pattern (IRSA/Azure AD Workload Identity/Workload Identity Federation) this skill's OKE Dynamic Group binding parallels conceptually.
 - [cni-networking-calico-flannel](../[cni-networking-calico-flannel](../../Containers_and_Orchestration/cni-networking-calico-flannel/SKILL.md)/SKILL.md) — full detail for installing Calico alongside VCN-Native pod networking in Phase 3.
 - [ingress-nginx-configuration](../[ingress-nginx-configuration](../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md) — full detail for the ingress-nginx path in Phase 4.
 - [cert-manager-tls-automation](../[cert-manager-tls-automation](../../Containers_and_Orchestration/cert-manager-tls-automation/SKILL.md)/SKILL.md) — full detail for the general Issuer/Certificate mechanics extended here with the OCI webhook solver in Phase 5.

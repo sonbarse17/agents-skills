@@ -21,7 +21,7 @@ Complete guide to [observability](../observability/SKILL.md) patterns for Istio,
 ## When to Use This Skill
 
 - Setting up distributed tracing across services
-- Implementing service mesh metrics and [dashboards](../../Cloud_Providers/dashboards/SKILL.md)
+- Implementing service mesh metrics and [dashboards](../dashboards/SKILL.md)
 - Debugging latency and error issues
 - Defining SLOs for service communication
 - Visualizing service dependencies
@@ -71,6 +71,6 @@ Full template library and detailed worked examples live in `../../../Global_Refe
 
 - **Don't over-sample** - Storage costs add up
 - **Don't ignore cardinality** - Limit label values
-- **Don't skip [dashboards](../../Cloud_Providers/dashboards/SKILL.md)** - Visualize dependencies
+- **Don't skip [dashboards](../dashboards/SKILL.md)** - Visualize dependencies
 - **Don't forget costs** - Monitor [observability](../observability/SKILL.md) costs
 

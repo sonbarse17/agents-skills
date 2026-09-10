@@ -87,7 +87,7 @@ Direct file write. No response text.
 | On-prem only (tape/NAS) | Fast (local) | High (CAPEX) | Low | Physical security |
 | Cloud only (S3/Blob) | Depends on network | Pay-per-use | Low | Encryption built-in |
 | Hybrid (local + cloud) | Fast local, cloud DR | Medium | Medium | Best of both |
-| [Multi-cloud](../../../DevOps_and_Cloud/Cloud_Providers/multi-cloud/SKILL.md) backup | DR flexibility | High | High | Complex compliance |
+| [Multi-cloud](../../../cloud/common/other/multi-cloud/SKILL.md) backup | DR flexibility | High | High | Complex compliance |
 
 ### Cloud DR Patterns
 | Pattern | RTO | RPO | Cost | Use Case |
@@ -714,6 +714,6 @@ Backup automation scripts ([Python](../../Languages/python/SKILL.md)/Bash), Terr
 
 ## Handoff
 After completing this skill:
-- Next skill: **[storage-infrastructure](../../../DevOps_and_Cloud/Cloud_Providers/storage-infrastructure/SKILL.md)** — storage architecture for backup targets
+- Next skill: **[storage-infrastructure](../../../cloud/common/storage/storage-infrastructure/SKILL.md)** — storage architecture for backup targets
 - Pass context: workload tiers, RPO/RTO, backup schedule, DR [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) location
 

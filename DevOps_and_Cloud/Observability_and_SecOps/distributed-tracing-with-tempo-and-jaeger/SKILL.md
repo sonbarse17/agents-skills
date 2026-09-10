@@ -36,7 +36,7 @@ A distributed trace is only as useful as the backend that stores,
 retains, and lets you query it — and that backend has its own set of
 operational decisions distinct from how telemetry gets produced and
 routed to it. **Grafana Tempo** and **Jaeger** are the two dominant
-open-source tracing backends: Tempo is [object-storage](../../Cloud_Providers/object-storage/SKILL.md)-native (S3/GCS/
+open-source tracing backends: Tempo is [object-storage](../../../cloud/common/storage/object-storage/SKILL.md)-native (S3/GCS/
 Azure Blob, or local disk for small deployments) and designed to be
 cheap to run at scale by trading fast arbitrary search for
 ID-based lookup plus structural indexing via TraceQL; Jaeger supports a
@@ -306,7 +306,7 @@ rather than repeats.
 
 ## Best practices
 
-- Choose Tempo's [object-storage](../../Cloud_Providers/object-storage/SKILL.md) backend as the default for new
+- Choose Tempo's [object-storage](../../../cloud/common/storage/object-storage/SKILL.md) backend as the default for new
   production tracing deployments — the storage-cost advantage at real
   trace volume is substantial compared to Elasticsearch/Cassandra-backed
   Jaeger, unless Jaeger's richer native tag-search UX or existing

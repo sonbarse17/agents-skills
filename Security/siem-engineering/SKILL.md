@@ -81,7 +81,7 @@ What is the primary deployment model?
 ├── Cloud-native SaaS
 │   ├── Microsoft shop (Azure, M365) → Microsoft Sentinel
 │   ├── AWS shop → Splunk Cloud or ELK on Elastic Cloud
-│   ├── [Multi-cloud](../../DevOps_and_Cloud/Cloud_Providers/multi-cloud/SKILL.md) → Splunk Cloud (broadest integration)
+│   ├── [Multi-cloud](../../cloud/common/other/multi-cloud/SKILL.md) → Splunk Cloud (broadest integration)
 │   └── Budget-conscious → Wazuh (free, open-source)
 ├── On-premises / air-gapped
 │   ├── Mature SOC team → Splunk Enterprise
@@ -613,7 +613,7 @@ Storing all logs with the same retention policy is either insufficient (complian
 SIEM that is down, overloaded, or missing data sources is a security blind spot. Monitor: ingestion rate vs expected, license usage, indexer CPU/disk, search head response time, agent health.
 
 ### Pitfall 7: Over-Normalization
-Heavy normalization breaks original log context. Keep raw log copy alongside normalized fields. Use field aliases instead of overwriting. Maintain backward compatibility for existing [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md).
+Heavy normalization breaks original log context. Keep raw log copy alongside normalized fields. Use field aliases instead of overwriting. Maintain backward compatibility for existing [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md).
 
 ### Pitfall 8: Underestimating Storage Growth
 Log volume grows 20-50% annually from new sources, increased verbosity, and data retention requirements. Over-provision by 50% minimum. Plan for storage scaling. Use compression and sampling.

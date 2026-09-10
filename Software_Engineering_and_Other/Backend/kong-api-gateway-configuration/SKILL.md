@@ -75,7 +75,7 @@ correct before deploy is a distinct, deeper topic — see
   Kong's Service/Route/Plugin model onto [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) `Ingress` +
   `KongPlugin`/`KongClusterPlugin`/`KongIngress` CRDs.
   `rate-limiting-advanced`, some auth plugins' more advanced modes, and
-  clustering/Vitals [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) differ between OSS and Enterprise — check
+  clustering/Vitals [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) differ between OSS and Enterprise — check
   which tier a given plugin belongs to before assuming it's available.
 - Network access to Kong's Admin API (default port `8001`, `8444` for
   TLS) for imperative configuration or CI-driven declarative sync — this

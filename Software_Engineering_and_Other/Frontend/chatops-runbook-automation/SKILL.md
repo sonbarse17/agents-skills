@@ -103,7 +103,7 @@ afterthought.
 - A credential/secrets strategy for the automation backend to reach the
   target systems it acts on (cloud API keys, [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) service account
   tokens, database credentials) — store via a secrets manager (see
-  [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../DevOps_and_Cloud/Cloud_Providers/secrets-management/SKILL.md)/SKILL.md)),
+  [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md)),
   never embedded in the bot's own chat-command handler code.
 - A durable [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) log destination (a dedicated `#chatops-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)` channel,
   a SIEM, or the execution backend's own history) that is separate from
@@ -191,7 +191,7 @@ afterthought.
    ```
    Map chat-platform user IDs to these roles via the same identity
    source of truth used elsewhere (the enterprise IdP — see
-   [enterprise-sso-and-idp-federation-configuration](../../../[security-scanning](../../../Security/security-scanning/SKILL.md)-tooling/skills/[enterprise-sso-and-idp-federation-configuration](../../../DevOps_and_Cloud/Cloud_Providers/enterprise-sso-and-idp-federation-configuration/SKILL.md)/SKILL.md))
+   [enterprise-sso-and-idp-federation-configuration](../../../[security-scanning](../../../Security/security-scanning/SKILL.md)-tooling/skills/[enterprise-sso-and-idp-federation-configuration](../../../cloud/common/other/enterprise-sso-and-idp-federation-configuration/SKILL.md)/SKILL.md))
    rather than a hand-maintained list embedded in the bot's config that
    drifts from the actual on-call roster.
 
@@ -435,6 +435,6 @@ authorized for production rollbacks, and durably logged both in the
   the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-command structure and role definitions (who is the Tech
   Lead authorized to trigger a mitigation) that ChatOps authorization
   scoping should align with.
-- [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../DevOps_and_Cloud/Cloud_Providers/secrets-management/SKILL.md)/SKILL.md) —
+- [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md) —
   how the automation backend's credentials for reaching target systems
   (cloud APIs, [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)) should actually be stored and rotated.

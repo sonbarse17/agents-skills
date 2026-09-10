@@ -48,7 +48,7 @@ Activate this skill when the user asks to:
   consumer lag, broker storage running out, TrafficShaping events, under-replicated
   partitions, or an unexpected broker restart.
 - Set up MSK [monitoring](../monitoring/SKILL.md): choose a [monitoring](../monitoring/SKILL.md) level, create recommended CloudWatch
-  alarms and [dashboards](../../Cloud_Providers/dashboards/SKILL.md), understand the metrics available in the `AWS/Kafka`
+  alarms and [dashboards](../dashboards/SKILL.md), understand the metrics available in the `AWS/Kafka`
   namespace.
 - Plan an MSK maintenance event: rolling restart, Kafka version upgrade, security
   patching, broker instance type change.
@@ -148,7 +148,7 @@ full before answering — do not paraphrase from memory.
 | High CPU, high produce/fetch latency, slow cluster, TrafficShaping | `../../../Global_References/troubleshoot-performance.md` |
 | Consumer lag increasing, rebalance storms, stuck consumer groups | `../../../Global_References/troubleshoot-consumer-lag.md` |
 | Disk filling up, retention planning, tiered storage, EBS scaling | `../../../Global_References/manage-storage.md` |
-| Setting up [monitoring](../monitoring/SKILL.md) level, [dashboards](../../Cloud_Providers/dashboards/SKILL.md), recommended CloudWatch alarms | `../../../Global_References/monitor-and-alarm.md` |
+| Setting up [monitoring](../monitoring/SKILL.md) level, [dashboards](../dashboards/SKILL.md), recommended CloudWatch alarms | `../../../Global_References/monitor-and-alarm.md` |
 | Rolling restart impact, patching, Kafka version upgrades, maintenance resilience | `../../../Global_References/maintenance-operations.md` |
 | Producer / consumer configuration, IAM / SCRAM / TLS auth for clients | `../../../Global_References/configure-clients.md` |
 

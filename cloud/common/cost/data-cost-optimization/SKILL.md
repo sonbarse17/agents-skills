@@ -53,7 +53,7 @@ Before activating, verify:
 - Team structure for cost allocation
 
 ### Output Artifact
-Cost optimization plan with warehouse configuration, query tuning, storage lifecycle policies, and FinOps [dashboards](../dashboards/SKILL.md).
+Cost optimization plan with warehouse configuration, query tuning, storage lifecycle policies, and FinOps [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md).
 
 ### Response Format
 ```sql
@@ -64,9 +64,9 @@ Cost optimization plan with warehouse configuration, query tuning, storage lifec
 # BigQuery reservation config
 # S3 lifecycle policies
 ```
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Cost allocation script
-# Budget [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
+# Budget [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 ```
 
 No preamble. No postamble. No explanations. No filler/hedging/transitions. Compress output — why use many token when few do trick.
@@ -77,7 +77,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 - [ ] Query performance tuned to reduce compute consumption
 - [ ] Storage lifecycle policies implemented for tiered archival
 - [ ] Cost allocation tags applied and budgets configured
-- [ ] [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../dashboards/SKILL.md) with cost-per-team breakdown
+- [ ] [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) with cost-per-team breakdown
 - [ ] Optimization recommendations documented with expected savings
 
 ### Max Response Length
@@ -185,7 +185,7 @@ assignments:
     project: my-data-analytics
 ```
 
-### Slot Usage [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
+### Slot Usage [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 ```sql
 -- Slot utilization by project
 SELECT
@@ -265,7 +265,7 @@ LifecycleConfiguration:
 ```
 
 ### Storage Cost Analysis
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import boto3
 
 s3 = boto3.client('s3')
@@ -308,8 +308,8 @@ SET OPTIONS (
 );
 ```
 
-### Budget [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+### Budget [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # budget_config.py
 BUDGET_THRESHOLDS = {
     'snowflake': {
@@ -356,7 +356,7 @@ bigquery_slots:
   reservation_policies:
     - "Separate reservations for prod vs non-prod workloads"
     - "Idle slots from prod can be borrowed by non-prod (flex slots)"
-    - "BI [dashboards](../dashboards/SKILL.md): dedicated reservation for consistent performance"
+    - "BI [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md): dedicated reservation for consistent performance"
     - "Ad-hoc queries: lower-priority reservation (idle slots only)"
     - "ELT pipelines: reservation sized for peak load, auto-scale"
 ```
@@ -486,7 +486,7 @@ finops_maturity:
   level_2_walk:
     practices: [
       "Tag-based cost allocation",
-      "Weekly cost [dashboards](../dashboards/SKILL.md)",
+      "Weekly cost [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md)",
       "Budget alerts per team"
     ]
     tools: [
@@ -505,9 +505,9 @@ finops_maturity:
     ]
     tools: [
       "Custom cost attribution pipeline",
-      "Query [profiling](../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) (Snowflake QUERY_HISTORY, BigQuery INFORMATION_SCHEMA)",
+      "Query [profiling](../../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) (Snowflake QUERY_HISTORY, BigQuery INFORMATION_SCHEMA)",
       "Automated anomaly detection",
-      "FinOps [dashboards](../dashboards/SKILL.md) (Tableau, Power BI)"
+      "FinOps [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) (Tableau, Power BI)"
     ]
     coverage: "95-100% of costs tracked"
   
@@ -522,7 +522,7 @@ finops_maturity:
       "ML-based cost forecasting",
       "Auto-scaling policies",
       "Query rewriting for cost",
-      "[Multi-cloud](../multi-cloud/SKILL.md) FinOps platform"
+      "[Multi-cloud](../../other/multi-cloud/SKILL.md) FinOps platform"
     ]
     coverage: "Near-real-time cost tracking"
 ```
@@ -615,6 +615,6 @@ Query performance issue?
   - ../../../Global_References/storage-tiering-strategies.md — Storage Tiering Strategies
   - ../../../Global_References/data-cost-optimization_warehouse-[cost-optimization](../cost-optimization/SKILL.md).md — Warehouse Cost Optimization
 ## Handoff
-`[data-etl-pipeline](../../../Data_Engineering/etl-pipeline/SKILL.md)` for pipeline efficiency and incremental loading
-`[data-data-warehouse](../../../Data_Engineering/data-warehouse/SKILL.md)` for schema design that minimizes compute
+`[data-etl-pipeline](../../../../Data_Engineering/etl-pipeline/SKILL.md)` for pipeline efficiency and incremental loading
+`[data-data-warehouse](../../../../Data_Engineering/data-warehouse/SKILL.md)` for schema design that minimizes compute
 

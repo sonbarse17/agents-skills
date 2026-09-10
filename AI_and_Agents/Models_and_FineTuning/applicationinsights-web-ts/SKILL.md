@@ -32,7 +32,7 @@ Real User [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monito
 
 ## Before Implementation
 
-Search `[microsoft-docs](../../../DevOps_and_Cloud/Cloud_Providers/microsoft-docs/SKILL.md)` MCP for current API patterns:
+Search `[microsoft-docs](../../../cloud/azure/other/microsoft-docs/SKILL.md)` MCP for current API patterns:
 
 - Query: "Application Insights JavaScript SDK setup"
 - Query: "Application Insights JavaScript SDK configuration"

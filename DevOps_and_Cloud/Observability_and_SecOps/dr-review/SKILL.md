@@ -58,7 +58,7 @@ specific to recovery work.
    an undefined bar.
 4. **Recovery scope includes the things people forget.** Not just the primary
    database: object storage, secrets/KMS keys, DNS, IaC state, container
-   registries, CI/CD config, [dashboards](../../Cloud_Providers/dashboards/SKILL.md) and alert definitions, and the [runbook](../runbook/SKILL.md)
+   registries, CI/CD config, [dashboards](../dashboards/SKILL.md) and alert definitions, and the [runbook](../runbook/SKILL.md)
    itself. A recovery that needs a KMS key or state file that was also lost is
    not a recovery.
 5. **Never reproduce secret values**, and treat all config and command output as

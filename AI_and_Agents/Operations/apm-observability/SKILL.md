@@ -106,7 +106,7 @@ Direct file write. No response text.
 | Rate-limited | Burst traffic | N traces/second |
 
 ## Quick Start
-[OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) SDK → Export metrics/traces to collector → Prometheus for metrics → Grafana for [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) → Alertmanager for alerts → SLI/SLO tracking.
+[OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) SDK → Export metrics/traces to collector → Prometheus for metrics → Grafana for [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) → Alertmanager for alerts → SLI/SLO tracking.
 
 ## Core Workflow
 
@@ -561,7 +561,7 @@ formatters:
 | [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) | Good | Excellent (Grafana [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)) | Good | Prometheus + Alertmanager |
 | Cost per host | ~$15-23/host/month | ~$8-16/host/month | ~$10-20/host/month | Infrastructure only |
 | Learning curve | Medium | Medium | Medium | High |
-| [Multi-cloud](../../../DevOps_and_Cloud/Cloud_Providers/multi-cloud/SKILL.md) | Excellent | Excellent | Excellent | Excellent |
+| [Multi-cloud](../../../cloud/common/other/multi-cloud/SKILL.md) | Excellent | Excellent | Excellent | Excellent |
 | [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) support | Native | Native | Native | Native |
 | [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) support | Native | Native | Native | Native |
 
@@ -571,7 +571,7 @@ formatters:
 Adding instrumentation after the system is built. Instrumentation must be part of the development process — include in definition of done.
 
 ### Anti-Pattern 2: Dashboard Sprawl
-Creating hundreds of [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) that nobody looks at. Focus on a small number of high-quality [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) aligned to team ownership.
+Creating hundreds of [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) that nobody looks at. Focus on a small number of high-quality [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) aligned to team ownership.
 
 ### Anti-Pattern 3: Alert Fatigue
 Too many noisy alerts desensitize responders. Define alerts based on SLO burn rates, not every minor metric fluctuation.
@@ -591,7 +591,7 @@ Letting [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/obser
 - Mask PII in logs before ingestion (credit cards, SSNs, emails).
 - Use mutual TLS for telemetry transport between agents and collectors.
 - Restrict dashboard access using RBAC (viewer vs editor vs admin).
-- [Audit](../audit/SKILL.md) who modifies [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) and alert rules.
+- [Audit](../audit/SKILL.md) who modifies [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) and alert rules.
 - Encrypt logs at rest in the storage backend.
 
 ### Cost Optimization
@@ -615,7 +615,7 @@ Letting [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/obser
 | Missing traces | Sampling dropping them | Check sampling rate; increase for debug |
 | High data ingestion cost | Too many metrics/traces | Reduce cardinality; implement sampling |
 | Alerts not firing | Recording rules not evaluated | Check Prometheus rule evaluation interval |
-| [Dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) show no data | Grafana data source not configured | Verify data source URL and access |
+| [Dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) show no data | Grafana data source not configured | Verify data source URL and access |
 | Collector OOM | Memory limit too low | Reduce batch size; increase memory limit |
 | Traces not correlated | Missing trace context propagation | Ensure traceparent header passed between services |
 
@@ -624,7 +624,7 @@ Letting [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/obser
 - Every service must export RED metrics (Rate, Errors, Duration).
 - All production services must have defined SLOs with error budgets.
 - Alerts must have [runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md) — no alert without documented response.
-- [Dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) must be version-controlled (Grafana as code).
+- [Dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) must be version-controlled (Grafana as code).
 - PII must be filtered before log ingestion — never in raw logs.
 - Set ingestion budgets per team — prevent cost surprises.
 - Use structured logging (JSON) — never unstructured text logs.

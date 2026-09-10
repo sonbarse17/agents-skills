@@ -31,15 +31,15 @@ operations like listing, updating, or deleting projects.
 
 ## Prerequisites and permissions
 
-- Ensure `EC_API_KEY` is configured. If not, run `[cloud-setup](../../DevOps_and_Cloud/Cloud_Providers/setup/SKILL.md)` skill first.
+- Ensure `EC_API_KEY` is configured. If not, run `[cloud-setup](../../cloud/common/other/setup/SKILL.md)` skill first.
 - Creating projects requires a Cloud API key with **Admin** or **Organization owner** role.
 - This skill does not perform a separate role pre-check. Attempt the requested operation and let the API enforce
   authorization. If the API returns an authorization error (for example, `403 Forbidden`), stop and ask the user to
   verify the provided API key permissions.
 
-### Manual setup fallback (when `[cloud-setup](../../DevOps_and_Cloud/Cloud_Providers/setup/SKILL.md)` is unavailable)
+### Manual setup fallback (when `[cloud-setup](../../cloud/common/other/setup/SKILL.md)` is unavailable)
 
-If this skill is installed standalone and `[cloud-setup](../../DevOps_and_Cloud/Cloud_Providers/setup/SKILL.md)` is not available, instruct the user to configure Cloud
+If this skill is installed standalone and `[cloud-setup](../../cloud/common/other/setup/SKILL.md)` is not available, instruct the user to configure Cloud
 environment variables manually before running commands. Never ask the user to paste API keys in chat.
 
 | Variable      | Required | Description                                                    |
@@ -164,7 +164,7 @@ Project Creation:
 echo "${EC_API_KEY:?Not set}"
 ```
 
-If `EC_API_KEY` is not set, run the `[cloud-setup](../../DevOps_and_Cloud/Cloud_Providers/setup/SKILL.md)` skill first to configure authentication and defaults.
+If `EC_API_KEY` is not set, run the `[cloud-setup](../../cloud/common/other/setup/SKILL.md)` skill first to configure authentication and defaults.
 
 ### Step 2: Present summary and confirm with user
 
@@ -340,7 +340,7 @@ python3 skills/cloud/create-project/scripts/create-project.py create \
 
 ## Guidelines
 
-- Run the `[cloud-setup](../../DevOps_and_Cloud/Cloud_Providers/setup/SKILL.md)` skill first if `EC_API_KEY` is not set.
+- Run the `[cloud-setup](../../cloud/common/other/setup/SKILL.md)` skill first if `EC_API_KEY` is not set.
 - Always confirm the project configuration with the user before creating.
 - Never display passwords or API keys in chat. Direct the user to `.elastic-credentials`.
 - Never silently default to a project type. Infer from context and confirm with the user.

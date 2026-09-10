@@ -27,7 +27,7 @@ Run retrieval-augmented generation like a measurable production system, not a bl
 - Deploying a RAG system to production and need quality [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 - Setting up automated evaluation pipelines for retrieval and generation
 - Debugging hallucination or relevance regressions
-- Building [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) for RAG-specific golden signals
+- Building [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) for RAG-specific golden signals
 - Establishing quality gates for RAG pipeline changes
 
 ## Prerequisites
@@ -502,4 +502,4 @@ groups:
 - [agent-observability](../[agent-observability](../../Operations/agent-[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)/) - Instrument requests, traces, and costs
 - [agent-evals](../[agent-evals](../../Workflows/agent-evals/SKILL.md)/) - Build repeatable eval suites
 - [ai-sre-[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response](../[ai-sre-[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response](../../../DevOps_and_Cloud/Observability_and_SecOps/ai-sre-[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)/SKILL.md)/) - [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response for quality regressions
-- [opentelemetry](../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/[opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)/) - Distributed tracing for RAG pipelines
+- [opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/[opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)/) - Distributed tracing for RAG pipelines

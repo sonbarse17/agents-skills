@@ -58,7 +58,7 @@ place.
 - Scaling Loki from a single-binary/small setup to handle materially
   higher log volume, and deciding on simple-scalable vs. [microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md)
   deployment mode.
-- Migrating or configuring the [object-storage](../../Cloud_Providers/object-storage/SKILL.md) backend (S3/GCS/Azure Blob)
+- Migrating or configuring the [object-storage](../../../cloud/common/storage/object-storage/SKILL.md) backend (S3/GCS/Azure Blob)
   and the index/chunk schema version that governs it.
 
 ## Prerequisites & environment

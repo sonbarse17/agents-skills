@@ -158,7 +158,7 @@ Integration architecture design with routing, transformation, error handling, an
 {retry: strategy, DLQ: location, alert: threshold}
 
 ### [Monitoring](../monitoring/SKILL.md)
-{tracing, SLAs, [dashboards](../../Cloud_Providers/dashboards/SKILL.md)}
+{tracing, SLAs, [dashboards](../dashboards/SKILL.md)}
 ```
 
 No preamble. No postamble. No explanations.
@@ -194,7 +194,7 @@ Transform between SOAP/WSDL to REST/JSON, fixed-width files to structured payloa
 Implement retry with exponential backoff (base delay 1s, max 30s, jitter 0.1). Dead letter queue for poison messages. Manual intervention queue for business errors. Idempotency keys for safe retries.
 
 ### Step 6: [Monitoring](../monitoring/SKILL.md) Integration Flows
-End-to-end distributed tracing with trace ID propagation. SLA tracking (latency, throughput, error rate). Throughput [dashboards](../../Cloud_Providers/dashboards/SKILL.md) partitioned by integration flow. Alert on DLQ depth, latency spikes, error rate thresholds.
+End-to-end distributed tracing with trace ID propagation. SLA tracking (latency, throughput, error rate). Throughput [dashboards](../dashboards/SKILL.md) partitioned by integration flow. Alert on DLQ depth, latency spikes, error rate thresholds.
 
 ## Common Pitfalls
 
@@ -241,7 +241,7 @@ Producer changes message schema; consumer fails to deserialize. Always enforce s
 
 ### [Monitoring](../monitoring/SKILL.md)
 - End-to-end distributed tracing with correlation IDs
-- SLA [dashboards](../../Cloud_Providers/dashboards/SKILL.md) per integration flow
+- SLA [dashboards](../dashboards/SKILL.md) per integration flow
 - DLQ [monitoring](../monitoring/SKILL.md) with automated reprocessing
 - Alert on latency spikes and error rate thresholds
 - Throughput tracking for [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) planning
@@ -527,7 +527,7 @@ Messages fail, go to DLQ, but nobody monitors it. DLQ messages accumulate and ev
 - System of record defined per data domain -- no ambiguity
 - Protocol transformation documented at every integration boundary
 - Message brokers must have high-availability configuration
-- Integration [monitoring](../monitoring/SKILL.md) [dashboards](../../Cloud_Providers/dashboards/SKILL.md) visible to all consuming teams
+- Integration [monitoring](../monitoring/SKILL.md) [dashboards](../dashboards/SKILL.md) visible to all consuming teams
 - Schema registry used for all message serialization formats
 - Integration deprecation follows documented lifecycle with consumer notification
 

@@ -90,7 +90,7 @@ selection, triage workflow, suppression policy — see
 - A generated authentication token (user token or project analysis
   token) with `Execute Analysis` permission, stored in the CI secrets
   store — never inline in `sonar-project.properties`. See
-  [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../secrets-management/SKILL.md)/SKILL.md).
+  [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md).
 - For PR decoration: the SonarQube/SonarCloud instance needs network
   reachability to call back to the source-control platform's API
   ([GitHub](../../CI_CD/github/SKILL.md)/GitLab/Bitbucket/Azure DevOps App or PAT configured in
@@ -352,7 +352,7 @@ New Code:
 ```
 Remediation: replace the hardcoded key with one sourced from the secrets
 manager (see
-[secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../secrets-management/SKILL.md)/SKILL.md)),
+[secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md)),
 add tests to cover `charge.py`'s new branch, push, and confirm the gate
 re-evaluates to passed on the updated [commit](../../CI_CD/commit/SKILL.md).
 
@@ -368,6 +368,6 @@ re-evaluates to passed on the updated [commit](../../CI_CD/commit/SKILL.md).
 - [owasp-zap-dast-configuration](../[owasp-zap-dast-configuration](../../../Software_Engineering_and_Other/Frontend/owasp-zap-dast-configuration/SKILL.md)/SKILL.md) —
   runtime testing that catches issues SonarQube's static analysis
   cannot see.
-- [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../secrets-management/SKILL.md)/SKILL.md) —
+- [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md) —
   where a hardcoded-secret hotspot/finding should actually be remediated
   to (a secrets manager), not just suppressed.

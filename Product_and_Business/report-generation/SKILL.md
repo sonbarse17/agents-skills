@@ -43,7 +43,7 @@ Generate complex reports in multiple formats (PDF, Excel, CSV) from large datase
 | Streaming support | No (full render) | Partial (worksheet) | Yes (row-by-row) | Yes |
 | Interactive features | No | Formulas, filters | No | Links, JS |
 | Accessibility | Poor (screen reader limited) | Moderate | Excellent | Excellent |
-| Best for | Invoices, contracts, compliance | Financials, data analysis | Data export, ETL | [Dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), email |
+| Best for | Invoices, contracts, compliance | Financials, data analysis | Data export, ETL | [Dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), email |
 
 Decision: PDF for presentation/output. CSV for data export. Excel for analysis. HTML for screen display.
 

@@ -27,10 +27,10 @@ Collect metrics and visualize system performance with the Prometheus-Grafana sta
 
 Use this skill when:
 - Setting up metrics collection infrastructure
-- Creating [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../dashboards/SKILL.md)
+- Creating [monitoring](../monitoring/SKILL.md) [dashboards](../dashboards/SKILL.md)
 - Writing PromQL queries for analysis
-- Configuring [alerting](../../Observability_and_SecOps/alerting/SKILL.md) rules
-- [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) clusters
+- Configuring [alerting](../alerting/SKILL.md) rules
+- [Monitoring](../monitoring/SKILL.md) [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) clusters
 
 ## Prerequisites
 
@@ -82,7 +82,7 @@ global:
   scrape_interval: 15s
   evaluation_interval: 15s
 
-[alerting](../../Observability_and_SecOps/alerting/SKILL.md):
+[alerting](../alerting/SKILL.md):
   alertmanagers:
     - static_configs:
         - targets:
@@ -119,7 +119,7 @@ helm repo add prometheus-community https://prometheus-community.[github](../../C
 
 # Install kube-prometheus-stack
 helm install prometheus prometheus-community/kube-prometheus-stack \
-  --namespace [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) \
+  --namespace [monitoring](../monitoring/SKILL.md) \
   --create-namespace \
   --set grafana.adminPassword=admin
 ```
@@ -127,11 +127,11 @@ helm install prometheus prometheus-community/kube-prometheus-stack \
 ### ServiceMonitor
 
 ```yaml
-apiVersion: [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md).coreos.com/v1
+apiVersion: [monitoring](../monitoring/SKILL.md).coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: myapp
-  namespace: [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
+  namespace: [monitoring](../monitoring/SKILL.md)
 spec:
   selector:
     matchLabels:
@@ -195,7 +195,7 @@ changes(up[5m])
 avg_over_time(http_requests_total[24h])
 ```
 
-## [Alerting](../../Observability_and_SecOps/alerting/SKILL.md) Rules
+## [Alerting](../alerting/SKILL.md) Rules
 
 ```yaml
 # rules/alerts.yml
@@ -445,7 +445,7 @@ app.get('/metrics', async (req, res) => {
 - Limit label cardinality to prevent memory issues
 - Set appropriate retention based on storage [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
 - Use histogram metrics for latency measurement
-- Implement proper [alerting](../../Observability_and_SecOps/alerting/SKILL.md) thresholds
+- Implement proper [alerting](../alerting/SKILL.md) thresholds
 - Version control [dashboards](../dashboards/SKILL.md) as code
 - Use federation for large-scale deployments
 - Regularly review and prune unused metrics
@@ -454,4 +454,4 @@ app.get('/metrics', async (req, res) => {
 
 - [alerting-oncall](../[alerting-oncall](../../Observability_and_SecOps/[alerting](../../Observability_and_SecOps/alerting/SKILL.md)-oncall/SKILL.md)/) - Alert management
 - [loki-logging](../[loki-logging](../../Observability_and_SecOps/loki-logging/SKILL.md)/) - Log aggregation
-- [kubernetes-ops](../../orchestration/[kubernetes-ops](../../Containers_and_Orchestration/[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-ops/SKILL.md)/) - K8s [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
+- [kubernetes-ops](../../orchestration/[kubernetes-ops](../../Containers_and_Orchestration/[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-ops/SKILL.md)/) - K8s [monitoring](../monitoring/SKILL.md)

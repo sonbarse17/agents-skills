@@ -510,5 +510,5 @@ catch (RequestFailedException ex)
 | Azure Maps Documentation | https://learn.microsoft.com/azure/azure-maps/ |
 | Search API Reference | https://learn.microsoft.com/dotnet/api/azure.maps.search |
 | Routing API Reference | https://learn.microsoft.com/dotnet/api/azure.maps.routing |
-| [GitHub](../../CI_CD/github/SKILL.md) Source | https://[github](../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/maps |
+| [GitHub](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Source | https://[github](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/maps |
 | Pricing | https://azure.microsoft.com/pricing/details/azure-maps/ |

@@ -41,7 +41,7 @@ specifically, and the handoffs between them: which project hosts platform
 tooling, how the GKE cluster's Workload Identity Federation pool is
 carried into both the Backstage backend and the self-service provisioning
 layer, and where teams get stuck wiring these together for the first
-time. This skill is that integration [runbook](../../Observability_and_SecOps/runbook/SKILL.md), not a restatement of
+time. This skill is that integration [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md), not a restatement of
 Organization Policy, GKE, or Backstage mechanics.
 
 ## When to use
@@ -65,7 +65,7 @@ Organization Policy, GKE, or Backstage mechanics.
   constraints.
 - Terraform maturity — every phase below is expressed as IaC via the
   project-factory pattern, not manual `gcloud` commands.
-- `[kubectl](../kubectl/SKILL.md)`, `helm` ≥ 3.8, and `gcloud container clusters` access for
+- `[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)`, `helm` ≥ 3.8, and `gcloud container clusters` access for
   cluster provisioning.
 - A Node.js/Yarn toolchain to build and [customize](../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) the Backstage app.
 - A registered domain and Cloud DNS managed zone (or delegated subdomain)
@@ -90,30 +90,30 @@ Controls perimeter changes later forces avoidable rework in Phase 2 and
 Phase 3.
 
 **Phase 2 — GKE cluster with Workload Identity Federation.** Provision
-the platform project's GKE cluster with a pinned [Kubernetes](../kubernetes/SKILL.md) version, node
+the platform project's GKE cluster with a pinned [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) version, node
 pools sized for Backstage's steady backend load, and Workload Identity
 Federation enabled on the cluster before any workload is deployed. Record
 the cluster's workload identity pool
-(`<PROJECT_ID>.svc.id.goog`) — Phase 3 and Phase 6 both bind [Kubernetes](../kubernetes/SKILL.md)
+(`<PROJECT_ID>.svc.id.goog`) — Phase 3 and Phase 6 both bind [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
 ServiceAccounts to Google service accounts against this pool. See
-[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md)
+[managed-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md)
 for GKE provisioning, node pool design, and the Workload Identity
 Federation walkthrough specifically.
 
-**Phase 3 — Backstage on GKE, backed by Cloud SQL for [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md).**
+**Phase 3 — Backstage on GKE, backed by Cloud SQL for [PostgreSQL](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md).**
 Package Backstage as a Helm chart and deploy it against a Cloud SQL for
-[PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) instance (regional/HA beyond a pilot) as the catalog database,
+[PostgreSQL](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) instance (regional/HA beyond a pilot) as the catalog database,
 connecting via the Cloud SQL Auth Proxy sidecar rather than a public IP
-and static password. The Backstage backend's [Kubernetes](../kubernetes/SKILL.md) ServiceAccount is
+and static password. The Backstage backend's [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) ServiceAccount is
 bound (via Workload Identity Federation from Phase 2) to a Google service
 account holding only `cloudsql.client` and `secretmanager.secretAccessor`
 on the specific catalog-DB secret. Chart packaging follows
-[helm-chart-authoring](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[helm-chart-authoring](../helm-chart-authoring/SKILL.md)/SKILL.md);
+[helm-chart-authoring](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[helm-chart-authoring](../../../../DevOps_and_Cloud/Containers_and_Orchestration/helm-chart-authoring/SKILL.md)/SKILL.md);
 custom backend/frontend logic follows
 [backstage-plugin-development](../[backstage-plugin-development](../../../Software_Engineering_and_Other/Backend/backstage-plugin-development/SKILL.md)/SKILL.md).
 
 **Phase 4 — Golden-path template design.** Author the first golden-path
-template producing a Dockerfile, a CI workflow ([GitHub](../../CI_CD/github/SKILL.md) Actions or Cloud
+template producing a Dockerfile, a CI workflow ([GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions or Cloud
 Build), catalog registration, and — GCP-specific — a scaffolded
 `ServiceAccount` manifest with the
 `iam.gke.io/gcp-service-account` annotation pre-filled for the service's
@@ -140,9 +140,9 @@ custom resource, and binding
 scoped to exactly
 `serviceAccount:<PROJECT_ID>.svc.id.goog[<namespace>/<ksa-name>]` — is
 unique to this phase; teams already using Crossplane elsewhere may prefer
-its [Kubernetes](../kubernetes/SKILL.md)-native Claim model for this instead of a bespoke API call,
+its [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-native Claim model for this instead of a bespoke API call,
 per
-[crossplane-[kubernetes](../kubernetes/SKILL.md)-native-provisioning](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[crossplane-[kubernetes](../kubernetes/SKILL.md)-native-provisioning](../crossplane-[kubernetes](../kubernetes/SKILL.md)-native-provisioning/SKILL.md)/SKILL.md).
+[crossplane-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-native-provisioning](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[crossplane-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-native-provisioning](../crossplane-[kubernetes](../kubernetes/SKILL.md)-native-provisioning/SKILL.md)/SKILL.md).
 The approval-gate pattern itself is generic; see
 [platform-self-service-api-and-workflow-design](../[platform-self-service-api-and-workflow-design](../../../Product_and_Business/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md).
 
@@ -153,7 +153,7 @@ automated backups and (production tier) regional HA enabled, is the
 project labeled per the Phase 1 labeling policy. See
 [service-scorecards-and-maturity-model-design](../[service-scorecards-and-maturity-model-design](../../../Product_and_Business/service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md).
 
-**Phase 8 — [Multi-tenancy](../multi-tenancy/SKILL.md).** If more than one team shares the Phase 2
+**Phase 8 — [Multi-tenancy](../../../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md).** If more than one team shares the Phase 2
 cluster, decide namespace-per-team vs. project-per-team (GCP's project
 factory from Phase 1 makes project-per-team cheap to vend, so weigh it
 seriously alongside a shared-cluster model), scope each Workload Identity
@@ -165,7 +165,7 @@ ResourceQuotas before onboarding a second team. See
 adoption starting from a pilot team with genuine current pain, run the
 platform team per the "thinnest viable platform" discipline, and measure
 with SPACE/DX Core 4 metrics. See
-[idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../[idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../../../Software_Engineering_and_Other/Miscellaneous/idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md),
+[idp-adoption-rollout-and-[change-management](../../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../[idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../../../Software_Engineering_and_Other/Miscellaneous/idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md),
 [platform-engineering-team-topology-and-operating-model](../[platform-engineering-team-topology-and-operating-model](../../../Product_and_Business/[platform-engineering](../../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md),
 and
 [developer-experience-measurement-and-platform-adoption](../[developer-experience-measurement-and-platform-adoption](../../../Software_Engineering_and_Other/Miscellaneous/[developer-experience](../../../Product_and_Business/developer-experience/SKILL.md)-measurement-and-platform-adoption/SKILL.md)/SKILL.md).
@@ -258,7 +258,7 @@ over one quarter.
    sidecar, with the backend's ServiceAccount `backstage-backend` bound to
    Google service account `backstage-backend@helios-platform-tools.iam`.
 4. **Phase 4:** A "Node.js service" golden-path template is authored,
-   producing a Dockerfile, a [GitHub](../../CI_CD/github/SKILL.md) Actions workflow, and a
+   producing a Dockerfile, a [GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions workflow, and a
    `ServiceAccount` manifest annotated
    `iam.gke.io/gcp-service-account: ${service-name}@helios-platform-tools.iam.gserviceaccount.com`.
 5. **Phase 5:** A validation pipeline scaffolds `test-svc-001`, builds,
@@ -280,13 +280,13 @@ over one quarter.
 ## Cross-references
 
 - [gcp-landing-zone-setup](../../../cloud/skills/[gcp-landing-zone-setup](../../Cloud_Providers/gcp-landing-zone-setup/SKILL.md)/SKILL.md) — Phase 1.
-- [managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md) — Phase 2.
-- [helm-chart-authoring](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[helm-chart-authoring](../helm-chart-authoring/SKILL.md)/SKILL.md) — Phase 3 chart packaging.
+- [managed-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md) — Phase 2.
+- [helm-chart-authoring](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[helm-chart-authoring](../../../../DevOps_and_Cloud/Containers_and_Orchestration/helm-chart-authoring/SKILL.md)/SKILL.md) — Phase 3 chart packaging.
 - [backstage-plugin-development](../[backstage-plugin-development](../../../Software_Engineering_and_Other/Backend/backstage-plugin-development/SKILL.md)/SKILL.md) — Phase 3 custom backend/frontend logic.
 - [golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../../../Product_and_Business/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md) — Phase 4.
 - [golden-path-template-validation-and-testing](../[golden-path-template-validation-and-testing](../../CI_CD/golden-path-template-validation-and-testing/SKILL.md)/SKILL.md) — Phase 5.
-- [platform-self-service-api-and-workflow-design](../[platform-self-service-api-and-workflow-design](../../../Product_and_Business/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md), [crossplane-[kubernetes](../kubernetes/SKILL.md)-native-provisioning](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[crossplane-[kubernetes](../kubernetes/SKILL.md)-native-provisioning](../crossplane-[kubernetes](../kubernetes/SKILL.md)-native-provisioning/SKILL.md)/SKILL.md) — Phase 6.
+- [platform-self-service-api-and-workflow-design](../[platform-self-service-api-and-workflow-design](../../../Product_and_Business/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md), [crossplane-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-native-provisioning](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[crossplane-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-native-provisioning](../crossplane-[kubernetes](../kubernetes/SKILL.md)-native-provisioning/SKILL.md)/SKILL.md) — Phase 6.
 - [service-scorecards-and-maturity-model-design](../[service-scorecards-and-maturity-model-design](../../../Product_and_Business/service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md) — Phase 7.
 - [multi-tenancy-and-team-workspace-design-for-idp](../[multi-tenancy-and-team-workspace-design-for-idp](../../../Software_Engineering_and_Other/Miscellaneous/[multi-tenancy](../multi-tenancy/SKILL.md)-and-team-workspace-design-for-idp/SKILL.md)/SKILL.md) — Phase 8.
-- [idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../[idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../../../Software_Engineering_and_Other/Miscellaneous/idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md), [platform-engineering-team-topology-and-operating-model](../[platform-engineering-team-topology-and-operating-model](../../../Product_and_Business/[platform-engineering](../../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md), [developer-experience-measurement-and-platform-adoption](../[developer-experience-measurement-and-platform-adoption](../../../Software_Engineering_and_Other/Miscellaneous/[developer-experience](../../../Product_and_Business/developer-experience/SKILL.md)-measurement-and-platform-adoption/SKILL.md)/SKILL.md) — Phase 9.
-- [complete-idp-deployment-on-aws-from-scratch](../[complete-idp-deployment-on-aws-from-scratch](../complete-idp-deployment-on-aws-from-scratch/SKILL.md)/SKILL.md) — the same shape on AWS, useful for a [multi-cloud](../../Cloud_Providers/multi-cloud/SKILL.md) platform team comparing the two.
+- [idp-adoption-rollout-and-[change-management](../../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../[idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../../../Software_Engineering_and_Other/Miscellaneous/idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md), [platform-engineering-team-topology-and-operating-model](../[platform-engineering-team-topology-and-operating-model](../../../Product_and_Business/[platform-engineering](../../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md), [developer-experience-measurement-and-platform-adoption](../[developer-experience-measurement-and-platform-adoption](../../../Software_Engineering_and_Other/Miscellaneous/[developer-experience](../../../Product_and_Business/developer-experience/SKILL.md)-measurement-and-platform-adoption/SKILL.md)/SKILL.md) — Phase 9.
+- [complete-idp-deployment-on-aws-from-scratch](../[complete-idp-deployment-on-aws-from-scratch](../complete-idp-deployment-on-aws-from-scratch/SKILL.md)/SKILL.md) — the same shape on AWS, useful for a [multi-cloud](../../../common/other/multi-cloud/SKILL.md) platform team comparing the two.

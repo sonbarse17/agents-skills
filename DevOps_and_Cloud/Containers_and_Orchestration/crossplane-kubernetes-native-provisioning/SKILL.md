@@ -113,9 +113,9 @@ job.
    apiVersion: pkg.crossplane.io/v1
    kind: Provider
    metadata:
-     name: provider-[aws-rds](../../Cloud_Providers/aws-rds/SKILL.md)
+     name: provider-[aws-rds](../../../cloud/aws/database/aws-rds/SKILL.md)
    spec:
-     package: xpkg.upbound.io/upbound/provider-[aws-rds](../../Cloud_Providers/aws-rds/SKILL.md):v1.19.0
+     package: xpkg.upbound.io/upbound/provider-[aws-rds](../../../cloud/aws/database/aws-rds/SKILL.md):v1.19.0
    ```
    ```yaml
    apiVersion: v1
@@ -141,7 +141,7 @@ job.
    ```
    Source the actual credential values from your organization's
    secrets manager at apply time (never [commit](../../CI_CD/commit/SKILL.md) them), per
-   [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md)/SKILL.md)
+   [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md)
    — the `${...}` placeholders above are not literal syntax to [commit](../../CI_CD/commit/SKILL.md).
 
 2. **Provision a single managed resource directly** first, to confirm
@@ -407,8 +407,8 @@ helm install crossplane crossplane-stable/crossplane --namespace crossplane-syst
 ```yaml
 apiVersion: pkg.crossplane.io/v1
 kind: Provider
-metadata: { name: provider-[aws-rds](../../Cloud_Providers/aws-rds/SKILL.md) }
-spec: { package: xpkg.upbound.io/upbound/provider-[aws-rds](../../Cloud_Providers/aws-rds/SKILL.md):v1.19.0 }
+metadata: { name: provider-[aws-rds](../../../cloud/aws/database/aws-rds/SKILL.md) }
+spec: { package: xpkg.upbound.io/upbound/provider-[aws-rds](../../../cloud/aws/database/aws-rds/SKILL.md):v1.19.0 }
 ```
 
 ```yaml

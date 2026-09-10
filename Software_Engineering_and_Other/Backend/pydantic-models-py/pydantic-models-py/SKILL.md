@@ -38,7 +38,7 @@ Copy the template from [assets/template.py](assets/template.py) and replace plac
 
 ## camelCase Aliases
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Languages/python/SKILL.md)
 from datetime import datetime
 
 from pydantic import BaseModel, ConfigDict, Field
@@ -52,7 +52,7 @@ class MyModel(BaseModel):
 
 ## Optional Update Fields
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Languages/python/SKILL.md)
 class MyUpdate(BaseModel):
     model_config = ConfigDict(populate_by_name=True)
 
@@ -62,7 +62,7 @@ class MyUpdate(BaseModel):
 
 ## Database Document
 
-```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../Languages/python/SKILL.md)
 class MyInDB(MyResponse):
     doc_type: str = "my_resource"
 ```
@@ -71,11 +71,11 @@ class MyInDB(MyResponse):
 
 1. Create models in `src/backend/app/models/`
 2. Export from `src/backend/app/models/__init__.py`
-3. Add corresponding [TypeScript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) types
+3. Add corresponding [TypeScript](../../../Frontend/typescript/SKILL.md) types
 
 ## Reference Files
 
 | File | Contents |
 |------|----------|
-| [../../../../../Global_References/pydantic-models-py_capabilities.md](../../../../../Global_References/pydantic-models-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
+| [../../../../../Global_References/pydantic-models-py_capabilities.md](../../../../Global_References/pydantic-models-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
 

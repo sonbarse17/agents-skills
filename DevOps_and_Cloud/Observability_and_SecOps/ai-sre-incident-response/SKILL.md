@@ -32,7 +32,7 @@ Apply SRE rigor to AI systems where incidents include quality regressions, unsaf
 ## Prerequisites
 
 - Prometheus and Alertmanager deployed with scrape targets for AI services
-- Grafana [dashboards](../../Cloud_Providers/dashboards/SKILL.md) for golden signals (latency, error rate, cost, quality)
+- Grafana [dashboards](../dashboards/SKILL.md) for golden signals (latency, error rate, cost, quality)
 - On-call rotation configured in PagerDuty, Opsgenie, or equivalent
 - [Runbook](../runbook/SKILL.md) repository accessible to responders
 - Rollback mechanism for model and prompt versions ([GitOps](../../Containers_and_Orchestration/gitops/SKILL.md) or feature flags)

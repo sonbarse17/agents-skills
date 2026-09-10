@@ -106,7 +106,7 @@ AppProjects restrict which repos, clusters, and namespaces an Application is all
 which resource kinds it can create — use one per team or tenant boundary rather than letting every
 Application use the `default` project with unrestricted scope. This is what turns "anyone can [commit](../../CI_CD/commit/SKILL.md)
 an Application manifest" from a security risk into a bounded one. See `[multi-tenancy](../../Containers_and_Orchestration/multi-tenancy/SKILL.md)` for the
-broader cluster-sharing model and `[iam-access-management](../../Cloud_Providers/iam-access-management/SKILL.md)` for tying projects to real identities.
+broader cluster-sharing model and `[iam-access-management](../../../cloud/common/identity/iam-access-management/SKILL.md)` for tying projects to real identities.
 
 **Done when:** a compromised or misconfigured Application in one project cannot deploy into another
 team's namespace or cluster.

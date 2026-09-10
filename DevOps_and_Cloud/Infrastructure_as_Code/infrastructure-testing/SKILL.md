@@ -117,7 +117,7 @@ shared test environment.
 - **Scope it to what static checks can't cover** — running a full integration suite here for
   something a linter already catches wastes the most expensive layer of the pyramid.
 - **Match its topology to production closely enough** that a pass here is meaningful — see
-  `[environment-management](../../Cloud_Providers/environment-management/SKILL.md)` for keeping environments consistent.
+  `[environment-management](../../../cloud/common/other/environment-management/SKILL.md)` for keeping environments consistent.
 
 **Done when:** every change that can't be fully validated statically runs against a fresh, isolated
 environment before reaching production, and that environment is torn down afterward.

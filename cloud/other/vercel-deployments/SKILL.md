@@ -27,7 +27,7 @@ Ship web apps quickly with preview environments and managed edge infrastructure.
 Use this skill when:
 - Deploying Next.js, [SvelteKit](../../../Software_Engineering_and_Other/Frontend/sveltekit/SKILL.md), Nuxt, or static sites
 - Setting up preview environments for every PR
-- Configuring edge functions and [serverless](../../Containers_and_Orchestration/serverless/SKILL.md) APIs
+- Configuring edge functions and [serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) APIs
 - Managing environment variables across preview/production
 - Setting up custom domains and redirects
 
@@ -35,7 +35,7 @@ Use this skill when:
 
 - Node.js 18+
 - Vercel account (free tier works for personal projects)
-- Git repository ([GitHub](../../CI_CD/github/SKILL.md), GitLab, or Bitbucket)
+- Git repository ([GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md), GitLab, or Bitbucket)
 
 ## Quick Start
 
@@ -170,10 +170,10 @@ export const config = {
 };
 ```
 
-## [GitHub](../../CI_CD/github/SKILL.md) Actions Integration
+## [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions Integration
 
 ```yaml
-# .[github](../../CI_CD/github/SKILL.md)/workflows/preview.yml
+# .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/preview.yml
 name: Vercel Preview
 on: pull_request
 
@@ -199,10 +199,10 @@ jobs:
           echo "url=$URL" >> "$GITHUB_OUTPUT"
 
       - name: Comment PR with preview URL
-        uses: actions/[github](../../CI_CD/github/SKILL.md)-script@v7
+        uses: actions/[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-script@v7
         with:
           script: |
-            [github](../../CI_CD/github/SKILL.md).rest.issues.createComment({
+            [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -238,7 +238,7 @@ vercel inspect <deployment-url>
 
 ## Production Guardrails
 
-- Require preview checks before merge ([GitHub](../../CI_CD/github/SKILL.md) branch protection)
+- Require preview checks before merge ([GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) branch protection)
 - Separate preview and production environment variables — never share API keys
 - Use branch protection with required deployment status checks
 - Monitor function duration and cold start behavior in Vercel Analytics
@@ -246,7 +246,7 @@ vercel inspect <deployment-url>
 - Enable Vercel Firewall for DDoS and bot protection
 - Use `vercel.json` headers for security (CSP, HSTS, X-Frame-Options)
 
-## [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) & Analytics
+## [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) & Analytics
 
 ```bash
 # Enable Speed Insights in Next.js
@@ -280,7 +280,7 @@ export default function RootLayout({ children }) {
 |-------|---------|
 | Build fails | Check `vercel logs`, verify Node.js version in `engines` field |
 | Env vars missing | Run `vercel env pull`, check variable scope (preview vs production) |
-| Edge function timeout | Edge has 30s limit; move heavy work to [serverless](../../Containers_and_Orchestration/serverless/SKILL.md) (no `runtime = 'edge'`) |
+| Edge function timeout | Edge has 30s limit; move heavy work to [serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) (no `runtime = 'edge'`) |
 | Cold starts slow | Use edge runtime where possible, reduce bundle size |
 | Domain not working | Check DNS propagation, verify `vercel domains` configuration |
 

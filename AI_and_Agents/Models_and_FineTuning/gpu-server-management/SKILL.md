@@ -229,4 +229,4 @@ nvidia-smi topo -m
 - [vllm-server](../../local-ai/[vllm-server](../vllm-server/SKILL.md)/) - LLM inference on GPUs
 - [llm-fine-tuning](../../local-ai/[llm-fine-tuning](../llm-fine-tuning/SKILL.md)/) - GPU training setup
 - [linux-hardening](../../../security/hardening/[linux-hardening](../../../DevOps_and_Cloud/Observability_and_SecOps/linux-hardening/SKILL.md)/) - Secure the host OS
-- [prometheus-grafana](../../../devops/[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/[prometheus-grafana](../../../DevOps_and_Cloud/Cloud_Providers/prometheus-grafana/SKILL.md)/) - Metrics [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)
+- [prometheus-grafana](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/[prometheus-grafana](../../../DevOps_and_Cloud/Observability_and_SecOps/prometheus-grafana/SKILL.md)/) - Metrics [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md)

@@ -24,7 +24,7 @@ depends_on:
   - gcp-landing-zone-setup
 ---
 
-# [Multi-Cloud](../multi-cloud/SKILL.md) Networking Patterns
+# [Multi-Cloud](../../other/multi-cloud/SKILL.md) Networking Patterns
 
 ## Purpose
 
@@ -184,14 +184,14 @@ than an emergent mess of one-off peering connections.
   management burden.
 - **Route through private endpoints for managed services** rather than
   allowing public-endpoint access with an IP allowlist — allowlists rot
-  as source IPs change (NAT gateway IP rotation, [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)).
+  as source IPs change (NAT gateway IP rotation, [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)).
 - Treat **cross-cloud VPNs as a stopgap for moderate, steady traffic**,
   not high-throughput data pipelines — for sustained large data transfer
   between clouds, evaluate a dedicated interconnect or a data-transfer
   service rather than routing bulk traffic over IPsec VPN.
 - Keep **network topology and firewall rules as code**, reviewed with
   the same rigor as IAM changes — a misconfigured route or overly broad
-  security group rule is as much a security [incident](../../Observability_and_SecOps/incident/SKILL.md) as an IAM
+  security group rule is as much a security [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) as an IAM
   over-grant.
 
 ## Common pitfalls
@@ -210,7 +210,7 @@ than an emergent mess of one-off peering connections.
   **Fix:** The hub's route table/NSG allowed all spoke-to-spoke traffic
   by default instead of denying by default. Rebuild the routing/firewall
   policy to deny spoke-to-spoke traffic unless an explicit rule exists,
-  and [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) existing flows with VPC Flow Logs / NSG Flow Logs / VPC Flow
+  and [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) existing flows with VPC Flow Logs / NSG Flow Logs / VPC Flow
   Logs (GCP) to find any other unintended paths before tightening.
 
 - **Symptom:** A site-to-site VPN between two clouds connects but no

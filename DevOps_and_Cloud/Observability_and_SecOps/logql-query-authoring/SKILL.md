@@ -144,7 +144,7 @@ skill does not repeat.
    > label instead — see
    > [loki-log-aggregation-configuration](../[loki-log-aggregation-configuration](../loki-log-aggregation-configuration/SKILL.md)/SKILL.md).
 
-5. **Turn a log stream into a metric query for [dashboards](../../Cloud_Providers/dashboards/SKILL.md)/alerts** using
+5. **Turn a log stream into a metric query for [dashboards](../dashboards/SKILL.md)/alerts** using
    LogQL's PromQL-like aggregation functions:
    ```logql
    # count of matching lines per second, per service, over 5m windows

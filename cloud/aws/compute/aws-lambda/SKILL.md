@@ -20,7 +20,7 @@ depends_on:
 
 # AWS Lambda
 
-Build [serverless](../../Containers_and_Orchestration/serverless/SKILL.md) applications with AWS Lambda, covering function creation, event sources, layers, SAM templates, and cold start optimization.
+Build [serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) applications with AWS Lambda, covering function creation, event sources, layers, SAM templates, and cold start optimization.
 
 ## When to Use This Skill
 
@@ -35,7 +35,7 @@ Build [serverless](../../Containers_and_Orchestration/serverless/SKILL.md) appli
 
 - AWS CLI v2 installed and configured
 - IAM permissions: `lambda:*`, `iam:PassRole`, `logs:*`, `apigateway:*`, `s3:*`
-- [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) 3.11+, Node.js 20+, or another supported runtime installed locally
+- [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) 3.11+, Node.js 20+, or another supported runtime installed locally
 - (Optional) AWS SAM CLI for local development and deployment
 
 ## Create and Deploy a Function
@@ -92,7 +92,7 @@ aws lambda update-alias \
 
 ## Function Code Examples
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # app.py - API Gateway handler with structured logging
 import json
 import logging
@@ -128,7 +128,7 @@ def process_request(body):
     return {"message": "OK", "data": body}
 ```
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # sqs_processor.py - SQS batch processor with partial failure reporting
 import json
 import logging
@@ -163,16 +163,16 @@ def process_message(body):
 ## Lambda Layers
 
 ```bash
-# Build a layer for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) dependencies
-mkdir -p layer/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
-pip install requests boto3-stubs -t layer/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/
+# Build a layer for [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) dependencies
+mkdir -p layer/[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+pip install requests boto3-stubs -t layer/[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/
 cd layer
-zip -r ../my-layer.zip [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/
+zip -r ../my-layer.zip [python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/
 
 # Publish the layer
 aws lambda publish-layer-version \
   --layer-name common-deps \
-  --description "Shared [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) dependencies" \
+  --description "Shared [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) dependencies" \
   --zip-file fileb://my-layer.zip \
   --compatible-runtimes python3.11 python3.12 \
   --compatible-architectures arm64 x86_64
@@ -300,8 +300,8 @@ Cold start reduction tips:
 ```yaml
 # template.yaml - AWS SAM application
 AWSTemplateFormatVersion: '2010-09-09'
-Transform: AWS::[Serverless](../../Containers_and_Orchestration/serverless/SKILL.md)-2016-10-31
-Description: My [serverless](../../Containers_and_Orchestration/serverless/SKILL.md) API
+Transform: AWS::[Serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)-2016-10-31
+Description: My [serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) API
 
 Globals:
   Function:
@@ -323,7 +323,7 @@ Parameters:
 
 Resources:
   ApiFunction:
-    Type: AWS::[Serverless](../../Containers_and_Orchestration/serverless/SKILL.md)::Function
+    Type: AWS::[Serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)::Function
     Properties:
       FunctionName: !Sub "${Stage}-api-handler"
       Handler: app.handler
@@ -346,7 +346,7 @@ Resources:
             TableName: !Ref ItemsTable
 
   QueueProcessor:
-    Type: AWS::[Serverless](../../Containers_and_Orchestration/serverless/SKILL.md)::Function
+    Type: AWS::[Serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)::Function
     Properties:
       FunctionName: !Sub "${Stage}-queue-processor"
       Handler: sqs_processor.handler
@@ -361,7 +361,7 @@ Resources:
               - ReportBatchItemFailures
 
   DepsLayer:
-    Type: AWS::[Serverless](../../Containers_and_Orchestration/serverless/SKILL.md)::LayerVersion
+    Type: AWS::[Serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)::LayerVersion
     Properties:
       LayerName: common-deps
       ContentUri: layer/

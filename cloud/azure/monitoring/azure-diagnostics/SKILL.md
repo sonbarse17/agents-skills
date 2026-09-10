@@ -43,7 +43,7 @@ Activate this skill when user wants to:
 - Respond to prompts like "troubleshoot app service", "app service high CPU", or "app service deployment failure"
 - Troubleshoot Azure Function Apps (invocation failures, timeouts, binding errors)
 - Find the App Insights or Log Analytics workspace linked to a Function App
-- Troubleshoot AKS clusters, nodes, pods, ingress, or [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) networking issues
+- Troubleshoot AKS clusters, nodes, pods, ingress, or [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) networking issues
 - Troubleshoot Azure VM connectivity issues (RDP/SSH failures, port 3389/22 timeouts, NSG or firewall blocking, credential resets)
 - Troubleshoot Azure Messaging SDK issues (Event Hubs, Service Bus connection failures, AMQP errors, message lock issues)
 
@@ -134,7 +134,7 @@ mcp_azure_mcp_monitor
     query: "<KQL-query>"
 ```
 
-See [kql-queries.md](../../../Global_References/kql-queries.md) for common diagnostic queries.
+See [kql-queries.md](../../../../Global_References/kql-queries.md) for common diagnostic queries.
 
 ---
 
@@ -164,8 +164,8 @@ az monitor activity-log list -g RG --max-events 20
 
 ## References
 
-- [KQL Query Library](../../../Global_References/kql-queries.md)
-- [Azure Resource Graph Queries](../../../Global_References/azure-diagnostics_azure-resource-graph.md)
+- [KQL Query Library](../../../../Global_References/kql-queries.md)
+- [Azure Resource Graph Queries](../../../../Global_References/azure-diagnostics_azure-resource-graph.md)
 - [App Service Troubleshooting](references/app-service/README.md)
 - [Function Apps Troubleshooting](references/functions/README.md)
 - [VM Connectivity Troubleshooting](troubleshooting/compute/vm-troubleshooting.md)

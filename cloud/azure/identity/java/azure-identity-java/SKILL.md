@@ -61,7 +61,7 @@ BlobServiceClient blobClient = new BlobServiceClientBuilder()
     .buildClient();
 
 KeyClient keyClient = new KeyClientBuilder()
-    .vaultUrl("https://<[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name>.[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net")
+    .vaultUrl("https://<[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name>.[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net")
     .credential(credential)
     .buildClient();
 ```
@@ -232,7 +232,7 @@ ChainedTokenCredential credential = new ChainedTokenCredentialBuilder()
 
 ## Workload Identity (AKS)
 
-For Azure [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Service with workload identity.
+For Azure [Kubernetes](../../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Service with workload identity.
 
 ```java
 import com.azure.identity.WorkloadIdentityCredential;
@@ -351,7 +351,7 @@ AZURE_AUTHORITY_HOST=https://login.microsoftonline.com/
 | Local Development | `DefaultAzureCredential` (uses Azure CLI) |
 | Azure App Service | `DefaultAzureCredential` (uses Managed Identity) |
 | Azure Functions | `DefaultAzureCredential` (uses Managed Identity) |
-| Azure [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Service | `WorkloadIdentityCredential` |
+| Azure [Kubernetes](../../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Service | `WorkloadIdentityCredential` |
 | Azure VMs | `DefaultAzureCredential` (uses Managed Identity) |
 | CI/CD Pipeline | `EnvironmentCredential` |
 | Desktop App | `InteractiveBrowserCredential` |

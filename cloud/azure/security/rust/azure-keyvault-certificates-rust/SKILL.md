@@ -20,13 +20,13 @@ depends_on:
   - github
 ---
 
-# Azure Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Certificates library for Rust
+# Azure Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Certificates library for Rust
 
 Manage X.509 certificates for TLS/SSL, code signing, and authentication.
 
 Use this skill when:
 
-- An app needs to create or manage X.509 certificates in Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) from Rust
+- An app needs to create or manage X.509 certificates in Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) from Rust
 - You need self-signed or CA-issued certificates
 - You need long-running operations (LRO) for certificate issuance
 - You need to sign data using a certificate's key
@@ -44,7 +44,7 @@ cargo add azure_security_keyvault_certificates azure_identity tokio futures
 ## Environment Variables
 
 ```bash
-AZURE_KEYVAULT_URL=https://<[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name>.[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net/ # Required for all operations
+AZURE_KEYVAULT_URL=https://<[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name>.[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net/ # Required for all operations
 ```
 
 ## Authentication
@@ -60,7 +60,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Local dev: DeveloperToolsCredential. Production: use ManagedIdentityCredential.
     let credential = DeveloperToolsCredential::new(None)?;
     let client = CertificateClient::new(
-        "https://<[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name>.[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net/",
+        "https://<[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name>.[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net/",
         credential.clone(),
         None,
     )?;
@@ -160,7 +160,7 @@ while let Some(cert) = pager.try_next().await? {
 
 ## Signing with a Certificate's Key
 
-Certificates in Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) have an associated key. Use the Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Keys SDK for crypto operations:
+Certificates in Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) have an associated key. Use the Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Keys SDK for crypto operations:
 
 ```rust
 use azure_security_keyvault_keys::{
@@ -169,7 +169,7 @@ use azure_security_keyvault_keys::{
 };
 
 let key_client = KeyClient::new(
-    "https://<[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name>.[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net/",
+    "https://<[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name>.[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net/",
     credential.clone(),
     None,
 )?;
@@ -208,8 +208,8 @@ For Entra ID auth, assign one of these roles:
 
 | Role                             | Access                      |
 | -------------------------------- | --------------------------- |
-| `Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Certificate User`     | Use certificates            |
-| `Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Certificates Officer` | Full certificate management |
+| `Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Certificate User`     | Use certificates            |
+| `Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Certificates Officer` | Full certificate management |
 
 ## Best Practices
 
@@ -229,4 +229,4 @@ For Entra ID auth, assign one of these roles:
 | ------------- | ------------------------------------------------------------------------------------------------------- |
 | API Reference | https://docs.rs/azure_security_keyvault_certificates/latest/azure_security_keyvault_certificates        |
 | crates.io     | https://crates.io/crates/azure_security_keyvault_certificates                                           |
-| Source Code   | https://[github](../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-rust/tree/main/sdk/keyvault/azure_security_keyvault_certificates |
+| Source Code   | https://[github](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-rust/tree/main/sdk/keyvault/azure_security_keyvault_certificates |

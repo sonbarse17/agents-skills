@@ -109,7 +109,7 @@ security_common_criteria:
     CC7.4: "Respond to identified security incidents"
     CC7.5: "Identify and remediate security incidents"
     evidence:
-      - SIEM alert rules and [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)
+      - SIEM alert rules and [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md)
       - [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) configuration (CloudWatch, [Datadog](../../DevOps_and_Cloud/Observability_and_SecOps/datadog/SKILL.md), etc.)
       - [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response plan
       - [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) tickets and post-mortems
@@ -137,7 +137,7 @@ availability_criteria:
   A1.3: "Recovery plan procedures to support system availability"
   evidence:
     - Uptime SLA documentation
-    - [Capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)
+    - [Capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md)
     - Disaster recovery plan
     - DR test results
     - Backup verification records
@@ -193,7 +193,7 @@ control_to_tool_mapping:
 
   CC7.2_monitoring:
     tools:
-      - CloudWatch / Azure Monitor / Cloud [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)
+      - CloudWatch / Azure Monitor / Cloud [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md)
       - [Datadog](../../DevOps_and_Cloud/Observability_and_SecOps/datadog/SKILL.md) / New Relic / Grafana alert configurations
       - SIEM (Splunk, Elastic, Sentinel) saved searches
       - PagerDuty / OpsGenie escalation policies
@@ -230,7 +230,7 @@ echo "=== CC6.1 - Logical Access Evidence ==="
 aws iam generate-credential-report
 sleep 10
 aws iam get-credential-report --output text --query Content | \
-  base64 -d > "$EVIDENCE_DIR/[aws-iam](../../DevOps_and_Cloud/Cloud_Providers/aws-iam/SKILL.md)-credential-report.csv"
+  base64 -d > "$EVIDENCE_DIR/[aws-iam](../../cloud/aws/identity/aws-iam/SKILL.md)-credential-report.csv"
 
 # AWS IAM Access Analyzer findings
 aws accessanalyzer list-findings \
@@ -325,7 +325,7 @@ audit_prep_timeline:
     - Prepare evidence request list responses
     - Organize evidence into auditor-friendly structure
     - Brief key personnel on [audit](../../AI_and_Agents/Operations/audit/SKILL.md) interviews
-    - Verify [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) show healthy state
+    - Verify [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) show healthy state
     - Confirm [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response records are complete
 
   during_audit:

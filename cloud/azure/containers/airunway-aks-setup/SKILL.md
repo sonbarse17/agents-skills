@@ -24,7 +24,7 @@ depends_on:
 
 # AI Runway AKS Setup
 
-This skill walks users from a bare [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) cluster to a running AI model deployment. Follow each step in sequence unless the user provides `skip-to-step N` to resume from a specific phase.
+This skill walks users from a bare [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cluster to a running AI model deployment. Follow each step in sequence unless the user provides `skip-to-step N` to resume from a specific phase.
 
 > **Cost awareness:** GPU node pools incur significant compute charges (A100-80GB can cost $3–5+/hr). Confirm the user understands cost implications before provisioning GPU resources.
 
@@ -37,7 +37,7 @@ This skill assumes an AKS cluster already exists. If the user does not have a cl
 | Property | Value |
 |----------|-------|
 | Best for | End-to-end AI Runway onboarding on AKS |
-| CLI tools | `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md)`, `make`, `curl` |
+| CLI tools | `[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)`, `make`, `curl` |
 | MCP tools | None |
 | Related skills | `[azure-kubernetes](../azure-skills/skills/[azure-kubernetes](../../Containers_and_Orchestration/azure-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)/SKILL.md)/SKILL.md)` (cluster setup), `[azure-diagnostics](../[azure-diagnostics](../azure-skills/skills/azure-diagnostics/SKILL.md)/SKILL.md)` (troubleshooting) |
 
@@ -53,7 +53,7 @@ Use this skill when the user wants to:
 
 ## MCP Tools
 
-This skill uses no MCP tools. All cluster operations are performed directly via `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md)` and `make`.
+This skill uses no MCP tools. All cluster operations are performed directly via `[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)` and `make`.
 
 ## Rules
 
@@ -79,10 +79,10 @@ This skill uses no MCP tools. All cluster operations are performed directly via 
 | Error / Symptom | Likely Cause | Remediation |
 |-----------------|--------------|-------------|
 | No kubeconfig context | Not connected to a cluster | Run `az aks get-credentials` or equivalent |
-| Controller in CrashLoopBackOff | Config or RBAC issue | `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) logs -n airunway-system -l control-plane=controller-manager --previous` |
-| Provider not ready | Image pull or RBAC issue | `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) logs <pod-name> -n <namespace>` for the provider pod |
-| ModelDeployment stuck in Pending | GPU scheduling failure or provider not ready | `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) describe modeldeployment <name> -n <namespace>` events |
+| Controller in CrashLoopBackOff | Config or RBAC issue | `[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) logs -n airunway-system -l control-plane=controller-manager --previous` |
+| Provider not ready | Image pull or RBAC issue | `[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) logs <pod-name> -n <namespace>` for the provider pod |
+| ModelDeployment stuck in Pending | GPU scheduling failure or provider not ready | `[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) describe modeldeployment <name> -n <namespace>` events |
 | `bfloat16` errors at inference | T4 or V100 lacks bfloat16 support | Add `--dtype float16` to serving args |
 
-For full error handling and rollback procedures, see [troubleshooting.md](../../../Global_References/airunway-aks-setup_troubleshooting.md).
+For full error handling and rollback procedures, see [troubleshooting.md](../../../../Global_References/airunway-aks-setup_troubleshooting.md).
 

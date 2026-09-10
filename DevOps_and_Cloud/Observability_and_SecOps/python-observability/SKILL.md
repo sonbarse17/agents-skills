@@ -24,7 +24,7 @@ Instrument [Python](../../../Software_Engineering_and_Other/Languages/python/SKI
 - Setting up distributed tracing across services
 - Propagating correlation IDs through request chains
 - Debugging production issues
-- Building [observability](../observability/SKILL.md) [dashboards](../../Cloud_Providers/dashboards/SKILL.md)
+- Building [observability](../observability/SKILL.md) [dashboards](../dashboards/SKILL.md)
 
 ## Core Concepts
 

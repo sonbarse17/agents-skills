@@ -350,7 +350,7 @@ metadata:
     [argocd](../argocd/SKILL.md).argoproj.io/sync-wave: "5"
 spec:
   source:
-    path: [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)/[dashboards](../../Cloud_Providers/dashboards/SKILL.md)
+    path: [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)/[dashboards](../../Observability_and_SecOps/dashboards/SKILL.md)
 ```
 
 ### Step 3: App-of-Apps Pattern
@@ -521,7 +521,7 @@ spec:
 apiVersion: external-secrets.io/v1beta1
 kind: SecretStore
 metadata:
-  name: [aws-secrets-manager](../../Cloud_Providers/aws-secrets-manager/SKILL.md)
+  name: [aws-secrets-manager](../../../cloud/aws/security/aws-secrets-manager/SKILL.md)
   namespace: production
 spec:
   provider:
@@ -543,7 +543,7 @@ metadata:
 spec:
   refreshInterval: 4h
   secretStoreRef:
-    name: [aws-secrets-manager](../../Cloud_Providers/aws-secrets-manager/SKILL.md)
+    name: [aws-secrets-manager](../../../cloud/aws/security/aws-secrets-manager/SKILL.md)
     kind: SecretStore
   target:
     name: app-secrets

@@ -84,7 +84,7 @@ No preamble. No postamble. No explanations.
 - [ ] Error budget formula established per service with consumption tracking
 - [ ] Burn rate alerts configured with proper thresholds for fast/slow/predictive
 - [ ] Multi-tier SLA structure documented with customer-to-tier mapping
-- [ ] SLA reporting automated with [dashboards](../../Cloud_Providers/dashboards/SKILL.md) per tier and per customer
+- [ ] SLA reporting automated with [dashboards](../dashboards/SKILL.md) per tier and per customer
 - [ ] Penalty and service credit terms defined for breach scenarios
 - [ ] Quarterly SLO review process documented with engineering and product
 - [ ] Error budget policy for feature freeze defined and enforced
@@ -214,7 +214,7 @@ Error budget tracking: consume budget when SLI falls below SLO threshold. Budget
 ### Three-Stage SLO Lifecycle
 Stage 1 — Definition: define SLIs, set SLO targets, establish measurement, document for all services.
 
-Stage 2 — [Monitoring](../monitoring/SKILL.md): implement instrumentation, build [dashboards](../../Cloud_Providers/dashboards/SKILL.md), configure alerts, track attainment.
+Stage 2 — [Monitoring](../monitoring/SKILL.md): implement instrumentation, build [dashboards](../dashboards/SKILL.md), configure alerts, track attainment.
 
 Stage 3 — Improvement: review targets quarterly, analyze breach patterns, invest in reliability, tighten SLOs as capability improves.
 
@@ -241,7 +241,7 @@ Setting SLO targets that current system [capacity](../../../AI_and_Agents/Infras
 Setting SLO targets that do not reflect customer expectations. Results in satisfied internal metrics but dissatisfied customers. Mitigation: validate SLO targets with customer requirements. Set targets at or above customer expectations.
 
 ### Error Budget Not Visible
-Tracking error budgets in a dashboard that nobody checks. The error budget is useless if it is not visible to decision-makers. Mitigation: display error budget prominently on team [dashboards](../../Cloud_Providers/dashboards/SKILL.md), include in daily standups, and reference in sprint planning.
+Tracking error budgets in a dashboard that nobody checks. The error budget is useless if it is not visible to decision-makers. Mitigation: display error budget prominently on team [dashboards](../dashboards/SKILL.md), include in daily standups, and reference in sprint planning.
 
 ### Feature Freeze Not Enforced
 Having an error budget policy but never enforcing the feature freeze when budget is exhausted. The error budget mechanism loses all credibility. Mitigation: automate feature freeze enforcement through deployment pipeline. Block non-critical deployments when budget is exhausted.
@@ -268,7 +268,7 @@ Single-threshold [alerting](../alerting/SKILL.md) on error budget creates too ma
 - Document SLO targets, measurement methods, and window definitions in a shared SLO catalog.
 
 ### Error Budget Management
-- Display error budget consumption on engineering [dashboards](../../Cloud_Providers/dashboards/SKILL.md) in real time.
+- Display error budget consumption on engineering [dashboards](../dashboards/SKILL.md) in real time.
 - Track error budget burn rate, not just consumption level — burn rate predicts exhaustion.
 - Include error budget status in sprint planning: teams should allocate reliability work proportional to budget consumption.
 - Automate feature freeze enforcement when error budget is exhausted — do not rely on manual decisions.
@@ -284,7 +284,7 @@ Single-threshold [alerting](../alerting/SKILL.md) on error budget creates too ma
 ### Multi-Tier Design
 - Tier definitions should reflect real differences in operational investment and customer value.
 - Map customers to tiers in the contract with clear target expectations.
-- Provide tier-specific [dashboards](../../Cloud_Providers/dashboards/SKILL.md) and reports to customers.
+- Provide tier-specific [dashboards](../dashboards/SKILL.md) and reports to customers.
 - Review tier assignments annually — customers may have upgraded needs.
 - Support teams should be aligned with tiers (dedicated for critical, pooled for standard).
 
@@ -450,7 +450,7 @@ Results: pages reduced from 23 to 2 per week. [Incident](../incident/SKILL.md) r
 ### SaaS SLA Negotiation Gone Wrong
 A B2B SaaS company negotiated a 99.99% SLA to win a large enterprise deal without validating current system capability. Actual system availability was 99.95%. The first month after signing delivered three incidents totaling 45 minutes of downtime. The error budget of 4.32 minutes was exhausted on day 3. Service credits for the first quarter exceeded the contract's annual revenue.
 
-Remediation: immediate reliability investment (multi-region deployment, load testing, redundancy). Renegotiated SLA to 99.95% with a 99.99% target for a subset of APIs. Implemented real-time SLO [dashboards](../../Cloud_Providers/dashboards/SKILL.md) for the customer. Internal SLO set at 99.995% to provide buffer. Lessons learned: never negotiate SLA without validating against current system capability. Include phase-in period in new SLAs.
+Remediation: immediate reliability investment (multi-region deployment, load testing, redundancy). Renegotiated SLA to 99.95% with a 99.99% target for a subset of APIs. Implemented real-time SLO [dashboards](../dashboards/SKILL.md) for the customer. Internal SLO set at 99.995% to provide buffer. Lessons learned: never negotiate SLA without validating against current system capability. Include phase-in period in new SLAs.
 
 ## Rules
 - SLO targets must be achievable with current system [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) — do not [commit](../../CI_CD/commit/SKILL.md) to targets that cannot be met.
@@ -600,4 +600,4 @@ class ErrorBudget:
 - Metric retention: raw metrics 90 days. Aggregated 7 years for SLA [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) compliance.
 
 ## Handoff
-For compliance-related SLA requirements, hand off to `[enterprise-compliance-audit](../compliance-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)/SKILL.md)`. For cost implications of SLA tiers and service credits, hand off to `[enterprise-cost-governance](../../Cloud_Providers/cost-governance/SKILL.md)`. For [incident](../incident/SKILL.md) response processes triggered by burn rate alerts, hand off to `enterprise-[incident-response](../[incident](../incident/SKILL.md)-response/SKILL.md)`.
+For compliance-related SLA requirements, hand off to `[enterprise-compliance-audit](../compliance-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)/SKILL.md)`. For cost implications of SLA tiers and service credits, hand off to `[enterprise-cost-governance](../../../cloud/common/cost/cost-governance/SKILL.md)`. For [incident](../incident/SKILL.md) response processes triggered by burn rate alerts, hand off to `enterprise-[incident-response](../[incident](../incident/SKILL.md)-response/SKILL.md)`.

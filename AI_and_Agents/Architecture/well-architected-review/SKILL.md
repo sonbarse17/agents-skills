@@ -46,16 +46,16 @@ assessed.
 
 For each pillar, ask what actually happens, not what the design intends:
 
-- **Reliability** — has the stated failure domain (see `[cloud-architecture](../../../DevOps_and_Cloud/Cloud_Providers/cloud-architecture/SKILL.md)`) actually been tested,
+- **Reliability** — has the stated failure domain (see `[cloud-architecture](../../../cloud/common/architecture/cloud-architecture/SKILL.md)`) actually been tested,
   and does `[disaster-recovery](../../../DevOps_and_Cloud/Observability_and_SecOps/disaster-recovery/SKILL.md)` and `[chaos-engineering](../../../DevOps_and_Cloud/Observability_and_SecOps/chaos-engineering/SKILL.md)` coverage exist for it?
-- **Security** — is access scoped by `[iam-access-management](../../../DevOps_and_Cloud/Cloud_Providers/iam-access-management/SKILL.md)`, are secrets handled per
-  `[secrets-management](../../../DevOps_and_Cloud/Cloud_Providers/secrets-management/SKILL.md)`, has `[vulnerability-management](../../Workflows/vulnerability-management/SKILL.md)` run recently?
-- **Cost** — does spend match the `[cost-optimization](../../../DevOps_and_Cloud/Cloud_Providers/cost-optimization/SKILL.md)` and `[resource-tagging](../../../DevOps_and_Cloud/Cloud_Providers/resource-tagging/SKILL.md)` expectations, or has
+- **Security** — is access scoped by `[iam-access-management](../../../cloud/common/identity/iam-access-management/SKILL.md)`, are secrets handled per
+  `[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)`, has `[vulnerability-management](../../Workflows/vulnerability-management/SKILL.md)` run recently?
+- **Cost** — does spend match the `[cost-optimization](../../../cloud/common/cost/cost-optimization/SKILL.md)` and `[resource-tagging](../../../cloud/common/other/resource-tagging/SKILL.md)` expectations, or has
   it drifted?
 - **Performance** — is there `[load-testing](../../../DevOps_and_Cloud/Observability_and_SecOps/load-testing/SKILL.md)` evidence at expected peak, not just steady state?
 - **Operational excellence** — do `[runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md)` exist and match reality, is `[on-call-management](../../../DevOps_and_Cloud/Observability_and_SecOps/on-call-management/SKILL.md)`
   sane for this system's [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) volume?
-- **Sustainability** — is compute and storage rightsized (`[rightsizing](../../../DevOps_and_Cloud/Cloud_Providers/rightsizing/SKILL.md)`), or is idle [capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
+- **Sustainability** — is compute and storage rightsized (`[rightsizing](../../../cloud/common/cost/rightsizing/SKILL.md)`), or is idle [capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
   running because nobody's looked?
 
 **Done when:** every pillar's finding is backed by an artifact (a test result, a dashboard, a
@@ -90,7 +90,7 @@ would take a quarter, even though the tweak "sounds" more technical.
 
 The review identifies problems; it is not the place to solve deep pillar-specific work. A
 reliability gap goes to whoever owns `[disaster-recovery](../../../DevOps_and_Cloud/Observability_and_SecOps/disaster-recovery/SKILL.md)` or `[capacity-planning](../../../DevOps_and_Cloud/Observability_and_SecOps/[capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-planning/SKILL.md)`; a cost finding
-goes to whoever owns `[cost-optimization](../../../DevOps_and_Cloud/Cloud_Providers/cost-optimization/SKILL.md)`. Handing off with the specific skill and finding attached
+goes to whoever owns `[cost-optimization](../../../cloud/common/cost/cost-optimization/SKILL.md)`. Handing off with the specific skill and finding attached
 is what turns a review into action instead of a document that gets filed away.
 
 **Done when:** every "Now" and "Next" finding has an assigned owner and a target date, not just a

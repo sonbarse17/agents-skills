@@ -33,17 +33,17 @@ Prometheus and Grafana are the de facto open-source metrics stack for
 [Kubernetes](../kubernetes/SKILL.md) and cloud-native workloads: Prometheus pulls (scrapes) metrics
 on an interval, evaluates [alerting](../../Observability_and_SecOps/alerting/SKILL.md) rules against them, and hands firing
 alerts to Alertmanager for routing/deduplication/silencing, while Grafana
-turns the same time-series data into [dashboards](../../Cloud_Providers/dashboards/SKILL.md). The stack is simple to
+turns the same time-series data into [dashboards](../../Observability_and_SecOps/dashboards/SKILL.md). The stack is simple to
 install (kube-prometheus-stack Helm chart is a one-command bootstrap) but
 easy to run badly: scrape configs that silently miss targets, PromQL
 queries that are technically valid but semantically wrong (rate() over
-too short a window, missing `by()` clauses that collapse [dashboards](../../Cloud_Providers/dashboards/SKILL.md) to a
+too short a window, missing `by()` clauses that collapse [dashboards](../../Observability_and_SecOps/dashboards/SKILL.md) to a
 single line), [alerting](../../Observability_and_SecOps/alerting/SKILL.md) rules that page on transient blips, and
-hand-edited Grafana [dashboards](../../Cloud_Providers/dashboards/SKILL.md) that drift from what's checked into git.
+hand-edited Grafana [dashboards](../../Observability_and_SecOps/dashboards/SKILL.md) that drift from what's checked into git.
 This skill covers configuring scrape targets and service discovery
 correctly, writing PromQL that means what you think it means, defining
 [alerting](../../Observability_and_SecOps/alerting/SKILL.md) rules and Alertmanager routing that produce actionable pages
-instead of noise, and provisioning Grafana as code so [dashboards](../../Cloud_Providers/dashboards/SKILL.md) survive
+instead of noise, and provisioning Grafana as code so [dashboards](../../Observability_and_SecOps/dashboards/SKILL.md) survive
 a cluster rebuild.
 
 ## When to use
@@ -55,7 +55,7 @@ a cluster rebuild.
   recording rule, or an [alerting](../../Observability_and_SecOps/alerting/SKILL.md) rule.
 - Defining or tuning Prometheus [alerting](../../Observability_and_SecOps/alerting/SKILL.md) rules and Alertmanager
   routing trees, grouping, inhibition, and silences.
-- Provisioning Grafana datasources and [dashboards](../../Cloud_Providers/dashboards/SKILL.md) declaratively
+- Provisioning Grafana datasources and [dashboards](../../Observability_and_SecOps/dashboards/SKILL.md) declaratively
   (as ConfigMaps/sidecars, Grafana provisioning YAML, or Terraform) so
   they are version-controlled rather than edited by hand in the UI.
 - Investigating a target showing `up == 0` in Prometheus, a dashboard
@@ -161,7 +161,7 @@ a cluster rebuild.
    for a 30s-60s scrape interval) so `rate()` always has enough samples
    to extrapolate correctly.
 
-5. **Add recording rules for anything queried repeatedly** ([dashboards](../../Cloud_Providers/dashboards/SKILL.md),
+5. **Add recording rules for anything queried repeatedly** ([dashboards](../../Observability_and_SecOps/dashboards/SKILL.md),
    alerts) to precompute expensive aggregations rather than recomputing
    them on every dashboard refresh:
    ```yaml
@@ -257,7 +257,7 @@ a cluster rebuild.
    `Secret` referenced via `alertmanagerConfigSecret`/`envFrom`, never
    inline.
 
-8. **Provision Grafana datasources and [dashboards](../../Cloud_Providers/dashboards/SKILL.md) as code**, not
+8. **Provision Grafana datasources and [dashboards](../../Observability_and_SecOps/dashboards/SKILL.md) as code**, not
    through the UI, using the sidecar pattern:
    ```yaml
    apiVersion: v1
@@ -319,8 +319,8 @@ a cluster rebuild.
   operational queries; use Thanos, Cortex, or Mimir (or a managed
   remote-write target) if you need long-term retention for [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
   planning or compliance.
-- **Version-control Grafana [dashboards](../../Cloud_Providers/dashboards/SKILL.md) and Alertmanager config** in the
-  same repo/pipeline as the rest of the platform config — [dashboards](../../Cloud_Providers/dashboards/SKILL.md)
+- **Version-control Grafana [dashboards](../../Observability_and_SecOps/dashboards/SKILL.md) and Alertmanager config** in the
+  same repo/pipeline as the rest of the platform config — [dashboards](../../Observability_and_SecOps/dashboards/SKILL.md)
   edited only in the UI are lost on the next cluster rebuild.
 
 ## Common pitfalls

@@ -163,7 +163,7 @@ every staging deploy.
 
 7. **Feed results into the same triage workflow as SAST/SCA** (SARIF
    export, ticket auto-creation, PR comments) so security findings live
-   in one place rather than three disconnected [dashboards](../../Cloud_Providers/dashboards/SKILL.md).
+   in one place rather than three disconnected [dashboards](../dashboards/SKILL.md).
 
 ## Best practices
 

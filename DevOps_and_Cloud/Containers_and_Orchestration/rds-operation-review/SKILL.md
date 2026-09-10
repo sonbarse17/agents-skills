@@ -327,7 +327,7 @@ Current vs latest minor / latest major. Flag EOL.
 ### Cost Summary
 - Latest-month estimated cost for this resource (proportional split, with "estimated" badge)
 - RI coverage status
-- Top 3 [cost-optimization](../../Cloud_Providers/cost-optimization/SKILL.md) opportunities (linked to findings)
+- Top 3 [cost-optimization](../../../cloud/common/cost/cost-optimization/SKILL.md) opportunities (linked to findings)
 
 ### Priority Matrix
 | # | Finding | Severity | Pillar | Effort | Impact |

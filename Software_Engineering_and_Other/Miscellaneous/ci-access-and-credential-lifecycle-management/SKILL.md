@@ -67,7 +67,7 @@ and never removes them.
   HashiCorp [Vault](../vault/SKILL.md)) capable of versioned secrets so a rotation doesn't
   require simultaneously updating every consumer at the exact same
   instant — see
-  [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../DevOps_and_Cloud/Cloud_Providers/secrets-management/SKILL.md)/SKILL.md)
+  [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md)
   for the broader secrets-handling discipline this builds on.
 - Where the CI/CD platform and cloud provider support it, OIDC-based
   federation for CI-to-cloud authentication instead of a long-lived
@@ -262,7 +262,7 @@ deployment key expires in 45 days.
 
 ## Cross-references
 
-- [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../DevOps_and_Cloud/Cloud_Providers/secrets-management/SKILL.md)/SKILL.md) —
+- [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md) —
   the broader secrets-manager and secret-scanning discipline that CI
   credential storage and rotation build on.
 - [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../../../DevOps_and_Cloud/Cloud_Providers/cloud-iam-hardening/SKILL.md)/SKILL.md) —

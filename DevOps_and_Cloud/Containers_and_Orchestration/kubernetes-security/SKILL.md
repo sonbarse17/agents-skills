@@ -43,7 +43,7 @@ grant than "edit everything."
 - **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) with `[kubectl](../kubectl/SKILL.md) auth can-i --list --as=<sa>`** rather than reading YAML and hoping — it's
   the ground truth the API server actually enforces.
 - **Service accounts, not user credentials**, should hold workload permissions; humans get scoped
-  roles through your identity provider, see `[iam-access-management](../../Cloud_Providers/iam-access-management/SKILL.md)`.
+  roles through your identity provider, see `[iam-access-management](../../../cloud/common/identity/iam-access-management/SKILL.md)`.
 
 **Done when:** `[kubectl](../kubectl/SKILL.md) auth can-i --list` for the workload's service account shows nothing beyond
 what it demonstrably calls.
@@ -95,7 +95,7 @@ solving.
 - **RBAC on `secrets` resources** should be as tight as anything in rule 1 — read access to Secrets
   is equivalent to read access to whatever they protect.
 - **For rotation, external stores, and injection patterns** ([Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), cloud KMS, External Secrets
-  Operator), that's the deeper subject of `[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md)` — this skill only covers the
+  Operator), that's the deeper subject of `[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)` — this skill only covers the
   in-cluster storage posture.
 
 **Done when:** encryption at rest is confirmed enabled and no application secret exists as a

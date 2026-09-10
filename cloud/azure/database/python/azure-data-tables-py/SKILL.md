@@ -20,7 +20,7 @@ depends_on:
   - audit
 ---
 
-# Azure Tables SDK for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+# Azure Tables SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 
 NoSQL key-value store for structured data (Azure Storage Tables or Cosmos DB Table API).
 
@@ -45,7 +45,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 > **🔑 Two rules apply to every code sample below:**
 >
-> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
+> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
 >    - Local dev: `DefaultAzureCredential` works as-is.
 >    - Production: set `AZURE_TOKEN_CREDENTIALS=prod` (or `AZURE_TOKEN_CREDENTIALS=<specific_credential>`) to constrain the credential chain to production-safe credentials.
 > 2. **Wrap every client in a context manager** so HTTP transports, sockets, and token caches are released deterministically:
@@ -54,7 +54,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 >
 > Snippets may abbreviate this setup, but production code should always follow both rules.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import os
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 from azure.data.tables import TableServiceClient, TableClient
@@ -62,7 +62,7 @@ from azure.data.tables import TableServiceClient, TableClient
 # Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 credential = DefaultAzureCredential(require_envvar=True)
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
+# See https://learn.microsoft.com/[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 
 endpoint = "https://<account>.table.core.windows.net"
@@ -87,7 +87,7 @@ with TableClient(endpoint=endpoint, table_name="mytable", credential=credential)
 
 ## Table Operations
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Create table
 service_client.create_table("mytable")
 
@@ -111,7 +111,7 @@ table_client = service_client.get_table_client("mytable")
 
 ### Create Entity
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 entity = {
     "PartitionKey": "sales",
     "RowKey": "order-001",
@@ -130,7 +130,7 @@ table_client.upsert_entity(entity=entity)
 
 ### Get Entity
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Get by key (fastest)
 entity = table_client.get_entity(
     partition_key="sales",
@@ -141,7 +141,7 @@ print(f"Product: {entity['product']}")
 
 ### Update Entity
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Replace entire entity
 entity["quantity"] = 10
 table_client.update_entity(entity=entity, mode="replace")
@@ -157,7 +157,7 @@ table_client.update_entity(entity=update, mode="merge")
 
 ### Delete Entity
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 table_client.delete_entity(
     partition_key="sales",
     row_key="order-001"
@@ -168,7 +168,7 @@ table_client.delete_entity(
 
 ### Query Within Partition
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Query by partition (efficient)
 entities = table_client.query_entities(
     query_filter="PartitionKey eq 'sales'"
@@ -179,7 +179,7 @@ for entity in entities:
 
 ### Query with Filters
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Filter by properties
 entities = table_client.query_entities(
     query_filter="PartitionKey eq 'sales' and quantity gt 3"
@@ -194,7 +194,7 @@ entities = table_client.query_entities(
 
 ### Select Specific Properties
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 entities = table_client.query_entities(
     query_filter="PartitionKey eq 'sales'",
     select=["RowKey", "product", "price"]
@@ -203,7 +203,7 @@ entities = table_client.query_entities(
 
 ### List All Entities
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # List all (cross-partition - use sparingly)
 for entity in table_client.list_entities():
     print(entity)
@@ -211,7 +211,7 @@ for entity in table_client.list_entities():
 
 ## Batch Operations
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.data.tables import TableTransactionError
 
 # Batch operations (same partition only!)
@@ -229,7 +229,7 @@ except TableTransactionError as e:
 
 ## Async Client
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.data.tables.aio import TableServiceClient, TableClient
 from azure.identity.aio import DefaultAzureCredential
 
@@ -257,7 +257,7 @@ asyncio.run(table_operations())
 
 ## Data Types
 
-| [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) Type | Table Storage Type |
+| [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) Type | Table Storage Type |
 |-------------|-------------------|
 | `str` | String |
 | `int` | Int64 |
@@ -284,6 +284,6 @@ asyncio.run(table_operations())
 
 | File | Contents |
 |------|----------|
-| [../../../Global_References/azure-data-tables-py_capabilities.md](../../../Global_References/azure-data-tables-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
-| [../../../Global_References/azure-data-tables-py_non-hero-scenarios.md](../../../Global_References/azure-data-tables-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
+| [../../../Global_References/azure-data-tables-py_capabilities.md](../../../../../Global_References/azure-data-tables-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
+| [../../../Global_References/azure-data-tables-py_non-hero-scenarios.md](../../../../../Global_References/azure-data-tables-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
 

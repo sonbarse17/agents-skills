@@ -67,7 +67,7 @@ Detailed pattern documentation lives in `../../../Global_References/[incident](.
 - **Test [runbooks](../runbooks/SKILL.md) regularly** - Game days, chaos engineering
 - **Include rollback steps** - Always have an escape hatch
 - **Document assumptions** - What must be true for steps to work
-- **Link to [dashboards](../../Cloud_Providers/dashboards/SKILL.md)** - Quick access during stress
+- **Link to [dashboards](../dashboards/SKILL.md)** - Quick access during stress
 
 ### Don'ts
 - **Don't assume knowledge** - Write for 3 AM brain

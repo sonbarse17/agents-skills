@@ -54,7 +54,7 @@ Terraform HCL for CDN resources, provider config (CloudFront, Fastly VCL, Cloudf
 - [ ] WAF rules configured (OWASP top 10, rate limiting).
 - [ ] SSL/TLS with proper certificate.
 - [ ] Signed URLs/cookies for private content.
-- [ ] [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) for origin errors and cache hit ratio.
+- [ ] [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) for origin errors and cache hit ratio.
 
 ## Architecture Decision Trees
 
@@ -81,7 +81,7 @@ Terraform HCL for CDN resources, provider config (CloudFront, Fastly VCL, Cloudf
 | Feature | CloudFront Functions | Lambda@Edge | Cloudflare Workers |
 |---|---|---|---|
 | Max execution | 50μs | 5s | 50ms |
-| Runtime | JS | Node.js, [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) | JS, Wasm |
+| Runtime | JS | Node.js, [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) | JS, Wasm |
 | Network access | None | Full (VPC, DB) | Fetch API |
 | Cold start | No | Yes | No |
 | Use case | Header rewrite, URL redirect | Auth, A/B test | Full edge apps |
@@ -297,7 +297,7 @@ export default {
 ```
 
 ### Step 5: Signed URLs for Private Content
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # generate_signed_url.py
 import boto3
 from botocore.signers import CloudFrontSigner
@@ -402,7 +402,7 @@ sub vcl_fetch {
 }
 ```
 
-### Step 8: CDN [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../Observability_and_SecOps/alerting/SKILL.md)
+### Step 8: CDN [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 ```hcl
 resource "aws_cloudwatch_metric_alarm" "cache_hit_ratio" {
   alarm_name          = "cdn-cache-hit-ratio-low"
@@ -544,7 +544,7 @@ Serving uncompressed content increases egress costs and hurts performance. Enabl
   - ../../../Global_References/waf-rules.md
   - references/signed-urls-guide.md
   - references/multi-cdn-strategy.md
-  - references/cdn-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md).md
+  - references/cdn-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).md
 
 ## Handoff
 Next: **waf-rules** — deeper WAF configuration. Pass: distribution ID, WAF ACL ARN, edge function names.

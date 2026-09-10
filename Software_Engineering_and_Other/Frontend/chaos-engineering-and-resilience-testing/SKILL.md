@@ -61,7 +61,7 @@ a production deployment.
 
 ## Prerequisites & environment
 
-- Existing steady-state [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)/SLIs to compare against during the
+- Existing steady-state [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md)/SLIs to compare against during the
   experiment — see
   [slo-sli-and-error-budget-design](../[slo-sli-and-error-budget-design](../slo-sli-and-error-budget-design/SKILL.md)/SKILL.md)
   and the

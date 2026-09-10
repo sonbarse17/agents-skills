@@ -126,7 +126,7 @@ Console.WriteLine($"Endpoint: {scheduler.Data.Properties.Endpoint}");
 ### 2. Create Scheduler with Consumption SKU
 
 ```csharp
-// Consumption SKU ([serverless](../../Containers_and_Orchestration/serverless/SKILL.md))
+// Consumption SKU ([serverless](../../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md))
 var consumptionSchedulerData = new DurableTaskSchedulerData(AzureLocation.EastUS)
 {
     Properties = new DurableTaskSchedulerProperties
@@ -138,7 +138,7 @@ var consumptionSchedulerData = new DurableTaskSchedulerData(AzureLocation.EastUS
 
 var operation = await schedulerCollection.CreateOrUpdateAsync(
     WaitUntil.Completed,
-    "my-[serverless](../../Containers_and_Orchestration/serverless/SKILL.md)-scheduler",
+    "my-[serverless](../../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)-scheduler",
     consumptionSchedulerData);
 ```
 
@@ -277,7 +277,7 @@ var retentionOperation = await retentionPolicies.CreateOrUpdateAsync(
 | SKU | Description | Use Case |
 |-----|-------------|----------|
 | `Dedicated` | Fixed [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) with configurable instances | Production workloads, predictable performance |
-| `Consumption` | [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md), auto-scaling | Development, variable workloads |
+| `Consumption` | [Serverless](../../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md), auto-scaling | Development, variable workloads |
 
 ## Extension Methods
 
@@ -396,5 +396,5 @@ await scheduler.DeleteAsync(WaitUntil.Completed);
 
 ## Source Reference
 
-- [GitHub: Azure.ResourceManager.DurableTask](https://[github](../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/durabletask/Azure.ResourceManager.DurableTask)
+- [GitHub: Azure.ResourceManager.DurableTask](https://[github](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/durabletask/Azure.ResourceManager.DurableTask)
 - [NuGet: Azure.ResourceManager.DurableTask](https://www.nuget.org/packages/Azure.ResourceManager.DurableTask)

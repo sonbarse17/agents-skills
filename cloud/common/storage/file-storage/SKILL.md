@@ -55,7 +55,7 @@ Storage architecture design as formatted text.
 # Upload flow
 # Processing pipeline
 ```
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Presigned URL generation
 // Security configuration
 ```
@@ -175,7 +175,7 @@ Flat key structure with no sensitive data: `{env}/{tenant}/{type}/{uuid}/{filena
 ### Step 4: Upload Flow
 Client requests presigned URL from application server. Server validates file type (against MIME allowlist), file size (max per type), and user authorization. Server returns presigned PUT URL with 15-minute TTL. Client uploads directly to S3 (never through app server). Server receives S3 event notification (SQS/SNS) after upload. Server confirms metadata in database. Error flow: expired URL returns 403, client retries with new request.
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { S3Client, PutObjectCommand, GetObjectCommand } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 
@@ -195,7 +195,7 @@ async function getUploadUrl(params: { tenant: string; type: string; filename: st
 ```
 
 Server-side validation:
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 async function requestUploadUrl(params: { type: string; filename: string; size: number; contentType: string }, user: User) {
   const rules: Record<string, { maxSize: number; mimeTypes: string[] }> = {
     avatar: { maxSize: 5 * 1024 * 1024, mimeTypes: ['image/jpeg', 'image/png', 'image/webp'] },
@@ -216,7 +216,7 @@ async function requestUploadUrl(params: { type: string; filename: string; size: 
 ### Step 5: File Processing Pipeline
 Trigger: S3 PUT event → SQS queue → worker (Lambda or container). Process: virus scan (ClamAV), thumbnail generation (150x150, 300x300, 1024x1024), format conversion (WebP/AVIF for images, HLS for video), content moderation (NSFW detection, OCR text extraction). Processing result stored as metadata on the object. Failed processing moves to quarantine bucket for manual review.
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Image processing Lambda
 import sharp from 'sharp';
 export const handler = async (event: S3Event) => {
@@ -242,7 +242,7 @@ Block public access at account/bucket level. IAM roles for applications (never I
 ### Step 8: Multipart Upload for Large Files
 For files >100MB, use multipart upload for resilience and parallelism.
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { CreateMultipartUploadCommand, UploadPartCommand, CompleteMultipartUploadCommand } from '@aws-sdk/client-s3';
 
 async function multipartUpload(params: { bucket: string; key: string; filePath: string; partSize?: number }) {
@@ -282,7 +282,7 @@ Client → CloudFront → Origin Groups
                         └── Failover: S3 replica in different region
 ```
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // CloudFront with Lambda@Edge for custom auth
 // viewer-request Lambda: validates signed cookies before S3 origin access
 exports.handler = async (event) => {
@@ -317,7 +317,7 @@ exports.handler = async (event) => {
 ## File Processing Pipeline Patterns
 
 ### Event-Driven Processing with SQS
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // S3 → SQS → Lambda processing pipeline
 // Each step is decoupled by a queue
 
@@ -343,7 +343,7 @@ const dlq = new DeadLetterQueue({
 ```
 
 ### Video Processing Pipeline
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Video processing with AWS Elemental MediaConvert
 async function processVideo(inputKey: string): Promise<void> {
   const job = await mediaconvert.createJob({
@@ -375,7 +375,7 @@ async function processVideo(inputKey: string): Promise<void> {
 ```
 
 ## Lifecycle Policy Configuration (AWS S3)
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { S3Client, PutBucketLifecycleConfigurationCommand } from '@aws-sdk/client-s3';
 
 async function configureLifecycle(bucket: string) {
@@ -414,9 +414,9 @@ async function configureLifecycle(bucket: string) {
 ```
 
 ## Antivirus Integration
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Lambda: ClamAV scan triggered by S3 event
-import { S3Event } from '[aws-lambda](../aws-lambda/SKILL.md)';
+import { S3Event } from '[aws-lambda](../../../aws/compute/aws-lambda/SKILL.md)';
 import { spawn } from 'child_process';
 import { S3 } from '@aws-sdk/client-s3';
 
@@ -526,10 +526,10 @@ function scanWithClamAV(buffer: Buffer): Promise<{ infected: boolean; virus?: st
 ## References
   - ../../../Global_References/cdn-origin.md — CDN and Origin Storage Reference
   - ../../../Global_References/file-processing.md — File Processing Patterns Reference
-  - ../../../Global_References/file-storage-[cost-optimization](../cost-optimization/SKILL.md).md — File Storage Cost Optimization
+  - ../../../Global_References/file-storage-[cost-optimization](../../cost/cost-optimization/SKILL.md).md — File Storage Cost Optimization
   - ../../../Global_References/file-storage-security.md — File Storage Security
   - ../../../Global_References/storage-providers.md — Storage Providers
   - ../../../Global_References/upload-patterns.md — Upload Patterns and CDN Delivery
 ## Handoff
-`[backend-caching](../../Observability_and_SecOps/caching/SKILL.md)` for CDN cache strategy and edge caching patterns
+`[backend-caching](../../../../DevOps_and_Cloud/Observability_and_SecOps/caching/SKILL.md)` for CDN cache strategy and edge caching patterns
 

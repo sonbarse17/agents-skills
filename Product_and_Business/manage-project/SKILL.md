@@ -32,15 +32,15 @@ Perform day-2 operations on Elastic Cloud [Serverless](../../DevOps_and_Cloud/Co
 
 ## Prerequisites and permissions
 
-- Ensure `EC_API_KEY` is configured. If not, run `[cloud-setup](../../DevOps_and_Cloud/Cloud_Providers/setup/SKILL.md)` skill first.
+- Ensure `EC_API_KEY` is configured. If not, run `[cloud-setup](../../cloud/common/other/setup/SKILL.md)` skill first.
 - Updating project settings requires **Admin** or **Editor** role on the target project.
 - This skill does not perform a separate role pre-check. Attempt the requested operation and let the API enforce
   authorization. If the API returns an authorization error (for example, `403 Forbidden`), stop and ask the user to
   verify the provided API key permissions.
 
-### Manual setup fallback (when `[cloud-setup](../../DevOps_and_Cloud/Cloud_Providers/setup/SKILL.md)` is unavailable)
+### Manual setup fallback (when `[cloud-setup](../../cloud/common/other/setup/SKILL.md)` is unavailable)
 
-If this skill is installed standalone and `[cloud-setup](../../DevOps_and_Cloud/Cloud_Providers/setup/SKILL.md)` is not available, instruct the user to configure Cloud
+If this skill is installed standalone and `[cloud-setup](../../cloud/common/other/setup/SKILL.md)` is not available, instruct the user to configure Cloud
 environment variables manually before running commands. Never ask the user to paste API keys in chat.
 
 | Variable      | Required | Description                                                    |
@@ -509,7 +509,7 @@ python3 skills/cloud/manage-project/scripts/manage-project.py delete \
 
 ## Guidelines
 
-- Run the `[cloud-setup](../../DevOps_and_Cloud/Cloud_Providers/setup/SKILL.md)` skill first if `EC_API_KEY` is not set.
+- Run the `[cloud-setup](../../cloud/common/other/setup/SKILL.md)` skill first if `EC_API_KEY` is not set.
 - Use the `[cloud-create-project](../create-project/SKILL.md)` skill to create new projects — this skill handles existing projects only.
 - When the user refers to a project the agent did not create, follow the "Connect to an existing project" workflow.
 - Deletion is permanent. Always confirm with the user before proceeding.

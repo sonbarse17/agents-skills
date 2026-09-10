@@ -19,11 +19,11 @@ depends_on:
 
 # Terraform Azure
 
-Provision and manage Azure infrastructure with Terraform using the AzureRM provider. Covers provider configuration, remote state, resource groups, VNets, AKS, Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), complete .tf file examples, and production workflows.
+Provision and manage Azure infrastructure with Terraform using the AzureRM provider. Covers provider configuration, remote state, resource groups, VNets, AKS, Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), complete .tf file examples, and production workflows.
 
 ## When to Use
 
-- You need [multi-cloud](../../Cloud_Providers/multi-cloud/SKILL.md) or cloud-agnostic Infrastructure as Code.
+- You need [multi-cloud](../../../common/other/multi-cloud/SKILL.md) or cloud-agnostic Infrastructure as Code.
 - Your team standardizes on Terraform across AWS, Azure, and GCP.
 - You need plan/apply workflows with change preview before deployment.
 - You want modular, reusable infrastructure components.
@@ -336,7 +336,7 @@ resource "azurerm_kubernetes_cluster_node_pool" "app" {
 }
 ```
 
-## Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
+## Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
 
 ### keyvault.tf
 
@@ -498,7 +498,7 @@ terraform fmt -recursive
 # Plan changes for a specific environment
 terraform plan \
   -var-file="terraform.prod.tfvars" \
-  -var="sql_admin_password=$(az keyvault secret show --[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name ops-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) --name sql-pass --query value -o tsv)" \
+  -var="sql_admin_password=$(az keyvault secret show --[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name ops-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) --name sql-pass --query value -o tsv)" \
   -out=tfplan
 
 # Apply the saved plan
@@ -614,8 +614,8 @@ module "database" {
 
 ## Related Skills
 
-- `[arm-templates](../../Cloud_Providers/arm-templates/SKILL.md)` -- Azure-native IaC alternative with Bicep.
-- `[azure-aks](../../Containers_and_Orchestration/azure-aks/SKILL.md)` -- AKS cluster details and [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) operations.
-- `[azure-networking](../../Cloud_Providers/azure-networking/SKILL.md)` -- VNet and NSG design referenced in Terraform configs.
-- `[azure-sql](../../Cloud_Providers/azure-sql/SKILL.md)` -- Database provisioning and security configurations.
-- `[azure-vms](../../Cloud_Providers/azure-vms/SKILL.md)` -- VM sizing and scale set configurations.
+- `[arm-templates](../arm-templates/SKILL.md)` -- Azure-native IaC alternative with Bicep.
+- `[azure-aks](../../containers/azure-aks/SKILL.md)` -- AKS cluster details and [kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) operations.
+- `[azure-networking](../../networking/azure-networking/SKILL.md)` -- VNet and NSG design referenced in Terraform configs.
+- `[azure-sql](../../database/azure-sql/SKILL.md)` -- Database provisioning and security configurations.
+- `[azure-vms](../../compute/azure-vms/SKILL.md)` -- VM sizing and scale set configurations.

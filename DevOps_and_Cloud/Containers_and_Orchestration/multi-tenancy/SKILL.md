@@ -45,7 +45,7 @@ and shared control plane are themselves an attack surface between untrusted tena
   /Kata sandboxing) at minimum, and often separate clusters — the blast radius of a container
   escape or control-plane compromise has to stop at the tenant boundary.
 - **This decision drives cost directly** — hard tenancy's dedicated infrastructure is real spend;
-  see `[cost-optimization](../../Cloud_Providers/cost-optimization/SKILL.md)` for that tradeoff once the isolation requirement is fixed.
+  see `[cost-optimization](../../../cloud/common/cost/cost-optimization/SKILL.md)` for that tradeoff once the isolation requirement is fixed.
 
 **Done when:** the tenancy model is written down as a decision (soft or hard) with the trust
 assumption that justifies it, not left implicit.

@@ -73,7 +73,7 @@ indicator into an operating input.
   per instance family/region to size commitments against real, not
   guessed, baseline usage.
 - Optional but recommended: a FinOps tool (CloudHealth, Cloudability,
-  Kubecost for [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-specific allocation, or the open-source
+  Kubecost for [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-specific allocation, or the open-source
   OpenCost) if spend is complex enough that native cost-explorer tools
   become unwieldy across multiple accounts/subscriptions/projects.
 
@@ -127,11 +127,11 @@ indicator into an operating input.
    - **Genuinely spiky/unpredictable workloads**: leave on-demand, or use
      Spot/preemptible [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) (AWS Spot, Azure Spot VMs, GCP Spot VMs)
      for fault-tolerant, interruptible work instead of committing.
-   - Never [commit](../../CI_CD/commit/SKILL.md) to more than roughly 70-80% of observed baseline usage
+   - Never [commit](../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) to more than roughly 70-80% of observed baseline usage
      — commitments covering 100% of a fluctuating baseline routinely end
      up unused when demand dips.
 
-6. **Set up anomaly detection and a response [runbook](../../Observability_and_SecOps/runbook/SKILL.md).** When a cost
+6. **Set up anomaly detection and a response [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md).** When a cost
    anomaly alert fires: identify the resource/tag responsible from the
    CUR/Cost Management/BigQuery export, confirm with the owning team
    whether it's expected (a legitimate scale-up) or a mistake (an
@@ -158,14 +158,14 @@ indicator into an operating input.
   wire this into account/subscription/project vending.
 - **Rightsize based on peak, not average, utilization** to avoid
   performance regressions; pair [rightsizing](../rightsizing/SKILL.md) changes with a rollback plan
-  and a [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) window.
+  and a [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) window.
 - **Match commitment term to business certainty**, not just the discount
   curve — a deeper 3-year discount on a workload that might be
   decommissioned in 18 months is a false saving.
 - **Separate showback (visibility) from chargeback (billing)** —
   chargeback without mature, trusted tagging data creates disputes that
   undermine the whole program.
-- Treat **[Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)/container cost allocation as its own problem** —
+- Treat **[Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)/container cost allocation as its own problem** —
   node-level cloud billing does not natively reflect per-pod or
   per-namespace cost; use a tool like OpenCost/Kubecost if container
   spend is material.
@@ -176,7 +176,7 @@ indicator into an operating input.
 - Involve **engineering, not just finance**, in every optimization
   decision — a [rightsizing](../rightsizing/SKILL.md) or commitment change that isn't understood by
   the team running the workload will get silently reverted or cause an
-  [incident](../../Observability_and_SecOps/incident/SKILL.md).
+  [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
 
 ## Common pitfalls
 
@@ -206,7 +206,7 @@ indicator into an operating input.
   [rightsizing](../rightsizing/SKILL.md) recommendations, and roll out during a low-traffic window
   with fast rollback available.
 
-- **Symptom:** [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) cluster shows a flat, high cloud compute bill
+- **Symptom:** [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cluster shows a flat, high cloud compute bill
   regardless of which team scales its workloads up or down.
   **Fix:** Cost is being measured at the node level, not attributed
   per-namespace/pod. Deploy a cost-allocation tool (OpenCost/Kubecost) to
@@ -220,7 +220,7 @@ indicator into an operating input.
   without a tagged grace period and human confirmation** — idle-resource
   detection should open a ticket or require explicit approval before any
   deletion, especially for anything holding data (see
-  `[cloud-native-storage-strategy](../cloud-native-storage-strategy/SKILL.md)` and
+  `[cloud-native-storage-strategy](../../storage/cloud-native-storage-strategy/SKILL.md)` and
   `[disaster-recovery-and-backup-strategy](../[disaster-recovery](../../Observability_and_SecOps/disaster-recovery/SKILL.md)-and-backup-strategy/SKILL.md)` for what's safe to actually
   remove versus what must be retained under a backup/retention policy).
 

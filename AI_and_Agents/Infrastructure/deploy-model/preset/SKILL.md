@@ -112,9 +112,9 @@ az cognitiveservices account deployment delete --name <acct> --resource-group <r
 
 ## Related Skills
 
-- **[microsoft-foundry](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/SKILL.md)** - Parent skill for Microsoft Foundry operations
+- **[microsoft-foundry](../../../../cloud/azure/ai/microsoft-foundry/SKILL.md)** - Parent skill for Microsoft Foundry operations
 - **[quota](../../../quota/quota.md)** — For quota viewing, increase requests, and troubleshooting quota errors, defer to this skill
 - **azure-quick-review** - Review Azure resources for compliance
-- **[azure-cost](../../../../DevOps_and_Cloud/Cloud_Providers/[azure-cost](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/azure-cost/SKILL.md)/SKILL.md)-estimation** - Estimate costs for Azure deployments
+- **[azure-cost](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/azure-cost/SKILL.md)/SKILL.md)-estimation** - Estimate costs for Azure deployments
 - **[azure-validate](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/[azure-validate](../../../../DevOps_and_Cloud/Cloud_Providers/azure-validate/SKILL.md)/SKILL.md)** - Validate Azure infrastructure before deployment
 

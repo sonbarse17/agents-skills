@@ -22,7 +22,7 @@ depends_on:
   - audit
 ---
 
-# Azure AI Content Understanding SDK for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+# Azure AI Content Understanding SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 
 Multimodal AI service that extracts semantic content from documents, video, audio, and image files for RAG and automated workflows.
 
@@ -43,7 +43,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 > **🔑 Two rules apply to every code sample below:**
 >
-> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
+> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
 >    - Local dev: `DefaultAzureCredential` works as-is.
 >    - Production: set `AZURE_TOKEN_CREDENTIALS=prod` (or `AZURE_TOKEN_CREDENTIALS=<specific_credential>`) to constrain the credential chain to production-safe credentials.
 > 2. **Wrap every client in a context manager** so HTTP transports, sockets, and token caches are released deterministically:
@@ -52,7 +52,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 >
 > Snippets may abbreviate this setup, but production code should always follow both rules.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import os
 from azure.ai.contentunderstanding import ContentUnderstandingClient
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
@@ -61,7 +61,7 @@ endpoint = os.environ["CONTENTUNDERSTANDING_ENDPOINT"]
 # Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 credential = DefaultAzureCredential(require_envvar=True)
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
+# See https://learn.microsoft.com/[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 with ContentUnderstandingClient(endpoint=endpoint, credential=credential) as client:
     analyzers = list(client.list_analyzers())
@@ -87,7 +87,7 @@ Content Understanding operations are asynchronous long-running operations:
 
 ## Analyze Document
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import os
 from azure.ai.contentunderstanding import ContentUnderstandingClient
 from azure.ai.contentunderstanding.models import AnalyzeInput
@@ -113,7 +113,7 @@ with ContentUnderstandingClient(
 
 ## Access Document Content Details
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.ai.contentunderstanding.models import MediaContentKind, DocumentContent
 
 content = result.contents[0]
@@ -124,7 +124,7 @@ if content.kind == MediaContentKind.DOCUMENT:
 
 ## Analyze Image
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.ai.contentunderstanding.models import AnalyzeInput
 
 poller = client.begin_analyze(
@@ -138,7 +138,7 @@ print(content.markdown)
 
 ## Analyze Video
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.ai.contentunderstanding.models import AnalyzeInput
 
 poller = client.begin_analyze(
@@ -162,7 +162,7 @@ for frame in content.key_frames:
 
 ## Analyze Audio
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.ai.contentunderstanding.models import AnalyzeInput
 
 poller = client.begin_analyze(
@@ -182,7 +182,7 @@ for phrase in content.transcript_phrases:
 
 Create custom analyzers with field schemas for specialized extraction:
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Create custom analyzer
 analyzer = client.create_analyzer(
     analyzer_id="my-invoice-analyzer",
@@ -225,7 +225,7 @@ print(result.fields["invoice_total"])
 
 ## Analyzer Management
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # List all analyzers
 analyzers = client.list_analyzers()
 for analyzer in analyzers:
@@ -240,7 +240,7 @@ client.delete_analyzer("my-custom-analyzer")
 
 ## Async Client
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import asyncio
 import os
 from azure.ai.contentunderstanding.aio import ContentUnderstandingClient
@@ -276,7 +276,7 @@ Both derive from `MediaContent` which provides basic info and markdown represent
 
 ## Model Imports
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.ai.contentunderstanding.models import (
     AnalyzeInput,
     AnalyzeResult,

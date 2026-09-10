@@ -19,7 +19,7 @@ depends_on:
 
 # Agent [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
 
-Monitor AI agent behavior with logs, traces, metrics, and cost telemetry. This skill covers the full [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) stack for LLM-powered applications: from raw Prometheus counters to Grafana [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) tracing, structured logging, cost tracking, SLO definition, and PII redaction.
+Monitor AI agent behavior with logs, traces, metrics, and cost telemetry. This skill covers the full [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) stack for LLM-powered applications: from raw Prometheus counters to Grafana [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) tracing, structured logging, cost tracking, SLO definition, and PII redaction.
 
 ---
 
@@ -440,7 +440,7 @@ Example log output:
 
 ---
 
-## Grafana [Dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)
+## Grafana [Dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md)
 
 ### Agent Overview Dashboard
 
@@ -1087,6 +1087,6 @@ logger.addFilter(PIIRedactingFilter())
 
 ## Related Skills
 
-- [alerting-oncall](../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/[alerting-oncall](../../../DevOps_and_Cloud/Observability_and_SecOps/[alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)-oncall/SKILL.md)/) - Alert workflows and on-call routing
+- [alerting-oncall](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/[alerting-oncall](../../../DevOps_and_Cloud/Observability_and_SecOps/[alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)-oncall/SKILL.md)/) - Alert workflows and on-call routing
 - [agent-evals](../[agent-evals](../../Workflows/agent-evals/SKILL.md)/) - Quality verification and evaluation pipelines
-- [sre-dashboards](../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/[sre-dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/sre-[dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)/SKILL.md)/) - General SRE dashboard patterns
+- [sre-dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/[sre-dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/sre-[dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)/SKILL.md)/) - General SRE dashboard patterns

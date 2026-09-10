@@ -21,28 +21,28 @@ depends_on:
   - github
 ---
 
-# Azure.ResourceManager.[PostgreSql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) (.NET)
+# Azure.ResourceManager.[PostgreSql](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) (.NET)
 
-Azure Resource Manager SDK for managing [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) Flexible Server deployments.
+Azure Resource Manager SDK for managing [PostgreSQL](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) Flexible Server deployments.
 
 ## Installation
 
 ```bash
-dotnet add package Azure.ResourceManager.[PostgreSql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)
+dotnet add package Azure.ResourceManager.[PostgreSql](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)
 dotnet add package Azure.Identity
 ```
 
 **Current Version**: v1.2.0 (GA)  
 **API Version**: 2023-12-01-preview
 
-> **Note**: This skill focuses on [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) Flexible Server. Single Server is deprecated and scheduled for retirement.
+> **Note**: This skill focuses on [PostgreSQL](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) Flexible Server. Single Server is deprecated and scheduled for retirement.
 
 ## Environment Variables
 
 ```bash
 AZURE_SUBSCRIPTION_ID=<your-subscription-id>  # Required: Azure subscription ID
 AZURE_RESOURCE_GROUP=<your-resource-group>  # Required: resource group name
-AZURE_POSTGRESQL_SERVER_NAME=<your-[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-server>  # Required: [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) Flexible Server name
+AZURE_POSTGRESQL_SERVER_NAME=<your-[postgresql](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-server>  # Required: [PostgreSQL](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) Flexible Server name
 AZURE_TOKEN_CREDENTIALS=prod  # Required only if DefaultAzureCredential is used in production
 ```
 
@@ -51,8 +51,8 @@ AZURE_TOKEN_CREDENTIALS=prod  # Required only if DefaultAzureCredential is used 
 ```csharp
 using Azure.Identity;
 using Azure.ResourceManager;
-using Azure.ResourceManager.[PostgreSql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md);
-using Azure.ResourceManager.[PostgreSql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md).FlexibleServers;
+using Azure.ResourceManager.[PostgreSql](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md);
+using Azure.ResourceManager.[PostgreSql](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md).FlexibleServers;
 
 // Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 var credential = new DefaultAzureCredential(
@@ -69,7 +69,7 @@ ArmClient client = new ArmClient(credential);
 ```
 Subscription
 └── ResourceGroup
-    └── PostgreSqlFlexibleServer              # [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) Flexible Server instance
+    └── PostgreSqlFlexibleServer              # [PostgreSQL](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) Flexible Server instance
         ├── PostgreSqlFlexibleServerDatabase  # Database within the server
         ├── PostgreSqlFlexibleServerFirewallRule # IP firewall rules
         ├── PostgreSqlFlexibleServerConfiguration # Server parameters
@@ -80,11 +80,11 @@ Subscription
 
 ## Core Workflows
 
-### 1. Create [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) Flexible Server
+### 1. Create [PostgreSQL](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) Flexible Server
 
 ```csharp
-using Azure.ResourceManager.[PostgreSql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md).FlexibleServers;
-using Azure.ResourceManager.[PostgreSql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md).FlexibleServers.Models;
+using Azure.ResourceManager.[PostgreSql](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md).FlexibleServers;
+using Azure.ResourceManager.[PostgreSql](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md).FlexibleServers.Models;
 
 ResourceGroupResource resourceGroup = await client
     .GetDefaultSubscriptionAsync()
@@ -124,7 +124,7 @@ PostgreSqlFlexibleServerData data = new PostgreSqlFlexibleServerData(AzureLocati
 };
 
 ArmOperation<PostgreSqlFlexibleServerResource> operation = await servers
-    .CreateOrUpdateAsync(WaitUntil.Completed, "my-[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-server", data);
+    .CreateOrUpdateAsync(WaitUntil.Completed, "my-[postgresql](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-server", data);
 
 PostgreSqlFlexibleServerResource server = operation.Value;
 Console.WriteLine($"Server created: {server.Data.FullyQualifiedDomainName}");
@@ -134,7 +134,7 @@ Console.WriteLine($"Server created: {server.Data.FullyQualifiedDomainName}");
 
 ```csharp
 PostgreSqlFlexibleServerResource server = await resourceGroup
-    .GetPostgreSqlFlexibleServerAsync("my-[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-server");
+    .GetPostgreSqlFlexibleServerAsync("my-[postgresql](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-server");
 
 PostgreSqlFlexibleServerDatabaseCollection databases = server.GetPostgreSqlFlexibleServerDatabases();
 
@@ -195,7 +195,7 @@ PostgreSqlFlexibleServerConfigurationData configData = new PostgreSqlFlexibleSer
 ArmOperation<PostgreSqlFlexibleServerConfigurationResource> operation = await configurations
     .CreateOrUpdateAsync(WaitUntil.Completed, "max_connections", configData);
 
-// Common [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) configurations to tune
+// Common [PostgreSQL](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) configurations to tune
 string[] commonParams = { 
     "max_connections", 
     "shared_buffers", 
@@ -265,7 +265,7 @@ PostgreSqlFlexibleServerData restoreData = new PostgreSqlFlexibleServerData(Azur
 };
 
 ArmOperation<PostgreSqlFlexibleServerResource> operation = await servers
-    .CreateOrUpdateAsync(WaitUntil.Completed, "my-[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-restored", restoreData);
+    .CreateOrUpdateAsync(WaitUntil.Completed, "my-[postgresql](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-restored", restoreData);
 ```
 
 ### 8. Create Read Replica
@@ -279,14 +279,14 @@ PostgreSqlFlexibleServerData replicaData = new PostgreSqlFlexibleServerData(Azur
 };
 
 ArmOperation<PostgreSqlFlexibleServerResource> operation = await servers
-    .CreateOrUpdateAsync(WaitUntil.Completed, "my-[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-replica", replicaData);
+    .CreateOrUpdateAsync(WaitUntil.Completed, "my-[postgresql](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-replica", replicaData);
 ```
 
 ### 9. Stop and Start Server
 
 ```csharp
 PostgreSqlFlexibleServerResource server = await resourceGroup
-    .GetPostgreSqlFlexibleServerAsync("my-[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-server");
+    .GetPostgreSqlFlexibleServerAsync("my-[postgresql](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-server");
 
 // Stop server (saves costs when not in use)
 await server.StopAsync(WaitUntil.Completed);
@@ -306,7 +306,7 @@ await server.RestartAsync(WaitUntil.Completed, new PostgreSqlFlexibleServerResta
 
 ```csharp
 PostgreSqlFlexibleServerResource server = await resourceGroup
-    .GetPostgreSqlFlexibleServerAsync("my-[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-server");
+    .GetPostgreSqlFlexibleServerAsync("my-[postgresql](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-server");
 
 PostgreSqlFlexibleServerPatch patch = new PostgreSqlFlexibleServerPatch
 {
@@ -326,7 +326,7 @@ ArmOperation<PostgreSqlFlexibleServerResource> operation = await server
 
 ```csharp
 PostgreSqlFlexibleServerResource server = await resourceGroup
-    .GetPostgreSqlFlexibleServerAsync("my-[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-server");
+    .GetPostgreSqlFlexibleServerAsync("my-[postgresql](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-server");
 
 await server.DeleteAsync(WaitUntil.Completed);
 ```
@@ -357,16 +357,16 @@ await server.DeleteAsync(WaitUntil.Completed);
 | `GeneralPurpose` | Production workloads | Standard_D2ds_v4, Standard_D4ds_v4 |
 | `MemoryOptimized` | High memory requirements | Standard_E2ds_v4, Standard_E4ds_v4 |
 
-## [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) Versions
+## [PostgreSQL](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) Versions
 
 | Version | Enum Value |
 |---------|------------|
-| [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) 11 | `Ver11` |
-| [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) 12 | `Ver12` |
-| [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) 13 | `Ver13` |
-| [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) 14 | `Ver14` |
-| [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) 15 | `Ver15` |
-| [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) 16 | `Ver16` |
+| [PostgreSQL](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) 11 | `Ver11` |
+| [PostgreSQL](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) 12 | `Ver12` |
+| [PostgreSQL](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) 13 | `Ver13` |
+| [PostgreSQL](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) 14 | `Ver14` |
+| [PostgreSQL](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) 15 | `Ver15` |
+| [PostgreSQL](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) 16 | `Ver16` |
 
 ## High Availability Modes
 
@@ -397,7 +397,7 @@ using Azure;
 try
 {
     ArmOperation<PostgreSqlFlexibleServerResource> operation = await servers
-        .CreateOrUpdateAsync(WaitUntil.Completed, "my-[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)", data);
+        .CreateOrUpdateAsync(WaitUntil.Completed, "my-[postgresql](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)", data);
 }
 catch (RequestFailedException ex) when (ex.Status == 409)
 {
@@ -441,16 +441,16 @@ string connectionString = $"Host={server.Data.FullyQualifiedDomainName};" +
 
 | SDK | Purpose | Install |
 |-----|---------|---------|
-| `Azure.ResourceManager.[PostgreSql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)` | [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) management (this SDK) | `dotnet add package Azure.ResourceManager.[PostgreSql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)` |
-| `Azure.ResourceManager.[MySql](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)` | [MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) management | `dotnet add package Azure.ResourceManager.[MySql](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)` |
-| `Npgsql` | [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) data access | `dotnet add package Npgsql` |
-| `Npgsql.EntityFrameworkCore.[PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)` | EF Core provider | `dotnet add package Npgsql.EntityFrameworkCore.[PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)` |
+| `Azure.ResourceManager.[PostgreSql](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)` | [PostgreSQL](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) management (this SDK) | `dotnet add package Azure.ResourceManager.[PostgreSql](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)` |
+| `Azure.ResourceManager.[MySql](../../../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)` | [MySQL](../../../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) management | `dotnet add package Azure.ResourceManager.[MySql](../../../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)` |
+| `Npgsql` | [PostgreSQL](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) data access | `dotnet add package Npgsql` |
+| `Npgsql.EntityFrameworkCore.[PostgreSQL](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)` | EF Core provider | `dotnet add package Npgsql.EntityFrameworkCore.[PostgreSQL](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)` |
 
 ## Reference Links
 
 | Resource | URL |
 |----------|-----|
-| NuGet Package | https://www.nuget.org/packages/Azure.ResourceManager.[PostgreSql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) |
-| API Reference | https://learn.microsoft.com/dotnet/api/azure.resourcemanager.[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) |
-| Product Documentation | https://learn.microsoft.com/azure/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/flexible-server/ |
-| [GitHub](../../CI_CD/github/SKILL.md) Source | https://[github](../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/Azure.ResourceManager.[PostgreSql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) |
+| NuGet Package | https://www.nuget.org/packages/Azure.ResourceManager.[PostgreSql](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) |
+| API Reference | https://learn.microsoft.com/dotnet/api/azure.resourcemanager.[postgresql](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) |
+| Product Documentation | https://learn.microsoft.com/azure/[postgresql](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/flexible-server/ |
+| [GitHub](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Source | https://[github](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/[postgresql](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/Azure.ResourceManager.[PostgreSql](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) |

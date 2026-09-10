@@ -21,7 +21,7 @@ depends_on:
 # Kibana [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging
 
 Enable and configure [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging for Kibana via `kibana.yml`. Kibana [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs cover application-layer security
-events that Elasticsearch does not see: saved object CRUD ([dashboards](../../Cloud_Providers/dashboards/SKILL.md), visualizations, index patterns, rules, cases),
+events that Elasticsearch does not see: saved object CRUD ([dashboards](../dashboards/SKILL.md), visualizations, index patterns, rules, cases),
 login/logout, session expiry, space operations, and Kibana-level RBAC enforcement.
 
 For Elasticsearch [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging (authentication failures, access grants/denials, security config changes), see

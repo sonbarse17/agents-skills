@@ -78,7 +78,7 @@ what turns [runbook](../../Observability_and_SecOps/runbook/SKILL.md)-following 
   for how severity levels and escalation timeouts are defined at the
   program level; this skill covers executing within that structure as the
   first responder.
-- Read access to the relevant logs/[dashboards](../../Cloud_Providers/dashboards/SKILL.md)/metrics the [runbook](../../Observability_and_SecOps/runbook/SKILL.md)
+- Read access to the relevant logs/[dashboards](../../Observability_and_SecOps/dashboards/SKILL.md)/metrics the [runbook](../../Observability_and_SecOps/runbook/SKILL.md)
   references for verification steps.
 - Scoped, least-privilege access to perform *only* the actions the
   [runbook](../../Observability_and_SecOps/runbook/SKILL.md) documents (e.g. restart a specific service, run a specific

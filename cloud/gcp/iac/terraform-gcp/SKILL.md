@@ -190,7 +190,7 @@ resource "google_container_node_pool" "primary" {
   location = var.region
 
   initial_node_count = var.initial_node_count
-  [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) { min_node_count = var.min_nodes; max_node_count = var.max_nodes }
+  [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) { min_node_count = var.min_nodes; max_node_count = var.max_nodes }
   management  { auto_repair = true; auto_upgrade = true }
 
   node_config {
@@ -258,7 +258,7 @@ resource "google_service_account" "gke_nodes" {
 
 resource "google_project_iam_member" "gke_nodes" {
   for_each = toset([
-    "roles/logging.logWriter", "roles/[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md).metricWriter",
+    "roles/logging.logWriter", "roles/[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).metricWriter",
     "roles/artifactregistry.reader",
   ])
   project = var.project_id
@@ -356,8 +356,8 @@ terraform state mv google_compute_instance.old google_compute_instance.new
 
 ## Related Skills
 
-- **[gcp-networking](../../Cloud_Providers/gcp-networking/SKILL.md)** - VPC and firewall resources managed by Terraform
-- **[gcp-gke](../../Containers_and_Orchestration/gcp-gke/SKILL.md)** - GKE cluster provisioning with Terraform modules
-- **[gcp-cloud-sql](../../Cloud_Providers/gcp-cloud-sql/SKILL.md)** - Cloud SQL instance management via Terraform
-- **[gcp-compute](../../Cloud_Providers/gcp-compute/SKILL.md)** - Compute Engine resources defined in Terraform
-- **[gcp-cloud-functions](../../Cloud_Providers/gcp-cloud-functions/SKILL.md)** - [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md) function deployment with Terraform
+- **[gcp-networking](../../networking/gcp-networking/SKILL.md)** - VPC and firewall resources managed by Terraform
+- **[gcp-gke](../../containers/gcp-gke/SKILL.md)** - GKE cluster provisioning with Terraform modules
+- **[gcp-cloud-sql](../../database/gcp-cloud-sql/SKILL.md)** - Cloud SQL instance management via Terraform
+- **[gcp-compute](../../compute/gcp-compute/SKILL.md)** - Compute Engine resources defined in Terraform
+- **[gcp-cloud-functions](../../compute/gcp-cloud-functions/SKILL.md)** - [Serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) function deployment with Terraform

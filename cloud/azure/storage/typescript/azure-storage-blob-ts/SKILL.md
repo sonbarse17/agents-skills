@@ -20,7 +20,7 @@ depends_on:
   - audit
 ---
 
-# @azure/storage-blob ([TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)/JavaScript)
+# @azure/storage-blob ([TypeScript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)/JavaScript)
 
 SDK for Azure Blob Storage operations — upload, download, list, and manage blobs and containers.
 
@@ -47,7 +47,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 ### Microsoft Entra Token Credential (Recommended)
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { BlobServiceClient } from "@azure/storage-blob";
 import { DefaultAzureCredential, ManagedIdentityCredential } from "@azure/identity";
 
@@ -66,7 +66,7 @@ const client = new BlobServiceClient(
 
 ### Connection String
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { BlobServiceClient } from "@azure/storage-blob";
 
 const client = BlobServiceClient.fromConnectionString(
@@ -76,7 +76,7 @@ const client = BlobServiceClient.fromConnectionString(
 
 ### StorageSharedKeyCredential (Node.js only)
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { BlobServiceClient, StorageSharedKeyCredential } from "@azure/storage-blob";
 
 const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME!;
@@ -91,7 +91,7 @@ const client = new BlobServiceClient(
 
 ### SAS Token
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { BlobServiceClient } from "@azure/storage-blob";
 
 const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME!;
@@ -117,7 +117,7 @@ BlobServiceClient (account level)
 
 ### Create Container
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const containerClient = client.getContainerClient("my-container");
 await containerClient.create();
 
@@ -127,7 +127,7 @@ await containerClient.createIfNotExists();
 
 ### List Containers
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 for await (const container of client.listContainers()) {
   console.log(container.name);
 }
@@ -140,7 +140,7 @@ for await (const container of client.listContainers({ prefix: "logs-" })) {
 
 ### Delete Container
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 await containerClient.delete();
 // Or delete if exists
 await containerClient.deleteIfExists();
@@ -150,7 +150,7 @@ await containerClient.deleteIfExists();
 
 ### Upload Blob (Simple)
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const containerClient = client.getContainerClient("my-container");
 const blockBlobClient = containerClient.getBlockBlobClient("my-file.txt");
 
@@ -164,14 +164,14 @@ await blockBlobClient.upload(buffer, buffer.length);
 
 ### Upload from File (Node.js only)
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const blockBlobClient = containerClient.getBlockBlobClient("uploaded-file.txt");
 await blockBlobClient.uploadFile("/path/to/local/file.txt");
 ```
 
 ### Upload from Stream (Node.js only)
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import * as fs from "fs";
 
 const blockBlobClient = containerClient.getBlockBlobClient("streamed-file.txt");
@@ -185,7 +185,7 @@ await blockBlobClient.uploadStream(readStream, 4 * 1024 * 1024, 5, {
 
 ### Upload from Browser
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const blockBlobClient = containerClient.getBlockBlobClient("browser-upload.txt");
 
 // From File input
@@ -200,7 +200,7 @@ await blockBlobClient.uploadData(arrayBuffer);
 
 ### Download Blob
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const blobClient = containerClient.getBlobClient("my-file.txt");
 const downloadResponse = await blobClient.download();
 
@@ -218,14 +218,14 @@ async function streamToText(readable: NodeJS.ReadableStream): Promise<string> {
 
 ### Download to File (Node.js only)
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const blockBlobClient = containerClient.getBlockBlobClient("my-file.txt");
 await blockBlobClient.downloadToFile("/path/to/local/destination.txt");
 ```
 
 ### Download to Buffer (Node.js only)
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const blockBlobClient = containerClient.getBlockBlobClient("my-file.txt");
 const buffer = await blockBlobClient.downloadToBuffer();
 console.log(buffer.toString());
@@ -233,7 +233,7 @@ console.log(buffer.toString());
 
 ### List Blobs
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // List all blobs
 for await (const blob of containerClient.listBlobsFlat()) {
   console.log(blob.name, blob.properties.contentLength);
@@ -256,7 +256,7 @@ for await (const item of containerClient.listBlobsByHierarchy("/")) {
 
 ### Delete Blob
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const blobClient = containerClient.getBlobClient("my-file.txt");
 await blobClient.delete();
 
@@ -269,7 +269,7 @@ await blobClient.delete({ deleteSnapshots: "include" });
 
 ### Copy Blob
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const sourceBlobClient = containerClient.getBlobClient("source.txt");
 const destBlobClient = containerClient.getBlobClient("destination.txt");
 
@@ -282,7 +282,7 @@ await copyPoller.pollUntilDone();
 
 ### Get Properties
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const blobClient = containerClient.getBlobClient("my-file.txt");
 const properties = await blobClient.getProperties();
 
@@ -294,7 +294,7 @@ console.log("ETag:", properties.etag);
 
 ### Set Metadata
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 await blobClient.setMetadata({
   author: "John Doe",
   category: "documents",
@@ -303,7 +303,7 @@ await blobClient.setMetadata({
 
 ### Set HTTP Headers
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 await blobClient.setHTTPHeaders({
   blobContentType: "text/plain",
   blobCacheControl: "max-age=3600",
@@ -315,7 +315,7 @@ await blobClient.setHTTPHeaders({
 
 ### Generate Blob SAS
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import {
   BlobSASPermissions,
   generateBlobSASQueryParameters,
@@ -340,7 +340,7 @@ const sasUrl = `https://${accountName}.blob.core.windows.net/my-container/my-fil
 
 ### Generate Container SAS
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { ContainerSASPermissions, generateBlobSASQueryParameters } from "@azure/storage-blob";
 
 const sasToken = generateBlobSASQueryParameters(
@@ -355,7 +355,7 @@ const sasToken = generateBlobSASQueryParameters(
 
 ### Generate Account SAS
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import {
   AccountSASPermissions,
   AccountSASResourceTypes,
@@ -380,16 +380,16 @@ const sasToken = generateAccountSASQueryParameters(
 
 Most common type for text and binary files.
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const blockBlobClient = containerClient.getBlockBlobClient("document.pdf");
 await blockBlobClient.uploadFile("/path/to/document.pdf");
 ```
 
 ### Append Blob
 
-Optimized for append operations (logs, [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trails).
+Optimized for append operations (logs, [audit](../../../../../AI_and_Agents/Operations/audit/SKILL.md) trails).
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const appendBlobClient = containerClient.getAppendBlobClient("app.log");
 
 // Create the append blob
@@ -404,7 +404,7 @@ await appendBlobClient.appendBlock("Log entry 2\n", 12);
 
 Fixed-size blobs for random read/write (VHDs).
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const pageBlobClient = containerClient.getPageBlobClient("disk.vhd");
 
 // Create 512-byte aligned page blob
@@ -417,7 +417,7 @@ await pageBlobClient.uploadPages(buffer, 0, 512);
 
 ## Error Handling
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { RestError } from "@azure/storage-blob";
 
 try {
@@ -442,9 +442,9 @@ try {
 }
 ```
 
-## [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) Types Reference
+## [TypeScript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) Types Reference
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import {
   // Clients
   BlobServiceClient,

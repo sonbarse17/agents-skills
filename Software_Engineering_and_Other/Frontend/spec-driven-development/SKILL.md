@@ -64,7 +64,7 @@ Most requests describe one capability. If this one does, skip this phase and go 
 | identity | Accounts, sessions, SSO | — |
 | billing | Plans, invoices, payments | identity |
 | notifications | Email and webhook fan-out | identity |
-| reporting | Usage [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) | billing, notifications |
+| reporting | Usage [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) | billing, notifications |
 
 Build order: identity → billing, notifications → reporting
 ```

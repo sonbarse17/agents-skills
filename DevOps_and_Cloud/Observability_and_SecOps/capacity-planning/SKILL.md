@@ -120,7 +120,7 @@ not a default.
 - **State the cost of the headroom** you're carrying, in the same conversation as the risk it
   protects against.
 - **Use reserved or committed [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) for predictable baseline**, on-demand or autoscaled for
-  the variable peak — see `[cost-optimization](../../Cloud_Providers/cost-optimization/SKILL.md)` for the broader tradeoff.
+  the variable peak — see `[cost-optimization](../../../cloud/common/cost/cost-optimization/SKILL.md)` for the broader tradeoff.
 - **Revisit over-provisioned [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) on the same cadence as the forecast** — [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md)
   headroom rots the same way stale forecasts do.
 

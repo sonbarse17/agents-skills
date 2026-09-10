@@ -30,16 +30,16 @@ depends_on:
 
 ## Purpose
 
-Consul solves a problem [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-native meshes (Istio, Linkerd) don't:
+Consul solves a problem [Kubernetes](../kubernetes/SKILL.md)-native meshes (Istio, Linkerd) don't:
 service discovery and mesh connectivity across environments that aren't
-a single [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) cluster — VMs, bare metal, multiple [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)
+a single [Kubernetes](../kubernetes/SKILL.md) cluster — VMs, bare metal, multiple [Kubernetes](../kubernetes/SKILL.md)
 clusters, and multiple cloud providers, all registered in one catalog
 and reachable through one mesh. Its service discovery (DNS and HTTP API
 over a distributed, Raft-backed catalog) predates and works
 independently of its [service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md) (Connect) capability, which is why
-Consul is often chosen specifically for hybrid/[multi-cloud](../multi-cloud/SKILL.md) estates where
-"just use the [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-native mesh" isn't an option because not
-everything is in [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md). This skill covers configuring Consul
+Consul is often chosen specifically for hybrid/[multi-cloud](../../../cloud/common/other/multi-cloud/SKILL.md) estates where
+"just use the [Kubernetes](../kubernetes/SKILL.md)-native mesh" isn't an option because not
+everything is in [Kubernetes](../kubernetes/SKILL.md). This skill covers configuring Consul
 Connect sidecars, intentions, traffic-management config entries, and
 cross-[datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md) connectivity. Validating service definitions and
 intentions before they reach production is a separate, deeper topic —
@@ -49,10 +49,10 @@ see
 ## When to use
 
 - Standing up Consul as the mesh and/or discovery layer for an estate
-  that spans VMs and [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md), or multiple [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) clusters across
+  that spans VMs and [Kubernetes](../kubernetes/SKILL.md), or multiple [Kubernetes](../kubernetes/SKILL.md) clusters across
   cloud providers.
-- Registering non-[Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) services (VM-hosted, [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)) into the
-  same catalog and mesh as [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-hosted services.
+- Registering non-[Kubernetes](../kubernetes/SKILL.md) services (VM-hosted, [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)) into the
+  same catalog and mesh as [Kubernetes](../kubernetes/SKILL.md)-hosted services.
 - Writing or reviewing **intentions** that authorize (or deny)
   service-to-service mesh traffic.
 - Configuring traffic splitting/routing across service versions with
@@ -62,7 +62,7 @@ see
   independently-administered Consul clusters (cluster peering) for
   cross-[datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md) or cross-cloud service discovery and mesh traffic.
 - A user is choosing between Consul, Linkerd, Cilium, or Istio for a new
-  mesh and the deciding factor is non-[Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) workloads or
+  mesh and the deciding factor is non-[Kubernetes](../kubernetes/SKILL.md) workloads or
   multi-[datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md) reach.
 
 ## Prerequisites & environment
@@ -70,7 +70,7 @@ see
 - A running Consul server cluster (odd number of servers, typically 3
   or 5, using the Raft consensus protocol) reachable by every agent that
   needs to register services or resolve the catalog.
-- For [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) workloads: the `consul-k8s` Helm chart installed with
+- For [Kubernetes](../kubernetes/SKILL.md) workloads: the `consul-k8s` Helm chart installed with
   `connectInject.enabled=true`, which runs the sidecar-injection webhook
   and (per pod) an Envoy sidecar proxy — Consul Connect's data plane is
   Envoy, not a custom proxy, so Envoy version compatibility with your
@@ -111,7 +111,7 @@ see
    ```
    `"connect": {"sidecar_service": {}}` is what enrolls this service into
    the mesh with an auto-configured Envoy sidecar on a VM/[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)
-   host; on [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) this is handled instead by the `consul-k8s`
+   host; on [Kubernetes](../kubernetes/SKILL.md) this is handled instead by the `consul-k8s`
    inject webhook via a pod annotation
    (`consul.hashicorp.com/connect-inject: "true"`).
 
@@ -133,7 +133,7 @@ see
    ]
    ```
    Apply via `consul config write payments-api-intentions.hcl`, or as a
-   [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) CRD (`ServiceIntentions`) if using `consul-k8s`. The
+   [Kubernetes](../kubernetes/SKILL.md) CRD (`ServiceIntentions`) if using `consul-k8s`. The
    trailing wildcard `deny` makes the default-deny posture explicit in
    the same file rather than relying on a separate global default.
 
@@ -221,7 +221,7 @@ see
 - Prefer cluster peering over WAN federation for genuinely separate
   cloud environments or organizations — federation assumes a level of
   network and Gossip-key trust between datacenters that often doesn't
-  match a real [multi-cloud](../multi-cloud/SKILL.md)/multi-tenant boundary.
+  match a real [multi-cloud](../../../cloud/common/other/multi-cloud/SKILL.md)/multi-tenant boundary.
 - Keep `service-resolver`/`service-splitter`/`service-router` config
   entries paired and reviewed together per service — a `service-splitter`
   referencing a subset the `service-resolver` doesn't define fails
@@ -232,14 +232,14 @@ see
 - Explicitly declare `exported-services` per peering relationship rather
   than assuming peered clusters see each other's whole catalog — peering
   is opt-in per service by design.
-- If most of the estate is [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-only with no VM/[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) or
+- If most of the estate is [Kubernetes](../kubernetes/SKILL.md)-only with no VM/[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) or
   multi-[datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md) requirement, weigh whether Consul's operational
   overhead (running and federating server clusters, agent placement on
-  every VM) is worth it versus a [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-native mesh — see
+  every VM) is worth it versus a [Kubernetes](../kubernetes/SKILL.md)-native mesh — see
   [linkerd-[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../[linkerd-[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../../../Software_Engineering_and_Other/Frontend/linkerd-[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-configuration/SKILL.md)/SKILL.md)
   or
   [service-mesh-istio](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[service-mesh-istio](../../../Software_Engineering_and_Other/Frontend/[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-istio/SKILL.md)/SKILL.md)
-  for that comparison when hybrid/[multi-cloud](../multi-cloud/SKILL.md) reach isn't actually
+  for that comparison when hybrid/[multi-cloud](../../../cloud/common/other/multi-cloud/SKILL.md) reach isn't actually
   needed.
 
 ## Common pitfalls
@@ -296,7 +296,7 @@ see
 ## Worked example
 
 **Scenario:** A hybrid estate has `checkout-service` running on
-[Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) and `payments-api` running on a fleet of VMs in a different
+[Kubernetes](../kubernetes/SKILL.md) and `payments-api` running on a fleet of VMs in a different
 cloud account, connected via cluster peering, with a canary rollout of
 `payments-api` v2 at 10% traffic.
 
@@ -350,7 +350,7 @@ consul config write payments-api-splitter.hcl
 consul intention check checkout-service payments-api
 ```
 
-`checkout-service`, running on [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) in a peered cluster, resolves
+`checkout-service`, running on [Kubernetes](../kubernetes/SKILL.md) in a peered cluster, resolves
 and calls `payments-api` through the mesh gateway connecting the two
 peered environments, with 10% of calls landing on the v2 subset — all
 without either side needing direct L3 reachability to individual
@@ -361,6 +361,6 @@ further, run the intention and config-entry checks in
 ## Cross-references
 
 - [consul-configuration-validation](../[consul-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/consul-configuration-validation/SKILL.md)/SKILL.md) — validating service definitions and intentions before applying them, including catching the subset/resolver mismatches described above.
-- [linkerd-[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../[linkerd-[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../../../Software_Engineering_and_Other/Frontend/linkerd-[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-configuration/SKILL.md)/SKILL.md) — a simpler [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-native mesh alternative when the [multi-cloud](../multi-cloud/SKILL.md)/VM reach Consul provides isn't actually needed.
-- [cilium-ebpf-cni-and-mesh-configuration](../[cilium-ebpf-cni-and-mesh-configuration](../../Containers_and_Orchestration/[cilium-ebpf](../../Containers_and_Orchestration/cilium-ebpf/SKILL.md)-cni-and-mesh-configuration/SKILL.md)/SKILL.md) — a CNI-layer alternative for [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-only mesh/networking needs, worth comparing when Consul's VM support is the only reason it's on the table.
-- [service-mesh-istio](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[service-mesh-istio](../../../Software_Engineering_and_Other/Frontend/[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-istio/SKILL.md)/SKILL.md) — the equivalent [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-native mesh concepts (`VirtualService`/`DestinationRule` map roughly to `service-router`/`service-resolver` here) for teams comparing the two.
+- [linkerd-[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../[linkerd-[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../../../Software_Engineering_and_Other/Frontend/linkerd-[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-configuration/SKILL.md)/SKILL.md) — a simpler [Kubernetes](../kubernetes/SKILL.md)-native mesh alternative when the [multi-cloud](../../../cloud/common/other/multi-cloud/SKILL.md)/VM reach Consul provides isn't actually needed.
+- [cilium-ebpf-cni-and-mesh-configuration](../[cilium-ebpf-cni-and-mesh-configuration](../../Containers_and_Orchestration/[cilium-ebpf](../../Containers_and_Orchestration/cilium-ebpf/SKILL.md)-cni-and-mesh-configuration/SKILL.md)/SKILL.md) — a CNI-layer alternative for [Kubernetes](../kubernetes/SKILL.md)-only mesh/networking needs, worth comparing when Consul's VM support is the only reason it's on the table.
+- [service-mesh-istio](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[service-mesh-istio](../../../Software_Engineering_and_Other/Frontend/[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-istio/SKILL.md)/SKILL.md) — the equivalent [Kubernetes](../kubernetes/SKILL.md)-native mesh concepts (`VirtualService`/`DestinationRule` map roughly to `service-router`/`service-resolver` here) for teams comparing the two.

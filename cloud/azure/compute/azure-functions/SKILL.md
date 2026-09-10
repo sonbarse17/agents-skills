@@ -20,7 +20,7 @@ depends_on:
 
 # Azure Functions
 
-Build and deploy [serverless](../../Containers_and_Orchestration/serverless/SKILL.md) applications with Azure Functions. Covers function app creation, trigger and binding configuration, deployment strategies, real code examples in [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) and Node.js, and production best practices.
+Build and deploy [serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) applications with Azure Functions. Covers function app creation, trigger and binding configuration, deployment strategies, real code examples in [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) and Node.js, and production best practices.
 
 ## When to Use
 
@@ -28,7 +28,7 @@ Build and deploy [serverless](../../Containers_and_Orchestration/serverless/SKIL
 - You are building APIs, webhooks, or background processing pipelines.
 - You want per-execution billing without managing servers.
 - You need to respond to Azure service events (Blob Storage, Service Bus, Cosmos DB changes).
-- You are implementing lightweight [microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) or scheduled tasks.
+- You are implementing lightweight [microservices](../../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) or scheduled tasks.
 
 ## Prerequisites
 
@@ -61,11 +61,11 @@ az storage account create \
 ### Consumption Plan (Pay-per-execution)
 
 ```bash
-# [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) function app on Consumption plan
+# [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) function app on Consumption plan
 az functionapp create \
   --resource-group functions-rg \
   --consumption-plan-location eastus \
-  --runtime [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) \
+  --runtime [python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) \
   --runtime-version 3.11 \
   --functions-version 4 \
   --name myapp-func \
@@ -99,7 +99,7 @@ az functionapp plan create \
 az functionapp create \
   --resource-group functions-rg \
   --plan myapp-premium-plan \
-  --runtime [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) \
+  --runtime [python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) \
   --runtime-version 3.11 \
   --functions-version 4 \
   --name myapp-premium-func \
@@ -108,9 +108,9 @@ az functionapp create \
 
 ## Trigger and Binding Examples
 
-### HTTP Trigger -- [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+### HTTP Trigger -- [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # function_app.py (v2 programming model)
 import azure.functions as func
 import json
@@ -192,9 +192,9 @@ app.http("createUser", {
 });
 ```
 
-### Blob Trigger -- [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+### Blob Trigger -- [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 @app.blob_trigger(arg_name="blob", path="uploads/{name}",
                    connection="AzureWebJobsStorage")
 def process_upload(blob: func.InputStream):
@@ -203,9 +203,9 @@ def process_upload(blob: func.InputStream):
     # Process file content here
 ```
 
-### Timer Trigger -- [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+### Timer Trigger -- [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 @app.timer_trigger(schedule="0 */5 * * * *", arg_name="timer",
                     run_on_startup=False)
 def cleanup_job(timer: func.TimerRequest):
@@ -215,9 +215,9 @@ def cleanup_job(timer: func.TimerRequest):
     # Cleanup logic here
 ```
 
-### Service Bus Trigger -- [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+### Service Bus Trigger -- [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 @app.service_bus_queue_trigger(arg_name="msg", queue_name="orders",
                                 connection="ServiceBusConnection")
 @app.cosmos_db_output(arg_name="doc", database_name="mydb",
@@ -236,9 +236,9 @@ def process_order(msg: func.ServiceBusMessage, doc: func.Out[func.Document]):
     doc.set(func.Document.from_dict(processed))
 ```
 
-### Cosmos DB Change Feed Trigger -- [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+### Cosmos DB Change Feed Trigger -- [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 @app.cosmos_db_trigger_v3(arg_name="documents", database_name="mydb",
                            container_name="orders",
                            connection="CosmosDBConnection",
@@ -252,8 +252,8 @@ def on_order_change(documents: func.DocumentList):
 ## Local Development
 
 ```bash
-# Initialize a new [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) function project
-func init MyFunctionProject --[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+# Initialize a new [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) function project
+func init MyFunctionProject --[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 cd MyFunctionProject
 
 # Create a new function from template
@@ -275,7 +275,7 @@ curl http://localhost:7071/api/HttpExample?name=World
 # Deploy using Core Tools
 func azure functionapp publish myapp-func
 
-# Deploy with build step for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+# Deploy with build step for [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 func azure functionapp publish myapp-func --build remote
 
 # Deploy using ZIP package
@@ -285,14 +285,14 @@ az functionapp deployment source config-zip \
   --name myapp-func \
   --src function.zip
 
-# Deploy via CI/CD with [GitHub](../../CI_CD/github/SKILL.md) Actions
+# Deploy via CI/CD with [GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions
 az functionapp deployment [github-actions](../../CI_CD/[github](../../CI_CD/github/SKILL.md)-actions/SKILL.md) add \
   --resource-group functions-rg \
   --name myapp-func \
   --repo "myorg/myrepo" \
   --branch main \
-  --runtime [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) \
-  --login-with-[github](../../CI_CD/github/SKILL.md)
+  --runtime [python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) \
+  --login-with-[github](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)
 ```
 
 ## Deployment Slots
@@ -401,7 +401,7 @@ resource "azurerm_linux_function_app" "main" {
   }
 
   app_settings = {
-    FUNCTIONS_WORKER_RUNTIME       = "[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)"
+    FUNCTIONS_WORKER_RUNTIME       = "[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)"
     WEBSITE_RUN_FROM_PACKAGE       = "1"
     APPINSIGHTS_INSTRUMENTATIONKEY = azurerm_application_insights.main.instrumentation_key
   }
@@ -416,7 +416,7 @@ resource "azurerm_linux_function_app" "main" {
 |---------|-------|-----|
 | Cold start latency > 10s | Consumption plan cold start | Use Premium plan (EP1+) or enable `WEBSITE_RUN_FROM_PACKAGE=1` |
 | Function not triggering | Connection string misconfigured | Check `az functionapp config appsettings list` for correct binding values |
-| `ModuleNotFoundError` in [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) | Dependencies not installed during deploy | Use `--build remote` flag or include `requirements.txt` in package |
+| `ModuleNotFoundError` in [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) | Dependencies not installed during deploy | Use `--build remote` flag or include `requirements.txt` in package |
 | HTTP 401 Unauthorized | Auth level mismatch or missing function key | Verify auth level in code matches expectations; pass `x-functions-key` header |
 | Blob trigger not firing | Storage account connection wrong | Verify `AzureWebJobsStorage` points to the correct account |
 | Timer trigger runs twice | Multiple instances on Premium plan | Set `WEBSITE_MAX_DYNAMIC_APPLICATION_SCALE_OUT=1` or use singleton lock |
@@ -425,7 +425,7 @@ resource "azurerm_linux_function_app" "main" {
 
 ## Related Skills
 
-- `[azure-networking](../azure-networking/SKILL.md)` -- VNet integration for Premium plan functions accessing private resources.
-- `[azure-sql](../azure-sql/SKILL.md)` -- Database connections from function bindings.
-- `[terraform-azure](../../Infrastructure_as_Code/terraform-azure/SKILL.md)` -- Infrastructure as Code for function app provisioning.
-- `[arm-templates](../arm-templates/SKILL.md)` -- Bicep-based function app deployment.
+- `[azure-networking](../../networking/azure-networking/SKILL.md)` -- VNet integration for Premium plan functions accessing private resources.
+- `[azure-sql](../../database/azure-sql/SKILL.md)` -- Database connections from function bindings.
+- `[terraform-azure](../../iac/terraform-azure/SKILL.md)` -- Infrastructure as Code for function app provisioning.
+- `[arm-templates](../../iac/arm-templates/SKILL.md)` -- Bicep-based function app deployment.

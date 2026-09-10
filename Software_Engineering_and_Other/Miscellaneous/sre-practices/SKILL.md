@@ -608,7 +608,7 @@ reliability_maturity:
     description: "Data-driven reliability, proactive prevention"
     characteristics:
       - "Multi-window burn rate alerts everywhere"
-      - "Reliability [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) visible org-wide"
+      - "Reliability [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) visible org-wide"
       - "Toil < 20% of engineering time"
       - "Chaos engineering for resilience testing"
       - "[Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) planning based on growth models"

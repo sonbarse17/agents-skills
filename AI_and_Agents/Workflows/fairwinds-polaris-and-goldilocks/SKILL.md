@@ -358,7 +358,7 @@ re-runs `polaris [audit](../../Operations/audit/SKILL.md)`, and confirms `memory
 - [kyverno-policy-management](../[kyverno-policy-management](../../../DevOps_and_Cloud/Containers_and_Orchestration/kyverno-policy-management/SKILL.md)/SKILL.md) — a
   YAML-native alternative for the same class of custom policy, without
   Rego.
-- [policy-as-code-guardrails](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[policy-as-code-guardrails](../../../Security/[policy-as-code](../../../Security/policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md) —
+- [policy-as-code-guardrails](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[policy-as-code-guardrails](../../../Security/policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md) —
   the broader [audit](../../Operations/audit/SKILL.md)-before-enforce discipline this skill's webhook
   guidance follows.
 - [secure-cicd-gates](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) —

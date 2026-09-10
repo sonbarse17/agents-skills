@@ -32,7 +32,7 @@ Comprehensive description of cloud cost optimization.
 2. Track unit economics meticulously.
 3. Automate scale-down.
 4. Reserve [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) efficiently.
-5. [Multi-cloud](../multi-cloud/SKILL.md) arbitrage.
+5. [Multi-cloud](../../other/multi-cloud/SKILL.md) arbitrage.
 
 ## Agent Protocol
 - Triggers: High AWS bill.
@@ -116,14 +116,14 @@ Flow diagram
 5. Rule 5
 
 ## Reference Guides
-1. [Ref 1](../../../Global_References/ref1.md)
-2. [Ref 2](../../../Global_References/ref2.md)
-3. [Ref 3](../../../Global_References/ref3.md)
-4. [Ref 4](../../../Global_References/ref4.md)
-5. [Ref 5](../../../Global_References/ref5.md)
-6. [Ref 6](../../../Global_References/ref6.md)
-7. [Ref 7](../../../Global_References/ref7.md)
-8. [Ref 8](../../../Global_References/ref8.md)
+1. [Ref 1](../../../../Global_References/ref1.md)
+2. [Ref 2](../../../../Global_References/ref2.md)
+3. [Ref 3](../../../../Global_References/ref3.md)
+4. [Ref 4](../../../../Global_References/ref4.md)
+5. [Ref 5](../../../../Global_References/ref5.md)
+6. [Ref 6](../../../../Global_References/ref6.md)
+7. [Ref 7](../../../../Global_References/ref7.md)
+8. [Ref 8](../../../../Global_References/ref8.md)
 
 ## Handoff
 Refer to other skills.

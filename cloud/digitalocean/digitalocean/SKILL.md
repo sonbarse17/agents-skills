@@ -32,7 +32,7 @@ depends_on:
 # DigitalOcean
 
 ## Purpose
-Design, deploy, and manage DigitalOcean infrastructure using Terraform, doctl, and best practices for Droplets, [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md), managed databases, and App Platform.
+Design, deploy, and manage DigitalOcean infrastructure using Terraform, doctl, and best practices for Droplets, [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md), managed databases, and App Platform.
 
 ## Agent Protocol
 
@@ -58,14 +58,14 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions.
 - Droplets or DOKS cluster are provisioned with HA.
 - Managed database is deployed with backups and connection pooling.
 - App Platform or Container Registry is set up.
-- [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) and [alerting](../../Observability_and_SecOps/alerting/SKILL.md) are configured.
+- [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) are configured.
 
 ## Architecture / Decision Trees
 
 ### Compute Decision Tree
 - Simple app, no container orchestration: Droplets with load balancer.
-- Containerized apps, need orchestration: DOKS (DigitalOcean [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)).
-- [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md) / PaaS: App Platform (build from [GitHub](../../CI_CD/github/SKILL.md), auto-deploy).
+- Containerized apps, need orchestration: DOKS (DigitalOcean [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)).
+- [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) / PaaS: App Platform (build from [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md), auto-deploy).
 - Batch / background jobs: Droplets or Functions.
 - GPU / ML workloads: Droplets with GPU plans.
 
@@ -145,7 +145,7 @@ resource "digitalocean_droplet" "app" {
   vpc_uuid = digitalocean_vpc.main.id
   ssh_keys = [data.digitalocean_ssh_key.terraform.id]
 
-  [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) = true
+  [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) = true
   backups    = true
 
   user_data = <<-EOF
@@ -295,7 +295,7 @@ region: nyc
 services:
 - build_command: npm run build
   environment_slug: node-js
-  [github](../../CI_CD/github/SKILL.md):
+  [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md):
     branch: main
     deploy_on_push: true
     repo: your-org/app-repo
@@ -309,7 +309,7 @@ services:
 static_sites:
 - build_command: npm run build
   environment_slug: node-js
-  [github](../../CI_CD/github/SKILL.md):
+  [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md):
     branch: main
     deploy_on_push: true
     repo: your-org/app-frontend
@@ -379,7 +379,7 @@ resource "digitalocean_spaces_bucket" "backups" {
 }
 ```
 
-### Step 8: [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) and Alerts
+### Step 8: [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and Alerts
 ```hcl
 resource "digitalocean_monitor_alert" "cpu" {
   type       = "v1/insights/droplet/cpu"
@@ -426,7 +426,7 @@ resource "digitalocean_monitor_alert" "disk" {
 | Floating IP | Elastic IP | Public IP | Static IP |
 | Functions | Lambda | Functions | Cloud Functions |
 | Spaces CDN | CloudFront | CDN | Cloud CDN |
-| [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) | CloudWatch | Monitor | Cloud [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) |
+| [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) | CloudWatch | Monitor | Cloud [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) |
 | DNS | Route 53 | DNS | Cloud DNS |
 
 ### Droplet Sizing Guide
@@ -455,11 +455,11 @@ Direct database connections from application code exhaust database connection li
 ### Anti-Pattern 4: Ignoring Backups
 Without automated backups, data loss from accidental deletion, corruption, or failed migration is permanent. Enable backups on all Droplets, databases, and Spaces. Test backup restoration quarterly.
 
-### Anti-Pattern 5: Overprovisioning Without [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
-Choosing oversized Droplets without [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) leads to wasted spend. Start with s-2vcpu-4gb, monitor CPU/memory/disk, right-size based on 14-day utilization. Enable DO [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) for all resources.
+### Anti-Pattern 5: Overprovisioning Without [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+Choosing oversized Droplets without [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) leads to wasted spend. Start with s-2vcpu-4gb, monitor CPU/memory/disk, right-size based on 14-day utilization. Enable DO [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) for all resources.
 
 ### Anti-Pattern 6: No Tags on Resources
-Without tags (environment, project, team), cost allocation and resource management become manual and error-prone. Tag all resources. Use tags in [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) and cost reports.
+Without tags (environment, project, team), cost allocation and resource management become manual and error-prone. Tag all resources. Use tags in [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and cost reports.
 
 ## Production Considerations
 
@@ -474,7 +474,7 @@ Without tags (environment, project, team), cost allocation and resource manageme
 ### Security
 - Always use Cloud Firewall -- never rely on Droplet-level iptables alone.
 - Restrict SSH access to VPC IP range or bastion host.
-- Enable DO [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) for security event detection.
+- Enable DO [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) for security event detection.
 - Use Container Registry with limited access scopes.
 - Rotate DO API tokens regularly.
 - Enable automatic security updates on Droplets.
@@ -484,7 +484,7 @@ Without tags (environment, project, team), cost allocation and resource manageme
 ### Cost Optimization
 - Use CPU-optimized (c-) Droplets for compute-heavy workloads.
 - Use memory-optimized (m-) Droplets for in-memory workloads.
-- Right-size based on 14-day DO [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) data.
+- Right-size based on 14-day DO [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) data.
 - Use Reserved Droplets for baseline [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) (up to 30% discount).
 - Enable backups only on critical Droplets.
 - Clean up unattached volumes and unused Floating IPs.
@@ -499,9 +499,9 @@ Without tags (environment, project, team), cost allocation and resource manageme
 5. Check resource usage: htop, df -h, free -m.
 
 ### DOKS Issues
-1. Get kubeconfig: doctl [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) cluster kubeconfig save <name>.
-2. Check node status: [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get nodes.
-3. Check pod issues: [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) describe pod <name>.
+1. Get kubeconfig: doctl [kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cluster kubeconfig save <name>.
+2. Check node status: [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get nodes.
+3. Check pod issues: [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) describe pod <name>.
 4. Check load balancer health: verify health check path.
 5. Check Container Registry access: doctl registry login.
 
@@ -516,7 +516,7 @@ Without tags (environment, project, team), cost allocation and resource manageme
 - Never hardcode DO API tokens -- use DIGITALOCEAN_TOKEN env var or doctl auth.
 - Always place Droplets and DOKS inside a VPC for private networking.
 - Use Cloud Firewall over individual Droplet firewalls for centralized management.
-- Enable [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) and backups on all production Droplets.
+- Enable [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and backups on all production Droplets.
 - All managed databases must have at least 2 nodes for production HA.
 - Use connection pooling for production database workloads.
 - Enable Container Registry with appropriate subscription tier.
@@ -533,7 +533,7 @@ Without tags (environment, project, team), cost allocation and resource manageme
 - ../../../Global_References/digitalocean-fundamentals.md -- Digitalocean Fundamentals
 - ../../../Global_References/droplets-networking.md -- Droplets and Networking
 - ../../../Global_References/infrastructure-tools.md -- Infrastructure Tooling
-- ../../../Global_References/[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-doks.md -- DOKS (DigitalOcean [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md))
+- ../../../Global_References/[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-doks.md -- DOKS (DigitalOcean [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md))
 - ../../../Global_References/managed-databases.md -- Managed Databases
 
 ## Handoff

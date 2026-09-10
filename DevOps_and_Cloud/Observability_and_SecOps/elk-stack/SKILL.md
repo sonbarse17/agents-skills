@@ -28,7 +28,7 @@ Centralize and analyze logs with Elasticsearch, Logstash, and Kibana.
 Use this skill when:
 - Centralizing logs from multiple sources
 - Building log search and analytics platforms
-- Creating log-based [dashboards](../../Cloud_Providers/dashboards/SKILL.md) and alerts
+- Creating log-based [dashboards](../dashboards/SKILL.md) and alerts
 - Implementing full-text search for logs
 - Processing and transforming log data
 

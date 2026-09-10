@@ -444,7 +444,7 @@ Practice 8: Implement gateway failover for critical payments. If primary gateway
 - [ ] Security review of payment integration completed
 
 ### Production Readiness
-- [ ] [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) configured (success rate, decline rate, latency, webhook delivery)
+- [ ] [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) configured (success rate, decline rate, latency, webhook delivery)
 - [ ] Alerts configured (gateway down, elevated decline rate, reconciliation failures)
 - [ ] [Runbooks](../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md) documented (payment [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response, gateway failover, manual refund process)
 - [ ] Reconciliation process automated

@@ -84,7 +84,7 @@ step 1 for standing that up first.
   [cloud-cost-finops-optimization](../[cloud-cost-finops-optimization](../cloud-cost-finops-optimization/SKILL.md)/SKILL.md)
   for closing tagging gaps.
 - Knowledge of (or access to) a change log/deploy history (CI/CD deploy
-  events, Terraform apply history, [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) group activity history)
+  events, Terraform apply history, [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) group activity history)
   to correlate a cost change with a specific engineering event, not just
   a calendar date.
 
@@ -192,11 +192,11 @@ step 1 for standing that up first.
      created or resized the resource.
    - Azure Activity Log (`az monitor activity-log list --resource-group
      <RESOURCE_GROUP> --start-time 2026-07-19T00:00:00Z`).
-   - GCP Cloud [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logs (`gcloud logging read` filtered to the resource
+   - GCP Cloud [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Logs (`gcloud logging read` filtered to the resource
      and time window).
    - The CI/CD deploy history or Terraform state history for the same
      window — a cost step-change that lines up with a deploy timestamp is
-     almost always attributable to that change (a new [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) max, a
+     almost always attributable to that change (a new [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) max, a
      larger instance type, a new always-on resource, a misconfigured
      retry loop generating excess API calls/data transfer).
 
@@ -205,7 +205,7 @@ step 1 for standing that up first.
    - **Expected**: a legitimate traffic/scale-up, a planned feature
      launch, an intentional environment stood up for a defined purpose.
      Action: confirm with the owning team, note it, move on — this is a
-     FinOps/showback data point, not an [incident](../../Observability_and_SecOps/incident/SKILL.md).
+     FinOps/showback data point, not an [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
    - **Mistake**: a misconfigured autoscaler with no upper bound, a
      forgotten non-prod environment left running at production scale, a
      runaway retry loop driving data-transfer or API-call costs, a
@@ -246,7 +246,7 @@ step 1 for standing that up first.
    alert/Cost Anomaly Detection monitor scoped to that team's
    cost-allocation tag (per
    [cloud-cost-finops-optimization](../[cloud-cost-finops-optimization](../cloud-cost-finops-optimization/SKILL.md)/SKILL.md)
-   step 6) so the next occurrence is caught by [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md), not by finance
+   step 6) so the next occurrence is caught by [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), not by finance
    noticing the bill.
 
 ## Best practices
@@ -263,7 +263,7 @@ step 1 for standing that up first.
   attribution slower than it should have been.
 - **Cross-reference cost data with change history (CloudTrail/Activity
   Log/deploy logs), not just billing data alone** — billing data tells
-  you *what* cost more; [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)/deploy logs tell you *why*, and only the
+  you *what* cost more; [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)/deploy logs tell you *why*, and only the
   combination lets you say "this is caused by X change."
 - **Never conflate "investigated" with "fixed"** — identifying the
   resource and team is the deliverable of this skill; the actual
@@ -284,8 +284,8 @@ step 1 for standing that up first.
   **Fix:** Group the Cost Explorer/Cost Management/BigQuery query by
   cost-allocation tag, not just service, immediately (step 3) — if the
   resource has no tag, that's the actual finding to report (a tagging
-  gap), and the resource-creation [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) log (CloudTrail/Activity
-  Log/Cloud [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logs) becomes the fallback attribution path rather than
+  gap), and the resource-creation [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) log (CloudTrail/Activity
+  Log/Cloud [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Logs) becomes the fallback attribution path rather than
   waiting on tags that don't exist.
 
 - **Symptom:** An engineer, under pressure to "fix the spike fast,"
@@ -306,7 +306,7 @@ step 1 for standing that up first.
   **Fix:** The finding stopped at the service level instead of the
   specific resource/tag/root-cause level, so nothing specific could be
   monitored going forward. Push every investigation down to a named
-  resource and a named root cause (a specific [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) group's max
+  resource and a named root cause (a specific [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) group's max
   size, a specific misconfigured retry loop), and set a scoped anomaly
   monitor on that dimension afterward.
 
@@ -327,9 +327,9 @@ step 1 for standing that up first.
   rolled past the date of the actual change, and correlation in step 4
   becomes guesswork.
   **Fix:** This is why the investigation needs to happen within days of
-  the anomaly alert, not at month-end — extend default [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-log
+  the anomaly alert, not at month-end — extend default [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-log
   retention (CloudTrail to a long-retention S3 bucket, Activity Log to a
-  Log Analytics workspace, Cloud [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logs export to BigQuery) so a
+  Log Analytics workspace, Cloud [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Logs export to BigQuery) so a
   slower-to-notice anomaly still has a change-history trail to
   correlate against.
 
@@ -345,7 +345,7 @@ the current billing cycle.
    Compute Cloud - Compute," not a gradual ramp across multiple services.
 2. Narrow by `USAGE_TYPE` (step 2): the increase is almost entirely
    `BoxUsage:m5.4xlarge` in `eu-west-1`, not spread across instance
-   types — pointing at a specific [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) group or fleet, not
+   types — pointing at a specific [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) group or fleet, not
    general traffic growth.
 3. Group by the `team` cost-allocation tag (step 3): 95% of the new
    `m5.4xlarge` spend carries `team=search-indexing`.
@@ -356,7 +356,7 @@ the current billing cycle.
 5. Confirm with the `search-indexing` team lead (step 5): the change was
    an accidental copy-paste in a Terraform PR meant to raise a *different*
    ASG's max size for an unrelated load test; the `search-indexing` ASG's
-   actual [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) demand never required more than ~12 instances, so
+   actual [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) demand never required more than ~12 instances, so
    the fleet scaled up to near the new (wrong) ceiling under normal load
    and stayed there.
 6. Fix: revert the `MaxSize` to 10 via the same Terraform-managed
@@ -366,7 +366,7 @@ the current billing cycle.
    ASG, root cause = accidental `MaxSize` change in `PR #482`, fix =
    reverted in `PR #491`, cost impact = roughly the 18% spike over the
    two days it ran.
-7. Because this is the team's second ASG-sizing-related cost [incident](../../Observability_and_SecOps/incident/SKILL.md)
+7. Because this is the team's second ASG-sizing-related cost [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
    this quarter, recommend a Cost Anomaly Detection monitor scoped
    specifically to `team=search-indexing` so the next runaway autoscaler
    change is caught within hours instead of at the next billing-cycle
@@ -375,8 +375,8 @@ the current billing cycle.
 ## Cross-references
 
 - [cloud-cost-finops-optimization](../[cloud-cost-finops-optimization](../cloud-cost-finops-optimization/SKILL.md)/SKILL.md) —
-  the ongoing tagging, [rightsizing](../rightsizing/SKILL.md), and anomaly-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) program this
-  investigation is a single [incident](../../Observability_and_SecOps/incident/SKILL.md) inside of; escalate tagging gaps
+  the ongoing tagging, [rightsizing](../rightsizing/SKILL.md), and anomaly-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) program this
+  investigation is a single [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) inside of; escalate tagging gaps
   and recurring-cause fixes there.
 - [orphaned-cloud-resource-cleanup](../[orphaned-cloud-resource-cleanup](../orphaned-cloud-resource-cleanup/SKILL.md)/SKILL.md) —
   hand off here, rather than deleting anything directly, when the

@@ -183,7 +183,7 @@ infrastructure across dev/staging/prod.
    apiVersion: entity.humanitec.io/v1b1
    kind: Definition
    metadata:
-     id: postgres-[aws-rds](../../../DevOps_and_Cloud/Cloud_Providers/aws-rds/SKILL.md)
+     id: postgres-[aws-rds](../../../cloud/aws/database/aws-rds/SKILL.md)
    entity:
      type: postgres
      driver_type: humanitec/terraform
@@ -208,7 +208,7 @@ infrastructure across dev/staging/prod.
      --res-def postgres-dev-local
    humctl score resources apply \
      --env production \
-     --res-def postgres-[aws-rds](../../../DevOps_and_Cloud/Cloud_Providers/aws-rds/SKILL.md)-multiaz
+     --res-def postgres-[aws-rds](../../../cloud/aws/database/aws-rds/SKILL.md)-multiaz
    ```
    This environment-level binding — not anything in `score.yaml` — is what
    makes the same workload spec produce a throwaway dev database and a

@@ -24,7 +24,7 @@ depends_on:
 
 # Azure.ResourceManager.ApplicationInsights (.NET)
 
-Azure Resource Manager SDK for managing Application Insights resources for application performance [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md).
+Azure Resource Manager SDK for managing Application Insights resources for application performance [monitoring](../../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
 
 ## Installation
 
@@ -446,9 +446,9 @@ await webTest.DeleteAsync(WaitUntil.Completed);
 2. **Link to Log Analytics** — Store data in Log Analytics for better querying
 3. **Set appropriate retention** — Balance cost vs. data availability
 4. **Use sampling** — Reduce costs for high-volume applications
-5. **Store connection string securely** — Use Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) or managed identity
-6. **Enable multiple test locations** — For accurate availability [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
-7. **Use workbooks** — For custom [dashboards](../dashboards/SKILL.md) and analysis
+5. **Store connection string securely** — Use Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) or managed identity
+6. **Enable multiple test locations** — For accurate availability [monitoring](../../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+7. **Use workbooks** — For custom [dashboards](../../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) and analysis
 8. **Set up alerts** — Based on availability tests and metrics
 9. **Tag resources** — For cost allocation and organization
 10. **Use private endpoints** — For secure data ingestion
@@ -499,7 +499,7 @@ builder.Services.AddApplicationInsightsTelemetry(options =>
 | `Azure.ResourceManager.ApplicationInsights` | Resource management (this SDK) | `dotnet add package Azure.ResourceManager.ApplicationInsights` |
 | `Microsoft.ApplicationInsights` | Telemetry SDK | `dotnet add package Microsoft.ApplicationInsights` |
 | `Microsoft.ApplicationInsights.AspNetCore` | ASP.NET Core integration | `dotnet add package Microsoft.ApplicationInsights.AspNetCore` |
-| `Azure.Monitor.[OpenTelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md).Exporter` | [OpenTelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md) export | `dotnet add package Azure.Monitor.[OpenTelemetry](../../Observability_and_SecOps/opentelemetry/SKILL.md).Exporter` |
+| `Azure.Monitor.[OpenTelemetry](../../../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md).Exporter` | [OpenTelemetry](../../../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) export | `dotnet add package Azure.Monitor.[OpenTelemetry](../../../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md).Exporter` |
 
 ## Reference Links
 
@@ -508,4 +508,4 @@ builder.Services.AddApplicationInsightsTelemetry(options =>
 | NuGet Package | https://www.nuget.org/packages/Azure.ResourceManager.ApplicationInsights |
 | API Reference | https://learn.microsoft.com/dotnet/api/azure.resourcemanager.applicationinsights |
 | Product Documentation | https://learn.microsoft.com/azure/azure-monitor/app/app-insights-overview |
-| [GitHub](../../CI_CD/github/SKILL.md) Source | https://[github](../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/applicationinsights/Azure.ResourceManager.ApplicationInsights |
+| [GitHub](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Source | https://[github](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/applicationinsights/Azure.ResourceManager.ApplicationInsights |

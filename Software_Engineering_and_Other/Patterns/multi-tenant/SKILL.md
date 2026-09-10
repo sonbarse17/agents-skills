@@ -515,7 +515,7 @@ class TenantCache {
 - Cost allocation: tag all resources with `tenant_id`. Track spend per tenant in billing system.
 
 ### Multi-Tenant [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
-- Per-tenant [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md): request count, error rate, p95 latency, resource usage.
+- Per-tenant [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md): request count, error rate, p95 latency, resource usage.
 - Noisy neighbor detection: alert when single tenant consumes > 30% of shared resource.
 - Tenant-level SLOs: uptime, latency, error rate per tenant. Alert on breach.
 - Usage metering: record per-tenant API calls, storage, compute. Bill accordingly.
@@ -552,4 +552,4 @@ class TenantCache {
 - Backup isolation: per-tenant backup files. Encrypted with tenant-specific key. Cross-tenant restore blocked.
 - Deletion: soft-delete with 30-day grace. Full purge with validation. Backup purge after deletion confirmed.
 ## Handoff
-For compliance requirements on tenant isolation, hand off to `[enterprise-compliance-audit](../../../DevOps_and_Cloud/Observability_and_SecOps/compliance-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)/SKILL.md)`. For cost allocation per tenant, hand off to `[enterprise-cost-governance](../../../DevOps_and_Cloud/Cloud_Providers/cost-governance/SKILL.md)`.
+For compliance requirements on tenant isolation, hand off to `[enterprise-compliance-audit](../../../DevOps_and_Cloud/Observability_and_SecOps/compliance-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)/SKILL.md)`. For cost allocation per tenant, hand off to `[enterprise-cost-governance](../../../cloud/common/cost/cost-governance/SKILL.md)`.

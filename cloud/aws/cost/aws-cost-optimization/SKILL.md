@@ -26,7 +26,7 @@ Apply practical FinOps controls to reduce AWS spend without sacrificing reliabil
 
 - Monthly AWS bill spikes unexpectedly or exceeds budget thresholds
 - Preparing cost reviews with engineering and finance teams
-- [Rightsizing](../rightsizing/SKILL.md) EC2, RDS, EKS, or Lambda workloads after load testing
+- [Rightsizing](../../../common/cost/rightsizing/SKILL.md) EC2, RDS, EKS, or Lambda workloads after load testing
 - Choosing between Savings Plans, Reserved Instances, or on-demand pricing
 - Setting up automated budget alerts and anomaly detection
 - Cleaning up unused resources (unattached EBS, idle load balancers, old snapshots)
@@ -46,7 +46,7 @@ Apply practical FinOps controls to reduce AWS spend without sacrificing reliabil
 3. Identify top spend drivers by service, account, and tag.
 4. Rightsize underutilized compute and storage based on CloudWatch metrics.
 5. Apply commitment discounts (Savings Plans or RIs) for stable baseline usage.
-6. Set budgets, anomaly alerts, and build KPI [dashboards](../dashboards/SKILL.md).
+6. Set budgets, anomaly alerts, and build KPI [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md).
 7. Review monthly and iterate.
 
 ## Cost Explorer CLI Commands
@@ -72,8 +72,8 @@ aws ce get-cost-and-usage \
   --metrics "UnblendedCost" \
   --group-by Type=TAG,Key=team
 
-# Get [rightsizing](../rightsizing/SKILL.md) recommendations for EC2
-aws ce get-[rightsizing](../rightsizing/SKILL.md)-recommendation \
+# Get [rightsizing](../../../common/cost/rightsizing/SKILL.md) recommendations for EC2
+aws ce get-[rightsizing](../../../common/cost/rightsizing/SKILL.md)-recommendation \
   --service "AmazonEC2" \
   --configuration '{"RecommendationTarget":"SAME_INSTANCE_FAMILY","BenefitsConsidered":true}'
 
@@ -309,7 +309,7 @@ aws ecs update-service \
 |---|---|---|
 | Cost Explorer returns empty data | CE not enabled or < 24h old | Enable in Billing console, wait 24h |
 | Budget alert not firing | SNS subscription not confirmed | Check email and confirm subscription |
-| [Rightsizing](../rightsizing/SKILL.md) shows no recommendations | Not enough usage data | Wait 14 days for sufficient metrics |
+| [Rightsizing](../../../common/cost/rightsizing/SKILL.md) shows no recommendations | Not enough usage data | Wait 14 days for sufficient metrics |
 | Savings Plans utilization low | Over-purchased or workload changed | Review and adjust SP coverage |
 | Unattached EBS not showing | Wrong region queried | Loop through all active regions |
 | Billing alarm never triggers | Billing metrics only in us-east-1 | Create alarm in us-east-1 region |

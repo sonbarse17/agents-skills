@@ -86,7 +86,7 @@ instance_type  = "m5.xlarge"
 ```
 
 One module, one set of `.tf` files, and a `.tfvars` file per environment. See
-`[environment-management](../../Cloud_Providers/environment-management/SKILL.md)` for the fuller promotion and parity story — this is the mechanical
+`[environment-management](../../../cloud/common/other/environment-management/SKILL.md)` for the fuller promotion and parity story — this is the mechanical
 enabler of it.
 
 **Done when:** creating a new environment means adding a values file, not copying and editing a

@@ -20,12 +20,12 @@ depends_on:
 
 # GCP Cloud SQL
 
-Deploy and manage fully managed relational databases ([PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md), [MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md), SQL Server) on Google Cloud.
+Deploy and manage fully managed relational databases ([PostgreSQL](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md), [MySQL](../../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md), SQL Server) on Google Cloud.
 
 ## When to Use
 
 - Running production relational databases without managing replication, patching, or backups
-- Migrating on-premises [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) or [MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) workloads to a managed service
+- Migrating on-premises [PostgreSQL](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) or [MySQL](../../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) workloads to a managed service
 - Applications requiring ACID transactions, relational schemas, and SQL query support
 - Workloads that need automated high availability with regional failover
 
@@ -49,7 +49,7 @@ gcloud services enable sqladmin.googleapis.com servicenetworking.googleapis.com
 | db-custom-4-16384 | 4 | 16 GB | Medium production |
 | db-custom-8-32768 | 8 | 32 GB | High-traffic production |
 
-## Create a [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) Instance
+## Create a [PostgreSQL](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) Instance
 
 ```bash
 gcloud sql instances create prod-db \
@@ -70,10 +70,10 @@ gcloud sql users create appuser --instance=prod-db \
   --password=$(openssl rand -base64 24)
 ```
 
-## Create a [MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) Instance
+## Create a [MySQL](../../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) Instance
 
 ```bash
-gcloud sql instances create [mysql](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)-prod \
+gcloud sql instances create [mysql](../../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)-prod \
   --database-version=MYSQL_8_0 \
   --tier=db-custom-4-16384 --region=us-central1 \
   --availability-type=REGIONAL \
@@ -144,7 +144,7 @@ chmod +x cloud-sql-proxy
 
 ./cloud-sql-proxy ${PROJECT_ID}:us-central1:prod-db --port=5432 --auto-iam-authn
 
-# Unix socket (for [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) sidecar pattern)
+# Unix socket (for [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) sidecar pattern)
 ./cloud-sql-proxy ${PROJECT_ID}:us-central1:prod-db --unix-socket=/tmp/cloudsql
 psql "host=/tmp/cloudsql/${PROJECT_ID}:us-central1:prod-db user=appuser dbname=myapp"
 ```
@@ -266,7 +266,7 @@ gcloud sql instances restart prod-db
 
 ## Related Skills
 
-- **[gcp-networking](../gcp-networking/SKILL.md)** - VPC and private service connect for Cloud SQL private IP
-- **[terraform-gcp](../../Infrastructure_as_Code/terraform-gcp/SKILL.md)** - Provision Cloud SQL with Infrastructure as Code
-- **[gcp-gke](../../Containers_and_Orchestration/gcp-gke/SKILL.md)** - Connecting [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) workloads to Cloud SQL via sidecar proxy
-- **[gcp-compute](../gcp-compute/SKILL.md)** - Running applications on Compute Engine that connect to Cloud SQL
+- **[gcp-networking](../../networking/gcp-networking/SKILL.md)** - VPC and private service connect for Cloud SQL private IP
+- **[terraform-gcp](../../iac/terraform-gcp/SKILL.md)** - Provision Cloud SQL with Infrastructure as Code
+- **[gcp-gke](../../containers/gcp-gke/SKILL.md)** - Connecting [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) workloads to Cloud SQL via sidecar proxy
+- **[gcp-compute](../../compute/gcp-compute/SKILL.md)** - Running applications on Compute Engine that connect to Cloud SQL

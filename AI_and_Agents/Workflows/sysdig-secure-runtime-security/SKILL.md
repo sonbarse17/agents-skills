@@ -87,7 +87,7 @@ or misconfiguration at all.
 - Registry/CI access for image scanning integration (Sysdig CLI
   scanner, `sysdig-cli-scanner`, or the Sysdig Secure [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)
   Action/[Jenkins](../../../DevOps_and_Cloud/CI_CD/jenkins/SKILL.md) plugin) with a Sysdig API token stored as a CI secret.
-  See [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../DevOps_and_Cloud/Cloud_Providers/secrets-management/SKILL.md)/SKILL.md).
+  See [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md).
 - A defined [incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md) escalation path (on-call rotation,
   ticketing/paging integration) before enabling high-severity runtime
   [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) — an unactioned runtime alert is strictly worse than no
@@ -351,6 +351,6 @@ API dependencies:
   a comparable CNAPP with its own agent-based workload protection
   (Defender) and CSPM posture layer, worth understanding as an
   alternative or complementary platform to Sysdig Secure.
-- [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../DevOps_and_Cloud/Cloud_Providers/secrets-management/SKILL.md)/SKILL.md) —
+- [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md) —
   storing the Sysdig API/access tokens used for CI [image-scanning](../../../Security/image-scanning/SKILL.md)
   integration and agent enrollment.

@@ -12,7 +12,7 @@ Reference material for the **toolchain** itself: the `atk` CLI, the `m365agents.
 
 This content is **capability-agnostic** — it applies to every project type the toolkit supports: Teams bots, declarative agents, API plugins, Copilot connectors, Office add-ins, custom engine agents, RAG agents, message extensions, tabs.
 
-For SDK code patterns (handlers, AI prompts, Adaptive Cards, MCP, OAuth, etc.), see the sibling [../experts/](../experts/) folder. For Slack-vs-Teams platform comparison, see [../docs/](../docs/).
+For SDK code patterns (handlers, AI prompts, Adaptive Cards, MCP, OAuth, etc.), see the sibling [../experts/](../experts) folder. For Slack-vs-Teams platform comparison, see [../docs/](../docs).
 
 ## Files
 
@@ -34,11 +34,11 @@ For SDK code patterns (handlers, AI prompts, Adaptive Cards, MCP, OAuth, etc.), 
 | **API plugins** | `declarative-agent-action-from-existing-api`, `add action` | All. Use `commands.md` for `atk add action` and `manifest-and-yaml.md` for OpenAPI integration. |
 | **Copilot connectors** | `copilot-connector` | `templates.md`, `commands.md`, `lifecycle-cli.md`, `environments.md`. |
 | **Custom engine agents** | `basic-custom-engine-agent`, `weather-agent`, `foundry-agent-to-m365`, `coffee-agent`, `data-analyst-agent-v2` | All. Compute deploy via `lifecycle-cli.md` (`arm/deploy` + `azureAppService/zipDeploy`). |
-| **Teams bots / tabs / message extensions** | `bot`, `tab`, `message-extension`, `teams-agent*`, `teams-collaborator-agent`, `bot-sso` | All. Pair with [../experts/teams/](../experts/teams/) for SDK code patterns. |
+| **Teams bots / tabs / message extensions** | `bot`, `tab`, `message-extension`, `teams-agent*`, `teams-collaborator-agent`, `bot-sso` | All. Pair with [../experts/teams/](../experts/teams) for SDK code patterns. |
 | **Office add-ins** | `office-addin-outlook-taskpane`, `office-addin-wxpo-taskpane`, `office-addin-excel-cfshortcut`, `office-addin-config` | `templates.md`, `commands.md`, `lifecycle-cli.md`. Add-in-specific runtime is out of scope here. |
 
 ## Cross-references
 
-- Workflow how-tos that consume this knowledge live one level up: [../create-project/](../create-project/), [../test-playground/](../test-playground/), [../test-teams/](../test-teams/), [../provision-deploy/](../provision-deploy/), [../troubleshoot/](../troubleshoot/).
-- For Teams-bot SDK code (DevtoolsPlugin, ConsoleLogger, runtime handlers, Adaptive Cards): see [../experts/teams/](../experts/teams/).
+- Workflow how-tos that consume this knowledge live one level up: [../create-project/](../create-project), [../test-playground/](../test-playground), [../test-teams/](../test-teams), [../provision-deploy/](../provision-deploy), [../troubleshoot/](../troubleshoot).
+- For Teams-bot SDK code (DevtoolsPlugin, ConsoleLogger, runtime handlers, Adaptive Cards): see [../experts/teams/](../experts/teams).
 - For deploying without ATK (manual `az` CLI walkthrough): see [../experts/deploy/azure-bot-deploy-ts.md](../experts/deploy/azure-bot-deploy-ts.md).

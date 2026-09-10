@@ -18,7 +18,7 @@ depends_on:
   - kubernetes
 ---
 
-# Azure Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
+# Azure Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
 
 Securely store and manage secrets, keys, and certificates in Azure.
 
@@ -35,19 +35,19 @@ Use this skill when:
 
 - Azure subscription with appropriate permissions
 - Azure CLI installed (`az` command)
-- Contributor or Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Administrator role for [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) management
+- Contributor or Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Administrator role for [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) management
 - Managed identity configured for application access
-- Understanding of Azure RBAC vs. Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) access policies
+- Understanding of Azure RBAC vs. Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) access policies
 
-## [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Creation and Configuration
+## [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Creation and Configuration
 
 ```bash
 # Create a resource group
 az group create --name rg-secrets --location eastus
 
-# Create Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) with RBAC authorization (recommended)
+# Create Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) with RBAC authorization (recommended)
 az keyvault create \
-  --name myapp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
+  --name myapp-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
   --resource-group rg-secrets \
   --location eastus \
   --enable-rbac-authorization true \
@@ -56,9 +56,9 @@ az keyvault create \
   --enable-purge-protection true \
   --sku premium  # Use premium for HSM-backed keys
 
-# Create Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) with access policies (legacy)
+# Create Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) with access policies (legacy)
 az keyvault create \
-  --name myapp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-dev \
+  --name myapp-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-dev \
   --resource-group rg-secrets \
   --location eastus \
   --enable-soft-delete true \
@@ -66,14 +66,14 @@ az keyvault create \
 
 # Enable private endpoint (no public access)
 az keyvault update \
-  --name myapp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
+  --name myapp-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
   --resource-group rg-secrets \
   --public-network-access Disabled
 
 # Enable diagnostics logging
 az monitor diagnostic-settings create \
   --name kv-diagnostics \
-  --resource "/subscriptions/{sub}/resourceGroups/rg-secrets/providers/Microsoft.KeyVault/vaults/myapp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod" \
+  --resource "/subscriptions/{sub}/resourceGroups/rg-secrets/providers/Microsoft.KeyVault/vaults/myapp-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod" \
   --workspace "/subscriptions/{sub}/resourceGroups/rg-monitor/providers/Microsoft.OperationalInsights/workspaces/security-logs" \
   --logs '[{"category":"AuditEvent","enabled":true,"retentionPolicy":{"enabled":true,"days":365}}]'
 ```
@@ -83,7 +83,7 @@ az monitor diagnostic-settings create \
 ```bash
 # Set a secret
 az keyvault secret set \
-  --[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
+  --[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
   --name db-password \
   --value "S3cur3P@ssw0rd!" \
   --content-type "text/plain" \
@@ -91,65 +91,65 @@ az keyvault secret set \
 
 # Set a multi-line secret (JSON credentials)
 az keyvault secret set \
-  --[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
+  --[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
   --name db-credentials \
   --value '{"username":"dbadmin","password":"S3cur3P@ss!","host":"db.postgres.database.azure.com","port":5432}'
 
 # Get secret value
 az keyvault secret show \
-  --[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
+  --[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
   --name db-password \
   --query value -o tsv
 
 # Get specific version
 az keyvault secret show \
-  --[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
+  --[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
   --name db-password \
   --version abc123def456
 
 # List all secrets
-az keyvault secret list --[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod -o table
+az keyvault secret list --[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod -o table
 
 # List secret versions
 az keyvault secret list-versions \
-  --[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
+  --[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
   --name db-password -o table
 
 # Set expiration date
 az keyvault secret set-attributes \
-  --[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
+  --[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
   --name api-key \
   --expires "2026-01-01T00:00:00Z"
 
 # Disable a secret (without deleting)
 az keyvault secret set-attributes \
-  --[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
+  --[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
   --name old-api-key \
   --enabled false
 
 # Delete a secret (soft-delete)
 az keyvault secret delete \
-  --[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
+  --[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
   --name old-api-key
 
 # Recover a deleted secret
 az keyvault secret recover \
-  --[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
+  --[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
   --name old-api-key
 
 # Purge a deleted secret (permanent, requires purge protection to be off)
 az keyvault secret purge \
-  --[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
+  --[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
   --name old-api-key
 
 # Backup and restore
 az keyvault secret backup \
-  --[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
+  --[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
   --name db-password \
   --file db-password.backup
 
 az keyvault secret restore \
-  --[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
+  --[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
   --file db-password.backup
 ```
 
@@ -158,7 +158,7 @@ az keyvault secret restore \
 ```bash
 # Create an RSA key for encryption
 az keyvault key create \
-  --[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
+  --[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
   --name data-encryption-key \
   --kty RSA \
   --size 4096 \
@@ -166,7 +166,7 @@ az keyvault key create \
 
 # Create an EC key for signing
 az keyvault key create \
-  --[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
+  --[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
   --name signing-key \
   --kty EC \
   --curve P-256 \
@@ -174,25 +174,25 @@ az keyvault key create \
 
 # Import an existing key
 az keyvault key import \
-  --[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
+  --[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
   --name imported-key \
   --pem-file key.pem
 
 # Encrypt data
 az keyvault key encrypt \
-  --[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
+  --[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
   --name data-encryption-key \
   --algorithm RSA-OAEP-256 \
   --value "base64-encoded-plaintext"
 
 # Rotate a key
 az keyvault key rotate \
-  --[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
+  --[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
   --name data-encryption-key
 
 # Set key rotation policy
 az keyvault key rotation-policy update \
-  --[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
+  --[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
   --name data-encryption-key \
   --value '{
     "lifetimeActions": [
@@ -214,7 +214,7 @@ az keyvault key rotation-policy update \
 ```bash
 # Create a self-signed certificate
 az keyvault certificate create \
-  --[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
+  --[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
   --name app-tls-cert \
   --policy '{
     "issuerParameters": {"name": "Self"},
@@ -234,20 +234,20 @@ az keyvault certificate create \
 
 # Import a certificate
 az keyvault certificate import \
-  --[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
+  --[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
   --name imported-cert \
   --file certificate.pfx \
   --password "pfx-password"
 
 # Download certificate
 az keyvault certificate download \
-  --[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
+  --[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
   --name app-tls-cert \
   --file cert.pem \
   --encoding PEM
 
 # List certificates
-az keyvault certificate list --[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod -o table
+az keyvault certificate list --[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod -o table
 ```
 
 ## Access Policies and RBAC
@@ -257,24 +257,24 @@ az keyvault certificate list --[vault](../../../Software_Engineering_and_Other/M
 ```bash
 # Grant secret reader access to a managed identity
 az role assignment create \
-  --role "Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Secrets User" \
+  --role "Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Secrets User" \
   --assignee-object-id "$(az identity show -g rg-app -n myapp-identity --query principalId -o tsv)" \
-  --scope "/subscriptions/{sub}/resourceGroups/rg-secrets/providers/Microsoft.KeyVault/vaults/myapp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod"
+  --scope "/subscriptions/{sub}/resourceGroups/rg-secrets/providers/Microsoft.KeyVault/vaults/myapp-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod"
 
 # Grant admin access to security team
 az role assignment create \
-  --role "Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Administrator" \
+  --role "Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Administrator" \
   --assignee "security-team@example.com" \
-  --scope "/subscriptions/{sub}/resourceGroups/rg-secrets/providers/Microsoft.KeyVault/vaults/myapp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod"
+  --scope "/subscriptions/{sub}/resourceGroups/rg-secrets/providers/Microsoft.KeyVault/vaults/myapp-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod"
 
-# Available Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) RBAC roles:
-# - Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Administrator (full management)
-# - Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Secrets Officer (manage secrets)
-# - Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Secrets User (read secrets)
-# - Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Certificates Officer (manage certs)
-# - Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Crypto Officer (manage keys)
-# - Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Crypto User (use keys for encrypt/decrypt)
-# - Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Reader (read metadata only)
+# Available Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) RBAC roles:
+# - Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Administrator (full management)
+# - Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Secrets Officer (manage secrets)
+# - Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Secrets User (read secrets)
+# - Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Certificates Officer (manage certs)
+# - Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Crypto Officer (manage keys)
+# - Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Crypto User (use keys for encrypt/decrypt)
+# - Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Reader (read metadata only)
 ```
 
 ### Access Policies (Legacy)
@@ -282,28 +282,28 @@ az role assignment create \
 ```bash
 # Grant secret access via access policy
 az keyvault set-policy \
-  --name myapp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
+  --name myapp-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
   --object-id "$(az identity show -g rg-app -n myapp-identity --query principalId -o tsv)" \
   --secret-permissions get list
 
 # Grant key access
 az keyvault set-policy \
-  --name myapp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
+  --name myapp-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
   --object-id "$OBJECT_ID" \
   --key-permissions get unwrapKey wrapKey
 
 # Grant certificate access
 az keyvault set-policy \
-  --name myapp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
+  --name myapp-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod \
   --object-id "$OBJECT_ID" \
   --certificate-permissions get list
 ```
 
 ## Application Integration
 
-### [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) SDK
+### [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) SDK
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 from azure.keyvault.secrets import SecretClient
 from azure.keyvault.keys import KeyClient
@@ -312,7 +312,7 @@ from azure.keyvault.certificates import CertificateClient
 # Use DefaultAzureCredential (works locally and in Azure)
 credential = DefaultAzureCredential()
 
-vault_url = "https://myapp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod.[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net/"
+vault_url = "https://myapp-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod.[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net/"
 
 # Secrets
 secret_client = SecretClient(vault_url=vault_url, credential=credential)
@@ -349,13 +349,13 @@ using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
 
 var credential = new DefaultAzureCredential();
-var client = new SecretClient(new Uri("https://myapp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod.[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net/"), credential);
+var client = new SecretClient(new Uri("https://myapp-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod.[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net/"), credential);
 
 KeyVaultSecret secret = await client.GetSecretAsync("db-password");
 string password = secret.Value;
 ```
 
-## [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Integration (AKS)
+## [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Integration (AKS)
 
 ### Secrets Store CSI Driver
 
@@ -372,7 +372,7 @@ spec:
     usePodIdentity: "false"
     useVMManagedIdentity: "true"
     userAssignedIdentityID: "<managed-identity-client-id>"
-    keyvaultName: "myapp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod"
+    keyvaultName: "myapp-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod"
     cloudName: ""
     objects: |
       array:
@@ -396,7 +396,7 @@ spec:
         - objectName: api-key
           key: api-key
     - secretName: tls-secret
-      type: [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md).io/tls
+      type: [kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).io/tls
       data:
         - objectName: app-tls-cert
           key: tls.crt
@@ -435,7 +435,7 @@ spec:
 
 ```hcl
 resource "azurerm_key_vault" "main" {
-  name                        = "myapp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod"
+  name                        = "myapp-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-prod"
   location                    = azurerm_resource_group.main.location
   resource_group_name         = azurerm_resource_group.main.name
   tenant_id                   = data.azurerm_client_config.current.tenant_id
@@ -470,7 +470,7 @@ resource "azurerm_key_vault_secret" "db_password" {
 
 resource "azurerm_role_assignment" "app_secrets_user" {
   scope                = azurerm_key_vault.main.id
-  role_definition_name = "Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Secrets User"
+  role_definition_name = "Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Secrets User"
   principal_id         = azurerm_user_assigned_identity.app.principal_id
 }
 ```
@@ -479,10 +479,10 @@ resource "azurerm_role_assignment" "app_secrets_user" {
 
 | Problem | Cause | Solution |
 |---------|-------|----------|
-| "Access denied" when reading secrets | Missing RBAC role or access policy | Assign `Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Secrets User` role; or add access policy with `get` permission |
-| "[Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) not found" | Network access restricted | Check firewall rules; enable private endpoint; add IP to allow list |
+| "Access denied" when reading secrets | Missing RBAC role or access policy | Assign `Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Secrets User` role; or add access policy with `get` permission |
+| "[Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) not found" | Network access restricted | Check firewall rules; enable private endpoint; add IP to allow list |
 | Soft-deleted secret blocks creation | Name collision with deleted secret | Recover and update, or purge the deleted secret first |
-| Managed identity cannot access [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) | Identity not in correct scope | Verify identity principal ID; check role assignment scope matches [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) |
+| Managed identity cannot access [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) | Identity not in correct scope | Verify identity principal ID; check role assignment scope matches [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) |
 | Certificate renewal fails | Auto-renew policy not configured | Set `lifetimeActions` with `AutoRenew` action in certificate policy |
 | CSI driver fails to mount secrets | Wrong provider configuration | Verify `tenantId`, `userAssignedIdentityID`, and object names match exactly |
 | High latency on secret retrieval | No client-side caching | Implement caching in application; use CSI driver for K8s (syncs on interval) |
@@ -497,12 +497,12 @@ resource "azurerm_role_assignment" "app_secrets_user" {
 - Enable diagnostic logging and forward to SIEM
 - Use premium SKU for HSM-backed key operations
 - Implement key rotation policies for all encryption keys
-- Regularly [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) access with Azure Activity logs
-- Tag all [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) resources for cost and ownership tracking
+- Regularly [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) access with Azure Activity logs
+- Tag all [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) resources for cost and ownership tracking
 
 ## Related Skills
 
-- [hashicorp-vault](../[hashicorp-vault](../../../Security/hashicorp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)/SKILL.md)/) - [Multi-cloud](../multi-cloud/SKILL.md) secrets
+- [hashicorp-vault](../[hashicorp-vault](../../../Security/hashicorp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)/SKILL.md)/) - [Multi-cloud](../../../common/other/multi-cloud/SKILL.md) secrets
 - [azure-networking](../../../infrastructure/cloud-azure/[azure-networking](../azure-networking/SKILL.md)/) - Network security
 - [aws-secrets-manager](../[aws-secrets-manager](../aws-secrets-manager/SKILL.md)/) - AWS secret management
 - [gcp-secret-manager](../[gcp-secret-manager](../gcp-secret-manager/SKILL.md)/) - GCP secret management

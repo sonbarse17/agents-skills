@@ -18,7 +18,7 @@ Comprehensive risk measurement toolkit for portfolio management, including Value
 
 - Measuring portfolio risk
 - Implementing risk limits
-- Building risk [dashboards](../../Cloud_Providers/dashboards/SKILL.md)
+- Building risk [dashboards](../dashboards/SKILL.md)
 - Calculating risk-adjusted returns
 - Setting position sizes
 - Regulatory reporting

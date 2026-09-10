@@ -174,7 +174,7 @@ Purpose section.
    ConfigMap — always reference a [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Secret, and source the
    Secret's values from your actual secrets manager rather than
    hardcoding them, per
-   [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md)/SKILL.md).
+   [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md).
 
 6. **Schedule recurring snapshots and backups** via a `RecurringJob`
    rather than relying on manual, ad hoc backup runs:
@@ -376,5 +376,5 @@ all, which is the intended outcome for this failure class.
 - [rook-ceph-configuration-validation](../[rook-ceph-configuration-validation](../rook-ceph-configuration-validation/SKILL.md)/SKILL.md) — analogous production-readiness health-check discipline, adapted here to [Longhorn](../longhorn/SKILL.md)'s `robustness`/replica model.
 - [etcd-backup-restore-and-cluster-health](../[etcd-backup-restore-and-cluster-health](../../Containers_and_Orchestration/etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md) — the same replica-count/quorum reasoning applied to etcd.
 - [cloud-native-storage-strategy](../../../cloud/skills/[cloud-native-storage-strategy](../../Cloud_Providers/cloud-native-storage-strategy/SKILL.md)/SKILL.md) — broader framework for choosing between in-cluster storage systems and cloud-managed storage.
-- [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md)/SKILL.md) — how the backup-target credentials referenced above should actually be sourced and rotated.
+- [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md) — how the backup-target credentials referenced above should actually be sourced and rotated.
 - [velero-backup-and-restore](../../../[observability](../observability/SKILL.md)-and-platform-extras/skills/[velero-backup-and-restore](../../Containers_and_Orchestration/velero-[backup-and-restore](../../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)/SKILL.md)/SKILL.md) — namespace/application-level backup that can complement (not replace) [Longhorn](../longhorn/SKILL.md)'s volume-level backup target.

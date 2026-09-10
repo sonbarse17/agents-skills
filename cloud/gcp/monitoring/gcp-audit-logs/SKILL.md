@@ -16,19 +16,19 @@ depends_on:
   - audit
 ---
 
-# GCP [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logs
+# GCP [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Logs
 
-[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) GCP activity with Cloud [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logs for compliance, security investigation, and operational [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md).
+[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) GCP activity with Cloud [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Logs for compliance, security investigation, and operational [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
 
 ## When to Use
 
-- Enabling organization-wide [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging across GCP projects
+- Enabling organization-wide [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging across GCP projects
 - Meeting compliance requirements for SOC 2, HIPAA, PCI DSS, or FedRAMP
 - Investigating unauthorized access or suspicious API activity
-- Setting up [alerting](../../Observability_and_SecOps/alerting/SKILL.md) on administrative and data access events
+- Setting up [alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) on administrative and data access events
 - Exporting logs to BigQuery for long-term analysis and reporting
 
-## [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Log Types
+## [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Log Types
 
 ```yaml
 log_types:
@@ -74,7 +74,7 @@ log_types:
 # Get current org IAM policy
 gcloud organizations get-iam-policy ORG_ID --format=json > org-policy.json
 
-# Add [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) config to org-policy.json:
+# Add [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) config to org-policy.json:
 # {
 #   "auditConfigs": [
 #     {
@@ -121,22 +121,22 @@ gcloud projects set-iam-policy PROJECT_ID project-policy.json
 ## Configure Log Sinks for Export
 
 ```bash
-# Create BigQuery dataset for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) log export
+# Create BigQuery dataset for [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) log export
 bq mk --dataset \
-  --description "[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) log export" \
+  --description "[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) log export" \
   --default_table_expiration 0 \
   --location US \
   PROJECT_ID:audit_logs
 
 # Create organization-level log sink to BigQuery
-gcloud logging sinks create org-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-bigquery \
+gcloud logging sinks create org-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-bigquery \
   bigquery.googleapis.com/projects/PROJECT_ID/datasets/audit_logs \
   --organization=ORG_ID \
   --include-children \
   --log-filter='logName:"cloudaudit.googleapis.com"'
 
 # Get the sink writer identity and grant BigQuery access
-SINK_SA=$(gcloud logging sinks describe org-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-bigquery \
+SINK_SA=$(gcloud logging sinks describe org-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-bigquery \
   --organization=ORG_ID --format='value(writerIdentity)')
 
 bq add-iam-policy-binding \
@@ -145,33 +145,33 @@ bq add-iam-policy-binding \
   PROJECT_ID:audit_logs
 
 # Create Cloud Storage sink for long-term archive
-gsutil mb -l US -b on gs://org-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-logs-archive
-gsutil retention set 7y gs://org-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-logs-archive
+gsutil mb -l US -b on gs://org-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-logs-archive
+gsutil retention set 7y gs://org-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-logs-archive
 
-gcloud logging sinks create org-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-storage \
-  storage.googleapis.com/org-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-logs-archive \
+gcloud logging sinks create org-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-storage \
+  storage.googleapis.com/org-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-logs-archive \
   --organization=ORG_ID \
   --include-children \
   --log-filter='logName:"cloudaudit.googleapis.com"'
 
-STORAGE_SA=$(gcloud logging sinks describe org-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-storage \
+STORAGE_SA=$(gcloud logging sinks describe org-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-storage \
   --organization=ORG_ID --format='value(writerIdentity)')
 
-gsutil iam ch "$STORAGE_SA:objectCreator" gs://org-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-logs-archive
+gsutil iam ch "$STORAGE_SA:objectCreator" gs://org-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-logs-archive
 
 # Create Pub/Sub sink for real-time streaming to SIEM
-gcloud pubsub topics create [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-log-stream
+gcloud pubsub topics create [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-log-stream
 
-gcloud logging sinks create org-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-pubsub \
-  pubsub.googleapis.com/projects/PROJECT_ID/topics/[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-log-stream \
+gcloud logging sinks create org-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-pubsub \
+  pubsub.googleapis.com/projects/PROJECT_ID/topics/[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-log-stream \
   --organization=ORG_ID \
   --include-children \
   --log-filter='logName:"cloudaudit.googleapis.com" AND (protoPayload.methodName:"delete" OR protoPayload.methodName:"setIamPolicy" OR severity>=WARNING)'
 
-PUBSUB_SA=$(gcloud logging sinks describe org-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-pubsub \
+PUBSUB_SA=$(gcloud logging sinks describe org-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-pubsub \
   --organization=ORG_ID --format='value(writerIdentity)')
 
-gcloud pubsub topics add-iam-policy-binding [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-log-stream \
+gcloud pubsub topics add-iam-policy-binding [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-log-stream \
   --member="$PUBSUB_SA" \
   --role="roles/pubsub.publisher"
 ```
@@ -199,7 +199,7 @@ gcloud logging read 'logName:"cloudaudit.googleapis.com/activity"
   --project=PROJECT_ID \
   --freshness=7d
 
-# Data access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) log entries
+# Data access [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) log entries
 gcloud logging read 'logName:"cloudaudit.googleapis.com/data_access"
   AND protoPayload.serviceName="storage.googleapis.com"
   AND protoPayload.methodName="storage.objects.get"' \
@@ -295,11 +295,11 @@ ORDER BY timestamp DESC
 LIMIT 500;
 ```
 
-## [Alerting](../../Observability_and_SecOps/alerting/SKILL.md) Policies
+## [Alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) Policies
 
 ```bash
 # Alert on service account key creation
-gcloud alpha [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) policies create \
+gcloud alpha [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) policies create \
   --display-name="SA Key Created" \
   --condition-display-name="Service Account Key Creation" \
   --condition-filter='resource.type="audited_resource" AND protoPayload.methodName="google.iam.admin.v1.CreateServiceAccountKey"' \
@@ -314,8 +314,8 @@ gcloud logging metrics create iam-policy-changes \
   --description="Count of IAM policy changes" \
   --log-filter='logName:"cloudaudit.googleapis.com/activity" AND protoPayload.methodName="SetIamPolicy"'
 
-# Create [alerting](../../Observability_and_SecOps/alerting/SKILL.md) policy using the log-based metric
-gcloud alpha [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) policies create \
+# Create [alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) policy using the log-based metric
+gcloud alpha [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) policies create \
   --display-name="IAM Policy Changes" \
   --condition-display-name="IAM Changes Detected" \
   --condition-filter='metric.type="logging.googleapis.com/user/iam-policy-changes"' \
@@ -343,9 +343,9 @@ gcloud logging metrics create vpc-network-changes \
 ## Terraform Configuration
 
 ```hcl
-# Organization-level [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) log sink to BigQuery
+# Organization-level [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) log sink to BigQuery
 resource "google_logging_organization_sink" "audit_bigquery" {
-  name             = "org-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-bigquery"
+  name             = "org-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-bigquery"
   org_id           = var.org_id
   destination      = "bigquery.googleapis.com/projects/${var.project_id}/datasets/${google_bigquery_dataset.audit_logs.dataset_id}"
   filter           = "logName:\"cloudaudit.googleapis.com\""
@@ -360,7 +360,7 @@ resource "google_bigquery_dataset" "audit_logs" {
   dataset_id    = "audit_logs"
   project       = var.project_id
   location      = "US"
-  description   = "Organization [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) log export"
+  description   = "Organization [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) log export"
 
   default_table_expiration_ms = null  # No auto-expiry
 
@@ -377,7 +377,7 @@ resource "google_bigquery_dataset" "audit_logs" {
 
 # Retention bucket with bucket lock
 resource "google_storage_bucket" "audit_archive" {
-  name          = "org-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-logs-archive"
+  name          = "org-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-logs-archive"
   location      = "US"
   force_destroy = false
   project       = var.project_id
@@ -400,7 +400,7 @@ resource "google_storage_bucket" "audit_archive" {
   }
 }
 
-# Log-based [alerting](../../Observability_and_SecOps/alerting/SKILL.md)
+# Log-based [alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
 resource "google_logging_metric" "iam_changes" {
   name    = "iam-policy-changes"
   project = var.project_id
@@ -446,7 +446,7 @@ gcp_audit_logs_checklist:
     - [ ] Organization-level sink to Cloud Storage for long-term archive
     - [ ] Pub/Sub sink for real-time SIEM streaming (high severity events)
     - [ ] Sink writer identities granted appropriate destination permissions
-    - [ ] Inclusion filters verified to capture all [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) log types
+    - [ ] Inclusion filters verified to capture all [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) log types
 
   storage_and_retention:
     - [ ] BigQuery dataset created with appropriate access controls
@@ -454,7 +454,7 @@ gcp_audit_logs_checklist:
     - [ ] Storage class lifecycle rules configured (Standard to Coldline)
     - [ ] Default log retention in Cloud Logging extended if needed
 
-  [alerting](../../Observability_and_SecOps/alerting/SKILL.md):
+  [alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md):
     - [ ] Notification channels configured (email, PagerDuty, Slack)
     - [ ] Log-based metric for IAM policy changes
     - [ ] Log-based metric for firewall rule changes
@@ -475,9 +475,9 @@ gcp_audit_logs_checklist:
 - Use organization-level sinks with include-children to capture all projects automatically
 - Export to BigQuery with partitioned tables for efficient querying over large time ranges
 - Archive to Cloud Storage with bucket lock and retention policies for immutable long-term storage
-- Create log-based metrics and [alerting](../../Observability_and_SecOps/alerting/SKILL.md) policies for high-severity events
-- Stream critical [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) events via Pub/Sub to SIEM for real-time correlation
+- Create log-based metrics and [alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) policies for high-severity events
+- Stream critical [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) events via Pub/Sub to SIEM for real-time correlation
 - Apply exemptions to exclude high-volume read-only service accounts from data access logs
-- Restrict access to [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) log sinks and destinations with least-privilege IAM bindings
+- Restrict access to [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) log sinks and destinations with least-privilege IAM bindings
 - Regularly run BigQuery analysis queries to detect anomalous patterns and generate compliance reports
-- Monitor log sink health and delivery latency to ensure continuous [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) coverage
+- Monitor log sink health and delivery latency to ensure continuous [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) coverage

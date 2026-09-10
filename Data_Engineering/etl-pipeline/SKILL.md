@@ -437,7 +437,7 @@ INSERT INTO staging_orders (
 | Storage | Staging + warehouse | Raw + transformed | Raw + streaming | Kafka + warehouse |
 | Complexity | High (transform engine) | Low (SQL only) | Medium | High |
 | Cost | Medium (compute + storage) | Low (warehouse only) | Medium | High (streaming infra) |
-| Use case | On-prem sources, compliance | Cloud warehouse, agile schema | Near-real-time [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) | Real-time operations |
+| Use case | On-prem sources, compliance | Cloud warehouse, agile schema | Near-real-time [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) | Real-time operations |
 
 ## Common Airflow DAG Patterns
 

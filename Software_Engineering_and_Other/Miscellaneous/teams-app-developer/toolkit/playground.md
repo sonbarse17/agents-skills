@@ -2,7 +2,7 @@
 
 ## purpose
 
-Agents Playground — the local web-based test harness for testing M365 agents (Teams bots, custom engine agents, message extensions) without deploying to the Teams client. Note: declarative agents and Office add-ins are not supported by the Playground — see [test-teams](../test-teams/) for those.
+Agents Playground — the local web-based test harness for testing M365 agents (Teams bots, custom engine agents, message extensions) without deploying to the Teams client. Note: declarative agents and Office add-ins are not supported by the Playground — see [test-teams](../test-teams) for those.
 
 ## rules
 

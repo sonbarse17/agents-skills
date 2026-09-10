@@ -517,7 +517,7 @@ sprint-retro (the risk register is reviewed at every sprint retro), create-roadm
 |---|---|---|---|
 | Risk severity | Accept (cost to fix > impact) | Mitigate (cost to fix < impact) | Budget, risk appetite, compliance |
 | Risk ownership | Assign to risk owner (accountable) | Transfer (insurance/outsource) | Expertise, financial [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) |
-| [Monitoring](../monitoring/SKILL.md) frequency | Continuous (automated [dashboards](../../Cloud_Providers/dashboards/SKILL.md)) | Periodic (quarterly review) | Risk volatility, regulatory requirements |
+| [Monitoring](../monitoring/SKILL.md) frequency | Continuous (automated [dashboards](../dashboards/SKILL.md)) | Periodic (quarterly review) | Risk volatility, regulatory requirements |
 
 ### Risk Assessment Framework Selection
 - Financial/quantitative → Monte Carlo simulation + NPV analysis

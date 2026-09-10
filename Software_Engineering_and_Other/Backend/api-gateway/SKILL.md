@@ -57,7 +57,7 @@ identity provider, with the gateway only checking, not issuing or storing.
   backends don't re-implement token parsing.
 - **Never let the gateway silently downgrade auth failures to "allow"** on a validation error —
   fail closed, not open.
-- **Full identity and authorization policy design** lives in `[iam-access-management](../../../DevOps_and_Cloud/Cloud_Providers/iam-access-management/SKILL.md)`; the gateway
+- **Full identity and authorization policy design** lives in `[iam-access-management](../../../cloud/common/identity/iam-access-management/SKILL.md)`; the gateway
   enforces decisions, it doesn't define them.
 
 **Done when:** every backend behind the gateway can trust that an authenticated request has

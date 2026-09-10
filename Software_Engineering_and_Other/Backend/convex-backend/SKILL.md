@@ -25,7 +25,7 @@ Use Convex to build type-safe backend logic with realtime data sync.
 ## When to Use This Skill
 
 Use this skill when:
-- Building real-time collaborative apps (chat, [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), multiplayer)
+- Building real-time collaborative apps (chat, [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), multiplayer)
 - Need a backend with zero infrastructure management
 - Want type-safe server functions with automatic caching
 - Building AI apps that need reactive data (agent status, streaming results)

@@ -87,7 +87,7 @@ general [disaster-recovery](../../Observability_and_SecOps/disaster-recovery/SKI
     reads data at the file level; enabled via
     `--use-node-agent`/`--uploader-type=kopia` (kopia is the default
     uploader path from Velero 1.10+, replacing restic).
-- Velero's own credentials (the [object-storage](../../Cloud_Providers/object-storage/SKILL.md) IAM
+- Velero's own credentials (the [object-storage](../../../cloud/common/storage/object-storage/SKILL.md) IAM
   role/service-principal/service-account key) stored as a [Kubernetes](../kubernetes/SKILL.md)
   `Secret`, never inline in the `BackupStorageLocation`.
 - Cluster-admin access to install Velero's CRDs

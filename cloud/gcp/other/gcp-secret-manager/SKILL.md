@@ -171,17 +171,17 @@ gcloud secrets add-iam-policy-binding db-password \
   --member="serviceAccount:myapp-gke-sa@my-project.iam.gserviceaccount.com" \
   --role="roles/secretmanager.secretAccessor"
 
-# Bind [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) SA to GCP SA
+# Bind [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) SA to GCP SA
 gcloud iam service-accounts add-iam-policy-binding \
   myapp-gke-sa@my-project.iam.gserviceaccount.com \
   --role="roles/iam.workloadIdentityUser" \
   --member="serviceAccount:my-project.svc.id.goog[production/myapp-sa]"
 ```
 
-### [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Manifests
+### [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Manifests
 
 ```yaml
-# [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) service account annotated with GCP SA
+# [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) service account annotated with GCP SA
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -256,9 +256,9 @@ spec:
 
 ## Application SDK Examples
 
-### [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+### [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from google.cloud import secretmanager
 from google.api_core import exceptions
 import json
@@ -328,7 +328,7 @@ def list_secrets(project_id: str, filter_str: str = "") -> list:
 # Usage
 creds = get_json_secret("my-project", "db-credentials")
 connection_string = (
-    f"[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)://{creds['username']}:{creds['password']}"
+    f"[postgresql](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)://{creds['username']}:{creds['password']}"
     f"@{creds['host']}:{creds['port']}/mydb"
 )
 ```
@@ -398,7 +398,7 @@ main().catch(console.error);
 
 ## Secret Rotation with Cloud Functions
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 """cloud_function_rotation.py - Triggered by Pub/Sub on secret rotation events."""
 
 import functions_framework
@@ -503,18 +503,18 @@ resource "google_secret_manager_secret_iam_member" "app_accessor" {
 
 - Use Workload Identity for GKE instead of exported service account keys
 - Implement IAM least-privilege at the individual secret level, not project level
-- Enable [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging for all secret access (Cloud [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logs)
+- Enable [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging for all secret access (Cloud [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Logs)
 - Use secret versions for safe rollback during rotation issues
 - Set expiration dates or TTLs on temporary secrets
 - Integrate with Cloud KMS for customer-managed encryption keys
 - Use labels consistently for organization and automation
-- Monitor secret access patterns with Cloud [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
+- Monitor secret access patterns with Cloud [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 - Implement rotation schedules for all long-lived credentials
 - Use conditional IAM bindings to restrict access by resource name pattern
 
 ## Related Skills
 
-- [hashicorp-vault](../[hashicorp-vault](../../../Security/hashicorp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)/SKILL.md)/) - [Multi-cloud](../multi-cloud/SKILL.md) secrets
+- [hashicorp-vault](../[hashicorp-vault](../../../Security/hashicorp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)/SKILL.md)/) - [Multi-cloud](../../../common/other/multi-cloud/SKILL.md) secrets
 - [gcp-gke](../../../infrastructure/cloud-gcp/[gcp-gke](../../Containers_and_Orchestration/gcp-gke/SKILL.md)/) - GKE integration
 - [aws-secrets-manager](../[aws-secrets-manager](../aws-secrets-manager/SKILL.md)/) - AWS secret management
 - [azure-keyvault](../[azure-keyvault](../azure-keyvault/SKILL.md)/) - Azure secret management

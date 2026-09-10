@@ -438,7 +438,7 @@ An open-source project with 500+ contributors needed consistent quality across P
 - ../../../Global_References/quality-gates-matrix.md — Quality gate definitions per language (JS, [Python](../../Languages/python/SKILL.md), Go, Rust)
 - ../../../Global_References/technical-debt-register.md — Technical debt register template with severity and effort
 - ../../../Global_References/qc-process-framework.md — QC process framework and maturity model
-- ../../../Global_References/qc-metrics-dashboard.md — Metrics-driven quality [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) and KPIs
+- ../../../Global_References/qc-metrics-dashboard.md — Metrics-driven quality [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) and KPIs
 
 ## Handoff
 After completing this skill:

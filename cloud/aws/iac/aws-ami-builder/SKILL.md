@@ -27,7 +27,7 @@ Build Amazon Machine Images (AMIs) using Packer's `amazon-ebs` builder.
 packer {
   required_plugins {
     amazon = {
-      source  = "[github](../../CI_CD/github/SKILL.md).com/hashicorp/amazon"
+      source  = "[github](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/hashicorp/amazon"
       version = "~> 1.3"
     }
   }

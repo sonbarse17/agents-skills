@@ -261,7 +261,7 @@ all" justification, which lives in
   pressure.
 - Use a cheaper/faster model for narrowly-scoped worker roles (a
   researcher summarizing one document) and reserve the strongest available
-  model for planning/manager roles, the same [cost-optimization](../../../DevOps_and_Cloud/Cloud_Providers/cost-optimization/SKILL.md) principle as
+  model for planning/manager roles, the same [cost-optimization](../../../cloud/common/cost/cost-optimization/SKILL.md) principle as
   [llm-cost-and-latency-optimization](../[llm-cost-and-latency-optimization](../../Models_and_FineTuning/llm-cost-and-latency-optimization/SKILL.md)/SKILL.md).
 - Re-evaluate whether a CrewAI/AutoGen crew could be replaced by a single
   well-scoped agent periodically — both frameworks make it easy to declare

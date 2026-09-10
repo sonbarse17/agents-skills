@@ -57,7 +57,7 @@ change_types:
       - Non-critical configuration changes
       - Feature flag toggles
       - Documentation updates to production systems
-      - Adding [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) or alerts
+      - Adding [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) or alerts
 
   normal_medium:
     risk: Medium
@@ -324,7 +324,7 @@ emergency_change_process:
 - [ ] Health checks passing
 - [ ] Error rates within baseline
 - [ ] Key transactions working
-- [ ] [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) reviewed
+- [ ] [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) reviewed
 
 ### Communication
 - [ ] Team notified

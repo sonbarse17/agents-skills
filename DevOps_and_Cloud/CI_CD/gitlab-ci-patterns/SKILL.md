@@ -276,4 +276,4 @@ trigger-child:
 
 - `[github-actions-templates](../[github-actions](../[github](../github/SKILL.md)-actions/SKILL.md)-templates/SKILL.md)` - For [GitHub](../github/SKILL.md) Actions
 - `[deployment-pipeline-design](../deployment-pipeline-design/SKILL.md)` - For architecture
-- `[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md)` - For secrets handling
+- `[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)` - For secrets handling

@@ -180,7 +180,7 @@ Central platform team with domain-aligned data stewards. Central team owns: data
 ### Step 4: Build Data Culture
 
 #### Data Literacy Program
-Three-tier training program targeting different roles. Tier 1 (Basic): data concepts, reading charts and [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), understanding KPIs — for all employees. Tier 2 (Intermediate): SQL basics, data analysis, data visualization, critical thinking with data — for analysts, managers, power users. Tier 3 (Advanced): statistical methods, ML concepts, data modeling, data ethics — for data practitioners and leaders.
+Three-tier training program targeting different roles. Tier 1 (Basic): data concepts, reading charts and [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), understanding KPIs — for all employees. Tier 2 (Intermediate): SQL basics, data analysis, data visualization, critical thinking with data — for analysts, managers, power users. Tier 3 (Advanced): statistical methods, ML concepts, data modeling, data ethics — for data practitioners and leaders.
 
 #### Training Delivery
 Tier 1: self-paced online modules (2 hours total), annual refresher. Tier 2: instructor-led workshops (2 days), quarterly cohorts, capstone project. Tier 3: ongoing learning path (courses, certifications, conferences). Measure: completion rate (target >80%), knowledge assessment scores (target >80%), application in job (6-month follow-up survey).
@@ -368,7 +368,7 @@ Focus: customer data unification, real-time inventory optimization, demand forec
 Focus: product analytics, usage data, experimentation platform, data-driven product decisions. Strategy emphasis: self-service analytics culture, data product thinking, experimentation at scale, real-time product metrics.
 
 ### Manufacturing
-Focus: IoT sensor data, predictive maintenance, supply chain optimization, quality analytics. Additional requirements: OT/IT data integration, edge computing for factory floors, real-time [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md). Strategy emphasis: digital twin enablement, connected factory data platform, AI-driven quality control.
+Focus: IoT sensor data, predictive maintenance, supply chain optimization, quality analytics. Additional requirements: OT/IT data integration, edge computing for factory floors, real-time [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md). Strategy emphasis: digital twin enablement, connected factory data platform, AI-driven quality control.
 
 ## Data Monetization Strategies
 

@@ -488,7 +488,7 @@ programs:
 
 ### Grafana Dashboard
 
-Import these community [dashboards](../../Cloud_Providers/dashboards/SKILL.md) for eBPF metrics:
+Import these community [dashboards](../dashboards/SKILL.md) for eBPF metrics:
 
 ```bash
 # Hubble dashboard -- Grafana dashboard ID 16611

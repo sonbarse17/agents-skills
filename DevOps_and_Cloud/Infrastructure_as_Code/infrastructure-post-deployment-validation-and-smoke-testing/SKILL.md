@@ -87,7 +87,7 @@ conflated until an [incident](../../Observability_and_SecOps/incident/SKILL.md) 
   for the service being validated (a `/healthz` endpoint, an expected
   response code/body, an expected DB query result) — validation without
   a concrete pass/fail contract degenerates into someone eyeballing
-  [dashboards](../../Cloud_Providers/dashboards/SKILL.md).
+  [dashboards](../../Observability_and_SecOps/dashboards/SKILL.md).
 - A rollback or remediation path already decided *before* running
   validation, not designed in the moment a check fails — post-deploy
   validation is only useful if there's a defined next action (automatic

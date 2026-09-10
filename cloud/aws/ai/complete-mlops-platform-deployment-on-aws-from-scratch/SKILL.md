@@ -37,16 +37,16 @@ depends_on:
 An MLOps platform is not one deployment — it's roughly nine components
 (account guardrails, a compute platform, GPU scheduling, experiment
 tracking, a feature layer, pipeline orchestration, a model registry, a
-serving layer, and drift [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)) that only work as a coherent system if
+serving layer, and drift [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)) that only work as a coherent system if
 they're wired up in the right order with the right handoffs between them.
 Each individual piece is well covered by an existing skill in this repo;
 what's missing without this skill is the sequencing itself — for example,
 provisioning a GPU-requesting Kubeflow pipeline before the GPU node pool
 and GPU Operator exist (so training jobs silently queue forever or fall
-back to CPU), or promoting a model to production before [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) hooks
+back to CPU), or promoting a model to production before [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) hooks
 are live (so a bad canary's regression is invisible until a business
 stakeholder notices). This skill sequences the AWS-specific version of that
-whole path — landing zone through production [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) — and calls out
+whole path — landing zone through production [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) — and calls out
 exactly where a mis-ordered step causes a failure that looks like it
 belongs to a different phase entirely.
 
@@ -60,7 +60,7 @@ belongs to a different phase entirely.
   and a specific worked path rather than an abstract comparison.
 - Auditing an existing AWS ML platform for a skipped or out-of-order phase
   (e.g. GPU node pools added after training pipelines were already
-  submitting jobs, or [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) bolted on after months of unmonitored
+  submitting jobs, or [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) bolted on after months of unmonitored
   production traffic).
 - Rebuilding a reference ML platform (a second business unit, a DR
   environment) that should follow the same proven sequence as a known-good
@@ -81,17 +81,17 @@ belongs to a different phase entirely.
   path in this skill and the brief SageMaker-centric alternative described
   in Phase 2 — mid-project reversal is expensive (different identity model,
   different storage wiring) and should be avoided.
-- `eksctl` ≥ 0.180 or Terraform's `aws` provider ≥ 5.x, `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md)`, and
+- `eksctl` ≥ 0.180 or Terraform's `aws` provider ≥ 5.x, `[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)`, and
   `helm` ≥ 3.14 for the EKS+Kubeflow path.
 - GPU instance quota (e.g. `g5`/`p4d` family) requested and approved in the
   target region **before** the training pipeline phase — a quota request
   submitted late is one of the most common causes of a stalled first
   training run.
-- An S3 bucket strategy decided up front for [experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md) artifacts,
+- An S3 bucket strategy decided up front for [experiment-tracking](../../../../Data_Engineering/experiment-tracking/SKILL.md) artifacts,
   Kubeflow pipeline artifacts, and the model registry — these can share one
   bucket with prefixes or use separate buckets, but the choice should be
   made before Phase 4, not improvised per phase.
-- IAM permissions to create IRSA roles, S3 policies, and (if [load-testing](../../Observability_and_SecOps/load-testing/SKILL.md)
+- IAM permissions to create IRSA roles, S3 policies, and (if [load-testing](../../../../DevOps_and_Cloud/Observability_and_SecOps/load-testing/SKILL.md)
   serving) an ALB/NLB for KServe/ingress traffic.
 
 ## Step-by-step guidance
@@ -117,18 +117,18 @@ integration decisions between phases.
    - **EKS + Kubeflow (this skill's worked path)**: full control over the
      scheduler, GPU bin-packing, and pipeline internals; higher initial
      setup cost and ongoing operational ownership. The right default when
-     the team already runs [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-native infrastructure or needs
+     the team already runs [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-native infrastructure or needs
      custom GPU sharing (MIG/time-slicing) that SageMaker doesn't expose.
    - **SageMaker-centric (brief alternative)**: SageMaker Training Jobs
      (managed GPU instances, no node pool to operate), SageMaker
      Pipelines for orchestration, SageMaker Model Registry, and SageMaker
-     real-time/[serverless](../../Containers_and_Orchestration/serverless/SKILL.md) endpoints for serving — trades control for far
+     real-time/[serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) endpoints for serving — trades control for far
      less infrastructure to operate. Every phase below has a SageMaker
      equivalent noted inline for teams choosing this path instead.
 
 3. **Phase 3 — EKS cluster and GPU node pools.** Provision the EKS control
    plane and workload-identity (IRSA) per
-   [managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../../Containers_and_Orchestration/managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md),
+   [managed-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../../Containers_and_Orchestration/managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md),
    then install the NVIDIA GPU Operator and design separate training vs.
    serving GPU node pools per
    [gpu-accelerator-infrastructure-for-ml-training](../[gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md)/SKILL.md):
@@ -142,7 +142,7 @@ integration decisions between phases.
 
    eksctl create nodegroup --cluster ml-platform-prod --name gpu-training \
      --node-type g5.2xlarge --nodes-min 0 --nodes-max 8 --managed
-   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) taint nodes -l gpu-pool=training workload=training:NoSchedule
+   [kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) taint nodes -l gpu-pool=training workload=training:NoSchedule
    ```
    **This must happen before Phase 6** — a Kubeflow pipeline that requests
    `nvidia.com/gpu` against a cluster with no GPU node pool yet either
@@ -182,8 +182,8 @@ integration decisions between phases.
    [training-pipeline-orchestration](../[training-pipeline-orchestration](../../../AI_and_Agents/Models_and_FineTuning/training-pipeline-orchestration/SKILL.md)/SKILL.md)'s
    vendor-neutral gate/reproducibility principles, implemented concretely
    with the KFP SDK per
-   [kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../[kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../../Containers_and_Orchestration/kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md):
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   [kubeflow-[ml-pipeline](../../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../[kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../../Containers_and_Orchestration/kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md):
+   ```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    train_task = train(processed=preprocess_task.outputs["processed"], epochs=20)
    train_task.set_accelerator_type("nvidia.com/gpu").set_accelerator_limit(1)
    ```
@@ -226,14 +226,14 @@ integration decisions between phases.
    ```
    Roll out via canary (5% → 25% → 100%) exactly as
    [model-serving-and-scaling](../[model-serving-and-scaling](../../../AI_and_Agents/Models_and_FineTuning/model-serving-and-scaling/SKILL.md)/SKILL.md)
-   describes — and do not proceed past 5% until Phase 9's [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) is
+   describes — and do not proceed past 5% until Phase 9's [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) is
    confirmed live (see Common pitfalls). (SageMaker alternative: a
    SageMaker real-time endpoint with production variants for canary
    traffic-shifting.)
 
-9. **Phase 9 — [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) and drift detection.** Wire drift and quality
-   [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) per
-   [model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md)
+9. **Phase 9 — [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and drift detection.** Wire drift and quality
+   [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) per
+   [model-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md)
    **before** Phase 8's canary is allowed past its first stage, not after
    — a frozen reference baseline needs to exist from the moment real
    traffic starts, and retrofitting it after the fact means the baseline
@@ -255,7 +255,7 @@ integration decisions between phases.
   of [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), exactly as
   [gpu-accelerator-infrastructure-for-ml-training](../[gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md)/SKILL.md)
   recommends.
-- Treat Phase 9 ([monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)) as a blocking prerequisite for any canary
+- Treat Phase 9 ([monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)) as a blocking prerequisite for any canary
   ramp-up past its first stage in Phase 8, not a follow-up task — the
   entire point of canarying is having a monitored trip-wire, and an
   unmonitored canary is not meaningfully safer than a straight-to-100%
@@ -283,23 +283,23 @@ integration decisions between phases.
   `Pending`/`Unschedulable` indefinitely on first run, with no clear error.
   **Fix:** Phase 3 (GPU node pools) was skipped, under-sized, or not yet
   scaled up when Phase 6 (training pipeline) went live. Confirm
-  `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get nodes -o json | jq '.items[].status.[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)["nvidia.com/gpu"]'`
+  `[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get nodes -o json | jq '.items[].status.[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)["nvidia.com/gpu"]'`
   shows real [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) before assuming the pipeline definition itself is
   broken.
 
 - **Symptom:** A model is promoted from staging to production in Phase 7,
   canaried in Phase 8, and a real regression only surfaces days later when
   a business stakeholder notices — no alert ever fired.
-  **Fix:** Phase 9's [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) was stood up after, not before, the
+  **Fix:** Phase 9's [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) was stood up after, not before, the
   canary ramp-up, so there was no frozen reference baseline or live alert
   in place during the exact window it mattered most. Never let a canary
-  proceed past its first traffic stage until [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) is confirmed live
-  and [alerting](../../Observability_and_SecOps/alerting/SKILL.md).
+  proceed past its first traffic stage until [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) is confirmed live
+  and [alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md).
 
 - **Symptom:** The currently-serving production model version's artifacts
   are unexpectedly missing from S3, breaking rollback.
   **Fix:** A generic S3 lifecycle/retention rule applied broadly to the
-  shared [experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)-and-registry bucket during Phase 4 deleted
+  shared [experiment-tracking](../../../../Data_Engineering/experiment-tracking/SKILL.md)-and-registry bucket during Phase 4 deleted
   "old" objects with no awareness that one of them was a Phase 7
   registered production model. Give the model registry's artifact prefix
   its own retention policy, independent of the experiment tracker's.
@@ -336,8 +336,8 @@ eksctl create nodegroup --cluster ml-platform-prod --name gpu-training \
   --node-type g5.2xlarge --nodes-min 0 --nodes-max 4 --managed
 eksctl create nodegroup --cluster ml-platform-prod --name gpu-serving \
   --node-type g5.xlarge --nodes-min 2 --nodes-max 10 --managed
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) taint nodes -l alpha.eksctl.io/nodegroup-name=gpu-training workload=training:NoSchedule
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) taint nodes -l alpha.eksctl.io/nodegroup-name=gpu-serving workload=serving:NoSchedule
+[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) taint nodes -l alpha.eksctl.io/nodegroup-name=gpu-training workload=training:NoSchedule
+[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) taint nodes -l alpha.eksctl.io/nodegroup-name=gpu-serving workload=serving:NoSchedule
 
 # Phase 4 — MLflow experiment tracking (S3 artifact store, RDS backend)
 helm install mlflow community-charts/mlflow --namespace mlflow --create-namespace \
@@ -358,17 +358,17 @@ kfp_client.create_recurring_run(
 # promotes to MLflow Model Registry "Staging"; human approves to "Production"
 
 # Phase 8 — KServe canary on the gpu-serving pool, 5% -> 25% -> 100%
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply -f fraud-scorer-inferenceservice.yaml
+[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f fraud-scorer-inferenceservice.yaml
 
 # Phase 9 — Evidently drift job + Prometheus/Grafana, frozen baseline
 # snapshotted the moment version 14 first receives production traffic,
 # confirmed live BEFORE the canary is ramped past 5%
 ```
 
-Two hours into the 5% canary, the Phase 9 [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) stack flags a
+Two hours into the 5% canary, the Phase 9 [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) stack flags a
 false-positive-rate spike on the new version — exactly the scenario
-[model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md)'s
-worked example describes — and because [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) was live before the
+[model-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md)'s
+worked example describes — and because [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) was live before the
 ramp-up (not after), on-call catches it at 5% traffic exposure instead of
 100%, rolling back to the previously-archived registry version within
 minutes.
@@ -376,13 +376,13 @@ minutes.
 ## Cross-references
 
 - [aws-landing-zone-setup](../../../cloud/skills/[aws-landing-zone-setup](../aws-landing-zone-setup/SKILL.md)/SKILL.md) — Phase 1's account/OU/guardrail foundation.
-- [managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../../Containers_and_Orchestration/managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md) — Phase 3's EKS cluster and IRSA workload identity setup.
+- [managed-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../../Containers_and_Orchestration/managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md) — Phase 3's EKS cluster and IRSA workload identity setup.
 - [gpu-accelerator-infrastructure-for-ml-training](../[gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md)/SKILL.md) — Phase 3's GPU Operator install and training/serving node pool design.
 - [experiment-tracking](../[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)/SKILL.md) — Phase 4's MLflow setup and run-logging discipline.
 - [feature-store-design](../[feature-store-design](../../../Data_Engineering/feature-store-design/SKILL.md)/SKILL.md) — Phase 5's optional feature layer.
 - [training-pipeline-orchestration](../[training-pipeline-orchestration](../../../AI_and_Agents/Models_and_FineTuning/training-pipeline-orchestration/SKILL.md)/SKILL.md) — Phase 6's vendor-neutral DAG/gate principles.
-- [kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../[kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../../Containers_and_Orchestration/kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md) — Phase 6's KFP-specific implementation.
+- [kubeflow-[ml-pipeline](../../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../[kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../../Containers_and_Orchestration/kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md) — Phase 6's KFP-specific implementation.
 - [model-packaging-and-versioning](../[model-packaging-and-versioning](../../../AI_and_Agents/Models_and_FineTuning/model-packaging-and-versioning/SKILL.md)/SKILL.md) — Phase 7's registry and promotion gates.
 - [model-serving-and-scaling](../[model-serving-and-scaling](../../../AI_and_Agents/Models_and_FineTuning/model-serving-and-scaling/SKILL.md)/SKILL.md) — Phase 8's KServe canary/shadow rollout.
-- [model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md) — Phase 9's drift/quality [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md).
+- [model-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md) — Phase 9's drift/quality [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
 - [gpu-accelerator-configuration-validation](../[gpu-accelerator-configuration-validation](../gpu-accelerator-configuration-validation/SKILL.md)/SKILL.md) — validating individual job GPU resource requests referenced in Phase 3/6.

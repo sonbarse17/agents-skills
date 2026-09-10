@@ -28,9 +28,9 @@ depends_on:
 >
 > This skill assesses existing AKS clusters or local manifests for AKS Automatic compatibility.
 > For creating a new AKS Automatic cluster, use the `[azure-kubernetes](../../Cloud_Providers/azure-skills/skills/[azure-kubernetes](../azure-[kubernetes](../kubernetes/SKILL.md)/SKILL.md)/SKILL.md)` skill instead.
-> See [constraint spec](./../../../Global_References/constraint-spec-v1.yaml) for all safeguard rules, [common fixes](./../../../Global_References/common-fixes.md) for YAML patterns, [migration guide](./../../../Global_References/migration-guide-summary.md) for end-to-end steps, and [MCP integration](./../../../Global_References/mcp-integration.md) for tool details and fallback handling.
+> See [constraint spec](../../../../Global_References/constraint-spec-v1.yaml) for all safeguard rules, [common fixes](../../../../Global_References/common-fixes.md) for YAML patterns, [migration guide](../../../../Global_References/migration-guide-summary.md) for end-to-end steps, and [MCP integration](../../../../Global_References/mcp-integration.md) for tool details and fallback handling.
 
-You are an AKS Automatic compatibility assessment agent. Your job is to evaluate whether [Kubernetes](../kubernetes/SKILL.md) workloads and cluster configurations are compatible with [AKS Automatic](https://learn.microsoft.com/en-us/azure/aks/intro-aks-automatic), identify issues, and help users fix them.
+You are an AKS Automatic compatibility assessment agent. Your job is to evaluate whether [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) workloads and cluster configurations are compatible with [AKS Automatic](https://learn.microsoft.com/en-us/azure/aks/intro-aks-automatic), identify issues, and help users fix them.
 
 AKS Automatic enforces **Deployment Safeguards** (21 active policies, some deny, some warn only), **Pod Security Standards** (Baseline mandatory, Restricted optional), **2 active webhook mutators** that auto-fix certain fields at admission (resource-requests defaults and anti-affinity/topology-spread), and **23 cluster-level configuration requirements**.
 
@@ -61,7 +61,7 @@ AKS Automatic enforces **Deployment Safeguards** (21 active policies, some deny,
 
 ## Guardrails — READ FIRST
 
-1. **Read-only**: NEVER modify cluster state. Assessment is read-only. Do not run `[kubectl](../kubectl/SKILL.md) apply`, `az aks update`, or any command that changes the cluster.
+1. **Read-only**: NEVER modify cluster state. Assessment is read-only. Do not run `[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply`, `az aks update`, or any command that changes the cluster.
 2. **No secrets**: Do NOT transmit, display, or include in diffs: Secret data values, ConfigMap data values, environment variable values from `valueFrom.secretKeyRef`, service account tokens, or connection strings.
 3. **User approval for file changes**: Present every fix as a diff. The user must explicitly accept before you write to any file.
 4. **Scope boundaries**: Route cluster creation/deletion questions → `[azure-kubernetes](../../Cloud_Providers/azure-skills/skills/[azure-kubernetes](../azure-[kubernetes](../kubernetes/SKILL.md)/SKILL.md)/SKILL.md)` skill. Route live troubleshooting → `[azure-diagnostics](../../Cloud_Providers/[azure-diagnostics](../../Cloud_Providers/azure-skills/skills/azure-diagnostics/SKILL.md)/SKILL.md)` skill.
@@ -81,7 +81,7 @@ Ask the user what they want to assess:
 Use when the user has a connected cluster context (subscription + resource group + cluster name).
 
 **Option B — Offline manifest validation**
-Use when the user has local [Kubernetes](../kubernetes/SKILL.md) manifests, Helm charts, or [Kustomize](../kustomize/SKILL.md) overlays in their workspace. Search for files containing `apiVersion:` and `kind:` matching Deployment, StatefulSet, DaemonSet, Job, CronJob, Pod, Service, PodDisruptionBudget, or StorageClass. For Helm charts, look for `Chart.yaml` and rendered templates under `templates/`.
+Use when the user has local [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) manifests, Helm charts, or [Kustomize](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md) overlays in their workspace. Search for files containing `apiVersion:` and `kind:` matching Deployment, StatefulSet, DaemonSet, Job, CronJob, Pod, Service, PodDisruptionBudget, or StorageClass. For Helm charts, look for `Chart.yaml` and rendered templates under `templates/`.
 
 **Option C — Single manifest check**
 If the user pastes or points to a single YAML manifest, validate it directly without asking for scope.

@@ -590,4 +590,4 @@ catalog:
 ## Handoff
 `[data-data-platform](../../../Data_Engineering/data-platform/SKILL.md)` for overall lake architecture
 `[data-data-warehouse](../../../Data_Engineering/data-warehouse/SKILL.md)` for warehouse layer on top of lake
-`[data-distributed-storage](../../../DevOps_and_Cloud/Cloud_Providers/distributed-storage/SKILL.md)` for storage infrastructure details
+`[data-distributed-storage](../../../cloud/common/storage/distributed-storage/SKILL.md)` for storage infrastructure details

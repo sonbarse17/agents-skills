@@ -40,7 +40,7 @@ you think it means for the query patterns that come up constantly —
 request rate, error ratio, latency percentiles, saturation — and the
 specific mechanics (counter `rate()`, aggregation `by`/`without`, vector
 matching) that most PromQL mistakes trace back to. It assumes Prometheus
-is already scraping the target and [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)/[dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) exist to attach
+is already scraping the target and [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)/[dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) exist to attach
 queries to — see
 [prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
 for scrape configuration, recording/[alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) rule wiring, and
@@ -85,7 +85,7 @@ Alertmanager routing, which this skill does not repeat.
 
 1. **Always wrap a counter (`_total`, `_count`, `_sum` suffixed metric)
    in `rate()` or `irate()` before using it — a raw counter's absolute
-   value is meaningless for [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)/alerts** (it only ever goes up,
+   value is meaningless for [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md)/alerts** (it only ever goes up,
    and resets to 0 on process restart):
    ```promql
    # correct: per-second rate averaged over the trailing window
@@ -221,7 +221,7 @@ Alertmanager routing, which this skill does not repeat.
   [prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
   step 5 — rather than repeating the raw expression in every panel.
 - [Audit](../../Operations/audit/SKILL.md) any label you're about to `by()`/`without()` on for cardinality
-  before shipping to production [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), not after a query times out
+  before shipping to production [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), not after a query times out
   or the Prometheus instance runs out of memory.
 - When debugging "why is my query empty," check vector-match label
   compatibility (`on`/`ignoring`/`group_left`) before assuming the

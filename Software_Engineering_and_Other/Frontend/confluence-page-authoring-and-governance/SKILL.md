@@ -100,7 +100,7 @@ from any page this skill produces.
 
 3. **Use a purpose-built template outline, not a blank page:**
    - **[Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)** — see
-     [../../../Global_References/[runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)-template.md](../../../Global_References/[runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)-template.md):
+     [../../../Global_References/[runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)-template.md](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)-template.md):
      owner, architecture/dependencies, common operations, alerts and
      what they mean, troubleshooting by symptom, escalation path.
    - **Postmortem** — see

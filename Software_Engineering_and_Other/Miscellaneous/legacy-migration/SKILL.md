@@ -189,7 +189,7 @@ Cutover checklist:
 - [ ] Final data sync complete and verified
 - [ ] Rollback data snapshot taken
 - [ ] New system health check passed
-- [ ] [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) configured and reviewed
+- [ ] [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) configured and reviewed
 - [ ] On-call team briefed on new system
 - [ ] [Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) accessible to all responders
 - [ ] Stakeholders notified of cutover window

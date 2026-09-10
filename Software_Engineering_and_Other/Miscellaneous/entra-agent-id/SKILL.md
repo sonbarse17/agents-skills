@@ -33,7 +33,7 @@ Create and manage OAuth2-capable identities for AI agents using Microsoft Graph 
 
 ## Before You Start
 
-Search `[microsoft-docs](../../../DevOps_and_Cloud/Cloud_Providers/microsoft-docs/SKILL.md)` MCP for the latest Agent ID documentation:
+Search `[microsoft-docs](../../../cloud/azure/other/microsoft-docs/SKILL.md)` MCP for the latest Agent ID documentation:
 - Query: "Microsoft Entra agent identity setup"
 - Verify: API parameters match current preview behavior
 

@@ -361,7 +361,7 @@ of truth and the live cluster state in sync from the outset.
 - [vault-operations-and-pki-engine-configuration](../[vault-operations-and-pki-engine-configuration](../../DevOps_and_Cloud/Containers_and_Orchestration/[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-operations-and-pki-engine-configuration/SKILL.md)/SKILL.md) —
   operating the [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) cluster (seal/unseal, PKI engine, HA/DR topology)
   that this skill's policy and configuration validation protects.
-- [secrets-management](../../../[devsecops](../devsecops/SKILL.md)/skills/[secrets-management](../../DevOps_and_Cloud/Cloud_Providers/secrets-management/SKILL.md)/SKILL.md) —
+- [secrets-management](../../../[devsecops](../devsecops/SKILL.md)/skills/[secrets-management](../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md) —
   the broader secrets-manager selection and least-privilege rationale
   this skill's [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-specific policy review implements in HCL terms.
 - [security-gate-exception-management](../../../[devsecops](../devsecops/SKILL.md)/skills/[security-gate-exception-management](../../DevOps_and_Cloud/Observability_and_SecOps/security-gate-exception-management/SKILL.md)/SKILL.md) —

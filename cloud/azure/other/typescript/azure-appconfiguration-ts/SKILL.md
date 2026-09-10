@@ -18,7 +18,7 @@ depends_on:
   - typescript
 ---
 
-# Azure App Configuration SDK for [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+# Azure App Configuration SDK for [TypeScript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 
 Centralized configuration management with feature flags and dynamic refresh.
 
@@ -46,7 +46,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 ## Authentication
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { AppConfigurationClient } from "@azure/app-configuration";
 import { DefaultAzureCredential, ManagedIdentityCredential } from "@azure/identity";
 
@@ -71,7 +71,7 @@ const client2 = new AppConfigurationClient(
 
 ### Create/Update Settings
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Add new (fails if exists)
 await client.addConfigurationSetting({
   key: "app:settings:message",
@@ -96,7 +96,7 @@ await client.setConfigurationSetting(existing, { onlyIfUnchanged: true });
 
 ### Read Settings
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Get single setting
 const setting = await client.getConfigurationSetting({
   key: "app:settings:message",
@@ -117,7 +117,7 @@ for await (const setting of settings) {
 
 ### Delete Settings
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 await client.deleteConfigurationSetting({
   key: "app:settings:message",
   label: "production",
@@ -126,7 +126,7 @@ await client.deleteConfigurationSetting({
 
 ### Lock/Unlock (Read-Only)
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Lock
 await client.setReadOnly({ key: "myKey", label: "prod" }, true);
 
@@ -138,7 +138,7 @@ await client.setReadOnly({ key: "myKey", label: "prod" }, false);
 
 ### Load Configuration
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { load } from "@azure/app-configuration-provider";
 import { DefaultAzureCredential } from "@azure/identity";
 
@@ -163,7 +163,7 @@ console.log(config.settings.message);
 
 ### Dynamic Refresh
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const appConfig = await load(endpoint, credential, {
   selectors: [{ keyFilter: "app:*" }],
   refreshOptions: {
@@ -187,9 +187,9 @@ app.use((req, res, next) => {
 });
 ```
 
-### Key [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) References
+### Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) References
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 const appConfig = await load(endpoint, credential, {
   selectors: [{ keyFilter: "app:*" }],
   keyVaultOptions: {
@@ -206,7 +206,7 @@ const dbPassword = appConfig.get("database:password");
 
 ### Create Feature Flag (Low-Level)
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import {
   featureFlagPrefix,
   featureFlagContentType,
@@ -243,7 +243,7 @@ await client.addConfigurationSetting(flag);
 
 ### Load and Evaluate Feature Flags
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import { load } from "@azure/app-configuration-provider";
 import {
   ConfigurationMapFeatureFlagProvider,
@@ -276,7 +276,7 @@ const isEnabledForUser = await featureManager.isEnabled("Beta", {
 
 ## Snapshots
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Create snapshot
 const snapshot = await client.beginCreateSnapshotAndWait({
   name: "release-v1.0",
@@ -305,7 +305,7 @@ const config = await load(endpoint, credential, {
 
 ## Labels
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 // Create settings with labels
 await client.setConfigurationSetting({
   key: "database:host",
@@ -338,7 +338,7 @@ for await (const label of client.listLabels()) {
 
 ## Key Types
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
 import {
   AppConfigurationClient,
   ConfigurationSetting,

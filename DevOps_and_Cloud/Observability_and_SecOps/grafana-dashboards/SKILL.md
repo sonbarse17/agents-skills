@@ -15,19 +15,19 @@ depends_on:
   - monitoring
 ---
 
-# Grafana [Dashboards](../../Cloud_Providers/dashboards/SKILL.md)
+# Grafana [Dashboards](../dashboards/SKILL.md)
 
-Create and manage production-ready Grafana [dashboards](../../Cloud_Providers/dashboards/SKILL.md) for comprehensive system [observability](../observability/SKILL.md).
+Create and manage production-ready Grafana [dashboards](../dashboards/SKILL.md) for comprehensive system [observability](../observability/SKILL.md).
 
 ## Purpose
 
-Design effective Grafana [dashboards](../../Cloud_Providers/dashboards/SKILL.md) for [monitoring](../monitoring/SKILL.md) applications, infrastructure, and business metrics.
+Design effective Grafana [dashboards](../dashboards/SKILL.md) for [monitoring](../monitoring/SKILL.md) applications, infrastructure, and business metrics.
 
 ## When to Use
 
 - Visualize Prometheus metrics
-- Create custom [dashboards](../../Cloud_Providers/dashboards/SKILL.md)
-- Implement SLO [dashboards](../../Cloud_Providers/dashboards/SKILL.md)
+- Create custom [dashboards](../dashboards/SKILL.md)
+- Implement SLO [dashboards](../dashboards/SKILL.md)
 - Monitor infrastructure
 - Track business KPIs
 
@@ -258,7 +258,7 @@ Design effective Grafana [dashboards](../../Cloud_Providers/dashboards/SKILL.md)
 sum(rate(http_requests_total{namespace="$namespace", service=~"$service"}[5m]))
 ```
 
-## Alerts in [Dashboards](../../Cloud_Providers/dashboards/SKILL.md)
+## Alerts in [Dashboards](../dashboards/SKILL.md)
 
 ```json
 {
@@ -290,7 +290,7 @@ sum(rate(http_requests_total{namespace="$namespace", service=~"$service"}[5m]))
 
 ## Dashboard Provisioning
 
-**[dashboards](../../Cloud_Providers/dashboards/SKILL.md).yml:**
+**[dashboards](../dashboards/SKILL.md).yml:**
 
 ```yaml
 apiVersion: 1
@@ -304,7 +304,7 @@ providers:
     updateIntervalSeconds: 10
     allowUiUpdates: true
     options:
-      path: /etc/grafana/[dashboards](../../Cloud_Providers/dashboards/SKILL.md)
+      path: /etc/grafana/[dashboards](../dashboards/SKILL.md)
 ```
 
 ## Common Dashboard Patterns
@@ -349,7 +349,7 @@ providers:
 
 ## Best Practices
 
-1. **Start with templates** (Grafana community [dashboards](../../Cloud_Providers/dashboards/SKILL.md))
+1. **Start with templates** (Grafana community [dashboards](../dashboards/SKILL.md))
 2. **Use consistent naming** for panels and variables
 3. **Group related metrics** in rows
 4. **Set appropriate time ranges** (default: Last 6 hours)
@@ -357,7 +357,7 @@ providers:
 6. **Add panel descriptions** for context
 7. **Configure units** correctly
 8. **Set meaningful thresholds** for colors
-9. **Use consistent colors** across [dashboards](../../Cloud_Providers/dashboards/SKILL.md)
+9. **Use consistent colors** across [dashboards](../dashboards/SKILL.md)
 10. **Test with different time ranges**
 
 ## Dashboard as Code
@@ -366,7 +366,7 @@ providers:
 
 ```hcl
 resource "grafana_dashboard" "api_monitoring" {
-  config_json = file("${path.module}/[dashboards](../../Cloud_Providers/dashboards/SKILL.md)/api-[monitoring](../monitoring/SKILL.md).json")
+  config_json = file("${path.module}/[dashboards](../dashboards/SKILL.md)/api-[monitoring](../monitoring/SKILL.md).json")
   folder      = grafana_folder.[monitoring](../monitoring/SKILL.md).id
 }
 
@@ -378,12 +378,12 @@ resource "grafana_folder" "[monitoring](../monitoring/SKILL.md)" {
 ### [Ansible](../../Infrastructure_as_Code/ansible/SKILL.md) Provisioning
 
 ```yaml
-- name: Deploy Grafana [dashboards](../../Cloud_Providers/dashboards/SKILL.md)
+- name: Deploy Grafana [dashboards](../dashboards/SKILL.md)
   copy:
     src: "{{ item }}"
-    dest: /etc/grafana/[dashboards](../../Cloud_Providers/dashboards/SKILL.md)/
+    dest: /etc/grafana/[dashboards](../dashboards/SKILL.md)/
   with_fileglob:
-    - "[dashboards](../../Cloud_Providers/dashboards/SKILL.md)/*.json"
+    - "[dashboards](../dashboards/SKILL.md)/*.json"
   notify: restart grafana
 ```
 
@@ -391,4 +391,4 @@ resource "grafana_folder" "[monitoring](../monitoring/SKILL.md)" {
 ## Related Skills
 
 - `[prometheus-configuration](../prometheus-configuration/SKILL.md)` - For metric collection
-- `[slo-implementation](../slo-implementation/SKILL.md)` - For SLO [dashboards](../../Cloud_Providers/dashboards/SKILL.md)
+- `[slo-implementation](../slo-implementation/SKILL.md)` - For SLO [dashboards](../dashboards/SKILL.md)

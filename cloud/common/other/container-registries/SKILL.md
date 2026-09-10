@@ -34,39 +34,39 @@ Use this skill when:
 
 ## Prerequisites
 
-- [Docker](../../Containers_and_Orchestration/docker/SKILL.md) or [Podman](../../Containers_and_Orchestration/podman/SKILL.md) installed
+- [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) or [Podman](../../../../DevOps_and_Cloud/Containers_and_Orchestration/podman/SKILL.md) installed
 - Cloud CLI tools (AWS CLI, az, gcloud) for respective registries
 - Appropriate IAM permissions
 
-## [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Hub
+## [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Hub
 
 ### Authentication
 
 ```bash
 # Login
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) login
+[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) login
 
 # Login with token
-echo "$DOCKER_TOKEN" | [docker](../../Containers_and_Orchestration/docker/SKILL.md) login -u username --password-stdin
+echo "$DOCKER_TOKEN" | [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) login -u username --password-stdin
 ```
 
 ### Push/Pull Images
 
 ```bash
 # Tag image
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) tag myapp:latest username/myapp:latest
+[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) tag myapp:latest username/myapp:latest
 
 # Push
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) push username/myapp:latest
+[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) push username/myapp:latest
 
 # Pull
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) pull username/myapp:latest
+[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) pull username/myapp:latest
 ```
 
 ### Automated Builds
 
-Configure in [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Hub UI:
-1. Connect [GitHub](../../CI_CD/github/SKILL.md)/Bitbucket repository
+Configure in [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Hub UI:
+1. Connect [GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/Bitbucket repository
 2. Set build rules (branch → tag mapping)
 3. Configure build context and Dockerfile path
 
@@ -78,7 +78,7 @@ Configure in [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Hub UI
 # Create repository
 aws ecr create-repository \
   --repository-name myapp \
-  --[image-scanning](../../../Security/image-scanning/SKILL.md)-configuration scanOnPush=true \
+  --[image-scanning](../../../../Security/image-scanning/SKILL.md)-configuration scanOnPush=true \
   --encryption-configuration encryptionType=AES256
 
 # Get registry URI
@@ -91,12 +91,12 @@ REGISTRY=$(aws ecr describe-repositories \
 ### Authentication
 
 ```bash
-# Login ([Docker](../../Containers_and_Orchestration/docker/SKILL.md))
+# Login ([Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md))
 aws ecr get-login-password --region us-east-1 | \
-  [docker](../../Containers_and_Orchestration/docker/SKILL.md) login --username AWS --password-stdin $REGISTRY
+  [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) login --username AWS --password-stdin $REGISTRY
 
 # Login with credential helper
-# Add to ~/.[docker](../../Containers_and_Orchestration/docker/SKILL.md)/config.json:
+# Add to ~/.[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)/config.json:
 {
   "credHelpers": {
     "123456789.dkr.ecr.us-east-1.amazonaws.com": "ecr-login"
@@ -108,11 +108,11 @@ aws ecr get-login-password --region us-east-1 | \
 
 ```bash
 # Tag and push
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) tag myapp:latest $REGISTRY/myapp:latest
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) push $REGISTRY/myapp:latest
+[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) tag myapp:latest $REGISTRY/myapp:latest
+[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) push $REGISTRY/myapp:latest
 
 # Pull
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) pull $REGISTRY/myapp:latest
+[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) pull $REGISTRY/myapp:latest
 ```
 
 ### Lifecycle Policy
@@ -186,7 +186,7 @@ az acr show --name myregistry --query loginServer -o tsv
 az acr login --name myregistry
 
 # Login with service principal
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) login myregistry.azurecr.io \
+[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) login myregistry.azurecr.io \
   -u $SP_APP_ID \
   -p $SP_PASSWORD
 
@@ -198,8 +198,8 @@ az acr login --name myregistry --expose-token
 
 ```bash
 # Tag and push
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) tag myapp:latest myregistry.azurecr.io/myapp:latest
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) push myregistry.azurecr.io/myapp:latest
+[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) tag myapp:latest myregistry.azurecr.io/myapp:latest
+[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) push myregistry.azurecr.io/myapp:latest
 
 # ACR Build (build in cloud)
 az acr build \
@@ -238,35 +238,35 @@ az acr replication list --registry myregistry
 ```bash
 # Create repository
 gcloud artifacts repositories create myrepo \
-  --repository-format=[docker](../../Containers_and_Orchestration/docker/SKILL.md) \
+  --repository-format=[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) \
   --location=us-central1 \
-  --description="[Docker](../../Containers_and_Orchestration/docker/SKILL.md) repository"
+  --description="[Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) repository"
 ```
 
 ### Authentication
 
 ```bash
-# Configure [Docker](../../Containers_and_Orchestration/docker/SKILL.md) auth
-gcloud auth configure-[docker](../../Containers_and_Orchestration/docker/SKILL.md) us-central1-[docker](../../Containers_and_Orchestration/docker/SKILL.md).pkg.dev
+# Configure [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) auth
+gcloud auth configure-[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) us-central1-[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).pkg.dev
 
 # Or use credential helper
 gcloud auth print-access-token | \
-  [docker](../../Containers_and_Orchestration/docker/SKILL.md) login -u oauth2accesstoken --password-stdin \
-  https://us-central1-[docker](../../Containers_and_Orchestration/docker/SKILL.md).pkg.dev
+  [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) login -u oauth2accesstoken --password-stdin \
+  https://us-central1-[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).pkg.dev
 ```
 
 ### Push/Pull
 
 ```bash
 # Tag for Artifact Registry
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) tag myapp:latest \
-  us-central1-[docker](../../Containers_and_Orchestration/docker/SKILL.md).pkg.dev/PROJECT_ID/myrepo/myapp:latest
+[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) tag myapp:latest \
+  us-central1-[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).pkg.dev/PROJECT_ID/myrepo/myapp:latest
 
 # Push
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) push us-central1-[docker](../../Containers_and_Orchestration/docker/SKILL.md).pkg.dev/PROJECT_ID/myrepo/myapp:latest
+[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) push us-central1-[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).pkg.dev/PROJECT_ID/myrepo/myapp:latest
 
 # Pull
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) pull us-central1-[docker](../../Containers_and_Orchestration/docker/SKILL.md).pkg.dev/PROJECT_ID/myrepo/myapp:latest
+[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) pull us-central1-[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).pkg.dev/PROJECT_ID/myrepo/myapp:latest
 ```
 
 ### Cleanup Policy
@@ -288,48 +288,48 @@ gcloud artifacts repositories set-cleanup-policies myrepo \
 }
 ```
 
-## [GitHub](../../CI_CD/github/SKILL.md) Container Registry (GHCR)
+## [GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Container Registry (GHCR)
 
 ### Authentication
 
 ```bash
 # Login with PAT
-echo "$GITHUB_TOKEN" | [docker](../../Containers_and_Orchestration/docker/SKILL.md) login ghcr.io -u USERNAME --password-stdin
+echo "$GITHUB_TOKEN" | [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) login ghcr.io -u USERNAME --password-stdin
 ```
 
 ### Push/Pull
 
 ```bash
 # Tag
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) tag myapp:latest ghcr.io/OWNER/myapp:latest
+[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) tag myapp:latest ghcr.io/OWNER/myapp:latest
 
 # Push
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) push ghcr.io/OWNER/myapp:latest
+[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) push ghcr.io/OWNER/myapp:latest
 
 # Pull
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) pull ghcr.io/OWNER/myapp:latest
+[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) pull ghcr.io/OWNER/myapp:latest
 ```
 
 ### Visibility Settings
 
-Configure in [GitHub](../../CI_CD/github/SKILL.md):
+Configure in [GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md):
 1. Go to package settings
 2. Change visibility (public/private)
 3. Manage access for teams/users
 
 ## Self-Hosted Registry
 
-### Deploy with [Docker](../../Containers_and_Orchestration/docker/SKILL.md)
+### Deploy with [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
 
 ```bash
 # Run registry
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) run -d -p 5000:5000 \
+[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) run -d -p 5000:5000 \
   --name registry \
   -v registry-data:/var/lib/registry \
   registry:2
 
 # Configure TLS
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) run -d -p 443:5000 \
+[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) run -d -p 443:5000 \
   --name registry \
   -v /certs:/certs \
   -v registry-data:/var/lib/registry \
@@ -342,7 +342,7 @@ Configure in [GitHub](../../CI_CD/github/SKILL.md):
 
 ```bash
 # Download Harbor
-wget https://[github](../../CI_CD/github/SKILL.md).com/goharbor/harbor/releases/download/v2.9.0/harbor-online-installer-v2.9.0.tgz
+wget https://[github](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/goharbor/harbor/releases/download/v2.9.0/harbor-online-installer-v2.9.0.tgz
 tar xzvf harbor-online-installer-v2.9.0.tgz
 
 # Configure harbor.yml
@@ -358,9 +358,9 @@ tar xzvf harbor-online-installer-v2.9.0.tgz
 
 ```bash
 # ECR - Enable scan on push
-aws ecr put-[image-scanning](../../../Security/image-scanning/SKILL.md)-configuration \
+aws ecr put-[image-scanning](../../../../Security/image-scanning/SKILL.md)-configuration \
   --repository-name myapp \
-  --[image-scanning](../../../Security/image-scanning/SKILL.md)-configuration scanOnPush=true
+  --[image-scanning](../../../../Security/image-scanning/SKILL.md)-configuration scanOnPush=true
 
 # Get scan results
 aws ecr describe-image-scan-findings \
@@ -381,10 +381,10 @@ az acr task create \
 export DOCKER_CONTENT_TRUST=1
 
 # Sign image on push
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) push myregistry/myapp:latest
+[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) push myregistry/myapp:latest
 
 # Verify signature
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) trust inspect myregistry/myapp:latest
+[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) trust inspect myregistry/myapp:latest
 ```
 
 ## Common Issues
@@ -401,7 +401,7 @@ export DOCKER_CONTENT_TRUST=1
 **Problem**: Cannot push to repository
 **Solution**: Check IAM permissions, verify repository exists
 
-### Issue: Rate Limiting ([Docker](../../Containers_and_Orchestration/docker/SKILL.md) Hub)
+### Issue: Rate Limiting ([Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Hub)
 **Problem**: Too many requests error
 **Solution**: Authenticate for higher limits, use pull-through cache
 
@@ -412,7 +412,7 @@ export DOCKER_CONTENT_TRUST=1
 - Use immutable tags for production images
 - Configure cross-region replication for availability
 - Use service accounts/principals for CI/CD authentication
-- Enable [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging for compliance
+- Enable [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging for compliance
 - Implement image signing for supply chain security
 - Use pull-through cache to avoid rate limits
 

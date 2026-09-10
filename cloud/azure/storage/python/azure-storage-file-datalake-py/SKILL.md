@@ -21,7 +21,7 @@ depends_on:
   - audit
 ---
 
-# Azure Data Lake Storage Gen2 SDK for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+# Azure Data Lake Storage Gen2 SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 
 Hierarchical file system for big data analytics workloads.
 
@@ -42,7 +42,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 > **🔑 Two rules apply to every code sample below:**
 >
-> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
+> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
 >    - Local dev: `DefaultAzureCredential` works as-is.
 >    - Production: set `AZURE_TOKEN_CREDENTIALS=prod` (or `AZURE_TOKEN_CREDENTIALS=<specific_credential>`) to constrain the credential chain to production-safe credentials.
 > 2. **Wrap every client in a context manager** so HTTP transports, sockets, and token caches are released deterministically:
@@ -51,14 +51,14 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 >
 > Snippets may abbreviate this setup, but production code should always follow both rules.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 from azure.storage.filedatalake import DataLakeServiceClient
 
 # Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 credential = DefaultAzureCredential(require_envvar=True)
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
+# See https://learn.microsoft.com/[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 account_url = "https://<account>.dfs.core.windows.net"
 
@@ -78,7 +78,7 @@ with DataLakeServiceClient(account_url=account_url, credential=credential) as se
 
 ## File System Operations
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Create file system (container)
 file_system_client = service_client.create_file_system("myfilesystem")
 
@@ -95,7 +95,7 @@ for fs in service_client.list_file_systems():
 
 ## Directory Operations
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 file_system_client = service_client.get_file_system_client("myfilesystem")
 
 # Create directory
@@ -118,7 +118,7 @@ directory_client.rename_directory(new_name="myfilesystem/newname")
 
 ### Upload File
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Get file client
 file_client = file_system_client.get_file_client("path/to/file.txt")
 
@@ -132,12 +132,12 @@ file_client.upload_data(b"Hello, Data Lake!", overwrite=True)
 # Append data (for large files)
 file_client.append_data(data=b"chunk1", offset=0, length=6)
 file_client.append_data(data=b"chunk2", offset=6, length=6)
-file_client.flush_data(12)  # [Commit](../../CI_CD/commit/SKILL.md) the data
+file_client.flush_data(12)  # [Commit](../../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) the data
 ```
 
 ### Download File
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 file_client = file_system_client.get_file_client("path/to/file.txt")
 
 # Download all content
@@ -155,13 +155,13 @@ download = file_client.download_file(offset=0, length=100)
 
 ### Delete File
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 file_client.delete_file()
 ```
 
 ## List Contents
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # List paths (files and directories)
 for path in file_system_client.get_paths():
     print(f"{'DIR' if path.is_directory else 'FILE'}: {path.name}")
@@ -177,7 +177,7 @@ for path in file_system_client.get_paths(path="mydir", recursive=True):
 
 ## File/Directory Properties
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Get properties
 properties = file_client.get_file_properties()
 print(f"Size: {properties.size}")
@@ -189,7 +189,7 @@ file_client.set_metadata(metadata={"processed": "true"})
 
 ## Access Control (ACL)
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Get ACL
 acl = directory_client.get_access_control()
 print(f"Owner: {acl['owner']}")
@@ -210,7 +210,7 @@ directory_client.update_access_control_recursive(
 
 ## Async Client
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.storage.filedatalake.aio import DataLakeServiceClient
 from azure.identity.aio import DefaultAzureCredential
 

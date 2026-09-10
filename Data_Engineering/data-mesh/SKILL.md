@@ -327,7 +327,7 @@ Each state transition requires governance approval. DRAFT to PUBLISHED requires 
 7. **Ignoring existing data contracts**: domain data products may duplicate existing centrally-managed datasets. Fix: inventory existing data assets before domain decomposition.
 8. **No consumer feedback loop**: data product owners don't know if consumers are satisfied. Fix: quarterly consumer satisfaction survey, data product usage analytics.
 9. **Centralized data team resisting decomposition**: existing data team loses control. Fix: retrain central team as platform team, emphasize career growth in platform engineering.
-10. **No cost transparency**: domains can't see their platform costs. Fix: implement chargeback/showback with per-domain cost [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md).
+10. **No cost transparency**: domains can't see their platform costs. Fix: implement chargeback/showback with per-domain cost [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md).
 11. **Data product SLA not monitored**: SLA exists in contract but no [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md). Fix: automate SLA [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) with [alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) on breach.
 12. **Platform not truly self-serve**: domain teams still need tickets to provision infrastructure. Fix: every platform capability must have a self-serve API.
 

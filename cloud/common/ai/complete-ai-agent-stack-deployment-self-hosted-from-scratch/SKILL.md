@@ -72,7 +72,7 @@ throughout about where the self-hosted burden actually lands.
 ## Prerequisites & environment
 
 - GPU infrastructure already provisioned or provisionable — on
-  [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md), this means the NVIDIA GPU Operator and dedicated
+  [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md), this means the NVIDIA GPU Operator and dedicated
   serving-shaped GPU node pools per
   [gpu-accelerator-infrastructure-for-ml-training](../../../mlops/skills/[gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md)/SKILL.md)
   (that skill's title says "for ML training" but its GPU Operator/MIG/
@@ -86,10 +86,10 @@ throughout about where the self-hosted burden actually lands.
   where model weights are versioned and stored (not just "a directory on
   the serving node").
 - A self-hosted vector database deployment target (Weaviate or Milvus,
-  self-managed on [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)) and its own dedicated compute/storage —
+  self-managed on [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)) and its own dedicated compute/storage —
   distinct from the GPU serving nodes, since vector search is typically
   CPU/memory-bound, not GPU-bound.
-- `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md)`/`helm` if deploying on [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md), and a realistic estimate of
+- `[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)`/`helm` if deploying on [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md), and a realistic estimate of
   expected concurrent request volume and sequence length before sizing
   either the GPU serving fleet or the vector database cluster — sizing
   either without real numbers produces guesses that fail under real load.
@@ -115,7 +115,7 @@ and the operational burden each phase adds versus a managed alternative.
    ```bash
    helm install gpu-operator nvidia/gpu-operator \
      --namespace gpu-operator --create-namespace --set mig.strategy=mixed
-   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) taint nodes -l gpu-pool=agent-serving workload=serving:NoSchedule
+   [kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) taint nodes -l gpu-pool=agent-serving workload=serving:NoSchedule
    ```
    This has no equivalent phase at all on the cloud-managed path — a
    managed LLM API absorbs this entirely. Treat GPU procurement lead time
@@ -162,10 +162,10 @@ and the operational burden each phase adds versus a managed alternative.
    the chunking/embedding/retrieval pattern per
    [rag-pipeline-design](../[rag-pipeline-design](../../../AI_and_Agents/Models_and_FineTuning/rag-pipeline-design/SKILL.md)/SKILL.md), then deploy a
    self-hosted Weaviate or Milvus cluster per
-   [vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../../../AI_and_Agents/Infrastructure/vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md)'s
+   [vector-[database-operations](../../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../../../AI_and_Agents/Infrastructure/vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md)'s
    self-hosted guidance — sized, sharded, and **replicated** from the
    start:
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+   ```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
    # Milvus collection replication (self-hosted — no managed-service
    # durability behind this unless explicitly configured)
    collection: agent_knowledge_base
@@ -194,13 +194,13 @@ and the operational burden each phase adds versus a managed alternative.
    output injection (Phase 5), exactly as on the cloud-managed path — the
    injection risk itself doesn't change because the model is self-hosted.
 
-7. **Phase 7 — cost and utilization [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md).** Unlike the cloud-
+7. **Phase 7 — cost and utilization [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).** Unlike the cloud-
    managed path's per-token provider billing, self-hosted cost is
    dominated by GPU capital/amortized cost and utilization, not per-call
    spend — apply the structural levers from
    [llm-cost-and-latency-optimization](../../../ai-agent/skills/[llm-cost-and-latency-optimization](../../../AI_and_Agents/Models_and_FineTuning/llm-cost-and-latency-optimization/SKILL.md)/SKILL.md)
    (context trimming, batching, right-sized models per step) alongside
-   GPU utilization [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) (`DCGM_FI_DEV_GPU_UTIL`) from the Phase 1
+   GPU utilization [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) (`DCGM_FI_DEV_GPU_UTIL`) from the Phase 1
    GPU infrastructure layer. A self-hosted GPU fleet sitting at 15%
    utilization between bursty agent traffic can easily cost more in
    amortized terms than the managed-API alternative would have — this
@@ -295,10 +295,10 @@ cluster.
 # Phase 1 — GPU procurement: 4x A100-80GB nodes provisioned on-prem,
 # GPU Operator installed, dedicated agent-serving node pool tainted
 helm install gpu-operator nvidia/gpu-operator --namespace gpu-operator --create-namespace
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) taint nodes gpu-node-01 gpu-node-02 workload=serving:NoSchedule
+[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) taint nodes gpu-node-01 gpu-node-02 workload=serving:NoSchedule
 
 # Phase 2 — vLLM serving the chosen open-weight model on the serving pool
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply -f agent-llm-vllm-deployment.yaml
+[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f agent-llm-vllm-deployment.yaml
 # real p95 measured under expected concurrency: 2.8s per generation step
 
 # Phase 3 — ReAct-style agent loop, iteration cap and per-call timeout
@@ -334,8 +334,8 @@ flags as catastrophic on a single-replica self-hosted deployment.
 - [model-serving-and-scaling](../../../mlops/skills/[model-serving-and-scaling](../../../AI_and_Agents/Models_and_FineTuning/model-serving-and-scaling/SKILL.md)/SKILL.md) — Phase 2's vLLM/TGI batching-aware LLM serving mechanics.
 - [agent-architecture-design](../[agent-architecture-design](../../../AI_and_Agents/Architecture/agent-architecture-design/SKILL.md)/SKILL.md) — Phase 3's control-loop, termination, and tool-boundary design.
 - [rag-pipeline-design](../[rag-pipeline-design](../../../AI_and_Agents/Models_and_FineTuning/rag-pipeline-design/SKILL.md)/SKILL.md) — Phase 4's chunking/embedding/retrieval design.
-- [vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../../../AI_and_Agents/Infrastructure/vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md) — Phase 4's self-hosted Weaviate/Milvus sizing, sharding, and replication.
+- [vector-[database-operations](../../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../../../AI_and_Agents/Infrastructure/vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md) — Phase 4's self-hosted Weaviate/Milvus sizing, sharding, and replication.
 - [mcp-server-development](../[mcp-server-development](../../../AI_and_Agents/Infrastructure/mcp-server-development/SKILL.md)/SKILL.md) — Phase 5's tool-server build, network segmentation, and credential scoping.
 - [agent-evaluation-and-guardrails](../[agent-evaluation-and-guardrails](../../../AI_and_Agents/Models_and_FineTuning/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md) — Phase 6's offline eval harness and runtime guardrails.
-- [llm-cost-and-latency-optimization](../[llm-cost-and-latency-optimization](../../../AI_and_Agents/Models_and_FineTuning/llm-cost-and-latency-optimization/SKILL.md)/SKILL.md) — Phase 7's structural cost/latency levers, applied alongside GPU utilization [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md).
+- [llm-cost-and-latency-optimization](../[llm-cost-and-latency-optimization](../../../AI_and_Agents/Models_and_FineTuning/llm-cost-and-latency-optimization/SKILL.md)/SKILL.md) — Phase 7's structural cost/latency levers, applied alongside GPU utilization [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
 - [complete-ai-agent-stack-deployment-cloud-managed-from-scratch](../[complete-ai-agent-stack-deployment-cloud-managed-from-scratch](../complete-ai-agent-stack-deployment-cloud-managed-from-scratch/SKILL.md)/SKILL.md) — the managed-service alternative to this entire path, for comparing total cost and operational burden before choosing between them.

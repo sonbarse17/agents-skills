@@ -283,5 +283,5 @@ if (serverEvent is SessionUpdateError error)
 |----------|-----|
 | NuGet Package | https://www.nuget.org/packages/Azure.AI.VoiceLive |
 | API Reference | https://learn.microsoft.com/dotnet/api/azure.ai.voicelive |
-| [GitHub](../../CI_CD/github/SKILL.md) Source | https://[github](../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/ai/Azure.AI.VoiceLive |
+| [GitHub](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Source | https://[github](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/ai/Azure.AI.VoiceLive |
 | Quickstart | https://learn.microsoft.com/azure/ai-services/speech-service/voice-live-quickstart |

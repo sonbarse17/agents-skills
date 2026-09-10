@@ -60,7 +60,7 @@ Infrastructure architecture specification including: deployment topology, provis
 2. **Provisioning**: [Ansible](../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md)/Terraform/K8s configuration, secrets management, upgrade strategy
 3. **CI/CD pipeline**: test → build → verify → deploy → monitor flow with security gates
 4. **Configuration**: environment-specific parameters, chain settings, multi-env strategy
-5. **[Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) & [alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)**: metrics, [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), SLOs, [runbooks](../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md), escalation
+5. **[Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) & [alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)**: metrics, [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), SLOs, [runbooks](../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md), escalation
 
 ### Completion Criteria
 - Node deployment topology includes: sizing, network, storage, and HA strategy
@@ -155,7 +155,7 @@ Role in MEV supply chain:
 └── Dedicated blockchain infra providers
     ├── Alchemy: Managed RPC, node services
     ├── QuickNode: 16+ chains, custom plans
-    └── Chainstack: [Multi-cloud](../../DevOps_and_Cloud/Cloud_Providers/multi-cloud/SKILL.md), enterprise
+    └── Chainstack: [Multi-cloud](../../cloud/common/other/multi-cloud/SKILL.md), enterprise
 ```
 
 ## CI/CD for Smart Contracts
@@ -262,9 +262,9 @@ scrape_configs:
       - targets: ['localhost:9100']  # System metrics
 ```
 
-### Grafana [Dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)
+### Grafana [Dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md)
 ```
-Recommended [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md):
+Recommended [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md):
 ├── Ethereum Client: eth-client-dashboard (9965), syncing, peers
 ├── Lighthouse: Lighthouse Dashboard (16549), validator performance
 ├── MEV-Boost: mev-boost dashboard (custom), relay performance

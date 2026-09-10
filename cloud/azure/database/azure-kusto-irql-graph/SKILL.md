@@ -81,7 +81,7 @@ Do not activate this skill solely for `graph-match`, graph paths/components, per
 - `Lift_To_Graph` and `Graph_Render_View` are required.
 - `Graph_Fold_By_Property` is required only when folding is requested.
 - Check any `Extract_Node_*`, `Enrich_Node_*`, or `Enrich_Graph_*` function before using it; omit optional enrichment when unavailable unless the user wants it deployed.
-- If a required function is missing and you have permission to alter the database, **ask the user for confirmation before deploying**. Then use the `.create-or-alter function` definitions in [../../../Global_References/DEPLOY_IRQL_FUNCTIONS.md](../../../Global_References/DEPLOY_IRQL_FUNCTIONS.md). Run the relevant `.create-or-alter` block, then rerun the preflight check to confirm.
+- If a required function is missing and you have permission to alter the database, **ask the user for confirmation before deploying**. Then use the `.create-or-alter function` definitions in [../../../Global_References/DEPLOY_IRQL_FUNCTIONS.md](../../../../Global_References/DEPLOY_IRQL_FUNCTIONS.md). Run the relevant `.create-or-alter` block, then rerun the preflight check to confirm.
 - If you do not have alter permissions, tell the user which functions are missing and point them to `../../../Global_References/DEPLOY_IRQL_FUNCTIONS.md` for manual deployment.
 
 ## IRQL Graph Function Family
@@ -308,7 +308,7 @@ Always output the complete KQL query in the chat response with Step 1 (connect) 
 <KQL_QUERY>
 ```
 
-If the user asks to save or open in Kusto Explorer, follow the procedure in [../../../Global_References/KUSTO_EXPLORER_LAUNCH.md](../../../Global_References/KUSTO_EXPLORER_LAUNCH.md). Key rules:
+If the user asks to save or open in Kusto Explorer, follow the procedure in [../../../Global_References/KUSTO_EXPLORER_LAUNCH.md](../../../../Global_References/KUSTO_EXPLORER_LAUNCH.md). Key rules:
 
 - Use `ask_user` to confirm before writing files or launching executables
 - Display file contents in chat so the user can review before opening

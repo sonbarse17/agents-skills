@@ -119,7 +119,7 @@ boundary for who can change what, where.
        }
    ```
    The `${SPOKE_CLUSTER_TOKEN}`/`${SPOKE_CA_DATA_BASE64}` placeholders
-   must be filled from a [secrets-management](../../Cloud_Providers/secrets-management/SKILL.md) pipeline (Sealed Secrets,
+   must be filled from a [secrets-management](../../../cloud/common/security/secrets-management/SKILL.md) pipeline (Sealed Secrets,
    External Secrets Operator) before this is committed — never [commit](../../CI_CD/commit/SKILL.md) the
    literal bearer token in plaintext, per
    [gitops-workflow](../../../devops/skills/[gitops-workflow](../[gitops](../gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md)'s

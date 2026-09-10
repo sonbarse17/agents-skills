@@ -587,5 +587,5 @@ type Order @key(fields: "id") {
 - **Secrets management**: Store API keys and DB credentials in [vault](../../Miscellaneous/vault/SKILL.md) (HashiCorp [Vault](../../Miscellaneous/vault/SKILL.md), AWS Secrets Manager).
 
 ## Handoff
-`[data-data-platform](../../../Data_Engineering/data-platform/SKILL.md)` for deployment infrastructure. `[data-data-catalog](../../../Data_Engineering/data-catalog/SKILL.md)` for API endpoint documentation. `[data-data-observability](../../../Data_Engineering/data-[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)` for API [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md). `[data-data-contracts](../../../Data_Engineering/data-contracts/SKILL.md)` for API schema contracts.
+`[data-data-platform](../../../Data_Engineering/data-platform/SKILL.md)` for deployment infrastructure. `[data-data-catalog](../../../Data_Engineering/data-catalog/SKILL.md)` for API endpoint documentation. `[data-data-observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)` for API [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md). `[data-data-contracts](../../../Data_Engineering/data-contracts/SKILL.md)` for API schema contracts.
 

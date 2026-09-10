@@ -358,8 +358,8 @@ watch cat /proc/mdstat
 
 ## Related Skills
 
-- `[linux-administration](../../../Software_Engineering_and_Other/Miscellaneous/linux-administration/SKILL.md)` -- Disk and filesystem basics
-- `[performance-tuning](../../../Software_Engineering_and_Other/Frontend/performance-tuning/SKILL.md)` -- I/O scheduler and benchmarking with fio
+- `[linux-administration](../../../../Software_Engineering_and_Other/Miscellaneous/linux-administration/SKILL.md)` -- Disk and filesystem basics
+- `[performance-tuning](../../../../Software_Engineering_and_Other/Frontend/performance-tuning/SKILL.md)` -- I/O scheduler and benchmarking with fio
 - `[nfs-storage](../nfs-storage/SKILL.md)` -- Network filesystems built on top of block storage
-- `[backup-recovery](../backup-recovery/SKILL.md)` -- Snapshot-based and file-level backup strategies
+- `[backup-recovery](../../migration/backup-recovery/SKILL.md)` -- Snapshot-based and file-level backup strategies
 - `[object-storage](../object-storage/SKILL.md)` -- Alternative storage model for unstructured data

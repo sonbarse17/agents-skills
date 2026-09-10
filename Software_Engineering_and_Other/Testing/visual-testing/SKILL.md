@@ -259,7 +259,7 @@ When UI changes are intentionally made, developers must update baselines via the
 | Run on PR only | Running visual tests on every push wastes CI budget | Run on `pull_request` event, not `push` |
 | Cache dependencies | Speeds up CI visual test runs | Cache node_modules, Playwright browsers, Storybook build output |
 | Preview deployments | Visual tests against live preview environments for accuracy | Deploy preview on Vercel/Netlify, run visual tests against preview URL |
-| Review diffs in context | Cloud [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) with side-by-side view reduce decision time | Use Percy/Chromatic UI review workflows, not raw diff images |
+| Review diffs in context | Cloud [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) with side-by-side view reduce decision time | Use Percy/Chromatic UI review workflows, not raw diff images |
 
 ## Compared With
 

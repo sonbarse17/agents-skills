@@ -30,7 +30,7 @@ Build enterprise agents for Microsoft 365, Teams, and Copilot Studio using the M
 
 ## Before implementation
 
-- Use the [microsoft-docs](../../../DevOps_and_Cloud/Cloud_Providers/microsoft-docs/SKILL.md) MCP to verify the latest APIs for AddAgent, AgentApplication, and authentication options.
+- Use the [microsoft-docs](../../../cloud/azure/other/microsoft-docs/SKILL.md) MCP to verify the latest APIs for AddAgent, AgentApplication, and authentication options.
 - Confirm package versions in NuGet for the Microsoft.Agents.\* packages you plan to use.
 
 ## Installation

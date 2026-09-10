@@ -286,7 +286,7 @@ groups:
         labels:
           severity: info
         annotations:
-          summary: "GPU underutilized on {{ $labels.node }} - consider [rightsizing](../../Cloud_Providers/rightsizing/SKILL.md)"
+          summary: "GPU underutilized on {{ $labels.node }} - consider [rightsizing](../../../cloud/common/cost/rightsizing/SKILL.md)"
 
       - alert: GPUDriverMismatch
         expr: count(count by (driver_version)(DCGM_FI_DRIVER_VERSION)) > 1

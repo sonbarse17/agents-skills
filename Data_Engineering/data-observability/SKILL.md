@@ -72,7 +72,7 @@ Data [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observabili
 ## Workflow
 
 ### Step 1: Dataset Inventory
-Catalog all datasets by criticality and ownership. Tier 1: executive [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), financial reports, customer-facing data, regulatory data. Tier 2: operational reports, team-level analytics, internal tools. Tier 3: experimental, exploratory, ad-hoc queries.
+Catalog all datasets by criticality and ownership. Tier 1: executive [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), financial reports, customer-facing data, regulatory data. Tier 2: operational reports, team-level analytics, internal tools. Tier 3: experimental, exploratory, ad-hoc queries.
 
 #### Inventory Schema
 For each dataset: name, owner, tier, source system, freshness SLA, location (table/view/API), upstream dependencies, downstream consumers, expected row count range, quality rules.
@@ -453,7 +453,7 @@ Team size and expertise?
 ```yaml
 # Cost of NOT having [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
 cost_of_no_observability:
-  - "Bad data reaching [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) → wrong business decisions"
+  - "Bad data reaching [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) → wrong business decisions"
   - "Engineers manually checking data freshness"
   - "Delayed [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) detection → hours of bad data served"
   - "No root cause analysis → repeated incidents"

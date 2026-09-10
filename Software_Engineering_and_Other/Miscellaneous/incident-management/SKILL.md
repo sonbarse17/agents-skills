@@ -342,7 +342,7 @@ on_call_schedule:
 [Key takeaways that should be shared broadly]
 
 ## Appendix
-- [Link to [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) during incident]
+- [Link to [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) during incident]
 - [Link to relevant log queries]
 - [Link to war room channel archive]
 ```

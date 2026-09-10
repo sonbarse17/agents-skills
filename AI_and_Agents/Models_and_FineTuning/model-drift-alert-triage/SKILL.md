@@ -167,7 +167,7 @@ lecture on drift statistics.
   false positives (seasonal features, known noisy segments) get their
   thresholds tuned instead of re-triaged from scratch every time.
 - Prefer independently re-deriving a suspicious metric over trusting a
-  single dashboard number — [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) can have their own bugs.
+  single dashboard number — [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) can have their own bugs.
 - Segment the triage by slice (region, device, customer tier) whenever the
   aggregate signal is ambiguous; drift often hides in or is diluted by a
   subpopulation.

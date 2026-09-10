@@ -77,7 +77,7 @@ back, or (worse) reports healthy while serving errors.
   replicas cannot be represented exactly).
 - For **automated analysis**: a metrics backend reachable from the
   cluster (Prometheus is the most common `AnalysisTemplate` provider) with
-  the queries/[dashboards](../../Cloud_Providers/dashboards/SKILL.md) for the service's key signals already defined —
+  the queries/[dashboards](../../Observability_and_SecOps/dashboards/SKILL.md) for the service's key signals already defined —
   this skill assumes those metrics already exist, not that you build
   [observability](../../Observability_and_SecOps/observability/SKILL.md) from scratch (see
   [prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack](../../../[observability](../../Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack](../prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)

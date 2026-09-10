@@ -19,14 +19,14 @@ depends_on:
   - alerting-oncall
 ---
 
-# SRE [Dashboards](../../Cloud_Providers/dashboards/SKILL.md)
+# SRE [Dashboards](../dashboards/SKILL.md)
 
-Build [dashboards](../../Cloud_Providers/dashboards/SKILL.md) that help teams detect, triage, and prevent reliability incidents.
+Build [dashboards](../dashboards/SKILL.md) that help teams detect, triage, and prevent reliability incidents.
 
 ## When to Use This Skill
 
 Use this skill when:
-- Defining service-level [dashboards](../../Cloud_Providers/dashboards/SKILL.md) for production systems
+- Defining service-level [dashboards](../dashboards/SKILL.md) for production systems
 - Tracking SLO health and error-budget burn
 - Creating [incident](../incident/SKILL.md) command-center views
 - Standardizing dashboard patterns across teams
@@ -39,7 +39,7 @@ Use this skill when:
 
 ## Dashboard Architecture
 
-Structure [dashboards](../../Cloud_Providers/dashboards/SKILL.md) in layers:
+Structure [dashboards](../dashboards/SKILL.md) in layers:
 
 1. **Executive Reliability View**: SLO attainment, [incident](../incident/SKILL.md) counts, MTTR trends.
 2. **Service Health View**: RED/USE metrics, dependency health, release markers.
@@ -116,11 +116,11 @@ histogram_quantile(0.95,
 - Confirm scrape/ingest latency is within expected range
 - Check metric rename regressions after instrumentation updates
 
-### High cardinality slows [dashboards](../../Cloud_Providers/dashboards/SKILL.md)
+### High cardinality slows [dashboards](../dashboards/SKILL.md)
 
 - Aggregate by stable dimensions (`service`, `route_group`) instead of raw IDs
 - Use recording rules for expensive percentile and ratio queries
-- Split deep-dive [dashboards](../../Cloud_Providers/dashboards/SKILL.md) from NOC summary [dashboards](../../Cloud_Providers/dashboards/SKILL.md)
+- Split deep-dive [dashboards](../dashboards/SKILL.md) from NOC summary [dashboards](../dashboards/SKILL.md)
 
 ## Related Skills
 

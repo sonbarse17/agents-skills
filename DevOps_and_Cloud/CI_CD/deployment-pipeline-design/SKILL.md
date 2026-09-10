@@ -116,5 +116,5 @@ For platform-specific pipeline configurations, multi-region promotion workflows,
 
 - `[github-actions-templates](../[github-actions](../[github](../github/SKILL.md)-actions/SKILL.md)-templates/SKILL.md)` - For [GitHub](../github/SKILL.md) Actions implementation patterns and reusable workflows
 - `[gitlab-ci-patterns](../[gitlab-ci](../gitlab-ci/SKILL.md)-patterns/SKILL.md)` - For GitLab CI/CD pipeline implementation
-- `[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md)` - For secrets handling in CI/CD pipelines
+- `[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)` - For secrets handling in CI/CD pipelines
 

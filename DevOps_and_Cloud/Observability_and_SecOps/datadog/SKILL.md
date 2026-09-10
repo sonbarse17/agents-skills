@@ -28,7 +28,7 @@ Monitor infrastructure and applications with Datadog's unified [observability](.
 Use this skill when:
 - Implementing enterprise-grade [monitoring](../monitoring/SKILL.md)
 - Setting up APM and distributed tracing
-- Creating unified [dashboards](../../Cloud_Providers/dashboards/SKILL.md) for infrastructure and apps
+- Creating unified [dashboards](../dashboards/SKILL.md) for infrastructure and apps
 - Configuring intelligent [alerting](../alerting/SKILL.md)
 - [Monitoring](../monitoring/SKILL.md) cloud infrastructure (AWS, Azure, GCP)
 
@@ -369,7 +369,7 @@ with ApiClient(configuration) as api_client:
     api.submit_metrics(body=payload)
 ```
 
-## [Dashboards](../../Cloud_Providers/dashboards/SKILL.md)
+## [Dashboards](../dashboards/SKILL.md)
 
 ### Dashboard JSON
 
@@ -463,7 +463,7 @@ with ApiClient(configuration) as api_client:
 - Implement proper tag naming conventions
 - Use unified service tagging (service, env, version)
 - Set up service-level monitors
-- Create [dashboards](../../Cloud_Providers/dashboards/SKILL.md) per service
+- Create [dashboards](../dashboards/SKILL.md) per service
 - Implement log correlation with traces
 - Use distributions for latency metrics
 - Configure proper alert escalation

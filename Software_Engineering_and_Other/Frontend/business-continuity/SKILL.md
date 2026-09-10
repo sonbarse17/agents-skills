@@ -128,7 +128,7 @@ bia_template:
         description: "Failure causes significant degradation but not complete loss"
         examples:
           - Customer support systems
-          - Reporting and [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)
+          - Reporting and [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md)
           - Email and notifications
           - Billing and invoicing
 

@@ -293,7 +293,7 @@ Running UAT as a single event at the end of the sprint instead of continuous val
 | 2: Defined | Basic UAT with scripts | Manual UAT sessions, Gherkin scenarios for critical paths, spreadsheet tracking |
 | 3: Managed | Automated acceptance tests | pytest-bdd/SpecFlow/Cucumber, CI-gated acceptance, traceability matrix |
 | 4: Measured | Continuous acceptance validation | Automated acceptance in CI/CD pipeline, metric-driven sign-off, acceptance coverage > 80% |
-| 5: Optimized | Shift-left acceptance | Acceptance criteria as executable specifications, BDD-driven development, real-time stakeholder [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) |
+| 5: Optimized | Shift-left acceptance | Acceptance criteria as executable specifications, BDD-driven development, real-time stakeholder [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) |
 
 ## Performance Considerations
 

@@ -56,10 +56,10 @@ function nobody scoped down after the initial "just get it working" deploy.
 
 ## Prerequisites & environment
 
-- AWS CLI v2 or an IaC tool (SAM, CDK, Terraform, [CloudFormation](../../Infrastructure_as_Code/cloudformation/SKILL.md)) with
+- AWS CLI v2 or an IaC tool (SAM, CDK, Terraform, [CloudFormation](../../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md)) with
   permissions to create/update Lambda functions, IAM roles, and (for
   container images) push to Amazon ECR.
-- For container image packaging: [Docker](../../Containers_and_Orchestration/docker/SKILL.md) (or another OCI-compatible
+- For container image packaging: [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) (or another OCI-compatible
   builder) and an ECR repository the build can push to.
 - Know your runtime's supported version at deploy time — AWS deprecates
   Lambda runtimes on a schedule (e.g. `python3.9`, `nodejs16.x` reach
@@ -81,18 +81,18 @@ function nobody scoped down after the initial "just get it working" deploy.
    binaries compiled for the target architecture) or want to reuse an
    existing container build/scan pipeline:
    ```dockerfile
-   FROM public.ecr.aws/lambda/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md):3.12
+   FROM public.ecr.aws/lambda/[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md):3.12
    COPY requirements.txt ${LAMBDA_TASK_ROOT}
    RUN pip install -r requirements.txt -t ${LAMBDA_TASK_ROOT}
    COPY app.py ${LAMBDA_TASK_ROOT}
    CMD ["app.handler"]
    ```
    ```bash
-   [docker](../../Containers_and_Orchestration/docker/SKILL.md) build -t my-fn:latest .
+   [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) build -t my-fn:latest .
    aws ecr get-login-password --region <REGION> \
-     | [docker](../../Containers_and_Orchestration/docker/SKILL.md) login --username AWS --password-stdin <AWS_ACCOUNT_ID>.dkr.ecr.<REGION>.amazonaws.com
-   [docker](../../Containers_and_Orchestration/docker/SKILL.md) tag my-fn:latest <AWS_ACCOUNT_ID>.dkr.ecr.<REGION>.amazonaws.com/my-fn:latest
-   [docker](../../Containers_and_Orchestration/docker/SKILL.md) push <AWS_ACCOUNT_ID>.dkr.ecr.<REGION>.amazonaws.com/my-fn:latest
+     | [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) login --username AWS --password-stdin <AWS_ACCOUNT_ID>.dkr.ecr.<REGION>.amazonaws.com
+   [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) tag my-fn:latest <AWS_ACCOUNT_ID>.dkr.ecr.<REGION>.amazonaws.com/my-fn:latest
+   [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) push <AWS_ACCOUNT_ID>.dkr.ecr.<REGION>.amazonaws.com/my-fn:latest
    ```
 
 2. **Create the function with an explicit, least-privilege execution
@@ -189,7 +189,7 @@ function nobody scoped down after the initial "just get it working" deploy.
 - Give each function (or tightly related group) its own execution role
   scoped to the specific resource ARNs it touches — a shared "does
   everything" role defeats least privilege and makes blast radius
-  analysis impossible after an [incident](../../Observability_and_SecOps/incident/SKILL.md).
+  analysis impossible after an [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
 - Version functions and use aliases (`prod`, `staging`) as the stable
   target for Provisioned Concurrency and downstream integrations, rather
   than pointing everything at the mutable `$LATEST`.
@@ -239,12 +239,12 @@ function nobody scoped down after the initial "just get it working" deploy.
 
 ## Worked example
 
-**Scenario:** An image-processing function ([Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md), Pillow, with native
+**Scenario:** An image-processing function ([Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md), Pillow, with native
 image-codec bindings) needs to resize uploaded images from S3 and write
 results to DynamoDB, with low p99 latency for a user-facing upload flow.
 
 Packaging: native Pillow dependencies make a container image the better
-fit, built `FROM public.ecr.aws/lambda/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md):3.12`, pushed to ECR as
+fit, built `FROM public.ecr.aws/lambda/[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md):3.12`, pushed to ECR as
 shown in step 1.
 
 Configuration:

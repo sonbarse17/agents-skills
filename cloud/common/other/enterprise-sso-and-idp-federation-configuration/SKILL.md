@@ -34,7 +34,7 @@ depends_on:
 
 Enterprise single sign-on lets a workforce authenticate once against a
 central identity provider (IdP) and reach every downstream application
-(a SaaS tool, an internal admin console, a [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) dashboard) without
+(a SaaS tool, an internal admin console, a [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) dashboard) without
 a separate password for each — but that convenience only holds up if the
 federation trust between IdP and service provider (SP) is configured
 correctly. A SAML assertion with the wrong `NameID` format, an OIDC
@@ -232,7 +232,7 @@ via SSO, not machine-to-machine or cloud-resource authorization.
    Confirm the IdP is configured to push a **deactivation** (`active:
    false` via `PATCH`) on termination, not just creation on hire — SCIM
    deprovisioning is the half of the integration most often left
-   untested until an offboarding [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) finds a terminated employee still
+   untested until an offboarding [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) finds a terminated employee still
    able to log in.
 
 7. **Federate a second IdP without disrupting the first**, scoping each
@@ -285,7 +285,7 @@ via SSO, not machine-to-machine or cloud-resource authorization.
   account is a standing access-control gap that often goes unnoticed
   for months.
 - Track IdP and SP signing-certificate expiry dates as monitored,
-  [alerting](../../Observability_and_SecOps/alerting/SKILL.md) events well ahead of expiry, and support certificate rollover
+  [alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) events well ahead of expiry, and support certificate rollover
   (both old and new trusted simultaneously) rather than a hard cutover.
 - Route a second/acquired-company IdP through explicit, tested routing
   rules (domain- or tenant-based) rather than an ambiguous trust that
@@ -310,7 +310,7 @@ via SSO, not machine-to-machine or cloud-resource authorization.
   set to `admin` (or the group filter/regex is too permissive and
   unintentionally matches an unrelated group name). Set the default
   role to the least-privileged option and tighten the group-matching
-  filter, then [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) any other user currently authenticated under the
+  filter, then [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) any other user currently authenticated under the
   same broad default.
 
 - **Symptom:** An employee is terminated and removed from the IdP
@@ -400,7 +400,7 @@ existing users.
 - [vault-operations-and-pki-engine-configuration](../[vault-operations-and-pki-engine-configuration](../../Containers_and_Orchestration/[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-operations-and-pki-engine-configuration/SKILL.md)/SKILL.md) —
   a comparable trust-chain/certificate-rotation discipline, applied to
   internal PKI rather than IdP federation certificates.
-- [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../secrets-management/SKILL.md)/SKILL.md) —
+- [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../security/secrets-management/SKILL.md)/SKILL.md) —
   where OIDC client secrets and SCIM bearer tokens should actually live
   (a secrets manager, not hardcoded application config).
 - [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)/SKILL.md) —

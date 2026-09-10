@@ -279,7 +279,7 @@ Mustache lambdas (`EvalMath`, `FormatDate`, `ParseHjson`), recovery actions, and
 
 3. **Choose the right action frequency for each channel.** Use `onActionGroupChange` for paging/ticketing systems (fire
    once, resolve once). Use `onActiveAlert` for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging to an Index connector. Use `onThrottleInterval` with a
-   throttle like `"30m"` for [dashboards](../../Cloud_Providers/dashboards/SKILL.md) or lower-priority notifications.
+   throttle like `"30m"` for [dashboards](../../Observability_and_SecOps/dashboards/SKILL.md) or lower-priority notifications.
 
 4. **Always add a recovery action.** Rules without a recovery action leave incidents open in PagerDuty, Jira, and
    ServiceNow indefinitely. Use the connector's native close/resolve event action (e.g., `eventAction: "resolve"` for

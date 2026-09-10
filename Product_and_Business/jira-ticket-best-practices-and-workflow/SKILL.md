@@ -234,7 +234,7 @@ or how to document the resulting work in Confluence (see
   like five unrelated features should be split into an epic with
   sub-tickets, each independently closeable.
 - Prefer editing the ticket's fields (status, priority, fix version) for
-  state that other people/[dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) depend on; reserve free-text
+  state that other people/[dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) depend on; reserve free-text
   comments for narrative context (see the companion comments skill).
 - When creating tickets programmatically in bulk, dry-run against a
   single issue first and inspect the `201` response before looping —
@@ -284,7 +284,7 @@ or how to document the resulting work in Confluence (see
   them rather than letting them enter a sprint.
 
 - **Symptom:** A ticket is filed as a "Task" for what is actually a
-  regression, so it never shows up in defect/quality [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md), and
+  regression, so it never shows up in defect/quality [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), and
   the team under-reports its real bug rate.
   **Fix:** Use the issue-type test in step 1 consistently, and correct
   misclassified tickets when spotted rather than leaving them for

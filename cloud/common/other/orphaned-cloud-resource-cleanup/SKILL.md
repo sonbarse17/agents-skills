@@ -44,7 +44,7 @@ covers finding these specific classes of orphaned resource and removing
 them safely, with the non-negotiable discipline that "looks unattached"
 and "is confirmed unused" are not the same thing — a resource detached
 from its original parent can still be an intentional backup, a
-[disaster-recovery](../../Observability_and_SecOps/disaster-recovery/SKILL.md) artifact, or something a team meant to reattach next
+[disaster-recovery](../../../../DevOps_and_Cloud/Observability_and_SecOps/disaster-recovery/SKILL.md) artifact, or something a team meant to reattach next
 sprint.
 
 ## When to use
@@ -81,7 +81,7 @@ sprint.
 - Awareness of, and a check against, any active
   [disaster-recovery-and-backup-strategy](../[disaster-recovery-and-backup-strategy](../[disaster-recovery](../../Observability_and_SecOps/disaster-recovery/SKILL.md)-and-backup-strategy/SKILL.md)/SKILL.md)
   plan for the account/subscription — DR-pattern resources (a pilot-light
-  database replica, a cross-region backup [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), a manually retained
+  database replica, a cross-region backup [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), a manually retained
   pre-migration snapshot) can look identical to genuine orphans from a
   pure "is it attached right now" query.
 - A grace-period/quarantine mechanism (a tag, a holding folder/resource
@@ -137,8 +137,8 @@ sprint.
    before treating it as a true orphan.** A resource with an `owner` tag
    still active, or one covered by
    [disaster-recovery-and-backup-strategy](../[disaster-recovery-and-backup-strategy](../[disaster-recovery](../../Observability_and_SecOps/disaster-recovery/SKILL.md)-and-backup-strategy/SKILL.md)/SKILL.md)'s
-   backup [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)/retention policy (e.g. a snapshot inside an AWS Backup
-   [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Lock retention window, or a disk explicitly retained as a
+   backup [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)/retention policy (e.g. a snapshot inside an AWS Backup
+   [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Lock retention window, or a disk explicitly retained as a
    pilot-light DR asset), is not a cleanup candidate regardless of
    attachment state. Filter these out of the candidate list before
    proceeding, don't just note them for later.
@@ -149,7 +149,7 @@ sprint.
      a reasonable minimum age (e.g. 14-30 days) — a volume detached
      yesterday during an in-progress migration is not the same as one
      detached for six months.
-   - Check **CloudTrail/Activity Log/Cloud [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logs** for the
+   - Check **CloudTrail/Activity Log/Cloud [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) Logs** for the
      resource ID to see who detached/created it and why, if the event is
      still within retention.
    - For Elastic IPs/Public IPs specifically, check whether it's
@@ -159,10 +159,10 @@ sprint.
      association).
    - For a snapshot, confirm no automation (a backup job, an AMI/image
      build pipeline) references it as a source before deleting — grep
-     [Infrastructure-as-code](../../Infrastructure_as_Code/infrastructure-as-code/SKILL.md) and AMI/image build configs for the
+     [Infrastructure-as-code](../../../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md) and AMI/image build configs for the
      snapshot/disk ID.
 
-4. **Notify the owner (or last-known owner from tags/[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs) with a
+4. **Notify the owner (or last-known owner from tags/[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs) with a
    grace period before deleting**, rather than deleting immediately on
    finding a candidate:
    ```bash
@@ -225,7 +225,7 @@ sprint.
 ## Best practices
 
 - **Attachment/association state is a necessary but not sufficient
-  signal** — always corroborate with age, tags, [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-log history, and
+  signal** — always corroborate with age, tags, [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-log history, and
   DR/backup policy before calling anything a confirmed orphan.
 - **Always insert a tagged grace period between "identified as a
   candidate" and "deleted"** — a notify-then-wait step costs a few days
@@ -248,7 +248,7 @@ sprint.
 - **Treat a resource with no tags as higher risk, not lower** — an
   untagged resource is more likely to be a forgotten manual creation
   from years ago than a well-managed, safe-to-delete artifact; slow down
-  and dig into [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-log history rather than treating tag absence as
+  and dig into [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-log history rather than treating tag absence as
   "nobody will miss it."
 
 ## Common pitfalls
@@ -259,7 +259,7 @@ sprint.
   **Fix:** **Never auto-delete storage resources flagged as idle without
   a grace period, notification, and human confirmation** — this is
   destructive and often irreversible. Always run candidates through the
-  tag/[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)-log/DR-policy cross-check (steps 2-3) and the notify-then-
+  tag/[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-log/DR-policy cross-check (steps 2-3) and the notify-then-
   wait grace period (step 4) before any deletion, especially for
   anything that held data.
 
@@ -314,7 +314,7 @@ unassociated Elastic IPs, and 1 load balancer with no registered targets.
    against `describe-addresses` and `describe-target-health`.
 2. Cross-check tags and DR policy (step 2): 2 of the 14 volumes carry a
    `dr-role=pilot-light-replica-source` tag matching an entry in the
-   account's DR [runbook](../../Observability_and_SecOps/runbook/SKILL.md) — excluded immediately, not just noted.
+   account's DR [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) — excluded immediately, not just noted.
 3. Confirm non-use signal (step 3): of the remaining 12 volumes, 9 have a
    `CreateTime`/detachment timestamp older than 60 days with no matching
    CloudTrail `DetachVolume` event tied to an active migration; 3 were
@@ -345,14 +345,14 @@ unassociated Elastic IPs, and 1 load balancer with no registered targets.
 ## Cross-references
 
 - [cloud-cost-finops-optimization](../[cloud-cost-finops-optimization](../cloud-cost-finops-optimization/SKILL.md)/SKILL.md) —
-  the broader tagging/[rightsizing](../rightsizing/SKILL.md)/commitment program this recurring
+  the broader tagging/[rightsizing](../../cost/rightsizing/SKILL.md)/commitment program this recurring
   cleanup feeds cost savings data back into.
 - [cloud-cost-anomaly-investigation](../[cloud-cost-anomaly-investigation](../cloud-cost-anomaly-investigation/SKILL.md)/SKILL.md) —
   the source of many cleanup candidates when a spike investigation
   identifies a resource as unused rather than misconfigured.
 - [disaster-recovery-and-backup-strategy](../[disaster-recovery-and-backup-strategy](../[disaster-recovery](../../Observability_and_SecOps/disaster-recovery/SKILL.md)-and-backup-strategy/SKILL.md)/SKILL.md) —
   check before deleting anything that could be a DR-pattern asset
-  (pilot-light replica, cross-region backup [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), retained pre-change
+  (pilot-light replica, cross-region backup [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), retained pre-change
   snapshot) rather than a genuine orphan.
 - [cloud-iam-hardening](../[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)/SKILL.md) — scope the
   cleanup automation's delete/release permissions narrowly, per its

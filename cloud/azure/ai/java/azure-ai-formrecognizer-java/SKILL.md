@@ -25,11 +25,11 @@ depends_on:
 
 > **Rebranding:** Azure AI Form Recognizer is now **Azure AI Document Intelligence**.
 > New projects should use `com.azure:[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-documentintelligence`. The legacy `[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-formrecognizer` package targets API version 2023-07-31 only.
-> See [Migration Guide](https://[github](../../CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-java/blob/main/sdk/documentintelligence/[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-documentintelligence/MIGRATION_GUIDE.md).
+> See [Migration Guide](https://[github](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-java/blob/main/sdk/documentintelligence/[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-documentintelligence/MIGRATION_GUIDE.md).
 
 ## Before Implementation
 
-Search `[microsoft-docs](../microsoft-docs/SKILL.md)` MCP for current API patterns:
+Search `[microsoft-docs](../../../other/microsoft-docs/SKILL.md)` MCP for current API patterns:
 - Query: `"[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-documentintelligence Java SDK"`
 - Verify: Parameters match installed SDK version (latest GA: 1.0.7)
 

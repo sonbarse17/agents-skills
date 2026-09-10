@@ -85,7 +85,7 @@ variants and is not repeated here.
   running [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) cluster — see
   [vault-operations-and-pki-engine-configuration](../../../[security-scanning](../../../Security/security-scanning/SKILL.md)-tooling/skills/[vault-operations-and-pki-engine-configuration](../[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-operations-and-pki-engine-configuration/SKILL.md)/SKILL.md)
   for standing it up, and
-  [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md)/SKILL.md)
+  [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md)
   for the general dynamic-secrets pattern this skill applies specifically
   to Argo CD's cluster-access credentials.
 - A Git repository already reachable from the cluster's network path
@@ -196,7 +196,7 @@ there is no cloud IAM-to-registry federation:
 ```
 Prefer a **Harbor robot account** (scoped to pull-only on specific
 projects) over a personal account's credentials, and source
-`HARBOR_ROBOT_TOKEN` from [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)/`[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md)`, never hardcoded.
+`HARBOR_ROBOT_TOKEN` from [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)/`[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)`, never hardcoded.
 
 For Ingress, install
 [metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration/SKILL.md)/SKILL.md)

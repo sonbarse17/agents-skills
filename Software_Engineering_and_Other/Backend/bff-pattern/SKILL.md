@@ -590,7 +590,7 @@ interface BffLogContext {
 | **[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)** | Per-BFF [containerization](../../../DevOps_and_Cloud/Containers_and_Orchestration/containerization/SKILL.md) |
 | **[Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)** | BFF deployment and scaling |
 | **Prometheus** | BFF metrics (latency, error rate) |
-| **Grafana** | BFF [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) |
+| **Grafana** | BFF [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) |
 | **jaeger/zipkin** | Distributed tracing |
 
 ## Rules

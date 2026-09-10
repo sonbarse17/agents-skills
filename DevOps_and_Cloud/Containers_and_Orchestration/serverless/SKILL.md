@@ -35,7 +35,7 @@ constraints before you match its convenience.**
 
 A function instance can be frozen, killed, or never reused between invocations. Anything written
 to local disk or held in memory across calls is not guaranteed to survive to the next one. This
-is the same principle as `[cloud-architecture](../../Cloud_Providers/cloud-architecture/SKILL.md)`'s statelessness default, except here the platform
+is the same principle as `[cloud-architecture](../../../cloud/common/architecture/cloud-architecture/SKILL.md)`'s statelessness default, except here the platform
 enforces it for you instead of asking nicely — so design the function so a cold, stateless restart
 on every single call would still be correct.
 
@@ -93,7 +93,7 @@ and connection-persistence requirements, not just "it's an event handler."
 Serverless pricing is per-request-and-duration, which is cheap at low and bursty volume and can
 become more expensive than a small always-on instance at sustained high volume. Do this comparison
 with real or projected traffic numbers before committing, and revisit it if traffic patterns
-shift from bursty to steady. See `[cost-optimization](../../Cloud_Providers/cost-optimization/SKILL.md)` for the ongoing tracking once it's live.
+shift from bursty to steady. See `[cost-optimization](../../../cloud/common/cost/cost-optimization/SKILL.md)` for the ongoing tracking once it's live.
 
 **Done when:** the cost-per-invocation at expected peak traffic has been compared to a
 comparable always-on alternative.

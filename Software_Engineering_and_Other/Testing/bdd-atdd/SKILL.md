@@ -623,7 +623,7 @@ Using BDD for all testing needs including unit tests, integration tests, and per
 
 **Phase 3 — Standardize (Weeks 13-24):** Make BDD part of Definition of Ready (scenarios before development) and Definition of Done (scenarios passing in CI). Train all teams. Centralize step library governance. Measure: feature file coverage, scenario pass rate stability, time from scenario writing to automation.
 
-**Phase 4 — Optimize (Weeks 25+):** BDD metrics in team [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md). Living documentation as primary requirements reference. Automated traceability from scenarios to requirements. Measure: business stakeholder engagement with living docs, defect escape rate reduction, requirements ambiguity reduction.
+**Phase 4 — Optimize (Weeks 25+):** BDD metrics in team [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md). Living documentation as primary requirements reference. Automated traceability from scenarios to requirements. Measure: business stakeholder engagement with living docs, defect escape rate reduction, requirements ambiguity reduction.
 
 ## Expansion Patterns for Gherkin
 

@@ -21,7 +21,7 @@ depends_on:
   - audit
 ---
 
-# Azure AI Projects [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) SDK (Foundry SDK)
+# Azure AI Projects [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) SDK (Foundry SDK)
 
 Build AI applications on Microsoft Foundry using the `[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-projects` SDK.
 
@@ -43,7 +43,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 > **🔑 Two rules apply to every code sample below:**
 >
-> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
+> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
 >    - Local dev: `DefaultAzureCredential` works as-is.
 >    - Production: set `AZURE_TOKEN_CREDENTIALS=prod` (or `AZURE_TOKEN_CREDENTIALS=<specific_credential>`) to constrain the credential chain to production-safe credentials.
 > 2. **Wrap every client in a context manager** so HTTP transports, sockets, and token caches are released deterministically:
@@ -52,7 +52,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 >
 > Snippets may abbreviate this setup, but production code should always follow both rules.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import os
 from azure.identity import DefaultAzureCredential, ManagedIdentityCredential
 from azure.ai.projects import AIProjectClient
@@ -60,7 +60,7 @@ from azure.ai.projects import AIProjectClient
 # Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 credential = DefaultAzureCredential()
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
+# See https://learn.microsoft.com/[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 with AIProjectClient(
     endpoint=os.environ["AZURE_AI_PROJECT_ENDPOINT"],
@@ -85,7 +85,7 @@ with AIProjectClient(
 
 ### 1. AIProjectClient (Native Foundry)
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.ai.projects import AIProjectClient
 
 with AIProjectClient(
@@ -102,7 +102,7 @@ with AIProjectClient(
 
 ### 2. OpenAI-Compatible Client
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Get OpenAI-compatible client from project
 openai_client = client.get_openai_client()
 
@@ -117,7 +117,7 @@ response = openai_client.chat.completions.create(
 
 ### Create Agent (Basic)
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 agent = client.agents.create_agent(
     model=os.environ["AZURE_AI_MODEL_DEPLOYMENT_NAME"],
     name="my-agent",
@@ -127,7 +127,7 @@ agent = client.agents.create_agent(
 
 ### Create Agent with Tools
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.ai.agents.models import CodeInterpreterTool, FileSearchTool
 
 agent = client.agents.create_agent(
@@ -140,7 +140,7 @@ agent = client.agents.create_agent(
 
 ### Versioned Agents with PromptAgentDefinition
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.ai.projects.models import PromptAgentDefinition
 
 # Create a versioned agent
@@ -155,17 +155,17 @@ agent_version = client.agents.create_version(
 )
 ```
 
-See [../../../Global_References/agents.md](../../../Global_References/agents.md) for detailed agent patterns.
+See [../../../Global_References/agents.md](../../../../../Global_References/agents.md) for detailed agent patterns.
 
 ## Tools Overview
 
 | Tool | Class | Use Case |
 |------|-------|----------|
-| Code Interpreter | `CodeInterpreterTool` | Execute [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md), generate files |
+| Code Interpreter | `CodeInterpreterTool` | Execute [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md), generate files |
 | File Search | `FileSearchTool` | RAG over uploaded documents |
 | Bing Grounding | `BingGroundingTool` | Web search (requires connection) |
 | Azure AI Search | `AzureAISearchTool` | Search your indexes |
-| Function Calling | `FunctionTool` | Call your [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) functions |
+| Function Calling | `FunctionTool` | Call your [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) functions |
 | OpenAPI | `OpenApiTool` | Call REST APIs |
 | MCP | `McpTool` | Model Context Protocol servers |
 | Memory Search | `MemorySearchTool` | Search agent memory stores |
@@ -175,7 +175,7 @@ See [../../../Global_References/[azure-ai](../[azure-ai](../azure-skills/skills/
 
 ## Thread and Message Flow
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # 1. Create thread
 thread = client.agents.threads.create()
 
@@ -202,7 +202,7 @@ if run.status == "completed":
 
 ## Connections
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # List all connections
 connections = client.connections.list()
 for conn in connections:
@@ -212,22 +212,22 @@ for conn in connections:
 connection = client.connections.get(connection_name="my-search-connection")
 ```
 
-See [../../../Global_References/connections.md](../../../Global_References/connections.md) for connection patterns.
+See [../../../Global_References/connections.md](../../../../../Global_References/connections.md) for connection patterns.
 
 ## Deployments
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # List available model deployments
 deployments = client.deployments.list()
 for deployment in deployments:
     print(f"{deployment.name}: {deployment.model}")
 ```
 
-See [../../../Global_References/deployments.md](../../../Global_References/deployments.md) for deployment patterns.
+See [../../../Global_References/deployments.md](../../../../../Global_References/deployments.md) for deployment patterns.
 
 ## Datasets and Indexes
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # List datasets
 datasets = client.datasets.list()
 
@@ -235,11 +235,11 @@ datasets = client.datasets.list()
 indexes = client.indexes.list()
 ```
 
-See [../../../Global_References/datasets-indexes.md](../../../Global_References/datasets-indexes.md) for data operations.
+See [../../../Global_References/datasets-indexes.md](../../../../../Global_References/datasets-indexes.md) for data operations.
 
 ## Evaluation
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Using OpenAI client for evals
 openai_client = client.get_openai_client()
 
@@ -258,11 +258,11 @@ eval_run = openai_client.evals.runs.create(
 )
 ```
 
-See [../../../Global_References/evaluation.md](../../../Global_References/evaluation.md) for evaluation patterns.
+See [../../../Global_References/evaluation.md](../../../../../Global_References/evaluation.md) for evaluation patterns.
 
 ## Async Client
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.ai.projects.aio import AIProjectClient
 
 async with AIProjectClient(
@@ -273,11 +273,11 @@ async with AIProjectClient(
     # ... async operations
 ```
 
-See [../../../Global_References/async-patterns.md](../../../Global_References/async-patterns.md) for async patterns.
+See [../../../Global_References/async-patterns.md](../../../../../Global_References/async-patterns.md) for async patterns.
 
 ## Memory Stores
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Create memory store for agent
 memory_store = client.agents.create_memory_store(
     name="conversation-memory",
@@ -316,15 +316,15 @@ agent = client.agents.create_agent(
 
 ## Reference Files
 
-- [../../../Global_References/agents.md](../../../Global_References/agents.md): Agent operations with PromptAgentDefinition
+- [../../../Global_References/agents.md](../../../../../Global_References/agents.md): Agent operations with PromptAgentDefinition
 - [../../../Global_References/[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-projects-py_tools.md](../../../Global_References/[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-projects-py_tools.md): All agent tools with examples
-- [../../../Global_References/evaluation.md](../../../Global_References/evaluation.md): Evaluation operations overview
-- [../../../Global_References/built-in-evaluators.md](../../../Global_References/built-in-evaluators.md): Complete built-in evaluator reference
-- [../../../Global_References/custom-evaluators.md](../../../Global_References/custom-evaluators.md): Code and prompt-based evaluator patterns
-- [../../../Global_References/connections.md](../../../Global_References/connections.md): Connection operations
-- [../../../Global_References/deployments.md](../../../Global_References/deployments.md): Deployment enumeration
-- [../../../Global_References/datasets-indexes.md](../../../Global_References/datasets-indexes.md): Dataset and index operations
-- [../../../Global_References/async-patterns.md](../../../Global_References/async-patterns.md): Async client usage
+- [../../../Global_References/evaluation.md](../../../../../Global_References/evaluation.md): Evaluation operations overview
+- [../../../Global_References/built-in-evaluators.md](../../../../../Global_References/built-in-evaluators.md): Complete built-in evaluator reference
+- [../../../Global_References/custom-evaluators.md](../../../../../Global_References/custom-evaluators.md): Code and prompt-based evaluator patterns
+- [../../../Global_References/connections.md](../../../../../Global_References/connections.md): Connection operations
+- [../../../Global_References/deployments.md](../../../../../Global_References/deployments.md): Deployment enumeration
+- [../../../Global_References/datasets-indexes.md](../../../../../Global_References/datasets-indexes.md): Dataset and index operations
+- [../../../Global_References/async-patterns.md](../../../../../Global_References/async-patterns.md): Async client usage
 - [../../../Global_References/[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-projects-py_api-reference.md](../../../Global_References/[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-projects-py_api-reference.md): Complete API reference for all 373 SDK exports (v2.0.0b4)
 - [scripts/run_batch_evaluation.py](scripts/run_batch_evaluation.py): CLI tool for batch evaluations
 

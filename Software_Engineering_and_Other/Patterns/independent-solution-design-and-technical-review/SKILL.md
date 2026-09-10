@@ -88,7 +88,7 @@ mentoring through the review and pairing process itself.
   with the authority to request changes, not just comment — a senior
   reviewer without the standing to block a merge on a real correctness
   concern can't do this job effectively.
-- [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) access (logs, traces, metrics, [dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)) sufficient to
+- [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) access (logs, traces, metrics, [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md)) sufficient to
   investigate an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) beyond what a [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)'s predefined checks
   cover — this is what makes ambiguous root-cause work possible at all.
 - A junior engineer or team member to pair with or review, and enough

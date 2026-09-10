@@ -22,7 +22,7 @@ depends_on:
 
 # Agent Framework Azure Hosted Agents
 
-Build persistent agents on Azure AI Foundry using the Microsoft Agent Framework [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) SDK.
+Build persistent agents on Azure AI Foundry using the Microsoft Agent Framework [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) SDK.
 
 ## Architecture
 
@@ -59,7 +59,7 @@ export AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is
 
 > **🔑 Two rules apply to every code sample below:**
 >
-> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
+> 1. **Prefer `DefaultAzureCredential`.** It works locally (Azure CLI / VS Code / Developer CLI) and in Azure (managed identity, workload identity) with no code change. Avoid connection strings, account/API keys — they bypass Entra [audit](../../../../../AI_and_Agents/Operations/audit/SKILL.md) and rotation.
 >    - Local dev: `DefaultAzureCredential` works as-is.
 >    - Production: set `AZURE_TOKEN_CREDENTIALS=prod` (or `AZURE_TOKEN_CREDENTIALS=<specific_credential>`) to constrain the credential chain to production-safe credentials.
 > 2. **Wrap every client in a context manager** so HTTP transports, sockets, and token caches are released deterministically:
@@ -68,7 +68,7 @@ export AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is
 >
 > Snippets may abbreviate this setup, but production code should always follow both rules.
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.identity.aio import AzureCliCredential, DefaultAzureCredential, ManagedIdentityCredential
 
 # Development
@@ -78,7 +78,7 @@ credential = AzureCliCredential()
 # Local dev: DefaultAzureCredential. Production: set AZURE_TOKEN_CREDENTIALS=prod or AZURE_TOKEN_CREDENTIALS=<specific_credential>
 credential = DefaultAzureCredential(require_envvar=True)
 # Or use a specific credential directly in production:
-# See https://learn.microsoft.com/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
+# See https://learn.microsoft.com/[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
 ```
 
@@ -86,7 +86,7 @@ credential = DefaultAzureCredential(require_envvar=True)
 
 ### Basic Agent
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import asyncio
 from agent_framework.azure import AzureAIAgentsProvider
 from azure.identity.aio import AzureCliCredential
@@ -109,7 +109,7 @@ asyncio.run(main())
 
 ### Agent with Function Tools
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from typing import Annotated
 from pydantic import Field
 from agent_framework.azure import AzureAIAgentsProvider
@@ -143,7 +143,7 @@ async def main():
 
 ### Agent with Hosted Tools
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from agent_framework import (
     HostedCodeInterpreterTool,
     HostedFileSearchTool,
@@ -166,13 +166,13 @@ async def main():
             ],
         )
         
-        result = await agent.run("Calculate the factorial of 20 in [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)")
+        result = await agent.run("Calculate the factorial of 20 in [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)")
         print(result.text)
 ```
 
 ### Streaming Responses
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 async def main():
     async with (
         AzureCliCredential() as credential,
@@ -192,7 +192,7 @@ async def main():
 
 ### Conversation Threads
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from agent_framework.azure import AzureAIAgentsProvider
 from azure.identity.aio import AzureCliCredential
 
@@ -224,7 +224,7 @@ async def main():
 
 ### Structured Outputs
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from pydantic import BaseModel, ConfigDict
 from agent_framework.azure import AzureAIAgentsProvider
 from azure.identity.aio import AzureCliCredential
@@ -265,7 +265,7 @@ async def main():
 
 | Tool | Import | Purpose |
 |------|--------|---------|
-| `HostedCodeInterpreterTool` | `from agent_framework import HostedCodeInterpreterTool` | Execute [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) code |
+| `HostedCodeInterpreterTool` | `from agent_framework import HostedCodeInterpreterTool` | Execute [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) code |
 | `HostedFileSearchTool` | `from agent_framework import HostedFileSearchTool` | Search vector stores |
 | `HostedWebSearchTool` | `from agent_framework import HostedWebSearchTool` | Bing web search |
 | `HostedMCPTool` | `from agent_framework import HostedMCPTool` | Service-managed MCP |
@@ -273,7 +273,7 @@ async def main():
 
 ## Complete Example
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
+```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import asyncio
 from typing import Annotated
 from pydantic import BaseModel, Field
@@ -323,7 +323,7 @@ async def main():
         
         # Non-streaming
         result = await agent.run(
-            "Search for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) best practices and summarize",
+            "Search for [Python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) best practices and summarize",
             thread=thread,
         )
         print(f"Response: {result.text}")
@@ -364,8 +364,8 @@ if __name__ == "__main__":
 
 ## Reference Files
 
-- [../../../Global_References/tools.md](../../../Global_References/tools.md): Detailed hosted tool patterns
-- [../../../Global_References/mcp.md](../../../Global_References/mcp.md): MCP integration (hosted + local)
-- [../../../Global_References/threads.md](../../../Global_References/threads.md): Thread and conversation management
-- [../../../Global_References/advanced.md](../../../Global_References/advanced.md): OpenAPI, citations, structured outputs
+- [../../../Global_References/tools.md](../../../../../Global_References/tools.md): Detailed hosted tool patterns
+- [../../../Global_References/mcp.md](../../../../../Global_References/mcp.md): MCP integration (hosted + local)
+- [../../../Global_References/threads.md](../../../../../Global_References/threads.md): Thread and conversation management
+- [../../../Global_References/advanced.md](../../../../../Global_References/advanced.md): OpenAPI, citations, structured outputs
 

@@ -50,8 +50,8 @@ revisits. This skill guides that review process generically, applicable
 regardless of which provider's framework or tool is used, and is explicit
 that a Well-Architected review is a self-assessment or peer/solutions-
 architect-led review — it produces engineering recommendations and risk
-prioritization, not a compliance certification, a security [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) finding, or
-a substitute for the standards-mapping and legal/[audit](../../../AI_and_Agents/Operations/audit/SKILL.md) processes covered in
+prioritization, not a compliance certification, a security [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) finding, or
+a substitute for the standards-mapping and legal/[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) processes covered in
 [security-compliance-mapping-soc2-iso-pci-nist](../[security-compliance-mapping-soc2-iso-pci-nist](../../Observability_and_SecOps/security-compliance-mapping-soc2-iso-pci-nist/SKILL.md)/SKILL.md).
 
 ## When to use
@@ -79,8 +79,8 @@ a substitute for the standards-mapping and legal/[audit](../../../AI_and_Agents/
   per entire cloud account/organization; reviewing "everything" at once
   produces vague, unactionable output.
 - Access to the workload's architecture diagram, IaC (Terraform/
-  [CloudFormation](../../Infrastructure_as_Code/cloudformation/SKILL.md)/Bicep/Deployment Manager), [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../dashboards/SKILL.md), cost
-  and usage data, and [incident](../../Observability_and_SecOps/incident/SKILL.md) history — the review is grounded in real
+  [CloudFormation](../../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md)/Bicep/Deployment Manager), [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), cost
+  and usage data, and [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) history — the review is grounded in real
   operational evidence, not just an architecture diagram in isolation.
 - Provider-specific framework reference and, if available, its tooling:
   - AWS: AWS Well-Architected Framework (six pillars: Operational
@@ -118,17 +118,17 @@ a substitute for the standards-mapping and legal/[audit](../../../AI_and_Agents/
    owner, and state its criticality tier — a customer-facing payments
    workload and an internal reporting tool warrant different depth.
 2. **Select the framework version and confirm the pillar list** for the
-   provider in scope (or note if the workload is [multi-cloud](../multi-cloud/SKILL.md) and needs a
+   provider in scope (or note if the workload is [multi-cloud](../../other/multi-cloud/SKILL.md) and needs a
    review pass per provider, since the pillar sets and tooling differ).
 3. **Gather evidence per pillar before scoring**, not opinions in a
    vacuum:
-   - *Operational excellence*: [runbooks](../../Observability_and_SecOps/runbooks/SKILL.md), deployment process, change
-     failure rate, [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)/[alerting](../../Observability_and_SecOps/alerting/SKILL.md) coverage, [incident](../../Observability_and_SecOps/incident/SKILL.md) postmortems.
+   - *Operational excellence*: [runbooks](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md), deployment process, change
+     failure rate, [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)/[alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) coverage, [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) postmortems.
    - *Security*: IAM least-privilege posture, encryption at rest/in
      transit, network segmentation, secrets handling, patch/vulnerability
      management — this pillar overlaps directly with
      [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)/SKILL.md),
-     [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../secrets-management/SKILL.md)/SKILL.md),
+     [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../security/secrets-management/SKILL.md)/SKILL.md),
      and [cis-benchmarks-hardening](../[cis-benchmarks-hardening](../../../Security/[cis-benchmarks](../../Observability_and_SecOps/cis-benchmarks/SKILL.md)-hardening/SKILL.md)/SKILL.md).
    - *Reliability*: RTO/RPO targets and whether they're actually met,
      multi-AZ/region design, backup testing — cross-reference
@@ -148,7 +148,7 @@ a substitute for the standards-mapping and legal/[audit](../../../AI_and_Agents/
 5. **Identify cross-pillar trade-offs explicitly.** Well-Architected
    reviews frequently surface tensions — e.g. a reliability improvement
    (multi-region active-active) that directly increases cost, or a cost
-   optimization (aggressive [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) to zero) that increases latency
+   optimization (aggressive [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) to zero) that increases latency
    variance. Document the trade-off and who decided how to resolve it
    rather than optimizing one pillar in isolation.
 6. **Convert every finding into a backlog item** with: pillar, finding,
@@ -172,7 +172,7 @@ a substitute for the standards-mapping and legal/[audit](../../../AI_and_Agents/
   rather not discuss — a review that consistently omits cost optimization
   or sustainability findings has stopped being a Well-Architected review.
 - Ground every score in a specific piece of evidence (a dashboard metric,
-  an IaC snippet, an [incident](../../Observability_and_SecOps/incident/SKILL.md) ticket) — "we feel good about reliability"
+  an IaC snippet, an [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) ticket) — "we feel good about reliability"
   is not a score.
 - Make trade-offs explicit and attribute the decision to a named owner —
   Well-Architected pillars actively conflict (cost vs. reliability,
@@ -190,7 +190,7 @@ a substitute for the standards-mapping and legal/[audit](../../../AI_and_Agents/
 - Distinguish "not applicable to this workload" (documented, with reason)
   from "not addressed yet" (an actual backlog item) — collapsing the two
   hides real risk.
-- When reviewing a [multi-cloud](../multi-cloud/SKILL.md) workload, run a pass per provider using
+- When reviewing a [multi-cloud](../../other/multi-cloud/SKILL.md) workload, run a pass per provider using
   that provider's own pillar names/tooling rather than forcing one
   provider's framework onto another provider's services.
 
@@ -214,15 +214,15 @@ a substitute for the standards-mapping and legal/[audit](../../../AI_and_Agents/
   increase becomes its own escalation a quarter later.
   **Fix:** Score and discuss cross-pillar trade-offs during the review
   itself — a reliability recommendation that materially changes cost
-  should carry an explicit [cost-optimization](../cost-optimization/SKILL.md) counter-entry and a
+  should carry an explicit [cost-optimization](../../cost/cost-optimization/SKILL.md) counter-entry and a
   documented decision, not surface as a surprise later.
 - **Symptom:** The review is treated as a compliance deliverable ("we did
-  our Well-Architected review, we're good for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)") and handed to a
+  our Well-Architected review, we're good for [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)") and handed to a
   customer or auditor as evidence of security/compliance posture.
   **Fix:** A Well-Architected review is an internal architecture and risk
   health check run by the team (optionally with the cloud provider's
   solutions architects) — it is not a certification and does not
-  substitute for a SOC 2/ISO 27001/PCI-DSS [audit](../../../AI_and_Agents/Operations/audit/SKILL.md); route compliance-mapping
+  substitute for a SOC 2/ISO 27001/PCI-DSS [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md); route compliance-mapping
   needs to
   [security-compliance-mapping-soc2-iso-pci-nist](../[security-compliance-mapping-soc2-iso-pci-nist](../../Observability_and_SecOps/security-compliance-mapping-soc2-iso-pci-nist/SKILL.md)/SKILL.md)
   and be explicit with stakeholders about the difference.
@@ -240,10 +240,10 @@ Scoring scale: 1 (significant gaps) – 5 (best-practice aligned).
 
 | Pillar | Score | Key evidence | Top finding |
 |---|---|---|---|
-| Operational excellence | 3/5 | Deploys via CI/CD, but no automated rollback; on-call [runbook](../../Observability_and_SecOps/runbook/SKILL.md) exists but last updated 14 months ago | [Runbook](../../Observability_and_SecOps/runbook/SKILL.md) stale; no automated rollback on failed deploy |
-| Security | 4/5 | IAM roles scoped per-service, secrets in [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), but one legacy EC2 instance still uses a long-lived static credential | Legacy instance not yet migrated to federated/instance-role auth |
+| Operational excellence | 3/5 | Deploys via CI/CD, but no automated rollback; on-call [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) exists but last updated 14 months ago | [Runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) stale; no automated rollback on failed deploy |
+| Security | 4/5 | IAM roles scoped per-service, secrets in [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), but one legacy EC2 instance still uses a long-lived static credential | Legacy instance not yet migrated to federated/instance-role auth |
 | Reliability | 2/5 | Primary RDS instance is single-AZ; no documented/tested failover; RTO target of 1 hour is unverified | Single-AZ database is a single point of failure against the stated RTO |
-| Performance efficiency | 4/5 | [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) configured with headroom, p99 latency within SLO for 11 of 12 months | Minor: cache hit ratio below target during flash-sale traffic spikes |
+| Performance efficiency | 4/5 | [Autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) configured with headroom, p99 latency within SLO for 11 of 12 months | Minor: cache hit ratio below target during flash-sale traffic spikes |
 | Cost optimization | 2/5 | <30% of compute spend covered by Savings Plans/Reserved Instances; several oversized instances flagged idle >30 days | Low commitment coverage and unaddressed idle-resource findings |
 | Sustainability | 2/5 | Workload runs in a single region chosen for latency, not evaluated for carbon intensity; several dev/test resources run 24/7 unnecessarily | No non-prod scheduling; region carbon-intensity not evaluated |
 
@@ -262,7 +262,7 @@ Illustrative prioritized backlog (excerpt):
 | P1 | Security | Legacy instance on static credentials | Medium | `<SECURITY_ENG_PLACEHOLDER>` | 2 sprints |
 | P1 | Cost optimization | <30% commitment coverage | Medium | `<FINOPS_OWNER_PLACEHOLDER>` | Next quarter |
 | P2 | Sustainability | No non-prod off-hours scheduling | Low | `<PLATFORM_TEAM_PLACEHOLDER>` | Next quarter |
-| P2 | Operational excellence | [Runbook](../../Observability_and_SecOps/runbook/SKILL.md) stale, no automated rollback | Low | `<APP_TEAM_PLACEHOLDER>` | Next sprint |
+| P2 | Operational excellence | [Runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) stale, no automated rollback | Low | `<APP_TEAM_PLACEHOLDER>` | Next sprint |
 
 Re-review scheduled for `<REVIEW_DATE_PLACEHOLDER>` (illustrative: 6 months
 out), with the same pillar scorecard re-run to track deltas.
@@ -270,9 +270,9 @@ out), with the same pillar scorecard re-run to track deltas.
 ## Cross-references
 
 - [cis-benchmarks-hardening](../[cis-benchmarks-hardening](../../../Security/[cis-benchmarks](../../Observability_and_SecOps/cis-benchmarks/SKILL.md)-hardening/SKILL.md)/SKILL.md) — infrastructure/OS-level hardening evidence that feeds the security pillar.
-- [security-compliance-mapping-soc2-iso-pci-nist](../[security-compliance-mapping-soc2-iso-pci-nist](../../Observability_and_SecOps/security-compliance-mapping-soc2-iso-pci-nist/SKILL.md)/SKILL.md) — where to go if the review's security findings need to be mapped to a formal compliance framework for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) purposes.
+- [security-compliance-mapping-soc2-iso-pci-nist](../[security-compliance-mapping-soc2-iso-pci-nist](../../Observability_and_SecOps/security-compliance-mapping-soc2-iso-pci-nist/SKILL.md)/SKILL.md) — where to go if the review's security findings need to be mapped to a formal compliance framework for [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) purposes.
 - [owasp-top-10-secure-coding-standards](../[owasp-top-10-secure-coding-standards](../owasp-top-10-secure-coding-standards/SKILL.md)/SKILL.md) — application-layer security depth beyond what a workload-level security pillar review typically covers.
 - [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)/SKILL.md) — detailed remediation for security-pillar IAM findings.
-- [cloud-cost-finops-optimization](../../../cloud/skills/[cloud-cost-finops-optimization](../cloud-cost-finops-optimization/SKILL.md)/SKILL.md) — detailed remediation for [cost-optimization](../cost-optimization/SKILL.md)-pillar findings.
+- [cloud-cost-finops-optimization](../../../cloud/skills/[cloud-cost-finops-optimization](../cloud-cost-finops-optimization/SKILL.md)/SKILL.md) — detailed remediation for [cost-optimization](../../cost/cost-optimization/SKILL.md)-pillar findings.
 - [disaster-recovery-and-backup-strategy](../../../cloud/skills/[disaster-recovery-and-backup-strategy](../[disaster-recovery](../../Observability_and_SecOps/disaster-recovery/SKILL.md)-and-backup-strategy/SKILL.md)/SKILL.md) — detailed remediation for reliability-pillar RTO/RPO findings.
 - [aws-landing-zone-setup](../../../cloud/skills/[aws-landing-zone-setup](../aws-landing-zone-setup/SKILL.md)/SKILL.md), [azure-landing-zone-setup](../../../cloud/skills/[azure-landing-zone-setup](../azure-landing-zone-setup/SKILL.md)/SKILL.md), [gcp-landing-zone-setup](../../../cloud/skills/[gcp-landing-zone-setup](../gcp-landing-zone-setup/SKILL.md)/SKILL.md) — organization-level guardrails that reduce recurring findings across many workload reviews.

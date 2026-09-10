@@ -38,7 +38,7 @@ when possible, or recommending a support case when programmatic increases are no
 - An investigation recommendation involves provisioning additional AWS resources
   (e.g., adding EC2 instances, creating VPCs, adding NAT Gateways, launching RDS instances).
 - [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) planning or pre-launch readiness checks.
-- Proactive [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) of quota utilization across services.
+- Proactive [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) of quota utilization across services.
 
 ## Prerequisites
 
@@ -81,13 +81,13 @@ Determine which service and quota to check based on the investigation context:
 | Amazon S3 | `s3` |
 | Amazon DynamoDB | `dynamodb` |
 | AWS Fargate | `fargate` |
-| Amazon CloudWatch | `[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)` |
-| AWS [CloudFormation](../../Infrastructure_as_Code/cloudformation/SKILL.md) | `[cloudformation](../../Infrastructure_as_Code/cloudformation/SKILL.md)` |
+| Amazon CloudWatch | `[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)` |
+| AWS [CloudFormation](../../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md) | `[cloudformation](../../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md)` |
 | Amazon SQS | `sqs` |
 | Amazon SNS | `sns` |
 | Amazon ElastiCache | `elasticache` |
 | Amazon OpenSearch Service | `es` |
-| Auto Scaling | `[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)` |
+| Auto Scaling | `[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)` |
 
 If you do not know the service code, use:
 
@@ -356,7 +356,7 @@ at 70%+ utilization as part of a comprehensive [capacity](../../../AI_and_Agents
 
 ## Common Quota Codes Reference
 
-See [../../../Global_References/common-quota-codes.md](../../../Global_References/common-quota-codes.md) for a table of
+See [../../../Global_References/common-quota-codes.md](../../../../Global_References/common-quota-codes.md) for a table of
 frequently checked quota codes by service.
 
 ---
@@ -387,5 +387,5 @@ frequently checked quota codes by service.
 - **Resource-level quotas**: Some quotas (e.g., OpenSearch instances per domain) are
   resource-level. Use `--context-id` with the resource ARN for these.
 - **Rate-based quotas**: Some quotas measure requests per second (e.g., API call rates).
-  These require different [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) approaches (CloudWatch metrics rather than resource counts).
+  These require different [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) approaches (CloudWatch metrics rather than resource counts).
 

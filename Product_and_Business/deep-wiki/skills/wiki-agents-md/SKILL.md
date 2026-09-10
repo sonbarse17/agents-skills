@@ -220,7 +220,7 @@ Extract real commands and settings from:
 - `pyproject.toml` scripts and tool configs
 - `Cargo.toml` metadata
 - `.[github](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/*.yml` build/test steps
-- `[docker-compose](../../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml` service definitions
+- `[docker-compose](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml` service definitions
 - Linter configs (`.eslintrc`, `ruff.toml`, `rustfmt.toml`)
 
 ### Step 4: Detect conventions

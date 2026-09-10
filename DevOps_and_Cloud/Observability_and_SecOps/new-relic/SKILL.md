@@ -29,7 +29,7 @@ Use this skill when:
 - Implementing full-stack [observability](../observability/SKILL.md)
 - Setting up APM for applications
 - [Monitoring](../monitoring/SKILL.md) infrastructure health
-- Creating custom [dashboards](../../Cloud_Providers/dashboards/SKILL.md) and alerts
+- Creating custom [dashboards](../dashboards/SKILL.md) and alerts
 - Implementing distributed tracing
 
 ## Prerequisites
@@ -304,7 +304,7 @@ FACET customer_id
 SINCE 1 day ago
 ```
 
-## [Dashboards](../../Cloud_Providers/dashboards/SKILL.md)
+## [Dashboards](../dashboards/SKILL.md)
 
 ### Dashboard JSON
 
@@ -450,7 +450,7 @@ log:
 - Use custom attributes for business context
 - Implement logs in context for correlation
 - Set up workloads for service grouping
-- Regular review of unused [dashboards](../../Cloud_Providers/dashboards/SKILL.md) and alerts
+- Regular review of unused [dashboards](../dashboards/SKILL.md) and alerts
 
 ## Related Skills
 

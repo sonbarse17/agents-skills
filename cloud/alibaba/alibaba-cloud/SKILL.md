@@ -39,12 +39,12 @@ Design, deploy, and manage Alibaba Cloud infrastructure using Terraform/Alibaba 
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "Alibaba Cloud", "Aliyun", "ECS", "ACK", "OSS", "SLB", "RDS", "ApsaraDB", "Alibaba Cloud [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)", "Container Service", "VPC", "RAM", "terraform alicloud", "aliyun cli".
+Exact user phrases: "Alibaba Cloud", "Aliyun", "ECS", "ACK", "OSS", "SLB", "RDS", "ApsaraDB", "Alibaba Cloud [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)", "Container Service", "VPC", "RAM", "terraform alicloud", "aliyun cli".
 
 ### Input Context
 Before activating, verify:
 - Region and zone preference (Alibaba Cloud has 30+ regions; China regions require ICP license).
-- Service type needed: compute (ECS/ECI), container (ACK/ASK), [serverless](../../Containers_and_Orchestration/serverless/SKILL.md) (FC/SAE).
+- Service type needed: compute (ECS/ECI), container (ACK/ASK), [serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) (FC/SAE).
 - Authentication method (RAM user key, STS token, RAM role).
 - Compliance requirements (ISO 27001, SOC 2, PCI DSS, MLPS in China).
 - Network topology (VPC with NAT gateway vs Internet gateway, VPN/CEN for hybrid).
@@ -62,7 +62,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions.
 - [ ] RAM roles and policies follow least privilege.
 - [ ] Cost optimization with Pay-As-You-Go or subscription billing applied.
 - [ ] High availability across multiple zones (at least 2 zones).
-- [ ] [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) and [alerting](../../Observability_and_SecOps/alerting/SKILL.md) configured (CloudMonitor, ActionTrail).
+- [ ] [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) configured (CloudMonitor, ActionTrail).
 
 ### Max Response Length
 Direct file write. No response text.
@@ -73,10 +73,10 @@ Direct file write. No response text.
 | Workload Profile | Recommended Service | Key Consideration |
 |---|---|---|
 | Stateful VM, custom OS | ECS (Elastic Compute Service) | Full OS control, dedicated instance |
-| Batch job, short-lived container | ECI (Elastic Container Instance) | [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md) container, pay-per-second |
-| [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) orchestration | ACK (Container Service for K8s) | Managed K8s, integrates with SLB/NAS |
-| [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md) K8s (no nodes) | ASK ([Serverless](../../Containers_and_Orchestration/serverless/SKILL.md) K8s) | No node management, auto-scaling |
-| [Microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) on K8s | SAE ([Serverless](../../Containers_and_Orchestration/serverless/SKILL.md) App Engine) | War/Jar/Image deploy, auto-scaling |
+| Batch job, short-lived container | ECI (Elastic Container Instance) | [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) container, pay-per-second |
+| [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) orchestration | ACK (Container Service for K8s) | Managed K8s, integrates with SLB/NAS |
+| [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) K8s (no nodes) | ASK ([Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) K8s) | No node management, auto-scaling |
+| [Microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) on K8s | SAE ([Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) App Engine) | War/Jar/Image deploy, auto-scaling |
 | Event-driven function | FC (Function Compute) | Pay-per-invocation, HTTP/OSS triggers |
 
 ### Database: RDS vs PolarDB vs Redis vs [MongoDB](../../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md) vs HBase
@@ -260,7 +260,7 @@ resource "alicloud_oss_bucket_public_access_block" "assets" {
 }
 ```
 
-### Step 5: Container Service for [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) (ACK)
+### Step 5: Container Service for [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) (ACK)
 ```hcl
 resource "alicloud_cs_managed_kubernetes" "ack" {
   name                   = "my-ack-cluster"
@@ -340,8 +340,8 @@ resource "alicloud_cms_alarm" "disk_usage" {
 |---|---|---|---|
 | Compute VM | ECS | EC2 | Compute Engine |
 | Container K8s | ACK | EKS | GKE |
-| [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md) Container | ASK ([Serverless](../../Containers_and_Orchestration/serverless/SKILL.md) K8s) | Fargate | Cloud Run |
-| [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md) Function | FC (Function Compute) | Lambda | Cloud Functions |
+| [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) Container | ASK ([Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) K8s) | Fargate | Cloud Run |
+| [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) Function | FC (Function Compute) | Lambda | Cloud Functions |
 | Object Storage | OSS | S3 | Cloud Storage |
 | RDBMS | RDS / PolarDB | RDS / Aurora | Cloud SQL |
 | NoSQL (document) | [MongoDB](../../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md) | DynamoDB | Firestore |
@@ -349,7 +349,7 @@ resource "alicloud_cms_alarm" "disk_usage" {
 | Load Balancer | SLB | ELB/ALB | Cloud Load Balancer |
 | WAF | WAF | WAF | Cloud Armor |
 | DNS | DNS (PrivateZone) | Route53 | Cloud DNS |
-| [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) | CloudMonitor | CloudWatch | Cloud [Monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) |
+| [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) | CloudMonitor | CloudWatch | Cloud [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) |
 | [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) | ActionTrail | CloudTrail | Cloud [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logs |
 | Key Management | KMS | KMS | Cloud KMS |
 | Container Registry | ACR | ECR | Artifact Registry |
@@ -415,7 +415,7 @@ Embedding AccessKey ID/Secret in application code or configuration files. Always
 - Always enable OSS bucket versioning and server-side encryption.
 - Every security group must have least-privilege rules; no 0.0.0.0/0 for SSH/RDP.
 - Tag all resources with Project, Environment, Owner, and CostCenter tags.
-- Enable CloudMonitor detailed [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) for production ECS instances.
+- Enable CloudMonitor detailed [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) for production ECS instances.
 - Use PrivateLink or VPC endpoints over public endpoints for Alibaba Cloud service access.
 - Deploy ACK clusters with private SLB only; expose via Application Load Balancer (ALB).
 - Enable deletion protection on RDS and OSS buckets.
@@ -430,13 +430,13 @@ Terraform HCL (alicloud provider), Alibaba Cloud CLI commands, RAM policy JSON, 
   - ../../../Global_References/alibaba-cloud-fundamentals.md
   - ../../../Global_References/aliyun-database.md
   - ../../../Global_References/aliyun-ecs-vpc.md
-  - ../../../Global_References/aliyun-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md).md
+  - ../../../Global_References/aliyun-[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).md
   - ../../../Global_References/aliyun-security.md
   - references/network-comparison.md
 
 ## Handoff
 After completing this skill:
-- Next skill: **terraform** — Terraform for [multi-cloud](../multi-cloud/SKILL.md) IaC with alicloud provider
+- Next skill: **terraform** — Terraform for [multi-cloud](../../common/other/multi-cloud/SKILL.md) IaC with alicloud provider
 - Pass context: VPC ID, security group IDs, RAM role ARN, region
 
 ## Implementation Patterns
@@ -492,7 +492,7 @@ PolicyDocument:
 - Use **Resource Access Manager (RAM)** for cross-account sharing instead of copying resources
 - Configure **Alarm Contact Groups** before deploying production workloads
 - Enable **Operation Orchestration Service (OOS)** for automated patching and maintenance
-- Deploy **Cloud Monitor** [dashboards](../dashboards/SKILL.md) for every production service with p99 latency alerts
+- Deploy **Cloud Monitor** [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) for every production service with p99 latency alerts
 - Use **Terraform workspaces** to separate dev/staging/prod Alibaba Cloud accounts
 - Enable **ActionTrail** for all API call auditing and feed logs into Log Service
 
@@ -513,7 +513,7 @@ PolicyDocument:
 - Configure **SLB connection draining** and health checks for zero-downtime deployments
 - Use **Redis Tair** for session caching instead of local ECS memory (survives restarts)
 - Tune **RDS PG/[MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)** connection pools with `max_connections = 200` and `innodb_buffer_pool_size = 70% of RAM`
-- Deploy **Container Service for [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) (ACK)** with cluster autoscaler for burst workloads
+- Deploy **Container Service for [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) (ACK)** with cluster autoscaler for burst workloads
 - Set **ECS hibernate** for non-production instances to save compute costs while idle
 
 ## Security Considerations
@@ -522,7 +522,7 @@ PolicyDocument:
 - Enable **Security Center** (Enterprise tier) for vulnerability scanning and baseline checks
 - Configure **WAF** for all public-facing ALB/SLB endpoints to block SQLi and XSS
 - Use **KMS** to encrypt RDS instances, OSS buckets, and disk snapshots at rest
-- Enable **ActionTrail** global trail with Log Service [alerting](../../Observability_and_SecOps/alerting/SKILL.md) for suspicious API activity
+- Enable **ActionTrail** global trail with Log Service [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) for suspicious API activity
 - Restrict **Security Group** ingress to specific CIDR blocks; never use 0.0.0.0/0 for SSH/RDP
 - Implement **Resource Directory** with SCPs to enforce security baselines across accounts
 

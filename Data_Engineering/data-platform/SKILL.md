@@ -464,7 +464,7 @@ Object store: request rates, error rates (4xx/5xx), latency p99, data transfer. 
 Pipeline health: success rate, duration, rows processed. Data quality: row count anomalies, freshness lag, schema changes. Cost tracking: storage costs (per bucket), compute costs (per job/query), data transfer costs.
 
 ### [Observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) Stack
-Metrics: Prometheus + Grafana [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md). Logs: ELK/Loki + structured logging. Tracing: [OpenTelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) for pipeline traces. Alerts: Alertmanager with PagerDuty/Slack integration.
+Metrics: Prometheus + Grafana [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md). Logs: ELK/Loki + structured logging. Tracing: [OpenTelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) for pipeline traces. Alerts: Alertmanager with PagerDuty/Slack integration.
 
 ## Rules
 - Open table formats are mandatory for data lakes — no raw Parquet.
@@ -481,7 +481,7 @@ Metrics: Prometheus + Grafana [dashboards](../../DevOps_and_Cloud/Cloud_Provider
 - Automate platform provisioning with Infrastructure as Code.
 
 ## References
-  - ../../../Global_References/cross-[cloud-setup](../../DevOps_and_Cloud/Cloud_Providers/setup/SKILL.md).md — Cross-Cloud Data Platform Setup
+  - ../../../Global_References/cross-[cloud-setup](../../cloud/common/other/setup/SKILL.md).md — Cross-Cloud Data Platform Setup
   - ../../../Global_References/data-catalog-virtualization.md — Data Catalog & Virtualization
   - ../../../Global_References/data-platform-advanced.md — Data Platform Advanced Topics
   - ../../../Global_References/data-platform-architecture.md — Data Platform Architecture
@@ -498,7 +498,7 @@ Data Platform Architecture
 │   ├── SaaS → Snowflake / Databricks / BigQuery
 │   ├── Self-managed → Trino + Hive Metastore + Spark
 │   └── Hybrid → Managed storage + self-managed compute
-├── [Multi-cloud](../../DevOps_and_Cloud/Cloud_Providers/multi-cloud/SKILL.md) required?
+├── [Multi-cloud](../../cloud/common/other/multi-cloud/SKILL.md) required?
 │   ├── Yes → Iceberg + Trino (cloud-agnostic)
 │   └── No → Cloud-native (Redshift, BigQuery, Synapse)
 ├── Streaming workloads?
@@ -559,7 +559,7 @@ stack:
     default_format: iceberg
   tools:
     - dbt (transformations)
-    - superset ([dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md))
+    - superset ([dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md))
     - datahub (catalog)
   access:
     users: [team-marketing]

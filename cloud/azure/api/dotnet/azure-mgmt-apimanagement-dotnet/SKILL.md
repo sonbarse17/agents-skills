@@ -278,7 +278,7 @@ await service.RestoreAsync(WaitUntil.Completed, backupParams);
 | `Basic` | Entry-level production | 1-2 |
 | `Standard` | Medium workloads | 1-4 |
 | `Premium` | High availability, multi-region | 1-12 per region |
-| `Consumption` | [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md), pay-per-call | N/A |
+| `Consumption` | [Serverless](../../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md), pay-per-call | N/A |
 
 ## Best Practices
 
@@ -319,9 +319,9 @@ catch (RequestFailedException ex)
 
 | File | When to Read |
 |------|--------------|
-| [../../../Global_References/service-management.md](../../../Global_References/service-management.md) | Service CRUD, SKUs, networking, backup/restore |
-| [../../../Global_References/apis-operations.md](../../../Global_References/apis-operations.md) | APIs, operations, schemas, versioning |
-| [../../../Global_References/products-subscriptions.md](../../../Global_References/products-subscriptions.md) | Products, subscriptions, access control |
+| [../../../Global_References/service-management.md](../../../../../Global_References/service-management.md) | Service CRUD, SKUs, networking, backup/restore |
+| [../../../Global_References/apis-operations.md](../../../../../Global_References/apis-operations.md) | APIs, operations, schemas, versioning |
+| [../../../Global_References/products-subscriptions.md](../../../../../Global_References/products-subscriptions.md) | Products, subscriptions, access control |
 | [references/policies.md](references/policies.md) | Policy XML patterns, scopes, common policies |
 
 ## Related Resources

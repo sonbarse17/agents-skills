@@ -195,7 +195,7 @@ cluster.
    > external resource really doesn't need manual cleanup first.
 
 6. **Report status via `status.conditions`**, not just a free-text phase
-   string, so other tooling ([dashboards](../../Cloud_Providers/dashboards/SKILL.md), `[kubectl](../kubectl/SKILL.md) wait --for=condition=`)
+   string, so other tooling ([dashboards](../../Observability_and_SecOps/dashboards/SKILL.md), `[kubectl](../kubectl/SKILL.md) wait --for=condition=`)
    can consume it reliably:
    ```go
    meta.SetStatusCondition(&rc.Status.Conditions, metav1.Condition{

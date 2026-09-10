@@ -36,7 +36,7 @@ HashiCorp [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SK
 be initialized, kept unsealed, made highly available, and operated with
 its own upgrade and [disaster-recovery](../../Observability_and_SecOps/disaster-recovery/SKILL.md) discipline — separate from the
 question of how applications *consume* secrets from it, which is
-covered in [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md)/SKILL.md)
+covered in [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md)
 and, for the [Kubernetes](../kubernetes/SKILL.md)-native sync pattern, in
 [sealed-secrets-and-external-secrets-operator](../[sealed-secrets-and-external-secrets-operator](../sealed-secrets-and-external-secrets-operator/SKILL.md)/SKILL.md).
 This skill covers running [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) as the platform team operating it:
@@ -407,7 +407,7 @@ handling required.
 - [vault-configuration-validation](../[vault-configuration-validation](../../../Security/[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-configuration-validation/SKILL.md)/SKILL.md) —
   validating [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) policies, auth methods, and seal configuration before
   rolling out changes to the operational cluster this skill sets up.
-- [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../Cloud_Providers/secrets-management/SKILL.md)/SKILL.md) —
+- [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md) —
   the application-facing side of using [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) as a secrets backend
   (KV engines, dynamic database secrets, rotation policy), which
   assumes the operational cluster this skill covers is already running.

@@ -245,8 +245,8 @@ export default {
 # KV CLI operations
 npx wrangler kv namespace create MY_KV
 npx wrangler kv namespace list
-npx wrangler kv key put --namespace-id=abc123 "config:[feature-flags](../../CI_CD/feature-flags/SKILL.md)" '{"darkMode":true}'
-npx wrangler kv key get --namespace-id=abc123 "config:[feature-flags](../../CI_CD/feature-flags/SKILL.md)"
+npx wrangler kv key put --namespace-id=abc123 "config:[feature-flags](../../../DevOps_and_Cloud/CI_CD/feature-flags/SKILL.md)" '{"darkMode":true}'
+npx wrangler kv key get --namespace-id=abc123 "config:[feature-flags](../../../DevOps_and_Cloud/CI_CD/feature-flags/SKILL.md)"
 npx wrangler kv key list --namespace-id=abc123 --prefix="config:"
 ```
 

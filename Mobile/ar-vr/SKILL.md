@@ -271,7 +271,7 @@ AR interaction type?
 
 ## AR Session Analytics
 
-Track AR session quality metrics to diagnose user experience issues: (1) tracking state duration — time spent in limited/normal tracking, (2) average light estimation values — too dark reduces tracking quality, (3) anchor count over time — anchor leaks degrade performance, (4) session interruption frequency — correlates with app backgrounding and poor conditions, (5) average frame rate — drop below 30fps causes discomfort, (6) depth data availability — LiDAR vs. no LiDAR session path. Log these as analytics events prefixed with `ar_`. Monitor [dashboards](../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md) for: sessions with >50% time in limited tracking, anchor count >100 sustained, fps consistently below 30. Alerts trigger when any metric exceeds 2 standard deviations from baseline.
+Track AR session quality metrics to diagnose user experience issues: (1) tracking state duration — time spent in limited/normal tracking, (2) average light estimation values — too dark reduces tracking quality, (3) anchor count over time — anchor leaks degrade performance, (4) session interruption frequency — correlates with app backgrounding and poor conditions, (5) average frame rate — drop below 30fps causes discomfort, (6) depth data availability — LiDAR vs. no LiDAR session path. Log these as analytics events prefixed with `ar_`. Monitor [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) for: sessions with >50% time in limited tracking, anchor count >100 sustained, fps consistently below 30. Alerts trigger when any metric exceeds 2 standard deviations from baseline.
 
 ## Production Considerations
 
