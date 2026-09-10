@@ -41,7 +41,7 @@ Exact user phrases: "visual testing", "visual regression", "screenshot diff", "P
 Before activating, verify:
 - Existing test framework (Playwright, Cypress, Storybook)
 - Deployment frequency and team size
-- CI platform ([GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions, GitLab CI, etc.)
+- CI platform ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, etc.)
 - Design system maturity (ad-hoc, partial, comprehensive)
 
 ### Output Artifact
@@ -320,7 +320,7 @@ Stringent thresholds (0%) catch all visual changes but increase false positives 
 
 ### Cloud Visual Testing Services
 
-- **Percy** (BrowserStack): `@percy/cli`, `@percy/playwright`, `@percy/cypress`, `@percy/storybook`. PR integration via [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/GitLab/Bitbucket apps. Parallel builds via CLI flags. Per-component diff thresholds via Percy config.
+- **Percy** (BrowserStack): `@percy/cli`, `@percy/playwright`, `@percy/cypress`, `@percy/storybook`. PR integration via [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)/GitLab/Bitbucket apps. Parallel builds via CLI flags. Per-component diff thresholds via Percy config.
 - **Chromatic** (Chroma): `chromatic` CLI, Storybook addon. Git-native review workflow. Auto-accept changes on main branch. TurboSnap for smart snapshot filtering. Zero-config setup for Storybook projects.
 - **Applitools Eyes**: `@applitools/eyes-playwright`, `@applitools/eyes-cypress`, `@applitools/eyes-storybook`. Ultrafast Grid for parallel cross-browser rendering. AI-powered visual matching with layout, strict, and content match levels.
 - **Happo**: `happo-plugin-playwright`, `happo-plugin-cypress`, `happo-plugin-storybook`. Cross-browser and cross-platform snapshots. Animated GIF diff for motion testing.
@@ -336,8 +336,8 @@ Stringent thresholds (0%) catch all visual changes but increase false positives 
 ### Related Testing Tools
 
 - **Storybook**: Component development environment. Chromatic integration for automatic snapshot capture. Visual testing addon for in-Storybook diff review.
-- **Argos CI**: Open-source visual testing with [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) integration. Git-lfs for baseline image storage. Self-hostable.
-- **Lost Pixel**: Open-source visual regression testing. Storybook and page-based testing. [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Action integration. Visual diff report with zoom and highlight.
+- **Argos CI**: Open-source visual testing with [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) integration. Git-lfs for baseline image storage. Self-hostable.
+- **Lost Pixel**: Open-source visual regression testing. Storybook and page-based testing. [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Action integration. Visual diff report with zoom and highlight.
 
 ## Visual Testing Examples
 
@@ -424,15 +424,15 @@ jobs:
         run: npx percy exec -- npx playwright test --grep @visual
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
-          PERCY_BRANCH: ${{ [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).head_ref }}
-          PERCY_TARGET_BRANCH: ${{ [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).base_ref }}
+          PERCY_BRANCH: ${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).head_ref }}
+          PERCY_TARGET_BRANCH: ${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).base_ref }}
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: visual-diffs
           path: __screenshots__/
   chromatic:
-    if: [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).event_name == 'pull_request'
+    if: [github](../../../ci-cd/github-actions/other/github/SKILL.md).event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -609,7 +609,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
+- Signed commits: GPG or SSH [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management

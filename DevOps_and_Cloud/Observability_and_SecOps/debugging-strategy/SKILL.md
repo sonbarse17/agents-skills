@@ -137,12 +137,12 @@ If not reproducible:
 
 # Binary search commits (git bisect)
 git bisect start
-git bisect bad          # Current [commit](../../CI_CD/commit/SKILL.md) is broken
+git bisect bad          # Current [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) is broken
 git bisect good v1.0.0  # Last known good
 # Git checks out the midpoint; test it:
 npm test
 git bisect good         # or git bisect bad
-# Repeat until [commit](../../CI_CD/commit/SKILL.md) identified
+# Repeat until [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) identified
 
 # Log analysis
 [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) logs -l app=myapp --tail=100 --since=10m > logs.txt
@@ -264,7 +264,7 @@ fix:
 |----------|-----------|
 | Reproduce first, always | Without reproduction, you can't verify the fix |
 | One change at a time | Multiple changes = multiple unknowns |
-| Use git bisect for regressions | Fastest way to find the breaking [commit](../../CI_CD/commit/SKILL.md) |
+| Use git bisect for regressions | Fastest way to find the breaking [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) |
 | Write the regression test first | Test-driven debugging confirms the fix |
 | Check assumptions about data | Null, empty, malformed data causes most bugs |
 | Read the error message completely | Often tells you exactly what's wrong |

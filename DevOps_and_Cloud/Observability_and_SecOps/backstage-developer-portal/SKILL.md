@@ -75,7 +75,7 @@ afterthought.
   not a SaaS product; budget for ongoing app maintenance (Node.js/
   [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) upgrades, plugin version compatibility) as part of adopting
   it.
-- A source-control integration configured ([GitHub](../../CI_CD/github/SKILL.md) App, GitLab
+- A source-control integration configured ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) App, GitLab
   integration, or Bitbucket) so the catalog can discover
   `catalog-info.yaml` files across repos and TechDocs can pull
   Markdown from them.
@@ -98,7 +98,7 @@ afterthought.
 
 ## Step-by-step guidance
 
-1. **Author a `catalog-info.yaml` for an existing service** and [commit](../../CI_CD/commit/SKILL.md)
+1. **Author a `catalog-info.yaml` for an existing service** and [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)
    it to the service's repo root:
    ```yaml
    apiVersion: backstage.io/v1alpha1
@@ -107,7 +107,7 @@ afterthought.
      name: payments-api
      description: Handles payment authorization and settlement
      annotations:
-       [github](../../CI_CD/github/SKILL.md).com/project-slug: acme-corp/payments-api
+       [github](../../../ci-cd/github-actions/other/github/SKILL.md).com/project-slug: acme-corp/payments-api
        backstage.io/techdocs-ref: dir:.
      tags:
        - payments
@@ -162,7 +162,7 @@ afterthought.
    ```yaml
    catalog:
      providers:
-       [github](../../CI_CD/github/SKILL.md):
+       [github](../../../ci-cd/github-actions/other/github/SKILL.md):
          acmeCorpOrg:
            organization: 'acme-corp'
            catalogPath: '/catalog-info.yaml'
@@ -232,9 +232,9 @@ afterthought.
              owner: '${{ parameters.owner }}'
        - id: publish
          name: Create repository
-         action: publish:[github](../../CI_CD/github/SKILL.md)
+         action: publish:[github](../../../ci-cd/github-actions/other/github/SKILL.md)
          input:
-           repoUrl: '[github](../../CI_CD/github/SKILL.md).com?owner=acme-corp&repo=${{ parameters.name }}'
+           repoUrl: '[github](../../../ci-cd/github-actions/other/github/SKILL.md).com?owner=acme-corp&repo=${{ parameters.name }}'
        - id: register
          name: Register in catalog
          action: catalog:register
@@ -324,14 +324,14 @@ afterthought.
   `catalog-info.yaml` never appears in the portal.
   **Fix:** The discovery processor's schedule hasn't run yet (default
   intervals can be 30+ minutes), or the file isn't at the expected
-  `catalogPath`, or the [GitHub](../../CI_CD/github/SKILL.md) App/integration lacks read access to the
+  `catalogPath`, or the [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) App/integration lacks read access to the
   new repo (e.g. it's in an org the integration wasn't granted access
   to). Check the discovery processor's schedule and confirm the
   integration's access scope includes the repo.
 
 - **Symptom:** A Software Template successfully creates a new
   repository, but the service never appears in the catalog.
-  **Fix:** The template's steps ended at `publish:[github](../../CI_CD/github/SKILL.md)` without a
+  **Fix:** The template's steps ended at `publish:[github](../../../ci-cd/github-actions/other/github/SKILL.md)` without a
   `catalog:register` step, so the new `catalog-info.yaml` exists in
   the repo but was never registered with the running catalog. Add the
   `catalog:register` action (step 6) as the template's final step so
@@ -353,8 +353,8 @@ engineering org. Today, "who owns this service" and "how do I spin up a
 new one" are answered by asking in Slack, and there's no central
 documentation index.
 
-1. Deploy Backstage via `@backstage/create-app`, configure the [GitHub](../../CI_CD/github/SKILL.md)
-   integration, and enable the [GitHub](../../CI_CD/github/SKILL.md) discovery provider (step 4)
+1. Deploy Backstage via `@backstage/create-app`, configure the [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)
+   integration, and enable the [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) discovery provider (step 4)
    scanning the `acme-corp` org every 30 minutes for
    `catalog-info.yaml` files.
 2. Register the org's team structure as `Group` entities first (step

@@ -72,8 +72,8 @@ rather than something developers route around.
   ([policy-as-code-guardrails](../[policy-as-code-guardrails](../[policy-as-code](../policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md)).
   This skill assumes those individual tools are chosen/working and
   focuses on how to sequence and gate them together.
-- A CI/CD system with distinguishable pipeline stages (e.g. [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)
-  Actions jobs with `needs:`, GitLab CI `stages:`, [Jenkins](../../DevOps_and_Cloud/CI_CD/jenkins/SKILL.md) pipeline
+- A CI/CD system with distinguishable pipeline stages (e.g. [GitHub](../../ci-cd/github-actions/other/github/SKILL.md)
+  Actions jobs with `needs:`, GitLab CI `stages:`, [Jenkins](../../ci-cd/jenkins/other/jenkins/SKILL.md) pipeline
   stages) and the ability to mark checks as required vs. optional
   status checks on a PR.
 - Agreement from engineering leadership on a severity-to-action mapping
@@ -90,7 +90,7 @@ rather than something developers route around.
 
 1. **Map scan types to pipeline stages by cost and blast radius**, fastest
    and cheapest first:
-   - **Pre-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) / local**: secret-scanning (Gitleaks), linters — sub-second
+   - **Pre-[commit](../../ci-cd/common/git-workflow/commit/SKILL.md) / local**: secret-scanning (Gitleaks), linters — sub-second
      feedback, catches the cheapest-to-fix issues before they're even
      committed.
    - **Pull request**: SAST (diff-aware), SCA (dependency scan), IaC
@@ -99,7 +99,7 @@ rather than something developers route around.
      high-confidence, high-severity findings in new/changed code.
    - **Merge to main / pre-release build**: container image scan (SCA
      against the built image), SBOM generation, artifact signing — runs
-     once per merge, not per-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)-in-PR, since it needs a built
+     once per merge, not per-[commit](../../ci-cd/common/git-workflow/commit/SKILL.md)-in-PR, since it needs a built
      artifact.
    - **Pre-production deploy / scheduled**: DAST baseline scan against a
      staging/preview environment, full-repo SAST/SCA sweep — these are
@@ -122,7 +122,7 @@ rather than something developers route around.
    ```
 
 3. **Wire required status checks** to match exactly this table — don't
-   mark a tool as a "required" [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) check if its default behavior would
+   mark a tool as a "required" [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) check if its default behavior would
    block on medium/low findings; configure the tool's own exit-code
    behavior to match the table first.
    ```yaml
@@ -145,7 +145,7 @@ rather than something developers route around.
    protects code entering `main`; a release gate protects what reaches
    production and can afford to be stricter and slower (e.g. include a
    DAST baseline scan against a preview environment that wouldn't be
-   practical to run on every single [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)).
+   practical to run on every single [commit](../../ci-cd/common/git-workflow/commit/SKILL.md)).
 
 5. **Give every blocking finding a suppression/exception path with an
    expiry**, consistent across tools (see the per-tool skills for
@@ -153,7 +153,7 @@ rather than something developers route around.
    hatch gets bypassed by disabling the whole check instead.
 
 6. **Consolidate reporting** — export SARIF from SAST/DAST/IaC tools and
-   JSON from SCA into one dashboard ([GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) code scanning, a SIEM, or a
+   JSON from SCA into one dashboard ([GitHub](../../ci-cd/github-actions/other/github/SKILL.md) code scanning, a SIEM, or a
    dedicated AppSec tool like DefectDojo) so a developer or reviewer
    checks one place, not four.
 
@@ -167,7 +167,7 @@ rather than something developers route around.
 - Order gates by speed and confidence: fast, high-confidence checks
   (secret-scanning, diff-aware SAST) block PRs; slow or lower-confidence
   checks (full DAST, full-repo SAST sweep) run on a schedule or at
-  release time and feed a dashboard instead of blocking every [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md).
+  release time and feed a dashboard instead of blocking every [commit](../../ci-cd/common/git-workflow/commit/SKILL.md).
 - Use one severity-to-action table across all tools rather than trusting
   each tool's own default thresholds — inconsistency here is the single
   biggest source of "why did this block but that similar thing didn't"
@@ -192,11 +192,11 @@ rather than something developers route around.
 
 - **Symptom:** Every PR takes 40+ minutes because SAST, full SCA, and a
   DAST scan against a spun-up preview environment all run synchronously
-  on every [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md).
+  on every [commit](../../ci-cd/common/git-workflow/commit/SKILL.md).
   **Fix:** Split into fast/blocking PR-time checks (diff-aware SAST,
   dependency scan, secret scan — should complete in a few minutes) and
   slow checks (DAST, full-repo sweeps) that run on a schedule or at
-  release time instead of every [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md).
+  release time instead of every [commit](../../ci-cd/common/git-workflow/commit/SKILL.md).
 
 - **Symptom:** Three different tools (a SAST rule, a dedicated
   secret-scanner, and the SCA tool's license scanner) all separately flag
@@ -240,7 +240,7 @@ Stage table (documented in the repo, e.g. `docs/security-gates.md`):
 ```
 | Stage                | Checks                                  | Blocking on          |
 |----------------------|------------------------------------------|-----------------------|
-| Pre-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)           | Gitleaks (secrets)                       | Any match             |
+| Pre-[commit](../../ci-cd/common/git-workflow/commit/SKILL.md)           | Gitleaks (secrets)                       | Any match             |
 | Pull request         | Semgrep SAST (diff), Trivy SCA (fs),     | Critical/High (new)  |
 |                       | Conftest IaC policy                      |                       |
 | Merge to main         | Trivy image scan, Syft SBOM, cosign sign | Critical/High         |
@@ -248,7 +248,7 @@ Stage table (documented in the repo, e.g. `docs/security-gates.md`):
 | Nightly               | ZAP full scan, full-repo SAST/SCA sweep  | Report only (ticketed)|
 ```
 
-`.[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/pr-gates.yml`:
+`.[github](../../ci-cd/github-actions/other/github/SKILL.md)/workflows/pr-gates.yml`:
 ```yaml
 name: pr-security-gates
 on: [pull_request]
@@ -260,7 +260,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with: { fetch-depth: 0 }
-      - run: semgrep ci --config p/owasp-top-ten --baseline-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) "${{ [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).event.pull_request.base.sha }}"
+      - run: semgrep ci --config p/owasp-top-ten --baseline-[commit](../../ci-cd/common/git-workflow/commit/SKILL.md) "${{ [github](../../ci-cd/github-actions/other/github/SKILL.md).event.pull_request.base.sha }}"
 
   sca:
     runs-on: ubuntu-latest
@@ -303,6 +303,6 @@ checks that could drift out of sync.
   release/nightly-stage dynamic testing this design defers out of the
   PR-blocking path.
 - [secrets-management](../[secrets-management](../../DevOps_and_Cloud/Cloud_Providers/secrets-management/SKILL.md)/SKILL.md) — the
-  pre-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)/PR-time secret-scanning stage.
+  pre-[commit](../../ci-cd/common/git-workflow/commit/SKILL.md)/PR-time secret-scanning stage.
 - [policy-as-code-guardrails](../[policy-as-code-guardrails](../[policy-as-code](../policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md) —
   the IaC/admission policy checks incorporated as a pipeline stage here.

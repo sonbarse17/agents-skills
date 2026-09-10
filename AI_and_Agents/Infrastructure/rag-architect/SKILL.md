@@ -144,7 +144,7 @@ def hybrid_search(query: str, tenant_id: str, top_k: int = 20) -> list:
 
 ### 4. Reranking Top-K Results
 
-Load provider API keys from environment variables or a secrets manager; never [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) them to source code.
+Load provider API keys from environment variables or a secrets manager; never [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) them to source code.
 
 ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 import os
@@ -213,5 +213,5 @@ When designing RAG architecture, deliver:
 4. Retrieval pipeline design (query → results flow)
 5. Evaluation plan with metrics, benchmarks, and pass/fail thresholds
 
-[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/data-ml/rag-architect/)
+[Documentation](https://jeffallan.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/data-ml/rag-architect/)
 

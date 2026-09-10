@@ -85,8 +85,8 @@ or misconfiguration at all.
   large managed default ruleset plus the ability to add custom rules in
   the same syntax.
 - Registry/CI access for image scanning integration (Sysdig CLI
-  scanner, `sysdig-cli-scanner`, or the Sysdig Secure [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)
-  Action/[Jenkins](../../../DevOps_and_Cloud/CI_CD/jenkins/SKILL.md) plugin) with a Sysdig API token stored as a CI secret.
+  scanner, `sysdig-cli-scanner`, or the Sysdig Secure [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)
+  Action/[Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md) plugin) with a Sysdig API token stored as a CI secret.
   See [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md).
 - A defined [incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md) escalation path (on-call rotation,
   ticketing/paging integration) before enabling high-severity runtime
@@ -136,11 +136,11 @@ or misconfiguration at all.
 4. **Add image scanning to CI**, so vulnerabilities are caught before
    deploy, not only observed as runtime behavior after the fact:
    ```yaml
-   # [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions
+   # [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions
    - name: Sysdig image scan
      uses: sysdiglabs/scan-action@v5
      with:
-       image-tag: 'myorg/myapp:${{ [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).sha }}'
+       image-tag: 'myorg/myapp:${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).sha }}'
        sysdig-secure-token: ${{ secrets.SYSDIG_SECURE_TOKEN }}
        stop-on-failed-policy-eval: true
    ```

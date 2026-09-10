@@ -89,7 +89,7 @@ Snyk: developer-friendly with IDE integration. Provides fix advice and reachabil
 
 Policy gates: CRITICAL -> block build, fix immediately. HIGH -> block if fixable version exists. MEDIUM -> warn with PR comment. LOW -> info, log only.
 
-Scan at build time and rescan daily for new CVEs. Store results as attestation in registry. Output SARIF for [GitHub](../../CI_CD/github/SKILL.md) Code Scanning integration.
+Scan at build time and rescan daily for new CVEs. Store results as attestation in registry. Output SARIF for [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Code Scanning integration.
 
 ### Step 2: Dockerfile Hardening
 Base image selection: Distroless for production: `gcr.io/distroless/base`. Scratch for statically linked Go binaries. Alpine for tooling and utility images.
@@ -114,7 +114,7 @@ Formats: CycloneDX and SPDX supported. Use SBOM for vulnerability matching, lice
 ### Step 4: Image Signing with Cosign
 Sign image digest after scan passes. `cosign sign --keyless <image>`.
 
-Keyless mode uses OIDC from CI provider. [GitHub](../../CI_CD/github/SKILL.md), GitLab, Google identities supported. No key management burden.
+Keyless mode uses OIDC from CI provider. [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md), GitLab, Google identities supported. No key management burden.
 
 Signature stored in registry alongside image. Verify before admission: `cosign verify --keyless <image>`.
 
@@ -317,9 +317,9 @@ Keyless (Cosign OIDC): no key management, CI provider identity, cloud CI suitabl
 
 ## CI/CD Pipeline Examples
 
-### [GitHub](../../CI_CD/github/SKILL.md) Actions — Container Security Pipeline
+### [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions — Container Security Pipeline
 ```yaml
-# .[github](../../CI_CD/github/SKILL.md)/workflows/container-scan.yml
+# .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/container-scan.yml
 name: Container Security
 on:
   push:
@@ -332,18 +332,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Build Image
-        run: [docker](../docker/SKILL.md) build -t app:${{ [github](../../CI_CD/github/SKILL.md).sha }} .
+        run: [docker](../docker/SKILL.md) build -t app:${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).sha }} .
       - name: Trivy Scan
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: app:${{ [github](../../CI_CD/github/SKILL.md).sha }}
+          image-ref: app:${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).sha }}
           format: sarif
           severity: CRITICAL,HIGH
           exit-code: 1
       - name: Generate SBOM
         uses: anchore/sbom-action@v0
         with:
-          image: app:${{ [github](../../CI_CD/github/SKILL.md).sha }}
+          image: app:${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).sha }}
           format: cyclonedx-json
       - name: Sign Image
         run: |
@@ -351,7 +351,7 @@ jobs:
             --identity-token ${{ secrets.ID_TOKEN }} \
             registry.example.com/app@${{ steps.digest.outputs.digest }}
       - name: Push to Registry
-        run: [docker](../docker/SKILL.md) push registry.example.com/app:${{ [github](../../CI_CD/github/SKILL.md).sha }}
+        run: [docker](../docker/SKILL.md) push registry.example.com/app:${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).sha }}
 ```
 
 ### GitLab CI — Container Security
@@ -419,7 +419,7 @@ spec:
 ## Container Security Anti-Patterns
 
 ### Anti-Pattern: Using :latest Tag
-`latest` tag is ambiguous — point to different images over time. No traceability, no rollback, no [audit](../../../AI_and_Agents/Operations/audit/SKILL.md). Use semantic versioning (`v1.2.3`) or [commit](../../CI_CD/commit/SKILL.md) SHA (`sha-abc123`) for immutable references. Enforce with admission controller blocking `latest`.
+`latest` tag is ambiguous — point to different images over time. No traceability, no rollback, no [audit](../../../AI_and_Agents/Operations/audit/SKILL.md). Use semantic versioning (`v1.2.3`) or [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) SHA (`sha-abc123`) for immutable references. Enforce with admission controller blocking `latest`.
 
 ### Anti-Pattern: Blindly Trusting Base Images
 Pulling base images from [Docker](../docker/SKILL.md) Hub without verification. Base images can contain malware, outdated packages, or backdoors. Use only verified official images. Pin to digest. Scan base images before building. Use [Docker](../docker/SKILL.md) Content Trust or Cosign verification.
@@ -508,7 +508,7 @@ Manual triage does not scale beyond 10-20 images. Automate vulnerability scannin
 
 ## Rules
 - No root user in container runtime
-- No latest tag -- use semantic versioning or [commit](../../CI_CD/commit/SKILL.md) SHA
+- No latest tag -- use semantic versioning or [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) SHA
 - Distroless base for production images
 - Image scan on every build, daily rescan of registry
 - Admission controller blocks unsigned images

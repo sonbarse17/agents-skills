@@ -402,7 +402,7 @@ helm upgrade cilium cilium/cilium --namespace kube-system --reuse-values \
   --set hubble.metrics.destination=prometheus
 
 # Grafana [dashboards](../../Observability_and_SecOps/dashboards/SKILL.md) available at:
-# https://[github](../../CI_CD/github/SKILL.md).com/cilium/cilium/tree/main/install/[kubernetes](../kubernetes/SKILL.md)/cilium/environment/hubble/grafana
+# https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/cilium/cilium/tree/main/install/[kubernetes](../kubernetes/SKILL.md)/cilium/environment/hubble/grafana
 ```
 
 ### Step 13: Cilium Monitor — Real-time Debugging

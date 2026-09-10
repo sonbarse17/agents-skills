@@ -92,7 +92,7 @@ Track progress in `upgrade-status.md` inside the workspace root.
   - [Assessment](references/services/functions/assessment.md)
   - [Automation Scripts](references/services/functions/automation.md)
 - **Redis**
-  - [Redis (ACR or ACRE) to AMR Migration](references/services/redis/redis-to-amr.md) — routes to dedicated [amr-migration-skill](https://[github](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/AzureManagedRedis/amr-migration-skill) (ACR/OSS) or [acre-to-amr-migration-skill](https://[github](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/AzureManagedRedis/acre-to-amr-migration-skill) (Enterprise)
+  - [Redis (ACR or ACRE) to AMR Migration](references/services/redis/redis-to-amr.md) — routes to dedicated [amr-migration-skill](https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/AzureManagedRedis/amr-migration-skill) (ACR/OSS) or [acre-to-amr-migration-skill](https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/AzureManagedRedis/acre-to-amr-migration-skill) (Enterprise)
 - **Java SDK Migration Templates**
   - [Plan Template](references/languages/java/templates/PLAN_TEMPLATE.md)
   - [Progress Template](references/languages/java/templates/PROGRESS_TEMPLATE.md)

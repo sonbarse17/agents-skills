@@ -70,7 +70,7 @@ an in-cluster operator (there is no cluster).
 - A working CI/CD pipeline that already packages a zip/layer, uploads it,
   and deploys via SAM/[Serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) Framework with alias-based traffic
   shifting — see
-  [complete-[cicd-pipeline](../../../../DevOps_and_Cloud/CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)-from-scratch](../../../cicd-tooling/skills/[complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)-from-scratch](../complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)-from-scratch/SKILL.md)/SKILL.md)
+  [complete-[cicd-pipeline](../../../../ci-cd/common/pipeline-design/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)-from-scratch](../../../cicd-tooling/skills/[complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)-from-scratch](../complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)-from-scratch/SKILL.md)/SKILL.md)
   for that base pipeline; this skill adds the security-gate layer onto it.
 - SAST and SCA tooling chosen per
   [sast-integration](../[sast-integration](../../../Security/sast-integration/SKILL.md)/SKILL.md) and
@@ -175,7 +175,7 @@ least-privilege guidance — resource-ARN-scoped statements, not
 ### Phase 5 — Deploy (unchanged from the base CI/CD pipeline)
 
 Package upload, SAM/[Serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) Framework deploy, alias-based canary — per
-[complete-[cicd-pipeline](../../../../DevOps_and_Cloud/CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)-from-scratch](../../../cicd-tooling/skills/[complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)-from-scratch](../complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)-from-scratch/SKILL.md)/SKILL.md).
+[complete-[cicd-pipeline](../../../../ci-cd/common/pipeline-design/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)-from-scratch](../../../cicd-tooling/skills/[complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)-from-scratch](../complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)-from-scratch/SKILL.md)/SKILL.md).
 
 ### Phase 6 — Secrets: fetched by the function at runtime, never baked in
 
@@ -311,7 +311,7 @@ jobs:
 
   deploy:
     needs: iam-role-diff-gate
-    if: [github](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).event_name == 'push'
+    if: [github](../../../../ci-cd/github-actions/other/github/SKILL.md).event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - run: sam deploy --stack-name payments-webhook --no-confirm-changeset --capabilities CAPABILITY_IAM
@@ -324,7 +324,7 @@ or [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.
 
 ## Cross-references
 
-- [complete-[cicd-pipeline](../../../../DevOps_and_Cloud/CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)-from-scratch](../../../cicd-tooling/skills/[complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)-from-scratch](../complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)-from-scratch/SKILL.md)/SKILL.md) — the base packaging/deploy pipeline this skill adds security gates onto.
+- [complete-[cicd-pipeline](../../../../ci-cd/common/pipeline-design/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)-from-scratch](../../../cicd-tooling/skills/[complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)-from-scratch](../complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)-from-scratch/SKILL.md)/SKILL.md) — the base packaging/deploy pipeline this skill adds security gates onto.
 - [sast-integration](../[sast-integration](../../../Security/sast-integration/SKILL.md)/SKILL.md) and [software-composition-analysis-sca](../[software-composition-analysis-sca](../../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md) — Phase 1-2 gate mechanics.
 - [supply-chain-security-slsa-sbom](../[supply-chain-security-slsa-sbom](../../../Security/[supply-chain-security](../../../Security/supply-chain-security/SKILL.md)-slsa-sbom/SKILL.md)/SKILL.md) — Phase 3's signing/provenance mechanics.
 - [aws-lambda-packaging-and-configuration](../../../[serverless](../../Containers_and_Orchestration/serverless/SKILL.md)-and-alternative-compute/skills/[aws-lambda-packaging-and-configuration](../[aws-lambda](../aws-lambda/SKILL.md)-packaging-and-configuration/SKILL.md)/SKILL.md) — execution-role least-privilege design referenced in Phase 4.

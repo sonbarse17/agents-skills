@@ -316,7 +316,7 @@ Then decide, strictly:
 
 | Result vs. baseline | Action |
 |---|---|
-| Past the threshold, tests green | **Keep.** [Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) with the before/after numbers in the message. |
+| Past the threshold, tests green | **Keep.** [Commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) with the before/after numbers in the message. |
 | Within noise (no measurable change) | **Revert.** |
 | Worse | **Revert.** |
 | Improved, but a test went red | **Revert.** A regression wearing a win's clothing. |

@@ -65,7 +65,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions.
 ### Compute Decision Tree
 - Simple app, no container orchestration: Droplets with load balancer.
 - Containerized apps, need orchestration: DOKS (DigitalOcean [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)).
-- [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) / PaaS: App Platform (build from [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md), auto-deploy).
+- [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) / PaaS: App Platform (build from [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md), auto-deploy).
 - Batch / background jobs: Droplets or Functions.
 - GPU / ML workloads: Droplets with GPU plans.
 
@@ -295,7 +295,7 @@ region: nyc
 services:
 - build_command: npm run build
   environment_slug: node-js
-  [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md):
+  [github](../../../ci-cd/github-actions/other/github/SKILL.md):
     branch: main
     deploy_on_push: true
     repo: your-org/app-repo
@@ -309,7 +309,7 @@ services:
 static_sites:
 - build_command: npm run build
   environment_slug: node-js
-  [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md):
+  [github](../../../ci-cd/github-actions/other/github/SKILL.md):
     branch: main
     deploy_on_push: true
     repo: your-org/app-frontend

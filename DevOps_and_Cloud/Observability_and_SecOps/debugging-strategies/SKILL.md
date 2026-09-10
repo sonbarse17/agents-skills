@@ -280,7 +280,7 @@ stats.print_stats(10)  # Top 10 slowest
 
 ```go
 // Delve debugger
-// Install: go install [github](../../CI_CD/github/SKILL.md).com/go-delve/delve/cmd/dlv@latest
+// Install: go install [github](../../../ci-cd/github-actions/other/github/SKILL.md).com/go-delve/delve/cmd/dlv@latest
 // Run: dlv debug main.go
 
 import (
@@ -329,10 +329,10 @@ defer pprof.StopCPUProfile()
 ```bash
 # Git bisect for finding regression
 git bisect start
-git bisect bad                    # Current [commit](../../CI_CD/commit/SKILL.md) is bad
+git bisect bad                    # Current [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) is bad
 git bisect good v1.0.0            # v1.0.0 was good
 
-# Git checks out middle [commit](../../CI_CD/commit/SKILL.md)
+# Git checks out middle [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)
 # Test it, then:
 git bisect good   # if it works
 git bisect bad    # if it's broken

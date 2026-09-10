@@ -85,7 +85,7 @@ every staging deploy.
   to seed the scanner's crawl instead of relying on link discovery alone.
 - CI runner with enough memory/CPU headroom — active scans against a
   non-trivial app can run 15-60+ minutes; budget pipeline time
-  accordingly or run on a schedule rather than every [commit](../../CI_CD/commit/SKILL.md).
+  accordingly or run on a schedule rather than every [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md).
 
 ## Step-by-step guidance
 
@@ -93,7 +93,7 @@ every staging deploy.
    PR-preview environment — it only observes traffic and crawls
    passively, so it's safe to run frequently and unattended:
    ```yaml
-   # [GitHub](../../CI_CD/github/SKILL.md) Actions
+   # [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions
    name: dast-baseline
    on:
      pull_request:
@@ -104,7 +104,7 @@ every staging deploy.
          - name: ZAP Baseline Scan
            uses: zaproxy/action-baseline@v0.12.0
            with:
-             target: 'https://pr-${{ [github](../../CI_CD/github/SKILL.md).event.number }}.staging.example.internal'
+             target: 'https://pr-${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).event.number }}.staging.example.internal'
              rules_file_name: '.zap/rules.tsv'
              cmd_options: '-a'
    ```
@@ -240,7 +240,7 @@ scheduled full scan against a dedicated DAST test environment.
 10096	WARN	Timestamp disclosure in response headers - internal env only
 ```
 
-`.[github](../../CI_CD/github/SKILL.md)/workflows/dast.yml`:
+`.[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/dast.yml`:
 ```yaml
 name: dast
 on:
@@ -250,19 +250,19 @@ on:
 
 jobs:
   baseline:
-    if: [github](../../CI_CD/github/SKILL.md).event_name == 'pull_request'
+    if: [github](../../../ci-cd/github-actions/other/github/SKILL.md).event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: ZAP baseline scan against PR preview
         uses: zaproxy/action-baseline@v0.12.0
         with:
-          target: 'https://pr-${{ [github](../../CI_CD/github/SKILL.md).event.number }}.staging.example.internal'
+          target: 'https://pr-${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).event.number }}.staging.example.internal'
           rules_file_name: '.zap/rules.tsv'
           fail_action: true
 
   full-scan:
-    if: [github](../../CI_CD/github/SKILL.md).event_name == 'schedule'
+    if: [github](../../../ci-cd/github-actions/other/github/SKILL.md).event_name == 'schedule'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

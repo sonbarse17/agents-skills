@@ -20,7 +20,7 @@ depends_on:
 
 # Access Review
 
-Implement periodic access review processes for AWS IAM, [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md), Okta, and other identity providers, including automated reporting, certification workflows, and unused permission detection.
+Implement periodic access review processes for AWS IAM, [GitHub](../../ci-cd/github-actions/other/github/SKILL.md), Okta, and other identity providers, including automated reporting, certification workflows, and unused permission detection.
 
 ## When to Use
 
@@ -152,17 +152,17 @@ aws iam get-credential-report --output text --query Content | base64 -d | \
 echo "Report generated in $OUTPUT_DIR"
 ```
 
-## [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Access Review
+## [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Access Review
 
 ```bash
 #!/usr/bin/env bash
-# [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-access-review.sh - [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) organization access [audit](../../AI_and_Agents/Operations/audit/SKILL.md)
+# [github](../../ci-cd/github-actions/other/github/SKILL.md)-access-review.sh - [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) organization access [audit](../../AI_and_Agents/Operations/audit/SKILL.md)
 
 ORG="your-org"
-OUTPUT_DIR="./access-review/[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/$(date +%Y-%m)"
+OUTPUT_DIR="./access-review/[github](../../ci-cd/github-actions/other/github/SKILL.md)/$(date +%Y-%m)"
 mkdir -p "$OUTPUT_DIR"
 
-echo "=== [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Organization Access Review ==="
+echo "=== [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Organization Access Review ==="
 
 echo "--- Organization Members ---"
 gh api orgs/$ORG/members --paginate \
@@ -377,7 +377,7 @@ def detect_overprivileged_roles():
 ## Certification Workflow Automation
 
 ```yaml
-# [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions - Automated access review reminder and tracking
+# [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions - Automated access review reminder and tracking
 name: Quarterly Access Review
 on:
   schedule:
@@ -398,7 +398,7 @@ jobs:
           OKTA_API_TOKEN: ${{ secrets.OKTA_API_TOKEN }}
         run: |
           bash scripts/[aws-iam](../../cloud/aws/identity/aws-iam/SKILL.md)-review.sh
-          bash scripts/[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-access-review.sh
+          bash scripts/[github](../../ci-cd/github-actions/other/github/SKILL.md)-access-review.sh
           bash scripts/okta-access-review.sh
 
       - name: Create review issue
@@ -425,7 +425,7 @@ jobs:
           - [ ] Enforce MFA for non-compliant users
           - [ ] Rotate or deactivate stale access keys
           - [ ] Review admin/privileged access assignments
-          - [ ] Review outside collaborators on [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)
+          - [ ] Review outside collaborators on [GitHub](../../ci-cd/github-actions/other/github/SKILL.md)
           - [ ] Certify remaining access is appropriate
           - [ ] Document exceptions with justification
 

@@ -34,7 +34,7 @@ Use this skill when:
 
 ## Prerequisites
 
-- Git repository with [commit](../../CI_CD/commit/SKILL.md) history
+- Git repository with [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) history
 - Node.js (for most tools)
 - Conventional commits (recommended)
 
@@ -73,7 +73,7 @@ Examples:
 ## Conventional Commits to Version
 
 ```yaml
-[Commit](../../CI_CD/commit/SKILL.md) Type → Version Bump:
+[Commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) Type → Version Bump:
   feat:     → MINOR
   fix:      → PATCH
   docs:     → PATCH (or no release)
@@ -105,7 +105,7 @@ npm install --save-dev semantic-release \
 {
   "branches": ["main"],
   "plugins": [
-    "@semantic-release/[commit](../../CI_CD/commit/SKILL.md)-analyzer",
+    "@semantic-release/[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)-analyzer",
     "@semantic-release/release-notes-generator",
     ["@semantic-release/changelog", {
       "changelogFile": "CHANGELOG.md"
@@ -117,7 +117,7 @@ npm install --save-dev semantic-release \
       "assets": ["CHANGELOG.md", "package.json", "package-lock.json"],
       "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
     }],
-    "@semantic-release/[github](../../CI_CD/github/SKILL.md)"
+    "@semantic-release/[github](../../../ci-cd/github-actions/other/github/SKILL.md)"
   ]
 }
 ```
@@ -133,7 +133,7 @@ module.exports = {
     { name: 'alpha', prerelease: true }
   ],
   plugins: [
-    ['@semantic-release/[commit](../../CI_CD/commit/SKILL.md)-analyzer', {
+    ['@semantic-release/[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)-analyzer', {
       [preset](../../../AI_and_Agents/Infrastructure/deploy-model/[preset](../../../AI_and_Agents/Models_and_FineTuning/[preset](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/preset/SKILL.md)/SKILL.md)/SKILL.md): 'angular',
       releaseRules: [
         { type: 'docs', release: 'patch' },
@@ -152,15 +152,15 @@ module.exports = {
     '@semantic-release/changelog',
     '@semantic-release/npm',
     '@semantic-release/git',
-    '@semantic-release/[github](../../CI_CD/github/SKILL.md)'
+    '@semantic-release/[github](../../../ci-cd/github-actions/other/github/SKILL.md)'
   ]
 };
 ```
 
-### [GitHub](../../CI_CD/github/SKILL.md) Actions Integration
+### [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions Integration
 
 ```yaml
-# .[github](../../CI_CD/github/SKILL.md)/workflows/release.yml
+# .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/release.yml
 name: Release
 
 on:
@@ -215,11 +215,11 @@ npm install --save-dev standard-version
   "skip": {
     "bump": false,
     "changelog": false,
-    "[commit](../../CI_CD/commit/SKILL.md)": false,
+    "[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)": false,
     "tag": false
   },
-  "commitUrlFormat": "https://[github](../../CI_CD/github/SKILL.md).com/owner/repo/[commit](../../CI_CD/commit/SKILL.md)/{{hash}}",
-  "compareUrlFormat": "https://[github](../../CI_CD/github/SKILL.md).com/owner/repo/compare/{{previousTag}}...{{currentTag}}"
+  "commitUrlFormat": "https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/owner/repo/[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)/{{hash}}",
+  "compareUrlFormat": "https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/owner/repo/compare/{{previousTag}}...{{currentTag}}"
 }
 ```
 
@@ -295,8 +295,8 @@ header = "# Changelog\n\n"
 body = """
 {% for group, commits in commits | group_by(attribute="group") %}
 ## {{ group | upper_first }}
-{% for [commit](../../CI_CD/commit/SKILL.md) in commits %}
-- {{ [commit](../../CI_CD/commit/SKILL.md).message | upper_first }}\
+{% for [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) in commits %}
+- {{ [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md).message | upper_first }}\
 {% endfor %}
 {% endfor %}
 """
@@ -306,7 +306,7 @@ trim = true
 conventional_commits = true
 filter_unconventional = true
 commit_preprocessors = [
-    { pattern = '\((\w+)\s#([0-9]+)\)', replace = "([#${2}](https://[github](../../CI_CD/github/SKILL.md).com/owner/repo/issues/${2}))" },
+    { pattern = '\((\w+)\s#([0-9]+)\)', replace = "([#${2}](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/owner/repo/issues/${2}))" },
 ]
 commit_parsers = [
     { message = "^feat", group = "Features" },
@@ -358,7 +358,7 @@ npm version $NEW_VERSION --no-git-tag-version
 
 # Create git tag
 git add package.json package-lock.json
-git [commit](../../CI_CD/commit/SKILL.md) -m "chore: bump version to $NEW_VERSION"
+git [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) -m "chore: bump version to $NEW_VERSION"
 git tag -a "v$NEW_VERSION" -m "Version $NEW_VERSION"
 ```
 
@@ -408,7 +408,7 @@ if __name__ == '__main__':
     update_version(current, new)
     
     subprocess.run(['git', 'add', 'setup.py'])
-    subprocess.run(['git', '[commit](../../CI_CD/commit/SKILL.md)', '-m', f'chore: bump version to {new}'])
+    subprocess.run(['git', '[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)', '-m', f'chore: bump version to {new}'])
     subprocess.run(['git', 'tag', '-a', f'v{new}', '-m', f'Version {new}'])
 ```
 
@@ -461,11 +461,11 @@ npx changeset publish
 
 ### Issue: No Version Bump
 **Problem**: semantic-release not creating release
-**Solution**: Check [commit](../../CI_CD/commit/SKILL.md) format, verify branch configuration
+**Solution**: Check [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) format, verify branch configuration
 
 ### Issue: Wrong Version Calculated
 **Problem**: Major/minor/patch incorrectly determined
-**Solution**: Review [commit](../../CI_CD/commit/SKILL.md) analyzer rules, check for missing prefixes
+**Solution**: Review [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) analyzer rules, check for missing prefixes
 
 ### Issue: Duplicate Tags
 **Problem**: Tag already exists

@@ -306,7 +306,7 @@ rosa create cluster --cluster-name payments-prod --sts \
   --region us-east-1 --version 4.16 --compute-nodes 3
 rosa create operator-roles --cluster payments-prod --mode auto --yes
 rosa create oidc-provider --cluster payments-prod --mode auto --yes
-rosa create idp --cluster payments-prod --type [github](../../CI_CD/github/SKILL.md) \
+rosa create idp --cluster payments-prod --type [github](../../../ci-cd/github-actions/other/github/SKILL.md) \
   --client-id <CLIENT_ID> --client-secret <CLIENT_SECRET_PLACEHOLDER>
 ```
 

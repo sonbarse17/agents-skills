@@ -167,5 +167,5 @@ read-first, approval-gated operating model.
 
 See [the endpoint and approval contract](../../../Global_References/endpoint-contract.md) when a
 route boundary is unclear. See the official guide at
-https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Xquik-dev/hermes-tweet#readme.
+https://[github](../../ci-cd/github-actions/other/github/SKILL.md).com/Xquik-dev/hermes-tweet#readme.
 

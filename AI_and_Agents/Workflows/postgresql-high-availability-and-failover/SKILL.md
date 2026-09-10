@@ -139,7 +139,7 @@ device is unavailable.
 `synchronous_mode: true` in Patroni (paired with
 `synchronous_commit: on` and Postgres's own
 `synchronous_standby_names`) guarantees a promoted replica never loses a
-committed transaction, at the cost of every [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) on the primary
+committed transaction, at the cost of every [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) on the primary
 waiting for at least one synchronous replica's ACK — a slow or
 partitioned replica directly increases primary write latency, and in the
 worst case (`synchronous_mode_strict`) can block all writes if no

@@ -75,7 +75,7 @@ export KIBANA_PASSWORD="changeme"
 
 #### Option 4: Local Development with start-local
 
-Use [start-local](https://[github](../../CI_CD/github/SKILL.md).com/elastic/start-local) to spin up Elasticsearch/Kibana locally, then source the
+Use [start-local](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/elastic/start-local) to spin up Elasticsearch/Kibana locally, then source the
 generated `.env`:
 
 ```bash

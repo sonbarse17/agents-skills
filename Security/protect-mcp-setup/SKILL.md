@@ -214,6 +214,6 @@ Each receipt is a JSON file with this structure:
 
 - **npm**: [protect-mcp](https://www.npmjs.com/package/protect-mcp)
 - **Verify CLI**: [@veritasacta/verify](https://www.npmjs.com/package/@veritasacta/verify)
-- **Source**: [github.com/ScopeBlind/scopeblind-gateway](https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/ScopeBlind/scopeblind-gateway)
+- **Source**: [github.com/ScopeBlind/scopeblind-gateway](https://[github](../../ci-cd/github-actions/other/github/SKILL.md).com/ScopeBlind/scopeblind-gateway)
 - **Protocol**: [veritasacta.com](https://veritasacta.com)
 - **Integrations**: Microsoft Agent Governance Toolkit (PR #667), AWS cedar-policy/cedar-for-agents (PR #64)

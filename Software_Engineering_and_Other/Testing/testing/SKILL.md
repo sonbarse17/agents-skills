@@ -38,7 +38,7 @@ User request includes: `mobile test`, `mobile testing`, `unit test mobile`, `wid
 ### Input Context
 - Platform (iOS, [Android](../../../Mobile/android/SKILL.md), Flutter, React Native)
 - Testing framework (XCTest, JUnit, flutter_test, Jest)
-- CI provider ([GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions, Bitrise, GitLab CI)
+- CI provider ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions, Bitrise, GitLab CI)
 
 ### Output Artifact
 A markdown document containing:
@@ -583,7 +583,7 @@ appId: com.example.app
 
 ## CI Integration
 
-### [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions — Flutter
+### [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions — Flutter
 ```yaml
 name: Tests
 on: [pull_request]
@@ -604,7 +604,7 @@ jobs:
           min_coverage: 80
 ```
 
-### [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions — [Android](../../../Mobile/android/SKILL.md)
+### [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions — [Android](../../../Mobile/android/SKILL.md)
 ```yaml
 name: [Android](../../../Mobile/android/SKILL.md) Tests
 on: [pull_request]
@@ -624,7 +624,7 @@ jobs:
           path: app/build/reports/tests
 ```
 
-### [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions — iOS
+### [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions — iOS
 ```yaml
 name: iOS Tests
 on: [pull_request]
@@ -637,7 +637,7 @@ jobs:
       - run: swiftlint
 ```
 
-### [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions — React Native
+### [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions — React Native
 ```yaml
 name: RN Tests
 on: [pull_request]

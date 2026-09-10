@@ -190,5 +190,5 @@ When implementing [Python](../python/SKILL.md) features, provide:
 
 [Python](../python/SKILL.md) 3.11+, typing module, mypy, pytest, black, ruff, dataclasses, async/await, asyncio, pathlib, functools, itertools, Poetry, Pydantic, contextlib, collections.abc, Protocol
 
-[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/language/[python](../python/SKILL.md)-pro/)
+[Documentation](https://jeffallan.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/language/[python](../python/SKILL.md)-pro/)
 

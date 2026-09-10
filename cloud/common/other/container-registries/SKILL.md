@@ -66,7 +66,7 @@ echo "$DOCKER_TOKEN" | [docker](../../../../DevOps_and_Cloud/Containers_and_Orch
 ### Automated Builds
 
 Configure in [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Hub UI:
-1. Connect [GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/Bitbucket repository
+1. Connect [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md)/Bitbucket repository
 2. Set build rules (branch → tag mapping)
 3. Configure build context and Dockerfile path
 
@@ -288,7 +288,7 @@ gcloud artifacts repositories set-cleanup-policies myrepo \
 }
 ```
 
-## [GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Container Registry (GHCR)
+## [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Container Registry (GHCR)
 
 ### Authentication
 
@@ -312,7 +312,7 @@ echo "$GITHUB_TOKEN" | [docker](../../../../DevOps_and_Cloud/Containers_and_Orch
 
 ### Visibility Settings
 
-Configure in [GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md):
+Configure in [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md):
 1. Go to package settings
 2. Change visibility (public/private)
 3. Manage access for teams/users
@@ -342,7 +342,7 @@ Configure in [GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md):
 
 ```bash
 # Download Harbor
-wget https://[github](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/goharbor/harbor/releases/download/v2.9.0/harbor-online-installer-v2.9.0.tgz
+wget https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/goharbor/harbor/releases/download/v2.9.0/harbor-online-installer-v2.9.0.tgz
 tar xzvf harbor-online-installer-v2.9.0.tgz
 
 # Configure harbor.yml

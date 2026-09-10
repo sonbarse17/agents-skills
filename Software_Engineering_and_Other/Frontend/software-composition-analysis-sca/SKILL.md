@@ -35,7 +35,7 @@ code — direct dependencies plus their own transitive dependencies, often
 outnumbering an application's own source code by an order of magnitude or
 more. Software Composition Analysis (SCA) identifies every component in
 that dependency tree, matches it against vulnerability databases (the
-National Vulnerability Database/NVD, [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Advisory Database, OSV.dev,
+National Vulnerability Database/NVD, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Advisory Database, OSV.dev,
 vendor advisories) and license databases, and flags known-vulnerable or
 license-incompatible components before they ship. Unlike SAST (which
 analyzes code you wrote) or DAST (which probes running behavior), SCA is
@@ -83,11 +83,11 @@ that was never updated.
     (Go) — good lightweight first line, but each only understands its own
     ecosystem, so a polyglot repo needs multiple tools or a
     multi-ecosystem scanner (Trivy/Grype) as well.
-  - **Dependabot** (native to [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)) or **Renovate** (self-hosted or
+  - **Dependabot** (native to [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)) or **Renovate** (self-hosted or
     Mend-hosted, more configurable) — for automated update PRs rather
     than point-in-time scanning.
 - Network egress from CI to the relevant vulnerability database/registry
-  (NVD, OSV.dev, [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Advisory API, or a mirrored internal feed for
+  (NVD, OSV.dev, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Advisory API, or a mirrored internal feed for
   air-gapped environments).
 - A defined severity threshold and remediation SLA (e.g. "critical:
   patch within 48h, high: 2 weeks") — without one, SCA produces a large
@@ -135,7 +135,7 @@ that was never updated.
 4. **Configure automated dependency updates** so fixes land as PRs
    instead of manual triage. Dependabot example:
    ```yaml
-   # .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/dependabot.yml
+   # .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/dependabot.yml
    version: 2
    updates:
      - package-ecosystem: "npm"
@@ -217,7 +217,7 @@ that was never updated.
 - **Symptom:** The same CVE is reported by three different tools with
   three different severity scores, confusing prioritization.
   **Fix:** Pick one primary source of truth for severity (e.g. the
-  vendor/[GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Advisory Database CVSS score) for gating decisions, and
+  vendor/[GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Advisory Database CVSS score) for gating decisions, and
   treat other tools' scores as supplementary context, not competing gates.
 
 - **Symptom:** A container image scan reports dozens of CRITICAL findings
@@ -241,7 +241,7 @@ A Node.js service adds Trivy filesystem scanning to CI, Dependabot for
 automated updates, and a documented suppression for one unfixed
 low-exploitability CVE.
 
-`.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/sca.yml`:
+`.[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/sca.yml`:
 ```yaml
 name: sca
 on: [pull_request]
@@ -267,7 +267,7 @@ jobs:
 CVE-2024-XXXXX
 ```
 
-`.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/dependabot.yml`:
+`.[github](../../../ci-cd/github-actions/other/github/SKILL.md)/dependabot.yml`:
 ```yaml
 version: 2
 updates:
@@ -293,7 +293,7 @@ Total: 1 (HIGH: 1)
 │ ejs     │ CVE-2024-YYYYY │ HIGH     │ fixed    │ 3.1.6         │ 3.1.10        │
 └─────────┴────────────────┴──────────┴──────────┴───────────────┴───────────────┘
 ```
-Remediation: bump `ejs` to `>=3.1.10` (`npm install ejs@3.1.10`), [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)
+Remediation: bump `ejs` to `>=3.1.10` (`npm install ejs@3.1.10`), [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)
 the updated lockfile, and re-run the scan to confirm it clears.
 
 ## Cross-references

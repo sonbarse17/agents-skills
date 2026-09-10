@@ -267,7 +267,7 @@ db.orders.aggregate([
 ```
 
 ### Step 8: Backup and Restoration Strategies
-[MongoDB](../../Backend/mongodb/SKILL.md): mongodump for logical backups (slower, cross-version), file-system snapshots for fast physical backups (EBS snapshots, LVM), Ops Manager for continuous backup with point-in-time recovery. Cassandra: nodetool snapshot for hard-link snapshots, incremental backups with incremental_backups=true, [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) log archiving for point-in-time recovery. DynamoDB: on-demand backup (full copy), point-in-time recovery (PITR) for last 35 days, cross-region replication for DR.
+[MongoDB](../../Backend/mongodb/SKILL.md): mongodump for logical backups (slower, cross-version), file-system snapshots for fast physical backups (EBS snapshots, LVM), Ops Manager for continuous backup with point-in-time recovery. Cassandra: nodetool snapshot for hard-link snapshots, incremental backups with incremental_backups=true, [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) log archiving for point-in-time recovery. DynamoDB: on-demand backup (full copy), point-in-time recovery (PITR) for last 35 days, cross-region replication for DR.
 
 ```yaml
 # Cassandra backup configuration

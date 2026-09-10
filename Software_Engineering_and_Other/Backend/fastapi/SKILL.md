@@ -228,7 +228,7 @@ class SqlAlchemyUserRepository(UserRepository):
     async def save(self, user: User) -> None:
         model = UserModel(id=user.id, email=user.email, name=user.name)
         self.session.add(model)
-        await self.session.[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)()
+        await self.session.[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)()
 
     async def find_all(self, skip: int = 0, limit: int = 20) -> tuple[list[User], int]:
         result = await self.session.execute(

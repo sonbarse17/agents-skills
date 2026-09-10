@@ -210,12 +210,12 @@ Map findings to OWASP Top 10 using `../../../Global_References/dast-zap_owasp_ma
 
 ## Automation & CI/CD Integration
 
-### [GitHub](../../CI_CD/github/SKILL.md) Actions Integration
+### [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions Integration
 
-Add ZAP scanning to [GitHub](../../CI_CD/github/SKILL.md) workflows:
+Add ZAP scanning to [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) workflows:
 
 ```yaml
-# .[github](../../CI_CD/github/SKILL.md)/workflows/zap-scan.yml
+# .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/zap-scan.yml
 name: ZAP Security Scan
 on: [push, pull_request]
 
@@ -254,11 +254,11 @@ The bundled `assets/zap_automation.yaml` template includes:
 
 ### CI/CD Best Practices
 
-- Use **baseline scans** for every [commit](../../CI_CD/commit/SKILL.md)/PR (low false positives)
+- Use **baseline scans** for every [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)/PR (low false positives)
 - Run **full scans** on staging environments before production deployment
 - Configure **API scans** for [microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) and REST endpoints
 - Set **failure thresholds** to break builds on high-severity findings
-- Generate **SARIF reports** for [GitHub](../../CI_CD/github/SKILL.md) Security tab integration
+- Generate **SARIF reports** for [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Security tab integration
 
 See `scripts/ci_integration.sh` for complete CI/CD integration examples.
 
@@ -281,7 +281,7 @@ See `scripts/ci_integration.sh` for complete CI/CD integration examples.
 - `zap_full_scan.sh` - Comprehensive active scanning with exclusion rules
 - `zap_api_scan.py` - API testing with OpenAPI/GraphQL specification support
 - `zap_auth_scanner.py` - Authenticated scanning with multiple authentication methods
-- `ci_integration.sh` - CI/CD integration examples for [Jenkins](../../CI_CD/jenkins/SKILL.md), GitLab CI, [GitHub](../../CI_CD/github/SKILL.md) Actions
+- `ci_integration.sh` - CI/CD integration examples for [Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md), GitLab CI, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions
 
 ### References (`references/`)
 
@@ -297,7 +297,7 @@ See `scripts/ci_integration.sh` for complete CI/CD integration examples.
 - `zap_context.xml` - Context configuration with authentication and session management
 - `scan_policy_modern_web.policy` - Scan policy optimized for modern JavaScript applications
 - `scan_policy_api.policy` - Scan policy for REST and GraphQL APIs
-- `github_action.yml` - [GitHub](../../CI_CD/github/SKILL.md) Actions workflow template
+- `github_action.yml` - [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions workflow template
 - `gitlab_ci.yml` - GitLab CI pipeline template
 
 ## Common Patterns
@@ -375,12 +375,12 @@ fi
 
 ## Integration Points
 
-- **CI/CD**: [GitHub](../../CI_CD/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../CI_CD/jenkins/SKILL.md), Azure DevOps, [CircleCI](../../CI_CD/circleci/SKILL.md)
-- **Issue Tracking**: Jira, [GitHub](../../CI_CD/github/SKILL.md) Issues (via SARIF), ServiceNow
+- **CI/CD**: [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md), Azure DevOps, [CircleCI](../../../ci-cd/circleci/other/circleci/SKILL.md)
+- **Issue Tracking**: Jira, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Issues (via SARIF), ServiceNow
 - **Security Tools**: Defect Dojo (vulnerability management), SonarQube, OWASP Dependency-Check
 - **SDLC**: Pre-production testing phase, security regression testing, penetration testing preparation
 - **Authentication**: Integrates with OAuth providers, SAML, API gateways, custom authentication scripts
-- **Reporting**: HTML, JSON, XML, Markdown, SARIF (for [GitHub](../../CI_CD/github/SKILL.md) Security), PDF (via custom scripts)
+- **Reporting**: HTML, JSON, XML, Markdown, SARIF (for [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Security), PDF (via custom scripts)
 
 ## Troubleshooting
 
@@ -462,5 +462,5 @@ python3 scripts/zap_auth_scanner.py \
 - [ZAP [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Documentation](https://www.zaproxy.org/docs/[docker](../../Containers_and_Orchestration/docker/SKILL.md)/)
 - [OWASP Top 10 2021](https://owasp.org/Top10/)
 - [ZAP Automation Framework](https://www.zaproxy.org/docs/automate/automation-framework/)
-- [GitHub Actions for ZAP](https://[github](../../CI_CD/github/SKILL.md).com/zaproxy/action-baseline)
+- [GitHub Actions for ZAP](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/zaproxy/action-baseline)
 

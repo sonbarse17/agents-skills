@@ -170,7 +170,7 @@ investing in custom policy authoring for gaps neither tool covers.
    ```bash
    # VPA (recommender only — do not enable the updater/admission components
    # unless auto-resizing is explicitly wanted)
-   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)/autoscaler/releases/latest/download/vpa-recommender.yaml
+   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)/autoscaler/releases/latest/download/vpa-recommender.yaml
 
    helm install goldilocks fairwinds-stable/goldilocks --namespace goldilocks --create-namespace
    ```

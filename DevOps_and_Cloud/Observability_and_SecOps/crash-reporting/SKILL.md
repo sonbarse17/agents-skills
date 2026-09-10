@@ -198,7 +198,7 @@ SentrySDK.addBreadcrumb(Breadcrumb(
 ### Step 6: CI/CD Symbol Upload
 
 ```yaml
-# iOS — [GitHub](../../CI_CD/github/SKILL.md) Actions dSYM upload
+# iOS — [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions dSYM upload
 - run: ./Pods/FirebaseCrashlytics/upload-symbols -gsp $GCS_SERVICE_ACCOUNT
   env:
     GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.FIREBASE_CREDENTIALS }}
@@ -249,7 +249,7 @@ Crash spike detected?
 │   Route: Slack/Teams → #alerts channel
 │   SLA: respond within 30 min (business hours)
 ├── New issue type appears (never seen before)
-│   → Auto-create ticket (Jira/[GitHub](../../CI_CD/github/SKILL.md) issue) with full stack trace
+│   → Auto-create ticket (Jira/[GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) issue) with full stack trace
 │   Priority: P2 (normal bug) or P0 (crash affecting >1% of users)
 └── Error rate spikes (>5% sessions with non-fatals)
     → Send digest to team, no page
@@ -324,7 +324,7 @@ Session replay ([Sentry](../sentry/SKILL.md) Replay, [Datadog](../datadog/SKILL.
 ### CI/CD Symbol Upload Automation
 
 ```yaml
-# .[github](../../CI_CD/github/SKILL.md)/workflows/symbols.yml
+# .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/symbols.yml
 name: Upload Symbols
 
 on:
@@ -607,7 +607,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH [commit](../../CI_CD/commit/SKILL.md) signing
+- Signed commits: GPG or SSH [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management

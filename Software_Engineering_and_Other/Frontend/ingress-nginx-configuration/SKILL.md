@@ -80,7 +80,7 @@ loudly instead of silently.
 1. **Install via Helm**, choosing the exposure method for your
    environment:
    ```bash
-   helm repo add ingress-nginx https://[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/ingress-nginx
+   helm repo add ingress-nginx https://[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/ingress-nginx
    helm repo update
    helm install ingress-nginx ingress-nginx/ingress-nginx \
      --namespace ingress-nginx --create-namespace \

@@ -189,10 +189,10 @@ terraform {
 
 ## CI/CD Pipeline Updates
 
-### [GitHub](../../CI_CD/github/SKILL.md) Actions
+### [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions
 
 ```yaml
-# .[github](../../CI_CD/github/SKILL.md)/workflows/tofu.yml
+# .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/tofu.yml
 name: OpenTofu
 on:
   pull_request:
@@ -233,15 +233,15 @@ jobs:
         working-directory: infra/
 
       - name: Comment PR with plan
-        if: [github](../../CI_CD/github/SKILL.md).event_name == 'pull_request'
-        uses: actions/[github](../../CI_CD/github/SKILL.md)-script@v7
+        if: [github](../../../ci-cd/github-actions/other/github/SKILL.md).event_name == 'pull_request'
+        uses: actions/[github](../../../ci-cd/github-actions/other/github/SKILL.md)-script@v7
         with:
           script: |
             const output = `#### OpenTofu Plan
             \`\`\`
             ${{ steps.plan.outputs.stdout }}
             \`\`\``;
-            [github](../../CI_CD/github/SKILL.md).rest.issues.createComment({
+            [github](../../../ci-cd/github-actions/other/github/SKILL.md).rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -250,7 +250,7 @@ jobs:
 
   apply:
     needs: plan
-    if: [github](../../CI_CD/github/SKILL.md).ref == 'refs/heads/main'
+    if: [github](../../../ci-cd/github-actions/other/github/SKILL.md).ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment: production
     steps:
@@ -267,7 +267,7 @@ jobs:
 ### GitLab CI
 
 ```yaml
-# .[gitlab-ci](../../CI_CD/gitlab-ci/SKILL.md).yml
+# .[gitlab-ci](../../../ci-cd/gitlab-ci/pipelines/gitlab-ci/SKILL.md).yml
 stages: [validate, plan, apply]
 
 variables:

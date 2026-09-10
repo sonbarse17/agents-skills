@@ -285,14 +285,14 @@ az functionapp deployment source config-zip \
   --name myapp-func \
   --src function.zip
 
-# Deploy via CI/CD with [GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions
+# Deploy via CI/CD with [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions
 az functionapp deployment [github-actions](../../CI_CD/[github](../../CI_CD/github/SKILL.md)-actions/SKILL.md) add \
   --resource-group functions-rg \
   --name myapp-func \
   --repo "myorg/myrepo" \
   --branch main \
   --runtime [python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) \
-  --login-with-[github](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)
+  --login-with-[github](../../../../ci-cd/github-actions/other/github/SKILL.md)
 ```
 
 ## Deployment Slots

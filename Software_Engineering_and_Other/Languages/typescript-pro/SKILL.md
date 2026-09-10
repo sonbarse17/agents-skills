@@ -156,5 +156,5 @@ When implementing [TypeScript](../../Frontend/typescript/SKILL.md) features, pro
 
 [TypeScript](../../Frontend/typescript/SKILL.md) 5.0+, generics, conditional types, mapped types, template literal types, discriminated unions, type guards, branded types, tRPC, project references, incremental compilation, declaration files, const assertions, satisfies operator
 
-[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/language/[typescript](../../Frontend/typescript/SKILL.md)-pro/)
+[Documentation](https://jeffallan.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/language/[typescript](../../Frontend/typescript/SKILL.md)-pro/)
 

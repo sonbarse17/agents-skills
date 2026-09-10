@@ -527,7 +527,7 @@ const BLOCKED_CIDRS = [
 ];
 
 const ALLOWED_DOMAINS = [
-  "api.[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com",
+  "api.[github](../../ci-cd/github-actions/other/github/SKILL.md).com",
   "registry.npmjs.org",
 ];
 
@@ -1007,7 +1007,7 @@ describe("Outbound URL Validation", () => {
   }
 
   it("should allow requests to explicitly allowed domains", () => {
-    expect(validateOutboundUrl("https://api.[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/repos").allowed).toBe(true);
+    expect(validateOutboundUrl("https://api.[github](../../ci-cd/github-actions/other/github/SKILL.md).com/repos").allowed).toBe(true);
     expect(validateOutboundUrl("https://registry.npmjs.org/express").allowed).toBe(true);
   });
 });

@@ -42,7 +42,7 @@ Create distinctive interfaces that avoid generic "AI slop" aesthetics, have clea
 
 ## Creative Frontend Design
 
-Before coding, [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) to an aesthetic direction:
+Before coding, [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) to an aesthetic direction:
 - **Purpose**: What problem does this solve? Who uses it?
 - **Tone**: minimal, maximalist, retro-futuristic, organic, luxury, playful, editorial, brutalist, art deco, soft/pastel, industrial, etc.
 - **Constraints**: Framework, performance, accessibility requirements.
@@ -148,5 +148,5 @@ See [../../../Global_References/pattern-examples.md](../../../Global_References/
 
 ## Acknowledgments
 
-Creative frontend principles inspired by [Anthropic's frontend-design skill](https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/anthropics/skills/tree/main/skills/frontend-design). Design review principles and quality pillar framework created by [@Quirinevwm](https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Quirinevwm) for systematic UI evaluation.
+Creative frontend principles inspired by [Anthropic's frontend-design skill](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/anthropics/skills/tree/main/skills/frontend-design). Design review principles and quality pillar framework created by [@Quirinevwm](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/Quirinevwm) for systematic UI evaluation.
 

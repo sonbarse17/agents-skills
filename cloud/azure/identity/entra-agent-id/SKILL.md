@@ -229,7 +229,7 @@ For MI+WIF and client-secret setup details, see [../../../../../Global_Reference
 
 ### .NET quick path
 
-For .NET services, use **`Microsoft.Identity.Web.AgentIdentities`** — it handles Federated Identity Credential management and the two-step exchange for you. See the package README at `[github](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/AzureAD/microsoft-identity-web` under `src/Microsoft.Identity.Web.AgentIdentities/`.
+For .NET services, use **`Microsoft.Identity.Web.AgentIdentities`** — it handles Federated Identity Credential management and the two-step exchange for you. See the package README at `[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/AzureAD/microsoft-identity-web` under `src/Microsoft.Identity.Web.AgentIdentities/`.
 
 ## Granting Permissions (Per Agent Identity)
 
@@ -370,5 +370,5 @@ After admin consent, tokens may not include new claims for 30–120 seconds — 
 | Agent ID Setup Guide | https://learn.microsoft.com/en-us/entra/agent-id/identity-platform/agent-id-setup-instructions |
 | AI-Guided Setup | https://learn.microsoft.com/en-us/entra/agent-id/identity-platform/agent-id-ai-guided-setup |
 | Microsoft Entra SDK for AgentID | https://learn.microsoft.com/en-us/entra/msidweb/agent-id-sdk/overview |
-| Microsoft.Identity.Web.AgentIdentities (.NET) | https://[github](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.AgentIdentities/README.AgentIdentities.md |
+| Microsoft.Identity.Web.AgentIdentities (.NET) | https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.AgentIdentities/README.AgentIdentities.md |
 

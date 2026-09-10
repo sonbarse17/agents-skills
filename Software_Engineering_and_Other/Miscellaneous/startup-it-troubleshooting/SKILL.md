@@ -280,7 +280,7 @@ curl -X POST "https://slack.com/api/admin.users.invite" \
   -H "Authorization: Bearer xoxp-your-admin-token" \
   -d "email=newhire@company.com&channel_ids=C01GENERAL,C02ENGINEERING&team_id=T01YOURTEAM"
 
-# 4. [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)
+# 4. [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)
 gh api orgs/your-company/invitations -f email="newhire@company.com" -f role="direct_member"
 gh api orgs/your-company/teams/engineering/memberships/newhire-username -f role="member" -X PUT
 
@@ -290,7 +290,7 @@ tailscale up --authkey tskey-auth-abc123
 
 ### First-Day Setup Script (macOS)
 
-Give new hires this script. It installs Homebrew, your standard tools from a hosted Brewfile, configures Git, authenticates [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) CLI, clones core repos, and enables FileVault.
+Give new hires this script. It installs Homebrew, your standard tools from a hosted Brewfile, configures Git, authenticates [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) CLI, clones core repos, and enables FileVault.
 
 ```bash
 #!/bin/bash
@@ -315,7 +315,7 @@ gam user departed@company.com add delegate manager@company.com    # 4. delegate 
 curl -X POST "https://slack.com/api/admin.users.remove" \
   -H "Authorization: Bearer xoxp-your-admin-token" \
   -d "user_id=U01DEPARTED&team_id=T01YOURTEAM"               # 5. remove Slack
-gh api orgs/your-company/members/departed-username -X DELETE   # 6. remove [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)
+gh api orgs/your-company/members/departed-username -X DELETE   # 6. remove [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)
 op user suspend departed@company.com                           # 7. revoke 1Password
 aws iam delete-login-profile --user-name departed              # 8. revoke AWS console
 aws iam list-access-keys --user-name departed                  #    then delete each key

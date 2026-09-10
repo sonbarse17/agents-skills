@@ -351,7 +351,7 @@ jobs:
       errorLevel: "High"
 ```
 
-`.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/[dast-zap](../../../DevOps_and_Cloud/Observability_and_SecOps/dast-zap/SKILL.md).yml`:
+`.[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/[dast-zap](../../../DevOps_and_Cloud/Observability_and_SecOps/dast-zap/SKILL.md).yml`:
 ```yaml
 name: [dast-zap](../../../DevOps_and_Cloud/Observability_and_SecOps/dast-zap/SKILL.md)
 on:
@@ -361,7 +361,7 @@ on:
 
 jobs:
   baseline:
-    if: [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).event_name == 'pull_request'
+    if: [github](../../../ci-cd/github-actions/other/github/SKILL.md).event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -372,7 +372,7 @@ jobs:
             -autorun /zap/wrk/baseline-plan.yaml
 
   full-scan-nightly:
-    if: [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).event_name == 'schedule'
+    if: [github](../../../ci-cd/github-actions/other/github/SKILL.md).event_name == 'schedule'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

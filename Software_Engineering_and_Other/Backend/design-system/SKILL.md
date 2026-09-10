@@ -397,7 +397,7 @@ A well-designed design system component library should add:
 
 ### Token Management
 - **Style Dictionary**: Amazon's build-time token transformation tool. Input JSON, output CSS/JS/anything.
-- **Tokens Studio (Figma plugin)**: Design token editor in Figma. Syncs to [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) via JSON.
+- **Tokens Studio (Figma plugin)**: Design token editor in Figma. Syncs to [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) via JSON.
 - **Specify**: Design token management platform with Figma and code integrations.
 - **Theo**: Salesforce's token transformer (predecessor to Style Dictionary).
 
@@ -543,7 +543,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
+- Signed commits: GPG or SSH [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management

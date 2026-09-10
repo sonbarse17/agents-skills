@@ -72,7 +72,7 @@ Chrome DevTools MCP provides these capabilities:
 
 ### Profile Isolation
 
-The blast radius of every rule below depends on which browser the agent is attached to. With `--autoConnect`, the agent attaches to your running Chrome's default profile and — per the chrome-devtools-mcp docs — has access to **all open windows** of that profile: logged-in email, banking, [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) sessions, saved cookies. (`--browser-url` is less exposed by design: Chrome requires a non-default user data directory to enable the remote debugging port — don't defeat that by pointing it at a copy of your real profile.) One page with injected instructions plus an agent holding your authenticated browser is the worst-case combination — the untrusted-data rules below become the only line of defense instead of one of two.
+The blast radius of every rule below depends on which browser the agent is attached to. With `--autoConnect`, the agent attaches to your running Chrome's default profile and — per the chrome-devtools-mcp docs — has access to **all open windows** of that profile: logged-in email, banking, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) sessions, saved cookies. (`--browser-url` is less exposed by design: Chrome requires a non-default user data directory to enable the remote debugging port — don't defeat that by pointing it at a copy of your real profile.) One page with injected instructions plus an agent holding your authenticated browser is the worst-case combination — the untrusted-data rules below become the only line of defense instead of one of two.
 
 **Rules:**
 - **Default to the dedicated profile** (no connect flags) or `--isolated`. Testing localhost almost never needs your real sessions.

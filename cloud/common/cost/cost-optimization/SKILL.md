@@ -73,7 +73,7 @@ Reserved instances and savings plans trade a discount for a commitment — they 
 usage you're confident will persist. Committing against your peak, or against usage you haven't
 rightsized yet, locks in savings on top of waste instead of on top of real need.
 
-- **[Commit](../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) against the sustained floor**, not the peak — use on-demand or spot to cover the
+- **[Commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) against the sustained floor**, not the peak — use on-demand or spot to cover the
   variable part above it.
 - **Rightsize before you buy commitments**, not after — a commitment against an oversized fleet
   bakes the oversizing in for the contract term.

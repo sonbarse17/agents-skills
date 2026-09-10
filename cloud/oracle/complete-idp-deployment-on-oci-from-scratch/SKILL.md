@@ -131,7 +131,7 @@ custom backend/frontend logic follows
 [backstage-plugin-development](../[backstage-plugin-development](../../../Software_Engineering_and_Other/Backend/backstage-plugin-development/SKILL.md)/SKILL.md).
 
 **Phase 4 — Golden-path template design.** Author the first golden-path
-template producing a Dockerfile, a CI workflow ([GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions or OCI
+template producing a Dockerfile, a CI workflow ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions or OCI
 DevOps), catalog registration, and — OCI-specific — documentation of which
 Dynamic Group matching rule a newly scaffolded service needs to be
 included under (since OCI's model grants identity by Dynamic Group
@@ -273,7 +273,7 @@ one quarter.
    `meridian-backstage-catalog` (multi-AZ), with the backend pod reading
    its DB credential from OCI [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) via the Phase 2 Resource Principal.
 4. **Phase 4:** A "Node.js service" golden-path template is authored,
-   producing a Dockerfile, a [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions workflow, and a documented IAM
+   producing a Dockerfile, a [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions workflow, and a documented IAM
    policy-statement request template for the service's own Dynamic Group
    membership.
 5. **Phase 5:** A validation pipeline scaffolds `test-svc-001`, builds,

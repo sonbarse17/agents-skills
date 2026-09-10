@@ -301,7 +301,7 @@ resource "hcloud_server" "node" {
 # 2. Install k3s on master
 curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--disable servicelb --disable traefik" sh -
 # 3. Install Hetzner Cloud Controller Manager
-[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/hetznercloud/hcloud-cloud-controller-manager/releases/latest/download/ccm-networks.yaml
+[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/hetznercloud/hcloud-cloud-controller-manager/releases/latest/download/ccm-networks.yaml
 # 4. Install Hetzner CSI Driver for volumes
 [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f https://raw.githubusercontent.com/hetznercloud/csi-driver/v2.5.0/deploy/[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)/hcloud-csi.yml
 # 5. Install MetalLB for LoadBalancer IPs (use Floating IP pool)

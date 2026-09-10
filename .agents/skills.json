@@ -6,7 +6,6 @@
     { "path": "AI_and_Agents/Models_and_FineTuning" },
     { "path": "AI_and_Agents/Operations" },
 
-    { "path": "DevOps_and_Cloud/CI_CD" },
     { "path": "DevOps_and_Cloud/Containers_and_Orchestration" },
     { "path": "DevOps_and_Cloud/Infrastructure_as_Code" },
     { "path": "DevOps_and_Cloud/Observability_and_SecOps" },
@@ -21,6 +20,16 @@
     { "path": "cloud/cloudflare" },
     { "path": "cloud/common" },
     { "path": "cloud/other" },
+
+    { "path": "ci-cd/github-actions" },
+    { "path": "ci-cd/gitlab-ci" },
+    { "path": "ci-cd/jenkins" },
+    { "path": "ci-cd/circleci" },
+    { "path": "ci-cd/bamboo" },
+    { "path": "ci-cd/gitea" },
+    { "path": "ci-cd/argocd" },
+    { "path": "ci-cd/fluxcd" },
+    { "path": "ci-cd/common" },
 
     { "path": "Software_Engineering_and_Other/Backend" },
     { "path": "Software_Engineering_and_Other/Frontend" },

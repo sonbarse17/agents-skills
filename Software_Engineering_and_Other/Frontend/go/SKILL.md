@@ -79,7 +79,7 @@ Error strategy?
 
 ### Module Initialization
 ```bash
-go mod init [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/org/myproject
+go mod init [github](../../../ci-cd/github-actions/other/github/SKILL.md).com/org/myproject
 go mod tidy                # Clean dependencies
 go mod verify              # Verify checksums
 go mod download            # Pre-download for [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
@@ -88,18 +88,18 @@ go work init ./cmd ./pkg   # [Monorepo](../monorepo/SKILL.md) workspace
 
 ### go.mod Conventions
 ```
-module [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/org/myproject
+module [github](../../../ci-cd/github-actions/other/github/SKILL.md).com/org/myproject
 
 go 1.22
 
 require (
-    [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/gin-gonic/gin v1.9.1
+    [github](../../../ci-cd/github-actions/other/github/SKILL.md).com/gin-gonic/gin v1.9.1
     go.uber.org/zap v1.27.0
     golang.org/x/sync v0.7.0
 )
 
 // replace directive for local development
-replace [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/org/internal => ../internal
+replace [github](../../../ci-cd/github-actions/other/github/SKILL.md).com/org/internal => ../internal
 ```
 
 ### Build Commands
@@ -219,8 +219,8 @@ if errors.Is(err, ErrNotFound) {
 ```go
 import (
     "testing"
-    "[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/stretchr/testify/assert"
-    "[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/stretchr/testify/require"
+    "[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/stretchr/testify/assert"
+    "[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/stretchr/testify/require"
 )
 
 func TestHandler(t *testing.T) {
@@ -361,7 +361,7 @@ Module organization for [monorepo](../monorepo/SKILL.md)?
 ├── Multi-module without go.work → Each module independent
 │   CI builds each module separately
 └── Replace directives → For local development only
-    Never [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) replace directives to main branch
+    Never [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) replace directives to main branch
 ```
 
 ## Code Examples — HTTP Server with Middleware

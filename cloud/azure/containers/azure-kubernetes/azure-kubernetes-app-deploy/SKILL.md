@@ -50,5 +50,5 @@ Load `knowledge-packs/frameworks/<framework>.md` per detected framework. Availab
 
 ## Templates
 
-`templates/` (dockerfiles/, k8s/, [github-actions](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-actions/SKILL.md)/, [mermaid](../../../../../Product_and_Business/mermaid/SKILL.md)/).
+`templates/` (dockerfiles/, k8s/, [github-actions](../../../../../ci-cd/github-actions/other/github/SKILL.md)-actions/SKILL.md)/, [mermaid](../../../../../Product_and_Business/mermaid/SKILL.md)/).
 

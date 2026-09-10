@@ -178,7 +178,7 @@ val httpClient = HttpClient {
 KMP requires building for multiple targets — [Android](../../../Mobile/android/SKILL.md) (JVM) and iOS (Kotlin/Native). CI must handle both environments. Recommended CI matrix:
 
 ```yaml
-# [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions example
+# [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions example
 jobs:
   [android](../../../Mobile/android/SKILL.md):
     runs-on: ubuntu-latest
@@ -554,7 +554,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
+- Signed commits: GPG or SSH [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management

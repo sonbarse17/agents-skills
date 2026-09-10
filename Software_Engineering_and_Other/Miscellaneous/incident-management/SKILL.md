@@ -378,7 +378,7 @@ post_mortem_process:
     - "Actionable: Every finding should produce a tracked action item"
 
   action_item_tracking:
-    - "All action items entered into issue tracker (Jira, [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Issues)"
+    - "All action items entered into issue tracker (Jira, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Issues)"
     - "Priority assigned based on risk reduction potential"
     - "Owner assigned with due date"
     - "Reviewed in team standups and sprint planning"

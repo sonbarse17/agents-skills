@@ -445,7 +445,7 @@ When a PR exceeds 400 lines:
 ### CI Integration
 
 ```yaml
-# [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions: Automated review gate
+# [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions: Automated review gate
 name: code-review-gate
 on: [pull_request]
 jobs:
@@ -473,12 +473,12 @@ jobs:
 - **Snyk / Dependabot**: Dependency vulnerability scanning.
 - **ESLint + plugins**: Language-specific linting for JS/TS.
 - **Prettier**: Automatic formatting to eliminate style reviews.
-- **Husky + lint-staged**: Pre-[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) hooks for pre-review quality.
+- **Husky + lint-staged**: Pre-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) hooks for pre-review quality.
 
 ### Review Workflow Configuration
 
 ```json
-// .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/CODEOWNERS
+// .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/CODEOWNERS
 # Default reviewer
 * @team/engineering
 

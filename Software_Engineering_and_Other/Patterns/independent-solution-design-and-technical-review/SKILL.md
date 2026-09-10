@@ -84,7 +84,7 @@ mentoring through the review and pairing process itself.
   [ci-cd-pipeline-design](../../../devops/skills/[ci-cd-pipeline-design](../../../DevOps_and_Cloud/CI_CD/ci-cd-pipeline-design/SKILL.md)/SKILL.md)
   for what a healthy quality gate looks like) so a design or review can
   be grounded in what the pipeline will actually enforce.
-- Review tooling ([GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/GitLab PR review, a design-doc commenting tool)
+- Review tooling ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)/GitLab PR review, a design-doc commenting tool)
   with the authority to request changes, not just comment — a senior
   reviewer without the standing to block a merge on a real correctness
   concern can't do this job effectively.

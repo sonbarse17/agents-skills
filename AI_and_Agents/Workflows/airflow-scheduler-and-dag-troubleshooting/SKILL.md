@@ -299,14 +299,14 @@ $ airflow dags list-import-errors
 filepath                          error
 dags/orders_daily_rollup.py       ModuleNotFoundError: No module named 'orders_utils'
 ```
-A recent [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) added a helper import (`orders_utils`) that isn't
+A recent [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) added a helper import (`orders_utils`) that isn't
 installed in the scheduler's [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) environment. The scheduler has been
 silently failing to parse this DAG file since that deploy — there are no
 new DAG runs because the scheduler literally can't see an up-to-date,
 importable version of the DAG, which explains the "stopped running"
 symptom far better than a scheduler outage would.
 
-Fix: revert the dependency-adding [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) (or fix the deployment's
+Fix: revert the dependency-adding [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) (or fix the deployment's
 dependency installation step) so the file imports cleanly again, verified
 with:
 ```bash

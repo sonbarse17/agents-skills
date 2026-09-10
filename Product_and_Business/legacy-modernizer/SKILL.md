@@ -152,5 +152,5 @@ When implementing modernization, provide:
 
 Strangler fig pattern, branch by abstraction, characterization testing, incremental migration, feature flags, canary deployments, API versioning, database refactoring, [microservices](../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) extraction, technical debt reduction, zero-downtime deployment
 
-[Documentation](https://jeffallan.[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/specialized/legacy-modernizer/)
+[Documentation](https://jeffallan.[github](../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/specialized/legacy-modernizer/)
 

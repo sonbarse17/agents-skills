@@ -745,7 +745,7 @@ new_hire_onboarding:
   pre_day_one:
     - Purchase and ship device via CDW/Apple Business Manager
     - Assign device to MDM server in ABM/Autopilot
-    - Create accounts: Google Workspace / M365, Okta SSO, [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md), Slack
+    - Create accounts: Google Workspace / M365, Okta SSO, [GitHub](../../ci-cd/github-actions/other/github/SKILL.md), Slack
     - Generate VPN invite (Tailscale, WireGuard)
     - Prepare welcome documentation link
 

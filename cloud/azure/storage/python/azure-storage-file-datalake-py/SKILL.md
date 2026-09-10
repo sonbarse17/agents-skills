@@ -132,7 +132,7 @@ file_client.upload_data(b"Hello, Data Lake!", overwrite=True)
 # Append data (for large files)
 file_client.append_data(data=b"chunk1", offset=0, length=6)
 file_client.append_data(data=b"chunk2", offset=6, length=6)
-file_client.flush_data(12)  # [Commit](../../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) the data
+file_client.flush_data(12)  # [Commit](../../../../../ci-cd/common/git-workflow/commit/SKILL.md) the data
 ```
 
 ### Download File

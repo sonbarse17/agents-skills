@@ -138,5 +138,5 @@ When implementing Atlassian MCP features, provide:
 4. Authentication setup instructions
 5. Brief explanation of permission requirements
 
-[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/platform/atlassian-mcp/)
+[Documentation](https://jeffallan.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/platform/atlassian-mcp/)
 

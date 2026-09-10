@@ -157,5 +157,5 @@ When implementing MCP features, provide:
 3. Configuration file (transport, auth, etc.)
 4. Brief explanation of design decisions
 
-[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/api-architecture/mcp-developer/)
+[Documentation](https://jeffallan.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/api-architecture/mcp-developer/)
 

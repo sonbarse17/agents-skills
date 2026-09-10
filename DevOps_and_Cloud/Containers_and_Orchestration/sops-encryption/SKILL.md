@@ -42,7 +42,7 @@ Use this skill when:
 brew install sops
 
 # Linux
-wget https://[github](../../CI_CD/github/SKILL.md).com/getsops/sops/releases/download/v3.8.0/sops-v3.8.0.linux.amd64
+wget https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/getsops/sops/releases/download/v3.8.0/sops-v3.8.0.linux.amd64
 chmod +x sops-v3.8.0.linux.amd64
 mv sops-v3.8.0.linux.amd64 /usr/local/bin/sops
 ```
@@ -93,8 +93,8 @@ sops:
 ```
 
 ```bash
-# With [ArgoCD](../argocd/SKILL.md)
-# Install ksops plugin for [ArgoCD](../argocd/SKILL.md) to decrypt secrets
+# With [ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md)
+# Install ksops plugin for [ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md) to decrypt secrets
 ```
 
 ## Best Practices
@@ -102,7 +102,7 @@ sops:
 - Store .sops.yaml in repository
 - Use different keys per environment
 - Rotate encryption keys regularly
-- Never [commit](../../CI_CD/commit/SKILL.md) unencrypted secrets
+- Never [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) unencrypted secrets
 - Use key aliases for readability
 
 ## Related Skills

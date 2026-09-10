@@ -70,7 +70,7 @@ sanctioned, tracked decision rather than an invisible fork.
   `score-compose`/`humctl` to materialize platform-specific manifests) are
   the two most common substrates; the design principles here apply to
   either.
-- Git hosting with branch protection and CODEOWNERS support ([GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md),
+- Git hosting with branch protection and CODEOWNERS support ([GitHub](../../ci-cd/github-actions/other/github/SKILL.md),
   GitLab) so template changes go through review, not direct pushes to the
   templates repo's default branch.
 - An existing (even minimal) CI pipeline standard, base container image,
@@ -81,7 +81,7 @@ sanctioned, tracked decision rather than an invisible fork.
   a mandatory SAST/secret-scan CI step, a minimum set of IAM permissions)
   that the template can encode as a default rather than each team deciding
   independently.
-- Write access to wherever generated services land (a [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) org/group, an
+- Write access to wherever generated services land (a [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) org/group, an
   artifact registry) for the templating engine's publish step.
 - Agreement on ownership: a named platform team (or a specific sub-team)
   with the authority to merge template changes — see
@@ -158,9 +158,9 @@ sanctioned, tracked decision rather than an invisible fork.
              datastore: '${{ parameters.datastore }}'
        - id: publish
          name: Create repository
-         action: publish:[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)
+         action: publish:[github](../../ci-cd/github-actions/other/github/SKILL.md)
          input:
-           repoUrl: '[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com?owner=acme-corp&repo=${{ parameters.name }}'
+           repoUrl: '[github](../../ci-cd/github-actions/other/github/SKILL.md).com?owner=acme-corp&repo=${{ parameters.name }}'
        - id: register
          name: Register in catalog
          action: catalog:register

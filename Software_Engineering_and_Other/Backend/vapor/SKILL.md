@@ -83,9 +83,9 @@ mkdir OrderService && cd OrderService
 swift package init --type executable
 
 # Add Vapor and Fluent
-swift package add https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/vapor/vapor
-swift package add https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/vapor/fluent
-swift package add https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/vapor/fluent-postgres-driver
+swift package add https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/vapor/vapor
+swift package add https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/vapor/fluent
+swift package add https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/vapor/fluent-postgres-driver
 ```
 
 ### Step 2: Package.swift
@@ -97,11 +97,11 @@ let package = Package(
   name: "OrderService",
   platforms: [.macOS(.v13)],
   dependencies: [
-    .package(url: "https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/vapor/vapor", from: "4.90.0"),
-    .package(url: "https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/vapor/fluent", from: "4.9.0"),
-    .package(url: "https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/vapor/fluent-postgres-driver", from: "2.8.0"),
-    .package(url: "https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/vapor/leaf", from: "4.3.0"),
-    .package(url: "https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/vapor/jwt", from: "4.3.0"),
+    .package(url: "https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/vapor/vapor", from: "4.90.0"),
+    .package(url: "https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/vapor/fluent", from: "4.9.0"),
+    .package(url: "https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/vapor/fluent-postgres-driver", from: "2.8.0"),
+    .package(url: "https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/vapor/leaf", from: "4.3.0"),
+    .package(url: "https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/vapor/jwt", from: "4.3.0"),
   ],
   targets: [
     .executableTarget(

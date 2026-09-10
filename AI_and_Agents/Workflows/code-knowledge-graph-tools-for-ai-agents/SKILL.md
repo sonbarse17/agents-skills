@@ -84,7 +84,7 @@ specific pre-built ones).
 - A Rust-toolchain-built binary or published release for CodeGraph (it is
   itself implemented in Rust for its parsing kernel — no Rust toolchain is
   required on the *consuming* machine unless building from source).
-- An MCP-compatible agent host (Claude Code, Cursor, [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Copilot, Gemini
+- An MCP-compatible agent host (Claude Code, Cursor, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Copilot, Gemini
   CLI) configured to connect to the tool's MCP server, per each client's own
   MCP configuration mechanism.
 - Disk space for the generated index: GitNexus stores its embedded
@@ -147,7 +147,7 @@ specific pre-built ones).
 3. **Wire the tool's MCP server into your agent host.** All three are
    designed to be consumed by an MCP-compatible agent — the exact client
    config (where you register the server command) is client-specific
-   (Claude Code, Cursor, Gemini CLI, [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Copilot each have their own MCP
+   (Claude Code, Cursor, Gemini CLI, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Copilot each have their own MCP
    config location); see
    [mcp-server-development](../[mcp-server-development](../../Infrastructure/mcp-server-development/SKILL.md)/SKILL.md) for the
    general client/server wiring pattern these tools' own MCP servers

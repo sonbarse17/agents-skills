@@ -119,7 +119,7 @@ async def get_user_by_email(db: AsyncSession, email: str) -> User | None:
 async def create_user(db: AsyncSession, payload: UserCreate) -> User:
     user = User(email=payload.email, hashed_password=hash_password(payload.password), name=payload.name)
     db.add(user)
-    await db.[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)()
+    await db.[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)()
     await db.refresh(user)
     return user
 ```
@@ -200,5 +200,5 @@ When implementing FastAPI features, provide:
 
 FastAPI, Pydantic V2, async SQLAlchemy, Alembic migrations, JWT/OAuth2, pytest-asyncio, httpx, BackgroundTasks, WebSockets, dependency injection, OpenAPI/Swagger
 
-[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/backend/fastapi-expert/)
+[Documentation](https://jeffallan.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/backend/fastapi-expert/)
 

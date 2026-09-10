@@ -198,5 +198,5 @@ chaos:
 chaos-monkey --app my-service --account staging --dry-run false
 ```
 
-[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/devops/chaos-engineer/)
+[Documentation](https://jeffallan.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/devops/chaos-engineer/)
 

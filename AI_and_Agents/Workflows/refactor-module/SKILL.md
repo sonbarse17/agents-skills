@@ -537,7 +537,7 @@ terraform apply migration.tfplan
 ```hcl
 # Use semantic versioning for modules
 module "vpc" {
-  source  = "git::https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/org/[terraform-modules](../../../DevOps_and_Cloud/Infrastructure_as_Code/terraform-modules/SKILL.md).git//vpc?ref=v1.2.0"
+  source  = "git::https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/org/[terraform-modules](../../../DevOps_and_Cloud/Infrastructure_as_Code/terraform-modules/SKILL.md).git//vpc?ref=v1.2.0"
   version = "~> 1.2"
 }
 

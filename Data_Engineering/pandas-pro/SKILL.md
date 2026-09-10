@@ -191,5 +191,5 @@ When implementing pandas solutions, provide:
 3. Memory/performance considerations if dataset is large
 4. Data validation checks (dtypes, nulls, shapes)
 
-[Documentation](https://jeffallan.[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/data-ml/pandas-pro/)
+[Documentation](https://jeffallan.[github](../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/data-ml/pandas-pro/)
 

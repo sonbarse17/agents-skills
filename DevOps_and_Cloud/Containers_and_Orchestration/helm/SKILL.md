@@ -29,7 +29,7 @@ Use this skill to keep Helm-based [Kubernetes](../kubernetes/SKILL.md) deploymen
 | Install Helm, add repos, configure registries | `resources/install-and-setup.md` | User needs to install Helm or configure repositories |
 | install/upgrade/list/rollback/template commands | `resources/command-cookbook.md` | User needs day-to-day Helm release operations |
 | Chart.yaml, templates, values, helpers | `resources/chart-authoring.md` | User wants to author or modify a Helm chart |
-| Release lifecycle, --atomic, --wait, diff plugin | `resources/[release-management](../../CI_CD/release-management/SKILL.md).md` | User asks about release management or upgrade strategies |
+| Release lifecycle, --atomic, --wait, diff plugin | `resources/[release-management](../../../ci-cd/common/deployment/release-management/SKILL.md).md` | User asks about release management or upgrade strategies |
 
 ## Quick Start
 
@@ -101,6 +101,6 @@ helm status my-nginx -n my-namespace
 - `resources/install-and-setup.md`
 - `resources/command-cookbook.md`
 - `resources/chart-authoring.md`
-- `resources/[release-management](../../CI_CD/release-management/SKILL.md).md`
+- `resources/[release-management](../../../ci-cd/common/deployment/release-management/SKILL.md).md`
 - Official docs: <https://helm.sh/docs/>
 - Chart hub: <https://artifacthub.io/>

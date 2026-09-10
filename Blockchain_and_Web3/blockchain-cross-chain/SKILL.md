@@ -100,7 +100,7 @@ Cross-chain problem:
 │   └── Streaming → Event indexing + relayer
 └── Atomic execution across chains?
     ├── Same sequencer → Shared sequencer (Espresso, Astria)
-    └── Different sequencers → Atomic [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) protocol (two-phase [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) with timeouts)
+    └── Different sequencers → Atomic [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) protocol (two-phase [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) with timeouts)
 ```
 
 ### Trust Model Comparison
@@ -169,7 +169,7 @@ Source finality model:
 | Smart contract bug | Bridge contract vulnerability (reentrancy, access control) | Audits, formal verification, bug bounties |
 | Oracle manipulation | Price feed manipulation during bridge operation | Redundant oracles, TWAP pricing |
 | Griefing | Relayer stops processing messages | Permissionless relayer set, economic incentives |
-| MEV extraction | Sandwiching bridge transactions | [Commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)-reveal, slippage protection |
+| MEV extraction | Sandwiching bridge transactions | [Commit](../../ci-cd/common/git-workflow/commit/SKILL.md)-reveal, slippage protection |
 | Bridge draining | Flash loan + oracle manipulation to drain bridge | Rate limits, tiered withdrawal, circuit breakers |
 | Phantom token | Attacker creates fake representation token | Verified token registry, canonical token lists |
 | Governance attack | Bridge governance taken over | Timelock, multi-sig, progressive decentralization |

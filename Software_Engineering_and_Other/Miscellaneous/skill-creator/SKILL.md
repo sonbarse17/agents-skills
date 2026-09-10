@@ -316,8 +316,8 @@ const client = new ServiceClient(endpoint, credential);
 import (
   "context"
 
-  "[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-go/sdk/azidentity"
-  "[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-go/sdk/storage/azblob"
+  "[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/Azure/azure-sdk-for-go/sdk/azidentity"
+  "[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/Azure/azure-sdk-for-go/sdk/storage/azblob"
 )
 
 ctx := context.Background()
@@ -418,7 +418,7 @@ Use a token counter or model playground to measure each section. Compare to the 
 
 **4. Frontmatter validation:**
 
-- [ ] `name` matches `.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/skills/<name>/SKILL.md`
+- [ ] `name` matches `.[github](../../../ci-cd/github-actions/other/github/SKILL.md)/skills/<name>/SKILL.md`
 - [ ] `description` includes trigger keywords
 - [ ] `description` is concise (~200 chars is a good target; schema max is 1,024 chars)
 - [ ] If included, optional `benchmark_tokens_*` and `benchmark_quality_*` metadata fields are flat strings under `metadata`
@@ -711,7 +711,7 @@ item = client.create_item(name="example", data={...})
 1. **Gather SDK Context** — User provides SDK/API reference (REQUIRED)
 2. **Understand** — Research SDK patterns from official docs
 3. **Plan** — Identify reusable resources and product area category
-4. **Create** — Write SKILL.md in `.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/skills/<[skill-name](../../../DevOps_and_Cloud/Observability_and_SecOps/_template/SKILL.md)>/`
+4. **Create** — Write SKILL.md in `.[github](../../../ci-cd/github-actions/other/github/SKILL.md)/skills/<[skill-name](../../../DevOps_and_Cloud/Observability_and_SecOps/_template/SKILL.md)>/`
 5. **Categorize** — Create symlink in `skills/<language>/<category>/`
 6. **Test** — Create acceptance criteria and test scenarios
 7. **Document** — Update README.md skill catalog
@@ -732,7 +732,7 @@ item = client.create_item(name="example", data={...})
 ```
 To create this skill, I need:
 1. The SDK package name (e.g., [azure-ai](../../../DevOps_and_Cloud/Cloud_Providers/[azure-ai](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-projects)
-2. The Microsoft Learn documentation URL or [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) repo
+2. The Microsoft Learn documentation URL or [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) repo
 3. The target language (py/dotnet/ts/java/go)
 ```
 
@@ -785,14 +785,14 @@ Skills are organized by **language** and **product area** in the `skills/` direc
 
 ### Step 4: Create the Skill
 
-**Location:** `.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/skills/<[skill-name](../../../DevOps_and_Cloud/Observability_and_SecOps/_template/SKILL.md)>/SKILL.md`
+**Location:** `.[github](../../../ci-cd/github-actions/other/github/SKILL.md)/skills/<[skill-name](../../../DevOps_and_Cloud/Observability_and_SecOps/_template/SKILL.md)>/SKILL.md`
 
 **Naming convention:**
 
 - `azure-<service>-<subservice>-<language>`
 - Examples: `[azure-ai](../../../DevOps_and_Cloud/Cloud_Providers/[azure-ai](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-agents-py`, `[azure-cosmos-java](../../../DevOps_and_Cloud/Cloud_Providers/[azure-cosmos-java](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-java/skills/azure-cosmos-java/SKILL.md)/SKILL.md)`, `[azure-storage-blob-ts](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[typescript](../../Frontend/typescript/SKILL.md)/skills/[azure-storage-blob-ts](../../../DevOps_and_Cloud/Cloud_Providers/[azure-storage](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/[azure-storage](../../../DevOps_and_Cloud/Cloud_Providers/azure-storage/SKILL.md)/SKILL.md)-blob-ts/SKILL.md)/SKILL.md)`, `[azure-storage](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/[azure-storage](../../../DevOps_and_Cloud/Cloud_Providers/azure-storage/SKILL.md)/SKILL.md)-blob-go`
 - For Go skills in documentation prose, use the short package name (for example `azblob`).
-- Use the full module import path only in code/import examples (for example `[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-go/sdk/storage/azblob`).
+- Use the full module import path only in code/import examples (for example `[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/Azure/azure-sdk-for-go/sdk/storage/azblob`).
 
 **For Azure SDK skills:**
 
@@ -842,22 +842,22 @@ metadata:
 
 ### Step 5: Categorize with Symlinks
 
-After creating the skill in `.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/skills/`, create a symlink in the appropriate category:
+After creating the skill in `.[github](../../../ci-cd/github-actions/other/github/SKILL.md)/skills/`, create a symlink in the appropriate category:
 
 ```bash
-# Pattern: skills/<language>/<category>/<short-name> -> ../../../.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/skills/<full-[skill-name](../../../DevOps_and_Cloud/Observability_and_SecOps/_template/SKILL.md)>
+# Pattern: skills/<language>/<category>/<short-name> -> ../../../.[github](../../../ci-cd/github-actions/other/github/SKILL.md)/skills/<full-[skill-name](../../../DevOps_and_Cloud/Observability_and_SecOps/_template/SKILL.md)>
 
 # Example for [azure-ai](../../../DevOps_and_Cloud/Cloud_Providers/[azure-ai](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-agents-py in [python](../../Languages/python/SKILL.md)/foundry:
 cd skills/[python](../../Languages/python/SKILL.md)/foundry
-ln -s ../../../.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/skills/[azure-ai](../../../DevOps_and_Cloud/Cloud_Providers/[azure-ai](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-agents-py agents
+ln -s ../../../.[github](../../../ci-cd/github-actions/other/github/SKILL.md)/skills/[azure-ai](../../../DevOps_and_Cloud/Cloud_Providers/[azure-ai](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-agents-py agents
 
 # Example for [azure-cosmos-db-py](../../../DevOps_and_Cloud/Cloud_Providers/[azure-cosmos-db-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/azure-cosmos-db-py/SKILL.md)/SKILL.md) in [python](../../Languages/python/SKILL.md)/data:
 cd skills/[python](../../Languages/python/SKILL.md)/data
-ln -s ../../../.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/skills/[azure-cosmos-db-py](../../../DevOps_and_Cloud/Cloud_Providers/[azure-cosmos-db-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/azure-cosmos-db-py/SKILL.md)/SKILL.md) cosmos-db
+ln -s ../../../.[github](../../../ci-cd/github-actions/other/github/SKILL.md)/skills/[azure-cosmos-db-py](../../../DevOps_and_Cloud/Cloud_Providers/[azure-cosmos-db-py](../../../DevOps_and_Cloud/Cloud_Providers/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/azure-cosmos-db-py/SKILL.md)/SKILL.md) cosmos-db
 
 # Example for [azure-storage](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/[azure-storage](../../../DevOps_and_Cloud/Cloud_Providers/azure-storage/SKILL.md)/SKILL.md)-blob-go in go/data:
 cd skills/go/data
-ln -s ../../../.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/skills/[azure-storage](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/[azure-storage](../../../DevOps_and_Cloud/Cloud_Providers/azure-storage/SKILL.md)/SKILL.md)-blob-go blob
+ln -s ../../../.[github](../../../ci-cd/github-actions/other/github/SKILL.md)/skills/[azure-storage](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/[azure-storage](../../../DevOps_and_Cloud/Cloud_Providers/azure-storage/SKILL.md)/SKILL.md)-blob-go blob
 ```
 
 **Symlink naming:**
@@ -870,7 +870,7 @@ ln -s ../../../.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/skills
 
 ```bash
 ls -la skills/[python](../../Languages/python/SKILL.md)/foundry/agents
-# Should show: agents -> ../../../.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/skills/[azure-ai](../../../DevOps_and_Cloud/Cloud_Providers/[azure-ai](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-agents-py
+# Should show: agents -> ../../../.[github](../../../ci-cd/github-actions/other/github/SKILL.md)/skills/[azure-ai](../../../DevOps_and_Cloud/Cloud_Providers/[azure-ai](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-agents-py
 ```
 
 ### Step 6: Create Tests
@@ -895,7 +895,7 @@ ls -la skills/[python](../../Languages/python/SKILL.md)/foundry/agents
 # Acceptance Criteria: <[skill-name](../../../DevOps_and_Cloud/Observability_and_SecOps/_template/SKILL.md)>
 
 **SDK**: `package-name`
-**Repository**: https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-<language>
+**Repository**: https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/Azure/azure-sdk-for-<language>
 **Purpose**: Skill testing acceptance criteria
 
 ---
@@ -1039,13 +1039,13 @@ After creating the skill:
    - Update test coverage summary (line ~622: `**N skills with N test scenarios**`)
    - Update test coverage table — update skill count, scenario count, and top skills for the language
 
-2. **Regenerate [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Pages data** — Run the extraction script and rebuild the docs site from one scoped directory change
+2. **Regenerate [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Pages data** — Run the extraction script and rebuild the docs site from one scoped directory change
 
    ```bash
    (cd docs-site && npx tsx scripts/extract-skills.ts && npm run build)
    ```
 
-   This updates `docs-site/src/data/skills.json` which feeds the Astro-based docs site, then rebuilds the site into `docs/`, which is served by [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Pages.
+   This updates `docs-site/src/data/skills.json` which feeds the Astro-based docs site, then rebuilds the site into `docs/`, which is served by [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Pages.
 
 3. **Verify AGENTS.md** — Ensure the skill count is accurate
 
@@ -1060,10 +1060,10 @@ or changed package guidance.
 
 For Azure SDK language skills, use official upstream source docs and examples as the source of truth:
 
-- Go: `https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-go/tree/main/sdk/<service>/<module>/README.md`
-- Go examples: `https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-go/tree/main/sdk/<service>/<module>/`
-- Rust: `https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-rust/tree/main/sdk/<service>/<crate>/README.md`
-- Rust examples: `https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-rust/tree/main/sdk/<service>/<crate>/examples/`
+- Go: `https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/Azure/azure-sdk-for-go/tree/main/sdk/<service>/<module>/README.md`
+- Go examples: `https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/Azure/azure-sdk-for-go/tree/main/sdk/<service>/<module>/`
+- Rust: `https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/Azure/azure-sdk-for-rust/tree/main/sdk/<service>/<crate>/README.md`
+- Rust examples: `https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/Azure/azure-sdk-for-rust/tree/main/sdk/<service>/<crate>/examples/`
 - .NET/Java/[Python](../../Languages/python/SKILL.md)/TS/Go: use current Microsoft Learn package docs + official SDK repos
 
 2. **Refresh skill content surgically**
@@ -1079,7 +1079,7 @@ For Azure SDK language skills, use official upstream source docs and examples as
 Use the language-specific authoritative source as the contract for every snippet in the regenerated skill:
 
 - **[Python](../../Languages/python/SKILL.md), .NET, Java, [TypeScript](../../Frontend/typescript/SKILL.md), Go**: Treat the current Microsoft Learn API reference as the contract.
-- **Rust**: Treat the official SDK repository (`https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-rust`) and crates.io documentation as the contract; Rust packages do not have Learn API-reference pages.
+- **Rust**: Treat the official SDK repository (`https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/Azure/azure-sdk-for-rust`) and crates.io documentation as the contract; Rust packages do not have Learn API-reference pages.
 
 Before finalizing any regenerated skill:
 
@@ -1124,7 +1124,7 @@ When regenerating any Rust skill, verify the generated `## Best Practices` secti
 Use a content check before finalizing:
 
 ```bash
-rg -n "Use `cargo add` to manage dependencies, never edit `Cargo.toml` directly|Add `azure_core` only when importing `azure_core` types directly" .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/plugins/azure-sdk-rust/skills/**/SKILL.md
+rg -n "Use `cargo add` to manage dependencies, never edit `Cargo.toml` directly|Add `azure_core` only when importing `azure_core` types directly" .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/plugins/azure-sdk-rust/skills/**/SKILL.md
 ```
 
 The regeneration is not complete unless both lines are present in each affected Rust skill.
@@ -1137,7 +1137,7 @@ The regeneration is not complete unless both lines are present in each affected 
 
 ### Regeneration Workflow Step 5: Record What Changed
 
-In the PR/[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) notes, include:
+In the PR/[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) notes, include:
 
 - Which upstream docs/examples were used
 - Which snippets/signatures were corrected
@@ -1151,11 +1151,11 @@ Use this when the request is "regenerate all [Python](../../Languages/python/SKI
 
 ```bash
 # Canonical source of truth for [Python](../../Languages/python/SKILL.md) plugin skills
-ls .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/plugins/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/*/SKILL.md
+ls .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/plugins/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/*/SKILL.md
 ```
 
-- Treat `.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/plugins/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/` as canonical.
-- Keep `.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/skills/<name>` links in sync after edits (symlink check/fix step below).
+- Treat `.[github](../../../ci-cd/github-actions/other/github/SKILL.md)/plugins/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/` as canonical.
+- Keep `.[github](../../../ci-cd/github-actions/other/github/SKILL.md)/skills/<name>` links in sync after edits (symlink check/fix step below).
 
 2. **For each skill, refresh from authoritative sources**
 
@@ -1177,7 +1177,7 @@ ls .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/plugins/azure-sdk-
 
 ```bash
 # Fast frontmatter/structure validation for every [Python](../../Languages/python/SKILL.md) skill
-[python](../../Languages/python/SKILL.md) .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/skills/skill-creator/scripts/quick_validate.py .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/plugins/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/<[skill-name](../../../DevOps_and_Cloud/Observability_and_SecOps/_template/SKILL.md)>
+[python](../../Languages/python/SKILL.md) .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/skills/skill-creator/scripts/quick_validate.py .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/plugins/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/<[skill-name](../../../DevOps_and_Cloud/Observability_and_SecOps/_template/SKILL.md)>
 
 # Run [Python](../../Languages/python/SKILL.md) skill harness in mock mode (all *-py scenarios)
 (cd tests && pwsh ./run-harness-by-language.ps1 -Language py -Mock)
@@ -1186,9 +1186,9 @@ ls .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/plugins/azure-sdk-
 5. **Sync skill links and docs artifacts**
 
 ```bash
-# Ensure .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/skills links point at plugin canonical skills
-[python](../../Languages/python/SKILL.md) .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/scripts/sync_skill_links.py --plugin azure-sdk-[python](../../Languages/python/SKILL.md) --check
-[python](../../Languages/python/SKILL.md) .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/scripts/sync_skill_links.py --plugin azure-sdk-[python](../../Languages/python/SKILL.md) --apply
+# Ensure .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/skills links point at plugin canonical skills
+[python](../../Languages/python/SKILL.md) .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/scripts/sync_skill_links.py --plugin azure-sdk-[python](../../Languages/python/SKILL.md) --check
+[python](../../Languages/python/SKILL.md) .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/scripts/sync_skill_links.py --plugin azure-sdk-[python](../../Languages/python/SKILL.md) --apply
 
 # Refresh docs site data after content changes
 (cd docs-site && npx tsx scripts/extract-skills.ts && npm run build)
@@ -1196,7 +1196,7 @@ ls .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/plugins/azure-sdk-
 
 6. **Completion criteria for batch regeneration**
 
-- Every targeted `.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/plugins/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/*/SKILL.md` is updated or explicitly confirmed current.
+- Every targeted `.[github](../../../ci-cd/github-actions/other/github/SKILL.md)/plugins/azure-sdk-[python](../../Languages/python/SKILL.md)/skills/*/SKILL.md` is updated or explicitly confirmed current.
 - Harness mock run for `-py` skills passes without regressions.
 - Skill links are in sync for `azure-sdk-[python](../../Languages/python/SKILL.md)`.
 - PR notes include upstream docs used, signature corrections, and validation outcomes.
@@ -1306,9 +1306,9 @@ Before completing a skill:
 
 **Categorization:**
 
-- [ ] Skill created in `.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/skills/<[skill-name](../../../DevOps_and_Cloud/Observability_and_SecOps/_template/SKILL.md)>/`
+- [ ] Skill created in `.[github](../../../ci-cd/github-actions/other/github/SKILL.md)/skills/<[skill-name](../../../DevOps_and_Cloud/Observability_and_SecOps/_template/SKILL.md)>/`
 - [ ] Symlink created in `skills/<language>/<category>/<short-name>`
-- [ ] Symlink points to `../../../.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/skills/<[skill-name](../../../DevOps_and_Cloud/Observability_and_SecOps/_template/SKILL.md)>`
+- [ ] Symlink points to `../../../.[github](../../../ci-cd/github-actions/other/github/SKILL.md)/skills/<[skill-name](../../../DevOps_and_Cloud/Observability_and_SecOps/_template/SKILL.md)>`
 
 **Testing:**
 

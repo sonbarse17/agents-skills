@@ -116,7 +116,7 @@ SELECT client_addr, state, sync_state, replay_lag
 FROM pg_stat_replication;
 ```
 `sync_state` of `async` is the default; set `synchronous_standby_names`
-on the primary if you need synchronous [commit](../../CI_CD/commit/SKILL.md) guarantees for a specific
+on the primary if you need synchronous [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) guarantees for a specific
 replica (at the cost of primary write latency if that replica lags or
 disconnects).
 

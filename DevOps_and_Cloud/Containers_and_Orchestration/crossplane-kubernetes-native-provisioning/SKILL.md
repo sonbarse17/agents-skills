@@ -140,9 +140,9 @@ job.
        secretRef: { namespace: crossplane-system, name: aws-creds, key: creds }
    ```
    Source the actual credential values from your organization's
-   secrets manager at apply time (never [commit](../../CI_CD/commit/SKILL.md) them), per
+   secrets manager at apply time (never [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) them), per
    [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md)
-   — the `${...}` placeholders above are not literal syntax to [commit](../../CI_CD/commit/SKILL.md).
+   — the `${...}` placeholders above are not literal syntax to [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md).
 
 2. **Provision a single managed resource directly** first, to confirm
    the provider/credentials work, before building a `Composition` on

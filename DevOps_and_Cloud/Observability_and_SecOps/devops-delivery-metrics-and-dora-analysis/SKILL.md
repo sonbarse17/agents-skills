@@ -62,7 +62,7 @@ that is almost always a systemic, cross-team property.
 ## Prerequisites & environment
 
 - A source of truth for deploy events — the CI/CD platform's own deploy
-  history ([GitHub](../../CI_CD/github/SKILL.md) Actions/GitLab CI/[Jenkins](../../CI_CD/jenkins/SKILL.md) deployment job records, an
+  history ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions/GitLab CI/[Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md) deployment job records, an
   Argo CD sync history) rather than a manually-maintained spreadsheet
   that will drift out of date.
 - A source of truth for incidents and their resolution timestamps (an
@@ -73,7 +73,7 @@ that is almost always a systemic, cross-team property.
   change" and "a deployment to production" before comparing any numbers —
   teams that deploy a monolith once a day and teams that deploy 50
   independent [microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) are not directly comparable without care.
-- Enough historical [commit](../../CI_CD/commit/SKILL.md)/PR/deploy timestamp data (ideally several
+- Enough historical [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)/PR/deploy timestamp data (ideally several
   months) to compute lead time and deployment frequency trends rather
   than a single noisy data point.
 - Executive/leadership buy-in on using the metrics for systemic
@@ -94,7 +94,7 @@ that is almost always a systemic, cross-team property.
    here even with identical total code volume — this metric measures
    batch size and release cadence, not raw productivity.
 
-2. **Define lead time for changes as [commit](../../CI_CD/commit/SKILL.md)-to-production time**, not
+2. **Define lead time for changes as [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)-to-production time**, not
    ticket-created-to-done or idea-to-production (which conflates product
    discovery time with delivery-pipeline time):
    ```
@@ -150,7 +150,7 @@ that is almost always a systemic, cross-team property.
      rollback as a "failure" if it happened quickly, or by quietly
      patching forward instead of formally rolling back so the [incident](../incident/SKILL.md)
      is never logged against that deploy.
-   - Lead time measured from ticket creation instead of first [commit](../../CI_CD/commit/SKILL.md),
+   - Lead time measured from ticket creation instead of first [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md),
      making it look worse (or better) than actual delivery-pipeline
      performance by including product/planning time that isn't part of
      the engineering delivery pipeline at all.
@@ -172,7 +172,7 @@ that is almost always a systemic, cross-team property.
      [pipeline-failure-triage-and-recovery](../[pipeline-failure-triage-and-recovery](../../CI_CD/pipeline-failure-triage-and-recovery/SKILL.md)/SKILL.md)
      if flaky CI is inflating lead time.
    - High change failure rate → look at test coverage, staging fidelity,
-     and [progressive-delivery](../../CI_CD/progressive-delivery/SKILL.md) practices; see
+     and [progressive-delivery](../../../ci-cd/common/deployment/progressive-delivery/SKILL.md) practices; see
      [blue-green-canary-deployments](../[blue-green-canary-deployments](../../CI_CD/blue-green-canary-deployments/SKILL.md)/SKILL.md).
    - High MTTR → look at [observability](../observability/SKILL.md), rollback speed, and [incident](../incident/SKILL.md)
      process; see
@@ -242,7 +242,7 @@ that is almost always a systemic, cross-team property.
 - **Symptom:** Lead time is measured from Jira ticket creation to
   production, and it looks terrible, but investigation shows most of that
   time is tickets sitting in a backlog before anyone starts coding.
-  **Fix:** Redefine lead time as [commit](../../CI_CD/commit/SKILL.md)-to-production (step 2) to isolate
+  **Fix:** Redefine lead time as [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)-to-production (step 2) to isolate
   the engineering delivery pipeline's actual performance; track
   backlog/planning time as a separate, product-side metric if it matters,
   but don't conflate the two.

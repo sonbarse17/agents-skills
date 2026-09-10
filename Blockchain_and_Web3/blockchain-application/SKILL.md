@@ -327,7 +327,7 @@ pub struct User {
 | Reentrancy | Checks-effects-interactions, ReentrancyGuard |
 | Flash loan manipulation | TWAP pricing, min/max output constraints |
 | Oracle manipulation | Redundant oracles, stale price checks, circuit breakers |
-| Frontrunning | [Commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)-reveal, submarine sends, FCFS ordering |
+| Frontrunning | [Commit](../../ci-cd/common/git-workflow/commit/SKILL.md)-reveal, submarine sends, FCFS ordering |
 | Signature replay | Include chain ID, contract address, nonce in EIP-712 |
 | Access control | Timelock + multi-sig, not single admin key |
 | Integer overflow | Solidity 0.8+ built-in checks, SafeMath for older |

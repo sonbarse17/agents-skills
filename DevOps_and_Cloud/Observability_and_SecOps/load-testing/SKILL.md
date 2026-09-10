@@ -114,7 +114,7 @@ faster version — catches regressions before they reach production instead of d
 [incident](../incident/SKILL.md).
 
 - **Keep a fast smoke-scale version in CI**, and reserve the full-scale ramp test for pre-release
-  or scheduled runs — see `[ci-pipelines](../../CI_CD/ci-pipelines/SKILL.md)` for wiring it in.
+  or scheduled runs — see `[ci-pipelines](../../../ci-cd/common/pipeline-design/ci-pipelines/SKILL.md)` for wiring it in.
 - **Fail the pipeline on a percentile or error-rate regression**, not just a hard crash — silent
   latency creep is a regression too.
 - **Re-run the full test whenever the traffic model changes**, not just when code changes — a new

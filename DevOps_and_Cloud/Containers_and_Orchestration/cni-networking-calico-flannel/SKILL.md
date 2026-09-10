@@ -101,7 +101,7 @@ them and installing/troubleshooting each.
 
 2. **Install Flannel** (VXLAN backend, the common default):
    ```bash
-   [kubectl](../kubectl/SKILL.md) apply -f https://[github](../../CI_CD/github/SKILL.md).com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
+   [kubectl](../kubectl/SKILL.md) apply -f https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
    ```
    Confirm the pod CIDR passed to `kubeadm init --pod-network-cidr=...`
    matches Flannel's expected default (`10.244.0.0/16`) or override

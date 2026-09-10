@@ -100,7 +100,7 @@ A consumer group divides topic partitions among its members. When a consumer joi
 acks=0: fire-and-forget, no acknowledgment, possible data loss. acks=1: leader acknowledges, possible leader failover loss. acks=all (with min.insync.replicas): leader + ISR acknowledge, no loss. Enable `enable.idempotence=true` to prevent duplicate produces within a session. Set `transactional.id` for exactly-once across partitions.
 
 #### Consumer Semantics
-At-most-once: [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) offset before processing (message may be lost on failure). At-least-once: [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) offset after processing (message may be reprocessed on failure). Exactly-once: process and [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) offset atomically via transactional API. Use `isolation.level=read_committed` to only read committed messages. Combine with idempotent sinks (upsert, idempotent operations) for pragmatic exactly-once.
+At-most-once: [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) offset before processing (message may be lost on failure). At-least-once: [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) offset after processing (message may be reprocessed on failure). Exactly-once: process and [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) offset atomically via transactional API. Use `isolation.level=read_committed` to only read committed messages. Combine with idempotent sinks (upsert, idempotent operations) for pragmatic exactly-once.
 
 #### Transactional API
 ```java
@@ -410,7 +410,7 @@ Kafka ACLs: `--allow-principal User:app1 --operation read --topic orders`. Topic
 Consumer lag is the difference between the latest produced offset and the consumer's committed offset. High lag means the consumer is falling behind. Lag is the most critical streaming metric. Monitor lag every 60 seconds. Alert on lag > 1000 messages or lag growing steadily (indicates consumer cannot keep up).
 
 ### Key Metrics
-Producer metrics: request rate, error rate, compression ratio, batch size. Consumer metrics: lag, poll rate, processing time, [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) rate. Broker metrics: request rate, disk usage, network throughput, ISR count, under-replicated partitions. Flink metrics: checkpoint duration, state size, records processed per second, latency. All metrics should feed into a [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) dashboard with alerts for anomalous values.
+Producer metrics: request rate, error rate, compression ratio, batch size. Consumer metrics: lag, poll rate, processing time, [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) rate. Broker metrics: request rate, disk usage, network throughput, ISR count, under-replicated partitions. Flink metrics: checkpoint duration, state size, records processed per second, latency. All metrics should feed into a [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) dashboard with alerts for anomalous values.
 
 ### Streaming Health Dashboard
 ```
@@ -529,7 +529,7 @@ Creating a topic per event type per entity (hundreds of topics). Leads to ZK ove
 Producing/consuming raw JSON without Schema Registry. Inevitably leads to deserialization failures when schema changes. Fix: enforce Schema Registry with Avro/Protobuf and BACKWARD compatibility.
 
 ### Ignoring Offset Management
-Auto-committing offsets with `enable.auto.[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)=true` means processing state may not match committed offset. Fix: manual offset commits after processing complete, or use transactional API.
+Auto-committing offsets with `enable.auto.[commit](../../ci-cd/common/git-workflow/commit/SKILL.md)=true` means processing state may not match committed offset. Fix: manual offset commits after processing complete, or use transactional API.
 
 ### Synchronous Processing in Consumers
 Calling external APIs synchronously in consumer poll loop blocks the thread and causes rebalance timeouts. Fix: async processing with callbacks, or use a separate processing thread pool.
@@ -559,7 +559,7 @@ Both provide incremental materialized views on streaming data using [PostgreSQL]
 - Watermarks account for out-of-order events
 - Alert on lag > 1000 or lag growing for 5+ minutes
 - Set retention based on replay and [audit](../../AI_and_Agents/Operations/audit/SKILL.md) requirements
-- Never auto-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) offsets in production
+- Never auto-[commit](../../ci-cd/common/git-workflow/commit/SKILL.md) offsets in production
 - Test checkpointing by simulating broker failures
 - Monitor rebalance frequency as cluster health indicator
 - Use TLS for all inter-component communication

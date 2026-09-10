@@ -43,7 +43,7 @@ Use this skill when:
 
 ```bash
 # Install KServe with Helm
-helm repo add kserve https://kserve.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/[helm-charts](../../../DevOps_and_Cloud/Containers_and_Orchestration/helm-charts/SKILL.md)
+helm repo add kserve https://kserve.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/[helm-charts](../../../DevOps_and_Cloud/Containers_and_Orchestration/helm-charts/SKILL.md)
 helm repo update
 
 helm install kserve kserve/kserve \

@@ -425,4 +425,4 @@ catch (RequestFailedException ex)
 | NuGet Package | https://www.nuget.org/packages/Azure.Security.KeyVault.Keys |
 | API Reference | https://learn.microsoft.com/dotnet/api/azure.security.keyvault.keys |
 | Quickstart | https://learn.microsoft.com/azure/key-[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)/keys/quick-create-net |
-| [GitHub](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Source | https://[github](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/keyvault/Azure.Security.KeyVault.Keys |
+| [GitHub](../../../../../ci-cd/github-actions/other/github/SKILL.md) Source | https://[github](../../../../../ci-cd/github-actions/other/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/keyvault/Azure.Security.KeyVault.Keys |

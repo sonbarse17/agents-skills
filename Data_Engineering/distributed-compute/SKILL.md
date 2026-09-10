@@ -567,6 +567,6 @@ t_env.execute_sql("""
 - **Network security**: Restrict cluster communication to private VPC; no public endpoints for Spark UI.
 
 ## Handoff
-`[data-batch-processing](../../DevOps_and_Cloud/CI_CD/batch-processing/SKILL.md)` for Spark SQL and Hive-specific optimizations
+`[data-batch-processing](../batch-processing/SKILL.md)` for Spark SQL and Hive-specific optimizations
 `[data-data-platform](../data-platform/SKILL.md)` for cluster provisioning and infrastructure
 `[data-data-lakehouse](../data-lakehouse/SKILL.md)` for lake-wide compute integration

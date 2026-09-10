@@ -117,7 +117,7 @@ slsa_levels:
 ### Generate SLSA Provenance for Model Training
 
 ```yaml
-# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/model-build-slsa.yml
+# .[github](../../ci-cd/github-actions/other/github/SKILL.md)/workflows/model-build-slsa.yml
 name: Model Build with SLSA Provenance
 on:
   push:
@@ -138,7 +138,7 @@ jobs:
 
       - name: Package model as OCI artifact
         run: |
-          oras push ghcr.io/acme/ml-models/sentiment:${{ [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).ref_name }} \
+          oras push ghcr.io/acme/ml-models/sentiment:${{ [github](../../ci-cd/github-actions/other/github/SKILL.md).ref_name }} \
             model-weights.safetensors:application/vnd.acme.model.safetensors \
             model-config.json:application/json
 
@@ -148,13 +148,13 @@ jobs:
 
       - name: Sign and attest
         run: |
-          cosign sign ghcr.io/acme/ml-models/sentiment:${{ [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).ref_name }}
+          cosign sign ghcr.io/acme/ml-models/sentiment:${{ [github](../../ci-cd/github-actions/other/github/SKILL.md).ref_name }}
           cosign attest --predicate training-sbom.json \
             --type cyclonedx \
-            ghcr.io/acme/ml-models/sentiment:${{ [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).ref_name }}
+            ghcr.io/acme/ml-models/sentiment:${{ [github](../../ci-cd/github-actions/other/github/SKILL.md).ref_name }}
 
       - name: Generate provenance
-        uses: slsa-framework/slsa-[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-generator/.[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/generator_container_slsa3.yml@v2.0.0
+        uses: slsa-framework/slsa-[github](../../ci-cd/github-actions/other/github/SKILL.md)-generator/.[github](../../ci-cd/github-actions/other/github/SKILL.md)/workflows/generator_container_slsa3.yml@v2.0.0
         with:
           image: ghcr.io/acme/ml-models/sentiment
           digest: ${{ steps.push.outputs.digest }}
@@ -177,7 +177,7 @@ provenance:
     hash: "sha256:abc123..."
     data_card_ref: "https://internal.acme.com/data-cards/sentiment-v3"
   training_config:
-    source: "git://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/acme/ml-models@abc123"
+    source: "git://[github](../../ci-cd/github-actions/other/github/SKILL.md).com/acme/ml-models@abc123"
     hyperparameters:
       learning_rate: 0.00005
       epochs: 10
@@ -228,7 +228,7 @@ fickling --check model.pkl
 ### Automated Registry Scan Pipeline
 
 ```yaml
-# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/registry-scan.yml
+# .[github](../../ci-cd/github-actions/other/github/SKILL.md)/workflows/registry-scan.yml
 name: Nightly Registry Scan
 on:
   schedule:
@@ -399,7 +399,7 @@ spec:
 | Problem | Cause | Solution |
 |---------|-------|----------|
 | `cosign verify` fails with "no matching signatures" | Image was pushed without signing | Re-run the signing step; check CI pipeline logs |
-| Provenance attestation missing | SLSA generator not configured | Add slsa-[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-generator to the build workflow |
+| Provenance attestation missing | SLSA generator not configured | Add slsa-[github](../../ci-cd/github-actions/other/github/SKILL.md)-generator to the build workflow |
 | Trivy reports CVEs in base image | Stale base image | Update `FROM` image in Dockerfile; rebuild and re-sign |
 | Pickle deserialization warning | Model saved in unsafe format | Convert to safetensors: `model.save_pretrained(".", safe_serialization=True)` |
 | Keyless verification fails | Wrong OIDC issuer or identity | Check `--certificate-identity` and `--certificate-oidc-issuer` flags |

@@ -224,7 +224,7 @@ leaves cost and latency on the table.
   later (non-reproducible fine-tuning experiments).
   **Fix:** Version the exact training dataset (content hash or a dataset
   registry entry), log all hyperparameters and the base model's exact
-  revision/[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) to the experiment tracker, and fix random seeds — treat
+  revision/[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) to the experiment tracker, and fix random seeds — treat
   this with the same rigor as
   [training-pipeline-orchestration](../[training-pipeline-orchestration](../training-pipeline-orchestration/SKILL.md)/SKILL.md)
   recommends for any training pipeline.

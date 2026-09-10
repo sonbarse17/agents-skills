@@ -27,7 +27,7 @@ Generate four audience-tailored onboarding documents in an `onboarding/` folder,
 Before generating any guides, you MUST determine the source repository context:
 
 1. **Check for git remote**: Run `git remote get-url origin` to detect if a remote exists
-2. **Ask the user**: _"Is this a local-only repository, or do you have a source repository URL (e.g., [GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md), Azure DevOps)?"_
+2. **Ask the user**: _"Is this a local-only repository, or do you have a source repository URL (e.g., [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md), Azure DevOps)?"_
    - Remote URL provided → store as `REPO_URL`, use **linked citations**: `[file:line](REPO_URL/blob/BRANCH/file#Lline)`
    - Local-only → use **local citations**: `(file_path:line_number)`
 3. **Determine default branch**: Run `git rev-parse --abbrev-ref HEAD`
@@ -99,7 +99,7 @@ Scan the repository for build files to determine the primary language for code e
 **Part III: Getting Productive**
 8. **Prerequisites & Setup** — Table: Tool, Version, Install Command. Step-by-step with expected output at each step.
 9. **Your First Task** — End-to-end walkthrough of adding a simple feature
-10. **Development Workflow** — Branch strategy, [commit](../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) conventions, PR process. Use `flowchart` diagram.
+10. **Development Workflow** — Branch strategy, [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) conventions, PR process. Use `flowchart` diagram.
 11. **Running Tests** — All tests, single file, single test, coverage commands
 12. **Debugging Guide** — Common issues table: Symptom, Cause, Fix
 13. **Common Pitfalls** — Mistakes every new contributor makes and how to avoid them

@@ -202,7 +202,7 @@ scrape_configs:
 
 ```bash
 # Using Helm
-helm repo add grafana https://grafana.[github](../../CI_CD/github/SKILL.md).io/[helm-charts](../../Containers_and_Orchestration/helm-charts/SKILL.md)
+helm repo add grafana https://grafana.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/[helm-charts](../../Containers_and_Orchestration/helm-charts/SKILL.md)
 helm install loki grafana/loki-stack \
   --namespace [monitoring](../monitoring/SKILL.md) \
   --create-namespace \

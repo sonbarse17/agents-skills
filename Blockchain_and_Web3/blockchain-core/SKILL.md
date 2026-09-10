@@ -167,7 +167,7 @@ func ForkChoice(blocks []Block) Block {
 
 ### BFT Consensus (Tendermint)
 ```go
-// Tendermint consensus states: Propose → Pre-vote → Pre-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) → [Commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)
+// Tendermint consensus states: Propose → Pre-vote → Pre-[commit](../../ci-cd/common/git-workflow/commit/SKILL.md) → [Commit](../../ci-cd/common/git-workflow/commit/SKILL.md)
 // 2f+1 validators needed (f = max faulty)
 func ConsensusRound(height int64, round int32, state State) Decision {
     proposer := SelectProposer(height, round, state.Validators)
@@ -176,7 +176,7 @@ func ConsensusRound(height int64, round int32, state State) Decision {
     if len(prevotes) > 2*len(state.Validators)/3 {
         precommits := Broadcast(PrecommitMessage{BlockID: block.ID})
         if len(precommits) > 2*len(state.Validators)/3 {
-            return [Commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md){Block: block}
+            return [Commit](../../ci-cd/common/git-workflow/commit/SKILL.md){Block: block}
         }
     }
     return Nil // Timeout, next round
@@ -185,7 +185,7 @@ func ConsensusRound(height int64, round int32, state State) Decision {
 
 ### HotStuff (Libra/Diem Successor)
 ```go
-// HotStuff: 3-chain protocol (prepare → pre-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) → [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md))
+// HotStuff: 3-chain protocol (prepare → pre-[commit](../../ci-cd/common/git-workflow/commit/SKILL.md) → [commit](../../ci-cd/common/git-workflow/commit/SKILL.md))
 // Leader-based BFT with linear message complexity O(n)
 // Each round has a leader; pipelined for efficiency
 // Used in: Diem, Sui (Narwhal/Tusk), Flow
@@ -200,7 +200,7 @@ type HotStuffState struct {
 ### DAG Consensus (Avalanche)
 - Snow consensus: Repeated subsampling of validators
   - Query k validators (k=20), wait for alpha response (≥15)
-  - If confident, [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md); if conflict, switch; else repeat
+  - If confident, [commit](../../ci-cd/common/git-workflow/commit/SKILL.md); if conflict, switch; else repeat
   - Typically converges in 3-5 rounds
 - DAG structure: Multiple blocks referenced, not just linear chain
   - Each block references multiple parents (DAG)
@@ -313,7 +313,7 @@ Protocol level:
 └── Uniform random ordering: Tx order determined by randomness, not fee
 
 Application level:
-├── [Commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)-reveal: Submit commitment, reveal later
+├── [Commit](../../ci-cd/common/git-workflow/commit/SKILL.md)-reveal: Submit commitment, reveal later
 ├── Batch auctions (CowSwap): CoW mechanism for order matching
 ├── Slippage protection: minOutputAmount in all swaps
 └── Private mempool (Flashbots): Bypass public mempool

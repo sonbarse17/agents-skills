@@ -104,7 +104,7 @@ dvc remote modify myremote region us-east-1
 # Track data
 dvc add data/raw/customers.csv
 git add data/raw/customers.csv.dvc .gitignore
-git [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) -m "add raw customers dataset"
+git [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) -m "add raw customers dataset"
 
 # Create pipeline (dvc.yaml)
 dvc stage add -n train \
@@ -133,8 +133,8 @@ lakectl branch create spark://main@data-lake/refs/heads/etl-dev
 # Work on branch (Spark job reads from etl-dev branch)
 spark.read.format("iceberg").option("branch", "etl-dev").table("analytics.fct_orders")
 
-# [Commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) changes
-lakectl [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) lakefs://data-lake/etl-dev -m "add revenue column to fct_orders"
+# [Commit](../../ci-cd/common/git-workflow/commit/SKILL.md) changes
+lakectl [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) lakefs://data-lake/etl-dev -m "add revenue column to fct_orders"
 
 # Diff
 lakectl diff lakefs://data-lake/main lakefs://data-lake/etl-dev
@@ -143,7 +143,7 @@ lakectl diff lakefs://data-lake/main lakefs://data-lake/etl-dev
 lakectl merge lakefs://data-lake/etl-dev lakefs://data-lake/main
 
 # Rollback
-lakectl revert lakefs://data-lake/main --[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) <bad-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)-hash>
+lakectl revert lakefs://data-lake/main --[commit](../../ci-cd/common/git-workflow/commit/SKILL.md) <bad-[commit](../../ci-cd/common/git-workflow/commit/SKILL.md)-hash>
 
 # Tag
 lakectl tag lakefs://data-lake/v1.0.0 lakefs://data-lake/main
@@ -165,8 +165,8 @@ Rules: no direct writes to `main`. All changes via branch → PR → data diff r
 
 ```
 Experiment:
-  - Git [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) (code): a1b2c3d
-  - DVC [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) (data): e4f5g6h
+  - Git [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) (code): a1b2c3d
+  - DVC [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) (data): e4f5g6h
   - Parameters: lr=0.01, epochs=50
   - Metrics: accuracy=0.923, loss=0.18
   - Output: models/exp-a1b2c3d.pkl
@@ -193,7 +193,7 @@ lakectl diff lakefs://data-lake/main lakefs://data-lake/dev-feature
 ### Step 7: CI/CD Integration
 
 ```yaml
-# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/data-pipeline.yml
+# .[github](../../ci-cd/github-actions/other/github/SKILL.md)/workflows/data-pipeline.yml
 jobs:
   data-pipeline:
     runs-on: ubuntu-latest
@@ -208,10 +208,10 @@ jobs:
           jq '.added, .modified' diff.json
 ```
 
-LakeFS hooks: `pre-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)` (validate schema), `pre-merge` (check compatibility), `post-merge` (trigger pipeline).
+LakeFS hooks: `pre-[commit](../../ci-cd/common/git-workflow/commit/SKILL.md)` (validate schema), `pre-merge` (check compatibility), `post-merge` (trigger pipeline).
 
 ### Step 8: Nessie — Git for Iceberg
-Nessie provides Git-like version control for data lakes at the Iceberg catalog level. Unlike LakeFS (object store branching), Nessie operates on table metadata via the Iceberg REST Catalog API. A Nessie [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) captures all table states atomically, enabling multi-table atomic operations. Branches are zero-copy — instant creation regardless of data size since only metadata references are copied. Key operations: `CREATE BRANCH dev FROM main` for isolated data development; `MERGE dev INTO main` for atomic promotion of all table changes; `TAG release-1.0` for reproducible snapshots. Integrates with Spark, Flink, Trino, and Dremio. Use Nessie for catalog-level Iceberg versioning, multi-table atomic commits, and CI/CD pipeline isolation for data engineering.
+Nessie provides Git-like version control for data lakes at the Iceberg catalog level. Unlike LakeFS (object store branching), Nessie operates on table metadata via the Iceberg REST Catalog API. A Nessie [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) captures all table states atomically, enabling multi-table atomic operations. Branches are zero-copy — instant creation regardless of data size since only metadata references are copied. Key operations: `CREATE BRANCH dev FROM main` for isolated data development; `MERGE dev INTO main` for atomic promotion of all table changes; `TAG release-1.0` for reproducible snapshots. Integrates with Spark, Flink, Trino, and Dremio. Use Nessie for catalog-level Iceberg versioning, multi-table atomic commits, and CI/CD pipeline isolation for data engineering.
 
 ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from pynessie import NessieClient
@@ -233,7 +233,7 @@ dvc exp apply lr-mid  # rollback to best experiment
 ```
 
 ### Step 10: Data Lineage Tracking
-Track the full lineage from source data through transformations to output models. For DVC, lineage is captured in `dvc.yaml` and `dvc.lock` files — each stage defines its dependencies and outputs. For LakeFS, lineage is tracked through [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) history and metadata. For Nessie, lineage is captured at the catalog level with atomic commits. Use OpenLineage alongside these tools for end-to-end lineage across the entire data platform.
+Track the full lineage from source data through transformations to output models. For DVC, lineage is captured in `dvc.yaml` and `dvc.lock` files — each stage defines its dependencies and outputs. For LakeFS, lineage is tracked through [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) history and metadata. For Nessie, lineage is captured at the catalog level with atomic commits. Use OpenLineage alongside these tools for end-to-end lineage across the entire data platform.
 
 ### Step 11: Data Retention and Garbage Collection
 Versioning creates historical data that accumulates over time. Define retention policies: keep all versions for 30 days for rollback, weekly snapshots for 1 year, monthly snapshots for 7 years (compliance). DVC uses `dvc gc` to remove unused cache files. LakeFS garbage collection removes unreferenced objects from branches older than TTL. Nessie GC removes old snapshots not referenced by any branch or tag.
@@ -303,7 +303,7 @@ Data volume:
 
 - Always version data independently of code (DVC pointer files in Git, data in remote storage).
 - Tag every production data release with a semantic version and changelog.
-- Run data validation in pre-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) hooks (LakeFS) or pipeline stages (DVC).
+- Run data validation in pre-[commit](../../ci-cd/common/git-workflow/commit/SKILL.md) hooks (LakeFS) or pipeline stages (DVC).
 - Set retention policies: experiment branches auto-deleted after 30 days, dev branches after 90 days.
 - Use data contracts to validate schema before merging data changes.
 - Document data lineage: source → transformation → output dataset.
@@ -312,7 +312,7 @@ Data volume:
 - Combine with experiment tracking (MLflow, Weights & Biases) for complete ML reproducibility.
 - Use DVC `dvc.lock` as the single source of truth for pipeline state.
 - Set up CI/CD that auto-deletes stale experiment branches.
-- Use LakeFS hooks for automated data quality checks on [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md).
+- Use LakeFS hooks for automated data quality checks on [commit](../../ci-cd/common/git-workflow/commit/SKILL.md).
 - Monitor storage usage per branch for cost attribution.
 
 ## Compared With
@@ -324,7 +324,7 @@ Data volume:
 | Zero-copy | Yes (pointers) | Yes (metadata) | Yes (metadata) | No (files) |
 | Experiment tracking | Built-in | No | No | No |
 | Pipeline DAG | dvc.yaml | External | External | External |
-| Multi-table atomic | No | Yes ([commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)) | Yes ([commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)) | No |
+| Multi-table atomic | No | Yes ([commit](../../ci-cd/common/git-workflow/commit/SKILL.md)) | Yes ([commit](../../ci-cd/common/git-workflow/commit/SKILL.md)) | No |
 | Scale | < 100 GB | PB-scale | PB-scale | PB-scale |
 | Rollback | dvc checkout | lakectl revert | client.merge | time travel |
 
@@ -343,7 +343,7 @@ DVC vs MLflow: DVC handles data and pipeline versioning. MLflow handles experime
 - Performance degrades with: millions of DVC-tracked files, thousands of LakeFS branches, Nessie snapshots without GC.
 - DVC cache: local cache in `.dvc/cache` avoids re-downloading unchanged files. Use `dvc cache dir` to set a shared cache.
 - LakeFS storage: new writes on branches create new objects. Storage grows with active development branches. Use GC to reclaim space.
-- Nessie metadata: each [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) stores a snapshot of the Iceberg catalog. Multi-table commits are atomic but increase metadata size.
+- Nessie metadata: each [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) stores a snapshot of the Iceberg catalog. Multi-table commits are atomic but increase metadata size.
 
 Scalability: DVC works well for teams of 5-20 data scientists. LakeFS and Nessie scale to enterprise data lakes with hundreds of users. Nessie is最适合 for Iceberg-native environments where catalog-level operations are critical.
 
@@ -355,7 +355,7 @@ Scalability: DVC works well for teams of 5-20 data scientists. LakeFS and Nessie
 | LakeFS | Data lake branching, production data versioning |
 | Nessie | Iceberg catalog versioning, multi-table atomic commits |
 | Delta Lake | Single-table time travel (built into Delta format) |
-| Great Expectations | Data validation in pre-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) hooks |
+| Great Expectations | Data validation in pre-[commit](../../ci-cd/common/git-workflow/commit/SKILL.md) hooks |
 | MLflow | Experiment tracking alongside DVC |
 | NumpyCruncher / Quilt | Alternative data versioning for data science |
 | OpenLineage | Cross-tool lineage tracking |
@@ -587,7 +587,7 @@ stages:
 
 - **Snapshot diff**: Use Nessie diff API to compute changes between branches without scanning all data.
 - **Lazy materialization**: Branch references point to same underlying files until write; zero storage overhead on create.
-- **Metadata caching**: Cache Nessie [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) log in memory (Redis) for fast branch listing operations.
+- **Metadata caching**: Cache Nessie [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) log in memory (Redis) for fast branch listing operations.
 - **Incremental GC**: GC only unreferenced files since last GC run; avoid full scans of storage.
 - **Parallel GC**: Parallelize Nessie GC across multiple workers; rate-limit to avoid S3 throttling.
 

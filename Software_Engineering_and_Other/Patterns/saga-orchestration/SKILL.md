@@ -21,7 +21,7 @@ depends_on:
 
 # Saga Orchestration
 
-Patterns for managing distributed transactions and long-running business processes without two-phase [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md).
+Patterns for managing distributed transactions and long-running business processes without two-phase [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md).
 
 ## Inputs and Outputs
 
@@ -48,7 +48,7 @@ Patterns for managing distributed transactions and long-running business process
 - Managing long-running business workflows (minutes to hours)
 - Handling failures in distributed systems where atomicity is required
 - Building order fulfillment, approval, or booking processes
-- Replacing fragile two-phase [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) with async compensation
+- Replacing fragile two-phase [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) with async compensation
 
 ---
 

@@ -184,7 +184,7 @@ async def database_transaction(conn: AsyncConnection):
     await conn.execute("BEGIN")
     try:
         yield conn
-        await conn.execute("[COMMIT](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)")
+        await conn.execute("[COMMIT](../../../ci-cd/common/git-workflow/commit/SKILL.md)")
     except Exception:
         await conn.execute("ROLLBACK")
         raise

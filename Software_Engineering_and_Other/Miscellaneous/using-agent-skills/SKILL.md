@@ -45,7 +45,7 @@ Task arrives
     │   ├── Security concerns? ───────→ [security-and-hardening](../../../Security/security-and-hardening/SKILL.md)
     │   └── Performance concerns? ────→ [performance-optimization](../../Backend/performance-optimization/SKILL.md)
     ├── Committing/branching? ─────────→ [git-workflow-and-versioning](../../../DevOps_and_Cloud/CI_CD/[git-workflow](../../../DevOps_and_Cloud/CI_CD/git-workflow/SKILL.md)-and-versioning/SKILL.md)
-    ├── CI/CD pipeline work? ──────────→ [ci-cd-and-automation](../../../DevOps_and_Cloud/CI_CD/ci-cd-and-automation/SKILL.md)
+    ├── CI/CD pipeline work? ──────────→ [ci-cd-and-automation](../../../ci-cd/common/pipeline-design/ci-cd-and-automation/SKILL.md)
     ├── Deprecating/migrating? ────────→ [deprecation-and-migration](../../Patterns/deprecation-and-migration/SKILL.md)
     ├── Writing docs/ADRs? ───────────→ [documentation-and-adrs](../../../Product_and_Business/documentation-and-adrs/SKILL.md)
     ├── Adding logs/metrics/alerts? ───→ [observability-and-instrumentation](../../../DevOps_and_Cloud/Observability_and_SecOps/[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-instrumentation/SKILL.md)
@@ -165,7 +165,7 @@ For a complete feature, the typical skill sequence is:
 10. [test-driven-development](../../../DevOps_and_Cloud/Observability_and_SecOps/test-driven-development/SKILL.md)     → Prove each slice works
 11. [code-review-and-quality](../../Patterns/[code-review](../code-review/SKILL.md)-and-quality/SKILL.md)     → Review before merge
 12. [code-simplification](../../Patterns/code-simplification/SKILL.md)         → Reduce unnecessary complexity while preserving behavior
-13. [git-workflow-and-versioning](../../../DevOps_and_Cloud/CI_CD/[git-workflow](../../../DevOps_and_Cloud/CI_CD/git-workflow/SKILL.md)-and-versioning/SKILL.md) → Clean [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) history
+13. [git-workflow-and-versioning](../../../DevOps_and_Cloud/CI_CD/[git-workflow](../../../DevOps_and_Cloud/CI_CD/git-workflow/SKILL.md)-and-versioning/SKILL.md) → Clean [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) history
 14. [documentation-and-adrs](../../../Product_and_Business/documentation-and-adrs/SKILL.md)      → Document decisions
 15. [deprecation-and-migration](../../Patterns/deprecation-and-migration/SKILL.md)   → Retire old systems and move users safely when needed
 16. [shipping-and-launch](../../../Product_and_Business/shipping-and-launch/SKILL.md)         → Deploy safely
@@ -195,7 +195,7 @@ Not every task needs every skill. A bug fix might only need: `[debugging-and-err
 | Review | [security-and-hardening](../../../Security/security-and-hardening/SKILL.md) | OWASP prevention, input validation, least privilege |
 | Review | [performance-optimization](../../Backend/performance-optimization/SKILL.md) | Measure first, optimize only what matters |
 | Ship | [git-workflow-and-versioning](../../../DevOps_and_Cloud/CI_CD/[git-workflow](../../../DevOps_and_Cloud/CI_CD/git-workflow/SKILL.md)-and-versioning/SKILL.md) | Atomic commits, clean history |
-| Ship | [ci-cd-and-automation](../../../DevOps_and_Cloud/CI_CD/ci-cd-and-automation/SKILL.md) | Automated quality gates on every change |
+| Ship | [ci-cd-and-automation](../../../ci-cd/common/pipeline-design/ci-cd-and-automation/SKILL.md) | Automated quality gates on every change |
 | Ship | [deprecation-and-migration](../../Patterns/deprecation-and-migration/SKILL.md) | Remove old systems and migrate users safely |
 | Ship | [documentation-and-adrs](../../../Product_and_Business/documentation-and-adrs/SKILL.md) | Document the why, not just the what |
 | Ship | [observability-and-instrumentation](../../../DevOps_and_Cloud/Observability_and_SecOps/[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-instrumentation/SKILL.md) | Structured logs, RED metrics, traces, symptom-based alerts |

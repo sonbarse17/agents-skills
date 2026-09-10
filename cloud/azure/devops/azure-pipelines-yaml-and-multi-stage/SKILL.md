@@ -31,7 +31,7 @@ Azure Pipelines (part of Azure DevOps) runs pipelines defined in
 `azure-pipelines.yml` as a sequence of **stages**, each containing
 **jobs**, each containing **steps** — with **environments** providing
 approval gates and deployment history between stages, and **templates**
-providing the reuse mechanism equivalent to [GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions' reusable
+providing the reuse mechanism equivalent to [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions' reusable
 workflows or GitLab's `include:`. This skill covers Azure Pipelines'
 specific YAML schema, environment/approval mechanics, and template reuse
 — not the generic pipeline-design concepts covered in
@@ -40,7 +40,7 @@ which apply here too but aren't repeated.
 
 ## When to use
 
-- Standing up a new pipeline for a repo hosted in Azure Repos, [GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md), or
+- Standing up a new pipeline for a repo hosted in Azure Repos, [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md), or
   Bitbucket that needs to build/test/deploy through Azure DevOps.
 - Designing a multi-stage pipeline (e.g. Build → Dev → Staging →
   Production) with approval gates and deployment history tracked per
@@ -74,7 +74,7 @@ which apply here too but aren't repeated.
 ## Step-by-step guidance
 
 1. **Structure the pipeline as stages of jobs**, mirroring how
-   CodePipeline models stages of actions and [GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions models a
+   CodePipeline models stages of actions and [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions models a
    workflow's jobs:
    ```yaml
    # azure-pipelines.yml
@@ -132,7 +132,7 @@ which apply here too but aren't repeated.
 2. **Configure the approval gate on the environment itself**, not in the
    YAML — in Azure DevOps, go to `Pipelines → Environments →
    checkout-api-production → Approvals and checks`, add the required
-   approvers. This is Azure Pipelines' equivalent of a [GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions
+   approvers. This is Azure Pipelines' equivalent of a [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions
    protected `environment:` reviewer list or a GitLab `when: manual` job;
    the YAML only references the environment name, the gate configuration
    lives on the environment resource.
@@ -196,7 +196,7 @@ which apply here too but aren't repeated.
 - Keep environment approval lists current as team membership changes; an
   approval gate whose only approver left the team blocks every future
   deployment until someone notices and fixes the check.
-- Pin `resources.repositories` template refs to a tag or [commit](../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) for
+- Pin `resources.repositories` template refs to a tag or [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) for
   production-facing pipelines, not a floating branch — see the pitfall
   below.
 - Prefer parameterized templates over YAML anchors/copy-paste for shared
@@ -213,7 +213,7 @@ which apply here too but aren't repeated.
 - **Symptom:** A shared templates repo's `main` branch changes, and every
   consuming pipeline's next run silently behaves differently — no PR, no
   changelog, just a different result.
-  **Fix:** Pin `resources.repositories.ref` to a specific tag or [commit](../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)
+  **Fix:** Pin `resources.repositories.ref` to a specific tag or [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)
   SHA for anything production-facing; treat the templates repo like any
   other versioned dependency, not a live-editable shared file.
 
@@ -304,6 +304,6 @@ when, and who approved it.
 ## Cross-references
 
 - [ci-cd-pipeline-design](../../../devops/skills/[ci-cd-pipeline-design](../../CI_CD/ci-cd-pipeline-design/SKILL.md)/SKILL.md) — vendor-neutral stage/gate/rollback concepts this pipeline implements in Azure-specific terms.
-- [github-actions-centralized-reusable-workflows](../[github-actions-centralized-reusable-workflows](../../CI_CD/[github-actions](../../CI_CD/[github](../../CI_CD/github/SKILL.md)-actions/SKILL.md)-centralized-reusable-workflows/SKILL.md)/SKILL.md) — the closest [GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions equivalent to Azure Pipelines' template-repo reuse pattern.
+- [github-actions-centralized-reusable-workflows](../[github-actions-centralized-reusable-workflows](../../CI_CD/[github-actions](../../CI_CD/[github](../../CI_CD/github/SKILL.md)-actions/SKILL.md)-centralized-reusable-workflows/SKILL.md)/SKILL.md) — the closest [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions equivalent to Azure Pipelines' template-repo reuse pattern.
 - [aws-codepipeline-and-codedeploy](../[aws-codepipeline-and-codedeploy](../aws-codepipeline-and-codedeploy/SKILL.md)/SKILL.md) — the closest AWS equivalent, for teams comparing or migrating between the two.
-- [secure-cicd-gates](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — where to place scan steps relative to the approval and deployment stages here.
+- [secure-cicd-gates](../../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — where to place scan steps relative to the approval and deployment stages here.

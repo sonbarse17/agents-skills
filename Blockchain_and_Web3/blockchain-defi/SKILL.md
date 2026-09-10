@@ -350,7 +350,7 @@ function getLiquidationPrice(
 |--------|-------------|------------|
 | Flash loan attack | Borrow huge capital, manipulate price, profit, repay | TWAP pricing, min/max output, circuit breakers |
 | Oracle manipulation | Move price to trigger liquidations or profit from trades | Redundant oracles, TWAP, stale-price checks |
-| Sandwich attack | Frontrun trade, let trade execute, backrun | Slippage protection, [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)-reveal |
+| Sandwich attack | Frontrun trade, let trade execute, backrun | Slippage protection, [commit](../../ci-cd/common/git-workflow/commit/SKILL.md)-reveal |
 | Donation attack | Manipulate rebasing token to steal yields | Track internal balances separately |
 | Infinite approval | DApp drains approved tokens | Approve exact amounts, use permit |
 | Reentrancy in callbacks | Callback reenters during token transfer | Reentrancy guard, CEI pattern |
@@ -429,7 +429,7 @@ interface CowOrder {
 2. Use TWAP over spot price for on-chain pricing to resist flash loan manipulation
 3. Understand and quantify impermanent loss before committing to AMM liquidity strategies
 4. Design for composability — interfaces should follow standards (ERC-4626, ERC-3156 flash loans)
-5. Consider MEV resistance — implement private mempools, [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)-reveal, or delay-based protections
+5. Consider MEV resistance — implement private mempools, [commit](../../ci-cd/common/git-workflow/commit/SKILL.md)-reveal, or delay-based protections
 6. Follow oracle best practices — redundant, manipulation-resistant feeds with stale-price checks
 7. Implement circuit breakers and rate limits — pause, deposit/withdraw caps, borrow limits
 8. Model liquidation economics carefully — ensure liquidators are always incentivized
@@ -537,7 +537,7 @@ contract LendingPool {
 - **Liquidation [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: Monitor positions with health factor < 1.2; trigger liquidation at 1.0.
 - **Oracle freshness**: Alert on oracle price staleness (> 2 hours); pause borrowing if stale.
 - **Slippage protection**: Set max slippage per transaction (0.5% default for major pairs).
-- **MEV protection**: Implement [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)-reveal or batch auctions for large liquidations.
+- **MEV protection**: Implement [commit](../../ci-cd/common/git-workflow/commit/SKILL.md)-reveal or batch auctions for large liquidations.
 - **Emergency withdrawal**: Pause deposits/borrows during incidents; allow withdrawals only.
 
 ## Anti-Patterns

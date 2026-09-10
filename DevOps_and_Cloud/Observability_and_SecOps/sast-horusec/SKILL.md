@@ -66,7 +66,7 @@ horusec start -p ./path/to/project
 
 ### Workflow 1: Local Security Scan
 
-For developers performing pre-[commit](../../CI_CD/commit/SKILL.md) security analysis:
+For developers performing pre-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) security analysis:
 
 1. Navigate to project directory
 2. Run Horusec scan:
@@ -84,7 +84,7 @@ Progress:
 [ ] 1. Add Horusec to CI/CD pipeline configuration
 [ ] 2. Configure output format (JSON for automated processing)
 [ ] 3. Set severity threshold for build failures
-[ ] 4. Run scan on each [commit](../../CI_CD/commit/SKILL.md) or pull request
+[ ] 4. Run scan on each [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) or pull request
 [ ] 5. Parse results and fail build on high-severity findings
 [ ] 6. Generate security reports for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail
 [ ] 7. Track remediation progress over time
@@ -225,7 +225,7 @@ Add custom security rules:
 
 ### CI/CD Integration
 
-**[GitHub](../../CI_CD/github/SKILL.md) Actions:**
+**[GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions:**
 ```yaml
 - name: Run Horusec Security Scan
   run: |
@@ -246,7 +246,7 @@ horusec-scan:
       horusec: horusec-report.json
 ```
 
-**[Jenkins](../../CI_CD/jenkins/SKILL.md):**
+**[Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md):**
 ```groovy
 stage('Security Scan') {
   steps {
@@ -317,7 +317,7 @@ brew install horusec
 curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/main/deployments/scripts/install.sh | bash
 
 # Windows
-# Download from [GitHub](../../CI_CD/github/SKILL.md) releases
+# Download from [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) releases
 ```
 
 Then run:
@@ -369,7 +369,7 @@ cat horusec-report.json | jq '[.analysisVulnerabilities[].securityTool] | unique
 
 ## References
 
-- [Horusec [GitHub](../../CI_CD/github/SKILL.md) Repository](https://[github](../../CI_CD/github/SKILL.md).com/ZupIT/horusec)
+- [Horusec [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Repository](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/ZupIT/horusec)
 - [Horusec Documentation](https://docs.horusec.io/)
 - [OWASP Top 10](https://owasp.org/Top10/)
 - [CWE - Common Weakness Enumeration](https://cwe.mitre.org/)

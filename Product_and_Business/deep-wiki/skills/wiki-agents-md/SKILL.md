@@ -29,7 +29,7 @@ Generate high-quality `AGENTS.md` files for repository folders. Each file provid
 - **Predictable location** — Agents look for `AGENTS.md` in the current directory, then walk up the tree
 - **Nested files** — Subfolders can have their own `AGENTS.md` that takes precedence over the root one
 - **Separate from README** — Keeps READMEs concise; agent-specific details (exact commands, boundaries, conventions) go here
-- **NOT the same as `.[github](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/agents/*.agent.md`** — Those are agent persona definitions (who the agent is). `AGENTS.md` is project context (what the agent should know about this code)
+- **NOT the same as `.[github](../../../../ci-cd/github-actions/other/github/SKILL.md)/agents/*.agent.md`** — Those are agent persona definitions (who the agent is). `AGENTS.md` is project context (what the agent should know about this code)
 
 ## Critical Guard: Only Generate If Missing
 
@@ -68,7 +68,7 @@ Identify which folders should have an `AGENTS.md`:
   - `*.csproj` / `*.fsproj`
   - `go.mod`
   - `pom.xml` / `build.gradle`
-- `.[github](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/` — only if it contains workflows or actions
+- `.[github](../../../../ci-cd/github-actions/other/github/SKILL.md)/` — only if it contains workflows or actions
 
 ### Always skip:
 
@@ -98,7 +98,7 @@ Read these sources to find real commands:
 - `Makefile` → targets
 - `pyproject.toml` → `[tool.poetry.scripts]` or `[project.scripts]`
 - `Cargo.toml` → standard cargo commands
-- CI configs → `.[github](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/*.yml`, `Jenkinsfile`, `.[gitlab-ci](../../../../DevOps_and_Cloud/CI_CD/gitlab-ci/SKILL.md).yml`
+- CI configs → `.[github](../../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/*.yml`, `Jenkinsfile`, `.[gitlab-ci](../../../../ci-cd/gitlab-ci/pipelines/gitlab-ci/SKILL.md).yml`
 
 ### b) Testing Instructions
 
@@ -168,9 +168,9 @@ Detect conventions by reading existing code:
 ## Git Workflow
 
 - Branch naming: `feature/`, `fix/`, `chore/`
-- [Commit](../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) messages: conventional commits (`feat:`, `fix:`, `docs:`)
+- [Commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) messages: conventional commits (`feat:`, `fix:`, `docs:`)
 - Run `npm test && npm run lint` before committing
-- PR titles follow conventional [commit](../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) format
+- PR titles follow conventional [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) format
 ```
 
 Only include if the repo has evidence of conventions (e.g., commitlint config, PR templates, contributing guides).
@@ -184,7 +184,7 @@ Use a three-tier system:
 
 - ✅ **Always do:** Run tests before committing. Write tests for new features. Use type hints.
 - ⚠️ **Ask first:** Adding new dependencies. Changing database schemas. Modifying CI/CD configs. Changing public API signatures.
-- 🚫 **Never do:** [Commit](../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) secrets or credentials. Modify `vendor/` or `node_modules/`. Push directly to `main`. Delete migration files.
+- 🚫 **Never do:** [Commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) secrets or credentials. Modify `vendor/` or `node_modules/`. Push directly to `main`. Delete migration files.
 ```
 
 Tailor boundaries to the project:
@@ -219,7 +219,7 @@ Extract real commands and settings from:
 - `Makefile` / `Justfile` targets
 - `pyproject.toml` scripts and tool configs
 - `Cargo.toml` metadata
-- `.[github](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/*.yml` build/test steps
+- `.[github](../../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/*.yml` build/test steps
 - `[docker-compose](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml` service definitions
 - Linter configs (`.eslintrc`, `ruff.toml`, `rustfmt.toml`)
 

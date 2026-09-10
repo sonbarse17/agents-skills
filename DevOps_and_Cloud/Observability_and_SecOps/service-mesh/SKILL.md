@@ -81,7 +81,7 @@ tooling itself (Argo Rollouts, Flagger) may already do this without mesh-wide si
   services all routing the same user to the same version), which single-service tools can't
   coordinate.
 - **The actual canary analysis and promotion decision** — what metric gates promotion, how fast to
-  ramp — is `[progressive-delivery](../../CI_CD/progressive-delivery/SKILL.md)`'s concern; the mesh is just the traffic-splitting mechanism.
+  ramp — is `[progressive-delivery](../../../ci-cd/common/deployment/progressive-delivery/SKILL.md)`'s concern; the mesh is just the traffic-splitting mechanism.
 
 **Done when:** you can state why traffic shifting needed mesh-wide coordination rather than a
 single ingress or deployment-tool feature.

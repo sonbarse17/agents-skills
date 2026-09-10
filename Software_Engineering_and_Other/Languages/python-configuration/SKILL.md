@@ -164,7 +164,7 @@ class Settings(BaseSettings):
     model_config = {"env_file": ".env"}
 ```
 
-Create a `.env` file for local development (never [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) this):
+Create a `.env` file for local development (never [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) this):
 
 ```bash
 # .env (add to .gitignore)
@@ -211,7 +211,7 @@ Detailed sections (starting with `## Advanced Patterns`) live in `../../../Globa
 2. **Use typed settings** - Pydantic-settings with validation
 3. **Fail fast** - Crash on missing required config at startup
 4. **Provide dev defaults** - Make local development easy
-5. **Never [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) secrets** - Use `.env` files (gitignored) or secret managers
+5. **Never [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) secrets** - Use `.env` files (gitignored) or secret managers
 6. **Namespace variables** - `DB_HOST`, `REDIS_URL` for clarity
 7. **Import settings singleton** - Don't call `os.getenv()` throughout code
 8. **Document all variables** - README should list required env vars

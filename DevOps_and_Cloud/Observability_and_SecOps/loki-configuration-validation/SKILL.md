@@ -165,10 +165,10 @@ before rollout, not about designing it from scratch.
 6. **Wire structural validation into CI** so a bad config fails the PR
    instead of failing at deploy time:
    ```yaml
-   # [GitHub](../../CI_CD/github/SKILL.md) Actions example
+   # [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions example
    - name: Validate Loki config
      run: |
-       [docker](../../Containers_and_Orchestration/docker/SKILL.md) run --rm -v "${{ [github](../../CI_CD/github/SKILL.md).workspace }}/loki-config.yaml:/etc/loki/config.yaml" \
+       [docker](../../Containers_and_Orchestration/docker/SKILL.md) run --rm -v "${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).workspace }}/loki-config.yaml:/etc/loki/config.yaml" \
          grafana/loki:3.1.0 -config.file=/etc/loki/config.yaml -verify-config
    ```
    Pair with a simple script/lint step asserting `schema_config.configs`

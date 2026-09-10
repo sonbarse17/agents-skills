@@ -267,7 +267,7 @@ What is your primary goal?
 | Level | Stage | Characteristics | Automation |
 |-------|-------|-----------------|------------|
 | 1 | Initial | No standards, manual reviews | None |
-| 2 | Managed | Basic linter, coverage targets | Pre-[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) hooks |
+| 2 | Managed | Basic linter, coverage targets | Pre-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) hooks |
 | 3 | Defined | Quality gates in CI, rules defined | PR checks |
 | 4 | Measured | Dashboard, trend analysis, TD tracking | Automated reporting |
 | 5 | Optimizing | AI-assisted review, predictive quality | Continuous improvement |
@@ -277,7 +277,7 @@ What is your primary goal?
 | Phase | Gate | Minimum Pass |
 |-------|------|--------------|
 | Design | Architecture review, ADR | All concerns addressed |
-| Development | Pre-[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) hooks, local lint | Zero errors |
+| Development | Pre-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) hooks, local lint | Zero errors |
 | Pull request | CI quality gates, peer review | All gates pass |
 | Staging | Integration tests, security scan | All critical pass |
 | Production | Smoke tests, canary analysis | Zero errors |
@@ -317,7 +317,7 @@ Automating every aspect of code review (format, lint, complexity, coverage) can 
 
 ## Best Practices
 
-- **Enforce gates at PR time, not at [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) time**: Developers should be able to [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) and push freely; gates block merge, not work.
+- **Enforce gates at PR time, not at [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) time**: Developers should be able to [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) and push freely; gates block merge, not work.
 - **Separate overall vs new code coverage**: New code should meet a higher threshold (90%) than legacy code (80%) to prevent quality drift.
 - **Use incremental analysis**: Only analyze changed files in PRs, not the entire codebase. Full analysis runs nightly.
 - **Track quality trends, not snapshots**: A single snapshot is misleading. Track 4-week rolling averages for coverage, defect density, and technical debt.
@@ -377,7 +377,7 @@ register:
 }
 ```
 
-### PR Quality Check [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Action
+### PR Quality Check [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Action
 
 ```yaml
 name: Quality Gate
@@ -519,7 +519,7 @@ quality_gate:
 - **Tiered execution**: Fast checks (lint, unit tests) run on every push. Slow checks (SAST, full coverage) run on PR ready-for-review.
 
 ### Developer Experience
-- **Pre-[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) hooks**: Run fast quality checks locally before push. Provide fix suggestions for auto-fixable issues.
+- **Pre-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) hooks**: Run fast quality checks locally before push. Provide fix suggestions for auto-fixable issues.
 - **IDE integration**: Provide IDE config files (ESLint, Prettier, EditorConfig). Reduce format/style discussions in code review.
 - **Self-service exemptions**: Allow developers to temporarily override non-critical gates. Auto-revert after 7 days.
 
@@ -527,7 +527,7 @@ quality_gate:
 
 ### Gate Security
 - **SAST integration**: Run static application security testing as mandatory gate. Block PRs with critical/high findings.
-- **Secret scanning**: Scan every [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) for hardcoded secrets. Alert security team on credential exposure.
+- **Secret scanning**: Scan every [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) for hardcoded secrets. Alert security team on credential exposure.
 - **License compliance**: Scan dependencies for license compatibility. Block open-source licenses not on approved list.
 
 ### Supply Chain

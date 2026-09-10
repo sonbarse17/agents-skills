@@ -247,5 +247,5 @@ var data = await org.GetAsync();
 ## Links
 
 - [NuGet Package](https://www.nuget.org/packages/Azure.ResourceManager.ArizeAIObservabilityEval)
-- [Azure SDK for .NET](https://[github](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-net)
+- [Azure SDK for .NET](https://[github](../../../../../ci-cd/github-actions/other/github/SKILL.md).com/Azure/azure-sdk-for-net)
 - [Arize AI](https://arize.com/)

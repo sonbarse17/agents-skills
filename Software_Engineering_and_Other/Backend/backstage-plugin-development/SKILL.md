@@ -265,7 +265,7 @@ is already in place and does not repeat it.
    independent npm publish: internal plugins are pinned to the app's
    Backstage core version by living in the same Yarn workspace, so a
    `yarn backstage-cli versions:bump` that upgrades core packages
-   upgrades the plugin's dependency versions in the same [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) — see the
+   upgrades the plugin's dependency versions in the same [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) — see the
    version-pinning guidance already covered in
    [backstage-developer-portal](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[backstage-developer-portal](../../../DevOps_and_Cloud/Observability_and_SecOps/backstage-developer-portal/SKILL.md)/SKILL.md),
    which applies unchanged here.

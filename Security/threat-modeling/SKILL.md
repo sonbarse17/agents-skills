@@ -392,13 +392,13 @@ risk_treatment:
 # Access at http://localhost:3000
 
 # Or install as desktop application
-# Download from: https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/OWASP/threat-dragon/releases
+# Download from: https://[github](../../ci-cd/github-actions/other/github/SKILL.md).com/OWASP/threat-dragon/releases
 ```
 
 ### Integration with CI/CD
 
 ```yaml
-# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/threat-model-review.yml
+# .[github](../../ci-cd/github-actions/other/github/SKILL.md)/workflows/threat-model-review.yml
 name: Threat Model Review
 on:
   pull_request:

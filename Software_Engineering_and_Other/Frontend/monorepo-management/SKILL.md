@@ -218,7 +218,7 @@ pnpm changeset publish
 ```
 
 ```yaml
-# .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/release.yml
+# .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/release.yml
 - name: Create Release Pull Request or Publish
   uses: changesets/action@v1
   with:

@@ -67,7 +67,7 @@ Tenant Hierarchy Design Patterns:
 
 Single-level: Tenant -> User. Simplest model. Tenant owns users and data directly. Best for B2B SaaS where each customer is a single organization. Tenant ID maps 1:1 to customer account.
 
-Two-level: Organization -> Workspace/Project -> User. Common in collaboration tools (Slack, [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)). An organization contains multiple workspaces, each with its own data boundary. Tenant ID at workspace level; organization-level operations (billing, global settings) cross workspace boundaries.
+Two-level: Organization -> Workspace/Project -> User. Common in collaboration tools (Slack, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)). An organization contains multiple workspaces, each with its own data boundary. Tenant ID at workspace level; organization-level operations (billing, global settings) cross workspace boundaries.
 
 Three-level: Enterprise -> Division -> Team -> User. For large enterprise deployments with complex org structures. Data isolation at the team level, roll-up reporting at division/enterprise level.
 

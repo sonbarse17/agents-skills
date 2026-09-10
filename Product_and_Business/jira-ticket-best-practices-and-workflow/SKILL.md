@@ -242,7 +242,7 @@ or how to document the resulting work in Confluence (see
   unwind.
 - Treat "Definition of Ready" (has AC, has priority, has an owner
   identified) and "Definition of Done" (AC verified, linked
-  PR/[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) merged, no unresolved blocking links) as project-wide
+  PR/[commit](../../ci-cd/common/git-workflow/commit/SKILL.md) merged, no unresolved blocking links) as project-wide
   checklists, not a memory exercise per ticket.
 - For cross-team dependencies, link issues explicitly (`Blocks`/`Is
   blocked by`) instead of relying on a mention in the description that

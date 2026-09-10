@@ -368,7 +368,7 @@ interface ZKRollup {
 | Non-deterministic witness | Multiple constraints don't pin value | Unique constraint per signal |
 | Toxic waste exposure | Trusted setup data leaked | Secure multi-party computation |
 | Hash function mismatch | Using prover-unfriendly hash | Poseidon, MiMC, or SHA-256 with optimizations |
-| Frontrunning on proofs | Third-party submits proof first | [Commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)-reveal, nonce in public inputs |
+| Frontrunning on proofs | Third-party submits proof first | [Commit](../../ci-cd/common/git-workflow/commit/SKILL.md)-reveal, nonce in public inputs |
 | Weak FRI parameters | Insufficient query rounds | Follow ethSTARK parameter recommendations |
 | Underpowered field | Field too small for security target | Use 256-bit+ field for 128-bit security |
 

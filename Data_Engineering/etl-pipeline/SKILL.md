@@ -527,7 +527,7 @@ AWS Glue: [serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serve
 
 ### Testing Pipeline
 ```yaml
-# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/dbt-ci.yml
+# .[github](../../ci-cd/github-actions/other/github/SKILL.md)/workflows/dbt-ci.yml
 jobs:
   dbt-ci:
     runs-on: ubuntu-latest
@@ -571,7 +571,7 @@ jobs:
 
 ## References
   - ../../../Global_References/cloud-etl-services.md — Cloud ETL Services
-  - ../../../Global_References/[data-pipeline-cicd](../../DevOps_and_Cloud/CI_CD/data-pipeline-cicd/SKILL.md).md — Data Pipeline CI/CD
+  - ../../../Global_References/[data-pipeline-cicd](../../ci-cd/common/data-pipeline/data-pipeline-cicd/SKILL.md).md — Data Pipeline CI/CD
   - ../../../Global_References/etl-elt-patterns.md — ETL/ELT Patterns
   - ../../../Global_References/etl-pipeline-design.md — ETL Pipeline Design
   - ../../../Global_References/nifi-mage-patterns.md — Apache NiFi and Mage.ai ETL Patterns

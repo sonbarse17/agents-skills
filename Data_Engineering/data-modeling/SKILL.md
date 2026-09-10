@@ -526,7 +526,7 @@ Application-level cache (Redis) for frequently-read, infrequently-updated data. 
 Structural tests: all tables have primary keys, all FKs are indexed, no duplicate indexes, column types match application expectations. Integrity tests: FK constraints are not violated, unique constraints hold, check constraints validate data. Migration tests: migrations run forward and backward, rollback produces original state, no data loss on migration.
 
 ### CI Pipeline for Schema Changes
-Check [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) → lint SQL (sqlfluff) → run on ephemeral DB → verify schema → run migration test → run integration tests → deploy to staging. Use tools like pgTAP, Sqitch, or custom scripts.
+Check [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) → lint SQL (sqlfluff) → run on ephemeral DB → verify schema → run migration test → run integration tests → deploy to staging. Use tools like pgTAP, Sqitch, or custom scripts.
 
 ## Rules
 - 3NF is the default. Denormalize only when performance-measured.

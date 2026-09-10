@@ -69,8 +69,8 @@ boundary for who can change what, where.
   `ClusterRole`/`ClusterRoleBinding` created *on the spoke* that Argo CD
   authenticates as, scoped to only the namespaces/resource kinds that
   cluster's workloads need — not the spoke's own cluster-admin.
-- `[argocd](../argocd/SKILL.md)` CLI with hub cluster context configured
-  (`[argocd](../argocd/SKILL.md) login <HUB_ARGOCD_SERVER>`), and `[kubectl](../kubectl/SKILL.md)` contexts for each
+- `[argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)` CLI with hub cluster context configured
+  (`[argocd](../../../ci-cd/argocd/other/argocd/SKILL.md) login <HUB_ARGOCD_SERVER>`), and `[kubectl](../kubectl/SKILL.md)` contexts for each
   spoke cluster available locally for registration and verification.
 - A [GitOps](../gitops/SKILL.md) config repo structure that already separates workload
   definitions by concern (per-service overlays) — see
@@ -88,7 +88,7 @@ boundary for who can change what, where.
    (creates the underlying `Secret` for you) or by authoring the `Secret`
    directly for [GitOps](../gitops/SKILL.md)-managed registration:
    ```bash
-   [argocd](../argocd/SKILL.md) cluster add <SPOKE_KUBECONFIG_CONTEXT> \
+   [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md) cluster add <SPOKE_KUBECONFIG_CONTEXT> \
      --name us-east-1-prod \
      --label tier=production \
      --label region=us-east-1
@@ -100,9 +100,9 @@ boundary for who can change what, where.
    kind: Secret
    metadata:
      name: cluster-us-east-1-prod
-     namespace: [argocd](../argocd/SKILL.md)
+     namespace: [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)
      labels:
-       [argocd](../argocd/SKILL.md).argoproj.io/secret-type: cluster
+       [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md).argoproj.io/secret-type: cluster
        tier: production
        region: us-east-1
    type: Opaque
@@ -120,7 +120,7 @@ boundary for who can change what, where.
    ```
    The `${SPOKE_CLUSTER_TOKEN}`/`${SPOKE_CA_DATA_BASE64}` placeholders
    must be filled from a [secrets-management](../../../cloud/common/security/secrets-management/SKILL.md) pipeline (Sealed Secrets,
-   External Secrets Operator) before this is committed — never [commit](../../CI_CD/commit/SKILL.md) the
+   External Secrets Operator) before this is committed — never [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) the
    literal bearer token in plaintext, per
    [gitops-workflow](../../../devops/skills/[gitops-workflow](../[gitops](../gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md)'s
    secrets guidance.
@@ -133,13 +133,13 @@ boundary for who can change what, where.
    apiVersion: v1
    kind: ServiceAccount
    metadata:
-     name: [argocd](../argocd/SKILL.md)-manager
+     name: [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)-manager
      namespace: kube-system
    ---
    apiVersion: rbac.authorization.k8s.io/v1
    kind: ClusterRole
    metadata:
-     name: [argocd](../argocd/SKILL.md)-manager-role
+     name: [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)-manager-role
    rules:
      - apiGroups: ["*"]
        resources: ["*"]
@@ -152,14 +152,14 @@ boundary for who can change what, where.
    apiVersion: rbac.authorization.k8s.io/v1
    kind: ClusterRoleBinding
    metadata:
-     name: [argocd](../argocd/SKILL.md)-manager-role-binding
+     name: [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)-manager-role-binding
    subjects:
      - kind: ServiceAccount
-       name: [argocd](../argocd/SKILL.md)-manager
+       name: [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)-manager
        namespace: kube-system
    roleRef:
      kind: ClusterRole
-     name: [argocd](../argocd/SKILL.md)-manager-role
+     name: [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)-manager-role
      apiGroup: rbac.authorization.k8s.io
    ```
    > **Warning:** the Argo CD documentation's default cluster-registration
@@ -175,10 +175,10 @@ boundary for who can change what, where.
    kind: AppProject
    metadata:
      name: platform-team
-     namespace: [argocd](../argocd/SKILL.md)
+     namespace: [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)
    spec:
      sourceRepos:
-       - https://[github](../../CI_CD/github/SKILL.md).com/example/[gitops](../gitops/SKILL.md)-config.git
+       - https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/example/[gitops](../gitops/SKILL.md)-config.git
      destinations:
        - server: "*"
          namespace: platform-system
@@ -199,7 +199,7 @@ boundary for who can change what, where.
    kind: ApplicationSet
    metadata:
      name: fleet-baseline
-     namespace: [argocd](../argocd/SKILL.md)
+     namespace: [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)
    spec:
      goTemplate: true
      generators:
@@ -212,7 +212,7 @@ boundary for who can change what, where.
        spec:
          project: platform-team
          source:
-           repoURL: https://[github](../../CI_CD/github/SKILL.md).com/example/[gitops](../gitops/SKILL.md)-config.git
+           repoURL: https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/example/[gitops](../gitops/SKILL.md)-config.git
            targetRevision: main
            path: fleet/baseline
          destination:
@@ -253,11 +253,11 @@ boundary for who can change what, where.
 
 7. **Verify fleet state centrally:**
    ```bash
-   [argocd](../argocd/SKILL.md) cluster list
-   [argocd](../argocd/SKILL.md) app list -l [argocd](../argocd/SKILL.md).argoproj.io/application-set-name=fleet-baseline
-   [kubectl](../kubectl/SKILL.md) get applications -n [argocd](../argocd/SKILL.md) -o custom-columns=NAME:.metadata.name,SYNC:.status.sync.status,HEALTH:.status.health.status
+   [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md) cluster list
+   [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md) app list -l [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md).argoproj.io/application-set-name=fleet-baseline
+   [kubectl](../kubectl/SKILL.md) get applications -n [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md) -o custom-columns=NAME:.metadata.name,SYNC:.status.sync.status,HEALTH:.status.health.status
    ```
-   A single `[argocd](../argocd/SKILL.md) app list` (or equivalent `[kubectl](../kubectl/SKILL.md) get applications`)
+   A single `[argocd](../../../ci-cd/argocd/other/argocd/SKILL.md) app list` (or equivalent `[kubectl](../kubectl/SKILL.md) get applications`)
    against the hub answers "what's deployed where and is it healthy"
    across the entire fleet — the concrete payoff of centralizing on one
    control plane.
@@ -271,11 +271,11 @@ boundary for who can change what, where.
   relabeling every cluster Secret.
 - Register clusters declaratively (a `Secret` manifest committed to Git,
   values injected via a secrets pipeline) rather than only via
-  `[argocd](../argocd/SKILL.md) cluster add` run ad hoc from someone's laptop — the former is
+  `[argocd](../../../ci-cd/argocd/other/argocd/SKILL.md) cluster add` run ad hoc from someone's laptop — the former is
   auditable and reproducible; the latter isn't.
 - Scope the hub's credential on each spoke to the minimum RBAC that
   spoke's workloads need, never blanket cluster-admin — treat each
-  spoke's `[argocd](../argocd/SKILL.md)-manager` `ClusterRole` as something to narrow per
+  spoke's `[argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)-manager` `ClusterRole` as something to narrow per
   spoke's actual workload set, not a fleet-wide copy-paste of the
   broadest example.
 - Stage fleet-wide changes in labeled waves (canary clusters first) for
@@ -300,7 +300,7 @@ boundary for who can change what, where.
   **Fix:** Check the cluster Secret's labels against every fleet
   `ApplicationSet`'s `clusters.selector` — the most common cause is a
   missing or mistyped label at registration time. Confirm with
-  `[kubectl](../kubectl/SKILL.md) get secret -n [argocd](../argocd/SKILL.md) -l [argocd](../argocd/SKILL.md).argoproj.io/secret-type=cluster
+  `[kubectl](../kubectl/SKILL.md) get secret -n [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md) -l [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md).argoproj.io/secret-type=cluster
   --show-labels` before assuming the `ApplicationSet` itself is broken.
 
 - **Symptom:** A change rolled out via a fleet-wide `ApplicationSet` broke
@@ -323,7 +323,7 @@ boundary for who can change what, where.
   single hub's reconciliation latency for the fleet size exceeds
   acceptable drift-detection windows.
 
-- **Symptom:** A spoke cluster's `[argocd](../argocd/SKILL.md)-manager` credential was scoped
+- **Symptom:** A spoke cluster's `[argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)-manager` credential was scoped
   to cluster-admin "to avoid RBAC troubleshooting," and a later
   investigation found the hub's compromise blast radius included every
   spoke with that same broad role.
@@ -360,7 +360,7 @@ wave before the remaining 37.
    kind: ApplicationSet
    metadata:
      name: network-policy-baseline-canary
-     namespace: [argocd](../argocd/SKILL.md)
+     namespace: [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)
    spec:
      goTemplate: true
      generators:
@@ -372,15 +372,15 @@ wave before the remaining 37.
        spec:
          project: platform-team
          source:
-           repoURL: https://[github](../../CI_CD/github/SKILL.md).com/example/[gitops](../gitops/SKILL.md)-config.git
+           repoURL: https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/example/[gitops](../gitops/SKILL.md)-config.git
            targetRevision: main
            path: fleet/network-policy-baseline
          destination: { server: "{{.server}}", namespace: kube-system }
          syncPolicy: { automated: { prune: true, selfHeal: true } }
      syncPolicy: { preserveResourcesOnDeletion: true }
    ```
-3. Verify with `[argocd](../argocd/SKILL.md) app list -l
-   [argocd](../argocd/SKILL.md).argoproj.io/application-set-name=network-policy-baseline-canary`
+3. Verify with `[argocd](../../../ci-cd/argocd/other/argocd/SKILL.md) app list -l
+   [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md).argoproj.io/application-set-name=network-policy-baseline-canary`
    that all 3 canary clusters are `Synced`/`Healthy`, and confirm no
    unexpected traffic drops from the new policy over a soak window.
 4. Relabel the remaining 37 clusters' Secrets from `rollout-wave: stable`
@@ -388,8 +388,8 @@ wave before the remaining 37.
    targeting `rollout-wave: stable` with the same `path`), so the
    `Cluster` generator picks them up on its next refresh and the same
    baseline reaches the full fleet.
-5. `[kubectl](../kubectl/SKILL.md) get applications -n [argocd](../argocd/SKILL.md) -l
-   [argocd](../argocd/SKILL.md).argoproj.io/application-set-name=network-policy-baseline-canary
+5. `[kubectl](../kubectl/SKILL.md) get applications -n [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md) -l
+   [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md).argoproj.io/application-set-name=network-policy-baseline-canary
    -o custom-columns=NAME:.metadata.name,SYNC:.status.sync.status`
    gives a single-command view confirming all 40 clusters converged,
    rather than checking each cluster individually.

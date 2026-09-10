@@ -143,8 +143,8 @@ async with lock:
 
 ```go
 // Go — Redis lock with go-redis
-import "[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/go-redsync/redsync/v4"
-import "[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/go-redsync/redsync/v4/redis/goredis/v9"
+import "[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/go-redsync/redsync/v4"
+import "[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/go-redsync/redsync/v4/redis/goredis/v9"
 
 func processOrder(ctx context.Context, orderId string) error {
     mutex := rs.NewMutex("resource:order-" + orderId, redsync.WithExpiry(5*time.Second))

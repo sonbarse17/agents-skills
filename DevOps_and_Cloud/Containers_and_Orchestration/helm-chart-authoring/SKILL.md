@@ -63,12 +63,12 @@ to hand to another team or publish publicly.
 - `[kubectl](../kubectl/SKILL.md)` context pointed at a real or kind/minikube cluster for
   `--dry-run=server` validation (server-side validation catches CRD
   schema mismatches that client-side `helm template` cannot).
-- `helm plugin install https://[github](../../CI_CD/github/SKILL.md).com/helm-unittest/helm-unittest`
+- `helm plugin install https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/helm-unittest/helm-unittest`
   for unit-testing templates without a live cluster.
 - `chart-testing` (`ct`) ≥ 3.10 if the chart lives in a [monorepo](../../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md) of
   charts and needs lint/install testing across a version bump.
 - Access to a target registry: OCI-compliant (GHCR, ECR, ACR, Artifact
-  Registry, Harbor ≥ 2.0) or a classic HTTP chart repo ([GitHub](../../CI_CD/github/SKILL.md) Pages +
+  Registry, Harbor ≥ 2.0) or a classic HTTP chart repo ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Pages +
   `index.yaml`, ChartMuseum).
 
 ## Step-by-step guidance
@@ -152,7 +152,7 @@ to hand to another team or publish publicly.
    {{- end }}
    ```
 
-6. **Validate before every [commit](../../CI_CD/commit/SKILL.md)**:
+6. **Validate before every [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)**:
    ```bash
    helm lint ./payments-api
    helm template payments-api ./payments-api -f values-prod.yaml | [kubectl](../kubectl/SKILL.md) apply --dry-run=server -f -
@@ -230,7 +230,7 @@ to hand to another team or publish publicly.
   / an external secrets operator instead, and document the expectation
   in the chart's README.
 - Pin subchart dependency versions in `Chart.yaml` (`dependencies:` with
-  an exact or range-constrained `version`) and [commit](../../CI_CD/commit/SKILL.md) `Chart.lock` — an
+  an exact or range-constrained `version`) and [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) `Chart.lock` — an
   unpinned dependency can silently pull a breaking subchart update.
 - Use `--atomic` on `helm upgrade`/`install` in CI/CD so a failed release
   automatically rolls back instead of leaving the release half-applied:
@@ -278,7 +278,7 @@ to hand to another team or publish publicly.
 - **Symptom:** A subchart's default values silently override the parent
   chart's intended configuration after a `helm dependency update`.
   **Fix:** Pin subchart versions exactly (or with a narrow range) in
-  `Chart.yaml`, [commit](../../CI_CD/commit/SKILL.md) `Chart.lock`, and re-run `ct install`/unit tests
+  `Chart.yaml`, [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) `Chart.lock`, and re-run `ct install`/unit tests
   on every dependency bump rather than treating `dependency update` as a
   no-op maintenance task.
 
@@ -339,7 +339,7 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
 ```
 
-CI pipeline stage ([GitHub](../../CI_CD/github/SKILL.md) Actions):
+CI pipeline stage ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions):
 
 ```yaml
 jobs:
@@ -349,7 +349,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: azure/setup-helm@v4
         with: { version: "3.15.3" }
-      - run: helm plugin install https://[github](../../CI_CD/github/SKILL.md).com/helm-unittest/helm-unittest || true
+      - run: helm plugin install https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/helm-unittest/helm-unittest || true
       - run: helm lint ./payments-api
       - run: helm unittest ./payments-api
       - run: helm dependency update ./payments-api
@@ -357,10 +357,10 @@ jobs:
           helm template payments-api ./payments-api -f payments-api/ci/values-test.yaml \
             | [kubectl](../kubectl/SKILL.md) apply --dry-run=server -f -
       - name: Package and push (on tag)
-        if: startsWith([github](../../CI_CD/github/SKILL.md).ref, 'refs/tags/chart-')
+        if: startsWith([github](../../../ci-cd/github-actions/other/github/SKILL.md).ref, 'refs/tags/chart-')
         run: |
           helm package ./payments-api
-          echo "${{ secrets.REGISTRY_PASSWORD }}" | helm registry login ghcr.io -u ${{ [github](../../CI_CD/github/SKILL.md).actor }} --password-stdin
+          echo "${{ secrets.REGISTRY_PASSWORD }}" | helm registry login ghcr.io -u ${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).actor }} --password-stdin
           helm push payments-api-*.tgz oci://ghcr.io/example/charts
 ```
 

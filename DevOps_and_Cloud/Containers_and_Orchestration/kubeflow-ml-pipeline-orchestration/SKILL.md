@@ -69,7 +69,7 @@ service.
 - A Kubeflow installation on [Kubernetes](../kubernetes/SKILL.md) ≥ 1.24 (full Kubeflow distribution,
   or the standalone `kfp` pipelines backend which uses Argo Workflows as
   its execution engine under the hood — see
-  [argo-workflows-pipeline-design](../../../[gitops](../gitops/SKILL.md)-argo-ecosystem/skills/[argo-workflows-pipeline-design](../argo-workflows-pipeline-design/SKILL.md)/SKILL.md)
+  [argo-workflows-pipeline-design](../../../[gitops](../gitops/SKILL.md)-argo-ecosystem/skills/[argo-workflows-pipeline-design](../../../ci-cd/argocd/other/argo-workflows-pipeline-design/SKILL.md)/SKILL.md)
   for the underlying execution model).
 - The `kfp` [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) SDK installed locally (`pip install kfp`), version
   matched to the installed backend — **KFP v2 SDK pipelines will not
@@ -390,4 +390,4 @@ silently promote a worse model.
 - [gpu-accelerator-infrastructure-for-ml-training](../[gpu-accelerator-infrastructure-for-ml-training](../../Cloud_Providers/gpu-accelerator-infrastructure-for-ml-training/SKILL.md)/SKILL.md) and [gpu-accelerator-configuration-validation](../[gpu-accelerator-configuration-validation](../../Cloud_Providers/gpu-accelerator-configuration-validation/SKILL.md)/SKILL.md) — the GPU scheduling infrastructure and validation checklist that KFP component-level accelerator requests must be checked against.
 - [experiment-tracking](../[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)/SKILL.md) — pairing KFP's built-in run/metrics tracking with a dedicated experiment tracker for richer comparison across runs.
 - [model-packaging-and-versioning](../[model-packaging-and-versioning](../../../AI_and_Agents/Models_and_FineTuning/model-packaging-and-versioning/SKILL.md)/SKILL.md) — the registration step's target scheme for the conditional `register` component.
-- [argo-workflows-pipeline-design](../../../[gitops](../gitops/SKILL.md)-argo-ecosystem/skills/[argo-workflows-pipeline-design](../argo-workflows-pipeline-design/SKILL.md)/SKILL.md) — the underlying workflow engine KFP compiles to, useful when debugging a run at the raw `Workflow` object level.
+- [argo-workflows-pipeline-design](../../../[gitops](../gitops/SKILL.md)-argo-ecosystem/skills/[argo-workflows-pipeline-design](../../../ci-cd/argocd/other/argo-workflows-pipeline-design/SKILL.md)/SKILL.md) — the underlying workflow engine KFP compiles to, useful when debugging a run at the raw `Workflow` object level.

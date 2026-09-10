@@ -90,7 +90,7 @@ Produce the assessment:
 
   | Gate | Verdict | Evidence | Blocker? |
   |------|---------|----------|----------|
-  | Rollback path tested | FAIL | no rollback step in `.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/deploy.yml:60` | yes |
+  | Rollback path tested | FAIL | no rollback step in `.[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/deploy.yml:60` | yes |
 
   Verdict is PASS / FAIL / N/A / UNVERIFIED. **UNVERIFIED is not PASS** — use it
   whenever access or data was missing, and treat an unverified critical gate as a
@@ -127,7 +127,7 @@ Effort keywords (`quick` / `standard` / `deep`) and the shared `<focus>` and
 
 ## Related skills
 
-- `/[k8s-review](../../../DevOps_and_Cloud/Containers_and_Orchestration/k8s-review/SKILL.md)`, `/[terraform-review](../../../DevOps_and_Cloud/Infrastructure_as_Code/terraform-review/SKILL.md)`, `/[pipeline-review](../../../DevOps_and_Cloud/CI_CD/pipeline-review/SKILL.md)`, `/[db-review](../../../AI_and_Agents/Operations/db-review/SKILL.md)` — the
+- `/[k8s-review](../../../DevOps_and_Cloud/Containers_and_Orchestration/k8s-review/SKILL.md)`, `/[terraform-review](../../../DevOps_and_Cloud/Infrastructure_as_Code/terraform-review/SKILL.md)`, `/[pipeline-review](../../../ci-cd/common/pipeline-design/pipeline-review/SKILL.md)`, `/[db-review](../../../AI_and_Agents/Operations/db-review/SKILL.md)` — the
   domain depth behind a failed gate.
 - `/[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)` — alert and dashboard gaps for this release.
 - `/[dr-review](../../../DevOps_and_Cloud/Observability_and_SecOps/dr-review/SKILL.md)` — restore and failover readiness for stateful services.

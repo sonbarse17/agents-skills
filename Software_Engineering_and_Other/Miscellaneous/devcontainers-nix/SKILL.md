@@ -145,8 +145,8 @@ WORKDIR /workspace
   description = "Project development environment";
 
   inputs = {
-    nixpkgs.url = "[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md):NixOS/nixpkgs/nixos-unstable";
-    flake-utils.url = "[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md):numtide/flake-utils";
+    nixpkgs.url = "[github](../../../ci-cd/github-actions/other/github/SKILL.md):NixOS/nixpkgs/nixos-unstable";
+    flake-utils.url = "[github](../../../ci-cd/github-actions/other/github/SKILL.md):numtide/flake-utils";
   };
 
   outputs = { self, nixpkgs, flake-utils }:
@@ -305,10 +305,10 @@ Now `cd`-ing into the project automatically loads the environment.
 
 ## CI/CD Integration
 
-### [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions with Devbox
+### [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions with Devbox
 
 ```yaml
-# .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/ci.yml
+# .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/ci.yml
 name: CI
 on: [push, pull_request]
 
@@ -324,7 +324,7 @@ jobs:
       - run: devbox run lint
 ```
 
-### [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions with Nix
+### [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions with Nix
 
 ```yaml
 name: CI
@@ -345,7 +345,7 @@ jobs:
       - run: nix develop --command bash -c "npm ci && npm test"
 ```
 
-### [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Codespaces
+### [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Codespaces
 
 ```json
 // .devcontainer/devcontainer.json — works in Codespaces
@@ -378,9 +378,9 @@ jobs:
 ## Best Practices
 
 - Pin all tool versions explicitly — never use `latest`
-- [Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) lock files (`flake.lock`, `devbox.lock`, etc.)
+- [Commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) lock files (`flake.lock`, `devbox.lock`, etc.)
 - Use direnv for automatic environment activation
-- Cache Nix store in CI (Cachix or [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) cache)
+- Cache Nix store in CI (Cachix or [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) cache)
 - Document setup in README: `devbox shell` or `nix develop`
 - Keep dev environment close to production (same Node/[Python](../../Languages/python/SKILL.md) versions)
 

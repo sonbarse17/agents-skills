@@ -46,7 +46,7 @@ Exact user phrases: "helm", "helm chart", "helm template", "helm install", "helm
 ### Input Context
 - Chart purpose (app, infrastructure, library).
 - [Kubernetes](../kubernetes/SKILL.md) version and distribution.
-- CI/CD system ([GitHub](../../CI_CD/github/SKILL.md) Actions, GitLab CI, [ArgoCD](../argocd/SKILL.md)).
+- CI/CD system ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, [ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md)).
 - Secrets management (SOPS, SealedSecrets, External Secrets, [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)).
 - Multi-environment strategy.
 
@@ -120,9 +120,9 @@ type: application
 version: 1.2.3
 appVersion: "2.5.0"
 kubeVersion: ">=1.27.0-0"
-home: https://[github](../../CI_CD/github/SKILL.md).com/myorg/my-app
+home: https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/myorg/my-app
 sources:
-  - https://[github](../../CI_CD/github/SKILL.md).com/myorg/my-app
+  - https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/myorg/my-app
 maintainers:
   - name: DevOps Team
     email: devops@example.com
@@ -142,7 +142,7 @@ dependencies:
     repository: "file://../common"
   - name: [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)
     version: "0.x"
-    repository: "https://prometheus-community.[github](../../CI_CD/github/SKILL.md).io/[helm-charts](../helm-charts/SKILL.md)"
+    repository: "https://prometheus-community.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/[helm-charts](../helm-charts/SKILL.md)"
     alias: prometheus
     import-values:
       - child: defaults
@@ -533,7 +533,7 @@ sops decrypt secrets/prod.yaml | helm upgrade --install my-app ./my-chart -f -
 
 ### Step 9: CI/CD Pipeline
 ```yaml
-# .[github](../../CI_CD/github/SKILL.md)/workflows/helm-ci.yaml
+# .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/helm-ci.yaml
 name: Helm CI
 on:
   pull_request:
@@ -561,12 +561,12 @@ jobs:
     - uses: azure/setup-helm@v4
     - name: Run helm-unittest
       run: |
-        helm plugin install https://[github](../../CI_CD/github/SKILL.md).com/helm-unittest/helm-unittest
+        helm plugin install https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/helm-unittest/helm-unittest
         helm unittest charts/my-app
 
   package:
     runs-on: ubuntu-latest
-    if: [github](../../CI_CD/github/SKILL.md).ref == 'refs/heads/main'
+    if: [github](../../../ci-cd/github-actions/other/github/SKILL.md).ref == 'refs/heads/main'
     needs: [lint, unittest]
     steps:
     - uses: actions/checkout@v4
@@ -576,7 +576,7 @@ jobs:
         helm package charts/my-app --destination dist/
     - name: Push to OCI registry
       run: |
-        echo ${{ secrets.GITHUB_TOKEN }} | helm registry login ghcr.io -u ${{ [github](../../CI_CD/github/SKILL.md).actor }} --password-stdin
+        echo ${{ secrets.GITHUB_TOKEN }} | helm registry login ghcr.io -u ${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).actor }} --password-stdin
         helm push dist/my-app-*.tgz oci://ghcr.io/myorg
 ```
 
@@ -626,8 +626,8 @@ jobs:
   - ../../../Global_References/helm-security.md — Chart Signing and Supply Chain Security
 ## Handoff
 - `devops-[kubernetes](../kubernetes/SKILL.md)` for deploying Helm charts to [Kubernetes](../kubernetes/SKILL.md) clusters.
-- `devops-[argo-cd](../argo-cd/SKILL.md)` for [GitOps](../gitops/SKILL.md) deployment of Helm charts via [ArgoCD](../argocd/SKILL.md).
+- `devops-[argo-cd](../../../ci-cd/argocd/other/argo-cd/SKILL.md)` for [GitOps](../gitops/SKILL.md) deployment of Helm charts via [ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md).
 - `devops-[gitops](../gitops/SKILL.md)` for [GitOps](../gitops/SKILL.md) workflow integration.
 - `devops-security` for secrets management and chart signing.
-- `devops-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)` for CI/CD integration.
+- `devops-[cicd-pipeline](../../../ci-cd/common/pipeline-design/cicd-pipeline/SKILL.md)` for CI/CD integration.
 

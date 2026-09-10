@@ -439,6 +439,6 @@ pool:
 
 ## Related Skills
 
-- [github-actions](../[github-actions](../../CI_CD/[github](../../CI_CD/github/SKILL.md)-actions/SKILL.md)/) - [GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) CI/CD alternative
+- [github-actions](../[github-actions](../../CI_CD/[github](../../CI_CD/github/SKILL.md)-actions/SKILL.md)/) - [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) CI/CD alternative
 - [terraform-azure](../../../infrastructure/cloud-azure/[terraform-azure](../../Infrastructure_as_Code/terraform-azure/SKILL.md)/) - Azure IaC
 - [azure-aks](../../../infrastructure/cloud-azure/[azure-aks](../../Containers_and_Orchestration/azure-aks/SKILL.md)/) - AKS deployments

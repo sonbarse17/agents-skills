@@ -139,7 +139,7 @@ Project language?
 | Debugging | Easy (isolated) | Medium | Hard |
 | Brittleness | Low | Medium | High |
 | Confidence | Low (isolated) | Medium | High |
-| When | Every [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) | On feature completion | Pre-release |
+| When | Every [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) | On feature completion | Pre-release |
 
 ## Performance Considerations
 
@@ -305,7 +305,7 @@ class TestOrderService:
 
 ## CI Integration for Unit Tests
 
-### [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions — Unit Test Stage
+### [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions — Unit Test Stage
 ```yaml
 name: Unit Tests
 on: pull_request
@@ -520,7 +520,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
+- Signed commits: GPG or SSH [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management

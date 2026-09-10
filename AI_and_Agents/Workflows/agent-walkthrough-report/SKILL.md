@@ -33,7 +33,7 @@ flowchart TD
 
 ## Core Formatting Rules
 
-1. **[GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Flavored Markdown (GFM)**: Enforce strict GFM standards. Use tables for dense data presentation.
+1. **[GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Flavored Markdown (GFM)**: Enforce strict GFM standards. Use tables for dense data presentation.
 2. **Alerts**: Deploy strategically to command attention.
    > [!IMPORTANT]
    > Critical insights or architectural decisions.

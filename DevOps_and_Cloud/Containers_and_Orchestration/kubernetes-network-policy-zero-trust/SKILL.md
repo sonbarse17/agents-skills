@@ -370,7 +370,7 @@ gap ahead of a compliance [audit](../../../AI_and_Agents/Operations/audit/SKILL.
 segmentation without breaking the ingress path or DNS.
 
 1. In a staging cluster first, apply the default-deny-all policy (step
-   2) and the allow-DNS-egress policy (step 3) **in the same [commit](../../CI_CD/commit/SKILL.md)/
+   2) and the allow-DNS-egress policy (step 3) **in the same [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)/
    change**, and confirm pods can still resolve internal Service DNS
    names via `[kubectl](../kubectl/SKILL.md) exec ... -- nslookup payments-db.payments.svc`.
 2. Add the `payments-api-allow` policy (step 4): ingress only from the

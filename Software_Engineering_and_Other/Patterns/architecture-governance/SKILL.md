@@ -227,7 +227,7 @@ Governance metrics:
 ### Governance Automation Patterns
 Architecture fitness functions in CI/CD:
 ```yaml
-# Example: [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Action for architecture compliance
+# Example: [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Action for architecture compliance
 name: architecture-compliance
 on: pull_request
 jobs:
@@ -412,7 +412,7 @@ A technology company used its architecture principles to make a difficult build-
 ### Pattern: Automated Compliance Gate in CI/CD
 
 ```yaml
-# .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/architecture-compliance.yml
+# .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/architecture-compliance.yml
 name: Architecture Compliance Gate
 on: pull_request
 jobs:
@@ -435,8 +435,8 @@ jobs:
       - name: Notify ARB on violation
         if: failure()
         run: |
-          gh issue create --title "Architecture compliance failure: ${{ [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).sha }}" \
-            --body "PR ${{ [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).event.number }} failed fitness functions." \
+          gh issue create --title "Architecture compliance failure: ${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).sha }}" \
+            --body "PR ${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).event.number }} failed fitness functions." \
             --label "architecture"
 ```
 
@@ -612,7 +612,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
+- Signed commits: GPG or SSH [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management

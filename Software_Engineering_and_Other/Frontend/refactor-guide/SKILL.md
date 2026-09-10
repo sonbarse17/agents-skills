@@ -96,7 +96,7 @@ Strategy:
 1. Identify the smell
 2. Apply the minimal refactoring technique
 3. Run tests (verify behavior preserved)
-4. [Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)
+4. [Commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)
 5. Repeat
 ```
 
@@ -262,14 +262,14 @@ refactoring_workflow:
     fallback: "Write characterization tests first"
   step_3:
     action: "Apply ONE refactoring technique"
-    rule: "Only one structural change per [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)"
+    rule: "Only one structural change per [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)"
     example: "Extract method for validation logic only"
   step_4:
     action: "Run tests"
     expectation: "All tests pass (behavior preserved)"
     if_fails: "Undo the change (the technique was wrong)"
   step_5:
-    action: "[Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)"
+    action: "[Commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)"
     message: "refactor: extract validation logic from processOrder"
   step_6:
     action: "Repeat"
@@ -342,10 +342,10 @@ describe('processOrder', () => {
 | Pitfall | Description | Prevention |
 |---------|-------------|------------|
 | Refactoring without tests | Can't verify behavior preserved | Write characterization tests first |
-| Too big a refactoring | Many changes at once = many bugs | One technique per [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) |
+| Too big a refactoring | Many changes at once = many bugs | One technique per [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) |
 | Refactoring AND adding features | Confuse structural and behavioral changes | Dedicated refactoring sessions/commits |
 | Perfect abstraction syndrome | Over-engineering for hypothetical needs | Rule of three — wait for the third occurrence |
-| Renaming while restructuring | Impossible to review diff | One [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) for rename, another for restructure |
+| Renaming while restructuring | Impossible to review diff | One [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) for rename, another for restructure |
 | Missing API documentation | Nobody knows the new interface | Update docs in same PR as refactoring |
 | Refactoring hot code | High-traffic production code without safety net | Use feature flags, canary deploy |
 | Not getting review | Missed behavioral changes | Always PR refactoring changes |
@@ -355,7 +355,7 @@ describe('processOrder', () => {
 
 | Practice | Rationale |
 |----------|-----------|
-| One refactoring per [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) | Atomic, reviewable, reversible |
+| One refactoring per [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) | Atomic, reviewable, reversible |
 | Test before and after | Verify behavior is preserved |
 | Smaller, more frequent refactorings | Less risk, easier to review |
 | Don't mix refactor and feature | Two different concerns in one PR |

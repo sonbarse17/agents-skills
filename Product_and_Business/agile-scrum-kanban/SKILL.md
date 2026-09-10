@@ -58,7 +58,7 @@ Response Formats:
 Phase 1:
 1. Review backlog
 2. Estimate points
-3. [Commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) to sprint
+3. [Commit](../../ci-cd/common/git-workflow/commit/SKILL.md) to sprint
 Phase 2:
 1. Daily standup
 2. Update kanban
@@ -171,7 +171,7 @@ Response Formats:
 Phase 1:
 1. Review backlog
 2. Estimate points
-3. [Commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) to sprint
+3. [Commit](../../ci-cd/common/git-workflow/commit/SKILL.md) to sprint
 Phase 2:
 1. Daily standup
 2. Update kanban
@@ -284,7 +284,7 @@ Response Formats:
 Phase 1:
 1. Review backlog
 2. Estimate points
-3. [Commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) to sprint
+3. [Commit](../../ci-cd/common/git-workflow/commit/SKILL.md) to sprint
 Phase 2:
 1. Daily standup
 2. Update kanban
@@ -397,7 +397,7 @@ Response Formats:
 Phase 1:
 1. Review backlog
 2. Estimate points
-3. [Commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) to sprint
+3. [Commit](../../ci-cd/common/git-workflow/commit/SKILL.md) to sprint
 Phase 2:
 1. Daily standup
 2. Update kanban
@@ -510,7 +510,7 @@ Response Formats:
 Phase 1:
 1. Review backlog
 2. Estimate points
-3. [Commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) to sprint
+3. [Commit](../../ci-cd/common/git-workflow/commit/SKILL.md) to sprint
 Phase 2:
 1. Daily standup
 2. Update kanban

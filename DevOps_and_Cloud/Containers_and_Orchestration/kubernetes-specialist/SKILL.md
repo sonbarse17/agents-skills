@@ -65,7 +65,7 @@ Load detailed guidance based on context:
 | Troubleshooting | `../../../Global_References/[kubernetes](../kubernetes/SKILL.md)-specialist_troubleshooting.md` | [kubectl](../kubectl/SKILL.md) debug, logs, events, common issues |
 | Custom Operators | `../../../Global_References/custom-operators.md` | CRD, Operator SDK, controller-runtime, reconciliation |
 | Service Mesh | `../../../Global_References/[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md).md` | Istio, Linkerd, traffic management, mTLS, canary |
-| [GitOps](../gitops/SKILL.md) | `../../../Global_References/[gitops](../gitops/SKILL.md).md` | [ArgoCD](../argocd/SKILL.md), Flux, progressive delivery, sealed secrets |
+| [GitOps](../gitops/SKILL.md) | `../../../Global_References/[gitops](../gitops/SKILL.md).md` | [ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md), Flux, progressive delivery, sealed secrets |
 | Cost Optimization | `../../../Global_References/[kubernetes](../kubernetes/SKILL.md)-specialist_cost-optimization.md` | VPA, HPA tuning, spot instances, quotas, right-sizing |
 | Multi-Cluster | `../../../Global_References/multi-cluster.md` | Cluster API, federation, cross-cluster networking, DR |
 
@@ -258,5 +258,5 @@ When implementing [Kubernetes](../kubernetes/SKILL.md) resources, provide:
 3. NetworkPolicy for network isolation
 4. Brief explanation of design decisions and security considerations
 
-[Documentation](https://jeffallan.[github](../../CI_CD/github/SKILL.md).io/claude-skills/skills/infrastructure/[kubernetes](../kubernetes/SKILL.md)-specialist/)
+[Documentation](https://jeffallan.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/infrastructure/[kubernetes](../kubernetes/SKILL.md)-specialist/)
 

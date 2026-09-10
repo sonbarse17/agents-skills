@@ -26,8 +26,8 @@ depends_on:
 # Provider Acceptance Test Patterns
 
 Patterns for writing acceptance tests using
-[terraform-plugin-testing](https://[github](../../CI_CD/github/SKILL.md).com/hashicorp/terraform-plugin-testing)
-with the [Plugin Framework](https://[github](../../CI_CD/github/SKILL.md).com/hashicorp/terraform-plugin-framework).
+[terraform-plugin-testing](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/hashicorp/terraform-plugin-testing)
+with the [Plugin Framework](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/hashicorp/terraform-plugin-framework).
 
 Source: [HashiCorp Testing Patterns](https://developer.hashicorp.com/terraform/plugin/testing/testing-patterns)
 
@@ -265,18 +265,18 @@ After a config step, verify import produces identical state. Use
 },
 ```
 
-### Regression (two-[commit](../../CI_CD/commit/SKILL.md) workflow)
+### Regression (two-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) workflow)
 
-A proper bug fix uses at least two commits: first [commit](../../CI_CD/commit/SKILL.md) the regression test
-(which fails, confirming the bug), then [commit](../../CI_CD/commit/SKILL.md) the fix (test passes). This
+A proper bug fix uses at least two commits: first [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) the regression test
+(which fails, confirming the bug), then [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) the fix (test passes). This
 lets reviewers independently verify the test reproduces the issue by checking
-out the first [commit](../../CI_CD/commit/SKILL.md), then advancing to the fix.
+out the first [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md), then advancing to the fix.
 
 Name and document regression tests to identify the issue they fix. Include a
 link to the original bug report when possible.
 
 ```go
-// TestAccExample_regressionGH1234 verifies fix for https://[github](../../CI_CD/github/SKILL.md).com/org/repo/issues/1234
+// TestAccExample_regressionGH1234 verifies fix for https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/org/repo/issues/1234
 func TestAccExample_regressionGH1234(t *testing.T) {
     rName := acctest.RandStringFromCharSet(10, acctest.CharSetAlphaNum)
     resourceName := "example_widget.test"

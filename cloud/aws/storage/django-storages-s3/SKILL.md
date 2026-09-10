@@ -132,7 +132,7 @@ checklist — each item is a constraint below rephrased as "find X, confirm Y":
 - Mock S3 (`InMemoryStorage` or `moto`) in tests instead of hitting real buckets
 
 ### MUST NOT DO
-- Hardcode `AWS_SECRET_ACCESS_KEY` in `settings.py` or [commit](../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) it
+- Hardcode `AWS_SECRET_ACCESS_KEY` in `settings.py` or [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) it
 - Mix `querystring_auth=True` with a `custom_domain` (presigning breaks)
 - Mix static and media files under the same prefix
 - Grant the IAM user broader than `Get/Put/Delete/ListBucket` on the bucket ARN
@@ -148,5 +148,5 @@ django-storages, S3Boto3Storage, S3StaticStorage, boto3, STORAGES dict, presigne
 - `[fullstack-guardian](../../../../AI_and_Agents/Architecture/fullstack-guardian/SKILL.md)` — secure end-to-end upload flows and access control around stored files
 - `[devops-engineer](../../../../DevOps_and_Cloud/Observability_and_SecOps/devops-engineer/SKILL.md)` — provisioning the S3 buckets, IAM roles, and CloudFront distributions this skill targets
 
-[Documentation](https://jeffallan.[github](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/backend/django-storages-s3/)
+[Documentation](https://jeffallan.[github](../../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/backend/django-storages-s3/)
 

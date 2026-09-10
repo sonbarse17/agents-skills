@@ -82,7 +82,7 @@ Deploy metrics-server → Create HPA with CPU target → Add custom metric → C
 
 ### Step 1: Deploy Metrics Server
 ```yaml
-[kubectl](../kubectl/SKILL.md) apply -f https://[github](../../CI_CD/github/SKILL.md).com/[kubernetes](../kubernetes/SKILL.md)-sigs/metrics-server/releases/latest/download/components.yaml
+[kubectl](../kubectl/SKILL.md) apply -f https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/[kubernetes](../kubernetes/SKILL.md)-sigs/metrics-server/releases/latest/download/components.yaml
 ```
 
 ### Step 2: HPA Configuration with Behavior
@@ -764,7 +764,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH [commit](../../CI_CD/commit/SKILL.md) signing
+- Signed commits: GPG or SSH [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management

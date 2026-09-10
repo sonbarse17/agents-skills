@@ -196,7 +196,7 @@ ServiceAuth.ACCESS_TOKEN  // Use PLAYWRIGHT_SERVICE_ACCESS_TOKEN env var
 
 ## CI/CD Integration
 
-### [GitHub](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions
+### [GitHub](../../../../../ci-cd/github-actions/other/github/SKILL.md) Actions
 
 ```yaml
 name: playwright-ts

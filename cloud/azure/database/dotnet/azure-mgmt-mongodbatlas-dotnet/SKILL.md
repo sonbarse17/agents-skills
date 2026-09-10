@@ -383,4 +383,4 @@ var response = await orgResource.GetAsync();
 
 - [Microsoft Learn: [MongoDB](../../../../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md) Atlas on Azure](https://learn.microsoft.com/en-us/azure/partner-solutions/[mongodb](../../../../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md)-atlas/)
 - [API Reference](https://learn.microsoft.com/en-us/dotnet/api/azure.resourcemanager.mongodbatlas)
-- [Azure SDK for .NET](https://[github](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/mongodbatlas)
+- [Azure SDK for .NET](https://[github](../../../../../ci-cd/github-actions/other/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/mongodbatlas)

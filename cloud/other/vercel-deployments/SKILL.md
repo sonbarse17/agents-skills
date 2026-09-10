@@ -35,7 +35,7 @@ Use this skill when:
 
 - Node.js 18+
 - Vercel account (free tier works for personal projects)
-- Git repository ([GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md), GitLab, or Bitbucket)
+- Git repository ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md), GitLab, or Bitbucket)
 
 ## Quick Start
 
@@ -170,10 +170,10 @@ export const config = {
 };
 ```
 
-## [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions Integration
+## [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions Integration
 
 ```yaml
-# .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/preview.yml
+# .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/preview.yml
 name: Vercel Preview
 on: pull_request
 
@@ -199,10 +199,10 @@ jobs:
           echo "url=$URL" >> "$GITHUB_OUTPUT"
 
       - name: Comment PR with preview URL
-        uses: actions/[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-script@v7
+        uses: actions/[github](../../../ci-cd/github-actions/other/github/SKILL.md)-script@v7
         with:
           script: |
-            [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).rest.issues.createComment({
+            [github](../../../ci-cd/github-actions/other/github/SKILL.md).rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -238,7 +238,7 @@ vercel inspect <deployment-url>
 
 ## Production Guardrails
 
-- Require preview checks before merge ([GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) branch protection)
+- Require preview checks before merge ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) branch protection)
 - Separate preview and production environment variables — never share API keys
 - Use branch protection with required deployment status checks
 - Monitor function duration and cold start behavior in Vercel Analytics

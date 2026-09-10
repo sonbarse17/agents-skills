@@ -424,7 +424,7 @@ When a dbt deployment fails mid-run, partial state corrupts downstream models. H
 - Alert on freshness violations via Slack/PagerDuty.
 
 ### Testing Cadence
-- Per [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md): dbt compile, SQLFluff lint.
+- Per [commit](../../ci-cd/common/git-workflow/commit/SKILL.md): dbt compile, SQLFluff lint.
 - Per PR: dbt slim CI, dbt test (changed models).
 - Per deploy: dbt test (all models), GE suite, contract validation.
 - Daily: source freshness, data quality [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
@@ -436,7 +436,7 @@ When a dbt deployment fails mid-run, partial state corrupts downstream models. H
 3. Compilation error: fix SQL, open PR, redeploy.
 4. Test failure: check source data quality, adjust tests.
 5. Timeout: optimize SQL, increase timeout, add indexes.
-6. Rollback: revert Git [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md), redeploy previous version.
+6. Rollback: revert Git [commit](../../ci-cd/common/git-workflow/commit/SKILL.md), redeploy previous version.
 7. Document root cause and add preventive test.
 
 ## Rules

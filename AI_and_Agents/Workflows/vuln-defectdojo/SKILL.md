@@ -63,7 +63,7 @@ Key concepts:
 
 Start DefectDojo locally:
 ```bash
-git clone https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/DefectDojo/django-DefectDojo.git
+git clone https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/DefectDojo/django-DefectDojo.git
 cd django-DefectDojo && [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) compose up -d
 # Access at http://localhost:8080 — change admin/admin password immediately
 ```
@@ -130,7 +130,7 @@ For the complete mapping of every SecOpsAgentKit tool to its DefectDojo parser n
 Add an import step after each scanner in any pipeline:
 
 ```yaml
-# [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions — add after each scanner step
+# [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions — add after each scanner step
 - name: Import findings to DefectDojo
   env:
     DD_HOST: ${{ secrets.DD_HOST }}
@@ -208,8 +208,8 @@ Before an [audit](../../Operations/audit/SKILL.md), filter findings by complianc
 ## Integration Points
 
 - **All SecOpsAgentKit scanners**: Parser names mapped in [../../../Global_References/tool-parser-map.md](../../../Global_References/tool-parser-map.md)
-- **CI/CD**: [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../../DevOps_and_Cloud/CI_CD/jenkins/SKILL.md), [CircleCI](../../../DevOps_and_Cloud/CI_CD/circleci/SKILL.md) — add import step after each scanner
-- **Issue Trackers**: DefectDojo pushes findings to JIRA, [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Issues via built-in integrations
+- **CI/CD**: [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md), [CircleCI](../../../ci-cd/circleci/other/circleci/SKILL.md) — add import step after each scanner
+- **Issue Trackers**: DefectDojo pushes findings to JIRA, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Issues via built-in integrations
 - **Notifications**: Slack and email alerts for new Critical/High findings via DefectDojo notification rules
 - **SIEM**: Export findings as JSON for ingestion into Splunk, Elastic, or other SIEM platforms
 
@@ -229,8 +229,8 @@ Before an [audit](../../Operations/audit/SKILL.md), filter findings by complianc
 
 ## References
 
-- [DefectDojo Documentation](https://defectdojo.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/django-DefectDojo/)
-- [DefectDojo GitHub](https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/DefectDojo/django-DefectDojo)
+- [DefectDojo Documentation](https://defectdojo.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/django-DefectDojo/)
+- [DefectDojo GitHub](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/DefectDojo/django-DefectDojo)
 - [OWASP DefectDojo Project](https://owasp.org/www-project-defectdojo/)
 - [DefectDojo API Reference](https://demo.defectdojo.org/api/v2/oa3/swagger-ui/)
 

@@ -35,7 +35,7 @@ Create and configure development containers — [Docker](../../../DevOps_and_Clo
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "dev container", "devcontainer.json", "development container", "VS Code Dev Container", "[GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Codespaces", "dev environment setup", "reproducible dev environment", "containerized dev", "[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) dev environment", "remote container".
+Exact user phrases: "dev container", "devcontainer.json", "development container", "VS Code Dev Container", "[GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Codespaces", "dev environment setup", "reproducible dev environment", "containerized dev", "[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) dev environment", "remote container".
 
 ### Input Context
 - Language runtime (Node.js, [Python](../../Languages/python/SKILL.md), Go, Rust, Java, .NET, Ruby, PHP)
@@ -43,7 +43,7 @@ Exact user phrases: "dev container", "devcontainer.json", "development container
 - Services needed ([PostgreSQL](../../Backend/postgresql/SKILL.md), Redis, [MySQL](../../Backend/mysql/SKILL.md), [MongoDB](../../Backend/mongodb/SKILL.md), RabbitMQ, Elasticsearch)
 - VS Code extensions required for development
 - Post-create setup steps (npm install, database migrations, seed data)
-- Platform (VS Code, [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Codespaces, JetBrains Remote, DevPod)
+- Platform (VS Code, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Codespaces, JetBrains Remote, DevPod)
 - Base image preference (mcr.microsoft.com/devcontainers/*, debian, ubuntu, alpine)
 
 ### Output Artifact
@@ -137,7 +137,7 @@ Container ([Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docke
     },
     "ghcr.io/devcontainers/features/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-outside-of-[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md):1": {},
     "ghcr.io/devcontainers/features/git:1": {},
-    "ghcr.io/devcontainers/features/[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-cli:1": {}
+    "ghcr.io/devcontainers/features/[github](../../../ci-cd/github-actions/other/github/SKILL.md)-cli:1": {}
   },
 
   // VS Code extensions to install
@@ -146,7 +146,7 @@ Container ([Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docke
     "esbenp.prettier-vscode",
     "bradlc.vscode-tailwindcss",
     "ms-vscode.vscode-[typescript](../../Frontend/typescript/SKILL.md)-next",
-    "[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).vscode-[github-actions](../../../DevOps_and_Cloud/CI_CD/[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-actions/SKILL.md)",
+    "[github](../../../ci-cd/github-actions/other/github/SKILL.md).vscode-[github-actions](../../../DevOps_and_Cloud/CI_CD/[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-actions/SKILL.md)",
     "ms-azuretools.vscode-[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)"
   ],
 
@@ -307,7 +307,7 @@ npx husky install
 echo "✅ Development environment ready!"
 ```
 
-### Step 5: [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Codespaces Config
+### Step 5: [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Codespaces Config
 
 ```jsonc
 // .devcontainer/devcontainer.json (Codespaces-optimized)
@@ -334,7 +334,7 @@ echo "✅ Development environment ready!"
     }
   },
 
-  // Secrets (set in [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) repo settings)
+  // Secrets (set in [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) repo settings)
   "remoteEnv": {
     "API_KEY": "${secrets:API_KEY}"
   },
@@ -373,7 +373,7 @@ echo "✅ Development environment ready!"
 ### Step 7: CI Validation of Dev Container
 
 ```yaml
-# .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/devcontainer-ci.yml
+# .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/devcontainer-ci.yml
 name: Dev Container Validation
 on:
   pull_request:
@@ -460,7 +460,7 @@ jobs:
   - references/dev-container-features.md — Dev Container Features Reference
   - references/dev-container-multi-service.md — Multi-Service Dev Container Reference
 ## Handoff
-Hand off to `dev-loop-[git-workflow](../../../DevOps_and_Cloud/CI_CD/git-workflow/SKILL.md)` for Git credential configuration. Hand off to `[dev-loop-security-auditor](../../../DevOps_and_Cloud/Observability_and_SecOps/security-auditor/SKILL.md)` for container security.
+Hand off to `dev-loop-[git-workflow](../../../ci-cd/common/git-workflow/git-workflow/SKILL.md)` for Git credential configuration. Hand off to `[dev-loop-security-auditor](../../../DevOps_and_Cloud/Observability_and_SecOps/security-auditor/SKILL.md)` for container security.
 
 ## Architecture Decision Trees
 
@@ -563,6 +563,6 @@ CMD ["node", "dist/server.js"]
 
 ### Secrets Management
 - **Never in image**: Use [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) secrets or .env files mounted at runtime. Never COPY secrets into image.
-- **Secret scanning**: Scan for hardcoded secrets in git pre-[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) hooks. Use tools like git-secrets or truffleHog.
+- **Secret scanning**: Scan for hardcoded secrets in git pre-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) hooks. Use tools like git-secrets or truffleHog.
 - **Ephemeral credentials**: Use short-lived tokens with automatic rotation. Integrate with OIDC providers.
 

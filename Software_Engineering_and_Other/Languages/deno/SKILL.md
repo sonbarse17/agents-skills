@@ -518,7 +518,7 @@ export const logger = getLogger();
 - Pin versions in deno.json imports: use `@v1.2.3` not `@latest`
 - Add integrity checks via `--check=all` in CI
 - Run `deno cache --lock=lock.json --lock-write` to generate lockfile
-- [Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) lock.json and verify in CI with `deno cache --lock=lock.json`
+- [Commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) lock.json and verify in CI with `deno cache --lock=lock.json`
 
 ### Performance Tuning
 - Use `std/http` for max throughput (no framework overhead)
@@ -589,7 +589,7 @@ Load test with `autocannon` or `wrk` against the compiled binary. Use `deno benc
 - Standard library (std/) preferred over npm equivalents (std/http, std/log, std/testing).
 - Fresh islands for client-side interactivity. [Preact](../../Frontend/preact/SKILL.md) components for server-only rendering.
 - Deno KV for simple state, [PostgreSQL](../../Backend/postgresql/SKILL.md) driver for complex persistence.
-- deno fmt and deno lint in CI. Check before [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md).
+- deno fmt and deno lint in CI. Check before [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md).
 - Compile binaries with `deno compile` for [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-less deployment.
 - All env vars loaded via `std/dotenv` in dev, env vars in production.
 - Generate lockfile: `deno cache --lock=lock.json --lock-write`.

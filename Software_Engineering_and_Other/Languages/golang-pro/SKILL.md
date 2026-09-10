@@ -136,5 +136,5 @@ When implementing Go features, provide:
 
 Go 1.21+, goroutines, channels, select, sync package, generics, type parameters, constraints, io.Reader/Writer, gRPC, context, error wrapping, pprof [profiling](../../Frontend/profiling/SKILL.md), benchmarks, table-driven tests, fuzzing, go.mod, internal packages, functional options
 
-[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/language/golang-pro/)
+[Documentation](https://jeffallan.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/language/golang-pro/)
 

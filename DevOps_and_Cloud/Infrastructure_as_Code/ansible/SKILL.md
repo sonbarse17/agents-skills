@@ -70,7 +70,7 @@ ansible-playbook -i inventory.ini site.yml --check --diff
 - Use `--limit` to target a subset of hosts before running against all inventory.
 - Avoid `command` and `shell` modules when an idempotent module exists.
 - Running as root (`become: true`) requires explicit approval — confirm privilege escalation scope.
-- Protect secrets with `ansible-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) encrypt` — never [commit](../../CI_CD/commit/SKILL.md) plaintext passwords.
+- Protect secrets with `ansible-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) encrypt` — never [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) plaintext passwords.
 
 ```bash
 # Install a role then dry-run the playbook to preview changes

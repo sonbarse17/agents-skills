@@ -106,8 +106,8 @@ backend:
       password: ${POSTGRES_PASSWORD}
 
 integrations:
-  [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md):
-    - host: [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com
+  [github](../../../ci-cd/github-actions/other/github/SKILL.md):
+    - host: [github](../../../ci-cd/github-actions/other/github/SKILL.md).com
       token: ${GITHUB_TOKEN}
 
 catalog:
@@ -118,9 +118,9 @@ catalog:
     - allow: [Component, System, API, Resource, Location, Template]
   locations:
     - type: url
-      target: https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/myorg/software-catalog/blob/main/catalog-info.yaml
+      target: https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/myorg/software-catalog/blob/main/catalog-info.yaml
     - type: url
-      target: https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/myorg/backstage-templates/blob/main/all-templates.yaml
+      target: https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/myorg/backstage-templates/blob/main/all-templates.yaml
 ```
 
 ---
@@ -401,23 +401,23 @@ spec:
           database: ${{ parameters.database }}
           cacheLayer: ${{ parameters.cacheLayer }}
     - id: publish
-      name: Publish to [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)
-      action: publish:[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)
+      name: Publish to [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)
+      action: publish:[github](../../../ci-cd/github-actions/other/github/SKILL.md)
       input:
-        allowedHosts: ["[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com"]
-        repoUrl: [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com?owner=myorg&repo=${{ parameters.name }}
+        allowedHosts: ["[github](../../../ci-cd/github-actions/other/github/SKILL.md).com"]
+        repoUrl: [github](../../../ci-cd/github-actions/other/github/SKILL.md).com?owner=myorg&repo=${{ parameters.name }}
         repoVisibility: internal
         defaultBranch: main
         protectDefaultBranch: true
         requireCodeOwnerReviews: true
-    - id: create-[argocd](../../../DevOps_and_Cloud/Containers_and_Orchestration/argocd/SKILL.md)-app
-      name: Register with [ArgoCD](../../../DevOps_and_Cloud/Containers_and_Orchestration/argocd/SKILL.md)
-      action: [argocd](../../../DevOps_and_Cloud/Containers_and_Orchestration/argocd/SKILL.md):create-resources
+    - id: create-[argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)-app
+      name: Register with [ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md)
+      action: [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md):create-resources
       input:
         appName: ${{ parameters.name }}
         argoInstance: main
         namespace: ${{ parameters.name }}
-        repoUrl: https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/myorg/${{ parameters.name }}
+        repoUrl: https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/myorg/${{ parameters.name }}
         path: deploy/k8s
     - id: register
       name: Register in Catalog
@@ -451,7 +451,7 @@ golden-path-nodejs/
         deployment.yaml
         service.yaml
         ingress.yaml
-    .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/
+    .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/
       workflows/
         ci.yaml
         deploy.yaml
@@ -485,10 +485,10 @@ metadata:
   description: Handles order creation, fulfillment, and tracking.
   annotations:
     backstage.io/techdocs-ref: dir:.
-    [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/project-slug: myorg/orders-service
+    [github](../../../ci-cd/github-actions/other/github/SKILL.md).com/project-slug: myorg/orders-service
     backstage.io/[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-id: orders-service
     backstage.io/[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-namespace: team-commerce
-    [argocd](../../../DevOps_and_Cloud/Containers_and_Orchestration/argocd/SKILL.md)/app-name: orders-service
+    [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)/app-name: orders-service
     pagerduty.com/integration-key: ${PAGERDUTY_KEY}
     grafana/dashboard-selector: "app=orders-service"
   tags:
@@ -615,17 +615,17 @@ Backend configuration in `app-config.yaml`:
           caData: ${K8S_PROD_CA_DATA}
 ```
 
-### CI/CD Plugin ([GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions)
+### CI/CD Plugin ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions)
 
 ```yaml
 # app-config.yaml addition
 proxy:
   endpoints:
     /[github-actions](../../../DevOps_and_Cloud/CI_CD/[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-actions/SKILL.md):
-      target: https://api.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com
+      target: https://api.[github](../../../ci-cd/github-actions/other/github/SKILL.md).com
       headers:
         Authorization: Bearer ${GITHUB_TOKEN}
-        Accept: application/vnd.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)+json
+        Accept: application/vnd.[github](../../../ci-cd/github-actions/other/github/SKILL.md)+json
 ```
 
 ### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) Plugin (Grafana)

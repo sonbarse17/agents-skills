@@ -187,7 +187,7 @@ tm.process()
 Automate threat modeling in continuous integration:
 
 ```yaml
-# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/threat-model.yml
+# .[github](../../ci-cd/github-actions/other/github/SKILL.md)/workflows/threat-model.yml
 name: Threat Model Analysis
 on: [push, pull_request]
 
@@ -438,7 +438,7 @@ Trust boundary crossings require extra scrutiny:
 
 ### Security Tools Ecosystem
 
-- **Issue Tracking**: Export threats as Jira/[GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) issues for mitigation tracking
+- **Issue Tracking**: Export threats as Jira/[GitHub](../../ci-cd/github-actions/other/github/SKILL.md) issues for mitigation tracking
 - **Documentation**: Generate threat models for security documentation
 - **SIEM**: Map threats to detection rules and [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) alerts
 - **[Pentesting](../../DevOps_and_Cloud/Observability_and_SecOps/pentesting/SKILL.md)**: Provide threat model to pentesters for targeted assessment
@@ -586,7 +586,7 @@ tm.graph_options = {
 
 ## References
 
-- [pytm [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Repository](https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/izar/pytm)
+- [pytm [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Repository](https://[github](../../ci-cd/github-actions/other/github/SKILL.md).com/izar/pytm)
 - [OWASP Threat Modeling](https://owasp.org/www-community/Threat_Modeling)
 - [Microsoft STRIDE Methodology](https://www.microsoft.com/en-us/security/blog/2007/09/11/stride-chart/)
 - [MITRE ATT&CK Framework](https://attack.mitre.org/)

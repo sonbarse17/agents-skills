@@ -577,7 +577,7 @@ Enhance defensive posture:
 ## References
 
 - [Ncat Users' Guide](https://nmap.org/ncat/guide/index.html)
-- [GTFOBins: netcat](https://gtfobins.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/gtfobins/nc/)
+- [GTFOBins: netcat](https://gtfobins.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/gtfobins/nc/)
 - [MITRE ATT&CK: Command and Scripting Interpreter](https://attack.mitre.org/techniques/T1059/)
 - [PTES: Post Exploitation](http://www.pentest-standard.org/index.php/Post_Exploitation)
-- [Reverse Shell Cheat Sheet](https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md)
+- [Reverse Shell Cheat Sheet](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md)

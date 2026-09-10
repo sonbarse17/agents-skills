@@ -469,7 +469,7 @@ def set_auth_header(transaction):
 
 ### Step 5: CI/CD Integration
 ```yaml
-# .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/api-docs.yml
+# .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/api-docs.yml
 name: API Documentation Checks
 on:
   pull_request:
@@ -510,7 +510,7 @@ jobs:
   build-docs:
     needs: [lint, validate-examples]
     runs-on: ubuntu-latest
-    if: [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).ref == 'refs/heads/main'
+    if: [github](../../../ci-cd/github-actions/other/github/SKILL.md).ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v4
       - run: npm install -g redoc-cli
@@ -630,7 +630,7 @@ No deprecation policy or sunset headers. Consumers get no warning before breakin
 - Every schema must have `type` and `properties`.
 - Use `$ref` for reusable components — no inline schema duplication.
 - Pin OpenAPI version (3.0.3 or 3.1.0) — never use "3.0" without patch.
-- Lint with Spectral using `spectral:oas` ruleset before every [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md).
+- Lint with Spectral using `spectral:oas` ruleset before every [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md).
 - Every 4xx response must include a documented error schema.
 - No "see source code" in descriptions — API docs must be self-contained.
 

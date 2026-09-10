@@ -211,7 +211,7 @@ try {
     [userId, 99.99]
   );
   
-  await client.query("[COMMIT](../../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)");
+  await client.query("[COMMIT](../../../../../ci-cd/common/git-workflow/commit/SKILL.md)");
 } catch (error) {
   await client.query("ROLLBACK");
   throw error;
@@ -231,7 +231,7 @@ async function withTransaction<T>(
   try {
     await client.query("BEGIN");
     const result = await fn(client);
-    await client.query("[COMMIT](../../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)");
+    await client.query("[COMMIT](../../../../../ci-cd/common/git-workflow/commit/SKILL.md)");
     return result;
   } catch (error) {
     await client.query("ROLLBACK");
@@ -493,6 +493,6 @@ import {
 |----------|-----|
 | node-postgres Docs | https://node-postgres.com |
 | npm Package | https://www.npmjs.com/package/pg |
-| [GitHub](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Repository | https://[github](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/brianc/node-postgres |
+| [GitHub](../../../../../ci-cd/github-actions/other/github/SKILL.md) Repository | https://[github](../../../../../ci-cd/github-actions/other/github/SKILL.md).com/brianc/node-postgres |
 | Azure [PostgreSQL](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) Docs | https://learn.microsoft.com/azure/[postgresql](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/flexible-server/ |
 | Passwordless Connection | https://learn.microsoft.com/azure/[postgresql](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)/flexible-server/how-to-connect-with-managed-identity |

@@ -151,7 +151,7 @@ tools:
     usage: "semgrep --config=auto --config=./.semgrep/ ."
     strengths: "Custom rules, CI-friendly, fast"
   codeql:
-    description: "[GitHub](../../CI_CD/github/SKILL.md)'s deep code analysis"
+    description: "[GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)'s deep code analysis"
     usage: "codeql database create --language=[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) ./db && codeql analyze ./db --format=sarifv2"
     strengths: "Deep flow analysis, accurate"
   eslint-plugin-security:
@@ -257,7 +257,7 @@ curl -X POST https://api.example.com/profile \
 ### Step 5: CI/CD Security Integration
 
 ```yaml
-# .[github](../../CI_CD/github/SKILL.md)/workflows/security-scan.yml
+# .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/security-scan.yml
 name: Security Scan
 on:
   pull_request:
@@ -291,7 +291,7 @@ jobs:
         uses: trufflesecurity/trufflehog@main
         with:
           path: ./
-          base: ${{ [github](../../CI_CD/github/SKILL.md).event.repository.default_branch }}
+          base: ${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).event.repository.default_branch }}
           head: HEAD
 ```
 
@@ -328,9 +328,9 @@ priority_matrix:
 | False positives from scanners | Wasting time on non-exploitable findings | Triage findings, suppress with evidence |
 | No reproducible scan | Different results each run | Lock dependency versions, pin scanner version |
 | Only scanning at release | Vulnerabilities introduced between releases | PR-level scanning + weekly full scans |
-| No secrets scanning in CI | Hardcoded credentials committed | Pre-[commit](../../CI_CD/commit/SKILL.md) hooks + CI secrets scanner |
+| No secrets scanning in CI | Hardcoded credentials committed | Pre-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) hooks + CI secrets scanner |
 | Ignoring container images | App is clean, base image is vulnerable | Scan all container layers |
-| Missing dependency lock files | Non-deterministic installs, different vulns | [Commit](../../CI_CD/commit/SKILL.md) lock files (package-lock.json, Cargo.lock) |
+| Missing dependency lock files | Non-deterministic installs, different vulns | [Commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) lock files (package-lock.json, Cargo.lock) |
 | Over-relying on scanners | Automated tools miss business logic flaws | Manual review for access control, auth |
 
 ## Best Practices
@@ -338,7 +338,7 @@ priority_matrix:
 | Practice | Rationale |
 |----------|-----------|
 | Shift security left | Catch vulnerabilities earlier in development |
-| Automate dependency scanning | Every PR, every [commit](../../CI_CD/commit/SKILL.md) — not just releases |
+| Automate dependency scanning | Every PR, every [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) — not just releases |
 | Use lock files | Deterministic installs, auditable dependencies |
 | Segment scanning by severity | Critical = block PR, Low = report only |
 | Pin base image versions | Avoid unexpected OS-level vulnerabilities |
@@ -467,7 +467,7 @@ class SecretsScanner:
     def __init__(self):
         self.patterns = {
             "AWS Access Key": r"AKIA[0-9A-Z]{16}",
-            "[GitHub](../../CI_CD/github/SKILL.md) Token": r"gh[pousr]_[A-Za-z0-9_]{36,}",
+            "[GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Token": r"gh[pousr]_[A-Za-z0-9_]{36,}",
             "Private Key": r"-----BEGIN (RSA |EC |DSA |OPENSSH )?PRIVATE KEY-----",
             "JWT Token": r"eyJ[A-Za-z0-9_-]+\.eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+",
             "Generic Secret": r"(secret|password|token|api.?key)\s*[:=]\s*['\"][A-Za-z0-9_!@#$%^&*()=+]{16,}['\"]",
@@ -562,7 +562,7 @@ What do you need to test?
 | Relying solely on automated scanners | Miss business logic flaws, auth issues | Automated scan + manual pen testing |
 | No severity-based triage | Everything gets equal urgency | Severity-gated SLA for remediation |
 | Running outdated scanner versions | Misses new vulnerability signatures | Pin scanner version, update weekly |
-| No lock files | Non-deterministic installs, different vulns | [Commit](../../CI_CD/commit/SKILL.md) all lock files (package-lock, Cargo.lock, go.sum) |
+| No lock files | Non-deterministic installs, different vulns | [Commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) all lock files (package-lock, Cargo.lock, go.sum) |
 | One-size-fits-all security policy | Different services have different risk profiles | Risk-classify services, apply proportional controls |
 | Not [monitoring](../monitoring/SKILL.md) for new CVEs | Vulnerabilities discovered after scan | Subscribe to GHSA, NVD feeds, Dependabot alerts |
 

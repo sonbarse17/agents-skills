@@ -44,8 +44,8 @@ world exploited vulnerabilities live. DAST catches what only shows up when the a
 is actually running — auth bypass, misconfigured headers, live injection — but it's
 slower and needs a running environment.
 
-- **Run SAST and SCA on every [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)**: they're fast enough not to slow anyone down.
-- **Run DAST against staging, not every [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)**: it needs a live target and takes
+- **Run SAST and SCA on every [commit](../../ci-cd/common/git-workflow/commit/SKILL.md)**: they're fast enough not to slow anyone down.
+- **Run DAST against staging, not every [commit](../../ci-cd/common/git-workflow/commit/SKILL.md)**: it needs a live target and takes
   longer, so
 nightly or pre-release is usually the right cadence.
 

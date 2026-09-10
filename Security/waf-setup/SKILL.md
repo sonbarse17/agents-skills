@@ -339,7 +339,7 @@ resource "cloudflare_ruleset" "waf_custom" {
 apt install -y libmodsecurity3 libmodsecurity-dev nginx libnginx-mod-http-modsecurity
 
 # Or compile from source
-git clone https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/SpiderLabs/ModSecurity /opt/modsecurity
+git clone https://[github](../../ci-cd/github-actions/other/github/SKILL.md).com/SpiderLabs/ModSecurity /opt/modsecurity
 cd /opt/modsecurity
 git submodule init && git submodule update
 ./build.sh && ./configure && make && make install
@@ -404,7 +404,7 @@ Include /etc/nginx/modsec/crs/rules/*.conf
 ```bash
 # Download and install OWASP CRS
 cd /etc/nginx/modsec
-git clone https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/coreruleset/coreruleset crs
+git clone https://[github](../../ci-cd/github-actions/other/github/SKILL.md).com/coreruleset/coreruleset crs
 cp crs/crs-setup.conf.example crs/crs-setup.conf
 
 # [Customize](../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) CRS settings

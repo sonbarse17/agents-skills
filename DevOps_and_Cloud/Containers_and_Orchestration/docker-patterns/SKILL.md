@@ -169,8 +169,8 @@ node_modules
 *.md
 Dockerfile
 .dockerignore
-.[gitlab-ci](../../CI_CD/gitlab-ci/SKILL.md).yml
-.[github](../../CI_CD/github/SKILL.md)
+.[gitlab-ci](../../../ci-cd/gitlab-ci/pipelines/gitlab-ci/SKILL.md).yml
+.[github](../../../ci-cd/github-actions/other/github/SKILL.md)
 dist
 .cache
 coverage
@@ -371,7 +371,7 @@ Without --memory and --cpus limits, a single container can consume all host reso
 
 ### CI/CD Integration
 - Build and tag images in CI (never [docker](../docker/SKILL.md) build on production).
-- Cache layers using [GitHub](../../CI_CD/github/SKILL.md) Actions cache or registry cache.
+- Cache layers using [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions cache or registry cache.
 - Run vulnerability scan before push.
 - Sign images with cosign in CI.
 - Use [docker](../docker/SKILL.md) buildx for multi-architecture builds (amd64 + arm64).
@@ -437,7 +437,7 @@ alpine: smallest with apk, musl libc compatibility issues possible. slim: debian
 
 ## Handoff
 After completing this skill:
-- Next skill: [cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md) -- CI/CD for the containerized app
+- Next skill: [cicd-pipeline](../../../ci-cd/common/pipeline-design/cicd-pipeline/SKILL.md) -- CI/CD for the containerized app
 - Pass context: Dockerfile structure, multi-stage setup, [Docker](../docker/SKILL.md) Compose config
 
 ## Architecture Decision Trees
@@ -547,7 +547,7 @@ volumes:
 
 ## Anti-Patterns
 
-- Using **`latest` tag** in production — always pin to semantic version or [commit](../../CI_CD/commit/SKILL.md) SHA
+- Using **`latest` tag** in production — always pin to semantic version or [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) SHA
 - Running **as root** inside the container — create a non-root user in the Dockerfile
 - Storing **secrets in environment variables** visible via `[docker](../docker/SKILL.md) inspect` — use [Docker](../docker/SKILL.md) secrets
 - Building **giant images** with build tools and caches in the final stage — always multi-stage

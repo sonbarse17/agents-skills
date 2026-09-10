@@ -477,6 +477,6 @@ import {
 - [../../../../../Global_References/framework-extensions.md](../../../../../Global_References/framework-extensions.md) — React, React Native, Angular, Next.js, Vite recipes.
 - [../../../../../Global_References/configuration.md](../../../../../Global_References/configuration.md) — Full `IConfiguration` reference and tuning guide.
 - Microsoft Learn: <https://learn.microsoft.com/azure/azure-monitor/app/javascript-sdk>
-- ApplicationInsights-JS source: <https://[github](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/microsoft/ApplicationInsights-JS>
+- ApplicationInsights-JS source: <https://[github](../../../../../ci-cd/github-actions/other/github/SKILL.md).com/microsoft/ApplicationInsights-JS>
 - OTel GenAI semantic conventions: <https://[opentelemetry](../../../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md).io/docs/specs/semconv/gen-ai/>
 

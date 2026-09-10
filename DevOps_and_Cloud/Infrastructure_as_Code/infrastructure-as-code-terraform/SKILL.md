@@ -283,7 +283,7 @@ module "app_logs" {
 }
 ```
 
-CI workflow step ([GitHub](../../CI_CD/github/SKILL.md) Actions):
+CI workflow step ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions):
 ```yaml
 - name: Terraform Plan
   working-directory: environments/staging
@@ -291,12 +291,12 @@ CI workflow step ([GitHub](../../CI_CD/github/SKILL.md) Actions):
     terraform init
     terraform plan -no-color -out=tfplan | tee plan_output.txt
 - name: Post plan to PR
-  uses: actions/[github](../../CI_CD/github/SKILL.md)-script@v7
+  uses: actions/[github](../../../ci-cd/github-actions/other/github/SKILL.md)-script@v7
   with:
     script: |
       const fs = require('fs');
       const plan = fs.readFileSync('environments/staging/plan_output.txt', 'utf8');
-      [github](../../CI_CD/github/SKILL.md).rest.issues.createComment({
+      [github](../../../ci-cd/github-actions/other/github/SKILL.md).rest.issues.createComment({
         ...context.repo, issue_number: context.issue.number,
         body: "```\n" + plan.slice(-60000) + "\n```"
       });

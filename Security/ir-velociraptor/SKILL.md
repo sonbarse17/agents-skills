@@ -58,7 +58,7 @@ Velociraptor is an endpoint visibility and forensics platform for collecting hos
 
 ```bash
 # Download Velociraptor binary for your platform
-# https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Velocidex/velociraptor/releases
+# https://[github](../../ci-cd/github-actions/other/github/SKILL.md).com/Velocidex/velociraptor/releases
 
 # Run GUI mode for interactive investigation
 velociraptor gui
@@ -347,6 +347,6 @@ Save artifacts in YAML format and import via Velociraptor UI or command line.
 - [Velociraptor Documentation](https://docs.velociraptor.app/)
 - [VQL Reference](https://docs.velociraptor.app/vql_reference/)
 - [Artifact Exchange](https://docs.velociraptor.app/exchange/)
-- [GitHub Repository](https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Velocidex/velociraptor)
+- [GitHub Repository](https://[github](../../ci-cd/github-actions/other/github/SKILL.md).com/Velocidex/velociraptor)
 - [MITRE ATT&CK Framework](https://attack.mitre.org/)
 

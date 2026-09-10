@@ -131,7 +131,7 @@ Effort keywords (`quick` / `standard` / `deep`) and the shared `<focus>` and
 
 - `/[terraform-review](../../DevOps_and_Cloud/Infrastructure_as_Code/terraform-review/SKILL.md)`, `/[k8s-review](../../DevOps_and_Cloud/Containers_and_Orchestration/k8s-review/SKILL.md)`, `/[docker-review](../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-review/SKILL.md)` — the layer-specific
   review and the plans that land the hardening.
-- `/[pipeline-review](../../DevOps_and_Cloud/CI_CD/pipeline-review/SKILL.md)` — CI/CD supply chain and secret scoping.
+- `/[pipeline-review](../../ci-cd/common/pipeline-design/pipeline-review/SKILL.md)` — CI/CD supply chain and secret scoping.
 - `/[db-review](../../AI_and_Agents/Operations/db-review/SKILL.md)` — data access paths, encryption, and [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging.
 - `/[dr-review](../../DevOps_and_Cloud/Observability_and_SecOps/dr-review/SKILL.md)` — ransomware/deletion resilience of backups.
 

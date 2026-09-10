@@ -34,7 +34,7 @@ both pass CI independently against `main`, but merging A first can make B's
 already-green CI result stale — B was tested against a `main` that no
 longer reflects reality the moment A lands, so B can merge a change that
 was never actually tested against the code it's landing on top of. A
-**merge queue** ([GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)'s native merge queue, or a bot like Mergify)
+**merge queue** ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)'s native merge queue, or a bot like Mergify)
 automates the fix: it serializes merges, re-testing each PR against the
 *current* `main` (which may include changes from other PRs merged
 moments earlier) immediately before it actually merges, batching several
@@ -53,7 +53,7 @@ branching discipline that keeps it from becoming its own chokepoint.
 - A team's merge-to-`main` rate is high enough that "PR passed CI, but
   broke `main` after merging because another PR landed first" incidents
   are recurring.
-- Setting up [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)'s native merge queue or a Mergify configuration for
+- Setting up [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)'s native merge queue or a Mergify configuration for
   automated, serialized merging with re-validation against current `main`.
 - A configured merge queue is stalling, piling up, or taking longer than
   expected to drain, and needs tuning (batch size, required checks, timeout
@@ -76,12 +76,12 @@ branching discipline that keeps it from becoming its own chokepoint.
   checks (see
   [ci-cd-pipeline-design](../[ci-cd-pipeline-design](../../../DevOps_and_Cloud/CI_CD/ci-cd-pipeline-design/SKILL.md)/SKILL.md) for pipeline
   speed/reliability fundamentals this depends on).
-- For [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)'s native merge queue: a [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) repository with branch
+- For [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)'s native merge queue: a [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) repository with branch
   protection enabled and at least one required status check configured;
-  [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) merge queue is available on [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Team/Enterprise plans for
+  [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) merge queue is available on [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Team/Enterprise plans for
   private repos (public repos on any plan) — confirm current plan
   eligibility before assuming availability.
-- For Mergify: a Mergify [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) App (or GitLab equivalent) installed on the
+- For Mergify: a Mergify [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) App (or GitLab equivalent) installed on the
   repository/organization, plus a `.mergify.yml` configuration file
   committed to the repo.
 - A feature-flag mechanism (a config-driven flag service, or even a simple
@@ -98,7 +98,7 @@ branching discipline that keeps it from becoming its own chokepoint.
 
 ## Step-by-step guidance
 
-1. **Enable [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)'s native merge queue on the protected branch**, requiring
+1. **Enable [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)'s native merge queue on the protected branch**, requiring
    PRs to enter the queue instead of merging directly once checks pass:
    ```
    Settings → Branches → Branch protection rule for "main"
@@ -110,8 +110,8 @@ branching discipline that keeps it from becoming its own chokepoint.
          Build concurrency: 5           # how many queue entries run CI in parallel
          Minimum group size: 1, Maximum group size: 5   # batch size per queue run
    ```
-   When a PR is added to the queue, [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) creates a temporary merge
-   [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) combining it with the current `main` (and, depending on batch
+   When a PR is added to the queue, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) creates a temporary merge
+   [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) combining it with the current `main` (and, depending on batch
    size, other queued PRs) and runs required checks against *that*
    combination — not against the PR's original, possibly-stale branch
    state.
@@ -124,7 +124,7 @@ branching discipline that keeps it from becoming its own chokepoint.
    > routine use of that override as a process failure to investigate, not
    > a normal escape hatch.
 
-2. **Configure Mergify as an equivalent (or [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Enterprise-independent)
+2. **Configure Mergify as an equivalent (or [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Enterprise-independent)
    alternative**, with an explicit queue and merge conditions:
    ```yaml
    # .mergify.yml
@@ -215,7 +215,7 @@ branching discipline that keeps it from becoming its own chokepoint.
        checks_timeout: 60m
    ```
    A PR that times out or fails should be automatically removed from the
-   queue (both [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)'s merge queue and Mergify do this by default) and the
+   queue (both [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)'s merge queue and Mergify do this by default) and the
    next queued PR re-validated without it, rather than the whole queue
    stalling on one bad entry.
 
@@ -231,8 +231,8 @@ branching discipline that keeps it from becoming its own chokepoint.
   aspiration — a merge queue's benefits degrade quickly once branches carry
   large, conflict-prone diffs.
 - Prefer squash-merge for a clean, linear `main` history when using a merge
-  queue — it keeps the trunk's [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) history readable and avoids
-  merge-[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) noise from queue batching mechanics.
+  queue — it keeps the trunk's [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) history readable and avoids
+  merge-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) noise from queue batching mechanics.
 - Use feature flags (not long-lived branches) as the default answer to
   "this feature isn't finished yet" — this is the actual enabling practice
   behind trunk-based development, and skipping it is the most common
@@ -304,7 +304,7 @@ branching discipline that keeps it from becoming its own chokepoint.
 
 **Scenario:** A team of 25 engineers merging ~40 PRs/day to `main` is
 seeing 2-3 "green PR broke main after merge" incidents a week, and separately
-has several feature branches open for 2+ weeks. They adopt [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)'s merge
+has several feature branches open for 2+ weeks. They adopt [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)'s merge
 queue and formalize trunk-based development norms together.
 
 Branch protection on `main`:

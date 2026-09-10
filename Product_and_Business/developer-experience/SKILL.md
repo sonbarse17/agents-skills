@@ -33,7 +33,7 @@ fastest team is the one with the shortest gap between a change and knowing if it
 ## 1. Instrument the loop before you optimize it
 
 Teams guess at their bottleneck and fix the wrong one — usually the part they personally find
-annoying rather than the part costing the most aggregate time. Measure time-to-first-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) for a
+annoying rather than the part costing the most aggregate time. Measure time-to-first-[commit](../../ci-cd/common/git-workflow/commit/SKILL.md) for a
 new hire, local build time, CI wall-clock time, and deploy lead time before touching anything.
 DORA's four keys (lead time, deploy frequency, change failure rate, MTTR) are a floor, not a
 ceiling — add local-loop metrics DORA doesn't capture, since most developer time is spent before
@@ -42,7 +42,7 @@ code ever reaches CI.
 | Loop stage | What to measure | Who feels it first |
 |---|---|---|
 | Local dev | time from clone to running app | new hires |
-| Build/test | wall-clock per run | everyone, every [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) |
+| Build/test | wall-clock per run | everyone, every [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) |
 | CI | queue time + pipeline duration | anyone waiting on a PR |
 | Deploy | lead time, change failure rate | on-call |
 
@@ -81,7 +81,7 @@ just a script that hides it.
 Developers experience CI as one number: how long until I know if I broke something. A fast test
 suite behind a ten-minute runner queue is still a ten-minute wait from the developer's chair. Track
 queue time separately from execution time — they have different fixes (more runners vs. faster
-tests) and conflating them hides which one is actually the bottleneck. See `[ci-pipelines](../../DevOps_and_Cloud/CI_CD/ci-pipelines/SKILL.md)` for
+tests) and conflating them hides which one is actually the bottleneck. See `[ci-pipelines](../../ci-cd/common/pipeline-design/ci-pipelines/SKILL.md)` for
 pipeline structure itself; this is about the wait as experienced, not the pipeline's internals.
 
 **Done when:** queue time and execution time are tracked as separate numbers on the same

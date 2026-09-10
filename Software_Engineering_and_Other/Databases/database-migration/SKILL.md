@@ -284,7 +284,7 @@ module.exports = {
         { transaction },
       );
 
-      await transaction.[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)();
+      await transaction.[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)();
     } catch (error) {
       await transaction.rollback();
       throw error;

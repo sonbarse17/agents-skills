@@ -76,7 +76,7 @@ vendor_risk_tiers:
     examples:
       - Email/marketing platforms (SendGrid, HubSpot)
       - [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and logging SaaS ([Datadog](../../DevOps_and_Cloud/Observability_and_SecOps/datadog/SKILL.md), Splunk)
-      - CI/CD platforms ([GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md), GitLab)
+      - CI/CD platforms ([GitHub](../../ci-cd/github-actions/other/github/SKILL.md), GitLab)
       - Customer support platforms
 
   medium:

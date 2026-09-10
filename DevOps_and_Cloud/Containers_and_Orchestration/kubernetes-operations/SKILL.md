@@ -97,7 +97,7 @@ travel with the image tag, not around it.
 - **Watch `[kubectl](../kubectl/SKILL.md) rollout status`**, don't just fire-and-forget the apply.
 - **Keep `revisionHistoryLimit`** high enough to actually roll back past a bad two-release window.
 - **For anything riskier than a straight rolling update** — canary, blue/green — that's a delivery
-  concern, not a cluster-ops one; see `[deployment-strategies](../deployment-strategies/SKILL.md)` and `[progressive-delivery](../../CI_CD/progressive-delivery/SKILL.md)`.
+  concern, not a cluster-ops one; see `[deployment-strategies](../deployment-strategies/SKILL.md)` and `[progressive-delivery](../../../ci-cd/common/deployment/progressive-delivery/SKILL.md)`.
 
 **Done when:** you have run `[kubectl](../kubectl/SKILL.md) rollout undo` at least once in a non-prod path and confirmed
 it restores the prior working state.

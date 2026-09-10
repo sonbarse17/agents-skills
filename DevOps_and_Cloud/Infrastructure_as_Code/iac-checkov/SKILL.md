@@ -251,27 +251,27 @@ checkov -d ./terraform \
 # CycloneDX SBOM for IaC
 checkov -d ./terraform -o cyclonedx
 
-# SARIF for [GitHub](../../CI_CD/github/SKILL.md) Security
+# SARIF for [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Security
 checkov -d ./terraform -o sarif --output-file-path ./sarif-report.json
 ```
 
 **Report Types:**
 - **CLI**: Human-readable console output
 - **JSON**: Machine-readable for automation
-- **JUnit XML**: CI/CD integration ([Jenkins](../../CI_CD/jenkins/SKILL.md), GitLab)
-- **SARIF**: [GitHub](../../CI_CD/github/SKILL.md)/Azure DevOps Security tab
+- **JUnit XML**: CI/CD integration ([Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md), GitLab)
+- **SARIF**: [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)/Azure DevOps Security tab
 - **CycloneDX**: Software Bill of Materials for IaC
 
 Map findings to compliance frameworks using `../../../Global_References/iac-checkov_compliance_mapping.md`.
 
 ## CI/CD Integration
 
-### [GitHub](../../CI_CD/github/SKILL.md) Actions
+### [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions
 
 Add Checkov scanning to pull request checks:
 
 ```yaml
-# .[github](../../CI_CD/github/SKILL.md)/workflows/checkov.yml
+# .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/checkov.yml
 name: Checkov IaC Security Scan
 on: [push, pull_request]
 
@@ -292,19 +292,19 @@ jobs:
 
       - name: Upload SARIF Report
         if: always()
-        uses: [github](../../CI_CD/github/SKILL.md)/codeql-action/upload-sarif@v2
+        uses: [github](../../../ci-cd/github-actions/other/github/SKILL.md)/codeql-action/upload-sarif@v2
         with:
           sarif_file: checkov-results.sarif
 ```
 
-### Pre-[Commit](../../CI_CD/commit/SKILL.md) Hook
+### Pre-[Commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) Hook
 
 Prevent committing insecure IaC:
 
 ```yaml
-# .pre-[commit](../../CI_CD/commit/SKILL.md)-config.yaml
+# .pre-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)-config.yaml
 repos:
-  - repo: https://[github](../../CI_CD/github/SKILL.md).com/bridgecrewio/checkov
+  - repo: https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/bridgecrewio/checkov
     rev: 2.5.0
     hooks:
       - id: checkov
@@ -312,17 +312,17 @@ repos:
         files: \.(tf|yaml|yml|json)$
 ```
 
-Install pre-[commit](../../CI_CD/commit/SKILL.md) hooks:
+Install pre-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) hooks:
 
 ```bash
-pip install pre-[commit](../../CI_CD/commit/SKILL.md)
-pre-[commit](../../CI_CD/commit/SKILL.md) install
+pip install pre-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)
+pre-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) install
 ```
 
 ### GitLab CI
 
 ```yaml
-# .[gitlab-ci](../../CI_CD/gitlab-ci/SKILL.md).yml
+# .[gitlab-ci](../../../ci-cd/gitlab-ci/pipelines/gitlab-ci/SKILL.md).yml
 checkov_scan:
   image: bridgecrew/checkov:latest
   stage: security
@@ -337,7 +337,7 @@ checkov_scan:
     when: always
 ```
 
-### [Jenkins](../../CI_CD/jenkins/SKILL.md) Pipeline
+### [Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md) Pipeline
 
 ```groovy
 // Jenkinsfile
@@ -491,7 +491,7 @@ checkov -d ./terraform --framework secrets
 - **CI/CD Failure Thresholds**: Configure `--hard-fail-on` for severity levels that should block deployment
 - **Custom Policy Management**: Version control custom policies and review changes
 - **Compliance Alignment**: Map organizational requirements to Checkov policies
-- **Secrets Management**: Never [commit](../../CI_CD/commit/SKILL.md) secrets; use secret managers and rotation policies
+- **Secrets Management**: Never [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) secrets; use secret managers and rotation policies
 - **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging**: Log all scan results and policy suppressions for compliance audits
 - **False Positive Review**: Regularly review suppressed findings to ensure they remain valid
 - **Policy Updates**: Keep Checkov updated to receive new security policies
@@ -519,10 +519,10 @@ checkov -d ./terraform --framework secrets
 ### Assets (`assets/`)
 
 - `checkov_config.yaml` - Checkov configuration file template
-- `github_actions.yml` - Complete [GitHub](../../CI_CD/github/SKILL.md) Actions workflow
+- `github_actions.yml` - Complete [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions workflow
 - `gitlab_ci.yml` - Complete GitLab CI pipeline
-- `jenkins_pipeline.groovy` - [Jenkins](../../CI_CD/jenkins/SKILL.md) pipeline template
-- `pre_commit_config.yaml` - Pre-[commit](../../CI_CD/commit/SKILL.md) hook configuration
+- `jenkins_pipeline.groovy` - [Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md) pipeline template
+- `pre_commit_config.yaml` - Pre-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) hook configuration
 - `custom_policy_template.py` - Template for custom [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) policies
 - `policy_metadata.yaml` - Policy metadata for organization-specific policies
 
@@ -595,8 +595,8 @@ checkov -d ./terraform --framework terraform \
 
 ## Integration Points
 
-- **CI/CD**: [GitHub](../../CI_CD/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../CI_CD/jenkins/SKILL.md), Azure DevOps, [CircleCI](../../CI_CD/circleci/SKILL.md), Bitbucket Pipelines
-- **Version Control**: Pre-[commit](../../CI_CD/commit/SKILL.md) hooks, pull request checks, branch protection rules
+- **CI/CD**: [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md), Azure DevOps, [CircleCI](../../../ci-cd/circleci/other/circleci/SKILL.md), Bitbucket Pipelines
+- **Version Control**: Pre-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) hooks, pull request checks, branch protection rules
 - **Cloud Platforms**: AWS, Azure, GCP, OCI, Alibaba Cloud
 - **IaC Tools**: Terraform, Terragrunt, [CloudFormation](../cloudformation/SKILL.md), ARM, [Pulumi](../pulumi/SKILL.md)
 - **Container Orchestration**: [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md), [OpenShift](../../Containers_and_Orchestration/openshift/SKILL.md), EKS, GKE, AKS
@@ -686,7 +686,7 @@ checkov -d .
 ## References
 
 - [Checkov Documentation](https://www.checkov.io/)
-- [Checkov [GitHub](../../CI_CD/github/SKILL.md) Repository](https://[github](../../CI_CD/github/SKILL.md).com/bridgecrewio/checkov)
+- [Checkov [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Repository](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/bridgecrewio/checkov)
 - [CIS Benchmarks](https://www.cisecurity.org/[cis-benchmarks](../../Observability_and_SecOps/cis-benchmarks/SKILL.md)/)
 - [Terraform Security Best Practices](https://www.terraform.io/docs/cloud/guides/recommended-practices/index.html)
 - [Kubernetes Pod Security Standards](https://[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md).io/docs/concepts/security/pod-security-standards/)

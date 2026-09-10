@@ -128,11 +128,11 @@ full per-seat licensing for that purpose alone.
              soft_fail: false
          - name: Upload SARIF to code scanning
            if: always()
-           uses: [github](../../CI_CD/github/SKILL.md)/codeql-action/upload-sarif@v3
+           uses: [github](../../../ci-cd/github-actions/other/github/SKILL.md)/codeql-action/upload-sarif@v3
            with:
              sarif_file: checkov-results.sarif
    ```
-   Uploading SARIF surfaces findings directly in [GitHub](../../CI_CD/github/SKILL.md)'s code-scanning UI
+   Uploading SARIF surfaces findings directly in [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)'s code-scanning UI
    as annotations on the PR diff, not just a pass/fail job status.
 
 3. **Add tfsec (or Trivy's merged IaC scanner) as an equivalent, faster

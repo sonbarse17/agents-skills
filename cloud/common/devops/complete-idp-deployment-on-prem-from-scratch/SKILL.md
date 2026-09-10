@@ -309,7 +309,7 @@ and must self-host its entire IDP.
    storage, authenticating developers via the site's existing Active
    Directory.
 5. **Phase 5:** A golden-path template's CI workflow runs on an internal
-   [Jenkins](../../../../DevOps_and_Cloud/CI_CD/jenkins/SKILL.md) instance and pulls its base image exclusively from
+   [Jenkins](../../../../ci-cd/jenkins/other/jenkins/SKILL.md) instance and pulls its base image exclusively from
    `registry.internal.anchorage`.
 6. **Phase 6:** A validation pipeline scaffolds a test service on this
    same cluster's `ephemeral-validation` namespace and confirms zero

@@ -33,7 +33,7 @@ Secure access to internal services without VPNs using Cloudflare's Zero Trust pl
 
 - Cloudflare account with Zero Trust plan (free tier supports up to 50 users).
 - A domain on Cloudflare (for Access application hostnames).
-- Identity provider configured (Google Workspace, Okta, Azure AD/Entra ID, [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)).
+- Identity provider configured (Google Workspace, Okta, Azure AD/Entra ID, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)).
 - `cloudflared` CLI installed on the server hosting internal services.
 
 ```bash

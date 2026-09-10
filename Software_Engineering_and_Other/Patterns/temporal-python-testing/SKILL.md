@@ -164,5 +164,5 @@ async def test_activity():
 ## Additional References
 
 - [Python](../../Languages/python/SKILL.md) SDK Testing: docs.temporal.io/develop/[python](../../Languages/python/SKILL.md)/testing-suite
-- Testing Patterns: [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/temporalio/temporal/blob/main/docs/development/testing.md
-- [Python](../../Languages/python/SKILL.md) Samples: [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/temporalio/samples-[python](../../Languages/python/SKILL.md)
+- Testing Patterns: [github](../../../ci-cd/github-actions/other/github/SKILL.md).com/temporalio/temporal/blob/main/docs/development/testing.md
+- [Python](../../Languages/python/SKILL.md) Samples: [github](../../../ci-cd/github-actions/other/github/SKILL.md).com/temporalio/samples-[python](../../Languages/python/SKILL.md)

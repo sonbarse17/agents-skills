@@ -70,7 +70,7 @@ nobody revisits.
 - A shared, versioned template — see
   [../../../Global_References/postmortem-template.md](../../../Global_References/postmortem-template.md)
   in this skill for a ready-to-use starting point.
-- An issue tracker (Jira, [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Issues, Linear, or equivalent) to hold
+- An issue tracker (Jira, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Issues, Linear, or equivalent) to hold
   action items as real, assignable, trackable tickets rather than bullet
   points in a document.
 - An explicit, stated organizational policy that postmortems are

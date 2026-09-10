@@ -182,7 +182,7 @@ control_to_tool_mapping:
       - Azure AD sign-in logs
       - Conditional Access policies
       - PIM role assignments
-    [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md):
+    [github](../../ci-cd/github-actions/other/github/SKILL.md):
       - Organization member list and roles
       - Repository access permissions
       - Branch protection rules
@@ -204,8 +204,8 @@ control_to_tool_mapping:
 
   CC8.1_change_management:
     tools:
-      - [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/GitLab PR merge requirements
-      - CI/CD pipeline configurations ([GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions, [Jenkins](../../DevOps_and_Cloud/CI_CD/jenkins/SKILL.md))
+      - [GitHub](../../ci-cd/github-actions/other/github/SKILL.md)/GitLab PR merge requirements
+      - CI/CD pipeline configurations ([GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions, [Jenkins](../../ci-cd/jenkins/other/jenkins/SKILL.md))
       - Terraform plan outputs
       - Deployment logs
     evidence_format:
@@ -245,11 +245,11 @@ aws iam list-users --query 'Users[*].UserName' --output text | \
     echo "$user,$mfa"
   done > "$EVIDENCE_DIR/mfa-status.csv"
 
-# [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) organization members and roles
+# [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) organization members and roles
 gh api orgs/YOUR_ORG/members --paginate --jq '.[] | [.login, .role_name // "member"] | @csv' \
-  > "$EVIDENCE_DIR/[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-org-members.csv"
+  > "$EVIDENCE_DIR/[github](../../ci-cd/github-actions/other/github/SKILL.md)-org-members.csv"
 
-# [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) branch protection rules
+# [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) branch protection rules
 for repo in $(gh repo list YOUR_ORG --json name -q '.[].name'); do
   gh api repos/YOUR_ORG/$repo/branches/main/protection \
     > "$EVIDENCE_DIR/branch-protection-$repo.json" 2>/dev/null
@@ -272,7 +272,7 @@ aws guardduty list-findings --detector-id DETECTOR_ID \
 
 echo "=== CC8.1 - Change Management Evidence ==="
 
-# Recent deployments ([GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions)
+# Recent deployments ([GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions)
 gh run list --repo YOUR_ORG/YOUR_REPO --limit 50 --json conclusion,createdAt,displayTitle,headBranch \
   > "$EVIDENCE_DIR/recent-deployments.json"
 
@@ -345,7 +345,7 @@ audit_prep_timeline:
 ## Continuous Compliance [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 
 ```yaml
-# [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions workflow for continuous SOC 2 checks
+# [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions workflow for continuous SOC 2 checks
 name: SOC2 Compliance Checks
 on:
   schedule:

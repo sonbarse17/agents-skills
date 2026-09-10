@@ -479,5 +479,5 @@ Protect applications against SQL injection:
 - [SQLMap Official Documentation](https://sqlmap.org/)
 - [OWASP SQL Injection](https://owasp.org/www-community/attacks/SQL_Injection)
 - [CWE-89: SQL Injection](https://cwe.mitre.org/data/definitions/89.html)
-- [SQLMap Tamper Scripts](https://[github](../../CI_CD/github/SKILL.md).com/sqlmapproject/sqlmap/tree/master/tamper)
+- [SQLMap Tamper Scripts](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/sqlmapproject/sqlmap/tree/master/tamper)
 - [PTES: Vulnerability Analysis](http://www.pentest-standard.org/index.php/Vulnerability_Analysis)

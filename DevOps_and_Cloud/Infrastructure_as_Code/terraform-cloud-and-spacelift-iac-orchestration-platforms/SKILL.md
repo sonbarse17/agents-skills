@@ -54,7 +54,7 @@ and doesn't repeat HCL authoring or module design.
 ## When to use
 
 - Deciding whether a team's Terraform workflow should move from a
-  hand-rolled CI pipeline (a [GitHub](../../CI_CD/github/SKILL.md) Actions/GitLab CI job running
+  hand-rolled CI pipeline (a [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions/GitLab CI job running
   `terraform plan`/`apply` against an S3+DynamoDB backend) to a managed
   orchestration platform, and which one.
 - Setting up Terraform Cloud/HCP Terraform workspaces or Spacelift stacks
@@ -86,7 +86,7 @@ and doesn't repeat HCL authoring or module design.
   boundaries (run/user/workspace counts, which policy engine is available
   on which tier) against each vendor's own pricing page before assuming
   parity, since both have changed their tiering over time.
-- A VCS provider ([GitHub](../../CI_CD/github/SKILL.md), GitLab, Bitbucket, Azure DevOps) connected via an
+- A VCS provider ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md), GitLab, Bitbucket, Azure DevOps) connected via an
   OAuth app or VCS integration so the platform can receive webhook events
   for PR-triggered plans and merge-triggered applies.
 - Cloud provider credentials the platform's run environment will use to
@@ -150,7 +150,7 @@ and doesn't repeat HCL authoring or module design.
    needed for the plan/apply mechanics themselves:
    ```
    Terraform Cloud workspace settings:
-     VCS repo: [github](../../CI_CD/github/SKILL.md).com/example-org/infra
+     VCS repo: [github](../../../ci-cd/github-actions/other/github/SKILL.md).com/example-org/infra
      Working directory: environments/prod
      Trigger: only when files in "environments/prod/**" change (path-based trigger)
      Apply method: Manual apply (require a human to confirm after plan)
@@ -338,7 +338,7 @@ and doesn't repeat HCL authoring or module design.
 ## Worked example
 
 **Scenario:** A team migrates `payments-api`'s production Terraform from a
-hand-rolled [GitHub](../../CI_CD/github/SKILL.md) Actions pipeline (S3+DynamoDB backend, manual `apply`
+hand-rolled [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions pipeline (S3+DynamoDB backend, manual `apply`
 approval via a protected environment) to Terraform Cloud, adding a Sentinel
 policy requiring encryption on all S3 buckets and daily drift detection.
 
@@ -360,7 +360,7 @@ terraform init   # prompts to migrate existing S3-backed state into Terraform Cl
 
 Workspace configuration:
 ```
-VCS repo: [github](../../CI_CD/github/SKILL.md).com/example-org/infra, branch: main
+VCS repo: [github](../../../ci-cd/github-actions/other/github/SKILL.md).com/example-org/infra, branch: main
 Working directory: environments/prod
 Trigger: only on changes under environments/prod/**
 Apply method: Manual apply

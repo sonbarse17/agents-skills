@@ -97,7 +97,7 @@ actually working.
    - **Satisfaction** (SPACE): a survey question on overall developer
      satisfaction with the internal platform/tooling.
    - **Speed** (DX Core 4) / **Efficiency & flow** (SPACE): median lead
-     time from [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) to production deploy.
+     time from [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) to production deploy.
    - **Activity** (SPACE): self-service action/template usage counts —
      but paired with an outcome metric (see step 3), never reported
      alone.

@@ -176,7 +176,7 @@ az aks nodepool list \
 
 ```bash
 # Install NGINX ingress controller via Helm
-helm repo add ingress-nginx https://[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).[github](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/ingress-nginx
+helm repo add ingress-nginx https://[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).[github](../../../../ci-cd/github-actions/other/github/SKILL.md).io/ingress-nginx
 helm repo update
 
 helm install ingress-nginx ingress-nginx/ingress-nginx \
@@ -260,7 +260,7 @@ az aks show \
   --output table
 
 # Install Prometheus + Grafana via Helm
-helm repo add prometheus-community https://prometheus-community.[github](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/[helm-charts](../../../../DevOps_and_Cloud/Containers_and_Orchestration/helm-charts/SKILL.md)
+helm repo add prometheus-community https://prometheus-community.[github](../../../../ci-cd/github-actions/other/github/SKILL.md).io/[helm-charts](../../../../DevOps_and_Cloud/Containers_and_Orchestration/helm-charts/SKILL.md)
 helm install kube-prometheus prometheus-community/kube-prometheus-stack \
   --namespace [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) \
   --create-namespace \

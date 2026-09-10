@@ -72,7 +72,7 @@ Go code, YAML manifests, and Makefile targets. No preamble. No postamble. No fil
 ```
 What are you managing?
   Application lifecycle (deploy, upgrade, backup) → Consider operator
-  Single resource creation → Helm chart + [ArgoCD](../argocd/SKILL.md) (simpler)
+  Single resource creation → Helm chart + [ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md) (simpler)
   Multi-step orchestration across resources → Operator pattern
 
   Is the logic simple (create/delete static resources)?
@@ -114,7 +114,7 @@ curl -L -o kubebuilder https://go.kubebuilder.io/dl/latest/$(go env GOOS)/$(go e
 chmod +x kubebuilder && sudo mv kubebuilder /usr/local/bin/
 
 # Scaffold project
-kubebuilder init --domain example.com --repo [github](../../CI_CD/github/SKILL.md).com/org/my-operator
+kubebuilder init --domain example.com --repo [github](../../../ci-cd/github-actions/other/github/SKILL.md).com/org/my-operator
 kubebuilder create api --group batch --version v1 --kind BackupJob --resource=true --controller=true
 
 # Project structure
@@ -269,7 +269,7 @@ import (
     "fmt"
     "time"
 
-    batchv1 "[github](../../CI_CD/github/SKILL.md).com/org/my-operator/api/v1"
+    batchv1 "[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/org/my-operator/api/v1"
     corev1 "k8s.io/api/core/v1"
     apierrors "k8s.io/apimachinery/pkg/api/errors"
     metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -562,8 +562,8 @@ import (
     "flag"
     "os"
 
-    batchv1 "[github](../../CI_CD/github/SKILL.md).com/org/my-operator/api/v1"
-    "[github](../../CI_CD/github/SKILL.md).com/org/my-operator/internal/controller"
+    batchv1 "[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/org/my-operator/api/v1"
+    "[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/org/my-operator/internal/controller"
     "k8s.io/apimachinery/pkg/runtime"
     utilruntime "k8s.io/apimachinery/pkg/util/runtime"
     clientgoscheme "k8s.io/client-go/[kubernetes](../kubernetes/SKILL.md)/scheme"
@@ -647,9 +647,9 @@ import (
     "context"
     "time"
 
-    batchv1 "[github](../../CI_CD/github/SKILL.md).com/org/my-operator/api/v1"
-    . "[github](../../CI_CD/github/SKILL.md).com/onsi/ginkgo/v2"
-    . "[github](../../CI_CD/github/SKILL.md).com/onsi/gomega"
+    batchv1 "[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/org/my-operator/api/v1"
+    . "[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/onsi/ginkgo/v2"
+    . "[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/onsi/gomega"
     metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
     "k8s.io/apimachinery/pkg/types"
 )
@@ -767,8 +767,8 @@ import (
     "encoding/json"
     "net/http"
 
-    v1 "[github](../../CI_CD/github/SKILL.md).com/org/my-operator/api/v1"
-    v2 "[github](../../CI_CD/github/SKILL.md).com/org/my-operator/api/v2"
+    v1 "[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/org/my-operator/api/v1"
+    v2 "[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/org/my-operator/api/v2"
     "sigs.k8s.io/controller-runtime/pkg/webhook/conversion"
 )
 

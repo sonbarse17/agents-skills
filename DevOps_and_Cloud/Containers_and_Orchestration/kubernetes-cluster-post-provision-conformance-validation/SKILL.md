@@ -201,7 +201,7 @@ and
   someone remembers to run — an optional gate reliably gets skipped
   under deadline pressure.
 - Store conformance/smoke-test results as pipeline artifacts tied to the
-  cluster's identity and provisioning [commit](../../CI_CD/commit/SKILL.md), so "is this cluster
+  cluster's identity and provisioning [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md), so "is this cluster
   validated, and against what config" is answerable later without
   re-running the suite.
 - Re-run the full validation after any change that could plausibly

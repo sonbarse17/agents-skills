@@ -188,7 +188,7 @@ Log.Information("Order {OrderId} created with amount {Amount}", orderId, 49.99);
 
 ```go
 // Zerolog — Go
-import "[github](../../CI_CD/github/SKILL.md).com/rs/zerolog/log"
+import "[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/rs/zerolog/log"
 
 zerolog.TimeFieldFormat = time.RFC3339Nano
 zerolog.LevelFieldName = "log.level"
@@ -530,7 +530,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH [commit](../../CI_CD/commit/SKILL.md) signing
+- Signed commits: GPG or SSH [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management

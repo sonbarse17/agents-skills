@@ -378,7 +378,7 @@ Stakeholder conflict arises
 2. Separate: distinguish positions (what they say) from interests (what they need).
 3. Reframe: restate as shared problem: "How do we achieve X while addressing Y?"
 4. Options: generate 2-3 alternatives with tradeoffs for each.
-5. [Commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md): document agreement with owner and deadline.
+5. [Commit](../../ci-cd/common/git-workflow/commit/SKILL.md): document agreement with owner and deadline.
 6. Follow-up: check both parties accepted resolution within 1 week.
 
 #### Negotiation Tactics for Stakeholders

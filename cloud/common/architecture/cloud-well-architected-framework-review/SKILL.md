@@ -128,7 +128,7 @@ a substitute for the standards-mapping and legal/[audit](../../../../AI_and_Agen
      transit, network segmentation, secrets handling, patch/vulnerability
      management — this pillar overlaps directly with
      [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)/SKILL.md),
-     [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../security/secrets-management/SKILL.md)/SKILL.md),
+     [secrets-management](../../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../security/secrets-management/SKILL.md)/SKILL.md),
      and [cis-benchmarks-hardening](../[cis-benchmarks-hardening](../../../Security/[cis-benchmarks](../../Observability_and_SecOps/cis-benchmarks/SKILL.md)-hardening/SKILL.md)/SKILL.md).
    - *Reliability*: RTO/RPO targets and whether they're actually met,
      multi-AZ/region design, backup testing — cross-reference

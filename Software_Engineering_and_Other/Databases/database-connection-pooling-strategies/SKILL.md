@@ -103,7 +103,7 @@ connection multiplexer.
   one idle client still holds one backend connection.
 - **Transaction pooling**: a backend connection is assigned to a client
   only for the duration of a single transaction, returned to the pool
-  immediately on [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)/rollback. The dominant mode for high-
+  immediately on [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)/rollback. The dominant mode for high-
   concurrency web workloads (many short transactions, most connections
   idle between requests) since it multiplexes far more client
   connections onto far fewer backend ones — but breaks anything that

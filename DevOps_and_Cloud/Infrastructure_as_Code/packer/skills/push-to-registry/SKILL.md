@@ -128,13 +128,13 @@ Metadata for each iteration. Immutable after build completes.
 ```hcl
 build_labels = {
   "build-time" = local.timestamp
-  "git-[commit](../../../../CI_CD/commit/SKILL.md)" = var.git_commit
+  "git-[commit](../../../../../ci-cd/common/git-workflow/commit/SKILL.md)" = var.git_commit
 }
 ```
 
 ## CI/CD Integration
 
-### [GitHub](../../../../CI_CD/github/SKILL.md) Actions
+### [GitHub](../../../../../ci-cd/github-actions/other/github/SKILL.md) Actions
 
 ```yaml
 name: Build and Push to HCP Packer
@@ -160,7 +160,7 @@ jobs:
         run: |
           packer init .
           packer build \
-            -var "git_commit=${{ [github](../../../../CI_CD/github/SKILL.md).sha }}" \
+            -var "git_commit=${{ [github](../../../../../ci-cd/github-actions/other/github/SKILL.md).sha }}" \
             .
 ```
 

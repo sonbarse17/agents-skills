@@ -106,7 +106,7 @@ trivy fs --scanners vuln package-lock.json
 # Generate JSON report for analysis
 trivy fs --format json --output trivy-report.json .
 
-# Generate SARIF for [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/GitLab integration
+# Generate SARIF for [GitHub](../../ci-cd/github-actions/other/github/SKILL.md)/GitLab integration
 trivy fs --format sarif --output trivy.sarif .
 ```
 
@@ -142,7 +142,7 @@ Review findings by category:
 
 ### Workflow 4: CI/CD Pipeline Integration
 
-#### [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions
+#### [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions
 
 ```yaml
 name: Trivy Security Scan
@@ -163,8 +163,8 @@ jobs:
           output: 'trivy-results.sarif'
           severity: 'CRITICAL,HIGH'
 
-      - name: Upload results to [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Security
-        uses: [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/codeql-action/upload-sarif@v2
+      - name: Upload results to [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Security
+        uses: [github](../../ci-cd/github-actions/other/github/SKILL.md)/codeql-action/upload-sarif@v2
         with:
           sarif_file: 'trivy-results.sarif'
 ```
@@ -260,9 +260,9 @@ Log the following for compliance and [incident](../../DevOps_and_Cloud/Observabi
 ### Assets (`assets/`)
 
 - `trivy.yaml` - Custom Trivy configuration with security policies and ignore rules
-- `ci_integration/[github-actions](../../DevOps_and_Cloud/CI_CD/[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-actions/SKILL.md).yml` - Complete [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions workflow with security gates
-- `ci_integration/[gitlab-ci](../../DevOps_and_Cloud/CI_CD/gitlab-ci/SKILL.md).yml` - Complete GitLab CI pipeline with dependency scanning
-- `ci_integration/[jenkins](../../DevOps_and_Cloud/CI_CD/jenkins/SKILL.md).groovy` - [Jenkins](../../DevOps_and_Cloud/CI_CD/jenkins/SKILL.md) pipeline with Trivy integration
+- `ci_integration/[github-actions](../../DevOps_and_Cloud/CI_CD/[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-actions/SKILL.md).yml` - Complete [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions workflow with security gates
+- `ci_integration/[gitlab-ci](../../ci-cd/gitlab-ci/pipelines/gitlab-ci/SKILL.md).yml` - Complete GitLab CI pipeline with dependency scanning
+- `ci_integration/[jenkins](../../ci-cd/jenkins/other/jenkins/SKILL.md).groovy` - [Jenkins](../../ci-cd/jenkins/other/jenkins/SKILL.md) pipeline with Trivy integration
 - `policy_template.rego` - OPA policy template for custom vulnerability policies
 
 ## Common Patterns
@@ -335,10 +335,10 @@ trivy image --ignore-policy assets/policy_template.rego myapp:latest
 
 ### CI/CD Integration
 
-- **[GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions**: Native `aquasecurity/trivy-action` with SARIF upload to Security tab
+- **[GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions**: Native `aquasecurity/trivy-action` with SARIF upload to Security tab
 - **GitLab CI**: Dependency scanning report format for Security Dashboard
-- **[Jenkins](../../DevOps_and_Cloud/CI_CD/jenkins/SKILL.md)**: [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-based scanning with JUnit XML report generation
-- **[CircleCI](../../DevOps_and_Cloud/CI_CD/circleci/SKILL.md)**: [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) executor with artifact storage
+- **[Jenkins](../../ci-cd/jenkins/other/jenkins/SKILL.md)**: [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-based scanning with JUnit XML report generation
+- **[CircleCI](../../ci-cd/circleci/other/circleci/SKILL.md)**: [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) executor with artifact storage
 - **Azure Pipelines**: Task-based integration with results publishing
 
 ### Container Platforms
@@ -472,7 +472,7 @@ trivy image --skip-db-update --cache-dir /path/to/db --offline-scan myapp:latest
 
 ## References
 
-- [Trivy Official Documentation](https://aquasecurity.[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/trivy/)
+- [Trivy Official Documentation](https://aquasecurity.[github](../../ci-cd/github-actions/other/github/SKILL.md).io/trivy/)
 - [OWASP Dependency Check](https://owasp.org/www-project-dependency-check/)
 - [NVD - National Vulnerability Database](https://nvd.nist.gov/)
 - [CISA SBOM Guidelines](https://www.cisa.gov/sbom)

@@ -231,10 +231,10 @@ and focuses specifically on what's different about Linear's model.
    });
    ```
 
-8. **Sync Linear with an external system (Slack, [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md), an [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
+8. **Sync Linear with an external system (Slack, [GitHub](../../ci-cd/github-actions/other/github/SKILL.md), an [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
    tool) via Linear's native integrations before building a custom
    webhook sync** — Linear ships first-party integrations for the most
-   common cases ([GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) PR status linking issue state automatically,
+   common cases ([GitHub](../../ci-cd/github-actions/other/github/SKILL.md) PR status linking issue state automatically,
    Slack for notifications), which cover most needs with far less
    maintenance than a bespoke sync layer.
 
@@ -246,13 +246,13 @@ and focuses specifically on what's different about Linear's model.
 - Treat Triage as an actively-managed daily gate, not a parking lot —
   an unprocessed Triage queue defeats its purpose as a signal the same
   way an unbounded Jira backlog does.
-- [Commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) to Cycles based on real, historically-demonstrated [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md),
+- [Commit](../../ci-cd/common/git-workflow/commit/SKILL.md) to Cycles based on real, historically-demonstrated [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md),
   and review completion rate over several cycles rather than reacting
   to any single cycle's carry-over as a one-off.
 - Reserve Projects for genuinely cross-cycle, multi-person initiatives;
   don't wrap every small issue in a Project just because the feature
   exists.
-- Prefer Linear's native integrations ([GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md), Slack, [Sentry](../../DevOps_and_Cloud/Observability_and_SecOps/sentry/SKILL.md), etc.)
+- Prefer Linear's native integrations ([GitHub](../../ci-cd/github-actions/other/github/SKILL.md), Slack, [Sentry](../../DevOps_and_Cloud/Observability_and_SecOps/sentry/SKILL.md), etc.)
   over building custom sync automation — they cover the overwhelming
   majority of real needs with far less ongoing maintenance.
 - When comparing to Jira for a new team, be concrete about the actual
@@ -292,7 +292,7 @@ and focuses specifically on what's different about Linear's model.
   stamp rather than a real forecasting exercise.
   **Fix:** The team is committing to a wish list, not real [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) —
   review actual historical completion rate over several cycles and
-  [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) to that number going forward (step 3), rather than treating
+  [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) to that number going forward (step 3), rather than treating
   each cycle's overcommitment as a one-off that "just happened" to be
   busy.
 
@@ -309,7 +309,7 @@ and focuses specifically on what's different about Linear's model.
   external tool (built because "we needed something specific") breaks
   silently after a Linear API schema change, and issues stop updating.
   **Fix:** Check whether Linear's native integration for that tool
-  ([GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md), Slack, [Sentry](../../DevOps_and_Cloud/Observability_and_SecOps/sentry/SKILL.md), and others) already covers the actual need
+  ([GitHub](../../ci-cd/github-actions/other/github/SKILL.md), Slack, [Sentry](../../DevOps_and_Cloud/Observability_and_SecOps/sentry/SKILL.md), and others) already covers the actual need
   before building custom sync automation (step 8) — a first-party
   integration is maintained against Linear's own API changes; a custom
   sync is not, and is an ongoing maintenance liability for a need that
@@ -319,7 +319,7 @@ and focuses specifically on what's different about Linear's model.
 
 **Scenario:** A 6-person product engineering team moving off Jira picks
 Linear specifically to reduce process overhead, and sets up Cycles,
-Triage handling, and a [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-driven issue-creation automation for
+Triage handling, and a [GitHub](../../ci-cd/github-actions/other/github/SKILL.md)-driven issue-creation automation for
 incoming bug reports.
 
 Team configuration:
@@ -362,7 +362,7 @@ to 14 issues for the upcoming cycle rather than the 20 that were
 originally on the wish list — the cycle closes with 13 of 14 complete,
 a healthy, forecastable result rather than a rubber-stamped overcommit.
 
-[GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) integration (native, not custom) automatically transitions
+[GitHub](../../ci-cd/github-actions/other/github/SKILL.md) integration (native, not custom) automatically transitions
 `CHK-511` from `In Progress` to `In Review` when a linked PR opens, and
 to `Done` when it merges — no custom webhook sync required.
 

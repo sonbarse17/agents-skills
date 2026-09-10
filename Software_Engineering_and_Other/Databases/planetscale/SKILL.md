@@ -41,7 +41,7 @@ Use PlanetScale for [serverless](../../../DevOps_and_Cloud/Containers_and_Orches
 brew install planetscale/tap/pscale
 
 # Linux (deb)
-curl -fsSL https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/planetscale/cli/releases/latest/download/pscale_linux_amd64.deb -o pscale.deb
+curl -fsSL https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/planetscale/cli/releases/latest/download/pscale_linux_amd64.deb -o pscale.deb
 sudo dpkg -i pscale.deb
 
 # Verify installation

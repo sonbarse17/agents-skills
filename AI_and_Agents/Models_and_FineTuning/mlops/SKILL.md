@@ -124,7 +124,7 @@ Strategy: {revert to previous prod version / shadow traffic}
 
 ## Workflow
 
-### Step 1: CI Pipeline with [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions
+### Step 1: CI Pipeline with [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions
 ```yaml
 name: ML Pipeline
 on:
@@ -164,7 +164,7 @@ jobs:
       run: |
         mlflow models register \
           --model-name classifier \
-          --version ${{ [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).run_number }} \
+          --version ${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).run_number }} \
           --stage Staging
 ```
 
@@ -526,7 +526,7 @@ mlflow.log_artifact("artifacts/shap_values.pkl")
 - **Feature store**: Feast, Tecton, SageMaker Feature Store.
 
 ## References
-  - ../../../Global_References/ml-[cicd-pipeline](../../../DevOps_and_Cloud/CI_CD/cicd-pipeline/SKILL.md).md — ML CI/CD Pipeline
+  - ../../../Global_References/ml-[cicd-pipeline](../../../ci-cd/common/pipeline-design/cicd-pipeline/SKILL.md).md — ML CI/CD Pipeline
   - ../../../Global_References/ml-deployment.md — ML Deployment & [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
   - ../../../Global_References/ml-[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md).md — ML Experiment Tracking
   - ../../../Global_References/ml-retraining.md — ML Model Retraining

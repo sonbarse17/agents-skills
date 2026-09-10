@@ -147,7 +147,7 @@ Does CI support [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/
 | Confidence | High (real infra) | Low (isolated) | Very High |
 | Debugging | Medium | Easy | Hard |
 | Infrastructure | [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)/containers | None | Full environment |
-| When | After unit tests | Every [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) | Pre-release |
+| When | After unit tests | Every [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) | Pre-release |
 
 ## Performance Considerations
 
@@ -528,7 +528,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
+- Signed commits: GPG or SSH [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management

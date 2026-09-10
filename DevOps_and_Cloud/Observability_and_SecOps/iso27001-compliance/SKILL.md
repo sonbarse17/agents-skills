@@ -100,7 +100,7 @@ isms_scope:
         - "AWS cloud infrastructure"
         - "SaaS application stack"
         - "Corporate IT systems (Google Workspace, Okta, Jira)"
-        - "Development tools ([GitHub](../../CI_CD/github/SKILL.md), CI/CD pipelines)"
+        - "Development tools ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md), CI/CD pipelines)"
 
     excluded:
       - "Physical data center operations (inherited from AWS)"

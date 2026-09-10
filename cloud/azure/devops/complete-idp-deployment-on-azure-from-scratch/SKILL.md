@@ -114,7 +114,7 @@ Mount the credential via the Azure Key [Vault](../../../../Software_Engineering_
 CSI Driver rather than syncing it into a [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Secret at rest.
 
 **Phase 4 — Golden-path template design.** Author the first golden-path
-template producing a Dockerfile, a CI workflow ([GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions or Azure
+template producing a Dockerfile, a CI workflow ([GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions or Azure
 DevOps Pipelines), catalog registration, and — Azure-specific — a
 scaffolded `ServiceAccount` manifest with the
 `azure.workload.identity/client-id` annotation pre-filled for the
@@ -257,7 +257,7 @@ over one quarter.
    ServiceAccount `backstage-backend` federated to an Entra ID app with
    `Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Secrets User` on the [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) holding the DB credential.
 4. **Phase 4:** A "Node.js service" golden-path template is authored,
-   producing a Dockerfile, a [GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions workflow, and a
+   producing a Dockerfile, a [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions workflow, and a
    `ServiceAccount` manifest annotated
    `azure.workload.identity/client-id: <SERVICE_APP_CLIENT_ID>`.
 5. **Phase 5:** A validation pipeline scaffolds `test-svc-001`, builds,

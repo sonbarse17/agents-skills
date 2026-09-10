@@ -155,7 +155,7 @@ For each finding, consult the bundled `../../../Global_References/sast-bandit_re
 Add Bandit to CI/CD pipelines to enforce security gates:
 
 ```yaml
-# .[github](../../CI_CD/github/SKILL.md)/workflows/security-scan.yml
+# .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/security-scan.yml
 name: Security Scan
 on: [push, pull_request]
 
@@ -205,7 +205,7 @@ Use the bundled script `scripts/bandit_analyzer.py` for enhanced reporting with 
 
 - `bandit_config.yaml` - Production-ready Bandit configuration with optimized test selection, exclusion patterns for common false positives, and severity thresholds. Use as baseline configuration for projects.
 
-- `pre-[commit](../../CI_CD/commit/SKILL.md)-config.yaml` - Pre-[commit](../../CI_CD/commit/SKILL.md) hook configuration for Bandit integration. Prevents commits with HIGH severity findings.
+- `pre-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)-config.yaml` - Pre-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) hook configuration for Bandit integration. Prevents commits with HIGH severity findings.
 
 ## Common Patterns
 
@@ -265,13 +265,13 @@ def load_cache(file_path):
 
 ## Integration Points
 
-- **CI/CD**: Integrate as [GitHub](../../CI_CD/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../CI_CD/jenkins/SKILL.md) pipeline stage, or pre-[commit](../../CI_CD/commit/SKILL.md) hook. Use `scripts/bandit_analyzer.py` for enhanced reporting.
+- **CI/CD**: Integrate as [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md) pipeline stage, or pre-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) hook. Use `scripts/bandit_analyzer.py` for enhanced reporting.
 
 - **Security Tools**: Combine with Semgrep for additional SAST coverage, Safety for dependency scanning, and SonarQube for code quality metrics.
 
-- **SDLC**: Execute during development (pre-[commit](../../CI_CD/commit/SKILL.md)), code review (PR checks), and release gates (pipeline stage). Establish baseline scans for legacy code and enforce strict checks for new code.
+- **SDLC**: Execute during development (pre-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)), code review (PR checks), and release gates (pipeline stage). Establish baseline scans for legacy code and enforce strict checks for new code.
 
-- **Ticketing Integration**: Use `scripts/bandit_analyzer.py` to automatically create Jira/[GitHub](../../CI_CD/github/SKILL.md) issues for HIGH severity findings with remediation guidance.
+- **Ticketing Integration**: Use `scripts/bandit_analyzer.py` to automatically create Jira/[GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) issues for HIGH severity findings with remediation guidance.
 
 ## Troubleshooting
 
@@ -298,25 +298,25 @@ def load_cache(file_path):
 3. Combine with Semgrep for additional coverage (e.g., business logic vulnerabilities)
 4. Update Bandit regularly: `pip install --upgrade bandit`
 
-### Issue: Integration with Pre-[commit](../../CI_CD/commit/SKILL.md) Hooks
+### Issue: Integration with Pre-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) Hooks
 
 **Solution**:
-Use the bundled `assets/pre-[commit](../../CI_CD/commit/SKILL.md)-config.yaml`:
+Use the bundled `assets/pre-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)-config.yaml`:
 
 ```yaml
-- repo: https://[github](../../CI_CD/github/SKILL.md).com/PyCQA/bandit
+- repo: https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/PyCQA/bandit
   rev: '1.7.5'
   hooks:
     - id: bandit
       args: ['-ll', '--recursive', '--configfile', '.bandit.yaml']
 ```
 
-Install hooks: `pre-[commit](../../CI_CD/commit/SKILL.md) install`
+Install hooks: `pre-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) install`
 
 ## References
 
 - [Bandit Documentation](https://bandit.readthedocs.io/)
-- [Bandit [GitHub](../../CI_CD/github/SKILL.md) Repository](https://[github](../../CI_CD/github/SKILL.md).com/PyCQA/bandit)
+- [Bandit [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Repository](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/PyCQA/bandit)
 - [OWASP Top 10](https://owasp.org/www-project-top-ten/)
 - [CWE Database](https://cwe.mitre.org/)
 - [Python Security Best Practices](https://[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md).readthedocs.io/en/stable/library/security_warnings.html)

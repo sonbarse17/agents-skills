@@ -45,7 +45,7 @@ Exact user phrases: "data testing", "dbt testing", "dbt unit test", "data-diff",
 Before activating, verify:
 - Data transformation tool (dbt, SQLMesh, custom)
 - Testing infrastructure (Soda Cloud, Great Expectations, datafold, data-diff)
-- CI/CD platform ([GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../DevOps_and_Cloud/CI_CD/jenkins/SKILL.md))
+- CI/CD platform ([GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../ci-cd/jenkins/other/jenkins/SKILL.md))
 - Environments (dev, staging, prod) and data sources
 - Data contracts or SLAs in place
 - Existing test coverage and failure patterns
@@ -312,9 +312,9 @@ def build_orders_suite():
 
 ## CI/CD Integration
 
-### [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions
+### [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions
 ```yaml
-# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/data-tests.yml
+# .[github](../../ci-cd/github-actions/other/github/SKILL.md)/workflows/data-tests.yml
 name: Data Tests
 on:
   pull_request:
@@ -475,7 +475,7 @@ Data Testing Strategy
 ├── Pipeline testing approach?
 │   ├── SQL transformation tests → dbt tests (singular + generic)
 │   ├── [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) transformation tests → pytest + chispa (PySpark)
-│   └── End-to-end pipeline tests → [Jenkins](../../DevOps_and_Cloud/CI_CD/jenkins/SKILL.md)/[GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions with test datasets
+│   └── End-to-end pipeline tests → [Jenkins](../../ci-cd/jenkins/other/jenkins/SKILL.md)/[GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions with test datasets
 ├── Data quality testing?
 │   ├── Row-level (not null, unique) → dbt generic tests
 │   ├── Statistical (distribution, outliers) → Great Expectations
@@ -549,14 +549,14 @@ WHERE total_amount < 0
 ## Performance Optimization
 
 - **Parallel test execution**: Use pytest-xdist or dbt `--threads` for parallel model testing.
-- **Test tiering**: Run fast (< 1 min) unit tests on every [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md); slow integration tests nightly.
+- **Test tiering**: Run fast (< 1 min) unit tests on every [commit](../../ci-cd/common/git-workflow/commit/SKILL.md); slow integration tests nightly.
 - **Data skipping**: Test only changed models + their downstream dependencies using `dbt test --select +model_name+`.
 - **Result caching**: Cache full-refresh model builds across test runs using ephemeral volumes.
 - **Minimal test data**: Design test cases with minimal row counts (3-10 rows per edge case).
 
 ## Security Considerations
 
-- **Test data de-identification**: Use synthetic or masked data in CI; never [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) production PII to test seeds.
+- **Test data de-identification**: Use synthetic or masked data in CI; never [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) production PII to test seeds.
 - **Credential isolation**: Use separate test DB credentials with read-only access; rotate CI secrets.
 - **Test artifact storage**: Encrypt test result artifacts at rest; purge CI logs after 90 days.
 - **Access control**: Restrict test environment modification to pipeline maintainers; [audit](../../AI_and_Agents/Operations/audit/SKILL.md) test data changes.

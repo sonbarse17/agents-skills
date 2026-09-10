@@ -40,7 +40,7 @@ Exact user phrases: "E2E test", "end-to-end", "Playwright", "Cypress", "Selenium
 Before activating, verify:
 - Application type (SPA, SSR, static site, mobile web)
 - Target browsers (Chromium, Firefox, WebKit)
-- CI platform ([GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../../DevOps_and_Cloud/CI_CD/jenkins/SKILL.md))
+- CI platform ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md))
 - Existing test framework and coverage
 
 ### Output Artifact
@@ -106,7 +106,7 @@ Playwright: worker pool (default: CPU cores). Sharding in CI: `npx playwright te
 
 ### Step 6: CI Integration
 ```yaml
-# [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions example
+# [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions example
 - name: Run E2E tests
   run: npx playwright test
   env:
@@ -261,7 +261,7 @@ async function globalSetup(config: FullConfig) {
 
 ## CI Pipeline Configuration
 
-### [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions — E2E Tests
+### [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions — E2E Tests
 ```yaml
 name: E2E Tests
 on:
@@ -533,7 +533,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
+- Signed commits: GPG or SSH [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management

@@ -354,7 +354,7 @@ podman build --target production -t myapp:prod .
 buildah from scratch
 buildah copy working-container ./app /app
 buildah config --entrypoint '["/app/main"]' working-container
-buildah [commit](../../CI_CD/commit/SKILL.md) working-container myapp:minimal
+buildah [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) working-container myapp:minimal
 ```
 
 ## Common Issues

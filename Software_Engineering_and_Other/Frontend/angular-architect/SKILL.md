@@ -164,5 +164,5 @@ When implementing Angular features, provide:
 4. Test file with comprehensive test cases
 5. Brief explanation of architectural decisions
 
-[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/frontend/angular-architect/)
+[Documentation](https://jeffallan.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/frontend/angular-architect/)
 

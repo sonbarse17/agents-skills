@@ -86,7 +86,7 @@ structure:
 # <Service>: <failure mode> — runbook
 
 **Severity**: SEV<n> if <criteria> · **Owner**: <team> · **Escalation**: <path>
-**Last verified**: YYYY-MM-DD against <env/[commit](../../CI_CD/commit/SKILL.md)> by <who>
+**Last verified**: YYYY-MM-DD against <env/[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)> by <who>
 
 ## Symptom & detection
 What users experience, and the signal that fires (alert name, rule, dashboard

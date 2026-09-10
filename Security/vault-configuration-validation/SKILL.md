@@ -164,7 +164,7 @@ storage backend changes).
    exit $fail
    ```
    ```yaml
-   # .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-policy-lint.yml
+   # .[github](../../ci-cd/github-actions/other/github/SKILL.md)/workflows/[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-policy-lint.yml
    name: [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-policy-lint
    on: [pull_request]
    jobs:

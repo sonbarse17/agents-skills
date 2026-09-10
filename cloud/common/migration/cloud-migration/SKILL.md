@@ -90,7 +90,7 @@ cutover checklist:
 Route a small percentage of real traffic to the new environment before the full switch, and watch
 error rates, latency, and cost against the old environment's baseline. A full cutover based only
 on staging tests finds its problems in production, at full volume, with no comparison baseline.
-For the traffic-shifting mechanics themselves, see `[progressive-delivery](../../../../DevOps_and_Cloud/CI_CD/progressive-delivery/SKILL.md)`.
+For the traffic-shifting mechanics themselves, see `[progressive-delivery](../../../../ci-cd/common/deployment/progressive-delivery/SKILL.md)`.
 
 **Done when:** the new environment has served a canary slice of real production traffic within an
 acceptable error-rate band before full cutover.

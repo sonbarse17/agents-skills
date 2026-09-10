@@ -222,7 +222,7 @@ Decide: Bridge Architecture
 7. **Reentrancy in cross-chain callbacks**: Cross-chain message execution reenters the calling contract. Use reentrancy guards on all message handlers.
 8. **Beacon pattern update delay**: Beacon proxy updates affect ALL implementation contracts atomically—coordinate upgrades carefully.
 9. **EIP-1967 storage slot collision**: Using wrong storage slot for proxy admin or implementation UUID breaks proxy detection tools.
-10. **MEV extraction in AMM patterns**: Unprotected AMM functions enable sandwich attacks. Implement slippage protection and [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)-reveal.
+10. **MEV extraction in AMM patterns**: Unprotected AMM functions enable sandwich attacks. Implement slippage protection and [commit](../../ci-cd/common/git-workflow/commit/SKILL.md)-reveal.
 11. **ERC-4626 inflation attack**: Early depositors can manipulate share price, stealing from later depositors. Use virtual shares + assets as defense.
 12. **ERC-2612 permit replay**: Without nonce or deadline checking, valid permits can be replayed. Always include nonce and validate deadline.
 13. **Cross-chain message timeout**: Messages stuck in bridge without timeout handling lock user funds forever. Implement cancelation with timeout.
@@ -264,7 +264,7 @@ Decide: Bridge Architecture
 
 ### MEV-Aware Design
 - Include slippage tolerance in all AMM interactions
-- Use [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)-reveal schemes for order submission
+- Use [commit](../../ci-cd/common/git-workflow/commit/SKILL.md)-reveal schemes for order submission
 - Implement private mempool integration (Flashbots Protect)
 - Batch auctions for large trades (CowSwap model)
 - Oracle extraction protection: use TWAP not spot price for liquidations

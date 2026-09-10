@@ -45,7 +45,7 @@ You are a senior DevOps engineer with 10+ years of experience. You operate with 
 
 ## When to Use This Skill
 
-- Setting up CI/CD pipelines ([GitHub](../../CI_CD/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../CI_CD/jenkins/SKILL.md))
+- Setting up CI/CD pipelines ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md))
 - Containerizing applications ([Docker](../../Containers_and_Orchestration/docker/SKILL.md), [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Compose)
 - [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) deployments and configurations
 - Infrastructure as code (Terraform, [Pulumi](../../Infrastructure_as_Code/pulumi/SKILL.md))
@@ -71,8 +71,8 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| [GitHub](../../CI_CD/github/SKILL.md) Actions | `../../../Global_References/devops-engineer_github-actions.md` | Setting up CI/CD pipelines, [GitHub](../../CI_CD/github/SKILL.md) workflows |
-| GitLab CI/CD | `../../../Global_References/[gitlab-ci](../../CI_CD/gitlab-ci/SKILL.md).md` | Setting up GitLab pipelines, `.[gitlab-ci](../../CI_CD/gitlab-ci/SKILL.md).yml`, DAG/`needs`, environments, runners |
+| [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions | `../../../Global_References/devops-engineer_github-actions.md` | Setting up CI/CD pipelines, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) workflows |
+| GitLab CI/CD | `../../../Global_References/[gitlab-ci](../../../ci-cd/gitlab-ci/pipelines/gitlab-ci/SKILL.md).md` | Setting up GitLab pipelines, `.[gitlab-ci](../../../ci-cd/gitlab-ci/pipelines/gitlab-ci/SKILL.md).yml`, DAG/`needs`, environments, runners |
 | [Docker](../../Containers_and_Orchestration/docker/SKILL.md) | `../../../Global_References/[docker-patterns](../../Containers_and_Orchestration/[docker](../../Containers_and_Orchestration/docker/SKILL.md)-patterns/SKILL.md).md` | Containerizing applications, writing Dockerfiles |
 | [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) | `../../../Global_References/[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md).md` | K8s deployments, services, ingress, pods |
 | Terraform | `../../../Global_References/terraform-iac.md` | Infrastructure as code, AWS/GCP provisioning |
@@ -89,7 +89,7 @@ Load detailed guidance based on context:
 - Store secrets in secret managers (not env files)
 - Enable container scanning in CI/CD
 - Document rollback procedures
-- Use [GitOps](../../Containers_and_Orchestration/gitops/SKILL.md) for [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) ([ArgoCD](../../Containers_and_Orchestration/argocd/SKILL.md), Flux)
+- Use [GitOps](../../Containers_and_Orchestration/gitops/SKILL.md) for [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) ([ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md), Flux)
 
 ### MUST NOT DO
 - Deploy to production without explicit approval
@@ -103,7 +103,7 @@ Load detailed guidance based on context:
 
 Provide: CI/CD pipeline config, Dockerfile, K8s/Terraform files, deployment verification, rollback procedure
 
-### Minimal [GitHub](../../CI_CD/github/SKILL.md) Actions Example
+### Minimal [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions Example
 
 ```yaml
 name: CI
@@ -116,17 +116,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Build image
-        run: [docker](../../Containers_and_Orchestration/docker/SKILL.md) build -t myapp:${{ [github](../../CI_CD/github/SKILL.md).sha }} .
+        run: [docker](../../Containers_and_Orchestration/docker/SKILL.md) build -t myapp:${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).sha }} .
       - name: Run tests
-        run: [docker](../../Containers_and_Orchestration/docker/SKILL.md) run --rm myapp:${{ [github](../../CI_CD/github/SKILL.md).sha }} pytest
+        run: [docker](../../Containers_and_Orchestration/docker/SKILL.md) run --rm myapp:${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).sha }} pytest
       - name: Scan image
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: myapp:${{ [github](../../CI_CD/github/SKILL.md).sha }}
+          image-ref: myapp:${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).sha }}
       - name: Push to registry
         run: |
-          [docker](../../Containers_and_Orchestration/docker/SKILL.md) tag myapp:${{ [github](../../CI_CD/github/SKILL.md).sha }} ghcr.io/org/myapp:${{ [github](../../CI_CD/github/SKILL.md).sha }}
-          [docker](../../Containers_and_Orchestration/docker/SKILL.md) push ghcr.io/org/myapp:${{ [github](../../CI_CD/github/SKILL.md).sha }}
+          [docker](../../Containers_and_Orchestration/docker/SKILL.md) tag myapp:${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).sha }} ghcr.io/org/myapp:${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).sha }}
+          [docker](../../Containers_and_Orchestration/docker/SKILL.md) push ghcr.io/org/myapp:${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).sha }}
 ```
 
 ### Minimal Dockerfile Example
@@ -162,7 +162,7 @@ Always document the rollback command and verification step in the PR or change t
 
 ## Knowledge Reference
 
-[GitHub](../../CI_CD/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../CI_CD/jenkins/SKILL.md), [CircleCI](../../CI_CD/circleci/SKILL.md), [Docker](../../Containers_and_Orchestration/docker/SKILL.md), [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md), Helm, [ArgoCD](../../Containers_and_Orchestration/argocd/SKILL.md), Flux, Terraform, [Pulumi](../../Infrastructure_as_Code/pulumi/SKILL.md), Crossplane, AWS/GCP/Azure, Prometheus, Grafana, PagerDuty, Backstage, LaunchDarkly, Flagger
+[GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md), [CircleCI](../../../ci-cd/circleci/other/circleci/SKILL.md), [Docker](../../Containers_and_Orchestration/docker/SKILL.md), [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md), Helm, [ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md), Flux, Terraform, [Pulumi](../../Infrastructure_as_Code/pulumi/SKILL.md), Crossplane, AWS/GCP/Azure, Prometheus, Grafana, PagerDuty, Backstage, LaunchDarkly, Flagger
 
-[Documentation](https://jeffallan.[github](../../CI_CD/github/SKILL.md).io/claude-skills/skills/devops/devops-engineer/)
+[Documentation](https://jeffallan.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/devops/devops-engineer/)
 

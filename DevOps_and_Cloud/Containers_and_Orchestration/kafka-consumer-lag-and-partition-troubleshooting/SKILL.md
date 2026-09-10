@@ -188,7 +188,7 @@ the underlying problem.
   avoid unnecessary full rebalances on every restart.
 - Instrument the consuming application with its own processing-latency
   metrics per stage (deserialize, business logic, downstream call,
-  [commit](../../CI_CD/commit/SKILL.md)) — broker-side lag metrics tell you *that* something is slow,
+  [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)) — broker-side lag metrics tell you *that* something is slow,
   application-side metrics tell you *where*.
 - Keep `max.poll.records` and per-record processing time such that a full
   batch reliably finishes well inside `max.poll.interval.ms`, with margin
@@ -216,7 +216,7 @@ the underlying problem.
   calls (add explicit logging/metrics around the poll loop if not
   already present) and either genuinely reduce per-batch processing time
   (smaller `max.poll.records`, offload slow work to an async
-  worker acknowledged before [commit](../../CI_CD/commit/SKILL.md)) or raise `max.poll.interval.ms` to
+  worker acknowledged before [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)) or raise `max.poll.interval.ms` to
   match a legitimately longer processing time — don't just raise the
   interval blindly without confirming the processing time is actually
   bounded.

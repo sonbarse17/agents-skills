@@ -47,7 +47,7 @@ gates Lambda configuration before it ships.
 - Before merging or applying a change to a Knative `Service`/`Revision`
   manifest, especially one touching [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) annotations or the
   `traffic` block.
-- Reviewing a [GitOps](../gitops/SKILL.md) PR ([ArgoCD](../argocd/SKILL.md)/Flux-managed) that modifies Knative
+- Reviewing a [GitOps](../gitops/SKILL.md) PR ([ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md)/Flux-managed) that modifies Knative
   Serving resources.
 - Diagnosing a Knative Service that deployed successfully but behaves
   unexpectedly (never scales down, drops requests on scale-down, or

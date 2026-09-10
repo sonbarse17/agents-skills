@@ -127,7 +127,7 @@ indicator into an operating input.
    - **Genuinely spiky/unpredictable workloads**: leave on-demand, or use
      Spot/preemptible [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) (AWS Spot, Azure Spot VMs, GCP Spot VMs)
      for fault-tolerant, interruptible work instead of committing.
-   - Never [commit](../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) to more than roughly 70-80% of observed baseline usage
+   - Never [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) to more than roughly 70-80% of observed baseline usage
      — commitments covering 100% of a fluctuating baseline routinely end
      up unused when demand dips.
 

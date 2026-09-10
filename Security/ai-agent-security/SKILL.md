@@ -1056,7 +1056,7 @@ async def run_red_team_suite(agent_fn, prompts: list[str] = RED_TEAM_PROMPTS):
 ### Automated Red Team in CI
 
 ```yaml
-# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/agent-red-team.yml
+# .[github](../../ci-cd/github-actions/other/github/SKILL.md)/workflows/agent-red-team.yml
 name: Agent Red Team
 
 on:

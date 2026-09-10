@@ -195,5 +195,5 @@ if __name__ == "__main__":
         print("Within SLO threshold — no action required")
 ```
 
-[Documentation](https://jeffallan.[github](../../CI_CD/github/SKILL.md).io/claude-skills/skills/devops/sre-engineer/)
+[Documentation](https://jeffallan.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/devops/sre-engineer/)
 

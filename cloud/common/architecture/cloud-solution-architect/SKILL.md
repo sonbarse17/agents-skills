@@ -286,7 +286,7 @@ Select relevant patterns from the 44 cloud design patterns based on identified c
 - **Identity & access** — Microsoft Entra ID, managed identity, RBAC
 - **[Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)** — Application Insights, Azure Monitor, Log Analytics
 - **Security** — Network segmentation, encryption at rest/in transit, Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
-- **CI/CD** — [GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions, Azure DevOps Pipelines, infrastructure as code
+- **CI/CD** — [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions, Azure DevOps Pipelines, infrastructure as code
 
 ### Step 6: Validate Against WAF Pillars
 

@@ -163,7 +163,7 @@ jobs:
               --schema "$schema" --mode BACKWARD
           done
       - name: Register Schema
-        if: success() && [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).ref == 'refs/heads/main'
+        if: success() && [github](../../ci-cd/github-actions/other/github/SKILL.md).ref == 'refs/heads/main'
         run: |
           for schema in schemas/**/*.avsc; do
             subject=$(basename "$schema" .avsc)-value
@@ -185,7 +185,7 @@ jobs:
 AsyncAPI pairs with Schema Registry by documenting event-driven API message flow with topic names, publish/subscribe patterns, and payload schemas.
 
 ### Step 9: Buf for Schema Management
-Buf enforces Protobuf lint rules and breaking change detection in CI/CD. `buf breaking --against .git` checks breaking changes against previous [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md). Use for gRPC [microservices](../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) requiring rigorous Protobuf governance.
+Buf enforces Protobuf lint rules and breaking change detection in CI/CD. `buf breaking --against .git` checks breaking changes against previous [commit](../../ci-cd/common/git-workflow/commit/SKILL.md). Use for gRPC [microservices](../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) requiring rigorous Protobuf governance.
 
 ### Step 10: Schema Registry as Source of Truth
 The schema registry is the authoritative source for all streaming schemas. Producers must register schemas before writing data. Consumers fetch schemas from registry to deserialize. No schema should be hardcoded in application code — always reference the registry.
@@ -445,7 +445,7 @@ spark_avro_config:
 ### CI/CD Schema Governance
 
 ```yaml
-# [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Action: validate schema compatibility on PR
+# [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Action: validate schema compatibility on PR
 schema_validation:
   name: "Validate Schema Change"
   steps:

@@ -254,7 +254,7 @@ def send_email(self, to: str, subject: str, template_id: str, variables: dict):
 
 **Go with asynq:**
 ```go
-import "[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/hibiken/asynq"
+import "[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/hibiken/asynq"
 
 type EmailPayload struct {
   To      string            `json:"to"`

@@ -396,7 +396,7 @@ CSS logical properties have negligible performance cost. Flipping layout on loca
 10. Translation interpolation escapes HTML by default to prevent XSS.
 
 ## References
-  - ../../../Global_References/i18n-[build-optimization](../../../DevOps_and_Cloud/CI_CD/build-optimization/SKILL.md).md — i18n Build Optimization
+  - ../../../Global_References/i18n-[build-optimization](../../../ci-cd/common/build/build-optimization/SKILL.md).md — i18n Build Optimization
   - ../../../Global_References/i18n-implementation.md — i18n Implementation
   - ../../../Global_References/i18n-libraries.md — i18n Libraries
   - ../../../Global_References/i18n-testing.md — i18n Testing

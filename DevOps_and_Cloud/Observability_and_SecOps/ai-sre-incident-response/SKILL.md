@@ -184,7 +184,7 @@ RESPONDER: On-call AI engineer + ML lead
 4. If recent model change:
      [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) rollout undo deployment/llm-inference -n ai
 5. If recent prompt change:
-     git revert <[commit](../../CI_CD/commit/SKILL.md)> && git push  # triggers [GitOps](../../Containers_and_Orchestration/gitops/SKILL.md) redeploy
+     git revert <[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)> && git push  # triggers [GitOps](../../Containers_and_Orchestration/gitops/SKILL.md) redeploy
 6. Increase trace sampling to 100% for affected route:
      [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) set env deployment/[llm-gateway](../../../AI_and_Agents/Models_and_FineTuning/llm-gateway/SKILL.md) TRACE_SAMPLE_RATE=1.0
 7. Run offline eval suite against current production:

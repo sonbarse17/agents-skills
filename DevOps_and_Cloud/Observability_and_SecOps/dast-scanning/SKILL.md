@@ -171,7 +171,7 @@ jobs:
 
 ## CI/CD Integration
 
-### [GitHub](../../CI_CD/github/SKILL.md) Actions
+### [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions
 
 ```yaml
 name: DAST Scan

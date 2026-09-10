@@ -365,5 +365,5 @@ pytest
 6. **Google-style docstrings** - Consistent, readable documentation
 7. **Document public APIs** - Every public function needs a docstring
 8. **Keep docs updated** - Treat documentation as code
-9. **Automate in CI** - Run linters on every [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)
+9. **Automate in CI** - Run linters on every [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)
 10. **Target [Python](../python/SKILL.md) 3.10+** - For new projects, [Python](../python/SKILL.md) 3.12+ is recommended for modern language features

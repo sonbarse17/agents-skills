@@ -859,7 +859,7 @@ groups:
 
 ### Sloth SLO Spec (Alternative)
 
-If you use [Sloth](https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/slok/sloth) to manage SLOs declaratively:
+If you use [Sloth](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/slok/sloth) to manage SLOs declaratively:
 
 ```yaml
 # agent-slo-sloth.yaml

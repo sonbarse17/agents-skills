@@ -341,7 +341,7 @@ emergency_change_process:
 ## CI/CD Change Tracking Automation
 
 ```yaml
-# [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions - Automated change tracking
+# [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions - Automated change tracking
 name: Change Management
 on:
   pull_request:
@@ -351,7 +351,7 @@ on:
 
 jobs:
   classify-change:
-    if: [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).event_name == 'pull_request'
+    if: [github](../../../ci-cd/github-actions/other/github/SKILL.md).event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -359,7 +359,7 @@ jobs:
       - name: Classify change risk
         id: classify
         run: |
-          FILES_CHANGED=$(gh pr diff ${{ [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).event.pull_request.number }} --name-only)
+          FILES_CHANGED=$(gh pr diff ${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).event.pull_request.number }} --name-only)
 
           # High risk indicators
           if echo "$FILES_CHANGED" | grep -qE 'terraform/|infrastructure/|migrations/|auth/|security/'; then
@@ -375,7 +375,7 @@ jobs:
 
       - name: Add risk label
         run: |
-          gh pr edit ${{ [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).event.pull_request.number }} \
+          gh pr edit ${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).event.pull_request.number }} \
             --add-label "risk:${{ steps.classify.outputs.risk }}"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -383,7 +383,7 @@ jobs:
       - name: Enforce approvals by risk
         if: steps.classify.outputs.risk == 'high'
         run: |
-          APPROVALS=$(gh pr view ${{ [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).event.pull_request.number }} \
+          APPROVALS=$(gh pr view ${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).event.pull_request.number }} \
             --json reviews --jq '[.reviews[] | select(.state=="APPROVED")] | length')
           if [ "$APPROVALS" -lt 2 ]; then
             echo "::error::High-risk changes require at least 2 approvals"
@@ -393,23 +393,23 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   record-deployment:
-    if: [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).event_name == 'push' && [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).ref == 'refs/heads/main'
+    if: [github](../../../ci-cd/github-actions/other/github/SKILL.md).event_name == 'push' && [github](../../../ci-cd/github-actions/other/github/SKILL.md).ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: Record deployment
         run: |
-          CHANGE_ID="CR-$(date +%Y)-$(printf '%04d' ${{ [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).run_number }})"
+          CHANGE_ID="CR-$(date +%Y)-$(printf '%04d' ${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).run_number }})"
           echo "Change ID: $CHANGE_ID"
           echo "Deployed at: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-          echo "[Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md): ${{ [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).sha }}"
-          echo "Author: ${{ [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).actor }}"
+          echo "[Commit](../../../ci-cd/common/git-workflow/commit/SKILL.md): ${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).sha }}"
+          echo "Author: ${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).actor }}"
 
           cat > /tmp/deployment-record.json <<EOF
           {
             "change_id": "$CHANGE_ID",
             "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
-            "[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)": "${{ [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).sha }}",
-            "author": "${{ [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).actor }}",
+            "[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)": "${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).sha }}",
+            "author": "${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).actor }}",
             "environment": "production",
             "status": "deployed"
           }

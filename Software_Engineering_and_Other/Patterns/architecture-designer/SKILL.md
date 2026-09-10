@@ -133,5 +133,5 @@ Use [PostgreSQL](../../Backend/postgresql/SKILL.md) as the primary datastore for
 Consistency and query flexibility are prioritised over unlimited horizontal write scalability.
 ```
 
-[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/api-architecture/architecture-designer/)
+[Documentation](https://jeffallan.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/api-architecture/architecture-designer/)
 

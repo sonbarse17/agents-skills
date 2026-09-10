@@ -396,5 +396,5 @@ await scheduler.DeleteAsync(WaitUntil.Completed);
 
 ## Source Reference
 
-- [GitHub: Azure.ResourceManager.DurableTask](https://[github](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/durabletask/Azure.ResourceManager.DurableTask)
+- [GitHub: Azure.ResourceManager.DurableTask](https://[github](../../../../../ci-cd/github-actions/other/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/durabletask/Azure.ResourceManager.DurableTask)
 - [NuGet: Azure.ResourceManager.DurableTask](https://www.nuget.org/packages/Azure.ResourceManager.DurableTask)

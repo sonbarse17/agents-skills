@@ -128,7 +128,7 @@ syntax = "proto3";
 
 package acme.users.v1;
 
-option go_package = "[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/acme/gen/go/users/v1;usersv1";
+option go_package = "[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/acme/gen/go/users/v1;usersv1";
 option java_package = "com.acme.users.v1";
 ```
 
@@ -541,7 +541,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
+- Signed commits: GPG or SSH [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management

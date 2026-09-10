@@ -86,7 +86,7 @@ Provider tests fetch the latest consumer contracts from the Pact Broker and veri
 The Pact Broker stores contracts, verification results, and matrices of compatible versions. It can be self-hosted via [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose or used as a SaaS product (PactFlow). The Broker exposes a web UI showing the network diagram of all service dependencies. Webhooks can be configured to notify consumers when a provider publishes a new verification result or whena contract changes.
 
 ### Versioning and Compatibility
-Contracts are versioned by the consumer's application version (Git [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) SHA). Tags identify which version is deployed to each environment (dev, staging, production). The can-i-deploy tool checks the Pact Broker for compatibility before any deployment. The Broker maintains a matrix of compatible consumer and provider versions.
+Contracts are versioned by the consumer's application version (Git [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) SHA). Tags identify which version is deployed to each environment (dev, staging, production). The can-i-deploy tool checks the Pact Broker for compatibility before any deployment. The Broker maintains a matrix of compatible consumer and provider versions.
 
 ### Breaking Change Detection
 When a provider change breaks a consumer contract, the Broker shows exactly which consumer is affected, which interaction failed, and the exact response diff. The developer fixes the issue by making the change backward compatible (add new endpoint instead of modifying existing, add optional fields) or coordinating a multi-service deployment.
@@ -342,8 +342,8 @@ jobs:
       - name: Pact Publish
         run: |
           npx pact-broker publish ./pacts \
-            --consumer-app-version ${{ [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).sha }} \
-            --tag ${{ [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).head_ref || 'main' }} \
+            --consumer-app-version ${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).sha }} \
+            --tag ${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).head_ref || 'main' }} \
             --broker-base-url ${{ secrets.PACT_BROKER_URL }} \
             --broker-token ${{ secrets.PACT_BROKER_TOKEN }}
 
@@ -366,7 +366,7 @@ jobs:
         run: |
           npx pact-broker can-i-deploy \
             --pacticipant payment-service \
-            --version ${{ [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).sha }} \
+            --version ${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).sha }} \
             --to-environment production \
             --broker-base-url ${{ secrets.PACT_BROKER_URL }} \
             --broker-token ${{ secrets.PACT_BROKER_TOKEN }}
@@ -380,8 +380,8 @@ jobs:
         run: |
           npx pact-broker publish-provider-contracts \
             --provider payment-service \
-            --provider-app-version ${{ [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).sha }} \
-            --branch ${{ [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).head_ref || 'main' }} \
+            --provider-app-version ${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).sha }} \
+            --branch ${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).head_ref || 'main' }} \
             --broker-base-url ${{ secrets.PACT_BROKER_URL }} \
             --broker-token ${{ secrets.PACT_BROKER_TOKEN }}
 ```
@@ -555,7 +555,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
+- Signed commits: GPG or SSH [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
@@ -583,7 +583,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 | Protocol | HTTP/REST (most common) | Async/Message queue (event-driven) | Service communication pattern |
 | Tool choice | Pact (mature, broad support) | Spring Cloud Contract (JVM-focused) | Tech stack, team familiarity |
 | Contract location | Pact Broker (shared, versioned) | Git repository (code-reviewed) | CI integration, cross-team visibility |
-| Verification timing | CI pipeline (every [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)) | Scheduled (nightly) | Change frequency, team coordination |
+| Verification timing | CI pipeline (every [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)) | Scheduled (nightly) | Change frequency, team coordination |
 
 ### Provider Verification Scope
 - All consumer contracts → Full verification, safe but slower

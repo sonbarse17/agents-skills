@@ -381,7 +381,7 @@ resource "oci_resourcemanager_stack" "infra" {
   description    = "Base infrastructure deployment"
   config_source {
     config_source_type = "GIT_CONFIG_SOURCE"
-    configuration_source_provider_id = oci_resourcemanager_configuration_source_provider.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).id
+    configuration_source_provider_id = oci_resourcemanager_configuration_source_provider.[github](../../../ci-cd/github-actions/other/github/SKILL.md).id
     branch_name = "main"
   }
 }
@@ -725,7 +725,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
+- Signed commits: GPG or SSH [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management

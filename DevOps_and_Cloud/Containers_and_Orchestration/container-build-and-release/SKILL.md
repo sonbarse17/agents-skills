@@ -121,7 +121,7 @@ release pipeline with scanning and provenance.
    ```
 
 6. **Tag deliberately**: give every built image an immutable, traceable
-   tag ([commit](../../CI_CD/commit/SKILL.md) SHA or semantic version) in addition to any mutable
+   tag ([commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) SHA or semantic version) in addition to any mutable
    convenience tag:
    ```bash
    IMAGE=ghcr.io/example/payments-api
@@ -220,7 +220,7 @@ release pipeline with scanning and provenance.
 ## Worked example
 
 **Scenario:** Build, scan, and publish a release image for `payments-api`
-version `1.4.2` from a [GitHub](../../CI_CD/github/SKILL.md) Actions pipeline, targeting both amd64 and
+version `1.4.2` from a [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions pipeline, targeting both amd64 and
 arm64, with a failing gate on critical vulnerabilities.
 
 ```yaml
@@ -243,7 +243,7 @@ jobs:
         uses: [docker](../docker/SKILL.md)/login-action@v3
         with:
           registry: ghcr.io
-          username: ${{ [github](../../CI_CD/github/SKILL.md).actor }}
+          username: ${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Derive version
@@ -269,7 +269,7 @@ jobs:
           push: true
           tags: |
             ghcr.io/example/payments-api:${{ steps.ver.outputs.version }}
-            ghcr.io/example/payments-api:${{ [github](../../CI_CD/github/SKILL.md).sha }}
+            ghcr.io/example/payments-api:${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).sha }}
 ```
 A tag push of `v1.4.2` produces
 `ghcr.io/example/payments-api:1.4.2` (and a SHA-tagged twin for exact

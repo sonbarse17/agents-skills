@@ -48,7 +48,7 @@ Exact user phrases: "Kubernetes", "K8s", "kubeadm", "cluster", "[kubectl](../kub
 - Number of nodes + instance types
 - Workload types (stateless, stateful, batch, GPU)
 - Compliance requirements (PCI, HIPAA, SOC2, FedRAMP)
-- Existing tooling (Helm, [ArgoCD](../argocd/SKILL.md), Prometheus, cert-manager)
+- Existing tooling (Helm, [ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md), Prometheus, cert-manager)
 
 ### Output Artifact
 Cluster architecture document with control plane design, network topology, security model, upgrade plan, backup/DR strategy, and operational [runbooks](../../Observability_and_SecOps/runbooks/SKILL.md).

@@ -36,7 +36,7 @@ Your `implementation_plan.md` MUST adhere strictly to this template:
 State the exact objective. 1-2 sentences maximum. No fluff.
 
 ### II. OPEN QUESTIONS
-Expose all ambiguities and missing context immediately using [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Alerts:
+Expose all ambiguities and missing context immediately using [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Alerts:
 > [!WARNING]
 > [Question or missing context here]
 

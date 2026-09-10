@@ -88,7 +88,7 @@ justified only when the operational logic is specific to your organization in a 
 operator captures.
 
 - **Evaluate maturity honestly**: CNCF graduation status, real production adoption, how the project
-  handles CVEs and version support — not just [GitHub](../../CI_CD/github/SKILL.md) stars.
+  handles CVEs and version support — not just [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) stars.
 - **A thin custom operator that wraps an existing one's CRD** to add your org's specific policy
   layer is often the right middle ground, rather than reimplementing the whole reconciliation logic.
 - **Sometimes the answer is neither**: a scheduled Job or a CI pipeline step handles genuinely

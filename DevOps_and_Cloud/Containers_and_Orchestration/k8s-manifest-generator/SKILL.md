@@ -79,7 +79,7 @@ After creating manifests:
 1. Store in Git repository
 2. Set up CI/CD pipeline for deployment
 3. Consider using Helm or [Kustomize](../kustomize/SKILL.md) for templating
-4. Implement [GitOps](../gitops/SKILL.md) with [ArgoCD](../argocd/SKILL.md) or Flux
+4. Implement [GitOps](../gitops/SKILL.md) with [ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md) or Flux
 5. Add [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) and [observability](../../Observability_and_SecOps/observability/SKILL.md)
 
 ## Related Skills

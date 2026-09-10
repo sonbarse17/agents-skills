@@ -59,7 +59,7 @@ Language-agnostic, integrates with build tools via plugins. Plugins: `cyclonedx-
 Generate SBOM after successful build, before artifact push. Store alongside the artifact in the registry. Propagate through environments for deployment-time policy checks.
 
 ```yaml
-# [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions example
+# [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions example
 jobs:
   build:
     steps:
@@ -75,7 +75,7 @@ Policy gates: block promotion from dev→staging if CRITICAL vulns, block stagin
 ### Data Sources
 - OSV.dev: primary source. Fastest update cycle (usually within hours of CVE publication). Google-maintained. API: `https://api.osv.dev/v1/query`. Supports all major ecosystems.
 - NVD: comprehensive, slower updates (days to weeks). NIST-maintained. API: `https://services.nvd.nist.gov/rest/json/cves/2.0`. References CWE classifications and CVSS 3.1 scores.
-- GHSA: [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Advisory Database. Best [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) integration. Access via [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) API. Often includes proof-of-concept references.
+- GHSA: [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Advisory Database. Best [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) integration. Access via [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) API. Often includes proof-of-concept references.
 - Snyk: commercial vulnerability feed with proprietary research. Faster coverage for zero-days. Requires license.
 
 ### Severity Gating
@@ -123,7 +123,7 @@ cosign attest --predicate bom.json --type cyclonedx $IMAGE
 cosign verify-attestation --type cyclonedx $IMAGE
 ```
 
-Stores attestation in OCI registry as an attached artifact. Uses keyless signing (OIDC identity from [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/GitLab) or key-pair signing. No key distributed management overhead with keyless mode.
+Stores attestation in OCI registry as an attached artifact. Uses keyless signing (OIDC identity from [GitHub](../../ci-cd/github-actions/other/github/SKILL.md)/GitLab) or key-pair signing. No key distributed management overhead with keyless mode.
 
 ### In-Toto
 Attestation framework for multi-step build pipelines. Each step produces a signed link (command, materials, products). Final layout verification ensures every step was performed by the right actor with the right inputs/outputs. Use with Sigstore for the signing layer.
@@ -198,7 +198,7 @@ CycloneDX default — de facto standard, rich dependency tree, broad tooling, OW
 Syft for container images and filesystems — fastest, broadest ecosystem support. CycloneDX CLI for build-time generation with resolved dependency graph. Trivy when unified SBOM + vulnerability scanning is preferred.
 
 ### Step 3: Vulnerability Correlation
-Source: OSV.dev primary (fastest updates), NVD comprehensive (slower, CVSS 3.1), GHSA ([GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) ecosystem). Correlate by package name + version range. Apply severity gates per environment.
+Source: OSV.dev primary (fastest updates), NVD comprehensive (slower, CVSS 3.1), GHSA ([GitHub](../../ci-cd/github-actions/other/github/SKILL.md) ecosystem). Correlate by package name + version range. Apply severity gates per environment.
 
 ### Step 4: License Compliance
 Every dependency checked against allowlist. Block copyleft and unknown licenses. Flag weak-copyleft for legal review. Store policy in version-controlled `.license-policy.yml`. Enforce at PR time.
@@ -272,7 +272,7 @@ if __name__ == "__main__":
     sys.exit(0 if validate_sbom(sys.argv[1]) else 1)
 ```
 
-### [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions — Full SBOM Pipeline
+### [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions — Full SBOM Pipeline
 ```yaml
 name: SBOM Pipeline
 on:
@@ -306,7 +306,7 @@ jobs:
           cosign attest --predicate bom.cdx.json \
             --type cyclonedx \
             --keyless \
-            registry.example.com/app:${{ [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).sha }}
+            registry.example.com/app:${{ [github](../../ci-cd/github-actions/other/github/SKILL.md).sha }}
 ```
 
 ## SBOM [Policy-as-Code](../policy-as-code/SKILL.md)
@@ -337,7 +337,7 @@ license_violations[component] {
 
 ### Policy Enforcement in CI
 ```yaml
-# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/sbom-policy.yml
+# .[github](../../ci-cd/github-actions/other/github/SKILL.md)/workflows/sbom-policy.yml
 jobs:
   policy:
     runs-on: ubuntu-latest
@@ -457,7 +457,7 @@ Build-time SBOM includes dev dependencies not present in production. Generate se
 | Speed | Fast (1-3s) | Medium (5-15s) | Fast (1-5s) | Slow (scan) |
 | Vulnerability scan | Via Grype | Built-in | No | Built-in |
 | License detection | Via Syft metadata | Yes | Yes | Yes |
-| CI integration | [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Action, CLI | [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Action, CLI | Maven/Gradle/npm | Native CI |
+| CI integration | [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Action, CLI | [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Action, CLI | Maven/Gradle/npm | Native CI |
 | Attestation | Via Cosign | Via Cosign | No | No |
 | Cost | Free (Apache 2.0) | Free (Apache 2.0) | Free | Commercial |
 | Best for | Primary SBOM tool | Unified scanning | Build-time accuracy | Enterprise compliance |
@@ -590,7 +590,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
+- Signed commits: GPG or SSH [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management

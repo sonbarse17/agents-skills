@@ -152,7 +152,7 @@ For creating cryptographically signed SBOM attestations:
    brew install cosign
 
    # Linux
-   wget https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/sigstore/cosign/releases/latest/download/cosign-linux-amd64
+   wget https://[github](../../ci-cd/github-actions/other/github/SKILL.md).com/sigstore/cosign/releases/latest/download/cosign-linux-amd64
    chmod +x cosign-linux-amd64
    mv cosign-linux-amd64 /usr/local/bin/cosign
    ```
@@ -182,7 +182,7 @@ Syft supports multiple SBOM formats for different use cases:
 | `spdx-tag-value` | SPDX text format | SPDX 2.3 |
 | `syft-json` | Syft native format (most detail) | Syft-specific |
 | `syft-text` | Human-readable console output | Syft-specific |
-| `[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-json` | [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) dependency submission | [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-specific |
+| `[github](../../ci-cd/github-actions/other/github/SKILL.md)-json` | [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) dependency submission | [GitHub](../../ci-cd/github-actions/other/github/SKILL.md)-specific |
 | `template` | Custom Go template output | User-defined |
 
 Specify with `-o` flag:
@@ -320,12 +320,12 @@ cat full-sbom.json | jq '.artifacts | group_by(.type) | map({type: .[0].type, co
 
 ### CI/CD Integration
 
-**[GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions:**
+**[GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions:**
 ```yaml
 - name: Generate SBOM with Syft
   uses: anchore/sbom-action@v0
   with:
-    image: ${{ env.IMAGE_NAME }}:${{ [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).sha }}
+    image: ${{ env.IMAGE_NAME }}:${{ [github](../../ci-cd/github-actions/other/github/SKILL.md).sha }}
     format: cyclonedx-json
     output-file: sbom.json
 
@@ -347,7 +347,7 @@ sbom-generation:
       cyclonedx: sbom.json
 ```
 
-**[Jenkins](../../DevOps_and_Cloud/CI_CD/jenkins/SKILL.md):**
+**[Jenkins](../../ci-cd/jenkins/other/jenkins/SKILL.md):**
 ```groovy
 stage('Generate SBOM') {
   steps {
@@ -503,7 +503,7 @@ Work through each step systematically. Check off completed items.
 
 ## References
 
-- [Syft [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Repository](https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/anchore/syft)
+- [Syft [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Repository](https://[github](../../ci-cd/github-actions/other/github/SKILL.md).com/anchore/syft)
 - [Anchore SBOM Documentation](https://anchore.com/sbom/)
 - [CycloneDX Specification](https://cyclonedx.org/)
 - [SPDX Specification](https://spdx.dev/)

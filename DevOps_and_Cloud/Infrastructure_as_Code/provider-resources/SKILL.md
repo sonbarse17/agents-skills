@@ -392,7 +392,7 @@ func isNotFound(err error) bool {
 
 Many APIs return from Create/Delete before the resource is usable/gone. Use
 `retry.StateChangeConf` (from
-`[github](../../CI_CD/github/SKILL.md).com/hashicorp/terraform-plugin-sdk/v2/helper/retry` — usable from
+`[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/hashicorp/terraform-plugin-sdk/v2/helper/retry` — usable from
 Framework providers), with a status function built on the finder and
 timeouts in named constants:
 

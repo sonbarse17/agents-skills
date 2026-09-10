@@ -28,7 +28,7 @@ Install it in projects where a Claude Code agent:
 - Reviews, comments on, or merges pull requests (`gh pr review`, `gh pr merge`)
 - Triages issues (`gh issue comment`, `gh issue close`)
 - Publishes releases (`gh release create`)
-- Modifies CI configuration (`.[github](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/`, `.[gitlab-ci](../../../../DevOps_and_Cloud/CI_CD/gitlab-ci/SKILL.md).yml`)
+- Modifies CI configuration (`.[github](../../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/`, `.[gitlab-ci](../../../../ci-cd/gitlab-ci/pipelines/gitlab-ci/SKILL.md).yml`)
 - Pushes to protected branches (`main`, `master`, `release`, `production`)
 - Posts to external notification surfaces (Slack webhooks, Discord)
 
@@ -64,7 +64,7 @@ echo "./review-governance.key" >> .gitignore
 echo "./.review-approved" >> .gitignore
 ```
 
-The first invocation of `protect-mcp sign` will create the key. [Commit](../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) the
+The first invocation of `protect-mcp sign` will create the key. [Commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) the
 public key from the first receipt so auditors can verify later.
 
 ## Per-session workflow

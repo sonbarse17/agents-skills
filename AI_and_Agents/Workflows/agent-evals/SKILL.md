@@ -129,7 +129,7 @@ from agent import Agent
 
 def test_multi_step_research():
     agent = Agent(model="claude-sonnet-4-6")
-    result = agent.run("Find the top 3 [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) web frameworks by [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) stars and compare them")
+    result = agent.run("Find the top 3 [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) web frameworks by [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) stars and compare them")
 
     # Check the agent used search
     tool_names = [step.tool for step in result.steps if step.tool]
@@ -277,10 +277,10 @@ npx promptfoo view  # interactive comparison UI
 
 ## CI/CD Integration
 
-### [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions
+### [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions
 
 ```yaml
-# .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/agent-evals.yml
+# .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/agent-evals.yml
 name: Agent Evals
 on:
   pull_request:
@@ -304,7 +304,7 @@ jobs:
         run: pytest evals/test_unit.py evals/test_safety.py -v --tb=short
 
       - name: Run regression evals
-        if: [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).event_name == 'pull_request'
+        if: [github](../../../ci-cd/github-actions/other/github/SKILL.md).event_name == 'pull_request'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
@@ -319,15 +319,15 @@ jobs:
           path: evals/results/
 
       - name: Comment PR with scores
-        if: [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).event_name == 'pull_request' && always()
-        uses: actions/[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-script@v7
+        if: [github](../../../ci-cd/github-actions/other/github/SKILL.md).event_name == 'pull_request' && always()
+        uses: actions/[github](../../../ci-cd/github-actions/other/github/SKILL.md)-script@v7
         with:
           script: |
             const fs = require('fs');
             const results = fs.readFileSync('evals/results/junit.xml', 'utf8');
             const passed = (results.match(/tests="(\d+)"/)||[])[1];
             const failed = (results.match(/failures="(\d+)"/)||[])[1];
-            [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).rest.issues.createComment({
+            [github](../../../ci-cd/github-actions/other/github/SKILL.md).rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner, repo: context.repo.repo,
               body: `## Agent Eval Results\n✅ Passed: ${passed} | ❌ Failed: ${failed}`

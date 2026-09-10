@@ -346,7 +346,7 @@ metadata:
   name: hybrid-apps
 spec:
   source:
-    repoURL: https://[github](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/org/hybrid-[gitops](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)
+    repoURL: https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/org/hybrid-[gitops](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)
     path: environments/production
   destination:
     server: https://[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).default.svc
@@ -685,7 +685,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH [commit](../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
+- Signed commits: GPG or SSH [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management

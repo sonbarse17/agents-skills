@@ -20,7 +20,7 @@ Focus on writing robust [Kubernetes](../kubernetes/SKILL.md) Operators and advan
 ```go
 import (
     "context"
-    "[github](../../CI_CD/github/SKILL.md).com/go-logr/logr"
+    "[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/go-logr/logr"
     ctrl "sigs.k8s.io/controller-runtime"
     "sigs.k8s.io/controller-runtime/pkg/client"
 )

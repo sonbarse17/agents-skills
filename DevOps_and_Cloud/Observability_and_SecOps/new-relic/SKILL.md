@@ -179,7 +179,7 @@ java -javaagent:/path/to/newrelic.jar -jar myapp.jar
 package main
 
 import (
-    "[github](../../CI_CD/github/SKILL.md).com/newrelic/go-agent/v3/newrelic"
+    "[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/newrelic/go-agent/v3/newrelic"
     "net/http"
 )
 

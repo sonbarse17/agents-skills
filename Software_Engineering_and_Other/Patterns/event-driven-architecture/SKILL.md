@@ -31,7 +31,7 @@ flowchart TD
 package main
 
 import (
-    "[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/confluentinc/confluent-kafka-go/kafka"
+    "[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/confluentinc/confluent-kafka-go/kafka"
     "log"
 )
 

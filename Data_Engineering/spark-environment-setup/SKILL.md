@@ -103,7 +103,7 @@ component the image already pins. Details on both paths:
 
 One more preflight: official DGX Spark playbooks have shipped
 broken before. Check recent issues on
-`[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/NVIDIA/dgx-spark-playbooks` (and the other
+`[github](../../ci-cd/github-actions/other/github/SKILL.md).com/NVIDIA/dgx-spark-playbooks` (and the other
 resources in `../../../Global_References/stack-matrix.md`) before trusting a
 recipe verbatim for a long run.
 

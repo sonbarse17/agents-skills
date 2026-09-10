@@ -105,7 +105,7 @@ live.
 - **Load-test at the target peak before it arrives** — see `[load-testing](../load-testing/SKILL.md)` — a plan that's
   never been load-tested is a guess.
 - **Have a degrade-gracefully plan for beyond-forecast load** — feature flags to shed
-  non-critical work, queueing instead of failing — see `[feature-flags](../../CI_CD/feature-flags/SKILL.md)`.
+  non-critical work, queueing instead of failing — see `[feature-flags](../../../ci-cd/common/other/feature-flags/SKILL.md)`.
 
 **Done when:** every known upcoming peak event has a [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) plan sized to its expected
 multiple and validated by a load test.

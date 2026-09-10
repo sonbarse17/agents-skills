@@ -163,5 +163,5 @@ When implementing [PostgreSQL](../../Backend/postgresql/SKILL.md) solutions, pro
 
 [PostgreSQL](../../Backend/postgresql/SKILL.md) 12-16, EXPLAIN ANALYZE, B-tree/GIN/GiST/BRIN indexes, JSONB operators, streaming replication, logical replication, VACUUM/ANALYZE, pg_stat views, PostGIS, pgvector, pg_trgm, WAL archiving, PITR
 
-[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/infrastructure/postgres-pro/)
+[Documentation](https://jeffallan.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/infrastructure/postgres-pro/)
 

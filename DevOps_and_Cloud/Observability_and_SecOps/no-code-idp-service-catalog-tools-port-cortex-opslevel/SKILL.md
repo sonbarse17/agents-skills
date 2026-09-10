@@ -66,7 +66,7 @@ the catalog and scorecards correctly in whichever product is chosen.
   OpsLevel (workspace admin access, an API token for `opslevel-cli` or the
   Terraform provider).
 - For Cortex: the `cortex.yaml` descriptor lives in each service's repo and
-  is registered via the Cortex [GitHub](../../CI_CD/github/SKILL.md)/GitLab integration or a CI step
+  is registered via the Cortex [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)/GitLab integration or a CI step
   calling the Cortex CLI (`cortex catalog apply`, or later CLI names as
   the CLI is renamed) or the ingestion API.
 - For OpsLevel: `opslevel-cli` (or the `opslevel` Terraform provider,
@@ -74,11 +74,11 @@ the catalog and scorecards correctly in whichever product is chosen.
   (`OPSLEVEL_API_TOKEN`) scoped to catalog and rubric management.
 - For Port: an org-level API client (`PORT_CLIENT_ID` /
   `PORT_CLIENT_SECRET`) with permission to create Blueprints and
-  Self-service Actions; a webhook endpoint, [GitHub](../../CI_CD/github/SKILL.md) Actions workflow, or
+  Self-service Actions; a webhook endpoint, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions workflow, or
   Kafka topic to back each self-service action's execution.
 - Existing source-of-truth data (a repo list, an ownership spreadsheet, a
   CMDB export) to seed the initial catalog import — none of these tools
-  discover services from nothing without at least a [GitHub](../../CI_CD/github/SKILL.md)/GitLab org
+  discover services from nothing without at least a [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)/GitLab org
   integration or a bulk import file.
 
 ## Step-by-step guidance
@@ -126,7 +126,7 @@ the catalog and scorecards correctly in whichever product is chosen.
    existing repo/ownership data.
 
 3. **Add a Port self-service action for a provisioning workflow**, backed
-   by a [GitHub](../../CI_CD/github/SKILL.md) Actions workflow dispatch:
+   by a [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions workflow dispatch:
    ```json
    {
      "identifier": "scaffold_new_service",
@@ -143,7 +143,7 @@ the catalog and scorecards correctly in whichever product is chosen.
        }
      },
      "invocationMethod": {
-       "type": "[GITHUB](../../CI_CD/github/SKILL.md)",
+       "type": "[GITHUB](../../../ci-cd/github-actions/other/github/SKILL.md)",
        "org": "<GITHUB_ORG>",
        "repo": "platform-scaffolder",
        "workflow": "scaffold.yml",
@@ -168,7 +168,7 @@ the catalog and scorecards correctly in whichever product is chosen.
        - type: group
          name: checkout-team
      x-cortex-git:
-       [github](../../CI_CD/github/SKILL.md):
+       [github](../../../ci-cd/github-actions/other/github/SKILL.md):
          repository: org/checkout-api
      x-cortex-domain-parents:
        - tag: checkout-domain
@@ -305,7 +305,7 @@ the catalog and scorecards correctly in whichever product is chosen.
   [service-scorecards-and-maturity-model-design](../[service-scorecards-and-maturity-model-design](../../../Product_and_Business/service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md).
 
 - **Symptom:** Two teams register the same service twice — once via a
-  Cortex [GitHub](../../CI_CD/github/SKILL.md) integration auto-discovery and once via a manually
+  Cortex [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) integration auto-discovery and once via a manually
   committed `cortex.yaml` with a different `x-cortex-tag` — producing
   duplicate catalog entries.
   **Fix:** Pick one registration mechanism per entity type org-wide
@@ -313,13 +313,13 @@ the catalog and scorecards correctly in whichever product is chosen.
   as the platform team's convention, the same discipline required for
   Backstage `catalog-info.yaml` discovery.
 
-- **Symptom:** A Port self-service action's [GitHub](../../CI_CD/github/SKILL.md) Actions workflow fails
+- **Symptom:** A Port self-service action's [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions workflow fails
   silently from the developer's point of view — Port shows "success"
   because the workflow was *triggered*, not because it *completed*.
   **Fix:** Set `reportWorkflowStatus: true` (Port) or the equivalent
   status-callback option, and design the backing workflow to post an
   explicit failure state back to the tool rather than only relying on
-  [GitHub](../../CI_CD/github/SKILL.md)'s own run status, which the catalog tool doesn't poll by default
+  [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)'s own run status, which the catalog tool doesn't poll by default
   in every configuration.
 
 ## Worked example
@@ -346,7 +346,7 @@ info:
     - type: group
       name: checkout-team
   x-cortex-git:
-    [github](../../CI_CD/github/SKILL.md):
+    [github](../../../ci-cd/github-actions/other/github/SKILL.md):
       repository: org/checkout-api
   x-cortex-custom-metadata:
     language: go

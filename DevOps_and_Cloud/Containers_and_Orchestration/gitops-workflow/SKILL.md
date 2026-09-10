@@ -116,11 +116,11 @@ Git.
    kind: Application
    metadata:
      name: payments-api-prod
-     namespace: [argocd](../argocd/SKILL.md)
+     namespace: [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)
    spec:
      project: default
      source:
-       repoURL: https://[github](../../CI_CD/github/SKILL.md).com/example/[gitops](../gitops/SKILL.md)-config.git
+       repoURL: https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/example/[gitops](../gitops/SKILL.md)-config.git
        targetRevision: main
        path: apps/payments-api/overlays/prod
      destination:
@@ -155,28 +155,28 @@ Git.
    encrypt with the cluster's public key before committing:
    ```bash
    kubeseal --format yaml < secret.yaml > sealed-secret.yaml
-   git add sealed-secret.yaml   # safe to [commit](../../CI_CD/commit/SKILL.md); only the controller can decrypt
+   git add sealed-secret.yaml   # safe to [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md); only the controller can decrypt
    ```
-   With an External Secrets Operator, [commit](../../CI_CD/commit/SKILL.md) only a reference
+   With an External Secrets Operator, [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) only a reference
    (`ExternalSecret` CR pointing at a [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) path), never the value.
 
 7. **Roll back by reverting Git, not by manual cluster surgery.**
    ```bash
-   git revert <bad-[commit](../../CI_CD/commit/SKILL.md)-sha>
+   git revert <bad-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)-sha>
    git push origin main
    ```
    The operator reconciles the cluster back to the prior state
-   automatically. Verify with `[argocd](../argocd/SKILL.md) app get payments-api-prod` or
+   automatically. Verify with `[argocd](../../../ci-cd/argocd/other/argocd/SKILL.md) app get payments-api-prod` or
    `flux get kustomizations` that the sync completed and health is green.
 
 8. **Monitor for drift and unhealthy sync state**, not just "did the PR
-   merge." `[argocd](../argocd/SKILL.md) app diff <app>` / `flux diff kustomization` shows
+   merge." `[argocd](../../../ci-cd/argocd/other/argocd/SKILL.md) app diff <app>` / `flux diff kustomization` shows
    whether live state matches desired state; alert on `OutOfSync` or
    `Degraded` status persisting beyond a few reconciliation intervals.
 
 ## Best practices
 
-- Keep the config repo's history linear and meaningful — each [commit](../../CI_CD/commit/SKILL.md)
+- Keep the config repo's history linear and meaningful — each [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)
   should represent one intentional desired-state change, since that
   history *is* your deployment [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) log and rollback mechanism.
 - Use an "app-of-apps" (Argo CD) or a top-level `Kustomization` (Flux)
@@ -189,7 +189,7 @@ Git.
   the cluster "for speed" — that reintroduces the push-based credential
   sprawl [GitOps](../gitops/SKILL.md) exists to remove.
 - Pin `targetRevision` to a branch or, for stricter environments, a tag,
-  so you know exactly what [commit](../../CI_CD/commit/SKILL.md)(s) the operator is watching.
+  so you know exactly what [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)(s) the operator is watching.
 - Treat `selfHeal`/auto-prune as powerful but sharp: `prune: true` will
   delete cluster resources whose manifest was removed from Git — make
   sure that's intended before enabling it broadly.
@@ -201,14 +201,14 @@ Git.
   minute later with no explanation.
   **Fix:** This is [GitOps](../gitops/SKILL.md) working as designed — communicate the policy
   clearly (no direct `[kubectl](../kubectl/SKILL.md) edit`/`apply` in [GitOps](../gitops/SKILL.md)-managed namespaces)
-  and make emergency changes via a fast-tracked Git [commit](../../CI_CD/commit/SKILL.md) instead, so the
+  and make emergency changes via a fast-tracked Git [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) instead, so the
   change survives reconciliation and is auditable.
 
 - **Symptom:** Application repo commits update manifests directly, and now
   two sources of truth (app repo and config repo) disagree about what
   version is deployed.
   **Fix:** Keep manifest ownership single-sourced in the config repo;
-  application CI should only push images and open a version-bump PR/[commit](../../CI_CD/commit/SKILL.md)
+  application CI should only push images and open a version-bump PR/[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)
   against the config repo, never apply manifests itself.
 
 - **Symptom:** A plaintext `Secret` YAML was committed to the [GitOps](../gitops/SKILL.md) repo
@@ -241,11 +241,11 @@ production using [GitOps](../gitops/SKILL.md), with production requiring manual 
    `overlays/prod/kustomization.yaml`'s `newTag` to `1.4.2`.
 4. Because prod's `Application` has `automated` sync disabled, the change
    sits `OutOfSync` until an operator runs
-   `[argocd](../argocd/SKILL.md) app sync payments-api-prod` (or CI triggers it via
-   `[argocd](../argocd/SKILL.md) app sync` in a manual-approval job) — giving a deliberate,
+   `[argocd](../../../ci-cd/argocd/other/argocd/SKILL.md) app sync payments-api-prod` (or CI triggers it via
+   `[argocd](../../../ci-cd/argocd/other/argocd/SKILL.md) app sync` in a manual-approval job) — giving a deliberate,
    auditable go/no-go moment before production actually changes.
 5. If `1.4.2` misbehaves in prod, the fix is
-   `git revert <prod-bump-[commit](../../CI_CD/commit/SKILL.md)> && git push`, followed by an
+   `git revert <prod-bump-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)> && git push`, followed by an
    (auto or manual) sync back to `1.4.1` — no bespoke rollback script
    needed.
 

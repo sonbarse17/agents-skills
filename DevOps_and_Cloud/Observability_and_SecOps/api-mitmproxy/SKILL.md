@@ -343,7 +343,7 @@ mitmdump --set hardump=./traffic.har
 
 ## Security Considerations
 
-- **Sensitive Data Handling**: Captured traffic may contain credentials, tokens, PII. Encrypt and secure stored flows. Never [commit](../../CI_CD/commit/SKILL.md) flow files to version control
+- **Sensitive Data Handling**: Captured traffic may contain credentials, tokens, PII. Encrypt and secure stored flows. Never [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) flow files to version control
 - **Access Control**: Restrict access to mitmproxy instance. Use authentication for mitmweb (--web-user/--web-password flags)
 - **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging**: Log all intercepted traffic and modifications for security auditing and compliance
 - **Compliance**: Ensure proper authorization before intercepting production traffic. Comply with GDPR, PCI-DSS for sensitive data
@@ -499,6 +499,6 @@ Use mitmproxy to test for OWASP API Security Top 10 vulnerabilities:
 ## References
 
 - [mitmproxy Documentation](https://docs.mitmproxy.org/)
-- [mitmproxy GitHub](https://[github](../../CI_CD/github/SKILL.md).com/mitmproxy/mitmproxy)
+- [mitmproxy GitHub](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/mitmproxy/mitmproxy)
 - [OWASP API Security Top 10](https://owasp.org/www-project-api-security/)
-- [mitmproxy Addon Examples](https://[github](../../CI_CD/github/SKILL.md).com/mitmproxy/mitmproxy/tree/main/examples)
+- [mitmproxy Addon Examples](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/mitmproxy/mitmproxy/tree/main/examples)

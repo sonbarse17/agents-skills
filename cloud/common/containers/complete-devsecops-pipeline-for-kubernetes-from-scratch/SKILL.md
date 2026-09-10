@@ -67,7 +67,7 @@ own mechanics are covered in depth by the linked skills.
 
 - A working CI/CD pipeline that already builds and pushes a container
   image and hands off to [GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) — see
-  [complete-[cicd-pipeline](../../../../DevOps_and_Cloud/CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-from-scratch](../../../cicd-tooling/skills/[complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-from-scratch](../complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-from-scratch/SKILL.md)/SKILL.md)
+  [complete-[cicd-pipeline](../../../../ci-cd/common/pipeline-design/cicd-pipeline/SKILL.md)-deployment-for-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-from-scratch](../../../cicd-tooling/skills/[complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-from-scratch](../complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-from-scratch/SKILL.md)/SKILL.md)
   for that base pipeline; this skill adds the security-gate layer onto it,
   not the build/deploy mechanics themselves.
 - SAST, SCA, and [container-scanning](../../../../DevOps_and_Cloud/Containers_and_Orchestration/container-scanning/SKILL.md) tools chosen per
@@ -84,11 +84,11 @@ own mechanics are covered in depth by the linked skills.
 - External Secrets Operator (or an equivalent) installed in-cluster,
   configured against a backing [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) (HashiCorp [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS Secrets
   Manager, Azure Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)) per
-  [sealed-secrets-and-external-secrets-operator](../../../[security-scanning](../../../Security/security-scanning/SKILL.md)-tooling/skills/[sealed-secrets-and-external-secrets-operator](../../../../DevOps_and_Cloud/Containers_and_Orchestration/sealed-secrets-and-external-secrets-operator/SKILL.md)/SKILL.md)
+  [sealed-secrets-and-external-secrets-operator](../../../../Security/security-scanning/SKILL.md)-tooling/skills/[sealed-secrets-and-external-secrets-operator](../../../../DevOps_and_Cloud/Containers_and_Orchestration/sealed-secrets-and-external-secrets-operator/SKILL.md)/SKILL.md)
   and
   [secrets-management](../[secrets-management](../secrets-management/SKILL.md)/SKILL.md).
 - A [GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) operator (Argo CD/Flux) already reconciling the target cluster
-  — see the relevant `complete-[gitops](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)-[argocd](../../../../DevOps_and_Cloud/Containers_and_Orchestration/argocd/SKILL.md)-deployment-on-*-from-scratch`
+  — see the relevant `complete-[gitops](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)-[argocd](../../../../ci-cd/argocd/other/argocd/SKILL.md)-deployment-on-*-from-scratch`
   skill if not yet set up.
 
 ## Step-by-step guidance
@@ -116,7 +116,7 @@ filesystem:
     needs: build-and-push
     runs-on: ubuntu-latest
     steps:
-      - run: trivy image --severity CRITICAL,HIGH --exit-code 1 ghcr.io/example/payments-api:${{ [github](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).sha }}
+      - run: trivy image --severity CRITICAL,HIGH --exit-code 1 ghcr.io/example/payments-api:${{ [github](../../../../ci-cd/github-actions/other/github/SKILL.md).sha }}
 ```
 This catches base-image OS-package CVEs the filesystem-level SCA scan in
 Phase 2 can't see, since the base image's own layers aren't present until
@@ -165,9 +165,9 @@ what each layer actually guarantees.
 
 ### Phase 5 — [GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) handoff (unchanged from the base CI/CD pipeline)
 
-Only after Phase 4 passes does the pipeline [commit](../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) the new image tag to
+Only after Phase 4 passes does the pipeline [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) the new image tag to
 the manifests repo, per
-[complete-[cicd-pipeline](../../../../DevOps_and_Cloud/CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-from-scratch](../../../cicd-tooling/skills/[complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-from-scratch](../complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-from-scratch/SKILL.md)/SKILL.md).
+[complete-[cicd-pipeline](../../../../ci-cd/common/pipeline-design/cicd-pipeline/SKILL.md)-deployment-for-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-from-scratch](../../../cicd-tooling/skills/[complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-from-scratch](../complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-from-scratch/SKILL.md)/SKILL.md).
 
 ### Phase 6 — Secrets: never present in the pipeline at all
 
@@ -201,7 +201,7 @@ runner, a build log, or an environment variable at any point.
 ```bash
 [kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get externalsecret payments-api-db-creds -n payments-prod -o jsonpath='{.status.conditions}'
 [kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get events -n payments-prod --field-selector reason=PolicyViolation
-[argocd](../../../../DevOps_and_Cloud/Containers_and_Orchestration/argocd/SKILL.md) app get payments-api-prod
+[argocd](../../../../ci-cd/argocd/other/argocd/SKILL.md) app get payments-api-prod
 ```
 Confirm the `ExternalSecret` shows a synced condition and that no
 admission-policy violation events exist for the namespace, in addition to
@@ -220,7 +220,7 @@ the [GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SK
   pressure.
 - Order gates by cost: SAST/SCA (Phase 1/2, fast) before the image build,
   image scan (Phase 3) after build, policy gate (Phase 4) on the rendered
-  manifests right before the [GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) [commit](../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) — a policy violation caught
+  manifests right before the [GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) — a policy violation caught
   after an expensive image build/push is still cheaper to fix than one
   caught only by admission rejection after the [GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) operator already
   tried to sync it.
@@ -281,7 +281,7 @@ the [GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SK
 
 **Scenario:** `payments-api` gets its full [DevSecOps](../../../../Security/devsecops/SKILL.md) gate sequence added:
 SAST/SCA at PR time, an image scan post-build, an OPA policy gate on the
-rendered prod overlay before the [GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) [commit](../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md), and its database
+rendered prod overlay before the [GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md), and its database
 credential delivered via External Secrets Operator instead of a CI secret.
 
 ```yaml
@@ -294,7 +294,7 @@ jobs:
     needs: build-and-push
     runs-on: ubuntu-latest
     steps:
-      - run: trivy image --severity CRITICAL,HIGH --exit-code 1 ghcr.io/example/payments-api:${{ [github](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).sha }}
+      - run: trivy image --severity CRITICAL,HIGH --exit-code 1 ghcr.io/example/payments-api:${{ [github](../../../../ci-cd/github-actions/other/github/SKILL.md).sha }}
 
   manifest-policy-gate:
     needs: image-scan
@@ -306,13 +306,13 @@ jobs:
 
   update-manifests:
     needs: manifest-policy-gate
-    if: [github](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).ref == 'refs/heads/main'
+    if: [github](../../../../ci-cd/github-actions/other/github/SKILL.md).ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - run: |
           cd apps/payments-api/overlays/prod
-          [kustomize](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md) edit set image payments-api=ghcr.io/example/payments-api:${{ [github](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).sha }}
-          git [commit](../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) -am "bump to ${{ [github](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).sha }}" && git push
+          [kustomize](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md) edit set image payments-api=ghcr.io/example/payments-api:${{ [github](../../../../ci-cd/github-actions/other/github/SKILL.md).sha }}
+          git [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) -am "bump to ${{ [github](../../../../ci-cd/github-actions/other/github/SKILL.md).sha }}" && git push
 ```
 `apps/payments-api/overlays/prod` also carries the `ExternalSecret` from
 Phase 6, committed once (not on every deploy) — Argo CD reconciles both
@@ -323,9 +323,9 @@ fresh from [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vaul
 
 ## Cross-references
 
-- [complete-[cicd-pipeline](../../../../DevOps_and_Cloud/CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-from-scratch](../../../cicd-tooling/skills/[complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-from-scratch](../complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-from-scratch/SKILL.md)/SKILL.md) — the base build/[GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)-handoff pipeline this skill adds security gates onto.
+- [complete-[cicd-pipeline](../../../../ci-cd/common/pipeline-design/cicd-pipeline/SKILL.md)-deployment-for-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-from-scratch](../../../cicd-tooling/skills/[complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-from-scratch](../complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-from-scratch/SKILL.md)/SKILL.md) — the base build/[GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)-handoff pipeline this skill adds security gates onto.
 - [sast-integration](../[sast-integration](../../../Security/sast-integration/SKILL.md)/SKILL.md), [software-composition-analysis-sca](../[software-composition-analysis-sca](../../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md), [container-image-hardening](../[container-image-hardening](../../Containers_and_Orchestration/container-image-hardening/SKILL.md)/SKILL.md) — Phase 1-3 gate mechanics.
 - [policy-as-code-guardrails](../[policy-as-code-guardrails](../../../Security/[policy-as-code](../../../Security/policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md), [kyverno-policy-management](../../../policy-and-governance-tooling/skills/[kyverno-policy-management](../../Containers_and_Orchestration/kyverno-policy-management/SKILL.md)/SKILL.md), [opa-gatekeeper-policy-authoring](../../../policy-and-governance-tooling/skills/[opa-gatekeeper-policy-authoring](../../../Security/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md) — Phase 4's policy engine mechanics.
-- [sealed-secrets-and-external-secrets-operator](../../../[security-scanning](../../../Security/security-scanning/SKILL.md)-tooling/skills/[sealed-secrets-and-external-secrets-operator](../../../../DevOps_and_Cloud/Containers_and_Orchestration/sealed-secrets-and-external-secrets-operator/SKILL.md)/SKILL.md) and [secrets-management](../[secrets-management](../secrets-management/SKILL.md)/SKILL.md) — Phase 6's secrets model.
+- [sealed-secrets-and-external-secrets-operator](../../../../Security/security-scanning/SKILL.md)-tooling/skills/[sealed-secrets-and-external-secrets-operator](../../../../DevOps_and_Cloud/Containers_and_Orchestration/sealed-secrets-and-external-secrets-operator/SKILL.md)/SKILL.md) and [secrets-management](../[secrets-management](../secrets-management/SKILL.md)/SKILL.md) — Phase 6's secrets model.
 - [secure-cicd-gates](../[secure-cicd-gates](../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — the orchestration principles (severity thresholds, blocking vs. warn) this gate sequence follows.
 - [complete-[devsecops](../../../../Security/devsecops/SKILL.md)-pipeline-for-[serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)-from-scratch](../[complete-[devsecops](../../../Security/devsecops/SKILL.md)-pipeline-for-[serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)-from-scratch](../complete-[devsecops](../../../Security/devsecops/SKILL.md)-pipeline-for-[serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)-from-scratch/SKILL.md)/SKILL.md) and [complete-[devsecops](../../../../Security/devsecops/SKILL.md)-pipeline-for-vm-based-workloads-from-scratch](../[complete-[devsecops](../../../Security/devsecops/SKILL.md)-pipeline-for-vm-based-workloads-from-scratch](../../CI_CD/complete-[devsecops](../../../Security/devsecops/SKILL.md)-pipeline-for-vm-based-workloads-from-scratch/SKILL.md)/SKILL.md) — the same gate-sequencing goal with fundamentally different primary gates and secrets models.

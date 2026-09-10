@@ -96,7 +96,7 @@ Code Generation (openapi-generator CLI, graphql-codegen, protoc)
     ↓
 Generated Artifacts (models, API clients, enums, interceptors)
     ↓
-Integration (install as package, [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) generated code, or build step)
+Integration (install as package, [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) generated code, or build step)
     ↓
 CI Validation (diff check, spec change triggers regeneration)
 ```
@@ -281,7 +281,7 @@ try {
 ### Step 6: CI Regeneration
 
 ```yaml
-# .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/api-client-update.yml
+# .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/api-client-update.yml
 name: Update API Client
 on:
   schedule:
@@ -301,7 +301,7 @@ jobs:
       - uses: actions/setup-node@v4
       - name: Generate client
         run: |
-          npm run generate-api -- --spec-url ${{ [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).event.inputs.spec_url }}
+          npm run generate-api -- --spec-url ${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).event.inputs.spec_url }}
       - name: Check for changes
         id: diff
         run: |
@@ -315,7 +315,7 @@ jobs:
         run: |
           git checkout -b chore/update-api-client
           git add src/generated/
-          git [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) -m "chore: update API client from spec"
+          git [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) -m "chore: update API client from spec"
           gh pr create --title "chore: update API client" --body "Auto-generated from spec"
 ```
 
@@ -343,7 +343,7 @@ jobs:
 | Separate generated and custom code | Generated code in `src/generated/`, custom wrappers elsewhere |
 | Abstract behind repository/service | Swap implementation without changing consumers |
 | Use typed errors | Discriminated unions or instanceof checks for error types |
-| Generate at build time (not [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)) | Always fresh, no stale generated code in repo |
+| Generate at build time (not [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)) | Always fresh, no stale generated code in repo |
 | Set up CI diff check | PR fails if generated code is out of date |
 | Use consistent naming conventions | camelCase for [TypeScript](../../Frontend/typescript/SKILL.md), PascalCase for C# |
 | Handle 401/403 globally | Refresh token or redirect to login automatically |

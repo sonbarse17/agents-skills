@@ -412,7 +412,7 @@ Starting a story without knowing what it depends on leads to blocked developers 
 - Story refinement (backlog grooming) should take 2-4 hours per week.
 
 ## Tooling/Methodology
-- **Project management**: Jira, Linear, Asana, [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Issues, Shortcut.
+- **Project management**: Jira, Linear, Asana, [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Issues, Shortcut.
 - **Story format**: Confluence, Notion, markdown files in repo.
 - **Gherkin**: Cucumber, SpecFlow for executable acceptance criteria.
 - **Estimation**: Planning poker, t-shirt sizing, dot voting.
@@ -536,7 +536,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
+- Signed commits: GPG or SSH [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management

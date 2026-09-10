@@ -609,7 +609,7 @@ orders = Order.objects.prefetch_related(
 - Password validation: AUTH_PASSWORD_VALIDATORS. Argon2 hasher.
 - Rate limiting: `django-ratelimit` on auth and registration endpoints.
 - Content security: `django-csp` for CSP headers. Restrict script sources.
-- Secrets: environment variables. Never [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) `.env` files.
+- Secrets: environment variables. Never [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) `.env` files.
 ## Performance Optimization
 
 ### Caching Strategy
@@ -643,7 +643,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
+- Signed commits: GPG or SSH [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management

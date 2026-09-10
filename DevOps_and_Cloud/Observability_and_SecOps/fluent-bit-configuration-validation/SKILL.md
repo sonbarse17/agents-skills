@@ -175,14 +175,14 @@ which this skill assumes is already designed and does not repeat.
 8. **Wire steps 1-4 into CI** so a `Match`/parser mistake fails the PR
    instead of the deploy:
    ```yaml
-   # [GitHub](../../CI_CD/github/SKILL.md) Actions example
+   # [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions example
    - name: Render Fluent Bit config
      run: helm template fluent-bit fluent/fluent-bit -f values-production.yaml --show-only templates/fluent-bit-configmap.yaml > rendered.yaml
    - name: Dry-run against fixture logs
      run: |
        [docker](../../Containers_and_Orchestration/docker/SKILL.md) run --rm -i \
-         -v "${{ [github](../../CI_CD/github/SKILL.md).workspace }}/rendered.yaml:/fluent-bit/etc/fluent-bit.yaml" \
-         -v "${{ [github](../../CI_CD/github/SKILL.md).workspace }}/fixtures:/fixtures" \
+         -v "${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).workspace }}/rendered.yaml:/fluent-bit/etc/fluent-bit.yaml" \
+         -v "${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).workspace }}/fixtures:/fixtures" \
          fluent/fluent-bit:3.1.9 \
          -c /fluent-bit/etc/fluent-bit.yaml -o stdout -m '*' < fixtures/sample-lines.log
    - name: Assert no leaked secret fields

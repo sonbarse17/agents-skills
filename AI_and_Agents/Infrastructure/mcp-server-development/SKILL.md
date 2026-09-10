@@ -32,7 +32,7 @@ wiring external tools, data sources, and prompt templates into AI agents
 over a common transport (stdio or HTTP with JSON-RPC framing). It solves the
 "N agents × M integrations" problem: one MCP server implementation for, say,
 a ticketing system or a database can be connected to Claude Code, Cursor,
-[GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Copilot, Gemini CLI, or any other MCP-compatible client without
+[GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Copilot, Gemini CLI, or any other MCP-compatible client without
 rewriting the integration per client. MCP is distinct from and complementary
 to the **Agent Skills** standard (SKILL.md packages of instructions and
 bundled resources, which is what this repository packages): MCP is the wire

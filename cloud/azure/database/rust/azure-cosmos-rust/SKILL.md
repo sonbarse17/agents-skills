@@ -173,4 +173,4 @@ For Entra ID auth, assign one of these built-in Cosmos DB roles:
 | ------------- | ---------------------------------------------------------------------------------- |
 | API Reference | https://docs.rs/azure_data_cosmos/latest/azure_data_cosmos                         |
 | crates.io     | https://crates.io/crates/azure_data_cosmos                                         |
-| Source Code   | https://[github](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-rust/tree/main/sdk/cosmos/azure_data_cosmos |
+| Source Code   | https://[github](../../../../../ci-cd/github-actions/other/github/SKILL.md).com/Azure/azure-sdk-for-rust/tree/main/sdk/cosmos/azure_data_cosmos |

@@ -179,5 +179,5 @@ When implementing fine-tuning, always provide:
 3. **Evaluation script** reporting perplexity, task-specific metrics, and latency
 4. **Brief design rationale** — why this PEFT method, rank, and learning rate were chosen for this task
 
-[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/data-ml/fine-tuning-expert/)
+[Documentation](https://jeffallan.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/data-ml/fine-tuning-expert/)
 

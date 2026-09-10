@@ -96,7 +96,7 @@ belongs in Confluence, not buried in a comment thread — see
    - **Decision** — what was decided or done, stated plainly.
    - **Rationale** — why, including alternatives considered and ruled
      out (this is the part that gets lost if only decided verbally).
-   - **Links** — PR, [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) SHA, design doc/Confluence page, related
+   - **Links** — PR, [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) SHA, design doc/Confluence page, related
      ticket.
    Write it as if the next reader has zero memory of the conversation
    that led here — because in six months, they will.
@@ -184,7 +184,7 @@ belongs in Confluence, not buried in a comment thread — see
          {
            "type": "paragraph",
            "content": [
-             { "type": "text", "text": "Deploy status: v2.14.1 deployed to production at 2026-07-28T14:32:00Z. [Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) a91fbc2. Pipeline run: " },
+             { "type": "text", "text": "Deploy status: v2.14.1 deployed to production at 2026-07-28T14:32:00Z. [Commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) a91fbc2. Pipeline run: " },
              { "type": "text", "text": "#4821", "marks": [{ "type": "link", "attrs": { "href": "https://ci.example.com/runs/4821" } }] }
            ]
          }
@@ -194,7 +194,7 @@ belongs in Confluence, not buried in a comment thread — see
    ```
 
 7. **Post a genuinely useful deploy notification, not a log dump.**
-   Include: what shipped (version/[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)), where (environment), when
+   Include: what shipped (version/[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)), where (environment), when
    (timestamp with timezone), and a link back to the pipeline run and
    the diff/PR — not the raw console output of the build. If the ticket
    needs a status change too (e.g. "In Review" → "Done" once deployed to
@@ -203,8 +203,8 @@ belongs in Confluence, not buried in a comment thread — see
 
 8. **Prefer the platform's native automation for common triggers.**
    Jira Automation rules ("when PR merged, transition to Done and
-   comment with the merge [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)") or a Jira/Bitbucket/[GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) smart
-   [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) integration often cover the common cases without custom REST
+   comment with the merge [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)") or a Jira/Bitbucket/[GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) smart
+   [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) integration often cover the common cases without custom REST
    code, and are easier for a team to [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)/maintain than a bespoke
    script. Reach for a custom `POST .../comment` call when the trigger
    or payload shape isn't something the built-in automation supports.
@@ -242,7 +242,7 @@ belongs in Confluence, not buried in a comment thread — see
   and treat the comment as the pointer to it, not the sole copy.
 
 - **Symptom:** A CI pipeline posts a new comment for every stage (lint
-  ✅, build ✅, unit tests ✅, integration tests ✅...) on every [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md),
+  ✅, build ✅, unit tests ✅, integration tests ✅...) on every [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md),
   so a ticket accumulates dozens of near-identical automated comments and
   humans stop reading the comment feed entirely — including the one
   comment that actually mattered.
@@ -287,14 +287,14 @@ belongs in Confluence, not buried in a comment thread — see
 ```
 
 Six near-identical lines, no version number, no environment, no link
-back to anything useful — and this repeats for every [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md).
+back to anything useful — and this repeats for every [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md).
 
 **After — a single, edited-in-place deploy comment:**
 
 ```
 Deploy status: v2.14.1 deployed to production (eu-west-1) at
 2026-07-28T14:32:00Z.
-[Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md): a91fbc2 ("fix: correct clock-skew tolerance in SSO token
+[Commit](../../../ci-cd/common/git-workflow/commit/SKILL.md): a91fbc2 ("fix: correct clock-skew tolerance in SSO token
 validation", PR #482)
 Pipeline run: #4821 (https://ci.example.com/runs/4821)
 Verification: smoke test suite green post-deploy; EU login error rate
@@ -318,7 +318,7 @@ Authorization: Basic base64(${JIRA_USER_EMAIL}:${JIRA_API_TOKEN})
       {
         "type": "paragraph",
         "content": [
-          { "type": "text", "text": "Deploy status: v2.14.1 deployed to production (eu-west-1) at 2026-07-28T14:32:00Z. [Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) a91fbc2 (\"fix: correct clock-skew tolerance in SSO token validation\", PR #482). Pipeline run #4821. Smoke tests green; EU login error rate back to baseline as of 14:40 UTC." }
+          { "type": "text", "text": "Deploy status: v2.14.1 deployed to production (eu-west-1) at 2026-07-28T14:32:00Z. [Commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) a91fbc2 (\"fix: correct clock-skew tolerance in SSO token validation\", PR #482). Pipeline run #4821. Smoke tests green; EU login error rate back to baseline as of 14:40 UTC." }
         ]
       }
     ]

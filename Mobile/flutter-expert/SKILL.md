@@ -146,5 +146,5 @@ When implementing Flutter features, provide:
 3. Route configuration if needed
 4. Test file structure
 
-[Documentation](https://jeffallan.[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/frontend/flutter-expert/)
+[Documentation](https://jeffallan.[github](../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/frontend/flutter-expert/)
 

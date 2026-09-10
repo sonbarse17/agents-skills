@@ -20,8 +20,8 @@ Patterns and tools for automating changelog generation, release notes, and versi
 - Setting up automated changelog generation
 - Implementing Conventional Commits
 - Creating release note workflows
-- Standardizing [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) message formats
-- Generating [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/GitLab release notes
+- Standardizing [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) message formats
+- Generating [GitHub](../../ci-cd/github-actions/other/github/SKILL.md)/GitLab release notes
 - Managing semantic versioning
 
 ## Core Concepts
@@ -77,7 +77,7 @@ No special steps required. Standard deployment process applies.
 | lodash  | 4.17.20 | 4.17.21 | Security patch           |
 ```
 
-## [Commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) Message Examples
+## [Commit](../../ci-cd/common/git-workflow/commit/SKILL.md) Message Examples
 
 ```bash
 # Feature with scope
@@ -120,7 +120,7 @@ Reviewed-by: @alice
 
 ### Don'ts
 
-- **Don't mix changes** - One logical change per [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)
+- **Don't mix changes** - One logical change per [commit](../../ci-cd/common/git-workflow/commit/SKILL.md)
 - **Don't skip validation** - Use commitlint
 - **Don't manual edit** - Generated changelogs only
 - **Don't forget breaking changes** - Mark with `!` or footer

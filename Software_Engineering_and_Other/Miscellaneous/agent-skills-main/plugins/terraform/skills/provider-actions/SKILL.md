@@ -91,7 +91,7 @@ func (a *actionType) Schema(ctx context.Context, req action.SchemaRequest, resp 
 1. **Type Mismatches**
    - Model structs use `types.String`/`types.Int64` and schemas use
      `types.StringType` from
-     `[github](../../../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/hashicorp/terraform-plugin-framework/types` — don't mix in
+     `[github](../../../../../../../ci-cd/github-actions/other/github/SKILL.md).com/hashicorp/terraform-plugin-framework/types` — don't mix in
      types from other packages
    - Some large providers layer their own custom type package on top (e.g.
      terraform-provider-aws's internal `fwtypes`); inside such a repo,
@@ -118,8 +118,8 @@ func (a *actionType) Schema(ctx context.Context, req action.SchemaRequest, resp 
 4. **Validator Imports**
    ```go
    // Ensure proper imports
-   "[github](../../../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/hashicorp/terraform-plugin-framework-validators/int64validator"
-   "[github](../../../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
+   "[github](../../../../../../../ci-cd/github-actions/other/github/SKILL.md).com/hashicorp/terraform-plugin-framework-validators/int64validator"
+   "[github](../../../../../../../ci-cd/github-actions/other/github/SKILL.md).com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
    ```
 
 5. **Region/Provider Attribute** (multi-region providers, e.g. AWS)
@@ -228,7 +228,7 @@ resp.Diagnostics.AddError(
 For operations that require waiting for completion, poll on a ticker under
 a context deadline, reporting progress as you go. (Alternatively use
 `retry.StateChangeConf` from
-`[github](../../../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/hashicorp/terraform-plugin-sdk/v2/helper/retry`, the same waiter
+`[github](../../../../../../../ci-cd/github-actions/other/github/SKILL.md).com/hashicorp/terraform-plugin-sdk/v2/helper/retry`, the same waiter
 primitive resources use.)
 
 ```go
@@ -487,7 +487,7 @@ action documentation page must include:
 ## Changelog Entry Format (provider-specific convention)
 
 Some providers (e.g. terraform-provider-aws) track release notes with
-[go-changelog](https://[github](../../../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/hashicorp/go-changelog): one file per PR
+[go-changelog](https://[github](../../../../../../../ci-cd/github-actions/other/github/SKILL.md).com/hashicorp/go-changelog): one file per PR
 in a `.changelog/` directory. Check the target repo's CONTRIBUTING guide;
 skip this if the repo doesn't use it.
 
@@ -520,7 +520,7 @@ Before submitting your action implementation:
 
 - [Terraform Plugin Framework Documentation](https://developer.hashicorp.com/terraform/plugin/framework)
 - [Terraform Provider Development](https://developer.hashicorp.com/terraform/plugin)
-- [terraform-plugin-framework GitHub](https://[github](../../../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/hashicorp/terraform-plugin-framework)
-- [terraform-plugin-testing](https://[github](../../../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/hashicorp/terraform-plugin-testing)
+- [terraform-plugin-framework GitHub](https://[github](../../../../../../../ci-cd/github-actions/other/github/SKILL.md).com/hashicorp/terraform-plugin-framework)
+- [terraform-plugin-testing](https://[github](../../../../../../../ci-cd/github-actions/other/github/SKILL.md).com/hashicorp/terraform-plugin-testing)
 - [Writing a Terraform Action (blog)](https://danielmschmidt.de/posts/2025-09-26-writing-a-terraform-action/)
 - Reference implementations: `terraform-provider-tfe` (`action_query_run.go`, `action_query_run_test.go`), `terraform-provider-[vault](../../../../../vault/SKILL.md)` (`action_rotate_root.go`)

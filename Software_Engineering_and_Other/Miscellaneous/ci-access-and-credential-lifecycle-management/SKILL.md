@@ -62,7 +62,7 @@ and never removes them.
   grants (temporary group membership, an expiring repo collaborator
   invite, a just-in-time access tool) rather than only permanent
   add/remove.
-- A secrets manager or CI platform's native secret store ([GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions
+- A secrets manager or CI platform's native secret store ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions
   environment secrets, GitLab CI/CD variables scoped per environment,
   HashiCorp [Vault](../vault/SKILL.md)) capable of versioned secrets so a rotation doesn't
   require simultaneously updating every consumer at the exact same
@@ -85,8 +85,8 @@ and never removes them.
    indefinite access "until someone remembers to remove it."** Prefer a
    platform mechanism that expires automatically over a manual reminder:
    ```bash
-   # [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md): repository collaborator invite (manually tracked expiry —
-   # [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) itself has no native invite TTL, so pair with a ticket/calendar
+   # [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md): repository collaborator invite (manually tracked expiry —
+   # [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) itself has no native invite TTL, so pair with a ticket/calendar
    # reminder or an org-level SAML/SCIM group with a time-boxed membership)
    gh api repos/<org>/<repo>/collaborators/<contractor-username> \
      -f permission=push
@@ -129,19 +129,19 @@ and never removes them.
    over a hard cutover that risks an outage if any consumer wasn't
    updated:
    ```bash
-   # Example: rotate a [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) App private key used by CI, keeping the
+   # Example: rotate a [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) App private key used by CI, keeping the
    # old key valid until the new one is confirmed working everywhere
    # that consumes it, then explicitly revoking the old key.
    gh api /app/installations/<id>/access_tokens   # verify new key works
    # ...only after confirming all consumers use the new key:
-   # revoke the old private key in the [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) App settings.
+   # revoke the old private key in the [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) App settings.
    ```
 
 5. **Prefer short-lived, federated credentials over long-lived static
    ones for new CI-to-cloud integrations**, so there is no long-lived
    secret to rotate at all:
    ```yaml
-   # [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions -> AWS via OIDC, no long-lived AWS access key stored
+   # [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions -> AWS via OIDC, no long-lived AWS access key stored
    # as a secret
    permissions:
      id-token: write
@@ -232,7 +232,7 @@ and never removes them.
 
 **Scenario:** An external QA vendor needs temporary read/write access to
 a `checkout-api` repo's CI configuration for a two-week [load-testing](../../../DevOps_and_Cloud/Observability_and_SecOps/load-testing/SKILL.md)
-engagement, and separately the team notices their [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) App's CI
+engagement, and separately the team notices their [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) App's CI
 deployment key expires in 45 days.
 
 1. **Grant, time-boxed:** access request ticket created with an explicit
@@ -246,12 +246,12 @@ deployment key expires in 45 days.
    is removed via `gh api repos/<org>/checkout-api/collaborators/<user> -X DELETE`,
    and the ticket is closed with a timestamped confirmation — not just
    assumed done because the engagement "should be" over.
-4. **Credential rotation, scheduled ahead of expiry:** with the [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)
+4. **Credential rotation, scheduled ahead of expiry:** with the [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)
    App deployment key expiring in 45 days, a new key is generated 30 days
    out, added to the CI secret store alongside the old one, and every
    consuming workflow is updated to reference the new key. Only after
    confirming (via a successful run of every consuming pipeline) that
-   the new key works is the old key explicitly revoked in the [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) App
+   the new key works is the old key explicitly revoked in the [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) App
    settings — 15 days before its natural expiry, with no last-minute
    scramble.
 5. **Quarterly [audit](../../../AI_and_Agents/Operations/audit/SKILL.md):** the next scheduled access review cross-references

@@ -38,7 +38,7 @@ is only base64-encoded, not encrypted, so committing one directly is
 equivalent to committing plaintext. Two [Kubernetes](../kubernetes/SKILL.md)-native controller
 patterns solve this from opposite directions. **Bitnami Sealed
 Secrets** lets you encrypt a secret *client-side* into a `SealedSecret`
-custom resource that is safe to [commit](../../CI_CD/commit/SKILL.md) to git in plaintext-ciphertext
+custom resource that is safe to [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) to git in plaintext-ciphertext
 form; only the in-cluster controller (holding the matching private key)
 can decrypt it back into a real `Secret`, so the encrypted manifest is
 useless to anyone without cluster access. **External Secrets Operator
@@ -55,7 +55,7 @@ model fits the team's operating model better.
 
 ## When to use
 
-- The user wants to [commit](../../CI_CD/commit/SKILL.md) a [Kubernetes](../kubernetes/SKILL.md) `Secret` to a [GitOps](../gitops/SKILL.md) repo
+- The user wants to [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) a [Kubernetes](../kubernetes/SKILL.md) `Secret` to a [GitOps](../gitops/SKILL.md) repo
   without exposing its plaintext value, and asks specifically about
   `kubeseal` or the Sealed Secrets controller.
 - The user wants [Kubernetes](../kubernetes/SKILL.md) workloads to consume secrets that live in
@@ -109,7 +109,7 @@ model fits the team's operating model better.
 
 1. **Install the controller** (Helm):
    ```bash
-   helm repo add sealed-secrets https://bitnami-labs.[github](../../CI_CD/github/SKILL.md).io/sealed-secrets
+   helm repo add sealed-secrets https://bitnami-labs.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/sealed-secrets
    helm install sealed-secrets-controller sealed-secrets/sealed-secrets \
      --namespace kube-system
    ```
@@ -124,7 +124,7 @@ model fits the team's operating model better.
      > pub-cert.pem
    ```
 
-3. **Create the plaintext Secret locally (never [commit](../../CI_CD/commit/SKILL.md) it)**, then
+3. **Create the plaintext Secret locally (never [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) it)**, then
    seal it with `kubeseal`:
    ```bash
    [kubectl](../kubectl/SKILL.md) create secret generic db-credentials \
@@ -136,9 +136,9 @@ model fits the team's operating model better.
    kubeseal --format yaml --cert pub-cert.pem \
      < db-credentials.yaml > sealed-db-credentials.yaml
 
-   rm db-credentials.yaml   # never [commit](../../CI_CD/commit/SKILL.md) the plaintext version
+   rm db-credentials.yaml   # never [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) the plaintext version
    ```
-   Resulting `sealed-db-credentials.yaml` (safe to [commit](../../CI_CD/commit/SKILL.md) — ciphertext only):
+   Resulting `sealed-db-credentials.yaml` (safe to [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) — ciphertext only):
    ```yaml
    apiVersion: bitnami.com/v1alpha1
    kind: SealedSecret
@@ -156,7 +156,7 @@ model fits the team's operating model better.
        type: Opaque
    ```
 
-4. **[Commit](../../CI_CD/commit/SKILL.md) and apply** — the controller watches for `SealedSecret`
+4. **[Commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) and apply** — the controller watches for `SealedSecret`
    objects and decrypts them into a real `Secret` in the same namespace
    automatically:
    ```bash
@@ -303,7 +303,7 @@ model fits the team's operating model better.
 
 ## Best practices
 
-- Never [commit](../../CI_CD/commit/SKILL.md) the plaintext `Secret` manifest used as `kubeseal`'s
+- Never [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) the plaintext `Secret` manifest used as `kubeseal`'s
   input, even momentarily, to a git-tracked working directory — generate
   it to a local, gitignored path, seal it, then delete the plaintext
   file immediately.

@@ -177,5 +177,5 @@ public class IdleState : State
 }
 ```
 
-[Documentation](https://jeffallan.[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/specialized/game-developer/)
+[Documentation](https://jeffallan.[github](../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/specialized/game-developer/)
 

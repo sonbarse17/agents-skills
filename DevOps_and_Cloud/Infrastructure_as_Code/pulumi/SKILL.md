@@ -84,7 +84,7 @@ pulumi up
 - Always run `pulumi preview` before `pulumi up` — review resource diffs carefully.
 - `pulumi destroy` is **irreversible** — confirm the stack resource list before proceeding.
 - Use `pulumi config set --secret` for sensitive values (passwords, API keys).
-- Never [commit](../../CI_CD/commit/SKILL.md) Pulumi state files or unencrypted secret values.
+- Never [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) Pulumi state files or unencrypted secret values.
 - Use stack policies (CrossGuard) to enforce organizational guardrails.
 
 ## Workflow

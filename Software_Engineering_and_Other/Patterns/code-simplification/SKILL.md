@@ -17,7 +17,7 @@ depends_on:
 
 # Code Simplification
 
-> Inspired by the [Claude Code Simplifier plugin](https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/anthropics/claude-plugins-official/blob/main/plugins/code-simplifier/agents/code-simplifier.md). Adapted here as a model-agnostic, process-driven skill for any AI coding agent.
+> Inspired by the [Claude Code Simplifier plugin](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/anthropics/claude-plugins-official/blob/main/plugins/code-simplifier/agents/code-simplifier.md). Adapted here as a model-agnostic, process-driven skill for any AI coding agent.
 
 ## Overview
 
@@ -174,7 +174,7 @@ Make one simplification at a time. Run tests after each change. **Submit refacto
 FOR EACH SIMPLIFICATION:
 1. Make the change
 2. Run the test suite
-3. If tests pass → [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) (or continue to next simplification)
+3. If tests pass → [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) (or continue to next simplification)
 4. If tests fail → revert and reconsider
 ```
 
@@ -325,7 +325,7 @@ function UserBadge({ user }: Props) {
 - Renaming things to match your preferences rather than project conventions
 - Removing error handling because "it makes the code cleaner"
 - Simplifying code you don't fully understand
-- Batching many simplifications into one large, hard-to-review [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)
+- Batching many simplifications into one large, hard-to-review [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)
 - Refactoring code outside the scope of the current task without being asked
 
 ## Verification

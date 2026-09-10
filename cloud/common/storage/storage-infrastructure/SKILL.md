@@ -505,7 +505,7 @@ alert_rules:
 - S.M.A.R.T [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) for HDD: pre-fail attributes (5 Reallocated Sectors, 187 Reported Uncorrectable).
 - NVMe SSD: watch Temperature, Percentage Used, Available Spare, Media Errors.
 - Storage network: use RoCE (RDMA over Converged Ethernet) with PFC + ECN for lossless fabric.
-- Query Ceph OSD latency per OSD: `ceph osd perf` — fix OSDs with high [commit](../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) latency.
+- Query Ceph OSD latency per OSD: `ceph osd perf` — fix OSDs with high [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) latency.
 - Use Stripe Width of 16+ for large sequential writes on Ceph RBD pools.
 - Always benchmark with `fio` on raw block device, not filesystem.
 - Document and label all storage connections and VLAN assignments.

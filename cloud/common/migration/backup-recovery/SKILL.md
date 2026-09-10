@@ -107,7 +107,7 @@ apt install -y restic
 dnf install -y restic
 
 # Or download the latest binary
-curl -L https://[github](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/restic/restic/releases/latest/download/restic_0.17.3_linux_amd64.bz2 \
+curl -L https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/restic/restic/releases/latest/download/restic_0.17.3_linux_amd64.bz2 \
   | bunzip2 > /usr/local/bin/restic
 chmod +x /usr/local/bin/restic
 

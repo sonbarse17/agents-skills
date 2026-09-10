@@ -134,7 +134,7 @@ See [../../../Global_References/troubleshooting.md](../../../../Global_Reference
 - [**Detailed Policies**](../../../../Global_References/policies.md) - Full policy examples
 - [**Configuration Patterns**](../../../../Global_References/azure-aigateway_patterns.md) - Step-by-step patterns
 - [**Troubleshooting**](../../../../Global_References/troubleshooting.md) - Common issues
-- [AI-Gateway Samples](https://[github](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Azure-Samples/AI-Gateway)
+- [AI-Gateway Samples](https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/Azure-Samples/AI-Gateway)
 - [GenAI Gateway Docs](https://learn.microsoft.com/azure/api-management/genai-gateway-capabilities)
 
 ## SDK Quick References

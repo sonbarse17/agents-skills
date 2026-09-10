@@ -124,9 +124,9 @@ Host db-tunnel
   ProxyJump bastion
   LocalForward 5432 localhost:5432
 
-# [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) deploy key
-Host [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-deploy
-  HostName [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com
+# [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) deploy key
+Host [github](../../../ci-cd/github-actions/other/github/SKILL.md)-deploy
+  HostName [github](../../../ci-cd/github-actions/other/github/SKILL.md).com
   User git
   IdentityFile ~/.ssh/github_deploy_key
   IdentitiesOnly yes

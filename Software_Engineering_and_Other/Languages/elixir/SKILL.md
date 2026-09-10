@@ -285,7 +285,7 @@ end
 ### Tooling
 ```bash
 # Type checking (Dialyzer)
-mix dialyzer --format [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)  # CI-friendly output
+mix dialyzer --format [github](../../../ci-cd/github-actions/other/github/SKILL.md)  # CI-friendly output
 
 # Code quality
 mix credo --strict            # Linter
@@ -558,7 +558,7 @@ end
 
 ### Configuration Management
 - Use `config/runtime.exs` for all env-dependent config. `config/prod.exs` for compile-time config only.
-- Secrets in environment variables or [Vault](../../Miscellaneous/vault/SKILL.md). Never [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) `.secret` files.
+- Secrets in environment variables or [Vault](../../Miscellaneous/vault/SKILL.md). Never [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) `.secret` files.
 - Release config: `RELEASE_CONFIG_DIR` points to external config directory. Overrides at runtime without rebuild.
 - Feature flags via persistent_term or a GenServer loaded from DB at boot. Toggle without restart.
 

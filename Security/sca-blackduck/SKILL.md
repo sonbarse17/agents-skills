@@ -129,7 +129,7 @@ Work through each step systematically. Check off completed items.
 
 1. Identify direct and transitive dependencies
 2. Analyze component quality metrics:
-   - Maintenance activity (last update, [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) frequency)
+   - Maintenance activity (last update, [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) frequency)
    - Community health (contributors, issue resolution)
    - Security track record (historical CVEs)
 3. Flag high-risk components (unmaintained, few maintainers, security issues)
@@ -140,7 +140,7 @@ Work through each step systematically. Check off completed items.
 
 - **Sensitive Data Handling**: Black Duck scans require API tokens with read/write access.
   Store credentials securely in secrets management ([Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS Secrets Manager).
-  Never [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) tokens to version control.
+  Never [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) tokens to version control.
 
 - **Access Control**: Limit Black Duck access to authorized security and development teams.
   Use role-based access control (RBAC) for scan result visibility and policy management.
@@ -187,9 +187,9 @@ Black Duck Detect automatically identifies and scans:
 
 ### Assets
 
-- `assets/ci_integration/github_actions.yml` - [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions workflow for Black Duck scanning
+- `assets/ci_integration/github_actions.yml` - [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions workflow for Black Duck scanning
 - `assets/ci_integration/gitlab_ci.yml` - GitLab CI configuration for SCA
-- `assets/ci_integration/jenkins_pipeline.groovy` - [Jenkins](../../DevOps_and_Cloud/CI_CD/jenkins/SKILL.md) pipeline with Black Duck integration
+- `assets/ci_integration/jenkins_pipeline.groovy` - [Jenkins](../../ci-cd/jenkins/other/jenkins/SKILL.md) pipeline with Black Duck integration
 - `assets/policy_templates/` - Pre-configured security and compliance policies
 - `assets/blackduck_config.yml` - Recommended Black Duck Detect configuration
 
@@ -255,9 +255,9 @@ scripts/sbom_generator.sh \
 
 ### CI/CD Integration
 
-- **[GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions**: Use `synopsys-sig/detect-action@v1` with policy enforcement
+- **[GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions**: Use `synopsys-sig/detect-action@v1` with policy enforcement
 - **GitLab CI**: Run as security scanning job with dependency scanning template
-- **[Jenkins](../../DevOps_and_Cloud/CI_CD/jenkins/SKILL.md)**: Execute Detect as pipeline step with quality gates
+- **[Jenkins](../../ci-cd/jenkins/other/jenkins/SKILL.md)**: Execute Detect as pipeline step with quality gates
 - **Azure DevOps**: Integrate using Black Duck extension from marketplace
 
 See `assets/ci_integration/` for ready-to-use pipeline configurations.
@@ -398,7 +398,7 @@ Use SBOMs for:
 
 1. **Shift Left**: Integrate SCA early in development lifecycle
 2. **Policy-Driven**: Define clear policies for vulnerabilities and licenses
-3. **Continuous [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: Run scans on every [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) and nightly for production
+3. **Continuous [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: Run scans on every [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) and nightly for production
 4. **Remediation Prioritization**: Focus on exploitable vulnerabilities first
 5. **SBOM Management**: Maintain up-to-date SBOM for all production applications
 6. **Supply Chain Hygiene**: Regularly review dependency health and maintainability

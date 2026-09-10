@@ -207,8 +207,8 @@ neo4j-admin database import full \
 ```
 
 ```cypher
-// APOC periodic batch [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)
-CALL apoc.periodic.[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)(
+// APOC periodic batch [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)
+CALL apoc.periodic.[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)(
   "MATCH (c:Customer) WHERE c.batch_id IS NULL
    WITH c LIMIT 5000
    SET c.batch_id = $batch
@@ -306,7 +306,7 @@ Property placement decision:
 5. **Properties on nodes that belong on relationships**: context like timestamp and quantity belong on the relationship, not the node.
 6. **No schema constraints**: unlabeled nodes and invalid relationships accumulate. Always use constraints.
 7. **Loading entire graph into memory in GDS**: projected graphs must fit in available heap. Use node filtering to reduce size.
-8. **No batch [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) on large imports**: importing millions of nodes in a single transaction causes OOM.
+8. **No batch [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) on large imports**: importing millions of nodes in a single transaction causes OOM.
 9. **RDF without reasoning support**: SPARQL inference queries are slow without a reasoner engine.
 10. **JanusGraph backend storage mismatch**: Cassandra for write-heavy, BerkeleyDB for single-server, ScyllaDB for high-throughput.
 11. **Neptune query timeout not configured**: long-running Gremlin traversals timeout at 15min default. Set appropriate timeout for analytics queries.
@@ -363,7 +363,7 @@ Graph vs document ([MongoDB](../../Backend/mongodb/SKILL.md)): document stores e
 - Page cache sizing: allocate enough page cache to hold the hot working set. For 100GB graph with 20GB working set, allocate 24GB page cache.
 - Neptune storage auto-scales but write I/O is limited by instance class. Use larger instances for write-heavy workloads.
 - JanusGraph: each query may hit both storage backend and index backend. Elasticsearch latency dominates query time for indexed lookups. Target <10ms ES response.
-- Bulk import (neo4j-admin): 1M nodes/sec on SSD. LOAD CSV with periodic [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md): 10K-50K nodes/sec.
+- Bulk import (neo4j-admin): 1M nodes/sec on SSD. LOAD CSV with periodic [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md): 10K-50K nodes/sec.
 
 ## Tooling
 

@@ -90,7 +90,7 @@ credential anywhere in the provider. Defaults belong in the resolution logic
 
 Resolve credentials by consulting an ordered list of sources and taking the
 first one that produces a **complete** set. This is the pattern the AWS
-provider uses via [`aws-sdk-go-base`](https://[github](../../CI_CD/github/SKILL.md).com/hashicorp/aws-sdk-go-base),
+provider uses via [`aws-sdk-go-base`](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/hashicorp/aws-sdk-go-base),
 and it generalizes to any provider. The canonical precedence, highest first:
 
 1. **Static configuration** — values set directly in the `provider` block.

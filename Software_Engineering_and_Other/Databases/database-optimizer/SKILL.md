@@ -161,5 +161,5 @@ When optimizing database performance, provide:
 5. Validation queries to measure improvement
 6. [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) recommendations
 
-[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/infrastructure/database-optimizer/)
+[Documentation](https://jeffallan.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/infrastructure/database-optimizer/)
 

@@ -42,7 +42,7 @@ Great onboarding is a competitive advantage for engineering organizations. New h
 - Project repository URL and default branch (main, master, develop)
 - Technology stack: primary language(s) and versions, framework(s), database(s), queue, cache, cloud platform
 - Team structure: EM, tech lead, assigned buddy, DevOps contact, PM, designer
-- CI/CD details: provider ([GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions, GitLab CI, [CircleCI](../../../DevOps_and_Cloud/CI_CD/circleci/SKILL.md), [Jenkins](../../../DevOps_and_Cloud/CI_CD/jenkins/SKILL.md)), lint/typecheck/test/build commands, deployment targets and environments
+- CI/CD details: provider ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, [CircleCI](../../../ci-cd/circleci/other/circleci/SKILL.md), [Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md)), lint/typecheck/test/build commands, deployment targets and environments
 - Development workflow: branch naming convention, PR template, required reviewers, CI checks, merge strategy, release cadence
 - Environment requirements: supported host OS, minimum hardware, reserved ports, system dependencies
 - Documentation paths: ADRs, API docs, [runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md), [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response guides, architecture diagrams
@@ -66,13 +66,13 @@ Complete onboarding checklist verified. Dev server running (health endpoint HTTP
 ## Onboarding Flow Design
 
 ### Day 1 — Welcome and Environment
-Before developer arrives: send [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/GitLab invite, provision cloud IAM (read-only), create shared credential entry, block buddy's calendar for pairing. Developer: clone repo, read README, run setup script. Buddy pairs on first setup run. End of day: dev server running, health endpoint returns 200. Any missing step → file as issue → developer's first Day 2 task.
+Before developer arrives: send [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)/GitLab invite, provision cloud IAM (read-only), create shared credential entry, block buddy's calendar for pairing. Developer: clone repo, read README, run setup script. Buddy pairs on first setup run. End of day: dev server running, health endpoint returns 200. Any missing step → file as issue → developer's first Day 2 task.
 
 ### Day 2 — Architecture Tour
-Buddy or tech lead leads 60-min walkthrough: directory structure (src, tests, docs, scripts, infra), request flow client→DB→back, deployment pipeline ([commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)→CI→build→staging→prod), event/message topology (queues, topics, streams), key infra dependencies (DBs, caches, search, CDNs). Developer draws request flow from memory at end. Gaps inform Day 3 focus.
+Buddy or tech lead leads 60-min walkthrough: directory structure (src, tests, docs, scripts, infra), request flow client→DB→back, deployment pipeline ([commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)→CI→build→staging→prod), event/message topology (queues, topics, streams), key infra dependencies (DBs, caches, search, CDNs). Developer draws request flow from memory at end. Gaps inform Day 3 focus.
 
 ### Day 3 — First Code Change
-Pick small, well-scoped ticket (docs fix, minor bug, small feature with clear AC). Buddy pairs on full workflow: branch from main, make change, write tests, run suite locally, push, open draft PR. Focus on workflow correctness (branch name, [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) messages, PR format, CI) not code quality. End of day: draft PR exists with green CI.
+Pick small, well-scoped ticket (docs fix, minor bug, small feature with clear AC). Buddy pairs on full workflow: branch from main, make change, write tests, run suite locally, push, open draft PR. Focus on workflow correctness (branch name, [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) messages, PR format, CI) not code quality. End of day: draft PR exists with green CI.
 
 ### Day 4 — PR Review and Merge
 Buddy + second reviewer perform thorough review: logic, correctness, design, security, tests. Developer responds to each comment, pushes fixes. Buddy ensures developer understands every comment. PR merged with team's standard strategy (squash by default). Developer verifies change in staging.
@@ -127,7 +127,7 @@ Walk directory structure. `src/` or `app/` = application source by feature modul
 Branch strategy: all feature branches from main (never other feature branches). Naming: `feature/user-login`, `fix/PROJ-123-null-pointer`, `chore/upgrade-deps`. PR workflow: draft PR early for intent signal → self-review before requesting → request reviewers → address feedback with additional commits (no force-push during review) → squash merge. CI: every push triggers lint → typecheck → unit → integration → security scan → build. Fix failures at each stage before proceeding. Testing: features need unit tests, bug fixes need reproduction test, API changes need integration tests, critical paths need E2E. Min 80% coverage on new code. Code review culture: respond within 4 business hours, focus on logic/correctness/design/security (linters handle style), explicit approve or request changes (no passive comments-only).
 
 ### Step 4: Team Practices
-Standup: same time daily, same platform, same format (yesterday/today/blocks), ≤15 min for teams ≤10. Communication: Slack/Discord by topic channels (#engineering, #incidents, #releases), scheduled video for agile ceremonies, [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) for code discussions, dedicated on-call channel. Documentation conventions: ADRs per template (title, status, context, decision, consequences) as markdown with sequential ID in `docs/adr/`. API docs as OpenAPI alongside source. Architecture diagrams in `docs/diagrams/` ([Mermaid](../../../Product_and_Business/mermaid/SKILL.md), Draw.io, Excalidraw). [Runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md) in `docs/[runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md)/` (deploy, rollback, [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response, troubleshooting).
+Standup: same time daily, same platform, same format (yesterday/today/blocks), ≤15 min for teams ≤10. Communication: Slack/Discord by topic channels (#engineering, #incidents, #releases), scheduled video for agile ceremonies, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) for code discussions, dedicated on-call channel. Documentation conventions: ADRs per template (title, status, context, decision, consequences) as markdown with sequential ID in `docs/adr/`. API docs as OpenAPI alongside source. Architecture diagrams in `docs/diagrams/` ([Mermaid](../../../Product_and_Business/mermaid/SKILL.md), Draw.io, Excalidraw). [Runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md) in `docs/[runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md)/` (deploy, rollback, [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response, troubleshooting).
 
 ## Models
 
@@ -228,7 +228,7 @@ For fully remote teams without synchronous pairing:
 ### Documentation Requirements
 Before onboarding a new engineer, ensure:
 - [ ] `README.md` has: prerequisites, setup steps, architecture overview
-- [ ] `CONTRIBUTING.md` has: PR process, code review checklist, [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) conventions
+- [ ] `CONTRIBUTING.md` has: PR process, code review checklist, [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) conventions
 - [ ] `docs/architecture.md` has: system diagram, key decisions, data flow
 - [ ] `docs/setup.md` has: exact commands, expected outputs, troubleshooting table
 - [ ] `docs/deployment.md` has: CI/CD pipeline, environment promotion, rollback process
@@ -356,7 +356,7 @@ Month 3: Autonomous — lead features, influence architecture
 15:00 — First PR preparation
   - Create a branch, make a trivial change (update README)
   - Open first PR
-  - Learn: branch naming, [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) conventions, PR template
+  - Learn: branch naming, [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) conventions, PR template
 
 16:30 — Retro on day 1 (new hire + buddy)
   - What was confusing?
@@ -372,7 +372,7 @@ Session 1 — Editor mastery (buddy demos)
   - Git integration (blame, history, stash)
 
 Session 2 — CI/CD pipeline walkthrough
-  - [Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) → CI → Review → Merge → Deploy flow
+  - [Commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) → CI → Review → Merge → Deploy flow
   - How to read CI logs, rerun failed jobs
   - Feature flags and canary deployments
   - Rollback procedure
@@ -510,17 +510,17 @@ sudo apt install -y code
 ## Security Onboarding
 
 ### Day 1 Security Checklist
-- [ ] Enable 2FA on [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/GitLab/Bitbucket
+- [ ] Enable 2FA on [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)/GitLab/Bitbucket
 - [ ] Generate and register SSH key (ed25519)
 - [ ] Set up GPG key for signed commits
 - [ ] Install password manager (1Password/Bitwarden)
 - [ ] Request access to: production logs (read-only), staging environment, CI/CD console, [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response tools
 - [ ] Review security policy: reporting process, responsible disclosure, PII handling
-- [ ] Review `.env` requirements — never [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) secrets
+- [ ] Review `.env` requirements — never [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) secrets
 
 ### Secure Development Practices
 ```bash
-# Git secrets pre-[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) hook
+# Git secrets pre-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) hook
 # Prevent committing passwords, keys, tokens
 git secrets --install
 git secrets --register-aws
@@ -608,7 +608,7 @@ For teams across 8+ time zones:
 - Record architecture decisions (Loom or screen recording, < 15 min)
 - Leave detailed PR comments with code contexts and reasoning
 - Document pairing session outcomes in shared doc (who, what, decisions, action items)
-- Use [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/Linear issues with acceptance criteria for handoffs
+- Use [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)/Linear issues with acceptance criteria for handoffs
 - "Follow the sun" handoff: document state clearly so next time zone can pick up
 
 ## Onboarding Metrics & Success Criteria

@@ -96,7 +96,7 @@ below.
 1. **Install Kubecost via Helm**, pointing it at cloud billing for
    accurate node pricing:
    ```bash
-   helm repo add kubecost https://kubecost.[github](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/cost-analyzer/
+   helm repo add kubecost https://kubecost.[github](../../../../ci-cd/github-actions/other/github/SKILL.md).io/cost-analyzer/
    helm upgrade --install kubecost kubecost/cost-analyzer \
      --namespace kubecost --create-namespace \
      --set kubecostToken="<KUBECOST_TOKEN>" \

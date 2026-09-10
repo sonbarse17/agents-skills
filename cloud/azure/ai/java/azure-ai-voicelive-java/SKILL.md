@@ -245,5 +245,5 @@ session.receiveEvents()
 
 | Resource | URL |
 |----------|-----|
-| [GitHub](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Source | https://[github](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-java/tree/main/sdk/ai/[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-voicelive |
-| Samples | https://[github](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-java/tree/main/sdk/ai/[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-voicelive/src/samples |
+| [GitHub](../../../../../ci-cd/github-actions/other/github/SKILL.md) Source | https://[github](../../../../../ci-cd/github-actions/other/github/SKILL.md).com/Azure/azure-sdk-for-java/tree/main/sdk/ai/[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-voicelive |
+| Samples | https://[github](../../../../../ci-cd/github-actions/other/github/SKILL.md).com/Azure/azure-sdk-for-java/tree/main/sdk/ai/[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-voicelive/src/samples |

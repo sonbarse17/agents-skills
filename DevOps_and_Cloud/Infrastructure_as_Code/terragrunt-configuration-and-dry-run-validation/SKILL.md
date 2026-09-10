@@ -132,7 +132,7 @@ plan/dry-run discipline needed before that fan-out ever reaches `apply`.
    }
 
    terraform {
-     source = "git::https://[github](../../CI_CD/github/SKILL.md).com/example-org/tf-modules.git//vpc?ref=v3.2.0"
+     source = "git::https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/example-org/tf-modules.git//vpc?ref=v3.2.0"
    }
 
    inputs = {
@@ -148,7 +148,7 @@ plan/dry-run discipline needed before that fan-out ever reaches `apply`.
    }
 
    terraform {
-     source = "git::https://[github](../../CI_CD/github/SKILL.md).com/example-org/tf-modules.git//vpc?ref=v3.2.0"
+     source = "git::https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/example-org/tf-modules.git//vpc?ref=v3.2.0"
    }
 
    inputs = {
@@ -182,7 +182,7 @@ plan/dry-run discipline needed before that fan-out ever reaches `apply`.
    }
 
    terraform {
-     source = "git::https://[github](../../CI_CD/github/SKILL.md).com/example-org/tf-modules.git//app-tier?ref=v1.8.0"
+     source = "git::https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/example-org/tf-modules.git//app-tier?ref=v1.8.0"
    }
 
    inputs = {
@@ -271,7 +271,7 @@ plan/dry-run discipline needed before that fan-out ever reaches `apply`.
 - **Symptom:** `terragrunt plan` in one environment unexpectedly reflects
   a change someone else is still testing in a different environment.
   **Fix:** The module source `ref=` is likely unpinned (pointing at a
-  branch, not a tag/[commit](../../CI_CD/commit/SKILL.md)) — pin every environment's module source to an
+  branch, not a tag/[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)) — pin every environment's module source to an
   explicit version and bump it deliberately per environment as changes
   are promoted.
 
@@ -335,7 +335,7 @@ dependency "vpc" {
 }
 
 terraform {
-  source = "git::https://[github](../../CI_CD/github/SKILL.md).com/example-org/tf-modules.git//app-tier?ref=v1.7.0"
+  source = "git::https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/example-org/tf-modules.git//app-tier?ref=v1.7.0"
 }
 
 inputs = {
@@ -349,7 +349,7 @@ Change: bump the ref and add the new required input introduced by
 `v1.8.0`:
 ```hcl
 terraform {
-  source = "git::https://[github](../../CI_CD/github/SKILL.md).com/example-org/tf-modules.git//app-tier?ref=v1.8.0"
+  source = "git::https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/example-org/tf-modules.git//app-tier?ref=v1.8.0"
 }
 
 inputs = {

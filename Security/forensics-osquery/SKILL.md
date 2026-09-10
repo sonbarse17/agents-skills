@@ -506,7 +506,7 @@ See [../../../Global_References/mitre-attack-queries.md](../../../Global_Referen
 
 ## References
 
-- [osquery [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Repository](https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/osquery/osquery)
+- [osquery [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Repository](https://[github](../../ci-cd/github-actions/other/github/SKILL.md).com/osquery/osquery)
 - [osquery Schema Documentation](https://osquery.io/schema/)
 - [osquery Deployment Guide](https://osquery.readthedocs.io/en/stable/deployment/)
 - [osquery SQL Reference](https://osquery.readthedocs.io/en/stable/introduction/sql/)

@@ -417,7 +417,7 @@ When loading a compressed summary in a new session:
 | Subjective language | "We're almost done" means nothing | "5 files modified, 3 of 10 tests passing" — quantify everything |
 | No ownership | Questions no one answers get forgotten | Always tag: "(decide with: @product)" or "(blocked: waiting on David)" |
 | Missing file paths | "Update the function" — which function, which file? | Always `src/auth/oauth.ts:42` — exact references |
-| Copy-paste of [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) messages | Repeats what git log already has | Synthesize: "3 commits refactored auth middleware for PKCE support" |
+| Copy-paste of [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) messages | Repeats what git log already has | Synthesize: "3 commits refactored auth middleware for PKCE support" |
 | Over-tokenization | Full code blocks in summary — uses 80% of budget | Link to files, describe changes, don't paste entire functions |
 | No rehydration step | Jump into work, miss context, duplicate decisions | Always read the context file and verify state first |
 
@@ -479,7 +479,7 @@ Context Compression Strategy
 - **Token budget**: Keep compressed summary under 2k tokens; link to detailed docs for context.
 - **Freshness**: Always update summary at session end; never carry stale context into new session.
 - **Quantification**: Use numbers (3 files, 8 tests, 2 blockers) instead of vague descriptors.
-- **Git integration**: Cross-reference [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) SHAs for traceability; don't duplicate git log.
+- **Git integration**: Cross-reference [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) SHAs for traceability; don't duplicate git log.
 - **Ownership tagging**: Tag every blocker with an owner `(@person)` for accountability.
 - **Decision lifecycle**: Mark decisions as `active`, `superseded`, or `rejected` with dates.
 

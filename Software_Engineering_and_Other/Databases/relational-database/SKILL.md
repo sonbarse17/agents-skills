@@ -194,7 +194,7 @@ WHERE status = 'pending'
 ORDER BY priority DESC
 LIMIT 10
 FOR UPDATE SKIP LOCKED;
-[COMMIT](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md);
+[COMMIT](../../../ci-cd/common/git-workflow/commit/SKILL.md);
 ```
 
 ### Step 8: Migration Management
@@ -479,7 +479,7 @@ class DatabasePool:
         conn = self.pool.getconn()
         try:
             yield conn
-            conn.[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)()
+            conn.[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)()
         except Exception:
             conn.rollback()
             raise

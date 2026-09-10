@@ -120,13 +120,13 @@ cilium status --wait
 ```bash
 # Cilium CLI
 CILIUM_CLI_VERSION=$(curl -s https://raw.githubusercontent.com/cilium/cilium-cli/main/stable.txt)
-curl -L --remote-name "https://[github](../../CI_CD/github/SKILL.md).com/cilium/cilium-cli/releases/download/${CILIUM_CLI_VERSION}/cilium-linux-amd64.tar.gz"
+curl -L --remote-name "https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/cilium/cilium-cli/releases/download/${CILIUM_CLI_VERSION}/cilium-linux-amd64.tar.gz"
 sudo tar xzvf cilium-linux-amd64.tar.gz -C /usr/local/bin
 rm cilium-linux-amd64.tar.gz
 
 # Hubble CLI
 HUBBLE_VERSION=$(curl -s https://raw.githubusercontent.com/cilium/hubble/master/stable.txt)
-curl -L --remote-name "https://[github](../../CI_CD/github/SKILL.md).com/cilium/hubble/releases/download/${HUBBLE_VERSION}/hubble-linux-amd64.tar.gz"
+curl -L --remote-name "https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/cilium/hubble/releases/download/${HUBBLE_VERSION}/hubble-linux-amd64.tar.gz"
 sudo tar xzvf hubble-linux-amd64.tar.gz -C /usr/local/bin
 rm hubble-linux-amd64.tar.gz
 ```
@@ -183,7 +183,7 @@ helm install tetragon cilium/tetragon \
   --set tetragon.exportFilename=/var/run/cilium/tetragon/tetragon.log
 
 # Install the tetra CLI
-curl -LO "https://[github](../../CI_CD/github/SKILL.md).com/cilium/tetragon/releases/latest/download/tetra-linux-amd64.tar.gz"
+curl -LO "https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/cilium/tetragon/releases/latest/download/tetra-linux-amd64.tar.gz"
 sudo tar xzvf tetra-linux-amd64.tar.gz -C /usr/local/bin
 rm tetra-linux-amd64.tar.gz
 ```
@@ -447,7 +447,7 @@ spec:
 
 ```bash
 # Deploy cloudflare/ebpf_exporter for custom kernel metrics
-helm repo add ebpf-exporter https://cloudflare.[github](../../CI_CD/github/SKILL.md).io/ebpf_exporter
+helm repo add ebpf-exporter https://cloudflare.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/ebpf_exporter
 helm install ebpf-exporter ebpf-exporter/ebpf-exporter \
   --namespace [monitoring](../monitoring/SKILL.md) \
   --set config.programs[0].name=oom_kills \
@@ -757,7 +757,7 @@ Parca uses eBPF to collect CPU profiles continuously with minimal overhead.
 
 ```bash
 # Install Parca Agent via Helm
-helm repo add parca https://parca-dev.[github](../../CI_CD/github/SKILL.md).io/[helm-charts](../../Containers_and_Orchestration/helm-charts/SKILL.md)
+helm repo add parca https://parca-dev.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/[helm-charts](../../Containers_and_Orchestration/helm-charts/SKILL.md)
 helm repo update
 
 helm install parca-agent parca/parca-agent \
@@ -774,7 +774,7 @@ helm install parca-agent parca/parca-agent \
 
 ```bash
 # Install Grafana Pyroscope with eBPF [profiling](../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md)
-helm repo add grafana https://grafana.[github](../../CI_CD/github/SKILL.md).io/[helm-charts](../../Containers_and_Orchestration/helm-charts/SKILL.md)
+helm repo add grafana https://grafana.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/[helm-charts](../../Containers_and_Orchestration/helm-charts/SKILL.md)
 helm repo update
 
 helm install pyroscope grafana/pyroscope \
@@ -796,7 +796,7 @@ sudo perf record -F 99 -a -g -- sleep 30
 sudo perf script > perf.stacks
 
 # Convert to flame graph (using Brendan Gregg's tools)
-git clone https://[github](../../CI_CD/github/SKILL.md).com/brendangregg/FlameGraph.git
+git clone https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/brendangregg/FlameGraph.git
 ./FlameGraph/stackcollapse-perf.pl perf.stacks | \
   ./FlameGraph/flamegraph.pl > flamegraph.svg
 ```
@@ -862,8 +862,8 @@ sudo bpftrace -d -e 'your_program_here' 2>&1 | tail -50
 cat /boot/config-$(uname -r) | grep CONFIG_DEBUG_INFO_BTF
 
 # If not, install BTF data from btfhub
-# https://[github](../../CI_CD/github/SKILL.md).com/aquasecurity/btfhub
-wget "https://[github](../../CI_CD/github/SKILL.md).com/aquasecurity/btfhub-archive/raw/main/ubuntu/22.04/x86_64/$(uname -r).btf.tar.xz"
+# https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/aquasecurity/btfhub
+wget "https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/aquasecurity/btfhub-archive/raw/main/ubuntu/22.04/x86_64/$(uname -r).btf.tar.xz"
 tar xvf "$(uname -r).btf.tar.xz"
 ```
 

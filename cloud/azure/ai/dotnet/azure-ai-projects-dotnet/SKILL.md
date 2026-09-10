@@ -368,5 +368,5 @@ catch (RequestFailedException ex)
 |----------|-----|
 | NuGet Package | https://www.nuget.org/packages/Azure.AI.Projects |
 | API Reference | https://learn.microsoft.com/dotnet/api/azure.ai.projects |
-| [GitHub](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Source | https://[github](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/ai/Azure.AI.Projects |
-| Samples | https://[github](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/ai/Azure.AI.Projects/samples |
+| [GitHub](../../../../../ci-cd/github-actions/other/github/SKILL.md) Source | https://[github](../../../../../ci-cd/github-actions/other/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/ai/Azure.AI.Projects |
+| Samples | https://[github](../../../../../ci-cd/github-actions/other/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/ai/Azure.AI.Projects/samples |

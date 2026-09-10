@@ -57,7 +57,7 @@ before the first health gate — and that number is what the rollout actually en
 ## 2. Treat rollback as a feature you test, not a hope
 
 A rollback plan that has never been executed is a guess. If "roll back" means "redeploy the
-previous artifact," verify that artifact is still available (see `[artifact-management](../../CI_CD/artifact-management/SKILL.md)`) and that
+previous artifact," verify that artifact is still available (see `[artifact-management](../../../ci-cd/common/build/artifact-management/SKILL.md)`) and that
 redeploying it actually restores the previous behavior — not just the previous code, but
 compatibility with whatever state (DB schema, message formats, feature flags) the system is
 currently in. Practice rollback on a low-stakes deploy occasionally so the first time it's used
@@ -79,7 +79,7 @@ your safety margin. A canary or blue-green switch is still a full release the in
 traffic; wrapping the risky code path in a feature flag lets you deploy fully, verify health with
 zero users on the new path, then ramp exposure independently of the deploy. This is the sharper
 tool for anything where "50% of pods have the bug" (rolling) is still too much exposure. See
-`[feature-flags](../../CI_CD/feature-flags/SKILL.md)` for flag mechanics and cleanup discipline.
+`[feature-flags](../../../ci-cd/common/other/feature-flags/SKILL.md)` for flag mechanics and cleanup discipline.
 
 **Done when:** for any deploy marked risky, there's a way to reduce user exposure to zero without
 also reverting the deploy.

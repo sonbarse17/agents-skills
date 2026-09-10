@@ -188,7 +188,7 @@ a change to every production host at once).
    `group_vars/prod/[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).yml` stays fully encrypted while
    `group_vars/prod/vars.yml` stays diffable in version control:
    ```yaml
-   # group_vars/prod/vars.yml (plaintext, safe to [commit](../../CI_CD/commit/SKILL.md))
+   # group_vars/prod/vars.yml (plaintext, safe to [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md))
    db_password: "{{ vault_db_password }}"
    ```
    Run with the [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) password supplied out-of-band (a password manager,
@@ -276,7 +276,7 @@ a change to every production host at once).
 - Use `molecule test` to run a role's task list against a disposable
   container/VM in CI, asserting both convergence and idempotency (a
   second `molecule converge` run should report zero changes).
-- Never [commit](../../CI_CD/commit/SKILL.md) an unencrypted [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) password file or embed it in a
+- Never [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) an unencrypted [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) password file or embed it in a
   playbook; inject it at run time from a secrets manager or CI's native
   secret store.
 
@@ -343,13 +343,13 @@ server {
 
 `inventories/prod/group_vars/webservers/[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).yml` (encrypted with
 `[ansible](../ansible/SKILL.md)-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) create`, shown here only as the *pattern* — replace with a
-real [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-managed secret, never [commit](../../CI_CD/commit/SKILL.md) plaintext):
+real [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-managed secret, never [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) plaintext):
 ```yaml
 vault_tls_passphrase: "REPLACE_WITH_ACTUAL_SECRET"
 ```
 
 `inventories/prod/group_vars/webservers/vars.yml` (plaintext, safe to
-[commit](../../CI_CD/commit/SKILL.md)):
+[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)):
 ```yaml
 nginx_client_max_body_size: "25m"
 tls_passphrase: "{{ vault_tls_passphrase }}"

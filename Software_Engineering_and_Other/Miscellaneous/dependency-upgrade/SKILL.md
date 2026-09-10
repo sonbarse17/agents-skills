@@ -304,7 +304,7 @@ describe("E2E Tests", () => {
 ### Dependabot Configuration
 
 ```yaml
-# .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/dependabot.yml
+# .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/dependabot.yml
 version: 2
 updates:
   - package-ecosystem: "npm"
@@ -314,7 +314,7 @@ updates:
     open-pull-requests-limit: 5
     reviewers:
       - "team-leads"
-    [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)-message:
+    [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)-message:
       prefix: "chore"
       include: "scope"
 ```
@@ -336,7 +336,7 @@ npm install package@latest
 if npm run test; then
   echo "Upgrade successful"
   git add package.json package-lock.json
-  git [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) -m "chore: upgrade package"
+  git [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) -m "chore: upgrade package"
 else
   echo "Upgrade failed, rolling back"
   git checkout main

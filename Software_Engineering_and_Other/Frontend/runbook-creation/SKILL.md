@@ -417,7 +417,7 @@ testing_strategy:
   automation_testing:
     method: "CI pipeline validates bash scripts with shellcheck and dry-run"
     example: |
-      # .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/[runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)-lint.yml
+      # .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/[runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)-lint.yml
       name: Lint [Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) Scripts
       on: [pull_request]
       jobs:

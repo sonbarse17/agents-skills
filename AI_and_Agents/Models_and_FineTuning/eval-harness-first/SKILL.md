@@ -79,7 +79,7 @@ source and the checkpoint's exit gate.
   persona) and sample the cross-product; free-
   generated prompts cluster around whatever's
   easiest to write.
-- **Goldens are versioned like code** — [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)
+- **Goldens are versioned like code** — [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)
   `eval/goldens.jsonl`, diff it in review, tag it per
   release. It doubles as the CI regression suite.
 

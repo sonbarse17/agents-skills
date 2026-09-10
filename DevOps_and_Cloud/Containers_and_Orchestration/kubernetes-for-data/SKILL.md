@@ -415,7 +415,7 @@ dags:
     size: 10Gi
   gitSync:
     enabled: true
-    repo: https://[github](../../CI_CD/github/SKILL.md).com/org/airflow-dags.git
+    repo: https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/org/airflow-dags.git
     branch: main
     subPath: dags
     wait: 60

@@ -95,13 +95,13 @@ oc new-app myimage:latest \
 
 ```bash
 # Deploy from Git repository
-oc new-app https://[github](../../CI_CD/github/SKILL.md).com/org/myapp.git
+oc new-app https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/org/myapp.git
 
 # Specify builder image
-oc new-app nodejs:18~https://[github](../../CI_CD/github/SKILL.md).com/org/nodejs-app.git
+oc new-app nodejs:18~https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/org/nodejs-app.git
 
 # With context directory
-oc new-app https://[github](../../CI_CD/github/SKILL.md).com/org/[monorepo](../../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md).git \
+oc new-app https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/org/[monorepo](../../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md).git \
   --context-dir=backend \
   --name=backend-api
 ```
@@ -185,7 +185,7 @@ spec:
   source:
     type: Git
     git:
-      uri: https://[github](../../CI_CD/github/SKILL.md).com/org/myapp.git
+      uri: https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/org/myapp.git
       ref: main
   strategy:
     type: [Docker](../docker/SKILL.md)
@@ -197,8 +197,8 @@ spec:
       name: myapp:latest
   triggers:
     - type: ConfigChange
-    - type: [GitHub](../../CI_CD/github/SKILL.md)
-      [github](../../CI_CD/github/SKILL.md):
+    - type: [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)
+      [github](../../../ci-cd/github-actions/other/github/SKILL.md):
         secret: webhook-secret
 ```
 
@@ -213,7 +213,7 @@ spec:
   source:
     type: Git
     git:
-      uri: https://[github](../../CI_CD/github/SKILL.md).com/org/myapp.git
+      uri: https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/org/myapp.git
   strategy:
     type: Source
     sourceStrategy:

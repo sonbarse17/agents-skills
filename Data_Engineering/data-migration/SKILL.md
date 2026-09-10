@@ -99,7 +99,7 @@ the new one that got the attention during development.
   new produce equivalent results for the same input.
 - **Use a feature flag to control which path serves live traffic**, so verification can happen
   gradually against real traffic percentages rather than an all-or-nothing switch — see
-  `[feature-flags](../../DevOps_and_Cloud/CI_CD/feature-flags/SKILL.md)` for the mechanics of that rollout.
+  `[feature-flags](../../ci-cd/common/other/feature-flags/SKILL.md)` for the mechanics of that rollout.
 - **Confirm the new path under real production load**, not just synthetic tests, before the
   contract phase removes the option to fall back.
 

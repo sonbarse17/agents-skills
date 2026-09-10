@@ -70,15 +70,15 @@ build {
 }
 ```
 
-- **Version every image build** and tag it with the [commit](../../CI_CD/commit/SKILL.md) it was built from, so any running
+- **Version every image build** and tag it with the [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) it was built from, so any running
   instance can be traced back to exact source.
 - **Rebuild from a clean base every time**, never by patching a previous image in place — the same
   cattle principle applies one level up, to the image itself.
 - **Scan the image before it's promoted** — see `[image-scanning](../../../Security/image-scanning/SKILL.md)` for the [vulnerability-scanning](../../Observability_and_SecOps/vulnerability-scanning/SKILL.md)
   step this pipeline should include.
 
-**Done when:** every image in use can be traced to a specific pipeline run and source [commit](../../CI_CD/commit/SKILL.md), and
-rebuilding from that [commit](../../CI_CD/commit/SKILL.md) reproduces an equivalent image.
+**Done when:** every image in use can be traced to a specific pipeline run and source [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md), and
+rebuilding from that [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) reproduces an equivalent image.
 
 ## 3. Replace instances to deploy, don't reconfigure them
 

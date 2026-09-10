@@ -206,4 +206,4 @@ window.WebChat.renderWebChat(
 | @microsoft/agents-hosting-express      | https://learn.microsoft.com/en-us/javascript/api/%40microsoft/agents-hosting-express?view=agents-sdk-js-latest      |
 | @microsoft/agents-copilotstudio-client | https://learn.microsoft.com/en-us/javascript/api/%40microsoft/agents-copilotstudio-client?view=agents-sdk-js-latest |
 | Integrate with Copilot Studio          | https://learn.microsoft.com/en-us/microsoft-365/agents-sdk/integrate-with-mcs                                       |
-| [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) samples                         | https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/microsoft/Agents/tree/main/samples/nodejs                                                        |
+| [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) samples                         | https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/microsoft/Agents/tree/main/samples/nodejs                                                        |

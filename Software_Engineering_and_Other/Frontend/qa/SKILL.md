@@ -245,7 +245,7 @@ Focusing exclusively on functional testing while ignoring performance, security,
 A defect report that says "it doesn't work" cannot be actioned. Every defect must include clear steps to reproduce, expected vs actual results, environment details, and supporting evidence.
 
 ### Pitfall 8: Regression Suite That Takes Hours
-A regression suite that takes hours to run is rarely run. Developers skip it, CI pipelines get bypassed. Keep the suite fast (under 30 minutes). Split if needed — run critical tests on every [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md), full suite nightly.
+A regression suite that takes hours to run is rarely run. Developers skip it, CI pipelines get bypassed. Keep the suite fast (under 30 minutes). Split if needed — run critical tests on every [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md), full suite nightly.
 
 ### Pitfall 9: Testing Without Requirements
 Testing without clear acceptance criteria or requirements leads to subjective pass/fail decisions. Every test must have a clear expected result. If the requirement is unclear, clarify before testing.
@@ -386,7 +386,7 @@ A fintech company had manual-only testing with release cycles of 4 weeks. They i
 A growing e-commerce platform had 1,200 E2E tests with a 40% flake rate. Tests failed randomly, developers ignored failures, and defects leaked to production. The team spent 2 sprints quarantining flaky tests, fixing root causes (test data isolation, timing, environment dependency), and reducing the flake rate to 3%. The remaining test suite went from 1,200 to 400 reliable tests — with better coverage.
 
 ### Case Study 3: Healthcare — Risk-Based Testing for Compliance
-A healthcare SaaS company needed to release quickly while maintaining HIPAA compliance. They implemented risk-based testing: critical path tests (authentication, authorization, data access) ran on every [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md); full regression ran nightly; compliance [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) suite ran weekly. This balanced speed and compliance. [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) findings related to testing were reduced by 80%.
+A healthcare SaaS company needed to release quickly while maintaining HIPAA compliance. They implemented risk-based testing: critical path tests (authentication, authorization, data access) ran on every [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md); full regression ran nightly; compliance [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) suite ran weekly. This balanced speed and compliance. [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) findings related to testing were reduced by 80%.
 
 ### Case Study 4: Retail — Shift-Left with Contract Testing
 A retail company implemented consumer-driven contract testing (Pact) for [microservices](../../Patterns/microservices/SKILL.md). Integration issues between services dropped 90%. Developer feedback cycle reduced from days to minutes. The contract test suite caught breaking changes before they reached staging.
@@ -518,7 +518,7 @@ After completing this skill:
 ### CI Integration
 - **Fast feedback**: Run unit tests in < 5 minutes. Run full suite in < 30 minutes on CI.
 - **Test splitting**: Split test suite into fast (PR) and full (nightly). PR pipeline runs critical tests only.
-- **Caching**: Cache node_modules, build artifacts, and test results. Use buildkite/[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) actions cache features.
+- **Caching**: Cache node_modules, build artifacts, and test results. Use buildkite/[github](../../../ci-cd/github-actions/other/github/SKILL.md) actions cache features.
 
 ## Security Considerations
 

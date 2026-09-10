@@ -91,7 +91,7 @@ helpers (`_helpers.tpl`) that need their own comments to follow.
   keep control flow visible in the resource file it affects.
 - **If a chart needs to conditionally render 10 different resource combinations**, that's a sign it's
   actually several charts, or that a library chart / subchart split is overdue.
-- **Lint and render before every [commit](../../CI_CD/commit/SKILL.md)**: `helm lint` and `helm template` catch broken YAML from
+- **Lint and render before every [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)**: `helm lint` and `helm template` catch broken YAML from
   whitespace/indentation errors that only surface at `helm install` time otherwise.
 
 **Done when:** `helm template` renders valid manifests for every supported values combination, and

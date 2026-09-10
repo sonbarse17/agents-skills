@@ -159,7 +159,7 @@ before a long run, not after hour six.
   the stack moves faster than the docs.
 - **CHECK:** `../../../Global_References/gotcha-checks.md` G8 — the playbook
   repo's recent issues.
-- **FIX:** check `[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/NVIDIA/dgx-spark-playbooks` issues
+- **FIX:** check `[github](../../ci-cd/github-actions/other/github/SKILL.md).com/NVIDIA/dgx-spark-playbooks` issues
   before trusting a recipe for an expensive run.
 
 ### G9: Container-First, Not Bare Pip

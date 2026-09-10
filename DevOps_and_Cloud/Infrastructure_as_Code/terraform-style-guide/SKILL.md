@@ -283,13 +283,13 @@ provider "aws" {
 
 ## Version Control
 
-**Never [commit](../../CI_CD/commit/SKILL.md):**
+**Never [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md):**
 - `terraform.tfstate`, `terraform.tfstate.backup`
 - `.terraform/` directory
 - `*.tfplan`
 - `.tfvars` files with sensitive data
 
-**Always [commit](../../CI_CD/commit/SKILL.md):**
+**Always [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md):**
 - All `.tf` configuration files
 - `.terraform.lock.hcl` (dependency lock file)
 

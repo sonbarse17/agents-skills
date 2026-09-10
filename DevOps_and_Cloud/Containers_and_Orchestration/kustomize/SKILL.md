@@ -355,7 +355,7 @@ components:
 # kustomization.yaml
 resources:
   # Remote Git repository
-  - https://[github](../../CI_CD/github/SKILL.md).com/org/manifests//base?ref=v1.0.0
+  - https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/org/manifests//base?ref=v1.0.0
   
   # Remote URL
   - https://raw.githubusercontent.com/org/repo/main/deployment.yaml
@@ -389,7 +389,7 @@ kustomize build overlays/production | [kubectl](../kubectl/SKILL.md) apply -f -
 # kustomization.yaml
 helmCharts:
   - name: prometheus
-    repo: https://prometheus-community.[github](../../CI_CD/github/SKILL.md).io/[helm-charts](../helm-charts/SKILL.md)
+    repo: https://prometheus-community.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/[helm-charts](../helm-charts/SKILL.md)
     version: 25.0.0
     releaseName: prometheus
     namespace: [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)

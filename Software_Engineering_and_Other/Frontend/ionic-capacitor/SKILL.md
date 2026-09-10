@@ -164,7 +164,7 @@ Need native device access?
 ## Best Practices
 
 - Use `ion-` components exclusively — avoid mixing with platform-specific UI
-- [Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) `ios/` and `[android](../../../Mobile/android/SKILL.md)/` directories to version control
+- [Commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) `ios/` and `[android](../../../Mobile/android/SKILL.md)/` directories to version control
 - Test on real devices before each release — simulator misses camera, sensors, push
 - Use `npx cap sync` after every npm dependency change — not just `npx cap copy`
 - Configure all permission strings in Info.plist and AndroidManifest before plugin calls
@@ -603,7 +603,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
+- Signed commits: GPG or SSH [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management

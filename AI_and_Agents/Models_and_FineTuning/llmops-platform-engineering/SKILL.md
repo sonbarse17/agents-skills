@@ -34,7 +34,7 @@ Design and operate an internal LLM platform that supports rapid experimentation 
 
 - [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cluster with GPU node pools (or cloud inference API access)
 - Container registry (Harbor, ECR, GCR, or ACR)
-- CI/CD system ([GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions, GitLab CI, or Argo Workflows)
+- CI/CD system ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, or Argo Workflows)
 - [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) stack (Prometheus + Grafana + [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
 - Model registry (MLflow or custom metadata store)
 
@@ -55,7 +55,7 @@ Design and operate an internal LLM platform that supports rapid experimentation 
 ## Model Promotion Pipeline
 
 ```yaml
-# .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/model-promotion.yaml
+# .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/model-promotion.yaml
 name: Model Promotion Pipeline
 on:
   workflow_dispatch:
@@ -131,7 +131,7 @@ jobs:
     steps:
       - name: Record approval
         run: |
-          echo "Approved by: ${{ [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).actor }}"
+          echo "Approved by: ${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).actor }}"
           echo "Model: ${{ inputs.model_name }}:${{ inputs.model_version }}"
           echo "Target: ${{ inputs.target_env }}"
           echo "Time: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
@@ -408,7 +408,7 @@ spec:
   - regression evals drop below baseline,
   - safety tests exceed risk threshold,
   - p95 latency exceeds SLO budget.
-- Store deployment evidence for audits ([commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) SHA, eval report, approver).
+- Store deployment evidence for audits ([commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) SHA, eval report, approver).
 
 ## Operational SLOs
 
@@ -431,7 +431,7 @@ spec:
 
 | Layer | Tools |
 |-------|-------|
-| Orchestration | Argo Workflows, [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions, Airflow |
+| Orchestration | Argo Workflows, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions, Airflow |
 | Model Registry | MLflow, custom metadata DB |
 | Gateway | LiteLLM, Envoy-based API gateway |
 | [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) | [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) + Prometheus + Grafana + Langfuse |

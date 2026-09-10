@@ -548,7 +548,7 @@ curl -f http://redis-metrics:9121/metrics | grep redis_keyspace_hits
 
 ### Step 5: Backup Validation Pipeline
 ```yaml
-# .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/backup-validation.yml
+# .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/backup-validation.yml
 name: Backup Validation
 on:
   schedule:

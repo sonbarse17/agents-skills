@@ -59,7 +59,7 @@ capabilities and where each one's blind spots require the others.
   requirement not covered by a built-in policy.
 - The user wants Terraform/[CloudFormation](../../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md) scanned for misconfiguration
   before merge/apply, using Prisma Cloud's IaC scanning (`checkov` CLI
-  or the Prisma Cloud IaC scan API/[GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) App).
+  or the Prisma Cloud IaC scan API/[GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) App).
 - The user wants to deploy Prisma Cloud **Defender agents** to hosts,
   a [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cluster, or [serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) functions for runtime workload
   protection, and needs to understand what that adds beyond CSPM alone.
@@ -88,7 +88,7 @@ capabilities and where each one's blind spots require the others.
   built on it) or the Prisma Cloud IaC scan API/CI plugin, plus a
   Prisma Cloud access key (API key ID + secret) for API-based scans —
   store as CI secrets, never inline. See
-  [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../security/secrets-management/SKILL.md)/SKILL.md).
+  [secrets-management](../../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../security/secrets-management/SKILL.md)/SKILL.md).
 - For Workload Protection: outbound network connectivity from each
   host/cluster to the Prisma Cloud Compute console (self-hosted
   Compute console or the SaaS one), and sufficient privilege to deploy
@@ -143,7 +143,7 @@ capabilities and where each one's blind spots require the others.
    before `terraform apply`, not only after the fact by CSPM polling a
    deployed resource:
    ```yaml
-   # [GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions, using checkov (Prisma Cloud's IaC scan engine)
+   # [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions, using checkov (Prisma Cloud's IaC scan engine)
    name: iac-scan
    on: [pull_request]
    jobs:
@@ -327,6 +327,6 @@ production EKS cluster.
 - [sysdig-secure-runtime-security](../[sysdig-secure-runtime-security](../../../AI_and_Agents/Workflows/sysdig-secure-runtime-security/SKILL.md)/SKILL.md) —
   a comparable runtime-protection approach (Falco-rule-based) worth
   understanding alongside Prisma's Defender agent model.
-- [container-image-hardening](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[container-image-hardening](../../../../DevOps_and_Cloud/Containers_and_Orchestration/container-image-hardening/SKILL.md)/SKILL.md) —
+- [container-image-hardening](../../../../Security/devsecops/SKILL.md)/skills/[container-image-hardening](../../../../DevOps_and_Cloud/Containers_and_Orchestration/container-image-hardening/SKILL.md)/SKILL.md) —
   reducing what both Defender's image scanning and CSPM have to find in
   workload images in the first place.

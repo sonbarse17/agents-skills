@@ -248,7 +248,7 @@ PARAMETER repeat_penalty 1.1
 ```bash
 # Build and use custom model
 ollama create devops-assistant -f Modelfile.devops-assistant
-ollama run devops-assistant "Set up a [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions workflow for [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) builds"
+ollama run devops-assistant "Set up a [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions workflow for [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) builds"
 ```
 
 ## GPU Configuration

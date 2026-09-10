@@ -165,7 +165,7 @@ unblock conversion.
   over every SFT and DPO row and redact matches;
   conversion fails closed (the row is dropped, not
   shipped with the raw content) if sensitive fields
-  remain after redaction. Never [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) secrets.
+  remain after redaction. Never [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) secrets.
 - **Eval goldens must never leak
   into training data.** Hold
   every `eval/goldens.jsonl` ID

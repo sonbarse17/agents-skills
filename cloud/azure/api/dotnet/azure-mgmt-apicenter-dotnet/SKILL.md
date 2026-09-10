@@ -432,4 +432,4 @@ catch (RequestFailedException ex)
 | NuGet Package | https://www.nuget.org/packages/Azure.ResourceManager.ApiCenter |
 | API Reference | https://learn.microsoft.com/dotnet/api/azure.resourcemanager.apicenter |
 | Product Documentation | https://learn.microsoft.com/azure/api-center/ |
-| [GitHub](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Source | https://[github](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/apicenter/Azure.ResourceManager.ApiCenter |
+| [GitHub](../../../../../ci-cd/github-actions/other/github/SKILL.md) Source | https://[github](../../../../../ci-cd/github-actions/other/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/apicenter/Azure.ResourceManager.ApiCenter |

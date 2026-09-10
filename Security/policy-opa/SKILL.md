@@ -223,7 +223,7 @@ opa eval --bundle policies.tar.gz --input config.yaml 'data'
 
 Add policy validation to your CI/CD workflow:
 
-**[GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions Example:**
+**[GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions Example:**
 ```yaml
 - name: Validate Policies
   uses: open-policy-agent/setup-opa@v2
@@ -321,7 +321,7 @@ Generate compliance reports using the bundled reporting script:
 - `[pci-dss-compliance](../../cloud/common/security/pci-dss-compliance/SKILL.md).rego` - PCI-DSS requirements as OPA policies
 - `[gdpr-compliance](../../Software_Engineering_and_Other/Frontend/gdpr-compliance/SKILL.md).rego` - GDPR data protection policies
 - `terraform-security.rego` - Terraform security best practices policies
-- `ci-cd-pipeline.yaml` - CI/CD integration examples ([GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions, GitLab CI)
+- `ci-cd-pipeline.yaml` - CI/CD integration examples ([GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI)
 
 ## Common Patterns
 
@@ -406,7 +406,7 @@ allow if {
 
 ## Integration Points
 
-- **CI/CD Pipelines**: [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../DevOps_and_Cloud/CI_CD/jenkins/SKILL.md), [CircleCI](../../DevOps_and_Cloud/CI_CD/circleci/SKILL.md) - validate policies before deployment
+- **CI/CD Pipelines**: [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../ci-cd/jenkins/other/jenkins/SKILL.md), [CircleCI](../../ci-cd/circleci/other/circleci/SKILL.md) - validate policies before deployment
 - **[Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)**: OPA Gatekeeper admission controller for runtime policy enforcement
 - **Terraform/IaC**: Pre-deployment validation using `conftest` or OPA CLI
 - **API Gateways**: Kong, Envoy, NGINX - authorize requests using OPA policies
@@ -452,7 +452,7 @@ allow if {
 
 - [OPA Documentation](https://www.openpolicyagent.org/docs/latest/)
 - [Rego Language Reference](https://www.openpolicyagent.org/docs/latest/policy-language/)
-- [OPA Gatekeeper](https://open-policy-agent.[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/gatekeeper/website/)
+- [OPA Gatekeeper](https://open-policy-agent.[github](../../ci-cd/github-actions/other/github/SKILL.md).io/gatekeeper/website/)
 - [Conftest](https://www.conftest.dev/)
 - [OPA [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Tutorial](https://www.openpolicyagent.org/docs/latest/[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-tutorial/)
 - [SOC2 Security Controls](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html)

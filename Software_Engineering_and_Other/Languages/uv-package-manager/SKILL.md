@@ -79,7 +79,7 @@ pip install uv
 brew install uv
 
 # Using cargo (if you have Rust)
-cargo install --git https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/astral-sh/uv uv
+cargo install --git https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/astral-sh/uv uv
 ```
 
 ### Verify Installation
@@ -200,10 +200,10 @@ uv add --dev pytest pytest-cov
 uv add --optional docs sphinx
 
 # Add from git
-uv add git+https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/user/repo.git
+uv add git+https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/user/repo.git
 
 # Add from git with specific ref
-uv add git+https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/user/repo.git@v1.0.0
+uv add git+https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/user/repo.git@v1.0.0
 
 # Add from local path
 uv add ./local-package
@@ -334,7 +334,7 @@ dev-dependencies = [
 
 [tool.uv.sources]
 # Custom package sources
-my-package = { git = "https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/user/repo.git" }
+my-package = { git = "https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/user/repo.git" }
 ```
 
 ### Pattern 11: Using uv with Existing Projects

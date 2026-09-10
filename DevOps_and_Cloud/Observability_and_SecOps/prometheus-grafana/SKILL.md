@@ -115,7 +115,7 @@ scrape_configs:
 
 ```bash
 # Add Prometheus community Helm repo
-helm repo add prometheus-community https://prometheus-community.[github](../../CI_CD/github/SKILL.md).io/[helm-charts](../../Containers_and_Orchestration/helm-charts/SKILL.md)
+helm repo add prometheus-community https://prometheus-community.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/[helm-charts](../../Containers_and_Orchestration/helm-charts/SKILL.md)
 
 # Install kube-prometheus-stack
 helm install prometheus prometheus-community/kube-prometheus-stack \
@@ -371,8 +371,8 @@ groups:
 
 ```go
 import (
-    "[github](../../CI_CD/github/SKILL.md).com/prometheus/client_golang/prometheus"
-    "[github](../../CI_CD/github/SKILL.md).com/prometheus/client_golang/prometheus/promhttp"
+    "[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/prometheus/client_golang/prometheus"
+    "[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/prometheus/client_golang/prometheus/promhttp"
 )
 
 var httpRequests = prometheus.NewCounterVec(

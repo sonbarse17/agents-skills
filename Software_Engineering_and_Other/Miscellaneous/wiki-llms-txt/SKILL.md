@@ -119,7 +119,7 @@ Generate three files:
 
 | File | Purpose | Discoverability |
 |------|---------|-----------------|
-| `./llms.txt` | Root discovery file | Standard path per llms.txt spec. [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) MCP `get_file_contents` and `search_code` find this first. |
+| `./llms.txt` | Root discovery file | Standard path per llms.txt spec. [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) MCP `get_file_contents` and `search_code` find this first. |
 | `wiki/llms.txt` | Wiki-relative links | For VitePress deployment and wiki-internal navigation. |
 | `wiki/llms-full.txt` | Full inlined content | Comprehensive reference for agents needing all docs in one file. |
 

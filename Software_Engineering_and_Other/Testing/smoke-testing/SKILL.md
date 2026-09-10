@@ -249,7 +249,7 @@ if __name__ == "__main__":
 
 ## CI/CD Pipeline Integration
 
-### [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions — Smoke Test Stage with Rollback
+### [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions — Smoke Test Stage with Rollback
 ```yaml
 name: Deploy with Smoke Tests
 on:
@@ -286,14 +286,14 @@ jobs:
         run: ./promote.sh staging production
 ```
 
-### [ArgoCD](../../../DevOps_and_Cloud/Containers_and_Orchestration/argocd/SKILL.md) Health Check Integration
+### [ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md) Health Check Integration
 ```yaml
 # application.yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 spec:
   source:
-    repoURL: https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/example/app
+    repoURL: https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/example/app
   syncPolicy:
     automated:
       selfHeal: true
@@ -526,7 +526,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
+- Signed commits: GPG or SSH [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management

@@ -262,7 +262,7 @@ Every deployment needs a rollback plan before it happens:
 ### Rollback Steps
 1. Disable feature flag (if applicable)
    OR
-1. Deploy previous version: `git revert <[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)> && git push`
+1. Deploy previous version: `git revert <[commit](../../ci-cd/common/git-workflow/commit/SKILL.md)> && git push`
 2. Verify rollback: health check, error [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 3. Communicate: notify team of rollback
 

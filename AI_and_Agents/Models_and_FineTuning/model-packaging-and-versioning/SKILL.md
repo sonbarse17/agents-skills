@@ -70,7 +70,7 @@ system, a compliance reviewer, and an on-call engineer can all reason about.
 - Container tooling ([Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) or equivalent OCI builder) if packaging as an
   image for serving.
 - CI/CD system with the ability to run build steps, store artifacts, and gate
-  promotions ([GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../../DevOps_and_Cloud/CI_CD/jenkins/SKILL.md), Argo Workflows).
+  promotions ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md), Argo Workflows).
 - Read/write permissions to the registry's "staging" and "production" stages
   are usually separated — confirm who/what has production write access before
   designing the promotion workflow.
@@ -86,7 +86,7 @@ system, a compliance reviewer, and an on-call engineer can all reason about.
    - `patch`: bug-fix retrain (e.g. fixed a data leak, no architecture change).
    - Example: `fraud-scorer-v2.3.1+a1b2c3d.run-8841`.
 2. **Capture full lineage metadata at packaging time**, not after the fact:
-   - Git [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) SHA of the training code.
+   - Git [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) SHA of the training code.
    - Training data snapshot ID/URI (e.g. a Delta Lake version or a dataset
      hash) — see
      [data-and-model-lineage](../[data-and-model-lineage](../../../Data_Engineering/data-and-model-lineage/SKILL.md)/SKILL.md) for how to

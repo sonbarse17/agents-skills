@@ -405,7 +405,7 @@ import re
 
 SECRET_PATTERNS = [
     (r"AKIA[0-9A-Z]{16}", "AWS Access Key"),
-    (r"ghp_[A-Za-z0-9_]{36}", "[GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) PAT"),
+    (r"ghp_[A-Za-z0-9_]{36}", "[GitHub](../../ci-cd/github-actions/other/github/SKILL.md) PAT"),
     (r"sk-[A-Za-z0-9]{48}", "OpenAI API Key"),
     (r"-----BEGIN (RSA |EC )?PRIVATE KEY-----", "Private Key"),
     (r"xox[bpsar]-[A-Za-z0-9-]+", "Slack Token"),

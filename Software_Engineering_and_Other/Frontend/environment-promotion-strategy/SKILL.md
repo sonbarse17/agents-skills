@@ -74,7 +74,7 @@ bottleneck.
   environment variables, a config service, or per-environment
   `values.yaml`/`.tfvars` overlays, so the same build works unmodified in
   every environment.
-- Platform support for approval gates: [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Environments (protection
+- Platform support for approval gates: [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Environments (protection
   rules with required reviewers), GitLab `environment:` + manual jobs, or
   the [GitOps](../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) operator's manual-sync setting (see
   [gitops-workflow](../[gitops-workflow](../../../DevOps_and_Cloud/Containers_and_Orchestration/[gitops](../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md)).
@@ -130,7 +130,7 @@ bottleneck.
    approval recorded.
 
 4. **Implement the gate mechanically**, don't rely on process memory.
-   [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions example using environment protection + a required
+   [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions example using environment protection + a required
    reviewer, chained after staging deploy:
    ```yaml
    deploy-staging:
@@ -146,7 +146,7 @@ bottleneck.
      steps:
        - run: ./deploy.sh prod ${{ needs.deploy-staging.outputs.version }}
    ```
-   The `production` [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Environment is configured (Settings →
+   The `production` [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Environment is configured (Settings →
    Environments → production → required reviewers) so the job literally
    cannot proceed without an approval click — the gate is enforced by the
    platform, not by a [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) step someone might skip.
@@ -260,11 +260,11 @@ train not required (this service promotes independently).
    regression.
 5. A PR bumping the `prod` overlay to `1.4.2` is opened, referencing the
    staging soak evidence (linked dashboard) in its description. The
-   `production` [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Environment requires one reviewer from the
+   `production` [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Environment requires one reviewer from the
    on-call rotation; they review the change, confirm the staging
    evidence, and approve.
 6. Merging the PR triggers the [GitOps](../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) operator (manual-sync mode for
-   prod) to require an explicit `[argocd](../../../DevOps_and_Cloud/Containers_and_Orchestration/argocd/SKILL.md) app sync payments-api-prod`,
+   prod) to require an explicit `[argocd](../../../ci-cd/argocd/other/argocd/SKILL.md) app sync payments-api-prod`,
    executed by the same approver as a deliberate final step — completing
    promotion to production for the exact artifact that was built once in
    step 1 and never rebuilt.

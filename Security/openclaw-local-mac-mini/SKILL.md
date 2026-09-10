@@ -19,7 +19,7 @@ depends_on:
 
 # OpenClaw Local + Mac mini Setup
 
-Use this skill when you want to run [OpenClaw](https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/openclaw/openclaw) on a developer laptop or promote it to a stable Mac mini host. Covers cloning and bootstrapping, [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose configuration, Mac mini hardware optimization, networking, [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), and production-grade launchd services.
+Use this skill when you want to run [OpenClaw](https://[github](../../ci-cd/github-actions/other/github/SKILL.md).com/openclaw/openclaw) on a developer laptop or promote it to a stable Mac mini host. Covers cloning and bootstrapping, [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose configuration, Mac mini hardware optimization, networking, [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), and production-grade launchd services.
 
 ## When to Use
 
@@ -43,7 +43,7 @@ Use this skill when you want to run [OpenClaw](https://[github](../../DevOps_and
 
 ```bash
 # Clone the repository
-git clone https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/openclaw/openclaw.git
+git clone https://[github](../../ci-cd/github-actions/other/github/SKILL.md).com/openclaw/openclaw.git
 cd openclaw
 
 # Review the upstream README for current prerequisites
@@ -260,7 +260,7 @@ su - openclaw
 
 # Clone and configure OpenClaw in the user's home
 cd ~
-git clone https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/openclaw/openclaw.git
+git clone https://[github](../../ci-cd/github-actions/other/github/SKILL.md).com/openclaw/openclaw.git
 cd openclaw
 cp .env.example .env
 # Edit .env with production values

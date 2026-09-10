@@ -240,8 +240,8 @@ package test
 
 import (
     "testing"
-    "[github](../../CI_CD/github/SKILL.md).com/gruntwork-io/terratest/modules/terraform"
-    "[github](../../CI_CD/github/SKILL.md).com/stretchr/testify/assert"
+    "[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/gruntwork-io/terratest/modules/terraform"
+    "[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/stretchr/testify/assert"
 )
 
 func TestVPCModule(t *testing.T) {

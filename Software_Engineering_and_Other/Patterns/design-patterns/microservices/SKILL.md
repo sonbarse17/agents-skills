@@ -19,7 +19,7 @@ Distributed systems demand rigorous data consistency models and scalable communi
 
 ## 1. The SAGA Pattern: Distributed Transactions
 
-In [microservices](../../microservices/SKILL.md), traditional ACID transactions (2PC/Two-Phase [Commit](../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)) are antipatterns due to synchronous blocking and lock contention. SAGA mitigates this by decomposing a distributed transaction into a sequence of local ACID transactions.
+In [microservices](../../microservices/SKILL.md), traditional ACID transactions (2PC/Two-Phase [Commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)) are antipatterns due to synchronous blocking and lock contention. SAGA mitigates this by decomposing a distributed transaction into a sequence of local ACID transactions.
 
 If a local transaction fails, the SAGA executes **compensating transactions** to rollback the preceding steps, achieving eventual consistency.
 

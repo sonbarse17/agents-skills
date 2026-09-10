@@ -466,7 +466,7 @@ Blockchain Testing Strategy
 │   ├── Yes (extensive) → Tenderly virtual testnet
 │   └── No → Mock external contracts
 └── CI integration?
-    ├── Yes → Forge test in [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions / [CircleCI](../../DevOps_and_Cloud/CI_CD/circleci/SKILL.md)
+    ├── Yes → Forge test in [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions / [CircleCI](../../ci-cd/circleci/other/circleci/SKILL.md)
     └── No → Local testing only (risky)
 ```
 
@@ -549,13 +549,13 @@ contract InvariantTest is Test {
 - **Fuzz optimization**: Bound inputs with `bound()` to reduce search space; use targeted fuzzing for critical funcs.
 - **Selective fork testing**: Fork only specific contracts needed; use mock for rest to reduce overhead.
 - **Cache dependencies**: Warm fork RPC cache; reuse state across test runs in CI.
-- **Test tiering**: Unit (every [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)) → Fuzz (every PR) → Fork (nightly) — fastest gates first.
+- **Test tiering**: Unit (every [commit](../../ci-cd/common/git-workflow/commit/SKILL.md)) → Fuzz (every PR) → Fork (nightly) — fastest gates first.
 
 ## Security Considerations
 
 - **Test isolation**: Use `vm.prank` and `vm.startPrank` for isolated test contexts; reset state between tests.
 - **Mainnet state safety**: Never run fork tests on production RPC with write access; use read-only archives.
-- **Secrets in tests**: Store fork RPC URLs in env vars; never [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) API keys to test files.
+- **Secrets in tests**: Store fork RPC URLs in env vars; never [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) API keys to test files.
 - **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) readiness**: Structure tests for auditor review; document test coverage and invariant rationale.
 - **Test timeout**: Set test timeout (e.g., `forge test --no-match-contract "Fork" --timeout 300`) to prevent CI hangs.
 

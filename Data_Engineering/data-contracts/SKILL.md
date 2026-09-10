@@ -301,7 +301,7 @@ Data contracts vs data quality: quality tools validate data against expectations
 | Soda | Data quality [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), SLA enforcement |
 | Monte Carlo | Data [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md), drift detection |
 | Marquez / OpenLineage | Lineage for impact analysis |
-| Custom CI/CD scripts | Contract validation in [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/GitLab |
+| Custom CI/CD scripts | Contract validation in [GitHub](../../ci-cd/github-actions/other/github/SKILL.md)/GitLab |
 | DataHub / OpenMetadata | Contract storage and discovery |
 | Apache Avro / Protobuf | Schema definition for contracts with schema registry integration |
 

@@ -593,7 +593,7 @@ npx create-medusa-app@latest my-store
 
 - Official MedusaJS Documentation
 - Community Discord and Forums
-- [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Repository and Examples
+- [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Repository and Examples
 - Plugin Marketplace
 - Developer Tools and CLI Commands
 

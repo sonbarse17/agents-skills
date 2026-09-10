@@ -289,7 +289,7 @@ Single-threshold [alerting](../alerting/SKILL.md) on error budget creates too ma
 - Support teams should be aligned with tiers (dedicated for critical, pooled for standard).
 
 ### SLA Negotiation
-- Never [commit](../../CI_CD/commit/SKILL.md) to SLO targets that current system [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) cannot meet. Baseline for 3 months before negotiating.
+- Never [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) to SLO targets that current system [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) cannot meet. Baseline for 3 months before negotiating.
 - Define measurement methodology explicitly in contract language. Ambiguity leads to disputes.
 - Include exclusion windows for planned maintenance. Define what counts as downtime and what does not.
 - Define service credit calculation formula precisely. Use tiered credit rates (more credit for larger breaches).
@@ -453,7 +453,7 @@ A B2B SaaS company negotiated a 99.99% SLA to win a large enterprise deal withou
 Remediation: immediate reliability investment (multi-region deployment, load testing, redundancy). Renegotiated SLA to 99.95% with a 99.99% target for a subset of APIs. Implemented real-time SLO [dashboards](../dashboards/SKILL.md) for the customer. Internal SLO set at 99.995% to provide buffer. Lessons learned: never negotiate SLA without validating against current system capability. Include phase-in period in new SLAs.
 
 ## Rules
-- SLO targets must be achievable with current system [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) — do not [commit](../../CI_CD/commit/SKILL.md) to targets that cannot be met.
+- SLO targets must be achievable with current system [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) — do not [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) to targets that cannot be met.
 - Error budgets must have documented consumption policies and escalation procedures.
 - Burn rate alerts must not fire during planned maintenance windows (with proper exclusion).
 - Multi-tier SLA requires clear mapping of customer to tier with documented contract terms.

@@ -28,7 +28,7 @@ Build Azure managed images and Azure Compute Gallery images using Packer's `azur
 packer {
   required_plugins {
     azure = {
-      source  = "[github](../../../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/hashicorp/azure"
+      source  = "[github](../../../../../../../ci-cd/github-actions/other/github/SKILL.md).com/hashicorp/azure"
       version = "~> 2.0"
     }
   }

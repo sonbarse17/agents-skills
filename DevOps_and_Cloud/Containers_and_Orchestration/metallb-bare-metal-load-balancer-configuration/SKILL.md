@@ -230,7 +230,7 @@ job.
   by both DHCP and MetalLB produces intermittent, very confusing IP
   conflicts that look like a [Kubernetes](../kubernetes/SKILL.md) bug.
 - Default to Layer2 mode unless BGP's load-spreading or faster-failover
-  benefits are actually needed and the network team can [commit](../../CI_CD/commit/SKILL.md) to
+  benefits are actually needed and the network team can [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) to
   maintaining the peering — BGP mode adds a real, ongoing
   cross-team dependency that Layer2 mode doesn't.
 - Keep `aggregationLength: 32` (advertise each service IP individually)

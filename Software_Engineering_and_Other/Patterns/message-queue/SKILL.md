@@ -185,7 +185,7 @@ Exactly-once:     transactional producers + idempotent consumers + dedup.
 On receive message:
   1. Check if idempotency_key exists in processed set (Redis / DB).
   2. If exists → ack and skip (duplicate).
-  3. If not exists → process, store idempotency_key, [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) offset / ack.
+  3. If not exists → process, store idempotency_key, [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) offset / ack.
 
 Idempotency key = message.id or business_key + event_type
 Processed set TTL: match broker retention period
@@ -369,7 +369,7 @@ async function checkConsumerLag(admin: Admin, groupId: string): Promise<void> {
 | Using MQ as a database | Storage grows unbounded, no query capability | Define retention limits, use DB for persistence |
 | Infinite retention | Storage explosion, slow rebalances | Set retention by time and size |
 | No DLQ [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) | Silent data loss | Alert on DLQ message production |
-| Committing offset before processing | Lost messages on crash | [Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) after processing (at-least-once) |
+| Committing offset before processing | Lost messages on crash | [Commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) after processing (at-least-once) |
 | Too many partitions | Rebalance overhead, connection overhead | Partitions = consumers × 2-3 max |
 | Synchronous producing | Increases latency, reduces throughput | Batch or async produce |
 | Single consumer on partitioned topic | N-1 idle partitions | Match consumer count to partitions |
@@ -382,7 +382,7 @@ async function checkConsumerLag(admin: Admin, groupId: string): Promise<void> {
 - Schema evolve via new version — never mutate existing message schemas.
 - DLQ must have [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md). Unattended DLQ = silent data loss.
 - Consumer lag must be monitored. Set alerts for lag > threshold.
-- Never [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) offsets before processing is complete (at-least-once).
+- Never [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) offsets before processing is complete (at-least-once).
 - Max message size: 1MB for Kafka, 256KB for SQS, unlimited for RabbitMQ (practical: 10MB).
 - Never produce to a topic that doesn't exist — create topics with proper config first.
 - Use idempotent producers for Kafka (exactly-once semantics to broker).
@@ -451,7 +451,7 @@ class KafkaMessageConsumer:
             "bootstrap.servers": bootstrap_servers,
             "group.id": group_id,
             "auto.offset.reset": "earliest",
-            "enable.auto.[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)": False,
+            "enable.auto.[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)": False,
             "max.poll.interval.ms": 300000,
         })
         self.consumer.subscribe(topics)
@@ -471,7 +471,7 @@ class KafkaMessageConsumer:
                 try:
                     value = json.loads(msg.value().decode())
                     handler(value, msg.key().decode() if msg.key() else None, msg.headers() or [])
-                    self.consumer.[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)(msg)
+                    self.consumer.[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)(msg)
                 except Exception as e:
                     print(f"Processing error: {e}")
                     # Send to DLQ
@@ -484,7 +484,7 @@ class KafkaMessageConsumer:
     def _send_to_dlq(self, msg):
         dlq_topic = f"{msg.topic()}.dlq"
         self.consumer.produce(dlq_topic, key=msg.key(), value=msg.value())
-        self.consumer.[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)(msg)
+        self.consumer.[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)(msg)
 ```
 
 ## Architecture Decision Trees
@@ -521,7 +521,7 @@ What are the requirements?
 |---|---|---|
 | Infinite retention | Storage explosion, slow rebalances | Set retention by time (7d default) and size |
 | No DLQ [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) | Silent data loss | Alert on DLQ message production |
-| Committing offset before processing | Lost messages on crash | [Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) after processing (at-least-once) |
+| Committing offset before processing | Lost messages on crash | [Commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) after processing (at-least-once) |
 | Too many partitions | Rebalance overhead, connection overhead | Partitions = consumers x 2-3 max |
 
 ## Performance Optimization

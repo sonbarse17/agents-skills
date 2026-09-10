@@ -189,7 +189,7 @@ infrastructure across dev/staging/prod.
      driver_type: humanitec/terraform
      driver_inputs:
        source:
-         path: "git::https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/<ORG>/tf-modules//postgres-rds"
+         path: "git::https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/<ORG>/tf-modules//postgres-rds"
        variables:
          instance_class: "db.t3.medium"
          engine_version: "15"

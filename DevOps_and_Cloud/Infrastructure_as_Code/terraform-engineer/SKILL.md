@@ -79,7 +79,7 @@ Load detailed guidance based on context:
 - Use local state for production or skip state locking
 - Mix provider versions without constraints
 - Create circular module dependencies or skip input validation
-- [Commit](../../CI_CD/commit/SKILL.md) `.terraform` directories
+- [Commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) `.terraform` directories
 
 ## Code Examples
 
@@ -157,5 +157,5 @@ terraform {
 
 When implementing Terraform solutions, provide: module structure (`main.tf`, `variables.tf`, `outputs.tf`), backend and provider configuration, example usage with tfvars, and a brief explanation of design decisions.
 
-[Documentation](https://jeffallan.[github](../../CI_CD/github/SKILL.md).io/claude-skills/skills/infrastructure/terraform-engineer/)
+[Documentation](https://jeffallan.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/infrastructure/terraform-engineer/)
 

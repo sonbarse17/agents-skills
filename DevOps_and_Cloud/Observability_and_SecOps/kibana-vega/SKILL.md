@@ -63,7 +63,7 @@ export KIBANA_PASSWORD="changeme"
 
 #### Option 4: Local Development with start-local
 
-For local development and testing, use [start-local](https://[github](../../CI_CD/github/SKILL.md).com/elastic/start-local) to quickly spin up
+For local development and testing, use [start-local](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/elastic/start-local) to quickly spin up
 Elasticsearch and Kibana using [Docker](../../Containers_and_Orchestration/docker/SKILL.md) or [Podman](../../Containers_and_Orchestration/podman/SKILL.md):
 
 ```bash
@@ -125,7 +125,7 @@ files.
 
 ```json
 {
-  "$schema": "https://vega.[github](../../CI_CD/github/SKILL.md).io/schema/vega-lite/v6.json",
+  "$schema": "https://vega.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/schema/vega-lite/v6.json",
   "title": "My Chart",
   "autosize": { "type": "fit", "contains": "padding" },
 
@@ -163,7 +163,7 @@ files.
 
 ```bash
 # Create visualization directly from JSON
-echo '{"$schema":"https://vega.[github](../../CI_CD/github/SKILL.md).io/schema/vega-lite/v6.json",...}' | \
+echo '{"$schema":"https://vega.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/schema/vega-lite/v6.json",...}' | \
   node scripts/kibana-vega.js visualizations create "My Chart" -
 
 # Update visualization

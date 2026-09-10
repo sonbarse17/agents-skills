@@ -29,7 +29,7 @@ depends_on:
 
 > **⚠️ DEPRECATION NOTICE**: This package is deprecated. Migrate to `azure-monitor-[opentelemetry](../../../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)-autoconfigure`.
 >
-> See [Migration Guide](https://[github](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-java/blob/main/sdk/monitor/azure-monitor-[opentelemetry](../../../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)-exporter/MIGRATION.md) for detailed instructions.
+> See [Migration Guide](https://[github](../../../../../ci-cd/github-actions/other/github/SKILL.md).com/Azure/azure-sdk-for-java/blob/main/sdk/monitor/azure-monitor-[opentelemetry](../../../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)-exporter/MIGRATION.md) for detailed instructions.
 
 Export [OpenTelemetry](../../../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) telemetry data to Azure Monitor / Application Insights.
 
@@ -278,7 +278,7 @@ The `azure-monitor-[opentelemetry](../../../../../DevOps_and_Cloud/Observability
    </dependency>
    ```
 
-2. Update initialization code per [Migration Guide](https://[github](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-java/blob/main/sdk/monitor/azure-monitor-[opentelemetry](../../../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)-exporter/MIGRATION.md)
+2. Update initialization code per [Migration Guide](https://[github](../../../../../ci-cd/github-actions/other/github/SKILL.md).com/Azure/azure-sdk-for-java/blob/main/sdk/monitor/azure-monitor-[opentelemetry](../../../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)-exporter/MIGRATION.md)
 
 ## Best Practices
 
@@ -295,8 +295,8 @@ The `azure-monitor-[opentelemetry](../../../../../DevOps_and_Cloud/Observability
 | Resource | URL |
 |----------|-----|
 | Maven Package | https://central.sonatype.com/artifact/com.azure/azure-monitor-[opentelemetry](../../../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)-exporter |
-| [GitHub](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) | https://[github](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-java/tree/main/sdk/monitor/azure-monitor-[opentelemetry](../../../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)-exporter |
-| Migration Guide | https://[github](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-java/blob/main/sdk/monitor/azure-monitor-[opentelemetry](../../../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)-exporter/MIGRATION.md |
+| [GitHub](../../../../../ci-cd/github-actions/other/github/SKILL.md) | https://[github](../../../../../ci-cd/github-actions/other/github/SKILL.md).com/Azure/azure-sdk-for-java/tree/main/sdk/monitor/azure-monitor-[opentelemetry](../../../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)-exporter |
+| Migration Guide | https://[github](../../../../../ci-cd/github-actions/other/github/SKILL.md).com/Azure/azure-sdk-for-java/blob/main/sdk/monitor/azure-monitor-[opentelemetry](../../../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)-exporter/MIGRATION.md |
 | Autoconfigure Package | https://central.sonatype.com/artifact/com.azure/azure-monitor-[opentelemetry](../../../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)-autoconfigure |
 | [OpenTelemetry](../../../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) Java | https://[opentelemetry](../../../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md).io/docs/languages/java/ |
 | Application Insights | https://learn.microsoft.com/azure/azure-monitor/app/app-insights-overview |

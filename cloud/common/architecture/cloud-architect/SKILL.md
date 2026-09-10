@@ -232,5 +232,5 @@ When designing cloud architecture, provide:
 4. Cost estimation and optimization strategy
 5. Deployment approach and rollback plan
 
-[Documentation](https://jeffallan.[github](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/infrastructure/cloud-architect/)
+[Documentation](https://jeffallan.[github](../../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/infrastructure/cloud-architect/)
 

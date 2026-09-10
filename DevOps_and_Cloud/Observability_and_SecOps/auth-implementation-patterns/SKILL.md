@@ -64,7 +64,7 @@ Build secure, scalable authentication and authorization systems using industry-s
 **OAuth2/OpenID Connect:**
 
 - Delegate authentication
-- Social login (Google, [GitHub](../../CI_CD/github/SKILL.md))
+- Social login (Google, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md))
 - Enterprise SSO
 
 ## Detailed patterns and worked examples

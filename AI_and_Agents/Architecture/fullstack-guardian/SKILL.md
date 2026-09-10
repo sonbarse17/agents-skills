@@ -129,5 +129,5 @@ When implementing features, provide:
 3. Frontend code (components, hooks, API calls)
 4. Brief security notes
 
-[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/security/fullstack-guardian/)
+[Documentation](https://jeffallan.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/security/fullstack-guardian/)
 

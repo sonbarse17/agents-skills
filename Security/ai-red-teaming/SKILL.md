@@ -344,7 +344,7 @@ def calculate_risk_score(likelihood: int, impact: int, detectability: int) -> di
 ## CI/CD Integration
 
 ```yaml
-# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/ai-red-team.yml
+# .[github](../../ci-cd/github-actions/other/github/SKILL.md)/workflows/ai-red-team.yml
 name: AI Red Team Gate
 on:
   pull_request:

@@ -280,10 +280,10 @@ should default to today unless a specific existing estate says otherwise.
 ## Common pitfalls
 
 - **Symptom:** A scheduled Puppet/Chef agent run applies a change nobody
-  intended, hours after a seemingly unrelated [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) merged elsewhere in
+  intended, hours after a seemingly unrelated [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) merged elsewhere in
   the repo.
   **Fix:** Check for a shared data source (Hiera hierarchy, a role
-  cookbook, a common pillar file) that the seemingly unrelated [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)
+  cookbook, a common pillar file) that the seemingly unrelated [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)
   actually touched — in all three tools, data/role layers are frequently
   shared across many manifests/recipes/states, so a change to shared
   data can silently ripple into many nodes' next scheduled run. Compile

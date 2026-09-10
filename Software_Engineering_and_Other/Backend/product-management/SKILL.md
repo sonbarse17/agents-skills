@@ -68,7 +68,7 @@ API Product Mission:
 
 | Model | Description | Example | Best For |
 |-------|-------------|---------|----------|
-| Free | No charge, drive ecosystem adoption | [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) API | Platform lock-in, ecosystem growth |
+| Free | No charge, drive ecosystem adoption | [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) API | Platform lock-in, ecosystem growth |
 | Usage-based | Pay per request/unit | Stripe ($0.025/call) | Variable usage patterns |
 | Tiered | Different plans with limits | Google Maps API | Predictable consumption segments |
 | Freemium | Free tier + paid premium | Slack API | Bottom-up adoption |

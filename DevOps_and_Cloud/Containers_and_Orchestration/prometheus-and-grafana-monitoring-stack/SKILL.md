@@ -92,7 +92,7 @@ a cluster rebuild.
 
 1. **Install the stack with an explicit, pinned chart version:**
    ```bash
-   helm repo add prometheus-community https://prometheus-community.[github](../../CI_CD/github/SKILL.md).io/[helm-charts](../helm-charts/SKILL.md)
+   helm repo add prometheus-community https://prometheus-community.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/[helm-charts](../helm-charts/SKILL.md)
    helm upgrade --install kube-prom-stack prometheus-community/kube-prometheus-stack \
      --namespace [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md) --create-namespace \
      --version 65.5.0 \

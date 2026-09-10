@@ -46,7 +46,7 @@ Exact user phrases: "monorepo", "Nx", "Turborepo", "nx build", "nx affected", "w
 Before activating, verify:
 - Package manager (pnpm, yarn, npm).
 - Monorepo tool (Nx, Turborepo, or both).
-- CI provider ([GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions, GitLab CI, [CircleCI](../../../DevOps_and_Cloud/CI_CD/circleci/SKILL.md)).
+- CI provider ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, [CircleCI](../../../ci-cd/circleci/other/circleci/SKILL.md)).
 - Remote caching preference (Nx Cloud, Turborepo remote, self-hosted).
 
 ### Output Artifact
@@ -454,7 +454,7 @@ on:
 
 env:
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
-  NX_BRANCH: ${{ [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).head_ref || [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).ref_name }}
+  NX_BRANCH: ${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).head_ref || [github](../../../ci-cd/github-actions/other/github/SKILL.md).ref_name }}
 
 jobs:
   quality:
@@ -483,7 +483,7 @@ jobs:
   e2e:
     needs: [quality]
     runs-on: ubuntu-latest
-    if: [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).event_name == 'push' || ([github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).event_name == 'pull_request' && [github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).event.pull_request.draft == false)
+    if: [github](../../../ci-cd/github-actions/other/github/SKILL.md).event_name == 'push' || ([github](../../../ci-cd/github-actions/other/github/SKILL.md).event_name == 'pull_request' && [github](../../../ci-cd/github-actions/other/github/SKILL.md).event.pull_request.draft == false)
     steps:
       - uses: actions/checkout@v4
         with:
@@ -512,7 +512,7 @@ jobs:
 | Best for project count | 50+ | 10-100 | <30 | <20 |
 
 ## Security Considerations
-- Nx Cloud access tokens must be stored as CI secrets — never [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) to repository
+- Nx Cloud access tokens must be stored as CI secrets — never [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) to repository
 - Remote cache artifacts can contain environment variables — sanitize build outputs
 - Self-hosted Nx Cloud requires encryption at rest for cached artifacts
 - Turborepo remote cache over Vercel uses HTTPS — verify TLS configuration

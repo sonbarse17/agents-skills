@@ -230,4 +230,4 @@ For Entra ID auth, assign one of these roles:
 | ------------- | ----------------------------------------------------------------------------------------------- |
 | API Reference | https://docs.rs/azure_security_keyvault_keys/latest/azure_security_keyvault_keys                |
 | crates.io     | https://crates.io/crates/azure_security_keyvault_keys                                           |
-| Source Code   | https://[github](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-rust/tree/main/sdk/keyvault/azure_security_keyvault_keys |
+| Source Code   | https://[github](../../../../../ci-cd/github-actions/other/github/SKILL.md).com/Azure/azure-sdk-for-rust/tree/main/sdk/keyvault/azure_security_keyvault_keys |

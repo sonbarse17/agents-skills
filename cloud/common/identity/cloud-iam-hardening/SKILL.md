@@ -43,7 +43,7 @@ long-lived keys) are identical even though the primitives differ.
 
 - Reducing an over-broad policy (e.g. `AdministratorAccess`, `Owner`,
   `roles/editor`) down to least privilege for a specific workload or team.
-- Setting up CI/CD pipelines ([GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions, GitLab CI, Azure DevOps) to
+- Setting up CI/CD pipelines ([GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, Azure DevOps) to
   authenticate to cloud APIs without storing static access keys/service
   account keys as secrets.
 - Investigating "who can do X" or "why does this role have this
@@ -64,7 +64,7 @@ long-lived keys) are identical even though the primitives differ.
   generate the "what's actually used" data that least-privilege
   redesigns depend on; don't guess permissions from documentation alone.
 - For CI/CD federation: the CI platform must support OIDC token issuance
-  ([GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions, GitLab CI ≥ 15.7, [CircleCI](../../../../DevOps_and_Cloud/CI_CD/circleci/SKILL.md), Azure DevOps all do
+  ([GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI ≥ 15.7, [CircleCI](../../../../ci-cd/circleci/other/circleci/SKILL.md), Azure DevOps all do
   natively as of 2024).
 - Terraform ≥ 1.5 (or the cloud-native IaC of choice) if policies are
   managed as code — strongly recommended over console-managed IAM once
@@ -208,7 +208,7 @@ long-lived keys) are identical even though the primitives differ.
   **Fix:** Add environment- or branch-specific conditions instead of
   wildcarding the whole repo (e.g.
   `repo:example-org/checkout-service:environment:production`), and gate
-  production environments in the CI platform ([GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Environments,
+  production environments in the CI platform ([GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Environments,
   GitLab protected environments) so only protected branches can even
   request that OIDC token.
 
@@ -235,7 +235,7 @@ long-lived keys) are identical even though the primitives differ.
 
 **Scenario:** A security review finds that the `checkout-service`
 deployment pipeline authenticates to AWS using a long-lived IAM user
-access key stored as a [GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions secret, with `AdministratorAccess`
+access key stored as a [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions secret, with `AdministratorAccess`
 attached "to avoid permission errors."
 
 1. Pull the IAM user's `generate-service-last-accessed-details` report —
@@ -247,10 +247,10 @@ attached "to avoid permission errors."
 3. Attach a custom policy to that role granting exactly the three
    services/actions found in step 1, scoped to the specific bucket ARN,
    ECS cluster/service ARN, and ECR repository ARN.
-4. Update the [GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions workflow to use
+4. Update the [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions workflow to use
    `aws-actions/configure-aws-credentials` with `role-to-assume` instead
    of static `AWS_ACCESS_KEY_ID`/`AWS_SECRET_ACCESS_KEY` secrets, and
-   configure the workflow's `production` environment as a [GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)
+   configure the workflow's `production` environment as a [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md)
    protected environment requiring a reviewer.
 5. Run the pipeline end-to-end against a staging environment to confirm
    the scoped role works, then delete the IAM user and its access key.

@@ -415,7 +415,7 @@ detection:
 Build detection-as-code pipelines:
 
 ```yaml
-# .[github](../../CI_CD/github/SKILL.md)/workflows/sigma-validation.yml
+# .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/sigma-validation.yml
 name: Sigma Rule Validation
 on: [push, pull_request]
 jobs:
@@ -509,7 +509,7 @@ For detailed technique mappings, see [../../../Global_References/mitre-attack-ma
 ## Best Practices
 
 1. **Start with Community Rules**: Use SigmaHQ repository (3000+ peer-reviewed rules) as foundation
-2. **Version Control**: Store rules in Git with meaningful [commit](../../CI_CD/commit/SKILL.md) messages
+2. **Version Control**: Store rules in Git with meaningful [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) messages
 3. **Test Before Deploy**: Validate against historical data in test environment
 4. **Document Tuning**: Track false positive patterns and tuning decisions
 5. **Map to Frameworks**: Tag all rules with MITRE ATT&CK and compliance mappings
@@ -519,9 +519,9 @@ For detailed technique mappings, see [../../../Global_References/mitre-attack-ma
 
 ## References
 
-- [Sigma Specification](https://[github](../../CI_CD/github/SKILL.md).com/SigmaHQ/sigma-specification)
-- [SigmaHQ Rule Repository](https://[github](../../CI_CD/github/SKILL.md).com/SigmaHQ/sigma/tree/master/rules)
-- [pySigma Documentation](https://[github](../../CI_CD/github/SKILL.md).com/SigmaHQ/pySigma)
+- [Sigma Specification](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/SigmaHQ/sigma-specification)
+- [SigmaHQ Rule Repository](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/SigmaHQ/sigma/tree/master/rules)
+- [pySigma Documentation](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/SigmaHQ/pySigma)
 - [Sigma Converter Web Tool](https://sigconverter.io/)
 - [MITRE ATT&CK Framework](https://attack.mitre.org/)
 

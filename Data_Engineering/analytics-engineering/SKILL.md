@@ -53,7 +53,7 @@ Before activating, verify:
 - BI tools (Tableau, Looker, Power BI, Metabase)
 - Existing data model layer (raw, staging, intermediate, marts)
 - dbt version and packages installed (dbt_utils, dbt_expectations)
-- CI/CD setup ([GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions, dbt Cloud CI)
+- CI/CD setup ([GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions, dbt Cloud CI)
 - Testing and documentation practices
 
 ### Output Artifact
@@ -364,10 +364,10 @@ packages:
 
 ### dbt CI/CD Integration
 
-#### [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions Pipeline
+#### [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions Pipeline
 
 ```yaml
-# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/dbt_ci.yml
+# .[github](../../ci-cd/github-actions/other/github/SKILL.md)/workflows/dbt_ci.yml
 name: dbt CI/CD
 on: [pull_request]
 jobs:
@@ -502,7 +502,7 @@ Analytics Engineering Stack
 │   ├── Kimball → Star schema (facts + dimensions)
 │   └── Data [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) → Hubs, links, satellites
 └── CI/CD for data?
-    ├── Yes → dbt CI with [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions + slim CI
+    ├── Yes → dbt CI with [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions + slim CI
     └── No → Manual dbt run (not recommended)
 ```
 
@@ -576,7 +576,7 @@ FROM {{ ref('stg_customers') }}
 
 ## Security Considerations
 
-- **Credential management**: Store warehouse credentials in dbt profiles via environment variables; never [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md).
+- **Credential management**: Store warehouse credentials in dbt profiles via environment variables; never [commit](../../ci-cd/common/git-workflow/commit/SKILL.md).
 - **RBAC**: Use dbt Cloud RBAC for project-level access; service tokens for CI/CD.
 - **Data masking**: Implement Snowflake dynamic masking policies for PII in production models.
 - **Schema isolation**: Separate dev/staging/prod schemas; restrict prod write access to CI/CD service account.

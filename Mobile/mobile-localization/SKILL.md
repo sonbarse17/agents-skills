@@ -472,7 +472,7 @@ func pseudoLocalize(_ string: String) -> String {
 7. **CI Validation**: Automated checks for missing translations and placeholder mismatches.
 
 ```yaml
-# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/localization-check.yml
+# .[github](../../ci-cd/github-actions/other/github/SKILL.md)/workflows/localization-check.yml
 name: Localization Check
 on: [pull_request]
 

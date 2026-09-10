@@ -65,7 +65,7 @@ my-stack/
 - Local file paths: `./modules/vpc`
 - Public registry: `[terraform-aws](../../../cloud/aws/iac/terraform-aws/SKILL.md)-modules/vpc/aws`
 - Private registry: `app.terraform.io/<org-name>/vpc/aws`
-- Git: `git::https://[github](../../CI_CD/github/SKILL.md).com/org/repo.git//path?ref=v1.0.0`
+- Git: `git::https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/org/repo.git//path?ref=v1.0.0`
 
 HCP Terraform processes all `.tfcomponent.hcl` and `.tfdeploy.hcl` files in dependency order.
 
@@ -469,7 +469,7 @@ For complete examples including multi-region deployments, component dependencies
    - Example: Some [terraform-aws](../../../cloud/aws/iac/terraform-aws/SKILL.md)-modules versions have been found to have compatibility issues with Stacks (e.g., ALB and ECS modules)
 3. **State Isolation**: Each deployment has its own isolated state
 4. **Input Variables**: Use variables for values that differ across deployments; use locals for shared values
-5. **Provider Lock Files**: Always generate and [commit](../../CI_CD/commit/SKILL.md) `.terraform.lock.hcl` to version control
+5. **Provider Lock Files**: Always generate and [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) `.terraform.lock.hcl` to version control
 6. **Naming Conventions**: Use descriptive names for components and deployments
 7. **Deployment Groups**: You can organize deployments into deployment groups. Deployment groups enable auto-approval rules, logical organization, and provide a foundation for scaling. Deployment groups are an HCP Terraform Premium tier feature
 8. **Testing**: Test Stack configurations in dev/staging deployments before production

@@ -95,7 +95,7 @@ Infrastructure deployed via Bicep, AKS cluster operational, pipeline passing, ne
 | Managed Identity | Azure resource to Azure resource | High (no credentials) |
 | Service Principal | External app, CI/CD | Medium (secret rotation needed) |
 | Azure AD Pod Identity | Pods to Azure services (AKS) | High |
-| Workload Identity Federation | [GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions, Terraform Cloud | High (OIDC, no secrets) |
+| Workload Identity Federation | [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions, Terraform Cloud | High (OIDC, no secrets) |
 
 ## Quick Start
 Management group hierarchy → Bicep template for VNet hub-spoke → AKS cluster + Azure AD integration → Azure DevOps pipeline → Private Link for PaaS → Azure Policy for governance → Monitor with Log Analytics → Cost budgets + tags.

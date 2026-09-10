@@ -192,7 +192,7 @@ osint_sources:
     - "CISA Known Exploited Vulnerabilities (KEV) — actively exploited CVEs"
     - "Exploit-DB — proof of concept exploits"
     - "Metasploit — module updates"
-    - "[GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) — PoC exploit discovery"
+    - "[GitHub](../../ci-cd/github-actions/other/github/SKILL.md) [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) — PoC exploit discovery"
     - "Project Zero bug tracker — 90-day disclosure timeline"
 
   dark_web:

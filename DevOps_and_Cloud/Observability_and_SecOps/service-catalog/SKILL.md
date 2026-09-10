@@ -41,7 +41,7 @@ registration into the scaffolding path itself — creating a service from a temp
 template's prompts.
 
 **Done when:** a newly scaffolded service appears in the catalog with correct ownership metadata
-before its first [commit](../../CI_CD/commit/SKILL.md) is merged.
+before its first [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) is merged.
 
 ## 2. Require an owner, not a team name in a text field
 
@@ -69,7 +69,7 @@ identity provider and the paging system — not a free-text string.
 A catalog that relies on developers remembering to update it degrades at a predictable, steady
 rate. Add a CI check that fails a service's pipeline if its catalog entry is missing required
 fields (owner, tier, repo link, on-call) or hasn't been reviewed past a staleness threshold. This
-turns "someone should update the catalog" into an enforced gate, the same way `[pipeline-security](../../CI_CD/pipeline-security/SKILL.md)`
+turns "someone should update the catalog" into an enforced gate, the same way `[pipeline-security](../../../ci-cd/common/pipeline-design/pipeline-security/SKILL.md)`
 turns security review from a suggestion into a required check.
 
 **Done when:** a service with a missing owner field fails its CI pipeline, not just a quarterly

@@ -103,7 +103,7 @@ team cannot or will not follow.
 ## Decision Making
 - Default to autonomy: make decision, document, move on
 - Escalate when: high impact, irreversible, cross-team
-- Disagree and [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md): once decided, everyone supports
+- Disagree and [commit](../../ci-cd/common/git-workflow/commit/SKILL.md): once decided, everyone supports
 
 ## Quality
 - No broken builds on main — fix or revert within 30 min
@@ -192,7 +192,7 @@ How many production versions maintained concurrently?
 │   ├── Feature flags for incomplete work
 │   ├── Branches live <2 days
 │   └── Tag releases on main
-├── 2-3 (patch older versions) → [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Flow
+├── 2-3 (patch older versions) → [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Flow
 │   ├── Release branches for older versions
 │   ├── Cherry-pick critical fixes
 │   └── Main is always latest

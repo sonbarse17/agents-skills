@@ -96,7 +96,7 @@ right, without provisioning anything real. See `[terraform-modules](../terraform
 tests against.
 
 - **Assert on generated configuration or plan output**, not on live infrastructure, for fast
-  feedback on every [commit](../../CI_CD/commit/SKILL.md).
+  feedback on every [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md).
 - **Cover the module's documented input combinations**, especially optional variables and their
   defaults — the untested default is where drift hides.
 - **Run these on every module change**, since a module used in ten places breaks ten places at once

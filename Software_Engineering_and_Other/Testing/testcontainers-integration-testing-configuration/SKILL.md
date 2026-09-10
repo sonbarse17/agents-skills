@@ -207,7 +207,7 @@ a Testcontainers suite that works fine on a developer's laptop.
    configured** before assuming a Testcontainers suite will "just work"
    the same as on a developer laptop:
    ```yaml
-   # [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions: ubuntu-latest runners include [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) by default;
+   # [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions: ubuntu-latest runners include [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) by default;
    # nothing extra to configure for the common case
    jobs:
      test:
@@ -350,7 +350,7 @@ a Testcontainers suite that works fine on a developer's laptop.
 **Scenario:** `order-service`'s repository layer is tested against a
 real Postgres instead of a mocked JDBC driver, and its Kafka event
 publisher is tested against a real Kafka broker instead of a mocked
-producer — both need to run reliably in [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions CI, in parallel
+producer — both need to run reliably in [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions CI, in parallel
 across multiple test suites.
 
 ```java
@@ -401,7 +401,7 @@ class OrderEventPublisherIntegrationTest extends AbstractIntegrationTest {
 }
 ```
 
-CI ([GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions, [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) available by default on `ubuntu-latest`, no
+CI ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions, [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) available by default on `ubuntu-latest`, no
 extra [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-in-[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) configuration needed):
 ```yaml
 jobs:

@@ -107,7 +107,7 @@ that staging caught before it reached production.
 Manually re-running `terraform apply` against prod with hand-edited variables is how "it worked in
 staging" and "what actually got applied to prod" quietly diverge. Promotion should be the exact
 same artifact and the exact same apply mechanism moving forward through environments, with only
-the values file changing — tie this to `[continuous-delivery](../../../../DevOps_and_Cloud/CI_CD/continuous-delivery/SKILL.md)` for the pipeline mechanics.
+the values file changing — tie this to `[continuous-delivery](../../../../ci-cd/common/pipeline-design/continuous-delivery/SKILL.md)` for the pipeline mechanics.
 
 **Done when:** the artifact or plan applied to prod is provably the same one that was validated in
 staging, not a re-generated or hand-edited copy.

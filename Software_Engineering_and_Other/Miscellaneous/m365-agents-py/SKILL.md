@@ -371,7 +371,7 @@ asyncio.run(main())
 | Resource                      | URL                                                                           |
 | ----------------------------- | ----------------------------------------------------------------------------- |
 | Microsoft 365 Agents SDK      | https://learn.microsoft.com/en-us/microsoft-365/agents-sdk/                   |
-| [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) samples ([Python](../../Languages/python/SKILL.md))       | https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/microsoft/Agents-for-[python](../../Languages/python/SKILL.md)                                |
+| [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) samples ([Python](../../Languages/python/SKILL.md))       | https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/microsoft/Agents-for-[python](../../Languages/python/SKILL.md)                                |
 | PyPI packages                 | https://pypi.org/search/?q=microsoft-agents                                   |
 | Integrate with Copilot Studio | https://learn.microsoft.com/en-us/microsoft-365/agents-sdk/integrate-with-mcs |
 

@@ -76,11 +76,11 @@ import (
     "flag"
     "log"
 
-    "[github](../../../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/hashicorp/terraform-plugin-framework/providerserver"
-    "[github](../../../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/hashicorp/terraform-plugin-go/tfprotov6"
-    "[github](../../../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/hashicorp/terraform-plugin-go/tfprotov6/tf6server"
-    "[github](../../../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/hashicorp/terraform-plugin-mux/tf5to6server"
-    "[github](../../../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/hashicorp/terraform-plugin-mux/tf6muxserver"
+    "[github](../../../../../../../ci-cd/github-actions/other/github/SKILL.md).com/hashicorp/terraform-plugin-framework/providerserver"
+    "[github](../../../../../../../ci-cd/github-actions/other/github/SKILL.md).com/hashicorp/terraform-plugin-go/tfprotov6"
+    "[github](../../../../../../../ci-cd/github-actions/other/github/SKILL.md).com/hashicorp/terraform-plugin-go/tfprotov6/tf6server"
+    "[github](../../../../../../../ci-cd/github-actions/other/github/SKILL.md).com/hashicorp/terraform-plugin-mux/tf5to6server"
+    "[github](../../../../../../../ci-cd/github-actions/other/github/SKILL.md).com/hashicorp/terraform-plugin-mux/tf6muxserver"
 
     "example.org/terraform-provider-examplecloud/internal/provider"
     sdkprovider "example.org/terraform-provider-examplecloud/internal/sdkprovider"
@@ -176,7 +176,7 @@ Translate schema and CRUD using the mapping table in
 ## Step 4: Move the Registration
 
 Register the resource in the Framework provider's `Resources()` and delete
-it from the SDKv2 provider's `ResourcesMap` in the same [commit](../../../../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) — mux errors
+it from the SDKv2 provider's `ResourcesMap` in the same [commit](../../../../../../../ci-cd/common/git-workflow/commit/SKILL.md) — mux errors
 on duplicates.
 
 ## Step 5: Verify

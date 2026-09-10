@@ -490,7 +490,7 @@ When author disagrees with your feedback:
 1. **Review Promptly**: Within 24 hours, ideally same day
 2. **Limit PR Size**: 200-400 lines max for effective review
 3. **Review in Time Blocks**: 60 minutes max, take breaks
-4. **Use Review Tools**: [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md), GitLab, or dedicated tools
+4. **Use Review Tools**: [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md), GitLab, or dedicated tools
 5. **Automate What You Can**: Linters, formatters, security scans
 6. **Build Rapport**: Emoji, praise, and empathy matter
 7. **Be Available**: Offer to pair on complex issues

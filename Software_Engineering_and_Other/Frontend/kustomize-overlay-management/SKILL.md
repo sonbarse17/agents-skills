@@ -228,7 +228,7 @@ correctly and knowing when [Kustomize](../../../DevOps_and_Cloud/Containers_and_
   not directory names.
 - Set `namePrefix`/`nameSuffix` or `namespace` at the overlay level, not
   the base, so the base stays reusable across namespaces/clusters.
-- [Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) the rendered output of `[kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md) build` for at least the prod
+- [Commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) the rendered output of `[kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md) build` for at least the prod
   overlay in CI as a diffable artifact/PR comment — reviewers approving
   a patch YAML rarely trace through what it produces by eye.
 - Avoid patching the same field from two different patch files in one

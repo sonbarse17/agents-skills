@@ -28,7 +28,7 @@ Software supply chain attacks target the dependencies, build systems, and distri
 
 Invoke this skill when any of the following apply:
 
-- A dependency you consume has been flagged as compromised (e.g., advisories on OSV.dev, [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Advisory Database, or vendor disclosure).
+- A dependency you consume has been flagged as compromised (e.g., advisories on OSV.dev, [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Advisory Database, or vendor disclosure).
 - You observe suspicious behavior from a dependency: unexpected network calls, file system writes outside its scope, or new post-install scripts.
 - You are conducting a periodic supply chain security [audit](../../AI_and_Agents/Operations/audit/SKILL.md).
 - A CI/CD pipeline is behaving unexpectedly after a dependency update.
@@ -93,7 +93,7 @@ cargo [audit](../../AI_and_Agents/Operations/audit/SKILL.md) --deny yanked
 ```bash
 # Verify a container image signature with cosign
 cosign verify \
-  --certificate-identity "https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/myorg/myrepo/.[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/build.yml@refs/heads/main" \
+  --certificate-identity "https://[github](../../ci-cd/github-actions/other/github/SKILL.md).com/myorg/myrepo/.[github](../../ci-cd/github-actions/other/github/SKILL.md)/workflows/build.yml@refs/heads/main" \
   --certificate-oidc-issuer "https://token.actions.githubusercontent.com" \
   ghcr.io/myorg/myimage:latest
 
@@ -109,12 +109,12 @@ pip install sigstore
 
 ```bash
 # Install slsa-verifier
-go install [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/slsa-framework/slsa-verifier/v2/cli/slsa-verifier@latest
+go install [github](../../ci-cd/github-actions/other/github/SKILL.md).com/slsa-framework/slsa-verifier/v2/cli/slsa-verifier@latest
 
 # Verify provenance of a binary
 slsa-verifier verify-artifact my-binary \
   --provenance-path my-binary.intoto.jsonl \
-  --source-uri [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/myorg/myrepo \
+  --source-uri [github](../../ci-cd/github-actions/other/github/SKILL.md).com/myorg/myrepo \
   --source-tag v1.2.3
 ```
 
@@ -195,13 +195,13 @@ RECOMMENDED ACTIONS:
 
 ```bash
 # If the package maintainer account was compromised, fork the last safe version
-git clone https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/original-author/<package>.git
+git clone https://[github](../../ci-cd/github-actions/other/github/SKILL.md).com/original-author/<package>.git
 cd <package>
 git checkout v<safe-version>
 # Publish to your private registry or vendor directly
 
 # For npm, point to your fork via package.json
-# "dependencies": { "<package>": "git+https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/yourorg/<package>.git#v1.2.3" }
+# "dependencies": { "<package>": "git+https://[github](../../ci-cd/github-actions/other/github/SKILL.md).com/yourorg/<package>.git#v1.2.3" }
 ```
 
 ---
@@ -255,7 +255,7 @@ for pkg in lock.get('packages', {}):
 ### 4.3 Lockfile Diff in CI
 
 ```yaml
-# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/lockfile-check.yml
+# .[github](../../ci-cd/github-actions/other/github/SKILL.md)/workflows/lockfile-check.yml
 name: Lockfile [Audit](../../AI_and_Agents/Operations/audit/SKILL.md)
 on: pull_request
 jobs:
@@ -347,14 +347,14 @@ cosign sign ghcr.io/myorg/myimage@sha256:abc123...
 
 # Verify with expected identity
 cosign verify \
-  --certificate-identity-regexp "https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/myorg/.*" \
+  --certificate-identity-regexp "https://[github](../../ci-cd/github-actions/other/github/SKILL.md).com/myorg/.*" \
   --certificate-oidc-issuer "https://token.actions.githubusercontent.com" \
   ghcr.io/myorg/myimage:latest
 
 # Verify and extract attestations
 cosign verify-attestation \
   --type slsaprovenance \
-  --certificate-identity-regexp "https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/myorg/.*" \
+  --certificate-identity-regexp "https://[github](../../ci-cd/github-actions/other/github/SKILL.md).com/myorg/.*" \
   --certificate-oidc-issuer "https://token.actions.githubusercontent.com" \
   ghcr.io/myorg/myimage:latest | jq '.payload' | base64 -d | jq .
 ```
@@ -383,7 +383,7 @@ spec:
           attestors:
             - entries:
                 - keyless:
-                    subject: "https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/myorg/*"
+                    subject: "https://[github](../../ci-cd/github-actions/other/github/SKILL.md).com/myorg/*"
                     issuer: "https://token.actions.githubusercontent.com"
                     rekor:
                       url: https://rekor.sigstore.dev
@@ -402,20 +402,20 @@ spec:
 
 ## 7. CI/CD Pipeline Hardening
 
-### 7.1 Pin [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions by SHA
+### 7.1 Pin [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions by SHA
 
 ```yaml
 # BAD: mutable tag, can be hijacked
 - uses: actions/checkout@v4
 
-# GOOD: pinned to exact [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) SHA
+# GOOD: pinned to exact [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) SHA
 - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 ```
 
 ```bash
-# Use pin-[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-action to automate pinning
-npm install -g pin-[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-action
-pin-[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-action .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/*.yml
+# Use pin-[github](../../ci-cd/github-actions/other/github/SKILL.md)-action to automate pinning
+npm install -g pin-[github](../../ci-cd/github-actions/other/github/SKILL.md)-action
+pin-[github](../../ci-cd/github-actions/other/github/SKILL.md)-action .[github](../../ci-cd/github-actions/other/github/SKILL.md)/workflows/*.yml
 ```
 
 ### 7.2 Isolated Runners
@@ -438,7 +438,7 @@ jobs:
 ### 7.3 OIDC for Cloud Authentication (No Long-Lived Secrets)
 
 ```yaml
-# [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions OIDC with AWS -- no static credentials stored
+# [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions OIDC with AWS -- no static credentials stored
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -484,7 +484,7 @@ jobs:
 ### 8.2 SLSA Level 1 -- Generate Provenance
 
 ```yaml
-# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/slsa-build.yml
+# .[github](../../ci-cd/github-actions/other/github/SKILL.md)/workflows/slsa-build.yml
 name: SLSA Build
 on:
   push:
@@ -511,7 +511,7 @@ jobs:
           path: my-binary
 ```
 
-### 8.3 SLSA Level 2-3 -- Use the SLSA [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Generator
+### 8.3 SLSA Level 2-3 -- Use the SLSA [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Generator
 
 ```yaml
   provenance:
@@ -520,7 +520,7 @@ jobs:
       actions: read
       id-token: write
       contents: write
-    uses: slsa-framework/slsa-[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-generator/.[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/generator_generic_slsa3.yml@v2.0.0
+    uses: slsa-framework/slsa-[github](../../ci-cd/github-actions/other/github/SKILL.md)-generator/.[github](../../ci-cd/github-actions/other/github/SKILL.md)/workflows/generator_generic_slsa3.yml@v2.0.0
     with:
       base64-subjects: |
         ${{ needs.build.outputs.digest }} my-binary
@@ -536,7 +536,7 @@ gh release download v1.2.3 -p "my-binary" -p "my-binary.intoto.jsonl"
 # Verify
 slsa-verifier verify-artifact my-binary \
   --provenance-path my-binary.intoto.jsonl \
-  --source-uri [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/myorg/myrepo \
+  --source-uri [github](../../ci-cd/github-actions/other/github/SKILL.md).com/myorg/myrepo \
   --source-tag v1.2.3
 
 echo $?  # 0 = verified successfully
@@ -616,7 +616,7 @@ packages:
 ### 10.1 Detect New Dependencies in Pull Requests
 
 ```yaml
-# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/dependency-review.yml
+# .[github](../../ci-cd/github-actions/other/github/SKILL.md)/workflows/dependency-review.yml
 name: Dependency Review
 on: pull_request
 permissions:
@@ -639,7 +639,7 @@ jobs:
 
 ```bash
 # Install osv-scanner
-go install [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/google/osv-scanner/cmd/osv-scanner@latest
+go install [github](../../ci-cd/github-actions/other/github/SKILL.md).com/google/osv-scanner/cmd/osv-scanner@latest
 
 # Scan a project directory (auto-detects lockfiles)
 osv-scanner -r /path/to/project
@@ -657,7 +657,7 @@ osv-scanner -r /path/to/project --format json | jq '.results[].packages[].vulner
 ### 10.3 Dependabot Configuration
 
 ```yaml
-# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/dependabot.yml
+# .[github](../../ci-cd/github-actions/other/github/SKILL.md)/dependabot.yml
 version: 2
 updates:
   - package-ecosystem: "npm"
@@ -776,7 +776,7 @@ done
 aws iam create-access-key --user-name ci-deploy
 aws iam delete-access-key --user-name ci-deploy --access-key-id OLD_KEY_ID
 
-# 2. Rotate [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) tokens
+# 2. Rotate [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) tokens
 gh auth refresh
 
 # 3. Rotate database credentials
@@ -844,7 +844,7 @@ Preventive Measures:
 | Scan with OSV | `osv-scanner -r .` |
 | Verify cosign signature | `cosign verify --certificate-identity-regexp ... <image>` |
 | Verify SLSA provenance | `slsa-verifier verify-artifact ...` |
-| Pin [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions | `pin-[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-action .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/*.yml` |
+| Pin [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions | `pin-[github](../../ci-cd/github-actions/other/github/SKILL.md)-action .[github](../../ci-cd/github-actions/other/github/SKILL.md)/workflows/*.yml` |
 | Check lockfile drift | `npm ci` (fails if lockfile is out of sync) |
 | Generate pip hashes | `pip-compile --generate-hashes requirements.in` |
 | Cargo vet check | `cargo vet check` |

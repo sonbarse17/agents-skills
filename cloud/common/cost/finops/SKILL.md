@@ -287,7 +287,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "main" {
 Jumping to automated optimization without establishing tagging, visibility, and allocation leads to chaos. Follow crawl-walk-run maturity. Do not automate before you can measure.
 
 ### Anti-Pattern 2: RI/SP Overcommitment
-Buying RIs for unstable workloads or before right-sizing wastes money. Always right-size for 14 days first. Only [commit](../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) to RIs for stable baseline under 60% utilization.
+Buying RIs for unstable workloads or before right-sizing wastes money. Always right-size for 14 days first. Only [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) to RIs for stable baseline under 60% utilization.
 
 ### Anti-Pattern 3: Chargeback Without Culture
 Implementing finance-grade chargeback without team buy-in creates friction. Start with showback (visibility only). Transition to chargeback when teams understand their costs.

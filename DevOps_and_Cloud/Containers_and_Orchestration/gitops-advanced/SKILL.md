@@ -41,12 +41,12 @@ Implement advanced [GitOps](../gitops/SKILL.md) patterns: multi-cluster manageme
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "[GitOps](../gitops/SKILL.md) advanced", "multi-cluster [GitOps](../gitops/SKILL.md)", "ApplicationSet", "[ArgoCD](../argocd/SKILL.md) ApplicationSet", "sync wave", "sync phase", "progressive delivery [GitOps](../gitops/SKILL.md)", "cluster bootstrapping", "[GitOps](../gitops/SKILL.md) at scale", "[ArgoCD](../argocd/SKILL.md) multi-cluster", "[ArgoCD](../argocd/SKILL.md) image updater", "[GitOps](../gitops/SKILL.md) secrets", "SealedSecrets", "External Secrets Operator", "[ArgoCD](../argocd/SKILL.md) projects", "[ArgoCD](../argocd/SKILL.md) RBAC", "[ArgoCD](../argocd/SKILL.md) HA", "[ArgoCD](../argocd/SKILL.md) cluster federation", "[ArgoCD](../argocd/SKILL.md) [argocd](../argocd/SKILL.md)-notifications", "Config Management Plugins".
+Exact user phrases: "[GitOps](../gitops/SKILL.md) advanced", "multi-cluster [GitOps](../gitops/SKILL.md)", "ApplicationSet", "[ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md) ApplicationSet", "sync wave", "sync phase", "progressive delivery [GitOps](../gitops/SKILL.md)", "cluster bootstrapping", "[GitOps](../gitops/SKILL.md) at scale", "[ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md) multi-cluster", "[ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md) image updater", "[GitOps](../gitops/SKILL.md) secrets", "SealedSecrets", "External Secrets Operator", "[ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md) projects", "[ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md) RBAC", "[ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md) HA", "[ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md) cluster federation", "[ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md) [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)-notifications", "Config Management Plugins".
 
 ### Input Context
 - Number of clusters managed (1, 10, 100+)
-- Git provider ([GitHub](../../CI_CD/github/SKILL.md), GitLab, Bitbucket)
-- Current [ArgoCD](../argocd/SKILL.md)/Flux version
+- Git provider ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md), GitLab, Bitbucket)
+- Current [ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md)/Flux version
 - Existing cluster topology (hub-spoke, peer-to-peer)
 - Secrets management approach (SOPS, SealedSecrets, External Secrets, [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md))
 - Team structure and RBAC requirements
@@ -54,10 +54,10 @@ Exact user phrases: "[GitOps](../gitops/SKILL.md) advanced", "multi-cluster [Git
 - CI/CD pipeline tooling
 
 ### Output Artifact
-ApplicationSet YAML manifests, [ArgoCD](../argocd/SKILL.md) project configurations, sync wave strategies, cluster registration configs, and [GitOps](../gitops/SKILL.md) workflow documentation.
+ApplicationSet YAML manifests, [ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md) project configurations, sync wave strategies, cluster registration configs, and [GitOps](../gitops/SKILL.md) workflow documentation.
 
 ### Response Format
-YAML manifests (ApplicationSet, [ArgoCD](../argocd/SKILL.md) Config, AppProject), shell commands, and architecture diagrams. No preamble. No postamble. No filler.
+YAML manifests (ApplicationSet, [ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md) Config, AppProject), shell commands, and architecture diagrams. No preamble. No postamble. No filler.
 
 ### Completion Criteria
 - [ ] ApplicationSet generators configured for multi-cluster or multi-env
@@ -75,7 +75,7 @@ YAML manifests (ApplicationSet, [ArgoCD](../argocd/SKILL.md) Config, AppProject)
 
 ```
 Which topology?
-  < 10 clusters → Hub cluster ([ArgoCD](../argocd/SKILL.md) in one cluster manages others)
+  < 10 clusters → Hub cluster ([ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md) in one cluster manages others)
   10-50 clusters → Hub cluster with sharded projects
   50+ clusters → Multi-hub or [GitOps](../gitops/SKILL.md) Federation (each cluster manages itself)
 
@@ -87,7 +87,7 @@ Hub cluster cons: single point of failure, hub must be resilient, latency for re
   Cons: harder to enforce org-wide policy, more moving parts
 
 Cluster API integration:
-  Cluster API provisions clusters → [ArgoCD](../argocd/SKILL.md) bootstraps them
+  Cluster API provisions clusters → [ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md) bootstraps them
   Full [GitOps](../gitops/SKILL.md) from cluster creation to workload deployment
 ```
 
@@ -98,7 +98,7 @@ How are clusters organized?
   Static list (known clusters) → List generator
   Dynamic (Cluster API, auto-provisioned) → Cluster generator
   Defined in Git directory structure → Git generator (directories)
-  From SCM ([GitHub](../../CI_CD/github/SKILL.md)/GitLab org repos) → SCM Provider generator
+  From SCM ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)/GitLab org repos) → SCM Provider generator
   Per PR (preview environments) → Pull Request generator
 
 Need to combine generators?
@@ -137,7 +137,7 @@ spec:
     spec:
       project: default
       source:
-        repoURL: https://[github](../../CI_CD/github/SKILL.md).com/org/[gitops](../gitops/SKILL.md)-config
+        repoURL: https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/org/[gitops](../gitops/SKILL.md)-config
         targetRevision: main
         path: "apps/myapp/{{metadata.labels.environment}}"
       destination:
@@ -158,7 +158,7 @@ metadata:
 spec:
   generators:
     - git:
-        repoURL: https://[github](../../CI_CD/github/SKILL.md).com/org/[gitops](../gitops/SKILL.md)-config
+        repoURL: https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/org/[gitops](../gitops/SKILL.md)-config
         revision: main
         directories:
           - path: apps/myapp/*
@@ -168,7 +168,7 @@ spec:
     spec:
       project: default
       source:
-        repoURL: https://[github](../../CI_CD/github/SKILL.md).com/org/[gitops](../gitops/SKILL.md)-config
+        repoURL: https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/org/[gitops](../gitops/SKILL.md)-config
         targetRevision: main
         path: "{{path}}"
       destination:
@@ -189,7 +189,7 @@ spec:
                 matchLabels:
                   type: workload
           - git:
-              repoURL: https://[github](../../CI_CD/github/SKILL.md).com/org/[gitops](../gitops/SKILL.md)-config
+              repoURL: https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/org/[gitops](../gitops/SKILL.md)-config
               revision: main
               directories:
                 - path: apps/*
@@ -199,7 +199,7 @@ spec:
     spec:
       project: "{{metadata.labels.project}}"
       source:
-        repoURL: https://[github](../../CI_CD/github/SKILL.md).com/org/[gitops](../gitops/SKILL.md)-config
+        repoURL: https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/org/[gitops](../gitops/SKILL.md)-config
         targetRevision: main
         path: "{{path}}/overlays/{{metadata.labels.environment}}"
       destination:
@@ -214,9 +214,9 @@ metadata:
 spec:
   generators:
     - scmProvider:
-        [github](../../CI_CD/github/SKILL.md):
+        [github](../../../ci-cd/github-actions/other/github/SKILL.md):
           organization: myorg
-          api: https://api.[github](../../CI_CD/github/SKILL.md).com/
+          api: https://api.[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/
           allBranches: true
           filters:
             - repositoryMatch: ^myapp-
@@ -244,10 +244,10 @@ metadata:
 spec:
   generators:
     - pullRequest:
-        [github](../../CI_CD/github/SKILL.md):
+        [github](../../../ci-cd/github-actions/other/github/SKILL.md):
           owner: myorg
           repo: myapp
-          api: https://api.[github](../../CI_CD/github/SKILL.md).com/
+          api: https://api.[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/
           labels:
             - preview-deploy
   template:
@@ -258,7 +258,7 @@ spec:
     spec:
       project: default
       source:
-        repoURL: https://[github](../../CI_CD/github/SKILL.md).com/myorg/myapp.git
+        repoURL: https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/myorg/myapp.git
         targetRevision: "{{head_sha}}"
         path: deploy/preview
       destination:
@@ -285,7 +285,7 @@ kind: Application
 metadata:
   name: crds
   annotations:
-    [argocd](../argocd/SKILL.md).argoproj.io/sync-wave: "-5"
+    [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md).argoproj.io/sync-wave: "-5"
 spec:
   source:
     path: infrastructure/crds
@@ -299,7 +299,7 @@ kind: Application
 metadata:
   name: storage-operator
   annotations:
-    [argocd](../argocd/SKILL.md).argoproj.io/sync-wave: "-3"
+    [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md).argoproj.io/sync-wave: "-3"
 spec:
   source:
     path: infrastructure/storage
@@ -312,8 +312,8 @@ kind: Application
 metadata:
   name: postgres-cluster
   annotations:
-    [argocd](../argocd/SKILL.md).argoproj.io/sync-wave: "-1"
-    [argocd](../argocd/SKILL.md).argoproj.io/sync-wave-hook: "Sync"
+    [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md).argoproj.io/sync-wave: "-1"
+    [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md).argoproj.io/sync-wave-hook: "Sync"
 spec:
   source:
     path: databases/postgres
@@ -324,8 +324,8 @@ kind: Application
 metadata:
   name: backend-api
   annotations:
-    [argocd](../argocd/SKILL.md).argoproj.io/sync-wave: "0"
-    [argocd](../argocd/SKILL.md).argoproj.io/sync-wave-hook: "Sync"
+    [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md).argoproj.io/sync-wave: "0"
+    [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md).argoproj.io/sync-wave-hook: "Sync"
 spec:
   source:
     path: services/backend
@@ -336,7 +336,7 @@ kind: Application
 metadata:
   name: frontend
   annotations:
-    [argocd](../argocd/SKILL.md).argoproj.io/sync-wave: "2"
+    [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md).argoproj.io/sync-wave: "2"
 spec:
   source:
     path: services/frontend
@@ -347,7 +347,7 @@ kind: Application
 metadata:
   name: [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-config
   annotations:
-    [argocd](../argocd/SKILL.md).argoproj.io/sync-wave: "5"
+    [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md).argoproj.io/sync-wave: "5"
 spec:
   source:
     path: [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)/[dashboards](../../Observability_and_SecOps/dashboards/SKILL.md)
@@ -360,18 +360,18 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: infrastructure
-  namespace: [argocd](../argocd/SKILL.md)
+  namespace: [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)
 spec:
   project: infrastructure
   source:
-    repoURL: https://[github](../../CI_CD/github/SKILL.md).com/org/[gitops](../gitops/SKILL.md)-infra
+    repoURL: https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/org/[gitops](../gitops/SKILL.md)-infra
     targetRevision: main
     path: apps
     directory:
       recurse: true
   destination:
     server: https://[kubernetes](../kubernetes/SKILL.md).default.svc
-    namespace: [argocd](../argocd/SKILL.md)
+    namespace: [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)
   syncPolicy:
     automated:
       prune: true
@@ -383,7 +383,7 @@ kind: Application
 metadata:
   name: cert-manager
   annotations:
-    [argocd](../argocd/SKILL.md).argoproj.io/sync-wave: "-5"
+    [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md).argoproj.io/sync-wave: "-5"
 spec:
   source:
     repoURL: https://charts.jetstack.io
@@ -405,10 +405,10 @@ kind: Application
 metadata:
   name: ingress-nginx
   annotations:
-    [argocd](../argocd/SKILL.md).argoproj.io/sync-wave: "-4"
+    [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md).argoproj.io/sync-wave: "-4"
 spec:
   source:
-    repoURL: https://[kubernetes](../kubernetes/SKILL.md).[github](../../CI_CD/github/SKILL.md).io/ingress-nginx
+    repoURL: https://[kubernetes](../kubernetes/SKILL.md).[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/ingress-nginx
     chart: ingress-nginx
     targetRevision: 4.9.0
     helm:
@@ -430,7 +430,7 @@ kind: Application
 metadata:
   name: external-secrets
   annotations:
-    [argocd](../argocd/SKILL.md).argoproj.io/sync-wave: "-3"
+    [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md).argoproj.io/sync-wave: "-3"
 spec:
   source:
     repoURL: https://charts.external-secrets.io
@@ -476,12 +476,12 @@ metadata:
   name: bootstrap-workload-prod-1
 spec:
   source:
-    repoURL: https://[github](../../CI_CD/github/SKILL.md).com/org/[gitops](../gitops/SKILL.md)-bootstrap
+    repoURL: https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/org/[gitops](../gitops/SKILL.md)-bootstrap
     targetRevision: main
     path: clusters/workload-prod-1
   destination:
-    name: workload-prod-1  # Cluster registered in [ArgoCD](../argocd/SKILL.md)
-    namespace: [argocd](../argocd/SKILL.md)
+    name: workload-prod-1  # Cluster registered in [ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md)
+    namespace: [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)
   syncPolicy:
     automated:
       prune: true
@@ -492,11 +492,11 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: bootstrap-initial
-  namespace: [argocd](../argocd/SKILL.md)
+  namespace: [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)
 spec:
   project: cluster-bootstrap
   source:
-    repoURL: https://[github](../../CI_CD/github/SKILL.md).com/org/[gitops](../gitops/SKILL.md)-bootstrap
+    repoURL: https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/org/[gitops](../gitops/SKILL.md)-bootstrap
     targetRevision: main
     path: bootstrap
   destination:
@@ -539,7 +539,7 @@ metadata:
   name: app-secrets
   namespace: production
   annotations:
-    [argocd](../argocd/SKILL.md).argoproj.io/sync-wave: "-1"
+    [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md).argoproj.io/sync-wave: "-1"
 spec:
   refreshInterval: 4h
   secretStoreRef:
@@ -562,7 +562,7 @@ creation_rules:
   - path_regex: secrets/.*\.yaml
     age: age1abc123...
 ---
-# Encrypted secret in git (decrypted by [ArgoCD](../argocd/SKILL.md) with SOPS plugin)
+# Encrypted secret in git (decrypted by [ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md) with SOPS plugin)
 # secrets/app-secrets.yaml (encrypted with SOPS)
 apiVersion: v1
 kind: Secret
@@ -593,7 +593,7 @@ spec:
     api_key: AgB7wXk...
 ```
 
-### Step 6: [ArgoCD](../argocd/SKILL.md) Image Updater
+### Step 6: [ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md) Image Updater
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -601,38 +601,38 @@ kind: Application
 metadata:
   name: myapp
   annotations:
-    [argocd](../argocd/SKILL.md)-image-updater.argoproj.io/image-list: myapp=ghcr.io/org/myapp
-    [argocd](../argocd/SKILL.md)-image-updater.argoproj.io/myapp.helm.image-name: image.repository
-    [argocd](../argocd/SKILL.md)-image-updater.argoproj.io/myapp.helm.image-tag: image.tag
-    [argocd](../argocd/SKILL.md)-image-updater.argoproj.io/myapp.update-strategy: latest
-    [argocd](../argocd/SKILL.md)-image-updater.argoproj.io/myapp.allow-tags: regex:^v?\d+\.\d+\.\d+$
-    [argocd](../argocd/SKILL.md)-image-updater.argoproj.io/myapp.pull-secret: pullsecret
-    [argocd](../argocd/SKILL.md)-image-updater.argoproj.io/write-back-method: git
-    [argocd](../argocd/SKILL.md)-image-updater.argoproj.io/git-branch: main
-    [argocd](../argocd/SKILL.md)-image-updater.argoproj.io/write-back-target: kustomization
+    [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)-image-updater.argoproj.io/image-list: myapp=ghcr.io/org/myapp
+    [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)-image-updater.argoproj.io/myapp.helm.image-name: image.repository
+    [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)-image-updater.argoproj.io/myapp.helm.image-tag: image.tag
+    [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)-image-updater.argoproj.io/myapp.update-strategy: latest
+    [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)-image-updater.argoproj.io/myapp.allow-tags: regex:^v?\d+\.\d+\.\d+$
+    [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)-image-updater.argoproj.io/myapp.pull-secret: pullsecret
+    [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)-image-updater.argoproj.io/write-back-method: git
+    [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)-image-updater.argoproj.io/git-branch: main
+    [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)-image-updater.argoproj.io/write-back-target: kustomization
 spec:
   source:
-    repoURL: https://[github](../../CI_CD/github/SKILL.md).com/org/myapp-config
+    repoURL: https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/org/myapp-config
     targetRevision: main
     path: overlays/production
   destination:
     server: https://[kubernetes](../kubernetes/SKILL.md).default.svc
     namespace: production
 ---
-# [argocd](../argocd/SKILL.md)-image-updater config
+# [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)-image-updater config
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: [argocd](../argocd/SKILL.md)-image-updater-config
-  namespace: [argocd](../argocd/SKILL.md)
+  name: [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)-image-updater-config
+  namespace: [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)
 data:
   config.json: |
     {
-      "git_user": "[argocd](../argocd/SKILL.md)-image-updater",
+      "git_user": "[argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)-image-updater",
       "git_email": "image-updater@example.com",
       "registries": [
         {
-          "name": "[GitHub](../../CI_CD/github/SKILL.md) Container Registry",
+          "name": "[GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Container Registry",
           "api_url": "https://ghcr.io",
           "prefix": "ghcr.io",
           "ping": true,
@@ -643,7 +643,7 @@ data:
           "api_url": "https://registry-1.[docker](../docker/SKILL.md).io",
           "prefix": "[docker](../docker/SKILL.md).io",
           "ping": true,
-          "credentials": "pullsecret:[argocd](../argocd/SKILL.md)/dockerhub-creds"
+          "credentials": "pullsecret:[argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)/dockerhub-creds"
         }
       ]
     }
@@ -652,16 +652,16 @@ data:
 ### Step 7: Enterprise Multi-Cluster RBAC
 
 ```yaml
-# [ArgoCD](../argocd/SKILL.md) Projects for team isolation
+# [ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md) Projects for team isolation
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: team-platform
-  namespace: [argocd](../argocd/SKILL.md)
+  namespace: [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)
 spec:
   description: Platform team infrastructure
   sourceRepos:
-    - "https://[github](../../CI_CD/github/SKILL.md).com/org/[gitops](../gitops/SKILL.md)-infra"
+    - "https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/org/[gitops](../gitops/SKILL.md)-infra"
     - "https://charts.bitnami.com/bitnami"
     - "https://charts.jetstack.io"
   destinations:
@@ -690,10 +690,10 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: team-checkout
-  namespace: [argocd](../argocd/SKILL.md)
+  namespace: [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)
 spec:
   sourceRepos:
-    - "https://[github](../../CI_CD/github/SKILL.md).com/org/checkout-*"
+    - "https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/org/checkout-*"
   destinations:
     - namespace: "checkout-*"
       server: "https://cluster-prod-1.example.com:6443"
@@ -714,12 +714,12 @@ spec:
       groups:
         - myorg:everyone
 ---
-# [ArgoCD](../argocd/SKILL.md) RBAC ConfigMap
+# [ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md) RBAC ConfigMap
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: [argocd](../argocd/SKILL.md)-rbac-cm
-  namespace: [argocd](../argocd/SKILL.md)
+  name: [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)-rbac-cm
+  namespace: [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)
 data:
   policy.default: role:readonly
   policy.csv: |
@@ -745,8 +745,8 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: [argocd](../argocd/SKILL.md)-notifications-cm
-  namespace: [argocd](../argocd/SKILL.md)
+  name: [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)-notifications-cm
+  namespace: [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)
 data:
   service.slack: |
     token: $slack-token
@@ -788,17 +788,17 @@ data:
 
 ## Production Considerations
 
-### [ArgoCD](../argocd/SKILL.md) HA Configuration
+### [ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md) HA Configuration
 ```
 Control plane:
-  - 3 replicas for [argocd](../argocd/SKILL.md)-server, [argocd](../argocd/SKILL.md)-repo-server, [argocd](../argocd/SKILL.md)-application-controller
-  - [argocd](../argocd/SKILL.md)-dex-server: 2 replicas (if using OIDC)
-  - [argocd](../argocd/SKILL.md)-redis: sentinel-based HA
+  - 3 replicas for [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)-server, [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)-repo-server, [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)-application-controller
+  - [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)-dex-server: 2 replicas (if using OIDC)
+  - [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)-redis: sentinel-based HA
 
 Backend:
-  - [argocd](../argocd/SKILL.md)-repo-server: 2+ replicas, 2 CPU, 4Gi RAM per 100 repos
-  - [argocd](../argocd/SKILL.md)-application-controller: 2+ replicas, 2 CPU, 2Gi RAM per 1000 apps
-  - [argocd](../argocd/SKILL.md)-server: 4+ replicas for API + UI
+  - [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)-repo-server: 2+ replicas, 2 CPU, 4Gi RAM per 100 repos
+  - [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)-application-controller: 2+ replicas, 2 CPU, 2Gi RAM per 1000 apps
+  - [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)-server: 4+ replicas for API + UI
 
 Database:
   - Redis for caching only (loss-tolerant)
@@ -814,7 +814,7 @@ Number of apps:
 
 Sync cadence:
   Default: 3m (polling)
-  Webhook: [GitHub](../../CI_CD/github/SKILL.md)/GitLab webhook to [argocd](../argocd/SKILL.md)-server (60s latency)
+  Webhook: [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)/GitLab webhook to [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)-server (60s latency)
   Automated: enabled with prune+selfHeal for most apps
   Manual: critical production apps (require approval)
 
@@ -829,42 +829,42 @@ Retry strategy:
 2. **No sync wave orchestration**: All resources deploy simultaneously. Use sync waves for ordering.
 3. **Plaintext secrets in Git**: Secrets committed without encryption. Always use External Secrets, SOPS, or SealedSecrets.
 4. **Overusing sync waves**: 30 sync waves for a simple app. Keep waves for infrastructure dependencies only.
-5. **Ignoring application health**: [ArgoCD](../argocd/SKILL.md) shows "Synced" but app is not healthy. Always implement health checks.
+5. **Ignoring application health**: [ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md) shows "Synced" but app is not healthy. Always implement health checks.
 6. **Auto-sync for everything**: Databases and CRDs should not auto-sync without verification.
 7. **No drift detection**: Changes made outside [GitOps](../gitops/SKILL.md) are silently ignored. Enable self-heal with [monitoring](../../Observability_and_SecOps/monitoring/SKILL.md).
 8. **Single cluster hub bottleneck**: Hub cluster goes down, no cluster can sync. Implement HA for hub or use [GitOps](../gitops/SKILL.md) Federation.
 9. **Missing prune safeguards**: `prune: true` without `PreserveResourcesOnDeletion` for critical data.
-10. **Insufficient RBAC**: Everyone has cluster-admin on [ArgoCD](../argocd/SKILL.md). Scope projects and roles per team.
+10. **Insufficient RBAC**: Everyone has cluster-admin on [ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md). Scope projects and roles per team.
 
 ## Compared With
 
-| Feature | [ArgoCD](../argocd/SKILL.md) | Flux v2 |
+| Feature | [ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md) | Flux v2 |
 |---------|--------|---------|
 | Multi-cluster | Native (hub/spoke) | Native (Kustomization with KubeConfig) |
 | ApplicationSet | Built-in | Manual ([Kustomize](../kustomize/SKILL.md) overlay per cluster) |
 | Sync waves | Annotations | depends-on in Kustomization |
-| Image updates | [ArgoCD](../argocd/SKILL.md) Image Updater | Image Automation Controllers |
+| Image updates | [ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md) Image Updater | Image Automation Controllers |
 | Secrets integration | SOPS/External Secrets/SealedSecrets | SOPS native |
 | RBAC/Projects | Native | Native (roles + accounts) |
-| Notifications | [argocd](../argocd/SKILL.md)-notifications | Notification controller |
+| Notifications | [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)-notifications | Notification controller |
 | Config Management | CMP (any tool) | [Kustomize](../kustomize/SKILL.md) + Helm |
 | Drift detection | Self-heal + Diff | Reconciliation loop |
-| SSO/OIDC | Dex/Built-in | OIDC/[GitHub](../../CI_CD/github/SKILL.md)/GitLab |
+| SSO/OIDC | Dex/Built-in | OIDC/[GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)/GitLab |
 
 ## References
-- ../../../Global_References/applicationset-generators.md — [ArgoCD](../argocd/SKILL.md) ApplicationSet Generators
-- ../../../Global_References/[argocd](../argocd/SKILL.md)-image-updater.md — [ArgoCD](../argocd/SKILL.md) Image Updater
+- ../../../Global_References/applicationset-generators.md — [ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md) ApplicationSet Generators
+- ../../../Global_References/[argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)-image-updater.md — [ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md) Image Updater
 - ../../../Global_References/[gitops](../gitops/SKILL.md)-advanced-advanced.md — [Gitops](../gitops/SKILL.md) Advanced Advanced Topics
 - ../../../Global_References/[gitops](../gitops/SKILL.md)-advanced-fundamentals.md — [Gitops](../gitops/SKILL.md) Advanced Fundamentals
 - ../../../Global_References/[gitops](../gitops/SKILL.md)-secrets.md — Secrets in [GitOps](../gitops/SKILL.md)
 - ../../../Global_References/multi-cluster-management.md — Multi-Cluster [GitOps](../gitops/SKILL.md) Management
 - ../../../Global_References/sync-phases-hooks.md — Sync Phases, Waves, and Hooks
-- references/[argocd](../argocd/SKILL.md)-ha.md — [ArgoCD](../argocd/SKILL.md) High Availability Configuration
-- references/[argocd](../argocd/SKILL.md)-projects-rbac.md — [ArgoCD](../argocd/SKILL.md) Projects and RBAC
+- references/[argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)-ha.md — [ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md) High Availability Configuration
+- references/[argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)-projects-rbac.md — [ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md) Projects and RBAC
 - references/cluster-bootstrapping.md — Cluster Bootstrapping with [GitOps](../gitops/SKILL.md)
-- references/[argocd](../argocd/SKILL.md)-notifications.md — [ArgoCD](../argocd/SKILL.md) Notifications and Webhooks
-- references/config-management-plugins.md — [ArgoCD](../argocd/SKILL.md) Config Management Plugins
+- references/[argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)-notifications.md — [ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md) Notifications and Webhooks
+- references/config-management-plugins.md — [ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md) Config Management Plugins
 
 ## Handoff
-Related skills: [progressive-delivery](../../CI_CD/progressive-delivery/SKILL.md) (Argo Rollouts with [GitOps](../gitops/SKILL.md)), [argo-cd](../argo-cd/SKILL.md) (basic [ArgoCD](../argocd/SKILL.md) setup), [gitops](../gitops/SKILL.md) ([GitOps](../gitops/SKILL.md) fundamentals), [kubernetes](../kubernetes/SKILL.md)-patterns (K8s resources), [policy-as-code](../../../Security/policy-as-code/SKILL.md) (policy enforcement), crossplane (infrastructure composition), cluster-api (cluster provisioning).
+Related skills: [progressive-delivery](../../../ci-cd/common/deployment/progressive-delivery/SKILL.md) (Argo Rollouts with [GitOps](../gitops/SKILL.md)), [argo-cd](../../../ci-cd/argocd/other/argo-cd/SKILL.md) (basic [ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md) setup), [gitops](../gitops/SKILL.md) ([GitOps](../gitops/SKILL.md) fundamentals), [kubernetes](../kubernetes/SKILL.md)-patterns (K8s resources), [policy-as-code](../../../Security/policy-as-code/SKILL.md) (policy enforcement), crossplane (infrastructure composition), cluster-api (cluster provisioning).
 

@@ -67,7 +67,7 @@ FROM node:20.11.1-bookworm-slim@sha256:abc123...
 RUN npm ci   # honors package-lock.json exactly
 ```
 
-**Done when:** a build run twice from the same [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) produces byte-identical dependency
+**Done when:** a build run twice from the same [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) produces byte-identical dependency
 versions.
 
 ## 3. Capture build provenance, aim for SLSA
@@ -79,7 +79,7 @@ that's non-forgeable by the build's own operator. Most teams don't need the top 
 immediately, but every level up removes a category of forgeable trust.
 
 **Done when:** you can produce a signed provenance statement linking a running artifact back to
-the exact source [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) and build system that made it.
+the exact source [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) and build system that made it.
 
 ## 4. Sign every artifact you ship
 

@@ -235,7 +235,7 @@ job.
    API server down, not just etcd; treat "currently at N-1 members" as
    an active [incident](../../Observability_and_SecOps/incident/SKILL.md), not a background fact.
 
-8. **Watch disk fsync/backend-[commit](../../CI_CD/commit/SKILL.md) latency and DB size as the two
+8. **Watch disk fsync/backend-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) latency and DB size as the two
    leading indicators of etcd degradation**, via the `etcd` metrics
    endpoint scraped by
    [prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack](../../../[observability](../../Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack](../prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md):
@@ -254,7 +254,7 @@ job.
 ## Best practices
 
 - Provision etcd on **local NVMe/SSD**, never network-attached or
-  shared storage — etcd's Raft [commit](../../CI_CD/commit/SKILL.md) path requires every write to be
+  shared storage — etcd's Raft [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) path requires every write to be
   fsync'd to disk before acknowledging, and network storage latency
   variance directly becomes API server latency variance cluster-wide.
 - Run etcd with an odd member count (3 or 5) for real fault tolerance;

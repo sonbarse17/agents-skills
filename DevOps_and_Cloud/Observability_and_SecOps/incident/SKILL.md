@@ -110,7 +110,7 @@ Once stable, state the causal chain, distinguishing the **trigger** from the
 work: each follow-up hands off to the relevant review skill and becomes a plan
 per [../docs/plan-template.md](../docs/plan-template.md) — e.g. a missing
 resource limit → `/[k8s-review](../../Containers_and_Orchestration/k8s-review/SKILL.md)`, a late alert → `/[observability](../observability/SKILL.md)`, an unsafe
-deploy path → `/[pipeline-review](../../CI_CD/pipeline-review/SKILL.md)`.
+deploy path → `/[pipeline-review](../../../ci-cd/common/pipeline-design/pipeline-review/SKILL.md)`.
 
 ## Invocation variants
 

@@ -113,7 +113,7 @@ gate deploys is covered separately in
 
 2. **Publish the generated pact file to the broker** as part of the
    consumer's CI pipeline, tagged with a version identifier that ties it
-   back to a real deployable artifact ([commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) SHA or build number, not a
+   back to a real deployable artifact ([commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) SHA or build number, not a
    loose "latest"):
    ```bash
    pact-broker publish ./pacts \
@@ -190,7 +190,7 @@ gate deploys is covered separately in
 ## Best practices
 
 - Version pact files by the consumer's real deployable artifact version
-  ([commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) SHA/build number), never a floating "latest," so the broker's
+  ([commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) SHA/build number), never a floating "latest," so the broker's
   compatibility matrix is trustworthy.
 - Keep provider states (`stateHandlers`) realistic and isolated — each
   state should set up exactly the data needed for that interaction and
@@ -229,7 +229,7 @@ gate deploys is covered separately in
 - **Symptom:** The broker accumulates hundreds of pact versions from
   feature branches, and it's unclear which one reflects what's actually
   running in production.
-  **Fix:** Publish with both a version ([commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) SHA) and a branch tag, and
+  **Fix:** Publish with both a version ([commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) SHA) and a branch tag, and
   use the broker's "deployed"/"released" version-recording API
   (`pact-broker record-deployment`) to mark which specific version is
   actually live in each environment — this is exactly what
@@ -256,14 +256,14 @@ noticing until deploy.
    pact file describing the `GET /inventory/:sku` interaction with a
    `stock` field matched as `integer(42)` (any integer, not exactly 42).
 2. On merge to `main`, `order-service`'s pipeline publishes the pact to
-   the team's self-hosted broker, tagged with the merge [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) SHA and
+   the team's self-hosted broker, tagged with the merge [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) SHA and
    branch `main`.
 3. The broker's webhook fires a build in `inventory-service`'s CI,
    running the provider verification test from step 3 against the newly
    published contract, seeding test data via the `stateHandlers` map.
 4. Verification passes and is published back to the broker
    (`publishVerificationResult: true`), giving the broker a record: "this
-   `inventory-service` [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) satisfies this `order-service` contract
+   `inventory-service` [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) satisfies this `order-service` contract
    version."
 5. Weeks later, an engineer on `inventory-service` renames the `stock`
    field to `quantity` in a draft PR. The next provider verification run

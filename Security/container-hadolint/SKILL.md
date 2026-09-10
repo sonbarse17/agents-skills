@@ -56,7 +56,7 @@ Hadolint integrates ShellCheck to validate RUN instructions, ensuring shell comm
 brew install hadolint
 
 # Linux via binary
-wget -O /usr/local/bin/hadolint https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/hadolint/hadolint/releases/latest/download/hadolint-Linux-x86_64
+wget -O /usr/local/bin/hadolint https://[github](../../ci-cd/github-actions/other/github/SKILL.md).com/hadolint/hadolint/releases/latest/download/hadolint-Linux-x86_64
 chmod +x /usr/local/bin/hadolint
 
 # Via [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
@@ -116,13 +116,13 @@ Dockerfile:7 DL3025 error: Use JSON notation for CMD and ENTRYPOINT
 Dockerfile:12 DL3059 info: Multiple RUN instructions detected
 ```
 
-**When to use**: Developer workstation, pre-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) validation, iterative Dockerfile development.
+**When to use**: Developer workstation, pre-[commit](../../ci-cd/common/git-workflow/commit/SKILL.md) validation, iterative Dockerfile development.
 
 ### 2. CI/CD Pipeline Integration
 
 Automate Dockerfile validation in build pipelines:
 
-#### [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions
+#### [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions
 
 ```yaml
 name: Hadolint
@@ -142,9 +142,9 @@ jobs:
           format: sarif
           output-file: hadolint.sarif
 
-      - name: Upload SARIF to [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Security
+      - name: Upload SARIF to [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Security
         if: always()
-        uses: [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/codeql-action/upload-sarif@v2
+        uses: [github](../../ci-cd/github-actions/other/github/SKILL.md)/codeql-action/upload-sarif@v2
         with:
           sarif_file: hadolint.sarif
 ```
@@ -249,23 +249,23 @@ hadolint Dockerfile
 
 **When to use**: Complex builds, security-hardened images, production [containerization](../../DevOps_and_Cloud/Containers_and_Orchestration/containerization/SKILL.md).
 
-### 6. Pre-[Commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) Hook Integration
+### 6. Pre-[Commit](../../ci-cd/common/git-workflow/commit/SKILL.md) Hook Integration
 
 Prevent insecure Dockerfiles from being committed:
 
 ```bash
-# Install pre-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) hook using bundled script
+# Install pre-[commit](../../ci-cd/common/git-workflow/commit/SKILL.md) hook using bundled script
 ./scripts/install_precommit.sh
 
 # Or manually create hook
-cat << 'EOF' > .git/hooks/pre-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)
+cat << 'EOF' > .git/hooks/pre-[commit](../../ci-cd/common/git-workflow/commit/SKILL.md)
 #!/bin/bash
 for dockerfile in $(git diff --cached --name-only | grep -E 'Dockerfile'); do
   hadolint --failure-threshold warning "$dockerfile" || exit 1
 done
 EOF
 
-chmod +x .git/hooks/pre-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)
+chmod +x .git/hooks/pre-[commit](../../ci-cd/common/git-workflow/commit/SKILL.md)
 ```
 
 **When to use**: Developer workstations, team onboarding, mandatory security controls.
@@ -310,7 +310,7 @@ Log the following for compliance and security auditing:
 
 - `hadolint_scan.py` - Comprehensive scanning with multiple Dockerfiles and output formats
 - `hadolint_multistage.py` - Multi-stage Dockerfile analysis with stage-specific validation
-- `install_precommit.sh` - Automated pre-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) hook installation
+- `install_precommit.sh` - Automated pre-[commit](../../ci-cd/common/git-workflow/commit/SKILL.md) hook installation
 - `ci_integration.sh` - CI/CD integration examples for multiple platforms
 
 ### References (`references/`)
@@ -325,9 +325,9 @@ Log the following for compliance and security auditing:
 - `hadolint-strict.yaml` - Strict security configuration
 - `hadolint-balanced.yaml` - Production-ready configuration (recommended)
 - `hadolint-permissive.yaml` - Legacy Dockerfile migration configuration
-- `[github-actions](../../DevOps_and_Cloud/CI_CD/[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-actions/SKILL.md).yml` - Complete [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions workflow
-- `[gitlab-ci](../../DevOps_and_Cloud/CI_CD/gitlab-ci/SKILL.md).yml` - Complete GitLab CI pipeline
-- `precommit-config.yaml` - Pre-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) framework configuration
+- `[github-actions](../../DevOps_and_Cloud/CI_CD/[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-actions/SKILL.md).yml` - Complete [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions workflow
+- `[gitlab-ci](../../ci-cd/gitlab-ci/pipelines/gitlab-ci/SKILL.md).yml` - Complete GitLab CI pipeline
+- `precommit-config.yaml` - Pre-[commit](../../ci-cd/common/git-workflow/commit/SKILL.md) framework configuration
 
 ## Common Patterns
 
@@ -443,10 +443,10 @@ gh pr comment --body-file pr-comment.md
 
 ### CI/CD Integration
 
-- **[GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions**: Native hadolint-action with SARIF support for Security tab
+- **[GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions**: Native hadolint-action with SARIF support for Security tab
 - **GitLab CI**: GitLab Code Quality format integration
-- **[Jenkins](../../DevOps_and_Cloud/CI_CD/jenkins/SKILL.md)**: Checkstyle format for [Jenkins](../../DevOps_and_Cloud/CI_CD/jenkins/SKILL.md) Warnings plugin
-- **[CircleCI](../../DevOps_and_Cloud/CI_CD/circleci/SKILL.md)**: [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-based executor with artifact retention
+- **[Jenkins](../../ci-cd/jenkins/other/jenkins/SKILL.md)**: Checkstyle format for [Jenkins](../../ci-cd/jenkins/other/jenkins/SKILL.md) Warnings plugin
+- **[CircleCI](../../ci-cd/circleci/other/circleci/SKILL.md)**: [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-based executor with artifact retention
 - **Azure Pipelines**: Task integration with results publishing
 
 ### Security Tools Ecosystem
@@ -459,7 +459,7 @@ gh pr comment --body-file pr-comment.md
 
 ### SDLC Integration
 
-- **Development**: Pre-[commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) hooks provide immediate feedback
+- **Development**: Pre-[commit](../../ci-cd/common/git-workflow/commit/SKILL.md) hooks provide immediate feedback
 - **Code Review**: PR checks prevent insecure Dockerfiles from merging
 - **Testing**: Scan test environment Dockerfiles
 - **Staging**: Validation gate before production promotion
@@ -609,9 +609,9 @@ Ensures Dockerfile LABELs conform to OCI image specification.
 
 ## References
 
-- [Hadolint [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Repository](https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/hadolint/hadolint)
+- [Hadolint [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Repository](https://[github](../../ci-cd/github-actions/other/github/SKILL.md).com/hadolint/hadolint)
 - [CIS [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Benchmark](https://www.cisecurity.org/benchmark/[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md))
 - [Docker Best Practices](https://docs.[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).com/develop/develop-images/dockerfile_best-practices/)
 - [ShellCheck Documentation](https://www.shellcheck.net/)
-- [OCI Image Specification](https://[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/opencontainers/image-spec)
+- [OCI Image Specification](https://[github](../../ci-cd/github-actions/other/github/SKILL.md).com/opencontainers/image-spec)
 

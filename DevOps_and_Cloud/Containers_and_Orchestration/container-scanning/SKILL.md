@@ -46,7 +46,7 @@ Use this skill when:
 | Grype | OSS | Fast | Accurate, SBOM |
 | Clair | OSS | Medium | Registry integration |
 | Snyk Container | Commercial | Fast | Fix suggestions |
-| [Docker](../docker/SKILL.md) Scout | Commercial | Fast | [GitHub](../../CI_CD/github/SKILL.md) integration |
+| [Docker](../docker/SKILL.md) Scout | Commercial | Fast | [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) integration |
 
 ## Trivy
 
@@ -123,7 +123,7 @@ scan:
 ### CI Integration
 
 ```yaml
-# [GitHub](../../CI_CD/github/SKILL.md) Actions
+# [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions
 name: Container Security
 
 on:
@@ -138,19 +138,19 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Build image
-        run: [docker](../docker/SKILL.md) build -t myapp:${{ [github](../../CI_CD/github/SKILL.md).sha }} .
+        run: [docker](../docker/SKILL.md) build -t myapp:${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).sha }} .
 
       - name: Run Trivy
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'myapp:${{ [github](../../CI_CD/github/SKILL.md).sha }}'
+          image-ref: 'myapp:${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).sha }}'
           format: 'sarif'
           output: 'trivy-results.sarif'
           severity: 'CRITICAL,HIGH'
           exit-code: '1'
 
       - name: Upload results
-        uses: [github](../../CI_CD/github/SKILL.md)/codeql-action/upload-sarif@v3
+        uses: [github](../../../ci-cd/github-actions/other/github/SKILL.md)/codeql-action/upload-sarif@v3
         with:
           sarif_file: 'trivy-results.sarif'
 ```

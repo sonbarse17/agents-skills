@@ -127,7 +127,7 @@ Secrets Store CSI driver) rather than committing a connection string.
 
 **Phase 4 — Golden-path template design.** With Backstage's Scaffolder
 running, design the first golden-path template: an opinionated new-service
-default that produces a Dockerfile, a CI pipeline ([GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions or the
+default that produces a Dockerfile, a CI pipeline ([GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions or the
 CodePipeline/CodeDeploy pattern), catalog registration, and — for AWS
 specifically — a scaffolded IRSA-ready [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) `ServiceAccount`
 manifest with the trust-policy annotation pre-filled. Tier the template by
@@ -287,7 +287,7 @@ over one quarter.
    scoped to `secretsmanager:GetSecretValue` on exactly the RDS credential
    secret.
 4. **Phase 4:** A "Node.js service" golden-path template is authored,
-   producing a Dockerfile, a [GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions CI workflow, and a
+   producing a Dockerfile, a [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions CI workflow, and a
    `ServiceAccount` manifest annotated
    `eks.amazonaws.com/role-arn: arn:aws:iam::<ACCOUNT_ID>:role/${service-name}-irsa`.
 5. **Phase 5:** A validation pipeline scaffolds `test-svc-001` from the

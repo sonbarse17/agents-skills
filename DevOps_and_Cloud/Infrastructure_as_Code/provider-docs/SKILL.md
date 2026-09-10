@@ -50,7 +50,7 @@ go generate ./...
 ```
 - Otherwise run the generator directly:
 ```bash
-go run [github](../../CI_CD/github/SKILL.md).com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs generate --provider-name <provider_name>
+go run [github](../../../ci-cd/github-actions/other/github/SKILL.md).com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs generate --provider-name <provider_name>
 ```
 - Re-run generation after every schema or template edit.
 

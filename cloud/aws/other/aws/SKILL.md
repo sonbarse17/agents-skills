@@ -78,7 +78,7 @@ Direct file write. No response text.
 | Container, orchestrated | ECS on Fargate | No K8s complexity, containers only | Per-task vCPU/memory |
 | Container, full K8s | EKS (managed node groups) | Need K8s ecosystem, multi-service | Per-cluster + node costs |
 | Container, [serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) K8s | EKS with Fargate profiles | No node management | Per-pod (Fargate pricing) |
-| Web app, simple deploy | App Runner | From source/[GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md), no infra config | Per-instance + traffic |
+| Web app, simple deploy | App Runner | From source/[GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md), no infra config | Per-instance + traffic |
 | Batch, flexible | AWS Batch | Job scheduling, queue-based | Per-job compute |
 
 ### Database: RDS vs Aurora vs DynamoDB vs ElastiCache vs Neptune

@@ -201,9 +201,9 @@ State: User asks about [Ansible](../../DevOps_and_Cloud/Infrastructure_as_Code/a
   Route: devops-[ansible](../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md)
   Reason: "[Ansible](../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md) automation patterns request."
 
-State: User asks about [Jenkins](../../DevOps_and_Cloud/CI_CD/jenkins/SKILL.md), CI/CD pipeline, Jenkinsfile.
-  Route: devops-[jenkins](../../DevOps_and_Cloud/CI_CD/jenkins/SKILL.md)
-  Reason: "[Jenkins](../../DevOps_and_Cloud/CI_CD/jenkins/SKILL.md) pipeline patterns request."
+State: User asks about [Jenkins](../../ci-cd/jenkins/other/jenkins/SKILL.md), CI/CD pipeline, Jenkinsfile.
+  Route: devops-[jenkins](../../ci-cd/jenkins/other/jenkins/SKILL.md)
+  Reason: "[Jenkins](../../ci-cd/jenkins/other/jenkins/SKILL.md) pipeline patterns request."
 
 State: User asks about [Longhorn](../../DevOps_and_Cloud/Observability_and_SecOps/longhorn/SKILL.md), distributed storage, persistent volumes, backup.
   Route: devops-[longhorn](../../DevOps_and_Cloud/Observability_and_SecOps/longhorn/SKILL.md)
@@ -400,19 +400,19 @@ State: User asks about [Docker](../../DevOps_and_Cloud/Containers_and_Orchestrat
   Route: [docker-patterns](../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-patterns/SKILL.md)
   Reason: "[Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) [containerization](../../DevOps_and_Cloud/Containers_and_Orchestration/containerization/SKILL.md) request."
 
-State: User says deploy, CI/CD, [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions, GitLab CI, pipeline automation.
-  Route: [cicd-pipeline](../../DevOps_and_Cloud/CI_CD/cicd-pipeline/SKILL.md)
+State: User says deploy, CI/CD, [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, pipeline automation.
+  Route: [cicd-pipeline](../../ci-cd/common/pipeline-design/cicd-pipeline/SKILL.md)
   Reason: "CI/CD pipeline request."
 
 State: User asks about [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md), k8s, pods, deployments, services, ingress.
   Route: [kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-patterns
   Reason: "[Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) orchestration request."
 
-State: User asks about [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions, CI/CD workflow, pipeline automation.
+State: User asks about [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions, CI/CD workflow, pipeline automation.
   Route: [github-actions](../../DevOps_and_Cloud/CI_CD/[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-actions/SKILL.md)
-  Reason: "[GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions CI/CD request."
+  Reason: "[GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions CI/CD request."
 
-State: User asks about [GitOps](../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md), [ArgoCD](../../DevOps_and_Cloud/Containers_and_Orchestration/argocd/SKILL.md), Flux, Git-based deployment.
+State: User asks about [GitOps](../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md), [ArgoCD](../../ci-cd/argocd/other/argocd/SKILL.md), Flux, Git-based deployment.
   Route: devops-[gitops](../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)
   Reason: "[GitOps](../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) deployment strategy request."
 
@@ -505,7 +505,7 @@ State: User asks about changelog, release notes, semantic versioning.
   Reason: "Changelog generation request."
 
 State: User asks about git workflow, branching strategy, rebase, merge, git flow.
-  Route: [git-workflow](../../DevOps_and_Cloud/CI_CD/git-workflow/SKILL.md)
+  Route: [git-workflow](../../ci-cd/common/git-workflow/git-workflow/SKILL.md)
   Reason: "Git workflow and branching strategy request."
 
 State: User asks about [profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md), performance [audit](../../AI_and_Agents/Operations/audit/SKILL.md), bottleneck, flamegraph, CPU profile.
@@ -565,7 +565,7 @@ State: User asks about mobile storage, local database, SQLite mobile, Room, Core
   Reason: "Mobile local storage request."
 
 State: User asks about mobile deploy, TestFlight, App Store, Play Store, mobile CI/CD, code signing.
-  Route: [mobile-deployment](../../DevOps_and_Cloud/CI_CD/deployment/SKILL.md)
+  Route: [mobile-deployment](../../Mobile/deployment/SKILL.md)
   Reason: "Mobile app deployment request."
 
 State: User asks about push notifications, APNs, FCM, notification payload.
@@ -609,7 +609,7 @@ State: User asks about file storage, object storage, S3, file upload.
   Reason: "File storage request."
 
 State: User asks about feature flags, feature toggles, canary release, gradual rollout.
-  Route: backend-[feature-flags](../../DevOps_and_Cloud/CI_CD/feature-flags/SKILL.md)
+  Route: backend-[feature-flags](../../ci-cd/common/other/feature-flags/SKILL.md)
   Reason: "Feature flag request."
 
 State: User asks about i18n, internationalization, localization, translations.
@@ -867,7 +867,7 @@ State: User asks about data lakehouse, lakehouse architecture, medallion archite
   Reason: "Data lakehouse request."
 
 State: User asks about batch processing, Hive, batch ETL, nightly jobs, batch pipeline.
-  Route: [data-batch-processing](../../DevOps_and_Cloud/CI_CD/batch-processing/SKILL.md)
+  Route: [data-batch-processing](../../Data_Engineering/batch-processing/SKILL.md)
   Reason: "Batch processing request."
 
 State: User asks about workflow orchestration, Airflow, Prefect, Dagster, pipeline orchestration.
@@ -915,7 +915,7 @@ State: User asks about data lineage, column lineage, dataset lineage.
   Reason: "Data lineage request."
 
 State: User asks about data pipeline CI/CD, data testing in CI, dbt test, data pipeline test.
-  Route: [data-pipeline-cicd](../../DevOps_and_Cloud/CI_CD/data-pipeline-cicd/SKILL.md)
+  Route: [data-pipeline-cicd](../../ci-cd/common/data-pipeline/data-pipeline-cicd/SKILL.md)
   Reason: "Data pipeline CI/CD request."
 
 State: User asks about data testing, data quality test, data diff, data validation test.
@@ -1000,12 +1000,12 @@ State: User asks about [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orches
   Route: [devops-[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-operators](../../DevOps_and_Cloud/Containers_and_Orchestration/[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-operators/SKILL.md)
   Reason: "[Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) operators request."
 
-State: User asks about advanced [GitOps](../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md), multi-cluster [GitOps](../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md), ApplicationSet, [ArgoCD](../../DevOps_and_Cloud/Containers_and_Orchestration/argocd/SKILL.md) sync waves, cluster bootstrapping, [GitOps](../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) at scale.
+State: User asks about advanced [GitOps](../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md), multi-cluster [GitOps](../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md), ApplicationSet, [ArgoCD](../../ci-cd/argocd/other/argocd/SKILL.md) sync waves, cluster bootstrapping, [GitOps](../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) at scale.
   Route: [devops-[gitops](../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)-advanced](../../DevOps_and_Cloud/Containers_and_Orchestration/[gitops](../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)-advanced/SKILL.md)
   Reason: "Advanced [GitOps](../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) request."
 
 State: User asks about progressive delivery, canary deployment, blue-green, traffic shifting, Flagger, Argo Rollouts, gradual rollout, deploy strategy.
-  Route: devops-[progressive-delivery](../../DevOps_and_Cloud/CI_CD/progressive-delivery/SKILL.md)
+  Route: devops-[progressive-delivery](../../ci-cd/common/deployment/progressive-delivery/SKILL.md)
   Reason: "Progressive delivery request."
 
 State: User asks about policy as code, OPA, Rego, Kyverno, admission controller, policy enforcement, guardrails, policy testing.
@@ -1025,12 +1025,12 @@ State: User asks about Crossplane, Crossplane composition, managed resource, pro
   Reason: "Crossplane control plane request."
 
 State: User asks about GitLab CI, GitLab pipeline, GitLab Runner, GitLab CI/CD.
-  Route: devops-[gitlab-ci](../../DevOps_and_Cloud/CI_CD/gitlab-ci/SKILL.md)
+  Route: devops-[gitlab-ci](../../ci-cd/gitlab-ci/pipelines/gitlab-ci/SKILL.md)
   Reason: "GitLab CI/CD request."
 
-State: User asks about [CircleCI](../../DevOps_and_Cloud/CI_CD/circleci/SKILL.md), [CircleCI](../../DevOps_and_Cloud/CI_CD/circleci/SKILL.md) config, [CircleCI](../../DevOps_and_Cloud/CI_CD/circleci/SKILL.md) orb, [CircleCI](../../DevOps_and_Cloud/CI_CD/circleci/SKILL.md) pipeline.
-  Route: devops-[circleci](../../DevOps_and_Cloud/CI_CD/circleci/SKILL.md)
-  Reason: "[CircleCI](../../DevOps_and_Cloud/CI_CD/circleci/SKILL.md) request."
+State: User asks about [CircleCI](../../ci-cd/circleci/other/circleci/SKILL.md), [CircleCI](../../ci-cd/circleci/other/circleci/SKILL.md) config, [CircleCI](../../ci-cd/circleci/other/circleci/SKILL.md) orb, [CircleCI](../../ci-cd/circleci/other/circleci/SKILL.md) pipeline.
+  Route: devops-[circleci](../../ci-cd/circleci/other/circleci/SKILL.md)
+  Reason: "[CircleCI](../../ci-cd/circleci/other/circleci/SKILL.md) request."
 
 State: User asks about [autoscaling](../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md), HPA, VPA, Keda, Cluster Autoscaler, pod [autoscaling](../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md), node [autoscaling](../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md), [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) scaling.
   Route: [devops-[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-autoscaling](../../DevOps_and_Cloud/Containers_and_Orchestration/[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-[autoscaling](../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/SKILL.md)
@@ -1163,7 +1163,7 @@ State: User asks about data fetching, TanStack Query, SWR, server state.
   Reason: "Data fetching request."
 
 State: User asks about bundler, Vite, Webpack, build tools.
-  Route: [frontend-bundler-tools](../../DevOps_and_Cloud/CI_CD/bundler-tools/SKILL.md)
+  Route: [frontend-bundler-tools](../../Software_Engineering_and_Other/Frontend/bundler-tools/SKILL.md)
   Reason: "Bundler/tools request."
 
 State: User asks about image optimization, responsive images, image CDN.
@@ -1210,9 +1210,9 @@ State: User asks about analytics, event tracking, [Firebase](../../Software_Engi
   Route: mobile-analytics
   Reason: "Analytics request."
 
-State: User asks about [ArgoCD](../../DevOps_and_Cloud/Containers_and_Orchestration/argocd/SKILL.md), [GitOps](../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md), [ArgoCD](../../DevOps_and_Cloud/Containers_and_Orchestration/argocd/SKILL.md) sync.
-  Route: devops-[argo-cd](../../DevOps_and_Cloud/Containers_and_Orchestration/argo-cd/SKILL.md)
-  Reason: "[ArgoCD](../../DevOps_and_Cloud/Containers_and_Orchestration/argocd/SKILL.md)/[GitOps](../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) request."
+State: User asks about [ArgoCD](../../ci-cd/argocd/other/argocd/SKILL.md), [GitOps](../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md), [ArgoCD](../../ci-cd/argocd/other/argocd/SKILL.md) sync.
+  Route: devops-[argo-cd](../../ci-cd/argocd/other/argo-cd/SKILL.md)
+  Reason: "[ArgoCD](../../ci-cd/argocd/other/argocd/SKILL.md)/[GitOps](../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) request."
 
 State: User asks about Azure, Microsoft Azure, AKS.
   Route: [devops-azure](../../cloud/azure/other/azure/SKILL.md)

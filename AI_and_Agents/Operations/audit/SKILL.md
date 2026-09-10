@@ -128,7 +128,7 @@ Effort keywords (`quick` / `standard` / `deep`) and the shared `<focus>` and
 
 This skill is the front door; depth belongs to the specialists. Route per the
 [contract's routing table](../docs/skill-contract.md#6-cross-skill-routing) —
-`/[k8s-review](../../../DevOps_and_Cloud/Containers_and_Orchestration/k8s-review/SKILL.md)`, `/[terraform-review](../../../DevOps_and_Cloud/Infrastructure_as_Code/terraform-review/SKILL.md)`, `/[pipeline-review](../../../DevOps_and_Cloud/CI_CD/pipeline-review/SKILL.md)`, `/[docker-review](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-review/SKILL.md)`,
+`/[k8s-review](../../../DevOps_and_Cloud/Containers_and_Orchestration/k8s-review/SKILL.md)`, `/[terraform-review](../../../DevOps_and_Cloud/Infrastructure_as_Code/terraform-review/SKILL.md)`, `/[pipeline-review](../../../ci-cd/common/pipeline-design/pipeline-review/SKILL.md)`, `/[docker-review](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-review/SKILL.md)`,
 `/[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)`, `/[security-review](../../../Security/security-review/SKILL.md)`, `/cost`, `/[dr-review](../../../DevOps_and_Cloud/Observability_and_SecOps/dr-review/SKILL.md)`, `/[db-review](../db-review/SKILL.md)`. If
 production is broken right now, stop and use `/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)` instead.
 

@@ -574,7 +574,7 @@ def process_order(self, order_id: int):
 - SQLAlchemy parameterized queries: `session.execute(select(User).where(User.id == user_id))`. Never f-strings.
 - JWT: `python-jose` with RS256. Validate `aud`, `iss`, `exp`, `iat`. Reject `alg: none`.
 - Password hashing: `bcrypt` or `argon2-cffi`. Minimum 12 rounds for bcrypt.
-- Secrets: pydantic-settings with `.env` file. Never [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) `.env` to version control.
+- Secrets: pydantic-settings with `.env` file. Never [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) `.env` to version control.
 - CORS: FastAPI `CORSMiddleware` with explicit `allow_origins`. Never `["*"]` in production.
 - Rate limiting: `slowapi` with in-memory or Redis backend. Apply to auth and write endpoints.
 - Input validation: Pydantic models on all API endpoints. Strip HTML with `markupsafe`.

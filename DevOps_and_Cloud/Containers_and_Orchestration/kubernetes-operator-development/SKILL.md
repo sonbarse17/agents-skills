@@ -89,7 +89,7 @@ cluster.
 
 2. **Scaffold the project and API**:
    ```bash
-   kubebuilder init --domain example.com --repo [github](../../CI_CD/github/SKILL.md).com/example/cache-operator
+   kubebuilder init --domain example.com --repo [github](../../../ci-cd/github-actions/other/github/SKILL.md).com/example/cache-operator
    kubebuilder create api --group cache --version v1alpha1 --kind RedisCluster --resource --controller
    ```
 

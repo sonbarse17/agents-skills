@@ -67,7 +67,7 @@ which apply here too but aren't repeated.
   instances (not needed for ECS or Lambda deployment types, which use
   CodeDeploy's native integration instead).
 - A CodePipeline service role with permission to invoke each stage's
-  action provider (CodeCommit/[GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/S3 for source, CodeBuild for build,
+  action provider (CodeCommit/[GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md)/S3 for source, CodeBuild for build,
   CodeDeploy for deploy) — least-privilege scoped per action, not a single
   account-wide admin role.
 - An S3 artifact bucket (CodePipeline's default artifact store, or a
@@ -130,7 +130,7 @@ which apply here too but aren't repeated.
    ```
    The `ApproveProduction` stage blocks pipeline progress until a human
    approves/rejects in the console or via `aws codepipeline
-   put-approval-result` — this is CodePipeline's equivalent of a [GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)
+   put-approval-result` — this is CodePipeline's equivalent of a [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md)
    Actions protected `environment:` or GitLab `when: manual`.
 
 2. **Write `appspec.yml` to define the deployment's file mapping and
@@ -254,8 +254,8 @@ which apply here too but aren't repeated.
   as [infrastructure-as-code](../../../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md) ([CloudFormation](../../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md)/CDK/Terraform) alongside the
   pipeline definition, not as manually-clicked console configuration that
   can't be diffed in a PR.
-- Tag pipeline artifacts and CodeDeploy revisions with the source [commit](../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)
-  SHA so a running deployment is traceable back to exactly which [commit](../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)
+- Tag pipeline artifacts and CodeDeploy revisions with the source [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)
+  SHA so a running deployment is traceable back to exactly which [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)
   produced it, mirroring the traceability guidance in
   [ci-cd-pipeline-design](../../../devops/skills/[ci-cd-pipeline-design](../../CI_CD/ci-cd-pipeline-design/SKILL.md)/SKILL.md).
 
@@ -380,5 +380,5 @@ if errors spike shortly after traffic does shift.
 ## Cross-references
 
 - [ci-cd-pipeline-design](../../../devops/skills/[ci-cd-pipeline-design](../../CI_CD/ci-cd-pipeline-design/SKILL.md)/SKILL.md) — vendor-neutral stage/gate/rollback concepts this pipeline implements in AWS-specific terms.
-- [github-actions-centralized-reusable-workflows](../[github-actions-centralized-reusable-workflows](../../CI_CD/[github-actions](../../CI_CD/[github](../../CI_CD/github/SKILL.md)-actions/SKILL.md)-centralized-reusable-workflows/SKILL.md)/SKILL.md) — comparable centralized-pipeline pattern if the build stage is migrated off CodeBuild to [GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions while keeping CodeDeploy for the deploy stage.
-- [secure-cicd-gates](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — where to place scan actions relative to the manual approval and deploy stages here.
+- [github-actions-centralized-reusable-workflows](../[github-actions-centralized-reusable-workflows](../../CI_CD/[github-actions](../../CI_CD/[github](../../CI_CD/github/SKILL.md)-actions/SKILL.md)-centralized-reusable-workflows/SKILL.md)/SKILL.md) — comparable centralized-pipeline pattern if the build stage is migrated off CodeBuild to [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions while keeping CodeDeploy for the deploy stage.
+- [secure-cicd-gates](../../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — where to place scan actions relative to the manual approval and deploy stages here.

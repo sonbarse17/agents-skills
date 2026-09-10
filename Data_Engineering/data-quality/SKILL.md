@@ -340,7 +340,7 @@ Changes require both parties to approve.
 ### Step 5a: Automated Quality Gate CI Config
 
 ```yaml
-# .[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/quality-gate.yml
+# .[github](../../ci-cd/github-actions/other/github/SKILL.md)/workflows/quality-gate.yml
 jobs:
   quality-gate:
     runs-on: ubuntu-latest

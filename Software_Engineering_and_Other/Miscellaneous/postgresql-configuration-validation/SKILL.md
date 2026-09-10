@@ -167,7 +167,7 @@ WHERE name IN ('wal_level', 'max_wal_senders', 'max_replication_slots', 'max_wor
 - If proposing `synchronous_standby_names`, confirm the
   `application_name` values listed actually match a real, currently
   connected standby's `application_name` in `pg_stat_replication` — a
-  typo here doesn't error, it just makes every [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) on the primary
+  typo here doesn't error, it just makes every [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) on the primary
   block indefinitely waiting for an ACK from a standby that will never
   send one.
 

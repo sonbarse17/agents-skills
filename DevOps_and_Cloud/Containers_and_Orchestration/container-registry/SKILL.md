@@ -52,7 +52,7 @@ and expire untagged/dangling manifests on a schedule. Automate the sweep; a manu
 is a process nobody runs until it's an emergency.
 
 - **Never expire** a tag or digest currently referenced by a running deployment.
-- **Cap per-branch history** (e.g., last 20 builds) instead of keeping every [commit](../../CI_CD/commit/SKILL.md) forever.
+- **Cap per-branch history** (e.g., last 20 builds) instead of keeping every [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) forever.
 - **Sweep dangling manifests** left behind by re-tags and failed pushes on a schedule.
 
 **Done when:** registry storage growth is bounded by a policy, not by whoever notices it's full.

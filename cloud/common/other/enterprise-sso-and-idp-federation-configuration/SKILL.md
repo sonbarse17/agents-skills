@@ -400,7 +400,7 @@ existing users.
 - [vault-operations-and-pki-engine-configuration](../[vault-operations-and-pki-engine-configuration](../../Containers_and_Orchestration/[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-operations-and-pki-engine-configuration/SKILL.md)/SKILL.md) —
   a comparable trust-chain/certificate-rotation discipline, applied to
   internal PKI rather than IdP federation certificates.
-- [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../security/secrets-management/SKILL.md)/SKILL.md) —
+- [secrets-management](../../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../security/secrets-management/SKILL.md)/SKILL.md) —
   where OIDC client secrets and SCIM bearer tokens should actually live
   (a secrets manager, not hardcoded application config).
 - [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)/SKILL.md) —

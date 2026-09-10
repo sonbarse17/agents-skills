@@ -136,7 +136,7 @@ Replica count formula for read scaling: `replicas = ceil(read_tps / per_replica_
 Cap at 5 per primary — beyond that, fan out via cascading or use a sharded primary.
 
 ### Step 3: Slave/Standby DB Configuration
-Always use semi-sync for same-AZ standby (ack from ≥1 replica before [commit](../../CI_CD/commit/SKILL.md)), async for cross-region.
+Always use semi-sync for same-AZ standby (ack from ≥1 replica before [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)), async for cross-region.
 GTID/LSN-based replication so promotion is deterministic.
 ```ini
 # [MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) primary (my.cnf) — semi-sync, GTID, row-based
@@ -364,7 +364,7 @@ Group size   Failures tolerated   Notes
 7            3                    geo-distributed
 ```
 Use etcd / Consul / ZooKeeper / Raft built into the DB (CockroachDB, TiDB, [MongoDB](../../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md)). Lease-based leader.
-Fencing token on every primary action so a zombie old-primary cannot [commit](../../CI_CD/commit/SKILL.md).
+Fencing token on every primary action so a zombie old-primary cannot [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md).
 
 ### Step 10: Failover [Runbook](../runbook/SKILL.md) (RPO/RTO Targets)
 ```
@@ -429,7 +429,7 @@ Error budget available?
 ```
 RPO requirement?
 ├── Zero data loss → Synchronous replication
-│   [Commit](../../CI_CD/commit/SKILL.md) waits for ≥1 replica ack. Increases p99 latency by 1-5ms.
+│   [Commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) waits for ≥1 replica ack. Increases p99 latency by 1-5ms.
 │   Use only for financial transactions. Budget for latency impact.
 ├── < 5s data loss → Semi-synchronous
 │   Default for same-AZ. Timeout falls back to async.
@@ -570,6 +570,6 @@ bootstrap:
 - `[enterprise-sla-management](../sla-management/SKILL.md)` for SLA contract wording, customer credits, multi-tier SLA structure.
 - `data-data-replication` for deep dive on database-specific replication internals (GoldenGate, Patroni, etc).
 - `data-cdc-patterns` when dual-write is implemented via Debezium / Kafka Connect.
-- `devops-[progressive-delivery](../../CI_CD/progressive-delivery/SKILL.md)` for Argo Rollouts / Flagger canary automation specifics.
+- `devops-[progressive-delivery](../../../ci-cd/common/deployment/progressive-delivery/SKILL.md)` for Argo Rollouts / Flagger canary automation specifics.
 - `devops-[incident-response](../[incident](../incident/SKILL.md)-response/SKILL.md)` for on-call paging, escalation, status page automation.
 - `devops-[backup-dr](../../../Software_Engineering_and_Other/Frontend/backup-dr/SKILL.md)` for backup cadence, snapshot retention, restore drills.

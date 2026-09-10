@@ -181,7 +181,7 @@ jobs:
       - name: Gas snapshot
         run: forge snapshot
       - name: Deploy to testnet
-        if: [github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md).ref == 'refs/heads/main'
+        if: [github](../../ci-cd/github-actions/other/github/SKILL.md).ref == 'refs/heads/main'
         run: forge script script/Deploy.s.sol --rpc-url $TESTNET_RPC --broadcast
 ```
 
@@ -369,7 +369,7 @@ environments:
 4. CI/CD: Foundry forge tests + Slither static analysis + contract verification in one pipeline
 5. Monitor: sync status (block height lag), peer count, mempool size, RPC latency, validator status
 6. Environment configs must specify: chain ID, RPC endpoints, block explorer, faucet, registry addresses
-7. Never [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) private keys — use KMS, HSM, or hardware wallets for signing
+7. Never [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) private keys — use KMS, HSM, or hardware wallets for signing
 8. For validators, never expose validator keys to the execution client — use separate signing infra
 9. Test all infrastructure changes on testnet before mainnet
 10. Document and automate disaster recovery procedures

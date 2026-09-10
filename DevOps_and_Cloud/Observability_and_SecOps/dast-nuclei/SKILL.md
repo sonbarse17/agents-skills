@@ -60,7 +60,7 @@ provides efficient automated security testing with minimal false positives.
 
 ```bash
 # Install via Go
-go install -v [github](../../CI_CD/github/SKILL.md).com/projectdiscovery/nuclei/v3/cmd/nuclei@latest
+go install -v [github](../../../ci-cd/github-actions/other/github/SKILL.md).com/projectdiscovery/nuclei/v3/cmd/nuclei@latest
 
 # Or using [Docker](../../Containers_and_Orchestration/docker/SKILL.md)
 [docker](../../Containers_and_Orchestration/docker/SKILL.md) pull projectdiscovery/nuclei:latest
@@ -286,20 +286,20 @@ python3 scripts/nuclei_report_generator.py \
   --include-remediation \
   --map-frameworks owasp,cwe
 
-# Export to SARIF for [GitHub](../../CI_CD/github/SKILL.md) Security tab
+# Export to SARIF for [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Security tab
 nuclei -u https://target-app.com \
   -severity critical,high \
-  -sarif-export [github](../../CI_CD/github/SKILL.md)-sarif.json
+  -sarif-export [github](../../../ci-cd/github-actions/other/github/SKILL.md)-sarif.json
 ```
 
 See `assets/report_templates/` for customizable report formats.
 
 ## Automation & CI/CD Integration
 
-### [GitHub](../../CI_CD/github/SKILL.md) Actions Integration
+### [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions Integration
 
 ```yaml
-# .[github](../../CI_CD/github/SKILL.md)/workflows/nuclei-scan.yml
+# .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/nuclei-scan.yml
 name: Nuclei Security Scan
 on: [push, pull_request]
 
@@ -317,7 +317,7 @@ jobs:
           templates: cves,owasp,misconfig
 
       - name: Upload Results
-        uses: [github](../../CI_CD/github/SKILL.md)/codeql-action/upload-sarif@v2
+        uses: [github](../../../ci-cd/github-actions/other/github/SKILL.md)/codeql-action/upload-sarif@v2
         with:
           sarif_file: nuclei.sarif
 ```
@@ -437,7 +437,7 @@ http:
 
 ### Assets (`assets/`)
 
-- `github_actions.yml` - [GitHub](../../CI_CD/github/SKILL.md) Actions workflow with SARIF export
+- `github_actions.yml` - [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions workflow with SARIF export
 - `nuclei_config.yaml` - Comprehensive configuration template
 
 ## Common Patterns
@@ -507,8 +507,8 @@ nuclei -u https://production-app.com \
 
 ## Integration Points
 
-- **CI/CD**: [GitHub](../../CI_CD/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../CI_CD/jenkins/SKILL.md), [CircleCI](../../CI_CD/circleci/SKILL.md), Azure DevOps, Travis CI
-- **Issue Tracking**: Jira, [GitHub](../../CI_CD/github/SKILL.md) Issues, ServiceNow, Linear (via SARIF or custom scripts)
+- **CI/CD**: [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md), [CircleCI](../../../ci-cd/circleci/other/circleci/SKILL.md), Azure DevOps, Travis CI
+- **Issue Tracking**: Jira, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Issues, ServiceNow, Linear (via SARIF or custom scripts)
 - **Security Platforms**: Defect Dojo, Splunk, ELK Stack, SIEM platforms (via JSON export)
 - **Notification**: Slack, Microsoft Teams, Discord, PagerDuty, email (via webhook scripts)
 - **SDLC**: Pre-deployment scanning, security regression testing, vulnerability [monitoring](../monitoring/SKILL.md)
@@ -528,7 +528,7 @@ Common issues and solutions:
 ## References
 
 - [Nuclei Documentation](https://docs.projectdiscovery.io/tools/nuclei/overview)
-- [Nuclei Templates Repository](https://[github](../../CI_CD/github/SKILL.md).com/projectdiscovery/nuclei-templates)
+- [Nuclei Templates Repository](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/projectdiscovery/nuclei-templates)
 - [OWASP Top 10](https://owasp.org/Top10/)
 - [CWE Database](https://cwe.mitre.org/)
 

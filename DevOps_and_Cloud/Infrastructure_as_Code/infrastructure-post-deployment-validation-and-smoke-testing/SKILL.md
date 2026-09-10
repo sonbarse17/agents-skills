@@ -162,7 +162,7 @@ conflated until an [incident](../../Observability_and_SecOps/incident/SKILL.md) 
 4. **Run validation as its own pipeline stage, after apply/deploy,
    gating progression to the next environment**:
    ```yaml
-   # [GitHub](../../CI_CD/github/SKILL.md) Actions, abbreviated
+   # [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions, abbreviated
    jobs:
      terraform-apply:
        runs-on: ubuntu-latest
@@ -358,7 +358,7 @@ echo "FAIL: smoke test did not pass after ${MAX_ATTEMPTS} attempts" >&2
 exit 1
 ```
 
-Pipeline stage ([GitHub](../../CI_CD/github/SKILL.md) Actions), gating promotion to `staging`:
+Pipeline stage ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions), gating promotion to `staging`:
 ```yaml
 post-deploy-validation:
   needs: terraform-apply

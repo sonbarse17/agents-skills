@@ -106,7 +106,7 @@ semgrep --config="p/owasp-top-ten" /path/to/code
 - **Access Control**: Semgrep scans require read access to source code. Restrict scan
   result access to authorized security and development teams.
 
-- **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging**: Log all scan executions with timestamps, user, [commit](../../CI_CD/commit/SKILL.md) hash, and
+- **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging**: Log all scan executions with timestamps, user, [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) hash, and
   findings count for compliance auditing.
 
 - **Compliance**: SAST scanning supports SOC2, PCI-DSS, and GDPR compliance requirements.
@@ -140,7 +140,7 @@ Semgrep supports 30+ languages including:
 ### Assets
 
 - `assets/rule_template.yaml` - Template for creating custom Semgrep rules
-- `assets/ci_config_examples/` - CI/CD integration examples ([GitHub](../../CI_CD/github/SKILL.md) Actions, GitLab CI)
+- `assets/ci_config_examples/` - CI/CD integration examples ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI)
 - `assets/semgrep_config.yaml` - Recommended Semgrep configuration
 
 ## Common Patterns
@@ -184,10 +184,10 @@ semgrep --config assets/custom_rules.yaml \
 
 ### CI/CD Integration
 
-- **[GitHub](../../CI_CD/github/SKILL.md) Actions**: Use `semgrep/semgrep-action@v1` with SARIF upload
+- **[GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions**: Use `semgrep/semgrep-action@v1` with SARIF upload
 - **GitLab CI**: Run as security scanning job with artifact reports
-- **[Jenkins](../../CI_CD/jenkins/SKILL.md)**: Execute as build step with quality gate integration
-- **pre-[commit](../../CI_CD/commit/SKILL.md) hooks**: Run lightweight scans on staged files
+- **[Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md)**: Execute as build step with quality gate integration
+- **pre-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) hooks**: Run lightweight scans on staged files
 
 See `assets/ci_config_examples/` for ready-to-use configurations.
 

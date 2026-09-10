@@ -187,7 +187,7 @@ npm i -D chromatic
 npx chromatic --project-token=<token>
 ```
 ```yml
-# .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/chromatic.yml
+# .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/chromatic.yml
 - run: npx chromatic --project-token=${{ secrets.CHROMATIC_TOKEN }}
 ```
 
@@ -368,7 +368,7 @@ export const ButtonStory = {
 ## Visual Regression Testing with Chromatic
 
 ```yaml
-# .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/chromatic.yml
+# .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/chromatic.yml
 name: Chromatic
 on: [pull_request]
 
@@ -610,7 +610,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
+- Signed commits: GPG or SSH [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management

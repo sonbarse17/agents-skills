@@ -179,7 +179,7 @@ spectral lint openapi.yaml \
 - `json` - Machine-readable JSON for CI/CD integration
 - `junit` - JUnit XML for test reporting platforms
 - `html` - HTML report (requires additional plugins)
-- `[github-actions](../../../DevOps_and_Cloud/CI_CD/[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-actions/SKILL.md)` - [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions annotations format
+- `[github-actions](../../../DevOps_and_Cloud/CI_CD/[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-actions/SKILL.md)` - [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions annotations format
 
 ### Step 3: OWASP API Security Validation
 
@@ -318,9 +318,9 @@ rules:
 
 Integrate Spectral into continuous integration workflows:
 
-**[GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions:**
+**[GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions:**
 ```yaml
-# .[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)/workflows/api-security-lint.yml
+# .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/api-security-lint.yml
 name: API Security Linting
 
 on: [push, pull_request]
@@ -364,7 +364,7 @@ jobs:
 
 **GitLab CI:**
 ```yaml
-# .[gitlab-ci](../../../DevOps_and_Cloud/CI_CD/gitlab-ci/SKILL.md).yml
+# .[gitlab-ci](../../../ci-cd/gitlab-ci/pipelines/gitlab-ci/SKILL.md).yml
 api-security-lint:
   stage: test
   image: node:18
@@ -485,12 +485,12 @@ spectral lint openapi.yaml --ruleset .spectral-phase1.yaml
 spectral lint openapi.yaml --ruleset .spectral-phase2.yaml --fail-severity error
 ```
 
-### Pattern 3: API Security Pre-[Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) Validation
+### Pattern 3: API Security Pre-[Commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) Validation
 
 Prevent insecure API specifications from being committed:
 
 ```bash
-# .git/hooks/pre-[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)
+# .git/hooks/pre-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)
 #!/bin/bash
 
 # Find staged API specification files
@@ -522,7 +522,7 @@ python3 scripts/generate_pr_comments.py \
   --severity error,warn \
   --output pr-comments.json
 
-# Post to [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) PR via gh CLI
+# Post to [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) PR via gh CLI
 gh pr comment $PR_NUMBER --body-file pr-comments.json
 ```
 
@@ -626,8 +626,8 @@ For complete custom function development guide, see `references/custom_functions
 
 - `spectral-owasp.yaml` - Comprehensive OWASP API Security Top 10 ruleset
 - `spectral-org-template.yaml` - Organization-wide API security standards template
-- `[github-actions](../../../DevOps_and_Cloud/CI_CD/[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-actions/SKILL.md)-template.yml` - Complete [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions workflow
-- `[gitlab-ci](../../../DevOps_and_Cloud/CI_CD/gitlab-ci/SKILL.md)-template.yml` - GitLab CI integration template
+- `[github-actions](../../../DevOps_and_Cloud/CI_CD/[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-actions/SKILL.md)-template.yml` - Complete [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions workflow
+- `[gitlab-ci](../../../ci-cd/gitlab-ci/pipelines/gitlab-ci/SKILL.md)-template.yml` - GitLab CI integration template
 - `rule-templates/` - Reusable security rule templates
 
 ## Common Patterns
@@ -678,11 +678,11 @@ rules:
 
 ## Integration Points
 
-- **CI/CD**: [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../../DevOps_and_Cloud/CI_CD/jenkins/SKILL.md), [CircleCI](../../../DevOps_and_Cloud/CI_CD/circleci/SKILL.md), Azure DevOps
+- **CI/CD**: [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md), [CircleCI](../../../ci-cd/circleci/other/circleci/SKILL.md), Azure DevOps
 - **API Gateways**: Kong, Apigee, AWS API Gateway (validate specs before deployment)
 - **IDE Integration**: VS Code extension, JetBrains plugins for real-time validation
 - **API Documentation**: Stoplight Studio, Swagger UI, Redoc
-- **Issue Tracking**: Jira, [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Issues, Linear (automated ticket creation for findings)
+- **Issue Tracking**: Jira, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Issues, Linear (automated ticket creation for findings)
 - **API Governance**: Backstage, API catalogs (enforce standards across portfolios)
 - **Security Platforms**: Defect Dojo, SIEM platforms (via JSON export)
 
@@ -723,7 +723,7 @@ rules:
 ## References
 
 - [Spectral Documentation](https://docs.stoplight.io/docs/spectral/674b27b261c3c-overview)
-- [Spectral [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Repository](https://[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/stoplightio/spectral)
+- [Spectral [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Repository](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/stoplightio/spectral)
 - [OWASP API Security Top 10](https://owasp.org/API-Security/editions/2023/en/0x11-t10/)
 - [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
 - [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)

@@ -35,7 +35,7 @@ failures, because a leaked secret is immediately and directly exploitable
 (no [reverse-engineering](../../../../Security/reverse-engineering/SKILL.md) or chained exploit required), and git history
 makes "delete the file" an incomplete fix. This skill covers three
 related problems: preventing secrets from entering source control and CI
-logs in the first place (scanning, pre-[commit](../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) hooks), storing and
+logs in the first place (scanning, pre-[commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) hooks), storing and
 distributing secrets correctly at runtime (a dedicated secrets manager
 rather than environment variables baked into images or config files), and
 responding when a secret does leak (rotation, revocation, blast-radius
@@ -48,8 +48,8 @@ assessment).
 - A team wants to set up HashiCorp [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS Secrets Manager, Azure Key
   [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), GCP Secret Manager, or a [GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)-friendly encrypted-secrets
   workflow (SOPS + age/KMS, Sealed Secrets) from scratch.
-- The user wants secret-scanning added to CI/CD or pre-[commit](../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) hooks
-  (Gitleaks, TruffleHog, [GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) secret scanning/push protection) to catch
+- The user wants secret-scanning added to CI/CD or pre-[commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) hooks
+  (Gitleaks, TruffleHog, [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) secret scanning/push protection) to catch
   leaks before merge.
 - A secret has leaked (committed to a public repo, printed in CI logs,
   exposed in an error message) and the user needs a rotation/response
@@ -73,14 +73,14 @@ assessment).
     integrates with IAM natively; less flexible across [multi-cloud](../../other/multi-cloud/SKILL.md).
   - **SOPS** (Mozilla) + age or a cloud KMS — for encrypting secrets
     *at rest in git* for [GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) workflows (e.g. secrets committed
-    encrypted, decrypted at deploy time by Flux/[ArgoCD](../../../../DevOps_and_Cloud/Containers_and_Orchestration/argocd/SKILL.md) or a CI step).
+    encrypted, decrypted at deploy time by Flux/[ArgoCD](../../../../ci-cd/argocd/other/argocd/SKILL.md) or a CI step).
   - **[Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Sealed Secrets** (Bitnami) — cluster-scoped alternative
     to SOPS for [GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) secrets, encrypts against a controller-held key
     pair so only that cluster can decrypt.
-- Secret-scanning tooling: **Gitleaks** or **TruffleHog** for CI/pre-[commit](../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)
-  scanning; [GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Advanced Security "secret scanning" and "push
-  protection" if on [GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) with the relevant license tier.
-- CI/CD platform's native secret store ([GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions "Secrets",
+- Secret-scanning tooling: **Gitleaks** or **TruffleHog** for CI/pre-[commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)
+  scanning; [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Advanced Security "secret scanning" and "push
+  protection" if on [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) with the relevant license tier.
+- CI/CD platform's native secret store ([GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions "Secrets",
   GitLab CI/CD variables marked "masked" and "protected", etc.) as the
   minimum viable baseline even before adopting a full secrets manager.
 - IAM/permissions to create service identities ([Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) service
@@ -93,7 +93,7 @@ assessment).
 1. **Add secret-scanning first**, before anything else, so you stop the
    bleeding while you build out proper management:
    ```yaml
-   # [GitHub](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Actions - Gitleaks
+   # [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions - Gitleaks
    name: secret-scan
    on: [push, pull_request]
    jobs:
@@ -107,12 +107,12 @@ assessment).
            env:
              GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }}
    ```
-   Add a matching pre-[commit](../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) hook so leaks are caught before they're even
+   Add a matching pre-[commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) hook so leaks are caught before they're even
    pushed:
    ```yaml
-   # .pre-[commit](../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)-config.yaml
+   # .pre-[commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)-config.yaml
    repos:
-     - repo: https://[github](../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/gitleaks/gitleaks
+     - repo: https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/gitleaks/gitleaks
        rev: v8.18.4
        hooks:
          - id: gitleaks
@@ -162,7 +162,7 @@ assessment).
    ```
    ```bash
    sops --encrypt --in-place secrets/prod-db.yaml
-   git add secrets/prod-db.yaml   # ciphertext only — safe to [commit](../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)
+   git add secrets/prod-db.yaml   # ciphertext only — safe to [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)
    ```
 
 6. **Prefer dynamic, short-lived secrets over long-lived static ones**
@@ -185,7 +185,7 @@ assessment).
 
 - Rotate first, remove second: a leaked secret is compromised the moment
   it's committed, regardless of repo visibility; deleting it from the
-  latest [commit](../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) does nothing to git history without a separate
+  latest [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) does nothing to git history without a separate
   history-rewrite (`git filter-repo` / BFG), and even that doesn't help
   once it's been cloned or indexed.
 - Prefer dynamic/short-lived secrets (database credentials issued
@@ -204,13 +204,13 @@ assessment).
 - Mask and [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md): configure CI to mask known secret patterns in logs, and
   enable [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging on the secrets manager ([Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) devices, cloud
   CloudTrail/Activity Log) so every secret access is traceable.
-- Combine secret-scanning at [commit](../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) time (prevent), a secrets manager at
+- Combine secret-scanning at [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) time (prevent), a secrets manager at
   runtime (contain), and a rotation policy (recover) — each addresses a
   different failure mode and none alone is sufficient.
 
 ## Common pitfalls
 
-- **Symptom:** A secret was committed, the [commit](../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) was reverted/force-pushed
+- **Symptom:** A secret was committed, the [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) was reverted/force-pushed
   away, and the team considers the [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) closed.
   **Fix:** Treat the credential as permanently compromised regardless of
   history rewriting — rotate/revoke it at the source system. History
@@ -263,7 +263,7 @@ Secret:      <REDACTED_EXAMPLE_NOT_A_REAL_KEY>
 RuleID:      aws-access-token
 File:        config/settings.py
 Line:        14
-[Commit](../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md):      3f9a21c
+[Commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md):      3f9a21c
 ```
 
 Response, in order:
@@ -285,7 +285,7 @@ Response, in order:
    client = hvac.Client(url=os.environ["VAULT_ADDR"])
    creds = client.secrets.aws.generate_credentials(name="myapp-prod")
    ```
-3. Add the Gitleaks CI job and pre-[commit](../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) hook (shown above) so the same
+3. Add the Gitleaks CI job and pre-[commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) hook (shown above) so the same
    class of leak is caught before merge going forward.
 4. Rewrite git history to remove the literal string from old commits
    (`git filter-repo --path config/settings.py --invert-paths` or a

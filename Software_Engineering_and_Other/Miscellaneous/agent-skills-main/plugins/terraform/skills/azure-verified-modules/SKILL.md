@@ -19,8 +19,8 @@ depends_on:
 This guide covers the mandatory requirements for Azure Verified Modules certification. These requirements ensure consistency, quality, and maintainability across Azure Terraform modules.
 
 **References:**
-- [Azure Verified Modules](https://azure.[github](../../../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/[Azure-Verified-Modules](../../../../../../../cloud/azure/iac/azure-verified-modules/SKILL.md)/)
-- [AVM Module Specifications](https://azure.[github](../../../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/[Azure-Verified-Modules](../../../../../../../cloud/azure/iac/azure-verified-modules/SKILL.md)/specs/module-specs/)
+- [Azure Verified Modules](https://azure.[github](../../../../../../../ci-cd/github-actions/other/github/SKILL.md).io/[Azure-Verified-Modules](../../../../../../../cloud/azure/iac/azure-verified-modules/SKILL.md)/)
+- [AVM Module Specifications](https://azure.[github](../../../../../../../ci-cd/github-actions/other/github/SKILL.md).io/[Azure-Verified-Modules](../../../../../../../cloud/azure/iac/azure-verified-modules/SKILL.md)/specs/module-specs/)
 
 ## Table of Contents
 
@@ -47,7 +47,7 @@ When building Resource or Pattern modules, module owners **MAY** cross-reference
 
 - Modules **MUST** be referenced using HashiCorp Terraform registry reference to a pinned version
   - Example: `source = "Azure/xxx/azurerm"` with `version = "1.2.3"`
-- Modules **MUST NOT** use git references (e.g., `git::https://xxx.yyy/xxx.git` or `[github](../../../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/xxx/yyy`)
+- Modules **MUST NOT** use git references (e.g., `git::https://xxx.yyy/xxx.git` or `[github](../../../../../../../ci-cd/github-actions/other/github/SKILL.md).com/xxx/yyy`)
 - Modules **MUST NOT** contain references to non-AVM modules
 
 ---
@@ -487,7 +487,7 @@ For robust testing, `prevent_deletion_if_contains_resources` **SHOULD** be expli
 
 **Severity:** MUST | **Requirement:** TFNFR2
 
-- Documentation **MUST** be automatically generated via [Terraform Docs](https://[github](../../../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/terraform-docs/terraform-docs)
+- Documentation **MUST** be automatically generated via [Terraform Docs](https://[github](../../../../../../../ci-cd/github-actions/other/github/SKILL.md).com/terraform-docs/terraform-docs)
 - A `.terraform-docs.yml` file **MUST** be present in the module root
 
 ---
@@ -543,7 +543,7 @@ resource "azurerm_route_table" "this" {
 
 ## Contribution Standards
 
-### [GitHub](../../../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Repository Branch Protection
+### [GitHub](../../../../../../../ci-cd/github-actions/other/github/SKILL.md) Repository Branch Protection
 
 **Severity:** MUST | **Requirement:** TFNFR3
 

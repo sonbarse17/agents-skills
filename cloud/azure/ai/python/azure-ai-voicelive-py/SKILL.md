@@ -134,7 +134,7 @@ The `VoiceLiveConnection` exposes these resources:
 |----------|---------|-------------|
 | `conn.session` | Session configuration | `update(session=...)` |
 | `conn.response` | Model responses | `create()`, `cancel()` |
-| `conn.input_audio_buffer` | Audio input | `append()`, `[commit](../../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)()`, `clear()` |
+| `conn.input_audio_buffer` | Audio input | `append()`, `[commit](../../../../../ci-cd/common/git-workflow/commit/SKILL.md)()`, `clear()` |
 | `conn.output_audio_buffer` | Audio output | `clear()` |
 | `conn.conversation` | Conversation state | `item.create()`, `item.delete()`, `item.truncate()` |
 | `conn.transcription_session` | Transcription config | `update(session=...)` |
@@ -255,7 +255,7 @@ await conn.session.update(session={"turn_detection": None})
 
 # Manually control turns
 await conn.input_audio_buffer.append(audio=b64_audio)
-await conn.input_audio_buffer.[commit](../../../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)()  # End of user turn
+await conn.input_audio_buffer.[commit](../../../../../ci-cd/common/git-workflow/commit/SKILL.md)()  # End of user turn
 await conn.response.create()  # Trigger response
 ```
 

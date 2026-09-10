@@ -445,7 +445,7 @@ Stories without connection to the brief or business goals. Every story should an
 
 ## Tooling/Methodology
 - **PRD collaboration**: Google Docs, Notion, Confluence, Coda, GitBook.
-- **Story tracking**: Jira, Linear, Asana, Trello, [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Issues, Shortcut.
+- **Story tracking**: Jira, Linear, Asana, Trello, [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Issues, Shortcut.
 - **Gherkin**: Cucumber, SpecFlow, Behat for executable specifications.
 - **Version control**: Git-based PRD in `docs/` directory for change tracking.
 - **Review process**: PR (pull request) on the PRD document for asynchronous feedback.
@@ -569,7 +569,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
+- Signed commits: GPG or SSH [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management

@@ -37,7 +37,7 @@ Build in thin vertical slices — implement one piece, test it, verify it, then 
 │                                      │
 │   Implement ──→ Test ──→ Verify ──┐  │
 │       ▲                           │  │
-│       └───── [Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) ◄─────────────┘  │
+│       └───── [Commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) ◄─────────────┘  │
 │              │                       │
 │              ▼                       │
 │          Next slice                  │
@@ -50,7 +50,7 @@ For each slice:
 1. **Implement** the smallest complete piece of functionality
 2. **Test** — run the test suite (or write a test if none exists)
 3. **Verify** — confirm the slice works as expected (tests pass, build succeeds, manual check)
-4. **[Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)** -- save your progress with a descriptive message (see `[git-workflow-and-versioning](../../../DevOps_and_Cloud/CI_CD/[git-workflow](../../../DevOps_and_Cloud/CI_CD/git-workflow/SKILL.md)-and-versioning/SKILL.md)` for atomic [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) guidance)
+4. **[Commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)** -- save your progress with a descriptive message (see `[git-workflow-and-versioning](../../../DevOps_and_Cloud/CI_CD/[git-workflow](../../../DevOps_and_Cloud/CI_CD/git-workflow/SKILL.md)-and-versioning/SKILL.md)` for atomic [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) guidance)
 5. **Move to the next slice** — carry forward, don't restart
 
 ## Slicing Strategies
@@ -148,7 +148,7 @@ NOTICED BUT NOT TOUCHING:
 
 Each increment changes one logical thing. Don't mix concerns:
 
-**Bad:** One [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) that adds a new component, refactors an existing one, and updates the build config.
+**Bad:** One [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) that adds a new component, refactors an existing one, and updates the build config.
 
 **Good:** Three separate commits — one for each change.
 
@@ -190,7 +190,7 @@ Each increment should be independently revertable:
 - Additive changes (new files, new functions) are easy to revert
 - Modifications to existing code should be minimal and focused
 - Database migrations should have corresponding rollback migrations
-- Avoid deleting something in one [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) and replacing it in the same [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) — separate them
+- Avoid deleting something in one [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) and replacing it in the same [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) — separate them
 
 ## Working with Agents
 
@@ -228,7 +228,7 @@ After each increment, verify with the repository's own commands (see the [test-d
 |---|---|
 | "I'll test it all at the end" | Bugs compound. A bug in Slice 1 makes Slices 2-5 wrong. Test each slice. |
 | "It's faster to do it all at once" | It *feels* faster until something breaks and you can't find which of 500 changed lines caused it. |
-| "These changes are too small to [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) separately" | Small commits are free. Large commits hide bugs and make rollbacks painful. |
+| "These changes are too small to [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) separately" | Small commits are free. Large commits hide bugs and make rollbacks painful. |
 | "I'll add the feature flag later" | If the feature isn't complete, it shouldn't be user-visible. Add the flag now. |
 | "This refactor is small enough to include" | Refactors mixed with features make both harder to review and debug. Separate them. |
 | "Let me run the build command again just to be sure" | After a successful run, repeating the same command adds nothing unless the code has changed since. Run it again after subsequent edits, not as reassurance. |

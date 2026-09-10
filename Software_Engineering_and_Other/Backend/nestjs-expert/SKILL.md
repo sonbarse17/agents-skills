@@ -219,5 +219,5 @@ When implementing a NestJS feature, provide in this order:
 
 NestJS, [TypeScript](../../Frontend/typescript/SKILL.md), TypeORM, Prisma, Passport, JWT, class-validator, class-transformer, Swagger/OpenAPI, Jest, Supertest, Guards, Interceptors, Pipes, Filters
 
-[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).io/claude-skills/skills/backend/nestjs-expert/)
+[Documentation](https://jeffallan.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/backend/nestjs-expert/)
 

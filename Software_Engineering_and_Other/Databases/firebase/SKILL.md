@@ -223,7 +223,7 @@ export const scheduledCleanup = functions.pubsub
       .get();
     const batch = admin.firestore().batch();
     snaps.forEach(doc => batch.delete(doc.ref));
-    await batch.[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)();
+    await batch.[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)();
   });
 ```
 
@@ -298,7 +298,7 @@ async function createPostWithTags(post: Post, tagIds: string[]) {
     batch.update(tagRef, { postCount: admin.firestore.FieldValue.increment(1) });
   }
 
-  await batch.[commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)();
+  await batch.[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)();
 }
 
 // Transaction (read-then-write, strong consistency)
@@ -590,7 +590,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) signing
+- Signed commits: GPG or SSH [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management

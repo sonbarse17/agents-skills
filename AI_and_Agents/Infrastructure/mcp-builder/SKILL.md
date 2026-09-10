@@ -45,7 +45,7 @@ Before building a custom server, check if Microsoft already provides one:
 | **Foundry MCP** | Remote | `https://mcp.ai.azure.com` - Models, deployments, evals, agents |
 | **Fabric MCP** | Local | Microsoft Fabric APIs, OneLake, item definitions |
 | **Playwright MCP** | Local | Browser automation and testing |
-| **[GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) MCP** | Remote | `https://api.githubcopilot.com/mcp` |
+| **[GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) MCP** | Remote | `https://api.githubcopilot.com/mcp` |
 
 **Full ecosystem:** See [🔷 Microsoft MCP Patterns](./reference/microsoft_mcp_patterns.md) for complete server catalog and patterns.
 

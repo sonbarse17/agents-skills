@@ -508,4 +508,4 @@ builder.Services.AddApplicationInsightsTelemetry(options =>
 | NuGet Package | https://www.nuget.org/packages/Azure.ResourceManager.ApplicationInsights |
 | API Reference | https://learn.microsoft.com/dotnet/api/azure.resourcemanager.applicationinsights |
 | Product Documentation | https://learn.microsoft.com/azure/azure-monitor/app/app-insights-overview |
-| [GitHub](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Source | https://[github](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/applicationinsights/Azure.ResourceManager.ApplicationInsights |
+| [GitHub](../../../../../ci-cd/github-actions/other/github/SKILL.md) Source | https://[github](../../../../../ci-cd/github-actions/other/github/SKILL.md).com/Azure/azure-sdk-for-net/tree/main/sdk/applicationinsights/Azure.ResourceManager.ApplicationInsights |

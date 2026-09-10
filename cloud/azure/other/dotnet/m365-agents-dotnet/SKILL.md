@@ -296,4 +296,4 @@ await foreach (var activity in client.AskQuestionAsync("Hello!", null))
 | AgentApplication API       | https://learn.microsoft.com/en-us/dotnet/api/microsoft.agents.builder.app.agentapplication?view=m365-agents-sdk                            |
 | Auth configuration options | https://learn.microsoft.com/en-us/microsoft-365/agents-sdk/microsoft-authentication-library-configuration-options                          |
 | Copilot Studio integration | https://learn.microsoft.com/en-us/microsoft-365/agents-sdk/integrate-with-mcs                                                              |
-| [GitHub](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) samples             | https://[github](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/microsoft/agents                                                                                                        |
+| [GitHub](../../../../../ci-cd/github-actions/other/github/SKILL.md) samples             | https://[github](../../../../../ci-cd/github-actions/other/github/SKILL.md).com/microsoft/agents                                                                                                        |

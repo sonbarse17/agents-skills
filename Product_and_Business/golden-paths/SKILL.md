@@ -42,7 +42,7 @@ they ship pre-wired, not about their individual configuration.
 
 - **Structured logs and a trace exporter configured out of the box**, pointed at the real
   platform sinks, not stubbed.
-- **A working health/readiness endpoint** from the first [commit](../../DevOps_and_Cloud/CI_CD/commit/SKILL.md), so [autoscaling](../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) and rollout
+- **A working health/readiness endpoint** from the first [commit](../../ci-cd/common/git-workflow/commit/SKILL.md), so [autoscaling](../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) and rollout
   checks function immediately.
 - **Sane default resource limits and an auth baseline**, not left at "unset" for someone to
   discover the hard way in an [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).

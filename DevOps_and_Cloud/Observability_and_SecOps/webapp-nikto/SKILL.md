@@ -453,7 +453,7 @@ Common Nikto detection signatures:
 ## References
 
 - [Nikto Official Documentation](https://cirt.net/Nikto2)
-- [Nikto [GitHub](../../CI_CD/github/SKILL.md) Repository](https://[github](../../CI_CD/github/SKILL.md).com/sullo/nikto)
+- [Nikto [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Repository](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/sullo/nikto)
 - [OWASP Testing Guide](https://owasp.org/www-project-web-security-testing-guide/)
 - [NIST SP 800-115: Technical Security Testing](https://csrc.nist.gov/publications/detail/sp/800-115/final)
 - [CIS Web Server Benchmarks](https://www.cisecurity.org/[cis-benchmarks](../cis-benchmarks/SKILL.md)/)

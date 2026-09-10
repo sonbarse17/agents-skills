@@ -546,7 +546,7 @@ AZURE_LOG_LEVEL=debug
 |----------|-----|
 | PyPI Package | https://pypi.org/project/azure-identity/ |
 | API Reference | https://learn.microsoft.com/[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/api/azure-identity |
-| [GitHub](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Source | https://[github](../../../../../DevOps_and_Cloud/CI_CD/github/SKILL.md).com/Azure/azure-sdk-for-[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/tree/main/sdk/identity/azure-identity |
+| [GitHub](../../../../../ci-cd/github-actions/other/github/SKILL.md) Source | https://[github](../../../../../ci-cd/github-actions/other/github/SKILL.md).com/Azure/azure-sdk-for-[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/tree/main/sdk/identity/azure-identity |
 | Credential Chains | https://aka.ms/azsdk/[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)/identity/credential-chains |
 
 ## Reference Files

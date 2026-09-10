@@ -113,7 +113,7 @@ Tier 2 (Week 2-4): Detect common attack patterns
 ├── Application: Web server (IIS, Nginx, Apache), API gateway
 ├── Database: SQL Server, [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md), [MySQL](../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs
 ├── Container: K8s [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs, [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) events
-├── SaaS: Salesforce, Slack, [GitHub](../../DevOps_and_Cloud/CI_CD/github/SKILL.md) [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs
+├── SaaS: Salesforce, Slack, [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs
 └── Vulnerability: Scanner results (Nessus, Qualys, Rapid7)
 
 Tier 3 (Month 2-3): Advanced detection and forensics

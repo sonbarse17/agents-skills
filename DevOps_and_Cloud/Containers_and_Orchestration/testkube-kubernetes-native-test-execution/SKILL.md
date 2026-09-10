@@ -31,7 +31,7 @@ depends_on:
 
 ## Purpose
 
-A CI runner (a [GitHub](../../CI_CD/github/SKILL.md) Actions job, a [Jenkins](../../CI_CD/jenkins/SKILL.md) agent) executes outside the
+A CI runner (a [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions job, a [Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md) agent) executes outside the
 cluster by default — reaching an in-cluster-only service (one with no
 public Ingress, addressable only via its `ClusterIP`/internal DNS name)
 requires port-forwarding, a VPN hop, or a temporary Ingress just for the
@@ -64,7 +64,7 @@ threshold checks, but that validation itself is out of scope here.
 - Chaining multiple test types (API test, then load test, then E2E) into
   a single ordered `TestSuite` run, rather than juggling separate CI job
   definitions for each tool.
-- Triggering test execution from a CI pipeline ([GitHub](../../CI_CD/github/SKILL.md) Actions, [Jenkins](../../CI_CD/jenkins/SKILL.md),
+- Triggering test execution from a CI pipeline ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions, [Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md),
   GitLab CI) via the Testkube CLI or API, so the CI job itself stays a
   thin trigger/poll-for-result step rather than needing every test
   tool's runtime installed on the CI runner.
@@ -110,7 +110,7 @@ threshold checks, but that validation itself is out of scope here.
      content:
        type: git
        repository:
-         uri: https://[github](../../CI_CD/github/SKILL.md).com/example-org/checkout-api-tests.git
+         uri: https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/example-org/checkout-api-tests.git
          branch: main
          path: collections/smoke.postman_collection.json
      executionRequest:
@@ -138,7 +138,7 @@ threshold checks, but that validation itself is out of scope here.
      content:
        type: git
        repository:
-         uri: https://[github](../../CI_CD/github/SKILL.md).com/example-org/checkout-api-tests.git
+         uri: https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/example-org/checkout-api-tests.git
          branch: main
          path: k6/checkout-load.js
      executionRequest:
@@ -199,10 +199,10 @@ threshold checks, but that validation itself is out of scope here.
 
 5. **Wire test execution into CI as a thin trigger-and-poll step**,
    keeping the CI runner itself free of every test tool's runtime
-   ([GitHub](../../CI_CD/github/SKILL.md) Actions example; the same CLI invocation works from [Jenkins](../../CI_CD/jenkins/SKILL.md),
+   ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions example; the same CLI invocation works from [Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md),
    GitLab CI, or any other runner with `[kubectl](../kubectl/SKILL.md)`/cluster access):
    ```yaml
-   # .[github](../../CI_CD/github/SKILL.md)/workflows/post-deploy-validation.yml
+   # .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/post-deploy-validation.yml
    jobs:
      run-testkube-suite:
        runs-on: ubuntu-latest
@@ -349,7 +349,7 @@ spec:
   content:
     type: git
     repository:
-      uri: https://[github](../../CI_CD/github/SKILL.md).com/example-org/checkout-api-tests.git
+      uri: https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/example-org/checkout-api-tests.git
       branch: main
       path: e2e
   executionRequest:
@@ -362,7 +362,7 @@ spec:
 `TestSuite` gating a full release (as authored in step 3), triggered
 from the deploy pipeline's post-deploy stage:
 ```yaml
-# [GitHub](../../CI_CD/github/SKILL.md) Actions step, appended after the deploy job succeeds
+# [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions step, appended after the deploy job succeeds
 - name: Run full release validation suite
   run: |
     [kubectl](../kubectl/SKILL.md) testkube run testsuite checkout-release-validation \

@@ -41,7 +41,7 @@ trustworthy.
 ## When to use
 
 - Standing up a private package registry or pull-through proxy/mirror
-  (Artifactory, Nexus, [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Packages, Verdaccio, a cloud-native
+  (Artifactory, Nexus, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Packages, Verdaccio, a cloud-native
   registry) in front of public registries like npm/PyPI/Maven Central.
 - Introducing or auditing lockfiles (`package-lock.json`,
   `poetry.lock`/`requirements.txt` with pinned hashes, `go.sum`) to make
@@ -57,7 +57,7 @@ trustworthy.
 
 ## Prerequisites & environment
 
-- A chosen artifact/package registry solution: a managed offering ([GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)
+- A chosen artifact/package registry solution: a managed offering ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)
   Packages, GitLab Package Registry, cloud provider artifact registries)
   or self-hosted (Artifactory, Sonatype Nexus, Harbor for containers,
   Verdaccio for npm).
@@ -89,7 +89,7 @@ trustworthy.
    copies survive), a single point to apply security scanning, and
    traceability of exactly which package versions were ever pulled.
 
-2. **[Commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) lockfiles and enforce them in CI** so builds are reproducible
+2. **[Commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) lockfiles and enforce them in CI** so builds are reproducible
    byte-for-byte on dependency resolution, not just "same version range":
    ```bash
    npm ci                 # fails if package-lock.json is out of sync, unlike npm install
@@ -139,7 +139,7 @@ trustworthy.
 6. **Define and enforce artifact retention** so storage doesn't grow
    unbounded and old, unreferenced artifacts don't accumulate risk
    (stale, unpatched images sitting in a registry indefinitely). Example
-   [GitHub](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md) Container Registry cleanup via a scheduled workflow using
+   [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Container Registry cleanup via a scheduled workflow using
    `actions/delete-package-versions`:
    ```yaml
    on:
@@ -184,7 +184,7 @@ trustworthy.
   [release-versioning-and-changelog-automation](../[release-versioning-and-changelog-automation](../../../DevOps_and_Cloud/Observability_and_SecOps/release-versioning-and-[changelog-automation](../../../Product_and_Business/changelog-automation/SKILL.md)/SKILL.md)/SKILL.md)
   when the upgrade affects your own published artifact's versioning
   contract.
-- Record artifact provenance (which [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md)/pipeline run produced a given
+- Record artifact provenance (which [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)/pipeline run produced a given
   artifact) as metadata/labels on the artifact itself, so retention
   cleanup and [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response can trace an artifact back to its build —
   this dovetails with build metadata practices in
@@ -198,7 +198,7 @@ trustworthy.
 - **Symptom:** A build that passed last week fails today with no code
   changes, due to a transitive dependency resolving to a new (breaking)
   version.
-  **Fix:** This indicates missing or unenforced lockfiles — [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) the
+  **Fix:** This indicates missing or unenforced lockfiles — [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) the
   lockfile, and run the package manager's strict/CI install mode
   (`npm ci`, `pip install --require-hashes`) so resolution can't silently
   drift between runs.
@@ -243,7 +243,7 @@ and the team's CI starts failing `npm ci` with a 404.
 2. For any environment that hadn't cached it yet, pin an explicit
    replacement in `package.json` (`"left-pad-style-lib": "3.2.0"`, the
    last known-good published version) and run `npm install` once to
-   regenerate `package-lock.json`, then [commit](../../../DevOps_and_Cloud/CI_CD/commit/SKILL.md) the lockfile update.
+   regenerate `package-lock.json`, then [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) the lockfile update.
 3. Open a PR titled "pin left-pad-style-lib to 3.2.0 (3.2.1 unpublished
    upstream)" so the pin is visible and reviewable, and file a follow-up
    ticket to revisit once the ecosystem stabilizes (e.g., a maintained
