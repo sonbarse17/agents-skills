@@ -69,6 +69,7 @@
 
     { "path": "Software_Engineering_and_Other/Backend" },
     { "path": "Software_Engineering_and_Other/Frontend" },
+    { "path": "Software_Engineering_and_Other/Desktop" },
     { "path": "Software_Engineering_and_Other/Languages" },
     { "path": "Software_Engineering_and_Other/Databases" },
     { "path": "Software_Engineering_and_Other/Testing" },

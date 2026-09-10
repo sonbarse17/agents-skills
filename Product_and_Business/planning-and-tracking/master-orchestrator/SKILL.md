@@ -1471,7 +1471,7 @@ State: User asks about integration testing, API testing, database testing, TestC
   Reason: "Integration testing request."
 
 State: User asks about property-based testing, fuzzing, generative testing, fast-check, QuickCheck, invariant testing, random testing.
-  Route: [quality-property-based-testing](../../../Software_Engineering_and_Other/Frontend/testing/property-based-testing/SKILL.md)
+  Route: [quality-property-based-testing](../../../Software_Engineering_and_Other/Testing/unit/property-based-testing/SKILL.md)
   Reason: "Property-based testing request."
 
 State: User asks about Express, Express.js middleware, Express app.

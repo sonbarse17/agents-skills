@@ -413,7 +413,7 @@ Testing only the happy path (correct input, expected behavior) misses null/undef
 ## Handoff
 After unit testing, hand off to:
 - `[quality-integration-testing](../../integration/integration-testing/SKILL.md)` — for verifying component interactions with real dependencies
-- `[quality-property-based-testing](../../../Frontend/testing/property-based-testing/SKILL.md)` — for adding property-based invariants to complement examples
+- `[quality-property-based-testing](../property-based-testing/SKILL.md)` — for adding property-based invariants to complement examples
 - `[quality-regression-testing](../../regression/regression-testing/SKILL.md)` — for regression suite execution and maintenance
 - `[quality-smoke-testing](../../regression/smoke-testing/SKILL.md)` — for BVT smoke test definition on tested components
 ## Implementation Patterns

@@ -78,7 +78,7 @@ Structured property test suite with:
 
 ```
 Inputs: language, team expertise, existing tooling
-├── [TypeScript](../../common/typescript/SKILL.md)/JavaScript → fast-check
+├── [TypeScript](../../../Frontend/common/typescript/SKILL.md)/JavaScript → fast-check
 │   ├── Stateful testing needed? → Use fc.Command + fc.modelRun
 │   └── Async code? → Use fc.asyncProperty
 ├── [Python](../../../Languages/python/python/SKILL.md) → Hypothesis
@@ -154,8 +154,8 @@ Can you express a relation between input and output?
 
 ## Property-Based Testing Examples
 
-### [TypeScript](../../common/typescript/SKILL.md)/fast-check — Round-Trip Property
-```[typescript](../../common/typescript/SKILL.md)
+### [TypeScript](../../../Frontend/common/typescript/SKILL.md)/fast-check — Round-Trip Property
+```[typescript](../../../Frontend/common/typescript/SKILL.md)
 import * as fc from "fast-check";
 
 // Property: encode/decode is a round-trip
@@ -170,8 +170,8 @@ test("URL encoding and decoding round-trips correctly", () => {
 });
 ```
 
-### [TypeScript](../../common/typescript/SKILL.md)/fast-check — Invariant Property
-```[typescript](../../common/typescript/SKILL.md)
+### [TypeScript](../../../Frontend/common/typescript/SKILL.md)/fast-check — Invariant Property
+```[typescript](../../../Frontend/common/typescript/SKILL.md)
 // Property: sort always returns elements in non-decreasing order
 test("sort returns a sorted array", () => {
   fc.assert(
@@ -186,8 +186,8 @@ test("sort returns a sorted array", () => {
 });
 ```
 
-### [TypeScript](../../common/typescript/SKILL.md)/fast-check — Idempotence Property
-```[typescript](../../common/typescript/SKILL.md)
+### [TypeScript](../../../Frontend/common/typescript/SKILL.md)/fast-check — Idempotence Property
+```[typescript](../../../Frontend/common/typescript/SKILL.md)
 // Property: removing duplicates is idempotent
 test("uniq is idempotent", () => {
   fc.assert(
@@ -262,8 +262,8 @@ def test_user_creation(user):
     assert result["role"] in ["admin", "user", "viewer"]
 ```
 
-### [TypeScript](../../common/typescript/SKILL.md)/fast-check — Stateful Testing
-```[typescript](../../common/typescript/SKILL.md)
+### [TypeScript](../../../Frontend/common/typescript/SKILL.md)/fast-check — Stateful Testing
+```[typescript](../../../Frontend/common/typescript/SKILL.md)
 import * as fc from "fast-check";
 
 class CounterModel {
@@ -483,7 +483,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../performance/profiling/SKILL.md) | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../../Frontend/performance/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -499,7 +499,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### [Profiling](../../performance/profiling/SKILL.md) Methodology
+### [Profiling](../../../Frontend/performance/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
