@@ -57,7 +57,7 @@ end
 ```
 
 ## Architecture
-```[mermaid](../../../../../Product_and_Business/mermaid/SKILL.md)
+```[mermaid](../../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[Client Request] --> B{Rate Limiter}

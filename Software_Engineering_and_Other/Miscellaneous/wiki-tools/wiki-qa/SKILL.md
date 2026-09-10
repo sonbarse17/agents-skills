@@ -53,7 +53,7 @@ Before answering any question, you MUST determine the source repository context:
   - **Remote**: `[src/path/file.ts:42](REPO_URL/blob/BRANCH/src/path/file.ts#L42)`
   - **Local**: `(src/path/file.ts:42)`
 - Include a "Key Files" table mapping files to their roles (with linked citations in the "File" column)
-- **Include at least 1 [Mermaid](../../../../Product_and_Business/mermaid/SKILL.md) diagram** when the answer involves architecture, data flow, or relationships — a diagram makes the answer 10x more useful
+- **Include at least 1 [Mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md) diagram** when the answer involves architecture, data flow, or relationships — a diagram makes the answer 10x more useful
 - **Use tables** for any structured data in the answer (component lists, API endpoints, config options, comparisons)
 - If information is insufficient, say so and suggest files to examine
 

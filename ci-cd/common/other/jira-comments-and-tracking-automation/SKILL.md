@@ -41,7 +41,7 @@ writing comments that hold up months later, choosing comment vs. field
 update for a given piece of state, and building CI/CD-driven comment/
 status automation that adds signal instead of drowning it. It assumes
 the ticket itself is already well-formed — see
-[jira-ticket-best-practices-and-workflow](../[jira-ticket-best-practices-and-workflow](../../../Product_and_Business/jira-ticket-best-practices-and-workflow/SKILL.md)/SKILL.md)
+[jira-ticket-best-practices-and-workflow](../../../../Product_and_Business/planning-and-tracking/jira-ticket-best-practices-and-workflow/SKILL.md)/SKILL.md)
 for writing the ticket and moving it through its workflow. When the
 decision or context is significant enough to outlive the ticket, it
 belongs in Confluence, not buried in a comment thread — see
@@ -328,7 +328,7 @@ Authorization: Basic base64(${JIRA_USER_EMAIL}:${JIRA_API_TOKEN})
 
 Followed by the actual status transition (once verified, not before) as
 covered in
-[jira-ticket-best-practices-and-workflow](../[jira-ticket-best-practices-and-workflow](../../../Product_and_Business/jira-ticket-best-practices-and-workflow/SKILL.md)/SKILL.md):
+[jira-ticket-best-practices-and-workflow](../../../../Product_and_Business/planning-and-tracking/jira-ticket-best-practices-and-workflow/SKILL.md)/SKILL.md):
 
 ```json
 { "transition": { "id": "51" } }
@@ -336,7 +336,7 @@ covered in
 
 ## Cross-references
 
-- [jira-ticket-best-practices-and-workflow](../[jira-ticket-best-practices-and-workflow](../../../Product_and_Business/jira-ticket-best-practices-and-workflow/SKILL.md)/SKILL.md) —
+- [jira-ticket-best-practices-and-workflow](../../../../Product_and_Business/planning-and-tracking/jira-ticket-best-practices-and-workflow/SKILL.md)/SKILL.md) —
   writing the ticket itself, choosing issue type/priority/labels, and
   the status-transition mechanics referenced above.
 - [confluence-page-authoring-and-governance](../[confluence-page-authoring-and-governance](../../Frontend/confluence-page-authoring-and-governance/SKILL.md)/SKILL.md) —

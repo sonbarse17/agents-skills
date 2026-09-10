@@ -66,7 +66,7 @@ CNI dictates how network namespaces are wired.
 
 ## 6. Architectural Diagram
 
-```[mermaid](../../../../Product_and_Business/mermaid/SKILL.md)
+```[mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     API[kube-apiserver] --> ETCD[(etcd - Raft)]

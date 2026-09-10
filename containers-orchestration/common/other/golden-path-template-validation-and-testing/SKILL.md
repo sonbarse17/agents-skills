@@ -39,7 +39,7 @@ just their lost afternoon — it's the platform's credibility with every
 team watching, at the exact moment adoption depends on the golden path
 visibly working. This skill covers the validation discipline that belongs
 between designing a template (covered in
-[golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../../../Product_and_Business/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md))
+[golden-path-template-design-for-developer-platforms](../golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md))
 and pointing new-service creation at it: a CI pipeline that scaffolds a
 real instance from the template, builds it, deploys it to an ephemeral
 environment, runs a smoke test, and tears it down — repeated for every
@@ -69,7 +69,7 @@ shipped as a tested option.
 - The templating substrate already in place — Backstage Scaffolder
   (`scaffolder.backstage.io/v1beta3` `Template` manifests) or a Score-based
   skeleton workflow; see
-  [golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../../../Product_and_Business/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md)
+  [golden-path-template-design-for-developer-platforms](../golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md)
   for the template structure this skill validates.
 - CI runner [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) and permissions to: check out a freshly scaffolded
   repository, run its build, push a throwaway image to a registry, and
@@ -316,6 +316,6 @@ the default every new Go service gets.
 
 ## Cross-references
 
-- [golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../../../Product_and_Business/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md) — the tiering, parameterization, and versioning design this pipeline validates; read that first for the template structure being tested here.
+- [golden-path-template-design-for-developer-platforms](../golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md) — the tiering, parameterization, and versioning design this pipeline validates; read that first for the template structure being tested here.
 - [humanitec-score-configuration-validation](../[humanitec-score-configuration-validation](../humanitec-score-configuration-validation/SKILL.md)/SKILL.md) — the equivalent validation discipline for a single Score workload spec, used inside step 4/5 when the golden path's deploy mechanism is Score-based.
 - [idp-adoption-rollout-and-[change-management](../../../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy](../../../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy](../../../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md) — how the canary/pilot sequencing in step 8 fits into the platform's broader rollout and [change-management](../../../../observability-monitoring-logging/common/other/change-management/SKILL.md) approach.

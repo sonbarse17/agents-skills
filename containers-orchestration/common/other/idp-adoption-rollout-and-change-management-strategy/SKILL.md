@@ -80,7 +80,7 @@ policy.
   updates — Slack/Teams channel, a recurring email digest, or a standing
   agenda item in an existing engineering-wide meeting.
 - The measurement system from
-  [developer-experience-measurement-and-platform-adoption](../[developer-experience-measurement-and-platform-adoption](../[developer-experience](../../../Product_and_Business/developer-experience/SKILL.md)-measurement-and-platform-adoption/SKILL.md)/SKILL.md)
+  [developer-experience-measurement-and-platform-adoption](../../../../Product_and_Business/ops-and-hiring/developer-experience/SKILL.md)-measurement-and-platform-adoption/SKILL.md)/SKILL.md)
   already in place, or at least planned — a rollout without a way to
   measure whether it's working is flying blind on the exact question that
   matters most.
@@ -162,7 +162,7 @@ policy.
 7. **Only mandate migration of existing services after the capability has
    a track record, a documented exception process, and dedicated
    migration support** — see
-   [golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../../../Product_and_Business/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md)
+   [golden-path-template-design-for-developer-platforms](../golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md)
    for the escape-hatch design that has to exist before any mandate, and
    staff real platform-team time to help teams migrate rather than just
    issuing the deadline and leaving teams to figure it out alone.
@@ -215,7 +215,7 @@ policy.
   escalating a holdout team — investigate first, escalate only if the
   investigation confirms it's warranted.
 - Measure adoption and sentiment throughout (see
-  [developer-experience-measurement-and-platform-adoption](../[developer-experience-measurement-and-platform-adoption](../[developer-experience](../../../Product_and_Business/developer-experience/SKILL.md)-measurement-and-platform-adoption/SKILL.md)/SKILL.md))
+  [developer-experience-measurement-and-platform-adoption](../../../../Product_and_Business/ops-and-hiring/developer-experience/SKILL.md)-measurement-and-platform-adoption/SKILL.md)/SKILL.md))
   rather than declaring success based on a mandate's compliance percentage
   alone — a high compliance rate achieved by mandate says nothing about
   whether developers actually find the platform valuable.
@@ -263,7 +263,7 @@ policy.
   **Fix:** Investigate the specific objection (step 9) before escalating
   — if it's legitimate, treat it as a signal to extend the golden path
   (a new tier, per
-  [golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../../../Product_and_Business/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md))
+  [golden-path-template-design-for-developer-platforms](../golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md))
   rather than as resistance to overcome, and repair the relationship with
   that team explicitly since an unwarranted escalation is itself a trust
   cost.
@@ -276,7 +276,7 @@ policy.
   CI check, a blocking policy) measures compliance, not adoption or
   satisfaction — cross-check any mandate-driven metric against the
   sentiment survey in
-  [developer-experience-measurement-and-platform-adoption](../[developer-experience-measurement-and-platform-adoption](../[developer-experience](../../../Product_and_Business/developer-experience/SKILL.md)-measurement-and-platform-adoption/SKILL.md)/SKILL.md)
+  [developer-experience-measurement-and-platform-adoption](../../../../Product_and_Business/ops-and-hiring/developer-experience/SKILL.md)-measurement-and-platform-adoption/SKILL.md)/SKILL.md)
   before reporting it as evidence the platform is valued rather than
   merely enforced.
 
@@ -310,7 +310,7 @@ earlier.
 5. **Broad opt-in rollout**: the golden path becomes available org-wide,
    still opt-in, with office hours advertised weekly. Adoption and
    satisfaction are tracked per
-   [developer-experience-measurement-and-platform-adoption](../[developer-experience-measurement-and-platform-adoption](../[developer-experience](../../../Product_and_Business/developer-experience/SKILL.md)-measurement-and-platform-adoption/SKILL.md)/SKILL.md).
+   [developer-experience-measurement-and-platform-adoption](../../../../Product_and_Business/ops-and-hiring/developer-experience/SKILL.md)-measurement-and-platform-adoption/SKILL.md)/SKILL.md).
 6. **Mandate scoped narrowly**: after two quarters and demonstrated
    adoption climbing past 60% voluntarily, the platform team mandates the
    golden path for *new* services only — existing services are left
@@ -324,7 +324,7 @@ earlier.
 
 ## Cross-references
 
-- [developer-experience-measurement-and-platform-adoption](../[developer-experience-measurement-and-platform-adoption](../[developer-experience](../../../Product_and_Business/developer-experience/SKILL.md)-measurement-and-platform-adoption/SKILL.md)/SKILL.md) — the measurement system that tells this rollout whether it's actually working, distinct from a mandate's compliance percentage.
-- [golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../../../Product_and_Business/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md) — the escape-hatch and tiering design that has to exist before any mandate discussed in steps 6-7 here is credible.
+- [developer-experience-measurement-and-platform-adoption](../../../../Product_and_Business/ops-and-hiring/developer-experience/SKILL.md)-measurement-and-platform-adoption/SKILL.md)/SKILL.md) — the measurement system that tells this rollout whether it's actually working, distinct from a mandate's compliance percentage.
+- [golden-path-template-design-for-developer-platforms](../golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md) — the escape-hatch and tiering design that has to exist before any mandate discussed in steps 6-7 here is credible.
 - [golden-path-template-validation-and-testing](../[golden-path-template-validation-and-testing](../../../DevOps_and_Cloud/CI_CD/golden-path-template-validation-and-testing/SKILL.md)/SKILL.md) — proving a golden path actually works end-to-end, a prerequisite this skill assumes before any mandate.
 - [platform-engineering-team-topology-and-operating-model](../[platform-engineering-team-topology-and-operating-model](../../../Product_and_Business/[platform-engineering](../../Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md) — running the platform as an internal product, which is the organizational stance behind treating rollout as earned adoption rather than a policy mandate.

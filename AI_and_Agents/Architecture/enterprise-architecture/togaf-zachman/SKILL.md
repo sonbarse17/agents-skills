@@ -521,4 +521,4 @@ zachman_adm_mapping:
 - Architecture decision [audit](../../../Operations/common/audit/SKILL.md): all ADM phase decisions logged with timestamp, author, rationale.
 
 ## Handoff
-For implementation projects, hand off to `[enterprise-architecture-governance](../../../../Software_Engineering_and_Other/Patterns/architecture/architecture-governance/SKILL.md)` for review board decisions, or `enterprise-[vendor-management](../../../../Product_and_Business/vendor-management/SKILL.md)` for technology procurement alignment.
+For implementation projects, hand off to `[enterprise-architecture-governance](../../../../Software_Engineering_and_Other/Patterns/architecture/architecture-governance/SKILL.md)` for review board decisions, or `enterprise-[vendor-management](../../../../Product_and_Business/ops-and-hiring/vendor-management/SKILL.md)` for technology procurement alignment.

@@ -37,7 +37,7 @@ documentation.**
 If registering a new service in the catalog is a manual form someone fills out after the fact, it
 gets skipped under deadline pressure and the catalog silently loses coverage. Wire catalog
 registration into the scaffolding path itself — creating a service from a template in
-`[golden-paths](../../../../Product_and_Business/golden-paths/SKILL.md)` should register it automatically, with owner and metadata pre-populated from the
+`[golden-paths](../golden-paths/SKILL.md)` should register it automatically, with owner and metadata pre-populated from the
 template's prompts.
 
 **Done when:** a newly scaffolded service appears in the catalog with correct ownership metadata

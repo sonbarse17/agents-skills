@@ -33,8 +33,8 @@ predefined or custom roles, and manage Cloud API keys.
 > environment and the organization context is established. If `EC_API_KEY` is missing, instruct the agent to invoke
 > **[cloud-setup](../../other/setup/SKILL.md)** first. Do NOT prompt the user for an API key directly.
 
-For project creation, see the **[cloud-create-project](../../../../Product_and_Business/create-project/SKILL.md)** skill. For day-2 project operations (list, update, delete), see
-**[cloud-manage-project](../../../../Product_and_Business/manage-project/SKILL.md)**. For Elasticsearch-level role management (native users, role mappings, DLS/FLS), see the
+For project creation, see the **[cloud-create-project](../../../../Product_and_Business/planning-and-tracking/create-project/SKILL.md)** skill. For day-2 project operations (list, update, delete), see
+**[cloud-manage-project](../../../../Product_and_Business/planning-and-tracking/manage-project/SKILL.md)**. For Elasticsearch-level role management (native users, role mappings, DLS/FLS), see the
 **[elasticsearch-authz](../../../../observability-monitoring-logging/elasticsearch/other/elasticsearch-authz/SKILL.md)** skill.
 
 For detailed API endpoints and request schemas, see [../../../../Global_References/cloud/access-management_api-reference.md](../../../../Global_References/cloud/access-management_api-reference.md).

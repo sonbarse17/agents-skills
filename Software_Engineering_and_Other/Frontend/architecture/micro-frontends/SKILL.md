@@ -16,8 +16,8 @@ depends_on:
 - **Host App (Shell):** The main container application.
 - **Remote App:** Independently deployed feature modules.
 
-## [Mermaid](../../../../Product_and_Business/mermaid/SKILL.md) Diagram
-```[mermaid](../../../../Product_and_Business/mermaid/SKILL.md)
+## [Mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md) Diagram
+```[mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 graph TD
     A[Host App Shell] --> B[Remote App 1: Auth]

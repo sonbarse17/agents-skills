@@ -28,7 +28,7 @@ Database consistency relies on MVCC (Multi-Version Concurrency Control) and lock
 - **Repeatable Read:** Prevents Non-Repeatable Reads. A transaction sees a consistent snapshot of the DB from its inception. However, **Phantom Reads** can occur if a concurrent transaction inserts new rows matching a range query constraint.
 - **Serializable:** The highest isolation. Guarantees operations act as if executed serially. Implemented via Strict Two-Phase Locking (SS2PL) or Serializable Snapshot Isolation (SSI). SSI detects cyclic read-write dependencies and aborts transactions to prevent anomalies.
 
-```[mermaid](../../../../Product_and_Business/mermaid/SKILL.md)
+```[mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[Database Engine]

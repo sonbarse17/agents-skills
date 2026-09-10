@@ -135,7 +135,7 @@ release pipeline with scanning and provenance.
    resolved digest (`$IMAGE@sha256:...`) — never deploy `latest` to a
    real environment, since it gives no guarantee of *which* build is
    actually running. See
-   [release-versioning-and-changelog-automation](../[release-versioning-and-changelog-automation](../../Observability_and_SecOps/release-versioning-and-[changelog-automation](../../../Product_and_Business/changelog-automation/SKILL.md)/SKILL.md)/SKILL.md)
+   [release-versioning-and-changelog-automation](../../../../ci-cd/common/other/changelog-automation/SKILL.md)/SKILL.md)/SKILL.md)
    for how the version number itself should be derived.
 
 7. **Scan the image before publishing it as a release candidate**:
@@ -280,5 +280,5 @@ then references that immutable tag, never `latest`.
 ## Cross-references
 
 - [blue-green-canary-deployments](../[blue-green-canary-deployments](../../CI_CD/blue-green-canary-deployments/SKILL.md)/SKILL.md)
-- [release-versioning-and-changelog-automation](../[release-versioning-and-changelog-automation](../../Observability_and_SecOps/release-versioning-and-[changelog-automation](../../../Product_and_Business/changelog-automation/SKILL.md)/SKILL.md)/SKILL.md)
+- [release-versioning-and-changelog-automation](../../../../ci-cd/common/other/changelog-automation/SKILL.md)/SKILL.md)/SKILL.md)
 - [artifact-and-dependency-management](../../../../ci-cd/common/build/dependency-management/SKILL.md)/SKILL.md)/SKILL.md)

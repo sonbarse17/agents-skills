@@ -35,7 +35,7 @@ Natural data—whether retinal images, auditory waveforms, or tokenized semantic
 
 ## III. Epistemological Flow of Information
 
-```[mermaid](../../Product_and_Business/mermaid/SKILL.md)
+```[mermaid](../../Product_and_Business/content-and-docs/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[Ambient Space: Raw High-Dimensional Data in R^N]

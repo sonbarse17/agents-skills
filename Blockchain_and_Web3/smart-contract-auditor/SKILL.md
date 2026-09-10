@@ -36,7 +36,7 @@ When analyzing smart contracts, adhere to the following rigid execution flow:
 
 ## 🗺️ Thought Process Map
 
-```[mermaid](../../Product_and_Business/mermaid/SKILL.md)
+```[mermaid](../../Product_and_Business/content-and-docs/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[Receive Contract for Audit] --> B(Reconnaissance & Architecture Map)

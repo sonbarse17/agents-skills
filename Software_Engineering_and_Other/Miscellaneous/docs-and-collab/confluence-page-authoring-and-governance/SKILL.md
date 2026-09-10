@@ -42,7 +42,7 @@ history discipline that keeps concurrent edits and [audit](../../../../AI_and_Ag
 and how to do page creation/update programmatically via the Confluence
 REST API. It assumes the underlying work is already tracked in Jira —
 see
-[jira-ticket-best-practices-and-workflow](../[jira-ticket-best-practices-and-workflow](../../../Product_and_Business/jira-ticket-best-practices-and-workflow/SKILL.md)/SKILL.md)
+[jira-ticket-best-practices-and-workflow](../../../../Product_and_Business/planning-and-tracking/jira-ticket-best-practices-and-workflow/SKILL.md)/SKILL.md)
 and
 [jira-comments-and-tracking-automation](../../../../ci-cd/common/other/jira-comments-and-tracking-automation/SKILL.md)/SKILL.md)
 for that half of the workflow, and link back to the originating ticket
@@ -277,7 +277,7 @@ from any page this skill produces.
   the follow-up work happens and the same [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) recurs.
   **Fix:** Require every postmortem action item to link a real Jira
   ticket at write time (see the postmortem template and
-  [jira-ticket-best-practices-and-workflow](../[jira-ticket-best-practices-and-workflow](../../../Product_and_Business/jira-ticket-best-practices-and-workflow/SKILL.md)/SKILL.md)),
+  [jira-ticket-best-practices-and-workflow](../../../../Product_and_Business/planning-and-tracking/jira-ticket-best-practices-and-workflow/SKILL.md)/SKILL.md)),
   and treat "Draft" as a short-lived state with a target date to reach
   "Final."
 
@@ -359,7 +359,7 @@ only in one place.
 
 ## Cross-references
 
-- [jira-ticket-best-practices-and-workflow](../[jira-ticket-best-practices-and-workflow](../../../Product_and_Business/jira-ticket-best-practices-and-workflow/SKILL.md)/SKILL.md) —
+- [jira-ticket-best-practices-and-workflow](../../../../Product_and_Business/planning-and-tracking/jira-ticket-best-practices-and-workflow/SKILL.md)/SKILL.md) —
   the ticket that this documentation should trace back to, including
   linking Jira and Confluence to each other.
 - [jira-comments-and-tracking-automation](../../../../ci-cd/common/other/jira-comments-and-tracking-automation/SKILL.md)/SKILL.md) —

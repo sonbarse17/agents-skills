@@ -73,7 +73,7 @@ Each iteration takes a different lens and builds on all prior findings:
 4. **Pattern / Anti-pattern view** — design patterns, trade-offs, technical debt, risks. Use tables to catalogue patterns found.
 5. **Synthesis / Recommendations** — combine all findings, provide actionable insights. Include summary tables ranking findings by impact.
 
-**Each iteration should include at least 1 [Mermaid](../../../../Product_and_Business/mermaid/SKILL.md) diagram and 1 structured table** to make findings scannable and engaging.
+**Each iteration should include at least 1 [Mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md) diagram and 1 structured table** to make findings scannable and engaging.
 
 ### For Every Significant Finding
 
@@ -88,6 +88,6 @@ Each iteration takes a different lens and builds on all prior findings:
 - NEVER repeat findings from prior iterations
 - ALWAYS cite files using the resolved citation format (linked for remote repos, local otherwise): `[file_path:line_number](REPO_URL/blob/BRANCH/file_path#Lline_number)` or `(file_path:line_number)`
 - ALWAYS provide substantive analysis — never just "continuing..."
-- Include [Mermaid](../../../../Product_and_Business/mermaid/SKILL.md) diagrams (dark-mode colors) when they clarify architecture or flow — add `<!-- Sources: ... -->` comment block after each diagram
+- Include [Mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md) diagrams (dark-mode colors) when they clarify architecture or flow — add `<!-- Sources: ... -->` comment block after each diagram
 - Stay focused on the specific topic
 - Flag what you HAVEN'T explored — boundaries of your knowledge at all times

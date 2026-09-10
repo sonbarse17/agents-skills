@@ -16,7 +16,7 @@ Service Level Indicators (SLIs) must be quantifiable fractions of good events ov
 - **Latency SLI**: $SLI_{latency} = \frac{\text{Requests } < 200ms}{\text{Total Requests}}$
 - **Continuous Aggregation**: SLIs are typically evaluated over rolling windows (e.g., 28 days) using integration of time-series metrics.
 
-```[mermaid](../../../../Product_and_Business/mermaid/SKILL.md)
+```[mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md)
 flowchart TD
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
     subgraph ModelingSLIMathematics ["SLI Mathematics<br><br><br>"]

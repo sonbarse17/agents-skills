@@ -35,7 +35,7 @@ contract [Vault](../../Security/cryptography-secrets/vault/SKILL.md) is Reentran
 Use decentralized oracles (Chainlink) or TWAP (Uniswap V3) to prevent price manipulation.
 
 ## Security [Audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) Workflow
-```[mermaid](../../Product_and_Business/mermaid/SKILL.md)
+```[mermaid](../../Product_and_Business/content-and-docs/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[Source Code] --> B[Static Analysis (Slither)]

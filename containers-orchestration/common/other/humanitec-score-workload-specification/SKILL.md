@@ -289,7 +289,7 @@ infrastructure across dev/staging/prod.
   (e.g. missing `resources.requests`) has to be fixed in a dozen places.
   **Fix:** Generate `score.yaml` from a shared golden-path template with
   parameterized fields, rather than hand-copying between services — see
-  [golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../../../Product_and_Business/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md).
+  [golden-path-template-design-for-developer-platforms](../golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md).
 
 - **Symptom:** A Resource Definition change (e.g. bumping the Terraform
   module's `instance_class` default) is applied directly against
@@ -356,5 +356,5 @@ bindings differ.
 ## Cross-references
 
 - [humanitec-score-configuration-validation](../[humanitec-score-configuration-validation](../../../DevOps_and_Cloud/CI_CD/humanitec-score-configuration-validation/SKILL.md)/SKILL.md) — validating this `score.yaml` and its target Resource Definitions before a real deploy, referenced above for dry-run/CI gating.
-- [platform-self-service-api-and-workflow-design](../[platform-self-service-api-and-workflow-design](../../../Product_and_Business/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md) — Score as the developer-facing spec inside a larger self-service provisioning workflow.
-- [golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../../../Product_and_Business/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md) — embedding a pre-filled, parameterized `score.yaml` in a scaffolding template so new services start from a correct spec instead of hand-copying one.
+- [platform-self-service-api-and-workflow-design](../platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md) — Score as the developer-facing spec inside a larger self-service provisioning workflow.
+- [golden-path-template-design-for-developer-platforms](../golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md) — embedding a pre-filled, parameterized `score.yaml` in a scaffolding template so new services start from a correct spec instead of hand-copying one.

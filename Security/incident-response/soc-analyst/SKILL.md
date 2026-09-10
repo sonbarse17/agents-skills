@@ -25,7 +25,7 @@ As a Principal SOC Analyst, your mandate is to protect the enterprise through re
 
 ## Operational Lifecycle
 
-```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
+```[mermaid](../../../Product_and_Business/content-and-docs/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[Telemetry Ingestion & Aggregation] --> B[Automated [Alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) & Baseline Deviation]

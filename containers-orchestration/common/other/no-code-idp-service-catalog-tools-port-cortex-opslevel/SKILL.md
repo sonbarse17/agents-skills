@@ -302,7 +302,7 @@ the catalog and scorecards correctly in whichever product is chosen.
   (e.g. requiring SLOs before any service has them) or never re-baselined;
   set the entry tier to what's realistically true today, and raise the bar
   incrementally as adoption of the next criterion actually happens — see
-  [service-scorecards-and-maturity-model-design](../[service-scorecards-and-maturity-model-design](../../../Product_and_Business/service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md).
+  [service-scorecards-and-maturity-model-design](../service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md).
 
 - **Symptom:** Two teams register the same service twice — once via a
   Cortex [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) integration auto-discovery and once via a manually
@@ -368,6 +368,6 @@ catalog tool" in the abstract.
 
 ## Cross-references
 
-- [service-scorecards-and-maturity-model-design](../[service-scorecards-and-maturity-model-design](../../../Product_and_Business/service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md) — the scorecard/rubric design principles (what to measure, how to tier) that apply regardless of which of these three tools' scorecard feature implements them.
-- [golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../../../Product_and_Business/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md) — how these tools' self-service actions/scaffolding compare to and can wrap Backstage Software Templates or a standalone scaffolding CLI.
+- [service-scorecards-and-maturity-model-design](../service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md) — the scorecard/rubric design principles (what to measure, how to tier) that apply regardless of which of these three tools' scorecard feature implements them.
+- [golden-path-template-design-for-developer-platforms](../golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md) — how these tools' self-service actions/scaffolding compare to and can wrap Backstage Software Templates or a standalone scaffolding CLI.
 - [idp-adoption-rollout-and-[change-management](../../../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy](../../../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy](../../../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md) — the adoption and [change-management](../../../../observability-monitoring-logging/common/other/change-management/SKILL.md) implications of the buy-vs-build decision covered in step 1 here.

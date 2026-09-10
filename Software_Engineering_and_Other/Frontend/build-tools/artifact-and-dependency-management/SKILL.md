@@ -181,7 +181,7 @@ trustworthy.
   incidents.
 - Treat major dependency upgrades as their own reviewed change with a
   changelog read-through, not a rubber-stamped automerge — pair with
-  [release-versioning-and-changelog-automation](../[release-versioning-and-changelog-automation](../../../DevOps_and_Cloud/Observability_and_SecOps/release-versioning-and-[changelog-automation](../../../Product_and_Business/changelog-automation/SKILL.md)/SKILL.md)/SKILL.md)
+  [release-versioning-and-changelog-automation](../../../../ci-cd/common/other/changelog-automation/SKILL.md)/SKILL.md)/SKILL.md)
   when the upgrade affects your own published artifact's versioning
   contract.
 - Record artifact provenance (which [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)/pipeline run produced a given

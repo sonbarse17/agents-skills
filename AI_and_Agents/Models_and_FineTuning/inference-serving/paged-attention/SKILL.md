@@ -31,7 +31,7 @@ PagedAttention adopts the operating system concept of virtual memory and paging 
 Because logical-to-physical mapping is abstracted, multiple sequences (e.g., beam search, parallel sampling) can safely share physical pages. Copy-on-Write (CoW) is triggered only when a sequence diverges.
 
 ## Architecture Data Flow
-```[mermaid](../../../../Product_and_Business/mermaid/SKILL.md)
+```[mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     LogicalSeq[Logical Token Sequence]

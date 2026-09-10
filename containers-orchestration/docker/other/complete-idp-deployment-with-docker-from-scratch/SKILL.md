@@ -116,7 +116,7 @@ based one in this repo. Keep the template to a single tier; a Compose-
 scale team doesn't have the review [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) multiple tiers assume. The
 tiering and escape-hatch design principles still apply even though the
 generated artifact type is different — see
-[golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../../../Product_and_Business/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md)
+[golden-path-template-design-for-developer-platforms](../../../common/other/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md)
 for those principles, translating "[Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) manifest" to "Compose
 service block" throughout. Validate the template the same way the other
 variants do — scaffold a real instance, bring it up with `[docker](../docker/SKILL.md) compose
@@ -146,7 +146,7 @@ catalog-registered, Dapr component scoped correctly) rather than the full
 rubric the [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) variants build — same reasoning as the K3s variant:
 a scorecard with more categories than the team can act on becomes noise.
 See
-[service-scorecards-and-maturity-model-design](../[service-scorecards-and-maturity-model-design](../../../Product_and_Business/service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md),
+[service-scorecards-and-maturity-model-design](../../../common/other/service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md),
 applied at reduced scope.
 
 **Phase 5 — Self-service, honestly scoped as manual/lightweight, not
@@ -158,7 +158,7 @@ path scaffolder to generate their Compose service block, opens a PR adding
 it to the shared `[docker-compose](../[docker](../docker/SKILL.md)-compose/SKILL.md).yml` (or their own), and a teammate
 reviews it manually. This is a materially different (and less automated,
 less audited) governance model than
-[platform-self-service-api-and-workflow-design](../[platform-self-service-api-and-workflow-design](../../../Product_and_Business/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md)'s
+[platform-self-service-api-and-workflow-design](../../../common/other/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md)'s
 state-machine/policy-gate pattern — read that skill to understand
 specifically what capability is being given up here, not to implement it
 as-is; implementing its full pattern is usually a sign this variant has
@@ -310,9 +310,9 @@ set up by hand.
 ## Cross-references
 
 - [no-code-idp-[service-catalog](../../../common/other/service-catalog/SKILL.md)-tools-port-cortex-opslevel](../[no-code-idp-[service-catalog](../../Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel](../../Observability_and_SecOps/no-code-idp-[service-catalog](../../Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel/SKILL.md)/SKILL.md), [backstage-plugin-development](../[backstage-plugin-development](../../../Software_Engineering_and_Other/Backend/backstage-plugin-development/SKILL.md)/SKILL.md) — Phase 1.
-- [golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../../../Product_and_Business/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md), [golden-path-template-validation-and-testing](../[golden-path-template-validation-and-testing](../../CI_CD/golden-path-template-validation-and-testing/SKILL.md)/SKILL.md) — Phase 2.
+- [golden-path-template-design-for-developer-platforms](../../../common/other/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md), [golden-path-template-validation-and-testing](../[golden-path-template-validation-and-testing](../../CI_CD/golden-path-template-validation-and-testing/SKILL.md)/SKILL.md) — Phase 2.
 - [dapr-distributed-runtime-configuration](../../../[serverless](../serverless/SKILL.md)-and-alternative-compute/skills/[dapr-distributed-runtime-configuration](../../../common/other/dapr-distributed-runtime-configuration/SKILL.md)/SKILL.md), [dapr-configuration-validation](../../../[serverless](../serverless/SKILL.md)-and-alternative-compute/skills/[dapr-configuration-validation](../../../common/other/dapr-configuration-validation/SKILL.md)/SKILL.md) — Phase 3.
-- [service-scorecards-and-maturity-model-design](../[service-scorecards-and-maturity-model-design](../../../Product_and_Business/service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md) — Phase 4.
-- [platform-self-service-api-and-workflow-design](../[platform-self-service-api-and-workflow-design](../../../Product_and_Business/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md) — Phase 5, referenced to show what's deliberately not implemented here.
+- [service-scorecards-and-maturity-model-design](../../../common/other/service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md) — Phase 4.
+- [platform-self-service-api-and-workflow-design](../../../common/other/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md) — Phase 5, referenced to show what's deliberately not implemented here.
 - [multi-tenancy-and-team-workspace-design-for-idp](../[multi-tenancy-and-team-workspace-design-for-idp](../../../Software_Engineering_and_Other/Miscellaneous/[multi-tenancy](../multi-tenancy/SKILL.md)-and-team-workspace-design-for-idp/SKILL.md)/SKILL.md) — the isolation model this variant lacks.
 - [complete-idp-deployment-on-k3s-from-scratch](../[complete-idp-deployment-on-k3s-from-scratch](../../CI_CD/complete-idp-deployment-on-k3s-from-scratch/SKILL.md)/SKILL.md) — the graduation path once this variant is outgrown.

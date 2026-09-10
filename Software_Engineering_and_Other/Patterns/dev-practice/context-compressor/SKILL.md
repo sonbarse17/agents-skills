@@ -380,13 +380,13 @@ against stored code_challenge before issuing tokens.
 
 ### Context Flow Diagram
 ```
-[master-orchestrator](../../../../Product_and_Business/master-orchestrator/SKILL.md)
+[master-orchestrator](../../../../Product_and_Business/planning-and-tracking/master-orchestrator/SKILL.md)
     │
     ├──→ context-compressor (compress session → update context file)
     │       │
     │       └──→ context-file.md (persistent, version-controlled)
     │
-    └──→ [master-orchestrator](../../../../Product_and_Business/master-orchestrator/SKILL.md) (next session reads context file)
+    └──→ [master-orchestrator](../../../../Product_and_Business/planning-and-tracking/master-orchestrator/SKILL.md) (next session reads context file)
                 │
                 └──→ [decide] → continue work OR new task
 ```
@@ -511,5 +511,5 @@ Context Compression Strategy
 - **Retention**: Archive contexts > 90 days; purge sessions with security-sensitive content.
 
 ## Handoff
-[master-orchestrator](../../../../Product_and_Business/master-orchestrator/SKILL.md) — the compressed summary is injected at the start of the next work session for the master orchestrator skill to continue the work from where it was interrupted.
+[master-orchestrator](../../../../Product_and_Business/planning-and-tracking/master-orchestrator/SKILL.md) — the compressed summary is injected at the start of the next work session for the master orchestrator skill to continue the work from where it was interrupted.
 

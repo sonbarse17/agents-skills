@@ -215,7 +215,7 @@ change.
 - Emit structured build metadata ([commit](../../git-workflow/commit/SKILL.md) SHA, build number, timestamp)
   into the artifact/image so any deployed instance is traceable back to
   its pipeline run — this underpins
-  [release-versioning-and-changelog-automation](../[release-versioning-and-changelog-automation](../../Observability_and_SecOps/release-versioning-and-[changelog-automation](../../../Product_and_Business/changelog-automation/SKILL.md)/SKILL.md)/SKILL.md).
+  [release-versioning-and-changelog-automation](../../other/changelog-automation/SKILL.md)/SKILL.md)/SKILL.md).
 - Keep secrets out of logs: mask output, avoid `set -x` around commands
   that interpolate secret env vars, and use the platform's masked/secret
   variable feature rather than plain CI variables.
@@ -321,5 +321,5 @@ for fast feedback.
 ## Cross-references
 
 - [environment-promotion-strategy](../[environment-promotion-strategy](../../../Software_Engineering_and_Other/Frontend/environment-promotion-strategy/SKILL.md)/SKILL.md)
-- [release-versioning-and-changelog-automation](../[release-versioning-and-changelog-automation](../../Observability_and_SecOps/release-versioning-and-[changelog-automation](../../../Product_and_Business/changelog-automation/SKILL.md)/SKILL.md)/SKILL.md)
+- [release-versioning-and-changelog-automation](../../other/changelog-automation/SKILL.md)/SKILL.md)/SKILL.md)
 - [gitops-workflow](../[gitops-workflow](../../Containers_and_Orchestration/[gitops](../../Containers_and_Orchestration/gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md)

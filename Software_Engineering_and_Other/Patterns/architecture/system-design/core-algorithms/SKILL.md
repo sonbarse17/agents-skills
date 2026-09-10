@@ -31,7 +31,7 @@ A Bloom Filter is a space-efficient probabilistic data structure used to test se
 - **Verification:** To check membership, hash the item `k` times. If all `k` bits are 1, it is *probably* in the set. If any bit is 0, it is *definitely not*.
 - **Mathematics:** The probability of a false positive `p` depends on bits `m`, inserted elements `n`, and hash functions `k`. Optimal `k = (m/n) * ln(2)`. Highly utilized in LSM-Trees to skip reading SSTables that do not contain a key.
 
-```[mermaid](../../../../../Product_and_Business/mermaid/SKILL.md)
+```[mermaid](../../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[Core Algorithms]

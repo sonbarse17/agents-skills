@@ -149,7 +149,7 @@ build/push flow (any OCI-compliant registry, not a specific cloud's
 container registry), and catalog registration — deliberately no
 cloud-specific identity annotation on the scaffolded `ServiceAccount`,
 since one doesn't exist in this model. Tier by complexity. See
-[golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../../../Product_and_Business/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md).
+[golden-path-template-design-for-developer-platforms](../../../common/other/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md).
 
 **Phase 5 — Validate the golden path end-to-end.** Run the Phase 4
 template through a pipeline that scaffolds a real instance, builds,
@@ -176,7 +176,7 @@ state machine as the cloud-specific variants
 (`requested → policy_checked → pending_approval → approved →
 provisioning → completed`), keep policy/budget rules external, and gate
 anything provisioning real infrastructure behind approval. See
-[platform-self-service-api-and-workflow-design](../[platform-self-service-api-and-workflow-design](../../../Product_and_Business/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md)
+[platform-self-service-api-and-workflow-design](../../../common/other/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md)
 for the state-machine and policy-gate pattern, and
 [crossplane-[kubernetes](../kubernetes/SKILL.md)-native-provisioning](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[crossplane-[kubernetes](../kubernetes/SKILL.md)-native-provisioning](../crossplane-[kubernetes](../kubernetes/SKILL.md)-native-provisioning/SKILL.md)/SKILL.md)
 for the Claim/Composition/XRD mechanics this phase relies on.
@@ -193,7 +193,7 @@ construction: does the service have a NetworkPolicy, a PodDisruptionBudget,
 resource requests/limits set, and (if it uses Phase 6's Crossplane path)
 a Claim rather than an inline cloud SDK call embedded in application code.
 See
-[service-scorecards-and-maturity-model-design](../[service-scorecards-and-maturity-model-design](../../../Product_and_Business/service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md).
+[service-scorecards-and-maturity-model-design](../../../common/other/service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md).
 
 **Phase 9 — Rollout, operating model, and measurement.** Sequence
 adoption starting from a pilot team with genuine current pain, run the
@@ -202,7 +202,7 @@ with SPACE/DX Core 4 metrics. See
 [idp-adoption-rollout-and-[change-management](../../../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy](../../../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy](../../../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md),
 [platform-engineering-team-topology-and-operating-model](../[platform-engineering-team-topology-and-operating-model](../../../Product_and_Business/[platform-engineering](../../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md),
 and
-[developer-experience-measurement-and-platform-adoption](../[developer-experience-measurement-and-platform-adoption](../../../Software_Engineering_and_Other/Miscellaneous/[developer-experience](../../../Product_and_Business/developer-experience/SKILL.md)-measurement-and-platform-adoption/SKILL.md)/SKILL.md).
+[developer-experience-measurement-and-platform-adoption](../../../../Product_and_Business/ops-and-hiring/developer-experience/SKILL.md)-measurement-and-platform-adoption/SKILL.md)/SKILL.md).
 
 ## Best practices
 
@@ -226,7 +226,7 @@ and
   cloud-specific variants, even though it doesn't look like one.
 - Don't let "cloud-agnostic" quietly become "no governance" — the
   approval-gate and policy-check pattern from
-  [platform-self-service-api-and-workflow-design](../[platform-self-service-api-and-workflow-design](../../../Product_and_Business/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md)
+  [platform-self-service-api-and-workflow-design](../../../common/other/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md)
   applies here exactly as it does in the cloud-specific variants.
 
 ## Common pitfalls
@@ -318,10 +318,10 @@ cloud infrastructure.
 - [kubernetes-cluster-post-provision-conformance-validation](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[kubernetes-cluster-post-provision-conformance-validation](../[kubernetes](../kubernetes/SKILL.md)-cluster-post-provision-conformance-validation/SKILL.md)/SKILL.md) — Phase 1.
 - [ingress-nginx-configuration](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[ingress-nginx-configuration](../../networking/ingress-nginx-configuration/SKILL.md)/SKILL.md), [cert-manager-tls-automation](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[cert-manager-tls-automation](../../security/cert-manager-tls-automation/SKILL.md)/SKILL.md), [longhorn-storage-configuration](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[longhorn-storage-configuration](../../Observability_and_SecOps/[longhorn](../../Observability_and_SecOps/longhorn/SKILL.md)-storage-configuration/SKILL.md)/SKILL.md), [rook-ceph-storage-operations](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[rook-ceph-storage-operations](../../storage/rook-ceph-storage-operations/SKILL.md)/SKILL.md) — Phase 2.
 - [helm-chart-authoring](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[helm-chart-authoring](../../../helm/charts/helm-chart-authoring/SKILL.md)/SKILL.md), [backstage-plugin-development](../[backstage-plugin-development](../../../Software_Engineering_and_Other/Backend/backstage-plugin-development/SKILL.md)/SKILL.md) — Phase 3.
-- [golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../../../Product_and_Business/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md) — Phase 4.
+- [golden-path-template-design-for-developer-platforms](../../../common/other/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md) — Phase 4.
 - [golden-path-template-validation-and-testing](../[golden-path-template-validation-and-testing](../../CI_CD/golden-path-template-validation-and-testing/SKILL.md)/SKILL.md) — Phase 5.
-- [platform-self-service-api-and-workflow-design](../[platform-self-service-api-and-workflow-design](../../../Product_and_Business/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md), [crossplane-[kubernetes](../kubernetes/SKILL.md)-native-provisioning](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[crossplane-[kubernetes](../kubernetes/SKILL.md)-native-provisioning](../crossplane-[kubernetes](../kubernetes/SKILL.md)-native-provisioning/SKILL.md)/SKILL.md) — Phase 6.
+- [platform-self-service-api-and-workflow-design](../../../common/other/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md), [crossplane-[kubernetes](../kubernetes/SKILL.md)-native-provisioning](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[crossplane-[kubernetes](../kubernetes/SKILL.md)-native-provisioning](../crossplane-[kubernetes](../kubernetes/SKILL.md)-native-provisioning/SKILL.md)/SKILL.md) — Phase 6.
 - [multi-tenancy-and-team-workspace-design-for-idp](../[multi-tenancy-and-team-workspace-design-for-idp](../../../Software_Engineering_and_Other/Miscellaneous/[multi-tenancy](../multi-tenancy/SKILL.md)-and-team-workspace-design-for-idp/SKILL.md)/SKILL.md) — Phase 7.
-- [service-scorecards-and-maturity-model-design](../[service-scorecards-and-maturity-model-design](../../../Product_and_Business/service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md) — Phase 8.
-- [idp-adoption-rollout-and-[change-management](../../../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy](../../../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy](../../../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md), [platform-engineering-team-topology-and-operating-model](../[platform-engineering-team-topology-and-operating-model](../../../Product_and_Business/[platform-engineering](../../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md), [developer-experience-measurement-and-platform-adoption](../[developer-experience-measurement-and-platform-adoption](../../../Software_Engineering_and_Other/Miscellaneous/[developer-experience](../../../Product_and_Business/developer-experience/SKILL.md)-measurement-and-platform-adoption/SKILL.md)/SKILL.md) — Phase 9.
+- [service-scorecards-and-maturity-model-design](../../../common/other/service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md) — Phase 8.
+- [idp-adoption-rollout-and-[change-management](../../../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy](../../../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy](../../../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md), [platform-engineering-team-topology-and-operating-model](../[platform-engineering-team-topology-and-operating-model](../../../Product_and_Business/[platform-engineering](../../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md), [developer-experience-measurement-and-platform-adoption](../../../../Product_and_Business/ops-and-hiring/developer-experience/SKILL.md)-measurement-and-platform-adoption/SKILL.md)/SKILL.md) — Phase 9.
 - [complete-idp-deployment-on-aws-from-scratch](../[complete-idp-deployment-on-aws-from-scratch](../complete-idp-deployment-on-aws-from-scratch/SKILL.md)/SKILL.md) — the cloud-committed alternative, worth reading to understand exactly what this variant trades away.

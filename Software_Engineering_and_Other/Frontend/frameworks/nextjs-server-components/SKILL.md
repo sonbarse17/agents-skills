@@ -15,8 +15,8 @@ depends_on:
 - **Client Components:** Render on both client and server. Use only for interactivity.
 - **Streaming:** Progressively render UI to the client, reducing Time To First Byte (TTFB).
 
-## [Mermaid](../../../../Product_and_Business/mermaid/SKILL.md) Diagram
-```[mermaid](../../../../Product_and_Business/mermaid/SKILL.md)
+## [Mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md) Diagram
+```[mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[Request] --> B[Next.js Server]

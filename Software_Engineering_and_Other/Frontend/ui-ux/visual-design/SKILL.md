@@ -605,5 +605,5 @@ Dark mode requires independent color tokens, not simple inversion:
   - references/visual-design-color-system.md — Color System Reference
   - references/visual-design-dark-mode.md — Dark Mode Design Reference
 ## Handoff
-Hand off to `design-[design-systems](../design-systems/SKILL.md)` for token implementation. Hand off to `[design-brand-identity](../../../../Product_and_Business/brand-identity/SKILL.md)` for brand consistency. Hand off to `design-accessibility` for WCAG compliance [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md).
+Hand off to `design-[design-systems](../design-systems/SKILL.md)` for token implementation. Hand off to `[design-brand-identity](../../../../Product_and_Business/design-and-ux/brand-identity/SKILL.md)` for brand consistency. Hand off to `design-accessibility` for WCAG compliance [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md).
 

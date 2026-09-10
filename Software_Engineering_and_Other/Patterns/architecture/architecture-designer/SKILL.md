@@ -89,14 +89,14 @@ Load detailed guidance based on context:
 
 When designing architecture, provide:
 1. Requirements summary (functional + non-functional)
-2. High-level architecture diagram ([Mermaid](../../../../Product_and_Business/mermaid/SKILL.md) preferred — see example below)
+2. High-level architecture diagram ([Mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md) preferred — see example below)
 3. Key decisions with trade-offs (ADR format — see example below)
 4. Technology recommendations with rationale
 5. Risks and mitigation strategies
 
-### Architecture Diagram ([Mermaid](../../../../Product_and_Business/mermaid/SKILL.md))
+### Architecture Diagram ([Mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md))
 
-```[mermaid](../../../../Product_and_Business/mermaid/SKILL.md)
+```[mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md)
 graph TD
     Client["Client (Web/Mobile)"] --> Gateway["API Gateway"]
     Gateway --> AuthSvc["Auth Service"]

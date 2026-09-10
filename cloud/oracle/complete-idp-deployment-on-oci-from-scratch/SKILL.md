@@ -139,7 +139,7 @@ membership rather than a per-ServiceAccount annotation, a golden-path
 template here should scaffold the IAM policy statement request as a
 reviewable artifact, not assume it self-provisions). Tier by complexity.
 See
-[golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../../../Product_and_Business/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md).
+[golden-path-template-design-for-developer-platforms](../../../containers-orchestration/common/other/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md).
 
 **Phase 5 — Validate the golden path end-to-end.** Run the Phase 4
 template through a pipeline that scaffolds a real instance, builds,
@@ -160,7 +160,7 @@ a Resource Principal scoped to the requesting team's compartment, and
 drafting (never auto-applying without review) the corresponding IAM
 policy statement scoping a Dynamic Group to that exact resource — is
 unique to this phase; the approval-gate pattern is generic. See
-[platform-self-service-api-and-workflow-design](../[platform-self-service-api-and-workflow-design](../../../Product_and_Business/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md).
+[platform-self-service-api-and-workflow-design](../../../containers-orchestration/common/other/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md).
 
 **Phase 7 — Scorecards.** Define checks including OCI-specific ones: is
 the service's identity Dynamic-Group/Resource-Principal-based rather than
@@ -168,7 +168,7 @@ a long-lived API signing key embedded anywhere, does the database instance
 have automated backups enabled, does Cloud Guard report no open findings
 for the service's compartment, is the compartment tagged per the Phase 1
 tagging policy. See
-[service-scorecards-and-maturity-model-design](../[service-scorecards-and-maturity-model-design](../../../Product_and_Business/service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md).
+[service-scorecards-and-maturity-model-design](../../../containers-orchestration/common/other/service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md).
 
 **Phase 8 — [Multi-tenancy](../../../containers-orchestration/common/other/multi-tenancy/SKILL.md).** If more than one team shares the Phase 2
 cluster, decide namespace-per-team vs. compartment-per-team (OCI's
@@ -186,7 +186,7 @@ with SPACE/DX Core 4 metrics. See
 [idp-adoption-rollout-and-[change-management](../../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy](../../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy](../../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md),
 [platform-engineering-team-topology-and-operating-model](../[platform-engineering-team-topology-and-operating-model](../../../Product_and_Business/[platform-engineering](../../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md),
 and
-[developer-experience-measurement-and-platform-adoption](../[developer-experience-measurement-and-platform-adoption](../../../Software_Engineering_and_Other/Miscellaneous/[developer-experience](../../../Product_and_Business/developer-experience/SKILL.md)-measurement-and-platform-adoption/SKILL.md)/SKILL.md).
+[developer-experience-measurement-and-platform-adoption](../../../Product_and_Business/ops-and-hiring/developer-experience/SKILL.md)-measurement-and-platform-adoption/SKILL.md)/SKILL.md).
 
 ## Best practices
 
@@ -298,10 +298,10 @@ one quarter.
 - [managed-[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-eks-aks-gke](../../Containers_and_Orchestration/managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md) — Phase 2 conceptual analog only (this repo has no dedicated OKE skill).
 - [helm-chart-authoring](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[helm-chart-authoring](../../../containers-orchestration/helm/charts/helm-chart-authoring/SKILL.md)/SKILL.md) — Phase 3 chart packaging.
 - [backstage-plugin-development](../[backstage-plugin-development](../../../Software_Engineering_and_Other/Backend/backstage-plugin-development/SKILL.md)/SKILL.md) — Phase 3 custom backend/frontend logic.
-- [golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../../../Product_and_Business/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md) — Phase 4.
+- [golden-path-template-design-for-developer-platforms](../../../containers-orchestration/common/other/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md) — Phase 4.
 - [golden-path-template-validation-and-testing](../[golden-path-template-validation-and-testing](../../CI_CD/golden-path-template-validation-and-testing/SKILL.md)/SKILL.md) — Phase 5.
-- [platform-self-service-api-and-workflow-design](../[platform-self-service-api-and-workflow-design](../../../Product_and_Business/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md) — Phase 6.
-- [service-scorecards-and-maturity-model-design](../[service-scorecards-and-maturity-model-design](../../../Product_and_Business/service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md) — Phase 7.
+- [platform-self-service-api-and-workflow-design](../../../containers-orchestration/common/other/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md) — Phase 6.
+- [service-scorecards-and-maturity-model-design](../../../containers-orchestration/common/other/service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md) — Phase 7.
 - [multi-tenancy-and-team-workspace-design-for-idp](../[multi-tenancy-and-team-workspace-design-for-idp](../../../Software_Engineering_and_Other/Miscellaneous/[multi-tenancy](../../Containers_and_Orchestration/multi-tenancy/SKILL.md)-and-team-workspace-design-for-idp/SKILL.md)/SKILL.md) — Phase 8.
-- [idp-adoption-rollout-and-[change-management](../../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy](../../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy](../../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md), [platform-engineering-team-topology-and-operating-model](../[platform-engineering-team-topology-and-operating-model](../../../Product_and_Business/[platform-engineering](../../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md), [developer-experience-measurement-and-platform-adoption](../[developer-experience-measurement-and-platform-adoption](../../../Software_Engineering_and_Other/Miscellaneous/[developer-experience](../../../Product_and_Business/developer-experience/SKILL.md)-measurement-and-platform-adoption/SKILL.md)/SKILL.md) — Phase 9.
+- [idp-adoption-rollout-and-[change-management](../../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy](../../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy](../../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md), [platform-engineering-team-topology-and-operating-model](../[platform-engineering-team-topology-and-operating-model](../../../Product_and_Business/[platform-engineering](../../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md), [developer-experience-measurement-and-platform-adoption](../../../Product_and_Business/ops-and-hiring/developer-experience/SKILL.md)-measurement-and-platform-adoption/SKILL.md)/SKILL.md) — Phase 9.
 - [complete-idp-deployment-on-aws-from-scratch](../[complete-idp-deployment-on-aws-from-scratch](../../Containers_and_Orchestration/complete-idp-deployment-on-aws-from-scratch/SKILL.md)/SKILL.md) — the same shape on AWS, a useful comparison for the identity-model differences (IRSA vs. Dynamic Groups) called out above.

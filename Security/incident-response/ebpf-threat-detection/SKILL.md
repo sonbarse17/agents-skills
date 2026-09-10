@@ -50,7 +50,7 @@ Tetragon (by Isovalent/Cilium) leverages advanced eBPF capabilities for both dee
 
 ## Architecture Mapping
 
-```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
+```[mermaid](../../../Product_and_Business/content-and-docs/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     UserSpace[User Space Application] -->|"1. Executes Syscall (e.g., execve)"| KernelSyscall[Kernel Syscall Interface]

@@ -33,7 +33,7 @@ class CounterText extends ConsumerWidget {
 - Use `RepaintBoundary` to isolate widgets that paint frequently (e.g., animations).
 - Minimize the use of heavy widgets like `Opacity` and `ClipRRect` when simpler alternatives exist.
 
-```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
+```[mermaid](../../../Product_and_Business/content-and-docs/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[Build Method Triggered] --> B{Is Widget Const?}

@@ -682,5 +682,5 @@ On release candidate: all tags (comprehensive)
   - references/step-definition-guide.md — Step Definition Implementation Guide
   - references/bdd-ci-pipeline.md — BDD CI Pipeline Setup
 ## Handoff
-`[create-story](../../../../Product_and_Business/create-story/SKILL.md)` for converting discovered stories into backlog items. `[create-tech-spec](../../../../Product_and_Business/create-tech-spec/SKILL.md)` for implementation details from step definitions. `[create-prd](../../../../Product_and_Business/create-prd/SKILL.md)` for aligning feature files with product requirements.
+`[create-story](../../../../Product_and_Business/planning-and-tracking/create-story/SKILL.md)` for converting discovered stories into backlog items. `[create-tech-spec](../../../../Product_and_Business/product-management/create-tech-spec/SKILL.md)` for implementation details from step definitions. `[create-prd](../../../../Product_and_Business/product-management/create-prd/SKILL.md)` for aligning feature files with product requirements.
 

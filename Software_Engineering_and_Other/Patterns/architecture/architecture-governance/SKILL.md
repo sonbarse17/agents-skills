@@ -361,7 +361,7 @@ Practice 6: Publish governance metrics transparently. Share ARB decisions, excep
 - Governance tracking: Jira with architecture workflows, Notion, custom ADR database
 - Documentation: Confluence, Backstage, Hugo/static site for architecture catalog
 - Fitness functions: ArchUnit (Java), NetArchTest (.NET), custom linters
-- Diagramming: Draw.io, Lucidchart, [Mermaid](../../../../Product_and_Business/mermaid/SKILL.md), PlantUML
+- Diagramming: Draw.io, Lucidchart, [Mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md), PlantUML
 
 ### Exception Register Template
 ```

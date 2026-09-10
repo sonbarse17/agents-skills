@@ -186,7 +186,7 @@ docs/
 - {stack-specific rule 3}
 
 ## Handoff
-- project-init → [create-brief](../../../../Product_and_Business/create-brief/SKILL.md) (defines what gets built)
+- project-init → [create-brief](../../../../Product_and_Business/content-and-docs/create-brief/SKILL.md) (defines what gets built)
 ```
 
 ## Rules
@@ -599,6 +599,6 @@ git add . && git [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)
 
 ## Handoff
 Output: Scaffolded project at {path}
-Next skill: [create-brief](../../../../Product_and_Business/create-brief/SKILL.md) - to define what gets built.
+Next skill: [create-brief](../../../../Product_and_Business/content-and-docs/create-brief/SKILL.md) - to define what gets built.
 Carry forward: project path, stack, framework.
 

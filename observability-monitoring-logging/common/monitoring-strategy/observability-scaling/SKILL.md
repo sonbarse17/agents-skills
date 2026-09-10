@@ -17,7 +17,7 @@ Prometheus utilizes a custom Time Series Database (TSDB) optimized for fast inge
 - **Compaction**: Persistent blocks (default 2h) are compacted logarithmically into larger blocks (e.g., 2h -> 8h -> 32h) to reduce index overhead and improve query performance.
 - **Index Structure**: Inverted index mapping label matchers to series IDs.
 
-```[mermaid](../../../../Product_and_Business/mermaid/SKILL.md)
+```[mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md)
 flowchart TD
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
     subgraph TSDBPrometheusTSDB ["Prometheus TSDB<br><br><br>"]

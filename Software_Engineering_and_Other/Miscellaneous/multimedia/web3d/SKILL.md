@@ -15,8 +15,8 @@ depends_on:
 - **Renderer:** The engine that draws the scene onto a HTML `<canvas>`.
 - **Optimization:** Frustum culling, instance rendering, and geometry simplification.
 
-## [Mermaid](../../../../Product_and_Business/mermaid/SKILL.md) Diagram
-```[mermaid](../../../../Product_and_Business/mermaid/SKILL.md)
+## [Mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md) Diagram
+```[mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 graph TD
     A[Three.js App] --> B[Scene]

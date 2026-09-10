@@ -33,7 +33,7 @@ Code you can't observe is code you can't operate. [Observability](../observabili
 **NOT for:**
 - Diagnosing a failure happening right now — use the `[debugging-and-error-recovery](../../../../Software_Engineering_and_Other/Patterns/debugging/debugging-and-error-recovery/SKILL.md)` skill ([observability](../observability/SKILL.md) is what makes that skill fast next time)
 - [Profiling](../../../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md) and optimizing measured slowness — use the `[performance-optimization](../../../../Software_Engineering_and_Other/Backend/patterns/performance-optimization/SKILL.md)` skill
-- Launch-day [monitoring](../../monitoring-strategy/monitoring/SKILL.md) checklists and rollback triggers — see the `[shipping-and-launch](../../../../Product_and_Business/shipping-and-launch/SKILL.md)` skill; this skill covers the instrumentation that feeds them
+- Launch-day [monitoring](../../monitoring-strategy/monitoring/SKILL.md) checklists and rollback triggers — see the `[shipping-and-launch](../../../../Product_and_Business/ops-and-hiring/shipping-and-launch/SKILL.md)` skill; this skill covers the instrumentation that feeds them
 
 ## Process
 

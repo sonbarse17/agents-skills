@@ -128,7 +128,7 @@ several tiers assume. Keep its opinionated defaults genuinely minimal
 (Dockerfile, a single CI workflow, catalog registration) and defer
 anything elaborate until a second template is actually justified by real
 demand. See
-[golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../../../Product_and_Business/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md),
+[golden-path-template-design-for-developer-platforms](../../../common/other/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md),
 reading its tiering guidance as "here is the option to add tiers later,"
 not a mandate to start with them.
 
@@ -148,7 +148,7 @@ unless there's a genuine reason for it at this scale (e.g., real budget
 exposure). Still make whatever gate exists an explicit, auditable step
 rather than an informal Slack message, and still keep policy rules
 external and reviewable even if there's only one rule. See
-[platform-self-service-api-and-workflow-design](../[platform-self-service-api-and-workflow-design](../../../Product_and_Business/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md),
+[platform-self-service-api-and-workflow-design](../../../common/other/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md),
 applying its state-machine pattern at reduced scope rather than skipping
 it — "minimal governance" is not the same as "no governance."
 
@@ -158,7 +158,7 @@ health endpoint, is registered in the catalog) rather than the full
 production-readiness/security/on-call rubric the cloud variants build —
 a scorecard with more categories than the team has bandwidth to act on
 just becomes another unread dashboard. See
-[service-scorecards-and-maturity-model-design](../[service-scorecards-and-maturity-model-design](../../../Product_and_Business/service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md).
+[service-scorecards-and-maturity-model-design](../../../common/other/service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md).
 
 **Phase 7 — Operate at the "thinnest viable platform" size, deliberately,
 not by accident.** A K3s-scale platform "team" is often one person
@@ -275,9 +275,9 @@ nodes.
 - [lightweight-[kubernetes](../kubernetes/SKILL.md)-k3s](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[lightweight-[kubernetes](../kubernetes/SKILL.md)-k3s](../../Containers_and_Orchestration/lightweight-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-k3s/SKILL.md)/SKILL.md) — Phase 1.
 - [no-code-idp-[service-catalog](../../../common/other/service-catalog/SKILL.md)-tools-port-cortex-opslevel](../[no-code-idp-[service-catalog](../../Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel](../../Observability_and_SecOps/no-code-idp-[service-catalog](../../Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel/SKILL.md)/SKILL.md) — Phase 2 no-code path.
 - [helm-chart-authoring](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[helm-chart-authoring](../../../helm/charts/helm-chart-authoring/SKILL.md)/SKILL.md), [backstage-plugin-development](../[backstage-plugin-development](../../../Software_Engineering_and_Other/Backend/backstage-plugin-development/SKILL.md)/SKILL.md) — Phase 2 self-hosted path.
-- [golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../../../Product_and_Business/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md) — Phase 3.
+- [golden-path-template-design-for-developer-platforms](../../../common/other/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md) — Phase 3.
 - [golden-path-template-validation-and-testing](../[golden-path-template-validation-and-testing](../golden-path-template-validation-and-testing/SKILL.md)/SKILL.md) — Phase 4.
-- [platform-self-service-api-and-workflow-design](../[platform-self-service-api-and-workflow-design](../../../Product_and_Business/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md) — Phase 5.
-- [service-scorecards-and-maturity-model-design](../[service-scorecards-and-maturity-model-design](../../../Product_and_Business/service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md) — Phase 6.
+- [platform-self-service-api-and-workflow-design](../../../common/other/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md) — Phase 5.
+- [service-scorecards-and-maturity-model-design](../../../common/other/service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md) — Phase 6.
 - [platform-engineering-team-topology-and-operating-model](../[platform-engineering-team-topology-and-operating-model](../../../Product_and_Business/[platform-engineering](../../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md), [idp-adoption-rollout-and-[change-management](../../../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy](../../../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy](../../../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md) — Phase 7.
 - [complete-idp-deployment-on-prem-from-scratch](../[complete-idp-deployment-on-prem-from-scratch](../../Cloud_Providers/complete-idp-deployment-on-prem-from-scratch/SKILL.md)/SKILL.md) — the heavier self-hosted variant to graduate to once the team and workload outgrow K3s-scale.

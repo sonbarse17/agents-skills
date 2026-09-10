@@ -32,7 +32,7 @@ Proactive threat hunting transcends automated [alerting](../../../observability-
 ## Log Analysis Ontology
 Conceptual log analysis demands parsing unstructured security events into actionable structured data. It involves correlating disparate timestamped entries across disparate systems (e.g., EDR, NDR, IAM) to reconstruct temporal attack vectors.
 
-```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
+```[mermaid](../../../Product_and_Business/content-and-docs/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[Telemetry Sources] --> B[Log Aggregation]

@@ -186,5 +186,5 @@ Interface contracts drifted: the implementer who owns the API changed a signatur
 
 ## Related Skills
 
-- [team-composition-patterns](../[team-composition-patterns](../agent-teams/skills/[team-composition-patterns](../../../Product_and_Business/team-composition-patterns/SKILL.md)/SKILL.md)/SKILL.md) — Choose the right team size and agent types before decomposing work
-- [team-communication-protocols](../[team-communication-protocols](../agent-teams/skills/[team-communication-protocols](../../../Product_and_Business/team-communication-protocols/SKILL.md)/SKILL.md)/SKILL.md) — Coordinate integration handoffs and plan approvals between implementers
+- [team-composition-patterns](../../../../Product_and_Business/planning-and-tracking/team-composition-patterns/SKILL.md)/SKILL.md)/SKILL.md) — Choose the right team size and agent types before decomposing work
+- [team-communication-protocols](../../../../Product_and_Business/planning-and-tracking/team-communication-protocols/SKILL.md)/SKILL.md)/SKILL.md) — Coordinate integration handoffs and plan approvals between implementers

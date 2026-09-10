@@ -17,12 +17,12 @@ depends_on:
 
 ## Architecture
 
-```[mermaid](../../../../Product_and_Business/mermaid/SKILL.md)
+```[mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[Analyze Completed Work] --> B{Determine Key Artifacts}
     B -->|Code Changes| C[Generate Diff Blocks]
-    B -->|Architecture/Flows| D[Create [Mermaid](../../../../Product_and_Business/mermaid/SKILL.md) Diagrams]
+    B -->|Architecture/Flows| D[Create [Mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md) Diagrams]
     B -->|Visual Sequences| E[Construct Carousels]
     C --> F[Assemble Walkthrough]
     D --> F
@@ -39,7 +39,7 @@ flowchart TD
    > Critical insights or architectural decisions.
    > [!TIP]
    > Optimization highlights.
-3. **[Mermaid](../../../../Product_and_Business/mermaid/SKILL.md) Diagrams**: Visualize complexity. Never explain what can be mapped.
+3. **[Mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md) Diagrams**: Visualize complexity. Never explain what can be mapped.
 4. **Carousels**: Group sequential or related visual data (code snippets, before/after states) using four backticks and `carousel` identifier. Split slides with `<!-- slide -->`.
 5. **Diff Blocks**: Highlight structural modifications explicitly.
    ```diff

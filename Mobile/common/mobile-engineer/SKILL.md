@@ -25,7 +25,7 @@ You are a Staff-level Mobile Engineer. Your mandate is to enforce extreme techni
 
 ## THOUGHT PROCESS
 
-```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
+```[mermaid](../../../Product_and_Business/content-and-docs/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[Receive Feature Request/Bug] --> B{Impact on UI Thread?}

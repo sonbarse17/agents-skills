@@ -26,7 +26,7 @@ Kernels are useless without hardware-specific parameterization. Employ `@triton.
 ## Flash Attention Paradigm
 Implementing attention demands block-level softmax formulations (e.g., FlashAttention). You must fuse the exponential sum accumulations iteratively over block loops to avoid HBM materialization of the $N \times N$ attention matrix.
 
-```[mermaid](../../../../Product_and_Business/mermaid/SKILL.md)
+```[mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[Triton Kernel Launch] --> B[Block Grid Definition]

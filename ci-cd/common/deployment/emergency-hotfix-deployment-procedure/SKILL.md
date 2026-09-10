@@ -156,7 +156,7 @@ improvised one.
    suite and any skipped checks against the merged result, and make sure
    the next scheduled release includes (or doesn't conflict with) the
    hotfix. See
-   [release-versioning-and-changelog-automation](../[release-versioning-and-changelog-automation](../../Observability_and_SecOps/release-versioning-and-[changelog-automation](../../../Product_and_Business/changelog-automation/SKILL.md)/SKILL.md)/SKILL.md)
+   [release-versioning-and-changelog-automation](../../other/changelog-automation/SKILL.md)/SKILL.md)/SKILL.md)
    for tagging the hotfix into the version history correctly rather than
    letting it silently diverge.
 
@@ -284,6 +284,6 @@ scheduled release is four days away.
 - [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../../Software_Engineering_and_Other/Frontend/[incident-response](../../Observability_and_SecOps/[incident](../../Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../../observability-monitoring-logging/common/alerting/on-call-management/SKILL.md)/SKILL.md)/SKILL.md) —
   severity definitions and the [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-commander authority this
   procedure depends on for who can invoke and approve it.
-- [release-versioning-and-changelog-automation](../[release-versioning-and-changelog-automation](../../Observability_and_SecOps/release-versioning-and-[changelog-automation](../../../Product_and_Business/changelog-automation/SKILL.md)/SKILL.md)/SKILL.md) —
+- [release-versioning-and-changelog-automation](../../other/changelog-automation/SKILL.md)/SKILL.md)/SKILL.md) —
   how to tag and reconcile the hotfix back into the normal version
   history so it isn't lost or silently diverged from.

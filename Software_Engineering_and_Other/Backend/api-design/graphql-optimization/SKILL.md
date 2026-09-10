@@ -17,7 +17,7 @@ Without optimization, fetching a list of items and their nested relations result
 Dataloader batches and caches requests to the database.
 
 ## Diagram
-```[mermaid](../../../../Product_and_Business/mermaid/SKILL.md)
+```[mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 graph TD
     A[Resolvers] -->|Individual Requests| B(Dataloader)

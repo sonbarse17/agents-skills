@@ -34,7 +34,7 @@ The score $\nabla_x \log p_t(x)$ acts as an attractive force vector, pulling the
 
 ## III. The Thermodynamic Cycle of Synthesis
 
-```[mermaid](../../Product_and_Business/mermaid/SKILL.md)
+```[mermaid](../../Product_and_Business/content-and-docs/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[Structured Data x_0: Low Entropy State]

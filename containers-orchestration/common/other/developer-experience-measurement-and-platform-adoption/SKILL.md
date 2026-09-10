@@ -31,7 +31,7 @@ A platform team without a measurement system defaults to measuring what's
 easiest to count — catalog entity count, portal logins, number of
 templates published — none of which tell you whether developers are
 actually more productive, or even whether they're using the platform
-voluntarily versus because they were told to. Real [developer-experience](../../../../Product_and_Business/developer-experience/SKILL.md)
+voluntarily versus because they were told to. Real [developer-experience](../../../../Product_and_Business/ops-and-hiring/developer-experience/SKILL.md)
 (DX) measurement combines **perception** (how developers actually feel
 about their workflow, which only a survey can capture) with **telemetry**
 (what actually happened — deploy frequency, lead time, self-service
@@ -47,7 +47,7 @@ actually working.
 
 ## When to use
 
-- Standing up [developer-experience](../../../../Product_and_Business/developer-experience/SKILL.md) measurement for a platform team that
+- Standing up [developer-experience](../../../../Product_and_Business/ops-and-hiring/developer-experience/SKILL.md) measurement for a platform team that
   currently has no metrics, or only has raw usage counts (logins, page
   views, catalog entities) with no outcome signal behind them.
 - A leadership request to "prove the platform team's impact" or justify

@@ -18,7 +18,7 @@ depends_on:
 - **Whisper**: Process audio locally or via API for high-accuracy transcription to complement visual tasks.
 
 ## Multimodal Workflow
-```[mermaid](../../../../Product_and_Business/mermaid/SKILL.md)
+```[mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 graph TD
     A[User Audio] --> B(Whisper)

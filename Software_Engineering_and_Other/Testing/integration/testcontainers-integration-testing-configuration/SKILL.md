@@ -199,7 +199,7 @@ a Testcontainers suite that works fine on a developer's laptop.
    `testcontainers.reuse.enable=true` in `~/.testcontainers.properties`)
    goes further, keeping the same container running *across separate
    test-runner invocations* on a developer's machine for fast local
-   iteration — this specific setting is a local [developer-experience](../../../../Product_and_Business/developer-experience/SKILL.md)
+   iteration — this specific setting is a local [developer-experience](../../../../Product_and_Business/ops-and-hiring/developer-experience/SKILL.md)
    optimization and should not be relied on for CI correctness, since a
    CI runner is typically a fresh environment every run.
 
@@ -292,7 +292,7 @@ a Testcontainers suite that works fine on a developer's laptop.
   before assuming a suite that works locally will behave identically —
   this is the single most common source of "works on my machine, fails
   in CI" for Testcontainers-based suites.
-- Reserve `withReuse(true)` for local [developer-experience](../../../../Product_and_Business/developer-experience/SKILL.md) speedups, not
+- Reserve `withReuse(true)` for local [developer-experience](../../../../Product_and_Business/ops-and-hiring/developer-experience/SKILL.md) speedups, not
   as a correctness assumption in CI, where runners are typically fresh
   per run anyway.
 

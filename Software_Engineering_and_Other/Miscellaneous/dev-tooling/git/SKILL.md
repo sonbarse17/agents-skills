@@ -63,7 +63,7 @@ To optimize **Skill**, we enforce the following foundational rules:
 - **HMR (Hot Module Replacement)**: Injecting updated modules without full page reloads via WebSockets.
 
 ### System Architecture
-```[mermaid](../../../../Product_and_Business/mermaid/SKILL.md)
+```[mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 graph TD
     A[Developer] -->|git push| B(CI Pipeline)
@@ -124,7 +124,7 @@ To optimize **Skill**, we enforce the following foundational rules:
 - **Pre-[commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) Hooks**: Enforcing formatting and linting thresholds prior to Git staging.
 
 ### System Architecture
-```[mermaid](../../../../Product_and_Business/mermaid/SKILL.md)
+```[mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 graph TD
     A[Developer] -->|git push| B(CI Pipeline)
@@ -184,7 +184,7 @@ To optimize **Skill**, we enforce the following foundational rules:
 - **HMR (Hot Module Replacement)**: Injecting updated modules without full page reloads via WebSockets.
 
 ### System Architecture
-```[mermaid](../../../../Product_and_Business/mermaid/SKILL.md)
+```[mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 graph TD
     A[Developer] -->|git push| B(CI Pipeline)

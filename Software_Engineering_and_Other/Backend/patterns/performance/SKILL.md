@@ -15,8 +15,8 @@ depends_on:
 - **INP (Interaction to Next Paint) / FID:** Measures interactivity and responsiveness (target < 200ms).
 - **CLS (Cumulative Layout Shift):** Measures visual stability (target < 0.1).
 
-## [Mermaid](../../../../Product_and_Business/mermaid/SKILL.md) Diagram
-```[mermaid](../../../../Product_and_Business/mermaid/SKILL.md)
+## [Mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md) Diagram
+```[mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     A[Performance Optimization] --> B[Improve LCP]

@@ -49,7 +49,7 @@ Instead of storing the current state of an entity, Event Sourcing stores a purel
 
 ## 4. Architectural Diagram
 
-```[mermaid](../../../../../Product_and_Business/mermaid/SKILL.md)
+```[mermaid](../../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     Client[Client Application] --> API[API Gateway]

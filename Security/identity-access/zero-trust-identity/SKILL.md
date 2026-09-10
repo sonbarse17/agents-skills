@@ -46,7 +46,7 @@ SAML relies on XML and SOAP/HTTP POST bindings. It is heavily utilized in legacy
 
 ## Architecture Mapping
 
-```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
+```[mermaid](../../../Product_and_Business/content-and-docs/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     User([User Agent]) -->|1. Request Access| RP[Relying Party / Client]

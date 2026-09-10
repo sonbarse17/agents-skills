@@ -68,7 +68,7 @@ To optimize **Skill**, we enforce the following foundational rules:
 
 ### System Architecture
 
-```[mermaid](../../../../Product_and_Business/mermaid/SKILL.md)
+```[mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 sequenceDiagram
     participant Client
@@ -149,7 +149,7 @@ To optimize **Skill**, we enforce the following foundational rules:
 
 ### System Architecture
 
-```[mermaid](../../../../Product_and_Business/mermaid/SKILL.md)
+```[mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 sequenceDiagram
     participant Client
@@ -224,7 +224,7 @@ To optimize **Skill**, we enforce the following foundational rules:
 
 ### System Architecture
 
-```[mermaid](../../../../Product_and_Business/mermaid/SKILL.md)
+```[mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 sequenceDiagram
     participant Client

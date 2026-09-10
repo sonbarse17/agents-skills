@@ -55,7 +55,7 @@ is already in place and does not repeat it.
 - An internal API or service needs a first-class UI inside the developer
   portal instead of a link out to a separate tool.
 - A self-service workflow (see
-  [platform-self-service-api-and-workflow-design](../[platform-self-service-api-and-workflow-design](../../../Product_and_Business/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md))
+  [platform-self-service-api-and-workflow-design](../platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md))
   needs both a backend to call and a frontend surface for developers to
   trigger and monitor it from within Backstage.
 - An existing community plugin is close but not quite right, and the team
@@ -401,5 +401,5 @@ code bolted onto `packages/app`/`packages/backend` directly.
 ## Cross-references
 
 - [backstage-developer-portal](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[backstage-developer-portal](../backstage-developer-portal/SKILL.md)/SKILL.md) — the baseline catalog/TechDocs/Software Template setup this plugin work is built on top of; read that first, it's not repeated here.
-- [platform-self-service-api-and-workflow-design](../[platform-self-service-api-and-workflow-design](../../../Product_and_Business/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md) — a common reason to write a custom plugin is to give a self-service provisioning workflow's API a first-class UI and Scaffolder action inside Backstage.
+- [platform-self-service-api-and-workflow-design](../platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md) — a common reason to write a custom plugin is to give a self-service provisioning workflow's API a first-class UI and Scaffolder action inside Backstage.
 - [platform-engineering-team-topology-and-operating-model](../[platform-engineering-team-topology-and-operating-model](../../../Product_and_Business/[platform-engineering](../../Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md) — who on the platform team owns building/maintaining plugins, and why plugin development should be run like product work for internal customers rather than a side project.

@@ -559,8 +559,8 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.superfences:
       custom_fences:
-        - name: [mermaid](../../../../Product_and_Business/mermaid/SKILL.md)
-          class: [mermaid](../../../../Product_and_Business/mermaid/SKILL.md)
+        - name: [mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md)
+          class: [mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md)
           format: !![python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/name:pymdownx.superfences.fence_code_format
 ```
 

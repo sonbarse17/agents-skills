@@ -603,5 +603,5 @@ Use data stores visible to multiple pools when participants share data. Define r
   - references/process-discovery-guide.md — Process Discovery Guide
   - references/bpmn-automation-patterns.md — BPMN to Automation Patterns
 ## Handoff
-`[create-tech-spec](../../../../Product_and_Business/create-tech-spec/SKILL.md)` for automation implementation specifications. `solution-architecture` for integration architecture design. `[create-story](../../../../Product_and_Business/create-story/SKILL.md)` for breaking automation into user stories.
+`[create-tech-spec](../../../../Product_and_Business/product-management/create-tech-spec/SKILL.md)` for automation implementation specifications. `solution-architecture` for integration architecture design. `[create-story](../../../../Product_and_Business/planning-and-tracking/create-story/SKILL.md)` for breaking automation into user stories.
 

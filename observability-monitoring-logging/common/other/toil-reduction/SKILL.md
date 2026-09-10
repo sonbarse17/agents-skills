@@ -107,7 +107,7 @@ root instead of automating your side of a request that shouldn't need a human on
 - **A golden path that lets requesters serve themselves** removes the toil entirely, not just the
   manual-execution part of it.
 
-See `[internal-developer-platform](../../../../Product_and_Business/internal-developer-platform/SKILL.md)` and `[golden-paths](../../../../Product_and_Business/golden-paths/SKILL.md)` for building that self-service path once
+See `[internal-developer-platform](../../../../containers-orchestration/common/other/internal-developer-platform/SKILL.md)` and `[golden-paths](../../../../containers-orchestration/common/other/golden-paths/SKILL.md)` for building that self-service path once
 you've identified the recurring request.
 
 **Done when:** every recurring cross-team request has been evaluated for self-service, not just

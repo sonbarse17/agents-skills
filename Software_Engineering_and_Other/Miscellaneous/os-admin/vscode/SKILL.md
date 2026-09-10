@@ -63,7 +63,7 @@ To optimize **Skill**, we enforce the following foundational rules:
 - **CI/CD Pipelines**: Automating testing and deployment using [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions or GitLab CI.
 
 ### System Architecture
-```[mermaid](../../../../Product_and_Business/mermaid/SKILL.md)
+```[mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 graph TD
     A[Developer] -->|git push| B(CI Pipeline)
@@ -125,7 +125,7 @@ To optimize **Skill**, we enforce the following foundational rules:
 - **AST Parsing**: Utilizing Abstract Syntax Trees to semantically analyze code structure.
 
 ### System Architecture
-```[mermaid](../../../../Product_and_Business/mermaid/SKILL.md)
+```[mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 graph TD
     A[Developer] -->|git push| B(CI Pipeline)
@@ -182,7 +182,7 @@ To optimize **Skill**, we enforce the following foundational rules:
 - **AST Parsing**: Utilizing Abstract Syntax Trees to semantically analyze code structure.
 
 ### System Architecture
-```[mermaid](../../../../Product_and_Business/mermaid/SKILL.md)
+```[mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 graph TD
     A[Developer] -->|git push| B(CI Pipeline)

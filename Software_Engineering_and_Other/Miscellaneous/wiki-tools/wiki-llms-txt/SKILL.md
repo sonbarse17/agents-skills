@@ -101,7 +101,7 @@ Same structure as `llms.txt` but with full content inlined:
 ### Inlining Rules
 
 - **Strip YAML frontmatter** (`---` blocks) from each page
-- **Preserve [Mermaid](../../../../Product_and_Business/mermaid/SKILL.md) diagrams** — keep `` ```[mermaid](../../../../Product_and_Business/mermaid/SKILL.md) `` fences intact
+- **Preserve [Mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md) diagrams** — keep `` ```[mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md) `` fences intact
 - **Preserve citations** — all `[file:line](URL)` links stay as-is
 - **Preserve tables** — all markdown tables stay intact
 - **Preserve `<!-- Sources: -->` comments** — these provide diagram provenance

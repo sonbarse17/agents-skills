@@ -21,7 +21,7 @@ A qubit is a two-level quantum system defined in a complex vector space $\mathbb
 - **Hadamard ($H$)**: Maps $|0\rangle$ and $|1\rangle$ to mutually unbiased superposition states $(|0\rangle \pm |1\rangle)/\sqrt{2}$. Crucial for initiating phase interference.
 - **CNOT**: The fundamental two-qubit entangling gate. Flips the target qubit conditionally based on the control qubit's state.
 
-```[mermaid](../../../../Product_and_Business/mermaid/SKILL.md)
+```[mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     Q[Qubit State in Bloch Sphere] --> U[Apply Unitary Gate]
