@@ -33,7 +33,8 @@ Building, running, and evaluating AI/LLM systems.
 ### 📦 `Software_Engineering_and_Other/` (492 skills)
 General software development skills, frameworks, and patterns.
 * **Backend/** — frameworks (Django, FastAPI, Laravel, Rails, Spring Boot...), API design, data access, auth, payments.
-* **Frontend/** — frameworks (React, Vue, Angular, Next.js...), UI/UX, state management, build tooling.
+* **Frontend/** — frameworks (React, Vue, Angular, Next.js...), UI/UX, state management, build tooling, architecture, performance.
+* **Desktop/** — native and hybrid desktop app frameworks (WPF, UWP, Qt, GTK, AppKit, SwiftUI, Electron, Tauri, .NET MAUI).
 * **Languages/** — Python, JS/TS, Go, Rust, JVM, systems languages, shell.
 * **Databases/** — relational, NoSQL, graph, analytical, caching, messaging.
 * **Testing/** — unit, integration, e2e, contract, acceptance, regression.
