@@ -39,7 +39,7 @@ provisioned at 2 a.m. by a script nobody remembers writing. The
 provisioning **API/workflow layer** — whether it's a Backstage Scaffolder
 custom action, calls against Humanitec's API, or a bespoke internal REST/
 gRPC API — is where guardrails either get built in from day one or get
-bolted on later as an [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) retrospective action item. This skill
+bolted on later as an [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) retrospective action item. This skill
 covers designing that layer so policy checks, budget/cost limits, and
 approval steps are structural parts of the request's execution path, not
 optional UI decoration a determined developer (or a bug) can route around.
@@ -58,7 +58,7 @@ optional UI decoration a determined developer (or a bug) can route around.
 - A security or FinOps stakeholder asks "how do we know self-service
   requests aren't bypassing review" or "how do we cap the cost blast
   radius of a self-service action."
-- An [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) retrospective finds an oversized/insecure resource was
+- An [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) retrospective finds an oversized/insecure resource was
   provisioned through the self-service tool with no record of who
   approved it, and the platform needs a structural fix, not a policy memo.
 - Adding a manual-approval or budget-limit step to an existing self-service
@@ -211,7 +211,7 @@ optional UI decoration a determined developer (or a bug) can route around.
    }
    ```
    Keeping policy external means a budget or security team can tighten a
-   rule (e.g. add a new denied instance class after a cost [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md))
+   rule (e.g. add a new denied instance class after a cost [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md))
    through a reviewed PR to the policy bundle, without needing a platform
    engineer to touch or redeploy the Scaffolder action code.
 
@@ -296,7 +296,7 @@ optional UI decoration a determined developer (or a bug) can route around.
   deploy.
 - Persist request state transitions with who/when for every step
   (requested, policy-checked, approved-by, provisioned) — this is the
-  [audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail a security review or [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) retrospective will need, and
+  [audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail a security review or [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) retrospective will need, and
   retrofitting it after the fact from application logs is far more work
   than building it in from the state-machine design in step 1.
 - Reject self-approval structurally (the approver-role check in step 4),
@@ -441,7 +441,7 @@ risk.
 
 ## Cross-references
 
-- [no-code-idp-[service-catalog](../../DevOps_and_Cloud/Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel](../[no-code-idp-[service-catalog](../../DevOps_and_Cloud/Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel](../../DevOps_and_Cloud/Observability_and_SecOps/no-code-idp-[service-catalog](../../DevOps_and_Cloud/Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel/SKILL.md)/SKILL.md) — Port's self-service Action model and its `reportWorkflowStatus` pattern are a SaaS-hosted equivalent of the Backstage/custom-API workflow designed here.
+- [no-code-idp-[service-catalog](../../containers-orchestration/common/other/service-catalog/SKILL.md)-tools-port-cortex-opslevel](../[no-code-idp-[service-catalog](../../DevOps_and_Cloud/Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel](../../DevOps_and_Cloud/Observability_and_SecOps/no-code-idp-[service-catalog](../../DevOps_and_Cloud/Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel/SKILL.md)/SKILL.md) — Port's self-service Action model and its `reportWorkflowStatus` pattern are a SaaS-hosted equivalent of the Backstage/custom-API workflow designed here.
 - [humanitec-score-workload-specification](../[humanitec-score-workload-specification](../../Software_Engineering_and_Other/Miscellaneous/humanitec-score-workload-specification/SKILL.md)/SKILL.md) — the workload-spec side of a self-service request when the provisioning target is a Humanitec Application/Environment rather than a standalone resource.
 - [humanitec-score-configuration-validation](../[humanitec-score-configuration-validation](../../DevOps_and_Cloud/CI_CD/humanitec-score-configuration-validation/SKILL.md)/SKILL.md) — the dry-run/policy validation this skill's policy-check step should call before a Humanitec-backed self-service request proceeds to approval.
 - [golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md) — the Scaffolder template surrounding the self-service action here is itself a golden path; that skill covers the template's broader defaults and escape hatches beyond the provisioning action alone.

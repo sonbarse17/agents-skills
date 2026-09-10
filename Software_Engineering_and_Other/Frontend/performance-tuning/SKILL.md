@@ -109,7 +109,7 @@ the most familiar code.
 
 A change that helps one hand-run request can regress under concurrency — lock contention,
 connection pool limits, and GC pauses only appear under real traffic shape. Confirm the win with
-`[load-testing](../../../DevOps_and_Cloud/Observability_and_SecOps/load-testing/SKILL.md)` at production-like concurrency before calling it done.
+`[load-testing](../../../observability-monitoring-logging/common/capacity-monitoring/load-testing/SKILL.md)` at production-like concurrency before calling it done.
 
 - **Re-run the exact baseline scenario**, same load level and duration, not a friendlier one.
 - **Check for new bottlenecks introduced by the fix** — a bigger cache can trade latency for

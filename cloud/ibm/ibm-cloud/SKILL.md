@@ -64,14 +64,14 @@ Terraform HCL or ibmcloud CLI commands. No preamble.
 - [ ] Object Storage instance with buckets and HMAC keys.
 - [ ] IAM access groups and service IDs with policies.
 - [ ] Direct Link or Transit Gateway configured.
-- [ ] [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) with IBM Cloud [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) (Sysdig).
+- [ ] [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) with IBM Cloud [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (Sysdig).
 - [ ] Automation with Schematics workspaces.
 
 ### Max Response Length
 400 lines.
 
 ## Quick Start
-Create VPC with public/private subnets → Deploy IKS cluster with 3 worker nodes → Provision COS bucket with HMAC → Set up IAM access groups → Configure Direct Link for hybrid connectivity → Enable [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and Logging.
+Create VPC with public/private subnets → Deploy IKS cluster with 3 worker nodes → Provision COS bucket with HMAC → Set up IAM access groups → Configure Direct Link for hybrid connectivity → Enable [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and Logging.
 
 ## Decision Tree: IBM Cloud Compute Options
 | Option | Use Case | Management |
@@ -346,10 +346,10 @@ resource "ibm_dl_gateway" "dl" {
 }
 ```
 
-### Step 9: IBM Cloud [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and Logging
+### Step 9: IBM Cloud [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and Logging
 ```hcl
 resource "ibm_resource_instance" "cloud_monitor" {
-  name              = "[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-prod"
+  name              = "[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-prod"
   service           = "sysdig-monitor"
   plan              = "graduated-tier"
   location          = var.region
@@ -449,7 +449,7 @@ resource "ibm_en_destination" "pagerduty" {
 - `devops-terraform` for Terraform state and module patterns for IBM Cloud.
 - `devops-[hybrid-cloud](../../common/other/hybrid-cloud/SKILL.md)` for connectivity between IBM Cloud and on-prem/other clouds.
 - `devops-[backup-dr](../../../Software_Engineering_and_Other/Frontend/backup-dr/SKILL.md)` for backup strategies using IBM Cloud services.
-- `devops-[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)` for [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and logging integration with IBM Cloud.
+- `devops-[observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)` for [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and logging integration with IBM Cloud.
 
 ## Architecture Decision Trees
 
@@ -631,7 +631,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
+### [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -666,7 +666,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing ([OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -700,6 +700,6 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - Fail securely — errors default to safe behavior.
 - Log security-relevant events for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) from day one, not as an afterthought.
+- Design for [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

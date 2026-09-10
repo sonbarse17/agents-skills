@@ -28,7 +28,7 @@ depends_on:
 
 ## Purpose
 
-A sudden cost or latency spike in one agent workflow is an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), not an
+A sudden cost or latency spike in one agent workflow is an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), not an
 optimization project — the goal in the first hours is to scope it,
 identify what changed, and stop the bleeding, not to redesign the pipeline.
 [llm-cost-and-latency-optimization](../[llm-cost-and-latency-optimization](../../Models_and_FineTuning/llm-cost-and-latency-optimization/SKILL.md)/SKILL.md)
@@ -38,7 +38,7 @@ the narrower, time-pressured question that comes first: *why did this one
 workflow suddenly get more expensive or slower than it was yesterday*, and
 what's the fastest safe action to take. Confusing the two wastes the
 window where a quick rollback would have worked and instead launches a
-multi-day optimization effort under [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) pressure.
+multi-day optimization effort under [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) pressure.
 
 ## When to use
 
@@ -108,7 +108,7 @@ multi-day optimization effort under [incident](../../../DevOps_and_Cloud/Observa
 3. **Apply the decision tree once the shape of the change is visible:**
    - **Volume up, per-request metrics flat** → legitimate traffic growth,
      not a regression; this is a [capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)/budget conversation, not an
-     [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+     [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
    - **Volume flat, tokens-per-request up** → likely context bloat
      (uncontrolled history growth, duplicated retrieved chunks) or a
      prompt/tool-description change — see
@@ -158,7 +158,7 @@ multi-day optimization effort under [incident](../../../DevOps_and_Cloud/Observa
 
    > **Warning:** A stopgap fix applied directly to production without a
    > tested rollback path (e.g. hand-editing a live prompt or routing
-   > config with no previous version saved) risks replacing one [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
+   > config with no previous version saved) risks replacing one [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
    > with another. Roll back to the last known-good, versioned
    > configuration rather than improvising a new one under pressure — see
    > [agent-evaluation-and-guardrails](../[agent-evaluation-and-guardrails](../../Models_and_FineTuning/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md)
@@ -170,7 +170,7 @@ multi-day optimization effort under [incident](../../../DevOps_and_Cloud/Observa
    spike — e.g. "we've never right-sized the model for this step"), that
    becomes a scheduled task for
    [llm-cost-and-latency-optimization](../[llm-cost-and-latency-optimization](../../Models_and_FineTuning/llm-cost-and-latency-optimization/SKILL.md)/SKILL.md),
-   not something to solve inside this [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+   not something to solve inside this [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 
 9. **Add a per-workflow cost/latency regression alert** (not just an
    aggregate account-level billing alert) so the next spike in this
@@ -180,11 +180,11 @@ multi-day optimization effort under [incident](../../../DevOps_and_Cloud/Observa
 
 ## Best practices
 
-- Segment cost and latency [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) by workflow/task type from the
+- Segment cost and latency [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) by workflow/task type from the
   start; an aggregate-only dashboard dilutes a severe single-workflow
   spike into an unremarkable overall trend.
 - Prefer a clean rollback to the last known-good configuration over a
-  forward fix improvised during the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) — validate any forward fix
+  forward fix improvised during the [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) — validate any forward fix
   against the eval suite before it replaces the rollback as the permanent
   solution.
 - Always check the four signals (volume, tokens, tool-call count, latency)
@@ -196,9 +196,9 @@ multi-day optimization effort under [incident](../../../DevOps_and_Cloud/Observa
   strong evidence but a confirmed transcript is proof.
 - Keep a running timeline of prompt/tool/model/index changes with
   timestamps as a standing artifact, not something reconstructed from
-  memory during each [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+  memory during each [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 - Distinguish "legitimate traffic growth" from "regression" early and
-  explicitly — treating growth as an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) wastes urgency budget, and
+  explicitly — treating growth as an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) wastes urgency budget, and
   treating a regression as growth delays the fix.
 
 ## Common pitfalls
@@ -226,8 +226,8 @@ multi-day optimization effort under [incident](../../../DevOps_and_Cloud/Observa
   minor overall uptick, masking a severe spike in one specific low-volume
   but now much more expensive workflow.
   **Fix:** Segment cost and latency metrics by workflow/task type as a
-  standing practice, not only when an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) is already suspected —
-  aggregate-only [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) structurally cannot catch this class of spike
+  standing practice, not only when an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) is already suspected —
+  aggregate-only [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) structurally cannot catch this class of spike
   early.
 
 - **Symptom:** A quick prompt or routing-config edit is pushed directly to
@@ -253,7 +253,7 @@ jumps from roughly $0.04 to $0.31 overnight, with total request volume
 essentially unchanged; the on-call engineer is asked to investigate before
 anyone commits to a redesign.
 
-1. **Scope:** Cost [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) for two other agents sharing the same model
+1. **Scope:** Cost [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) for two other agents sharing the same model
    provider show no change — confirmed isolated to `contract-summarizer`,
    ruling out a provider-wide event.
 2. **Signal table:**

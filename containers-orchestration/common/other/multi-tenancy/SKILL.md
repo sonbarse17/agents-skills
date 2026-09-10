@@ -53,8 +53,8 @@ assumption that justifies it, not left implicit.
 ## 2. Give every tenant a ResourceQuota before their first workload
 
 Without a ResourceQuota, one tenant's runaway Deployment can consume all schedulable [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) on
-shared nodes, starving every other tenant — this is the single most common multi-tenancy [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
-and it's entirely preventable with a quota set at namespace creation, not after the first [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+shared nodes, starving every other tenant — this is the single most common multi-tenancy [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
+and it's entirely preventable with a quota set at namespace creation, not after the first [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 
 ```yaml
 apiVersion: v1
@@ -85,7 +85,7 @@ first workload is deployed into it.
 tenant's pods by IP or Service DNS regardless of namespace boundaries. This is the same
 default-deny pattern covered in `[kubernetes-networking](../[kubernetes](../kubernetes/SKILL.md)-networking/SKILL.md)`, applied specifically per-tenant: each
 tenant namespace gets a default-deny policy plus explicit allows only for its own traffic and
-whatever shared platform services (ingress controller, DNS, [observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) agents) it legitimately
+whatever shared platform services (ingress controller, DNS, [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) agents) it legitimately
 needs.
 
 - **Default-deny cross-namespace by default**, then allow only named exceptions — never the

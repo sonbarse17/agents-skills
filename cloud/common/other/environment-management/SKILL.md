@@ -26,7 +26,7 @@ depends_on:
 different topology, different config format, a manually patched box nobody touched since it was
 built. Staging's entire job is to be a trustworthy predictor of what will happen in prod. Every
 divergence between them is a bug in that predictor, whether or not anyone notices it before the
-next [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+next [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 
 The only differences that should exist between environments are the ones you'd defend out loud:
 scale, non-critical data, cost. Everything else — topology, versions, how config is structured —
@@ -43,7 +43,7 @@ pressure and never backports it. One codebase, one set of modules, environment-s
 `.tfvars` or equivalent values files is the only structure that makes divergence visible in a
 diff instead of invisible until it breaks something.
 
-See `[terraform-modules](../../../../DevOps_and_Cloud/Infrastructure_as_Code/terraform-modules/SKILL.md)` for the module-interface side of this and `[infrastructure-as-code](../../../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md)` for
+See `[terraform-modules](../../../../infrastructure-as-code/terraform/modules/terraform-modules/SKILL.md)` for the module-interface side of this and `[infrastructure-as-code](../../../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md)` for
 the state-isolation side — each environment still needs its own state file even though it shares
 code.
 

@@ -157,7 +157,7 @@ When implementing Spark solutions, provide:
 2. Configuration recommendations (executors, memory, shuffle partitions)
 3. Partitioning strategy explanation
 4. Performance analysis (expected shuffle size, memory usage)
-5. [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) recommendations (key Spark UI metrics to watch)
+5. [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) recommendations (key Spark UI metrics to watch)
 
 ## Knowledge Reference
 

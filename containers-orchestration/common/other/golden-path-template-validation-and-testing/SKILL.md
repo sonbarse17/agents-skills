@@ -200,7 +200,7 @@ shipped as a tested option.
    `metadata.name`/version tag, route a small subset of new-service
    requests (or a designated pilot team) to it first, and only flip the
    default once it has both passed this pipeline and produced at least
-   one real, developer-scaffolded service without [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md):
+   one real, developer-scaffolded service without [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md):
    ```yaml
    metadata:
      name: golden-path-service-standard
@@ -222,7 +222,7 @@ shipped as a tested option.
   upstream base image, runtime version, or dependency it pulls in drifts,
   and the first sign shouldn't be a developer's failed scaffold.
 - Name every artifact this pipeline creates with a clearly identifiable,
-  greppable prefix (`template-ci-*`) so cleanup, [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), and [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
+  greppable prefix (`template-ci-*`) so cleanup, [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), and [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
   triage can all distinguish real services from validation runs at a
   glance.
 - Make teardown unconditional (`if: always()`), not just a happy-path step

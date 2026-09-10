@@ -460,7 +460,7 @@ jobs:
   - references/dev-container-features.md — Dev Container Features Reference
   - references/dev-container-multi-service.md — Multi-Service Dev Container Reference
 ## Handoff
-Hand off to `dev-loop-[git-workflow](../../../ci-cd/common/git-workflow/git-workflow/SKILL.md)` for Git credential configuration. Hand off to `[dev-loop-security-auditor](../../../DevOps_and_Cloud/Observability_and_SecOps/security-auditor/SKILL.md)` for container security.
+Hand off to `dev-loop-[git-workflow](../../../ci-cd/common/git-workflow/git-workflow/SKILL.md)` for Git credential configuration. Hand off to `[dev-loop-security-auditor](../../../Security/security-auditor/SKILL.md)` for container security.
 
 ## Architecture Decision Trees
 
@@ -524,7 +524,7 @@ CMD ["node", "dist/server.js"]
 
 ### Reliability
 - **Health checks**: Add HEALTHCHECK to Dockerfile. Configure restart policies in compose.
-- **Resource limits**: Set CPU and memory limits per container. Use [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) stats for [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
+- **Resource limits**: Set CPU and memory limits per container. Use [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) stats for [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
 - **Persistence**: Use named volumes for databases. Bind mounts for configuration.
 
 ## Anti-Patterns

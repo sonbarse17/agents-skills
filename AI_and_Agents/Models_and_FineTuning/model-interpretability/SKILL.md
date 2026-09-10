@@ -312,7 +312,7 @@ def validate_explanation(model, X, explanation_fn, top_k=5):
 
 ## Production Considerations
 
-### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+### [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - Track top-5 feature importance stability over time.
 - Monitor SHAP value distribution per feature.
 - Check explanation consistency for similar inputs.

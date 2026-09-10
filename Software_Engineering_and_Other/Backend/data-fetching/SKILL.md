@@ -419,7 +419,7 @@ Does the data need to update in real-time?
 ## Tooling
 
 1. `@tanstack/react-query-devtools` — visual cache inspector, query toggle, data explorer.
-2. `@[sentry](../../../DevOps_and_Cloud/Observability_and_SecOps/sentry/SKILL.md)` integration — capture query failures as breadcrumbs.
+2. `@[sentry](../../../observability-monitoring-logging/sentry/other/sentry/SKILL.md)` integration — capture query failures as breadcrumbs.
 3. React Query ESLint plugin — enforce query key naming conventions.
 4. `@tanstack/query-sync-storage-persister` — persist cache to localStorage/AsyncStorage.
 5. `@tanstack/query-broadcast-client-experimental` — sync cache across tabs.
@@ -503,7 +503,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
+### [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -538,7 +538,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing ([OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 

@@ -69,7 +69,7 @@ depends_on:
 | `mcp_azure_mcp_get_azure_bestpractices` | Get Azure best practices for the target service |
 | `mcp_azure_mcp_documentation` | Look up Azure documentation for upgrade scenarios |
 | `mcp_azure_mcp_appservice` | Query App Service and Functions plan details |
-| `mcp_azure_mcp_applicationinsights` | Verify [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) configuration |
+| `mcp_azure_mcp_applicationinsights` | Verify [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) configuration |
 
 ## Steps
 
@@ -77,7 +77,7 @@ depends_on:
 2. **Assess** — Analyze existing app for upgrade readiness → load scenario reference (e.g., [consumption-to-flex.md](references/services/functions/consumption-to-flex.md))
 3. **Pre-migrate** — Collect settings, identities, configs from the existing app
 4. **Upgrade** — Execute the automated upgrade steps (create new resources, migrate settings, deploy code)
-5. **Validate** — Hit the function app default URL to confirm the app is reachable, then verify endpoints and [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+5. **Validate** — Hit the function app default URL to confirm the app is reachable, then verify endpoints and [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 6. **Ask User** — "Upgrade complete. Would you like to verify performance, clean up the old app, or update your IaC?"
 7. **Hand off** to `[azure-validate](../azure-skills/skills/[azure-validate](../azure-validate/SKILL.md)/SKILL.md)` for deep validation or `[azure-deploy](../azure-skills/skills/[azure-deploy](../../Infrastructure_as_Code/azure-deploy/SKILL.md)/SKILL.md)` for CI/CD setup
 

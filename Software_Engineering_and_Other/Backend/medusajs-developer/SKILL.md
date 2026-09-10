@@ -225,7 +225,7 @@ export const config = {
 2. Create necessary data models
 3. Implement workflow orchestration
 4. Add event handlers for state changes
-5. Create [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
+5. Create [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 6. Document workflow behavior
 
 ## Troubleshooting

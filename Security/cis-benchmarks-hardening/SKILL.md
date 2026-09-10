@@ -222,7 +222,7 @@ attestation still comes from a separate [audit](../../AI_and_Agents/Operations/a
   **Fix:** Use a reviewed, version-controlled waiver file with
   justification, compensating control, approver, and expiry date per
   excluded check — not an undocumented scanner flag. An auditor (or a
-  future [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) responder) needs to be able to answer "was this
+  future [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) responder) needs to be able to answer "was this
   intentional and reviewed" without archaeology.
 - **Symptom:** A benchmark remediation (e.g. disabling anonymous kubelet
   auth, tightening a [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) daemon flag) is applied directly to production

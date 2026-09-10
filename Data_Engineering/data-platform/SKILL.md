@@ -455,16 +455,16 @@ Service accounts for cross-component auth (Spark → S3, Trino → Hive Metastor
 ### Data Encryption
 Encryption at rest: SSE-S3/KMS for object stores, envelope encryption for sensitive columns. Encryption in transit: TLS 1.3 for all component communication. Key management: KMS (AWS KMS, GCP Cloud KMS, Azure Key [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)). Bring Your Own Key (BYOK) for compliance.
 
-## Platform [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+## Platform [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
-### Infrastructure [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+### Infrastructure [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 Object store: request rates, error rates (4xx/5xx), latency p99, data transfer. Compute: CPU/memory/disk utilization, query concurrency, queue depth, job duration. Networking: bandwidth, connection counts, TLS handshake failures.
 
-### Data Pipeline [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+### Data Pipeline [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 Pipeline health: success rate, duration, rows processed. Data quality: row count anomalies, freshness lag, schema changes. Cost tracking: storage costs (per bucket), compute costs (per job/query), data transfer costs.
 
-### [Observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) Stack
-Metrics: Prometheus + Grafana [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md). Logs: ELK/Loki + structured logging. Tracing: [OpenTelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) for pipeline traces. Alerts: Alertmanager with PagerDuty/Slack integration.
+### [Observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) Stack
+Metrics: Prometheus + Grafana [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md). Logs: ELK/Loki + structured logging. Tracing: [OpenTelemetry](../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) for pipeline traces. Alerts: Alertmanager with PagerDuty/Slack integration.
 
 ## Rules
 - Open table formats are mandatory for data lakes — no raw Parquet.
@@ -559,7 +559,7 @@ stack:
     default_format: iceberg
   tools:
     - dbt (transformations)
-    - superset ([dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md))
+    - superset ([dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md))
     - datahub (catalog)
   access:
     users: [team-marketing]
@@ -570,8 +570,8 @@ stack:
 
 - **Cost governance**: Tag all resources with cost center, domain, and environment; alert on cost anomalies.
 - **[Multi-tenancy](../../containers-orchestration/common/other/multi-tenancy/SKILL.md)**: Isolate compute resources per domain using virtual clusters (Trino resource groups, Spark pools).
-- **Provisioning automation**: [Infrastructure-as-code](../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md) (Terraform) for all platform components; self-serve via API.
-- **[Observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)**: Centralized logging (ELK), metrics (Prometheus/Grafana), and tracing ([OpenTelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)) across platform.
+- **Provisioning automation**: [Infrastructure-as-code](../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) (Terraform) for all platform components; self-serve via API.
+- **[Observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)**: Centralized logging (ELK), metrics (Prometheus/Grafana), and tracing ([OpenTelemetry](../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)) across platform.
 - **Backup & DR**: Cross-region replication for catalog metadata; daily backups of Hive Metastore/Nessie.
 - **Version upgrades**: Rolling upgrades for query engines; maintain compatibility matrix for dbt versions.
 

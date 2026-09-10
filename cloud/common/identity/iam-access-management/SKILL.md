@@ -22,7 +22,7 @@ depends_on:
 # IAM & Access Management
 
 Access accumulates and almost never gets removed on its own. Someone needs prod database access
-for one [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) and keeps it for two years; a service gets an admin role because scoping it
+for one [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) and keeps it for two years; a service gets an admin role because scoping it
 down "later" was never a priority. Every one of those grants is a standing liability whether or
 not it's ever misused, because it's one more credential an attacker can compromise and one more
 thing an auditor has to explain.

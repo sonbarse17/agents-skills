@@ -155,7 +155,7 @@ operations across them) — a design decision that must be made when
 choosing key naming conventions, not retrofitted later, since existing
 keys don't get hash tags added automatically.
 
-### 4. Reshard deliberately, with [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), never as a blind migration
+### 4. Reshard deliberately, with [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), never as a blind migration
 
 ```bash
 redis-cli --cluster reshard <any-node>:6379 \
@@ -321,12 +321,12 @@ often doesn't.
 **Scenario:** A session-store Redis deployment (currently a single
 primary + 1 replica with Sentinel) needs to move to a 3-shard Redis
 Cluster ahead of an expected 4x traffic increase, and persistence needs
-review since a prior [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) lost 30 minutes of session data on an
+review since a prior [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) lost 30 minutes of session data on an
 unplanned restart.
 
 1. Review current persistence: RDB-only, `save 3600 1` (hourly
    snapshot) — this is why 30 minutes of writes were lost on restart, a
-   30-minute window is far larger than the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)'s actual tolerance.
+   30-minute window is far larger than the [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)'s actual tolerance.
    Enable AOF alongside the existing RDB schedule:
    ```
    appendonly yes

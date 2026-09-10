@@ -246,7 +246,7 @@ with QueueClient(
 5. **Set appropriate visibility timeout** based on processing time
 6. **Handle `dequeue_count`** for poison message detection
 7. **Use async client** for high-throughput scenarios
-8. **Use `peek_messages`** for [monitoring](../../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) without affecting queue
+8. **Use `peek_messages`** for [monitoring](../../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) without affecting queue
 9. **Set `time_to_live`** to prevent stale messages
 10. **Consider Service Bus** for advanced features (sessions, topics)
 

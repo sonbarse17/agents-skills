@@ -140,13 +140,13 @@ dependencies:
   - name: common
     version: "2.x"
     repository: "file://../common"
-  - name: [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+  - name: [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
     version: "0.x"
     repository: "https://prometheus-community.[github](../../../../ci-cd/github-actions/other/github/SKILL.md).io/[helm-charts](../../charts/helm-charts/SKILL.md)"
     alias: prometheus
     import-values:
       - child: defaults
-        parent: [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+        parent: [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 ```
 
 ### Step 3: values.yaml (with documentation)

@@ -189,7 +189,7 @@ REINDEX TABLE users;
 - **LIKE with Leading Wildcard**: `LIKE '%abc'` can't use index
 - **Function in WHERE**: Prevents index usage unless functional index exists
 
-## [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) Queries
+## [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Queries
 
 ```sql
 -- Find slow queries ([PostgreSQL](../../Backend/postgresql/SKILL.md))

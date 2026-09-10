@@ -234,7 +234,7 @@ or how to document the resulting work in Confluence (see
   like five unrelated features should be split into an epic with
   sub-tickets, each independently closeable.
 - Prefer editing the ticket's fields (status, priority, fix version) for
-  state that other people/[dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) depend on; reserve free-text
+  state that other people/[dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) depend on; reserve free-text
   comments for narrative context (see the companion comments skill).
 - When creating tickets programmatically in bulk, dry-run against a
   single issue first and inspect the `201` response before looping —
@@ -284,7 +284,7 @@ or how to document the resulting work in Confluence (see
   them rather than letting them enter a sprint.
 
 - **Symptom:** A ticket is filed as a "Task" for what is actually a
-  regression, so it never shows up in defect/quality [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), and
+  regression, so it never shows up in defect/quality [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), and
   the team under-reports its real bug rate.
   **Fix:** Use the issue-type test in step 1 consistently, and correct
   misclassified tickets when spotted rather than leaving them for
@@ -373,5 +373,5 @@ epic:
   once the ticket exists, how to comment on it usefully and automate
   status/comment updates from CI/CD without creating noise.
 - [confluence-page-authoring-and-governance](../[confluence-page-authoring-and-governance](../../Software_Engineering_and_Other/Frontend/confluence-page-authoring-and-governance/SKILL.md)/SKILL.md) —
-  when a ticket's resolution needs a durable [runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md), design doc, or
+  when a ticket's resolution needs a durable [runbook](../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md), design doc, or
   postmortem rather than living only in a Jira description.

@@ -398,14 +398,14 @@ Platform team responsibilities:
 ### Facilitating Mode
 ```
 When: One team helps another build capability in a specific area
-Example: Enabling (SRE) team helps stream-aligned team adopt [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
+Example: Enabling (SRE) team helps stream-aligned team adopt [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
 Process:
   Week 1: Assessment — current state, gaps, skills [audit](../../AI_and_Agents/Operations/audit/SKILL.md)
   Week 2-3: Pairing — SRE pairs with dev team on implementing metrics
   Week 4: Guided — dev team implements independently, SRE reviews
   Week 5: Handoff — dev team owns, SRE available for questions
   Week 6: Graduation — SRE steps away, dev team fully enabled
-Outcome: Stream team can independently maintain [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
+Outcome: Stream team can independently maintain [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
 Exit criteria: Team passes capability assessment
 ```
 
@@ -534,7 +534,7 @@ For OKR alignment with team topology, hand off to [management-okr-kpi](../okr-kp
 
 ### Mode: Collaboration
 - Joint ceremony: Bi-weekly sync
-- Shared artifacts: Architecture decisions, [runbooks](../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md)
+- Shared artifacts: Architecture decisions, [runbooks](../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md)
 - Escalation: {escalation path}
 `
 
@@ -581,6 +581,6 @@ For OKR alignment with team topology, hand off to [management-okr-kpi](../okr-kp
 
 ### Cross-Team Security
 - **API security**: Teams secure their API endpoints independently. Central security team provides tooling and guidelines.
-- **[Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response**: Define team roles in [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response. Each team maintains its own [runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) for domain-specific incidents.
+- **[Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response**: Define team roles in [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response. Each team maintains its own [runbook](../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) for domain-specific incidents.
 - **Secure collaboration**: Use encrypted channels for cross-team security discussions. Limit distribution of vulnerability details to relevant teams.
 

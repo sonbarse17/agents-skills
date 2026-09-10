@@ -231,7 +231,7 @@ and focuses specifically on what's different about Linear's model.
    });
    ```
 
-8. **Sync Linear with an external system (Slack, [GitHub](../../ci-cd/github-actions/other/github/SKILL.md), an [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
+8. **Sync Linear with an external system (Slack, [GitHub](../../ci-cd/github-actions/other/github/SKILL.md), an [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
    tool) via Linear's native integrations before building a custom
    webhook sync** — Linear ships first-party integrations for the most
    common cases ([GitHub](../../ci-cd/github-actions/other/github/SKILL.md) PR status linking issue state automatically,
@@ -252,7 +252,7 @@ and focuses specifically on what's different about Linear's model.
 - Reserve Projects for genuinely cross-cycle, multi-person initiatives;
   don't wrap every small issue in a Project just because the feature
   exists.
-- Prefer Linear's native integrations ([GitHub](../../ci-cd/github-actions/other/github/SKILL.md), Slack, [Sentry](../../DevOps_and_Cloud/Observability_and_SecOps/sentry/SKILL.md), etc.)
+- Prefer Linear's native integrations ([GitHub](../../ci-cd/github-actions/other/github/SKILL.md), Slack, [Sentry](../../observability-monitoring-logging/sentry/other/sentry/SKILL.md), etc.)
   over building custom sync automation — they cover the overwhelming
   majority of real needs with far less ongoing maintenance.
 - When comparing to Jira for a new team, be concrete about the actual
@@ -309,7 +309,7 @@ and focuses specifically on what's different about Linear's model.
   external tool (built because "we needed something specific") breaks
   silently after a Linear API schema change, and issues stop updating.
   **Fix:** Check whether Linear's native integration for that tool
-  ([GitHub](../../ci-cd/github-actions/other/github/SKILL.md), Slack, [Sentry](../../DevOps_and_Cloud/Observability_and_SecOps/sentry/SKILL.md), and others) already covers the actual need
+  ([GitHub](../../ci-cd/github-actions/other/github/SKILL.md), Slack, [Sentry](../../observability-monitoring-logging/sentry/other/sentry/SKILL.md), and others) already covers the actual need
   before building custom sync automation (step 8) — a first-party
   integration is maintained against Linear's own API changes; a custom
   sync is not, and is an ongoing maintenance liability for a need that
@@ -379,8 +379,8 @@ to `Done` when it merges — no custom webhook sync required.
   whose needs (CAB approval, CMDB-linked routing) exceed what either
   Linear's or Jira's lighter-weight issue-tracking model is designed
   for.
-- [chatops-[runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)-automation](../[chatops-[runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)-automation](../../Software_Engineering_and_Other/Frontend/chatops-[runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)-automation/SKILL.md)/SKILL.md) —
+- [chatops-[runbook](../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)-automation](../[chatops-[runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)-automation](../../Software_Engineering_and_Other/Frontend/chatops-[runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)-automation/SKILL.md)/SKILL.md) —
   a comparable "keep the automation layer thin, delegate to the
   platform's native capability before building custom" principle,
-  applied to [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-channel bots rather than issue-tracker
+  applied to [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-channel bots rather than issue-tracker
   integrations.

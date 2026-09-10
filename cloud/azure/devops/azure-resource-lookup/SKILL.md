@@ -122,6 +122,6 @@ Use `--first N` to limit results. Use `--subscriptions` to scope.
 - ✅ **Always** use `=~` for case-insensitive type matching (types are lowercase)
 - ✅ **Always** scope queries with `--subscriptions` or `--first` for large tenants
 - ✅ **Prefer** dedicated MCP tools for single-resource-type queries
-- ❌ **Never** use ARG for real-time [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) (data has slight delay)
+- ❌ **Never** use ARG for real-time [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (data has slight delay)
 - ❌ **Never** attempt mutations through ARG (read-only)
 

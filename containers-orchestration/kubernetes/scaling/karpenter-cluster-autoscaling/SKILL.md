@@ -215,7 +215,7 @@ budgets and pod-level guardrails.
    ```
 
 6. **Verify consolidation and bin-packing behavior** with
-   `[kubectl](../../other/kubectl/SKILL.md) get nodeclaims` and node utilization [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) — Karpenter
+   `[kubectl](../../other/kubectl/SKILL.md) get nodeclaims` and node utilization [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) — Karpenter
    should be replacing multiple underutilized nodes with fewer,
    better-packed ones over time, not just scaling up on demand and never
    scaling down.
@@ -363,5 +363,5 @@ StatefulSet.
 ## Cross-references
 
 - [kubecost-cost-visibility](../[kubecost-cost-visibility](../../Cloud_Providers/kubecost-cost-visibility/SKILL.md)/SKILL.md)
-- [prometheus-and-grafana-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack](../prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
+- [prometheus-and-grafana-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack](../prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
 - [managed-[kubernetes](../../other/kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../../other/kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md)

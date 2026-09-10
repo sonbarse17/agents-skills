@@ -69,7 +69,7 @@ under pressure isn't the first time it's used at all.
 # 2. how long does rollback take, end to end, measured — not estimated?
 ```
 
-**Done when:** someone who did not write the deploy can execute the rollback from the [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)
+**Done when:** someone who did not write the deploy can execute the rollback from the [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)
 alone, and it has been timed at least once.
 
 ## 3. Separate deploy from release for anything risky

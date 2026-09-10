@@ -56,7 +56,7 @@ brew install tmux htop btop wget jq git neovim
 # [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) environment (for MLX and custom scripts)
 brew install [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)@3.12 uv
 
-# [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+# [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 brew install prometheus node_exporter
 ```
 
@@ -250,7 +250,7 @@ brew services start caddy
 brew install --cask [docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
 ```
 
-## [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+## [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 ```bash
 # Health check script

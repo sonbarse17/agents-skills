@@ -266,7 +266,7 @@ function TransferMonitor() {
       })
     },
   })
-  return <div>[Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) transfers...</div>
+  return <div>[Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) transfers...</div>
 }
 ```
 
@@ -479,7 +479,7 @@ function handleError(error: unknown) {
 11. EIP-712 typed data should include chain ID to prevent cross-chain replay
 12. WC v2 is required for mobile dApp compatibility (WC v1 deprecated)
 13. Use batch HTTP transport in viem for automatic request batching
-14. Transaction [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) should track block confirmations, not just mempool acceptance
+14. Transaction [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) should track block confirmations, not just mempool acceptance
 15. Gas estimation should include 10-20% buffer to prevent out-of-gas errors
 
 ## References
@@ -578,7 +578,7 @@ export function useTransaction() {
 ## Production Considerations
 
 - **RPC redundancy**: Configure multiple RPC endpoints per chain; fallback on rate limit or failure.
-- **Transaction [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: Track tx status via receipt polling; notify user on confirmation/failure.
+- **Transaction [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**: Track tx status via receipt polling; notify user on confirmation/failure.
 - **Gas estimation**: Use `estimateGas` with 20% buffer; handle out-of-gas errors with user notification.
 - **Error handling**: Categorize errors (user rejection, network, gas, contract revert) for user-friendly display.
 - **Wallet disconnection**: Handle account change, chain change, and disconnection events.

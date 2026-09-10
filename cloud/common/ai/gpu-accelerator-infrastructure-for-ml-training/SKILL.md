@@ -336,7 +336,7 @@ that infrastructure is covered by
 **Scenario:** A platform team has four A100-80GB nodes and needs to support
 both large fine-tuning jobs (need most of a GPU) and a fleet of small
 inference services (each needs ~10GB). They partition two nodes for
-training (full-card) and two for serving (MIG-sliced), with [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) to
+training (full-card) and two for serving (MIG-sliced), with [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) to
 catch idle [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md).
 
 Training node pool (full A100, no MIG):
@@ -415,7 +415,7 @@ spec:
             limits:
               nvidia.com/mig-1g.10gb: 1
 ```
-`DCGM_FI_DEV_GPU_UTIL` [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) per pool then show whether the training
+`DCGM_FI_DEV_GPU_UTIL` [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) per pool then show whether the training
 pool is actually compute-bound during runs and whether the 14 serving
 replicas are bin-packed at the expected 7-per-node density rather than
 spread thin across more nodes than needed.

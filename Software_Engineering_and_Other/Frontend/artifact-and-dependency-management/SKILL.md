@@ -132,7 +132,7 @@ trustworthy.
    the proxy's cached copy if your registry tool supports it, and re-run
    `npm ci`/equivalent to confirm the resolved tree no longer includes it.
    Because builds go through your proxy's cache, you are not silently
-   exposed to a package being deleted out from under you mid-[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) —
+   exposed to a package being deleted out from under you mid-[incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) —
    but you must still act if the version you already have cached is the
    bad one.
 
@@ -186,7 +186,7 @@ trustworthy.
   contract.
 - Record artifact provenance (which [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)/pipeline run produced a given
   artifact) as metadata/labels on the artifact itself, so retention
-  cleanup and [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response can trace an artifact back to its build —
+  cleanup and [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response can trace an artifact back to its build —
   this dovetails with build metadata practices in
   [ci-cd-pipeline-design](../[ci-cd-pipeline-design](../../../DevOps_and_Cloud/CI_CD/ci-cd-pipeline-design/SKILL.md)/SKILL.md).
 - Scan both first-party artifacts and third-party dependencies for known

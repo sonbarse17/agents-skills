@@ -32,7 +32,7 @@ When designing or reviewing systems, adhere strictly to this protocol:
 2. **Topology Definition**: Map the macro-architecture ([Microservices](../microservices/SKILL.md), Event Bus, Data Lakes, Shards).
 3. **Data Partitioning**: Define sharding strategies, partition keys, and replication topologies.
 4. **Failure Mode Analysis**: Systematically inject faults (Chaos Engineering mentality) and verify recovery paths.
-5. **[Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) Injection**: Ensure metrics, tracing, and logging are baked into the fundamental design.
+5. **[Observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) Injection**: Ensure metrics, tracing, and logging are baked into the fundamental design.
 
 ## 🗺️ Thought Process Map
 

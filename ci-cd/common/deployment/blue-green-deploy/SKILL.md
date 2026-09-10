@@ -442,7 +442,7 @@ DEPLOYMENT=$1
 THRESHOLD=0.95
 INTERVAL=60
 
-echo "[Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) deployment $DEPLOYMENT"
+echo "[Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) deployment $DEPLOYMENT"
 
 while true; do
   # Get success rate from Prometheus
@@ -477,7 +477,7 @@ done
 
 ### After Rollback
 - [ ] Confirm error rates normalized
-- [ ] Update [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) ticket
+- [ ] Update [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) ticket
 - [ ] Schedule post-mortem
 ```
 

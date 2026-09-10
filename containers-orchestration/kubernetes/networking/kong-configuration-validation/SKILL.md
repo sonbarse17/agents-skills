@@ -243,7 +243,7 @@ first place.
   client uses; confirm with a real `curl` test in staging rather than
   assuming attachment correctness implies behavioral correctness.
 
-- **Symptom:** To unblock testing during an [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), someone
+- **Symptom:** To unblock testing during an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), someone
   temporarily removes the `key-auth`/rate-limiting plugin from a
   production Route via a direct Admin API call, confirms traffic now
   flows, and it's still missing hours later.
@@ -253,7 +253,7 @@ first place.
   would silently restore it, but until then the Route has neither auth
   nor rate-limiting. Treat any direct Admin API change as strictly
   temporary and tracked, and re-run `deck diff`/`deck sync` from the
-  reviewed source immediately once the [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)'s real cause is found.
+  reviewed source immediately once the [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)'s real cause is found.
 
 ## Worked example
 

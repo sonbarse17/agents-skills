@@ -35,7 +35,7 @@ and this skill covers both because a team's choice between them changes
 almost everything downstream of the build step: **immutable image
 replacement** (bake a golden AMI with Packer, swap an Auto Scaling
 Group/instance group to it, blue-green) versus **mutable config push**
-(long-lived VMs stay running, and a config-management tool like [Ansible](../../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md)
+(long-lived VMs stay running, and a config-management tool like [Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md)
 pushes the new application version/config onto them in place). Neither
 looks like the [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) variant of this skill (no container image, no
 [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md) handoff) or the [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) variant (no zip/layer, no alias-based
@@ -50,9 +50,9 @@ instance group boots or running a playbook against a live fleet.
   equivalent) has no pipeline yet, and the team wants source-to-deployed
   wired up in one pass.
 - Deciding between immutable-image (Packer + blue-green ASG swap) and
-  mutable-config-push ([Ansible](../../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md) against existing VMs) for a given
+  mutable-config-push ([Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) against existing VMs) for a given
   workload's change frequency and risk tolerance.
-- An existing pipeline manually bakes AMIs or manually runs [Ansible](../../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md) by
+- An existing pipeline manually bakes AMIs or manually runs [Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) by
   hand, and the user wants both paths automated with security gates.
 - The user wants to understand exactly how VM-based build/deploy mechanics
   differ from a container/[Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) or [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) pipeline — the
@@ -200,7 +200,7 @@ template's image instead of an existing one.
 > does; rolling back means starting a *new* instance refresh pointed at
 > the previous launch template version.
 
-### Phase 5b — Deploy: [Ansible](../../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md) push to existing VMs (mutable path)
+### Phase 5b — Deploy: [Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) push to existing VMs (mutable path)
 
 ```yaml
 # deploy.yml
@@ -208,24 +208,24 @@ template's image instead of an existing one.
   serial: "25%"
   tasks:
     - name: Fetch new build artifact
-      [ansible](../../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md).builtin.unarchive:
+      [ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md).builtin.unarchive:
         src: "https://artifacts.internal.example.com/payments-api/{{ build_sha }}.tar.gz"
         dest: /opt/payments-api
         remote_src: true
     - name: Restart service
-      [ansible](../../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md).builtin.systemd:
+      [ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md).builtin.systemd:
         name: payments-api
         state: restarted
       register: restart_result
     - name: Health check
-      [ansible](../../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md).builtin.uri:
+      [ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md).builtin.uri:
         url: "http://localhost:8080/healthz"
         status_code: 200
       retries: 5
       delay: 3
 ```
 ```bash
-[ansible](../../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md)-playbook -i inventories/prod deploy.yml --extra-vars "build_sha=${GITHUB_SHA}"
+[ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md)-playbook -i inventories/prod deploy.yml --extra-vars "build_sha=${GITHUB_SHA}"
 ```
 `serial: "25%"` rolls the change out to a quarter of the fleet at a time —
 the config-push analog of a canary percentage, but implemented as batched
@@ -241,7 +241,7 @@ Immutable path: `aws [autoscaling](../../../../Software_Engineering_and_Other/Ba
 `Successful`, and the target group's healthy-host count matches the ASG's
 desired [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md). Mutable path: re-run the playbook's health-check task
 against the full inventory, or a separate smoke-test job, to confirm every
-batch converged, not just the last one [Ansible](../../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md) reported on.
+batch converged, not just the last one [Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) reported on.
 
 ## Best practices
 
@@ -250,17 +250,17 @@ batch converged, not just the last one [Ansible](../../../../DevOps_and_Cloud/In
   policy — a rarely-changing, security-sensitive fleet often benefits from
   immutable baking (every deployed instance is provably identical to what
   was scanned), while a fast-iterating internal tool may be better served
-  by [Ansible](../../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md) push (much faster cycle time, no image-build wait).
+  by [Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) push (much faster cycle time, no image-build wait).
 - For the immutable path, rescan and rebake the base image on a schedule
   even when application code hasn't changed — an AMI baked once and
   reused for months accumulates unpatched OS CVEs exactly like a stale
   container base image, per the equivalent guidance in
   [container-build-and-release](../../../devops/skills/[container-build-and-release](../../Containers_and_Orchestration/container-build-and-release/SKILL.md)/SKILL.md).
-- For the mutable path, always run `[ansible](../../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md)-playbook --check --diff`
+- For the mutable path, always run `[ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md)-playbook --check --diff`
   against a subset of the inventory before the real run, and keep
   `serial:` batching conservative enough that a bad playbook run doesn't
   reach the whole fleet before someone notices.
-- Tag every baked AMI and every [Ansible](../../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md)-pushed artifact with the exact
+- Tag every baked AMI and every [Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md)-pushed artifact with the exact
   [commit](../../git-workflow/commit/SKILL.md) SHA it came from, so a running VM's version is traceable back to
   the pipeline run that produced it, exactly as
   [container-build-and-release](../../../devops/skills/[container-build-and-release](../../Containers_and_Orchestration/container-build-and-release/SKILL.md)/SKILL.md)
@@ -283,14 +283,14 @@ batch converged, not just the last one [Ansible](../../../../DevOps_and_Cloud/In
   launch template version is the rollback path (there is no automatic
   revert).
 
-- **Symptom:** An [Ansible](../../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md) `deploy.yml` run against `serial: "100%"` (the
+- **Symptom:** An [Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) `deploy.yml` run against `serial: "100%"` (the
   whole fleet at once) fails partway through, leaving half the fleet on
   the new version and half on the old, with no clear record of which
   hosts got which.
   **Fix:** Use a conservative `serial:` batch size (e.g. `25%`) so a
-  failure is caught and can be halted (`[ansible](../../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md)-playbook` stops the play
+  failure is caught and can be halted (`[ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md)-playbook` stops the play
   on a batch's failure by default) before it reaches the rest of the
-  fleet, and query `[ansible](../../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md) -i inventories/prod payments_api_fleet -m
+  fleet, and query `[ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) -i inventories/prod payments_api_fleet -m
   shell -a "cat /opt/payments-api/VERSION"` afterward to get an explicit
   per-host version inventory rather than assuming uniformity.
 

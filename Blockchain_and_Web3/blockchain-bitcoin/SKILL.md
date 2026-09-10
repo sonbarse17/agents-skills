@@ -503,7 +503,7 @@ Types:
 - [ ] Enable txindex=1 for historical transaction lookup (archive node)
 - [ ] Configure rpcallowip for secure RPC access
 - [ ] Set maxconnections for bandwidth management
-- [ ] Enable zmqpubrawtx and zmqpubrawblock for real-time [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+- [ ] Enable zmqpubrawtx and zmqpubrawblock for real-time [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - [ ] Run on Ubuntu 22.04 LTS or Debian 12 for stability
 - [ ] Use SSD (NVMe) for blockchain data directory
 - [ ] Minimum 8GB RAM for full node, 16GB+ for mining node

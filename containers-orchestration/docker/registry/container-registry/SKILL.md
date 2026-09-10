@@ -43,7 +43,7 @@ myapp@sha256:abc123...  -> what actually got pulled, verifiable
 
 **Done when:** every running deployment can be traced to one specific, unchangeable image digest.
 
-## 2. Set a retention policy before storage becomes the [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
+## 2. Set a retention policy before storage becomes the [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
 
 Registries fill up silently — every CI run pushes a new tag, and without garbage collection the
 registry grows until a push fails mid-release. Define retention rules explicitly: keep all tags
@@ -83,7 +83,7 @@ the two should run as separate, complementary gates.
 ## 5. Replicate or cache for the regions that actually pull
 
 A single-region registry turns every pull from a distant cluster into a cross-region network
-dependency — slow at best, a hard outage dependency at worst if that region has an [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+dependency — slow at best, a hard outage dependency at worst if that region has an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 Use registry replication or a pull-through cache local to each region or cluster so pulls resolve
 against nearby storage. Verify replication lag explicitly; a replica that's behind by an hour can
 serve an older, potentially vulnerable image without anyone noticing.

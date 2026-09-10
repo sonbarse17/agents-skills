@@ -74,7 +74,7 @@ that structural and operating-model design.
   this skill assumes that vocabulary rather than re-deriving it.
 - An honest inventory of what stream-aligned teams currently have to do
   themselves that a platform could absorb — provisioning a new
-  environment, wiring CI from scratch, setting up [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) — as the
+  environment, wiring CI from scratch, setting up [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) — as the
   starting input for scoping the platform, not a list of technologies the
   platform team finds interesting.
 - Organizational willingness to treat the platform as having internal
@@ -110,7 +110,7 @@ that structural and operating-model design.
    scanning, one golden-path scaffolding tier, catalog registration.
    Explicitly out of scope (revisit only if demand is demonstrated):
    multi-cluster failover, a custom internal PaaS UI, cost-allocation
-   [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), a bespoke secrets-rotation service.
+   [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), a bespoke secrets-rotation service.
    ```
    This mirrors the golden-path tiering discipline in
    [golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md)
@@ -254,7 +254,7 @@ that structural and operating-model design.
   X-as-a-Service).
 
 - **Symptom:** A single platform team of 15 engineers owns catalog,
-  golden paths, infrastructure provisioning, [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) tooling, and
+  golden paths, infrastructure provisioning, [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) tooling, and
   the CI runner fleet, with no internal sub-boundaries — any given
   request's actual owner is unclear even to other engineers on the same
   team, and cross-cutting changes require coordinating the whole team.

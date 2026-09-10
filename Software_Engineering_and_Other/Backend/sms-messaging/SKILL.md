@@ -440,7 +440,7 @@ async function sendWhatsAppMessage(to: string, templateName: string, params: Rec
   - ../../../Global_References/compliance-analytics.md — Compliance and Analytics
   - ../../../Global_References/sms-messaging-advanced.md — Sms Messaging Advanced Topics
   - ../../../Global_References/sms-messaging-fundamentals.md — Sms Messaging Fundamentals
-  - ../../../Global_References/sms-messaging-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).md — SMS Messaging [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+  - ../../../Global_References/sms-messaging-[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — SMS Messaging [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
   - ../../../Global_References/sms-messaging-testing.md — SMS Messaging Testing
   - ../../../Global_References/sms-providers.md — SMS Providers
   - ../../../Global_References/whatsapp-api.md — WhatsApp API

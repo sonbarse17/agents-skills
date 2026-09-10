@@ -36,8 +36,8 @@ Task arrives
     │   ├── API work? ────────────────→ [api-and-interface-design](../../Backend/api-and-interface-design/SKILL.md)
     │   ├── Need better context? ─────→ [context-engineering](../../../AI_and_Agents/Workflows/context-engineering/SKILL.md)
     │   ├── Need doc-verified code? ───→ [source-driven-development](../../Frontend/source-driven-development/SKILL.md)
-    │   └── Stakes high / unfamiliar code? ──→ [doubt-driven-development](../../../DevOps_and_Cloud/Observability_and_SecOps/doubt-driven-development/SKILL.md)
-    ├── Writing/running tests? ────────→ [test-driven-development](../../../DevOps_and_Cloud/Observability_and_SecOps/test-driven-development/SKILL.md)
+    │   └── Stakes high / unfamiliar code? ──→ [doubt-driven-development](../../Patterns/doubt-driven-development/SKILL.md)
+    ├── Writing/running tests? ────────→ [test-driven-development](../../Patterns/test-driven-development/SKILL.md)
     │   └── Browser-based? ───────────→ [browser-testing-with-devtools](../../Frontend/browser-testing-with-devtools/SKILL.md)
     ├── Something broke? ──────────────→ [debugging-and-error-recovery](../../Patterns/debugging-and-error-recovery/SKILL.md)
     ├── Reviewing code? ───────────────→ [code-review-and-quality](../../Patterns/[code-review](../code-review/SKILL.md)-and-quality/SKILL.md)
@@ -144,7 +144,7 @@ These are the subtle errors that look like productivity but create problems:
 
 2. **Skills are workflows, not suggestions.** Follow the steps in order. Don't skip verification steps.
 
-3. **Multiple skills can apply.** A feature implementation might involve `[idea-refine](../../../Product_and_Business/idea-refine/SKILL.md)` → `[spec-driven-development](../../Frontend/spec-driven-development/SKILL.md)` → `[planning-and-task-breakdown](../../Frontend/planning-and-task-breakdown/SKILL.md)` → `[incremental-implementation](../../Patterns/incremental-implementation/SKILL.md)` → `[test-driven-development](../../../DevOps_and_Cloud/Observability_and_SecOps/test-driven-development/SKILL.md)` → `[code-review-and-quality](../../Patterns/[code-review](../code-review/SKILL.md)-and-quality/SKILL.md)` → `[code-simplification](../../Patterns/code-simplification/SKILL.md)` → `[shipping-and-launch](../../../Product_and_Business/shipping-and-launch/SKILL.md)` in sequence.
+3. **Multiple skills can apply.** A feature implementation might involve `[idea-refine](../../../Product_and_Business/idea-refine/SKILL.md)` → `[spec-driven-development](../../Frontend/spec-driven-development/SKILL.md)` → `[planning-and-task-breakdown](../../Frontend/planning-and-task-breakdown/SKILL.md)` → `[incremental-implementation](../../Patterns/incremental-implementation/SKILL.md)` → `[test-driven-development](../../Patterns/test-driven-development/SKILL.md)` → `[code-review-and-quality](../../Patterns/[code-review](../code-review/SKILL.md)-and-quality/SKILL.md)` → `[code-simplification](../../Patterns/code-simplification/SKILL.md)` → `[shipping-and-launch](../../../Product_and_Business/shipping-and-launch/SKILL.md)` in sequence.
 
 4. **When in doubt, start with a spec.** If the task is non-trivial and there's no spec, begin with `[spec-driven-development](../../Frontend/spec-driven-development/SKILL.md)`.
 
@@ -161,8 +161,8 @@ For a complete feature, the typical skill sequence is:
 6.  [source-driven-development](../../Frontend/source-driven-development/SKILL.md)   → Verify against official docs
 7.  [incremental-implementation](../../Patterns/incremental-implementation/SKILL.md)  → Build slice by slice
 8.  [observability-and-instrumentation](../../../DevOps_and_Cloud/Observability_and_SecOps/[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-instrumentation/SKILL.md) → Instrument as you build (runs parallel with 7-9, not after)
-9.  [doubt-driven-development](../../../DevOps_and_Cloud/Observability_and_SecOps/doubt-driven-development/SKILL.md)    → Cross-examine non-trivial decisions in-flight
-10. [test-driven-development](../../../DevOps_and_Cloud/Observability_and_SecOps/test-driven-development/SKILL.md)     → Prove each slice works
+9.  [doubt-driven-development](../../Patterns/doubt-driven-development/SKILL.md)    → Cross-examine non-trivial decisions in-flight
+10. [test-driven-development](../../Patterns/test-driven-development/SKILL.md)     → Prove each slice works
 11. [code-review-and-quality](../../Patterns/[code-review](../code-review/SKILL.md)-and-quality/SKILL.md)     → Review before merge
 12. [code-simplification](../../Patterns/code-simplification/SKILL.md)         → Reduce unnecessary complexity while preserving behavior
 13. [git-workflow-and-versioning](../../../DevOps_and_Cloud/CI_CD/[git-workflow](../../../DevOps_and_Cloud/CI_CD/git-workflow/SKILL.md)-and-versioning/SKILL.md) → Clean [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) history
@@ -171,7 +171,7 @@ For a complete feature, the typical skill sequence is:
 16. [shipping-and-launch](../../../Product_and_Business/shipping-and-launch/SKILL.md)         → Deploy safely
 ```
 
-Not every task needs every skill. A bug fix might only need: `[debugging-and-error-recovery](../../Patterns/debugging-and-error-recovery/SKILL.md)` → `[test-driven-development](../../../DevOps_and_Cloud/Observability_and_SecOps/test-driven-development/SKILL.md)` → `[code-review-and-quality](../../Patterns/[code-review](../code-review/SKILL.md)-and-quality/SKILL.md)`.
+Not every task needs every skill. A bug fix might only need: `[debugging-and-error-recovery](../../Patterns/debugging-and-error-recovery/SKILL.md)` → `[test-driven-development](../../Patterns/test-driven-development/SKILL.md)` → `[code-review-and-quality](../../Patterns/[code-review](../code-review/SKILL.md)-and-quality/SKILL.md)`.
 
 ## Quick Reference
 
@@ -183,11 +183,11 @@ Not every task needs every skill. A bug fix might only need: `[debugging-and-err
 | Plan | [planning-and-task-breakdown](../../Frontend/planning-and-task-breakdown/SKILL.md) | Decompose into small, verifiable tasks |
 | Build | [incremental-implementation](../../Patterns/incremental-implementation/SKILL.md) | Thin vertical slices, test each before expanding |
 | Build | [source-driven-development](../../Frontend/source-driven-development/SKILL.md) | Verify against official docs before implementing |
-| Build | [doubt-driven-development](../../../DevOps_and_Cloud/Observability_and_SecOps/doubt-driven-development/SKILL.md) | Adversarial fresh-context review of every non-trivial decision |
+| Build | [doubt-driven-development](../../Patterns/doubt-driven-development/SKILL.md) | Adversarial fresh-context review of every non-trivial decision |
 | Build | [context-engineering](../../../AI_and_Agents/Workflows/context-engineering/SKILL.md) | Right context at the right time |
 | Build | [frontend-ui-engineering](../../Frontend/frontend-ui-engineering/SKILL.md) | Production-quality UI with accessibility |
 | Build | [api-and-interface-design](../../Backend/api-and-interface-design/SKILL.md) | Stable interfaces with clear contracts |
-| Verify | [test-driven-development](../../../DevOps_and_Cloud/Observability_and_SecOps/test-driven-development/SKILL.md) | Failing test first, then make it pass |
+| Verify | [test-driven-development](../../Patterns/test-driven-development/SKILL.md) | Failing test first, then make it pass |
 | Verify | [browser-testing-with-devtools](../../Frontend/browser-testing-with-devtools/SKILL.md) | Chrome DevTools MCP for runtime verification |
 | Verify | [debugging-and-error-recovery](../../Patterns/debugging-and-error-recovery/SKILL.md) | Reproduce → localize → fix → guard |
 | Review | [code-review-and-quality](../../Patterns/[code-review](../code-review/SKILL.md)-and-quality/SKILL.md) | Five-axis review with quality gates |
@@ -199,4 +199,4 @@ Not every task needs every skill. A bug fix might only need: `[debugging-and-err
 | Ship | [deprecation-and-migration](../../Patterns/deprecation-and-migration/SKILL.md) | Remove old systems and migrate users safely |
 | Ship | [documentation-and-adrs](../../../Product_and_Business/documentation-and-adrs/SKILL.md) | Document the why, not just the what |
 | Ship | [observability-and-instrumentation](../../../DevOps_and_Cloud/Observability_and_SecOps/[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-instrumentation/SKILL.md) | Structured logs, RED metrics, traces, symptom-based alerts |
-| Ship | [shipping-and-launch](../../../Product_and_Business/shipping-and-launch/SKILL.md) | Pre-launch checklist, [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), rollback plan |
+| Ship | [shipping-and-launch](../../../Product_and_Business/shipping-and-launch/SKILL.md) | Pre-launch checklist, [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), rollback plan |

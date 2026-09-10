@@ -427,10 +427,10 @@ When a dbt deployment fails mid-run, partial state corrupts downstream models. H
 - Per [commit](../../ci-cd/common/git-workflow/commit/SKILL.md): dbt compile, SQLFluff lint.
 - Per PR: dbt slim CI, dbt test (changed models).
 - Per deploy: dbt test (all models), GE suite, contract validation.
-- Daily: source freshness, data quality [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
+- Daily: source freshness, data quality [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
 - Weekly: full test suite, test coverage report.
 
-### [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response
+### [Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response
 1. Identify failed model from dbt run output.
 2. Determine failure type: compilation, test failure, timeout.
 3. Compilation error: fix SQL, open PR, redeploy.
@@ -492,12 +492,12 @@ dbt: transformation layer (SELECT statements). Airflow: orchestration layer (DAG
 - ../../../Global_References/data-cicd.md -- Data CI/CD
 - ../../../Global_References/[data-testing](../data-testing/SKILL.md).md -- Data Testing
 - ../../../Global_References/data-contracts-ops.md -- Data Contracts Operations
-- ../../../Global_References/data-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md).md -- DataOps [Observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
+- ../../../Global_References/data-[observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md).md -- DataOps [Observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
 - references/dataops-pipeline-orchestration.md -- Pipeline Orchestration
-- references/dataops-data-quality-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).md -- Data Quality [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+- references/dataops-data-quality-[monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md -- Data Quality [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 ## Handoff
-For data warehouse schema design, hand off to data-warehouse. For data pipeline ETL, hand off to etl-pipeline. For quality [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), hand off to data-quality.
+For data warehouse schema design, hand off to data-warehouse. For data pipeline ETL, hand off to etl-pipeline. For quality [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), hand off to data-quality.
 
 ## Architecture Decision Trees
 
@@ -618,7 +618,7 @@ check_data_quality() {
 
 - Partition **large tables** by date and cluster by frequently filtered columns (customer_id, region)
 - Use **columnar file formats** (Parquet, ORC) with compression (snappy, zstd) instead of CSV/JSON
-- Enable **materialized views** in the warehouse for pre-aggregated [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md)
+- Enable **materialized views** in the warehouse for pre-aggregated [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)
 - Optimize **Spark shuffle** — set `spark.sql.adaptive.coalescePartitions.enabled = true`
 - Use **incremental loads** instead of full table refreshes for daily batch pipelines
 - Size **Airflow worker concurrency** based on task type (IO-bound vs CPU-bound)

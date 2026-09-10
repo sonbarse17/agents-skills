@@ -19,7 +19,7 @@ depends_on:
 
 # Startup IT Troubleshooting
 
-[Runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md) for startups and small teams where engineers double as the IT department.
+[Runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md) for startups and small teams where engineers double as the IT department.
 
 ## When to Use
 
@@ -54,7 +54,7 @@ curl -X POST -H "Authorization: SSWS $T" "https://$OKTA/api/v1/users/$UID/lifecy
 curl -X DELETE -H "Authorization: SSWS $T" "https://$OKTA/api/v1/users/$UID/sessions"
 ```
 
-**MFA recovery flow:** Verify identity via video call, generate backup codes or reset factors, have user re-enroll immediately, confirm old device is deregistered, log the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+**MFA recovery flow:** Verify identity via video call, generate backup codes or reset factors, have user re-enroll immediately, confirm old device is deregistered, log the [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 
 ---
 
@@ -405,5 +405,5 @@ gam user compromised@company.com show forwarding     # check attacker persistenc
 
 ## Related Skills
 
-- [incident-management](../../../compliance/continuity/[incident-management](../[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-management/SKILL.md)/) -- Structured [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) handling
+- [incident-management](../../../compliance/continuity/[incident-management](../[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-management/SKILL.md)/) -- Structured [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) handling
 - [runbook-creation](../../../compliance/continuity/[runbook-creation](../../Frontend/[runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)-creation/SKILL.md)/) -- Documentation standards

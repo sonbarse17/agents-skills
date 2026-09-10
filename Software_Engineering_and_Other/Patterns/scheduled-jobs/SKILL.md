@@ -68,8 +68,8 @@ and a skip due to overlap is visible, not silent.
 ## 3. Monitor for the job not running at all
 
 The failure mode that hurts most is silence — a job that used to run nightly stops running, and
-nothing alerts because there's no failed run to alert on, just an absent one. [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) "did the
-job fail" is not the same as [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) "did the job run."
+nothing alerts because there's no failed run to alert on, just an absent one. [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) "did the
+job fail" is not the same as [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) "did the job run."
 
 ```yaml
 # dead man's switch: job must check in within its expected window, or this pages
@@ -83,7 +83,7 @@ job fail" is not the same as [monitoring](../../../DevOps_and_Cloud/Observabilit
 - **Alert on absence, not just on failure** — a scheduler that itself stopped (a paused CronJob, a
   disabled cron entry) produces zero failed runs and zero alerts under a failure-only setup.
 - **Set the missed-run window wider than normal jitter** but tight enough to catch a real gap
-  before it compounds — see `[alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)` for the tuning discipline behind that threshold.
+  before it compounds — see `[alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)` for the tuning discipline behind that threshold.
 
 **Done when:** every scheduled job has a heartbeat-based check that pages when the job hasn't
 succeeded within its expected window, independent of the scheduler's own health.
@@ -110,7 +110,7 @@ A cron job failing silently into `/dev/null` is the default in a lot of legacy s
 the first sign of trouble is the downstream consumer of the job's output noticing something's
 stale or missing — far later than the job's own exit code would have told you.
 
-- **Route failures to the same [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) path as everything else** — see `[alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)` for severity
+- **Route failures to the same [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) path as everything else** — see `[alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)` for severity
   routing — not to an email nobody reads.
 - **Include the run's context in the failure alert** — which scheduled slot, how far it got, what
   it was operating on — so triage doesn't start from zero.

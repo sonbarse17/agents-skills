@@ -28,7 +28,7 @@ depends_on:
 Authenticate to an Elasticsearch cluster using any supported authentication realm that is already configured. This skill
 covers all built-in realms, credential verification, and the full API key lifecycle.
 
-For roles, users, role assignment, and role mappings, see the **[elasticsearch-authz](../../../DevOps_and_Cloud/Observability_and_SecOps/elasticsearch-authz/SKILL.md)** skill.
+For roles, users, role assignment, and role mappings, see the **[elasticsearch-authz](../../../observability-monitoring-logging/elasticsearch/other/elasticsearch-authz/SKILL.md)** skill.
 
 For detailed API endpoints, see [../../../Global_References/elasticsearch-authn_api-reference.md](../../../Global_References/elasticsearch-authn_api-reference.md).
 
@@ -81,7 +81,7 @@ request wins. Internal realms are managed by Elasticsearch; external realms dele
 #### Native (username and password)
 
 Users stored in a dedicated Elasticsearch index. Simplest method for interactive use. Managed via Kibana or the user
-management APIs (see the [elasticsearch-authz](../../../DevOps_and_Cloud/Observability_and_SecOps/elasticsearch-authz/SKILL.md) skill).
+management APIs (see the [elasticsearch-authz](../../../observability-monitoring-logging/elasticsearch/other/elasticsearch-authz/SKILL.md) skill).
 
 ```bash
 curl -u "${ELASTICSEARCH_USERNAME}:${ELASTICSEARCH_PASSWORD}" "${ELASTICSEARCH_URL}/_security/_authenticate"
@@ -315,7 +315,7 @@ Confirm the response shows `authentication_realm.type` as `"jwt"`.
 | Kerberos        | Windows/enterprise Kerberos environments    | Requires KDC, DNS, time sync infrastructure     |
 
 Prefer API keys for automated workflows — they support fine-grained scoping and independent expiration. For Kibana SSO,
-use SAML or OIDC. For enterprise directory integration, use LDAP or AD with role mappings (see [elasticsearch-authz](../../../DevOps_and_Cloud/Observability_and_SecOps/elasticsearch-authz/SKILL.md)).
+use SAML or OIDC. For enterprise directory integration, use LDAP or AD with role mappings (see [elasticsearch-authz](../../../observability-monitoring-logging/elasticsearch/other/elasticsearch-authz/SKILL.md)).
 
 ### Avoid superuser credentials
 

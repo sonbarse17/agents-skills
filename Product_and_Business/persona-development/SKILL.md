@@ -401,7 +401,7 @@ Anti-persona feature reject| >5/mo | 3/mo    | Needs improvement
 
 ## Integration Patterns
 
-### With User Research ([product-user-research](../../DevOps_and_Cloud/Observability_and_SecOps/user-research/SKILL.md))
+### With User Research ([product-user-research](../user-research/SKILL.md))
 Handoff point: raw interview data, transcripts, recordings
 Direction: Research → Persona Development
 Persona development consumes research data; identifies gaps for new research.
@@ -615,5 +615,5 @@ persona_synthesis:
   - ../../../Global_References/persona-to-feature.md — Persona-Driven Design
   - ../../../Global_References/persona-workshop-facilitation.md — Persona Workshop Facilitation
 ## Handoff
-For journey mapping with persona context, hand off to `[product-customer-journey](../customer-journey/SKILL.md)`. For user research to validate personas, hand off to `[product-user-research](../../DevOps_and_Cloud/Observability_and_SecOps/user-research/SKILL.md)`. For feature prioritization using persona scores, hand off to `product-feature-prioritization`.
+For journey mapping with persona context, hand off to `[product-customer-journey](../customer-journey/SKILL.md)`. For user research to validate personas, hand off to `[product-user-research](../user-research/SKILL.md)`. For feature prioritization using persona scores, hand off to `product-feature-prioritization`.
 

@@ -20,14 +20,14 @@ depends_on:
 
 # SOC 2 Compliance
 
-Implement SOC 2 Trust Services Criteria controls, evidence collection, and continuous compliance [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) for Type I and Type II audits.
+Implement SOC 2 Trust Services Criteria controls, evidence collection, and continuous compliance [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) for Type I and Type II audits.
 
 ## When to Use
 
 - Preparing for a SOC 2 Type I or Type II [audit](../../AI_and_Agents/Operations/audit/SKILL.md)
 - Mapping existing controls to Trust Services Criteria
 - Automating evidence collection for auditor requests
-- Building continuous compliance [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) into CI/CD
+- Building continuous compliance [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) into CI/CD
 - Onboarding new services and ensuring SOC 2 control coverage
 
 ## Trust Services Criteria Detailed Checklist
@@ -55,7 +55,7 @@ security_common_criteria:
       - Security awareness training records
       - Internal security newsletters or updates
       - Customer-facing security documentation
-      - Status page and [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) communication records
+      - Status page and [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) communication records
 
   CC3_risk_assessment:
     CC3.1: "Entity specifies objectives clearly to identify and assess risks"
@@ -72,7 +72,7 @@ security_common_criteria:
     CC4.1: "Entity selects, develops, and performs ongoing/separate evaluations"
     CC4.2: "Entity evaluates and communicates internal control deficiencies"
     evidence:
-      - Continuous [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) dashboard screenshots
+      - Continuous [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) dashboard screenshots
       - Internal [audit](../../AI_and_Agents/Operations/audit/SKILL.md) reports
       - Vulnerability scan results
       - Penetration test reports
@@ -109,10 +109,10 @@ security_common_criteria:
     CC7.4: "Respond to identified security incidents"
     CC7.5: "Identify and remediate security incidents"
     evidence:
-      - SIEM alert rules and [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md)
-      - [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) configuration (CloudWatch, [Datadog](../../DevOps_and_Cloud/Observability_and_SecOps/datadog/SKILL.md), etc.)
-      - [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response plan
-      - [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) tickets and post-mortems
+      - SIEM alert rules and [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)
+      - [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) configuration (CloudWatch, [Datadog](../../observability-monitoring-logging/datadog/other/datadog/SKILL.md), etc.)
+      - [Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response plan
+      - [Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) tickets and post-mortems
 
   CC8_change_management:
     CC8.1: "Entity authorizes, designs, develops, configures, documents, tests, approves, and implements changes"
@@ -137,7 +137,7 @@ availability_criteria:
   A1.3: "Recovery plan procedures to support system availability"
   evidence:
     - Uptime SLA documentation
-    - [Capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md)
+    - [Capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)
     - Disaster recovery plan
     - DR test results
     - Backup verification records
@@ -160,7 +160,7 @@ confidentiality_criteria:
     - Secure disposal records
 
 privacy_criteria:
-  P1-P8: "Privacy notice, choice, collection, use, disclosure, access, quality, [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)"
+  P1-P8: "Privacy notice, choice, collection, use, disclosure, access, quality, [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)"
   evidence:
     - Privacy policy (published)
     - Consent management records
@@ -193,14 +193,14 @@ control_to_tool_mapping:
 
   CC7.2_monitoring:
     tools:
-      - CloudWatch / Azure Monitor / Cloud [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md)
-      - [Datadog](../../DevOps_and_Cloud/Observability_and_SecOps/datadog/SKILL.md) / New Relic / Grafana alert configurations
+      - CloudWatch / Azure Monitor / Cloud [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)
+      - [Datadog](../../observability-monitoring-logging/datadog/other/datadog/SKILL.md) / New Relic / Grafana alert configurations
       - SIEM (Splunk, Elastic, Sentinel) saved searches
       - PagerDuty / OpsGenie escalation policies
     evidence_format:
       - Dashboard screenshots with date stamps
       - Alert rule configuration exports
-      - [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response records from ticketing system
+      - [Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response records from ticketing system
 
   CC8.1_change_management:
     tools:
@@ -255,7 +255,7 @@ for repo in $(gh repo list YOUR_ORG --json name -q '.[].name'); do
     > "$EVIDENCE_DIR/branch-protection-$repo.json" 2>/dev/null
 done
 
-echo "=== CC7.2 - [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) Evidence ==="
+echo "=== CC7.2 - [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Evidence ==="
 
 # CloudTrail status
 aws cloudtrail get-trail-status --name org-[audit](../../AI_and_Agents/Operations/audit/SKILL.md)-trail \
@@ -325,8 +325,8 @@ audit_prep_timeline:
     - Prepare evidence request list responses
     - Organize evidence into auditor-friendly structure
     - Brief key personnel on [audit](../../AI_and_Agents/Operations/audit/SKILL.md) interviews
-    - Verify [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) show healthy state
-    - Confirm [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response records are complete
+    - Verify [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) show healthy state
+    - Confirm [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response records are complete
 
   during_audit:
     - Designate [audit](../../AI_and_Agents/Operations/audit/SKILL.md) liaison for request management
@@ -342,7 +342,7 @@ audit_prep_timeline:
     - Begin next [audit](../../AI_and_Agents/Operations/audit/SKILL.md) period evidence collection
 ```
 
-## Continuous Compliance [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+## Continuous Compliance [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 ```yaml
 # [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions workflow for continuous SOC 2 checks
@@ -388,7 +388,7 @@ jobs:
 - Start with a gap assessment to understand current control maturity before engaging an auditor
 - Automate evidence collection to reduce the burden of auditor requests and ensure consistency
 - Map each control to a specific tool, owner, and evidence artifact for traceability
-- Implement continuous [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) rather than point-in-time checks for Type II readiness
+- Implement continuous [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) rather than point-in-time checks for Type II readiness
 - Maintain a central evidence repository organized by control criteria
 - Conduct quarterly internal reviews to catch control drift before the [audit](../../AI_and_Agents/Operations/audit/SKILL.md) period
 - Keep policies living documents with version history and annual review dates

@@ -397,7 +397,7 @@ Key insight: Cost-effective scale unmoderated testing catches issues quickly
 Impact: 8% checkout conversion recovered by fixing critical issues
 
 ### Case Study 3: Persona-Driven Redesign
-A B2B analytics platform had a single dashboard design for all users. UX research involving 18 interviews and a 200-person survey revealed 4 distinct user types with fundamentally different needs. The "Executive" persona needed high-level KPIs and trends; the "Analyst" persona needed raw data exploration and export. Creating persona-specific [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) increased daily active usage by 45% and reduced support tickets by 30%.
+A B2B analytics platform had a single dashboard design for all users. UX research involving 18 interviews and a 200-person survey revealed 4 distinct user types with fundamentally different needs. The "Executive" persona needed high-level KPIs and trends; the "Analyst" persona needed raw data exploration and export. Creating persona-specific [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) increased daily active usage by 45% and reduced support tickets by 30%.
 
 Method: 18 interviews + 200-response survey → 4 validated personas
 Key insight: One-size-fits-all design was serving no segment well
@@ -488,7 +488,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
+### [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -523,7 +523,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing ([OpenTelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
+5. Profile latency with distributed tracing ([OpenTelemetry](../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 

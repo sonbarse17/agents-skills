@@ -246,7 +246,7 @@ vercel inspect <deployment-url>
 - Enable Vercel Firewall for DDoS and bot protection
 - Use `vercel.json` headers for security (CSP, HSTS, X-Frame-Options)
 
-## [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) & Analytics
+## [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) & Analytics
 
 ```bash
 # Enable Speed Insights in Next.js

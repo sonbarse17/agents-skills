@@ -38,7 +38,7 @@ originated by Sysdig — Falco rules match system-call and [Kubernetes](../../..
 (unexpected process execution inside a container, a shell spawned in a
 production pod, an outbound connection from a process that should never
 make one), and Sysdig Secure wraps that detection engine with a managed
-rule feed, a UI/[alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) layer, image scanning, CIS Benchmark compliance
+rule feed, a UI/[alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) layer, image scanning, CIS Benchmark compliance
 checks, and an [incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md) workflow including forensic capture.
 The operational distinction that matters most: everything upstream of
 this skill (SAST, SCA, CSPM, IaC scanning) evaluates *code or
@@ -90,7 +90,7 @@ or misconfiguration at all.
   See [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md).
 - A defined [incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md) escalation path (on-call rotation,
   ticketing/paging integration) before enabling high-severity runtime
-  [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) — an unactioned runtime alert is strictly worse than no
+  [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) — an unactioned runtime alert is strictly worse than no
   alert at all, since it creates false confidence that "someone is
   watching."
 
@@ -215,10 +215,10 @@ or misconfiguration at all.
   a hardened, distroless, non-root container gives an attacker far less
   room to trigger the kind of process/file-system behavior runtime
   rules look for in the first place.
-- Pre-define an [incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md) [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) (who's paged, what
+- Pre-define an [incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md) [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) (who's paged, what
   containment actions are pre-approved, how forensic captures are
   stored/retained) before the first real high-severity alert fires —
-  improvising containment during a live [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) is where blanket,
+  improvising containment during a live [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) is where blanket,
   destructive actions get taken under pressure.
 - Run CIS Benchmark and [image-scanning](../../../Security/image-scanning/SKILL.md) checks on a recurring schedule,
   not only once at rollout — configuration drift and newly disclosed
@@ -243,7 +243,7 @@ or misconfiguration at all.
   production even if it's noisy in dev/staging where interactive
   debugging is routine.
 
-- **Symptom:** A real [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) is missed because the alert fired at
+- **Symptom:** A real [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) is missed because the alert fired at
   INFO/NOTICE priority into a dashboard nobody actively monitors, while
   the on-call rotation only gets paged on CRITICAL.
   **Fix:** Review priority mapping against actual response capability —
@@ -253,7 +253,7 @@ or misconfiguration at all.
   assume default priorities are already calibrated to your
   environment's risk tolerance.
 
-- **Symptom:** During a live [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), the responder runs `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md)
+- **Symptom:** During a live [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), the responder runs `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md)
   delete pod` on every pod in the namespace to "be safe," destroying
   forensic evidence and disrupting unrelated healthy workloads.
   **Fix:** Isolate/contain the *specific* affected pod/container
@@ -285,7 +285,7 @@ or misconfiguration at all.
 
 A platform team deploys Sysdig Secure to a production EKS cluster,
 adds a custom rule for their specific threat model, and walks through
-an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) it catches.
+an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) it catches.
 
 Helm values (`sysdig-values.yaml`, abbreviated):
 ```yaml
@@ -319,7 +319,7 @@ API dependencies:
   tags: [network, payments, mitre_exfiltration]
 ```
 
-[Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) walkthrough:
+[Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) walkthrough:
 1. The rule fires CRITICAL: a `payments-api` pod opens a connection to
    an IP outside the known-dependency list, at 02:14 UTC.
 2. The alert pages the on-call engineer via the configured

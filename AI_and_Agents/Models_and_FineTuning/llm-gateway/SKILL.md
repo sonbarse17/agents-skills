@@ -234,7 +234,7 @@ server {
 }
 ```
 
-## [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) Gateway Health
+## [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Gateway Health
 
 ```bash
 # Check LiteLLM health
@@ -267,7 +267,7 @@ curl http://localhost:4000/key/list \
 - Use virtual keys per team/app — never expose raw provider API keys.
 - Enable `cache: true` with Redis for repeated or similar queries; can cut costs 30–50%.
 - Set `num_retries: 3` with fallbacks to handle provider outages gracefully.
-- Log all requests to Langfuse or [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) for cost attribution and debugging.
+- Log all requests to Langfuse or [OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) for cost attribution and debugging.
 - Use `least-busy` routing strategy for self-hosted models to avoid GPU saturation.
 
 ## Related Skills

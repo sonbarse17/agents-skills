@@ -33,7 +33,7 @@ Invoke this skill when any of the following apply:
 - You are conducting a periodic supply chain security [audit](../../AI_and_Agents/Operations/audit/SKILL.md).
 - A CI/CD pipeline is behaving unexpectedly after a dependency update.
 - You are onboarding a new third-party dependency and want to verify its provenance.
-- You need to respond to an [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) such as a typosquatted package or registry account takeover.
+- You need to respond to an [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) such as a typosquatted package or registry account takeover.
 - You are implementing SLSA compliance or need to generate build provenance.
 
 ---
@@ -611,7 +611,7 @@ packages:
 
 ---
 
-## 10. [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
+## 10. [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 
 ### 10.1 Detect New Dependencies in Pull Requests
 
@@ -720,7 +720,7 @@ fi
 
 ---
 
-## 11. Post-[Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response
+## 11. Post-[Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response
 
 ### 11.1 Forensics Checklist
 
@@ -795,9 +795,9 @@ npm token create --read-only
 ### 11.4 Communication Templates
 
 ```text
---- INTERNAL [INCIDENT](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) REPORT ---
+--- INTERNAL [INCIDENT](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) REPORT ---
 
-[Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) ID: SC-YYYY-NNN
+[Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) ID: SC-YYYY-NNN
 Date Detected: YYYY-MM-DD HH:MM UTC
 Package: <name>@<version>
 Registry: npm / PyPI / crates.io
@@ -823,7 +823,7 @@ Remediation:
   1. Pinned to safe version
   2. Rotated all potentially exposed secrets
   3. Deployed clean builds to production
-  4. Added package to [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) watch list
+  4. Added package to [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) watch list
 
 Preventive Measures:
   1. Enabled hash-pinning for all dependencies

@@ -230,7 +230,7 @@ grype <image> --db /path/to/database
   Restrict permissions to prevent unauthorized image access.
 
 - **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Logging**: Log all Grype scans with timestamps, target details, and operator identity
-  for compliance and [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response. Archive scan results for historical vulnerability tracking.
+  for compliance and [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response. Archive scan results for historical vulnerability tracking.
 
 - **Compliance**: Regular vulnerability scanning supports SOC2, PCI-DSS, NIST 800-53, and ISO 27001
   requirements. Document scan frequency and remediation SLAs.
@@ -304,7 +304,7 @@ grype alpine:3.19
 - **CI/CD**: Integrate with [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../ci-cd/jenkins/other/jenkins/SKILL.md), [CircleCI](../../ci-cd/circleci/other/circleci/SKILL.md) using `--fail-on` thresholds
 - **Container Registries**: Scan images from [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) Hub, ECR, GCR, ACR, Harbor
 - **Security Tools**: Export SARIF for [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Security, JSON for SIEM ingestion, CycloneDX for DependencyTrack
-- **SDLC**: Scan during build (shift-left), before deployment (quality gate), and scheduled (continuous [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md))
+- **SDLC**: Scan during build (shift-left), before deployment (quality gate), and scheduled (continuous [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md))
 
 ## Troubleshooting
 

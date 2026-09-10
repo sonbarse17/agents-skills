@@ -93,7 +93,7 @@ Don't deprecate without a working alternative. The replacement must:
 **Status:** Deprecated as of 2025-03-01
 **Replacement:** NewService (see migration guide below)
 **Removal date:** Advisory — no hard deadline yet
-**Reason:** OldService requires manual scaling and lacks [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md).
+**Reason:** OldService requires manual scaling and lacks [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md).
             NewService handles both automatically.
 
 ### Migration Guide

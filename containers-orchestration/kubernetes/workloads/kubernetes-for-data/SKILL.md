@@ -550,7 +550,7 @@ spec:
 - Set resource quotas per namespace per workload type.
 - Monitor Spark executors for shuffle spill to disk (indicates memory pressure).
 - For Airflow, prefer GitSync over DAG image embedding for faster iteration.
-- Use Prometheus + Grafana [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) for Spark executor resource utilization.
+- Use Prometheus + Grafana [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) for Spark executor resource utilization.
 
 ## Anti-Patterns
 - Running Spark driver and executor on same node — single point of failure.
@@ -559,7 +559,7 @@ spec:
 - Using default storage class without performance testing for Kafka.
 - Unlimited Spark dynamic allocation — can exhaust cluster resources.
 - No pod disruption budgets — all executors can be evicted simultaneously.
-- Over-allocating executor memory without [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) actual usage.
+- Over-allocating executor memory without [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) actual usage.
 - Mixing Spark executors and Kafka brokers on same nodes — resource contention.
 - Not setting memoryOverhead for Spark executors — OOM kills from off-heap.
 - Using suboptimal instance types for data workloads (burstable t-series).

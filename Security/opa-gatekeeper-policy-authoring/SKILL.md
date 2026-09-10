@@ -268,7 +268,7 @@ and rollout mechanics.
   will evaluate them in-cluster.
 - Set resource requests/limits on the Gatekeeper controller pods
   themselves and monitor their health — Gatekeeper being down is itself
-  an admission-control availability [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), not just a policy concern.
+  an admission-control availability [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), not just a policy concern.
 
 ## Common pitfalls
 
@@ -308,7 +308,7 @@ and rollout mechanics.
 
 - **Symptom:** A Gatekeeper pod outage combined with
   `failurePolicy: Fail` on a webhook blocks every deploy cluster-wide,
-  including unrelated emergency hotfixes, during an [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+  including unrelated emergency hotfixes, during an [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
   **Fix:** Treat Gatekeeper pod health as a monitored, alertable
   dependency of cluster admission; keep a documented, fast rollback path
   (deleting or patching the problem Constraint, or in a true emergency,

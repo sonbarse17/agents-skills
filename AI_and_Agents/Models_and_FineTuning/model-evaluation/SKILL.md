@@ -316,7 +316,7 @@ def find_optimal_threshold(y_val, y_prob, metric="f1"):
         return thresholds[best_idx]
 ```
 
-### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+### [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - Track primary metric over time, alert on >5% degradation.
 - Monitor data drift (PSI, KS test, population stability index).
 - Track prediction distribution shift.

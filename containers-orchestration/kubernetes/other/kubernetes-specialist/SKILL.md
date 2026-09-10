@@ -64,7 +64,7 @@ Load detailed guidance based on context:
 | Helm Charts | `../../../Global_References/[helm-charts](../../../helm/charts/helm-charts/SKILL.md).md` | Chart structure, values, templates, hooks, testing, repositories |
 | Troubleshooting | `../../../Global_References/[kubernetes](../kubernetes/SKILL.md)-specialist_troubleshooting.md` | [kubectl](../kubectl/SKILL.md) debug, logs, events, common issues |
 | Custom Operators | `../../../Global_References/custom-operators.md` | CRD, Operator SDK, controller-runtime, reconciliation |
-| Service Mesh | `../../../Global_References/[service-mesh](../../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md).md` | Istio, Linkerd, traffic management, mTLS, canary |
+| Service Mesh | `../../../Global_References/[service-mesh](../../../common/service-mesh/service-mesh/SKILL.md).md` | Istio, Linkerd, traffic management, mTLS, canary |
 | [GitOps](../../../common/gitops/gitops/SKILL.md) | `../../../Global_References/[gitops](../../../common/gitops/gitops/SKILL.md).md` | [ArgoCD](../../../argocd/other/argocd/SKILL.md), Flux, progressive delivery, sealed secrets |
 | Cost Optimization | `../../../Global_References/[kubernetes](../kubernetes/SKILL.md)-specialist_cost-optimization.md` | VPA, HPA tuning, spot instances, quotas, right-sizing |
 | Multi-Cluster | `../../../Global_References/multi-cluster.md` | Cluster API, federation, cross-cluster networking, DR |

@@ -245,7 +245,7 @@ investing in custom policy authoring for gaps neither tool covers.
 - **Symptom:** The Polaris admission webhook is enabled with default
   severities and immediately blocks deploys for workloads that
   legitimately don't need a readiness probe (e.g. CronJobs, batch Jobs),
-  causing an unplanned [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+  causing an unplanned [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
   **Fix:** Run Polaris in CLI/dashboard-only (report) mode first, add
   `exemptions` for controller types/names that legitimately fail specific
   checks, and only enable the webhook once the exemption list reflects

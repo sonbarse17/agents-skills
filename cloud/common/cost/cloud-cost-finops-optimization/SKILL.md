@@ -131,7 +131,7 @@ indicator into an operating input.
      — commitments covering 100% of a fluctuating baseline routinely end
      up unused when demand dips.
 
-6. **Set up anomaly detection and a response [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md).** When a cost
+6. **Set up anomaly detection and a response [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md).** When a cost
    anomaly alert fires: identify the resource/tag responsible from the
    CUR/Cost Management/BigQuery export, confirm with the owning team
    whether it's expected (a legitimate scale-up) or a mistake (an
@@ -158,7 +158,7 @@ indicator into an operating input.
   wire this into account/subscription/project vending.
 - **Rightsize based on peak, not average, utilization** to avoid
   performance regressions; pair [rightsizing](../rightsizing/SKILL.md) changes with a rollback plan
-  and a [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) window.
+  and a [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) window.
 - **Match commitment term to business certainty**, not just the discount
   curve — a deeper 3-year discount on a workload that might be
   decommissioned in 18 months is a false saving.
@@ -176,7 +176,7 @@ indicator into an operating input.
 - Involve **engineering, not just finance**, in every optimization
   decision — a [rightsizing](../rightsizing/SKILL.md) or commitment change that isn't understood by
   the team running the workload will get silently reverted or cause an
-  [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+  [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 
 ## Common pitfalls
 

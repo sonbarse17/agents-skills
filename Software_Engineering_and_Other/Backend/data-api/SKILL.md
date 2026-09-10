@@ -73,7 +73,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 - [ ] Column-level permissions set per role
 - [ ] Real-time subscriptions enabled where needed
 - [ ] Caching and rate limiting configured
-- [ ] API [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and logging set up
+- [ ] API [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and logging set up
 - [ ] Error handling and mutation constraints defined
 
 ### Max Response Length
@@ -423,10 +423,10 @@ update_order:
     - only_owner_or_admin_can_update
 ```
 
-### Step 8: API [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
+### Step 8: API [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
 
 ```yaml
-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md):
+[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md):
   metrics:
     - query_latency_p50
     - query_latency_p99
@@ -447,7 +447,7 @@ update_order:
     - cache_hit_ratio < 80% → Dashboard warning
     - rate_limited_requests > 5% → [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) review
   tracing:
-    - [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) for request tracing
+    - [OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) for request tracing
     - Trace from client → Hasura → database
     - Include GraphQL operation name in spans
 ```
@@ -587,5 +587,5 @@ type Order @key(fields: "id") {
 - **Secrets management**: Store API keys and DB credentials in [vault](../../Miscellaneous/vault/SKILL.md) (HashiCorp [Vault](../../Miscellaneous/vault/SKILL.md), AWS Secrets Manager).
 
 ## Handoff
-`[data-data-platform](../../../Data_Engineering/data-platform/SKILL.md)` for deployment infrastructure. `[data-data-catalog](../../../Data_Engineering/data-catalog/SKILL.md)` for API endpoint documentation. `[data-data-observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)` for API [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md). `[data-data-contracts](../../../Data_Engineering/data-contracts/SKILL.md)` for API schema contracts.
+`[data-data-platform](../../../Data_Engineering/data-platform/SKILL.md)` for deployment infrastructure. `[data-data-catalog](../../../Data_Engineering/data-catalog/SKILL.md)` for API endpoint documentation. `[data-data-observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)/SKILL.md)` for API [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md). `[data-data-contracts](../../../Data_Engineering/data-contracts/SKILL.md)` for API schema contracts.
 

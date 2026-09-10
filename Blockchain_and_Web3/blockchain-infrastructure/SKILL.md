@@ -37,12 +37,12 @@ depends_on:
 # Blockchain Infrastructure
 
 ## Purpose
-Guide blockchain infrastructure operations: node deployment, RPC infrastructure, smart contract CI/CD, [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), MEV infrastructure, and key management. Covers production-grade deployment patterns for all major blockchain networks.
+Guide blockchain infrastructure operations: node deployment, RPC infrastructure, smart contract CI/CD, [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), MEV infrastructure, and key management. Covers production-grade deployment patterns for all major blockchain networks.
 
 ## Agent Protocol
 
 ### Trigger
-"blockchain deploy", "node deployment", "archive node", "validator node", "RPC infrastructure", "blockchain RPC", "JSON-RPC load balancing", "smart contract CI/CD", "forge CI", "hardhat CI", "blockchain [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)", "Prometheus blockchain", "Grafana blockchain", "Forta", "Tenderly", "devnet", "testnet", "blockchain environment", "mainnet deploy", "contract verification", "blockchain DevOps", "MEV infrastructure", "builder", "relay", "Flashbots", "MEV relay", "block building", "KMS", "HSM", "key management blockchain", "Fireblocks", "HSM blockchain", "validator key management", "searcher infrastructure"
+"blockchain deploy", "node deployment", "archive node", "validator node", "RPC infrastructure", "blockchain RPC", "JSON-RPC load balancing", "smart contract CI/CD", "forge CI", "hardhat CI", "blockchain [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)", "Prometheus blockchain", "Grafana blockchain", "Forta", "Tenderly", "devnet", "testnet", "blockchain environment", "mainnet deploy", "contract verification", "blockchain DevOps", "MEV infrastructure", "builder", "relay", "Flashbots", "MEV relay", "block building", "KMS", "HSM", "key management blockchain", "Fireblocks", "HSM blockchain", "validator key management", "searcher infrastructure"
 
 ### Input Context
 - Blockchain networks to support
@@ -53,21 +53,21 @@ Guide blockchain infrastructure operations: node deployment, RPC infrastructure,
 - Budget constraints
 
 ### Output Artifact
-Infrastructure architecture specification including: deployment topology, provisioning configuration, CI/CD pipeline, [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) stack, and operations [runbooks](../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md).
+Infrastructure architecture specification including: deployment topology, provisioning configuration, CI/CD pipeline, [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) stack, and operations [runbooks](../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md).
 
 ### Response Format
 1. **Deployment topology**: node type, infrastructure sizing, network requirements, geographic distribution
-2. **Provisioning**: [Ansible](../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md)/Terraform/K8s configuration, secrets management, upgrade strategy
+2. **Provisioning**: [Ansible](../../infrastructure-as-code/ansible/other/ansible/SKILL.md)/Terraform/K8s configuration, secrets management, upgrade strategy
 3. **CI/CD pipeline**: test → build → verify → deploy → monitor flow with security gates
 4. **Configuration**: environment-specific parameters, chain settings, multi-env strategy
-5. **[Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) & [alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)**: metrics, [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), SLOs, [runbooks](../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md), escalation
+5. **[Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) & [alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)**: metrics, [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), SLOs, [runbooks](../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md), escalation
 
 ### Completion Criteria
 - Node deployment topology includes: sizing, network, storage, and HA strategy
 - Provisioning automation covers: initial setup, upgrades, backups, disaster recovery
-- CI/CD pipeline includes: contract testing, static analysis, deployment, verification, [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
-- [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) covers: node health, chain health, infrastructure health, security events
-- [Runbooks](../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md) document: deploy, upgrade, rollback, [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response procedures
+- CI/CD pipeline includes: contract testing, static analysis, deployment, verification, [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+- [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) covers: node health, chain health, infrastructure health, security events
+- [Runbooks](../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md) document: deploy, upgrade, rollback, [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response procedures
 
 ### Max Response Length
 5000 tokens
@@ -197,8 +197,8 @@ stages:
     gate: all integration tests passing
   - deploy-mainnet: forge script with mainnet RPC + private key from KMS
     gate: verify-testnet passed, multi-sig signing completed
-  - verify-mainnet: etherscan verification, [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) setup
-    gate: contract verified, [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) alerts active
+  - verify-mainnet: etherscan verification, [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) setup
+    gate: contract verified, [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) alerts active
 ```
 
 ### Smart Contract CI Tooling
@@ -224,7 +224,7 @@ tools:
     - forge diff-check         # Gas diff from baseline
 ```
 
-## [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) Stack
+## [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Stack
 
 ### Key Metrics
 | Category | Metric | Alert Threshold |
@@ -242,7 +242,7 @@ tools:
 
 ### Prometheus Exporter Configuration
 ```yaml
-# Ethereum node [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) with prometheus
+# Ethereum node [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) with prometheus
 scrape_configs:
   - job_name: 'geth'
     static_configs:
@@ -262,9 +262,9 @@ scrape_configs:
       - targets: ['localhost:9100']  # System metrics
 ```
 
-### Grafana [Dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md)
+### Grafana [Dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)
 ```
-Recommended [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md):
+Recommended [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md):
 ├── Ethereum Client: eth-client-dashboard (9965), syncing, peers
 ├── Lighthouse: Lighthouse Dashboard (16549), validator performance
 ├── MEV-Boost: mev-boost dashboard (custom), relay performance
@@ -341,7 +341,7 @@ environments:
 
 ## Security & Disaster Recovery
 
-### [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response [Runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)
+### [Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response [Runbook](../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)
 ```markdown
 ## Node Outage Response
 1. **Detect**: Alert from Prometheus (block height lag > 10)
@@ -351,7 +351,7 @@ environments:
    - If process dead: systemctl restart geth
    - If corrupt DB: restore from snapshot backup
 4. **Verify**: Check sync status (eth_syncing), peer count, block height
-5. **Post-mortem**: Document root cause, update [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+5. **Post-mortem**: Document root cause, update [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 ## Validator Key Compromise
 1. **Detect**: Alert on unexpected validator activity
@@ -364,7 +364,7 @@ environments:
 
 ## Rules
 1. Archive nodes for data availability, full nodes for RPC, validator nodes for consensus
-2. Use [Ansible](../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md) for [bare-metal](../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md), Terraform for cloud, Helm for K8s
+2. Use [Ansible](../../infrastructure-as-code/ansible/other/ansible/SKILL.md) for [bare-metal](../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md), Terraform for cloud, Helm for K8s
 3. Always run ≥2 geographically distributed RPC nodes behind load balancer for HA
 4. CI/CD: Foundry forge tests + Slither static analysis + contract verification in one pipeline
 5. Monitor: sync status (block height lag), peer count, mempool size, RPC latency, validator status
@@ -376,12 +376,12 @@ environments:
 11. RPC rate limiting should differentiate between authenticated and unauthenticated requests
 12. Validator clients should be on separate machines from execution/consensus clients
 13. Snapshot sync is preferred over full sync for initial setup (hours vs days)
-14. MEV-Boost requires separate [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and failover strategy
+14. MEV-Boost requires separate [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and failover strategy
 15. All blockchain nodes should use a NTP service for clock synchronization
 
 ## Implementation Examples
 
-### [Ansible](../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md) Playbook — Full Node Deployment
+### [Ansible](../../infrastructure-as-code/ansible/other/ansible/SKILL.md) Playbook — Full Node Deployment
 ```yaml
 ---
 - name: Deploy Ethereum full node
@@ -397,7 +397,7 @@ environments:
 
   tasks:
     - name: Create data directory
-      [ansible](../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md).builtin.file:
+      [ansible](../../infrastructure-as-code/ansible/other/ansible/SKILL.md).builtin.file:
         path: "{{ data_dir }}"
         state: directory
         owner: blockchain
@@ -405,13 +405,13 @@ environments:
         mode: '0750'
 
     - name: Deploy execution client (geth)
-      [ansible](../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md).builtin.copy:
+      [ansible](../../infrastructure-as-code/ansible/other/ansible/SKILL.md).builtin.copy:
         src: binaries/geth-linux-amd64
         dest: /usr/local/bin/geth
         mode: '0755'
 
     - name: Create systemd service for geth
-      [ansible](../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md).builtin.template:
+      [ansible](../../infrastructure-as-code/ansible/other/ansible/SKILL.md).builtin.template:
         src: templates/geth.service.j2
         dest: /etc/systemd/system/geth.service
       vars:
@@ -426,7 +426,7 @@ environments:
           --cache 8192
 
     - name: Start geth service
-      [ansible](../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md).builtin.systemd:
+      [ansible](../../infrastructure-as-code/ansible/other/ansible/SKILL.md).builtin.systemd:
         name: geth
         state: started
         enabled: true
@@ -475,7 +475,7 @@ services:
       - execution
     restart: unless-stopped
 
-  [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md):
+  [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md):
     image: prometheus/prometheus:latest
     ports:
       - "9090:9090"
@@ -538,7 +538,7 @@ echo "OK: Height=$LOCAL_DEC Peers=$PEERS_DEC"
 exit 0
 ```
 
-### Prometheus + Grafana [Alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) Rules
+### Prometheus + Grafana [Alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) Rules
 ```yaml
 # prometheus/alerts.yml
 groups:
@@ -589,11 +589,11 @@ groups:
   - ../../../Global_References/blockchain-infrastructure-advanced.md — Blockchain Infrastructure Advanced Topics
   - ../../../Global_References/blockchain-infrastructure-fundamentals.md — Blockchain Infrastructure Fundamentals
   - ../../../Global_References/ci-cd-smart-contracts.md — CI/CD for Smart Contracts
-  - ../../../Global_References/[disaster-recovery](../../DevOps_and_Cloud/Observability_and_SecOps/disaster-recovery/SKILL.md)-backup.md — Disaster Recovery & Backup
+  - ../../../Global_References/[disaster-recovery](../../containers-orchestration/common/other/disaster-recovery/SKILL.md)-backup.md — Disaster Recovery & Backup
   - ../../../Global_References/environment-mgmt.md — Environment Management
   - ../../../Global_References/kms-hsm.md — KMS & HSM for Blockchain
   - ../../../Global_References/mev-infrastructure.md — MEV Infrastructure
-  - ../../../Global_References/blockchain-infrastructure_monitoring-[alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md).md — [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
+  - ../../../Global_References/blockchain-infrastructure_monitoring-[alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md).md — [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
   - ../../../Global_References/node-deployment.md — Node Deployment
   - ../../../Global_References/performance-benchmarking.md — Performance Benchmarking
   - ../../../Global_References/rpc-infrastructure.md — RPC Infrastructure

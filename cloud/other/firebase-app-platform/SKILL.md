@@ -352,7 +352,7 @@ STRIPE_KEY=sk_test_xxx
 
 - Write strict Firestore security rules before any other code
 - Separate environments by [Firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md) project (staging/production)
-- Enable budget alerts and quota [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) in GCP console
+- Enable budget alerts and quota [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) in GCP console
 - Move privileged logic into Cloud Functions (never trust the client)
 - Use App Check to prevent API abuse from non-app clients
 - Enable Firestore [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging for compliance

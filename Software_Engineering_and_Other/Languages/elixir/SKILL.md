@@ -327,9 +327,9 @@ Phoenix 1.7+ encourages organizing code by domain context, not architectural lay
 
 Elixir deployments must handle database migrations carefully. Pattern: (a) run migrations BEFORE deploying new code (not simultaneously), (b) write backward-compatible migrations that don't break running old code, (c) use a separate migration step in CI/CD before the release step. Migration safety: (1) adding a column with a default is safe — old code ignores it, (2) removing a column: deploy code change (stop using column) FIRST, THEN remove column in next release, (3) renaming a column: add new column -> dual-write -> migrate data -> deploy code (read new) -> remove old column, (4) creating a table: always safe — deploy first. Use Ecto.Migrator for runtime migration in production: `Ecto.Migrator.run(Repo, "priv/repo/migrations", :up, all: true)`.
 
-## [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) with Telemetry
+## [Observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) with Telemetry
 
-Elixir's Telemetry library provides metrics and instrumentation. Each library (Phoenix, Ecto, Oban) emits Telemetry events: `[:phoenix, :endpoint, :start]`, `[:ecto, :query, :total]`, `[:oban, :job, :start]`. Attach handlers for (a) metrics aggregation (Prometheus via Telemetry.Metrics), (b) structured logging (via Logger.metadata), (c) distributed tracing ([OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) via :opentelemetry_elixir). Common metrics: HTTP request duration (histogram), DB query count/duration per request, LiveView mount time, Oban job duration and failure rate, VM metrics (memory, processes, reductions). Export via `prometheus_ecto`, `prometheus_phoenix`, or custom TelemetryMetricsPrometheus for a `/metrics` endpoint scraped by Prometheus.
+Elixir's Telemetry library provides metrics and instrumentation. Each library (Phoenix, Ecto, Oban) emits Telemetry events: `[:phoenix, :endpoint, :start]`, `[:ecto, :query, :total]`, `[:oban, :job, :start]`. Attach handlers for (a) metrics aggregation (Prometheus via Telemetry.Metrics), (b) structured logging (via Logger.metadata), (c) distributed tracing ([OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) via :opentelemetry_elixir). Common metrics: HTTP request duration (histogram), DB query count/duration per request, LiveView mount time, Oban job duration and failure rate, VM metrics (memory, processes, reductions). Export via `prometheus_ecto`, `prometheus_phoenix`, or custom TelemetryMetricsPrometheus for a `/metrics` endpoint scraped by Prometheus.
 
 ## Elixir Release & Deployment
 
@@ -345,7 +345,7 @@ ETS (Erlang Term Storage) is built into the BEAM and provides in-memory key-valu
 Deployment environment?
 ├── Bare metal / VPS → mix release + systemd unit
 │   Config: environment variables, secret files
-│   [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md): Prometheus + Grafana + Loki
+│   [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md): Prometheus + Grafana + Loki
 ├── [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) / [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) → Multi-stage Dockerfile
 │   Config: environment variables + config provider
 │   Orchestration: K8s Deployment with readiness/liveness probes
@@ -446,7 +446,7 @@ Where does this code belong?
 Production hosting choice?
 ├── Bare metal / VPS → mix release + systemd service
 │   Build: mix release on CI, scp to server, restart
-│   [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md): Prometheus (telemetry_metrics_prometheus) + Grafana
+│   [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md): Prometheus (telemetry_metrics_prometheus) + Grafana
 │   Logs: JSON logger -> journald -> Loki
 ├── [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) / [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) → Multi-stage Dockerfile with distroless runtime
 │   Builder: elixir:1.17-slim → deps.get → compile → release

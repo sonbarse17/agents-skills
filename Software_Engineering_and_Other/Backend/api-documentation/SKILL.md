@@ -99,7 +99,7 @@ Direct file write. No response text.
 | Swagger UI | Open source, customizable | Basic UX, no search |
 | Redoc | Beautiful, search, code samples | Read-only (no try-it) |
 | Stoplight Elements | Components-based, try-it | Less UI flexibility |
-| Postman | Collections, testing, [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) | Vendor lock-in |
+| Postman | Collections, testing, [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) | Vendor lock-in |
 | readme.io | Hosted, analytics, guides | SaaS, paid tiers |
 | Backstage (API docs) | Integrated portal | Requires Backstage setup |
 

@@ -35,7 +35,7 @@ predefined or custom roles, and manage Cloud API keys.
 
 For project creation, see the **[cloud-create-project](../../../../Product_and_Business/create-project/SKILL.md)** skill. For day-2 project operations (list, update, delete), see
 **[cloud-manage-project](../../../../Product_and_Business/manage-project/SKILL.md)**. For Elasticsearch-level role management (native users, role mappings, DLS/FLS), see the
-**[elasticsearch-authz](../../../../DevOps_and_Cloud/Observability_and_SecOps/elasticsearch-authz/SKILL.md)** skill.
+**[elasticsearch-authz](../../../../observability-monitoring-logging/elasticsearch/other/elasticsearch-authz/SKILL.md)** skill.
 
 For detailed API endpoints and request schemas, see [../../../Global_References/access-management_api-reference.md](../../../../Global_References/access-management_api-reference.md).
 
@@ -184,7 +184,7 @@ After execution, list members or keys again to confirm the change took effect.
 | Developer      | `developer`         | Search only           | Create indices, API keys, connectors, visualizations |
 | Viewer         | `viewer`            | Search, Obs, Security | Read-only access to project data and features        |
 | Editor         | `editor`            | Obs, Security         | Configure project features, read-only data indices   |
-| Tier 1 analyst | `t1_analyst`        | Security only         | Alert triage, general read, create [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md)        |
+| Tier 1 analyst | `t1_analyst`        | Security only         | Alert triage, general read, create [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)        |
 | Tier 2 analyst | `t2_analyst`        | Security only         | Alert triage, begin investigations, create cases     |
 | Tier 3 analyst | `t3_analyst`        | Security only         | Deep investigation, rules, lists, response actions   |
 | SOC manager    | `soc_manager`       | Security only         | Alerts, cases, endpoint policy, response actions     |
@@ -214,7 +214,7 @@ Elasticsearch security API and assign it to users through the Cloud API's `appli
   the Cloud API's `application_roles` field (`assign-custom-role`). When `application_roles` is set, the user gets
   **only** the specified custom role on SSO — not the default stack role for their Cloud role.
 - The `assign-custom-role` command sets `role_id` to the project-type Viewer role (`elasticsearch-viewer`,
-  `[observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-viewer`, or `security-viewer`) and sets `application_roles` to the custom role name. This ensures the
+  `[observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)-viewer`, or `security-viewer`) and sets `application_roles` to the custom role name. This ensures the
   user can see and access the project in the Cloud console but receives only the custom role's restricted permissions
   inside the project.
 - Cloud API keys can also use `application_roles` to gain ES/Kibana API access on [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) projects. See
@@ -252,7 +252,7 @@ not available in [Serverless](../../../../Software_Engineering_and_Other/Pattern
 | DLS or FLS restrictions                    | Custom role     |
 | Kibana feature-level access control        | Custom role     |
 
-For advanced DLS/FLS patterns (templated queries, ABAC), see the **[elasticsearch-authz](../../../../DevOps_and_Cloud/Observability_and_SecOps/elasticsearch-authz/SKILL.md)** skill.
+For advanced DLS/FLS patterns (templated queries, ABAC), see the **[elasticsearch-authz](../../../../observability-monitoring-logging/elasticsearch/other/elasticsearch-authz/SKILL.md)** skill.
 
 ## Cloud API Keys — ES and Kibana API Access
 
@@ -397,7 +397,7 @@ python3 skills/cloud/access-management/scripts/cloud_access.py create-custom-rol
 Then assign the custom role to a user using the `assign-custom-role` command, which sets `application_roles` in the
 Cloud API role assignment.
 
-### Full custom-role flow for read-only [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md)
+### Full custom-role flow for read-only [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)
 
 **Prompt:** "Add `bob@example.com` to my search project with read-only dashboard access."
 
@@ -425,12 +425,12 @@ doing so would grant the broader Viewer stack role and override the custom role'
 
 ### Update a user's project role
 
-**Prompt:** "Promote Bob to admin on our [observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) project."
+**Prompt:** "Promote Bob to admin on our [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) project."
 
 ```bash
 python3 skills/cloud/access-management/scripts/cloud_access.py assign-role \
   --user-id "$USER_ID" \
-  --roles '{"project":{"[observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)":[{"role_id":"admin","organization_id":"$ORG_ID","all":false,"project_ids":["$PROJECT_ID"]}]}}'
+  --roles '{"project":{"[observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)":[{"role_id":"admin","organization_id":"$ORG_ID","all":false,"project_ids":["$PROJECT_ID"]}]}}'
 ```
 
 Replace `$USER_ID`, `$ORG_ID`, and `$PROJECT_ID` with actual values. Use `list-members` to look up the user ID. To
@@ -468,7 +468,7 @@ The output includes each member's user ID, email, and assigned roles.
     migrations) should use short-lived keys (for example, `1d`, `7d`).
   - After a task is complete, prompt the user to revoke any keys that are no longer needed using `delete-api-key`. This
     applies to both short-lived and long-running keys.
-  - Long-running keys (for example, [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) pipelines) should still have a defined expiration and be rotated
+  - Long-running keys (for example, [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) pipelines) should still have a defined expiration and be rotated
     periodically rather than set to never expire.
 - Each organization supports up to 500 active API keys. Default expiration is 3 months.
 - Invitations expire after 72 hours by default. Resend if the user has not accepted.
@@ -482,5 +482,5 @@ The output includes each member's user ID, email, and assigned roles.
   (which uses `application_roles` in the Cloud API). Creating a custom role alone does not grant project access — the
   Cloud API assignment is required.
 - For network-level security (traffic filters, private links), see the **cloud-[network-security](../../../../containers-orchestration/common/other/network-security/SKILL.md)** skill.
-- For ES-level role management beyond Cloud roles (native users, DLS/FLS), see **[elasticsearch-authz](../../../../DevOps_and_Cloud/Observability_and_SecOps/elasticsearch-authz/SKILL.md)**.
+- For ES-level role management beyond Cloud roles (native users, DLS/FLS), see **[elasticsearch-authz](../../../../observability-monitoring-logging/elasticsearch/other/elasticsearch-authz/SKILL.md)**.
 

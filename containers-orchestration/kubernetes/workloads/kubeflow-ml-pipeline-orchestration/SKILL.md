@@ -306,7 +306,7 @@ service.
   run.
   **Fix:** Set up Kubeflow Profiles per team with `resourceQuotaSpec` limits
   from the start rather than retrofitting isolation after a quota conflict
-  [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) — namespace-level RBAC and quota is the intended [multi-tenancy](../../../common/other/multi-tenancy/SKILL.md)
+  [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) — namespace-level RBAC and quota is the intended [multi-tenancy](../../../common/other/multi-tenancy/SKILL.md)
   mechanism, not an afterthought.
 
 - **Symptom:** A pipeline run shows "Failed" in the KFP UI with a generic

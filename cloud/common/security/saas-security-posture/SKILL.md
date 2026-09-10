@@ -28,7 +28,7 @@ Secure every SaaS tool your company relies on with practical, command-driven har
 - **SOC 2 preparation** — auditors need evidence of MFA, access controls, and OAuth governance.
 - **Suspicious OAuth app** — an employee authorized a third-party app with broad scopes.
 - **SaaS sprawl** — teams sign up for tools with company email and nobody tracks them.
-- **Post-[incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) hardening** — after phishing or credential leaks, tighten every surface.
+- **Post-[incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) hardening** — after phishing or credential leaks, tighten every surface.
 
 ## 2. SaaS Inventory [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)
 
@@ -309,7 +309,7 @@ BREAK_GLASS_PW=$(openssl rand -base64 48)
 gam create user breakglass@company.com firstname "Break" lastname "Glass" \
   password "${BREAK_GLASS_PW}" org "/Admins" admin on
 # Store password in a sealed envelope in a physical safe
-# After every use: rotate password, re-seal, log the [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
+# After every use: rotate password, re-seal, log the [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
 ```
 
 ---
@@ -372,7 +372,7 @@ comm -23 <(awk '{print $2}' top_domains.txt | sort) \
   <(yq '.tools[].domains[]' saas-inventory.yaml | sort) > unapproved.txt
 ```
 
-### Automated [Alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
+### Automated [Alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 
 ```bash
 cat <<'SCRIPT' > /usr/local/bin/shadow-it-check.sh

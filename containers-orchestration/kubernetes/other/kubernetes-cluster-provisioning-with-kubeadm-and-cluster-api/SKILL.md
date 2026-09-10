@@ -298,7 +298,7 @@ every control-plane component, on infrastructure you operate yourself.
   **Fix:** Bootstrap tokens expire after 24 hours by default. Generate a
   fresh one from an existing control-plane node
   (`kubeadm token create --print-join-command`) rather than reusing an
-  old token from documentation or a [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md).
+  old token from documentation or a [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md).
 
 - **Symptom:** Joining a second/third control-plane node fails with
   "certificate key has expired" or a certificate-decryption error.

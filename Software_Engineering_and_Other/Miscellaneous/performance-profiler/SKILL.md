@@ -55,7 +55,7 @@ Performance analysis report with measured metrics, bottleneck identification, an
 - [ ] Optimization implemented and measured
 - [ ] Improvement verified with before/after metrics
 - [ ] Regression benchmark added
-- [ ] [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) alert configured (if in production)
+- [ ] [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) alert configured (if in production)
 
 ### Max Response Length
 200 lines.
@@ -66,7 +66,7 @@ Performance analysis report with measured metrics, bottleneck identification, an
 ```
 What is the performance symptom?
 ├── Slow API response time → Server-side [profiling](../../Frontend/profiling/SKILL.md)
-│   → APM ([DataDog](../../../DevOps_and_Cloud/Observability_and_SecOps/datadog/SKILL.md), New Relic) → flame graph → database query analysis
+│   → APM ([DataDog](../../../observability-monitoring-logging/datadog/other/datadog/SKILL.md), New Relic) → flame graph → database query analysis
 │   → Cache strategy → N+1 query → index → pagination
 ├── High CPU usage → CPU [profiling](../../Frontend/profiling/SKILL.md)
 │   → Sampling profiler → hot functions → algorithm optimization
@@ -576,9 +576,9 @@ What's the impact/effort ratio?
 ## Production Considerations
 
 - **Continuous [profiling](../../Frontend/profiling/SKILL.md)**: Deploy always-on profilers like Pyroscope or Google Cloud Profiler. Provides flame graphs 24/7 without manual triggering. Distinguishes routine patterns from anomalies.
-- **APM integration**: Use Application Performance [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) ([Datadog](../../../DevOps_and_Cloud/Observability_and_SecOps/datadog/SKILL.md), New Relic, Grafana) for real-time trace sampling. Correlate slow traces with deployments, feature flags, and region.
-- **Performance budgets**: Set budgets for bundle size (JS/CSS), API latency (p95 < 200ms), and memory usage (< 500MB). Fail CI when budgets are exceeded. Publish to [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md).
-- **Synthetic [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: Set up synthetic transactions that exercise critical user journeys. Alert on latency regressions in top percentiles (p95, p99). Run from multiple geographic regions.
+- **APM integration**: Use Application Performance [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) ([Datadog](../../../observability-monitoring-logging/datadog/other/datadog/SKILL.md), New Relic, Grafana) for real-time trace sampling. Correlate slow traces with deployments, feature flags, and region.
+- **Performance budgets**: Set budgets for bundle size (JS/CSS), API latency (p95 < 200ms), and memory usage (< 500MB). Fail CI when budgets are exceeded. Publish to [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md).
+- **Synthetic [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**: Set up synthetic transactions that exercise critical user journeys. Alert on latency regressions in top percentiles (p95, p99). Run from multiple geographic regions.
 
 ## Anti-Patterns
 
@@ -603,5 +603,5 @@ What's the impact/effort ratio?
 - **Lazy loading and code splitting**: Split bundles by route. Defer non-critical JavaScript. Load images lazily with IntersectionObserver. Use dynamic imports for rarely-used modules.
 
 ## Handoff
-Hand off to `[dev-loop-debugging-strategy](../../../DevOps_and_Cloud/Observability_and_SecOps/debugging-strategy/SKILL.md)` if [profiling](../../Frontend/profiling/SKILL.md) reveals a bug. Hand off to `dev-loop-[code-review](../code-review/SKILL.md)` for code-level optimization review. Hand off to `[dev-loop-refactor-guide](../../Frontend/refactor-guide/SKILL.md)` for performance-related refactoring.
+Hand off to `[dev-loop-debugging-strategy](../../Patterns/debugging-strategy/SKILL.md)` if [profiling](../../Frontend/profiling/SKILL.md) reveals a bug. Hand off to `dev-loop-[code-review](../code-review/SKILL.md)` for code-level optimization review. Hand off to `[dev-loop-refactor-guide](../../Frontend/refactor-guide/SKILL.md)` for performance-related refactoring.
 

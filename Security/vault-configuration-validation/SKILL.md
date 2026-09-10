@@ -40,7 +40,7 @@ auth-method role binds to `bound_service_account_names: ["*"]` instead
 of a specific service account. Because [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) policy changes take effect
 immediately and apply broadly (a single policy can be attached to many
 tokens/roles), an overly broad or subtly wrong policy is a
-production-security-[incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-in-waiting the moment it's applied, not
+production-security-[incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-in-waiting the moment it's applied, not
 just a [code-review](../../Software_Engineering_and_Other/Miscellaneous/code-review/SKILL.md) nitpick. This skill covers validating policies, auth
 method bindings, and seal/storage configuration changes *before*
 rollout — via `[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) policy fmt`/`[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) policy read` inspection,
@@ -293,7 +293,7 @@ storage backend changes).
 
 - **Symptom:** Live [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) policy state has drifted from what's in the
   version-controlled repo, because someone ran `[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) policy write`
-  directly during an [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) and never backported the change.
+  directly during an [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) and never backported the change.
   **Fix:** Run a periodic diff of live policy/auth-method state against
   the repo (step 8) as a scheduled check, and require any emergency
   direct change to be backported to version control and reviewed
@@ -364,7 +364,7 @@ of truth and the live cluster state in sync from the outset.
 - [secrets-management](../../../[devsecops](../devsecops/SKILL.md)/skills/[secrets-management](../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md) —
   the broader secrets-manager selection and least-privilege rationale
   this skill's [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-specific policy review implements in HCL terms.
-- [security-gate-exception-management](../../../[devsecops](../devsecops/SKILL.md)/skills/[security-gate-exception-management](../../DevOps_and_Cloud/Observability_and_SecOps/security-gate-exception-management/SKILL.md)/SKILL.md) —
+- [security-gate-exception-management](../../../[devsecops](../devsecops/SKILL.md)/skills/[security-gate-exception-management](../security-gate-exception-management/SKILL.md)/SKILL.md) —
   if a genuinely broad grant is temporarily necessary (e.g. a migration
   needing wider read access for a bounded period), route it through a
   scoped, expiring exception rather than approving it as permanent

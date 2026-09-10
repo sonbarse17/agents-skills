@@ -51,7 +51,7 @@ in; a policy engine is not a substitute for the underlying controls
 
 - The user asks to "write an OPA/Rego policy" or "add Kyverno policies"
   for a [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster.
-- The user wants to block Terraform/[CloudFormation](../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md)/[Pulumi](../../DevOps_and_Cloud/Infrastructure_as_Code/pulumi/SKILL.md) plans that
+- The user wants to block Terraform/[CloudFormation](../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md)/[Pulumi](../../infrastructure-as-code/pulumi/other/pulumi/SKILL.md) plans that
   would create insecure infrastructure (public storage buckets,
   unencrypted volumes, overly permissive security groups/IAM) before
   `apply` runs.
@@ -237,7 +237,7 @@ in; a policy engine is not a substitute for the underlying controls
 
 - **Symptom:** A new Gatekeeper/Kyverno policy is deployed directly in
   `Enforce` mode and immediately blocks a legitimate deployment,
-  triggering an [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+  triggering an [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
   **Fix:** Always deploy new policies in `[Audit](../../AI_and_Agents/Operations/audit/SKILL.md)`/`dry-run` first, review
   what they would have blocked over a representative time window, then
   switch to enforcing with documented exceptions for anything legitimate

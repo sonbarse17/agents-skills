@@ -120,7 +120,7 @@ Configure in `~/.claude/settings.json`:
 
 | Mode           | Behavior                       | Best For                                          |
 | -------------- | ------------------------------ | ------------------------------------------------- |
-| `"tmux"`       | Each teammate in a tmux pane   | Development workflows, [monitoring](../../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) multiple agents |
+| `"tmux"`       | Each teammate in a tmux pane   | Development workflows, [monitoring](../../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) multiple agents |
 | `"iterm2"`     | Each teammate in an iTerm2 tab | macOS users who prefer iTerm2                     |
 | `"in-process"` | All teammates in same process  | Simple tasks, CI/CD environments                  |
 

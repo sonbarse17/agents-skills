@@ -237,7 +237,7 @@ rather than repeating.
        return "draft" if not state["approved"] else END
    ```
 
-7. **Stream intermediate state for [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)**, rather than only
+7. **Stream intermediate state for [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)**, rather than only
    consuming the final result — both `AgentExecutor` and LangGraph support
    streaming (`.stream()`/`.astream()`), which surfaces each tool call and
    state transition as it happens, matching the "instrument every loop

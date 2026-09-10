@@ -194,10 +194,10 @@ Cloud Router:
 2. **Implement encryption** for VPN tunnels
 3. **Use VPC endpoints** to avoid internet routing
 4. **Configure network ACLs** and security groups
-5. **Enable VPC Flow Logs** for [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+5. **Enable VPC Flow Logs** for [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 6. **Implement DDoS protection**
 7. **Use PrivateLink/Private Endpoints**
-8. **Monitor connections** with CloudWatch/Azure Monitor/Cloud [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)/OCI [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+8. **Monitor connections** with CloudWatch/Azure Monitor/Cloud [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)/OCI [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 9. **Implement redundancy** (dual tunnels)
 10. **Regular security audits**
 
@@ -226,7 +226,7 @@ resource "aws_vpn_connection" "secondary" {
 - Equal-cost multi-path (ECMP) routing
 - Monitor health of all connections
 
-## [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and Troubleshooting
+## [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and Troubleshooting
 
 ### Key Metrics
 
@@ -265,5 +265,5 @@ oci network cpe list
 ## Related Skills
 
 - `[multi-cloud-architecture](../multi-[cloud-architecture](../cloud-architecture/SKILL.md)/SKILL.md)` - For architecture decisions
-- `[terraform-module-library](../../../../DevOps_and_Cloud/Infrastructure_as_Code/terraform-module-library/SKILL.md)` - For IaC implementation
+- `[terraform-module-library](../../../../infrastructure-as-code/terraform/modules/terraform-module-library/SKILL.md)` - For IaC implementation
 

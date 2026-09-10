@@ -143,7 +143,7 @@ step:
 
 Store SBOM alongside the artifact it describes. Distribution options:
 - OCI registry: store as an OCI artifact attached to the image. Discoverable with `cosign download attestation`. Preferred for container-based deployments.
-- Dependency Track: open-source SBOM analysis platform. Accepts SBOM upload via API. Continuous [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) against vulnerability databases. Notifications on new CVEs affecting deployed components.
+- Dependency Track: open-source SBOM analysis platform. Accepts SBOM upload via API. Continuous [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) against vulnerability databases. Notifications on new CVEs affecting deployed components.
 - Harbor: container registry with built-in SBOM storage. Provides vulnerability reports linked to SBOM. Retention policy can automatically clean old SBOMs.
 - Artifactory: universal package manager with SBOM support. Tag SBOM to build artifacts.
 
@@ -209,8 +209,8 @@ Sign SBOM with Sigstore Cosign. Keyless mode preferred. Verify attestation signa
 ### Step 6: CI Pipeline Integration
 Generate SBOM after build, before image push. Store in artifact registry. Verify attestation in deployment pipeline. Gate deployment on vulnerability policy. Monthly full dependency [audit](../../AI_and_Agents/Operations/audit/SKILL.md) with SBOM diff report.
 
-### Step 7: Distribution & [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
-Push SBOM to Dependency Track or Harbor for continuous [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md). Configure alerts for new vulnerabilities on deployed components. Weekly re-scan of all active SBOMs. Retention: current + last 3 releases.
+### Step 7: Distribution & [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+Push SBOM to Dependency Track or Harbor for continuous [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md). Configure alerts for new vulnerabilities on deployed components. Weekly re-scan of all active SBOMs. Retention: current + last 3 releases.
 
 ## SBOM Generation Examples
 
@@ -387,14 +387,14 @@ Attacker pushes a malicious tag to a registry that overrides an existing version
 - SBOM signed with Sigstore (keyless attestation)
 - Vulnerability correlation with reachability analysis
 - [Policy-as-code](../policy-as-code/SKILL.md) for deployment gates (OPA)
-- Continuous [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) with Dependency Track
+- Continuous [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) with Dependency Track
 - Automated PR creation for vulnerable dependencies
 - SBOM diff tracking for drift detection
 
 ### Level 4: Optimized
 - Supply chain levels for software artifacts (SLSA L3+)
 - In-toto attestation framework for build chain integrity
-- Real-time vulnerability [alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) with EPSS scoring
+- Real-time vulnerability [alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) with EPSS scoring
 - Automated license compliance with legal workflow
 - SBOM composition analysis (SBOM-of-SBOMs)
 - Cross-org SBOM sharing and verification
@@ -419,7 +419,7 @@ Attacker pushes a malicious tag to a registry that overrides an existing version
 - Vendor SBOM verification (third-party software)
 - Penetration test of build pipeline integrity
 
-### [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response
+### [Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response
 1. Detect: new CVE affecting deployed component, supply chain compromise notification, SBOM attestation verification failure
 2. Assess: affected components, version range, exploitability (EPSS), reachability from application code
 3. Contain: pin to safe version, patch/update, block vulnerable version in policy
@@ -440,7 +440,7 @@ Generating an SBOM but never scanning it for vulnerabilities defeats the purpose
 SBOM that only includes direct dependencies misses the majority of the attack surface. Transitive dependencies account for 70-90% of vulnerabilities in modern applications. Include full dependency tree in the SBOM.
 
 ### Anti-Pattern: One-Time SBOM
-Generating SBOM once at release and never refreshing it. New vulnerabilities are discovered daily. Deployed components must be continuously monitored against updated vulnerability databases. Weekly re-scan with automated [alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md).
+Generating SBOM once at release and never refreshing it. New vulnerabilities are discovered daily. Deployed components must be continuously monitored against updated vulnerability databases. Weekly re-scan with automated [alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md).
 
 ### Anti-Pattern: No Attestation
 SBOM without cryptographic attestation can be modified or replaced by an attacker. Anyone could claim an artifact has a clean SBOM. Sign the SBOM with Sigstore/Cosign and verify before deployment.
@@ -538,7 +538,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
+### [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -573,7 +573,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing ([OpenTelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
+5. Profile latency with distributed tracing ([OpenTelemetry](../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -607,6 +607,6 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - Fail securely — errors default to safe behavior.
 - Log security-relevant events for [audit](../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) from day one, not as an afterthought.
+- Design for [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

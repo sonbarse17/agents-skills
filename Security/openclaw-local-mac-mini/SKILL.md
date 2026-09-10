@@ -19,7 +19,7 @@ depends_on:
 
 # OpenClaw Local + Mac mini Setup
 
-Use this skill when you want to run [OpenClaw](https://[github](../../ci-cd/github-actions/other/github/SKILL.md).com/openclaw/openclaw) on a developer laptop or promote it to a stable Mac mini host. Covers cloning and bootstrapping, [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) Compose configuration, Mac mini hardware optimization, networking, [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), and production-grade launchd services.
+Use this skill when you want to run [OpenClaw](https://[github](../../ci-cd/github-actions/other/github/SKILL.md).com/openclaw/openclaw) on a developer laptop or promote it to a stable Mac mini host. Covers cloning and bootstrapping, [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) Compose configuration, Mac mini hardware optimization, networking, [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), and production-grade launchd services.
 
 ## When to Use
 
@@ -27,7 +27,7 @@ Use this skill when you want to run [OpenClaw](https://[github](../../ci-cd/gith
 - Setting up a dedicated Mac mini as a home-lab AI server
 - Deploying OpenClaw with [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) Compose for reproducible environments
 - Optimizing macOS for headless server operation
-- [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) a local AI service for uptime and performance
+- [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) a local AI service for uptime and performance
 
 ## Prerequisites
 
@@ -491,7 +491,7 @@ sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setblockall on
 sudo /usr/libexec/ApplicationFirewall/socketfilterfw --getglobalstate
 ```
 
-## [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+## [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 ### Health Check Script
 
@@ -541,13 +541,13 @@ crontab -e
 # */5 * * * * /Users/openclaw/openclaw/healthcheck.sh
 ```
 
-### Resource [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+### Resource [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 ```bash
 # Monitor CPU and memory usage of OpenClaw
 ps aux | grep -E 'node|[docker](../../containers-orchestration/docker/other/docker/SKILL.md)' | grep -v grep
 
-# Continuous [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) with top (non-interactive)
+# Continuous [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) with top (non-interactive)
 top -l 1 -s 0 | grep -E 'node|[docker](../../containers-orchestration/docker/other/docker/SKILL.md)'
 
 # Disk usage check

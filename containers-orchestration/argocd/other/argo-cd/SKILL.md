@@ -48,7 +48,7 @@ Before activating, verify:
 - Git provider ([GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md), GitLab, Bitbucket — affects webhook config).
 - Authentication method (local admin, SSO with OIDC, Dex).
 - Environment structure (dev/staging/prod per cluster or namespace).
-- [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) tools (Prometheus operator for Argo CD metrics).
+- [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) tools (Prometheus operator for Argo CD metrics).
 
 ### Output Artifact
 Writes to Argo CD Application YAML, ApplicationSet YAML, Argo CD project config, RBAC config, and notification templates.
@@ -230,8 +230,8 @@ spec:
   info:
     - name: Slack Channel
       value: "#team-payments"
-    - name: [Runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)
-      value: "https://[runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md).example.com/payment-service"
+    - name: [Runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)
+      value: "https://[runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md).example.com/payment-service"
 ```
 
 ### Step 3: ApplicationSet with Git Generator
@@ -620,7 +620,7 @@ Using `role:admin` for all users. Create least-privilege roles (readonly, sync-o
 - Configure webhook triggers for faster sync — don't rely on polling.
 - Pin targetRevision to specific branches or tags, never `HEAD` for production.
 - Define Projects to isolate teams and clusters.
-- Log all sync failures to external [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
+- Log all sync failures to external [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
 
 ## Output Format
 Argo CD Application/ApplicationSet YAML, Project YAML, RBAC config, notification templates.

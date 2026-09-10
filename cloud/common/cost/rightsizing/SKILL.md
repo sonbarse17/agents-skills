@@ -98,7 +98,7 @@ utilization it was based on, not just one dimension.
 A resize changes the workload's behavior — a smaller instance under real load may show different
 utilization than the old one did, because contention, garbage collection, or I/O wait patterns
 shift with the resource ceiling. Re-measuring after the change, not just before it, catches a
-resize that was too aggressive before it turns into an [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+resize that was too aggressive before it turns into an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 
 **Done when:** every resize is followed by a post-change metrics check confirming the new size
 holds up under real traffic.

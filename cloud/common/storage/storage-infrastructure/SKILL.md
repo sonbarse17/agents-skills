@@ -76,13 +76,13 @@ No preamble. No postamble. No explanations.
 - [ ] Redundancy model with failure domain mapping.
 - [ ] Performance target with benchmark results from `fio`.
 - [ ] CSI driver configured for [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) with StorageClass.
-- [ ] [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md): [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), performance, wear, errors.
+- [ ] [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md): [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), performance, wear, errors.
 
 ### Max Response Length
 400 lines.
 
 ## Quick Start
-Identify workload type (DB = block NVMe-oF, app = NFS, backup = object S3) → size [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)+IOPS → select media+RAID → configure SAN/NAS or SDS (Ceph/MinIO) → provision in K8s with CSI driver → benchmark with `fio` → set up [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
+Identify workload type (DB = block NVMe-oF, app = NFS, backup = object S3) → size [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)+IOPS → select media+RAID → configure SAN/NAS or SDS (Ceph/MinIO) → provision in K8s with CSI driver → benchmark with `fio` → set up [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
 
 ## Decision Tree: Storage Protocol
 | Protocol | Latency | Throughput | Use Case |
@@ -328,13 +328,13 @@ fio --name=dbmix --ioengine=libaio --rw=randrw --rwmixread=70 \
     --bs=8k --direct=1 --numjobs=8 --iodepth=64 --runtime=300 \
     --filename=/dev/nvme0n1 --time_based
 
-# iostat — Live [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+# iostat — Live [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 iostat -x 2 nvme0n1
 # blktrace — I/O tracing for latency breakdown
 blktrace -d /dev/nvme0n1 -o - | blkparse -i -
 ```
 
-### Step 8: Storage [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+### Step 8: Storage [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 ```yaml
 Key metrics:
   [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md):    used / total bytes, % full, growth rate
@@ -430,7 +430,7 @@ zpool add tank log mirror /dev/nvme6n1 /dev/nvme7n1
 zpool add tank cache /dev/nvme8n1
 ```
 
-### Step 12: S.M.A.R.T [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) Configuration
+### Step 12: S.M.A.R.T [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Configuration
 ```yaml
 # node_exporter textfile collector for SMART metrics
 # /etc/node_exporter/smart-wrapper.sh
@@ -470,7 +470,7 @@ alert_rules:
 
 ## Tool Comparison: Software-Defined Storage
 
-| Feature | Ceph | MinIO | GlusterFS | [Longhorn](../../../../DevOps_and_Cloud/Observability_and_SecOps/longhorn/SKILL.md) |
+| Feature | Ceph | MinIO | GlusterFS | [Longhorn](../../../../containers-orchestration/kubernetes/storage/longhorn/SKILL.md) |
 |---|---|---|---|---|
 | Type | Unified (block/file/object) | Object only | File only | Block (K8s-native) |
 | Protocol | RBD, CephFS, S3 | S3-compatible | GlusterFS (FUSE/NFS) | iSCSI, NFS |
@@ -502,7 +502,7 @@ alert_rules:
 - MinIO erasure coding: 16 drives → 8 data + 8 parity (tolerates 8 failures).
 - MinIO uses `mc admin prometheus generate` for Prometheus integration.
 - Filesystem atime updates add significant write amplification — use noatime.
-- S.M.A.R.T [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) for HDD: pre-fail attributes (5 Reallocated Sectors, 187 Reported Uncorrectable).
+- S.M.A.R.T [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) for HDD: pre-fail attributes (5 Reallocated Sectors, 187 Reported Uncorrectable).
 - NVMe SSD: watch Temperature, Percentage Used, Available Spare, Media Errors.
 - Storage network: use RoCE (RDMA over Converged Ethernet) with PFC + ECN for lossless fabric.
 - Query Ceph OSD latency per OSD: `ceph osd perf` — fix OSDs with high [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) latency.
@@ -531,7 +531,7 @@ alert_rules:
 - No ECC RAM with ZFS — memory corruption silently damages data.
 - MinIO without erasure coding — single disk failure loses all data on that node.
 - Running `fio` on filesystem instead of raw block device — filesystem overhead skews results.
-- No wear level [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) — surprise SSD failures at end of life.
+- No wear level [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) — surprise SSD failures at end of life.
 - Mixing HDD and SSD in same RAID group — group-wide performance limited by slowest.
 - Overwriting existing data on same LBAs — use `blkdiscard` / `nvme format` first.
 - Ceph OSDs sharing same physical disk as OS — resource contention and data loss risk.
@@ -546,5 +546,5 @@ alert_rules:
 - `devops-[backup-dr](../../../../Software_Engineering_and_Other/Frontend/backup-dr/SKILL.md)` for backup strategies tied to storage infrastructure.
 - `devops-[datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md)` for physical cabling and power for storage arrays.
 - `devops-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)` for CSI driver deployment and PVC lifecycle.
-- `devops-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)` for Prometheus-based storage [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
+- `devops-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)` for Prometheus-based storage [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
 

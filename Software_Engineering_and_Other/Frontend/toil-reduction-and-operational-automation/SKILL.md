@@ -40,7 +40,7 @@ Reliability Engineering* book) covers defining toil precisely enough to
 recognize it, measuring it as a percentage of a team's time against the
 commonly cited under-50% guideline, prioritizing what to automate first
 using an evidence-based scoring framework instead of gut feel, and
-climbing a [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)-to-automation maturity ladder deliberately so
+climbing a [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)-to-automation maturity ladder deliberately so
 automation is trustworthy rather than a new source of unsupervised risk.
 
 ## When to use
@@ -50,9 +50,9 @@ automation is trustworthy rather than a new source of unsupervised risk.
 - Deciding which of several recurring manual tasks to automate first
   with limited engineering time.
 - An on-call load review (see
-  [incident-response-and-on-call-management](../[incident-response-and-on-call-management](../[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../DevOps_and_Cloud/Observability_and_SecOps/on-call-management/SKILL.md)/SKILL.md)/SKILL.md))
+  [incident-response-and-on-call-management](../[incident-response-and-on-call-management](../[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../observability-monitoring-logging/common/alerting/on-call-management/SKILL.md)/SKILL.md)/SKILL.md))
   surfaces a specific recurring manual fix as a major source of pages.
-- A written [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) exists for a recurring task and the team wants to
+- A written [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) exists for a recurring task and the team wants to
   move it toward automation, but isn't sure how far to automate it.
 - Tracking toil as an explicit, reported metric rather than an
   anecdotal complaint.
@@ -63,13 +63,13 @@ automation is trustworthy rather than a new source of unsupervised risk.
   tagging, a periodic time-use survey, or an on-call retro that reviews
   what pages/manual interventions happened that rotation.
 - An inventory (even a simple spreadsheet) of known recurring manual
-  tasks and [runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md).
+  tasks and [runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md).
 - An automation platform appropriate to the task: a CI/CD pipeline for
   scheduled jobs, a ChatOps bot for human-triggered scripted actions,
   [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) controllers/operators for continuous reconciliation, or
   plain scheduled scripts — pick based on what the task actually needs,
   not the most sophisticated option available.
-- [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) for the automation itself once built — an automation with
+- [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) for the automation itself once built — an automation with
   no health signal of its own is a liability (see Common pitfalls).
 
 ## Step-by-step guidance
@@ -122,11 +122,11 @@ automation is trustworthy rather than a new source of unsupervised risk.
    platform project — quick wins free up time that then funds the
    bigger automation work.
 
-5. **Climb the [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)-to-automation maturity ladder deliberately** —
+5. **Climb the [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)-to-automation maturity ladder deliberately** —
    don't skip levels, especially the documentation step:
    - **Level 0 — Tribal knowledge:** undocumented; only one person knows
      how to do it.
-   - **Level 1 — Written [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md):** manual steps documented so anyone on
+   - **Level 1 — Written [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md):** manual steps documented so anyone on
      the rotation can follow them.
    - **Level 2 — Semi-automated / ChatOps:** the steps are scripted, but
      a human still triggers each run and reviews the outcome (e.g. a
@@ -138,7 +138,7 @@ automation is trustworthy rather than a new source of unsupervised risk.
    - **Level 4 — Fully autonomous self-healing:** the system detects and
      remediates without a human in the loop, within explicit safety
      limits (rate limits, circuit breakers, [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging) and with
-     [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) if the automation itself fails.
+     [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) if the automation itself fails.
 
    Example Level 1→2 step — a liveness probe closes half the gap for the
    payment-worker example automatically:
@@ -166,8 +166,8 @@ automation is trustworthy rather than a new source of unsupervised risk.
 
 6. **Instrument the automation itself** once built: emit a
    success/failure metric and alert if the automation fails, and
-   decommission the old manual [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)/alert path once the automation is
-   proven reliable — an automation with no [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) of its own can
+   decommission the old manual [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)/alert path once the automation is
+   proven reliable — an automation with no [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) of its own can
    fail silently while everyone assumes the toil is handled.
 
 7. **Re-measure the toil budget after landing automation**, and
@@ -192,7 +192,7 @@ automation is trustworthy rather than a new source of unsupervised risk.
   long-running "automate everything" platform initiative — the small
   wins compound and free time for the bigger ones.
 - Give every piece of automation its own owner and its own
-  [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) — an automation that silently stops working is worse
+  [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) — an automation that silently stops working is worse
   than the manual process it replaced, because nobody notices it failed.
 
 ## Common pitfalls
@@ -202,7 +202,7 @@ automation is trustworthy rather than a new source of unsupervised risk.
   it's been silently failing for weeks while the underlying manual toil
   quietly crept back (discovered only during an outage).
   **Fix:** Instrument every automation with its own success/failure
-  metric and alert — automation with no [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) of its own is a
+  metric and alert — automation with no [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) of its own is a
   liability, not a solution.
 
 - **Symptom:** The team commits to "automate everything" as one large
@@ -227,21 +227,21 @@ automation is trustworthy rather than a new source of unsupervised risk.
   should be fixed or eliminated instead of preserved-but-automated —
   cross-check against any related postmortem action items first.
 
-- **Symptom:** A [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) jumps straight from "one person knows how to do
+- **Symptom:** A [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) jumps straight from "one person knows how to do
   this" to a fully autonomous auto-remediation script, and it takes an
   unanticipated action on an edge case nobody had tested, making an
-  [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) worse.
+  [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) worse.
   **Fix:** Climb the maturity ladder in order — document (Level 1), then
   semi-automate with a human trigger (Level 2), then gate full
   automation behind human approval (Level 3), and only grant full
   autonomy (Level 4) after the approval-gated version has proven
   reliable across a range of real conditions, with safety limits and its
-  own failure [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) in place.
+  own failure [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) in place.
 
 ## Worked example
 
 **Scenario:** A monthly on-call retro (see
-[incident-response-and-on-call-management](../[incident-response-and-on-call-management](../[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../DevOps_and_Cloud/Observability_and_SecOps/on-call-management/SKILL.md)/SKILL.md)/SKILL.md))
+[incident-response-and-on-call-management](../[incident-response-and-on-call-management](../[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../observability-monitoring-logging/common/alerting/on-call-management/SKILL.md)/SKILL.md)/SKILL.md))
 shows that roughly 63% of on-call hours over the last rotation went to
 two recurring manual tasks: restarting a flapping `payment-worker` pod
 (~8 times/week, 20 min each) and manually clearing a stuck message queue
@@ -267,6 +267,6 @@ for an unaddressed defect.
 ## Cross-references
 
 - [blameless-postmortem-and-root-cause-analysis](../[blameless-postmortem-and-root-cause-analysis](../blameless-postmortem-and-[root-cause-analysis](../../../DevOps_and_Cloud/Observability_and_SecOps/root-cause-analysis/SKILL.md)/SKILL.md)/SKILL.md) — recurring postmortem action items are frequently automation candidates, and postmortems help decide whether to automate a workaround or fix the underlying defect.
-- [incident-response-and-on-call-management](../[incident-response-and-on-call-management](../[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../DevOps_and_Cloud/Observability_and_SecOps/on-call-management/SKILL.md)/SKILL.md)/SKILL.md) — on-call load reviews are a primary source for discovering where toil concentrates.
-- [capacity-planning-and-load-testing](../[capacity-planning-and-load-testing](../../../DevOps_and_Cloud/Observability_and_SecOps/[capacity-planning](../../../DevOps_and_Cloud/Observability_and_SecOps/[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-planning/SKILL.md)-and-[load-testing](../../../DevOps_and_Cloud/Observability_and_SecOps/load-testing/SKILL.md)/SKILL.md)/SKILL.md) — repeated manual load-test execution is itself a toil candidate worth scheduling into automated CI runs.
-- [Prometheus and Grafana [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) stack](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md) — used to instrument the health of automation itself (success/failure metrics and alerts) once built.
+- [incident-response-and-on-call-management](../[incident-response-and-on-call-management](../[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../observability-monitoring-logging/common/alerting/on-call-management/SKILL.md)/SKILL.md)/SKILL.md) — on-call load reviews are a primary source for discovering where toil concentrates.
+- [capacity-planning-and-load-testing](../[capacity-planning-and-load-testing](../../../DevOps_and_Cloud/Observability_and_SecOps/[capacity-planning](../../../DevOps_and_Cloud/Observability_and_SecOps/[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-planning/SKILL.md)-and-[load-testing](../../../observability-monitoring-logging/common/capacity-monitoring/load-testing/SKILL.md)/SKILL.md)/SKILL.md) — repeated manual load-test execution is itself a toil candidate worth scheduling into automated CI runs.
+- [Prometheus and Grafana [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) stack](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md) — used to instrument the health of automation itself (success/failure metrics and alerts) once built.

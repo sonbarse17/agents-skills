@@ -227,7 +227,7 @@ interface LockMetrics {
   timeoutRate: number;       // how often locks expire before release
 }
 
-// Export metrics via your [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) system
+// Export metrics via your [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) system
 metrics.histogram('lock.acquisition_time', acquisitionTime);
 metrics.histogram('lock.hold_time', holdTime);
 metrics.counter('lock.contention', contentionCount);

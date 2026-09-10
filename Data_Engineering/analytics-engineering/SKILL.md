@@ -585,5 +585,5 @@ FROM {{ ref('stg_customers') }}
 ## Handoff
 `[data-science-statistical-analysis](../statistical-analysis/SKILL.md)` for analytical statistical methods
 `[data-science-experimentation](../../AI_and_Agents/Models_and_FineTuning/experimentation/SKILL.md)` for experiment metric pipelines
-`data-quality` for data quality testing and [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+`data-quality` for data quality testing and [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 

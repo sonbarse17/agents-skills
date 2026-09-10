@@ -70,7 +70,7 @@ subscription/project" isolation the cloud variants can lean on.
   standardized, with inventory-as-code (IPAM/DCIM) covering the nodes this
   cluster will run on.
 - Enough physical/VM [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) provisioned with real lead time — unlike
-  cloud, there's no on-demand node to add mid-[incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md); [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-plan with
+  cloud, there's no on-demand node to add mid-[incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md); [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-plan with
   actual procurement/allocation lead time in mind.
 - A private container registry (e.g., Harbor or an equivalent) reachable
   from every cluster node, pre-populated with mirrored copies of every
@@ -112,7 +112,7 @@ declaratively across many clusters/sites matters, layer Cluster API on
 top. See
 [kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../../Containers_and_Orchestration/[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-cluster-provisioning-with-kubeadm-and-cluster-api/SKILL.md)/SKILL.md).
 Because this cluster's control plane has no managed-service SLA behind
-it, treat etcd snapshot backups and quorum/health [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) as a
+it, treat etcd snapshot backups and quorum/health [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) as a
 standing operational phase from day one, not an [incident-response](../../Observability_and_SecOps/[incident](../../Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)
 afterthought — see
 [etcd-backup-restore-and-cluster-health](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[etcd-backup-restore-and-cluster-health](../../../../containers-orchestration/kubernetes/storage/etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md).
@@ -137,11 +137,11 @@ on-prem build.
 
 **Phase 4 — Backstage on the cluster, backed by self-hosted [PostgreSQL](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) on
 in-cluster block storage.** Package Backstage as a Helm chart, deploy it
-against a Postgres instance running in-cluster on Rook-Ceph or [Longhorn](../../../../DevOps_and_Cloud/Observability_and_SecOps/longhorn/SKILL.md)
+against a Postgres instance running in-cluster on Rook-Ceph or [Longhorn](../../../../containers-orchestration/kubernetes/storage/longhorn/SKILL.md)
 block storage (Rook-Ceph if object/shared-filesystem storage is also
-needed elsewhere on this cluster; [Longhorn](../../../../DevOps_and_Cloud/Observability_and_SecOps/longhorn/SKILL.md) if only replicated block
+needed elsewhere on this cluster; [Longhorn](../../../../containers-orchestration/kubernetes/storage/longhorn/SKILL.md) if only replicated block
 storage is required — see
-[rook-ceph-storage-operations](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[rook-ceph-storage-operations](../../../../DevOps_and_Cloud/Observability_and_SecOps/rook-ceph-storage-operations/SKILL.md)/SKILL.md)
+[rook-ceph-storage-operations](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[rook-ceph-storage-operations](../../../../containers-orchestration/kubernetes/storage/rook-ceph-storage-operations/SKILL.md)/SKILL.md)
 and
 [longhorn-storage-configuration](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[longhorn-storage-configuration](../../Observability_and_SecOps/[longhorn](../../Observability_and_SecOps/longhorn/SKILL.md)-storage-configuration/SKILL.md)/SKILL.md)
 for the tradeoff), and bind Backstage's own authentication to the site's
@@ -227,7 +227,7 @@ and
   recommends — an untested air-gapped install script that quietly reaches
   out to the public internet during a live cutover is a common and
   avoidable failure.
-- Keep an explicit [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) for procurement/[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) lead time next to
+- Keep an explicit [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) for procurement/[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) lead time next to
   Phase 1's inventory-as-code — a platform team used to cloud elasticity
   will otherwise plan Phase 7's self-service approval SLAs assuming
   [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) that isn't actually available on short notice.
@@ -248,12 +248,12 @@ and
   quorum after a single node failure, taking the whole cluster — including
   Backstage and the self-service layer — down with it.
   **Fix:** This usually means the etcd cluster was left at an
-  even-numbered or too-small member count, or health/quorum [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+  even-numbered or too-small member count, or health/quorum [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
   from
   [etcd-backup-restore-and-cluster-health](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[etcd-backup-restore-and-cluster-health](../../../../containers-orchestration/kubernetes/storage/etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md)
   was never actually wired up to alert before quorum was lost. Restore
   from the most recent verified snapshot, then correct the member count
-  and [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) gap before declaring the cluster production-ready again.
+  and [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) gap before declaring the cluster production-ready again.
 
 - **Symptom:** A team requests self-service infrastructure (Phase 7) and
   the request sits unactioned for over a week because the named approver
@@ -330,7 +330,7 @@ and must self-host its entire IDP.
 - [on-prem-infrastructure-patterns](../../../cloud/skills/[on-prem-infrastructure-patterns](../on-prem-infrastructure-patterns/SKILL.md)/SKILL.md) — Phase 1.
 - [kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../../Containers_and_Orchestration/[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-cluster-provisioning-with-kubeadm-and-cluster-api/SKILL.md)/SKILL.md), [etcd-backup-restore-and-cluster-health](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[etcd-backup-restore-and-cluster-health](../../../../containers-orchestration/kubernetes/storage/etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md) — Phase 2.
 - [ingress-nginx-configuration](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[ingress-nginx-configuration](../../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md), [cert-manager-tls-automation](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[cert-manager-tls-automation](../../../../containers-orchestration/kubernetes/security/cert-manager-tls-automation/SKILL.md)/SKILL.md) — Phase 3.
-- [rook-ceph-storage-operations](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[rook-ceph-storage-operations](../../../../DevOps_and_Cloud/Observability_and_SecOps/rook-ceph-storage-operations/SKILL.md)/SKILL.md), [longhorn-storage-configuration](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[longhorn-storage-configuration](../../Observability_and_SecOps/[longhorn](../../Observability_and_SecOps/longhorn/SKILL.md)-storage-configuration/SKILL.md)/SKILL.md), [helm-chart-authoring](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[helm-chart-authoring](../../../../containers-orchestration/helm/charts/helm-chart-authoring/SKILL.md)/SKILL.md), [backstage-plugin-development](../[backstage-plugin-development](../../../Software_Engineering_and_Other/Backend/backstage-plugin-development/SKILL.md)/SKILL.md) — Phase 4.
+- [rook-ceph-storage-operations](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[rook-ceph-storage-operations](../../../../containers-orchestration/kubernetes/storage/rook-ceph-storage-operations/SKILL.md)/SKILL.md), [longhorn-storage-configuration](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[longhorn-storage-configuration](../../Observability_and_SecOps/[longhorn](../../Observability_and_SecOps/longhorn/SKILL.md)-storage-configuration/SKILL.md)/SKILL.md), [helm-chart-authoring](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[helm-chart-authoring](../../../../containers-orchestration/helm/charts/helm-chart-authoring/SKILL.md)/SKILL.md), [backstage-plugin-development](../[backstage-plugin-development](../../../Software_Engineering_and_Other/Backend/backstage-plugin-development/SKILL.md)/SKILL.md) — Phase 4.
 - [golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../../../Product_and_Business/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md) — Phase 5.
 - [golden-path-template-validation-and-testing](../[golden-path-template-validation-and-testing](../../CI_CD/golden-path-template-validation-and-testing/SKILL.md)/SKILL.md) — Phase 6.
 - [platform-self-service-api-and-workflow-design](../[platform-self-service-api-and-workflow-design](../../../Product_and_Business/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md) — Phase 7.

@@ -53,17 +53,17 @@ Before activating, verify:
 - Existing backup tools (Veeam, Rubrik, Commvault, cloud-native).
 
 ### Output Artifact
-Writes to backup automation scripts ([Python](../../Languages/python/SKILL.md)/Bash/PowerShell), Terraform for DR infra, [runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md), and CI/CD pipeline for backup validation.
+Writes to backup automation scripts ([Python](../../Languages/python/SKILL.md)/Bash/PowerShell), Terraform for DR infra, [runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md), and CI/CD pipeline for backup validation.
 
 ### Response Format
-Configuration files, scripts, and [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) templates with no extraneous explanation.
+Configuration files, scripts, and [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) templates with no extraneous explanation.
 
 No preamble. No postamble. No explanations. No filler/hedging/transitions.
 
 ### Completion Criteria
 - [ ] RPO and RTO defined per workload tier.
 - [ ] 3-2-1 backup strategy implemented (3 copies, 2 media, 1 offsite).
-- [ ] Backup automation configured with [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md).
+- [ ] Backup automation configured with [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md).
 - [ ] DR plan documented with failover/failback procedures.
 - [ ] Backup validation testing scheduled (automated restore test).
 - [ ] Immutable backups configured for ransomware protection.
@@ -146,7 +146,7 @@ workloads:
     encryption:
       at_rest: aes256
       in_transit: tls12
-    [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md):
+    [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md):
       backup_success_sli: 99.9
       restore_test_frequency: monthly
 
@@ -423,13 +423,13 @@ if __name__ == "__main__":
     sys.exit(main())
 ```
 
-### Step 4: Disaster Recovery [Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)
+### Step 4: Disaster Recovery [Runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)
 ```markdown
-# Disaster Recovery [Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) — Production Environment
+# Disaster Recovery [Runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) — Production Environment
 # Version: 2.1
 # Last tested: 2025-05-15
 
-## 1. [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Classification
+## 1. [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Classification
 | Severity | Description | Response Time |
 |---|---|---|
 | SEV1 | Complete outage, data loss | 15 min |
@@ -447,7 +447,7 @@ if __name__ == "__main__":
 - [ ] Confirm DNS TTL set to 60 seconds (or lower)
 - [ ] Check network connectivity between DR region and dependencies
 - [ ] Verify backup consistency (latest restore test passed)
-- [ ] Notify stakeholders ([incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) channel, on-call, management)
+- [ ] Notify stakeholders ([incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) channel, on-call, management)
 - [ ] Scale up DR environment to production [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
 
 ## 4. Failover Procedure (estimated: 30-60 min)
@@ -519,14 +519,14 @@ curl -f http://redis-metrics:9121/metrics | grep redis_keyspace_hits
 - [ ] All services responding with 200 OK
 - [ ] Database read/write operational
 - [ ] Background jobs processing
-- [ ] [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) alerts firing correctly (DR baseline)
+- [ ] [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) alerts firing correctly (DR baseline)
 - [ ] Team notified of successful failover
-- [ ] [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) ticket updated
+- [ ] [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) ticket updated
 
 ## 5. Failback Procedure (when primary is restored)
 1. Reverse database replication (promote original primary)
 2. Point DNS back to primary region
-3. Update [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) to primary region baseline
+3. Update [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) to primary region baseline
 4. Run data consistency check
 5. Scale down DR resources
 6. Document lessons learned
@@ -534,12 +534,12 @@ curl -f http://redis-metrics:9121/metrics | grep redis_keyspace_hits
 ## 6. Contact Information
 | Role | Name | Phone | Email |
 |---|---|---|---|
-| [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Commander | On-call SRE | N/A | sre@company.com |
+| [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Commander | On-call SRE | N/A | sre@company.com |
 | Database Admin | On-call DBA | N/A | dba@company.com |
 | Network Engineer | On-call NetOps | N/A | netops@company.com |
 | Management | VP Engineering | N/A | vp-eng@company.com |
 
-## 7. Post-[Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
+## 7. Post-[Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
 - Conduct post-mortem within 48 hours
 - Update RPO/RTO targets if needed
 - Improve automation for failover steps
@@ -610,7 +610,7 @@ jobs:
       - name: Report results
         if: always()
         run: |
-          # Send results to [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+          # Send results to [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
           METRIC_VALUE=$([ "${{ job.status }}" == "success" ] && echo 1 || echo 0)
           aws cloudwatch put-metric-data \
             --namespace "BackupValidation" \
@@ -648,7 +648,7 @@ Full backups only without WAL archiving for databases. RPO is the time between f
 ### Anti-Pattern 5: Testing DR Once Per Year
 Annual DR tests are insufficient for Tier 1 workloads. Test quarterly at minimum, and automate partial failover testing monthly.
 
-### Anti-Pattern 6: No Backup [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+### Anti-Pattern 6: No Backup [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 Silent backup failures going undetected for weeks. Monitor backup success rates, completion time, and storage usage with alerts.
 
 ## Production Considerations
@@ -690,30 +690,30 @@ Silent backup failures going undetected for weeks. Monitor backup success rates,
 - All backups must follow 3-2-1 rule: 3 copies, 2 media, 1 offsite.
 - Immutable backups for all Tier 1 workloads — no exceptions.
 - Automated restore test every 30 days minimum.
-- Backup [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) with alerts on failure — never rely on manual checks.
+- Backup [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) with alerts on failure — never rely on manual checks.
 - Encryption at rest (AES-256) and in transit (TLS 1.2+) for all backup data.
-- RPO/RTO defined per workload tier and documented in [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md).
+- RPO/RTO defined per workload tier and documented in [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md).
 - DR plan tested quarterly for Tier 1, annually for Tier 2-3.
 - Backup retention minimum: 90 days for production, 7 years for compliance.
 - MFA required for backup deletion operations.
 - Backup logs exported to SIEM for analysis.
 
 ## Output Format
-Backup automation scripts ([Python](../../Languages/python/SKILL.md)/Bash), Terraform for backup infrastructure, [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) markdown, CI/CD validation pipeline.
+Backup automation scripts ([Python](../../Languages/python/SKILL.md)/Bash), Terraform for backup infrastructure, [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) markdown, CI/CD validation pipeline.
 
 ## References
   - ../../../Global_References/backup-3-2-1.md
   - ../../../Global_References/backup-automation.md
-  - ../../../Global_References/backup-[disaster-recovery](../../../DevOps_and_Cloud/Observability_and_SecOps/disaster-recovery/SKILL.md).md
+  - ../../../Global_References/backup-[disaster-recovery](../../../containers-orchestration/common/other/disaster-recovery/SKILL.md).md
   - ../../../Global_References/backup-dr-advanced.md
   - ../../../Global_References/backup-dr-fundamentals.md
   - ../../../Global_References/backup-strategies.md
-  - ../../../Global_References/[disaster-recovery](../../../DevOps_and_Cloud/Observability_and_SecOps/disaster-recovery/SKILL.md).md
+  - ../../../Global_References/[disaster-recovery](../../../containers-orchestration/common/other/disaster-recovery/SKILL.md).md
   - ../../../Global_References/dr-recovery.md
   - references/ransomware-protection-guide.md
 
 ## Handoff
 After completing this skill:
 - Next skill: **[storage-infrastructure](../../../cloud/common/storage/storage-infrastructure/SKILL.md)** — storage architecture for backup targets
-- Pass context: workload tiers, RPO/RTO, backup schedule, DR [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) location
+- Pass context: workload tiers, RPO/RTO, backup schedule, DR [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) location
 

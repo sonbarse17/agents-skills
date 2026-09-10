@@ -51,7 +51,7 @@ and never removes them.
   contractor, a decommissioned integration, a one-off access grant that
   was never time-boxed).
 - Setting up a recurring process so credential rotation and access review
-  happen on a schedule instead of only reactively after an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) or
+  happen on a schedule instead of only reactively after an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) or
   [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) finding.
 - Deciding between a long-lived static credential and a short-lived/
   federated one for a new CI integration.
@@ -163,11 +163,11 @@ and never removes them.
    valid is a pure liability with no offsetting benefit. Cross-reference
    active tokens against active pipelines/integrations on a recurring
    schedule (quarterly is a reasonable default cadence), not only when
-   an [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) or [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) forces the question.
+   an [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) or [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) forces the question.
 
 7. **Log every grant and revocation** (who approved it, for what task,
    for how long, and when it was actually revoked) so an access review
-   or [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) investigation doesn't depend on anyone's memory.
+   or [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) investigation doesn't depend on anyone's memory.
 
 ## Best practices
 
@@ -231,7 +231,7 @@ and never removes them.
 ## Worked example
 
 **Scenario:** An external QA vendor needs temporary read/write access to
-a `checkout-api` repo's CI configuration for a two-week [load-testing](../../../DevOps_and_Cloud/Observability_and_SecOps/load-testing/SKILL.md)
+a `checkout-api` repo's CI configuration for a two-week [load-testing](../../../observability-monitoring-logging/common/capacity-monitoring/load-testing/SKILL.md)
 engagement, and separately the team notices their [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) App's CI
 deployment key expires in 45 days.
 

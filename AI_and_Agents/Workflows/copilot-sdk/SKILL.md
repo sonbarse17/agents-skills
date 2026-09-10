@@ -253,7 +253,7 @@ Intercept and [customize](../../../AI_and_Agents/Infrastructure/deploy-model/[cu
 | `onUserPromptSubmitted` | User sends message | Prompt modification, filtering, context injection |
 | `onSessionStart` | Session begins (new or resumed) | Add context, configure session |
 | `onSessionEnd` | Session ends | Cleanup, analytics, metrics |
-| `onErrorOccurred` | Error happens | Custom error handling, retry logic, [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) |
+| `onErrorOccurred` | Error happens | Custom error handling, retry logic, [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) |
 
 ### Pre-Tool Use Hook
 

@@ -203,7 +203,7 @@ Reviewdog posts findings as inline comments on the pull request:
   - Restrict who can modify `.reviewdog.yml` configuration
 
 - **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging**:
-  - Log all security findings to SIEM or security [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) platform
+  - Log all security findings to SIEM or security [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) platform
   - Track when findings are introduced and resolved
   - Monitor for bypassed security checks
 

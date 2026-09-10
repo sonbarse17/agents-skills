@@ -72,7 +72,7 @@ No preamble. No postamble. No explanations.
 - [ ] Workload placement matrix (data gravity, latency, compliance documented).
 - [ ] Data synchronization strategy for stateful workloads.
 - [ ] DR plan with RPO/RTO for hybrid workloads.
-- [ ] [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) across environments.
+- [ ] [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) across environments.
 
 ## Architecture Decision Trees
 
@@ -129,7 +129,7 @@ Is data structured (RDBMS)?
 | Multi-site active-active | <1s | <1min | Very High | High | Automatic |
 
 ## Quick Start
-Establish hybrid connectivity: VPN to cloud as interim → provision Direct Connect/ExpressRoute within 30 days → configure route propagation via Transit Gateway → federate on-prem AD with cloud IdP → deploy hybrid compute (VMware HCX, Anthos, Arc) → set up data sync layer → implement [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) across both environments.
+Establish hybrid connectivity: VPN to cloud as interim → provision Direct Connect/ExpressRoute within 30 days → configure route propagation via Transit Gateway → federate on-prem AD with cloud IdP → deploy hybrid compute (VMware HCX, Anthos, Arc) → set up data sync layer → implement [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) across both environments.
 
 ## Core Workflow
 
@@ -246,7 +246,7 @@ Azure Arc:
   - [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md): AKS hybrid, K3s, Rancher
   - Data: SQL Managed Instance, [PostgreSQL](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) Hyperscale
   - Policies: Azure Policy + Guest Configuration
-  - Extensions: [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), security, custom scripts
+  - Extensions: [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), security, custom scripts
 
 AWS Outposts:
   - Native AWS services on-prem (EC2, EBS, RDS, ECS, EKS)
@@ -299,12 +299,12 @@ resource "aws_dms_replication_task" "hybrid" {
 }
 ```
 
-### Step 9: [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) Across Environments
+### Step 9: [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Across Environments
 ```yaml
-[Observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) stack for hybrid cloud:
+[Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) stack for hybrid cloud:
   Metrics:  Prometheus + Thanos / Azure Monitor + Grafana
   Logs:     Loki / Splunk / Azure Log Analytics
-  Tracing:  [OpenTelemetry](../../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) Collector (gateway mode)
+  Tracing:  [OpenTelemetry](../../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) Collector (gateway mode)
   Alerts:   PagerDuty / Opsgenie with on-call rotations
 
 Key metrics to monitor:
@@ -444,7 +444,7 @@ Optimization strategies:
   - references/vpn-direct-connect.md — VPN vs Direct Connect — Decision Guide
   - ../../../Global_References/identity-federation.md — Identity Federation Patterns
   - references/hybrid-storage.md — Hybrid Storage Patterns
-  - references/[disaster-recovery](../../../../DevOps_and_Cloud/Observability_and_SecOps/disaster-recovery/SKILL.md)-hybrid.md — Hybrid DR Strategies
+  - references/[disaster-recovery](../../../../containers-orchestration/common/other/disaster-recovery/SKILL.md)-hybrid.md — Hybrid DR Strategies
   - references/repatriation.md — Cloud Repatriation Guide
   - references/hybrid-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).md — Hybrid [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) with EKS Anywhere
 ## Handoff
@@ -452,7 +452,7 @@ Optimization strategies:
 - `[devops-azure](../../../azure/other/azure/SKILL.md)` for Azure Arc and ExpressRoute depth.
 - `[devops-gcp](../../../gcp/other/gcp/SKILL.md)` for Anthos and GCP interconnect.
 - `devops-[datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md)` for on-prem DC alongside hybrid.
-- `[enterprise-high-availability](../../../../DevOps_and_Cloud/Observability_and_SecOps/high-availability/SKILL.md)` for HA/DR across environments.
+- `[enterprise-high-availability](../../../../containers-orchestration/common/other/high-availability/SKILL.md)` for HA/DR across environments.
 - `[devops-network-infrastructure](../../../../Software_Engineering_and_Other/Miscellaneous/network-infrastructure/SKILL.md)` for BGP and connectivity deep-dive.
 
 ## Implementation Patterns
@@ -501,7 +501,7 @@ spec:
 apiVersion: arc.azure.com/v1
 kind: Extension
 metadata:
-  name: [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+  name: [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 spec:
   clusterName: on-prem-k8s
   extensionType: microsoft.azuremonitor.containers
@@ -548,14 +548,14 @@ sync_dns_zones() {
 - Use **shared DNS resolution** across environments with Route53 Resolver or Azure DNS Private Resolver
 - Implement **centralized identity** (Azure AD / Okta) with federation to on-prem AD for consistent auth
 - Deploy **hybrid [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)** (EKS Anywhere, AKS on HCI, GKE on-prem) for consistent container orchestration
-- Monitor **circuit health** from both sides with BGP session [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and synthetic probes
-- Use **cloud-agnostic IaC** (Terraform, [Pulumi](../../../../DevOps_and_Cloud/Infrastructure_as_Code/pulumi/SKILL.md)) with provider abstraction for [multi-cloud](../multi-cloud/SKILL.md) portability
+- Monitor **circuit health** from both sides with BGP session [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and synthetic probes
+- Use **cloud-agnostic IaC** (Terraform, [Pulumi](../../../../infrastructure-as-code/pulumi/other/pulumi/SKILL.md)) with provider abstraction for [multi-cloud](../multi-cloud/SKILL.md) portability
 - Implement **failover** with Route53 ARC (Application Recovery Controller) or Azure Traffic Manager
 
 ## Anti-Patterns
 
 - Assuming **cloud is always cheaper** — repatriate steady-state workloads to on-prem when cost analysis favors it
-- Using **different IaC tools** for on-prem and cloud — Terraform/[Pulumi](../../../../DevOps_and_Cloud/Infrastructure_as_Code/pulumi/SKILL.md) should manage both uniformly
+- Using **different IaC tools** for on-prem and cloud — Terraform/[Pulumi](../../../../infrastructure-as-code/pulumi/other/pulumi/SKILL.md) should manage both uniformly
 - Ignoring **latency** between sites — chatty [microservices](../../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) across WAN links degrade performance
 - Managing **separate identity stores** — federate everything to a single IdP
 - Treating **hybrid as temporary** — hybrid is a long-term architecture, plan for it
@@ -633,7 +633,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
+### [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -668,7 +668,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing ([OpenTelemetry](../../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -702,6 +702,6 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - Fail securely — errors default to safe behavior.
 - Log security-relevant events for [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for [observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) from day one, not as an afterthought.
+- Design for [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

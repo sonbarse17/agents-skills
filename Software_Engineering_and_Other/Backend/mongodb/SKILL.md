@@ -366,7 +366,7 @@ chmod 400 mongo-keyfile
 mongosh "mongodb://admin:secret@127.0.0.1:27017/?replicaSet=rs0&authSource=admin"
 ```
 
-## [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) Queries
+## [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Queries
 
 ```javascript
 // Server status summary

@@ -24,7 +24,7 @@ depends_on:
 [Kubernetes](../../other/kubernetes/SKILL.md) was designed for stateless, disposable pods, and storage is the layer where that
 assumption breaks down and has to be bolted back on carefully. A pod can be rescheduled to any node
 at any time; the volume it depends on has to either follow it there or already be reachable from
-there — get this wrong and a routine reschedule becomes a data-loss [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+there — get this wrong and a routine reschedule becomes a data-loss [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 
 Treat every PVC as a promise about what happens when the pod above it dies, not just where the bytes
 live today. **The reclaim policy and access mode you pick now decide what happens the day something

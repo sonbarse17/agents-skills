@@ -107,5 +107,5 @@ sops:
 
 ## Related Skills
 
-- [hashicorp-vault](../[hashicorp-vault](../../../Security/hashicorp-[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)/SKILL.md)/) - Centralized secrets
+- [hashicorp-vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)/SKILL.md)/) - Centralized secrets
 - [argocd-gitops](../../../devops/orchestration/[argocd-gitops](../[argocd](../argocd/SKILL.md)-[gitops](../../containers-orchestration/common/gitops/gitops/SKILL.md)/SKILL.md)/) - [GitOps](../../containers-orchestration/common/gitops/gitops/SKILL.md) integration

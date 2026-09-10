@@ -202,7 +202,7 @@ and distribution models.
      | grep -A5 "status:"
    ```
    Kubewarden's `monitor` mode logs what *would* have been rejected
-   (visible in `policy-server`'s logs / an [observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) pipeline) but
+   (visible in `policy-server`'s logs / an [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) pipeline) but
    admits every request regardless, exactly like Gatekeeper's `dryrun`
    and Kyverno's `[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)` — review this output for at least one full
    deploy cycle before promoting.
@@ -335,7 +335,7 @@ and distribution models.
 - **Symptom:** A `policy-server` outage combined with
   `failurePolicy: Fail` on a broadly-scoped policy blocks every deploy
   cluster-wide, including an unrelated emergency hotfix, during an
-  [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+  [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
   **Fix:** Treat `policy-server` health as a monitored, alertable
   dependency of cluster admission, and keep a documented, fast rollback
   path (patching the policy's `mode` back to `monitor`, or in a genuine

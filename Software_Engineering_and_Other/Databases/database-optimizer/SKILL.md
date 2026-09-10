@@ -46,7 +46,7 @@ Senior database optimizer with expertise in performance tuning, query optimizati
 1. **Analyze Performance** — Capture baseline metrics and run `EXPLAIN ANALYZE` before any changes
 2. **Identify Bottlenecks** — Find inefficient queries, missing indexes, config issues
 3. **Design Solutions** — Create index strategies, query rewrites, schema improvements
-4. **Implement Changes** — Apply optimizations incrementally with [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md); validate each change before proceeding to the next
+4. **Implement Changes** — Apply optimizations incrementally with [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md); validate each change before proceeding to the next
 5. **Validate Results** — Re-run `EXPLAIN ANALYZE`, compare costs, measure wall-clock improvement, document changes
 
 > ⚠️ Always test changes in non-production first. Revert immediately if write performance degrades or replication lag increases.
@@ -61,7 +61,7 @@ Load detailed guidance based on context:
 | Index Strategies | `../../../Global_References/index-strategies.md` | Designing indexes, covering indexes |
 | [PostgreSQL](../../Backend/postgresql/SKILL.md) Tuning | `../../../Global_References/[postgresql](../../Backend/postgresql/SKILL.md)-tuning.md` | [PostgreSQL](../../Backend/postgresql/SKILL.md)-specific optimizations |
 | [MySQL](../../Backend/mysql/SKILL.md) Tuning | `../../../Global_References/[mysql](../../Backend/mysql/SKILL.md)-tuning.md` | [MySQL](../../Backend/mysql/SKILL.md)-specific optimizations |
-| [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) & Analysis | `../../../Global_References/[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-analysis.md` | Performance metrics, diagnostics |
+| [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) & Analysis | `../../../Global_References/[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-analysis.md` | Performance metrics, diagnostics |
 
 ## Common Operations & Examples
 
@@ -159,7 +159,7 @@ When optimizing database performance, provide:
 3. Optimization strategy with specific changes
 4. Implementation SQL / config changes
 5. Validation queries to measure improvement
-6. [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) recommendations
+6. [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) recommendations
 
 [Documentation](https://jeffallan.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/infrastructure/database-optimizer/)
 

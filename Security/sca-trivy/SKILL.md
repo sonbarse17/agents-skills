@@ -225,7 +225,7 @@ SBOM use cases:
 
 ### [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Logging
 
-Log the following for compliance and [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response:
+Log the following for compliance and [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response:
 - Scan execution timestamps and scope (image, filesystem, repository)
 - Vulnerability counts by severity level
 - Policy violations and blocking decisions
@@ -351,7 +351,7 @@ trivy image --ignore-policy assets/policy_template.rego myapp:latest
 
 ### Security Tools Ecosystem
 
-- **SIEM Integration**: Export JSON findings to Splunk, ELK, or [Datadog](../../DevOps_and_Cloud/Observability_and_SecOps/datadog/SKILL.md)
+- **SIEM Integration**: Export JSON findings to Splunk, ELK, or [Datadog](../../observability-monitoring-logging/datadog/other/datadog/SKILL.md)
 - **Vulnerability Management**: Import SARIF/JSON into Snyk, Qualys, or Rapid7
 - **SBOM Tools**: CycloneDX and SPDX compatibility with dependency-track and GUAC
 - **Policy Enforcement**: OPA/Rego integration for custom policy as code

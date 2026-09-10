@@ -97,7 +97,7 @@ an agent.
 | Type            | Description                               | Key endpoints                    |
 | --------------- | ----------------------------------------- | -------------------------------- |
 | `elasticsearch` | Search, analytics, and vector workloads   | Elasticsearch, Kibana            |
-| `[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)` | Logs, metrics, traces, and APM            | Elasticsearch, Kibana, APM, OTLP |
+| `[observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)` | Logs, metrics, traces, and APM            | Elasticsearch, Kibana, APM, OTLP |
 | `security`      | SIEM, endpoint protection, cloud security | Elasticsearch, Kibana, OTLP      |
 
 ### Project type inference
@@ -107,23 +107,23 @@ Map the user's request to the correct `--type` value:
 | User says                                                   | `--type`        |
 | ----------------------------------------------------------- | --------------- |
 | "search project", "elasticsearch project", vector search    | `elasticsearch` |
-| "[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) project", "o11y", logs, metrics, traces, APM | `[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)` |
+| "[observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) project", "o11y", logs, metrics, traces, APM | `[observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)` |
 | "security project", "SIEM", detections, endpoint protection | `security`      |
 
 Do **not** silently default to any type. If the user does not specify a type, infer it from the conversation context
-(for example, discussing log ingestion suggests `[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)`, discussing detections or SIEM suggests `security`,
+(for example, discussing log ingestion suggests `[observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)`, discussing detections or SIEM suggests `security`,
 discussing search or vector workloads suggests `elasticsearch`). Always present the inferred type to the user and ask
 for confirmation before proceeding. If context is insufficient to infer a type, ask the user to choose.
 
 ### Product tiers
 
-[Observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) and security projects support a `--product-tier` flag. Default to `complete` unless the user explicitly
+[Observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) and security projects support a `--product-tier` flag. Default to `complete` unless the user explicitly
 requests a different tier.
 
 | Project type    | Tier              | Description                                           |
 | --------------- | ----------------- | ----------------------------------------------------- |
-| `[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)` | `complete`        | Full [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) suite (logs, metrics, traces, APM) |
-| `[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)` | `logs_essentials` | Log management only                                   |
+| `[observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)` | `complete`        | Full [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) suite (logs, metrics, traces, APM) |
+| `[observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)` | `logs_essentials` | Log management only                                   |
 | `security`      | `complete`        | Full security suite (SIEM, cloud, endpoint)           |
 | `security`      | `essentials`      | Core SIEM only                                        |
 
@@ -170,7 +170,7 @@ If `EC_API_KEY` is not set, run the `[cloud-setup](../../cloud/common/other/setu
 
 Before presenting the summary, ensure the project type has been explicitly confirmed by the user. If no type was
 specified, infer one from the conversation context and propose it. If the context is ambiguous, ask the user to choose
-from `elasticsearch`, `[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)`, or `security`.
+from `elasticsearch`, `[observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)`, or `security`.
 
 Always show a confirmation summary before creating. Include different fields depending on project type:
 
@@ -183,11 +183,11 @@ Project Summary:
   Region:        gcp-us-central1
 ```
 
-**[Observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) project:**
+**[Observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) project:**
 
 ```text
 Project Summary:
-  Type:          [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
+  Type:          [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
   Name:          my-project
   Region:        gcp-us-central1
   Product tier:  complete
@@ -228,7 +228,7 @@ python3 skills/cloud/create-project/scripts/create-project.py create \
 Always pass `--optimized-for general_purpose` for Elasticsearch projects. Only use `vector` if the user explicitly
 requests it.
 
-For [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) and security projects, pass `--product-tier complete` unless the user explicitly requests a different
+For [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) and security projects, pass `--product-tier complete` unless the user explicitly requests a different
 tier.
 
 Always pass `--wait` so the script automatically polls until the project is ready.
@@ -316,11 +316,11 @@ python3 skills/cloud/create-project/scripts/create-project.py create \
   --wait
 ```
 
-### Create an [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) project
+### Create an [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) project
 
 ```bash
 python3 skills/cloud/create-project/scripts/create-project.py create \
-  --type [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) \
+  --type [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) \
   --name "prod-o11y" \
   --region aws-eu-west-1 \
   --product-tier complete \
@@ -345,7 +345,7 @@ python3 skills/cloud/create-project/scripts/create-project.py create \
 - Never display passwords or API keys in chat. Direct the user to `.elastic-credentials`.
 - Never silently default to a project type. Infer from context and confirm with the user.
 - Default to `general_purpose` optimization. Only use `vector` if the user explicitly requests it.
-- Default to `complete` product tier for [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) and security projects. Only use `logs_essentials` or `essentials`
+- Default to `complete` product tier for [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) and security projects. Only use `logs_essentials` or `essentials`
   if the user explicitly requests it.
 - Always pass `--wait` so the script polls until the project is ready.
 - If credential saving fails, immediately reset credentials using the `[cloud-manage-project](../manage-project/SKILL.md)` skill.
@@ -362,12 +362,12 @@ python3 skills/cloud/create-project/scripts/create-project.py create \
 
 | Flag              | Commands       | Description                                                |
 | ----------------- | -------------- | ---------------------------------------------------------- |
-| `--type`          | create, status | Project type: `elasticsearch`, `[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)`, `security` |
+| `--type`          | create, status | Project type: `elasticsearch`, `[observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)`, `security` |
 | `--name`          | create         | Project name (required)                                    |
 | `--region`        | create         | Region ID (default: `gcp-us-central1`)                     |
 | `--id`            | status         | Project ID                                                 |
 | `--optimized-for` | create         | Elasticsearch subtype: `general_purpose` or `vector`       |
-| `--product-tier`  | create         | [Observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/security tier (see "Product tiers" section)  |
+| `--product-tier`  | create         | [Observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)/security tier (see "Product tiers" section)  |
 | `--wait`          | create         | Poll until project is initialized before exiting           |
 
 ## Environment variables
@@ -378,8 +378,8 @@ python3 skills/cloud/create-project/scripts/create-project.py create \
 | `EC_BASE_URL`           | No       | Cloud API base URL (default: `https://api.elastic-cloud.com`)            |
 | `ELASTICSEARCH_URL`     | Output   | Elasticsearch URL (loaded via `load-credentials` after creation)         |
 | `KIBANA_URL`            | Output   | Kibana URL (loaded via `load-credentials` after creation)                |
-| `APM_URL`               | Output   | APM endpoint ([observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) projects only)                               |
-| `INGEST_URL`            | Output   | OTLP ingest endpoint ([observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) and security projects)               |
+| `APM_URL`               | Output   | APM endpoint ([observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) projects only)                               |
+| `INGEST_URL`            | Output   | OTLP ingest endpoint ([observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) and security projects)               |
 | `ELASTICSEARCH_API_KEY` | Output   | Elasticsearch API key (created in Step 8, loaded via `load-credentials`) |
 
 ## Additional resources

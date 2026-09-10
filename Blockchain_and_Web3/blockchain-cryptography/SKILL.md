@@ -337,7 +337,7 @@ Decide: Hash Function
 - Cold/treasury keys: Rotate annually with GPS-located ceremony recording
 - BLS validator withdrawal keys: Must not rotate without exit + re-deposit (stake linked)
 
-### [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+### [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - **Signature failure rate**: Spike may indicate network attack or implementation bug
 - **Verification latency**: Degradation may indicate DoS or resource exhaustion
 - **Key registration events**: Monitor for unauthorized key changes

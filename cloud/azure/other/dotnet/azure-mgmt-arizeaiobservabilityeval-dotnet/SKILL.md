@@ -24,7 +24,7 @@ depends_on:
 
 # Azure.ResourceManager.ArizeAIObservabilityEval
 
-.NET SDK for managing Arize AI [Observability](../../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) and Evaluation resources on Azure.
+.NET SDK for managing Arize AI [Observability](../../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) and Evaluation resources on Azure.
 
 ## Installation
 

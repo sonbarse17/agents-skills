@@ -129,11 +129,11 @@ Effort keywords (`quick` / `standard` / `deep`) and the shared `<focus>` and
 
 ## Related skills
 
-- `/[terraform-review](../../DevOps_and_Cloud/Infrastructure_as_Code/terraform-review/SKILL.md)`, `/[k8s-review](../../containers-orchestration/kubernetes/troubleshooting/k8s-review/SKILL.md)`, `/[docker-review](../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-review/SKILL.md)` — the layer-specific
+- `/[terraform-review](../../infrastructure-as-code/terraform/troubleshooting/terraform-review/SKILL.md)`, `/[k8s-review](../../containers-orchestration/kubernetes/troubleshooting/k8s-review/SKILL.md)`, `/[docker-review](../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-review/SKILL.md)` — the layer-specific
   review and the plans that land the hardening.
 - `/[pipeline-review](../../ci-cd/common/pipeline-design/pipeline-review/SKILL.md)` — CI/CD supply chain and secret scoping.
 - `/[db-review](../../AI_and_Agents/Operations/db-review/SKILL.md)` — data access paths, encryption, and [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging.
-- `/[dr-review](../../DevOps_and_Cloud/Observability_and_SecOps/dr-review/SKILL.md)` — ransomware/deletion resilience of backups.
+- `/[dr-review](../../containers-orchestration/common/other/dr-review/SKILL.md)` — ransomware/deletion resilience of backups.
 
 ## Before you finish
 

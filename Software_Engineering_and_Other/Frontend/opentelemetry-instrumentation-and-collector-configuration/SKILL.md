@@ -27,12 +27,12 @@ depends_on:
   - monitoring
 ---
 
-# [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) Instrumentation and Collector Configuration
+# [OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) Instrumentation and Collector Configuration
 
 ## Purpose
 
-[OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) (OTel) is the vendor-neutral instrumentation layer that sits
-between application code and whichever [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) backend actually
+[OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) (OTel) is the vendor-neutral instrumentation layer that sits
+between application code and whichever [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) backend actually
 stores the data — an application instrumented with the OTel SDK emits
 telemetry in one standard format (OTLP) regardless of whether the
 destination is Prometheus, Loki, Grafana Tempo, Jaeger, or a commercial
@@ -46,7 +46,7 @@ every backend-specific skill in this repo assumes is already working. This
 skill covers instrumenting applications (auto vs. manual, resource
 attributes, context propagation) and configuring the Collector's
 receiver → processor → exporter pipeline — the plumbing that feeds
-[prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md),
+[prometheus-and-grafana-[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md),
 [loki-log-aggregation-configuration](../[loki-log-aggregation-configuration](../../../DevOps_and_Cloud/Observability_and_SecOps/loki-log-aggregation-configuration/SKILL.md)/SKILL.md),
 and
 [distributed-tracing-with-tempo-and-jaeger](../[distributed-tracing-with-tempo-and-jaeger](../../../DevOps_and_Cloud/Observability_and_SecOps/[distributed-tracing](../../../DevOps_and_Cloud/Observability_and_SecOps/distributed-tracing/SKILL.md)-with-tempo-and-jaeger/SKILL.md)/SKILL.md).
@@ -62,7 +62,7 @@ or the tracing backend's own storage/sampling/correlation concerns (see
   (a language agent/launcher requiring no code changes) and manual SDK
   instrumentation (custom spans, metrics, and attributes hand-written into
   the code).
-- Standing up an [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) Collector deployment — as a per-node/
+- Standing up an [OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) Collector deployment — as a per-node/
   per-pod **agent** (sidecar or DaemonSet) versus a centralized
   **gateway** tier, or both together.
 - Wiring a receiver (OTLP gRPC/HTTP, Prometheus scrape, filelog, Jaeger/
@@ -75,11 +75,11 @@ or the tracing backend's own storage/sampling/correlation concerns (see
 - Diagnosing why a service's spans, metrics, or logs never show up
   anywhere downstream, or show up incompletely.
 - Migrating an application off a vendor-specific instrumentation SDK to
-  [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) to decouple it from a specific [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) vendor.
+  [OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) to decouple it from a specific [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) vendor.
 
 ## Prerequisites & environment
 
-- The **[OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) Collector** — either the core distribution (OTLP
+- The **[OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) Collector** — either the core distribution (OTLP
   receiver/exporter and a small processor set only) or the **contrib**
   distribution, which is required for most non-OTLP receivers/exporters
   (Prometheus remote-write exporter, Loki exporter, Jaeger receiver,
@@ -87,11 +87,11 @@ or the tracing backend's own storage/sampling/correlation concerns (see
   rather than tracking `latest`, and keep the same version across the
   whole Collector fleet — mixed versions across agent/gateway tiers is a
   common source of subtly incompatible config behavior.
-- A language-specific [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) SDK/auto-instrumentation
+- A language-specific [OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) SDK/auto-instrumentation
   distribution for each service being instrumented (a Java agent JAR, the
-  [Python](../../Languages/python/SKILL.md) `[opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)-instrument` launcher plus
-  `[opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)-bootstrap`, the Node.js
-  `@[opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)/auto-instrumentations-node` package, or a manual SDK
+  [Python](../../Languages/python/SKILL.md) `[opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)-instrument` launcher plus
+  `[opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)-bootstrap`, the Node.js
+  `@[opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)/auto-instrumentations-node` package, or a manual SDK
   integration for languages without mature auto-instrumentation, such as
   Go, where instrumentation is largely manual/library-level today).
 - Network reachability from every instrumented service to its Collector
@@ -99,7 +99,7 @@ or the tracing backend's own storage/sampling/correlation concerns (see
   the Collector to whichever backend(s) its exporters target.
 - Destinations already provisioned for each signal type this pipeline
   will route to: a Prometheus remote-write endpoint or scrape target (see
-  [prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)),
+  [prometheus-and-grafana-[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)),
   a Loki push endpoint (see
   [loki-log-aggregation-configuration](../[loki-log-aggregation-configuration](../../../DevOps_and_Cloud/Observability_and_SecOps/loki-log-aggregation-configuration/SKILL.md)/SKILL.md)),
   and/or a Tempo/Jaeger OTLP ingest endpoint (see
@@ -119,24 +119,24 @@ or the tracing backend's own storage/sampling/correlation concerns (see
    messaging clients) out of the box:
    ```bash
    # Java: attach the agent at process start, no code changes
-   java -javaagent:/otel/[opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)-javaagent.jar \
+   java -javaagent:/otel/[opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)-javaagent.jar \
      -Dotel.service.name=checkout-service \
      -Dotel.exporter.otlp.endpoint=http://otel-collector:4317 \
      -jar checkout-service.jar
    ```
    ```bash
    # [Python](../../Languages/python/SKILL.md): bootstrap installs instrumentation packages for detected
-   # libraries, then [opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)-instrument wraps the process
-   [opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)-bootstrap -a install
+   # libraries, then [opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)-instrument wraps the process
+   [opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)-bootstrap -a install
    OTEL_SERVICE_NAME=checkout-service \
    OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317 \
-   [opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)-instrument [python](../../Languages/python/SKILL.md) app.py
+   [opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)-instrument [python](../../Languages/python/SKILL.md) app.py
    ```
    ```javascript
    // Node.js: registered before any other imports (auto-instrumentations-node)
-   const { NodeSDK } = require('@[opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)/sdk-node');
-   const { getNodeAutoInstrumentations } = require('@[opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)/auto-instrumentations-node');
-   const { OTLPTraceExporter } = require('@[opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)/exporter-trace-otlp-grpc');
+   const { NodeSDK } = require('@[opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)/sdk-node');
+   const { getNodeAutoInstrumentations } = require('@[opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)/auto-instrumentations-node');
+   const { OTLPTraceExporter } = require('@[opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)/exporter-trace-otlp-grpc');
 
    const sdk = new NodeSDK({
      traceExporter: new OTLPTraceExporter({ url: 'http://otel-collector:4317' }),
@@ -149,7 +149,7 @@ or the tracing backend's own storage/sampling/correlation concerns (see
    auto-instrumentation cannot know about — a checkout step, a specific
    cache-hit ratio, a queue-processing span:
    ```[python](../../Languages/python/SKILL.md)
-   from [opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) import trace, metrics
+   from [opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) import trace, metrics
 
    tracer = trace.get_tracer("checkout-service")
    meter = metrics.get_meter("checkout-service")
@@ -172,7 +172,7 @@ or the tracing backend's own storage/sampling/correlation concerns (see
    OTEL_RESOURCE_ATTRIBUTES="service.name=checkout-service,service.version=2.14.0,deployment.environment=production,service.namespace=commerce"
    ```
    Without a correct `service.name`, every service's telemetry shows up
-   as `unknown_service` in every downstream backend, making [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) and
+   as `unknown_service` in every downstream backend, making [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) and
    trace views unusable regardless of how well everything else is
    configured.
 
@@ -214,7 +214,7 @@ or the tracing backend's own storage/sampling/correlation concerns (see
        spike_limit_mib: 100
    exporters:
      otlp:
-       endpoint: otel-gateway.[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md).svc:4317
+       endpoint: otel-gateway.[observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md).svc:4317
        tls:
          insecure: false
    service:
@@ -276,11 +276,11 @@ or the tracing backend's own storage/sampling/correlation concerns (see
 
    exporters:
      prometheusremotewrite:
-       endpoint: http://prometheus.[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md).svc:9090/api/v1/write
+       endpoint: http://prometheus.[observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md).svc:9090/api/v1/write
      loki:
-       endpoint: http://loki-gateway.[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md).svc:3100/loki/api/v1/push
+       endpoint: http://loki-gateway.[observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md).svc:3100/loki/api/v1/push
      otlp/tempo:
-       endpoint: tempo.[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md).svc:4317
+       endpoint: tempo.[observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md).svc:4317
        tls:
          insecure: false
 
@@ -347,7 +347,7 @@ or the tracing backend's own storage/sampling/correlation concerns (see
              insecure: false
        resolver:
          k8s:
-           service: otel-gateway-headless.[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md).svc
+           service: otel-gateway-headless.[observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md).svc
    ```
    See
    [distributed-tracing-with-tempo-and-jaeger](../[distributed-tracing-with-tempo-and-jaeger](../../../DevOps_and_Cloud/Observability_and_SecOps/[distributed-tracing](../../../DevOps_and_Cloud/Observability_and_SecOps/distributed-tracing/SKILL.md)-with-tempo-and-jaeger/SKILL.md)/SKILL.md)
@@ -389,7 +389,7 @@ or the tracing backend's own storage/sampling/correlation concerns (see
 - Scrape and dashboard the Collector's own `:8888` internal metrics
   (`otelcol_processor_dropped_spans`, `otelcol_exporter_queue_size`,
   `otelcol_receiver_refused_spans`) as a standing part of the platform's
-  own [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), not something checked only when someone reports missing
+  own [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), not something checked only when someone reports missing
   data.
 
 ## Common pitfalls
@@ -459,7 +459,7 @@ or the tracing backend's own storage/sampling/correlation concerns (see
   ```yaml
   exporters:
     otlp/tempo:
-      endpoint: tempo.[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md).svc:4317
+      endpoint: tempo.[observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md).svc:4317
       sending_queue:
         enabled: true
         queue_size: 5000
@@ -505,12 +505,12 @@ gateway).
    dashboard panel tracks `otelcol_exporter_queue_size` and
    `otelcol_processor_dropped_spans` per exporter, so a future [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)
    problem shows up as a Collector-level alert rather than a silent gap
-   discovered during an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+   discovered during an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 
 ## Cross-references
 
 - [opentelemetry-configuration-validation](../[opentelemetry-configuration-validation](../../../DevOps_and_Cloud/CI_CD/[opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)-configuration-validation/SKILL.md)/SKILL.md) — validating this exact pipeline config (pipeline wiring, sampling rates, resource attributes) before it ships, to catch silently dropped signals pre-rollout.
 - [distributed-tracing-with-tempo-and-jaeger](../[distributed-tracing-with-tempo-and-jaeger](../../../DevOps_and_Cloud/Observability_and_SecOps/[distributed-tracing](../../../DevOps_and_Cloud/Observability_and_SecOps/distributed-tracing/SKILL.md)-with-tempo-and-jaeger/SKILL.md)/SKILL.md) — the tracing backend this Collector's `otlp/tempo` exporter feeds, including backend-side sampling strategy and trace-to-metrics/logs correlation.
-- [prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md) — the metrics backend this Collector's `prometheusremotewrite` exporter feeds, and where [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) on the Collector's own internal telemetry would be wired.
+- [prometheus-and-grafana-[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md) — the metrics backend this Collector's `prometheusremotewrite` exporter feeds, and where [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) on the Collector's own internal telemetry would be wired.
 - [loki-log-aggregation-configuration](../[loki-log-aggregation-configuration](../../../DevOps_and_Cloud/Observability_and_SecOps/loki-log-aggregation-configuration/SKILL.md)/SKILL.md) — the log backend this Collector's `loki` exporter feeds, including the label-cardinality discipline that also applies to any log-related resource attributes forwarded here.
 - [incident-investigation-using-metrics-logs-traces](../[incident-investigation-using-metrics-logs-traces](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-investigation-using-metrics-logs-traces/SKILL.md)/SKILL.md) — the cross-signal investigation workflow this instrumentation/Collector layer makes possible, by ensuring a trace ID actually propagates into logs and metrics exemplars.

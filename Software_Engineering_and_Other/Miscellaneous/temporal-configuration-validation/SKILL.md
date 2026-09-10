@@ -36,7 +36,7 @@ the workflow code itself: a worker polling the wrong (or no) task queue,
 an activity timeout too tight for its real-world latency distribution, a
 retry policy that never gives up on a permanently failing call, or a
 namespace whose retention period silently discards the event history an
-operator needed to debug an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md). These are the kind of mistakes
+operator needed to debug an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md). These are the kind of mistakes
 that pass every unit test against a mocked activity and only surface
 under real production load or after the first workflow needs
 investigating weeks later. This skill covers validating exactly that
@@ -80,7 +80,7 @@ guidance in
   recommends per activity.
 - For namespace validation: awareness of the organization's actual
   operational/compliance requirement for how long workflow history must
-  remain queryable (debugging an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) from three weeks ago requires
+  remain queryable (debugging an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) from three weeks ago requires
   retention to still cover that window).
 - Temporal Server 1.20+ recommended if validating worker versioning /
   Build ID-based safe-deploy features — the exact versioning API
@@ -201,7 +201,7 @@ guidance in
      --retention 30d
    ```
    A retention period shorter than how long an operator might reasonably
-   need to look back at a workflow's event history (an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
+   need to look back at a workflow's event history (an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
    investigation, a customer support escalation) means the history is
    already gone by the time someone asks — validate this against a real
    organizational requirement, not the server's out-of-the-box default.
@@ -273,7 +273,7 @@ guidance in
   error types as part of code review — an out-of-date list is a silent
   correctness regression, not a cosmetic gap.
 - Set namespace retention from an explicit organizational requirement
-  (compliance, typical [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-investigation lookback), and document
+  (compliance, typical [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-investigation lookback), and document
   the reasoning next to the `temporal operator namespace update` command
   that set it.
 - Run replay tests against sampled real production history in CI before
@@ -314,7 +314,7 @@ guidance in
   activity at an interval comfortably shorter than the configured
   `HeartbeatTimeout` (step 5).
 
-- **Symptom:** An operator investigating an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) from a month ago
+- **Symptom:** An operator investigating an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) from a month ago
   finds the relevant workflow's event history is simply gone.
   **Fix:** The namespace's retention period is shorter than the
   organization's actual investigation/compliance window. Check

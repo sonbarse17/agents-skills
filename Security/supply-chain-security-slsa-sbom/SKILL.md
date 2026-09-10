@@ -213,7 +213,7 @@ artifact was built, not that the code it contains is safe.
   typically do not provide.
 - Keep SBOMs queryable in aggregate (a central store, not just per-build
   artifacts scattered across CI logs) — the main operational payoff of
-  SBOMs is fast "are we affected" answers during [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response, which
+  SBOMs is fast "are we affected" answers during [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response, which
   requires being able to search across your whole fleet at once.
 
 ## Common pitfalls
@@ -340,7 +340,7 @@ or SBOM-index query the next time a CVE is disclosed against it.
 ## Cross-references
 
 - [software-composition-analysis-sca](../[software-composition-analysis-sca](../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md) —
-  the [vulnerability-scanning](../../DevOps_and_Cloud/Observability_and_SecOps/vulnerability-scanning/SKILL.md) layer that gives an SBOM's component
+  the [vulnerability-scanning](../vulnerability-scanning/SKILL.md) layer that gives an SBOM's component
   inventory actual risk meaning.
 - [container-image-hardening](../[container-image-hardening](../../DevOps_and_Cloud/Containers_and_Orchestration/container-image-hardening/SKILL.md)/SKILL.md) —
   base-image and build practices that reduce what ends up in the SBOM in

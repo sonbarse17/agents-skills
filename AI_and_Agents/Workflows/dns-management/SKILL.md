@@ -70,8 +70,8 @@ record is just a second static record that never activates.
   request path, not the load balancer's own liveness port.
 - **Know your failover's floor**: even a perfect health check can't fail traffic over faster than
   the TTL lets caches expire the old answer.
-- **Test the failover deliberately** on a schedule, the same way you'd test a [disaster-recovery](../../../DevOps_and_Cloud/Observability_and_SecOps/disaster-recovery/SKILL.md)
-  [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) — see `[disaster-recovery](../../../DevOps_and_Cloud/Observability_and_SecOps/disaster-recovery/SKILL.md)` for the broader failover practice this feeds into.
+- **Test the failover deliberately** on a schedule, the same way you'd test a [disaster-recovery](../../../containers-orchestration/common/other/disaster-recovery/SKILL.md)
+  [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) — see `[disaster-recovery](../../../containers-orchestration/common/other/disaster-recovery/SKILL.md)` for the broader failover practice this feeds into.
 
 **Done when:** a simulated origin failure causes traffic to shift within one TTL window, verified
 end to end, not just configured.
@@ -106,11 +106,11 @@ dual-homed, and the exceptions are documented, not accidental.
 ## 6. Monitor DNS as a first-class production dependency
 
 Domain and DNSSEC certificate expiry, authoritative server health, and unexpected zone changes are
-all classic self-inflicted outages that [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) catches trivially and nothing else catches at
+all classic self-inflicted outages that [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) catches trivially and nothing else catches at
 all. DNS failures rarely show up in application metrics — the app never even gets a chance to run.
 
 **Done when:** domain expiry, DNSSEC expiry, and unauthorized zone changes all have their own
-alerts, independent of application-level [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) covered in `[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)`.
+alerts, independent of application-level [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) covered in `[observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)`.
 
 ## Report
 

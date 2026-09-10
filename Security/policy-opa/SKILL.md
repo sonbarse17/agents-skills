@@ -54,7 +54,7 @@ depends_on:
 
 ## Overview
 
-This skill enables [policy-as-code](../policy-as-code/SKILL.md) enforcement using Open Policy Agent (OPA) for compliance validation, security policy enforcement, and configuration auditing. OPA provides a unified framework for policy evaluation across cloud-native environments, [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), CI/CD pipelines, and [infrastructure-as-code](../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md).
+This skill enables [policy-as-code](../policy-as-code/SKILL.md) enforcement using Open Policy Agent (OPA) for compliance validation, security policy enforcement, and configuration auditing. OPA provides a unified framework for policy evaluation across cloud-native environments, [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), CI/CD pipelines, and [infrastructure-as-code](../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md).
 
 Use OPA to codify security requirements, compliance controls, and organizational standards as executable policies written in Rego. Automatically validate configurations, prevent misconfigurations, and maintain continuous compliance.
 
@@ -94,7 +94,7 @@ opa run --server --addr localhost:8181
 Identify compliance requirements and security controls to enforce:
 - Compliance frameworks (SOC2, PCI-DSS, GDPR, HIPAA, NIST)
 - [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) security policies (pod security, RBAC, network policies)
-- [Infrastructure-as-code](../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md) policies (Terraform, [CloudFormation](../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md))
+- [Infrastructure-as-code](../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) policies (Terraform, [CloudFormation](../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md))
 - Application security policies (API authorization, data access)
 - Organizational security standards
 
@@ -310,7 +310,7 @@ Generate compliance reports using the bundled reporting script:
 - `rego-patterns.md` - Common Rego patterns for security and compliance policies
 - `compliance-frameworks.md` - Policy templates mapped to SOC2, PCI-DSS, GDPR, HIPAA controls
 - `[kubernetes-security](../../DevOps_and_Cloud/Containers_and_Orchestration/[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-security/SKILL.md).md` - [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) security policies and admission control patterns
-- `iac-policies.md` - [Infrastructure-as-code](../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md) policy validation for Terraform, [CloudFormation](../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md)
+- `iac-policies.md` - [Infrastructure-as-code](../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) policy validation for Terraform, [CloudFormation](../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md)
 
 ### Assets (`assets/`)
 
@@ -338,7 +338,7 @@ deny[msg] {
 }
 ```
 
-### Pattern 2: [Infrastructure-as-Code](../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md) Validation
+### Pattern 2: [Infrastructure-as-Code](../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) Validation
 
 Validate Terraform configurations before apply:
 ```rego
@@ -410,7 +410,7 @@ allow if {
 - **[Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)**: OPA Gatekeeper admission controller for runtime policy enforcement
 - **Terraform/IaC**: Pre-deployment validation using `conftest` or OPA CLI
 - **API Gateways**: Kong, Envoy, NGINX - authorize requests using OPA policies
-- **[Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)/SIEM**: Export policy violations to Splunk, ELK, [Datadog](../../DevOps_and_Cloud/Observability_and_SecOps/datadog/SKILL.md) for security [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+- **[Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)/SIEM**: Export policy violations to Splunk, ELK, [Datadog](../../observability-monitoring-logging/datadog/other/datadog/SKILL.md) for security [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - **Compliance Tools**: Integrate with compliance platforms for control validation and [audit](../../AI_and_Agents/Operations/audit/SKILL.md) trails
 
 ## Troubleshooting

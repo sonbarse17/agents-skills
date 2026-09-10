@@ -42,7 +42,7 @@ OIDC federation it needs exists, or declaring a cluster "done" the moment
 finished but fails the first time someone actually depends on it — a stuck
 `Certificate`, an Ingress that never gets a usable address, or a CNI
 NetworkPolicy that silently no-ops. This skill is the AWS-specific
-end-to-end [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md): it sequences AWS landing zone/IAM prerequisites, EKS
+end-to-end [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md): it sequences AWS landing zone/IAM prerequisites, EKS
 provisioning, VPC CNI, ingress, cert-manager, conformance validation, a
 first workload, and a health baseline into one ordered path, cross-
 referencing the tool-specific skill that covers each phase's actual detail
@@ -224,7 +224,7 @@ integration decisions.
    do not apply to this cluster at all (there is no customer-accessible
    `etcdctl` endpoint); rely on EKS control-plane logging (enabled to the
    landing zone's central log destination) instead of etcd-level
-   snapshotting for control-plane [observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md).
+   snapshotting for control-plane [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md).
 
 ## Best practices
 
@@ -293,7 +293,7 @@ integration decisions.
   optional add-on. Confirm it was enabled during Phase 2
   (`eksctl create addon --name aws-ebs-csi-driver`) rather than assuming
   every EKS cluster ships a working default `StorageClass` out of the
-  box the way a fresh kubeadm-with-[Longhorn](../../../../DevOps_and_Cloud/Observability_and_SecOps/longhorn/SKILL.md) or a GKE cluster might.
+  box the way a fresh kubeadm-with-[Longhorn](../../../kubernetes/storage/longhorn/SKILL.md) or a GKE cluster might.
 
 ## Worked example
 
@@ -351,7 +351,7 @@ helm upgrade --install payments-api oci://ghcr.io/example/charts/payments-api \
 `curl -I https://payments.example.com` returns `HTTP/2 200` with a
 Let's Encrypt production certificate, confirming Phases 1–7 wired
 together correctly end to end, and the cluster's node maintenance
-[runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) (Phase 8) is in place before the first planned patch window.
+[runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) (Phase 8) is in place before the first planned patch window.
 
 ## Cross-references
 

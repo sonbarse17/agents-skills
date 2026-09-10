@@ -520,7 +520,7 @@ async function notifyImportComplete(job: ImportJob): Promise<void> {
 - Memory: streaming parsers for files > 50MB; never load entire file into memory
 - Storage: upload files to S3/Blob storage; process from stream without local temp file
 
-### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+### [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - Metrics: import duration, rows/second, error rate by type, queue depth, failure rate
 - Alerts: error rate > 5%, queue backlog > 100 jobs, same file re-upload > 3 times
 - Logging: structured logs per import job (importId, userId, status, rowCount, duration)
@@ -624,7 +624,7 @@ describe('Bulk Import', () => {
   - ../../../Global_References/bulk-import-advanced.md — Bulk Import Advanced Topics
   - ../../../Global_References/bulk-import-fundamentals.md — Bulk Import Fundamentals
   - ../../../Global_References/csv-parsing.md — CSV Parsing
-  - ../../../Global_References/import-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).md — Import [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+  - ../../../Global_References/import-[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Import [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
   - ../../../Global_References/import-workflow.md — Import Workflow
   - ../../../Global_References/rollback-recovery.md — Rollback and Recovery
   - ../../../Global_References/validation-pipeline.md — Validation Pipeline

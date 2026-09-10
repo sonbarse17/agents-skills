@@ -242,7 +242,7 @@ which apply here too but aren't repeated.
   purpose.
 - Always enable `autoRollbackConfiguration` for production deployment
   groups; a deployment with no rollback path turns a bad release into an
-  extended [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) instead of an automatic recovery.
+  extended [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) instead of an automatic recovery.
 - Use blue/green (or ECS/Lambda's native traffic-shifting) for anything
   where a bad deploy causes user-facing errors before you can react
   manually — in-place `AllAtOnce` should be reserved for low-risk,
@@ -251,7 +251,7 @@ which apply here too but aren't repeated.
   non-zero immediately on a real problem) — a hook that hangs blocks the
   whole deployment until its `timeout` is hit.
 - Store deployment configuration (deployment group settings, alarm ARNs)
-  as [infrastructure-as-code](../../../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md) ([CloudFormation](../../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md)/CDK/Terraform) alongside the
+  as [infrastructure-as-code](../../../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) ([CloudFormation](../../../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md)/CDK/Terraform) alongside the
   pipeline definition, not as manually-clicked console configuration that
   can't be diffed in a PR.
 - Tag pipeline artifacts and CodeDeploy revisions with the source [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)
@@ -327,7 +327,7 @@ portion):
 }
 ```
 
-Deployment group (created via [CloudFormation](../../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md), abbreviated):
+Deployment group (created via [CloudFormation](../../../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md), abbreviated):
 ```yaml
 CheckoutApiDeploymentGroup:
   Type: AWS::CodeDeploy::DeploymentGroup

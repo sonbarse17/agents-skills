@@ -46,7 +46,7 @@ Configure Azure API Management (APIM) as an AI Gateway for governing AI models, 
 |--------|---------|---------|
 | `azure-openai-token-limit` | Cost control | [Model Policies](../../../../Global_References/policies.md#token-rate-limiting) |
 | `azure-openai-semantic-cache-lookup/store` | 60-80% cost savings | [Model Policies](../../../../Global_References/policies.md#semantic-caching) |
-| `azure-openai-emit-token-metric` | [Observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) | [Model Policies](../../../../Global_References/policies.md#token-metrics) |
+| `azure-openai-emit-token-metric` | [Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) | [Model Policies](../../../../Global_References/policies.md#token-metrics) |
 | `llm-content-safety` | Safety & compliance | [Agent Policies](../../../../Global_References/policies.md#content-safety) |
 | `rate-limit-by-key` | MCP/tool protection | [Tool Policies](../../../../Global_References/policies.md#request-rate-limiting) |
 

@@ -39,7 +39,7 @@ covered elsewhere is the **sequencing**: which phase has to finish and be
 validated before the next one starts, which decisions made in an early
 phase (account structure, IRSA trust policy shape) quietly constrain every
 later phase, and where teams actually get stuck gluing these pieces
-together. This skill is that integration [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) — a phase-by-phase path
+together. This skill is that integration [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) — a phase-by-phase path
 from an empty AWS Organization to a Backstage instance developers
 self-service against, with each phase handing off to the deep skill that
 covers its mechanics. It does not restate EKS, Backstage, or Terraform
@@ -207,7 +207,7 @@ and
 - Sequence Phase 9's pilot-team rollout to start only after Phase 5 has
   passed for the specific template tier that pilot team will use — putting
   a real team through an unvalidated golden path converts a platform
-  adoption win into a trust-destroying [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+  adoption win into a trust-destroying [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 
 ## Common pitfalls
 

@@ -250,7 +250,7 @@ and sizing.
 **Scenario:** Stand up a 3-node HA K3s cluster (embedded etcd) for a
 regional edge site running a handful of lightweight services, with
 Traefik disabled in favor of ingress-nginx, and a pre-upgrade backup
-step included in the [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md).
+step included in the [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md).
 
 ```bash
 # server-1

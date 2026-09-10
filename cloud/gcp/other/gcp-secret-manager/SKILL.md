@@ -508,7 +508,7 @@ resource "google_secret_manager_secret_iam_member" "app_accessor" {
 - Set expiration dates or TTLs on temporary secrets
 - Integrate with Cloud KMS for customer-managed encryption keys
 - Use labels consistently for organization and automation
-- Monitor secret access patterns with Cloud [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+- Monitor secret access patterns with Cloud [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - Implement rotation schedules for all long-lived credentials
 - Use conditional IAM bindings to restrict access by resource name pattern
 

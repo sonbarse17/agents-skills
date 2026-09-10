@@ -237,7 +237,7 @@ SELECT pg_last_wal_receive_lsn();
 SELECT pg_last_wal_replay_lsn();
 ```
 
-## [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) Queries
+## [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Queries
 
 ```sql
 -- Active connections by state

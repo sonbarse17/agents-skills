@@ -70,7 +70,7 @@ account_id, region, instance_id, and the failing DNS name.
 2. `dns_probe_compare` — runs the allowlisted probe set inside the instance via
    SSM. Returns each resolver's answer and the resolver's own identity from
    `hostname.bind`. The VPC DHCP resolver is auto-added for comparison.
-3. `get_sop` — load the pattern [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) matching the observed signature
+3. `get_sop` — load the pattern [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) matching the observed signature
    (see trap-to-SOP mapping below).
 
 ### Interpretation rules
@@ -117,7 +117,7 @@ and type-specific fields). No instance required.
    associated Route 53 Profile, each construct tagged by source.
 2. `dns_simulate_change` — applies the proposed change symbolically and returns a
    per-name impact report (before/after, delta, traps, severity, volume).
-3. `get_sop` — load [runbooks](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md) for any traps reported in the impact table
+3. `get_sop` — load [runbooks](../../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md) for any traps reported in the impact table
    (see trap-to-SOP mapping below).
 
 ### Interpretation rules

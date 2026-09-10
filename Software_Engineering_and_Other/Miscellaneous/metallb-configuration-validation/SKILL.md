@@ -58,7 +58,7 @@ in production.
   exists) after initial setup or after any network-side router
   reconfiguration.
 - Periodic health verification of an existing MetalLB deployment as
-  part of an operational [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md), not only during an active [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+  part of an operational [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md), not only during an active [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 - Diagnosing intermittent reachability (works from some clients/paths,
   not others) that suggests a partial rather than total failure.
 
@@ -162,7 +162,7 @@ in production.
 
 7. **Simulate a node failure in a non-production validation exercise**
    to confirm failover actually works before trusting it in an
-   [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md):
+   [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md):
    ```bash
    [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) cordon <node-currently-announcing-ip>
    # for a real test: power off or [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) drain --delete-emptydir-data --force the node in a staging cluster
@@ -200,9 +200,9 @@ in production.
   and
   [rook-ceph-configuration-validation](../[rook-ceph-configuration-validation](../../../DevOps_and_Cloud/Observability_and_SecOps/rook-ceph-configuration-validation/SKILL.md)/SKILL.md).
 - Wire pool-utilization and BGP-peer-state checks into
-  [prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
+  [prometheus-and-grafana-[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
   (MetalLB exposes Prometheus metrics for both) so degradation is
-  caught by [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md), not by a customer reporting an outage.
+  caught by [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md), not by a customer reporting an outage.
 - Coordinate any BGP peering validation or test with whoever owns the
   physical network — checking neighbor state on a router you don't own
   without informing its owner can look like unexpected/unauthorized
@@ -255,7 +255,7 @@ in production.
   **Fix:** This is a destructive validation action performed against
   the wrong environment — failover/failure-injection tests belong in a
   staging/non-production cluster with a planned maintenance window and
-  stakeholder notice, following the same discipline as [chaos-engineering](../../../DevOps_and_Cloud/Observability_and_SecOps/chaos-engineering/SKILL.md)
+  stakeholder notice, following the same discipline as [chaos-engineering](../../../containers-orchestration/common/other/chaos-engineering/SKILL.md)
   practice in
   [chaos-engineering-and-resilience-testing](../../../site-reliability-engineering/skills/[chaos-engineering-and-resilience-testing](../../Frontend/[chaos-engineering](../../../DevOps_and_Cloud/Observability_and_SecOps/chaos-engineering/SKILL.md)-and-resilience-testing/SKILL.md)/SKILL.md),
   not as an ad hoc test against production.
@@ -307,5 +307,5 @@ intermittent timeouts reaching it.
 - [metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../[metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../../../DevOps_and_Cloud/Containers_and_Orchestration/metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration/SKILL.md)/SKILL.md) — the configuration (IP pools, Layer2/BGP mode, peering) this skill validates.
 - [rook-ceph-configuration-validation](../[rook-ceph-configuration-validation](../../../DevOps_and_Cloud/Observability_and_SecOps/rook-ceph-configuration-validation/SKILL.md)/SKILL.md) — the same "CRD status vs. actual system health" validation pattern applied to storage instead of networking.
 - [cni-networking-calico-flannel](../[cni-networking-calico-flannel](../../../DevOps_and_Cloud/Containers_and_Orchestration/cni-networking-calico-flannel/SKILL.md)/SKILL.md) — a structurally similar BGP-session validation workflow (`calicoctl node status`), for pod-network BGP rather than MetalLB's service-IP BGP.
-- [prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md) — continuous [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) on MetalLB's pool-utilization and peer-state metrics.
+- [prometheus-and-grafana-[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md) — continuous [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) on MetalLB's pool-utilization and peer-state metrics.
 - [chaos-engineering-and-resilience-testing](../../../site-reliability-engineering/skills/[chaos-engineering-and-resilience-testing](../../Frontend/[chaos-engineering](../../../DevOps_and_Cloud/Observability_and_SecOps/chaos-engineering/SKILL.md)-and-resilience-testing/SKILL.md)/SKILL.md) — the disciplined approach to failure-injection testing referenced in the node-failure drill above.

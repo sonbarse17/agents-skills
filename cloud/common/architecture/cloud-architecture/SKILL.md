@@ -62,7 +62,7 @@ still true.
 
 ## 3. Make statelessness the default for compute
 
-Stateless compute can be killed, replaced, and scaled horizontally without a [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md). State that
+Stateless compute can be killed, replaced, and scaled horizontally without a [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md). State that
 must survive a restart belongs in a database, object store, or managed cache — not on local disk,
 not in process memory. This single rule is what makes [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md), rolling deploys, and zone
 failover boring instead of terrifying. See `[stateful-workloads](../../../../containers-orchestration/kubernetes/workloads/stateful-workloads/SKILL.md)` for the cases where state on the
@@ -97,7 +97,7 @@ case" — that is its own cost, covered in `[multi-cloud](../../other/multi-clou
 
 An architecture sized for one region and ten engineers does not automatically stay right at ten
 regions and two hundred engineers. Revisit the failure-domain diagram and the managed/self-run
-list on a cadence, not only after an [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) forces it.
+list on a cadence, not only after an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) forces it.
 
 **Done when:** the architecture diagram and its assumptions have an owner and a review date.
 

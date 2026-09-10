@@ -218,7 +218,7 @@ TLS 1.2+ for all S3/ADLS/GCS API calls. Enforce HTTPS-only bucket policies. HDFS
 #### Strategies
 Use intelligent tiering for automatic cost savings on variable-access data. Request (S3) Reduced Redundancy for non-critical data (lower durability = lower cost). Reserved [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) for predictable usage. Monitor and alert on cost anomalies.
 
-#### Cost [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+#### Cost [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 Track: storage cost per bucket/container, data transfer costs (egress), request costs (PUT/GET/LIST), lifecycle transition costs. Allocate costs to teams/domains via tag-based cost allocation.
 
 ### Decision Trees
@@ -421,7 +421,7 @@ cost_components:
   
   additional:
     - encryption (KMS: per key, per API call)
-    - [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) (CloudWatch, metrics per custom metric)
+    - [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (CloudWatch, metrics per custom metric)
     - backup / replication (CRR storage in destination region)
 ```
 
@@ -457,17 +457,17 @@ cost_estimate:
   
   monitoring_backup:
     cross_region_replication: $500/mo  # 50TB replicated
-    [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md): $100/mo
+    [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md): $100/mo
   
   total_monthly: $5,825/mo
   total_annual: $69,900/yr
 ```
 
-### Step 13: [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
+### Step 13: [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
 
 #### Storage Metrics
 ```yaml
-# Object store [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) (CloudWatch, Azure Monitor, GCS Ops)
+# Object store [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (CloudWatch, Azure Monitor, GCS Ops)
 metrics:
   storage:
     - BucketSizeBytes (by storage tier)
@@ -491,7 +491,7 @@ metrics:
     - TotalCost
 ```
 
-#### [Alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) Thresholds
+#### [Alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) Thresholds
 ```yaml
 alerts:
   - name: "Storage growth anomaly"

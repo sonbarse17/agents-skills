@@ -70,7 +70,7 @@ below.
   metrics-server and, ideally, the kube-prometheus-stack already
   installed — Kubecost ships its own bundled Prometheus but can instead
   federate from an existing one to avoid running two metrics stacks.
-  See [prometheus-and-grafana-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack](../../Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
+  See [prometheus-and-grafana-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack](../../Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
   if that stack isn't in place yet.
 - Cloud billing API access so Kubecost can price nodes/storage/network
   accurately: an AWS IAM role with Cost and Usage Report / Cost Explorer
@@ -112,7 +112,7 @@ below.
      athenaTable: "cur_report"
      masterPayerARN: "arn:aws:iam::<PAYER_ACCOUNT_ID>:role/<KUBECOST_ROLE>"
    prometheus:
-     fqdn: "http://kube-prom-stack-prometheus.[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md):9090"  # federate existing Prometheus
+     fqdn: "http://kube-prom-stack-prometheus.[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md):9090"  # federate existing Prometheus
      enabled: false  # don't install a second Prometheus if one already exists
    ```
    Without a CUR/Cost Management/Billing-export connection, Kubecost
@@ -297,6 +297,6 @@ and finance wants a monthly chargeback report.
 
 ## Cross-references
 
-- [prometheus-and-grafana-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack](../../Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
+- [prometheus-and-grafana-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack](../../Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
 - [karpenter-cluster-autoscaling](../[karpenter-cluster-autoscaling](../../Containers_and_Orchestration/karpenter-cluster-[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/SKILL.md)/SKILL.md)
 - [cloud-cost-finops-optimization](../../../cloud/skills/[cloud-cost-finops-optimization](../cloud-cost-finops-optimization/SKILL.md)/SKILL.md)

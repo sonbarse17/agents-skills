@@ -28,7 +28,7 @@ depends_on:
 # ITIL Service Management Agent
 
 ## Purpose
-Guides IT service management practice using the ITIL 4 framework across the full service lifecycle including [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), problem, change, release, and service level management.
+Guides IT service management practice using the ITIL 4 framework across the full service lifecycle including [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), problem, change, release, and service level management.
 
 ## Framework/Methodology
 
@@ -50,25 +50,25 @@ Continual Improvement: A structured approach to identifying and implementing imp
 
 General Management Practices: Architecture management, continual improvement, information security management, knowledge management, measurement and reporting, organizational change management, portfolio management, project management, relationship management, risk management, service financial management, strategy management, supplier management, workforce and talent management.
 
-Service Management Practices: Availability management, business analysis, [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) and performance management, change enablement, [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) management, IT asset management, [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and event management, problem management, release management, service catalog management, service configuration management, service continuity management, service design, service desk, service level management, service request management, service validation and testing.
+Service Management Practices: Availability management, business analysis, [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) and performance management, change enablement, [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) management, IT asset management, [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and event management, problem management, release management, service catalog management, service configuration management, service continuity management, service design, service desk, service level management, service request management, service validation and testing.
 
 Technical Management Practices: Deployment management, infrastructure and platform management, software development and management.
 
 ### Service Management Maturity Model
 
-Level 1 - Initial: Processes are ad hoc and reactive. Success depends on individual heroics. No consistent [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), problem, or change management.
+Level 1 - Initial: Processes are ad hoc and reactive. Success depends on individual heroics. No consistent [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), problem, or change management.
 
-Level 2 - Repeatable: Basic processes documented for [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), problem, and change management. Some consistency but not integrated. Metrics are basic (ticket counts, resolution times).
+Level 2 - Repeatable: Basic processes documented for [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), problem, and change management. Some consistency but not integrated. Metrics are basic (ticket counts, resolution times).
 
 Level 3 - Defined: All service management processes documented, standardized, and integrated. Clear roles and responsibilities. Metrics measure effectiveness and efficiency. Process automation beginning.
 
 Level 4 - Managed: Processes quantitatively managed with statistical control. KPIs linked to business outcomes. Predictive analytics for [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) and performance. Automation integrated across processes.
 
-Level 5 - Optimizing: Continuous process improvement based on quantitative feedback. IT and business strategy tightly aligned. Innovation-driven rather than [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-driven. Proactive service management culture.
+Level 5 - Optimizing: Continuous process improvement based on quantitative feedback. IT and business strategy tightly aligned. Innovation-driven rather than [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-driven. Proactive service management culture.
 
 ## Architecture / Decision Trees
 
-### [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Priority Matrix
+### [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Priority Matrix
 
 | Priority | Impact | Urgency | Response Time | Resolution Time | Escalation       |
 |----------|--------|---------|---------------|-----------------|------------------|
@@ -90,26 +90,26 @@ Normal Change: Requires assessment and approval
   Major: Medium-high risk. Change Advisory Board approval. 1 week notice.
   Significant: High risk, broad impact. CAB + executive approval. 2+ weeks.
 
-Emergency Change: Urgent fix for active [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
+Emergency Change: Urgent fix for active [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
   Approval: Emergency CAB (ECAB) or designated approvers.
   Review: Retrospective review within 5 business days.
 ```
 
 ### Service Management Process Integration Points
 ```
-[Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) -> Problem: recurring incidents trigger problem investigation
+[Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) -> Problem: recurring incidents trigger problem investigation
 Problem -> Known Error: root cause identified, workaround documented
 Known Error -> Change: fix requires a change request
 Change -> Release: approved changes grouped into releases
 Release -> Deployment: release deployed through pipeline
-[Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) -> Change: emergency change may be needed for [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) resolution
-Service Level -> [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md): SLA targets define [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) priority and response time
+[Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) -> Change: emergency change may be needed for [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) resolution
+Service Level -> [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md): SLA targets define [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) priority and response time
 ```
 
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: ITIL, service management, [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), problem, change management, release, service level, SLA, service strategy, service design, service transition, service operation, CSI, continual improvement.
+Exact user phrases: ITIL, service management, [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), problem, change management, release, service level, SLA, service strategy, service design, service transition, service operation, CSI, continual improvement.
 
 ### Input Context
 Before activating, verify:
@@ -141,7 +141,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions.
 
 ### Completion Criteria
 - [ ] Service management process documented with roles and responsibilities
-- [ ] [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) priority matrix defined with SLA targets
+- [ ] [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) priority matrix defined with SLA targets
 - [ ] Problem management integrated with known error database
 - [ ] Change types classified with appropriate approval paths
 - [ ] Release policy defined with rollback procedures
@@ -209,7 +209,7 @@ CSI Register template:
 |----|-------------|--------|----------|-------|--------|-------------|
 
 ### Step 6: Process Integration
-Integrate [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), problem, change, release, and service level processes. Maintain process interfaces and handoffs. Ensure process consistency and tool integration. Conduct periodic process maturity assessments.
+Integrate [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), problem, change, release, and service level processes. Maintain process interfaces and handoffs. Ensure process consistency and tool integration. Conduct periodic process maturity assessments.
 
 ## Common Pitfalls
 
@@ -219,7 +219,7 @@ Pitfall 2: Over-engineering processes. ITIL describes what to do, not how. Adapt
 
 Pitfall 3: Tool-first implementation. Buying a service management tool before designing processes leads to tool-driven processes that may not fit. Design processes first, then select tools that support them.
 
-Pitfall 4: [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) management without problem management. Fixing incidents without investigating root causes leads to repeat incidents and firefighting culture. Problem management breaks the cycle.
+Pitfall 4: [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) management without problem management. Fixing incidents without investigating root causes leads to repeat incidents and firefighting culture. Problem management breaks the cycle.
 
 Pitfall 5: Change management as a bottleneck. Too many changes requiring CAB approval slows delivery. Use change models (standard, normal, emergency) with appropriate approval paths. Standard changes are pre-approved.
 
@@ -229,15 +229,15 @@ Pitfall 7: SLA targets without measurements. Defining SLA targets without system
 
 ## Best Practices
 
-Practice 1: Start with the highest-pain processes. Assess which ITIL process gaps cause the most operational pain. Fix those first. For most organizations, [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) and problem management are the highest impact.
+Practice 1: Start with the highest-pain processes. Assess which ITIL process gaps cause the most operational pain. Fix those first. For most organizations, [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) and problem management are the highest impact.
 
 Practice 2: Define clear process owners. Every process needs an owner accountable for design, implementation, and improvement. The owner ensures the process remains effective and current.
 
 Practice 3: Automate low-value activities. Ticket routing, SLA notifications, status updates, approval escalations, report generation -- automate everything that does not require human judgment.
 
-Practice 4: Measure what matters. Link process KPIs to business outcomes. [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) resolution time matters less if the business impact is low. Focus on business-impacting metrics: customer-facing downtime, revenue-impacting incidents, SLA breach rate.
+Practice 4: Measure what matters. Link process KPIs to business outcomes. [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) resolution time matters less if the business impact is low. Focus on business-impacting metrics: customer-facing downtime, revenue-impacting incidents, SLA breach rate.
 
-Practice 5: Hold regular process review meetings. [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) review weekly, problem review bi-weekly, change advisory board weekly, CAB/emergency review monthly, CSI review quarterly.
+Practice 5: Hold regular process review meetings. [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) review weekly, problem review bi-weekly, change advisory board weekly, CAB/emergency review monthly, CSI review quarterly.
 
 Practice 6: Train and certify teams. ITIL 4 Foundation certification for all service management staff. Practitioner level for process owners and managers. Renew knowledge through ongoing training.
 
@@ -246,10 +246,10 @@ Practice 6: Train and certify teams. ITIL 4 Foundation certification for all ser
 ### Key ITIL Metrics Dashboard
 | Process          | Metric                        | Target               |
 |------------------|-------------------------------|----------------------|
-| [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)         | Mean Time to Resolve (MTTR)   | < 4 hours (P1/P2)    |
-| [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)         | First Response Time           | < 15 min (P1)        |
-| [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)         | SLA Breach Rate               | < 2%                 |
-| Problem          | Problem-to-[Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Ratio     | > 1:10               |
+| [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)         | Mean Time to Resolve (MTTR)   | < 4 hours (P1/P2)    |
+| [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)         | First Response Time           | < 15 min (P1)        |
+| [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)         | SLA Breach Rate               | < 2%                 |
+| Problem          | Problem-to-[Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Ratio     | > 1:10               |
 | Problem          | Mean Time to Diagnose         | < 5 business days    |
 | Change           | Change Success Rate           | > 99%                |
 | Change           | Emergency Change Ratio        | < 10% of total       |
@@ -259,7 +259,7 @@ Practice 6: Train and certify teams. ITIL 4 Foundation certification for all ser
 ### ITIL 4 vs ITIL v3 Crosswalk
 | ITIL 4 Practice | ITIL v3 Process | Key Differences |
 |-----------------|-----------------|-----------------|
-| [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Management | [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Management | Added AI/automation, shifted to value focus |
+| [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Management | [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Management | Added AI/automation, shifted to value focus |
 | Problem Management | Problem Management | Integrated with knowledge management |
 | Change Enablement | Change Management | Reduced bureaucracy, faster approvals |
 | Release Management | Release and Deployment Management | DevOps integration, CI/CD focus |
@@ -269,15 +269,15 @@ Practice 6: Train and certify teams. ITIL 4 Foundation certification for all ser
 ### Tools Reference
 - ServiceNow / Jira Service Management for ITSM platform
 - Atlassian (Jira + Confluence) for integrated ITIL practices
-- PagerDuty / OpsGenie for [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) management and escalation
+- PagerDuty / OpsGenie for [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) management and escalation
 - Microsoft Teams / Slack for collaboration and notifications
 - Lucidchart for process documentation
-- Grafana / Splunk for [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and event management
+- Grafana / Splunk for [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and event management
 
 ## Case Studies
 
-### Case Study 1: [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-to-Problem Transformation
-A SaaS company was firefighting 200+ incidents per month with recurring issues accounting for 60% of volume. Implementing ITIL problem management with known error database reduced recurring incidents by 70% over 6 months. Root cause analysis on the top-10 recurring incidents identified 3 systemic issues. Fixing those eliminated 40% of total [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) volume. Operational costs reduced by 25%.
+### Case Study 1: [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-to-Problem Transformation
+A SaaS company was firefighting 200+ incidents per month with recurring issues accounting for 60% of volume. Implementing ITIL problem management with known error database reduced recurring incidents by 70% over 6 months. Root cause analysis on the top-10 recurring incidents identified 3 systemic issues. Fixing those eliminated 40% of total [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) volume. Operational costs reduced by 25%.
 
 ### Case Study 2: Change Management Optimization
 An enterprise with 500+ weekly changes was bottlenecked by a single weekly CAB meeting. Implementing change models (standard, minor, major, significant) and pre-approving standard changes reduced CAB workload by 60%. Standard changes (40% of total) bypassed CAB entirely. Minor changes (35%) had streamlined peer review. CAB focused on major and significant changes (25%). Change throughput increased 3x.
@@ -287,7 +287,7 @@ A managed service provider had 47 different SLAs, most of which could not be mea
 
 ## Code Examples
 
-### [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Priority Calculator ([Python](../../Languages/python/SKILL.md))
+### [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Priority Calculator ([Python](../../Languages/python/SKILL.md))
 ```[python](../../Languages/python/SKILL.md)
 from enum import Enum
 from dataclasses import dataclass
@@ -304,7 +304,7 @@ class Urgency(Enum):
     LOW = "low"            # Acceptable delay
 
 @dataclass
-class [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md):
+class [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md):
     title: str
     impact: Impact
     urgency: Urgency
@@ -336,8 +336,8 @@ class [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKI
                     "P3": timedelta(hours=2), "P4": timedelta(hours=4), "P5": timedelta(hours=8)}
         return response.get(self.priority(), timedelta(hours=2))
 
-[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) = [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)("Payment gateway down", Impact.MAJOR, Urgency.CRITICAL, 50000, 50000, datetime.now())
-print(f"Priority: {[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).priority()}, Resolution SLA: {[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).sla_target()}")
+[incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) = [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)("Payment gateway down", Impact.MAJOR, Urgency.CRITICAL, 50000, 50000, datetime.now())
+print(f"Priority: {[incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).priority()}, Resolution SLA: {[incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).sla_target()}")
 ```
 
 ### Change Advisory Board Workflow (YAML)
@@ -460,30 +460,30 @@ print(report.generate())
 ## Anti-Patterns
 
 ### Anti-Pattern 1: ITIL as a Waterfall Project
-Implementing all ITIL processes in one massive project with a 12-month timeline. By month 8, the business needs have changed and the implemented processes are already outdated. Adopt ITIL iteratively: start with [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) + problem management (highest pain), then add change, then release, then service level.
+Implementing all ITIL processes in one massive project with a 12-month timeline. By month 8, the business needs have changed and the implemented processes are already outdated. Adopt ITIL iteratively: start with [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) + problem management (highest pain), then add change, then release, then service level.
 
 ### Anti-Pattern 2: Process Without Automation
-Designing elaborate workflows that require manual ticket routing, manual SLA tracking, and manual escalation. The process collapses under volume. Automate routing, SLA [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), notification, and escalation. People should only intervene for judgment decisions.
+Designing elaborate workflows that require manual ticket routing, manual SLA tracking, and manual escalation. The process collapses under volume. Automate routing, SLA [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), notification, and escalation. People should only intervene for judgment decisions.
 
 ### Anti-Pattern 3: Change Board as a Gate
 Every change, including P4 standard changes, requires CAB approval. CAB meetings become a rubber-stamp session of 50 changes, with no meaningful review. Use change models with pre-approval for standard changes. CAB should only review high-risk, complex changes.
 
-### Anti-Pattern 4: [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-Myopic Culture
-Tracking [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) metrics but ignoring problem management. The team becomes great at firefighting but never reduces the fire load. Every P1 and recurring P2 [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) must trigger a problem record. Track problem-to-[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) ratio as a KPI.
+### Anti-Pattern 4: [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-Myopic Culture
+Tracking [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) metrics but ignoring problem management. The team becomes great at firefighting but never reduces the fire load. Every P1 and recurring P2 [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) must trigger a problem record. Track problem-to-[incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) ratio as a KPI.
 
 ### Anti-Pattern 5: CMDB as a Shelf-Ware Project
 Investing heavily in CMDB setup but no ongoing maintenance. The CMDB is 40% accurate within 3 months. Teams stop trusting it and bypass change impact analysis. Use automated discovery tools that continuously update CI relationships.
 
 ## Rules
 - All incidents must be logged with priority classification and SLA timestamp.
-- Major incidents require immediate escalation to [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) manager and CAB.
+- Major incidents require immediate escalation to [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) manager and CAB.
 - Known errors must be documented with workaround and linked to related incidents.
 - Change requests must follow classification-based approval routing.
 - Emergency changes require retrospective review within 5 business days.
 - Release units must be defined with rollback and back-out procedures.
 - Service level targets must be measurable, attainable, and regularly reviewed.
 - CSI register items must have assigned owners and target dates.
-- [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response time measured from ticket creation to first responder assignment.
+- [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response time measured from ticket creation to first responder assignment.
 - Problem management conducted for all P1 and recurring P2 incidents.
 - CMDB accuracy validated monthly through automated discovery.
 - Service level reviews conducted quarterly with service owners.
@@ -494,23 +494,23 @@ Investing heavily in CMDB setup but no ongoing maintenance. The CMDB is 40% accu
 
 ### Service Management Process Templates
 ```yaml
-# [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Management Process Definition
+# [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Management Process Definition
 incident_management:
-  process_owner: [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-manager@example.com
+  process_owner: [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-manager@example.com
   triggers:
     - "User reports service disruption"
-    - "[Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) alert fires"
+    - "[Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) alert fires"
     - "Automated health check failure"
-    - "Vendor reports [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)"
+    - "Vendor reports [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)"
   process_flow:
     1: { step: "Log and categorize", owner: "service-desk", target_sla: "5min" }
     2: { step: "Initial diagnosis", owner: "l1-support", target_sla: "15min" }
-    3: { step: "Priority assignment", owner: "[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-manager", target_sla: "10min" }
-    4: { step: "P1/P2 escalation", owner: "[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-manager", target_sla: "5min", channel: "pagerduty" }
+    3: { step: "Priority assignment", owner: "[incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-manager", target_sla: "10min" }
+    4: { step: "P1/P2 escalation", owner: "[incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-manager", target_sla: "5min", channel: "pagerduty" }
     5: { step: "Investigation and diagnosis", owner: "l2-support", target_sla: "2h" }
     6: { step: "Resolution and recovery", owner: "technical-team", target_sla: "varies-by-priority" }
-    7: { step: "[Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) closure", owner: "service-desk", criteria: "user-confirms-resolution" }
-    8: { step: "Post-[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) review", owner: "[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-manager", trigger: "P1-and-P2", timeline: "5-business-days" }
+    7: { step: "[Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) closure", owner: "service-desk", criteria: "user-confirms-resolution" }
+    8: { step: "Post-[incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) review", owner: "[incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-manager", trigger: "P1-and-P2", timeline: "5-business-days" }
   escalation_rules:
     p1_breach_15min: { esc_to: "service-delivery-manager", channel: "phone" }
     p1_breach_30min: { esc_to: "cto", channel: "phone + email" }
@@ -521,7 +521,7 @@ incident_management:
 problem_management:
   triggers:
     - "3+ similar incidents in 7 days"
-    - "Any P1 [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) requiring root cause"
+    - "Any P1 [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) requiring root cause"
     - "Vendor advisory about known issue"
     - "Proactive trend analysis"
   process_flow:
@@ -536,15 +536,15 @@ problem_management:
 # CSI Register and Improvement Tracking
 | ID | Opportunity | Source | Priority | Owner | Status | Target Date |
 |----|-------------|--------|----------|-------|--------|-------------|
-| CSI-001 | Automate [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) categorization | [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Review | High | Platform Team | In Progress | 2026-07-15 |
+| CSI-001 | Automate [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) categorization | [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Review | High | Platform Team | In Progress | 2026-07-15 |
 | CSI-002 | Reduce P1 MTTR by 20% | Q2 Metrics | High | SRE Team | Planned | 2026-09-01 |
-| CSI-003 | Implement SLI dashboard | Customer Feedback | Medium | [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) Team | Not Started | 2026-08-01 |
+| CSI-003 | Implement SLI dashboard | Customer Feedback | Medium | [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Team | Not Started | 2026-08-01 |
 | CSI-004 | Automate CAB agenda generation | CAB Retrospective | Low | ITSM Team | Done | 2026-05-01 |
 ```
 
 ## References
   - ../../../Global_References/change-release-mgmt.md -- Change and Release Management
-  - ../../../Global_References/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-problem-mgmt.md -- [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) and Problem Management
+  - ../../../Global_References/[incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-problem-mgmt.md -- [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) and Problem Management
   - ../../../Global_References/itil-service-mgmt-advanced.md -- ITIL Service Management Advanced Topics
   - ../../../Global_References/itil-service-mgmt-fundamentals.md -- ITIL Service Management Fundamentals
   - references/itil-service-transition.md -- ITIL Service Transition Reference

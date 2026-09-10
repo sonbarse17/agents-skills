@@ -150,7 +150,7 @@ and
      nslookup [kubernetes](../../other/kubernetes/SKILL.md).default.svc.cluster.local
    ```
    See
-   [kubernetes-[service-connectivity](../../../../DevOps_and_Cloud/Observability_and_SecOps/service-connectivity/SKILL.md)-troubleshooting](../[kubernetes-[service-connectivity](../../Observability_and_SecOps/service-connectivity/SKILL.md)-troubleshooting](../[kubernetes](../kubernetes/SKILL.md)-[service-connectivity](../../../../DevOps_and_Cloud/Observability_and_SecOps/service-connectivity/SKILL.md)-troubleshooting/SKILL.md)/SKILL.md)
+   [kubernetes-[service-connectivity](../../../common/service-mesh/service-connectivity/SKILL.md)-troubleshooting](../[kubernetes-[service-connectivity](../../Observability_and_SecOps/service-connectivity/SKILL.md)-troubleshooting](../[kubernetes](../kubernetes/SKILL.md)-[service-connectivity](../../../common/service-mesh/service-connectivity/SKILL.md)-troubleshooting/SKILL.md)/SKILL.md)
    for the full diagnostic sequence if this fails, and
    [cni-networking-calico-flannel](../[cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)/SKILL.md)
    for cross-node connectivity checks specific to the installed CNI.
@@ -247,7 +247,7 @@ and
   surfaces days later once real traffic patterns exercise it.
   **Fix:** Treat this validation as a required gate before handoff, not
   an optional nice-to-have — the whole point is catching exactly this
-  class of issue before it becomes a production [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) instead of a
+  class of issue before it becomes a production [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) instead of a
   pre-launch checklist item.
 
 - **Symptom:** Conformance passes cleanly, but a specific application
@@ -256,7 +256,7 @@ and
   general, not your specific CNI's cross-node data path or a
   NetworkPolicy interaction with DNS egress — run the targeted smoke
   tests (step 7) in addition, and if DNS specifically fails, see
-  [kubernetes-[service-connectivity](../../../../DevOps_and_Cloud/Observability_and_SecOps/service-connectivity/SKILL.md)-troubleshooting](../[kubernetes-[service-connectivity](../../Observability_and_SecOps/service-connectivity/SKILL.md)-troubleshooting](../[kubernetes](../kubernetes/SKILL.md)-[service-connectivity](../../../../DevOps_and_Cloud/Observability_and_SecOps/service-connectivity/SKILL.md)-troubleshooting/SKILL.md)/SKILL.md).
+  [kubernetes-[service-connectivity](../../../common/service-mesh/service-connectivity/SKILL.md)-troubleshooting](../[kubernetes-[service-connectivity](../../Observability_and_SecOps/service-connectivity/SKILL.md)-troubleshooting](../[kubernetes](../kubernetes/SKILL.md)-[service-connectivity](../../../common/service-mesh/service-connectivity/SKILL.md)-troubleshooting/SKILL.md)/SKILL.md).
 
 ## Worked example
 
@@ -310,5 +310,5 @@ available for application teams to deploy onto.
 - [kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../[kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../[kubernetes](../kubernetes/SKILL.md)-cluster-provisioning-with-kubeadm-and-cluster-api/SKILL.md)/SKILL.md) — the self-managed provisioning path this validation gate most commonly follows.
 - [managed-[kubernetes](../../other/kubernetes/SKILL.md)-eks-aks-gke](../[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md) and [lightweight-[kubernetes](../../other/kubernetes/SKILL.md)-k3s](../[lightweight-[kubernetes](../kubernetes/SKILL.md)-k3s](../lightweight-[kubernetes](../kubernetes/SKILL.md)-k3s/SKILL.md)/SKILL.md) — the managed and lightweight provisioning paths that also warrant this validation before handoff.
 - [cni-networking-calico-flannel](../[cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)/SKILL.md) — diagnosing cross-node connectivity or NetworkPolicy-enforcement smoke-test failures at the CNI layer.
-- [kubernetes-[service-connectivity](../../../../DevOps_and_Cloud/Observability_and_SecOps/service-connectivity/SKILL.md)-troubleshooting](../[kubernetes-[service-connectivity](../../Observability_and_SecOps/service-connectivity/SKILL.md)-troubleshooting](../[kubernetes](../kubernetes/SKILL.md)-[service-connectivity](../../../../DevOps_and_Cloud/Observability_and_SecOps/service-connectivity/SKILL.md)-troubleshooting/SKILL.md)/SKILL.md) — the deeper diagnostic path if a DNS or Service smoke test fails.
+- [kubernetes-[service-connectivity](../../../common/service-mesh/service-connectivity/SKILL.md)-troubleshooting](../[kubernetes-[service-connectivity](../../Observability_and_SecOps/service-connectivity/SKILL.md)-troubleshooting](../[kubernetes](../kubernetes/SKILL.md)-[service-connectivity](../../../common/service-mesh/service-connectivity/SKILL.md)-troubleshooting/SKILL.md)/SKILL.md) — the deeper diagnostic path if a DNS or Service smoke test fails.
 - [ingress-nginx-configuration](../[ingress-nginx-configuration](../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md) — installing the Ingress controller exercised by the ingress-path smoke test.

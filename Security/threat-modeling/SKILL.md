@@ -29,7 +29,7 @@ Use this skill when:
 - Making significant architectural changes to existing systems
 - Onboarding a new third-party integration or dependency
 - Preparing for security audits or compliance reviews
-- Responding to a security [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) to improve defenses
+- Responding to a security [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) to improve defenses
 - Reviewing infrastructure changes that affect trust boundaries
 
 ## Prerequisites
@@ -258,7 +258,7 @@ categories:
       name: "Credential stuffing"
       description: "Attacker uses leaked credential databases to attempt logins"
       applicable_to: ["login endpoints", "API authentication"]
-      mitigations: ["MFA", "rate limiting", "credential breach [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)", "CAPTCHA"]
+      mitigations: ["MFA", "rate limiting", "credential breach [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)", "CAPTCHA"]
 
     - id: TL-AUTH-002
       name: "Session hijacking"
@@ -296,7 +296,7 @@ categories:
       name: "Dependency confusion"
       description: "Malicious package with internal name published to public registry"
       applicable_to: ["npm, pip, maven projects using private packages"]
-      mitigations: ["namespace scoping", "registry prioritization", "SBOM [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)"]
+      mitigations: ["namespace scoping", "registry prioritization", "SBOM [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)"]
 
     - id: TL-SC-002
       name: "Compromised CI/CD pipeline"

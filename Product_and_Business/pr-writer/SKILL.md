@@ -305,7 +305,7 @@ Fixes #142 — null pointer when user has no profile
 ### Hotfix PR
 ```markdown
 ## Description
-Hotfix for production [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) #INC-2026-05-01:
+Hotfix for production [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) #INC-2026-05-01:
 NullPointerException when calculating user score for inactive accounts.
 
 Root cause: ScoreService.GetUserScore() doesn't check user.IsActive flag.
@@ -314,7 +314,7 @@ Fix: Added active user check before score calculation.
 
 ## Testing
 - [x] Unit test for inactive user score = 0
-- [x] Manual: reproduced [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) scenario → verified fix
+- [x] Manual: reproduced [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) scenario → verified fix
 - [x] E2E: full user lifecycle test
 
 ## Deployment

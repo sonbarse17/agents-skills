@@ -27,7 +27,7 @@ Implement comprehensive, automated database backup strategies with tested recove
 - You are deploying a new database and need a backup plan from day one.
 - You need to automate nightly or hourly backups for [PostgreSQL](../../Backend/postgresql/SKILL.md), [MySQL](../../Backend/mysql/SKILL.md), or [MongoDB](../../Backend/mongodb/SKILL.md).
 - You want to ship backups to S3-compatible object storage with retention policies.
-- You are building or verifying disaster recovery [runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md).
+- You are building or verifying disaster recovery [runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md).
 
 ## Prerequisites
 

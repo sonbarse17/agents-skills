@@ -135,7 +135,7 @@ No preamble. No postamble. No explanations. No filler. Compress output.
 
 ### Completion Criteria
 - [ ] Serving framework selected with rationale based on model type.
-- [ ] Deployment strategy defined with traffic split and [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
+- [ ] Deployment strategy defined with traffic split and [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
 - [ ] [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) configured with metrics and thresholds.
 - [ ] Model versioning scheme with rollback procedure.
 - [ ] Inference optimization applied (batching, quantization).
@@ -246,7 +246,7 @@ torch.onnx.export(
 )
 ```
 
-### Step 6: Health Checks & [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+### Step 6: Health Checks & [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 ```yaml
 # [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) health probes
 readinessProbe:
@@ -291,17 +291,17 @@ class ABTestRouter:
 - **Missing health endpoints**: Every serving endpoint needs /health and /ready.
 - **Not pinning framework versions**: ABI breaks when serving framework upgrades.
 - **100% inference logging**: Log overflow. Sample at <1% rate.
-- **Not [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) data drift**: Model degrades silently without drift detection.
+- **Not [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) data drift**: Model degrades silently without drift detection.
 
 ## Production Considerations
 
-### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+### [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - p50/p95/p99 inference latency.
 - Error rate (HTTP 4xx/5xx).
 - Request throughput (RPS).
 - GPU utilization and memory.
 - Model version drift detection.
-- Prediction distribution [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
+- Prediction distribution [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
 
 ### Scaling
 - Horizontal Pod Autoscaler with custom metrics.
@@ -546,5 +546,5 @@ class PredictionCache:
   - ../../../Global_References/[serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-inference.md — [Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) Model Inference
   - ../../../Global_References/serving-frameworks.md — Serving Frameworks Comparison
 ## Handoff
-For model building and packaging, hand off to `ml-[ml-pipeline](../../Workflows/ml-pipeline/SKILL.md)`. For [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) inference metrics, hand off to `devops/[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)`.
+For model building and packaging, hand off to `ml-[ml-pipeline](../../Workflows/ml-pipeline/SKILL.md)`. For [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) inference metrics, hand off to `devops/[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)`.
 

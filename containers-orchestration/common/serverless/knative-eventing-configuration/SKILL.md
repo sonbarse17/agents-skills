@@ -201,7 +201,7 @@ Brokers, Triggers, and Sources specifically.
 - Always configure `delivery.deadLetterSink` on Triggers whose events
   matter (order processing, billing, anything with a compliance or
   financial impact) — an event silently dropped after exhausting
-  retries is a data-loss [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) waiting to be discovered.
+  retries is a data-loss [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) waiting to be discovered.
 - Choose the Broker backend (in-memory vs. Kafka-backed) based on
   actual durability requirements, not on whichever was easiest to
   install first — migrating Broker backends later means re-wiring
@@ -238,7 +238,7 @@ Brokers, Triggers, and Sources specifically.
   alarm on messages arriving there.
 
 - **Symptom:** A team assumes events sent to a Broker are durably
-  persisted and can be replayed after an [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), but they're gone.
+  persisted and can be replayed after an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), but they're gone.
   **Fix:** The installed Broker implementation is the in-memory
   channel-based one, which doesn't guarantee durable replay across a
   channel component restart; if replay/durability is a real

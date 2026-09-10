@@ -78,9 +78,9 @@ pattern itself, which this skill doesn't repeat).
   to support the replication/sharding plan you choose — these are
   self-operated systems, so cluster sizing is your responsibility in a way
   it isn't with a fully managed Pinecone index.
-- [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) for index-level metrics (query latency, upsert throughput,
+- [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) for index-level metrics (query latency, upsert throughput,
   index/memory fullness) wired to a dashboard — see
-  [prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
+  [prometheus-and-grafana-[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
   for the metrics-pipeline mechanics if self-hosting Weaviate/Milvus.
 
 ## Step-by-step guidance
@@ -333,7 +333,7 @@ at 200 vectors/upsert call, throttled to run during off-peak hours and
 isolated from the live query path so onboarding a new customer doesn't
 degrade existing customers' query latency.
 
-[Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md): p95 query latency, upsert error rate, and per-partition
+[Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md): p95 query latency, upsert error rate, and per-partition
 memory fullness alerted at 75% of the provisioned tier's documented
 [capacity](../deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) — well before the hard ceiling.
 ```
@@ -344,4 +344,4 @@ memory fullness alerted at 75% of the provisioned tier's documented
 - [vector-database-ingestion-pipeline-for-rag](../[vector-database-ingestion-pipeline-for-rag](../vector-database-ingestion-pipeline-for-rag/SKILL.md)/SKILL.md) — the upstream pipeline whose batch upsert behavior this skill's write-path tuning operates on.
 - [rag-pipeline-design](../[rag-pipeline-design](../../Models_and_FineTuning/rag-pipeline-design/SKILL.md)/SKILL.md) — the retrieval pattern (chunking, re-ranking, hybrid search) this operational layer serves; not repeated here.
 - [agent-cost-and-latency-spike-investigation](../[agent-cost-and-latency-spike-investigation](../../Workflows/agent-cost-and-latency-spike-investigation/SKILL.md)/SKILL.md) — triaging a sudden query latency spike that may originate at this operational layer.
-- [capacity-planning-and-load-testing](../../../site-reliability-engineering/skills/[capacity-planning-and-load-testing](../../../DevOps_and_Cloud/Observability_and_SecOps/[capacity-planning](../../../DevOps_and_Cloud/Observability_and_SecOps/[capacity](../deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-planning/SKILL.md)-and-[load-testing](../../../DevOps_and_Cloud/Observability_and_SecOps/load-testing/SKILL.md)/SKILL.md)/SKILL.md) — general [load-testing](../../../DevOps_and_Cloud/Observability_and_SecOps/load-testing/SKILL.md) methodology applicable to validating query throughput at target scale.
+- [capacity-planning-and-load-testing](../../../site-reliability-engineering/skills/[capacity-planning-and-load-testing](../../../DevOps_and_Cloud/Observability_and_SecOps/[capacity-planning](../../../DevOps_and_Cloud/Observability_and_SecOps/[capacity](../deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-planning/SKILL.md)-and-[load-testing](../../../observability-monitoring-logging/common/capacity-monitoring/load-testing/SKILL.md)/SKILL.md)/SKILL.md) — general [load-testing](../../../observability-monitoring-logging/common/capacity-monitoring/load-testing/SKILL.md) methodology applicable to validating query throughput at target scale.

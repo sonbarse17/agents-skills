@@ -248,7 +248,7 @@ gate deploys is covered separately in
 ## Worked example
 
 **Scenario:** `order-service` (consumer) depends on `inventory-service`
-(provider) for stock lookups; a recent production [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) happened
+(provider) for stock lookups; a recent production [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) happened
 because inventory-service changed a field name without order-service
 noticing until deploy.
 

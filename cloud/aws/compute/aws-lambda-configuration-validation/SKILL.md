@@ -34,7 +34,7 @@ resulting configuration is unsafe. A reserved concurrency value that
 starves the rest of the account, a VPC subnet with too few free IPs, a
 plaintext secret in an environment variable, or an execution role widened
 "to make it work" all pass a normal deploy and only surface later as
-throttling, an [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), or a security finding. This skill is the pre-deploy
+throttling, an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), or a security finding. This skill is the pre-deploy
 gate that catches those problems before they reach production, complementing
 [aws-lambda-packaging-and-configuration](../[aws-lambda-packaging-and-configuration](../[aws-lambda](../aws-lambda/SKILL.md)-packaging-and-configuration/SKILL.md)/SKILL.md),
 which covers how to build the configuration in the first place.
@@ -42,8 +42,8 @@ which covers how to build the configuration in the first place.
 ## When to use
 
 - Before promoting a Lambda deploy (via CI/CD, SAM, CDK, Terraform, or
-  [CloudFormation](../../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md)) to a production stage.
-- Reviewing an [infrastructure-as-code](../../../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md) diff that changes a Lambda
+  [CloudFormation](../../../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md)) to a production stage.
+- Reviewing an [infrastructure-as-code](../../../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) diff that changes a Lambda
   function's memory, timeout, concurrency, VPC config, or IAM role.
 - Diagnosing functions across an account suddenly throttling with
   `TooManyRequestsException` after a new function was deployed.

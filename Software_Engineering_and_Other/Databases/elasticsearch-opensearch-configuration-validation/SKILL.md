@@ -58,7 +58,7 @@ the day-2 operational and reindexing guidance in
 - Before changing `number_of_replicas` or allocation-awareness
   attributes, to validate the change actually improves the fault
   tolerance it's intended to.
-- As a review gate for [infrastructure-as-code](../../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md) or index-template
+- As a review gate for [infrastructure-as-code](../../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) or index-template
   automation that provisions Elasticsearch/OpenSearch indices.
 
 ## Prerequisites & environment

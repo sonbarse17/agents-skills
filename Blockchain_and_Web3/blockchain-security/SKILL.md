@@ -35,17 +35,17 @@ depends_on:
 # Blockchain Security
 
 ## Purpose
-Guide blockchain-specific security analysis covering smart contract auditing, DeFi threat modeling, economic security, [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response, formal verification, and bug bounty programs. Combines traditional security engineering with blockchain-specific risks like economic attack vectors, flash loans, oracle manipulation, and MEV.
+Guide blockchain-specific security analysis covering smart contract auditing, DeFi threat modeling, economic security, [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response, formal verification, and bug bounty programs. Combines traditional security engineering with blockchain-specific risks like economic attack vectors, flash loans, oracle manipulation, and MEV.
 
 ## Agent Protocol
 
 ### Trigger
-"blockchain security", "smart contract [audit](../../AI_and_Agents/Operations/audit/SKILL.md)", "DeFi security", "DeFi threat model", "blockchain threat modeling", "[audit](../../AI_and_Agents/Operations/audit/SKILL.md) methodology", "blockchain [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response", "emergency pause", "fork coordination", "bug bounty", "Immunefi", "Code4rena", "economic security", "game theory blockchain", "incentive analysis", "MEV security", "certora", "formal verification blockchain", "Halmos", "Scribble", "solidity security", "smart contract vulnerability", "blockchain exploit", "flash loan attack", "oracle manipulation", "reentrancy", "access control blockchain", "cross-chain security", "bridge security"
+"blockchain security", "smart contract [audit](../../AI_and_Agents/Operations/audit/SKILL.md)", "DeFi security", "DeFi threat model", "blockchain threat modeling", "[audit](../../AI_and_Agents/Operations/audit/SKILL.md) methodology", "blockchain [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response", "emergency pause", "fork coordination", "bug bounty", "Immunefi", "Code4rena", "economic security", "game theory blockchain", "incentive analysis", "MEV security", "certora", "formal verification blockchain", "Halmos", "Scribble", "solidity security", "smart contract vulnerability", "blockchain exploit", "flash loan attack", "oracle manipulation", "reentrancy", "access control blockchain", "cross-chain security", "bridge security"
 
 ### Input Context
 - Smart contracts or protocol to analyze
 - Platform (EVM/Solana/Cosmos/Cardano)
-- Security objective ([audit](../../AI_and_Agents/Operations/audit/SKILL.md)/threat model/[incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response/pre-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) review)
+- Security objective ([audit](../../AI_and_Agents/Operations/audit/SKILL.md)/threat model/[incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response/pre-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) review)
 - Codebase location and [audit](../../AI_and_Agents/Operations/audit/SKILL.md) history
 - Previous incidents or vulnerabilities
 - TVL and risk exposure
@@ -57,9 +57,9 @@ Security analysis including: threat model, vulnerability findings, economic anal
 1. **Threat model**: assets, actors, attack vectors, trust assumptions, attack surface
 2. **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) approach**: methodology, tools, timeline, expected coverage
 3. **Economic analysis**: incentive structures, game theory, exploit scenarios
-4. **Security controls**: mitigations, circuit breakers, [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+4. **Security controls**: mitigations, circuit breakers, [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 5. **Verification**: formal properties, invariants, proof techniques
-6. **[Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response**: emergency plan, communication template
+6. **[Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response**: emergency plan, communication template
 
 ### Completion Criteria
 - Threat model identifies all trust assumptions and attack surfaces
@@ -91,12 +91,12 @@ Security need:
 │       ├── Re-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) after fixes
 │       ├── Immunefi or Code4rena bounty program
 │       └── Emergency response plan
-├── [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response?
+├── [Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response?
 │   ├── Ongoing exploit → Emergency pause + communication
 │   ├── Post-exploit → Damage assessment + recovery plan
 │   └── Post-mortem → Root cause analysis + fix implementation
 └── Ongoing security?
-    ├── Continuous [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) → Forta, Tenderly alerts
+    ├── Continuous [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) → Forta, Tenderly alerts
     ├── Bug bounty management → VRT, severity classification
     └── Periodic review → Quarterly parameter review, annual deep [audit](../../AI_and_Agents/Operations/audit/SKILL.md)
 ```
@@ -331,7 +331,7 @@ Protocol economic security:
     └── Can a failure cascade through the system?
 ```
 
-## [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response
+## [Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response
 
 ### Emergency Response Playbook
 ```solidity
@@ -359,9 +359,9 @@ contract Pausable {
 }
 ```
 
-### [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response Phases
+### [Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response Phases
 ```
-1. DETECT: [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) alert, community report, or security partner notification
+1. DETECT: [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) alert, community report, or security partner notification
    - Forta bot detects anomalous activity
    - Tenderly alert on unexpected state changes
    - Community report via Discord/Immunefi
@@ -389,7 +389,7 @@ contract Pausable {
    - Multi-sig unpause after fix confirmed
    - Bug bounty payout for reporter
 
-7. POST-MORTEM: Public [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) report within 7 days
+7. POST-MORTEM: Public [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) report within 7 days
    - Root cause analysis
    - Timeline of events
    - Fix details
@@ -401,7 +401,7 @@ contract Pausable {
 2. [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) pipeline: scope → manual review → automated tooling → fuzz/invariant → formal verification → report
 3. Economic security is as important as code security — analyze game theory and incentive alignment
 4. Bug bounty programs follow Immunefi severity: Critical (up to $1M+), High ($50K-$100K), Medium ($5K-$20K), Low ($1K-$5K)
-5. [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response: freeze/pause contract → assess damage → communicate → fork coordination → post-mortem → compensation
+5. [Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response: freeze/pause contract → assess damage → communicate → fork coordination → post-mortem → compensation
 6. Formal verification complements but does NOT replace manual review and fuzz testing
 7. Always verify signature malleability (low-s for ECDSA), nonce reuse, and signature replay protection
 8. Cross-chain bridges require additional security layers: rate limiting, circuit breakers, tiered security
@@ -447,7 +447,7 @@ invariant solvency()
   - ../../../Global_References/bug-bounty-program.md — Bug Bounty Programs for Blockchain Projects
   - ../../../Global_References/economic-security.md — Economic Security in Blockchain Systems
   - ../../../Global_References/formal-verification-deep.md — Formal Verification for Smart Contracts
-  - ../../../Global_References/[incident-response](../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md).md — Blockchain [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response
+  - ../../../Global_References/[incident-response](../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md).md — Blockchain [Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response
   - ../../../Global_References/smart-contract-security.md — Smart Contract Security
   - ../../../Global_References/[threat-modeling](../../Security/threat-modeling/SKILL.md).md — Threat Modeling for Blockchain Systems
   - references/blockchain-vulnerability-catalog.md — Common Blockchain Vulnerabilities Catalog
@@ -462,7 +462,7 @@ Blockchain Security Approach
 │   ├── Pre-development → Threat model + formal spec
 │   ├── Post-development → Smart contract [audit](../../AI_and_Agents/Operations/audit/SKILL.md) + fuzzing
 │   ├── Pre-deployment → Comprehensive security review + bug bounty
-│   └── Post-deployment → Continuous [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) + [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response
+│   └── Post-deployment → Continuous [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) + [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response
 ├── Vulnerability type?
 │   ├── Reentrancy → ReentrancyGuard, checks-effects-interactions
 │   ├── Access control → OpenZeppelin AccessControl, multisig
@@ -532,8 +532,8 @@ contract TimelockController {
 
 - **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) frequency**: Full [audit](../../AI_and_Agents/Operations/audit/SKILL.md) before mainnet deploy; re-[audit](../../AI_and_Agents/Operations/audit/SKILL.md) on major upgrade (> 20% code change).
 - **Bug bounty**: Launch Immunefi bounty (up to 10% TVL); scope all contracts and frontend.
-- **[Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: Deploy Forta/OpenZeppelin Defender Sentinel for transaction [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
-- **[Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response**: Pre-defined IR playbook; pause contracts within 30 min of exploit detection.
+- **[Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**: Deploy Forta/OpenZeppelin Defender Sentinel for transaction [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
+- **[Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response**: Pre-defined IR playbook; pause contracts within 30 min of exploit detection.
 - **Insurance**: Purchase DeFi insurance (Nexus Mutual, Sherlock) for TVL coverage.
 - **Responsible disclosure**: Maintain security.txt; private disclosure channel for vulnerability reports.
 
@@ -552,7 +552,7 @@ contract TimelockController {
 - **Gas-efficient access control**: Use bitmap-based roles (BitMaps) instead of array for role management.
 - **Batch verification**: Verify multiple signatures in single operation for multisig.
 - **Storage-efficient audits**: Use event-based [audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail instead of on-chain storage for non-critical logs.
-- **Off-chain [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: Use The Graph subgraph for security [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md); avoid on-chain overhead.
+- **Off-chain [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**: Use The Graph subgraph for security [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md); avoid on-chain overhead.
 - **Selective [audit](../../AI_and_Agents/Operations/audit/SKILL.md) scope**: Focus formal verification on critical paths (token transfers, liquidations).
 
 ## Security Considerations

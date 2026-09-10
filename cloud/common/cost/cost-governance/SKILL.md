@@ -38,7 +38,7 @@ A six-pillar framework for systematic cloud cost governance:
 
 Pillar 1 - Governance Structure: Define cost center hierarchy, assign budget owners, establish approval gates. Create a Cloud Cost Council with representatives from engineering, finance, and product.
 
-Pillar 2 - [Observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md): Implement real-time cost visibility through native cloud tools and third-party platforms. Build [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) per cost center, service, and resource type. Track unit economics (cost per transaction, per user, per API call).
+Pillar 2 - [Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md): Implement real-time cost visibility through native cloud tools and third-party platforms. Build [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) per cost center, service, and resource type. Track unit economics (cost per transaction, per user, per API call).
 
 Pillar 3 - Validation: Enforce tagging policy through [policy-as-code](../../../../Security/policy-as-code/SKILL.md). Use preventive controls (SCPs, organization policies) to block non-compliant resource creation. Implement detective controls (scheduled compliance scans).
 
@@ -253,7 +253,7 @@ Pitfall 7: Siloed cost data. Engineering sees cloud costs, finance sees invoices
 
 Practice 1: Implement cost governance from day one of a new project. Retroactive tagging and allocation is expensive and inaccurate. Automate governance into IaC templates and CI/CD pipelines.
 
-Practice 2: Publish cost per team visibly. Teams manage what they can see. Showback [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) with team-name budget progress are the single highest-impact action for cost control.
+Practice 2: Publish cost per team visibly. Teams manage what they can see. Showback [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) with team-name budget progress are the single highest-impact action for cost control.
 
 Practice 3: Centralize commitment purchases (RI/SP). A single team managing cloud commitments achieves higher coverage and better utilization than distributed purchasing. Finance + Engineering joint review.
 
@@ -271,7 +271,7 @@ Practice 6: Integrate cost checks into CI/CD. A pull request that adds an expens
 | Budgeting | FinOps Capability: Budget Management | AWS Budgets, Azure Budgets, GCP Budgets |
 | Anomaly Detection | FinOps Capability: Anomaly Management | AWS Anomaly Detection, Azure Anomaly Detector |
 | Optimization | FinOps Capability: Resource Utilization | AWS Compute Optimizer, Azure Advisor |
-| Unit Economics | FinOps Capability: Unit Cost | Custom [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), CloudZero |
+| Unit Economics | FinOps Capability: Unit Cost | Custom [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), CloudZero |
 
 ## Templates & Tools
 
@@ -559,10 +559,10 @@ Publishing cost reports that no one reads or acts on. Showback is step 1 — the
 A 5000-employee enterprise with $50M annual cloud spend had 60% untagged resources. Implementing enforced tagging through SCPs and Terraform validators took 6 months. The unallocated cost bucket shrank from 60% to 5%. Cost center owners could finally see their teams spend. Within 3 months of visibility, teams identified $4M in annualized savings.
 
 ### Case Study 2: Startup Anomaly Detection
-A Series B SaaS company deployed ML-based anomaly detection after a $50K unexpected GPU compute spike from a misconfigured CI/CD pipeline. The anomaly detection caught the next [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) within 2 hours of the job starting, limiting damage to $3K. Payback period on the anomaly detection investment: 2 weeks.
+A Series B SaaS company deployed ML-based anomaly detection after a $50K unexpected GPU compute spike from a misconfigured CI/CD pipeline. The anomaly detection caught the next [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) within 2 hours of the job starting, limiting damage to $3K. Payback period on the anomaly detection investment: 2 weeks.
 
 ### Case Study 3: FinOps Transformation Journey
-A mid-market company moved from FinOps maturity Level 1 (Crawl) to Level 3 (Run) over 18 months. Starting with tagging enforcement and showback [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), they added anomaly detection at month 6, monthly optimization reviews at month 9, and chargeback at month 15. Annual cloud spend grew 40% (business growth) but cost-per-transaction dropped 25%. Total savings identified and realized: $1.2M/year.
+A mid-market company moved from FinOps maturity Level 1 (Crawl) to Level 3 (Run) over 18 months. Starting with tagging enforcement and showback [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), they added anomaly detection at month 6, monthly optimization reviews at month 9, and chargeback at month 15. Annual cloud spend grew 40% (business growth) but cost-per-transaction dropped 25%. Total savings identified and realized: $1.2M/year.
 
 ## Rules
 - All resources must have mandatory tags before creation.

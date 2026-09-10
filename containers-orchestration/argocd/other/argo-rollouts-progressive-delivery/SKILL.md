@@ -52,7 +52,7 @@ back, or (worse) reports healthy while serving errors.
 - Configuring canary `steps` (weights, pauses, analysis gates) or a
   blue-green strategy's preview/active service split.
 - Wiring an `AnalysisTemplate` to a specific metrics backend (Prometheus,
-  [Datadog](../../../../DevOps_and_Cloud/Observability_and_SecOps/datadog/SKILL.md), CloudWatch, Wavefront, New Relic, or a [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) `Job`-based
+  [Datadog](../../../../observability-monitoring-logging/datadog/other/datadog/SKILL.md), CloudWatch, Wavefront, New Relic, or a [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) `Job`-based
   custom check) to gate promotion automatically.
 - Integrating traffic management (Istio `VirtualService`, NGINX/ALB
   ingress annotations, SMI, or Argo Rollouts' native traffic router) so
@@ -77,10 +77,10 @@ back, or (worse) reports healthy while serving errors.
   replicas cannot be represented exactly).
 - For **automated analysis**: a metrics backend reachable from the
   cluster (Prometheus is the most common `AnalysisTemplate` provider) with
-  the queries/[dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) for the service's key signals already defined —
+  the queries/[dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) for the service's key signals already defined —
   this skill assumes those metrics already exist, not that you build
-  [observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) from scratch (see
-  [prometheus-and-grafana-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../../../[observability](../../Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
+  [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from scratch (see
+  [prometheus-and-grafana-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../../../[observability](../../Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
   for that).
 - The workload's existing `Deployment` manifest, to be converted (`kind:
   Deployment` → `kind: Rollout`, `spec.strategy` replaced).
@@ -186,7 +186,7 @@ back, or (worse) reports healthy while serving errors.
          failureLimit: 2
          provider:
            prometheus:
-             address: http://prometheus.[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md):9090
+             address: http://prometheus.[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md):9090
              query: |
                sum(rate(http_requests_total{service="{{args.service-name}}",status=~"5.."}[5m]))
                /
@@ -231,7 +231,7 @@ back, or (worse) reports healthy while serving errors.
    > manually) — it is not a "speed up a slow rollout" shortcut for
    > routine releases.
 
-7. **Set `dryRun`/`measurementRetention` and dashboard for [observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
+7. **Set `dryRun`/`measurementRetention` and dashboard for [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
    into why an analysis failed:**
    ```bash
    [kubectl](../../../kubernetes/other/kubectl/SKILL.md) argo rollouts dashboard   # local web UI: http://localhost:3100
@@ -374,7 +374,7 @@ spec:
       successCondition: result[0] <= 0.01
       provider:
         prometheus:
-          address: http://prometheus.[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md):9090
+          address: http://prometheus.[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md):9090
           query: |
             sum(rate(http_requests_total{service="payments-api-canary",status=~"5.."}[5m]))
             /
@@ -392,7 +392,7 @@ spec:
       successCondition: result[0] <= 0.3
       provider:
         prometheus:
-          address: http://prometheus.[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md):9090
+          address: http://prometheus.[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md):9090
           query: |
             histogram_quantile(0.99, sum(rate(http_request_duration_seconds_bucket{service="payments-api-canary"}[5m])) by (le))
 ```

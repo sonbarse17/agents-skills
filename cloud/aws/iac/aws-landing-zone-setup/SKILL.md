@@ -58,7 +58,7 @@ blocking developer velocity.
 - An AWS Organization already exists or you have rights to create one
   (`organizations:CreateOrganization`) from a dedicated **Management
   Account** that runs no workloads.
-- AWS CLI v2 and, if using [infrastructure-as-code](../../../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md), Terraform ≥ 1.5 (for the
+- AWS CLI v2 and, if using [infrastructure-as-code](../../../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md), Terraform ≥ 1.5 (for the
   `aws` provider ≥ 5.x) or the AWS Landing Zone Accelerator (LZA) CDK
   toolchain.
 - Decide up front: Control Tower (AWS-managed, opinionated, fastest to

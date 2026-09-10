@@ -37,7 +37,7 @@ Patterns for managing distributed transactions and long-running business process
 - Orchestrator or choreography implementation for your chosen pattern
 - Compensation logic for each participant service (idempotent, always-succeeds)
 - Step timeout configuration with per-step deadlines
-- [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) setup: state machine metrics, stuck saga detection, DLQ recovery
+- [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) setup: state machine metrics, stuck saga detection, DLQ recovery
 
 ---
 
@@ -129,6 +129,6 @@ The `references/` directory contains production-grade implementations not needed
 ## Related Skills
 
 - `[cqrs-implementation](../cqrs-implementation/SKILL.md)` — Pair sagas with CQRS for read-model updates after each step completes
-- `[event-store-design](../../../DevOps_and_Cloud/Observability_and_SecOps/event-store-design/SKILL.md)` — Store saga events in an event store for full [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail and replay capability
+- `[event-store-design](../event-store-design/SKILL.md)` — Store saga events in an event store for full [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail and replay capability
 - `[workflow-orchestration-patterns](../workflow-orchestration-patterns/SKILL.md)` — Higher-level workflow engines (Temporal, Conductor) that build on saga concepts
 

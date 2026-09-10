@@ -32,7 +32,7 @@ depends_on:
 Backups that have never been restored, and DR plans that have never been
 tested with a real failover, are aspirational documents, not operational
 capabilities — the outage or ransomware event is the worst possible time
-to discover a backup is corrupt, a [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) step references a
+to discover a backup is corrupt, a [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) step references a
 decommissioned system, or the cross-region replica has silent lag. This
 skill covers picking a DR pattern (backup-restore through active-active)
 matched to a genuine Recovery Time Objective (RTO) and Recovery Point
@@ -73,7 +73,7 @@ failover on a schedule so the plan is proven, not assumed.
   boundaries established in the landing-zone skills — a backup that
   lives only in the same account as the primary data does not protect
   against account-level compromise or accidental account deletion.
-- A tested, version-controlled DR [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) (Infrastructure as Code for
+- A tested, version-controlled DR [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) (Infrastructure as Code for
   the DR-site infrastructure itself, plus documented manual steps for
   anything not yet automated) — a plan that exists only as institutional
   knowledge in one engineer's head is not a DR plan.
@@ -138,21 +138,21 @@ failover on a schedule so the plan is proven, not assumed.
    primary so that a compromise of the primary account's credentials
    cannot also delete the DR copy.
 
-4. **Automate DR-site infrastructure as code**, not as a manual [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)
-   step performed only during an actual [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) — the DR environment's
+4. **Automate DR-site infrastructure as code**, not as a manual [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)
+   step performed only during an actual [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) — the DR environment's
    Terraform/Bicep/Deployment Manager templates should be applied
    (or kept warm, per the chosen pattern) and validated in CI the same
    way production infrastructure is.
 
-5. **Write the failover [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) as executable steps**, including: DNS/
+5. **Write the failover [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) as executable steps**, including: DNS/
    traffic-routing cutover (e.g. Route 53 / Azure Traffic Manager /
    Cloud DNS failover routing policies), data promotion (promoting a
    read replica to primary), application configuration changes, and
    the reverse (fail-back) procedure — fail-back is frequently
    forgotten and is often riskier than the initial failover.
 
-6. **Test the failover on a schedule**, not only during a real [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md):
-   - Tabletop exercise (walk through the [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) without executing it)
+6. **Test the failover on a schedule**, not only during a real [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md):
+   - Tabletop exercise (walk through the [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) without executing it)
      at minimum quarterly.
    - A live, controlled failover test (actually promoting the DR
      database, actually cutting DNS) at least annually for Tier 0/1
@@ -192,27 +192,27 @@ failover on a schedule so the plan is proven, not assumed.
   workloads genuinely belong in backup-restore or pilot light once RTO/
   RPO requirements are honestly assessed.
 - **Automate DNS/traffic failover**, not manual DNS record edits during
-  an [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) — manual cutover under pressure is where failover time
+  an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) — manual cutover under pressure is where failover time
   budgets are blown.
 - **Document and rehearse fail-back**, not just failover — many
   organizations can execute a failover under pressure but have never
   practiced returning to the primary region cleanly.
-- **Version and test DR [infrastructure-as-code](../../../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md) in CI** the same as
+- **Version and test DR [infrastructure-as-code](../../../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) in CI** the same as
   production IaC — DR infrastructure that only gets applied during a
-  real [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) is untested infrastructure.
+  real [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) is untested infrastructure.
 
 ## Common pitfalls
 
 - **Symptom:** During an actual regional outage, the DR failover takes
   many hours longer than the documented RTO.
-  **Fix:** The [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) was written and reviewed but never executed
+  **Fix:** The [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) was written and reviewed but never executed
   live — steps referenced outdated resource names, a manual approval
   step wasn't accounted for, or DNS TTLs were set too high to cut over
   quickly. Run at least one live failover test per year for Tier 0/1
-  workloads and update the [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) based on what actually happened, not
+  workloads and update the [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) based on what actually happened, not
   what was planned.
 
-- **Symptom:** A backup restore is attempted during an [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) and the
+- **Symptom:** A backup restore is attempted during an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) and the
   restored data is missing recent transactions or is outright corrupt.
   **Fix:** Backup jobs were reporting success, but nobody had performed
   an actual restore-and-verify test. Add scheduled restore-verification
@@ -271,7 +271,7 @@ account) — effectively no real disaster recovery.
    account — this protects against ransomware/mass-deletion in addition
    to the warm-standby replica, which protects against a regional
    outage.
-4. Write the failover [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md): promote the DR-region RDS read replica to
+4. Write the failover [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md): promote the DR-region RDS read replica to
    primary, scale the DR-region compute stack from 25% to 100% [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md),
    confirm Route 53 health checks have already begun routing traffic
    (automatic, since failover routing is DNS-health-check-driven rather

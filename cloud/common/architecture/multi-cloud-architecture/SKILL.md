@@ -103,7 +103,7 @@ Design cloud-agnostic architectures and make informed decisions about service se
 - **Message Queue:** Apache Kafka or managed streaming (MSK/Event Hubs/Confluent/OCI Streaming)
 - **Cache:** Redis (ElastiCache/Azure Cache/Memorystore/OCI Cache)
 - **Object Storage:** S3-compatible API
-- **[Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md):** Prometheus/Grafana
+- **[Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md):** Prometheus/Grafana
 - **Service Mesh:** Istio/Linkerd
 
 ### Abstraction Layers
@@ -176,7 +176,7 @@ AWS / Azure / GCP / OCI
 2. **Implement CI/CD pipelines** for deployments
 3. **Design for failure** across clouds
 4. **Use managed services** when possible
-5. **Implement comprehensive [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**
+5. **Implement comprehensive [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**
 6. **Automate cost optimization**
 7. **Follow security best practices**
 8. **Document cloud-specific configurations**
@@ -186,7 +186,7 @@ AWS / Azure / GCP / OCI
 
 ## Related Skills
 
-- `[terraform-module-library](../../../../DevOps_and_Cloud/Infrastructure_as_Code/terraform-module-library/SKILL.md)` - For IaC implementation
+- `[terraform-module-library](../../../../infrastructure-as-code/terraform/modules/terraform-module-library/SKILL.md)` - For IaC implementation
 - `[cost-optimization](../../cost/cost-optimization/SKILL.md)` - For cost management
 - `[hybrid-cloud-networking](../hybrid-[cloud-networking](../cloud-networking/SKILL.md)/SKILL.md)` - For connectivity
 

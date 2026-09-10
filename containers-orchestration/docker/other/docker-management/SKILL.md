@@ -206,7 +206,7 @@ CMD ["node", "server.js"]
 [docker](../docker/SKILL.md) container prune -f
 ```
 
-### Logs and [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+### Logs and [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 ```bash
 # View logs

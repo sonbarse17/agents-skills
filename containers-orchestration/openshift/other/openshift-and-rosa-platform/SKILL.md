@@ -38,7 +38,7 @@ that works on EKS/GKE can be rejected outright by SCCs, and "just expose
 it with an Ingress" isn't quite how [OpenShift](../openshift/SKILL.md) users typically expose
 services. ROSA adds a further layer: Red Hat manages the control plane
 and much of the infrastructure inside an AWS account the customer still
-owns, with a specific shared-responsibility split that changes [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
+owns, with a specific shared-responsibility split that changes [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
 response and access assumptions. This skill covers both.
 
 ## When to use
@@ -189,10 +189,10 @@ response and access assumptions. This skill covers both.
    ```
 
 6. **Understand the ROSA shared-responsibility split** before treating
-   any [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) as fully self-serviceable:
+   any [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) as fully self-serviceable:
    - **Red Hat operates**: the control plane (API server, etcd,
      scheduler), control-plane node patching/upgrades, and
-     infrastructure nodes (router, registry, [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) stack)
+     infrastructure nodes (router, registry, [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) stack)
      — with SRE on-call and an SLA.
    - **Customer owns**: the AWS account and its cost/quota, worker node
      scaling decisions (within Red Hat's managed node lifecycle),
@@ -203,7 +203,7 @@ response and access assumptions. This skill covers both.
      schedules within Red Hat's supported window; Red Hat executes),
      and networking that touches the customer's own VPC/route tables
      outside what ROSA provisions automatically.
-   Confirm which category an [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) falls into before opening either
+   Confirm which category an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) falls into before opening either
    an internal ticket or a Red Hat support case — misrouting a
    control-plane issue to internal on-call (or vice versa) delays
    resolution.
@@ -274,7 +274,7 @@ response and access assumptions. This skill covers both.
   <name> -p '{"spec":{"approved":true}}' --type merge`) rather than
   assuming `Manual` mode is broken; it's working as configured.
 
-- **Symptom:** A ROSA cluster [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) (e.g. slow API server responses)
+- **Symptom:** A ROSA cluster [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) (e.g. slow API server responses)
   gets escalated internally for hours before anyone realizes the
   control plane is Red-Hat-managed.
   **Fix:** Confirm which shared-responsibility bucket the symptom falls

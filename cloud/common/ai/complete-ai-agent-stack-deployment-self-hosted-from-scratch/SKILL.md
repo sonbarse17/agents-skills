@@ -194,13 +194,13 @@ and the operational burden each phase adds versus a managed alternative.
    output injection (Phase 5), exactly as on the cloud-managed path — the
    injection risk itself doesn't change because the model is self-hosted.
 
-7. **Phase 7 — cost and utilization [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).** Unlike the cloud-
+7. **Phase 7 — cost and utilization [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).** Unlike the cloud-
    managed path's per-token provider billing, self-hosted cost is
    dominated by GPU capital/amortized cost and utilization, not per-call
    spend — apply the structural levers from
    [llm-cost-and-latency-optimization](../../../ai-agent/skills/[llm-cost-and-latency-optimization](../../../AI_and_Agents/Models_and_FineTuning/llm-cost-and-latency-optimization/SKILL.md)/SKILL.md)
    (context trimming, batching, right-sized models per step) alongside
-   GPU utilization [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) (`DCGM_FI_DEV_GPU_UTIL`) from the Phase 1
+   GPU utilization [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (`DCGM_FI_DEV_GPU_UTIL`) from the Phase 1
    GPU infrastructure layer. A self-hosted GPU fleet sitting at 15%
    utilization between bursty agent traffic can easily cost more in
    amortized terms than the managed-API alternative would have — this
@@ -337,5 +337,5 @@ flags as catastrophic on a single-replica self-hosted deployment.
 - [vector-[database-operations](../../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../../../AI_and_Agents/Infrastructure/vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md) — Phase 4's self-hosted Weaviate/Milvus sizing, sharding, and replication.
 - [mcp-server-development](../[mcp-server-development](../../../AI_and_Agents/Infrastructure/mcp-server-development/SKILL.md)/SKILL.md) — Phase 5's tool-server build, network segmentation, and credential scoping.
 - [agent-evaluation-and-guardrails](../[agent-evaluation-and-guardrails](../../../AI_and_Agents/Models_and_FineTuning/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md) — Phase 6's offline eval harness and runtime guardrails.
-- [llm-cost-and-latency-optimization](../[llm-cost-and-latency-optimization](../../../AI_and_Agents/Models_and_FineTuning/llm-cost-and-latency-optimization/SKILL.md)/SKILL.md) — Phase 7's structural cost/latency levers, applied alongside GPU utilization [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
+- [llm-cost-and-latency-optimization](../[llm-cost-and-latency-optimization](../../../AI_and_Agents/Models_and_FineTuning/llm-cost-and-latency-optimization/SKILL.md)/SKILL.md) — Phase 7's structural cost/latency levers, applied alongside GPU utilization [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
 - [complete-ai-agent-stack-deployment-cloud-managed-from-scratch](../[complete-ai-agent-stack-deployment-cloud-managed-from-scratch](../complete-ai-agent-stack-deployment-cloud-managed-from-scratch/SKILL.md)/SKILL.md) — the managed-service alternative to this entire path, for comparing total cost and operational burden before choosing between them.

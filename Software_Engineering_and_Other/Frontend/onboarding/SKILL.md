@@ -45,7 +45,7 @@ Great onboarding is a competitive advantage for engineering organizations. New h
 - CI/CD details: provider ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, [CircleCI](../../../ci-cd/circleci/other/circleci/SKILL.md), [Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md)), lint/typecheck/test/build commands, deployment targets and environments
 - Development workflow: branch naming convention, PR template, required reviewers, CI checks, merge strategy, release cadence
 - Environment requirements: supported host OS, minimum hardware, reserved ports, system dependencies
-- Documentation paths: ADRs, API docs, [runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md), [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response guides, architecture diagrams
+- Documentation paths: ADRs, API docs, [runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md), [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response guides, architecture diagrams
 
 ### Output Artifact
 Onboarding plan with day-by-day checklist, environment setup commands in executable order, architecture overview with key directories and request flow, and team practices reference guide.
@@ -121,13 +121,13 @@ Setup approach:
 Produce step-by-step instructions as executable command blocks in strict order. Clone → install runtime → install deps → configure env → start dev server → verify health → run tests. If project lacks `bin/setup` or equivalent automation, create one as part of onboarding PR.
 
 ### Step 2: Architecture Overview
-Walk directory structure. `src/` or `app/` = application source by feature module or bounded context. `tests/` or `spec/` = all automated tests mirroring source. `docs/` = ADRs, API docs, [runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md), diagrams. `scripts/` = automation (setup, DB ops, deploy). `infra/` or `ops/` = IaC (Terraform, K8s, [CloudFormation](../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md), [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Compose). Describe request flow: CDN → load balancer → API gateway (routing + auth) → service → DB (optional cache) → optional queue → response. Deployment pipeline: push → CI (lint, typecheck, unit, int, security, build) → registry → staging → smoke tests → prod (blue-green or canary).
+Walk directory structure. `src/` or `app/` = application source by feature module or bounded context. `tests/` or `spec/` = all automated tests mirroring source. `docs/` = ADRs, API docs, [runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md), diagrams. `scripts/` = automation (setup, DB ops, deploy). `infra/` or `ops/` = IaC (Terraform, K8s, [CloudFormation](../../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md), [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Compose). Describe request flow: CDN → load balancer → API gateway (routing + auth) → service → DB (optional cache) → optional queue → response. Deployment pipeline: push → CI (lint, typecheck, unit, int, security, build) → registry → staging → smoke tests → prod (blue-green or canary).
 
 ### Step 3: Development Workflow
 Branch strategy: all feature branches from main (never other feature branches). Naming: `feature/user-login`, `fix/PROJ-123-null-pointer`, `chore/upgrade-deps`. PR workflow: draft PR early for intent signal → self-review before requesting → request reviewers → address feedback with additional commits (no force-push during review) → squash merge. CI: every push triggers lint → typecheck → unit → integration → security scan → build. Fix failures at each stage before proceeding. Testing: features need unit tests, bug fixes need reproduction test, API changes need integration tests, critical paths need E2E. Min 80% coverage on new code. Code review culture: respond within 4 business hours, focus on logic/correctness/design/security (linters handle style), explicit approve or request changes (no passive comments-only).
 
 ### Step 4: Team Practices
-Standup: same time daily, same platform, same format (yesterday/today/blocks), ≤15 min for teams ≤10. Communication: Slack/Discord by topic channels (#engineering, #incidents, #releases), scheduled video for agile ceremonies, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) for code discussions, dedicated on-call channel. Documentation conventions: ADRs per template (title, status, context, decision, consequences) as markdown with sequential ID in `docs/adr/`. API docs as OpenAPI alongside source. Architecture diagrams in `docs/diagrams/` ([Mermaid](../../../Product_and_Business/mermaid/SKILL.md), Draw.io, Excalidraw). [Runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md) in `docs/[runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md)/` (deploy, rollback, [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response, troubleshooting).
+Standup: same time daily, same platform, same format (yesterday/today/blocks), ≤15 min for teams ≤10. Communication: Slack/Discord by topic channels (#engineering, #incidents, #releases), scheduled video for agile ceremonies, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) for code discussions, dedicated on-call channel. Documentation conventions: ADRs per template (title, status, context, decision, consequences) as markdown with sequential ID in `docs/adr/`. API docs as OpenAPI alongside source. Architecture diagrams in `docs/diagrams/` ([Mermaid](../../../Product_and_Business/mermaid/SKILL.md), Draw.io, Excalidraw). [Runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md) in `docs/[runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md)/` (deploy, rollback, [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response, troubleshooting).
 
 ## Models
 
@@ -514,7 +514,7 @@ sudo apt install -y code
 - [ ] Generate and register SSH key (ed25519)
 - [ ] Set up GPG key for signed commits
 - [ ] Install password manager (1Password/Bitwarden)
-- [ ] Request access to: production logs (read-only), staging environment, CI/CD console, [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response tools
+- [ ] Request access to: production logs (read-only), staging environment, CI/CD console, [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response tools
 - [ ] Review security policy: reporting process, responsible disclosure, PII handling
 - [ ] Review `.env` requirements — never [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) secrets
 
@@ -550,9 +550,9 @@ git secrets --register-aws
 - Architecture deep-dive: Event-driven architecture, CQRS, saga patterns
 
 ### DevOps / Platform Engineer
-- Week 1 focus: [Infrastructure-as-code](../../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md), CI/CD pipelines, [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) stack
-- Key concepts: [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) clusters, service mesh, [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) (logs/metrics/traces)
-- First PR: Add a [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) dashboard or update a CI workflow
+- Week 1 focus: [Infrastructure-as-code](../../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md), CI/CD pipelines, [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) stack
+- Key concepts: [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) clusters, service mesh, [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) (logs/metrics/traces)
+- First PR: Add a [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) dashboard or update a CI workflow
 - Architecture deep-dive: Cluster topology, network policy, disaster recovery
 
 ### ML / Data Engineer

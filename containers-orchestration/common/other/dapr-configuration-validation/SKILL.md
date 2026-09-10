@@ -34,7 +34,7 @@ app in the namespace, a plaintext credential inlined under
 `spec.metadata`, a pub/sub component with no dead-letter or retry
 policy, or a binding pointed at the wrong environment's backend all
 pass [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md)' schema validation and only surface later as a security
-finding, a silent data-loss [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), or a cross-environment data leak.
+finding, a silent data-loss [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), or a cross-environment data leak.
 This skill is the pre-deploy validation gate for Dapr component
 configuration, complementing
 [dapr-distributed-runtime-configuration](../[dapr-distributed-runtime-configuration](../../../Software_Engineering_and_Other/Frontend/dapr-distributed-runtime-configuration/SKILL.md)/SKILL.md),
@@ -195,7 +195,7 @@ plays for Knative Serving.
   [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) `Secret` or the standard secret store component, purge the
   plaintext value from git history if it was committed, and rotate the
   exposed credential immediately — treat this as a live security
-  [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), not just a config cleanup.
+  [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), not just a config cleanup.
 
 - **Symptom:** A service-to-service call via Dapr's invocation building
   block occasionally hangs for a very long time during a downstream

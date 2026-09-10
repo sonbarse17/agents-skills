@@ -41,7 +41,7 @@ specifically, and the handoffs between them: which project hosts platform
 tooling, how the GKE cluster's Workload Identity Federation pool is
 carried into both the Backstage backend and the self-service provisioning
 layer, and where teams get stuck wiring these together for the first
-time. This skill is that integration [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md), not a restatement of
+time. This skill is that integration [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md), not a restatement of
 Organization Policy, GKE, or Backstage mechanics.
 
 ## When to use

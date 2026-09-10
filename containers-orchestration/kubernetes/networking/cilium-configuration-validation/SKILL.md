@@ -243,7 +243,7 @@ first place.
   apply-and-observe step (`hubble observe --verdict DROPPED/FORWARDED`)
   to the CI gate rather than relying on dry-run alone.
 
-- **Symptom:** During an [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), someone applies a broad allow-all
+- **Symptom:** During an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), someone applies a broad allow-all
   `CiliumNetworkPolicy` (empty `ingress`/`egress` selectors matching
   everything) "to rule out policy as the cause," confirms traffic now
   flows, and it's still in place days later.
@@ -253,7 +253,7 @@ first place.
   in a non-production namespace first, and use `hubble observe --verdict
   DROPPED` to find the actual over-restrictive rule instead of removing
   policy wholesale. Re-apply the original scoped policy (or a corrected
-  version) before closing the [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), not "later."
+  version) before closing the [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), not "later."
 
 ## Worked example
 

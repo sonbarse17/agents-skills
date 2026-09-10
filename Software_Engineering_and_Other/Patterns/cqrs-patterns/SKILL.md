@@ -527,7 +527,7 @@ describe('GetOrderQueryHandler', () => {
   - references/command-validation.md — Command Validation
   - references/cqrs-fundamentals.md — CQRS Fundamentals
   - references/cqrs-advanced.md — CQRS Advanced Patterns
-  - references/cqrs-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).md — CQRS [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+  - references/cqrs-[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — CQRS [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
   - references/cqrs-sync-strategies.md — CQRS Synchronization Strategies
   - references/cqrs-testing.md — CQRS Testing
   - references/event-sourcing.md — Event Sourcing

@@ -280,7 +280,7 @@ export OLLAMA_NUM_PARALLEL=2          # Keep memory headroom
 export OLLAMA_MAX_LOADED_MODELS=1     # One model at a time on 16GB
 ```
 
-## [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+## [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 ```bash
 # Check running models and memory usage

@@ -68,7 +68,7 @@ docs.
   (or `INFORMATION_SCHEMA` for shorter retention), BigQuery's
   `INFORMATION_SCHEMA.JOBS` views and Cloud Billing export, Redshift's
   `STL_QUERY`/`SVL_QUERY_SUMMARY` system tables or Redshift's query
-  [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) in the console — all three require this for any cost-
+  [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) in the console — all three require this for any cost-
   attribution or slow-query diagnosis in this skill.
 - An understanding of the workload's actual query pattern (concurrent
   BI dashboard load vs. scheduled batch ETL vs. ad hoc analyst queries)
@@ -221,7 +221,7 @@ against actual join patterns, not guessed.
 All three warehouses make it possible to attribute spend to a specific
 team/workload — do this before reducing warehouse size, slots, or node
 count, since an undersized cut applied to the wrong workload just
-trades a cost problem for a performance [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md):
+trades a cost problem for a performance [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md):
 ```sql
 -- Snowflake: cost by warehouse over the last 30 days
 SELECT warehouse_name, sum(credits_used) AS credits
@@ -282,7 +282,7 @@ GROUP BY user_email ORDER BY bytes_billed DESC;
   BigQuery can prune), so the full table is scanned and billed
   regardless of the filter. Confirm via `total_bytes_processed` in the
   job's execution details, then partition the table by the dominant
-  filter column and re-point ETL/[dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) at the partitioned table.
+  filter column and re-point ETL/[dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) at the partitioned table.
 
 - **Symptom:** Redshift queries queue for a long time during business
   hours even though the cluster's CPU utilization doesn't look
@@ -295,7 +295,7 @@ GROUP BY user_email ORDER BY bytes_billed DESC;
   needed for what's actually a queue-configuration problem.
 
 - **Symptom:** A join between two large Redshift tables is far slower
-  than expected, with high network I/O visible in query [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
+  than expected, with high network I/O visible in query [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
   **Fix:** One or both tables use a `DISTKEY`/`DISTSTYLE` that doesn't
   align with the join column, forcing Redshift to redistribute rows
   across nodes at query time. Check `svv_table_info.diststyle` and
@@ -307,7 +307,7 @@ GROUP BY user_email ORDER BY bytes_billed DESC;
 - **Symptom:** Someone runs `TRUNCATE TABLE` or `DROP TABLE` directly
   against a production warehouse table (Snowflake, BigQuery, or
   Redshift) intending to clear staging data, and it turns out to be the
-  production fact table feeding live [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md).
+  production fact table feeding live [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md).
   **Fix:** This is an immediately destructive, and in most
   configurations irreversible outside of engine-specific time-travel/
   fail-safe windows, action.

@@ -324,7 +324,7 @@ def analyze_study(study):
 
 ## Production Considerations
 
-### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+### [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - Track objective value trend — if new runs produce worse results, data may have drifted.
 - Monitor trial failure rate (>10% indicates pipeline issues).
 - Track search space utilization — best params at boundary means space too narrow.

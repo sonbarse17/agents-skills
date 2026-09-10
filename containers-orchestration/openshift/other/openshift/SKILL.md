@@ -411,7 +411,7 @@ EOF
 oc get csv -n openshift-operators
 ```
 
-## [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+## [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 ```bash
 # View pod logs

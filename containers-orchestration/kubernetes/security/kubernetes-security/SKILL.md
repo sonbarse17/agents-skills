@@ -39,7 +39,7 @@ grant than "edit everything."
 
 - **Prefer Role+RoleBinding over ClusterRole+ClusterRoleBinding** unless the permission genuinely
   spans namespaces — cluster-scoped grants are the ones that turn one compromised namespace into a
-  cluster-wide [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+  cluster-wide [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 - **[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) with `[kubectl](../../other/kubectl/SKILL.md) auth can-i --list --as=<sa>`** rather than reading YAML and hoping — it's
   the ground truth the API server actually enforces.
 - **Service accounts, not user credentials**, should hold workload permissions; humans get scoped

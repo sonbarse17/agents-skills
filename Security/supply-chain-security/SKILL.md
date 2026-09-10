@@ -44,7 +44,7 @@ language-native tooling), not as a periodic manual exercise that's stale the mom
 produced.
 
 - **Store the SBOM alongside the artifact**, indexed by build ID, so it's queryable months
-  later during an [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+  later during an [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 - **Diff SBOMs between releases** to catch dependency changes that snuck in without review.
 
 **Done when:** every artifact in the registry has a corresponding SBOM you can query by package

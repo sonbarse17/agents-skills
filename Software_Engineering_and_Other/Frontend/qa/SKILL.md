@@ -186,8 +186,8 @@ Verify all planned tests executed. Review open defects and blocker status. Confi
 |--------|---------------------|---------------|------------|-------------|------------|
 | Testing phase | After development | Throughout sprint | During development | Production | Throughout |
 | Test planning | Detailed upfront | Continuous refinement | Before coding | After release | Risk-weighted |
-| Test creation | Full test cases | ATDD/BDD acceptance criteria | Unit tests first | A/B tests, [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) | Risk-based selection |
-| Automation | Late automation | Built-in automation | From start | [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) | Critical paths only |
+| Test creation | Full test cases | ATDD/BDD acceptance criteria | Unit tests first | A/B tests, [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) | Risk-based selection |
+| Automation | Late automation | Built-in automation | From start | [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) | Critical paths only |
 | Feedback cycle | Weeks | Days | Hours | Real-time | Varies |
 | Best For | Regulated/contract | Product development | CI/CD pipelines | Production validation | Resource-limited |
 
@@ -202,7 +202,7 @@ What is the project context?
   ├── Established product with CI/CD
   │   └── Shift-left: unit tests, static analysis, contract tests in pipeline
   ├── Production system with live users
-  │   └── Shift-right: canary testing, feature flags, production [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+  │   └── Shift-right: canary testing, feature flags, production [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
   └── Resource-constrained / quick delivery
       └── Risk-based testing: prioritize tests by probability × impact
 ```

@@ -172,7 +172,7 @@ re-running around it.
 ## Best practices
 
 - Track flake rate per test/job over time (most CI platforms or test
-  [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) surface this); a rising flake rate is an early warning sign
+  [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) surface this); a rising flake rate is an early warning sign
   worth acting on before it becomes "just re-run it twice."
 - Never silently delete or comment out a failing test to make CI green —
   quarantine it visibly with an owner and a tracking ticket (step 6), so

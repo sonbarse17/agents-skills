@@ -29,7 +29,7 @@ npm install @azure/ai-projects @azure/identity
 
 For tracing:
 ```bash
-npm install @azure/monitor-[opentelemetry](../../../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) @[opentelemetry](../../../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)/api
+npm install @azure/monitor-[opentelemetry](../../../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) @[opentelemetry](../../../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)/api
 ```
 
 ## Environment Variables

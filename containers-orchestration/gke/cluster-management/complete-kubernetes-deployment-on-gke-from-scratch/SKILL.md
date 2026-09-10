@@ -40,7 +40,7 @@ Dataplane V2 (Cilium-based) networking mode chosen at creation, and cert-
 manager's Cloud DNS credentials each have their own setup order. Skip or
 misorder any of them and the cluster looks finished right up until
 something depends on the piece that was never wired up. This skill is the
-GCP-specific end-to-end [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md): it sequences GCP landing zone
+GCP-specific end-to-end [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md): it sequences GCP landing zone
 prerequisites, GKE provisioning, CNI/Dataplane V2, ingress, cert-manager
 with Cloud DNS, conformance validation, a first workload, and a health
 baseline into one ordered path, cross-referencing the tool-specific skill
@@ -355,7 +355,7 @@ helm upgrade --install payments-api oci://ghcr.io/example/charts/payments-api \
 `curl -I https://payments.example.com` returns `HTTP/2 200` with a
 Let's Encrypt production certificate, confirming the full sequence wired
 together correctly across the Shared VPC boundary, and the node
-maintenance [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) (Phase 8) is documented before the first planned
+maintenance [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) (Phase 8) is documented before the first planned
 node pool upgrade.
 
 ## Cross-references

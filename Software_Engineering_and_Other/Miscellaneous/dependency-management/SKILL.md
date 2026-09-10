@@ -61,7 +61,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions.
 - Dependabot or Renovate configured for the project's ecosystems.
 - Update schedule and strategy defined.
 - Auto-merge rules configured for safe updates.
-- Vulnerability scanning enabled with [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md).
+- Vulnerability scanning enabled with [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md).
 - Lock file committed and kept up-to-date.
 
 ## Architecture / Decision Trees
@@ -356,8 +356,8 @@ jobs:
 ### Anti-Pattern 2: Auto-Merging Major Updates
 Major version bumps often contain breaking API changes that break builds silently. Auto-merging bypasses review. Always require manual review for major version updates.
 
-### Anti-Pattern 3: No Vulnerability [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
-Without vulnerability scanning and [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md), critical security patches go unnoticed. An unpatched CVE in a production dependency can lead to exploitation. Enable and monitor vulnerability alerts.
+### Anti-Pattern 3: No Vulnerability [Alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
+Without vulnerability scanning and [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md), critical security patches go unnoticed. An unpatched CVE in a production dependency can lead to exploitation. Enable and monitor vulnerability alerts.
 
 ### Anti-Pattern 4: Not Pinning [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions
 Using @v1 or @main for [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions means the action can change without notice, potentially breaking CI or introducing supply chain vulnerabilities. Pin to SHA or full semver tag.
@@ -405,14 +405,14 @@ Running updates daily creates noise. Running updates monthly misses critical sec
 - Use Renovate presets for org-wide standardization.
 - Enable lock file maintenance for regular lock file updates.
 - Use dependency review action in CI to block vulnerable PRs.
-- Maintain SBOM for compliance and [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response.
+- Maintain SBOM for compliance and [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response.
 - Set vulnerability SLA: critical = 24h, high = 7d, medium = 30d.
 - Use OSV database for comprehensive vulnerability coverage.
 
 ## Compared With
 
 ### Dependabot vs Renovate vs Manual
-Dependabot: simplest setup, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)-native, limited customization. Renovate: more configurable, grouped updates, regex manager, self-hostable. Manual: outdated immediately, no vulnerability [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md), human error prone. Start with Dependabot for simple projects, Renovate for complex monorepos.
+Dependabot: simplest setup, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)-native, limited customization. Renovate: more configurable, grouped updates, regex manager, self-hostable. Manual: outdated immediately, no vulnerability [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md), human error prone. Start with Dependabot for simple projects, Renovate for complex monorepos.
 
 ### npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) vs Snyk vs Trivy
 npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): built-in, free, limited to npm ecosystem. Snyk: broader language coverage, fix PRs, license checks, paid. Trivy: open-source, fast, covers filesystem, containers, repos, SBOM. Use npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) as baseline, Trivy for CI scanning, Snyk for enterprise.
@@ -444,7 +444,7 @@ npm (package-lock.json): npm standard, deterministic. yarn (yarn.lock): yarn spe
 - ../../../Global_References/dependency-management-fundamentals.md -- Dependency Management Fundamentals
 - ../../../Global_References/renovate-config.md -- Renovate Configuration
 - ../../../Global_References/update-strategies.md -- Update Strategies
-- ../../../Global_References/[vulnerability-scanning](../../../DevOps_and_Cloud/Observability_and_SecOps/vulnerability-scanning/SKILL.md).md -- Vulnerability Scanning
+- ../../../Global_References/[vulnerability-scanning](../../../Security/vulnerability-scanning/SKILL.md).md -- Vulnerability Scanning
 
 ## Handoff
 After completing this skill:

@@ -276,7 +276,7 @@ window on a large graph rather than assuming it's instantaneous.
   **Fix:** Read replicas replicate asynchronously and can genuinely
   fall behind under sustained high write volume, particularly if
   under-provisioned relative to the core servers. Check replica lag via
-  [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) (transaction ID comparison between replica and leader),
+  [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (transaction ID comparison between replica and leader),
   scale the read replica's resources, or add more read replicas to
   spread read load rather than routing all reads to a single
   overloaded replica.

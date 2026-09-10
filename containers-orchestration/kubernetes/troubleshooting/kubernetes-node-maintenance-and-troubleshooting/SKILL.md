@@ -35,7 +35,7 @@ one of the most common self-inflicted causes of a [Kubernetes](../../other/kuber
 `drain` evicts every non-DaemonSet pod on the node, and if the workload
 running there doesn't have enough replicas elsewhere (and no
 `PodDisruptionBudget` to make that constraint explicit), the eviction
-itself becomes the [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md). Separately, a node that goes `NotReady`
+itself becomes the [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md). Separately, a node that goes `NotReady`
 unexpectedly needs its own diagnosis — kubelet/runtime/network/disk
 causes each look similar from `[kubectl](../../other/kubectl/SKILL.md) get nodes` but require different
 fixes. This skill covers the safe cordon/drain/uncordon sequence with
@@ -202,7 +202,7 @@ fixes. This skill covers the safe cordon/drain/uncordon sequence with
   connection-draining load balancer needs more than the default grace
   period to avoid cutting off in-flight work.
 - Monitor node `Conditions` (`MemoryPressure`, `DiskPressure`,
-  `Ready`) proactively via node-exporter/kube-state-metrics [alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md),
+  `Ready`) proactively via node-exporter/kube-state-metrics [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md),
   not only when someone happens to notice a node in a bad state during
   `[kubectl](../../other/kubectl/SKILL.md) get nodes`.
 - Treat a node that goes `NotReady` repeatedly (not just once) as a

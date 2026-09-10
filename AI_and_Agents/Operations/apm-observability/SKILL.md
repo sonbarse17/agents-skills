@@ -32,54 +32,54 @@ depends_on:
   - runbooks
 ---
 
-# APM and [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
+# APM and [Observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
 
 ## Purpose
-Design and implement [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) for distributed systems using metrics, traces, and logs with [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md), SLI/SLO frameworks, and actionable [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md).
+Design and implement [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) for distributed systems using metrics, traces, and logs with [OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md), SLI/SLO frameworks, and actionable [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md).
 
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "APM", "[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)", "[Datadog](../../../DevOps_and_Cloud/Observability_and_SecOps/datadog/SKILL.md)", "New Relic", "Grafana", "Prometheus", "[OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)", "distributed tracing", "SLI", "SLO", "error budget", "application performance [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)", "RUM", "synthetics", "instrumentation".
+Exact user phrases: "APM", "[observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)", "[Datadog](../../../observability-monitoring-logging/datadog/other/datadog/SKILL.md)", "New Relic", "Grafana", "Prometheus", "[OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)", "distributed tracing", "SLI", "SLO", "error budget", "application performance [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)", "RUM", "synthetics", "instrumentation".
 
 ### Input Context
 Before activating, verify:
 - Stack/language (for SDK selection: Java, [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md), Go, Node.js, .NET).
 - Infrastructure type ([Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), VMs, [serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)).
-- Existing [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) tools (if migrating from legacy).
-- Budget constraints ([observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) tools can be expensive).
+- Existing [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) tools (if migrating from legacy).
+- Budget constraints ([observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) tools can be expensive).
 - Compliance requirements (log retention, [audit](../audit/SKILL.md) trails, PII masking).
 
 ### Output Artifact
-Writes to [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) instrumentation config, Prometheus rules, Grafana dashboard JSON, [Datadog](../../../DevOps_and_Cloud/Observability_and_SecOps/datadog/SKILL.md)/New Relic config, alert rules, SLI/SLO definitions.
+Writes to [OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) instrumentation config, Prometheus rules, Grafana dashboard JSON, [Datadog](../../../observability-monitoring-logging/datadog/other/datadog/SKILL.md)/New Relic config, alert rules, SLI/SLO definitions.
 
 ### Response Format
-Configuration YAML, Prometheus rules, dashboard JSON, or Terraform HCL for [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) resources.
+Configuration YAML, Prometheus rules, dashboard JSON, or Terraform HCL for [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) resources.
 
 No preamble. No postamble. No explanations. No filler/hedging/transitions.
 
 ### Completion Criteria
 - [ ] Three pillars configured: metrics, traces, logs (at least 2 of 3).
-- [ ] [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) instrumentation for key services.
+- [ ] [OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) instrumentation for key services.
 - [ ] SLIs and SLOs defined for critical user journeys.
-- [ ] [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) rules with proper severity levels and escalation.
+- [ ] [Alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) rules with proper severity levels and escalation.
 - [ ] Dashboard created for system overview.
-- [ ] Cost budget set for [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) tool spend.
+- [ ] Cost budget set for [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) tool spend.
 
 ### Max Response Length
 Direct file write. No response text.
 
 ## Architecture Decision Trees
 
-### [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) Tool Selection
+### [Observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) Tool Selection
 | Tool | Best For | Cost | Self-Hosted |
 |---|---|---|---|
-| [Datadog](../../../DevOps_and_Cloud/Observability_and_SecOps/datadog/SKILL.md) | Full-stack [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md), large enterprises | $$$ (per-host + per-event) | No |
+| [Datadog](../../../observability-monitoring-logging/datadog/other/datadog/SKILL.md) | Full-stack [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md), large enterprises | $$$ (per-host + per-event) | No |
 | Grafana + Prometheus | Metrics-first, [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-native | Free (OSS) / $$ (Grafana Cloud) | Yes |
 | New Relic | APM-focused, polyglot apps | $$ (per-host + data ingested) | No |
-| [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) | Vendor-neutral instrumentation | Free (standards) | N/A |
+| [OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) | Vendor-neutral instrumentation | Free (standards) | N/A |
 | Elastic (ELK) | Log-centric, search-heavy | $ (self-hosted) / $$ (cloud) | Yes |
-| SigNoz | [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)-native APM | $$$ (cloud) / Free (self-hosted) | Yes |
+| SigNoz | [OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)-native APM | $$$ (cloud) / Free (self-hosted) | Yes |
 | Dynatrace | Enterprise, automatic instrumentation | $$$$ | No |
 
 ### Metrics vs Traces vs Logs: When to Use
@@ -106,11 +106,11 @@ Direct file write. No response text.
 | Rate-limited | Burst traffic | N traces/second |
 
 ## Quick Start
-[OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) SDK → Export metrics/traces to collector → Prometheus for metrics → Grafana for [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) → Alertmanager for alerts → SLI/SLO tracking.
+[OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) SDK → Export metrics/traces to collector → Prometheus for metrics → Grafana for [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) → Alertmanager for alerts → SLI/SLO tracking.
 
 ## Core Workflow
 
-### Step 1: [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) Instrumentation
+### Step 1: [OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) Instrumentation
 ```yaml
 # otel-collector-config.yaml
 receivers:
@@ -206,17 +206,17 @@ service:
 ### Step 2: Service Instrumentation ([Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) Example)
 ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # app/instrumentation.py
-from [opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) import trace, metrics
-from [opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md).sdk.resources import Resource
-from [opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md).sdk.trace import TracerProvider
-from [opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md).sdk.metrics import MeterProvider
-from [opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md).exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
-from [opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md).exporter.otlp.proto.grpc.metric_exporter import OTLPMetricExporter
-from [opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md).sdk.trace.export import BatchSpanProcessor
-from [opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md).sdk.metrics.export import PeriodicExportingMetricReader
-from [opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md).instrumentation.flask import FlaskInstrumentor
-from [opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md).instrumentation.requests import RequestsInstrumentor
-from [opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md).instrumentation.sqlalchemy import SQLAlchemyInstrumentor
+from [opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) import trace, metrics
+from [opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md).sdk.resources import Resource
+from [opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md).sdk.trace import TracerProvider
+from [opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md).sdk.metrics import MeterProvider
+from [opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md).exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
+from [opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md).exporter.otlp.proto.grpc.metric_exporter import OTLPMetricExporter
+from [opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md).sdk.trace.export import BatchSpanProcessor
+from [opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md).sdk.metrics.export import PeriodicExportingMetricReader
+from [opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md).instrumentation.flask import FlaskInstrumentor
+from [opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md).instrumentation.requests import RequestsInstrumentor
+from [opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md).instrumentation.sqlalchemy import SQLAlchemyInstrumentor
 
 resource = Resource.create({
     "service.name": "payment-service",
@@ -269,8 +269,8 @@ active_payments = meter.create_up_down_counter(
 
 ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # app/routes.py
-from [opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) import trace
-from [opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) import metrics
+from [opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) import trace
+from [opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) import metrics
 
 tracer = trace.get_tracer(__name__)
 meter = metrics.get_meter(__name__)
@@ -549,29 +549,29 @@ formatters:
 #  "duration_ms":245}
 ```
 
-## Tool Comparison: [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) Platforms
+## Tool Comparison: [Observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) Platforms
 
-| Feature | [Datadog](../../../DevOps_and_Cloud/Observability_and_SecOps/datadog/SKILL.md) | Grafana Cloud | New Relic | Self-Hosted (Prom + Grafana) |
+| Feature | [Datadog](../../../observability-monitoring-logging/datadog/other/datadog/SKILL.md) | Grafana Cloud | New Relic | Self-Hosted (Prom + Grafana) |
 |---|---|---|---|---|
 | Metrics | Mature | Excellent | Good | Excellent |
 | Traces | Good | Good (Tempo) | Excellent | Moderate (Tempo/Jaeger) |
 | Logs | Excellent (Log Management) | Good (Loki) | Good | Good (Loki/ELK) |
 | RUM/Synthetics | Built-in | Built-in (k6) | Built-in | Third-party |
-| APM Agents | Many languages | Many languages | Many languages | [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) |
-| [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) | Good | Excellent (Grafana [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)) | Good | Prometheus + Alertmanager |
+| APM Agents | Many languages | Many languages | Many languages | [OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) |
+| [Alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) | Good | Excellent (Grafana [Alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)) | Good | Prometheus + Alertmanager |
 | Cost per host | ~$15-23/host/month | ~$8-16/host/month | ~$10-20/host/month | Infrastructure only |
 | Learning curve | Medium | Medium | Medium | High |
 | [Multi-cloud](../../../cloud/common/other/multi-cloud/SKILL.md) | Excellent | Excellent | Excellent | Excellent |
 | [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) support | Native | Native | Native | Native |
-| [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) support | Native | Native | Native | Native |
+| [OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) support | Native | Native | Native | Native |
 
 ## Anti-Patterns
 
-### Anti-Pattern 1: [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) as an Afterthought
+### Anti-Pattern 1: [Observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) as an Afterthought
 Adding instrumentation after the system is built. Instrumentation must be part of the development process — include in definition of done.
 
 ### Anti-Pattern 2: Dashboard Sprawl
-Creating hundreds of [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) that nobody looks at. Focus on a small number of high-quality [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) aligned to team ownership.
+Creating hundreds of [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) that nobody looks at. Focus on a small number of high-quality [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) aligned to team ownership.
 
 ### Anti-Pattern 3: Alert Fatigue
 Too many noisy alerts desensitize responders. Define alerts based on SLO burn rates, not every minor metric fluctuation.
@@ -582,8 +582,8 @@ Collecting 100% of traces in high-throughput systems. Use tail-based sampling to
 ### Anti-Pattern 5: Logging Without Structure
 Free-form text logs instead of structured JSON. Without structure, you can't filter, aggregate, or alert on log content.
 
-### Anti-Pattern 6: Ignoring [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) Costs
-Letting [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) spend grow unchecked. Set budgets, monitor data ingestion, and adjust retention/sampling to control costs.
+### Anti-Pattern 6: Ignoring [Observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) Costs
+Letting [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) spend grow unchecked. Set budgets, monitor data ingestion, and adjust retention/sampling to control costs.
 
 ## Production Considerations
 
@@ -591,7 +591,7 @@ Letting [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/obser
 - Mask PII in logs before ingestion (credit cards, SSNs, emails).
 - Use mutual TLS for telemetry transport between agents and collectors.
 - Restrict dashboard access using RBAC (viewer vs editor vs admin).
-- [Audit](../audit/SKILL.md) who modifies [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) and alert rules.
+- [Audit](../audit/SKILL.md) who modifies [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) and alert rules.
 - Encrypt logs at rest in the storage backend.
 
 ### Cost Optimization
@@ -602,7 +602,7 @@ Letting [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/obser
 - Set ingestion budgets per team/service with alerts when approaching limits.
 
 ### High Availability
-- Run multiple [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) Collector instances behind a load balancer.
+- Run multiple [OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) Collector instances behind a load balancer.
 - Use batch processing to handle telemetry spikes.
 - Configure memory limits on collectors to prevent OOM.
 - Buffer telemetry to disk when backend is unavailable.
@@ -615,37 +615,37 @@ Letting [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/obser
 | Missing traces | Sampling dropping them | Check sampling rate; increase for debug |
 | High data ingestion cost | Too many metrics/traces | Reduce cardinality; implement sampling |
 | Alerts not firing | Recording rules not evaluated | Check Prometheus rule evaluation interval |
-| [Dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) show no data | Grafana data source not configured | Verify data source URL and access |
+| [Dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) show no data | Grafana data source not configured | Verify data source URL and access |
 | Collector OOM | Memory limit too low | Reduce batch size; increase memory limit |
 | Traces not correlated | Missing trace context propagation | Ensure traceparent header passed between services |
 
 ## Rules & Constraints
-- Instrument with [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) SDK — avoid vendor-specific agents.
+- Instrument with [OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) SDK — avoid vendor-specific agents.
 - Every service must export RED metrics (Rate, Errors, Duration).
 - All production services must have defined SLOs with error budgets.
-- Alerts must have [runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md) — no alert without documented response.
-- [Dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) must be version-controlled (Grafana as code).
+- Alerts must have [runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md) — no alert without documented response.
+- [Dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) must be version-controlled (Grafana as code).
 - PII must be filtered before log ingestion — never in raw logs.
 - Set ingestion budgets per team — prevent cost surprises.
 - Use structured logging (JSON) — never unstructured text logs.
 - Pin collector and SDK versions — auto-updates can break pipelines.
-- Test [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) rules in staging before deploying to production.
+- Test [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) rules in staging before deploying to production.
 
 ## Output Format
-[OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) collector config, Prometheus rules, Grafana dashboard JSON, SLI/SLO definitions, instrumentation code snippets.
+[OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) collector config, Prometheus rules, Grafana dashboard JSON, SLI/SLO definitions, instrumentation code snippets.
 
 ## References
   - ../../../Global_References/apm-instrumentation.md
-  - ../../../Global_References/apm-[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-advanced.md
-  - ../../../Global_References/apm-[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-fundamentals.md
-  - ../../../Global_References/[datadog](../../../DevOps_and_Cloud/Observability_and_SecOps/datadog/SKILL.md)-setup.md
+  - ../../../Global_References/apm-[observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)-advanced.md
+  - ../../../Global_References/apm-[observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)-fundamentals.md
+  - ../../../Global_References/[datadog](../../../observability-monitoring-logging/datadog/other/datadog/SKILL.md)-setup.md
   - ../../../Global_References/grafana-cloud.md
-  - ../../../Global_References/[new-relic](../../../DevOps_and_Cloud/Observability_and_SecOps/new-relic/SKILL.md)-setup.md
-  - ../../../Global_References/synthetic-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).md
+  - ../../../Global_References/[new-relic](../../../observability-monitoring-logging/new-relic/other/new-relic/SKILL.md)-setup.md
+  - ../../../Global_References/synthetic-[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md
   - references/otel-sampling-guide.md
 
 ## Handoff
 After completing this skill:
-- Next skill: **[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)** — infrastructure [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), Prometheus operator
+- Next skill: **[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)** — infrastructure [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), Prometheus operator
 - Pass context: OTEL endpoint, Grafana dashboard UIDs, SLO definitions, alert routing
 

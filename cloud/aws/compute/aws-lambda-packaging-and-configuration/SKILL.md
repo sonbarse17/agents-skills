@@ -56,7 +56,7 @@ function nobody scoped down after the initial "just get it working" deploy.
 
 ## Prerequisites & environment
 
-- AWS CLI v2 or an IaC tool (SAM, CDK, Terraform, [CloudFormation](../../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md)) with
+- AWS CLI v2 or an IaC tool (SAM, CDK, Terraform, [CloudFormation](../../../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md)) with
   permissions to create/update Lambda functions, IAM roles, and (for
   container images) push to Amazon ECR.
 - For container image packaging: [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) (or another OCI-compatible
@@ -189,7 +189,7 @@ function nobody scoped down after the initial "just get it working" deploy.
 - Give each function (or tightly related group) its own execution role
   scoped to the specific resource ARNs it touches — a shared "does
   everything" role defeats least privilege and makes blast radius
-  analysis impossible after an [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+  analysis impossible after an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 - Version functions and use aliases (`prod`, `staging`) as the stable
   target for Provisioned Concurrency and downstream integrations, rather
   than pointing everything at the mutable `$LATEST`.

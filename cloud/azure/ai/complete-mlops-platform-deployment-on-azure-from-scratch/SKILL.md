@@ -37,11 +37,11 @@ depends_on:
 An MLOps platform on Azure is a chain of dependent phases — tenant
 guardrails, a compute platform, GPU quota and clusters, experiment
 tracking, pipeline orchestration, a model registry, a serving layer, and
-drift [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) — and each phase's setup assumes the previous one exists
+drift [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) — and each phase's setup assumes the previous one exists
 in a specific, working state. Get the order wrong and failures show up in
 the wrong phase entirely: a training pipeline authored before GPU quota is
 approved queues with an opaque error, or a model promoted to a managed
-online endpoint before [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) is wired means a regression is invisible
+online endpoint before [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) is wired means a regression is invisible
 until a human notices. Every individual piece here is covered in depth by
 an existing skill; this skill is the Azure-specific sequencing across all
 of them, worked through the managed Azure ML platform end to end, with the
@@ -58,7 +58,7 @@ sequence where the choice actually diverges.
   specific worked path instead of an abstract comparison.
 - Auditing an existing Azure ML platform for a skipped or out-of-order
   phase (e.g. GPU quota requested after a training pipeline was already
-  authored, or drift [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) added only after months of unmonitored
+  authored, or drift [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) added only after months of unmonitored
   endpoint traffic).
 - Rebuilding a reference ML platform (a second business unit, a DR
   environment) that should follow the same proven sequence as a known-good
@@ -216,14 +216,14 @@ integration decisions between phases.
      --traffic "fraud-scorer-v14=5 fraud-scorer-v13=95"
    ```
    Do not shift traffic past this initial 5% split until Phase 9's
-   [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) is confirmed collecting data against this endpoint. (AKS
+   [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) is confirmed collecting data against this endpoint. (AKS
    +Kubeflow alternative: KServe `InferenceService` per
    [model-serving-and-scaling](../[model-serving-and-scaling](../../../AI_and_Agents/Models_and_FineTuning/model-serving-and-scaling/SKILL.md)/SKILL.md).)
 
-9. **Phase 9 — [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and drift detection.** Enable Azure ML's data
-   drift [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) (or a self-managed Evidently job reading endpoint
+9. **Phase 9 — [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and drift detection.** Enable Azure ML's data
+   drift [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (or a self-managed Evidently job reading endpoint
    request/response logs from Application Insights) per
-   [model-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md),
+   [model-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md),
    with the reference baseline frozen at the moment version 14 first
    received production traffic in Phase 8 — not recomputed later from a
    rolling window that would already include the new version's own
@@ -243,7 +243,7 @@ integration decisions between phases.
   server — this is one of the concrete advantages of the managed path
   over AKS+Kubeflow, where a self-hosted tracker would be required
   instead.
-- Treat Phase 9 ([monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)) as a blocking prerequisite before any
+- Treat Phase 9 ([monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)) as a blocking prerequisite before any
   traffic-split ramp-up past the first stage in Phase 8, exactly as on
   every other cloud in this family — an unmonitored canary defeats the
   purpose of canarying.
@@ -252,7 +252,7 @@ integration decisions between phases.
   is reproducible for a second environment or business unit.
 - Verify Azure Policy `deployIfNotExists` remediation for diagnostic
   settings actually completed against the ML resource group (`az policy
-  remediation list`) before assuming Phase 9's [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) will show data —
+  remediation list`) before assuming Phase 9's [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) will show data —
   a policy that evaluates "compliant" does not guarantee the remediation
   identity's role assignment succeeded.
 
@@ -284,7 +284,7 @@ integration decisions between phases.
   endpoint-to-lineage chain (endpoint → registry version → job → MLflow
   run) stays intact.
 
-- **Symptom:** A drift-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) alert fires constantly in the days
+- **Symptom:** A drift-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) alert fires constantly in the days
   immediately following Phase 8's traffic-split cutover, even though
   nothing about the model changed.
   **Fix:** Phase 9's reference baseline was computed from a rolling
@@ -367,4 +367,4 @@ following the same soak-period discipline described in
 - [training-pipeline-orchestration](../[training-pipeline-orchestration](../../../AI_and_Agents/Models_and_FineTuning/training-pipeline-orchestration/SKILL.md)/SKILL.md) — Phase 6's vendor-neutral DAG/gate principles.
 - [model-packaging-and-versioning](../[model-packaging-and-versioning](../../../AI_and_Agents/Models_and_FineTuning/model-packaging-and-versioning/SKILL.md)/SKILL.md) — Phase 7's registry and promotion gates.
 - [model-serving-and-scaling](../[model-serving-and-scaling](../../../AI_and_Agents/Models_and_FineTuning/model-serving-and-scaling/SKILL.md)/SKILL.md) — Phase 8's canary/traffic-split rollout.
-- [model-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md) — Phase 9's drift/quality [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
+- [model-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md) — Phase 9's drift/quality [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).

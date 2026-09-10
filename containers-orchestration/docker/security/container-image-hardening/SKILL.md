@@ -216,10 +216,10 @@ there to scan and what's exploitable if a vulnerability is found.
   filesystem) by pod spec alone, and only cluster-side enforcement
   guarantees the properties actually hold at runtime.
 - Keep a debug story for distroless/no-shell images before you need it in
-  an [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) — e.g. a separate debug image variant with a shell built
+  an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) — e.g. a separate debug image variant with a shell built
   from the same application layer, or `[kubectl](../../../kubernetes/other/kubectl/SKILL.md) debug` with an ephemeral
   container attached to the running pod — rather than discovering during
-  an [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) that you can't `exec` in at all.
+  an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) that you can't `exec` in at all.
 
 ## Common pitfalls
 

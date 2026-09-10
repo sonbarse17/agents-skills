@@ -43,7 +43,7 @@ person.
 
 - **Tier requests by blast radius**, not by resource type — a dev Postgres instance and a prod
   Postgres instance are not the same request even though they use the same module.
-  See `[terraform-modules](../../../../DevOps_and_Cloud/Infrastructure_as_Code/terraform-modules/SKILL.md)` for how the underlying module itself should be parameterized to make
+  See `[terraform-modules](../../../../infrastructure-as-code/terraform/modules/terraform-modules/SKILL.md)` for how the underlying module itself should be parameterized to make
   this tiering mechanical rather than manual.
 - **Auto-approve within guardrails**: size limits, allowed regions, required tags, budget caps
   enforced by `[policy-as-code](../../../../Security/policy-as-code/SKILL.md)`, not by a reviewer reading a form.

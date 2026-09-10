@@ -51,7 +51,7 @@ Exact user phrases: "Kubernetes", "K8s", "kubeadm", "cluster", "[kubectl](../kub
 - Existing tooling (Helm, [ArgoCD](../../../argocd/other/argocd/SKILL.md), Prometheus, cert-manager)
 
 ### Output Artifact
-Cluster architecture document with control plane design, network topology, security model, upgrade plan, backup/DR strategy, and operational [runbooks](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md).
+Cluster architecture document with control plane design, network topology, security model, upgrade plan, backup/DR strategy, and operational [runbooks](../../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md).
 
 ### Response Format
 YAML manifests, shell commands, and architecture decisions with no extraneous explanation. No preamble. No postamble. No filler.
@@ -63,7 +63,7 @@ YAML manifests, shell commands, and architecture decisions with no extraneous ex
 - [ ] Storage classes defined with CSI driver selection
 - [ ] Upgrade strategy documented (version skew, node pool strategy)
 - [ ] Backup/DR strategy defined (etcd backup, Velero, restore test)
-- [ ] [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and logging infrastructure specified
+- [ ] [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and logging infrastructure specified
 - [ ] Cluster [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) configured (Cluster Autoscaler or Karpenter)
 
 ## Architecture / Decision Trees
@@ -98,7 +98,7 @@ NetworkPolicy required?
   NO → Flannel (simplest overlay) or Weave (encrypted by default)
 
 eBPF capabilities needed?
-  YES → Cilium (L7 policies, Hubble [observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md), service mesh)
+  YES → Cilium (L7 policies, Hubble [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md), service mesh)
   NO → Calico (mature, wireguard encryption, BGP)
 
 Performance critical?
@@ -699,9 +699,9 @@ spec:
 - references/[kubernetes-security](../../security/kubernetes-security/SKILL.md).md — Kubernetes Security Hardening
 - references/kubernetes-upgrades.md — Cluster Upgrade Procedures
 - references/kubernetes-[backup-dr](../../../../Software_Engineering_and_Other/Frontend/backup-dr/SKILL.md).md — etcd Backup and Disaster Recovery
-- references/kubernetes-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).md — Cluster [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
+- references/kubernetes-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Cluster [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 - references/kubernetes-troubleshooting.md — Cluster Troubleshooting Guide
 
 ## Handoff
-Cross-reference with `kubernetes-patterns` for application manifests. Use `[helm-patterns](../../../helm/other/helm-patterns/SKILL.md)` for chart design. Use `[cilium-ebpf](../../networking/cilium-ebpf/SKILL.md)` for advanced networking. Use `[service-mesh](../../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)` for Istio/Linkerd. Use `[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)` for Prometheus/Grafana. Use `[backup-dr](../../../../Software_Engineering_and_Other/Frontend/backup-dr/SKILL.md)` for Velero. Hand off to `[incident-response](../../Observability_and_SecOps/[incident](../../Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)` for cluster incidents.
+Cross-reference with `kubernetes-patterns` for application manifests. Use `[helm-patterns](../../../helm/other/helm-patterns/SKILL.md)` for chart design. Use `[cilium-ebpf](../../networking/cilium-ebpf/SKILL.md)` for advanced networking. Use `[service-mesh](../../../common/service-mesh/service-mesh/SKILL.md)` for Istio/Linkerd. Use `[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)` for Prometheus/Grafana. Use `[backup-dr](../../../../Software_Engineering_and_Other/Frontend/backup-dr/SKILL.md)` for Velero. Hand off to `[incident-response](../../Observability_and_SecOps/[incident](../../Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)` for cluster incidents.
 

@@ -97,7 +97,7 @@ end
 ### Best Practices
 - **Code Organization**: Use ModuleScripts for reusable components
 - **Security First**: Always validate on server-side
-- **Performance [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: Regular [profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) and optimization
+- **Performance [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**: Regular [profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) and optimization
 - **Player Feedback**: Iterative development based on player data
 - **Version Control**: Proper backup and collaboration workflows
 

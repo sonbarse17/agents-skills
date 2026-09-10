@@ -36,7 +36,7 @@ responsible for updating them, they go undiscoverable because nothing
 links to them, and they get duplicated because the next person couldn't
 find the original and wrote a new one instead. This skill covers how to
 structure a page so it's actually readable (hierarchy, table of
-contents, purpose-built templates for [runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md)/design docs/postmortems),
+contents, purpose-built templates for [runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md)/design docs/postmortems),
 how to organize a space so pages have a findable home, the version/
 history discipline that keeps concurrent edits and [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trails sane,
 and how to do page creation/update programmatically via the Confluence
@@ -50,7 +50,7 @@ from any page this skill produces.
 
 ## When to use
 
-- Creating a new [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md), design doc, postmortem, or reference page.
+- Creating a new [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md), design doc, postmortem, or reference page.
 - Updating an existing page and deciding whether/how to preserve history.
 - Organizing or auditing a space's page hierarchy (parent/child
   structure, landing/index pages).
@@ -90,17 +90,17 @@ from any page this skill produces.
    the parent page first — a page with no deliberate parent tends to end
    up either at the space root (invisible in any topical hierarchy) or
    nowhere anyone browses to. If a natural parent doesn't exist yet
-   (e.g. no "[Runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md)" index page in this space), create that index page
+   (e.g. no "[Runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md)" index page in this space), create that index page
    first, or use the space's existing top-level structure.
 
 2. **Search before creating.** Check the space (and likely-adjacent
    spaces) for an existing page on the same topic before writing a new
-   one — a duplicate "Deployment [Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)" in two spaces is worse than no
-   [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md), because neither is known to be authoritative.
+   one — a duplicate "Deployment [Runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)" in two spaces is worse than no
+   [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md), because neither is known to be authoritative.
 
 3. **Use a purpose-built template outline, not a blank page:**
-   - **[Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)** — see
-     [../../../Global_References/[runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)-template.md](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)-template.md):
+   - **[Runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)** — see
+     [../../../Global_References/[runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)-template.md](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)-template.md):
      owner, architecture/dependencies, common operations, alerts and
      what they mean, troubleshooting by symptom, escalation path.
    - **Postmortem** — see
@@ -118,12 +118,12 @@ from any page this skill produces.
    repeated per section), keep heading text scannable, and place a
    Table of Contents macro near the top of any page longer than ~4
    sections so a reader can jump to the relevant part instead of
-   scrolling a [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) during an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+   scrolling a [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) during an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 
 5. **Label for discoverability, using a controlled vocabulary.** Reuse
-   existing labels (service name, `[runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)`/`postmortem`/`design-doc`,
+   existing labels (service name, `[runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)`/`postmortem`/`design-doc`,
    owning team) rather than inventing near-duplicates (`run-book` vs.
-   `[runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)`) — check the space's existing label list first. Labels
+   `[runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)`) — check the space's existing label list first. Labels
    drive both search filtering and label-based index pages/macros.
 
 6. **Link the page from an index/parent page at creation time**, not as
@@ -133,7 +133,7 @@ from any page this skill produces.
    Jira issue macro) so the two systems stay connected.
 
 7. **Assign an explicit owner and review cadence for anything
-   operational** ([runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md) especially). A page with no named owner is a
+   operational** ([runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md) especially). A page with no named owner is a
    page nobody notices has gone stale. Track review-due dates with a
    label (`review-2026-q4`) or a "Last reviewed" line at the top of the
    page, and [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) periodically for pages past due.
@@ -150,7 +150,7 @@ from any page this skill produces.
    ```json
    {
      "type": "page",
-     "title": "Auth Service [Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)",
+     "title": "Auth Service [Runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)",
      "space": { "key": "ENG" },
      "ancestors": [{ "id": "123456" }],
      "body": {
@@ -186,7 +186,7 @@ from any page this skill produces.
    {
      "id": "789012",
      "type": "page",
-     "title": "Auth Service [Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)",
+     "title": "Auth Service [Runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)",
      "space": { "key": "ENG" },
      "body": {
        "storage": {
@@ -194,12 +194,12 @@ from any page this skill produces.
          "representation": "storage"
        }
      },
-     "version": { "number": 5, "message": "Update alert thresholds after AUTH-2231 [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)" }
+     "version": { "number": 5, "message": "Update alert thresholds after AUTH-2231 [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)" }
    }
    ```
 
    Populating `version.message` gives page history a meaningful [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)
-   trail — "Update alert thresholds after AUTH-2231 [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)" is far
+   trail — "Update alert thresholds after AUTH-2231 [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)" is far
    more useful than the default blank entry when someone is scanning
    history for what changed and why.
 
@@ -212,7 +212,7 @@ from any page this skill produces.
     ```
 
     ```json
-    [{ "prefix": "global", "name": "[runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)" }, { "prefix": "global", "name": "auth-service" }]
+    [{ "prefix": "global", "name": "[runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)" }, { "prefix": "global", "name": "auth-service" }]
     ```
 
 ## Best practices
@@ -226,7 +226,7 @@ from any page this skill produces.
 - Every page should be reachable by clicking from its space's home page
   through no more than a few hops — if it isn't, add the missing link
   rather than relying on search alone.
-- Give [runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md) and design docs an explicit owner and review date;
+- Give [runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md) and design docs an explicit owner and review date;
   postmortems should be "Final" with tracked action items, not left in
   "Draft" indefinitely.
 - Use the Table of Contents macro instead of a hand-maintained list of
@@ -238,14 +238,14 @@ from any page this skill produces.
 
 ## Common pitfalls
 
-- **Symptom:** A [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) was accurate when written but has no named
+- **Symptom:** A [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) was accurate when written but has no named
   owner; eighteen months later an on-call engineer follows steps that no
-  longer match the deployed system, making an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) worse instead of
+  longer match the deployed system, making an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) worse instead of
   better.
   **Fix:** Every operational page gets an explicit owner and a review-due
-  label/date at creation (see the [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) template); [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) for pages
+  label/date at creation (see the [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) template); [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) for pages
   past their review date on a recurring cadence, not reactively during
-  the next [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+  the next [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 
 - **Symptom:** A new page is created and never linked from any parent/
   index page — it only surfaces if someone happens to search the exact
@@ -274,7 +274,7 @@ from any page this skill produces.
 
 - **Symptom:** A postmortem page sits in "Draft" status indefinitely with
   action items that were never turned into tracked tickets, so none of
-  the follow-up work happens and the same [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) recurs.
+  the follow-up work happens and the same [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) recurs.
   **Fix:** Require every postmortem action item to link a real Jira
   ticket at write time (see the postmortem template and
   [jira-ticket-best-practices-and-workflow](../[jira-ticket-best-practices-and-workflow](../../../Product_and_Business/jira-ticket-best-practices-and-workflow/SKILL.md)/SKILL.md)),
@@ -284,11 +284,11 @@ from any page this skill produces.
 ## Worked example
 
 **Scenario:** After resolving `AUTH-2231` (the EU SSO `invalid_grant`
-[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) from the Jira ticket skill's worked example), the team needs to
-(a) update the existing Auth Service [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) with a new troubleshooting
+[incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) from the Jira ticket skill's worked example), the team needs to
+(a) update the existing Auth Service [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) with a new troubleshooting
 entry, and (b) publish a postmortem, both properly linked and labeled.
 
-**Step 1 — fetch current [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) version before editing:**
+**Step 1 — fetch current [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) version before editing:**
 
 ```http
 GET /wiki/rest/api/content/789012?expand=version,body.storage
@@ -296,7 +296,7 @@ GET /wiki/rest/api/content/789012?expand=version,body.storage
 
 Response shows `"version": { "number": 4 }`.
 
-**Step 2 — update the [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)'s Troubleshooting section, bump version:**
+**Step 2 — update the [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)'s Troubleshooting section, bump version:**
 
 ```http
 PUT /wiki/rest/api/content/789012
@@ -306,7 +306,7 @@ PUT /wiki/rest/api/content/789012
 {
   "id": "789012",
   "type": "page",
-  "title": "Auth Service [Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)",
+  "title": "Auth Service [Runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)",
   "space": { "key": "ENG" },
   "body": {
     "storage": {
@@ -329,7 +329,7 @@ POST /wiki/rest/api/content
 ```json
 {
   "type": "page",
-  "title": "Postmortem: EU SSO invalid_grant [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) (2026-07-28)",
+  "title": "Postmortem: EU SSO invalid_grant [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) (2026-07-28)",
   "space": { "key": "ENG" },
   "ancestors": [{ "id": "654321" }],
   "body": {
@@ -348,7 +348,7 @@ POST /wiki/rest/api/content/789012/label
 ```
 
 ```json
-[{ "prefix": "global", "name": "[runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)" }, { "prefix": "global", "name": "auth-service" }]
+[{ "prefix": "global", "name": "[runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)" }, { "prefix": "global", "name": "auth-service" }]
 ```
 
 The postmortem page links back to `AUTH-2231`, and — per

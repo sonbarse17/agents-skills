@@ -33,7 +33,7 @@ Design robust, secure deployment pipelines that balance speed with safety throug
 - **Environment topology**: Number of environments (dev/staging/prod), region layout, air-gap requirements
 - **Rollout requirements**: Acceptable downtime, rollback SLA, traffic splitting needs, canary vs blue-green preference
 - **Gate constraints**: Approval teams, required test coverage thresholds, compliance scans (SAST, DAST, SCA)
-- **[Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) stack**: Prometheus, [Datadog](../../../../DevOps_and_Cloud/Observability_and_SecOps/datadog/SKILL.md), CloudWatch, or other metrics sources used for automated promotion decisions
+- **[Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) stack**: Prometheus, [Datadog](../../../../observability-monitoring-logging/datadog/other/datadog/SKILL.md), CloudWatch, or other metrics sources used for automated promotion decisions
 
 ### What This Skill Produces
 
@@ -41,7 +41,7 @@ Design robust, secure deployment pipelines that balance speed with safety throug
 - **Deployment strategy**: Chosen rollout pattern with annotated configuration (canary weights, blue-green switchover, rolling parameters)
 - **Health check setup**: Shallow vs deep readiness probes, post-deployment smoke test scripts
 - **Gate definitions**: Automated metric thresholds and manual approval workflows
-- **Rollback plan**: Automated rollback triggers and manual [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) steps
+- **Rollback plan**: Automated rollback triggers and manual [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) steps
 
 ## When to Use
 

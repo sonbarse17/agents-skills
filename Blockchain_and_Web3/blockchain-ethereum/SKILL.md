@@ -98,7 +98,7 @@ Ethereum interaction type:
 Node requirements:
 ├── Mainnet, most popular → geth (Go) — reference implementation
 ├── High performance, sync speed → reth (Rust) — 2-3x faster sync
-├── Enterprise, .NET ecosystem → Nethermind (C#) — good [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+├── Enterprise, .NET ecosystem → Nethermind (C#) — good [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 ├── Archival node, optimized storage → Erigon (Go) — 50% less storage
 └── Lightweight, embedded → reth or custom Go light client
 ```
@@ -119,7 +119,7 @@ Scaling need:
 Validator operations:
 ├── Solo staking (32 ETH, self-operated)
 │   ├── Pros: Maximum rewards, no counterparty risk
-│   └── Cons: Requires 32 ETH, technical operation, uptime [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+│   └── Cons: Requires 32 ETH, technical operation, uptime [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 ├── Staking pools (Lido, Rocket Pool)
 │   ├── Lido: stETH token, permissioned node operators, ~30% of staked ETH
 │   ├── Rocket Pool: rETH token, permissionless node operators, 8-32 ETH needed
@@ -409,14 +409,14 @@ func (api *EthAPI) Call(args TransactionArgs, blockNrOrHash *rpc.BlockNumberOrHa
 | Long-range attack | Attacker creates alternative chain from genesis | Weak subjectivity checkpoint, social consensus |
 | Balance attack | Partition network + drain validators | Proposer boost (LMD-GHOST fix) |
 | Verifier's dilemma | MEV-Boost relay censorship | FOCIL forced inclusion lists |
-| L1→L2 withdrawal exploit | Exploit bridge before fraud proof window | Challenge period [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) |
+| L1→L2 withdrawal exploit | Exploit bridge before fraud proof window | Challenge period [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) |
 | Blob withholding | Sequencer withholds blob data | Blob forwarding network, KZG commitments |
 
 ### Staking Risk Matrix
 | Risk | Likelihood | Impact | Mitigation |
 |------|------------|--------|------------|
-| Slashing for double sign | Low (with [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)) | 1 ETH + removal | Use DVT, separate machines |
-| Inactivity leak | Medium (during long outage) | Up to 60% of stake | Failover node, [alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) |
+| Slashing for double sign | Low (with [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)) | 1 ETH + removal | Use DVT, separate machines |
+| Inactivity leak | Medium (during long outage) | Up to 60% of stake | Failover node, [alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) |
 | Execution client bug | Low | Potential slashing | Run minority client |
 | Consensus client bug | Low | Potential slashing | Run minority client |
 | MEV-Boost relay failure | Medium | Missed MEV revenue | Multi-relay configuration |

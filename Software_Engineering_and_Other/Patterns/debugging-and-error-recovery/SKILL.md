@@ -84,7 +84,7 @@ Cannot reproduce on demand:
     └── Document the conditions observed and revisit when it recurs
 ```
 
-For test failures (npm shown — substitute the repository's own test command, per the [test-driven-development](../../../DevOps_and_Cloud/Observability_and_SecOps/test-driven-development/SKILL.md) skill's Discover the Stack First section):
+For test failures (npm shown — substitute the repository's own test command, per the [test-driven-development](../test-driven-development/SKILL.md) skill's Discover the Stack First section):
 ```bash
 # Run the specific failing test
 npm test -- --grep "test name"
@@ -258,7 +258,7 @@ Add logging only when it helps. Remove it when done.
 
 **When to add instrumentation:**
 - You can't localize the failure to a specific line
-- The issue is intermittent and needs [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+- The issue is intermittent and needs [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - The fix involves multiple interacting components
 
 **When to remove it:**

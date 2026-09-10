@@ -38,7 +38,7 @@ Use this skill when:
 
 - [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) 3.10+ for guardrail code examples
 - [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) or [Podman](../../containers-orchestration/podman/other/podman/SKILL.md) for sandbox execution
-- [OpenTelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) collector for [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging
+- [OpenTelemetry](../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) collector for [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging
 - Familiarity with your agent framework (LangChain, CrewAI, Autogen, custom)
 - Access to policy engine (OPA/Cedar) for permission boundaries
 
@@ -563,7 +563,7 @@ async def validate_agent_output(
             count=len(matches),
         )
         if policy.block_on_secrets and secret_types & {"aws_key", "private_key", "jwt", "connection_string"}:
-            return "[Response blocked: contained credentials. This [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) has been logged.]"
+            return "[Response blocked: contained credentials. This [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) has been logged.]"
         if policy.block_on_pii:
             return redacted
 
@@ -582,7 +582,7 @@ async def validate_agent_output(
 
 ## [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Logging
 
-Every agent action must produce a structured, immutable log entry. Use [OpenTelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) for distributed tracing across agent chains.
+Every agent action must produce a structured, immutable log entry. Use [OpenTelemetry](../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) for distributed tracing across agent chains.
 
 ### Structured Event Logger
 
@@ -644,14 +644,14 @@ class AgentAuditLogger:
         })
 ```
 
-### [OpenTelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) Spans for Agent Traces
+### [OpenTelemetry](../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) Spans for Agent Traces
 
 ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
-from [opentelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) import trace
-from [opentelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md).sdk.trace import TracerProvider
-from [opentelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md).sdk.trace.export import BatchSpanProcessor
-from [opentelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md).exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
-from [opentelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md).sdk.resources import Resource
+from [opentelemetry](../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) import trace
+from [opentelemetry](../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md).sdk.trace import TracerProvider
+from [opentelemetry](../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md).sdk.trace.export import BatchSpanProcessor
+from [opentelemetry](../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md).exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
+from [opentelemetry](../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md).sdk.resources import Resource
 
 # Initialize tracer
 resource = Resource.create({"service.name": "agent-platform"})
@@ -662,7 +662,7 @@ trace.set_tracer_provider(provider)
 tracer = trace.get_tracer("agent.security")
 
 async def traced_tool_call(tool_name: str, args: dict, session_id: str):
-    """Execute a tool call with full [OpenTelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) tracing."""
+    """Execute a tool call with full [OpenTelemetry](../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) tracing."""
     with tracer.start_as_current_span(
         f"tool.{tool_name}",
         attributes={
@@ -683,7 +683,7 @@ async def traced_tool_call(tool_name: str, args: dict, session_id: str):
             raise
 ```
 
-### [OpenTelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) Collector Config
+### [OpenTelemetry](../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) Collector Config
 
 ```yaml
 # otel-collector-config.yaml
@@ -952,7 +952,7 @@ class GlobalKillSwitch:
 kill_switch = GlobalKillSwitch()
 
 # Kill all agents globally
-kill_switch.kill("global", "Investigating prompt injection [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)", duration_seconds=1800)
+kill_switch.kill("global", "Investigating prompt injection [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)", duration_seconds=1800)
 
 # Kill a specific tenant's agents
 kill_switch.kill("tenant:acme-corp", "Suspicious activity detected", duration_seconds=3600)
@@ -975,7 +975,7 @@ async def pre_action_check(session_id: str, tenant_id: str, tool_name: str):
 redis-cli SET "agent:killswitch:global" "emergency-stop" EX 3600
 
 # Stop a specific tenant
-redis-cli SET "agent:killswitch:tenant:acme-corp" "[incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-2024-001" EX 7200
+redis-cli SET "agent:killswitch:tenant:acme-corp" "[incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-2024-001" EX 7200
 
 # Check current kill switch status
 redis-cli KEYS "agent:killswitch:*"
@@ -1111,7 +1111,7 @@ jobs:
           exit 1
 ```
 
-## [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response Playbook
+## [Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response Playbook
 
 Agent-specific IR procedures for when things go wrong.
 
@@ -1132,11 +1132,11 @@ Agent-specific IR procedures for when things go wrong.
 
 set -euo pipefail
 
-INCIDENT_ID="${1:?Usage: $0 <[incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-id>}"
+INCIDENT_ID="${1:?Usage: $0 <[incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-id>}"
 SCOPE="${2:-global}"  # global | tenant:<id> | session:<id>
 TIMESTAMP=$(date -u +%Y%m%dT%H%M%SZ)
 
-echo "[${TIMESTAMP}] Starting [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response for ${INCIDENT_ID}, scope=${SCOPE}"
+echo "[${TIMESTAMP}] Starting [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response for ${INCIDENT_ID}, scope=${SCOPE}"
 
 # 1. Activate kill switch
 redis-cli SET "agent:killswitch:${SCOPE}" "${INCIDENT_ID}" EX 7200
@@ -1169,7 +1169,7 @@ fi
 curl -s -X POST "${SLACK_WEBHOOK_URL}" \
   -H 'Content-Type: application/json' \
   -d "{
-    \"text\": \"Agent [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) ${INCIDENT_ID} — Kill switch activated (scope=${SCOPE}). IR lead needed.\",
+    \"text\": \"Agent [Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) ${INCIDENT_ID} — Kill switch activated (scope=${SCOPE}). IR lead needed.\",
     \"channel\": \"#security-incidents\"
   }" || true
 
@@ -1177,7 +1177,7 @@ echo "[${TIMESTAMP}] Immediate response complete. Investigation artifacts in ${I
 echo "Next: Review ${INCIDENT_DIR}/agent-logs.txt for IOCs"
 ```
 
-### Post-[Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Analysis Queries
+### Post-[Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Analysis Queries
 
 ```bash
 # Find all tool calls from a compromised session
@@ -1195,9 +1195,9 @@ cat /var/log/agent-incidents/*/agent-logs.txt | \
 
 ### Recovery Checklist
 
-After [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) containment, follow this recovery sequence:
+After [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) containment, follow this recovery sequence:
 
-1. **Root Cause** — Identify the exact input or sequence that triggered the [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
+1. **Root Cause** — Identify the exact input or sequence that triggered the [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
 2. **Patch Filters** — Add the bypass pattern to `INJECTION_PATTERNS` and deploy
 3. **Re-run Red Team** — Validate the new pattern catches the attack
 4. **Credential Rotation** — Rotate all credentials the agent had access to
@@ -1259,7 +1259,7 @@ redis-cli KEYS "agent:killswitch:*" | xargs -r redis-cli DEL
 
 - [llm-app-security](../[llm-app-security](../llm-app-security/SKILL.md)/) - Application-layer LLM defenses
 - [threat-modeling](../../operations/[threat-modeling](../threat-modeling/SKILL.md)/) - Structured risk analysis
-- [agent-observability](../../../devops/ai/[agent-observability](../../AI_and_Agents/Operations/agent-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)/) - [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) agent systems
+- [agent-observability](../../../devops/ai/[agent-observability](../../AI_and_Agents/Operations/agent-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)/) - [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) agent systems
 - [agent-evals](../../../devops/ai/[agent-evals](../../AI_and_Agents/Workflows/agent-evals/SKILL.md)/) - Testing agent behavior
 - [audit-logging](../../../compliance/auditing/[audit-logging](../../DevOps_and_Cloud/Observability_and_SecOps/[audit](../../AI_and_Agents/Operations/audit/SKILL.md)-logging/SKILL.md)/) - Compliance [audit](../../AI_and_Agents/Operations/audit/SKILL.md) trails
 - [policy-as-code](../../../compliance/governance/[policy-as-code](../policy-as-code/SKILL.md)/) - Automated policy enforcement

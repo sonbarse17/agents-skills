@@ -46,7 +46,7 @@ migration (e.g. moving a namespace from a dev cluster to a new AWS
 account, or between [Kubernetes](../../other/kubernetes/SKILL.md) distributions). This skill is Velero-
 specific; for the broader RTO/RPO-driven DR pattern selection and backup
 immutability strategy that Velero backups should fit into, see the
-general [disaster-recovery](../../../../DevOps_and_Cloud/Observability_and_SecOps/disaster-recovery/SKILL.md) skill referenced below.
+general [disaster-recovery](../../../common/other/disaster-recovery/SKILL.md) skill referenced below.
 
 ## When to use
 
@@ -59,7 +59,7 @@ general [disaster-recovery](../../../../DevOps_and_Cloud/Observability_and_SecOp
   cloud, or old cluster → new cluster during an EKS/AKS/GKE version
   upgrade) or between cloud accounts/subscriptions/projects.
 - Testing whether existing backups actually restore, as part of DR
-  [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) validation.
+  [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) validation.
 - Deciding between CSI volume snapshots and Velero's file-system
   backup (restic/kopia) path for a given storage class.
 - Excluding specific namespaces/resources (e.g. `kube-system`,
@@ -232,7 +232,7 @@ general [disaster-recovery](../../../../DevOps_and_Cloud/Observability_and_SecOp
   cluster being backed up**, mirroring the general DR principle that a
   backup sharing a trust boundary with its source doesn't protect
   against an account-level compromise or accidental account deletion.
-- **Validate restores on a schedule**, not only when a real [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
+- **Validate restores on a schedule**, not only when a real [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
   forces the first real test — a `Completed` backup status only means
   the backup job ran, not that the data restores cleanly.
 - **Restore into a new/scratch namespace first for migration or
@@ -276,10 +276,10 @@ general [disaster-recovery](../../../../DevOps_and_Cloud/Observability_and_SecOp
 - **Symptom:** A scheduled `Schedule` backup silently stops running, and
   nobody notices until a restore is needed and the most recent backup
   is weeks old.
-  **Fix:** No [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)/[alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) was wired to Velero's backup status
+  **Fix:** No [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)/[alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) was wired to Velero's backup status
   (e.g. via the `velero_backup_last_successful_timestamp` metric
-  scraped by Prometheus). Add an [alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) rule against that metric — see
-  [prometheus-and-grafana-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack](../prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
+  scraped by Prometheus). Add an [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) rule against that metric — see
+  [prometheus-and-grafana-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack](../prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
   — so a stalled schedule pages someone within hours, not weeks.
 
 - **Symptom:** Cross-account migration restore fails with an access-
@@ -331,10 +331,10 @@ volumes. A daily Velero `Schedule` backup exists.
    limiting who can delete namespaces in this cluster, and add a
    Prometheus alert on `velero_backup_last_successful_timestamp` so a
    future failed/stalled schedule is caught immediately rather than
-   discovered during the next [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+   discovered during the next [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 
 ## Cross-references
 
-- [prometheus-and-grafana-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack](../prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
+- [prometheus-and-grafana-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack](../prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
 - [kubernetes-network-policy-zero-trust](../[kubernetes-network-policy-zero-trust](../[kubernetes](../kubernetes/SKILL.md)-network-policy-[zero-trust](../../../../Security/zero-trust/SKILL.md)/SKILL.md)/SKILL.md)
 - [disaster-recovery-and-backup-strategy](../../../cloud/skills/[disaster-recovery-and-backup-strategy](../../Cloud_Providers/[disaster-recovery](../../Observability_and_SecOps/disaster-recovery/SKILL.md)-and-backup-strategy/SKILL.md)/SKILL.md)

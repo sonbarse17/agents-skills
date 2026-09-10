@@ -47,10 +47,10 @@ long-lived keys) are identical even though the primitives differ.
   authenticate to cloud APIs without storing static access keys/service
   account keys as secrets.
 - Investigating "who can do X" or "why does this role have this
-  permission" during an [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) or [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md).
+  permission" during an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) or [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md).
 - Implementing break-glass emergency access that bypasses normal SSO/MFA
   flows only when genuinely needed, with full [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging.
-- Running a quarterly or post-[incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) access review to find unused
+- Running a quarterly or post-[incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) access review to find unused
   permissions, stale credentials, or orphaned service principals.
 - Responding to a cloud security posture finding like "N IAM users have
   console access keys older than 90 days" or "M service accounts have
@@ -69,7 +69,7 @@ long-lived keys) are identical even though the primitives differ.
 - Terraform ≥ 1.5 (or the cloud-native IaC of choice) if policies are
   managed as code — strongly recommended over console-managed IAM once
   past a handful of roles.
-- Organizational agreement on a break-glass process owner and an [alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
+- Organizational agreement on a break-glass process owner and an [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
   destination (e.g. a PagerDuty escalation) before implementing
   break-glass access, so its use is always followed up on.
 
@@ -142,7 +142,7 @@ long-lived keys) are identical even though the primitives differ.
      "role": "roles/owner",
      "members": ["user:oncall-engineer@example.com"],
      "condition": {
-       "title": "temporary-[incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-access",
+       "title": "temporary-[incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-access",
        "expression": "request.time < timestamp('2026-08-01T00:00:00Z')"
      }
    }
@@ -153,7 +153,7 @@ long-lived keys) are identical even though the primitives differ.
    in a sealed/rotated-after-use credential [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), or an Azure emergency
    access account excluded from Conditional Access) with wide permissions
    but wired to trigger a high-priority alert on every use, and require a
-   post-use [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) review.
+   post-use [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) review.
 
 6. **Set up continuous drift detection**: run the IAM Access
    Analyzer / IAM Recommender / Azure Permissions Management scan on a

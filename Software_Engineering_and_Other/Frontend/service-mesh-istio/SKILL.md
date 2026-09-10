@@ -29,7 +29,7 @@ depends_on:
 ## Purpose
 
 Istio moves cross-cutting network concerns — mTLS, retries, timeouts,
-traffic splitting, fine-grained [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) — out of application code
+traffic splitting, fine-grained [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) — out of application code
 and into a sidecar proxy (Envoy) that every service call passes through.
 That power comes with real operational cost: sidecars add latency and
 resource overhead, misconfigured `VirtualService`/`DestinationRule`
@@ -193,11 +193,11 @@ fails safely.
    > directly) instantly and cluster-wide. Roll out namespace-by-namespace
    > and confirm via traffic metrics first.
 
-7. **Enable [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)**: Istio emits Prometheus metrics
+7. **Enable [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)**: Istio emits Prometheus metrics
    (`istio_requests_total`, `istio_request_duration_milliseconds`) and
    propagates trace headers automatically once the app forwards
    `traceparent`/`x-b3-*` headers on outbound calls it makes. Install
-   the [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) addons (Prometheus, Grafana, Kiali, Jaeger/Tempo)
+   the [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) addons (Prometheus, Grafana, Kiali, Jaeger/Tempo)
    or point Istio's telemetry at existing infra via a `Telemetry`
    resource rather than assuming a default sink exists:
    ```yaml
@@ -266,7 +266,7 @@ fails safely.
   traffic.
 
 - **Symptom:** After enabling `PeerAuthentication` in `STRICT` mode
-  cluster-wide, a batch Job or an external [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) probe that talks
+  cluster-wide, a batch Job or an external [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) probe that talks
   directly to pod IPs starts failing entirely.
   **Fix:** Non-sidecar-injected clients cannot participate in mTLS.
   Either inject sidecars into that workload too, exempt the specific

@@ -29,7 +29,7 @@ depends_on:
 # devops-gcp
 
 ## Purpose
-Provision and operate Google Cloud infrastructure using GKE, Cloud Run, Cloud Functions, Terraform, and GCP-native networking with cost optimization, IAM security, and [observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md).
+Provision and operate Google Cloud infrastructure using GKE, Cloud Run, Cloud Functions, Terraform, and GCP-native networking with cost optimization, IAM security, and [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md).
 
 ## Agent Protocol
 
@@ -40,7 +40,7 @@ Any user message referencing GCP services, GKE, Cloud Run, Cloud Functions, gclo
 GCP service required, region/zone, organization/folder/project hierarchy, compliance requirements, and budget constraints.
 
 ### Output Artifact
-Terraform/Deployment Manager configs, gcloud CLI commands, GKE cluster config, Cloud Run service definitions, networking architecture, IAM policies, [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) setup.
+Terraform/Deployment Manager configs, gcloud CLI commands, GKE cluster config, Cloud Run service definitions, networking architecture, IAM policies, [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) setup.
 
 ### Response Format
 Terraform/gcloud CLI commands with explanations. YAML configs for GKE and Cloud Run.
@@ -48,7 +48,7 @@ Terraform/gcloud CLI commands with explanations. YAML configs for GKE and Cloud 
 No preamble. No postamble. No explanations. No filler/hedging/transitions.
 
 ### Completion Criteria
-GKE cluster running, Cloud Run service deployed, networking secured, CI/CD pipeline passing, [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) configured, IAM least-privilege enforced, cost budgets active.
+GKE cluster running, Cloud Run service deployed, networking secured, CI/CD pipeline passing, [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) configured, IAM least-privilege enforced, cost budgets active.
 
 ## Architecture / Decision Trees
 
@@ -113,7 +113,7 @@ resource "google_project_service" "apis" {
     "cloudrun.googleapis.com",
     "sqladmin.googleapis.com",
     "storage.googleapis.com",
-    "[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).googleapis.com",
+    "[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).googleapis.com",
     "logging.googleapis.com",
     "cloudbuild.googleapis.com",
   ])
@@ -212,7 +212,7 @@ resource "google_container_cluster" "primary" {
     }
   }
 
-  # [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+  # [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
   monitoring_config {
     enable_components = ["SYSTEM_COMPONENTS", "WORKLOADS"]
     managed_prometheus {
@@ -518,12 +518,12 @@ Setting max-instances too high risks cost spikes under load. Setting min-instanc
 - BigQuery slot commitments for predictable analytics costs.
 - Label all resources for cost allocation.
 
-### [Observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
-- Managed Prometheus for GKE [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
+### [Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
+- Managed Prometheus for GKE [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
 - Cloud Logging with log-based metrics.
 - Cloud Trace for distributed tracing.
 - Cloud Profiler for continuous performance [profiling](../../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md).
-- Uptime checks for external endpoint [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
+- Uptime checks for external endpoint [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
 - Error Reporting for automatic exception grouping.
 
 ## Rules
@@ -540,7 +540,7 @@ Setting max-instances too high risks cost spikes under load. Setting min-instanc
 - Shared VPC over peering for multi-project networking.
 - Preemptible/Spot for stateless batch workloads.
 - Cloud NAT for private cluster egress.
-- Managed Prometheus for GKE [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
+- Managed Prometheus for GKE [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
 - VPC-native clusters for pod IP addressability.
 - Regional clusters over zonal for workload HA.
 - Secret Manager for secrets.

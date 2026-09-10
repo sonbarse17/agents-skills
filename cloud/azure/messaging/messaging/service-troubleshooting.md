@@ -17,7 +17,7 @@ If the client **cannot connect at all**:
 
 Run the connectivity probe script. It resolves DNS, tests HTTPS reachability, and probes the messaging ports (AMQP `5671`/`5672`, HTTPS `443`), returning a normalized report instead of raw `curl`/`nslookup` output. Add `--kafka` / `-Kafka` to also probe the Event Hubs Kafka port `9093`.
 
-Scripts (paths below are relative to the skill root, `plugins/azure-skills/skills/azure-diagnostics`, so run them from there): [`scripts/test-messaging-connectivity.sh`](../../monitoring/azure-diagnostics/scripts/test-messaging-connectivity.sh) (bash) and [`scripts/test-messaging-connectivity.ps1`](../../monitoring/azure-diagnostics/scripts/test-messaging-connectivity.ps1) (PowerShell).
+Scripts (paths below are relative to the skill root, `plugins/azure-skills/skills/azure-diagnostics`, so run them from there): [`scripts/test-messaging-connectivity.sh`](../../../../observability-monitoring-logging/azure-monitor/monitoring/azure-diagnostics/scripts/test-messaging-connectivity.sh) (bash) and [`scripts/test-messaging-connectivity.ps1`](../../../../observability-monitoring-logging/azure-monitor/monitoring/azure-diagnostics/scripts/test-messaging-connectivity.ps1) (PowerShell).
 
 ```powershell
 # from plugins/azure-skills/skills/azure-diagnostics

@@ -276,7 +276,7 @@ See `assets/ci_integration/` for ready-to-use pipeline configurations.
 - **Code Review**: Automated dependency review in PR workflow
 - **Testing**: Validate security of third-party components
 - **Deployment**: Final dependency gate before production release
-- **Operations**: Continuous [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) for new vulnerabilities in production
+- **Operations**: Continuous [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) for new vulnerabilities in production
 
 ## Severity Classification
 
@@ -391,14 +391,14 @@ Black Duck supports standard SBOM formats:
 Use SBOMs for:
 - Supply chain transparency
 - Regulatory compliance (Executive Order 14028)
-- [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response (rapid vulnerability identification)
+- [Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response (rapid vulnerability identification)
 - M&A due diligence
 
 ## Best Practices
 
 1. **Shift Left**: Integrate SCA early in development lifecycle
 2. **Policy-Driven**: Define clear policies for vulnerabilities and licenses
-3. **Continuous [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: Run scans on every [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) and nightly for production
+3. **Continuous [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**: Run scans on every [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) and nightly for production
 4. **Remediation Prioritization**: Focus on exploitable vulnerabilities first
 5. **SBOM Management**: Maintain up-to-date SBOM for all production applications
 6. **Supply Chain Hygiene**: Regularly review dependency health and maintainability

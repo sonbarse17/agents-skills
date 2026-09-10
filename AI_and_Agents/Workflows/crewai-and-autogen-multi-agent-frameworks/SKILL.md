@@ -301,7 +301,7 @@ all" justification, which lives in
   `human_input_mode="NEVER"` executes a destructive shell command (e.g.
   deleting files) generated in response to a misleading or adversarial
   prompt.
-  **Fix:** This is a real [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), not a tooling quirk — code execution
+  **Fix:** This is a real [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), not a tooling quirk — code execution
   with no human checkpoint should only ever run inside a disposable,
   network-isolated sandbox ([Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) with no mounted credentials or
   production filesystem access); if that constraint can't be met, set
@@ -336,7 +336,7 @@ pr_agent = Agent(
 )
 
 incident_agent = Agent(
-    role="[Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Reporter",
+    role="[Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Reporter",
     goal="Summarize currently open incidents",
     backstory="You report only open incidents with severity and age.",
     tools=[list_open_incidents_tool],
@@ -345,7 +345,7 @@ incident_agent = Agent(
 
 digest_writer = Agent(
     role="Digest Editor",
-    goal="Combine PR and [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) summaries into one Markdown digest",
+    goal="Combine PR and [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) summaries into one Markdown digest",
     backstory="You never invent content not present in the inputs you're given.",
     allow_delegation=False,
 )
@@ -353,7 +353,7 @@ digest_writer = Agent(
 pr_task = Task(description="List merged PRs from the last 7 days", expected_output="Bullet list with links", agent=pr_agent)
 incident_task = Task(description="List currently open incidents", expected_output="Bullet list with severity and age", agent=incident_agent)
 digest_task = Task(
-    description="Combine the PR and [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) summaries into one weekly digest",
+    description="Combine the PR and [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) summaries into one weekly digest",
     expected_output="A Markdown document with a PRs section and an Incidents section",
     agent=digest_writer,
     context=[pr_task, incident_task],

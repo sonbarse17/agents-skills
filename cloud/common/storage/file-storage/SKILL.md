@@ -531,5 +531,5 @@ function scanWithClamAV(buffer: Buffer): Promise<{ infected: boolean; virus?: st
   - ../../../Global_References/storage-providers.md — Storage Providers
   - ../../../Global_References/upload-patterns.md — Upload Patterns and CDN Delivery
 ## Handoff
-`[backend-caching](../../../../DevOps_and_Cloud/Observability_and_SecOps/caching/SKILL.md)` for CDN cache strategy and edge caching patterns
+`[backend-caching](../../../../Software_Engineering_and_Other/Patterns/caching/SKILL.md)` for CDN cache strategy and edge caching patterns
 

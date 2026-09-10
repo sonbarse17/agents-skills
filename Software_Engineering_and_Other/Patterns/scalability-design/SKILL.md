@@ -86,7 +86,7 @@ real [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](..
   is a serialization point no amount of horizontal scaling elsewhere fixes.
 - **Partition or shard what can't otherwise scale** — splitting a database by key range or tenant
   turns one bottleneck into many independently-scalable ones.
-- **Confirm the bottleneck empirically**, via `[profiling](../../Frontend/profiling/SKILL.md)` and `[load-testing](../../../DevOps_and_Cloud/Observability_and_SecOps/load-testing/SKILL.md)`, rather than
+- **Confirm the bottleneck empirically**, via `[profiling](../../Frontend/profiling/SKILL.md)` and `[load-testing](../../../observability-monitoring-logging/common/capacity-monitoring/load-testing/SKILL.md)`, rather than
   guessing which component is the constraint.
 
 **Done when:** the component that would be the first to saturate at 10x current load has been
@@ -120,7 +120,7 @@ designed in, not patched on after the first outage.
   on paper.
 - **Design degraded modes explicitly** — what serves when a dependency is down — rather than
   discovering the failure mode live.
-- **Validate the assumption with `[load-testing](../../../DevOps_and_Cloud/Observability_and_SecOps/load-testing/SKILL.md)`, especially under an injected instance failure**
+- **Validate the assumption with `[load-testing](../../../observability-monitoring-logging/common/capacity-monitoring/load-testing/SKILL.md)`, especially under an injected instance failure**
   — a design that's never seen a failure under load is unverified.
 
 **Done when:** the design has an explicit answer for what happens when any single instance or

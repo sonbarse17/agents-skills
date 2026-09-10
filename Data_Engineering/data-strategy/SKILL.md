@@ -99,7 +99,7 @@ Evaluate current state across four dimensions using a 5-level maturity model.
 | **People** | No data roles, skills ad-hoc | Basic data roles defined | Data stewards, analysts embedded | Data champions, career paths | Continuous learning, data-driven culture |
 | **Process** | No standards, manual processes | Basic standards, project-level docs | Enterprise standards, data lineage | Automated quality, SLA-driven | Continuous improvement, adaptive |
 | **Technology** | Spreadsheets, siloed DBs | Basic warehouse, reporting tools | Data lake/platform, catalog tools | Automated pipelines, ML ops | AI-driven optimization, self-service |
-| **Governance** | No governance, no ownership | Basic policies, project-level owners | Enterprise governance body, stewards | Measured compliance, automated policies | Continuous governance, risk [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) |
+| **Governance** | No governance, no ownership | Basic policies, project-level owners | Enterprise governance body, stewards | Measured compliance, automated policies | Continuous governance, risk [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) |
 
 #### Assessment Scoring
 Rate each dimension 1-5 using interviews, surveys, and system audits. Weighted score: w₁×People + w₂×Process + w₃×Tech + w₄×Governance where weights sum to 1.0 (default equal weighting, adjust per industry). Overall score = sum of weighted dimension scores. Use the overall score to prioritize: Level 1-2 → foundational build; Level 3 → scale and embed; Level 4-5 → optimize and innovate.
@@ -180,7 +180,7 @@ Central platform team with domain-aligned data stewards. Central team owns: data
 ### Step 4: Build Data Culture
 
 #### Data Literacy Program
-Three-tier training program targeting different roles. Tier 1 (Basic): data concepts, reading charts and [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), understanding KPIs — for all employees. Tier 2 (Intermediate): SQL basics, data analysis, data visualization, critical thinking with data — for analysts, managers, power users. Tier 3 (Advanced): statistical methods, ML concepts, data modeling, data ethics — for data practitioners and leaders.
+Three-tier training program targeting different roles. Tier 1 (Basic): data concepts, reading charts and [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), understanding KPIs — for all employees. Tier 2 (Intermediate): SQL basics, data analysis, data visualization, critical thinking with data — for analysts, managers, power users. Tier 3 (Advanced): statistical methods, ML concepts, data modeling, data ethics — for data practitioners and leaders.
 
 #### Training Delivery
 Tier 1: self-paced online modules (2 hours total), annual refresher. Tier 2: instructor-led workshops (2 days), quarterly cohorts, capstone project. Tier 3: ongoing learning path (courses, certifications, conferences). Measure: completion rate (target >80%), knowledge assessment scores (target >80%), application in job (6-month follow-up survey).
@@ -243,7 +243,7 @@ Daily: monitor data quality metrics, triage data issues, maintain data dictionar
 ### Step 6: Build Investment Roadmap
 
 #### 3-Year Investment Model
-Phase 1 (0-6 months, Quick Wins): ~25% of total budget. Establish governance council, define top 3 data domains, deploy data catalog, launch data literacy Tier 1, implement data quality [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) for critical data. Phase 2 (6-18 months, Foundations): ~45% of total budget. Build/upgrade data platform, implement MDM for key domains, deploy data governance tools, launch data champion network, establish data engineering team. Phase 3 (18-36 months, Transformation): ~30% of total budget. Scale self-service analytics, deploy ML/AI capabilities, implement data products/mesh, automate governance, achieve Level 4+ maturity.
+Phase 1 (0-6 months, Quick Wins): ~25% of total budget. Establish governance council, define top 3 data domains, deploy data catalog, launch data literacy Tier 1, implement data quality [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) for critical data. Phase 2 (6-18 months, Foundations): ~45% of total budget. Build/upgrade data platform, implement MDM for key domains, deploy data governance tools, launch data champion network, establish data engineering team. Phase 3 (18-36 months, Transformation): ~30% of total budget. Scale self-service analytics, deploy ML/AI capabilities, implement data products/mesh, automate governance, achieve Level 4+ maturity.
 
 #### Budget Allocation Guidelines
 Total data investment: 2-5% of revenue for data-intensive industries (finance, tech, telecom), 1-2% for traditional industries. Breakdown: 30% people (hiring, training, COE), 35% technology (platform, tools, infrastructure), 20% operations (run costs, maintenance), 10% governance (tools, stewardship), 5% innovation (R&D, experiments). Adjust based on current maturity: Level 1-2 skew toward people and process; Level 3-4 skew toward technology and innovation.
@@ -257,7 +257,7 @@ For each initiative estimate: annual cost (people, tech, operations), expected b
 Transparency: data collection and use is visible and explainable. Fairness: algorithms and decisions do not discriminate. Accountability: clear ownership for data ethics decisions. Privacy: data collected only with consent, used only for stated purpose. Security: data protected throughout its lifecycle.
 
 #### Ethical Review Process
-Triage: does the use case involve personal data, automated decisions, vulnerable populations, or regulatory implications? If yes → ethics review. Review: data ethics board reviews against principles, assesses risks, recommends mitigations. Approval: board approves, approves with conditions, or rejects. [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md): periodic [audit](../../AI_and_Agents/Operations/audit/SKILL.md) of approved use cases.
+Triage: does the use case involve personal data, automated decisions, vulnerable populations, or regulatory implications? If yes → ethics review. Review: data ethics board reviews against principles, assesses risks, recommends mitigations. Approval: board approves, approves with conditions, or rejects. [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md): periodic [audit](../../AI_and_Agents/Operations/audit/SKILL.md) of approved use cases.
 
 ### Step 8: Plan Change Management
 
@@ -368,7 +368,7 @@ Focus: customer data unification, real-time inventory optimization, demand forec
 Focus: product analytics, usage data, experimentation platform, data-driven product decisions. Strategy emphasis: self-service analytics culture, data product thinking, experimentation at scale, real-time product metrics.
 
 ### Manufacturing
-Focus: IoT sensor data, predictive maintenance, supply chain optimization, quality analytics. Additional requirements: OT/IT data integration, edge computing for factory floors, real-time [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md). Strategy emphasis: digital twin enablement, connected factory data platform, AI-driven quality control.
+Focus: IoT sensor data, predictive maintenance, supply chain optimization, quality analytics. Additional requirements: OT/IT data integration, edge computing for factory floors, real-time [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md). Strategy emphasis: digital twin enablement, connected factory data platform, AI-driven quality control.
 
 ## Data Monetization Strategies
 
@@ -527,5 +527,5 @@ Plan: identify need, define scope, estimate value, get stakeholder buy-in. Build
 ## Handoff
 `[data-data-platform](../data-platform/SKILL.md)` for platform architecture aligned with strategy
 `data-data-governance` for governance policy execution
-`[data-data-quality](../data-quality/SKILL.md)` for quality metrics and [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+`[data-data-quality](../data-quality/SKILL.md)` for quality metrics and [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 

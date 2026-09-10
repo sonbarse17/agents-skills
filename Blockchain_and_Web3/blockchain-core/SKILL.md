@@ -532,7 +532,7 @@ impl DiscoveryService {
 
 ## Production Considerations
 
-- **Validator [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: Monitor validator uptime, missed blocks, and slashing events; alert on downtime.
+- **Validator [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**: Monitor validator uptime, missed blocks, and slashing events; alert on downtime.
 - **Checkpoint sync**: Use checkpoint sync for fast node bootstrap; validate against trusted checkpoints.
 - **Mempool management**: Set mempool size limits; prioritize transactions by fee using priority queue.
 - **State pruning**: Prune old state trie nodes; use snap sync for initial state download.

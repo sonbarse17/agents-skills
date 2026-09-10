@@ -120,9 +120,9 @@ Effort keywords (`quick` / `standard` / `deep`) and the shared `<focus>` and
 ## Related skills
 
 - `/[docker-review](../[docker](../docker/SKILL.md)-review/SKILL.md)` — what is *inside* the image the pod runs.
-- `/[terraform-review](../../../../DevOps_and_Cloud/Infrastructure_as_Code/terraform-review/SKILL.md)` — the cluster, node pools, and cloud resources around it.
+- `/[terraform-review](../../../../infrastructure-as-code/terraform/troubleshooting/terraform-review/SKILL.md)` — the cluster, node pools, and cloud resources around it.
 - `/[security-review](../../../../Security/security-review/SKILL.md)` — depth on RBAC, NetworkPolicy, and admission control.
-- `/[observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)` — whether a workload's failure would be detected.
+- `/[observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)` — whether a workload's failure would be detected.
 - `/[release-readiness](../../../../Software_Engineering_and_Other/Miscellaneous/release-readiness/SKILL.md)` — whether a specific rollout is safe to ship.
 
 ## Before you finish

@@ -376,7 +376,7 @@ spec:
       baseEjectionTime: 30s
 ```
 
-## [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
+## [Observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
 
 ```yaml
 # Telemetry resource for custom metrics on inference services
@@ -436,4 +436,4 @@ istioctl proxy-config cluster deploy/model-server -n ai-inference
 
 - [service-mesh](../[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)/) - Foundational mesh concepts
 - [llm-gateway](../[llm-gateway](../../Models_and_FineTuning/llm-gateway/SKILL.md)/) - North-south API gateway controls
-- [opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/[opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)/) - End-to-end tracing and metrics
+- [opentelemetry](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)/[opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)/) - End-to-end tracing and metrics

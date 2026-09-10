@@ -223,7 +223,7 @@ and for a direct product comparison see
    retention window) per blob store, and alert well before the underlying
    disk/volume approaches [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md); Nexus's own health check UI surfaces
    blob store free-space percentage, but don't rely on manually checking it
-   — wire it into your existing [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) stack instead.
+   — wire it into your existing [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) stack instead.
 
 ## Best practices
 

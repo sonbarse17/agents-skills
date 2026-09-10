@@ -221,7 +221,7 @@ whether to sync, patch Git, or leave a resource alone.
   tell "Argo CD wrote this last" from "a human/other controller wrote
   this last" — don't guess based on how the diff *looks*.
 - Fix recurring manual-drift fields with `ignoreDifferences` (if the
-  field is legitimately externally managed) or a written [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) telling
+  field is legitimately externally managed) or a written [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) telling
   humans to change it in Git, not `[kubectl](../../../kubernetes/other/kubectl/SKILL.md)`, going forward — treat
   repeated manual drift on the same field as a process gap, not a
   one-off to silently re-sync away each time.
@@ -231,8 +231,8 @@ whether to sync, patch Git, or leave a resource alone.
 - Prefer `[argocd](../argocd/SKILL.md) app sync --dry-run` and `--resource`-scoped syncs over a
   full `--force` sync when the cause is still unclear — narrow the blast
   radius while you're still diagnosing, not after.
-- Keep a lightweight [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) note (which resource, what the diff showed,
-  what was manually changed, what fix was applied) for any drift [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
+- Keep a lightweight [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) note (which resource, what the diff showed,
+  what was manually changed, what fix was applied) for any drift [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
   involving a manual out-of-band edit — repeated manual edits to the same
   resource are a signal worth raising with
   [incident-investigation-using-metrics-logs-traces](../../../[observability](../../Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[incident-investigation-using-metrics-logs-traces](../../Observability_and_SecOps/[incident](../../Observability_and_SecOps/incident/SKILL.md)-investigation-using-metrics-logs-traces/SKILL.md)/SKILL.md)-style
@@ -272,16 +272,16 @@ whether to sync, patch Git, or leave a resource alone.
   instead of hanging indefinitely.
 
 - **Symptom:** Someone `[kubectl](../../../kubernetes/other/kubectl/SKILL.md) scale`d a Deployment's replicas up during
-  an [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), and thirty seconds later it silently reverted back to the
+  an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), and thirty seconds later it silently reverted back to the
   Git-declared value — the on-call engineer assumes Argo CD is
   "fighting" them and disables sync entirely as a workaround.
   **Fix:** This is `selfHeal` working as designed, not a bug — the
   replica count is declared in Git and Argo CD is correctly reverting
-  the out-of-band change. During an active [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) where a temporary
+  the out-of-band change. During an active [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) where a temporary
   manual scale is intentional, either pause automated sync for that
   specific `Application` (`[argocd](../argocd/SKILL.md) app set <app> --sync-policy none`) or
   add a temporary `Prune=false`/`ignoreDifferences` entry, and revert the
-  workaround once the [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) resolves — don't leave sync disabled
+  workaround once the [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) resolves — don't leave sync disabled
   indefinitely as the "fix."
 
 - **Symptom:** `[argocd](../argocd/SKILL.md) app sync --force` was used to unblock a stuck sync,
@@ -359,5 +359,5 @@ minutes.
 
 - [argocd-application-configuration](../[argocd-application-configuration](../[argocd](../argocd/SKILL.md)-application-configuration/SKILL.md)/SKILL.md) — where sync policy, sync waves, hooks, and `ignoreDifferences` are configured; this skill diagnoses that configuration's runtime behavior.
 - [argocd-applicationset-patterns](../[argocd-applicationset-patterns](../[argocd](../argocd/SKILL.md)-applicationset-patterns/SKILL.md)/SKILL.md) — when the same drift/hook issue shows up across many generated `Application`s at once rather than a single app.
-- [incident-investigation-using-metrics-logs-traces](../../../[observability](../../Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[incident-investigation-using-metrics-logs-traces](../../Observability_and_SecOps/[incident](../../Observability_and_SecOps/incident/SKILL.md)-investigation-using-metrics-logs-traces/SKILL.md)/SKILL.md) — correlating a sync-hook failure or a bad rollout's `Degraded` state with metrics/logs/traces during a live [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
-- [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../../Software_Engineering_and_Other/Frontend/[incident-response](../../Observability_and_SecOps/[incident](../../Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../../DevOps_and_Cloud/Observability_and_SecOps/on-call-management/SKILL.md)/SKILL.md)/SKILL.md) — process for handling an intentional out-of-band `[kubectl](../../../kubernetes/other/kubectl/SKILL.md)` change made during an active [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) without it becoming a confusing drift investigation afterward.
+- [incident-investigation-using-metrics-logs-traces](../../../[observability](../../Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[incident-investigation-using-metrics-logs-traces](../../Observability_and_SecOps/[incident](../../Observability_and_SecOps/incident/SKILL.md)-investigation-using-metrics-logs-traces/SKILL.md)/SKILL.md) — correlating a sync-hook failure or a bad rollout's `Degraded` state with metrics/logs/traces during a live [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
+- [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../../Software_Engineering_and_Other/Frontend/[incident-response](../../Observability_and_SecOps/[incident](../../Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../../observability-monitoring-logging/common/alerting/on-call-management/SKILL.md)/SKILL.md)/SKILL.md) — process for handling an intentional out-of-band `[kubectl](../../../kubernetes/other/kubectl/SKILL.md)` change made during an active [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) without it becoming a confusing drift investigation afterward.

@@ -40,7 +40,7 @@ of connected cloud accounts against policies (public S3 buckets,
 overly-permissive security groups, IAM users without MFA) using
 read-only API access — it never touches running workloads. **IaC
 scanning** evaluates the same class of misconfiguration *before* it's
-ever deployed, against Terraform/[CloudFormation](../../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md)/ARM source, using an
+ever deployed, against Terraform/[CloudFormation](../../../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md)/ARM source, using an
 engine built on the open-source Checkov project. **Workload Protection**
 requires installing a Defender agent onto hosts, container runtimes, or
 [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) functions to observe and enforce behavior at runtime — a
@@ -57,7 +57,7 @@ capabilities and where each one's blind spots require the others.
 - The user needs to write or debug a custom Prisma Cloud policy in RQL
   (Resource Query Language) for an organization-specific compliance
   requirement not covered by a built-in policy.
-- The user wants Terraform/[CloudFormation](../../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md) scanned for misconfiguration
+- The user wants Terraform/[CloudFormation](../../../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md) scanned for misconfiguration
   before merge/apply, using Prisma Cloud's IaC scanning (`checkov` CLI
   or the Prisma Cloud IaC scan API/[GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) App).
 - The user wants to deploy Prisma Cloud **Defender agents** to hosts,
@@ -79,7 +79,7 @@ capabilities and where each one's blind spots require the others.
   CSPM-only).
 - Cloud account onboarding requires a **read-only** IAM role/service
   principal per connected account for CSPM (AWS cross-account IAM role
-  via [CloudFormation](../../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md)/Terraform onboarding template, Azure service
+  via [CloudFormation](../../../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md)/Terraform onboarding template, Azure service
   principal with Reader role, GCP service account with `roles/viewer`
   plus specific additional read permissions Prisma documents per
   feature) — this is intentionally least-privilege and read-only; it
@@ -112,7 +112,7 @@ capabilities and where each one's blind spots require the others.
    either unnecessary exposure or silent gaps in what CSPM can see):
    ```bash
    # AWS onboarding (illustrative — use Prisma's current CFT/Terraform module)
-   aws [cloudformation](../../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md) create-stack \
+   aws [cloudformation](../../../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md) create-stack \
      --stack-name prisma-cloud-cspm-readonly \
      --template-url https://<prisma-provided-template-url> \
      --capabilities CAPABILITY_NAMED_IAM \
@@ -196,7 +196,7 @@ capabilities and where each one's blind spots require the others.
 
 8. **Triage by resource criticality and exposure, not raw alert
    count** — tag cloud resources (environment, data classification,
-   internet-facing) so Prisma's alert rules and [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) can prioritize
+   internet-facing) so Prisma's alert rules and [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) can prioritize
    a public-facing production resource's misconfiguration over an
    identical finding on an isolated internal dev resource.
 
@@ -223,7 +223,7 @@ capabilities and where each one's blind spots require the others.
   read-only trust.
 - Map custom RQL policies and Defender runtime rules to a compliance
   framework (CIS, PCI-DSS, SOC 2) explicitly where relevant, so [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)
-  evidence is a byproduct of normal [alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) rather than a separate
+  evidence is a byproduct of normal [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) rather than a separate
   manual exercise.
 - Don't treat a clean CSPM dashboard as "no runtime risk" — CSPM cannot
   see a compromised process inside a correctly-configured container;
@@ -238,7 +238,7 @@ capabilities and where each one's blind spots require the others.
   re-flagged weeks later on a newly-provisioned resource of the same
   type.
   **Fix:** The fix is being applied to the live resource but not to the
-  Terraform/[CloudFormation](../../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md) module that provisions new instances of it —
+  Terraform/[CloudFormation](../../../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md) module that provisions new instances of it —
   add the equivalent IaC scan check (step 4-5) to the pipeline that
   actually creates these resources so the class of misconfiguration
   can't recur, not just the one instance CSPM happened to catch.
@@ -255,7 +255,7 @@ capabilities and where each one's blind spots require the others.
 - **Symptom:** Defender agent deployment to a [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster is
   blocked or delayed pending a lengthy security review, because it
   requests privileged/host-level access that the platform team wasn't
-  expecting from what they assumed was "just another [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) agent."
+  expecting from what they assumed was "just another [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) agent."
   **Fix:** Review and document the Defender agent's actual required
   privileges up front as part of onboarding (it needs container-runtime
   and host-level visibility to do behavioral detection, which is a

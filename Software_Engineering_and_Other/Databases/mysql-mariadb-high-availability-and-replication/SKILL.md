@@ -224,7 +224,7 @@ since it avoids certification-conflict application complexity entirely.
 - Build retry-on-deadlock (specifically for error 1213/40001) into every
   application writing to a Galera or multi-primary Group Replication
   cluster as a first-class requirement, not an afterthought discovered
-  after a production [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+  after a production [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 - Always run an odd number of nodes (3 or 5), and never bypass
   quorum-loss protection (`pc.ignore_quorum`, `pc.ignore_sb`) as a
   routine operational workaround — those settings exist for narrow,

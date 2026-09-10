@@ -221,7 +221,7 @@ Git.
   last-resort cleanup (it invalidates all clones/forks).
 
 - **Symptom:** Production sync is `OutOfSync` for days and nobody noticed
-  until an [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+  until an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
   **Fix:** Alert on sync/health status directly from the operator
   (Argo CD notifications, Flux alerts to Slack/PagerDuty) rather than
   relying on someone periodically checking the UI.

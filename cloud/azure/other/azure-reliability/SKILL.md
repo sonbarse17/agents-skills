@@ -374,7 +374,7 @@ Do you want me to set up multi-region failover now? (yes / no / later)
 | Critical | No zone redundancy AND production workload | Fix immediately |
 | High | LRS storage on zone-redundant compute | Fix within days |
 | Medium | No multi-region (single region but zone-redundant) | Plan for next sprint |
-| Low | Missing health probes or [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) gaps | Track and fix |
+| Low | Missing health probes or [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) gaps | Track and fix |
 
 ## Error Handling
 

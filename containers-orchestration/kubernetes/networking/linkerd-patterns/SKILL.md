@@ -265,7 +265,7 @@ linkerd multicluster check
 linkerd multicluster gateways
 ```
 
-## [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) Commands
+## [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Commands
 
 ```bash
 # Live traffic view

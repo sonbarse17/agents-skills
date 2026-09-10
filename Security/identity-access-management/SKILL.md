@@ -32,7 +32,7 @@ Reach for this skill when:
 - **Compliance [audit](../../AI_and_Agents/Operations/audit/SKILL.md) preparation** -- SOC 2, ISO 27001, or HIPAA requires documented access controls, MFA enforcement, and [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs.
 - **Team growth inflection** -- You are crossing 15-20 employees and manual onboarding/offboarding is becoming error-prone.
 - **Vendor security questionnaires** -- Customers are asking about your identity posture and you need to demonstrate controls.
-- **[Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response** -- You need to revoke access quickly across all systems for a departing or compromised user.
+- **[Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response** -- You need to revoke access quickly across all systems for a departing or compromised user.
 
 Signs you are overdue:
 
@@ -647,7 +647,7 @@ curl -s -X POST \
 # The user assumes a role that expires after a set duration
 aws sts assume-role \
   --role-arn "arn:aws:iam::123456789012:role/EmergencyAdmin" \
-  --role-session-name "alice-[incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-2026-03-24" \
+  --role-session-name "alice-[incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-2026-03-24" \
   --duration-seconds 3600 \
   | jq '{AccessKeyId: .Credentials.AccessKeyId, Expiration: .Credentials.Expiration}'
 

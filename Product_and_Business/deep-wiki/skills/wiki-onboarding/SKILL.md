@@ -171,7 +171,7 @@ Scan the repository for build files to determine the primary language for code e
 6. **Risk Assessment** — Table: Risk, Likelihood, Impact, Mitigation, Owner. Cover reliability, security, scalability, compliance.
 7. **Cost & Scaling Model** — How costs scale with usage. What the bottlenecks are. When the next scaling investment is needed.
 8. **Dependency Map** — `graph TB` showing critical external dependencies. Table: Dependency, Type (Service/Library/Platform), Risk if Unavailable.
-9. **Key Metrics & [Observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)** — What's measured, what [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) exist, [alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) coverage. Table: Metric, Current Value, Target, Source.
+9. **Key Metrics & [Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)** — What's measured, what [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) exist, [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) coverage. Table: Metric, Current Value, Target, Source.
 10. **Roadmap Alignment** — Engineering workstreams mapped to business priorities. What's in progress, what's planned, what's blocked.
 11. **Technical Debt Summary** — Top 5 debt items with business impact. Table: Issue, Business Impact, Effort to Fix, Priority.
 12. **Recommendations** — 3-5 actionable recommendations for the next quarter, prioritized by impact.

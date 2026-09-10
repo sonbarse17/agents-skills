@@ -23,24 +23,24 @@ depends_on:
   - incident
 ---
 
-# Model [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) And Drift Detection
+# Model [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) And Drift Detection
 
 ## Purpose
 
 A deployed model does not fail loudly when the world changes underneath it —
 it fails quietly, by making steadily worse predictions while every
-infrastructure health check stays green. Model [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and drift detection
+infrastructure health check stays green. Model [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and drift detection
 closes that gap: it tracks the statistical properties of inputs, outputs, and
 (where ground truth eventually arrives) prediction quality over time, and
 raises an alert or triggers retraining before silent degradation turns into a
-business [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md). This is operationally distinct from standard application
-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) (latency, error rate, uptime) because the failure mode here is a
+business [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md). This is operationally distinct from standard application
+[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (latency, error rate, uptime) because the failure mode here is a
 model that is "working" in every infrastructure sense while being wrong.
 
 ## When to use
 
-- The user wants to set up [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) for a model already in production
-  ([dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), alerts, SLOs on model quality, not just system health).
+- The user wants to set up [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) for a model already in production
+  ([dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), alerts, SLOs on model quality, not just system health).
 - The user asks to detect data drift (input feature distribution shift),
   concept drift (the relationship between features and label changes), or
   prediction drift (output distribution shift).
@@ -62,13 +62,13 @@ model that is "working" in every infrastructure sense while being wrong.
   services if done without bias.
 - A reference/baseline distribution to compare against — typically the
   training data distribution or a recent "known good" production window.
-- A metrics/[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) backend: Evidently AI, WhyLabs, Arize, Fiddler, or a
+- A metrics/[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) backend: Evidently AI, WhyLabs, Arize, Fiddler, or a
   homegrown pipeline computing statistics in a scheduled job (Airflow, cron)
   writing to Prometheus/Grafana, or a data warehouse + BI dashboard.
 - Eventually-available ground truth labels if you intend to monitor actual
   model quality (accuracy/AUC/etc.) rather than only distributional proxies
   — note many production systems have delayed or partial labels (e.g. fraud
-  chargebacks arrive weeks later); design [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) to work with proxy
+  chargebacks arrive weeks later); design [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) to work with proxy
   signals in the interim.
 - Access to the model registry and lineage metadata to attribute a drift
   signal to a specific model version and its training data (see
@@ -117,9 +117,9 @@ model that is "working" in every infrastructure sense while being wrong.
    compare against the value at validation time.
 6. **Set alert thresholds with both a statistical bar and a business-impact
    bar** — e.g. alert on PSI > 0.25 *and* require it to persist for more
-   than one [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) window, to avoid paging on single-day noise from a
+   than one [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) window, to avoid paging on single-day noise from a
    holiday or a marketing campaign spike.
-7. **Segment [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) by relevant slices**, not just aggregate — drift
+7. **Segment [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) by relevant slices**, not just aggregate — drift
    often hides in a subpopulation (e.g. a new geographic market, a new
    device type) while aggregate statistics look stable.
 8. **Wire alerts to action**: a sustained drift alert should either page
@@ -146,12 +146,12 @@ model that is "working" in every infrastructure sense while being wrong.
 - Track drift and quality per model version, tied to the model registry
   entry that produced the predictions, so you can tell whether a regression
   correlates with a specific deployment.
-- Build [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) in from day one of production deployment, not as an
-  afterthought added after an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) — retrofitting requires reconstructing
+- Build [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) in from day one of production deployment, not as an
+  afterthought added after an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) — retrofitting requires reconstructing
   a reference distribution you may not have preserved.
 - Prefer a small number of well-understood, well-calibrated alerts over many
   noisy ones; alert fatigue causes real drift signals to get ignored.
-- Version and test the [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) code itself (drift computation logic) —
+- Version and test the [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) code itself (drift computation logic) —
   a bug in a PSI calculation is indistinguishable from real drift until
   someone investigates, wasting on-call time.
 
@@ -162,7 +162,7 @@ model that is "working" in every infrastructure sense while being wrong.
   outcomes.
   **Fix:** Don't rely solely on infrastructure health checks (uptime,
   latency, error rate) as a proxy for model health; instrument explicit
-  distributional and (when available) quality [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) from initial
+  distributional and (when available) quality [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) from initial
   deployment, with a frozen training-time reference baseline.
 
 - **Symptom:** A drift alert fires constantly on a highly seasonal feature
@@ -176,9 +176,9 @@ model that is "working" in every infrastructure sense while being wrong.
 - **Symptom:** Aggregate drift metrics look fine, but a specific customer
   segment (e.g. a newly launched region) experiences materially worse model
   performance for weeks before anyone notices.
-  **Fix:** Segment drift and quality [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) by relevant slices (region,
+  **Fix:** Segment drift and quality [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) by relevant slices (region,
   device, customer tier, new vs. established users), not only in aggregate;
-  add slice-level [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) as a standard part of [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) setup, not an
+  add slice-level [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) as a standard part of [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) setup, not an
   afterthought.
 
 - **Symptom:** A retraining pipeline auto-triggers on a drift alert and

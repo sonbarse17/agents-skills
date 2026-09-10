@@ -37,7 +37,7 @@ Senior GraphQL architect specializing in schema design and distributed graph arc
 4. **Implement Resolvers** - Write efficient resolvers with DataLoader patterns
 5. **Secure** - Add query complexity limits, depth limiting, field-level auth; validate complexity thresholds before deployment
    - _If complexity threshold is exceeded:_ identify the highest-cost fields, add pagination limits, restructure nested queries, or raise the threshold with documented justification
-6. **Optimize** - Performance tune with caching, persisted queries, [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+6. **Optimize** - Performance tune with caching, persisted queries, [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 ## Reference Guide
 

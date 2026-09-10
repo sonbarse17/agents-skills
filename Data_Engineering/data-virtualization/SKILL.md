@@ -71,7 +71,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 - [ ] Cross-source join strategy documented with cost model
 - [ ] Performance tuning parameters set (memory, concurrency, threads)
 - [ ] Security configured (TLS, auth, RBAC)
-- [ ] [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) dashboard for query performance
+- [ ] [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) dashboard for query performance
 - [ ] Resource groups and query queues configured
 
 ### Max Response Length
@@ -376,7 +376,7 @@ access-control.config-file=etc/rules.json
 }
 ```
 
-### Step 8: [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+### Step 8: [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 #### Query Performance Metrics
 
@@ -568,7 +568,7 @@ virtual_dataset:
 - **Connection pooling**: Configure Trino data source connection pools; set `maxConnections` per connector.
 - **Query routing**: Route queries to source-optimized clusters (Trino resource groups per data source).
 - **Result caching**: Enable Trino result cache (TTL 5 min) for repeated queries; flush on data refresh.
-- **[Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: Track per-source query latency, bytes scanned, and error rates in Grafana.
+- **[Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**: Track per-source query latency, bytes scanned, and error rates in Grafana.
 - **[Capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) planning**: Size coordinator + workers based on concurrent query load (16GB RAM per worker minimum).
 
 ## Anti-Patterns
@@ -577,7 +577,7 @@ virtual_dataset:
 |---|---|---|
 | No predicate pushdown | Full table scan over network | Verify `EXPLAIN` shows source filters |
 | Too many live connections to sources | Source DB connection exhaustion | Use optimized connection pools |
-| No caching for BI [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) | Repeated expensive queries | Cache at virtualization layer |
+| No caching for BI [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) | Repeated expensive queries | Cache at virtualization layer |
 | Ignoring connector version compatibility | Query failures after upgrade | Test connector upgrades in staging |
 | Querying across cloud regions | High egress costs, slow | Co-locate engine with data sources |
 
@@ -598,5 +598,5 @@ virtual_dataset:
 - **TLS**: Enable TLS for all Trino client and interservice connections; mutual TLS for connector auth.
 
 ## Handoff
-`[data-data-platform](../data-platform/SKILL.md)` for Trino cluster deployment on K8s. `[data-data-catalog](../data-catalog/SKILL.md)` for registering engine as data source. `[data-data-observability](../data-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)` for query performance [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md). `data-data-security` for RBAC and TLS setup.
+`[data-data-platform](../data-platform/SKILL.md)` for Trino cluster deployment on K8s. `[data-data-catalog](../data-catalog/SKILL.md)` for registering engine as data source. `[data-data-observability](../data-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)` for query performance [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md). `data-data-security` for RBAC and TLS setup.
 

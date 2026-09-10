@@ -206,7 +206,7 @@ validate their respective domains' configs before go-live.
   ACLs if they weren't provisioned identically.
 - Load-test the target workload to establish its real per-replica
   throughput before setting a threshold, rather than guessing and
-  tuning reactively in production after the first [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+  tuning reactively in production after the first [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 - Re-validate after any change to the event source side (a Kafka
   partition count change, a queue provider migration, a Prometheus
   metric rename) — the `ScaledObject` can remain syntactically valid
@@ -248,7 +248,7 @@ validate their respective domains' configs before go-live.
   value that happened to work for a different service.
 
 - **Symptom:** A `ScaledObject` with `minReplicaCount: 0` passes review
-  with no discussion, and months later a latency [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) traces back to
+  with no discussion, and months later a latency [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) traces back to
   cold-start delay on the first request after an idle period.
   **Fix:** Treat `minReplicaCount: 0` as a required discussion item in
   every review, not a default to wave through — confirm the workload's
@@ -264,7 +264,7 @@ validate their respective domains' configs before go-live.
   **Fix:** Validation is not a one-time gate — re-run the authentication
   and connectivity checks (steps 2–3) whenever the underlying event
   source changes, and consider an automated periodic check (a CronJob or
-  [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) rule) that alerts if a `ScaledObject`'s trigger has been in
+  [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) rule) that alerts if a `ScaledObject`'s trigger has been in
   a failing state for longer than a defined threshold, rather than
   relying on someone noticing the workload never scales.
 

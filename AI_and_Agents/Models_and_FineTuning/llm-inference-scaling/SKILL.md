@@ -139,14 +139,14 @@ spec:
   triggers:
   - type: prometheus
     metadata:
-      serverAddress: http://prometheus-server.[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md):9090
+      serverAddress: http://prometheus-server.[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md):9090
       metricName: vllm_num_requests_waiting
       threshold: "10"           # scale up if >10 requests waiting
       query: |
         sum(vllm:num_requests_waiting{deployment="vllm-llama-8b"})
   - type: prometheus
     metadata:
-      serverAddress: http://prometheus-server.[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md):9090
+      serverAddress: http://prometheus-server.[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md):9090
       metricName: vllm_gpu_cache_usage
       threshold: "0.8"          # scale up if KV cache >80% full
       query: |

@@ -21,7 +21,7 @@ depends_on:
 
 # Frontend UI Dark Theme ([TypeScript](../typescript/SKILL.md))
 
-A modern dark-themed React UI system using **Tailwind CSS** and **Framer Motion**. Designed for [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), admin panels, and data-rich applications with glassmorphism effects and tasteful animations.
+A modern dark-themed React UI system using **Tailwind CSS** and **Framer Motion**. Designed for [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), admin panels, and data-rich applications with glassmorphism effects and tasteful animations.
 
 ## Stack
 

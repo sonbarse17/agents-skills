@@ -28,7 +28,7 @@ If a local transaction fails, the SAGA executes **compensating transactions** to
   - *Pros:* Highly decoupled, no single point of failure.
   - *Cons:* Emergent complexity; difficult to trace the lifecycle of a complex transaction.
 - **Orchestration (Command-Driven):** A centralized orchestrator (e.g., an AWS Step Function or Camunda engine) manages the transaction lifecycle. It issues commands to participant services and handles failure logic.
-  - *Pros:* Centralized [observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md), straightforward compensation logic.
+  - *Pros:* Centralized [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md), straightforward compensation logic.
   - *Cons:* The orchestrator can become a god-object and a bottleneck.
 
 ## 2. CQRS: Command Query Responsibility Segregation

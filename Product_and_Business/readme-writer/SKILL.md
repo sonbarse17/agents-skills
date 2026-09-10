@@ -630,7 +630,7 @@ Who is the primary audience?
 │   ├── Running tests
 │   ├── Deployment guide
 │   ├── API documentation
-│   └── [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) / [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
+│   └── [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) / [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
 │
 └── Both (open source project)
     ├── Top: User-focused content (install, quick start)

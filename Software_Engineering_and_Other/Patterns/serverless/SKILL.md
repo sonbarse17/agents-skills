@@ -83,7 +83,7 @@ steady-state (you're paying per-request for traffic a fixed server would handle 
 long-running (most platforms cap execution duration), or requires persistent connections or
 specialized hardware. Forcing a bad fit into serverless usually shows up as cost per request that
 quietly exceeds a always-on server, or as timeout errors that get "fixed" by ever-larger memory
-allocations. Naming the mismatch early beats discovering it in a bill or an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+allocations. Naming the mismatch early beats discovering it in a bill or an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 
 **Done when:** a workload proposed for serverless has been checked against duration, steadiness,
 and connection-persistence requirements, not just "it's an event handler."

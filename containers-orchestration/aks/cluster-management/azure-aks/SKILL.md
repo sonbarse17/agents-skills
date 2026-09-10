@@ -20,7 +20,7 @@ depends_on:
 
 # Azure [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) Service
 
-Deploy and manage production-grade [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) clusters on Azure with AKS. Covers cluster creation, node pool management, networking, ingress controllers, [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), security, and Terraform-based provisioning.
+Deploy and manage production-grade [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) clusters on Azure with AKS. Covers cluster creation, node pool management, networking, ingress controllers, [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), security, and Terraform-based provisioning.
 
 ## When to Use
 
@@ -230,14 +230,14 @@ spec:
                   number: 80
 ```
 
-## [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and Logging
+## [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and Logging
 
 ```bash
 # Enable Container Insights
 az aks enable-addons \
   --resource-group myapp-rg \
   --name myapp-aks \
-  --addons [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) \
+  --addons [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) \
   --workspace-resource-id "/subscriptions/{sub}/resourceGroups/{rg}/providers/Microsoft.OperationalInsights/workspaces/{workspace}"
 
 # Enable Azure Policy add-on
@@ -262,7 +262,7 @@ az aks show \
 # Install Prometheus + Grafana via Helm
 helm repo add prometheus-community https://prometheus-community.[github](../../../../ci-cd/github-actions/other/github/SKILL.md).io/[helm-charts](../../../helm/charts/helm-charts/SKILL.md)
 helm install kube-prometheus prometheus-community/kube-prometheus-stack \
-  --namespace [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) \
+  --namespace [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) \
   --create-namespace \
   --set grafana.adminPassword='SecureGrafanaP@ss'
 ```

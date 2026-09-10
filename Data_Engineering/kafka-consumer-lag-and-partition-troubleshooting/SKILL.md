@@ -33,7 +33,7 @@ consumer, an overloaded broker, or a partition/replica imbalance
 introduced at design time (see
 [kafka-cluster-configuration](../[kafka-cluster-configuration](../kafka-cluster-configuration/SKILL.md)/SKILL.md)).
 This skill is the diagnostic playbook for isolating which of those root
-causes is actually responsible in a live [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), rather than guessing
+causes is actually responsible in a live [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), rather than guessing
 at fixes (adding more consumers, restarting brokers) that don't address
 the underlying problem.
 
@@ -70,7 +70,7 @@ the underlying problem.
 ## Step-by-step guidance
 
 1. **Quantify the lag and its trend before reacting** — a snapshot lag
-   number without a trend can't tell you if it's an active [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) or a
+   number without a trend can't tell you if it's an active [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) or a
    transient blip:
    ```bash
    kafka-consumer-groups.sh --bootstrap-server broker-101:9092 \
@@ -146,7 +146,7 @@ the underlying problem.
    consumer-side fix resolves — remediation belongs back in
    [kafka-cluster-configuration](../[kafka-cluster-configuration](../kafka-cluster-configuration/SKILL.md)/SKILL.md)'s
    partition-key guidance, and validating the fix belongs in
-   [kafka-configuration-validation](../[kafka-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/kafka-configuration-validation/SKILL.md)/SKILL.md).
+   [kafka-configuration-validation](../../Software_Engineering_and_Other/Miscellaneous/kafka-configuration-validation/SKILL.md)/SKILL.md).
 
 6. **For under-replicated partitions, identify which broker is
    under-replicating and why**:
@@ -223,14 +223,14 @@ the underlying problem.
 
 - **Symptom:** `UnderReplicatedPartitions` spikes cluster-wide right
   after a routine rolling broker restart (e.g. for a config change or
-  patch), and someone starts an [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response before checking
+  patch), and someone starts an [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response before checking
   whether it's expected.
   **Fix:** A restarted broker's replicas are legitimately behind until
   they finish catching up; this is expected and should self-resolve
   within the deployment's configured restart interval. Confirm the ISR
   set is converging back to full (`kafka-topics.sh --describe` showing
   `Isr` matching `Replicas` again) before escalating — but do treat it
-  as a real [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) if the metric doesn't converge within the expected
+  as a real [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) if the metric doesn't converge within the expected
   catch-up window, since that indicates a broker actually struggling,
   not just catching up.
 
@@ -278,17 +278,17 @@ broker problem. Immediate mitigation: temporarily add a
 `consumer.pause()`/backpressure-aware retry on the fulfillment service
 for partition 0 specifically to avoid cascading timeouts downstream
 while a fix is prepared. Actual fix (tracked as a follow-up, not done
-live during the [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) given the ordering-guarantee implications):
+live during the [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) given the ordering-guarantee implications):
 re-key the producer on `order_id` instead of `warehouse_region` for even
 distribution across all 12 partitions, following the partition-key
 guidance in
 [kafka-cluster-configuration](../[kafka-cluster-configuration](../kafka-cluster-configuration/SKILL.md)/SKILL.md),
 and validate the new key distribution in staging via
-[kafka-configuration-validation](../[kafka-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/kafka-configuration-validation/SKILL.md)/SKILL.md)
+[kafka-configuration-validation](../../Software_Engineering_and_Other/Miscellaneous/kafka-configuration-validation/SKILL.md)/SKILL.md)
 before rolling out to production.
 
 ## Cross-references
 
 - [kafka-cluster-configuration](../[kafka-cluster-configuration](../kafka-cluster-configuration/SKILL.md)/SKILL.md) — partition/replication design decisions that are frequently the root cause of the symptoms diagnosed here.
-- [kafka-configuration-validation](../[kafka-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/kafka-configuration-validation/SKILL.md)/SKILL.md) — pre-production checks that catch consumer group and topic misconfigurations before they become live-[incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) lag/rebalance problems.
-- [kafka-schema-registry-and-compatibility-management](../[kafka-schema-registry-and-compatibility-management](../../../Software_Engineering_and_Other/Miscellaneous/kafka-schema-registry-and-compatibility-management/SKILL.md)/SKILL.md) — a schema-incompatible message can also cause a consumer to stall/error-loop, which looks like lag but has a different root cause and fix.
+- [kafka-configuration-validation](../../Software_Engineering_and_Other/Miscellaneous/kafka-configuration-validation/SKILL.md)/SKILL.md) — pre-production checks that catch consumer group and topic misconfigurations before they become live-[incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) lag/rebalance problems.
+- [kafka-schema-registry-and-compatibility-management](../../Software_Engineering_and_Other/Miscellaneous/kafka-schema-registry-and-compatibility-management/SKILL.md)/SKILL.md) — a schema-incompatible message can also cause a consumer to stall/error-loop, which looks like lag but has a different root cause and fix.

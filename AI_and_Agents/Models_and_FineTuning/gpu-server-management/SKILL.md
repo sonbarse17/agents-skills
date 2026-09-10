@@ -86,10 +86,10 @@ sudo nvidia-smi --ecc-config=0   # requires reboot
 sudo nvidia-smi topo -m          # check NVLink topology
 ```
 
-## GPU Health [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+## GPU Health [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 ```bash
-# Real-time [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) (like htop for GPUs)
+# Real-time [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (like htop for GPUs)
 watch -n 1 nvidia-smi
 
 # Detailed stats
@@ -97,7 +97,7 @@ nvidia-smi --query-gpu=index,name,temperature.gpu,utilization.gpu,\
 utilization.memory,memory.used,memory.free,power.draw,clocks.current.graphics \
 --format=csv --loop=1
 
-# DCGM — production [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) daemon (for clusters)
+# DCGM — production [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) daemon (for clusters)
 sudo apt install -y [datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md)-gpu-manager
 sudo systemctl start dcgm
 dcgmi discovery -l                # list GPUs
@@ -229,4 +229,4 @@ nvidia-smi topo -m
 - [vllm-server](../../local-ai/[vllm-server](../vllm-server/SKILL.md)/) - LLM inference on GPUs
 - [llm-fine-tuning](../../local-ai/[llm-fine-tuning](../llm-fine-tuning/SKILL.md)/) - GPU training setup
 - [linux-hardening](../../../security/hardening/[linux-hardening](../../../DevOps_and_Cloud/Observability_and_SecOps/linux-hardening/SKILL.md)/) - Secure the host OS
-- [prometheus-grafana](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/[prometheus-grafana](../../../DevOps_and_Cloud/Observability_and_SecOps/prometheus-grafana/SKILL.md)/) - Metrics [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md)
+- [prometheus-grafana](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)/[prometheus-grafana](../../../observability-monitoring-logging/common/other/prometheus-grafana/SKILL.md)/) - Metrics [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)

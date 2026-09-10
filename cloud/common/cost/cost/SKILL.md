@@ -118,11 +118,11 @@ Effort keywords (`quick` / `standard` / `deep`) and the shared `<focus>` and
 
 ## Related skills
 
-- `/[terraform-review](../../../../DevOps_and_Cloud/Infrastructure_as_Code/terraform-review/SKILL.md)` — where the wasteful resource is declared, and how to change it.
+- `/[terraform-review](../../../../infrastructure-as-code/terraform/troubleshooting/terraform-review/SKILL.md)` — where the wasteful resource is declared, and how to change it.
 - `/[k8s-review](../../../../containers-orchestration/kubernetes/troubleshooting/k8s-review/SKILL.md)` — requests/limits, [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md), and bin-packing waste.
-- `/[observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)` — log retention and metric cardinality spend, and the
+- `/[observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)` — log retention and metric cardinality spend, and the
   utilization data this skill depends on.
-- `/[dr-review](../../../../DevOps_and_Cloud/Observability_and_SecOps/dr-review/SKILL.md)` — before cutting retention or replicas, check the recovery bar.
+- `/[dr-review](../../../../containers-orchestration/common/other/dr-review/SKILL.md)` — before cutting retention or replicas, check the recovery bar.
 
 ## Before you finish
 

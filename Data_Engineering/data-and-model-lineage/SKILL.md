@@ -48,7 +48,7 @@ tractable instead of an archaeology project.
 - The user needs to trace a bad prediction or a drift alert back to the
   specific data snapshot, feature definition, and training run that produced
   the currently-serving model (tie-in with
-  [model-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md)).
+  [model-[monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md)).
 - The user is planning a change to an upstream table/source and wants impact
   analysis — which features, training pipelines, and models depend on it.
 - The user needs to answer a compliance/[audit](../../AI_and_Agents/Operations/audit/SKILL.md) question: "what data was this
@@ -145,7 +145,7 @@ tractable instead of an archaeology project.
    not be purged on a generic retention timer without checking active
    relevance.
 8. **Expose lineage queries to the people who need them** (ML engineers
-   during [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response, compliance/legal during audits) via a UI or a
+   during [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response, compliance/legal during audits) via a UI or a
    simple query API — a lineage graph that only the platform team knows how
    to query loses most of its operational value.
 
@@ -249,5 +249,5 @@ access request.
 
 - [feature-store-design](../[feature-store-design](../feature-store-design/SKILL.md)/SKILL.md)
 - [experiment-tracking](../[experiment-tracking](../experiment-tracking/SKILL.md)/SKILL.md)
-- [model-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md)
+- [model-[monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md)
 - [model-packaging-and-versioning](../[model-packaging-and-versioning](../../AI_and_Agents/Models_and_FineTuning/model-packaging-and-versioning/SKILL.md)/SKILL.md)

@@ -461,7 +461,7 @@ After completing this skill:
 | Scalability | Single host | Multi-cluster |
 | Service discovery | DNS via compose network | DNS, K8s Services |
 | Secrets management | Basic env_file | Secrets, external stores |
-| [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) | [Docker](../docker/SKILL.md) stats, basic | Prometheus, Grafana stack |
+| [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) | [Docker](../docker/SKILL.md) stats, basic | Prometheus, Grafana stack |
 | Production readiness | Limited | Enterprise-grade |
 
 ## Implementation Patterns

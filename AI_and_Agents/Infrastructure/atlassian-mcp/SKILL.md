@@ -82,7 +82,7 @@ project = PROJ AND sprint in openSprints() AND status = Open ORDER BY created DE
 space = "ENG" AND type = page AND lastModified >= "2024-01-01" ORDER BY lastModified DESC
 
 # Search page text for a keyword
-space = "ENG" AND type = page AND text ~ "deployment [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)"
+space = "ENG" AND type = page AND text ~ "deployment [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)"
 ```
 
 ### Minimal MCP Server Configuration

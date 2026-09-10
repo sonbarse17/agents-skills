@@ -38,7 +38,7 @@ specific to a go/no-go review.
 
 ## Hard Rules
 
-1. **Read-only.** Read code, IaC, pipelines, [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), [runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md); run
+1. **Read-only.** Read code, IaC, pipelines, [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), [runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md); run
    read-only checks only. Never deploy, promote, flip flags, or change config.
 2. **Every gate verdict is evidence-based** — cite the config, manifest,
    dashboard, or pipeline that proves a gate passes or fails.
@@ -69,13 +69,13 @@ Assess each gate and mark **PASS / FAIL / N/A** with evidence.
 - **Reliability** — health/readiness probes, [autoscaling](../../Backend/autoscaling/SKILL.md) and [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) for
   expected load (load-tested if high-stakes), no single points of failure,
   graceful degradation of dependencies, timeouts/retries/circuit breakers.
-- **[Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)** — golden-signal metrics, [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) for the release,
+- **[Observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)** — golden-signal metrics, [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) for the release,
   **alerts that would catch this release going wrong**, deploy annotations to
   correlate a regression with the rollout, logs with correlation IDs.
 - **Security** — no unresolved high/critical vulns on the release path, secrets
   handled correctly, least-privilege for new permissions, security review done
   for sensitive changes. (Defer depth to `/[security-review](../../../Security/security-review/SKILL.md)`.)
-- **Operational** — a [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) for the new/changed failure modes, on-call aware
+- **Operational** — a [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) for the new/changed failure modes, on-call aware
   and briefed, dependencies and downstreams notified, SLO/error-budget headroom
   to absorb a bad deploy, a clear owner.
 - **Verification** — tests passing in CI on the exact artifact, staging/pre-prod
@@ -110,7 +110,7 @@ etc.) — an unverifiable critical gate is a conditional, not a pass.
 For each hard blocker (and optionally follow-ups), write one plan per
 [../docs/plan-template.md](../docs/plan-template.md) into `plans/`, routing to
 the right domain where relevant (a probe gap → `/[k8s-review](../../../containers-orchestration/kubernetes/troubleshooting/k8s-review/SKILL.md)` shape, an alert gap
-→ `/[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)` shape). The index orders blockers before follow-ups.
+→ `/[observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)` shape). The index orders blockers before follow-ups.
 
 ## Invocation variants
 
@@ -121,18 +121,18 @@ Effort keywords (`quick` / `standard` / `deep`) and the shared `<focus>` and
 - Bare → full readiness review and go/no-go for the release in scope.
 - `quick` → the hard-blocker gates only (rollback, safe deploy, critical
   alerts, passing verification) for a fast go/no-go.
-- `deep` → every gate plus cross-checks against live config and [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md).
-- Focus (`rollback`, `[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)`, `security`, `[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)`) → that gate group.
+- `deep` → every gate plus cross-checks against live config and [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md).
+- Focus (`rollback`, `[observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)`, `security`, `[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)`) → that gate group.
 - `plan <description>` → spec one known blocker fix.
 
 ## Related skills
 
-- `/[k8s-review](../../../containers-orchestration/kubernetes/troubleshooting/k8s-review/SKILL.md)`, `/[terraform-review](../../../DevOps_and_Cloud/Infrastructure_as_Code/terraform-review/SKILL.md)`, `/[pipeline-review](../../../ci-cd/common/pipeline-design/pipeline-review/SKILL.md)`, `/[db-review](../../../AI_and_Agents/Operations/db-review/SKILL.md)` — the
+- `/[k8s-review](../../../containers-orchestration/kubernetes/troubleshooting/k8s-review/SKILL.md)`, `/[terraform-review](../../../infrastructure-as-code/terraform/troubleshooting/terraform-review/SKILL.md)`, `/[pipeline-review](../../../ci-cd/common/pipeline-design/pipeline-review/SKILL.md)`, `/[db-review](../../../AI_and_Agents/Operations/db-review/SKILL.md)` — the
   domain depth behind a failed gate.
-- `/[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)` — alert and dashboard gaps for this release.
-- `/[dr-review](../../../DevOps_and_Cloud/Observability_and_SecOps/dr-review/SKILL.md)` — restore and failover readiness for stateful services.
-- `/[runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)` — the new failure modes this release introduces need one.
-- `/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)` — if it is already broken, this is the wrong skill.
+- `/[observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)` — alert and dashboard gaps for this release.
+- `/[dr-review](../../../containers-orchestration/common/other/dr-review/SKILL.md)` — restore and failover readiness for stateful services.
+- `/[runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)` — the new failure modes this release introduces need one.
+- `/[incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)` — if it is already broken, this is the wrong skill.
 
 ## Before you finish
 

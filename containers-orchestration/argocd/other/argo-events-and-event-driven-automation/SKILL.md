@@ -41,7 +41,7 @@ external broker's client libraries per language/team — the event
 plumbing, retry, and filtering logic is declarative and lives in the same
 [GitOps](../../../common/gitops/gitops/SKILL.md)-managed cluster as everything else. This matters operationally
 because event-driven automation that's implemented as ad hoc scripts
-tends to have no consistent retry/dedup/[observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) story; Argo Events
+tends to have no consistent retry/dedup/[observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) story; Argo Events
 gives all three uniformly across every event source.
 
 ## When to use

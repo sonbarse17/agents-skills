@@ -419,7 +419,7 @@ test_cases:
 - Canary token trigger rate
 - Output redaction frequency
 
-## [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) Dashboard Queries
+## [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Dashboard Queries
 
 ```yaml
 # prometheus alerts for prompt injection

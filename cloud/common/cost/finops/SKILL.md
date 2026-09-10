@@ -40,7 +40,7 @@ Any user message referencing cloud cost, FinOps, cost optimization, reserved ins
 Cloud provider(s), current monthly spend, team structure, tagging conventions, optimization goals, compliance requirements.
 
 ### Output Artifact
-Tagging strategy, budget alerts, right-sizing recommendations, RI/SP purchase plans, cost [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), chargeback/showback reports, K8s cost optimization config.
+Tagging strategy, budget alerts, right-sizing recommendations, RI/SP purchase plans, cost [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), chargeback/showback reports, K8s cost optimization config.
 
 ### Response Format
 Tabular data, tagging schemas, policy definitions. CLI/API examples for cost tools.
@@ -48,7 +48,7 @@ Tabular data, tagging schemas, policy definitions. CLI/API examples for cost too
 No preamble. No postamble. No explanations. No filler/hedging/transitions.
 
 ### Completion Criteria
-Tagging enforced, budgets active, right-sizing recommendations implemented, cost visibility [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) deployed, chargeback process documented, K8s cost visibility enabled.
+Tagging enforced, budgets active, right-sizing recommendations implemented, cost visibility [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) deployed, chargeback process documented, K8s cost visibility enabled.
 
 ## Architecture / Decision Trees
 
@@ -302,12 +302,12 @@ Unattached volumes, idle load balancers, and orphaned snapshots accumulate silen
 Teams optimize compute and storage but ignore egress. A data-heavy app can spend more on data transfer than compute. Use CDN for egress. Keep data in-region. Monitor NAT Gateway charges.
 
 ### Anti-Pattern 7: Neglecting SaaS Costs
-FinOps focuses on cloud infrastructure but SaaS tools, API costs, and data transfer to third parties add up. Include SaaS costs in visibility [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md). Review subscription utilization quarterly.
+FinOps focuses on cloud infrastructure but SaaS tools, API costs, and data transfer to third parties add up. Include SaaS costs in visibility [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md). Review subscription utilization quarterly.
 
 ## Production Considerations
 
 ### Cost Visibility
-- [Dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) per team, per service, per environment.
+- [Dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) per team, per service, per environment.
 - Daily cost notifications to team leads.
 - Weekly cost review with actionable insights.
 - Monthly executive summary with trends.
@@ -495,7 +495,7 @@ check_tag_compliance() {
 - Implement **automated right-sizing** recommendations using AWS Compute Optimizer / Azure Advisor
 - Use **commitment-based discounts** (RIs, Savings Plans) for baseline compute; spot/on-demand for burst
 - Track **unit economics** (cost per transaction, per user, per GB stored) for business-aligned reporting
-- Publish **cost [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md)** in Grafana/Looker with daily granularity and team breakdowns
+- Publish **cost [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)** in Grafana/Looker with daily granularity and team breakdowns
 
 ## Anti-Patterns
 

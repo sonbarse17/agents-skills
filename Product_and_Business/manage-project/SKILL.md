@@ -116,7 +116,7 @@ Ask the user for the **project name** if not already provided. Infer the project
 | User says                                                   | `--type`        |
 | ----------------------------------------------------------- | --------------- |
 | "search project", "elasticsearch project", vector search    | `elasticsearch` |
-| "[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) project", "o11y", logs, metrics, traces, APM | `[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)` |
+| "[observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) project", "o11y", logs, metrics, traces, APM | `[observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)` |
 | "security project", "SIEM", detections, endpoint protection | `security`      |
 
 If the type is ambiguous, list all three types to find the project.
@@ -160,7 +160,7 @@ export ELASTICSEARCH_URL="<elasticsearch_endpoint>"
 export KIBANA_URL="<kibana_endpoint>"
 ```
 
-**[Observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) projects** (additional):
+**[Observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) projects** (additional):
 
 ```bash
 export APM_URL="<apm_endpoint>"
@@ -264,7 +264,7 @@ python3 skills/cloud/manage-project/scripts/manage-project.py list \
   --type elasticsearch
 ```
 
-Use `--type [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)` or `--type security` to list other project types.
+Use `--type [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)` or `--type security` to list other project types.
 
 ## Workflow: Get project details
 
@@ -441,17 +441,17 @@ python3 skills/cloud/manage-project/scripts/manage-project.py update \
 
 ```bash
 python3 skills/cloud/manage-project/scripts/manage-project.py update \
-  --type [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) \
+  --type [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) \
   --id abc123def456abc123def456abc12345 \
   --tag env:prod \
   --tag team:platform
 ```
 
-### Rename an [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) project
+### Rename an [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) project
 
 ```bash
 python3 skills/cloud/manage-project/scripts/manage-project.py update \
-  --type [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) \
+  --type [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) \
   --id abc123def456abc123def456abc12345 \
   --name "production-logs"
 ```
@@ -476,11 +476,11 @@ User: let's ingest some logs into my o11y project "siem-prod"
 Agent: Let me find that project.
        [runs: list --type observability]
        Found "siem-prod" (ID: def456...). No saved credentials found for this project.
-       [runs: get --type [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) --id def456...]
+       [runs: get --type [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) --id def456...]
        Endpoints set. Since there are no Elasticsearch credentials on file, I can reset the
        admin bootstrap password to get initial access. Shall I proceed?
 User: yes
-Agent: [runs: reset-credentials --type [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) --id def456...]
+Agent: [runs: reset-credentials --type [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) --id def456...]
        Credentials saved to .elastic-credentials — open that file to retrieve the password.
        [runs: eval $(load-credentials --name siem-prod --include-admin)]
        Admin credentials loaded for API key creation. Creating a scoped Elasticsearch API key
@@ -534,7 +534,7 @@ python3 skills/cloud/manage-project/scripts/manage-project.py delete \
 
 | Flag                       | Commands                                                         | Description                                                  |
 | -------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------ |
-| `--type`                   | list, get, update, reset-credentials, delete, resume             | Project type: `elasticsearch`, `[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)`, `security`   |
+| `--type`                   | list, get, update, reset-credentials, delete, resume             | Project type: `elasticsearch`, `[observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)`, `security`   |
 | `--id`                     | get, update, reset-credentials, delete, resume, load-credentials | Project ID                                                   |
 | `--name`                   | update, load-credentials                                         | Project name (update: new name; load-credentials: lookup)    |
 | `--alias`                  | update                                                           | New project alias                                            |
@@ -554,8 +554,8 @@ python3 skills/cloud/manage-project/scripts/manage-project.py delete \
 | `EC_BASE_URL`           | No       | Cloud API base URL (default: `https://api.elastic-cloud.com`)           |
 | `ELASTICSEARCH_URL`     | Output   | Elasticsearch URL (set after resolving a project for downstream skills) |
 | `KIBANA_URL`            | Output   | Kibana URL (set after resolving a project for downstream skills)        |
-| `APM_URL`               | Output   | APM endpoint ([observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) projects only)                              |
-| `INGEST_URL`            | Output   | OTLP ingest endpoint ([observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) and security projects)              |
+| `APM_URL`               | Output   | APM endpoint ([observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) projects only)                              |
+| `INGEST_URL`            | Output   | OTLP ingest endpoint ([observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) and security projects)              |
 | `ELASTICSEARCH_API_KEY` | Output   | Elasticsearch API key (for stack-level operations)                      |
 
 ## Additional resources

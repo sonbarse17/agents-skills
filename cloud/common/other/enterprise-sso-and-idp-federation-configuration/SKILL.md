@@ -285,7 +285,7 @@ via SSO, not machine-to-machine or cloud-resource authorization.
   account is a standing access-control gap that often goes unnoticed
   for months.
 - Track IdP and SP signing-certificate expiry dates as monitored,
-  [alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) events well ahead of expiry, and support certificate rollover
+  [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) events well ahead of expiry, and support certificate rollover
   (both old and new trusted simultaneously) rather than a hard cutover.
 - Route a second/acquired-company IdP through explicit, tested routing
   rules (domain- or tenant-based) rather than an ambiguous trust that

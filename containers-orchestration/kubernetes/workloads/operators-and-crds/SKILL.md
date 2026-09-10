@@ -25,7 +25,7 @@ depends_on:
 A CustomResourceDefinition extends the [Kubernetes](../../other/kubernetes/SKILL.md) API with a new resource type; an operator is the
 controller that watches instances of it and reconciles reality toward what's declared. Together
 they let you express operational knowledge — "how to safely upgrade this database," "how to
-provision this cloud resource" — as a [Kubernetes](../../other/kubernetes/SKILL.md)-native API instead of a [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) a human executes by
+provision this cloud resource" — as a [Kubernetes](../../other/kubernetes/SKILL.md)-native API instead of a [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) a human executes by
 hand. That's real leverage, and it's also a commitment: you're now maintaining a piece of
 distributed systems software, not a script.
 

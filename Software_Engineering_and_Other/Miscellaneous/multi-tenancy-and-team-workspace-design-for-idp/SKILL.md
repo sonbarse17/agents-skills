@@ -60,7 +60,7 @@ platform access matches its infrastructure access.
   (in Backstage, Port, Cortex, OpsLevel, or a custom platform) so a
   team's software-catalog access matches its actual infrastructure
   boundary.
-- Investigating an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) where one team's workload affected another's
+- Investigating an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) where one team's workload affected another's
   (a noisy-neighbor resource exhaustion, an RBAC over-grant) to design the
   boundary that should have prevented it.
 
@@ -163,7 +163,7 @@ platform access matches its infrastructure access.
 4. **Enforce resource quotas and default limits per namespace** so one
    team's workload can't exhaust shared node [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) and starve another
    tenant — the single most common "shared platform breaks trust"
-   [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md):
+   [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md):
    ```yaml
    apiVersion: v1
    kind: ResourceQuota
@@ -201,7 +201,7 @@ platform access matches its infrastructure access.
 5. **Isolate east-west network traffic between tenants with
    `NetworkPolicy`**, defaulting to deny-all-ingress-from-other-namespaces
    and explicitly allowing only what's needed (a shared ingress
-   controller, a shared [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) agent scraping metrics):
+   controller, a shared [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) agent scraping metrics):
    ```yaml
    apiVersion: networking.k8s.io/v1
    kind: NetworkPolicy
@@ -217,7 +217,7 @@ platform access matches its infrastructure access.
        - from:
            - namespaceSelector:
                matchLabels:
-                 platform-shared: "true"   # allow shared ingress/[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) namespaces
+                 platform-shared: "true"   # allow shared ingress/[observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) namespaces
    ```
    Without this, RBAC isolation still leaves every pod in the cluster
    able to reach every other pod's network endpoints directly — RBAC and
@@ -312,7 +312,7 @@ platform access matches its infrastructure access.
 
 - **Symptom:** Two teams' pods on the same shared cluster can reach each
   other's internal service endpoints directly, and a security [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) flags
-  this as a lateral-movement risk during an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) review.
+  this as a lateral-movement risk during an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) review.
   **Fix:** RBAC controls the [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) API, not pod-to-pod network
   traffic — add a default-deny `NetworkPolicy` per namespace (step 5) and
   confirm the CNI actually enforces it; RBAC isolation alone is
@@ -336,7 +336,7 @@ platform access matches its infrastructure access.
   as owning `checkout-api`, but their actual [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) RBAC access maps
   to a differently-named namespace after an unrelated rename, and nobody
   updated the catalog's annotation — leading to a confused on-call
-  handoff during an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) where the responding engineer's [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md)
+  handoff during an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) where the responding engineer's [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md)
   access didn't match what the catalog implied.
   **Fix:** Treat the catalog's namespace/environment annotation (step 7)
   as generated from the same source of truth as the RBAC binding (e.g.
@@ -375,7 +375,7 @@ still need dedicated infrastructure under the new model.
    single unbounded pod can consume it all at once.
 5. **Network policy (step 5)**: a default-deny-cross-namespace policy is
    applied to all 14 namespaces, with an explicit allow rule for the
-   shared ingress controller and shared [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) agent namespaces
+   shared ingress controller and shared [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) agent namespaces
    only — verified against the cluster's Cilium CNI, confirmed to enforce
    `NetworkPolicy` (not assumed).
 6. **Catalog alignment (step 7)**: each team's Backstage `Group` entity

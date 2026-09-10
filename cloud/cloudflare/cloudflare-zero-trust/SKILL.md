@@ -24,7 +24,7 @@ Secure access to internal services without VPNs using Cloudflare's Zero Trust pl
 ## When to Use
 
 - Replacing VPN access to internal web applications, SSH, or RDP.
-- Enforcing identity-aware access policies on internal tools ([dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), admin panels).
+- Enforcing identity-aware access policies on internal tools ([dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), admin panels).
 - Exposing on-premises or private-network services securely to remote teams.
 - Filtering DNS traffic to block malware, phishing, and shadow IT.
 - Enforcing device posture checks (managed devices, OS version, disk encryption).

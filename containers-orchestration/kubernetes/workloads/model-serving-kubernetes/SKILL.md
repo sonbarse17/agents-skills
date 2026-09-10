@@ -197,7 +197,7 @@ spec:
   triggers:
   - type: prometheus
     metadata:
-      serverAddress: http://prometheus-server.[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md):9090
+      serverAddress: http://prometheus-server.[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md):9090
       metricName: kserve_request_count
       threshold: "10"
       query: |

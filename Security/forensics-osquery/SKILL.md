@@ -45,19 +45,19 @@ depends_on:
   - monitoring
 ---
 
-# osquery Forensics & [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response
+# osquery Forensics & [Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response
 
 ## Overview
 
-osquery transforms operating systems into queryable relational databases, enabling security analysts to investigate compromises using SQL rather than traditional CLI tools. This skill provides forensic investigation workflows, common detection queries, and [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response patterns for rapid evidence collection across Linux, macOS, and Windows endpoints.
+osquery transforms operating systems into queryable relational databases, enabling security analysts to investigate compromises using SQL rather than traditional CLI tools. This skill provides forensic investigation workflows, common detection queries, and [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response patterns for rapid evidence collection across Linux, macOS, and Windows endpoints.
 
 **Core capabilities**:
 - SQL-based system interrogation for process, network, file, and user analysis
 - Cross-platform forensic artifact collection (Linux, macOS, Windows)
 - Live system analysis without deploying heavyweight forensic tools
 - Threat hunting queries mapped to MITRE ATT&CK techniques
-- Scheduled [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) with osqueryd for continuous detection
-- Integration with SIEM and [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response platforms
+- Scheduled [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) with osqueryd for continuous detection
+- Integration with SIEM and [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response platforms
 
 ## Quick Start
 
@@ -98,7 +98,7 @@ osqueryi --line "SELECT name, used_by, status FROM kernel_modules WHERE name NOT
 
 ## Core Workflows
 
-### Workflow 1: Initial [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response Triage
+### Workflow 1: Initial [Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response Triage
 
 For rapid assessment of potentially compromised systems:
 
@@ -209,7 +209,7 @@ LEFT JOIN processes p ON lp.pid = p.pid
 WHERE lp.address NOT IN ('127.0.0.1', '::1')
 ORDER BY lp.port;
 
--- DNS lookups (requires events table or process [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md))
+-- DNS lookups (requires events table or process [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md))
 SELECT name, domains, pid FROM dns_resolvers;
 ```
 
@@ -273,7 +273,7 @@ LEFT JOIN processes p2 ON p1.parent = p2.pid;
 SELECT pid, name, path, cmdline, uid, euid FROM processes WHERE uid = 0 OR euid = 0;
 ```
 
-### Pattern 2: User Activity [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+### Pattern 2: User Activity [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 Track user accounts and authentication:
 
@@ -310,7 +310,7 @@ SELECT hostname, computer_name, local_hostname FROM system_info;
 
 ## Security Considerations
 
-- **Sensitive Data Handling**: osquery can access sensitive system information (password hashes, private keys, process memory). Limit access to forensic analysts and [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) responders. Export query results to encrypted storage. Sanitize logs before sharing with third parties.
+- **Sensitive Data Handling**: osquery can access sensitive system information (password hashes, private keys, process memory). Limit access to forensic analysts and [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) responders. Export query results to encrypted storage. Sanitize logs before sharing with third parties.
 
 - **Access Control**: Requires root/administrator privileges on investigated systems. Use dedicated forensic user accounts with [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging. Restrict osqueryd configuration files (osquery.conf) to prevent query tampering. Implement least-privilege access to query results.
 
@@ -324,7 +324,7 @@ SELECT hostname, computer_name, local_hostname FROM system_info;
 
 ### Scripts
 
-- `scripts/osquery_triage.sh` - Automated triage collection script for rapid [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response
+- `scripts/osquery_triage.sh` - Automated triage collection script for rapid [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response
 - `scripts/osquery_hunt.py` - Threat hunting query executor with MITRE ATT&CK mapping
 - `scripts/parse_osquery_json.py` - Parse and analyze osquery JSON output
 - `scripts/osquery_to_timeline.py` - Generate forensic timelines from osquery results
@@ -334,12 +334,12 @@ SELECT hostname, computer_name, local_hostname FROM system_info;
 - `../../../Global_References/table-guide.md` - Comprehensive osquery table reference for forensic investigations
 - `../../../Global_References/mitre-attack-queries.md` - Pre-built queries mapped to MITRE ATT&CK techniques
 - `../../../Global_References/platform-differences.md` - Platform-specific tables and query variations (Linux/macOS/Windows)
-- `../../../Global_References/osqueryd-deployment.md` - Deploy osqueryd for continuous [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and fleet management
+- `../../../Global_References/osqueryd-deployment.md` - Deploy osqueryd for continuous [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and fleet management
 
 ### Assets
 
-- `assets/osquery.conf` - Production osqueryd configuration template for security [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
-- `assets/forensic-packs/` - Query packs for [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response scenarios
+- `assets/osquery.conf` - Production osqueryd configuration template for security [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+- `assets/forensic-packs/` - Query packs for [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response scenarios
   - `ir-triage.conf` - Initial triage queries
   - `persistence-hunt.conf` - Persistence mechanism detection
   - `lateral-movement.conf` - Lateral movement indicators

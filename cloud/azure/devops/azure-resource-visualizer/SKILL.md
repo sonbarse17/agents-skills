@@ -79,7 +79,7 @@ See [example-diagram.md](./assets/example-diagram.md) for a complete sample arch
 
 **Key Diagram Requirements:**
 
-- **Group by layer or purpose**: Network, Compute, Data, Security, [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+- **Group by layer or purpose**: Network, Compute, Data, Security, [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - **Include details**: SKUs, tiers, important settings in node labels (use `<br/>` for line breaks)
 - **Label all connections**: Describe what flows between resources (data, identity, network)
 - **Use meaningful node IDs**: Abbreviations that make sense (APP, FUNC, SQL, KV)

@@ -58,7 +58,7 @@ Indexing architecture recommendation with configuration, schema design, and prod
 - Event schema designed with all indexed fields for efficient filtering
 - Reorg handling modeled with confirmation depth and unwind logic
 - Query patterns optimized (time-range filters, pagination, aggregations)
-- [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) metrics defined (indexing lag, reorgs, error rate)
+- [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) metrics defined (indexing lag, reorgs, error rate)
 
 ### Max Response Length
 4000 tokens
@@ -524,7 +524,7 @@ class EventIndexer:
 - **Block range batching**: Batch historical sync in chunks of 5000 blocks; retry failed ranges.
 - **Reorg handling**: Detect reorgs via block parent hash chain; revert indexing to last safe block.
 - **Subgraph versioning**: Version subgraphs (v0.1.0); deploy new version alongside old; migrate queries.
-- **Indexer [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: Track indexed block lag, event processing rate, and database write latency.
+- **Indexer [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**: Track indexed block lag, event processing rate, and database write latency.
 - **Cost optimization**: Index only required events; use startBlock to limit historical scan range.
 - **Retry with backoff**: Exponential backoff on RPC failures; switch to backup RPC on persistent failure.
 

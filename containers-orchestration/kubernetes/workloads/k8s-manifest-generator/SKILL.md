@@ -80,7 +80,7 @@ After creating manifests:
 2. Set up CI/CD pipeline for deployment
 3. Consider using Helm or [Kustomize](../../../kustomize/other/kustomize/SKILL.md) for templating
 4. Implement [GitOps](../../../common/gitops/gitops/SKILL.md) with [ArgoCD](../../../argocd/other/argocd/SKILL.md) or Flux
-5. Add [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
+5. Add [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
 
 ## Related Skills
 

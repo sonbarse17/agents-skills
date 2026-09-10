@@ -154,7 +154,7 @@ def validate_training_data(df):
 - Log all hyperparameters, metrics, and artifacts to experiment tracking
 - Validate data schema and distribution before training begins
 - Use containerized environments; store credentials in secrets managers, never in code
-- Implement error handling, retry logic, and pipeline [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
+- Implement error handling, retry logic, and pipeline [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 - Separate training and inference code clearly
 
 **Never:**

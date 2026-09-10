@@ -397,11 +397,11 @@ class RealTimeAnomalyDetector:
 - **Not removing trend/seasonality**: Seasonal patterns flagged as anomalies in time series.
 - **Alert fatigue**: Too-sensitive threshold. Aim for 1-5 actionable alerts per day, not dozens.
 - **One-class SVM on large datasets**: O(n²) complexity makes it impractical above 10K samples.
-- **Only evaluating on labeled anomalies**: Also requires false positive rate [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
+- **Only evaluating on labeled anomalies**: Also requires false positive rate [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
 
 ## Production Considerations
 
-### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+### [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - Track anomaly detection rate over time — sudden spike may indicate pipeline issue or real event.
 - Monitor false positive rate (>5% FPR → threshold too aggressive).
 - Track anomaly score distribution drift.
@@ -415,7 +415,7 @@ class RealTimeAnomalyDetector:
 - Establish feedback loop: confirmed anomalies labeled for supervised training.
 - Version training data and model parameters.
 - Periodic retraining with automatic rollback.
-- Create [runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md) per severity level.
+- Create [runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md) per severity level.
 
 ### Scaling
 - Statistical methods: O(n) per feature, can scale to millions of rows.
@@ -445,7 +445,7 @@ class RealTimeAnomalyDetector:
   - ../../../Global_References/online-anomaly.md — Online Anomaly Detection
   - ../../../Global_References/statistical-methods.md — Statistical Anomaly Detection
 ## Handoff
-Hand off to devops-[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) for [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) and [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) infrastructure. For time-series forecasting to model normal behavior first, hand off to [ml-time-series](../time-series/SKILL.md).
+Hand off to devops-[observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) for [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) and [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) infrastructure. For time-series forecasting to model normal behavior first, hand off to [ml-time-series](../time-series/SKILL.md).
 
 ## Architecture Decision Trees
 
@@ -532,5 +532,5 @@ class AnomalyAutoencoder(Model):
 
 ### Data Security
 - **PII in features**: Ensure features don't encode PII indirectly. Use anonymization for user-level anomaly detection.
-- **Production [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: Log anomaly detection decisions for [audit](../../Operations/audit/SKILL.md). Set up alerts on anomaly rate shifts.
+- **Production [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**: Log anomaly detection decisions for [audit](../../Operations/audit/SKILL.md). Set up alerts on anomaly rate shifts.
 - **Access control**: Restrict access to anomaly scores and model artifacts. Anomaly labels can reveal business-sensitive patterns.

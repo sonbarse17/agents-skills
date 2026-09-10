@@ -38,7 +38,7 @@ doesn't error, it just doesn't encrypt or observe traffic, and a
 misdirected `TrafficSplit` doesn't error, it just sends 100% of traffic
 to the wrong backend. This skill covers the validation commands and
 checks that catch these before they reach production, distinct from
-[linkerd-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../[linkerd-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../../Frontend/linkerd-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-configuration/SKILL.md)/SKILL.md),
+[linkerd-[service-mesh](../../../containers-orchestration/common/service-mesh/service-mesh/SKILL.md)-configuration](../[linkerd-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../../Frontend/linkerd-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-configuration/SKILL.md)/SKILL.md),
 which covers writing the configuration in the first place.
 
 ## When to use
@@ -177,7 +177,7 @@ which covers writing the configuration in the first place.
 - Fail CI hard on any non-zero `linkerd check` exit code rather than
   logging and continuing — a "warning" from `linkerd check` about
   identity or control-plane health is exactly the kind of thing that's
-  easy to defer until it becomes an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+  easy to defer until it becomes an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 
 ## Common pitfalls
 
@@ -213,7 +213,7 @@ which covers writing the configuration in the first place.
   again until identity issuance actually started failing.
   **Fix:** Pre-deploy checks only run on deploy cadence — a service that
   isn't redeployed won't re-trigger the check. Schedule `linkerd check`
-  independently (e.g. a daily CI cron job posting to an [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
+  independently (e.g. a daily CI cron job posting to an [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
   channel) so certificate expiry is caught on a calendar cadence, not
   only a deploy cadence.
 
@@ -233,7 +233,7 @@ which covers writing the configuration in the first place.
 **Scenario:** Before promoting a new `AuthorizationPolicy` restricting
 `payments-api` to `checkout-service` callers only (from the worked
 example in
-[linkerd-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../[linkerd-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../../Frontend/linkerd-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-configuration/SKILL.md)/SKILL.md)),
+[linkerd-[service-mesh](../../../containers-orchestration/common/service-mesh/service-mesh/SKILL.md)-configuration](../[linkerd-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../../Frontend/linkerd-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-configuration/SKILL.md)/SKILL.md)),
 validate it end-to-end.
 
 ```bash
@@ -270,6 +270,6 @@ considered complete.
 
 ## Cross-references
 
-- [linkerd-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../[linkerd-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../../Frontend/linkerd-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-configuration/SKILL.md)/SKILL.md) — writing the Linkerd installation, injection, and traffic/authorization policy this skill validates.
-- [cilium-configuration-validation](../[cilium-configuration-validation](../../../DevOps_and_Cloud/Containers_and_Orchestration/cilium-configuration-validation/SKILL.md)/SKILL.md) — the equivalent validation discipline for Cilium network policy and Hubble [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md), if the cluster also runs Cilium as CNI underneath Linkerd.
+- [linkerd-[service-mesh](../../../containers-orchestration/common/service-mesh/service-mesh/SKILL.md)-configuration](../[linkerd-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../../Frontend/linkerd-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-configuration/SKILL.md)/SKILL.md) — writing the Linkerd installation, injection, and traffic/authorization policy this skill validates.
+- [cilium-configuration-validation](../[cilium-configuration-validation](../../../DevOps_and_Cloud/Containers_and_Orchestration/cilium-configuration-validation/SKILL.md)/SKILL.md) — the equivalent validation discipline for Cilium network policy and Hubble [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md), if the cluster also runs Cilium as CNI underneath Linkerd.
 - [consul-configuration-validation](../[consul-configuration-validation](../consul-configuration-validation/SKILL.md)/SKILL.md) — the equivalent validation discipline for Consul service definitions and intentions, useful when comparing pre-production checks across mesh choices.

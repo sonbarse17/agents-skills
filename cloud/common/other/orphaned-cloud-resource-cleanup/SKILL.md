@@ -44,7 +44,7 @@ covers finding these specific classes of orphaned resource and removing
 them safely, with the non-negotiable discipline that "looks unattached"
 and "is confirmed unused" are not the same thing — a resource detached
 from its original parent can still be an intentional backup, a
-[disaster-recovery](../../../../DevOps_and_Cloud/Observability_and_SecOps/disaster-recovery/SKILL.md) artifact, or something a team meant to reattach next
+[disaster-recovery](../../../../containers-orchestration/common/other/disaster-recovery/SKILL.md) artifact, or something a team meant to reattach next
 sprint.
 
 ## When to use
@@ -159,7 +159,7 @@ sprint.
      association).
    - For a snapshot, confirm no automation (a backup job, an AMI/image
      build pipeline) references it as a source before deleting — grep
-     [Infrastructure-as-code](../../../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md) and AMI/image build configs for the
+     [Infrastructure-as-code](../../../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) and AMI/image build configs for the
      snapshot/disk ID.
 
 4. **Notify the owner (or last-known owner from tags/[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs) with a
@@ -314,7 +314,7 @@ unassociated Elastic IPs, and 1 load balancer with no registered targets.
    against `describe-addresses` and `describe-target-health`.
 2. Cross-check tags and DR policy (step 2): 2 of the 14 volumes carry a
    `dr-role=pilot-light-replica-source` tag matching an entry in the
-   account's DR [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) — excluded immediately, not just noted.
+   account's DR [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) — excluded immediately, not just noted.
 3. Confirm non-use signal (step 3): of the remaining 12 volumes, 9 have a
    `CreateTime`/detachment timestamp older than 60 days with no matching
    CloudTrail `DetachVolume` event tied to an active migration; 3 were

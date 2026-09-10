@@ -134,7 +134,7 @@ Summary:
 - Make multiple changes simultaneously when debugging
 - Hardcode sensitive data in prompts or examples
 - Assume prompts transfer perfectly between models
-- Neglect [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) for prompt degradation in production
+- Neglect [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) for prompt degradation in production
 
 ## Output Templates
 

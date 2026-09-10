@@ -175,5 +175,5 @@ For detailed DDD bounded context mapping, full multi-service project trees, Anti
 - `[microservices-patterns](../[microservices](../microservices/SKILL.md)-patterns/SKILL.md)` — Apply these architecture patterns when decomposing a monolith into services
 - `[cqrs-implementation](../cqrs-implementation/SKILL.md)` — Use Clean Architecture as the structural foundation for CQRS command/query separation
 - `[saga-orchestration](../saga-orchestration/SKILL.md)` — Sagas require well-defined aggregate boundaries, which DDD tactical patterns provide
-- `[event-store-design](../../../DevOps_and_Cloud/Observability_and_SecOps/event-store-design/SKILL.md)` — Domain events produced by aggregates feed directly into an event store
+- `[event-store-design](../event-store-design/SKILL.md)` — Domain events produced by aggregates feed directly into an event store
 

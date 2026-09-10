@@ -167,7 +167,7 @@ stop the loop — it makes the loop more expensive before it stops.
    alone would miss.
 
    > **Warning:** Raising `max_attempts_per_signature` or
-   > `max_total_calls` in response to a loop [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), without fixing the
+   > `max_total_calls` in response to a loop [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), without fixing the
    > underlying trigger (step 6) and without keeping *some* hard ceiling
    > in place, is not a fix — it is choosing to pay more before the same
    > failure stops. Every ceiling raise should come with a stated reason
@@ -190,7 +190,7 @@ stop the loop — it makes the loop more expensive before it stops.
    so a fix to the tool schema, error message, or prompt can be validated
    against the exact scenario that caused the loop, not just spot-checked.
 
-8. **Add session-level [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) on tool-call count and distinct-signature
+8. **Add session-level [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) on tool-call count and distinct-signature
    ratio**, not just on total cost or latency — a loop is visible in call
    count and repetition well before it shows up as a cost anomaly large
    enough to alert on its own (see
@@ -225,13 +225,13 @@ stop the loop — it makes the loop more expensive before it stops.
   that never trip a cost alert; per-signature alone misses oscillation
   across 3+ varying calls.
 - Periodically review which ceilings have been raised and why; a ceiling
-  raised during an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) and never revisited is effectively a silently
+  raised during an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) and never revisited is effectively a silently
   weakened safety control.
 
 ## Common pitfalls
 
 - **Symptom:** An on-call engineer raises `MAX_ITERATIONS` from 12 to 100
-  during an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) to "unblock" a stuck workflow, the workflow completes
+  during an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) to "unblock" a stuck workflow, the workflow completes
   once, and the same loop recurs at higher cost the following week.
   **Fix:** Treat a raised ceiling as a temporary, tracked exception with an
   explicit expiry and a linked root-cause ticket, not a permanent
@@ -266,7 +266,7 @@ stop the loop — it makes the loop more expensive before it stops.
   retrying with the same arguments cannot succeed," so the model (and the
   breaker's own logic) can react appropriately.
 
-- **Symptom:** Cost/latency [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) only alerts on aggregate spend, so a
+- **Symptom:** Cost/latency [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) only alerts on aggregate spend, so a
   loop that runs cheap, fast tool calls thousands of times goes unnoticed
   until a downstream rate limit or quota is exhausted.
   **Fix:** Alert on tool-call count and distinct-signature ratio per
@@ -311,7 +311,7 @@ Diagnosis:
    a new eval case captures this exact sequence
    (`resize before stop → expect stop_instance next`) per
    [agent-evaluation-and-guardrails](../[agent-evaluation-and-guardrails](../../Models_and_FineTuning/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md).
-7. [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md): a new per-session alert on `tool_call_count > 15` for this
+7. [Alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md): a new per-session alert on `tool_call_count > 15` for this
    agent type is added, so a future recurrence pages before running to the
    ceiling silently.
 

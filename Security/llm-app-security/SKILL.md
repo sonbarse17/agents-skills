@@ -724,7 +724,7 @@ plugins:
 
 ---
 
-## [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
+## [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 
 Detecting attacks in real time is as important as preventing them. Instrument every stage of the LLM pipeline.
 
@@ -777,7 +777,7 @@ groups:
           severity: critical
         annotations:
           summary: "Tenant {{ $labels.tenant_id }} has >5% prompt injection rate"
-          [runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md): "https://wiki.internal/[runbooks](../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md)/llm-injection"
+          [runbook](../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md): "https://wiki.internal/[runbooks](../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md)/llm-injection"
 
       - alert: AnomalousCostSpike
         expr: |

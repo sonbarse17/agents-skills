@@ -34,7 +34,7 @@ the hundreds of small, one-off access grants made under time pressure
 that never get revoked: a contractor's temporary S3 access still active a
 year after the contract ended, a new hire given broad access "just to get
 them started" while the ticket to scope it down never gets filed, an
-on-call engineer's [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) break-fix grant that quietly becomes
+on-call engineer's [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) break-fix grant that quietly becomes
 permanent. This skill covers that everyday operational transaction —
 receiving a request, granting the narrowest permission that satisfies it,
 attaching a hard expiry, and leaving an [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail that a review can
@@ -50,9 +50,9 @@ structure.
 - A contractor, new hire, vendor, or auditor needs a specific, scoped
   permission for a defined period (e.g. "read-only access to the
   `analytics` S3 bucket for 30 days").
-- An [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) responder needs temporary elevated (break-fix) access to a
+- An [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) responder needs temporary elevated (break-fix) access to a
   production resource beyond their standing role, for the duration of the
-  [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) only.
+  [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) only.
 - Someone changed teams, finished a contract, or left the company, and
   their previously granted access needs to be revoked.
 - A recurring or one-off access request needs to be logged with who
@@ -149,7 +149,7 @@ structure.
    `expires=2026-08-27`) so the grant is traceable from the cloud console
    alone, not only from the ticketing system.
 
-4. **For [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) break-fix access, grant via the platform's
+4. **For [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) break-fix access, grant via the platform's
    time-bound elevation mechanism, not a manually attached policy someone
    has to remember to remove.** AWS IAM Identity Center or Azure PIM
    "activate" flows both auto-expire the session; if neither is available,
@@ -218,10 +218,10 @@ structure.
   [cloud-iam-hardening](../[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)/SKILL.md)'s quarterly
   review exists to catch, but catching it quarterly is a backstop, not
   the primary control.
-- **Log break-glass/[incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) access grants with an automatic
+- **Log break-glass/[incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) access grants with an automatic
   notification on use**, mirroring the break-glass guidance in
   [cloud-iam-hardening](../[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)/SKILL.md), so an
-  emergency grant always gets a post-[incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) review even under time
+  emergency grant always gets a post-[incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) review even under time
   pressure.
 - **Fold recurring identical requests into a standing role**, don't keep
   re-granting the same permission set one ticket at a time — repeated
@@ -259,14 +259,14 @@ structure.
   user unless that user is being fully offboarded and that is explicitly
   confirmed.
 
-- **Symptom:** An [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) break-fix access grant to production is still
-  active weeks after the [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) closed, and nobody can say why.
+- **Symptom:** An [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) break-fix access grant to production is still
+  active weeks after the [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) closed, and nobody can say why.
   **Fix:** Break-fix access was granted as a standing policy attachment
   instead of through a time-bound elevation mechanism (IAM Identity
-  Center, Azure PIM activation). Always grant [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) access with a
-  hard expiry tied to the expected [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) window (extend explicitly if
-  the [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) runs long, don't grant open-ended "for now" access), and
-  require a post-[incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) ticket confirming the grant either already
+  Center, Azure PIM activation). Always grant [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) access with a
+  hard expiry tied to the expected [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) window (extend explicitly if
+  the [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) runs long, don't grant open-ended "for now" access), and
+  require a post-[incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) ticket confirming the grant either already
   expired or was manually removed.
 
 - **Symptom:** An access-request queue has a growing backlog of pending

@@ -38,12 +38,12 @@ depends_on:
 An MLOps platform on GCP is a chain of dependent phases — organization
 guardrails, a compute platform, GPU accelerator quota, experiment
 tracking, pipeline orchestration, a model registry, a serving layer, and
-drift [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) — each of which assumes the previous phase exists in a
+drift [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) — each of which assumes the previous phase exists in a
 working state before it can function correctly. Get the sequence wrong and
 the failure surfaces in the wrong place: a Vertex AI custom training job
 authored before GPU accelerator quota is approved queues indefinitely with
 a message easy to mistake for a code bug, or a model deployed to a Vertex
-endpoint before [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) is configured means a regression is invisible
+endpoint before [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) is configured means a regression is invisible
 until someone notices degraded outcomes. Every individual piece is covered
 in depth by an existing skill; this skill is the GCP-specific sequencing
 across all of them, worked through the managed Vertex AI platform end to
@@ -60,7 +60,7 @@ point where the choice actually diverges.
   worked path instead of an abstract comparison.
 - Auditing an existing GCP ML platform for a skipped or out-of-order
   phase (e.g. GPU accelerator quota requested after a training job was
-  already authored, or drift [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) added only after months of
+  already authored, or drift [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) added only after months of
   unmonitored endpoint traffic).
 - Rebuilding a reference ML platform (a second product line, a DR
   environment) that should follow the same proven sequence as a known-good
@@ -238,15 +238,15 @@ integration decisions between phases.
      --traffic-split=0=5,<EXISTING_DEPLOYED_MODEL_ID>=95
    ```
    Do not shift the traffic split past this initial 5% until Phase 9's
-   [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) is confirmed collecting data. (GKE+Kubeflow alternative:
+   [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) is confirmed collecting data. (GKE+Kubeflow alternative:
    KServe `InferenceService` per
    [model-serving-and-scaling](../[model-serving-and-scaling](../../../AI_and_Agents/Models_and_FineTuning/model-serving-and-scaling/SKILL.md)/SKILL.md).)
 
-9. **Phase 9 — [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and drift detection.** Enable Vertex AI Model
-   [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) on the endpoint (or a self-managed Evidently job reading
+9. **Phase 9 — [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and drift detection.** Enable Vertex AI Model
+   [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) on the endpoint (or a self-managed Evidently job reading
    logged prediction requests from BigQuery), applying the reference-
-   baseline and [alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) discipline from
-   [model-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md),
+   baseline and [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) discipline from
+   [model-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md),
    with the baseline frozen against the training dataset's feature
    distribution from Phase 6, not a post-cutover rolling window.
 
@@ -263,7 +263,7 @@ integration decisions between phases.
   landing zone phase — a perimeter tightened after Phase 4/7 are already
   writing to those buckets breaks the pipeline in a way that looks like
   an IAM problem rather than a network perimeter change.
-- Treat Phase 9 ([monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)) as a blocking prerequisite before any
+- Treat Phase 9 ([monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)) as a blocking prerequisite before any
   traffic-split ramp-up past the first stage in Phase 8 — consistent with
   every other cloud in this family.
 - Use Vertex AI's built-in Experiments and Model Registry (Phases 4 and 7)
@@ -307,7 +307,7 @@ integration decisions between phases.
   buckets by name, rather than discovering the boundary reactively.
 
 - **Symptom:** A model deployed to a Vertex AI endpoint in Phase 8 can't
-  be traced back to which pipeline run produced it during an [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
+  be traced back to which pipeline run produced it during an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
   investigation.
   **Fix:** The endpoint was deployed against a raw GCS artifact path
   instead of the Phase 7 registered model resource — always register
@@ -363,11 +363,11 @@ gcloud ai endpoints [deploy-model](../../../AI_and_Agents/Infrastructure/[deploy
   --display-name=ranking-model-v9 --machine-type=n1-standard-4 \
   --accelerator=type=NVIDIA_TESLA_T4,count=1 --traffic-split=0=5,PREV_MODEL_ID=95
 
-# Phase 9 — Vertex AI Model [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), baseline frozen at v9's first
+# Phase 9 — Vertex AI Model [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), baseline frozen at v9's first
 # production request, confirmed collecting data BEFORE ramping past 5%
 ```
 
-The Phase 9 [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) job confirms stable drift metrics over 48 hours at
+The Phase 9 [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) job confirms stable drift metrics over 48 hours at
 5% traffic; the team ramps to 100% and keeps the previous model version
 deployed at a minimal instance count for a two-week rollback window,
 mirroring the soak-period discipline in
@@ -384,4 +384,4 @@ mirroring the soak-period discipline in
 - [training-pipeline-orchestration](../[training-pipeline-orchestration](../../../AI_and_Agents/Models_and_FineTuning/training-pipeline-orchestration/SKILL.md)/SKILL.md) — Phase 6's vendor-neutral DAG/gate principles.
 - [model-packaging-and-versioning](../[model-packaging-and-versioning](../../../AI_and_Agents/Models_and_FineTuning/model-packaging-and-versioning/SKILL.md)/SKILL.md) — Phase 7's registry and promotion gates.
 - [model-serving-and-scaling](../[model-serving-and-scaling](../../../AI_and_Agents/Models_and_FineTuning/model-serving-and-scaling/SKILL.md)/SKILL.md) — Phase 8's canary/traffic-split rollout.
-- [model-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md) — Phase 9's drift/quality [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
+- [model-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md) — Phase 9's drift/quality [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).

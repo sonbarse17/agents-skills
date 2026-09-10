@@ -320,9 +320,9 @@ SQLAlchemy 2.0 introduces native async support with `async_sessionmaker`. Patter
 
 For tasks that outlive the request-response cycle (email sending, image processing, report generation):
 - **FastAPI BackgroundTasks**: simple, runs after response, no persistence, lost on crash. Use for: log cleanup, cache invalidation.
-- **Celery + Redis/RabbitMQ**: persistent task queue, retries, scheduling, [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) with Flower. Use for: email confirmation, PDF generation, webhook delivery, scheduled jobs.
+- **Celery + Redis/RabbitMQ**: persistent task queue, retries, scheduling, [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) with Flower. Use for: email confirmation, PDF generation, webhook delivery, scheduled jobs.
 
-Celery pattern: define tasks in a `tasks/` module, separate from your API. `@shared_task(bind=True, max_retries=3, default_retry_delay=300)` allows task retry with exponential backoff. Use `self.replace()` for task chaining. Result backend: store task results in Redis for polling status. Periodic tasks: Celery Beat with `schedule` crontab. Task [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md): `celery -A app.tasks flower --port=5555` shows task status, timing, and failures.
+Celery pattern: define tasks in a `tasks/` module, separate from your API. `@shared_task(bind=True, max_retries=3, default_retry_delay=300)` allows task retry with exponential backoff. Use `self.replace()` for task chaining. Result backend: store task results in Redis for polling status. Periodic tasks: Celery Beat with `schedule` crontab. Task [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md): `celery -A app.tasks flower --port=5555` shows task status, timing, and failures.
 
 ## ASGI vs WSGI Deployment
 
@@ -505,7 +505,7 @@ class UserRepository:
         return list(result.scalars().all())
 ```
 
-### Pattern: Background Task with Celery and [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+### Pattern: Background Task with Celery and [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 ```python
 from celery import Celery, Task
@@ -542,11 +542,11 @@ def process_order(self, order_id: int):
 - Graceful shutdown: SIGTERM → Uvicorn stops accepting connections → waits for in-flight → exits.
 - Health checks: `/health` endpoint returning `{"status": "ok"}` with DB connectivity check.
 
-### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+### [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - Prometheus metrics with `prometheus_fastapi_instrumentator`. Track: request count, latency, error rate.
 - Structured logging: `python-json-logger` with `extra` for trace_id, user_id, tenant_id.
-- [Sentry](../../../DevOps_and_Cloud/Observability_and_SecOps/sentry/SKILL.md) for error tracking: `sentry_sdk.init()` with `traces_sample_rate=0.1`.
-- Celery [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md): Flower dashboard. Alert on queue depth > 1000, task failure rate > 5%.
+- [Sentry](../../../observability-monitoring-logging/sentry/other/sentry/SKILL.md) for error tracking: `sentry_sdk.init()` with `traces_sample_rate=0.1`.
+- Celery [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md): Flower dashboard. Alert on queue depth > 1000, task failure rate > 5%.
 
 ## Anti-Patterns
 

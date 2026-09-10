@@ -39,11 +39,11 @@ by Service Level Indicators (SLIs) that actually reflect user experience,
 turn "is this reliable enough" into a measurable question, and the error
 budget (the allowed unreliability implied by the SLO) turns "should we
 slow down and fix reliability, or keep shipping features" into a policy
-decision made in advance rather than an argument during an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md). This
+decision made in advance rather than an argument during an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md). This
 skill covers choosing SLIs that mean what you think they mean, setting an
 SLO from evidence rather than aspiration, writing an error-budget policy
-with real teeth, and [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) on budget *burn rate* — not just breach at
-the end of the window — so a fast-burning [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) pages someone while
+with real teeth, and [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) on budget *burn rate* — not just breach at
+the end of the window — so a fast-burning [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) pages someone while
 there's still budget left to save.
 
 ## When to use
@@ -56,7 +56,7 @@ there's still budget left to save.
   launches should freeze, and who has authority to override that.
 - Alerts page on every minor blip, or conversely an SLO is breached for
   days before anyone notices — both point to missing/incorrect burn-rate
-  [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md).
+  [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md).
 - Reviewing whether an existing SLO target (often picked with no data,
   e.g. "99.99%") is actually achievable or meaningful given current
   architecture and dependency reliability.
@@ -67,8 +67,8 @@ there's still budget left to save.
   latency at the right measurement point (ideally load balancer/edge/CDN,
   not just application-level 200 OK, which misses client timeouts and
   upstream failures) — see the
-  [Prometheus and Grafana [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) stack](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
-  skill for the underlying scrape/PromQL/[alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) mechanics; this skill
+  [Prometheus and Grafana [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) stack](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
+  skill for the underlying scrape/PromQL/[alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) mechanics; this skill
   assumes that stack (or an equivalent) is already in place.
 - A defined list of critical user journeys for the service (not every
   internal endpoint needs its own SLO).
@@ -79,7 +79,7 @@ there's still budget left to save.
   is spent, not during the argument that follows.
 - A paging tool (PagerDuty, Opsgenie, Grafana OnCall, or equivalent) wired
   to receive burn-rate alerts — see
-  [incident-response-and-on-call-management](../[incident-response-and-on-call-management](../[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../DevOps_and_Cloud/Observability_and_SecOps/on-call-management/SKILL.md)/SKILL.md)/SKILL.md).
+  [incident-response-and-on-call-management](../[incident-response-and-on-call-management](../[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../observability-monitoring-logging/common/alerting/on-call-management/SKILL.md)/SKILL.md)/SKILL.md).
 
 ## Step-by-step guidance
 
@@ -143,7 +143,7 @@ there's still budget left to save.
    | 0-50% | Normal operation. Ship features as planned. |
    | 50-75% | Reliability review required before any launch with material availability/latency risk (new dependency, schema migration, traffic-shifting change). |
    | 75-100% | Freeze non-essential feature launches. Only bug fixes, security patches, and reliability work may deploy. |
-   | >100% (budget exhausted) | Mandatory [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) postmortem (see [blameless-postmortem-and-root-cause-analysis](../[blameless-postmortem-and-root-cause-analysis](../blameless-postmortem-and-[root-cause-analysis](../../../DevOps_and_Cloud/Observability_and_SecOps/root-cause-analysis/SKILL.md)/SKILL.md)/SKILL.md)) and leadership sign-off required to resume feature launches, even after the rolling window recovers. |
+   | >100% (budget exhausted) | Mandatory [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) postmortem (see [blameless-postmortem-and-root-cause-analysis](../[blameless-postmortem-and-root-cause-analysis](../blameless-postmortem-and-[root-cause-analysis](../../../DevOps_and_Cloud/Observability_and_SecOps/root-cause-analysis/SKILL.md)/SKILL.md)/SKILL.md)) and leadership sign-off required to resume feature launches, even after the rolling window recovers. |
 
    Wire the freeze into the deployment pipeline itself where possible
    (a gate that blocks non-reliability-labeled deploys once budget crosses
@@ -239,9 +239,9 @@ there's still budget left to save.
   checks) into the "valid requests" denominator.
 
 - **Symptom:** The team only discovers an SLO breach when someone
-  manually checks the dashboard at month-end, days after the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
+  manually checks the dashboard at month-end, days after the [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
   that caused it.
-  **Fix:** No burn-rate [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) exists — only an end-of-window
+  **Fix:** No burn-rate [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) exists — only an end-of-window
   threshold check. Add multi-window, multi-burn-rate alerts (step 5)
   so a fast burn pages within the hour and a slow burn tickets within
   the day.
@@ -288,14 +288,14 @@ there's still budget left to save.
 - **Outcome:** three months in, a botched schema migration burns 60% of
   the budget in two days. The fast-burn alert pages on-call within 40
   minutes of the regression starting; the pipeline gate automatically
-  blocks the next feature PR; the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) goes through the postmortem
+  blocks the next feature PR; the [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) goes through the postmortem
   process (see cross-references) with the resulting action items
   reviewed by the same VP before the freeze is lifted.
 
 ## Cross-references
 
-- [incident-response-and-on-call-management](../[incident-response-and-on-call-management](../[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../DevOps_and_Cloud/Observability_and_SecOps/on-call-management/SKILL.md)/SKILL.md)/SKILL.md) — burn-rate alerts are the primary signal that pages on-call; escalation and severity handling live there.
-- [blameless-postmortem-and-root-cause-analysis](../[blameless-postmortem-and-root-cause-analysis](../blameless-postmortem-and-[root-cause-analysis](../../../DevOps_and_Cloud/Observability_and_SecOps/root-cause-analysis/SKILL.md)/SKILL.md)/SKILL.md) — error-budget exhaustion should trigger the same structured postmortem process as any other significant [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
-- [capacity-planning-and-load-testing](../[capacity-planning-and-load-testing](../../../DevOps_and_Cloud/Observability_and_SecOps/[capacity-planning](../../../DevOps_and_Cloud/Observability_and_SecOps/[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-planning/SKILL.md)-and-[load-testing](../../../DevOps_and_Cloud/Observability_and_SecOps/load-testing/SKILL.md)/SKILL.md)/SKILL.md) — load/stress test results tell you whether a target SLO is even achievable under peak demand before you [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) to it.
-- [Prometheus and Grafana [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) stack](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md) — underlying PromQL, recording rules, and Alertmanager routing mechanics used to implement the burn-rate alerts above.
+- [incident-response-and-on-call-management](../[incident-response-and-on-call-management](../[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../observability-monitoring-logging/common/alerting/on-call-management/SKILL.md)/SKILL.md)/SKILL.md) — burn-rate alerts are the primary signal that pages on-call; escalation and severity handling live there.
+- [blameless-postmortem-and-root-cause-analysis](../[blameless-postmortem-and-root-cause-analysis](../blameless-postmortem-and-[root-cause-analysis](../../../DevOps_and_Cloud/Observability_and_SecOps/root-cause-analysis/SKILL.md)/SKILL.md)/SKILL.md) — error-budget exhaustion should trigger the same structured postmortem process as any other significant [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
+- [capacity-planning-and-load-testing](../[capacity-planning-and-load-testing](../../../DevOps_and_Cloud/Observability_and_SecOps/[capacity-planning](../../../DevOps_and_Cloud/Observability_and_SecOps/[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-planning/SKILL.md)-and-[load-testing](../../../observability-monitoring-logging/common/capacity-monitoring/load-testing/SKILL.md)/SKILL.md)/SKILL.md) — load/stress test results tell you whether a target SLO is even achievable under peak demand before you [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) to it.
+- [Prometheus and Grafana [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) stack](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md) — underlying PromQL, recording rules, and Alertmanager routing mechanics used to implement the burn-rate alerts above.
 - [environment-promotion-strategy](../../../devops/skills/[environment-promotion-strategy](../environment-promotion-strategy/SKILL.md)/SKILL.md) — how to wire the error-budget freeze into an actual pipeline gate rather than a policy nobody enforces.

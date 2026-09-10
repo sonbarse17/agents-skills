@@ -277,10 +277,10 @@ services:
     profiles:
       - debug
 
-  [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md):
+  [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md):
     image: prometheus
     profiles:
-      - [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+      - [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 ```
 
 ```bash
@@ -291,7 +291,7 @@ services:
 [docker](../../../docker/other/docker/SKILL.md) compose --profile debug up
 
 # Run with multiple profiles
-[docker](../../../docker/other/docker/SKILL.md) compose --profile debug --profile [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) up
+[docker](../../../docker/other/docker/SKILL.md) compose --profile debug --profile [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) up
 ```
 
 ## Commands
@@ -334,7 +334,7 @@ services:
 [docker](../../../docker/other/docker/SKILL.md) compose pull
 ```
 
-### [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+### [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 ```bash
 # View logs

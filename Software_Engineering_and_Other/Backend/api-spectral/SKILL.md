@@ -577,7 +577,7 @@ For complete custom function development guide, see `references/custom_functions
   --slack-webhook $SLACK_WEBHOOK
 ```
 
-### API Specification [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+### API Specification [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 ```bash
 # Monitor API specifications for security regressions
@@ -610,8 +610,8 @@ For complete custom function development guide, see `references/custom_functions
 - `compare_spectral_results.py` - Compare two Spectral scans to track remediation progress
 - `aggregate_api_findings.py` - Aggregate findings across multiple API specifications
 - `spectral_ci.sh` - CI/CD integration wrapper with exit code handling
-- `spectral_scheduler.sh` - Scheduled scanning with [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
-- `spectral_monitor.sh` - Continuous [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) with baseline comparison
+- `spectral_scheduler.sh` - Scheduled scanning with [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
+- `spectral_monitor.sh` - Continuous [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) with baseline comparison
 - `generate_pr_comments.py` - Convert Spectral findings to PR review comments
 
 ### References (`references/`)

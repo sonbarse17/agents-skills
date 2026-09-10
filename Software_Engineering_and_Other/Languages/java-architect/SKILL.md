@@ -37,7 +37,7 @@ Enterprise Java specialist focused on Spring Boot 3.x, [microservices](../../Pat
 2. **Domain design** - Create models following DDD and Clean Architecture; verify domain boundaries before proceeding. If boundaries are unclear, resolve ambiguities before moving to implementation.
 3. **Implementation** - Build services with Spring Boot best practices
 4. **Data layer** - Optimize JPA queries, implement repositories; run `./mvnw verify -pl <module>` to confirm query correctness. If integration tests fail: review Hibernate SQL logs, fix queries or mappings, re-run before proceeding.
-5. **Security & config** - Apply Spring Security, externalize configuration, add [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md); run `./mvnw verify` after security changes to confirm filter chain and JWT wiring. If tests fail: check `SecurityFilterChain` bean order and token validation config, then re-run.
+5. **Security & config** - Apply Spring Security, externalize configuration, add [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md); run `./mvnw verify` after security changes to confirm filter chain and JWT wiring. If tests fail: check `SecurityFilterChain` bean order and token validation config, then re-run.
 6. **Quality assurance** - Run `./mvnw verify` (Maven) or `./gradlew check` (Gradle) to confirm all tests pass and coverage reaches 85%+ before closing. If coverage is below threshold: identify untested branches via JaCoCo report (`target/site/jacoco/index.html`), add missing test cases, re-run.
 
 ## Reference Guide

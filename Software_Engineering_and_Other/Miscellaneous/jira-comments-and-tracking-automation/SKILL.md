@@ -127,7 +127,7 @@ belongs in Confluence, not buried in a comment thread — see
            "content": [
              {
                "type": "text",
-               "text": "Decision: rolling back the EU IdP config change from AUTH-2231 instead of forward-fixing. Root cause was a clock-skew issue between the IdP and auth-service that forward-fixing would take longer to validate than reverting. See PR #482 for the revert and the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) notes at "
+               "text": "Decision: rolling back the EU IdP config change from AUTH-2231 instead of forward-fixing. Root cause was a clock-skew issue between the IdP and auth-service that forward-fixing would take longer to validate than reverting. See PR #482 for the revert and the [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) notes at "
              },
              {
                "type": "text",

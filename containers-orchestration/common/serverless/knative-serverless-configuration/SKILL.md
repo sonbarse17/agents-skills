@@ -219,7 +219,7 @@ and event routing (as opposed to request-driven serving) is covered in
 - **Symptom:** A revision never scales down to zero even after
   extended idle time.
   **Fix:** Check for `min-scale` set above `0` (deliberately or by a
-  copied-and-forgotten annotation), an external health-check/[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+  copied-and-forgotten annotation), an external health-check/[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
   probe generating steady low-level traffic, or a `scale-down-delay`
   set unreasonably high; confirm the actual annotation values with
   `[kubectl](../../../kubernetes/other/kubectl/SKILL.md) get revision <name> -o jsonpath='{.metadata.annotations}'`.

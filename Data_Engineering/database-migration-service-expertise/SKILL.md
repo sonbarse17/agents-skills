@@ -109,7 +109,7 @@ aws health describe-events --filter '{"services":["DMS"],"eventTypeCategories":[
 
 > **Note:** AWS Health API is a global service and must be called with `--region us-east-1` regardless of where DMS resources are deployed.
 
-## Step 3: Collect [Observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) Data (7-Day Historical)
+## Step 3: Collect [Observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) Data (7-Day Historical)
 
 ### 3.1 CloudWatch Metrics (7 days)
 
@@ -331,7 +331,7 @@ All findings sorted by severity.
 - Long-term (LOW — 90 days)
 
 ### Appendix
-Refer to the AWS DMS documentation for detailed guidance on best practices, [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), troubleshooting, release notes, [serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md), and data validation.
+Refer to the AWS DMS documentation for detailed guidance on best practices, [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), troubleshooting, release notes, [serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md), and data validation.
 
 ## Severity Definitions
 

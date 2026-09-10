@@ -262,7 +262,7 @@ rather than expecting them repeated here.
 - Use `dependsOn` for any real ordering requirement (CRDs before
   instances, namespaces before workloads) instead of tuning intervals
   to "usually" land in the right order — interval-based ordering is
-  a race condition waiting to surface during an [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+  a race condition waiting to surface during an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 - Set `wait: true` with `healthChecks` on `Kustomization`s whose
   success genuinely depends on the workload becoming healthy, not just
   on the API server accepting the manifest — an apply that "succeeds"

@@ -220,7 +220,7 @@ sequencing and integration decisions.
    See
    [etcd-backup-restore-and-cluster-health](../[etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md)
    for automating this as a CronJob, shipping snapshots off-node, and the
-   quorum-health [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) that should run continuously from this point
+   quorum-health [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) that should run continuously from this point
    forward — treat a cluster with no verified etcd backup as not yet
    production-ready, regardless of how clean its conformance results are.
 
@@ -246,7 +246,7 @@ sequencing and integration decisions.
    [kubernetes-node-maintenance-and-troubleshooting](../[kubernetes-node-maintenance-and-troubleshooting](../[kubernetes](../kubernetes/SKILL.md)-node-maintenance-and-troubleshooting/SKILL.md)/SKILL.md)
    and
    [kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../[kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../[kubernetes](../kubernetes/SKILL.md)-cluster-provisioning-with-kubeadm-and-cluster-api/SKILL.md)/SKILL.md).
-   Confirm the etcd quorum-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) from Phase 7 is genuinely running
+   Confirm the etcd quorum-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) from Phase 7 is genuinely running
    (not just configured once) as part of this ongoing baseline.
 
 ## Best practices
@@ -304,7 +304,7 @@ sequencing and integration decisions.
   CA `Issuer` instead of continuing to debug a network path that cannot
   work as designed.
 
-- **Symptom:** A production [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) requires an etcd restore, and there
+- **Symptom:** A production [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) requires an etcd restore, and there
   is no snapshot to restore from — or the only snapshot that exists was
   never verified and turns out to be corrupt.
   **Fix:** Phase 7's etcd backup setup was treated as optional or
@@ -312,7 +312,7 @@ sequencing and integration decisions.
   [etcd-backup-restore-and-cluster-health](../[etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md)
   exists to close — schedule snapshots, verify each one with
   `etcdctl snapshot status`, and ship them off-node as part of Phase 7,
-  not as a task revisited only after an [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) makes it urgent.
+  not as a task revisited only after an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) makes it urgent.
 
 - **Symptom:** The control-plane VIP needs to move to a new address
   months after go-live (a network redesign, a rack migration), and doing
@@ -390,7 +390,7 @@ internal CA's trust bundle, distributed to internal clients as part of
 Phase 6) returns `HTTP/2 200`, the etcd snapshot's `snapshot status`
 reports a non-zero key count confirming a real, verified backup exists,
 and the cluster is handed off with a documented node-maintenance and
-etcd-restore [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) rather than an assumed-but-unverified one.
+etcd-restore [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) rather than an assumed-but-unverified one.
 
 ## Cross-references
 
@@ -402,6 +402,6 @@ etcd-restore [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/run
 - [ingress-nginx-configuration](../[ingress-nginx-configuration](../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md) — full detail for Phase 5's controller install and Ingress configuration.
 - [cert-manager-tls-automation](../[cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md)/SKILL.md) — full detail for Phase 6's internal-CA and ACME Issuer setup.
 - [kubernetes-cluster-post-provision-conformance-validation](../[kubernetes-cluster-post-provision-conformance-validation](../[kubernetes](../kubernetes/SKILL.md)-cluster-post-provision-conformance-validation/SKILL.md)/SKILL.md) — full detail for Phase 7's validation gate.
-- [etcd-backup-restore-and-cluster-health](../[etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md) — full detail for Phase 7's backup automation and the ongoing quorum-health [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) in Phase 9.
+- [etcd-backup-restore-and-cluster-health](../[etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md) — full detail for Phase 7's backup automation and the ongoing quorum-health [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) in Phase 9.
 - [helm-chart-authoring](../[helm-chart-authoring](../helm-chart-authoring/SKILL.md)/SKILL.md) — full detail for Phase 8's chart packaging and release discipline.
 - [kubernetes-node-maintenance-and-troubleshooting](../[kubernetes-node-maintenance-and-troubleshooting](../[kubernetes](../kubernetes/SKILL.md)-node-maintenance-and-troubleshooting/SKILL.md)/SKILL.md) — the ongoing operational baseline established in Phase 9.

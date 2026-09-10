@@ -329,7 +329,7 @@ Semgrep is faster and easier for custom rule writing (YAML patterns, simple synt
 Semgrep focuses on finding vulnerabilities with custom patterns. SonarQube tracks overall code health: coverage, duplication, code smells, technical debt. They are complementary. Use Semgrep for SAST detection. Use SonarQube for quality gates and trends.
 
 ### ZAP vs Burp Suite
-ZAP is free, open-source, and CI-friendly ([Docker](../../containers-orchestration/docker/other/docker/SKILL.md), CLI). Burp Suite Pro offers better manual testing workflows and a rich extension ecosystem. Use ZAP for CI/CD automation. Use Burp for professional manual [pentesting](../../DevOps_and_Cloud/Observability_and_SecOps/pentesting/SKILL.md).
+ZAP is free, open-source, and CI-friendly ([Docker](../../containers-orchestration/docker/other/docker/SKILL.md), CLI). Burp Suite Pro offers better manual testing workflows and a rich extension ecosystem. Use ZAP for CI/CD automation. Use Burp for professional manual [pentesting](../pentesting/SKILL.md).
 
 ### ZAP vs Acunetix
 ZAP is free with community support. Acunetix is commercial with deeper scanning, macro auth recording, and enterprise compliance reporting. Use ZAP for regular CI scanning. Use Acunetix for quarterly compliance scans.
@@ -470,7 +470,7 @@ SAST runs in CI on every PR. DAST runs weekly on staging. Basic severity-gated p
 Diff-aware SAST + full daily scan. DAST baseline per deployment + full DAST weekly. Custom rules for framework-specific patterns. SAST-DAST correlation with prioritized backlog. SLAs enforced with automated ticket creation.
 
 ### Level 4: Optimized (Continuous)
-Real-time scanning in IDE. AI-assisted false positive triage. Automated rule generation from [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) patterns. Runtime verification correlates SAST findings with live behavior. Supply chain + SAST + DAST unified risk scoring. Self-healing: auto-rollback on critical findings in production.
+Real-time scanning in IDE. AI-assisted false positive triage. Automated rule generation from [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) patterns. Runtime verification correlates SAST findings with live behavior. Supply chain + SAST + DAST unified risk scoring. Self-healing: auto-rollback on critical findings in production.
 
 ## SAST Anti-Patterns
 

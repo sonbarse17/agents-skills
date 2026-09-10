@@ -89,7 +89,7 @@ What are you managing?
 
   Is your team comfortable with Go?
     YES → Kubebuilder (most features, best performance)
-    NO → [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) operator (kopf), [Ansible](../../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md) operator, or Java (java-operator-sdk)
+    NO → [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) operator (kopf), [Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) operator, or Java (java-operator-sdk)
 ```
 
 ### Operator Implementation Comparison
@@ -98,7 +98,7 @@ What are you managing?
 |----------|----------|----------------|---------|------------|-------------|
 | Kubebuilder | Go | Built-in | envtest | Medium | Best |
 | Operator SDK (Go) | Go | Built-in | envtest | Medium | Best |
-| Operator SDK ([Ansible](../../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md)) | [Ansible](../../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md) | Manual | Molecule | Low | Moderate |
+| Operator SDK ([Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md)) | [Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) | Manual | Molecule | Low | Moderate |
 | Operator SDK (Helm) | Helm | Manual | Limited | Low | Moderate |
 | Kopf | [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) | Manual | pytest | Low | Moderate |
 | Java Operator SDK | Java | Manual | JUnit | Medium | Good |
@@ -853,12 +853,12 @@ func init() {
 
 ## Compared With
 
-| Aspect | Kubebuilder | Operator SDK (Go) | Operator SDK ([Ansible](../../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md)) | Kopf ([Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)) |
+| Aspect | Kubebuilder | Operator SDK (Go) | Operator SDK ([Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md)) | Kopf ([Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)) |
 |--------|-------------|-------------------|----------------------|---------------|
 | CRD generation | Automatic | Automatic | Manual | Manual |
 | Webhook support | Built-in | Built-in | Limited | Custom |
 | Testing framework | envtest + Ginkgo | envtest + Ginkgo | Molecule | pytest |
-| Reconciliation | controller-runtime | controller-runtime | [Ansible](../../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md) Runner | [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) asyncio |
+| Reconciliation | controller-runtime | controller-runtime | [Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) Runner | [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) asyncio |
 | Deployment | OLM/Helm/Manifests | OLM/Helm/Manifests | OLM | Helm |
 | Multi-version CRD | Conversion webhook | Conversion webhook | Manual | Manual |
 | Go skill required | Yes | Yes | No | No |
@@ -873,9 +873,9 @@ func init() {
 - ../../../Global_References/operator-sdk-guide.md — Operator SDK Guide
 - ../../../Global_References/testing-operators.md — Operator Testing
 - references/conversion-webhooks.md — Multi-Version CRD with Conversion Webhooks
-- references/operator-metrics.md — Operator Metrics and [Observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
+- references/operator-metrics.md — Operator Metrics and [Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
 - references/olm-deployment.md — OLM Operator Deployment
 
 ## Handoff
-Related skills: [kubernetes](../../other/kubernetes/SKILL.md)-patterns (K8s resource patterns), [helm-patterns](../../../helm/other/helm-patterns/SKILL.md) (Helm chart design), [gitops](../../../common/gitops/gitops/SKILL.md)-advanced ([GitOps](../../../common/gitops/gitops/SKILL.md) with custom operators), [policy-as-code](../../../../Security/policy-as-code/SKILL.md) (admission webhooks integration), [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) (operator metrics and [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md)).
+Related skills: [kubernetes](../../other/kubernetes/SKILL.md)-patterns (K8s resource patterns), [helm-patterns](../../../helm/other/helm-patterns/SKILL.md) (Helm chart design), [gitops](../../../common/gitops/gitops/SKILL.md)-advanced ([GitOps](../../../common/gitops/gitops/SKILL.md) with custom operators), [policy-as-code](../../../../Security/policy-as-code/SKILL.md) (admission webhooks integration), [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (operator metrics and [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)).
 

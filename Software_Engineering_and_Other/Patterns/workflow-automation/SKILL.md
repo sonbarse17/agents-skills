@@ -89,7 +89,7 @@ deserves a human checkpoint even if the automation to skip that checkpoint is ea
   doesn't wait for.
 
 See `[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)` for how this same human-in-the-loop judgment applies under time pressure,
-and `[runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md)` for documenting the manual fallback when automation isn't trusted yet.
+and `[runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md)` for documenting the manual fallback when automation isn't trusted yet.
 
 **Done when:** every workflow step is explicitly classified as auto-run or approval-required, and
 that classification is enforced by the workflow engine, not by convention.
@@ -97,7 +97,7 @@ that classification is enforced by the workflow engine, not by convention.
 ## 5. Instrument the workflow, not just its steps
 
 A workflow that logs each step's success but never records the whole chain's state leaves an
-operator reconstructing "where did this run get to" from scattered logs during an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md). Treat
+operator reconstructing "where did this run get to" from scattered logs during an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md). Treat
 the workflow instance itself as a first-class object with a status.
 
 - **Emit a start and end event for the whole workflow run**, correlated by the event ID from step 1.

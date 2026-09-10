@@ -106,7 +106,7 @@ it restores the prior working state.
 
 PodDisruptionBudgets and securityContext exist because voluntary disruptions (node drains, cluster
 autoscaler scale-downs) and misconfigured privilege are both preventable, not things to react to
-after an [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+after an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 
 - **PDB** stops a drain or autoscaler action from taking down every replica of a service at once —
   set `minAvailable` based on what quorum or [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) you can actually lose.

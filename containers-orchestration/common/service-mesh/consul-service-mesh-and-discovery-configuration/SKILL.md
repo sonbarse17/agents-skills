@@ -36,7 +36,7 @@ a single [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) cluster —
 clusters, and multiple cloud providers, all registered in one catalog
 and reachable through one mesh. Its service discovery (DNS and HTTP API
 over a distributed, Raft-backed catalog) predates and works
-independently of its [service-mesh](../../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md) (Connect) capability, which is why
+independently of its [service-mesh](../service-mesh/SKILL.md) (Connect) capability, which is why
 Consul is often chosen specifically for hybrid/[multi-cloud](../../../../cloud/common/other/multi-cloud/SKILL.md) estates where
 "just use the [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md)-native mesh" isn't an option because not
 everything is in [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md). This skill covers configuring Consul
@@ -236,7 +236,7 @@ see
   multi-[datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md) requirement, weigh whether Consul's operational
   overhead (running and federating server clusters, agent placement on
   every VM) is worth it versus a [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md)-native mesh — see
-  [linkerd-[service-mesh](../../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../[linkerd-[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../../../Software_Engineering_and_Other/Frontend/linkerd-[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-configuration/SKILL.md)/SKILL.md)
+  [linkerd-[service-mesh](../service-mesh/SKILL.md)-configuration](../[linkerd-[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../../../Software_Engineering_and_Other/Frontend/linkerd-[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-configuration/SKILL.md)/SKILL.md)
   or
   [service-mesh-istio](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[service-mesh-istio](../../../Software_Engineering_and_Other/Frontend/[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-istio/SKILL.md)/SKILL.md)
   for that comparison when hybrid/[multi-cloud](../../../../cloud/common/other/multi-cloud/SKILL.md) reach isn't actually
@@ -361,6 +361,6 @@ further, run the intention and config-entry checks in
 ## Cross-references
 
 - [consul-configuration-validation](../[consul-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/consul-configuration-validation/SKILL.md)/SKILL.md) — validating service definitions and intentions before applying them, including catching the subset/resolver mismatches described above.
-- [linkerd-[service-mesh](../../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../[linkerd-[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../../../Software_Engineering_and_Other/Frontend/linkerd-[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-configuration/SKILL.md)/SKILL.md) — a simpler [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md)-native mesh alternative when the [multi-cloud](../../../../cloud/common/other/multi-cloud/SKILL.md)/VM reach Consul provides isn't actually needed.
+- [linkerd-[service-mesh](../service-mesh/SKILL.md)-configuration](../[linkerd-[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../../../Software_Engineering_and_Other/Frontend/linkerd-[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-configuration/SKILL.md)/SKILL.md) — a simpler [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md)-native mesh alternative when the [multi-cloud](../../../../cloud/common/other/multi-cloud/SKILL.md)/VM reach Consul provides isn't actually needed.
 - [cilium-ebpf-cni-and-mesh-configuration](../[cilium-ebpf-cni-and-mesh-configuration](../../Containers_and_Orchestration/[cilium-ebpf](../../Containers_and_Orchestration/cilium-ebpf/SKILL.md)-cni-and-mesh-configuration/SKILL.md)/SKILL.md) — a CNI-layer alternative for [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md)-only mesh/networking needs, worth comparing when Consul's VM support is the only reason it's on the table.
 - [service-mesh-istio](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[service-mesh-istio](../../../Software_Engineering_and_Other/Frontend/[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-istio/SKILL.md)/SKILL.md) — the equivalent [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md)-native mesh concepts (`VirtualService`/`DestinationRule` map roughly to `service-router`/`service-resolver` here) for teams comparing the two.

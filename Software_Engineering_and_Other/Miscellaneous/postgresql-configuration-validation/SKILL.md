@@ -55,10 +55,10 @@ doesn't produce an outage instead of an improvement.
   `synchronous_standby_names` are mutually consistent.
 - Before changing PgBouncer pool sizes, to confirm the new backend pool
   size (times number of pooler instances/databases) still fits under the
-  database's `max_connections` with headroom for superuser/[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+  database's `max_connections` with headroom for superuser/[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
   connections.
-- As a PR/change-review gate for [infrastructure-as-code](../../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md) that manages
-  [PostgreSQL](../../Backend/postgresql/SKILL.md) configuration (e.g. a Terraform/[Ansible](../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md)-managed
+- As a PR/change-review gate for [infrastructure-as-code](../../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) that manages
+  [PostgreSQL](../../Backend/postgresql/SKILL.md) configuration (e.g. a Terraform/[Ansible](../../../infrastructure-as-code/ansible/other/ansible/SKILL.md)-managed
   `[postgresql](../../Backend/postgresql/SKILL.md).conf` template).
 
 ## Prerequisites & environment
@@ -120,7 +120,7 @@ The number that matters for [capacity](../../../AI_and_Agents/Infrastructure/dep
 validated against every connection consumer that talks directly to
 Postgres, not just the app's pool: PgBouncer's backend pool size(s)
 (summed across every database/user pair PgBouncer maintains, since each
-gets its own pool), [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) agents, replication (`max_wal_senders`
+gets its own pool), [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) agents, replication (`max_wal_senders`
 consumes from a separate pool, not `max_connections`, but logical
 replication workers do count against `max_connections`), and any
 direct/admin connections. A `max_connections` value that's technically
@@ -201,7 +201,7 @@ change in a maintenance window.
   versions occasionally reclassify a parameter's context, and the
   instance you're validating against is the ground truth.
 - Validate connection math holistically (app pool + PgBouncer backend
-  pools + [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) + replication workers) against
+  pools + [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) + replication workers) against
   `max_connections - superuser_reserved_connections`, never validate
   `max_connections` against a single consumer in isolation.
 - Keep a small safety margin (10–20%) below the theoretical memory
@@ -286,7 +286,7 @@ and `shared_buffers` set to 4GB. PgBouncer sits in front with
    Flag `max_connections` as restart-required — schedule a maintenance
    window, don't expect a reload to fix the reported exhaustion.
 2. Validate whether 400 connections is actually needed: PgBouncer's real
-   backend demand is `25 * 3 = 75` connections plus [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)/admin
+   backend demand is `25 * 3 = 75` connections plus [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)/admin
    headroom — nowhere near 400. The actual reported "connection
    exhaustion" is traced to application services bypassing PgBouncer and
    connecting directly for a reporting job. Recommendation: fix the

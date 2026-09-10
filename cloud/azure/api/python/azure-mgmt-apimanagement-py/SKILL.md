@@ -305,7 +305,7 @@ user = client.user.create_or_update(
 3. **Use named values** for secrets and configuration
 4. **Apply policies** at appropriate scopes (global, product, API, operation)
 5. **Use products** to bundle APIs and manage access
-6. **Enable Application Insights** for [monitoring](../../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+6. **Enable Application Insights** for [monitoring](../../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 7. **Use backends** to abstract backend services
 8. **Version your APIs** using APIM's versioning features
 

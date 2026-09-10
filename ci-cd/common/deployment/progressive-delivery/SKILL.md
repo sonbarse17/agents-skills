@@ -40,10 +40,10 @@ catches crashes, not the more common failure: a change that's technically 200-OK
 expensive per request, or silently returning wrong data to a subset of users. Combine at least an
 error-rate metric with a latency percentile (p95 or p99, not average — averages hide tail
 regressions), and add a business metric when one exists and is fast enough to compute (checkout
-success rate, not daily revenue). See `[slo-definition](../../../../DevOps_and_Cloud/Observability_and_SecOps/slo-definition/SKILL.md)` for choosing thresholds that reflect what
+success rate, not daily revenue). See `[slo-definition](../../../../observability-monitoring-logging/common/sli-slo-sla/slo-definition/SKILL.md)` for choosing thresholds that reflect what
 users actually notice, and `[metrics-and-monitoring](../../Observability_and_SecOps/metrics-and-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)/SKILL.md)` for where these queries come from.
 
-**Done when:** the analysis would have failed on the last real [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) this service had.
+**Done when:** the analysis would have failed on the last real [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) this service had.
 
 ## 2. Define the AnalysisTemplate as the actual go/no-go contract
 
@@ -85,7 +85,7 @@ and the pause at each step is longer than one full metric-collection interval.
 On analysis failure the controller should scale the canary to zero and route all traffic back to
 stable without waiting for a human to notice a Slack alert — that's the entire point of doing this
 automatically. Verify this by actually failing a canary in a non-prod environment and watching
-traffic shift back, not by reading the config and assuming it works. Pair this with `[alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)` so a
+traffic shift back, not by reading the config and assuming it works. Pair this with `[alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)` so a
 triggered rollback is loudly announced even though no one had to perform it, and with
 `[incident-response](../../Observability_and_SecOps/[incident](../../Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)` for what happens next if the rollback itself doesn't fully resolve the problem.
 

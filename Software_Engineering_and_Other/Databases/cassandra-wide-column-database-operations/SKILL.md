@@ -206,7 +206,7 @@ nodetool ring
 Adding a node with `auto_bootstrap: true` (default) streams a share of
 existing data to it from current owners of the token ranges it takes
 over — this is I/O- and network-intensive and should be done one node
-at a time, [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) `nodetool netstats` for streaming progress, never
+at a time, [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) `nodetool netstats` for streaming progress, never
 multiple nodes joining concurrently in a way that could leave overlapping
 token ranges under-replicated during the transition.
 ```bash
@@ -247,7 +247,7 @@ nodetool decommission   # run on the node being removed — streams its data OUT
   routine tombstone GC into a data-resurrection bug.
 - Always `nodetool decommission` a node being removed (never just stop
   the process), and add/remove nodes to a live cluster strictly one at
-  a time, [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) streaming progress before proceeding to the next.
+  a time, [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) streaming progress before proceeding to the next.
 
 ## Common pitfalls
 
@@ -295,7 +295,7 @@ nodetool decommission   # run on the node being removed — streams its data OUT
   rebalancing alone will fix a skewed-key-driven imbalance.
 
 - **Symptom:** Someone runs `TRUNCATE` on a table, or `DROP KEYSPACE`,
-  directly against production to "reset" data during an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+  directly against production to "reset" data during an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
   **Fix:** Both are immediately destructive, cluster-wide operations —
   `TRUNCATE` in particular also forces a table-wide snapshot on all
   nodes by default (which is itself an I/O-heavy operation across the

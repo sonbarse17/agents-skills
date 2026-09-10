@@ -515,7 +515,7 @@ rollback:
   - ../../../Global_References/pipeline-test-automation.md — Pipeline Test Automation
   - ../../../Global_References/sql-linting-and-testing.md — SQL Linting and Testing
 ## Handoff
-`[data-data-quality](../../../../Data_Engineering/data-quality/SKILL.md)` for data quality [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) in production
+`[data-data-quality](../../../../Data_Engineering/data-quality/SKILL.md)` for data quality [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) in production
 `[data-etl-pipeline](../../../../Data_Engineering/etl-pipeline/SKILL.md)` for pipeline orchestration and execution
 `data-workflow-orchestration` for scheduling and dependency management
 

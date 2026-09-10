@@ -331,15 +331,15 @@ Retiring `fraud-scorer` model version `v11` (superseded by `v14`):
 # 1. Impact analysis first — who/what still depends on v11?
 datahub get --urn "urn:li:mlModel:(urn:li:dataPlatform:mlflow,fraud-scorer-v11,PROD)" --aspect upstreamLineage
 # Result: no active serving deployment references v11, but the
-# [production-model-rollback-procedure](../../AI_and_Agents/Models_and_FineTuning/production-model-rollback-procedure/SKILL.md) [runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) lists v11 as the last
-# known-good rollback target for v12's [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) two months ago.
+# [production-model-rollback-procedure](../../AI_and_Agents/Models_and_FineTuning/production-model-rollback-procedure/SKILL.md) [runbook](../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) lists v11 as the last
+# known-good rollback target for v12's [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) two months ago.
 ```
 Given that finding, the artifact is marked deprecated with a grace period
 rather than deleted immediately:
 ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 deprecation = DeprecationClass(
     deprecated=True,
-    note="Superseded by v14. Retained as rollback reference per [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) INC-2026-0512; delete after 2026-10-01 once v14 has one full quarter of stable production history.",
+    note="Superseded by v14. Retained as rollback reference per [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) INC-2026-0512; delete after 2026-10-01 once v14 has one full quarter of stable production history.",
     decommissionTime=1759276800000,
 )
 ```

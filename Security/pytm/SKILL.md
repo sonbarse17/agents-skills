@@ -423,7 +423,7 @@ Trust boundary crossings require extra scrutiny:
 - Authentication and authorization mechanisms
 - Encryption in transit
 - Input validation and sanitization
-- Logging and [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+- Logging and [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 ## Integration Points
 
@@ -440,13 +440,13 @@ Trust boundary crossings require extra scrutiny:
 
 - **Issue Tracking**: Export threats as Jira/[GitHub](../../ci-cd/github-actions/other/github/SKILL.md) issues for mitigation tracking
 - **Documentation**: Generate threat models for security documentation
-- **SIEM**: Map threats to detection rules and [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) alerts
-- **[Pentesting](../../DevOps_and_Cloud/Observability_and_SecOps/pentesting/SKILL.md)**: Provide threat model to pentesters for targeted assessment
+- **SIEM**: Map threats to detection rules and [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) alerts
+- **[Pentesting](../pentesting/SKILL.md)**: Provide threat model to pentesters for targeted assessment
 - **Code Analysis**: Link SAST/DAST findings to threat model threats
 
 ### Cloud and DevOps
 
-- **Infrastructure as Code**: Threat model Terraform/[CloudFormation](../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md) templates
+- **Infrastructure as Code**: Threat model Terraform/[CloudFormation](../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md) templates
 - **Container Security**: Model container orchestration and service mesh
 - **API Design**: Threat model API gateway and [microservices](../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) communication
 - **Secrets Management**: Model key management and secrets distribution

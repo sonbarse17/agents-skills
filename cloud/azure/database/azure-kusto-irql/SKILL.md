@@ -21,7 +21,7 @@ depends_on:
   - azure-kusto-graph
 ---
 
-# IRQL -- [Incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response Query Language
+# IRQL -- [Incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response Query Language
 
 Compose IRQL function pipelines from selector, extractor, and enricher building blocks. IRQL wraps raw KQL security tables behind intent-revealing, composable functions so analysts (and LLMs) can express hunts without memorizing schemas, cluster locations, or join keys.
 

@@ -243,7 +243,7 @@ low-impact operation the way a secondary index add can be.
   `gtid_strict_mode`) on any new topology — the operational cost of
   file/position-based replication (manually computing resume positions
   during failover) is avoidable and error-prone at the exact moment
-  (an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)) when mistakes are costliest.
+  (an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)) when mistakes are costliest.
 - Treat `innodb_flush_log_at_trx_commit = 1` and
   `sync_binlog = 1` as the production default for any data that must
   survive a crash without loss; only relax them for a specific,

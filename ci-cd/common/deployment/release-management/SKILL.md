@@ -110,7 +110,7 @@ why that order is safe.
 
 If cutting a release requires a person to remember seven manual steps (bump version, tag, build,
 sign, push to registry, update changelog, notify), it will be done wrong under time pressure
-exactly when it matters most — right before a deadline or during an [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) fix. Automate the
+exactly when it matters most — right before a deadline or during an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) fix. Automate the
 mechanical parts into a single script or pipeline job; reserve human judgment for the parts that
 actually need it, like deciding *whether* to cut a release and writing the human-readable
 changelog summary.

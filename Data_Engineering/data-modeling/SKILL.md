@@ -498,7 +498,7 @@ Symptom: 50 indexes on a table, all used in different queries. Consequence: writ
 ## Performance Patterns
 
 ### Read Replicas
-Route read queries to replicas, writes to primary. Use for: reporting workloads, dashboard queries, read-heavy APIs. Ensure: replication lag [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), tolerate stale reads.
+Route read queries to replicas, writes to primary. Use for: reporting workloads, dashboard queries, read-heavy APIs. Ensure: replication lag [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), tolerate stale reads.
 
 ### Partitioning
 Range partitioning by time (orders by month) for natural data lifecycle management. List partitioning by category (region, status). Hash partitioning for even distribution. Benefits: partition pruning for faster queries, easy data archival (detach partition).

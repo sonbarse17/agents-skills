@@ -33,7 +33,7 @@ Adopt platform engineering practices when your organization experiences:
 - **Slow onboarding** -- new engineers take weeks to get a working development environment.
 - **Repeated toil** -- the same Terraform/Helm/CI boilerplate is copy-pasted across dozens of repos.
 - **Compliance bottlenecks** -- security and ops reviews gate every deployment, slowing release cadence.
-- **Scale inflection points** -- you have 5+ teams and shared infrastructure concerns (networking, [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md), secrets).
+- **Scale inflection points** -- you have 5+ teams and shared infrastructure concerns (networking, [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md), secrets).
 
 Platform engineering is NOT about replacing ops with a portal. It is about encoding organizational standards into reusable, self-service abstractions that dev teams consume through golden paths.
 
@@ -334,7 +334,7 @@ kind: Template
 metadata:
   name: nodejs-service
   title: Node.js Microservice
-  description: Create a production-ready Node.js service with CI/CD, [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), and [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) manifests.
+  description: Create a production-ready Node.js service with CI/CD, [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), and [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) manifests.
   tags:
     - recommended
     - nodejs
@@ -498,8 +498,8 @@ metadata:
     - url: https://grafana.internal/d/orders-service
       title: Grafana Dashboard
       icon: dashboard
-    - url: https://[runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md).internal/orders-service
-      title: [Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)
+    - url: https://[runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md).internal/orders-service
+      title: [Runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)
       icon: docs
 spec:
   type: service
@@ -546,7 +546,7 @@ nav:
   - Home: index.md
   - Architecture: architecture.md
   - API Reference: api-reference.md
-  - [Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md): [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md).md
+  - [Runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md): [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md).md
   - ADRs:
       - adr/001-choose-grpc.md
       - adr/002-event-sourcing.md
@@ -628,7 +628,7 @@ proxy:
         Accept: application/vnd.[github](../../../ci-cd/github-actions/other/github/SKILL.md)+json
 ```
 
-### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) Plugin (Grafana)
+### [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Plugin (Grafana)
 
 ```yaml
 # app-config.yaml addition
@@ -787,7 +787,7 @@ module "network_policy" {
   namespace = module.namespace.name
   allow_ingress_from = [
     "istio-system",
-    "[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)"
+    "[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)"
   ]
 }
 
@@ -919,11 +919,11 @@ export const provisionEnvironmentAction = (config: Config) => {
 
 ```yaml
 # prometheus-rules-dora.yaml
-apiVersion: [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).coreos.com/v1
+apiVersion: [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).coreos.com/v1
 kind: PrometheusRule
 metadata:
   name: dora-metrics
-  namespace: [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+  namespace: [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 spec:
   groups:
     - name: dora.deployment_frequency
@@ -1137,7 +1137,7 @@ metadata:
     policies.kyverno.io/title: Require Platform Labels
     policies.kyverno.io/description: >-
       All workloads must include standard platform labels for
-      cost attribution, ownership tracking, and [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) routing.
+      cost attribution, ownership tracking, and [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) routing.
 spec:
   validationFailureAction: Enforce
   background: true
@@ -1205,7 +1205,7 @@ spec:
               platform.myorg.io/system: ingress-gateway
         - namespaceSelector:
             matchLabels:
-              platform.myorg.io/system: [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+              platform.myorg.io/system: [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
           podSelector:
             matchLabels:
               app: prometheus

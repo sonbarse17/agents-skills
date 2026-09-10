@@ -276,7 +276,7 @@ types/classes, and Resource Graph diffing for Resource Definition changes.
   **Fix:** Pin Resource Definition `source.path` module references to an
   immutable tag or [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) SHA, and add a Conftest/Rego rule (or a
   pre-[commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) check) rejecting a `ref=` value that isn't a semver tag —
-  treat this the same as pinning any other [infrastructure-as-code](../../../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md) module
+  treat this the same as pinning any other [infrastructure-as-code](../../../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) module
   dependency.
 
 ## Worked example

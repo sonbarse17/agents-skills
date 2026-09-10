@@ -205,7 +205,7 @@ step 1 for standing that up first.
    - **Expected**: a legitimate traffic/scale-up, a planned feature
      launch, an intentional environment stood up for a defined purpose.
      Action: confirm with the owning team, note it, move on — this is a
-     FinOps/showback data point, not an [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+     FinOps/showback data point, not an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
    - **Mistake**: a misconfigured autoscaler with no upper bound, a
      forgotten non-prod environment left running at production scale, a
      runaway retry loop driving data-transfer or API-call costs, a
@@ -246,7 +246,7 @@ step 1 for standing that up first.
    alert/Cost Anomaly Detection monitor scoped to that team's
    cost-allocation tag (per
    [cloud-cost-finops-optimization](../[cloud-cost-finops-optimization](../cloud-cost-finops-optimization/SKILL.md)/SKILL.md)
-   step 6) so the next occurrence is caught by [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), not by finance
+   step 6) so the next occurrence is caught by [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), not by finance
    noticing the bill.
 
 ## Best practices
@@ -366,7 +366,7 @@ the current billing cycle.
    ASG, root cause = accidental `MaxSize` change in `PR #482`, fix =
    reverted in `PR #491`, cost impact = roughly the 18% spike over the
    two days it ran.
-7. Because this is the team's second ASG-sizing-related cost [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
+7. Because this is the team's second ASG-sizing-related cost [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
    this quarter, recommend a Cost Anomaly Detection monitor scoped
    specifically to `team=search-indexing` so the next runaway autoscaler
    change is caught within hours instead of at the next billing-cycle
@@ -375,8 +375,8 @@ the current billing cycle.
 ## Cross-references
 
 - [cloud-cost-finops-optimization](../[cloud-cost-finops-optimization](../cloud-cost-finops-optimization/SKILL.md)/SKILL.md) —
-  the ongoing tagging, [rightsizing](../rightsizing/SKILL.md), and anomaly-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) program this
-  investigation is a single [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) inside of; escalate tagging gaps
+  the ongoing tagging, [rightsizing](../rightsizing/SKILL.md), and anomaly-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) program this
+  investigation is a single [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) inside of; escalate tagging gaps
   and recurring-cause fixes there.
 - [orphaned-cloud-resource-cleanup](../[orphaned-cloud-resource-cleanup](../orphaned-cloud-resource-cleanup/SKILL.md)/SKILL.md) —
   hand off here, rather than deleting anything directly, when the

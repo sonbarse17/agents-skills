@@ -404,7 +404,7 @@ server {
 </VirtualHost>
 ```
 
-## Certificate [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+## Certificate [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 ```bash
 #!/bin/bash
@@ -480,7 +480,7 @@ groups:
 ## Best Practices
 
 - Automate renewal with systemd timers or cert-manager
-- Monitor expiration dates with [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) (30-day and 7-day warnings)
+- Monitor expiration dates with [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) (30-day and 7-day warnings)
 - Use only TLS 1.2 and TLS 1.3
 - Enable HSTS with long max-age and includeSubDomains
 - Enable OCSP stapling to improve handshake performance

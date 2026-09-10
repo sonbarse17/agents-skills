@@ -534,7 +534,7 @@ contract LendingPool {
 
 ## Production Considerations
 
-- **Liquidation [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: Monitor positions with health factor < 1.2; trigger liquidation at 1.0.
+- **Liquidation [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**: Monitor positions with health factor < 1.2; trigger liquidation at 1.0.
 - **Oracle freshness**: Alert on oracle price staleness (> 2 hours); pause borrowing if stale.
 - **Slippage protection**: Set max slippage per transaction (0.5% default for major pairs).
 - **MEV protection**: Implement [commit](../../ci-cd/common/git-workflow/commit/SKILL.md)-reveal or batch auctions for large liquidations.

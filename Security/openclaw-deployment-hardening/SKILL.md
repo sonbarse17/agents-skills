@@ -101,7 +101,7 @@ Verify:
 - Ingress auth/rate limits are effective.
 - No plaintext secrets appear in logs.
 
-## [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-Ready Rollback Pattern
+## [Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-Ready Rollback Pattern
 
 Maintain a hardened rollback workflow:
 

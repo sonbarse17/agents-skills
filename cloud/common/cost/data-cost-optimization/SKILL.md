@@ -53,7 +53,7 @@ Before activating, verify:
 - Team structure for cost allocation
 
 ### Output Artifact
-Cost optimization plan with warehouse configuration, query tuning, storage lifecycle policies, and FinOps [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md).
+Cost optimization plan with warehouse configuration, query tuning, storage lifecycle policies, and FinOps [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md).
 
 ### Response Format
 ```sql
@@ -66,7 +66,7 @@ Cost optimization plan with warehouse configuration, query tuning, storage lifec
 ```
 ```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Cost allocation script
-# Budget [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+# Budget [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 ```
 
 No preamble. No postamble. No explanations. No filler/hedging/transitions. Compress output — why use many token when few do trick.
@@ -77,7 +77,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 - [ ] Query performance tuned to reduce compute consumption
 - [ ] Storage lifecycle policies implemented for tiered archival
 - [ ] Cost allocation tags applied and budgets configured
-- [ ] [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) with cost-per-team breakdown
+- [ ] [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) with cost-per-team breakdown
 - [ ] Optimization recommendations documented with expected savings
 
 ### Max Response Length
@@ -185,7 +185,7 @@ assignments:
     project: my-data-analytics
 ```
 
-### Slot Usage [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+### Slot Usage [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 ```sql
 -- Slot utilization by project
 SELECT
@@ -308,7 +308,7 @@ SET OPTIONS (
 );
 ```
 
-### Budget [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+### Budget [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 ```[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # budget_config.py
 BUDGET_THRESHOLDS = {
@@ -356,7 +356,7 @@ bigquery_slots:
   reservation_policies:
     - "Separate reservations for prod vs non-prod workloads"
     - "Idle slots from prod can be borrowed by non-prod (flex slots)"
-    - "BI [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md): dedicated reservation for consistent performance"
+    - "BI [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md): dedicated reservation for consistent performance"
     - "Ad-hoc queries: lower-priority reservation (idle slots only)"
     - "ELT pipelines: reservation sized for peak load, auto-scale"
 ```
@@ -486,7 +486,7 @@ finops_maturity:
   level_2_walk:
     practices: [
       "Tag-based cost allocation",
-      "Weekly cost [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md)",
+      "Weekly cost [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)",
       "Budget alerts per team"
     ]
     tools: [
@@ -507,7 +507,7 @@ finops_maturity:
       "Custom cost attribution pipeline",
       "Query [profiling](../../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) (Snowflake QUERY_HISTORY, BigQuery INFORMATION_SCHEMA)",
       "Automated anomaly detection",
-      "FinOps [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) (Tableau, Power BI)"
+      "FinOps [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) (Tableau, Power BI)"
     ]
     coverage: "95-100% of costs tracked"
   

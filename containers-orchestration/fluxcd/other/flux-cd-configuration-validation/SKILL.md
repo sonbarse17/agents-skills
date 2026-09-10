@@ -219,8 +219,8 @@ correctly once something has reconciled (or failed to).
   any `prune: true` Kustomization before approving a refactor PR — a
   diff that's "just renames" in the author's head can be a real
   destructive delete+create in Flux's eyes.
-- Don't conflate `Ready: True` with "verified healthy" in [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) or
-  [runbooks](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md) — pair status [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) with the `healthChecks`/`wait`
+- Don't conflate `Ready: True` with "verified healthy" in [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) or
+  [runbooks](../../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md) — pair status [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) with the `healthChecks`/`wait`
   configuration from
   [flux-cd-configuration-and-reconciliation](../[flux-cd-configuration-and-reconciliation](../flux-cd-configuration-and-reconciliation/SKILL.md)/SKILL.md)
   so `Ready: True` actually means what an on-call engineer will assume

@@ -294,7 +294,7 @@ earlier.
    units. The most-cited pain point (7/10 teams) is new-service
    registration overhead — PagerDuty, DNS, cost tagging — each done
    manually and inconsistently, sometimes forgotten entirely until an
-   [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) reveals a service has no on-call rotation.
+   [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) reveals a service has no on-call rotation.
 2. **Narrow scope**: the first golden-path tier ships covering only CI,
    Dockerfile, and automated registration for PagerDuty/DNS/cost-tags —
    explicitly deferring datastore provisioning and compliance scorecards
@@ -320,7 +320,7 @@ earlier.
 7. **Old-path sunset, if ever pursued**: explicitly deferred — the
    platform team decides existing hand-rolled CI configs aren't causing
    enough ongoing harm to justify a forced migration and its trust cost,
-   revisiting the decision only if a future [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) traces back to one.
+   revisiting the decision only if a future [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) traces back to one.
 
 ## Cross-references
 

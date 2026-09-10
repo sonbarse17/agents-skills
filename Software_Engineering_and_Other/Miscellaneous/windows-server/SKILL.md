@@ -309,4 +309,4 @@ Unregister-ScheduledTask -TaskName "DailyMaintenance" -Confirm:$false
 - `[ssh-configuration](../ssh-configuration/SKILL.md)` -- SSH access for Windows OpenSSH Server
 - `[user-management](../user-management/SKILL.md)` -- Parallel concepts for Linux user/group management
 - `[systemd-services](../systemd-services/SKILL.md)` -- Linux equivalent of Windows Services and Task Scheduler
-- `[performance-tuning](../../Frontend/performance-tuning/SKILL.md)` -- Performance [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and optimization patterns
+- `[performance-tuning](../../Frontend/performance-tuning/SKILL.md)` -- Performance [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and optimization patterns

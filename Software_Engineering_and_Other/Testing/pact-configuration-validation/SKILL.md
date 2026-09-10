@@ -267,7 +267,7 @@ build `f9e8d7`.
    --to-environment production` and gets a failing result, naming the
    specific incompatible contract with `order-service`. The deploy is
    blocked automatically — the breaking change is caught before it ships,
-   not discovered as a production [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+   not discovered as a production [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 
 ## Cross-references
 

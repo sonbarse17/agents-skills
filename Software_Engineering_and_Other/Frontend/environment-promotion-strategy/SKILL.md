@@ -50,7 +50,7 @@ bottleneck.
 - Deciding whether the *same build artifact* should be promoted unchanged
   across environments, versus rebuilding per environment (it should
   almost always be the former).
-- A production [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) traces back to "it wasn't caught in staging" and
+- A production [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) traces back to "it wasn't caught in staging" and
   the team needs to close that gap.
 - Coordinating promotion across multiple services that must move through
   environments together (a release train) vs. independently.
@@ -149,7 +149,7 @@ bottleneck.
    The `production` [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Environment is configured (Settings →
    Environments → production → required reviewers) so the job literally
    cannot proceed without an approval click — the gate is enforced by the
-   platform, not by a [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) step someone might skip.
+   platform, not by a [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) step someone might skip.
 
 5. **For multi-service releases, decide train vs. independent promotion
    explicitly.** If services must move together (tightly coupled API

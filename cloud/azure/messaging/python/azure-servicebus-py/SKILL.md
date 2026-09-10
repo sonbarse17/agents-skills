@@ -298,5 +298,5 @@ with ServiceBusClient(
 |------|----------|
 | [../../../Global_References/azure-servicebus-py_patterns.md](../../../../../Global_References/azure-servicebus-py_patterns.md) | Competing consumers, sessions, retry patterns, request-response, transactions |
 | [../../../Global_References/dead-letter.md](../../../../../Global_References/dead-letter.md) | DLQ handling, poison messages, reprocessing strategies |
-| [scripts/setup_servicebus.py](scripts/setup_servicebus.py) | CLI for queue/topic/subscription management and DLQ [monitoring](../../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) |
+| [scripts/setup_servicebus.py](scripts/setup_servicebus.py) | CLI for queue/topic/subscription management and DLQ [monitoring](../../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) |
 

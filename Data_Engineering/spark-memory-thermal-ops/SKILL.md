@@ -37,7 +37,7 @@ the job starts.
 |---|---|
 | Planning headroom before launch | Budget against `free -g`, not `nvidia-smi` — see UMA Memory Model |
 | Job OOMs on unified memory | Work the OOM Ladder in order: flush, then batch/pack, then method downgrade |
-| Throughput drops mid-run | Check the power/temp log before assuming a config bug — see Thermal [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) |
+| Throughput drops mid-run | Check the power/temp log before assuming a config bug — see Thermal [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) |
 | Trainer + inference server both wanted | Run one at a time — see Concurrent Workloads |
 
 ## When to Use This Skill
@@ -172,7 +172,7 @@ Fall back further (smaller model, multi-Spark)
 only after all three steps and the job still
 won't fit.
 
-## Thermal [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+## Thermal [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 Multi-hour runs push into Spark's sustained
 power ceiling, well under the rated figure —

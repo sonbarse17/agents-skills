@@ -19,14 +19,14 @@ depends_on:
 
 # Vendor Management
 
-Implement a vendor risk management program covering vendor assessment questionnaires, risk scoring, contract tracking, SLA [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), and ongoing oversight for compliance with SOC 2, ISO 27001, and regulatory frameworks.
+Implement a vendor risk management program covering vendor assessment questionnaires, risk scoring, contract tracking, SLA [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), and ongoing oversight for compliance with SOC 2, ISO 27001, and regulatory frameworks.
 
 ## When to Use
 
 - Onboarding new vendors that will access company data or systems
 - Conducting annual vendor risk assessments and reassessments
 - Negotiating security requirements in vendor contracts
-- [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) vendor SLA compliance and security posture
+- [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) vendor SLA compliance and security posture
 - Preparing vendor management evidence for SOC 2 or ISO 27001 audits
 
 ## Vendor Risk Tiering
@@ -72,10 +72,10 @@ vendor_risk_tiers:
     contract_requirements:
       - Data processing agreement
       - Security requirements appendix
-      - [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) notification clause (72 hours)
+      - [Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) notification clause (72 hours)
     examples:
       - Email/marketing platforms (SendGrid, HubSpot)
-      - [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and logging SaaS ([Datadog](../../DevOps_and_Cloud/Observability_and_SecOps/datadog/SKILL.md), Splunk)
+      - [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and logging SaaS ([Datadog](../../observability-monitoring-logging/datadog/other/datadog/SKILL.md), Splunk)
       - CI/CD platforms ([GitHub](../../ci-cd/github-actions/other/github/SKILL.md), GitLab)
       - Customer support platforms
 
@@ -174,13 +174,13 @@ security_questionnaire:
 
   section_5_incident_response:
     questions:
-      - "Do you have a documented [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response plan?"
+      - "Do you have a documented [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response plan?"
       - "What is your breach notification timeline?"
       - "Have you experienced a data breach in the last 3 years?"
-      - "How would you notify us in the event of a security [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)?"
-      - "Do you conduct [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response tabletop exercises?"
+      - "How would you notify us in the event of a security [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)?"
+      - "Do you conduct [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response tabletop exercises?"
     evidence_requested:
-      - [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response plan summary
+      - [Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response plan summary
       - Breach notification procedure
 
   section_6_business_continuity:
@@ -336,11 +336,11 @@ vendor_registry_schema:
   owner: ""   # Internal team/person responsible
 ```
 
-## SLA [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+## SLA [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 ```[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 """
-Vendor SLA [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) - Track uptime and response time commitments.
+Vendor SLA [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) - Track uptime and response time commitments.
 """
 import requests
 from datetime import datetime, timezone
@@ -447,7 +447,7 @@ vendor_lifecycle:
       - Schedule first reassessment
 
   ongoing_management:
-    [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md):
+    [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md):
       - Track SLA compliance monthly
       - Monitor vendor status pages for incidents
       - Review vendor security advisories
@@ -495,7 +495,7 @@ vendor_management_checklist:
     - [ ] Security assessments current (per tier schedule)
     - [ ] Compliance certifications on file and not expired
     - [ ] DPAs/BAAs signed for all vendors handling personal data
-    - [ ] SLA [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) active for critical and high-tier vendors
+    - [ ] SLA [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) active for critical and high-tier vendors
     - [ ] Sub-processor lists reviewed and tracked
     - [ ] Vendor security incidents tracked and assessed
 

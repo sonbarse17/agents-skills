@@ -243,7 +243,7 @@ Istio.
   15–30 days before expiry gives room to notice and fix a stuck renewal
   before it becomes a live outage).
 - Monitor `Certificate` resources for `Ready: False` as a first-class
-  alert, not just certificate-expiry [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) on the resulting Secret
+  alert, not just certificate-expiry [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) on the resulting Secret
   — catching a stuck challenge days before expiry is far cheaper than
   reacting to an already-expired cert.
 - Use namespace-scoped `Issuer`s (not a cluster-wide `ClusterIssuer`)

@@ -347,11 +347,11 @@ cat << 'EOF'
   "acls": [
     {"action": "accept", "src": ["group:engineering"], "dst": ["tag:servers:*"]},
     {"action": "accept", "src": ["group:devops"], "dst": ["*:*"]},
-    {"action": "accept", "src": ["tag:[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)"], "dst": ["tag:servers:9100"]}
+    {"action": "accept", "src": ["tag:[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)"], "dst": ["tag:servers:9100"]}
   ],
   "tagOwners": {
     "tag:servers": ["group:devops"],
-    "tag:[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)": ["group:devops"]
+    "tag:[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)": ["group:devops"]
   },
   "groups": {
     "group:engineering": ["alice@example.com", "bob@example.com"],

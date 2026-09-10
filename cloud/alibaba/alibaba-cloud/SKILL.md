@@ -62,7 +62,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions.
 - [ ] RAM roles and policies follow least privilege.
 - [ ] Cost optimization with Pay-As-You-Go or subscription billing applied.
 - [ ] High availability across multiple zones (at least 2 zones).
-- [ ] [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) configured (CloudMonitor, ActionTrail).
+- [ ] [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) configured (CloudMonitor, ActionTrail).
 
 ### Max Response Length
 Direct file write. No response text.
@@ -349,7 +349,7 @@ resource "alicloud_cms_alarm" "disk_usage" {
 | Load Balancer | SLB | ELB/ALB | Cloud Load Balancer |
 | WAF | WAF | WAF | Cloud Armor |
 | DNS | DNS (PrivateZone) | Route53 | Cloud DNS |
-| [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) | CloudMonitor | CloudWatch | Cloud [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) |
+| [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) | CloudMonitor | CloudWatch | Cloud [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) |
 | [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) | ActionTrail | CloudTrail | Cloud [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logs |
 | Key Management | KMS | KMS | Cloud KMS |
 | Container Registry | ACR | ECR | Artifact Registry |
@@ -415,7 +415,7 @@ Embedding AccessKey ID/Secret in application code or configuration files. Always
 - Always enable OSS bucket versioning and server-side encryption.
 - Every security group must have least-privilege rules; no 0.0.0.0/0 for SSH/RDP.
 - Tag all resources with Project, Environment, Owner, and CostCenter tags.
-- Enable CloudMonitor detailed [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) for production ECS instances.
+- Enable CloudMonitor detailed [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) for production ECS instances.
 - Use PrivateLink or VPC endpoints over public endpoints for Alibaba Cloud service access.
 - Deploy ACK clusters with private SLB only; expose via Application Load Balancer (ALB).
 - Enable deletion protection on RDS and OSS buckets.
@@ -492,7 +492,7 @@ PolicyDocument:
 - Use **Resource Access Manager (RAM)** for cross-account sharing instead of copying resources
 - Configure **Alarm Contact Groups** before deploying production workloads
 - Enable **Operation Orchestration Service (OOS)** for automated patching and maintenance
-- Deploy **Cloud Monitor** [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) for every production service with p99 latency alerts
+- Deploy **Cloud Monitor** [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) for every production service with p99 latency alerts
 - Use **Terraform workspaces** to separate dev/staging/prod Alibaba Cloud accounts
 - Enable **ActionTrail** for all API call auditing and feed logs into Log Service
 
@@ -522,7 +522,7 @@ PolicyDocument:
 - Enable **Security Center** (Enterprise tier) for vulnerability scanning and baseline checks
 - Configure **WAF** for all public-facing ALB/SLB endpoints to block SQLi and XSS
 - Use **KMS** to encrypt RDS instances, OSS buckets, and disk snapshots at rest
-- Enable **ActionTrail** global trail with Log Service [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) for suspicious API activity
+- Enable **ActionTrail** global trail with Log Service [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) for suspicious API activity
 - Restrict **Security Group** ingress to specific CIDR blocks; never use 0.0.0.0/0 for SSH/RDP
 - Implement **Resource Directory** with SCPs to enforce security baselines across accounts
 

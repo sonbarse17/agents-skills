@@ -73,7 +73,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 - [ ] Stream processing job with exactly-once semantics
 - [ ] CDC pipeline from source database configured
 - [ ] Error handling with DLQ defined
-- [ ] [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and lag [alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) configured
+- [ ] [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and lag [alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) configured
 - [ ] Security configured (TLS, auth, ACLs)
 - [ ] Data retention and compaction strategy defined
 
@@ -404,13 +404,13 @@ SSL client authentication: mutual TLS between clients and brokers. SASL/PLAIN: u
 ### Authorization
 Kafka ACLs: `--allow-principal User:app1 --operation read --topic orders`. Topic-level: read, write, create, describe, alter. Consumer group-level: read, describe. Cluster-level: create topics, describe configs. Use prefix ACLs for topic patterns: `--topic orders.*`. Prefer RBAC via Apache Ranger for multi-team clusters.
 
-## [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+## [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 ### Consumer Lag
 Consumer lag is the difference between the latest produced offset and the consumer's committed offset. High lag means the consumer is falling behind. Lag is the most critical streaming metric. Monitor lag every 60 seconds. Alert on lag > 1000 messages or lag growing steadily (indicates consumer cannot keep up).
 
 ### Key Metrics
-Producer metrics: request rate, error rate, compression ratio, batch size. Consumer metrics: lag, poll rate, processing time, [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) rate. Broker metrics: request rate, disk usage, network throughput, ISR count, under-replicated partitions. Flink metrics: checkpoint duration, state size, records processed per second, latency. All metrics should feed into a [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) dashboard with alerts for anomalous values.
+Producer metrics: request rate, error rate, compression ratio, batch size. Consumer metrics: lag, poll rate, processing time, [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) rate. Broker metrics: request rate, disk usage, network throughput, ISR count, under-replicated partitions. Flink metrics: checkpoint duration, state size, records processed per second, latency. All metrics should feed into a [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) dashboard with alerts for anomalous values.
 
 ### Streaming Health Dashboard
 ```
@@ -436,7 +436,7 @@ Orders Streaming Pipeline
 | State management | Required (windowed, keyed) | Not needed |
 | Failure recovery | Checkpoint/savepoint | Re-run from start |
 | Cost | Higher (always-on infra) | Lower (scheduled compute) |
-| Use case | Real-time [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), alerts, CDC | Reports, ML training, backfill |
+| Use case | Real-time [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), alerts, CDC | Reports, ML training, backfill |
 
 ## Common Streaming Topology Patterns
 
@@ -571,7 +571,7 @@ Both provide incremental materialized views on streaming data using [PostgreSQL]
   - ../../../Global_References/pulsar-patterns.md — Apache Pulsar Patterns
   - ../../../Global_References/streaming-architecture.md — Streaming Architecture
   - ../../../Global_References/streaming-databases.md — Streaming Databases
-  - ../../../Global_References/streaming-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).md — Streaming [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+  - ../../../Global_References/streaming-[monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Streaming [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 ## Handoff
 `[data-data-warehouse](../data-warehouse/SKILL.md)` for streaming data landing in the warehouse
 `[data-etl-pipeline](../etl-pipeline/SKILL.md)` for batch processing of streamed data

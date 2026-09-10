@@ -388,7 +388,7 @@ segmentation without breaking the ingress path or DNS.
    no longer reach `payments-db:5432` directly.
 6. Roll the same four policies out to production namespace-by-namespace
    (not cluster-wide in one shot), starting with a lower-traffic
-   internal namespace before `payments` itself, [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) error rates
+   internal namespace before `payments` itself, [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) error rates
    during each rollout step.
 7. For the compliance requirement that this baseline can never be
    silently widened by a future namespace-level policy change, add a
@@ -399,6 +399,6 @@ segmentation without breaking the ingress path or DNS.
 
 ## Cross-references
 
-- [prometheus-and-grafana-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack](../prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
+- [prometheus-and-grafana-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack](../prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
 - [velero-backup-and-restore](../[velero-backup-and-restore](../velero-[backup-and-restore](../../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)/SKILL.md)/SKILL.md)
 - [cni-networking-calico-flannel](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)/SKILL.md)

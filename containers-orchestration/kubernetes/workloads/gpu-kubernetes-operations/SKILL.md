@@ -28,7 +28,7 @@ Run resilient and cost-efficient GPU clusters for production AI workloads.
 - Configuring NVIDIA device plugin and GPU operator
 - Implementing MIG partitioning to share GPUs across workloads
 - Building GPU-aware [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) policies
-- [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) GPU health with DCGM and Prometheus
+- [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) GPU health with DCGM and Prometheus
 - Troubleshooting GPU scheduling, driver, or OOM issues
 
 ## Prerequisites
@@ -222,11 +222,11 @@ data:
 # Output: "4" per physical GPU
 ```
 
-## DCGM [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+## DCGM [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 ```yaml
 # dcgm-servicemonitor.yaml
-apiVersion: [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).coreos.com/v1
+apiVersion: [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: dcgm-exporter

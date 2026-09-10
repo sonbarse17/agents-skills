@@ -256,7 +256,7 @@ rather than re-deriving them.
   fixed before replay. Inspect a sample of the DLQ's `x-death` reason and
   message body first, confirm the fix addresses that specific cause, and
   replay a small batch before replaying the rest — a full-DLQ blind replay
-  is effectively re-running the same [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+  is effectively re-running the same [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 
 ## Worked example
 

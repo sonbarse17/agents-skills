@@ -495,7 +495,7 @@ app.get('/api/web/checkout/:cartId', async (req, res) => {
 
 ## Production Considerations
 
-### [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
+### [Observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
 ```[typescript](../../Frontend/typescript/SKILL.md)
 // Structured BFF logging with request tracing
 interface BffLogContext {
@@ -590,7 +590,7 @@ interface BffLogContext {
 | **[Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)** | Per-BFF [containerization](../../../containers-orchestration/docker/other/containerization/SKILL.md) |
 | **[Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)** | BFF deployment and scaling |
 | **Prometheus** | BFF metrics (latency, error rate) |
-| **Grafana** | BFF [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) |
+| **Grafana** | BFF [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) |
 | **jaeger/zipkin** | Distributed tracing |
 
 ## Rules

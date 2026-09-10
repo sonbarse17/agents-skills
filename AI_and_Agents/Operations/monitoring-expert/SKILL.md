@@ -31,16 +31,16 @@ depends_on:
   - capacity-planning
 ---
 
-# [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) Expert
+# [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Expert
 
-[Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) and performance specialist implementing comprehensive [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md), tracing, and performance testing systems.
+[Observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) and performance specialist implementing comprehensive [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md), tracing, and performance testing systems.
 
 ## Core Workflow
 
-1. **Assess** — Identify what needs [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) (SLIs, critical paths, business metrics)
+1. **Assess** — Identify what needs [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (SLIs, critical paths, business metrics)
 2. **Instrument** — Add logging, metrics, and traces to the application (see examples below)
 3. **Collect** — Configure aggregation and storage (Prometheus scrape, log shipper, OTLP endpoint); verify data arrives before proceeding
-4. **Visualize** — Build [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) using RED (Rate/Errors/Duration) or USE (Utilization/Saturation/Errors) methods
+4. **Visualize** — Build [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) using RED (Rate/Errors/Duration) or USE (Utilization/Saturation/Errors) methods
 5. **Alert** — Define threshold and anomaly alerts on critical paths; validate no false-positive flood before shipping
 
 ## Quick-Start Examples
@@ -92,11 +92,11 @@ app.get('/metrics', async (req, res) => {
 });
 ```
 
-### [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) Tracing (Node.js)
+### [OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) Tracing (Node.js)
 ```js
-import { NodeSDK } from '@[opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)/sdk-node';
-import { OTLPTraceExporter } from '@[opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)/exporter-trace-otlp-http';
-import { trace } from '@[opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)/api';
+import { NodeSDK } from '@[opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)/sdk-node';
+import { OTLPTraceExporter } from '@[opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)/exporter-trace-otlp-http';
+import { trace } from '@[opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)/api';
 
 const sdk = new NodeSDK({
   traceExporter: new OTLPTraceExporter({ url: 'http://jaeger:4318/v1/traces' }),
@@ -122,7 +122,7 @@ async function processOrder(orderId) {
 }
 ```
 
-### Prometheus [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) Rule
+### Prometheus [Alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) Rule
 ```yaml
 groups:
   - name: api.rules
@@ -170,10 +170,10 @@ Load detailed guidance based on context:
 |-------|-----------|-----------|
 | Logging | `../../../Global_References/structured-logging.md` | Pino, JSON logging |
 | Metrics | `../../../Global_References/prometheus-metrics.md` | Counter, Histogram, Gauge |
-| Tracing | `../../../Global_References/[opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md).md` | [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md), spans |
-| [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) | `../../../Global_References/[alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)-rules.md` | Prometheus alerts |
-| [Dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) | `../../../Global_References/[dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md).md` | RED/USE method, Grafana |
-| Performance Testing | `../../../Global_References/[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-expert_performance-testing.md` | Load testing, k6, Artillery, benchmarks |
+| Tracing | `../../../Global_References/[opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md).md` | [OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md), spans |
+| [Alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) | `../../../Global_References/[alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)-rules.md` | Prometheus alerts |
+| [Dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) | `../../../Global_References/[dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md).md` | RED/USE method, Grafana |
+| Performance Testing | `../../../Global_References/[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-expert_performance-testing.md` | Load testing, k6, Artillery, benchmarks |
 | [Profiling](../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) | `../../../Global_References/application-[profiling](../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md).md` | CPU/memory [profiling](../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md), bottlenecks |
 | [Capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) Planning | `../../../Global_References/[capacity-planning](../../../DevOps_and_Cloud/Observability_and_SecOps/[capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-planning/SKILL.md).md` | Scaling, forecasting, budgets |
 
@@ -193,5 +193,5 @@ Load detailed guidance based on context:
 - Use string interpolation in logs (use structured fields)
 - Skip correlation IDs in distributed systems
 
-[Documentation](https://jeffallan.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/devops/[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-expert/)
+[Documentation](https://jeffallan.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/devops/[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-expert/)
 

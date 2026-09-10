@@ -23,7 +23,7 @@ depends_on:
 # Golden Paths
 
 A golden path is a single, curated, well-supported way to do something common — start a new
-service, add a queue, wire up a database — that comes with security, [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md), and reliability
+service, add a queue, wire up a database — that comes with security, [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md), and reliability
 built in by default. It's not a rule enforced by review; it's the option that requires the least
 effort, so following it is what happens by default rather than what has to be argued for.
 
@@ -36,7 +36,7 @@ visible choice — never an accident born of the path being harder to find than 
 Structured logging, tracing instrumentation, health checks, and a baseline auth setup are exactly
 the things teams skip under deadline pressure if they're left as separate steps. A golden-path
 template that generates a service with these already wired in means "secure and observable" is the
-starting state, not a backlog item someone has to remember to schedule. See `[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)` and
+starting state, not a backlog item someone has to remember to schedule. See `[observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)` and
 `[kubernetes-security](../../DevOps_and_Cloud/Containers_and_Orchestration/[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-security/SKILL.md)` for what belongs in the defaults themselves — this skill is about making sure
 they ship pre-wired, not about their individual configuration.
 
@@ -45,7 +45,7 @@ they ship pre-wired, not about their individual configuration.
 - **A working health/readiness endpoint** from the first [commit](../../ci-cd/common/git-workflow/commit/SKILL.md), so [autoscaling](../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) and rollout
   checks function immediately.
 - **Sane default resource limits and an auth baseline**, not left at "unset" for someone to
-  discover the hard way in an [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+  discover the hard way in an [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 
 **Done when:** a service scaffolded from the golden path passes a production-readiness review
 with zero changes.
@@ -55,7 +55,7 @@ with zero changes.
 Three "recommended" ways to deploy a service is the same as zero recommended ways — everyone picks
 a different one and the platform team ends up supporting all three. Consolidate to one template per
 task, retire the others deliberately, and resist the urge to add a second option just because one
-team prefers a different framework. Discoverability depends on this too: `[service-catalog](../../DevOps_and_Cloud/Observability_and_SecOps/service-catalog/SKILL.md)` can only
+team prefers a different framework. Discoverability depends on this too: `[service-catalog](../../containers-orchestration/common/other/service-catalog/SKILL.md)` can only
 guide people to "the" template if there's a single unambiguous one to point at.
 
 **Done when:** for any common task, a developer asking "how do I do X" gets pointed to exactly one
@@ -84,11 +84,11 @@ Teams will sometimes have a real reason to step off the path — a genuine perfo
 external requirement the template doesn't cover. That's fine; what's not fine is a deviation nobody
 can see. Require deviations to be declared (a flag in the catalog entry, a documented exception),
 so the platform team can track how often and why people leave the path instead of discovering it
-during an [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md). A pile of undeclared deviations is the strongest signal the path itself needs
+during an [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md). A pile of undeclared deviations is the strongest signal the path itself needs
 to change.
 
 **Done when:** every service that deviates from its golden path has that deviation recorded and
-visible in `[service-catalog](../../DevOps_and_Cloud/Observability_and_SecOps/service-catalog/SKILL.md)`, with a stated reason.
+visible in `[service-catalog](../../containers-orchestration/common/other/service-catalog/SKILL.md)`, with a stated reason.
 
 ## 5. Treat frequent deviation as a signal to widen the path, not a compliance problem
 

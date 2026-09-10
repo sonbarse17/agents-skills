@@ -172,7 +172,7 @@ without needing to be restated.
    > to completion. For anything running on paid/shared compute, treat a
    > sweep launched without a `--count` cap or early termination the same
    > as a production deploy with no rollback plan — a preventable,
-   > foreseeable cost/resource [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), not an edge case.
+   > foreseeable cost/resource [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), not an edge case.
 
 5. **Compare sweep results and pick a winner via the sweep's parallel
    coordinates / parameter-importance views** rather than scanning a
@@ -268,7 +268,7 @@ without needing to be restated.
   **Fix:** Always launch `wandb agent` with an explicit `--count`, and
   configure `early_terminate: hyperband` in the sweep config so
   underperforming trials are killed early — treat an uncapped sweep on
-  paid compute as a preventable [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), not a "just let it run" default.
+  paid compute as a preventable [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), not a "just let it run" default.
 
 - **Symptom:** A distributed training job spanning 8 GPU processes shows
   up as 8 separate, confusingly-named runs in the W&B UI instead of one

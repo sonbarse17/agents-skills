@@ -261,7 +261,7 @@ rather than re-deriving them.
   check what it actually does on re-run — this is exactly the idempotency
   property [airflow-dag-authoring-and-validation](../[airflow-dag-authoring-and-validation](../airflow-dag-authoring-and-validation/SKILL.md)/SKILL.md)
   calls out as the most important thing to get right at authoring time,
-  and its absence is what makes [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response risky rather than
+  and its absence is what makes [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response risky rather than
   routine.
 
 - **Symptom:** Someone runs `airflow dags backfill` for a multi-week date
@@ -328,4 +328,4 @@ it.
 
 - [airflow-dag-authoring-and-validation](../[airflow-dag-authoring-and-validation](../airflow-dag-authoring-and-validation/SKILL.md)/SKILL.md) — the idempotency, sensor, and `catchup` authoring practices that determine whether the retry/backfill actions here are safe.
 - [dagster-and-prefect-pipeline-authoring](../[dagster-and-prefect-pipeline-authoring](../../../Data_Engineering/dagster-and-prefect-pipeline-authoring/SKILL.md)/SKILL.md) — how comparable re-run/backfill risk is handled in asset-based orchestrators, relevant if considering a migration away from Airflow.
-- [kafka-consumer-lag-and-partition-troubleshooting](../[kafka-consumer-lag-and-partition-troubleshooting](../../../DevOps_and_Cloud/Containers_and_Orchestration/kafka-consumer-lag-and-partition-troubleshooting/SKILL.md)/SKILL.md) — a similarly structured live-[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) diagnostic playbook (distinguish "nothing is happening" causes before acting) for the messaging side of a data platform.
+- [kafka-consumer-lag-and-partition-troubleshooting](../[kafka-consumer-lag-and-partition-troubleshooting](../../../DevOps_and_Cloud/Containers_and_Orchestration/kafka-consumer-lag-and-partition-troubleshooting/SKILL.md)/SKILL.md) — a similarly structured live-[incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) diagnostic playbook (distinguish "nothing is happening" causes before acting) for the messaging side of a data platform.

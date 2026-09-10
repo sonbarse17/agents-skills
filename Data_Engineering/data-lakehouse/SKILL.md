@@ -224,7 +224,7 @@ LSM flow: MemTable -> flush to L0 -> compaction into sorted L1+ runs. Merge engi
 
 Paimon's LSM compaction is configurable: num-sorted-run-stop-trigger (default 5), num-sorted-run-max-size (default 50), max-compacted-files (default 50). Tune for write-heavy vs read-heavy workloads. Write-heavy: increase stop-trigger, reduce max-compacted-files. Read-heavy: decrease stop-trigger, increase max-compacted-files.
 
-### Step 10: Lakehouse [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+### Step 10: Lakehouse [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 Track bronze ingestion lag, silver dedup rate, gold freshness compliance, query latency per engine, storage cost per layer, and [Unity](../../Game_Development/unity/SKILL.md) Catalog access patterns.
 
 ```sql
@@ -304,7 +304,7 @@ Deploy lakehouse
 ## Best Practices
 
 - Keep bronze in original format with schema-on-read. Silver converts to optimized Parquet.
-- Each medallion transition is a quality gate with [alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md).
+- Each medallion transition is a quality gate with [alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md).
 - [Unity](../../Game_Development/unity/SKILL.md) Catalog secures at catalog/schema/table/column level. Grant minimum permissions.
 - Delta Sharing recipients get pre-signed URLs valid for 7 days, auto-refreshed.
 - Vacuum with 7-day minimum to preserve time travel capability.
@@ -312,7 +312,7 @@ Deploy lakehouse
 - Run OPTIMIZE on tables after large data loads.
 - Monitor file sizes: target 256MB-1GB per file for optimal read performance.
 - [Multi-cloud](../../cloud/common/other/multi-cloud/SKILL.md) lakehouse requires consistent cloud permissions and network connectivity.
-- Enable [Unity](../../Game_Development/unity/SKILL.md) Catalog system tables for [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and auditing.
+- Enable [Unity](../../Game_Development/unity/SKILL.md) Catalog system tables for [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and auditing.
 - Use Delta Lake change data feed for streaming consumers instead of re-reading full tables.
 - Set bronze retention to match SLA of longest-running pipeline that reads it.
 - Use column mapping with Delta Lake to rename or drop columns without rewriting data.
@@ -370,7 +370,7 @@ Scalability considerations: Bronze layer scales horizontally with object storage
 | Apache Flink | Streaming engine for Paimon |
 | Trino / Starburst | Federated SQL query engine |
 | dbt | Data transformation, contract enforcement |
-| Soda / Monte Carlo | Data [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) and quality |
+| Soda / Monte Carlo | Data [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) and quality |
 | Delta Live Tables (DLT) | Declarative ETL pipelines |
 
 ### Lakehouse Query Engine Optimization
@@ -501,7 +501,7 @@ Primary ecosystem?
   - ../../../Global_References/lakehouse-catalog-integration.md — Lakehouse Catalog Integration
   - ../../../Global_References/lakehouse-ecosystem-tools.md — Lakehouse Ecosystem Tools
   - ../../../Global_References/lakehouse-format-deep-dive.md — Lakehouse Format Deep Dive
-  - ../../../Global_References/lakehouse-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).md — Lakehouse [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+  - ../../../Global_References/lakehouse-[monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Lakehouse [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
   - ../../../Global_References/lakehouse-platform.md — Lakehouse Platform Reference
   - ../../../Global_References/lakehouse-query-engines.md — Lakehouse Query Engines
   - ../../../Global_References/medallion-architecture.md — Medallion Architecture Reference
@@ -600,7 +600,7 @@ sync:
 - **Z-order clustering**: Apply Z-ordering on frequently filtered columns in silver/gold tables.
 - **File compaction**: Rewrite small files into 256 MB–1 GB targets; trigger after large ingest batches.
 - **Incremental queries**: Use Iceberg incremental reads (`table_changes`) for downstream consumers instead of full scans.
-- **Materialized views**: Create materialized views (Trino, Spark) for gold-level [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md); refresh on schedule.
+- **Materialized views**: Create materialized views (Trino, Spark) for gold-level [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md); refresh on schedule.
 - **Data skipping**: Enable Iceberg/Delta statistics collection for better data skipping in WHERE clauses.
 
 ## Security Considerations

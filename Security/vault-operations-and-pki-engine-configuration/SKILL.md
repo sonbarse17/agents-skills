@@ -34,7 +34,7 @@ depends_on:
 
 HashiCorp [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) is itself a piece of critical infrastructure that has to
 be initialized, kept unsealed, made highly available, and operated with
-its own upgrade and [disaster-recovery](../../DevOps_and_Cloud/Observability_and_SecOps/disaster-recovery/SKILL.md) discipline — separate from the
+its own upgrade and [disaster-recovery](../../containers-orchestration/common/other/disaster-recovery/SKILL.md) discipline — separate from the
 question of how applications *consume* secrets from it, which is
 covered in [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md)
 and, for the [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-native sync pattern, in
@@ -289,15 +289,15 @@ across every system that depends on it.
 
 ## Common pitfalls
 
-- **Symptom:** A [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) cluster restarts (node reboot, upgrade, [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md))
-  and comes back up `sealed`, and no on-call [runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) exists for who
+- **Symptom:** A [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) cluster restarts (node reboot, upgrade, [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md))
+  and comes back up `sealed`, and no on-call [runbook](../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) exists for who
   holds the unseal shares.
   **Fix:** This is the exact failure mode auto-unseal exists to
   eliminate — migrate to cloud KMS/HSM-based auto-unseal for production
   clusters. If Shamir must be retained (e.g. a hard compliance
   requirement against auto-unseal), maintain a tested, on-call-visible
-  [runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) naming which individuals hold shares and how to reach them
-  under [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) pressure.
+  [runbook](../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) naming which individuals hold shares and how to reach them
+  under [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) pressure.
 
 - **Symptom:** A "highly available" [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) cluster is actually 2 nodes,
   and a single node failure leaves the surviving node unable to reach
@@ -326,7 +326,7 @@ across every system that depends on it.
   access path than day-to-day PKI operations use.
 
 - **Symptom:** [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) snapshots are taken but have never been restored
-  in a drill, and during an actual [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) the restore procedure turns
+  in a drill, and during an actual [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) the restore procedure turns
   out to be broken (wrong storage path, missing unseal material for the
   restored cluster).
   **Fix:** Schedule periodic restore drills against a non-production
@@ -404,7 +404,7 @@ handling required.
 
 ## Cross-references
 
-- [vault-configuration-validation](../[vault-configuration-validation](../../../Security/[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-configuration-validation/SKILL.md)/SKILL.md) —
+- [vault-configuration-validation](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-configuration-validation/SKILL.md)/SKILL.md) —
   validating [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) policies, auth methods, and seal configuration before
   rolling out changes to the operational cluster this skill sets up.
 - [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md) —

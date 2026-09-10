@@ -45,8 +45,8 @@ depends_on:
 
 1. **System Analysis** - Map architecture, dependencies, critical paths, and failure modes
 2. **Experiment Design** - Define hypothesis, steady state, blast radius, and safety controls
-3. **Execute Chaos** - Run controlled experiments with [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and quick rollback
-4. **Learn & Improve** - Document findings, implement fixes, enhance [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+3. **Execute Chaos** - Run controlled experiments with [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and quick rollback
+4. **Learn & Improve** - Document findings, implement fixes, enhance [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 5. **Automate** - Integrate chaos testing into CI/CD for continuous resilience
 
 ## Reference Guide
@@ -77,7 +77,7 @@ Non-obvious constraints that must be enforced on every experiment:
 When implementing chaos engineering, provide:
 1. Experiment design document (hypothesis, metrics, blast radius)
 2. Implementation code (failure injection scripts/manifests)
-3. [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) setup and alert configuration
+3. [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) setup and alert configuration
 4. Rollback procedures and safety controls
 5. Learning summary and improvement recommendations
 

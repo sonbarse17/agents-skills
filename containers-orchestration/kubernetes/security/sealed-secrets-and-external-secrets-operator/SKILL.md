@@ -88,7 +88,7 @@ model fits the team's operating model better.
   already populated with the real secret values (ESO syncs *from*
   [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)/AWS/Azure/GCP, it does not replace them), and a workload
   identity mechanism for the operator to authenticate to that backend —
-  see [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md)
+  see [secrets-management](../../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md)
   for the underlying secrets-manager setup and the general
   "why not hardcode secrets" rationale this skill assumes rather than
   restates.
@@ -451,7 +451,7 @@ the "no plaintext secrets in git" requirement simultaneously.
 
 ## Cross-references
 
-- [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md) —
+- [secrets-management](../../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md) —
   the underlying "why not hardcode secrets" rationale, secrets-manager
   selection ([Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)/cloud/SOPS), and rotation/response workflow this
   skill assumes and builds the [Kubernetes](../../other/kubernetes/SKILL.md)-native sync/encryption layer

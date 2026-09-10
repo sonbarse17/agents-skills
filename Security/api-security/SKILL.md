@@ -60,7 +60,7 @@ Before activating, verify:
 
 ### Output Artifact
 API security checklist with threat model,
-protection configuration, [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) setup.
+protection configuration, [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) setup.
 
 ### Response Format
 ```yaml
@@ -81,7 +81,7 @@ Compress output — why use many token when few do trick.
 - [ ] Rate limiting policy with tiered quotas
 - [ ] Input validation rules for all endpoints
 - [ ] WAF rules for API-specific attacks
-- [ ] [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging and abuse [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) configured
+- [ ] [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging and abuse [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) configured
 - [ ] Request signing for critical operations
 
 ### Max Response Length
@@ -232,7 +232,7 @@ Prevents replay attacks, tampering, unauthorized source.
 Middleware at gateway or service mesh sidecar.
 Reference pattern: AWS Signature V4.
 
-### Step 7: [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Logging and Abuse [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+### Step 7: [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Logging and Abuse [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) events:
 Auth decisions (success, failure, reason).
 Privilege escalation.
@@ -384,7 +384,7 @@ Health check, metrics, and admin endpoints exposed without authentication. `/act
 - Rate limiting per user + per endpoint (distributed)
 - WAF with API-specific rules
 - Request signing for critical operations
-- [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging with [alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
+- [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging with [alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 
 ### Level 4: Optimized
 - [Zero-trust](../zero-trust/SKILL.md) API architecture
@@ -415,13 +415,13 @@ Health check, metrics, and admin endpoints exposed without authentication. `/act
 - Penetration test of critical API endpoints
 - API inventory reconciliation (discover shadow APIs)
 
-### [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response
+### [Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response
 1. Detect: rate limit breach, auth failure spike, WAF block surge, anomalous payload patterns
 2. Assess: identify affected endpoints, consumer, data potentially exposed
 3. Contain: revoke compromised keys, block IP/subnet, enable maintenance mode for affected endpoints
 4. Investigate: [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs, WAF logs, gateway access logs
 5. Remediate: patch vulnerability, update WAF rules, rotate all affected credentials
-6. Post-mortem: write [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) report, update threat model, improve detection rules
+6. Post-mortem: write [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) report, update threat model, improve detection rules
 
 ## Rules
 - No hardcoded secrets, API keys, or tokens in code
@@ -499,7 +499,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
+### [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -534,7 +534,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing ([OpenTelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
+5. Profile latency with distributed tracing ([OpenTelemetry](../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -568,6 +568,6 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - Fail securely — errors default to safe behavior.
 - Log security-relevant events for [audit](../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) from day one, not as an afterthought.
+- Design for [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

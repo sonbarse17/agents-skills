@@ -31,7 +31,7 @@ depends_on:
 An Operator encodes operational knowledge — how to provision, upgrade,
 back up, and heal an application — as a [Kubernetes](../../other/kubernetes/SKILL.md) controller watching a
 custom resource, so operating that application becomes "apply a YAML
-spec" instead of a [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md). Building one wrong (a reconcile loop that
+spec" instead of a [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md). Building one wrong (a reconcile loop that
 isn't idempotent, a CRD with no versioning strategy, a controller that
 never terminates finalizers) produces a system that appears to work in
 demos and then deadlocks, leaks resources, or corrupts state under real
@@ -191,11 +191,11 @@ cluster.
    > stuck in `Terminating` forever. Recovering requires manually
    > patching out the finalizer (`[kubectl](../../other/kubectl/SKILL.md) patch ... -p '{"metadata":{"finalizers":[]}}' --type=merge`),
    > which skips the cleanup the finalizer existed to guarantee — treat
-   > this as an [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), not a routine unstick command, and confirm the
+   > this as an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), not a routine unstick command, and confirm the
    > external resource really doesn't need manual cleanup first.
 
 6. **Report status via `status.conditions`**, not just a free-text phase
-   string, so other tooling ([dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), `[kubectl](../../other/kubectl/SKILL.md) wait --for=condition=`)
+   string, so other tooling ([dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), `[kubectl](../../other/kubectl/SKILL.md) wait --for=condition=`)
    can consume it reliably:
    ```go
    meta.SetStatusCondition(&rc.Status.Conditions, metav1.Condition{

@@ -38,7 +38,7 @@ is an actual outage, at the worst possible time, with no rollback ready.
 Chaos engineering is the discipline of injecting controlled failure into
 a system to verify that a measurable steady-state hypothesis holds under
 turbulent conditions, with blast radius deliberately limited so the
-experiment itself never becomes the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) it was meant to prevent.
+experiment itself never becomes the [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) it was meant to prevent.
 This skill covers defining a testable steady-state hypothesis, choosing
 and scoping fault-injection tools, running a structured "game day"
 exercise, and graduating experiments from staging to carefully controlled
@@ -61,11 +61,11 @@ a production deployment.
 
 ## Prerequisites & environment
 
-- Existing steady-state [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md)/SLIs to compare against during the
+- Existing steady-state [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)/SLIs to compare against during the
   experiment — see
   [slo-sli-and-error-budget-design](../[slo-sli-and-error-budget-design](../slo-sli-and-error-budget-design/SKILL.md)/SKILL.md)
   and the
-  [Prometheus and Grafana [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) stack](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
+  [Prometheus and Grafana [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) stack](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
   skill for how these are typically built.
 - A fault-injection tool matched to the environment: **Chaos Mesh** or
   **LitmusChaos** for [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-native experiments (pod kill, network
@@ -82,8 +82,8 @@ a production deployment.
   could have customer-visible impact, and awareness from the on-call/
   [incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md) path that the experiment is running (so a real
   responder isn't confused about whether it's a drill or a genuine
-  [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)) — see
-  [incident-response-and-on-call-management](../[incident-response-and-on-call-management](../[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../DevOps_and_Cloud/Observability_and_SecOps/on-call-management/SKILL.md)/SKILL.md)/SKILL.md).
+  [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)) — see
+  [incident-response-and-on-call-management](../[incident-response-and-on-call-management](../[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../observability-monitoring-logging/common/alerting/on-call-management/SKILL.md)/SKILL.md)/SKILL.md).
 
 ## Step-by-step guidance
 
@@ -108,7 +108,7 @@ a production deployment.
    > and no automated abort condition — especially directly in
    > production — is a destructive action: it can turn a controlled
    > experiment into a genuine, uncontrolled outage with no faster path
-   > to recovery than a real [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md). Always scope blast radius
+   > to recovery than a real [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md). Always scope blast radius
    > explicitly and always define an abort trigger *before* starting.
 
 3. **Write the experiment definition.** Chaos Mesh example — killing one
@@ -144,9 +144,9 @@ a production deployment.
    live.** If the hypothesis holds, gradually increase blast radius on
    subsequent runs (more pods, longer duration, an added fault type). If
    it breaks, abort immediately via the automated trigger or the manual
-   kill switch, treat the deviation like a real [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) (declare
+   kill switch, treat the deviation like a real [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) (declare
    severity, assemble IC/roles per
-   [incident-response-and-on-call-management](../[incident-response-and-on-call-management](../[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../DevOps_and_Cloud/Observability_and_SecOps/on-call-management/SKILL.md)/SKILL.md)/SKILL.md)),
+   [incident-response-and-on-call-management](../[incident-response-and-on-call-management](../[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../observability-monitoring-logging/common/alerting/on-call-management/SKILL.md)/SKILL.md)/SKILL.md)),
    and drive the finding through the same action-item process as
    [blameless-postmortem-and-root-cause-analysis](../[blameless-postmortem-and-root-cause-analysis](../blameless-postmortem-and-[root-cause-analysis](../../../DevOps_and_Cloud/Observability_and_SecOps/root-cause-analysis/SKILL.md)/SKILL.md)/SKILL.md).
 
@@ -154,10 +154,10 @@ a production deployment.
    combining multiple fault scenarios (e.g. an AZ outage simulated
    together with a downstream dependency timeout) with an explicit
    facilitator, observers, and a scribe, run exactly like a live
-   [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) drill using the same IC/Comms/Tech-Lead roles from
-   [incident-response-and-on-call-management](../[incident-response-and-on-call-management](../[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../DevOps_and_Cloud/Observability_and_SecOps/on-call-management/SKILL.md)/SKILL.md)/SKILL.md).
+   [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) drill using the same IC/Comms/Tech-Lead roles from
+   [incident-response-and-on-call-management](../[incident-response-and-on-call-management](../[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../observability-monitoring-logging/common/alerting/on-call-management/SKILL.md)/SKILL.md)/SKILL.md).
    Announce it in advance to anyone who might otherwise mistake it for a
-   real [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), and debrief immediately afterward while details are
+   real [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), and debrief immediately afterward while details are
    fresh.
 
 6. **Graduate to production only deliberately** — after repeated clean
@@ -194,7 +194,7 @@ a production deployment.
   point is to find gaps in the system, not to test individual
   responders' performance.
 - Chaos engineering *validates* DR/HA assumptions empirically; it
-  doesn't replace having an actual DR strategy and [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) in the first
+  doesn't replace having an actual DR strategy and [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) in the first
   place — see
   [disaster-recovery-and-backup-strategy](../../../cloud/skills/[disaster-recovery-and-backup-strategy](../../../DevOps_and_Cloud/Cloud_Providers/[disaster-recovery](../../../DevOps_and_Cloud/Observability_and_SecOps/disaster-recovery/SKILL.md)-and-backup-strategy/SKILL.md)/SKILL.md)
   for designing that plan.
@@ -210,7 +210,7 @@ a production deployment.
 - **Symptom:** A chaos experiment is run directly against production
   with no blast-radius limit and no abort condition, and it causes a
   full, customer-visible outage that takes as long to recover from as a
-  genuine [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) would have.
+  genuine [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) would have.
   **Fix:** Always scope blast radius explicitly (a label selector, a
   fixed count/percentage, a single AZ) and always define an automated
   abort trigger tied to a real SLI before the experiment starts; rehearse
@@ -218,7 +218,7 @@ a production deployment.
 
 - **Symptom:** The team declares an experiment "passed" or "failed" based
   on a vague feeling ("seemed fine") rather than a specific measurement,
-  and later a real [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) reveals the same failure mode the experiment
+  and later a real [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) reveals the same failure mode the experiment
   supposedly already covered.
   **Fix:** Define the steady-state hypothesis as a concrete number tied
   to an existing SLI/SLO before running anything (step 1) — if it can't
@@ -226,7 +226,7 @@ a production deployment.
 
 - **Symptom:** The team runs chaos experiments only in staging, year
   after year, because "production is too risky," and a real production
-  [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) later reveals a failure mode that staging never actually
+  [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) later reveals a failure mode that staging never actually
   represented (different scale, different traffic mix, different AZ
   topology).
   **Fix:** Graduate deliberately with small, reversible, well-announced
@@ -236,7 +236,7 @@ a production deployment.
 
 - **Symptom:** A game day surfaces a real gap (e.g. a circuit breaker
   with no configured timeout), it's discussed in the debrief, and then
-  nobody revisits it — six months later a real [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) hits the exact
+  nobody revisits it — six months later a real [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) hits the exact
   same gap.
   **Fix:** Run every chaos/game-day finding through the same
   action-item tracking as a postmortem (owner, ticket, due date) rather
@@ -268,13 +268,13 @@ configured `PodDisruptionBudget`.
    timeout/circuit-breaker handling. Result: the hypothesis breaks — the
    circuit breaker had no configured timeout, and checkout latency spikes
    past the SLO threshold with customer-visible impact. The experiment is
-   aborted via the automated trigger, treated as an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), and the gap
+   aborted via the automated trigger, treated as an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), and the gap
    becomes a tracked postmortem action item (add an explicit timeout and
    fallback path to the fraud-check client).
 4. **Quarterly Game Day:** after both the pod-kill and dependency-timeout
    fixes are validated individually, a full AZ-loss scenario is simulated
    using AWS FIS against a non-production account mirroring the
-   production topology, run as a live-[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-style drill with IC/Comms/
+   production topology, run as a live-[incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-style drill with IC/Comms/
    Scribe roles, validating that the documented DR pilot-light failover
    in
    [disaster-recovery-and-backup-strategy](../../../cloud/skills/[disaster-recovery-and-backup-strategy](../../../DevOps_and_Cloud/Cloud_Providers/[disaster-recovery](../../../DevOps_and_Cloud/Observability_and_SecOps/disaster-recovery/SKILL.md)-and-backup-strategy/SKILL.md)/SKILL.md)
@@ -283,9 +283,9 @@ configured `PodDisruptionBudget`.
 
 ## Cross-references
 
-- [capacity-planning-and-load-testing](../[capacity-planning-and-load-testing](../../../DevOps_and_Cloud/Observability_and_SecOps/[capacity-planning](../../../DevOps_and_Cloud/Observability_and_SecOps/[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-planning/SKILL.md)-and-[load-testing](../../../DevOps_and_Cloud/Observability_and_SecOps/load-testing/SKILL.md)/SKILL.md)/SKILL.md) — load/stress testing finds [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) ceilings under expected traffic; chaos experiments find failure-handling gaps under fault conditions — the two are complementary, not substitutes for each other.
-- [incident-response-and-on-call-management](../[incident-response-and-on-call-management](../[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../DevOps_and_Cloud/Observability_and_SecOps/on-call-management/SKILL.md)/SKILL.md)/SKILL.md) — game days rehearse the same IC/Comms/Scribe roles used in a real [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), and a broken experiment should be handled through the same process.
-- [blameless-postmortem-and-root-cause-analysis](../[blameless-postmortem-and-root-cause-analysis](../blameless-postmortem-and-[root-cause-analysis](../../../DevOps_and_Cloud/Observability_and_SecOps/root-cause-analysis/SKILL.md)/SKILL.md)/SKILL.md) — chaos and game-day findings should be tracked through the same owned, due-dated action-item process as any other [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+- [capacity-planning-and-load-testing](../[capacity-planning-and-load-testing](../../../DevOps_and_Cloud/Observability_and_SecOps/[capacity-planning](../../../DevOps_and_Cloud/Observability_and_SecOps/[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-planning/SKILL.md)-and-[load-testing](../../../observability-monitoring-logging/common/capacity-monitoring/load-testing/SKILL.md)/SKILL.md)/SKILL.md) — load/stress testing finds [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) ceilings under expected traffic; chaos experiments find failure-handling gaps under fault conditions — the two are complementary, not substitutes for each other.
+- [incident-response-and-on-call-management](../[incident-response-and-on-call-management](../[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../observability-monitoring-logging/common/alerting/on-call-management/SKILL.md)/SKILL.md)/SKILL.md) — game days rehearse the same IC/Comms/Scribe roles used in a real [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), and a broken experiment should be handled through the same process.
+- [blameless-postmortem-and-root-cause-analysis](../[blameless-postmortem-and-root-cause-analysis](../blameless-postmortem-and-[root-cause-analysis](../../../DevOps_and_Cloud/Observability_and_SecOps/root-cause-analysis/SKILL.md)/SKILL.md)/SKILL.md) — chaos and game-day findings should be tracked through the same owned, due-dated action-item process as any other [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 - [blue-green-canary-deployments](../../../devops/skills/[blue-green-canary-deployments](../../../DevOps_and_Cloud/CI_CD/blue-green-canary-deployments/SKILL.md)/SKILL.md) — traffic-shifting/rollback mechanics are a practical abort path for experiments that involve routing production traffic away from an affected instance or AZ.
 - [environment-promotion-strategy](../../../devops/skills/[environment-promotion-strategy](../environment-promotion-strategy/SKILL.md)/SKILL.md) — graduating an experiment from staging to controlled production runs mirrors the same gated-promotion thinking used for releases.
 - [disaster-recovery-and-backup-strategy](../../../cloud/skills/[disaster-recovery-and-backup-strategy](../../../DevOps_and_Cloud/Cloud_Providers/[disaster-recovery](../../../DevOps_and_Cloud/Observability_and_SecOps/disaster-recovery/SKILL.md)-and-backup-strategy/SKILL.md)/SKILL.md) — chaos engineering is how DR/HA assumptions get empirically validated; this skill exercises the plan, it doesn't replace designing it.

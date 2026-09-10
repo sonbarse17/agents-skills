@@ -54,7 +54,7 @@ Terraform HCL for CDN resources, provider config (CloudFront, Fastly VCL, Cloudf
 - [ ] WAF rules configured (OWASP top 10, rate limiting).
 - [ ] SSL/TLS with proper certificate.
 - [ ] Signed URLs/cookies for private content.
-- [ ] [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) for origin errors and cache hit ratio.
+- [ ] [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) for origin errors and cache hit ratio.
 
 ## Architecture Decision Trees
 
@@ -402,7 +402,7 @@ sub vcl_fetch {
 }
 ```
 
-### Step 8: CDN [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
+### Step 8: CDN [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 ```hcl
 resource "aws_cloudwatch_metric_alarm" "cache_hit_ratio" {
   alarm_name          = "cdn-cache-hit-ratio-low"
@@ -544,7 +544,7 @@ Serving uncompressed content increases egress costs and hurts performance. Enabl
   - ../../../Global_References/waf-rules.md
   - references/signed-urls-guide.md
   - references/multi-cdn-strategy.md
-  - references/cdn-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).md
+  - references/cdn-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md
 
 ## Handoff
 Next: **waf-rules** — deeper WAF configuration. Pass: distribution ID, WAF ACL ARN, edge function names.

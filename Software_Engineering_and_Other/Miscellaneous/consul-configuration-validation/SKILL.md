@@ -37,7 +37,7 @@ these fail loudly — they fail by having no effect, which is worse,
 because the operator believes the change is live. This skill covers the
 validation commands that catch these gaps before (or immediately after)
 applying, distinct from
-[consul-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-and-discovery-configuration](../[consul-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-and-discovery-configuration](../../../DevOps_and_Cloud/Cloud_Providers/consul-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-and-discovery-configuration/SKILL.md)/SKILL.md),
+[consul-[service-mesh](../../../containers-orchestration/common/service-mesh/service-mesh/SKILL.md)-and-discovery-configuration](../[consul-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-and-discovery-configuration](../../../DevOps_and_Cloud/Cloud_Providers/consul-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-and-discovery-configuration/SKILL.md)/SKILL.md),
 which covers writing the mesh/discovery configuration in the first
 place.
 
@@ -226,7 +226,7 @@ place.
   troubleshooting, someone applies a temporary wildcard
   `Sources: [{Name: "*", Action: "allow"}]` intention "just to confirm
   it's an intentions problem," and it's left in place after the
-  [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+  [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
   **Fix:** A wildcard allow intention removes mesh authorization
   entirely for that destination service — treat it as a scoped,
   time-boxed diagnostic step only, applied in a non-production
@@ -239,7 +239,7 @@ place.
 
 **Scenario:** Validate the canary rollout config entries and intention
 from the worked example in
-[consul-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-and-discovery-configuration](../[consul-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-and-discovery-configuration](../../../DevOps_and_Cloud/Cloud_Providers/consul-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-and-discovery-configuration/SKILL.md)/SKILL.md)
+[consul-[service-mesh](../../../containers-orchestration/common/service-mesh/service-mesh/SKILL.md)-and-discovery-configuration](../[consul-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-and-discovery-configuration](../../../DevOps_and_Cloud/Cloud_Providers/consul-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-and-discovery-configuration/SKILL.md)/SKILL.md)
 before they reach production.
 
 ```bash
@@ -272,6 +272,6 @@ check` commands re-run against production to confirm parity.
 
 ## Cross-references
 
-- [consul-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-and-discovery-configuration](../[consul-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-and-discovery-configuration](../../../DevOps_and_Cloud/Cloud_Providers/consul-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-and-discovery-configuration/SKILL.md)/SKILL.md) — writing the service definitions, config entries, and intentions this skill validates.
+- [consul-[service-mesh](../../../containers-orchestration/common/service-mesh/service-mesh/SKILL.md)-and-discovery-configuration](../[consul-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-and-discovery-configuration](../../../DevOps_and_Cloud/Cloud_Providers/consul-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-and-discovery-configuration/SKILL.md)/SKILL.md) — writing the service definitions, config entries, and intentions this skill validates.
 - [linkerd-configuration-validation](../[linkerd-configuration-validation](../linkerd-configuration-validation/SKILL.md)/SKILL.md) — the equivalent validation discipline for Linkerd proxy injection and traffic policy, useful for comparing pre-production check patterns across mesh choices.
 - [cilium-configuration-validation](../[cilium-configuration-validation](../../../DevOps_and_Cloud/Containers_and_Orchestration/cilium-configuration-validation/SKILL.md)/SKILL.md) — validating CNI-layer network policy underneath the mesh, relevant when Consul's mesh-level intentions need to be checked against a lower-level `CiliumNetworkPolicy` that could independently block the same traffic.

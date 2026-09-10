@@ -34,7 +34,7 @@ Host many teams/customers on shared inference infrastructure without sacrificing
 
 - [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster with GPU node pools
 - API gateway or LLM gateway (LiteLLM, Envoy, Kong)
-- Prometheus + Grafana for per-tenant [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
+- Prometheus + Grafana for per-tenant [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
 - Redis or equivalent for rate limiting state
 - Billing system or cost attribution database
 
@@ -546,7 +546,7 @@ globalDefault: false
 description: "Free tier tenant workloads"
 ```
 
-## Per-Tenant [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+## Per-Tenant [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 ```yaml
 # tenant-alerts.yaml
@@ -590,11 +590,11 @@ groups:
 - Restrict debug data access by role.
 - [Audit](../../Operations/audit/SKILL.md) all privileged administrative actions.
 
-## Operational [Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)
+## Operational [Runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)
 
 1. Onboard tenant with policy template.
 2. Issue virtual key and quota profile.
-3. Validate [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) and billing tags.
+3. Validate [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) and billing tags.
 4. Run tenant-specific load/safety tests.
 5. Enable production traffic with canary limits.
 

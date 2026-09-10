@@ -67,7 +67,7 @@ YAML manifests (ApplicationSet, [ArgoCD](../../../argocd/other/argocd/SKILL.md) 
 - [ ] Secrets management integrated with [GitOps](../gitops/SKILL.md) (External Secrets, SealedSecrets, SOPS)
 - [ ] Image updater configured for automated deployment
 - [ ] RBAC and Projects configured for multi-team isolation
-- [ ] [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and notifications configured for sync status
+- [ ] [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and notifications configured for sync status
 
 ## Architecture / Decision Trees
 
@@ -341,16 +341,16 @@ spec:
   source:
     path: services/frontend
 
-# Wave 5: [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) config (last)
+# Wave 5: [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) config (last)
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-config
+  name: [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-config
   annotations:
     [argocd](../../../argocd/other/argocd/SKILL.md).argoproj.io/sync-wave: "5"
 spec:
   source:
-    path: [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)/[dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md)
+    path: [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)/[dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)
 ```
 
 ### Step 3: App-of-Apps Pattern
@@ -739,7 +739,7 @@ data:
     g, myorg:checkout-team, role:readonly
 ```
 
-### Step 8: Notifications and [Observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
+### Step 8: Notifications and [Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
 
 ```yaml
 apiVersion: v1
@@ -831,7 +831,7 @@ Retry strategy:
 4. **Overusing sync waves**: 30 sync waves for a simple app. Keep waves for infrastructure dependencies only.
 5. **Ignoring application health**: [ArgoCD](../../../argocd/other/argocd/SKILL.md) shows "Synced" but app is not healthy. Always implement health checks.
 6. **Auto-sync for everything**: Databases and CRDs should not auto-sync without verification.
-7. **No drift detection**: Changes made outside [GitOps](../gitops/SKILL.md) are silently ignored. Enable self-heal with [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
+7. **No drift detection**: Changes made outside [GitOps](../gitops/SKILL.md) are silently ignored. Enable self-heal with [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
 8. **Single cluster hub bottleneck**: Hub cluster goes down, no cluster can sync. Implement HA for hub or use [GitOps](../gitops/SKILL.md) Federation.
 9. **Missing prune safeguards**: `prune: true` without `PreserveResourcesOnDeletion` for critical data.
 10. **Insufficient RBAC**: Everyone has cluster-admin on [ArgoCD](../../../argocd/other/argocd/SKILL.md). Scope projects and roles per team.

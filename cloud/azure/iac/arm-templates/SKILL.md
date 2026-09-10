@@ -439,8 +439,8 @@ module networkInSharedRg 'modules/network.bicep' = {
 // Conditional deployment
 param deployMonitoring bool = true
 
-module [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) 'modules/[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).bicep' = if (deployMonitoring) {
-  name: '[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-deployment'
+module [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) 'modules/[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).bicep' = if (deployMonitoring) {
+  name: '[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-deployment'
   params: {
     location: location
   }

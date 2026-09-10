@@ -61,7 +61,7 @@ and `[release-management](../../../../ci-cd/common/deployment/release-management
 The moment a human or a CI job applies manifests directly, the repo stops being the source of
 truth and starts being a suggestion. Every path to changing cluster state — including emergency
 fixes — must go through a [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md), even if that [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) is made and merged in under a minute during
-an [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md). Lock this down with cluster RBAC that denies write access to everyone except the
+an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md). Lock this down with cluster RBAC that denies write access to everyone except the
 reconciler's service account. The discipline pays for itself the first time someone asks "who
 changed this and why" and the answer is a [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) message instead of a shrug. For the controller
 enforcing this, see `[argocd-operations](../../Observability_and_SecOps/[argocd](../argocd/SKILL.md)-operations/SKILL.md)`; for the RBAC mechanics see `[kubernetes-security](../[kubernetes](../kubernetes/SKILL.md)-security/SKILL.md)`.
@@ -73,9 +73,9 @@ enforcing this, see `[argocd-operations](../../Observability_and_SecOps/[argocd]
 If promotion is a merge, rollback is a revert: `git revert` the bad [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md), push, and let the
 reconciler pull the previous known-good state back down. This only works if manifests are fully
 declarative and self-contained — no imperative migration steps hiding outside the diff, no
-"also run this script" in a [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md). Treat any deploy that can't be undone by reverting its [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)
+"also run this script" in a [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md). Treat any deploy that can't be undone by reverting its [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)
 as a bug in the manifests, not an acceptable exception. This is also why rollback should be tested
-before it's needed, not discovered live during an [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+before it's needed, not discovered live during an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 
 ```
 git revert <bad-[commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)> && git push   # reconciler pulls this within its sync interval
@@ -100,8 +100,8 @@ Drift — cluster state diverging from the repo — will happen: a debugging `[k
 mutating webhook, an autoscaler writing back replica counts. Configure the reconciler to detect and
 either auto-heal or loudly flag drift rather than silently tolerating it, and exclude only the
 specific fields (like HPA-managed replicas) that are expected to diverge. Undetected drift is how
-"the repo is the source of truth" quietly becomes false over weeks. See `[observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)` for
-[alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) when reconciliation itself falls behind or fails.
+"the repo is the source of truth" quietly becomes false over weeks. See `[observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)` for
+[alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) when reconciliation itself falls behind or fails.
 
 **Done when:** any out-of-band cluster change is either corrected automatically or surfaced as an
 alert within one reconciliation cycle.

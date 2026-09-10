@@ -263,7 +263,7 @@ Deployment scale:
 - Pin producer/consumer schema versions for canary deployments.
 - Document field semantics with `doc` attribute in schema definition.
 - Use schema references ($ref) for shared types across schemas.
-- Set up [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) for schema registration failures and compatibility check latency.
+- Set up [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) for schema registration failures and compatibility check latency.
 
 ## Compared With
 
@@ -584,5 +584,5 @@ Primary use case?
   - ../../../Global_References/schema-registry-evolution.md — Schema Registry Evolution Deep Dive
   - ../../../Global_References/schema-registry-integration-patterns.md — Integration Patterns Reference
 ## Handoff
-`[data-data-platform](../data-platform/SKILL.md)` for registry deployment. `[data-data-catalog](../data-catalog/SKILL.md)` for schema metadata. `[data-data-contracts](../data-contracts/SKILL.md)` for data contract schema integration. `[data-data-observability](../data-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)` for schema drift [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
+`[data-data-platform](../data-platform/SKILL.md)` for registry deployment. `[data-data-catalog](../data-catalog/SKILL.md)` for schema metadata. `[data-data-contracts](../data-contracts/SKILL.md)` for data contract schema integration. `[data-data-observability](../data-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)` for schema drift [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
 

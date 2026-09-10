@@ -32,7 +32,7 @@ Fine-tune models using SFT (supervised), DPO (preference), or RFT (reinforcement
 Use this sub-skill when the user asks about:
 - Fine-tuning a model (SFT, DPO, or RFT)
 - Preparing, validating, or formatting training data
-- Submitting, [monitoring](../../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), or diagnosing training jobs
+- Submitting, [monitoring](../../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), or diagnosing training jobs
 - Calibrating graders or pass thresholds for RFT
 - Deploying or evaluating a fine-tuned model
 - Choosing between training types (SFT vs DPO vs RFT)

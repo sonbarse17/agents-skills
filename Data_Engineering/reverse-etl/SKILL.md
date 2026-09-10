@@ -70,7 +70,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 - [ ] Identity resolution keys defined for each destination
 - [ ] Sync schedule with rate-limit awareness configured
 - [ ] Destination operation mode (upsert/replace/append) specified
-- [ ] Error handling with retry and [alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) defined
+- [ ] Error handling with retry and [alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) defined
 - [ ] Data freshness SLA documented
 
 ### Max Response Length
@@ -449,7 +449,7 @@ Destination type?
 ## References
   - ../../../Global_References/identity-resolution.md — Identity Resolution Reference
   - ../../../Global_References/identity-strategies.md — Identity Strategies for Reverse ETL
-  - ../../../Global_References/reverse-etl-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).md — Reverse ETL [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+  - ../../../Global_References/reverse-etl-[monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Reverse ETL [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
   - ../../../Global_References/reverse-etl-patterns.md — Reverse ETL Patterns
   - ../../../Global_References/sync-config-examples.md — Sync Configuration Examples
   - references/warehouse-activation.md — Warehouse Activation Reference
@@ -537,7 +537,7 @@ class ReverseETLSync:
 
 ## Production Considerations
 
-- **Sync [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: Track sync success rate, row counts, and latency per destination; alert on failures.
+- **Sync [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**: Track sync success rate, row counts, and latency per destination; alert on failures.
 - **Idempotency**: Design all syncs to be idempotent (UPSERT semantics); safe for replay after failure.
 - **Rate limiting**: Respect destination API rate limits; implement exponential backoff with jitter.
 - **Field mapping versioning**: Version field mappings; handle source schema changes gracefully with fallback values.

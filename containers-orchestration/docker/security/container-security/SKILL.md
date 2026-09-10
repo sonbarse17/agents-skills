@@ -33,7 +33,7 @@ depends_on:
 # Security Container Security
 
 ## Purpose
-Build a container security program spanning image scanning (Trivy, Grype, Clair, Snyk), Dockerfile hardening (distroless, multi-stage, non-root), admission control (Kyverno, OPA/Gatekeeper), runtime [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) (Falco, Tracee), image signing (Cosign), and SBOM generation.
+Build a container security program spanning image scanning (Trivy, Grype, Clair, Snyk), Dockerfile hardening (distroless, multi-stage, non-root), admission control (Kyverno, OPA/Gatekeeper), runtime [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (Falco, Tracee), image signing (Cosign), and SBOM generation.
 
 ## Agent Protocol
 
@@ -45,12 +45,12 @@ Before activating, verify:
 - Container registry ([Docker](../../other/docker/SKILL.md) Hub, ECR, GCR, GAR, ACR)
 - Orchestration platform ([Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md), ECS, [Nomad](../../../nomad/other/nomad/SKILL.md))
 - CI/CD platform and image build pipeline
-- Existing security tools and [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) history
+- Existing security tools and [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) history
 - Compliance standards (PCI DSS, SOC 2, HIPAA)
 - Image volume (number of images, build frequency)
 
 ### Output Artifact
-Container security policy with image scanning config, admission rules, runtime [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) as YAML files.
+Container security policy with image scanning config, admission rules, runtime [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) as YAML files.
 
 ### Response Format
 ```yaml
@@ -67,7 +67,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 - [ ] Image scanning configured in CI with severity-gated policy
 - [ ] Dockerfile follows hardening checklist
 - [ ] Admission controller deployed with policy rules
-- [ ] Runtime [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) configured with Falco rules
+- [ ] Runtime [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) configured with Falco rules
 - [ ] Image signing and verification configured (Cosign)
 - [ ] Vulnerability management SLA defined
 - [ ] SBOM generation integrated into build pipeline
@@ -142,7 +142,7 @@ Dry-run mode: 7 days before enforcement. [Audit](../../../../AI_and_Agents/Opera
 Pod Security Standards: Restricted profile. [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) -> warn -> enforce rollout sequence.
 
 ### Step 6: Runtime Security
-Falco: syscall-level [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md). Driver: `driver.kind=modern-bpf` for performance.
+Falco: syscall-level [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md). Driver: `driver.kind=modern-bpf` for performance.
 
 Default rules:
 - Shell spawned inside container
@@ -193,7 +193,7 @@ Daily scan of deployed images for new CVEs. Alert on new critical or high findin
 | Falco | Syscall (kernel module/eBPF) | < 5% CPU | System calls, file access | General container security |
 | Tracee | eBPF | < 3% CPU | Signatures, behavior | Advanced threat detection |
 | Aqua | Agent + eBPF | < 5% CPU | Full stack (K8s, network) | Enterprise security platform |
-| Sysdig Secure | Agent + eBPF | < 5% CPU | Falco-based + forensics | Performance [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) + security |
+| Sysdig Secure | Agent + eBPF | < 5% CPU | Falco-based + forensics | Performance [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) + security |
 
 ### Admission Control Decision Tree
 
@@ -214,7 +214,7 @@ Using the same base image for months accumulates vulnerabilities. Update base im
 ### Pitfall 3: Admission Control Without Dry Run
 Enforcing admission policies without dry-run breaks existing workloads. Use dry-run mode for 7-14 days before enforcement. [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) violations, tune rules, notify teams.
 
-### Pitfall 4: Runtime Security Without [Alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
+### Pitfall 4: Runtime Security Without [Alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 Falco detects events but they go to /var/log/syslog by default. Without alert pipeline, events are invisible. Configure Falcosidekick. Route critical alerts to PagerDuty.
 
 ### Pitfall 5: Blocking All Vulnerabilities
@@ -249,7 +249,7 @@ SBOM generated once and forgotten. SBOM must be generated per build, stored alon
 5. Attest scan results and SBOM
 6. Push to registry
 7. Deploy through admission control
-8. Runtime [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) with Falco
+8. Runtime [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) with Falco
 9. Daily rescan deployed images
 
 ### Admission Policy Minimum Set
@@ -307,13 +307,13 @@ Keyless (Cosign OIDC): no key management, CI provider identity, cloud CI suitabl
 - Test Cosign verification pipeline
 - Validate SBOM generation
 
-### Security [Incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response
+### Security [Incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response
 1. Detect: Falco alert or vulnerability scan finding
 2. Assess: criticality, affected images, running instances
 3. Contain: patch image, redeploy, isolate compromised pods
 4. Investigate: root cause analysis
 5. Remediate: update base images, add scanning rules, tune policies
-6. Document: [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) report, preventive measures
+6. Document: [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) report, preventive measures
 
 ## CI/CD Pipeline Examples
 
@@ -468,7 +468,7 @@ Manual triage does not scale beyond 10-20 images. Automate vulnerability scannin
 - [ ] Validate SBOM generation for all active images
 - [ ] Review and update exception list
 
-### [Incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response Playbook
+### [Incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response Playbook
 1. **Detect**: Falco alert (shell in container, crypto miner behavior, unexpected outbound connection) or scan finding (new critical CVE in deployed image)
 2. **Assess**: Identify affected images, running instances, blast radius. Determine if exploit exists in the wild (CISA KEV, EPSS > 0.9).
 3. **Contain**: Patch image, rebuild, redeploy. If active compromise, isolate pod with network policy, capture forensic snapshot.
@@ -483,7 +483,7 @@ Manual triage does not scale beyond 10-20 images. Automate vulnerability scannin
 - Root user in containers
 - `latest` tags used in production
 - No admission control
-- No runtime [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+- No runtime [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 ### Level 2: Defined
 - Image scanning in CI (Trivy, fail on critical)
@@ -495,7 +495,7 @@ Manual triage does not scale beyond 10-20 images. Automate vulnerability scannin
 ### Level 3: Managed
 - Automated SBOM generation and signing per build
 - Admission control with image verification (Cosign)
-- Runtime [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) with custom Falco rules and [alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
+- Runtime [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) with custom Falco rules and [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 - Vulnerability management with SLA and exception process
 - Daily rescan of deployed images
 
@@ -526,7 +526,7 @@ Manual triage does not scale beyond 10-20 images. Automate vulnerability scannin
 ## References
 - ../../../Global_References/container-security-fundamentals.md -- Container Security Fundamentals
 - ../../../Global_References/container-security-advanced.md -- Container Security Advanced Topics
-- ../../../Global_References/container-[vulnerability-scanning](../../../../DevOps_and_Cloud/Observability_and_SecOps/vulnerability-scanning/SKILL.md).md -- Container Vulnerability Scanning
+- ../../../Global_References/container-[vulnerability-scanning](../../../../Security/vulnerability-scanning/SKILL.md).md -- Container Vulnerability Scanning
 - ../../../Global_References/image-security.md -- Image Security
 - ../../../Global_References/runtime-security.md -- Runtime Security
 - ../../../Global_References/admission-controller-policies.md -- Admission Controller Policies

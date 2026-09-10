@@ -305,7 +305,7 @@ apt list --upgradable 2>/dev/null | grep -i security  # Debian/Ubuntu
 # Test both network layer and application layer
 # Segmentation testing: verify CDE is isolated from non-CDE networks
 
-# Req 11.5 - File integrity [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+# Req 11.5 - File integrity [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 # Using AIDE (Advanced Intrusion Detection Environment)
 aide --init  # Initialize baseline
 aide --check  # Compare against baseline
@@ -319,7 +319,7 @@ aide --check  # Compare against baseline
 # </syscheck>
 ```
 
-## Logging and [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) (Req 10)
+## Logging and [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (Req 10)
 
 ```yaml
 required_audit_events:
@@ -394,14 +394,14 @@ pci_dss_checklist:
     - [ ] Shared/group accounts not used (or tightly controlled)
     - [ ] Access reviewed at least every 6 months
 
-  [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md):
+  [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md):
     - [ ] [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs capture all required events (Req 10.2)
     - [ ] Log entries include all required fields (Req 10.3)
     - [ ] Logs protected from modification
     - [ ] Logs retained 12 months (3 months immediately available)
     - [ ] Time synchronization configured (NTP)
-    - [ ] Daily log review process or automated [alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
-    - [ ] File integrity [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) on critical files
+    - [ ] Daily log review process or automated [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
+    - [ ] File integrity [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) on critical files
 
   testing:
     - [ ] Internal vulnerability scans quarterly
@@ -410,12 +410,12 @@ pci_dss_checklist:
     - [ ] External penetration test annually
     - [ ] Segmentation test annually (or after changes)
     - [ ] Web application assessment annually (or WAF deployed)
-    - [ ] IDS/IPS [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) all CDE network traffic
+    - [ ] IDS/IPS [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) all CDE network traffic
 
   policies:
     - [ ] Information security policy reviewed annually
     - [ ] Security awareness training for all personnel
-    - [ ] [Incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response plan documented and tested
+    - [ ] [Incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response plan documented and tested
     - [ ] Third-party service provider compliance confirmed
     - [ ] Risk assessment performed annually
 ```
@@ -427,7 +427,7 @@ pci_dss_checklist:
 - Never store sensitive authentication data (CVV, track data, PIN) after authorization
 - Implement MFA for all access into the CDE, not just remote access (v4.0 requirement)
 - Automate vulnerability scanning and patch management to maintain continuous compliance
-- Deploy file integrity [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) on all CDE systems to detect unauthorized changes
+- Deploy file integrity [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) on all CDE systems to detect unauthorized changes
 - Synchronize clocks across all CDE systems using NTP for accurate log correlation
 - Conduct internal and external penetration tests annually and after significant changes
 - Review all firewall and security group rules semi-annually with documented business justification

@@ -231,7 +231,7 @@ leaves cost and latency on the table.
 
 - **Symptom:** A fine-tuned model deployed straight to 100% of production
   traffic turns out to have a subtle format regression that breaks a
-  downstream parser, causing an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) before anyone notices via manual
+  downstream parser, causing an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) before anyone notices via manual
   review.
   **Fix:** Always canary a newly fine-tuned model behind a small traffic
   percentage with automated output-format/quality checks before full

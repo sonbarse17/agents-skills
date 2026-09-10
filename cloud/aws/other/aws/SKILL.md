@@ -39,7 +39,7 @@ Design, deploy, and manage AWS infrastructure following the Well-Architected Fra
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "AWS", "EC2", "S3", "RDS", "Lambda", "VPC", "IAM", "Well-Architected", "cost optimization", "[CloudFormation](../../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md)", "Terraform AWS", "EKS", "ECS", "ELB", "Security Group", "AWS CLI", "boto3", "SSM", "CloudWatch".
+Exact user phrases: "AWS", "EC2", "S3", "RDS", "Lambda", "VPC", "IAM", "Well-Architected", "cost optimization", "[CloudFormation](../../../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md)", "Terraform AWS", "EKS", "ECS", "ELB", "Security Group", "AWS CLI", "boto3", "SSM", "CloudWatch".
 
 ### Input Context
 Before activating, verify:
@@ -50,7 +50,7 @@ Before activating, verify:
 - Budget constraints (Pay-As-You-Go vs Reserved vs Savings Plans).
 
 ### Output Artifact
-Writes to Terraform HCL, [CloudFormation](../../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md) YAML, AWS CLI commands, IAM policy JSON, and/or CDK [TypeScript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)/[Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md).
+Writes to Terraform HCL, [CloudFormation](../../../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md) YAML, AWS CLI commands, IAM policy JSON, and/or CDK [TypeScript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)/[Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md).
 
 ### Response Format
 HCL, YAML, JSON, or CLI commands with no extraneous explanation.
@@ -63,7 +63,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions.
 - [ ] Compute service selected based on workload characteristics.
 - [ ] Cost optimization tags applied to all resources.
 - [ ] High availability and fault tolerance addressed (multi-AZ).
-- [ ] [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) configured (CloudWatch, EventBridge).
+- [ ] [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) configured (CloudWatch, EventBridge).
 
 ### Max Response Length
 Direct file write. No response text.
@@ -379,7 +379,7 @@ resource "aws_s3_bucket_replication_configuration" "assets" {
 }
 ```
 
-### Step 5: CloudWatch [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
+### Step 5: CloudWatch [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
 ```hcl
 resource "aws_cloudwatch_log_group" "app" {
   name              = "/ecs/app"
@@ -433,7 +433,7 @@ resource "aws_config_config_rule" "required_tags" {
 }
 
 # Cost allocation tags (created once)
-# aws [cloudformation](../../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md) create-stack --stack-name cost-tags --template-body file://cost-tags.yaml
+# aws [cloudformation](../../../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md) create-stack --stack-name cost-tags --template-body file://cost-tags.yaml
 
 # Resource tagging example
 resource "aws_ecs_service" "app" {
@@ -514,7 +514,7 @@ Storing AWS access keys in code, config files, or environment variables. Use IAM
 | RDS connection refused | Security group not allowing traffic | Add app security group to RDS ingress rule |
 | Lambda timeout | Function duration > configured timeout | Increase timeout; optimize function code |
 | ECS task failing | Task role missing permissions | Check task execution role policies; verify image |
-| [CloudFormation](../../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md) rollback | Resource limit or IAM permission | Check CloudTrail for specific error |
+| [CloudFormation](../../../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md) rollback | Resource limit or IAM permission | Check CloudTrail for specific error |
 
 ## Rules & Constraints
 - Never hardcode AWS credentials — use IAM roles, SSO, or aws-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).
@@ -522,14 +522,14 @@ Storing AWS access keys in code, config files, or environment variables. Use IAM
 - Every S3 bucket must have public access blocked unless explicitly required.
 - Use Security Groups over NACLs for instance-level traffic control.
 - Tag all resources with Environment, Project, Owner, and CostCenter.
-- Enable CloudWatch detailed [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) for production workloads.
+- Enable CloudWatch detailed [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) for production workloads.
 - Use PrivateLink or VPC endpoints instead of NAT for AWS service access.
 - Follow the principle of least privilege for all IAM policies.
 - Deploy across minimum 2 Availability Zones.
 - Enable termination protection on production EC2/RDS.
 
 ## Output Format
-Terraform HCL, [CloudFormation](../../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md) YAML, AWS CLI commands, or IAM policy JSON.
+Terraform HCL, [CloudFormation](../../../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md) YAML, AWS CLI commands, or IAM policy JSON.
 
 ## References
   - ../../../Global_References/aws-advanced.md

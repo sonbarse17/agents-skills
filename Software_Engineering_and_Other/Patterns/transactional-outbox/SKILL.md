@@ -66,7 +66,7 @@ Consumer dedup: {key and storage}
 - [ ] Outbox records are deleted or marked processed after successful publish.
 - [ ] Relay handles failures with retry and backoff.
 - [ ] Consumers are idempotent (handle duplicate deliveries).
-- [ ] [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) in place for outbox backlog.
+- [ ] [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) in place for outbox backlog.
 
 ### Max Response Length
 15 lines for design. 8 lines for table schema.
@@ -268,7 +268,7 @@ class BatchedOutboxRelay {
 }
 ```
 
-### Step 7: [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
+### Step 7: [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 
 | Metric | What It Tells | Alert Threshold |
 |--------|--------------|-----------------|
@@ -279,7 +279,7 @@ class BatchedOutboxRelay {
 | Relay processing rate | Throughput | Sudden drop > 50% |
 
 ```sql
--- [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) queries
+-- [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) queries
 -- Backlog count
 SELECT COUNT(*) FROM outbox_messages WHERE processed_at IS NULL;
 
@@ -573,7 +573,7 @@ async function handleOrderCreated(event: OutboxEvent): Promise<void> {
   - ../../../Global_References/outbox-deployment.md — Outbox Deployment
   - ../../../Global_References/outbox-implementation.md — Transactional Outbox Pattern
   - ../../../Global_References/outbox-implementations.md — Outbox Implementations
-  - ../../../Global_References/outbox-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).md — Outbox [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and Recovery
+  - ../../../Global_References/outbox-[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Outbox [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and Recovery
 ## Handoff
 No artifact produced.
 Next skill: message-queue — for message broker configuration once outbox is in place.

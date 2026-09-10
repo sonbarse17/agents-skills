@@ -106,11 +106,11 @@ Loading, transforming, and storing documents:
 
 ### 5. Callbacks & Tracing
 
-LangSmith is the standard for [observability](../../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md):
+LangSmith is the standard for [observability](../../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md):
 
 - Request/response logging
 - Token usage tracking
-- Latency [monitoring](../../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+- Latency [monitoring](../../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - Error tracking
 - Trace visualization
 

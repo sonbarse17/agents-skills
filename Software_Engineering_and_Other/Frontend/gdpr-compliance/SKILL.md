@@ -438,7 +438,7 @@ dpia_template:
   when_required:
     - Systematic and extensive [profiling](../profiling/SKILL.md) with significant effects
     - Large-scale processing of special category data
-    - Systematic [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) of publicly accessible areas
+    - Systematic [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) of publicly accessible areas
     - Any processing on national supervisory authority's list
     - New technologies with likely high risk to rights and freedoms
 
@@ -491,9 +491,9 @@ dpia_template:
       organizational_measures:
         - Staff training on data protection
         - Data protection policies and procedures
-        - [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response procedures
+        - [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response procedures
         - Regular access reviews
-      [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md):
+      [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md):
         - [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging of all data access
         - Anomaly detection for unusual access patterns
         - Regular compliance testing

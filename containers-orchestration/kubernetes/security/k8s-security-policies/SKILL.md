@@ -330,9 +330,9 @@ spec:
 
 - Implement defense in depth
 - Use network segmentation
-- Configure security [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+- Configure security [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - Implement access controls
-- Enable logging and [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+- Enable logging and [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 ## Troubleshooting
 

@@ -36,7 +36,7 @@ depends_on:
 # Cilium and eBPF
 
 ## Purpose
-Implement Cilium-based [Kubernetes](../../other/kubernetes/SKILL.md) networking with eBPF for high-performance networking, security policies, [observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md), and multi-cluster connectivity.
+Implement Cilium-based [Kubernetes](../../other/kubernetes/SKILL.md) networking with eBPF for high-performance networking, security policies, [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md), and multi-cluster connectivity.
 
 ## Architecture Decision Trees
 
@@ -47,7 +47,7 @@ Implement Cilium-based [Kubernetes](../../other/kubernetes/SKILL.md) networking 
 | L7 network policies | Yes (Envoy) | No | No | No |
 | Encryption | WireGuard/IPsec | WireGuard | No | Yes (encrypt) |
 | Cluster mesh | Yes | Yes (multi-interface) | No | Yes |
-| Hubble [observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) | Built-in | No | No | No |
+| Hubble [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) | Built-in | No | No | No |
 | Bandwidth management | Yes (eBPF) | No | No | No |
 | Performance | Near-native | Iptables-based | Overlay | Overlay |
 | eBPF-only features | Yes | No | No | No |
@@ -59,7 +59,7 @@ Implement Cilium-based [Kubernetes](../../other/kubernetes/SKILL.md) networking 
 | Features | Service mesh, bandwidth, encryption | Basic networking |
 | Kernel req | >= 5.10 | >= 4.19 |
 | Migration | Requires kernel support | Safe fallback |
-| [Observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) | Hubble per-packet | Limited |
+| [Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) | Hubble per-packet | Limited |
 
 ### Network Policy Enforcement
 | Policy Type | Cilium CRD | Traditional K8s | L7 Aware | Performance |
@@ -69,7 +69,7 @@ Implement Cilium-based [Kubernetes](../../other/kubernetes/SKILL.md) networking 
 | Cluster-wide | CiliumClusterWideNetworkPolicy | Not supported | Yes | eBPF |
 | DNS-based | ToFQDN | Not supported | No | eBPF |
 
-### Hubble vs Prometheus for [Observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
+### Hubble vs Prometheus for [Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
 | Feature | Hubble | Prometheus |
 |---|---|---|
 | Data source | eBPF (kernel-level, per-packet) | Metrics endpoint (app-level) |
@@ -105,7 +105,7 @@ Kernel supports WireGuard?
 ```
 
 ## Quick Start
-Helm install Cilium → Verify with cilium status → kube-proxy replacement → Network policies (L3/L4, L7) → Hubble for [observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) → Cluster mesh for multi-cluster → Service mesh for L7.
+Helm install Cilium → Verify with cilium status → kube-proxy replacement → Network policies (L3/L4, L7) → Hubble for [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) → Cluster mesh for multi-cluster → Service mesh for L7.
 
 ## Core Workflow
 
@@ -234,7 +234,7 @@ spec:
                 topic: "payments"
 ```
 
-### Step 5: Hubble [Observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
+### Step 5: Hubble [Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
 ```bash
 # Enable Hubble Relay and UI (already enabled in install)
 [kubectl](../../other/kubectl/SKILL.md) port-forward -n kube-system svc/hubble-ui 12000:80
@@ -331,7 +331,7 @@ cilium bpf ipcache list | grep encrypt
 
 ### Step 9: Cilium Service Mesh — L7 Ingress
 ```yaml
-# [service-mesh](../../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)/cilium-ingress.yaml
+# [service-mesh](../../../common/service-mesh/service-mesh/SKILL.md)/cilium-ingress.yaml
 apiVersion: cilium.io/v2alpha1
 kind: CiliumIngress
 metadata:
@@ -401,13 +401,13 @@ helm upgrade cilium cilium/cilium --namespace kube-system --reuse-values \
   --set hubble.metrics.enabled="{dns,drop,tcp,flow,icmp,http}" \
   --set hubble.metrics.destination=prometheus
 
-# Grafana [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) available at:
+# Grafana [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) available at:
 # https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/cilium/cilium/tree/main/install/[kubernetes](../../other/kubernetes/SKILL.md)/cilium/environment/hubble/grafana
 ```
 
 ### Step 13: Cilium Monitor — Real-time Debugging
 ```bash
-# Real-time packet flow [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+# Real-time packet flow [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 cilium monitor --verbose
 
 # Monitor specific service
@@ -445,10 +445,10 @@ cilium identity get <identity-id>
 
 | Feature | Cilium | Tetragon | Falco | Tracee |
 |---|---|---|---|---|
-| Use case | Network & security | Process & syscall [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) | System call security | Runtime security |
+| Use case | Network & security | Process & syscall [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) | System call security | Runtime security |
 | eBPF hooks | TC, XDP, cgroup, sock | Tracepoints, kprobes | Kernel modules + eBPF | Tracepoints, kprobes |
 | Network policies | Yes (L3-L7) | No (process focus) | No | No |
-| Process [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) | Basic | Deep (exec, file, network) | Syscalls | Syscalls |
+| Process [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) | Basic | Deep (exec, file, network) | Syscalls | Syscalls |
 | K8s integration | Native | Native | Plugin | Plugin |
 | CRD policies | Yes (NetworkPolicy) | Yes (TracingPolicy) | Rules file | Rules file |
 | Prometheus metrics | Yes (Hubble) | Yes | Yes | Yes |
@@ -558,7 +558,7 @@ Allowing all HTTP methods/paths without restrictions. L7 policies should be as s
 Not restricting pod egress traffic. Pods should only be allowed to talk to required services (API server, DNS, specific endpoints).
 
 ### Anti-Pattern 7: Hubble Disabled for Performance Reasons
-Disabling Hubble thinking it adds overhead. Hubble's eBPF-based [observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) has negligible overhead (< 5% CPU) and provides invaluable debugging.
+Disabling Hubble thinking it adds overhead. Hubble's eBPF-based [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) has negligible overhead (< 5% CPU) and provides invaluable debugging.
 
 ## Rules & Constraints
 - Kernel >= 5.10 required for full eBPF features.
@@ -578,9 +578,9 @@ Disabling Hubble thinking it adds overhead. Hubble's eBPF-based [observability](
   - ../../../Global_References/cluster-mesh.md
   - ../../../Global_References/ebpf-deep-dive.md
   - ../../../Global_References/network-policies.md
-  - ../../../Global_References/[observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-hubble.md
-  - references/cilium-[service-mesh](../../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-guide.md
+  - ../../../Global_References/[observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)-hubble.md
+  - references/cilium-[service-mesh](../../../common/service-mesh/service-mesh/SKILL.md)-guide.md
 
 ## Handoff
-Next: **[service-mesh](../../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)** — Istio/Linkerd service mesh integration with Cilium.
+Next: **[service-mesh](../../../common/service-mesh/service-mesh/SKILL.md)** — Istio/Linkerd service mesh integration with Cilium.
 

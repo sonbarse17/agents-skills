@@ -28,7 +28,7 @@ depends_on:
 | Property | Details |
 |---|---|
 | Best for | Compliance scans, security audits, Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) expiration checks |
-| Primary capabilities | Comprehensive Resources Assessment, Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Expiration [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) |
+| Primary capabilities | Comprehensive Resources Assessment, Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Expiration [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) |
 | MCP tools | azqr, subscription and resource group listing, Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) item inspection |
 
 ## When to Use This Skill
@@ -84,7 +84,7 @@ Activate this skill when user wants to:
 1. Select scope (subscription or resource group) for Comprehensive Resources Assessment.
 2. Run azqr and capture output artifacts.
 3. Analyze Scan Results and summarize findings and recommendations.
-4. Review Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Expiration [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) output for keys, secrets, and certificates.
+4. Review Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Expiration [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) output for keys, secrets, and certificates.
 5. Classify issues and propose remediation or fix steps for each finding.
 
 ### Priority Classification

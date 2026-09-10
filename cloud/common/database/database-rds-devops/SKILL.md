@@ -42,7 +42,7 @@ This skill uses the **rds-aidba** MCP server (`mcp/rds-aidba/`) for database-lev
 | `get_serverless_capacity` | cluster_identifier | [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) v2 [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) |
 
 ### Three-Layer Architecture
-Layer 1: AWS CLI (Control Plane) - Always available Layer 2: CloudWatch ([Observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)) - Always available Layer 3: rds-aidba MCP (Data Plane) - Requires MCP server deployed
+Layer 1: AWS CLI (Control Plane) - Always available Layer 2: CloudWatch ([Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)) - Always available Layer 3: rds-aidba MCP (Data Plane) - Requires MCP server deployed
 
 
 
@@ -66,7 +66,7 @@ You are a database DevOps expert for Aurora [MySQL](../../../../Software_Enginee
 - `../../../Global_References/[postgresql](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-health-checks.md` — 4 [PostgreSQL](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) diagnostic queries
 - `../../../Global_References/aurora-validation-checklist.md` — 33-check operational validation framework
 - `../../../Global_References/database-rds-devops_best-practices.md` — Platform-specific best practices (Aurora vs RDS vs EC2)
-- `../../../Global_References/troubleshooting-[runbooks](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md).md` — Decision-tree troubleshooting for 8 common scenarios
+- `../../../Global_References/troubleshooting-[runbooks](../../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md).md` — Decision-tree troubleshooting for 8 common scenarios
 - `../../../Global_References/mcp-setup.md` — MCP server deployment and configuration guide
 
 ### Operating Modes
@@ -127,7 +127,7 @@ Score dimensions on a binary scale (0 or 5 points each):
 | Major Version Currency | Current major = latest available major | 5 |
 | Minor Version Currency | Current minor = latest available minor | 5 |
 | Storage Encryption | StorageEncrypted = true | 5 |
-| Enhanced [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) | MonitoringInterval ≤ 60 on all instances | 5 |
+| Enhanced [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) | MonitoringInterval ≤ 60 on all instances | 5 |
 | Performance Insights | Enabled + RetentionPeriod ≥ 465 days | 5 |
 | Multi-AZ Readers | ≥1 reader in different AZ from writer | 5 |
 | Backup Retention | BackupRetentionPeriod ≥ 7 days | 5 |
@@ -141,7 +141,7 @@ Score dimensions on a binary scale (0 or 5 points each):
 - Same as above minus Backtrack
 
 **Database-Level Score (8 dimensions, 50 points max):**
-- Connection Health, Buffer Pool, Replication, Lock Health, [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), Storage, Index Efficiency, Instrumentation
+- Connection Health, Buffer Pool, Replication, Lock Health, [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), Storage, Index Efficiency, Instrumentation
 
 **Combined Maximum: 110 points (Aurora [MySQL](../../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)) or 105 points (Aurora [PostgreSQL](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md))**
 
@@ -351,7 +351,7 @@ Query: fields @timestamp, @message | filter @message like /ERROR|FATAL|PANIC|dur
 | Buffer Pool | Auto-warmed after restart | Cold start after restart |
 | Backtrack | Supported (rewind without restore) | Not available |
 | Read Replicas | Up to 15, same storage volume | Up to 5, async binlog |
-| [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) | `[mysql](../../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md).ro_replica_status` available | `SHOW REPLICA STATUS` only |
+| [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) | `[mysql](../../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md).ro_replica_status` available | `SHOW REPLICA STATUS` only |
 
 ---
 

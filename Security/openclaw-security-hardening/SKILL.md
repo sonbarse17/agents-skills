@@ -70,7 +70,7 @@ Example reverse proxy controls to enforce:
 ## Protect Secrets and Tokens
 
 - Store secrets in a [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) or platform secret manager, not committed `.env` files.
-- Rotate provider and admin tokens on a fixed interval and after any [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+- Rotate provider and admin tokens on a fixed interval and after any [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 - Scope tokens minimally (least privilege, per-service keys).
 - Scan repos and deployment artifacts for leaked credentials before release.
 
@@ -99,11 +99,11 @@ Do not publish raw OpenClaw service ports directly to the internet.
 - Capture immutable backup snapshots of configs and prompt data retention settings.
 - Test rollback and restore procedures every release cycle.
 
-Minimum operational [runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md):
+Minimum operational [runbook](../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md):
 
 - service restart path
 - key revocation path
-- [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) isolation path (network block + token disable)
+- [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) isolation path (network block + token disable)
 - known-good rollback version
 
 ## Validation Checklist

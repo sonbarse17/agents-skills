@@ -530,7 +530,7 @@ launch_day_checklist:
     - Deploy to production
     - Verify health check returns 200
     - Execute test queries against production
-    - Confirm [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) data flowing
+    - Confirm [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) data flowing
 
   communicate:
     - Publish blog post and changelog
@@ -632,7 +632,7 @@ tier_design:
 - [Developer Experience](../../../Product_and_Business/developer-experience/SKILL.md).md) — DX principles, SDKs, documentation, error messages
 - [Developer Portal](../../../Global_References/developer-portal.md) — Developer portal design, self-service onboarding, analytics
 - [Monetization](../../../Global_References/monetization.md) — Pricing models, usage tracking, rate limiting tiers
-- [Product Metrics](../../../Global_References/product-metrics.md) — Adoption, DX, reliability, and business metrics with [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md)
+- [Product Metrics](../../../Global_References/product-metrics.md) — Adoption, DX, reliability, and business metrics with [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)
 - [API Consumer Insights](../../../Global_References/api-consumer-insights.md) — Consumer lifecycle, health scoring, churn prediction
 - [API Governance](../../../Global_References/api-governance.md) — Governance framework, API council, design standards
 - [API Stakeholder Management](../../../Global_References/api-stakeholder-management.md) — Stakeholder mapping, communication, escalation

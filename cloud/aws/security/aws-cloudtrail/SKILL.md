@@ -24,7 +24,7 @@ depends_on:
 - Enabling organization-wide [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging across all AWS accounts
 - Investigating security incidents or unauthorized API activity
 - Meeting compliance requirements for SOC 2, HIPAA, PCI DSS, or FedRAMP
-- Setting up automated [alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) on sensitive AWS API calls
+- Setting up automated [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) on sensitive AWS API calls
 - Querying historical AWS activity for forensic analysis
 
 ## Create an Organization Trail

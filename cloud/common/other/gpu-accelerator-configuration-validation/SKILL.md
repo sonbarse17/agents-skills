@@ -231,7 +231,7 @@ misconfiguration before hours or days of compute are wasted.
 - Validate at three independent layers: admission-time policy (catches bad
   manifests before scheduling), the in-job fail-fast assertion (catches
   runtime CUDA/driver issues the scheduler can't see), and post-hoc
-  [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) on `DCGM_FI_DEV_GPU_UTIL` for the pod (catches a job that got
+  [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) on `DCGM_FI_DEV_GPU_UTIL` for the pod (catches a job that got
   a GPU allocation but isn't actually using it, e.g. a data-loading
   bottleneck or a code path that never calls `.cuda()`).
 - Keep a single source of truth for the resource key naming convention
@@ -262,7 +262,7 @@ misconfiguration before hours or days of compute are wasted.
   job silently falling back to CPU produces no error and no alert, just
   wasted compute budget and a delayed result. Treat any GPU-labeled job
   without an in-job fail-fast CUDA assertion as unvalidated and at risk of
-  this failure mode, and add GPU-utilization [alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) rather than relying
+  this failure mode, and add GPU-utilization [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) rather than relying
   on someone noticing run duration by eye.
   **Fix:** Add the in-job `torch.cuda.is_available()` (or framework
   equivalent) assertion from step 5, plus admission-time enforcement from
@@ -303,7 +303,7 @@ misconfiguration before hours or days of compute are wasted.
   from their pod spec, and the (still GPU-intended) job now silently runs
   on CPU with no policy check applied at all.
   **Fix:** Don't rely solely on a workload-shaped label the job author
-  controls as the enforcement trigger; also add a [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-side check
+  controls as the enforcement trigger; also add a [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-side check
   independent of pod labels — e.g. alert when a container image known to
   be a GPU-training image is running on a node with no GPU resource
   allocation, using image name/tag as the trigger instead of a

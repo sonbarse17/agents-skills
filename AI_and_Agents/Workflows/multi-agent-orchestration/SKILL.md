@@ -243,7 +243,7 @@ fan-in:
 ```
 
 Each sub-agent gets a narrow prompt and only the 1–2 tools its section
-needs — the PR summarizer never sees [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) tools or vice versa — and
+needs — the PR summarizer never sees [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) tools or vice versa — and
 the whole run is capped at exactly 3 parallel sub-agents with no further
 delegation allowed, keeping cost bounded and predictable per digest run.
 The aggregator is evaluated separately (does it preserve every source

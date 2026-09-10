@@ -193,7 +193,7 @@ auth, cooldowns) before production is covered separately in
    triggers:
      - type: prometheus
        metadata:
-         serverAddress: http://prometheus.[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).svc:9090
+         serverAddress: http://prometheus.[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).svc:9090
          metricName: pending_orders_count
          query: sum(pending_orders_total{queue="fulfillment"})
          threshold: "100"
@@ -405,7 +405,7 @@ spec:
 `maxReplicaCount: 15` was chosen deliberately after confirming the
 downstream payment API's connection pool and rate limit can absorb 15
 concurrent consumer instances without being overwhelmed — a value picked
-without that check would just move the bottleneck (and the [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md))
+without that check would just move the bottleneck (and the [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md))
 downstream instead of preventing it. During a flash sale, lag crosses
 100 messages per partition, KEDA's generated HPA scales `order-consumer`
 toward 15 replicas over a few polling intervals, and once lag drops back

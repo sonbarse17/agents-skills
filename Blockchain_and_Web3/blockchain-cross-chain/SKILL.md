@@ -175,7 +175,7 @@ Source finality model:
 | Governance attack | Bridge governance taken over | Timelock, multi-sig, progressive decentralization |
 
 ### Historical Bridge Exploits
-| [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) | Bridge | Loss | Cause | Date |
+| [Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) | Bridge | Loss | Cause | Date |
 |----------|--------|------|-------|------|
 | Wormhole | Wormhole | $326M | Guardian signature compromise | Feb 2022 |
 | Ronin | Ronin | $624M | Private key compromise of 5/9 validators | Mar 2022 |
@@ -366,7 +366,7 @@ contract CrossChainMessenger {
 Relayer costs:
 ├── Source chain: gas for observing events (read operations, cheap)
 ├── Destination chain: gas for submitting messages (write operations)
-├── Infrastructure: node operation, [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), [alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
+├── Infrastructure: node operation, [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), [alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 └── Capital: pre-funded gas on destination chains
 
 Revenue models:
@@ -403,8 +403,8 @@ Relayer sustainability:
   - ../../../Global_References/atomic-composability.md — Atomic Composability Across Chains
   - ../../../Global_References/blockchain-cross-chain-advanced.md — Blockchain Cross Chain Advanced Topics
   - ../../../Global_References/blockchain-cross-chain-fundamentals.md — Blockchain Cross Chain Fundamentals
-  - ../../../Global_References/bridge-[incident-response](../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md).md — Bridge [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response
-  - ../../../Global_References/bridge-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-[alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md).md — Bridge [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
+  - ../../../Global_References/bridge-[incident-response](../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md).md — Bridge [Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response
+  - ../../../Global_References/bridge-[monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-[alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md).md — Bridge [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
   - ../../../Global_References/bridge-security.md — Bridge Security
   - ../../../Global_References/ccip-chainlink.md — Chainlink CCIP (Cross-Chain Interoperability Protocol)
   - ../../../Global_References/ibc-deep.md — IBC (Inter-Blockchain Communication) Deep Dive

@@ -58,7 +58,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions.
 - Droplets or DOKS cluster are provisioned with HA.
 - Managed database is deployed with backups and connection pooling.
 - App Platform or Container Registry is set up.
-- [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) are configured.
+- [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) are configured.
 
 ## Architecture / Decision Trees
 
@@ -145,7 +145,7 @@ resource "digitalocean_droplet" "app" {
   vpc_uuid = digitalocean_vpc.main.id
   ssh_keys = [data.digitalocean_ssh_key.terraform.id]
 
-  [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) = true
+  [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) = true
   backups    = true
 
   user_data = <<-EOF
@@ -379,7 +379,7 @@ resource "digitalocean_spaces_bucket" "backups" {
 }
 ```
 
-### Step 8: [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and Alerts
+### Step 8: [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and Alerts
 ```hcl
 resource "digitalocean_monitor_alert" "cpu" {
   type       = "v1/insights/droplet/cpu"
@@ -426,7 +426,7 @@ resource "digitalocean_monitor_alert" "disk" {
 | Floating IP | Elastic IP | Public IP | Static IP |
 | Functions | Lambda | Functions | Cloud Functions |
 | Spaces CDN | CloudFront | CDN | Cloud CDN |
-| [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) | CloudWatch | Monitor | Cloud [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) |
+| [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) | CloudWatch | Monitor | Cloud [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) |
 | DNS | Route 53 | DNS | Cloud DNS |
 
 ### Droplet Sizing Guide
@@ -455,11 +455,11 @@ Direct database connections from application code exhaust database connection li
 ### Anti-Pattern 4: Ignoring Backups
 Without automated backups, data loss from accidental deletion, corruption, or failed migration is permanent. Enable backups on all Droplets, databases, and Spaces. Test backup restoration quarterly.
 
-### Anti-Pattern 5: Overprovisioning Without [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
-Choosing oversized Droplets without [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) leads to wasted spend. Start with s-2vcpu-4gb, monitor CPU/memory/disk, right-size based on 14-day utilization. Enable DO [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) for all resources.
+### Anti-Pattern 5: Overprovisioning Without [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+Choosing oversized Droplets without [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) leads to wasted spend. Start with s-2vcpu-4gb, monitor CPU/memory/disk, right-size based on 14-day utilization. Enable DO [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) for all resources.
 
 ### Anti-Pattern 6: No Tags on Resources
-Without tags (environment, project, team), cost allocation and resource management become manual and error-prone. Tag all resources. Use tags in [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and cost reports.
+Without tags (environment, project, team), cost allocation and resource management become manual and error-prone. Tag all resources. Use tags in [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and cost reports.
 
 ## Production Considerations
 
@@ -474,7 +474,7 @@ Without tags (environment, project, team), cost allocation and resource manageme
 ### Security
 - Always use Cloud Firewall -- never rely on Droplet-level iptables alone.
 - Restrict SSH access to VPC IP range or bastion host.
-- Enable DO [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) for security event detection.
+- Enable DO [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) for security event detection.
 - Use Container Registry with limited access scopes.
 - Rotate DO API tokens regularly.
 - Enable automatic security updates on Droplets.
@@ -484,7 +484,7 @@ Without tags (environment, project, team), cost allocation and resource manageme
 ### Cost Optimization
 - Use CPU-optimized (c-) Droplets for compute-heavy workloads.
 - Use memory-optimized (m-) Droplets for in-memory workloads.
-- Right-size based on 14-day DO [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) data.
+- Right-size based on 14-day DO [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) data.
 - Use Reserved Droplets for baseline [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) (up to 30% discount).
 - Enable backups only on critical Droplets.
 - Clean up unattached volumes and unused Floating IPs.
@@ -516,7 +516,7 @@ Without tags (environment, project, team), cost allocation and resource manageme
 - Never hardcode DO API tokens -- use DIGITALOCEAN_TOKEN env var or doctl auth.
 - Always place Droplets and DOKS inside a VPC for private networking.
 - Use Cloud Firewall over individual Droplet firewalls for centralized management.
-- Enable [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and backups on all production Droplets.
+- Enable [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and backups on all production Droplets.
 - All managed databases must have at least 2 nodes for production HA.
 - Use connection pooling for production database workloads.
 - Enable Container Registry with appropriate subscription tier.

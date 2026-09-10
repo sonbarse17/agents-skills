@@ -37,12 +37,12 @@ depends_on:
 Every cloud-specific MLOps platform in this family (AWS, Azure, GCP)
 leans on at least one managed service somewhere in the stack — a managed
 [Kubernetes](../../other/kubernetes/SKILL.md) control plane, a managed model registry, a managed drift-
-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) product, or all three. This skill is the path for teams that
+[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) product, or all three. This skill is the path for teams that
 cannot or choose not to depend on any vendor-managed ML service at all:
 running on any [Kubernetes](../../other/kubernetes/SKILL.md) cluster (a cloud-provisioned one used purely for
 raw compute, an on-prem cluster, or a [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) lab cluster), with every
 layer — GPU scheduling, experiment tracking, model registry, serving, and
-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) — operated by the team itself. The tradeoff is real and this
+[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) — operated by the team itself. The tradeoff is real and this
 skill is explicit about it: full control and zero managed-service lock-in,
 at the cost of also owning every durability, upgrade, and on-call concern
 a managed service would otherwise absorb. Getting the sequence wrong here
@@ -219,12 +219,12 @@ alternative.
    managed-cloud skills in this family where workload identity removes
    that burden entirely.
 
-8. **Phase 8 — [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and drift detection.** Run a self-hosted
+8. **Phase 8 — [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and drift detection.** Run a self-hosted
    Evidently (or equivalent) job on a schedule, reading logged inference
    requests/responses and writing drift metrics to a self-hosted
    Prometheus/Grafana stack, applying the reference-baseline and
-   [alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) discipline from
-   [model-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md).
+   [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) discipline from
+   [model-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md).
    As on every other cloud in this family, this must be live and
    confirmed collecting data **before** Phase 7's canary is ramped past
    its first traffic stage.
@@ -291,15 +291,15 @@ alternative.
 
 - **Symptom:** A model promoted through Phase 4's registry and deployed
   via Phase 7 has a real regression that goes unnoticed for weeks.
-  **Fix:** Phase 8's [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) was stood up after, not before, Phase 7's
+  **Fix:** Phase 8's [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) was stood up after, not before, Phase 7's
   canary went live — identical sequencing risk to every managed-cloud
   skill in this family, but with no vendor-provided default dashboard
-  to fall back on if the self-hosted [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) job's cron schedule was
+  to fall back on if the self-hosted [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) job's cron schedule was
   never actually verified to be running.
 
 - **Symptom:** Months into operating this platform, the team is
   spending more engineering time on Postgres/MinIO/KServe upgrades and
-  [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response than on actual ML work, and morale/velocity suffers.
+  [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response than on actual ML work, and morale/velocity suffers.
   **Fix:** This is the operational-burden tradeoff this skill exists to
   flag honestly before commitment, not a problem to engineer around after
   the fact — if the team's actual [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) doesn't match what Phases 4,
@@ -377,4 +377,4 @@ it.
 - [training-pipeline-orchestration](../[training-pipeline-orchestration](../../../AI_and_Agents/Models_and_FineTuning/training-pipeline-orchestration/SKILL.md)/SKILL.md) — Phase 5's vendor-neutral DAG/gate principles.
 - [feature-store-design](../[feature-store-design](../../../Data_Engineering/feature-store-design/SKILL.md)/SKILL.md) — Phase 6's optional feature layer.
 - [model-serving-and-scaling](../[model-serving-and-scaling](../../../AI_and_Agents/Models_and_FineTuning/model-serving-and-scaling/SKILL.md)/SKILL.md) — Phase 7's canary/shadow rollout.
-- [model-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md) — Phase 8's drift/quality [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
+- [model-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md) — Phase 8's drift/quality [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).

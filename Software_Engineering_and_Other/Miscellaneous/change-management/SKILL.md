@@ -57,7 +57,7 @@ change_types:
       - Non-critical configuration changes
       - Feature flag toggles
       - Documentation updates to production systems
-      - Adding [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) or alerts
+      - Adding [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) or alerts
 
   normal_medium:
     risk: Medium
@@ -145,7 +145,7 @@ change_request:
     post_change_verification:
       - "Health check endpoints responding"
       - "Key transactions processing successfully"
-      - "No error rate increase in [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)"
+      - "No error rate increase in [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)"
       - "Performance metrics within baseline"
 
   rollback:
@@ -235,9 +235,9 @@ emergency_change_process:
   step_1_declare:
     actions:
       - On-call engineer identifies need for emergency change
-      - [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) commander approves emergency classification
+      - [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) commander approves emergency classification
       - Minimum 2 approvers from emergency CAB roster contacted
-      - Document initial justification in [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) channel
+      - Document initial justification in [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) channel
 
   step_2_approve:
     approval_method:
@@ -324,7 +324,7 @@ emergency_change_process:
 - [ ] Health checks passing
 - [ ] Error rates within baseline
 - [ ] Key transactions working
-- [ ] [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) reviewed
+- [ ] [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) reviewed
 
 ### Communication
 - [ ] Team notified
@@ -451,7 +451,7 @@ change_freeze:
 ```yaml
 metrics:
   change_success_rate:
-    description: "Percentage of changes implemented without rollback or [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)"
+    description: "Percentage of changes implemented without rollback or [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)"
     target: ">95%"
     formula: "(successful changes / total changes) * 100"
 

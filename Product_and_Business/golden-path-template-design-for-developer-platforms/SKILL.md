@@ -30,7 +30,7 @@ depends_on:
 
 A golden path is the platform team's answer to "how do I start a new
 service" — a scaffolding template that produces a service with a working
-CI pipeline, a Dockerfile, base [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) instrumentation, catalog
+CI pipeline, a Dockerfile, base [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) instrumentation, catalog
 registration, and a security baseline already wired in, so most teams
 never have to make those decisions themselves. The operational risk is at
 either extreme: a template with too many knobs turns into an unmaintainable
@@ -56,7 +56,7 @@ sanctioned, tracked decision rather than an invisible fork.
   branches in its scaffolder steps that changing it risks breaking
   combinations nobody tests.
 - Deciding what the template should hardcode vs. parameterize (base image
-  version, CI runner size, [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) agent version).
+  version, CI runner size, [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) agent version).
 - Standing up governance for who owns the golden path and how other teams
   propose changes to it.
 - A previously scaffolded service breaks after an unrelated template change,
@@ -74,7 +74,7 @@ sanctioned, tracked decision rather than an invisible fork.
   GitLab) so template changes go through review, not direct pushes to the
   templates repo's default branch.
 - An existing (even minimal) CI pipeline standard, base container image,
-  and [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) agent/library the platform already endorses — a golden
+  and [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) agent/library the platform already endorses — a golden
   path packages existing platform decisions, it doesn't invent them from
   scratch.
 - A defined security baseline (e.g. required non-root Dockerfile `USER`,
@@ -117,7 +117,7 @@ sanctioned, tracked decision rather than an invisible fork.
      name: golden-path-service-standard
      title: "Standard Service (Golden Path — Tier 2: API + Datastore)"
      description: >
-       CI, Dockerfile, [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md), catalog registration, and a
+       CI, Dockerfile, [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md), catalog registration, and a
        provisioned datastore. Use golden-path-service-minimal if the
        service has no persistent state.
      tags: [golden-path, tier-2]
@@ -257,7 +257,7 @@ sanctioned, tracked decision rather than an invisible fork.
 - **Prefer a small enum of supported values over a free-text parameter**
   for anything the platform has to operate long-term (runtime, base image,
   datastore engine) — a free-text `runtime: string` with no validation
-  looks flexible but produces services the CI fleet and [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
+  looks flexible but produces services the CI fleet and [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
   stack were never built to support.
 - **Keep the skeleton a set of files with placeholders, not scaffolder
   logic with deep conditionals** — a `fetch:template` skeleton diffed in a

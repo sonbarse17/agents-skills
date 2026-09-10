@@ -94,7 +94,7 @@ case it correctly allows.
 A policy file that checks tagging, encryption, and instance sizing together is hard to debug when
 it fails, and impossible to promote to enforcing incrementally — one false positive on tagging
 blocks legitimate encryption enforcement too. Keep policies narrow and composable, the same
-argument made for modules in `[terraform-modules](../../DevOps_and_Cloud/Infrastructure_as_Code/terraform-modules/SKILL.md)`.
+argument made for modules in `[terraform-modules](../../infrastructure-as-code/terraform/modules/terraform-modules/SKILL.md)`.
 
 - **One rule per policy**, named for the specific thing it denies — `deny-public-s3-acl`, not
   `s3-policy`.

@@ -270,7 +270,7 @@ storage cost line item.
 
 1. Query S3 Storage Lens / CloudTrail data-event logs to confirm actual
    access pattern: 95%+ of objects older than 30 days have zero GET
-   requests; the remaining 5% (recent [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-investigation lookups)
+   requests; the remaining 5% (recent [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-investigation lookups)
    are accessed within the first 90 days only.
 2. Design a lifecycle policy: Standard for 0-30 days, Standard-IA for
    30-90 days, Glacier Flexible Retrieval for 90-365 days, expire
@@ -284,7 +284,7 @@ storage cost line item.
    configuration (relying on account defaults that changed over time).
 4. Roll out the lifecycle policy to a 10% sample of prefixes first,
    monitor for a week to confirm no unexpected retrieval-fee spike from
-   the [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-investigation access pattern colliding with the Glacier
+   the [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-investigation access pattern colliding with the Glacier
    tier's retrieval latency, then apply to the remaining prefixes.
 5. Result: storage cost for this bucket drops materially (moving the
    bulk of aged data out of Standard tier) while the 90-day

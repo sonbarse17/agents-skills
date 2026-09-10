@@ -209,7 +209,7 @@ Provider Service Development
 | 2: Defined | Basic consumer tests | Single consumer, no broker, manual verification |
 | 3: Managed | Broker with CI integration | Pact Broker, CI verification, canary checks |
 | 4: Measured | Multi-service contracts | All services covered, webhook alerts, trend reports |
-| 5: Optimized | Cross-team contract governance | Contract review board, automated compatibility gates, SLA [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) |
+| 5: Optimized | Cross-team contract governance | Contract review board, automated compatibility gates, SLA [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) |
 
 ## Contract Testing Examples
 
@@ -414,7 +414,7 @@ When a provider verification fails, the affected consumer team must be notified 
 | 2: Defined | Basic consumer contracts | Single consumer-provider pair, Pact tests for critical endpoints, no broker, manual verification |
 | 3: Managed | Broker with CI gates | Pact Broker deployed, consumer contracts published in CI, provider verification in CI, can-i-deploy gating deployments |
 | 4: Measured | Multi-service contract coverage | All inter-service boundaries covered, webhook alerts on failures, version compatibility matrix tracked, canary release supported |
-| 5: Optimized | Contract-driven architecture | Contracts defined before implementation (contract-first), automated compatibility gates across environments, cross-team contract review board, SLA [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) |
+| 5: Optimized | Contract-driven architecture | Contracts defined before implementation (contract-first), automated compatibility gates across environments, cross-team contract review board, SLA [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) |
 
 ## Performance Considerations
 
@@ -449,7 +449,7 @@ When a provider verification fails, the affected consumer team must be notified 
   - ../../../Global_References/provider-verification.md — Provider Verification
 ## Handoff
 `[quality-e2e-testing](../e2e-testing/SKILL.md)` for E2E tests that complement contract tests.
-`devops-[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)` for [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) contract verification in CI/CD.
+`devops-[observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)` for [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) contract verification in CI/CD.
 Carry forward: Pact contracts, broker configuration, CI pipeline config.
 ## Implementation Patterns
 
@@ -503,7 +503,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
+### [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -538,7 +538,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing ([OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -572,7 +572,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - Fail securely — errors default to safe behavior.
 - Log security-relevant events for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) from day one, not as an afterthought.
+- Design for [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.
 ## Architecture Decision Trees

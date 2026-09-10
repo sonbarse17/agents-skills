@@ -27,10 +27,10 @@ depends_on:
 
 You are a **senior platform engineer surveying an entire estate — an advisor,
 not an operator**. Your job is to map what exists (IaC, clusters, pipelines,
-cloud accounts, [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)), find the highest-leverage risks and waste, and
+cloud accounts, [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)), find the highest-leverage risks and waste, and
 write remediation plans a *different, less capable agent with zero context* can
 execute. The audit is broad; deep domain dives delegate to the focused skills
-(`/[k8s-review](../../../containers-orchestration/kubernetes/troubleshooting/k8s-review/SKILL.md)`, `/[terraform-review](../../../DevOps_and_Cloud/Infrastructure_as_Code/terraform-review/SKILL.md)`, etc.).
+(`/[k8s-review](../../../containers-orchestration/kubernetes/troubleshooting/k8s-review/SKILL.md)`, `/[terraform-review](../../../infrastructure-as-code/terraform/troubleshooting/terraform-review/SKILL.md)`, etc.).
 
 Shared contract: [../docs/skill-contract.md](../docs/skill-contract.md) — hard
 rules, environment preflight, effort levels, output paths, the findings table,
@@ -59,11 +59,11 @@ specific to a broad estate audit.
 Map the estate before judging it:
 
 - Inventory what is present: IaC (`*.tf`, `*.yaml`, Helm charts, [Kustomize](../../../containers-orchestration/kustomize/other/kustomize/SKILL.md),
-  [CloudFormation](../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md), [Pulumi](../../../DevOps_and_Cloud/Infrastructure_as_Code/pulumi/SKILL.md)), CI/CD config, container definitions, cloud accounts
-  and regions in scope, [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) stack.
+  [CloudFormation](../../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md), [Pulumi](../../../infrastructure-as-code/pulumi/other/pulumi/SKILL.md)), CI/CD config, container definitions, cloud accounts
+  and regions in scope, [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) stack.
 - Identify environments (prod/staging/dev), the deployment model, and the blast
   radius of each system.
-- Read READMEs, [runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md), ADRs, and architecture docs — decided tradeoffs
+- Read READMEs, [runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md), ADRs, and architecture docs — decided tradeoffs
   recorded there are by-design, not findings (but a stale doc that contradicts
   reality *is* a finding).
 - Note the **verification story**: is there a way to know a change is safe
@@ -84,10 +84,10 @@ shape, plus Hard Rules 3 and 5 verbatim (subagents do not inherit them).
   segmentation. (Deep dive: `/[security-review](../../../Security/security-review/SKILL.md)`.)
 - **Cost** — idle/over-provisioned resources, no [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md), unattached
   volumes, old snapshots, missing lifecycle policies. (Deep dive: `/cost`.)
-- **[Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)** — missing metrics/logs/traces, no SLOs, alert gaps or
-  noise, no [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) for critical paths. (Deep dive: `/[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)`.)
+- **[Observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)** — missing metrics/logs/traces, no SLOs, alert gaps or
+  noise, no [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) for critical paths. (Deep dive: `/[observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)`.)
 - **Operability** — manual/toil-heavy processes, no IaC (click-ops drift), no
-  rollback path, missing [runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md), inconsistent environments.
+  rollback path, missing [runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md), inconsistent environments.
 
 ### Phase 3 — Vet, prioritize, confirm
 
@@ -108,7 +108,7 @@ For each selected finding, write one plan per
 [../docs/plan-template.md](../docs/plan-template.md) into `plans/`, with a
 `plans/README.md` index (priority order, dependencies, status). For findings
 that belong to a focused domain, the plan may hand off ("execute via
-`/[terraform-review](../../../DevOps_and_Cloud/Infrastructure_as_Code/terraform-review/SKILL.md) plan ...`") but must still be self-contained.
+`/[terraform-review](../../../infrastructure-as-code/terraform/troubleshooting/terraform-review/SKILL.md) plan ...`") but must still be self-contained.
 
 ## Invocation variants
 
@@ -120,7 +120,7 @@ Effort keywords (`quick` / `standard` / `deep`) and the shared `<focus>` and
 - `quick` → hotspots only: highest-criticality systems, top ~6 HIGH-confidence
   findings.
 - `deep` → exhaustive: every account, environment, and category.
-- Focus argument (`security`, `cost`, `reliability`, `[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)`) → recon
+- Focus argument (`security`, `cost`, `reliability`, `[observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)`) → recon
   then audit only that lens (or defer to the dedicated skill).
 - `plan <description>` → skip the survey; spec one known remediation.
 
@@ -128,9 +128,9 @@ Effort keywords (`quick` / `standard` / `deep`) and the shared `<focus>` and
 
 This skill is the front door; depth belongs to the specialists. Route per the
 [contract's routing table](../docs/skill-contract.md#6-cross-skill-routing) —
-`/[k8s-review](../../../containers-orchestration/kubernetes/troubleshooting/k8s-review/SKILL.md)`, `/[terraform-review](../../../DevOps_and_Cloud/Infrastructure_as_Code/terraform-review/SKILL.md)`, `/[pipeline-review](../../../ci-cd/common/pipeline-design/pipeline-review/SKILL.md)`, `/[docker-review](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-review/SKILL.md)`,
-`/[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)`, `/[security-review](../../../Security/security-review/SKILL.md)`, `/cost`, `/[dr-review](../../../DevOps_and_Cloud/Observability_and_SecOps/dr-review/SKILL.md)`, `/[db-review](../db-review/SKILL.md)`. If
-production is broken right now, stop and use `/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)` instead.
+`/[k8s-review](../../../containers-orchestration/kubernetes/troubleshooting/k8s-review/SKILL.md)`, `/[terraform-review](../../../infrastructure-as-code/terraform/troubleshooting/terraform-review/SKILL.md)`, `/[pipeline-review](../../../ci-cd/common/pipeline-design/pipeline-review/SKILL.md)`, `/[docker-review](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-review/SKILL.md)`,
+`/[observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)`, `/[security-review](../../../Security/security-review/SKILL.md)`, `/cost`, `/[dr-review](../../../containers-orchestration/common/other/dr-review/SKILL.md)`, `/[db-review](../db-review/SKILL.md)`. If
+production is broken right now, stop and use `/[incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)` instead.
 
 ## Before you finish
 

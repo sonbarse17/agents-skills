@@ -258,7 +258,7 @@ resource "google_service_account" "gke_nodes" {
 
 resource "google_project_iam_member" "gke_nodes" {
   for_each = toset([
-    "roles/logging.logWriter", "roles/[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).metricWriter",
+    "roles/logging.logWriter", "roles/[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).metricWriter",
     "roles/artifactregistry.reader",
   ])
   project = var.project_id

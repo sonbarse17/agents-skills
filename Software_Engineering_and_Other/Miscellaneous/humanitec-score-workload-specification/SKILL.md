@@ -244,7 +244,7 @@ infrastructure across dev/staging/prod.
   without touching real infrastructure or waiting on a Terraform apply.
 - Version Resource Definitions the same way as application code (in git,
   reviewed via PR) — a Resource Definition is platform-team-owned
-  [infrastructure-as-code](../../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md), not a one-off console click, and a bad module
+  [infrastructure-as-code](../../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md), not a one-off console click, and a bad module
   reference in one Resource Definition can break every workload in an
   Environment that resolves to it.
 - Keep the number of distinct resource `type`/`class` combinations a
@@ -297,7 +297,7 @@ infrastructure across dev/staging/prod.
   unplanned resize on next deploy.
   **Fix:** Test Resource Definition changes against a non-production
   Environment's resource graph first and gate the change through review,
-  the same as any other [infrastructure-as-code](../../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md) change — see
+  the same as any other [infrastructure-as-code](../../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) change — see
   [humanitec-score-configuration-validation](../[humanitec-score-configuration-validation](../../../DevOps_and_Cloud/CI_CD/humanitec-score-configuration-validation/SKILL.md)/SKILL.md)
   for the dry-run/Resource Graph workflow.
 

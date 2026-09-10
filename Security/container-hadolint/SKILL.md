@@ -455,7 +455,7 @@ gh pr comment --body-file pr-comment.md
 - **Secret Scanning**: Integrate with Gitleaks, TruffleHog for comprehensive secret detection
 - **IaC Security**: Chain with Checkov for [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)/Terraform validation
 - **SBOM Generation**: Export findings alongside Syft/Trivy SBOM reports
-- **Security [Dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md)**: Export JSON to Grafana, Kibana, [Datadog](../../DevOps_and_Cloud/Observability_and_SecOps/datadog/SKILL.md) for centralized [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+- **Security [Dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)**: Export JSON to Grafana, Kibana, [Datadog](../../observability-monitoring-logging/datadog/other/datadog/SKILL.md) for centralized [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 ### SDLC Integration
 

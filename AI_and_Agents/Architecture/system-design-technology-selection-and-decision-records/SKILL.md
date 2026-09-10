@@ -84,7 +84,7 @@ ignoring the other.
   it" reference.
 - Visibility into the organization's actual operational maturity for a
   given technology choice: existing team skills, on-call [capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md),
-  [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) tooling maturity, and appetite for operating a new class
+  [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) tooling maturity, and appetite for operating a new class
   of system — this is what "total cost of ownership" and "team maturity"
   mean concretely in the selection framework below, not an abstract
   concern.
@@ -204,7 +204,7 @@ ignoring the other.
    - Producers/consumers must implement idempotent processing (at-least-
      once delivery, not exactly-once).
    - Introduces a new operational dependency (MSK) requiring on-call
-     familiarity; a Kafka fundamentals [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) and on-call training are
+     familiarity; a Kafka fundamentals [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) and on-call training are
      required before this ships to production (tracked in
      `PLAT-4821`).
    - Reversible in principle by migrating consumers back to direct calls

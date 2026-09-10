@@ -34,7 +34,7 @@ notices. Blue-green and canary strategies exist to decouple *deploying* new
 code from *exposing* it to all traffic, so that a bad release affects a
 small, quickly-reversible blast radius (or none at all, in blue-green's
 case) instead of the whole user base. This matters operationally because
-it turns "did the deploy work?" from a question answered by [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
+it turns "did the deploy work?" from a question answered by [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
 reports into one answered by automated health signals before full rollout.
 
 ## When to use
@@ -154,7 +154,7 @@ reports into one answered by automated health signals before full rollout.
          successCondition: result[0] <= 0.01
          provider:
            prometheus:
-             address: http://prometheus.[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md):9090
+             address: http://prometheus.[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md):9090
              query: |
                sum(rate(http_requests_total{app="payments-api",status=~"5.."}[5m]))
                /
@@ -215,8 +215,8 @@ reports into one answered by automated health signals before full rollout.
   rollback is "flip back" rather than "redeploy from scratch."
 - Base promotion/rollback decisions on the same metrics that page
   on-call for the service (error rate, latency, saturation) — a canary
-  analysis using different signals than production [alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) can pass
-  while production [alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) would have failed, or vice versa.
+  analysis using different signals than production [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) can pass
+  while production [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) would have failed, or vice versa.
 - Start canary weight small (5-10%) for high-traffic services — even a
   short exposure at 10% of a large fleet's traffic is a meaningful sample
   size for catching regressions without meaningful user impact.

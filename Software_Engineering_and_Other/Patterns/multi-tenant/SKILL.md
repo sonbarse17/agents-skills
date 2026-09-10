@@ -41,7 +41,7 @@ Phase 2 - Environment Design: Select isolation model (DB per tenant, schema per 
 
 Phase 3 - Naming and Routing: Implement tenant ID propagation through every layer. Design tenant-aware DNS, API gateway routing, and database connection management.
 
-Phase 4 - Automation: Build tenant provisioning pipeline with IaC. Implement lifecycle automation (provision, onboard, suspend, delete). Create tenant-specific [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md).
+Phase 4 - Automation: Build tenant provisioning pipeline with IaC. Implement lifecycle automation (provision, onboard, suspend, delete). Create tenant-specific [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md).
 
 Phase 5 - Operations: Design cross-tenant operations (analytics, backups, migrations) with isolation guarantees. Implement tenant-level rate limiting, caching, and resource quotas.
 
@@ -174,7 +174,7 @@ Tenant isolation architecture document + lifecycle automation plan + cross-tenan
 ### Cross-Tenant Operations
 {analytics, migrations, backups - how they work across boundaries}
 
-### Operational [Runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md)
+### Operational [Runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md)
 {suspend, data export, full delete}
 ```
 
@@ -187,7 +187,7 @@ No preamble. No postamble. No explanations.
 - [ ] Data isolation verified at storage layer
 - [ ] Tenant-aware rate limiting and caching configured
 - [ ] Cross-tenant operations designed
-- [ ] Tenant deletion/suspension [runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md) written
+- [ ] Tenant deletion/suspension [runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md) written
 - [ ] Tenant migration strategy documented
 
 ### Max Response Length
@@ -208,7 +208,7 @@ Decision matrix:
 The isolation model affects everything downstream: provisioning automation, backup strategy, cross-tenant analytics, cost allocation, and migration complexity. Choose carefully -- changing models later is expensive.
 
 ### Step 2: Tenant Lifecycle Automation
-Implement tenant state machine: Prospect -> Provisioned -> Onboarded -> Active -> Suspended -> Deleted. Automate base infrastructure provisioning with IaC. Configure tenant-specific DNS, TLS, and [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md). Onboard via API or admin UI. Support data export during suspension.
+Implement tenant state machine: Prospect -> Provisioned -> Onboarded -> Active -> Suspended -> Deleted. Automate base infrastructure provisioning with IaC. Configure tenant-specific DNS, TLS, and [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md). Onboard via API or admin UI. Support data export during suspension.
 
 Tenant state machine:
 - Prospect: Interest registered, no resources yet
@@ -242,7 +242,7 @@ Infrastructure isolation considerations:
 - Compute: [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) with tenant-affinity scheduling for noisy-neighbor prevention. Resource quotas per namespace.
 - Storage: Per-tenant buckets/folders with IAM policies. S3 bucket policy per tenant for direct access.
 
-Tenant-level [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md): track requests, errors, latency, and resource usage per tenant. Dashboard for customer-facing health. Tenant-level [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) on anomalies.
+Tenant-level [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md): track requests, errors, latency, and resource usage per tenant. Dashboard for customer-facing health. Tenant-level [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) on anomalies.
 
 ### Step 5: Cross-Tenant Operations
 Design analytics pipeline that aggregates across tenants without exposing individual data. Implement batched migrations that iterate tenants. Build tenant-aware backup/restore. Handle tenant data export for GDPR right to portability.
@@ -343,14 +343,14 @@ Practice 10: Maintain tenant-level [audit](../../../AI_and_Agents/Operations/aud
 6. Configure DNS: tenant-specific subdomain (tenant.example.com)
 7. Generate TLS certificate (automatic with ACME/LetsEncrypt)
 8. Initialize tenant configuration defaults
-9. Create [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) alerts for tenant
+9. Create [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) alerts for tenant
 10. Send welcome notification with access instructions
 11. Update tenant state to Provisioned
 
 Estimated time: 3-5 minutes
 ```
 
-### Tenant Deletion [Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)
+### Tenant Deletion [Runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)
 ```
 ## Tenant Deletion (30-Day Grace Period)
 
@@ -420,7 +420,7 @@ Estimated time: 3-5 minutes
 - Redis with tenant key prefixes for cache isolation
 - Kong / APISIX for API gateway tenant routing
 - OpenPolicyAgent / OPA for tenant access policy enforcement
-- Jaeger / [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) for tenant-span tracing
+- Jaeger / [OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) for tenant-span tracing
 
 ## Case Studies
 
@@ -431,7 +431,7 @@ A healthcare SaaS platform needed HIPAA compliance while serving 200 hospital cu
 A B2B SaaS company started with DB-per-tenant for their initial 50 enterprise customers. When expanding to SMB market (target: 5000 tenants), the operational cost of managing 5000 databases was unsustainable. They migrated to a hybrid model: row-level for SMB tenants (4800), DB-per-tenant for enterprise (200). Migration took 4 months. Cost per tenant dropped 70%. Operational complexity reduced to manageable levels.
 
 ### Case Study 3: Multi-Tenant Data Breach Near-Miss
-A SaaS company with row-level tenant isolation discovered during a security [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) that their GraphQL resolver was not filtering by tenant_id. A malicious tenant could potentially query other tenants data. The vulnerability was caught in [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) before exploitation. Remediation: added tenant ID middleware at GraphQL layer, implemented RLS policies as defense-in-depth, and added automated tenant boundary tests to CI/CD. [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response: treated as security [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), notified affected tenants, accelerated penetration testing schedule.
+A SaaS company with row-level tenant isolation discovered during a security [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) that their GraphQL resolver was not filtering by tenant_id. A malicious tenant could potentially query other tenants data. The vulnerability was caught in [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) before exploitation. Remediation: added tenant ID middleware at GraphQL layer, implemented RLS policies as defense-in-depth, and added automated tenant boundary tests to CI/CD. [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response: treated as security [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), notified affected tenants, accelerated penetration testing schedule.
 
 ### Case Study 4: Global Data Residency Implementation
 A SaaS platform expanding into EU and Asia faced data residency requirements (GDPR in EU, data localization in China). They implemented tenant-level region selection during provisioning. EU tenants stored data in Frankfurt, Asian tenants in Singapore, US tenants in Virginia. Data classified by sensitivity: regulated data (PII) stayed in region, anonymized analytics could cross regions. Cross-region data access logged and audited. Compliance validated with annual audits per region.
@@ -452,7 +452,7 @@ A SaaS platform expanding into EU and Asia faced data residency requirements (GD
 - Tenant data fully deletable (logs, caches, backups all covered).
 - Noisy neighbor detection alerts configured for shared infrastructure.
 - Tenant boundary testing included in security test suite.
-- Tenant-level metrics monitored and [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) configured.
+- Tenant-level metrics monitored and [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) configured.
 - Tenant onboarding supports self-service and sales-assisted flows.
 - Data residency mapped to tenant provisioning region selection.
 - Tenant architecture changes require governance board approval.
@@ -514,8 +514,8 @@ class TenantCache {
 - Event-driven: tenant provision request → SQS/SQS queue → worker → callback webhook.
 - Cost allocation: tag all resources with `tenant_id`. Track spend per tenant in billing system.
 
-### Multi-Tenant [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
-- Per-tenant [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md): request count, error rate, p95 latency, resource usage.
+### Multi-Tenant [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+- Per-tenant [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md): request count, error rate, p95 latency, resource usage.
 - Noisy neighbor detection: alert when single tenant consumes > 30% of shared resource.
 - Tenant-level SLOs: uptime, latency, error rate per tenant. Alert on breach.
 - Usage metering: record per-tenant API calls, storage, compute. Bill accordingly.
@@ -547,7 +547,7 @@ class TenantCache {
 - Authentication: tenant-scoped JWT. Token includes tenant_id, validated on every request.
 - Authorization: middleware extracts tenant_id from token. Rejects multi-tenant queries without tenant context.
 - Data encryption: per-tenant KMS keys for DB-per-tenant model. Shared key with tenant_id context for row-level.
-- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging: all data access logged with tenant_id. Tenant boundary violations treated as security [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging: all data access logged with tenant_id. Tenant boundary violations treated as security [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 - Network isolation: per-tenant VPC for dedicated DB instances. VPC peering for shared services.
 - Backup isolation: per-tenant backup files. Encrypted with tenant-specific key. Cross-tenant restore blocked.
 - Deletion: soft-delete with 30-day grace. Full purge with validation. Backup purge after deletion confirmed.

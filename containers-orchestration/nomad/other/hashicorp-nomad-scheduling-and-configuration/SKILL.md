@@ -88,7 +88,7 @@ topology decisions specific to [Nomad](../nomad/SKILL.md).
      of a `CronJob`).
    - `system` — one instance per eligible client node (the [Nomad](../nomad/SKILL.md) analog
      of a [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) `DaemonSet`), for node-level agents like log
-     shippers or [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) exporters.
+     shippers or [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) exporters.
    - `sysbatch` — batch semantics but run once per eligible node,
      combining `system`'s node-scoping with `batch`'s run-to-completion
      semantics.

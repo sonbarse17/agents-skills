@@ -272,7 +272,7 @@ az acr repository show \
 # Enable vulnerability scanning
 gcloud artifacts repositories update myrepo \
   --location=us-central1 \
-  --enable-[vulnerability-scanning](../../../../DevOps_and_Cloud/Observability_and_SecOps/vulnerability-scanning/SKILL.md)
+  --enable-[vulnerability-scanning](../../../../Security/vulnerability-scanning/SKILL.md)
 
 # View vulnerabilities
 gcloud artifacts [docker](../../other/docker/SKILL.md) images describe \

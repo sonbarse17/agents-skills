@@ -151,7 +151,7 @@ Additional patterns as needed.
 ## Integration Points
 
 - **CI/CD**: How this integrates with build pipelines
-- **Security Tools**: Compatible security scanning/[monitoring](../monitoring/SKILL.md) tools
+- **Security Tools**: Compatible security scanning/[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) tools
 - **SDLC**: Where this fits in the secure development lifecycle
 
 ## Troubleshooting

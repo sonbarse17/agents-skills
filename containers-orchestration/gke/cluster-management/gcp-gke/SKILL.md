@@ -61,7 +61,7 @@ gcloud container clusters create prod-cluster \
   --workload-pool=${PROJECT_ID}.svc.id.goog \
   --enable-ip-alias --enable-network-policy \
   --enable-shielded-nodes \
-  --logging=SYSTEM,WORKLOAD --[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)=SYSTEM,WORKLOAD \
+  --logging=SYSTEM,WORKLOAD --[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)=SYSTEM,WORKLOAD \
   --labels=env=production,team=platform
 
 gcloud container clusters get-credentials prod-cluster --region=us-central1

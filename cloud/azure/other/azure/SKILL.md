@@ -565,9 +565,9 @@ resource policyAssignmentLocations 'Microsoft.Authorization/policyAssignments@20
 | DNS | Azure DNS | Route53 |
 | IAM | Azure AD + RBAC | IAM |
 | Key Management | Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) | KMS |
-| [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) | Azure Monitor | CloudWatch |
+| [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) | Azure Monitor | CloudWatch |
 | CI/CD | Azure DevOps Pipelines | CodePipeline |
-| IaC | Bicep/ARM | [CloudFormation](../../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md)/CDK |
+| IaC | Bicep/ARM | [CloudFormation](../../../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md)/CDK |
 | Governance | Azure Policy | AWS Config |
 
 ## Anti-Patterns
@@ -635,7 +635,7 @@ No budgets, no alerts, no tags for cost allocation. Azure costs can spiral witho
 5. AKS with Azure CNI and Azure AD integration.
 6. Cost allocation via resource tags — every resource gets mandatory tags.
 7. Deployment slots for zero-downtime App Service deployments.
-8. Diagnostic settings enabled on all services for [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) and [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
+8. Diagnostic settings enabled on all services for [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) and [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
 9. Resource locks (CanNotDelete) on production resource groups.
 10. Azure Defender enabled on all subscriptions.
 11. Budget alerts at 50%, 80%, 100%, 200% of forecast.
@@ -655,5 +655,5 @@ Bicep/ARM templates, Azure DevOps YAML pipeline definitions, AKS config, Azure C
   - references/azure-policy-guide.md
 
 ## Handoff
-Hand off to Azure when provisioning Azure-specific infrastructure or pipelines. Hand off to terraform for [multi-cloud](../../../common/other/multi-cloud/SKILL.md) IaC. Hand off to [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) for Azure Monitor configuration.
+Hand off to Azure when provisioning Azure-specific infrastructure or pipelines. Hand off to terraform for [multi-cloud](../../../common/other/multi-cloud/SKILL.md) IaC. Hand off to [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) for Azure Monitor configuration.
 

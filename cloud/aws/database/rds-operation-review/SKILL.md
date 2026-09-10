@@ -74,7 +74,7 @@ Capture per resource:
 - AllocatedStorage, MaxAllocatedStorage, StorageType, Iops, StorageThroughput, StorageEncrypted, KmsKeyId
 - BackupRetentionPeriod, PreferredBackupWindow, PreferredMaintenanceWindow, AutoMinorVersionUpgrade
 - DeletionProtection, PubliclyAccessible, IAMDatabaseAuthenticationEnabled
-- PerformanceInsightsEnabled, PerformanceInsightsRetentionPeriod, MonitoringInterval (Enhanced [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)), MonitoringRoleArn
+- PerformanceInsightsEnabled, PerformanceInsightsRetentionPeriod, MonitoringInterval (Enhanced [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)), MonitoringRoleArn
 - EnabledCloudwatchLogsExports, AssociatedRoles
 - ReadReplicaSourceDBInstanceIdentifier / ReadReplicaDBInstanceIdentifiers
 - Tags (`rds.ListTagsForResource` — param name is `ResourceName` and value is the resource ARN)
@@ -245,7 +245,7 @@ Ref: [DB Instance Performance](https://docs.aws.amazon.com/AmazonRDS/latest/User
 - `BufferCacheHitRatio` (Aurora) < 95% → MEDIUM, < 90% → HIGH.
 - `BinLogDiskUsage` growth without retention bounds → MEDIUM.
 - **Performance Insights** disabled → MEDIUM (free 7-day tier should always be on).
-- **Enhanced [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)** disabled or interval > 60s for production → MEDIUM.
+- **Enhanced [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)** disabled or interval > 60s for production → MEDIUM.
 - **Connection pooling**: high connection churn / no RDS Proxy → MEDIUM for [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) / many-client workloads.
 
 ### 9.4 Cost Optimization
@@ -270,7 +270,7 @@ Ref: [Monitoring Amazon RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGu
 - **Engine version currency**: minor version not latest available → LOW; major version EOL/within 6 months → HIGH.
 - **Log exports**: engine error / slow / [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs not exported to CloudWatch → MEDIUM.
 - **Maintenance window**: not configured / overlaps business hours → LOW.
-- **Tagging**: missing operational tags (`Environment`, `Owner`, `[Runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)`, `OnCall`) → LOW.
+- **Tagging**: missing operational tags (`Environment`, `Owner`, `[Runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)`, `OnCall`) → LOW.
 - **Drift**: parameters changed in default parameter group (impossible by design — use as a flag for non-default usage check).
 
 ## Step 10: Generate Report
@@ -302,7 +302,7 @@ Engine: <engine> <engineVersion> | Class: <dbInstanceClass / serverlessV2 ACU> |
 | Backup | retention, window, automated, deletion protection |
 | HA / DR | Multi-AZ, replicas, Global DB |
 | Auth | IAM auth, Secrets Manager, master user |
-| [Observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) | Performance Insights, Enhanced [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), log exports |
+| [Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) | Performance Insights, Enhanced [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), log exports |
 
 ### Findings by Pillar
 For each of Security, Reliability, Performance, Cost, Operational Excellence:

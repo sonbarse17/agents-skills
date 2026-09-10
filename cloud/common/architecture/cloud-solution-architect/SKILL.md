@@ -35,12 +35,12 @@ Design well-architected, production-grade cloud systems following Azure Architec
 
 | # | Principle | Key Tactics |
 |---|-----------|-------------|
-| 1 | **Design for self-healing** | Retry with backoff, circuit breaker, bulkhead isolation, health endpoint [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), graceful degradation |
+| 1 | **Design for self-healing** | Retry with backoff, circuit breaker, bulkhead isolation, health endpoint [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), graceful degradation |
 | 2 | **Make all things redundant** | Eliminate single points of failure, use availability zones, deploy multi-region, replicate data |
 | 3 | **Minimize coordination** | Decouple services, use async messaging, embrace eventual consistency, use domain events |
 | 4 | **Design to scale out** | Horizontal scaling, [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) rules, stateless services, avoid session stickiness, partition workloads |
 | 5 | **Partition around limits** | Data partitioning (shard/hash/range), respect compute & network limits, use CDNs for static content |
-| 6 | **Design for operations** | Structured logging, distributed tracing, metrics & [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) automation, infrastructure as code |
+| 6 | **Design for operations** | Structured logging, distributed tracing, metrics & [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) automation, infrastructure as code |
 | 7 | **Use managed services** | Prefer PaaS over IaaS, reduce operational burden, leverage built-in HA/DR/scaling |
 | 8 | **Use an identity service** | Microsoft Entra ID, managed identity, RBAC, avoid storing credentials, [zero-trust](../../../../Security/zero-trust/SKILL.md) principles |
 | 9 | **Design for evolution** | Loose coupling, versioned APIs, backward compatibility, async messaging for integration, feature flags |
@@ -94,7 +94,7 @@ Design well-architected, production-grade cloud systems following Azure Architec
 | **Bulkhead** | Isolate resources per workload to prevent cascading failure | R |
 | **Circuit Breaker** | Stop calling a failing service; fail fast to protect resources | R |
 | **Compensating Transaction** | Undo previously committed steps when a later step fails | R |
-| **Health Endpoint [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)** | Expose health checks for load balancers and orchestrators | R, OE |
+| **Health Endpoint [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)** | Expose health checks for load balancers and orchestrators | R, OE |
 | **Leader Election** | Coordinate distributed instances by electing a leader | R |
 | **Retry** | Handle transient faults by retrying with exponential backoff | R |
 | **Saga** | Manage data consistency across [microservices](../../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) with compensating transactions | R |
@@ -184,7 +184,7 @@ See [Technology Choices Reference](../../../../Global_References/technology-choi
 | **Partitioning strategies** | Hash-based, range-based, directory-based; rebalancing approach, cross-partition query avoidance |
 | **Host name preservation** | Preserve original host header through proxies/gateways for cookies, redirects, auth flows |
 | **Message encoding** | Schema evolution (Avro/Protobuf), backward/forward compatibility, schema registry |
-| **[Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) & diagnostics** | Structured logging, distributed tracing (W3C Trace Context), metrics, alerts, [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) |
+| **[Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) & diagnostics** | Structured logging, distributed tracing (W3C Trace Context), metrics, alerts, [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) |
 | **Transient fault handling** | Retry with exponential backoff + jitter, circuit breaker, idempotency keys, timeout budgets |
 
 See [Best Practices Reference](../../../../Global_References/best-practices.md) for implementation details.
@@ -221,9 +221,9 @@ For workloads targeting **99.99%+ SLO**, address these design areas:
 | **Networking** | Azure Front Door (global LB), DDoS Protection, private endpoints, redundant connectivity |
 | **Data platform** | Multi-region Cosmos DB, zone-redundant SQL, async replication, conflict resolution |
 | **Deployment & testing** | Blue-green deployments, canary releases, chaos engineering, automated rollback |
-| **Health modeling** | Composite health scores, dependency health tracking, automated remediation, SLI [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) |
+| **Health modeling** | Composite health scores, dependency health tracking, automated remediation, SLI [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) |
 | **Security** | [Zero-trust](../../../../Security/zero-trust/SKILL.md), managed identity everywhere, key rotation, WAF policies, threat modeling |
-| **Operational procedures** | Automated [runbooks](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md), [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response playbooks, game days, postmortems |
+| **Operational procedures** | Automated [runbooks](../../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md), [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response playbooks, game days, postmortems |
 
 See [Mission-Critical Reference](../../../../Global_References/mission-critical.md) for detailed guidance.
 
@@ -238,7 +238,7 @@ Every architecture decision should be evaluated against all five pillars:
 | **Reliability** | Resiliency, availability, disaster recovery | What is the RTO/RPO? How does it handle failures? Is there redundancy? |
 | **Security** | Threat protection, identity, data protection | Is identity managed? Is data encrypted? Are there network controls? |
 | **Cost Optimization** | Cost management, efficiency, right-sizing | Is compute right-sized? Are there reserved instances? Is there waste? |
-| **Operational Excellence** | [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), deployment, automation | Is deployment automated? Is there [observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)? Are there [runbooks](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md)? |
+| **Operational Excellence** | [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), deployment, automation | Is deployment automated? Is there [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)? Are there [runbooks](../../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md)? |
 | **Performance Efficiency** | Scaling, load testing, performance targets | Can it scale horizontally? Are there performance baselines? Is caching used? |
 
 ### WAF Tradeoff Matrix
@@ -284,7 +284,7 @@ Select relevant patterns from the 44 cloud design patterns based on identified c
 ### Step 5: Address Cross-Cutting Concerns
 
 - **Identity & access** — Microsoft Entra ID, managed identity, RBAC
-- **[Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)** — Application Insights, Azure Monitor, Log Analytics
+- **[Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)** — Application Insights, Azure Monitor, Log Analytics
 - **Security** — Network segmentation, encryption at rest/in transit, Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
 - **CI/CD** — [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions, Azure DevOps Pipelines, infrastructure as code
 

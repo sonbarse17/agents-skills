@@ -64,7 +64,7 @@ of the [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md)-based variant
   investing in one of the [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md)-based IDP variants in this repo, or
   deciding when the team has actually outgrown this approach.
 - Documenting, for a team already on this path, exactly what production
-  guarantees they do not currently have (so an [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) isn't the first
+  guarantees they do not currently have (so an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) isn't the first
   time anyone realizes [multi-tenancy](../../../common/other/multi-tenancy/SKILL.md) or [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) was never built).
 
 ## Prerequisites & environment
@@ -99,7 +99,7 @@ that needs no infrastructure at all. At this scale, the hosted no-code
 path is usually the more honest choice for the same reason it often is at
 K3s scale — a small team running Compose in production almost certainly
 has less spare operational [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) than a K3s-scale team, not more. See
-[no-code-idp-[service-catalog](../../../../DevOps_and_Cloud/Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel](../[no-code-idp-[service-catalog](../../Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel](../../Observability_and_SecOps/no-code-idp-[service-catalog](../../Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel/SKILL.md)/SKILL.md)
+[no-code-idp-[service-catalog](../../../common/other/service-catalog/SKILL.md)-tools-port-cortex-opslevel](../[no-code-idp-[service-catalog](../../Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel](../../Observability_and_SecOps/no-code-idp-[service-catalog](../../Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel/SKILL.md)/SKILL.md)
 for that path, and
 [backstage-plugin-development](../[backstage-plugin-development](../../../Software_Engineering_and_Other/Backend/backstage-plugin-development/SKILL.md)/SKILL.md)
 for the self-hosted path's plugin/backend concepts if chosen (note that
@@ -208,7 +208,7 @@ to keep bolting ad hoc automation onto Compose.
 - Say the "what's missing" section out loud to the team adopting this,
   not just in this document — the biggest risk of a Compose-based
   platform isn't that it's insufficient, it's that a team forgets it's
-  insufficient until an [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) makes it obvious.
+  insufficient until an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) makes it obvious.
 - Keep the Phase 3 Dapr `components/` directory under version control
   and reviewed exactly like application code — it's shared across every
   service's sidecar, so an unscoped or secret-containing component
@@ -220,7 +220,7 @@ to keep bolting ad hoc automation onto Compose.
   actual schedule, with a tested restore — there is no managed-service
   backup behind any of it.
 - Re-evaluate the "when to graduate" thresholds on a fixed schedule (e.g.,
-  quarterly), not only reactively after an [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) exposes one of the
+  quarterly), not only reactively after an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) exposes one of the
   missing capabilities above.
 
 ## Common pitfalls
@@ -309,7 +309,7 @@ set up by hand.
 
 ## Cross-references
 
-- [no-code-idp-[service-catalog](../../../../DevOps_and_Cloud/Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel](../[no-code-idp-[service-catalog](../../Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel](../../Observability_and_SecOps/no-code-idp-[service-catalog](../../Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel/SKILL.md)/SKILL.md), [backstage-plugin-development](../[backstage-plugin-development](../../../Software_Engineering_and_Other/Backend/backstage-plugin-development/SKILL.md)/SKILL.md) — Phase 1.
+- [no-code-idp-[service-catalog](../../../common/other/service-catalog/SKILL.md)-tools-port-cortex-opslevel](../[no-code-idp-[service-catalog](../../Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel](../../Observability_and_SecOps/no-code-idp-[service-catalog](../../Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel/SKILL.md)/SKILL.md), [backstage-plugin-development](../[backstage-plugin-development](../../../Software_Engineering_and_Other/Backend/backstage-plugin-development/SKILL.md)/SKILL.md) — Phase 1.
 - [golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../../../Product_and_Business/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md), [golden-path-template-validation-and-testing](../[golden-path-template-validation-and-testing](../../CI_CD/golden-path-template-validation-and-testing/SKILL.md)/SKILL.md) — Phase 2.
 - [dapr-distributed-runtime-configuration](../../../[serverless](../serverless/SKILL.md)-and-alternative-compute/skills/[dapr-distributed-runtime-configuration](../../../../Software_Engineering_and_Other/Frontend/dapr-distributed-runtime-configuration/SKILL.md)/SKILL.md), [dapr-configuration-validation](../../../[serverless](../serverless/SKILL.md)-and-alternative-compute/skills/[dapr-configuration-validation](../../../common/other/dapr-configuration-validation/SKILL.md)/SKILL.md) — Phase 3.
 - [service-scorecards-and-maturity-model-design](../[service-scorecards-and-maturity-model-design](../../../Product_and_Business/service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md) — Phase 4.

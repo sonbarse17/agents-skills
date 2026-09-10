@@ -559,8 +559,8 @@ stty raw -echo; fg
 
 Organizations can detect netcat activity by:
 
-- **Process [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: Detect nc/ncat process execution
-- **Network [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: Unusual outbound connections to non-standard ports
+- **Process [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**: Detect nc/ncat process execution
+- **Network [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**: Unusual outbound connections to non-standard ports
 - **Command-Line Auditing**: Monitor for -e flag usage
 - **Traffic Analysis**: Unencrypted shell traffic patterns
 - **File Integrity**: Detect unauthorized netcat binaries

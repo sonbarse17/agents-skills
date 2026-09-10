@@ -123,7 +123,7 @@ For EACH cluster, gather the following data. **Try K8s API first, then AWS API a
 - `resources_list(apiVersion="v1", kind="ResourceQuota")` — namespace quotas
 - `resources_list(apiVersion="v1", kind="LimitRange")` — default limits
 
-## Step 3: Collect [Observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) Data (7-Day Historical)
+## Step 3: Collect [Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) Data (7-Day Historical)
 
 ### 3.1 CloudWatch Metrics (7 days)
 

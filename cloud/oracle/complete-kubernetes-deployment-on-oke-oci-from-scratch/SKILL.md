@@ -46,7 +46,7 @@ choosing a Basic cluster then discovering workload identity isn't
 available, or expecting a native cert-manager OCI DNS solver that doesn't
 exist — produces a cluster that looks provisioned right up until a later
 phase depends on a capability that was never actually available. This
-skill is the OCI-specific end-to-end [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md): it sequences Compartment/
+skill is the OCI-specific end-to-end [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md): it sequences Compartment/
 Identity Domain prerequisites, OKE provisioning, VCN-Native pod
 networking, ingress, cert-manager via a webhook solver, conformance
 validation, a first workload, and a health baseline into one ordered
@@ -308,7 +308,7 @@ integration decisions.
 
 - **Symptom:** The cluster is declared "production ready" and handed off
   the same day Phase 2 completes, skipping Phase 6 — and a missing Calico
-  install (Phase 3) surfaces as a security [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) once a `NetworkPolicy`
+  install (Phase 3) surfaces as a security [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) once a `NetworkPolicy`
   that was assumed to be enforced turns out never to have been.
   **Fix:** Treat Phase 6 as a required gate, not optional, with the OKE-
   specific `NetworkPolicy` smoke test explicitly included — see

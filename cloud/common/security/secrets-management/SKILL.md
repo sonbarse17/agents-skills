@@ -211,7 +211,7 @@ assessment).
 ## Common pitfalls
 
 - **Symptom:** A secret was committed, the [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) was reverted/force-pushed
-  away, and the team considers the [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) closed.
+  away, and the team considers the [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) closed.
   **Fix:** Treat the credential as permanently compromised regardless of
   history rewriting — rotate/revoke it at the source system. History
   rewriting only helps prevent *future* discovery; it does not undo

@@ -37,7 +37,7 @@ skill in this repo. What's missing is the **sequencing**: in what order do
 you actually do these things on a fresh EKS cluster so that each step's
 prerequisites are satisfied by the step before it, and where does this
 specific cloud's IAM model (IRSA) plug in versus where the mechanics are
-identical to any other [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) cluster? This skill is that [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md). The
+identical to any other [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) cluster? This skill is that [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md). The
 one genuinely AWS-specific decision point is **how Argo CD authenticates to
 AWS**, both for its own EKS cluster access (via IAM, not a static bearer
 token) and for pulling images from a private ECR registry — everything
@@ -235,7 +235,7 @@ Per [argocd-application-configuration](../[argocd-application-configuration](../
 manual sync for the initial rollout, `automated` (with `prune`/`selfHeal`)
 only after the team trusts the pipeline; add custom Lua health checks for
 any internal CRDs the workloads depend on before relying on Argo CD's
-health status for [alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md).
+health status for [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md).
 
 ### Phase 7 — Verify end-to-end
 
@@ -365,4 +365,4 @@ per the environment-specific policy guidance in
 - [gitops-multi-cluster-management](../[gitops-multi-cluster-management](../[gitops](../gitops/SKILL.md)-multi-cluster-management/SKILL.md)/SKILL.md) — hub-and-spoke RBAC/registration pattern this skill's Phase 2 adapts with IRSA.
 - [ingress-nginx-configuration](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[ingress-nginx-configuration](../../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md) and [cert-manager-tls-automation](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[cert-manager-tls-automation](../../../kubernetes/security/cert-manager-tls-automation/SKILL.md)/SKILL.md) — Phase 3's Ingress/TLS mechanics.
 - [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../../Cloud_Providers/cloud-iam-hardening/SKILL.md)/SKILL.md) — least-privilege principles governing every IAM role/policy created here.
-- [gitops-workflow](../../../devops/skills/[gitops-workflow](../[gitops](../gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md) — the vendor-neutral [GitOps](../../../common/gitops/gitops/SKILL.md) concepts this EKS-specific [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) implements.
+- [gitops-workflow](../../../devops/skills/[gitops-workflow](../[gitops](../gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md) — the vendor-neutral [GitOps](../../../common/gitops/gitops/SKILL.md) concepts this EKS-specific [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) implements.

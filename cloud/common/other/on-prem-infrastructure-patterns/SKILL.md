@@ -59,8 +59,8 @@ disconnected islands.
 - Deciding whether a specific workload should stay on-premises, burst to
   cloud, or migrate fully — using a documented framework rather than
   defaulting to "cloud, always."
-- Building or auditing an [infrastructure-as-code](../../../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md) pipeline for on-prem
-  resources (Terraform against vSphere/[bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) providers, [Ansible](../../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md)
+- Building or auditing an [infrastructure-as-code](../../../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) pipeline for on-prem
+  resources (Terraform against vSphere/[bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) providers, [Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md)
   configuration baselines).
 - Establishing or fixing an IPAM/DCIM inventory that has drifted from
   what's physically racked and cabled.
@@ -72,7 +72,7 @@ disconnected islands.
 
 - Physical facility prerequisites already in place: rack space, power
   (with A/B redundant feeds for anything production-critical), cooling
-  [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), and physical access control — [infrastructure-as-code](../../../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md) cannot
+  [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), and physical access control — [infrastructure-as-code](../../../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) cannot
   fix a data center that's out of power or cooling headroom.
 - An **out-of-band management network** physically or logically separate
   from the production network, reachable to every server's BMC (iLO,
@@ -84,7 +84,7 @@ disconnected islands.
   default and treat others as deliberate exceptions, not a mixed fleet by
   accident.
 - Terraform ≥ 1.5 with the `vsphere` provider (or the relevant
-  [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)/private-cloud provider) and [Ansible](../../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md) ≥ 2.15 for OS/config
+  [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)/private-cloud provider) and [Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) ≥ 2.15 for OS/config
   management if managing on-prem infrastructure as code — strongly
   recommended over console/CLI click-ops past a handful of hosts.
 - A single source of truth for IP address space and physical inventory
@@ -161,8 +161,8 @@ disconnected islands.
      https://<BMC_IP>/redfish/v1/Systems/1/Actions/ComputerSystem.Reset
    ```
 
-4. **Configure the OS and baseline agents with [Ansible](../../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md) immediately after
-   provisioning** — firmware/BIOS version check, NTP, [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) agent,
+4. **Configure the OS and baseline agents with [Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) immediately after
+   provisioning** — firmware/BIOS version check, NTP, [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) agent,
    security baseline (CIS benchmark), and hypervisor join-to-cluster —
    so every host reaches a known-good state before carrying workloads:
    ```yaml
@@ -237,13 +237,13 @@ disconnected islands.
     on them.** Run a controlled VPN-failover test (drop the primary
     dedicated circuit deliberately, confirm traffic reroutes), and
     provision one canary [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) host end to end through the
-    PXE/MAAS + [Ansible](../../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md) pipeline to confirm it reaches the expected
+    PXE/MAAS + [Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) pipeline to confirm it reaches the expected
     baseline before trusting the pipeline for a full fleet rollout.
 
 ## Best practices
 
 - **Manage on-prem infrastructure as code** (Terraform for
-  vSphere/[bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) provisioning, [Ansible](../../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md) for OS/config baselines) with
+  vSphere/[bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) provisioning, [Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) for OS/config baselines) with
   the same PR review rigor as cloud IaC — a hand-built ESXi host is a
   future outage nobody can explain.
 - **Keep the out-of-band management network physically or logically
@@ -275,7 +275,7 @@ disconnected islands.
   bring into service even though procurement delivered it on schedule.
   **Fix:** Provisioning was still a manual, per-host process (rack it,
   console in, click through an OS installer). Automate the PXE/MAAS +
-  [Ansible](../../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md) pipeline described above so bringing a racked, cabled, and
+  [Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) pipeline described above so bringing a racked, cabled, and
   BMC-reachable host into service is a single pipeline run, not a
   multi-day manual checklist.
 
@@ -296,9 +296,9 @@ disconnected islands.
   updates were applied ad hoc, host by host, whenever someone happened to
   notice an available update. Track a single firmware/BIOS baseline
   version per hardware model, stage updates through a canary subset, and
-  enforce the baseline via the same [Ansible](../../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md) assertion shown in step 4.
+  enforce the baseline via the same [Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) assertion shown in step 4.
 
-- **Symptom:** An external [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) or [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response finds the BMC/iLO/
+- **Symptom:** An external [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) or [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response finds the BMC/iLO/
   iDRAC management interfaces reachable from the general corporate
   network, several still on default vendor credentials.
   **Fix:** The out-of-band management network was never actually
@@ -349,7 +349,7 @@ records have drifted badly from what's actually racked.
    connection goes live.
 6. Automate provisioning of a small pool of [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) hosts reserved for
    OT workloads using PXE + kickstart driven by the NetBox inventory, with
-   firmware baseline enforcement via [Ansible](../../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md).
+   firmware baseline enforcement via [Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md).
 7. Run a controlled failover test: fail the dedicated circuit
    deliberately during a maintenance window, confirm the VPN path takes
    over automatically, then fail back.

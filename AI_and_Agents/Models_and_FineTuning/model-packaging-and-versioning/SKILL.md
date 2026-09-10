@@ -141,9 +141,9 @@ system, a compliance reviewer, and an on-call engineer can all reason about.
      compatibility check against the current production model.
    - `production` → requires a human approval or an automated canary result
      (see [model-serving-and-scaling](../[model-serving-and-scaling](../model-serving-and-scaling/SKILL.md)/SKILL.md)
-     for canary/shadow rollout mechanics) plus [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) hooks already wired
+     for canary/shadow rollout mechanics) plus [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) hooks already wired
      up (see
-     [model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md)).
+     [model-[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md)).
 6. **Keep the previous production version pinned and retrievable.** Do not
    delete or overwrite the prior production registry entry when promoting a
    new one — archive it to an "Archived" stage instead so it is one click
@@ -239,8 +239,8 @@ A team maintains a fraud-scoring model, `fraud-scorer`, retrained weekly.
    [model-serving-and-scaling](../[model-serving-and-scaling](../model-serving-and-scaling/SKILL.md)/SKILL.md)) is
    configured to route 5% of traffic to version 14 as a canary for 24 hours
    before full cutover.
-6. Two hours into the canary, [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
-   ([model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md))
+6. Two hours into the canary, [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+   ([model-[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md))
    flags a spike in the false-positive rate on version 14. On-call rolls back
    by re-promoting version 13 from `Archived` to `Production` — a two-minute
    action because the artifact and its metadata were never deleted.
@@ -250,4 +250,4 @@ A team maintains a fraud-scoring model, `fraud-scorer`, retrained weekly.
 - [experiment-tracking](../[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)/SKILL.md)
 - [data-and-model-lineage](../[data-and-model-lineage](../../../Data_Engineering/data-and-model-lineage/SKILL.md)/SKILL.md)
 - [model-serving-and-scaling](../[model-serving-and-scaling](../model-serving-and-scaling/SKILL.md)/SKILL.md)
-- [model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md)
+- [model-[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md)

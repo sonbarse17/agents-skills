@@ -163,7 +163,7 @@ State: User asks about frontend component patterns, hooks patterns, component de
   Route: frontend-patterns
   Reason: "Frontend design patterns request."
 
-State: User asks about team rules, code review, branch strategy, communication protocol, [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response.
+State: User asks about team rules, code review, branch strategy, communication protocol, [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response.
   Route: [team-rules](../team-rules/SKILL.md)
   Reason: "Team collaboration protocols request."
 
@@ -177,17 +177,17 @@ State: User asks about security team, appsec, vulnerability management, security
   Route: management-security
   Reason: "Security team operations request."
 
-State: User asks about [pentesting](../../DevOps_and_Cloud/Observability_and_SecOps/pentesting/SKILL.md), penetration test, vulnerability assessment, bug bounty.
-  Route: management-[pentesting](../../DevOps_and_Cloud/Observability_and_SecOps/pentesting/SKILL.md)
+State: User asks about [pentesting](../../Security/pentesting/SKILL.md), penetration test, vulnerability assessment, bug bounty.
+  Route: management-[pentesting](../../Security/pentesting/SKILL.md)
   Reason: "Penetration testing and reporting request."
 
 State: User asks about alert rules, alert fatigue, notification routing, Prometheus alerts, Grafana alerts.
-  Route: management-[alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
+  Route: management-[alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
   Reason: "Alert rule design request."
 
-State: User asks about [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), Prometheus, Grafana, Loki, ELK, metrics, [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md).
-  Route: devops-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
-  Reason: "[Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) stack configuration request."
+State: User asks about [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), Prometheus, Grafana, Loki, ELK, metrics, [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md).
+  Route: devops-[monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+  Reason: "[Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) stack configuration request."
 
 State: User asks about Helm, Helm chart, values management, chart deployment.
   Route: [helm-patterns](../../containers-orchestration/helm/other/helm-patterns/SKILL.md)
@@ -197,17 +197,17 @@ State: User asks about Terraform, IaC, infrastructure provisioning.
   Route: devops-terraform
   Reason: "Terraform infrastructure patterns request."
 
-State: User asks about [Ansible](../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md), playbook, configuration management.
-  Route: devops-[ansible](../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md)
-  Reason: "[Ansible](../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md) automation patterns request."
+State: User asks about [Ansible](../../infrastructure-as-code/ansible/other/ansible/SKILL.md), playbook, configuration management.
+  Route: devops-[ansible](../../infrastructure-as-code/ansible/other/ansible/SKILL.md)
+  Reason: "[Ansible](../../infrastructure-as-code/ansible/other/ansible/SKILL.md) automation patterns request."
 
 State: User asks about [Jenkins](../../ci-cd/jenkins/other/jenkins/SKILL.md), CI/CD pipeline, Jenkinsfile.
   Route: devops-[jenkins](../../ci-cd/jenkins/other/jenkins/SKILL.md)
   Reason: "[Jenkins](../../ci-cd/jenkins/other/jenkins/SKILL.md) pipeline patterns request."
 
-State: User asks about [Longhorn](../../DevOps_and_Cloud/Observability_and_SecOps/longhorn/SKILL.md), distributed storage, persistent volumes, backup.
-  Route: devops-[longhorn](../../DevOps_and_Cloud/Observability_and_SecOps/longhorn/SKILL.md)
-  Reason: "[Longhorn](../../DevOps_and_Cloud/Observability_and_SecOps/longhorn/SKILL.md) storage patterns request."
+State: User asks about [Longhorn](../../containers-orchestration/kubernetes/storage/longhorn/SKILL.md), distributed storage, persistent volumes, backup.
+  Route: devops-[longhorn](../../containers-orchestration/kubernetes/storage/longhorn/SKILL.md)
+  Reason: "[Longhorn](../../containers-orchestration/kubernetes/storage/longhorn/SKILL.md) storage patterns request."
 
 State: Node.js stack detected and user describes a backend task.
   Route: nodejs-architecture
@@ -440,12 +440,12 @@ State: User asks about API documentation, Swagger, OpenAPI, API spec generation.
   Route: [api-documentation](../../Software_Engineering_and_Other/Backend/api-documentation/SKILL.md)
   Reason: "API documentation generation request."
 
-State: User asks about [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md), tracing, [OpenTelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md), distributed tracing, span.
-  Route: devops-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
-  Reason: "[Observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) and distributed tracing request."
+State: User asks about [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md), tracing, [OpenTelemetry](../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md), distributed tracing, span.
+  Route: devops-[observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
+  Reason: "[Observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) and distributed tracing request."
 
 State: User asks about caching, Redis cache, CDN, cache strategy, cache invalidation.
-  Route: [backend-caching](../../DevOps_and_Cloud/Observability_and_SecOps/caching/SKILL.md)
+  Route: [backend-caching](../../Software_Engineering_and_Other/Patterns/caching/SKILL.md)
   Reason: "Caching strategy and implementation request."
 
 State: User asks about API gateway, Kong, Nginx reverse proxy, AWS API Gateway, gateway pattern, BFF, API proxy, gateway aggregation.
@@ -457,7 +457,7 @@ State: User asks about rate limiting, throttling, API rate limit, backpressure.
   Reason: "Rate limiting and throttling request."
 
 State: User asks about load testing, k6, Locust, Artillery, benchmark, stress test.
-  Route: [load-testing](../../DevOps_and_Cloud/Observability_and_SecOps/load-testing/SKILL.md)
+  Route: [load-testing](../../observability-monitoring-logging/common/capacity-monitoring/load-testing/SKILL.md)
   Reason: "Load testing and performance benchmarking request."
 
 State: User asks about backend testing, unit tests, integration tests, TDD, mocking.
@@ -557,7 +557,7 @@ State: User asks about mobile security, secure storage, certificate pinning, OWA
   Reason: "Mobile security implementation request."
 
 State: User asks about mobile networking, API client mobile, offline first, GraphQL mobile, REST client, caching mobile, pagination.
-  Route: [mobile-networking](../../DevOps_and_Cloud/Observability_and_SecOps/networking/SKILL.md)
+  Route: [mobile-networking](../../Mobile/networking/SKILL.md)
   Reason: "Mobile networking layer request."
 
 State: User asks about mobile storage, local database, SQLite mobile, Room, Core Data, Hive, Isar, file storage mobile.
@@ -576,7 +576,7 @@ State: User asks about in-app purchase, subscription, StoreKit, Play Billing, re
   Route: in-app-purchase
   Reason: "In-app purchase and subscription request."
 
-State: User asks about crash reporting, [Sentry](../../DevOps_and_Cloud/Observability_and_SecOps/sentry/SKILL.md), Crashlytics, error tracking mobile.
+State: User asks about crash reporting, [Sentry](../../observability-monitoring-logging/sentry/other/sentry/SKILL.md), Crashlytics, error tracking mobile.
   Route: crash-reporting
   Reason: "Mobile crash reporting setup request."
 
@@ -617,12 +617,12 @@ State: User asks about i18n, internationalization, localization, translations.
   Reason: "Internationalization request."
 
 State: User asks about logging, structured logging, JSON logging, log shipping.
-  Route: [backend-structured-logging](../../DevOps_and_Cloud/Observability_and_SecOps/structured-logging/SKILL.md)
+  Route: [backend-structured-logging](../../observability-monitoring-logging/common/logs/structured-logging/SKILL.md)
   Reason: "Structured logging request."
 
-State: User asks about [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md), tracing, [OpenTelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md), distributed tracing.
-  Route: backend-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
-  Reason: "[Observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) request."
+State: User asks about [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md), tracing, [OpenTelemetry](../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md), distributed tracing.
+  Route: backend-[observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
+  Reason: "[Observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) request."
 
 State: User asks about resilience, circuit breaker, retry, bulkhead, rate limiting.
   Route: [backend-resilience-patterns](../../containers-orchestration/common/other/resilience-patterns/SKILL.md)
@@ -728,9 +728,9 @@ State: User asks about [Nomad](../../containers-orchestration/nomad/other/nomad/
   Route: devops-[nomad](../../containers-orchestration/nomad/other/nomad/SKILL.md)
   Reason: "[Nomad](../../containers-orchestration/nomad/other/nomad/SKILL.md) request."
 
-State: User asks about [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response, on-call, PagerDuty, [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) management.
+State: User asks about [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response, on-call, PagerDuty, [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) management.
   Route: devops-[incident-response](../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)
-  Reason: "[Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response request."
+  Reason: "[Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response request."
 
 State: User asks about cost-benefit, ROI, TCO, cost analysis.
   Route: management-cost-benefit
@@ -844,9 +844,9 @@ State: User asks about MCP, Model Context Protocol, context server, tool integra
   Route: ai-mcp-patterns
   Reason: "MCP patterns request."
 
-State: User asks about AI [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md), LangSmith, Weights & Biases, tracing LLM, prompt [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
-  Route: ai-ai-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
-  Reason: "AI [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) request."
+State: User asks about AI [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md), LangSmith, Weights & Biases, tracing LLM, prompt [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
+  Route: ai-ai-[observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
+  Reason: "AI [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) request."
 
 ### New Data Skills
 
@@ -890,9 +890,9 @@ State: User asks about data catalog, DataHub, Amundsen, data discovery, metadata
   Route: [data-data-catalog](../../Data_Engineering/data-catalog/SKILL.md)
   Reason: "Data catalog request."
 
-State: User asks about data [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md), Monte Carlo, Sifflet, data [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), data downtime.
+State: User asks about data [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md), Monte Carlo, Sifflet, data [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), data downtime.
   Route: [data-data-observability](../../Data_Engineering/data-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)
-  Reason: "Data [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) request."
+  Reason: "Data [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) request."
 
 State: User asks about data contracts, contract-driven data, schema contract, data agreement.
   Route: [data-data-contracts](../../Data_Engineering/data-contracts/SKILL.md)
@@ -968,7 +968,7 @@ State: User asks about DataOps, data operations, data pipeline ops, data reliabi
   Route: [devops-dataops](../../Data_Engineering/dataops/SKILL.md)
   Reason: "DataOps request."
 
-State: User asks about MLOps, ML operations, model deployment pipeline, model [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
+State: User asks about MLOps, ML operations, model deployment pipeline, model [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
   Route: [devops-mlops](../../AI_and_Agents/Models_and_FineTuning/mlops/SKILL.md)
   Reason: "MLOps request."
 
@@ -1016,9 +1016,9 @@ State: User asks about cloud migration, lift-and-shift, rehost, replatform, refa
   Route: devops-[cloud-migration](../../cloud/common/migration/cloud-migration/SKILL.md)
   Reason: "Cloud migration request."
 
-State: User asks about [Pulumi](../../DevOps_and_Cloud/Infrastructure_as_Code/pulumi/SKILL.md), infrastructure as code with programming languages, [Pulumi](../../DevOps_and_Cloud/Infrastructure_as_Code/pulumi/SKILL.md) stack, [Pulumi](../../DevOps_and_Cloud/Infrastructure_as_Code/pulumi/SKILL.md) state.
-  Route: devops-[pulumi](../../DevOps_and_Cloud/Infrastructure_as_Code/pulumi/SKILL.md)
-  Reason: "[Pulumi](../../DevOps_and_Cloud/Infrastructure_as_Code/pulumi/SKILL.md) IaC request."
+State: User asks about [Pulumi](../../infrastructure-as-code/pulumi/other/pulumi/SKILL.md), infrastructure as code with programming languages, [Pulumi](../../infrastructure-as-code/pulumi/other/pulumi/SKILL.md) stack, [Pulumi](../../infrastructure-as-code/pulumi/other/pulumi/SKILL.md) state.
+  Route: devops-[pulumi](../../infrastructure-as-code/pulumi/other/pulumi/SKILL.md)
+  Reason: "[Pulumi](../../infrastructure-as-code/pulumi/other/pulumi/SKILL.md) IaC request."
 
 State: User asks about Crossplane, Crossplane composition, managed resource, provider, control plane, Crossplane function.
   Route: devops-crossplane
@@ -1036,17 +1036,17 @@ State: User asks about [autoscaling](../../Software_Engineering_and_Other/Backen
   Route: [devops-[kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-autoscaling](../../DevOps_and_Cloud/Containers_and_Orchestration/[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-[autoscaling](../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/SKILL.md)
   Reason: "[Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) [autoscaling](../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) request."
 
-State: User asks about APM, [Datadog](../../DevOps_and_Cloud/Observability_and_SecOps/datadog/SKILL.md), New Relic, application [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), APM instrumentation, synthetic [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) platform.
+State: User asks about APM, [Datadog](../../observability-monitoring-logging/datadog/other/datadog/SKILL.md), New Relic, application [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), APM instrumentation, synthetic [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) platform.
   Route: devops-[apm-observability](../../AI_and_Agents/Operations/apm-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)
-  Reason: "APM and [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) platform request."
+  Reason: "APM and [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) platform request."
 
 State: User asks about Cilium, eBPF, Cilium network policy, Hubble, Cilium cluster mesh, cloud-native networking.
   Route: devops-[cilium-ebpf](../../containers-orchestration/kubernetes/networking/cilium-ebpf/SKILL.md)
   Reason: "Cilium/eBPF networking request."
 
-State: User asks about [OpenTelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md), OTel collector, distributed tracing, [OpenTelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) instrumentation, trace sampling.
-  Route: devops-[opentelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)
-  Reason: "[OpenTelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) request."
+State: User asks about [OpenTelemetry](../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md), OTel collector, distributed tracing, [OpenTelemetry](../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) instrumentation, trace sampling.
+  Route: devops-[opentelemetry](../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)
+  Reason: "[OpenTelemetry](../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) request."
 
 State: User asks about Oracle Cloud, OCI, OKE, Oracle [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Engine, Oracle database cloud.
   Route: devops-[oracle-cloud](../../cloud/oracle/oracle-cloud/SKILL.md)
@@ -1090,7 +1090,7 @@ State: User asks about IAM governance, identity governance, access certification
   Route: iam-governance
   Reason: "IAM governance request."
 
-State: User asks about SOC operations, SOC tier, SOC structure, SOC [runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md), security operations center, SOC shift.
+State: User asks about SOC operations, SOC tier, SOC structure, SOC [runbook](../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md), security operations center, SOC shift.
   Route: [soc-operations](../../Security/soc-operations/SKILL.md)
   Reason: "SOC operations request."
 
@@ -1098,7 +1098,7 @@ State: User asks about SIEM, correlation rule, detection rule, log ingestion, SI
   Route: [siem-engineering](../../Security/siem-engineering/SKILL.md)
   Reason: "SIEM engineering request."
 
-State: User asks about SOAR, playbook automation, security automation, SOAR playbook, [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) automation.
+State: User asks about SOAR, playbook automation, security automation, SOAR playbook, [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) automation.
   Route: soar-automation
   Reason: "SOAR automation request."
 
@@ -1223,11 +1223,11 @@ State: User asks about GCP, Google Cloud, GKE.
   Reason: "GCP request."
 
 State: User asks about chaos engineering, resilience testing, fault injection.
-  Route: devops-[chaos-engineering](../../DevOps_and_Cloud/Observability_and_SecOps/chaos-engineering/SKILL.md)
+  Route: devops-[chaos-engineering](../../containers-orchestration/common/other/chaos-engineering/SKILL.md)
   Reason: "Chaos engineering request."
 
 State: User asks about service mesh, Istio, Linkerd, mTLS.
-  Route: devops-[service-mesh](../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)
+  Route: devops-[service-mesh](../../containers-orchestration/common/service-mesh/service-mesh/SKILL.md)
   Reason: "Service mesh request."
 
 State: User asks about FinOps, cloud cost, cost optimization.
@@ -1267,7 +1267,7 @@ State: User asks about sprint retro, retrospective, retro.
   Reason: "Sprint retro request."
 
 State: User asks about risk management, risk register, risk assessment.
-  Route: [management-risk-management](../../DevOps_and_Cloud/Observability_and_SecOps/risk-management/SKILL.md)
+  Route: [management-risk-management](../../Security/risk-management/SKILL.md)
   Reason: "Risk management request."
 
 State: User asks about roadmap, product roadmap, feature roadmap.
@@ -1299,15 +1299,15 @@ State: User asks about multi-tenant, SaaS architecture, tenant isolation.
   Reason: "Multi-tenant request."
 
 State: User asks about enterprise integration, legacy integration, ESB.
-  Route: [enterprise-integration-patterns](../../DevOps_and_Cloud/Observability_and_SecOps/integration-patterns/SKILL.md)
+  Route: [enterprise-integration-patterns](../../Software_Engineering_and_Other/Patterns/integration-patterns/SKILL.md)
   Reason: "Enterprise integration request."
 
 State: User asks about data governance, data classification, data lineage.
-  Route: [enterprise-data-governance](../../DevOps_and_Cloud/Observability_and_SecOps/data-governance/SKILL.md)
+  Route: [enterprise-data-governance](../../Data_Engineering/data-governance/SKILL.md)
   Reason: "Data governance request."
 
 State: User asks about SLA, SLO, error budget, uptime, availability.
-  Route: [enterprise-sla-management](../../DevOps_and_Cloud/Observability_and_SecOps/sla-management/SKILL.md)
+  Route: [enterprise-sla-management](../../observability-monitoring-logging/common/sli-slo-sla/sla-management/SKILL.md)
   Reason: "SLA management request."
 
 State: User asks about legacy migration, strangler fig, system migration.
@@ -1331,7 +1331,7 @@ State: User asks about A/B test, split test, experiment, hypothesis testing.
   Reason: "A/B testing request."
 
 State: User asks about user research, user interview, persona, usability.
-  Route: [product-user-research](../../DevOps_and_Cloud/Observability_and_SecOps/user-research/SKILL.md)
+  Route: [product-user-research](../user-research/SKILL.md)
   Reason: "User research request."
 
 State: User asks about growth engineering, viral loop, PLG, activation.
@@ -1455,7 +1455,7 @@ State: User asks about visual testing, visual regression, Percy, Chromatic.
   Reason: "Visual testing request."
 
 State: User asks about load testing, k6, Locust, performance test.
-  Route: quality-[load-testing](../../DevOps_and_Cloud/Observability_and_SecOps/load-testing/SKILL.md)
+  Route: quality-[load-testing](../../observability-monitoring-logging/common/capacity-monitoring/load-testing/SKILL.md)
   Reason: "Load testing request."
 
 State: User asks about contract testing, Pact, consumer-driven contract.
@@ -1487,7 +1487,7 @@ State: User asks about payment processing, payment gateway, Stripe, PayPal, subs
   Reason: "Payment processing request."
 
 State: User asks about shopping cart, checkout flow, cart management, order management, coupon system, discount engine, tax calculation.
-  Route: [ecommerce-checkout-cart](../../DevOps_and_Cloud/Observability_and_SecOps/checkout-cart/SKILL.md)
+  Route: [ecommerce-checkout-cart](../../Software_Engineering_and_Other/Backend/checkout-cart/SKILL.md)
   Reason: "Checkout and cart request."
 
 State: User asks about GraphQL Federation, Apollo Federation, federated schema, subgraph, supergraph, schema composition, distributed GraphQL.

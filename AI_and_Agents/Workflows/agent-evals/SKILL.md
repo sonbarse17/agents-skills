@@ -391,7 +391,7 @@ if __name__ == "__main__":
 ## Best Practices
 
 - Version datasets with expected outputs alongside code
-- Track pass rates and score drift over time with [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md)
+- Track pass rates and score drift over time with [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)
 - Block deploys on critical safety regressions (safety score < 4)
 - Use deterministic settings (temperature=0) for reproducible evals
 - Run expensive E2E evals on merge, cheap unit evals on every push
@@ -402,4 +402,4 @@ if __name__ == "__main__":
 
 - [github-actions](../../ci-cd/[github-actions](../../../DevOps_and_Cloud/CI_CD/[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-actions/SKILL.md)/) — Eval automation in CI
 - [ai-agent-security](../../../security/ai/[ai-agent-security](../../../Security/ai-agent-security/SKILL.md)/) — Security-focused eval cases
-- [agent-observability](../[agent-observability](../../Operations/agent-[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)/) — Production quality [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+- [agent-observability](../[agent-observability](../../Operations/agent-[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)/) — Production quality [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)

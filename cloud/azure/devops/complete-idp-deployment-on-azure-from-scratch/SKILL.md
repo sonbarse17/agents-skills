@@ -41,7 +41,7 @@ and the specific handoffs between them on Azure: which subscription hosts
 the platform tooling, how the AKS cluster's Workload Identity federation is
 carried into both the Backstage backend and the self-service provisioning
 layer, and where teams building this for the first time get stuck. This
-skill is that integration [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md), not a restatement of Azure Policy,
+skill is that integration [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md), not a restatement of Azure Policy,
 AKS, or Backstage mechanics.
 
 ## When to use

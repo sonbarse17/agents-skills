@@ -243,7 +243,7 @@ integration decisions.
    external SQL datastore, back it up through that database's own
    tooling. See
    [etcd-backup-restore-and-cluster-health](../[etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md)
-   for the restore procedure and quorum-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) detail this baseline
+   for the restore procedure and quorum-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) detail this baseline
    depends on.
 
 ## Best practices
@@ -308,7 +308,7 @@ integration decisions.
   plane HA by design. If this outage class is unacceptable, the fix is
   revisiting Phase 1's topology choice (multi-server embedded etcd or
   external datastore) for this deployment, not patching around a single
-  [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) after the fact.
+  [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) after the fact.
 
 - **Symptom:** An edge device runs fine for months, then a K3s version
   upgrade corrupts or loses cluster state.
@@ -383,6 +383,6 @@ from Phase 8 is active before the site is considered handed off.
 - [metallb-[bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../[metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration/SKILL.md)/SKILL.md) — full detail for swapping ServiceLB for MetalLB in Phase 4.
 - [cert-manager-tls-automation](../[cert-manager-tls-automation](../cert-manager-tls-automation/SKILL.md)/SKILL.md) — full detail for Phase 5's Issuer/Certificate setup, both the ACME and private-CA paths.
 - [kubernetes-cluster-post-provision-conformance-validation](../[kubernetes-cluster-post-provision-conformance-validation](../[kubernetes](../kubernetes/SKILL.md)-cluster-post-provision-conformance-validation/SKILL.md)/SKILL.md) — the base validation procedure Phase 6 scales down for K3s's footprint.
-- [etcd-backup-restore-and-cluster-health](../[etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md) — full detail for the embedded-etcd backup/restore/quorum-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) referenced in Phases 6 and 8.
+- [etcd-backup-restore-and-cluster-health](../[etcd-backup-restore-and-cluster-health](../etcd-backup-restore-and-cluster-health/SKILL.md)/SKILL.md) — full detail for the embedded-etcd backup/restore/quorum-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) referenced in Phases 6 and 8.
 - [helm-chart-authoring](../[helm-chart-authoring](../helm-chart-authoring/SKILL.md)/SKILL.md) — full detail for the standard `helm install` path in Phase 7.
 - [kubernetes-node-maintenance-and-troubleshooting](../[kubernetes-node-maintenance-and-troubleshooting](../[kubernetes](../kubernetes/SKILL.md)-node-maintenance-and-troubleshooting/SKILL.md)/SKILL.md) — the ongoing operational baseline established in Phase 8.

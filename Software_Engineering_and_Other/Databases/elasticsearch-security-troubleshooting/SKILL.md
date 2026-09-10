@@ -24,7 +24,7 @@ authentication failures, authorization errors, TLS problems, API key issues, rol
 failures, and license-expiry lockouts.
 
 For authentication methods and API key management, see the **[elasticsearch-authn](../elasticsearch-authn/SKILL.md)** skill. For roles, users, and role
-mappings, see the **[elasticsearch-authz](../../../DevOps_and_Cloud/Observability_and_SecOps/elasticsearch-authz/SKILL.md)** skill. For license management, see the **elasticsearch-license** skill.
+mappings, see the **[elasticsearch-authz](../../../observability-monitoring-logging/elasticsearch/other/elasticsearch-authz/SKILL.md)** skill. For license management, see the **elasticsearch-license** skill.
 
 For diagnostic API endpoints, see [../../../Global_References/elasticsearch-security-troubleshooting_api-reference.md](../../../Global_References/elasticsearch-security-troubleshooting_api-reference.md).
 
@@ -139,7 +139,7 @@ the intended realm is reached, authentication fails.
 | Cause                   | Action                                                                     |
 | ----------------------- | -------------------------------------------------------------------------- |
 | Wrong credentials       | Verify username/password or API key value. See **[elasticsearch-authn](../elasticsearch-authn/SKILL.md)**.    |
-| Disabled user           | `PUT /_security/user/{name}/_enable`. See **[elasticsearch-authz](../../../DevOps_and_Cloud/Observability_and_SecOps/elasticsearch-authz/SKILL.md)**.         |
+| Disabled user           | `PUT /_security/user/{name}/_enable`. See **[elasticsearch-authz](../../../observability-monitoring-logging/elasticsearch/other/elasticsearch-authz/SKILL.md)**.         |
 | Expired API key         | Create a new API key. See [API Key Issues](#api-key-issues).               |
 | Realm chain order       | Check `elasticsearch.yml` realm order (self-managed only).                 |
 | Security disabled       | Enable `xpack.security.enabled: true` in `elasticsearch.yml` and restart.  |
@@ -189,9 +189,9 @@ Inspect the `roles` array and `authentication_realm` to confirm the user is who 
 
 | Cause                     | Action                                                                                   |
 | ------------------------- | ---------------------------------------------------------------------------------------- |
-| Missing index privilege   | Add the privilege to the role or create a new role. See **[elasticsearch-authz](../../../DevOps_and_Cloud/Observability_and_SecOps/elasticsearch-authz/SKILL.md)**.         |
-| Missing cluster privilege | Add the cluster privilege. See **[elasticsearch-authz](../../../DevOps_and_Cloud/Observability_and_SecOps/elasticsearch-authz/SKILL.md)**.                                  |
-| Roles replaced on update  | Fetch current roles first, then update with the full array. See **[elasticsearch-authz](../../../DevOps_and_Cloud/Observability_and_SecOps/elasticsearch-authz/SKILL.md)**. |
+| Missing index privilege   | Add the privilege to the role or create a new role. See **[elasticsearch-authz](../../../observability-monitoring-logging/elasticsearch/other/elasticsearch-authz/SKILL.md)**.         |
+| Missing cluster privilege | Add the cluster privilege. See **[elasticsearch-authz](../../../observability-monitoring-logging/elasticsearch/other/elasticsearch-authz/SKILL.md)**.                                  |
+| Roles replaced on update  | Fetch current roles first, then update with the full array. See **[elasticsearch-authz](../../../observability-monitoring-logging/elasticsearch/other/elasticsearch-authz/SKILL.md)**. |
 | Stale API key privileges  | Create a new API key with updated `role_descriptors`. See **[elasticsearch-authn](../elasticsearch-authn/SKILL.md)**.       |
 
 ## TLS and Certificate Errors
@@ -307,8 +307,8 @@ find the mismatch.
 | ---------------- | ------------------------------------------------------------------------------------ |
 | No matching rule | Update the mapping rules to match the user's realm and attributes.                   |
 | Mapping disabled | Set `"enabled": true` on the mapping.                                                |
-| Template error   | Test the Mustache template with known attribute values. See **[elasticsearch-authz](../../../DevOps_and_Cloud/Observability_and_SecOps/elasticsearch-authz/SKILL.md)**. |
-| Rule too broad   | Add `all` / `except` conditions to narrow the match. See **[elasticsearch-authz](../../../DevOps_and_Cloud/Observability_and_SecOps/elasticsearch-authz/SKILL.md)**.    |
+| Template error   | Test the Mustache template with known attribute values. See **[elasticsearch-authz](../../../observability-monitoring-logging/elasticsearch/other/elasticsearch-authz/SKILL.md)**. |
+| Rule too broad   | Add `all` / `except` conditions to narrow the match. See **[elasticsearch-authz](../../../observability-monitoring-logging/elasticsearch/other/elasticsearch-authz/SKILL.md)**.    |
 
 ## Kibana Authentication Issues
 
@@ -397,7 +397,7 @@ curl -X POST "${ELASTICSEARCH_URL}/_security/user/_has_privileges" \
 
 Response: `"has_all_requested": false` — the `viewer` role does not include `read` on `logs-*`.
 
-1. Fix: create a `logs-reader` role and assign it to Joe. See **[elasticsearch-authz](../../../DevOps_and_Cloud/Observability_and_SecOps/elasticsearch-authz/SKILL.md)**.
+1. Fix: create a `logs-reader` role and assign it to Joe. See **[elasticsearch-authz](../../../observability-monitoring-logging/elasticsearch/other/elasticsearch-authz/SKILL.md)**.
 
 ### API key stopped working
 

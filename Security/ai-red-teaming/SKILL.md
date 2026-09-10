@@ -27,7 +27,7 @@ Use this skill when:
 - Launching a new LLM-powered feature or product
 - Evaluating a third-party model before adoption
 - Running periodic security assessments of existing AI systems
-- Responding to a reported jailbreak or prompt injection [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
+- Responding to a reported jailbreak or prompt injection [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
 - Preparing for compliance audits requiring adversarial testing evidence
 
 ## Prerequisites
@@ -291,7 +291,7 @@ def calculate_risk_score(likelihood: int, impact: int, detectability: int) -> di
 
 - Pre-release blocking red-team gate.
 - Monthly deep-dive campaigns.
-- Post-[incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) targeted retests.
+- Post-[incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) targeted retests.
 - Quarterly full-scope exercises covering all categories.
 
 ## Report Template

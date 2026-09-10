@@ -89,4 +89,4 @@ Keep critical instructions in FILES (CLAUDE.md, CONTEXT.md), NOT in conversation
 
 ## Why This Matters
 
-Context compaction is the #1 unsolved platform problem in 2026. Hooks don't fix it (confirmed: the agent ignores post-compaction injections because the compaction summary creates narrative momentum). This skill is the lightweight behavioral countermeasure: no infrastructure, no packages - disciplined self-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) that works in every harness.
+Context compaction is the #1 unsolved platform problem in 2026. Hooks don't fix it (confirmed: the agent ignores post-compaction injections because the compaction summary creates narrative momentum). This skill is the lightweight behavioral countermeasure: no infrastructure, no packages - disciplined self-[monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) that works in every harness.

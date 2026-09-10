@@ -69,7 +69,7 @@ threshold checks, but that validation itself is out of scope here.
   thin trigger/poll-for-result step rather than needing every test
   tool's runtime installed on the CI runner.
 - Running tests on a schedule (nightly regression, periodic synthetic
-  [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)) independent of any CI pipeline trigger.
+  [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)) independent of any CI pipeline trigger.
 
 ## Prerequisites & environment
 
@@ -295,7 +295,7 @@ threshold checks, but that validation itself is out of scope here.
   against the same service.
   **Fix:** Confirm the test's `TARGET_URL` actually points at the
   service's cluster-internal address, not a public Ingress/LB hostname —
-  if it's internal, the results are measuring internal [service-mesh](../../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)
+  if it's internal, the results are measuring internal [service-mesh](../../../common/service-mesh/service-mesh/SKILL.md)
   latency, not what an external client experiences through Ingress/CDN/
   TLS termination; that's a legitimate and useful measurement, but it
   must be labeled as such rather than presented as end-user latency.
@@ -380,5 +380,5 @@ before a slow integration-test stage in any other pipeline design.
 - [keda-configuration-validation](../[keda-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/keda-configuration-validation/SKILL.md)/SKILL.md) — using a Testkube-driven k6 load test's measured throughput as an input to validating KEDA scaling thresholds for the same service.
 - [keda-event-driven-[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)-configuration](../[keda-event-driven-[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)-configuration](../keda-event-driven-[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)-configuration/SKILL.md)/SKILL.md) — the [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) configuration whose behavior a Testkube load test can be used to exercise and observe.
 - [helm-chart-authoring](../[helm-chart-authoring](../helm-chart-authoring/SKILL.md)/SKILL.md) — packaging the Testkube operator installation and `Test`/`TestSuite` resources as a Helm chart alongside the application they test.
-- [secure-cicd-gates](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — where a Testkube-driven test gate fits relative to security scan gates in an overall pipeline.
+- [secure-cicd-gates](../../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — where a Testkube-driven test gate fits relative to security scan gates in an overall pipeline.
 - [github-actions-centralized-reusable-workflows](../../../cicd-tooling/skills/[github-actions-centralized-reusable-workflows](../../CI_CD/[github-actions](../../CI_CD/[github](../../CI_CD/github/SKILL.md)-actions/SKILL.md)-centralized-reusable-workflows/SKILL.md)/SKILL.md) — centralizing the Testkube CLI trigger-and-poll step (step 5) as a reusable workflow shared across multiple services' pipelines.

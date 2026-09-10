@@ -322,7 +322,7 @@ replicas:
 ## Components
 
 ```yaml
-# components/[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)/kustomization.yaml
+# components/[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)/kustomization.yaml
 apiVersion: kustomize.config.k8s.io/v1alpha1
 kind: Component
 
@@ -346,7 +346,7 @@ patches:
 ```yaml
 # overlays/production/kustomization.yaml
 components:
-  - ../../components/[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+  - ../../components/[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 ```
 
 ## Remote Resources
@@ -392,7 +392,7 @@ helmCharts:
     repo: https://prometheus-community.[github](../../../../ci-cd/github-actions/other/github/SKILL.md).io/[helm-charts](../../../helm/charts/helm-charts/SKILL.md)
     version: 25.0.0
     releaseName: prometheus
-    namespace: [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+    namespace: [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
     valuesFile: values.yaml
     includeCRDs: true
 ```

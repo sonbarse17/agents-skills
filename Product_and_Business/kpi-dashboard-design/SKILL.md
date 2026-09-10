@@ -19,13 +19,13 @@ depends_on:
 
 # KPI Dashboard Design
 
-Comprehensive patterns for designing effective Key Performance Indicator (KPI) [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) that drive business decisions.
+Comprehensive patterns for designing effective Key Performance Indicator (KPI) [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) that drive business decisions.
 
 ## When to Use This Skill
 
-- Designing executive [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md)
+- Designing executive [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)
 - Selecting meaningful KPIs
-- Building real-time [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) displays
+- Building real-time [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) displays
 - Creating department-specific metrics views
 - Improving existing dashboard layouts
 - Establishing metric governance

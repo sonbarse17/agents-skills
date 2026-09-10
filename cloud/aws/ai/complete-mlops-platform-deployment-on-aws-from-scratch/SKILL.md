@@ -37,16 +37,16 @@ depends_on:
 An MLOps platform is not one deployment — it's roughly nine components
 (account guardrails, a compute platform, GPU scheduling, experiment
 tracking, a feature layer, pipeline orchestration, a model registry, a
-serving layer, and drift [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)) that only work as a coherent system if
+serving layer, and drift [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)) that only work as a coherent system if
 they're wired up in the right order with the right handoffs between them.
 Each individual piece is well covered by an existing skill in this repo;
 what's missing without this skill is the sequencing itself — for example,
 provisioning a GPU-requesting Kubeflow pipeline before the GPU node pool
 and GPU Operator exist (so training jobs silently queue forever or fall
-back to CPU), or promoting a model to production before [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) hooks
+back to CPU), or promoting a model to production before [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) hooks
 are live (so a bad canary's regression is invisible until a business
 stakeholder notices). This skill sequences the AWS-specific version of that
-whole path — landing zone through production [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) — and calls out
+whole path — landing zone through production [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) — and calls out
 exactly where a mis-ordered step causes a failure that looks like it
 belongs to a different phase entirely.
 
@@ -60,7 +60,7 @@ belongs to a different phase entirely.
   and a specific worked path rather than an abstract comparison.
 - Auditing an existing AWS ML platform for a skipped or out-of-order phase
   (e.g. GPU node pools added after training pipelines were already
-  submitting jobs, or [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) bolted on after months of unmonitored
+  submitting jobs, or [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) bolted on after months of unmonitored
   production traffic).
 - Rebuilding a reference ML platform (a second business unit, a DR
   environment) that should follow the same proven sequence as a known-good
@@ -91,7 +91,7 @@ belongs to a different phase entirely.
   Kubeflow pipeline artifacts, and the model registry — these can share one
   bucket with prefixes or use separate buckets, but the choice should be
   made before Phase 4, not improvised per phase.
-- IAM permissions to create IRSA roles, S3 policies, and (if [load-testing](../../../../DevOps_and_Cloud/Observability_and_SecOps/load-testing/SKILL.md)
+- IAM permissions to create IRSA roles, S3 policies, and (if [load-testing](../../../../observability-monitoring-logging/common/capacity-monitoring/load-testing/SKILL.md)
   serving) an ALB/NLB for KServe/ingress traffic.
 
 ## Step-by-step guidance
@@ -226,14 +226,14 @@ integration decisions between phases.
    ```
    Roll out via canary (5% → 25% → 100%) exactly as
    [model-serving-and-scaling](../[model-serving-and-scaling](../../../AI_and_Agents/Models_and_FineTuning/model-serving-and-scaling/SKILL.md)/SKILL.md)
-   describes — and do not proceed past 5% until Phase 9's [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) is
+   describes — and do not proceed past 5% until Phase 9's [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) is
    confirmed live (see Common pitfalls). (SageMaker alternative: a
    SageMaker real-time endpoint with production variants for canary
    traffic-shifting.)
 
-9. **Phase 9 — [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and drift detection.** Wire drift and quality
-   [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) per
-   [model-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md)
+9. **Phase 9 — [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and drift detection.** Wire drift and quality
+   [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) per
+   [model-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md)
    **before** Phase 8's canary is allowed past its first stage, not after
    — a frozen reference baseline needs to exist from the moment real
    traffic starts, and retrofitting it after the fact means the baseline
@@ -255,7 +255,7 @@ integration decisions between phases.
   of [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), exactly as
   [gpu-accelerator-infrastructure-for-ml-training](../[gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md)/SKILL.md)
   recommends.
-- Treat Phase 9 ([monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)) as a blocking prerequisite for any canary
+- Treat Phase 9 ([monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)) as a blocking prerequisite for any canary
   ramp-up past its first stage in Phase 8, not a follow-up task — the
   entire point of canarying is having a monitored trip-wire, and an
   unmonitored canary is not meaningfully safer than a straight-to-100%
@@ -290,11 +290,11 @@ integration decisions between phases.
 - **Symptom:** A model is promoted from staging to production in Phase 7,
   canaried in Phase 8, and a real regression only surfaces days later when
   a business stakeholder notices — no alert ever fired.
-  **Fix:** Phase 9's [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) was stood up after, not before, the
+  **Fix:** Phase 9's [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) was stood up after, not before, the
   canary ramp-up, so there was no frozen reference baseline or live alert
   in place during the exact window it mattered most. Never let a canary
-  proceed past its first traffic stage until [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) is confirmed live
-  and [alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md).
+  proceed past its first traffic stage until [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) is confirmed live
+  and [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md).
 
 - **Symptom:** The currently-serving production model version's artifacts
   are unexpectedly missing from S3, breaking rollback.
@@ -365,10 +365,10 @@ kfp_client.create_recurring_run(
 # confirmed live BEFORE the canary is ramped past 5%
 ```
 
-Two hours into the 5% canary, the Phase 9 [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) stack flags a
+Two hours into the 5% canary, the Phase 9 [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) stack flags a
 false-positive-rate spike on the new version — exactly the scenario
-[model-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md)'s
-worked example describes — and because [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) was live before the
+[model-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md)'s
+worked example describes — and because [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) was live before the
 ramp-up (not after), on-call catches it at 5% traffic exposure instead of
 100%, rolling back to the previously-archived registry version within
 minutes.
@@ -384,5 +384,5 @@ minutes.
 - [kubeflow-[ml-pipeline](../../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../[kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../../Containers_and_Orchestration/kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md) — Phase 6's KFP-specific implementation.
 - [model-packaging-and-versioning](../[model-packaging-and-versioning](../../../AI_and_Agents/Models_and_FineTuning/model-packaging-and-versioning/SKILL.md)/SKILL.md) — Phase 7's registry and promotion gates.
 - [model-serving-and-scaling](../[model-serving-and-scaling](../../../AI_and_Agents/Models_and_FineTuning/model-serving-and-scaling/SKILL.md)/SKILL.md) — Phase 8's KServe canary/shadow rollout.
-- [model-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md) — Phase 9's drift/quality [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
+- [model-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md) — Phase 9's drift/quality [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
 - [gpu-accelerator-configuration-validation](../[gpu-accelerator-configuration-validation](../gpu-accelerator-configuration-validation/SKILL.md)/SKILL.md) — validating individual job GPU resource requests referenced in Phase 3/6.

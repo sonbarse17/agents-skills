@@ -76,7 +76,7 @@ Detailed pattern documentation lives in `../../../Global_References/workflow-orc
 
 ### Operational Considerations
 
-**[Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**:
+**[Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**:
 
 - Workflow execution duration
 - Activity failure rates

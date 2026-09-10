@@ -79,7 +79,7 @@ gcloud compute instances create web-server \
   --metadata=enable-oslogin=TRUE \
   --shielded-secure-boot \
   --shielded-vtpm \
-  --shielded-integrity-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+  --shielded-integrity-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 # Instance with a startup script and service account
 gcloud compute instances create app-server \

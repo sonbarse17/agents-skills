@@ -35,21 +35,21 @@ Design and operate an internal LLM platform that supports rapid experimentation 
 - [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster with GPU node pools (or cloud inference API access)
 - Container registry (Harbor, ECR, GCR, or ACR)
 - CI/CD system ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, or Argo Workflows)
-- [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) stack (Prometheus + Grafana + [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
+- [Observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) stack (Prometheus + Grafana + [OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
 - Model registry (MLflow or custom metadata store)
 
 ## Outcomes
 
 - Standardized path from experiment to production
 - Safe model rollout with quality and safety gates
-- Repeatable infra modules for inference, vector DB, and [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
+- Repeatable infra modules for inference, vector DB, and [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
 - Clear ownership model across platform, app, and security teams
 
 ## Reference Architecture
 
 1. **Control Plane**: model registry, prompt/version catalog, policy checks, eval pipeline.
 2. **Data Plane**: inference gateway, vector database, cache, feature store.
-3. **Ops Plane**: telemetry, [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md), SLO [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), cost analytics.
+3. **Ops Plane**: telemetry, [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md), SLO [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), cost analytics.
 4. **Security Plane**: IAM boundaries, secret rotation, content filters, [audit](../../Operations/audit/SKILL.md) logs.
 
 ## Model Promotion Pipeline
@@ -434,7 +434,7 @@ spec:
 | Orchestration | Argo Workflows, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions, Airflow |
 | Model Registry | MLflow, custom metadata DB |
 | Gateway | LiteLLM, Envoy-based API gateway |
-| [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) | [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) + Prometheus + Grafana + Langfuse |
+| [Observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) | [OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) + Prometheus + Grafana + Langfuse |
 | Policy | OPA/Rego for deployment and runtime checks |
 | Evaluation | RAGAS, custom eval harness, Promptfoo |
 | Serving | vLLM, TGI, Triton Inference Server |
@@ -455,4 +455,4 @@ spec:
 - [agent-evals](../[agent-evals](../../Workflows/agent-evals/SKILL.md)/) - Build evaluation gates for releases
 - [llm-gateway](../../../infrastructure/networking/[llm-gateway](../llm-gateway/SKILL.md)/) - Route and control LLM traffic
 - [model-registry-governance](../[model-registry-governance](../model-registry-governance/SKILL.md)/) - Model lifecycle and approval workflows
-- [ai-sre-[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response](../[ai-sre-[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response](../../../DevOps_and_Cloud/Observability_and_SecOps/ai-sre-[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)/SKILL.md)/) - AI-specific [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response
+- [ai-sre-[incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-response](../[ai-sre-[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response](../../../DevOps_and_Cloud/Observability_and_SecOps/ai-sre-[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)/SKILL.md)/) - AI-specific [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response

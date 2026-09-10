@@ -242,7 +242,7 @@ Federation rather than silently falling back to the node's identity.
 - Never expose `[argocd](../argocd/SKILL.md)-server` via a public `LoadBalancer` Service —
   terminate through Ingress + cert-manager as in Phase 3.
 - Default to manual sync until the config repo's CI gates are trusted,
-  matching the EKS/AKS variants of this [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md).
+  matching the EKS/AKS variants of this [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md).
 
 ## Common pitfalls
 
@@ -321,4 +321,4 @@ and Phase 6 promotes staging's sync policy to `automated` once verified.
 - [gitops-multi-cluster-management](../[gitops-multi-cluster-management](../[gitops](../gitops/SKILL.md)-multi-cluster-management/SKILL.md)/SKILL.md) — hub-and-spoke registration pattern this skill's Phase 2 adapts with Workload Identity Federation.
 - [ingress-nginx-configuration](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[ingress-nginx-configuration](../../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md) and [cert-manager-tls-automation](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[cert-manager-tls-automation](../../../kubernetes/security/cert-manager-tls-automation/SKILL.md)/SKILL.md) — Phase 3's Ingress/TLS mechanics.
 - [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../../Cloud_Providers/cloud-iam-hardening/SKILL.md)/SKILL.md) — least-privilege principles governing every IAM binding created here.
-- [gitops-workflow](../../../devops/skills/[gitops-workflow](../[gitops](../gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md) — the vendor-neutral [GitOps](../../../common/gitops/gitops/SKILL.md) concepts this GKE-specific [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) implements.
+- [gitops-workflow](../../../devops/skills/[gitops-workflow](../[gitops](../gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md) — the vendor-neutral [GitOps](../../../common/gitops/gitops/SKILL.md) concepts this GKE-specific [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) implements.

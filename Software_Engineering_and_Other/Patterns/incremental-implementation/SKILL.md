@@ -210,7 +210,7 @@ Be explicit about what's in scope and what's NOT in scope for each increment.
 
 ## Increment Checklist
 
-After each increment, verify with the repository's own commands (see the [test-driven-development](../../../DevOps_and_Cloud/Observability_and_SecOps/test-driven-development/SKILL.md) skill's Discover the Stack First section):
+After each increment, verify with the repository's own commands (see the [test-driven-development](../test-driven-development/SKILL.md) skill's Discover the Stack First section):
 
 - [ ] The change does one thing and does it completely
 - [ ] All existing tests still pass (the repository's test command: `npm test`, `./gradlew test`, `pytest`, ...)

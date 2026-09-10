@@ -89,7 +89,7 @@ samples.
 A profile taken against an empty local database, with no concurrent requests, measures a
 different program than the one running in production — index scans, lock contention, and cache
 misses only appear at realistic data volume and concurrency. Combine profiling with
-`[load-testing](../../../DevOps_and_Cloud/Observability_and_SecOps/load-testing/SKILL.md)` to get a profile that reflects the real hot path.
+`[load-testing](../../../observability-monitoring-logging/common/capacity-monitoring/load-testing/SKILL.md)` to get a profile that reflects the real hot path.
 
 - **Use production-scale data**, not a seeded dev dataset — query plans change with cardinality.
 - **Profile under concurrent load**, not a single request — contention and queueing don't exist

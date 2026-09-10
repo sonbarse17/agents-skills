@@ -61,7 +61,7 @@ Provider: {built-in|distributed-scheduler|external}
 - [ ] Exactly-once execution guaranteed in multi-instance deployment.
 - [ ] Timezone handling correct — DST transitions mapped.
 - [ ] Error handling and retry configured.
-- [ ] [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) for missed executions.
+- [ ] [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) for missed executions.
 
 ### Max Response Length
 3 lines per job. 15 lines for full setup.
@@ -372,7 +372,7 @@ Common expressions:
 2. **No timeout**: A job that hangs forever blocks the scheduler. Always set execution timeout.
 3. **Server-local timezone**: Relying on the server timezone for scheduling causes DST bugs. Always specify timezone explicitly.
 4. **Single-instance cron**: Running cron on a single instance creates a SPOF. Use distributed locking.
-5. **Missing [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: A job that silently fails is worse than no job at all. Monitor every execution.
+5. **Missing [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**: A job that silently fails is worse than no job at all. Monitor every execution.
 6. **Tight coupling**: Embedding business logic directly in a cron handler makes testing hard. Cron should call service methods.
 7. **Overlapping executions**: If a long-running job overlaps with its next schedule, both run concurrently. Prevent with lock timeout > max expected duration.
 
@@ -406,10 +406,10 @@ Common expressions:
 ## References
   - ../../../Global_References/cron-expression-guide.md — Cron Expression Guide
   - ../../../Global_References/distributed-cron.md — Distributed Cron
-  - ../../../Global_References/scheduling-cron_job-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).md — Job [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and Management
+  - ../../../Global_References/scheduling-cron_job-[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Job [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and Management
   - ../../../Global_References/scheduler-implementation.md — Scheduling and Cron Patterns
   - ../../../Global_References/scheduling-architecture.md — Scheduling Architecture
-  - ../../../Global_References/scheduling-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).md — Scheduling [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+  - ../../../Global_References/scheduling-[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Scheduling [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
   - ../../../Global_References/scheduling-patterns.md — Scheduling Patterns
   - ../../../Global_References/scheduling-security.md — Scheduling Security
 ## Handoff
@@ -468,7 +468,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
+### [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -503,7 +503,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing ([OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -537,6 +537,6 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - Fail securely — errors default to safe behavior.
 - Log security-relevant events for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) from day one, not as an afterthought.
+- Design for [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

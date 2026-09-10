@@ -114,7 +114,7 @@ wget https://aws-codedeploy-us-east-1.s3.us-east-1.amazonaws.com/latest/install
 chmod +x ./install
 ./install auto
 
-# Signal [CloudFormation](../../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md) (if launched via CFN)
+# Signal [CloudFormation](../../../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md) (if launched via CFN)
 # /opt/aws/bin/cfn-signal -e $? --stack ${AWS::StackName} --resource ASG --region ${AWS::Region}
 ```
 
@@ -150,7 +150,7 @@ aws ec2 create-launch-template \
         {"Key": "ManagedBy", "Value": "launch-template"}
       ]
     }],
-    "[Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)": {"Enabled": true},
+    "[Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)": {"Enabled": true},
     "UserData": "'"$(base64 -w0 userdata.sh)"'"
   }'
 

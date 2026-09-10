@@ -264,7 +264,7 @@ spec:
   - to:
     - namespaceSelector:
         matchLabels:
-          name: [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)        # metrics only
+          name: [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)        # metrics only
     ports:
     - protocol: TCP
       port: 9090

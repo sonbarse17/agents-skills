@@ -30,7 +30,7 @@ Use this skill when:
 - Configuring cloud security groups for AWS, GCP, or Azure resources
 - Migrating from iptables to nftables
 - Auditing existing firewall rules for compliance
-- Responding to a security [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) requiring emergency network blocks
+- Responding to a security [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) requiring emergency network blocks
 
 ## Prerequisites
 
@@ -106,7 +106,7 @@ iptables -A INPUT -p tcp --tcp-flags SYN,FIN SYN,FIN -j DROP
 # Allow app servers to reach database (port 5432)
 iptables -A INPUT -p tcp --dport 5432 -s 10.0.1.0/24 -j ACCEPT
 
-# Allow [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) (Prometheus node exporter)
+# Allow [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (Prometheus node exporter)
 iptables -A INPUT -p tcp --dport 9100 -s 10.0.200.0/24 -j ACCEPT
 
 # DNS resolution
@@ -116,7 +116,7 @@ iptables -A INPUT -p tcp --sport 53 -j ACCEPT
 # NTP
 iptables -A INPUT -p udp --sport 123 -j ACCEPT
 
-# Block specific IP ([incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response)
+# Block specific IP ([incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response)
 iptables -I INPUT 1 -s 203.0.113.50 -j DROP
 ```
 
@@ -200,7 +200,7 @@ table inet filter {
     # HTTP/HTTPS from anywhere
     tcp dport { 80, 443 } accept
 
-    # Prometheus metrics from [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) subnet
+    # Prometheus metrics from [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) subnet
     tcp dport 9100 ip saddr $MONITOR accept
 
     # Rate limit new connections
@@ -448,7 +448,7 @@ fi
 - Default deny policy on all chains
 - Minimal rule sets - only open what is required
 - Regular rule audits (monthly minimum)
-- Log denied traffic for security [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+- Log denied traffic for security [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - Document all rules with descriptions and ticket references
 - Use connection tracking for stateful inspection
 - Rate limit inbound connections to prevent DDoS

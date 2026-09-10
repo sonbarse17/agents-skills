@@ -70,7 +70,7 @@ help.
 Automating a broken process just makes the breakage run faster and more often. Before scripting a
 manual step away, ask whether it should exist at all — many approvals, handoffs, and manual
 checklist items survive purely because nobody re-examined them after the reason for them expired.
-See `[toil-reduction](../../DevOps_and_Cloud/Observability_and_SecOps/toil-reduction/SKILL.md)` for the fuller framework on identifying and eliminating repetitive manual
+See `[toil-reduction](../../observability-monitoring-logging/common/other/toil-reduction/SKILL.md)` for the fuller framework on identifying and eliminating repetitive manual
 work; the discipline here is doing that [audit](../../AI_and_Agents/Operations/audit/SKILL.md) before writing automation, not after.
 
 **Done when:** every piece of toil you automated has a named reason it needs to exist at all, not

@@ -508,6 +508,6 @@ asset_inventory_checklist:
 - Reconcile inventory regularly and investigate orphaned assets (CMDB record with no real resource and vice versa)
 - Track data classification as a mandatory tag to support compliance scoping decisions
 - Maintain asset lifecycle states to distinguish active resources from those being decommissioned
-- Integrate asset inventory with [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response to quickly identify affected systems during investigations
+- Integrate asset inventory with [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response to quickly identify affected systems during investigations
 - Export inventory data for compliance audits in accessible formats (CSV, JSON)
 - Review untagged and unclassified resource reports weekly to maintain inventory quality

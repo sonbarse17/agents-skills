@@ -572,7 +572,7 @@ promote_to_prod "$@"
 - Enable **SBOM generation** in every pipeline and upload to a central store
 - Sign all pipeline artifacts with **Sigstore/cosign** and verify before deployment
 - Rotate CI/CD tokens and service account credentials every 30 days
-- Scan **[infrastructure-as-code](../../../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md)** (Terraform, Helm) for misconfigurations using Checkov
+- Scan **[infrastructure-as-code](../../../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md)** (Terraform, Helm) for misconfigurations using Checkov
 - Restrict **pipeline trigger** permissions to trusted actors only
 - [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) **pipeline logs** centrally and alert on suspicious activity (exfiltrated env vars)
 

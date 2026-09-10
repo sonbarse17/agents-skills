@@ -32,7 +32,7 @@ that was never built.**
 ## 1. Choose the smallest base that still lets you debug
 
 `scratch` and distroless bases produce the smallest, lowest-attack-surface images, but they ship
-without a shell — a production [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) that needs `exec`-ing in becomes much harder. A
+without a shell — a production [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) that needs `exec`-ing in becomes much harder. A
 distro-based "slim" variant is usually the right default: small enough to matter, still
 debuggable. Reserve `scratch` for statically-linked binaries (Go, Rust) where you genuinely never
 need a shell inside the container, and keep a debug-variant image or an ephemeral debug container

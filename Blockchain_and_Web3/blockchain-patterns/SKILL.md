@@ -333,7 +333,7 @@ Decide: Bridge Architecture
 - Run daily invariant checks (supply = borrow + reserves)
 - Gas optimization review every quarter (reduce costs for users)
 
-### MEV [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+### MEV [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - Detect sandwich attacks on AMM pools (frontrun + backrun same tx)
 - Track validator proposer boost usage for block reorgs
 - Monitor private mempool (Flashbots) usage and censored transactions

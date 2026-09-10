@@ -122,7 +122,7 @@ extension-points:
   notification.channel:     Custom notification channel (SMS, push, Slack)
   pipeline.step:            Custom build/deploy pipeline step
   storage.backend:          Custom storage backend (S3, GCS, local)
-  exporter.metric:          Custom metric exporter (Prometheus, [Datadog](../../../DevOps_and_Cloud/Observability_and_SecOps/datadog/SKILL.md))
+  exporter.metric:          Custom metric exporter (Prometheus, [Datadog](../../../observability-monitoring-logging/datadog/other/datadog/SKILL.md))
   payment.gateway:          Custom payment gateway (Stripe, PayPal, Braintree)
 ```
 
@@ -516,6 +516,6 @@ class PluginResourceLimiter {
   - ../../../Global_References/plugin-versioning.md — Plugin API Versioning
 ## Handoff
 No artifact produced unless requested.
-Next skill: [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) — add plugin lifecycle traces to the telemetry pipeline.
+Next skill: [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) — add plugin lifecycle traces to the telemetry pipeline.
 Carry forward: extension points, SPI contracts, plugin manifest format.
 

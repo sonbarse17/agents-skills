@@ -317,7 +317,7 @@ async function publishEvent(event: DomainEvent) {
 }
 ```
 
-### Step 9: [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
+### Step 9: [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
 
 | Metric | What It Tells | Alert Threshold |
 |--------|--------------|-----------------|
@@ -329,7 +329,7 @@ async function publishEvent(event: DomainEvent) {
 | Queue depth (SQS/Rabbit) | Backlog | Depth > 10000 |
 
 ```[typescript](../../Frontend/typescript/SKILL.md)
-// Kafka lag [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+// Kafka lag [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 async function checkConsumerLag(admin: Admin, groupId: string): Promise<void> {
   const lag = await admin.fetchOffsets({ groupId });
   for (const partition of lag) {
@@ -368,7 +368,7 @@ async function checkConsumerLag(admin: Admin, groupId: string): Promise<void> {
 |-------------|-------------|-----|
 | Using MQ as a database | Storage grows unbounded, no query capability | Define retention limits, use DB for persistence |
 | Infinite retention | Storage explosion, slow rebalances | Set retention by time and size |
-| No DLQ [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) | Silent data loss | Alert on DLQ message production |
+| No DLQ [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) | Silent data loss | Alert on DLQ message production |
 | Committing offset before processing | Lost messages on crash | [Commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) after processing (at-least-once) |
 | Too many partitions | Rebalance overhead, connection overhead | Partitions = consumers × 2-3 max |
 | Synchronous producing | Increases latency, reduces throughput | Batch or async produce |
@@ -380,7 +380,7 @@ async function checkConsumerLag(admin: Admin, groupId: string): Promise<void> {
 - Every message must have a unique id and timestamp.
 - Always use key-based partitioning when message ordering matters.
 - Schema evolve via new version — never mutate existing message schemas.
-- DLQ must have [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md). Unattended DLQ = silent data loss.
+- DLQ must have [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md). Unattended DLQ = silent data loss.
 - Consumer lag must be monitored. Set alerts for lag > threshold.
 - Never [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) offsets before processing is complete (at-least-once).
 - Max message size: 1MB for Kafka, 256KB for SQS, unlimited for RabbitMQ (practical: 10MB).
@@ -392,13 +392,13 @@ async function checkConsumerLag(admin: Admin, groupId: string): Promise<void> {
   - ../../../Global_References/consumer-patterns.md — Consumer Patterns
   - ../../../Global_References/kafka-patterns.md — Kafka Patterns
   - ../../../Global_References/message-design.md — Message Schema Design
-  - ../../../Global_References/message-queue-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).md — Message Queue [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+  - ../../../Global_References/message-queue-[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Message Queue [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
   - ../../../Global_References/message-queue-security.md — Message Queue Security
   - ../../../Global_References/producer-patterns.md — Producer Patterns
   - ../../../Global_References/rabbitmq-patterns.md — RabbitMQ Patterns
 ## Handoff
 No artifact produced unless requested.
-Next skill: [backend-caching](../../../DevOps_and_Cloud/Observability_and_SecOps/caching/SKILL.md) — if the event-driven system needs to cache materialized views or read models.
+Next skill: [backend-caching](../caching/SKILL.md) — if the event-driven system needs to cache materialized views or read models.
 Carry forward: topic/queue topology, message schemas, consumer group configs, retry/DLQ policies.
 
 ## Implementation Patterns
@@ -520,7 +520,7 @@ What are the requirements?
 | Anti-Pattern | Why It Fails | Correct Approach |
 |---|---|---|
 | Infinite retention | Storage explosion, slow rebalances | Set retention by time (7d default) and size |
-| No DLQ [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) | Silent data loss | Alert on DLQ message production |
+| No DLQ [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) | Silent data loss | Alert on DLQ message production |
 | Committing offset before processing | Lost messages on crash | [Commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) after processing (at-least-once) |
 | Too many partitions | Rebalance overhead, connection overhead | Partitions = consumers x 2-3 max |
 

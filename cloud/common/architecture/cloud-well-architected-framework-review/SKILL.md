@@ -79,8 +79,8 @@ a substitute for the standards-mapping and legal/[audit](../../../../AI_and_Agen
   per entire cloud account/organization; reviewing "everything" at once
   produces vague, unactionable output.
 - Access to the workload's architecture diagram, IaC (Terraform/
-  [CloudFormation](../../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md)/Bicep/Deployment Manager), [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), cost
-  and usage data, and [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) history — the review is grounded in real
+  [CloudFormation](../../../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md)/Bicep/Deployment Manager), [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), cost
+  and usage data, and [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) history — the review is grounded in real
   operational evidence, not just an architecture diagram in isolation.
 - Provider-specific framework reference and, if available, its tooling:
   - AWS: AWS Well-Architected Framework (six pillars: Operational
@@ -122,8 +122,8 @@ a substitute for the standards-mapping and legal/[audit](../../../../AI_and_Agen
    review pass per provider, since the pillar sets and tooling differ).
 3. **Gather evidence per pillar before scoring**, not opinions in a
    vacuum:
-   - *Operational excellence*: [runbooks](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md), deployment process, change
-     failure rate, [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)/[alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) coverage, [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) postmortems.
+   - *Operational excellence*: [runbooks](../../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md), deployment process, change
+     failure rate, [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)/[alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) coverage, [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) postmortems.
    - *Security*: IAM least-privilege posture, encryption at rest/in
      transit, network segmentation, secrets handling, patch/vulnerability
      management — this pillar overlaps directly with
@@ -172,7 +172,7 @@ a substitute for the standards-mapping and legal/[audit](../../../../AI_and_Agen
   rather not discuss — a review that consistently omits cost optimization
   or sustainability findings has stopped being a Well-Architected review.
 - Ground every score in a specific piece of evidence (a dashboard metric,
-  an IaC snippet, an [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) ticket) — "we feel good about reliability"
+  an IaC snippet, an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) ticket) — "we feel good about reliability"
   is not a score.
 - Make trade-offs explicit and attribute the decision to a named owner —
   Well-Architected pillars actively conflict (cost vs. reliability,
@@ -240,7 +240,7 @@ Scoring scale: 1 (significant gaps) – 5 (best-practice aligned).
 
 | Pillar | Score | Key evidence | Top finding |
 |---|---|---|---|
-| Operational excellence | 3/5 | Deploys via CI/CD, but no automated rollback; on-call [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) exists but last updated 14 months ago | [Runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) stale; no automated rollback on failed deploy |
+| Operational excellence | 3/5 | Deploys via CI/CD, but no automated rollback; on-call [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) exists but last updated 14 months ago | [Runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) stale; no automated rollback on failed deploy |
 | Security | 4/5 | IAM roles scoped per-service, secrets in [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), but one legacy EC2 instance still uses a long-lived static credential | Legacy instance not yet migrated to federated/instance-role auth |
 | Reliability | 2/5 | Primary RDS instance is single-AZ; no documented/tested failover; RTO target of 1 hour is unverified | Single-AZ database is a single point of failure against the stated RTO |
 | Performance efficiency | 4/5 | [Autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) configured with headroom, p99 latency within SLO for 11 of 12 months | Minor: cache hit ratio below target during flash-sale traffic spikes |
@@ -262,7 +262,7 @@ Illustrative prioritized backlog (excerpt):
 | P1 | Security | Legacy instance on static credentials | Medium | `<SECURITY_ENG_PLACEHOLDER>` | 2 sprints |
 | P1 | Cost optimization | <30% commitment coverage | Medium | `<FINOPS_OWNER_PLACEHOLDER>` | Next quarter |
 | P2 | Sustainability | No non-prod off-hours scheduling | Low | `<PLATFORM_TEAM_PLACEHOLDER>` | Next quarter |
-| P2 | Operational excellence | [Runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) stale, no automated rollback | Low | `<APP_TEAM_PLACEHOLDER>` | Next sprint |
+| P2 | Operational excellence | [Runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) stale, no automated rollback | Low | `<APP_TEAM_PLACEHOLDER>` | Next sprint |
 
 Re-review scheduled for `<REVIEW_DATE_PLACEHOLDER>` (illustrative: 6 months
 out), with the same pillar scorecard re-run to track deltas.

@@ -47,7 +47,7 @@ boundary for who can change what, where.
 
 - Operating more than a handful of [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) clusters that need
   consistent [GitOps](../gitops/SKILL.md)-managed workloads (platform agents, ingress
-  controllers, [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) stacks, or application workloads themselves).
+  controllers, [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) stacks, or application workloads themselves).
 - Standing up a new cluster and needing it to automatically receive its
   expected baseline workloads without hand-authoring `Application`
   manifests for it.
@@ -308,7 +308,7 @@ boundary for who can change what, where.
   **Fix:** This is the risk of targeting the entire fleet in one
   generator match with `automated` sync and no wave staging. Adopt a
   `rollout-wave` label dimension (step 5) so future fleet-wide changes hit
-  a small labeled subset first, and roll back the current [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) via
+  a small labeled subset first, and roll back the current [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) via
   Git revert (per
   [gitops-workflow](../../../devops/skills/[gitops-workflow](../[gitops](../gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md)),
   which the fleet's `selfHeal` will then propagate back out uniformly.

@@ -79,7 +79,7 @@ states plainly rather than glossing over.
 - `[kubectl](../kubectl/SKILL.md)`, `helm` ≥ 3.8, and Sonobuoy for the Phase 1 conformance check.
 - A Node.js/Yarn toolchain to build and [customize](../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) the Backstage app.
 - A CSI-capable default `StorageClass` already available on the cluster
-  (block storage of some kind — [Longhorn](../../../../DevOps_and_Cloud/Observability_and_SecOps/longhorn/SKILL.md), Rook-Ceph, or the cluster's own
+  (block storage of some kind — [Longhorn](../../storage/longhorn/SKILL.md), Rook-Ceph, or the cluster's own
   CSI driver if managed) before Phase 3, since the catalog database here
   is an in-cluster StatefulSet, not a cloud-managed instance.
 - A decision, before Phase 6, on whether the generic self-service layer
@@ -114,12 +114,12 @@ install cert-manager for automated TLS issuance (ACME DNS-01 if there's no
 single cloud LB to terminate at, or a private CA for internal-only
 platforms), per
 [cert-manager-tls-automation](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[cert-manager-tls-automation](../../security/cert-manager-tls-automation/SKILL.md)/SKILL.md);
-and confirm a `StorageClass` backed by either [Longhorn](../../../../DevOps_and_Cloud/Observability_and_SecOps/longhorn/SKILL.md) (simpler, block-only)
+and confirm a `StorageClass` backed by either [Longhorn](../../storage/longhorn/SKILL.md) (simpler, block-only)
 or Rook-Ceph (block + object + shared filesystem) is available for Phase
 3's catalog database PVC, per
 [longhorn-storage-configuration](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[longhorn-storage-configuration](../../Observability_and_SecOps/[longhorn](../../Observability_and_SecOps/longhorn/SKILL.md)-storage-configuration/SKILL.md)/SKILL.md)
 or
-[rook-ceph-storage-operations](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[rook-ceph-storage-operations](../../../../DevOps_and_Cloud/Observability_and_SecOps/rook-ceph-storage-operations/SKILL.md)/SKILL.md).
+[rook-ceph-storage-operations](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[rook-ceph-storage-operations](../../storage/rook-ceph-storage-operations/SKILL.md)/SKILL.md).
 None of this is needed in the cloud-specific variants, which lean on the
 cloud's own load balancer, ACM/managed-cert service, and managed database
 — this phase exists specifically because this variant deliberately avoids
@@ -247,7 +247,7 @@ and
   on — Phase 7's namespace ResourceQuotas and NetworkPolicies are load-
   bearing, not optional hardening. Confirm they're actually enforced (not
   just defined) before onboarding a second team, not after the first
-  [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+  [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 
 - **Symptom:** After a cluster upgrade, several previously-working
   Scaffolder-provisioned Namespaces lose their NetworkPolicy enforcement,
@@ -262,8 +262,8 @@ and
   of disk and Backstage goes fully read-only with no warning beforehand.
   **Fix:** There's no cloud-managed storage-[autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) safety net in this
   variant; set up a PVC usage alert well below [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) and a documented
-  volume-expansion [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) (`[kubectl](../kubectl/SKILL.md) edit pvc` with a CSI driver that
-  supports online expansion) before this becomes a production [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md),
+  volume-expansion [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) (`[kubectl](../kubectl/SKILL.md) edit pvc` with a CSI driver that
+  supports online expansion) before this becomes a production [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md),
   not after.
 
 - **Symptom:** Someone runs `[kubectl](../kubectl/SKILL.md) delete namespace <team-namespace>`
@@ -316,7 +316,7 @@ cloud infrastructure.
 
 - [managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md), [kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[kubernetes-cluster-provisioning-with-kubeadm-and-cluster-api](../[kubernetes](../kubernetes/SKILL.md)-cluster-provisioning-with-kubeadm-and-cluster-api/SKILL.md)/SKILL.md) — cluster-acquisition options ahead of Phase 1.
 - [kubernetes-cluster-post-provision-conformance-validation](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[kubernetes-cluster-post-provision-conformance-validation](../[kubernetes](../kubernetes/SKILL.md)-cluster-post-provision-conformance-validation/SKILL.md)/SKILL.md) — Phase 1.
-- [ingress-nginx-configuration](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[ingress-nginx-configuration](../../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md), [cert-manager-tls-automation](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[cert-manager-tls-automation](../../security/cert-manager-tls-automation/SKILL.md)/SKILL.md), [longhorn-storage-configuration](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[longhorn-storage-configuration](../../Observability_and_SecOps/[longhorn](../../Observability_and_SecOps/longhorn/SKILL.md)-storage-configuration/SKILL.md)/SKILL.md), [rook-ceph-storage-operations](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[rook-ceph-storage-operations](../../../../DevOps_and_Cloud/Observability_and_SecOps/rook-ceph-storage-operations/SKILL.md)/SKILL.md) — Phase 2.
+- [ingress-nginx-configuration](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[ingress-nginx-configuration](../../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md), [cert-manager-tls-automation](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[cert-manager-tls-automation](../../security/cert-manager-tls-automation/SKILL.md)/SKILL.md), [longhorn-storage-configuration](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[longhorn-storage-configuration](../../Observability_and_SecOps/[longhorn](../../Observability_and_SecOps/longhorn/SKILL.md)-storage-configuration/SKILL.md)/SKILL.md), [rook-ceph-storage-operations](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[rook-ceph-storage-operations](../../storage/rook-ceph-storage-operations/SKILL.md)/SKILL.md) — Phase 2.
 - [helm-chart-authoring](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[helm-chart-authoring](../../../helm/charts/helm-chart-authoring/SKILL.md)/SKILL.md), [backstage-plugin-development](../[backstage-plugin-development](../../../Software_Engineering_and_Other/Backend/backstage-plugin-development/SKILL.md)/SKILL.md) — Phase 3.
 - [golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../../../Product_and_Business/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md) — Phase 4.
 - [golden-path-template-validation-and-testing](../[golden-path-template-validation-and-testing](../../CI_CD/golden-path-template-validation-and-testing/SKILL.md)/SKILL.md) — Phase 5.

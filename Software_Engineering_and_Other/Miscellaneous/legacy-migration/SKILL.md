@@ -106,7 +106,7 @@ Exact user phrases: legacy migration, system migration, strangler fig, legacy mo
 - Is there an existing test suite for the legacy system?
 
 ### Output Artifact
-Migration plan with strategy, anti-corruption layer design, data migration approach, and cutover [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md).
+Migration plan with strategy, anti-corruption layer design, data migration approach, and cutover [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md).
 
 ### Response Format
 ```
@@ -138,7 +138,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 - [ ] Anti-corruption layer designed and implemented
 - [ ] Data migration with dual-write verification
 - [ ] Rollback plan documented and tested
-- [ ] Cutover [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) validated in staging
+- [ ] Cutover [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) validated in staging
 - [ ] Performance baseline captured for comparison
 - [ ] Legacy decommission checklist verified
 
@@ -189,9 +189,9 @@ Cutover checklist:
 - [ ] Final data sync complete and verified
 - [ ] Rollback data snapshot taken
 - [ ] New system health check passed
-- [ ] [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) configured and reviewed
+- [ ] [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) configured and reviewed
 - [ ] On-call team briefed on new system
-- [ ] [Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) accessible to all responders
+- [ ] [Runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) accessible to all responders
 - [ ] Stakeholders notified of cutover window
 - [ ] External dependency status verified
 
@@ -203,7 +203,7 @@ Verify zero dependency on legacy. Archive legacy data (compressed, encrypted, ti
 Decommission checklist:
 - [ ] All traffic verified flowing to new system (zero requests to legacy)
 - [ ] All cron jobs, ETL pipelines, and batch processes updated
-- [ ] All [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) migrated
+- [ ] All [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) migrated
 - [ ] Legacy data archived with access procedure documented
 - [ ] Third-party integrations pointed to new endpoints
 - [ ] Vendor contracts for legacy infrastructure terminated
@@ -239,15 +239,15 @@ Practice 4: Automate comparison. Manual data verification does not scale. Write 
 
 Practice 5: Keep the legacy system running in read-only mode after cutover. This provides a safety net for data verification and emergency rollback. Plan for 30-90 days of overlap.
 
-Practice 6: Practice the cutover in staging weekly. Each practice reveals gaps in the [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md). Team members should be able to execute the cutover under stress.
+Practice 6: Practice the cutover in staging weekly. Each practice reveals gaps in the [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md). Team members should be able to execute the cutover under stress.
 
 Practice 7: Communicate migration progress to stakeholders weekly. Visibility builds confidence. Flag delays early. Celebrate milestones (data sync complete, X% traffic migrated).
 
 ## Templates & Tools
 
-### Migration [Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) Template
+### Migration [Runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) Template
 ```
-# Cutover [Runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md): {Legacy} -> {New}
+# Cutover [Runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md): {Legacy} -> {New}
 
 ## Pre-Cutover (T-24h)
 - [ ] Disable non-critical batch jobs on legacy
@@ -275,7 +275,7 @@ Practice 7: Communicate migration progress to stakeholders weekly. Visibility bu
 - Error rate > baseline + 1% for 5min
 - Latency p99 > 2x baseline for 5min
 - Data comparison mismatch > 0.01%
-- Any P1 [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) on new system
+- Any P1 [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) on new system
 ```
 
 ### Tools Reference
@@ -510,7 +510,7 @@ Scheduling the cutover during end-of-quarter close, Black Friday, or product lau
 - Data validation must compare records at both count and content levels.
 - Migration schedule must include buffer for rollback and re-attempt.
 - Security scanning must be completed on migrated code before production traffic.
-- Post-migration performance [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) must continue for minimum 30 days.
+- Post-migration performance [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) must continue for minimum 30 days.
 
 ## References
   - ../../../Global_References/legacy-migration-advanced.md -- Legacy Migration Advanced
@@ -523,5 +523,5 @@ Scheduling the cutover during end-of-quarter close, Black Friday, or product lau
   - ../../../Global_References/strangler-fig.md -- Strangler Fig Pattern
   - ../../../Global_References/testing-migration.md -- Testing Legacy Migrations
 ## Handoff
-For integration patterns during strangler fig, hand off to `[enterprise-integration-patterns](../../../DevOps_and_Cloud/Observability_and_SecOps/integration-patterns/SKILL.md)`. For data governance during migration, hand off to `[enterprise-data-governance](../../../DevOps_and_Cloud/Observability_and_SecOps/data-governance/SKILL.md)`.
+For integration patterns during strangler fig, hand off to `[enterprise-integration-patterns](../../Patterns/integration-patterns/SKILL.md)`. For data governance during migration, hand off to `[enterprise-data-governance](../../../Data_Engineering/data-governance/SKILL.md)`.
 

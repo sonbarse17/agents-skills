@@ -302,7 +302,7 @@ Each role has veto power on ambiguity. If any amigo can't explain what a scenari
 | 1. Beginner | Writing basic Gherkin, no automation | Training on Gherkin syntax | Feature files written for 50%+ stories |
 | 2. Structured | Three amigos regular, automated step defs | Three amigos facilitation training | 80%+ stories with three amigos |
 | 3. Integrated | Scenarios drive development, CI execution | CI pipeline integration skills | 100% feature file coverage in CI |
-| 4. Optimized | Living documentation, metrics-driven | [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and reporting setup | Stakeholders read living docs monthly |
+| 4. Optimized | Living documentation, metrics-driven | [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and reporting setup | Stakeholders read living docs monthly |
 
 ### Common Adoption Challenges
 
@@ -623,7 +623,7 @@ Using BDD for all testing needs including unit tests, integration tests, and per
 
 **Phase 3 — Standardize (Weeks 13-24):** Make BDD part of Definition of Ready (scenarios before development) and Definition of Done (scenarios passing in CI). Train all teams. Centralize step library governance. Measure: feature file coverage, scenario pass rate stability, time from scenario writing to automation.
 
-**Phase 4 — Optimize (Weeks 25+):** BDD metrics in team [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md). Living documentation as primary requirements reference. Automated traceability from scenarios to requirements. Measure: business stakeholder engagement with living docs, defect escape rate reduction, requirements ambiguity reduction.
+**Phase 4 — Optimize (Weeks 25+):** BDD metrics in team [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md). Living documentation as primary requirements reference. Automated traceability from scenarios to requirements. Measure: business stakeholder engagement with living docs, defect escape rate reduction, requirements ambiguity reduction.
 
 ## Expansion Patterns for Gherkin
 

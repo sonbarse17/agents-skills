@@ -45,7 +45,7 @@ Activate this skill when user wants to:
 - Design AKS networking (API server access, pod IP model, egress)
 - Set up AKS identity and secrets management
 - Configure AKS governance (Azure Policy, Deployment Safeguards)
-- Enable AKS [observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) (Container Insights, Managed Prometheus, Grafana)
+- Enable AKS [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) (Container Insights, Managed Prometheus, Grafana)
 - Define AKS upgrade and patching strategy
 - Understand AKS Automatic vs Standard SKU differences
 - Get a Day-0 checklist for AKS cluster setup and configuration
@@ -69,7 +69,7 @@ If the user is unsure, use safe defaults.
 - Expected scale (node/cluster count, workload size)
 - Networking requirements (API server access, pod IP model, ingress/egress control)
 - Security and identity requirements, including image registry
-- Upgrade and [observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) preferences
+- Upgrade and [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) preferences
 - Cost constraints
 
 ## Workflow
@@ -86,7 +86,7 @@ If the user is unsure, use safe defaults.
   - Docs: https://learn.microsoft.com/azure/aks/azure-cni-overlay
 
 **Dataplane & Network Policy**:
-- **Azure CNI powered by Cilium** (recommended): eBPF-based for high-performance packet processing, network policies, and [observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
+- **Azure CNI powered by Cilium** (recommended): eBPF-based for high-performance packet processing, network policies, and [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
 
 **Egress**:
 - **Static Egress Gateway** for stable, predictable outbound IPs
@@ -108,10 +108,10 @@ If the user is unsure, use safe defaults.
 - Allow only signed, policy-approved images (Azure Policy + Ratify), prefer **Azure Container Registry**
 - **Isolation**: Use namespaces, network policies, scoped logging
 
-### 4. [Observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
-- Use Managed Prometheus and Container Insights with Grafana for AKS [observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) (logs + metrics).
-- Enable Diagnostic Settings to collect control plane logs and [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs in a Log Analytics workspace for security [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and troubleshooting.
-- For other [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and troubleshooting tools, use features like the Agentic CLI for AKS, Application Insights, Resource Health Center, AppLens detectors, and Azure Advisors.
+### 4. [Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
+- Use Managed Prometheus and Container Insights with Grafana for AKS [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) (logs + metrics).
+- Enable Diagnostic Settings to collect control plane logs and [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs in a Log Analytics workspace for security [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and troubleshooting.
+- For other [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and troubleshooting tools, use features like the Agentic CLI for AKS, Application Insights, Resource Health Center, AppLens detectors, and Azure Advisors.
 
 ### 5. Upgrades & Patching
 - Configure **Maintenance Windows** for controlled upgrade timing

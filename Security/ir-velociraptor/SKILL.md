@@ -39,17 +39,17 @@ depends_on:
   - deploy
 ---
 
-# Velociraptor [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response
+# Velociraptor [Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response
 
 ## Overview
 
 Velociraptor is an endpoint visibility and forensics platform for collecting host-based state information using Velociraptor Query Language (VQL). It operates in three core modes: **Collect** (targeted evidence gathering), **Monitor** (continuous event capture), and **Hunt** (proactive threat hunting).
 
 **When to use this skill**:
-- Active [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response requiring endpoint evidence collection
+- Active [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response requiring endpoint evidence collection
 - Threat hunting across enterprise infrastructure
 - Digital forensics investigations and timeline analysis
-- Endpoint [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and anomaly detection
+- Endpoint [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and anomaly detection
 - Custom forensic artifact development for specific threats
 
 ## Quick Start
@@ -83,7 +83,7 @@ velociraptor --config server.config.yaml config client > client.config.yaml
 velociraptor --config client.config.yaml client
 ```
 
-## Core [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response Workflows
+## Core [Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response Workflows
 
 ### Workflow 1: Initial Compromise Investigation
 
@@ -220,7 +220,7 @@ Create custom VQL artifacts for specific investigation needs:
 ```yaml
 name: Custom.Windows.SuspiciousProcess
 description: |
-  Detect processes with suspicious characteristics for [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response.
+  Detect processes with suspicious characteristics for [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response.
 
 parameters:
   - name: ProcessNameRegex

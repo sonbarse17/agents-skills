@@ -459,7 +459,7 @@ Functions, Date objects, and undefined values crash between Server and Client Co
 4. `next dev --turbo` — Turbopack
 5. `@next/codemod` — migration upgrades
 6. `next-sitemap` — sitemaps
-7. `@[sentry](../../../DevOps_and_Cloud/Observability_and_SecOps/sentry/SKILL.md)/nextjs` — error tracking
+7. `@[sentry](../../../observability-monitoring-logging/sentry/other/sentry/SKILL.md)/nextjs` — error tracking
 
 ## Workflow
 

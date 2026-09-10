@@ -75,7 +75,7 @@ correct before deploy is a distinct, deeper topic — see
   Kong's Service/Route/Plugin model onto [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) `Ingress` +
   `KongPlugin`/`KongClusterPlugin`/`KongIngress` CRDs.
   `rate-limiting-advanced`, some auth plugins' more advanced modes, and
-  clustering/Vitals [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) differ between OSS and Enterprise — check
+  clustering/Vitals [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) differ between OSS and Enterprise — check
   which tier a given plugin belongs to before assuming it's available.
 - Network access to Kong's Admin API (default port `8001`, `8444` for
   TLS) for imperative configuration or CI-driven declarative sync — this
@@ -266,7 +266,7 @@ correct before deploy is a distinct, deeper topic — see
   fit — see
   [service-mesh-istio](../../../[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[service-mesh-istio](../../Frontend/[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-istio/SKILL.md)/SKILL.md)
   and
-  [linkerd-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../[linkerd-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../../Frontend/linkerd-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-configuration/SKILL.md)/SKILL.md)
+  [linkerd-[service-mesh](../../../containers-orchestration/common/service-mesh/service-mesh/SKILL.md)-configuration](../[linkerd-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../../Frontend/linkerd-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-configuration/SKILL.md)/SKILL.md)
   for that comparison rather than trying to make Kong do both jobs.
 
 ## Common pitfalls
@@ -377,4 +377,4 @@ per-node one.
 - [kong-configuration-validation](../[kong-configuration-validation](../../../DevOps_and_Cloud/Containers_and_Orchestration/kong-configuration-validation/SKILL.md)/SKILL.md) — validating this declarative config/CRD set before it reaches production.
 - [api-gateway-rate-limiting-and-quota-management](../[api-gateway-rate-limiting-and-quota-management](../[api-gateway](../api-gateway/SKILL.md)-rate-limiting-and-quota-management/SKILL.md)/SKILL.md) — the deeper, cross-tool strategy (algorithm choice, per-client vs. global scoping) behind the `rate-limiting` plugin configuration here.
 - [apigee-api-management-and-governance](../[apigee-api-management-and-governance](../apigee-api-management-and-governance/SKILL.md)/SKILL.md) — the enterprise API-management alternative when the need grows beyond gateway routing/plugins into full lifecycle governance, monetization, and versioning at scale.
-- [service-mesh-istio](../../../[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[service-mesh-istio](../../Frontend/[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-istio/SKILL.md)/SKILL.md) — the [service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md) comparison point for east-west traffic, versus Kong's north-south, edge-facing role.
+- [service-mesh-istio](../../../[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[service-mesh-istio](../../Frontend/[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-istio/SKILL.md)/SKILL.md) — the [service-mesh](../../../containers-orchestration/common/service-mesh/service-mesh/SKILL.md) comparison point for east-west traffic, versus Kong's north-south, edge-facing role.

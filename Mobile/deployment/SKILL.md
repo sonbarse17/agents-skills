@@ -773,7 +773,7 @@ BUNDLE_ID_SUFFIX =
 - **Checking certs into repo**: Exposes signing identities. Use Match with encrypted git repo
 - **Manual provisioning profile management**: Time-consuming and error-prone. Always automate with Match
 - **One cert for CI and local**: CI server generates new certs independently via Match
-- **Expired certs blocking builds**: Match nuke + re-gen; add cert expiry [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) to CI
+- **Expired certs blocking builds**: Match nuke + re-gen; add cert expiry [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) to CI
 - **Using distribution cert for dev**: Blocks debugging on device — use development certs
 - **Revokable enterprise cert shared widely**: One leak = all apps dead. Restrict cert access to 1-2 people
 
@@ -791,13 +791,13 @@ BUNDLE_ID_SUFFIX =
 - **No rollback plan**: App Store rejects can't revert. Maintain last-known-good binary
 - **Skipping beta testing**: Production bugs caught too late. Always TestFlight/Internal first
 - **Manual version bumps**: Inconsistent and error-prone. Automate via git tags or [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) count
-- **No crash [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) during phased release**: Can't detect regressions. Monitor crash rate vs baseline
+- **No crash [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) during phased release**: Can't detect regressions. Monitor crash rate vs baseline
 - **In-app update not tested for seamless install**: Users lose state. Test flexible/immediate flows
 
 ## Handoff
 
 After deployment, hand off to:
-- `mobile/universal/crash-reporting` — Crash [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) post-release
+- `mobile/universal/crash-reporting` — Crash [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) post-release
 - `mobile/universal/security` — Code signing security, cert rotation
 - `mobile/universal/testing` — Pre-release testing strategy
 - `mobile/universal/push-notifications` — Push notification certs

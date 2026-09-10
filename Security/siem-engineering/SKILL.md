@@ -385,7 +385,7 @@ recon
 ### Step 4: Use Case Management
 
 **Use Case Lifecycle:**
-1. **Triage**: Identify detection gap from threat model, [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), or threat intel
+1. **Triage**: Identify detection gap from threat model, [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), or threat intel
 2. **Design**: Write rule logic, define data sources, set thresholds
 3. **Test**: Run against historical data, verify true positive rate
 4. **Tune**: Adjust thresholds, add exclusions, reduce noise
@@ -460,16 +460,16 @@ coverage_matrix:
 **Tuning Methodology:**
 
 1. **Measure FP rate per rule**: `FP / (TP + FP) * 100`. Target: < 10% for high severity, < 20% for medium, < 50% for low
-2. **Analyze FPs**: Common causes — misconfigured applications, legitimate admin activity, scheduled tasks, [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) tools, backup software, security scanners
+2. **Analyze FPs**: Common causes — misconfigured applications, legitimate admin activity, scheduled tasks, [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) tools, backup software, security scanners
 3. **Tune threshold**: Increase count threshold, extend time window, add environment filter (exclude known-good subnets)
-4. **Add exclusion**: Known-good: security scanners (nessus, qualys), admin tools ([ansible](../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md), puppet, salt), backup agents (veam, commvault), [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) agents ([datadog](../../DevOps_and_Cloud/Observability_and_SecOps/datadog/SKILL.md), new relic)
+4. **Add exclusion**: Known-good: security scanners (nessus, qualys), admin tools ([ansible](../../infrastructure-as-code/ansible/other/ansible/SKILL.md), puppet, salt), backup agents (veam, commvault), [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) agents ([datadog](../../observability-monitoring-logging/datadog/other/datadog/SKILL.md), new relic)
 5. **Simplify rule**: Overly complex correlation rules with multiple conditions have higher FP rates. Start simple, add conditions only when needed
 6. **Retest**: Run against 7 days of historical data to verify FP reduction
 
 **Suppression Rules (Splunk):**
 ```spl
 index=windows EventCode=4625 LogonType=3
-| search NOT AccountName IN ("Nessus$", "Qualys$", "[Ansible](../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md)$", "Backup$")
+| search NOT AccountName IN ("Nessus$", "Qualys$", "[Ansible](../../infrastructure-as-code/ansible/other/ansible/SKILL.md)$", "Backup$")
 | search NOT Source_Network_Address IN ("10.100.0.0/16", "192.168.200.0/24")
 | search NOT ComputerName IN ("SCANNER-01", "SCANNER-02")
 ```
@@ -511,7 +511,7 @@ index=windows EventCode=4625 LogonType=3
 | Data Type | Retention Hot | Retention Warm | Retention Cold | Archive | Notes |
 |-----------|--------------|----------------|----------------|---------|-------|
 | Authentication logs | 7 days | 30 days | 90 days | 1 year | High volume, important for investigations |
-| Endpoint logs (EDR) | 14 days | 60 days | 180 days | 2 years | High value for [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response |
+| Endpoint logs (EDR) | 14 days | 60 days | 180 days | 2 years | High value for [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response |
 | Network logs | 7 days | 30 days | 90 days | 1 year | Medium volume, good for lateral movement |
 | Cloud [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs | 14 days | 60 days | 180 days | 3 years | Compliance requirement |
 | Application logs | 3 days | 14 days | 30 days | 90 days | Use case dependent, often low value |
@@ -535,9 +535,9 @@ Daily Volume → Indexers → Search Heads → Storage (Hot + Cold)
 5 TB/day    → 30-40 indexers → 6-8 search heads → 180 TB hot + 450 TB cold
 ```
 
-### Step 7: [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Detection and Response Integration
+### Step 7: [Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Detection and Response Integration
 
-**Alert to [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Pipeline:**
+**Alert to [Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Pipeline:**
 ```
 Raw Log → Parse & Normalize → Enrich (GeoIP, threat intel) → Correlation Rule → Alert
                                                                                     ↓
@@ -545,7 +545,7 @@ Raw Log → Parse & Normalize → Enrich (GeoIP, threat intel) → Correlation R
                                                                                     ↓
                                                                               Severity Assignment
                                                                                     ↓
-                                                                              [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Creation
+                                                                              [Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Creation
                                                                                     ↓
                                                                          SOC Tier 1 Triage
                                                                                     ↓
@@ -560,7 +560,7 @@ Raw Log → Parse & Normalize → Enrich (GeoIP, threat intel) → Correlation R
 - Case management: create ticket, assign analyst, track SLA, document findings
 - Feedback loop: analyst verdict → SIEM rule tuning → improved detection
 
-**[Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response Data Sources:**
+**[Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response Data Sources:**
 ```spl
 index=windows EventCode=4688 CommandLine=*          // Process creation - track execution
 index=windows EventCode=4103 EventLog=PowerShell*    // PowerShell pipeline execution
@@ -609,11 +609,11 @@ Single-source rules miss multi-stage attacks (phishing → credential theft → 
 ### Pitfall 5: Ignoring Compliance Retention Requirements
 Storing all logs with the same retention policy is either insufficient (compliance failure) or excessive (cost overrun). Map retention to data source compliance requirements. Implement tiered storage.
 
-### Pitfall 6: No [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) of SIEM Health
+### Pitfall 6: No [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) of SIEM Health
 SIEM that is down, overloaded, or missing data sources is a security blind spot. Monitor: ingestion rate vs expected, license usage, indexer CPU/disk, search head response time, agent health.
 
 ### Pitfall 7: Over-Normalization
-Heavy normalization breaks original log context. Keep raw log copy alongside normalized fields. Use field aliases instead of overwriting. Maintain backward compatibility for existing [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md).
+Heavy normalization breaks original log context. Keep raw log copy alongside normalized fields. Use field aliases instead of overwriting. Maintain backward compatibility for existing [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md).
 
 ### Pitfall 8: Underestimating Storage Growth
 Log volume grows 20-50% annually from new sources, increased verbosity, and data retention requirements. Over-provision by 50% minimum. Plan for storage scaling. Use compression and sampling.
@@ -622,7 +622,7 @@ Log volume grows 20-50% annually from new sources, increased verbosity, and data
 Rules with 5+ conditions, multiple lookups, and subsearches are hard to troubleshoot and slow to execute. Start with single-condition rules. Add complexity only when needed. Test each incremental change.
 
 ### Pitfall 10: No Use Case Lifecycle Management
-Rules deployed and never reviewed accumulate noise. Quarterly use case review: retire low-value rules, tune high-FP rules, add new use cases from threat intelligence and [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) findings.
+Rules deployed and never reviewed accumulate noise. Quarterly use case review: retire low-value rules, tune high-FP rules, add new use cases from threat intelligence and [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) findings.
 
 ## Best Practices
 
@@ -639,7 +639,7 @@ Rules deployed and never reviewed accumulate noise. Quarterly use case review: r
 - Onboard log sources in priority order: authentication → endpoint → network → cloud → application
 - Implement chain of custody for forensic data: immutable logs, access [audit](../../AI_and_Agents/Operations/audit/SKILL.md), integrity verification
 - Plan for 30-50% annual log volume growth in [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) planning
-- Document [runbooks](../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md) for every detection use case: triage steps, investigation queries, response actions
+- Document [runbooks](../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md) for every detection use case: triage steps, investigation queries, response actions
 
 ## SIEM Platform Comparison
 
@@ -671,7 +671,7 @@ Rules deployed and never reviewed accumulate noise. Quarterly use case review: r
 - Search performance degrades when indexer CPU > 60% or hot storage > 75% full
 - Use summary indexing for common queries: pre-aggregate hourly/daily statistics
 - Schedule heavy searches during off-peak hours (evening, weekends)
-- Limit real-time searches to critical use cases only — use scheduled searches for routine [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+- Limit real-time searches to critical use cases only — use scheduled searches for routine [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - Use data model acceleration for faster pivot/search in large datasets
 - Monitor search head CPU — oversubscribed search heads cause query timeouts
 

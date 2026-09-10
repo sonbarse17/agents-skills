@@ -172,7 +172,7 @@ versus when Rego's generality is worth the learning-curve cost.
 5. **Use `mutate` rules to inject or default fields** rather than only
    rejecting non-compliant resources — useful for defaults that don't
    need a human decision (e.g. a default `imagePullPolicy`, an
-   [observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) sidecar):
+   [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) sidecar):
    ```yaml
    apiVersion: kyverno.io/v1
    kind: ClusterPolicy
@@ -302,7 +302,7 @@ versus when Rego's generality is worth the learning-curve cost.
 
 - **Symptom:** A new `ClusterPolicy` is applied directly with
   `validationFailureAction: Enforce` and immediately blocks a legitimate
-  deploy, triggering an [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+  deploy, triggering an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
   **Fix:** Always deploy with `validationFailureAction: [Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)` first,
   review `PolicyReport`/`ClusterPolicyReport` results for a representative
   period, then switch to `Enforce` with documented, time-boxed
@@ -345,7 +345,7 @@ versus when Rego's generality is worth the learning-curve cost.
   newer `ClusterCleanupPolicy`/JSON payload support, some non-[Kubernetes](../../other/kubernetes/SKILL.md)
   JSON validation) — but non-[Kubernetes](../../other/kubernetes/SKILL.md) IaC gating (Terraform plan JSON,
   arbitrary CI artifacts) is squarely OPA/Conftest's use case as covered
-  in [policy-as-code-guardrails](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[policy-as-code-guardrails](../../../../Security/policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md).
+  in [policy-as-code-guardrails](../../../../Security/devsecops/SKILL.md)/skills/[policy-as-code-guardrails](../../../../Security/policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md).
   Use Kyverno for [Kubernetes](../../other/kubernetes/SKILL.md)-native admission policy and OPA/Conftest for
   IaC/CI-time checks rather than forcing one engine to do both.
 
@@ -471,9 +471,9 @@ is passing for all existing Pods before the team flips it from `[Audit](../../..
   configuration checks (resource limits, probes, security context) that
   may cover a policy before it's worth writing a custom Kyverno rule for
   it.
-- [policy-as-code-guardrails](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[policy-as-code-guardrails](../../../../Security/policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md) —
+- [policy-as-code-guardrails](../../../../Security/devsecops/SKILL.md)/skills/[policy-as-code-guardrails](../../../../Security/policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md) —
   the broader [policy-as-code](../../../../Security/policy-as-code/SKILL.md) rationale and [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-before-enforce
   discipline this skill's rollout steps follow.
-- [secure-cicd-gates](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) —
+- [secure-cicd-gates](../../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) —
   where Kyverno's admission-time enforcement fits relative to earlier
   CI-time pipeline gates.

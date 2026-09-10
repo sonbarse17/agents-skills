@@ -35,38 +35,38 @@ and blames an individual ("Jane forgot to update the config") teaches
 everyone watching that reporting a mistake, a near-miss, or an honest
 uncertainty is personally risky — so people quietly stop doing it, and
 the organization loses its best source of information about where the
-system is actually fragile. A blameless postmortem treats the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) as
+system is actually fragile. A blameless postmortem treats the [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) as
 evidence about the *system* (its defenses, its defaults, its blind spots)
 rather than a verdict on a person, while still producing concrete,
 owned, tracked action items — "blameless" is not the same as
 "consequence-free" or "toothless." This skill covers the postmortem
 template, facilitation practices that keep the discussion blameless
 without becoming vague, contributing-factor analysis that resists
-collapsing a multi-cause [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) into one scapegoat cause, and making
+collapsing a multi-cause [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) into one scapegoat cause, and making
 sure action items actually get done instead of accumulating in a backlog
 nobody revisits.
 
 ## When to use
 
-- After any Sev1/Sev2 [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) is resolved and stood down (see
-  [incident-response-and-on-call-management](../[incident-response-and-on-call-management](../[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../DevOps_and_Cloud/Observability_and_SecOps/on-call-management/SKILL.md)/SKILL.md)/SKILL.md)).
+- After any Sev1/Sev2 [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) is resolved and stood down (see
+  [incident-response-and-on-call-management](../[incident-response-and-on-call-management](../[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../observability-monitoring-logging/common/alerting/on-call-management/SKILL.md)/SKILL.md)/SKILL.md)).
 - An error budget was exhausted (see
   [slo-sli-and-error-budget-design](../[slo-sli-and-error-budget-design](../slo-sli-and-error-budget-design/SKILL.md)/SKILL.md))
   and the policy mandates a postmortem before launches can resume.
 - A near-miss occurred — no customer impact, but the system was one step
-  away from a real [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) — and the team wants to capture the lesson
+  away from a real [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) — and the team wants to capture the lesson
   before it's forgotten.
 - Facilitating a postmortem discussion that's at risk of turning into
   blame ("who pushed that change") instead of systems analysis.
 - Reviewing why past postmortem action items never got implemented and a
-  similar [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) just recurred.
+  similar [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) just recurred.
 
 ## Prerequisites & environment
 
-- A collected [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) record: the scribe's live timeline, relevant
-  [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md)/logs, and the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) chat transcript (see
-  [incident-response-and-on-call-management](../[incident-response-and-on-call-management](../[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../DevOps_and_Cloud/Observability_and_SecOps/on-call-management/SKILL.md)/SKILL.md)/SKILL.md)
-  for how this is captured during the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) itself).
+- A collected [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) record: the scribe's live timeline, relevant
+  [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)/logs, and the [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) chat transcript (see
+  [incident-response-and-on-call-management](../[incident-response-and-on-call-management](../[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../observability-monitoring-logging/common/alerting/on-call-management/SKILL.md)/SKILL.md)/SKILL.md)
+  for how this is captured during the [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) itself).
 - A shared, versioned template — see
   [../../../Global_References/postmortem-template.md](../../../Global_References/postmortem-template.md)
   in this skill for a ready-to-use starting point.
@@ -78,7 +78,7 @@ nobody revisits.
   works if people trust in advance that writing an honest account won't
   be used against them individually.
 - A facilitator who was not the primary hands-on responder for the
-  [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), where staffing allows.
+  [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), where staffing allows.
 
 ## Step-by-step guidance
 
@@ -101,7 +101,7 @@ nobody revisits.
      no automated step that validated the config before it reached
      production."
    - The facilitator should be someone other than the person most
-     centrally involved in causing or fixing the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), so the
+     centrally involved in causing or fixing the [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), so the
      discussion isn't steered (even unintentionally) by someone with a
      personal stake in a particular narrative.
 
@@ -112,7 +112,7 @@ nobody revisits.
    Why did checkout fail?              → A bad config reached production.
    Why did the bad config reach prod?  → No validation step in the pipeline.
    Why was there no validation step?   → It was deprioritized after the
-                                          last [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)'s action item stalled.
+                                          last [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)'s action item stalled.
    Why did the action item stall?      → No owner/due date was assigned.
    Why was staging traffic too low to
      catch this before prod?           → Staging doesn't mirror production
@@ -126,7 +126,7 @@ nobody revisits.
    through and recur.
 
 5. **Categorize each action item** by what it does: *prevent recurrence*
-   (fix the proximate cause), *detect faster* ([alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)/[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) gap),
+   (fix the proximate cause), *detect faster* ([alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)/[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) gap),
    *reduce impact* (blast-radius/rollback speed), or *process
    improvement* (the meta-level gaps, like the stalled action item
    above). Assign exactly one owner, a tracked ticket, and a due date to
@@ -134,7 +134,7 @@ nobody revisits.
 
 6. **Publish broadly and review in a recurring forum.** Post the
    finished postmortem somewhere the whole engineering org can find it
-   (internal wiki/doc index), and bring it to a standing "[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
+   (internal wiki/doc index), and bring it to a standing "[incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
    review" meeting rather than letting it live only in the team that
    experienced it — patterns across teams are often invisible from
    inside a single team's postmortems.
@@ -160,7 +160,7 @@ nobody revisits.
   it does not mean no accountability: every action item still needs a
   named, responsible owner and a deadline.
 - Write for a reader who wasn't in the room and doesn't have the
-  [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)'s context — precise UTC timestamps, full service names, no
+  [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)'s context — precise UTC timestamps, full service names, no
   inside jokes or unexplained acronyms.
 - Publish postmortems for near-misses too, not only incidents that
   paged someone — a near-miss caught before customer impact is the
@@ -171,8 +171,8 @@ nobody revisits.
 - Explicitly look for at least two to three independent contributing
   factors before considering the analysis complete — if the discussion
   converges on a single cause quickly, that's usually a sign the
-  analysis stopped too early, not that the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) was simple.
-- Revisit old postmortems periodically when a new, similar [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
+  analysis stopped too early, not that the [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) was simple.
+- Revisit old postmortems periodically when a new, similar [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
   occurs — a recurrence is direct evidence that either the action items
   weren't implemented or didn't address the real contributing factors.
 
@@ -180,14 +180,14 @@ nobody revisits.
 
 - **Symptom:** The postmortem draft reads "Jane forgot to update the
   feature flag before the migration," and afterward people are visibly
-  more reluctant to volunteer details in [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) channels.
+  more reluctant to volunteer details in [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) channels.
   **Fix:** Rewrite in systems language before publishing — describe what
   about the process/tooling allowed the mistake to reach production
   undetected, and have the facilitator explicitly screen drafts for
   named blame before the review meeting.
 
 - **Symptom:** 5-whys stops after one iteration at "the engineer ran the
-  wrong command," and three months later a near-identical [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
+  wrong command," and three months later a near-identical [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
   happens from a different engineer running a different wrong command.
   **Fix:** Require identifying at least two to three independent
   contributing factors (missing confirmation prompt, no staging parity,
@@ -207,15 +207,15 @@ nobody revisits.
   the immediate team, and never looked at again — six months later a
   different team hits the exact same failure mode.
   **Fix:** Publish to a shared, searchable location and bring it to a
-  cross-team recurring [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-review forum, not just the originating
+  cross-team recurring [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-review forum, not just the originating
   team's internal channel.
 
 - **Symptom:** The postmortem meeting is scheduled two weeks after the
-  [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), and the discussion spends most of its time arguing about
+  [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), and the discussion spends most of its time arguing about
   what order things happened in.
   **Fix:** Schedule within 48-72 hours while memory is fresh, and draft
-  the timeline from the scribe's live [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-channel log (captured
-  during the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) itself) rather than reconstructing it from
+  the timeline from the scribe's live [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-channel log (captured
+  during the [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) itself) rather than reconstructing it from
   memory in the meeting.
 
 ## Worked example
@@ -229,7 +229,7 @@ worked example:
   rollback.
 - **Impact:** 100% of checkout traffic affected for 20 minutes (14:05-
   14:22 UTC); ~38 minutes of the service's 30-day error budget consumed
-  in a single [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+  in a single [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 - **Root cause:** A feature-flag default was flipped in the same deploy
   as an unrelated dependency bump, disabling the fraud-check bypass path
   for a payment provider that required it.
@@ -246,7 +246,7 @@ worked example:
   fast-burn alert to an automatic deploy rollback trigger, not just a
   page (owner, ticket, due date).
 - **Outcome:** the postmortem is published to the internal wiki, brought
-  to the monthly cross-team [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) review, and the error-budget freeze
+  to the monthly cross-team [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) review, and the error-budget freeze
   from
   [slo-sli-and-error-budget-design](../[slo-sli-and-error-budget-design](../slo-sli-and-error-budget-design/SKILL.md)/SKILL.md)
   is lifted only after the VP confirms the three action items have
@@ -254,7 +254,7 @@ worked example:
 
 ## Cross-references
 
-- [incident-response-and-on-call-management](../[incident-response-and-on-call-management](../[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../DevOps_and_Cloud/Observability_and_SecOps/on-call-management/SKILL.md)/SKILL.md)/SKILL.md) — the scribe's live timeline and severity classification captured during the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) are the raw input to this postmortem.
+- [incident-response-and-on-call-management](../[incident-response-and-on-call-management](../[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../observability-monitoring-logging/common/alerting/on-call-management/SKILL.md)/SKILL.md)/SKILL.md) — the scribe's live timeline and severity classification captured during the [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) are the raw input to this postmortem.
 - [slo-sli-and-error-budget-design](../[slo-sli-and-error-budget-design](../slo-sli-and-error-budget-design/SKILL.md)/SKILL.md) — error-budget exhaustion should trigger a mandatory postmortem, and the finished document feeds the leadership sign-off to lift a launch freeze.
 - [toil-reduction-and-operational-automation](../[toil-reduction-and-operational-automation](../[toil-reduction](../../../DevOps_and_Cloud/Observability_and_SecOps/toil-reduction/SKILL.md)-and-operational-automation/SKILL.md)/SKILL.md) — recurring manual-fix action items across postmortems are strong candidates for the toil-prioritization framework.
 - [chaos-engineering-and-resilience-testing](../[chaos-engineering-and-resilience-testing](../[chaos-engineering](../../../DevOps_and_Cloud/Observability_and_SecOps/chaos-engineering/SKILL.md)-and-resilience-testing/SKILL.md)/SKILL.md) — findings from a broken chaos experiment should be run through this same action-item process rather than logged and forgotten.

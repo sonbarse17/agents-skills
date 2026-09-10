@@ -361,7 +361,7 @@ test_data_principles:
 ## Regression Testing Anti-Patterns (Additional)
 
 ### Anti-Pattern: No Post-Release Validation
-Running regression tests only before release and not [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) production after deployment. The pre-release suite may pass while production has problems due to configuration differences, data volume, or real user behavior. Implement production health checks and canary analysis alongside pre-release regression.
+Running regression tests only before release and not [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) production after deployment. The pre-release suite may pass while production has problems due to configuration differences, data volume, or real user behavior. Implement production health checks and canary analysis alongside pre-release regression.
 
 ### Anti-Pattern: Skipping Security Regression
 Security regression tests are skipped to save time in the deployment pipeline. Security vulnerabilities re-emerge when changes inadvertently reintroduce previously fixed issues. Security regression tests must run on every deployment regardless of change scope.

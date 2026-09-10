@@ -545,5 +545,5 @@ Symptom: every dimension normalized into 5-10 tables. Fix: denormalize into sing
 ## Handoff
 `[data-etl-pipeline](../etl-pipeline/SKILL.md)` for ETL/ELT implementation of dimensional models
 `[data-data-warehouse](../data-warehouse/SKILL.md)` for warehouse platform-specific optimizations
-`[data-data-quality](../data-quality/SKILL.md)` for dimension and fact quality [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+`[data-data-quality](../data-quality/SKILL.md)` for dimension and fact quality [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 

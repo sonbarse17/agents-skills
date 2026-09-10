@@ -75,7 +75,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 - [ ] Soda or Great Expectations checks for row count, freshness, null rates, uniqueness
 - [ ] Data contract tests enforcing schema and shape on every deploy
 - [ ] CI pipeline runs tests and blocks on failures
-- [ ] [Alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) on test failure with Slack/PagerDuty integration
+- [ ] [Alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) on test failure with Slack/PagerDuty integration
 - [ ] Test coverage measured and reported
 
 ### Max Response Length
@@ -356,8 +356,8 @@ jobs:
 
 ```
                     ┌────────────────────────────┐
-                    │  Production [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)     │  Anomaly detection,
-                    │  ([Observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) checks)    │  freshness alerts
+                    │  Production [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)     │  Anomaly detection,
+                    │  ([Observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) checks)    │  freshness alerts
                     ├────────────────────────────┤
                     │  End-to-End Tests          │  Cross-system diffs,
                     │  (Soda/GE scans)           │  row counts, schema
@@ -442,8 +442,8 @@ What aspect of the data pipeline are we validating?
 │   ├── Row count consistency → equal_rowcount test
 │   └── Cross-environment consistency → DataDiff
 └── Production behavior
-    ├── Anomaly detection → Soda/Monte Carlo [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
-    └── SLA compliance → contract [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+    ├── Anomaly detection → Soda/Monte Carlo [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+    └── SLA compliance → contract [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 ```
 
 ## Rules
@@ -456,7 +456,7 @@ What aspect of the data pipeline are we validating?
 - Alert on test failure immediately, not next business day
 - Test coverage reports generated monthly
 - Cross-environment diffs limited to last 7 days of data for performance
-- Apply testing pyramid: unit > integration > regression > E2E > [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+- Apply testing pyramid: unit > integration > regression > E2E > [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - Match test type to data risk — schema failures block, quality failures alert
 
 ## References
@@ -564,5 +564,5 @@ WHERE total_amount < 0
 
 ## Handoff
 `[data-data-quality](../data-quality/SKILL.md)` for broader quality framework and data contract enforcement
-`[data-data-observability](../data-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)` for production [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and anomaly detection
+`[data-data-observability](../data-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)` for production [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and anomaly detection
 

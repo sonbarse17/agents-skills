@@ -41,7 +41,7 @@ Design feature store architecture with Feast or Tecton for consistent feature co
 Feature requirements
   ├── Open-source, self-hosted, batch features
   │   └── Feast (Redis/DynamoDB online store, Parquet/ BigQuery offline)
-  ├── Managed, streaming + batch, built-in [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+  ├── Managed, streaming + batch, built-in [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
   │   └── Tecton (higher cost, less operational overhead)
   └── Cloud-native feature platform
       ├── AWS → SageMaker Feature Store (integrated with SageMaker)
@@ -124,7 +124,7 @@ No preamble. No postamble. No explanations. No filler. Compress output.
 
 ### Step 1: Choose Feature Store
 - **Feast**: Open-source, self-hosted, batch features. Supports Redis, DynamoDB. [Python](../../Languages/python/SKILL.md) SDK.
-- **Tecton**: Managed, declarative, streaming + batch, built-in [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md). Higher cost.
+- **Tecton**: Managed, declarative, streaming + batch, built-in [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md). Higher cost.
 - **SageMaker Feature Store**: Native AWS integration, good for SageMaker workflows.
 - **Vertex AI Feature Store**: GCP-native, BigQuery-backed.
 - **Databricks Feature Store**: Delta Lake-based, Spark-native.
@@ -273,14 +273,14 @@ def validate_features(store, feature_view_name):
 - **No point-in-time join**: Using latest values for training causes data leakage — model sees future info.
 - **Infinite TTL**: Feature views need explicit TTL. No infinite retention for stale features.
 - **Serving raw features without transformation logic**: Must document all transforms.
-- **Feature drift without [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)**: Should trigger validation alert on distribution shift.
+- **Feature drift without [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)**: Should trigger validation alert on distribution shift.
 - **No feature ownership**: Every feature must have documented owner, description, source.
 - **Online store chosen for wrong latency**: Redis for <10ms, DynamoDB for <50ms, Cassandra for high write.
 - **Training with stale features**: Point-in-time correctness requires event_timestamp alignment.
 
 ## Production Considerations
 
-### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+### [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - Feature freshness (age of online features).
 - Feature value distribution (PSI, KS test for drift).
 - Online serving latency (p50/p95/p99).

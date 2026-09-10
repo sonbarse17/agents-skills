@@ -574,5 +574,5 @@ Seamless camera switching (front/back/ultrawide/tele)?
   - ../../../Global_References/camera-document-scanning.md — Document Scanning Guide
 
 ## Handoff
-Hand off to [mobile-networking](../../../DevOps_and_Cloud/Observability_and_SecOps/networking/SKILL.md) skill for upload progress tracking and retry logic, or mobile-storage for local media cache management.
+Hand off to [mobile-networking](../../../Mobile/networking/SKILL.md) skill for upload progress tracking and retry logic, or mobile-storage for local media cache management.
 

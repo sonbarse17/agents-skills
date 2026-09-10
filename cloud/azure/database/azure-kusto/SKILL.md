@@ -42,7 +42,7 @@ Execute KQL queries and manage Azure Data Explorer resources for fast, scalable 
 - IoT data analysis queries
 - SIEM or security analytics tasks
 - Requests for data aggregation on large datasets
-- Performance [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) or APM queries
+- Performance [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) or APM queries
 
 ## Overview
 
@@ -98,7 +98,7 @@ Telemetry
 | render timechart
 ```
 
-**Use for**: Performance [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), trend analysis, anomaly detection
+**Use for**: Performance [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), trend analysis, anomaly detection
 
 ### Pattern 4: Join and Correlation
 Combine multiple tables for cross-dataset analysis.
@@ -236,7 +236,7 @@ Switch to Azure CLI when:
 ## Use Cases
 
 - **Log Analytics**: Application logs, system logs, [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs
-- **IoT Analytics**: Sensor data, device telemetry, real-time [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+- **IoT Analytics**: Sensor data, device telemetry, real-time [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - **Security Analytics**: SIEM data, threat detection, security event correlation
 - **APM**: Application performance metrics, user behavior, error tracking
 - **Business Intelligence**: Clickstream analysis, user analytics, operational KPIs

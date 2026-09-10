@@ -224,7 +224,7 @@ Schedule recurring quality reviews:
 Define escalation path for quality violations:
 - Gate failure in PR: Blocked merge, author must fix
 - Repeated gate failure (3+ times): Team lead notified
-- Production [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) due to quality gap: Root cause analysis, process update
+- Production [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) due to quality gap: Root cause analysis, process update
 - Exception request: Requires documented justification, security review, expiry date
 
 ## Framework / Methodologies
@@ -281,7 +281,7 @@ What is your primary goal?
 | Pull request | CI quality gates, peer review | All gates pass |
 | Staging | Integration tests, security scan | All critical pass |
 | Production | Smoke tests, canary analysis | Zero errors |
-| Post-release | [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), error budgets | SLO within budget |
+| Post-release | [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), error budgets | SLO within budget |
 
 ## Common Pitfalls
 
@@ -438,7 +438,7 @@ An open-source project with 500+ contributors needed consistent quality across P
 - ../../../Global_References/quality-gates-matrix.md — Quality gate definitions per language (JS, [Python](../../Languages/python/SKILL.md), Go, Rust)
 - ../../../Global_References/technical-debt-register.md — Technical debt register template with severity and effort
 - ../../../Global_References/qc-process-framework.md — QC process framework and maturity model
-- ../../../Global_References/qc-metrics-dashboard.md — Metrics-driven quality [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) and KPIs
+- ../../../Global_References/qc-metrics-dashboard.md — Metrics-driven quality [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) and KPIs
 
 ## Handoff
 After completing this skill:

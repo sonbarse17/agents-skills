@@ -65,7 +65,7 @@ Nomad HCL job specification. No preamble.
 - [ ] Update strategy (canary, rolling, blue-green) defined.
 - [ ] Scaling policy defined.
 - [ ] ACL policies and namespace configuration set.
-- [ ] [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) with Nomad autoscaler and Consul health checks.
+- [ ] [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) with Nomad autoscaler and Consul health checks.
 
 ### Max Response Length
 400 lines.
@@ -604,7 +604,7 @@ operator {
 # nomad acl token create -name="webapp-ci" -policy=webapp-deploy
 ```
 
-### Step 11: [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
+### Step 11: [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
 ```yaml
 Nomad metrics (Prometheus endpoint: :4646/v1/metrics):
   - nomad.client.allocated.cpu / memory / disk
@@ -679,6 +679,6 @@ Key metrics to alert on:
 - `devops-consul` for Consul service discovery and Connect mesh.
 - `devops-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)` for [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) secrets management integration.
 - `devops-terraform` for Nomad cluster Terraform provisioning.
-- `devops-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)` for Prometheus/Grafana [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) of Nomad.
+- `devops-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)` for Prometheus/Grafana [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) of Nomad.
 - `devops-[kubernetes](../../../kubernetes/other/kubernetes/SKILL.md)` for comparison when deciding between Nomad and K8s.
 

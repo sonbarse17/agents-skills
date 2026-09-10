@@ -259,7 +259,7 @@ graph("SecurityGraph")
 | Data freshness | Always current | Snapshot at creation time |
 | Scale | Limited by query memory | Enterprise-scale |
 | Reuse | Rebuilt every query | Shared across users/queries |
-| Best for | Ad-hoc hunts, prototyping | Production workflows, [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) |
+| Best for | Ad-hoc hunts, prototyping | Production workflows, [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) |
 
 ## Security & Threat Hunting Examples
 
@@ -363,7 +363,7 @@ edges
 // <- stop here. Kusto Explorer renders the graph visually.
 ```
 
-To flatten back to a table for [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) or export, pipe through `graph-match | project` or `graph-to-table`.
+To flatten back to a table for [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) or export, pipe through `graph-match | project` or `graph-to-table`.
 
 ## Using with IRQL
 

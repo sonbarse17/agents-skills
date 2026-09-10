@@ -264,7 +264,7 @@ Hot phase: full indexing, high IOPS, many replicas. Warm phase: read-only, merge
 ```
 
 ### Step 7: OpenSearch Differences
-OpenSearch is the open-source fork of Elasticsearch 7.10. API compatibility: most endpoints are identical. Key differences: Opensearch uses `opensearch.yml` instead of `elasticsearch.yml`, security plugin built-in (not X-Pack), `k-NN` plugin for vector search, PPL (Piped Processing Language) for SQL-like queries, [Dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) replaces Kibana, [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) and anomaly detection plugins built-in.
+OpenSearch is the open-source fork of Elasticsearch 7.10. API compatibility: most endpoints are identical. Key differences: Opensearch uses `opensearch.yml` instead of `elasticsearch.yml`, security plugin built-in (not X-Pack), `k-NN` plugin for vector search, PPL (Piped Processing Language) for SQL-like queries, [Dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) replaces Kibana, [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) and anomaly detection plugins built-in.
 
 ```sql
 -- OpenSearch PPL
@@ -382,7 +382,7 @@ Yellow cluster status (unassigned shards) degrades read [capacity](../../../AI_a
 ## Compared With
 
 ### Elasticsearch vs OpenSearch
-OpenSearch is a fork of Elasticsearch 7.10 with built-in security, k-NN vector search, PPL, and [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md). Elasticsearch 8.x has more advanced features (ELSER, vector search with HNSW, better performance). Choose OpenSearch for open-source commitment and built-in security. Choose Elasticsearch for the latest search and AI features.
+OpenSearch is a fork of Elasticsearch 7.10 with built-in security, k-NN vector search, PPL, and [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md). Elasticsearch 8.x has more advanced features (ELSER, vector search with HNSW, better performance). Choose OpenSearch for open-source commitment and built-in security. Choose Elasticsearch for the latest search and AI features.
 
 ### Elasticsearch vs Meilisearch
 Elasticsearch is a full-featured search and analytics engine for datasets from GB to PB. Meilisearch is lightweight (Rust, single-node, sub-50ms) for datasets up to 10M docs. Choose Elasticsearch for complex querying, aggregations, and large-scale analytics. Choose Meilisearch for simple, fast site search.
@@ -527,7 +527,7 @@ class HybridSearch:
 - **Refresh interval**: Increase `refresh_interval` to 30s for bulk indexing; revert to 1s for serving.
 - **Circuit breaker**: Set Elasticsearch circuit breaker limits (50% heap for fielddata, 40% for request).
 - **Snapshot backup**: Daily snapshots to S3; test restore with cross-region copy.
-- **Cluster [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)**: Monitor heap usage, query latency (p99 < 100ms), merge rate, and GC pauses.
+- **Cluster [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**: Monitor heap usage, query latency (p99 < 100ms), merge rate, and GC pauses.
 
 ## Anti-Patterns
 

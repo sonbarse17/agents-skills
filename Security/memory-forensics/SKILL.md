@@ -15,11 +15,11 @@ depends_on:
 
 # Memory Forensics
 
-Comprehensive techniques for acquiring, analyzing, and extracting artifacts from memory dumps for [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response and malware analysis.
+Comprehensive techniques for acquiring, analyzing, and extracting artifacts from memory dumps for [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response and malware analysis.
 
 ## When to Use This Skill
 
-- Performing memory analysis during [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response or breach investigation
+- Performing memory analysis during [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response or breach investigation
 - Extracting malware artifacts (processes, injected code, network connections) from a RAM capture
 - Acquiring volatile memory from a live Windows/Linux/macOS system before shutdown
 - Using Volatility 3 / Rekall to triage memory dumps
@@ -116,7 +116,7 @@ strings -a pid.<PID>.exe > strings.txt
 vol -f memory.raw windows.yarascan --yara-rules malware.yar
 ```
 
-### [Incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response Workflow
+### [Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response Workflow
 
 ```bash
 # 1. Timeline of events

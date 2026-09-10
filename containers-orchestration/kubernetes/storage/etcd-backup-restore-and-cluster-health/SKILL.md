@@ -233,12 +233,12 @@ job.
    A 3-member cluster already missing one member has **zero** further
    tolerance — losing a second member loses quorum and takes the whole
    API server down, not just etcd; treat "currently at N-1 members" as
-   an active [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), not a background fact.
+   an active [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), not a background fact.
 
 8. **Watch disk fsync/backend-[commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) latency and DB size as the two
    leading indicators of etcd degradation**, via the `etcd` metrics
    endpoint scraped by
-   [prometheus-and-grafana-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../../../[observability](../../Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md):
+   [prometheus-and-grafana-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../../../[observability](../../Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md):
    ```promql
    histogram_quantile(0.99, rate(etcd_disk_wal_fsync_duration_seconds_bucket[5m]))
    histogram_quantile(0.99, rate(etcd_disk_backend_commit_duration_seconds_bucket[5m]))
@@ -371,7 +371,7 @@ fully recover from a snapshot if quorum had been lost.
    The restore completes and `snapshot status` reports a non-zero key
    count matching expectations — confirming the backup chain (snapshot
    → upload → restore) genuinely works, discovered during a drill
-   rather than during a real quorum-loss [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+   rather than during a real quorum-loss [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 
 ## Cross-references
 
@@ -379,5 +379,5 @@ fully recover from a snapshot if quorum had been lost.
 - [kubernetes-node-maintenance-and-troubleshooting](../[kubernetes-node-maintenance-and-troubleshooting](../[kubernetes](../kubernetes/SKILL.md)-node-maintenance-and-troubleshooting/SKILL.md)/SKILL.md) — broader control-plane node maintenance this skill's disk/quorum checks feed into before disruptive operations.
 - [disaster-recovery-and-backup-strategy](../../../cloud/skills/[disaster-recovery-and-backup-strategy](../../Cloud_Providers/[disaster-recovery](../../Observability_and_SecOps/disaster-recovery/SKILL.md)-and-backup-strategy/SKILL.md)/SKILL.md) — RPO/RTO and retention design principles that apply to etcd snapshot scheduling too.
 - [velero-backup-and-restore](../../../[observability](../../Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[velero-backup-and-restore](../velero-[backup-and-restore](../../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)/SKILL.md)/SKILL.md) — application/workload-level backup (PVs, namespaced objects); complementary to, not a substitute for, etcd's cluster-wide state backup.
-- [prometheus-and-grafana-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../../../[observability](../../Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md) — scraping and [alerting](../../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) on the etcd fsync-latency and DB-size metrics referenced above.
+- [prometheus-and-grafana-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../../../[observability](../../Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../prometheus-and-grafana-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md) — scraping and [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) on the etcd fsync-latency and DB-size metrics referenced above.
 - [managed-[kubernetes](../../other/kubernetes/SKILL.md)-eks-aks-gke](../[managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md) — why this skill's procedures don't apply to managed control planes, where etcd is fully provider-operated.

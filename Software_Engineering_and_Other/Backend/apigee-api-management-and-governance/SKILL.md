@@ -300,7 +300,7 @@ covered for the open-source case in
   comparing expected vs. actual billed amounts for a sample of
   transactions immediately after any rate-plan change ships.
 
-- **Symptom:** During an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), someone disables the `Verify-API-Key`
+- **Symptom:** During an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), someone disables the `Verify-API-Key`
   or quota policy on a production proxy "to rule out auth/quota as the
   cause of an error spike," confirms traffic flows, and it's still
   disabled days later.
@@ -311,7 +311,7 @@ covered for the open-source case in
   a strictly time-boxed diagnostic step on a non-production
   environment/revision where possible, and restore it (with a tracked
   follow-up if the real cause was something else entirely) before
-  closing the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+  closing the [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 
 ## Worked example
 
@@ -388,4 +388,4 @@ Rollout sequence:
 
 - [kong-[api-gateway](../api-gateway/SKILL.md)-configuration](../[kong-[api-gateway](../api-gateway/SKILL.md)-configuration](../kong-[api-gateway](../api-gateway/SKILL.md)-configuration/SKILL.md)/SKILL.md) — the open-source gateway alternative for teams that need routing/plugins but not full lifecycle governance, monetization, or a developer portal.
 - [api-gateway-rate-limiting-and-quota-management](../[api-gateway-rate-limiting-and-quota-management](../[api-gateway](../api-gateway/SKILL.md)-rate-limiting-and-quota-management/SKILL.md)/SKILL.md) — the cross-tool strategy behind the `Quota`/`SpikeArrest` policy distinction used here.
-- [service-mesh-istio](../../../[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[service-mesh-istio](../../Frontend/[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-istio/SKILL.md)/SKILL.md) — the [service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md) comparison point for east-west, service-to-service traffic management, distinct from Apigee's north-south, externally-published API governance role.
+- [service-mesh-istio](../../../[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[service-mesh-istio](../../Frontend/[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-istio/SKILL.md)/SKILL.md) — the [service-mesh](../../../containers-orchestration/common/service-mesh/service-mesh/SKILL.md) comparison point for east-west, service-to-service traffic management, distinct from Apigee's north-south, externally-published API governance role.

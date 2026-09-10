@@ -44,7 +44,7 @@ current ZAP, writing authentication scripts/contexts so authenticated
 areas actually get scanned, and seeding a scan from an OpenAPI spec. For
 the general DAST concept — why dynamic scanning matters, where it fits
 relative to SAST/SCA, and vendor-neutral CI wiring — see
-[dast-integration](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[dast-integration](../../../DevOps_and_Cloud/Observability_and_SecOps/dast-integration/SKILL.md)/SKILL.md).
+[dast-integration](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[dast-integration](../../../Security/dast-integration/SKILL.md)/SKILL.md).
 
 ## When to use
 
@@ -76,7 +76,7 @@ relative to SAST/SCA, and vendor-neutral CI wiring — see
 - A reachable target environment — **never point an active-scan job at
   production**; use a staging/preview environment that mirrors
   production auth and middleware closely enough to be representative.
-  See [dast-integration](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[dast-integration](../../../DevOps_and_Cloud/Observability_and_SecOps/dast-integration/SKILL.md)/SKILL.md)
+  See [dast-integration](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[dast-integration](../../../Security/dast-integration/SKILL.md)/SKILL.md)
   for the fuller rationale and environment-isolation guidance.
 - A dedicated test account (never a real customer or admin credential)
   for authenticated scanning, sourced from a secrets manager in CI —
@@ -236,7 +236,7 @@ relative to SAST/SCA, and vendor-neutral CI wiring — see
    deploy (cheap, safe), full active scan on a nightly/weekly schedule
    or pre-release gate against a dedicated DAST test environment
    (slower, intrusive) — see
-   [dast-integration](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[dast-integration](../../../DevOps_and_Cloud/Observability_and_SecOps/dast-integration/SKILL.md)/SKILL.md)
+   [dast-integration](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[dast-integration](../../../Security/dast-integration/SKILL.md)/SKILL.md)
    for the CI-wiring pattern this applies within.
 
 ## Best practices
@@ -291,7 +291,7 @@ relative to SAST/SCA, and vendor-neutral CI wiring — see
   mutate state — run them only against a dedicated, disposable DAST
   test environment with third-party integrations stubbed/sandboxed,
   never a shared staging environment (see
-  [dast-integration](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[dast-integration](../../../DevOps_and_Cloud/Observability_and_SecOps/dast-integration/SKILL.md)/SKILL.md)
+  [dast-integration](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[dast-integration](../../../Security/dast-integration/SKILL.md)/SKILL.md)
   for environment-isolation guidance).
 
 - **Symptom:** The spider gets stuck and reports near-zero URLs found
@@ -351,9 +351,9 @@ jobs:
       errorLevel: "High"
 ```
 
-`.[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/[dast-zap](../../../DevOps_and_Cloud/Observability_and_SecOps/dast-zap/SKILL.md).yml`:
+`.[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/[dast-zap](../../../Security/dast-zap/SKILL.md).yml`:
 ```yaml
-name: [dast-zap](../../../DevOps_and_Cloud/Observability_and_SecOps/dast-zap/SKILL.md)
+name: [dast-zap](../../../Security/dast-zap/SKILL.md)
 on:
   pull_request:
   schedule:
@@ -401,7 +401,7 @@ the finding clears before merge.
 
 ## Cross-references
 
-- [dast-integration](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[dast-integration](../../../DevOps_and_Cloud/Observability_and_SecOps/dast-integration/SKILL.md)/SKILL.md) —
+- [dast-integration](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[dast-integration](../../../Security/dast-integration/SKILL.md)/SKILL.md) —
   the tool-agnostic DAST concept, environment-isolation rationale, and
   CI cadence pattern this skill goes deep on for ZAP specifically.
 - [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md) —

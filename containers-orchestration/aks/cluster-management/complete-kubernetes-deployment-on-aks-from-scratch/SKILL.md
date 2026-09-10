@@ -41,7 +41,7 @@ changed later without rebuilding), and cert-manager's Azure DNS-01
 credentials each have their own setup order, and getting that order wrong
 produces a cluster that looks finished right up until someone depends on
 the piece that was skipped or sequenced too late. This skill is the
-Azure-specific end-to-end [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md): it sequences Azure landing zone
+Azure-specific end-to-end [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md): it sequences Azure landing zone
 prerequisites, AKS provisioning, CNI mode selection, ingress, cert-manager
 with Azure DNS, conformance validation, a first workload, and a health
 baseline into one ordered path, cross-referencing the tool-specific skill
@@ -356,7 +356,7 @@ helm upgrade --install payments-api oci://ghcr.io/example/charts/payments-api \
 
 `curl -I https://payments.example.com` returns `HTTP/2 200` with a
 Let's Encrypt production certificate, confirming the full sequence wired
-together correctly, and the node maintenance [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) (Phase 8) is
+together correctly, and the node maintenance [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) (Phase 8) is
 documented before the first planned patch window.
 
 ## Cross-references

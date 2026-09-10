@@ -26,17 +26,17 @@ depends_on:
   - blameless-postmortem-and-root-cause-analysis
 ---
 
-# [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Response and On-Call Management
+# [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response and On-Call Management
 
 ## Purpose
 
-An outage doesn't become a well-handled [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) just because someone
+An outage doesn't become a well-handled [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) just because someone
 gets paged — without predefined roles, severity levels, and an
-escalation policy, the first ten minutes of a real [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) are spent
+escalation policy, the first ten minutes of a real [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) are spent
 figuring out who's in charge, whether this is bad enough to wake anyone
 else up, and who's supposed to be telling customers/leadership what's
 happening, while the actual fix waits. This skill covers structuring
-[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response around a lightweight [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Command System (ICS) so
+[incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response around a lightweight [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Command System (ICS) so
 technical work and coordination don't compete for the same person's
 attention, defining severity levels with an explicit paging outcome for
 each, designing on-call rotations (including follow-the-sun for global
@@ -45,7 +45,7 @@ rotation doesn't quietly burn out whoever happens to get paged the most.
 
 ## When to use
 
-- Standing up (or fixing) an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response process from scratch —
+- Standing up (or fixing) an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response process from scratch —
   no clear roles, or the same person always ends up doing everything.
 - Defining severity/priority levels so paging behavior is consistent
   instead of "sometimes we page everyone, sometimes nobody."
@@ -54,32 +54,32 @@ rotation doesn't quietly burn out whoever happens to get paged the most.
 - On-call is causing burnout or attrition — too many pages, uneven
   distribution across the team, or frequent off-hours pages for
   non-urgent issues.
-- A recent [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) revealed confusion about who could declare an
-  [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), who had authority to make a mitigation call, or who was
+- A recent [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) revealed confusion about who could declare an
+  [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), who had authority to make a mitigation call, or who was
   supposed to update customers/status pages.
 
 ## Prerequisites & environment
 
 - A paging/on-call tool (PagerDuty, Opsgenie, Grafana OnCall, or
   equivalent) with escalation policies configurable per team/service.
-- [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) already wired from the [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) stack into that paging tool
+- [Alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) already wired from the [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) stack into that paging tool
   — see
-  [Prometheus and Grafana [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) stack](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
+  [Prometheus and Grafana [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) stack](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
   for Alertmanager routing mechanics, and
   [slo-sli-and-error-budget-design](../[slo-sli-and-error-budget-design](../slo-sli-and-error-budget-design/SKILL.md)/SKILL.md)
   for burn-rate alerts that should be a primary paging source.
-- A dedicated [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) communication channel pattern (e.g. a Slack/Teams
-  bot that spins up a fresh `#[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-<id>` channel plus a bridge/call
-  line per declared [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)) and, for customer-facing services, a
+- A dedicated [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) communication channel pattern (e.g. a Slack/Teams
+  bot that spins up a fresh `#[incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-<id>` channel plus a bridge/call
+  line per declared [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)) and, for customer-facing services, a
   status-page tool.
-- Clarity on who is authorized to declare an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) (should be *any*
+- Clarity on who is authorized to declare an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) (should be *any*
   engineer, not gated behind a manager) and a low-friction way to do it
   (a slash command or a single button, not a multi-step form).
 
 ## Step-by-step guidance
 
 1. **Define severity levels with an explicit paging outcome for each** —
-   severity should be decided in seconds during an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), not debated:
+   severity should be decided in seconds during an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), not debated:
 
    | Severity | Definition | Paging behavior | Comms cadence |
    |---|---|---|---|
@@ -91,10 +91,10 @@ rotation doesn't quietly burn out whoever happens to get paged the most.
    Encode this table directly in the paging tool's routing rules so it's
    enforced automatically, not left to judgment calls under pressure.
 
-2. **Assign [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Command System roles** — for anything Sev1/Sev2,
+2. **Assign [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Command System roles** — for anything Sev1/Sev2,
    split coordination from execution:
-   - **[Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Commander (IC):** owns the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) overall — decides
-     severity, decides when to escalate/de-escalate, keeps the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
+   - **[Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Commander (IC):** owns the [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) overall — decides
+     severity, decides when to escalate/de-escalate, keeps the [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
      moving, is *not* necessarily the person fixing the issue. Trained
      and rostered separately from the technical on-call rotation so the
      IC role doesn't default to "whoever is most senior and now also
@@ -105,7 +105,7 @@ rotation doesn't quietly burn out whoever happens to get paged the most.
      internal leadership, customer support — so the Tech Lead isn't
      interrupted every ten minutes for a status update.
    - **Scribe:** logs the timeline in real time (timestamps, actions
-     taken, decisions made) directly into the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) channel/doc —
+     taken, decisions made) directly into the [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) channel/doc —
      this becomes the raw material for the postmortem (see
      [blameless-postmortem-and-root-cause-analysis](../[blameless-postmortem-and-root-cause-analysis](../blameless-postmortem-and-[root-cause-analysis](../../../DevOps_and_Cloud/Observability_and_SecOps/root-cause-analysis/SKILL.md)/SKILL.md)/SKILL.md)).
    For a small team, one person may hold Comms + Scribe, but IC and Tech
@@ -128,7 +128,7 @@ rotation doesn't quietly burn out whoever happens to get paged the most.
      than paging someone at 3am when a colleague in another time zone is
      awake. Require a structured handoff (see Best practices) at every
      boundary — an implicit handoff means the next region starts an
-     active [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) blind.
+     active [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) blind.
 
 4. **Encode the escalation policy in the paging tool.** Example
    (PagerDuty-style, values illustrative):
@@ -147,11 +147,11 @@ rotation doesn't quietly burn out whoever happens to get paged the most.
            - user: payments-eng-manager
    ```
 
-5. **Run the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) end to end:** declare → assemble roles per
+5. **Run the [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) end to end:** declare → assemble roles per
    severity → mitigate (often a fast rollback or traffic shift — see
    [blue-green-canary-deployments](../../../devops/skills/[blue-green-canary-deployments](../../../DevOps_and_Cloud/CI_CD/blue-green-canary-deployments/SKILL.md)/SKILL.md)
    for the mechanics) → confirm steady state restored against the
-   service's SLO [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) → explicit stand-down/all-clear → hand the
+   service's SLO [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) → explicit stand-down/all-clear → hand the
    scribe's timeline to the postmortem process within 48-72 hours.
 
 6. **Monitor on-call health continuously**, not just after someone
@@ -170,7 +170,7 @@ rotation doesn't quietly burn out whoever happens to get paged the most.
 - Keep IC and hands-on-fixer as different people for Sev1/Sev2 whenever
   staffing allows — a single person trying to both coordinate and debug
   makes both worse.
-- Use a fresh, dedicated channel per [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) (not the team's standing
+- Use a fresh, dedicated channel per [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) (not the team's standing
   channel) so the timeline is self-contained and easy to hand to the
   postmortem.
 - Require a structured handoff at every follow-the-sun boundary: open
@@ -182,11 +182,11 @@ rotation doesn't quietly burn out whoever happens to get paged the most.
 - Declare "stand-down" explicitly, with a stated reason (fix verified /
   root cause mitigated / workaround holding) — don't let incidents fade
   out ambiguously.
-- If an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)'s root cause involves a compromised dependency, leaked
-  credential, or a bypassed security gate, loop in the security [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
+- If an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)'s root cause involves a compromised dependency, leaked
+  credential, or a bypassed security gate, loop in the security [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
   path alongside the normal IC structure — see
   [secure-cicd-gates](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md)
-  for the pipeline-gate context a security-flavored [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) usually
+  for the pipeline-gate context a security-flavored [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) usually
   needs to reference (what gate should have caught this, and why didn't
   it block).
 - Review on-call load data on a fixed cadence, not only reactively after
@@ -206,7 +206,7 @@ rotation doesn't quietly burn out whoever happens to get paged the most.
   **Fix:** No escalation timeout was configured (or it silently failed).
   Set an explicit ack SLA (e.g. 5 minutes) with automatic escalation to
   secondary, then to a manager, and test the escalation policy
-  periodically like the rest of the [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) stack.
+  periodically like the rest of the [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) stack.
 
 - **Symptom:** One engineer on the rotation receives noticeably more
   pages than everyone else, month over month, and is showing signs of
@@ -218,7 +218,7 @@ rotation doesn't quietly burn out whoever happens to get paged the most.
 
 - **Symptom:** A follow-the-sun handoff happens with a one-line "all
   good, nothing going on" message, then the next region discovers an
-  active, unresolved [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) an hour into their shift.
+  active, unresolved [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) an hour into their shift.
   **Fix:** Require a structured handoff template (open incidents, active
   mitigations, explicit owner, known unknowns) at every boundary — an
   implicit "all good" is not a handoff.
@@ -240,9 +240,9 @@ rotation doesn't quietly burn out whoever happens to get paged the most.
    [slo-sli-and-error-budget-design](../[slo-sli-and-error-budget-design](../slo-sli-and-error-budget-design/SKILL.md)/SKILL.md))
    fires and pages `payments-primary-oncall` via the escalation policy in
    step 4.
-2. Primary acknowledges within 3 minutes, declares the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) as
+2. Primary acknowledges within 3 minutes, declares the [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) as
    **Sev1** per the severity table (checkout affects all customers), and
-   a fresh `#[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-2026-0728-01` channel is created automatically.
+   a fresh `#[incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-2026-0728-01` channel is created automatically.
 3. A trained IC (not the paged on-call engineer, pulled from a separate
    IC rotation) takes command within 5 minutes; the paged engineer
    becomes Tech Lead; an available teammate takes Comms; the IC assigns
@@ -264,7 +264,7 @@ rotation doesn't quietly burn out whoever happens to get paged the most.
 ## Cross-references
 
 - [slo-sli-and-error-budget-design](../[slo-sli-and-error-budget-design](../slo-sli-and-error-budget-design/SKILL.md)/SKILL.md) — burn-rate alerts are the primary source of pages this skill's escalation policy responds to.
-- [blameless-postmortem-and-root-cause-analysis](../[blameless-postmortem-and-root-cause-analysis](../blameless-postmortem-and-[root-cause-analysis](../../../DevOps_and_Cloud/Observability_and_SecOps/root-cause-analysis/SKILL.md)/SKILL.md)/SKILL.md) — the scribe's live timeline and the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)'s severity/impact feed directly into the postmortem.
+- [blameless-postmortem-and-root-cause-analysis](../[blameless-postmortem-and-root-cause-analysis](../blameless-postmortem-and-[root-cause-analysis](../../../DevOps_and_Cloud/Observability_and_SecOps/root-cause-analysis/SKILL.md)/SKILL.md)/SKILL.md) — the scribe's live timeline and the [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)'s severity/impact feed directly into the postmortem.
 - [toil-reduction-and-operational-automation](../[toil-reduction-and-operational-automation](../[toil-reduction](../../../DevOps_and_Cloud/Observability_and_SecOps/toil-reduction/SKILL.md)-and-operational-automation/SKILL.md)/SKILL.md) — chronic noisy/low-value pages found during on-call load reviews are toil to be automated or eliminated, not just tolerated.
-- [blue-green-canary-deployments](../../../devops/skills/[blue-green-canary-deployments](../../../DevOps_and_Cloud/CI_CD/blue-green-canary-deployments/SKILL.md)/SKILL.md) — rollback/traffic-shift mechanics commonly used as the mitigation step during an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
-- [secure-cicd-gates](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — reference when an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)'s root cause has a security angle (compromised dependency, bypassed pipeline gate) to reason about which gate should have caught it.
+- [blue-green-canary-deployments](../../../devops/skills/[blue-green-canary-deployments](../../../DevOps_and_Cloud/CI_CD/blue-green-canary-deployments/SKILL.md)/SKILL.md) — rollback/traffic-shift mechanics commonly used as the mitigation step during an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
+- [secure-cicd-gates](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — reference when an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)'s root cause has a security angle (compromised dependency, bypassed pipeline gate) to reason about which gate should have caught it.

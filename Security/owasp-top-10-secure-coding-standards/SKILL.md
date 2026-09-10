@@ -79,7 +79,7 @@ ten, and definitely not custom business-logic abuse.
 - Existing or planned SAST tooling (see
   [sast-integration](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[sast-integration](../sast-integration/SKILL.md)/SKILL.md))
   and DAST tooling (see
-  [dast-integration](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[dast-integration](../../DevOps_and_Cloud/Observability_and_SecOps/dast-integration/SKILL.md)/SKILL.md))
+  [dast-integration](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[dast-integration](../dast-integration/SKILL.md)/SKILL.md))
   — this skill assumes those pipelines exist or are being built, and
   focuses on what categories they cover.
 - Know which OWASP Top 10 edition is the reference — category names and
@@ -160,8 +160,8 @@ ten, and definitely not custom business-logic abuse.
 - Log security-relevant events (auth failures, access-control denials,
   input validation failures) with enough detail to support both
   detection and later forensic/[audit](../../AI_and_Agents/Operations/audit/SKILL.md) needs — this addresses "Security
-  Logging and [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) Failures" directly and is also evidence
-  commonly requested for SOC 2/ISO 27001/PCI-DSS log-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) criteria.
+  Logging and [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Failures" directly and is also evidence
+  commonly requested for SOC 2/ISO 27001/PCI-DSS log-[monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) criteria.
 - Revisit the guideline set when OWASP publishes a new Top 10 edition —
   category boundaries shift (e.g. deserialization getting folded into
   "Software and Data Integrity Failures" in 2021) and a stale reference
@@ -211,7 +211,7 @@ ten, and definitely not custom business-logic abuse.
   **Fix:** Log security-relevant *outcomes* explicitly (auth success/
   failure, access-control denial with the resource and requesting
   identity, input-validation rejection) and alert on anomalous patterns —
-  this is the actual intent of the "Security Logging and [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+  this is the actual intent of the "Security Logging and [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
   Failures" category, not just having logs at all.
 
 ## Worked example
@@ -229,7 +229,7 @@ coding practice and typical SAST/DAST tooling coverage:
 | A06: Vulnerable and Outdated Components | Dependency pinning, SCA scanning, patch SLAs (see [supply-chain-security-slsa-sbom](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[supply-chain-security-slsa-sbom](../supply-chain-security/SKILL.md)-slsa-sbom/SKILL.md)/SKILL.md)) | N/A for SAST proper — this is SCA's job, often bundled alongside SAST tools | Can sometimes fingerprint outdated library versions from responses | **High**, but only if SCA is actually running — not a SAST/DAST-native category |
 | A07: Identification and Authentication Failures | Strong password/session policy, MFA, secure session token generation, rate-limit login attempts | Some rules for weak session config, missing lockout | Can test for credential stuffing resistance, session fixation, missing rate limiting | **Medium** |
 | A08: Software and Data Integrity Failures | Verify signatures/checksums on dependencies and CI artifacts, avoid insecure deserialization of untrusted data | Rules for unsafe deserialization APIs | Limited — mostly a build/supply-chain-time concern | **Medium** for deserialization patterns, **Low** for CI/CD integrity overall |
-| A09: Security Logging and [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) Failures | Log auth/authz outcomes with identity + resource; centralize logs; alert on anomalies | Rare — not typically a code-pattern SAST checks well | Can sometimes detect absence of logging indirectly (e.g. no lockout after repeated failures) | **Low** — mostly a design/ops verification |
+| A09: Security Logging and [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Failures | Log auth/authz outcomes with identity + resource; centralize logs; alert on anomalies | Rare — not typically a code-pattern SAST checks well | Can sometimes detect absence of logging indirectly (e.g. no lockout after repeated failures) | **Low** — mostly a design/ops verification |
 | A10: Server-Side Request Forgery (SSRF) | Allow-list outbound destinations; disable unnecessary URL-fetching features; validate/normalize user-supplied URLs before use | Some rules for unsanitized URL passed to HTTP client | Can actively probe for SSRF via out-of-band callback payloads | **Medium** |
 
 Illustrative finding triage using the table: a DAST scan flags "session
@@ -243,7 +243,7 @@ Illustrative coverage summary reported alongside a "0 open SAST/DAST
 findings" dashboard: "Automated tooling provides high-confidence coverage
 for A03 (Injection) and A06 (Vulnerable Components); medium confidence for
 A02, A05, A07, A10; low confidence for A01 (Broken Access Control), A04
-(Insecure Design), and A09 (Logging/[Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)) — these three are covered
+(Insecure Design), and A09 (Logging/[Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)) — these three are covered
 instead by quarterly manual authorization review and design-time threat
 modeling, tracked separately in `<REVIEW_TRACKER_PLACEHOLDER>`."
 
@@ -253,7 +253,7 @@ modeling, tracked separately in `<REVIEW_TRACKER_PLACEHOLDER>`."
 - [cloud-well-architected-framework-review](../[cloud-well-architected-framework-review](../cloud-well-architected-framework-review/SKILL.md)/SKILL.md) — where application-layer OWASP findings roll up into a workload's broader security-pillar review.
 - [cis-benchmarks-hardening](../[cis-benchmarks-hardening](../../../Security/[cis-benchmarks](../../Observability_and_SecOps/cis-benchmarks/SKILL.md)-hardening/SKILL.md)/SKILL.md) — infrastructure/platform-level hardening that complements application-layer OWASP practices (e.g. A05 Security Misconfiguration at the host/container level).
 - [sast-integration](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[sast-integration](../sast-integration/SKILL.md)/SKILL.md) — tool setup, tuning, and triage mechanics for static analysis referenced throughout this skill's coverage table.
-- [dast-integration](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[dast-integration](../../DevOps_and_Cloud/Observability_and_SecOps/dast-integration/SKILL.md)/SKILL.md) — tool setup and pipeline mechanics for dynamic scanning referenced throughout this skill's coverage table.
+- [dast-integration](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[dast-integration](../dast-integration/SKILL.md)/SKILL.md) — tool setup and pipeline mechanics for dynamic scanning referenced throughout this skill's coverage table.
 - [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md) — key/credential handling underlying A02 (Cryptographic Failures) prevention.
 - [supply-chain-security-slsa-sbom](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[supply-chain-security-slsa-sbom](../supply-chain-security/SKILL.md)-slsa-sbom/SKILL.md)/SKILL.md) — SBOM/provenance practices underlying A06 and A08 prevention.
 - [container-image-hardening](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[container-image-hardening](../../containers-orchestration/docker/security/container-image-hardening/SKILL.md)/SKILL.md) — hardened defaults underlying A05 (Security Misconfiguration) prevention at the container level.

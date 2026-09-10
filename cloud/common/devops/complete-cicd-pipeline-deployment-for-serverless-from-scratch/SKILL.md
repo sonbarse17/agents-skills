@@ -163,7 +163,7 @@ sam deploy \
   --capabilities CAPABILITY_IAM \
   --no-confirm-changeset
 ```
-`sam deploy` (via [CloudFormation](../../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md)) publishes a new immutable Lambda
+`sam deploy` (via [CloudFormation](../../../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md)) publishes a new immutable Lambda
 **version** on each deploy — versions, not the mutable `$LATEST`, are what
 aliases and traffic-shifting target, per
 [aws-lambda-packaging-and-configuration](../../../[serverless](../../Containers_and_Orchestration/serverless/SKILL.md)-and-alternative-compute/skills/[aws-lambda-packaging-and-configuration](../[aws-lambda](../aws-lambda/SKILL.md)-packaging-and-configuration/SKILL.md)/SKILL.md).
@@ -228,7 +228,7 @@ back to the prior value, depending on outcome.
   will complete the traffic shift on a timer regardless of whether the new
   version is actually healthy.
 - Keep the CI deploy role scoped to exactly the functions/stacks it
-  manages (`lambda:UpdateFunctionCode`, `[cloudformation](../../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md):*` on the specific
+  manages (`lambda:UpdateFunctionCode`, `[cloudformation](../../../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md):*` on the specific
   stack ARN) — never a broad `lambda:*`/`iam:*` role "to make SAM deploy
   work."
 - Use `PreTraffic`/`PostTraffic` hook functions for real smoke tests

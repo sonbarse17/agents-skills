@@ -37,5 +37,5 @@ flowchart TD
     D --> E[Ensure Idempotency]
     E --> F[Implement Quality Circuit Breakers]
     F --> G[Optimize Partitioning & Storage]
-    G --> H[Deploy with [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)/Alerting]
+    G --> H[Deploy with [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)/Alerting]
 ```

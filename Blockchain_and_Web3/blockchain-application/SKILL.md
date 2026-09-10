@@ -67,7 +67,7 @@ Complete contract architecture specification: platform selection, contract desig
 - Storage layout compatible with upgradeability pattern (if upgradeable)
 - Gas optimization applied: storage reads minimized, calldata over memory where possible
 - Security review covers platform-specific attack vectors (reentrancy, oracle manipulation, flash loans)
-- Deployment plan includes verification, multi-sig ownership, and [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+- Deployment plan includes verification, multi-sig ownership, and [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 ### Max Response Length
 5000 tokens
@@ -345,7 +345,7 @@ pub struct User {
 - [ ] Ownership transferred to timelock + governance
 - [ ] Emergency pause mechanism tested
 - [ ] Rate limits configured for high-value functions
-- [ ] [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) alerts set up for suspicious activity
+- [ ] [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) alerts set up for suspicious activity
 
 ### Multi-Chain Deployment
 - Deterministic addresses via CREATE2 (same address on all EVM chains)

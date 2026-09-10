@@ -431,10 +431,10 @@ class EmailTemplateEngine {
 - Rate limit per provider: track usage and failover to secondary provider at 80% quota
 - Template caching: compile MJML → HTML at deploy time, not at send time
 
-### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+### [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - Metrics: send rate, delivery rate, bounce rate, complaint rate, open rate, click rate, latency p50/p95/p99
 - Alerts: bounce rate >3%, complaint rate >0.1%, queue depth >10K, any provider returning 5xx
-- [Dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md): Grafana with email funnel (enqueued → sent → delivered → opened → clicked)
+- [Dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md): Grafana with email funnel (enqueued → sent → delivered → opened → clicked)
 
 ## Anti-Patterns
 

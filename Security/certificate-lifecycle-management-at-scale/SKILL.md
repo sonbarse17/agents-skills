@@ -47,7 +47,7 @@ clusters across clouds, and internal services trusting an enterprise CA
 root) rather than a public ACME CA. This skill covers that broader
 scope — integrating with an enterprise/internal CA as the trust root,
 automating rotation across a heterogeneous fleet where no single
-[Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) controller has visibility, building expiry [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) that
+[Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) controller has visibility, building expiry [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) that
 covers every certificate regardless of where it lives, and designing a
 CA hierarchy (root/intermediate/issuing tiers) that scales across many
 teams and services without becoming an unmanageable sprawl of
@@ -69,11 +69,11 @@ independently-issued, independently-tracked certificates.
   appliances, multiple [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) clusters, load balancers — where no
   single cluster-scoped controller has visibility into every
   certificate.
-- Building or improving fleet-wide certificate expiry [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and
-  [alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md), so an expiring cert is caught weeks ahead rather than
+- Building or improving fleet-wide certificate expiry [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and
+  [alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md), so an expiring cert is caught weeks ahead rather than
   discovered as an outage.
 - Investigating a recurring pattern of expiry-related outages and
-  wanting a systemic fix (inventory, automation, [alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)) rather than
+  wanting a systemic fix (inventory, automation, [alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)) rather than
   repeatedly firefighting the next individual expiry.
 - Migrating certificate issuance off manual/ad hoc processes (a shared
   spreadsheet of expiry dates, a person who "just remembers") onto an
@@ -103,12 +103,12 @@ independently-issued, independently-tracked certificates.
   incomplete inventory just automates the certificates someone
   remembered to list.
 - A distribution/rotation mechanism appropriate to each fleet segment:
-  a configuration management tool ([Ansible](../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md)/Puppet/Chef) pushing renewed
+  a configuration management tool ([Ansible](../../infrastructure-as-code/ansible/other/ansible/SKILL.md)/Puppet/Chef) pushing renewed
   certs to VMs and appliances, `cert-manager` for in-cluster [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
   workloads, and a scripted ACME/CA-API client for anything else (load
   balancers, network appliances without native ACME support).
-- [Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)/[alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) infrastructure (Prometheus + a blackbox/certificate
-  exporter, a dedicated certificate-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) SaaS, or a scheduled
+- [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)/[alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) infrastructure (Prometheus + a blackbox/certificate
+  exporter, a dedicated certificate-[monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) SaaS, or a scheduled
   script) capable of checking expiry across every certificate in the
   inventory, not just the ones already covered by an in-cluster
   controller.
@@ -185,11 +185,11 @@ independently-issued, independently-tracked certificates.
      enterprise CA ([Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) PKI backend, or a cert-manager
      `venafi-issuer`/ACME-fronted enterprise CA integration where
      available) rather than a public ACME CA.
-   - **VMs/on-prem servers:** a configuration management run ([Ansible](../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md)
+   - **VMs/on-prem servers:** a configuration management run ([Ansible](../../infrastructure-as-code/ansible/other/ansible/SKILL.md)
      example) that requests renewal ahead of `renewBefore`-equivalent
      margin and redeploys the cert + reloads the consuming service:
      ```yaml
-     # [ansible](../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md) playbook task (illustrative)
+     # [ansible](../../infrastructure-as-code/ansible/other/ansible/SKILL.md) playbook task (illustrative)
      - name: renew certificate if within 30 days of expiry
        when: cert_days_remaining | int < 30
        block:
@@ -219,10 +219,10 @@ independently-issued, independently-tracked certificates.
 
 6. **Alert on expiry as a first-class, fleet-wide signal**, independent
    of whether automation is expected to have already renewed it —
-   automation failing silently is exactly the case [alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) exists to
+   automation failing silently is exactly the case [alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) exists to
    catch:
    ```yaml
-   # Prometheus [alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) rule using a blackbox/certificate exporter
+   # Prometheus [alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) rule using a blackbox/certificate exporter
    - alert: CertificateExpiringSoon
      expr: probe_ssl_earliest_cert_expiry - time() < 30 * 86400
      for: 1h
@@ -238,7 +238,7 @@ independently-issued, independently-tracked certificates.
    ```
    Route the critical-tier alert into the paging tool's escalation
    policy (see
-   [pagerduty-and-opsgenie-oncall-configuration](../../../[incident](../../Observability_and_SecOps/incident/SKILL.md)-tooling-and-itsm/skills/[pagerduty-and-opsgenie-oncall-configuration](../../DevOps_and_Cloud/Observability_and_SecOps/pagerduty-and-opsgenie-oncall-configuration/SKILL.md)/SKILL.md)),
+   [pagerduty-and-opsgenie-oncall-configuration](../../../[incident](../../Observability_and_SecOps/incident/SKILL.md)-tooling-and-itsm/skills/[pagerduty-and-opsgenie-oncall-configuration](../../observability-monitoring-logging/common/alerting/pagerduty-and-opsgenie-oncall-configuration/SKILL.md)/SKILL.md)),
    not just a dashboard — an expiry alert nobody's paged for is no
    better than no alert.
 
@@ -288,7 +288,7 @@ independently-issued, independently-tracked certificates.
   `renewBefore` value fits every environment.
 - Alert on expiry independently of whether automation "should" have
   already handled it — a silent automation failure is precisely the
-  scenario expiry [alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) exists to catch, and it should page, not just
+  scenario expiry [alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) exists to catch, and it should page, not just
   log.
 - Treat intermediate/root CA rotation as a rehearsed, fleet-wide event
   with a distribution-before-issuance ordering, never a routine change
@@ -296,7 +296,7 @@ independently-issued, independently-tracked certificates.
 - Prefer a single enterprise CA integration point ([Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) PKI, AD CS, or
   a cloud private CA) that every fleet segment issues from, over
   multiple independently-managed CAs per team — consolidated issuance
-  is what makes a single fleet-wide inventory and [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) approach
+  is what makes a single fleet-wide inventory and [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) approach
   actually complete.
 - Cross-reference active-scan-based inventory against the CA's own
   issuance log — either source alone can miss certificates the other
@@ -308,10 +308,10 @@ independently-issued, independently-tracked certificates.
 - **Symptom:** A production outage occurs at exactly midnight with no
   warning, traced to a certificate that expired — and it turns out
   nobody had that host in the monitored inventory at all.
-  **Fix:** This is an inventory gap, not a [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-tool failure —
+  **Fix:** This is an inventory gap, not a [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-tool failure —
   build inventory from both active scanning and the issuing CA's own
   records (step 3), and treat "certificate not in inventory" the same
-  as any other unmanaged-asset finding, since automation and [alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
+  as any other unmanaged-asset finding, since automation and [alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
   built on an incomplete inventory only ever protects what's already
   known.
 
@@ -358,7 +358,7 @@ independently-issued, independently-tracked certificates.
 **Scenario:** An enterprise runs three fleet segments — 40 [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
 clusters across two clouds, ~300 VMs running internal services, and a
 dozen on-prem load balancers — all needing certificates trusted under
-one enterprise root, with fleet-wide expiry [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) after a recent
+one enterprise root, with fleet-wide expiry [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) after a recent
 outage caused by an unmanaged VM's certificate expiring unnoticed.
 
 1. CA hierarchy consolidated onto [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)'s PKI engine as the single
@@ -383,7 +383,7 @@ outage caused by an unmanaged VM's certificate expiring unnoticed.
            mountPath: "/v1/auth/[kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)"
    ```
 
-3. VM fleet: an [Ansible](../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md) playbook run nightly checks each host's
+3. VM fleet: an [Ansible](../../infrastructure-as-code/ansible/other/ansible/SKILL.md) playbook run nightly checks each host's
    certificate expiry against a 45-day threshold, requests renewal from
    [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)'s PKI `issue` endpoint, deploys the renewed cert, and reloads
    the consuming service — logging every action to the central
@@ -396,14 +396,14 @@ outage caused by an unmanaged VM's certificate expiring unnoticed.
    (root cause of the earlier outage) gets caught this time, three
    weeks before its next certificate would have expired.
 
-5. Prometheus [alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) (step 6) fires a `warning` at 30 days and a
+5. Prometheus [alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) (step 6) fires a `warning` at 30 days and a
    `critical`, paging alert at 7 days for any certificate across all
    three fleet segments, routed through the existing on-call escalation
    policy.
 
 Result: a single enterprise CA ([Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-backed), one consolidated
 inventory covering all three fleet segments regardless of deployment
-mechanism, and expiry [alerting](../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) that pages on-call well before any
+mechanism, and expiry [alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) that pages on-call well before any
 outage — rather than three independently-tracked, partially-automated
 certificate populations.
 
@@ -420,6 +420,6 @@ certificate populations.
 - [enterprise-sso-and-idp-federation-configuration](../[enterprise-sso-and-idp-federation-configuration](../../Cloud_Providers/enterprise-sso-and-idp-federation-configuration/SKILL.md)/SKILL.md) —
   a comparable trust-chain expiry problem (IdP/SP signing certificates)
   in a different federation context.
-- [pagerduty-and-opsgenie-oncall-configuration](../../../[incident](../../Observability_and_SecOps/incident/SKILL.md)-tooling-and-itsm/skills/[pagerduty-and-opsgenie-oncall-configuration](../../DevOps_and_Cloud/Observability_and_SecOps/pagerduty-and-opsgenie-oncall-configuration/SKILL.md)/SKILL.md) —
+- [pagerduty-and-opsgenie-oncall-configuration](../../../[incident](../../Observability_and_SecOps/incident/SKILL.md)-tooling-and-itsm/skills/[pagerduty-and-opsgenie-oncall-configuration](../../observability-monitoring-logging/common/alerting/pagerduty-and-opsgenie-oncall-configuration/SKILL.md)/SKILL.md) —
   where fleet-wide expiry alerts should route so a critical-tier warning
   actually pages a human, not just logs to a dashboard.

@@ -34,7 +34,7 @@ min/max scale bounds, a concurrency target mismatched to actual
 per-pod [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), a traffic split that sends production load to an
 unvalidated revision, or a timeout shorter than the workload's real
 latency all pass schema validation and only surface later as an
-[incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), a cost overrun, or a silent outage. This skill is the
+[incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), a cost overrun, or a silent outage. This skill is the
 pre-deploy gate for Knative Serving configuration, complementing
 [knative-[serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-configuration](../[knative-[serverless](../serverless/SKILL.md)-configuration](../knative-[serverless](../serverless/SKILL.md)-configuration/SKILL.md)/SKILL.md),
 which covers how to build that configuration in the first place, the
@@ -110,7 +110,7 @@ gates Lambda configuration before it ships.
    ```bash
    [kubectl](../../../kubernetes/other/kubectl/SKILL.md) get ksvc checkout-api -n prod -o jsonpath='{.spec.template.spec.timeoutSeconds}'
    ```
-   Compare against actual p99 latency from existing [observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) data
+   Compare against actual p99 latency from existing [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) data
    before deploy; a timeout shorter than real p99 latency causes
    legitimate slow requests to be cut off as failures, while a timeout
    far longer than necessary delays detecting a genuinely hung request.
@@ -216,7 +216,7 @@ gates Lambda configuration before it ships.
 - **Symptom:** Requests to a Service intermittently fail with a
   timeout error under normal (not degraded) load.
   **Fix:** `timeoutSeconds` is set shorter than the workload's real p99
-  latency; pull actual latency data from [observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) tooling and set
+  latency; pull actual latency data from [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) tooling and set
   the timeout with meaningful headroom above it, rather than leaving
   the Knative default unexamined.
 

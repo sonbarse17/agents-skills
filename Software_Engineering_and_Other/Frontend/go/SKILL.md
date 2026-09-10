@@ -333,12 +333,12 @@ Use `slog` (Go 1.21+ standard library) or `zap` for structured logging with leve
 ## Production Decision Trees
 
 ```
-[Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) needs?
+[Observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) needs?
 ├── Simple logging → slog (stdlib, no external deps)
 ├── Metrics + logging → slog + prometheus client (otel/otel)
-├── Full [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) (traces, metrics, logs) → [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) Go SDK
+├── Full [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) (traces, metrics, logs) → [OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) Go SDK
 │   Exporter: OTLP to collector → Tempo (traces), Mimir (metrics), Loki (logs)
-└── Error tracking only → [Sentry](../../../DevOps_and_Cloud/Observability_and_SecOps/sentry/SKILL.md) Go SDK
+└── Error tracking only → [Sentry](../../../observability-monitoring-logging/sentry/other/sentry/SKILL.md) Go SDK
 ```
 
 ```
@@ -604,11 +604,11 @@ func Logger(next http.Handler) http.Handler {
 - Worker pools: close input channel → `sync.WaitGroup.Wait()` → close output channel.
 - Database connections: `sql.DB.Close()` blocks until pool drained. Call in shutdown defer.
 
-### [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
+### [Observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
 - pprof endpoints: only on internal port (not exposed publicly). Restricted to admin network.
 - slog structured logging with `slog.HandlerOptions{Level: slog.LevelInfo}` in prod, `LevelDebug` in dev.
 - Metrics: Prometheus `promhttp.Handler()` at `/metrics`. Histogram for request duration, counter for errors.
-- Tracing: [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) Go SDK with OTLP exporter. Propagate trace context via HTTP headers.
+- Tracing: [OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) Go SDK with OTLP exporter. Propagate trace context via HTTP headers.
 
 ## Anti-Patterns
 

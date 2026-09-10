@@ -61,7 +61,7 @@ Terraform HCL or hcloud CLI commands. No preamble.
 - [ ] Firewall rules applied (Hetzner Cloud Firewall or iptables).
 - [ ] Volume attached and formatted.
 - [ ] DNS configured (Hetzner DNS or external).
-- [ ] [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) set up (Hetzner [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) or external).
+- [ ] [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) set up (Hetzner [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) or external).
 - [ ] Cost optimization applied (server type, reserved, BI-directional traffic).
 - [ ] K8s cluster running (k3s, Rancher, or Talos).
 
@@ -69,7 +69,7 @@ Terraform HCL or hcloud CLI commands. No preamble.
 400 lines.
 
 ## Quick Start
-Create project → Generate API token → Configure private network → Provision CX52 server with cloud-init → Attach volume → Apply firewall → Set up [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md). For dedicated: order server via Robot → Configure vSwitch → Install OS via Rescue → Provision.
+Create project → Generate API token → Configure private network → Provision CX52 server with cloud-init → Attach volume → Apply firewall → Set up [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md). For dedicated: order server via Robot → Configure vSwitch → Install OS via Rescue → Provision.
 
 ## Decision Tree: Hetzner Product Types
 | Product | Access | Management | Use Case |
@@ -365,13 +365,13 @@ borg prune --keep-daily 7 --keep-weekly 4 --keep-monthly 6 \
   ssh://<username>@<username>.your-storagebox.de:23/./backups
 ```
 
-### Step 12: [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) Setup
+### Step 12: [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Setup
 ```yaml
 # Prometheus + Node Exporter (Hetzer-optimized)
 Prometheus config:
   - Hetzner servers export metrics via node_exporter
   - Hetzner API exporter for server status and costs
-  - Blackbox_exporter for external endpoint [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+  - Blackbox_exporter for external endpoint [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 Alert rules:
   - server_down: up == 0 for 2m
@@ -444,7 +444,7 @@ Cost-saving strategies:
 - Ignoring IPv6 — dual-stack is free and reduces IPv4 address scarcity.
 - No HA strategy for single-point-of-failure servers.
 - Using Hetzner Load Balancer for HTTPS termination — no TLS support.
-- Not [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) included traffic — unexpected overage charges.
+- Not [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) included traffic — unexpected overage charges.
 
 ## References
   - references/hetzner-cloud-advanced.md — Hetzner Cloud Advanced Topics
@@ -456,7 +456,7 @@ Cost-saving strategies:
 - `devops-[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)` for deploying workloads on Hetzner K8s.
 - `devops-terraform` for Terraform state and module patterns.
 - `devops-[backup-dr](../../../Software_Engineering_and_Other/Frontend/backup-dr/SKILL.md)` for backup strategies using Storage Boxes.
-- `devops-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)` for Prometheus-based [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
+- `devops-[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)` for Prometheus-based [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
 - `devops-[hybrid-cloud](../../common/other/hybrid-cloud/SKILL.md)` for connecting Hetzner with other providers.
 - `devops-[datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md)` for physical hardware considerations.
 
@@ -576,13 +576,13 @@ delete_old_snapshots() {
 - Set up **robot-wg-tools** for WireGuard VPN between dedicated servers in different datacenters
 - Use **Hetzner Cloud Firewall** with least-privilege rules — default deny inbound
 - Monitor **Hetzner Robot** for hardware health alerts (ECC errors, disk SMART, temperature)
-- Use **Hetzner API tokens** with restricted scopes per server group (read-only for [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md))
+- Use **Hetzner API tokens** with restricted scopes per server group (read-only for [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md))
 
 ## Anti-Patterns
 
 - Ignoring **traffic limits** on dedicated servers — exceeding included traffic incurs significant overage
 - Using **default VLAN** for all servers — segment by function (web, db, storage) with separate networks
-- Provisioning **servers without [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)** — Hetzner doesn't provide built-in server [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+- Provisioning **servers without [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)** — Hetzner doesn't provide built-in server [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - Skipping **rescue mode testing** — know how to boot into rescue mode for recovery scenarios
 - Relying on **single [datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md)** for production — FSN1/HEL1/NBG1 inter-DC latency is low but non-zero
 - Underestimating **Storage Box IOPS limits** — not suitable for database workloads directly

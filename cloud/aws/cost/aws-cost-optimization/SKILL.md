@@ -46,7 +46,7 @@ Apply practical FinOps controls to reduce AWS spend without sacrificing reliabil
 3. Identify top spend drivers by service, account, and tag.
 4. Rightsize underutilized compute and storage based on CloudWatch metrics.
 5. Apply commitment discounts (Savings Plans or RIs) for stable baseline usage.
-6. Set budgets, anomaly alerts, and build KPI [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md).
+6. Set budgets, anomaly alerts, and build KPI [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md).
 7. Review monthly and iterate.
 
 ## Cost Explorer CLI Commands

@@ -90,7 +90,7 @@ gitleaks detect --report-path findings.json --report-format json
 gitleaks detect --report-path findings.sarif --report-format sarif
 ```
 
-**When to use**: Initial security [audit](../../AI_and_Agents/Operations/audit/SKILL.md), compliance checks, [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response.
+**When to use**: Initial security [audit](../../AI_and_Agents/Operations/audit/SKILL.md), compliance checks, [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response.
 
 ### 2. Pre-[Commit](../../ci-cd/common/git-workflow/commit/SKILL.md) Hook Protection
 
@@ -217,7 +217,7 @@ Use bundled configuration templates in `assets/`:
 
 ### [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Logging
 
-Log the following for compliance and [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response:
+Log the following for compliance and [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response:
 - Scan execution timestamps and scope (repository, branch, [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) range)
 - Number and types of secrets detected
 - Remediation actions taken (credential rotation, [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) history cleanup)
@@ -371,7 +371,7 @@ tags = ["password", "database", "acme-internal"]
 
 ### Security Tools Ecosystem
 
-- **SIEM Integration**: Export JSON findings to Splunk, ELK, or [Datadog](../../DevOps_and_Cloud/Observability_and_SecOps/datadog/SKILL.md) for centralized [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+- **SIEM Integration**: Export JSON findings to Splunk, ELK, or [Datadog](../../observability-monitoring-logging/datadog/other/datadog/SKILL.md) for centralized [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - **Vulnerability Management**: Import SARIF reports into Snyk, SonarQube, or Checkmarx
 - **Secret Management**: Integrate findings with HashiCorp [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) or AWS Secrets Manager rotation workflows
 - **Ticketing Systems**: Automated Jira/ServiceNow ticket creation for remediation tracking
@@ -381,7 +381,7 @@ tags = ["password", "database", "acme-internal"]
 - **Design Phase**: Include secret detection requirements in security architecture reviews
 - **Development**: Pre-[commit](../../ci-cd/common/git-workflow/commit/SKILL.md) hooks provide immediate feedback to developers
 - **Code Review**: PR/MR checks prevent secrets from reaching main branches
-- **Testing**: Scan test environments and [infrastructure-as-code](../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md)
+- **Testing**: Scan test environments and [infrastructure-as-code](../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md)
 - **Deployment**: Final validation gate before production release
 - **Operations**: Periodic scanning of deployed configurations and logs
 
@@ -440,7 +440,7 @@ tags = ["password", "database", "acme-internal"]
 3. Force-push cleaned history: `git push --force`
 4. Notify all contributors to rebase/re-clone
 5. See `../../../Global_References/remediation_guide.md` for detailed procedures
-6. Document [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) in security [audit](../../AI_and_Agents/Operations/audit/SKILL.md) log
+6. Document [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) in security [audit](../../AI_and_Agents/Operations/audit/SKILL.md) log
 
 ### Issue: Custom Secret Patterns Not Detected
 

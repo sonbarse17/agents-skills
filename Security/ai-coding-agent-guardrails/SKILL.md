@@ -918,7 +918,7 @@ policy:
     - "Modifying authentication or authorization logic"
     - "Writing or changing cryptographic implementations"
     - "Modifying CI/CD pipelines or deployment configs"
-    - "Changing [infrastructure-as-code](../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md) without human authorship"
+    - "Changing [infrastructure-as-code](../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) without human authorship"
     - "Accessing production databases or systems"
     - "Modifying security controls or [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging"
 ```

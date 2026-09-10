@@ -69,7 +69,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 - [ ] Indexing strategy chosen (CDC/batch/webhook) with sync mechanism
 - [ ] Search query patterns designed (full-text, faceted, autocomplete, geo)
 - [ ] Relevance tuning configured (BM25, field boosting, function scoring)
-- [ ] Operational concerns addressed (aliases, shards, snapshots, [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md))
+- [ ] Operational concerns addressed (aliases, shards, snapshots, [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md))
 
 ### Max Response Length
 300 lines of mapping, queries, and configuration.
@@ -222,7 +222,7 @@ POST /_aliases
 ```
 
 ### Step 7: Cluster Operations
-Shard strategy: 20-40GB per shard, shard count = `cluster_nodes * 2` minimum. Heap: 50% of RAM, max 31GB per node (JVM pointer compression limit). Thread pools: search (13 threads, 1000 queue), write (8 threads, 200 queue). Circuit breakers: 95% heap for request, 75% for fielddata. Snapshots: daily to S3, retention 30 days. [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md): query latency p95/p99, indexing rate, merge rate, GC pauses.
+Shard strategy: 20-40GB per shard, shard count = `cluster_nodes * 2` minimum. Heap: 50% of RAM, max 31GB per node (JVM pointer compression limit). Thread pools: search (13 threads, 1000 queue), write (8 threads, 200 queue). Circuit breakers: 95% heap for request, 75% for fielddata. Snapshots: daily to S3, retention 30 days. [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md): query latency p95/p99, indexing rate, merge rate, GC pauses.
 
 ```yaml
 cluster:
@@ -231,7 +231,7 @@ cluster:
   circuit_breaker: { request: 0.95, fielddata: 0.75 }
   field_limit: { default: 1000, max: 2000 }
   shard_limit: { max_per_node: 1000, target_size_gb: 20-40 }
-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md):
+[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md):
   alert_on:
     - query_p99 > 2000ms
     - heap > 85%
@@ -531,7 +531,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)
+### [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -566,7 +566,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing ([OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -600,6 +600,6 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - Fail securely — errors default to safe behavior.
 - Log security-relevant events for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) from day one, not as an afterthought.
+- Design for [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

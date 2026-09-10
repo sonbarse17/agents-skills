@@ -30,10 +30,10 @@ depends_on:
 ## Purpose
 
 A normal release train exists to batch changes safely through staged
-gates — but a live production [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) (data corruption, a security
+gates — but a live production [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) (data corruption, a security
 exploit being actively used, a total outage) sometimes can't wait for the
 next scheduled release, and pressure to "just ship it now" is exactly when
-corners get cut in ways that turn one [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) into two. This skill
+corners get cut in ways that turn one [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) into two. This skill
 defines a deliberate, pre-agreed emergency-hotfix procedure: a narrow,
 explicit set of checks that may be skipped under time pressure, the
 minimum verification that must never be skipped, and a mandatory rollback
@@ -42,13 +42,13 @@ improvised one.
 
 ## When to use
 
-- A production [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) requires a code change deployed before the next
+- A production [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) requires a code change deployed before the next
   scheduled release window (active data loss, a security vulnerability
   under active exploitation, a total or near-total service outage).
 - Deciding, under time pressure, which of the normal release process's
   steps are safe to skip for this specific change versus which must never
   be skipped regardless of urgency.
-- Defining (in advance, not mid-[incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)) an organization's emergency
+- Defining (in advance, not mid-[incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)) an organization's emergency
   change procedure, including who can authorize bypassing normal gates.
 - After an emergency hotfix ships, reconciling it back into the normal
   release/versioning history so it isn't lost or silently diverges from
@@ -56,12 +56,12 @@ improvised one.
 
 ## Prerequisites & environment
 
-- A pre-agreed emergency-change policy defined *before* an [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
+- A pre-agreed emergency-change policy defined *before* an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
   happens — deciding what's safe to skip while an outage is live and
   everyone is under pressure produces worse decisions than deciding it
   calmly in advance.
-- A named [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) commander or equivalent authority (see
-  [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../../Software_Engineering_and_Other/Frontend/[incident-response](../../Observability_and_SecOps/[incident](../../Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../../DevOps_and_Cloud/Observability_and_SecOps/on-call-management/SKILL.md)/SKILL.md)/SKILL.md))
+- A named [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) commander or equivalent authority (see
+  [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../../Software_Engineering_and_Other/Frontend/[incident-response](../../Observability_and_SecOps/[incident](../../Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../../observability-monitoring-logging/common/alerting/on-call-management/SKILL.md)/SKILL.md)/SKILL.md))
   empowered to authorize an out-of-cadence deploy — an emergency deploy
   should never be a unilateral individual decision with no accountable
   approver, even under time pressure.
@@ -84,8 +84,8 @@ improvised one.
    genuine production emergencies (active data loss, active security
    exploitation, full/major outage) — not for "we want this feature out
    before the next release" or "QA is taking too long." Confirm severity
-   with the [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) commander first; see
-   [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../../Software_Engineering_and_Other/Frontend/[incident-response](../../Observability_and_SecOps/[incident](../../Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../../DevOps_and_Cloud/Observability_and_SecOps/on-call-management/SKILL.md)/SKILL.md)/SKILL.md)
+   with the [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) commander first; see
+   [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../../Software_Engineering_and_Other/Frontend/[incident-response](../../Observability_and_SecOps/[incident](../../Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../../observability-monitoring-logging/common/alerting/on-call-management/SKILL.md)/SKILL.md)/SKILL.md)
    for severity definitions.
 
 2. **Branch from the exact [commit](../../git-workflow/commit/SKILL.md) currently running in production**, not
@@ -112,14 +112,14 @@ improvised one.
    - **Never skip, regardless of urgency:**
      > **Warning:** Bypassing a security scan, skipping the fix's own
      > targeted test coverage, or deploying with no rollback path
-     > prepared are not legitimate time-savers — they turn one [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
+     > prepared are not legitimate time-savers — they turn one [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
      > into the risk of a second, and are the specific failure mode this
      > procedure exists to prevent.
      - A test that specifically exercises the bug being fixed (write one
        if it doesn't exist — a hotfix with no test proving it fixes the
        stated problem is unverified by definition).
      - A security/secret scan on the diff, even a fast targeted one.
-     - Named human approval from an accountable role ([incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) commander
+     - Named human approval from an accountable role ([incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) commander
        or designated release approver), even if verbal/Slack-recorded
        under time pressure — never a fully automated, unapproved deploy
        straight to production.
@@ -131,12 +131,12 @@ improvised one.
    than a manual `scp`/SSH deploy that leaves no [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) trail:
    ```yaml
    # [GitHub](../../../github-actions/other/github/SKILL.md) Actions: environment protection rule that allows a designated
-   # "[incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-commander" team to bypass the standard required reviewers
+   # "[incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-commander" team to bypass the standard required reviewers
    # for this one environment, with the bypass itself [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-logged.
    environment:
      name: production-hotfix
      # reviewers: [release-approvers]  # normally required
-     # Emergency policy: [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-commander team may approve directly;
+     # Emergency policy: [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-commander team may approve directly;
      # every such approval is logged in the environment's deployment history.
    ```
    Even under emergency policy, prefer *reduced* gates over *no* gates —
@@ -151,7 +151,7 @@ improvised one.
    watch, just compressed in time, not skipped.
 
 6. **Immediately reconcile the hotfix back into the normal release
-   history** once the [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) is resolved — merge the hotfix branch
+   history** once the [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) is resolved — merge the hotfix branch
    into `main`/`develop` (not just production), re-run the full test
    suite and any skipped checks against the merged result, and make sure
    the next scheduled release includes (or doesn't conflict with) the
@@ -160,22 +160,22 @@ improvised one.
    for tagging the hotfix into the version history correctly rather than
    letting it silently diverge.
 
-7. **Run a blameless postmortem on the [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) that required the hotfix,
+7. **Run a blameless postmortem on the [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) that required the hotfix,
    and separately review whether the emergency procedure itself was
    followed correctly** — see
    [blameless-postmortem-and-root-cause-analysis](../../../site-reliability-engineering/skills/[blameless-postmortem-and-root-cause-analysis](../../../Software_Engineering_and_Other/Frontend/blameless-postmortem-and-[root-cause-analysis](../../Observability_and_SecOps/root-cause-analysis/SKILL.md)/SKILL.md)/SKILL.md).
    A hotfix that skipped a check that turned out to matter is itself a
    finding worth tracking, not something to quietly let pass because the
-   [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) is over.
+   [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) is over.
 
 ## Best practices
 
-- Decide the "always skip / never skip" list before an [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) happens,
+- Decide the "always skip / never skip" list before an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) happens,
   in a written, agreed policy — not through in-the-moment judgment calls
   made by whoever happens to be paged.
 - Require a named, accountable approver for every emergency deploy, even
   if the approval itself happens fast (a recorded Slack message or a
-  pipeline environment approval) — "everyone agreed in the [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
+  pipeline environment approval) — "everyone agreed in the [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
   channel" without one clearly accountable approver is not a real
   approval trail.
 - Branch the hotfix from the exact production [commit](../../git-workflow/commit/SKILL.md)/tag, never from
@@ -192,7 +192,7 @@ improvised one.
 
 ## Common pitfalls
 
-- **Symptom:** Under [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) pressure, someone deploys directly to
+- **Symptom:** Under [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) pressure, someone deploys directly to
   production via SSH/manual artifact copy, bypassing the pipeline
   entirely "to save time."
   **Fix:**
@@ -203,17 +203,17 @@ improvised one.
   > emergency-approval path (step 4) even when it feels slower in the
   > moment.
 
-- **Symptom:** The hotfix fixes the immediate [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) but is never
+- **Symptom:** The hotfix fixes the immediate [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) but is never
   merged back into `main`, and the next regular release accidentally
   reverts the fix because it was branched from an older [commit](../../git-workflow/commit/SKILL.md).
   **Fix:** Reconcile the hotfix into mainline immediately after the
-  [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) (step 6), and verify the next release build actually still
+  [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) (step 6), and verify the next release build actually still
   contains the fix before it ships.
 
 - **Symptom:** An emergency deploy ships with no rollback plan because
   "we're confident this fix is right," and when it introduces a new
   problem, the team has no fast way back to the last known-good state,
-  turning a contained [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) into an extended one.
+  turning a contained [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) into an extended one.
   **Fix:** Treat a verified rollback path as a non-negotiable
   prerequisite for the emergency deploy itself (step 3/5), never an
   optional nicety skipped under pressure.
@@ -226,12 +226,12 @@ improvised one.
   still takes seconds to minutes, not hours, and is not a legitimate
   place to cut time.
 
-- **Symptom:** There is no pre-agreed emergency policy, so every [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
+- **Symptom:** There is no pre-agreed emergency policy, so every [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
   becomes an ad hoc argument about what can be skipped, wasting time that
   should go to fixing the actual problem.
   **Fix:** Write and socialize the emergency-change policy in advance
   (step 3) — decide the always-skip/never-skip list and the approval
-  authority before the next [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), not during it.
+  authority before the next [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), not during it.
 
 ## Worked example
 
@@ -239,8 +239,8 @@ improvised one.
 production due to a race condition merged in the last release; the next
 scheduled release is four days away.
 
-1. **Severity confirmed** by the [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) commander as Sev-1 (active
-   customer financial impact) per the org's [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) severity policy —
+1. **Severity confirmed** by the [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) commander as Sev-1 (active
+   customer financial impact) per the org's [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) severity policy —
    the emergency procedure applies.
 2. **Branch from production**: `git checkout -b hotfix/checkout-double-charge v2.14.3`
    (the exact tag currently deployed), not from `main`, which already
@@ -251,8 +251,8 @@ scheduled release is four days away.
    - Not skipped: a new targeted test reproducing the double-charge race
      condition (written first, confirmed failing on the buggy code,
      passing after the fix); a fast Semgrep/secret scan on the 30-line
-     diff; named sign-off from the [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) commander, recorded in the
-     [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) channel and in the pipeline's environment-approval log.
+     diff; named sign-off from the [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) commander, recorded in the
+     [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) channel and in the pipeline's environment-approval log.
 4. **Deploy** through the existing blue/green deployment group with the
    normal `ValidateService` health check still in place (just a shorter
    soak window — 5 minutes instead of the usual 30) and the standard
@@ -281,8 +281,8 @@ scheduled release is four days away.
 - [blue-green-canary-deployments](../[blue-green-canary-deployments](../blue-green-canary-deployments/SKILL.md)/SKILL.md) —
   the fast, automated rollback mechanism a hotfix deploy should reuse
   rather than inventing an ad hoc rollback under pressure.
-- [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../../Software_Engineering_and_Other/Frontend/[incident-response](../../Observability_and_SecOps/[incident](../../Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../../DevOps_and_Cloud/Observability_and_SecOps/on-call-management/SKILL.md)/SKILL.md)/SKILL.md) —
-  severity definitions and the [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-commander authority this
+- [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../../Software_Engineering_and_Other/Frontend/[incident-response](../../Observability_and_SecOps/[incident](../../Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../../observability-monitoring-logging/common/alerting/on-call-management/SKILL.md)/SKILL.md)/SKILL.md) —
+  severity definitions and the [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-commander authority this
   procedure depends on for who can invoke and approve it.
 - [release-versioning-and-changelog-automation](../[release-versioning-and-changelog-automation](../../Observability_and_SecOps/release-versioning-and-[changelog-automation](../../../Product_and_Business/changelog-automation/SKILL.md)/SKILL.md)/SKILL.md) —
   how to tag and reconcile the hotfix back into the normal version

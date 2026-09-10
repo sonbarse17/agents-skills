@@ -47,7 +47,7 @@ change; or an MCP server is connected to a live agent before an evaluation
 harness exists, so the first prompt-injection-via-tool-output regression
 is discovered by a user, not a test suite. This skill sequences the
 cloud-managed version of that whole path — landing zone through cost
-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) — deliberately using vendor-neutral language for the LLM
+[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) — deliberately using vendor-neutral language for the LLM
 provider and vector database layers, since the managed-service choice at
 each of those layers is a real decision this skill defers to the reader
 rather than assumes.
@@ -59,11 +59,11 @@ rather than assumes.
   vector database, cloud landing-zone guardrails) rather than self-hosting
   the model-serving and vector-database layers.
 - Deciding the right order to introduce an LLM gateway, RAG/vector search,
-  MCP tool access, an evaluation harness, and cost [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) into an
+  MCP tool access, an evaluation harness, and cost [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) into an
   agent that currently has none of them.
 - Auditing an existing agent deployment for a skipped or out-of-order
   phase (e.g. MCP tools connected before an evaluation harness existed, or
-  cost [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) added only after a surprising invoice).
+  cost [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) added only after a surprising invoice).
 - Rebuilding a reference agent platform (a second product line, a second
   team) that should follow the same proven sequence as a known-good first
   deployment.
@@ -183,7 +183,7 @@ decisions between phases.
    in the initial eval set, since both are realistic risks introduced by
    exactly the phases that just went live.
 
-7. **Phase 7 — cost and latency [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).** Instrument per-provider
+7. **Phase 7 — cost and latency [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).** Instrument per-provider
    cost, latency, and fallback-trigger metrics at the Phase 3 gateway,
    and apply the structural cost/latency levers (context trimming,
    prompt caching, right-sized models per step, batching) from
@@ -207,7 +207,7 @@ decisions between phases.
   tool surface it exposes, independent of whatever broad role the
   landing zone's default workload identity might otherwise offer.
 - Build the Phase 6 evaluation harness before, not after, Phase 3–5 go to
-  production traffic — a harness built retroactively after an [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
+  production traffic — a harness built retroactively after an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
   starts one adversarial case behind, permanently.
 - Monitor cost and latency (Phase 7) per LLM provider/deployment behind
   the gateway, not just in aggregate, so a fallback-provider failover is
@@ -257,7 +257,7 @@ decisions between phases.
 - **Symptom:** A monthly invoice reveals materially higher spend than
   expected, traced to a multi-day period when the Phase 3 gateway had
   silently failed over to a more expensive fallback provider.
-  **Fix:** Phase 7's cost [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) tracked only an aggregate total, so
+  **Fix:** Phase 7's cost [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) tracked only an aggregate total, so
   the fallback-trigger event itself never generated an alert. Monitor
   fallback-trigger rate and per-provider cost as their own signals from
   the start, not discoverable only in hindsight from a monthly bill.
@@ -309,7 +309,7 @@ retrieval:
 Three weeks after launch, the primary LLM provider has a partial outage;
 the Phase 3 gateway fails over to the Azure fallback automatically, and
 because Phase 7's fallback-trigger alert (not just aggregate cost) fired
-within minutes, the platform team is already aware and [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) before
+within minutes, the platform team is already aware and [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) before
 any customer notices degraded response quality — the exact outcome the
 phase-6-before-traffic and phase-7-per-provider sequencing decisions in
 this skill are designed to produce.

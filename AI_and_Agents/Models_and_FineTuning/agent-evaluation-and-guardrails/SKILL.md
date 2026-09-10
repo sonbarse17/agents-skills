@@ -57,7 +57,7 @@ them as complementary, not interchangeable.
 ## Prerequisites & environment
 
 - A representative set of real or realistic inputs (support tickets, code
-  diffs, user queries) — ideally sourced from actual usage or [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
+  diffs, user queries) — ideally sourced from actual usage or [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
   reports, not only hand-written happy-path cases.
 - A way to run the agent non-interactively against a batch of inputs
   (a script that calls your agent's entrypoint in a loop is sufficient to
@@ -216,12 +216,12 @@ them as complementary, not interchangeable.
 - **Symptom:** The eval suite consistently reports high pass rates, but the
   suite itself is mostly easy happy-path cases and hasn't been updated
   since the agent launched.
-  **Fix:** Require every production [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) or user-reported failure to
+  **Fix:** Require every production [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) or user-reported failure to
   result in a new eval case before the fix is considered complete — the
   eval set should grow with real-world experience, not stay static.
 
 - **Symptom:** Guardrail checks add enough latency that they get disabled
-  under load or "temporarily" bypassed during an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), and stay
+  under load or "temporarily" bypassed during an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), and stay
   bypassed.
   **Fix:** Design guardrails to be cheap (structural/regex/small-model
   checks before falling back to a full LLM call) and treat any bypass as a

@@ -41,7 +41,7 @@ MDM becomes essential when any of the following apply:
   increasingly ask for evidence of endpoint management.
 
 If you are still under 10 people and everyone is in-office, a simple checklist
-plus a configuration management tool ([Ansible](../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md)) may suffice — but plan for MDM
+plus a configuration management tool ([Ansible](../../infrastructure-as-code/ansible/other/ansible/SKILL.md)) may suffice — but plan for MDM
 early so enrollment is painless when you scale.
 
 ---
@@ -622,7 +622,7 @@ Invoke-MgGraphRequest -Method POST `
   -Body $body -ContentType "application/json"
 ```
 
-### 9.3 Lost device [runbook](../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)
+### 9.3 Lost device [runbook](../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)
 
 ```text
 1. Employee reports device lost/stolen via Slack #it-help or PagerDuty.

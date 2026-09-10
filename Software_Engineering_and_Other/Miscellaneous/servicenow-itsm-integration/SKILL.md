@@ -31,42 +31,42 @@ depends_on:
 
 ## Purpose
 
-Engineering [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) tools like PagerDuty and Opsgenie are optimized for
-speed — page the right human in seconds. ServiceNow's [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), Change,
+Engineering [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) tools like PagerDuty and Opsgenie are optimized for
+speed — page the right human in seconds. ServiceNow's [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), Change,
 and Problem management modules are optimized for something different:
 an auditable, ITIL-compliant record of what happened, who approved what,
 and how it connects to the CMDB — the record a compliance auditor, a
 change advisory board, or an enterprise-wide reporting dashboard needs,
 and that PagerDuty was never designed to be. In an ITIL-heavy enterprise
-these aren't a choice between one or the other; a real [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) needs
+these aren't a choice between one or the other; a real [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) needs
 both a paged human acting in minutes and a synced ServiceNow record
 that's got the right assignment group, links to the change that likely
-caused it, and (if a fix requires a production change mid-[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)) an
+caused it, and (if a fix requires a production change mid-[incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)) an
 emergency change request that doesn't wait for a weekly CAB meeting.
 This skill covers that integration and sync — not how to design the
 on-call paging itself (see
 [pagerduty-and-opsgenie-oncall-configuration](../[pagerduty-and-opsgenie-oncall-configuration](../../../DevOps_and_Cloud/Observability_and_SecOps/pagerduty-and-opsgenie-oncall-configuration/SKILL.md)/SKILL.md))
-or the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-command process running in parallel (see
-[incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../Frontend/[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../DevOps_and_Cloud/Observability_and_SecOps/on-call-management/SKILL.md)/SKILL.md)/SKILL.md)).
+or the [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-command process running in parallel (see
+[incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../Frontend/[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../observability-monitoring-logging/common/alerting/on-call-management/SKILL.md)/SKILL.md)/SKILL.md)).
 
 ## When to use
 
-- Standing up bi-directional sync so a PagerDuty/Opsgenie [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
-  automatically creates and updates a ServiceNow [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) record (and
+- Standing up bi-directional sync so a PagerDuty/Opsgenie [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
+  automatically creates and updates a ServiceNow [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) record (and
   vice versa), instead of someone manually copy-pasting details between
   tools.
 - Writing or troubleshooting a Change Request workflow for a production
   deployment — standard vs. normal vs. emergency change types, and CAB
   approval routing.
-- Linking a recurring or unresolved [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) to a Problem record for
-  root-cause tracking that outlives any single [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+- Linking a recurring or unresolved [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) to a Problem record for
+  root-cause tracking that outlives any single [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 - Configuring CMDB-based assignment group routing so a ServiceNow
-  [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) lands with the team that actually owns the affected
+  [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) lands with the team that actually owns the affected
   Configuration Item, not a generic triage queue.
 - Debugging a sync issue: incidents duplicating, status ping-ponging
-  between tools, or a ServiceNow [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) stuck in the wrong assignment
+  between tools, or a ServiceNow [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) stuck in the wrong assignment
   group.
-- Deciding how a mid-[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) production fix (a rollback, a config
+- Deciding how a mid-[incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) production fix (a rollback, a config
   change) gets an emergency Change Request without waiting for the
   normal weekly CAB cycle.
 
@@ -75,7 +75,7 @@ or the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SK
 - A ServiceNow instance (`${SNOW_INSTANCE_URL}`, e.g.
   `https://yourcompany.service-now.com`) with Table API access enabled
   and an integration user account holding at minimum the `itil` role
-  ([incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)/problem read-write) and [change-management](../change-management/SKILL.md) roles as needed
+  ([incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)/problem read-write) and [change-management](../change-management/SKILL.md) roles as needed
   (`change_manager` or scoped ACLs for the Change table) — use OAuth2 or
   a scoped API key stored as `${SNOW_CLIENT_ID}`/`${SNOW_CLIENT_SECRET}`,
   never basic auth with a hardcoded password.
@@ -87,22 +87,22 @@ or the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SK
 - CMDB Configuration Items (CIs) already populated for the services in
   scope, with each CI mapped to an owning assignment group — sync is
   only as good as CMDB accuracy; a service with no CI or a stale CI
-  owner will misroute every [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) against it.
+  owner will misroute every [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) against it.
 - Clarity on change types your ServiceNow instance supports (Standard,
   Normal, Emergency) and who is authorized to raise an Emergency Change
-  — this must be resolved before an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), not decided live during
+  — this must be resolved before an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), not decided live during
   one.
 - Existing PagerDuty/Opsgenie paging configuration to sync against — see
   [pagerduty-and-opsgenie-oncall-configuration](../[pagerduty-and-opsgenie-oncall-configuration](../../../DevOps_and_Cloud/Observability_and_SecOps/pagerduty-and-opsgenie-oncall-configuration/SKILL.md)/SKILL.md).
 
 ## Step-by-step guidance
 
-1. **Create the ServiceNow [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) from the paging tool's [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
+1. **Create the ServiceNow [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) from the paging tool's [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
    trigger**, via the Table API, carrying over the paging tool's
-   [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) ID as a correlation field so later updates target the same
+   [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) ID as a correlation field so later updates target the same
    record instead of creating duplicates:
    ```http
-   POST /api/now/table/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
+   POST /api/now/table/[incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
    Host: ${SNOW_INSTANCE_URL}
    Authorization: Bearer ${SNOW_ACCESS_TOKEN}
    Content-Type: application/json
@@ -110,7 +110,7 @@ or the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SK
    ```json
    {
      "short_description": "Checkout success rate dropped sharply",
-     "description": "Auto-created from PagerDuty [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) PD-INC-48213. See link for live timeline.",
+     "description": "Auto-created from PagerDuty [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) PD-INC-48213. See link for live timeline.",
      "urgency": "1",
      "impact": "1",
      "cmdb_ci": "checkout-api",
@@ -120,12 +120,12 @@ or the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SK
    }
    ```
    `correlation_id` is the field every subsequent update must query on
-   (`GET /api/now/table/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)?sysparm_query=correlation_id=PD-INC-48213`)
+   (`GET /api/now/table/[incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)?sysparm_query=correlation_id=PD-INC-48213`)
    — this is what makes the sync idempotent instead of duplicate-prone.
 
 2. **Sync status changes bidirectionally through a defined mapping**,
    not a free-text guess — PagerDuty/Opsgenie states map onto ServiceNow
-   [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) states explicitly:
+   [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) states explicitly:
 
    | Paging tool state | ServiceNow `incident_state` |
    |---|---|
@@ -143,10 +143,10 @@ or the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SK
 3. **Route incidents by CMDB CI → assignment group**, not a static
    default queue:
    ```
-   [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).cmdb_ci  → looks up →  cmdb_rel_ci (or a dedicated
-   ci_to_team mapping table)  →  [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).assignment_group
+   [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).cmdb_ci  → looks up →  cmdb_rel_ci (or a dedicated
+   ci_to_team mapping table)  →  [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).assignment_group
    ```
-   Configure this as a Business Rule or Flow Designer flow on [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)
+   Configure this as a Business Rule or Flow Designer flow on [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
    `insert`/`update` that resolves `assignment_group` from the CI's owner
    relationship, so a new service only needs its CMDB CI's owner set
    correctly once, rather than a routing rule maintained per-service in
@@ -167,15 +167,15 @@ or the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SK
    {
      "short_description": "Emergency rollback of checkout-api v2.14.1",
      "type": "emergency",
-     "justification": "Mitigating active Sev1 [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) INC0048213 — rolling back to v2.14.0",
+     "justification": "Mitigating active Sev1 [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) INC0048213 — rolling back to v2.14.0",
      "cmdb_ci": "checkout-api",
      "risk": "moderate",
      "assignment_group": "checkout-team"
    }
    ```
-   Link the Change Request to the active [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) record
+   Link the Change Request to the active [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) record
    (`change_request.parent_incident` or a related-list relationship) so
-   the [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail shows exactly which [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) justified bypassing
+   the [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trail shows exactly which [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) justified bypassing
    standard CAB timing.
 
 5. **Require an actual (even if fast) emergency-change approval, not a
@@ -188,7 +188,7 @@ or the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SK
    to provide.
 
 6. **Link recurring/unresolved incidents to a Problem record** for
-   root-cause tracking that outlives the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md):
+   root-cause tracking that outlives the [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md):
    ```http
    POST /api/now/table/problem
    ```
@@ -196,23 +196,23 @@ or the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SK
    {
      "short_description": "Recurring checkout-api replica lag causing intermittent 5xx",
      "cmdb_ci": "checkout-db",
-     "[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)": "INC0048213"
+     "[incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)": "INC0048213"
    }
    ```
-   Then relate every future [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) with the same root cause back to
-   this Problem record (`problem_id` field on the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)) instead of
+   Then relate every future [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) with the same root cause back to
+   this Problem record (`problem_id` field on the [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)) instead of
    letting each recurrence be investigated from scratch.
 
 7. **Guard every inbound webhook/sync call with an idempotency key** —
-   use the paging tool's [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) ID (already captured as
+   use the paging tool's [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) ID (already captured as
    `correlation_id`) to check-then-update rather than blindly inserting,
    so a retried webhook delivery (both PagerDuty and Opsgenie retry on
-   timeout) doesn't create a duplicate ServiceNow [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) for the same
+   timeout) doesn't create a duplicate ServiceNow [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) for the same
    underlying page.
 
 ## Best practices
 
-- Always carry the paging tool's [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) ID into `correlation_id` and
+- Always carry the paging tool's [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) ID into `correlation_id` and
   query on it before any write — this single field is what keeps sync
   idempotent under retries and prevents duplicate records.
 - Keep Emergency Change approval fast (minutes, from a dedicated
@@ -222,45 +222,45 @@ or the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SK
 - Drive assignment-group routing off CMDB CI ownership, and treat a
   stale/missing CI-to-team mapping as a data-quality bug to fix at the
   source, not a routing exception to special-case per service.
-- Link every Change Request made during an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) back to that
-  [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) record explicitly, so a postmortem (see
-  [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../Frontend/[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../DevOps_and_Cloud/Observability_and_SecOps/on-call-management/SKILL.md)/SKILL.md)/SKILL.md))
+- Link every Change Request made during an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) back to that
+  [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) record explicitly, so a postmortem (see
+  [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../Frontend/[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../observability-monitoring-logging/common/alerting/on-call-management/SKILL.md)/SKILL.md)/SKILL.md))
   can trace exactly which changes were made under emergency conditions.
 - Prefer the vendor-maintained PagerDuty/Opsgenie ServiceNow integration
   app over a fully custom webhook sync unless a specific field mapping
   genuinely requires it — a custom sync is another system to maintain
   and another source of sync-loop bugs.
 - Validate the workflow/approval configuration itself before depending
-  on it in a real [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) — see
+  on it in a real [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) — see
   [servicenow-itsm-configuration-validation](../[servicenow-itsm-configuration-validation](../../../DevOps_and_Cloud/Observability_and_SecOps/servicenow-itsm-configuration-validation/SKILL.md)/SKILL.md).
 
 ## Common pitfalls
 
-- **Symptom:** A PagerDuty [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) and its synced ServiceNow record
+- **Symptom:** A PagerDuty [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) and its synced ServiceNow record
   bounce a status update back and forth — PagerDuty resolves, the sync
   flow marks ServiceNow Resolved, a ServiceNow business rule fires and
   pushes a status back to PagerDuty, which re-triggers the sync flow
   again, and so on.
   **Fix:** Give the sync flow a clear single source of truth per field
   and direction (e.g. paging-tool status is authoritative while an
-  [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) is open; ServiceNow becomes authoritative only after
+  [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) is open; ServiceNow becomes authoritative only after
   Resolved, for closure/RCA fields) and have each sync leg check whether
   the target value already matches before writing, rather than writing
   unconditionally on every event.
 
 - **Symptom:** During an active Sev1, the fix requires a production
   rollback, but the Change Request created for it sits waiting for the
-  next weekly CAB meeting — the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) drags on for hours because the
+  next weekly CAB meeting — the [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) drags on for hours because the
   Change process, not the technical fix, is the bottleneck.
   **Fix:** Configure and use the Emergency change type (step 4/5) with a
   fast, always-reachable approver group instead of routing every
   production change through Normal/CAB regardless of urgency — this
-  needs to be set up and tested *before* the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), not requested for
+  needs to be set up and tested *before* the [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), not requested for
   the first time mid-Sev1.
 
 - **Symptom:** A retried PagerDuty webhook delivery (e.g. after a
   transient network timeout) creates a second, duplicate ServiceNow
-  [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) for the same underlying page, and both get worked
+  [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) for the same underlying page, and both get worked
   independently by different assignees.
   **Fix:** Query by `correlation_id` before inserting (step 1/7) —
   check-then-update, not insert-always — so a retried delivery updates
@@ -272,17 +272,17 @@ or the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SK
   **Fix:** The service's CMDB CI either doesn't exist yet or has no
   owning-group relationship configured — this is a CMDB data-quality gap
   to fix at onboarding time for every new service, not a routing
-  exception to patch per [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md).
+  exception to patch per [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 
 ## Worked example
 
 **Scenario:** `checkout-api`'s Sev1 (from the worked example in
-[incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../Frontend/[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../DevOps_and_Cloud/Observability_and_SecOps/on-call-management/SKILL.md)/SKILL.md)/SKILL.md))
-needs both the PagerDuty [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) and a synced ServiceNow record, plus
+[incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../Frontend/[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../observability-monitoring-logging/common/alerting/on-call-management/SKILL.md)/SKILL.md)/SKILL.md))
+needs both the PagerDuty [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) and a synced ServiceNow record, plus
 an emergency Change Request for the rollback that mitigates it.
 
-1. PagerDuty [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) `PD-INC-48213` triggers; a Flow Designer flow
-   (webhook-triggered) creates the ServiceNow [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md):
+1. PagerDuty [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) `PD-INC-48213` triggers; a Flow Designer flow
+   (webhook-triggered) creates the ServiceNow [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md):
    ```json
    {
      "short_description": "Checkout success rate dropped sharply",
@@ -314,7 +314,7 @@ an emergency Change Request for the rollback that mitigates it.
 
 3. The rollback completes and checkout's error rate recovers. The sync
    flow updates `INC0048213`'s `incident_state` to `6` (Resolved) when
-   PagerDuty's [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) is resolved, using `correlation_id` to target
+   PagerDuty's [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) is resolved, using `correlation_id` to target
    the exact record rather than searching by description text.
 
 4. Because this is the second time in a month checkout-api has had a
@@ -323,15 +323,15 @@ an emergency Change Request for the rollback that mitigates it.
    {
      "short_description": "Recurring checkout-api deploy-config regressions",
      "cmdb_ci": "checkout-api",
-     "[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)": "INC0048213"
+     "[incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)": "INC0048213"
    }
    ```
    giving the team a durable place to track the underlying root cause
-   across incidents, separate from any single [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)'s record.
+   across incidents, separate from any single [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)'s record.
 
 ## Cross-references
 
-- [servicenow-itsm-configuration-validation](../[servicenow-itsm-configuration-validation](../../../DevOps_and_Cloud/Observability_and_SecOps/servicenow-itsm-configuration-validation/SKILL.md)/SKILL.md) — validating that the assignment routing, approval workflow, and sync flows described here won't block or misroute a real [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) before depending on them.
+- [servicenow-itsm-configuration-validation](../[servicenow-itsm-configuration-validation](../../../DevOps_and_Cloud/Observability_and_SecOps/servicenow-itsm-configuration-validation/SKILL.md)/SKILL.md) — validating that the assignment routing, approval workflow, and sync flows described here won't block or misroute a real [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) before depending on them.
 - [pagerduty-and-opsgenie-oncall-configuration](../[pagerduty-and-opsgenie-oncall-configuration](../../../DevOps_and_Cloud/Observability_and_SecOps/pagerduty-and-opsgenie-oncall-configuration/SKILL.md)/SKILL.md) — the paging-tool side this integration syncs against; escalation policies and services referenced by `correlation_id` here.
-- [chatops-[runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)-automation](../[chatops-[runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)-automation](../../Frontend/chatops-[runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)-automation/SKILL.md)/SKILL.md) — automated [runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md) actions taken during the [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) this integration is tracking should also be reflected in the ServiceNow record for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) purposes.
-- [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../Frontend/[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../DevOps_and_Cloud/Observability_and_SecOps/on-call-management/SKILL.md)/SKILL.md)/SKILL.md) — the [Incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) Command process and severity levels that drive when a ServiceNow record and emergency change get created in the first place.
+- [chatops-[runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)-automation](../[chatops-[runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)-automation](../../Frontend/chatops-[runbook](../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md)-automation/SKILL.md)/SKILL.md) — automated [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) actions taken during the [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) this integration is tracking should also be reflected in the ServiceNow record for [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) purposes.
+- [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../Frontend/[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../observability-monitoring-logging/common/alerting/on-call-management/SKILL.md)/SKILL.md)/SKILL.md) — the [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Command process and severity levels that drive when a ServiceNow record and emergency change get created in the first place.

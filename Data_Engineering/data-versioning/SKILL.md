@@ -367,7 +367,7 @@ Scalability: DVC works well for teams of 5-20 data scientists. LakeFS and Nessie
 ```yaml
 branching_strategy:
   main:
-    description: "Production data — serving [dashboards](../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), ML models, reports"
+    description: "Production data — serving [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), ML models, reports"
     access: "Read-only for most users, write via PR merge"
     retention: "Indefinite"
     
@@ -600,5 +600,5 @@ stages:
 - **Backup**: Backup Nessie catalog metadata daily; test restore procedure quarterly.
 
 ## Handoff
-`[data-data-platform](../data-platform/SKILL.md)` for versioning infrastructure. `[data-data-catalog](../data-catalog/SKILL.md)` for cataloging versioned datasets. `[data-data-observability](../data-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)` for [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) version health. `[data-data-quality](../data-quality/SKILL.md)` for quality gates on merge.
+`[data-data-platform](../data-platform/SKILL.md)` for versioning infrastructure. `[data-data-catalog](../data-catalog/SKILL.md)` for cataloging versioned datasets. `[data-data-observability](../data-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)` for [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) version health. `[data-data-quality](../data-quality/SKILL.md)` for quality gates on merge.
 

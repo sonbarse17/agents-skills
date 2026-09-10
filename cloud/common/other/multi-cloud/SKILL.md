@@ -23,7 +23,7 @@ depends_on:
 # Multi-Cloud
 
 Multi-cloud is usually sold as risk reduction and delivered as a tax: a second provider means a
-second set of IAM models, networking primitives, billing [dashboards](../../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md), and on-call [runbooks](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md) to
+second set of IAM models, networking primitives, billing [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), and on-call [runbooks](../../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md) to
 maintain, permanently, whether or not you ever use the failover it was meant to provide. The
 question is never whether multi-cloud is possible — it always is — but whether the ongoing
 operational cost buys something the business actually needs.
@@ -36,7 +36,7 @@ with a stated reason, not something you discover you're already doing.**
 
 The legitimate reasons are narrow: a regulatory requirement to avoid a single vendor, genuine
 negotiating leverage at large spend, a specific managed service only one provider offers, or
-[disaster-recovery](../../../../DevOps_and_Cloud/Observability_and_SecOps/disaster-recovery/SKILL.md) requirements that mandate provider diversity. "Just in case we need to switch"
+[disaster-recovery](../../../../containers-orchestration/common/other/disaster-recovery/SKILL.md) requirements that mandate provider diversity. "Just in case we need to switch"
 is not on that list — it's a hedge against a risk that's rarely priced against the daily cost of
 carrying it.
 
@@ -60,7 +60,7 @@ not assumed.
 
 Every additional provider means another IAM model to secure correctly, another network model to
 reason about, another set of quotas and outage patterns to learn, and another on-call rotation
-that needs to know all of it. This cost shows up as engineer-hours and [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response quality,
+that needs to know all of it. This cost shows up as engineer-hours and [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response quality,
 not as a line item — which is exactly why it's the cost teams underestimate before committing.
 
 **Done when:** the ongoing staffing cost of the second provider is stated as a number in the same
@@ -83,7 +83,7 @@ If portability across providers is a genuine requirement, build the abstraction 
 where you actually need to swap — an interface around a queue, not a homegrown cloud-agnostic
 platform that reimplements every provider's primitives. A thin, honest abstraction is
 maintainable; a universal one becomes its own product with its own bug backlog. Manage the
-underlying infrastructure per-provider with `[infrastructure-as-code](../../../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md)` and `[terraform-modules](../../../../DevOps_and_Cloud/Infrastructure_as_Code/terraform-modules/SKILL.md)`
+underlying infrastructure per-provider with `[infrastructure-as-code](../../../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md)` and `[terraform-modules](../../../../infrastructure-as-code/terraform/modules/terraform-modules/SKILL.md)`
 rather than inventing a meta-layer above them.
 
 **Done when:** any cross-provider abstraction is scoped to the specific component that needs to

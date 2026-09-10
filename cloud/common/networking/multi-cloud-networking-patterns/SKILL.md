@@ -191,7 +191,7 @@ than an emergent mess of one-off peering connections.
   service rather than routing bulk traffic over IPsec VPN.
 - Keep **network topology and firewall rules as code**, reviewed with
   the same rigor as IAM changes — a misconfigured route or overly broad
-  security group rule is as much a security [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) as an IAM
+  security group rule is as much a security [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) as an IAM
   over-grant.
 
 ## Common pitfalls

@@ -64,7 +64,7 @@ Most requests describe one capability. If this one does, skip this phase and go 
 | identity | Accounts, sessions, SSO | — |
 | billing | Plans, invoices, payments | identity |
 | notifications | Email and webhook fan-out | identity |
-| reporting | Usage [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) | billing, notifications |
+| reporting | Usage [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) | billing, notifications |
 
 Build order: identity → billing, notifications → reporting
 ```
@@ -212,7 +212,7 @@ Break the plan into discrete, implementable tasks:
 
 ### Phase 4: Implement
 
-Execute tasks one at a time following `skills/[incremental-implementation](../../Patterns/incremental-implementation/SKILL.md)/SKILL.md` (`[incremental-implementation](../../Patterns/incremental-implementation/SKILL.md)`) and `skills/[test-driven-development](../../../DevOps_and_Cloud/Observability_and_SecOps/test-driven-development/SKILL.md)/SKILL.md` (`[test-driven-development](../../../DevOps_and_Cloud/Observability_and_SecOps/test-driven-development/SKILL.md)`). Use `skills/[context-engineering](../../../AI_and_Agents/Workflows/context-engineering/SKILL.md)/SKILL.md` (`[context-engineering](../../../AI_and_Agents/Workflows/context-engineering/SKILL.md)`) to load the right spec sections and source files at each step rather than flooding the agent with the entire spec.
+Execute tasks one at a time following `skills/[incremental-implementation](../../Patterns/incremental-implementation/SKILL.md)/SKILL.md` (`[incremental-implementation](../../Patterns/incremental-implementation/SKILL.md)`) and `skills/[test-driven-development](../../Patterns/test-driven-development/SKILL.md)/SKILL.md` (`[test-driven-development](../../Patterns/test-driven-development/SKILL.md)`). Use `skills/[context-engineering](../../../AI_and_Agents/Workflows/context-engineering/SKILL.md)/SKILL.md` (`[context-engineering](../../../AI_and_Agents/Workflows/context-engineering/SKILL.md)`) to load the right spec sections and source files at each step rather than flooding the agent with the entire spec.
 
 ## Keeping the Spec Alive
 

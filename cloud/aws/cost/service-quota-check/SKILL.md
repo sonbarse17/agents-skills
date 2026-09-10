@@ -38,7 +38,7 @@ when possible, or recommending a support case when programmatic increases are no
 - An investigation recommendation involves provisioning additional AWS resources
   (e.g., adding EC2 instances, creating VPCs, adding NAT Gateways, launching RDS instances).
 - [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) planning or pre-launch readiness checks.
-- Proactive [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) of quota utilization across services.
+- Proactive [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) of quota utilization across services.
 
 ## Prerequisites
 
@@ -81,8 +81,8 @@ Determine which service and quota to check based on the investigation context:
 | Amazon S3 | `s3` |
 | Amazon DynamoDB | `dynamodb` |
 | AWS Fargate | `fargate` |
-| Amazon CloudWatch | `[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)` |
-| AWS [CloudFormation](../../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md) | `[cloudformation](../../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md)` |
+| Amazon CloudWatch | `[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)` |
+| AWS [CloudFormation](../../../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md) | `[cloudformation](../../../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md)` |
 | Amazon SQS | `sqs` |
 | Amazon SNS | `sns` |
 | Amazon ElastiCache | `elasticache` |
@@ -387,5 +387,5 @@ frequently checked quota codes by service.
 - **Resource-level quotas**: Some quotas (e.g., OpenSearch instances per domain) are
   resource-level. Use `--context-id` with the resource ARN for these.
 - **Rate-based quotas**: Some quotas measure requests per second (e.g., API call rates).
-  These require different [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) approaches (CloudWatch metrics rather than resource counts).
+  These require different [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) approaches (CloudWatch metrics rather than resource counts).
 

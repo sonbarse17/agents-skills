@@ -16,14 +16,14 @@ depends_on:
 
 # Task Coordination Strategies
 
-Strategies for decomposing complex tasks into parallelizable units, designing dependency graphs, writing effective task descriptions, and [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) workload across agent teams.
+Strategies for decomposing complex tasks into parallelizable units, designing dependency graphs, writing effective task descriptions, and [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) workload across agent teams.
 
 ## When to Use This Skill
 
 - Breaking down a complex task for parallel execution
 - Designing task dependency relationships (blockedBy/blocks)
 - Writing task descriptions with clear acceptance criteria
-- [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and rebalancing workload across teammates
+- [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and rebalancing workload across teammates
 - Identifying the critical path in a multi-task workflow
 
 ## Task Decomposition Strategies
@@ -153,7 +153,7 @@ Build the user authentication API endpoints.
 - Rate limiting
 ```
 
-## Workload [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
+## Workload [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 ### Indicators of Imbalance
 

@@ -32,7 +32,7 @@ depends_on:
 Backstage's catalog, TechDocs, and Software Templates cover the platform's
 baseline needs, but the moment a platform team wants to surface something
 that doesn't already have a plugin — an internal cost-allocation report, a
-custom deployment-approval workflow, a proprietary [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) tool's live
+custom deployment-approval workflow, a proprietary [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) tool's live
 status — the answer is a custom plugin, not a catalog annotation. Writing
 one badly (a frontend page that calls an external API directly with a
 hardcoded token, or a backend route bolted onto `packages/backend` instead
@@ -44,7 +44,7 @@ can extend it, and it fails predictably instead of silently. This skill
 covers scaffolding, structuring, wiring, and locally testing a custom
 Backstage plugin — it assumes the baseline catalog/TechDocs/Software
 Template setup from
-[backstage-developer-portal](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[backstage-developer-portal](../../../DevOps_and_Cloud/Observability_and_SecOps/backstage-developer-portal/SKILL.md)/SKILL.md)
+[backstage-developer-portal](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[backstage-developer-portal](../../../containers-orchestration/common/other/backstage-developer-portal/SKILL.md)/SKILL.md)
 is already in place and does not repeat it.
 
 ## When to use
@@ -267,7 +267,7 @@ is already in place and does not repeat it.
    `yarn backstage-cli versions:bump` that upgrades core packages
    upgrades the plugin's dependency versions in the same [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) — see the
    version-pinning guidance already covered in
-   [backstage-developer-portal](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[backstage-developer-portal](../../../DevOps_and_Cloud/Observability_and_SecOps/backstage-developer-portal/SKILL.md)/SKILL.md),
+   [backstage-developer-portal](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[backstage-developer-portal](../../../containers-orchestration/common/other/backstage-developer-portal/SKILL.md)/SKILL.md),
    which applies unchanged here.
 
 ## Best practices
@@ -400,6 +400,6 @@ code bolted onto `packages/app`/`packages/backend` directly.
 
 ## Cross-references
 
-- [backstage-developer-portal](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[backstage-developer-portal](../../../DevOps_and_Cloud/Observability_and_SecOps/backstage-developer-portal/SKILL.md)/SKILL.md) — the baseline catalog/TechDocs/Software Template setup this plugin work is built on top of; read that first, it's not repeated here.
+- [backstage-developer-portal](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[backstage-developer-portal](../../../containers-orchestration/common/other/backstage-developer-portal/SKILL.md)/SKILL.md) — the baseline catalog/TechDocs/Software Template setup this plugin work is built on top of; read that first, it's not repeated here.
 - [platform-self-service-api-and-workflow-design](../[platform-self-service-api-and-workflow-design](../../../Product_and_Business/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md) — a common reason to write a custom plugin is to give a self-service provisioning workflow's API a first-class UI and Scaffolder action inside Backstage.
 - [platform-engineering-team-topology-and-operating-model](../[platform-engineering-team-topology-and-operating-model](../../../Product_and_Business/[platform-engineering](../../Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md) — who on the platform team owns building/maintaining plugins, and why plugin development should be run like product work for internal customers rather than a side project.

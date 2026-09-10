@@ -22,7 +22,7 @@ depends_on:
 # Artifact Management
 
 An artifact is the one thing that should never be ambiguous in a delivery pipeline: given a
-version or digest, everyone — CI, CD, an engineer debugging an [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) six months later — should
+version or digest, everyone — CI, CD, an engineer debugging an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) six months later — should
 be able to retrieve the exact same bytes. The moment an artifact can be overwritten, rebuilt with
 a different result, or referenced by a mutable tag like `latest`, every downstream promise (this
 is what passed CI, this is what's in staging, this is what's in prod) becomes unverifiable.
@@ -74,7 +74,7 @@ An artifact without metadata about its source [commit](../../git-workflow/commit
 is a black box the moment something goes wrong with it — you're left guessing what code actually
 produced it. Attach provenance at build time: source [commit](../../git-workflow/commit/SKILL.md) SHA, build pipeline/job ID,
 dependency lockfile hash, and ideally a signed attestation (SLSA-style) that the artifact came
-from the pipeline it claims to. This is what makes an [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) retro or a security review
+from the pipeline it claims to. This is what makes an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) retro or a security review
 tractable instead of a forensic exercise.
 
 - **Source [commit](../../git-workflow/commit/SKILL.md)** the build was cut from.
@@ -104,7 +104,7 @@ when storage alerts fire.
 ## 5. Scope registry access by least privilege, per environment
 
 A registry where any CI job can push directly to the tag that production pulls is one compromised
-pipeline away from a supply-chain [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md). Separate write access (only the build pipeline can
+pipeline away from a supply-chain [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md). Separate write access (only the build pipeline can
 push new artifacts) from promotion access (only the deploy pipeline, gated appropriately, can
 move a digest into a production-referenced state) from read access (runtime pulls should be
 read-only). This is a narrower, artifact-specific instance of the concerns in `[pipeline-security](../../pipeline-design/pipeline-security/SKILL.md)`
