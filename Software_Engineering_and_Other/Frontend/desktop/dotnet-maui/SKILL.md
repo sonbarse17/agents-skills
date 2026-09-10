@@ -38,7 +38,7 @@ Guide for building cross-platform mobile apps with .NET MAUI using MVVM, Shell n
 Phrases: ".NET MAUI", "MAUI app", "Xamarin", "MAUI Shell", "MAUI page", "MAUI MVVM", "MAUI data binding", "MAUI collection view"
 
 ### Input Context
-- Target platforms ([Android](../../../../Mobile/android/SKILL.md), iOS, Windows, macOS)
+- Target platforms ([Android](../../../../Mobile/platforms/android/SKILL.md), iOS, Windows, macOS)
 - Pages and navigation structure
 - Data models and service interfaces
 - Required platform-specific features
@@ -54,7 +54,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 - MVVM bindings resolve without code-behind
 - CollectionView renders with DataTemplate
 - Platform-specific code compiles under correct target
-- App deploys and runs on iOS simulator and [Android](../../../../Mobile/android/SKILL.md) emulator
+- App deploys and runs on iOS simulator and [Android](../../../../Mobile/platforms/android/SKILL.md) emulator
 
 ### Max Response Length
 8000 tokens
@@ -86,16 +86,16 @@ Team preference?
 ### Platform-Specific Code Strategy
 ```
 Volume of platform code?
-├── Small (1-5 specialized views) → #if [ANDROID](../../../../Mobile/android/SKILL.md) / #if IOS preprocessor
+├── Small (1-5 specialized views) → #if [ANDROID](../../../../Mobile/platforms/android/SKILL.md) / #if IOS preprocessor
 ├── Medium → Platform handlers in MauiProgram.cs ConfigureMauiHandlers
 │   Preferred approach — maps cross-platform properties to native views
 └── Large → Conditional compilation with partial class files per platform
-    Use Platforms/[Android](../../../../Mobile/android/SKILL.md)/, Platforms/iOS/ folders for large blocks
+    Use Platforms/[Android](../../../../Mobile/platforms/android/SKILL.md)/, Platforms/iOS/ folders for large blocks
 ```
 
 ## Workflow
 
-1. **MAUI project architecture** — .NET MAUI uses a single-project structure targeting [Android](../../../../Mobile/android/SKILL.md), iOS, Windows, and macOS from one codebase. Solution layout: `App.xaml` (global styles, resource dictionaries, theme definitions), `AppShell.xaml` (navigation container with flyout/tabs), `Pages/` (XAML views with code-behind minimal), `ViewModels/` (business logic with CommunityToolkit.Mvvm), `Models/` (data entities, DTOs), `Services/` (interfaces + implementations registered in DI), `Resources/` (colors, fonts, images, styles), `Platforms/` ([Android](../../../../Mobile/android/SKILL.md) with MainActivity/MainApplication/AndroidManifest, iOS with AppDelegate/Info.plist, Windows, Mac). `MauiProgram.cs` configures the app builder, registers services, and sets up handlers.
+1. **MAUI project architecture** — .NET MAUI uses a single-project structure targeting [Android](../../../../Mobile/platforms/android/SKILL.md), iOS, Windows, and macOS from one codebase. Solution layout: `App.xaml` (global styles, resource dictionaries, theme definitions), `AppShell.xaml` (navigation container with flyout/tabs), `Pages/` (XAML views with code-behind minimal), `ViewModels/` (business logic with CommunityToolkit.Mvvm), `Models/` (data entities, DTOs), `Services/` (interfaces + implementations registered in DI), `Resources/` (colors, fonts, images, styles), `Platforms/` ([Android](../../../../Mobile/platforms/android/SKILL.md) with MainActivity/MainApplication/AndroidManifest, iOS with AppDelegate/Info.plist, Windows, Mac). `MauiProgram.cs` configures the app builder, registers services, and sets up handlers.
 
 2. **Shell navigation** — Shell provides flyout (hamburger menu) and TabBar (bottom tabs) navigation containers. Define structure in `AppShell.xaml`: `FlyoutItem` for menu items, `TabBar` for bottom navigation, `ShellContent` for pages. Register detail routes with `Routing.RegisterRoute("route/name", typeof(Page))` in AppShell constructor. Navigate via `Shell.Current.GoToAsync("route/name?param=value")`. Receive parameters with `[QueryProperty(nameof(Param), "param")]` attribute or `IQueryAttributable` interface. Handle navigation events via `Shell.Current.Navigated` event. Shell provides built-in back button behavior, search handlers, and flyout customization (header template, icon, content templates).
 
@@ -105,13 +105,13 @@ Volume of platform code?
 
 5. **MAUI controls** — `CollectionView` (replaces ListView): vertical/horizontal grids, grouping via `IsGrouped`, `EmptyView` for no-data state, pull-to-refresh with `RefreshView` wrapper. `CarouselView` for swipeable cards with `PeekAreaInsets` and `Loop` properties. `Border` replaces Frame for rounded corners. `FlexLayout` for wrapping layouts. `GraphicsView` for custom 2D drawing. `BlazorWebView` for hybrid Blazor + MAUI apps. Handlers architecture replaces the old Custom Renderers system — each control has a mapper that maps cross-platform properties to native views.
 
-6. **Platform-specific code** — Three approaches: (a) `Platforms/` folder with conditional compilation — code files in `Platforms/[Android](../../../../Mobile/android/SKILL.md)/`, `Platforms/iOS/`, etc. are compiled only for the target platform. (b) `#if [ANDROID](../../../../Mobile/android/SKILL.md)`, `#if IOS`, `#if WINDOWS`, `#if MACCATALYST` preprocessor directives for inline platform branching. (c) Platform handlers in `MauiProgram.cs` via `ConfigureMauiHandlers()` — [customize](../../../../cloud/azure/ai/customize/SKILL.md)/SKILL.md)/SKILL.md) native controls (e.g., remove Entry underline on [Android](../../../../Mobile/android/SKILL.md), set border style on iOS). Map native events to MAUI events. Handler customization is the preferred approach over conditional compilation.
+6. **Platform-specific code** — Three approaches: (a) `Platforms/` folder with conditional compilation — code files in `Platforms/[Android](../../../../Mobile/platforms/android/SKILL.md)/`, `Platforms/iOS/`, etc. are compiled only for the target platform. (b) `#if [ANDROID](../../../../Mobile/platforms/android/SKILL.md)`, `#if IOS`, `#if WINDOWS`, `#if MACCATALYST` preprocessor directives for inline platform branching. (c) Platform handlers in `MauiProgram.cs` via `ConfigureMauiHandlers()` — [customize](../../../../cloud/azure/ai/customize/SKILL.md)/SKILL.md)/SKILL.md) native controls (e.g., remove Entry underline on [Android](../../../../Mobile/platforms/android/SKILL.md), set border style on iOS). Map native events to MAUI events. Handler customization is the preferred approach over conditional compilation.
 
-7. **Deployment and hot reload** — `dotnet build -t:Run -f net8.0-[android](../../../../Mobile/android/SKILL.md)` builds and deploys to [Android](../../../../Mobile/android/SKILL.md) emulator. XAML Hot Reload applies XAML changes instantly during debugging on emulator/simulator (not real-time on physical device). Code signing: [Android](../../../../Mobile/android/SKILL.md) via `.csproj` properties (`AndroidSigningKeyStore`, `AndroidSigningKeyAlias`), iOS via provisioning profile in Info.plist. CI/CD: Azure DevOps or [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions with `dotnet publish` and platform-specific build steps. App Center retired — migrate to [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions or self-hosted. Test Cloud via Xamarin.UITest or Appium.
+7. **Deployment and hot reload** — `dotnet build -t:Run -f net8.0-[android](../../../../Mobile/platforms/android/SKILL.md)` builds and deploys to [Android](../../../../Mobile/platforms/android/SKILL.md) emulator. XAML Hot Reload applies XAML changes instantly during debugging on emulator/simulator (not real-time on physical device). Code signing: [Android](../../../../Mobile/platforms/android/SKILL.md) via `.csproj` properties (`AndroidSigningKeyStore`, `AndroidSigningKeyAlias`), iOS via provisioning profile in Info.plist. CI/CD: Azure DevOps or [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions with `dotnet publish` and platform-specific build steps. App Center retired — migrate to [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions or self-hosted. Test Cloud via Xamarin.UITest or Appium.
 
 ## Platform Compatibility
 
-| Feature | [Android](../../../../Mobile/android/SKILL.md) | iOS | Windows | macOS |
+| Feature | [Android](../../../../Mobile/platforms/android/SKILL.md) | iOS | Windows | macOS |
 |---------|---------|-----|---------|-------|
 | Shell navigation | Full | Full | Flyout only | Flyout only |
 | XAML Hot Reload | Yes | Yes | Yes | Yes |
@@ -133,7 +133,7 @@ Volume of platform code?
 - **Missing linker configuration**: .NET MAUI linker strips unused assemblies. Add `Preserve` attribute or linker config XML for dynamically accessed types.
 - **CollectionView inside ScrollView**: Causes ambiguous scroll direction exception. Use `CollectionView` alone or set `NestedScrollEnabled=false`.
 - **iOS simulator keyboard**: Hardware keyboard on simulator doesn't trigger `Completed` event. Test keyboard on real device.
-- **[Android](../../../../Mobile/android/SKILL.md) WebView mixed content**: `usesCleartextTraffic="true"` in AndroidManifest for HTTP resources in WebView.
+- **[Android](../../../../Mobile/platforms/android/SKILL.md) WebView mixed content**: `usesCleartextTraffic="true"` in AndroidManifest for HTTP resources in WebView.
 - **XAML Hot Reload limitations**: Doesn't work for constructor changes, new page creation, or C# changes — only XAML property edits.
 
 ## Anti-Patterns
@@ -150,11 +150,11 @@ Volume of platform code?
 ### Startup Performance
 MAUI app startup involves: native initialization, XAML parsing, Shell construction, and first-page rendering. Profile with: `dotnet-trace` (event tracing), Xamarin Profiler (legacy), or custom stopwatch logging. Key optimizations:
 
-- **AOT compilation**: Enable `<PublishAot>true</PublishAot>` in .csproj for iOS/[Android](../../../../Mobile/android/SKILL.md) (reduces JIT overhead at startup, but increases binary size ~30%). For .NET 8+ MAUI, AOT is available for iOS via `--aot`.
+- **AOT compilation**: Enable `<PublishAot>true</PublishAot>` in .csproj for iOS/[Android](../../../../Mobile/platforms/android/SKILL.md) (reduces JIT overhead at startup, but increases binary size ~30%). For .NET 8+ MAUI, AOT is available for iOS via `--aot`.
 - **Trim assemblies**: `<TrimMode>full</TrimMode>` with linker configuration. Reduces app size but requires `[DynamicallyAccessedMembers]` attributes on types accessed via reflection.
 - **Lazy initialization**: Defer non-critical services: `Lazy<IService>` or `Task.Run(() => InitializeHeavyService())` after first frame render. Register heavy services as transient or use `Lazy<T>` wrapper.
 - **Shell caching**: Shell caches pages by default — pages remain in memory after navigation. Use `Shell.Current.CachingStrategy = CachingStrategy.RetainElement` judiciously. Prefer `CachingStrategy.RecycleElement` for memory-bound scenarios.
-- **Startup tracing**: Measure with `Activity` or `DiagnosticListener` between `Application.OnStart()` and first frame `Appearing` event. Target: <2s cold start on mid-range [Android](../../../../Mobile/android/SKILL.md)/iOS devices.
+- **Startup tracing**: Measure with `Activity` or `DiagnosticListener` between `Application.OnStart()` and first frame `Appearing` event. Target: <2s cold start on mid-range [Android](../../../../Mobile/platforms/android/SKILL.md)/iOS devices.
 
 ### Memory Management
 - **CollectionView recycling**: Virtualization recycles cell templates — ensure views are data-bound, not created in `ItemTemplate` code-behind. Avoid `DataTemplate` with complex nested layouts.
@@ -195,7 +195,7 @@ MAUI app startup involves: native initialization, XAML parsing, Shell constructi
 ### Project Configuration (.csproj)
 ```xml
 <PropertyGroup>
-    <TargetFrameworks>net8.0-[android](../../../../Mobile/android/SKILL.md);net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
+    <TargetFrameworks>net8.0-[android](../../../../Mobile/platforms/android/SKILL.md);net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
     <OutputType>Exe</OutputType>
     <UseMaui>true</UseMaui>
     <SingleProject>true</SingleProject>
@@ -208,8 +208,8 @@ MAUI app startup involves: native initialization, XAML parsing, Shell constructi
     <Optimize>true</Optimize>
 </PropertyGroup>
 
-<!-- [Android](../../../../Mobile/android/SKILL.md)-specific -->
-<PropertyGroup Condition="$(TargetFramework.Contains('[android](../../../../Mobile/android/SKILL.md)'))">
+<!-- [Android](../../../../Mobile/platforms/android/SKILL.md)-specific -->
+<PropertyGroup Condition="$(TargetFramework.Contains('[android](../../../../Mobile/platforms/android/SKILL.md)'))">
     <ApplicationId>com.company.app</ApplicationId>
     <ApplicationVersion>1</ApplicationVersion>
     <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
@@ -242,7 +242,7 @@ on:
     branches: [main]
 
 jobs:
-  build-[android](../../../../Mobile/android/SKILL.md):
+  build-[android](../../../../Mobile/platforms/android/SKILL.md):
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
@@ -252,20 +252,20 @@ jobs:
           dotnet-version: '8.0.x'
       - name: Restore
         run: dotnet restore
-      - name: Build [Android](../../../../Mobile/android/SKILL.md)
+      - name: Build [Android](../../../../Mobile/platforms/android/SKILL.md)
         run: |
-          dotnet build -f net8.0-[android](../../../../Mobile/android/SKILL.md) --configuration Release `
+          dotnet build -f net8.0-[android](../../../../Mobile/platforms/android/SKILL.md) --configuration Release `
             -p:AndroidSigningKeyStore=release.keystore `
             -p:AndroidSigningKeyAlias=app-alias `
             -p:AndroidSigningKeyPass=${{ secrets.KEY_PASS }} `
             -p:AndroidSigningStorePass=${{ secrets.STORE_PASS }}
       - name: Sign AAB
         run: |
-          java -jar bundletool-all.jar build-bundle --modules=bin/Release/net8.0-[android](../../../../Mobile/android/SKILL.md)/*.aab
+          java -jar bundletool-all.jar build-bundle --modules=bin/Release/net8.0-[android](../../../../Mobile/platforms/android/SKILL.md)/*.aab
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: [android](../../../../Mobile/android/SKILL.md)-release
+          name: [android](../../../../Mobile/platforms/android/SKILL.md)-release
           path: '**/*.aab'
 
   build-ios:
@@ -297,28 +297,28 @@ jobs:
 
 ### App Store & Play Store Submission
 
-**Google Play**: Build AAB with `dotnet publish -f net8.0-[android](../../../../Mobile/android/SKILL.md) -c Release`. Sign with [Android](../../../../Mobile/android/SKILL.md) keystore (`jarsigner` or MSBuild properties). Upload to Google Play Console → Internal Testing → Closed Alpha → Open Beta → Production. Use `bundletool` for AAB testing: `java -jar bundletool.jar install-apks --apks=app.aab`.
+**Google Play**: Build AAB with `dotnet publish -f net8.0-[android](../../../../Mobile/platforms/android/SKILL.md) -c Release`. Sign with [Android](../../../../Mobile/platforms/android/SKILL.md) keystore (`jarsigner` or MSBuild properties). Upload to Google Play Console → Internal Testing → Closed Alpha → Open Beta → Production. Use `bundletool` for AAB testing: `java -jar bundletool.jar install-apks --apks=app.aab`.
 
 **Apple App Store**: Build IPA with `dotnet publish -f net8.0-ios -c Release`. Requires Apple Developer Program membership ($99/year). Distribution via App Store Connect: Xcode Organizer → Distribute App → App Store Connect. Or use `Transporter` app for IPA upload. TestFlight for beta distribution before production release.
 
-**App Center** (retired): Migrate to [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions + App Center Distribute (still available for distribution). Alternative: [Firebase](../../../Databases/nosql/firebase/SKILL.md) App Distribution for [Android](../../../../Mobile/android/SKILL.md) beta testing, TestFlight for iOS.
+**App Center** (retired): Migrate to [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions + App Center Distribute (still available for distribution). Alternative: [Firebase](../../../Databases/nosql/firebase/SKILL.md) App Distribution for [Android](../../../../Mobile/platforms/android/SKILL.md) beta testing, TestFlight for iOS.
 
 ### Versioning Strategy
-- `ApplicationVersion` ([Android](../../../../Mobile/android/SKILL.md)): integer, auto-increment per release.
-- `CFBundleVersion` (iOS): same integer, matches [Android](../../../../Mobile/android/SKILL.md) version code.
+- `ApplicationVersion` ([Android](../../../../Mobile/platforms/android/SKILL.md)): integer, auto-increment per release.
+- `CFBundleVersion` (iOS): same integer, matches [Android](../../../../Mobile/platforms/android/SKILL.md) version code.
 - `ApplicationDisplayVersion` / `CFBundleShortVersionString`: semver string ("1.2.3").
 - Sync via CI: read from `version.txt` or Git tag, inject into .csproj properties via script or `Directory.Build.props`.
 
 ## Platform-Specific Code Examples
 
-### [Android](../../../../Mobile/android/SKILL.md) — Custom Handler (Remove Entry Underline)
+### [Android](../../../../Mobile/platforms/android/SKILL.md) — Custom Handler (Remove Entry Underline)
 ```csharp
 // MauiProgram.cs
 builder.ConfigureMauiHandlers(handlers => {
     handlers.AddHandler<Entry, EntryHandler>(nameof(Entry), (handler) => {
-#if [ANDROID](../../../../Mobile/android/SKILL.md)
-        handler.PlatformView.BackgroundTintList = [Android](../../../../Mobile/android/SKILL.md).Content.Res.ColorStateList.ValueOf(
-            [Android](../../../../Mobile/android/SKILL.md).Graphics.Color.Transparent);
+#if [ANDROID](../../../../Mobile/platforms/android/SKILL.md)
+        handler.PlatformView.BackgroundTintList = [Android](../../../../Mobile/platforms/android/SKILL.md).Content.Res.ColorStateList.ValueOf(
+            [Android](../../../../Mobile/platforms/android/SKILL.md).Graphics.Color.Transparent);
 #endif
     });
 });
@@ -373,13 +373,13 @@ public interface IDeviceInfo
     string GetOSVersion();
 }
 
-// [Android](../../../../Mobile/android/SKILL.md) implementation (Platforms/[Android](../../../../Mobile/android/SKILL.md)/)
+// [Android](../../../../Mobile/platforms/android/SKILL.md) implementation (Platforms/[Android](../../../../Mobile/platforms/android/SKILL.md)/)
 public class AndroidDeviceInfo : IDeviceInfo
 {
     public string GetDeviceName() =>
-        [Android](../../../../Mobile/android/SKILL.md).OS.Build.Model ?? "Unknown";
+        [Android](../../../../Mobile/platforms/android/SKILL.md).OS.Build.Model ?? "Unknown";
     public string GetOSVersion() =>
-        [Android](../../../../Mobile/android/SKILL.md).OS.Build.VERSION.Release ?? "Unknown";
+        [Android](../../../../Mobile/platforms/android/SKILL.md).OS.Build.VERSION.Release ?? "Unknown";
 }
 
 // iOS implementation (Platforms/iOS/)
@@ -392,7 +392,7 @@ public class IosDeviceInfo : IDeviceInfo
 }
 
 // Registration in MauiProgram.cs
-#if [ANDROID](../../../../Mobile/android/SKILL.md)
+#if [ANDROID](../../../../Mobile/platforms/android/SKILL.md)
 builder.Services.AddSingleton<IDeviceInfo, AndroidDeviceInfo>();
 #elif IOS
 builder.Services.AddSingleton<IDeviceInfo, IosDeviceInfo>();
@@ -406,7 +406,7 @@ builder.Services.AddSingleton<IDeviceInfo, IosDeviceInfo>();
 - **Direct ObservableCollection manipulation**: Adding/removing items on background thread crashes. Use `MainThread.BeginInvokeOnMainThread(() => collection.Add(item))`.
 - **Overusing Effects**: Effects are procedural and harder to override. Use Handlers for MAUI-native customization, Effects only for pre-MAUI migration code.
 - **Ignoring linker configuration**: Linker strips unused IL. Types accessed via reflection (Sqlite, serialization) must be preserved. Use `[Preserve]` attribute or linker XML configuration.
-- **Missing `#if` on platform APIs**: `[Android](../../../../Mobile/android/SKILL.md).Graphics.Color` in shared code compiles on all targets but throws on iOS. Always guard platform-specific types with `#if [ANDROID](../../../../Mobile/android/SKILL.md)`, `#if IOS`.
+- **Missing `#if` on platform APIs**: `[Android](../../../../Mobile/platforms/android/SKILL.md).Graphics.Color` in shared code compiles on all targets but throws on iOS. Always guard platform-specific types with `#if [ANDROID](../../../../Mobile/platforms/android/SKILL.md)`, `#if IOS`.
 - **Nested layouts in ListView**: ListView/CollectionView with complex nested layouts (Grid in StackLayout in Frame) kills scroll performance. Flatten hierarchy for list items.
 - **No `x:DataType` on DataTemplate**: Reflection-based bindings in lists are 3-5x slower than compiled bindings. Always set `x:DataType` on ItemTemplate DataTemplate.
 - **Storing secrets in code**: API keys, connection strings in source code. Use Azure Key [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md), [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Secrets, or `Secrets.json` (user secrets in development). Never [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) secrets.
@@ -415,8 +415,8 @@ builder.Services.AddSingleton<IDeviceInfo, IosDeviceInfo>();
 ## Configuration Reference
 
 ```xml
-<!-- .csproj — [Android](../../../../Mobile/android/SKILL.md) signing -->
-<PropertyGroup Condition="$(TargetFramework.Contains('[android](../../../../Mobile/android/SKILL.md)'))">
+<!-- .csproj — [Android](../../../../Mobile/platforms/android/SKILL.md) signing -->
+<PropertyGroup Condition="$(TargetFramework.Contains('[android](../../../../Mobile/platforms/android/SKILL.md)'))">
   <AndroidSigningKeyStore>release.keystore</AndroidSigningKeyStore>
   <AndroidSigningKeyAlias>app-alias</AndroidSigningKeyAlias>
 </PropertyGroup>
@@ -436,7 +436,7 @@ builder.Services.AddSingleton<IDeviceInfo, IosDeviceInfo>();
   - ../../../../Global_References/Software_Engineering_and_Other/maui-mvvm.md — MAUI MVVM with CommunityToolkit
   - ../../../../Global_References/Software_Engineering_and_Other/maui-structure.md — MAUI Project Structure
 ## Handoff
-Hand off to iOS/[Android](../../../../Mobile/android/SKILL.md) native skills when platform handler customization requires deep UIKit or [Android](../../../../Mobile/android/SKILL.md) Views API knowledge.
+Hand off to iOS/[Android](../../../../Mobile/platforms/android/SKILL.md) native skills when platform handler customization requires deep UIKit or [Android](../../../../Mobile/platforms/android/SKILL.md) Views API knowledge.
 ## Implementation Patterns
 
 ### Observer Pattern for Event Handling

@@ -290,7 +290,7 @@ pnpm add -D [typescript](../../../Frontend/common/typescript/SKILL.md) @types/no
 **Flutter mobile app:**
 ```bash
 flutter create --org com.mycompany --project-name my_app \
-  --platforms=ios,[android](../../../../Mobile/android/SKILL.md),web my_app
+  --platforms=ios,[android](../../../../Mobile/platforms/android/SKILL.md),web my_app
 cd my_app
 flutter pub add go_router riverpod flutter_secure_storage
 ```

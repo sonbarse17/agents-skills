@@ -292,7 +292,7 @@ State: Java stack detected with Quarkus (quarkus in build config).
   Route: java-quarkus
   Reason: "Quarkus backend detected."
 
-State: Kotlin stack detected (kotlin in build config, no [Android](../../Mobile/android/SKILL.md)).
+State: Kotlin stack detected (kotlin in build config, no [Android](../../Mobile/platforms/android/SKILL.md)).
   Route: backend-kotlin-architecture
   Reason: "Kotlin backend detected."
 
@@ -528,9 +528,9 @@ State: User says iOS, Swift, SwiftUI, iPhone, iPad, Xcode.
   Route: mobile-ios
   Reason: "iOS native development request."
 
-State: User says [Android](../../Mobile/android/SKILL.md), Kotlin, Jetpack Compose, Google Play.
-  Route: mobile-[android](../../Mobile/android/SKILL.md)
-  Reason: "[Android](../../Mobile/android/SKILL.md) native development request."
+State: User says [Android](../../Mobile/platforms/android/SKILL.md), Kotlin, Jetpack Compose, Google Play.
+  Route: mobile-[android](../../Mobile/platforms/android/SKILL.md)
+  Reason: "[Android](../../Mobile/platforms/android/SKILL.md) native development request."
 
 State: User says Flutter, Dart, cross-platform mobile, widgets, pubspec.
   Route: mobile-flutter
@@ -541,11 +541,11 @@ State: User says React Native, Expo, RN, react-native, Hermes.
   Reason: "React Native cross-platform development request."
 
 State: User asks about mobile pattern, mobile architecture, MVVM, MVI, mobile project structure, Clean Architecture mobile.
-  Route: [mobile-patterns](../../Mobile/patterns/SKILL.md)
+  Route: [mobile-patterns](../../Mobile/common/patterns/SKILL.md)
   Reason: "Mobile architecture pattern request."
 
 State: User asks about mobile testing, widget test, component test mobile, golden test, XCUITest, Espresso, Detox.
-  Route: [mobile-testing](../../Mobile/testing/SKILL.md)
+  Route: [mobile-testing](../../Mobile/common/testing/SKILL.md)
   Reason: "Mobile testing strategy request."
 
 State: User asks about mobile performance, app slow, jank, frame drop, memory leak mobile, app startup.
@@ -557,7 +557,7 @@ State: User asks about mobile security, secure storage, certificate pinning, OWA
   Reason: "Mobile security implementation request."
 
 State: User asks about mobile networking, API client mobile, offline first, GraphQL mobile, REST client, caching mobile, pagination.
-  Route: [mobile-networking](../../Mobile/networking/SKILL.md)
+  Route: [mobile-networking](../../Mobile/common/networking/SKILL.md)
   Reason: "Mobile networking layer request."
 
 State: User asks about mobile storage, local database, SQLite mobile, Room, Core Data, Hive, Isar, file storage mobile.
@@ -565,7 +565,7 @@ State: User asks about mobile storage, local database, SQLite mobile, Room, Core
   Reason: "Mobile local storage request."
 
 State: User asks about mobile deploy, TestFlight, App Store, Play Store, mobile CI/CD, code signing.
-  Route: [mobile-deployment](../../Mobile/deployment/SKILL.md)
+  Route: [mobile-deployment](../../Mobile/common/deployment/SKILL.md)
   Reason: "Mobile app deployment request."
 
 State: User asks about push notifications, APNs, FCM, notification payload.
@@ -721,7 +721,7 @@ State: User asks about web components, custom elements, shadow DOM, HTML templat
   Reason: "Web components request."
 
 State: User asks about AR/VR, augmented reality, virtual reality, WebXR.
-  Route: [mobile-ar-vr](../../Mobile/ar-vr/SKILL.md)
+  Route: [mobile-ar-vr](../../Mobile/features/ar-vr/SKILL.md)
   Reason: "AR/VR request."
 
 State: User asks about [Nomad](../../containers-orchestration/nomad/other/nomad/SKILL.md), HashiCorp [Nomad](../../containers-orchestration/nomad/other/nomad/SKILL.md), job scheduling.
@@ -1187,7 +1187,7 @@ State: User asks about .NET MAUI, MAUI app, Xamarin.
   Reason: ".NET MAUI request."
 
 State: User asks about deep linking, universal links, app links.
-  Route: [mobile-deep-linking](../../Mobile/deep-linking/SKILL.md)
+  Route: [mobile-deep-linking](../../Mobile/features/deep-linking/SKILL.md)
   Reason: "Deep linking request."
 
 State: User asks about offline-first, offline sync, connectivity.
@@ -1514,7 +1514,7 @@ Read project files:
 - pyproject.toml: if django present -> [python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-django
 - pom.xml -> backend-spring-boot-architecture; if quarkus present -> java-quarkus; if [micronaut](../../Software_Engineering_and_Other/Backend/frameworks/micronaut/SKILL.md) present -> java-[micronaut](../../Software_Engineering_and_Other/Backend/frameworks/micronaut/SKILL.md)
 - build.gradle -> backend-spring-boot-architecture; if kotlin -> backend-kotlin-architecture
-- build.gradle.kts: if kotlin and [android](../../Mobile/android/SKILL.md) -> mobile-[android](../../Mobile/android/SKILL.md); if kotlin only -> backend-kotlin-architecture
+- build.gradle.kts: if kotlin and [android](../../Mobile/platforms/android/SKILL.md) -> mobile-[android](../../Mobile/platforms/android/SKILL.md); if kotlin only -> backend-kotlin-architecture
 - *.csproj or *.sln -> dotnet-architecture
 - composer.json: if symfony in require -> php-symfony; if laravel in require -> [php-laravel](../../Software_Engineering_and_Other/Backend/frameworks/laravel/SKILL.md); if laminas/zend -> [php-zend](../../Software_Engineering_and_Other/Backend/frameworks/zend/SKILL.md); else -> [php-pure](../../Software_Engineering_and_Other/Backend/frameworks/pure/SKILL.md)
 - Package.swift: if vapor in deps -> swift-vapor
@@ -1541,7 +1541,7 @@ Read project files:
 - pubspec.yaml -> mobile-flutter
 - package.json: if react-native present -> react-native
 - Package.swift or *.xcworkspace -> mobile-ios
-- build.gradle.kts / settings.gradle.kts with kotlin -> mobile-[android](../../Mobile/android/SKILL.md)
+- build.gradle.kts / settings.gradle.kts with kotlin -> mobile-[android](../../Mobile/platforms/android/SKILL.md)
 - None detected -> skip mobile stack
 
 ### Step 6: Detect Desktop Stack

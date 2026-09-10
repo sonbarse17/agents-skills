@@ -36,7 +36,7 @@ Implement mobile security controls covering data-at-rest encryption, network sec
 User request includes: `mobile security`, `secure storage`, `certificate pinning`, `ssl pinning`, `mobile auth`, `biometric`, `encrypt mobile`, `proguard`, `obfuscate`, `root detection`, `jailbreak detection`, `owasp mobile`.
 
 ### Input Context
-- Platform (iOS, [Android](../../../Mobile/android/SKILL.md), Flutter, React Native)
+- Platform (iOS, [Android](../../../Mobile/platforms/android/SKILL.md), Flutter, React Native)
 - Security requirements (data classification, compliance)
 - Auth mechanism (JWT, OAuth, biometric)
 - Storage sensitivity level
@@ -74,7 +74,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 │  cleartext traffic, anti-phishing                │
 ├─────────────────────────────────────────────────┤
 │            Data at Rest Layer                     │
-│  Keychain (iOS), EncryptedSharedPrefs ([Android](../../../Mobile/android/SKILL.md)), │
+│  Keychain (iOS), EncryptedSharedPrefs ([Android](../../../Mobile/platforms/android/SKILL.md)), │
 │  flutter_secure_storage, SQLCipher, backup       │
 │  exclusion                                       │
 ├─────────────────────────────────────────────────┤
@@ -117,7 +117,7 @@ What data does the app handle?
 Identify data classification levels, threat vectors (reverse engineering, network interception, device theft), and compliance requirements.
 
 ### Step 2: Secure Data at Rest
-Use platform-native secure storage: iOS Keychain, [Android](../../../Mobile/android/SKILL.md) EncryptedSharedPreferences, flutter_secure_storage, or react-native-keychain.
+Use platform-native secure storage: iOS Keychain, [Android](../../../Mobile/platforms/android/SKILL.md) EncryptedSharedPreferences, flutter_secure_storage, or react-native-keychain.
 
 ### Step 3: Configure Network Security
 Implement certificate pinning with backup pins, disable cleartext traffic, and validate TLS connections.
@@ -220,7 +220,7 @@ SecItemAdd(query as CFDictionary, nil)
 ```
 
 ```kotlin
-// [Android](../../../Mobile/android/SKILL.md): EncryptedSharedPreferences
+// [Android](../../../Mobile/platforms/android/SKILL.md): EncryptedSharedPreferences
 val prefs = EncryptedSharedPreferences.create(
     "secure_prefs",
     masterKey,
@@ -244,7 +244,7 @@ await Keychain.setGenericPassword('token', token);
 ## Network Security
 
 ```xml
-<!-- [Android](../../../Mobile/android/SKILL.md): network_security_config.xml -->
+<!-- [Android](../../../Mobile/platforms/android/SKILL.md): network_security_config.xml -->
 <[network-security](../../../containers-orchestration/common/other/network-security/SKILL.md)-config>
     <domain-config cleartextTrafficPermitted="false">
         <domain includeSubdomains="true">api.example.com</domain>
@@ -264,9 +264,9 @@ await Keychain.setGenericPassword('token', token);
 ```xml
 <!-- AndroidManifest.xml — reference config -->
 <application
-    [android](../../../Mobile/android/SKILL.md):networkSecurityConfig="@xml/network_security_config"
-    [android](../../../Mobile/android/SKILL.md):allowBackup="false"
-    [android](../../../Mobile/android/SKILL.md):fullBackupContent="false">
+    [android](../../../Mobile/platforms/android/SKILL.md):networkSecurityConfig="@xml/network_security_config"
+    [android](../../../Mobile/platforms/android/SKILL.md):allowBackup="false"
+    [android](../../../Mobile/platforms/android/SKILL.md):fullBackupContent="false">
 ```
 
 ```swift
@@ -310,7 +310,7 @@ class PinningDelegate: NSObject, URLSessionDelegate {
 
 ### SSL Pinning — Third-Party Libraries
 ```kotlin
-// [Android](../../../Mobile/android/SKILL.md): OkHttp CertificatePinner
+// [Android](../../../Mobile/platforms/android/SKILL.md): OkHttp CertificatePinner
 val certificatePinner = CertificatePinner.Builder()
   .add("api.example.com", "sha256/AAAA...")
   .add("api.example.com", "sha256/BBBB...")
@@ -403,7 +403,7 @@ class BiometricService {
 ```
 
 ```kotlin
-// [Android](../../../Mobile/android/SKILL.md) — BiometricPrompt
+// [Android](../../../Mobile/platforms/android/SKILL.md) — BiometricPrompt
 class BiometricHelper(private val activity: FragmentActivity) {
   private val executor = ContextCompat.getMainExecutor(activity)
 
@@ -510,7 +510,7 @@ class KeychainManager {
 
 ## Data at Rest — SQLCipher
 ```kotlin
-// [Android](../../../Mobile/android/SKILL.md) — Encrypted database with SQLCipher
+// [Android](../../../Mobile/platforms/android/SKILL.md) — Encrypted database with SQLCipher
 import net.zetetic.database.sqlcipher.SQLiteDatabase
 import net.zetetic.database.sqlcipher.SupportFactory
 
@@ -538,16 +538,16 @@ try store.addPersistentStore(
 
 ## Code Protection
 
-### [Android](../../../Mobile/android/SKILL.md) ProGuard / R8
+### [Android](../../../Mobile/platforms/android/SKILL.md) ProGuard / R8
 ```gradle
 // app/build.gradle.kts
-[android](../../../Mobile/android/SKILL.md) {
+[android](../../../Mobile/platforms/android/SKILL.md) {
   buildTypes {
     release {
       isMinifyEnabled = true
       isShrinkResources = true
       proguardFiles(
-        getDefaultProguardFile("proguard-[android](../../../Mobile/android/SKILL.md)-optimize.txt"),
+        getDefaultProguardFile("proguard-[android](../../../Mobile/platforms/android/SKILL.md)-optimize.txt"),
         "proguard-rules.pro"
       )
     }
@@ -564,7 +564,7 @@ try store.addPersistentStore(
 ```
 
 ```yaml
-# Flutter: build.gradle [android](../../../Mobile/android/SKILL.md) settings
+# Flutter: build.gradle [android](../../../Mobile/platforms/android/SKILL.md) settings
 --obfuscate
 --split-debug-info=build/debug-info
 ```
@@ -583,7 +583,7 @@ func isDebuggerAttached() -> Bool {
 
 ### App Integrity Verification
 ```kotlin
-// [Android](../../../Mobile/android/SKILL.md) — Play Integrity API
+// [Android](../../../Mobile/platforms/android/SKILL.md) — Play Integrity API
 class IntegrityVerifier(private val context: Context) {
   private val integrityManager = IntegrityManagerFactory.create(context)
 
@@ -635,7 +635,7 @@ UIPasteboard.general.changeCount  // Monitor for clipboard changes
 ```
 
 ```kotlin
-// [Android](../../../Mobile/android/SKILL.md) — disable clipboard for sensitive TextFields
+// [Android](../../../Mobile/platforms/android/SKILL.md) — disable clipboard for sensitive TextFields
 // Disable copy/paste on EditText
 editText.customSelectionActionModeCallback = object : ActionMode.Callback {
   override fun onActionItemClicked(mode: ActionMode, item: MenuItem): Boolean = true
@@ -654,11 +654,11 @@ clipboard.clearPrimaryClip()
 
 ### Backup Exclusion
 ```xml
-<!-- [Android](../../../Mobile/android/SKILL.md): disable backup entirely for sensitive apps -->
+<!-- [Android](../../../Mobile/platforms/android/SKILL.md): disable backup entirely for sensitive apps -->
 <application ...
-    [android](../../../Mobile/android/SKILL.md):allowBackup="false"
-    [android](../../../Mobile/android/SKILL.md):fullBackupContent="false"
-    [android](../../../Mobile/android/SKILL.md):dataExtractionRules="@xml/data_extraction_rules">
+    [android](../../../Mobile/platforms/android/SKILL.md):allowBackup="false"
+    [android](../../../Mobile/platforms/android/SKILL.md):fullBackupContent="false"
+    [android](../../../Mobile/platforms/android/SKILL.md):dataExtractionRules="@xml/data_extraction_rules">
 
 <!-- Or exclude only sensitive files -->
 <full-backup-content>
@@ -678,7 +678,7 @@ try url.setResourceValues(resourceValues)
 ## Common Pitfalls
 
 - **Hardcoded secrets**: API keys, tokens, and passwords compiled into the binary can be extracted with string search tools. Always fetch from a secure server or use device-native storage.
-- **Insufficient backup exclusion**: Sensitive data in UserDefaults or SharedPreferences is included in device backups by default. Mark sensitive data with `NSURLIsExcludedFromBackupKey` (iOS) or `[android](../../../Mobile/android/SKILL.md):allowBackup="false"`.
+- **Insufficient backup exclusion**: Sensitive data in UserDefaults or SharedPreferences is included in device backups by default. Mark sensitive data with `NSURLIsExcludedFromBackupKey` (iOS) or `[android](../../../Mobile/platforms/android/SKILL.md):allowBackup="false"`.
 - **Pinning without backup pins**: If the primary certificate expires or is rotated without a backup pin, all API traffic fails. Always include at least 2 backup pins with staggered expiration.
 - **Biometric without fallback**: If biometric authentication fails (wet fingers, Face ID mismatch), users must have a fallback (device PIN/password) or they are locked out.
 - **Overlooking third-party SDKs**: Third-party analytics, crash reporting, and ad SDKs can leak data through their own network calls. Review each SDK's data practices before integration.
@@ -713,18 +713,18 @@ try url.setResourceValues(resourceValues)
 
 | Tool | Category | Platform |
 |------|----------|----------|
-| MobSF | Static + dynamic analysis | iOS, [Android](../../../Mobile/android/SKILL.md) |
-| Burp Suite | Network interception testing | iOS, [Android](../../../Mobile/android/SKILL.md) |
-| OWASP ZAP | Automated security scanning | iOS, [Android](../../../Mobile/android/SKILL.md) |
-| Frida | Runtime instrumentation | iOS, [Android](../../../Mobile/android/SKILL.md) |
-| Objection | Mobile exploration | iOS, [Android](../../../Mobile/android/SKILL.md) |
-| Drozer | [Android](../../../Mobile/android/SKILL.md) security assessment | [Android](../../../Mobile/android/SKILL.md) |
+| MobSF | Static + dynamic analysis | iOS, [Android](../../../Mobile/platforms/android/SKILL.md) |
+| Burp Suite | Network interception testing | iOS, [Android](../../../Mobile/platforms/android/SKILL.md) |
+| OWASP ZAP | Automated security scanning | iOS, [Android](../../../Mobile/platforms/android/SKILL.md) |
+| Frida | Runtime instrumentation | iOS, [Android](../../../Mobile/platforms/android/SKILL.md) |
+| Objection | Mobile exploration | iOS, [Android](../../../Mobile/platforms/android/SKILL.md) |
+| Drozer | [Android](../../../Mobile/platforms/android/SKILL.md) security assessment | [Android](../../../Mobile/platforms/android/SKILL.md) |
 | Needle | iOS security testing | iOS |
 | Snyk / Dependabot | SCA (supply chain) | Cross-platform |
 | Checkmarx / SonarQube | SAST (static analysis) | Cross-platform |
 | Apple Security Bounty | Bug bounty platform | iOS |
-| Google Play Security Rewards | Bug bounty platform | [Android](../../../Mobile/android/SKILL.md) |
-| Selenium / Appium | Security UI automation | iOS, [Android](../../../Mobile/android/SKILL.md) |
+| Google Play Security Rewards | Bug bounty platform | [Android](../../../Mobile/platforms/android/SKILL.md) |
+| Selenium / Appium | Security UI automation | iOS, [Android](../../../Mobile/platforms/android/SKILL.md) |
 
 ## Rules
 

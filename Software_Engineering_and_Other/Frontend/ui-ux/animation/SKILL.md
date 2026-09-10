@@ -499,7 +499,7 @@ The browser promotes elements to GPU compositor layers when `will-change`, 3D tr
 10. Stagger animated elements with 50-100ms delay between each, never all at once.
 11. Use `transform-origin` correctly for scale/rotate animations -- default is center.
 12. Avoid animating `box-shadow` -- prefer pseudo-element opacity trick for performance.
-13. Test on a mid-range [Android](../../../../Mobile/android/SKILL.md) device (Moto G4 equivalent) before shipping.
+13. Test on a mid-range [Android](../../../../Mobile/platforms/android/SKILL.md) device (Moto G4 equivalent) before shipping.
 14. GSAP ScrollTrigger animations must use `scrub: 1` or `toggleActions` for smooth scroll-linked motion.
 15. Never animate elements that are currently being measured by ResizeObserver or IntersectionObserver.
 16. Validate Lottie JSON from untrusted sources before rendering with `lotti-web`.

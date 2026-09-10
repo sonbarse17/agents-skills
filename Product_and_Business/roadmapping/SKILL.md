@@ -64,7 +64,7 @@ NOW (Q2 2026)                    NEXT (Q3 2026)                  LATER (Q4 2026-
 │   └── 99.99% uptime            │   └── API catalog              │   └── Recommendations
 ├── Developer Experience         ├── Mobile SDK Suite             ├── Global Expansion
 │   ├── Self-service portal      │   ├── iOS SDK v2               │   ├── EU region
-│   ├── SDKs for TS/[Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/Go    │   ├── [Android](../../Mobile/android/SKILL.md) SDK v2           │   ├── APAC region
+│   ├── SDKs for TS/[Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/Go    │   ├── [Android](../../Mobile/platforms/android/SKILL.md) SDK v2           │   ├── APAC region
 │   └── Interactive docs         │   └── React Native             │   └── Local compliance
 └── Enterprise Features          └── Advanced Analytics           └── Ecosystem Platform
     ├── SSO/SAML                     ├── Custom [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)            ├── Partner marketplace

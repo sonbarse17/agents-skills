@@ -266,7 +266,7 @@ Lottie:
 2. Export as JSON using Bodymovin
 3. Optimize: reduce keyframes, remove unused assets
 4. Test on target devices (performance, rendering)
-5. Integrate using Lottie-web, Lottie-iOS, or Lottie-[Android](../../Mobile/android/SKILL.md)
+5. Integrate using Lottie-web, Lottie-iOS, or Lottie-[Android](../../Mobile/platforms/android/SKILL.md)
 
 Rive:
 1. Design animation in Rive editor
@@ -441,7 +441,7 @@ Key insight: Design systems must include motion, not just visual components
 Impact: Satisfaction score +22%, animation dev time -40%
 
 ### Case Study 3: Lottie Optimization for Mobile Performance
-A mobile app used Lottie animations for onboarding illustrations but users experienced jank on mid-range [Android](../../Mobile/android/SKILL.md) devices. Analysis showed Lottie files were averaging 120KB each with 2000+ keyframes. After optimization — reducing to 6 keyframes per animation, removing unused layers, using solid fills instead of gradients, and converting complex shapes to simpler paths — file sizes dropped to 18KB average and frame rate improved from 30fps to 58fps on target devices.
+A mobile app used Lottie animations for onboarding illustrations but users experienced jank on mid-range [Android](../../Mobile/platforms/android/SKILL.md) devices. Analysis showed Lottie files were averaging 120KB each with 2000+ keyframes. After optimization — reducing to 6 keyframes per animation, removing unused layers, using solid fills instead of gradients, and converting complex shapes to simpler paths — file sizes dropped to 18KB average and frame rate improved from 30fps to 58fps on target devices.
 
 Method: Lottie file optimization [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) and reconstruction
 Key insight: Animation file size and complexity directly impact runtime performance
@@ -616,7 +616,7 @@ Does the animation need interactivity?
        ├── Yes → Rive (state machine) for interactive animated components
        └── No  → CSS transitions/animations for simple micro-interactions
             Developer handoff format?
-            ├── Lottie → JSON file for Lottie-web, Lottie-iOS, Lottie-[Android](../../Mobile/android/SKILL.md)
-            └── Rive → .riv file with runtimes for web, iOS, [Android](../../Mobile/android/SKILL.md)
+            ├── Lottie → JSON file for Lottie-web, Lottie-iOS, Lottie-[Android](../../Mobile/platforms/android/SKILL.md)
+            └── Rive → .riv file with runtimes for web, iOS, [Android](../../Mobile/platforms/android/SKILL.md)
 `
 

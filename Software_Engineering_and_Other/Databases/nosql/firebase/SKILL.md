@@ -42,7 +42,7 @@ User request includes: `Firebase`, `Firestore`, `Firebase Auth`, `Cloud Function
 
 ### Input Context
 - All Firebase capabilities needed (DB, auth, storage, functions, hosting)
-- Target platforms (web, iOS, [Android](../../../../Mobile/android/SKILL.md), Node.js admin)
+- Target platforms (web, iOS, [Android](../../../../Mobile/platforms/android/SKILL.md), Node.js admin)
 - Estimated user/request scale
 - Auth providers (email, Google, Apple, custom)
 

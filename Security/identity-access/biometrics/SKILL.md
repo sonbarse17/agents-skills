@@ -39,7 +39,7 @@ Guide for implementing biometric authentication (Face ID, Touch ID, fingerprint)
 Phrases: "biometrics", "Face ID", "Touch ID", "fingerprint", "fingerprint auth", "biometric auth", "face unlock", "local authentication", "biometric prompt", "device credential"
 
 ### Input Context
-- Target platforms (iOS, [Android](../../../Mobile/android/SKILL.md), or cross-platform)
+- Target platforms (iOS, [Android](../../../Mobile/platforms/android/SKILL.md), or cross-platform)
 - Sensitivity level of protected operations
 - Existing auth system (if any)
 - UX requirements for lockout and fallback
@@ -67,7 +67,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 What operation are you protecting?
 ├── App unlock (every launch) → Biometric + device credential
 │   iOS: LAContext(.deviceOwnerAuthentication)
-│   [Android](../../../Mobile/android/SKILL.md): BiometricPrompt with DEVICE_CREDENTIAL
+│   [Android](../../../Mobile/platforms/android/SKILL.md): BiometricPrompt with DEVICE_CREDENTIAL
 ├── High-sensitivity (payments, passwords, personal data)
 │   → Class 3 (Strong) biometric required
 │   Fallback to device credential
@@ -75,13 +75,13 @@ What operation are you protecting?
 │   → Class 2 (Weak) biometric acceptable
 │   No fallback needed — just require re-auth
 └── Data decryption (read stored secrets)
-    → Biometric key ([Android](../../../Mobile/android/SKILL.md): setUserAuthenticationRequired, iOS: biometryCurrentSet)
+    → Biometric key ([Android](../../../Mobile/platforms/android/SKILL.md): setUserAuthenticationRequired, iOS: biometryCurrentSet)
     Key invalidated on biometric enrollment change
 ```
 
 ### Biometric Class Selection
 ```
-Which [Android](../../../Mobile/android/SKILL.md) biometric class?
+Which [Android](../../../Mobile/platforms/android/SKILL.md) biometric class?
 ├── Class 3 (Strong) → BIOMETRIC_STRONG
 │   Pin/pattern + hardware-backed biometric
 │   Used for: payments, auth tokens, PII
@@ -94,21 +94,21 @@ Which [Android](../../../Mobile/android/SKILL.md) biometric class?
 
 ## Workflow
 
-1. **Biometric type detection** — Three categories of biometric authentication with varying security levels. Class 3 (Strong): Face ID (iPhone X+), Touch ID (iPhone 5s+), Pixel Imprint, ultrasonic fingerprint. Class 2 (Weak): face unlock on budget [Android](../../../Mobile/android/SKILL.md) devices, iris scanner. Class 1: convenience face unlock. [Android](../../../Mobile/android/SKILL.md): Check with `BiometricManager.canAuthenticate(BIOMETRIC_STRONG)` vs `BIOMETRIC_WEAK`. iOS: `LAContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics)` — Face ID on devices with TrueDepth camera, Touch ID on devices with Touch ID sensor. Device credential (PIN, pattern, password) is always available as fallback and is considered a biometric alternative on iOS (`deviceOwnerAuthentication`), but not equivalent to biometric on [Android](../../../Mobile/android/SKILL.md) (`DEVICE_CREDENTIAL` flag).
+1. **Biometric type detection** — Three categories of biometric authentication with varying security levels. Class 3 (Strong): Face ID (iPhone X+), Touch ID (iPhone 5s+), Pixel Imprint, ultrasonic fingerprint. Class 2 (Weak): face unlock on budget [Android](../../../Mobile/platforms/android/SKILL.md) devices, iris scanner. Class 1: convenience face unlock. [Android](../../../Mobile/platforms/android/SKILL.md): Check with `BiometricManager.canAuthenticate(BIOMETRIC_STRONG)` vs `BIOMETRIC_WEAK`. iOS: `LAContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics)` — Face ID on devices with TrueDepth camera, Touch ID on devices with Touch ID sensor. Device credential (PIN, pattern, password) is always available as fallback and is considered a biometric alternative on iOS (`deviceOwnerAuthentication`), but not equivalent to biometric on [Android](../../../Mobile/platforms/android/SKILL.md) (`DEVICE_CREDENTIAL` flag).
 
-2. **Biometric availability check** — Before showing a biometric prompt, check: (a) Is biometric hardware available? (hardware present). (b) Is biometric enrolled? (user has registered at least one fingerprint/face). (c) Is device credential configured? (PIN/password set — required fallback). (d) Are there any transient issues? (security update required, sensor dirty, too many attempts — lockout). Handle each failure case with a specific user-facing message. On [Android](../../../Mobile/android/SKILL.md), `BiometricManager` returns distinct error codes. On iOS, `LAContext.canEvaluatePolicy` returns `NSError` with `LAError` codes. Never show biometric prompt without first checking availability.
+2. **Biometric availability check** — Before showing a biometric prompt, check: (a) Is biometric hardware available? (hardware present). (b) Is biometric enrolled? (user has registered at least one fingerprint/face). (c) Is device credential configured? (PIN/password set — required fallback). (d) Are there any transient issues? (security update required, sensor dirty, too many attempts — lockout). Handle each failure case with a specific user-facing message. On [Android](../../../Mobile/platforms/android/SKILL.md), `BiometricManager` returns distinct error codes. On iOS, `LAContext.canEvaluatePolicy` returns `NSError` with `LAError` codes. Never show biometric prompt without first checking availability.
 
-3. **Authentication prompt flow** — Flow: user triggers protected action -> check availability -> if biometric available -> show biometric prompt with reason string -> user authenticates -> on success -> grant access -> on failure -> allow retry (up to 5 attempts) -> on 5th failure -> lockout -> force device credential. If biometric not available at start -> fall through to device credential. The reason string is mandatory on both platforms and displayed prominently. On iOS, `localizedReason` is shown in the Face ID dialog. On [Android](../../../Mobile/android/SKILL.md), `setTitle` and `setSubtitle` are shown in the system prompt. After successful authentication, the app receives a callback with (optionally) a `CryptoObject` for decryption.
+3. **Authentication prompt flow** — Flow: user triggers protected action -> check availability -> if biometric available -> show biometric prompt with reason string -> user authenticates -> on success -> grant access -> on failure -> allow retry (up to 5 attempts) -> on 5th failure -> lockout -> force device credential. If biometric not available at start -> fall through to device credential. The reason string is mandatory on both platforms and displayed prominently. On iOS, `localizedReason` is shown in the Face ID dialog. On [Android](../../../Mobile/platforms/android/SKILL.md), `setTitle` and `setSubtitle` are shown in the system prompt. After successful authentication, the app receives a callback with (optionally) a `CryptoObject` for decryption.
 
-4. **Secure storage with biometric protection** — Store sensitive data (auth tokens, encryption keys, passwords) in platform secure stores with biometric access control. [Android](../../../Mobile/android/SKILL.md): EncryptedSharedPreferences backed by [Android](../../../Mobile/android/SKILL.md) Keystore — set `setUserAuthenticationRequired(true)` on the master key to require biometric before reading. Or use Keystore `SecretKey` with `setUserAuthenticationRequired(true)` and encrypt/decrypt data through `CryptoObject`. `setInvalidatedByBiometricEnrollment(true)` ensures key is destroyed if new biometric is enrolled (prevents stolen biometric from accessing old data). iOS: Keychain with `SecAccessControlCreateWithFlags` using `biometryCurrentSet` — item is only accessible after biometric authentication and is invalidated on biometric enrollment change. For "cache after auth" pattern, use `setUserAuthenticationValidityDurationSeconds` ([Android](../../../Mobile/android/SKILL.md)) or `kSecUseAuthenticationUIFallback` (iOS).
+4. **Secure storage with biometric protection** — Store sensitive data (auth tokens, encryption keys, passwords) in platform secure stores with biometric access control. [Android](../../../Mobile/platforms/android/SKILL.md): EncryptedSharedPreferences backed by [Android](../../../Mobile/platforms/android/SKILL.md) Keystore — set `setUserAuthenticationRequired(true)` on the master key to require biometric before reading. Or use Keystore `SecretKey` with `setUserAuthenticationRequired(true)` and encrypt/decrypt data through `CryptoObject`. `setInvalidatedByBiometricEnrollment(true)` ensures key is destroyed if new biometric is enrolled (prevents stolen biometric from accessing old data). iOS: Keychain with `SecAccessControlCreateWithFlags` using `biometryCurrentSet` — item is only accessible after biometric authentication and is invalidated on biometric enrollment change. For "cache after auth" pattern, use `setUserAuthenticationValidityDurationSeconds` ([Android](../../../Mobile/platforms/android/SKILL.md)) or `kSecUseAuthenticationUIFallback` (iOS).
 
-5. **Fallback and UX design** — Always provide device credential (PIN/password) as fallback — never block users out. Three-tier fallback chain: Biometric -> Device Credential -> App Password (optional, for users who can't use either). UX patterns: opt-in onboarding screen explaining what biometrics protect, toggle in Settings to enable/disable, clear description of protected operations, graceful degradation on devices without biometric hardware. Lockout: after 5 consecutive biometric failures, biometric is blocked (iOS indefinitely until device credential used, [Android](../../../Mobile/android/SKILL.md) for 30 seconds escalating). After lockout, show device credential prompt automatically. Never let users get stuck — always offer the next fallback option.
+5. **Fallback and UX design** — Always provide device credential (PIN/password) as fallback — never block users out. Three-tier fallback chain: Biometric -> Device Credential -> App Password (optional, for users who can't use either). UX patterns: opt-in onboarding screen explaining what biometrics protect, toggle in Settings to enable/disable, clear description of protected operations, graceful degradation on devices without biometric hardware. Lockout: after 5 consecutive biometric failures, biometric is blocked (iOS indefinitely until device credential used, [Android](../../../Mobile/platforms/android/SKILL.md) for 30 seconds escalating). After lockout, show device credential prompt automatically. Never let users get stuck — always offer the next fallback option.
 
 6. **Cross-platform implementation** — Using Capacitor Biometric plugin (`@capacitor/biometric`): single API for both platforms, handles availability check, prompt, and fallback. Using Expo LocalAuthentication: similar cross-platform API with `hasHardwareAsync()`, `isEnrolledAsync()`, `authenticateAsync()`. For React Native: `react-native-biometrics` or `react-native-keychain`. Cross-platform wrappers simplify code but may not expose all platform-specific features (CryptoObject, fine-grained error handling, key invalidation control). For sensitive apps, use platform-native implementation with cross-platform coordination.
 
 ## Biometric Strength Comparison
 
-| Level | [Android](../../../Mobile/android/SKILL.md) | iOS | Security |
+| Level | [Android](../../../Mobile/platforms/android/SKILL.md) | iOS | Security |
 |-------|---------|-----|----------|
 | Strong (Class 3) | Fingerprint, Face (Class 3) | Face ID, Touch ID | High |
 | Weak (Class 2) | Face unlock, Iris | Face ID with attention not required | Medium |
@@ -131,7 +131,7 @@ Which [Android](../../../Mobile/android/SKILL.md) biometric class?
 - **Biometric changed alert ignored**: Apps that don't monitor `onAuthenticationError` with `ERROR_USER_CANCELED` after biometric change leave old data accessible.
 - **Key invalidation surprise**: Keys invalidated on enrollment change delete encrypted data. Migrate before invalidation.
 - **Missing usage description strings**: iOS rejects apps without `NSFaceIDUsageDescription` in Info.plist.
-- **Calling biometric on main thread**: [Android](../../../Mobile/android/SKILL.md) BiometricPrompt UI must be on main thread; heavy post-auth work goes to background thread.
+- **Calling biometric on main thread**: [Android](../../../Mobile/platforms/android/SKILL.md) BiometricPrompt UI must be on main thread; heavy post-auth work goes to background thread.
 
 ## Security Considerations
 
@@ -139,12 +139,12 @@ Which [Android](../../../Mobile/android/SKILL.md) biometric class?
 - Server-side auth must NOT rely solely on biometric claim — use biometric for local key release, then authenticate with key
 - Anti-spoofing: Face ID with attention awareness is better than basic face unlock
 - iOS `localizedReason` displayed in dialog — make it clear to user what's being authenticated
-- [Android](../../../Mobile/android/SKILL.md) `setConfirmationRequired(true)` adds button press to fingerprint — prevents accidental auth
+- [Android](../../../Mobile/platforms/android/SKILL.md) `setConfirmationRequired(true)` adds button press to fingerprint — prevents accidental auth
 
 ## Configuration Reference
 
 ```kotlin
-// [Android](../../../Mobile/android/SKILL.md) — BiometricPrompt config
+// [Android](../../../Mobile/platforms/android/SKILL.md) — BiometricPrompt config
 val promptInfo = BiometricPrompt.PromptInfo.Builder()
     .setTitle("Verify identity")
     .setSubtitle("Access your secure [vault](../../cryptography-secrets/vault/SKILL.md)")
@@ -163,7 +163,7 @@ context.touchIDAuthenticationAllowableReuseDuration = 10 // seconds cached
 
 ## Biometric Key Management & Crypto Integration
 
-Biometric authentication is most valuable when used to protect cryptographic keys, not just as a boolean gate. The pattern: (1) generate a strong symmetric key (AES-256) in platform secure hardware, (2) bind the key to biometric authentication using `setUserAuthenticationRequired(true)`, (3) use this key to encrypt/decrypt sensitive data (auth tokens, API keys, user credentials), (4) the key is only released when biometric authentication succeeds. [Android](../../../Mobile/android/SKILL.md) Keystore provides this via `KeyGenParameterSpec` with `setUserAuthenticationRequired(true)` and `setInvalidatedByBiometricEnrollment(true)`. iOS provides this via Keychain with `SecAccessControlCreateWithFlags` and `biometryCurrentSet`. For cross-platform, use platform-specific key storage and expose through a uniform `SecureEnclave` interface. Key invalidation on biometric enrollment change is critical security behavior — when user adds a new fingerprint/face, existing biometric keys are destroyed, requiring re-encryption of stored data. Apps must handle `KeyPermanentlyInvalidatedException` ([Android](../../../Mobile/android/SKILL.md)) or `errSecItemNotFound` (iOS) gracefully by re-prompting for fresh credentials and re-encrypting.
+Biometric authentication is most valuable when used to protect cryptographic keys, not just as a boolean gate. The pattern: (1) generate a strong symmetric key (AES-256) in platform secure hardware, (2) bind the key to biometric authentication using `setUserAuthenticationRequired(true)`, (3) use this key to encrypt/decrypt sensitive data (auth tokens, API keys, user credentials), (4) the key is only released when biometric authentication succeeds. [Android](../../../Mobile/platforms/android/SKILL.md) Keystore provides this via `KeyGenParameterSpec` with `setUserAuthenticationRequired(true)` and `setInvalidatedByBiometricEnrollment(true)`. iOS provides this via Keychain with `SecAccessControlCreateWithFlags` and `biometryCurrentSet`. For cross-platform, use platform-specific key storage and expose through a uniform `SecureEnclave` interface. Key invalidation on biometric enrollment change is critical security behavior — when user adds a new fingerprint/face, existing biometric keys are destroyed, requiring re-encryption of stored data. Apps must handle `KeyPermanentlyInvalidatedException` ([Android](../../../Mobile/platforms/android/SKILL.md)) or `errSecItemNotFound` (iOS) gracefully by re-prompting for fresh credentials and re-encrypting.
 
 ## Multi-Factor Authentication Architecture
 
@@ -193,7 +193,7 @@ Biometric authentication result?
 ├── Error: hardware unavailable → Fall through to device credential
 ├── Error: user canceled → Wait for next user action (don't immediately re-prompt)
 ├── Error: security update required → Show system update prompt
-├── Error: sensor dirty/wet ([Android](../../../Mobile/android/SKILL.md) specific) → "Clean sensor" message
+├── Error: sensor dirty/wet ([Android](../../../Mobile/platforms/android/SKILL.md) specific) → "Clean sensor" message
 └── Error: biometric changed (key invalidation) → Re-encrypt data with new biometric key
 ```
 
@@ -207,13 +207,13 @@ Biometric authentication result?
 | Key invalidation on biometric change | Decryption fails on existing data | Catch `KeyPermanentlyInvalidatedException`, re-encrypt |
 | Lockout (5+ failures) | Biometric unavailable | Force device credential, never show biometric UI |
 | iOS Face ID not configured | `canEvaluatePolicy` returns false | Info.plist missing `NSFaceIDUsageDescription` |
-| [Android](../../../Mobile/android/SKILL.md) sensor dirty | "Try again" repeatedly | Guide user to clean sensor |
+| [Android](../../../Mobile/platforms/android/SKILL.md) sensor dirty | "Try again" repeatedly | Guide user to clean sensor |
 | Biometric hardware absent | `BIOMETRIC_ERROR_HW_UNAVAILABLE` | Disable biometric section, fallback to PIN |
 
 ### Troubleshooting Checklist
 
 - Verify `NSFaceIDUsageDescription` in Info.plist (iOS)
-- Check `BiometricManager.canAuthenticate(BIOMETRIC_STRONG)` before showing prompt ([Android](../../../Mobile/android/SKILL.md))
+- Check `BiometricManager.canAuthenticate(BIOMETRIC_STRONG)` before showing prompt ([Android](../../../Mobile/platforms/android/SKILL.md))
 - Confirm `setAllowedAuthenticators()` includes `DEVICE_CREDENTIAL` fallback
 - Validate that biometric key uses `setInvalidatedByBiometricEnrollment(true)`
 - Test lockout flow: authenticate 5 times with wrong finger — verify fallback to device credential
@@ -241,7 +241,7 @@ How often should user re-authenticate?
 │   Use for: payments, password reveal, account deletion
 │   UX: lightweight prompt (no full screen overlay)
 ├── Time-gated (re-auth every N minutes) → Biometric key with validity duration
-│   [Android](../../../Mobile/android/SKILL.md): `setUserAuthenticationValidityDurationSeconds(300)` = 5 min cache
+│   [Android](../../../Mobile/platforms/android/SKILL.md): `setUserAuthenticationValidityDurationSeconds(300)` = 5 min cache
 │   iOS: `LAContext.touchIDAuthenticationAllowableReuseDuration = 300`
 │   Key remains accessible for duration without re-prompt
 └── Device-unlock-gated → Use device credential (PIN) as proxy for biometric
@@ -253,7 +253,7 @@ How often should user re-authenticate?
 ```
 Biometric enrollment changed (new finger/face added, or all removed)?
 ├── Key invalidated (setInvalidatedByBiometricEnrollment=true, biometryCurrentSet)
-│   → Data becomes inaccessible: `KeyPermanentlyInvalidatedException` ([Android](../../../Mobile/android/SKILL.md))
+│   → Data becomes inaccessible: `KeyPermanentlyInvalidatedException` ([Android](../../../Mobile/platforms/android/SKILL.md))
 │   → Must re-authenticate + re-encrypt all stored data
 │   → Show clear message: "Your biometrics changed, please re-authenticate"
 ├── Key not invalidated (setInvalidatedByBiometricEnrollment=false)
@@ -272,7 +272,7 @@ Best practice: never force biometrics on users. Implement a progressive disclosu
 
 ## Code Examples
 
-### [Android](../../../Mobile/android/SKILL.md) BiometricPrompt with CryptoObject
+### [Android](../../../Mobile/platforms/android/SKILL.md) BiometricPrompt with CryptoObject
 ```kotlin
 class SecureStorage(private val context: Context) {
     private val keyStore = KeyStore.getInstance("AndroidKeyStore").apply { load(null) }
@@ -421,10 +421,10 @@ export async function signWithBiometric(payload: string) {
 ### Biometric Implementation Anti-Patterns
 
 - **Timeout on biometric key too long**: `setUserAuthenticationValidityDurationSeconds(86400)` = 24 hours. A compromised device exposes data for a full day. Max recommended: 300 seconds (5 min).
-- **No biometric enrollment change watcher**: Biometric enrollment changes (user adds/removes fingerprint or face) invalidate keys silently. Subscribe to `ACTION_BIOMETRIC_ENROLLMENT_CHANGED` ([Android](../../../Mobile/android/SKILL.md)) or check `biometryCurrentSet` on each app launch.
+- **No biometric enrollment change watcher**: Biometric enrollment changes (user adds/removes fingerprint or face) invalidate keys silently. Subscribe to `ACTION_BIOMETRIC_ENROLLMENT_CHANGED` ([Android](../../../Mobile/platforms/android/SKILL.md)) or check `biometryCurrentSet` on each app launch.
 - **Fallback to app password without device credential**: Users can type an app-specific password instead of device PIN. This creates a secondary auth channel that is often less secure. Always prefer device credential over app password.
 - **Biometric-only settings toggle**: "Enable Face ID" toggle without showing what features it affects. Users enable it thinking all security is handled, but payments still need device credential. Show a per-feature matrix.
-- **Not handling `ERROR_VENDOR` ([Android](../../../Mobile/android/SKILL.md))**: Vendor-specific errors (OEM-specific biometric implementations) can crash the app. Never assume only standard error codes. Wrap in try/catch.
+- **Not handling `ERROR_VENDOR` ([Android](../../../Mobile/platforms/android/SKILL.md))**: Vendor-specific errors (OEM-specific biometric implementations) can crash the app. Never assume only standard error codes. Wrap in try/catch.
 - **Face authentication without attention check**: On iOS, `LAContext.notRequireAttention` allows face unlock with closed eyes. For high-sensitivity operations, require attention by relying on the default (attention required).
 - **Re-prompting after user cancel**: User cancels biometric prompt, app immediately re-shows it — frustrating. After user cancel, wait for explicit user action before re-prompting.
 - **Caching biometric success for entire app session**: Cache should expire. A user may unlock the app at 9am, hand their phone to someone at 10am — cached biometric access still grants permission. Set session timeout (5-15 min).
@@ -452,7 +452,7 @@ GDPR considers biometric data "special category" data requiring explicit consent
 |--------------|-------------------|---------------------|
 | Enrolled biometric → success | Grant access | Both platforms |
 | Wrong finger/face → failure | Show retry, count attempts | Both platforms |
-| 5 failures → lockout | Force device credential | iOS: locks until device credential used. [Android](../../../Mobile/android/SKILL.md): 30s timeout |
+| 5 failures → lockout | Force device credential | iOS: locks until device credential used. [Android](../../../Mobile/platforms/android/SKILL.md): 30s timeout |
 | No biometric enrolled | Fallback to device credential | Check `canAuthenticate` first |
 | Biometric enrollment change | Key invalidated, data inaccessible | Must re-encrypt data |
 | Device credential entered | Grant access as fallback | Both |

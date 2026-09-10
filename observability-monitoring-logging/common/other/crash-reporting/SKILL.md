@@ -37,7 +37,7 @@ Set up crash reporting with proper SDK configuration, symbolication, breadcrumbs
 User request includes: `crash report`, `crashlytics`, `[sentry](../../../sentry/other/sentry/SKILL.md)`, `symbolication`, `dsym`, `breadcrumb`, `non-fatal`, `user context`, `error tracking`.
 
 ### Input Context
-- Platform (iOS, [Android](../../../../Mobile/android/SKILL.md), Flutter, React Native)
+- Platform (iOS, [Android](../../../../Mobile/platforms/android/SKILL.md), Flutter, React Native)
 - Crash service ([Sentry](../../../sentry/other/sentry/SKILL.md), Crashlytics, or both)
 - Existing error handling infrastructure
 
@@ -82,7 +82,7 @@ Platform?
 ├── iOS → dSYM upload ([Sentry](../../../sentry/other/sentry/SKILL.md).framework or Crashlytics upload-symbols)
 │   CI/CD must upload dSYMs after each build
 │   Bitcode: upload dSYMs separately for recompiled slices
-├── [Android](../../../../Mobile/android/SKILL.md) → ProGuard/R8 mapping file upload
+├── [Android](../../../../Mobile/platforms/android/SKILL.md) → ProGuard/R8 mapping file upload
 │   `mapping.txt` generated at build time
 │   Upload via [Firebase](../../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) CLI or Gradle plugin
 ├── Flutter → Dart symbols + native dSYMs
@@ -109,7 +109,7 @@ SentrySDK.start { options in
 ```
 
 ```kotlin
-// [Android](../../../../Mobile/android/SKILL.md)
+// [Android](../../../../Mobile/platforms/android/SKILL.md)
 SentryAndroid.init(this) { options ->
     options.dsn = "https://key@o123.ingest.[sentry](../../../sentry/other/sentry/SKILL.md).io/456"
     options.environment = BuildConfig.BUILD_TYPE
@@ -138,7 +138,7 @@ import * as [Sentry](../../../sentry/other/sentry/SKILL.md) from '@[sentry](../.
 
 [Firebase](../../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) Crashlytics:
 ```kotlin
-// [Android](../../../../Mobile/android/SKILL.md)
+// [Android](../../../../Mobile/platforms/android/SKILL.md)
 FirebaseCrashlytics.getInstance().apply {
     setCrashlyticsCollectionEnabled(!BuildConfig.DEBUG)
 }
@@ -203,7 +203,7 @@ SentrySDK.addBreadcrumb(Breadcrumb(
   env:
     GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.FIREBASE_CREDENTIALS }}
 
-# [Android](../../../../Mobile/android/SKILL.md) — automatic via Crashlytics Gradle plugin
+# [Android](../../../../Mobile/platforms/android/SKILL.md) — automatic via Crashlytics Gradle plugin
 - run: ./gradlew assembleRelease crashlyticsUploadSymbolsRelease
 ```
 
@@ -233,7 +233,7 @@ SentrySDK.addBreadcrumb(Breadcrumb(
 
 ## ANR & OOM Detection
 
-[Android](../../../../Mobile/android/SKILL.md) ANRs (Application Not Responding) and iOS OOMs (Out of Memory) are not traditional crashes and require special handling. [Android](../../../../Mobile/android/SKILL.md): ANRs are detected by the system when the main thread is blocked for >5s. Capture via `ANRWatcher` or `FirebasePerformance`'s ANR tracking. Custom ANR detection: a background thread posts a runnable to the main thread handler every 2s; if the runnable isn't executed within 5s, an ANR is recorded. iOS: OOM detection is indirect — the system kills the process without an exception. Detect OOMs by comparing app launch reason: if the previous termination was not a normal termination (user swipe, crash, app update), it's likely an OOM. [Sentry](../../../sentry/other/sentry/SKILL.md)'s OOM integration tracks `app.breadcrumbs` before termination and flags OOM candidates. For both: correlate ANR/OOM with memory pressure events, screen state, and foreground duration. Mitigations: (a) instrument OOM-prone screens with memory warnings, (b) reduce image cache size on memory warning, (c) implement state restoration so OOM termination is invisible to user.
+[Android](../../../../Mobile/platforms/android/SKILL.md) ANRs (Application Not Responding) and iOS OOMs (Out of Memory) are not traditional crashes and require special handling. [Android](../../../../Mobile/platforms/android/SKILL.md): ANRs are detected by the system when the main thread is blocked for >5s. Capture via `ANRWatcher` or `FirebasePerformance`'s ANR tracking. Custom ANR detection: a background thread posts a runnable to the main thread handler every 2s; if the runnable isn't executed within 5s, an ANR is recorded. iOS: OOM detection is indirect — the system kills the process without an exception. Detect OOMs by comparing app launch reason: if the previous termination was not a normal termination (user swipe, crash, app update), it's likely an OOM. [Sentry](../../../sentry/other/sentry/SKILL.md)'s OOM integration tracks `app.breadcrumbs` before termination and flags OOM candidates. For both: correlate ANR/OOM with memory pressure events, screen state, and foreground duration. Mitigations: (a) instrument OOM-prone screens with memory warnings, (b) reduce image cache size on memory warning, (c) implement state restoration so OOM termination is invisible to user.
 
 ## Custom Error Grouping & Fingerprinting
 
@@ -319,7 +319,7 @@ Session replay ([Sentry](../../../sentry/other/sentry/SKILL.md) Replay, [Datadog
 - Check release health dashboard after deployment
 - Verify alert thresholds set: crash-free rate <99.5%, error rate >5%
 - Confirm panic/native crash handlers are initialized (Flutter/RN)
-- Validate ProGuard/R8 mapping uploaded for [Android](../../../../Mobile/android/SKILL.md) release build
+- Validate ProGuard/R8 mapping uploaded for [Android](../../../../Mobile/platforms/android/SKILL.md) release build
 
 ### CI/CD Symbol Upload Automation
 
@@ -350,7 +350,7 @@ jobs:
       - name: Upload ProGuard mapping
         run: |
           find . -name "mapping.txt" -exec [firebase](../../../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) crashlytics:upload:mapping \
-            --app=1:123456:[android](../../../../Mobile/android/SKILL.md):abc123 {} \;
+            --app=1:123456:[android](../../../../Mobile/platforms/android/SKILL.md):abc123 {} \;
 
   upload-sourcemaps:
     runs-on: ubuntu-latest
@@ -359,11 +359,11 @@ jobs:
       - name: Upload React Native source maps
         run: |
           npx @[sentry](../../../sentry/other/sentry/SKILL.md)/react-native-upload \
-            --platform [android](../../../../Mobile/android/SKILL.md) \
-            --path ./[android](../../../../Mobile/android/SKILL.md)/app/build/generated/sourcemaps/react/release/index.[android](../../../../Mobile/android/SKILL.md).bundle.map
+            --platform [android](../../../../Mobile/platforms/android/SKILL.md) \
+            --path ./[android](../../../../Mobile/platforms/android/SKILL.md)/app/build/generated/sourcemaps/react/release/index.[android](../../../../Mobile/platforms/android/SKILL.md).bundle.map
 ```
 
-### ANR Detection Implementation ([Android](../../../../Mobile/android/SKILL.md))
+### ANR Detection Implementation ([Android](../../../../Mobile/platforms/android/SKILL.md))
 ```kotlin
 class ANRDetector {
     private val handler = Handler(Looper.getMainLooper())
@@ -406,7 +406,7 @@ class ANRDetector {
 
 ## Rules (Additional)
 
-- ANR detection must be enabled for [Android](../../../../Mobile/android/SKILL.md) builds targeting API 30+
+- ANR detection must be enabled for [Android](../../../../Mobile/platforms/android/SKILL.md) builds targeting API 30+
 - OOM detection must log memory pressure breadcrumbs (iOS: `didReceiveMemoryWarning`)
 - Always attach user context to crashes: user ID, app version, OS version, device model
 - Breadcrumbs must include timestamp, category, and level for each event
@@ -423,7 +423,7 @@ class ANRDetector {
 - **Not testing crash reporting before release**: Crash reporting "works" in debug but fails in production (missing dSYM, different build config). Test crash on TestFlight/internal track build before production release.
 - **Logging sensitive data in breadcrumbs**: Breadcrumbs containing passwords, credit card numbers, or auth tokens are uploaded to crash servers. [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) breadcrumb data regularly.
 - **Too many breadcrumbs**: Setting max breadcrumbs to 1000 creates memory overhead. 200 is sufficient for crash context — any more is noise.
-- **Ignoring native crashes in cross-platform apps**: Flutter/React Native crash reporting often captures only the framework layer. Configure native crash handlers (iOS/[Android](../../../../Mobile/android/SKILL.md)) separately for full coverage.
+- **Ignoring native crashes in cross-platform apps**: Flutter/React Native crash reporting often captures only the framework layer. Configure native crash handlers (iOS/[Android](../../../../Mobile/platforms/android/SKILL.md)) separately for full coverage.
 - **Setting `tracesSampleRate` too high**: Performance tracing at 100% sample rate creates significant overhead. 10-20% is sufficient for most apps. Only increase for targeted debugging.
 - **Not filtering test device crashes**: Developers' test devices submit crashes to production dashboard, polluting crash-free rate. Filter by test device IDs or debug build flag.
 - **Debug logs level in production**: `SentryLogLevel.debug` in production writes verbose log output to device console. Use `.error` or disable in production builds.
@@ -464,7 +464,7 @@ NSSetUncaughtExceptionHandler { exception in
 ```
 
 ```kotlin
-// [Android](../../../../Mobile/android/SKILL.md) — UncaughtExceptionHandler
+// [Android](../../../../Mobile/platforms/android/SKILL.md) — UncaughtExceptionHandler
 class CustomExceptionHandler(
     private val defaultHandler: Thread.UncaughtExceptionHandler?
 ) : Thread.UncaughtExceptionHandler {

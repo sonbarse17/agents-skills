@@ -119,7 +119,7 @@ semgrep --config="p/owasp-top-ten" /path/to/code
 
 Semgrep supports 30+ languages including:
 - **Web**: JavaScript, [TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md), [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md), Ruby, PHP, Java, C#, Go
-- **Mobile**: Swift, Kotlin, Java ([Android](../../../Mobile/android/SKILL.md))
+- **Mobile**: Swift, Kotlin, Java ([Android](../../../Mobile/platforms/android/SKILL.md))
 - **Infrastructure**: Terraform, Dockerfile, YAML, JSON
 - **Other**: C, C++, Rust, Scala, Solidity
 

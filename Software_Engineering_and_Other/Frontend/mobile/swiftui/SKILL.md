@@ -478,7 +478,7 @@ struct SettingsView: View {
   - ../../../../Global_References/Software_Engineering_and_Other/swiftui-macos-patterns.md — SwiftUI macOS Patterns Reference
   - references/swiftui-navigation.md — SwiftUI Navigation Patterns Reference
 ## Handoff
-Hand off to `[desktop-appkit](../../../../Mobile/appkit/SKILL.md)` for AppKit bridge details. Hand off to `design-accessibility` for VoiceOver testing.
+Hand off to `[desktop-appkit](../../desktop/appkit/SKILL.md)` for AppKit bridge details. Hand off to `design-accessibility` for VoiceOver testing.
 ## Implementation Patterns
 
 ### Observer Pattern for Event Handling

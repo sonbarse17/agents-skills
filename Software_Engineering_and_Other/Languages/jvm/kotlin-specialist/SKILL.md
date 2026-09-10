@@ -50,7 +50,7 @@ Load detailed guidance based on context:
 |-------|-----------|-----------|
 | Coroutines & Flow | `../../../../Global_References/Software_Engineering_and_Other/coroutines-flow.md` | Async operations, structured concurrency, Flow API |
 | Multiplatform | `../../../../Global_References/Software_Engineering_and_Other/multiplatform-kmp.md` | Shared code, expect/actual, platform setup |
-| [Android](../../../Mobile/android/SKILL.md) & Compose | `../../../Global_References/[android](../../../Mobile/android/SKILL.md)-compose.md` | Jetpack Compose, ViewModel, Material3, navigation |
+| [Android](../../../../Mobile/platforms/android/SKILL.md) & Compose | `../../../Global_References/[android](../../../../Mobile/platforms/android/SKILL.md)-compose.md` | Jetpack Compose, ViewModel, Material3, navigation |
 | Ktor Server | `../../../../Global_References/Software_Engineering_and_Other/ktor-server.md` | Routing, plugins, authentication, serialization |
 | DSL & Idioms | `../../../../Global_References/Software_Engineering_and_Other/dsl-idioms.md` | Type-safe builders, scope functions, delegates |
 

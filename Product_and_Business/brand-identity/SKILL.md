@@ -364,7 +364,7 @@ Brands evolve — plan for it. Three types of brand changes:
 3. **Full rebrand** (merger/acquisition): New name, logo, identity system. Impact: high. Migration: cutover date with all touchpoints updated simultaneously.
 
 **Migration checklist for brand updates**:
-- [ ] Update design tokens in code (CSS, [Android](../../Mobile/android/SKILL.md) XML, iOS asset catalog)
+- [ ] Update design tokens in code (CSS, [Android](../../Mobile/platforms/android/SKILL.md) XML, iOS asset catalog)
 - [ ] Replace all logo files (web, mobile, email, print)
 - [ ] Update favicon and app icon
 - [ ] Refresh marketing materials (website hero, social profiles, ad creatives)
@@ -391,7 +391,7 @@ Brands evolve — plan for it. Three types of brand changes:
 **Multi-platform token delivery**: Maintain brand tokens in a single source (JSON/YAML) → generate platform-specific formats using Style Dictionary:
 - Web: CSS custom properties + Sass variables
 - iOS: Swift constants + asset catalog color set
-- [Android](../../Mobile/android/SKILL.md): XML color resources + Kotlin constants
+- [Android](../../Mobile/platforms/android/SKILL.md): XML color resources + Kotlin constants
 - Figma: Token Studio plugin sync
 
 ## Anti-Patterns
@@ -414,7 +414,7 @@ Brands evolve — plan for it. Three types of brand changes:
 ### Platform Adaptation
 Brand must feel native on each platform while remaining consistent:
 
-| Element | Web | iOS | [Android](../../Mobile/android/SKILL.md) | Print |
+| Element | Web | iOS | [Android](../../Mobile/platforms/android/SKILL.md) | Print |
 |---------|-----|-----|---------|-------|
 | Typography | System fonts + web fonts | SF Pro + brand font | Roboto + brand font | Brand fonts only |
 | Icon style | Outline 2px | Fill with rounded corners | Fill with sharp corners | Outline 2px |

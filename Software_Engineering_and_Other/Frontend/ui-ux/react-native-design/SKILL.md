@@ -23,7 +23,7 @@ Master React Native styling patterns, React Navigation, and Reanimated 3 to buil
 - Creating performant animations with Reanimated 3
 - Styling components with StyleSheet and styled-components
 - Building responsive layouts for different screen sizes
-- Implementing platform-specific designs (iOS/[Android](../../../../Mobile/android/SKILL.md))
+- Implementing platform-specific designs (iOS/[Android](../../../../Mobile/platforms/android/SKILL.md))
 - Creating gesture-driven interactions with Gesture Handler
 - Optimizing React Native performance
 
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
 5. **Handle Safe Areas**: Use `SafeAreaView` or `useSafeAreaInsets`
 6. **Test on Real Devices**: Simulator/emulator performance differs from real devices
 7. **Use FlatList for Lists**: Never use ScrollView with map for long lists
-8. **Platform-Specific Code**: Use Platform.select for iOS/[Android](../../../../Mobile/android/SKILL.md) differences
+8. **Platform-Specific Code**: Use Platform.select for iOS/[Android](../../../../Mobile/platforms/android/SKILL.md) differences
 
 ## Common Issues
 
@@ -135,5 +135,5 @@ const styles = StyleSheet.create({
 - **Animation Jank**: Move animations to UI thread with `runOnUI` worklets
 - **Memory Leaks**: Cancel animations and cleanup in useEffect
 - **Font Loading**: Use `expo-font` or `react-native-asset` for custom fonts
-- **Safe Area Issues**: Test on notched devices (iPhone, [Android](../../../../Mobile/android/SKILL.md) with cutouts)
+- **Safe Area Issues**: Test on notched devices (iPhone, [Android](../../../../Mobile/platforms/android/SKILL.md) with cutouts)
 

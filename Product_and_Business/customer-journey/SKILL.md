@@ -558,7 +558,7 @@ A B2B data analytics platform discovered through journey mapping that their 14-d
 Optimization: restructured the 14-day trial into a guided 7-day program with daily email prompts and milestone celebrations. Simplified setup to 3 steps with template-based data import. Added a "success coordinator" touchpoint on day 3. Results: setup completion increased from 15% to 62%. Trial-to-paid conversion increased from 4% to 14%. The journey health score improved from 0.42 to 0.71.
 
 ### Mobile App Onboarding Friction Reduction
-A consumer mobile app had 55% drop-off during onboarding between download and first core action. Journey analytics segmented by acquisition source and device type. Found that organic users had 25% higher completion than paid users, and [Android](../../Mobile/android/SKILL.md) users had 18% higher drop-off than iOS.
+A consumer mobile app had 55% drop-off during onboarding between download and first core action. Journey analytics segmented by acquisition source and device type. Found that organic users had 25% higher completion than paid users, and [Android](../../Mobile/platforms/android/SKILL.md) users had 18% higher drop-off than iOS.
 
 Optimization: reduced onboarding steps from 7 to 3 for all users (permission requests delayed to point of need). Added skip option for tutorial. Personalized first-experience content based on acquisition source. Results: onboarding completion increased from 45% to 78%. D7 retention increased from 22% to 41%. The emotional journey timeline showed satisfaction improved at every step.
 

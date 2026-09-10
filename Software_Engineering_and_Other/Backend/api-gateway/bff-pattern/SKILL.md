@@ -41,7 +41,7 @@ Design specialized Backend for Frontend (BFF) services that compose and transfor
 Exact user phrases: "BFF", "Backend for Frontend", "API gateway", "gateway specialization", "frontend API", "mobile API", "web API", "API composition", "aggregation service", "frontend gateway", "BFF pattern".
 
 ### Input Context
-- Client types consuming the API (web, iOS, [Android](../../../../Mobile/android/SKILL.md), third-party).
+- Client types consuming the API (web, iOS, [Android](../../../../Mobile/platforms/android/SKILL.md), third-party).
 - Backend [microservices](../../../Patterns/distributed-systems/microservices/SKILL.md) architecture.
 - Latency and data shape requirements per client.
 
@@ -71,7 +71,7 @@ Security: {auth pattern}
 ### Step 1: Identify Client Types
 ```
 Web BFF      -> SPA (React, Vue)
-Mobile BFF   -> iOS + [Android](../../../../Mobile/android/SKILL.md) apps
+Mobile BFF   -> iOS + [Android](../../../../Mobile/platforms/android/SKILL.md) apps
 Partners BFF -> Third-party integrations
 Admin BFF    -> Internal admin panel
 ```

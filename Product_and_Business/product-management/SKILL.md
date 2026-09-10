@@ -499,7 +499,7 @@ trade_off_format:
   costs:
     - "Developer portal v2 delayed to Q3"
     - "[Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) SDK improvements deferred to Q3"
-    - "Mobile SDKs (iOS/[Android](../../Mobile/android/SKILL.md)) deferred to Q1 2027"
+    - "Mobile SDKs (iOS/[Android](../../Mobile/platforms/android/SKILL.md)) deferred to Q1 2027"
 
   risk:
     - "No remaining [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) for unplanned work"

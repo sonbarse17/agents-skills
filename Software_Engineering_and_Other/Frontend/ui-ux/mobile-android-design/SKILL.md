@@ -11,24 +11,24 @@ depends_on:
   - accessibility
 ---
 
-# [Android](../../../../Mobile/android/SKILL.md) Mobile Design
+# [Android](../../../../Mobile/platforms/android/SKILL.md) Mobile Design
 
-Master Material Design 3 (Material You) and Jetpack Compose to build modern, adaptive [Android](../../../../Mobile/android/SKILL.md) applications that integrate seamlessly with the [Android](../../../../Mobile/android/SKILL.md) ecosystem.
+Master Material Design 3 (Material You) and Jetpack Compose to build modern, adaptive [Android](../../../../Mobile/platforms/android/SKILL.md) applications that integrate seamlessly with the [Android](../../../../Mobile/platforms/android/SKILL.md) ecosystem.
 
 ## When to Use This Skill
 
-- Designing [Android](../../../../Mobile/android/SKILL.md) app interfaces following Material Design 3
+- Designing [Android](../../../../Mobile/platforms/android/SKILL.md) app interfaces following Material Design 3
 - Building Jetpack Compose UI and layouts
-- Implementing [Android](../../../../Mobile/android/SKILL.md) navigation patterns (Navigation Compose)
+- Implementing [Android](../../../../Mobile/platforms/android/SKILL.md) navigation patterns (Navigation Compose)
 - Creating adaptive layouts for phones, tablets, and foldables
 - Using Material 3 theming with dynamic colors
-- Building accessible [Android](../../../../Mobile/android/SKILL.md) interfaces
-- Implementing [Android](../../../../Mobile/android/SKILL.md)-specific gestures and interactions
+- Building accessible [Android](../../../../Mobile/platforms/android/SKILL.md) interfaces
+- Implementing [Android](../../../../Mobile/platforms/android/SKILL.md)-specific gestures and interactions
 - Designing for different screen configurations
 
 ## Detailed section: Core Concepts
 
-Originally a 9201-byte section in this SKILL.md. Moved to `../../../Global_References/mobile-[android](../../../../Mobile/android/SKILL.md)-design_details.md` to fit Codex's 8 KB skill body cap.
+Originally a 9201-byte section in this SKILL.md. Moved to `../../../Global_References/mobile-[android](../../../../Mobile/platforms/android/SKILL.md)-design_details.md` to fit Codex's 8 KB skill body cap.
 
 ## Quick Start Component
 
@@ -91,7 +91,7 @@ fun ItemListCard(
 ## Best Practices
 
 1. **Use Material Theme**: Access colors via `MaterialTheme.colorScheme` for automatic dark mode support
-2. **Support Dynamic Color**: Enable dynamic color on [Android](../../../../Mobile/android/SKILL.md) 12+ for personalization
+2. **Support Dynamic Color**: Enable dynamic color on [Android](../../../../Mobile/platforms/android/SKILL.md) 12+ for personalization
 3. **Adaptive Layouts**: Use `WindowSizeClass` for responsive designs
 4. **Content Descriptions**: Add `contentDescription` to all interactive elements
 5. **Touch Targets**: Minimum 48dp touch targets for accessibility
