@@ -85,7 +85,7 @@ Decision: Infrastructure cross-cutting → Root. Feature-specific → Plugin. Sh
 
 ### Step 1: Server Bootstrap
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // src/server.ts
 import Fastify from 'fastify';
 import { registerPlugins } from './plugins';
@@ -138,7 +138,7 @@ main().catch(err => {
 
 ### Step 2: Plugin Registration
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // src/plugins/index.ts
 import { FastifyInstance } from 'fastify';
 import fp from 'fastify-plugin';
@@ -177,7 +177,7 @@ export async function registerPlugins(app: FastifyInstance) {
 
 ### Step 3: Schema-First Routes with TypeBox
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // src/modules/users/schema.ts
 import { Type, Static } from '@sinclair/typebox';
 
@@ -259,7 +259,7 @@ export async function userRoutes(app: FastifyInstance) {
 
 ### Step 4: Hooks Lifecycle
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // src/plugins/hooks.ts
 import { FastifyInstance } from 'fastify';
 
@@ -296,7 +296,7 @@ export async function registerHooks(app: FastifyInstance) {
 
 ### Step 5: Error Handler Plugin
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // src/plugins/error-handler.ts
 import { FastifyInstance, FastifyError, FastifyReply, FastifyRequest } from 'fastify';
 
@@ -331,7 +331,7 @@ export async function errorHandlerPlugin(app: FastifyInstance) {
 
 ### Step 6: Graceful Shutdown with Health Check
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Graceful shutdown wrapper
 async function main() {
   const app = await buildServer();
@@ -352,7 +352,7 @@ async function main() {
 
 ### Pattern: Encapsulated Plugin Module
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // src/modules/users/index.ts
 import { FastifyInstance } from 'fastify';
 import { userRoutes } from './routes';
@@ -372,7 +372,7 @@ export async function userModule(app: FastifyInstance) {
 
 ### Pattern: Custom Decorator
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // src/plugins/auth-decorators.ts
 import { FastifyInstance, FastifyRequest } from 'fastify';
 import fp from 'fastify-plugin';
@@ -400,12 +400,12 @@ export default fp(async function (app: FastifyInstance) {
 Fastify serializes responses using compiled schemas. Define `response` schemas for maximum performance. Use `@fastify/response-validation` for development response validation.
 
 ### Compression
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 await app.register(import('@fastify/compress'), { global: true, threshold: 1024 });
 ```
 
 ### Trust Proxy
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 const server = Fastify({ trustProxy: true });
 ```
 
@@ -429,7 +429,7 @@ const server = Fastify({ trustProxy: true });
 
 ## Testing Strategies
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import { buildServer } from '../src/server';
 import { test, expect } from 'vitest';
 

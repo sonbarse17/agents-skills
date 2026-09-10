@@ -311,7 +311,7 @@ rules:
 
 **Custom Rule Development Resources:**
 - `../../../Global_References/custom_rules_guide.md` - Complete rule authoring guide with functions
-- `references/custom_functions.md` - Creating custom JavaScript/[TypeScript](../../Frontend/typescript/SKILL.md) functions
+- `references/custom_functions.md` - Creating custom JavaScript/[TypeScript](../../Frontend/common/typescript/SKILL.md) functions
 - `assets/rule-templates/` - Reusable rule templates for common security patterns
 
 ### Step 5: CI/CD Pipeline Integration
@@ -618,7 +618,7 @@ For complete custom function development guide, see `references/custom_functions
 
 - `owasp_api_mappings.md` - Complete OWASP API Security Top 10 rule mappings
 - `custom_rules_guide.md` - Custom rule authoring with examples
-- `custom_functions.md` - Creating custom JavaScript/[TypeScript](../../Frontend/typescript/SKILL.md) validation functions
+- `custom_functions.md` - Creating custom JavaScript/[TypeScript](../../Frontend/common/typescript/SKILL.md) validation functions
 - `ruleset_patterns.md` - Reusable ruleset patterns for common security scenarios
 - `api_security_checklist.md` - API security validation checklist
 

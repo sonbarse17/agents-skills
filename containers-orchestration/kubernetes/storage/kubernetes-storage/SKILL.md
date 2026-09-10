@@ -98,7 +98,7 @@ deletes the wrong PVC.
   `Released`, requiring manual intervention to reuse or clean up, which is the point: it forces a
   human decision instead of an automatic one.
 - **This is not a backup strategy** — Retain prevents accidental deletion via the PVC lifecycle, it
-  does nothing for corruption, node loss, or the underlying disk failing; see `[backup-and-restore](../../../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)`
+  does nothing for corruption, node loss, or the underlying disk failing; see `[backup-and-restore](../../../common/other/backup-and-restore/SKILL.md)`
   for actual recovery guarantees.
 
 **Done when:** every StorageClass backing non-disposable data is explicitly set to `Retain`, and

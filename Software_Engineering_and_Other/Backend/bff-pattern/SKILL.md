@@ -78,7 +78,7 @@ Admin BFF    -> Internal admin panel
 
 ### Step 2: Design BFF API per Client
 Each BFF exposes APIs shaped for its client:
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Web BFF: returns a page-shaped response
 GET /api/web/checkout/{cartId}
 {
@@ -117,7 +117,7 @@ GET /api/partners/checkout/{cartId}?partner=acme
 ```
 
 ### Step 3: Implement Composition
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Web BFF composition logic
 class WebCheckoutComposer {
   constructor(
@@ -198,7 +198,7 @@ class WebCheckoutComposer {
 | Partner BFF | API Key + HMAC | Server-side | Request signing |
 | Admin BFF | SSO + JWT | httpOnly cookie | CSRF token |
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // BFF auth middleware factory
 function createBffAuth(bffType: 'web' | 'mobile' | 'partner' | 'admin') {
   switch (bffType) {
@@ -229,7 +229,7 @@ function createBffAuth(bffType: 'web' | 'mobile' | 'partner' | 'admin') {
 ```
 
 ### Step 5: Cache Aggregated Responses
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Caching strategy per BFF
 const BFF_CACHE_CONFIG = {
   web: {
@@ -274,7 +274,7 @@ async function getCheckoutCached(cartId: string, bffType: string): Promise<Check
 ```
 
 ### Step 6: Error Handling and Partial Responses
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // BFF error handling: partial success, not total failure
 class BffService {
   async composeWithFallback(serviceCalls: Promise<any>[], fallbacks: any[]): Promise<any> {
@@ -429,7 +429,7 @@ Total = max(service1, service2, ..., serviceN) → Only as slow as slowest
 ```
 
 ### Connection Management
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Per-service connection pool with keep-alive
 import http from 'http';
 
@@ -453,7 +453,7 @@ async function callService(name: string, url: string): Promise<any> {
 ```
 
 ### Load Shedding
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // BFF load shedding — reject early when under pressure
 class BffLoadShedder {
   private activeRequests = 0;
@@ -496,7 +496,7 @@ app.get('/api/web/checkout/:cartId', async (req, res) => {
 ## Production Considerations
 
 ### [Observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Structured BFF logging with request tracing
 interface BffLogContext {
   traceId: string;

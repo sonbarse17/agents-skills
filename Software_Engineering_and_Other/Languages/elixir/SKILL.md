@@ -292,7 +292,7 @@ mix credo --strict            # Linter
 mix sobelow                  # Phoenix security linter
 mix format --check-formatted # CI check
 
-# [Profiling](../../Frontend/profiling/SKILL.md)
+# [Profiling](../../Frontend/performance/profiling/SKILL.md)
 mix run -e "MyModule.bench()" --profile time  # Erlang profiler
 :eprof.start()                                 # Per-function timing
 ```

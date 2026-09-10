@@ -223,7 +223,7 @@ the performance impact with 100k users?"
 
 ❌ "You must change this to use async/await"
 ✅ "Suggestion: async/await might make this more readable:
-`[typescript](../../Frontend/typescript/SKILL.md)
+`[typescript](../../Frontend/common/typescript/SKILL.md)
     async function fetchUser(id: string) {
         const user = await db.query('SELECT * FROM users WHERE id = ?', id);
         return user;
@@ -299,10 +299,10 @@ class User:
         self.permissions = []
 ```
 
-### [TypeScript](../../Frontend/typescript/SKILL.md)/JavaScript Code Review
+### [TypeScript](../../Frontend/common/typescript/SKILL.md)/JavaScript Code Review
 
-```[typescript](../../Frontend/typescript/SKILL.md)
-// Check for [TypeScript](../../Frontend/typescript/SKILL.md)-specific issues
+```[typescript](../../Frontend/common/typescript/SKILL.md)
+// Check for [TypeScript](../../Frontend/common/typescript/SKILL.md)-specific issues
 
 // ❌ Using any defeats type safety
 function processData(data: any) {  // Avoid any
@@ -378,7 +378,7 @@ When reviewing significant changes:
 
 ### Pattern 2: Test Quality Review
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // ❌ Poor test: Implementation detail testing
 test('increments counter variable', () => {
     const component = render(<Counter />);

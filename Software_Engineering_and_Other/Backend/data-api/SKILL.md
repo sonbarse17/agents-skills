@@ -103,7 +103,7 @@ API style preference?
 │   └── [PostgreSQL](../postgresql/SKILL.md) with GraphQL also → Hasura (also serves REST)
 └── RPC / [serverless](../../Patterns/serverless/SKILL.md) functions
     ├── Database-centric → PostgREST with stored procedures
-    └── Polyglot → WunderGraph with [TypeScript](../../Frontend/typescript/SKILL.md) operations
+    └── Polyglot → WunderGraph with [TypeScript](../../Frontend/common/typescript/SKILL.md) operations
 ```
 
 Default: Hasura for GraphQL (native subscriptions, broad DB support, built-in auth). PostgREST for REST-only [PostgreSQL](../postgresql/SKILL.md) stack. WunderGraph for polyglot backends combining data APIs with external services.

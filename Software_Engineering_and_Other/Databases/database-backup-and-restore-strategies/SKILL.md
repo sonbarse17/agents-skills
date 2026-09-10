@@ -140,7 +140,7 @@ archive_command = 'cp %p /archive/wal/%f'   # or a script shipping to object sto
 recovery_target_time = '2026-07-28 14:32:00'
 ```
 Validate this against the more general replication/WAL guidance in
-[postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../Frontend/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md),
+[postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md),
 since WAL retention sizing and archiving overlap directly with
 replication slot management there.
 
@@ -359,7 +359,7 @@ because the logical restore was far slower than anyone expected.
 
 ## Cross-references
 
-- [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../Frontend/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — WAL/replication-slot management that overlaps directly with continuous WAL archiving for [PostgreSQL](../../Backend/postgresql/SKILL.md) point-in-time recovery.
-- [mysql-mariadb-operations-and-performance-tuning](../[mysql-mariadb-operations-and-performance-tuning](../[mysql](../../Backend/mysql/SKILL.md)-mariadb-operations-and-[performance-tuning](../../Frontend/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — binary log retention and GTID-based replication that a [MySQL](../../Backend/mysql/SKILL.md)/MariaDB point-in-time recovery strategy depends on.
+- [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — WAL/replication-slot management that overlaps directly with continuous WAL archiving for [PostgreSQL](../../Backend/postgresql/SKILL.md) point-in-time recovery.
+- [mysql-mariadb-operations-and-performance-tuning](../[mysql-mariadb-operations-and-performance-tuning](../[mysql](../../Backend/mysql/SKILL.md)-mariadb-operations-and-[performance-tuning](../../Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — binary log retention and GTID-based replication that a [MySQL](../../Backend/mysql/SKILL.md)/MariaDB point-in-time recovery strategy depends on.
 - [mongodb-operations-and-scaling](../[mongodb-operations-and-scaling](../[mongodb](../../Backend/mongodb/SKILL.md)-operations-and-scaling/SKILL.md)/SKILL.md) — oplog window sizing, which directly bounds how far back `mongodump --oplog`-based point-in-time recovery can reach.
 - [timescaledb-time-series-operations-and-configuration](../[timescaledb-time-series-operations-and-configuration](../timescaledb-time-series-operations-and-configuration/SKILL.md)/SKILL.md) — retention policies there permanently drop chunks; this skill's archive-before-drop discipline is the safety net that should precede enabling one on data with any retention requirement.

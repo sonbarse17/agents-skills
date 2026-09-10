@@ -282,7 +282,7 @@ function lzReceive(
 ```
 
 ### Wormhole Guardian Quorum
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Wormhole uses 19 guardians (N=19, threshold=13/19)
 // Each guardian observes emitted messages on each chain
 // Guardian signs verified Observation → VAAs (Verified Action Approval)

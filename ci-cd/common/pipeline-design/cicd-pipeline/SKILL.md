@@ -48,7 +48,7 @@ Design and implement CI/CD pipelines with proper stages, dependency caching, par
 | Cache | actions/cache | cache: keyword | Plugin | Store/cache |
 | Artifacts | Built-in | Built-in | Built-in | Built-in |
 | Pricing | Free: 2000 min/mo | Free: 400 min/mo | Free | Free: 6000 min/mo |
-| Best for | Open source, [GitHub](../../../github-actions/other/github/SKILL.md)-native | [Monorepo](../../../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md), GitLab-native | Complex enterprise | Performance-focused |
+| Best for | Open source, [GitHub](../../../github-actions/other/github/SKILL.md)-native | [Monorepo](../../../../Software_Engineering_and_Other/Frontend/build-tools/monorepo/SKILL.md), GitLab-native | Complex enterprise | Performance-focused |
 
 ### Pipeline Stage Decisions
 | Stage | When to Include | Estimated Time | Fail Fast |

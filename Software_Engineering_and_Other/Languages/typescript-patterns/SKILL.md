@@ -30,7 +30,7 @@ depends_on:
   - cost
 ---
 
-# [TypeScript](../../Frontend/typescript/SKILL.md) Patterns for Frontend
+# [TypeScript](../../Frontend/common/typescript/SKILL.md) Patterns for Frontend
 
 ## Purpose
 Write type-safe frontend code with generic components, typed API clients, discriminated unions for state, and reliable type guards.
@@ -38,7 +38,7 @@ Write type-safe frontend code with generic components, typed API clients, discri
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "[TypeScript](../../Frontend/typescript/SKILL.md) patterns", "generic components", "type-safe API", "discriminated unions", "type guards", "type narrowing", "TS patterns", "type-safe React".
+Exact user phrases: "[TypeScript](../../Frontend/common/typescript/SKILL.md) patterns", "generic components", "type-safe API", "discriminated unions", "type guards", "type narrowing", "TS patterns", "type-safe React".
 
 ### Input Context
 Before activating, verify:
@@ -46,7 +46,7 @@ Before activating, verify:
 - Whether the focus is on components, API clients, or state types.
 
 ### Output Artifact
-No file output. Produces [TypeScript](../../Frontend/typescript/SKILL.md) pattern implementations as text.
+No file output. Produces [TypeScript](../../Frontend/common/typescript/SKILL.md) pattern implementations as text.
 
 ### Response Format
 ```
@@ -68,7 +68,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 ### Max Response Length
 4096 tokens.
 
-## [TypeScript](../../Frontend/typescript/SKILL.md) Architecture / Decision Trees
+## [TypeScript](../../Frontend/common/typescript/SKILL.md) Architecture / Decision Trees
 
 ### Pattern Selection Decision Tree
 ```
@@ -101,7 +101,7 @@ What type of code are you writing?
 ```
 Can the value's shape change at runtime?
   |-- NO (statically known) -->
-  |     Plain [TypeScript](../../Frontend/typescript/SKILL.md) interface or type is sufficient
+  |     Plain [TypeScript](../../Frontend/common/typescript/SKILL.md) interface or type is sufficient
   |     No runtime validation needed
   |
   |-- YES (API response, user input, localStorage) -->
@@ -388,7 +388,7 @@ async function createUser(data: { name: string; email?: string } | FormData): Pr
   return api.post('/users', data)
 }
 
-// Usage — [TypeScript](../../Frontend/typescript/SKILL.md) picks the right overload
+// Usage — [TypeScript](../../Frontend/common/typescript/SKILL.md) picks the right overload
 createUser({ name: 'Alice', email: 'alice@example.com' }) // overload 1
 createUser(formData) // overload 2
 createUser({ name: 'Alice' }) // overload 3 (minimal)
@@ -495,7 +495,7 @@ function getLength<T extends { length: number }>(value: T): number {
 
 ### 2. Using `as` Instead of Runtime Validation
 ```tsx
-// BAD -- lies to [TypeScript](../../Frontend/typescript/SKILL.md), runtime may differ
+// BAD -- lies to [TypeScript](../../Frontend/common/typescript/SKILL.md), runtime may differ
 const user = data as User
 
 // GOOD -- parse at boundary, type is guaranteed
@@ -555,7 +555,7 @@ function getName(user: User | null): string {
 
 ## Performance Considerations
 
-- [TypeScript](../../Frontend/typescript/SKILL.md) types are erased at compile time — zero runtime cost
+- [TypeScript](../../Frontend/common/typescript/SKILL.md) types are erased at compile time — zero runtime cost
 - Zod validation adds ~0.01-0.1ms per simple object parse
 - Discriminated unions are just objects with a discriminator field — no overhead
 - Branded types are zero-cost (just an intersection at type level)
@@ -565,7 +565,7 @@ function getName(user: User | null): string {
 
 ## Accessibility Considerations
 
-- [TypeScript](../../Frontend/typescript/SKILL.md) has no direct accessibility implications
+- [TypeScript](../../Frontend/common/typescript/SKILL.md) has no direct accessibility implications
 - Well-typed components with constrained props (ButtonVariant, ButtonSize) are easier to make accessible — the type system guides correct usage
 - Discriminated unions for UI state ensure all states are handled, including accessibility-relevant states (loading, error, empty)
 
@@ -582,18 +582,18 @@ function getName(user: User | null): string {
 - Discriminated unions over boolean flags for mutually exclusive states.
 - Prefer `zod` schema parsing at API boundaries over raw `as` casts.
 - Type guards must be runtime-safe (check actual values), not just type-level assertions.
-- Exhaustive `switch` on the `status` field — [TypeScript](../../Frontend/typescript/SKILL.md) will error if a variant is unhandled.
+- Exhaustive `switch` on the `status` field — [TypeScript](../../Frontend/common/typescript/SKILL.md) will error if a variant is unhandled.
 - Prefer `satisfies` over `as` when constraining a value to a type while keeping its literal type.
 - Avoid deep conditional type recursion — prefer mapped types for object transformations.
 - Never use non-null assertions (`!`) without a preceding null check.
 
 ## References
-  - ../../../Global_References/ts-generics-patterns.md — [TypeScript](../../Frontend/typescript/SKILL.md) Generics Patterns
-  - ../../../Global_References/ts-react-patterns.md — [TypeScript](../../Frontend/typescript/SKILL.md) React Patterns
-  - ../../../Global_References/ts-type-safety.md — [TypeScript](../../Frontend/typescript/SKILL.md) Type Safety Patterns
-  - ../../../Global_References/ts-utility-types.md — [TypeScript](../../Frontend/typescript/SKILL.md) Utility Types
-  - ../../../Global_References/[typescript](../../Frontend/typescript/SKILL.md)-advanced.md — Advanced [TypeScript](../../Frontend/typescript/SKILL.md)
-  - ../../../Global_References/[typescript](../../Frontend/typescript/SKILL.md)-config.md — [TypeScript](../../Frontend/typescript/SKILL.md) Configuration
+  - ../../../Global_References/ts-generics-patterns.md — [TypeScript](../../Frontend/common/typescript/SKILL.md) Generics Patterns
+  - ../../../Global_References/ts-react-patterns.md — [TypeScript](../../Frontend/common/typescript/SKILL.md) React Patterns
+  - ../../../Global_References/ts-type-safety.md — [TypeScript](../../Frontend/common/typescript/SKILL.md) Type Safety Patterns
+  - ../../../Global_References/ts-utility-types.md — [TypeScript](../../Frontend/common/typescript/SKILL.md) Utility Types
+  - ../../../Global_References/[typescript](../../Frontend/common/typescript/SKILL.md)-advanced.md — Advanced [TypeScript](../../Frontend/common/typescript/SKILL.md)
+  - ../../../Global_References/[typescript](../../Frontend/common/typescript/SKILL.md)-config.md — [TypeScript](../../Frontend/common/typescript/SKILL.md) Configuration
 ## Handoff
 No artifact produced.
 Next skill: `error-handling` — wrap API responses with typed error boundaries.

@@ -19,7 +19,7 @@ Manage Stripe subscription lifecycles securely via robust webhook handling and I
 3. **Async Webhook Processing**: Acknowledge the webhook with a `200 OK` immediately, then process the event asynchronously.
 
 ## Code Snippet: Webhook Handler
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import Stripe from 'stripe';
 import { buffer } from 'micro';
 

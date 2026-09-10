@@ -13,7 +13,7 @@ depends_on:
 
 # [Python](../python/SKILL.md) Performance Optimization
 
-Comprehensive guide to [profiling](../../Frontend/profiling/SKILL.md), analyzing, and optimizing [Python](../python/SKILL.md) code for better performance, including CPU [profiling](../../Frontend/profiling/SKILL.md), memory optimization, and implementation best practices.
+Comprehensive guide to [profiling](../../Frontend/performance/profiling/SKILL.md), analyzing, and optimizing [Python](../python/SKILL.md) code for better performance, including CPU [profiling](../../Frontend/performance/profiling/SKILL.md), memory optimization, and implementation best practices.
 
 ## When to Use This Skill
 
@@ -25,15 +25,15 @@ Comprehensive guide to [profiling](../../Frontend/profiling/SKILL.md), analyzing
 - Optimizing I/O operations
 - Speeding up data processing pipelines
 - Implementing high-performance algorithms
-- [Profiling](../../Frontend/profiling/SKILL.md) production applications
+- [Profiling](../../Frontend/performance/profiling/SKILL.md) production applications
 
 ## Core Concepts
 
-### 1. [Profiling](../../Frontend/profiling/SKILL.md) Types
+### 1. [Profiling](../../Frontend/performance/profiling/SKILL.md) Types
 
-- **CPU [Profiling](../../Frontend/profiling/SKILL.md)**: Identify time-consuming functions
-- **Memory [Profiling](../../Frontend/profiling/SKILL.md)**: Track memory allocation and leaks
-- **Line [Profiling](../../Frontend/profiling/SKILL.md)**: Profile at line-by-line granularity
+- **CPU [Profiling](../../Frontend/performance/profiling/SKILL.md)**: Identify time-consuming functions
+- **Memory [Profiling](../../Frontend/performance/profiling/SKILL.md)**: Track memory allocation and leaks
+- **Line [Profiling](../../Frontend/performance/profiling/SKILL.md)**: Profile at line-by-line granularity
 - **Call Graph**: Visualize function call relationships
 
 ### 2. Performance Metrics
@@ -98,7 +98,7 @@ Detailed pattern documentation lives in `../../../Global_References/[python](../
 
 ## Common Pitfalls
 
-- Optimizing without [profiling](../../Frontend/profiling/SKILL.md)
+- Optimizing without [profiling](../../Frontend/performance/profiling/SKILL.md)
 - Using global variables unnecessarily
 - Not using appropriate data structures
 - Creating unnecessary copies of data

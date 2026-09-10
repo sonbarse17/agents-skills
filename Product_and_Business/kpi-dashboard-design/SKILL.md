@@ -158,5 +158,5 @@ def is_anomalous(current: float, history: list[float]) -> bool:
 
 ## Related Skills
 
-- `[data-storytelling](../../Software_Engineering_and_Other/Frontend/data-storytelling/SKILL.md)` - Turn dashboard findings into narratives that drive executive decisions
+- `[data-storytelling](../data-storytelling/SKILL.md)` - Turn dashboard findings into narratives that drive executive decisions
 

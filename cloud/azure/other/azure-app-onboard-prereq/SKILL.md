@@ -89,7 +89,7 @@ Scan for project files. Detect components, `repo{}`, `detectedInfra[]`, `detecte
 | 3.1 | **Build check** | ⛔ **You MUST read [build-check.md](../../../../Global_References/build-check.md)** |
 | 3.2 | **Completeness check** | ⛔ **You MUST read [completeness-check.md](../../../../Global_References/completeness-check.md)** |
 | 3.3 | **Deployability check** | ⛔ **You MUST read [deployability-check.md](../../../../Global_References/deployability-check.md)** |
-| 3.3a | **Component mapping** (conditional) | Read [component-mapping.md](../../../../Global_References/component-mapping.md) ONLY IF >1 project manifest found ([monorepo](../../../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md)) |
+| 3.3a | **Component mapping** (conditional) | Read [component-mapping.md](../../../../Global_References/component-mapping.md) ONLY IF >1 project manifest found ([monorepo](../../../../Software_Engineering_and_Other/Frontend/build-tools/monorepo/SKILL.md)) |
 
 Populate `buildRequirements` per component after evaluation. Verdict propagation, tier rules, and f1Viable aggregation are in [readiness-gate.md](../../../../Global_References/readiness-gate.md) and the individual check references.
 

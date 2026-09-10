@@ -19,7 +19,7 @@ depends_on:
   - opentelemetry
 ---
 
-# Azure Monitor [OpenTelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md) SDK for [TypeScript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+# Azure Monitor [OpenTelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md) SDK for [TypeScript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 
 Auto-instrument Node.js applications with distributed tracing, metrics, and logs.
 
@@ -47,7 +47,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 **IMPORTANT:** Call `useAzureMonitor()` BEFORE importing other modules.
 
-```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { useAzureMonitor } from "@azure/monitor-[opentelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md)";
 
 useAzureMonitor({
@@ -78,7 +78,7 @@ node --import @azure/monitor-[opentelemetry](../../../opentelemetry/other/opente
 
 ## Full Configuration
 
-```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { useAzureMonitor, AzureMonitorOpenTelemetryOptions } from "@azure/monitor-[opentelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md)";
 import { resourceFromAttributes } from "@[opentelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md)/resources";
 
@@ -118,7 +118,7 @@ useAzureMonitor(options);
 
 ## Custom Traces
 
-```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { trace } from "@[opentelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md)/api";
 
 const tracer = trace.getTracer("my-tracer");
@@ -141,7 +141,7 @@ try {
 
 ## Custom Metrics
 
-```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { metrics } from "@[opentelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md)/api";
 
 const meter = metrics.getMeter("my-meter");
@@ -165,7 +165,7 @@ gauge.addCallback((result) => {
 
 ### Trace Exporter
 
-```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { AzureMonitorTraceExporter } from "@azure/monitor-[opentelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md)-exporter";
 import { NodeTracerProvider, BatchSpanProcessor } from "@[opentelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md)/sdk-trace-node";
 
@@ -182,7 +182,7 @@ provider.register();
 
 ### Metric Exporter
 
-```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { AzureMonitorMetricExporter } from "@azure/monitor-[opentelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md)-exporter";
 import { PeriodicExportingMetricReader, MeterProvider } from "@[opentelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md)/sdk-metrics";
 import { metrics } from "@[opentelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md)/api";
@@ -200,7 +200,7 @@ metrics.setGlobalMeterProvider(meterProvider);
 
 ### Log Exporter
 
-```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { AzureMonitorLogExporter } from "@azure/monitor-[opentelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md)-exporter";
 import { BatchLogRecordProcessor, LoggerProvider } from "@[opentelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md)/sdk-logs";
 import { logs } from "@[opentelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md)/api-logs";
@@ -217,7 +217,7 @@ logs.setGlobalLoggerProvider(loggerProvider);
 
 ## Custom Logs Ingestion
 
-```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { DefaultAzureCredential, ManagedIdentityCredential } from "@azure/identity";
 import { LogsIngestionClient, isAggregateLogsUploadError } from "@azure/monitor-ingestion";
 
@@ -255,7 +255,7 @@ try {
 
 ## Custom Span Processor
 
-```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { SpanProcessor, ReadableSpan } from "@[opentelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md)/sdk-trace-base";
 import { Span, Context, SpanKind, TraceFlags } from "@[opentelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md)/api";
 import { useAzureMonitor } from "@azure/monitor-[opentelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md)";
@@ -283,7 +283,7 @@ useAzureMonitor({
 
 ## Sampling
 
-```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { ApplicationInsightsSampler } from "@azure/monitor-[opentelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md)-exporter";
 import { NodeTracerProvider } from "@[opentelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md)/sdk-trace-node";
 
@@ -295,7 +295,7 @@ const provider = new NodeTracerProvider({ sampler });
 
 ## Shutdown
 
-```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { useAzureMonitor, shutdownAzureMonitor } from "@azure/monitor-[opentelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md)";
 
 useAzureMonitor();
@@ -309,7 +309,7 @@ process.on("SIGTERM", async () => {
 
 ## Key Types
 
-```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import {
   useAzureMonitor,
   shutdownAzureMonitor,

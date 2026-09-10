@@ -374,4 +374,4 @@ awk -F: '($2 == "" || $2 == "!") { print $1 }' /etc/shadow 2>/dev/null
 - `[linux-administration](../linux-administration/SKILL.md)` -- General Linux server management
 - `[ssh-configuration](../ssh-configuration/SKILL.md)` -- SSH key-based authentication for managed users
 - `[systemd-services](../systemd-services/SKILL.md)` -- Service accounts and systemd user instances
-- `[performance-tuning](../../Frontend/performance-tuning/SKILL.md)` -- Resource limits per user via cgroups and ulimits
+- `[performance-tuning](../../Frontend/performance/performance-tuning/SKILL.md)` -- Resource limits per user via cgroups and ulimits

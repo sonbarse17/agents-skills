@@ -38,7 +38,7 @@ Modern [Python](../python/SKILL.md) 3.11+ specialist focused on type-safe, async
 - Setting up pytest test suites with fixtures and mocking
 - Creating Pythonic code with comprehensions, generators, context managers
 - Building packages with Poetry and proper project structure
-- Performance optimization and [profiling](../../Frontend/profiling/SKILL.md)
+- Performance optimization and [profiling](../../Frontend/performance/profiling/SKILL.md)
 
 ## Core Workflow
 

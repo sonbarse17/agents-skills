@@ -236,7 +236,7 @@ final storage = FlutterSecureStorage();
 await storage.write(key: 'token', value: token);
 ```
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // RN: react-native-keychain
 await Keychain.setGenericPassword('token', token);
 ```
@@ -439,7 +439,7 @@ class BiometricHelper(private val activity: FragmentActivity) {
 ```
 
 ### OAuth2 PKCE Flow
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // React Native — OAuth2 with PKCE
 import { authorize } from 'react-native-app-auth';
 

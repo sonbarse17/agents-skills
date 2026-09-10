@@ -34,7 +34,7 @@ optionally by an additional "space" dimension) on top of ordinary
 retention policies purpose-built for time-series workloads (metrics,
 events, IoT telemetry, financial ticks). Because it's a normal
 [PostgreSQL](../../Backend/postgresql/SKILL.md) table underneath, everything in
-[postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../Frontend/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md)
+[postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md)
 (vacuum, replication, connection pooling, `EXPLAIN`-driven index tuning)
 still applies unchanged — this skill covers only what's genuinely
 different: chunk sizing, continuous aggregates, and compression/
@@ -221,7 +221,7 @@ SELECT add_retention_policy('metrics', INTERVAL '90 days');
 > "however far back we currently look at"), and confirm any required
 > long-term archive (e.g. exporting older chunks to object storage
 > before they're dropped) is in place and tested first — see
-> [database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies](../database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md)
+> [database-[backup-and-restore](../../../containers-orchestration/common/other/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies](../database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md)
 > for archive/restore-testing discipline. Retention drops whole chunks
 > at a time, which is efficient (equivalent to `DROP TABLE` on the
 > underlying chunk, not a scanning `DELETE`) but also means the
@@ -251,7 +251,7 @@ SELECT add_retention_policy('metrics', INTERVAL '90 days');
   `pg_stat_statements`-driven query analysis, connection pooling)
   applied to the underlying database — a hypertable doesn't exempt the
   instance from anything in
-  [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../Frontend/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md).
+  [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md).
 - Monitor background job execution (`timescaledb_information.jobs` and
   `job_stats`) for compression/retention/continuous-aggregate policies —
   a policy that silently stops running (e.g. due to a crashed background
@@ -374,7 +374,7 @@ several billion rows over the past year.
 
 ## Cross-references
 
-- [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../Frontend/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — the underlying [PostgreSQL](../../Backend/postgresql/SKILL.md) vacuum, replication, and query-tuning practice that still applies unchanged to a hypertable's constituent chunk tables.
+- [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — the underlying [PostgreSQL](../../Backend/postgresql/SKILL.md) vacuum, replication, and query-tuning practice that still applies unchanged to a hypertable's constituent chunk tables.
 - [postgresql-configuration-validation](../[postgresql-configuration-validation](../../Miscellaneous/[postgresql](../../Backend/postgresql/SKILL.md)-configuration-validation/SKILL.md)/SKILL.md) — validates the `shared_preload_libraries`/memory settings change required to enable the TimescaleDB extension before it reaches production.
 - [clickhouse-analytical-database-operations](../[clickhouse-analytical-database-operations](../clickhouse-analytical-[database-operations](../database-operations/SKILL.md)/SKILL.md)/SKILL.md) — a purpose-built OLAP alternative for time-series/analytical workloads when a [PostgreSQL](../../Backend/postgresql/SKILL.md)-based extension no longer scales for the required ingest rate or query concurrency.
-- [database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies](../database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md) — archive-before-drop discipline for data that a TimescaleDB retention policy would otherwise permanently delete.
+- [database-[backup-and-restore](../../../containers-orchestration/common/other/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies](../database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md) — archive-before-drop discipline for data that a TimescaleDB retention policy would otherwise permanently delete.

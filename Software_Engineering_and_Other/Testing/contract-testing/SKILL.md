@@ -52,7 +52,7 @@ Contract testing setup with Pact consumer tests, provider verification, and CI p
 # Contract architecture: consumers, providers, interactions
 # Pact Broker configuration
 ```
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Consumer test example
 // Provider verification setup
 ```
@@ -76,7 +76,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 ### Pact Overview
 Pact is a consumer-driven contract testing framework. The consumer defines the expected interaction (request + response) in a test. Pact generates a contract file from the consumer test. The contract is published to a Pact Broker. The provider fetches the contract and verifies it against the actual API. If verification fails, the provider cannot deploy.
 
-### Consumer Test Setup ([TypeScript](../../Frontend/typescript/SKILL.md))
+### Consumer Test Setup ([TypeScript](../../Frontend/common/typescript/SKILL.md))
 Consumer tests define the expected request and response for each API interaction. Tests run against a mock provider started by Pact. Each interaction specifies: a description of what the consumer expects to receive, the provider state that must be set up before verification, the request details (method, path, headers, body), and the expected response (status, headers, body).
 
 ### Provider Verification Setup
@@ -106,7 +106,7 @@ For messaging contracts, Pact supports message pacts. A message pact defines the
 Install Pact CLI and Pact library for each language: `@pact-foundation/pact` (JS), `pact` (Ruby), `pact-jvm` (JVM), `pact-[python](../../Languages/python/SKILL.md)`. Deploy Pact Broker (OSS or PactFlow SaaS) for contract sharing. Each consumer-provider pair has exactly one set of contracts.
 
 ### Step 2: Consumer Test
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // consumer test (order-service tests payment-service)
 await provider.addInteraction({
   state: "a payment exists",
@@ -213,8 +213,8 @@ Provider Service Development
 
 ## Contract Testing Examples
 
-### [TypeScript](../../Frontend/typescript/SKILL.md) — Consumer Test with Pact
-```[typescript](../../Frontend/typescript/SKILL.md)
+### [TypeScript](../../Frontend/common/typescript/SKILL.md) — Consumer Test with Pact
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // consumer/order-service/src/__tests__/payment-client.pact.test.ts
 import { PactV3, MatchersV3 } from "@pact-foundation/pact";
 import { PaymentClient } from "../payment-client";
@@ -517,7 +517,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/performance/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -533,7 +533,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### [Profiling](../../Frontend/profiling/SKILL.md) Methodology
+### [Profiling](../../Frontend/performance/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking

@@ -140,7 +140,7 @@ const jobs = [
 ```
 
 ### Step 2: Ensure Exactly-Once Execution (Distributed)
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Option A: Distributed lock (Redis)
 class DistributedCron {
   constructor(private redis: Redis, private lockTTL: number = 60000) {}
@@ -206,7 +206,7 @@ async function executeWithPgLock(job: Job): Promise<void> {
 ```
 
 ### Step 3: Handle Timezones and DST
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import { DateTime } from 'luxon';
 
 function isDue(job: Job, lastRun: Date | null): boolean {
@@ -247,7 +247,7 @@ function handleDSTTransition(job: Job): boolean {
 ```
 
 ### Step 4: Retry Failed Jobs
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 class JobRunner {
   async executeWithRetry(job: Job): Promise<void> {
     for (let attempt = 1; attempt <= (job.retry?.maxAttempts ?? 1); attempt++) {
@@ -269,7 +269,7 @@ class JobRunner {
 ```
 
 ### Step 5: Monitor Jobs
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Expose metrics for every job
 interface JobMetrics {
   duration: number;        // Execution time in ms
@@ -289,7 +289,7 @@ interface JobMetrics {
 ## Implementation Patterns
 
 ### Dynamic Job Registration
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 class JobRegistry {
   private jobs = new Map<string, Job>();
   private scheduler: DistributedScheduler;
@@ -482,7 +482,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/performance/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -498,7 +498,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### [Profiling](../../Frontend/profiling/SKILL.md) Methodology
+### [Profiling](../../Frontend/performance/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking

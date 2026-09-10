@@ -516,7 +516,7 @@ cassandra_modeling:
   - ../../../Global_References/dynamodb-couchbase.md — DynamoDB and Couchbase Reference
   - ../../../Global_References/[mongodb](../../Backend/mongodb/SKILL.md)-cassandra.md — [MongoDB](../../Backend/mongodb/SKILL.md) and Cassandra Reference
   - ../../../Global_References/nosql-cap-theorem.md — NoSQL CAP Theorem
-  - ../../../Global_References/nosql-[performance-tuning](../../Frontend/performance-tuning/SKILL.md).md — NoSQL Performance Tuning
+  - ../../../Global_References/nosql-[performance-tuning](../../Frontend/performance/performance-tuning/SKILL.md).md — NoSQL Performance Tuning
   - ../../../Global_References/wide-column.md — Wide-Column Database Reference
   - ../../../Global_References/nosql-[data-modeling](../../../Data_Engineering/data-modeling/SKILL.md).md — Data modeling patterns for NoSQL databases
   - ../../../Global_References/nosql-query-optimization.md — Query optimization and indexing strategies

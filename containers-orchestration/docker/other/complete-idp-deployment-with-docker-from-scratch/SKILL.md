@@ -129,7 +129,7 @@ service building blocks.** Run Dapr via `dapr init` in self-hosted mode
 and add a `daprd` sidecar container to each service's Compose block
 (pointing at the app container's port via `--app-port`), rather than the
 [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) annotation-based sidecar injection
-[dapr-distributed-runtime-configuration](../../../[serverless](../serverless/SKILL.md)-and-alternative-compute/skills/[dapr-distributed-runtime-configuration](../../../../Software_Engineering_and_Other/Frontend/dapr-distributed-runtime-configuration/SKILL.md)/SKILL.md)
+[dapr-distributed-runtime-configuration](../../../[serverless](../serverless/SKILL.md)-and-alternative-compute/skills/[dapr-distributed-runtime-configuration](../../../common/other/dapr-distributed-runtime-configuration/SKILL.md)/SKILL.md)
 covers — **that skill's injection-annotation steps do not apply here**;
 its state-store, pub/sub, and service-invocation *component YAML* and
 resiliency-policy concepts do, unchanged, since Dapr's component model is
@@ -243,7 +243,7 @@ to keep bolting ad hoc automation onto Compose.
   matches across all services — self-hosted mode's failure surface is
   different from the annotation-based [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) injection most Dapr
   troubleshooting content (including
-  [dapr-distributed-runtime-configuration](../../../[serverless](../serverless/SKILL.md)-and-alternative-compute/skills/[dapr-distributed-runtime-configuration](../../../../Software_Engineering_and_Other/Frontend/dapr-distributed-runtime-configuration/SKILL.md)/SKILL.md))
+  [dapr-distributed-runtime-configuration](../../../[serverless](../serverless/SKILL.md)-and-alternative-compute/skills/[dapr-distributed-runtime-configuration](../../../common/other/dapr-distributed-runtime-configuration/SKILL.md)/SKILL.md))
   assumes.
 
 - **Symptom:** The manual PR-review self-service model (Phase 5) becomes
@@ -311,7 +311,7 @@ set up by hand.
 
 - [no-code-idp-[service-catalog](../../../common/other/service-catalog/SKILL.md)-tools-port-cortex-opslevel](../[no-code-idp-[service-catalog](../../Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel](../../Observability_and_SecOps/no-code-idp-[service-catalog](../../Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel/SKILL.md)/SKILL.md), [backstage-plugin-development](../[backstage-plugin-development](../../../Software_Engineering_and_Other/Backend/backstage-plugin-development/SKILL.md)/SKILL.md) — Phase 1.
 - [golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../../../Product_and_Business/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md), [golden-path-template-validation-and-testing](../[golden-path-template-validation-and-testing](../../CI_CD/golden-path-template-validation-and-testing/SKILL.md)/SKILL.md) — Phase 2.
-- [dapr-distributed-runtime-configuration](../../../[serverless](../serverless/SKILL.md)-and-alternative-compute/skills/[dapr-distributed-runtime-configuration](../../../../Software_Engineering_and_Other/Frontend/dapr-distributed-runtime-configuration/SKILL.md)/SKILL.md), [dapr-configuration-validation](../../../[serverless](../serverless/SKILL.md)-and-alternative-compute/skills/[dapr-configuration-validation](../../../common/other/dapr-configuration-validation/SKILL.md)/SKILL.md) — Phase 3.
+- [dapr-distributed-runtime-configuration](../../../[serverless](../serverless/SKILL.md)-and-alternative-compute/skills/[dapr-distributed-runtime-configuration](../../../common/other/dapr-distributed-runtime-configuration/SKILL.md)/SKILL.md), [dapr-configuration-validation](../../../[serverless](../serverless/SKILL.md)-and-alternative-compute/skills/[dapr-configuration-validation](../../../common/other/dapr-configuration-validation/SKILL.md)/SKILL.md) — Phase 3.
 - [service-scorecards-and-maturity-model-design](../[service-scorecards-and-maturity-model-design](../../../Product_and_Business/service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md) — Phase 4.
 - [platform-self-service-api-and-workflow-design](../[platform-self-service-api-and-workflow-design](../../../Product_and_Business/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md) — Phase 5, referenced to show what's deliberately not implemented here.
 - [multi-tenancy-and-team-workspace-design-for-idp](../[multi-tenancy-and-team-workspace-design-for-idp](../../../Software_Engineering_and_Other/Miscellaneous/[multi-tenancy](../multi-tenancy/SKILL.md)-and-team-workspace-design-for-idp/SKILL.md)/SKILL.md) — the isolation model this variant lacks.

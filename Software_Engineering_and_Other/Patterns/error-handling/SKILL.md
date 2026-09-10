@@ -163,7 +163,7 @@ What type of error is this?
 ```
 
 ### 2. React Error Boundary Component
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import { Component, ErrorInfo, ReactNode } from 'react'
 
 interface Props { fallback?: ReactNode; onError?: (error: Error, info: ErrorInfo) => void; children: ReactNode }
@@ -193,7 +193,7 @@ class ErrorBoundary extends Component<Props, State> {
 ```
 
 ### 3. Fallback UI
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 function DefaultFallback({ error, onRetry }: { error: Error | null; onRetry: () => void }) {
   return (
     <div role="alert" className="error-fallback">
@@ -211,7 +211,7 @@ function DefaultFallback({ error, onRetry }: { error: Error | null; onRetry: () 
 ```
 
 ### 4. Async Error Handling
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 function useAsyncError() {
   const [, setError] = useState<Error | null>(null)
   return (error: Error) => {
@@ -232,7 +232,7 @@ function DataComponent() {
 ```
 
 ### 5. Reporting Integration ([Sentry](../../../observability-monitoring-logging/sentry/other/sentry/SKILL.md))
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import * as [Sentry](../../../observability-monitoring-logging/sentry/other/sentry/SKILL.md) from '@[sentry](../../../observability-monitoring-logging/sentry/other/sentry/SKILL.md)/react'
 
 [Sentry](../../../observability-monitoring-logging/sentry/other/sentry/SKILL.md).init({
@@ -253,7 +253,7 @@ import * as [Sentry](../../../observability-monitoring-logging/sentry/other/sent
 ```
 
 ### 6. Graceful Degradation
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Widget-level degradation
 function WeatherWidget() {
   const { data, error, isLoading } = useWeatherData()
@@ -274,7 +274,7 @@ function WidgetError({ message, type }: { message: string; type: 'critical' | 'n
 ```
 
 ### 7. Global Error & Promise Rejection Handling
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 window.addEventListener('error', (event) => {
   reportError(event.error ?? new Error(event.message), { type: 'uncaught-error' })
 })
@@ -286,7 +286,7 @@ window.addEventListener('unhandledrejection', (event) => {
 ```
 
 ### 8. Retry with Exponential Backoff
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 async function retryWithBackoff<T>(
   fn: () => Promise<T>,
   maxRetries = 3,
@@ -306,7 +306,7 @@ async function retryWithBackoff<T>(
 ```
 
 ### 9. Vue Error Handler
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import { createApp } from 'vue'
 
 const app = createApp(App)
@@ -325,7 +325,7 @@ app.config.warnHandler = (msg, instance, trace) => {
 ```
 
 ### 10. Angular ErrorHandler
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import { ErrorHandler, Injectable } from '@angular/core'
 
 @Injectable()
@@ -340,7 +340,7 @@ export class GlobalErrorHandler implements ErrorHandler {
 ```
 
 ### 11. Error Tracking Context Enrichment
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 function reportError(error: Error, context?: Record<string, unknown>) {
   const enrichedContext = {
     ...context,
@@ -362,7 +362,7 @@ function reportError(error: Error, context?: Record<string, unknown>) {
 ## Common Pitfalls
 
 ### 1. Catching and Silencing
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // BAD -- silently swallowed error
 try { await fetchData() } catch (e) { /* nothing */ }
 
@@ -377,7 +377,7 @@ try { await fetchData() } catch (e) {
 Error boundaries do NOT catch errors in event handlers, setTimeout callbacks, or async/await (without the throw-in-render pattern). Always wrap event handlers in try/catch.
 
 ### 3. Infinite Retry Loops
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // BAD -- infinite retry
 <button onClick={() => boundary.reset()}>Retry</button>
 // Component crashes again immediately -> boundary catches -> user clicks retry -> infinite
@@ -519,7 +519,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/performance/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -535,7 +535,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### [Profiling](../../Frontend/profiling/SKILL.md) Methodology
+### [Profiling](../../Frontend/performance/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking

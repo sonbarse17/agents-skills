@@ -122,8 +122,8 @@ Validates riskiest assumptions first:
 
 ```
 Phase 1 (Weeks 1-6): RISKIEST ASSUMPTION
-  → "Developers will adopt our API if it has [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) SDK"
-  → Build: Minimal [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) SDK + 5 reference integrations
+  → "Developers will adopt our API if it has [TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) SDK"
+  → Build: Minimal [TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) SDK + 5 reference integrations
   → Validate: 10 developer interviews, adoption analytics
 
 Phase 2 (Weeks 7-12): NEXT RISKIEST
@@ -151,7 +151,7 @@ RICE Score = (Reach × Impact × Confidence) / Effort
 ```
 
 ```yaml
-initiative: API [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) SDK
+initiative: API [TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) SDK
   reach: 5000 developers/month
   impact: 2x (high — reduces integration time)
   confidence: 80% (validated by developer interviews)
@@ -232,7 +232,7 @@ Key Results:
 Initiatives → KR Mapping:
   - Self-service developer portal    → KR1, KR2
   - Interactive API documentation    → KR3
-  - [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)/[Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)/Go SDKs        → KR1, KR4
+  - [TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)/[Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)/Go SDKs        → KR1, KR4
   - Automated onboarding email flow  → KR1
   - Developer community forum        → KR2
 ```
@@ -601,7 +601,7 @@ risk_communication:
   examples:
     - "If we invest in multi-region, then we must delay the mobile SDK by one quarter."
     - "If the security [audit](../../AI_and_Agents/Operations/audit/SKILL.md) reveals critical findings, then we will reprioritize Q3 scope."
-    - "If the [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) SDK pilot shows strong adoption, then we will accelerate [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) and Go SDKs."
+    - "If the [TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) SDK pilot shows strong adoption, then we will accelerate [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) and Go SDKs."
 
   when_to_communicate:
     - After each quarterly planning cycle

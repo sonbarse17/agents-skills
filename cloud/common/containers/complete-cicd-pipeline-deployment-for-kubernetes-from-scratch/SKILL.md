@@ -80,7 +80,7 @@ reintroduce direct cluster credentials into CI.
 - SAST/SCA tooling chosen per
   [sast-integration](../../../../Security/devsecops/SKILL.md)/skills/[sast-integration](../../../../Security/sast-integration/SKILL.md)/SKILL.md)
   and
-  [software-composition-analysis-sca](../../../../Security/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md).
+  [software-composition-analysis-sca](../../../../Security/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../../Security/software-composition-analysis-sca/SKILL.md)/SKILL.md).
 
 ## Step-by-step guidance
 
@@ -91,7 +91,7 @@ Standard trigger/concurrency setup per
 and
 [github-actions-single-repo-workflows](../[github-actions-single-repo-workflows](../../CI_CD/[github-actions](../../CI_CD/[github](../../CI_CD/github/SKILL.md)-actions/SKILL.md)-single-repo-workflows/SKILL.md)/SKILL.md):
 run the full pipeline on PRs and pushes to `main`, path-filtered in a
-[monorepo](../../../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md).
+[monorepo](../../../../Software_Engineering_and_Other/Frontend/build-tools/monorepo/SKILL.md).
 
 ### Phase 2 — Build the container image
 
@@ -108,7 +108,7 @@ machine image, not a container layer).
 Per
 [sast-integration](../../../../Security/devsecops/SKILL.md)/skills/[sast-integration](../../../../Security/sast-integration/SKILL.md)/SKILL.md)
 and
-[software-composition-analysis-sca](../../../../Security/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md),
+[software-composition-analysis-sca](../../../../Security/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../../Security/software-composition-analysis-sca/SKILL.md)/SKILL.md),
 run diff-aware static analysis and a dependency/lockfile scan **before**
 the image is pushed anywhere — failing fast on a critical finding before
 spending registry storage and pipeline minutes on an image that won't
@@ -150,7 +150,7 @@ Only after Phase 3 passes:
             ghcr.io/example/payments-api:${{ [github](../../../../ci-cd/github-actions/other/github/SKILL.md).sha }}
 ```
 A follow-on image scan (per
-[software-composition-analysis-sca](../../../../Security/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md)'s
+[software-composition-analysis-sca](../../../../Security/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../../Security/software-composition-analysis-sca/SKILL.md)/SKILL.md)'s
 container-image scanning step) on the pushed digest catches base-image
 CVEs the filesystem scan in Phase 3 couldn't see.
 
@@ -324,7 +324,7 @@ the CI pipeline itself never held a cluster credential at any point.
 ## Cross-references
 
 - [container-build-and-release](../../../devops/skills/[container-build-and-release](../../Containers_and_Orchestration/container-build-and-release/SKILL.md)/SKILL.md) — Dockerfile/image-build mechanics used in Phase 2.
-- [sast-integration](../../../../Security/devsecops/SKILL.md)/skills/[sast-integration](../../../../Security/sast-integration/SKILL.md)/SKILL.md) and [software-composition-analysis-sca](../../../../Security/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md) — the Phase 3 scan mechanics.
+- [sast-integration](../../../../Security/devsecops/SKILL.md)/skills/[sast-integration](../../../../Security/sast-integration/SKILL.md)/SKILL.md) and [software-composition-analysis-sca](../../../../Security/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../../Security/software-composition-analysis-sca/SKILL.md)/SKILL.md) — the Phase 3 scan mechanics.
 - [github-actions-single-repo-workflows](../[github-actions-single-repo-workflows](../../CI_CD/[github-actions](../../CI_CD/[github](../../CI_CD/github/SKILL.md)-actions/SKILL.md)-single-repo-workflows/SKILL.md)/SKILL.md) and [jenkins-declarative-pipeline-per-repo](../[jenkins-declarative-pipeline-per-repo](../../CI_CD/[jenkins](../../CI_CD/jenkins/SKILL.md)-declarative-pipeline-per-repo/SKILL.md)/SKILL.md) — the concrete pipeline-authoring syntax this skill sequences.
 - [gitops-workflow](../../../devops/skills/[gitops-workflow](../../Containers_and_Orchestration/[gitops](../../Containers_and_Orchestration/gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md) — the [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md) handoff concept Phase 5 implements.
 - [argocd-application-configuration](../../../[gitops](../../Containers_and_Orchestration/gitops/SKILL.md)-argo-ecosystem/skills/[argocd-application-configuration](../../Containers_and_Orchestration/[argocd](../../Containers_and_Orchestration/argocd/SKILL.md)-application-configuration/SKILL.md)/SKILL.md) — the operator-side reconciliation that consumes this pipeline's manifests-repo [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md).

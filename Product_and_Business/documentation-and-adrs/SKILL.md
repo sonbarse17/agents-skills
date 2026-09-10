@@ -116,7 +116,7 @@ PROPOSED → ACCEPTED → (SUPERSEDED or DEPRECATED)
 
 Comment the *why*, not the *what*:
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // BAD: Restates the code
 // Increment counter by 1
 counter += 1;
@@ -132,7 +132,7 @@ if (now - windowStart > WINDOW_SIZE_MS) {
 
 ### When NOT to Comment
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Don't comment self-explanatory code
 function calculateTotal(items: CartItem[]): number {
   return items.reduce((sum, item) => sum + item.price * item.quantity, 0);
@@ -147,7 +147,7 @@ function calculateTotal(items: CartItem[]): number {
 
 ### Document Known Gotchas
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 /**
  * IMPORTANT: This function must be called before the first render.
  * If called after hydration, it causes a flash of unstyled content
@@ -164,9 +164,9 @@ export function initializeTheme(theme: Theme): void {
 
 For public APIs (REST, GraphQL, library interfaces):
 
-### Inline with Types (Preferred for [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md))
+### Inline with Types (Preferred for [TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md))
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 /**
  * Creates a new task.
  *

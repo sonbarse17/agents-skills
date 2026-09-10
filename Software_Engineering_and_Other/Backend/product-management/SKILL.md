@@ -224,7 +224,7 @@ for user in users:
 ```
 
 #### SDK Design Principles
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Intuitive client — follows natural language patterns
 const client = new ApiClient({ apiKey: "sk-..." });
 
@@ -426,7 +426,7 @@ api_catalog:
     p99_latency: 150ms
     error_rate: 0.2%
     documentation_url: /docs/users
-    sdk_coverage: [python, [typescript](../../Frontend/typescript/SKILL.md), go, java]
+    sdk_coverage: [python, [typescript](../../Frontend/common/typescript/SKILL.md), go, java]
 
   - name: Payments API
     version: v2
@@ -449,7 +449,7 @@ api_catalog:
 ### Highlights
 - 12% MoM growth in active consumers (now 1,200)
 - v3 API reaches 99.95% uptime (above 99.9% SLO)
-- New [TypeScript](../../Frontend/typescript/SKILL.md) SDK published — 40% adoption in first month
+- New [TypeScript](../../Frontend/common/typescript/SKILL.md) SDK published — 40% adoption in first month
 
 ### Version Migration Status
 | Version | Status | Consumers | Actions Required |

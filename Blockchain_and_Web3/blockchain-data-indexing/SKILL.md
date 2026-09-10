@@ -169,7 +169,7 @@ type Token @entity {
 ```
 
 ### AssemblyScript Mapping Handler
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { PoolCreated } from "../generated/Factory/Factory"
 import { Pool, Token } from "../generated/schema"
 import { fetchTokenMetadata } from "./helpers"
@@ -226,7 +226,7 @@ templates:
       file: ./src/pool-mapping.ts
 ```
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // In mapping.ts — create dynamic data source on PoolCreated
 import { DataSourceContext, dataSource } from "@graphprotocol/graph-ts"
 import { Pool } from "../generated/templates"
@@ -239,7 +239,7 @@ export function handlePoolCreated(event: PoolCreated): void {
 ```
 
 ### Reorg Handling in Subgraphs
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Subgraphs handle reorgs via block-based detection
 // Graph-node tracks chain head and detects reorgs via block hash changes
 // On reorg: unwind entities to the fork block, reapply events
@@ -433,7 +433,7 @@ class Indexer:
   - ../../../Global_References/goldsky-chainindex.md — Goldsky & ChainIndex Reference
   - ../../../Global_References/indexer-architecture.md — Indexer Architecture Patterns
   - ../../../Global_References/the-graph-subgraph.md — The Graph — Subgraph Reference
-  - references/subgraph-[performance-tuning](../../Software_Engineering_and_Other/Frontend/performance-tuning/SKILL.md).md — Subgraph Performance Tuning
+  - references/subgraph-[performance-tuning](../../Software_Engineering_and_Other/Frontend/performance/performance-tuning/SKILL.md).md — Subgraph Performance Tuning
   - references/multi-chain-indexing.md — Multi-Chain Indexing Strategies
   - references/custom-indexer-patterns.md — Custom Indexer Patterns
 

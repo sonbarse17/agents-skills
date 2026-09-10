@@ -439,7 +439,7 @@ Cloud storage: higher cost per GB, no replica management, built-in HA (AWS handl
 - ../../../Global_References/longhorn-perf.md -- Longhorn Performance
 - ../../../Global_References/longhorn-backup.md -- Longhorn Backup & DR
 - ../../../Global_References/longhorn-[disaster-recovery](../../../common/other/disaster-recovery/SKILL.md).md -- Longhorn Disaster Recovery
-- ../../../Global_References/longhorn-[performance-tuning](../../../../Software_Engineering_and_Other/Frontend/performance-tuning/SKILL.md).md -- Longhorn Performance Tuning
+- ../../../Global_References/longhorn-[performance-tuning](../../../../Software_Engineering_and_Other/Frontend/performance/performance-tuning/SKILL.md).md -- Longhorn Performance Tuning
 
 ## Handoff
 Hand off to `devops/[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)/SKILL.md` for [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) integration. Hand off to `devops/[helm-patterns](../../../helm/other/helm-patterns/SKILL.md)/SKILL.md` for Helm deployment best practices.
@@ -654,7 +654,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -670,7 +670,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### [Profiling](../../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) Methodology
+### [Profiling](../../../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking

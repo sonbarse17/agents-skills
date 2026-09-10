@@ -176,7 +176,7 @@ bucket_name = "user-uploads"
 
 ### Worker with R2 Operations
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // src/index.ts
 interface Env {
   ASSETS: R2Bucket;
@@ -233,7 +233,7 @@ export default {
 
 ### Presigned URL Generation in a Worker
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Generate time-limited signed URLs using Workers
 import { AwsClient } from "aws4fetch";
 

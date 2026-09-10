@@ -63,7 +63,7 @@ Produce `.claude/pipeline/project-doc.md` using the following structure (based o
 
 ## Tech Stack
 - Runtime: [e.g. Node.js 20, [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) 3.11]
-- Language: [e.g. [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md), Python]
+- Language: [e.g. [TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md), Python]
 - Framework: [e.g. Next.js 14 App Router, FastAPI]
 - Database: [e.g. [PostgreSQL](../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) via Prisma]
 - Styling: [e.g. Tailwind CSS]

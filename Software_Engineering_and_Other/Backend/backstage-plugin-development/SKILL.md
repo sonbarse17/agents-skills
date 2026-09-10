@@ -68,13 +68,13 @@ is already in place and does not repeat it.
 ## Prerequisites & environment
 
 - A working Backstage app created via `@backstage/create-app` (or an
-  existing [monorepo](../../Frontend/monorepo/SKILL.md) with `packages/app`, `packages/backend`, and a
-  `plugins/` directory) — plugin development happens inside that [monorepo](../../Frontend/monorepo/SKILL.md),
+  existing [monorepo](../../Frontend/build-tools/monorepo/SKILL.md) with `packages/app`, `packages/backend`, and a
+  `plugins/` directory) — plugin development happens inside that [monorepo](../../Frontend/build-tools/monorepo/SKILL.md),
   not as a standalone project.
 - Node.js and Yarn versions matching the app's `package.json` `engines`
   field — Backstage pins these tightly, and a mismatched Node version is a
   common source of `yarn new`/`yarn start` failures.
-- Backstage CLI tooling available via the [monorepo](../../Frontend/monorepo/SKILL.md)'s dev dependencies
+- Backstage CLI tooling available via the [monorepo](../../Frontend/build-tools/monorepo/SKILL.md)'s dev dependencies
   (`@backstage/cli`) — `yarn new` and `yarn start` are invoked through
   Yarn workspace scripts, not a globally installed CLI.
 - Familiarity with the **new backend system** (`createBackendPlugin`,
@@ -83,15 +83,15 @@ is already in place and does not repeat it.
   its 2023+ releases), the legacy `createRouter`-based backend plugin
   style is deprecated for new plugins; check `packages/backend/src/index.ts`
   to confirm which system the app is on before writing new backend code.
-- [TypeScript](../../Frontend/typescript/SKILL.md) familiarity — Backstage plugins are [TypeScript](../../Frontend/typescript/SKILL.md)-first, and the
+- [TypeScript](../../Frontend/common/typescript/SKILL.md) familiarity — Backstage plugins are [TypeScript](../../Frontend/common/typescript/SKILL.md)-first, and the
   scaffolded plugin templates assume it.
-- Write access to the [monorepo](../../Frontend/monorepo/SKILL.md) (internal plugins are almost always
+- Write access to the [monorepo](../../Frontend/build-tools/monorepo/SKILL.md) (internal plugins are almost always
   committed there, not published to npm).
 
 ## Step-by-step guidance
 
 1. **Scaffold a new frontend plugin** with the Backstage CLI's interactive
-   generator, run from the [monorepo](../../Frontend/monorepo/SKILL.md) root:
+   generator, run from the [monorepo](../../Frontend/build-tools/monorepo/SKILL.md) root:
    ```bash
    yarn new
    # ? What do you want to create? Plugin
@@ -117,7 +117,7 @@ is already in place and does not repeat it.
 
 3. **Define the frontend plugin and its route** in `src/plugin.ts` and
    `src/routes.ts`:
-   ```[typescript](../../Frontend/typescript/SKILL.md)
+   ```[typescript](../../Frontend/common/typescript/SKILL.md)
    // plugins/cost-insights-lite/src/routes.ts
    import { createRouteRef } from '@backstage/core-plugin-api';
 
@@ -125,7 +125,7 @@ is already in place and does not repeat it.
      id: 'cost-insights-lite',
    });
    ```
-   ```[typescript](../../Frontend/typescript/SKILL.md)
+   ```[typescript](../../Frontend/common/typescript/SKILL.md)
    // plugins/cost-insights-lite/src/plugin.ts
    import {
      createPlugin,
@@ -163,7 +163,7 @@ is already in place and does not repeat it.
 4. **Define the API client contract** via `createApiRef` so the page
    component never talks to `fetch()` directly — it depends on an
    interface the app wires an implementation into:
-   ```[typescript](../../Frontend/typescript/SKILL.md)
+   ```[typescript](../../Frontend/common/typescript/SKILL.md)
    // plugins/cost-insights-lite/src/api.ts
    import { createApiRef, DiscoveryApi, FetchApi } from '@backstage/core-plugin-api';
 
@@ -197,7 +197,7 @@ is already in place and does not repeat it.
 
 5. **Write the backend plugin on the new backend system**, declaring only
    the `coreServices` it actually needs:
-   ```[typescript](../../Frontend/typescript/SKILL.md)
+   ```[typescript](../../Frontend/common/typescript/SKILL.md)
    // plugins/cost-insights-lite-backend/src/plugin.ts
    import { createBackendPlugin, coreServices } from '@backstage/backend-plugin-api';
    import { createRouter } from './router';
@@ -221,7 +221,7 @@ is already in place and does not repeat it.
    });
    ```
    Register it in the app's backend entrypoint, `packages/backend/src/index.ts`:
-   ```[typescript](../../Frontend/typescript/SKILL.md)
+   ```[typescript](../../Frontend/common/typescript/SKILL.md)
    backend.add(import('@internal/plugin-cost-insights-lite-backend'));
    ```
    This one line is the only change `packages/backend` needs — the plugin
@@ -261,7 +261,7 @@ is already in place and does not repeat it.
    root to verify it inside the full app (catalog context, real
    `discoveryApi` resolving the real backend, entity-page routing).
 
-8. **Version and ship as part of the [monorepo](../../Frontend/monorepo/SKILL.md) release**, not an
+8. **Version and ship as part of the [monorepo](../../Frontend/build-tools/monorepo/SKILL.md) release**, not an
    independent npm publish: internal plugins are pinned to the app's
    Backstage core version by living in the same Yarn workspace, so a
    `yarn backstage-cli versions:bump` that upgrades core packages
@@ -364,7 +364,7 @@ letting a developer approve a request without leaving Backstage.
    service, declaring `coreServices.logger`, `coreServices.httpRouter`,
    and `coreServices.httpAuth` (to forward the calling user's identity to
    the approvals service so "who approved this" is accurate):
-   ```[typescript](../../Frontend/typescript/SKILL.md)
+   ```[typescript](../../Frontend/common/typescript/SKILL.md)
    env.registerInit({
      deps: {
        logger: coreServices.logger,

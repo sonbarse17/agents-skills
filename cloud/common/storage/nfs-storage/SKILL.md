@@ -259,7 +259,7 @@ systemctl restart nfs-server
 # These are auto-negotiated but can be adjusted
 echo 1048576 > /proc/fs/nfsd/max_block_size
 
-# Kernel network buffer tuning (see [performance-tuning](../../../../Software_Engineering_and_Other/Frontend/performance-tuning/SKILL.md) skill)
+# Kernel network buffer tuning (see [performance-tuning](../../../../Software_Engineering_and_Other/Frontend/performance/performance-tuning/SKILL.md) skill)
 sysctl -w net.core.rmem_max=134217728
 sysctl -w net.core.wmem_max=134217728
 ```
@@ -345,6 +345,6 @@ helm install csi-driver-nfs csi-driver-nfs/csi-driver-nfs --namespace kube-syste
 
 - `[linux-administration](../../../../Software_Engineering_and_Other/Miscellaneous/linux-administration/SKILL.md)` -- Server setup and network configuration
 - `[block-storage](../block-storage/SKILL.md)` -- Underlying storage for NFS server data directories
-- `[performance-tuning](../../../../Software_Engineering_and_Other/Frontend/performance-tuning/SKILL.md)` -- Kernel and network tuning for NFS throughput
+- `[performance-tuning](../../../../Software_Engineering_and_Other/Frontend/performance/performance-tuning/SKILL.md)` -- Kernel and network tuning for NFS throughput
 - `[backup-recovery](../../migration/backup-recovery/SKILL.md)` -- Backing up NFS-hosted data
 - `[object-storage](../object-storage/SKILL.md)` -- Alternative storage model for cloud-native workloads

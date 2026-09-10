@@ -51,7 +51,7 @@ wiki-site/
 - Configure `themeConfig.nav` and `themeConfig.sidebar` from the catalogue structure
 - [Mermaid](../../../mermaid/SKILL.md) config must set dark theme variables:
 
-```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 [mermaid](../../../mermaid/SKILL.md): {
   theme: 'dark',
   themeVariables: {
@@ -91,7 +91,7 @@ Target [Mermaid](../../../mermaid/SKILL.md) SVG elements with `!important`:
 ### Layer 3: Inline Style Replacement (`theme/index.ts`)
 [Mermaid](../../../mermaid/SKILL.md) inline `style` attributes override everything. Use `onMounted` + polling to replace them:
 
-```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { onMounted } from 'vue'
 
 // In setup()
@@ -115,7 +115,7 @@ Use `setup()` with `onMounted`, NOT `enhanceApp()` — DOM doesn't exist during 
 
 Wrap each `.[mermaid](../../../mermaid/SKILL.md)` container in a clickable wrapper that opens a fullscreen modal:
 
-```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 document.querySelectorAll('.[mermaid](../../../mermaid/SKILL.md)').forEach(el => {
   el.style.cursor = 'zoom-in'
   el.addEventListener('click', () => {

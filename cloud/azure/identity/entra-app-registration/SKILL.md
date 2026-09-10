@@ -163,7 +163,7 @@ MSAL is the recommended library for integrating Microsoft identity platform.
 
 **Supported Languages:**
 - .NET/C# - `Microsoft.Identity.Client`
-- JavaScript/[TypeScript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) - `@azure/msal-browser`, `@azure/msal-node`
+- JavaScript/[TypeScript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) - `@azure/msal-browser`, `@azure/msal-node`
 - [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) - `msal`
 
 **Examples:** See [../../../Global_References/console-app-example.md](../../../../Global_References/console-app-example.md)

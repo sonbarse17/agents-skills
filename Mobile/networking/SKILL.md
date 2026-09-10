@@ -155,7 +155,7 @@ dio.interceptors.add(LogInterceptor(requestBody: true, error: true));
 ```
 
 ### React Native — Axios
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import axios, { AxiosInstance, AxiosError } from 'axios';
 
 const api: AxiosInstance = axios.create({
@@ -369,7 +369,7 @@ class AuthInterceptor : ApolloInterceptor {
 ## Interceptors
 
 ### Auth Token Interceptor
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Axios — transparent token refresh
 api.interceptors.response.use(
   (response) => response,

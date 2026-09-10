@@ -128,14 +128,14 @@ Common bottlenecks by category:
 |---------|-------------|---------------|
 | Slow API responses | N+1 queries, missing indexes, unoptimized queries | Check database query log |
 | Memory growth | Leaked references, unbounded caches, large payloads | Heap snapshot analysis |
-| CPU spikes | Synchronous heavy computation, regex backtracking | CPU [profiling](../../Frontend/profiling/SKILL.md) |
+| CPU spikes | Synchronous heavy computation, regex backtracking | CPU [profiling](../../Frontend/performance/profiling/SKILL.md) |
 | High latency | Missing caching, redundant computation, network hops | Trace requests through the stack |
 
 ### Step 3: Fix Common Anti-Patterns
 
 #### N+1 Queries (Backend)
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // BAD: N+1 — one query per task for the owner
 const tasks = await db.tasks.findMany();
 for (const task of tasks) {
@@ -150,7 +150,7 @@ const tasks = await db.tasks.findMany({
 
 #### Unbounded Data Fetching
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // BAD: Fetching all records
 const allTasks = await db.tasks.findMany();
 
@@ -255,7 +255,7 @@ function TaskStats({ tasks }: Props) {
 
 #### Large Bundle Size
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Modern bundlers (Vite, webpack 5+) handle named imports with tree-shaking automatically,
 // provided the dependency ships ESM and is marked `sideEffects: false` in package.json.
 // Profile before changing import styles — the real gains come from splitting and lazy loading.
@@ -277,7 +277,7 @@ function App() {
 
 #### Missing Caching (Backend)
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Cache frequently-read, rarely-changed data
 const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 let cachedConfig: AppConfig | null = null;
@@ -380,7 +380,7 @@ For detailed performance checklists, optimization commands, and anti-pattern ref
 
 ## Red Flags
 
-- Optimization without [profiling](../../Frontend/profiling/SKILL.md) data to justify it
+- Optimization without [profiling](../../Frontend/performance/profiling/SKILL.md) data to justify it
 - N+1 query patterns in data fetching
 - List endpoints without pagination
 - Images without dimensions, lazy loading, or responsive sizes

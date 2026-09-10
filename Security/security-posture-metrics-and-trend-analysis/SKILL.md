@@ -38,8 +38,8 @@ last two quarters is improving; a program with 300 open findings that
 has quietly grown from 50 over the same period is not, even though the
 raw count looks better in absolute terms. This skill covers turning the
 raw output of
-[security-finding-backlog-triage](../[security-finding-backlog-triage](../../../Security/security-finding-backlog-triage/SKILL.md)/SKILL.md),
-[secure-cicd-gates](../[secure-cicd-gates](../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md), and
+[security-finding-backlog-triage](../security-finding-backlog-triage/SKILL.md)/SKILL.md),
+[secure-cicd-gates](../secure-cicd-gates/SKILL.md)/SKILL.md), and
 [security-gate-exception-management](../[security-gate-exception-management](../security-gate-exception-management/SKILL.md)/SKILL.md)
 into trend data that actually answers whether a [DevSecOps](../devsecops/SKILL.md) program is
 working: mean/median time-to-remediate by severity, backlog age
@@ -81,7 +81,7 @@ nobody trusts or acts on.
   export/archive scan results on every run if the native tool doesn't
   keep history long enough.
 - The severity-to-action/SLA table from
-  [secure-cicd-gates](../[secure-cicd-gates](../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) as the benchmark
+  [secure-cicd-gates](../secure-cicd-gates/SKILL.md)/SKILL.md) as the benchmark
   MTTR is measured against.
 - The exception registry from
   [security-gate-exception-management](../[security-gate-exception-management](../security-gate-exception-management/SKILL.md)/SKILL.md)
@@ -151,7 +151,7 @@ nobody trusts or acts on.
 
 4. **Track false-positive rate per tool/rule** as its own trend, feeding
    back into triage weighting
-   ([security-finding-backlog-triage](../[security-finding-backlog-triage](../../../Security/security-finding-backlog-triage/SKILL.md)/SKILL.md))
+   ([security-finding-backlog-triage](../security-finding-backlog-triage/SKILL.md)/SKILL.md))
    and tuning decisions:
    ```sql
    SELECT
@@ -200,7 +200,7 @@ nobody trusts or acts on.
    functionally advisory, not blocking — surface this explicitly rather
    than letting the raw "gate exists and is marked required" status
    imply it's actually working, per the guidance in
-   [secure-cicd-gates](../[secure-cicd-gates](../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md).
+   [secure-cicd-gates](../secure-cicd-gates/SKILL.md)/SKILL.md).
 
 7. **Present trend, not just current value, in every report** — a line
    chart over the last 2-4 quarters for each metric above, not a single
@@ -284,7 +284,7 @@ nobody trusts or acts on.
   **Fix:** Metrics with no review cadence are equivalent to no metrics —
   put the dashboard review on the same recurring agenda as the
   finding-triage meeting in
-  [security-finding-backlog-triage](../[security-finding-backlog-triage](../../../Security/security-finding-backlog-triage/SKILL.md)/SKILL.md),
+  [security-finding-backlog-triage](../security-finding-backlog-triage/SKILL.md)/SKILL.md),
   with an explicit owner responsible for flagging regressions.
 
 ## Worked example
@@ -340,15 +340,15 @@ the guidance in
 
 ## Cross-references
 
-- [security-finding-backlog-triage](../[security-finding-backlog-triage](../../../Security/security-finding-backlog-triage/SKILL.md)/SKILL.md) —
+- [security-finding-backlog-triage](../security-finding-backlog-triage/SKILL.md)/SKILL.md) —
   the triage process that produces the disposition/resolution data this
   skill's metrics are computed from.
-- [secure-cicd-gates](../[secure-cicd-gates](../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — the
+- [secure-cicd-gates](../secure-cicd-gates/SKILL.md)/SKILL.md) — the
   severity-to-action SLA table that MTTR targets are measured against,
   and the gate design whose override rate this skill tracks.
 - [security-gate-exception-management](../[security-gate-exception-management](../security-gate-exception-management/SKILL.md)/SKILL.md) —
   the exception registry this skill's exception-trend metrics are
   sourced from.
-- [critical-vulnerability-emergency-response](../[critical-vulnerability-emergency-response](../../../Software_Engineering_and_Other/Frontend/critical-vulnerability-emergency-response/SKILL.md)/SKILL.md) —
+- [critical-vulnerability-emergency-response](../critical-vulnerability-emergency-response/SKILL.md)/SKILL.md) —
   detection-to-mitigation timing from individual emergency responses
   feeds into this skill's trend tracking across successive events.

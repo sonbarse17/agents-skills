@@ -39,7 +39,7 @@ User request includes: `express`, `express.js`, `middleware`, `router`, `next.js
 
 ### Input Context
 - App scope (REST API, GraphQL BFF, SSR)
-- [TypeScript](../../Frontend/typescript/SKILL.md) or JavaScript
+- [TypeScript](../../Frontend/common/typescript/SKILL.md) or JavaScript
 - Database (Prisma, Mongoose, raw)
 - Auth strategy (JWT, session, OAuth)
 
@@ -66,7 +66,7 @@ Produce artifact directly. No preamble, no postamble, no explanations. No filler
 |-----------|---------|---------|------|
 | Performance | ~30k req/s | ~50k req/s | ~60k req/s |
 | Plugin ecosystem | Largest | Growing | Small |
-| [TypeScript](../../Frontend/typescript/SKILL.md) | Manual annotations | Schema-first (TypeBox/Zod) | Full (TypeBox) |
+| [TypeScript](../../Frontend/common/typescript/SKILL.md) | Manual annotations | Schema-first (TypeBox/Zod) | Full (TypeBox) |
 | Serialization | JSON.stringify | Fast JSON serialization | Built-in |
 | Middleware model | Callback chain | Plugin registration | Express-like |
 | Validation | Manual middleware | Schema-compiled serializer | Middleware-based |
@@ -130,7 +130,7 @@ express-app/
 ```
 
 ### Step 2: App Factory Pattern
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // app.ts
 import express from 'express';
 import cors from 'cors';
@@ -172,7 +172,7 @@ export function createApp() {
 ```
 
 ### Step 3: Graceful Server Startup
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // server.ts
 import { createApp } from './app';
 import { logger } from './shared/logger';
@@ -202,7 +202,7 @@ main().catch((err) => {
 ```
 
 ### Step 4: Environment Configuration
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // config/env.ts
 import { z } from 'zod';
 import dotenv from 'dotenv';
@@ -223,7 +223,7 @@ export const env = envSchema.parse(process.env);
 ```
 
 ### Step 5: Module Route Setup
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // modules/users/user.controller.ts
 import { Request, Response, NextFunction } from 'express';
 import { userService } from './user.service';
@@ -277,7 +277,7 @@ export default router;
 ```
 
 ### Step 6: Validation Middleware
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // common/middleware/validate.ts
 import { Request, Response, NextFunction } from 'express';
 import { ZodSchema, ZodError } from 'zod';
@@ -300,7 +300,7 @@ export function validate(schema: ZodSchema, source: 'body' | 'query' | 'params' 
 ```
 
 ### Step 7: Error Handling
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // common/middleware/error-handler.ts
 import { Request, Response, NextFunction } from 'express';
 import { AppError } from '../errors/app-error';
@@ -353,7 +353,7 @@ export class AppError extends Error {
 ```
 
 ### Step 8: Auth Middleware
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // common/middleware/auth.ts
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
@@ -402,7 +402,7 @@ export function authorize(...roles: string[]) {
 
 ### Pattern: Dependency Injection Container (awilix)
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // shared/container.ts
 import { createContainer, asClass, asValue, Lifetime } from 'awilix';
 import { PrismaClient } from '@prisma/client';
@@ -426,7 +426,7 @@ app.use((req, res, next) => {
 
 ### Pattern: Health Check Endpoint
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // modules/health/health.controller.ts
 export const healthController = {
   check: asyncHandler(async (req: Request, res: Response) => {
@@ -454,7 +454,7 @@ export const healthController = {
 - Memory: monitor with `node --heapsnapshot-signal=SIGUSR2`
 
 ### Security Headers
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 app.use(helmet({
   contentSecurityPolicy: { directives: { defaultSrc: ["'self'"] } },
   hsts: { maxAge: 31536000, includeSubDomains: true },
@@ -483,7 +483,7 @@ app.use(helmet({
 
 ## Testing Strategies
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import request from 'supertest';
 import { createApp } from '../src/app';
 

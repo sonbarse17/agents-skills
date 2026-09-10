@@ -504,7 +504,7 @@ Scenario: Invoice generation with complex formatting
 What programming language is the project using?
   |-- Ruby --> Use Cucumber-Ruby with Cucumber Expressions
   |-- [Python](../../Languages/python/SKILL.md) --> Use Behave with regex step definitions
-  |-- JavaScript/[TypeScript](../../Frontend/typescript/SKILL.md) --> Use Cucumber.js with Cucumber Expressions
+  |-- JavaScript/[TypeScript](../../Frontend/common/typescript/SKILL.md) --> Use Cucumber.js with Cucumber Expressions
   |-- Java --> Use Cucumber-JVM with @Annotations
   |-- C#/.NET --> Use SpecFlow with method attributes
   |-- Go --> Use Godog with function-based steps

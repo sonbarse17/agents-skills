@@ -76,7 +76,7 @@ No matter which option you choose, recommend the user to create the App Insights
 #### Modify application code
 
 - If the app is an ASP.NET Core app, see [ASPNETCORE guide](../../../../Global_References/aspnetcore.md) for how to modify the C# code.
-- If the app is a Node.js app, see [NODEJS guide](../../../../Global_References/nodejs.md) for how to modify the JavaScript/[TypeScript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) code.
+- If the app is a Node.js app, see [NODEJS guide](../../../../Global_References/nodejs.md) for how to modify the JavaScript/[TypeScript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) code.
 - If the app is a [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) app, see [PYTHON guide](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md).md) for how to modify the [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) code.
 
 ## SDK Quick References

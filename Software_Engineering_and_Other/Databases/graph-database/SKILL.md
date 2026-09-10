@@ -481,7 +481,7 @@ class GraphEmbedding:
 
 - **Indexing strategy**: Create indexes on frequently queried properties and relationship types; monitor write perf.
 - **Backup strategy**: Use Neo4j online backup for incremental + full backups; test restore quarterly.
-- **Query [profiling](../../Frontend/profiling/SKILL.md)**: Profile Cypher queries with `PROFILE`; monitor full-node scans vs index lookups.
+- **Query [profiling](../../Frontend/performance/profiling/SKILL.md)**: Profile Cypher queries with `PROFILE`; monitor full-node scans vs index lookups.
 - **Memory management**: Allocate 70% of available RAM to Neo4j page cache; monitor swap usage.
 - **Cluster sizing**: Neo4j causal cluster: 3 core nodes + N read replicas based on query concurrency.
 - **Bulk loading**: Use neo4j-admin import for initial loads; batch CREATE statements in 1000-row transactions.

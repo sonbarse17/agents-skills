@@ -74,7 +74,7 @@ Simplification that breaks project consistency is not simplification — it's ch
 
 Explicit code is better than compact code when the compact version requires a mental pause to parse.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // UNCLEAR: Dense ternary chain
 const label = isNew ? 'New' : isUpdated ? 'Updated' : isArchived ? 'Archived' : 'Active';
 
@@ -87,7 +87,7 @@ function getStatusLabel(item: Item): string {
 }
 ```
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // UNCLEAR: Chained reduces with inline logic
 const result = items.reduce((acc, item) => ({
   ...acc,
@@ -198,9 +198,9 @@ If the "simplified" version is harder to understand or review, revert. Not every
 
 ## Language-Specific Guidance
 
-### [TypeScript](../../Frontend/typescript/SKILL.md) / JavaScript
+### [TypeScript](../../Frontend/common/typescript/SKILL.md) / JavaScript
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // SIMPLIFY: Unnecessary async wrapper
 // Before
 async function getUser(id: string): Promise<User> {

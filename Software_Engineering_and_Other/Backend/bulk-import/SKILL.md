@@ -111,7 +111,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 
 1. **File Upload & Validation**: Accept upload with strict type/size checks.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import multer from 'multer';
 import path from 'path';
 
@@ -156,7 +156,7 @@ app.post('/api/imports/upload', upload.single('file'), async (req, res) => {
 
 2. **CSV Parsing with Streaming**: Handle large files without memory overflow.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import { parse } from 'csv-parse';
 import { createReadStream } from 'fs';
 
@@ -186,7 +186,7 @@ async function* streamCsvRows(filePath: string, batchSize = 500): AsyncGenerator
 
 3. **Validation Pipeline**: Row-level validation with comprehensive error collection.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 class ImportValidator {
   private validators: Map<string, FieldValidator[]> = new Map();
 
@@ -237,7 +237,7 @@ validator.register('age', { validate: async (field, value) => {
 
 4. **Import Pipeline Lifecycle**: Upload → Validate → Preview → Confirm → Process.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 interface ImportJob {
   id: string;
   userId: string;
@@ -286,7 +286,7 @@ app.post('/api/imports/:id/confirm', async (req, res) => {
 
 5. **Batch Processing with Progress**: Process in batches with transaction support.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import Bull from 'bull';
 
 const importQueue = new Bull('import-processing', {
@@ -382,7 +382,7 @@ async function processBatch(
 
 6. **Import Templates**: Generate downloadable sample files.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 function generateImportTemplate(headers: ImportColumn[]): string {
   const headerRow = headers.map(h => h.label).join(',');
   const sampleRow = headers.map(h => h.example || '').join(',');
@@ -403,7 +403,7 @@ app.get('/api/imports/templates/:type', (req, res) => {
 
 ### Pattern: Column Header Mapping
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 interface ColumnMapping {
   displayName: string;    // From CSV header
   fieldName: string;      // Internal field name
@@ -438,7 +438,7 @@ class HeaderMapper {
 
 ### Pattern: Error Report Generation
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 interface ImportError {
   row: number;
   column: string;
@@ -473,7 +473,7 @@ async function generateErrorReport(errors: ImportError[], format: 'csv' | 'xlsx'
 
 ### Pattern: Import Webhook Notifications
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 interface ImportNotification {
   importId: string;
   status: 'completed' | 'partial' | 'failed';
@@ -559,7 +559,7 @@ async function notifyImportComplete(job: ImportJob): Promise<void> {
 
 ## Testing Strategies
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import { describe, it, expect } from 'vitest';
 import { parse } from 'csv-parse';
 

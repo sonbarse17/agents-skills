@@ -480,7 +480,7 @@ class VideoCaptureFragment : Fragment() {
 ```
 
 ### React Native Vision Camera — QR Scanner
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import { Camera, useCameraDevice, useCodeScanner } from 'react-native-vision-camera';
 
 export function QRScanner({ onCodeScanned }: { onCodeScanned: (value: string) => void }) {

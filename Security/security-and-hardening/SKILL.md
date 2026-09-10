@@ -91,7 +91,7 @@ These are prevention patterns, not a ranking. For the 2021 ordering, see the qui
 
 ### Injection (SQL, NoSQL, OS Command)
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // BAD: SQL injection via string concatenation
 const query = `SELECT * FROM users WHERE id = '${userId}'`;
 
@@ -104,7 +104,7 @@ const user = await prisma.user.findUnique({ where: { id: userId } });
 
 ### Broken Authentication
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Password hashing
 import { hash, compare } from 'bcrypt';
 
@@ -128,7 +128,7 @@ app.use(session({
 
 ### Cross-Site Scripting (XSS)
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // BAD: Rendering user input as HTML
 element.innerHTML = userInput;
 
@@ -142,7 +142,7 @@ const clean = DOMPurify.sanitize(userInput);
 
 ### Broken Access Control
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Always check authorization, not just authentication
 app.patch('/api/tasks/:id', authenticate, async (req, res) => {
   const task = await taskService.findById(req.params.id);
@@ -162,7 +162,7 @@ app.patch('/api/tasks/:id', authenticate, async (req, res) => {
 
 ### Security Misconfiguration
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Security headers (use helmet for Express)
 import helmet from 'helmet';
 app.use(helmet());
@@ -187,7 +187,7 @@ app.use(cors({
 
 ### Sensitive Data Exposure
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Never return sensitive fields in API responses
 function sanitizeUser(user: UserRecord): PublicUser {
   const { passwordHash, resetToken, ...publicFields } = user;
@@ -203,7 +203,7 @@ if (!API_KEY) throw new Error('STRIPE_API_KEY not configured');
 
 Any time the server fetches a URL the user influenced — webhooks, "import from URL", image proxies, link previews — an attacker can aim it at internal services (cloud metadata, `localhost`, private IPs).
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // BAD: fetch whatever the user gives you
 await fetch(req.body.webhookUrl);
 
@@ -236,7 +236,7 @@ The `range() !== 'unicast'` check covers loopback, link-local `169.254.169.254` 
 
 ### Schema Validation at Boundaries
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { z } from 'zod';
 
 const CreateTaskSchema = z.object({
@@ -266,7 +266,7 @@ app.post('/api/tasks', async (req, res) => {
 
 ### File Upload Safety
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Restrict file types and sizes
 const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp'];
 const MAX_SIZE = 5 * 1024 * 1024; // 5MB
@@ -324,7 +324,7 @@ Audits only find known advisories; they do not catch a newly malicious or typosq
 
 ## Rate Limiting
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import rateLimit from 'express-rate-limit';
 
 // General API rate limit
@@ -398,7 +398,7 @@ If your app calls an LLM — chatbots, summarizers, agents, RAG — it inherits 
 - **Bound consumption (LLM10: Unbounded Consumption).** Cap tokens, request rate, and loop/recursion depth so a crafted input can't run up cost or hang the system.
 - **Isolate retrieval data (LLM08: Vector and Embedding Weaknesses).** In RAG, treat the vector store as a trust boundary: partition embeddings per tenant so one user can't retrieve another's data, and validate documents before indexing so poisoned content can't steer answers.
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // BAD: trusting model output as a command or as markup
 const sql = await llm.generate(`Write SQL for: ${userQuestion}`);
 await db.query(sql);                                   // arbitrary query execution

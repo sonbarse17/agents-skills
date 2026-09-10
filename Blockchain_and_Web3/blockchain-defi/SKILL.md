@@ -403,7 +403,7 @@ Price feed types:
 | Backrunning | Profit from pending tx execution | Medium |
 
 ### MEV-Protected Trading
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // MEV-protected swap via CowSwap (Coincidence of Wants)
 // 1. User signs intent: "swap X ETH for >= Y USDC"
 // 2. Solvers compete to find best execution

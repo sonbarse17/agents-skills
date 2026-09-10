@@ -71,7 +71,7 @@ Complete dev container configuration with Dockerfile, devcontainer.json, and [Do
 ```
 What is the project type?
 ├── Single runtime, no services → Dockerfile-based
-│   base: mcr.microsoft.com/devcontainers/[typescript](../../Frontend/typescript/SKILL.md)-node:20
+│   base: mcr.microsoft.com/devcontainers/[typescript](../../Frontend/common/typescript/SKILL.md)-node:20
 │   → apt install tools → npm install → done
 ├── Single runtime + databases → [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Compose
 │   app container + postgres + redis containers
@@ -117,7 +117,7 @@ Container ([Docker](../../../containers-orchestration/docker/other/docker/SKILL.
   "name": "My App Dev Container",
 
   // Option A: Use a pre-built dev container image
-  "image": "mcr.microsoft.com/devcontainers/[typescript](../../Frontend/typescript/SKILL.md)-node:20",
+  "image": "mcr.microsoft.com/devcontainers/[typescript](../../Frontend/common/typescript/SKILL.md)-node:20",
 
   // Option B: Build from Dockerfile
   // "build": {
@@ -145,7 +145,7 @@ Container ([Docker](../../../containers-orchestration/docker/other/docker/SKILL.
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "bradlc.vscode-tailwindcss",
-    "ms-vscode.vscode-[typescript](../../Frontend/typescript/SKILL.md)-next",
+    "ms-vscode.vscode-[typescript](../../Frontend/common/typescript/SKILL.md)-next",
     "[github](../../../ci-cd/github-actions/other/github/SKILL.md).vscode-[github-actions](../../../DevOps_and_Cloud/CI_CD/[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-actions/SKILL.md)",
     "ms-azuretools.vscode-[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)"
   ],
@@ -154,7 +154,7 @@ Container ([Docker](../../../containers-orchestration/docker/other/docker/SKILL.
   "settings": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "[typescript](../../Frontend/typescript/SKILL.md).updateImportsOnFileMove.enabled": "always",
+    "[typescript](../../Frontend/common/typescript/SKILL.md).updateImportsOnFileMove.enabled": "always",
     "[typescript]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode"
     }
@@ -188,7 +188,7 @@ Container ([Docker](../../../containers-orchestration/docker/other/docker/SKILL.
 ```dockerfile
 # .devcontainer/Dockerfile
 ARG VARIANT="20"
-FROM mcr.microsoft.com/devcontainers/[typescript](../../Frontend/typescript/SKILL.md)-node:${VARIANT}
+FROM mcr.microsoft.com/devcontainers/[typescript](../../Frontend/common/typescript/SKILL.md)-node:${VARIANT}
 
 # Install additional system packages
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
@@ -313,7 +313,7 @@ echo "✅ Development environment ready!"
 // .devcontainer/devcontainer.json (Codespaces-optimized)
 {
   "name": "My App",
-  "image": "mcr.microsoft.com/devcontainers/[typescript](../../Frontend/typescript/SKILL.md)-node:20",
+  "image": "mcr.microsoft.com/devcontainers/[typescript](../../Frontend/common/typescript/SKILL.md)-node:20",
 
   // Codespaces machine type recommendation
   "hostRequirements": {
@@ -356,7 +356,7 @@ echo "✅ Development environment ready!"
 <!-- .devcontainer/devcontainer.json (with JetBrains support) -->
 {
   "name": "My App",
-  "image": "mcr.microsoft.com/devcontainers/[typescript](../../Frontend/typescript/SKILL.md)-node:20",
+  "image": "mcr.microsoft.com/devcontainers/[typescript](../../Frontend/common/typescript/SKILL.md)-node:20",
   "extensions": [
     // JB Gateway doesn't use VS Code extensions.
     // Instead, install tools in Dockerfile.
@@ -443,10 +443,10 @@ jobs:
 }
 ```
 
-### Multi-root Workspace ([Monorepo](../../Frontend/monorepo/SKILL.md))
+### Multi-root Workspace ([Monorepo](../../Frontend/build-tools/monorepo/SKILL.md))
 ```jsonc
 {
-  "name": "My [Monorepo](../../Frontend/monorepo/SKILL.md)",
+  "name": "My [Monorepo](../../Frontend/build-tools/monorepo/SKILL.md)",
   "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
   "workspaceFolder": "/workspaces/myapp",
   "extensions": [...],
@@ -473,7 +473,7 @@ Hand off to `dev-loop-[git-workflow](../../../ci-cd/common/git-workflow/git-work
 | Dotfiles management | Manual COPY in Dockerfile | chezmoi/ dotfiles repo | Simplicity vs flexibility |
 
 ### Multi-Service Topology
-- **[Monorepo](../../Frontend/monorepo/SKILL.md) single container**: Simple, one DevContainer.json. Good for small projects.
+- **[Monorepo](../../Frontend/build-tools/monorepo/SKILL.md) single container**: Simple, one DevContainer.json. Good for small projects.
 - **[Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Compose multi-container**: Service-per-container with depends_on. Use for [microservices](../../Patterns/microservices/SKILL.md).
 - **[Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Dev environment**: Dev runs in-cluster with hot-reload. For cloud-native teams.
 
@@ -501,7 +501,7 @@ CMD ["node", "dist/server.js"]
 `json
 {
   "name": "Full Stack Dev Container",
-  "image": "mcr.microsoft.com/devcontainers/[typescript](../../Frontend/typescript/SKILL.md)-node:20",
+  "image": "mcr.microsoft.com/devcontainers/[typescript](../../Frontend/common/typescript/SKILL.md)-node:20",
   "features": {
     "ghcr.io/devcontainers/features/[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-in-[docker](../../../containers-orchestration/docker/other/docker/SKILL.md):2": {},
     "ghcr.io/devcontainers/features/git-lfs:1": {},
@@ -546,7 +546,7 @@ CMD ["node", "dist/server.js"]
 
 ### Runtime Speed
 - **Hot reload**: Use nodemon/air for auto-restart. Reduce feedback loop to < 2 seconds.
-- **Startup [profiling](../../Frontend/profiling/SKILL.md)**: Profile container startup with [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) events. Identify slow initialization.
+- **Startup [profiling](../../Frontend/performance/profiling/SKILL.md)**: Profile container startup with [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) events. Identify slow initialization.
 - **Volume performance**: Use delegated/consistent mount config on macOS. Prefer named volumes for databases.
 
 ## Security Considerations

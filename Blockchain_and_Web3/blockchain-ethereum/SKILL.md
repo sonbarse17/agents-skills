@@ -297,7 +297,7 @@ Inactivity leak: when chain hasn't finalized for >4 epochs
 ## Account Abstraction (ERC-4337)
 
 ### Architecture Components
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // ERC-4337 flow:
 // 1. User creates UserOp off-chain (signs with wallet)
 // 2. User sends UserOp to bundler (separate mempool)

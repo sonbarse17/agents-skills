@@ -299,7 +299,7 @@ storage backend changes).
   direct change to be backported to version control and reviewed
   within a fixed follow-up window (mirroring the emergency-change
   discipline in
-  [critical-vulnerability-emergency-response](../../../[devsecops](../devsecops/SKILL.md)/skills/[critical-vulnerability-emergency-response](../../Software_Engineering_and_Other/Frontend/critical-vulnerability-emergency-response/SKILL.md)/SKILL.md)).
+  [critical-vulnerability-emergency-response](../../../[devsecops](../devsecops/SKILL.md)/skills/[critical-vulnerability-emergency-response](../critical-vulnerability-emergency-response/SKILL.md)/SKILL.md)).
 
 ## Worked example
 

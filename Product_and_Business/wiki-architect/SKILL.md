@@ -79,7 +79,7 @@ The catalogue MUST include an Onboarding section (always first, uncollapsed) con
 ## Language Detection
 
 Detect primary language from file extensions and build files, then select a comparison language:
-- C#/Java/Go/[TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) → [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) as comparison
+- C#/Java/Go/[TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) → [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) as comparison
 - [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) → JavaScript as comparison
 - Rust → C++ or Go as comparison
 

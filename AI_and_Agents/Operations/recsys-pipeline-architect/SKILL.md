@@ -113,7 +113,7 @@ Default to isolation. Joint only when there's a specific reason (e.g., explicit 
 
 ## Common Use Cases
 
-### Content feed (Strapi v5 plugin, [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md))
+### Content feed (Strapi v5 plugin, [TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md))
 
 User has a CMS with 50k articles, wants a personalized "for you" feed. Walk through 8 steps → generate a Strapi plugin scaffold with multi-action scoring, author diversity, standard filters, async side-effect lane.
 

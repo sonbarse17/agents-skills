@@ -227,7 +227,7 @@ Feature flags decouple deployment from release. Deploy incomplete or risky featu
 - **Canary new features.** Enable for 1% of users, then 10%, then 100%.
 - **Run A/B tests.** Compare behavior with and without the feature.
 
-```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Simple feature flag pattern
 if (featureFlags.isEnabled('new-checkout-flow', { userId })) {
   return renderNewCheckout();

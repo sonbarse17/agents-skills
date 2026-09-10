@@ -111,7 +111,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 
 1. **Format Selection & Setup**: Choose libraries per format — Puppeteer for PDF, ExcelJS for XLSX, native streams for CSV.
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Puppeteer PDF generation
 import puppeteer from 'puppeteer';
 
@@ -193,7 +193,7 @@ async function generatePdf(html: string): Promise<Buffer> {
 
 3. **Excel Export with ExcelJS**: Handle multi-sheet workbooks, formatting, formulas.
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import ExcelJS from 'exceljs';
 
 async function generateExcel(data: ReportData[]): Promise<Buffer> {
@@ -233,7 +233,7 @@ async function generateExcel(data: ReportData[]): Promise<Buffer> {
 
 4. **Large CSV Export with Streaming**: Process datasets >100K rows without memory overflow.
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { createObjectCsvStringifier } from 'csv-writers';
 import { Transform } from 'stream';
 
@@ -286,7 +286,7 @@ app.get('/reports/csv', async (req, res) => {
 
 5. **Async Report Queue**: Use Bull or Sidekiq for reports exceeding processing thresholds.
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import Bull from 'bull';
 
 const reportQueue = new Bull('report-generation', {
@@ -340,7 +340,7 @@ reportQueue.process(async (job) => {
 
 6. **Report Scheduling**: Support one-time and recurring schedules with cron expressions.
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 interface ReportSchedule {
   id: string;
   reportType: string;
@@ -379,7 +379,7 @@ async function evaluateSchedules(): Promise<void> {
 
 ### Pattern: Puppeteer Pool for PDF Generation
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import puppeteer, { Browser, Page } from 'puppeteer';
 import { createPool, Pool } from 'generic-pool';
 
@@ -414,7 +414,7 @@ async function generatePdfFromUrl(url: string, options: PdfOptions = {}): Promis
 
 ### Pattern: Report Status API
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // report-api.ts
 interface ReportJob {
   id: string;
@@ -460,7 +460,7 @@ app.get('/api/reports/:id/download', async (req, res) => {
 
 ### Pattern: Chunked Excel with Multiple Sheets
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import ExcelJS from 'exceljs';
 import { Transform } from 'stream';
 
@@ -500,7 +500,7 @@ async function generateMultiSheetExcel(dataBySheet: Record<string, any[]>, summa
 
 ### Pattern: Report Template Versioning
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 interface ReportTemplate {
   id: string;
   name: string;
@@ -584,7 +584,7 @@ class ReportTemplateManager {
 
 ## Testing Strategies
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { describe, it, expect } from 'vitest';
 import puppeteer from 'puppeteer';
 import ExcelJS from 'exceljs';

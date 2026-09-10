@@ -50,7 +50,7 @@ Load detailed guidance based on context:
 | Spark SQL & DataFrames | `../../../Global_References/spark-sql-dataframes.md` | DataFrame API, Spark SQL, schemas, joins, aggregations |
 | RDD Operations | `../../../Global_References/rdd-operations.md` | Transformations, actions, pair RDDs, custom partitioners |
 | Partitioning & Caching | `../../../Global_References/partitioning-caching.md` | Data partitioning, persistence levels, broadcast variables |
-| Performance Tuning | `../../../Global_References/[performance-tuning](../../Software_Engineering_and_Other/Frontend/performance-tuning/SKILL.md).md` | Configuration, memory tuning, shuffle optimization, skew handling |
+| Performance Tuning | `../../../Global_References/[performance-tuning](../../Software_Engineering_and_Other/Frontend/performance/performance-tuning/SKILL.md).md` | Configuration, memory tuning, shuffle optimization, skew handling |
 | Streaming Patterns | `../../../Global_References/streaming-patterns.md` | Structured Streaming, watermarks, stateful operations, sinks |
 
 ## Code Examples

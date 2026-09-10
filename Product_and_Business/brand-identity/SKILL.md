@@ -449,7 +449,7 @@ Brand colors must meet WCAG AA minimums:
   - references/logo-design.md — Logo Design Reference
   - references/visual-identity-guidelines.md — Visual Identity Guidelines Reference
 ## Handoff
-Hand off to `[design-visual-design](../../Software_Engineering_and_Other/Frontend/visual-design/SKILL.md)` for visual system implementation. Hand off to `design-[design-systems](../../Software_Engineering_and_Other/Frontend/design-systems/SKILL.md)` for token/component implementation. Hand off to `[design-ux-research](../ux-research/SKILL.md)` for audience validation.
+Hand off to `[design-visual-design](../../Software_Engineering_and_Other/Frontend/ui-ux/visual-design/SKILL.md)` for visual system implementation. Hand off to `design-[design-systems](../../Software_Engineering_and_Other/Frontend/ui-ux/design-systems/SKILL.md)` for token/component implementation. Hand off to `[design-ux-research](../ux-research/SKILL.md)` for audience validation.
 ## Implementation Patterns
 
 ### Observer Pattern for Event Handling
@@ -499,7 +499,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### [Profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) Methodology
+### [Profiling](../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking

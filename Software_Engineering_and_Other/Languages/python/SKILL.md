@@ -55,7 +55,7 @@ Project type?
 │   └── Modern → hatchling / flit (fast, standards-compliant)
 ├── Application (web API, CLI tool, service)
 │   ├── Python 3.12+ → uv (fastest, unified, Rust-based)
-│   ├── Large [monorepo](../../Frontend/monorepo/SKILL.md) → PDM (PEP 582, no virtualenv needed)
+│   ├── Large [monorepo](../../Frontend/build-tools/monorepo/SKILL.md) → PDM (PEP 582, no virtualenv needed)
 │   └── Team standard → Poetry (lock file, dependency resolution, publish)
 └── Data science / ML → conda / mamba (binary packages, CUDA support)
 ```
@@ -66,7 +66,7 @@ Deployment context?
 ├── Containerized ([Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)) → single venv in container, no system Python
 ├── Local development → pyenv + virtualenv / uv venv (isolated per project)
 ├── CI/CD → fresh venv per run (cache pip/uv between runs)
-└── [Monorepo](../../Frontend/monorepo/SKILL.md) → PDM workspace / hatch.env per project
+└── [Monorepo](../../Frontend/build-tools/monorepo/SKILL.md) → PDM workspace / hatch.env per project
 ```
 
 ### Async Framework Selection
@@ -391,7 +391,7 @@ async def test_create_order(async_client):
 
 ### Dependency Management Comparison
 
-| Tool | Python Req | Lock File | Speed | Virtual Env | [Monorepo](../../Frontend/monorepo/SKILL.md) | Extras |
+| Tool | Python Req | Lock File | Speed | Virtual Env | [Monorepo](../../Frontend/build-tools/monorepo/SKILL.md) | Extras |
 |------|-----------|-----------|-------|-------------|----------|--------|
 | pip | Any | No (pip freeze) | Slow | venv | No | Built-in |
 | pip-tools | Any | requirements.txt | Medium | venv | No | Compile + sync |

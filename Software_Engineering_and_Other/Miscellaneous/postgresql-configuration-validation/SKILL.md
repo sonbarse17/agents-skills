@@ -38,7 +38,7 @@ longer exists. This skill is the pre-production gate — it validates a
 proposed configuration change against the running instance's actual
 [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) and topology before it's applied, so operational tuning work
 (covered in
-[postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../Frontend/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md))
+[postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md))
 doesn't produce an outage instead of an improvement.
 
 ## When to use
@@ -306,6 +306,6 @@ and `shared_buffers` set to 4GB. PgBouncer sits in front with
 
 ## Cross-references
 
-- [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../Frontend/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — the operational tuning work (replication, connection pooling, vacuum) whose proposed config changes this skill validates before rollout.
+- [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — the operational tuning work (replication, connection pooling, vacuum) whose proposed config changes this skill validates before rollout.
 - [postgresql-high-availability-and-failover](../[postgresql-high-availability-and-failover](../../../AI_and_Agents/Workflows/[postgresql](../../Backend/postgresql/SKILL.md)-high-availability-and-failover/SKILL.md)/SKILL.md) — validates the `synchronous_standby_names`/replication-slot configuration this skill checks in the context of a full HA topology and failover testing.
 - [database-schema-migration-with-liquibase-and-flyway](../[database-schema-migration-with-liquibase-and-flyway](../../../DevOps_and_Cloud/Observability_and_SecOps/database-schema-migration-with-liquibase-and-flyway/SKILL.md)/SKILL.md) — complementary pre-production gate for schema/DDL changes, as this skill is for engine-config changes.

@@ -151,7 +151,7 @@ Ask: "Why does this happen?" until you reach the actual cause, not just where it
 
 Write a test that catches this specific failure:
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // The bug: task titles with special characters broke the search
 it('finds tasks with special characters in title', async () => {
   await createTask({ title: 'Fix "quotes" & <brackets>' });
@@ -227,7 +227,7 @@ Runtime error:
 
 When under time pressure, use safe fallbacks:
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Safe default + warning (instead of crashing)
 function getConfig(key: string): string {
   const value = process.env[key];

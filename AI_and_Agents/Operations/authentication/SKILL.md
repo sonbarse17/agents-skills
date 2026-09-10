@@ -129,7 +129,7 @@ Route type?
 ## Workflow
 
 ### 1. Auth Provider Integration
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Auth0
 import { Auth0Provider } from '@auth0/auth0-react'
 <Auth0Provider domain="dev-xxx.us.auth0.com" clientId="xxx" authorizationParams={{ redirect_uri: window.location.origin }}>
@@ -156,7 +156,7 @@ const login = async (email: string, password: string) => {
 | sessionStorage | Moderate | No (tab-scoped) | Short-lived sessions |
 
 ### 3. Auth Context
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 interface AuthState {
   user: User | null
   accessToken: string | null
@@ -171,7 +171,7 @@ interface AuthActions {
 }
 ```
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Complete auth context with session recovery
 const AuthContext = createContext<AuthState & AuthActions | null>(null)
 
@@ -236,7 +236,7 @@ function useAuth() {
 ```
 
 ### 4. Route Guards
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // React component guard
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { isAuthenticated, isLoading } = useAuth()
@@ -265,7 +265,7 @@ function AdminRoute({ children }: { children: ReactNode }) {
 ```
 
 ### 5. Token Refresh Interceptor
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Axios interceptor for automatic token refresh
 let isRefreshing = false
 let failedQueue: Array<{ resolve: Function; reject: Function }> = []
@@ -318,7 +318,7 @@ api.interceptors.response.use(
 ```
 
 ### 6. Logout
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 async function logout() {
   await api.post('/auth/logout') // invalidate refresh token server-side
   tokenStorage.clear()
@@ -328,7 +328,7 @@ async function logout() {
 ```
 
 ### 7. OAuth with PKCE
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Generate code verifier and challenge
 const verifier = generateRandomString(64)
 const challenge = await sha256(verifier)
@@ -344,7 +344,7 @@ const tokens = await api.post('/auth/token', { code, verifier, redirect_uri: RED
 ```
 
 ### 8. Session Recovery & Token Rotation
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Proactive token refresh — refresh before expiry, not after
 function useTokenRefresh(expiresIn: number, threshold = 60_000) {
   const { getAccessToken, isAuthenticated } = useAuth()
@@ -380,7 +380,7 @@ function useSessionSync() {
 ```
 
 ### 9. MFA / 2FA Integration
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 type MfaStep = 'verify' | 'enroll' | 'challenge'
 type MfaMethod = 'totp' | 'sms' | 'email' | 'recovery-code'
 
@@ -424,7 +424,7 @@ function useMfa() {
 ### 11. Provider-Specific Patterns
 
 #### Custom JWT with Backend
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Login
 const login = async (email: string, password: string) => {
   const response = await fetch('/api/auth/login', {
@@ -443,7 +443,7 @@ const login = async (email: string, password: string) => {
 ```
 
 #### Auth0
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { useAuth0 } from '@auth0/auth0-react'
 
 function Profile() {
@@ -457,7 +457,7 @@ function Profile() {
 ```
 
 #### [Supabase](../../../Software_Engineering_and_Other/Backend/supabase/SKILL.md)
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { createClient, User } from '@[supabase](../../../Software_Engineering_and_Other/Backend/supabase/SKILL.md)/[supabase](../../../Software_Engineering_and_Other/Backend/supabase/SKILL.md)-js'
 
 const [supabase](../../../Software_Engineering_and_Other/Backend/supabase/SKILL.md) = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)

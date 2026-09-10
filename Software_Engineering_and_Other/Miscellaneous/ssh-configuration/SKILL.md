@@ -315,4 +315,4 @@ command="internal-sftp",no-port-forwarding,no-pty ssh-ed25519 AAAA... sftp-uploa
 - `[linux-administration](../linux-administration/SKILL.md)` -- General Linux system administration
 - `[user-management](../user-management/SKILL.md)` -- Managing the users who connect via SSH
 - `[systemd-services](../systemd-services/SKILL.md)` -- Managing sshd as a systemd service
-- `[performance-tuning](../../Frontend/performance-tuning/SKILL.md)` -- Network tuning for SSH performance
+- `[performance-tuning](../../Frontend/performance/performance-tuning/SKILL.md)` -- Network tuning for SSH performance

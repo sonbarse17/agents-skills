@@ -51,7 +51,7 @@ GraphQL schema design with resolver patterns and DataLoader setup as formatted t
 ```graphql
 # Schema types, queries, mutations
 ```
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // DataLoader setup
 // Resolver patterns
 // Auth directive definitions
@@ -135,7 +135,7 @@ Each resolver is a function that returns data for a specific field. Resolvers ca
 ### DataLoader Batching
 Create one DataLoader per data source per request lifecycle. The batch function receives an array of keys and returns an array of values in the same order. Cache per request — never across requests. Use the `dataloader` library (JS/TS) or equivalent in other languages. Place DataLoader instantiation in the request context factory so it is available to all resolvers. Handle partial failures by mapping null for missing keys in the correct position.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // DataLoader setup — per request
 function createLoaders(db: Database) {
   return {
@@ -218,7 +218,7 @@ The client checks for the `error` field first. If present, handle the error. If 
 ## Resolver Implementation Patterns
 
 ### Query Resolver Pattern
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 const resolvers = {
   Query: {
     user: async (_, { id }, { dataLoaders, auth }) => {
@@ -233,7 +233,7 @@ const resolvers = {
 ```
 
 ### Mutation Resolver Pattern
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 const resolvers = {
   Mutation: {
     createUser: async (_, { input }, { dataLoaders, auth, services }) => {
@@ -246,7 +246,7 @@ const resolvers = {
 ```
 
 ### Subscription Resolver Pattern
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 const resolvers = {
   Subscription: {
     orderCreated: {
@@ -341,7 +341,7 @@ Batch multiple DataLoader loads into a single database query. When a resolver ne
 ### Query Complexity Budgeting
 Allocate complexity points per field based on data source access cost. Fields resolved from the same database call cost 1 point. Fields resolved from external API calls cost 5+ points. List fields cost `1 + childCost * expectedPageSize`. Set a per-query budget of 1000 points and reject queries that exceed it.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Apollo Server — query complexity plugin
 const complexityPlugin = {
   async requestDidStart() {
@@ -367,7 +367,7 @@ Use Apollo cache hints to set cache policies per type and field. `@cacheControl(
 ### Persisted Queries
 Register common queries by hash to reduce request size and prevent arbitrary query execution. The client sends a hash instead of the full query string. The server looks up the query by hash. Persisted queries are whitelisted through CI/CD and cannot contain arbitrary operations.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Persisted queries setup (Apollo)
 const persistedQueries = new Map([
   ['hash1', 'query GetUser($id: ID!) { user(id: $id) { name email } }'],
@@ -402,7 +402,7 @@ app.use('/graphql', (req, res, next) => {
 
 ### Resolver with DataLoader
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import DataLoader from 'dataloader';
 import { GraphQLResolveInfo } from 'graphql';
 
@@ -450,7 +450,7 @@ const mutationResolvers = {
 
 ### Complexity Analysis
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import { createComplexityRule, simpleEstimator } from 'graphql-query-complexity';
 
 const complexityRule = createComplexityRule({
@@ -573,7 +573,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/performance/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -589,7 +589,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### [Profiling](../../Frontend/profiling/SKILL.md) Methodology
+### [Profiling](../../Frontend/performance/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking

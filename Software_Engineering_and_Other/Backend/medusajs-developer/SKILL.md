@@ -120,7 +120,7 @@ npx medusa db:migrate --clean-snapshots
 ## Development Patterns
 
 ### Module Structure
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // src/modules/my-module/models/post.ts
 import { model } from "@medusajs/framework/utils"
 
@@ -135,7 +135,7 @@ export default Post
 ```
 
 ### API Route Example
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // src/api/posts/route.ts
 import { MedusaRequest, MedusaResponse } from "@medusajs/framework/http"
 
@@ -155,7 +155,7 @@ export const POST = async (req: MedusaRequest, res: MedusaResponse) => {
 ```
 
 ### Scheduled Job Example
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // src/jobs/sync-inventory.ts
 import { MedusaContainer } from "@medusajs/framework/types"
 
@@ -174,7 +174,7 @@ export const config = {
 
 ### 1. Project Setup
 - Use MedusaJS CLI for project initialization
-- Follow [TypeScript](../../Frontend/typescript/SKILL.md) best practices
+- Follow [TypeScript](../../Frontend/common/typescript/SKILL.md) best practices
 - Implement proper error handling
 - Set up comprehensive testing
 

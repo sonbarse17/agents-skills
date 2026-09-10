@@ -80,7 +80,7 @@ sequenced here.
 - SAST/SCA tooling chosen per
   [sast-integration](../../../../Security/devsecops/SKILL.md)/skills/[sast-integration](../../../../Security/sast-integration/SKILL.md)/SKILL.md)
   and
-  [software-composition-analysis-sca](../../../../Security/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md).
+  [software-composition-analysis-sca](../../../../Security/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../../Security/software-composition-analysis-sca/SKILL.md)/SKILL.md).
 
 ## Step-by-step guidance
 
@@ -266,7 +266,7 @@ back to the prior value, depending on outcome.
   3) after the install/bundle step, not just the top-level manifest —
   this is the [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-specific version of the "scan lockfiles, not
   manifests" guidance in
-  [software-composition-analysis-sca](../../../../Security/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md),
+  [software-composition-analysis-sca](../../../../Security/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../../Security/software-composition-analysis-sca/SKILL.md)/SKILL.md),
   made more consequential because the entire dependency tree ships inside
   one artifact with no separate layer boundary to scan independently.
 
@@ -336,7 +336,7 @@ point in the rollout.
 
 - [aws-lambda-packaging-and-configuration](../../../[serverless](../../Containers_and_Orchestration/serverless/SKILL.md)-and-alternative-compute/skills/[aws-lambda-packaging-and-configuration](../[aws-lambda](../aws-lambda/SKILL.md)-packaging-and-configuration/SKILL.md)/SKILL.md) — zip/layer packaging and IAM execution-role mechanics used in Phase 2/5.
 - [aws-codepipeline-and-codedeploy](../[aws-codepipeline-and-codedeploy](../aws-codepipeline-and-codedeploy/SKILL.md)/SKILL.md) — the underlying CodeDeploy traffic-shifting engine Phase 6's canary uses, shown there for EC2/ECS.
-- [sast-integration](../../../../Security/devsecops/SKILL.md)/skills/[sast-integration](../../../../Security/sast-integration/SKILL.md)/SKILL.md) and [software-composition-analysis-sca](../../../../Security/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md) — Phase 3's scan mechanics, applied here to a packaged zip.
+- [sast-integration](../../../../Security/devsecops/SKILL.md)/skills/[sast-integration](../../../../Security/sast-integration/SKILL.md)/SKILL.md) and [software-composition-analysis-sca](../../../../Security/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../../Security/software-composition-analysis-sca/SKILL.md)/SKILL.md) — Phase 3's scan mechanics, applied here to a packaged zip.
 - [ci-cd-pipeline-design](../../../devops/skills/[ci-cd-pipeline-design](../../CI_CD/ci-cd-pipeline-design/SKILL.md)/SKILL.md) — vendor-neutral stage/gate concepts this pipeline implements.
 - [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)/SKILL.md) — least-privilege scoping for the CI deploy role and function execution role.
 - [complete-[cicd-pipeline](../../../../ci-cd/common/pipeline-design/cicd-pipeline/SKILL.md)-deployment-for-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-from-scratch](../[complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-from-scratch](../complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-from-scratch/SKILL.md)/SKILL.md) and [complete-[cicd-pipeline](../../../../ci-cd/common/pipeline-design/cicd-pipeline/SKILL.md)-for-vm-based-workloads-from-scratch](../[complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-for-vm-based-workloads-from-scratch](../../CI_CD/complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-for-vm-based-workloads-from-scratch/SKILL.md)/SKILL.md) — the same source-to-deploy shape for a fundamentally different build artifact and deploy mechanism.

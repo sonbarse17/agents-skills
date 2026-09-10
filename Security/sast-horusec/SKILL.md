@@ -47,7 +47,7 @@ Horusec is an open-source security analysis tool that performs static code analy
 
 ## Supported Languages
 
-C#, Java, Kotlin, [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md), Ruby, Golang, Terraform, JavaScript, [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md), [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), PHP, C, HTML, JSON, Dart, [Elixir](../../Software_Engineering_and_Other/Languages/elixir/SKILL.md), Shell, Nginx
+C#, Java, Kotlin, [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md), Ruby, Golang, Terraform, JavaScript, [TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md), [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), PHP, C, HTML, JSON, Dart, [Elixir](../../Software_Engineering_and_Other/Languages/elixir/SKILL.md), Shell, Nginx
 
 ## Quick Start
 
@@ -189,9 +189,9 @@ horusec start -p . \
 
 Exit code will be non-zero if vulnerabilities at or above threshold are found.
 
-### Pattern 2: Multi-Project [Monorepo](../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md) Scanning
+### Pattern 2: Multi-Project [Monorepo](../../Software_Engineering_and_Other/Frontend/build-tools/monorepo/SKILL.md) Scanning
 
-Scan multiple projects in [monorepo](../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md) structure:
+Scan multiple projects in [monorepo](../../Software_Engineering_and_Other/Frontend/build-tools/monorepo/SKILL.md) structure:
 
 ```bash
 # Scan specific subdirectories

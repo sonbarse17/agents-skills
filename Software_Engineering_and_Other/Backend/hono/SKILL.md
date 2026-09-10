@@ -81,7 +81,7 @@ Decision: Edge deployment or ultra-light → Hono. Full ecosystem → Express. P
 |---------|---------|----------|
 | Node.js | `@hono/node-server` | Existing Node ecosystem |
 | Cloudflare Workers | `hono` (native) | Edge compute, D1, KV |
-| Bun | `hono` (native) | Fast startup, [TypeScript](../../Frontend/typescript/SKILL.md) native |
+| Bun | `hono` (native) | Fast startup, [TypeScript](../../Frontend/common/typescript/SKILL.md) native |
 | Deno | `hono` (npm/JSR) | Deno Deploy, permissions |
 | Vercel | `@hono/vercel` | [Serverless](../../Patterns/serverless/SKILL.md), Next.js BFF |
 | AWS Lambda | `@hono/[aws-lambda](../../../cloud/aws/compute/aws-lambda/SKILL.md)` | Lambda + API Gateway |
@@ -90,7 +90,7 @@ Decision: Edge deployment or ultra-light → Hono. Full ecosystem → Express. P
 
 ### Step 1: Project Bootstrap
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // src/index.ts (Node.js)
 import { serve } from '@hono/node-server';
 import { createApp } from './app';
@@ -131,7 +131,7 @@ export function createApp() {
 
 ### Step 2: Module Routes with Zod Validation
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // src/modules/users/index.ts
 import { Hono } from 'hono';
 import { z } from 'zod';
@@ -179,7 +179,7 @@ export const userModule = new Hono()
 
 ### Step 3: Auth Middleware (JWT)
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // src/middleware/auth.ts
 import { Hono, Context, Next } from 'hono';
 import { getCookie } from 'hono/cookie';
@@ -220,7 +220,7 @@ app.get('/api/v1/admin/users', authMiddleware, async (c) => {
 
 ### Step 4: Error Handler
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // src/middleware/error-handler.ts
 import { Context, ErrorHandler } from 'hono';
 import { HTTPException } from 'hono/http-exception';
@@ -256,7 +256,7 @@ export const errorHandler: ErrorHandler = (err: Error, c: Context) => {
 
 ### Step 5: RPC Client
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // src/client.ts (frontend or BFF)
 import { hc } from 'hono/client';
 import type { AppType } from '../server/app';
@@ -285,7 +285,7 @@ export type AppType = typeof app;
 
 ### Step 6: Static File Serving
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import { serveStatic } from '@hono/node-server/serve-static';
 
 // Production static file serving
@@ -299,7 +299,7 @@ app.use('/static/*', serveStatic({ root: './public' }));
 
 ### Pattern: Scoped Middleware Group
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Admin routes with auth + [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) middleware
 const admin = new Hono()
   .use('*', authMiddleware)
@@ -319,7 +319,7 @@ app.route('/api/admin', admin);
 
 ### Pattern: Bearer Auth Helper
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import { bearerAuth } from 'hono/bearer-auth';
 
 const token = process.env.API_TOKEN!;
@@ -330,7 +330,7 @@ app.use('/api/admin/*', bearerAuth({ token }));
 
 ### Edge Deployment (Cloudflare Workers)
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // src/worker.ts
 import { Hono } from 'hono';
 import { cors } from 'hono/cors';
@@ -377,7 +377,7 @@ export default app;
 
 ## Testing Strategies
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import { Hono } from 'hono';
 import { test, describe, expect } from 'vitest';
 
@@ -488,7 +488,7 @@ class ConfigBuilder {
 
 ### Pattern: Hono Middleware Chain
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import { Hono, MiddlewareHandler } from 'hono';
 import { getCookie, setCookie } from 'hono/cookie';
 import { cors } from 'hono/cors';
@@ -511,7 +511,7 @@ app.use('*', logger);
 
 ### Pattern: Validation with Zod
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import { z } from 'zod';
 import { zValidator } from '@hono/zod-validator';
 
@@ -592,7 +592,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### [Profiling](../../Frontend/profiling/SKILL.md) Methodology
+### [Profiling](../../Frontend/performance/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking

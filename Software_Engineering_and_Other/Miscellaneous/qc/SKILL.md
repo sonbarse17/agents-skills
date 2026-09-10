@@ -111,10 +111,10 @@ security:
 
 ### Step 3: Static Analysis Configuration per Stack
 
-**[TypeScript](../../Frontend/typescript/SKILL.md) / JavaScript:**
+**[TypeScript](../../Frontend/common/typescript/SKILL.md) / JavaScript:**
 ```json
 {
-  "extends": ["eslint:recommended", "plugin:@[typescript](../../Frontend/typescript/SKILL.md)-eslint/strict"],
+  "extends": ["eslint:recommended", "plugin:@[typescript](../../Frontend/common/typescript/SKILL.md)-eslint/strict"],
   "rules": {
     "complexity": ["error", 10],
     "max-lines-per-function": ["warn", 50],
@@ -457,7 +457,7 @@ After completing this skill:
 ### Tool Selection
 - Static analysis → SonarQube, ESLint, Pylint
 - Security scanning → Snyk, Trivy, Semgrep
-- Performance [profiling](../../Frontend/profiling/SKILL.md) → Lighthouse, k6 bundled
+- Performance [profiling](../../Frontend/performance/profiling/SKILL.md) → Lighthouse, k6 bundled
 - Dependency scanning → Dependabot, Renovate
 
 ## Implementation Patterns

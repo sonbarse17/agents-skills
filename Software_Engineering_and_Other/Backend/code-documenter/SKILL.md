@@ -42,7 +42,7 @@ Applies to any task involving code documentation, API specs, or developer-facing
 4. **Document** - Apply consistent format
 5. **Validate** - Test all code examples compile/run:
    - [Python](../../Languages/python/SKILL.md): `[python](../../Languages/python/SKILL.md) -m doctest file.py` for doctest blocks; `pytest --doctest-modules` for module-wide checks
-   - [TypeScript](../../Frontend/typescript/SKILL.md)/JavaScript: `tsc --noEmit` to confirm typed examples compile
+   - [TypeScript](../../Frontend/common/typescript/SKILL.md)/JavaScript: `tsc --noEmit` to confirm typed examples compile
    - OpenAPI: validate spec with `npx @redocly/cli lint openapi.yaml`
    - If validation fails: fix examples and re-validate before proceeding to the Report step
 6. **Report** - Generate coverage summary
@@ -91,8 +91,8 @@ def compute_similarity(vec_a: np.ndarray, vec_b: np.ndarray) -> float:
     """
 ```
 
-### JSDoc ([TypeScript](../../Frontend/typescript/SKILL.md))
-```[typescript](../../Frontend/typescript/SKILL.md)
+### JSDoc ([TypeScript](../../Frontend/common/typescript/SKILL.md))
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 /**
  * Fetches a paginated list of products from the catalog.
  *
@@ -120,7 +120,7 @@ Load detailed guidance based on context:
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
 | [Python](../../Languages/python/SKILL.md) Docstrings | `../../../Global_References/[python](../../Languages/python/SKILL.md)-docstrings.md` | Google, NumPy, Sphinx styles |
-| [TypeScript](../../Frontend/typescript/SKILL.md) JSDoc | `../../../Global_References/[typescript](../../Frontend/typescript/SKILL.md)-jsdoc.md` | JSDoc patterns, [TypeScript](../../Frontend/typescript/SKILL.md) |
+| [TypeScript](../../Frontend/common/typescript/SKILL.md) JSDoc | `../../../Global_References/[typescript](../../Frontend/common/typescript/SKILL.md)-jsdoc.md` | JSDoc patterns, [TypeScript](../../Frontend/common/typescript/SKILL.md) |
 | FastAPI/Django API | `../../../Global_References/api-docs-fastapi-django.md` | [Python](../../Languages/python/SKILL.md) API documentation |
 | NestJS/Express API | `../../../Global_References/api-docs-nestjs-express.md` | Node.js API documentation |
 | Coverage Reports | `../../../Global_References/coverage-reports.md` | Generating documentation reports |

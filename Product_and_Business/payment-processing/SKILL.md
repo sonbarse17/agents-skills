@@ -463,7 +463,7 @@ Practice 8: Implement gateway failover for critical payments. If primary gateway
 
 ### Pattern: Gateway Abstraction Layer
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 interface PaymentGateway {
   createPaymentIntent(params: PaymentIntentParams): Promise<PaymentIntentResult>;
   capturePayment(paymentId: string, amount?: number): Promise<CaptureResult>;
@@ -497,7 +497,7 @@ class StripeAdapter implements PaymentGateway {
 
 ### Pattern: Webhook Idempotent Handler
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 async function handleStripeWebhook(req: Request, res: Response): Promise<void> {
   const sig = req.headers['stripe-signature'];
   const event = stripe.webhooks.constructEvent(req.body, sig, process.env.STRIPE_WEBHOOK_SECRET);

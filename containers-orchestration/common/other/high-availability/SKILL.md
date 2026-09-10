@@ -572,4 +572,4 @@ bootstrap:
 - `data-cdc-patterns` when dual-write is implemented via Debezium / Kafka Connect.
 - `devops-[progressive-delivery](../../../../ci-cd/common/deployment/progressive-delivery/SKILL.md)` for Argo Rollouts / Flagger canary automation specifics.
 - `devops-[incident-response](../[incident](../incident/SKILL.md)-response/SKILL.md)` for on-call paging, escalation, status page automation.
-- `devops-[backup-dr](../../../../Software_Engineering_and_Other/Frontend/backup-dr/SKILL.md)` for backup cadence, snapshot retention, restore drills.
+- `devops-[backup-dr](../backup-dr/SKILL.md)` for backup cadence, snapshot retention, restore drills.

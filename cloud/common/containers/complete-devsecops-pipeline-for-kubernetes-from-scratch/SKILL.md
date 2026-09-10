@@ -287,7 +287,7 @@ credential delivered via External Secrets Operator instead of a CI secret.
 ```yaml
 jobs:
   sast: { /* per [sast-integration](../../../../Security/sast-integration/SKILL.md) */ }
-  sca: { /* per [software-composition-analysis-sca](../../../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md) */ }
+  sca: { /* per [software-composition-analysis-sca](../../../../Security/software-composition-analysis-sca/SKILL.md) */ }
   build-and-push: { needs: [sast, sca] /* per [container-build-and-release](../../../../containers-orchestration/docker/build/container-build-and-release/SKILL.md) */ }
 
   image-scan:

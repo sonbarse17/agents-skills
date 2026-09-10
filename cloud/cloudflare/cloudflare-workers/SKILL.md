@@ -19,7 +19,7 @@ depends_on:
 
 # Cloudflare Workers
 
-Deploy JavaScript and [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) functions to Cloudflare's global edge network with sub-millisecond cold starts.
+Deploy JavaScript and [TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) functions to Cloudflare's global edge network with sub-millisecond cold starts.
 
 ## When to Use
 
@@ -118,7 +118,7 @@ ENVIRONMENT = "staging"
 
 ### Basic API Router
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // src/index.ts
 export interface Env {
   ENVIRONMENT: string;
@@ -165,7 +165,7 @@ async function logToAnalytics(data: unknown): Promise<void> {
 
 ### Middleware: Rate Limiting with KV
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // src/rate-limiter.ts
 interface Env {
   RATE_LIMIT_KV: KVNamespace;
@@ -214,7 +214,7 @@ id = "abc123def456"
 preview_id = "preview789"
 ```
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // KV operations in a Worker
 interface Env {
   MY_KV: KVNamespace;
@@ -260,7 +260,7 @@ database_name = "my-app"
 database_id = "xxxx-yyyy-zzzz"
 ```
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // D1 SQL queries in a Worker
 interface Env {
   DB: D1Database;
@@ -312,7 +312,7 @@ crons = [
 ]
 ```
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // src/index.ts — scheduled handler
 export default {
   async scheduled(event: ScheduledEvent, env: Env, ctx: ExecutionContext): Promise<void> {
@@ -346,7 +346,7 @@ tag = "v1"
 new_classes = ["Counter"]
 ```
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // src/counter.ts — Durable Object class
 export class Counter {
   state: DurableObjectState;

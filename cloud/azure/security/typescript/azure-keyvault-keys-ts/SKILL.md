@@ -16,7 +16,7 @@ depends_on:
   - typescript
 ---
 
-# Azure Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Keys SDK for [TypeScript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+# Azure Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Keys SDK for [TypeScript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 
 Manage cryptographic keys with Azure Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).
 
@@ -38,7 +38,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 ## Authentication
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { DefaultAzureCredential, ManagedIdentityCredential } from "@azure/identity";
 import { KeyClient, CryptographyClient } from "@azure/keyvault-keys";
 
@@ -57,7 +57,7 @@ const secretClient = new SecretClient(vaultUrl, credential);
 
 ### Create/Set Secret
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const secret = await secretClient.setSecret("MySecret", "secret-value");
 
 // With attributes
@@ -71,7 +71,7 @@ const secretWithAttrs = await secretClient.setSecret("MySecret", "value", {
 
 ### Get Secret
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Get latest version
 const secret = await secretClient.getSecret("MySecret");
 console.log(secret.value);
@@ -84,7 +84,7 @@ const specificSecret = await secretClient.getSecret("MySecret", {
 
 ### List Secrets
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 for await (const secretProperties of secretClient.listPropertiesOfSecrets()) {
   console.log(secretProperties.name);
 }
@@ -97,7 +97,7 @@ for await (const version of secretClient.listPropertiesOfSecretVersions("MySecre
 
 ### Delete Secret
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Soft delete
 const deletePoller = await secretClient.beginDeleteSecret("MySecret");
 await deletePoller.pollUntilDone();
@@ -114,7 +114,7 @@ await recoverPoller.pollUntilDone();
 
 ### Create Keys
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Generic key
 const key = await keyClient.createKey("MyKey", "RSA");
 
@@ -135,14 +135,14 @@ const keyWithAttrs = await keyClient.createKey("MyKey", "RSA", {
 
 ### Get Key
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const key = await keyClient.getKey("MyKey");
 console.log(key.name, key.keyType);
 ```
 
 ### List Keys
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 for await (const keyProperties of keyClient.listPropertiesOfKeys()) {
   console.log(keyProperties.name);
 }
@@ -150,7 +150,7 @@ for await (const keyProperties of keyClient.listPropertiesOfKeys()) {
 
 ### Rotate Key
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Manual rotation
 const rotatedKey = await keyClient.rotateKey("MyKey");
 
@@ -163,7 +163,7 @@ await keyClient.updateKeyRotationPolicy("MyKey", {
 
 ### Delete Key
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const deletePoller = await keyClient.beginDeleteKey("MyKey");
 await deletePoller.pollUntilDone();
 
@@ -175,7 +175,7 @@ await keyClient.purgeDeletedKey("MyKey");
 
 ### Create CryptographyClient
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { CryptographyClient } from "@azure/keyvault-keys";
 
 // From key object
@@ -187,7 +187,7 @@ const cryptoClient = new CryptographyClient(key.id!, credential);
 
 ### Encrypt/Decrypt
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Encrypt
 const encryptResult = await cryptoClient.encrypt({
   algorithm: "RSA-OAEP",
@@ -205,7 +205,7 @@ console.log(decryptResult.result.toString());
 
 ### Sign/Verify
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { createHash } from "node:crypto";
 
 // Create digest
@@ -221,7 +221,7 @@ console.log("Valid:", verifyResult.result);
 
 ### Wrap/Unwrap Keys
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Wrap a key (encrypt it for storage)
 const wrapResult = await cryptoClient.wrapKey("RSA-OAEP", Buffer.from("key-material"));
 
@@ -231,7 +231,7 @@ const unwrapResult = await cryptoClient.unwrapKey("RSA-OAEP", wrapResult.result)
 
 ## Backup and Restore
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Backup
 const keyBackup = await keyClient.backupKey("MyKey");
 const secretBackup = await secretClient.backupSecret("MySecret");
@@ -243,7 +243,7 @@ const restoredSecret = await secretClient.restoreSecretBackup(secretBackup!);
 
 ## Key Types
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import {
   KeyClient,
   KeyVaultKey,
@@ -264,7 +264,7 @@ import {
 
 ## Error Handling
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 try {
   const secret = await secretClient.getSecret("NonExistent");
 } catch (error: any) {

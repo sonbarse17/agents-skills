@@ -368,6 +368,6 @@ journalctl --vacuum-size=500M
 ## Related Skills
 
 - `[linux-administration](../linux-administration/SKILL.md)` -- General system administration context
-- `[performance-tuning](../../Frontend/performance-tuning/SKILL.md)` -- Kernel tuning and resource optimization
+- `[performance-tuning](../../Frontend/performance/performance-tuning/SKILL.md)` -- Kernel tuning and resource optimization
 - `[user-management](../user-management/SKILL.md)` -- Service accounts and permissions
 - `[backup-recovery](../../../cloud/common/migration/backup-recovery/SKILL.md)` -- Scheduling backups with systemd timers

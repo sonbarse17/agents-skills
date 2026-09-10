@@ -480,7 +480,7 @@ CREATE POLICY tenant_isolation_policy ON orders
 
 ### Pattern: Tenant-Aware Cache Isolation
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 class TenantCache {
   private redis: Redis;
   private readonly PREFIX = 'tenant';

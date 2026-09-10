@@ -58,7 +58,7 @@ Load detailed guidance based on context:
 | GoRouter | `../../../Global_References/gorouter-navigation.md` | Navigation, routing, deep linking |
 | Widgets | `../../../Global_References/flutter-expert_widget-patterns.md` | Building UI components, const optimization |
 | Structure | `../../../Global_References/flutter-expert_project-structure.md` | Setting up project, architecture |
-| Performance | `../../../Global_References/flutter-expert_performance.md` | Optimization, [profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md), jank fixes |
+| Performance | `../../../Global_References/flutter-expert_performance.md` | Optimization, [profiling](../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md), jank fixes |
 
 ## Code Examples
 

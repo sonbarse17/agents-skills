@@ -698,10 +698,10 @@ spec:
 - references/kubernetes-api-resources.md — API Resource Guide
 - references/[kubernetes-security](../../security/kubernetes-security/SKILL.md).md — Kubernetes Security Hardening
 - references/kubernetes-upgrades.md — Cluster Upgrade Procedures
-- references/kubernetes-[backup-dr](../../../../Software_Engineering_and_Other/Frontend/backup-dr/SKILL.md).md — etcd Backup and Disaster Recovery
+- references/kubernetes-[backup-dr](../../../common/other/backup-dr/SKILL.md).md — etcd Backup and Disaster Recovery
 - references/kubernetes-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Cluster [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 - references/kubernetes-troubleshooting.md — Cluster Troubleshooting Guide
 
 ## Handoff
-Cross-reference with `kubernetes-patterns` for application manifests. Use `[helm-patterns](../../../helm/other/helm-patterns/SKILL.md)` for chart design. Use `[cilium-ebpf](../../networking/cilium-ebpf/SKILL.md)` for advanced networking. Use `[service-mesh](../../../common/service-mesh/service-mesh/SKILL.md)` for Istio/Linkerd. Use `[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)` for Prometheus/Grafana. Use `[backup-dr](../../../../Software_Engineering_and_Other/Frontend/backup-dr/SKILL.md)` for Velero. Hand off to `[incident-response](../../Observability_and_SecOps/[incident](../../Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)` for cluster incidents.
+Cross-reference with `kubernetes-patterns` for application manifests. Use `[helm-patterns](../../../helm/other/helm-patterns/SKILL.md)` for chart design. Use `[cilium-ebpf](../../networking/cilium-ebpf/SKILL.md)` for advanced networking. Use `[service-mesh](../../../common/service-mesh/service-mesh/SKILL.md)` for Istio/Linkerd. Use `[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)` for Prometheus/Grafana. Use `[backup-dr](../../../common/other/backup-dr/SKILL.md)` for Velero. Hand off to `[incident-response](../../Observability_and_SecOps/[incident](../../Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)` for cluster incidents.
 

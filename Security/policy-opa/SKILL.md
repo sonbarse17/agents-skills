@@ -319,7 +319,7 @@ Generate compliance reports using the bundled reporting script:
 - `k8s-constraint.yaml` - Example Gatekeeper constraint configuration
 - `[soc2-compliance](../soc2-compliance/SKILL.md).rego` - SOC2 compliance controls as OPA policies
 - `[pci-dss-compliance](../../cloud/common/security/pci-dss-compliance/SKILL.md).rego` - PCI-DSS requirements as OPA policies
-- `[gdpr-compliance](../../Software_Engineering_and_Other/Frontend/gdpr-compliance/SKILL.md).rego` - GDPR data protection policies
+- `[gdpr-compliance](../gdpr-compliance/SKILL.md).rego` - GDPR data protection policies
 - `terraform-security.rego` - Terraform security best practices policies
 - `ci-cd-pipeline.yaml` - CI/CD integration examples ([GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI)
 

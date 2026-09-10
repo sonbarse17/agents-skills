@@ -43,7 +43,7 @@ src/
 ├── services/              # API and native services
 ├── stores/                # State management
 ├── utils/                 # Utilities
-└── types/                 # [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) types
+└── types/                 # [TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) types
 ```
 
 ### 2. Expo vs Bare React Native
@@ -60,7 +60,7 @@ src/
 
 ```bash
 # Create new Expo project
-npx create-expo-app@latest my-app -t expo-template-blank-[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+npx create-expo-app@latest my-app -t expo-template-blank-[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 
 # Install essential dependencies
 npx expo install expo-router expo-status-bar react-native-safe-area-context
@@ -68,7 +68,7 @@ npx expo install @react-native-async-storage/async-storage
 npx expo install expo-secure-store expo-haptics
 ```
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // app/_layout.tsx
 import { Stack } from 'expo-router'
 import { ThemeProvider } from '@/providers/ThemeProvider'

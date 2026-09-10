@@ -75,7 +75,7 @@ behavior.
 ## Step-by-step guidance
 
 1. **Scope triggers precisely.** Use `paths:`/`paths-ignore:` in a
-   [monorepo](../../../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md) so unrelated changes don't trigger a full pipeline, and add
+   [monorepo](../../../../Software_Engineering_and_Other/Frontend/build-tools/monorepo/SKILL.md) so unrelated changes don't trigger a full pipeline, and add
    `concurrency` so superseded runs on the same ref are cancelled:
    ```yaml
    name: ci

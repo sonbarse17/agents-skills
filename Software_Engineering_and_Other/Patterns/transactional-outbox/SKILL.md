@@ -123,7 +123,7 @@ CREATE INDEX idx_outbox_processed ON outbox_messages(processed_at)
 
 ### Step 2: Write Within Transaction
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 async function placeOrder(command: PlaceOrderCommand): Promise<void> {
   await db.transaction(async (tx) => {
     // 1. Business operation
@@ -146,7 +146,7 @@ async function placeOrder(command: PlaceOrderCommand): Promise<void> {
 
 ### Step 3: Message Relay (Polling)
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 class OutboxRelay {
   constructor(
     private db: Database,
@@ -226,7 +226,7 @@ Debezium outbox configuration:
 
 ### Step 5: Consumer Idempotency
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 async function handleOrderPlaced(event: OutboxEvent): Promise<void> {
   // Deduplicate by event ID
   const processed = await checkProcessed(event.eventId);
@@ -241,7 +241,7 @@ async function handleOrderPlaced(event: OutboxEvent): Promise<void> {
 
 For higher throughput with polling relay:
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 class BatchedOutboxRelay {
   async poll(): Promise<void> {
     const messages = await this.db.outbox.findUnprocessed(100);
@@ -398,7 +398,7 @@ CREATE TABLE outbox_messages (
 
 ## [PostgreSQL](../../Backend/postgresql/SKILL.md) LISTEN/NOTIFY as Lightweight Relay
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Hybrid approach: NOTIFY for low latency, polling as fallback
 class HybridOutboxRelay {
   private db: Database;
@@ -434,7 +434,7 @@ CREATE TRIGGER outbox_notify
 
 ## Error Recovery and Dead Letter Queue
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 class OutboxDLQ {
   private deadLetterStore: Map<string, DeadLetterEntry> = new Map();
 
@@ -476,7 +476,7 @@ class OutboxDLQ {
 
 ## Kafka Producer Integration
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 class KafkaOutboxRelay {
   private producer: Producer;
   private db: Database;
@@ -518,7 +518,7 @@ class KafkaOutboxRelay {
 
 ## Deduplication and Idempotency Strategies
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Consumer-side deduplication
 // Option 1: Database-backed dedup
 const processedEvents = new Set<string>(); // or Redis set with TTL

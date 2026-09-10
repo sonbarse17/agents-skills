@@ -29,12 +29,12 @@ depends_on:
 # Deno
 
 ## Purpose
-Build secure-by-default [TypeScript](../../Frontend/typescript/SKILL.md) applications with Deno runtime — permissions model, module system, standard library, Fresh framework, and deployment.
+Build secure-by-default [TypeScript](../../Frontend/common/typescript/SKILL.md) applications with Deno runtime — permissions model, module system, standard library, Fresh framework, and deployment.
 
 ## Agent Protocol
 
 ### Trigger
-User request includes: `Deno`, `deno deploy`, `deno fresh`, `deno std`, `deno run`, `deno compile`, `deno test`, `deno fmt`, `deno lint`, `deno task`, `deno.json`, `import_map.json`, `[TypeScript](../../Frontend/typescript/SKILL.md) runtime`, `Fresh framework`, `deno.land`.
+User request includes: `Deno`, `deno deploy`, `deno fresh`, `deno std`, `deno run`, `deno compile`, `deno test`, `deno fmt`, `deno lint`, `deno task`, `deno.json`, `import_map.json`, `[TypeScript](../../Frontend/common/typescript/SKILL.md) runtime`, `Fresh framework`, `deno.land`.
 
 ### Input Context
 - Runtime (Deno, Deno Deploy, self-hosted)
@@ -63,22 +63,22 @@ Produce artifact directly. No preamble, no postamble, no explanations. No filler
 
 | Criterion | Fresh | Oak | Hono | Bare (std/http) |
 |-----------|-------|-----|------|-----------------|
-| SSR + Islands | Yes ([Preact](../../Frontend/preact/SKILL.md)) | No | No | No |
+| SSR + Islands | Yes ([Preact](../../Frontend/frameworks/preact/SKILL.md)) | No | No | No |
 | REST API | Heavy (file-based) | Best | Best | Minimal |
 | Edge deployment | Deno Deploy native | Compatible | Compatible | Compatible |
 | Middleware model | Route-level | Context pipeline | Express-like | Manual |
 | Type safety | Partial | Generic params | Full (TypeBox/Zod) | Manual |
 | npm compat | Via JSR | Via JSR | Built-in | Via JSR |
 
-Decision: `routes/` file-based routing → Fresh. REST API w/ middleware → Oak. [TypeScript](../../Frontend/typescript/SKILL.md)-first w/ validation → Hono. Minimal/single-purpose → std/http.
+Decision: `routes/` file-based routing → Fresh. REST API w/ middleware → Oak. [TypeScript](../../Frontend/common/typescript/SKILL.md)-first w/ validation → Hono. Minimal/single-purpose → std/http.
 
 ### Module Import Strategy: deno.land/x vs JSR vs npm
 
 | Source | Pros | Cons | Best For |
 |--------|------|------|----------|
 | deno.land/x | Native Deno, no conversion | Slower resolution, no semver enforcement | Std lib, Oak, Djwt |
-| JSR | Fast resolution, semver, [TypeScript](../../Frontend/typescript/SKILL.md) native | Smaller registry | Published modules with TS types |
-| npm | Largest ecosystem | CJS/ESM conversion overhead, perf cost | Browser compat packages (React, [Preact](../../Frontend/preact/SKILL.md)) |
+| JSR | Fast resolution, semver, [TypeScript](../../Frontend/common/typescript/SKILL.md) native | Smaller registry | Published modules with TS types |
+| npm | Largest ecosystem | CJS/ESM conversion overhead, perf cost | Browser compat packages (React, [Preact](../../Frontend/frameworks/preact/SKILL.md)) |
 
 Decision: Std lib → deno.land/x. New TS-first modules → JSR. Only use npm for packages unavailable on JSR/deno.land/x.
 
@@ -139,7 +139,7 @@ Never use `-A` in production. Group permissions in deno.json tasks. Use `--deny-
 
 ### Step 2: Oak REST API Setup
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // src/main.ts
 import { Application, Router } from 'oak/mod.ts';
 import { oakCors } from 'https://deno.land/x/cors@v1.2.2/mod.ts';
@@ -169,7 +169,7 @@ logger.info(`Server running on http://localhost:${port}`);
 await app.listen({ port });
 ```
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // src/routes/users.ts
 import { Router } from 'oak/mod.ts';
 import { userController } from '../controllers/user.controller.ts';
@@ -185,7 +185,7 @@ router.delete('/:id', userController.remove);
 export { router };
 ```
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // src/middleware/error-handler.ts
 import { Context, isHttpError, Status } from 'oak/mod.ts';
 import { logger } from 'std/log/mod.ts';
@@ -214,7 +214,7 @@ export async function errorHandler(ctx: Context, next: () => Promise<unknown>) {
 
 ### Step 3: Hono REST API Pattern (Alternative)
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // src/main.ts
 import { Hono } from 'hono/mod.ts';
 import { cors } from 'hono/cors.ts';
@@ -290,7 +290,7 @@ my-app/
   dev.ts                        # Dev server entry
 ```
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // routes/api/users.ts
 import { Handlers } from '$fresh/server.ts';
 import { db } from '../../db/kv.ts';
@@ -315,10 +315,10 @@ export const handler: Handlers = {
 };
 ```
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // islands/SearchBar.tsx
 import { IS_BROWSER } from '$fresh/runtime.ts';
-import { useState } from '[preact](../../Frontend/preact/SKILL.md)/hooks';
+import { useState } from '[preact](../../Frontend/frameworks/preact/SKILL.md)/hooks';
 
 export default function SearchBar() {
   const [query, setQuery] = useState('');
@@ -348,7 +348,7 @@ export default function SearchBar() {
 
 ### Step 5: Deno KV for State
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // db/kv.ts
 const kv = await Deno.openKv();
 
@@ -375,7 +375,7 @@ export async function listUsers() {
 
 ### Step 6: Testing Patterns
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // tests/app_test.ts
 import { assertEquals, assertExists } from 'std/testing/asserts.ts';
 import { createApp } from '../src/app.ts';
@@ -435,7 +435,7 @@ env:
 
 ### Pattern: Typed State with Oak Context
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 interface AppState {
   userId: string;
   role: string;
@@ -462,7 +462,7 @@ async function listOrders(ctx: RouterContext<'/', AppState>) {
 
 ### Pattern: Composable Middleware
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // src/middleware/compose.ts
 type Middleware = (ctx: Context, next: () => Promise<unknown>) => Promise<unknown>;
 
@@ -482,7 +482,7 @@ export function compose(...middleware: Middleware[]): Middleware {
 
 ### Pattern: Structured Logger
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // src/shared/logger.ts
 import { getLogger, setup } from 'std/log/mod.ts';
 
@@ -559,7 +559,7 @@ export const logger = getLogger();
 ## Testing Strategies
 
 ### Unit Tests
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 Deno.test('user validation - rejects short names', () => {
   const result = validateUser({ name: 'A' });
   assertEquals(result.success, false);
@@ -568,7 +568,7 @@ Deno.test('user validation - rejects short names', () => {
 ```
 
 ### Integration Tests with KV
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 Deno.test('CRUD operations against KV', async () => {
   const kv = await Deno.openKv(':memory:');
   try {
@@ -587,7 +587,7 @@ Load test with `autocannon` or `wrk` against the compiled binary. Use `deno benc
 - Always specify minimum permissions with `--allow-*` flags. Never use `-A` in production.
 - Use deno.land/x or JSR imports via deno.json import map. Avoid raw URLs in source files.
 - Standard library (std/) preferred over npm equivalents (std/http, std/log, std/testing).
-- Fresh islands for client-side interactivity. [Preact](../../Frontend/preact/SKILL.md) components for server-only rendering.
+- Fresh islands for client-side interactivity. [Preact](../../Frontend/frameworks/preact/SKILL.md) components for server-only rendering.
 - Deno KV for simple state, [PostgreSQL](../../Backend/postgresql/SKILL.md) driver for complex persistence.
 - deno fmt and deno lint in CI. Check before [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md).
 - Compile binaries with `deno compile` for [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-less deployment.

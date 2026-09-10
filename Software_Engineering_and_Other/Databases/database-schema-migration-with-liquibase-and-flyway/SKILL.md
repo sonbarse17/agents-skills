@@ -43,7 +43,7 @@ reversible design decision itself, backward-compatible migration
 patterns for zero-downtime rolling deploys, and testing migrations in
 CI before they ever reach a real environment. It complements the
 database-specific operational skills in this repo
-([postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../Frontend/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md),
+([postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md),
 [mongodb-operations-and-scaling](../[mongodb-operations-and-scaling](../../../Software_Engineering_and_Other/Databases/[mongodb](../../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md)-operations-and-scaling/SKILL.md)/SKILL.md))
 by covering the tooling and process layer that should sit in front of
 any hand-run DDL change against those systems.
@@ -390,6 +390,6 @@ during rollout. The team uses Flyway.
 
 ## Cross-references
 
-- [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../Frontend/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — the underlying [PostgreSQL](../../Backend/postgresql/SKILL.md) mechanics (`CREATE INDEX CONCURRENTLY`, lock behavior, vacuum impact of large `UPDATE`/backfill statements) that a migration's DDL should be validated against for lock/performance safety.
+- [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — the underlying [PostgreSQL](../../Backend/postgresql/SKILL.md) mechanics (`CREATE INDEX CONCURRENTLY`, lock behavior, vacuum impact of large `UPDATE`/backfill statements) that a migration's DDL should be validated against for lock/performance safety.
 - [postgresql-high-availability-and-failover](../[postgresql-high-availability-and-failover](../../../AI_and_Agents/Workflows/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-high-availability-and-failover/SKILL.md)/SKILL.md) — migrations must target the current Patroni-elected primary through the same connection-routing layer as application traffic, not a specific node hostname, to avoid applying DDL to the wrong node during a failover window.
 - [mongodb-operations-and-scaling](../[mongodb-operations-and-scaling](../../../Software_Engineering_and_Other/Databases/[mongodb](../../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md)-operations-and-scaling/SKILL.md)/SKILL.md) — [MongoDB](../../Backend/mongodb/SKILL.md) is schemaless, but index and shard-key changes there deserve the same tracked, reviewed, forward-planned change process described here rather than ad hoc shell commands.

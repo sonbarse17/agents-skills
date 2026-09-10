@@ -160,7 +160,7 @@ Write:
   2. Delete cache entry for that key
 ```
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 class CacheAside<T> {
   constructor(
     private cache: CacheStore,
@@ -228,7 +228,7 @@ Key design rules:
 - Max key length: Redis recommends < 1KB
 - Use consistent key generation function
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 function cacheKey(namespace: string, entity: string, id: string, subfield?: string): string {
   const parts = [namespace, entity, id];
   if (subfield) parts.push(subfield);
@@ -250,7 +250,7 @@ function cacheKey(namespace: string, entity: string, id: string, subfield?: stri
 | Computed/aggregated data | 1-60 minutes | Expensive to compute, low change frequency |
 
 TTL randomization: add ±10% jitter to prevent mass expiry stampede:
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 function ttlWithJitter(baseTtl: number, jitterPercent = 10): number {
   const jitter = baseTtl * (jitterPercent / 100) * (Math.random() * 2 - 1);
   return Math.round(baseTtl + jitter);
@@ -260,7 +260,7 @@ function ttlWithJitter(baseTtl: number, jitterPercent = 10): number {
 ### Step 5: Cache Stampede Prevention
 
 **Option A — Mutex locking**:
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 async function getWithMutex<T>(key: string, fetchFn: () => Promise<T>, ttl: number): Promise<T> {
   const cached = await cache.get(key);
   if (cached) return JSON.parse(cached);
@@ -285,7 +285,7 @@ async function getWithMutex<T>(key: string, fetchFn: () => Promise<T>, ttl: numb
 ```
 
 **Option B — Probabilistic early expiration (XFetch)**:
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 function shouldRecompute(ttl: number, age: number, beta = 4): boolean {
   const remaining = ttl - age;
   const probability = Math.exp(-beta * (remaining / ttl));
@@ -307,7 +307,7 @@ async function getWithEarlyExpiry<T>(key: string, fetchFn: () => Promise<T>, ttl
 ```
 
 **Option C — Stale-while-revalidate**:
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 async function getStaleWhileRevalidate<T>(key: string, fetchFn: () => Promise<T>, ttl: number, swrTtl: number): Promise<T> {
   const entry = await cache.getWithMetadata(key);
   if (!entry) {
@@ -333,7 +333,7 @@ async function getStaleWhileRevalidate<T>(key: string, fetchFn: () => Promise<T>
 ```
 
 **Option D — Background refresh**:
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 class BackgroundRefresher {
   private timers = new Map<string, NodeJS.Timeout>();
 
@@ -374,7 +374,7 @@ Invalidation order (critical for correctness):
 ```
 
 Event-driven invalidation pattern:
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 interface CacheInvalidationEvent {
   key: string;
   pattern?: string;       // Pattern for batch invalidation: "user:abc123:*"
@@ -419,7 +419,7 @@ async function onInvalidationEvent(event: CacheInvalidationEvent): Promise<void>
 Rule of thumb: provision 2-3x the expected data size for Redis overhead.
 
 ### Connection Pooling
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Redis connection pool
 import { Redis } from 'ioredis';
 
@@ -448,7 +448,7 @@ const cluster = new Redis.Cluster([
 - Consider using RedisJSON module for partial key updates
 - Avoid storing large objects (>1MB) in cache — store reference instead
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Compressed caching
 async function getCompressed<T>(key: string, fetchFn: () => Promise<T>, ttl: number): Promise<T> {
   const raw = await cache.get(key);

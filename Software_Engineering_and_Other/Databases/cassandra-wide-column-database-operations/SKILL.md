@@ -304,7 +304,7 @@ nodetool decommission   # run on the node being removed — streams its data OUT
   > KEYSPACE` against a shared or production cluster without an
   > independently confirmed target and a verified, tested backup/snapshot
   > restore path (see
-  > [database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies](../database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md)),
+  > [database-[backup-and-restore](../../../containers-orchestration/common/other/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies](../database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md)),
   > and restrict these operations via role-based access control to a
   > narrow admin role rather than general application credentials.
 
@@ -349,5 +349,5 @@ noticeably.
 ## Cross-references
 
 - [mongodb-operations-and-scaling](../[mongodb-operations-and-scaling](../[mongodb](../../Backend/mongodb/SKILL.md)-operations-and-scaling/SKILL.md)/SKILL.md) — comparable partition/shard-key design trade-offs (monotonic/unbounded keys creating hotspots) in a document-oriented distributed database, useful as a direct conceptual parallel.
-- [database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies](../database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md) — snapshot/restore tooling and testing discipline that should back up any destructive operation (`TRUNCATE`, `DROP KEYSPACE`, a failed node removal) against a Cassandra cluster.
+- [database-[backup-and-restore](../../../containers-orchestration/common/other/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies](../database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md) — snapshot/restore tooling and testing discipline that should back up any destructive operation (`TRUNCATE`, `DROP KEYSPACE`, a failed node removal) against a Cassandra cluster.
 - [elasticsearch-opensearch-cluster-operations](../[elasticsearch-opensearch-cluster-operations](../../../DevOps_and_Cloud/Containers_and_Orchestration/elasticsearch-opensearch-cluster-operations/SKILL.md)/SKILL.md) — comparable distributed-cluster shard placement and rebalancing operational concerns for a different (search-oriented) data model.

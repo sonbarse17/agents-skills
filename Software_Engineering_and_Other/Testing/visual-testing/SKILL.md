@@ -52,7 +52,7 @@ Visual testing setup with tool configuration, baseline management, and CI workfl
 # Tool selection and rationale
 # Diff threshold configuration
 ```
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // CI pipeline configuration
 // Baseline management workflow
 ```
@@ -90,7 +90,7 @@ Percy + Playwright: `npm install @percy/cli @percy/playwright`, wrap snapshot ca
 
 Playwright built-in: `await expect(page).toHaveScreenshot('name.png')` with configurable `maxDiffPixelRatio` and `threshold`. Store baselines in `__screenshots__` directory alongside tests.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // playwright.config.ts
 import { defineConfig } from "@playwright/test";
 
@@ -342,7 +342,7 @@ Stringent thresholds (0%) catch all visual changes but increase false positives 
 ## Visual Testing Examples
 
 ### Playwright — Element-Level Snapshot
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import { test, expect } from "@playwright/test";
 
 test("product card component renders correctly", async ({ page }) => {
@@ -357,7 +357,7 @@ test("product card component renders correctly", async ({ page }) => {
 ```
 
 ### Playwright — Full Page Snapshot with Masking
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 test("dashboard page matches baseline", async ({ page }) => {
   await page.goto("/dashboard");
   await page.waitForLoadState("networkidle");
@@ -373,7 +373,7 @@ test("dashboard page matches baseline", async ({ page }) => {
 ```
 
 ### Percy + Playwright Integration
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import percySnapshot from "@percy/playwright";
 
 test("checkout page visual regression", async ({ page }) => {
@@ -387,7 +387,7 @@ test("checkout page visual regression", async ({ page }) => {
 ```
 
 ### Visual Testing with Dynamic Content Handling
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 test("user profile page with stable snapshot", async ({ page }) => {
   await page.goto("/profile");
   // Freeze dynamic content before snapshot
@@ -503,7 +503,7 @@ baseline_workflow:
 
 ## Handoff
 `[quality-e2e-testing](../e2e-testing/SKILL.md)` for combined E2E + visual test suite.
-`design-[design-systems](../../Frontend/design-systems/SKILL.md)` for component baseline snapshots.
+`design-[design-systems](../../Frontend/ui-ux/design-systems/SKILL.md)` for component baseline snapshots.
 Carry forward: visual test config, baseline snapshots, review workflow.
 ## Implementation Patterns
 
@@ -571,7 +571,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/performance/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -587,7 +587,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### [Profiling](../../Frontend/profiling/SKILL.md) Methodology
+### [Profiling](../../Frontend/performance/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking

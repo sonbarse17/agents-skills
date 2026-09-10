@@ -71,7 +71,7 @@ class MyInDB(MyResponse):
 
 1. Create models in `src/backend/app/models/`
 2. Export from `src/backend/app/models/__init__.py`
-3. Add corresponding [TypeScript](../../Frontend/typescript/SKILL.md) types
+3. Add corresponding [TypeScript](../../Frontend/common/typescript/SKILL.md) types
 
 ## Reference Files
 

@@ -455,7 +455,7 @@ Cost-saving strategies:
 ## Handoff
 - `devops-[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)` for deploying workloads on Hetzner K8s.
 - `devops-terraform` for Terraform state and module patterns.
-- `devops-[backup-dr](../../../Software_Engineering_and_Other/Frontend/backup-dr/SKILL.md)` for backup strategies using Storage Boxes.
+- `devops-[backup-dr](../../../containers-orchestration/common/other/backup-dr/SKILL.md)` for backup strategies using Storage Boxes.
 - `devops-[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)` for Prometheus-based [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
 - `devops-[hybrid-cloud](../../common/other/hybrid-cloud/SKILL.md)` for connecting Hetzner with other providers.
 - `devops-[datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md)` for physical hardware considerations.

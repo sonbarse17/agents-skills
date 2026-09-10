@@ -161,7 +161,7 @@ products: product_id PK, name, description, current_price
 ```
 Performance requirement measured?
 ├── No → Stay normalized (3NF/BCNF)
-├── Yes — query [profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) shows joins are bottleneck
+├── Yes — query [profiling](../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md) shows joins are bottleneck
 │   ├── Read-heavy, few writes → Add denormalized columns
 │   ├── Reporting queries → Add summary/aggregate table
 │   ├── High-traffic API → Add materialized view
@@ -455,7 +455,7 @@ Will the key value ever change?
 What is the workload?
 ├── OLTP (many small writes, point queries)
 │   ├── 3NF or BCNF by default
-│   ├── Denormalize only when [profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) proves necessity
+│   ├── Denormalize only when [profiling](../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md) proves necessity
 │   └── Use views for denormalized access patterns
 ├── OLAP (large reads, aggregations, reporting)
 │   ├── Star schema (dimensional modeling)

@@ -106,7 +106,7 @@ async def get_profile(user_id: int, current_user: User = Depends(get_current_use
 ```
 
 **[Frontend]** — Component calls the endpoint and handles errors gracefully:
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 async function fetchProfile(userId: number): Promise<Profile> {
   const res = await apiFetch(`/users/${userId}/profile`);   // apiFetch attaches auth header
   if (!res.ok) throw new Error(await res.text());

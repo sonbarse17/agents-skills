@@ -170,7 +170,7 @@ Rules:
 ```
 
 Implementation:
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 interface TokenPair {
   accessToken: string;
   refreshToken: string;
@@ -209,7 +209,7 @@ async function refreshTokens(refreshToken: string): Promise<TokenPair> {
 ### Step 4: Authorization Model
 
 **RBAC (Role-Based Access Control)** — default for most applications:
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const ROLES = {
   admin: ['*'],
   manager: ['order:read', 'order:write', 'user:read'],
@@ -257,7 +257,7 @@ def check_abac(user, action, resource):
 
 Auth middleware belongs in Infrastructure layer. Not in Domain. Not in Application.
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Express middleware
 import jwt from 'jsonwebtoken';
 
@@ -311,7 +311,7 @@ async def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(s
 
 ### Step 6: Password Security
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { hash, compare } from 'bcrypt';
 
 const SALT_ROUNDS = 12;
@@ -339,7 +339,7 @@ export async function hashPasswordArgon2(plain: string): Promise<string> {
 
 ### Step 7: Rate Limiting Auth Endpoints
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const AUTH_RATE_LIMITS = {
   login: { window: '5 minutes', max: 5 },
   register: { window: '60 minutes', max: 2 },
@@ -363,7 +363,7 @@ app.use('/api/auth/login', loginLimiter);
 
 ### Step 8: Session Management (Server-Rendered Apps)
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import session from 'express-session';
 import RedisStore from 'connect-redis';
 
@@ -393,7 +393,7 @@ req.session.regenerate((err) => {
 
 ### Token Blacklisting
 For immediate revocation of JWTs, maintain a token blacklist:
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Store in Redis with TTL matching token expiry
 async function revokeToken(jti: string, exp: number): Promise<void> {
   const ttl = exp - Math.floor(Date.now() / 1000);
@@ -578,7 +578,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -594,7 +594,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### [Profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) Methodology
+### [Profiling](../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking

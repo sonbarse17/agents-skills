@@ -159,9 +159,9 @@ agent = client.agents.create(
 )
 ```
 
-### [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) (SDK-based)
+### [TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) (SDK-based)
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const agent = await client.agents.create({
   name: "my-agent",
   model: "gpt-4o",

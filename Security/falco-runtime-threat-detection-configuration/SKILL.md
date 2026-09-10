@@ -50,7 +50,7 @@ relying only on Falco's broad stock ruleset, tuning a rule that's
 destinations via Falcosidekick. It does not cover the separate
 discipline of proving a rule set won't misfire before enabling it in
 blocking/enforce-adjacent configurations — see
-[falco-configuration-validation](../[falco-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/falco-configuration-validation/SKILL.md)/SKILL.md)
+[falco-configuration-validation](../../Software_Engineering_and_Other/Miscellaneous/falco-configuration-validation/SKILL.md)/SKILL.md)
 for that pre-rollout testing discipline, which should be treated as a
 required step before any new or changed rule goes live broadly.
 
@@ -105,7 +105,7 @@ required step before any new or changed rule goes live broadly.
 - A rollout discipline: **every new or materially changed rule should be
   validated for false-positive rate before being treated as
   alert-worthy in a channel that pages anyone** — see
-  [falco-configuration-validation](../[falco-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/falco-configuration-validation/SKILL.md)/SKILL.md).
+  [falco-configuration-validation](../../Software_Engineering_and_Other/Miscellaneous/falco-configuration-validation/SKILL.md)/SKILL.md).
   Skipping this is the most common cause of alert fatigue that gets
   Falco itself muted or ignored within weeks of rollout.
 
@@ -276,7 +276,7 @@ required step before any new or changed rule goes live broadly.
   because it creates false confidence.
 - Never enable a new or materially changed rule broadly without first
   running it through the false-positive validation discipline in
-  [falco-configuration-validation](../[falco-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/falco-configuration-validation/SKILL.md)/SKILL.md)
+  [falco-configuration-validation](../../Software_Engineering_and_Other/Miscellaneous/falco-configuration-validation/SKILL.md)/SKILL.md)
   — a noisy new rule that pages on-call for legitimate activity is how
   Falco itself earns a reputation for being safely ignorable.
 - Enrich alert `output` templates with [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)/image context so
@@ -288,7 +288,7 @@ required step before any new or changed rule goes live broadly.
   dozens of alerts per minute for what turns out to be entirely
   legitimate, routine workload behavior.
   **Fix:** This is exactly the failure mode
-  [falco-configuration-validation](../[falco-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/falco-configuration-validation/SKILL.md)/SKILL.md)
+  [falco-configuration-validation](../../Software_Engineering_and_Other/Miscellaneous/falco-configuration-validation/SKILL.md)/SKILL.md)
   exists to catch before enabling a rule broadly — run it in a
   log-only/low-priority mode against real traffic first, review the
   volume and content of what it matches, then narrow the condition
@@ -382,7 +382,7 @@ falcosidekick:
 ```
 
 Validation before rollout (per
-[falco-configuration-validation](../[falco-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/falco-configuration-validation/SKILL.md)/SKILL.md)):
+[falco-configuration-validation](../../Software_Engineering_and_Other/Miscellaneous/falco-configuration-validation/SKILL.md)/SKILL.md)):
 the rule set runs for one week in log-only mode against real
 `payments-api` traffic, producing zero false-positive shell or outbound
 alerts (confirming the allowlist and shell-binary list are complete),
@@ -394,14 +394,14 @@ doesn't need a separate lookup to start triage.
 
 ## Cross-references
 
-- [falco-configuration-validation](../[falco-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/falco-configuration-validation/SKILL.md)/SKILL.md) —
+- [falco-configuration-validation](../../Software_Engineering_and_Other/Miscellaneous/falco-configuration-validation/SKILL.md)/SKILL.md) —
   the required false-positive-testing discipline before any new or
   changed rule from this skill is trusted to page a human.
 - [kubewarden-admission-policy-configuration](../[kubewarden-admission-policy-configuration](../../Containers_and_Orchestration/kubewarden-admission-policy-configuration/SKILL.md)/SKILL.md) —
   admission-time policy enforcement, complementary to (not a substitute
   for) Falco's runtime detection; a resource can pass admission and
   still misbehave at runtime, which is exactly what Falco catches.
-- [sysdig-secure-runtime-security](../[sysdig-secure-runtime-security](../../../AI_and_Agents/Workflows/sysdig-secure-runtime-security/SKILL.md)/SKILL.md) —
+- [sysdig-secure-runtime-security](../../AI_and_Agents/Workflows/sysdig-secure-runtime-security/SKILL.md)/SKILL.md) —
   a commercial runtime-security platform built on the same underlying
   detection concepts (Sysdig originated Falco), for teams wanting a
   managed alternative to self-hosting the OSS Falco stack.

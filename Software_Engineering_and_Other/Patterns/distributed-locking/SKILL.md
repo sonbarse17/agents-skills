@@ -163,7 +163,7 @@ func processOrder(ctx context.Context, orderId string) error {
 ### Step 3: Implement Fencing Token
 Fencing tokens ensure that even if a lock is held after its timeout, stale holders cannot write.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 class FencedResource {
   private currentFencingToken = 0;
 
@@ -219,7 +219,7 @@ func withLock(ctx context.Context, key string, ttl time.Duration, fn func() erro
 ```
 
 ### Step 5: Monitor Locks
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 interface LockMetrics {
   acquisitionTime: number;   // ms to acquire
   holdTime: number;          // ms held
@@ -237,7 +237,7 @@ metrics.counter('lock.timeout', timeoutRate);
 ## Implementation Patterns
 
 ### [PostgreSQL](../../Backend/postgresql/SKILL.md) Advisory Lock
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 class PostgresDistributedLock {
   constructor(private pool: Pool) {}
 
@@ -276,7 +276,7 @@ class PostgresDistributedLock {
 [PostgreSQL](../../Backend/postgresql/SKILL.md) advisory locks are session-level: must hold the same connection for lock and release. Transaction-level: `pg_advisory_xact_lock` auto-releases on transaction end. Use bigint lock IDs: hash your resource name to a bigint for consistent lock IDs.
 
 ### Lease-Based Lock (etcd)
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 class EtcdLeaseLock {
   constructor(private etcd: Etcd3) {}
 
@@ -298,7 +298,7 @@ class EtcdLeaseLock {
 ```
 
 ### Simple Redis Lock (Single Node)
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 class RedisLock {
   constructor(private redis: Redis) {}
 
@@ -323,7 +323,7 @@ class RedisLock {
 ```
 
 ### Semaphore Pattern (Multiple Permits)
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 class RedisSemaphore {
   async acquire(key: string, permits: number, maxPermits: number, ttlMs: number): Promise<boolean> {
     const script = `

@@ -39,7 +39,7 @@ entirely. This skill is the pre-production gate — it validates a
 proposed configuration change against the running instance's actual
 [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) and topology before it's applied, so operational tuning work
 (covered in
-[mysql-mariadb-operations-and-performance-tuning](../[mysql-mariadb-operations-and-performance-tuning](../[mysql](../../Backend/mysql/SKILL.md)-mariadb-operations-and-[performance-tuning](../../Frontend/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md))
+[mysql-mariadb-operations-and-performance-tuning](../[mysql-mariadb-operations-and-performance-tuning](../[mysql](../../Backend/mysql/SKILL.md)-mariadb-operations-and-[performance-tuning](../../Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md))
 doesn't produce an outage instead of an improvement.
 
 ## When to use
@@ -306,6 +306,6 @@ replication.
 
 ## Cross-references
 
-- [mysql-mariadb-operations-and-performance-tuning](../[mysql-mariadb-operations-and-performance-tuning](../[mysql](../../Backend/mysql/SKILL.md)-mariadb-operations-and-[performance-tuning](../../Frontend/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — the operational tuning work (replication mode, buffer pool sizing, indexing) whose proposed config changes this skill validates before rollout.
+- [mysql-mariadb-operations-and-performance-tuning](../[mysql-mariadb-operations-and-performance-tuning](../[mysql](../../Backend/mysql/SKILL.md)-mariadb-operations-and-[performance-tuning](../../Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — the operational tuning work (replication mode, buffer pool sizing, indexing) whose proposed config changes this skill validates before rollout.
 - [mysql-mariadb-high-availability-and-replication](../[mysql-mariadb-high-availability-and-replication](../[mysql](../../Backend/mysql/SKILL.md)-mariadb-high-availability-and-replication/SKILL.md)/SKILL.md) — validates the GTID/`server_id` configuration this skill checks in the context of a full Galera/Group Replication HA topology.
 - [postgresql-configuration-validation](../[postgresql-configuration-validation](../../Miscellaneous/[postgresql](../../Backend/postgresql/SKILL.md)-configuration-validation/SKILL.md)/SKILL.md) — the equivalent pre-production config-review discipline for [PostgreSQL](../../Backend/postgresql/SKILL.md), useful as a comparison when both engines coexist in the same platform.

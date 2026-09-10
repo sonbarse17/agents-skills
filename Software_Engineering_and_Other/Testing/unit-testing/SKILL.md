@@ -93,7 +93,7 @@ Dependency type?
 
 ```
 Project language?
-├── [TypeScript](../../Frontend/typescript/SKILL.md)/JavaScript
+├── [TypeScript](../../Frontend/common/typescript/SKILL.md)/JavaScript
 │   ├── New project + ESM → Vitest
 │   └── Existing Jest → Jest
 ├── Java → JUnit 5 + Mockito
@@ -153,8 +153,8 @@ Project language?
 
 ## Unit Test Examples
 
-### [TypeScript](../../Frontend/typescript/SKILL.md)/Vitest — Service with Dependency Injection
-```[typescript](../../Frontend/typescript/SKILL.md)
+### [TypeScript](../../Frontend/common/typescript/SKILL.md)/Vitest — Service with Dependency Injection
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // src/services/order.service.ts
 export class OrderService {
   constructor(
@@ -413,7 +413,7 @@ Testing only the happy path (correct input, expected behavior) misses null/undef
 ## Handoff
 After unit testing, hand off to:
 - `[quality-integration-testing](../integration-testing/SKILL.md)` — for verifying component interactions with real dependencies
-- `[quality-property-based-testing](../../Frontend/property-based-testing/SKILL.md)` — for adding property-based invariants to complement examples
+- `[quality-property-based-testing](../../Frontend/testing/property-based-testing/SKILL.md)` — for adding property-based invariants to complement examples
 - `[quality-regression-testing](../regression-testing/SKILL.md)` — for regression suite execution and maintenance
 - `[quality-smoke-testing](../smoke-testing/SKILL.md)` — for BVT smoke test definition on tested components
 ## Implementation Patterns
@@ -482,7 +482,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/performance/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -498,7 +498,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### [Profiling](../../Frontend/profiling/SKILL.md) Methodology
+### [Profiling](../../Frontend/performance/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
@@ -547,7 +547,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 |---|---|---|---|
 | Test framework | Jest (JS/TS ecosystem) | Vitest (faster, ESM-native) | Framework maturity, ESM compatibility |
 | Assertion style | expect(x).toBe(y) (readable) | assert.equal(x, y) (minimal) | Team preference, existing codebase |
-| Mocking style | Jest mocks (built-in) | ts-mockito/typed-mock | Type safety, [TypeScript](../../Frontend/typescript/SKILL.md) usage |
+| Mocking style | Jest mocks (built-in) | ts-mockito/typed-mock | Type safety, [TypeScript](../../Frontend/common/typescript/SKILL.md) usage |
 | Coverage tool | Built-in (Jest Istanbul) | c8 (modern, ESM-friendly) | Coverage needs, configuration complexity |
 
 ### What to Unit Test

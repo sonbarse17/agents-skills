@@ -198,7 +198,7 @@ function maskPreservingFormat(value) {
 
 ### Conditional Masking
 Mask based on user role or context:
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 function maskByRole(user: User, viewer: Viewer): Partial<User> {
   const result = { ...user };
   if (viewer.role !== 'admin' && viewer.role !== 'support') {
@@ -228,7 +228,7 @@ function maskByRole(user: User, viewer: Viewer): Partial<User> {
 - Rotate keys on a schedule (90 days recommended)
 - Support key versioning for dual-write during rotation
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 class KeyManager {
   async encrypt(plaintext: string): Promise<string> {
     const currentKey = await this.kms.getCurrentKey();
@@ -263,7 +263,7 @@ class KeyManager {
 
 ### Cache Strategy
 Cache encryption keys locally with a TTL to avoid KMS calls on every operation:
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 class CachedKeyManager {
   private keyCache = new Map<string, { key: Buffer; expiresAt: number }>();
 
@@ -286,7 +286,7 @@ Searching encrypted fields requires special handling:
 - **Client-side decryption**: Search on the plaintext before encryption
 - **Blind indexing**: Store a hash of the plaintext alongside the ciphertext
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Blind index for email search
 async function storeEmail(userId: string, email: string): Promise<void> {
   const encrypted = await encryptField(email);
@@ -318,7 +318,7 @@ async function findByEmail(email: string): Promise<User | null> {
 
 ### [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Requirements
 Log every access to classified data:
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 async function readWithAudit(userId: string, fieldName: string): Promise<string> {
   const value = await getEncryptedField(userId, fieldName);
   await auditLog.write({

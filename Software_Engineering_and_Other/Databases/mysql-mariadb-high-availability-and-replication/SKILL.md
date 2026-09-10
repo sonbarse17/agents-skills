@@ -29,7 +29,7 @@ depends_on:
 ## Purpose
 
 Standard [MySQL](../../Backend/mysql/SKILL.md)/MariaDB replication (covered in
-[mysql-mariadb-operations-and-performance-tuning](../[mysql-mariadb-operations-and-performance-tuning](../[mysql](../../Backend/mysql/SKILL.md)-mariadb-operations-and-[performance-tuning](../../Frontend/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md))
+[mysql-mariadb-operations-and-performance-tuning](../[mysql-mariadb-operations-and-performance-tuning](../[mysql](../../Backend/mysql/SKILL.md)-mariadb-operations-and-[performance-tuning](../../Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md))
 gives you a single writable primary and read replicas — failover
 requires promoting a replica and repointing traffic, which is either a
 manual process or requires external tooling. **Galera Cluster**
@@ -213,7 +213,7 @@ retry-on-deadlock application discipline in step 1. It is *not*
 automatically the safer or simpler choice: certification conflicts,
 flow control throttling, and SST/IST operational complexity are real,
 ongoing costs. A simple primary-replica topology (async/semi-sync, per
-[mysql-mariadb-operations-and-performance-tuning](../[mysql-mariadb-operations-and-performance-tuning](../[mysql](../../Backend/mysql/SKILL.md)-mariadb-operations-and-[performance-tuning](../../Frontend/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md))
+[mysql-mariadb-operations-and-performance-tuning](../[mysql-mariadb-operations-and-performance-tuning](../[mysql](../../Backend/mysql/SKILL.md)-mariadb-operations-and-[performance-tuning](../../Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md))
 paired with an external failover manager (e.g. Orchestrator, or a cloud
 provider's managed failover) is often the better trade-off for a
 workload that doesn't genuinely need multi-region concurrent writes,
@@ -339,7 +339,7 @@ across three AZs.
 
 ## Cross-references
 
-- [mysql-mariadb-operations-and-performance-tuning](../[mysql-mariadb-operations-and-performance-tuning](../[mysql](../../Backend/mysql/SKILL.md)-mariadb-operations-and-[performance-tuning](../../Frontend/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — single-primary async/semi-sync replication and general InnoDB tuning that underpins the nodes in a Galera/Group Replication cluster.
+- [mysql-mariadb-operations-and-performance-tuning](../[mysql-mariadb-operations-and-performance-tuning](../[mysql](../../Backend/mysql/SKILL.md)-mariadb-operations-and-[performance-tuning](../../Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — single-primary async/semi-sync replication and general InnoDB tuning that underpins the nodes in a Galera/Group Replication cluster.
 - [mysql-mariadb-configuration-validation](../[mysql-mariadb-configuration-validation](../[mysql](../../Backend/mysql/SKILL.md)-mariadb-configuration-validation/SKILL.md)/SKILL.md) — validates `wsrep_*`/Group Replication settings and topology changes before they're applied to a live cluster.
 - [database-connection-pooling-strategies](../[database-connection-pooling-strategies](../database-connection-pooling-strategies/SKILL.md)/SKILL.md) — ProxySQL/[MySQL](../../Backend/mysql/SKILL.md) Router routing patterns for directing application traffic to the current primary or a healthy node in a multi-master cluster.
 - [postgresql-high-availability-and-failover](../[postgresql-high-availability-and-failover](../../../AI_and_Agents/Workflows/[postgresql](../../Backend/postgresql/SKILL.md)-high-availability-and-failover/SKILL.md)/SKILL.md) — comparable HA/failover concerns (quorum, automatic promotion) for [PostgreSQL](../../Backend/postgresql/SKILL.md), useful as a contrast since [PostgreSQL](../../Backend/postgresql/SKILL.md)'s ecosystem favors single-primary failover tooling over multi-master clustering.

@@ -65,7 +65,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 - [ ] All .vue files use <script setup lang="ts"> syntax.
 - [ ] All reusable logic is in composables (useX naming), not in mixins.
 - [ ] Pinia stores for global state, composables for reusable logic, components for UI.
-- [ ] Props and emits have full [TypeScript](../../Frontend/typescript/SKILL.md) types.
+- [ ] Props and emits have full [TypeScript](../../Frontend/common/typescript/SKILL.md) types.
 - [ ] Styles are scoped by default (scoped attribute).
 - [ ] Components are under 200 lines.
 
@@ -170,7 +170,7 @@ const emit = defineEmits<Emits>()
 
 ### Composable for Data Fetching
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 export function useUsers(filters?: Ref<UserFilters>) {
   const users = ref<User[]>([])
   const isLoading = ref(false)
@@ -196,7 +196,7 @@ export function useUsers(filters?: Ref<UserFilters>) {
 
 ### Local State with ref/reactive
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 const count = ref(0)
 const user = reactive({ name: 'Alice', email: 'alice@test.com' })
 
@@ -206,7 +206,7 @@ user.name = 'Bob'
 
 ### Computed State
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 const count = ref(0)
 const doubled = computed(() => count.value * 2)
 const status = computed(() => count.value > 10 ? 'High' : 'Low')
@@ -214,7 +214,7 @@ const status = computed(() => count.value > 10 ? 'High' : 'Low')
 
 ### Watched Side Effects
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 watch(count, (newVal, oldVal) => {
   console.log(`Count changed from ${oldVal} to ${newVal}`)
 })
@@ -226,7 +226,7 @@ watchEffect(() => {
 
 ### Pinia Store
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // stores/auth.store.ts
 import { defineStore } from 'pinia'
 
@@ -252,7 +252,7 @@ export const useAuthStore = defineStore('auth', () => {
 
 ### provide/inject with InjectionKey
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 export const ThemeKey: InjectionKey<{ theme: Ref<string>; toggle: () => void }> = Symbol('ThemeKey')
 ```
 
@@ -295,7 +295,7 @@ export default defineConfig({
 })
 ```
 
-### [TypeScript](../../Frontend/typescript/SKILL.md) Config
+### [TypeScript](../../Frontend/common/typescript/SKILL.md) Config
 
 ```json
 {
@@ -481,7 +481,7 @@ const emit = defineEmits<{ select: [id: string] }>()
 ```
 
 ### Step 3: Composable Design
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 export function useUsers() {
   const users = ref<User[]>([])
   return { users }
@@ -489,7 +489,7 @@ export function useUsers() {
 ```
 
 ### Step 4: Pinia Store
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 export const useAuthStore = defineStore('auth', () => {
   const user = ref<User | null>(null)
   return { user }
@@ -505,7 +505,7 @@ export const useAuthStore = defineStore('auth', () => {
 - script setup always. No Options API in new code.
 - Composables use useX naming, return only what template needs.
 - Pinia for global state, composables for reusable logic.
-- Props and emits have full [TypeScript](../../Frontend/typescript/SKILL.md) types.
+- Props and emits have full [TypeScript](../../Frontend/common/typescript/SKILL.md) types.
 - Never mutate props. Emit events to communicate up.
 - Components under 200 lines. Split early.
 
@@ -518,6 +518,6 @@ export const useAuthStore = defineStore('auth', () => {
   - ../../../Global_References/vue-testing.md
 
 ## Handoff
-Next skill: [vue-nuxt](../../Frontend/nuxt/SKILL.md) (if using Nuxt) or frontend-testing.
+Next skill: [vue-nuxt](../../Frontend/frameworks/nuxt/SKILL.md) (if using Nuxt) or frontend-testing.
 Carry forward: component organization, composable patterns, Pinia store structure.
 

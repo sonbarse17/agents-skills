@@ -25,7 +25,7 @@ Ship web apps quickly with preview environments and managed edge infrastructure.
 ## When to Use This Skill
 
 Use this skill when:
-- Deploying Next.js, [SvelteKit](../../../Software_Engineering_and_Other/Frontend/sveltekit/SKILL.md), Nuxt, or static sites
+- Deploying Next.js, [SvelteKit](../../../Software_Engineering_and_Other/Frontend/frameworks/sveltekit/SKILL.md), Nuxt, or static sites
 - Setting up preview environments for every PR
 - Configuring edge functions and [serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) APIs
 - Managing environment variables across preview/production
@@ -127,7 +127,7 @@ vercel env add DATABASE_URL development <<< "[postgresql](../../../Software_Engi
 
 ## Edge Functions
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // app/api/geo/route.ts — Edge API route (Next.js App Router)
 import { NextRequest } from 'next/server';
 
@@ -146,7 +146,7 @@ export function GET(request: NextRequest) {
 }
 ```
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // middleware.ts — Edge middleware for auth/redirects
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
@@ -256,7 +256,7 @@ npm install @vercel/speed-insights
 npm install @vercel/analytics
 ```
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // app/layout.tsx
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';

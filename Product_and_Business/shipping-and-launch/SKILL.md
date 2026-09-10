@@ -90,7 +90,7 @@ Ship with confidence. The goal is not just to deploy — it's to deploy safely, 
 
 Ship behind feature flags to decouple deployment from release:
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Feature flag check
 const flags = await getFeatureFlags(userId);
 
@@ -199,7 +199,7 @@ Client metrics:
 
 ### Error Reporting
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Set up error boundary with reporting
 class ErrorBoundary extends React.Component {
   componentDidCatch(error: Error, info: React.ErrorInfo) {

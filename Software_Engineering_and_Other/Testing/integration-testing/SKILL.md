@@ -262,8 +262,8 @@ class OrderServiceIntegrationTest {
 }
 ```
 
-### [TypeScript](../../Frontend/typescript/SKILL.md) + TestContainers — Message Queue Integration Test
-```[typescript](../../Frontend/typescript/SKILL.md)
+### [TypeScript](../../Frontend/common/typescript/SKILL.md) + TestContainers — Message Queue Integration Test
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import { GenericContainer } from "testcontainers";
 import { Kafka } from "kafkajs";
 
@@ -490,7 +490,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/performance/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -506,7 +506,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### [Profiling](../../Frontend/profiling/SKILL.md) Methodology
+### [Profiling](../../Frontend/performance/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking

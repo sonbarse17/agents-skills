@@ -30,7 +30,7 @@ depends_on:
 
 Every platform team eventually needs a service catalog, ownership map, and
 maturity scorecard — but building that on top of Backstage means owning a
-Node.js/[TypeScript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) application, its plugin ecosystem, its upgrade cadence,
+Node.js/[TypeScript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) application, its plugin ecosystem, its upgrade cadence,
 and its frontend, indefinitely, with an engineering team that could
 otherwise be building golden paths instead of portal infrastructure. Port,
 Cortex, and OpsLevel solve the same problem as commercial, hosted products:
@@ -105,7 +105,7 @@ the catalog and scorecards correctly in whichever product is chosen.
      "icon": "Microservice",
      "schema": {
        "properties": {
-         "language": { "type": "string", "enum": ["go", "[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)", "[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)"] },
+         "language": { "type": "string", "enum": ["go", "[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)", "[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)"] },
          "tier": { "type": "string", "enum": ["tier-1", "tier-2", "tier-3"] },
          "repo_url": { "type": "string", "format": "url" }
        },
@@ -137,7 +137,7 @@ the catalog and scorecards correctly in whichever product is chosen.
        "userInputs": {
          "properties": {
            "service_name": { "type": "string" },
-           "language": { "type": "string", "enum": ["go", "[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)"] }
+           "language": { "type": "string", "enum": ["go", "[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)"] }
          },
          "required": ["service_name", "language"]
        }

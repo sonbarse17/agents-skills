@@ -99,7 +99,7 @@ Cloudflare auto-detects frameworks. Override if needed:
 | Next.js    | `npx @cloudflare/next-on-pages` | `.vercel/output/static` |
 | Astro      | `npm run build`      | `dist`           |
 | Hugo       | `hugo`               | `public`         |
-| [SvelteKit](../../../Software_Engineering_and_Other/Frontend/sveltekit/SKILL.md)  | `npm run build`      | `.svelte-kit/cloudflare` |
+| [SvelteKit](../../../Software_Engineering_and_Other/Frontend/frameworks/sveltekit/SKILL.md)  | `npm run build`      | `.svelte-kit/cloudflare` |
 
 ## Preview Deployments
 
@@ -130,7 +130,7 @@ Pages Functions provide server-side logic deployed alongside your static site. P
 
 ### Basic API Route
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // functions/api/hello.ts
 export const onRequestGet: PagesFunction = async (context) => {
   return new Response(JSON.stringify({ message: "Hello from the edge" }), {
@@ -149,7 +149,7 @@ export const onRequestGet: PagesFunction = async (context) => {
 
 ### Middleware
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // functions/_middleware.ts — runs before all routes
 export const onRequest: PagesFunction = async (context) => {
   const authHeader = context.request.headers.get("Authorization");
@@ -162,7 +162,7 @@ export const onRequest: PagesFunction = async (context) => {
 
 ### Functions with Bindings
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // functions/api/data.ts — using KV and D1 bindings
 interface Env {
   MY_KV: KVNamespace;

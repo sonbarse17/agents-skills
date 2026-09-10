@@ -391,8 +391,8 @@ Application level:
 
 ## Implementation Patterns
 
-### Fork Choice Rule — LMD-GHOST ([TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md))
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+### Fork Choice Rule — LMD-GHOST ([TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md))
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 interface Block { hash: string; parentHash: string; height: number; weight: number; }
 interface Attestation { validatorIndex: number; blockHash: string; weight: number; }
 

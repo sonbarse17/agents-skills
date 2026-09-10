@@ -295,8 +295,8 @@ ServiceClient client = new ServiceClientBuilder()
     .buildClient();
 ```
 
-```[typescript](../../Frontend/typescript/SKILL.md)
-// [TypeScript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
+// [TypeScript](../../Frontend/common/typescript/SKILL.md)
 import {
   DefaultAzureCredential,
   ManagedIdentityCredential,
@@ -485,13 +485,13 @@ See `../../../Global_References/azure-sdk-patterns.md` for detailed patterns inc
 - **[Python](../../Languages/python/SKILL.md)**: `ItemPaged`, `LROPoller`, context managers, Sphinx docstrings. When the SDK provides both sync and async clients, present both forms as first-class options; do not express a preference for either. When the SDK is sync-only or async-only, document the available mode only. Do not mix sync and async within a single code example. Always show `with` / `async with` context managers.
 - **.NET**: `Response<T>`, `Pageable<T>`, `Operation<T>`, mocking support
 - **Java**: Builder pattern, `PagedIterable`/`PagedFlux`, Reactor types
-- **[TypeScript](../../Frontend/typescript/SKILL.md)**: `PagedAsyncIterableIterator`, `AbortSignal`, browser considerations
+- **[TypeScript](../../Frontend/common/typescript/SKILL.md)**: `PagedAsyncIterableIterator`, `AbortSignal`, browser considerations
 - **Go**: `context.Context` as first arg, `runtime.Pager[T]` via `New*Pager()` + `More()/NextPage(ctx)`, `runtime.Poller[T]` via `Begin*` + `PollUntilDone(ctx, nil)`, `to.Ptr(...)` helpers, and typed `*azcore.ResponseError`
 - **Rust**: Installation via `cargo add`, dependency rule for `azure_core`, `Response<T>`, `Pager<T>`, `RequestContent::from()`, `.into_model()`, explicit credential types, RBAC roles for Entra ID authentication
 
 ### Required Best Practices in Every Skill (User-Facing)
 
-#### [Python](../../Languages/python/SKILL.md), .NET, Java, [TypeScript](../../Frontend/typescript/SKILL.md), and Go languages
+#### [Python](../../Languages/python/SKILL.md), .NET, Java, [TypeScript](../../Frontend/common/typescript/SKILL.md), and Go languages
 
 **These two rules are not just authoring conventions for the skill itself — they MUST be explicitly written into every generated skill's `## Best Practices` section so end users who follow the skill apply them in their own code.**
 
@@ -1078,7 +1078,7 @@ For Azure SDK language skills, use official upstream source docs and examples as
 
 Use the language-specific authoritative source as the contract for every snippet in the regenerated skill:
 
-- **[Python](../../Languages/python/SKILL.md), .NET, Java, [TypeScript](../../Frontend/typescript/SKILL.md), Go**: Treat the current Microsoft Learn API reference as the contract.
+- **[Python](../../Languages/python/SKILL.md), .NET, Java, [TypeScript](../../Frontend/common/typescript/SKILL.md), Go**: Treat the current Microsoft Learn API reference as the contract.
 - **Rust**: Treat the official SDK repository (`https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/Azure/azure-sdk-for-rust`) and crates.io documentation as the contract; Rust packages do not have Learn API-reference pages.
 
 Before finalizing any regenerated skill:
@@ -1230,7 +1230,7 @@ azure-service-skill/
     ├── dotnet.md
     ├── go.md
     ├── java.md
-    └── [typescript](../../Frontend/typescript/SKILL.md).md
+    └── [typescript](../../Frontend/common/typescript/SKILL.md).md
 ```
 
 ### Pattern 3: Feature Organization

@@ -23,7 +23,7 @@ depends_on:
   - cost
 ---
 
-# @azure/ai-voicelive (JavaScript/[TypeScript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md))
+# @azure/ai-voicelive (JavaScript/[TypeScript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md))
 
 Real-time voice AI SDK for building bidirectional voice assistants with Azure AI in Node.js and browser environments.
 
@@ -31,7 +31,7 @@ Real-time voice AI SDK for building bidirectional voice assistants with Azure AI
 
 ```bash
 npm install @azure/ai-voicelive @azure/identity
-# [TypeScript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) users
+# [TypeScript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) users
 npm install @types/node
 ```
 
@@ -56,7 +56,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 ### Microsoft Entra Token Credential (Recommended)
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { DefaultAzureCredential, ManagedIdentityCredential } from "@azure/identity";
 import { VoiceLiveClient } from "@azure/ai-voicelive";
 
@@ -72,7 +72,7 @@ const client = new VoiceLiveClient(endpoint, credential);
 
 ### API Key
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { AzureKeyCredential } from "@azure/core-auth";
 import { VoiceLiveClient } from "@azure/ai-voicelive";
 
@@ -96,7 +96,7 @@ VoiceLiveClient
 
 ## Quick Start
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { DefaultAzureCredential } from "@azure/identity";
 import { VoiceLiveClient } from "@azure/ai-voicelive";
 
@@ -149,7 +149,7 @@ function sendAudioChunk(audioBuffer: ArrayBuffer) {
 
 ## Session Configuration
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 await session.updateSession({
   // Modalities
   modalities: ["audio", "text"],
@@ -198,7 +198,7 @@ await session.updateSession({
 
 The SDK uses a subscription-based event handling pattern:
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const subscription = session.subscribe({
   // Connection lifecycle
   onConnected: async (args, context) => {
@@ -293,7 +293,7 @@ await subscription.close();
 
 ## Function Calling
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Define tools in session config
 await session.updateSession({
   modalities: ["audio", "text"],
@@ -358,7 +358,7 @@ const subscription = session.subscribe({
 
 ## Turn Detection Options
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Server VAD (default)
 turnDetection: {
   type: "server_vad",
@@ -407,7 +407,7 @@ turnDetection: {
 
 ## Error Handling
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import {
   VoiceLiveError,
   VoiceLiveConnectionError,
@@ -436,7 +436,7 @@ const subscription = session.subscribe({
 
 ## Logging
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { setLogLevel } from "@azure/logger";
 
 // Enable verbose logging
@@ -448,7 +448,7 @@ setLogLevel("info");
 
 ## Browser Usage
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Browser requires bundler (Vite, webpack, etc.)
 import { VoiceLiveClient } from "@azure/ai-voicelive";
 import { InteractiveBrowserCredential } from "@azure/identity";

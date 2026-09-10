@@ -406,6 +406,6 @@ tests:
 
 ## Related Skills
 
-- [sast-scanning](../[sast-scanning](../../../Security/sast-scanning/SKILL.md)/) - Static analysis
-- [penetration-testing](../../operations/[penetration-testing](../../../Security/penetration-testing/SKILL.md)/) - Manual testing
-- [waf-setup](../../network/[waf-setup](../../../Security/waf-setup/SKILL.md)/) - WAF configuration
+- [sast-scanning](../sast-scanning/SKILL.md)/) - Static analysis
+- [penetration-testing](../penetration-testing/SKILL.md)/) - Manual testing
+- [waf-setup](../waf-setup/SKILL.md)/) - WAF configuration

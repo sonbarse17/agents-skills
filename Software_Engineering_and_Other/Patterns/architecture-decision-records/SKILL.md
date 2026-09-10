@@ -168,7 +168,7 @@ additional services (no separate Elasticsearch needed).
 ### Template 2: Lightweight ADR
 
 ```markdown
-# ADR-0012: Adopt [TypeScript](../../Frontend/typescript/SKILL.md) for Frontend Development
+# ADR-0012: Adopt [TypeScript](../../Frontend/common/typescript/SKILL.md) for Frontend Development
 
 **Status**: Accepted
 **Date**: 2024-01-15
@@ -182,7 +182,7 @@ runtime-only checking.
 
 ## Decision
 
-Adopt [TypeScript](../../Frontend/typescript/SKILL.md) for all new frontend code. Migrate existing code incrementally.
+Adopt [TypeScript](../../Frontend/common/typescript/SKILL.md) for all new frontend code. Migrate existing code incrementally.
 
 ## Consequences
 
@@ -191,7 +191,7 @@ code.
 
 **Bad**: Learning curve for team, initial slowdown, build complexity increase.
 
-**Mitigations**: [TypeScript](../../Frontend/typescript/SKILL.md) training sessions, allow gradual adoption with
+**Mitigations**: [TypeScript](../../Frontend/common/typescript/SKILL.md) training sessions, allow gradual adoption with
 `allowJs: true`.
 ```
 

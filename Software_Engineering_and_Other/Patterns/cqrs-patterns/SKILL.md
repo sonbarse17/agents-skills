@@ -118,7 +118,7 @@ Queries are named with question or noun: `GetOrderById`, `SearchProducts`, `Orde
 
 ### Step 2: Define Command Model
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Write model — domain entities, rich behavior
 class OrderAggregate {
   constructor(private state: OrderState) {}
@@ -168,7 +168,7 @@ class OrderAggregate:
 
 ### Step 3: Define Read Model
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Read model — flat projections optimized for queries
 interface OrderSummary {
   id: string;
@@ -190,7 +190,7 @@ interface OrderDetail {
 
 ### Step 4: Implement Command Handler
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 class PlaceOrderHandler implements ICommandHandler<PlaceOrderCommand> {
   constructor(
     private repository: IOrderRepository,
@@ -209,7 +209,7 @@ class PlaceOrderHandler implements ICommandHandler<PlaceOrderCommand> {
 
 ### Step 5: Implement Query Handler
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 class GetOrderQueryHandler implements IQueryHandler<GetOrderQuery, OrderDetail> {
   constructor(private readDb: IOrderReadRepository) {}
 
@@ -221,7 +221,7 @@ class GetOrderQueryHandler implements IQueryHandler<GetOrderQuery, OrderDetail> 
 
 ### Step 6: Synchronize Read Model
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 class OrderProjection {
   constructor(private readDb: IOrderReadRepository) {}
 
@@ -247,7 +247,7 @@ class OrderProjection {
 ### Why a Mediator?
 A mediator decouples command/query senders from handlers. Instead of injecting each handler individually, inject a mediator that routes requests to the correct handler.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Mediator interface
 interface IMediator {
   send<TCommand, TResult>(command: TCommand): Promise<TResult>;
@@ -296,7 +296,7 @@ class OrderController {
 ### Mediator Pipeline Behaviors
 Add cross-cutting concerns as pipeline behaviors that wrap command/query execution:
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 interface IPipelineBehavior<TRequest, TResult> {
   handle(request: TRequest, next: () => Promise<TResult>): Promise<TResult>;
 }
@@ -343,7 +343,7 @@ Validation checks two things:
 1. **Input validity**: Is the command well-formed? (handled by Presentation layer)
 2. **Business validity**: Does the command violate business rules? (handled in Command Handler)
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Step 1: Input validation — Presentation layer
 import { z } from 'zod';
 
@@ -393,7 +393,7 @@ class PlaceOrderHandler {
 | Search index | High | High | Near real-time | Full-text search |
 
 ### Event-Driven Projection with Transactional Outbox
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Write model publishes event → outbox → projection → read model update
 class OrderProjection {
   constructor(
@@ -440,7 +440,7 @@ See the `event-sourcing` skill for details on event store design and aggregate r
 ## Testing Strategies
 
 ### Command Handler Tests
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 describe('PlaceOrderHandler', () => {
   let handler: PlaceOrderHandler;
   let mockRepo: jest.Mocked<IOrderRepository>;
@@ -468,7 +468,7 @@ describe('PlaceOrderHandler', () => {
 ```
 
 ### Query Handler Tests
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 describe('GetOrderQueryHandler', () => {
   let handler: GetOrderQueryHandler;
   let mockReadDb: jest.Mocked<IOrderReadRepository>;

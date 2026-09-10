@@ -448,7 +448,7 @@ resource "ibm_en_destination" "pagerduty" {
 - `devops-[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)` for workload deployment on IKS clusters.
 - `devops-terraform` for Terraform state and module patterns for IBM Cloud.
 - `devops-[hybrid-cloud](../../common/other/hybrid-cloud/SKILL.md)` for connectivity between IBM Cloud and on-prem/other clouds.
-- `devops-[backup-dr](../../../Software_Engineering_and_Other/Frontend/backup-dr/SKILL.md)` for backup strategies using IBM Cloud services.
+- `devops-[backup-dr](../../../containers-orchestration/common/other/backup-dr/SKILL.md)` for backup strategies using IBM Cloud services.
 - `devops-[observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)` for [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and logging integration with IBM Cloud.
 
 ## Architecture Decision Trees
@@ -645,7 +645,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -661,7 +661,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### [Profiling](../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) Methodology
+### [Profiling](../../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking

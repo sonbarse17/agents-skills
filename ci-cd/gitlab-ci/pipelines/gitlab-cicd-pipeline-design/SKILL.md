@@ -112,7 +112,7 @@ specifics.
    project is a common source of confusing, hard-to-predict trigger
    behavior.
 
-4. **Use `changes:` for [monorepo](../../../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md) path filtering** so an unrelated change
+4. **Use `changes:` for [monorepo](../../../../Software_Engineering_and_Other/Frontend/build-tools/monorepo/SKILL.md) path filtering** so an unrelated change
    doesn't trigger a full pipeline:
    ```yaml
    test-backend:
@@ -251,7 +251,7 @@ specifics.
 
 ## Worked example
 
-**Scenario:** A [monorepo](../../../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md) with a `backend/` and `frontend/` directory needs
+**Scenario:** A [monorepo](../../../../Software_Engineering_and_Other/Frontend/build-tools/monorepo/SKILL.md) with a `backend/` and `frontend/` directory needs
 path-filtered pipelines (only test what changed), a shared lint template
 pulled from a central templates project, and a manually-gated production
 deploy restricted to a protected environment.

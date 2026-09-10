@@ -78,7 +78,7 @@ Treating backup and failover as an afterthought added after the workload is alre
 production means finding out they do not work at the worst possible time. Both need to be part
 of the initial deployment, not a follow-up ticket.
 
-- **Automate backups from day one**, using the mechanisms in `[backup-and-restore](../../../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)`, rather than
+- **Automate backups from day one**, using the mechanisms in `[backup-and-restore](../../../common/other/backup-and-restore/SKILL.md)`, rather than
   deferring backup setup until after the workload is handling real traffic.
 - **Use an operator where one exists for the workload** (for Postgres, Kafka, Elasticsearch,
   and similar systems) — mature operators encode failover and backup logic that is genuinely

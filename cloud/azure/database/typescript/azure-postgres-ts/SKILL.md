@@ -22,7 +22,7 @@ depends_on:
   - commit
 ---
 
-# Azure [PostgreSQL](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) for [TypeScript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) (node-postgres)
+# Azure [PostgreSQL](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) for [TypeScript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) (node-postgres)
 
 Connect to Azure Database for [PostgreSQL](../../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) Flexible Server using the `pg` (node-postgres) package with support for password and Microsoft Entra ID (passwordless) authentication.
 
@@ -55,7 +55,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 ### Option 1: Password Authentication
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { Client, Pool } from "pg";
 
 const client = new Client({
@@ -72,7 +72,7 @@ await client.connect();
 
 ### Option 2: Microsoft Entra ID (Passwordless) - Recommended
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { Client, Pool } from "pg";
 import { DefaultAzureCredential, ManagedIdentityCredential } from "@azure/identity";
 
@@ -108,7 +108,7 @@ await client.connect();
 
 ### 1. Single Client Connection
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { Client } from "pg";
 
 const client = new Client({
@@ -132,7 +132,7 @@ try {
 
 ### 2. Connection Pool (Recommended for Production)
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { Pool } from "pg";
 
 const pool = new Pool({
@@ -167,7 +167,7 @@ await pool.end();
 
 ### 3. Parameterized Queries (Prevent SQL Injection)
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // ALWAYS use parameterized queries - never concatenate user input
 const userId = 123;
 const email = "user@example.com";
@@ -194,7 +194,7 @@ const result = await pool.query(
 
 ### 4. Transactions
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const client = await pool.connect();
 
 try {
@@ -222,7 +222,7 @@ try {
 
 ### 5. Transaction Helper Function
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 async function withTransaction<T>(
   pool: Pool,
   fn: (client: PoolClient) => Promise<T>
@@ -255,9 +255,9 @@ const order = await withTransaction(pool, async (client) => {
 });
 ```
 
-### 6. Typed Queries with [TypeScript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+### 6. Typed Queries with [TypeScript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { Pool, QueryResult } from "pg";
 
 interface User {
@@ -293,7 +293,7 @@ async function createUser(
 
 For long-running applications, tokens expire and need refresh:
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { Pool, PoolConfig } from "pg";
 import { DefaultAzureCredential, AccessToken } from "@azure/identity";
 
@@ -369,7 +369,7 @@ const result = await azurePool.query("SELECT NOW()");
 
 ## Error Handling
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { DatabaseError } from "pg";
 
 try {
@@ -402,7 +402,7 @@ try {
 
 ## Connection String Format
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Alternative: Use connection string
 const pool = new Pool({
   connectionString: `postgres://${user}:${password}@${host}:${port}/${database}?sslmode=require`
@@ -415,7 +415,7 @@ const connectionString =
 
 ## Pool Events
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const pool = new Pool({ /* config */ });
 
 pool.on("connect", (client) => {
@@ -470,11 +470,11 @@ pool.on("error", (err, client) => {
 7. **Use transactions** - For multi-statement operations
 8. **Monitor pool metrics** - Track `pool.totalCount`, `pool.idleCount`, `pool.waitingCount`
 9. **Graceful shutdown** - Call `pool.end()` on application termination
-10. **Use [TypeScript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) generics** - Type your query results for safety
+10. **Use [TypeScript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) generics** - Type your query results for safety
 
 ## Key Types
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import {
   Client,
   Pool,

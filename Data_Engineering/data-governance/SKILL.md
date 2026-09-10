@@ -574,5 +574,5 @@ Trying to capture lineage for every column in every table. Teams burn out mainta
   - ../../../Global_References/data-contracts.md -- Data Contracts and Sharing Agreements
 
 ## Handoff
-For compliance requirements on data handling, hand off to `[enterprise-compliance-audit](../compliance-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)/SKILL.md)`. For multi-tenant data isolation, hand off to `[enterprise-multi-tenant](../../Software_Engineering_and_Other/Patterns/multi-tenant/SKILL.md)`.
+For compliance requirements on data handling, hand off to `[enterprise-compliance-audit](../../AI_and_Agents/Operations/audit/SKILL.md)/SKILL.md)`. For multi-tenant data isolation, hand off to `[enterprise-multi-tenant](../../Software_Engineering_and_Other/Patterns/multi-tenant/SKILL.md)`.
 

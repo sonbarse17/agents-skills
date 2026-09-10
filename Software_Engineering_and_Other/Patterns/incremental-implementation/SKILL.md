@@ -160,7 +160,7 @@ After each increment, the project must build and existing tests must pass. Don't
 
 If a feature isn't ready for users but you need to merge increments:
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Feature flag for work-in-progress
 const ENABLE_TASK_SHARING = process.env.FEATURE_TASK_SHARING === 'true';
 
@@ -175,7 +175,7 @@ This lets you merge small increments to the main branch without exposing incompl
 
 New code should default to safe, conservative behavior:
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Safe: disabled by default, opt-in
 export function createTask(data: TaskInput, options?: { notify?: boolean }) {
   const shouldNotify = options?.notify ?? false;

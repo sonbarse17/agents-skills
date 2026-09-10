@@ -146,7 +146,7 @@ STUN/TURN Server ← → ICE Negotiation ← → STUN/TURN Server
 
 ### Pattern: Signaling with WebSocket (Node.js)
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // server/signaling.ts
 import { WebSocketServer, WebSocket } from 'ws';
 
@@ -208,7 +208,7 @@ function broadcastToRoom(roomId: string, msg: SignalingMessage, excludeId?: stri
 
 ### Pattern: Client-Side WebRTC Peer Connection
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // client/webrtc.ts
 export class WebRTCClient {
   private pc: RTCPeerConnection | null = null;
@@ -269,7 +269,7 @@ export class WebRTCClient {
 
 ### Pattern: SFU Selective Forwarding (mediasoup)
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // sfu-server.ts
 import * as mediasoup from 'mediasoup';
 import { WebSocketServer } from 'ws';
@@ -344,7 +344,7 @@ services:
       - "49152-65535:49152-65535/udp"
 ```
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // TURN credential generation (time-limited)
 import crypto from 'crypto';
 
@@ -400,7 +400,7 @@ function generateTurnCredentials(sharedSecret: string, username: string, ttl = 8
 
 ## Testing Strategies
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import { WebSocket } from 'ws';
 

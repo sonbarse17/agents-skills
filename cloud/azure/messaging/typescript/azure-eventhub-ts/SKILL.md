@@ -16,7 +16,7 @@ depends_on:
   - typescript
 ---
 
-# Azure Event Hubs SDK for [TypeScript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+# Azure Event Hubs SDK for [TypeScript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 
 High-throughput event streaming and real-time data ingestion.
 
@@ -43,7 +43,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 ## Authentication
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { EventHubProducerClient, EventHubConsumerClient } from "@azure/event-hubs";
 import { DefaultAzureCredential, ManagedIdentityCredential } from "@azure/identity";
 
@@ -71,7 +71,7 @@ const consumer = new EventHubConsumerClient(
 
 ### Send Events
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const producer = new EventHubProducerClient(namespace, eventHubName, credential);
 
 // Create batch and add events
@@ -85,7 +85,7 @@ await producer.close();
 
 ### Send to Specific Partition
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // By partition ID
 const batch = await producer.createBatch({ partitionId: "0" });
 
@@ -95,7 +95,7 @@ const batch = await producer.createBatch({ partitionKey: "device-123" });
 
 ### Receive Events (Simple)
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const consumer = new EventHubConsumerClient("$Default", namespace, eventHubName, credential);
 
 const subscription = consumer.subscribe({
@@ -118,7 +118,7 @@ setTimeout(async () => {
 
 ### Receive with Checkpointing (Production)
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { EventHubConsumerClient } from "@azure/event-hubs";
 import { ContainerClient } from "@azure/storage-blob";
 import { BlobCheckpointStore } from "@azure/eventhubs-checkpointstore-blob";
@@ -156,7 +156,7 @@ const subscription = consumer.subscribe({
 
 ### Receive from Specific Position
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const subscription = consumer.subscribe({
   processEvents: async (events, context) => { /* ... */ },
   processError: async (err, context) => { /* ... */ },
@@ -176,7 +176,7 @@ const subscription = consumer.subscribe({
 
 ## Event Hub Properties
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Get hub info
 const hubProperties = await producer.getEventHubProperties();
 console.log(`Partitions: ${hubProperties.partitionIds}`);
@@ -188,7 +188,7 @@ console.log(`Last sequence: ${partitionProperties.lastEnqueuedSequenceNumber}`);
 
 ## Batch Processing Options
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const subscription = consumer.subscribe(
   {
     processEvents: async (events, context) => { /* ... */ },
@@ -203,7 +203,7 @@ const subscription = consumer.subscribe(
 
 ## Key Types
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import {
   EventHubProducerClient,
   EventHubConsumerClient,
@@ -221,7 +221,7 @@ import { BlobCheckpointStore } from "@azure/eventhubs-checkpointstore-blob";
 
 ## Event Properties
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Send with properties
 const batch = await producer.createBatch();
 batch.tryAdd({
@@ -249,7 +249,7 @@ consumer.subscribe({
 
 ## Error Handling
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 consumer.subscribe({
   processEvents: async (events, context) => {
     try {

@@ -170,7 +170,7 @@ model PostTag {
 
 ### Step 2: Query Patterns
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // src/repositories/user.repository.ts
 import { PrismaClient } from '@prisma/client';
 
@@ -245,7 +245,7 @@ export async function deleteUser(id: string) {
 
 ### Step 3: Prisma Client Configuration
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // src/lib/prisma.ts
 import { PrismaClient } from '@prisma/client';
 
@@ -282,7 +282,7 @@ npx prisma migrate status
 
 ### Step 5: Middleware / Extensions (Prisma 5+)
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // src/lib/prisma-extension.ts
 import { PrismaClient } from '@prisma/client';
 
@@ -323,7 +323,7 @@ export const xprisma = new PrismaClient()
 
 ### Step 6: Interactive Transactions
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Transfer funds with transaction
 export async function transferFunds(fromId: string, toId: string, amount: number) {
   return prisma.$transaction(async (tx) => {
@@ -350,7 +350,7 @@ export async function transferFunds(fromId: string, toId: string, amount: number
 
 ### Step 7: Seed Script
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // prisma/seed.ts
 import { PrismaClient } from '@prisma/client';
 
@@ -383,7 +383,7 @@ main()
 
 ### Connection Pooling ([Serverless](../../Patterns/serverless/SKILL.md))
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Connection pool for [serverless](../../Patterns/serverless/SKILL.md) (Vercel, Lambda)
 import { PrismaClient } from '@prisma/client';
 import { Pool } from '@neondatabase/[serverless](../../Patterns/serverless/SKILL.md)';
@@ -403,7 +403,7 @@ const prisma = new PrismaClient({ adapter });
 - Limit relation depth — each `include` adds a JOIN
 
 ### Error Handling
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 
 try {
@@ -442,7 +442,7 @@ try {
 
 ## Testing Strategies
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import { PrismaClient } from '@prisma/client';
 import { vi, describe, it, expect, beforeAll, afterAll } from 'vitest';
 
@@ -465,7 +465,7 @@ describe('User Repository', () => {
 });
 ```
 
-Use separate test database with test user. Use `prisma migrate deploy` in CI. Use `@prisma/nextjs-[monorepo](../../Frontend/monorepo/SKILL.md)-workaround-plugin` for monorepos.
+Use separate test database with test user. Use `prisma migrate deploy` in CI. Use `@prisma/nextjs-[monorepo](../../Frontend/build-tools/monorepo/SKILL.md)-workaround-plugin` for monorepos.
 
 ## Rules
 - Schema is the source of truth — `prisma migrate dev` after every schema change.

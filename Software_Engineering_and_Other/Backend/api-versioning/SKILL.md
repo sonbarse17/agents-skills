@@ -141,7 +141,7 @@ POST /v2/users        -> create v2 shape
 Implementation approaches:
 
 **Pattern A: Separate Router per Version**
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Express.js
 const v1Router = express.Router();
 v1Router.get('/users', v1UsersController.list);
@@ -173,7 +173,7 @@ app.include_router(v2)
 ```
 
 **Pattern B: Translation Layer** — shared core with version adapters:
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Internal canonical model
 interface InternalOrder {
   id: string;
@@ -241,7 +241,7 @@ src/
 
 ### Step 3: Header Versioning
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Express header version middleware
 function headerVersion(versionMap: Record<string, express.Router>) {
   return (req: express.Request, res: express.Response, next: express.NextFunction) => {
@@ -271,7 +271,7 @@ Warning: 299 - "This API version is deprecated. Migrate to the latest version."
 ```
 
 Implementation:
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 function deprecationMiddleware(sunsetDate: string, migrationUrl: string) {
   return (req: Request, res: Response, next: NextFunction) => {
     res.setHeader('Deprecation', 'true');
@@ -332,7 +332,7 @@ Content-Type: application/json
 
 ### Step 7: Multi-Version Router (Advanced)
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 class VersionRouter {
   private versions = new Map<string, Router>();
 

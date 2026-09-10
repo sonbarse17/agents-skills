@@ -191,7 +191,7 @@ Idempotency key = message.id or business_key + event_type
 Processed set TTL: match broker retention period
 ```
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 class IdempotentConsumer {
   private processed = new Set<string>();
 
@@ -225,7 +225,7 @@ SQS:
   - Lambda DLQ destinations for async invocation failures
 ```
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Kafka consumer with retry (Node.js)
 class RetryableConsumer {
   private maxRetries = 3;
@@ -276,7 +276,7 @@ Kafka partitions vs consumers:
   Rule: consumer count <= partition count
 ```
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Graceful shutdown for consumer
 async function shutdownGracefully(consumer: Consumer) {
   process.on('SIGTERM', async () => {
@@ -289,7 +289,7 @@ async function shutdownGracefully(consumer: Consumer) {
 
 ### Step 8: Producer Patterns
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Kafka producer with idempotency
 const producer = kafka.producer({
   idempotent: true,                   // exactly-once production
@@ -328,7 +328,7 @@ async function publishEvent(event: DomainEvent) {
 | Failed deliveries | Broker connectivity | > 1% for > 1 min |
 | Queue depth (SQS/Rabbit) | Backlog | Depth > 10000 |
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Kafka lag [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 async function checkConsumerLag(admin: Admin, groupId: string): Promise<void> {
   const lag = await admin.fetchOffsets({ groupId });

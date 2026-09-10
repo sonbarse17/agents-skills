@@ -76,7 +76,7 @@ rather than repeating.
 ## Prerequisites & environment
 
 - [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) (LangChain/LangGraph's primary, most mature ecosystem) or
-  JavaScript/[TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) (`langchain`/`langgraph` npm packages, closely
+  JavaScript/[TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) (`langchain`/`langgraph` npm packages, closely
   mirroring the [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) API but with some feature lag) — pick one and check
   current package versions before starting, since both projects have had
   breaking changes across major versions (notably the LangChain 0.1 → 0.2/0.3

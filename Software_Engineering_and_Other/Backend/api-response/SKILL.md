@@ -158,8 +158,8 @@ Error response:
 
 ### Step 2: Define Generic Type Definitions
 
-**[TypeScript](../../Frontend/typescript/SKILL.md)**
-```[typescript](../../Frontend/typescript/SKILL.md)
+**[TypeScript](../../Frontend/common/typescript/SKILL.md)**
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 interface ApiResponse<T> {
   success: boolean;
   data: T | null;
@@ -358,7 +358,7 @@ Cursor-based:
 ### Step 7: Implement Global Exception Handler
 
 **Node.js/Express middleware**
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import { Request, Response, NextFunction } from 'express';
 import { v4 as uuid } from 'uuid';
 
@@ -439,7 +439,7 @@ async def validation_handler(request: Request, exc: RequestValidationError):
 
 ### Step 8: Implement Response Builder Pattern
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 class ResponseBuilder<T> {
   private statusCode = 200;
   private headers: Record<string, string> = {};

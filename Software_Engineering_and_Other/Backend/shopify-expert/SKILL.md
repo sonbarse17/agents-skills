@@ -145,8 +145,8 @@ shopify app generate extension                        # Add checkout UI extensio
 shopify app generate graphql                          # Generate typed GraphQL hooks
 ```
 
-### App — Authenticated Admin API fetch ([TypeScript](../../Frontend/typescript/SKILL.md))
-```[typescript](../../Frontend/typescript/SKILL.md)
+### App — Authenticated Admin API fetch ([TypeScript](../../Frontend/common/typescript/SKILL.md))
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import { authenticate } from "../shopify.server";
 import type { LoaderFunctionArgs } from "@remix-run/node";
 
@@ -175,7 +175,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 - Use App Bridge for embedded apps
 - Implement proper error handling for API calls
 - Follow Shopify theme architecture patterns
-- Use [TypeScript](../../Frontend/typescript/SKILL.md) for app development
+- Use [TypeScript](../../Frontend/common/typescript/SKILL.md) for app development
 - Test checkout extensions in sandbox
 - Run `shopify theme check` before every theme deployment
 
@@ -193,7 +193,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 
 When implementing Shopify solutions, provide:
 1. Complete file structure with proper naming
-2. Liquid/GraphQL/[TypeScript](../../Frontend/typescript/SKILL.md) code with types
+2. Liquid/GraphQL/[TypeScript](../../Frontend/common/typescript/SKILL.md) code with types
 3. Configuration files (shopify.app.toml, schema settings)
 4. API scopes and permissions needed
 5. Testing approach and deployment steps

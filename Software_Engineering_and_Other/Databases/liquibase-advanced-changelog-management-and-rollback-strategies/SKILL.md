@@ -172,7 +172,7 @@ lost data:
   <rollback>
     <!-- Intentionally irreversible: legacy_notes data is not recoverable
          from this rollback. Restore from backup if this change needs
-         to be undone. See [database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies](../../../Software_Engineering_and_Other/Databases/database-[backup-and-restore](../../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md). -->
+         to be undone. See [database-[backup-and-restore](../../../containers-orchestration/common/other/backup-and-restore/SKILL.md)-strategies](../../../Software_Engineering_and_Other/Databases/database-[backup-and-restore](../../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md). -->
   </rollback>
 </changeSet>
 ```
@@ -316,7 +316,7 @@ checksummed content, doesn't retroactively change what already ran).
   > actual rollback definition individually (not just trust the command
   > succeeded), and confirm a tested, verified backup exists as the real
   > fallback — see
-  > [database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)-strategies](../../../Software_Engineering_and_Other/Databases/database-[backup-and-restore](../../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md) —
+  > [database-[backup-and-restore](../../../containers-orchestration/common/other/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)-strategies](../../../Software_Engineering_and_Other/Databases/database-[backup-and-restore](../../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md) —
   > for any changeset in the rollback range whose forward operation was
   > genuinely destructive.
 
@@ -360,5 +360,5 @@ partway through because an older changeset had no rollback defined.
 ## Cross-references
 
 - [database-schema-migration-with-liquibase-and-flyway](../[database-schema-migration-with-liquibase-and-flyway](../database-schema-migration-with-liquibase-and-flyway/SKILL.md)/SKILL.md) — the foundational changeset/rollback/CI-testing basics this skill builds on rather than restates.
-- [database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)-strategies](../../../Software_Engineering_and_Other/Databases/database-[backup-and-restore](../../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md) — the restore-testing safety net that should back up any changeset whose forward operation is genuinely irreversible and documented as an empty rollback.
-- [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../Frontend/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — the lock/performance impact of the DDL a changeset actually runs, relevant when deciding how to scope a large data-transformation changeset's rollback and forward logic.
+- [database-[backup-and-restore](../../../containers-orchestration/common/other/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)-strategies](../../../Software_Engineering_and_Other/Databases/database-[backup-and-restore](../../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md) — the restore-testing safety net that should back up any changeset whose forward operation is genuinely irreversible and documented as an empty rollback.
+- [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — the lock/performance impact of the DDL a changeset actually runs, relevant when deciding how to scope a large data-transformation changeset's rollback and forward logic.

@@ -70,7 +70,7 @@ from the previous phase.
 - `[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md)`, `helm` ≥ 3.8 (for OCI registry chart support), and either
   `eksctl` or the Terraform EKS module for cluster provisioning.
 - A Node.js/Yarn toolchain capable of building and customizing a Backstage
-  app (Backstage itself is a Node/[TypeScript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) [monorepo](../../../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md), not a pre-built
+  app (Backstage itself is a Node/[TypeScript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) [monorepo](../../../../Software_Engineering_and_Other/Frontend/build-tools/monorepo/SKILL.md), not a pre-built
   image you configure purely via Helm values).
 - A registered domain and Route 53 hosted zone (or delegated subdomain)
   for Backstage's ingress hostname and an ACM certificate.

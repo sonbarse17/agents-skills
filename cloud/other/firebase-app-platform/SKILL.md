@@ -102,7 +102,7 @@ service cloud.firestore {
 
 ### Data Operations
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // lib/firestore.ts
 import { getFirestore, collection, doc, setDoc, getDoc,
          query, where, orderBy, limit, onSnapshot,
@@ -162,7 +162,7 @@ async function incrementViews(postId: string) {
 
 ## Authentication
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // lib/auth.ts
 import { getAuth, signInWithPopup, GoogleAuthProvider,
          createUserWithEmailAndPassword, signInWithEmailAndPassword,
@@ -195,7 +195,7 @@ onAuthStateChanged(auth, (user) => {
 
 ## Cloud Functions
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // functions/src/index.ts
 import { onRequest } from "[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md)-functions/v2/https";
 import { onDocumentCreated } from "[firebase](../../../Software_Engineering_and_Other/Databases/firebase/SKILL.md)-functions/v2/firestore";

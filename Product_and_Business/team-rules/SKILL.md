@@ -155,7 +155,7 @@ Every PR must pass all applicable checks before merging:
 [ ] Error paths handled (no empty catch blocks)
 [ ] Input validation present on all public endpoints
 [ ] Tests included for new logic (unit ≥80% coverage for new code)
-[ ] No type errors ([TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) strict / Pyright / mypy)
+[ ] No type errors ([TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) strict / Pyright / mypy)
 [ ] No lint violations (ESLint / ruff / dotnet-format)
 [ ] Documentation updated if API/behavior changed
 [ ] No unused imports or dead code

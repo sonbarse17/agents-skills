@@ -145,7 +145,7 @@ Every event envelope includes:
 ### Step 4: Consumer Idempotency
 Every consumer must handle duplicate deliveries. At-least-once delivery means duplicates are guaranteed.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 async function handleOrderPlaced(event: OrderPlacedEvent) {
   const processed = await checkProcessed(event.eventId);
   if (processed) return;
@@ -188,7 +188,7 @@ Orchestration (complex, many services):
 ## Event Schema Design
 
 ### Versioning Strategy
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 interface EventEnvelope<T = unknown> {
   eventId: string;
   eventType: string;
@@ -229,7 +229,7 @@ interface OrderPlacedV2 {
 ## Event Bus Patterns
 
 ### In-Process Event Bus
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 class InProcessEventBus {
   private handlers = new Map<string, Function[]>();
 
@@ -253,7 +253,7 @@ class InProcessEventBus {
 ```
 
 ### Transactional Outbox Pattern
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Write event to outbox table in the same transaction as the write
 class OutboxPattern {
   async execute(command: CreateOrderCommand): Promise<Result> {
@@ -296,7 +296,7 @@ class OutboxPublisher {
 ### Kafka Partition Ordering
 Events with the same key go to the same partition, preserving order:
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 await producer.send({
   topic: 'order.events',
   messages: [{
@@ -307,7 +307,7 @@ await producer.send({
 ```
 
 ### Out-of-Order Event Handling
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 class OutOfOrderHandler {
   private expectedVersion = new Map<string, number>();
 
@@ -342,7 +342,7 @@ class OutOfOrderHandler {
 ## Error Handling
 
 ### Retry with Exponential Backoff
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 class RetryableConsumer {
   private maxRetries = 3;
   private baseDelay = 1000; // 1 second
@@ -372,7 +372,7 @@ class RetryableConsumer {
 ## Production Considerations
 
 ### [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Events
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 interface EventMetrics {
   produced: number;
   consumed: number;
@@ -495,7 +495,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/performance/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -511,7 +511,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### [Profiling](../../Frontend/profiling/SKILL.md) Methodology
+### [Profiling](../../Frontend/performance/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking

@@ -49,7 +49,7 @@ risky the upgrade is.
   reliable answer beyond reading the full [commit](../../git-workflow/commit/SKILL.md) log.
 - Enforcing Conventional Commits (or another structured [commit](../../git-workflow/commit/SKILL.md) format) so
   automation has something reliable to parse.
-- Coordinating version bumps across a [monorepo](../../../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md) with multiple
+- Coordinating version bumps across a [monorepo](../../../../Software_Engineering_and_Other/Frontend/build-tools/monorepo/SKILL.md) with multiple
   independently-versioned packages.
 
 ## Prerequisites & environment
@@ -145,9 +145,9 @@ risky the upgrade is.
    actually cuts the tag/release. This suits teams wanting a deliberate
    "yes, ship this batch" moment rather than releasing on every merge.
 
-4. **For a [monorepo](../../../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md) with multiple independently-versioned packages**, use
+4. **For a [monorepo](../../../../Software_Engineering_and_Other/Frontend/build-tools/monorepo/SKILL.md) with multiple independently-versioned packages**, use
    a tool that understands package boundaries — `semantic-release` with
-   `semantic-release-[monorepo](../../../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md)` extensions, `release-please`'s manifest
+   `semantic-release-[monorepo](../../../../Software_Engineering_and_Other/Frontend/build-tools/monorepo/SKILL.md)` extensions, `release-please`'s manifest
    mode, or Changesets (common in JS monorepos: contributors add a small
    `.changeset/*.md` describing the change and bump type per affected
    package, and a bot batches them into per-package releases).

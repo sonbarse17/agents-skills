@@ -105,7 +105,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 
 1. **Provider Selection & Setup**: Choose provider based on volume, cost, feature needs. Configure SMTP credentials or API keys as environment variables.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Resend example
 import { Resend } from 'resend';
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -166,7 +166,7 @@ response = ses.send_email(
 
 3. **Deliverability Configuration**: Set up SPF, DKIM, and DMARC DNS records for your sending domain.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // SPF record (TXT): v=spf1 include:amazonses.com include:sendgrid.net ~all
 // DKIM record (TXT): Selector and public key from provider
 // DMARC record (TXT): v=DMARC1; p=quarantine; rua=mailto:dmarc@yourdomain.com
@@ -174,7 +174,7 @@ response = ses.send_email(
 
 4. **Webhook Handling**: Process delivery events — bounces, complaints, opens, clicks.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // SendGrid event webhook
 app.post('/webhooks/email', (req, res) => {
   const events = req.body;
@@ -197,7 +197,7 @@ app.post('/webhooks/email', (req, res) => {
 
 5. **Rate Limiting & Quotas**: Enforce sending limits per recipient, per domain, per hour.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 class EmailRateLimiter {
   private limits: Map<string, number[]> = new Map();
 
@@ -220,7 +220,7 @@ class EmailRateLimiter {
 
 6. **Template Management**: Version templates, support localization, store in database or file system.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 interface EmailTemplate {
   id: string;
   type: 'welcome' | 'reset_password' | 'invoice' | 'notification';
@@ -249,7 +249,7 @@ services:
 
 ### Pattern: Queue-Based Email Worker with Retry
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // email-queue.ts
 import { Queue, Worker } from 'bullmq';
 import Redis from 'ioredis';
@@ -305,7 +305,7 @@ const worker = new Worker<EmailJob>('transactional-email', async (job) => {
 
 ### Pattern: Provider Abstraction (Strategy Pattern)
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // providers/provider-interface.ts
 interface EmailProvider {
   name: string;
@@ -377,7 +377,7 @@ export class SesProvider implements EmailProvider {
 
 ### Pattern: MJML Template with Handlebars
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // template-engine.ts
 import Handlebars from 'handlebars';
 import mjml from 'mjml';
@@ -462,7 +462,7 @@ class EmailTemplateEngine {
 
 ## Testing Strategies
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import { describe, it, expect, beforeAll } from 'vitest';
 import { MailHog } from 'mailhog';
 

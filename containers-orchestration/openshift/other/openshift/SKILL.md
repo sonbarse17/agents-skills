@@ -101,7 +101,7 @@ oc new-app https://[github](../../../../ci-cd/github-actions/other/github/SKILL.
 oc new-app nodejs:18~https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/org/nodejs-app.git
 
 # With context directory
-oc new-app https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/org/[monorepo](../../../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md).git \
+oc new-app https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/org/[monorepo](../../../../Software_Engineering_and_Other/Frontend/build-tools/monorepo/SKILL.md).git \
   --context-dir=backend \
   --name=backend-api
 ```

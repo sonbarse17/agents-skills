@@ -296,7 +296,7 @@ Without `animation-fill-mode: forwards` or WAAPI `fill: "forwards"`, the animate
 
 ## Advanced Gesture Animations
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Framer Motion — complex gesture composition
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 
@@ -340,7 +340,7 @@ function Card3D({ children }: { children: React.ReactNode }) {
 | Fluid | 100 | 15 | 1.0 | Page transitions, parallax |
 | Stiff (no bounce) | 400 | 40 | 1.0 | Progress bars, loading indicators |
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 const uiSpring = { type: 'spring', stiffness: 300, damping: 20, mass: 0.5 };
 const gestureSpring = { type: 'spring', stiffness: 500, damping: 30, mass: 1 };
 ```

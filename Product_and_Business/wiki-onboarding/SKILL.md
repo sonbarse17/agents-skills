@@ -68,7 +68,7 @@ A landing page with:
 ## Language Detection
 
 Scan the repository for build files to determine the primary language for code examples:
-- `package.json` / `tsconfig.json` → [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)/JavaScript
+- `package.json` / `tsconfig.json` → [TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)/JavaScript
 - `*.csproj` / `*.sln` → C# / .NET
 - `Cargo.toml` → Rust
 - `pyproject.toml` / `setup.py` / `requirements.txt` → [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)

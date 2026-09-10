@@ -52,7 +52,7 @@ hub-and-spoke topology actually maintainable at scale.
   See also
   [argocd-application-configuration](../[argocd-application-configuration](../[argocd](../argocd/SKILL.md)-application-configuration/SKILL.md)/SKILL.md)
   for what goes inside each generated `Application`.
-- A [monorepo](../../../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md) has one directory per microservice and each should become its
+- A [monorepo](../../../../Software_Engineering_and_Other/Frontend/build-tools/monorepo/SKILL.md) has one directory per microservice and each should become its
   own `Application` without per-service boilerplate.
 - Rolling a service out to every registered cluster (fleet-wide) or a
   filtered subset of clusters by label.

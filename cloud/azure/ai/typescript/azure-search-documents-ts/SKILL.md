@@ -16,7 +16,7 @@ depends_on:
   - typescript
 ---
 
-# Azure AI Search SDK for [TypeScript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+# Azure AI Search SDK for [TypeScript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 
 Build search applications with vector, hybrid, and semantic search capabilities.
 
@@ -37,7 +37,7 @@ AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used i
 
 ## Authentication
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { SearchClient, SearchIndexClient } from "@azure/search-documents";
 import { DefaultAzureCredential, ManagedIdentityCredential } from "@azure/identity";
 
@@ -60,7 +60,7 @@ const indexClient = new SearchIndexClient(endpoint, credential);
 
 ### Create Index with Vector Field
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { SearchIndex, SearchField, VectorSearch } from "@azure/search-documents";
 
 const index: SearchIndex = {
@@ -93,7 +93,7 @@ await indexClient.createOrUpdateIndex(index);
 
 ### Index Documents
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const documents = [
   { id: "1", title: "Widget", description: "A useful widget", category: "Tools", embedding: [...] },
   { id: "2", title: "Gadget", description: "A cool gadget", category: "Electronics", embedding: [...] },
@@ -105,7 +105,7 @@ console.log(`Indexed ${result.results.length} documents`);
 
 ### Full-Text Search
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const results = await searchClient.search("widget", {
   select: ["id", "title", "description"],
   filter: "category eq 'Tools'",
@@ -120,7 +120,7 @@ for await (const result of results.results) {
 
 ### Vector Search
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const queryVector = await getEmbedding("useful tool"); // Your embedding function
 
 const results = await searchClient.search("*", {
@@ -144,7 +144,7 @@ for await (const result of results.results) {
 
 ### Hybrid Search (Text + Vector)
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const queryVector = await getEmbedding("useful tool");
 
 const results = await searchClient.search("tool", {
@@ -165,7 +165,7 @@ const results = await searchClient.search("tool", {
 
 ### Semantic Search
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Index must have semantic configuration
 const index: SearchIndex = {
   name: "products",
@@ -203,7 +203,7 @@ for await (const result of results.results) {
 
 ## Filtering and Facets
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Filter syntax
 const results = await searchClient.search("*", {
   filter: "category eq 'Electronics' and price lt 100",
@@ -221,7 +221,7 @@ for (const [facetName, facetResults] of Object.entries(results.facets || {})) {
 
 ## Autocomplete and Suggestions
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Create suggester in index
 const index: SearchIndex = {
   name: "products",
@@ -246,7 +246,7 @@ const suggestions = await searchClient.suggest("wid", "sg", {
 
 ## Batch Operations
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Batch upload, merge, delete
 const batch = [
   { upload: { id: "1", title: "New Item" } },
@@ -259,7 +259,7 @@ const result = await searchClient.indexDocuments({ actions: batch });
 
 ## Key Types
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import {
   SearchClient,
   SearchIndexClient,

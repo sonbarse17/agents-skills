@@ -63,7 +63,7 @@ For anything but the smallest datasets, a one-time copy means the data is stale 
 traffic starts flowing on the old system after the copy began. Use continuous replication or
 change-data-capture to keep source and target in sync until the actual cutover moment, then cut
 over with a short, well-understood freeze window. See `[data-migration](../../../../Data_Engineering/data-migration/SKILL.md)` for the sync mechanics and
-`[backup-and-restore](../../../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)` for the safety net if the sync itself fails.
+`[backup-and-restore](../../../../containers-orchestration/common/other/backup-and-restore/SKILL.md)` for the safety net if the sync itself fails.
 
 **Done when:** source and target data are verified consistent immediately before cutover, with a
 freeze window short enough to be acceptable to the business.

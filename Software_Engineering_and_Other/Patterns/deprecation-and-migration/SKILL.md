@@ -146,7 +146,7 @@ Phase 5: Remove old system
 
 Create an adapter that translates calls from the old interface to the new implementation. Consumers keep using the old interface while you migrate the backend.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Adapter: old interface, new implementation
 class LegacyTaskService implements OldTaskAPI {
   constructor(private newService: NewTaskService) {}
@@ -163,7 +163,7 @@ class LegacyTaskService implements OldTaskAPI {
 
 Use feature flags to switch consumers from old to new system one at a time:
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 function getTaskService(userId: string): TaskService {
   if (featureFlags.isEnabled('new-task-service', { userId })) {
     return new NewTaskService();

@@ -573,7 +573,7 @@ First-party mobile/web app?
 |---|---|---|---|
 | Async support | async/await | async/await | Callbacks |
 | ORM | Fluent | None (raw SQL) | SwiftKuery |
-| Template engine | Leaf | None | [Stencil](../../Frontend/stencil/SKILL.md) |
+| Template engine | Leaf | None | [Stencil](../../Frontend/frameworks/stencil/SKILL.md) |
 | WebSocket | Built-in | Via plugin | Built-in |
 | Community size | Large | Small | Deprecated |
 | macOS deployment | First-class | First-class | First-class |

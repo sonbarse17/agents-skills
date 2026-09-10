@@ -26,7 +26,7 @@ Transform debugging from frustrating guesswork into systematic problem-solving w
 - Understanding unfamiliar codebases
 - Debugging production issues
 - Analyzing crash dumps and stack traces
-- [Profiling](../../Frontend/profiling/SKILL.md) application performance
+- [Profiling](../../Frontend/performance/profiling/SKILL.md) application performance
 - Investigating memory leaks
 - Debugging distributed systems
 
@@ -162,9 +162,9 @@ Based on gathered info, ask:
 
 ## Debugging Tools
 
-### JavaScript/[TypeScript](../../Frontend/typescript/SKILL.md) Debugging
+### JavaScript/[TypeScript](../../Frontend/common/typescript/SKILL.md) Debugging
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Chrome DevTools Debugger
 function processOrder(order: Order) {
   debugger; // Execution pauses here
@@ -188,7 +188,7 @@ console.time("operation");
 console.trace(); // Stack trace
 console.assert(value > 0, "Value must be positive"); // Assertion
 
-// Performance [profiling](../../Frontend/profiling/SKILL.md)
+// Performance [profiling](../../Frontend/performance/profiling/SKILL.md)
 performance.mark("start-operation");
 // ... operation code
 performance.mark("end-operation");
@@ -306,11 +306,11 @@ func processRequest() {
     // ... code that might panic
 }
 
-// Memory [profiling](../../Frontend/profiling/SKILL.md)
+// Memory [profiling](../../Frontend/performance/profiling/SKILL.md)
 import _ "net/http/pprof"
 // Visit http://localhost:6060/debug/pprof/
 
-// CPU [profiling](../../Frontend/profiling/SKILL.md)
+// CPU [profiling](../../Frontend/performance/profiling/SKILL.md)
 import (
     "os"
     "runtime/pprof"
@@ -362,7 +362,7 @@ Hypothesis: Time-based issue? Check timezone handling.
 
 ### Technique 3: Trace Debugging
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Function call tracing
 function trace(
   target: any,
@@ -391,7 +391,7 @@ class OrderService {
 
 ### Technique 4: Memory Leak Detection
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Chrome DevTools Memory Profiler
 // 1. Take heap snapshot
 // 2. Perform action

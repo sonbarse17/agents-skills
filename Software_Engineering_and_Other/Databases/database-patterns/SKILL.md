@@ -166,7 +166,7 @@ CREATE INDEX idx_orders_status ON orders(status) WHERE deleted_at IS NULL;
 | Hash | Equality only, large values | URL lookup (smaller than B-tree) |
 
 ### Step 3: N+1 Detection and Fix
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // N+1 — BAD
 const users = await db.user.findMany();  // 1 query
 for (const user of users) {
@@ -216,7 +216,7 @@ ALTER TABLE orders DROP COLUMN status;
 - Never hold a transaction open during external API calls or file I/O.
 - Use Unit of Work pattern for coordinating multiple repository operations.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 class TransferFundsHandler {
   async execute(command: TransferFundsCommand): Promise<Result> {
     return this.unitOfWork.execute(async () => {
@@ -258,7 +258,7 @@ SELECT * FROM orders ORDER BY id LIMIT 20 OFFSET 40;
 SELECT * FROM orders WHERE id > 'last-uuid' ORDER BY id LIMIT 20;
 ```
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Keyset pagination with composite cursor
 async function paginateOrders(cursor?: { id: string; createdAt: Date }, limit = 20) {
   return db.order.findMany({
@@ -342,7 +342,7 @@ pool:
 ```
 
 ### Batch Operations
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Batch insert — avoid individual INSERT statements
 await db.insert(users).values([
   { name: 'Alice', email: 'alice@example.com' },
@@ -366,7 +366,7 @@ Application patterns:
 ## Security
 
 ### SQL Injection Prevention
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // BAD — string interpolation
 await db.query(`SELECT * FROM users WHERE email = '${email}'`);  // SQL injection!
 
@@ -493,7 +493,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/performance/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -509,7 +509,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### [Profiling](../../Frontend/profiling/SKILL.md) Methodology
+### [Profiling](../../Frontend/performance/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking

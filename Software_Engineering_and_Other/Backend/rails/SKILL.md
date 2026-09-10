@@ -489,7 +489,7 @@ Use `factory_bot_rails` for test data. Use `shoulda-matchers` for model specs. U
   - ../../../Global_References/rails-api-conventions.md — Rails API Conventions
   - ../../../Global_References/rails-api-design.md — Rails API Design
   - ../../../Global_References/rails-background-jobs.md — Background Jobs
-  - ../../../Global_References/rails-[performance-tuning](../../Frontend/performance-tuning/SKILL.md).md — Performance Tuning
+  - ../../../Global_References/rails-[performance-tuning](../../Frontend/performance/performance-tuning/SKILL.md).md — Performance Tuning
   - ../../../Global_References/rails-performance.md — Rails Performance
   - ../../../Global_References/rails-security.md — Rails Security
   - ../../../Global_References/rails-testing.md — Testing Rails Applications

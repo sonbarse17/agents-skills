@@ -175,7 +175,7 @@ cluster. Two distinct needs, both solved with IRSA:
 ### Phase 3 — Ingress and TLS for the Argo CD API/UI
 
 Front the `[argocd](../argocd/SKILL.md)-server` Service with
-[ingress-nginx-configuration](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[ingress-nginx-configuration](../../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md)
+[ingress-nginx-configuration](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[ingress-nginx-configuration](../../../kubernetes/networking/ingress-nginx-configuration/SKILL.md)/SKILL.md)
 and issue its certificate with
 [cert-manager-tls-automation](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[cert-manager-tls-automation](../../../kubernetes/security/cert-manager-tls-automation/SKILL.md)/SKILL.md)
 (DNS-01 via Route 53, backed by its own scoped IRSA role per that skill's
@@ -363,6 +363,6 @@ per the environment-specific policy guidance in
 - [argocd-application-configuration](../[argocd-application-configuration](../[argocd](../argocd/SKILL.md)-application-configuration/SKILL.md)/SKILL.md) — full depth on the `Application` spec used in Phase 4/6.
 - [argocd-applicationset-patterns](../[argocd-applicationset-patterns](../[argocd](../argocd/SKILL.md)-applicationset-patterns/SKILL.md)/SKILL.md) — generator mechanics used in Phase 5.
 - [gitops-multi-cluster-management](../[gitops-multi-cluster-management](../[gitops](../gitops/SKILL.md)-multi-cluster-management/SKILL.md)/SKILL.md) — hub-and-spoke RBAC/registration pattern this skill's Phase 2 adapts with IRSA.
-- [ingress-nginx-configuration](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[ingress-nginx-configuration](../../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md) and [cert-manager-tls-automation](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[cert-manager-tls-automation](../../../kubernetes/security/cert-manager-tls-automation/SKILL.md)/SKILL.md) — Phase 3's Ingress/TLS mechanics.
+- [ingress-nginx-configuration](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[ingress-nginx-configuration](../../../kubernetes/networking/ingress-nginx-configuration/SKILL.md)/SKILL.md) and [cert-manager-tls-automation](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[cert-manager-tls-automation](../../../kubernetes/security/cert-manager-tls-automation/SKILL.md)/SKILL.md) — Phase 3's Ingress/TLS mechanics.
 - [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../../Cloud_Providers/cloud-iam-hardening/SKILL.md)/SKILL.md) — least-privilege principles governing every IAM role/policy created here.
 - [gitops-workflow](../../../devops/skills/[gitops-workflow](../[gitops](../gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md) — the vendor-neutral [GitOps](../../../common/gitops/gitops/SKILL.md) concepts this EKS-specific [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) implements.

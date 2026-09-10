@@ -29,7 +29,7 @@ depends_on:
 # Bun
 
 ## Purpose
-Build high-performance [TypeScript](../../Frontend/typescript/SKILL.md)/JavaScript applications with Bun runtime — built-in APIs, test runner, package manager, bundler, and shell scripting.
+Build high-performance [TypeScript](../../Frontend/common/typescript/SKILL.md)/JavaScript applications with Bun runtime — built-in APIs, test runner, package manager, bundler, and shell scripting.
 
 ## Architecture Decision Trees
 
@@ -39,7 +39,7 @@ Build high-performance [TypeScript](../../Frontend/typescript/SKILL.md)/JavaScri
 |-----------|-----|---------|------|
 | Startup time | ~5ms | ~50ms | ~20ms |
 | npm compatibility | ~95% | 100% | ~80% |
-| [TypeScript](../../Frontend/typescript/SKILL.md) native | Yes (transpiled) | No (ts-node/esbuild) | Yes (compiled) |
+| [TypeScript](../../Frontend/common/typescript/SKILL.md) native | Yes (transpiled) | No (ts-node/esbuild) | Yes (compiled) |
 | Built-in APIs | SQLite, fetch, WebSocket, password hashing | None (npm) | Web APIs, KV, FFI |
 | Test runner | Built-in (Jest-compatible) | Mocha/Jest/Vitest | Built-in |
 | Bundler | Built-in (esbuild-level) | esbuild/webpack/rollup | Built-in |
@@ -56,12 +56,12 @@ Decision: Bun for new projects prioritizing DX and speed. Node.js for max ecosys
 |-----------|----------------|--------|------|------------------|
 | Performance | ~100k req/s | ~80k req/s | ~90k req/s | ~30k req/s |
 | Bundle size | 0 | Tiny | Tiny | Medium |
-| [TypeScript](../../Frontend/typescript/SKILL.md) | Manual | Full (Eden) | Full (TypeBox) | Partial |
+| [TypeScript](../../Frontend/common/typescript/SKILL.md) | Manual | Full (Eden) | Full (TypeBox) | Partial |
 | Plugins | None | Rich | Growing | Largest |
 | Learning curve | Low | Medium | Low | Low |
-| Best for | APIs, [microservices](../../Patterns/microservices/SKILL.md) | Full-stack [TypeScript](../../Frontend/typescript/SKILL.md) | Edge, Workers, API | Migration from Node |
+| Best for | APIs, [microservices](../../Patterns/microservices/SKILL.md) | Full-stack [TypeScript](../../Frontend/common/typescript/SKILL.md) | Edge, Workers, API | Migration from Node |
 
-Decision: Elysia for new full-stack [TypeScript](../../Frontend/typescript/SKILL.md) apps. Bun.serve for minimal APIs. Hono for edge/Cloudflare Workers.
+Decision: Elysia for new full-stack [TypeScript](../../Frontend/common/typescript/SKILL.md) apps. Bun.serve for minimal APIs. Hono for edge/Cloudflare Workers.
 
 ### Bun.sqlite vs External DB
 
@@ -141,7 +141,7 @@ my-app/
 
 ### Step 2: Bun HTTP Server
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // src/index.ts
 import { env } from './utils/env';
 
@@ -172,7 +172,7 @@ console.log(`Server running on http://${server.hostname}:${server.port}`);
 
 ### Step 3: Simple Router
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // src/router.ts
 import { env } from './utils/env';
 
@@ -208,7 +208,7 @@ async function router(req: Request, url: URL): Promise<Response> {
 
 ### Step 4: File I/O with Bun APIs
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // src/utils/file-storage.ts
 import { join } from 'path';
 
@@ -242,7 +242,7 @@ export function fileStream(filename: string): ReadableStream | null {
 
 ### Step 5: Bun SQLite
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // src/db/sqlite.ts
 import { Database } from 'bun:sqlite';
 
@@ -294,7 +294,7 @@ export function findUserById(id: string): User | null {
 
 ### Step 6: Testing with Bun
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // tests/routes/users.test.ts
 import { describe, expect, it, beforeAll, mock } from 'bun:test';
 
@@ -374,7 +374,7 @@ it('mocks external call', () => {
 
 ### Pattern: WebSocket Server with Bun.serve
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import { serve, WebSocket } from 'bun';
 
 const clients = new Set<WebSocket>();
@@ -408,14 +408,14 @@ serve({
 
 ### Pattern: Bun.shell for Build Scripts
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // scripts/build.ts
 import { $ } from 'bun';
 
 async function buildAndDeploy() {
-  // [TypeScript](../../Frontend/typescript/SKILL.md) check
+  // [TypeScript](../../Frontend/common/typescript/SKILL.md) check
   const tscResult = await $`bun run tsc --noEmit`.text();
-  console.log('[TypeScript](../../Frontend/typescript/SKILL.md):', tscResult);
+  console.log('[TypeScript](../../Frontend/common/typescript/SKILL.md):', tscResult);
 
   // Build bundle
   await $`bun build src/index.ts --outdir dist --target bun --minify`;
@@ -446,7 +446,7 @@ console.log(`Source files: ${fileCount.trim()}`);
 
 ### Pattern: Bun Password Hashing
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import { password } from 'bun';
 
 export class AuthService {
@@ -474,7 +474,7 @@ export class AuthService {
 
 ### Pattern: Binary Compilation
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // bun build --compile --outfile my-server src/index.ts
 // Produces standalone binary (no Bun runtime needed)
 
@@ -527,7 +527,7 @@ program.parse();
 | Importing `fs`/`path` when Bun APIs exist | Bun.file/Bun.write are faster and simpler | Use `Bun.file()`, `Bun.write()`, `Bun.spawn()` |
 | Using Jest/Vitest | Bun test is built-in and faster (uses same API) | `import { describe, it, expect } from 'bun:test'` |
 | npm install instead of bun install | Slower by 10-30x | Always `bun install` |
-| ts-node or tsx for running [TypeScript](../../Frontend/typescript/SKILL.md) | Bun runs TS natively | `bun src/index.ts` directly |
+| ts-node or tsx for running [TypeScript](../../Frontend/common/typescript/SKILL.md) | Bun runs TS natively | `bun src/index.ts` directly |
 | Using Bull/BullMQ with Bun | Bun has its own queue pattern with `Bun.sleep` | Use Redis + Bun.serve or Elysia instead |
 | Nested node_modules | Bun uses flat structure via bun.lock | Always `bun install` — avoids Windows path length issues |
 
@@ -542,7 +542,7 @@ program.parse();
 
 ## Testing Strategies
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import { describe, expect, it, mock, spyOn, beforeAll, afterAll } from 'bun:test';
 
 // Mock global

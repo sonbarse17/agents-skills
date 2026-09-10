@@ -114,7 +114,7 @@ source:
     role: DATAHUB_ROLE
     include_views: true
     include_tables: true
-    [profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md):
+    [profiling](../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md):
       enabled: true
       profile_table_level_only: false
     capture_column_lineage:
@@ -307,7 +307,7 @@ Data catalog vs data quality tools: catalog is about discovery and governance. Q
 - Metadata ingestion: DataHub push API handles 1000+ events/second per instance.
 - Search latency: < 200ms for 10M+ indexed entities with Elasticsearch backend.
 - Lineage graph queries: < 1s for full lineage of highly-connected datasets.
-- [Profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md): enable on critical tables only (expensive on large tables).
+- [Profiling](../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md): enable on critical tables only (expensive on large tables).
 - Ingestion pipeline: schedule during off-peak hours to minimize load on source systems.
 - Catalog storage: multiply number of datasets by 10KB for metadata storage estimate.
 - Batch ingestion: 10K-50K entities/hour per ingestion worker.
@@ -346,7 +346,7 @@ datahub_ingestion:
       warehouse: "transforming"
       include_views: true
       include_tables: true
-      [profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md):
+      [profiling](../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md):
         enabled: true
         profile_table_level_only: false
         profile_pattern:

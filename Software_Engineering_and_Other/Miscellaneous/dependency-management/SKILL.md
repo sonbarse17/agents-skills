@@ -80,7 +80,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions.
 | Lock file maintenance | Manual | Built-in schedule |
 | Dashboard | Dependencies tab only | Dependency Dashboard PR |
 | Rate limiting | [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) API limits | Configurable concurrency |
-| [Monorepo](../../Frontend/monorepo/SKILL.md) support | Per-directory config | Automatic workspace detection |
+| [Monorepo](../../Frontend/build-tools/monorepo/SKILL.md) support | Per-directory config | Automatic workspace detection |
 | Self-hosted | Via [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) | Via Renovate self-hosted |
 
 ### Update Strategy Decision Tree
@@ -143,7 +143,7 @@ updates:
     ignore:
       - dependency-name: "react"
         versions: [">=19.0.0"]
-      - dependency-name: "[typescript](../../Frontend/typescript/SKILL.md)"
+      - dependency-name: "[typescript](../../Frontend/common/typescript/SKILL.md)"
         update-types: ["version-update:semver-major"]
 
   - package-ecosystem: "[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)"
@@ -388,8 +388,8 @@ Running updates daily creates noise. Running updates monthly misses critical sec
 - Require SBOM generation in release pipeline.
 - Validate dependency licenses in CI.
 
-### [Monorepo](../../Frontend/monorepo/SKILL.md) Strategy
-- One Dependabot config per [monorepo](../../Frontend/monorepo/SKILL.md) with per-directory updates.
+### [Monorepo](../../Frontend/build-tools/monorepo/SKILL.md) Strategy
+- One Dependabot config per [monorepo](../../Frontend/build-tools/monorepo/SKILL.md) with per-directory updates.
 - Renovate auto-detects workspaces (npm, pnpm, lerna).
 - Use Renovate packageRules with matchFileNames for subdirectories.
 - Group updates by workspace to reduce PR count.
@@ -448,7 +448,7 @@ npm (package-lock.json): npm standard, deterministic. yarn (yarn.lock): yarn spe
 
 ## Handoff
 After completing this skill:
-- Next skill: [monorepo](../../Frontend/monorepo/SKILL.md) -- workspace dependency graph, internal packages
+- Next skill: [monorepo](../../Frontend/build-tools/monorepo/SKILL.md) -- workspace dependency graph, internal packages
 - Pass context: Dependabot/Renovate config, update schedules, security policies
 
 ## Architecture Decision Trees
@@ -464,9 +464,9 @@ After completing this skill:
 | Risk profile | Low to moderate | High (accumulated drift) |
 | Maintenance burden | Low (bot handles PRs) | High (scheduled upgrade weeks) |
 
-### [Monorepo](../../Frontend/monorepo/SKILL.md) vs Polyrepo Dependency Strategy
+### [Monorepo](../../Frontend/build-tools/monorepo/SKILL.md) vs Polyrepo Dependency Strategy
 
-| Aspect | [Monorepo](../../Frontend/monorepo/SKILL.md) | Polyrepo |
+| Aspect | [Monorepo](../../Frontend/build-tools/monorepo/SKILL.md) | Polyrepo |
 |---|---|---|
 | Shared dep updates | Single lockfile, atomic | Per-repo, coordinated releases |
 | Version conflicts | Single version constraint | Multiple, drift possible |
@@ -475,7 +475,7 @@ After completing this skill:
 
 ## Implementation Patterns
 
-### YAML: Renovate Configuration for [Monorepo](../../Frontend/monorepo/SKILL.md)
+### YAML: Renovate Configuration for [Monorepo](../../Frontend/build-tools/monorepo/SKILL.md)
 
 ```yaml
 {
@@ -576,7 +576,7 @@ audit_dependencies() {
 - Enable **pnpm** or **Yarn PnP** (Plug'n'Play) for faster installs and less disk usage
 - Configure **dependency caching** in CI pipelines to skip re-downloading unchanged packages
 - Use **sub-imports / deep imports** to import only needed modules instead of entire libraries
-- Split **[monorepo](../../Frontend/monorepo/SKILL.md) packages** into granular modules so consumers only install what they use
+- Split **[monorepo](../../Frontend/build-tools/monorepo/SKILL.md) packages** into granular modules so consumers only install what they use
 
 ## Security Considerations
 

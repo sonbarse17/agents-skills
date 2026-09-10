@@ -34,7 +34,7 @@ depends_on:
 
 ```bash
 # 1. Create a new project (prompts for language, cloud, stack)
-pulumi new aws-[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+pulumi new aws-[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 
 # 2. Preview changes (no modifications made)
 pulumi preview
@@ -52,7 +52,7 @@ Pulumi supports multiple languages — choose based on your team's familiarity:
 
 | Language | Template prefix | Runtime needed |
 | --- | --- | --- |
-| [TypeScript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) | `aws-[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)` | Node.js |
+| [TypeScript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) | `aws-[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)` | Node.js |
 | [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) | `aws-[python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)` | [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) 3.8+ |
 | Go | `aws-go` | Go 1.21+ |
 | C# | `aws-csharp` | .NET 6+ |

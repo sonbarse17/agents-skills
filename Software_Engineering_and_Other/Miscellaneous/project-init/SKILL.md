@@ -40,7 +40,7 @@ The first 5 minutes of a project determine its structural quality for years. A w
 Exact user phrases: "create project structure", "scaffold project", "initialize project", "set up folder structure", "new project from scratch", "create new project", "start new project".
 
 ### Input Context
-- User has specified or you have detected: backend stack, frontend framework, [monorepo](../../Frontend/monorepo/SKILL.md) preference, project name
+- User has specified or you have detected: backend stack, frontend framework, [monorepo](../../Frontend/build-tools/monorepo/SKILL.md) preference, project name
 - Working directory is the parent of the intended project
 - If user says "scaffold" without specifying stack, ask: "Which backend stack? (nestjs, golang, rust, fastapi, django, spring, none)"
 
@@ -90,15 +90,15 @@ User says "scaffold project":
 ### Template Selection
 ```
 Backend + Frontend combo:
-├── Both specified → [Monorepo](../../Frontend/monorepo/SKILL.md) structure with /packages or /apps
+├── Both specified → [Monorepo](../../Frontend/build-tools/monorepo/SKILL.md) structure with /packages or /apps
 ├── Backend only → Single backend structure
 ├── Frontend only → Single frontend structure
 └── None → Generic project (flat, minimal)
 
-[Monorepo](../../Frontend/monorepo/SKILL.md) preference:
-├── User specified [monorepo](../../Frontend/monorepo/SKILL.md) → /packages/app (frontend), /packages/api (backend), /packages/shared
+[Monorepo](../../Frontend/build-tools/monorepo/SKILL.md) preference:
+├── User specified [monorepo](../../Frontend/build-tools/monorepo/SKILL.md) → /packages/app (frontend), /packages/api (backend), /packages/shared
 ├── User specified polyrepo → Separate directories, separate scaffolds
-└── Not specified → Ask: "[Monorepo](../../Frontend/monorepo/SKILL.md) or separate repos?"
+└── Not specified → Ask: "[Monorepo](../../Frontend/build-tools/monorepo/SKILL.md) or separate repos?"
 ```
 
 ## Workflow
@@ -151,7 +151,7 @@ Empty placeholder files with .gitkeep:
 
 **Angular**: `src/app/features/ src/app/shared/ src/app/core/ src/assets/`
 
-### [Monorepo](../../Frontend/monorepo/SKILL.md) Template
+### [Monorepo](../../Frontend/build-tools/monorepo/SKILL.md) Template
 ```
 packages/
   app/          # Frontend (React, Vue, etc.)
@@ -171,7 +171,7 @@ docs/
 ## Stack
 - Backend: {backend_stack}
 - Frontend: {frontend_stack}
-- [Monorepo](../../Frontend/monorepo/SKILL.md): {yes/no}
+- [Monorepo](../../Frontend/build-tools/monorepo/SKILL.md): {yes/no}
 
 ## Commands
 - Test: {inferred_test_command}
@@ -201,7 +201,7 @@ docs/
 ## Production Considerations
 
 ### Repository Structure Best Practices
-- **[Monorepo](../../Frontend/monorepo/SKILL.md)**: Use when sharing types, utils, or configs across packages. Prefer pnpm workspaces, turborepo, or nx for tooling.
+- **[Monorepo](../../Frontend/build-tools/monorepo/SKILL.md)**: Use when sharing types, utils, or configs across packages. Prefer pnpm workspaces, turborepo, or nx for tooling.
 - **Polyrepo**: Use when teams are independent, deployment is independent, or security boundaries require strict separation.
 - **Naming conventions**: kebab-case for directories and files (language-standard for most ecosystems). PascalCase for components and classes. camelCase for functions and variables.
 - **Depth limitation**: Max 4 levels deep from root. Deeply nested structures create import path confusion and refactoring friction.
@@ -255,7 +255,7 @@ What kind of project?
 │   ├── Flutter: Dart, single codebase
 │   └── Kotlin Multiplatform: Shared business logic
 ├── Library / Package
-│   ├── npm package: [TypeScript](../../Frontend/typescript/SKILL.md), tsup/bundling, changesets
+│   ├── npm package: [TypeScript](../../Frontend/common/typescript/SKILL.md), tsup/bundling, changesets
 │   └── [Python](../../Languages/python/SKILL.md) package: uv/pip, pyproject.toml, hatchling
 └── Static Site
     ├── Astro: content-focused, island architecture
@@ -264,13 +264,13 @@ What kind of project?
 
 ### Modern Stack Templates
 
-**Next.js 15 (App Router + [TypeScript](../../Frontend/typescript/SKILL.md)):**
+**Next.js 15 (App Router + [TypeScript](../../Frontend/common/typescript/SKILL.md)):**
 ```bash
-npx create-next-app@latest my-app --[typescript](../../Frontend/typescript/SKILL.md) --tailwind --eslint \
+npx create-next-app@latest my-app --[typescript](../../Frontend/common/typescript/SKILL.md) --tailwind --eslint \
   --app --src-dir --import-alias "@/*" --use-pnpm
 ```
 
-**Vite + React + [TypeScript](../../Frontend/typescript/SKILL.md):**
+**Vite + React + [TypeScript](../../Frontend/common/typescript/SKILL.md):**
 ```bash
 npm create vite@latest my-app -- --template react-ts
 cd my-app
@@ -278,12 +278,12 @@ npm install @tanstack/react-query zustand react-router-dom
 npm install -D vitest @testing-library/react msw
 ```
 
-**Fastify + [TypeScript](../../Frontend/typescript/SKILL.md) backend:**
+**Fastify + [TypeScript](../../Frontend/common/typescript/SKILL.md) backend:**
 ```bash
 mkdir my-api && cd my-api
 pnpm init
 pnpm add fastify @fastify/cors @fastify/env zod pino
-pnpm add -D [typescript](../../Frontend/typescript/SKILL.md) @types/node tsx
+pnpm add -D [typescript](../../Frontend/common/typescript/SKILL.md) @types/node tsx
 # Create tsconfig.json, src/server.ts
 ```
 
@@ -308,7 +308,7 @@ uv add -d pytest httpx
 ```bash
 mkdir my-lib && cd my-lib
 pnpm init
-pnpm add -D [typescript](../../Frontend/typescript/SKILL.md) @types/node tsup vitest
+pnpm add -D [typescript](../../Frontend/common/typescript/SKILL.md) @types/node tsup vitest
 # Create src/index.ts with exports
 # Create tsconfig.json with declaration: true
 ```
@@ -418,7 +418,7 @@ jobs:
 
 | Language | Linter | Formatter | Test | Build |
 |----------|--------|-----------|------|-------|
-| [TypeScript](../../Frontend/typescript/SKILL.md)/JS | `eslint.config.js` | `.prettierrc` | `vitest.config.ts` | `tsconfig.json` |
+| [TypeScript](../../Frontend/common/typescript/SKILL.md)/JS | `eslint.config.js` | `.prettierrc` | `vitest.config.ts` | `tsconfig.json` |
 | [Python](../../Languages/python/SKILL.md) | `pyproject.toml` (ruff) | `pyproject.toml` (ruff) | `pyproject.toml` (pytest) | `pyproject.toml` |
 | Go | `.golangci.yml` | `gofumpt` | built-in `go test` | `go.mod` |
 | Rust | `clippy.toml` | `rustfmt.toml` | built-in `cargo test` | `Cargo.toml` |
@@ -461,7 +461,7 @@ echo "✓ Environment check complete"
 | Anti-Pattern | Why It Fails | Better Approach |
 |---|---|---|
 | Scaffold then configure | Generates default configs that don't match team practices | Use opinionated templates with pre-configured tools |
-| Ignoring [monorepo](../../Frontend/monorepo/SKILL.md) costs | Hit tooling limits ([TypeScript](../../Frontend/typescript/SKILL.md) project ref, ESLint scope) | Plan from day 1 if project will grow beyond 10 packages |
+| Ignoring [monorepo](../../Frontend/build-tools/monorepo/SKILL.md) costs | Hit tooling limits ([TypeScript](../../Frontend/common/typescript/SKILL.md) project ref, ESLint scope) | Plan from day 1 if project will grow beyond 10 packages |
 | No `.gitignore` upfront | Committed node_modules, .env, secrets | Generate with project init. Block with pre-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) hook. |
 | Hardcoded ports/URLs | Dev/prod conflicts, CI fails locally | Use env vars with defaults in config module |
 | No [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) compose for deps | Devs install Postgres/Redis differently, env drift | [docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml with all service dependencies |
@@ -474,11 +474,11 @@ echo "✓ Environment check complete"
 ```
 Project Initialization Strategy
 ├── Project type?
-│   ├── Web app → Vite + React/Next.js + [TypeScript](../../Frontend/typescript/SKILL.md)
-│   ├── API service → Fastify/Express + [TypeScript](../../Frontend/typescript/SKILL.md) + OpenAPI
-│   ├── CLI tool → Commander/oclif + [TypeScript](../../Frontend/typescript/SKILL.md)
-│   └── Library → tsup + [TypeScript](../../Frontend/typescript/SKILL.md) + Vitest
-├── [Monorepo](../../Frontend/monorepo/SKILL.md) needed?
+│   ├── Web app → Vite + React/Next.js + [TypeScript](../../Frontend/common/typescript/SKILL.md)
+│   ├── API service → Fastify/Express + [TypeScript](../../Frontend/common/typescript/SKILL.md) + OpenAPI
+│   ├── CLI tool → Commander/oclif + [TypeScript](../../Frontend/common/typescript/SKILL.md)
+│   └── Library → tsup + [TypeScript](../../Frontend/common/typescript/SKILL.md) + Vitest
+├── [Monorepo](../../Frontend/build-tools/monorepo/SKILL.md) needed?
 │   ├── Yes → Turborepo / Nx / pnpm workspaces
 │   ├── Single package → Simple single-package setup
 │   └── [Microservices](../../Patterns/microservices/SKILL.md) → Nx with buildable libraries
@@ -492,7 +492,7 @@ Project Initialization Strategy
     └── Edge → Cloudflare Workers / Deno Deploy
 ```
 
-**Decision criteria**: Assess team size, deployment target, [monorepo](../../Frontend/monorepo/SKILL.md) complexity, and testing maturity.
+**Decision criteria**: Assess team size, deployment target, [monorepo](../../Frontend/build-tools/monorepo/SKILL.md) complexity, and testing maturity.
 
 ## Implementation Patterns
 
@@ -517,11 +517,11 @@ case $FRAMEWORK in
     npm create vite@latest . -- --template react-ts
     ;;
   next)
-    npx create-next-app@latest . --[typescript](../../Frontend/typescript/SKILL.md) --tailwind
+    npx create-next-app@latest . --[typescript](../../Frontend/common/typescript/SKILL.md) --tailwind
     ;;
   express)
     npm install express cors helmet
-    npm install -D [typescript](../../Frontend/typescript/SKILL.md) @types/node vitest
+    npm install -D [typescript](../../Frontend/common/typescript/SKILL.md) @types/node vitest
     ;;
 esac
 
@@ -536,7 +536,7 @@ EOF
 git add . && git [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) -m "chore: initial scaffold"
 ```
 
-### [TypeScript](../../Frontend/typescript/SKILL.md) Config Template
+### [TypeScript](../../Frontend/common/typescript/SKILL.md) Config Template
 ```json
 {
   "compilerOptions": {
@@ -586,7 +586,7 @@ git add . && git [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) -m
 - **Tree-shaking**: Configure ESM with `sideEffects: false` in `package.json` for optimal bundle.
 - **Build caching**: Set up Turborepo/Nx caching for faster local and CI builds.
 - **Dev server**: Use Vite (esbuild-based) for sub-second HMR; avoid webpack for new projects.
-- **[TypeScript](../../Frontend/typescript/SKILL.md) project references**: Use project references for [monorepo](../../Frontend/monorepo/SKILL.md) to enable incremental builds.
+- **[TypeScript](../../Frontend/common/typescript/SKILL.md) project references**: Use project references for [monorepo](../../Frontend/build-tools/monorepo/SKILL.md) to enable incremental builds.
 
 ## Security Considerations
 

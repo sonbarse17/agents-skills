@@ -162,7 +162,7 @@ For local stdio-based servers, the attack surface is the process boundary itself
 MCP's Streamable HTTP transport supports OAuth 2.1 for client authentication. Configure
 your server to validate bearer tokens on every request.
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // src/auth.ts - OAuth 2.1 token validation middleware for an MCP server
 import { createServer } from "@modelcontextprotocol/sdk/server/index.js";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
@@ -201,7 +201,7 @@ app.use("/mcp", validateBearerToken);
 
 For simpler deployments, use hashed API keys stored server-side:
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // src/apikeys.ts
 import { createHash, timingSafeEqual } from "crypto";
 
@@ -280,7 +280,7 @@ dangerous_tools:
 
 ### 5.2 Per-User Tool Access Enforcement
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // src/toolAuth.ts
 import { readFileSync } from "fs";
 import { parse } from "yaml";
@@ -336,7 +336,7 @@ export function authorizedToolHandler(server: any) {
 
 Define strict schemas for every tool's input. Reject anything that does not conform.
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // src/validation.ts
 import Ajv from "ajv";
 import addFormats from "ajv-formats";
@@ -391,7 +391,7 @@ export function validateToolInput(toolName: string, params: unknown): { valid: b
 Never pass raw agent-supplied strings into queries. Use parameterized queries and
 statement-level restrictions.
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // src/safeSql.ts
 const FORBIDDEN_PATTERNS = [
   /;\s*(DROP|ALTER|TRUNCATE|DELETE|UPDATE|INSERT|CREATE|GRANT|REVOKE)/i,
@@ -430,7 +430,7 @@ export async function handleDatabaseQuery(params: { query: string; parameters?: 
 
 ### 6.3 Filesystem Path Injection Prevention
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // src/safePath.ts
 import path from "path";
 
@@ -512,7 +512,7 @@ ALTER ROLE mcp_readonly SET work_mem = '64MB';
 
 Prevent MCP tools from reaching internal services (SSRF mitigation):
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // src/networkPolicy.ts
 import { URL } from "url";
 import net from "net";
@@ -559,7 +559,7 @@ export function validateOutboundUrl(urlString: string): { allowed: boolean; reas
 
 ### 8.1 Per-Client Rate Limits
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // src/rateLimit.ts
 
 interface RateBucket {
@@ -605,7 +605,7 @@ export function checkRateLimit(
 
 Limit how many LLM tokens a single session can consume through tool calls:
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // src/tokenBudget.ts
 
 interface SessionBudget {
@@ -657,7 +657,7 @@ export function consumeTokens(
 
 Log every tool call with full context. Never log raw secrets or credentials.
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // src/auditLog.ts
 import { randomUUID } from "crypto";
 
@@ -705,7 +705,7 @@ export function logToolInvocation(entry: Omit<AuditEntry, "id" | "timestamp">): 
 
 ### 9.2 [OpenTelemetry](../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) Integration
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // src/otelTracing.ts
 import { trace, SpanStatusCode, context, propagation } from "@[opentelemetry](../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)/api";
 import { NodeTracerProvider } from "@[opentelemetry](../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)/sdk-trace-node";
@@ -909,7 +909,7 @@ spec:
 
 ### 11.1 Authorization Boundary Tests
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // tests/toolAuth.test.ts
 import { describe, it, expect } from "vitest";
 import { isToolAllowed } from "../src/toolAuth";
@@ -940,7 +940,7 @@ describe("Tool Authorization", () => {
 
 ### 11.2 Input Validation Fuzz Tests
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // tests/validation.test.ts
 import { describe, it, expect } from "vitest";
 import { validateToolInput } from "../src/validation";
@@ -985,7 +985,7 @@ describe("Input Validation", () => {
 
 ### 11.3 SSRF Prevention Tests
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // tests/networkPolicy.test.ts
 import { describe, it, expect } from "vitest";
 import { validateOutboundUrl } from "../src/networkPolicy";
@@ -1015,7 +1015,7 @@ describe("Outbound URL Validation", () => {
 
 ### 11.4 Rate Limit Tests
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // tests/rateLimit.test.ts
 import { describe, it, expect } from "vitest";
 import { checkRateLimit } from "../src/rateLimit";

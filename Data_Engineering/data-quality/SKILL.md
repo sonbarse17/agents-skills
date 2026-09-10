@@ -44,7 +44,7 @@ Elementary), data SLAs with escalation paths, and data contracts.
 
 ### Trigger
 Exact user phrases: "data quality", "data validation",
-"data [profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md)", "Great Expectations", "dbt tests",
+"data [profiling](../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md)", "Great Expectations", "dbt tests",
 "data [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)", "data contract", "schema validation",
 "data quality check", "data testing", "data [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)",
 "quality dimensions", "data freshness", "data completeness",
@@ -79,7 +79,7 @@ Compress output — why use many token when few do trick.
 ### Completion Criteria
 - [ ] Quality dimensions defined with measurement approach
 - [ ] Automated validation suite (Great Expectations + dbt)
-- [ ] Data [profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) established for baseline expectations
+- [ ] Data [profiling](../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md) established for baseline expectations
 - [ ] Data [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) with [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 - [ ] Data contracts between producers and consumers
 - [ ] Quality SLAs documented with escalation paths
@@ -129,7 +129,7 @@ Expectation suites per critical table.
 Types: not_null, unique, between (range),
 match_regex (format), pair_equal (cross-column).
 
-[Profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md): auto-generate from sample data.
+[Profiling](../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md): auto-generate from sample data.
 Analyzes null rate, min/max, distinct values,
 value frequency, type inference.
 Review and adjust before production deployment.

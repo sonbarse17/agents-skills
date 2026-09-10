@@ -449,7 +449,7 @@ Practice 8: Implement cart expiry and cleanup. Abandoned carts consume storage. 
 
 ### Pattern: Cart Merge on Login (Guest to Registered)
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 async function mergeCartsOnLogin(guestToken: string, userId: string): Promise<Cart> {
   const guestCart = await Cart.findOne({ sessionToken: guestToken, status: 'active' });
   const userCart = await Cart.findOne({ userId, status: 'active' });
@@ -483,7 +483,7 @@ async function mergeCartsOnLogin(guestToken: string, userId: string): Promise<Ca
 
 ### Pattern: Discount Engine with Rule Chain
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 interface DiscountRule {
   type: 'percentage' | 'fixed' | 'bogo' | 'tiered' | 'bundle';
   priority: number;

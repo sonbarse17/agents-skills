@@ -40,7 +40,7 @@ that concentrates all of a client's traffic onto one backend pod
 because a plain L4 load balancer has no visibility into the
 multiplexed streams inside it. This skill covers diagnosing these
 gRPC-specific issues directly — distinct from
-[ingress-nginx-configuration](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[ingress-nginx-configuration](../../Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md)-style
+[ingress-nginx-configuration](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[ingress-nginx-configuration](../../../containers-orchestration/kubernetes/networking/ingress-nginx-configuration/SKILL.md)/SKILL.md)-style
 HTTP/1.1 ingress troubleshooting, and complementary to the
 mesh-level traffic policies covered in
 [service-mesh-istio](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[service-mesh-istio](../../../Software_Engineering_and_Other/Frontend/[service-mesh](../service-mesh/SKILL.md)-istio/SKILL.md)/SKILL.md)

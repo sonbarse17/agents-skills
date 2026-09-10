@@ -284,7 +284,7 @@ impl<F: FieldExt> Chip<F> for RangeCheckChip {
 ## ZK Rollup Architecture
 
 ### Rollup Components
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 interface ZKRollup {
   // Sequencer: orders transactions, creates batches
   sequencer: {
@@ -337,7 +337,7 @@ interface ZKRollup {
 ## Recursive Proofs
 
 ### Recursion Patterns
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Recursive proof aggregation
 // 1. Prove each batch individually → individual proofs
 // 2. Prover aggregates N proofs into 1 recursive proof

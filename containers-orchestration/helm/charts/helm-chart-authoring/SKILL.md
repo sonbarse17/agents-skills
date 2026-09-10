@@ -65,7 +65,7 @@ to hand to another team or publish publicly.
   schema mismatches that client-side `helm template` cannot).
 - `helm plugin install https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/helm-unittest/helm-unittest`
   for unit-testing templates without a live cluster.
-- `chart-testing` (`ct`) ≥ 3.10 if the chart lives in a [monorepo](../../../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md) of
+- `chart-testing` (`ct`) ≥ 3.10 if the chart lives in a [monorepo](../../../../Software_Engineering_and_Other/Frontend/build-tools/monorepo/SKILL.md) of
   charts and needs lint/install testing across a version bump.
 - Access to a target registry: OCI-compliant (GHCR, ECR, ACR, Artifact
   Registry, Harbor ≥ 2.0) or a classic HTTP chart repo ([GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Pages +

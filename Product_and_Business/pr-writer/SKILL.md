@@ -89,7 +89,7 @@ feat(api): add user avatar upload endpoint
 fix(auth): handle expired token refresh race condition
 refactor(state): extract state management into dedicated module
 docs(readme): update API documentation links
-chore(deps): upgrade [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) to v5.4
+chore(deps): upgrade [TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) to v5.4
 ```
 
 ## Workflow

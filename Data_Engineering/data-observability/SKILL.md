@@ -38,7 +38,7 @@ Design comprehensive data [observability](../../observability-monitoring-logging
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "data [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)", "data quality [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)", "data [profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md)", "data health", "freshness check", "row count anomaly", "schema drift", "data [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)", "data lineage", "data [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)", "[observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) platform".
+Exact user phrases: "data [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)", "data quality [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)", "data [profiling](../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md)", "data health", "freshness check", "row count anomaly", "schema drift", "data [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)", "data lineage", "data [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)", "[observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) platform".
 
 ### Input Context
 - Data stack (warehouse, lake, pipelines, BI tools)

@@ -20,7 +20,7 @@ Focus on fetching data efficiently, caching, and edge computing for ultra-fast s
 3. **Edge Rendering**: Deploy Hydrogen on edge networks (like Oxygen, Cloudflare Workers) to minimize TTFB.
 
 ## Code Snippet: Querying Products
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import { CacheLong, gql } from '@shopify/hydrogen';
 import type { LoaderArgs } from '@shopify/remix-oxygen';
 

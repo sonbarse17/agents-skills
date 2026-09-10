@@ -60,7 +60,7 @@ Identify which folders should have an `AGENTS.md`:
 ### Generate if they exist:
 
 - `tests/`, `src/`, `lib/`, `app/`, `api/`
-- [Monorepo](../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md) packages: `packages/*/`, `apps/*/`, `services/*/`
+- [Monorepo](../../Software_Engineering_and_Other/Frontend/build-tools/monorepo/SKILL.md) packages: `packages/*/`, `apps/*/`, `services/*/`
 - Any folder with its own build manifest:
   - `package.json`
   - `pyproject.toml`
@@ -207,7 +207,7 @@ If it exists, **stop**. Report and move to the next folder.
 ### Step 2: Scan the folder
 
 Identify:
-- Primary language ([Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md), [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md), Rust, Go, Java, C#)
+- Primary language ([Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md), [TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md), Rust, Go, Java, C#)
 - Framework (FastAPI, Next.js, Actix, Spring Boot)
 - Build tool (npm, cargo, poetry, maven, gradle)
 - Test runner (pytest, vitest, cargo test, JUnit)
@@ -368,7 +368,7 @@ This ensures Claude Code (and similar tools that look for `CLAUDE.md`) are redir
 
 | Principle | Good | Bad |
 |-----------|------|-----|
-| **Specific** | "React 18 with [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md), Vite, Tailwind CSS" | "React project" |
+| **Specific** | "React 18 with [TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md), Vite, Tailwind CSS" | "React project" |
 | **Executable** | `pytest tests/ -v --tb=short` | "run the tests" |
 | **Grounded** | Show a real code snippet from the project | Describe the style in abstract terms |
 | **Real paths** | `src/api/routes/` | `path/to/your/code/` |

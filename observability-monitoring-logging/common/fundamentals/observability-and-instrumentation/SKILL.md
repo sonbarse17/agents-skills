@@ -32,7 +32,7 @@ Code you can't observe is code you can't operate. [Observability](../observabili
 
 **NOT for:**
 - Diagnosing a failure happening right now — use the `[debugging-and-error-recovery](../../../../Software_Engineering_and_Other/Patterns/debugging-and-error-recovery/SKILL.md)` skill ([observability](../observability/SKILL.md) is what makes that skill fast next time)
-- [Profiling](../../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) and optimizing measured slowness — use the `[performance-optimization](../../../../Software_Engineering_and_Other/Backend/performance-optimization/SKILL.md)` skill
+- [Profiling](../../../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md) and optimizing measured slowness — use the `[performance-optimization](../../../../Software_Engineering_and_Other/Backend/performance-optimization/SKILL.md)` skill
 - Launch-day [monitoring](../../monitoring-strategy/monitoring/SKILL.md) checklists and rollback triggers — see the `[shipping-and-launch](../../../../Product_and_Business/shipping-and-launch/SKILL.md)` skill; this skill covers the instrumentation that feeds them
 
 ## Process
@@ -66,7 +66,7 @@ Rule of thumb: metrics tell you **that** something is wrong, traces tell you **w
 
 Log events, not prose. Every log line is a JSON object with a stable event name and machine-readable fields:
 
-```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // BAD: string interpolation — unqueryable, inconsistent
 logger.info(`Payment ${id} failed for user ${userId} after ${n} retries`);
 
@@ -91,7 +91,7 @@ logger.warn({
 
 **Correlation IDs are mandatory.** Generate (or accept) a request ID at the system boundary and attach it to every log line, span, and outbound call. Without it, you cannot reconstruct a single request from interleaved logs:
 
-```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Express: child logger per request, ID propagated downstream
 app.use((req, res, next) => {
   req.id = req.headers['x-request-id'] ?? crypto.randomUUID();
@@ -109,7 +109,7 @@ For request-driven services, instrument **RED** on every endpoint and every exte
 
 As with tracing, the vendor-neutral path is the [OpenTelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md) metrics API (same SDK and context as step 5). The example below uses Prometheus' `prom-client` — one common backend choice, not the only one; the RED/USE and cardinality rules are identical either way.
 
-```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { Histogram } from 'prom-client';
 
 const httpDuration = new Histogram({
@@ -133,7 +133,7 @@ Track averages never, percentiles always: an average hides the 1% of users havin
 
 Use [OpenTelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md) — it's the vendor-neutral standard, and auto-instrumentation covers HTTP, gRPC, and common DB clients with near-zero code:
 
-```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // tracing.ts — must be imported before anything else
 import { NodeSDK } from '@[opentelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md)/sdk-node';
 import { getNodeAutoInstrumentations } from '@[opentelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md)/auto-instrumentations-node';

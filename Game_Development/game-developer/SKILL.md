@@ -51,7 +51,7 @@ Load detailed guidance based on context:
 | [Unity](../unity/SKILL.md) Development | `../../../Global_References/[unity](../unity/SKILL.md)-patterns.md` | [Unity](../unity/SKILL.md) C#, MonoBehaviour, Scriptable Objects |
 | [Unreal](../unreal/SKILL.md) Development | `../../../Global_References/[unreal](../unreal/SKILL.md)-cpp.md` | [Unreal](../unreal/SKILL.md) C++, Blueprints, Actor components |
 | ECS & Patterns | `../../../Global_References/ecs-patterns.md` | Entity Component System, game patterns |
-| Performance | `../../../Global_References/game-developer_performance-optimization.md` | FPS optimization, [profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md), memory |
+| Performance | `../../../Global_References/game-developer_performance-optimization.md` | FPS optimization, [profiling](../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md), memory |
 | Networking | `../../../Global_References/multiplayer-networking.md` | Multiplayer, client-server, lag compensation |
 
 ## Constraints
@@ -68,7 +68,7 @@ Load detailed guidance based on context:
 
 ### MUST NOT DO
 - Instantiate/Destroy in tight loops or Update()
-- Skip [profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) and performance testing
+- Skip [profiling](../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md) and performance testing
 - Use string comparisons for tags (use CompareTag)
 - Allocate memory in Update/FixedUpdate loops
 - Ignore platform-specific constraints (mobile, console)

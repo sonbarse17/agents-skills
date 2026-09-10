@@ -39,7 +39,7 @@ change.
 
 ## When to use
 
-- Standing up CI/CD for a new service or [monorepo](../../../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md) from scratch.
+- Standing up CI/CD for a new service or [monorepo](../../../../Software_Engineering_and_Other/Frontend/build-tools/monorepo/SKILL.md) from scratch.
 - A pipeline is slow (multi-tens-of-minutes) and engineers are asking to
   skip it or it's blocking delivery cadence.
 - Adding quality gates: required checks, branch protection, test coverage

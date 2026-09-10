@@ -299,7 +299,7 @@ patch/drift-detection job independent of the deploy pipeline.
 # .[github](../../../github-actions/other/github/SKILL.md)/workflows/ci-cd.yml (build/bake/deploy jobs per the base VM CI/CD skill)
 jobs:
   sast: { /* per [sast-integration](../../../../Security/sast-integration/SKILL.md) */ }
-  sca: { /* per [software-composition-analysis-sca](../../../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md) */ }
+  sca: { /* per [software-composition-analysis-sca](../../../../Security/software-composition-analysis-sca/SKILL.md) */ }
   bake-and-scan-image:
     needs: [sast, sca]
     runs-on: ubuntu-latest

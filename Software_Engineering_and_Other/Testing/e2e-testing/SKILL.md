@@ -51,7 +51,7 @@ E2E testing strategy with framework selection, page object patterns, and CI pipe
 # Framework selection with rationale
 # Test structure and page object hierarchy
 ```
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Page object example
 // CI pipeline configuration
 ```
@@ -83,7 +83,7 @@ npm init playwright@latest
 Directory structure: `e2e/` with `pages/` (page objects), `fixtures/` (test data), `specs/` (test files), `utils/` (helpers, custom assertions). Global setup file for auth state (login once, reuse across tests).
 
 ### Step 3: Page Object Model
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 export class LoginPage {
   constructor(private page: Page) {}
   async goto() { await this.page.goto("/login"); }
@@ -120,7 +120,7 @@ Playwright: worker pool (default: CPU cores). Sharding in CI: `npx playwright te
 ```
 
 ### Step 7: Visual Assertions
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 await expect(page).toHaveScreenshot("homepage.png", {
   maxDiffPixels: 100,
   threshold: 0.2,
@@ -131,7 +131,7 @@ Store baselines in version control. Update baselines intentionally: `npx playwri
 ## E2E Test Examples
 
 ### Playwright — Complete Test Suite
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // e2e/specs/checkout.spec.ts
 import { test, expect } from "@playwright/test";
 import { LoginPage } from "../pages/LoginPage";
@@ -180,7 +180,7 @@ test.describe("Checkout Flow", () => {
 ```
 
 ### Page Object Pattern
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // e2e/pages/CheckoutPage.ts
 import { Page, Locator } from "@playwright/test";
 
@@ -222,7 +222,7 @@ export class CheckoutPage {
 ```
 
 ### API Mocking in E2E Tests
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 test("should handle payment failure gracefully", async ({ page }) => {
   await page.route("**/api/payments", async (route) => {
     await route.fulfill({
@@ -241,7 +241,7 @@ test("should handle payment failure gracefully", async ({ page }) => {
 ```
 
 ### Playwright Global Setup for Auth
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // e2e/global-setup.ts
 import { FullConfig } from "@playwright/test";
 
@@ -346,7 +346,7 @@ E2E tests that cover too many steps in a single test are hard to debug when they
 
 ## E2E Test Data Strategy
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // e2e/fixtures/seed.ts
 import { APIRequestContext } from "@playwright/test";
 
@@ -376,7 +376,7 @@ export async function cleanupTestData(request: APIRequestContext, userId: string
 
 ## Mobile E2E Testing
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // playwright.config.ts — mobile project
 export default defineConfig({
   projects: [
@@ -495,7 +495,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/performance/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -511,7 +511,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### [Profiling](../../Frontend/profiling/SKILL.md) Methodology
+### [Profiling](../../Frontend/performance/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
@@ -559,7 +559,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 | Decision Point | Option A | Option B | Decision Criteria |
 |---|---|---|---|
 | Application type | Web SPA → Playwright/Cypress | Mobile → Detox/Appium | Platform, dev team language |
-| Language preference | JavaScript/[TypeScript](../../Frontend/typescript/SKILL.md) (common) | [Python](../../Languages/python/SKILL.md) (Playwright + pytest) | Team expertise, existing codebase |
+| Language preference | JavaScript/[TypeScript](../../Frontend/common/typescript/SKILL.md) (common) | [Python](../../Languages/python/SKILL.md) (Playwright + pytest) | Team expertise, existing codebase |
 | CI integration | Cloud service (BrowserStack/Sauce) | Self-hosted (Selenium Grid) | Budget, compliance, scale |
 | Reporting | Built-in (Playwright HTML) | Third-party (Allure/ReportPortal) | Team preference, existing toolchain |
 

@@ -128,7 +128,7 @@ with automatic retry and timeout handling.
 ```markdown
 ## Features
 
-- 🚀 **Typed requests and responses** — Full [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) generics for end-to-end type safety
+- 🚀 **Typed requests and responses** — Full [TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) generics for end-to-end type safety
 - 🔁 **Automatic retry** — Configurable retry policy with exponential backoff
 - ⏱ **Timeout handling** — Per-request and global timeouts with cancellation
 - 🔒 **Auth integration** — Bearer token, API key, OAuth2, and custom auth providers
@@ -159,7 +159,7 @@ pnpm add @myorg/api-client
 
 ## Quick Start
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { createClient } from '@myorg/api-client';
 
 const api = createClient({
@@ -265,7 +265,7 @@ pnpm build
 | `pnpm build` | Build the project |
 | `pnpm test` | Run tests |
 | `pnpm lint` | Lint source code |
-| `pnpm typecheck` | Run [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) checks |
+| `pnpm typecheck` | Run [TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) checks |
 | `pnpm format` | Format code with Prettier |
 
 ### Project Structure
@@ -276,7 +276,7 @@ src/
   auth/           # Authentication providers
   retry/          # Retry policy implementations
   plugins/        # Middleware system
-  types.ts        # [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) types
+  types.ts        # [TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) types
 test/
   unit/           # Unit tests
   integration/    # Integration tests
@@ -381,11 +381,11 @@ Type-safe library for doing Y.
 `npm install @myorg/libname`
 
 ## Usage
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 ```
 
 ## API
-<!-- Generated from [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) types -->
+<!-- Generated from [TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) types -->
 
 ## License
 MIT
@@ -429,8 +429,8 @@ class READMEGenerator:
                 pkg = json.load(f)
                 info["name"] = pkg.get("name", info["name"])
                 info["version"] = pkg.get("version", info["version"])
-                info["description"] = pkg.get("description", "[TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)/JavaScript project")
-                info["language"] = "JavaScript/[TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)"
+                info["description"] = pkg.get("description", "[TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)/JavaScript project")
+                info["language"] = "JavaScript/[TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)"
                 if pkg.get("bin"):
                     info["has_cli"] = True
         except (FileNotFoundError, json.JSONDecodeError):
@@ -487,7 +487,7 @@ class READMEGenerator:
             "```bash",
         ]
         lang = self.package_info["language"]
-        if lang == "JavaScript/[TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)":
+        if lang == "JavaScript/[TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)":
             lines.append("npm install")
             lines.append("npm run dev")
         elif lang == "Rust":
@@ -529,7 +529,7 @@ class READMEGenerator:
             "git clone https://[github](../../ci-cd/github-actions/other/github/SKILL.md).com/org/" + self.package_info['name'] + ".git",
             "cd " + self.package_info['name'],
         ])
-        if lang == "JavaScript/[TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)":
+        if lang == "JavaScript/[TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)":
             lines.append("npm install")
             lines.append("npm test")
         elif lang == "Rust":
@@ -650,7 +650,7 @@ What format fits the content?
 │   └── Most projects — library, tool, app
 │
 ├── Detailed (with subsections)
-│   └── Large project, [monorepo](../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md), framework
+│   └── Large project, [monorepo](../../Software_Engineering_and_Other/Frontend/build-tools/monorepo/SKILL.md), framework
 │
 └── Multi-file docs
     └── Very large project — separate docs/ directory

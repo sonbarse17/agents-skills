@@ -37,7 +37,7 @@ Detailed pattern documentation lives in `../../../Global_References/nodejs-backe
 
 ## Best Practices
 
-1. **Use [TypeScript](../../Frontend/typescript/SKILL.md)**: Type safety prevents runtime errors
+1. **Use [TypeScript](../../Frontend/common/typescript/SKILL.md)**: Type safety prevents runtime errors
 2. **Implement proper error handling**: Use custom error classes
 3. **Validate input**: Use libraries like Zod or Joi
 4. **Use environment variables**: Never hardcode secrets

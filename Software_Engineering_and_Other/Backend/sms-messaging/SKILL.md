@@ -69,7 +69,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 
 1. **Provider Abstraction**: Unified interface over multiple providers with failover.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 interface MessageProvider {
   name: string;
   send(params: SendParams): Promise<SendResult>;
@@ -118,7 +118,7 @@ class MessagingService {
 
 2. **Twilio Integration**: SMS and Voice with webhook status callbacks.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import twilio from 'twilio';
 
 const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
@@ -162,7 +162,7 @@ app.post('/webhooks/sms/twilio', (req, res) => {
 
 3. **2FA OTP Delivery**: Generate, send, verify, expire OTP codes.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 class OTPService {
   private readonly OTP_LENGTH = 6;
   private readonly OTP_TTL = 300; // 5 minutes
@@ -243,7 +243,7 @@ class OTPService {
 
 4. **Message Templates**: Pre-approved, localized message templates.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 interface MessageTemplate {
   id: string;
   name: string;
@@ -272,7 +272,7 @@ function renderTemplate(template: MessageTemplate, variables: Record<string, str
 
 5. **Rate Limiting & Throttling**: Per-recipient, per-number, global limits.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 class SmsRateLimiter {
   private readonly redis: Redis;
 
@@ -327,7 +327,7 @@ class SmsRateLimiter {
 
 6. **Opt-In/Opt-Out Management**: TCPA-compliant consent tracking.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 interface ConsentRecord {
   id: string;
   userId: string;
@@ -380,7 +380,7 @@ class ConsentManager {
 
 7. **WhatsApp Business API**: Template-based messaging with opt-in.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 async function sendWhatsAppMessage(to: string, templateName: string, params: Record<string, string>): Promise<SendResult> {
   const response = await fetch(`https://graph.facebook.com/v18.0/${process.env.WHATSAPP_PHONE_NUMBER_ID}/messages`, {
     method: 'POST',
@@ -478,7 +478,7 @@ Message urgency and content type?
 
 ### Pattern: Multi-Provider Failover with Circuit Breaker
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 class ResilientMessagingService {
   private providers: MessageProvider[];
   private circuitState: Map<string, { failures: number; lastFailure: Date; open: boolean }> = new Map();
@@ -523,7 +523,7 @@ class ResilientMessagingService {
 
 ### Pattern: Delivery Webhook Aggregation
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Aggregates delivery receipts from multiple providers into normalized format
 class DeliveryAggregator {
   async handleWebhook(provider: string, payload: any): Promise<void> {

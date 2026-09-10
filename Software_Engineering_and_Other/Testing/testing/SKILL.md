@@ -246,7 +246,7 @@ void main() {
 ```
 
 ### React Native — Jest
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import { renderHook, act } from '@testing-library/react-hooks';
 import { useOrderStore } from './orderStore';
 
@@ -394,7 +394,7 @@ testWidgets('OrderCard tap triggers callback', (tester) async {
 ```
 
 ### React Native — Testing Library
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import { render, fireEvent } from '@testing-library/react-native';
 
 describe('OrderCard', () => {
@@ -510,7 +510,7 @@ fun createOrderFlow() {
 ## E2E Tests
 
 ### Detox (React Native)
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 describe('Order Flow', () => {
   beforeAll(async () => {
     await device.launchApp({ newInstance: true });

@@ -53,7 +53,7 @@ A Service Level Indicator is the raw measurement the SLO is built on, and the si
 
 Once the target is set, the error budget isn't a separate decision — it's just "100% minus the target," expressed as an allowance: a 99.9% target over 28 days allows roughly 40 minutes of budget to spend.
 
-That reframe matters because it turns the target from a purity goal into a resource: the budget can be spent on a risky deploy, an experiment, or planned maintenance, and spending all of it deliberately on things that matter is a legitimate outcome, not a failure. See `[error-budgets](../../../../Software_Engineering_and_Other/Frontend/error-budgets/SKILL.md)` for the ongoing mechanics of tracking spend and deciding what to spend it on.
+That reframe matters because it turns the target from a purity goal into a resource: the budget can be spent on a risky deploy, an experiment, or planned maintenance, and spending all of it deliberately on things that matter is a legitimate outcome, not a failure. See `[error-budgets](../error-budgets/SKILL.md)` for the ongoing mechanics of tracking spend and deciding what to spend it on.
 
 **Done when:** the numeric error budget for the current window is stated in concrete units (minutes, request count), not left as an abstract percentage.
 

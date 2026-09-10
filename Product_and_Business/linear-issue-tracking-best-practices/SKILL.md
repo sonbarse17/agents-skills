@@ -95,9 +95,9 @@ and focuses specifically on what's different about Linear's model.
   token for broader integrations. Store as `${LINEAR_API_KEY}`; never
   hardcode it. The API is **GraphQL-only** — there is no REST
   equivalent — at `https://api.linear.app/graphql`.
-- Official SDKs (`@linear/sdk` for [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)/JavaScript, or direct
+- Official SDKs (`@linear/sdk` for [TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)/JavaScript, or direct
   GraphQL calls from any language) if building automation — the
-  [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) SDK is the most actively maintained and closely tracks API
+  [TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) SDK is the most actively maintained and closely tracks API
   changes.
 - Permission scoping: API keys inherit the creating user's permissions;
   for team-wide automation (a bot creating issues on behalf of an
@@ -216,10 +216,10 @@ and focuses specifically on what's different about Linear's model.
    }
    ```
 
-7. **Use the [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) SDK for anything beyond a one-off script**, since
+7. **Use the [TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) SDK for anything beyond a one-off script**, since
    it handles pagination, retries, and type safety the raw GraphQL calls
    don't:
-   ```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+   ```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
    import { LinearClient } from "@linear/sdk";
 
    const linear = new LinearClient({ apiKey: process.env.LINEAR_API_KEY });

@@ -357,5 +357,5 @@ firewall-cmd --list-all
 - `[ssh-configuration](../ssh-configuration/SKILL.md)` -- Secure remote access to Linux servers
 - `[user-management](../user-management/SKILL.md)` -- Create and manage users, groups, and sudo
 - `[systemd-services](../systemd-services/SKILL.md)` -- Write and manage systemd unit files
-- `[performance-tuning](../../Frontend/performance-tuning/SKILL.md)` -- Kernel and application performance optimization
+- `[performance-tuning](../../Frontend/performance/performance-tuning/SKILL.md)` -- Kernel and application performance optimization
 - `[backup-recovery](../../../cloud/common/migration/backup-recovery/SKILL.md)` -- Protect server data with automated backups

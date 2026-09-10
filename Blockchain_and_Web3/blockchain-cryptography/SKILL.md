@@ -479,9 +479,9 @@ contract MerkleVerifier {
 }
 ```
 
-### EIP-712 Typed Data Signing ([TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) + Solidity)
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
-// Off-chain signing ([TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) — viem + ethers)
+### EIP-712 Typed Data Signing ([TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) + Solidity)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
+// Off-chain signing ([TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) — viem + ethers)
 const domain = {
   name: "MyProtocol",
   version: "1",
@@ -563,8 +563,8 @@ fn hash_to_curve(message: &[u8], dst: &[u8]) -> Result<Vec<u8>, String> {
 // Proof of possession DST: "BLS_POP_BLS12381G2_XMD:SHA-256_SSWU_RO_POP_"
 ```
 
-### BIP-32 HD Wallet Derivation ([TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md))
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+### BIP-32 HD Wallet Derivation ([TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md))
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { secp256k1 } from '@noble/curves/secp256k1';
 import { hmac } from '@noble/hashes/hmac';
 import { sha512 } from '@noble/hashes/sha512';

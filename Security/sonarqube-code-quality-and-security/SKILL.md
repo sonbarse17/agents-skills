@@ -230,10 +230,10 @@ selection, triage workflow, suppression policy — see
   program: its rule engine is broad but shallower on deep
   interprocedural taint-tracking for compiled languages than a
   dedicated engine like CodeQL; pair it with
-  [fortify-static-analysis](../[fortify-static-analysis](../../../Software_Engineering_and_Other/Frontend/fortify-static-analysis/SKILL.md)/SKILL.md) or
+  [fortify-static-analysis](../fortify-static-analysis/SKILL.md)/SKILL.md) or
   another deep-taint SAST tool for high-assurance compiled-language
   codebases, and with
-  [owasp-zap-dast-configuration](../[owasp-zap-dast-configuration](../../../Software_Engineering_and_Other/Frontend/owasp-zap-dast-configuration/SKILL.md)/SKILL.md)
+  [owasp-zap-dast-configuration](../owasp-zap-dast-configuration/SKILL.md)/SKILL.md)
   for runtime-only issues neither can see.
 - Version-pin the scanner action/CLI and coordinate SonarQube server
   upgrades deliberately — rule-set updates between versions can shift
@@ -362,10 +362,10 @@ re-evaluates to passed on the updated [commit](../../ci-cd/common/git-workflow/c
   the tool-agnostic SAST concept, triage workflow, and suppression
   policy this skill goes deep on for SonarQube's quality-gate model
   specifically.
-- [fortify-static-analysis](../[fortify-static-analysis](../../../Software_Engineering_and_Other/Frontend/fortify-static-analysis/SKILL.md)/SKILL.md) —
+- [fortify-static-analysis](../fortify-static-analysis/SKILL.md)/SKILL.md) —
   an enterprise, deep-taint-tracking alternative worth pairing with
   SonarQube for high-assurance compiled-language codebases.
-- [owasp-zap-dast-configuration](../[owasp-zap-dast-configuration](../../../Software_Engineering_and_Other/Frontend/owasp-zap-dast-configuration/SKILL.md)/SKILL.md) —
+- [owasp-zap-dast-configuration](../owasp-zap-dast-configuration/SKILL.md)/SKILL.md) —
   runtime testing that catches issues SonarQube's static analysis
   cannot see.
 - [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md) —

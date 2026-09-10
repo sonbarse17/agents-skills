@@ -119,7 +119,7 @@ npm list --depth=0
 
 # 3. Create upgrade plan
 echo "Upgrade order:
-1. [TypeScript](../../Frontend/typescript/SKILL.md)
+1. [TypeScript](../../Frontend/common/typescript/SKILL.md)
 2. React
 3. React Router
 4. Testing libraries
@@ -131,8 +131,8 @@ echo "Upgrade order:
 ```bash
 # Don't upgrade everything at once!
 
-# Step 1: Update [TypeScript](../../Frontend/typescript/SKILL.md)
-npm install [typescript](../../Frontend/typescript/SKILL.md)@latest
+# Step 1: Update [TypeScript](../../Frontend/common/typescript/SKILL.md)
+npm install [typescript](../../Frontend/common/typescript/SKILL.md)@latest
 
 # Test
 npm run test
@@ -186,7 +186,7 @@ npx jscodeshift -t <transform-url> <path>
 # Example: Rename unsafe lifecycle methods
 npx jscodeshift -t https://raw.githubusercontent.com/reactjs/react-codemod/master/transforms/rename-unsafe-lifecycles.js src/
 
-# For [TypeScript](../../Frontend/typescript/SKILL.md) files
+# For [TypeScript](../../Frontend/common/typescript/SKILL.md) files
 npx jscodeshift -t https://raw.githubusercontent.com/reactjs/react-codemod/master/transforms/rename-unsafe-lifecycles.js --parser=tsx src/
 
 # Dry run to preview changes

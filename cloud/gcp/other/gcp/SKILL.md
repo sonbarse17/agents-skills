@@ -522,7 +522,7 @@ Setting max-instances too high risks cost spikes under load. Setting min-instanc
 - Managed Prometheus for GKE [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
 - Cloud Logging with log-based metrics.
 - Cloud Trace for distributed tracing.
-- Cloud Profiler for continuous performance [profiling](../../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md).
+- Cloud Profiler for continuous performance [profiling](../../../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md).
 - Uptime checks for external endpoint [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
 - Error Reporting for automatic exception grouping.
 

@@ -62,7 +62,7 @@ module.exports = {
 
 ### TypeORM Migrations
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // migrations/1701234567-CreateUsers.ts
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 

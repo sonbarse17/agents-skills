@@ -88,7 +88,7 @@ For detailed security guidance, see `[security-and-hardening](../../../Security/
 
 ### 5. Performance
 
-For detailed [profiling](../../Frontend/profiling/SKILL.md) and optimization, see `[performance-optimization](../../Backend/performance-optimization/SKILL.md)`. Does the change introduce performance problems?
+For detailed [profiling](../../Frontend/performance/profiling/SKILL.md) and optimization, see `[performance-optimization](../../Backend/performance-optimization/SKILL.md)`. Does the change introduce performance problems?
 
 - Any N+1 query patterns?
 - Any unbounded loops or unconstrained data fetching?

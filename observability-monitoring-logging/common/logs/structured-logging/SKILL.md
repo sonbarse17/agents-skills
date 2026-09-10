@@ -52,7 +52,7 @@ Logging schema and configuration as formatted text.
 # Log schema (JSON fields)
 # Log levels and sampling rules
 ```
-```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Logger configuration
 // Context propagation middleware
 // PII redaction config
@@ -145,7 +145,7 @@ Production: only FATAL (100%), ERROR (100%), WARN (100%), INFO (sampled), DEBUG 
 
 ### Step 3: Logger Configuration by Language
 
-```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Pino — Node.js (fastest JSON logger)
 import pino from 'pino';
 
@@ -226,7 +226,7 @@ log.info("order.created", order_id="ord_123", amount=49.99)
 ### Step 4: Context Propagation
 Correlation ID: generated at ingress (API gateway or first service), propagated via HTTP headers (`X-Correlation-ID`, `x-request-id`) through all service calls. Async boundaries: manually pass correlation ID through message headers for queues, streams, and event buses. Every log entry includes the correlation context.
 
-```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Express middleware
 function loggingMiddleware(req: Request, res: Response, next: NextFunction) {
   const correlationId = req.headers['x-correlation-id'] as string || uuidv4();
@@ -241,7 +241,7 @@ function loggingMiddleware(req: Request, res: Response, next: NextFunction) {
 ```
 
 Async context propagation:
-```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Using AsyncLocalStorage for automatic context propagation
 import { AsyncLocalStorage } from 'async_hooks';
 
@@ -267,7 +267,7 @@ app.use((req, res, next) => {
 ### Step 5: PII Redaction
 Pattern-based redaction at the logger boundary (never in business logic). Redact: passwords, secrets, tokens, API keys, SSN, email addresses, credit card numbers, phone numbers. Masked format: `j***@example.com`, `****-****-****-1234`. Store reversible hash for [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) purposes.
 
-```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const REDACTION_PATTERNS = [
   { pattern: /\b[\w.-]+@[\w.-]+\.\w+\b/g, replacement: (m: string) => `${m[0]}***@${m.split('@')[1]}` },
   { pattern: /\b(?:\d{4}[-\s]?){3}\d{4}\b/g, replacement: '****-****-****-****' },
@@ -305,7 +305,7 @@ function redact(obj: unknown, depth = 0): unknown {
 
 Adaptive sampling: increase INFO sample rate from 10% to 50% when error rate spikes, decrease when stable. Rate limiting: max 5000 entries/second per service instance, drop oldest exceeding limit.
 
-```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Adaptive sampler
 class AdaptiveSampler {
   private errorRate = 0;
@@ -492,7 +492,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -508,7 +508,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### [Profiling](../../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) Methodology
+### [Profiling](../../../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking

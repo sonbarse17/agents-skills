@@ -82,7 +82,7 @@ supabase link --project-ref <ref>
 supabase start
 ```
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // src/lib/supabase-client.ts
 import { createClient } from '@supabase/supabase-js';
 
@@ -178,7 +178,7 @@ CREATE POLICY "posts_delete" ON public.posts
 ```
 
 ### Step 4: Realtime Subscriptions
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Enable replication for table in Supabase dashboard
 // ALTER PUBLICATION supabase_realtime ADD TABLE posts;
 
@@ -216,7 +216,7 @@ presenceChannel
 ```
 
 ### Step 5: Storage
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Upload file
 const { data, error } = await supabase.storage
   .from('avatars')
@@ -237,7 +237,7 @@ const { data: { signedUrl } } = await supabase.storage
 ```
 
 ### Step 6: Edge Functions
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // supabase/functions/hello/index.ts
 import { serve } from 'https://deno.land/std@0.177.0/http/server.ts';
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
@@ -348,7 +348,7 @@ USING (status != 'archived')
 WITH CHECK (status != 'archived');
 ```
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Client: subscribe with role-aware filters
 const channel = supabase.channel('documents')
   .on('postgres_changes',
@@ -407,7 +407,7 @@ CREATE POLICY admin_access ON tenant_data
   );
 ```
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Server-side only: service role operations
 // Use for admin tasks, background jobs, webhooks
 import { createClient } from '@supabase/supabase-js';
@@ -569,7 +569,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/performance/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -585,7 +585,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### [Profiling](../../Frontend/profiling/SKILL.md) Methodology
+### [Profiling](../../Frontend/performance/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking

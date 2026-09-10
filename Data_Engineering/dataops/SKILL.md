@@ -112,7 +112,7 @@ No preamble. No postamble. No explanations.
 | Tool | Scope | Language | Integration | Coverage Type |
 |---|---|---|---|---|
 | dbt test | dbt models | SQL/YAML | Native in dbt | Schema, uniqueness, relationships |
-| Great Expectations | Any data source | [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) | Standalone, Airflow, dbt | [Profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md), expectations, validation |
+| Great Expectations | Any data source | [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) | Standalone, Airflow, dbt | [Profiling](../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md), expectations, validation |
 | dbt-expectations | dbt models | SQL/YAML | dbt package | GE-style tests in dbt |
 | Soda | Any data source | YAML | CI, Airflow, K8s | Row count, freshness, schema |
 | Deequ | Spark data | Scala/[Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) | Spark jobs | Column metrics, constraints |
@@ -461,7 +461,7 @@ When a dbt deployment fails mid-run, partial state corrupts downstream models. H
 DataOps: CI/CD for data pipelines, testing, environment promotion, contracts. MLOps: CI/CD for ML models, feature stores, model registry, A/B testing. Overlap in CI/CD tooling but different artifacts (SQL vs models). DataOps is deterministic transformations; MLOps is statistical models.
 
 ### dbt vs SQLFluff vs Great Expectations
-dbt: transformation framework (build, run, test SQL). SQLFluff: SQL linter (style and anti-patterns only). Great Expectations: data quality testing ([profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md), expectations, validation). These are complementary -- use all three.
+dbt: transformation framework (build, run, test SQL). SQLFluff: SQL linter (style and anti-patterns only). Great Expectations: data quality testing ([profiling](../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md), expectations, validation). These are complementary -- use all three.
 
 ### dbt vs Airflow
 dbt: transformation layer (SELECT statements). Airflow: orchestration layer (DAG of tasks, scheduling). dbt runs inside Airflow DAG. Complementary -- Airflow triggers dbt runs.

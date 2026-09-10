@@ -245,7 +245,7 @@ The receipt format has four independent implementations today:
 
 | Implementation | Language | Use case |
 |----------------|----------|----------|
-| [protect-mcp](https://www.npmjs.com/package/protect-mcp) | [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) | Claude Code, Cursor, MCP hosts |
+| [protect-mcp](https://www.npmjs.com/package/protect-mcp) | [TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) | Claude Code, Cursor, MCP hosts |
 | [protect-mcp-adk](https://pypi.org/project/protect-mcp-adk/) | [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) | Google Agent Development Kit |
 | [sb-runtime](https://[github](../../ci-cd/github-actions/other/github/SKILL.md).com/ScopeBlind/sb-runtime) | Rust | OS-level sandbox (Landlock + seccomp) |
 | APS governance hook | [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) | CrewAI, LangChain |

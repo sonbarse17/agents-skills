@@ -113,7 +113,7 @@ optional UI decoration a determined developer (or a bug) can route around.
 2. **Write the policy check as a required, server-side gate — never a
    client-side/UI-only validation.** A Backstage Scaffolder custom action
    that calls a policy engine before provisioning:
-   ```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+   ```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
    // packages/backend/src/plugins/scaffolder/actions/provisionDatabase.ts
    import { createTemplateAction } from '@backstage/plugin-scaffolder-node';
    import fetch from 'node-fetch';
@@ -218,7 +218,7 @@ optional UI decoration a determined developer (or a bug) can route around.
 4. **Wire the approval step to an actual notification channel, and make
    the approval call itself the only thing that resumes provisioning** —
    never a status flag a developer can flip on their own request:
-   ```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+   ```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
    // Separate, approver-only endpoint — requires an approver role, checked
    // server-side against the platform's RBAC, not just "logged in".
    app.post('/api/self-service/requests/:id/approve', requireRole('platform-approver'), async (req, res) => {

@@ -83,7 +83,7 @@ rate are the two signals that tell you whether users are actually having a bad t
   and hides the slow tail.
 - **Break errors down by type** — a rising timeout rate signals saturation; a rising 4xx rate
   might just mean the test data ran out.
-- **Correlate the latency knee with a resource signal** — connect it back to `[performance-tuning](../../../../Software_Engineering_and_Other/Frontend/performance-tuning/SKILL.md)`
+- **Correlate the latency knee with a resource signal** — connect it back to `[performance-tuning](../../../../Software_Engineering_and_Other/Frontend/performance/performance-tuning/SKILL.md)`
   by checking what saturated at that load level.
 
 **Done when:** the report includes p50/p95/p99 latency and error rate by type at every load step,

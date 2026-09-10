@@ -165,7 +165,7 @@ Cache-Control: private, no-cache
 ```
 
 ### Step 2: Service Worker Install & Cache
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 const CACHE_NAME = 'static-v1'
 const STATIC_ASSETS = [
   '/',
@@ -195,7 +195,7 @@ self.addEventListener('activate', (event) => {
 ```
 
 ### Step 3: Stale-While-Revalidate Fetch Handler
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request).then((cached) => {
@@ -212,7 +212,7 @@ self.addEventListener('fetch', (event) => {
 ```
 
 ### Step 4: Cache Busting with Content Hash
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Vite -- automatic content hashing
 // build.rollupOptions.output.entryFileNames: '[name]-[hash].js'
 
@@ -249,7 +249,7 @@ import('/assets/app-abc123def.js')
 </html>
 ```
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // In service worker fetch handler
 self.addEventListener('fetch', (event) => {
   event.respondWith(
@@ -335,7 +335,7 @@ Setting `Cache-Control: public` on authenticated API responses means a shared ca
 ### 4. Service Worker Update Without Version Bump
 If you update the service worker's cached assets but don't change the cache name (`CACHE_NAME`), the old cache is not cleaned up and new assets are never cached. Always bump the version in the cache name on each deploy.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // BAD -- same cache name, updates never applied
 const CACHE_NAME = 'static-v1';
 
@@ -351,7 +351,7 @@ Without `skipWaiting()` in the install event, the new service worker waits for a
 ### 6. Cache Poisoning from Invalid Responses
 The fetch handler caches ALL responses, including 404 and 500 errors. Only cache `response.ok` responses:
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 const fetchPromise = fetch(event.request).then((response) => {
   if (response.ok) {
     caches.open(CACHE_NAME).then((cache) => cache.put(event.request, response.clone()))
@@ -362,7 +362,7 @@ const fetchPromise = fetch(event.request).then((response) => {
 
 ### 7. Not Handling Opaque Responses
 Cross-origin responses without CORS headers are "opaque" — they return status 0 and cannot be inspected with `.ok`. Cache them anyway for offline support:
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 self.addEventListener('fetch', (event) => {
   if (event.request.url.includes('cdn.example.com')) {
     event.respondWith(
@@ -402,7 +402,7 @@ Each origin has limited cache storage (~6% of disk in Chrome). Beyond this, `cac
 ### Cache Size Management
 Service worker caches can grow unbounded. Set a maximum cache size:
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 async function trimCache(cacheName, maxItems) {
   const cache = await caches.open(cacheName);
   const keys = await cache.keys();
@@ -577,7 +577,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/performance/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -593,7 +593,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### [Profiling](../../Frontend/profiling/SKILL.md) Methodology
+### [Profiling](../../Frontend/performance/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking

@@ -77,7 +77,7 @@ Load detailed guidance based on context:
 | [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) | `../../../Global_References/[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).md` | K8s deployments, services, ingress, pods |
 | Terraform | `../../../Global_References/terraform-iac.md` | Infrastructure as code, AWS/GCP provisioning |
 | Deployment | `../../../Global_References/devops-engineer_deployment-strategies.md` | Blue-green, canary, rolling updates, rollback |
-| Platform | `../../../Global_References/[platform-engineering](../../../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md).md` | Self-service infra, developer portals, golden paths, Backstage |
+| Platform | `../../../Global_References/[platform-engineering](../../../../containers-orchestration/common/other/platform-engineering/SKILL.md).md` | Self-service infra, developer portals, golden paths, Backstage |
 | Release | `../../../Global_References/release-automation.md` | Artifact management, feature flags, multi-platform CI/CD |
 | Incidents | `../../../Global_References/devops-engineer_incident-response.md` | Production outages, on-call, MTTR, postmortems, [runbooks](../../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md) |
 

@@ -356,7 +356,7 @@ kfp_client.create_recurring_run(
 ```
 
 Six weeks in, a node hosting the MinIO/Postgres pods fails unexpectedly.
-Because Phase 4's [backup-and-restore](../../../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md) procedure was verified with a real
+Because Phase 4's [backup-and-restore](../../../common/other/backup-and-restore/SKILL.md) procedure was verified with a real
 test restore before go-live (not just configured and assumed to work),
 on-call restores both the model registry and experiment history from the
 previous night's snapshot within 40 minutes, with no permanent loss of

@@ -215,7 +215,7 @@ What does the caller need?
 
 ### Step 10: API Versioning and Contracts
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Contract-first approach: define OpenAPI / protobuf before implementation
 // Use consumer-driven contracts (CDC) to detect breaking changes
 
@@ -239,7 +239,7 @@ What does the caller need?
 
 ### Step 12: API Gateway Integration
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // API Gateway (Kong / APISIX / Envoy) configuration pattern
 // Route: /orders/* -> order-service:3001
 // Route: /payments/* -> payment-service:3002
@@ -288,7 +288,7 @@ spec:
 
 ### Step 14: Database per Service Implementation
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Order Service — owns its [PostgreSQL](../../Backend/postgresql/SKILL.md) database
 // Schema: orders, order_items, order_events
 // No other service has direct DB access
@@ -303,7 +303,7 @@ spec:
 
 ### Step 15: Contract Testing with Pact
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Consumer-driven contract test (Order Service -> Payment Service)
 describe('Order Service - Payment API contract', () => {
   const provider = new Pact({
@@ -339,7 +339,7 @@ describe('Order Service - Payment API contract', () => {
 ```
 
 ## API Composition Pattern
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // API Gateway / BFF that aggregates multiple downstream services
 // Instead of client making 4 requests, gateway does it server-side
 
@@ -414,7 +414,7 @@ spec:
       port: 8080
 ```
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // DNS-based service discovery with retry
 import * as dns from 'dns/promises';
 
@@ -453,7 +453,7 @@ async function resolveService(name: string): Promise<string> {
 | Supply chain | Compromised dependency | Dependency scanning (Snyk/Dependabot), signed artifacts, SBOM generation |
 | API contracts | Breaking changes | Consumer-driven contracts, CI-validated, versioned APIs |
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Service-to-service authentication with mTLS
 import { credentials, Metadata } from '@grpc/grpc-js';
 import { readFileSync } from 'fs';
@@ -586,7 +586,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/performance/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -602,7 +602,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### [Profiling](../../Frontend/profiling/SKILL.md) Methodology
+### [Profiling](../../Frontend/performance/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking

@@ -394,7 +394,7 @@ Writing long code snippets in review comments instead of pointing to the problem
 | Code Review (this skill) | All 6 dimensions: correctness, architecture, clarity, performance, security, tests | Structured [MUST]/[SHOULD]/[CONSIDER] | General purpose, pre-merge |
 | Security Review | Vulnerability assessment | CWE classification, exploitability scoring | Security-critical code, compliance audits |
 | Architecture Review | System design, layer boundaries, coupling | ADR, architecture diagram | Major features, new modules, system design |
-| Performance Review | Runtime [profiling](../../Frontend/profiling/SKILL.md), bundle analysis, query optimization | Flame graph, bundle report | Performance-critical features, regression investigation |
+| Performance Review | Runtime [profiling](../../Frontend/performance/profiling/SKILL.md), bundle analysis, query optimization | Flame graph, bundle report | Performance-critical features, regression investigation |
 | Pair Programming | Real-time feedback, shared ownership | Continuous conversation | Complex features, knowledge transfer |
 | Automated Linting | Style, formatting, simple correctness | Linter output, CI integration | Every PR (supplementary, not replacement) |
 | Formal Verification | Mathematical proof of correctness | Proof artifacts | Safety-critical systems (medical, aerospace) |

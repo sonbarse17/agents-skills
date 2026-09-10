@@ -200,7 +200,7 @@ function verifyWebhook(payload, headers, secret, toleranceMs = 300000) {
 ```
 
 ### Step 4: Implement Delivery with Retry
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 interface DeliveryResult {
   success: boolean;
   statusCode?: number;
@@ -272,7 +272,7 @@ async function handleIncomingWebhook(req, res) {
 ```
 
 ### Step 6: Subscription Management
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 interface WebhookSubscription {
   id: string;
   url: string;
@@ -345,7 +345,7 @@ class SubscriptionManager {
 ## Implementation Patterns
 
 ### Webhook Server (Express)
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import express from 'express';
 
 const app = express();
@@ -374,7 +374,7 @@ app.post('/webhooks/:provider', async (req, res) => {
 ```
 
 ### Dead Letter Queue
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 class WebhookDeadLetterQueue {
   async sendToDLQ(subscription: Subscription, event: WebhookEvent, error: string): Promise<void> {
     await this.store.save({
@@ -404,7 +404,7 @@ class WebhookDeadLetterQueue {
 ```
 
 ### Rate Limiting Outgoing Webhooks
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 class WebhookRateLimiter {
   private attempts = new Map<string, number[]>();
 

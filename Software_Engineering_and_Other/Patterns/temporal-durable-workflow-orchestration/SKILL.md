@@ -87,8 +87,8 @@ production is covered separately in
   or OpenSearch if visibility/advanced search (`temporal workflow list`
   filters) is required.
 - A Temporal SDK matching the language the workflow/activity code is
-  written in (Go, Java, [TypeScript](../../Frontend/typescript/SKILL.md)/Node.js, [Python](../../Languages/python/SKILL.md), .NET, PHP) — this
-  skill's examples use the Go and [TypeScript](../../Frontend/typescript/SKILL.md) SDKs, but the
+  written in (Go, Java, [TypeScript](../../Frontend/common/typescript/SKILL.md)/Node.js, [Python](../../Languages/python/SKILL.md), .NET, PHP) — this
+  skill's examples use the Go and [TypeScript](../../Frontend/common/typescript/SKILL.md) SDKs, but the
   workflow/activity/signal concepts are identical across all of them.
 - At least one **worker** process running and polling a specific **task
   queue** — workflows and activities do not execute anywhere until a

@@ -250,7 +250,7 @@ and doesn't repeat HCL authoring or module design.
 7. **Use run tasks/policy checks as a place to wire in existing scanners**
    rather than duplicating them — both platforms support hooking external
    checks (e.g. a Checkov/tfsec run, per
-   [checkov-and-tfsec-iac-security-scanning](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[checkov-and-tfsec-iac-security-scanning](../checkov-and-tfsec-iac-[security-scanning](../../../Security/security-scanning/SKILL.md)/SKILL.md)/SKILL.md))
+   [checkov-and-tfsec-iac-security-scanning](../../../../Security/devsecops/SKILL.md)/skills/[checkov-and-tfsec-iac-security-scanning](../checkov-and-tfsec-iac-[security-scanning](../../../Security/security-scanning/SKILL.md)/SKILL.md)/SKILL.md))
    into the run pipeline as a required check before apply, so IaC security
    scanning and orchestration-platform policy gates compose instead of
    running as two disconnected systems.
@@ -279,7 +279,7 @@ and doesn't repeat HCL authoring or module design.
   don't reuse one broad, account-wide credential across every
   workspace/stack for convenience.
 - Use path-based VCS triggers (only run a workspace when files under its
-  specific directory change) in a [monorepo](../../../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md) layout, so an unrelated change
+  specific directory change) in a [monorepo](../../../../Software_Engineering_and_Other/Frontend/build-tools/monorepo/SKILL.md) layout, so an unrelated change
   elsewhere in the repo doesn't trigger every workspace's plan.
 - Treat the platform's policy engine as complementary to, not a
   replacement for, static IaC scanning that runs earlier in the PR
@@ -291,7 +291,7 @@ and doesn't repeat HCL authoring or module design.
 ## Common pitfalls
 
 - **Symptom:** A workspace/stack's automatic VCS-triggered plan runs (and
-  posts a comment) for every PR in a [monorepo](../../../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md), even ones that don't touch
+  posts a comment) for every PR in a [monorepo](../../../../Software_Engineering_and_Other/Frontend/build-tools/monorepo/SKILL.md), even ones that don't touch
   that workspace's infrastructure at all.
   **Fix:** Configure a path-based trigger scoped to the workspace's working
   directory, rather than the default "any change in the connected repo"
@@ -397,6 +397,6 @@ intentional deploy.
 ## Cross-references
 
 - [infrastructure-as-code-terraform](../[infrastructure-as-code-terraform](../[infrastructure-as-code](../infrastructure-as-code/SKILL.md)-terraform/SKILL.md)/SKILL.md) — the underlying CLI-only Terraform workflow (module design, state, plan review) this skill's platforms orchestrate; read that skill first for HCL/state fundamentals not repeated here.
-- [checkov-and-tfsec-iac-security-scanning](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[checkov-and-tfsec-iac-security-scanning](../checkov-and-tfsec-iac-[security-scanning](../../../Security/security-scanning/SKILL.md)/SKILL.md)/SKILL.md) — static IaC misconfiguration scanning that composes with, rather than duplicates, a Sentinel/OPA plan-time policy gate configured here.
+- [checkov-and-tfsec-iac-security-scanning](../../../../Security/devsecops/SKILL.md)/skills/[checkov-and-tfsec-iac-security-scanning](../checkov-and-tfsec-iac-[security-scanning](../../../Security/security-scanning/SKILL.md)/SKILL.md)/SKILL.md) — static IaC misconfiguration scanning that composes with, rather than duplicates, a Sentinel/OPA plan-time policy gate configured here.
 - [gitops-workflow](../[gitops-workflow](../../Containers_and_Orchestration/[gitops](../../Containers_and_Orchestration/gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md) — a comparable git-driven-reconciliation pattern for [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)/application deployments; VCS-driven Terraform runs here are the IaC-provisioning analogue.
 - [ci-cd-pipeline-design](../[ci-cd-pipeline-design](../../CI_CD/ci-cd-pipeline-design/SKILL.md)/SKILL.md) — the general pipeline-gate concepts (required checks, manual approval) that these platforms implement as native features instead of hand-rolled CI YAML.

@@ -24,7 +24,7 @@ depends_on:
   - monitoring
 ---
 
-# Application Insights JavaScript SDK (Web) for [TypeScript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+# Application Insights JavaScript SDK (Web) for [TypeScript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 
 Real User [Monitoring](../../../common/monitoring-strategy/monitoring/SKILL.md) (RUM) for browser apps with `@microsoft/applicationinsights-web`. Auto-collects page views, AJAX/fetch dependencies, unhandled exceptions, and (with the Click Analytics plugin) clicks. Supports custom events, metrics, and **GenAI agent traces** that follow [OpenTelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md) GenAI semantic conventions and correlate to backend spans via W3C Trace Context.
 
@@ -74,7 +74,7 @@ NEXT_PUBLIC_APPINSIGHTS_CONNECTION_STRING="InstrumentationKey=..."
 
 ## Quick Start (npm)
 
-```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { ApplicationInsights } from "@microsoft/applicationinsights-web";
 
 export const appInsights = new ApplicationInsights({
@@ -119,7 +119,7 @@ Loader-only API (queued until SDK loads): `trackEvent`, `trackPageView`, `trackE
 
 ## Core Tracking APIs
 
-```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Page views (SPAs that disable enableAutoRouteTracking)
 appInsights.trackPageView({ name: "Checkout", uri: "/checkout", properties: { cartSize: 3 } });
 
@@ -159,7 +159,7 @@ appInsights.flush();
 
 Run for every envelope before send. Return `false` to drop.
 
-```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import type { ITelemetryItem } from "@microsoft/applicationinsights-web";
 
 appInsights.addTelemetryInitializer((item: ITelemetryItem) => {
@@ -182,7 +182,7 @@ appInsights.addTelemetryInitializer((item: ITelemetryItem) => {
 
 ## Click Analytics
 
-```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { ClickAnalyticsPlugin } from "@microsoft/applicationinsights-clickanalytics-js";
 
 const clickPlugin = new ClickAnalyticsPlugin();
@@ -242,7 +242,7 @@ OTEL_SEMCONV_STABILITY_OPT_IN=gen_ai_latest_experimental
 
 ### Pattern: invoke_agent + nested tool/model spans
 
-```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { ApplicationInsights, SeverityLevel } from "@microsoft/applicationinsights-web";
 
 type GenAiAttrs = Record<string, string | number | boolean | undefined>;
@@ -337,11 +337,11 @@ dependencies
             avg_in=avg(tin), avg_out=avg(tout) by op, agent, model, bin(timestamp, 5m)
 ```
 
-## React ([TypeScript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md))
+## React ([TypeScript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md))
 
 See [../../../../../Global_References/framework-extensions.md](../../../../Global_References/framework-extensions.md) for full React, React Native, Angular, Next.js, and Vite recipes.
 
-```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { ApplicationInsights } from "@microsoft/applicationinsights-web";
 import { ReactPlugin, withAITracking } from "@microsoft/applicationinsights-react-js";
 import { createBrowserHistory } from "history";
@@ -363,7 +363,7 @@ export const TrackedCheckout = withAITracking(reactPlugin, Checkout, "Checkout")
 
 ## React Native
 
-```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { ApplicationInsights } from "@microsoft/applicationinsights-web";
 import { ReactNativePlugin } from "@microsoft/applicationinsights-react-native";
 
@@ -382,7 +382,7 @@ appInsights.loadAppInsights();
 
 Auto-collected: page-load timings via `PerformanceTiming` / `PerformanceNavigationTiming`. To add Core Web Vitals:
 
-```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { onCLS, onLCP, onINP, type Metric } from "web-vitals";
 
 function send(m: Metric) {
@@ -396,7 +396,7 @@ onCLS(send); onLCP(send); onINP(send);
 
 ## Cookies & Privacy
 
-```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 new ApplicationInsights({ config: {
   connectionString,
   isCookieUseDisabled: true,         // hard-disable all cookies
@@ -406,7 +406,7 @@ new ApplicationInsights({ config: {
 
 To honor consent dynamically:
 
-```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 appInsights.getCookieMgr().setEnabled(userGaveConsent);
 appInsights.config.disableTelemetry = !userGaveConsent;
 ```
@@ -415,7 +415,7 @@ appInsights.config.disableTelemetry = !userGaveConsent;
 
 Server-side ingestion sampling (recommended) is configured on the App Insights resource. SDK-side sampling reduces network use:
 
-```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 new ApplicationInsights({ config: { connectionString, samplingPercentage: 50 } });
 ```
 
@@ -442,7 +442,7 @@ The full web SDK is ~110 KB minified (~36 KB gzipped). For aggressive budgets, u
 
 ## Key Types
 
-```[typescript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import {
   ApplicationInsights,
   SeverityLevel,

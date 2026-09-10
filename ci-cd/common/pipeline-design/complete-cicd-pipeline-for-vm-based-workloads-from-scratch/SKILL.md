@@ -82,7 +82,7 @@ instance group boots or running a playbook against a live fleet.
 - SAST/SCA tooling chosen per
   [sast-integration](../../../../Security/devsecops/SKILL.md)/skills/[sast-integration](../../../../Security/sast-integration/SKILL.md)/SKILL.md)
   and
-  [software-composition-analysis-sca](../../../../Security/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md).
+  [software-composition-analysis-sca](../../../../Security/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../../Security/software-composition-analysis-sca/SKILL.md)/SKILL.md).
 
 ## Step-by-step guidance
 
@@ -374,7 +374,7 @@ confirming every instance in the ASG is now running the new AMI — with
 
 - [aws-codepipeline-and-codedeploy](../[aws-codepipeline-and-codedeploy](../../Cloud_Providers/aws-codepipeline-and-codedeploy/SKILL.md)/SKILL.md) — CodeDeploy's blue/green EC2 deployment-group mechanics, an alternative to the instance-refresh approach shown in Phase 5a.
 - [ansible-playbook-and-role-design](../../../iac-and-automation-tooling/skills/[ansible-playbook-and-role-design](../../Infrastructure_as_Code/[ansible](../../Infrastructure_as_Code/ansible/SKILL.md)-playbook-and-role-design/SKILL.md)/SKILL.md) — playbook/inventory/idempotency mechanics used in Phase 5b.
-- [sast-integration](../../../../Security/devsecops/SKILL.md)/skills/[sast-integration](../../../../Security/sast-integration/SKILL.md)/SKILL.md) and [software-composition-analysis-sca](../../../../Security/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md) — Phase 3's scan mechanics.
+- [sast-integration](../../../../Security/devsecops/SKILL.md)/skills/[sast-integration](../../../../Security/sast-integration/SKILL.md)/SKILL.md) and [software-composition-analysis-sca](../../../../Security/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../../Security/software-composition-analysis-sca/SKILL.md)/SKILL.md) — Phase 3's scan mechanics.
 - [container-build-and-release](../../../devops/skills/[container-build-and-release](../../Containers_and_Orchestration/container-build-and-release/SKILL.md)/SKILL.md) — the container-image analog of Phase 4a's immutable-artifact discipline (tagging, rebuild cadence, no baked secrets).
 - [blue-green-canary-deployments](../../../devops/skills/[blue-green-canary-deployments](../blue-green-canary-deployments/SKILL.md)/SKILL.md) — the vendor-neutral [progressive-delivery](../../deployment/progressive-delivery/SKILL.md) concepts Phase 5a's instance refresh implements for a VM fleet.
 - [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../../Cloud_Providers/cloud-iam-hardening/SKILL.md)/SKILL.md) — least-privilege scoping for the CI role that bakes images and triggers instance refreshes.

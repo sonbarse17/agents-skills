@@ -14,7 +14,7 @@ depends_on:
   - typescript
 ---
 
-# [TypeScript](../../../../Frontend/typescript/SKILL.md) Code Quality
+# [TypeScript](../../../../Frontend/common/typescript/SKILL.md) Code Quality
 
 ## Preserve Local Reasoning
 

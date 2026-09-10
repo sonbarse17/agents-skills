@@ -247,7 +247,7 @@ class PushService {
 ```
 
 ### React Native — @react-native-[firebase](../../Software_Engineering_and_Other/Databases/firebase/SKILL.md)/messaging
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import messaging from '@react-native-[firebase](../../Software_Engineering_and_Other/Databases/firebase/SKILL.md)/messaging';
 import notifee, { AndroidImportance } from '@notifee/react-native';
 

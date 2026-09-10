@@ -108,7 +108,7 @@ type Order @key(fields: "id") {
 
 Each subgraph that extends an entity must implement `__resolveReference`:
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Users subgraph — entity origin
 const resolvers = {
   User: {
@@ -298,7 +298,7 @@ headers:
 ```
 
 #### Subgraph-Level Authorization
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Each subgraph independently validates permissions
 const resolvers = {
   Query: {
@@ -394,7 +394,7 @@ query_planning:
 ```
 
 Warm the cache on deploy:
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Pre-warm common query plans
 const commonQueries = [
   `query { me { id name } }`,
@@ -446,7 +446,7 @@ extend type Product @key(fields: "id") {
 ```
 
 ### DataLoader Across Subgraphs
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Batch-load entities to avoid N+1 resolution calls
 class UserLoader {
   private batch = new Map<string, Promise<User>>();
@@ -471,7 +471,7 @@ class UserLoader {
 ### Testing Federated Graphs
 
 #### Unit Test: Subgraph Entity Resolution
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 describe('Accounts Subgraph', () => {
   it('resolves User entity by key', async () => {
     const result = await subgraph.executeQuery(`
@@ -490,7 +490,7 @@ describe('Accounts Subgraph', () => {
 ```
 
 #### Integration Test: Cross-Subgraph Query
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 describe('Supergraph: User with Orders', () => {
   it('resolves fields across subgraphs', async () => {
     const query = `
@@ -504,7 +504,7 @@ describe('Supergraph: User with Orders', () => {
 ```
 
 #### Contract Testing Between Subgraphs
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Each subgraph publishes its schema contract
 // CI validates that contracts remain compatible
 describe('Contracts', () => {
@@ -726,7 +726,7 @@ fn supergraph_service(service) {
 ```
 
 ### Custom Subgraph Span Attributes
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 const resolvers = {
   Query: {
     users: async (_, __, { tracer }) => {

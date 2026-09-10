@@ -154,7 +154,7 @@ RETURNING *;
 -- If no row returned, another request holds the key — return 409 Conflict
 ```
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Redis: SET NX with TTL
 const acquired = await redis.set(`idempotency:${key}`, 'pending', {
   NX: true,
@@ -175,7 +175,7 @@ After processing, update the idempotency row with the result:
 UPDATE idempotency_keys SET status = 'completed', body = $2, updated_at = NOW() WHERE key = $1;
 ```
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Store result in Redis
 await redis.set(`idempotency:${key}:result`, JSON.stringify(result), { EX: 3600 });
 ```
@@ -213,7 +213,7 @@ DELETE FROM idempotency_keys WHERE created_at < NOW() - INTERVAL '24 hours';
 ## Implementation Patterns
 
 ### Express Middleware Pattern
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 function idempotencyMiddleware(store: IdempotencyStore, ttl: number = 86400) {
   return async (req: Request, res: Response, next: NextFunction) => {
     if (['GET', 'HEAD', 'OPTIONS'].includes(req.method)) return next();
@@ -239,7 +239,7 @@ function idempotencyMiddleware(store: IdempotencyStore, ttl: number = 86400) {
 ```
 
 ### Decorator Pattern (NestJS)
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 @Post()
 @Idempotent({ ttl: 3600 })
 async createOrder(@Body() dto: CreateOrderDto): Promise<Order> {
@@ -266,7 +266,7 @@ function Idempotent(options: { ttl?: number } = {}) {
 ```
 
 ### Database-Backed Idempotency
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 class PostgresIdempotencyStore {
   constructor(private pool: Pool) {}
 
@@ -317,7 +317,7 @@ Concurrent requests with the same key must be handled:
 2. **Lock-based**: Acquire a distributed lock on the key. First holder processes, others wait.
 3. **Optimistic**: Use CAS (compare-and-swap) to update the key record.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Wait pattern: poll for completion
 async function handleConcurrent(key: string, maxWaitMs = 5000): Promise<Response> {
   const pollInterval = 100;
@@ -339,7 +339,7 @@ async function handleConcurrent(key: string, maxWaitMs = 5000): Promise<Response
 
 ### Key Entropy
 Idempotency keys must be unpredictable. Never use sequential integers or timestamps:
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // GOOD: UUID v4 — random, unpredictable
 const key = crypto.randomUUID();
 
@@ -352,7 +352,7 @@ const key = `${timestamp}-${counter++}`;
 
 ### Key Validation
 Validate idempotency keys on input — never process a malformed key:
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 function validateIdempotencyKey(key: string): boolean {
   // UUID format check
   const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-7][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
@@ -502,7 +502,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/performance/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -518,7 +518,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### [Profiling](../../Frontend/profiling/SKILL.md) Methodology
+### [Profiling](../../Frontend/performance/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking

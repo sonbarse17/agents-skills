@@ -55,7 +55,7 @@ Create a rules file that persists across sessions. This is the highest-leverage 
 # Project: [Name]
 
 ## Tech Stack
-- React 18, [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) 5, Vite, Tailwind CSS 4
+- React 18, [TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) 5, Vite, Tailwind CSS 4
 - Node.js 22, Express, [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md), Prisma
 
 ## Commands

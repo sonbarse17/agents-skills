@@ -155,9 +155,9 @@ State: User asks about [microservices](../../Software_Engineering_and_Other/Patt
   Route: backend-[microservices](../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md)
   Reason: "[Microservices](../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) architecture and distributed patterns request."
 
-State: User asks about [microfrontend](../../Software_Engineering_and_Other/Frontend/microfrontend/SKILL.md), Module Federation, frontend composition.
-  Route: frontend-[microfrontend](../../Software_Engineering_and_Other/Frontend/microfrontend/SKILL.md)
-  Reason: "[Microfrontend](../../Software_Engineering_and_Other/Frontend/microfrontend/SKILL.md) architecture request."
+State: User asks about [microfrontend](../../Software_Engineering_and_Other/Frontend/architecture/microfrontend/SKILL.md), Module Federation, frontend composition.
+  Route: frontend-[microfrontend](../../Software_Engineering_and_Other/Frontend/architecture/microfrontend/SKILL.md)
+  Reason: "[Microfrontend](../../Software_Engineering_and_Other/Frontend/architecture/microfrontend/SKILL.md) architecture request."
 
 State: User asks about frontend component patterns, hooks patterns, component design.
   Route: frontend-patterns
@@ -296,9 +296,9 @@ State: Kotlin stack detected (kotlin in build config, no [Android](../../Mobile/
   Route: backend-kotlin-architecture
   Reason: "Kotlin backend detected."
 
-State: [SvelteKit](../../Software_Engineering_and_Other/Frontend/sveltekit/SKILL.md) stack detected (package.json has @sveltejs/kit).
-  Route: frontend-[sveltekit](../../Software_Engineering_and_Other/Frontend/sveltekit/SKILL.md)
-  Reason: "[SvelteKit](../../Software_Engineering_and_Other/Frontend/sveltekit/SKILL.md) frontend detected."
+State: [SvelteKit](../../Software_Engineering_and_Other/Frontend/frameworks/sveltekit/SKILL.md) stack detected (package.json has @sveltejs/kit).
+  Route: frontend-[sveltekit](../../Software_Engineering_and_Other/Frontend/frameworks/sveltekit/SKILL.md)
+  Reason: "[SvelteKit](../../Software_Engineering_and_Other/Frontend/frameworks/sveltekit/SKILL.md) frontend detected."
 
 State: .NET stack detected and user describes a backend task.
   Route: dotnet-architecture
@@ -357,7 +357,7 @@ State: React detected and user asks about React project structure, React archite
   Reason: "React architecture request."
 
 State: React detected and Next.js in dependencies.
-  Route: [react-nextjs](../../Software_Engineering_and_Other/Frontend/nextjs/SKILL.md)
+  Route: [react-nextjs](../../Software_Engineering_and_Other/Frontend/frameworks/nextjs/SKILL.md)
   Reason: "React Next.js request."
 
 State: Vue detected and user asks about Vue project structure, Vue architecture.
@@ -365,7 +365,7 @@ State: Vue detected and user asks about Vue project structure, Vue architecture.
   Reason: "Vue architecture request."
 
 State: Vue detected and Nuxt in dependencies.
-  Route: [vue-nuxt](../../Software_Engineering_and_Other/Frontend/nuxt/SKILL.md)
+  Route: [vue-nuxt](../../Software_Engineering_and_Other/Frontend/frameworks/nuxt/SKILL.md)
   Reason: "Vue Nuxt request."
 
 State: Svelte detected and user asks about Svelte project structure, Svelte architecture.
@@ -428,9 +428,9 @@ State: User asks about [serverless](../../Software_Engineering_and_Other/Pattern
   Route: devops-[serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)
   Reason: "[Serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) architecture request."
 
-State: User asks about [monorepo](../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md), Nx, Turborepo, workspace organization.
-  Route: devops-[monorepo](../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md)
-  Reason: "[Monorepo](../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md) tooling and workspace request."
+State: User asks about [monorepo](../../Software_Engineering_and_Other/Frontend/build-tools/monorepo/SKILL.md), Nx, Turborepo, workspace organization.
+  Route: devops-[monorepo](../../Software_Engineering_and_Other/Frontend/build-tools/monorepo/SKILL.md)
+  Reason: "[Monorepo](../../Software_Engineering_and_Other/Frontend/build-tools/monorepo/SKILL.md) tooling and workspace request."
 
 State: User asks about Dependabot, Renovate, dependency updates, vulnerability scanning.
   Route: [dependency-management](../../Software_Engineering_and_Other/Miscellaneous/dependency-management/SKILL.md)
@@ -477,7 +477,7 @@ State: User asks about frontend performance, Core Web Vitals, Lighthouse, LCP, C
   Reason: "Frontend performance optimization request."
 
 State: User asks about state management, Redux, Zustand, Pinia, NgRx, Vuex.
-  Route: [frontend-state-management](../../Software_Engineering_and_Other/Frontend/state-management/SKILL.md)
+  Route: [frontend-state-management](../../Software_Engineering_and_Other/Frontend/state-management/state-management/SKILL.md)
   Reason: "Frontend state management request."
 
 State: User asks about frontend testing, Jest, Vitest, Cypress, Playwright, testing library.
@@ -489,7 +489,7 @@ State: User asks about Tailwind CSS, utility-first CSS, CSS design tokens.
   Reason: "Tailwind CSS and utility-first styling request."
 
 State: User asks about Storybook, component library, visual testing, component documentation.
-  Route: [frontend-storybook](../../Software_Engineering_and_Other/Frontend/storybook/SKILL.md)
+  Route: [frontend-storybook](../../Software_Engineering_and_Other/Frontend/architecture/storybook/SKILL.md)
   Reason: "Storybook component documentation request."
 
 State: User asks about PWA, service worker, offline support, manifest, progressive web app.
@@ -508,9 +508,9 @@ State: User asks about git workflow, branching strategy, rebase, merge, git flow
   Route: [git-workflow](../../ci-cd/common/git-workflow/git-workflow/SKILL.md)
   Reason: "Git workflow and branching strategy request."
 
-State: User asks about [profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md), performance [audit](../../AI_and_Agents/Operations/audit/SKILL.md), bottleneck, flamegraph, CPU profile.
+State: User asks about [profiling](../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md), performance [audit](../../AI_and_Agents/Operations/audit/SKILL.md), bottleneck, flamegraph, CPU profile.
   Route: performance-profiler
-  Reason: "Performance [profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) request."
+  Reason: "Performance [profiling](../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md) request."
 
 State: User asks about README, documentation, project docs, contributing guide.
   Route: readme-writer
@@ -713,11 +713,11 @@ State: User asks about Vue patterns, Vue composables, Vue composition API.
   Reason: "Vue patterns request."
 
 State: User asks about Lit, LitElement, LitHtml, lit-html.
-  Route: [frontend-lit](../../Software_Engineering_and_Other/Frontend/lit/SKILL.md)
+  Route: [frontend-lit](../../Software_Engineering_and_Other/Frontend/frameworks/lit/SKILL.md)
   Reason: "Lit request."
 
 State: User asks about web components, custom elements, shadow DOM, HTML templates.
-  Route: [frontend-web-components](../../Software_Engineering_and_Other/Frontend/web-components/SKILL.md)
+  Route: [frontend-web-components](../../Software_Engineering_and_Other/Frontend/web-components/web-components/SKILL.md)
   Reason: "Web components request."
 
 State: User asks about AR/VR, augmented reality, virtual reality, WebXR.
@@ -985,7 +985,7 @@ State: User asks about cloud architecture, landing zone, well-architected framew
   Reason: "Cloud architecture request."
 
 State: User asks about platform engineering, internal developer platform, IDP, Backstage, developer portal, golden path, platform team.
-  Route: devops-[platform-engineering](../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md)
+  Route: devops-[platform-engineering](../../containers-orchestration/common/other/platform-engineering/SKILL.md)
   Reason: "Platform engineering request."
 
 State: User asks about SRE, site reliability engineering, SLI, SLO, error budget, toil reduction, reliability engineering, production readiness.
@@ -1163,15 +1163,15 @@ State: User asks about data fetching, TanStack Query, SWR, server state.
   Reason: "Data fetching request."
 
 State: User asks about bundler, Vite, Webpack, build tools.
-  Route: [frontend-bundler-tools](../../Software_Engineering_and_Other/Frontend/bundler-tools/SKILL.md)
+  Route: [frontend-bundler-tools](../../Software_Engineering_and_Other/Frontend/build-tools/bundler-tools/SKILL.md)
   Reason: "Bundler/tools request."
 
 State: User asks about image optimization, responsive images, image CDN.
-  Route: frontend-[image-optimization](../../Software_Engineering_and_Other/Frontend/image-optimization/SKILL.md)
+  Route: frontend-[image-optimization](../../Software_Engineering_and_Other/Frontend/ui-ux/image-optimization/SKILL.md)
   Reason: "Image optimization request."
 
 State: User asks about theming, dark mode, design tokens.
-  Route: [frontend-theming](../../Software_Engineering_and_Other/Frontend/theming/SKILL.md)
+  Route: [frontend-theming](../../Software_Engineering_and_Other/Frontend/ui-ux/theming/SKILL.md)
   Reason: "Theming request."
 
 State: User asks about Kotlin Multiplatform, KMP, Compose Multiplatform.
@@ -1179,11 +1179,11 @@ State: User asks about Kotlin Multiplatform, KMP, Compose Multiplatform.
   Reason: "KMP request."
 
 State: User asks about Ionic, Capacitor, hybrid mobile.
-  Route: [mobile-ionic-capacitor](../../Software_Engineering_and_Other/Frontend/ionic-capacitor/SKILL.md)
+  Route: [mobile-ionic-capacitor](../../Software_Engineering_and_Other/Frontend/mobile/ionic-capacitor/SKILL.md)
   Reason: "Ionic/Capacitor request."
 
 State: User asks about .NET MAUI, MAUI app, Xamarin.
-  Route: [mobile-dotnet-maui](../../Software_Engineering_and_Other/Frontend/dotnet-maui/SKILL.md)
+  Route: [mobile-dotnet-maui](../../Software_Engineering_and_Other/Frontend/desktop/dotnet-maui/SKILL.md)
   Reason: ".NET MAUI request."
 
 State: User asks about deep linking, universal links, app links.
@@ -1235,7 +1235,7 @@ State: User asks about FinOps, cloud cost, cost optimization.
   Reason: "FinOps request."
 
 State: User asks about backup, disaster recovery, DR plan.
-  Route: devops-[backup-dr](../../Software_Engineering_and_Other/Frontend/backup-dr/SKILL.md)
+  Route: devops-[backup-dr](../../containers-orchestration/common/other/backup-dr/SKILL.md)
   Reason: "Backup/DR request."
 
 State: User asks about database migration, schema migration, Flyway, Liquibase.
@@ -1251,7 +1251,7 @@ State: User asks about dev container, devcontainer, dev environment.
   Reason: "Dev container request."
 
 State: User asks about tech debt, technical debt, code debt.
-  Route: [dev-loop-tech-debt-tracker](../../Software_Engineering_and_Other/Frontend/tech-debt-tracker/SKILL.md)
+  Route: [dev-loop-tech-debt-tracker](../../Software_Engineering_and_Other/Patterns/tech-debt-tracker/SKILL.md)
   Reason: "Tech debt tracker request."
 
 State: User asks about API client, curl command, HTTP request generation.
@@ -1271,7 +1271,7 @@ State: User asks about risk management, risk register, risk assessment.
   Reason: "Risk management request."
 
 State: User asks about roadmap, product roadmap, feature roadmap.
-  Route: [planning-create-roadmap](../../Software_Engineering_and_Other/Frontend/create-roadmap/SKILL.md)
+  Route: [planning-create-roadmap](../create-roadmap/SKILL.md)
   Reason: "Roadmap request."
 
 State: User asks about pitch deck, investor pitch, fundraising.
@@ -1283,7 +1283,7 @@ State: User asks about market analysis, competitive analysis, market sizing.
   Reason: "Market analysis request."
 
 State: User asks about onboarding, new developer setup, getting started.
-  Route: [core-onboarding](../../Software_Engineering_and_Other/Frontend/onboarding/SKILL.md)
+  Route: [core-onboarding](../../Software_Engineering_and_Other/Miscellaneous/onboarding/SKILL.md)
   Reason: "Onboarding request."
 
 State: User asks about context compression, token budget, summarize.
@@ -1415,7 +1415,7 @@ State: User asks about data quality, Great Expectations, data validation, data c
   Reason: "Data quality request."
 
 State: User asks about design system, design tokens, Storybook, Figma.
-  Route: design-[design-systems](../../Software_Engineering_and_Other/Frontend/design-systems/SKILL.md)
+  Route: design-[design-systems](../../Software_Engineering_and_Other/Frontend/ui-ux/design-systems/SKILL.md)
   Reason: "Design system request."
 
 State: User asks about UX research, user research, usability testing, persona.
@@ -1431,7 +1431,7 @@ State: User asks about prototyping, design prototype, micro-interaction.
   Reason: "Prototyping request."
 
 State: User asks about visual design, color theory, typography, layout, visual hierarchy, spacing, UI aesthetics.
-  Route: [design-visual-design](../../Software_Engineering_and_Other/Frontend/visual-design/SKILL.md)
+  Route: [design-visual-design](../../Software_Engineering_and_Other/Frontend/ui-ux/visual-design/SKILL.md)
   Reason: "Visual design request."
 
 State: User asks about brand identity, brand guidelines, logo design, brand colors, brand voice, visual identity, branding.
@@ -1471,7 +1471,7 @@ State: User asks about integration testing, API testing, database testing, TestC
   Reason: "Integration testing request."
 
 State: User asks about property-based testing, fuzzing, generative testing, fast-check, QuickCheck, invariant testing, random testing.
-  Route: [quality-property-based-testing](../../Software_Engineering_and_Other/Frontend/property-based-testing/SKILL.md)
+  Route: [quality-property-based-testing](../../Software_Engineering_and_Other/Frontend/testing/property-based-testing/SKILL.md)
   Reason: "Property-based testing request."
 
 State: User asks about Express, Express.js middleware, Express app.
@@ -1524,11 +1524,11 @@ Read project files:
 - None detected -> ask user
 
 ### Step 4: Detect Frontend Framework
-- package.json: if @sveltejs/kit present -> frontend-[sveltekit](../../Software_Engineering_and_Other/Frontend/sveltekit/SKILL.md)
-- package.json: if next present -> [react-nextjs](../../Software_Engineering_and_Other/Frontend/nextjs/SKILL.md)
+- package.json: if @sveltejs/kit present -> frontend-[sveltekit](../../Software_Engineering_and_Other/Frontend/frameworks/sveltekit/SKILL.md)
+- package.json: if next present -> [react-nextjs](../../Software_Engineering_and_Other/Frontend/frameworks/nextjs/SKILL.md)
 - package.json: if react present but no next -> react-architecture
 - package.json: if vue present -> [vue-architecture](../../Software_Engineering_and_Other/Patterns/architecture/SKILL.md)
-- package.json: if nuxt present -> [vue-nuxt](../../Software_Engineering_and_Other/Frontend/nuxt/SKILL.md)
+- package.json: if nuxt present -> [vue-nuxt](../../Software_Engineering_and_Other/Frontend/frameworks/nuxt/SKILL.md)
 - package.json: if @angular/core -> angular-architecture
 - angular.json -> angular-architecture
 - package.json: if remix -> frontend-remix-architecture
@@ -1545,7 +1545,7 @@ Read project files:
 - None detected -> skip mobile stack
 
 ### Step 6: Detect Desktop Stack
-- package.json: if electron present -> [desktop-electron](../../Software_Engineering_and_Other/Frontend/electron/SKILL.md)
+- package.json: if electron present -> [desktop-electron](../../Software_Engineering_and_Other/Frontend/desktop/electron/SKILL.md)
 - Cargo.toml: if tauri in deps -> desktop-tauri
 - None detected -> skip desktop stack
 

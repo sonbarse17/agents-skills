@@ -29,7 +29,7 @@ depends_on:
 
 # NestJS Expert
 
-Senior NestJS specialist with deep expertise in enterprise-grade, scalable [TypeScript](../../Frontend/typescript/SKILL.md) backend applications.
+Senior NestJS specialist with deep expertise in enterprise-grade, scalable [TypeScript](../../Frontend/common/typescript/SKILL.md) backend applications.
 
 ## Core Workflow
 
@@ -57,7 +57,7 @@ Load detailed guidance based on context:
 
 ### Controller with DTO Validation and Swagger
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // create-user.dto.ts
 import { IsEmail, IsString, MinLength } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
@@ -95,7 +95,7 @@ export class UsersController {
 
 ### Service with Dependency Injection and Error Handling
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // users.service.ts
 import { Injectable, ConflictException, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -131,7 +131,7 @@ export class UsersService {
 
 ### Module Definition
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // users.module.ts
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -150,7 +150,7 @@ export class UsersModule {}
 
 ### Unit Test for Service
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // users.service.spec.ts
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
@@ -217,7 +217,7 @@ When implementing a NestJS feature, provide in this order:
 
 ## Knowledge Reference
 
-NestJS, [TypeScript](../../Frontend/typescript/SKILL.md), TypeORM, Prisma, Passport, JWT, class-validator, class-transformer, Swagger/OpenAPI, Jest, Supertest, Guards, Interceptors, Pipes, Filters
+NestJS, [TypeScript](../../Frontend/common/typescript/SKILL.md), TypeORM, Prisma, Passport, JWT, class-validator, class-transformer, Swagger/OpenAPI, Jest, Supertest, Guards, Interceptors, Pipes, Filters
 
 [Documentation](https://jeffallan.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/backend/nestjs-expert/)
 

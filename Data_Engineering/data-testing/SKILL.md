@@ -409,7 +409,7 @@ test_types:
   
   performance_test:
     scope: "Query runtime, resource consumption"
-    tool: "Query [profiling](../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) (warehouse-native)"
+    tool: "Query [profiling](../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md) (warehouse-native)"
     frequency: "Weekly"
     failure: "Alert on > 50% regression in runtime"
   

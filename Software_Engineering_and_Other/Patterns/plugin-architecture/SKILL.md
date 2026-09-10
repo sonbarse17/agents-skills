@@ -138,8 +138,8 @@ public interface AuthenticationProvider {
 }
 ```
 
-```[typescript](../../Frontend/typescript/SKILL.md)
-// [TypeScript](../../Frontend/typescript/SKILL.md) — NotificationChannel SPI
+```[typescript](../../Frontend/common/typescript/SKILL.md)
+// [TypeScript](../../Frontend/common/typescript/SKILL.md) — NotificationChannel SPI
 export interface NotificationChannel {
   readonly name: string;
   readonly type: string;
@@ -326,7 +326,7 @@ class IsolatedPlugin {
 ## Implementation Patterns
 
 ### Plugin Registry Pattern
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 interface PluginManifest {
   name: string;
   version: string;
@@ -365,7 +365,7 @@ class PluginRegistry {
 ```
 
 ### Extension Point Registry
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 class ExtensionPoint<T> {
   private implementations: Map<string, T> = new Map();
 
@@ -402,7 +402,7 @@ authProviders.register('ldap', new LDAPProvider());
 ```
 
 ### Plugin Configuration Pattern
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 class PluginConfigManager {
   private configs = new Map<string, object>();
 
@@ -445,7 +445,7 @@ Use semantic versioning for the plugin API:
 - **Patch**: Bug fix — no plugin changes needed
 
 ### Resource Limits
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 class PluginResourceLimiter {
   private limits = new Map<string, {
     maxMemory: number;

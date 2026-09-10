@@ -190,8 +190,8 @@ npm install package@version
 
 ### Step 4: Use Debugging Tools
 
-```[typescript](../../Frontend/typescript/SKILL.md)
-// [TypeScript](../../Frontend/typescript/SKILL.md)/JavaScript: Chrome DevTools or VS Code debugger
+```[typescript](../../Frontend/common/typescript/SKILL.md)
+// [TypeScript](../../Frontend/common/typescript/SKILL.md)/JavaScript: Chrome DevTools or VS Code debugger
 // 1. Set breakpoint before the crash
 // 2. Step through to find null/undefined value
 // 3. Check call stack for unexpected caller
@@ -238,7 +238,7 @@ fix:
     - "Existing tests still pass"
     - "Manually reproduce scenario → no crash"
   prevention:
-    - "Add nullable reference types (C#) / strictNullChecks ([TypeScript](../../Frontend/typescript/SKILL.md))"
+    - "Add nullable reference types (C#) / strictNullChecks ([TypeScript](../../Frontend/common/typescript/SKILL.md))"
     - "Add contract test for GetName()"
     - "Consider using Option/Maybe type instead of null"
 ```
@@ -276,7 +276,7 @@ fix:
 ## Advanced Techniques
 
 ### Debugging Race Conditions
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Add thread-safe logging with timestamps
 const debug = (msg: string) =>
   console.log(`[${Date.now()}] [${process.pid}] ${msg}`);
@@ -490,7 +490,7 @@ git bisect run /tmp/bisect.sh
 
 ```
 What language/platform?
-├── JavaScript / [TypeScript](../../Frontend/typescript/SKILL.md)
+├── JavaScript / [TypeScript](../../Frontend/common/typescript/SKILL.md)
 │   ├── Node.js backend → --inspect + Chrome DevTools / VS Code
 │   ├── Browser → Chrome DevTools / React DevTools / Redux DevTools
 │   └── Mobile (React Native) → Flipper / React Native Debugger

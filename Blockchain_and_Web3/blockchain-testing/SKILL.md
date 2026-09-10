@@ -78,13 +78,13 @@ Blockchain platform:
 │   │   ├── forge coverage: line/branch coverage
 │   │   ├── forge snapshot: gas benchmarking
 │   │   └── Foundry fuzz: built-in parameterized + stateful fuzzing
-│   ├── JavaScript/[TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) → Hardhat
+│   ├── JavaScript/[TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) → Hardhat
 │   │   ├── Hardhat network: mainnet forking, mining control
 │   │   ├── Hardhat chai matchers: ethers-native assertions
 │   │   └── Hardhat console.log: debug in Solidity
 │   └── Legacy → Truffle (not recommended)
 ├── Solana → Anchor test framework
-│   ├── [TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) SDK for integration tests
+│   ├── [TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) SDK for integration tests
 │   ├── Local validator (solana-test-validator)
 │   └── Mainnet fork via bankrun
 ├── Cosmos → Cosmos SDK test suite

@@ -53,7 +53,7 @@ A multi-stage build compiles or installs in one stage and copies only the result
 a clean final stage. Compilers, headers, and package caches have no business shipping to
 production — they add size and give an attacker a toolbox if they land a shell. Name your stages
 (`AS build`, `AS runtime`) so the final `COPY --from=build` is unambiguous. Sizing the runtime
-image itself — which base to start the final stage from — is `[image-optimization](../../../../Software_Engineering_and_Other/Frontend/image-optimization/SKILL.md)`'s job; this
+image itself — which base to start the final stage from — is `[image-optimization](../../../../Software_Engineering_and_Other/Frontend/ui-ux/image-optimization/SKILL.md)`'s job; this
 step is about the boundary between building and running.
 
 **Done when:** the runtime image contains no compiler, package manager cache, or source outside

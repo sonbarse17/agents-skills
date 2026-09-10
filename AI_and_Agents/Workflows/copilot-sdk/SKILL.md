@@ -59,9 +59,9 @@ Your App → SDK Client → [stdio/TCP] → Copilot CLI → Model Provider
 
 All SDK usage follows: create a client, create a session, send messages.
 
-### Node.js / [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+### Node.js / [TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { CopilotClient } from "@[github](../../../ci-cd/github-actions/other/github/SKILL.md)/copilot-sdk";
 
 const client = new CopilotClient();
@@ -119,7 +119,7 @@ Enable real-time output by setting `streaming: true` and subscribing to delta ev
 
 ### Node.js
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const session = await client.createSession({ model: "gpt-4.1", streaming: true });
 
 session.on("assistant.message_delta", (event) => {
@@ -165,7 +165,7 @@ Define tools that Copilot can call to extend its capabilities.
 
 ### Node.js
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { CopilotClient, defineTool } from "@[github](../../../ci-cd/github-actions/other/github/SKILL.md)/copilot-sdk";
 
 const getWeather = defineTool("get_weather", {
@@ -259,7 +259,7 @@ Intercept and [customize](../../../AI_and_Agents/Infrastructure/deploy-model/[cu
 
 Control tool permissions, modify arguments, or inject context before tool execution.
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const session = await client.createSession({
     hooks: {
         onPreToolUse: async (input) => {
@@ -288,7 +288,7 @@ const session = await client.createSession({
 
 Transform results, redact sensitive data, or log tool activity after execution.
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 hooks: {
     onPostToolUse: async (input) => {
         // Redact sensitive data from results
@@ -312,7 +312,7 @@ hooks: {
 
 Modify or enhance user prompts before processing. Useful for prompt templates, context injection, and input validation.
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 hooks: {
     onUserPromptSubmitted: async (input) => {
         return {
@@ -327,12 +327,12 @@ hooks: {
 
 ### Session Lifecycle Hooks
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 hooks: {
     onSessionStart: async (input, invocation) => {
         // input.source: "startup" | "resume" | "new"
         console.log(`Session ${invocation.sessionId} started (${input.source})`);
-        return { additionalContext: "Project uses [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) and React." };
+        return { additionalContext: "Project uses [TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) and React." };
     },
     onSessionEnd: async (input, invocation) => {
         // input.reason: "complete" | "error" | "abort" | "timeout" | "user_exit"
@@ -344,7 +344,7 @@ hooks: {
 
 ### Error Handling Hook
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 hooks: {
     onErrorOccurred: async (input) => {
         // input.errorContext: "model_call" | "tool_execution" | "system" | "user_input"
@@ -392,7 +392,7 @@ Connect to MCP (Model Context Protocol) servers for pre-built tool capabilities.
 
 ### Local Stdio Server
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const session = await client.createSession({
     mcpServers: {
         filesystem: {
@@ -410,7 +410,7 @@ const session = await client.createSession({
 
 ### Remote HTTP Server
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const session = await client.createSession({
     mcpServers: {
         [github](../../../ci-cd/github-actions/other/github/SKILL.md): {
@@ -481,7 +481,7 @@ npx @modelcontextprotocol/inspector /path/to/your/mcp-server
 
 ### Programmatic Token
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const client = new CopilotClient({ githubToken: process.env.GITHUB_TOKEN });
 ```
 
@@ -489,7 +489,7 @@ const client = new CopilotClient({ githubToken: process.env.GITHUB_TOKEN });
 
 For multi-user apps where users sign in with [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md):
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const client = new CopilotClient({
     githubToken: userAccessToken,    // gho_ or ghu_ token from OAuth flow
     useLoggedInUser: false,          // Don't use stored CLI credentials
@@ -503,7 +503,7 @@ const client = new CopilotClient({
 
 Prevent the SDK from using stored credentials:
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const client = new CopilotClient({ useLoggedInUser: false });
 ```
 
@@ -516,12 +516,12 @@ Use your own API keys — no Copilot subscription required. The CLI acts as agen
 ### Provider Configurations
 
 **OpenAI:**
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 provider: { type: "openai", baseUrl: "https://api.openai.com/v1", apiKey: process.env.OPENAI_API_KEY }
 ```
 
 **Azure AI Foundry (OpenAI-compatible):**
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 provider: {
     type: "openai",
     baseUrl: "https://your-resource.openai.azure.com/openai/v1/",
@@ -531,7 +531,7 @@ provider: {
 ```
 
 **Azure OpenAI (native endpoint):**
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 provider: {
     type: "azure",
     baseUrl: "https://my-resource.openai.azure.com",  // Just the host — no /openai/v1
@@ -541,12 +541,12 @@ provider: {
 ```
 
 **Anthropic:**
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 provider: { type: "anthropic", baseUrl: "https://api.anthropic.com", apiKey: process.env.ANTHROPIC_API_KEY }
 ```
 
 **Ollama (local):**
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 provider: { type: "openai", baseUrl: "http://localhost:11434/v1" }
 ```
 
@@ -598,7 +598,7 @@ session = await client.create_session(SessionConfig(
 
 Resume sessions across restarts by providing your own session ID.
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // Create with explicit ID
 const session = await client.createSession({
     sessionId: "user-123-task-456",
@@ -612,7 +612,7 @@ await resumed.sendAndWait({ prompt: "What did we discuss?" });
 
 ### Session Management
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const sessions = await client.listSessions();           // List all
 const lastId = await client.getLastSessionId();          // Get most recent
 await client.deleteSession("user-123-task-456");         // Delete from storage
@@ -648,7 +648,7 @@ Session state is saved to `~/.copilot/session-state/{sessionId}/`:
 
 For long-running workflows that may exceed context limits, enable auto-compaction:
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const session = await client.createSession({
     infiniteSessions: {
         enabled: true,
@@ -666,7 +666,7 @@ const session = await client.createSession({
 
 Define specialized AI personas:
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const session = await client.createSession({
     customAgents: [{
         name: "pr-reviewer",
@@ -683,7 +683,7 @@ const session = await client.createSession({
 
 Control AI behavior and personality:
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const session = await client.createSession({
     systemMessage: { content: "You are a helpful assistant. Always be concise." },
 });
@@ -695,7 +695,7 @@ const session = await client.createSession({
 
 Load skill directories to extend Copilot's capabilities:
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const session = await client.createSession({
     skillDirectories: ["./skills/[code-review](../../../Software_Engineering_and_Other/Miscellaneous/code-review/SKILL.md)", "./skills/documentation"],
     disabledSkills: ["experimental-feature"],
@@ -704,7 +704,7 @@ const session = await client.createSession({
 
 Skills can be combined with custom agents and MCP servers:
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const session = await client.createSession({
     skillDirectories: ["./skills/security"],
     customAgents: [{ name: "auditor", prompt: "Focus on OWASP Top 10." }],
@@ -718,7 +718,7 @@ const session = await client.createSession({
 
 Handle tool permissions and user input requests programmatically. The SDK uses a **deny-by-default** permission model — all permission requests are denied unless you provide a handler.
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const session = await client.createSession({
     onPermissionRequest: async (request) => {
         if (request.kind === "shell") {
@@ -736,7 +736,7 @@ const session = await client.createSession({
 
 Subscribe to usage events instead of using CLI `/usage`:
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 session.on("assistant.usage", (event) => {
     console.log("Tokens:", { input: event.data.inputTokens, output: event.data.outputTokens });
 });
@@ -750,7 +750,7 @@ session.on("assistant.usage", (event) => {
 
 SDK auto-spawns CLI as subprocess. Simplest setup — zero configuration.
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const client = new CopilotClient(); // Auto-manages CLI process
 ```
 
@@ -762,7 +762,7 @@ Run CLI in headless mode, connect SDK over TCP:
 copilot --headless --port 4321
 ```
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const client = new CopilotClient({ cliUrl: "localhost:4321" });
 ```
 
@@ -772,7 +772,7 @@ const client = new CopilotClient({ cliUrl: "localhost:4321" });
 
 Ship CLI binary with your app:
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const client = new CopilotClient({ cliPath: path.join(__dirname, "vendor", "copilot") });
 ```
 
@@ -871,13 +871,13 @@ Session export (`--share`), slash commands, interactive UI, terminal rendering, 
 
 Enable debug logging:
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const client = new CopilotClient({ logLevel: "debug" });
 ```
 
 Custom log directory:
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const client = new CopilotClient({ cliArgs: ["--log-dir", "/path/to/logs"] });
 ```
 
@@ -893,7 +893,7 @@ const client = new CopilotClient({ cliArgs: ["--log-dir", "/path/to/logs"] });
 
 ### Connection State
 
-```[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 console.log("State:", client.getState());  // "connected" after start()
 client.on("stateChange", (state) => console.log("Changed to:", state));
 ```

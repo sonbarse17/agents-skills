@@ -182,8 +182,8 @@ every staging deploy.
   traffic.
 - Treat DAST findings as one input among several: it does not see source
   code, so pair it with
-  [sast-integration](../[sast-integration](../../../Security/sast-integration/SKILL.md)/SKILL.md) for code-level issues
-  and [software-composition-analysis-sca](../[software-composition-analysis-sca](../../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md)
+  [sast-integration](../sast-integration/SKILL.md)/SKILL.md) for code-level issues
+  and [software-composition-analysis-sca](../software-composition-analysis-sca/SKILL.md)/SKILL.md)
   for vulnerable dependencies — none of the three alone gives full
   coverage.
 - Version-pin scanner images/actions and periodically refresh them —
@@ -291,9 +291,9 @@ confirm the finding clears.
 
 ## Cross-references
 
-- [sast-integration](../[sast-integration](../../../Security/sast-integration/SKILL.md)/SKILL.md) — static, source-level
+- [sast-integration](../sast-integration/SKILL.md)/SKILL.md) — static, source-level
   analysis that runs earlier and faster than DAST but cannot see runtime
   configuration or deployment-specific issues.
-- [secure-cicd-gates](../[secure-cicd-gates](../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — how to combine
+- [secure-cicd-gates](../secure-cicd-gates/SKILL.md)/SKILL.md) — how to combine
   DAST with SAST/SCA gates into a coherent pipeline without duplicating
   or contradicting each other's blocking behavior.

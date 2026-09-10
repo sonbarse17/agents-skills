@@ -1018,7 +1018,7 @@ jobs:
             jq -r '.results[] | "  \(.severity): \(.issue_text) in \(.filename):\(.line_number)"' bandit-report.json
           fi
 
-      - name: Run ESLint security plugin (JavaScript/[TypeScript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md))
+      - name: Run ESLint security plugin (JavaScript/[TypeScript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md))
         if: hashFiles('**/*.js') != '' || hashFiles('**/*.ts') != ''
         run: |
           npm ci

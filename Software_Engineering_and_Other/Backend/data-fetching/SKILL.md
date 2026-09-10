@@ -136,7 +136,7 @@ Query error received?
 - Polling for real-time data via `refetchInterval`.
 - Dependent queries: enable second query only when first has data.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // TanStack Query v5 — basic setup
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -165,7 +165,7 @@ function App() {
 - Mutation side effects via callbacks: `onMutate`, `onError`, `onSettled`.
 - Show optimistic UI state during mutation.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Optimistic update pattern
 function useAddTodo() {
   const queryClient = useQueryClient()
@@ -203,7 +203,7 @@ function useAddTodo() {
 - Infinite scroll: IntersectionObserver triggers `fetchNextPage`.
 - Loading states: `isFetchingNextPage` vs `isLoading`.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Infinite scroll with cursor pagination
 function useInfiniteProducts() {
   return useInfiniteQuery({
@@ -247,7 +247,7 @@ function ProductList() {
 - Display stale data when refetch fails — never show blank screen.
 - Refetch on reconnect via `refetchOnReconnect: true`.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Global error handling
 const queryClient = new QueryClient({
   queryCache: new QueryCache({
@@ -273,7 +273,7 @@ const queryClient = new QueryClient({
 - Cache key uniquely identifies data — include all params.
 - Persist cache to localStorage for offline resilience.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Per-query staleTime configuration
 const useUser = (id: string) => useQuery({
   queryKey: ['users', id],
@@ -291,7 +291,7 @@ const useStockPrice = (symbol: string) => useQuery({
 ```
 
 ### 7. Query Key Design
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Hierarchical key structure
 ['todos']                          // All todos
 ['todos', todoId]                  // Single todo
@@ -301,7 +301,7 @@ const useStockPrice = (symbol: string) => useQuery({
 ```
 
 ### 8. Prefetching for Instant UX
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Prefetch on hover
 function ProductLink({ id }: { id: string }) {
   const queryClient = useQueryClient()
@@ -333,7 +333,7 @@ useEffect(() => {
 ```
 
 ### 9. Cache Persistence (Offline Support)
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import { createSyncStoragePersister } from '@tanstack/query-sync-storage-persister'
 import { persistQueryClient } from '@tanstack/react-query-persist-client'
 
@@ -517,7 +517,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/performance/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |
@@ -533,7 +533,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### [Profiling](../../Frontend/profiling/SKILL.md) Methodology
+### [Profiling](../../Frontend/performance/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking

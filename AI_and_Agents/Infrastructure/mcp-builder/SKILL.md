@@ -102,7 +102,7 @@ Key pages to review:
 
 | Language | Best For | SDK |
 |----------|----------|-----|
-| **[TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)** (recommended) | General MCP servers, broad compatibility | `@modelcontextprotocol/sdk` |
+| **[TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)** (recommended) | General MCP servers, broad compatibility | `@modelcontextprotocol/sdk` |
 | **[Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)** | Data/ML pipelines, FastAPI integration | `mcp` (FastMCP) |
 | **C#/.NET** | Azure/Microsoft ecosystem, enterprise | `Microsoft.Mcp.Core` |
 
@@ -117,9 +117,9 @@ Key pages to review:
 
 - **MCP Best Practices**: [📋 View Best Practices](./reference/mcp_best_practices.md) - Core guidelines
 
-**For [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) (recommended):**
-- **[TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) SDK**: Use WebFetch to load `https://raw.githubusercontent.com/modelcontextprotocol/[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)-sdk/main/README.md`
-- [⚡ [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) Guide](./reference/node_mcp_server.md) - [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) patterns and examples
+**For [TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) (recommended):**
+- **[TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) SDK**: Use WebFetch to load `https://raw.githubusercontent.com/modelcontextprotocol/[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)-sdk/main/README.md`
+- [⚡ [TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) Guide](./reference/node_mcp_server.md) - [TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) patterns and examples
 
 **For [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md):**
 - **[Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) SDK**: Use WebFetch to load `https://raw.githubusercontent.com/modelcontextprotocol/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-sdk/main/README.md`
@@ -143,7 +143,7 @@ Prioritize comprehensive API coverage. List endpoints to implement, starting wit
 #### 2.1 Set Up Project Structure
 
 See language-specific guides for project setup:
-- [⚡ [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) Guide](./reference/node_mcp_server.md) - Project structure, package.json, tsconfig.json
+- [⚡ [TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) Guide](./reference/node_mcp_server.md) - Project structure, package.json, tsconfig.json
 - [🐍 [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) Guide](./reference/python_mcp_server.md) - Module organization, dependencies
 - [🔷 Microsoft MCP Patterns](./reference/microsoft_mcp_patterns.md) - C# project structure, command hierarchy
 
@@ -160,13 +160,13 @@ Create shared utilities:
 For each tool:
 
 **Input Schema:**
-- Use Zod ([TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)) or Pydantic ([Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md))
+- Use Zod ([TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)) or Pydantic ([Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md))
 - Include constraints and clear descriptions
 - Add examples in field descriptions
 
 **Output Schema:**
 - Define `outputSchema` where possible for structured data
-- Use `structuredContent` in tool responses ([TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) SDK feature)
+- Use `structuredContent` in tool responses ([TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) SDK feature)
 - Helps clients understand and process tool outputs
 
 **Tool Description:**
@@ -200,7 +200,7 @@ Review for:
 
 #### 3.2 Build and Test
 
-**[TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md):**
+**[TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md):**
 - Run `npm run build` to verify compilation
 - Test with MCP Inspector: `npx @modelcontextprotocol/inspector`
 
@@ -282,7 +282,7 @@ Load these resources as needed during development:
 
 ### SDK Documentation (Load During Phase 1/2)
 - **[Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) SDK**: Fetch from `https://raw.githubusercontent.com/modelcontextprotocol/[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-sdk/main/README.md`
-- **[TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) SDK**: Fetch from `https://raw.githubusercontent.com/modelcontextprotocol/[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)-sdk/main/README.md`
+- **[TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) SDK**: Fetch from `https://raw.githubusercontent.com/modelcontextprotocol/[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)-sdk/main/README.md`
 - **Microsoft MCP SDK**: See [Microsoft MCP Patterns](./reference/microsoft_mcp_patterns.md) for C#/.NET
 
 ### Language-Specific Implementation Guides (Load During Phase 2)
@@ -293,7 +293,7 @@ Load these resources as needed during development:
   - Complete working examples
   - Quality checklist
 
-- [⚡ [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) Implementation Guide](./reference/node_mcp_server.md) - Complete [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) guide with:
+- [⚡ [TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) Implementation Guide](./reference/node_mcp_server.md) - Complete [TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) guide with:
   - Project structure
   - Zod schema patterns
   - Tool registration with `server.registerTool`

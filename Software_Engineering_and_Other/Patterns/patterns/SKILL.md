@@ -270,7 +270,7 @@ class OrderScreen extends ConsumerWidget {
 ```
 
 ### React Native — Zustand
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Store
 import { create } from 'zustand';
 
@@ -630,7 +630,7 @@ sealed class UiState<out T> {
 ```
 
 ### Optimistic UI Updates
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Zustand — optimistic update with rollback
 const useOrderStore = create<OrderState>((set, get) => ({
   deleteOrder: async (id: string) => {

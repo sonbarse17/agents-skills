@@ -95,7 +95,7 @@ Form complexity?
   |     |-- React --> React Hook Form (uncontrolled, fast) or Formik (controlled, simpler)
   |     |-- Vue --> VeeValidate + Zod
   |     |-- Angular --> Reactive Forms (built-in)
-  |     |-- Svelte --> [SvelteKit](../../Frontend/sveltekit/SKILL.md) Forms or Felte
+  |     |-- Svelte --> [SvelteKit](../../Frontend/frameworks/sveltekit/SKILL.md) Forms or Felte
   |
   |-- Moderate (10-30 fields, field arrays, dependent fields) -->
   |     |-- React --> React Hook Form + Zod (field arrays, useWatch)
@@ -104,7 +104,7 @@ Form complexity?
   |-- Complex (30+ fields, multi-step wizard, dynamic field arrays) -->
   |     |-- React --> React Hook Form + Zod (persist step data, lazy register)
   |
-  |-- Cross-framework / [monorepo](../../Frontend/monorepo/SKILL.md) -->
+  |-- Cross-framework / [monorepo](../../Frontend/build-tools/monorepo/SKILL.md) -->
         |-- TanStack Form (React, Vue, Solid, Svelte)
 ```
 
@@ -161,7 +161,7 @@ Paginated or wizard?
 
 ### 2. Schema Validation
 - Define Zod/Yup/Joi schemas shared between frontend and backend when possible.
-- Infer [TypeScript](../../Frontend/typescript/SKILL.md) types from schema: `z.infer<typeof schema>`.
+- Infer [TypeScript](../../Frontend/common/typescript/SKILL.md) types from schema: `z.infer<typeof schema>`.
 - Field-level validation for immediate feedback; form-level validation for cross-field rules.
 - Async validation (e.g., username uniqueness): debounce 300ms, abort previous on new keystroke.
 - Schema is the single source of truth — never duplicate validation rules.
@@ -269,7 +269,7 @@ User interacts with field
 
 Prompt the user when they navigate away from a dirty form:
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // React Router v6
 import { useBlocker } from 'react-router-dom';
 
@@ -283,7 +283,7 @@ function useUnsavedChanges(isDirty: boolean) {
 }
 ```
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Next.js App Router
 import { useEffect } from 'react';
 
@@ -317,7 +317,7 @@ For forms with 50+ fields, consider: virtualized field list (react-window), defe
 ## Form Testing Patterns
 
 ### React Hook Form Testing
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import { render, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -343,7 +343,7 @@ describe('RegistrationForm', () => {
 ```
 
 ### Form Security Patterns
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // CSRF token
 <form method="POST" action="/api/submit">
   <input type="hidden" name="_csrf" value={csrfToken} />
@@ -368,7 +368,7 @@ const handleSubmit = async (data: FormData) => {
 ## Common Pitfalls
 
 ### 1. Submit Button Disabled Based on isValid
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // BAD -- user can't submit to see all errors
 <button disabled={!isValid}>Submit</button>
 
@@ -383,7 +383,7 @@ Users lose form data when they accidentally navigate away. Always implement unsa
 Client validation is for UX. Server validation is for security. Always re-validate on the server — client validation can be bypassed.
 
 ### 4. Not Resetting Form After Submit
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // BAD -- form stays dirty after submit
 onSubmit: async (data) => { await api.post(data) }
 
@@ -490,7 +490,7 @@ config:
 
 | Anti-Pattern | Symptom | Root Cause | Solution |
 |-------------|---------|------------|----------|
-| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/profiling/SKILL.md) | Measure first, optimize based on data |
+| Premature optimization | Complex code for no measured benefit | Guessing instead of [profiling](../../Frontend/performance/profiling/SKILL.md) | Measure first, optimize based on data |
 | Copy-paste reuse | Duplicate code across codebase | Lack of abstraction | Extract shared logic into libraries |
 | Gold-plating | Features with no current requirement | Over-engineering | YAGNI — build what's needed now |
 | Magical thinking | Assumptions without validation | Skipping error handling | Handle all failure modes explicitly |

@@ -110,7 +110,7 @@ The Domain layer is the innermost layer. It contains entities, value objects, do
 
 Domain entities encapsulate business rules and invariants. Value objects are immutable and compared by value. Domain events represent something meaningful that happened in the domain. Repository interfaces define the contract for data access without specifying the implementation. Domain services orchestrate domain logic that doesn't naturally belong to a single entity.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Domain — pure business logic, zero external dependencies
 export class Email {
   private constructor(public readonly value: string) {
@@ -143,7 +143,7 @@ class Order:
 ### Application Layer (Use Cases)
 The Application layer contains use case interactors, application services, command/query handlers, DTOs, and port interfaces. It depends only on the Domain layer. Use cases orchestrate the flow of data to and from the Domain layer. Each use case has a single responsibility: execute a specific business operation.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Application — orchestrates domain, depends only on Domain interfaces
 class CreateOrderHandler {
   constructor(
@@ -182,7 +182,7 @@ Presentation → Application → Domain ← Infrastructure
 ```
 
 ### Dependency Rule (Strict Check)
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // VIOLATION: Domain imports infrastructure
 import { Entity, Column } from 'typeorm';  // WRONG
 
@@ -212,7 +212,7 @@ Ports are interfaces defined in the Domain or Application layer. Adapters are co
 ### Composition Root
 The Composition Root is the entry point of the application where all dependencies are wired together. It is located in the Infrastructure layer. The Composition Root creates concrete implementations and injects them into the Application layer.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Composition Root — the ONLY place where concrete implementations are instantiated
 function buildContainer(): Container {
   const db = new PostgresConnection(config.dbUrl);
@@ -253,7 +253,7 @@ class OrderService:
 ### Command and Query Separation
 Commands change state (mutations). Queries return data (no side effects).
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Command — mutates state, returns success/failure
 class CancelOrderCommand {
   constructor(public readonly orderId: string, public readonly reason: string) {}
@@ -274,7 +274,7 @@ class GetOrderHandler implements IQueryHandler<GetOrderQuery, OrderDTO> {
 ### Use Case Transaction Boundaries
 Transactions belong in Application layer use cases — not in controllers, not in repositories.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 class TransferFundsHandler {
   constructor(
     private readonly accountRepo: IAccountRepository,
@@ -304,7 +304,7 @@ class TransferFundsHandler {
 - Reference other aggregates by ID only, never by object reference
 - Aggregate root is the single entry point — all operations go through the root
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Aggregate Root: Order
 class Order extends AggregateRoot {
   private items: OrderItem[] = [];
@@ -343,7 +343,7 @@ class OrderItem {
 ### DTO Design
 DTOs are simple data containers with no behavior. They exist at the Presentation boundary. Never expose Domain entities directly to external consumers.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Presentation DTO — flat, serializable, no behavior
 interface CreateOrderRequest {
   customerId: string;
@@ -360,7 +360,7 @@ interface OrderResponse {
 ```
 
 ### Mapping Strategy
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Presentation layer mapper — converts Domain → DTO
 function orderToResponse(order: Order): OrderResponse {
   return {
@@ -386,7 +386,7 @@ def order_to_response(order: Order) -> OrderResponse:
 ```
 
 ### Anti-Pattern: Serializing Domain Entities Directly
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // WRONG — exposing Domain entity to external consumer
 @Get('/orders/:id')
 async getOrder(id: string): Promise<Order> {
@@ -411,7 +411,7 @@ Infra:    InfrastructureError (network failure, DB connection lost)
 Presentation: HTTP status code mapping (404, 409, 422, 500)
 ```
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Domain — business concept error
 class InsufficientBalanceError extends DomainError {
   constructor(accountId: string) {
@@ -458,7 +458,7 @@ class ErrorMapper {
 | Infrastructure | Integration | DB queries, API client, message queues | Real DB (test container), mock server |
 | Presentation | E2E | Controllers, resolvers, middleware, request/response | Test server instance |
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Domain test — zero mocks
 describe('Email Value Object', () => {
   it('rejects invalid format', () => {
@@ -483,7 +483,7 @@ describe('CreateOrderHandler', () => {
 
 ### Logging
 Define interface in Application, implement in Infrastructure:
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Application port
 interface ILogger {
   info(msg: string, ctx?: object): void;
@@ -493,7 +493,7 @@ interface ILogger {
 ```
 
 ### Caching
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Application port
 interface ICacheService {
   get<T>(key: string): Promise<T | null>;

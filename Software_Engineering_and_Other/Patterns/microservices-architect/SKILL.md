@@ -97,7 +97,7 @@ def get_inventory(order_id: str):
         return {"status": "unavailable", "fallback": True}
 ```
 
-### Saga Orchestration Skeleton ([TypeScript](../../Frontend/typescript/SKILL.md))
+### Saga Orchestration Skeleton ([TypeScript](../../Frontend/common/typescript/SKILL.md))
 ```ts
 // Each step defines execute() and compensate() so rollback is automatic.
 interface SagaStep<T> {

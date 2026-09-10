@@ -47,7 +47,7 @@ Exact user phrases: "background job", "task queue", "worker", "job processing", 
 Job and worker design as formatted text.
 
 ### Response Format
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Job contract (interface/type)
 // Worker implementation outline
 ```
@@ -182,7 +182,7 @@ Fire-and-forget: no callback, best-effort delivery, highest throughput. Delayed:
 
 ### Step 4: Job Contract Definition
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 interface Job<T = unknown> {
   id: string;                         // UUIDv7, sortable by time
   type: string;                       // Discriminator: "send-email" | "generate-report"
@@ -208,7 +208,7 @@ interface SendEmailPayload {
 ```
 
 **BullMQ job definition:**
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import { Queue, Worker, Job } from 'bullmq';
 
 const emailQueue = new Queue<SendEmailPayload>('email', {
@@ -293,7 +293,7 @@ BackgroundJob.Schedule<SendEmailJob>(j => j.ExecuteAsync(...), TimeSpan.FromHour
 
 Exponential backoff with jitter: `delay = min(baseDelay * 2^retryCount + jitter, maxDelay)`.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 function calculateDelay(retryCount: number, baseDelay = 1000, maxDelay = 21_600_000): number {
   const delay = Math.min(baseDelay * Math.pow(2, retryCount), maxDelay);
   const jitter = delay * 0.25 * (Math.random() * 2 - 1);
@@ -309,7 +309,7 @@ function calculateDelay(retryCount: number, baseDelay = 1000, maxDelay = 21_600_
 | Non-recoverable | 0 (immediate DLQ) | None | ValidationError, AuthenticationError |
 
 DLQ schema:
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 interface DeadLetterMessage {
   originalJob: Job;
   errorHistory: Array<{
@@ -332,7 +332,7 @@ interface DeadLetterMessage {
 | >30s (video transcoding, data sync) | 1 | CPU * 0.5 | 10 |
 
 Graceful shutdown:
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 async function gracefulShutdown(worker: Worker): Promise<void> {
   console.log('Shutting down worker...');
   await worker.close(); // Stop accepting new jobs
@@ -355,7 +355,7 @@ process.on('SIGINT', () => gracefulShutdown(worker));
 
 Same job payload processed twice must produce same result.
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 async function processJob(job: Job<SendEmailPayload>): Promise<void> {
   const alreadyProcessed = await checkIdempotency(job.idempotencyKey);
   if (alreadyProcessed) { return; }
@@ -376,7 +376,7 @@ Idempotency key format: `{job-type}:{entity-id}:{action}` (e.g., `send-email:ord
 
 ### Step 8: Job Scheduling (Cron)
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // BullMQ scheduler
 import { QueueScheduler } from 'bullmq';
 
@@ -404,7 +404,7 @@ Cron best practices:
 
 ### Step 9: Chained Workflows
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // BullMQ flow producer
 const flow = new FlowProducer({ connection: { host: 'redis', port: 6379 } });
 
@@ -435,7 +435,7 @@ await flow.add({
 ```
 
 For compensation on failure:
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 async function processOrder(job: Job): Promise<void> {
   try {
     await chargePayment(job.data.orderId);
@@ -469,7 +469,7 @@ async function processOrder(job: Job): Promise<void> {
 ```
 
 ### Prometheus Metrics
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import { Counter, Histogram, Gauge } from 'prom-client';
 
 const jobsProcessed = new Counter({
@@ -499,7 +499,7 @@ const workerUtilization = new Gauge({
 ```
 
 ### Job Dashboard
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import { createBullBoard } from '@bull-board/api';
 import { BullMQAdapter } from '@bull-board/api/bullMQAdapter';
 import { ExpressAdapter } from '@bull-board/express';

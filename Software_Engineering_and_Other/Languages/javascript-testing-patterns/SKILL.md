@@ -18,7 +18,7 @@ depends_on:
 
 # JavaScript Testing Patterns
 
-Comprehensive guide for implementing robust testing strategies in JavaScript/[TypeScript](../../Frontend/typescript/SKILL.md) applications using modern testing frameworks and best practices.
+Comprehensive guide for implementing robust testing strategies in JavaScript/[TypeScript](../../Frontend/common/typescript/SKILL.md) applications using modern testing frameworks and best practices.
 
 ## When to Use This Skill
 
@@ -37,7 +37,7 @@ Comprehensive guide for implementing robust testing strategies in JavaScript/[Ty
 
 **Setup:**
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // jest.config.ts
 import type { Config } from "jest";
 
@@ -69,7 +69,7 @@ export default config;
 
 **Setup:**
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // vitest.config.ts
 import { defineConfig } from "vitest/config";
 
@@ -91,7 +91,7 @@ export default defineConfig({
 
 ### Pattern 1: Testing Pure Functions
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // utils/calculator.ts
 export function add(a: number, b: number): number {
   return a + b;
@@ -142,7 +142,7 @@ describe("Calculator", () => {
 
 ### Pattern 2: Testing Classes
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // services/user.service.ts
 export class UserService {
   private users: Map<string, User> = new Map();
@@ -224,7 +224,7 @@ describe("UserService", () => {
 
 ### Pattern 3: Testing Async Functions
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // services/api.service.ts
 export class ApiService {
   async fetchUser(id: string): Promise<User> {
@@ -313,7 +313,7 @@ describe("ApiService", () => {
 
 ### Pattern 1: Mocking Modules
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // services/email.service.ts
 import nodemailer from "nodemailer";
 
@@ -375,7 +375,7 @@ describe("EmailService", () => {
 
 ### Pattern 2: Dependency Injection for Testing
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // services/user.service.ts
 export interface IUserRepository {
   findById(id: string): Promise<User | null>;
@@ -452,7 +452,7 @@ describe("UserService", () => {
 
 ### Pattern 3: Spying on Functions
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // utils/logger.ts
 export const logger = {
   info: (message: string) => console.log(`INFO: ${message}`),
@@ -514,7 +514,7 @@ For complete React component test examples (UserForm, hooks with `renderHook`/`a
 
 Use `@faker-js/faker` to generate realistic test data factories. Factories accept optional `overrides` so tests can set only the fields they care about:
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // tests/fixtures/user.fixture.ts
 import { faker } from "@faker-js/faker";
 
@@ -544,7 +544,7 @@ For snapshot testing, coverage configuration, test organization patterns, promis
 9. **Keep tests fast**: Mock slow operations
 10. **Write tests first (TDD)**: When possible
 11. **Maintain test coverage**: Aim for 80%+ coverage
-12. **Use [TypeScript](../../Frontend/typescript/SKILL.md)**: For type-safe tests
+12. **Use [TypeScript](../../Frontend/common/typescript/SKILL.md)**: For type-safe tests
 13. **Test error handling**: Not just success cases
 14. **Use data-testid sparingly**: Prefer semantic queries
 15. **Clean up after tests**: Prevent test pollution

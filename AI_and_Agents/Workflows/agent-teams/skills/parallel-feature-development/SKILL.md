@@ -88,7 +88,7 @@ If a file genuinely needs changes from multiple implementers:
 
 When implementers need to coordinate at boundaries:
 
-```[typescript](../../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // src/types/auth-contract.ts (owned by team-lead, read-only for implementers)
 export interface AuthResponse {
   token: string;

@@ -505,7 +505,7 @@ finops_maturity:
     ]
     tools: [
       "Custom cost attribution pipeline",
-      "Query [profiling](../../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) (Snowflake QUERY_HISTORY, BigQuery INFORMATION_SCHEMA)",
+      "Query [profiling](../../../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md) (Snowflake QUERY_HISTORY, BigQuery INFORMATION_SCHEMA)",
       "Automated anomaly detection",
       "FinOps [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) (Tableau, Power BI)"
     ]

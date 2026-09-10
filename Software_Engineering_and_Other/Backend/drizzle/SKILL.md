@@ -89,7 +89,7 @@ Decision: Performance + SQL control + edge → Drizzle. Rich ORM features + auto
 
 ### Step 1: Schema Definition
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // src/db/schema/users.ts
 import { pgTable, uuid, varchar, boolean, timestamp, uniqueIndex, index } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
@@ -127,7 +127,7 @@ export const posts = pgTable('posts', {
 
 ### Step 2: Relations
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // src/db/schema/relations.ts
 import { relations } from 'drizzle-orm';
 import { users } from './users';
@@ -147,7 +147,7 @@ export const postsRelations = relations(posts, ({ one }) => ({
 
 ### Step 3: Connection and Query
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // src/db/index.ts
 import { drizzle } from 'drizzle-orm/node-postgres';
 import { Pool } from 'pg';
@@ -230,7 +230,7 @@ export async function searchUsers(query: string) {
 
 ### Step 4: Prepared Statements
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // src/db/prepared.ts
 import { db } from './index';
 import { users } from './schema/users';
@@ -265,7 +265,7 @@ npx drizzle-kit check
 # Drizzle Kit config
 ```
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // drizzle.config.ts
 import type { Config } from 'drizzle-kit';
 
@@ -281,7 +281,7 @@ export default {
 
 ### Step 6: Edge/[Serverless](../../Patterns/serverless/SKILL.md) Connection
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // src/db/edge.ts — Neon [serverless](../../Patterns/serverless/SKILL.md)
 import { drizzle } from 'drizzle-orm/neon-http';
 import { neon } from '@neondatabase/[serverless](../../Patterns/serverless/SKILL.md)';
@@ -302,7 +302,7 @@ export const db = drizzle(client, { schema });
 
 ### Pattern: Batch Insert
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 export async function createUsers(data: { email: string; name: string }[]) {
   return db.insert(users).values(data).returning();
 }
@@ -310,7 +310,7 @@ export async function createUsers(data: { email: string; name: string }[]) {
 
 ### Pattern: Raw SQL with Type Safety
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import { sql } from 'drizzle-orm';
 
 export async function getActiveUsersCount() {
@@ -324,7 +324,7 @@ export async function getActiveUsersCount() {
 ## Production Considerations
 
 ### Connection Management
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 // Node.js (connection pooling)
 const pool = new Pool({ max: 20, idleTimeoutMillis: 30000 });
 
@@ -361,7 +361,7 @@ process.on('SIGTERM', async () => {
 
 ## Testing Strategies
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import { test, expect, beforeAll, afterAll } from 'vitest';
 import { Pool } from 'pg';
 import { drizzle } from 'drizzle-orm/node-postgres';
@@ -395,7 +395,7 @@ test('create and find user', async () => {
 Use `TEST_DATABASE_URL` for test isolation. Run tests with `--pool=forks` for parallelism. Use `drizzle-kit push` to set up test schema.
 
 ## Rules
-- Schema defined in [TypeScript](../../Frontend/typescript/SKILL.md) — one file per logical domain (users, posts, orders).
+- Schema defined in [TypeScript](../../Frontend/common/typescript/SKILL.md) — one file per logical domain (users, posts, orders).
 - Relations defined separately in `relations.ts` for each domain.
 - Drizzle Kit for all migrations — never manual SQL schema changes.
 - `db.select({ columns }).from(table).where(condition)` over `select *`.
@@ -480,7 +480,7 @@ class ConfigBuilder {
 
 ### Pattern: CRUD Repository with Drizzle
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import { pgTable, serial, text, timestamp, uuid } from 'drizzle-orm/pg-core';
 import { eq } from 'drizzle-orm';
 import { db } from './db';
@@ -518,7 +518,7 @@ export class UserRepository {
 
 ### Pattern: Transaction with Relation Queries
 
-```[typescript](../../Frontend/typescript/SKILL.md)
+```[typescript](../../Frontend/common/typescript/SKILL.md)
 import { drizzle } from 'drizzle-orm/node-postgres';
 import { sql } from 'drizzle-orm';
 
@@ -594,7 +594,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - HTTP connections: Keep-alive + connection pooling for external calls
 - Thread pool: Bounded thread pools for async task execution
 
-### [Profiling](../../Frontend/profiling/SKILL.md) Methodology
+### [Profiling](../../Frontend/performance/profiling/SKILL.md) Methodology
 1. Establish baseline with production traffic profile
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking

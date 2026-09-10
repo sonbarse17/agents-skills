@@ -31,7 +31,7 @@ Use eBPF-based [observability](../../fundamentals/observability/SKILL.md) when y
 - **Deep performance debugging** -- trace kernel-level latency, syscall overhead, and scheduling delays that application-level metrics cannot reveal.
 - **Network [observability](../../fundamentals/observability/SKILL.md) without sidecars** -- capture L3/L4/L7 flows, DNS queries, and TCP state transitions directly from the kernel, eliminating the CPU and memory overhead of sidecar proxies.
 - **Security [monitoring](../../monitoring-strategy/monitoring/SKILL.md) at the kernel boundary** -- detect container escapes, unexpected process execution, sensitive file access, and anomalous syscall patterns in real time.
-- **Continuous [profiling](../../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) in production** -- generate CPU flame graphs and memory allocation profiles with negligible overhead (typically under 1% CPU).
+- **Continuous [profiling](../../../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md) in production** -- generate CPU flame graphs and memory allocation profiles with negligible overhead (typically under 1% CPU).
 - **Service mesh replacement or augmentation** -- Cilium can replace kube-proxy and provide identity-aware network policies enforced at the kernel level.
 
 Avoid eBPF when your kernel version is below 4.19, when you are running on managed platforms that restrict BPF capabilities, or when your debugging needs are fully met by application-level tracing.
@@ -749,9 +749,9 @@ spec:
 
 ---
 
-## 9. Performance [Profiling](../../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md)
+## 9. Performance [Profiling](../../../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md)
 
-### Continuous [Profiling](../../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) with Parca
+### Continuous [Profiling](../../../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md) with Parca
 
 Parca uses eBPF to collect CPU profiles continuously with minimal overhead.
 
@@ -770,10 +770,10 @@ helm install parca-agent parca/parca-agent \
   --set config.debuginfo.upload.enabled=true
 ```
 
-### Continuous [Profiling](../../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md) with Pyroscope
+### Continuous [Profiling](../../../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md) with Pyroscope
 
 ```bash
-# Install Grafana Pyroscope with eBPF [profiling](../../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md)
+# Install Grafana Pyroscope with eBPF [profiling](../../../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md)
 helm repo add grafana https://grafana.[github](../../../../ci-cd/github-actions/other/github/SKILL.md).io/[helm-charts](../../../../containers-orchestration/helm/charts/helm-charts/SKILL.md)
 helm repo update
 

@@ -86,7 +86,7 @@ real [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](..
   is a serialization point no amount of horizontal scaling elsewhere fixes.
 - **Partition or shard what can't otherwise scale** — splitting a database by key range or tenant
   turns one bottleneck into many independently-scalable ones.
-- **Confirm the bottleneck empirically**, via `[profiling](../../Frontend/profiling/SKILL.md)` and `[load-testing](../../../observability-monitoring-logging/common/capacity-monitoring/load-testing/SKILL.md)`, rather than
+- **Confirm the bottleneck empirically**, via `[profiling](../../Frontend/performance/profiling/SKILL.md)` and `[load-testing](../../../observability-monitoring-logging/common/capacity-monitoring/load-testing/SKILL.md)`, rather than
   guessing which component is the constraint.
 
 **Done when:** the component that would be the first to saturate at 10x current load has been

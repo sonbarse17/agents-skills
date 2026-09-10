@@ -37,7 +37,7 @@ manages `pg_ctl`, `recovery.conf`/`standby.signal`, and a fencing
 mechanism), the split-brain risks any automatic-failover design must
 close off, and how to test failover realistically without it becoming an
 actual [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md). It builds on the replication mechanics covered in
-[postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../../Software_Engineering_and_Other/Frontend/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md);
+[postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../../Software_Engineering_and_Other/Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md);
 this skill is specifically about the failover decision-making and
 safety layer on top of that replication.
 
@@ -62,7 +62,7 @@ safety layer on top of that replication.
 ## Prerequisites & environment
 
 - A working streaming replication topology already in place (see
-  [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../../Software_Engineering_and_Other/Frontend/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md)
+  [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../../Software_Engineering_and_Other/Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md)
   for setup) — this skill assumes replication mechanics are understood
   and focuses on the failover/fencing layer on top.
 - For Patroni: a distributed consensus store — etcd, Consul, or
@@ -327,6 +327,6 @@ of a compliance [audit](../../Operations/audit/SKILL.md).
 
 ## Cross-references
 
-- [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../../Software_Engineering_and_Other/Frontend/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — the streaming replication mechanics (WAL shipping, replication slots, lag [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)) this HA design is built on top of.
+- [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../../Software_Engineering_and_Other/Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — the streaming replication mechanics (WAL shipping, replication slots, lag [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)) this HA design is built on top of.
 - [postgresql-configuration-validation](../[postgresql-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-configuration-validation/SKILL.md)/SKILL.md) — validates `synchronous_standby_names` and replication-slot settings referenced here before they're applied to a live topology.
 - [database-schema-migration-with-liquibase-and-flyway](../[database-schema-migration-with-liquibase-and-flyway](../../../DevOps_and_Cloud/Observability_and_SecOps/database-schema-migration-with-liquibase-and-flyway/SKILL.md)/SKILL.md) — schema migrations need their own coordination with a Patroni-managed cluster (e.g. always targeting the current leader via the same HAProxy/VIP layer, never a specific node hostname).

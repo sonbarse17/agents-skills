@@ -152,7 +152,7 @@ tools:
     strengths: "Custom rules, CI-friendly, fast"
   codeql:
     description: "[GitHub](../../ci-cd/github-actions/other/github/SKILL.md)'s deep code analysis"
-    usage: "codeql database create --language=[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) ./db && codeql analyze ./db --format=sarifv2"
+    usage: "codeql database create --language=[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) ./db && codeql analyze ./db --format=sarifv2"
     strengths: "Deep flow analysis, accurate"
   eslint-plugin-security:
     description: "ESLint plugin for Node.js security"
@@ -574,5 +574,5 @@ What do you need to test?
 - **SBOM generation**: Generate a Software Bill of Materials (SPDX or CycloneDX format) after each build. Use SBOM for post-deployment vulnerability correlation without re-scanning.
 
 ## Handoff
-Hand off to `dev-loop-[code-review](../../Software_Engineering_and_Other/Miscellaneous/code-review/SKILL.md)` for secure code review. Hand off to `[dev-loop-tech-debt-tracker](../../Software_Engineering_and_Other/Frontend/tech-debt-tracker/SKILL.md)` for security debt tracking.
+Hand off to `dev-loop-[code-review](../../Software_Engineering_and_Other/Miscellaneous/code-review/SKILL.md)` for secure code review. Hand off to `[dev-loop-tech-debt-tracker](../../Software_Engineering_and_Other/Patterns/tech-debt-tracker/SKILL.md)` for security debt tracking.
 

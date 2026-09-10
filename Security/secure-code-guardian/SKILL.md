@@ -82,7 +82,7 @@ Load detailed guidance based on context:
 
 ### Password Hashing (bcrypt)
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import bcrypt from 'bcrypt';
 
 const SALT_ROUNDS = 12; // minimum 10; 12 balances security and performance
@@ -98,7 +98,7 @@ export async function verifyPassword(plaintext: string, hash: string): Promise<b
 
 ### Parameterized SQL Query (Node.js / pg)
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // NEVER: `SELECT * FROM users WHERE email = '${email}'`
 // ALWAYS: use positional parameters
 import { Pool } from 'pg';
@@ -115,7 +115,7 @@ export async function getUserByEmail(email: string) {
 
 ### Input Validation with Zod
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { z } from 'zod';
 
 const LoginSchema = z.object({
@@ -135,7 +135,7 @@ export function validateLoginInput(raw: unknown) {
 
 ### JWT Validation
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import jwt from 'jsonwebtoken';
 
 const JWT_SECRET = process.env.JWT_SECRET!; // never hardcode
@@ -154,7 +154,7 @@ export function verifyToken(token: string): jwt.JwtPayload {
 
 ### Securing an Endpoint — Full Flow
 
-```[typescript](../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)
+```[typescript](../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import express from 'express';
 import rateLimit from 'express-rate-limit';
 import helmet from 'helmet';

@@ -73,7 +73,7 @@ afterthought.
   `@backstage/create-app` scaffold and typically run in [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md)/on a
   container platform) — Backstage is a framework you deploy and extend,
   not a SaaS product; budget for ongoing app maintenance (Node.js/
-  [TypeScript](../../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) upgrades, plugin version compatibility) as part of adopting
+  [TypeScript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) upgrades, plugin version compatibility) as part of adopting
   it.
 - A source-control integration configured ([GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) App, GitLab
   integration, or Bitbucket) so the catalog can discover
