@@ -4,7 +4,6 @@
 # docker/build) and a repo-wide glob would wrongly hide that skill content.
 node_modules/
 mcp-server/build/
-Software_Engineering_and_Other/Miscellaneous/docs-and-collab/docs-site/build/
 Software_Engineering_and_Other/Miscellaneous/docs-and-collab/docs-site/dist/
 
 # OS and editor cruft
