@@ -6,8 +6,6 @@
     { "path": "AI_and_Agents/Models_and_FineTuning" },
     { "path": "AI_and_Agents/Operations" },
 
-    { "path": "DevOps_and_Cloud/Observability_and_SecOps" },
-
     { "path": "cloud/aws" },
     { "path": "cloud/azure" },
     { "path": "cloud/gcp" },
@@ -81,7 +79,6 @@
     { "path": "Data_Engineering" },
     { "path": "Security" },
     { "path": "Mobile" },
-    { "path": "Game_Development" },
     { "path": "Product_and_Business" }
   ]
 }
