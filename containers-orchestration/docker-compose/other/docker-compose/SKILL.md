@@ -467,4 +467,4 @@ services:
 
 - [docker-management](../[docker-management](../[docker](../docker/SKILL.md)-management/SKILL.md)/) - [Docker](../../../docker/other/docker/SKILL.md) fundamentals
 - [kubernetes-ops](../../orchestration/[kubernetes-ops](../[kubernetes](../kubernetes/SKILL.md)-ops/SKILL.md)/) - Production orchestration
-- [reverse-proxy](../../../infrastructure/networking/[reverse-proxy](../../../Software_Engineering_and_Other/Miscellaneous/reverse-proxy/SKILL.md)/) - Production routing
+- [reverse-proxy](../../../../Software_Engineering_and_Other/Backend/patterns/reverse-proxy/SKILL.md)/) - Production routing

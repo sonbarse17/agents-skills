@@ -41,7 +41,7 @@ Catalog and guide the selection of blockchain design patterns covering token sta
 ## Agent Protocol
 
 ### Trigger
-"blockchain pattern", "token standard", "ERC-20", "ERC-721", "ERC-1155", "ERC-4626", "ERC-4337", "ERC-2612", "ERC-3525", "ERC-3643", "ERC-4907", "ERC-5192", "permit", "upgradeable contract", "proxy pattern", "UUPS", "oracle pattern", "bridge pattern", "layer 2", "state channel", "sidechain", "MEV", "cross-chain", "blockchain design pattern", "smart contract pattern", "[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) pattern", "yield-bearing [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)", "semi-fungible", "soulbound", "rollup", "validium", "optimistic rollup", "zk-rollup", "IBC", "LayerZero", "light client", "AMM", "constant product", "lending pool", "compound fork", "aave fork", "flash loan", "governance token", "veToken", "vote escrow", "factory pattern", "minimal proxy", "EIP-1167", "EIP-1967", "EIP-1822", "EIP-2535", "diamond pattern", "multi-facet", "federated sidechain", "ZK-bridge", "optimistic bridge", "PBS", "MEV-Boost", "ePBS", "ERC-5218", "NFT rental", "soulbound token", "account abstraction", "ERC-6551", "TBA", "token bound account", "ERC-6909"
+"blockchain pattern", "token standard", "ERC-20", "ERC-721", "ERC-1155", "ERC-4626", "ERC-4337", "ERC-2612", "ERC-3525", "ERC-3643", "ERC-4907", "ERC-5192", "permit", "upgradeable contract", "proxy pattern", "UUPS", "oracle pattern", "bridge pattern", "layer 2", "state channel", "sidechain", "MEV", "cross-chain", "blockchain design pattern", "smart contract pattern", "[vault](../../Security/vault/SKILL.md) pattern", "yield-bearing [vault](../../Security/vault/SKILL.md)", "semi-fungible", "soulbound", "rollup", "validium", "optimistic rollup", "zk-rollup", "IBC", "LayerZero", "light client", "AMM", "constant product", "lending pool", "compound fork", "aave fork", "flash loan", "governance token", "veToken", "vote escrow", "factory pattern", "minimal proxy", "EIP-1167", "EIP-1967", "EIP-1822", "EIP-2535", "diamond pattern", "multi-facet", "federated sidechain", "ZK-bridge", "optimistic bridge", "PBS", "MEV-Boost", "ePBS", "ERC-5218", "NFT rental", "soulbound token", "account abstraction", "ERC-6551", "TBA", "token bound account", "ERC-6909"
 
 ### Input Context
 - Requirement type (token/upgrade/oracle/bridge/scaling)
@@ -121,7 +121,7 @@ Pattern recommendation with:
 Decide: Token Standard
 ├── Fungible token?
 │   ├── Standard → ERC-20 + ERC-2612 (permit)
-│   ├── Yield-bearing [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) → ERC-4626 (share-based accounting)
+│   ├── Yield-bearing [vault](../../Security/vault/SKILL.md) → ERC-4626 (share-based accounting)
 │   ├── Minimal gas (no permit) → ERC-20 (Solady)
 │   └── Semi-fungible → ERC-3525 (financial NFTs: invoices, bonds)
 ├── Non-fungible token?
@@ -275,7 +275,7 @@ Decide: Bridge Architecture
 | Standard | Category | Key Feature |
 |---|---|---|
 | ERC-2612 | Fungible | Gasless approve via off-chain signature (permit) |
-| ERC-4626 | [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) | Standardized yield-bearing share accounting |
+| ERC-4626 | [Vault](../../Security/vault/SKILL.md) | Standardized yield-bearing share accounting |
 | ERC-3525 | Semi-fungible | Financial NFTs with slot/value model |
 | ERC-3643 | Security | Permissioned transfer, compliance wrapper |
 | ERC-4907 | NFT | Rental roles (user + expires) |
@@ -411,7 +411,7 @@ contract MyContractV2 is MyContractV1 {
 }
 ```
 
-### ERC-4626 Yield-Bearing [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) (Solidity)
+### ERC-4626 Yield-Bearing [Vault](../../Security/vault/SKILL.md) (Solidity)
 ```solidity
 contract YieldVault is ERC4626, ERC20Permit {
     using SafeERC20 for IERC20;
@@ -596,7 +596,7 @@ contract WalletFactory {
 | Transparent Proxy | Function selector collision | Admin storage at `0xb53127684a...` (EIP-1967) |
 | Beacon Proxy | Beacon implementation change mid-transaction | Atomic updates with reentrancy guard |
 | Diamond (EIP-2535) | Storage collision across facets | Diamond storage with unique namespace |
-| ERC-4626 [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) | Inflation attack | Virtual shares + assets (OpenZeppelin fix) |
+| ERC-4626 [Vault](../../Security/vault/SKILL.md) | Inflation attack | Virtual shares + assets (OpenZeppelin fix) |
 | AMM Constant Product | Sandwich attack | Slippage tolerance + TWAP oracle |
 | AMM Concentrated Liquidity | Range manipulation | Tick-based pricing, immutable tick boundaries |
 | Bridge (Canonical) | Reorg finality gap | Challenge window (7d Optimistic / 30min ZK) |
@@ -625,7 +625,7 @@ contract WalletFactory {
 - ../../../Global_References/blockchain-patterns-advanced.md — Blockchain Patterns Advanced Topics
 - ../../../Global_References/blockchain-patterns-fundamentals.md — Blockchain Patterns Fundamentals
 - ../../../Global_References/cross-chain-communication-patterns.md — Cross-Chain Communication Patterns
-- ../../../Global_References/erc-4626-[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).md — ERC-4626 Yield-Bearing [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Standard
+- ../../../Global_References/erc-4626-[vault](../../Security/vault/SKILL.md).md — ERC-4626 Yield-Bearing [Vault](../../Security/vault/SKILL.md) Standard
 - ../../../Global_References/layer2-scaling-patterns.md — Layer-2 Scaling Patterns
 - ../../../Global_References/mev-and-order-flow.md — MEV & Order Flow Patterns
 - ../../../Global_References/oracle-and-bridge-patterns.md — Oracle & Bridge Patterns

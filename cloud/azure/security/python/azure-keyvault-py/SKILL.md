@@ -22,7 +22,7 @@ depends_on:
   - azure-keyvault
 ---
 
-# Azure Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
+# Azure Key [Vault](../../../../../Security/vault/SKILL.md) SDK for [Python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 
 Secure storage and management for secrets, cryptographic keys, and certificates.
 
@@ -45,7 +45,7 @@ pip install [azure-keyvault](../../azure-keyvault/SKILL.md)-secrets [azure-keyva
 ## Environment Variables
 
 ```bash
-AZURE_KEYVAULT_URL=https://<[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name>.[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net/  # Required for all auth methods
+AZURE_KEYVAULT_URL=https://<[vault](../../../../../Security/vault/SKILL.md)-name>.[vault](../../../../../Security/vault/SKILL.md).azure.net/  # Required for all auth methods
 AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used in production
 ```
 
@@ -75,7 +75,7 @@ credential = DefaultAzureCredential(require_envvar=True)
 # Or use a specific credential directly in production:
 # See https://learn.microsoft.com/[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/api/overview/azure/identity-readme?view=azure-[python](../../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)#credential-classes
 # credential = ManagedIdentityCredential()
-vault_url = "https://<[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name>.[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net/"
+vault_url = "https://<[vault](../../../../../Security/vault/SKILL.md)-name>.[vault](../../../../../Security/vault/SKILL.md).azure.net/"
 
 with SecretClient(vault_url=vault_url, credential=credential) as client:
     # All secret operations go inside this block (see examples below)
@@ -124,7 +124,7 @@ from azure.identity import DefaultAzureCredential
 from azure.keyvault.keys import KeyClient
 
 credential = DefaultAzureCredential()
-vault_url = "https://<[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name>.[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net/"
+vault_url = "https://<[vault](../../../../../Security/vault/SKILL.md)-name>.[vault](../../../../../Security/vault/SKILL.md).azure.net/"
 
 with KeyClient(vault_url=vault_url, credential=credential) as client:
     # All key operations go inside this block (see examples below)
@@ -164,11 +164,11 @@ from azure.keyvault.keys.crypto import CryptographyClient, EncryptionAlgorithm
 # crypto_client = CryptographyClient(key, credential=credential)
 # Or from key ID
 with CryptographyClient(
-    "https://<[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)>.[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net/keys/<key-name>/<version>",
+    "https://<[vault](../../../../../Security/vault/SKILL.md)>.[vault](../../../../../Security/vault/SKILL.md).azure.net/keys/<key-name>/<version>",
     credential=credential
 ) as crypto_client:
     # Encrypt
-    plaintext = b"Hello, Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)!"
+    plaintext = b"Hello, Key [Vault](../../../../../Security/vault/SKILL.md)!"
     result = crypto_client.encrypt(EncryptionAlgorithm.rsa_oaep, plaintext)
     ciphertext = result.ciphertext
 
@@ -198,7 +198,7 @@ from azure.identity import DefaultAzureCredential
 from azure.keyvault.certificates import CertificateClient, CertificatePolicy
 
 credential = DefaultAzureCredential()
-vault_url = "https://<[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name>.[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net/"
+vault_url = "https://<[vault](../../../../../Security/vault/SKILL.md)-name>.[vault](../../../../../Security/vault/SKILL.md).azure.net/"
 
 with CertificateClient(vault_url=vault_url, credential=credential) as client:
     # All certificate operations go inside this block (see examples below)
@@ -281,7 +281,7 @@ except HttpResponseError as e:
 5. **Enable soft-delete** for recovery (enabled by default)
 6. **Use RBAC** over access policies for fine-grained control
 7. **Rotate secrets** regularly using versioning
-8. **Use Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) references** in App Service/Functions config
+8. **Use Key [Vault](../../../../../Security/vault/SKILL.md) references** in App Service/Functions config
 9. **Cache secrets** appropriately to reduce API calls
 10. **Use async clients** for high-throughput scenarios
 

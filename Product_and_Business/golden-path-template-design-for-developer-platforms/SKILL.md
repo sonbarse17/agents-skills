@@ -181,7 +181,7 @@ sanctioned, tracked decision rather than an invisible fork.
    `metadata.name` and `resources` blocks, materialized per-tier via
    `score-compose init --file score-standard.yaml` or `humctl score deploy
    -f score-standard.yaml`; see
-   [humanitec-score-workload-specification](../[humanitec-score-workload-specification](../../Software_Engineering_and_Other/Miscellaneous/humanitec-score-workload-specification/SKILL.md)/SKILL.md)
+   [humanitec-score-workload-specification](../../containers-orchestration/common/other/humanitec-score-workload-specification/SKILL.md)/SKILL.md)
    for the workload-spec authoring details this skill doesn't repeat.
 
 4. **Document escape hatches explicitly — never silently block anything
@@ -316,7 +316,7 @@ sanctioned, tracked decision rather than an invisible fork.
   **Fix:** This is a specific documented rollout failure mode — pair the
   template's launch with an explicit, fast exception/RFC path from day
   one, not an afterthought added after the first blowup; see
-  [idp-adoption-rollout-and-[change-management](../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../[idp-adoption-rollout-and-[change-management](../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../../Software_Engineering_and_Other/Miscellaneous/idp-adoption-rollout-and-[change-management](../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md)
+  [idp-adoption-rollout-and-[change-management](../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy](../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy](../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md)
   for sequencing a mandatory-golden-path rollout without stifling
   legitimate edge cases.
 
@@ -369,6 +369,6 @@ hand-roll their own pipeline outside the platform entirely.
 ## Cross-references
 
 - [golden-path-template-validation-and-testing](../[golden-path-template-validation-and-testing](../../DevOps_and_Cloud/CI_CD/golden-path-template-validation-and-testing/SKILL.md)/SKILL.md) — testing a template design like this one end-to-end before publishing it broadly or promoting it to the default.
-- [humanitec-score-workload-specification](../[humanitec-score-workload-specification](../../Software_Engineering_and_Other/Miscellaneous/humanitec-score-workload-specification/SKILL.md)/SKILL.md) — the Score workload spec as an alternative templating substrate for the same tiering and parameterization principles.
-- [idp-adoption-rollout-and-[change-management](../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../[idp-adoption-rollout-and-[change-management](../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../../Software_Engineering_and_Other/Miscellaneous/idp-adoption-rollout-and-[change-management](../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md) — sequencing a golden path's rollout so it doesn't become mandatory-with-no-exceptions from day one, a documented failure mode this skill's escape-hatch design exists to prevent.
+- [humanitec-score-workload-specification](../../containers-orchestration/common/other/humanitec-score-workload-specification/SKILL.md)/SKILL.md) — the Score workload spec as an alternative templating substrate for the same tiering and parameterization principles.
+- [idp-adoption-rollout-and-[change-management](../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy](../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy](../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md) — sequencing a golden path's rollout so it doesn't become mandatory-with-no-exceptions from day one, a documented failure mode this skill's escape-hatch design exists to prevent.
 - [platform-engineering-team-topology-and-operating-model](../[platform-engineering-team-topology-and-operating-model](../[platform-engineering](../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md) — who the "platform team" that owns and governs the golden path actually is, organizationally.

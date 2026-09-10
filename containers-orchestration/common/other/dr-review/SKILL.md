@@ -95,7 +95,7 @@ specific to recovery work.
   edited by hand, dependencies (KMS key, VPC, security groups) that must be
   recreated before data can be restored.
 - **Durability & isolation** — backups in the same account/region/bucket as the
-  primary, no immutability (Object Lock / [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) lock / WORM), backup credentials
+  primary, no immutability (Object Lock / [vault](../../../../Security/vault/SKILL.md) lock / WORM), backup credentials
   that can also delete backups (ransomware and rogue-automation path), no
   cross-account copy, encryption keys not replicated to the recovery region.
 - **Verification** — no restore test in the last N months, tests that restore but

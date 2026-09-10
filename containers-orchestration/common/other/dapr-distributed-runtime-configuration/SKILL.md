@@ -236,7 +236,7 @@ Validating these configurations before deploy is covered separately in
   Dapr-enabled app in the namespace, which is rarely the intended
   blast radius for anything holding state or credentials.
 - Reference secrets via `secretKeyRef` (backed by [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) Secrets or
-  a dedicated Dapr secret store component such as [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)) in every
+  a dedicated Dapr secret store component such as [Vault](../../../../Security/vault/SKILL.md)) in every
   component manifest — never inline a credential value directly under
   `spec.metadata`.
 - Attach resiliency policies per component/app pairing based on that
@@ -249,7 +249,7 @@ Validating these configurations before deploy is covered separately in
   latency contribution, not just the application container's — a
   starved sidecar adds latency to every building-block call the
   application makes.
-- Use a dedicated Dapr secret store component ([Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), cloud KMS-backed
+- Use a dedicated Dapr secret store component ([Vault](../../../../Security/vault/SKILL.md), cloud KMS-backed
   secret managers) rather than [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) Secrets alone when the
   organization already has a centralized secrets management standard
   elsewhere.

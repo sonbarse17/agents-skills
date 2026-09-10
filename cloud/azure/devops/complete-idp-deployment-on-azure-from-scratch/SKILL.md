@@ -65,7 +65,7 @@ AKS, or Backstage mechanics.
 - Terraform or Bicep maturity — every phase below is expressed as IaC.
 - `[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md)`, `helm` ≥ 3.8, and `az aks` CLI access for cluster
   provisioning.
-- A Node.js/Yarn toolchain to build and [customize](../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) the Backstage app itself
+- A Node.js/Yarn toolchain to build and [customize](../../ai/customize/SKILL.md)/SKILL.md)/SKILL.md) the Backstage app itself
   (Backstage ships as source, not a pre-built configurable image).
 - A registered domain and Azure DNS zone (or delegated subdomain) for
   Backstage's ingress hostname and a managed certificate.
@@ -104,13 +104,13 @@ Flexible Server.** Package Backstage as a Helm chart and deploy it against
 a Flexible Server instance (zone-redundant HA beyond a pilot) as the
 catalog database, with the Backstage pod's [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) ServiceAccount
 federated to a Microsoft Entra ID (Azure AD) application that has
-`Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Secrets User` on the [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) holding the database credential —
+`Key [Vault](../../../../Security/vault/SKILL.md) Secrets User` on the [vault](../../../../Security/vault/SKILL.md) holding the database credential —
 never a connection string in a plain Secret. Chart packaging and
 values-schema design follow
 [helm-chart-authoring](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[helm-chart-authoring](../../../../containers-orchestration/helm/charts/helm-chart-authoring/SKILL.md)/SKILL.md);
 any custom auth provider or backend plugin follows
 [backstage-plugin-development](../[backstage-plugin-development](../../../Software_Engineering_and_Other/Backend/backstage-plugin-development/SKILL.md)/SKILL.md).
-Mount the credential via the Azure Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Provider for Secrets Store
+Mount the credential via the Azure Key [Vault](../../../../Security/vault/SKILL.md) Provider for Secrets Store
 CSI Driver rather than syncing it into a [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Secret at rest.
 
 **Phase 4 — Golden-path template design.** Author the first golden-path
@@ -162,7 +162,7 @@ enforce ResourceQuotas before onboarding a second team. See
 adoption starting from a pilot team with genuine current pain, run the
 platform team per the "thinnest viable platform" discipline, and measure
 with SPACE/DX Core 4 metrics. See
-[idp-adoption-rollout-and-[change-management](../../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../[idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../../../Software_Engineering_and_Other/Miscellaneous/idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md),
+[idp-adoption-rollout-and-[change-management](../../../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy](../../../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy](../../../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md),
 [platform-engineering-team-topology-and-operating-model](../[platform-engineering-team-topology-and-operating-model](../../../Product_and_Business/[platform-engineering](../../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md),
 and
 [developer-experience-measurement-and-platform-adoption](../[developer-experience-measurement-and-platform-adoption](../../../Software_Engineering_and_Other/Miscellaneous/[developer-experience](../../../Product_and_Business/developer-experience/SKILL.md)-measurement-and-platform-adoption/SKILL.md)/SKILL.md).
@@ -255,7 +255,7 @@ over one quarter.
    deployed against Flexible Server `contoso-backstage-catalog`
    (zone-redundant, `Standard_D2ds_v5`), with the backend's
    ServiceAccount `backstage-backend` federated to an Entra ID app with
-   `Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Secrets User` on the [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) holding the DB credential.
+   `Key [Vault](../../../../Security/vault/SKILL.md) Secrets User` on the [vault](../../../../Security/vault/SKILL.md) holding the DB credential.
 4. **Phase 4:** A "Node.js service" golden-path template is authored,
    producing a Dockerfile, a [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions workflow, and a
    `ServiceAccount` manifest annotated
@@ -286,5 +286,5 @@ over one quarter.
 - [platform-self-service-api-and-workflow-design](../[platform-self-service-api-and-workflow-design](../../../Product_and_Business/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md) — Phase 6.
 - [service-scorecards-and-maturity-model-design](../[service-scorecards-and-maturity-model-design](../../../Product_and_Business/service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md) — Phase 7.
 - [multi-tenancy-and-team-workspace-design-for-idp](../[multi-tenancy-and-team-workspace-design-for-idp](../../../Software_Engineering_and_Other/Miscellaneous/[multi-tenancy](../multi-tenancy/SKILL.md)-and-team-workspace-design-for-idp/SKILL.md)/SKILL.md) — Phase 8.
-- [idp-adoption-rollout-and-[change-management](../../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../[idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../../../Software_Engineering_and_Other/Miscellaneous/idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md), [platform-engineering-team-topology-and-operating-model](../[platform-engineering-team-topology-and-operating-model](../../../Product_and_Business/[platform-engineering](../../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md), [developer-experience-measurement-and-platform-adoption](../[developer-experience-measurement-and-platform-adoption](../../../Software_Engineering_and_Other/Miscellaneous/[developer-experience](../../../Product_and_Business/developer-experience/SKILL.md)-measurement-and-platform-adoption/SKILL.md)/SKILL.md) — Phase 9.
+- [idp-adoption-rollout-and-[change-management](../../../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy](../../../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy](../../../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md), [platform-engineering-team-topology-and-operating-model](../[platform-engineering-team-topology-and-operating-model](../../../Product_and_Business/[platform-engineering](../../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md), [developer-experience-measurement-and-platform-adoption](../[developer-experience-measurement-and-platform-adoption](../../../Software_Engineering_and_Other/Miscellaneous/[developer-experience](../../../Product_and_Business/developer-experience/SKILL.md)-measurement-and-platform-adoption/SKILL.md)/SKILL.md) — Phase 9.
 - [complete-idp-deployment-on-aws-from-scratch](../[complete-idp-deployment-on-aws-from-scratch](../complete-idp-deployment-on-aws-from-scratch/SKILL.md)/SKILL.md) — the same shape on AWS, useful for a [multi-cloud](../../../common/other/multi-cloud/SKILL.md) platform team comparing the two.

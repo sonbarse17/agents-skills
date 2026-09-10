@@ -16,9 +16,9 @@ depends_on:
   - typescript
 ---
 
-# Azure Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Keys SDK for [TypeScript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
+# Azure Key [Vault](../../../../../Security/vault/SKILL.md) Keys SDK for [TypeScript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 
-Manage cryptographic keys with Azure Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).
+Manage cryptographic keys with Azure Key [Vault](../../../../../Security/vault/SKILL.md).
 
 ## Installation
 
@@ -30,9 +30,9 @@ npm install @azure/keyvault-keys @azure/identity
 ## Environment Variables
 
 ```bash
-KEY_VAULT_URL=https://<[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name>.[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net
+KEY_VAULT_URL=https://<[vault](../../../../../Security/vault/SKILL.md)-name>.[vault](../../../../../Security/vault/SKILL.md).azure.net
 # Or
-AZURE_KEYVAULT_NAME=<[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name>
+AZURE_KEYVAULT_NAME=<[vault](../../../../../Security/vault/SKILL.md)-name>
 AZURE_TOKEN_CREDENTIALS=prod # Required only if DefaultAzureCredential is used in production
 ```
 
@@ -47,7 +47,7 @@ const credential = new DefaultAzureCredential({requiredEnvVars: ["AZURE_TOKEN_CR
 // Or use a specific credential directly in production:
 // See https://learn.microsoft.com/javascript/api/overview/azure/identity-readme?view=azure-node-latest#credential-classes
 // const credential = new ManagedIdentityCredential();
-const vaultUrl = `https://${process.env.AZURE_KEYVAULT_NAME}.[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net`;
+const vaultUrl = `https://${process.env.AZURE_KEYVAULT_NAME}.[vault](../../../../../Security/vault/SKILL.md).azure.net`;
 
 const keyClient = new KeyClient(vaultUrl, credential);
 const secretClient = new SecretClient(vaultUrl, credential);
@@ -236,7 +236,7 @@ const unwrapResult = await cryptoClient.unwrapKey("RSA-OAEP", wrapResult.result)
 const keyBackup = await keyClient.backupKey("MyKey");
 const secretBackup = await secretClient.backupSecret("MySecret");
 
-// Restore (can restore to different [vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md))
+// Restore (can restore to different [vault](../../../../../Security/vault/SKILL.md))
 const restoredKey = await keyClient.restoreKeyBackup(keyBackup!);
 const restoredSecret = await secretClient.restoreSecretBackup(secretBackup!);
 ```

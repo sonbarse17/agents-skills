@@ -103,7 +103,7 @@ at the speed of its slowest link.
   absorbs bursts instead of propagating them upstream.
 - **Set timeouts and circuit breakers on every synchronous call** — an unbounded call to a slow
   dependency turns their saturation into yours.
-- **Cache aggressively at read-heavy boundaries** — see `[caching-strategies](../../Miscellaneous/caching-strategies/SKILL.md)` for what's safe to
+- **Cache aggressively at read-heavy boundaries** — see `[caching-strategies](../../Backend/patterns/caching-strategies/SKILL.md)` for what's safe to
   cache and for how long.
 
 **Done when:** a slowdown in one component, injected deliberately, does not cause cascading

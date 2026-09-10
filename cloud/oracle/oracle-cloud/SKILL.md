@@ -422,7 +422,7 @@ resource "oci_monitoring_alarm" "cpu_high" {
 - Use instance principals for OKE node pools to access object storage without keys.
 - Tag all resources with a cost-tracking tag namespace (Environment, Project, Owner).
 - Set up budgets and alerts before deploying production workloads.
-- Use OCI [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) for secrets, API keys, and database passwords.
+- Use OCI [Vault](../../../Security/vault/SKILL.md) for secrets, API keys, and database passwords.
 - Prefer FastConnect over site-to-site VPN for production hybrid connectivity.
 - Enable OKE cluster [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs and ship to OCI Logging.
 
@@ -586,7 +586,7 @@ list_compartments() {
 
 - Use **compartments** for resource isolation per team/environment with IAM policies at compartment level
 - Enable **OCI Cloud Guard** target on every compartment for threat detection and misconfiguration alerts
-- Configure **[Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) (KMS)** for encryption keys — encrypt all block volumes, object storage, and databases
+- Configure **[Vault](../../../Security/vault/SKILL.md) (KMS)** for encryption keys — encrypt all block volumes, object storage, and databases
 - Deploy **OKE clusters** with `--pod-cidr` and `--service-cidr` that don't overlap with on-prem or VCN ranges
 - Use **Flex shapes** (VM.Standard.E5.Flex) for most workloads — better price-performance than fixed shapes
 - Set up **budgets** at compartment level with threshold alerts to Slack/email
@@ -619,7 +619,7 @@ list_compartments() {
 - Restrict **object storage bucket access** with pre-authenticated requests (PAR) and least-privilege policies
 - Rotate **OCI API keys** every 90 days and use API key versioning for key rotation without downtime
 - Enable **Cloud Guard** with detector recipes for storage, networking, and IAM misconfigurations
-- Use **[Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) (HSM)** for master encryption keys and auto-rotate DEKs every 180 days
+- Use **[Vault](../../../Security/vault/SKILL.md) (HSM)** for master encryption keys and auto-rotate DEKs every 180 days
 - [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) **IAM policy changes** with OCI [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logs and stream to OCI Object Storage for retention
 ## Implementation Patterns
 
@@ -729,7 +729,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager ([Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../../Security/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
 - Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets

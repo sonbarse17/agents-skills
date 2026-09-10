@@ -122,7 +122,7 @@ failover on a schedule so the plan is proven, not assumed.
        schedule          = "cron(0 5 * * ? *)"
 
        copy_action {
-         destination_vault_arn = "arn:aws:backup:eu-west-1:<DR_ACCOUNT_ID>:backup-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md):tier0-dr-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)"
+         destination_vault_arn = "arn:aws:backup:eu-west-1:<DR_ACCOUNT_ID>:backup-[vault](../../../../Security/vault/SKILL.md):tier0-dr-[vault](../../../../Security/vault/SKILL.md)"
          lifecycle {
            delete_after = 90
          }
@@ -130,8 +130,8 @@ failover on a schedule so the plan is proven, not assumed.
      }
    }
    ```
-   Equivalent patterns: Azure Backup with a Recovery Services [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) in a
-   paired region plus cross-subscription [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) access, or GCP Backup and
+   Equivalent patterns: Azure Backup with a Recovery Services [vault](../../../../Security/vault/SKILL.md) in a
+   paired region plus cross-subscription [vault](../../../../Security/vault/SKILL.md) access, or GCP Backup and
    DR Service / Cloud SQL cross-region replicas combined with
    cross-project backup storage. The DR-account/subscription/project
    backup copy should use a **separate IAM/RBAC trust boundary** from the
@@ -164,7 +164,7 @@ failover on a schedule so the plan is proven, not assumed.
      at restore time, not at backup-job-success time.
 
 7. **Protect backups against ransomware/mass-deletion specifically**:
-   enable immutability (AWS Backup [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Lock, Azure Backup immutable
+   enable immutability (AWS Backup [Vault](../../../../Security/vault/SKILL.md) Lock, Azure Backup immutable
    vaults, GCP Backup and DR immutable backup storage) so that even a
    fully compromised primary-account administrator credential cannot
    delete or shorten the retention of existing backup copies.
@@ -183,7 +183,7 @@ failover on a schedule so the plan is proven, not assumed.
 - **Test restores, not just backup job success** — a green checkmark on
   a nightly backup job proves the job ran, not that the data is
   recoverable.
-- **Enable backup immutability/[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) lock for anything protecting
+- **Enable backup immutability/[vault](../../../../Security/vault/SKILL.md) lock for anything protecting
   against ransomware or insider threat**, since a mutable backup that an
   attacker (or a compromised automation credential) can delete provides
   no real protection.
@@ -223,7 +223,7 @@ failover on a schedule so the plan is proven, not assumed.
   both the production data and its backups.
   **Fix:** Backups shared the same account/credentials/trust boundary as
   production, and were mutable (deletable by the same role that manages
-  production). Enable backup [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) immutability/lock and store DR
+  production). Enable backup [vault](../../../../Security/vault/SKILL.md) immutability/lock and store DR
   copies under a separate account/subscription/project with a distinct,
   narrowly scoped IAM/RBAC role — see `[cloud-iam-hardening](../../identity/cloud-iam-hardening/SKILL.md)` for how to
   scope that role tightly.
@@ -241,7 +241,7 @@ failover on a schedule so the plan is proven, not assumed.
   cost, deletes the DR-region database replica or storage bucket
   entirely.
   **Fix:** **Never tear down DR-region infrastructure (a promoted-
-  capable read replica, a cross-region backup [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)/bucket) as a cost
+  capable read replica, a cross-region backup [vault](../../../../Security/vault/SKILL.md)/bucket) as a cost
   cleanup without explicit sign-off from whoever owns the DR plan for
   that workload** — confirm current RTO/RPO commitments still require it
   before any destructive action, and prefer scaling down (pilot
@@ -266,7 +266,7 @@ account) — effectively no real disaster recovery.
    balancers with health checks.
 3. Set up AWS Backup with a daily cross-account, cross-region copy
    (as shown in the Terraform snippet above) to a dedicated backup
-   account, with [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Lock enabled in compliance mode so backups cannot
+   account, with [Vault](../../../../Security/vault/SKILL.md) Lock enabled in compliance mode so backups cannot
    be deleted even by a compromised admin credential in the primary
    account — this protects against ransomware/mass-deletion in addition
    to the warm-standby replica, which protects against a regional
@@ -285,7 +285,7 @@ account) — effectively no real disaster recovery.
    deliberately (re-establish the original region as primary, resync
    data) rather than leaving the DR region as primary indefinitely by
    default.
-7. Schedule monthly restore-verification jobs against the backup [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
+7. Schedule monthly restore-verification jobs against the backup [vault](../../../../Security/vault/SKILL.md)
    copy (independent of the warm-standby replica) so a corrupted backup
    would be caught long before it's ever needed as the last resort.
 

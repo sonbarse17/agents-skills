@@ -66,7 +66,7 @@ Stateless compute can be killed, replaced, and scaled horizontally without a [ru
 must survive a restart belongs in a database, object store, or managed cache — not on local disk,
 not in process memory. This single rule is what makes [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md), rolling deploys, and zone
 failover boring instead of terrifying. See `[stateful-workloads](../../../../containers-orchestration/kubernetes/workloads/stateful-workloads/SKILL.md)` for the cases where state on the
-compute layer is genuinely unavoidable, and `[caching-strategies](../../../../Software_Engineering_and_Other/Miscellaneous/caching-strategies/SKILL.md)` for keeping a fast local cache
+compute layer is genuinely unavoidable, and `[caching-strategies](../../../../Software_Engineering_and_Other/Backend/patterns/caching-strategies/SKILL.md)` for keeping a fast local cache
 without making it a source of truth.
 
 **Done when:** killing any compute instance without warning loses no data and no in-flight

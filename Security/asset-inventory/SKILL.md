@@ -59,8 +59,8 @@ asset_categories:
 
   security:
     - IAM users, roles, and policies
-    - KMS keys / Key [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) keys
-    - Certificates (ACM, Key [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), Certificate Manager)
+    - KMS keys / Key [Vault](../vault/SKILL.md) keys
+    - Certificates (ACM, Key [Vault](../vault/SKILL.md), Certificate Manager)
     - Security groups / NSGs / Firewall rules
     - WAF configurations
 

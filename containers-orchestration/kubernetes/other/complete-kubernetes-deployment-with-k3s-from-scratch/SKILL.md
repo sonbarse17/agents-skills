@@ -83,7 +83,7 @@ gate, and a first workload into one ordered path for K3s specifically.
 - **No built-in cloud workload-identity mechanism.** Unlike EKS/AKS/GKE/
   OKE, K3s has no IRSA/Workload-Identity-Federation equivalent baked in —
   if a workload on this cluster needs to call a cloud provider's API,
-  plan that credential path (a secrets manager, HashiCorp [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), or a
+  plan that credential path (a secrets manager, HashiCorp [Vault](../../../../Security/vault/SKILL.md), or a
   cloud-specific federation mechanism configured independently of K3s
   itself) as part of Phase 1, not as an assumption carried over from a
   managed-[Kubernetes](../kubernetes/SKILL.md) deployment.

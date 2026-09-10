@@ -118,7 +118,7 @@ References: CWE-89, OWASP A03:2021
 
 ## Knowledge Reference
 
-OWASP Top 10, CWE, Semgrep, Bandit, ESLint Security, gosec, npm [audit](../../AI_and_Agents/Operations/audit/SKILL.md), gitleaks, trufflehog, CVSS scoring, nmap, Burp Suite, sqlmap, Trivy, Checkov, HashiCorp [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS Security Hub, CIS benchmarks, SOC2, ISO27001
+OWASP Top 10, CWE, Semgrep, Bandit, ESLint Security, gosec, npm [audit](../../AI_and_Agents/Operations/audit/SKILL.md), gitleaks, trufflehog, CVSS scoring, nmap, Burp Suite, sqlmap, Trivy, Checkov, HashiCorp [Vault](../vault/SKILL.md), AWS Security Hub, CIS benchmarks, SOC2, ISO27001
 
 [Documentation](https://jeffallan.[github](../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/security/security-reviewer/)
 

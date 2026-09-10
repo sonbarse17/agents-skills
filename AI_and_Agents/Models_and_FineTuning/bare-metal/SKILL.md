@@ -919,7 +919,7 @@ Running servers with OEM firmware for years. Critical security fixes and stabili
 
 ## Rules & Constraints
 - All servers must have a dedicated BMC with management network access.
-- BMC credentials must be unique per server, stored in a [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).
+- BMC credentials must be unique per server, stored in a [vault](../../../Security/vault/SKILL.md).
 - Burn-in testing is mandatory before production deployment (minimum 4 hours).
 - Firmware updates must be tested on one server before fleet-wide rollout.
 - RAID configuration must follow workload profile (OS: RAID 1, DB: RAID 10, etc.).
@@ -942,6 +942,6 @@ PXE/iPXE configuration, BMC automation scripts ([Python](../../../Software_Engin
 
 ## Handoff
 After completing this skill:
-- Next skill: **[datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md)** — rack layout, power, cooling for bare metal
+- Next skill: **[datacenter](../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/datacenter/SKILL.md)** — rack layout, power, cooling for bare metal
 - Pass context: server inventory, BMC IPs network, firmware baseline, provisioning method
 

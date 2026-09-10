@@ -458,7 +458,7 @@ Cost-saving strategies:
 - `devops-[backup-dr](../../../containers-orchestration/common/other/backup-dr/SKILL.md)` for backup strategies using Storage Boxes.
 - `devops-[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)` for Prometheus-based [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
 - `devops-[hybrid-cloud](../../common/other/hybrid-cloud/SKILL.md)` for connecting Hetzner with other providers.
-- `devops-[datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md)` for physical hardware considerations.
+- `devops-[datacenter](../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/datacenter/SKILL.md)` for physical hardware considerations.
 
 ## Architecture Decision Trees
 
@@ -483,7 +483,7 @@ Cost-saving strategies:
 | [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) | Up to 20 TB | Up to 10 TB per volume |
 | Use case | Backups, file shares | Database disks, app data |
 | Mountability | Network mount | Direct block device |
-| Redundancy | RAID on [datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md) side | Replicated across hosts |
+| Redundancy | RAID on [datacenter](../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/datacenter/SKILL.md) side | Replicated across hosts |
 
 ## Implementation Patterns
 
@@ -584,7 +584,7 @@ delete_old_snapshots() {
 - Using **default VLAN** for all servers — segment by function (web, db, storage) with separate networks
 - Provisioning **servers without [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)** — Hetzner doesn't provide built-in server [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - Skipping **rescue mode testing** — know how to boot into rescue mode for recovery scenarios
-- Relying on **single [datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md)** for production — FSN1/HEL1/NBG1 inter-DC latency is low but non-zero
+- Relying on **single [datacenter](../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/datacenter/SKILL.md)** for production — FSN1/HEL1/NBG1 inter-DC latency is low but non-zero
 - Underestimating **Storage Box IOPS limits** — not suitable for database workloads directly
 - Forgetting to **detach volumes** before deleting servers — volumes survive but must be cleaned up
 

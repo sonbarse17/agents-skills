@@ -34,7 +34,7 @@ Finds available Azure OpenAI model [capacity](../../../../DevOps_and_Cloud/Cloud
 | **Purpose** | Find where you can deploy a model with sufficient [capacity](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md) |
 | **Scope** | All regions and projects the user has access to |
 | **Output** | Ranked table of regions/projects with available [capacity](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md) |
-| **Action** | Read-only analysis — does NOT deploy. Hands off to [preset](../[preset](../../../Models_and_FineTuning/[preset](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/preset/SKILL.md)/SKILL.md)/SKILL.md) or [customize](../[customize](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) |
+| **Action** | Read-only analysis — does NOT deploy. Hands off to [preset](../[preset](../../../Models_and_FineTuning/[preset](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/preset/SKILL.md)/SKILL.md)/SKILL.md) or [customize](../../../../cloud/azure/ai/customize/SKILL.md)/SKILL.md)/SKILL.md) |
 | **Authentication** | Azure CLI (`az login`) |
 
 ## When to Use This Skill
@@ -45,7 +45,7 @@ Finds available Azure OpenAI model [capacity](../../../../DevOps_and_Cloud/Cloud
 - ✅ User got a quota error and needs to find an alternative location
 - ✅ User asks "best region and project for deploying model X"
 
-**After discovery → hand off to [preset](../[preset](../[preset](../../../Models_and_FineTuning/[preset](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/preset/SKILL.md)/SKILL.md)/SKILL.md)/SKILL.md) or [customize](../[customize](../[customize](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md)/SKILL.md) for actual deployment.**
+**After discovery → hand off to [preset](../[preset](../[preset](../../../Models_and_FineTuning/[preset](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/preset/SKILL.md)/SKILL.md)/SKILL.md)/SKILL.md) or [customize](../../../../cloud/azure/ai/customize/SKILL.md)/SKILL.md)/SKILL.md)/SKILL.md) for actual deployment.**
 
 ## Scripts
 
@@ -136,13 +136,13 @@ Regions/SKUs where `quotaAvailable = 0` should be marked with ❌ in the results
 After the script outputs the ranked table (now annotated with quota info), present it to the user and ask:
 
 1. 🚀 **Quick deploy** to top recommendation with defaults → route to [preset](../[preset](../[preset](../../../Models_and_FineTuning/[preset](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/preset/SKILL.md)/SKILL.md)/SKILL.md)/SKILL.md)
-2. ⚙️ **Custom deploy** with version/SKU/[capacity](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/RAI selection → route to [customize](../[customize](../[customize](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md)/SKILL.md)
+2. ⚙️ **Custom deploy** with version/SKU/[capacity](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/RAI selection → route to [customize](../../../../cloud/azure/ai/customize/SKILL.md)/SKILL.md)/SKILL.md)/SKILL.md)
 3. 📊 **Check another model** or [capacity](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md) target → re-run Phase 2
 4. ❌ Cancel
 
 ### Phase 5: Confirm Project Before Deploying
 
-Before handing off to [preset](../[preset](../../../Models_and_FineTuning/[preset](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/preset/SKILL.md)/SKILL.md)/SKILL.md) or [customize](../[customize](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md), **always confirm the target project** with the user. See the [Project Selection](../SKILL.md#project-selection-all-modes) rules in the parent router.
+Before handing off to [preset](../[preset](../../../Models_and_FineTuning/[preset](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/preset/SKILL.md)/SKILL.md)/SKILL.md) or [customize](../../../../cloud/azure/ai/customize/SKILL.md)/SKILL.md)/SKILL.md), **always confirm the target project** with the user. See the [Project Selection](../SKILL.md#project-selection-all-modes) rules in the parent router.
 
 If the discovery table shows a sample project for the chosen region, suggest it as the default. Otherwise, query projects in that region and let the user pick.
 
@@ -158,5 +158,5 @@ If the discovery table shows a sample project for the chosen region, suggest it 
 ## Related Skills
 
 - **[preset](../[preset](../[preset](../../../Models_and_FineTuning/[preset](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/preset/SKILL.md)/SKILL.md)/SKILL.md)/SKILL.md)** — Quick deployment after [capacity](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md) discovery
-- **[customize](../[customize](../[customize](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md)/SKILL.md)** — Custom deployment after [capacity](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md) discovery
+- **[customize](../../../../cloud/azure/ai/customize/SKILL.md)/SKILL.md)/SKILL.md)/SKILL.md)** — Custom deployment after [capacity](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md) discovery
 - **[quota](../../../quota/quota.md)** — For quota viewing, increase requests, and troubleshooting quota errors, defer to this skill instead of duplicating guidance

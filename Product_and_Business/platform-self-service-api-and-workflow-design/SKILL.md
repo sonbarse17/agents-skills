@@ -74,7 +74,7 @@ optional UI decoration a determined developer (or a bug) can route around.
 - For Humanitec: an org with the Platform Orchestrator, `humctl`
   authenticated, and an API token (`HUMANITEC_TOKEN`) scoped to the
   Applications/Environments the self-service flow targets — see
-  [humanitec-score-workload-specification](../[humanitec-score-workload-specification](../../Software_Engineering_and_Other/Miscellaneous/humanitec-score-workload-specification/SKILL.md)/SKILL.md)
+  [humanitec-score-workload-specification](../../containers-orchestration/common/other/humanitec-score-workload-specification/SKILL.md)/SKILL.md)
   for the workload-spec side of this.
 - A policy engine or rule evaluator reachable synchronously from the
   provisioning path — Open Policy Agent (OPA) with a `/v1/data` HTTP
@@ -442,7 +442,7 @@ risk.
 ## Cross-references
 
 - [no-code-idp-[service-catalog](../../containers-orchestration/common/other/service-catalog/SKILL.md)-tools-port-cortex-opslevel](../[no-code-idp-[service-catalog](../../DevOps_and_Cloud/Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel](../../DevOps_and_Cloud/Observability_and_SecOps/no-code-idp-[service-catalog](../../DevOps_and_Cloud/Observability_and_SecOps/service-catalog/SKILL.md)-tools-port-cortex-opslevel/SKILL.md)/SKILL.md) — Port's self-service Action model and its `reportWorkflowStatus` pattern are a SaaS-hosted equivalent of the Backstage/custom-API workflow designed here.
-- [humanitec-score-workload-specification](../[humanitec-score-workload-specification](../../Software_Engineering_and_Other/Miscellaneous/humanitec-score-workload-specification/SKILL.md)/SKILL.md) — the workload-spec side of a self-service request when the provisioning target is a Humanitec Application/Environment rather than a standalone resource.
+- [humanitec-score-workload-specification](../../containers-orchestration/common/other/humanitec-score-workload-specification/SKILL.md)/SKILL.md) — the workload-spec side of a self-service request when the provisioning target is a Humanitec Application/Environment rather than a standalone resource.
 - [humanitec-score-configuration-validation](../[humanitec-score-configuration-validation](../../DevOps_and_Cloud/CI_CD/humanitec-score-configuration-validation/SKILL.md)/SKILL.md) — the dry-run/policy validation this skill's policy-check step should call before a Humanitec-backed self-service request proceeds to approval.
 - [golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md) — the Scaffolder template surrounding the self-service action here is itself a golden path; that skill covers the template's broader defaults and escape hatches beyond the provisioning action alone.
 - [backstage-plugin-development](../[backstage-plugin-development](../../Software_Engineering_and_Other/Backend/backstage-plugin-development/SKILL.md)/SKILL.md) — general Backstage backend-plugin patterns (`createBackendPlugin`, API clients) that a custom Scaffolder action's supporting backend code often reuses.

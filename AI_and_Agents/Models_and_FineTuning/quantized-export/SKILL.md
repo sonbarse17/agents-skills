@@ -60,7 +60,7 @@ specific workloads (see Workload Overrides).
   Use it for local or CPU-adjacent
   deployment, not for GPU-serving
   throughput — it optimizes for footprint,
-  not tokens/sec on a [datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md) GPU.
+  not tokens/sec on a [datacenter](../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/datacenter/SKILL.md) GPU.
 - **NVFP4 is for Blackwell-at-scale
   deployments only — and explicitly NOT on
   GB10.** NVFP4 on SM121 (GB10) runs **~32%
@@ -90,8 +90,8 @@ lookup table for common scenarios:
 
 | Target | Workload | Format |
 |---|---|---|
-| [Datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md) GPU | generic chat | FP8 |
-| [Datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md) GPU | long-context/code/math | FP8 or W8A8 — never INT4 |
+| [Datacenter](../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/datacenter/SKILL.md) GPU | generic chat | FP8 |
+| [Datacenter](../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/datacenter/SKILL.md) GPU | long-context/code/math | FP8 or W8A8 — never INT4 |
 | Older GPU generation | generic | AWQ INT4 |
 | Edge device / laptop | llama.cpp serving | GGUF Q4_K_M + imatrix |
 | GB10 | any workload | FP8 via vLLM nightly, or GGUF via llama.cpp locally — skip NVFP4 |

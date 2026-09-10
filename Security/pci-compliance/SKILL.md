@@ -182,11 +182,11 @@ import secrets
 from cryptography.fernet import Fernet
 
 class TokenVault:
-    """Secure token [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) for card data (if you must store it)."""
+    """Secure token [vault](../vault/SKILL.md) for card data (if you must store it)."""
 
     def __init__(self, encryption_key):
         self.cipher = Fernet(encryption_key)
-        self.[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) = {}  # In production: use encrypted database
+        self.[vault](../vault/SKILL.md) = {}  # In production: use encrypted database
 
     def tokenize(self, card_data):
         """Convert card data to token."""
@@ -197,13 +197,13 @@ class TokenVault:
         encrypted = self.cipher.encrypt(json.dumps(card_data).encode())
 
         # Store token -> encrypted data mapping
-        self.[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)[token] = encrypted
+        self.[vault](../vault/SKILL.md)[token] = encrypted
 
         return token
 
     def detokenize(self, token):
         """Retrieve card data from token."""
-        encrypted = self.[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).get(token)
+        encrypted = self.[vault](../vault/SKILL.md).get(token)
         if not encrypted:
             raise ValueError("Token not found")
 
@@ -212,8 +212,8 @@ class TokenVault:
         return json.loads(decrypted.decode())
 
     def delete_token(self, token):
-        """Remove token from [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)."""
-        self.[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).pop(token, None)
+        """Remove token from [vault](../vault/SKILL.md)."""
+        self.[vault](../vault/SKILL.md).pop(token, None)
 ```
 
 ## Encryption

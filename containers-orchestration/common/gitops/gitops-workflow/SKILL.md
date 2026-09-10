@@ -65,8 +65,8 @@ Git.
   since [GitOps](../gitops/SKILL.md) repos almost never hand-maintain a full manifest per
   environment.
 - A secrets strategy decided before rollout: Sealed Secrets, SOPS, or an
-  external secrets operator pulling from a [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) (AWS Secrets Manager,
-  HashiCorp [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), Azure Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)) — plaintext [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) `Secret` objects
+  external secrets operator pulling from a [vault](../../../../Security/vault/SKILL.md) (AWS Secrets Manager,
+  HashiCorp [Vault](../../../../Security/vault/SKILL.md), Azure Key [Vault](../../../../Security/vault/SKILL.md)) — plaintext [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) `Secret` objects
   must never be committed.
 - Cluster-side RBAC scoping so the [GitOps](../gitops/SKILL.md) operator's service account has
   only the permissions it needs per namespace/environment, not blanket
@@ -158,7 +158,7 @@ Git.
    git add sealed-secret.yaml   # safe to [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md); only the controller can decrypt
    ```
    With an External Secrets Operator, [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) only a reference
-   (`ExternalSecret` CR pointing at a [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) path), never the value.
+   (`ExternalSecret` CR pointing at a [vault](../../../../Security/vault/SKILL.md) path), never the value.
 
 7. **Roll back by reverting Git, not by manual cluster surgery.**
    ```bash

@@ -27,7 +27,7 @@ depends_on:
 | Install tool, SSH setup, ansible.cfg | `resources/install-and-setup.md` | User needs to install Ansible or configure control node |
 | Inventory files, group_vars, host_vars | `resources/inventory-and-variables.md` | User needs inventory structure or variable precedence |
 | Playbook authoring, roles, modules | `resources/playbook-patterns.md` | User needs play structure, task patterns, or common modules |
-| CLI commands, [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), galaxy | `resources/command-cookbook.md` | User needs ansible/ansible-playbook/ansible-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)/galaxy commands |
+| CLI commands, [vault](../../../../Security/vault/SKILL.md), galaxy | `resources/command-cookbook.md` | User needs ansible/ansible-playbook/ansible-[vault](../../../../Security/vault/SKILL.md)/galaxy commands |
 
 ## Quick Start
 
@@ -70,7 +70,7 @@ ansible-playbook -i inventory.ini site.yml --check --diff
 - Use `--limit` to target a subset of hosts before running against all inventory.
 - Avoid `command` and `shell` modules when an idempotent module exists.
 - Running as root (`become: true`) requires explicit approval — confirm privilege escalation scope.
-- Protect secrets with `ansible-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) encrypt` — never [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) plaintext passwords.
+- Protect secrets with `ansible-[vault](../../../../Security/vault/SKILL.md) encrypt` — never [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) plaintext passwords.
 
 ```bash
 # Install a role then dry-run the playbook to preview changes

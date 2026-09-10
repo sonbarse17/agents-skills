@@ -99,7 +99,7 @@ How should patterns be composed?
 
 ```
 What is the nature of the downstream call?
-  ├── Internal service (same [datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md)) → 2-5s
+  ├── Internal service (same [datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/datacenter/SKILL.md)) → 2-5s
   ├── External API (third-party) → 5-10s
   ├── Database query → 5-30s (depending on query)
   ├── Batch/analytics query → 30-60s
@@ -668,7 +668,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager ([Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../../../Security/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
 - Access [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets

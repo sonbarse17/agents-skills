@@ -492,6 +492,6 @@ groups:
 
 ## Related Skills
 
-- [hashicorp-vault](../../secrets/[hashicorp-vault](../../../Security/hashicorp-[vault](../../Miscellaneous/vault/SKILL.md)/SKILL.md)/) - PKI management
+- [hashicorp-vault](../vault/SKILL.md)/SKILL.md)/) - PKI management
 - [waf-setup](../waf-setup/SKILL.md)/) - Web protection
 - [zero-trust](../zero-trust/SKILL.md)/) - mTLS and identity-based access

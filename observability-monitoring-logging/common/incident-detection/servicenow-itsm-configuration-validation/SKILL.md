@@ -41,7 +41,7 @@ Configuration Item was never linked to an owning team. Because these
 defects are invisible during normal operation (nobody triggers an
 Emergency Change on a quiet Tuesday, nobody notices a routing gap until
 a genuinely new service ships), the configuration underlying
-[servicenow-itsm-integration](../[servicenow-itsm-integration](../../../Software_Engineering_and_Other/Miscellaneous/servicenow-itsm-integration/SKILL.md)/SKILL.md)
+[servicenow-itsm-integration](../servicenow-itsm-integration/SKILL.md)/SKILL.md)
 needs to be validated *before* it's depended on, not discovered as a
 finding during an actual [incident](../incident/SKILL.md) postmortem. This skill covers
 systematically checking CMDB-driven assignment routing for coverage
@@ -82,7 +82,7 @@ read-through at initial setup.
   a static diagram.
 - Familiarity with the workflow/routing/sync mechanics this skill
   validates — see
-  [servicenow-itsm-integration](../[servicenow-itsm-integration](../../../Software_Engineering_and_Other/Miscellaneous/servicenow-itsm-integration/SKILL.md)/SKILL.md)
+  [servicenow-itsm-integration](../servicenow-itsm-integration/SKILL.md)/SKILL.md)
   for how they're built, since this skill assumes that configuration
   already exists and is strictly about proving it's correct.
 - A non-production ServiceNow instance or scoped test records (a test
@@ -209,7 +209,7 @@ read-through at initial setup.
    record for several minutes afterward — repeated back-and forth status
    flips indicate the sync flow lacks a single source of truth per field
    (see the sync-loop pitfall in
-   [servicenow-itsm-integration](../[servicenow-itsm-integration](../../../Software_Engineering_and_Other/Miscellaneous/servicenow-itsm-integration/SKILL.md)/SKILL.md)).
+   [servicenow-itsm-integration](../servicenow-itsm-integration/SKILL.md)/SKILL.md)).
 
 8. **Report findings to a place people actually act on**, not a report
    that sits unread — open a tracked ticket for each gap found (a
@@ -336,7 +336,7 @@ team runs a validation pass.
 5. Sync idempotency test (step 6) with a duplicate `correlation_id`
    confirms only one [Incident](../incident/SKILL.md) record is created — the flow's
    check-then-update logic (built per
-   [servicenow-itsm-integration](../[servicenow-itsm-integration](../../../Software_Engineering_and_Other/Miscellaneous/servicenow-itsm-integration/SKILL.md)/SKILL.md))
+   [servicenow-itsm-integration](../servicenow-itsm-integration/SKILL.md)/SKILL.md))
    is working as designed.
 
 Both blocking findings (CI ownership gap, single-active-approver group)
@@ -346,7 +346,7 @@ Emergency Change path.
 
 ## Cross-references
 
-- [servicenow-itsm-integration](../[servicenow-itsm-integration](../../../Software_Engineering_and_Other/Miscellaneous/servicenow-itsm-integration/SKILL.md)/SKILL.md) —
+- [servicenow-itsm-integration](../servicenow-itsm-integration/SKILL.md)/SKILL.md) —
   how the workflows, CMDB routing, and sync flows validated here are
   actually built and configured; read that skill first for the
   underlying mechanics.

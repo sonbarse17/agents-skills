@@ -120,7 +120,7 @@ CONTRACT: <paste contract>
 
 In Claude Code, the role-based reviewers in `agents/` start with isolated context by design and are usable here — see `agents/` for the roster and per-domain match.
 
-**The adversarial prompt above takes precedence over the persona's default response shape.** Personas like `[code-reviewer](../../Miscellaneous/code-reviewer/SKILL.md)` are written to produce balanced verdicts with both strengths and weaknesses; doubt-driven needs issues-only output. Paste the adversarial prompt verbatim into the invocation so it overrides the persona's default. If a persona's response shape can't be overridden cleanly, fall back to a generic subagent with the adversarial prompt.
+**The adversarial prompt above takes precedence over the persona's default response shape.** Personas like `[code-reviewer](../../../ci-cd/common/other/code-reviewer/SKILL.md)` are written to produce balanced verdicts with both strengths and weaknesses; doubt-driven needs issues-only output. Paste the adversarial prompt verbatim into the invocation so it overrides the persona's default. If a persona's response shape can't be overridden cleanly, fall back to a generic subagent with the adversarial prompt.
 
 #### Cross-model escalation
 
@@ -235,7 +235,7 @@ If 3 cycles is "obviously insufficient" because the artifact is large: the artif
 
 ## Interaction with Other Skills
 
-- **`[code-review-and-quality](../../../Software_Engineering_and_Other/Patterns/[code-review](../../../Software_Engineering_and_Other/Miscellaneous/code-review/SKILL.md)-and-quality/SKILL.md)` / `/review`**: complementary. `/review` is post-hoc PR verdict; doubt-driven is in-flight per-decision. Use both.
+- **`[code-review-and-quality](../../../Software_Engineering_and_Other/Patterns/[code-review](../../../ci-cd/common/other/code-review/SKILL.md)-and-quality/SKILL.md)` / `/review`**: complementary. `/review` is post-hoc PR verdict; doubt-driven is in-flight per-decision. Use both.
 - **`[source-driven-development](../source-driven-development/SKILL.md)`**: SDD verifies *facts about frameworks* against official docs. Doubt-driven verifies *your reasoning about the artifact*. SDD checks the API exists; doubt-driven checks you used it correctly under the contract.
 - **`[test-driven-development](../test-driven-development/SKILL.md)`**: TDD's RED step is doubt made concrete — a failing test is a disproof attempt. When TDD applies, that failing test *is* the doubt step for behavioral claims.
 - **`[debugging-and-error-recovery](../debugging-and-error-recovery/SKILL.md)`**: when the reviewer surfaces a real failure mode, drop into the debugging skill to localize and fix.

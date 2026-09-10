@@ -92,7 +92,7 @@ actually wrong" using a fresh query against the authoritative server directly.
 Split-horizon (or split-view) DNS answers the same name differently depending on whether the
 query comes from inside or outside the network — internal clients get a private IP, external
 clients get a public one. This is the right tool for exposing one hostname to both, but it is a
-common source of "works on my laptop, not in the [datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md)" bugs when the two views drift or a
+common source of "works on my laptop, not in the [datacenter](../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/datacenter/SKILL.md)" bugs when the two views drift or a
 record is added to only one.
 
 - **Keep both views in sync deliberately** — a change made to the external zone and forgotten in

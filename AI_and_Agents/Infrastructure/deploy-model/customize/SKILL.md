@@ -23,7 +23,7 @@ depends_on:
   - cost
 ---
 
-# [Customize](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md) Model Deployment
+# [Customize](../../../../cloud/azure/ai/customize/SKILL.md)/SKILL.md) Model Deployment
 
 Interactive guided workflow for deploying Azure OpenAI models with full customization control over version, SKU, [capacity](../[capacity](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), content filtering, and advanced options.
 
@@ -51,9 +51,9 @@ Use this skill when you need **precise control** over deployment configuration:
 
 **Alternative:** Use `[preset](../[preset](../../../Models_and_FineTuning/[preset](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/preset/SKILL.md)/SKILL.md)/SKILL.md)` for quick deployment to the best available region with automatic configuration.
 
-### Comparison: [customize](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md) vs [preset](../[preset](../../../Models_and_FineTuning/[preset](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/preset/SKILL.md)/SKILL.md)/SKILL.md)
+### Comparison: [customize](../../../../cloud/azure/ai/customize/SKILL.md)/SKILL.md) vs [preset](../[preset](../../../Models_and_FineTuning/[preset](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/preset/SKILL.md)/SKILL.md)/SKILL.md)
 
-| Feature | [customize](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md) | [preset](../[preset](../../../Models_and_FineTuning/[preset](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/preset/SKILL.md)/SKILL.md)/SKILL.md) |
+| Feature | [customize](../../../../cloud/azure/ai/customize/SKILL.md)/SKILL.md) | [preset](../[preset](../../../Models_and_FineTuning/[preset](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/preset/SKILL.md)/SKILL.md)/SKILL.md) |
 |---------|---------------------|----------------------------|
 | **Focus** | Full customization control | Optimal region selection |
 | **Version Selection** | User chooses from available | Uses latest automatically |
@@ -99,7 +99,7 @@ If user accepts all defaults (latest version, GlobalStandard SKU, recommended [c
 
 ## Phase Summaries
 
-> ⚠️ **MUST READ:** Before executing any phase, load [../../../../Global_References/[customize](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)-workflow.md](../../../../Global_References/[customize](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)-workflow.md) for the full scripts and implementation details. The summaries below describe *what* each phase does — the reference file contains the *how* (CLI commands, quota patterns, [capacity](../[capacity](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) formulas, cross-region fallback logic).
+> ⚠️ **MUST READ:** Before executing any phase, load [../../../../Global_References/[customize](../../../../cloud/azure/ai/customize/SKILL.md)/SKILL.md)-workflow.md](../../../../cloud/azure/ai/customize/SKILL.md)/SKILL.md)-workflow.md) for the full scripts and implementation details. The summaries below describe *what* each phase does — the reference file contains the *how* (CLI commands, quota patterns, [capacity](../[capacity](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) formulas, cross-region fallback logic).
 
 | Phase | Action | Key Details |
 |-------|--------|-------------|
@@ -156,7 +156,7 @@ az cognitiveservices account deployment delete --name <account> --resource-group
 
 ## Selection Guides & Advanced Topics
 
-> For SKU comparison tables, PTU sizing formulas, and advanced option details, load [../../../../Global_References/[customize](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)-guides.md](../../../../Global_References/[customize](../../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)-guides.md).
+> For SKU comparison tables, PTU sizing formulas, and advanced option details, load [../../../../Global_References/[customize](../../../../cloud/azure/ai/customize/SKILL.md)/SKILL.md)-guides.md](../../../../cloud/azure/ai/customize/SKILL.md)/SKILL.md)-guides.md).
 
 **SKU selection:** GlobalStandard (production/HA) → Standard (dev/test) → ProvisionedManaged (high-volume/guaranteed throughput) → DataZoneStandard (data residency).
 

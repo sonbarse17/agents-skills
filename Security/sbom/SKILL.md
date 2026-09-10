@@ -475,7 +475,7 @@ Build-time SBOM includes dev dependencies not present in production. Generate se
 - Correlate vulnerabilities by reachability when possible
 
 ## References
-  - ../../../Global_References/[dependency-management](../../Software_Engineering_and_Other/Miscellaneous/dependency-management/SKILL.md).md — Dependency Management
+  - ../../../Global_References/[dependency-management](../../ci-cd/common/build/dependency-management/SKILL.md).md — Dependency Management
   - ../../../Global_References/sbom-advanced.md — Sbom Advanced Topics
   - ../../../Global_References/sbom-attestation.md — SBOM Attestation
   - ../../../Global_References/sbom-formats.md — SBOM Formats
@@ -594,7 +594,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager ([Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
 - Access [audit](../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets

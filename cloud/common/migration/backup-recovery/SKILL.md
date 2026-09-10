@@ -43,7 +43,7 @@ Implement comprehensive backup and recovery strategies using rsync, Restic, and 
 
 - **3** copies of your data (1 primary + 2 backups)
 - **2** different storage media or types (e.g., local disk + cloud)
-- **1** copy offsite (cloud storage, remote [datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md))
+- **1** copy offsite (cloud storage, remote [datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/datacenter/SKILL.md))
 
 ## rsync Backups
 
@@ -375,8 +375,8 @@ restic dump latest mydb.dump \
 
 ## Related Skills
 
-- `[linux-administration](../../../../Software_Engineering_and_Other/Miscellaneous/linux-administration/SKILL.md)` -- Server maintenance and log management
-- `[systemd-services](../../../../Software_Engineering_and_Other/Miscellaneous/systemd-services/SKILL.md)` -- Scheduling backups with systemd timers
+- `[linux-administration](../../../../Software_Engineering_and_Other/Miscellaneous/os-admin/linux-administration/SKILL.md)` -- Server maintenance and log management
+- `[systemd-services](../../../../Software_Engineering_and_Other/Miscellaneous/os-admin/systemd-services/SKILL.md)` -- Scheduling backups with systemd timers
 - `[object-storage](../../storage/object-storage/SKILL.md)` -- S3 and MinIO as backup destinations
 - `[block-storage](../../storage/block-storage/SKILL.md)` -- LVM snapshots for consistent backups
 - `[nfs-storage](../../storage/nfs-storage/SKILL.md)` -- Backing up NFS-shared data

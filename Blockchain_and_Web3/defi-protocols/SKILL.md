@@ -41,8 +41,8 @@ Overcollateralized lending requires robust liquidation mechanisms when Health Fa
 flowchart TD
     User[User] -->|Deposit Asset| LendingPool[Lending Pool]
     LendingPool -->|Mint aToken| User
-    User -->|Borrow| [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)[Collateral Vault]
-    [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) -->|Check Price| Oracle[Price Oracle]
+    User -->|Borrow| [Vault](../../Security/vault/SKILL.md)[Collateral Vault]
+    [Vault](../../Security/vault/SKILL.md) -->|Check Price| Oracle[Price Oracle]
     Oracle -->|Price Update| Liquidator[Liquidator Bot]
-    Liquidator -->|Liquidate Undercollateralized| [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
+    Liquidator -->|Liquidate Undercollateralized| [Vault](../../Security/vault/SKILL.md)
 ```

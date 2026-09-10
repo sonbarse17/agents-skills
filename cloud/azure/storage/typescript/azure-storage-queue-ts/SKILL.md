@@ -377,7 +377,7 @@ async function processBatchWithExtension(queueClient: QueueClient): Promise<void
 
 ## Message Encoding
 
-By default, messages are Base64 encoded. You can [customize](../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) this:
+By default, messages are Base64 encoded. You can [customize](../../../ai/customize/SKILL.md)/SKILL.md)/SKILL.md) this:
 
 ```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 import { QueueClient } from "@azure/storage-queue";

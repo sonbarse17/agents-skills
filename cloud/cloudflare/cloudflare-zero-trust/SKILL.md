@@ -351,5 +351,5 @@ cloudflared access ssh --hostname ssh.example.com
 
 - [cloudflare-workers](../[cloudflare-workers](../cloudflare-workers/SKILL.md)/) - Edge compute behind Access policies
 - [dns-management](../../networking/[dns-management](../../../AI_and_Agents/Workflows/dns-management/SKILL.md)/) - DNS routing and record management
-- [reverse-proxy](../../networking/[reverse-proxy](../../../Software_Engineering_and_Other/Miscellaneous/reverse-proxy/SKILL.md)/) - Alternative gateway patterns
+- [reverse-proxy](../../../Software_Engineering_and_Other/Backend/patterns/reverse-proxy/SKILL.md)/) - Alternative gateway patterns
 - [service-mesh](../../networking/[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)/) - Internal service-to-service security

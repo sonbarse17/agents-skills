@@ -406,7 +406,7 @@ Relying on manual testing for regression sign-off. Manual regression is slow, er
 ## Handoff
 After regression testing, hand off to:
 - `[quality-smoke-testing](../smoke-testing/SKILL.md)` — for BVT smoke suite updates on new critical paths
-- `[quality-acceptance-testing](../../Miscellaneous/acceptance-testing/SKILL.md)` — if acceptance criteria gaps were uncovered
+- `[quality-acceptance-testing](../acceptance-testing/SKILL.md)` — if acceptance criteria gaps were uncovered
 - `[quality-e2e-testing](../e2e-testing/SKILL.md)` — for end-to-end coverage of newly identified risk areas
 - `[quality-integration-testing](../integration-testing/SKILL.md)` — for deeper investigation of regression failures
 

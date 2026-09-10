@@ -578,5 +578,5 @@ Optimization: single customer profile across all channels with real-time sync. I
   - ../../../Global_References/service-blueprint.md — Service Blueprinting
 
 ## Handoff
-For persona insights to inform journey stages, hand off to `[product-persona-development](../persona-development/SKILL.md)`. For analytics event tracking, hand off to `[product-analytics](../../Software_Engineering_and_Other/Miscellaneous/analytics/SKILL.md)`. For user research validation, hand off to `[product-user-research](../user-research/SKILL.md)`. For experiment execution on journey touchpoints, hand off to `[product-ab-testing](../../Software_Engineering_and_Other/Miscellaneous/ab-testing/SKILL.md)`. For growth metric tracking across journey stages, hand off to `[product-growth-engineering](../growth-engineering/SKILL.md)`.
+For persona insights to inform journey stages, hand off to `[product-persona-development](../persona-development/SKILL.md)`. For analytics event tracking, hand off to `[product-analytics](../analytics/SKILL.md)`. For user research validation, hand off to `[product-user-research](../user-research/SKILL.md)`. For experiment execution on journey touchpoints, hand off to `[product-ab-testing](../ab-testing/SKILL.md)`. For growth metric tracking across journey stages, hand off to `[product-growth-engineering](../growth-engineering/SKILL.md)`.
 

@@ -500,7 +500,7 @@ Analytics Engineering Stack
 │   └── DuckDB → dbt-duckdb (local development)
 ├── Data modeling approach?
 │   ├── Kimball → Star schema (facts + dimensions)
-│   └── Data [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) → Hubs, links, satellites
+│   └── Data [Vault](../../Security/vault/SKILL.md) → Hubs, links, satellites
 └── CI/CD for data?
     ├── Yes → dbt CI with [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions + slim CI
     └── No → Manual dbt run (not recommended)

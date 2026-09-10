@@ -343,7 +343,7 @@ helm install csi-driver-nfs csi-driver-nfs/csi-driver-nfs --namespace kube-syste
 
 ## Related Skills
 
-- `[linux-administration](../../../../Software_Engineering_and_Other/Miscellaneous/linux-administration/SKILL.md)` -- Server setup and network configuration
+- `[linux-administration](../../../../Software_Engineering_and_Other/Miscellaneous/os-admin/linux-administration/SKILL.md)` -- Server setup and network configuration
 - `[block-storage](../block-storage/SKILL.md)` -- Underlying storage for NFS server data directories
 - `[performance-tuning](../../../../Software_Engineering_and_Other/Frontend/performance/performance-tuning/SKILL.md)` -- Kernel and network tuning for NFS throughput
 - `[backup-recovery](../../migration/backup-recovery/SKILL.md)` -- Backing up NFS-hosted data

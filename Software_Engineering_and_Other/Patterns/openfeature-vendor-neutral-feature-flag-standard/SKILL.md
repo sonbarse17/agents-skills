@@ -45,7 +45,7 @@ Unleash, Flagsmith, a static config file provider for tests, or an
 in-house flag service, all through the identical call-site shape. This
 skill covers OpenFeature's provider architecture, evaluation context
 design, and hooks — it is the abstraction *layer*, distinct from
-[feature-flag-configuration-launchdarkly-and-unleash](../[feature-flag-configuration-launchdarkly-and-unleash](../../../Software_Engineering_and_Other/Miscellaneous/feature-flag-configuration-launchdarkly-and-unleash/SKILL.md)/SKILL.md),
+[feature-flag-configuration-launchdarkly-and-unleash](../../../ci-cd/common/deployment/feature-flag-configuration-launchdarkly-and-unleash/SKILL.md)/SKILL.md),
 which covers the flag lifecycle, rollout, and kill-switch discipline
 *within* a specific vendor and applies equally whether that vendor sits
 behind OpenFeature or is called directly.
@@ -85,7 +85,7 @@ behind OpenFeature or is called directly.
 - The vendor/provider-specific setup already done underneath (an
   Unleash server running, a LaunchDarkly project/environment
   configured) — OpenFeature does not replace
-  [feature-flag-configuration-launchdarkly-and-unleash](../[feature-flag-configuration-launchdarkly-and-unleash](../../../Software_Engineering_and_Other/Miscellaneous/feature-flag-configuration-launchdarkly-and-unleash/SKILL.md)/SKILL.md)'s
+  [feature-flag-configuration-launchdarkly-and-unleash](../../../ci-cd/common/deployment/feature-flag-configuration-launchdarkly-and-unleash/SKILL.md)/SKILL.md)'s
   setup, it sits on top of it.
 - Clarity on what belongs in the **evaluation context** (the equivalent
   of a vendor SDK's "user context" or "targeting key" object) — a
@@ -195,7 +195,7 @@ behind OpenFeature or is called directly.
    A hook registered once at the client (or global) level applies to
    every subsequent evaluation automatically — this is the OpenFeature
    equivalent of the "flag evaluation should be observable" guidance in
-   [feature-flag-configuration-launchdarkly-and-unleash](../[feature-flag-configuration-launchdarkly-and-unleash](../../../Software_Engineering_and_Other/Miscellaneous/feature-flag-configuration-launchdarkly-and-unleash/SKILL.md)/SKILL.md),
+   [feature-flag-configuration-launchdarkly-and-unleash](../../../ci-cd/common/deployment/feature-flag-configuration-launchdarkly-and-unleash/SKILL.md)/SKILL.md),
    implemented once instead of per call site.
 
 5. **Use the in-memory/static-file provider for deterministic tests**,
@@ -237,7 +237,7 @@ behind OpenFeature or is called directly.
    but smaller cost — one more dependency, one more layer to understand
    — for a single small service with no plausible vendor-switch
    scenario on the horizon, where calling the vendor SDK directly (per
-   [feature-flag-configuration-launchdarkly-and-unleash](../[feature-flag-configuration-launchdarkly-and-unleash](../../../Software_Engineering_and_Other/Miscellaneous/feature-flag-configuration-launchdarkly-and-unleash/SKILL.md)/SKILL.md))
+   [feature-flag-configuration-launchdarkly-and-unleash](../../../ci-cd/common/deployment/feature-flag-configuration-launchdarkly-and-unleash/SKILL.md)/SKILL.md))
    may be the simpler, sufficient choice.
 
 ## Best practices
@@ -262,7 +262,7 @@ behind OpenFeature or is called directly.
   check.
 - Keep the flag lifecycle/governance discipline (naming conventions,
   stale-flag audits, kill-switch fail-open/fail-closed design) from
-  [feature-flag-configuration-launchdarkly-and-unleash](../[feature-flag-configuration-launchdarkly-and-unleash](../../../Software_Engineering_and_Other/Miscellaneous/feature-flag-configuration-launchdarkly-and-unleash/SKILL.md)/SKILL.md)
+  [feature-flag-configuration-launchdarkly-and-unleash](../../../ci-cd/common/deployment/feature-flag-configuration-launchdarkly-and-unleash/SKILL.md)/SKILL.md)
   fully in force underneath OpenFeature — the abstraction layer changes
   *how* application code calls into flags, not the operational
   discipline needed around flag lifecycle itself.
@@ -301,7 +301,7 @@ behind OpenFeature or is called directly.
   becomes "the" behavior in production because the provider never
   successfully initializes, and nobody notices for a while.
   **Fix:** This mirrors the vendor-level "fail-safe default" pitfall in
-  [feature-flag-configuration-launchdarkly-and-unleash](../[feature-flag-configuration-launchdarkly-and-unleash](../../../Software_Engineering_and_Other/Miscellaneous/feature-flag-configuration-launchdarkly-and-unleash/SKILL.md)/SKILL.md)
+  [feature-flag-configuration-launchdarkly-and-unleash](../../../ci-cd/common/deployment/feature-flag-configuration-launchdarkly-and-unleash/SKILL.md)/SKILL.md)
   — a default value is a legitimate fail-safe, but a provider that never
   actually connects (a misconfigured Unleash URL, an invalid
   LaunchDarkly SDK key) evaluating every single flag to its default is
@@ -316,7 +316,7 @@ behind OpenFeature or is called directly.
   **Fix:** This is a case where OpenFeature's abstraction cost may
   genuinely outweigh its benefit (step 7) — it's not free, and a small
   project calling a vendor SDK directly per
-  [feature-flag-configuration-launchdarkly-and-unleash](../[feature-flag-configuration-launchdarkly-and-unleash](../../../Software_Engineering_and_Other/Miscellaneous/feature-flag-configuration-launchdarkly-and-unleash/SKILL.md)/SKILL.md)
+  [feature-flag-configuration-launchdarkly-and-unleash](../../../ci-cd/common/deployment/feature-flag-configuration-launchdarkly-and-unleash/SKILL.md)/SKILL.md)
   is a legitimate, simpler choice; reserve OpenFeature for genuine
   multi-service or plausible-vendor-switch scenarios rather than
   applying it as a default on every project regardless of size.
@@ -384,6 +384,6 @@ unmodified throughout.
 
 ## Cross-references
 
-- [feature-flag-configuration-launchdarkly-and-unleash](../[feature-flag-configuration-launchdarkly-and-unleash](../../../Software_Engineering_and_Other/Miscellaneous/feature-flag-configuration-launchdarkly-and-unleash/SKILL.md)/SKILL.md) — the flag lifecycle, rollout, and kill-switch discipline that applies underneath OpenFeature regardless of which provider is active; this skill is the abstraction layer on top, not a replacement for that operational discipline.
-- [pact-contract-testing-configuration](../[pact-contract-testing-configuration](../../../Software_Engineering_and_Other/Miscellaneous/pact-contract-testing-configuration/SKILL.md)/SKILL.md) — a comparable "avoid coupling to one specific implementation's exact interface" discipline, applied to service contracts rather than flag providers.
+- [feature-flag-configuration-launchdarkly-and-unleash](../../../ci-cd/common/deployment/feature-flag-configuration-launchdarkly-and-unleash/SKILL.md)/SKILL.md) — the flag lifecycle, rollout, and kill-switch discipline that applies underneath OpenFeature regardless of which provider is active; this skill is the abstraction layer on top, not a replacement for that operational discipline.
+- [pact-contract-testing-configuration](../../Testing/pact-contract-testing-configuration/SKILL.md)/SKILL.md) — a comparable "avoid coupling to one specific implementation's exact interface" discipline, applied to service contracts rather than flag providers.
 - [infrastructure-post-deployment-validation-and-smoke-testing](../[infrastructure-post-deployment-validation-and-smoke-testing](../../Infrastructure_as_Code/infrastructure-post-deployment-validation-and-smoke-testing/SKILL.md)/SKILL.md) — where a provider-status/evaluation-health check from this skill's hooks could be wired into a post-deploy smoke test.

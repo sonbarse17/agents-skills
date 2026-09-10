@@ -68,7 +68,7 @@ specific framework version your auditor is using.
 
 ## When to use
 
-- A user asks "which SOC 2 criteria does our [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-based secrets rotation
+- A user asks "which SOC 2 criteria does our [Vault](../vault/SKILL.md)-based secrets rotation
   satisfy" or similar for ISO 27001, PCI-DSS, or NIST CSF.
 - Preparing a controls matrix or evidence package ahead of a SOC 2 Type
   II [audit](../../AI_and_Agents/Operations/audit/SKILL.md), an ISO 27001 certification/surveillance [audit](../../AI_and_Agents/Operations/audit/SKILL.md), a PCI-DSS
@@ -142,7 +142,7 @@ specific framework version your auditor is using.
    against current framework text with the compliance owner/auditor"
    rather than asserting it confidently.
 4. **For each mapping, identify the evidence an assessor would need**:
-   not "we have a secrets manager" but "[Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) [audit](../../AI_and_Agents/Operations/audit/SKILL.md) log showing automatic
+   not "we have a secrets manager" but "[Vault](../vault/SKILL.md) [audit](../../AI_and_Agents/Operations/audit/SKILL.md) log showing automatic
    90-day rotation executed on schedule for the last two quarters,"
    "quarterly access review sign-off records," "SAST scan results with
    remediation timestamps meeting the documented SLA." A control that
@@ -193,7 +193,7 @@ specific framework version your auditor is using.
   technically accurate but scope-mismatched mapping wastes engineering
   effort.
 - Reuse one control across multiple frameworks rather than treating each
-  framework as a separate project — a single [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) rotation policy can
+  framework as a separate project — a single [Vault](../vault/SKILL.md) rotation policy can
   simultaneously map to SOC 2 CC6.1, ISO 27001 Annex A control on
   cryptographic keys/access management, PCI-DSS requirement 8 (or
   requirement 3 aspects), and NIST CSF `PR.AA`/`PR.DS` — build the matrix
@@ -252,7 +252,7 @@ numbering against the specific framework version and your auditor):
 
 | Technical control (existing implementation) | SOC 2 Trust Services Criteria | ISO/IEC 27001 Annex A (illustrative) | PCI-DSS (illustrative, v4.0-era) | NIST CSF 2.0 function/category | Evidence source | Frequency |
 |---|---|---|---|---|---|---|
-| [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-managed secret rotation, 90-day automatic rotation (see [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md)) | CC6.1 (logical access controls) | A.8.24 (use of cryptography) / A.5.17 (authentication information) | Req. 8 (identify users, authenticate access) | `PR.AA` (Identity Mgmt, Authentication & Access Control) | [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) [audit](../../AI_and_Agents/Operations/audit/SKILL.md) log export showing rotation events; quarterly rotation report | Quarterly |
+| [Vault](../vault/SKILL.md)-managed secret rotation, 90-day automatic rotation (see [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md)) | CC6.1 (logical access controls) | A.8.24 (use of cryptography) / A.5.17 (authentication information) | Req. 8 (identify users, authenticate access) | `PR.AA` (Identity Mgmt, Authentication & Access Control) | [Vault](../vault/SKILL.md) [audit](../../AI_and_Agents/Operations/audit/SKILL.md) log export showing rotation events; quarterly rotation report | Quarterly |
 | Least-privilege IAM roles + quarterly access review (see [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../../Cloud_Providers/cloud-iam-hardening/SKILL.md)/SKILL.md)) | CC6.2, CC6.3 (access provisioning/removal) | A.5.15 (access control), A.5.18 (access rights) | Req. 7 (restrict access by need to know) | `PR.AA` | Access review sign-off tickets; IAM policy diff history | Quarterly |
 | Centralized log aggregation with 1-year retention | CC7.2 ([monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) for security events) | A.8.15 (logging) | Req. 10 (log and monitor access) | `DE.AE` (Adverse Event Analysis), `DE.CM` (Continuous [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)) | SIEM retention config; sample log query results | Continuous, reviewed monthly |
 | TLS 1.2+ enforced in transit; KMS-managed encryption at rest | CC6.7 (data transmission/encryption) | A.8.24 (cryptography) | Req. 3 (protect stored account data), Req. 4 (protect data in transit) | `PR.DS` (Data Security) | TLS config scan results; KMS key policy export | Per release / quarterly |

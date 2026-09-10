@@ -397,7 +397,7 @@ existing users.
 - [certificate-lifecycle-management-at-scale](../[certificate-lifecycle-management-at-scale](../../Containers_and_Orchestration/certificate-lifecycle-management-at-scale/SKILL.md)/SKILL.md) —
   tracking and rotating the SAML/OIDC signing certificates this
   federation trust depends on, across many applications at once.
-- [vault-operations-and-pki-engine-configuration](../[vault-operations-and-pki-engine-configuration](../../Containers_and_Orchestration/[vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-operations-and-pki-engine-configuration/SKILL.md)/SKILL.md) —
+- [vault-operations-and-pki-engine-configuration](../[vault-operations-and-pki-engine-configuration](../../Containers_and_Orchestration/[vault](../../../Security/vault/SKILL.md)-operations-and-pki-engine-configuration/SKILL.md)/SKILL.md) —
   a comparable trust-chain/certificate-rotation discipline, applied to
   internal PKI rather than IdP federation certificates.
 - [secrets-management](../../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../security/secrets-management/SKILL.md)/SKILL.md) —

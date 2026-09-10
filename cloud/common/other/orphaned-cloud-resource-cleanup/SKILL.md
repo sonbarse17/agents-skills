@@ -81,7 +81,7 @@ sprint.
 - Awareness of, and a check against, any active
   [disaster-recovery-and-backup-strategy](../[disaster-recovery-and-backup-strategy](../[disaster-recovery](../../Observability_and_SecOps/disaster-recovery/SKILL.md)-and-backup-strategy/SKILL.md)/SKILL.md)
   plan for the account/subscription — DR-pattern resources (a pilot-light
-  database replica, a cross-region backup [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), a manually retained
+  database replica, a cross-region backup [vault](../../../../Security/vault/SKILL.md), a manually retained
   pre-migration snapshot) can look identical to genuine orphans from a
   pure "is it attached right now" query.
 - A grace-period/quarantine mechanism (a tag, a holding folder/resource
@@ -137,8 +137,8 @@ sprint.
    before treating it as a true orphan.** A resource with an `owner` tag
    still active, or one covered by
    [disaster-recovery-and-backup-strategy](../[disaster-recovery-and-backup-strategy](../[disaster-recovery](../../Observability_and_SecOps/disaster-recovery/SKILL.md)-and-backup-strategy/SKILL.md)/SKILL.md)'s
-   backup [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)/retention policy (e.g. a snapshot inside an AWS Backup
-   [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Lock retention window, or a disk explicitly retained as a
+   backup [vault](../../../../Security/vault/SKILL.md)/retention policy (e.g. a snapshot inside an AWS Backup
+   [Vault](../../../../Security/vault/SKILL.md) Lock retention window, or a disk explicitly retained as a
    pilot-light DR asset), is not a cleanup candidate regardless of
    attachment state. Filter these out of the candidate list before
    proceeding, don't just note them for later.
@@ -352,7 +352,7 @@ unassociated Elastic IPs, and 1 load balancer with no registered targets.
   identifies a resource as unused rather than misconfigured.
 - [disaster-recovery-and-backup-strategy](../[disaster-recovery-and-backup-strategy](../[disaster-recovery](../../Observability_and_SecOps/disaster-recovery/SKILL.md)-and-backup-strategy/SKILL.md)/SKILL.md) —
   check before deleting anything that could be a DR-pattern asset
-  (pilot-light replica, cross-region backup [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), retained pre-change
+  (pilot-light replica, cross-region backup [vault](../../../../Security/vault/SKILL.md), retained pre-change
   snapshot) rather than a genuine orphan.
 - [cloud-iam-hardening](../[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)/SKILL.md) — scope the
   cleanup automation's delete/release permissions narrowly, per its

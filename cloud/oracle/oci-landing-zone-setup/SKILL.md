@@ -76,7 +76,7 @@ the first `terraform apply`.
   sign-up and never changeable — while additional regions are opt-in via
   `oci iam region-subscription create`. Decide the home region and the
   initial subscribed-region set before building anything region-specific
-  ([Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) keys, Identity Domains, and some other resources have region
+  ([Vault](../../../Security/vault/SKILL.md) keys, Identity Domains, and some other resources have region
   affinity).
 - OCI CLI ≥ 3.40 and Terraform ≥ 1.5 with the `oci` provider ≥ 5.x if
   using infrastructure as code — pin the provider version, since
@@ -104,7 +104,7 @@ the first `terraform apply`.
    ```
    Tenancy (root compartment)
    ├── Security
-   │   ├── (Cloud Guard, [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), centralized Object Storage log archive)
+   │   ├── (Cloud Guard, [Vault](../../../Security/vault/SKILL.md), centralized Object Storage log archive)
    ├── Network
    │   ├── (DRG hub, hub VCN, FastConnect/Site-to-Site VPN)
    ├── Workloads
@@ -346,10 +346,10 @@ the first `terraform apply`.
   `oci search resource structured-search` for resources sitting in
   non-leaf compartments.
 
-- **Symptom:** A Terraform apply that provisions [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) keys or an
+- **Symptom:** A Terraform apply that provisions [Vault](../../../Security/vault/SKILL.md) keys or an
   Identity Domain in a newly subscribed region fails or behaves
   inconsistently with the home region's equivalent resource.
-  **Fix:** Some resources ([Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) master encryption keys, Identity
+  **Fix:** Some resources ([Vault](../../../Security/vault/SKILL.md) master encryption keys, Identity
   Domains) have region affinity and don't automatically replicate to
   newly subscribed regions the way compartments and policies (which are
   tenancy-wide) do. Explicitly provision the region-scoped resource in
@@ -390,7 +390,7 @@ line and before OCI resources fail their first security [audit](../../../AI_and_
    `Workloads:NonProduction:checkout-staging` for the new product line,
    each with a DRG attachment to the hub, a delegated-admin policy scoped
    to `CheckoutTeam`, and a Dynamic Group granting the compartment's
-   compute instances read access to [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) secrets in `Security` — no
+   compute instances read access to [Vault](../../../Security/vault/SKILL.md) secrets in `Security` — no
    embedded API keys anywhere in the deployment.
 6. Route [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and VCN Flow Logs through a Service Connector Hub into an
    Object Storage bucket in `Security` with a retention rule, and set a

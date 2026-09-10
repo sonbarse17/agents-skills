@@ -57,7 +57,7 @@ determine whether a Cassandra cluster stays healthy as it scales.
   TTLs.
 - Adding, removing, or replacing a node in the ring, or diagnosing an
   uneven token/data distribution across nodes.
-- Deciding on and validating a replication factor and rack/[datacenter](../../../Miscellaneous/datacenter/SKILL.md)
+- Deciding on and validating a replication factor and rack/[datacenter](../../../Miscellaneous/systems-low-level/datacenter/SKILL.md)
   topology for a new keyspace.
 
 ## Prerequisites & environment
@@ -72,9 +72,9 @@ determine whether a Cassandra cluster stays healthy as it scales.
   and compaction administration — this typically requires host access
   or JMX credentials, not just CQL client access.
 - A replication factor and `NetworkTopologyStrategy` keyspace
-  configuration appropriate to the deployment's rack/[datacenter](../../../Miscellaneous/datacenter/SKILL.md)
+  configuration appropriate to the deployment's rack/[datacenter](../../../Miscellaneous/systems-low-level/datacenter/SKILL.md)
   layout — `SimpleStrategy` (rack/DC-unaware) is only appropriate for a
-  single-[datacenter](../../../Miscellaneous/datacenter/SKILL.md) test/dev cluster, never production.
+  single-[datacenter](../../../Miscellaneous/systems-low-level/datacenter/SKILL.md) test/dev cluster, never production.
 - Familiarity with the actual query patterns a table will serve
   **before** creating it — unlike a relational schema, a Cassandra table
   design is driven by "what queries will read this data," since
@@ -123,7 +123,7 @@ replication factor (RF):
   replica hasn't yet received the latest write).
 - `QUORUM` — a strict majority of **all** replicas across **all**
   datacenters must respond; `LOCAL_QUORUM` requires a majority only
-  within the local [datacenter](../../../Miscellaneous/datacenter/SKILL.md), avoiding cross-DC latency for
+  within the local [datacenter](../../../Miscellaneous/systems-low-level/datacenter/SKILL.md), avoiding cross-DC latency for
   multi-region deployments while still giving strong-enough consistency
   for most application needs.
 - `ALL` — every replica must respond; strongest consistency, but
@@ -229,7 +229,7 @@ nodetool decommission   # run on the node being removed — streams its data OUT
   [mongodb-operations-and-scaling](../[mongodb-operations-and-scaling](../[mongodb](../../Backend/mongodb/SKILL.md)-operations-and-scaling/SKILL.md)/SKILL.md))
   rather than an unbounded, ever-growing key — this is the single
   hardest decision to fix after data has accumulated.
-- Use `NetworkTopologyStrategy` with an explicit per-[datacenter](../../../Miscellaneous/datacenter/SKILL.md)
+- Use `NetworkTopologyStrategy` with an explicit per-[datacenter](../../../Miscellaneous/systems-low-level/datacenter/SKILL.md)
   replication factor for every production keyspace — never
   `SimpleStrategy` outside of local development.
 - Choose consistency level per query based on the actual

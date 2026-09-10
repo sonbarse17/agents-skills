@@ -71,7 +71,7 @@ Before NOPing a conditional jump, trace the "detected" branch fully. If it initi
 
 ## Related Skills
 
-- `[binary-analysis-patterns](../../Software_Engineering_and_Other/Miscellaneous/binary-analysis-patterns/SKILL.md)` — static and dynamic analysis workflows for ELF/PE/Mach-O
+- `[binary-analysis-patterns](../binary-analysis-patterns/SKILL.md)` — static and dynamic analysis workflows for ELF/PE/Mach-O
 - `[memory-forensics](../memory-forensics/SKILL.md)` — process memory acquisition, artifact extraction, and live analysis
 - `[protocol-reverse-engineering](../reverse-engineering/SKILL.md)/SKILL.md)` — decoding custom binary protocols and encrypted network traffic
 

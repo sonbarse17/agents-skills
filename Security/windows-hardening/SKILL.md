@@ -618,5 +618,5 @@ Write-Host "`n=== [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Complet
 ## Related Skills
 
 - [cis-benchmarks](../[cis-benchmarks](../cis-benchmarks/SKILL.md)/) - Compliance scanning
-- [windows-server](../../../infrastructure/servers/[windows-server](../../../Software_Engineering_and_Other/Miscellaneous/windows-server/SKILL.md)/) - Server administration
+- [windows-server](../../Software_Engineering_and_Other/Miscellaneous/os-admin/windows-server/SKILL.md)/) - Server administration
 - [linux-hardening](../[linux-hardening](../linux-hardening/SKILL.md)/) - Linux security hardening

@@ -142,7 +142,7 @@ before an [incident](../../incident-detection/incident/SKILL.md) is the first ti
    natural place to route findings into
    [chatops-[runbook](../../incident-detection/runbook/SKILL.md)-automation](../[chatops-[runbook](../runbook/SKILL.md)-automation](../../../Software_Engineering_and_Other/Frontend/chatops-[runbook](../runbook/SKILL.md)-automation/SKILL.md)/SKILL.md)'s
    [incident](../../incident-detection/incident/SKILL.md)-channel bot as a scheduled notification, or into
-   [servicenow-itsm-integration](../[servicenow-itsm-integration](../../../Software_Engineering_and_Other/Miscellaneous/servicenow-itsm-integration/SKILL.md)/SKILL.md)
+   [servicenow-itsm-integration](../../incident-detection/servicenow-itsm-integration/SKILL.md)/SKILL.md)
    as a tracked problem-record if the org runs ITSM change control over
    on-call configuration.
 

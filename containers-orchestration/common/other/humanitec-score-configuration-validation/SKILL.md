@@ -41,7 +41,7 @@ platform-team Resource Definition edit silently resizes every production
 database — is what separates a validation gate from "we'll find out when
 someone complains." This skill covers the validation layer that sits in
 front of the authoring practices in
-[humanitec-score-workload-specification](../[humanitec-score-workload-specification](../../../Software_Engineering_and_Other/Miscellaneous/humanitec-score-workload-specification/SKILL.md)/SKILL.md):
+[humanitec-score-workload-specification](../humanitec-score-workload-specification/SKILL.md)/SKILL.md):
 schema/lint checks, dry-run resolution, policy checks on resource
 types/classes, and Resource Graph diffing for Resource Definition changes.
 
@@ -71,7 +71,7 @@ types/classes, and Resource Graph diffing for Resource Definition changes.
   ahead of any Humanitec-specific call.
 - `score-compose` and/or `score-k8s` installed for the fast, no-network
   first validation pass described in
-  [humanitec-score-workload-specification](../[humanitec-score-workload-specification](../../../Software_Engineering_and_Other/Miscellaneous/humanitec-score-workload-specification/SKILL.md)/SKILL.md).
+  [humanitec-score-workload-specification](../humanitec-score-workload-specification/SKILL.md)/SKILL.md).
 - A policy engine for org-specific rules beyond the base schema — Conftest
   (Open Policy Agent) is the common choice for checking YAML/JSON against
   Rego policies in CI; see
@@ -168,7 +168,7 @@ types/classes, and Resource Graph diffing for Resource Definition changes.
 5. **Before promoting a workload's first deploy to `staging`/`production`**,
    dry-run against those specific Environments too, not only
    `ci-validate` — Resource Definition bindings are per-Environment (see
-   [humanitec-score-workload-specification](../[humanitec-score-workload-specification](../../../Software_Engineering_and_Other/Miscellaneous/humanitec-score-workload-specification/SKILL.md)/SKILL.md)),
+   [humanitec-score-workload-specification](../humanitec-score-workload-specification/SKILL.md)/SKILL.md)),
    so a spec validating clean against `ci-validate` says nothing about
    whether `production` has the matching binding:
    ```bash
@@ -320,6 +320,6 @@ changing the existing `postgres-[aws-rds](../../../../cloud/aws/database/aws-rds
 
 ## Cross-references
 
-- [humanitec-score-workload-specification](../[humanitec-score-workload-specification](../../../Software_Engineering_and_Other/Miscellaneous/humanitec-score-workload-specification/SKILL.md)/SKILL.md) — the `score.yaml` authoring practices and Resource Definition binding model this validation layer checks against.
+- [humanitec-score-workload-specification](../humanitec-score-workload-specification/SKILL.md)/SKILL.md) — the `score.yaml` authoring practices and Resource Definition binding model this validation layer checks against.
 - [golden-path-template-validation-and-testing](../[golden-path-template-validation-and-testing](../golden-path-template-validation-and-testing/SKILL.md)/SKILL.md) — the equivalent end-to-end validation discipline applied to golden-path scaffolding templates rather than a single Score spec.
 - [opa-gatekeeper-policy-authoring](../../../policy-and-governance-tooling/skills/[opa-gatekeeper-policy-authoring](../../../Security/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md) — Rego policy-authoring detail if the org wants to share policy logic between Score-spec validation and [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) admission control.

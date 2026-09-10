@@ -55,7 +55,7 @@ before handing it a short-lived SVID — with no long-lived credential
 ever touching disk. This is a different layer than
 [enterprise-sso-and-idp-federation-configuration](../[enterprise-sso-and-idp-federation-configuration](../../DevOps_and_Cloud/Cloud_Providers/enterprise-sso-and-idp-federation-configuration/SKILL.md)/SKILL.md),
 which federates *human* workforce identity into applications, and than
-[vault-operations-and-pki-engine-configuration](../[vault-operations-and-pki-engine-configuration](../../DevOps_and_Cloud/Containers_and_Orchestration/[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-operations-and-pki-engine-configuration/SKILL.md)/SKILL.md),
+[vault-operations-and-pki-engine-configuration](../[vault-operations-and-pki-engine-configuration](../../DevOps_and_Cloud/Containers_and_Orchestration/[vault](../../Security/vault/SKILL.md)-operations-and-pki-engine-configuration/SKILL.md)/SKILL.md),
 which issues general-purpose secrets and certificates on request but has
 no built-in concept of automatically *attesting* which specific workload
 process is asking. This skill covers designing the trust domain and
@@ -98,7 +98,7 @@ rotation, and trust domain federation.
   [MySQL](../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) — for anything beyond a single-node trial; the default embedded
   SQLite is not intended for production HA) and an upstream CA
   configuration — either SPIRE's self-signed root, or an upstream
-  authority (a [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) PKI mount via SPIRE's `upstream_authority` plugin,
+  authority (a [Vault](../vault/SKILL.md) PKI mount via SPIRE's `upstream_authority` plugin,
   or a cloud provider's ACM Private CA) if the org wants SPIRE's issued
   certificates chained to an already-trusted root.
 - A **SPIRE Agent** running on every node that hosts workloads needing an
@@ -167,11 +167,11 @@ rotation, and trust domain federation.
          }
        }
      }
-     UpstreamAuthority "[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)" {
+     UpstreamAuthority "[vault](../vault/SKILL.md)" {
        plugin_data {
-         vault_addr = "https://[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).internal:8200"
+         vault_addr = "https://[vault](../vault/SKILL.md).internal:8200"
          pki_mount_point = "pki_int"
-         ca_cert_path = "/etc/spire/certs/[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-ca.pem"
+         ca_cert_path = "/etc/spire/certs/[vault](../vault/SKILL.md)-ca.pem"
        }
      }
    }
@@ -452,7 +452,7 @@ no shared API keys, no long-lived certificates.
 
 ## Cross-references
 
-- [vault-operations-and-pki-engine-configuration](../[vault-operations-and-pki-engine-configuration](../../DevOps_and_Cloud/Containers_and_Orchestration/[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-operations-and-pki-engine-configuration/SKILL.md)/SKILL.md) — general-purpose secrets/PKI issuance (including a possible `UpstreamAuthority` chain target for SPIRE's own CA), distinct from SPIRE's automated, attested workload-identity issuance covered here.
+- [vault-operations-and-pki-engine-configuration](../[vault-operations-and-pki-engine-configuration](../../DevOps_and_Cloud/Containers_and_Orchestration/[vault](../../Security/vault/SKILL.md)-operations-and-pki-engine-configuration/SKILL.md)/SKILL.md) — general-purpose secrets/PKI issuance (including a possible `UpstreamAuthority` chain target for SPIRE's own CA), distinct from SPIRE's automated, attested workload-identity issuance covered here.
 - [enterprise-sso-and-idp-federation-configuration](../[enterprise-sso-and-idp-federation-configuration](../../DevOps_and_Cloud/Cloud_Providers/enterprise-sso-and-idp-federation-configuration/SKILL.md)/SKILL.md) — the equivalent federation and audience-validation discipline applied to human/workforce SSO rather than workload identity, including the same "validate the audience claim" pitfall that applies to JWT-SVIDs here.
 - [certificate-lifecycle-management-at-scale](../[certificate-lifecycle-management-at-scale](../../DevOps_and_Cloud/Containers_and_Orchestration/certificate-lifecycle-management-at-scale/SKILL.md)/SKILL.md) — rotating and automating longer-lived certificates across many services, a complementary concern to SPIRE's short-lived SVID rotation for workloads that also need conventional TLS certificates.
 - [sealed-secrets-and-external-secrets-operator](../[sealed-secrets-and-external-secrets-operator](../../DevOps_and_Cloud/Containers_and_Orchestration/sealed-secrets-and-external-secrets-operator/SKILL.md)/SKILL.md) — a [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-native secret-sync pattern worth contrasting with SPIFFE/SPIRE's no-secrets-at-rest identity model for service-to-service auth specifically.

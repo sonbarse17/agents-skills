@@ -105,7 +105,7 @@ alone, and certificate rotation is automated rather than a manual chore someone 
 
 ## 5. Treat hybrid and cross-cloud links as the least reliable path in the system
 
-A link between a [datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md) and a cloud VPC, or between two cloud providers, has different latency,
+A link between a [datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/datacenter/SKILL.md) and a cloud VPC, or between two cloud providers, has different latency,
 failure modes, and cost characteristics than intra-cloud traffic — and it's usually the path with
 the least [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md), since it crosses an administrative boundary. Apply every pattern above
 more conservatively here: tighter timeouts are wrong (the link is slower), but stronger circuit

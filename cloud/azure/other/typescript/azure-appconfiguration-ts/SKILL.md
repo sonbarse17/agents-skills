@@ -187,7 +187,7 @@ app.use((req, res, next) => {
 });
 ```
 
-### Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) References
+### Key [Vault](../../../../../Security/vault/SKILL.md) References
 
 ```[typescript](../../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const appConfig = await load(endpoint, credential, {

@@ -75,7 +75,7 @@ For single-resource-type queries, check if a dedicated MCP tool can handle it:
 | Virtual Machines | `compute` | ✅ Full — list, details, sizes |
 | Storage Accounts | `storage` | ✅ Full — accounts, blobs, tables |
 | Cosmos DB | `cosmos` | ✅ Full — accounts, databases, queries |
-| Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) | `keyvault` | ⚠️ Partial — secrets/keys only, no [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) listing |
+| Key [Vault](../../../../Security/vault/SKILL.md) | `keyvault` | ⚠️ Partial — secrets/keys only, no [vault](../../../../Security/vault/SKILL.md) listing |
 | SQL Databases | `sql` | ⚠️ Partial — requires resource group name |
 | Container Registries | `acr` | ✅ Full — list registries |
 | [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) (AKS) | `aks` | ✅ Full — clusters, node pools |

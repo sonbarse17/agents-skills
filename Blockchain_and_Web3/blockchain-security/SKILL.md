@@ -224,7 +224,7 @@ function getLiquidationValue(address user) external view returns (uint256) {
 ### ERC-4626 Inflation Attack
 ```solidity
 // VULNERABLE: first depositor manipulates share price
-// Attacker mints 1 wei shares, then donates large amount to [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
+// Attacker mints 1 wei shares, then donates large amount to [vault](../../Security/vault/SKILL.md)
 // share price becomes very high → subsequent depositors get 0 shares
 
 // FIXED: virtual shares + assets

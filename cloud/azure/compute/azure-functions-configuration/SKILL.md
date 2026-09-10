@@ -154,7 +154,7 @@ sensitivity is a recurring, avoidable source of production complaints.
    Settings.** `local.settings.json` is for local `func start` only and
    must never be deployed or committed with real connection strings; in
    Azure, the equivalent values live in Application Settings (or
-   Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) references) on the Function App:
+   Key [Vault](../../../../Security/vault/SKILL.md) references) on the Function App:
    ```bash
    az functionapp config appsettings set \
      --name checkout-functions \
@@ -177,9 +177,9 @@ sensitivity is a recurring, avoidable source of production complaints.
 - Pin the extension bundle version range in `host.json` (`[4.*, 5.0.0)`
   style) rather than leaving it fully open, so a major bundle version
   bump doesn't silently change binding behavior on the next deploy.
-- Store secrets and connection strings as Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) references in
+- Store secrets and connection strings as Key [Vault](../../../../Security/vault/SKILL.md) references in
   Application Settings, not as plaintext values, even though Application
-  Settings are already encrypted at rest — Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) references add
+  Settings are already encrypted at rest — Key [Vault](../../../../Security/vault/SKILL.md) references add
   centralized rotation and access auditing.
 - Size Premium plan instance count and pre-warmed count from observed
   traffic (Application Insights request rate), not a guess, and revisit
@@ -210,7 +210,7 @@ sensitivity is a recurring, avoidable source of production complaints.
   connection string) gets committed to source control or accidentally
   included in a deployment package.
   **Fix:** Add `local.settings.json` to `.gitignore` by default in every
-  new Function App project, and rely on Application Settings / Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
+  new Function App project, and rely on Application Settings / Key [Vault](../../../../Security/vault/SKILL.md)
   references for any deployed environment — never deploy this file.
 
 - **Symptom:** A queue-triggered function processes the same message
@@ -254,7 +254,7 @@ size for the async path, which doesn't need low latency:
   "extensions": { "queues": { "batchSize": 32, "maxDequeueCount": 3 } }
 }
 ```
-The Cosmos DB connection string is stored as a Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) reference in
+The Cosmos DB connection string is stored as a Key [Vault](../../../../Security/vault/SKILL.md) reference in
 Application Settings rather than a plaintext value. Before this ships,
 the trigger/binding declarations and `host.json` are reviewed against the
 general pre-deploy discipline described in

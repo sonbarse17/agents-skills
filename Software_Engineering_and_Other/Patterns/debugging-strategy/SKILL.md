@@ -316,7 +316,7 @@ techniques:
   - references/debugging-tools.md — Debugging Tools Reference
   - references/[root-cause-analysis](../../../observability-monitoring-logging/common/root-cause-analysis/root-cause-analysis/SKILL.md).md — Root Cause Analysis Reference
 ## Handoff
-Hand off to `[dev-loop-performance-profiler](../../Miscellaneous/performance-profiler/SKILL.md)` if the bug is performance-related. Hand off to `dev-loop-[code-review](../../Miscellaneous/code-review/SKILL.md)` for security-related bugs.
+Hand off to `[dev-loop-performance-profiler](../../Backend/patterns/performance-profiler/SKILL.md)` if the bug is performance-related. Hand off to `dev-loop-[code-review](../../../ci-cd/common/other/code-review/SKILL.md)` for security-related bugs.
 
 ## Implementation Patterns
 

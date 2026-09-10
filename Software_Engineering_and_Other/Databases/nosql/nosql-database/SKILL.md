@@ -369,7 +369,7 @@ Using different consistency levels for read and write without understanding the 
 Cassandra writes are faster and scale linearly with nodes. [MongoDB](../mongodb/SKILL.md) reads are more flexible (any field, any filter). Cassandra has no joins, no aggregations, no secondary indexes (in practice). [MongoDB](../mongodb/SKILL.md) has full query support. Choose Cassandra for write-heavy, no-compromise scalability. Choose [MongoDB](../mongodb/SKILL.md) for developer productivity.
 
 ### DynamoDB vs Cassandra
-DynamoDB is fully managed with auto-scaling, no ops overhead. Cassandra requires operational expertise (compaction, repairs, gossip management). DynamoDB has 400KB item limit, 1MB query limit, and no joins. Cassandra has 2GB cell limit but no practical query size limit. Choose DynamoDB for managed simplicity. Choose Cassandra for multi-region, multi-[datacenter](../../../Miscellaneous/datacenter/SKILL.md) control.
+DynamoDB is fully managed with auto-scaling, no ops overhead. Cassandra requires operational expertise (compaction, repairs, gossip management). DynamoDB has 400KB item limit, 1MB query limit, and no joins. Cassandra has 2GB cell limit but no practical query size limit. Choose DynamoDB for managed simplicity. Choose Cassandra for multi-region, multi-[datacenter](../../../Miscellaneous/systems-low-level/datacenter/SKILL.md) control.
 
 ### Document vs Wide-Column vs Key-Value
 Document stores: flexible schema, rich queries, medium scale. Wide-column: rigid schema by partition key, massive scale, time-series. Key-value: simplest model, fastest lookups, caching. Choose document for general purpose. Choose wide-column for write-heavy time-series. Choose key-value for caching and session management.

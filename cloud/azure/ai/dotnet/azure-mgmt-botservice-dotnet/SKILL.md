@@ -309,7 +309,7 @@ await bot.DeleteAsync(WaitUntil.Completed);
 2. **Use `WaitUntil.Completed`** for synchronous operations
 3. **Handle `RequestFailedException`** for API errors
 4. **Use async methods** (`*Async`) for all operations
-5. **Store MSA App credentials securely** — use Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) for secrets
+5. **Store MSA App credentials securely** — use Key [Vault](../../../../../Security/vault/SKILL.md) for secrets
 6. **Use managed identity** (`BotMsaAppType.UserAssignedMSI`) for production bots
 7. **Enable secure sites** for DirectLine channels in production
 

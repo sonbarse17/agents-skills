@@ -47,7 +47,7 @@ single agent, and how to keep hand-offs between agents reliable.
   reaching for multi-agent as a fix).
 - A task naturally decomposes into independent workstreams that can run in
   parallel (e.g. researching three unrelated topics before synthesizing).
-- A task benefits from specialist framing — a [code-review](../../../Software_Engineering_and_Other/Miscellaneous/code-review/SKILL.md) sub-agent with a
+- A task benefits from specialist framing — a [code-review](../../../ci-cd/common/other/code-review/SKILL.md) sub-agent with a
   narrow reviewer persona genuinely produces better reviews than one
   generalist agent asked to "also review code" among ten other jobs.
 - You need a distinct verification/critic role separate from the agent that

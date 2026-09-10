@@ -309,7 +309,7 @@ def log_llm_interaction(
 |-------|-------|-----|
 | False positive injection blocks | Overly broad regex | Tune patterns; use ML-based classifier for high-traffic |
 | PII in model outputs | Model trained on PII data | Add Presidio scrubbing to output layer |
-| API key leakage | Keys in logs or responses | Mask keys in logging; use [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) for key storage |
+| API key leakage | Keys in logs or responses | Mask keys in logging; use [vault](../vault/SKILL.md) for key storage |
 | Model weight tampering | Unverified downloads | Always verify SHA-256; use `modelscan` |
 | Rate limit bypass | Per-IP not per-user | Rate limit on authenticated user ID, not IP |
 
@@ -323,7 +323,7 @@ def log_llm_interaction(
 
 ## Related Skills
 
-- [hashicorp-vault](../../secrets/[hashicorp-vault](../hashicorp-[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)/SKILL.md)/) - Secrets management for API keys
+- [hashicorp-vault](../../secrets/[hashicorp-vault](../hashicorp-[vault](../../Security/vault/SKILL.md)/SKILL.md)/) - Secrets management for API keys
 - [network-security](../../network/) - Network-level controls
 - [linux-hardening](../../hardening/[linux-hardening](../../DevOps_and_Cloud/Observability_and_SecOps/linux-hardening/SKILL.md)/) - Host hardening
 - [agent-observability](../../../devops/ai/[agent-observability](../../AI_and_Agents/Operations/agent-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)/) - AI [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging

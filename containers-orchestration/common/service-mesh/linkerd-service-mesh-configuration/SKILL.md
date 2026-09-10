@@ -43,7 +43,7 @@ Linkerd deliberately, understanding what mTLS "automatic" actually means
 and when it isn't in effect, and configuring traffic splits for canary
 rollouts. Validating the result before it reaches production is a
 separate, deeper topic — see
-[linkerd-configuration-validation](../[linkerd-configuration-validation](../../Miscellaneous/linkerd-configuration-validation/SKILL.md)/SKILL.md).
+[linkerd-configuration-validation](../../../kubernetes/networking/linkerd-configuration-validation/SKILL.md)/SKILL.md).
 
 ## When to use
 
@@ -373,13 +373,13 @@ connections are `tls: true` with the expected client/server identities,
 and `linkerd viz stat` shows the ~90/10 traffic split and per-version
 success rate before shifting weight further. Before this rollout ships,
 run it through
-[linkerd-configuration-validation](../[linkerd-configuration-validation](../../Miscellaneous/linkerd-configuration-validation/SKILL.md)/SKILL.md)
+[linkerd-configuration-validation](../../../kubernetes/networking/linkerd-configuration-validation/SKILL.md)/SKILL.md)
 to check injection and policy correctness ahead of time rather than
 discovering a gap live.
 
 ## Cross-references
 
-- [linkerd-configuration-validation](../[linkerd-configuration-validation](../../Miscellaneous/linkerd-configuration-validation/SKILL.md)/SKILL.md) — validating proxy injection and traffic policy correctness before this configuration reaches production.
+- [linkerd-configuration-validation](../../../kubernetes/networking/linkerd-configuration-validation/SKILL.md)/SKILL.md) — validating proxy injection and traffic policy correctness before this configuration reaches production.
 - [consul-[service-mesh](../service-mesh/SKILL.md)-and-discovery-configuration](../[consul-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-and-discovery-configuration](../../../DevOps_and_Cloud/Cloud_Providers/consul-[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-and-discovery-configuration/SKILL.md)/SKILL.md) — an alternative mesh with a stronger [multi-cloud](../../../../cloud/common/other/multi-cloud/SKILL.md)/hybrid service-discovery story, useful when comparing options.
 - [grpc-service-troubleshooting](../[grpc-service-troubleshooting](../../../DevOps_and_Cloud/Observability_and_SecOps/grpc-service-troubleshooting/SKILL.md)/SKILL.md) — diagnosing gRPC-specific failures on top of a meshed connection, which look different from the HTTP/1.1 failure modes this skill mostly covers.
 - [service-mesh-istio](../../../[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[service-mesh-istio](../[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)-istio/SKILL.md)/SKILL.md) — the more feature-rich alternative mesh; consult when a comparison or migration between the two is needed.

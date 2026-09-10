@@ -451,9 +451,9 @@ Optimization strategies:
 - `devops-aws` for native AWS services integration.
 - `[devops-azure](../../../azure/other/azure/SKILL.md)` for Azure Arc and ExpressRoute depth.
 - `[devops-gcp](../../../gcp/other/gcp/SKILL.md)` for Anthos and GCP interconnect.
-- `devops-[datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md)` for on-prem DC alongside hybrid.
+- `devops-[datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/datacenter/SKILL.md)` for on-prem DC alongside hybrid.
 - `[enterprise-high-availability](../../../../containers-orchestration/common/other/high-availability/SKILL.md)` for HA/DR across environments.
-- `[devops-network-infrastructure](../../../../Software_Engineering_and_Other/Miscellaneous/network-infrastructure/SKILL.md)` for BGP and connectivity deep-dive.
+- `[devops-network-infrastructure](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/network-infrastructure/SKILL.md)` for BGP and connectivity deep-dive.
 
 ## Implementation Patterns
 
@@ -689,7 +689,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager ([Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../../../Security/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
 - Access [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets

@@ -443,7 +443,7 @@ Pipeline runs for 30+ min before failing at end. Fail fast: lint first, then bui
 - Rollback plan must exist before deployment.
 
 ## References
-  - ../../../Global_References/[caching-strategies](../../../../Software_Engineering_and_Other/Miscellaneous/caching-strategies/SKILL.md).md
+  - ../../../Global_References/[caching-strategies](../../../../Software_Engineering_and_Other/Backend/patterns/caching-strategies/SKILL.md).md
   - ../../../Global_References/cicd-pipeline-advanced.md
   - ../../../Global_References/cicd-pipeline-fundamentals.md
   - ../../../Global_References/[deployment-strategies](../../deployment/deployment-strategies/SKILL.md).md

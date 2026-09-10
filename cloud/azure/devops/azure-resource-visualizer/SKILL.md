@@ -69,7 +69,7 @@ Once you have the resource group:
    - **Configuration**: App Settings pointing to Key Vaults, connection strings
    - **Dependencies**: Parent-child relationships, required resources
 
-> **Important**: You must only use placeholder names to represent secret values, such as keys, connection strings, Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) secrets, etc. Use meaningful placeholder names to represent each secret in the diagram. Never put secret values in the resource diagram.
+> **Important**: You must only use placeholder names to represent secret values, such as keys, connection strings, Key [Vault](../../../../Security/vault/SKILL.md) secrets, etc. Use meaningful placeholder names to represent each secret in the diagram. Never put secret values in the resource diagram.
 
 ### Step 3: Diagram Construction
 

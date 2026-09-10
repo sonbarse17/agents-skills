@@ -285,8 +285,8 @@ jobs:
 .env.example       → Committed (template for developers)
 .env                → NOT committed (local development)
 .env.test           → Committed (test environment, no real secrets)
-CI secrets          → Stored in [GitHub](../../../github-actions/other/github/SKILL.md) Secrets / [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
-Production secrets  → Stored in deployment platform / [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
+CI secrets          → Stored in [GitHub](../../../github-actions/other/github/SKILL.md) Secrets / [vault](../../../../Security/vault/SKILL.md)
+Production secrets  → Stored in deployment platform / [vault](../../../../Security/vault/SKILL.md)
 ```
 
 CI should never have production secrets. Use separate secrets for CI testing.

@@ -146,7 +146,7 @@ the underlying problem.
    consumer-side fix resolves — remediation belongs back in
    [kafka-cluster-configuration](../[kafka-cluster-configuration](../kafka-cluster-configuration/SKILL.md)/SKILL.md)'s
    partition-key guidance, and validating the fix belongs in
-   [kafka-configuration-validation](../../Software_Engineering_and_Other/Miscellaneous/kafka-configuration-validation/SKILL.md)/SKILL.md).
+   [kafka-configuration-validation](../../Software_Engineering_and_Other/Databases/messaging/kafka-configuration-validation/SKILL.md)/SKILL.md).
 
 6. **For under-replicated partitions, identify which broker is
    under-replicating and why**:
@@ -284,11 +284,11 @@ distribution across all 12 partitions, following the partition-key
 guidance in
 [kafka-cluster-configuration](../[kafka-cluster-configuration](../kafka-cluster-configuration/SKILL.md)/SKILL.md),
 and validate the new key distribution in staging via
-[kafka-configuration-validation](../../Software_Engineering_and_Other/Miscellaneous/kafka-configuration-validation/SKILL.md)/SKILL.md)
+[kafka-configuration-validation](../../Software_Engineering_and_Other/Databases/messaging/kafka-configuration-validation/SKILL.md)/SKILL.md)
 before rolling out to production.
 
 ## Cross-references
 
 - [kafka-cluster-configuration](../[kafka-cluster-configuration](../kafka-cluster-configuration/SKILL.md)/SKILL.md) — partition/replication design decisions that are frequently the root cause of the symptoms diagnosed here.
-- [kafka-configuration-validation](../../Software_Engineering_and_Other/Miscellaneous/kafka-configuration-validation/SKILL.md)/SKILL.md) — pre-production checks that catch consumer group and topic misconfigurations before they become live-[incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) lag/rebalance problems.
-- [kafka-schema-registry-and-compatibility-management](../../Software_Engineering_and_Other/Miscellaneous/kafka-schema-registry-and-compatibility-management/SKILL.md)/SKILL.md) — a schema-incompatible message can also cause a consumer to stall/error-loop, which looks like lag but has a different root cause and fix.
+- [kafka-configuration-validation](../../Software_Engineering_and_Other/Databases/messaging/kafka-configuration-validation/SKILL.md)/SKILL.md) — pre-production checks that catch consumer group and topic misconfigurations before they become live-[incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) lag/rebalance problems.
+- [kafka-schema-registry-and-compatibility-management](../../Software_Engineering_and_Other/Databases/messaging/kafka-schema-registry-and-compatibility-management/SKILL.md)/SKILL.md) — a schema-incompatible message can also cause a consumer to stall/error-loop, which looks like lag but has a different root cause and fix.

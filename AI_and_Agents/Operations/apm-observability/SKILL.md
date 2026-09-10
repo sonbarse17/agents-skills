@@ -149,7 +149,7 @@ processors:
       - key: environment
         value: production
         action: upsert
-      - key: [datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md)
+      - key: [datacenter](../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/datacenter/SKILL.md)
         value: us-east-1
         action: upsert
 

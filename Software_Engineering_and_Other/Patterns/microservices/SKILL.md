@@ -448,7 +448,7 @@ async function resolveService(name: string): Promise<string> {
 | API Gateway | DDoS, brute force | Rate limiting, WAF, IP allowlisting, request size limits |
 | Inter-service | Man-in-the-middle | mTLS with short-lived certs (Istio/Linkerd auto-rotation) |
 | Data at rest | Data breach | Encrypt DB volumes (AES-256), encrypt S3 buckets (SSE-KMS) |
-| Secrets | Credential leak | [Vault](../../Miscellaneous/vault/SKILL.md)/AWS Secrets Manager, never in env files or config repos |
+| Secrets | Credential leak | [Vault](../../../Security/vault/SKILL.md)/AWS Secrets Manager, never in env files or config repos |
 | Auth tokens | Token theft | Short-lived JWT (15 min), refresh tokens with rotation, httpOnly cookies |
 | Supply chain | Compromised dependency | Dependency scanning (Snyk/Dependabot), signed artifacts, SBOM generation |
 | API contracts | Breaking changes | Consumer-driven contracts, CI-validated, versioned APIs |
@@ -628,7 +628,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager ([Vault](../../Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../../Security/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
 - Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets

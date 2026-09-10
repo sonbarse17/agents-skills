@@ -44,7 +44,7 @@ most common way MetalLB looks "installed" but doesn't actually make
 Services reachable. This skill covers configuring both modes and the IP
 pool; verifying that allocation and peering are actually healthy before
 depending on it in production is
-[metallb-configuration-validation](../[metallb-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/metallb-configuration-validation/SKILL.md)/SKILL.md)'s
+[metallb-configuration-validation](../metallb-configuration-validation/SKILL.md)/SKILL.md)'s
 job.
 
 ## When to use
@@ -113,7 +113,7 @@ job.
    familiarity:
    - **Layer2** when nodes share a flat L2 segment and there's no BGP
      fabric available (the common case for smaller on-prem/homelab/
-     simpler [datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md) setups) — one node at a time answers ARP/NDP
+     simpler [datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/datacenter/SKILL.md) setups) — one node at a time answers ARP/NDP
      for each service IP; failover on node loss takes a few seconds
      (ARP cache expiry-dependent) and there's no real load spreading
      across nodes for a single Service IP.
@@ -180,7 +180,7 @@ job.
    `myASN`/`peerASN`/`peerAddress` must exactly match what's configured
    on the router's side — mismatches here are the most common cause of
    a `BGPPeer` never reaching `Established` (see
-   [metallb-configuration-validation](../[metallb-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/metallb-configuration-validation/SKILL.md)/SKILL.md)).
+   [metallb-configuration-validation](../metallb-configuration-validation/SKILL.md)/SKILL.md)).
 
 7. **Scope pools to specific namespaces/Services** when different
    teams or environments must not draw from each other's IP ranges:
@@ -267,7 +267,7 @@ job.
   runs in IPVS mode (step 2) — without it, ARP responses for the
   service IP can be inconsistent. In BGP mode, confirm the `BGPPeer`
   session is actually `Established` (see
-  [metallb-configuration-validation](../[metallb-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/metallb-configuration-validation/SKILL.md)/SKILL.md))
+  [metallb-configuration-validation](../metallb-configuration-validation/SKILL.md)/SKILL.md))
   — an assigned IP with no working BGP session announces nothing to
   the upstream network, leaving the address unreachable despite
   [Kubernetes](../../other/kubernetes/SKILL.md) reporting it as allocated.
@@ -360,7 +360,7 @@ holding it.
 
 ## Cross-references
 
-- [metallb-configuration-validation](../[metallb-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/metallb-configuration-validation/SKILL.md)/SKILL.md) — validating IP pool allocation and BGP peering health before relying on this configuration in production.
+- [metallb-configuration-validation](../metallb-configuration-validation/SKILL.md)/SKILL.md) — validating IP pool allocation and BGP peering health before relying on this configuration in production.
 - [cni-networking-calico-flannel](../[cni-networking-calico-flannel](../cni-networking-calico-flannel/SKILL.md)/SKILL.md) — Calico's separate BGP usage for pod networking, distinct from but potentially coexisting with MetalLB's BGP mode on the same cluster.
 - [ingress-nginx-configuration](../[ingress-nginx-configuration](../../../Software_Engineering_and_Other/Frontend/ingress-nginx-configuration/SKILL.md)/SKILL.md) — commonly layered on top of a MetalLB-provided `LoadBalancer` IP to route HTTP(S) traffic to multiple Services.
 - [on-prem-infrastructure-patterns](../../../cloud/skills/[on-prem-infrastructure-patterns](../../Cloud_Providers/on-prem-infrastructure-patterns/SKILL.md)/SKILL.md) — broader on-prem network/infrastructure design this skill's IP pool and BGP peering decisions fit into.

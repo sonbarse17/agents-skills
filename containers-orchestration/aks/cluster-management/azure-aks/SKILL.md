@@ -26,7 +26,7 @@ Deploy and manage production-grade [Kubernetes](../../../kubernetes/other/kubern
 
 - You need managed [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) without maintaining control plane infrastructure.
 - Your workloads require container orchestration with auto-scaling.
-- You need tight integration with Azure AD, Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), and Container Registry.
+- You need tight integration with Azure AD, Key [Vault](../../../../Security/vault/SKILL.md), and Container Registry.
 - You are running [microservices](../../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) that require service mesh, ingress, or network policies.
 - You need GPU or spot node pools for specialized or cost-optimized workloads.
 
@@ -246,7 +246,7 @@ az aks enable-addons \
   --name myapp-aks \
   --addons azure-policy
 
-# Enable Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) secrets provider
+# Enable Key [Vault](../../../../Security/vault/SKILL.md) secrets provider
 az aks enable-addons \
   --resource-group myapp-rg \
   --name myapp-aks \

@@ -299,5 +299,5 @@ before the change is considered complete.
 ## Cross-references
 
 - [cilium-ebpf-cni-and-mesh-configuration](../[cilium-ebpf-cni-and-mesh-configuration](../[cilium-ebpf](../cilium-ebpf/SKILL.md)-cni-and-mesh-configuration/SKILL.md)/SKILL.md) — writing the CiliumNetworkPolicy and Hubble configuration this skill validates.
-- [linkerd-configuration-validation](../[linkerd-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/linkerd-configuration-validation/SKILL.md)/SKILL.md) — the equivalent validation discipline for Linkerd injection and traffic/authorization policy, useful when comparing pre-production checks across mesh/CNI choices.
-- [consul-configuration-validation](../[consul-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/consul-configuration-validation/SKILL.md)/SKILL.md) — validating Consul intentions, relevant when Consul mesh authorization and Cilium's CNI-layer policy both apply to the same traffic and need to agree.
+- [linkerd-configuration-validation](../linkerd-configuration-validation/SKILL.md)/SKILL.md) — the equivalent validation discipline for Linkerd injection and traffic/authorization policy, useful when comparing pre-production checks across mesh/CNI choices.
+- [consul-configuration-validation](../../../common/service-mesh/consul-configuration-validation/SKILL.md)/SKILL.md) — validating Consul intentions, relevant when Consul mesh authorization and Cilium's CNI-layer policy both apply to the same traffic and need to agree.

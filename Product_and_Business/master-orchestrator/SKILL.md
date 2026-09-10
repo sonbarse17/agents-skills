@@ -118,7 +118,7 @@ State: Architecture docs exist, user describes a frontend task.
   2. Route to {framework}-architecture
 
 State: User shows code for review.
-  Route: [code-review](../../Software_Engineering_and_Other/Miscellaneous/code-review/SKILL.md)
+  Route: [code-review](../../ci-cd/common/other/code-review/SKILL.md)
 
 State: User describes a bug with error message or stack trace.
   Route: debugging-strategy
@@ -233,7 +233,7 @@ State: PHP stack detected (composer.json, PHP files).
   1. Read composer.json for framework.
   2. Route to [php-laravel](../../Software_Engineering_and_Other/Backend/frameworks/laravel/SKILL.md) if "laravel/framework" in require.
   3. Route to [php-zend](../../Software_Engineering_and_Other/Backend/frameworks/zend/SKILL.md) if "laminas/laminas-mvc" or "zendframework/zend-mvc" in require.
-  4. Route to [php-pure](../../Software_Engineering_and_Other/Miscellaneous/pure/SKILL.md) otherwise.
+  4. Route to [php-pure](../../Software_Engineering_and_Other/Backend/frameworks/pure/SKILL.md) otherwise.
   Reason: "PHP stack detected. Routing to appropriate PHP framework."
 
 State: User asks about Laravel, Artisan, Eloquent, Blade.
@@ -245,7 +245,7 @@ State: User asks about Zend, Laminas, Zend Framework, ZF3.
   Reason: "Zend/Laminas framework request."
 
 State: User asks about plain PHP, pure PHP, PHP without framework, PSR-7, PSR-15.
-  Route: [php-pure](../../Software_Engineering_and_Other/Miscellaneous/pure/SKILL.md)
+  Route: [php-pure](../../Software_Engineering_and_Other/Backend/frameworks/pure/SKILL.md)
   Reason: "Plain PHP request."
 
 State: User asks about Symfony, Symfony framework, Symfony DI, Doctrine.
@@ -416,9 +416,9 @@ State: User asks about [GitOps](../../containers-orchestration/common/gitops/git
   Route: devops-[gitops](../../containers-orchestration/common/gitops/gitops/SKILL.md)
   Reason: "[GitOps](../../containers-orchestration/common/gitops/gitops/SKILL.md) deployment strategy request."
 
-State: User asks about [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), secrets management, HashiCorp [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), secret storage.
-  Route: devops-[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
-  Reason: "[Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) secrets management request."
+State: User asks about [Vault](../../Security/vault/SKILL.md), secrets management, HashiCorp [Vault](../../Security/vault/SKILL.md), secret storage.
+  Route: devops-[vault](../../Security/vault/SKILL.md)
+  Reason: "[Vault](../../Security/vault/SKILL.md) secrets management request."
 
 State: User asks about AWS, EC2, S3, Lambda, RDS, cloud infrastructure.
   Route: devops-aws
@@ -433,7 +433,7 @@ State: User asks about [monorepo](../../Software_Engineering_and_Other/Frontend/
   Reason: "[Monorepo](../../Software_Engineering_and_Other/Frontend/build-tools/monorepo/SKILL.md) tooling and workspace request."
 
 State: User asks about Dependabot, Renovate, dependency updates, vulnerability scanning.
-  Route: [dependency-management](../../Software_Engineering_and_Other/Miscellaneous/dependency-management/SKILL.md)
+  Route: [dependency-management](../../ci-cd/common/build/dependency-management/SKILL.md)
   Reason: "Dependency management automation request."
 
 State: User asks about API documentation, Swagger, OpenAPI, API spec generation.
@@ -585,7 +585,7 @@ State: User asks about user stories, story splitting, story points, backlog refi
   Reason: "User story creation request."
 
 State: User says init, scaffold, new project, start fresh, project setup.
-  Route: [project-init](../../Software_Engineering_and_Other/Miscellaneous/project-init/SKILL.md)
+  Route: [project-init](../../Software_Engineering_and_Other/Miscellaneous/dev-tooling/project-init/SKILL.md)
   Reason: "Project initialization request."
 
 State: User asks about GraphQL, Apollo, schema design, resolver patterns.
@@ -799,7 +799,7 @@ State: User asks about ML pipeline, Kubeflow, ML workflow, model training pipeli
   Reason: "ML pipeline request."
 
 State: User asks about feature store, Feast, feature serving, feature registry.
-  Route: [ml-feature-store](../../Software_Engineering_and_Other/Miscellaneous/feature-store/SKILL.md)
+  Route: [ml-feature-store](../../AI_and_Agents/Models_and_FineTuning/feature-store/SKILL.md)
   Reason: "Feature store request."
 
 State: User asks about model serving, BentoML, Triton, model deployment, model inference.
@@ -807,7 +807,7 @@ State: User asks about model serving, BentoML, Triton, model deployment, model i
   Reason: "Model serving request."
 
 State: User asks about math foundations, linear algebra, calculus, statistics for ML.
-  Route: [ml-math-foundations](../../Software_Engineering_and_Other/Miscellaneous/math-foundations/SKILL.md)
+  Route: [ml-math-foundations](../../Software_Engineering_and_Other/Miscellaneous/algorithms/math-foundations/SKILL.md)
   Reason: "Math foundations for ML request."
 
 ### New AI Skills
@@ -989,7 +989,7 @@ State: User asks about platform engineering, internal developer platform, IDP, B
   Reason: "Platform engineering request."
 
 State: User asks about SRE, site reliability engineering, SLI, SLO, error budget, toil reduction, reliability engineering, production readiness.
-  Route: [devops-sre-practices](../../Software_Engineering_and_Other/Miscellaneous/sre-practices/SKILL.md)
+  Route: [devops-sre-practices](../../observability-monitoring-logging/common/other/sre-practices/SKILL.md)
   Reason: "SRE practices request."
 
 State: User asks about internal developer platform deep dive, Backstage plugins, software templates, golden path architecture, platform APIs, platform adoption.
@@ -1191,7 +1191,7 @@ State: User asks about deep linking, universal links, app links.
   Reason: "Deep linking request."
 
 State: User asks about offline-first, offline sync, connectivity.
-  Route: [mobile-offline-first](../../Software_Engineering_and_Other/Miscellaneous/offline-first/SKILL.md)
+  Route: [mobile-offline-first](../../Software_Engineering_and_Other/Frontend/architecture/offline-first/SKILL.md)
   Reason: "Offline-first request."
 
 State: User asks about biometrics, Face ID, fingerprint, local auth.
@@ -1203,7 +1203,7 @@ State: User asks about maps, location, GPS, map integration.
   Reason: "Map/location request."
 
 State: User asks about camera, photo, video, media capture.
-  Route: [mobile-camera-media](../../Software_Engineering_and_Other/Miscellaneous/camera-media/SKILL.md)
+  Route: [mobile-camera-media](../../Software_Engineering_and_Other/Miscellaneous/multimedia/camera-media/SKILL.md)
   Reason: "Camera/media request."
 
 State: User asks about analytics, event tracking, [Firebase](../../Software_Engineering_and_Other/Databases/nosql/firebase/SKILL.md) Analytics, telemetry.
@@ -1247,7 +1247,7 @@ State: User asks about PR description, pull request, write PR.
   Reason: "PR writer request."
 
 State: User asks about dev container, devcontainer, dev environment.
-  Route: [dev-loop-dev-container](../../Software_Engineering_and_Other/Miscellaneous/dev-container/SKILL.md)
+  Route: [dev-loop-dev-container](../../containers-orchestration/docker/other/dev-container/SKILL.md)
   Reason: "Dev container request."
 
 State: User asks about tech debt, technical debt, code debt.
@@ -1283,7 +1283,7 @@ State: User asks about market analysis, competitive analysis, market sizing.
   Reason: "Market analysis request."
 
 State: User asks about onboarding, new developer setup, getting started.
-  Route: [core-onboarding](../../Software_Engineering_and_Other/Miscellaneous/onboarding/SKILL.md)
+  Route: [core-onboarding](../../Software_Engineering_and_Other/Miscellaneous/dev-tooling/onboarding/SKILL.md)
   Reason: "Onboarding request."
 
 State: User asks about context compression, token budget, summarize.
@@ -1311,11 +1311,11 @@ State: User asks about SLA, SLO, error budget, uptime, availability.
   Reason: "SLA management request."
 
 State: User asks about legacy migration, strangler fig, system migration.
-  Route: [enterprise-legacy-migration](../../Software_Engineering_and_Other/Miscellaneous/legacy-migration/SKILL.md)
+  Route: [enterprise-legacy-migration](../../ci-cd/common/pipeline-design/legacy-migration/SKILL.md)
   Reason: "Legacy migration request."
 
 State: User asks about identity provider, IdP, SSO, SAML, OIDC, Keycloak.
-  Route: [enterprise-identity-provider](../../Software_Engineering_and_Other/Miscellaneous/identity-provider/SKILL.md)
+  Route: [enterprise-identity-provider](../../Security/identity-provider/SKILL.md)
   Reason: "Identity provider request."
 
 State: User asks about cost governance, cloud cost, FinOps, budget management.
@@ -1323,11 +1323,11 @@ State: User asks about cost governance, cloud cost, FinOps, budget management.
   Reason: "Cost governance request."
 
 State: User asks about product analytics, event tracking, funnel, retention.
-  Route: [product-analytics](../../Software_Engineering_and_Other/Miscellaneous/analytics/SKILL.md)
+  Route: [product-analytics](../analytics/SKILL.md)
   Reason: "Product analytics request."
 
 State: User asks about A/B test, split test, experiment, hypothesis testing.
-  Route: [product-ab-testing](../../Software_Engineering_and_Other/Miscellaneous/ab-testing/SKILL.md)
+  Route: [product-ab-testing](../ab-testing/SKILL.md)
   Reason: "A/B testing request."
 
 State: User asks about user research, user interview, persona, usability.
@@ -1386,7 +1386,7 @@ State: User asks about SBOM, software bill of materials, supply chain security.
   Route: [security-sbom](../../Security/sbom/SKILL.md)
   Reason: "SBOM request."
 
-State: User asks about secrets management, secret scanning, GitLeaks, [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).
+State: User asks about secrets management, secret scanning, GitLeaks, [vault](../../Security/vault/SKILL.md).
   Route: security-[secrets-management](../../cloud/common/security/secrets-management/SKILL.md)
   Reason: "Secrets management request."
 
@@ -1516,7 +1516,7 @@ Read project files:
 - build.gradle -> backend-spring-boot-architecture; if kotlin -> backend-kotlin-architecture
 - build.gradle.kts: if kotlin and [android](../../Mobile/android/SKILL.md) -> mobile-[android](../../Mobile/android/SKILL.md); if kotlin only -> backend-kotlin-architecture
 - *.csproj or *.sln -> dotnet-architecture
-- composer.json: if symfony in require -> php-symfony; if laravel in require -> [php-laravel](../../Software_Engineering_and_Other/Backend/frameworks/laravel/SKILL.md); if laminas/zend -> [php-zend](../../Software_Engineering_and_Other/Backend/frameworks/zend/SKILL.md); else -> [php-pure](../../Software_Engineering_and_Other/Miscellaneous/pure/SKILL.md)
+- composer.json: if symfony in require -> php-symfony; if laravel in require -> [php-laravel](../../Software_Engineering_and_Other/Backend/frameworks/laravel/SKILL.md); if laminas/zend -> [php-zend](../../Software_Engineering_and_Other/Backend/frameworks/zend/SKILL.md); else -> [php-pure](../../Software_Engineering_and_Other/Backend/frameworks/pure/SKILL.md)
 - Package.swift: if vapor in deps -> swift-vapor
 - mix.exs -> backend-[elixir](../../Software_Engineering_and_Other/Languages/elixir/SKILL.md)
 - deno.json / deno.lock -> backend-deno

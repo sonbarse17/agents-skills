@@ -37,7 +37,7 @@ artifact and the [GitOps](../../../../containers-orchestration/common/gitops/git
 (non-root, resource limits, approved registries, required labels) rather
 than only the image contents — and **secrets never need to be present in
 the pipeline at all**, because an External Secrets Operator running
-in-cluster pulls them directly from a [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) at deploy time, decoupled
+in-cluster pulls them directly from a [vault](../../../../Security/vault/SKILL.md) at deploy time, decoupled
 entirely from CI. This is a materially different secrets model from
 [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) (a managed secrets service the function's execution role reads
 at invoke time) and VM-based (config-management-applied secrets baked in
@@ -82,8 +82,8 @@ own mechanics are covered in depth by the linked skills.
   or
   [opa-gatekeeper-policy-authoring](../../../policy-and-governance-tooling/skills/[opa-gatekeeper-policy-authoring](../../../Security/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md).
 - External Secrets Operator (or an equivalent) installed in-cluster,
-  configured against a backing [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) (HashiCorp [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS Secrets
-  Manager, Azure Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)) per
+  configured against a backing [vault](../../../../Security/vault/SKILL.md) (HashiCorp [Vault](../../../../Security/vault/SKILL.md), AWS Secrets
+  Manager, Azure Key [Vault](../../../../Security/vault/SKILL.md)) per
   [sealed-secrets-and-external-secrets-operator](../../../../Security/security-scanning/SKILL.md)-tooling/skills/[sealed-secrets-and-external-secrets-operator](../../../../containers-orchestration/kubernetes/security/sealed-secrets-and-external-secrets-operator/SKILL.md)/SKILL.md)
   and
   [secrets-management](../[secrets-management](../secrets-management/SKILL.md)/SKILL.md).
@@ -176,7 +176,7 @@ secrets (DB credentials, API keys) are **not** referenced anywhere in this
 CI pipeline — not as CI secrets injected into a manifest, not baked into
 the image. Instead, an `ExternalSecret` resource committed to the same
 [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md) config repo declares *what* secret to sync and *where from*; the
-in-cluster External Secrets Operator does the actual fetch from the [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
+in-cluster External Secrets Operator does the actual fetch from the [vault](../../../../Security/vault/SKILL.md)
 at reconcile time:
 ```yaml
 apiVersion: external-secrets.io/v1beta1
@@ -185,7 +185,7 @@ metadata:
   name: payments-api-db-creds
   namespace: payments-prod
 spec:
-  secretStoreRef: { name: [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-backend, kind: ClusterSecretStore }
+  secretStoreRef: { name: [vault](../../../../Security/vault/SKILL.md)-backend, kind: ClusterSecretStore }
   target: { name: payments-api-db-creds }
   data:
     - secretKey: password
@@ -213,7 +213,7 @@ the [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md)
   and cluster-side admission (a live webhook) — CI catches it cheaply;
   admission control is what actually guarantees the property holds
   regardless of how a manifest reaches the cluster.
-- Never let the pipeline's own service account read the [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) directly
+- Never let the pipeline's own service account read the [vault](../../../../Security/vault/SKILL.md) directly
   "to make it simpler" — the entire benefit of the External Secrets
   Operator model is that CI's compromise blast radius excludes runtime
   secrets entirely; keep that boundary intact even under deadline
@@ -245,15 +245,15 @@ the [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md)
   same policy source, and treat this failure as a signal to reconcile
   them, not just a one-off manifest fix.
 
-- **Symptom:** A team under deadline pressure adds the [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) token
+- **Symptom:** A team under deadline pressure adds the [vault](../../../../Security/vault/SKILL.md) token
   directly as a CI secret "just to unblock this one deploy," bypassing the
   External Secrets Operator model entirely.
   **Fix:** This defeats the entire secrets-never-touch-CI design — any
-  [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) credential granted to CI reintroduces exactly the blast-radius
+  [vault](../../../../Security/vault/SKILL.md) credential granted to CI reintroduces exactly the blast-radius
   risk the External Secrets Operator model exists to avoid. Fix the actual
   blocker (an `ExternalSecret` misconfiguration, a missing
   `ClusterSecretStore` binding) instead of routing around it with a
-  pipeline-held credential, and treat any CI-held [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) token as a finding
+  pipeline-held credential, and treat any CI-held [vault](../../../../Security/vault/SKILL.md) token as a finding
   to remove.
 
 - **Symptom:** The image scan (Phase 3) passes clean, but a container
@@ -319,7 +319,7 @@ Phase 6, committed once (not on every deploy) — Argo CD reconciles both
 the Deployment's new image tag and the (unchanged) `ExternalSecret`
 reference on each sync, while the External Secrets Operator's own
 in-cluster reconcile loop independently keeps `payments-api-db-creds`
-fresh from [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), entirely outside this pipeline's reach.
+fresh from [Vault](../../../../Security/vault/SKILL.md), entirely outside this pipeline's reach.
 
 ## Cross-references
 

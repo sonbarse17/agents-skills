@@ -122,7 +122,7 @@ git [commit](../commit/SKILL.md) -m "refactor validation and add phone number fi
 
 ### 5. Size Your Changes
 
-Target ~100 lines per [commit](../commit/SKILL.md)/PR. Changes over ~1000 lines should be split. See the splitting strategies in `[code-review-and-quality](../../../Software_Engineering_and_Other/Patterns/[code-review](../../../Software_Engineering_and_Other/Miscellaneous/code-review/SKILL.md)-and-quality/SKILL.md)` for how to break down large changes.
+Target ~100 lines per [commit](../commit/SKILL.md)/PR. Changes over ~1000 lines should be split. See the splitting strategies in `[code-review-and-quality](../../../Software_Engineering_and_Other/Patterns/[code-review](../../../ci-cd/common/other/code-review/SKILL.md)-and-quality/SKILL.md)` for how to break down large changes.
 
 ```
 ~100 lines  → Easy to review, easy to revert

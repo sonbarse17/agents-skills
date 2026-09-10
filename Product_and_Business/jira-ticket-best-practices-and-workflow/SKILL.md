@@ -42,7 +42,7 @@ states honestly (not just to make a board look green), and how to do all
 of this programmatically against the Jira REST API when an agent is
 creating or updating issues on a user's behalf. It does not cover how to
 comment on or automate updates to an existing ticket (see
-[jira-comments-and-tracking-automation](../[jira-comments-and-tracking-automation](../../Software_Engineering_and_Other/Miscellaneous/jira-comments-and-tracking-automation/SKILL.md)/SKILL.md))
+[jira-comments-and-tracking-automation](../../ci-cd/common/other/jira-comments-and-tracking-automation/SKILL.md)/SKILL.md))
 or how to document the resulting work in Confluence (see
 [confluence-page-authoring-and-governance](../[confluence-page-authoring-and-governance](../../Software_Engineering_and_Other/Frontend/confluence-page-authoring-and-governance/SKILL.md)/SKILL.md)).
 
@@ -369,7 +369,7 @@ epic:
 
 ## Cross-references
 
-- [jira-comments-and-tracking-automation](../[jira-comments-and-tracking-automation](../../Software_Engineering_and_Other/Miscellaneous/jira-comments-and-tracking-automation/SKILL.md)/SKILL.md) —
+- [jira-comments-and-tracking-automation](../../ci-cd/common/other/jira-comments-and-tracking-automation/SKILL.md)/SKILL.md) —
   once the ticket exists, how to comment on it usefully and automate
   status/comment updates from CI/CD without creating noise.
 - [confluence-page-authoring-and-governance](../[confluence-page-authoring-and-governance](../../Software_Engineering_and_Other/Frontend/confluence-page-authoring-and-governance/SKILL.md)/SKILL.md) —

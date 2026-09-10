@@ -38,7 +38,7 @@ depends_on:
 # Nomad
 
 ## Purpose
-Deploy and operate HashiCorp Nomad for workload scheduling, service orchestration, batch processing, and canary deployments with Consul and [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) integration.
+Deploy and operate HashiCorp Nomad for workload scheduling, service orchestration, batch processing, and canary deployments with Consul and [Vault](../../../../Security/vault/SKILL.md) integration.
 
 ## Agent Protocol
 
@@ -47,7 +47,7 @@ Exact user phrases: "nomad", "nomad job", "nomad cluster", "nomad server", "noma
 
 ### Input Context
 - Nomad cluster size and topology.
-- Integration with Consul and [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).
+- Integration with Consul and [Vault](../../../../Security/vault/SKILL.md).
 - Job types: service, batch, system, periodic, parameterized.
 - Networking: host, bridge, Consul Connect.
 - Storage: host volumes or CSI.
@@ -61,7 +61,7 @@ Nomad HCL job specification. No preamble.
 ### Completion Criteria
 - [ ] Job specification written with correct type, task groups, tasks.
 - [ ] Networking configured (host, bridge, or Consul Connect sidecar).
-- [ ] Secrets from [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) or template stanza configured.
+- [ ] Secrets from [Vault](../../../../Security/vault/SKILL.md) or template stanza configured.
 - [ ] Update strategy (canary, rolling, blue-green) defined.
 - [ ] Scaling policy defined.
 - [ ] ACL policies and namespace configuration set.
@@ -116,10 +116,10 @@ consul {
   auto_advertise      = true
 }
 
-# [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) integration
-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) {
+# [Vault](../../../../Security/vault/SKILL.md) integration
+[vault](../../../../Security/vault/SKILL.md) {
   enabled          = true
-  address          = "https://[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).service.consul:8200"
+  address          = "https://[vault](../../../../Security/vault/SKILL.md).service.consul:8200"
   create_from_role = "nomad-cluster"
 }
 
@@ -633,7 +633,7 @@ Key metrics to alert on:
 - Always run `nomad job plan` before `nomad job run` for diff review.
 - Use `auto_revert = true` for all service jobs to rollback failed deployments.
 - Use `canary = 1` for production deployments — promote after verification.
-- Always template secrets from [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) — never embed in job HCL.
+- Always template secrets from [Vault](../../../../Security/vault/SKILL.md) — never embed in job HCL.
 - Use `bridge` networking mode for multi-port + Consul Connect jobs.
 - Set resource limits (CPU/memory) on every task — no unlimited jobs.
 - Use `check_restart` with 3 limit for production service jobs.
@@ -643,8 +643,8 @@ Key metrics to alert on:
 
 ## Production Considerations
 - Nomad servers: 3 or 5 minimum for HA, always an odd number.
-- Consul ACL tokens should be scoped per job (`template` stanza with [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)).
-- [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) token role `nomad-cluster` must allow token creation for Nomad workloads.
+- Consul ACL tokens should be scoped per job (`template` stanza with [Vault](../../../../Security/vault/SKILL.md)).
+- [Vault](../../../../Security/vault/SKILL.md) token role `nomad-cluster` must allow token creation for Nomad workloads.
 - CSI volumes need the Nomad CSI plugin installed and running as a system job.
 - Nomad Autoscaler requires Prometheus for metric queries.
 - Use `NOMAD_UPSTREAM_ADDR_<service>` env vars for Consul Connect upstream discovery.
@@ -674,10 +674,10 @@ Key metrics to alert on:
   - references/nomad-consul-connect.md — Consul Connect with Nomad
   - references/nomad-csi.md — CSI Volume Integration
   - references/nomad-[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md).md — Nomad Autoscaler
-  - references/nomad-security.md — ACLs and [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Integration
+  - references/nomad-security.md — ACLs and [Vault](../../../../Security/vault/SKILL.md) Integration
 ## Handoff
 - `devops-consul` for Consul service discovery and Connect mesh.
-- `devops-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)` for [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) secrets management integration.
+- `devops-[vault](../../../../Security/vault/SKILL.md)` for [Vault](../../../../Security/vault/SKILL.md) secrets management integration.
 - `devops-terraform` for Nomad cluster Terraform provisioning.
 - `devops-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)` for Prometheus/Grafana [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) of Nomad.
 - `devops-[kubernetes](../../../kubernetes/other/kubernetes/SKILL.md)` for comparison when deciding between Nomad and K8s.

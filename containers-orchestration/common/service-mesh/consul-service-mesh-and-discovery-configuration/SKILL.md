@@ -41,10 +41,10 @@ Consul is often chosen specifically for hybrid/[multi-cloud](../../../../cloud/c
 "just use the [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md)-native mesh" isn't an option because not
 everything is in [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md). This skill covers configuring Consul
 Connect sidecars, intentions, traffic-management config entries, and
-cross-[datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md) connectivity. Validating service definitions and
+cross-[datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/datacenter/SKILL.md) connectivity. Validating service definitions and
 intentions before they reach production is a separate, deeper topic —
 see
-[consul-configuration-validation](../[consul-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/consul-configuration-validation/SKILL.md)/SKILL.md).
+[consul-configuration-validation](../consul-configuration-validation/SKILL.md)/SKILL.md).
 
 ## When to use
 
@@ -60,10 +60,10 @@ see
   config entries.
 - Federating multiple Consul datacenters (WAN federation) or connecting
   independently-administered Consul clusters (cluster peering) for
-  cross-[datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md) or cross-cloud service discovery and mesh traffic.
+  cross-[datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/datacenter/SKILL.md) or cross-cloud service discovery and mesh traffic.
 - A user is choosing between Consul, Linkerd, Cilium, or Istio for a new
   mesh and the deciding factor is non-[Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) workloads or
-  multi-[datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md) reach.
+  multi-[datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/datacenter/SKILL.md) reach.
 
 ## Prerequisites & environment
 
@@ -82,7 +82,7 @@ see
   of the initial bootstrap state — running a production Consul cluster
   with ACLs disabled means intentions have no enforcement teeth, since
   anything can register or call anything.
-- For multi-[datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md): either WAN federation (requires routable network
+- For multi-[datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/datacenter/SKILL.md): either WAN federation (requires routable network
   connectivity between all federated datacenters' server clusters, plus
   matching Gossip encryption keys) or cluster peering (Consul's newer
   mechanism that doesn't require federated servers to share a flat
@@ -174,8 +174,8 @@ see
 5. **Federate across datacenters with WAN federation** when server
    clusters can reach each other over a routable network:
    ```hcl
-   # [datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md) "dc2" server config
-   [datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md) = "dc2"
+   # [datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/datacenter/SKILL.md) "dc2" server config
+   [datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/datacenter/SKILL.md) = "dc2"
    primary_datacenter = "dc1"
    retry_join_wan = ["<dc1-server-1-address>", "<dc1-server-2-address>"]
    ```
@@ -192,16 +192,16 @@ see
    `exported-services` config entry — peering does not expose the whole
    catalog by default.
 
-6. **Enable mesh gateways for cross-[datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md) mesh traffic** so
+6. **Enable mesh gateways for cross-[datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/datacenter/SKILL.md) mesh traffic** so
    service-to-service calls across datacenters don't require every
    agent to have direct L3 connectivity to every remote service, only to
-   the remote [datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md)'s mesh gateway:
+   the remote [datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/datacenter/SKILL.md)'s mesh gateway:
    ```hcl
    Kind = "mesh"
    TransparentProxy { MeshDestinationsOnly = false }
    ```
    Mesh gateways terminate/originate the encrypted mesh connection at
-   the [datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md) boundary, which is also what makes WAN federation or
+   the [datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/datacenter/SKILL.md) boundary, which is also what makes WAN federation or
    peering practical across networks that aren't fully flat/routable.
 
 7. **Confirm ACLs and intentions are actually enforcing**, not just
@@ -233,7 +233,7 @@ see
   than assuming peered clusters see each other's whole catalog — peering
   is opt-in per service by design.
 - If most of the estate is [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md)-only with no VM/[bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) or
-  multi-[datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md) requirement, weigh whether Consul's operational
+  multi-[datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/datacenter/SKILL.md) requirement, weigh whether Consul's operational
   overhead (running and federating server clusters, agent placement on
   every VM) is worth it versus a [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md)-native mesh — see
   [linkerd-[service-mesh](../service-mesh/SKILL.md)-configuration](../[linkerd-[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../../../Software_Engineering_and_Other/Frontend/linkerd-[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-configuration/SKILL.md)/SKILL.md)
@@ -290,7 +290,7 @@ see
   Debug via `consul intention check` and agent/proxy logs instead of
   disabling enforcement; if enforcement genuinely must be relaxed to
   isolate a problem, scope the relaxation narrowly (one specific
-  source/destination pair, on a non-production [datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md)) and track an
+  source/destination pair, on a non-production [datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/datacenter/SKILL.md)) and track an
   explicit revert.
 
 ## Worked example
@@ -356,11 +356,11 @@ peered environments, with 10% of calls landing on the v2 subset — all
 without either side needing direct L3 reachability to individual
 instances in the other cloud account. Before promoting the split
 further, run the intention and config-entry checks in
-[consul-configuration-validation](../[consul-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/consul-configuration-validation/SKILL.md)/SKILL.md).
+[consul-configuration-validation](../consul-configuration-validation/SKILL.md)/SKILL.md).
 
 ## Cross-references
 
-- [consul-configuration-validation](../[consul-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/consul-configuration-validation/SKILL.md)/SKILL.md) — validating service definitions and intentions before applying them, including catching the subset/resolver mismatches described above.
+- [consul-configuration-validation](../consul-configuration-validation/SKILL.md)/SKILL.md) — validating service definitions and intentions before applying them, including catching the subset/resolver mismatches described above.
 - [linkerd-[service-mesh](../service-mesh/SKILL.md)-configuration](../[linkerd-[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-configuration](../../../Software_Engineering_and_Other/Frontend/linkerd-[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-configuration/SKILL.md)/SKILL.md) — a simpler [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md)-native mesh alternative when the [multi-cloud](../../../../cloud/common/other/multi-cloud/SKILL.md)/VM reach Consul provides isn't actually needed.
 - [cilium-ebpf-cni-and-mesh-configuration](../[cilium-ebpf-cni-and-mesh-configuration](../../Containers_and_Orchestration/[cilium-ebpf](../../Containers_and_Orchestration/cilium-ebpf/SKILL.md)-cni-and-mesh-configuration/SKILL.md)/SKILL.md) — a CNI-layer alternative for [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md)-only mesh/networking needs, worth comparing when Consul's VM support is the only reason it's on the table.
 - [service-mesh-istio](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[service-mesh-istio](../../../Software_Engineering_and_Other/Frontend/[service-mesh](../../Observability_and_SecOps/service-mesh/SKILL.md)-istio/SKILL.md)/SKILL.md) — the equivalent [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md)-native mesh concepts (`VirtualService`/`DestinationRule` map roughly to `service-router`/`service-resolver` here) for teams comparing the two.

@@ -94,7 +94,7 @@ solving.
   most self-managed clusters.
 - **RBAC on `secrets` resources** should be as tight as anything in rule 1 — read access to Secrets
   is equivalent to read access to whatever they protect.
-- **For rotation, external stores, and injection patterns** ([Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), cloud KMS, External Secrets
+- **For rotation, external stores, and injection patterns** ([Vault](../../../../Security/vault/SKILL.md), cloud KMS, External Secrets
   Operator), that's the deeper subject of `[secrets-management](../../../../cloud/common/security/secrets-management/SKILL.md)` — this skill only covers the
   in-cluster storage posture.
 

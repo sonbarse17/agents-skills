@@ -248,7 +248,7 @@ Preconfigured connectors cannot be edited or deleted via the API or UI. They sho
 
 ## Networking Configuration
 
-[Customize](../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) connector networking (proxies, TLS, certificates) via `kibana.yml`:
+[Customize](../../../../cloud/azure/ai/customize/SKILL.md)/SKILL.md)/SKILL.md) connector networking (proxies, TLS, certificates) via `kibana.yml`:
 
 ```yaml
 # Global proxy for all connectors

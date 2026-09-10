@@ -69,7 +69,7 @@ Example reverse proxy controls to enforce:
 
 ## Protect Secrets and Tokens
 
-- Store secrets in a [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) or platform secret manager, not committed `.env` files.
+- Store secrets in a [vault](../vault/SKILL.md) or platform secret manager, not committed `.env` files.
 - Rotate provider and admin tokens on a fixed interval and after any [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 - Scope tokens minimally (least privilege, per-service keys).
 - Scan repos and deployment artifacts for leaked credentials before release.

@@ -328,7 +328,7 @@ Hotfix tag: v2.0.1
   - references/pr-writer-templates.md — PR Templates Reference
   - references/pr-writer-workflow.md — PR Workflow Reference
 ## Handoff
-Hand off to `dev-loop-[code-review](../../Software_Engineering_and_Other/Miscellaneous/code-review/SKILL.md)` for PR review. Hand off to `[dev-loop-changelog-generator](../changelog-generator/SKILL.md)` for release note generation from PR.
+Hand off to `dev-loop-[code-review](../../ci-cd/common/other/code-review/SKILL.md)` for PR review. Hand off to `[dev-loop-changelog-generator](../changelog-generator/SKILL.md)` for release note generation from PR.
 
 ## Implementation Patterns
 

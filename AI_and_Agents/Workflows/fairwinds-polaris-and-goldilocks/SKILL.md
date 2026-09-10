@@ -111,7 +111,7 @@ investing in custom policy authoring for gaps neither tool covers.
    findings first (e.g. privileged containers, missing memory limits
    that risk OOM-killing the node) over `warning`-level style issues.
 
-3. **[Customize](../../Infrastructure/deploy-model/[customize](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) the check set with a config file** — Polaris ships broad
+3. **[Customize](../../../cloud/azure/ai/customize/SKILL.md)/SKILL.md)/SKILL.md) the check set with a config file** — Polaris ships broad
    defaults, but every organization should tune severities and exclusions
    rather than accepting the defaults uncritically:
    ```yaml
@@ -218,7 +218,7 @@ investing in custom policy authoring for gaps neither tool covers.
   (custom label schemas, internal registry allowlists, business-specific
   constraints) — don't reimplement Polaris's own checks in Rego/Kyverno
   from scratch.
-- [Customize](../../Infrastructure/deploy-model/[customize](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) severities and add documented exemptions rather than running
+- [Customize](../../../cloud/azure/ai/customize/SKILL.md)/SKILL.md)/SKILL.md) severities and add documented exemptions rather than running
   with Polaris's raw defaults — a batch Job with no HTTP endpoint will
   legitimately fail `readinessProbeMissing` forever unless exempted, and
   an unreviewed default config trains teams to ignore the dashboard.

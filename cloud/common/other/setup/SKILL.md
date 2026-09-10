@@ -69,7 +69,7 @@ Terminal exports might not be visible to sandboxed agents running in a separate 
 when working with an agent.
 
 Remind the user that storing secrets in local files is acceptable for development, but for production or shared
-environments, use a centralized secrets manager (for example, HashiCorp [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS Secrets Manager, 1Password CLI) to
+environments, use a centralized secrets manager (for example, HashiCorp [Vault](../../../../Security/vault/SKILL.md), AWS Secrets Manager, 1Password CLI) to
 avoid secrets sprawl.
 
 ### Step 2: Set defaults

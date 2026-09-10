@@ -115,7 +115,7 @@ nikto -h example.com -p 8443 -ssl
 
 ### 3. Advanced Scanning Options
 
-[Customize](../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) scan behavior:
+[Customize](../../cloud/azure/ai/customize/SKILL.md)/SKILL.md)/SKILL.md) scan behavior:
 
 ```bash
 # Specify tuning options

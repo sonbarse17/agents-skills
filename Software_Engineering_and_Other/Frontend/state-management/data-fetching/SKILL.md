@@ -446,7 +446,7 @@ Does the data need to update in real-time?
   - ../../../Global_References/react-query-patterns.md — React Query Patterns
   - ../../../Global_References/swr-patterns.md — SWR Patterns
   - ../../../Global_References/tanstack-query.md — TanStack Query
-  - ../../../Global_References/data-fetching-[caching-strategies](../../../Miscellaneous/caching-strategies/SKILL.md).md — Caching Strategies Reference
+  - ../../../Global_References/data-fetching-[caching-strategies](../../../Backend/patterns/caching-strategies/SKILL.md).md — Caching Strategies Reference
   - ../../../Global_References/data-fetching-error-handling.md — Error Handling Reference
 
 ## Handoff
@@ -559,7 +559,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager ([Vault](../../../Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../../../Security/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
 - Access [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets

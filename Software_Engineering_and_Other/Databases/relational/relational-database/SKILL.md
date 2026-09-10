@@ -521,7 +521,7 @@ class DatabasePool:
 - **Row-level security**: Enable RLS on multi-tenant tables; policy based on `current_setting('app.tenant_id')`.
 - **[Audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging**: Enable `pgaudit` extension; log all DDL and DML on sensitive tables.
 - **Encryption at rest**: Use TDE or disk-level encryption (LUKS, EBS encryption) for database storage.
-- **Secret rotation**: Rotate DB passwords every 90 days; use [Vault](../../../Miscellaneous/vault/SKILL.md) for dynamic credentials (short-lived leases).
+- **Secret rotation**: Rotate DB passwords every 90 days; use [Vault](../../../../Security/vault/SKILL.md) for dynamic credentials (short-lived leases).
 
 ## Handoff
 `[data-etl-pipeline](../../../../Data_Engineering/etl-pipeline/SKILL.md)` for loading data into relational schemas

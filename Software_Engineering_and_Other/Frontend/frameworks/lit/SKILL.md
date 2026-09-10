@@ -252,7 +252,7 @@ Controllers encapsulate stateful behavior (resize observers, intersection observ
 - No JSX runtime needed — templates are standard tagged templates.
 
 ### Optimization Techniques
-- Use `@property({ hasChanged })` to [customize](../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) change detection.
+- Use `@property({ hasChanged })` to [customize](../../../../cloud/azure/ai/customize/SKILL.md)/SKILL.md)/SKILL.md) change detection.
 - Use `shouldUpdate()` to skip renders when inputs haven't meaningfully changed.
 - Batch property changes — Lit automatically batches updates via microtask.
 - Use `adoptedStyleSheets` for shared styles across many component instances.
@@ -501,7 +501,7 @@ class ConfigBuilder {
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager ([Vault](../../../Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../../../Security/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
 - Access [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets

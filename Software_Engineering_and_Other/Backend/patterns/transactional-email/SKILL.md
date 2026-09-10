@@ -451,7 +451,7 @@ class EmailTemplateEngine {
 
 ## Security Considerations
 
-- Store API keys in secrets manager (AWS Secrets Manager, HashiCorp [Vault](../../../Miscellaneous/vault/SKILL.md)), never in code or env files committed to git
+- Store API keys in secrets manager (AWS Secrets Manager, HashiCorp [Vault](../../../../Security/vault/SKILL.md)), never in code or env files committed to git
 - Rotate SMTP credentials and API keys every 90 days
 - Validate all email addresses against allow-list for security-critical emails (password reset, 2FA)
 - Implement HMAC-signed unsubscribe links to prevent abuse unsubscribe

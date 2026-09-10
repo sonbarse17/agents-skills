@@ -68,7 +68,7 @@ topology decisions specific to [Nomad](../nomad/SKILL.md).
   arbitrary unsandboxed process on the client host, so enable it only
   where that trust level is genuinely intended.
 - Consul (optional but common) for service discovery and health checks
-  referenced from job specs via the `service` stanza; [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) (optional)
+  referenced from job specs via the `service` stanza; [Vault](../../../../Security/vault/SKILL.md) (optional)
   for dynamic secrets injected into tasks via the `template` stanza.
 - ACLs enabled and bootstrapped for any cluster handling anything
   beyond a local experiment — [Nomad](../nomad/SKILL.md)'s ACL system is opt-in and not
@@ -219,7 +219,7 @@ topology decisions specific to [Nomad](../nomad/SKILL.md).
 - Use `canary` + `auto_revert` on any job whose failure is
   user-visible, not just a plain rolling update with no health
   validation gate before proceeding to the next batch.
-- Enable ACLs and Consul/[Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) integration (via the `service` and
+- Enable ACLs and Consul/[Vault](../../../../Security/vault/SKILL.md) integration (via the `service` and
   `template` stanzas) rather than relying on network-level isolation
   alone — a cluster with ACLs disabled trusts every client with a
   network path to the API with full control-plane access.

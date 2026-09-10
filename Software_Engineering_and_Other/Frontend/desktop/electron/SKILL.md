@@ -418,7 +418,7 @@ ipcMain.handle('file:watch', async (_event, filePath) => {
   - references/electron-ipc-patterns.md — Electron IPC Patterns Reference
   - ../../../Global_References/electron-security.md — Electron Security Reference
 ## Handoff
-Hand off to `dev-loop-[code-review](../../../Miscellaneous/code-review/SKILL.md)` for security [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) of preload scripts. Hand off to `desktop-tauri` if native performance is critical.
+Hand off to `dev-loop-[code-review](../../../../ci-cd/common/other/code-review/SKILL.md)` for security [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) of preload scripts. Hand off to `desktop-tauri` if native performance is critical.
 ## Implementation Patterns
 
 ### Observer Pattern for Event Handling
@@ -527,7 +527,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager ([Vault](../../../Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../../../Security/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
 - Access [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets

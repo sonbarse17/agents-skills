@@ -67,7 +67,7 @@ risky the upgrade is.
 - Git tag push permission for the CI identity, and, if publishing to a
   package registry as part of the release, registry publish credentials
   scoped to the release job only (see
-  [artifact-and-dependency-management](../[artifact-and-dependency-management](../../../Software_Engineering_and_Other/Frontend/artifact-and-[dependency-management](../../../Software_Engineering_and_Other/Miscellaneous/dependency-management/SKILL.md)/SKILL.md)/SKILL.md)).
+  [artifact-and-dependency-management](../../build/dependency-management/SKILL.md)/SKILL.md)/SKILL.md)).
 - A decision on SemVer vs. CalVer before automating: SemVer
   (`MAJOR.MINOR.PATCH`) suits libraries/APIs where consumers reason about
   compatibility; CalVer (`YYYY.MM.PATCH` or similar) suits products/

@@ -387,7 +387,7 @@ registry_cluster:
   replication_factor: 3
   kafka_bootstrap_servers: "broker1:9092,broker2:9092,broker3:9092"
   
-  # Multi-[datacenter](../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md) setup
+  # Multi-[datacenter](../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/datacenter/SKILL.md) setup
   primary_region: "us-east-1"
   secondary_region: "us-west-2"
   replication:

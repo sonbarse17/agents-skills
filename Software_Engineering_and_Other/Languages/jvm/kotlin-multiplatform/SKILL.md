@@ -126,7 +126,7 @@ val httpClient = HttpClient {
 
 4. **kotlinx.serialization** — All data classes in `commonMain` use `@Serializable` annotation. Supports primitives, enums, sealed classes, nullable fields, default values. Custom serializers for non-standard types (Date, BigInteger). `Json` configuration: `ignoreUnknownKeys = true` for forward compatibility, `coerceInputValues = true` for invalid defaults, `encodeDefaults = false` to minimize payload. Use `@SerialName` for property name mapping. Polymorphic serialization for sealed class hierarchies.
 
-5. **Compose Multiplatform UI** — All shared UI in `commonMain` using Jetpack Compose APIs. The `org.jetbrains.compose` plugin compiles Compose code for both platforms. Material3 theming with `MaterialTheme` — [customize](../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) typography, color scheme, and shapes. Navigation options: Voyager (screen-based, type-safe), Decompose (component-based, lifecycle-aware), or custom state-driven navigation. Platform-specific composables via `expect`/`actual` for views that cannot be shared (maps, WebView, Camera). Performance: `remember` for expensive computations, `derivedStateOf` for computed state, `LaunchedEffect` for side effects.
+5. **Compose Multiplatform UI** — All shared UI in `commonMain` using Jetpack Compose APIs. The `org.jetbrains.compose` plugin compiles Compose code for both platforms. Material3 theming with `MaterialTheme` — [customize](../../../../cloud/azure/ai/customize/SKILL.md)/SKILL.md)/SKILL.md) typography, color scheme, and shapes. Navigation options: Voyager (screen-based, type-safe), Decompose (component-based, lifecycle-aware), or custom state-driven navigation. Platform-specific composables via `expect`/`actual` for views that cannot be shared (maps, WebView, Camera). Performance: `remember` for expensive computations, `derivedStateOf` for computed state, `LaunchedEffect` for side effects.
 
 6. **Platform-specific UI integration** — When Compose Multiplatform cannot render a native component, use `expect` composable functions. [Android](../../../Mobile/android/SKILL.md): wrap [Android](../../../Mobile/android/SKILL.md) Views via `AndroidView` composable factory. iOS: wrap UIKit views via `UIKitView` composable (KMP Compose provides interop). Example: MapView, CameraPreview, WebView, NativeTextInput. Keep platform composables thin — minimal wrapper code, pass data via parameters. Platform UI code lives in `androidMain`/`iosMain` Composable files.
 
@@ -558,7 +558,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager ([Vault](../../Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../../../Security/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
 - Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets

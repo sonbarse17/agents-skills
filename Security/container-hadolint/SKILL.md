@@ -167,7 +167,7 @@ hadolint:
 
 ### 3. Configuration Customization
 
-Create `.hadolint.yaml` to [customize](../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) rules:
+Create `.hadolint.yaml` to [customize](../../cloud/azure/ai/customize/SKILL.md)/SKILL.md)/SKILL.md) rules:
 
 ```yaml
 # .hadolint.yaml

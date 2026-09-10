@@ -185,7 +185,7 @@ elasticsearch.query-timeout=30s
 ```
 
 #### Connector Security Best Practices
-Credentials stored in secrets manager ([Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS Secrets Manager, [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) secrets). Never hardcode passwords in property files. Use `${VARIABLE}` substitution for environment variables or encrypted secrets. TLS enabled for all JDBC connections. Read-only access for production connectors wherever possible.
+Credentials stored in secrets manager ([Vault](../../Security/vault/SKILL.md), AWS Secrets Manager, [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) secrets). Never hardcode passwords in property files. Use `${VARIABLE}` substitution for environment variables or encrypted secrets. TLS enabled for all JDBC connections. Read-only access for production connectors wherever possible.
 
 ### Step 4: Query Pushdown
 
@@ -591,7 +591,7 @@ virtual_dataset:
 
 ## Security Considerations
 
-- **Credential management**: Store data source credentials in Trino password [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) or [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md); never in catalog configs.
+- **Credential management**: Store data source credentials in Trino password [vault](../../Security/vault/SKILL.md) or [Vault](../../Security/vault/SKILL.md); never in catalog configs.
 - **Row-level security**: Implement Trino view-based RLS by appending `WHERE user_region = current_user_region()`.
 - **Network isolation**: Deploy Trino in same VPC as data sources; use VPC peering for cross-account sources.
 - **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md)**: Log all queries with source, user, and bytes scanned for cost and compliance tracking.

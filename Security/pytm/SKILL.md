@@ -567,7 +567,7 @@ print(f"DREAD Score: {threat.dread_score()}/10")
 
 ### Diagram Customization
 
-[Customize](../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) DFD output with graphviz attributes:
+[Customize](../../cloud/azure/ai/customize/SKILL.md)/SKILL.md)/SKILL.md) DFD output with graphviz attributes:
 
 ```[python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Set custom colors for trust boundaries
@@ -575,7 +575,7 @@ internet.color = "red"
 dmz.color = "orange"
 internal.color = "green"
 
-# [Customize](../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) diagram output
+# [Customize](../../cloud/azure/ai/customize/SKILL.md)/SKILL.md)/SKILL.md) diagram output
 tm.graph_options = {
     "rankdir": "LR",  # Left to right layout
     "bgcolor": "white",

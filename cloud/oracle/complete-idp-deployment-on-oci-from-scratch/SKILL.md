@@ -69,7 +69,7 @@ everything else defers to the skill it links to.
   OCI Landing Zone Terraform reference, not manual OCI Console clicks.
 - `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md)`, `helm` ≥ 3.8, and the OCI CLI (`oci ce cluster ...`) for
   cluster provisioning and kubeconfig retrieval.
-- A Node.js/Yarn toolchain to build and [customize](../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) the Backstage app.
+- A Node.js/Yarn toolchain to build and [customize](../../azure/ai/customize/SKILL.md)/SKILL.md)/SKILL.md) the Backstage app.
 - A registered domain and OCI DNS zone (or delegated subdomain) for
   Backstage's ingress hostname and a managed certificate.
 - A decision, before Phase 2, on whether platform tooling lives in a
@@ -124,7 +124,7 @@ Package Backstage as a Helm chart and deploy it against an OCI Database
 with [PostgreSQL](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) instance (multi-AZ within the region beyond a pilot) as
 the catalog database, with the Backstage backend pod's node covered by
 the Phase 2 Dynamic Group so it can call
-`secrets-retrieval` on OCI [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) for the DB credential via a Resource
+`secrets-retrieval` on OCI [Vault](../../../Security/vault/SKILL.md) for the DB credential via a Resource
 Principal — never an embedded connection string. Chart packaging follows
 [helm-chart-authoring](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[helm-chart-authoring](../../../containers-orchestration/helm/charts/helm-chart-authoring/SKILL.md)/SKILL.md);
 custom backend/frontend logic follows
@@ -183,7 +183,7 @@ second team. See
 adoption starting from a pilot team with genuine current pain, run the
 platform team per the "thinnest viable platform" discipline, and measure
 with SPACE/DX Core 4 metrics. See
-[idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../[idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../../../Software_Engineering_and_Other/Miscellaneous/idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md),
+[idp-adoption-rollout-and-[change-management](../../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy](../../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy](../../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md),
 [platform-engineering-team-topology-and-operating-model](../[platform-engineering-team-topology-and-operating-model](../../../Product_and_Business/[platform-engineering](../../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md),
 and
 [developer-experience-measurement-and-platform-adoption](../[developer-experience-measurement-and-platform-adoption](../../../Software_Engineering_and_Other/Miscellaneous/[developer-experience](../../../Product_and_Business/developer-experience/SKILL.md)-measurement-and-platform-adoption/SKILL.md)/SKILL.md).
@@ -271,7 +271,7 @@ one quarter.
 3. **Phase 3:** Backstage is packaged as `charts/backstage-meridian`,
    deployed against an OCI Database with [PostgreSQL](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) instance
    `meridian-backstage-catalog` (multi-AZ), with the backend pod reading
-   its DB credential from OCI [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) via the Phase 2 Resource Principal.
+   its DB credential from OCI [Vault](../../../Security/vault/SKILL.md) via the Phase 2 Resource Principal.
 4. **Phase 4:** A "Node.js service" golden-path template is authored,
    producing a Dockerfile, a [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions workflow, and a documented IAM
    policy-statement request template for the service's own Dynamic Group
@@ -303,5 +303,5 @@ one quarter.
 - [platform-self-service-api-and-workflow-design](../[platform-self-service-api-and-workflow-design](../../../Product_and_Business/platform-self-service-api-and-workflow-design/SKILL.md)/SKILL.md) — Phase 6.
 - [service-scorecards-and-maturity-model-design](../[service-scorecards-and-maturity-model-design](../../../Product_and_Business/service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md) — Phase 7.
 - [multi-tenancy-and-team-workspace-design-for-idp](../[multi-tenancy-and-team-workspace-design-for-idp](../../../Software_Engineering_and_Other/Miscellaneous/[multi-tenancy](../../Containers_and_Orchestration/multi-tenancy/SKILL.md)-and-team-workspace-design-for-idp/SKILL.md)/SKILL.md) — Phase 8.
-- [idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../[idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy](../../../Software_Engineering_and_Other/Miscellaneous/idp-adoption-rollout-and-[change-management](../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md), [platform-engineering-team-topology-and-operating-model](../[platform-engineering-team-topology-and-operating-model](../../../Product_and_Business/[platform-engineering](../../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md), [developer-experience-measurement-and-platform-adoption](../[developer-experience-measurement-and-platform-adoption](../../../Software_Engineering_and_Other/Miscellaneous/[developer-experience](../../../Product_and_Business/developer-experience/SKILL.md)-measurement-and-platform-adoption/SKILL.md)/SKILL.md) — Phase 9.
+- [idp-adoption-rollout-and-[change-management](../../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy](../../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy](../../../observability-monitoring-logging/common/other/change-management/SKILL.md)-strategy/SKILL.md)/SKILL.md), [platform-engineering-team-topology-and-operating-model](../[platform-engineering-team-topology-and-operating-model](../../../Product_and_Business/[platform-engineering](../../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md), [developer-experience-measurement-and-platform-adoption](../[developer-experience-measurement-and-platform-adoption](../../../Software_Engineering_and_Other/Miscellaneous/[developer-experience](../../../Product_and_Business/developer-experience/SKILL.md)-measurement-and-platform-adoption/SKILL.md)/SKILL.md) — Phase 9.
 - [complete-idp-deployment-on-aws-from-scratch](../[complete-idp-deployment-on-aws-from-scratch](../../Containers_and_Orchestration/complete-idp-deployment-on-aws-from-scratch/SKILL.md)/SKILL.md) — the same shape on AWS, a useful comparison for the identity-model differences (IRSA vs. Dynamic Groups) called out above.

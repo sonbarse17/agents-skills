@@ -201,7 +201,7 @@ jwt_security:
     fix: "Set exp claim, use refresh tokens for long sessions"
   secret:
     check: "JWT secret is not in source code"
-    fix: "Use env vars, [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), or KMS"
+    fix: "Use env vars, [vault](../vault/SKILL.md), or KMS"
   validation:
     check: "All claims validated (iss, aud, exp, nbf)"
     fix: "Validate all required claims on every request"
@@ -345,7 +345,7 @@ priority_matrix:
 | Scan container images | App + OS dependencies both matter |
 | Implement WAF rules | Defense in depth for web apps |
 | Regular penetration testing | Automated tools miss business logic flaws |
-| Secrets in environment, not code | KMS, [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), or secret manager for all secrets |
+| Secrets in environment, not code | KMS, [Vault](../vault/SKILL.md), or secret manager for all secrets |
 | Monitor for new CVEs | Subscribe to security advisories for dependencies |
 
 ## References
@@ -574,5 +574,5 @@ What do you need to test?
 - **SBOM generation**: Generate a Software Bill of Materials (SPDX or CycloneDX format) after each build. Use SBOM for post-deployment vulnerability correlation without re-scanning.
 
 ## Handoff
-Hand off to `dev-loop-[code-review](../../Software_Engineering_and_Other/Miscellaneous/code-review/SKILL.md)` for secure code review. Hand off to `[dev-loop-tech-debt-tracker](../../Software_Engineering_and_Other/Patterns/tech-debt-tracker/SKILL.md)` for security debt tracking.
+Hand off to `dev-loop-[code-review](../../ci-cd/common/other/code-review/SKILL.md)` for secure code review. Hand off to `[dev-loop-tech-debt-tracker](../../Software_Engineering_and_Other/Patterns/tech-debt-tracker/SKILL.md)` for security debt tracking.
 

@@ -26,7 +26,7 @@ Establish secure, reliable network connectivity between on-premises data centers
 ## When to Use
 
 - Connect on-premises to cloud
-- Extend [datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md) to cloud
+- Extend [datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/datacenter/SKILL.md) to cloud
 - Implement hybrid active-active setups
 - Meet compliance requirements
 - Migrate to cloud gradually
@@ -136,7 +136,7 @@ resource "azurerm_virtual_network_gateway" "vpn" {
 ### Pattern 1: Hub-and-Spoke
 
 ```
-On-Premises [Datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md)
+On-Premises [Datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/datacenter/SKILL.md)
          ↓
     VPN/Direct Connect
          ↓
@@ -160,7 +160,7 @@ On-Premises
 ### Pattern 3: [Multi-Cloud](../../other/multi-cloud/SKILL.md) Hybrid
 
 ```
-On-Premises [Datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md)
+On-Premises [Datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/datacenter/SKILL.md)
     ├─ Direct Connect → AWS
     ├─ ExpressRoute → Azure
     ├─ Interconnect → GCP

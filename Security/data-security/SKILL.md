@@ -68,7 +68,7 @@ Key Rotation: {every N days / automatic}
 ### Data Masking
 Static Masking: {target datasets, masking rules}
 Dynamic Masking: {role-based, query-time}
-Tokenization: {format-preserving / random / [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-based}
+Tokenization: {format-preserving / random / [vault](../vault/SKILL.md)-based}
 
 ### Column-Level Security
 Database: {[PostgreSQL](../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) / BigQuery / Snowflake}
@@ -103,14 +103,14 @@ Define classification levels: Public (no impact), Internal (minor), Confidential
 - **In use**: Confidential computing (Intel SGX, AMD SEV) for sensitive workloads.
 
 ### Step 3: Key Management
-- **KMS**: Managed service (AWS KMS, GCP Cloud KMS, Azure Key [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)). Automatic key rotation. Access control via IAM.
+- **KMS**: Managed service (AWS KMS, GCP Cloud KMS, Azure Key [Vault](../vault/SKILL.md)). Automatic key rotation. Access control via IAM.
 - **HSM**: Hardware security module (AWS CloudHSM, Azure Dedicated HSM). FIPS 140-2 Level 3. For regulatory requirements.
 - **BYOK**: Import your own key to KMS. Control key material. Rotation rotates within KMS.
 
 ### Step 4: Data Masking
 - **Static masking**: Create de-identified copies of production data for dev/test. Permanent transformation.
 - **Dynamic masking**: Mask at query time based on role. No data modification. Use [PostgreSQL](../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) `col_a > masking_column`.
-- **Tokenization**: Replace sensitive data with tokens. [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-based (lookup table) or format-preserving (algorithmic).
+- **Tokenization**: Replace sensitive data with tokens. [Vault](../vault/SKILL.md)-based (lookup table) or format-preserving (algorithmic).
 
 ### Step 5: Column-Level Security
 [PostgreSQL](../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md): Row-Level Security (RLS) policies per table. BigQuery: column ACL on authorized views. Snowflake: dynamic data masking with masking policies. Grant access based on data classification and role.
@@ -244,8 +244,8 @@ de_identification:
       
   pseudonymization:
     tokenization:
-      description: "Replace identifier with token, mapping stored in secure [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)"
-      reversibility: "Reversible with [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) access"
+      description: "Replace identifier with token, mapping stored in secure [vault](../vault/SKILL.md)"
+      reversibility: "Reversible with [vault](../vault/SKILL.md) access"
       format_preserving: "Token looks like original (same format, check digit)"
       use_case: "PCI data, test data generation"
     hashing:
@@ -393,8 +393,8 @@ Using a single key for all data means compromising one key compromises everythin
 ### Anti-Pattern: Static Masking Without Refresh
 Creating masked copies of production data once but never refreshing them as production data changes. De-identified copies become stale and useless for testing. Refresh masked datasets on a schedule aligned with development cycles.
 
-### Anti-Pattern: Tokenization Without [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Security
-Token vaults that are less secure than the original data store. Token [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) must have stronger security than the systems it protects: HSM-backed encryption, strict network isolation, dedicated access policies, and comprehensive [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging.
+### Anti-Pattern: Tokenization Without [Vault](../vault/SKILL.md) Security
+Token vaults that are less secure than the original data store. Token [vault](../vault/SKILL.md) must have stronger security than the systems it protects: HSM-backed encryption, strict network isolation, dedicated access policies, and comprehensive [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging.
 
 ### Anti-Pattern: Anonymization Without Re-identification Testing
 Applying k-anonymity or differential privacy without testing against known attack vectors (linkage attacks, homogeneity attacks, differencing attacks). Validate anonymization with the same techniques an adversary would use. Re-test when new data is added.
@@ -604,7 +604,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager ([Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
 - Access [audit](../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets

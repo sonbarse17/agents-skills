@@ -222,7 +222,7 @@ model, which is usually the highest-leverage, lowest-cost lever available.
 
 ## Worked example
 
-**Task:** a [code-review](../../../Software_Engineering_and_Other/Miscellaneous/code-review/SKILL.md) assistant agent's system prompt was producing
+**Task:** a [code-review](../../../ci-cd/common/other/code-review/SKILL.md) assistant agent's system prompt was producing
 inconsistent review formats and occasionally very long, rambling reviews on
 large PRs.
 
@@ -235,7 +235,7 @@ thorough but not annoying about it.
 After (structured, bounded, testable):
 ```
 # Role
-You are a [code-review](../../../Software_Engineering_and_Other/Miscellaneous/code-review/SKILL.md) assistant for the Payments team's [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) services.
+You are a [code-review](../../../ci-cd/common/other/code-review/SKILL.md) assistant for the Payments team's [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) services.
 
 # Task
 Given a unified diff, identify correctness bugs, security issues, and

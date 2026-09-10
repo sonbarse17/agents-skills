@@ -632,5 +632,5 @@ What's the goal and risk level?
   - references/refactor-guide-techniques.md — Refactoring Techniques Reference
 
 ## Handoff
-Hand off to `dev-loop-[code-review](../../Miscellaneous/code-review/SKILL.md)` for refactoring PR review. Hand off to `[dev-loop-tech-debt-tracker](../tech-debt-tracker/SKILL.md)` for debt tracking.
+Hand off to `dev-loop-[code-review](../../../ci-cd/common/other/code-review/SKILL.md)` for refactoring PR review. Hand off to `[dev-loop-tech-debt-tracker](../tech-debt-tracker/SKILL.md)` for debt tracking.
 

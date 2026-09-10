@@ -584,7 +584,7 @@ type Order @key(fields: "id") {
 - **Input validation**: Validate all inputs against OpenAPI/schema; reject unexpected fields.
 - **SQL injection**: Use parameterized queries exclusively; never interpolate user input.
 - **CORS**: Restrict origins to known domains; do not use `Access-Control-Allow-Origin: *`.
-- **Secrets management**: Store API keys and DB credentials in [vault](../../../Miscellaneous/vault/SKILL.md) (HashiCorp [Vault](../../../Miscellaneous/vault/SKILL.md), AWS Secrets Manager).
+- **Secrets management**: Store API keys and DB credentials in [vault](../../../../Security/vault/SKILL.md) (HashiCorp [Vault](../../../../Security/vault/SKILL.md), AWS Secrets Manager).
 
 ## Handoff
 `[data-data-platform](../../../../Data_Engineering/data-platform/SKILL.md)` for deployment infrastructure. `[data-data-catalog](../../../../Data_Engineering/data-catalog/SKILL.md)` for API endpoint documentation. `[data-data-observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)/SKILL.md)` for API [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md). `[data-data-contracts](../../../../Data_Engineering/data-contracts/SKILL.md)` for API schema contracts.

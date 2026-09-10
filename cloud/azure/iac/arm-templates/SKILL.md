@@ -415,7 +415,7 @@ az deployment group delete \
     "adminPublicKey": {
       "reference": {
         "keyVault": {
-          "id": "/subscriptions/{sub-id}/resourceGroups/{rg}/providers/Microsoft.KeyVault/vaults/{[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)}"
+          "id": "/subscriptions/{sub-id}/resourceGroups/{rg}/providers/Microsoft.KeyVault/vaults/{[vault](../../../../Security/vault/SKILL.md)}"
         },
         "secretName": "ssh-public-key"
       }
@@ -470,7 +470,7 @@ module storageLoop 'modules/storage.bicep' = [for account in storageAccounts: {
 | `ResourceNotFound` during deployment | Resource dependency not declared | Add `dependsOn` or use implicit references in Bicep |
 | `DeploymentFailed` with quota error | Subscription quota exceeded | Request quota increase or use a different region |
 | `AuthorizationFailed` | Insufficient RBAC permissions | Assign Contributor role on the target resource group |
-| Parameter file secrets in source control | Secrets stored as plain text | Use Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) references in parameter files |
+| Parameter file secrets in source control | Secrets stored as plain text | Use Key [Vault](../../../../Security/vault/SKILL.md) references in parameter files |
 | Deployment takes very long | Large number of resources deployed serially | Use `dependsOn` carefully to allow parallel deployment |
 | `What-If` shows unexpected deletions | Complete mode instead of Incremental | Use `--mode Incremental` (the default) to avoid deleting unmanaged resources |
 | Bicep module not found | Incorrect relative path | Verify path is relative to the consuming file |

@@ -593,7 +593,7 @@ sprint-retro (the risk register is reviewed at every sprint retro), create-roadm
 
 ### Risk Assessment Speed
 - **Risk library**: Maintain catalog of common risks with pre-assessed scores. Reduce time spent on recurring risk identification.
-- **Template risks**: Use industry risk templates (OWASP, ISO 31010). [Customize](../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) to org context rather than starting from zero.
+- **Template risks**: Use industry risk templates (OWASP, ISO 31010). [Customize](../../cloud/azure/ai/customize/SKILL.md)/SKILL.md)/SKILL.md) to org context rather than starting from zero.
 - **Aggregate assessment**: Assess risks at program level, not per-task. Roll up to portfolio view for executive reporting.
 
 ### Response Efficiency

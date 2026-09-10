@@ -44,8 +44,8 @@ can decrypt it back into a real `Secret`, so the encrypted manifest is
 useless to anyone without cluster access. **External Secrets Operator
 (ESO)** inverts the flow entirely: nothing secret-bearing is ever
 committed to git at all — a lightweight `ExternalSecret` resource
-declares *which* secret to fetch from an external system ([Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS
-Secrets Manager, Azure Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), GCP Secret Manager, and others), and
+declares *which* secret to fetch from an external system ([Vault](../../../../Security/vault/SKILL.md), AWS
+Secrets Manager, Azure Key [Vault](../../../../Security/vault/SKILL.md), GCP Secret Manager, and others), and
 the operator continuously syncs the real value from there into a native
 `Secret` object at runtime. Both are [Kubernetes](../../other/kubernetes/SKILL.md)-native, CRD-driven, and
 [GitOps](../../../common/gitops/gitops/SKILL.md)-compatible; choosing between them (or using both) depends on
@@ -59,7 +59,7 @@ model fits the team's operating model better.
   without exposing its plaintext value, and asks specifically about
   `kubeseal` or the Sealed Secrets controller.
 - The user wants [Kubernetes](../../other/kubernetes/SKILL.md) workloads to consume secrets that live in
-  [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS Secrets Manager, Azure Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), or GCP Secret Manager,
+  [Vault](../../../../Security/vault/SKILL.md), AWS Secrets Manager, Azure Key [Vault](../../../../Security/vault/SKILL.md), or GCP Secret Manager,
   synced automatically into native `Secret` objects, and asks about
   External Secrets Operator, `SecretStore`, or `ExternalSecret`.
 - The user is deciding between Sealed Secrets and External Secrets
@@ -68,7 +68,7 @@ model fits the team's operating model better.
   keypair, or migrate SealedSecrets after a cluster rebuild where the
   original controller key was lost.
 - The user needs to set up authentication from ESO to a backing secrets
-  manager ([Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) [Kubernetes](../../other/kubernetes/SKILL.md) auth, AWS IRSA, Azure Workload Identity) so
+  manager ([Vault](../../../../Security/vault/SKILL.md) [Kubernetes](../../other/kubernetes/SKILL.md) auth, AWS IRSA, Azure Workload Identity) so
   the operator can fetch secrets without its own long-lived credential.
 - The user is troubleshooting a `SealedSecret` that won't decrypt, or an
   `ExternalSecret` stuck in a non-`SecretSynced` state.
@@ -86,7 +86,7 @@ model fits the team's operating model better.
 - **External Secrets Operator**: `>= 0.9` for stable
   `ClusterSecretStore` multi-tenant behavior; a backing secrets manager
   already populated with the real secret values (ESO syncs *from*
-  [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)/AWS/Azure/GCP, it does not replace them), and a workload
+  [Vault](../../../../Security/vault/SKILL.md)/AWS/Azure/GCP, it does not replace them), and a workload
   identity mechanism for the operator to authenticate to that backend —
   see [secrets-management](../../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md)
   for the underlying secrets-manager setup and the general
@@ -178,7 +178,7 @@ model fits the team's operating model better.
    ```
 
 6. **Back up the controller's private key** immediately after install
-   and store it in a proper secrets manager/offline [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) — losing it
+   and store it in a proper secrets manager/offline [vault](../../../../Security/vault/SKILL.md) — losing it
    makes every previously-sealed secret permanently undecryptable:
    ```bash
    [kubectl](../../other/kubectl/SKILL.md) get secret -n kube-system \
@@ -218,16 +218,16 @@ model fits the team's operating model better.
                name: external-secrets-sa
                namespace: external-secrets
    ```
-   [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) example ([Kubernetes](../../other/kubernetes/SKILL.md) auth method):
+   [Vault](../../../../Security/vault/SKILL.md) example ([Kubernetes](../../other/kubernetes/SKILL.md) auth method):
    ```yaml
    apiVersion: external-secrets.io/v1beta1
    kind: ClusterSecretStore
    metadata:
-     name: [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-backend
+     name: [vault](../../../../Security/vault/SKILL.md)-backend
    spec:
      provider:
-       [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md):
-         server: "https://[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).example.internal:8200"
+       [vault](../../../../Security/vault/SKILL.md):
+         server: "https://[vault](../../../../Security/vault/SKILL.md).example.internal:8200"
          path: "myapp"
          version: "v2"
          auth:
@@ -238,7 +238,7 @@ model fits the team's operating model better.
                name: external-secrets-sa
                namespace: external-secrets
    ```
-   Azure Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) example (Workload Identity):
+   Azure Key [Vault](../../../../Security/vault/SKILL.md) example (Workload Identity):
    ```yaml
    apiVersion: external-secrets.io/v1beta1
    kind: ClusterSecretStore
@@ -248,7 +248,7 @@ model fits the team's operating model better.
      provider:
        azurekv:
          authType: WorkloadIdentity
-         vaultUrl: "https://example-kv.[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net"
+         vaultUrl: "https://example-kv.[vault](../../../../Security/vault/SKILL.md).azure.net"
          serviceAccountRef:
            name: external-secrets-sa
            namespace: external-secrets
@@ -313,14 +313,14 @@ model fits the team's operating model better.
   Secrets operational step, since key loss makes every previously
   committed `SealedSecret` permanently unrecoverable.
 - Prefer External Secrets Operator over Sealed Secrets when the
-  organization already runs a centralized secrets manager ([Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), cloud
+  organization already runs a centralized secrets manager ([Vault](../../../../Security/vault/SKILL.md), cloud
   secret manager) — ESO avoids putting even ciphertext of a secret in
   git and centralizes rotation/[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) in the system of record; prefer
   Sealed Secrets when there's no centralized secrets manager and the
   goal is specifically "make [Kubernetes](../../other/kubernetes/SKILL.md) Secrets git-committable" with
   minimal additional infrastructure.
 - Authenticate ESO to its backend with workload identity (IRSA, Azure
-  Workload Identity, GCP Workload Identity, or [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)'s [Kubernetes](../../other/kubernetes/SKILL.md) auth
+  Workload Identity, GCP Workload Identity, or [Vault](../../../../Security/vault/SKILL.md)'s [Kubernetes](../../other/kubernetes/SKILL.md) auth
   method) rather than a static access key/service-account key stored as
   a [Kubernetes](../../other/kubernetes/SKILL.md) Secret feeding the very operator meant to eliminate that
   pattern — see
@@ -369,7 +369,7 @@ model fits the team's operating model better.
   `[kubectl](../../other/kubectl/SKILL.md) logs -n external-secrets deploy/external-secrets`) — the
   most common causes are the `SecretStore`/`ClusterSecretStore`
   authentication failing (workload identity misconfigured, wrong
-  [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) role/policy) or the `remoteRef.key`/`property` not matching
+  [Vault](../../../../Security/vault/SKILL.md) role/policy) or the `remoteRef.key`/`property` not matching
   what actually exists in the backend; verify the backend path/key
   directly with the backend's own CLI before assuming ESO is broken.
 
@@ -453,7 +453,7 @@ the "no plaintext secrets in git" requirement simultaneously.
 
 - [secrets-management](../../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md) —
   the underlying "why not hardcode secrets" rationale, secrets-manager
-  selection ([Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)/cloud/SOPS), and rotation/response workflow this
+  selection ([Vault](../../../../Security/vault/SKILL.md)/cloud/SOPS), and rotation/response workflow this
   skill assumes and builds the [Kubernetes](../../other/kubernetes/SKILL.md)-native sync/encryption layer
   on top of.
 - [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../../Cloud_Providers/cloud-iam-hardening/SKILL.md)/SKILL.md) —

@@ -77,7 +77,7 @@ operational trade-off.
   use certification-based replication that requires every node to agree
   on transaction ordering before [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md), so cross-region deployments
   with high inter-node latency will see materially higher [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) latency
-  and are more prone to flow-control throttling than a same-[datacenter](../../../Miscellaneous/datacenter/SKILL.md)
+  and are more prone to flow-control throttling than a same-[datacenter](../../../Miscellaneous/systems-low-level/datacenter/SKILL.md)
   deployment.
 - For InnoDB Cluster specifically: [MySQL](../mysql/SKILL.md) Shell (`mysqlsh`) for cluster
   provisioning (`dba.createCluster()`) and [MySQL](../mysql/SKILL.md) Router for

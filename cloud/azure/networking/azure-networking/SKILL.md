@@ -301,14 +301,14 @@ az network private-endpoint create \
   --group-id blob \
   --connection-name storage-blob-connection
 
-# Create private endpoint for Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
+# Create private endpoint for Key [Vault](../../../../Security/vault/SKILL.md)
 az network private-endpoint create \
   --resource-group networking-rg \
   --name kv-private-endpoint \
   --vnet-name spoke-prod-vnet \
   --subnet app-subnet \
   --private-connection-resource-id "/subscriptions/{sub}/resourceGroups/{rg}/providers/Microsoft.KeyVault/vaults/myvault" \
-  --group-id [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) \
+  --group-id [vault](../../../../Security/vault/SKILL.md) \
   --connection-name kv-connection
 ```
 

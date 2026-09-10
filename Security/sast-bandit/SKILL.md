@@ -75,7 +75,7 @@ Install Bandit via pip:
 pip install bandit
 ```
 
-Create a configuration file `.bandit` or `.bandit.yaml` to [customize](../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) scans:
+Create a configuration file `.bandit` or `.bandit.yaml` to [customize](../../cloud/azure/ai/customize/SKILL.md)/SKILL.md)/SKILL.md) scans:
 
 ```yaml
 # .bandit.yaml
@@ -280,7 +280,7 @@ def load_cache(file_path):
 **Solution**:
 1. Use confidence filtering: `bandit -r . -i` (HIGH confidence only)
 2. Exclude test files: `bandit -r . --exclude /tests/`
-3. [Customize](../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) `.bandit.yaml` to skip specific tests for known safe patterns
+3. [Customize](../../cloud/azure/ai/customize/SKILL.md)/SKILL.md)/SKILL.md) `.bandit.yaml` to skip specific tests for known safe patterns
 4. Review and suppress with inline `# nosec` comments with justification
 
 ### Issue: Scan Performance on Large Codebases

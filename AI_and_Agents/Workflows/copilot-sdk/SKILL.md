@@ -244,7 +244,7 @@ await using var session = await client.CreateSessionAsync(new SessionConfig {
 
 ## Hooks
 
-Intercept and [customize](../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) session behavior at key lifecycle points.
+Intercept and [customize](../../../cloud/azure/ai/customize/SKILL.md)/SKILL.md)/SKILL.md) session behavior at key lifecycle points.
 
 | Hook | Trigger | Use Case |
 |------|---------|----------|
@@ -697,7 +697,7 @@ Load skill directories to extend Copilot's capabilities:
 
 ```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const session = await client.createSession({
-    skillDirectories: ["./skills/[code-review](../../../Software_Engineering_and_Other/Miscellaneous/code-review/SKILL.md)", "./skills/documentation"],
+    skillDirectories: ["./skills/[code-review](../../../ci-cd/common/other/code-review/SKILL.md)", "./skills/documentation"],
     disabledSkills: ["experimental-feature"],
 });
 ```
@@ -809,7 +809,7 @@ volumes:
 - Session cleanup: periodic deletion of expired sessions
 - Health checks: ping CLI server, restart if unresponsive
 - Persistent storage: mount `~/.copilot/session-state/` for containers
-- Secret management: use [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)/K8s Secrets for tokens
+- Secret management: use [Vault](../../../Security/vault/SKILL.md)/K8s Secrets for tokens
 - Session locking: Redis or similar for shared session access
 - Graceful shutdown: drain active sessions before stopping CLI
 

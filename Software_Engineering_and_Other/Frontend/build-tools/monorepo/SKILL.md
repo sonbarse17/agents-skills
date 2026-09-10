@@ -560,6 +560,6 @@ jobs:
   - ../../../Global_References/turborepo-guide.md — Turborepo Guide
 ## Handoff
 After completing this skill:
-- Next skill: **[dependency-management](../../../Miscellaneous/dependency-management/SKILL.md)** — Dependabot, Renovate for mono-repo deps
+- Next skill: **[dependency-management](../../../../ci-cd/common/build/dependency-management/SKILL.md)** — Dependabot, Renovate for mono-repo deps
 - Pass context: workspace structure, package manager, CI pipeline
 

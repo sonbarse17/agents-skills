@@ -183,7 +183,7 @@ Effort keywords (`quick` / `standard` / `deep`) and the shared `<focus>` and
 ## Related skills
 
 - `/[dr-review](../../../containers-orchestration/common/other/dr-review/SKILL.md)` — PITR, snapshots, and whether an irreversible change is survivable.
-- `/[release-readiness](../../../Software_Engineering_and_Other/Miscellaneous/release-readiness/SKILL.md)` — this skill supplies the migration gate verdict.
+- `/[release-readiness](../../../ci-cd/common/pipeline-design/release-readiness/SKILL.md)` — this skill supplies the migration gate verdict.
 - `/[terraform-review](../../../infrastructure-as-code/terraform/troubleshooting/terraform-review/SKILL.md)` — where the instance, parameter group, and protections are declared.
 - `/[observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)` — lag, lock-wait, and slow-query signals this review depends on.
 - `/[security-review](../../../Security/security-review/SKILL.md)` — credential scoping, encryption, and [audit](../audit/SKILL.md) logging depth.

@@ -254,7 +254,7 @@ afterthought.
    { "comment": "ChatOps action executed: restart checkout-api-prod, confirmed by jane.doe, result: success" }
    ```
    See
-   [servicenow-itsm-integration](../[servicenow-itsm-integration](../../Miscellaneous/servicenow-itsm-integration/SKILL.md)/SKILL.md)
+   [servicenow-itsm-integration](../servicenow-itsm-integration/SKILL.md)/SKILL.md)
    for the fuller Change Request linkage pattern this should follow for
    anything that constitutes an actual production change, not just a
    diagnostic query.
@@ -423,7 +423,7 @@ authorized for production rollbacks, and durably logged both in the
 
 ## Cross-references
 
-- [servicenow-itsm-integration](../[servicenow-itsm-integration](../../Miscellaneous/servicenow-itsm-integration/SKILL.md)/SKILL.md) —
+- [servicenow-itsm-integration](../servicenow-itsm-integration/SKILL.md)/SKILL.md) —
   where ChatOps-executed production changes should be reflected for
   [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) purposes, and the Emergency Change pattern a Tier 3 ChatOps
   action during an [incident](../incident/SKILL.md) should often also trigger.

@@ -123,7 +123,7 @@ Effort keywords (`quick` / `standard` / `deep`) and the shared `<focus>` and
 - `/[terraform-review](../../../../infrastructure-as-code/terraform/troubleshooting/terraform-review/SKILL.md)` — the cluster, node pools, and cloud resources around it.
 - `/[security-review](../../../../Security/security-review/SKILL.md)` — depth on RBAC, NetworkPolicy, and admission control.
 - `/[observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)` — whether a workload's failure would be detected.
-- `/[release-readiness](../../../../Software_Engineering_and_Other/Miscellaneous/release-readiness/SKILL.md)` — whether a specific rollout is safe to ship.
+- `/[release-readiness](../../../../ci-cd/common/pipeline-design/release-readiness/SKILL.md)` — whether a specific rollout is safe to ship.
 
 ## Before you finish
 

@@ -416,7 +416,7 @@ Handoff point: persona-to-feature matrix with weighted scores
 Direction: Persona Development → Feature Prioritization
 Feature prioritization uses persona fit scores as input dimension.
 
-### With A/B Testing ([product-ab-testing](../../Software_Engineering_and_Other/Miscellaneous/ab-testing/SKILL.md))
+### With A/B Testing ([product-ab-testing](../ab-testing/SKILL.md))
 Handoff point: persona-specific hypotheses for testing
 Direction: Bidirectional
 Personas generate hypotheses; A/B testing validates persona-driven designs.

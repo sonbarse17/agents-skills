@@ -31,7 +31,7 @@ depends_on:
 ## Purpose
 
 Writing and passing consumer/provider contract tests (see
-[pact-contract-testing-configuration](../[pact-contract-testing-configuration](../../../Software_Engineering_and_Other/Miscellaneous/pact-contract-testing-configuration/SKILL.md)/SKILL.md))
+[pact-contract-testing-configuration](../pact-contract-testing-configuration/SKILL.md)/SKILL.md))
 answers "does this provider version satisfy this consumer's contract" in
 isolation — it does not by itself answer the deploy-time question that
 actually matters: "given everything currently deployed in this specific
@@ -65,7 +65,7 @@ verification passed at some point" as sufficient.
 
 - A Pact Broker (or PactFlow) already populated with published consumer
   contracts and provider verification results — see
-  [pact-contract-testing-configuration](../[pact-contract-testing-configuration](../../../Software_Engineering_and_Other/Miscellaneous/pact-contract-testing-configuration/SKILL.md)/SKILL.md)
+  [pact-contract-testing-configuration](../pact-contract-testing-configuration/SKILL.md)/SKILL.md)
   for setting that up; this skill assumes it exists.
 - The Pact CLI (`pact-broker` / `pact` CLI, bundled with most Pact
   language SDKs or installable standalone) available in the CI/CD
@@ -271,7 +271,7 @@ build `f9e8d7`.
 
 ## Cross-references
 
-- [pact-contract-testing-configuration](../[pact-contract-testing-configuration](../../../Software_Engineering_and_Other/Miscellaneous/pact-contract-testing-configuration/SKILL.md)/SKILL.md) —
+- [pact-contract-testing-configuration](../pact-contract-testing-configuration/SKILL.md)/SKILL.md) —
   writing the consumer/provider tests and publishing the contracts and
   verification results that `can-i-deploy` reads.
 - [environment-promotion-strategy](../../../devops/skills/[environment-promotion-strategy](../../../Software_Engineering_and_Other/Frontend/environment-promotion-strategy/SKILL.md)/SKILL.md) —

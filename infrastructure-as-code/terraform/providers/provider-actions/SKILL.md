@@ -523,4 +523,4 @@ Before submitting your action implementation:
 - [terraform-plugin-framework GitHub](https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/hashicorp/terraform-plugin-framework)
 - [terraform-plugin-testing](https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/hashicorp/terraform-plugin-testing)
 - [Writing a Terraform Action (blog)](https://danielmschmidt.de/posts/2025-09-26-writing-a-terraform-action/)
-- Reference implementations: `terraform-provider-tfe` (`action_query_run.go`, `action_query_run_test.go`), `terraform-provider-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)` (`action_rotate_root.go`)
+- Reference implementations: `terraform-provider-tfe` (`action_query_run.go`, `action_query_run_test.go`), `terraform-provider-[vault](../../../../Security/vault/SKILL.md)` (`action_rotate_root.go`)

@@ -585,7 +585,7 @@ class DeliveryAggregator {
 
 ## Security Considerations
 
-- API keys for SMS providers stored in secrets manager (AWS Secrets Manager, [Vault](../../../Miscellaneous/vault/SKILL.md)). Never in code.
+- API keys for SMS providers stored in secrets manager (AWS Secrets Manager, [Vault](../../../../Security/vault/SKILL.md)). Never in code.
 - OTP codes: generated with `crypto.randomInt()` (Node.js) or `secrets.randbelow()` ([Python](../../../Languages/python/python/SKILL.md)). Never `Math.random()`.
 - OTP storage: bcrypt hashed in database. TTL enforced at read time. Max 3 verify attempts then invalidate.
 - Rate limiting on OTP endpoints: per phone number (max 5/min), per IP (max 20/min).

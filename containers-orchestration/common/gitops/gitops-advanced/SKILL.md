@@ -48,7 +48,7 @@ Exact user phrases: "[GitOps](../gitops/SKILL.md) advanced", "multi-cluster [Git
 - Git provider ([GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md), GitLab, Bitbucket)
 - Current [ArgoCD](../../../argocd/other/argocd/SKILL.md)/Flux version
 - Existing cluster topology (hub-spoke, peer-to-peer)
-- Secrets management approach (SOPS, SealedSecrets, External Secrets, [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md))
+- Secrets management approach (SOPS, SealedSecrets, External Secrets, [Vault](../../../../Security/vault/SKILL.md))
 - Team structure and RBAC requirements
 - Compliance/[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) requirements
 - CI/CD pipeline tooling

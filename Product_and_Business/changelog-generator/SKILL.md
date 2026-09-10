@@ -386,7 +386,7 @@ conventionalChangelog(config)
   - references/conventional-commits.md — Conventional Commits Reference
   - references/release-workflow.md — Release Workflow Reference
 ## Handoff
-Hand off to `dev-loop-[git-workflow](../../ci-cd/common/git-workflow/git-workflow/SKILL.md)` for version tagging strategy. Hand off to `dev-loop-[code-review](../../Software_Engineering_and_Other/Miscellaneous/code-review/SKILL.md)` for PR-based changelog entries.
+Hand off to `dev-loop-[git-workflow](../../ci-cd/common/git-workflow/git-workflow/SKILL.md)` for version tagging strategy. Hand off to `dev-loop-[code-review](../../ci-cd/common/other/code-review/SKILL.md)` for PR-based changelog entries.
 
 ## Implementation Patterns
 

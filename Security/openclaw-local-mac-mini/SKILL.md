@@ -621,4 +621,4 @@ chmod +x /Users/openclaw/rotate-logs.sh
 
 - [ollama-stack](../[ollama-stack](../../AI_and_Agents/Models_and_FineTuning/ollama-stack/SKILL.md)/) - Local model serving patterns
 - [mac-mini-llm-lab](../[mac-mini-llm-lab](../../AI_and_Agents/Models_and_FineTuning/mac-mini-llm-lab/SKILL.md)/) - Mac mini reliability and security baseline
-- [startup-it-troubleshooting](../../it/[startup-it-troubleshooting](../../Software_Engineering_and_Other/Miscellaneous/startup-it-troubleshooting/SKILL.md)/) - Small-team operational triage
+- [startup-it-troubleshooting](../../observability-monitoring-logging/common/other/startup-it-troubleshooting/SKILL.md)/) - Small-team operational triage

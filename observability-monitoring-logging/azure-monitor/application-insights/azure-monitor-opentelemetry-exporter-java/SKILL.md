@@ -71,7 +71,7 @@ import com.azure.monitor.[opentelemetry](../../../opentelemetry/other/openteleme
 
 // Connection string from APPLICATIONINSIGHTS_CONNECTION_STRING env var
 AutoConfiguredOpenTelemetrySdkBuilder sdkBuilder = AutoConfiguredOpenTelemetrySdk.builder();
-AzureMonitorExporter.[customize](../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md)(sdkBuilder);
+AzureMonitorExporter.[customize](../../../../cloud/azure/ai/customize/SKILL.md)/SKILL.md)/SKILL.md)(sdkBuilder);
 [OpenTelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md) [openTelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md) = sdkBuilder.build().getOpenTelemetrySdk();
 ```
 
@@ -79,7 +79,7 @@ AzureMonitorExporter.[customize](../../../AI_and_Agents/Infrastructure/deploy-mo
 
 ```java
 AutoConfiguredOpenTelemetrySdkBuilder sdkBuilder = AutoConfiguredOpenTelemetrySdk.builder();
-AzureMonitorExporter.[customize](../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md)(sdkBuilder, "{connection-string}");
+AzureMonitorExporter.[customize](../../../../cloud/azure/ai/customize/SKILL.md)/SKILL.md)/SKILL.md)(sdkBuilder, "{connection-string}");
 [OpenTelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md) [openTelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md) = sdkBuilder.build().getOpenTelemetrySdk();
 ```
 
@@ -164,7 +164,7 @@ SpanProcessor customProcessor = new SpanProcessor() {
 
 // Register processor
 AutoConfiguredOpenTelemetrySdkBuilder sdkBuilder = AutoConfiguredOpenTelemetrySdk.builder();
-AzureMonitorExporter.[customize](../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md)(sdkBuilder);
+AzureMonitorExporter.[customize](../../../../cloud/azure/ai/customize/SKILL.md)/SKILL.md)/SKILL.md)(sdkBuilder);
 
 sdkBuilder.addTracerProviderCustomizer(
     (sdkTracerProviderBuilder, configProperties) -> 

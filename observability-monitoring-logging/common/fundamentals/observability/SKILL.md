@@ -122,7 +122,7 @@ Effort keywords (`quick` / `standard` / `deep`) and the shared `<focus>` and
 - `/[incident](../../incident-detection/incident/SKILL.md)` — real incidents are the best evidence of a detection gap.
 - `/[runbook](../../incident-detection/runbook/SKILL.md)` — every page needs a [runbook](../../incident-detection/runbook/SKILL.md); alerts without one are a `DOC` finding.
 - `/[k8s-review](../../../../containers-orchestration/kubernetes/troubleshooting/k8s-review/SKILL.md)`, `/[db-review](../../../../AI_and_Agents/Operations/db-review/SKILL.md)` — instrumentation gaps at the workload/data layer.
-- `/[release-readiness](../../../../Software_Engineering_and_Other/Miscellaneous/release-readiness/SKILL.md)` — whether *this* release would be caught going wrong.
+- `/[release-readiness](../../../../ci-cd/common/pipeline-design/release-readiness/SKILL.md)` — whether *this* release would be caught going wrong.
 - `/cost` — log retention and metric cardinality are also spend decisions.
 
 ## Before you finish

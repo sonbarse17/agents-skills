@@ -89,7 +89,7 @@ builder.Services.AddAzureClients(clientBuilder =>
     clientBuilder.AddBlobServiceClient(
         new Uri("https://myaccount.blob.core.windows.net"));
     clientBuilder.AddSecretClient(
-        new Uri("https://myvault.[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net"));
+        new Uri("https://myvault.[vault](../../../../../Security/vault/SKILL.md).azure.net"));
     
     // Uses DefaultAzureCredential by default
     clientBuilder.UseCredential(new DefaultAzureCredential());
@@ -142,7 +142,7 @@ var credential = new ClientSecretCredential(
     clientSecret: "<client-secret>");
 
 var client = new SecretClient(
-    new Uri("https://myvault.[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net"),
+    new Uri("https://myvault.[vault](../../../../../Security/vault/SKILL.md).azure.net"),
     credential);
 ```
 
@@ -164,7 +164,7 @@ var credential = new ChainedTokenCredential(
     new AzureCliCredential());
 
 var client = new SecretClient(
-    new Uri("https://myvault.[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net"),
+    new Uri("https://myvault.[vault](../../../../../Security/vault/SKILL.md).azure.net"),
     credential);
 ```
 
@@ -289,7 +289,7 @@ using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
 
 var client = new SecretClient(
-    new Uri("https://myvault.[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net"),
+    new Uri("https://myvault.[vault](../../../../../Security/vault/SKILL.md).azure.net"),
     new DefaultAzureCredential());
 
 try

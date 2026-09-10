@@ -360,7 +360,7 @@ async function checkConsumerLag(admin: Admin, groupId: string): Promise<void> {
 | Message tampering | TLS in transit. Optional: message-level HMAC or encryption |
 | Sensitive data in messages | Encrypt payload at application level before producing |
 | DoS via large messages | Enforce max message size at broker level |
-| Credential exposure | Use IAM roles (AWS), service accounts, or [vault](../../Miscellaneous/vault/SKILL.md), never hardcoded creds |
+| Credential exposure | Use IAM roles (AWS), service accounts, or [vault](../../../Security/vault/SKILL.md), never hardcoded creds |
 
 ## Anti-Patterns
 

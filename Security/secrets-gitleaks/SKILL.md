@@ -373,7 +373,7 @@ tags = ["password", "database", "acme-internal"]
 
 - **SIEM Integration**: Export JSON findings to Splunk, ELK, or [Datadog](../../observability-monitoring-logging/datadog/other/datadog/SKILL.md) for centralized [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - **Vulnerability Management**: Import SARIF reports into Snyk, SonarQube, or Checkmarx
-- **Secret Management**: Integrate findings with HashiCorp [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) or AWS Secrets Manager rotation workflows
+- **Secret Management**: Integrate findings with HashiCorp [Vault](../vault/SKILL.md) or AWS Secrets Manager rotation workflows
 - **Ticketing Systems**: Automated Jira/ServiceNow ticket creation for remediation tracking
 
 ### SDLC Integration

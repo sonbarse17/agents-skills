@@ -36,7 +36,7 @@ ordering guarantees, and under-replicated topics silently risk data loss
 until a broker actually fails. This skill covers designing that
 configuration correctly the first time — validating it before rollout is
 covered separately in
-[kafka-configuration-validation](../../Software_Engineering_and_Other/Miscellaneous/kafka-configuration-validation/SKILL.md)/SKILL.md).
+[kafka-configuration-validation](../../Software_Engineering_and_Other/Databases/messaging/kafka-configuration-validation/SKILL.md)/SKILL.md).
 
 ## When to use
 
@@ -171,7 +171,7 @@ covered separately in
    ```
    Compacted topics (state/changelog topics) need `cleanup.policy=compact`
    instead of time-based retention — see
-   [kafka-configuration-validation](../../Software_Engineering_and_Other/Miscellaneous/kafka-configuration-validation/SKILL.md)/SKILL.md)
+   [kafka-configuration-validation](../../Software_Engineering_and_Other/Databases/messaging/kafka-configuration-validation/SKILL.md)/SKILL.md)
    for validating that the right policy is applied before production
    rollout.
 
@@ -299,6 +299,6 @@ keeping the topic writable throughout the outage.
 
 ## Cross-references
 
-- [kafka-configuration-validation](../../Software_Engineering_and_Other/Miscellaneous/kafka-configuration-validation/SKILL.md)/SKILL.md) — validating this cluster's topic configs and consumer group settings before production rollout.
+- [kafka-configuration-validation](../../Software_Engineering_and_Other/Databases/messaging/kafka-configuration-validation/SKILL.md)/SKILL.md) — validating this cluster's topic configs and consumer group settings before production rollout.
 - [kafka-consumer-lag-and-partition-troubleshooting](../[kafka-consumer-lag-and-partition-troubleshooting](../kafka-consumer-lag-and-partition-troubleshooting/SKILL.md)/SKILL.md) — diagnosing under-replicated partitions and rebalance storms that stem from the partition/replication choices made here.
-- [kafka-schema-registry-and-compatibility-management](../../Software_Engineering_and_Other/Miscellaneous/kafka-schema-registry-and-compatibility-management/SKILL.md)/SKILL.md) — schema governance layered on top of the topics designed in this skill.
+- [kafka-schema-registry-and-compatibility-management](../../Software_Engineering_and_Other/Databases/messaging/kafka-schema-registry-and-compatibility-management/SKILL.md)/SKILL.md) — schema governance layered on top of the topics designed in this skill.

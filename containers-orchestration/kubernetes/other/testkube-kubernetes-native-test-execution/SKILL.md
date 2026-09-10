@@ -49,7 +49,7 @@ just CI console output that disappears when the job ends. This skill
 covers authoring `Test`/`TestSuite` resources and wiring them into CI;
 the resulting workload-scaling behavior under a Testkube-driven load test
 is a good input to
-[keda-configuration-validation](../[keda-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/keda-configuration-validation/SKILL.md)/SKILL.md)'s
+[keda-configuration-validation](../../scaling/keda-configuration-validation/SKILL.md)/SKILL.md)'s
 threshold checks, but that validation itself is out of scope here.
 
 ## When to use
@@ -273,7 +273,7 @@ threshold checks, but that validation itself is out of scope here.
   itself consume enough cluster resources to starve the very services
   it's testing, producing misleading results.
 - Feed a Testkube-driven k6 load test's measured throughput back into
-  [keda-configuration-validation](../[keda-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/keda-configuration-validation/SKILL.md)/SKILL.md)'s
+  [keda-configuration-validation](../../scaling/keda-configuration-validation/SKILL.md)/SKILL.md)'s
   per-replica [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) checks — an in-cluster load test is a more
   realistic [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) signal than a synthetic guess.
 
@@ -377,7 +377,7 @@ before a slow integration-test stage in any other pipeline design.
 
 ## Cross-references
 
-- [keda-configuration-validation](../[keda-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/keda-configuration-validation/SKILL.md)/SKILL.md) — using a Testkube-driven k6 load test's measured throughput as an input to validating KEDA scaling thresholds for the same service.
+- [keda-configuration-validation](../../scaling/keda-configuration-validation/SKILL.md)/SKILL.md) — using a Testkube-driven k6 load test's measured throughput as an input to validating KEDA scaling thresholds for the same service.
 - [keda-event-driven-[autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)-configuration](../[keda-event-driven-[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)-configuration](../keda-event-driven-[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)-configuration/SKILL.md)/SKILL.md) — the [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) configuration whose behavior a Testkube load test can be used to exercise and observe.
 - [helm-chart-authoring](../[helm-chart-authoring](../helm-chart-authoring/SKILL.md)/SKILL.md) — packaging the Testkube operator installation and `Test`/`TestSuite` resources as a Helm chart alongside the application they test.
 - [secure-cicd-gates](../../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — where a Testkube-driven test gate fits relative to security scan gates in an overall pipeline.

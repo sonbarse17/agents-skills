@@ -392,19 +392,19 @@ import {Test} from "forge-std/Test.sol";
 import {MyVault} from "../src/MyVault.sol";
 
 contract MyVaultTest is Test {
-    MyVault [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md);
+    MyVault [vault](../../Security/vault/SKILL.md);
     address alice = makeAddr("alice");
     uint256 constant BAL = 1000e18;
 
     function setUp() public {
-        [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) = new MyVault();
+        [vault](../../Security/vault/SKILL.md) = new MyVault();
         deal(alice, BAL);
     }
 
     // Unit test
     function test_Deposit() public {
         vm.prank(alice);
-        uint256 shares = [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).deposit{value: 100e18}(100e18, alice);
+        uint256 shares = [vault](../../Security/vault/SKILL.md).deposit{value: 100e18}(100e18, alice);
         assertEq(shares, 100e18, "Shares == assets at 1:1");
     }
 
@@ -412,15 +412,15 @@ contract MyVaultTest is Test {
     function testFuzz_Deposit_RoundTrip(uint256 amount) public {
         vm.assume(amount > 0 && amount <= BAL);
         vm.prank(alice);
-        uint256 shares = [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).deposit{value: amount}(amount, alice);
+        uint256 shares = [vault](../../Security/vault/SKILL.md).deposit{value: amount}(amount, alice);
         vm.prank(alice);
-        uint256 returned = [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).withdraw(shares, alice, alice);
+        uint256 returned = [vault](../../Security/vault/SKILL.md).withdraw(shares, alice, alice);
         assertEq(returned, amount, "Roundtrip preserves value");
     }
 
     // Invariant test
     function invariant_Solvency() public {
-        assertGe(address([vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)).balance, [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).totalSupply());
+        assertGe(address([vault](../../Security/vault/SKILL.md)).balance, [vault](../../Security/vault/SKILL.md).totalSupply());
     }
 }
 ```
@@ -433,7 +433,7 @@ contract VaultHandler is Test {
         address u = users[seed % users.length];
         amount = bound(amount, 1, u.balance);
         vm.prank(u);
-        [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).deposit{value: amount}(amount, u);
+        [vault](../../Security/vault/SKILL.md).deposit{value: amount}(amount, u);
     }
 }
 ```

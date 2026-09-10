@@ -490,7 +490,7 @@ Create a dedicated read-only database user for MCP servers:
 
 ```sql
 -- [PostgreSQL](../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md): MCP server database user
-CREATE ROLE mcp_readonly WITH LOGIN PASSWORD 'use-a-[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-generated-secret';
+CREATE ROLE mcp_readonly WITH LOGIN PASSWORD 'use-a-[vault](../vault/SKILL.md)-generated-secret';
 
 -- Grant read-only access to specific schemas only
 GRANT USAGE ON SCHEMA public TO mcp_readonly;

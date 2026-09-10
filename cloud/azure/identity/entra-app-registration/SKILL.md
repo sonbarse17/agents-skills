@@ -92,7 +92,7 @@ For confidential client applications (web apps, services), create a client secre
 - Navigate to "Certificates & secrets"
 - Create new client secret
 - Copy the value immediately (only shown once)
-- Store securely (Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) recommended)
+- Store securely (Key [Vault](../../../../Security/vault/SKILL.md) recommended)
 
 **Certificate:** For production environments, use certificates instead of secrets for enhanced security. Upload certificate via "Certificates & secrets" section.
 
@@ -172,7 +172,7 @@ MSAL is the recommended library for integrating Microsoft identity platform.
 
 | Practice | Recommendation |
 |----------|---------------|
-| **Never hardcode secrets** | Use environment variables, Azure Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), or managed identity |
+| **Never hardcode secrets** | Use environment variables, Azure Key [Vault](../../../../Security/vault/SKILL.md), or managed identity |
 | **Rotate secrets regularly** | Set expiration, automate rotation |
 | **Use certificates over secrets** | More secure for production |
 | **Least privilege permissions** | Request only required API permissions |
@@ -185,7 +185,7 @@ MSAL is the recommended library for integrating Microsoft identity platform.
 ## SDK Quick References
 
 - **Azure Identity**: [Python](references/sdk/[azure-identity-py](../[azure-identity-py](../azure-sdk-[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/skills/azure-identity-py/SKILL.md)/SKILL.md).md) | [.NET](references/sdk/[azure-identity-dotnet](../[azure-identity-dotnet](../azure-sdk-dotnet/skills/azure-identity-dotnet/SKILL.md)/SKILL.md).md) | [TypeScript](references/sdk/[azure-identity-ts](../[azure-identity-ts](../azure-sdk-[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)/skills/azure-identity-ts/SKILL.md)/SKILL.md).md) | [Java](references/sdk/[azure-identity-java](../[azure-identity-java](../azure-sdk-java/skills/azure-identity-java/SKILL.md)/SKILL.md).md) | [Rust](references/sdk/[azure-identity-rust](../[azure-identity-rust](../azure-sdk-rust/skills/azure-identity-rust/SKILL.md)/SKILL.md).md)
-- **Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) (secrets)**: [Python](references/sdk/[azure-keyvault-py](../[azure-keyvault-py](../azure-sdk-[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/skills/[azure-keyvault](../../security/azure-keyvault/SKILL.md)-py/SKILL.md)/SKILL.md).md) | [TypeScript](references/sdk/[azure-keyvault-secrets-ts](../[azure-keyvault-secrets-ts](../azure-sdk-[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)/skills/[azure-keyvault](../../security/azure-keyvault/SKILL.md)-secrets-ts/SKILL.md)/SKILL.md).md)
+- **Key [Vault](../../../../Security/vault/SKILL.md) (secrets)**: [Python](references/sdk/[azure-keyvault-py](../[azure-keyvault-py](../azure-sdk-[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/skills/[azure-keyvault](../../security/azure-keyvault/SKILL.md)-py/SKILL.md)/SKILL.md).md) | [TypeScript](references/sdk/[azure-keyvault-secrets-ts](../[azure-keyvault-secrets-ts](../azure-sdk-[typescript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md)/skills/[azure-keyvault](../../security/azure-keyvault/SKILL.md)-secrets-ts/SKILL.md)/SKILL.md).md)
 - **Auth Events**: [.NET](references/sdk/[microsoft-azure-webjobs-extensions-authentication-events-dotnet](../../../AI_and_Agents/Workflows/[microsoft-azure-webjobs-extensions-authentication-events-dotnet](../azure-sdk-dotnet/skills/microsoft-azure-webjobs-extensions-authentication-events-dotnet/SKILL.md)/SKILL.md).md)
 
 ## References

@@ -23,7 +23,7 @@ depends_on:
   - cost
 ---
 
-# [Customize](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../../../../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md) Model Deployment
+# [Customize](../../../../customize/SKILL.md)/SKILL.md) Model Deployment
 
 Interactive guided workflow for deploying Azure OpenAI models with full customization control over version, SKU, [capacity](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../[capacity](../../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), content filtering, and advanced options.
 
@@ -51,9 +51,9 @@ Use this skill when you need **precise control** over deployment configuration:
 
 **Alternative:** Use `[preset](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[preset](../../../../../../../../AI_and_Agents/Models_and_FineTuning/[preset](../preset/SKILL.md)/SKILL.md)/SKILL.md)` for quick deployment to the best available region with automatic configuration.
 
-### Comparison: [customize](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../../../../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md) vs [preset](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[preset](../../../../../../../../AI_and_Agents/Models_and_FineTuning/[preset](../preset/SKILL.md)/SKILL.md)/SKILL.md)
+### Comparison: [customize](../../../../customize/SKILL.md)/SKILL.md) vs [preset](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[preset](../../../../../../../../AI_and_Agents/Models_and_FineTuning/[preset](../preset/SKILL.md)/SKILL.md)/SKILL.md)
 
-| Feature | [customize](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../../../../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md) | [preset](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[preset](../../../../../../../../AI_and_Agents/Models_and_FineTuning/[preset](../preset/SKILL.md)/SKILL.md)/SKILL.md) |
+| Feature | [customize](../../../../customize/SKILL.md)/SKILL.md) | [preset](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[preset](../../../../../../../../AI_and_Agents/Models_and_FineTuning/[preset](../preset/SKILL.md)/SKILL.md)/SKILL.md) |
 |---------|---------------------|----------------------------|
 | **Focus** | Full customization control | Optimal region selection |
 | **Version Selection** | User chooses from available | Uses latest automatically |
@@ -99,7 +99,7 @@ If user accepts all defaults (latest version, GlobalStandard SKU, recommended [c
 
 ## Phase Summaries
 
-> ⚠️ **MUST READ:** Before executing any phase, load [../../../../../../../../Global_References/[customize](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../../../../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)-workflow.md](../../../../../../../../Global_References/[customize](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../../../../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)-workflow.md) for the full scripts and implementation details. The summaries below describe *what* each phase does — the reference file contains the *how* (CLI commands, quota patterns, [capacity](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../[capacity](../../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) formulas, cross-region fallback logic).
+> ⚠️ **MUST READ:** Before executing any phase, load [../../../../../../../../Global_References/[customize](../../../../customize/SKILL.md)/SKILL.md)-workflow.md](../../../../customize/SKILL.md)/SKILL.md)-workflow.md) for the full scripts and implementation details. The summaries below describe *what* each phase does — the reference file contains the *how* (CLI commands, quota patterns, [capacity](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../[capacity](../../../../../../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) formulas, cross-region fallback logic).
 
 | Phase | Action | Key Details |
 |-------|--------|-------------|
@@ -156,7 +156,7 @@ az cognitiveservices account deployment delete --name <account> --resource-group
 
 ## Selection Guides & Advanced Topics
 
-> For SKU comparison tables, PTU sizing formulas, and advanced option details, load [../../../../../../../../Global_References/[customize](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../../../../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)-guides.md](../../../../../../../../Global_References/[customize](../../../../../../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../../../../../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)-guides.md).
+> For SKU comparison tables, PTU sizing formulas, and advanced option details, load [../../../../../../../../Global_References/[customize](../../../../customize/SKILL.md)/SKILL.md)-guides.md](../../../../customize/SKILL.md)/SKILL.md)-guides.md).
 
 **SKU selection:** GlobalStandard (production/HA) → Standard (dev/test) → ProvisionedManaged (high-volume/guaranteed throughput) → DataZoneStandard (data residency).
 

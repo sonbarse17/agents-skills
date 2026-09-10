@@ -407,7 +407,7 @@ cd /etc/nginx/modsec
 git clone https://[github](../../ci-cd/github-actions/other/github/SKILL.md).com/coreruleset/coreruleset crs
 cp crs/crs-setup.conf.example crs/crs-setup.conf
 
-# [Customize](../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) CRS settings
+# [Customize](../../cloud/azure/ai/customize/SKILL.md)/SKILL.md)/SKILL.md) CRS settings
 cat >> crs/crs-setup.conf << 'EOF'
 
 # Set paranoia level (1-4, higher = more strict)

@@ -369,4 +369,4 @@ mc event ls myminio/app-data
 - `[block-storage](../block-storage/SKILL.md)` -- Underlying disk storage for MinIO data volumes
 - `[backup-recovery](../../migration/backup-recovery/SKILL.md)` -- Using S3/MinIO as a backup destination with restic
 - `[nfs-storage](../nfs-storage/SKILL.md)` -- Alternative shared storage for file-level access
-- `[linux-administration](../../../../Software_Engineering_and_Other/Miscellaneous/linux-administration/SKILL.md)` -- Server setup and maintenance for MinIO hosts
+- `[linux-administration](../../../../Software_Engineering_and_Other/Miscellaneous/os-admin/linux-administration/SKILL.md)` -- Server setup and maintenance for MinIO hosts

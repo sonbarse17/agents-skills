@@ -310,7 +310,7 @@ Scheduled job patterns:
 # Copy template to your project
 cp templates/module-complete.ts src/modules/brand/
 
-# [Customize](../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) for your needs
+# [Customize](../../../../cloud/azure/ai/customize/SKILL.md)/SKILL.md)/SKILL.md) for your needs
 # - Rename identifiers
 # - Add/remove properties
 # - Implement business logic

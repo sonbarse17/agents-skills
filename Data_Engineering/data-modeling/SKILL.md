@@ -543,12 +543,12 @@ Check [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) → lint SQL (sq
 - Document all design decisions and trade-offs in ADRs.
 
 ## References
-  - ../../../Global_References/data-[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-patterns.md — Data [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Patterns
+  - ../../../Global_References/data-[vault](../../Security/vault/SKILL.md)-patterns.md — Data [Vault](../../Security/vault/SKILL.md) Patterns
   - ../../../Global_References/dimensional-modeling.md — Dimensional Modeling
   - ../../../Global_References/domain-driven-data-modeling.md — Domain-Driven Data Modeling
   - ../../../Global_References/data-modeling_graph-modeling.md — Graph Modeling
   - ../../../Global_References/modeling-best-practices.md — Data Modeling Best Practices
-  - ../../../Global_References/modeling-[change-management](../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md).md — Model Change Management
+  - ../../../Global_References/modeling-[change-management](../../observability-monitoring-logging/common/other/change-management/SKILL.md).md — Model Change Management
   - ../../../Global_References/modeling-data-contracts.md — Data Contracts in Modeling
   - ../../../Global_References/relational-modeling.md — Relational Modeling
 ## Handoff

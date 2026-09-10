@@ -21,7 +21,7 @@ depends_on:
 
 # [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) on Azure App Service — Code Deploy
 
-Deploys [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) (Flask, Django, FastAPI, generic) code to Azure App Service Linux (P0v3, [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) 3.14). Creates RG + Plan + Web App if missing. Hand off to `[azure-prepare](../../../[azure-prepare](../azure-prepare/SKILL.md)/SKILL.md)` for VNet, Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), databases, or IaC.
+Deploys [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) (Flask, Django, FastAPI, generic) code to Azure App Service Linux (P0v3, [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) 3.14). Creates RG + Plan + Web App if missing. Hand off to `[azure-prepare](../../../[azure-prepare](../azure-prepare/SKILL.md)/SKILL.md)` for VNet, Key [Vault](../../../../Security/vault/SKILL.md), databases, or IaC.
 
 **MCP tools used**: `mcp_azure_mcp_subscription_list`, `mcp_azure_mcp_group_list`, `mcp_azure_mcp_appservice`, `mcp_azure_mcp_azd` (when `azure.yaml` is present).
 

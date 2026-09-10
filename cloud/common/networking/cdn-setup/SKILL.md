@@ -364,5 +364,5 @@ aws cloudwatch get-metric-statistics \
 
 - [dns-management](../[dns-management](../../../AI_and_Agents/Workflows/dns-management/SKILL.md)/) - DNS records for CDN CNAME setup
 - [cloudflare-pages](../../cloudflare/[cloudflare-pages](../cloudflare-pages/SKILL.md)/) - Cloudflare's built-in CDN for Pages projects
-- [reverse-proxy](../[reverse-proxy](../../../Software_Engineering_and_Other/Miscellaneous/reverse-proxy/SKILL.md)/) - Origin server configuration behind CDN
+- [reverse-proxy](../../../../Software_Engineering_and_Other/Backend/patterns/reverse-proxy/SKILL.md)/) - Origin server configuration behind CDN
 - [load-balancing](../[load-balancing](../../../Software_Engineering_and_Other/Backend/load-balancing/SKILL.md)/) - Multi-origin CDN backends

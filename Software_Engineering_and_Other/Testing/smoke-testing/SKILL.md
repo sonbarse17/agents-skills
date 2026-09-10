@@ -419,7 +419,7 @@ smoke_metrics:
 ## Handoff
 After smoke testing, hand off to:
 - `[quality-regression-testing](../regression-testing/SKILL.md)` — if smoke passes, run targeted regression on affected areas
-- `[quality-acceptance-testing](../../Miscellaneous/acceptance-testing/SKILL.md)` — if smoke passes and UAT is scheduled
+- `[quality-acceptance-testing](../acceptance-testing/SKILL.md)` — if smoke passes and UAT is scheduled
 - `[quality-e2e-testing](../e2e-testing/SKILL.md)` — for deeper end-to-end verification of critical journeys
 - `quality-[load-testing](../../../observability-monitoring-logging/common/capacity-monitoring/load-testing/SKILL.md)` — if smoke reveals performance concerns
 ## Implementation Patterns
@@ -530,7 +530,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager ([Vault](../../Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../../Security/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
 - Access [audit](../../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets

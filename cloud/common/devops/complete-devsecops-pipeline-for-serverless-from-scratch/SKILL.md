@@ -45,7 +45,7 @@ bounds what a compromised function can actually do, in the same way an
 admission policy bounds what a compromised pod can do in [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).
 Secrets, too, follow a different model from both other variants: fetched
 directly from a managed secrets service (AWS Secrets Manager/Parameter
-Store, Azure Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)) by the function's own runtime code using its
+Store, Azure Key [Vault](../../../../Security/vault/SKILL.md)) by the function's own runtime code using its
 execution role's identity, never baked into the zip and never pulled by
 an in-cluster operator (there is no cluster).
 
@@ -82,7 +82,7 @@ an in-cluster operator (there is no cluster).
   [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../cloud-iam-hardening/SKILL.md)/SKILL.md)
   and the execution-role scoping guidance in
   [aws-lambda-packaging-and-configuration](../../../[serverless](../../Containers_and_Orchestration/serverless/SKILL.md)-and-alternative-compute/skills/[aws-lambda-packaging-and-configuration](../[aws-lambda](../aws-lambda/SKILL.md)-packaging-and-configuration/SKILL.md)/SKILL.md).
-- A managed secrets service (AWS Secrets Manager, Azure Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)) already
+- A managed secrets service (AWS Secrets Manager, Azure Key [Vault](../../../../Security/vault/SKILL.md)) already
   provisioned, per
   [secrets-management](../[secrets-management](../secrets-management/SKILL.md)/SKILL.md).
 
@@ -320,7 +320,7 @@ jobs:
 exactly `payments-webhook/prod/db` at invoke time; its execution role
 (reviewed by the `iam-role-diff-gate` job whenever `template.yaml`'s IAM
 statements change) grants nothing broader — no secret value, signing key,
-or [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) token is ever present in the CI pipeline itself.
+or [vault](../../../../Security/vault/SKILL.md) token is ever present in the CI pipeline itself.
 
 ## Cross-references
 

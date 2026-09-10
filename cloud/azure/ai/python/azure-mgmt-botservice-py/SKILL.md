@@ -347,7 +347,7 @@ for conn in connections:
 2. **Always use context managers for clients and async credentials.** Wrap every client in `with Client(...) as client:` (sync) or `async with Client(...) as client:` (async). For async `DefaultAzureCredential` from `azure.identity.aio`, also use `async with credential:` so tokens and transports are cleaned up.
 3. **Use `DefaultAzureCredential`** for code that runs locally. Use a specific token credential for code that runs in Azure.
 4. **Start with F0 SKU** for development, upgrade to S1 for production
-5. **Store MSA App ID/Secret securely** — use Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
+5. **Store MSA App ID/Secret securely** — use Key [Vault](../../../../../Security/vault/SKILL.md)
 6. **Enable only needed channels** — reduces attack surface
 7. **Rotate Direct Line keys** periodically
 8. **Use managed identity** when possible for bot connections

@@ -467,7 +467,7 @@ Decision: maintained both channels but invested differently. Allocated 70% of GT
   - ../../../Global_References/positioning-guide.md — Product Positioning Guide
 
 ## Handoff
-For pricing strategy support, hand off to `[product-pricing-strategy](../pricing-strategy/SKILL.md)`. For growth experiments post-launch, hand off to `[product-growth-engineering](../growth-engineering/SKILL.md)`. For customer journey analysis to inform GTM touchpoints, hand off to `[product-customer-journey](../customer-journey/SKILL.md)`. For experiment design on launch messaging, hand off to `[product-ab-testing](../../Software_Engineering_and_Other/Miscellaneous/ab-testing/SKILL.md)`.
+For pricing strategy support, hand off to `[product-pricing-strategy](../pricing-strategy/SKILL.md)`. For growth experiments post-launch, hand off to `[product-growth-engineering](../growth-engineering/SKILL.md)`. For customer journey analysis to inform GTM touchpoints, hand off to `[product-customer-journey](../customer-journey/SKILL.md)`. For experiment design on launch messaging, hand off to `[product-ab-testing](../ab-testing/SKILL.md)`.
 ## Implementation Patterns
 
 ### Observer Pattern for Event Handling
@@ -576,7 +576,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager ([Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../Security/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
 - Access [audit](../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets

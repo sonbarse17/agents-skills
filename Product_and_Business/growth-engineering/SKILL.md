@@ -634,5 +634,5 @@ Running growth experiments that improve one metric at the expense of another. In
   - ../../../Global_References/viral-mechanics.md — Viral Mechanics
 
 ## Handoff
-For analytics tracking of growth metrics, hand off to `[product-analytics](../../Software_Engineering_and_Other/Miscellaneous/analytics/SKILL.md)`. For pricing and conversion experiments, hand off to `[product-pricing-strategy](../pricing-strategy/SKILL.md)`. For customer journey activation touchpoints, hand off to `[product-customer-journey](../customer-journey/SKILL.md)`. For A/B test experiment design, hand off to `[product-ab-testing](../../Software_Engineering_and_Other/Miscellaneous/ab-testing/SKILL.md)`.
+For analytics tracking of growth metrics, hand off to `[product-analytics](../analytics/SKILL.md)`. For pricing and conversion experiments, hand off to `[product-pricing-strategy](../pricing-strategy/SKILL.md)`. For customer journey activation touchpoints, hand off to `[product-customer-journey](../customer-journey/SKILL.md)`. For A/B test experiment design, hand off to `[product-ab-testing](../ab-testing/SKILL.md)`.
 

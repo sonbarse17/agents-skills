@@ -66,7 +66,7 @@ a Testcontainers suite that works fine on a developer's laptop.
   hangs, or fails to pull images in CI.
 - Deciding whether a given integration point is worth a real container
   versus a contract test (see
-  [pact-contract-testing-configuration](../[pact-contract-testing-configuration](../../Miscellaneous/pact-contract-testing-configuration/SKILL.md)/SKILL.md))
+  [pact-contract-testing-configuration](../pact-contract-testing-configuration/SKILL.md)/SKILL.md))
   or a lighter-weight fake.
 
 ## Prerequisites & environment
@@ -422,6 +422,6 @@ repository test keeps state isolated without restarting the container.
 
 ## Cross-references
 
-- [pact-contract-testing-configuration](../[pact-contract-testing-configuration](../../Miscellaneous/pact-contract-testing-configuration/SKILL.md)/SKILL.md) — a complementary integration-testing approach: contract tests verify the *shape* of an interaction between independently-deployed services without needing either side's real dependency running, while Testcontainers verifies real behavior against an actual dependency instance within one service's own test suite — many systems benefit from both, applied to different kinds of integration risk.
+- [pact-contract-testing-configuration](../pact-contract-testing-configuration/SKILL.md)/SKILL.md) — a complementary integration-testing approach: contract tests verify the *shape* of an interaction between independently-deployed services without needing either side's real dependency running, while Testcontainers verifies real behavior against an actual dependency instance within one service's own test suite — many systems benefit from both, applied to different kinds of integration risk.
 - [infrastructure-post-deployment-validation-and-smoke-testing](../[infrastructure-post-deployment-validation-and-smoke-testing](../../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-post-deployment-validation-and-smoke-testing/SKILL.md)/SKILL.md) — the post-deploy validation layer that picks up once code has already passed the Testcontainers-backed integration tests covered here.
 - [makefile-authoring-and-validation](../[makefile-authoring-and-validation](../../Frontend/makefile-authoring-and-validation/SKILL.md)/SKILL.md) — a common place to wrap the [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-availability and resource-sizing preconditions this skill's CI guidance depends on into a single reusable local/CI entry point.

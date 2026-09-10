@@ -378,7 +378,7 @@ az vm boot-diagnostics get-boot-log \
 # Enable Azure Backup
 az backup protection enable-for-vm \
   --resource-group compute-rg \
-  --[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name myapp-[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) \
+  --[vault](../../../../Security/vault/SKILL.md)-name myapp-[vault](../../../../Security/vault/SKILL.md) \
   --vm myapp-vm \
   --policy-name DefaultPolicy
 

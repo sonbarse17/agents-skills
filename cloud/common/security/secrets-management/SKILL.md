@@ -45,8 +45,8 @@ assessment).
 
 - The user asks to "remove hardcoded secrets" from a codebase or wants
   help auditing for them.
-- A team wants to set up HashiCorp [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS Secrets Manager, Azure Key
-  [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), GCP Secret Manager, or a [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md)-friendly encrypted-secrets
+- A team wants to set up HashiCorp [Vault](../../../../Security/vault/SKILL.md), AWS Secrets Manager, Azure Key
+  [Vault](../../../../Security/vault/SKILL.md), GCP Secret Manager, or a [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md)-friendly encrypted-secrets
   workflow (SOPS + age/KMS, Sealed Secrets) from scratch.
 - The user wants secret-scanning added to CI/CD or pre-[commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) hooks
   (Gitleaks, TruffleHog, [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) secret scanning/push protection) to catch
@@ -63,12 +63,12 @@ assessment).
 ## Prerequisites & environment
 
 - A secrets manager choice appropriate to the environment:
-  - **HashiCorp [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)** (OSS or Enterprise) — most flexible, supports
+  - **HashiCorp [Vault](../../../../Security/vault/SKILL.md)** (OSS or Enterprise) — most flexible, supports
     dynamic secrets (databases, cloud IAM), fine-grained policies, and
     multiple auth methods ([Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) service account, AWS IAM, OIDC);
-    requires running/operating a [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) cluster (or using HCP [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)) —
+    requires running/operating a [Vault](../../../../Security/vault/SKILL.md) cluster (or using HCP [Vault](../../../../Security/vault/SKILL.md)) —
     non-trivial operational overhead if self-hosted.
-  - **AWS Secrets Manager / Azure Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) / GCP Secret Manager** —
+  - **AWS Secrets Manager / Azure Key [Vault](../../../../Security/vault/SKILL.md) / GCP Secret Manager** —
     cloud-native, lower operational overhead if already on that cloud,
     integrates with IAM natively; less flexible across [multi-cloud](../../other/multi-cloud/SKILL.md).
   - **SOPS** (Mozilla) + age or a cloud KMS — for encrypting secrets
@@ -125,11 +125,11 @@ assessment).
    consider the finding resolved. Removing the file without rotating the
    credential leaves the leaked value valid forever in history.
 
-3. **Stand up the secrets manager.** [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) example — enable a KV v2
+3. **Stand up the secrets manager.** [Vault](../../../../Security/vault/SKILL.md) example — enable a KV v2
    secrets engine and a policy scoped to least privilege:
    ```bash
-   [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) secrets enable -path=myapp kv-v2
-   [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) kv put myapp/prod/db username="svc-myapp" password="<generated>"
+   [vault](../../../../Security/vault/SKILL.md) secrets enable -path=myapp kv-v2
+   [vault](../../../../Security/vault/SKILL.md) kv put myapp/prod/db username="svc-myapp" password="<generated>"
    ```
    ```hcl
    # policy: myapp-prod-read.hcl
@@ -139,14 +139,14 @@ assessment).
    ```
 
 4. **Authenticate workloads, not humans, to fetch secrets at runtime.**
-   [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) example using [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)'s [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) auth method with the [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
+   [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) example using [Vault](../../../../Security/vault/SKILL.md)'s [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) auth method with the [Vault](../../../../Security/vault/SKILL.md)
    Agent Injector (annotations on a pod spec):
    ```yaml
    metadata:
      annotations:
-       [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).hashicorp.com/agent-inject: "true"
-       [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).hashicorp.com/role: "myapp-prod"
-       [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).hashicorp.com/agent-inject-secret-db-creds: "myapp/data/prod/db"
+       [vault](../../../../Security/vault/SKILL.md).hashicorp.com/agent-inject: "true"
+       [vault](../../../../Security/vault/SKILL.md).hashicorp.com/role: "myapp-prod"
+       [vault](../../../../Security/vault/SKILL.md).hashicorp.com/agent-inject-secret-db-creds: "myapp/data/prod/db"
    ```
    This avoids ever writing the secret into a [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Secret object,
    environment variable dump, or CI log — the sidecar fetches it directly
@@ -166,7 +166,7 @@ assessment).
    ```
 
 6. **Prefer dynamic, short-lived secrets over long-lived static ones**
-   where the backing system supports it ([Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)'s database secrets engine
+   where the backing system supports it ([Vault](../../../../Security/vault/SKILL.md)'s database secrets engine
    generates a unique DB credential per lease with automatic expiry,
    versus a single shared password rotated manually every 90 days).
 
@@ -193,7 +193,7 @@ assessment).
   backend supports it — a leaked short-lived credential has a small blast
   radius by construction.
 - Scope access with least privilege per environment/workload identity,
-  not one shared "CI" or "prod" credential used everywhere — a [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
+  not one shared "CI" or "prod" credential used everywhere — a [Vault](../../../../Security/vault/SKILL.md)
   policy or IAM role per service limits blast radius if one workload is
   compromised.
 - Never pass secrets as CLI arguments or build args — they end up in
@@ -202,7 +202,7 @@ assessment).
   a secrets manager, files mounted at runtime, or BuildKit secret mounts
   (`--mount=type=secret`) instead.
 - Mask and [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md): configure CI to mask known secret patterns in logs, and
-  enable [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging on the secrets manager ([Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) devices, cloud
+  enable [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging on the secrets manager ([Vault](../../../../Security/vault/SKILL.md) [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) devices, cloud
   CloudTrail/Activity Log) so every secret access is traceable.
 - Combine secret-scanning at [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) time (prevent), a secrets manager at
   runtime (contain), and a rotation policy (recover) — each addresses a
@@ -234,7 +234,7 @@ assessment).
   which never persist the value in any image layer, instead of build
   args, for any credential needed only during the build.
 
-- **Symptom:** [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) (or another secrets manager) is deployed, but every
+- **Symptom:** [Vault](../../../../Security/vault/SKILL.md) (or another secrets manager) is deployed, but every
   service shares one broad "read everything" policy/token because
   writing per-service policies felt slow.
   **Fix:** Invest in per-service/per-environment policies up front —
@@ -253,7 +253,7 @@ assessment).
 ## Worked example
 
 A team finds a hardcoded AWS access key in `config/settings.py` via a
-newly-added Gitleaks scan, and migrates the service to [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-issued
+newly-added Gitleaks scan, and migrates the service to [Vault](../../../../Security/vault/SKILL.md)-issued
 dynamic AWS credentials.
 
 Gitleaks finding:
@@ -271,10 +271,10 @@ Response, in order:
    (`aws iam update-access-key --access-key-id <KEY_ID> --status Inactive`),
    then delete it once confirmed unused.
 2. Remove the hardcoded key from `config/settings.py` and replace with a
-   [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-issued dynamic credential:
+   [Vault](../../../../Security/vault/SKILL.md)-issued dynamic credential:
    ```bash
-   [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) secrets enable -path=aws aws
-   [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) write aws/roles/myapp-prod \
+   [vault](../../../../Security/vault/SKILL.md) secrets enable -path=aws aws
+   [vault](../../../../Security/vault/SKILL.md) write aws/roles/myapp-prod \
      credential_type=iam_user \
      policy_document=@myapp-prod-policy.json
    ```

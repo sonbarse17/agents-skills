@@ -496,7 +496,7 @@ resource "azurerm_private_endpoint" "sql" {
 | Geo-replication lag is high | Large transaction volumes or network latency | Monitor with `sys.dm_geo_replication_link_status`; consider Hyperscale |
 | Point-in-time restore fails | Requested time is outside retention window | Check retention policy; use long-term backups for older data |
 | Elastic pool running out of eDTUs | Too many active databases in pool | Increase pool [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) or move heavy databases to dedicated tier |
-| TDE key rotation failure | Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) access policy missing | Grant SQL server managed identity GET, WRAP, UNWRAP permissions |
+| TDE key rotation failure | Key [Vault](../../../../Security/vault/SKILL.md) access policy missing | Grant SQL server managed identity GET, WRAP, UNWRAP permissions |
 | Connection timeout from app | Network path blocked or DNS issue | Use `az network watcher test-connectivity`; verify private DNS resolution |
 
 ## Related Skills

@@ -61,7 +61,7 @@ BlobServiceClient blobClient = new BlobServiceClientBuilder()
     .buildClient();
 
 KeyClient keyClient = new KeyClientBuilder()
-    .vaultUrl("https://<[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-name>.[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net")
+    .vaultUrl("https://<[vault](../../../../../Security/vault/SKILL.md)-name>.[vault](../../../../../Security/vault/SKILL.md).azure.net")
     .credential(credential)
     .buildClient();
 ```

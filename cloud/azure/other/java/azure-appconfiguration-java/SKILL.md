@@ -121,7 +121,7 @@ ConfigurationClient configClient = new ConfigurationClientBuilder()
 | Configuration Setting | Key-value pair with optional label |
 | Label | Dimension for separating settings (e.g., environments) |
 | Feature Flag | Special setting for feature management |
-| Secret Reference | Setting pointing to Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) secret |
+| Secret Reference | Setting pointing to Key [Vault](../../../../../Security/vault/SKILL.md) secret |
 | Snapshot | Point-in-time immutable view of settings |
 
 ## Configuration Setting Operations
@@ -320,7 +320,7 @@ import com.azure.data.appconfiguration.models.SecretReferenceConfigurationSettin
 
 SecretReferenceConfigurationSetting secretRef = new SecretReferenceConfigurationSetting(
     "app/secrets/api-key",
-    "https://myvault.[vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).azure.net/secrets/api-key"
+    "https://myvault.[vault](../../../../../Security/vault/SKILL.md).azure.net/secrets/api-key"
 );
 
 SecretReferenceConfigurationSetting created = (SecretReferenceConfigurationSetting)
@@ -477,7 +477,7 @@ try {
 1. **Use labels** — Separate configurations by environment (Dev, Staging, Production)
 2. **Use snapshots** — Create immutable snapshots for releases
 3. **Feature flags** — Use for gradual rollouts and A/B testing
-4. **Secret references** — Store sensitive values in Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
+4. **Secret references** — Store sensitive values in Key [Vault](../../../../../Security/vault/SKILL.md)
 5. **Conditional requests** — Use ETags for optimistic concurrency
 6. **Read-only protection** — Lock critical production settings
 7. **Use Entra ID** — Preferred over connection strings

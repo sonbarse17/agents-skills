@@ -340,5 +340,5 @@ mdutil -i off ~/.ollama
 ## Related Skills
 
 - [ollama-stack](../[ollama-stack](../ollama-stack/SKILL.md)/) — Software stack with [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Compose and LiteLLM
-- [ssh-configuration](../../servers/[ssh-configuration](../../../Software_Engineering_and_Other/Miscellaneous/ssh-configuration/SKILL.md)/) — Secure remote access
+- [ssh-configuration](../../../Software_Engineering_and_Other/Miscellaneous/os-admin/ssh-configuration/SKILL.md)/) — Secure remote access
 - [vpn-setup](../../../security/network/[vpn-setup](../../../DevOps_and_Cloud/Cloud_Providers/vpn-setup/SKILL.md)/) — Remote access via WireGuard/Tailscale

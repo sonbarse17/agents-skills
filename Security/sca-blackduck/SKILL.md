@@ -139,7 +139,7 @@ Work through each step systematically. Check off completed items.
 ## Security Considerations
 
 - **Sensitive Data Handling**: Black Duck scans require API tokens with read/write access.
-  Store credentials securely in secrets management ([Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS Secrets Manager).
+  Store credentials securely in secrets management ([Vault](../vault/SKILL.md), AWS Secrets Manager).
   Never [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) tokens to version control.
 
 - **Access Control**: Limit Black Duck access to authorized security and development teams.

@@ -147,4 +147,4 @@ WHERE state = 'idle' AND query_start < now() - interval '10 minutes';
 ## Related Skills
 
 - `[postmortem-writing](../../root-cause-analysis/postmortem-writing/SKILL.md)` - After resolving an [incident](../incident/SKILL.md), use postmortem templates to capture root cause and preventive actions
-- `[on-call-handoff-patterns](../../../../Software_Engineering_and_Other/Miscellaneous/on-call-handoff-patterns/SKILL.md)` - Structure shift handoffs so the incoming responder has full context on active incidents
+- `[on-call-handoff-patterns](../../alerting/on-call-handoff-patterns/SKILL.md)` - Structure shift handoffs so the incoming responder has full context on active incidents

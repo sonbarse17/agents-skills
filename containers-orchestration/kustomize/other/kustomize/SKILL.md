@@ -21,7 +21,7 @@ depends_on:
 
 # Kustomize
 
-[Customize](../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) resources declaratively without templating.
+[Customize](../../../../cloud/azure/ai/customize/SKILL.md)/SKILL.md)/SKILL.md) [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) resources declaratively without templating.
 
 ## When to Use This Skill
 

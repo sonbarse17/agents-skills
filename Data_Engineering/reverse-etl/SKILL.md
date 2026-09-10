@@ -564,7 +564,7 @@ class ReverseETLSync:
 
 ## Security Considerations
 
-- **Credentials**: Store destination API keys in [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) or Secrets Manager; rotate keys quarterly.
+- **Credentials**: Store destination API keys in [Vault](../../Security/vault/SKILL.md) or Secrets Manager; rotate keys quarterly.
 - **Data minimization**: Sync only minimum required fields per destination; never sync raw PII unless necessary.
 - **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail**: Log all sync operations including row count, fields synced, and destination.
 - **Compliance**: Ensure reverse ETL complies with data residency requirements; filter by region.

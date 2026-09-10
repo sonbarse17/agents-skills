@@ -39,7 +39,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.AuthenticationEvents
 | Event | Purpose |
 |-------|---------|
 | `OnTokenIssuanceStart` | Add custom claims to tokens during issuance |
-| `OnAttributeCollectionStart` | [Customize](../../Infrastructure/deploy-model/[customize](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) attribute collection UI before display |
+| `OnAttributeCollectionStart` | [Customize](../../../ai/customize/SKILL.md)/SKILL.md)/SKILL.md) attribute collection UI before display |
 | `OnAttributeCollectionSubmit` | Validate/modify attributes after user submission |
 | `OnOtpSend` | Custom OTP delivery (SMS, email, etc.) |
 
@@ -143,9 +143,9 @@ public static class TokenEnrichmentWithExternalData
 public record UserProfile(string EmployeeId, string Department, string[] Roles);
 ```
 
-### 3. Attribute Collection - [Customize](../../Infrastructure/deploy-model/[customize](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) UI (Start Event)
+### 3. Attribute Collection - [Customize](../../../ai/customize/SKILL.md)/SKILL.md)/SKILL.md) UI (Start Event)
 
-[Customize](../../Infrastructure/deploy-model/[customize](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) the attribute collection page before it's displayed.
+[Customize](../../../ai/customize/SKILL.md)/SKILL.md)/SKILL.md) the attribute collection page before it's displayed.
 
 ```csharp
 using Microsoft.Azure.WebJobs;

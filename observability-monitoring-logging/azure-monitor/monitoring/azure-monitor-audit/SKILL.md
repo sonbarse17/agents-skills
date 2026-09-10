@@ -100,10 +100,10 @@ az monitor diagnostic-settings subscription create \
 ## Resource-Level Diagnostic Settings
 
 ```bash
-# Enable diagnostics for Azure Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
+# Enable diagnostics for Azure Key [Vault](../../../../Security/vault/SKILL.md)
 az monitor diagnostic-settings create \
   --name keyvault-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) \
-  --resource /subscriptions/{sub}/resourceGroups/{rg}/providers/Microsoft.KeyVault/vaults/{[vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)} \
+  --resource /subscriptions/{sub}/resourceGroups/{rg}/providers/Microsoft.KeyVault/vaults/{[vault](../../../../Security/vault/SKILL.md)} \
   --workspace "$WORKSPACE_ID" \
   --logs '[
     {"category": "AuditEvent", "enabled": true, "retentionPolicy": {"enabled": true, "days": 365}},
@@ -215,7 +215,7 @@ AzureActivity
           ResourceGroup, Resource, SubscriptionId
 | order by TimeGenerated desc
 
-// Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) access patterns
+// Key [Vault](../../../../Security/vault/SKILL.md) access patterns
 AzureDiagnostics
 | where ResourceType == "VAULTS"
 | where TimeGenerated > ago(24h)
@@ -276,7 +276,7 @@ az monitor scheduled-query create \
   --severity 2 \
   --action-groups /subscriptions/{sub}/resourceGroups/rg-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)/providers/Microsoft.Insights/actionGroups/security-team
 
-# Alert on Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) secret access outside business hours
+# Alert on Key [Vault](../../../../Security/vault/SKILL.md) secret access outside business hours
 az monitor scheduled-query create \
   --resource-group rg-[audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) \
   --name keyvault-offhours-access \
@@ -326,7 +326,7 @@ azure_monitor_checklist:
   diagnostic_settings:
     - [ ] Subscription activity log exported to Log Analytics
     - [ ] Subscription activity log archived to storage account
-    - [ ] Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) events enabled
+    - [ ] Key [Vault](../../../../Security/vault/SKILL.md) [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) events enabled
     - [ ] Azure SQL [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logging enabled
     - [ ] NSG flow logs enabled
     - [ ] App Service [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) logs enabled
@@ -341,7 +341,7 @@ azure_monitor_checklist:
     - [ ] Action groups configured for security and operations teams
     - [ ] Alert on brute force sign-in attempts
     - [ ] Alert on privileged role assignments
-    - [ ] Alert on Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) sensitive operations
+    - [ ] Alert on Key [Vault](../../../../Security/vault/SKILL.md) sensitive operations
     - [ ] Alert on NSG rule changes
     - [ ] Alert on resource deletions in production
 

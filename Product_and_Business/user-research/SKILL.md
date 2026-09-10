@@ -422,7 +422,7 @@ Result: 15% conversion increase, 40% session time increase
   - ../../../Global_References/user-research-method-selection.md — User Research Method Selection
   - references/user-research-synthesis-reporting.md — User Research Synthesis and Reporting
 ## Handoff
-For quantitative validation of insights, hand off to `[product-analytics](../../Software_Engineering_and_Other/Miscellaneous/analytics/SKILL.md)`. For running experiments based on findings, hand off to `[product-ab-testing](../../Software_Engineering_and_Other/Miscellaneous/ab-testing/SKILL.md)`.
+For quantitative validation of insights, hand off to `[product-analytics](../analytics/SKILL.md)`. For running experiments based on findings, hand off to `[product-ab-testing](../ab-testing/SKILL.md)`.
 ## Implementation Patterns
 
 ### Observer Pattern for Event Handling
@@ -531,7 +531,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
-- Secrets never in code — always in secrets manager ([Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS Secrets Manager)
+- Secrets never in code — always in secrets manager ([Vault](../../Security/vault/SKILL.md), AWS Secrets Manager)
 - Rotation policy: Rotate database credentials every 90 days
 - Access [audit](../../AI_and_Agents/Operations/audit/SKILL.md): Log every secrets access, alert on anomalies
 - Encryption at rest and in transit for all secrets

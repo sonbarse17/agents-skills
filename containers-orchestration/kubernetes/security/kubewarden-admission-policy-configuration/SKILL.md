@@ -428,6 +428,6 @@ reviewed update to the `module` field.
   admission-time policy enforcement — a resource that passes a
   Kubewarden policy can still misbehave at runtime, which Falco is
   positioned to catch.
-- [falco-configuration-validation](../[falco-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/falco-configuration-validation/SKILL.md)/SKILL.md) —
+- [falco-configuration-validation](../../../../Security/falco-configuration-validation/SKILL.md)/SKILL.md) —
   the same [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md)-before-enforce validation philosophy applied to Falco
   rules instead of admission policy.

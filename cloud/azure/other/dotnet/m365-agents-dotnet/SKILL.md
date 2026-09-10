@@ -283,7 +283,7 @@ await foreach (var activity in client.AskQuestionAsync("Hello!", null))
 1. Use AgentApplication subclasses to centralize routing and error handling.
 2. Use MemoryStorage only for development; use persisted storage in production.
 3. Enable TokenValidation in production and require authorization on /api/messages.
-4. Keep auth secrets in configuration providers (Key [Vault](../../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), managed identity, env vars).
+4. Keep auth secrets in configuration providers (Key [Vault](../../../../../Security/vault/SKILL.md), managed identity, env vars).
 5. Reuse HttpClient from IHttpClientFactory and cache MSAL tokens.
 6. Prefer async handlers and pass CancellationToken to SDK calls.
 

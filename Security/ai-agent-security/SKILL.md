@@ -451,7 +451,7 @@ async def check_tool_permission(agent_role: str, tool_name: str, context: dict) 
 ### Scoped Credentials with Short TTLs
 
 ```yaml
-# [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-agent-policy.hcl — [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) policy for AI agent credentials
+# [vault](../vault/SKILL.md)-agent-policy.hcl — [Vault](../vault/SKILL.md) policy for AI agent credentials
 path "secret/data/agent/{{identity.entity.aliases.auth_approle.metadata.tenant_id}}/*" {
   capabilities = ["read"]
 }
@@ -470,7 +470,7 @@ path "auth/token/create" {
 
 ```bash
 # Issue a short-lived agent credential
-[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) token create \
+[vault](../vault/SKILL.md) token create \
   -policy=agent-readonly \
   -ttl=15m \
   -explicit-max-ttl=1h \
@@ -1156,8 +1156,8 @@ INCIDENT_DIR="/var/log/agent-incidents/${INCIDENT_ID}"
 redis-cli --rdb "${INCIDENT_DIR}/redis-snapshot.rdb" || true
 
 # 3. Revoke agent credentials
-echo "[+] Revoking agent [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) tokens..."
-[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) token revoke -mode=orphan -prefix "agent-" || true
+echo "[+] Revoking agent [Vault](../vault/SKILL.md) tokens..."
+[vault](../vault/SKILL.md) token revoke -mode=orphan -prefix "agent-" || true
 
 # 4. Capture [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs for forensics
 if command -v [kubectl](../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) &> /dev/null; then

@@ -544,7 +544,7 @@ alert_rules:
   - ../../../Global_References/storage-infrastructure-fundamentals.md — Storage Infrastructure Fundamentals
 ## Handoff
 - `devops-[backup-dr](../../../../containers-orchestration/common/other/backup-dr/SKILL.md)` for backup strategies tied to storage infrastructure.
-- `devops-[datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md)` for physical cabling and power for storage arrays.
+- `devops-[datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/datacenter/SKILL.md)` for physical cabling and power for storage arrays.
 - `devops-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)` for CSI driver deployment and PVC lifecycle.
 - `devops-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)` for Prometheus-based storage [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
 

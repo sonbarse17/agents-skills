@@ -578,7 +578,7 @@ monitored. Continuous improvement from retros.
 
 ## References
   - ../../../Global_References/branch-strategy.md — Branch Strategy Reference
-  - ../../../Global_References/[code-review](../../Software_Engineering_and_Other/Miscellaneous/code-review/SKILL.md)-protocol.md — Code Review Protocol Reference
+  - ../../../Global_References/[code-review](../../ci-cd/common/other/code-review/SKILL.md)-protocol.md — Code Review Protocol Reference
   - ../../../Global_References/communication-protocol.md — Communication Protocol Reference
   - ../../../Global_References/team-rules_conflict-resolution.md — Conflict Resolution
   - ../../../Global_References/team-rules-advanced.md — Team Rules Advanced Topics

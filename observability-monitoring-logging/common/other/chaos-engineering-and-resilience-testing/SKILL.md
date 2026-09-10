@@ -42,7 +42,7 @@ experiment itself never becomes the [incident](../../incident-detection/incident
 This skill covers defining a testable steady-state hypothesis, choosing
 and scoping fault-injection tools, running a structured "game day"
 exercise, and graduating experiments from staging to carefully controlled
-production runs — deliberately, with the same [change-management](../../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md) rigor as
+production runs — deliberately, with the same [change-management](../change-management/SKILL.md) rigor as
 a production deployment.
 
 ## When to use
@@ -165,7 +165,7 @@ a production deployment.
    radius, explicit stakeholder sign-off, off-peak scheduling, and an
    automated abort trigger wired to real production SLIs (not solely
    human judgment in the moment). Treat a production chaos experiment
-   with the same [change-management](../../../../Software_Engineering_and_Other/Miscellaneous/change-management/SKILL.md) rigor as a deployment — announced,
+   with the same [change-management](../change-management/SKILL.md) rigor as a deployment — announced,
    scheduled, with a rollback path ready; the traffic-shifting/rollback
    mechanics in
    [blue-green-canary-deployments](../../../devops/skills/[blue-green-canary-deployments](../../../DevOps_and_Cloud/CI_CD/blue-green-canary-deployments/SKILL.md)/SKILL.md)

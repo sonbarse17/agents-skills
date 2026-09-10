@@ -260,7 +260,7 @@ and focuses specifically on what's different about Linear's model.
   opinionated default; a team with complex cross-functional approval
   workflows, heavy custom fields, or ITSM-adjacent needs (see
   [jira-ticket-best-practices-and-workflow](../../../enterprise-collaboration/skills/[jira-ticket-best-practices-and-workflow](../jira-ticket-best-practices-and-workflow/SKILL.md)/SKILL.md)
-  and, for full ITSM, [servicenow-itsm-integration](../[servicenow-itsm-integration](../../Software_Engineering_and_Other/Miscellaneous/servicenow-itsm-integration/SKILL.md)/SKILL.md))
+  and, for full ITSM, [servicenow-itsm-integration](../../observability-monitoring-logging/common/incident-detection/servicenow-itsm-integration/SKILL.md)/SKILL.md))
   is usually still better served by Jira's or ServiceNow's
   configurability, not Linear's speed.
 - Use a dedicated service-account-style user for team-wide API
@@ -374,7 +374,7 @@ to `Done` when it merges — no custom webhook sync required.
   issues; read this for the parts of good issue hygiene this skill
   doesn't repeat, and for the Jira-specific workflow/API mechanics to
   compare against when deciding between the two tools.
-- [servicenow-itsm-integration](../[servicenow-itsm-integration](../../Software_Engineering_and_Other/Miscellaneous/servicenow-itsm-integration/SKILL.md)/SKILL.md) —
+- [servicenow-itsm-integration](../../observability-monitoring-logging/common/incident-detection/servicenow-itsm-integration/SKILL.md)/SKILL.md) —
   the ITSM-grade, compliance-auditable alternative for organizations
   whose needs (CAB approval, CMDB-linked routing) exceed what either
   Linear's or Jira's lighter-weight issue-tracking model is designed

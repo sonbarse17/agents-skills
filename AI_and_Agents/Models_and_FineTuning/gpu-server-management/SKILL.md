@@ -98,7 +98,7 @@ utilization.memory,memory.used,memory.free,power.draw,clocks.current.graphics \
 --format=csv --loop=1
 
 # DCGM — production [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) daemon (for clusters)
-sudo apt install -y [datacenter](../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md)-gpu-manager
+sudo apt install -y [datacenter](../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/datacenter/SKILL.md)-gpu-manager
 sudo systemctl start dcgm
 dcgmi discovery -l                # list GPUs
 dcgmi diag -r 1                  # quick health check
