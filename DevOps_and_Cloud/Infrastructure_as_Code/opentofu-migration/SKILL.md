@@ -52,8 +52,8 @@ rm install-opentofu.sh
 # Linux (RPM)
 ./install-opentofu.sh --install-method rpm
 
-# [Docker](../../Containers_and_Orchestration/docker/SKILL.md)
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) run --rm -v $(pwd):/workspace -w /workspace \
+# [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run --rm -v $(pwd):/workspace -w /workspace \
   ghcr.io/opentofu/opentofu:latest init
 
 # Verify installation
@@ -135,8 +135,8 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 5.0"
     }
-    [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) = {
-      source  = "hashicorp/[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)"
+    [kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) = {
+      source  = "hashicorp/[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)"
       version = "~> 2.25"
     }
     # OpenTofu-specific providers

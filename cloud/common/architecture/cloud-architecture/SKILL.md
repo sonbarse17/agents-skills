@@ -65,7 +65,7 @@ still true.
 Stateless compute can be killed, replaced, and scaled horizontally without a [runbook](../../../../DevOps_and_Cloud/Observability_and_SecOps/runbook/SKILL.md). State that
 must survive a restart belongs in a database, object store, or managed cache — not on local disk,
 not in process memory. This single rule is what makes [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md), rolling deploys, and zone
-failover boring instead of terrifying. See `[stateful-workloads](../../../../DevOps_and_Cloud/Containers_and_Orchestration/stateful-workloads/SKILL.md)` for the cases where state on the
+failover boring instead of terrifying. See `[stateful-workloads](../../../../containers-orchestration/kubernetes/workloads/stateful-workloads/SKILL.md)` for the cases where state on the
 compute layer is genuinely unavoidable, and `[caching-strategies](../../../../Software_Engineering_and_Other/Miscellaneous/caching-strategies/SKILL.md)` for keeping a fast local cache
 without making it a source of truth.
 
@@ -85,7 +85,7 @@ construction.
 
 ## 5. Name the lock-in and decide if it's worth it
 
-A managed queue, a proprietary database API, a provider-specific [serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) trigger — each buys
+A managed queue, a proprietary database API, a provider-specific [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) trigger — each buys
 convenience by binding you to one vendor's implementation. That is frequently a good trade: the
 switching cost you're avoiding by not building portability you'll never use is real. It is a bad
 trade only when you can't articulate why you took it. Do not build abstraction layers "just in

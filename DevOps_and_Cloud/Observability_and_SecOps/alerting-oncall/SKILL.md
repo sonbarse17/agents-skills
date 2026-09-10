@@ -429,20 +429,20 @@ Error rate has exceeded the threshold of 5% for the service.
 Users may experience errors when accessing the application.
 
 ## Investigation Steps
-1. Check service logs: `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) logs -l app=myapp -n production`
-2. Review recent deployments: `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) rollout history deployment/myapp`
-3. Check database connectivity: `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) exec -it myapp -- nc -zv postgres 5432`
+1. Check service logs: `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) logs -l app=myapp -n production`
+2. Review recent deployments: `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) rollout history deployment/myapp`
+3. Check database connectivity: `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) exec -it myapp -- nc -zv postgres 5432`
 4. Review error traces in APM dashboard
 
 ## Remediation
 ### If caused by recent deployment:
 ```bash
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) rollout undo deployment/myapp -n production
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) rollout undo deployment/myapp -n production
 ```
 
 ### If database related:
 ```bash
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) delete pod -l app=postgres -n production
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) delete pod -l app=postgres -n production
 ```
 
 ## Escalation

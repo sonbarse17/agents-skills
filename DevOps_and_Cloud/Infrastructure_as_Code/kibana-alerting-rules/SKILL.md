@@ -222,7 +222,7 @@ resource "elasticstack_kibana_alerting_rule" "cpu_alert" {
 
 ## Triggering Kibana Workflows from Rules
 
-> **Preview feature** — available from Elastic Stack 9.3 and Elastic Cloud [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md). APIs may change.
+> **Preview feature** — available from Elastic Stack 9.3 and Elastic Cloud [Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md). APIs may change.
 
 Attach a workflow as a rule action using the workflow ID as the connector ID. Set `params: {}` — alert context flows
 automatically through the `event` object inside the workflow.

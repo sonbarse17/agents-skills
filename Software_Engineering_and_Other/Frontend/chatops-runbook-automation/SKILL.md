@@ -101,7 +101,7 @@ afterthought.
   command but whether *that specific person* is authorized for *that
   specific action*, not just "authorized to use the bot at all."
 - A credential/secrets strategy for the automation backend to reach the
-  target systems it acts on (cloud API keys, [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) service account
+  target systems it acts on (cloud API keys, [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) service account
   tokens, database credentials) — store via a secrets manager (see
   [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md)),
   never embedded in the bot's own chat-command handler code.
@@ -208,7 +208,7 @@ afterthought.
    criteria:
      trigger.payload.user_role: { type: "equals", pattern: "platform-oncall" }
    action:
-     ref: [kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).restart_deployment
+     ref: [kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).restart_deployment
      parameters:
        deployment: "checkout-api"
        namespace: "prod"
@@ -285,7 +285,7 @@ afterthought.
 - Keep the chat-side bot handler thin (validate, authorize, forward) and
   push real execution logic into a dedicated automation backend
   (StackStorm/Rundeck) with its own ACL and [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) support — a bot that
-  embeds direct `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)`/cloud-API calls in its own handler code is
+  embeds direct `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md)`/cloud-API calls in its own handler code is
   harder to [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) and harder to secure than delegating to a purpose-
   built execution layer.
 - Log every executed action to a durable destination outside the
@@ -393,7 +393,7 @@ trigger:
 criteria:
   trigger.payload.user_role: { type: "equals", pattern: "platform-oncall" }
 action:
-  ref: [kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).rollback_deployment
+  ref: [kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).rollback_deployment
   parameters: { deployment: "checkout-api", namespace: "prod" }
 ```
 
@@ -437,4 +437,4 @@ authorized for production rollbacks, and durably logged both in the
   scoping should align with.
 - [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md) —
   how the automation backend's credentials for reaching target systems
-  (cloud APIs, [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)) should actually be stored and rotated.
+  (cloud APIs, [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)) should actually be stored and rotated.

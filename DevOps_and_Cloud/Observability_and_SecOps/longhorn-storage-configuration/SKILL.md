@@ -29,7 +29,7 @@ depends_on:
 
 ## Purpose
 
-[Longhorn](../longhorn/SKILL.md) is a [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-native distributed block storage system that
+[Longhorn](../longhorn/SKILL.md) is a [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-native distributed block storage system that
 replicates each volume across multiple nodes at the storage layer
 itself — no external Ceph cluster, no separate storage appliance —
 making it markedly simpler to operate than
@@ -65,8 +65,8 @@ Purpose section.
 
 ## Prerequisites & environment
 
-- [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) ≥ 1.25 and [Longhorn](../longhorn/SKILL.md) ≥ v1.6 (check [Longhorn](../longhorn/SKILL.md)'s own release
-  compatibility matrix — [Longhorn](../longhorn/SKILL.md) moves its supported [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) range
+- [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) ≥ 1.25 and [Longhorn](../longhorn/SKILL.md) ≥ v1.6 (check [Longhorn](../longhorn/SKILL.md)'s own release
+  compatibility matrix — [Longhorn](../longhorn/SKILL.md) moves its supported [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) range
   forward fairly aggressively).
 - `open-iscsi` (or the distro equivalent) installed and the `iscsid`
   service running on every node that will host [Longhorn](../longhorn/SKILL.md) volumes —
@@ -76,7 +76,7 @@ Purpose section.
   same failure-domain reasoning as etcd/Ceph: 3 replicas need at least
   3 independent nodes to actually protect against a single node
   failure).
-- The [Longhorn](../longhorn/SKILL.md) Helm chart or the official manifest, plus `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md)`/Helm
+- The [Longhorn](../longhorn/SKILL.md) Helm chart or the official manifest, plus `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md)`/Helm
   access with permission to create the `[longhorn](../longhorn/SKILL.md)-system` namespace and
   its privileged DaemonSets ([Longhorn](../longhorn/SKILL.md)'s engine/replica processes need
   host-level block device and iSCSI access).
@@ -90,8 +90,8 @@ Purpose section.
 
 1. **Verify prerequisites cluster-wide before installing**:
    ```bash
-   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply -f https://raw.githubusercontent.com/[longhorn](../longhorn/SKILL.md)/[longhorn](../longhorn/SKILL.md)/v1.6.2/deploy/prerequisite/[longhorn](../longhorn/SKILL.md)-iscsi-installation.yaml
-   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n [longhorn](../longhorn/SKILL.md)-system get pods -l app=[longhorn](../longhorn/SKILL.md)-iscsi-installation
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f https://raw.githubusercontent.com/[longhorn](../longhorn/SKILL.md)/[longhorn](../longhorn/SKILL.md)/v1.6.2/deploy/prerequisite/[longhorn](../longhorn/SKILL.md)-iscsi-installation.yaml
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) -n [longhorn](../longhorn/SKILL.md)-system get pods -l app=[longhorn](../longhorn/SKILL.md)-iscsi-installation
    ```
    Confirm every node's iSCSI installation pod completes successfully
    before proceeding — installing [Longhorn](../longhorn/SKILL.md) itself on top of a node
@@ -102,7 +102,7 @@ Purpose section.
    ```bash
    helm repo add [longhorn](../longhorn/SKILL.md) https://charts.[longhorn](../longhorn/SKILL.md).io
    helm install [longhorn](../longhorn/SKILL.md) [longhorn](../longhorn/SKILL.md)/[longhorn](../longhorn/SKILL.md) --namespace [longhorn](../longhorn/SKILL.md)-system --create-namespace --version 1.6.2
-   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n [longhorn](../longhorn/SKILL.md)-system get pods   # wait for all Running
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) -n [longhorn](../longhorn/SKILL.md)-system get pods   # wait for all Running
    ```
 
 3. **Define a StorageClass with an explicit replica count and data
@@ -165,13 +165,13 @@ Purpose section.
      AWS_SECRET_ACCESS_KEY: "${LONGHORN_BACKUP_SECRET_ACCESS_KEY}"
    ```
    ```bash
-   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n [longhorn](../longhorn/SKILL.md)-system patch settings.[longhorn](../longhorn/SKILL.md).io backup-target \
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) -n [longhorn](../longhorn/SKILL.md)-system patch settings.[longhorn](../longhorn/SKILL.md).io backup-target \
      --type=merge -p '{"value":"s3://[longhorn](../longhorn/SKILL.md)-backups-<ACCOUNT_ID>@us-east-1/"}'
-   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n [longhorn](../longhorn/SKILL.md)-system patch settings.[longhorn](../longhorn/SKILL.md).io backup-target-credential-secret \
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) -n [longhorn](../longhorn/SKILL.md)-system patch settings.[longhorn](../longhorn/SKILL.md).io backup-target-credential-secret \
      --type=merge -p '{"value":"[longhorn](../longhorn/SKILL.md)-backup-s3-secret"}'
    ```
    Never place the access key/secret directly in a StorageClass or
-   ConfigMap — always reference a [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Secret, and source the
+   ConfigMap — always reference a [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Secret, and source the
    Secret's values from your actual secrets manager rather than
    hardcoding them, per
    [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md).
@@ -201,8 +201,8 @@ Purpose section.
    remaining healthy replicas and letting [Longhorn](../longhorn/SKILL.md)'s manager reschedule
    the workload/rebuild automatically, verifying rather than assuming:
    ```bash
-   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n [longhorn](../longhorn/SKILL.md)-system get volumes.[longhorn](../longhorn/SKILL.md).io <volume-name> -o jsonpath='{.status.robustness}'
-   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n [longhorn](../longhorn/SKILL.md)-system get replicas.[longhorn](../longhorn/SKILL.md).io -l longhornvolume=<volume-name>
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) -n [longhorn](../longhorn/SKILL.md)-system get volumes.[longhorn](../longhorn/SKILL.md).io <volume-name> -o jsonpath='{.status.robustness}'
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) -n [longhorn](../longhorn/SKILL.md)-system get replicas.[longhorn](../longhorn/SKILL.md).io -l longhornvolume=<volume-name>
    ```
    `robustness: degraded` (one or more replicas down but the volume
    still serving I/O from remaining healthy replicas) is recoverable
@@ -221,7 +221,7 @@ Purpose section.
    > restore into a new PVC name rather than overwriting anything that
    > might still hold newer (even if degraded/inaccessible) data.
    ```bash
-   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n [longhorn](../longhorn/SKILL.md)-system get backups.[longhorn](../longhorn/SKILL.md).io -l longhornvolume=<volume-name>
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) -n [longhorn](../longhorn/SKILL.md)-system get backups.[longhorn](../longhorn/SKILL.md).io -l longhornvolume=<volume-name>
    ```
    ```yaml
    apiVersion: v1
@@ -280,7 +280,7 @@ Purpose section.
 - **Symptom:** A volume shows `robustness: degraded` for a long time
   after a node recovers from a brief outage, never returning to
   `healthy`.
-  **Fix:** Check `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n [longhorn](../longhorn/SKILL.md)-system get replicas.[longhorn](../longhorn/SKILL.md).io`
+  **Fix:** Check `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) -n [longhorn](../longhorn/SKILL.md)-system get replicas.[longhorn](../longhorn/SKILL.md).io`
   for a replica stuck in a rebuilding or error state — a prolonged
   rebuild can be blocked by insufficient free disk space on the target
   node for the replacement replica, or a stale replica timeout setting
@@ -325,7 +325,7 @@ Purpose section.
 recovery after simulating a node failure.
 
 ```bash
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply -f https://raw.githubusercontent.com/[longhorn](../longhorn/SKILL.md)/[longhorn](../longhorn/SKILL.md)/v1.6.2/deploy/prerequisite/[longhorn](../longhorn/SKILL.md)-iscsi-installation.yaml
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f https://raw.githubusercontent.com/[longhorn](../longhorn/SKILL.md)/[longhorn](../longhorn/SKILL.md)/v1.6.2/deploy/prerequisite/[longhorn](../longhorn/SKILL.md)-iscsi-installation.yaml
 helm repo add [longhorn](../longhorn/SKILL.md) https://charts.[longhorn](../longhorn/SKILL.md).io
 helm install [longhorn](../longhorn/SKILL.md) [longhorn](../longhorn/SKILL.md)/[longhorn](../longhorn/SKILL.md) --namespace [longhorn](../longhorn/SKILL.md)-system --create-namespace --version 1.6.2
 ```
@@ -343,9 +343,9 @@ parameters:
 ```
 
 ```bash
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n [longhorn](../longhorn/SKILL.md)-system patch settings.[longhorn](../longhorn/SKILL.md).io backup-target \
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) -n [longhorn](../longhorn/SKILL.md)-system patch settings.[longhorn](../longhorn/SKILL.md).io backup-target \
   --type=merge -p '{"value":"s3://[longhorn](../longhorn/SKILL.md)-backups-example@us-east-1/"}'
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n [longhorn](../longhorn/SKILL.md)-system patch settings.[longhorn](../longhorn/SKILL.md).io backup-target-credential-secret \
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) -n [longhorn](../longhorn/SKILL.md)-system patch settings.[longhorn](../longhorn/SKILL.md).io backup-target-credential-secret \
   --type=merge -p '{"value":"[longhorn](../longhorn/SKILL.md)-backup-s3-secret"}'
 ```
 
@@ -361,7 +361,7 @@ nightly backup covers them automatically. To validate recovery, a
 worker node is cordoned and powered off deliberately in a staging
 cluster:
 ```bash
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n [longhorn](../longhorn/SKILL.md)-system get volumes.[longhorn](../longhorn/SKILL.md).io -l longhornvolume=redis-data-0 -o jsonpath='{.status.robustness}'
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) -n [longhorn](../longhorn/SKILL.md)-system get volumes.[longhorn](../longhorn/SKILL.md).io -l longhornvolume=redis-data-0 -o jsonpath='{.status.robustness}'
 # degraded
 ```
 Within [Longhorn](../longhorn/SKILL.md)'s configured replica-rebuild window, a new replica is

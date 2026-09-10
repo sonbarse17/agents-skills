@@ -424,7 +424,7 @@ Maintain immutable records of:
 |-------|-----------|------------|
 | Model registration fails | Check MLflow server connectivity and artifact store permissions | Verify S3/GCS credentials and bucket policy |
 | Promotion blocked by policy | Review OPA deny messages in CI output | Fix metadata gaps or request policy exception |
-| Stale models not auto-retiring | Lifecycle cron job not running | Check CronJob status in [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) |
+| Stale models not auto-retiring | Lifecycle cron job not running | Check CronJob status in [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) |
 | Duplicate model versions | Race condition in CI pipeline | Add locking via registry API or database |
 | Missing eval evidence | Eval pipeline skipped or failed | Re-run eval suite and re-register |
 

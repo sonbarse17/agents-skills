@@ -282,6 +282,6 @@ gcloud network-management connectivity-tests create test-web-to-db \
 ## Related Skills
 
 - **[gcp-compute](../../compute/gcp-compute/SKILL.md)** - Compute Engine instances that use VPC networks and firewall rules
-- **[gcp-gke](../../containers/gcp-gke/SKILL.md)** - GKE clusters deployed in VPC subnets with secondary ranges
+- **[gcp-gke](../../../../containers-orchestration/gke/cluster-management/gcp-gke/SKILL.md)** - GKE clusters deployed in VPC subnets with secondary ranges
 - **[gcp-cloud-sql](../../database/gcp-cloud-sql/SKILL.md)** - Private IP database connectivity through VPC peering
 - **[terraform-gcp](../../iac/terraform-gcp/SKILL.md)** - Provision networking resources with Infrastructure as Code

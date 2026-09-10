@@ -32,11 +32,11 @@ depends_on:
 ## Purpose
 
 Gremlin is a commercial, cross-platform fault-injection tool that runs
-attacks via a lightweight agent (a [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) DaemonSet/sidecar, a host
+attacks via a lightweight agent (a [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) DaemonSet/sidecar, a host
 daemon on EC2/on-prem, or an ECS task) and a central control plane that
 handles targeting, scheduling, and halting attacks — distinct from
-[Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-native tools like Chaos Mesh/LitmusChaos in that it works
-consistently across [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md), VMs, and bare metal without needing a
+[Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-native tools like Chaos Mesh/LitmusChaos in that it works
+consistently across [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), VMs, and bare metal without needing a
 different tool per platform. This skill covers the Gremlin-specific
 mechanics: installing the agent, defining attacks (resource, state,
 network) via the CLI/API/Terraform provider, scoping targets and halt
@@ -49,7 +49,7 @@ the execution tool.
 
 ## When to use
 
-- Standing up Gremlin in a [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) cluster, EC2 fleet, or ECS
+- Standing up Gremlin in a [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster, EC2 fleet, or ECS
   environment for the first time (agent installation, team/target
   configuration).
 - Defining a specific Gremlin attack — CPU/memory/disk/IO resource
@@ -62,7 +62,7 @@ the execution tool.
 - Composing a multi-step Gremlin **Scenario** that chains several attacks
   in sequence to simulate a more complex failure (e.g., an AZ
   degradation followed by a dependency timeout).
-- Migrating an existing [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-native chaos setup (Chaos Mesh/
+- Migrating an existing [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-native chaos setup (Chaos Mesh/
   Litmus) to Gremlin for cross-platform consistency, or vice versa.
 
 ## Prerequisites & environment
@@ -71,7 +71,7 @@ the execution tool.
   scoped to the specific team that owns the target infrastructure —
   never a single account-wide credential shared across unrelated teams.
 - The Gremlin agent installed on every target:
-  - **[Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md):** the `gremlin` Helm chart, deployed as a DaemonSet so
+  - **[Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md):** the `gremlin` Helm chart, deployed as a DaemonSet so
     every node runs an agent capable of attacking pods/containers
     scheduled there.
   - **EC2/on-prem (Linux):** the `gremlind` daemon installed via package
@@ -92,7 +92,7 @@ the execution tool.
 1. **Install the agent scoped to the intended blast-radius environment**
    — start in a non-production namespace/cluster/ASG, not org-wide:
    ```bash
-   # [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md): install via Helm, scoped to a specific namespace's
+   # [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md): install via Helm, scoped to a specific namespace's
    # nodes by targeting later at the attack level, not by limiting
    # agent install (the agent itself is typically cluster-wide, but
    # attacks are scoped per-attack in step 3)
@@ -131,7 +131,7 @@ the execution tool.
    ```
    This is the Gremlin equivalent of Chaos Mesh's `PodChaos` `pod-kill`
    action — validates the same restart/redundancy assumption, on
-   whatever platform the agent runs on ([Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md), EC2, or bare metal).
+   whatever platform the agent runs on ([Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), EC2, or bare metal).
 
 4. **Define a network attack** to test timeout/circuit-breaker handling
    for a specific downstream dependency, rather than a blanket network
@@ -270,7 +270,7 @@ the execution tool.
 
 ## Worked example
 
-**Scenario:** The `payments-api` team, running on [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) with the
+**Scenario:** The `payments-api` team, running on [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) with the
 Gremlin agent already installed as a DaemonSet, wants to validate the
 same replica-loss resilience hypothesis used in the generic chaos skill's
 worked example, but using Gremlin instead of Chaos Mesh, and additionally

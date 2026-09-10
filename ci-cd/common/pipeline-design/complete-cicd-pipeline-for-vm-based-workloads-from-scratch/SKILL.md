@@ -37,8 +37,8 @@ replacement** (bake a golden AMI with Packer, swap an Auto Scaling
 Group/instance group to it, blue-green) versus **mutable config push**
 (long-lived VMs stay running, and a config-management tool like [Ansible](../../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md)
 pushes the new application version/config onto them in place). Neither
-looks like the [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) variant of this skill (no container image, no
-[GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) handoff) or the [serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) variant (no zip/layer, no alias-based
+looks like the [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) variant of this skill (no container image, no
+[GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md) handoff) or the [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) variant (no zip/layer, no alias-based
 traffic shift) — the build artifact here is either a whole bootable
 machine image or nothing at all (just new config/binaries pushed onto
 existing hosts), and "deploy" means either swapping which image an
@@ -55,7 +55,7 @@ instance group boots or running a playbook against a live fleet.
 - An existing pipeline manually bakes AMIs or manually runs [Ansible](../../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md) by
   hand, and the user wants both paths automated with security gates.
 - The user wants to understand exactly how VM-based build/deploy mechanics
-  differ from a container/[Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) or [serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) pipeline — the
+  differ from a container/[Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) or [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) pipeline — the
   comparison point most useful when a team is deciding which compute model
   a new workload should even target.
 
@@ -80,9 +80,9 @@ instance group boots or running a playbook against a live fleet.
   WinRM) access from the CI runner (or a bastion/runner fleet) to the
   target VMs.
 - SAST/SCA tooling chosen per
-  [sast-integration](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[sast-integration](../../../../Security/sast-integration/SKILL.md)/SKILL.md)
+  [sast-integration](../../../../Security/devsecops/SKILL.md)/skills/[sast-integration](../../../../Security/sast-integration/SKILL.md)/SKILL.md)
   and
-  [software-composition-analysis-sca](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md).
+  [software-composition-analysis-sca](../../../../Security/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md).
 
 ## Step-by-step guidance
 
@@ -182,8 +182,8 @@ aws [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling
 An **instance refresh** replaces instances gradually behind the existing
 load balancer, honoring health checks — this is the VM-fleet analog of
 [blue-green-canary-deployments](../../../devops/skills/[blue-green-canary-deployments](../blue-green-canary-deployments/SKILL.md)/SKILL.md)'s
-[Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Service-selector flip, but operating on EC2 instances inside one
-Auto Scaling Group rather than pods behind a [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Service. For a
+[Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Service-selector flip, but operating on EC2 instances inside one
+Auto Scaling Group rather than pods behind a [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Service. For a
 harder cutover with an explicit separate "green" ASG and load-balancer
 target-group swap (full blue-green, not a rolling instance refresh), the
 CodeDeploy EC2 blue/green mechanics in
@@ -196,7 +196,7 @@ template's image instead of an existing one.
 > `MinHealthyPercentage` high enough that [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) never drops
 > dangerously, and confirm the new AMI passes health checks on a small
 > batch before letting the refresh proceed to the full fleet — an instance
-> refresh has no automatic rollback the way a [GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) `Application` revert
+> refresh has no automatic rollback the way a [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md) `Application` revert
 > does; rolling back means starting a *new* instance refresh pointed at
 > the previous launch template version.
 
@@ -230,7 +230,7 @@ template's image instead of an existing one.
 `serial: "25%"` rolls the change out to a quarter of the fleet at a time —
 the config-push analog of a canary percentage, but implemented as batched
 SSH-driven task execution across existing long-lived hosts rather than
-either a [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) traffic split or an ASG instance replacement. See
+either a [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) traffic split or an ASG instance replacement. See
 [ansible-playbook-and-role-design](../../../iac-and-automation-tooling/skills/[ansible-playbook-and-role-design](../../Infrastructure_as_Code/[ansible](../../Infrastructure_as_Code/ansible/SKILL.md)-playbook-and-role-design/SKILL.md)/SKILL.md)
 for idempotent task design and dry-run (`--check`) practice before this
 runs against production.
@@ -268,7 +268,7 @@ batch converged, not just the last one [Ansible](../../../../DevOps_and_Cloud/In
 - Never bake secrets into the AMI itself (Packer provisioner scripts that
   echo/write credentials persist in the resulting image's filesystem) —
   fetch runtime secrets from a secrets manager at boot time instead, per
-  [secrets-management](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md).
+  [secrets-management](../../../../Security/devsecops/SKILL.md)/skills/[secrets-management](../../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md).
 
 ## Common pitfalls
 
@@ -308,7 +308,7 @@ batch converged, not just the last one [Ansible](../../../../DevOps_and_Cloud/In
   (Phase 4a) "since the image build takes longer anyway," and a failing
   gate is only discovered after a 15-minute AMI build already completed.
   **Fix:** Order gates before the expensive image-bake step, not after —
-  identical sequencing lesson to the [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) and [serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) variants of
+  identical sequencing lesson to the [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) and [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) variants of
   this skill, just more costly here because rebuilding a machine image is
   slower than rebuilding a container layer or a zip.
 
@@ -374,8 +374,8 @@ confirming every instance in the ASG is now running the new AMI — with
 
 - [aws-codepipeline-and-codedeploy](../[aws-codepipeline-and-codedeploy](../../Cloud_Providers/aws-codepipeline-and-codedeploy/SKILL.md)/SKILL.md) — CodeDeploy's blue/green EC2 deployment-group mechanics, an alternative to the instance-refresh approach shown in Phase 5a.
 - [ansible-playbook-and-role-design](../../../iac-and-automation-tooling/skills/[ansible-playbook-and-role-design](../../Infrastructure_as_Code/[ansible](../../Infrastructure_as_Code/ansible/SKILL.md)-playbook-and-role-design/SKILL.md)/SKILL.md) — playbook/inventory/idempotency mechanics used in Phase 5b.
-- [sast-integration](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[sast-integration](../../../../Security/sast-integration/SKILL.md)/SKILL.md) and [software-composition-analysis-sca](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md) — Phase 3's scan mechanics.
+- [sast-integration](../../../../Security/devsecops/SKILL.md)/skills/[sast-integration](../../../../Security/sast-integration/SKILL.md)/SKILL.md) and [software-composition-analysis-sca](../../../../Security/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md) — Phase 3's scan mechanics.
 - [container-build-and-release](../../../devops/skills/[container-build-and-release](../../Containers_and_Orchestration/container-build-and-release/SKILL.md)/SKILL.md) — the container-image analog of Phase 4a's immutable-artifact discipline (tagging, rebuild cadence, no baked secrets).
 - [blue-green-canary-deployments](../../../devops/skills/[blue-green-canary-deployments](../blue-green-canary-deployments/SKILL.md)/SKILL.md) — the vendor-neutral [progressive-delivery](../../deployment/progressive-delivery/SKILL.md) concepts Phase 5a's instance refresh implements for a VM fleet.
 - [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../../Cloud_Providers/cloud-iam-hardening/SKILL.md)/SKILL.md) — least-privilege scoping for the CI role that bakes images and triggers instance refreshes.
-- [complete-[cicd-pipeline](../cicd-pipeline/SKILL.md)-deployment-for-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-from-scratch](../[complete-[cicd-pipeline](../cicd-pipeline/SKILL.md)-deployment-for-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-from-scratch](../../Cloud_Providers/complete-[cicd-pipeline](../cicd-pipeline/SKILL.md)-deployment-for-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-from-scratch/SKILL.md)/SKILL.md) and [complete-[cicd-pipeline](../cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)-from-scratch](../[complete-[cicd-pipeline](../cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)-from-scratch](../../Cloud_Providers/complete-[cicd-pipeline](../cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)-from-scratch/SKILL.md)/SKILL.md) — the same source-to-deploy shape for a fundamentally different build artifact and deploy mechanism.
+- [complete-[cicd-pipeline](../cicd-pipeline/SKILL.md)-deployment-for-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-from-scratch](../[complete-[cicd-pipeline](../cicd-pipeline/SKILL.md)-deployment-for-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-from-scratch](../../Cloud_Providers/complete-[cicd-pipeline](../cicd-pipeline/SKILL.md)-deployment-for-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-from-scratch/SKILL.md)/SKILL.md) and [complete-[cicd-pipeline](../cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-from-scratch](../[complete-[cicd-pipeline](../cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-from-scratch](../../Cloud_Providers/complete-[cicd-pipeline](../cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-from-scratch/SKILL.md)/SKILL.md) — the same source-to-deploy shape for a fundamentally different build artifact and deploy mechanism.

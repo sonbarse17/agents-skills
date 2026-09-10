@@ -76,7 +76,7 @@ bottleneck.
   every environment.
 - Platform support for approval gates: [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Environments (protection
   rules with required reviewers), GitLab `environment:` + manual jobs, or
-  the [GitOps](../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) operator's manual-sync setting (see
+  the [GitOps](../../../containers-orchestration/common/gitops/gitops/SKILL.md) operator's manual-sync setting (see
   [gitops-workflow](../[gitops-workflow](../../../DevOps_and_Cloud/Containers_and_Orchestration/[gitops](../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md)).
 
 ## Step-by-step guidance
@@ -97,7 +97,7 @@ bottleneck.
 2. **Promote the artifact, not the source.** The same container
    image/package built once should flow through every environment
    unmodified; only configuration changes per environment. Concretely:
-   version bump PRs (in a [GitOps](../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) config repo) reference the same image
+   version bump PRs (in a [GitOps](../../../containers-orchestration/common/gitops/gitops/SKILL.md) config repo) reference the same image
    digest/tag across `overlays/staging` and `overlays/prod` — only the
    overlay's environment-specific values differ.
    ```yaml
@@ -163,7 +163,7 @@ bottleneck.
 6. **Make promotion status visible.** A dashboard or simple report
    showing, per service, "what version is in each environment right now"
    avoids the common failure mode of nobody being sure whether staging
-   and production have drifted apart. [GitOps](../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) repos make this
+   and production have drifted apart. [GitOps](../../../containers-orchestration/common/gitops/gitops/SKILL.md) repos make this
    straightforward to derive (diff `overlays/staging` vs.
    `overlays/prod` image tags directly).
 
@@ -210,11 +210,11 @@ bottleneck.
 
 - **Symptom:** Production and staging are running different versions and
   nobody can say for certain which, without checking manually.
-  **Fix:** Adopt a [GitOps](../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) config repo (see
+  **Fix:** Adopt a [GitOps](../../../containers-orchestration/common/gitops/gitops/SKILL.md) config repo (see
   [gitops-workflow](../[gitops-workflow](../../../DevOps_and_Cloud/Containers_and_Orchestration/[gitops](../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md)) where each environment's
   deployed version is declared in a file, and build a simple report/diff
   across environment overlays rather than relying on tribal knowledge or
-  `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)` spelunking.
+  `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md)` spelunking.
 
 - **Symptom:** Releases queue up because production approval is a
   scarce, slow human bottleneck (one person, infrequently available).
@@ -250,7 +250,7 @@ train not required (this service promotes independently).
    [ci-cd-pipeline-design](../[ci-cd-pipeline-design](../../../DevOps_and_Cloud/CI_CD/ci-cd-pipeline-design/SKILL.md)/SKILL.md)): build,
    test, containerize, push `ghcr.io/example/payments-api:1.4.2`.
 2. A pipeline job automatically bumps the `dev` overlay's tag to `1.4.2`
-   and pushes; the [GitOps](../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) operator deploys it within minutes — no
+   and pushes; the [GitOps](../../../containers-orchestration/common/gitops/gitops/SKILL.md) operator deploys it within minutes — no
    approval required.
 3. After dev smoke tests pass (automated), the same job opens a PR
    bumping the `staging` overlay to `1.4.2`. This PR is auto-merged since
@@ -263,8 +263,8 @@ train not required (this service promotes independently).
    `production` [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Environment requires one reviewer from the
    on-call rotation; they review the change, confirm the staging
    evidence, and approve.
-6. Merging the PR triggers the [GitOps](../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) operator (manual-sync mode for
-   prod) to require an explicit `[argocd](../../../ci-cd/argocd/other/argocd/SKILL.md) app sync payments-api-prod`,
+6. Merging the PR triggers the [GitOps](../../../containers-orchestration/common/gitops/gitops/SKILL.md) operator (manual-sync mode for
+   prod) to require an explicit `[argocd](../../../containers-orchestration/argocd/other/argocd/SKILL.md) app sync payments-api-prod`,
    executed by the same approver as a deliberate final step — completing
    promotion to production for the exact artifact that was built once in
    step 1 and never rebuilt.

@@ -40,7 +40,7 @@ User request includes: `vapor`, `vapor backend`, `vapor swift`, `fluent`, `vapor
 - Swift version (5.9+)
 - Vapor version (4.x)
 - Database driver (Fluent — [PostgreSQL](../postgresql/SKILL.md), [MySQL](../mysql/SKILL.md), SQLite, [MongoDB](../mongodb/SKILL.md))
-- Hosting (Vapor Cloud, [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md), bare metal)
+- Hosting (Vapor Cloud, [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md), bare metal)
 - Features (REST, WebSocket, APNs, Leaf templates)
 
 ### Output Artifact
@@ -601,7 +601,7 @@ First-party mobile/web app?
 | **APNS** | Apple Push Notification service |
 | **Queues** | Background job processing (Redis, DB) |
 | **Redis** | Caching and session storage |
-| **[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)** | Containerized deployment |
+| **[Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)** | Containerized deployment |
 | **SwiftLint** | Code style enforcement |
 | **swift-format** | Code formatting |
 

@@ -75,7 +75,7 @@ No preamble. No postamble. No explanations.
 - [ ] RAID or erasure coding scheme defined.
 - [ ] Redundancy model with failure domain mapping.
 - [ ] Performance target with benchmark results from `fio`.
-- [ ] CSI driver configured for [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) with StorageClass.
+- [ ] CSI driver configured for [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) with StorageClass.
 - [ ] [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md): [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), performance, wear, errors.
 
 ### Max Response Length
@@ -170,7 +170,7 @@ ZFS:    Checksumming, snapshots, compression, deduplication
         zfs set recordsize=1M tank/data (for large sequential)
 
 Btrfs:  CoW, subvolumes, send/receive
-        Good for [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)/Moby storage, but not production DBs
+        Good for [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)/Moby storage, but not production DBs
 ```
 
 ### Step 4: Ceph Cluster
@@ -201,7 +201,7 @@ Btrfs:  CoW, subvolumes, send/receive
 # ceph osd erasure-code-profile set myprofile k=4 m=2
 ```
 
-### Step 5: CSI Driver for [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
+### Step 5: CSI Driver for [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
 ```yaml
 # Ceph CSI RBD StorageClass
 apiVersion: storage.k8s.io/v1
@@ -211,7 +211,7 @@ metadata:
 provisioner: rbd.csi.ceph.com
 parameters:
   clusterID: "12345678-1234-1234-1234-123456789abc"
-  pool: "[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)"
+  pool: "[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)"
   imageFeatures: "layering"
   csi.storage.k8s.io/provisioner-secret-name: csi-rbd-secret
   csi.storage.k8s.io/controller-expand-secret-name: csi-rbd-secret
@@ -227,7 +227,7 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: local-nvme
-provisioner: [kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).io/no-provisioner
+provisioner: [kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).io/no-provisioner
 volumeBindingMode: WaitForFirstConsumer
 ---
 apiVersion: v1
@@ -248,7 +248,7 @@ spec:
     required:
       nodeSelectorTerms:
       - matchExpressions:
-        - key: [kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).io/hostname
+        - key: [kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).io/hostname
           operator: In
           values:
           - worker-3
@@ -385,10 +385,10 @@ ln -s /sys/kernel/config/nvmet/subsystems/nvme-test-target subsystems/nvme-test-
 ### Step 10: Ceph RBD Performance Tuning
 ```bash
 # RBD configuration optimization
-rbd config pool set [kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) rbd_qos_bps_limit 1048576000  # 1 GB/s per image
-rbd config pool set [kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) rbd_qos_iops_limit 100000
-rbd config pool set [kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) rbd_qos_bps_burst 2097152000
-rbd config pool set [kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) rbd_qos_iops_burst 200000
+rbd config pool set [kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) rbd_qos_bps_limit 1048576000  # 1 GB/s per image
+rbd config pool set [kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) rbd_qos_iops_limit 100000
+rbd config pool set [kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) rbd_qos_bps_burst 2097152000
+rbd config pool set [kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) rbd_qos_iops_burst 200000
 
 # RBD cache settings for VM/DB workloads
 rbd config image set <pool>/<image> rbd_cache true
@@ -397,7 +397,7 @@ rbd config image set <pool>/<image> rbd_cache_max_dirty 134217728  # 128 MB
 
 # Pre-allocate RBD images for consistent performance
 rbd create --size 10T --image-format 2 --image-feature layering,striping \
-  --stripe-unit 4096 --stripe-count 16 [kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)/db-image
+  --stripe-unit 4096 --stripe-count 16 [kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)/db-image
 
 # krbd (kernel RBD) tuning
 echo 128 > /sys/block/rbd0/queue/nr_requests
@@ -545,6 +545,6 @@ alert_rules:
 ## Handoff
 - `devops-[backup-dr](../../../../Software_Engineering_and_Other/Frontend/backup-dr/SKILL.md)` for backup strategies tied to storage infrastructure.
 - `devops-[datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/datacenter/SKILL.md)` for physical cabling and power for storage arrays.
-- `devops-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)` for CSI driver deployment and PVC lifecycle.
+- `devops-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)` for CSI driver deployment and PVC lifecycle.
 - `devops-[monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)` for Prometheus-based storage [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
 

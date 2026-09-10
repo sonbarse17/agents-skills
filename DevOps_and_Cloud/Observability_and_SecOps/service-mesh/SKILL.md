@@ -33,7 +33,7 @@ already have, not one you're anticipating.**
 
 ## 1. Justify the mesh against what NetworkPolicy and Ingress already give you
 
-Plain [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) already provides L3/L4 segmentation (NetworkPolicy) and L7 HTTP routing at the edge
+Plain [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) already provides L3/L4 segmentation (NetworkPolicy) and L7 HTTP routing at the edge
 (Ingress). A mesh's value is specifically service-to-service L7: per-request retries, mTLS between
 every pod pair without app changes, and fine-grained traffic splitting for internal calls — if the
 actual need is "block namespace A from reaching namespace B," that's `[kubernetes-networking](../../Containers_and_Orchestration/[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-networking/SKILL.md)`, not a

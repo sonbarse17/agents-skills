@@ -35,7 +35,7 @@ Use this skill when:
 
 - 8 GB+ RAM (16 GB+ recommended for 7B+ models)
 - For GPU acceleration: NVIDIA GPU with 6 GB+ VRAM, or Apple Silicon Mac
-- [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) (for containerized deployment)
+- [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) (for containerized deployment)
 - 20 GB+ disk for model storage
 
 ## Quick Start
@@ -49,7 +49,7 @@ ollama serve
 
 # Pull and run a model
 ollama pull llama3.1:8b
-ollama run llama3.1:8b "Explain [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) pods in one paragraph"
+ollama run llama3.1:8b "Explain [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) pods in one paragraph"
 
 # List available models
 ollama list
@@ -72,7 +72,7 @@ ollama pull llama3.1:8b-instruct-q4_K_M
 | `deepseek-coder-v2:16b` | 9 GB | 12 GB | Code generation |
 | `qwen2.5:14b` | 9 GB | 12 GB | Multilingual, reasoning |
 
-## [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose — Full Stack
+## [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Compose — Full Stack
 
 ```yaml
 # [docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml
@@ -196,7 +196,7 @@ import ollama
 # Chat
 response = ollama.chat(
     model="llama3.1:8b",
-    messages=[{"role": "user", "content": "Explain [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) in 3 sentences"}],
+    messages=[{"role": "user", "content": "Explain [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) in 3 sentences"}],
 )
 print(response["message"]["content"])
 
@@ -248,7 +248,7 @@ PARAMETER repeat_penalty 1.1
 ```bash
 # Build and use custom model
 ollama create devops-assistant -f Modelfile.devops-assistant
-ollama run devops-assistant "Set up a [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions workflow for [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) builds"
+ollama run devops-assistant "Set up a [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions workflow for [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) builds"
 ```
 
 ## GPU Configuration
@@ -362,7 +362,7 @@ server {
 |-------|---------|
 | Model too slow | Use smaller quantization (`q4_K_M`), enable flash attention |
 | Out of memory | Reduce `num_ctx`, use smaller model, set `OLLAMA_MAX_LOADED_MODELS=1` |
-| GPU not detected | Check `nvidia-smi`, reinstall CUDA drivers, verify [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) GPU runtime |
+| GPU not detected | Check `nvidia-smi`, reinstall CUDA drivers, verify [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) GPU runtime |
 | Connection refused | Check `OLLAMA_HOST` setting, verify firewall rules |
 | Model download fails | Check disk space, retry with `ollama pull --insecure` for self-signed registries |
 

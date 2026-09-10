@@ -52,7 +52,7 @@ Slack," a direct link in the alert payload itself.
 
 ## 2. Write concrete steps, not concrete goals
 
-"Investigate the cause of high latency" is a goal. "Run `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) top pods -n api` and check if
+"Investigate the cause of high latency" is a goal. "Run `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) top pods -n api` and check if
 any pod exceeds 80% CPU; if so, run the scale-up command below" is a step. A tired reader
 cannot turn a goal into an action under pressure — that translation is exactly the expertise
 the [runbook](../runbook/SKILL.md) exists to replace.

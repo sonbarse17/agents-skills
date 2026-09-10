@@ -35,12 +35,12 @@ depends_on:
 # Hetzner Cloud & Dedicated
 
 ## Purpose
-Manage Hetzner Cloud and Dedicated infrastructure: servers, networking, volumes, firewalls, load balancers, Storage Boxes, and [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) clusters. Optimize for cost efficiency while maintaining reliability.
+Manage Hetzner Cloud and Dedicated infrastructure: servers, networking, volumes, firewalls, load balancers, Storage Boxes, and [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) clusters. Optimize for cost efficiency while maintaining reliability.
 
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "hetzner", "hcloud", "hetzner cloud", "hetzner dedicated", "hetzner robot", "CX", "CCX", "CAX", "hetzner [kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)", "hcloud terraform", "hcloud packer".
+Exact user phrases: "hetzner", "hcloud", "hetzner cloud", "hetzner dedicated", "hetzner robot", "CX", "CCX", "CAX", "hetzner [kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)", "hcloud terraform", "hcloud packer".
 
 ### Input Context
 - Product: Hetzner Cloud (API-based) or Hetzner Dedicated (Robot).
@@ -189,11 +189,11 @@ resource "hcloud_server" "app" {
   #cloud-config
   package_upgrade: true
   packages:
-    - [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).io
+    - [docker](../../../containers-orchestration/docker/other/docker/SKILL.md).io
     - [docker-compose](../../Containers_and_Orchestration/[docker](../../Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md)-v2
     - prometheus-node-exporter
   runcmd:
-    - systemctl enable --now [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
+    - systemctl enable --now [docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
     - systemctl enable --now prometheus-node-exporter
     - ufw allow 9100/tcp
   EOF
@@ -294,18 +294,18 @@ resource "hcloud_server" "node" {
 }
 ```
 
-### Step 9: [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) on Hetzner
+### Step 9: [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) on Hetzner
 ```bash
 # Option A: k3s with Hetzner Cloud Controller Manager
 # 1. Provision 3+ servers (CX52 or CAX31) with private network
 # 2. Install k3s on master
 curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--disable servicelb --disable traefik" sh -
 # 3. Install Hetzner Cloud Controller Manager
-[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/hetznercloud/hcloud-cloud-controller-manager/releases/latest/download/ccm-networks.yaml
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/hetznercloud/hcloud-cloud-controller-manager/releases/latest/download/ccm-networks.yaml
 # 4. Install Hetzner CSI Driver for volumes
-[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f https://raw.githubusercontent.com/hetznercloud/csi-driver/v2.5.0/deploy/[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)/hcloud-csi.yml
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f https://raw.githubusercontent.com/hetznercloud/csi-driver/v2.5.0/deploy/[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)/hcloud-csi.yml
 # 5. Install MetalLB for LoadBalancer IPs (use Floating IP pool)
-[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14.5/config/manifests/metallb-native.yaml
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14.5/config/manifests/metallb-native.yaml
 
 # Option B: Talos Linux on Hetzner (immutable K8s)
 # 1. Download talosctl
@@ -353,14 +353,14 @@ sudo mount -t cifs //<username>.your-storagebox.de/backup /mnt/backup \
 #!/bin/bash
 BACKUP_DIR="/mnt/backup/$(date +%Y-%m-%d)"
 mkdir -p "$BACKUP_DIR"
-tar czf "$BACKUP_DIR/volumes.tgz" /var/lib/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)/volumes
+tar czf "$BACKUP_DIR/volumes.tgz" /var/lib/[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)/volumes
 find /mnt/backup -type d -mtime +30 -exec rm -rf {} +
 
 # Borg backup to Storage Box (encrypted, deduplicated)
 borg init --encryption=repokey-blake2 ssh://<username>@<username>.your-storagebox.de:23/./backups
 borg create --stats --compression lz4 \
   ssh://<username>@<username>.your-storagebox.de:23/./backups::$(date +%Y-%m-%d) \
-  /var/lib/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)/volumes /etc /home
+  /var/lib/[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)/volumes /etc /home
 borg prune --keep-daily 7 --keep-weekly 4 --keep-monthly 6 \
   ssh://<username>@<username>.your-storagebox.de:23/./backups
 ```
@@ -396,7 +396,7 @@ Cost tracking:
 - Prefer Floating IPs over Elastic IPs for HA failover patterns.
 - Use cloud-init for server bootstrap — never SSH into a fresh server to configure.
 - All servers should have both IPv4 and IPv6 — IPv6 traffic is often unmetered.
-- Deploy Hetzner CCM and CSI for [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) to natively use Cloud resources.
+- Deploy Hetzner CCM and CSI for [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) to natively use Cloud resources.
 
 ## Production Considerations
 - CX22 (2 vCPU, 4 GB) is minimum for production workloads — CX11/CX12 are too small.
@@ -450,10 +450,10 @@ Cost-saving strategies:
   - references/hetzner-cloud-advanced.md — Hetzner Cloud Advanced Topics
   - references/hetzner-cloud-fundamentals.md — Hetzner Cloud Fundamentals
   - references/hetzner-dedicated.md — Hetzner Dedicated Server Setup
-  - ../../../Global_References/hetzner-[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).md — [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) on Hetzner (k3s, Talos, Rancher)
+  - ../../../Global_References/hetzner-[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).md — [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) on Hetzner (k3s, Talos, Rancher)
   - references/hetzner-[cost-optimization](../../common/cost/cost-optimization/SKILL.md).md — Hetzner Cost Optimization
 ## Handoff
-- `devops-[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)` for deploying workloads on Hetzner K8s.
+- `devops-[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)` for deploying workloads on Hetzner K8s.
 - `devops-terraform` for Terraform state and module patterns.
 - `devops-[backup-dr](../../../Software_Engineering_and_Other/Frontend/backup-dr/SKILL.md)` for backup strategies using Storage Boxes.
 - `devops-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)` for Prometheus-based [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).

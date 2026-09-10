@@ -66,7 +66,7 @@ improvised one.
   should never be a unilateral individual decision with no accountable
   approver, even under time pressure.
 - A working, tested rollback mechanism for the target service (previous
-  known-good artifact/image tag, a `git revert`-based [GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) rollback, or
+  known-good artifact/image tag, a `git revert`-based [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md) rollback, or
   a database migration's down-path) that can be executed as fast as the
   hotfix itself — see
   [environment-promotion-strategy](../[environment-promotion-strategy](../../../Software_Engineering_and_Other/Frontend/environment-promotion-strategy/SKILL.md)/SKILL.md)

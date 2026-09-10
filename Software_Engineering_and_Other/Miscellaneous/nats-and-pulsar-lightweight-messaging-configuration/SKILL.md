@@ -54,7 +54,7 @@ options is covered separately in
   persistence/replay are needed but a full Kafka deployment is more than
   the workload justifies.
 - Setting up Apache Pulsar topics and subscriptions, particularly when
-  independent scaling of brokers vs. storage, or built-in [multi-tenancy](../../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md),
+  independent scaling of brokers vs. storage, or built-in [multi-tenancy](../../../containers-orchestration/common/other/multi-tenancy/SKILL.md),
   is a genuine requirement.
 - Reviewing an existing lightweight-messaging deployment for a durability
   or delivery-guarantee gap relative to what the application actually
@@ -106,7 +106,7 @@ options is covered separately in
    - **Pulsar**: the workload needs Kafka-like durability/replay *and*
      either independent scaling of brokers vs. storage (bursty compute
      needs without over-provisioning storage nodes, or vice versa),
-     built-in geo-replication, or built-in [multi-tenancy](../../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md) (isolated
+     built-in geo-replication, or built-in [multi-tenancy](../../../containers-orchestration/common/other/multi-tenancy/SKILL.md) (isolated
      tenants/namespaces sharing infrastructure) as a first-class feature
      rather than something bolted on.
    - **Kafka**: high sustained throughput, an ecosystem of existing
@@ -177,7 +177,7 @@ options is covered separately in
    indefinitely.
 
 5. **For Pulsar, create a tenant/namespace/topic hierarchy deliberately**,
-   using the [multi-tenancy](../../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md) model as an isolation boundary the way vhosts
+   using the [multi-tenancy](../../../containers-orchestration/common/other/multi-tenancy/SKILL.md) model as an isolation boundary the way vhosts
    isolate RabbitMQ applications:
    ```bash
    pulsar-admin tenants create orders-org
@@ -279,7 +279,7 @@ options is covered separately in
   **Fix:** Verify the specific connector/client/tooling ecosystem
   maturity for the target language and use case *before* committing,
   rather than assuming Pulsar's core feature set (partitioning,
-  durability, [multi-tenancy](../../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md)) implies ecosystem parity with Kafka — if the
+  durability, [multi-tenancy](../../../containers-orchestration/common/other/multi-tenancy/SKILL.md)) implies ecosystem parity with Kafka — if the
   team's actual need is that ecosystem, Kafka
   ([kafka-cluster-configuration](../[kafka-cluster-configuration](../../../DevOps_and_Cloud/Containers_and_Orchestration/kafka-cluster-configuration/SKILL.md)/SKILL.md))
   may still be the better fit despite Pulsar's architectural advantages.

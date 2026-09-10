@@ -234,19 +234,19 @@ EOF
   secret_id=<secret-id>
 ```
 
-### [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
+### [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
 
 ```bash
-# Enable [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) auth
-[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) auth enable [kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
+# Enable [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) auth
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) auth enable [kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
 
 # Configure
-[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) write auth/[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)/config \
-  kubernetes_host="https://[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).default.svc" \
-  kubernetes_ca_cert=@/var/run/secrets/[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).io/serviceaccount/ca.crt
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) write auth/[kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)/config \
+  kubernetes_host="https://[kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).default.svc" \
+  kubernetes_ca_cert=@/var/run/secrets/[kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).io/serviceaccount/ca.crt
 
 # Create role
-[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) write auth/[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)/role/myapp \
+[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) write auth/[kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)/role/myapp \
   bound_service_account_names=myapp \
   bound_service_account_namespaces=default \
   policies=myapp-policy \
@@ -341,7 +341,7 @@ db_creds = client.secrets.database.generate_credentials(
 )
 ```
 
-### [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Sidecar
+### [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Sidecar
 
 ```yaml
 apiVersion: v1

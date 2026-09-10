@@ -35,7 +35,7 @@ pool — it says nothing about whether that address is actually reachable
 from outside the cluster, which depends on a second, independent layer
 (ARP/NDP announcement in Layer2 mode, or an `Established` BGP session in
 BGP mode) that can fail silently relative to the allocation itself. This
-gap — "[Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) says it's assigned" vs. "the network actually routes
+gap — "[Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) says it's assigned" vs. "the network actually routes
 to it" — is the most common source of confusing MetalLB incidents, and
 is structurally the same class of problem as trusting a `CephCluster`
 CRD's `Ready` status over `ceph status` in
@@ -66,7 +66,7 @@ in production.
 
 - A MetalLB deployment already configured per
   [metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../[metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration](../../../DevOps_and_Cloud/Containers_and_Orchestration/metallb-[bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md)-load-balancer-configuration/SKILL.md)/SKILL.md),
-  with `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)` access to the `metallb-system` namespace.
+  with `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md)` access to the `metallb-system` namespace.
 - For BGP-mode validation: read access to the upstream router's BGP
   neighbor status (via its own CLI/API, or coordination with whoever
   manages it) — MetalLB's own view of peer state should be
@@ -77,7 +77,7 @@ in production.
   cluster's own nodes — validating only from inside the cluster network
   can miss a failure that only manifests from a genuinely external
   vantage point.
-- `metallb` CLI or direct `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)` access to MetalLB CRDs
+- `metallb` CLI or direct `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md)` access to MetalLB CRDs
   (`IPAddressPool`, `BGPPeer`, `BGPAdvertisement`,
   `L2Advertisement`) and the speaker pods' logs.
 
@@ -87,8 +87,8 @@ in production.
    wait for a Service to fail to get an IP to notice a pool is nearly
    exhausted:
    ```bash
-   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) -n metallb-system get ipaddresspools -o yaml
-   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get svc -A -o jsonpath='{range .items[?(@.spec.type=="LoadBalancer")]}{.metadata.namespace}/{.metadata.name}: {.status.loadBalancer.ip}{"\n"}{end}'
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) -n metallb-system get ipaddresspools -o yaml
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get svc -A -o jsonpath='{range .items[?(@.spec.type=="LoadBalancer")]}{.metadata.namespace}/{.metadata.name}: {.status.loadBalancer.ip}{"\n"}{end}'
    ```
    Compare the pool's configured range size against the count of
    currently-allocated Services; if headroom is within a handful of
@@ -99,7 +99,7 @@ in production.
 2. **Confirm every `LoadBalancer` Service actually has a real, non-empty
    `EXTERNAL-IP`**, not just a status field that looks populated:
    ```bash
-   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get svc -A -o wide | grep LoadBalancer
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get svc -A -o wide | grep LoadBalancer
    ```
    A Service stuck showing `<pending>` after a reasonable time (more
    than a few seconds past creation) means allocation itself failed —
@@ -108,13 +108,13 @@ in production.
    `metallb.io/address-pool` annotation, `autoAssign: false` on every
    candidate pool with no explicit pool referenced):
    ```bash
-   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) -n metallb-system logs -l app=metallb,component=controller --tail=100
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) -n metallb-system logs -l app=metallb,component=controller --tail=100
    ```
 
 3. **For Layer2 mode, confirm which node is currently announcing each
    service IP**, and that it's a genuinely healthy node:
    ```bash
-   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) -n metallb-system logs -l app=metallb,component=speaker --tail=200 | grep <service-ip>
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) -n metallb-system logs -l app=metallb,component=speaker --tail=200 | grep <service-ip>
    ```
    MetalLB's speaker logs identify which node currently holds the
    "leader" role for each address; cross-check that node is `Ready` and
@@ -125,13 +125,13 @@ in production.
 4. **For BGP mode, check MetalLB's own view of peer state first, but
    don't stop there**:
    ```bash
-   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) -n metallb-system logs -l app=metallb,component=speaker --tail=200 | grep -i bgp
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) -n metallb-system logs -l app=metallb,component=speaker --tail=200 | grep -i bgp
    ```
    Recent MetalLB versions expose peer session state directly; a peer
    stuck anywhere other than `Established` (`Active`, `Connect`,
    `OpenSent`, `OpenConfirm`) means the session never actually formed,
    and every IP MetalLB "assigned" for that peer is unreachable from
-   the network side despite [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) reporting the Service as having
+   the network side despite [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) reporting the Service as having
    an `EXTERNAL-IP`.
 
 5. **Cross-check against the router's own BGP neighbor table** — this
@@ -164,8 +164,8 @@ in production.
    to confirm failover actually works before trusting it in an
    [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md):
    ```bash
-   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) cordon <node-currently-announcing-ip>
-   # for a real test: power off or [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) drain --delete-emptydir-data --force the node in a staging cluster
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) cordon <node-currently-announcing-ip>
+   # for a real test: power off or [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) drain --delete-emptydir-data --force the node in a staging cluster
    ```
    For Layer2 mode, confirm a different node picks up the
    announcement within an acceptable time window (watch the speaker
@@ -210,12 +210,12 @@ in production.
 
 ## Common pitfalls
 
-- **Symptom:** `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get svc` shows a real `EXTERNAL-IP`, but the
+- **Symptom:** `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get svc` shows a real `EXTERNAL-IP`, but the
   Service is unreachable from outside the cluster.
   **Fix:** An allocated IP is not the same as a reachable one — check
   Layer2 speaker logs for which node (if any) is actually announcing
   that address, or BGP peer state for `Established` vs. stuck in an
-  earlier negotiation phase. [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-level Service status reflects
+  earlier negotiation phase. [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-level Service status reflects
   successful allocation from the pool, not network-level reachability.
 
 - **Symptom:** A new Service fails to get any `EXTERNAL-IP` at all,
@@ -233,7 +233,7 @@ in production.
   **Fix:** Check for an ASN or peer-address mismatch between the
   `BGPPeer` CRD's `myASN`/`peerASN`/`peerAddress` and what's actually
   configured on the router — this is the single most common BGP
-  peering failure, and it's invisible from the [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) side alone
+  peering failure, and it's invisible from the [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) side alone
   since MetalLB may just show the session stuck in an early state
   without a descriptive error pointing at "your ASN doesn't match."
 
@@ -269,17 +269,17 @@ intermittent timeouts reaching it.
 
 1. Confirm the Service's own status looks fine (allocation succeeded):
    ```bash
-   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get svc payments-api -n payments
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get svc payments-api -n payments
    # EXTERNAL-IP: 10.0.0.210   PORT(S): 443:31820/TCP
    ```
 
 2. Check which node is currently announcing that IP in Layer2 mode:
    ```bash
-   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) -n metallb-system logs -l app=metallb,component=speaker --tail=500 | grep 10.0.0.210
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) -n metallb-system logs -l app=metallb,component=speaker --tail=500 | grep 10.0.0.210
    ```
    Shows `worker-2` announcing the address. Check `worker-2`'s health:
    ```bash
-   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) describe node worker-2 | grep -A5 Conditions
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) describe node worker-2 | grep -A5 Conditions
    ```
    `MemoryPressure: True` — the node is under memory pressure, which
    can cause the speaker pod itself to be slow to respond to ARP

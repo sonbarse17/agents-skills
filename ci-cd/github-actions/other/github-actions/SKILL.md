@@ -37,7 +37,7 @@ Use this skill when:
 
 - [GitHub](../github/SKILL.md) repository with write access
 - Understanding of YAML syntax
-- For self-hosted runners: server with [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) (optional)
+- For self-hosted runners: server with [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) (optional)
 
 ## Workflow File Structure
 
@@ -215,23 +215,23 @@ steps:
     path: dist/
 ```
 
-## [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Builds
+## [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) Builds
 
 ```yaml
 jobs:
-  [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md):
+  [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md):
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       
-      - name: Login to [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Hub
-        uses: [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)/login-action@v3
+      - name: Login to [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) Hub
+        uses: [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       
       - name: Build and push
-        uses: [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)/build-push-action@v5
+        uses: [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)/build-push-action@v5
         with:
           context: .
           push: true

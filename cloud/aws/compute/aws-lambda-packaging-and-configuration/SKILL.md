@@ -59,7 +59,7 @@ function nobody scoped down after the initial "just get it working" deploy.
 - AWS CLI v2 or an IaC tool (SAM, CDK, Terraform, [CloudFormation](../../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md)) with
   permissions to create/update Lambda functions, IAM roles, and (for
   container images) push to Amazon ECR.
-- For container image packaging: [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) (or another OCI-compatible
+- For container image packaging: [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) (or another OCI-compatible
   builder) and an ECR repository the build can push to.
 - Know your runtime's supported version at deploy time — AWS deprecates
   Lambda runtimes on a schedule (e.g. `python3.9`, `nodejs16.x` reach
@@ -88,11 +88,11 @@ function nobody scoped down after the initial "just get it working" deploy.
    CMD ["app.handler"]
    ```
    ```bash
-   [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) build -t my-fn:latest .
+   [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) build -t my-fn:latest .
    aws ecr get-login-password --region <REGION> \
-     | [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) login --username AWS --password-stdin <AWS_ACCOUNT_ID>.dkr.ecr.<REGION>.amazonaws.com
-   [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) tag my-fn:latest <AWS_ACCOUNT_ID>.dkr.ecr.<REGION>.amazonaws.com/my-fn:latest
-   [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) push <AWS_ACCOUNT_ID>.dkr.ecr.<REGION>.amazonaws.com/my-fn:latest
+     | [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) login --username AWS --password-stdin <AWS_ACCOUNT_ID>.dkr.ecr.<REGION>.amazonaws.com
+   [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) tag my-fn:latest <AWS_ACCOUNT_ID>.dkr.ecr.<REGION>.amazonaws.com/my-fn:latest
+   [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) push <AWS_ACCOUNT_ID>.dkr.ecr.<REGION>.amazonaws.com/my-fn:latest
    ```
 
 2. **Create the function with an explicit, least-privilege execution

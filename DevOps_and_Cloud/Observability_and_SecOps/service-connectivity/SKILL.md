@@ -41,7 +41,7 @@ caller ends up needing its own separate health check on top, which most callers 
 
 - **Prefer discovery that's health-aware by construction** (e.g., a mesh or orchestrator that
   removes not-ready instances from the result set) over a static list plus a hope.
-- **In [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md), this is exactly the Service/Endpoints readiness relationship** — see
+- **In [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), this is exactly the Service/Endpoints readiness relationship** — see
   `[kubernetes-networking](../../Containers_and_Orchestration/[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-networking/SKILL.md)` for that mechanism specifically.
 
 **Done when:** a caller resolving a dependency only ever gets instances that are actually ready to

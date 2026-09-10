@@ -44,8 +44,8 @@ Use this skill when:
   "features": {
     "ghcr.io/devcontainers/features/node:1": { "version": "20" },
     "ghcr.io/devcontainers/features/[python](../../Languages/python/SKILL.md):1": { "version": "3.12" },
-    "ghcr.io/devcontainers/features/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-in-[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md):2": {},
-    "ghcr.io/devcontainers/features/[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)-helm-minikube:1": {}
+    "ghcr.io/devcontainers/features/[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-in-[docker](../../../containers-orchestration/docker/other/docker/SKILL.md):2": {},
+    "ghcr.io/devcontainers/features/[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md)-helm-minikube:1": {}
   },
   "forwardPorts": [3000, 5432],
   "postCreateCommand": "npm install",
@@ -64,7 +64,7 @@ Use this skill when:
 }
 ```
 
-### [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose Dev Container
+### [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Compose Dev Container
 
 ```json
 // .devcontainer/devcontainer.json
@@ -127,8 +127,8 @@ RUN apt-get update && apt-get install -y \
 
 # Install project-specific tools
 RUN curl -fsSL https://get.opentofu.org/install-opentofu.sh | sh -s -- --install-method standalone
-RUN curl -LO "https://dl.k8s.io/release/$(curl -sL https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)" \
-    && install [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) /usr/local/bin/
+RUN curl -LO "https://dl.k8s.io/release/$(curl -sL https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md)" \
+    && install [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) /usr/local/bin/
 
 # Non-root user setup
 USER vscode
@@ -165,8 +165,8 @@ WORKDIR /workspace
 
             # Tools
             [docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md)
-            [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)
-            [kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-helm
+            [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md)
+            [kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-helm
             opentofu
             awscli2
             jq
@@ -224,7 +224,7 @@ devbox init
 
 # Add packages
 devbox add nodejs@20 [python](../../Languages/python/SKILL.md)@3.12 [postgresql](../../Backend/postgresql/SKILL.md)@16
-devbox add go@1.22 [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) helm
+devbox add go@1.22 [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) helm
 
 # Enter shell
 devbox shell
@@ -242,8 +242,8 @@ devbox run node --version
     "nodejs@20",
     "[python](../../Languages/python/SKILL.md)@3.12",
     "go@1.22",
-    "[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)@1.29",
-    "[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-helm@3.14",
+    "[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md)@1.29",
+    "[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-helm@3.14",
     "opentofu@1.8",
     "awscli2@2.15",
     "jq@1.7",
@@ -368,10 +368,10 @@ jobs:
 | Feature | Dev Containers | Nix Flakes | Devbox |
 |---------|---------------|------------|--------|
 | Learning curve | Low | High | Low |
-| Reproducibility | Good ([Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)) | Excellent | Excellent (Nix) |
+| Reproducibility | Good ([Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)) | Excellent | Excellent (Nix) |
 | Speed | Slow (build image) | Fast (cached) | Fast (cached) |
 | IDE support | VS Code, JetBrains | Any terminal | Any terminal |
-| CI integration | [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-based | Nix actions | Devbox action |
+| CI integration | [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-based | Nix actions | Devbox action |
 | Offline support | Limited | Full | Full |
 | macOS/Linux/Win | All | macOS/Linux | macOS/Linux |
 
@@ -389,7 +389,7 @@ jobs:
 | Issue | Solution |
 |-------|---------|
 | Nix build slow first time | Use binary cache (Cachix), `nix develop` caches after first run |
-| Dev Container won't build | Check [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) disk space, rebuild with `--no-cache` |
+| Dev Container won't build | Check [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) disk space, rebuild with `--no-cache` |
 | Package not in Nixpkgs | Search at search.nixos.org, or use `fetchFromGitHub` overlay |
 | Devbox hash mismatch | Run `devbox update`, delete `.devbox/` and re-init |
 | direnv not activating | Run `direnv allow`, check shell hook is installed |

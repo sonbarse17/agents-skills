@@ -164,7 +164,7 @@ relative to SAST/SCA, and vendor-neutral CI wiring — see
    ```
    Run it:
    ```bash
-   [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) run --rm -v "$(pwd)/zap:/zap/wrk:rw" \
+   [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run --rm -v "$(pwd)/zap:/zap/wrk:rw" \
      -e DAST_TEST_USER -e DAST_TEST_PASSWORD \
      -t zaproxy/zap-stable zap.sh -cmd \
      -autorun /zap/wrk/zap-plan.yaml
@@ -198,7 +198,7 @@ relative to SAST/SCA, and vendor-neutral CI wiring — see
 4. **Seed API scans from an OpenAPI spec** instead of relying on the
    spider to discover routes with no HTML links:
    ```bash
-   [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) run --rm -v "$(pwd)":/zap/wrk/:rw \
+   [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run --rm -v "$(pwd)":/zap/wrk/:rw \
      -t zaproxy/zap-stable zap-api-scan.py \
      -t https://staging.example.internal/openapi.json \
      -f openapi \
@@ -367,7 +367,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: ZAP baseline (Automation Framework)
         run: |
-          [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) run --rm -v "$(pwd)/.zap:/zap/wrk:rw" \
+          [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run --rm -v "$(pwd)/.zap:/zap/wrk:rw" \
             -t zaproxy/zap-stable:2.15.0 zap.sh -cmd \
             -autorun /zap/wrk/baseline-plan.yaml
 
@@ -381,7 +381,7 @@ jobs:
           DAST_TEST_USER: ${{ secrets.DAST_TEST_USER }}
           DAST_TEST_PASSWORD: ${{ secrets.DAST_TEST_PASSWORD }}
         run: |
-          [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) run --rm -v "$(pwd)/.zap:/zap/wrk:rw" \
+          [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run --rm -v "$(pwd)/.zap:/zap/wrk:rw" \
             -e DAST_TEST_USER -e DAST_TEST_PASSWORD \
             -t zaproxy/zap-stable:2.15.0 zap.sh -cmd \
             -autorun /zap/wrk/full-scan-plan.yaml

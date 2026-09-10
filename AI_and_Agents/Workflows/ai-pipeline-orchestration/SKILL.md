@@ -43,7 +43,7 @@ Use this skill when:
 ## Prefect — Quick Start
 
 ```bash
-pip install prefect prefect-[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
+pip install prefect prefect-[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
 
 # Start Prefect server (or use Prefect Cloud)
 prefect server start
@@ -163,9 +163,9 @@ async def batch_inference_flow(input_file: str, output_file: str, batch_size: in
 
 ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from airflow.decorators import dag, task
-from airflow.providers.cncf.[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).operators.pod import KubernetesPodOperator
+from airflow.providers.cncf.[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).operators.pod import KubernetesPodOperator
 from datetime import datetime
-from [kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).client import models as k8s
+from [kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).client import models as k8s
 
 @dag(
     dag_id="llm_fine_tuning",

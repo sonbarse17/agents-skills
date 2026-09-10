@@ -43,12 +43,12 @@ Exact user phrases: "Vault", "HashiCorp Vault", "secrets management", "dynamic s
 ### Input Context
 Before activating, verify:
 - Vault deployment mode (dev, HA, integrated storage, external backend).
-- Auth method to use (token, [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md), OIDC, AppRole, AWS IAM).
+- Auth method to use (token, [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), OIDC, AppRole, AWS IAM).
 - Secrets engine needed (KV, database, PKI, Transit, AWS).
 - Dynamic vs static secret requirements.
 
 ### Output Artifact
-Writes to Vault CLI commands, Terraform HCL for Vault, Vault policy HCL, and/or [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) injector annotations.
+Writes to Vault CLI commands, Terraform HCL for Vault, Vault policy HCL, and/or [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) injector annotations.
 
 ### Response Format
 Vault CLI commands, policy HCL, or Terraform configuration with no extraneous explanation.
@@ -59,7 +59,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 This skill is complete when:
 - [ ] Secrets engine(s) are enabled and configured.
 - [ ] Policies are defined and associated with auth methods/roles.
-- [ ] Auth method is configured ([Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md), AppRole, OIDC, or token).
+- [ ] Auth method is configured ([Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), AppRole, OIDC, or token).
 - [ ] Dynamic secrets path is validated (read + renew + revoke).
 - [ ] Encryption (transit engine) or PKI is configured if needed.
 
@@ -252,14 +252,14 @@ vault policy write ci-bot ci-bot.hcl
 
 ### Step 6: Auth Methods
 ```bash
-# [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) auth
-vault auth enable [kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
-vault write auth/[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)/config \
-  kubernetes_host=https://[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).default.svc \
-  token_reviewer_jwt="$(cat /var/run/secrets/[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).io/serviceaccount/token)" \
-  kubernetes_ca_cert=@/var/run/secrets/[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).io/serviceaccount/ca.crt
+# [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) auth
+vault auth enable [kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
+vault write auth/[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)/config \
+  kubernetes_host=https://[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).default.svc \
+  token_reviewer_jwt="$(cat /var/run/secrets/[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).io/serviceaccount/token)" \
+  kubernetes_ca_cert=@/var/run/secrets/[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).io/serviceaccount/ca.crt
 
-vault write auth/[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)/role/my-app \
+vault write auth/[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)/role/my-app \
   bound_service_account_names=my-app \
   bound_service_account_namespaces=default \
   policies=developer \
@@ -375,8 +375,8 @@ vault {
 }
 
 auto_auth {
-  method "[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)" {
-    mount_path = "auth/[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)"
+  method "[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)" {
+    mount_path = "auth/[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)"
     config = {
       role = "my-app"
     }
@@ -409,7 +409,7 @@ DB_PASS={{ .Data.password }}
 {{- end }}
 ```
 
-### Step 10: Vault Agent Injector ([Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md))
+### Step 10: Vault Agent Injector ([Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md))
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -463,12 +463,12 @@ resource "vault_policy" "developer" {
 }
 
 resource "vault_kubernetes_auth_backend_config" "k8s" {
-  backend = vault_auth_backend.[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).path
-  kubernetes_host = "https://[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).default.svc"
+  backend = vault_auth_backend.[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).path
+  kubernetes_host = "https://[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).default.svc"
 }
 
 resource "vault_kubernetes_auth_backend_role" "app" {
-  backend                          = vault_auth_backend.[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).path
+  backend                          = vault_auth_backend.[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).path
   role_name                        = "my-app"
   bound_service_account_names      = ["my-app"]
   bound_service_account_namespaces = ["default"]

@@ -29,7 +29,7 @@ depends_on:
 # devops-finops
 
 ## Purpose
-Implement FinOps practices for cloud cost visibility, allocation, optimization, and governance -- covering compute, storage, [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md), and organizational maturity from crawl to run.
+Implement FinOps practices for cloud cost visibility, allocation, optimization, and governance -- covering compute, storage, [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), and organizational maturity from crawl to run.
 
 ## Agent Protocol
 
@@ -82,11 +82,11 @@ Tagging enforced, budgets active, right-sizing recommendations implemented, cost
 | Resource Type | Optimization Potential | Effort | Priority |
 |---|---|---|---|
 | Compute (EC2, GCE, VM) | 30-60% savings | Medium | High |
-| [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) (idle, over-provisioned) | 40-60% savings | High | High |
+| [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) (idle, over-provisioned) | 40-60% savings | High | High |
 | Storage (lifecycle, unattached) | 20-40% savings | Low | Medium |
 | Data transfer (egress, cross-region) | 30-50% savings | Medium | High |
 | Database (right-sizing, RI) | 25-50% savings | Medium | High |
-| [Serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) (over-provisioned memory/timeout) | 20-30% savings | Low | Medium |
+| [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) (over-provisioned memory/timeout) | 20-30% savings | Low | Medium |
 
 ## Core Workflow
 
@@ -327,7 +327,7 @@ FinOps focuses on cloud infrastructure but SaaS tools, API costs, and data trans
 - Allocation of savings to consuming teams.
 - Regular right-sizing before any RI purchase.
 
-### [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Cost Optimization
+### [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Cost Optimization
 - Kubecost for namespace-level allocation.
 - Karpenter for dynamic node provisioning.
 - VPA recommendations for resource right-sizing.
@@ -381,7 +381,7 @@ Traditional chargeback is annual, static, and opaque. FinOps chargeback is conti
 4. RI/SP report: coverage, utilization, expiring.
 5. Right-sizing report: recommendations and savings.
 6. Storage optimization: lifecycle savings, orphaned cleanup.
-7. [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md): namespace spend, idle cluster, Kubecost recs.
+7. [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md): namespace spend, idle cluster, Kubecost recs.
 8. Unit economics: cost per user/request/transaction.
 9. Governance review: tagging compliance, budget compliance.
 

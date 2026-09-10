@@ -58,8 +58,8 @@ specifics.
   block are fully mature from GitLab 13+, but 15+ is assumed here for
   current defaults and deprecation warnings around `only:`/`except:`.
 - At least one available GitLab Runner registered against the project,
-  group, or instance, with an executor type understood (`shell`, `[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)`,
-  `[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)+machine`, `[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)`) — job `tags:` must match a runner's
+  group, or instance, with an executor type understood (`shell`, `[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)`,
+  `[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)+machine`, `[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)`) — job `tags:` must match a runner's
   configured tags or the job stays `pending` forever.
 - Project or group maintainer access to configure CI/CD variables
   (**Settings → CI/CD → Variables**, marked "Protected"/"Masked" as
@@ -164,7 +164,7 @@ specifics.
      stage: build
      tags: [docker]
      script:
-       - [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) build -t myapp:$CI_COMMIT_SHORT_SHA .
+       - [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) build -t myapp:$CI_COMMIT_SHORT_SHA .
    ```
 
 8. **Gate production deploys with `environment:` and `when: manual`**,
@@ -300,7 +300,7 @@ build-image:
   rules:
     - if: '$CI_COMMIT_BRANCH == "main"'
   script:
-    - [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) build -t myapp:$CI_COMMIT_SHORT_SHA .
+    - [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) build -t myapp:$CI_COMMIT_SHORT_SHA .
 
 deploy-production:
   stage: deploy
@@ -323,4 +323,4 @@ merge and an authorized manual trigger.
 
 - [ci-cd-pipeline-design](../../../devops/skills/[ci-cd-pipeline-design](../ci-cd-pipeline-design/SKILL.md)/SKILL.md) — vendor-neutral stage/gate/caching concepts this file implements in GitLab's specific syntax.
 - [github-actions-centralized-reusable-workflows](../[github-actions-centralized-reusable-workflows](../[github-actions](../[github](../github/SKILL.md)-actions/SKILL.md)-centralized-reusable-workflows/SKILL.md)/SKILL.md) — the closest [GitHub](../../../github-actions/other/github/SKILL.md) Actions analog to GitLab's `include: project:` shared-template pattern.
-- [secure-cicd-gates](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — designing the severity/blocking policy for scan jobs added into this pipeline's stages.
+- [secure-cicd-gates](../../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — designing the severity/blocking policy for scan jobs added into this pipeline's stages.

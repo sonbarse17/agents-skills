@@ -29,7 +29,7 @@ visualizations. Definitions are minimal, diffable, and suitable for version cont
 
 - Minimal payloads (no implementation details or derivable properties)
 - Easy to diff in Git
-- Consistent patterns for [GitOps](../../Containers_and_Orchestration/gitops/SKILL.md) workflows
+- Consistent patterns for [GitOps](../../../containers-orchestration/common/gitops/gitops/SKILL.md) workflows
 - Designed for LLM one-shot generation
 - Robust validation via OpenAPI spec
 

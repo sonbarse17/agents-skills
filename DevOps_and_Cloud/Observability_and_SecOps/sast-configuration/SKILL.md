@@ -71,8 +71,8 @@ This skill provides comprehensive guidance for setting up and configuring SAST t
 pip install semgrep
 semgrep --config=auto --error
 
-# SonarQube with [Docker](../../Containers_and_Orchestration/docker/SKILL.md)
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) run -d --name sonarqube -p 9000:9000 sonarqube:10.8-community
+# SonarQube with [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run -d --name sonarqube -p 9000:9000 sonarqube:10.8-community
 
 # CodeQL CLI setup
 gh extension install [github](../../../ci-cd/github-actions/other/github/SKILL.md)/gh-codeql

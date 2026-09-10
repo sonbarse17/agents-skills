@@ -68,7 +68,7 @@ a production deployment.
   [Prometheus and Grafana [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) stack](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)
   skill for how these are typically built.
 - A fault-injection tool matched to the environment: **Chaos Mesh** or
-  **LitmusChaos** for [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-native experiments (pod kill, network
+  **LitmusChaos** for [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-native experiments (pod kill, network
   delay/partition, IO stress); **AWS Fault Injection Simulator (FIS)**
   for AWS infrastructure-level faults (instance/AZ/RDS failover, network
   disruption); a commercial cross-platform option such as **Gremlin** is

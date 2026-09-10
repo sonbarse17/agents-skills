@@ -480,4 +480,4 @@ module storageLoop 'modules/storage.bicep' = [for account in storageAccounts: {
 - `[terraform-azure](../terraform-azure/SKILL.md)` -- [Multi-cloud](../../../common/other/multi-cloud/SKILL.md) IaC alternative with broader provider support.
 - `[azure-networking](../../networking/azure-networking/SKILL.md)` -- VNet, NSG, and firewall configurations referenced in templates.
 - `[azure-vms](../../compute/azure-vms/SKILL.md)` -- Virtual machine sizing and configuration details.
-- `[azure-aks](../../containers/azure-aks/SKILL.md)` -- [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cluster definitions for Bicep/ARM.
+- `[azure-aks](../../../../containers-orchestration/aks/cluster-management/azure-aks/SKILL.md)` -- [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster definitions for Bicep/ARM.

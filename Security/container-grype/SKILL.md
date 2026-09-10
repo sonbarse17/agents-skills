@@ -64,10 +64,10 @@ grype <image-name>
 
 Examples:
 ```bash
-# Scan official [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) image
+# Scan official [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) image
 grype alpine:latest
 
-# Scan local [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) image
+# Scan local [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) image
 grype myapp:v1.2.3
 
 # Scan filesystem directory
@@ -226,7 +226,7 @@ grype <image> --db /path/to/database
 - **Sensitive Data Handling**: Scan results may contain package names and versions that reveal
   application architecture. Store results securely and limit access to authorized security personnel.
 
-- **Access Control**: Grype requires [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) socket access when scanning container images.
+- **Access Control**: Grype requires [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) socket access when scanning container images.
   Restrict permissions to prevent unauthorized image access.
 
 - **[Audit](../../AI_and_Agents/Operations/audit/SKILL.md) Logging**: Log all Grype scans with timestamps, target details, and operator identity
@@ -264,13 +264,13 @@ Scan before pushing images to registry:
 
 ```bash
 # Build image
-[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) build -t myapp:latest .
+[docker](../../containers-orchestration/docker/other/docker/SKILL.md) build -t myapp:latest .
 
 # Scan locally before push
 grype myapp:latest --fail-on critical
 
 # If scan passes, push to registry
-[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) push myapp:latest
+[docker](../../containers-orchestration/docker/other/docker/SKILL.md) push myapp:latest
 ```
 
 ### Pattern 2: Scheduled Scanning
@@ -279,7 +279,7 @@ Re-scan existing images for newly disclosed vulnerabilities:
 
 ```bash
 # Scan all production images daily
-for image in $([docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) images --format '{{.Repository}}:{{.Tag}}' | grep prod); do
+for image in $([docker](../../containers-orchestration/docker/other/docker/SKILL.md) images --format '{{.Repository}}:{{.Tag}}' | grep prod); do
   grype $image -o json >> daily-scan-$(date +%Y%m%d).json
 done
 ```
@@ -302,7 +302,7 @@ grype alpine:3.19
 ## Integration Points
 
 - **CI/CD**: Integrate with [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../ci-cd/jenkins/other/jenkins/SKILL.md), [CircleCI](../../ci-cd/circleci/other/circleci/SKILL.md) using `--fail-on` thresholds
-- **Container Registries**: Scan images from [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Hub, ECR, GCR, ACR, Harbor
+- **Container Registries**: Scan images from [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) Hub, ECR, GCR, ACR, Harbor
 - **Security Tools**: Export SARIF for [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Security, JSON for SIEM ingestion, CycloneDX for DependencyTrack
 - **SDLC**: Scan during build (shift-left), before deployment (quality gate), and scheduled (continuous [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md))
 

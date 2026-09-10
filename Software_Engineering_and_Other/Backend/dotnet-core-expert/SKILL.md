@@ -43,7 +43,7 @@ Load detailed guidance based on context:
 | Clean Architecture | `../../../Global_References/clean-architecture.md` | CQRS, MediatR, layers, DI patterns |
 | Entity Framework | `../../../Global_References/entity-framework.md` | DbContext, migrations, relationships |
 | Authentication | `../../../Global_References/authentication.md` | JWT, Identity, authorization policies |
-| Cloud-Native | `../../../Global_References/cloud-native.md` | [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md), health checks, configuration |
+| Cloud-Native | `../../../Global_References/cloud-native.md` | [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md), health checks, configuration |
 
 ## Constraints
 

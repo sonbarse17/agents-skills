@@ -218,7 +218,7 @@ var credential = new DefaultAzureCredential(
 | **Chains** | `DefaultAzureCredential` | Preconfigured chain for dev-to-prod |
 | | `ChainedTokenCredential` | Custom credential chain |
 | **Azure-Hosted** | `ManagedIdentityCredential` | Azure managed identity |
-| | `WorkloadIdentityCredential` | [Kubernetes](../../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) workload identity |
+| | `WorkloadIdentityCredential` | [Kubernetes](../../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) workload identity |
 | | `EnvironmentCredential` | Environment variables |
 | **Service Principal** | `ClientSecretCredential` | Client ID + secret |
 | | `ClientCertificateCredential` | Client ID + certificate |
@@ -320,7 +320,7 @@ Supported Azure services:
 - Azure App Service and Azure Functions
 - Azure Arc
 - Azure Cloud Shell
-- Azure [Kubernetes](../../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Service (AKS)
+- Azure [Kubernetes](../../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Service (AKS)
 - Azure Service Fabric
 - Azure Virtual Machines
 - Azure Virtual Machine Scale Sets

@@ -367,7 +367,7 @@ function generateTurnCredentials(sharedSecret: string, username: string, ttl = 8
 ### Deployment
 - Separate signaling and media planes — signaling can scale independently from media
 - Place TURN servers near users (edge locations) to minimize relay latency
-- Use [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) headless services for WebSocket signaling with session affinity
+- Use [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) headless services for WebSocket signaling with session affinity
 - Monitor: ICE failures, TURN bandwidth, packet loss, jitter, round-trip time
 
 ### [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)

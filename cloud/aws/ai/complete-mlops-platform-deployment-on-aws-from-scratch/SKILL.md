@@ -81,7 +81,7 @@ belongs to a different phase entirely.
   path in this skill and the brief SageMaker-centric alternative described
   in Phase 2 — mid-project reversal is expensive (different identity model,
   different storage wiring) and should be avoided.
-- `eksctl` ≥ 0.180 or Terraform's `aws` provider ≥ 5.x, `[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)`, and
+- `eksctl` ≥ 0.180 or Terraform's `aws` provider ≥ 5.x, `[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md)`, and
   `helm` ≥ 3.14 for the EKS+Kubeflow path.
 - GPU instance quota (e.g. `g5`/`p4d` family) requested and approved in the
   target region **before** the training pipeline phase — a quota request
@@ -117,18 +117,18 @@ integration decisions between phases.
    - **EKS + Kubeflow (this skill's worked path)**: full control over the
      scheduler, GPU bin-packing, and pipeline internals; higher initial
      setup cost and ongoing operational ownership. The right default when
-     the team already runs [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-native infrastructure or needs
+     the team already runs [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-native infrastructure or needs
      custom GPU sharing (MIG/time-slicing) that SageMaker doesn't expose.
    - **SageMaker-centric (brief alternative)**: SageMaker Training Jobs
      (managed GPU instances, no node pool to operate), SageMaker
      Pipelines for orchestration, SageMaker Model Registry, and SageMaker
-     real-time/[serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) endpoints for serving — trades control for far
+     real-time/[serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) endpoints for serving — trades control for far
      less infrastructure to operate. Every phase below has a SageMaker
      equivalent noted inline for teams choosing this path instead.
 
 3. **Phase 3 — EKS cluster and GPU node pools.** Provision the EKS control
    plane and workload-identity (IRSA) per
-   [managed-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../../Containers_and_Orchestration/managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md),
+   [managed-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-eks-aks-gke](../../Containers_and_Orchestration/managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md),
    then install the NVIDIA GPU Operator and design separate training vs.
    serving GPU node pools per
    [gpu-accelerator-infrastructure-for-ml-training](../[gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md)/SKILL.md):
@@ -142,7 +142,7 @@ integration decisions between phases.
 
    eksctl create nodegroup --cluster ml-platform-prod --name gpu-training \
      --node-type g5.2xlarge --nodes-min 0 --nodes-max 8 --managed
-   [kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) taint nodes -l gpu-pool=training workload=training:NoSchedule
+   [kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) taint nodes -l gpu-pool=training workload=training:NoSchedule
    ```
    **This must happen before Phase 6** — a Kubeflow pipeline that requests
    `nvidia.com/gpu` against a cluster with no GPU node pool yet either
@@ -283,7 +283,7 @@ integration decisions between phases.
   `Pending`/`Unschedulable` indefinitely on first run, with no clear error.
   **Fix:** Phase 3 (GPU node pools) was skipped, under-sized, or not yet
   scaled up when Phase 6 (training pipeline) went live. Confirm
-  `[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get nodes -o json | jq '.items[].status.[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)["nvidia.com/gpu"]'`
+  `[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get nodes -o json | jq '.items[].status.[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)["nvidia.com/gpu"]'`
   shows real [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) before assuming the pipeline definition itself is
   broken.
 
@@ -336,8 +336,8 @@ eksctl create nodegroup --cluster ml-platform-prod --name gpu-training \
   --node-type g5.2xlarge --nodes-min 0 --nodes-max 4 --managed
 eksctl create nodegroup --cluster ml-platform-prod --name gpu-serving \
   --node-type g5.xlarge --nodes-min 2 --nodes-max 10 --managed
-[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) taint nodes -l alpha.eksctl.io/nodegroup-name=gpu-training workload=training:NoSchedule
-[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) taint nodes -l alpha.eksctl.io/nodegroup-name=gpu-serving workload=serving:NoSchedule
+[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) taint nodes -l alpha.eksctl.io/nodegroup-name=gpu-training workload=training:NoSchedule
+[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) taint nodes -l alpha.eksctl.io/nodegroup-name=gpu-serving workload=serving:NoSchedule
 
 # Phase 4 — MLflow experiment tracking (S3 artifact store, RDS backend)
 helm install mlflow community-charts/mlflow --namespace mlflow --create-namespace \
@@ -358,7 +358,7 @@ kfp_client.create_recurring_run(
 # promotes to MLflow Model Registry "Staging"; human approves to "Production"
 
 # Phase 8 — KServe canary on the gpu-serving pool, 5% -> 25% -> 100%
-[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f fraud-scorer-inferenceservice.yaml
+[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f fraud-scorer-inferenceservice.yaml
 
 # Phase 9 — Evidently drift job + Prometheus/Grafana, frozen baseline
 # snapshotted the moment version 14 first receives production traffic,
@@ -376,7 +376,7 @@ minutes.
 ## Cross-references
 
 - [aws-landing-zone-setup](../../../cloud/skills/[aws-landing-zone-setup](../aws-landing-zone-setup/SKILL.md)/SKILL.md) — Phase 1's account/OU/guardrail foundation.
-- [managed-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../../Containers_and_Orchestration/managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md) — Phase 3's EKS cluster and IRSA workload identity setup.
+- [managed-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-eks-aks-gke](../../Containers_and_Orchestration/managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md) — Phase 3's EKS cluster and IRSA workload identity setup.
 - [gpu-accelerator-infrastructure-for-ml-training](../[gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md)/SKILL.md) — Phase 3's GPU Operator install and training/serving node pool design.
 - [experiment-tracking](../[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)/SKILL.md) — Phase 4's MLflow setup and run-logging discipline.
 - [feature-store-design](../[feature-store-design](../../../Data_Engineering/feature-store-design/SKILL.md)/SKILL.md) — Phase 5's optional feature layer.

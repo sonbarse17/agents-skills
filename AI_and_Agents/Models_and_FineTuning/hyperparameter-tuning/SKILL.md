@@ -280,7 +280,7 @@ results = tuner.fit()
 ```
 
 ### Step 5: Distributed Execution
-Local multi-core: n_jobs=-1. Dask distributed: wrap Optuna with DaskStorage. Ray distributed: tune.run(resources_per_trial). [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md): each trial as K8s job. Fault tolerance: checkpoint to shared filesystem.
+Local multi-core: n_jobs=-1. Dask distributed: wrap Optuna with DaskStorage. Ray distributed: tune.run(resources_per_trial). [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md): each trial as K8s job. Fault tolerance: checkpoint to shared filesystem.
 
 ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 # Optuna distributed with [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)

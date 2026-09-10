@@ -33,7 +33,7 @@ depends_on:
 # Supabase
 
 ## Purpose
-Build production backends on Supabase — [PostgreSQL](../postgresql/SKILL.md) schema design, Row Level Security policies, Auth providers, Realtime subscriptions, Storage buckets, and Edge Functions for [serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) compute.
+Build production backends on Supabase — [PostgreSQL](../postgresql/SKILL.md) schema design, Row Level Security policies, Auth providers, Realtime subscriptions, Storage buckets, and Edge Functions for [serverless](../../Patterns/serverless/SKILL.md) compute.
 
 ## Agent Protocol
 

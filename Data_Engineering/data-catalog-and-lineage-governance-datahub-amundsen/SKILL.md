@@ -68,7 +68,7 @@ rather than the graph-construction mechanics themselves.
 - **DataHub**: a running GMS (metadata service) backend with Elasticsearch
   (search index), Kafka (metadata change event bus), and a storage backend
   ([MySQL](../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)/Postgres or Cassandra) — deployable via the `datahub` CLI's
-  `[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) quickstart` for evaluation or the official Helm charts for
+  `[docker](../../containers-orchestration/docker/other/docker/SKILL.md) quickstart` for evaluation or the official Helm charts for
   production. **Amundsen**: separate metadata, search, and frontend
   services, typically backed by Neo4j or Atlas for the metadata graph and
   Elasticsearch for search.
@@ -97,7 +97,7 @@ rather than the graph-construction mechanics themselves.
    dependency. Deploy DataHub for evaluation with:
    ```bash
    pip install acryl-datahub
-   datahub [docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) quickstart
+   datahub [docker](../../containers-orchestration/docker/other/docker/SKILL.md) quickstart
    ```
    For production, use the DataHub Helm chart with externally-managed
    Kafka/Elasticsearch/[MySQL](../../Software_Engineering_and_Other/Backend/mysql/SKILL.md) rather than the quickstart's bundled

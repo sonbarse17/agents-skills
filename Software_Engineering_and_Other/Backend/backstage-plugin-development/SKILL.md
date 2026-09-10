@@ -297,7 +297,7 @@ is already in place and does not repeat it.
 - **Prefer extending an existing community plugin (fork or contribute
   upstream) over building a near-duplicate from scratch** — check the
   Backstage plugin marketplace before scaffolding a new plugin for
-  something like [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) status, cost insight, or CI status, which
+  something like [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) status, cost insight, or CI status, which
   already have maintained community implementations.
 - **Don't put business logic that belongs to an existing internal service
   inside the Backstage backend plugin** — the backend plugin should be a

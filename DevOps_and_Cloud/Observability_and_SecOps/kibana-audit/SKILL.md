@@ -259,7 +259,7 @@ Configure rolling-file rotation to avoid filling the disk. A 30-90 day retention
 
 ## Deployment Compatibility
 
-| Capability                  | Self-managed | ECH          | [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md)    |
+| Capability                  | Self-managed | ECH          | [Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)    |
 | --------------------------- | ------------ | ------------ | ------------- |
 | Kibana [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) (`kibana.yml`) | Yes          | Via Cloud UI | Not available |
 | Rolling-file appender       | Yes          | Via Cloud UI | Not available |
@@ -271,9 +271,9 @@ Configure rolling-file rotation to avoid filling the disk. A 30-90 day retention
 **ECH notes:** Kibana [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) is enabled via the deployment edit page in the Cloud console. Log files are accessible
 through the Cloud console deployment logs.
 
-**[Serverless](../../Containers_and_Orchestration/serverless/SKILL.md) notes:**
+**[Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) notes:**
 
-- Kibana [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging is not user-configurable on [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md). Security events are managed by Elastic as part of the
+- Kibana [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging is not user-configurable on [Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md). Security events are managed by Elastic as part of the
   platform.
-- If a user asks about Kibana auditing on [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md), direct them to the Elastic Cloud console or their account team.
+- If a user asks about Kibana auditing on [Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md), direct them to the Elastic Cloud console or their account team.
 

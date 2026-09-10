@@ -59,7 +59,7 @@ depends_on:
 | Generate Bicep/Terraform for a known architecture | `[azure-prepare](../[azure-prepare](../azure-skills/skills/azure-prepare/SKILL.md)/SKILL.md)` |
 | Validate infrastructure or run preflight checks | `[azure-validate](../azure-skills/skills/[azure-validate](../azure-validate/SKILL.md)/SKILL.md)` |
 | Troubleshoot a running Azure deployment | `[azure-diagnostics](../[azure-diagnostics](../azure-skills/skills/azure-diagnostics/SKILL.md)/SKILL.md)` |
-| Deploy to or manage AKS/[Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) directly | `[azure-kubernetes](../azure-skills/skills/[azure-kubernetes](../../Containers_and_Orchestration/azure-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)/SKILL.md)/SKILL.md)` |
+| Deploy to or manage AKS/[Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) directly | `[azure-kubernetes](../azure-skills/skills/[azure-kubernetes](../../Containers_and_Orchestration/azure-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)/SKILL.md)/SKILL.md)` |
 | Look up or list existing Azure resources | `[azure-resource-lookup](../[azure-resource-lookup](../azure-skills/skills/azure-resource-lookup/SKILL.md)/SKILL.md)` |
 
 ## Pipeline Rules

@@ -29,17 +29,17 @@ depends_on:
 
 ## Purpose
 
-Rook is a [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) operator that turns raw block devices attached to
+Rook is a [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) operator that turns raw block devices attached to
 cluster nodes into a fully-managed Ceph cluster, then exposes that
-cluster's storage back to [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) as ordinary StorageClasses — giving
+cluster's storage back to [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) as ordinary StorageClasses — giving
 on-prem or [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) clusters the same self-service, dynamically
 provisioned persistent storage that cloud providers offer natively via
 EBS/Persistent Disk/managed disks. This matters operationally because
 Ceph itself is a complex, stateful distributed system (OSDs, monitors,
 managers, placement groups, CRUSH maps); Rook's value is collapsing that
-operational surface into a handful of [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) CRDs (`CephCluster`,
+operational surface into a handful of [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) CRDs (`CephCluster`,
 `CephBlockPool`, `CephFilesystem`, `CephObjectStore`) that are
-declarative and [GitOps](../../Containers_and_Orchestration/gitops/SKILL.md)-friendly, at the cost of still needing to
+declarative and [GitOps](../../../containers-orchestration/common/gitops/gitops/SKILL.md)-friendly, at the cost of still needing to
 understand what Ceph is doing underneath when something goes wrong. This
 skill covers deploying and configuring Rook-managed Ceph for production
 use; validating that the resulting cluster is actually healthy before
@@ -52,7 +52,7 @@ alternative is covered there.
 ## When to use
 
 - Standing up persistent, dynamically-provisioned storage on a
-  [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) or on-prem [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) cluster with no cloud [block-storage](../../../cloud/common/storage/block-storage/SKILL.md)
+  [bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) or on-prem [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster with no cloud [block-storage](../../../cloud/common/storage/block-storage/SKILL.md)
   service available.
 - Deciding OSD device placement and count per node for a new
   `CephCluster`.
@@ -69,7 +69,7 @@ alternative is covered there.
 
 ## Prerequisites & environment
 
-- [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) ≥ 1.26 and Rook ≥ v1.14 (check the Rook/Ceph/[Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)
+- [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) ≥ 1.26 and Rook ≥ v1.14 (check the Rook/Ceph/[Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
   compatibility matrix in Rook's release notes before upgrading either
   component independently — Rook version compatibility with a given
   Ceph release is not automatic).
@@ -84,7 +84,7 @@ alternative is covered there.
   starting point per OSD, scaling with device size and I/O load); do
   not co-locate OSDs on nodes already tightly resource-constrained by
   workload pods.
-- The Rook Ceph Helm chart or raw operator manifests, plus `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md)`/
+- The Rook Ceph Helm chart or raw operator manifests, plus `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md)`/
   Helm access with permission to create cluster-scoped CRDs and
   privileged DaemonSets (Rook's OSD pods require host-level device
   access).
@@ -102,7 +102,7 @@ alternative is covered there.
    helm install --create-namespace --namespace rook-ceph rook-ceph rook-release/rook-ceph --version v1.14.9
    ```
    Confirm the operator pod is `Running` before proceeding —
-   `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n rook-ceph get pods -l app=rook-ceph-operator`.
+   `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) -n rook-ceph get pods -l app=rook-ceph-operator`.
 
 2. **Define the `CephCluster`**, specifying node/device selection
    explicitly rather than letting Rook opportunistically claim every
@@ -148,8 +148,8 @@ alternative is covered there.
 3. **Wait for the cluster to reach `HEALTH_OK`** before creating any
    pools or StorageClasses on top of it:
    ```bash
-   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n rook-ceph get cephcluster rook-ceph -o jsonpath='{.status.ceph.health}'
-   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n rook-ceph exec deploy/rook-ceph-tools -- ceph status
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) -n rook-ceph get cephcluster rook-ceph -o jsonpath='{.status.ceph.health}'
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) -n rook-ceph exec deploy/rook-ceph-tools -- ceph status
    ```
    (The `rook-ceph-tools` deployment, deployed separately, provides a
    `ceph`/`rbd`/`radosgw-admin` CLI shell inside the cluster — see
@@ -240,7 +240,7 @@ alternative is covered there.
        instances: 2
    ```
    Expose it to clients with a `CephObjectStoreUser` (issues S3
-   access/secret key pairs stored as a [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Secret Rook
+   access/secret key pairs stored as a [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Secret Rook
    generates — never hand-write these keys into a manifest):
    ```yaml
    apiVersion: ceph.rook.io/v1
@@ -301,7 +301,7 @@ alternative is covered there.
 - **Symptom:** `CephCluster` never reaches `HEALTH_OK`; OSD pods are
   stuck `Pending` or `CrashLoopBackOff`.
   **Fix:** Usually a device selection problem — check
-  `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n rook-ceph logs -l app=rook-ceph-operator` for "no
+  `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) -n rook-ceph logs -l app=rook-ceph-operator` for "no
   available devices," which means the specified device already has a
   filesystem/partition table Rook won't overwrite by default (by
   design, to avoid destroying data). Wipe the device explicitly and
@@ -310,9 +310,9 @@ alternative is covered there.
   than changing device selectors to "make the error go away."
 
 - **Symptom:** PVCs using a Rook StorageClass stay `Pending` indefinitely
-  with no clear error in `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) describe pvc`.
+  with no clear error in `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) describe pvc`.
   **Fix:** Check the CSI provisioner pods
-  (`[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n rook-ceph get pods -l app=csi-rbdplugin-provisioner`) for
+  (`[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) -n rook-ceph get pods -l app=csi-rbdplugin-provisioner`) for
   crash-looping or a missing/misnamed
   `csi.storage.k8s.io/provisioner-secret-name` in the StorageClass —
   the CSI secrets are auto-generated by Rook per pool/filesystem and
@@ -383,7 +383,7 @@ spec:
 ```
 
 ```bash
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n rook-ceph get cephcluster rook-ceph -o jsonpath='{.status.ceph.health}'
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) -n rook-ceph get cephcluster rook-ceph -o jsonpath='{.status.ceph.health}'
 # HEALTH_OK
 ```
 

@@ -36,7 +36,7 @@ Use this skill when:
 
 - GitLab repository (gitlab.com or self-hosted)
 - Basic understanding of YAML
-- For self-hosted runners: Linux server or [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cluster
+- For self-hosted runners: Linux server or [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster
 
 ## Pipeline Configuration
 
@@ -178,20 +178,20 @@ stop_staging:
   when: manual
 ```
 
-## [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Builds
+## [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) Builds
 
 ```yaml
 build_image:
   stage: build
-  image: [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md):24
+  image: [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md):24
   services:
-    - [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md):24-dind
+    - [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md):24-dind
   variables:
     DOCKER_TLS_CERTDIR: "/certs"
   script:
-    - [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA .
-    - [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+    - [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA .
+    - [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
 ```
 
 ## GitLab Runners
@@ -207,8 +207,8 @@ sudo apt install gitlab-runner
 sudo gitlab-runner register \
   --url https://gitlab.com/ \
   --registration-token TOKEN \
-  --executor [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) \
-  --[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-image alpine:latest
+  --executor [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) \
+  --[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)-image alpine:latest
 ```
 
 ### Runner Configuration
@@ -216,14 +216,14 @@ sudo gitlab-runner register \
 ```toml
 # /etc/gitlab-runner/config.toml
 [[runners]]
-  name = "[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-runner"
+  name = "[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)-runner"
   url = "https://gitlab.com/"
   token = "TOKEN"
-  executor = "[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)"
+  executor = "[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)"
   [runners.docker]
     image = "alpine:latest"
     privileged = true
-    volumes = ["/cache", "/var/run/[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).sock:/var/run/[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).sock"]
+    volumes = ["/cache", "/var/run/[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md).sock:/var/run/[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md).sock"]
 ```
 
 ### Runner Tags
@@ -231,7 +231,7 @@ sudo gitlab-runner register \
 ```yaml
 build:
   tags:
-    - [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
+    - [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)
     - linux
   script:
     - make build
@@ -303,9 +303,9 @@ trigger_downstream:
 **Problem**: Jobs stay pending
 **Solution**: Check runner availability and tags matching
 
-### Issue: [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-in-[Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Fails
-**Problem**: Cannot connect to [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) daemon
-**Solution**: Use `[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md):dind` service with proper TLS configuration
+### Issue: [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)-in-[Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) Fails
+**Problem**: Cannot connect to [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) daemon
+**Solution**: Use `[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md):dind` service with proper TLS configuration
 
 ### Issue: Cache Not Working
 **Problem**: Cache misses between jobs
@@ -323,5 +323,5 @@ trigger_downstream:
 ## Related Skills
 
 - [github-actions](../[github-actions](../[github](../github/SKILL.md)-actions/SKILL.md)/) - [GitHub](../../../github-actions/other/github/SKILL.md) CI/CD alternative
-- [argocd-gitops](../../orchestration/[argocd-gitops](../../Containers_and_Orchestration/[argocd](../../Containers_and_Orchestration/argocd/SKILL.md)-[gitops](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)/SKILL.md)/) - [GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) deployments
+- [argocd-gitops](../../orchestration/[argocd-gitops](../../Containers_and_Orchestration/[argocd](../../Containers_and_Orchestration/argocd/SKILL.md)-[gitops](../../../../containers-orchestration/common/gitops/gitops/SKILL.md)/SKILL.md)/) - [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md) deployments
 - [container-registries](../../containers/[container-registries](../../Cloud_Providers/container-registries/SKILL.md)/) - Registry management

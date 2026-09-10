@@ -286,7 +286,7 @@ jobs:
         run: ./promote.sh staging production
 ```
 
-### [ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md) Health Check Integration
+### [ArgoCD](../../../containers-orchestration/argocd/other/argocd/SKILL.md) Health Check Integration
 ```yaml
 # application.yaml
 apiVersion: argoproj.io/v1alpha1

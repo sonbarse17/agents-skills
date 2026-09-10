@@ -58,7 +58,7 @@ Scan current repository for secrets:
 ```bash
 # Install gitleaks
 brew install gitleaks  # macOS
-# or: [docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) pull zricethezav/gitleaks:latest
+# or: [docker](../../containers-orchestration/docker/other/docker/SKILL.md) pull zricethezav/gitleaks:latest
 
 # Scan current git repository
 gitleaks detect -v
@@ -364,9 +364,9 @@ tags = ["password", "database", "acme-internal"]
 ### CI/CD Integration
 
 - **[GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions**: Use `gitleaks/gitleaks-action@v2` for native integration with Security tab
-- **GitLab CI**: [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-based scanning with artifact retention for [audit](../../AI_and_Agents/Operations/audit/SKILL.md) trails
-- **[Jenkins](../../ci-cd/jenkins/other/jenkins/SKILL.md)**: Execute via [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) or installed binary in pipeline stages
-- **[CircleCI](../../ci-cd/circleci/other/circleci/SKILL.md)**: [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) executor with orb support
+- **GitLab CI**: [Docker](../../containers-orchestration/docker/other/docker/SKILL.md)-based scanning with artifact retention for [audit](../../AI_and_Agents/Operations/audit/SKILL.md) trails
+- **[Jenkins](../../ci-cd/jenkins/other/jenkins/SKILL.md)**: Execute via [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) or installed binary in pipeline stages
+- **[CircleCI](../../ci-cd/circleci/other/circleci/SKILL.md)**: [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) executor with orb support
 - **Azure Pipelines**: Task-based integration with results publishing
 
 ### Security Tools Ecosystem

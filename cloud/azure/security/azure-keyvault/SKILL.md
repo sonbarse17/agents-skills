@@ -355,7 +355,7 @@ KeyVaultSecret secret = await client.GetSecretAsync("db-password");
 string password = secret.Value;
 ```
 
-## [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Integration (AKS)
+## [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Integration (AKS)
 
 ### Secrets Store CSI Driver
 
@@ -396,7 +396,7 @@ spec:
         - objectName: api-key
           key: api-key
     - secretName: tls-secret
-      type: [kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).io/tls
+      type: [kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).io/tls
       data:
         - objectName: app-tls-cert
           key: tls.crt

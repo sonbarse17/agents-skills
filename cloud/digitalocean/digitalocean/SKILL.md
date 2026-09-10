@@ -32,7 +32,7 @@ depends_on:
 # DigitalOcean
 
 ## Purpose
-Design, deploy, and manage DigitalOcean infrastructure using Terraform, doctl, and best practices for Droplets, [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md), managed databases, and App Platform.
+Design, deploy, and manage DigitalOcean infrastructure using Terraform, doctl, and best practices for Droplets, [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), managed databases, and App Platform.
 
 ## Agent Protocol
 
@@ -64,8 +64,8 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions.
 
 ### Compute Decision Tree
 - Simple app, no container orchestration: Droplets with load balancer.
-- Containerized apps, need orchestration: DOKS (DigitalOcean [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)).
-- [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) / PaaS: App Platform (build from [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md), auto-deploy).
+- Containerized apps, need orchestration: DOKS (DigitalOcean [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)).
+- [Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) / PaaS: App Platform (build from [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md), auto-deploy).
 - Batch / background jobs: Droplets or Functions.
 - GPU / ML workloads: Droplets with GPU plans.
 
@@ -499,9 +499,9 @@ Without tags (environment, project, team), cost allocation and resource manageme
 5. Check resource usage: htop, df -h, free -m.
 
 ### DOKS Issues
-1. Get kubeconfig: doctl [kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cluster kubeconfig save <name>.
-2. Check node status: [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get nodes.
-3. Check pod issues: [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) describe pod <name>.
+1. Get kubeconfig: doctl [kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster kubeconfig save <name>.
+2. Check node status: [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get nodes.
+3. Check pod issues: [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) describe pod <name>.
 4. Check load balancer health: verify health check path.
 5. Check Container Registry access: doctl registry login.
 
@@ -533,7 +533,7 @@ Without tags (environment, project, team), cost allocation and resource manageme
 - ../../../Global_References/digitalocean-fundamentals.md -- Digitalocean Fundamentals
 - ../../../Global_References/droplets-networking.md -- Droplets and Networking
 - ../../../Global_References/infrastructure-tools.md -- Infrastructure Tooling
-- ../../../Global_References/[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-doks.md -- DOKS (DigitalOcean [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md))
+- ../../../Global_References/[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-doks.md -- DOKS (DigitalOcean [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md))
 - ../../../Global_References/managed-databases.md -- Managed Databases
 
 ## Handoff

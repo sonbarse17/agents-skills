@@ -63,9 +63,9 @@ which this skill assumes as the baseline syntax reference.
 - At least one **act_runner** binary or container registered against the
   instance — Gitea does not provide managed/hosted runners; every runner
   is infrastructure the team stands up and maintains itself.
-- [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) (or another supported executor) on the runner host if workflows
+- [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) (or another supported executor) on the runner host if workflows
   use container-based steps/actions, since act_runner's default executor
-  model relies on [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) to run job containers, similar to
+  model relies on [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) to run job containers, similar to
   `act`(the local [GitHub](../../../github-actions/other/github/SKILL.md) Actions runner it's derived from).
 - Repo or org admin access to enable Actions per-repository (**Repository
   Settings → Actions**) and to view/manage registered runners
@@ -91,7 +91,7 @@ which this skill assumes as the baseline syntax reference.
      --instance https://gitea.example.com \
      --token ${GITEA_RUNNER_TOKEN} \
      --name ci-runner-1 \
-     --labels ubuntu-latest:[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)://node:20-bullseye,linux_amd64
+     --labels ubuntu-latest:[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)://node:20-bullseye,linux_amd64
    act_runner daemon
    ```
    The `--labels` mapping is important: unlike [GitHub](../../../github-actions/other/github/SKILL.md)-hosted runners,
@@ -131,14 +131,14 @@ which this skill assumes as the baseline syntax reference.
    `https://gitea.com/...` mirror maintained for this reason) for
    anything that talks to the forge's API directly.
 
-5. **Use `[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)://` prefixed images for portability** where an action
+5. **Use `[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)://` prefixed images for portability** where an action
    needs a specific toolchain, since act_runner's default execution model
    is container-based and this keeps behavior consistent across runner
    hosts:
    ```yaml
    jobs:
      build:
-       runs-on: [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
+       runs-on: [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)
        container:
          image: golang:1.22-bookworm
        steps:
@@ -177,13 +177,13 @@ which this skill assumes as the baseline syntax reference.
   are whatever the team defined at registration time and can silently
   diverge between runner hosts if not centrally managed.
 - Prefer Gitea-maintained or generic shell-based mirrors of common
-  actions (checkout, setup-node, setup-go, [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) build/push) over
+  actions (checkout, setup-node, setup-go, [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) build/push) over
   [GitHub](../../../github-actions/other/github/SKILL.md)-API-dependent marketplace actions, and test any ported action
   against Gitea before assuming parity.
 - Register runners per-scope (repo/org/instance) matching trust
   boundaries rather than defaulting every runner to instance-wide access.
 - Since there's no managed-runner tier, budget for the operational load
-  of patching runner hosts (OS updates, [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) version, act_runner binary
+  of patching runner hosts (OS updates, [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) version, act_runner binary
   updates) yourself — this is real infrastructure ownership, not a
   toggle.
 - Pin action versions the same way as [GitHub](../../../github-actions/other/github/SKILL.md) Actions
@@ -226,15 +226,15 @@ which this skill assumes as the baseline syntax reference.
   runners advertising a given label are actually equivalent.
 
 - **Symptom:** A self-hosted act_runner host is compromised (unpatched OS,
-  exposed [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) socket) and used to exfiltrate secrets from every repo
+  exposed [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) socket) and used to exfiltrate secrets from every repo
   it services.
   **Fix:** This is the real risk of self-hosted-only runners with no
   managed-runner alternative — treat runner hosts as sensitive
   infrastructure requiring the same patching cadence and network
   isolation as production systems, scope runners per-repo/org rather than
   instance-wide where workflows handle sensitive secrets, and never leave
-  the [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) socket reachable from job containers unless the workflow
-  genuinely and trustedly needs [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-in-[Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).
+  the [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) socket reachable from job containers unless the workflow
+  genuinely and trustedly needs [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)-in-[Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md).
 
 ## Worked example
 
@@ -248,7 +248,7 @@ act_runner register \
   --instance https://gitea.internal.example.com \
   --token ${GITEA_RUNNER_TOKEN} \
   --name go-service-runner \
-  --labels ubuntu-latest:[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)://golang:1.22-bookworm,linux_amd64
+  --labels ubuntu-latest:[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)://golang:1.22-bookworm,linux_amd64
 act_runner daemon
 ```
 

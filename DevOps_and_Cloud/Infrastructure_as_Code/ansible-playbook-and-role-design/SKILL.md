@@ -73,7 +73,7 @@ a change to every production host at once).
   node to every managed host, and [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) present on managed hosts ([Ansible](../ansible/SKILL.md)
   executes modules via a remote [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) interpreter by default).
 - `[ansible](../ansible/SKILL.md)-lint` and `yamllint` for static checks; `molecule` (with a
-  [Docker](../../Containers_and_Orchestration/docker/SKILL.md) or [Podman](../../Containers_and_Orchestration/podman/SKILL.md) driver) for role testing is recommended for any role
+  [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) or [Podman](../../../containers-orchestration/podman/other/podman/SKILL.md) driver) for role testing is recommended for any role
   used beyond a single one-off playbook.
 - A [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) password (or an integration with a secrets manager via a [vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
   password script) for any playbook referencing [Ansible](../ansible/SKILL.md) [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)-encrypted

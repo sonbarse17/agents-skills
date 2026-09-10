@@ -127,7 +127,7 @@ let credential = ClientSecretCredential::new(
 | ----------------------------- | -------------------------------------- |
 | `DeveloperToolsCredential`    | Local development — tries CLI tools    |
 | `ManagedIdentityCredential`   | Azure VMs, App Service, Functions, AKS |
-| `WorkloadIdentityCredential`  | [Kubernetes](../../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) workload identity           |
+| `WorkloadIdentityCredential`  | [Kubernetes](../../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) workload identity           |
 | `ClientSecretCredential`      | Service principal with secret          |
 | `ClientCertificateCredential` | Service principal with certificate     |
 | `AzureCliCredential`          | Direct Azure CLI auth                  |

@@ -215,7 +215,7 @@ select sink.getNode(), source, sink, "SQL injection from $@.", source.getNode(),
 
 ## SonarQube
 
-### [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Setup
+### [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) Setup
 
 ```yaml
 # [docker-compose](../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml

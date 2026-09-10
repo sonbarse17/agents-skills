@@ -391,10 +391,10 @@ spec:
 
 ```bash
 # Apply the policy
-[kubectl](../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f kyverno-require-signed-images.yaml
+[kubectl](../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f kyverno-require-signed-images.yaml
 
 # Test: this unsigned image should be rejected
-[kubectl](../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) run test --image=ghcr.io/myorg/unsigned-image:latest
+[kubectl](../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) run test --image=ghcr.io/myorg/unsigned-image:latest
 # Expected: admission webhook denies the request
 ```
 
@@ -647,8 +647,8 @@ osv-scanner -r /path/to/project
 # Scan a specific lockfile
 osv-scanner --lockfile=package-lock.json
 
-# Scan a [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) image
-osv-scanner --[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) myimage:latest
+# Scan a [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) image
+osv-scanner --[docker](../../containers-orchestration/docker/other/docker/SKILL.md) myimage:latest
 
 # Output as JSON for CI processing
 osv-scanner -r /path/to/project --format json | jq '.results[].packages[].vulnerabilities[] | .id'
@@ -780,9 +780,9 @@ aws iam delete-access-key --user-name ci-deploy --access-key-id OLD_KEY_ID
 gh auth refresh
 
 # 3. Rotate database credentials
-[kubectl](../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) create secret generic db-credentials \
+[kubectl](../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) create secret generic db-credentials \
   --from-literal=password="$(openssl rand -base64 32)" \
-  --dry-run=client -o yaml | [kubectl](../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f -
+  --dry-run=client -o yaml | [kubectl](../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f -
 
 # 4. Rotate npm/PyPI publish tokens
 npm token revoke <old-token>

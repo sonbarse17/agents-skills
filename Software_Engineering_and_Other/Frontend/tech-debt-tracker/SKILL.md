@@ -177,7 +177,7 @@ prioritization_matrix:
 | T-004 | Standardize error handling across API | Architecture | 4 | 3 | 4.0 | IN PROGRESS |
 | T-005 | Remove dead code in user module | Code | 2 | 1 | 6.0 | TODO |
 | T-006 | Reduce flaky E2E tests | Test | 5 | 8 | 1.5 | PRIORITIZED |
-| T-007 | Update [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) base image | Infrastructure | 3 | 1 | 9.0 | DONE |
+| T-007 | Update [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) base image | Infrastructure | 3 | 1 | 9.0 | DONE |
 ```
 
 ### Step 4: Track Interest Rate

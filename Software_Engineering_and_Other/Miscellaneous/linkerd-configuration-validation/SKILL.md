@@ -65,7 +65,7 @@ which covers writing the configuration in the first place.
 - The `viz` extension installed (`linkerd viz install`) for
   traffic-level checks (`edges`, `stat`, `tap`) — the base `linkerd
   check` only validates the control plane itself, not live traffic.
-- `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)` access to the namespaces being validated, including read
+- `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md)` access to the namespaces being validated, including read
   access to `Server`, `AuthorizationPolicy`, `TrafficSplit`, and
   `ServiceProfile` custom resources.
 - For CI-integrated validation: a cluster (or a disposable
@@ -89,7 +89,7 @@ which covers writing the configuration in the first place.
 2. **Confirm a specific workload actually has the proxy injected**,
    rather than trusting the namespace annotation was sufficient:
    ```bash
-   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get pod <pod-name> -n payments -o jsonpath='{.spec.containers[*].name}'
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get pod <pod-name> -n payments -o jsonpath='{.spec.containers[*].name}'
    # expect: <app-container> linkerd-proxy
    linkerd identity <pod-name> -n payments
    ```
@@ -114,7 +114,7 @@ which covers writing the configuration in the first place.
    equivalent is applying to a staging namespace with representative
    `ServiceAccount` identities and watching `linkerd viz tap`:
    ```bash
-   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f authz-policy.yaml -n payments-staging
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f authz-policy.yaml -n payments-staging
    linkerd viz tap deploy/payments-api -n payments-staging
    ```
    Watch for `tap` output showing responses your policy should be
@@ -123,12 +123,12 @@ which covers writing the configuration in the first place.
 
 5. **Validate `ServiceProfile` and `TrafficSplit` resources reference
    real Services and routes** before applying, since a typo in a
-   `service:`/`host:` field is accepted by the [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) API (it's just
+   `service:`/`host:` field is accepted by the [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) API (it's just
    a string) but silently does nothing at the data plane:
    ```bash
-   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get svc payments-api-v1 payments-api-v2 -n payments
-   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply --dry-run=server -f trafficsplit.yaml
-   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get trafficsplit payments-api-canary -n payments -o yaml
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get svc payments-api-v1 payments-api-v2 -n payments
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply --dry-run=server -f trafficsplit.yaml
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get trafficsplit payments-api-canary -n payments -o yaml
    ```
    After applying for real, confirm the split is actually being honored,
    not just accepted:
@@ -149,7 +149,7 @@ which covers writing the configuration in the first place.
    non-zero `linkerd check`/`linkerd viz check` exit code, and on any
    `TrafficSplit`/`ServiceProfile`/`AuthorizationPolicy` manifest whose
    referenced Service or `ServiceAccount` doesn't resolve via
-   `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply --dry-run=server`:
+   `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply --dry-run=server`:
    ```bash
    linkerd check --output json > check.json || (cat check.json && exit 1)
    ```
@@ -189,7 +189,7 @@ which covers writing the configuration in the first place.
   the specific connection in question — a healthy control plane doesn't
   guarantee every workload is correctly injected or configured.
 
-- **Symptom:** A `TrafficSplit` was applied and `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get
+- **Symptom:** A `TrafficSplit` was applied and `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get
   trafficsplit` shows it exists with the intended weights, but
   `linkerd viz stat` shows 100% of traffic still on the old backend.
   **Fix:** Callers are likely resolving the version-specific backend
@@ -199,7 +199,7 @@ which covers writing the configuration in the first place.
   `TrafficSplit` resource's own YAML looks correct.
 
 - **Symptom:** A new `AuthorizationPolicy` was validated successfully by
-  `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply --dry-run=server` (no schema errors) but breaks
+  `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply --dry-run=server` (no schema errors) but breaks
   production traffic the moment it's applied for real.
   **Fix:** Schema-level dry-run only checks the manifest is
   well-formed — it cannot know whether the `MeshTLSAuthentication`
@@ -242,11 +242,11 @@ linkerd check
 linkerd check --proxy -n payments
 
 # 2. Confirm injection on the actual running pods
-[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get pods -n payments -l app=payments-api \
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get pods -n payments -l app=payments-api \
   -o jsonpath='{range .items[*]}{.metadata.name}{": "}{.spec.containers[*].name}{"\n"}{end}'
 
 # 3. Apply to staging first, then tap live traffic
-[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f authz-policy.yaml -n payments-staging
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f authz-policy.yaml -n payments-staging
 linkerd viz tap deploy/payments-api -n payments-staging --to deploy/checkout-service
 linkerd viz tap deploy/payments-api -n payments-staging --to deploy/some-other-caller
 ```
@@ -258,7 +258,7 @@ actually blocks unauthorized callers, not just that it deployed without
 error). Only after both are confirmed in staging:
 
 ```bash
-[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f authz-policy.yaml -n payments
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f authz-policy.yaml -n payments
 linkerd viz edges deployment -n payments
 linkerd viz tap deploy/payments-api -n payments
 ```

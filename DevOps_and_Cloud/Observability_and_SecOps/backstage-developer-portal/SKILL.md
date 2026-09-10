@@ -70,7 +70,7 @@ afterthought.
 ## Prerequisites & environment
 
 - A running Backstage instance (self-hosted, deployed via the
-  `@backstage/create-app` scaffold and typically run in [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)/on a
+  `@backstage/create-app` scaffold and typically run in [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)/on a
   container platform) — Backstage is a framework you deploy and extend,
   not a SaaS product; budget for ongoing app maintenance (Node.js/
   [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md) upgrades, plugin version compatibility) as part of adopting
@@ -253,14 +253,14 @@ afterthought.
    already registered in the catalog, not registered as an afterthought.
 
 7. **Add a plugin to surface external signal** in the portal, e.g. the
-   [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) plugin (shows live pod/deployment status for a
+   [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) plugin (shows live pod/deployment status for a
    `Component`) or a cost-insights plugin fed by the same allocation
-   data used for [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) showback:
+   data used for [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) showback:
    ```yaml
    # catalog-info.yaml annotation wiring a Component to its cluster resources
    metadata:
      annotations:
-       backstage.io/[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-id: payments-api
+       backstage.io/[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-id: payments-api
    ```
 
 8. **Enforce catalog registration in the golden path**, not as an
@@ -374,7 +374,7 @@ documentation index.
 6. Add a CI check across the org's repos requiring a `catalog-info.yaml`
    at the root for any repo tagged `production` (step 8), giving teams
    a 60-day grace period to backfill before the check becomes blocking.
-7. After rollout, add the [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) plugin (step 7) so each
+7. After rollout, add the [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) plugin (step 7) so each
    `Component`'s catalog page shows live pod status, closing the loop
    between "who owns this" and "is it healthy right now" in one place.
 

@@ -27,7 +27,7 @@ Provision, configure, and monitor NVIDIA GPU servers for AI inference and traini
 Use this skill when:
 - Setting up a new GPU server for LLM inference or model training
 - Installing or upgrading NVIDIA drivers and CUDA toolkit
-- Configuring [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) with NVIDIA Container Toolkit for GPU workloads
+- Configuring [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) with NVIDIA Container Toolkit for GPU workloads
 - Partitioning A100/H100 GPUs with MIG for multi-tenant workloads
 - Troubleshooting GPU errors, driver issues, or thermal throttling
 
@@ -59,15 +59,15 @@ sudo apt update
 # Install latest driver (560.x as of 2025)
 sudo apt install -y nvidia-driver-560 cuda-toolkit-12-6
 
-# Install NVIDIA Container Toolkit ([Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) GPU support)
+# Install NVIDIA Container Toolkit ([Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) GPU support)
 sudo apt install -y nvidia-container-toolkit
-sudo nvidia-ctk runtime configure --runtime=[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
-sudo systemctl restart [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
+sudo nvidia-ctk runtime configure --runtime=[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
+sudo systemctl restart [docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
 
 # Verify
 nvidia-smi
 nvcc --version
-[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) run --rm --gpus all nvidia/cuda:12.6.0-base-ubuntu22.04 nvidia-smi
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run --rm --gpus all nvidia/cuda:12.6.0-base-ubuntu22.04 nvidia-smi
 ```
 
 ## Post-Install Configuration
@@ -114,7 +114,7 @@ nvidia-smi --query-gpu=ecc.errors.corrected.volatile.total \
 
 ```bash
 # Deploy DCGM Exporter for Prometheus scraping
-[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) run -d \
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run -d \
   --name dcgm-exporter \
   --gpus all \
   --cap-add SYS_ADMIN \
@@ -155,8 +155,8 @@ sudo nvidia-smi mig -cgi 2g.20gb,2g.20gb,2g.20gb,2g.20gb -C
 nvidia-smi mig -lgi
 nvidia-smi mig -lcgi
 
-# Use in [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
-[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) run --gpus '"device=MIG-GPU-xxx/0/0"' ...
+# Use in [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run --gpus '"device=MIG-GPU-xxx/0/0"' ...
 
 # Disable MIG
 sudo nvidia-smi mig -i 0 -dci
@@ -213,7 +213,7 @@ nvidia-smi topo -m
 | Driver version mismatch | CUDA/driver incompatibility | Check compatibility matrix at developer.nvidia.com |
 | GPU temperature >85°C | Poor airflow or fan failure | Check `nvidia-smi -q -d TEMPERATURE`; reseat cooler |
 | XID 79 errors | GPU hardware error | Run `dcgmi diag -r 3`; may need GPU replacement |
-| `failed to open device` in container | Container toolkit not configured | Run `nvidia-ctk runtime configure --runtime=[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)` |
+| `failed to open device` in container | Container toolkit not configured | Run `nvidia-ctk runtime configure --runtime=[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)` |
 | Low PCIe bandwidth | Wrong slot or power limit | Check `nvidia-smi -q | grep PCIe`; use x16 slot |
 
 ## Best Practices

@@ -166,8 +166,8 @@ updates:
     schedule:
       interval: "daily"
     
-  # [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
-  - package-ecosystem: "[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)"
+  # [Docker](../../containers-orchestration/docker/other/docker/SKILL.md)
+  - package-ecosystem: "[docker](../../containers-orchestration/docker/other/docker/SKILL.md)"
     directory: "/"
     schedule:
       interval: "weekly"

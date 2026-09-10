@@ -66,7 +66,7 @@ automation is trustworthy rather than a new source of unsupervised risk.
   tasks and [runbooks](../../../DevOps_and_Cloud/Observability_and_SecOps/runbooks/SKILL.md).
 - An automation platform appropriate to the task: a CI/CD pipeline for
   scheduled jobs, a ChatOps bot for human-triggered scripted actions,
-  [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) controllers/operators for continuous reconciliation, or
+  [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) controllers/operators for continuous reconciliation, or
   plain scheduled scripts — pick based on what the task actually needs,
   not the most sophisticated option available.
 - [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) for the automation itself once built — an automation with
@@ -88,7 +88,7 @@ automation is trustworthy rather than a new source of unsupervised risk.
      supports (twice the traffic tends to mean twice the manual work).
 
    Contrast with engineering work: manually restarting a crashed pod
-   every time it happens is toil; writing a [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) liveness probe so
+   every time it happens is toil; writing a [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) liveness probe so
    the platform restarts it automatically is engineering work that
    *eliminates* the toil going forward.
 
@@ -249,7 +249,7 @@ two recurring manual tasks: restarting a flapping `payment-worker` pod
 at roughly 17 hours/month combined.
 
 Scoring both against the frequency/effort framework puts the pod restart
-first (higher frequency, very low effort to fix): a [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
+first (higher frequency, very low effort to fix): a [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
 `livenessProbe` (step 5) is added so the platform restarts the pod
 automatically without paging anyone. The queue-clearing task becomes a
 `/requeue-stuck-messages` ChatOps command (Level 2 on the ladder) that a

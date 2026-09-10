@@ -62,8 +62,8 @@ provides efficient automated security testing with minimal false positives.
 # Install via Go
 go install -v [github](../../../ci-cd/github-actions/other/github/SKILL.md).com/projectdiscovery/nuclei/v3/cmd/nuclei@latest
 
-# Or using [Docker](../../Containers_and_Orchestration/docker/SKILL.md)
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) pull projectdiscovery/nuclei:latest
+# Or using [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) pull projectdiscovery/nuclei:latest
 
 # Update templates (automatically downloads 7000+ community templates)
 nuclei -update-templates
@@ -322,11 +322,11 @@ jobs:
           sarif_file: nuclei.sarif
 ```
 
-### [Docker](../../Containers_and_Orchestration/docker/SKILL.md)-Based CI/CD Scanning
+### [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-Based CI/CD Scanning
 
 ```bash
-# Run in CI/CD pipeline with [Docker](../../Containers_and_Orchestration/docker/SKILL.md)
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) run --rm \
+# Run in CI/CD pipeline with [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run --rm \
   -v $(pwd):/reports \
   projectdiscovery/nuclei:latest \
   -u $TARGET_URL \
@@ -512,7 +512,7 @@ nuclei -u https://production-app.com \
 - **Security Platforms**: Defect Dojo, Splunk, ELK Stack, SIEM platforms (via JSON export)
 - **Notification**: Slack, Microsoft Teams, Discord, PagerDuty, email (via webhook scripts)
 - **SDLC**: Pre-deployment scanning, security regression testing, vulnerability [monitoring](../monitoring/SKILL.md)
-- **Cloud Platforms**: AWS Lambda, Google Cloud Functions, Azure Functions ([serverless](../../Containers_and_Orchestration/serverless/SKILL.md) scanning)
+- **Cloud Platforms**: AWS Lambda, Google Cloud Functions, Azure Functions ([serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) scanning)
 - **Reporting**: HTML, JSON, JSONL, SARIF, Markdown, CSV formats
 
 ## Troubleshooting

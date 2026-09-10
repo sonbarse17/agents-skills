@@ -33,7 +33,7 @@ depends_on:
 
 Sysdig Secure is a runtime security platform whose detection engine is
 built on **Falco**, the open-source CNCF runtime security project
-originated by Sysdig — Falco rules match system-call and [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
+originated by Sysdig — Falco rules match system-call and [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
 [audit](../../Operations/audit/SKILL.md)-log events against a rule syntax describing suspicious behavior
 (unexpected process execution inside a container, a shell spawned in a
 production pod, an outbound connection from a process that should never
@@ -60,8 +60,8 @@ or misconfiguration at all.
 - The user wants image scanning results (base OS + application layer
   vulnerabilities) integrated alongside runtime detection in one
   platform, rather than a separate scanner.
-- The user wants to run CIS Benchmark compliance checks ([Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md),
-  [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md), cloud provider benchmarks) against hosts/clusters.
+- The user wants to run CIS Benchmark compliance checks ([Docker](../../../containers-orchestration/docker/other/docker/SKILL.md),
+  [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), cloud provider benchmarks) against hosts/clusters.
 - The user's Sysdig/Falco rules are too noisy (excessive alerts on
   benign, expected application behavior) and need tuning via exceptions
   or rule condition refinement.
@@ -72,13 +72,13 @@ or misconfiguration at all.
 ## Prerequisites & environment
 
 - A Sysdig Secure account/tenant (SaaS or self-hosted) and the Sysdig
-  agent deployed to the target hosts/clusters — for [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md), this is
+  agent deployed to the target hosts/clusters — for [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), this is
   typically a DaemonSet plus optionally node-level kernel
   instrumentation (an eBPF probe is the current default collection
   method on supported kernels, superseding the older kernel-module
   driver on most modern deployments).
-- [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cluster admin access to deploy the Sysdig agent Helm
-  chart/DaemonSet, and — for the [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) [audit](../../Operations/audit/SKILL.md)-log-based detections
+- [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster admin access to deploy the Sysdig agent Helm
+  chart/DaemonSet, and — for the [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) [audit](../../Operations/audit/SKILL.md)-log-based detections
   — API server [audit](../../Operations/audit/SKILL.md) logging enabled and forwarded to the agent.
 - Familiarity with Falco rule syntax (YAML-based rule definitions with
   `condition`, `output`, and `priority` fields) — Sysdig Secure ships a
@@ -119,7 +119,7 @@ or misconfiguration at all.
        and container
        and proc.name in (bash, sh, zsh, dash)
        and k8s.ns.name = "production"
-       and not proc.pname in (entrypoint.sh, [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-entrypoint.sh)
+       and not proc.pname in (entrypoint.sh, [docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-entrypoint.sh)
      output: >
        Shell spawned in production container
        (user=%user.name container=%container.name image=%container.image.repository
@@ -148,11 +148,11 @@ or misconfiguration at all.
 5. **Run CIS Benchmark compliance checks** against hosts/clusters on a
    schedule, not only at initial setup:
    ```bash
-   sysdig-cli-scanner --compliance cis-[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-benchmark --host <[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-host>
+   sysdig-cli-scanner --compliance cis-[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-benchmark --host <[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-host>
    ```
    Sample finding:
    ```
-   [WARN] 5.9  Ensure [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) secrets are not mounted as environment variables
+   [WARN] 5.9  Ensure [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) secrets are not mounted as environment variables
      Pod: payments-api-7d9f  Namespace: production
    ```
 
@@ -173,8 +173,8 @@ or misconfiguration at all.
      materially more actionable than the alert's single-line summary
      alone.
    - Contain: isolate or kill the affected pod/container (via
-     [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) network policy, or `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) delete pod` on the specific
-     affected pod — **not** a blanket `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) delete namespace` or
+     [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) network policy, or `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) delete pod` on the specific
+     affected pod — **not** a blanket `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) delete namespace` or
      similar broad action) while preserving the forensic capture and
      any relevant logs first.
    - Determine root cause (which CVE, which misconfiguration, which
@@ -211,7 +211,7 @@ or misconfiguration at all.
 - Reduce what runtime detection has to catch in the first place by
   hardening images and enforcing non-root/read-only/dropped-capability
   pod settings — see
-  [container-image-hardening](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[container-image-hardening](../../../DevOps_and_Cloud/Containers_and_Orchestration/container-image-hardening/SKILL.md)/SKILL.md);
+  [container-image-hardening](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[container-image-hardening](../../../containers-orchestration/docker/security/container-image-hardening/SKILL.md)/SKILL.md);
   a hardened, distroless, non-root container gives an attacker far less
   room to trigger the kind of process/file-system behavior runtime
   rules look for in the first place.
@@ -235,7 +235,7 @@ or misconfiguration at all.
 
 - **Symptom:** The team disables the "Shell Spawned in Container" rule
   entirely within the first week because it fires constantly on
-  legitimate `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) exec` debugging sessions.
+  legitimate `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) exec` debugging sessions.
   **Fix:** Scope the rule with a namespace/tag condition (e.g. only
   fire in namespaces tagged `production`, or exclude known debug
   sidecar images via a scoped exception, step 8) instead of disabling
@@ -253,7 +253,7 @@ or misconfiguration at all.
   assume default priorities are already calibrated to your
   environment's risk tolerance.
 
-- **Symptom:** During a live [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), the responder runs `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)
+- **Symptom:** During a live [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), the responder runs `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md)
   delete pod` on every pod in the namespace to "be safe," destroying
   forensic evidence and disrupting unrelated healthy workloads.
   **Fix:** Isolate/contain the *specific* affected pod/container
@@ -269,7 +269,7 @@ or misconfiguration at all.
   scanned — a `:latest` tag or a mutable tag re-pushed after the scan
   ran means the deployed artifact may differ from the scanned one;
   scan and deploy the same immutable, digest-referenced image (see
-  [container-image-hardening](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[container-image-hardening](../../../DevOps_and_Cloud/Containers_and_Orchestration/container-image-hardening/SKILL.md)/SKILL.md)
+  [container-image-hardening](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[container-image-hardening](../../../containers-orchestration/docker/security/container-image-hardening/SKILL.md)/SKILL.md)
   on digest pinning) so "scanned" and "running" are guaranteed to be
   identical.
 
@@ -328,7 +328,7 @@ API dependencies:
    and reviews the process tree: a child process not present in the
    original container image spawned the connection — indicating either
    a compromised dependency or in-container tampering.
-4. Containment: a [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) NetworkPolicy is applied to isolate the
+4. Containment: a [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) NetworkPolicy is applied to isolate the
    specific pod's egress while preserving it (not deleted) for further
    forensic review; the workload is failed over to healthy replicas.
 5. Root cause: image scanning (Sysdig CLI scanner in CI) is found to
@@ -339,7 +339,7 @@ API dependencies:
 
 ## Cross-references
 
-- [container-image-hardening](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[container-image-hardening](../../../DevOps_and_Cloud/Containers_and_Orchestration/container-image-hardening/SKILL.md)/SKILL.md) —
+- [container-image-hardening](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[container-image-hardening](../../../containers-orchestration/docker/security/container-image-hardening/SKILL.md)/SKILL.md) —
   reducing attack surface (non-root, read-only, dropped capabilities,
   digest-pinned images) so there is less for runtime detection to catch
   and less an attacker can do once inside.

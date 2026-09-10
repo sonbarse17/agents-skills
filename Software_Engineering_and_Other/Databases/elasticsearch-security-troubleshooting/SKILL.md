@@ -28,7 +28,7 @@ mappings, see the **[elasticsearch-authz](../../../DevOps_and_Cloud/Observabilit
 
 For diagnostic API endpoints, see [../../../Global_References/elasticsearch-security-troubleshooting_api-reference.md](../../../Global_References/elasticsearch-security-troubleshooting_api-reference.md).
 
-> **Deployment note:** Diagnostic API availability differs between self-managed, ECH, and [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md). See
+> **Deployment note:** Diagnostic API availability differs between self-managed, ECH, and [Serverless](../../Patterns/serverless/SKILL.md). See
 > [Deployment Compatibility](#deployment-compatibility) for details.
 
 ## Jobs to Be Done
@@ -239,7 +239,7 @@ This displays the full certificate chain, expiry dates, and subject alternative 
 | Quick workaround    | Use `curl -k` / `--insecure` to skip verification. **Not for production.** |
 
 On ECH, TLS is managed by Elastic — certificate errors usually indicate the client is not using the correct Cloud
-endpoint URL. On [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md), TLS is fully managed and transparent.
+endpoint URL. On [Serverless](../../Patterns/serverless/SKILL.md), TLS is fully managed and transparent.
 
 ## API Key Issues
 
@@ -370,7 +370,7 @@ deployment type:
 | ------------ | ------------------------------------------------------------------------- |
 | Self-managed | Log in with a file-based user (`elasticsearch-users` CLI) or native user. |
 | ECH          | Contact Elastic support or renew via the Cloud console.                   |
-| [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)   | Not applicable — licensing is fully managed by Elastic.                   |
+| [Serverless](../../Patterns/serverless/SKILL.md)   | Not applicable — licensing is fully managed by Elastic.                   |
 
 ## Examples
 
@@ -478,7 +478,7 @@ diagnosis, then fix the underlying certificate problem.
 
 Diagnostic tool and API availability differs across deployment types.
 
-| Tool / API                       | Self-managed | ECH           | [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)    |
+| Tool / API                       | Self-managed | ECH           | [Serverless](../../Patterns/serverless/SKILL.md)    |
 | -------------------------------- | ------------ | ------------- | ------------- |
 | `_security/_authenticate`        | Yes          | Yes           | Yes           |
 | `_security/user/_has_privileges` | Yes          | Yes           | Yes           |
@@ -496,7 +496,7 @@ Diagnostic tool and API availability differs across deployment types.
 - TLS is managed by Elastic — certificate errors typically indicate an incorrect endpoint URL.
 - Use the Cloud console for log inspection and deployment configuration.
 
-**[Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) notes:**
+**[Serverless](../../Patterns/serverless/SKILL.md) notes:**
 
 - Licensing APIs are not exposed. License-related lockouts do not occur.
 - Native users do not exist — authentication issues are handled at the organization level.

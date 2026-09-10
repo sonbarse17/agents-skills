@@ -76,10 +76,10 @@ Pin: version 1.24.0-1ubuntu1
 Pin-Priority: 1001
 EOF
 
-# Add an external repository (example: [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) CE)
-curl -fsSL https://download.[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-archive-keyring.gpg
-echo "deb [arch=amd64 signed-by=/usr/share/keyrings/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-archive-keyring.gpg] https://download.[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).com/linux/ubuntu $(lsb_release -cs) stable" \
-  > /etc/apt/sources.list.d/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).list
+# Add an external repository (example: [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) CE)
+curl -fsSL https://download.[docker](../../../containers-orchestration/docker/other/docker/SKILL.md).com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-archive-keyring.gpg
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-archive-keyring.gpg] https://download.[docker](../../../containers-orchestration/docker/other/docker/SKILL.md).com/linux/ubuntu $(lsb_release -cs) stable" \
+  > /etc/apt/sources.list.d/[docker](../../../containers-orchestration/docker/other/docker/SKILL.md).list
 apt update
 ```
 

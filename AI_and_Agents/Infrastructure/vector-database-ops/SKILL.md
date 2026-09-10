@@ -39,14 +39,14 @@ Use this skill when:
 | **Qdrant** | High-performance, rich filtering, self-hosted | Self / Cloud | Excellent | Very High |
 | **Weaviate** | Schema-first, hybrid search, multi-modal | Self / Cloud | Good | High |
 | **pgvector** | Already on Postgres, simple use cases | Self | Good | Medium |
-| **Pinecone** | Zero-ops managed, [serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) | Managed only | Good | Very High |
+| **Pinecone** | Zero-ops managed, [serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) | Managed only | Good | Very High |
 | **Chroma** | Local dev, prototyping | Self only | Basic | Low-Medium |
 
 ## Qdrant — Production Deployment
 
 ```bash
-# [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) (single node)
-[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) run -d \
+# [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) (single node)
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run -d \
   --name qdrant \
   -p 6333:6333 \
   -p 6334:6334 \
@@ -54,7 +54,7 @@ Use this skill when:
   qdrant/qdrant:latest
 
 # With custom config
-[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) run -d \
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run -d \
   --name qdrant \
   -p 6333:6333 \
   -v $(pwd)/qdrant-data:/qdrant/storage \
@@ -195,8 +195,8 @@ LIMIT 10;
 ```
 
 ```bash
-# Deploy pgvector via [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
-[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) run -d \
+# Deploy pgvector via [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run -d \
   --name pgvector \
   -e POSTGRES_PASSWORD=secret \
   -e POSTGRES_DB=vectordb \

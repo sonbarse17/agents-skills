@@ -33,7 +33,7 @@ For roles, users, role assignment, and role mappings, see the **[elasticsearch-a
 For detailed API endpoints, see [../../../Global_References/elasticsearch-authn_api-reference.md](../../../Global_References/elasticsearch-authn_api-reference.md).
 
 > **Deployment note:** Not all realms are available on every deployment type. See
-> [Deployment Compatibility](#deployment-compatibility) for self-managed vs. ECH vs. [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) details.
+> [Deployment Compatibility](#deployment-compatibility) for self-managed vs. ECH vs. [Serverless](../../Patterns/serverless/SKILL.md) details.
 
 ## Critical principles
 
@@ -101,7 +101,7 @@ curl -u "${FILE_USER}:${FILE_PASSWORD}" "${ELASTICSEARCH_URL}/_security/_authent
 #### LDAP
 
 Authenticates against an external LDAP directory using username and password. Self-managed only — not available on ECH
-or [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md). Typically combined with role mappings to translate LDAP groups to Elasticsearch roles.
+or [Serverless](../../Patterns/serverless/SKILL.md). Typically combined with role mappings to translate LDAP groups to Elasticsearch roles.
 
 ```bash
 curl -u "${LDAP_USER}:${LDAP_PASSWORD}" "${ELASTICSEARCH_URL}/_security/_authenticate"
@@ -111,7 +111,7 @@ The request is identical to native — Elasticsearch routes it to the LDAP realm
 
 #### Active Directory
 
-Authenticates against an Active Directory domain. Self-managed only — not available on ECH or [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md). Similar to
+Authenticates against an Active Directory domain. Self-managed only — not available on ECH or [Serverless](../../Patterns/serverless/SKILL.md). Similar to
 LDAP but uses AD-specific defaults (user principal name, `sAMAccountName`). Typically combined with role mappings for AD
 group-to-role translation.
 
@@ -122,7 +122,7 @@ curl -u "${AD_USER}:${AD_PASSWORD}" "${ELASTICSEARCH_URL}/_security/_authenticat
 #### PKI (TLS client certificates)
 
 Authenticates using X.509 client certificates presented during the TLS handshake. Requires a PKI realm and TLS on the
-HTTP layer. On ECH, PKI support is limited — check deployment settings. Not available on [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md). Best for
+HTTP layer. On ECH, PKI support is limited — check deployment settings. Not available on [Serverless](../../Patterns/serverless/SKILL.md). Best for
 service-to-service communication in mutual TLS environments.
 
 ```bash
@@ -133,14 +133,14 @@ curl --cert "${CLIENT_CERT}" --key "${CLIENT_KEY}" --cacert "${CA_CERT}" \
 #### SAML
 
 Enables SAML 2.0 Web Browser SSO, primarily for Kibana authentication. On self-managed, configure in
-`elasticsearch.yml`. On ECH, configure through the Cloud deployment settings UI. On [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md), SAML is handled at the
+`elasticsearch.yml`. On ECH, configure through the Cloud deployment settings UI. On [Serverless](../../Patterns/serverless/SKILL.md), SAML is handled at the
 organization level and not configurable per project. Not usable by standard REST clients — the browser-based redirect
 flow is handled by Kibana. Configure another realm (e.g. native or API keys) alongside SAML for programmatic API access.
 
 #### OIDC (OpenID Connect)
 
 Enables OpenID Connect SSO, primarily for Kibana authentication. On self-managed, configure in `elasticsearch.yml`. On
-ECH, configure through the Cloud deployment settings UI. Not available on [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md). Like SAML, it relies on browser
+ECH, configure through the Cloud deployment settings UI. Not available on [Serverless](../../Patterns/serverless/SKILL.md). Like SAML, it relies on browser
 redirects and is not suited for direct REST client use. For programmatic access alongside OIDC, use API keys or native
 users.
 
@@ -150,7 +150,7 @@ but this requires implementing the full OIDC redirect flow.
 #### JWT (JSON Web Tokens)
 
 Accepts JWTs issued by an external identity provider as bearer tokens. On self-managed, configure in
-`elasticsearch.yml`. On ECH, configure through the Cloud deployment settings UI. Not available on [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md). Supports
+`elasticsearch.yml`. On ECH, configure through the Cloud deployment settings UI. Not available on [Serverless](../../Patterns/serverless/SKILL.md). Supports
 two token types:
 
 - **`id_token`** (default) — OpenID Connect ID tokens for user-on-behalf-of flows.
@@ -164,7 +164,7 @@ Each JWT realm handles one token type. Configure separate realms for `id_token` 
 
 #### Kerberos
 
-Authenticates using Kerberos tickets via the SPNEGO mechanism. Self-managed only — not available on ECH or [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md).
+Authenticates using Kerberos tickets via the SPNEGO mechanism. Self-managed only — not available on ECH or [Serverless](../../Patterns/serverless/SKILL.md).
 Requires a working KDC infrastructure, proper DNS, and time synchronization.
 
 ```bash
@@ -341,9 +341,9 @@ application access. Instead, create a dedicated user or API key with only the pr
 ## Deployment Compatibility
 
 Not all authentication realms are available on every deployment type. **Self-managed** clusters support all realms.
-**Elastic Cloud Hosted (ECH)** is managed by Elastic with no node-level access. **[Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)** is fully managed SaaS.
+**Elastic Cloud Hosted (ECH)** is managed by Elastic with no node-level access. **[Serverless](../../Patterns/serverless/SKILL.md)** is fully managed SaaS.
 
-| Realm            | Self-managed | ECH                     | [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)         |
+| Realm            | Self-managed | ECH                     | [Serverless](../../Patterns/serverless/SKILL.md)         |
 | ---------------- | ------------ | ----------------------- | ------------------ |
 | Native           | Yes          | Yes                     | Not available      |
 | File             | Yes          | Not available           | Not available      |
@@ -363,7 +363,7 @@ Not all authentication realms are available on every deployment type. **Self-man
 - SAML, OIDC, and JWT are configurable via the Cloud deployment settings UI.
 - The `elastic` superuser is available but should still be avoided for routine use.
 
-**[Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) notes:**
+**[Serverless](../../Patterns/serverless/SKILL.md) notes:**
 
 - API keys are the primary authentication method.
 - Native users do not exist — users are managed at the Elastic Cloud organization level.

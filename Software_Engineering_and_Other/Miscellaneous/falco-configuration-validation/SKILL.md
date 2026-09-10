@@ -94,7 +94,7 @@ to depend on before it's live.
   validation window, or by running a parallel Falco instance/rule file
   that logs but doesn't feed the production alert-routing pipeline.
 - A way to trigger a deliberate, known-positive test case (e.g.
-  `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) exec` a shell into a test pod, or a scripted equivalent of
+  `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) exec` a shell into a test pod, or a scripted equivalent of
   the specific behavior a rule targets) to confirm the rule actually
   fires — false-positive testing alone doesn't prove a rule works; it
   only proves it isn't overly broad.
@@ -136,7 +136,7 @@ to depend on before it's live.
    traffic** — a minimum of several days, ideally a full week including
    any weekly/off-hours batch jobs, before drawing conclusions:
    ```bash
-   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) logs -n falco -l app.[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).io/name=falco --since=168h \
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) logs -n falco -l app.[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).io/name=falco --since=168h \
      | jq -c 'select(.rule == "Shell spawned in payments-api")' \
      > validation_matches.jsonl
    wc -l validation_matches.jsonl
@@ -178,8 +178,8 @@ to depend on before it's live.
    positives can accidentally also eliminate true positives if the
    exception is too broad:
    ```bash
-   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) exec -it test-pod -n payments -- /bin/sh
-   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) logs -n falco -l app.[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).io/name=falco --since=1m \
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) exec -it test-pod -n payments -- /bin/sh
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) logs -n falco -l app.[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).io/name=falco --since=1m \
      | jq -c 'select(.rule == "Shell spawned in payments-api")'
    ```
    An empty result here after tuning is a **false negative** introduced
@@ -326,7 +326,7 @@ falcosidekick:
 
 Day 7 — pull and summarize matches:
 ```bash
-[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) logs -n falco -l app.[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).io/name=falco --since=168h \
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) logs -n falco -l app.[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).io/name=falco --since=168h \
   | jq -c 'select(.rule == "Shell spawned in payments-api")' > validation_matches.jsonl
 jq -r '.output_fields."k8s.pod.name"' validation_matches.jsonl | sort | uniq -c | sort -rn
 ```
@@ -356,7 +356,7 @@ label rather than the whole image repository:
   priority: CRITICAL
 ```
 
-Positive-control re-test: `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) exec` into an actual
+Positive-control re-test: `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) exec` into an actual
 `payments-api-prod`-labeled pod confirms the rule still fires
 immediately. A second week of validation with the narrowed condition
 produces zero matches. The rule is promoted to route to PagerDuty, and

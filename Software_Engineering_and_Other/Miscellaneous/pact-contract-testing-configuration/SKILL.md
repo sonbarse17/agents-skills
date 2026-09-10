@@ -63,7 +63,7 @@ gate deploys is covered separately in
   `pact-[python](../../Languages/python/SKILL.md)`, `pact-jvm`, etc.) added to the consumer's test
   dependencies, and a corresponding library on the provider side for
   verification.
-- A running Pact Broker — self-hosted (`pactfoundation/pact-broker` "[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
+- A running Pact Broker — self-hosted (`pactfoundation/pact-broker` "[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
   image, backed by [PostgreSQL](../../Backend/postgresql/SKILL.md)) or the hosted PactFlow service — reachable
   from both the consumer's and provider's CI pipelines.
 - CI pipelines for both the consumer and provider repos capable of

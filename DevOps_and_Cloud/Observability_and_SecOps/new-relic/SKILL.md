@@ -54,7 +54,7 @@ echo "license_key: YOUR_LICENSE_KEY" | sudo tee -a /etc/newrelic-infra.yml
 sudo systemctl start newrelic-infra
 ```
 
-### [Docker](../../Containers_and_Orchestration/docker/SKILL.md)
+### [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
 
 ```yaml
 # [docker-compose](../../Containers_and_Orchestration/[docker](../../Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml
@@ -70,17 +70,17 @@ services:
     network_mode: "host"
     environment:
       - NRIA_LICENSE_KEY=${NEW_RELIC_LICENSE_KEY}
-      - NRIA_DISPLAY_NAME=[docker](../../Containers_and_Orchestration/docker/SKILL.md)-host
+      - NRIA_DISPLAY_NAME=[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-host
     volumes:
       - /:/host:ro
-      - /var/run/[docker](../../Containers_and_Orchestration/docker/SKILL.md).sock:/var/run/[docker](../../Containers_and_Orchestration/docker/SKILL.md).sock
+      - /var/run/[docker](../../../containers-orchestration/docker/other/docker/SKILL.md).sock:/var/run/[docker](../../../containers-orchestration/docker/other/docker/SKILL.md).sock
 ```
 
-### [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)
+### [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
 
 ```bash
 # Using Helm
-helm repo add newrelic https://[helm-charts](../../Containers_and_Orchestration/helm-charts/SKILL.md).newrelic.com
+helm repo add newrelic https://[helm-charts](../../../containers-orchestration/helm/charts/helm-charts/SKILL.md).newrelic.com
 
 helm install newrelic-bundle newrelic/nri-bundle \
   --namespace newrelic \

@@ -147,7 +147,7 @@ No preamble. No postamble. No explanations. No filler. Compress output.
 - **TorchServe**: PyTorch-native, built-in model archive, metrics. Best for PyTorch models.
 - **BentoML**: Framework-agnostic, [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-first, OpenAPI spec. Best for [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) ML ecosystem.
 - **Ray Serve**: Distributed, composition of models, [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-native. Best for complex pipelines.
-- **KServe**: [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-native, [serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md), auto-scaling to zero. Best for K8s infra.
+- **KServe**: [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-native, [serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md), auto-scaling to zero. Best for K8s infra.
 - **Seldon Core**: Multi-framework, explainability, outlier detection. Best for advanced ML features.
 
 ```[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
@@ -248,7 +248,7 @@ torch.onnx.export(
 
 ### Step 6: Health Checks & [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
 ```yaml
-# [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) health probes
+# [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) health probes
 readinessProbe:
   httpGet:
     path: /v1/models/my-model/ready
@@ -309,7 +309,7 @@ class ABTestRouter:
 - Batch jobs: reduce to zero replicas when idle.
 
 ### Cost Optimization
-- [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) (KServe): scale to zero when idle.
+- [Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) (KServe): scale to zero when idle.
 - GPU: use spot instances for batch inference.
 - Cache frequent predictions (response cache).
 - Right-size instances: profile before deploying.
@@ -539,11 +539,11 @@ class PredictionCache:
 - Rollback validated with health checks.
 
 ## References
-  - ../../../Global_References/k8s-serving.md — [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-Native Serving
+  - ../../../Global_References/k8s-serving.md — [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-Native Serving
   - ../../../Global_References/model-serving-advanced.md — Model Serving Advanced Topics
   - ../../../Global_References/model-serving-fundamentals.md — Model Serving Fundamentals
   - ../../../Global_References/model-versioning.md — Model Versioning & Deployment Strategies
-  - ../../../Global_References/[serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)-inference.md — [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) Model Inference
+  - ../../../Global_References/[serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-inference.md — [Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) Model Inference
   - ../../../Global_References/serving-frameworks.md — Serving Frameworks Comparison
 ## Handoff
 For model building and packaging, hand off to `ml-[ml-pipeline](../../Workflows/ml-pipeline/SKILL.md)`. For [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) inference metrics, hand off to `devops/[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)`.

@@ -98,7 +98,7 @@ What are your requirements?
   ├── Fully managed, no ops, Lambda triggers, simple
   │   └── AWS SQS — auto-scale, limited features, 256KB max
   ├── High throughput, low latency, JVM-free
-  │   └── Pulsar — geo-replication, [multi-tenancy](../../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md), segment-based storage
+  │   └── Pulsar — geo-replication, [multi-tenancy](../../../containers-orchestration/common/other/multi-tenancy/SKILL.md), segment-based storage
   └── Pub/sub with push delivery, mobile/web integration
       └── Google Pub/Sub — managed, exactly-once, push subscriptions
 ```
@@ -505,7 +505,7 @@ What are the requirements?
 │       ├── Priority queues, TTL, DLX
 │       └── Good for RPC and work queues
 │
-├── [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md), fully managed, no ops
+├── [Serverless](../serverless/SKILL.md), fully managed, no ops
 │   └── AWS SQS / SNS or GCP Pub/Sub
 │       ├── Automatic scaling
 │       ├── No broker management

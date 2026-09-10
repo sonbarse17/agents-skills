@@ -442,7 +442,7 @@ check_cmd() {
 check_cmd node "https://nodejs.org/ (v20+)"
 check_cmd pnpm "npm install -g pnpm"
 check_cmd git "https://git-scm.com/"
-check_cmd [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) "https://[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).com/products/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-desktop"
+check_cmd [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) "https://[docker](../../../containers-orchestration/docker/other/docker/SKILL.md).com/products/[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-desktop"
 
 if [ ! -f ".env" ]; then
   if [ -f ".env.example" ]; then
@@ -464,7 +464,7 @@ echo "✓ Environment check complete"
 | Ignoring [monorepo](../../Frontend/monorepo/SKILL.md) costs | Hit tooling limits ([TypeScript](../../Frontend/typescript/SKILL.md) project ref, ESLint scope) | Plan from day 1 if project will grow beyond 10 packages |
 | No `.gitignore` upfront | Committed node_modules, .env, secrets | Generate with project init. Block with pre-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) hook. |
 | Hardcoded ports/URLs | Dev/prod conflicts, CI fails locally | Use env vars with defaults in config module |
-| No [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) compose for deps | Devs install Postgres/Redis differently, env drift | [docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml with all service dependencies |
+| No [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) compose for deps | Devs install Postgres/Redis differently, env drift | [docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml with all service dependencies |
 | Single tsconfig for monolith + lib | Build config and app config differ | Separate tsconfig for app, lib, build, node |
 | [Commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) generated scaffold files | Boilerplate that will never change | Let init commands run, then prune unused files |
 | Wrong package manager | pnpm users with npm lockfile conflicts | Pin in `packageManager` field, enforce in CI |
@@ -487,8 +487,8 @@ Project Initialization Strategy
 │   ├── Unit only → Vitest
 │   └── Type-safe mocks → Node Test Runner + testdouble
 └── Deployment target?
-    ├── [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) → AWS Lambda / Vercel / Netlify
-    ├── Container → [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) + [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose + K8s manifests
+    ├── [Serverless](../../Patterns/serverless/SKILL.md) → AWS Lambda / Vercel / Netlify
+    ├── Container → [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) + [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Compose + K8s manifests
     └── Edge → Cloudflare Workers / Deno Deploy
 ```
 
@@ -566,7 +566,7 @@ git add . && git [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) -m
 - **`.gitignore` completeness**: Include `node_modules/`, `dist/`, `.env`, `*.log`, `.next/`, `coverage/`, `tmp/`.
 - **Environment validation**: Include `.env.example` with all required vars documented; use Zod for runtime validation.
 - **CI/CD templates**: Generate `.[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/ci.yml` with lint, typecheck, test, and build stages.
-- **[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) support**: Include multi-stage `Dockerfile` and `[docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml` for local development.
+- **[Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) support**: Include multi-stage `Dockerfile` and `[docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml` for local development.
 - **Editor config**: Generate `.vscode/settings.json` with format-on-save and recommended extensions.
 - **License**: Add `LICENSE` file matching project requirements (MIT, Apache 2.0, or proprietary).
 
@@ -575,7 +575,7 @@ git add . && git [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) -m
 | Anti-Pattern | Consequence | Solution |
 |---|---|---|
 | Hardcoded ports/URLs | Dev/prod conflicts | Use env vars with defaults |
-| No [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) compose for deps | Environment drift across team | Include [docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml |
+| No [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) compose for deps | Environment drift across team | Include [docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml |
 | Single tsconfig for all | Build config and app config differ | Separate tsconfigs per context |
 | Committing scaffold files | Boilerplate that never changes | Prune unused files after init |
 | Wrong package manager | Lockfile conflicts | Pin in packageManager field |
@@ -592,7 +592,7 @@ git add . && git [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) -m
 
 - **Dependency auditing**: Run `npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)` or `pnpm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)` on init; pin dependency versions with lockfile.
 - **Environment isolation**: Generate `.env` with placeholder values; never [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) actual secrets.
-- **[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) security**: Use non-root user in Dockerfile; pin base image digests, not tags.
+- **[Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) security**: Use non-root user in Dockerfile; pin base image digests, not tags.
 - **Lint rules**: Include ESLint security plugin (`eslint-plugin-security`) for Node.js projects.
 - **Git hooks**: Configure husky + lint-staged for pre-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) checks; prevent secrets from being committed.
 - **License compliance**: Check dependency licenses (`license-checker`) for compatibility with project license.

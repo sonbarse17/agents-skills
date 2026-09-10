@@ -27,7 +27,7 @@ Create and manage Kibana [dashboards](../dashboards/SKILL.md) and Vega visualiza
 Vega is a declarative visualization grammar for creating custom charts in Kibana. Combined with ES|QL queries, it
 enables highly customized visualizations beyond standard Kibana charts.
 
-**Important Version Requirement:** This skill strictly supports **ES|QL data sources** and requires **[Serverless](../../Containers_and_Orchestration/serverless/SKILL.md) Kibana
+**Important Version Requirement:** This skill strictly supports **ES|QL data sources** and requires **[Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) Kibana
 or version 9.4+ (SNAPSHOT)**. It will not work reliably on older versions or with older Lucene/KQL data source
 definitions.
 
@@ -64,7 +64,7 @@ export KIBANA_PASSWORD="changeme"
 #### Option 4: Local Development with start-local
 
 For local development and testing, use [start-local](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/elastic/start-local) to quickly spin up
-Elasticsearch and Kibana using [Docker](../../Containers_and_Orchestration/docker/SKILL.md) or [Podman](../../Containers_and_Orchestration/podman/SKILL.md):
+Elasticsearch and Kibana using [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) or [Podman](../../../containers-orchestration/podman/other/podman/SKILL.md):
 
 ```bash
 curl -fsSL https://elastic.co/start-local | sh

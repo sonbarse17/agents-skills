@@ -35,7 +35,7 @@ Apply SRE rigor to AI systems where incidents include quality regressions, unsaf
 - Grafana [dashboards](../dashboards/SKILL.md) for golden signals (latency, error rate, cost, quality)
 - On-call rotation configured in PagerDuty, Opsgenie, or equivalent
 - [Runbook](../runbook/SKILL.md) repository accessible to responders
-- Rollback mechanism for model and prompt versions ([GitOps](../../Containers_and_Orchestration/gitops/SKILL.md) or feature flags)
+- Rollback mechanism for model and prompt versions ([GitOps](../../../containers-orchestration/common/gitops/gitops/SKILL.md) or feature flags)
 
 ## AI [Incident](../incident/SKILL.md) Classes
 
@@ -155,14 +155,14 @@ RESPONDER: On-call AI platform engineer
      curl -s -o /dev/null -w "%{http_code}" https://api.provider.com/health
 4. If provider is down:
      a. Enable fallback model route in gateway config.
-     b. [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) set env deployment/[llm-gateway](../../../AI_and_Agents/Models_and_FineTuning/llm-gateway/SKILL.md) FALLBACK_ENABLED=true
+     b. [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) set env deployment/[llm-gateway](../../../AI_and_Agents/Models_and_FineTuning/llm-gateway/SKILL.md) FALLBACK_ENABLED=true
      c. Verify fallback traffic is flowing via Grafana dashboard.
 5. If self-hosted model is down:
-     a. Check pod status: [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get pods -l app=llm-inference -n ai
-     b. Check GPU health: [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) logs -l app=llm-inference --tail=50
-     c. Restart if OOM: [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) rollout restart deployment/llm-inference -n ai
+     a. Check pod status: [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get pods -l app=llm-inference -n ai
+     b. Check GPU health: [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) logs -l app=llm-inference --tail=50
+     c. Restart if OOM: [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) rollout restart deployment/llm-inference -n ai
 6. Freeze all deployments:
-     [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) annotate deployment --all deploy-freeze=true -n ai
+     [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) annotate deployment --all deploy-freeze=true -n ai
 7. Communicate ETA in #[incident](../incident/SKILL.md)-channel.
 8. When resolved, unfreeze and run smoke tests.
 ```
@@ -182,11 +182,11 @@ RESPONDER: On-call AI engineer + ML lead
      - Prompt template changes in last 24h?
      - Retrieval index rebuild in last 24h?
 4. If recent model change:
-     [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) rollout undo deployment/llm-inference -n ai
+     [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) rollout undo deployment/llm-inference -n ai
 5. If recent prompt change:
-     git revert <[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)> && git push  # triggers [GitOps](../../Containers_and_Orchestration/gitops/SKILL.md) redeploy
+     git revert <[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)> && git push  # triggers [GitOps](../../../containers-orchestration/common/gitops/gitops/SKILL.md) redeploy
 6. Increase trace sampling to 100% for affected route:
-     [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) set env deployment/[llm-gateway](../../../AI_and_Agents/Models_and_FineTuning/llm-gateway/SKILL.md) TRACE_SAMPLE_RATE=1.0
+     [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) set env deployment/[llm-gateway](../../../AI_and_Agents/Models_and_FineTuning/llm-gateway/SKILL.md) TRACE_SAMPLE_RATE=1.0
 7. Run offline eval suite against current production:
      [python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) run_evals.py --target prod --suite quality --compare baseline
 8. Confirm metrics return to baseline before closing.
@@ -205,15 +205,15 @@ RESPONDER: On-call platform engineer
      - Missing max_tokens caps on new routes
      - Cache bypass due to config change
 3. Apply immediate caps:
-     [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) patch configmap llm-quotas -n ai --patch '
+     [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) patch configmap llm-quotas -n ai --patch '
        data:
          max_tokens_per_request: "4096"
          rpm_limit: "60"
      '
 4. Enable semantic cache if disabled:
-     [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) set env deployment/[llm-gateway](../../../AI_and_Agents/Models_and_FineTuning/llm-gateway/SKILL.md) CACHE_ENABLED=true
+     [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) set env deployment/[llm-gateway](../../../AI_and_Agents/Models_and_FineTuning/llm-gateway/SKILL.md) CACHE_ENABLED=true
 5. Route traffic to cheaper model tier:
-     [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) set env deployment/[llm-gateway](../../../AI_and_Agents/Models_and_FineTuning/llm-gateway/SKILL.md) DEFAULT_MODEL=gpt-4o-mini
+     [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) set env deployment/[llm-gateway](../../../AI_and_Agents/Models_and_FineTuning/llm-gateway/SKILL.md) DEFAULT_MODEL=gpt-4o-mini
 6. Notify affected tenants of temporary limits.
 7. Open postmortem with cost attribution analysis.
 ```

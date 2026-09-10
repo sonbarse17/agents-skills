@@ -85,7 +85,7 @@ The alert here reads the same pre-computed series the dashboard reads, so there'
 
 ## 5. Choose pull vs push by who knows the service is alive
 
-Pull-based collection (the scraper asks the service for its current metrics) is the default for anything long-running: it makes "is this target even reachable" itself a signal, and it puts the collector in control of load. Push-based collection (the service sends metrics to a gateway) is for things that don't live long enough to be scraped — batch jobs, cron jobs, [serverless](../../Containers_and_Orchestration/serverless/SKILL.md) functions — where there's no stable target to poll before the process exits.
+Pull-based collection (the scraper asks the service for its current metrics) is the default for anything long-running: it makes "is this target even reachable" itself a signal, and it puts the collector in control of load. Push-based collection (the service sends metrics to a gateway) is for things that don't live long enough to be scraped — batch jobs, cron jobs, [serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) functions — where there's no stable target to poll before the process exits.
 
 - **Pull for anything long-running**, since scrape failure is itself a usable signal that something's wrong.
 - **Push for anything short-lived**, since it will finish and exit before a scraper would ever reach it.

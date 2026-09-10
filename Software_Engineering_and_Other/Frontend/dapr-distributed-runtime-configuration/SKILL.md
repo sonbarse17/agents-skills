@@ -50,15 +50,15 @@ Validating these configurations before deploy is covered separately in
 - Configuring retry, timeout, and circuit-breaker resiliency policies
   for a specific component or service.
 - Scoping which applications can access which Dapr components in a
-  shared [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) namespace or cluster.
+  shared [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) namespace or cluster.
 - Deciding whether a given integration belongs in application code,
-  behind a Dapr building block, or as a native [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)/cloud-provider
+  behind a Dapr building block, or as a native [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)/cloud-provider
   integration instead.
 
 ## Prerequisites & environment
 
-- Dapr control plane installed on the target [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cluster (or
-  Dapr's self-hosted mode for local/non-[Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) development), with a
+- Dapr control plane installed on the target [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster (or
+  Dapr's self-hosted mode for local/non-[Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) development), with a
   version whose component API version (`v1alpha1`, `v1`) matches what's
   used in component manifests — component spec fields have changed
   across Dapr major versions, so check the installed `dapr --version`
@@ -66,8 +66,8 @@ Validating these configurations before deploy is covered separately in
   sidecar image is pulled/available in the cluster's container
   registry.
 - `dapr` CLI for local development/testing (`dapr run`) and
-  `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)` for inspecting sidecar injection and component status on
-  [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).
+  `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md)` for inspecting sidecar injection and component status on
+  [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).
 - A backing service for each building block in use (Redis, Kafka,
   a cloud provider's managed queue/state store, etc.) already
   provisioned — Dapr components are configuration pointing at real
@@ -125,7 +125,7 @@ Validating these configurations before deploy is covered separately in
      - order-service
      - order-fulfillment-service
    ```
-   `spec.metadata[].secretKeyRef` pulls the password from a [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
+   `spec.metadata[].secretKeyRef` pulls the password from a [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
    `Secret` rather than embedding it in the component manifest — never
    put a real credential value directly in `spec.metadata`.
    `scopes` restricts which `app-id`s may use this component at all;
@@ -178,8 +178,8 @@ Validating these configurations before deploy is covered separately in
    ```
    The call goes to the local sidecar (`localhost:3500` in this
    example's Dapr HTTP port), which resolves `order-fulfillment-service`
-   via the configured name resolution component ([Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) DNS
-   resolution is the default on [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)) and forwards the request
+   via the configured name resolution component ([Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) DNS
+   resolution is the default on [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)) and forwards the request
    over mTLS to that service's own sidecar.
 
 5. **Attach a resiliency policy scoped to specific components/apps**,
@@ -235,7 +235,7 @@ Validating these configurations before deploy is covered separately in
   actually need it — an unscoped component is reachable by any
   Dapr-enabled app in the namespace, which is rarely the intended
   blast radius for anything holding state or credentials.
-- Reference secrets via `secretKeyRef` (backed by [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Secrets or
+- Reference secrets via `secretKeyRef` (backed by [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Secrets or
   a dedicated Dapr secret store component such as [Vault](../../Miscellaneous/vault/SKILL.md)) in every
   component manifest — never inline a credential value directly under
   `spec.metadata`.
@@ -250,7 +250,7 @@ Validating these configurations before deploy is covered separately in
   starved sidecar adds latency to every building-block call the
   application makes.
 - Use a dedicated Dapr secret store component ([Vault](../../Miscellaneous/vault/SKILL.md), cloud KMS-backed
-  secret managers) rather than [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Secrets alone when the
+  secret managers) rather than [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Secrets alone when the
   organization already has a centralized secrets management standard
   elsewhere.
 
@@ -266,7 +266,7 @@ Validating these configurations before deploy is covered separately in
 - **Symptom:** A component manifest committed to source control
   contains a plaintext database password or broker credential.
   **Fix:** Replace the inline `value` field with `secretKeyRef` pointing
-  at a [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) `Secret` (or a Dapr secret store component), remove
+  at a [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) `Secret` (or a Dapr secret store component), remove
   the plaintext value from git history, and rotate the exposed
   credential.
 

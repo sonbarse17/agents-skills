@@ -37,12 +37,12 @@ depends_on:
 # Oracle Cloud Infrastructure (OCI)
 
 ## Purpose
-Manage Oracle Cloud Infrastructure resources: compute, networking, storage, IAM, OKE ([Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)), Autonomous Database, and cost governance.
+Manage Oracle Cloud Infrastructure resources: compute, networking, storage, IAM, OKE ([Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)), Autonomous Database, and cost governance.
 
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "oracle cloud", "oci", "oke", "oracle [kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)", "autonomous database", "oci compute", "oci networking", "oci iam".
+Exact user phrases: "oracle cloud", "oci", "oke", "oracle [kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)", "autonomous database", "oci compute", "oci networking", "oci iam".
 
 ### Input Context
 Before activating, verify:
@@ -247,7 +247,7 @@ resource "oci_identity_dynamic_group" "compute" {
 }
 ```
 
-### Step 5: OKE (Oracle [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Engine)
+### Step 5: OKE (Oracle [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Engine)
 ```hcl
 resource "oci_containerengine_cluster" "oke" {
   compartment_id     = var.compartment_ocid
@@ -459,8 +459,8 @@ resource "oci_monitoring_alarm" "cpu_high" {
   - ../../../Global_References/oracle-cloud-fundamentals.md — Oracle Cloud Fundamentals
 ## Handoff
 - `devops-terraform` for Terraform state and module patterns for OCI.
-- `devops-[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)` for workload deployment on OKE clusters.
-- `devops-[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)` for containerizing applications for OKE.
+- `devops-[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)` for workload deployment on OKE clusters.
+- `devops-[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)` for containerizing applications for OKE.
 - `devops-[hybrid-cloud](../../common/other/hybrid-cloud/SKILL.md)` for connecting OCI with on-prem or other clouds.
 - `devops-[backup-dr](../../../Software_Engineering_and_Other/Frontend/backup-dr/SKILL.md)` for OCI-based backup and DR strategies.
 - `devops-[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)` for OCI logging and [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) integration.

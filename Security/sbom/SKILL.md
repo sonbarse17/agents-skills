@@ -160,7 +160,7 @@ Before activating, verify:
 - CI/CD platform and build pipeline integration points
 - Existing dependency management (Dependabot, Renovate, Snyk)
 - Compliance requirements (license policies, export controls, attestation)
-- Artifact registry ([Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Hub, ECR, GAR, Artifactory)
+- Artifact registry ([Docker](../../containers-orchestration/docker/other/docker/SKILL.md) Hub, ECR, GAR, Artifactory)
 
 ### Output Artifact
 SBOM pipeline configuration as YAML and policy files.
@@ -216,7 +216,7 @@ Push SBOM to Dependency Track or Harbor for continuous [monitoring](../../DevOps
 
 ### Syft — Container Image SBOM
 ```bash
-# Generate CycloneDX JSON SBOM for [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) image
+# Generate CycloneDX JSON SBOM for [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) image
 syft packages registry.example.com/app:v1.2.3 \
   -o cyclonedx-json > bom.cdx.json
 
@@ -484,7 +484,7 @@ Build-time SBOM includes dev dependencies not present in production. Generate se
   - ../../../Global_References/sbom-policy-enforcement.md — SBOM Policy Enforcement Guide
   - ../../../Global_References/supply-chain-attacks.md — Supply Chain Attack Patterns
 ## Handoff
-`[security-container-security](../../DevOps_and_Cloud/Containers_and_Orchestration/container-security/SKILL.md)` for image scanning integration
+`[security-container-security](../../containers-orchestration/docker/security/container-security/SKILL.md)` for image scanning integration
 `devops-ci-cd` for pipeline configuration and artifact storage
 ## Implementation Patterns
 

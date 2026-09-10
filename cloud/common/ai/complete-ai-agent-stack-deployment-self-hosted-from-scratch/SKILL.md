@@ -72,7 +72,7 @@ throughout about where the self-hosted burden actually lands.
 ## Prerequisites & environment
 
 - GPU infrastructure already provisioned or provisionable — on
-  [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md), this means the NVIDIA GPU Operator and dedicated
+  [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), this means the NVIDIA GPU Operator and dedicated
   serving-shaped GPU node pools per
   [gpu-accelerator-infrastructure-for-ml-training](../../../mlops/skills/[gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md)/SKILL.md)
   (that skill's title says "for ML training" but its GPU Operator/MIG/
@@ -86,10 +86,10 @@ throughout about where the self-hosted burden actually lands.
   where model weights are versioned and stored (not just "a directory on
   the serving node").
 - A self-hosted vector database deployment target (Weaviate or Milvus,
-  self-managed on [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)) and its own dedicated compute/storage —
+  self-managed on [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)) and its own dedicated compute/storage —
   distinct from the GPU serving nodes, since vector search is typically
   CPU/memory-bound, not GPU-bound.
-- `[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)`/`helm` if deploying on [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md), and a realistic estimate of
+- `[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md)`/`helm` if deploying on [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), and a realistic estimate of
   expected concurrent request volume and sequence length before sizing
   either the GPU serving fleet or the vector database cluster — sizing
   either without real numbers produces guesses that fail under real load.
@@ -115,7 +115,7 @@ and the operational burden each phase adds versus a managed alternative.
    ```bash
    helm install gpu-operator nvidia/gpu-operator \
      --namespace gpu-operator --create-namespace --set mig.strategy=mixed
-   [kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) taint nodes -l gpu-pool=agent-serving workload=serving:NoSchedule
+   [kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) taint nodes -l gpu-pool=agent-serving workload=serving:NoSchedule
    ```
    This has no equivalent phase at all on the cloud-managed path — a
    managed LLM API absorbs this entirely. Treat GPU procurement lead time
@@ -295,10 +295,10 @@ cluster.
 # Phase 1 — GPU procurement: 4x A100-80GB nodes provisioned on-prem,
 # GPU Operator installed, dedicated agent-serving node pool tainted
 helm install gpu-operator nvidia/gpu-operator --namespace gpu-operator --create-namespace
-[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) taint nodes gpu-node-01 gpu-node-02 workload=serving:NoSchedule
+[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) taint nodes gpu-node-01 gpu-node-02 workload=serving:NoSchedule
 
 # Phase 2 — vLLM serving the chosen open-weight model on the serving pool
-[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f agent-llm-vllm-deployment.yaml
+[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f agent-llm-vllm-deployment.yaml
 # real p95 measured under expected concurrency: 2.8s per generation step
 
 # Phase 3 — ReAct-style agent loop, iteration cap and per-call timeout

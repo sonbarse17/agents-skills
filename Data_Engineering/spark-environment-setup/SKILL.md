@@ -56,7 +56,7 @@ rather than hard-blocking on `25.11-py3`. NGC's tag is dated, so
 running it directly is fine:
 
 ```bash
-[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) run --runtime=nvidia --gpus all -it --rm \
+[docker](../../containers-orchestration/docker/other/docker/SKILL.md) run --runtime=nvidia --gpus all -it --rm \
   nvcr.io/nvidia/pytorch:25.09-py3
 ```
 

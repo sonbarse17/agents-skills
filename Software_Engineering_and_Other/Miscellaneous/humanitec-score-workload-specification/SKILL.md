@@ -28,7 +28,7 @@ depends_on:
 ## Purpose
 
 Application teams shouldn't need to know whether "staging" runs on a shared
-Postgres RDS instance, a per-namespace CloudSQL database, or a local [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
+Postgres RDS instance, a per-namespace CloudSQL database, or a local [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
 container — but without a shared abstraction, every environment difference
 leaks into the app's deployment config, and every platform migration means
 rewriting every service's manifests. Score (an open, vendor-neutral
@@ -36,7 +36,7 @@ specification at score.dev) solves this by letting a developer declare a
 workload's containers and *abstract* resource dependencies (`postgres`,
 `route`, `dns`) once, in a single `score.yaml`, without naming a concrete
 cloud service; a separate implementation — `score-compose` for local
-[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose, `score-k8s` for plain [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md), or Humanitec's Platform
+[Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Compose, `score-k8s` for plain [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), or Humanitec's Platform
 Orchestrator for full environment-aware provisioning — resolves those
 abstract resources into real infrastructure per target. This skill covers
 writing a correct `score.yaml` and understanding how Humanitec's Resource
@@ -49,7 +49,7 @@ infrastructure across dev/staging/prod.
   (from the app team's perspective) across local dev, CI, and multiple
   cloud environments.
 - Migrating a service's deployment config off environment-specific
-  [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) manifests or Helm values files and onto a portable Score spec.
+  [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) manifests or Helm values files and onto a portable Score spec.
 - Setting up a Humanitec Resource Definition so an abstract `resources`
   entry in `score.yaml` (e.g. `type: postgres`) resolves to a real
   Terraform-provisioned database in a given environment.
@@ -66,8 +66,8 @@ infrastructure across dev/staging/prod.
   `apiVersion` (`score.dev/v1b1` is the current stable schema version as
   of this writing — check score.dev for the latest before assuming a
   newer `v1b2`/GA version hasn't shipped).
-- For local resolution: `score-compose` ([Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose target) or
-  `score-k8s` (plain [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) target), both open-source CLIs maintained
+- For local resolution: `score-compose` ([Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Compose target) or
+  `score-k8s` (plain [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) target), both open-source CLIs maintained
   under the Score project — install via the project's release binaries or
   `brew install score-spec/tap/score-compose`.
 - For Humanitec-orchestrated environments: a Humanitec organization, at
@@ -146,18 +146,18 @@ infrastructure across dev/staging/prod.
    ```bash
    score-compose init
    score-compose generate score.yaml -o compose.yaml
-   [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) compose -f compose.yaml up
+   [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) compose -f compose.yaml up
    ```
    `score-compose generate` fails fast on a malformed spec (missing
    required fields, unknown resource `type` it doesn't have a built-in
    provisioner for) — this is the cheapest validation loop, run before any
    CI or Humanitec deploy.
 
-4. **Run the same file against plain [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) with `score-k8s`** for a
+4. **Run the same file against plain [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) with `score-k8s`** for a
    team not using Humanitec at all:
    ```bash
    score-k8s generate score.yaml -o manifests.yaml
-   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f manifests.yaml -n checkout
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f manifests.yaml -n checkout
    ```
    `score-k8s` resolves `postgres`/`route`/etc. using its own default
    provisioners (e.g. a `postgres` resource becomes a StatefulSet + Service
@@ -304,7 +304,7 @@ infrastructure across dev/staging/prod.
 ## Worked example
 
 **Scenario:** The `checkout-api` service needs to run identically (from the
-app team's point of view) in a developer's local [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) environment, a
+app team's point of view) in a developer's local [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) environment, a
 shared `staging` environment, and `production`, where `staging` uses a
 small shared RDS instance and `production` uses Multi-AZ RDS with read
 replicas — without the app team maintaining three different manifests.
@@ -335,7 +335,7 @@ resources:
       port: 8080
 ```
 
-Local dev: `score-compose generate score.yaml -o compose.yaml && [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
+Local dev: `score-compose generate score.yaml -o compose.yaml && [docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
 compose -f compose.yaml up` — resolves `db` to a local `postgres:15`
 container with no Humanitec involvement at all.
 

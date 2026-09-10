@@ -52,7 +52,7 @@ AZURE_CLIENT_CERTIFICATE_PATH=/path/to/cert.pem
 AZURE_CLIENT_CERTIFICATE_PASSWORD=<optional-password>
 ```
 
-### Workload Identity ([Kubernetes](../../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md))
+### Workload Identity ([Kubernetes](../../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md))
 
 ```bash
 AZURE_TENANT_ID=<tenant-id>

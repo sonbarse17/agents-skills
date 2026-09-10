@@ -39,7 +39,7 @@ Keywords: `elixir build`, `mix`, `phoenix`, `ecto`, `otp`, `supervision tree`, `
 ### Input Context
 - Project type (Phoenix web app, OTP app, Nerves firmware, CLI tool)
 - Database ([PostgreSQL](../../Backend/postgresql/SKILL.md) via Ecto, ETS, Mnesia)
-- Deployment target ([bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md), [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md), Fly.io, Gigalixir)
+- Deployment target ([bare-metal](../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md), [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md), Fly.io, Gigalixir)
 
 ## Decision Trees
 
@@ -333,7 +333,7 @@ Elixir's Telemetry library provides metrics and instrumentation. Each library (P
 
 ## Elixir Release & Deployment
 
-Production releases are built with `mix release`. The release bundles the Erlang VM, all compiled BEAM files, and the runtime config into a self-contained directory. Steps: (1) set `start_permanent: true` in `mix.exs` for `:prod` env, (2) configure releases in mix.exs with `include_executables_for: [:unix]`, (3) build with `MIX_ENV=prod mix release`, (4) copy the `_build/prod/rel/my_app/` directory to the server, (5) run `bin/my_app start`, (6) run `bin/my_app eval "MyApp.Release.migrate"` to run migrations. [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md): use a multi-stage build: builder stage installs Elixir+Erlang, fetches deps, compiles, builds release. Runtime stage uses a minimal image (debian-slim or distroless), copies the release, runs with `bin/my_app start`. Gigalixir: `gigalixir deploy` builds and deploys. Fly.io: `fly deploy` with release command for migrations.
+Production releases are built with `mix release`. The release bundles the Erlang VM, all compiled BEAM files, and the runtime config into a self-contained directory. Steps: (1) set `start_permanent: true` in `mix.exs` for `:prod` env, (2) configure releases in mix.exs with `include_executables_for: [:unix]`, (3) build with `MIX_ENV=prod mix release`, (4) copy the `_build/prod/rel/my_app/` directory to the server, (5) run `bin/my_app start`, (6) run `bin/my_app eval "MyApp.Release.migrate"` to run migrations. [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md): use a multi-stage build: builder stage installs Elixir+Erlang, fetches deps, compiles, builds release. Runtime stage uses a minimal image (debian-slim or distroless), copies the release, runs with `bin/my_app start`. Gigalixir: `gigalixir deploy` builds and deploys. Fly.io: `fly deploy` with release command for migrations.
 
 ## ETS as First-Class Cache
 
@@ -346,7 +346,7 @@ Deployment environment?
 ├── Bare metal / VPS → mix release + systemd unit
 │   Config: environment variables, secret files
 │   [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md): Prometheus + Grafana + Loki
-├── [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) / [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) → Multi-stage Dockerfile
+├── [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) / [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) → Multi-stage Dockerfile
 │   Config: environment variables + config provider
 │   Orchestration: K8s Deployment with readiness/liveness probes
 └── Platform-as-a-Service → Gigalixir / Fly.io / Render
@@ -448,7 +448,7 @@ Production hosting choice?
 │   Build: mix release on CI, scp to server, restart
 │   [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md): Prometheus (telemetry_metrics_prometheus) + Grafana
 │   Logs: JSON logger -> journald -> Loki
-├── [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) / [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) → Multi-stage Dockerfile with distroless runtime
+├── [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) / [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) → Multi-stage Dockerfile with distroless runtime
 │   Builder: elixir:1.17-slim → deps.get → compile → release
 │   Runtime: gcr.io/distroless/cc-debian12
 │   Config: environment variables at deploy time (not build time)

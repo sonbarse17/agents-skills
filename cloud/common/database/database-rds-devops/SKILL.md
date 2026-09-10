@@ -39,7 +39,7 @@ This skill uses the **rds-aidba** MCP server (`mcp/rds-aidba/`) for database-lev
 | `get_cluster_metrics` | cluster_identifier, hours_back | CloudWatch metrics |
 | `get_performance_insights` | instance_identifier | PI wait events |
 | `get_proxy_health` | proxy_name | RDS Proxy status |
-| `get_serverless_capacity` | cluster_identifier | [Serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) v2 [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) |
+| `get_serverless_capacity` | cluster_identifier | [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) v2 [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) |
 
 ### Three-Layer Architecture
 Layer 1: AWS CLI (Control Plane) - Always available Layer 2: CloudWatch ([Observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)) - Always available Layer 3: rds-aidba MCP (Data Plane) - Requires MCP server deployed

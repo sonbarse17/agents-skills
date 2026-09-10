@@ -63,7 +63,7 @@ Infrastructure deployed via Bicep, AKS cluster operational, pipeline passing, ne
 ### Compute: AKS vs App Service vs Functions vs Container Instances vs VMs
 | Workload Type | Recommended | Key Factor | Scaling |
 |---|---|---|---|
-| [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) workloads | AKS | Need K8s ecosystem | Node pools + HPA |
+| [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) workloads | AKS | Need K8s ecosystem | Node pools + HPA |
 | Web app, simple | App Service | PaaS, deployment slots | Auto-scale |
 | Event-driven, short | Azure Functions | <10min execution | Consumption plan |
 | Container, simple | Container Instances | Quick, burst | Manual |
@@ -391,7 +391,7 @@ stages:
         pool:
           vmImage: 'ubuntu-latest'
         steps:
-          - task: [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)@2
+          - task: [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)@2
             displayName: Build and Push
             inputs:
               command: buildAndPush
@@ -403,7 +403,7 @@ stages:
                 latest
           - task: PublishPipelineArtifact@1
             inputs:
-              targetPath: '[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)/'
+              targetPath: '[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)/'
               artifact: 'manifests'
 
   - stage: DeployDev
@@ -552,7 +552,7 @@ resource policyAssignmentLocations 'Microsoft.Authorization/policyAssignments@20
 |---|---|---|
 | Compute - VMs | Virtual Machines | EC2 |
 | Compute - Containers | AKS | EKS |
-| Compute - [Serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) | Azure Functions | Lambda |
+| Compute - [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) | Azure Functions | Lambda |
 | Compute - PaaS Web | App Service | Elastic Beanstalk |
 | Storage - Object | Blob Storage | S3 |
 | Storage - Block | Disk Storage | EBS |
@@ -645,7 +645,7 @@ Bicep/ARM templates, Azure DevOps YAML pipeline definitions, AKS config, Azure C
 
 ## References
   - ../../../Global_References/azure-advanced.md
-  - ../../../Global_References/[azure-aks](../../containers/azure-aks/SKILL.md).md
+  - ../../../Global_References/[azure-aks](../../../../containers-orchestration/aks/cluster-management/azure-aks/SKILL.md).md
   - ../../../Global_References/[azure-compute](../[azure-compute](../azure-skills/skills/azure-compute/SKILL.md)/SKILL.md).md
   - ../../../Global_References/[azure-devops](../../devops/azure-devops/SKILL.md)-pipelines.md
   - ../../../Global_References/azure-fundamentals.md

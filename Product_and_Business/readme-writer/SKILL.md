@@ -40,7 +40,7 @@ Exact user phrases: "write README", "create README", "README file", "README.md",
 - Project type (CLI tool, library, web app, API server, desktop app, game)
 - Language and framework (Node.js, [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md), Rust, Go, .NET, etc.)
 - Target audience (end users, developers, both)
-- Installation method (npm, pip, cargo, [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md), Homebrew, manual)
+- Installation method (npm, pip, cargo, [Docker](../../containers-orchestration/docker/other/docker/SKILL.md), Homebrew, manual)
 - Build and test commands
 - Configuration options and environment variables
 - Contributing guidelines (if available)

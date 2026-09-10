@@ -110,7 +110,7 @@ reproduction_steps:
   environment: "Node.js 20, macOS 14.5, [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) 16"
   prerequisites:
     - "npm install"
-    - "[docker](../../Containers_and_Orchestration/docker/SKILL.md) compose up -d db"
+    - "[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) compose up -d db"
   steps:
     - "Run: npm run dev"
     - "Navigate to /settings"
@@ -145,7 +145,7 @@ git bisect good         # or git bisect bad
 # Repeat until [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) identified
 
 # Log analysis
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) logs -l app=myapp --tail=100 --since=10m > logs.txt
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) logs -l app=myapp --tail=100 --since=10m > logs.txt
 # Look for: error, exception, fatal, timeout, 500, stack trace, correlation ID
 
 # Thread dump analysis (Java)
@@ -268,7 +268,7 @@ fix:
 | Write the regression test first | Test-driven debugging confirms the fix |
 | Check assumptions about data | Null, empty, malformed data causes most bugs |
 | Read the error message completely | Often tells you exactly what's wrong |
-| Simplify the environment | [Docker](../../Containers_and_Orchestration/docker/SKILL.md), fresh checkout, minimal config |
+| Simplify the environment | [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md), fresh checkout, minimal config |
 | Add logging at each decision point | Trace the execution path in production |
 | Use a debugger (not print statements) | Watch variables, step through execution |
 | Document root cause in the fix | git blame shows why the fix exists |

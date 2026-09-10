@@ -180,7 +180,7 @@ def get_error_rate(service: str) -> float:
 
 def restart_deployment(namespace: str, deployment: str) -> None:
     subprocess.run(
-        ["[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md)", "rollout", "restart", f"deployment/{deployment}", "-n", namespace],
+        ["[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md)", "rollout", "restart", f"deployment/{deployment}", "-n", namespace],
         check=True
     )
     print(f"Restarted {namespace}/{deployment}")

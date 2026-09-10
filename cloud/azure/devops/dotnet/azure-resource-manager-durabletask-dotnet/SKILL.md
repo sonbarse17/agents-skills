@@ -126,7 +126,7 @@ Console.WriteLine($"Endpoint: {scheduler.Data.Properties.Endpoint}");
 ### 2. Create Scheduler with Consumption SKU
 
 ```csharp
-// Consumption SKU ([serverless](../../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md))
+// Consumption SKU ([serverless](../../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md))
 var consumptionSchedulerData = new DurableTaskSchedulerData(AzureLocation.EastUS)
 {
     Properties = new DurableTaskSchedulerProperties
@@ -138,7 +138,7 @@ var consumptionSchedulerData = new DurableTaskSchedulerData(AzureLocation.EastUS
 
 var operation = await schedulerCollection.CreateOrUpdateAsync(
     WaitUntil.Completed,
-    "my-[serverless](../../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)-scheduler",
+    "my-[serverless](../../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-scheduler",
     consumptionSchedulerData);
 ```
 
@@ -277,7 +277,7 @@ var retentionOperation = await retentionPolicies.CreateOrUpdateAsync(
 | SKU | Description | Use Case |
 |-----|-------------|----------|
 | `Dedicated` | Fixed [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) with configurable instances | Production workloads, predictable performance |
-| `Consumption` | [Serverless](../../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md), auto-scaling | Development, variable workloads |
+| `Consumption` | [Serverless](../../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md), auto-scaling | Development, variable workloads |
 
 ## Extension Methods
 

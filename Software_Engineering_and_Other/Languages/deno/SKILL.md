@@ -52,7 +52,7 @@ Produce artifact directly. No preamble, no postamble, no explanations. No filler
 - Deno.json config with tasks, lint, fmt, permissions
 - Import map or deno.json imports configured
 - Fresh project structure with routes and islands
-- Deno Deploy or [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) deployment config
+- Deno Deploy or [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) deployment config
 
 ### Max Response Length
 4096 tokens
@@ -511,7 +511,7 @@ export const logger = getLogger();
 ### Permission Hardening
 - [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) permissions with `deno info --json` to list all used URLs and files
 - Use `--deny-env=AWS_SECRET_KEY` to block specific dangerous env access
-- In [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md), run as non-root user: `USER deno` after copy
+- In [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md), run as non-root user: `USER deno` after copy
 - For Fresh, only require `--allow-net --allow-read --allow-env`
 
 ### Module Pinning and Integrity
@@ -590,7 +590,7 @@ Load test with `autocannon` or `wrk` against the compiled binary. Use `deno benc
 - Fresh islands for client-side interactivity. [Preact](../../Frontend/preact/SKILL.md) components for server-only rendering.
 - Deno KV for simple state, [PostgreSQL](../../Backend/postgresql/SKILL.md) driver for complex persistence.
 - deno fmt and deno lint in CI. Check before [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md).
-- Compile binaries with `deno compile` for [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-less deployment.
+- Compile binaries with `deno compile` for [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-less deployment.
 - All env vars loaded via `std/dotenv` in dev, env vars in production.
 - Generate lockfile: `deno cache --lock=lock.json --lock-write`.
 - Type `AppState` in Application constructor for type-safe context.

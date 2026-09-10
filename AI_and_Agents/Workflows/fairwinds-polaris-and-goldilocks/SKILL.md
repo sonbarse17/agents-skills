@@ -29,7 +29,7 @@ depends_on:
 
 ## Purpose
 
-Not every [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) configuration problem needs a custom-authored policy
+Not every [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) configuration problem needs a custom-authored policy
 engine. Fairwinds **Polaris** ships a curated, opinionated set of
 best-practice checks (resource requests/limits set, security context
 hardened, liveness/readiness probes present, image tags not `latest`,
@@ -53,7 +53,7 @@ investing in custom policy authoring for gaps neither tool covers.
   configuration (resource limits, security context, probes) without
   writing custom Rego or Kyverno rules first.
 - The user is auditing an existing cluster and wants a scored report of
-  which workloads violate common [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) best practices, to prioritize
+  which workloads violate common [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) best practices, to prioritize
   remediation.
 - The user wants Polaris running as an **admission webhook** to block (or
   warn on) new workloads that don't meet the baseline, as a lighter-weight
@@ -71,7 +71,7 @@ investing in custom policy authoring for gaps neither tool covers.
 
 ## Prerequisites & environment
 
-- A [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cluster (Polaris and Goldilocks both work against any
+- A [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster (Polaris and Goldilocks both work against any
   conformant 1.2x+ cluster) with access to install via Helm or the CLI.
 - **Polaris** — install as a one-off CLI scan (no cluster install
   required, works against local YAML or a live cluster context) or as an
@@ -80,7 +80,7 @@ investing in custom policy authoring for gaps neither tool covers.
   enforcement, not just scoring/visibility.
 - **Goldilocks** requires the **Vertical Pod Autoscaler (VPA)** CRDs and
   controller installed first (`vertical-pod-autoscaler` from the
-  `[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)/autoscaler` project) — Goldilocks is a UI/controller layer
+  `[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)/autoscaler` project) — Goldilocks is a UI/controller layer
   on top of VPA's `recommender` component, not a replacement for it.
   Install VPA in recommendation-only mode; do not enable VPA's
   auto-update mode as a side effect of installing Goldilocks, since that
@@ -170,7 +170,7 @@ investing in custom policy authoring for gaps neither tool covers.
    ```bash
    # VPA (recommender only — do not enable the updater/admission components
    # unless auto-resizing is explicitly wanted)
-   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)/autoscaler/releases/latest/download/vpa-recommender.yaml
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)/autoscaler/releases/latest/download/vpa-recommender.yaml
 
    helm install goldilocks fairwinds-stable/goldilocks --namespace goldilocks --create-namespace
    ```
@@ -178,7 +178,7 @@ investing in custom policy authoring for gaps neither tool covers.
 7. **Opt namespaces in explicitly** — Goldilocks only generates
    recommendations for labeled namespaces, so nothing is auto-enrolled:
    ```bash
-   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) label namespace payments goldilocks.fairwinds.com/enabled=true
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) label namespace payments goldilocks.fairwinds.com/enabled=true
    ```
 
 8. **Read recommendations from the dashboard or CLI**, and treat them as
@@ -187,8 +187,8 @@ investing in custom policy authoring for gaps neither tool covers.
    (recommend-only) so nothing changes without a human editing the
    Deployment/StatefulSet:
    ```bash
-   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get vpa -n payments
-   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) describe vpa payments-api -n payments
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get vpa -n payments
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) describe vpa payments-api -n payments
    ```
 
 9. **Apply the recommended values manually** (or via a reviewed PR to the
@@ -209,7 +209,7 @@ investing in custom policy authoring for gaps neither tool covers.
 
 ## Best practices
 
-- Treat Polaris as the fast first pass for well-known [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
+- Treat Polaris as the fast first pass for well-known [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
   configuration hygiene (limits, probes, security context, image tags),
   and reserve custom OPA/Kyverno policy authoring
   ([opa-gatekeeper-policy-authoring](../[opa-gatekeeper-policy-authoring](../../../Security/opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md),
@@ -258,7 +258,7 @@ investing in custom policy authoring for gaps neither tool covers.
   **Fix:** Confirm the VPA `updateMode` is `"Off"` (Goldilocks' default) —
   this is intentional; Goldilocks only recommends. Values must be applied
   manually to the workload's own manifest/Helm values, then verified with
-  `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) describe vpa` and a follow-up Polaris scan.
+  `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) describe vpa` and a follow-up Polaris scan.
 
 - **Symptom:** A workload is resized to Goldilocks' exact recommended CPU
   request, and shortly after starts getting CPU-throttled during a daily
@@ -340,8 +340,8 @@ resources:
 Separately, Goldilocks is enabled for the same namespace to get an
 evidence-based value instead of a guessed one:
 ```bash
-[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) label namespace payments goldilocks.fairwinds.com/enabled=true
-[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get vpa payments-api -n payments -o jsonpath='{.status.recommendation}'
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) label namespace payments goldilocks.fairwinds.com/enabled=true
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get vpa payments-api -n payments -o jsonpath='{.status.recommendation}'
 ```
 Output shows a target recommendation of `cpu: 120m, memory: 340Mi` based
 on two weeks of observed usage — noticeably lower than the

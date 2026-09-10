@@ -51,20 +51,20 @@ scanning, API testing capabilities, and seamless CI/CD integration for runtime s
 
 ## Quick Start
 
-### Baseline Scan ([Docker](../../Containers_and_Orchestration/docker/SKILL.md))
+### Baseline Scan ([Docker](../../../containers-orchestration/docker/other/docker/SKILL.md))
 
 Run a quick passive security scan:
 
 ```bash
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) run -t zaproxy/zap-stable zap-baseline.py -t https://target-app.com -r baseline-report.html
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run -t zaproxy/zap-stable zap-baseline.py -t https://target-app.com -r baseline-report.html
 ```
 
-### Full Active Scan ([Docker](../../Containers_and_Orchestration/docker/SKILL.md))
+### Full Active Scan ([Docker](../../../containers-orchestration/docker/other/docker/SKILL.md))
 
 Perform comprehensive active vulnerability testing:
 
 ```bash
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) run -t zaproxy/zap-stable zap-full-scan.py -t https://target-app.com -r full-scan-report.html
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run -t zaproxy/zap-stable zap-full-scan.py -t https://target-app.com -r full-scan-report.html
 ```
 
 ### API Scan with OpenAPI Spec
@@ -72,7 +72,7 @@ Perform comprehensive active vulnerability testing:
 Test APIs using OpenAPI/Swagger specification:
 
 ```bash
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) run -v $(pwd):/zap/wrk/:rw -t zaproxy/zap-stable zap-api-scan.py \
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run -v $(pwd):/zap/wrk/:rw -t zaproxy/zap-stable zap-api-scan.py \
   -t https://api.target.com \
   -f openapi \
   -d /zap/wrk/openapi-spec.yaml \
@@ -104,7 +104,7 @@ Execute passive scanning to analyze traffic without active attacks:
 
 ```bash
 # Baseline scan performs spidering + passive scanning
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) run -t zaproxy/zap-stable zap-baseline.py \
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run -t zaproxy/zap-stable zap-baseline.py \
   -t $TARGET_URL \
   -r baseline-report.html \
   -J baseline-report.json
@@ -123,7 +123,7 @@ Perform active vulnerability testing (requires authorization):
 
 ```bash
 # Full scan includes spidering + passive + active scanning
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) run -t zaproxy/zap-stable zap-full-scan.py \
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run -t zaproxy/zap-stable zap-full-scan.py \
   -t $TARGET_URL \
   -r full-scan-report.html \
   -J full-scan-report.json \
@@ -147,14 +147,14 @@ Scan REST, GraphQL, and SOAP APIs:
 
 ```bash
 # OpenAPI/Swagger API scan
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) run -v $(pwd):/zap/wrk/:rw -t zaproxy/zap-stable zap-api-scan.py \
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run -v $(pwd):/zap/wrk/:rw -t zaproxy/zap-stable zap-api-scan.py \
   -t https://api.target.com \
   -f openapi \
   -d /zap/wrk/openapi.yaml \
   -r /zap/wrk/api-report.html
 
 # GraphQL API scan
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) run -v $(pwd):/zap/wrk/:rw -t zaproxy/zap-stable zap-api-scan.py \
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run -v $(pwd):/zap/wrk/:rw -t zaproxy/zap-stable zap-api-scan.py \
   -t https://api.target.com/graphql \
   -f graphql \
   -d /zap/wrk/schema.graphql \
@@ -193,7 +193,7 @@ Review findings by risk level:
 
 ```bash
 # Generate multiple report formats
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) run -v $(pwd):/zap/wrk/:rw -t zaproxy/zap-stable zap-full-scan.py \
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run -v $(pwd):/zap/wrk/:rw -t zaproxy/zap-stable zap-full-scan.py \
   -t $TARGET_URL \
   -r /zap/wrk/report.html \
   -J /zap/wrk/report.json \
@@ -235,13 +235,13 @@ jobs:
           cmd_options: '-a'
 ```
 
-### [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Automation Framework
+### [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Automation Framework
 
 Use YAML-based automation for advanced workflows:
 
 ```bash
 # Create automation config (see assets/zap_automation.yaml)
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) run -v $(pwd):/zap/wrk/:rw -t zaproxy/zap-stable \
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run -v $(pwd):/zap/wrk/:rw -t zaproxy/zap-stable \
   zap.sh -cmd -autorun /zap/wrk/zap_automation.yaml
 ```
 
@@ -308,13 +308,13 @@ Start with fast scans and progressively increase depth:
 
 ```bash
 # Stage 1: Quick baseline scan (5-10 minutes)
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) run -t zaproxy/zap-stable zap-baseline.py -t $TARGET_URL -r baseline.html
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run -t zaproxy/zap-stable zap-baseline.py -t $TARGET_URL -r baseline.html
 
 # Stage 2: Full spider + passive scan (15-30 minutes)
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) run -t zaproxy/zap-stable zap-baseline.py -t $TARGET_URL -r baseline.html -c baseline-rules.tsv
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run -t zaproxy/zap-stable zap-baseline.py -t $TARGET_URL -r baseline.html -c baseline-rules.tsv
 
 # Stage 3: Targeted active scan on critical endpoints (1-2 hours)
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) run -t zaproxy/zap-stable zap-full-scan.py -t $TARGET_URL -r full.html -c full-rules.tsv
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run -t zaproxy/zap-stable zap-full-scan.py -t $TARGET_URL -r full.html -c full-rules.tsv
 ```
 
 ### Pattern 2: API-First Testing
@@ -323,7 +323,7 @@ Prioritize API security testing:
 
 ```bash
 # 1. Test API endpoints with specification
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) run -v $(pwd):/zap/wrk/:rw -t zaproxy/zap-stable zap-api-scan.py \
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run -v $(pwd):/zap/wrk/:rw -t zaproxy/zap-stable zap-api-scan.py \
   -t https://api.target.com -f openapi -d /zap/wrk/openapi.yaml -r /zap/wrk/api.html
 
 # 2. Run active scan on discovered API endpoints
@@ -360,7 +360,7 @@ Implement ZAP as a security gate in deployment pipelines:
 
 ```bash
 # Run baseline scan and fail build on high-risk findings
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) run -t zaproxy/zap-stable zap-baseline.py \
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run -t zaproxy/zap-stable zap-baseline.py \
   -t https://staging.target.com \
   -r baseline-report.html \
   -J baseline-report.json \
@@ -384,19 +384,19 @@ fi
 
 ## Troubleshooting
 
-### Issue: [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Container Cannot Reach Target Application
+### Issue: [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Container Cannot Reach Target Application
 
 **Solution**: For scanning applications running on localhost or in other containers:
 
 ```bash
-# Scanning host application from [Docker](../../Containers_and_Orchestration/docker/SKILL.md) container
+# Scanning host application from [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) container
 # Use docker0 bridge IP instead of localhost
 HOST_IP=$(ip -4 addr show docker0 | grep -Po 'inet \K[\d.]+')
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) run -t zaproxy/zap-stable zap-baseline.py -t http://$HOST_IP:8080
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run -t zaproxy/zap-stable zap-baseline.py -t http://$HOST_IP:8080
 
 # Scanning between containers - create shared network
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) network create zap-network
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) run --network zap-network -t zaproxy/zap-stable zap-baseline.py -t http://app-container:8080
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) network create zap-network
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run --network zap-network -t zaproxy/zap-stable zap-baseline.py -t http://app-container:8080
 ```
 
 ### Issue: Scan Completes Too Quickly (Incomplete Coverage)
@@ -405,7 +405,7 @@ HOST_IP=$(ip -4 addr show docker0 | grep -Po 'inet \K[\d.]+')
 
 ```bash
 # Configure spider to crawl deeper
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) run -t zaproxy/zap-stable zap-baseline.py \
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run -t zaproxy/zap-stable zap-baseline.py \
   -t $TARGET_URL \
   -r report.html \
   -z "-config spider.maxDepth=10 -config spider.maxDuration=60"
@@ -425,7 +425,7 @@ For JavaScript-heavy applications, use AJAX spider or Automation Framework.
 # Format: alert_id  URL_pattern  parameter  CWE_id  WARN|IGNORE|FAIL
 echo "10202  https://target.com/static/.*  .*  798  IGNORE" >> .zap/rules.tsv
 
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) run -t zaproxy/zap-stable zap-baseline.py -t $TARGET_URL -c .zap/rules.tsv
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run -t zaproxy/zap-stable zap-baseline.py -t $TARGET_URL -c .zap/rules.tsv
 ```
 
 ### Issue: Authentication Session Expires During Scan
@@ -450,7 +450,7 @@ python3 scripts/zap_auth_scanner.py \
 
 ```bash
 # Slower scan with delays between requests
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) run -t zaproxy/zap-stable zap-baseline.py \
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run -t zaproxy/zap-stable zap-baseline.py \
   -t $TARGET_URL \
   -r report.html \
   -z "-config scanner.threadPerHost=1 -config scanner.delayInMs=1000"
@@ -459,7 +459,7 @@ python3 scripts/zap_auth_scanner.py \
 ## References
 
 - [OWASP ZAP Documentation](https://www.zaproxy.org/docs/)
-- [ZAP [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Documentation](https://www.zaproxy.org/docs/[docker](../../Containers_and_Orchestration/docker/SKILL.md)/)
+- [ZAP [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Documentation](https://www.zaproxy.org/docs/[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)/)
 - [OWASP Top 10 2021](https://owasp.org/Top10/)
 - [ZAP Automation Framework](https://www.zaproxy.org/docs/automate/automation-framework/)
 - [GitHub Actions for ZAP](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/zaproxy/action-baseline)

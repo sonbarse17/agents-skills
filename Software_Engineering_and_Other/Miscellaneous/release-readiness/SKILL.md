@@ -109,7 +109,7 @@ etc.) — an unverifiable critical gate is a conditional, not a pass.
 
 For each hard blocker (and optionally follow-ups), write one plan per
 [../docs/plan-template.md](../docs/plan-template.md) into `plans/`, routing to
-the right domain where relevant (a probe gap → `/[k8s-review](../../../DevOps_and_Cloud/Containers_and_Orchestration/k8s-review/SKILL.md)` shape, an alert gap
+the right domain where relevant (a probe gap → `/[k8s-review](../../../containers-orchestration/kubernetes/troubleshooting/k8s-review/SKILL.md)` shape, an alert gap
 → `/[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)` shape). The index orders blockers before follow-ups.
 
 ## Invocation variants
@@ -127,7 +127,7 @@ Effort keywords (`quick` / `standard` / `deep`) and the shared `<focus>` and
 
 ## Related skills
 
-- `/[k8s-review](../../../DevOps_and_Cloud/Containers_and_Orchestration/k8s-review/SKILL.md)`, `/[terraform-review](../../../DevOps_and_Cloud/Infrastructure_as_Code/terraform-review/SKILL.md)`, `/[pipeline-review](../../../ci-cd/common/pipeline-design/pipeline-review/SKILL.md)`, `/[db-review](../../../AI_and_Agents/Operations/db-review/SKILL.md)` — the
+- `/[k8s-review](../../../containers-orchestration/kubernetes/troubleshooting/k8s-review/SKILL.md)`, `/[terraform-review](../../../DevOps_and_Cloud/Infrastructure_as_Code/terraform-review/SKILL.md)`, `/[pipeline-review](../../../ci-cd/common/pipeline-design/pipeline-review/SKILL.md)`, `/[db-review](../../../AI_and_Agents/Operations/db-review/SKILL.md)` — the
   domain depth behind a failed gate.
 - `/[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)` — alert and dashboard gaps for this release.
 - `/[dr-review](../../../DevOps_and_Cloud/Observability_and_SecOps/dr-review/SKILL.md)` — restore and failover readiness for stateful services.

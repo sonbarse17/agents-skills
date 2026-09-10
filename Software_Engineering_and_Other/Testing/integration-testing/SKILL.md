@@ -41,7 +41,7 @@ User mentions integration testing, component testing, API testing, database test
 - Infrastructure dependencies (databases, message queues, caches)
 - External service integrations
 - Existing test suite and coverage levels
-- CI environment capabilities ([Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) availability)
+- CI environment capabilities ([Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) availability)
 
 ### Output Artifact
 Integration test suite with containerized infrastructure, service virtualization, and CI configuration.
@@ -57,7 +57,7 @@ Structured integration test files with:
 - All component interactions tested with real (containerized) infrastructure
 - External services simulated with WireMock or similar
 - Database state management strategy defined (truncation, rollback, or fresh containers)
-- CI integration configured with [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-in-[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) and parallel execution
+- CI integration configured with [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-in-[Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) and parallel execution
 - Error paths tested (timeouts, failures, validation errors)
 
 ## Workflow
@@ -70,7 +70,7 @@ Structured integration test files with:
 6. **Write integration tests**: Structure with beforeAll (containers), beforeEach (data setup), test (AAA), afterEach (cleanup), afterAll (container stop)
 7. **Test error paths**: Include timeouts, network failures, validation errors, auth failures, and resource exhaustion
 8. **Optimize execution**: Parallelize container startup, share containers across suites, configure appropriate timeouts
-9. **Integrate CI**: Configure [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-in-[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md), pre-pull images, set generous timeouts, parallelize test execution
+9. **Integrate CI**: Configure [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-in-[Docker](../../../containers-orchestration/docker/other/docker/SKILL.md), pre-pull images, set generous timeouts, parallelize test execution
 10. **Monitor flakiness**: Track flaky tests, investigate infrastructure-related failures, quarantine non-deterministic tests
 
 ## Architecture / Decision Trees
@@ -106,7 +106,7 @@ Is state isolation critical?
 ├── YES → Fresh container per test class
 └── NO → Data cleanup between tests (truncation)
 
-Does CI support [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)?
+Does CI support [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)?
 ├── YES → TestContainers with DinD
 └── NO → Embedded services or mocked infrastructure
 ```
@@ -146,7 +146,7 @@ Does CI support [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/
 | Speed | Seconds to minutes | Milliseconds | Minutes |
 | Confidence | High (real infra) | Low (isolated) | Very High |
 | Debugging | Medium | Easy | Hard |
-| Infrastructure | [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)/containers | None | Full environment |
+| Infrastructure | [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)/containers | None | Full environment |
 | When | After unit tests | Every [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) | Pre-release |
 
 ## Performance Considerations
@@ -155,7 +155,7 @@ Does CI support [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/
 - Database migration: 5-30s per suite. Run once per suite, not per test
 - Data cleanup: Truncation (100ms) vs fresh container (30s). Choose based on isolation needs
 - Test execution: Aim for < 15 minutes per suite. Use parallel workers, each with its own database
-- CI resources: [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-in-[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) requires privileged mode or dedicated runners. Plan resource allocation
+- CI resources: [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-in-[Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) requires privileged mode or dedicated runners. Plan resource allocation
 - Network: Container-to-container communication is fast (< 1ms). External service calls add latency
 
 ## Integration Test Examples
@@ -331,9 +331,9 @@ jobs:
       - run: npm ci
       - name: Pre-pull container images
         run: |
-          [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) pull postgres:16-alpine
-          [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) pull confluentinc/cp-kafka:7.6.0
-          [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) pull wiremock/wiremock:3.5.4
+          [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) pull postgres:16-alpine
+          [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) pull confluentinc/cp-kafka:7.6.0
+          [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) pull wiremock/wiremock:3.5.4
       - name: Run integration tests
         run: npx vitest run --config vitest.integration.config.ts --shard=${{ matrix.shard }}/2
         env:
@@ -382,8 +382,8 @@ Hardcoded ports, hosts, or credentials prevent parallel test execution. Use `wit
 - Database migration: 5-30s per suite. Run once per suite (beforeAll), not per test.
 - Data cleanup: truncation (50-200ms) vs fresh container (30s). Choose based on isolation needs.
 - Test execution: target < 15 minutes per suite. Parallel workers each get isolated database.
-- CI resources: [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-in-[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) requires privileged mode or dedicated runners. Use `TESTCONTAINERS_RYUK_DISABLED: true` in CI.
-- Container image caching: pre-pull all images in CI to avoid network timeouts. Use `[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) pull` in a setup step.
+- CI resources: [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-in-[Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) requires privileged mode or dedicated runners. Use `TESTCONTAINERS_RYUK_DISABLED: true` in CI.
+- Container image caching: pre-pull all images in CI to avoid network timeouts. Use `[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) pull` in a setup step.
 - WireMock startup: < 3s per instance. Reuse across tests within a suite.
 
 ## Rules

@@ -24,7 +24,7 @@ depends_on:
   - humanitec-score-workload-specification
 ---
 
-# [Multi-Tenancy](../../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md) and Team Workspace Design for IDP
+# [Multi-Tenancy](../../../containers-orchestration/common/other/multi-tenancy/SKILL.md) and Team Workspace Design for IDP
 
 ## Purpose
 
@@ -34,7 +34,7 @@ moment one team's misconfigured workload can exhaust a shared cluster's
 [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), or one team's RBAC role can read another team's secrets, the
 platform stops being a trustworthy shared substrate and every team either
 demands a dedicated environment or starts treating the platform
-defensively. [Multi-tenancy](../../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md) design is the discipline of drawing tenant
+defensively. [Multi-tenancy](../../../containers-orchestration/common/other/multi-tenancy/SKILL.md) design is the discipline of drawing tenant
 boundaries — namespace-per-team, RBAC scoping, resource quotas, network
 policy — deliberately enough that "shared platform" doesn't quietly mean
 "soft-isolated at best," while stopping short of giving every team a
@@ -47,7 +47,7 @@ platform access matches its infrastructure access.
 
 ## When to use
 
-- Designing the tenant model for a new shared [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-based platform
+- Designing the tenant model for a new shared [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-based platform
   (or IDP layered on top of one) before onboarding the first several
   teams.
 - A namespace-per-team pattern already exists but teams can still see or
@@ -66,9 +66,9 @@ platform access matches its infrastructure access.
 
 ## Prerequisites & environment
 
-- A [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cluster (or clusters) with RBAC enabled — the baseline
+- A [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster (or clusters) with RBAC enabled — the baseline
   substrate this skill's namespace/RBAC patterns assume; for a non-
-  [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) platform, the same isolation principles apply at whatever
+  [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) platform, the same isolation principles apply at whatever
   the platform's tenant-scoping primitive is (a Humanitec Environment, a
   cloud account/subscription boundary), substituting the equivalent
   construct.
@@ -76,11 +76,11 @@ platform access matches its infrastructure access.
   `NetworkPolicy`, and RBAC (`Role`/`RoleBinding`) objects — these are the
   concrete mechanisms this skill's guidance is built on.
 - A CNI that enforces `NetworkPolicy` (not all do by default — Calico,
-  Cilium, and most managed [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) CNIs support it; flannel's default
+  Cilium, and most managed [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) CNIs support it; flannel's default
   mode does not without an add-on) — confirm this before assuming
   network-level tenant isolation is actually in effect.
 - An identity provider integrated with the cluster/platform (OIDC, SAML)
-  mapping real team membership to [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)/platform groups, so RBAC
+  mapping real team membership to [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)/platform groups, so RBAC
   bindings can reference groups rather than individually-listed users.
 - The software catalog or portal tool already in place (Backstage, Port,
   Cortex, OpsLevel) whose entity-ownership model needs to align with the
@@ -89,7 +89,7 @@ platform access matches its infrastructure access.
 ## Step-by-step guidance
 
 1. **Choose the tenancy model deliberately: namespace-per-team (soft
-   [multi-tenancy](../../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md)) versus cluster-per-team (hard [multi-tenancy](../../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md)), per
+   [multi-tenancy](../../../containers-orchestration/common/other/multi-tenancy/SKILL.md)) versus cluster-per-team (hard [multi-tenancy](../../../containers-orchestration/common/other/multi-tenancy/SKILL.md)), per
    workload class, not as a single org-wide default.** Namespace-per-team
    is far cheaper to operate (one control plane, shared node pools) and
    sufficient for the large majority of internal workloads; reserve
@@ -112,7 +112,7 @@ platform access matches its infrastructure access.
 
 2. **Create one namespace per team (or per team-environment pair) with a
    consistent naming convention**, provisioned through the platform's
-   self-service/scaffolding path rather than a manual `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) create
+   self-service/scaffolding path rather than a manual `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) create
    namespace`, so every namespace's quota, RBAC, and network policy are
    applied consistently from creation:
    ```yaml
@@ -140,7 +140,7 @@ platform access matches its infrastructure access.
        verbs: ["get", "list", "watch", "create", "update", "patch"]
      - apiGroups: [""]
        resources: ["secrets"]
-       verbs: ["get", "list"]   # read own secrets, not create/delete via [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)
+       verbs: ["get", "list"]   # read own secrets, not create/delete via [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md)
    ---
    apiVersion: rbac.authorization.k8s.io/v1
    kind: RoleBinding
@@ -249,7 +249,7 @@ platform access matches its infrastructure access.
      owner: group:checkout-team
      # the k8s namespace this maps to, so RBAC/catalog stay aligned
      annotations:
-       [kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).io/namespace: checkout-team-production
+       [kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).io/namespace: checkout-team-production
    ```
 
 8. **Route dedicated-infrastructure decisions through an explicit
@@ -313,7 +313,7 @@ platform access matches its infrastructure access.
 - **Symptom:** Two teams' pods on the same shared cluster can reach each
   other's internal service endpoints directly, and a security [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) flags
   this as a lateral-movement risk during an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) review.
-  **Fix:** RBAC controls the [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) API, not pod-to-pod network
+  **Fix:** RBAC controls the [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) API, not pod-to-pod network
   traffic — add a default-deny `NetworkPolicy` per namespace (step 5) and
   confirm the CNI actually enforces it; RBAC isolation alone is
   frequently mistaken for full tenant isolation when it only covers one
@@ -333,10 +333,10 @@ platform access matches its infrastructure access.
   operate another dedicated cluster indefinitely.
 
 - **Symptom:** A team's catalog entry in the software portal lists them
-  as owning `checkout-api`, but their actual [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) RBAC access maps
+  as owning `checkout-api`, but their actual [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) RBAC access maps
   to a differently-named namespace after an unrelated rename, and nobody
   updated the catalog's annotation — leading to a confused on-call
-  handoff during an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) where the responding engineer's [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)
+  handoff during an [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) where the responding engineer's [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md)
   access didn't match what the catalog implied.
   **Fix:** Treat the catalog's namespace/environment annotation (step 7)
   as generated from the same source of truth as the RBAC binding (e.g.
@@ -346,7 +346,7 @@ platform access matches its infrastructure access.
 ## Worked example
 
 **Scenario:** A platform team is onboarding 15 product teams onto a
-shared [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cluster for the first time, replacing a prior model
+shared [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster for the first time, replacing a prior model
 where each team had requested (and gotten) their own small cluster,
 which had become expensive and slow to patch consistently. One team
 processes payment data under PCI scope and needs to justify whether they
@@ -362,7 +362,7 @@ still need dedicated infrastructure under the new model.
    `<team>-production` and `<team>-staging` namespace pair, created
    through the platform's self-service onboarding flow, which also
    applies RBAC, quota, and network policy in the same automation run —
-   never a manual `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) create namespace` a team could request without
+   never a manual `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) create namespace` a team could request without
    the accompanying controls.
 3. **RBAC (step 3)**: each namespace gets a `Role`/`RoleBinding` scoped to
    that team's IdP group, granting deployment/service/configmap
@@ -394,4 +394,4 @@ still need dedicated infrastructure under the new model.
 
 - [platform-engineering-team-topology-and-operating-model](../[platform-engineering-team-topology-and-operating-model](../../../Product_and_Business/[platform-engineering](../../Frontend/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md) — the "thinnest viable platform" sizing discipline this skill's shared-vs-dedicated infrastructure tradeoff (step 1/8) applies at the infrastructure-tenancy level specifically.
 - [golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../../../Product_and_Business/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md) — provisioning a namespace and its RBAC/quota/network-policy bundle consistently is exactly the kind of paved-road automation a golden path or scaffolding template should own, rather than a manual per-team setup.
-- [humanitec-score-workload-specification](../[humanitec-score-workload-specification](../humanitec-score-workload-specification/SKILL.md)/SKILL.md) — for platforms using Score/Humanitec instead of raw [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) manifests, Environments and Resource Definition bindings are the equivalent tenant-scoping primitive to the namespace/RBAC pattern described here.
+- [humanitec-score-workload-specification](../[humanitec-score-workload-specification](../humanitec-score-workload-specification/SKILL.md)/SKILL.md) — for platforms using Score/Humanitec instead of raw [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) manifests, Environments and Resource Definition bindings are the equivalent tenant-scoping primitive to the namespace/RBAC pattern described here.

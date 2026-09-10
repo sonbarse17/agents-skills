@@ -35,7 +35,7 @@ flowchart TD
     CO --> S3[(DB Shard 3)]
 ```
 
-## 3. Infrastructure ([Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md))
+## 3. Infrastructure ([Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md))
 
 ```yaml
 apiVersion: apps/v1

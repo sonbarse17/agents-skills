@@ -137,7 +137,7 @@ credential = DefaultAzureCredential(require_envvar=True)
 | Parameter | Default | Effect |
 |-----------|---------|--------|
 | `exclude_environment_credential` | False | Skip env-var-based auth |
-| `exclude_workload_identity_credential` | False | Skip [Kubernetes](../../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) workload identity |
+| `exclude_workload_identity_credential` | False | Skip [Kubernetes](../../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) workload identity |
 | `exclude_managed_identity_credential` | False | Skip managed identity |
 | `exclude_shared_token_cache_credential` | False | Skip shared token cache |
 | `exclude_visual_studio_code_credential` | False | Skip VS Code credential |
@@ -186,7 +186,7 @@ with AzureOpenAI(
 |------------|----------|
 | `EnvironmentCredential` | Auth via AZURE_CLIENT_SECRET / AZURE_CLIENT_CERTIFICATE_PATH env vars |
 | `ManagedIdentityCredential` | Azure VMs, App Service, Functions, AKS, Arc, Service Fabric |
-| `WorkloadIdentityCredential` | [Kubernetes](../../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) with Microsoft Entra Workload ID |
+| `WorkloadIdentityCredential` | [Kubernetes](../../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) with Microsoft Entra Workload ID |
 
 ### Service Principals
 
@@ -303,7 +303,7 @@ credential = ChainedTokenCredential(
 
 ### WorkloadIdentityCredential
 
-For Azure [Kubernetes](../../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Service with workload identity:
+For Azure [Kubernetes](../../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Service with workload identity:
 
 ```[python](../../../../../Software_Engineering_and_Other/Languages/python/SKILL.md)
 from azure.identity import WorkloadIdentityCredential
@@ -518,7 +518,7 @@ AZURE_LOG_LEVEL=debug
 | Local Development | `DefaultAzureCredential` (uses Azure CLI) |
 | Azure App Service | `DefaultAzureCredential` (uses Managed Identity) |
 | Azure Functions | `DefaultAzureCredential` (uses Managed Identity) |
-| Azure [Kubernetes](../../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Service | `WorkloadIdentityCredential` |
+| Azure [Kubernetes](../../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Service | `WorkloadIdentityCredential` |
 | Azure VMs | `DefaultAzureCredential` (uses Managed Identity) |
 | CI/CD Pipeline | `EnvironmentCredential` or `AzurePipelinesCredential` |
 | Desktop App | `InteractiveBrowserCredential` |

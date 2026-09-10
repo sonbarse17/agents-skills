@@ -54,10 +54,10 @@ reports into one answered by automated health signals before full rollout.
 
 ## Prerequisites & environment
 
-- A deployment platform supporting traffic splitting: [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) with a
+- A deployment platform supporting traffic splitting: [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) with a
   service mesh (Istio, Linkerd) or an ingress supporting weighted
   routing, or a [progressive-delivery](../progressive-delivery/SKILL.md) controller — Argo Rollouts ≥ 1.6 or
-  Flagger ≥ 1.x are the common choices; plain [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) `Deployment`
+  Flagger ≥ 1.x are the common choices; plain [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) `Deployment`
   rolling updates alone do not give you traffic-percentage control, only
   pod-replacement pacing.
 - Health/metrics signals available for automated analysis: a metrics
@@ -82,7 +82,7 @@ reports into one answered by automated health signals before full rollout.
    rollout window. Many teams combine them: canary for routine releases,
    blue-green for high-risk or infrequent major changes.
 
-2. **Blue-green with a [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Service selector flip** (simple
+2. **Blue-green with a [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Service selector flip** (simple
    approach, no mesh required):
    ```yaml
    # New version deployed as "green", labeled distinctly from "blue"
@@ -192,7 +192,7 @@ reports into one answered by automated health signals before full rollout.
    ```
 
 5. **Verify before promoting, promote deliberately.** Whether via
-   `pause:` steps that require an operator to confirm (`[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) argo
+   `pause:` steps that require an operator to confirm (`[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) argo
    rollouts promote payments-api`) or fully automated analysis, never
    promote to 100% purely on a fixed timer with no health signal attached
    — the whole point of canary is that the *signal*, not the clock,
@@ -200,8 +200,8 @@ reports into one answered by automated health signals before full rollout.
 
 6. **Roll back explicitly when analysis fails or a human calls it.**
    ```bash
-   [kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) argo rollouts abort payments-api     # halt and revert to stable
-   [kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) argo rollouts undo payments-api      # revert to previous revision
+   [kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) argo rollouts abort payments-api     # halt and revert to stable
+   [kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) argo rollouts undo payments-api      # revert to previous revision
    ```
    For blue-green's Service-selector approach, rollback is simply
    flipping the selector back to `blue` — keep `blue` running unscaled
@@ -282,7 +282,7 @@ reports into one answered by automated health signals before full rollout.
 30-minute automated rollout with an error-rate gate, on a cluster already
 running Argo Rollouts.
 
-1. Update the `Rollout` resource's image to `1.4.2` (via the [GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)
+1. Update the `Rollout` resource's image to `1.4.2` (via the [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md)
    config repo, per
    [gitops-workflow](../[gitops-workflow](../../Containers_and_Orchestration/[gitops](../../Containers_and_Orchestration/gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md)) and let the operator
    reconcile it.
@@ -300,7 +300,7 @@ running Argo Rollouts.
    for those 5 minutes.
 5. On success at `setWeight: 100`, the previous stable ReplicaSet (`1.4.1`)
    is scaled down but not deleted immediately, preserving a fast-rollback
-   option (`[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) argo rollouts undo payments-api`) during the
+   option (`[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) argo rollouts undo payments-api`) during the
    post-release soak window.
 
 ## Cross-references

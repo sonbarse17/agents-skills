@@ -57,7 +57,7 @@ Create a `CLAUDE.md` at the repository root to restrict Claude Code behavior:
 ## Restrictions
 
 - NEVER read or output contents of .env, .env.*, secrets.yaml, or any file matching *.pem, *.key
-- NEVER execute `rm -rf`, `DROP TABLE`, `[kubectl](../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) delete`, or `terraform destroy` commands
+- NEVER execute `rm -rf`, `DROP TABLE`, `[kubectl](../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) delete`, or `terraform destroy` commands
 - NEVER push directly to main or master branches
 - NEVER modify files in the infrastructure/, terraform/, or .[github](../../ci-cd/github-actions/other/github/SKILL.md)/workflows/ directories without explicit user approval
 - NEVER install new dependencies without listing them first for review
@@ -110,12 +110,12 @@ agent_permissions:
     - "wget"
     - "ssh"
     - "scp"
-    - "[kubectl](../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)"
+    - "[kubectl](../../containers-orchestration/kubernetes/other/kubectl/SKILL.md)"
     - "terraform"
     - "aws"
     - "gcloud"
     - "az"
-    - "[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) push"
+    - "[docker](../../containers-orchestration/docker/other/docker/SKILL.md) push"
     - "npm publish"
 
   blocked_paths:
@@ -304,7 +304,7 @@ fi
 
 ## Sandbox Configuration
 
-### [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Sandbox for Agent Execution
+### [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) Sandbox for Agent Execution
 
 ```dockerfile
 # Dockerfile.agent-sandbox
@@ -328,7 +328,7 @@ USER agent
 WORKDIR /workspace
 
 # No network by default - override at runtime if needed
-# No access to [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) socket
+# No access to [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) socket
 # No access to host filesystem beyond mounted volume
 ```
 
@@ -340,7 +340,7 @@ WORKDIR /workspace
 REPO_DIR="$(pwd)"
 CONTAINER_NAME="agent-sandbox-$$"
 
-[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) run \
+[docker](../../containers-orchestration/docker/other/docker/SKILL.md) run \
   --name "$CONTAINER_NAME" \
   --rm \
   --network none \
@@ -699,7 +699,7 @@ reply_body_max_size 50 MB
 http_port 3128
 ```
 
-### [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose with Network Isolation
+### [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) Compose with Network Isolation
 
 ```yaml
 # [docker-compose](../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).agent.yaml
@@ -1141,7 +1141,7 @@ echo -e "${GREEN}PR validation passed.${NC}"
 |---|---|---|
 | Permission boundaries | CLAUDE.md, .cursorrules, codex.md | Restrict agent behavior per-repo |
 | Secret scanning | git-secrets, pre-[commit](../../ci-cd/common/git-workflow/commit/SKILL.md) hooks | Block credential leaks |
-| Sandbox isolation | [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md), seccomp, network=none | Contain agent execution |
+| Sandbox isolation | [Docker](../../containers-orchestration/docker/other/docker/SKILL.md), seccomp, network=none | Contain agent execution |
 | Code review gates | [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions, branch protection | Enforce human review |
 | Network controls | iptables, Squid proxy | Limit agent internet access |
 | [Audit](../../AI_and_Agents/Operations/audit/SKILL.md) trail | Git trailers, JSONL logger | Track AI-generated code |

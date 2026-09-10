@@ -54,7 +54,7 @@ early so enrollment is painless when you scale.
 | **Microsoft Intune** | Windows + M365 shops | Bundled w/ M365 E3/E5 | No | Seamless Azure AD + Autopilot |
 | **Kandji** | macOS-first startups | Per-device/yr | No | Pre-built compliance templates, fast setup |
 | **Mosyle** | Education & SMB Apple | Per-device/yr | No | Apple School/Business Manager integration |
-| **Fleet** | Cross-platform, eng-led | Free (OSS) / paid cloud | Yes | osquery-powered, [GitOps](../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)-friendly, API-first |
+| **Fleet** | Cross-platform, eng-led | Free (OSS) / paid cloud | Yes | osquery-powered, [GitOps](../../containers-orchestration/common/gitops/gitops/SKILL.md)-friendly, API-first |
 | **SimpleMDM** | Small Apple-only teams | Per-device/mo | No | Simple UI, quick onboarding |
 
 ### Decision heuristic
@@ -77,7 +77,7 @@ else:
 Fleet is the leading open-source MDM. It uses osquery under the hood and
 supports macOS, Windows, Linux, iOS, and [Android](../android/SKILL.md).
 
-### 3.1 [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose deployment
+### 3.1 [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) Compose deployment
 
 ```yaml
 # [docker-compose](../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml
@@ -142,11 +142,11 @@ openssl req -x509 -newkey rsa:4096 -sha256 -days 365 \
   -subj "/CN=fleet.yourcompany.com"
 
 # Start services
-[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) compose up -d
+[docker](../../containers-orchestration/docker/other/docker/SKILL.md) compose up -d
 
 # Create admin account
-[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) compose exec fleet fleet prepare db
-[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) compose exec fleet fleet setup \
+[docker](../../containers-orchestration/docker/other/docker/SKILL.md) compose exec fleet fleet prepare db
+[docker](../../containers-orchestration/docker/other/docker/SKILL.md) compose exec fleet fleet setup \
   --email admin@yourcompany.com \
   --name "IT Admin" \
   --password "${FLEET_ADMIN_PASSWORD}" \
@@ -467,7 +467,7 @@ cask "cloudflare-warp"
 # Development
 cask "visual-studio-code"
 cask "iterm2"
-cask "[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)"
+cask "[docker](../../containers-orchestration/docker/other/docker/SKILL.md)"
 brew "node"
 brew "[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)@3.12"
 
@@ -493,7 +493,7 @@ brew bundle --file=/path/to/Brewfile --no-lock
     "Packages": [
       { "PackageIdentifier": "Git.Git" },
       { "PackageIdentifier": "Microsoft.VisualStudioCode" },
-      { "PackageIdentifier": "[Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).DockerDesktop" },
+      { "PackageIdentifier": "[Docker](../../containers-orchestration/docker/other/docker/SKILL.md).DockerDesktop" },
       { "PackageIdentifier": "SlackTechnologies.Slack" },
       { "PackageIdentifier": "Zoom.Zoom" },
       { "PackageIdentifier": "Tailscale.Tailscale" },
@@ -704,7 +704,7 @@ Write-Host "=== Starting onboarding $(Get-Date) ==="
 $packages = @(
     "Git.Git",
     "Microsoft.VisualStudioCode",
-    "[Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).DockerDesktop",
+    "[Docker](../../containers-orchestration/docker/other/docker/SKILL.md).DockerDesktop",
     "SlackTechnologies.Slack",
     "Tailscale.Tailscale",
     "AgileBits.1Password"

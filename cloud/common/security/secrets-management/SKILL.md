@@ -46,7 +46,7 @@ assessment).
 - The user asks to "remove hardcoded secrets" from a codebase or wants
   help auditing for them.
 - A team wants to set up HashiCorp [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS Secrets Manager, Azure Key
-  [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), GCP Secret Manager, or a [GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)-friendly encrypted-secrets
+  [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), GCP Secret Manager, or a [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md)-friendly encrypted-secrets
   workflow (SOPS + age/KMS, Sealed Secrets) from scratch.
 - The user wants secret-scanning added to CI/CD or pre-[commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) hooks
   (Gitleaks, TruffleHog, [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) secret scanning/push protection) to catch
@@ -54,7 +54,7 @@ assessment).
 - A secret has leaked (committed to a public repo, printed in CI logs,
   exposed in an error message) and the user needs a rotation/response
   plan.
-- The user wants to inject secrets into a [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) workload or CI job
+- The user wants to inject secrets into a [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) workload or CI job
   without writing them to disk in plaintext or exposing them in logs.
 - The user is deciding between dynamic secrets (short-lived, generated
   on demand) and static secrets (long-lived, rotated on a schedule) for a
@@ -65,17 +65,17 @@ assessment).
 - A secrets manager choice appropriate to the environment:
   - **HashiCorp [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)** (OSS or Enterprise) — most flexible, supports
     dynamic secrets (databases, cloud IAM), fine-grained policies, and
-    multiple auth methods ([Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) service account, AWS IAM, OIDC);
+    multiple auth methods ([Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) service account, AWS IAM, OIDC);
     requires running/operating a [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) cluster (or using HCP [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)) —
     non-trivial operational overhead if self-hosted.
   - **AWS Secrets Manager / Azure Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) / GCP Secret Manager** —
     cloud-native, lower operational overhead if already on that cloud,
     integrates with IAM natively; less flexible across [multi-cloud](../../other/multi-cloud/SKILL.md).
   - **SOPS** (Mozilla) + age or a cloud KMS — for encrypting secrets
-    *at rest in git* for [GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) workflows (e.g. secrets committed
-    encrypted, decrypted at deploy time by Flux/[ArgoCD](../../../../ci-cd/argocd/other/argocd/SKILL.md) or a CI step).
-  - **[Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Sealed Secrets** (Bitnami) — cluster-scoped alternative
-    to SOPS for [GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) secrets, encrypts against a controller-held key
+    *at rest in git* for [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md) workflows (e.g. secrets committed
+    encrypted, decrypted at deploy time by Flux/[ArgoCD](../../../../containers-orchestration/argocd/other/argocd/SKILL.md) or a CI step).
+  - **[Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Sealed Secrets** (Bitnami) — cluster-scoped alternative
+    to SOPS for [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md) secrets, encrypts against a controller-held key
     pair so only that cluster can decrypt.
 - Secret-scanning tooling: **Gitleaks** or **TruffleHog** for CI/pre-[commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)
   scanning; [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Advanced Security "secret scanning" and "push
@@ -83,7 +83,7 @@ assessment).
 - CI/CD platform's native secret store ([GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions "Secrets",
   GitLab CI/CD variables marked "masked" and "protected", etc.) as the
   minimum viable baseline even before adopting a full secrets manager.
-- IAM/permissions to create service identities ([Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) service
+- IAM/permissions to create service identities ([Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) service
   accounts, cloud IAM roles) that the secrets manager will authenticate
   workloads against — secrets managers are only as strong as the
   authentication method used to reach them.
@@ -139,7 +139,7 @@ assessment).
    ```
 
 4. **Authenticate workloads, not humans, to fetch secrets at runtime.**
-   [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) example using [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)'s [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) auth method with the [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
+   [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) example using [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)'s [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) auth method with the [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
    Agent Injector (annotations on a pod spec):
    ```yaml
    metadata:
@@ -148,11 +148,11 @@ assessment).
        [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).hashicorp.com/role: "myapp-prod"
        [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md).hashicorp.com/agent-inject-secret-db-creds: "myapp/data/prod/db"
    ```
-   This avoids ever writing the secret into a [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Secret object,
+   This avoids ever writing the secret into a [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Secret object,
    environment variable dump, or CI log — the sidecar fetches it directly
    into a file the app reads at startup.
 
-5. **For [GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md), encrypt secrets at rest with SOPS** rather than
+5. **For [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md), encrypt secrets at rest with SOPS** rather than
    committing plaintext or relying on cluster RBAC alone:
    ```yaml
    # .sops.yaml
@@ -197,7 +197,7 @@ assessment).
   policy or IAM role per service limits blast radius if one workload is
   compromised.
 - Never pass secrets as CLI arguments or build args — they end up in
-  shell history, process lists (`ps aux`), and (for [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) build args)
+  shell history, process lists (`ps aux`), and (for [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) build args)
   potentially cached image layers. Use environment variables sourced from
   a secrets manager, files mounted at runtime, or BuildKit secret mounts
   (`--mount=type=secret`) instead.
@@ -226,9 +226,9 @@ assessment).
   field names) rather than relying on developers to remember not to log
   the config object.
 
-- **Symptom:** A [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) image built with `--build-arg DB_PASSWORD=...`
+- **Symptom:** A [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) image built with `--build-arg DB_PASSWORD=...`
   works fine, but the password is later found inside an intermediate
-  layer via `[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) history` even after the final stage doesn't reference
+  layer via `[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) history` even after the final stage doesn't reference
   it.
   **Fix:** Use BuildKit secret mounts (`RUN --mount=type=secret,id=dbpass`)
   which never persist the value in any image layer, instead of build

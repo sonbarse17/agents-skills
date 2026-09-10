@@ -92,7 +92,7 @@ Is the resource ephemeral (dev/test)?
 | Low | Medium | Right-size over-provisioned instances | Week 2-3 |
 | Medium | High | Purchase RIs/SPs for stable workloads | Month 1 |
 | Medium | Medium | Storage tiering (hot→cold→archive) | Month 2 |
-| High | High | Architecture redesign ([serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md), [containerization](../../../../DevOps_and_Cloud/Containers_and_Orchestration/containerization/SKILL.md)) | Quarter 2+ |
+| High | High | Architecture redesign ([serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md), [containerization](../../../../containers-orchestration/docker/other/containerization/SKILL.md)) | Quarter 2+ |
 | High | Medium | Data transfer optimization (CDN, compression) | Quarter 2-3 |
 
 ## Agent Protocol
@@ -259,7 +259,7 @@ Practice 3: Centralize commitment purchases (RI/SP). A single team managing clou
 
 Practice 4: Automate tiered storage lifecycle. Move data from hot to warm to cold to archive based on access patterns. Automate retention policy enforcement. Never let data sit on hot storage unaccessed.
 
-Practice 5: Use container [rightsizing](../rightsizing/SKILL.md) tools. [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) resource requests and limits are often set once and forgotten. Use VPA or [rightsizing](../rightsizing/SKILL.md) recommendations to right-size continuously.
+Practice 5: Use container [rightsizing](../rightsizing/SKILL.md) tools. [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) resource requests and limits are often set once and forgotten. Use VPA or [rightsizing](../rightsizing/SKILL.md) recommendations to right-size continuously.
 
 Practice 6: Integrate cost checks into CI/CD. A pull request that adds an expensive resource should flag the cost impact. Review cost changes alongside code changes.
 

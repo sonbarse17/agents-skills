@@ -40,7 +40,7 @@ Keywords: `python build`, `pip`, `poetry`, `uv`, `pyproject.toml`, `venv`, `mypy
 - Project type (CLI tool, web API, data pipeline, library)
 - Build system (setuptools, poetry, pdm, uv)
 - Python version requirements
-- Deployment target ([serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md), container, VPS)
+- Deployment target ([serverless](../../Patterns/serverless/SKILL.md), container, VPS)
 
 ### Output Artifact
 Build configuration, dependency management setup, project structure, test configuration, and deployment config tailored to project type.
@@ -63,7 +63,7 @@ Project type?
 ### Virtual Environment Strategy
 ```
 Deployment context?
-├── Containerized ([Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)) → single venv in container, no system Python
+├── Containerized ([Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)) → single venv in container, no system Python
 ├── Local development → pyenv + virtualenv / uv venv (isolated per project)
 ├── CI/CD → fresh venv per run (cache pip/uv between runs)
 └── [Monorepo](../../Frontend/monorepo/SKILL.md) → PDM workspace / hatch.env per project
@@ -330,11 +330,11 @@ Deploy ASGI apps (FastAPI, Starlette) differently than WSGI apps (Django, Flask)
 - **ASGI**: Uvicorn (single process) → Gunicorn + Uvicorn workers (multi-process) → Nginx/Traefik reverse proxy
 - **WSGI**: Gunicorn (workers) → Nginx — or uWSGI with emperor mode
 
-ASGI config: `uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers 4 --limit-max-requests 10000 — for production. [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md): use `uvicorn` directly, expose port, set `--proxy-headers` and `--forwarded-allow-ips="*"` when behind nginx. Health check: add a `/health` endpoint returning 200. Graceful shutdown: `uvicorn` handles SIGTERM by waiting for in-flight requests to complete (timeout_graceful_shutdown config).
+ASGI config: `uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers 4 --limit-max-requests 10000 — for production. [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md): use `uvicorn` directly, expose port, set `--proxy-headers` and `--forwarded-allow-ips="*"` when behind nginx. Health check: add a `/health` endpoint returning 200. Graceful shutdown: `uvicorn` handles SIGTERM by waiting for in-flight requests to complete (timeout_graceful_shutdown config).
 
 ## Testing with Pytest Advanced Patterns
 
-Beyond basic tests: (a) `pytest-asyncio` with `@pytest.mark.asyncio` for async test functions, (b) `pytest-cov` for coverage reports with branch coverage, (c) `pytest-xdist` for parallel test execution (`-n auto`), (d) `pytest-timeout` to prevent hung tests (`--timeout=30`), (e) `pytest-socket` to disable network calls in unit tests, (f) `pytest-env` to set required environment variables. Factory fixtures: use `factory_boy` to create test data (UserFactory, OrderFactory) with `Faker` attributes. Integration tests: use `Testcontainers` for real [PostgreSQL](../../Backend/postgresql/SKILL.md)/Redis in [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md), or `httpx.AsyncClient` with `ASGITransport` for API testing without network.
+Beyond basic tests: (a) `pytest-asyncio` with `@pytest.mark.asyncio` for async test functions, (b) `pytest-cov` for coverage reports with branch coverage, (c) `pytest-xdist` for parallel test execution (`-n auto`), (d) `pytest-timeout` to prevent hung tests (`--timeout=30`), (e) `pytest-socket` to disable network calls in unit tests, (f) `pytest-env` to set required environment variables. Factory fixtures: use `factory_boy` to create test data (UserFactory, OrderFactory) with `Faker` attributes. Integration tests: use `Testcontainers` for real [PostgreSQL](../../Backend/postgresql/SKILL.md)/Redis in [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md), or `httpx.AsyncClient` with `ASGITransport` for API testing without network.
 
 ## Code Examples — FastAPI with SQLAlchemy
 ```python
@@ -418,14 +418,14 @@ Recommendation: use `uv` for new projects (2024+), Poetry for established teams,
 ### Deployment Target Decision Tree
 ```
 Deploying a Python web app?
-├── [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) → AWS Lambda + Mangum (FastAPI adapter)
+├── [Serverless](../../Patterns/serverless/SKILL.md) → AWS Lambda + Mangum (FastAPI adapter)
 │   Cold start: 200-500ms (provisioned concurrency: 50ms)
 │   Limits: 10GB RAM, 15min timeout, 50MB zip + 250MB /tmp
 │   Best for: low-traffic APIs, spiky workloads
-├── Containers → [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) + ECS/GKE/Azure Containers
+├── Containers → [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) + ECS/GKE/Azure Containers
 │   Use: gunicorn + uvicorn workers for ASGI, nginx sidecar for static
 │   Best for: consistent traffic, long-running connections
-├── VM / VPS → [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose on single host
+├── VM / VPS → [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Compose on single host
 │   nginx reverse proxy, Let's Encrypt SSL
 │   Best for: small teams, cost-effective at moderate scale
 └── PaaS → Railway / Render / Fly.io

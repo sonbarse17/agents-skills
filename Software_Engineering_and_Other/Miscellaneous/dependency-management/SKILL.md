@@ -43,7 +43,7 @@ Automate dependency updates, vulnerability scanning, and policy enforcement with
 Exact user phrases: "Dependabot", "Renovate", "dependencies", "lock file", "vulnerability scanning", "update strategy", "dependabot.yml", "dependency bump", "automated updates", "version pinning", "patch management", "supply chain security", "SBOM", "npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)".
 
 ### Input Context
-- Package ecosystem (npm, pip, maven, go, cargo, nuget, [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md), terraform).
+- Package ecosystem (npm, pip, maven, go, cargo, nuget, [docker](../../../containers-orchestration/docker/other/docker/SKILL.md), terraform).
 - Package manager (npm, yarn, pnpm, pip, poetry, maven, gradle, go, cargo).
 - Automation tool (Dependabot, Renovate, or both).
 - Update cadence (daily, weekly, monthly).
@@ -75,7 +75,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions.
 | Grouped updates | Manual allow lists | Automatic grouping rules |
 | Custom registries | Limited | Extensive (any host) |
 | Onboarding PR | No | Yes (configurable) |
-| Regex manager | No | Yes ([Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md), custom) |
+| Regex manager | No | Yes ([Docker](../../../containers-orchestration/docker/other/docker/SKILL.md), custom) |
 | Presets/shared config | No (org-level only) | Presets, extends, shareable |
 | Lock file maintenance | Manual | Built-in schedule |
 | Dashboard | Dependencies tab only | Dependency Dashboard PR |
@@ -146,7 +146,7 @@ updates:
       - dependency-name: "[typescript](../../Frontend/typescript/SKILL.md)"
         update-types: ["version-update:semver-major"]
 
-  - package-ecosystem: "[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)"
+  - package-ecosystem: "[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)"
     directory: "/"
     schedule:
       interval: "weekly"
@@ -560,7 +560,7 @@ audit_dependencies() {
 
 ## Anti-Patterns
 
-- Using **`latest`** tags in [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) or npm — always pin to exact semver ranges
+- Using **`latest`** tags in [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) or npm — always pin to exact semver ranges
 - Ignoring **peer dependency warnings** — they cause runtime failures in shared libraries
 - Running **`npm update`** without review — batch updates hide breaking changes
 - Excluding **transitive dependencies** from security scanning — vulnerabilities hide in nested deps

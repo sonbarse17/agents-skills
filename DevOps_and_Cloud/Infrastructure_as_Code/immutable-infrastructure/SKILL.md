@@ -84,10 +84,10 @@ rebuilding from that [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md
 
 Deploying a change means launching new instances from the new image and retiring the old ones —
 via a rolling update, blue-green swap, or [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) group refresh — not pushing new config to
-instances that keep running. See `[deployment-strategies](../../Containers_and_Orchestration/deployment-strategies/SKILL.md)` for the mechanics of how that rollout
+instances that keep running. See `[deployment-strategies](../../../ci-cd/common/deployment/deployment-strategies/SKILL.md)` for the mechanics of how that rollout
 happens safely at the traffic-shifting level.
 
-- **Let the orchestrator (ASG, [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md), managed instance group) drive the replacement**,
+- **Let the orchestrator (ASG, [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), managed instance group) drive the replacement**,
   rather than scripting instance-by-instance in-place updates.
 - **Terminate old instances only after new ones pass health checks**, never on a timer that
   assumes success.
@@ -110,7 +110,7 @@ deploy path against the previous image tag.
 Instances are disposable, but data usually isn't — a database, uploaded files, or session state
 baked into local disk vanishes the moment the instance is replaced. Push persistent state onto
 managed, externally-attached storage (a managed database, object storage, a network volume) so
-replacing the compute layer never risks the data layer. See `[stateful-workloads](../../Containers_and_Orchestration/stateful-workloads/SKILL.md)` for handling the
+replacing the compute layer never risks the data layer. See `[stateful-workloads](../../../containers-orchestration/kubernetes/workloads/stateful-workloads/SKILL.md)` for handling the
 minority of components that genuinely can't be made stateless this way.
 
 **Done when:** terminating any instance in the fleet, without warning, causes no data loss.

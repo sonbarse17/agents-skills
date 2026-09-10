@@ -31,7 +31,7 @@ depends_on:
 
 JFrog Artifactory is a commercial (with a free Community/JCR tier) artifact
 registry serving the same core need as Nexus — one server for otherwise
-disparate package ecosystems (npm, Maven, [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md), PyPI, NuGet, Go, and many
+disparate package ecosystems (npm, Maven, [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md), PyPI, NuGet, Go, and many
 more) — using an equivalent but differently-named three-tier repository
 model: **local** (your own published artifacts, equivalent to Nexus's
 "hosted"), **remote** (a caching proxy to an upstream registry, equivalent
@@ -59,7 +59,7 @@ which this skill cross-references throughout rather than repeating.
   [sonatype-nexus-repository-configuration](../[sonatype-nexus-repository-configuration](../sonatype-nexus-repository-configuration/SKILL.md)/SKILL.md).
 - Setting up multi-region replication so teams in different geographies (or
   a DR site) have a low-latency, locally-served copy of shared artifacts.
-- Writing or debugging a retention policy to clean up old [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) tags,
+- Writing or debugging a retention policy to clean up old [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) tags,
   superseded Maven snapshots, or generic build artifacts.
 - Mentioning or wiring in JFrog Xray for vulnerability/license scanning of
   artifacts already stored in Artifactory, as distinct from scanning source
@@ -112,11 +112,11 @@ which this skill cross-references throughout rather than repeating.
 2. **Create a local repository** for artifacts your own pipelines publish:
    ```
    Administration → Repositories → Local → Create repository
-     Package type: [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
-     Repository key: [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-local
+     Package type: [docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
+     Repository key: [docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-local
    ```
-   [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) in Artifactory does **not** require a dedicated connector port
-   per repository the way Nexus does — Artifactory routes [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) traffic by
+   [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) in Artifactory does **not** require a dedicated connector port
+   per repository the way Nexus does — Artifactory routes [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) traffic by
    repository path/subdomain instead, which is a genuine operational
    difference worth knowing before assuming Nexus's port-per-repository
    convention carries over.
@@ -140,8 +140,8 @@ which this skill cross-references throughout rather than repeating.
    npm config set registry https://artifactory.example.com/artifactory/api/npm/npm-virtual/
    ```
    ```bash
-   [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) login artifactory.example.com
-   [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) pull artifactory.example.com/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-virtual/myapp:1.4.2
+   [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) login artifactory.example.com
+   [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) pull artifactory.example.com/[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-virtual/myapp:1.4.2
    ```
 
 5. **Configure multi-region replication** for a repository that needs a
@@ -163,11 +163,11 @@ which this skill cross-references throughout rather than repeating.
    a reconciliation backstop, not the other way around.
 
 6. **Define a retention/cleanup policy** to remove old build artifacts,
-   superseded snapshots, or untagged [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) images:
+   superseded snapshots, or untagged [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) images:
    ```
    Administration → Repositories → Retention Policy (or the newer
    "Cleanup Policies" UI depending on version) → Create policy
-     Repository: [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-local
+     Repository: [docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-local
      Criteria: Keep last N tags per image; delete images not pulled in 90 days
    ```
    Exclude explicitly-tagged release versions (`v*`, `stable`, `latest` if
@@ -179,7 +179,7 @@ which this skill cross-references throughout rather than repeating.
    mention this as a distinct capability rather than assuming it's
    automatic: Xray scans artifacts stored in Artifactory repositories
    (and their dependency graphs) against vulnerability and license
-   databases, and can block a `[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) pull`/`npm install` of a
+   databases, and can block a `[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) pull`/`npm install` of a
    policy-violating artifact via a configured Xray watch/policy. This is
    scanning *stored* artifacts, distinct from scanning source code before
    it's built (SAST) or scanning a dependency manifest before it's
@@ -233,9 +233,9 @@ which this skill cross-references throughout rather than repeating.
   same member-ordering and cleanup-policy discipline rather than
   re-designing from scratch.
 
-- **Symptom:** [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) pulls fail intermittently after migrating from Nexus,
-  where each [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) repository had its own connector port, to Artifactory.
-  **Fix:** Artifactory doesn't use per-repository ports for [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) the way
+- **Symptom:** [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) pulls fail intermittently after migrating from Nexus,
+  where each [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) repository had its own connector port, to Artifactory.
+  **Fix:** Artifactory doesn't use per-repository ports for [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) the way
   Nexus does — it routes by repository path/subdomain instead. Update
   client configuration (registry URL structure) to match Artifactory's
   routing model rather than trying to replicate Nexus's port-per-repository
@@ -268,7 +268,7 @@ which this skill cross-references throughout rather than repeating.
 ## Worked example
 
 **Scenario:** A global engineering org with teams in the US and EU
-standardizes on Artifactory for [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) and Maven artifacts, replicating a
+standardizes on Artifactory for [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) and Maven artifacts, replicating a
 shared Maven local repository to an EU instance for low-latency reads, with
 Xray scanning gating pulls on critical vulnerabilities.
 
@@ -278,9 +278,9 @@ maven-local     (local)   — published releases and snapshots
 maven-remote    (remote → repo.maven.apache.org)
 maven-virtual   (virtual: [maven-local, maven-remote])
 
-[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-local    (local)
-[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-remote   (remote → registry-1.[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).io)
-[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-virtual  (virtual: [docker-local, [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-remote])
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-local    (local)
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-remote   (remote → registry-1.[docker](../../../containers-orchestration/docker/other/docker/SKILL.md).io)
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-virtual  (virtual: [docker-local, [docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-remote])
 ```
 
 Replication (US → EU, push, event-based plus 6-hour cron backstop):
@@ -316,4 +316,4 @@ remediation/triage workflow instead of being retroactively purged.
 - [artifact-and-dependency-management](../[artifact-and-dependency-management](../../Frontend/artifact-and-[dependency-management](../dependency-management/SKILL.md)/SKILL.md)/SKILL.md) — the vendor-neutral registry concepts (retention policy design, publish/read credential separation, lockfile discipline) this skill implements concretely in Artifactory.
 - [software-composition-analysis-sca](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md) — the vendor-neutral [dependency-scanning](../../../Security/dependency-scanning/SKILL.md) concept that Xray implements for artifacts already stored in Artifactory.
 - [snyk-vulnerability-and-license-scanning](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[snyk-vulnerability-and-license-scanning](../../../Security/snyk-vulnerability-and-license-scanning/SKILL.md)/SKILL.md) — a comparable commercial scanner covering similar vulnerability/license-policy ground as Xray, useful for a direct feature/cost comparison.
-- [container-build-and-release](../[container-build-and-release](../../../DevOps_and_Cloud/Containers_and_Orchestration/container-build-and-release/SKILL.md)/SKILL.md) — the container build workflow that publishes to an Artifactory [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) local repository configured here.
+- [container-build-and-release](../[container-build-and-release](../../../DevOps_and_Cloud/Containers_and_Orchestration/container-build-and-release/SKILL.md)/SKILL.md) — the container build workflow that publishes to an Artifactory [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) local repository configured here.

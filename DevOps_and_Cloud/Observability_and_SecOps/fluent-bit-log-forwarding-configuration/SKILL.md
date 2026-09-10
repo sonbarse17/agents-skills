@@ -37,8 +37,8 @@ and **OUTPUT** (where logs go) sections connected by **tags** and
 node, a misconfigured pipeline doesn't just misroute logs, it can
 silently drop them cluster-wide or exhaust node memory buffering
 backpressure from a slow downstream. This skill covers building that
-INPUT → FILTER → OUTPUT pipeline for the common [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) case
-(container log tailing, [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) metadata enrichment, routing to
+INPUT → FILTER → OUTPUT pipeline for the common [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) case
+(container log tailing, [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) metadata enrichment, routing to
 Loki/Elasticsearch/S3) and the buffering/backpressure settings that
 determine what happens when an output is slow or unavailable. It assumes
 the destination (Loki) is already configured to receive pushed logs —
@@ -50,9 +50,9 @@ see
 
 ## When to use
 
-- Standing up Fluent Bit (as a [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) DaemonSet or standalone
+- Standing up Fluent Bit (as a [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) DaemonSet or standalone
   process) to forward application/container logs somewhere.
-- Adding [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) metadata (pod name, namespace, labels) to raw
+- Adding [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) metadata (pod name, namespace, labels) to raw
   container log lines before they're shipped.
 - Writing a custom parser for an application's log format (multiline
   stack traces, a custom timestamp format, JSON with nested fields).
@@ -71,11 +71,11 @@ see
   assumed for the YAML config format shown below — the classic `.conf`
   INI-style format is also still supported and shown where the
   distinction matters).
-- For [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md): DaemonSet deployment with a hostPath volume mount for
-  `/var/log/containers` (and `/var/log/pods`, `/var/lib/[docker](../../Containers_and_Orchestration/docker/SKILL.md)/
+- For [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md): DaemonSet deployment with a hostPath volume mount for
+  `/var/log/containers` (and `/var/log/pods`, `/var/lib/[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)/
   containers` depending on the container runtime's log location) and a
   ServiceAccount with RBAC to read Pod/Namespace metadata for the
-  `[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)` filter.
+  `[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)` filter.
 - The destination(s) already reachable and, for Loki/Elasticsearch,
   already configured to accept the expected volume — see
   [loki-log-aggregation-configuration](../[loki-log-aggregation-configuration](../loki-log-aggregation-configuration/SKILL.md)/SKILL.md)
@@ -108,13 +108,13 @@ see
    buffering durable across a Fluent Bit restart, not just the `db` file
    alone.
 
-2. **Enrich with [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) metadata using the `[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)` filter**
+2. **Enrich with [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) metadata using the `[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)` filter**
    before any routing decision that depends on namespace/labels:
    ```yaml
      filters:
-       - name: [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)
+       - name: [kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
          match: kube.*
-         kube_url: https://[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md).default.svc:443
+         kube_url: https://[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).default.svc:443
          kube_tag_prefix: kube.var.log.containers.
          merge_log: on
          merge_log_key: log_processed
@@ -182,7 +182,7 @@ see
          match: kube.payments.*
          host: loki-gateway.[monitoring](../monitoring/SKILL.md).svc
          port: 3100
-         labels: job=fluentbit, namespace=$[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)['namespace_name'], app=$[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)['labels']['app']
+         labels: job=fluentbit, namespace=$[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)['namespace_name'], app=$[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)['labels']['app']
          line_format: json
 
        - name: es
@@ -202,7 +202,7 @@ see
    ```
    > **Warning — Loki label cardinality:** the `labels` field on the
    > `loki` output plugin becomes indexed Loki stream labels exactly like
-   > any other Loki label — never map an unbounded [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) field
+   > any other Loki label — never map an unbounded [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) field
    > (pod name, pod IP, a per-request annotation) into it. Stick to
    > `namespace_name`, `app`/`container_name`, and similarly bounded
    > values, per
@@ -252,7 +252,7 @@ see
 
 ## Best practices
 
-- Add [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) metadata enrichment before any tag-based routing
+- Add [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) metadata enrichment before any tag-based routing
   decision that depends on namespace/labels — routing on the raw
   container log path alone is fragile across runtime/log-location
   changes.
@@ -264,7 +264,7 @@ see
   accidentally logged) at the Fluent Bit filter stage, as close to the
   source as practical — never depend on the destination to scrub them
   after the fact.
-- Map only bounded, low-cardinality [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) fields into a Loki
+- Map only bounded, low-cardinality [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) fields into a Loki
   output's `labels` — namespace and app/service name, not pod name, pod
   IP, or any per-request value.
 - Enable `storage.type: filesystem` buffering for any log stream where
@@ -315,7 +315,7 @@ see
 - **Symptom:** A Loki output starts getting `429`/rejected ingestion
   shortly after a new field was added to the `labels` mapping on the
   `loki` output plugin.
-  **Fix:** The new label maps an unbounded [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) field (pod name,
+  **Fix:** The new label maps an unbounded [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) field (pod name,
   pod IP) into Loki's indexed labels, exploding stream count on the Loki
   side. Remove it from the output's `labels` mapping and, if the field
   is genuinely useful for querying, ship it as part of the log line
@@ -326,7 +326,7 @@ see
   redact a sensitive field, the field still shows up at the destination.
   **Fix:** The filter's `Match` pattern doesn't actually match the tag
   of the logs carrying that field (commonly a tag-prefix mismatch after
-  the `[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)` filter's `kube_tag_prefix` rewrites tags), so the
+  the `[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)` filter's `kube_tag_prefix` rewrites tags), so the
   filter is silently never applied to the intended stream. Confirm with
   `fluent-bit -c fluent-bit.yaml -o stdout -m '*'` that the filter's
   `match` pattern actually catches the target tag before assuming the
@@ -344,8 +344,8 @@ see
 
 ## Worked example
 
-**Scenario:** A [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) cluster needs Fluent Bit configured to: ship
-`payments` namespace application logs to Loki with [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) metadata,
+**Scenario:** A [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster needs Fluent Bit configured to: ship
+`payments` namespace application logs to Loki with [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) metadata,
 ship `security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)` namespace logs to OpenSearch, and archive
 `compliance-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md)` namespace logs to S3 for 7-year retention — with
 filesystem buffering so a Loki maintenance window doesn't lose payments
@@ -368,7 +368,7 @@ pipeline:
       mem_buf_limit: 50MB
 
   filters:
-    - name: [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)
+    - name: [kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
       match: kube.*
       kube_tag_prefix: kube.var.log.containers.
       merge_log: on
@@ -383,7 +383,7 @@ pipeline:
       match: kube.var.log.containers.*payments*
       host: loki-gateway.[monitoring](../monitoring/SKILL.md).svc
       port: 3100
-      labels: job=fluentbit, namespace=$[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)['namespace_name'], app=$[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)['labels']['app']
+      labels: job=fluentbit, namespace=$[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)['namespace_name'], app=$[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)['labels']['app']
       retry_limit: 5
 
     - name: es

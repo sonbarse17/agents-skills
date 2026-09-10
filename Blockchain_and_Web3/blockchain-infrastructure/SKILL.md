@@ -147,7 +147,7 @@ Role in MEV supply chain:
 ├── AWS: Best for KMS (CloudHSM), Nitro Enclaves, global infra
 │   ├── Node types: r6i.8xlarge (Ethereum), i4i.8xlarge (storage)
 │   └── Storage: gp3 EBS (800 MB/s 256K IOPS) or i4i instance store
-├── GCP: Best for [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) (GKE), network performance
+├── GCP: Best for [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) (GKE), network performance
 │   └── Node types: n2-highmem-32, n2d-standard-64
 ├── [Bare-metal](../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md): Best for validator nodes, MEV infrastructure
 │   ├── Hetzner: AU$40/mo for AX102, great price-performance
@@ -299,7 +299,7 @@ Key management tiers:
 # 3. Configure Web3Signer for remote signing
 # 4. Validator client connects via REST API
 
-# [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) compose for Web3Signer
+# [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) compose for Web3Signer
 services:
   web3signer:
     image: consensys/web3signer:latest
@@ -433,7 +433,7 @@ environments:
         daemon_reload: true
 ```
 
-### [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose — Node Stack
+### [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) Compose — Node Stack
 ```yaml
 version: '3.8'
 services:

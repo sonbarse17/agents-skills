@@ -20,14 +20,14 @@ depends_on:
 
 # SSL/TLS Management
 
-Manage certificates and secure communications across web servers, [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) clusters, and internal services.
+Manage certificates and secure communications across web servers, [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) clusters, and internal services.
 
 ## When to Use This Skill
 
 Use this skill when:
 - Setting up HTTPS for a new web application
 - Automating certificate renewal with Let's Encrypt
-- Deploying cert-manager in [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
+- Deploying cert-manager in [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
 - Configuring TLS for internal service-to-service communication
 - Auditing cipher suites and TLS versions for compliance
 - Responding to an expiring or compromised certificate
@@ -38,7 +38,7 @@ Use this skill when:
 - Root/sudo access on web servers
 - `certbot` installed for Let's Encrypt
 - `openssl` CLI available (installed by default on most Linux distros)
-- [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cluster with Helm for cert-manager deployment
+- [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster with Helm for cert-manager deployment
 - Understanding of X.509 certificate chain of trust
 
 ## Let's Encrypt with Certbot
@@ -130,7 +130,7 @@ HOOK
 chmod +x /etc/letsencrypt/renewal-hooks/deploy/reload-services.sh
 ```
 
-## cert-manager for [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
+## cert-manager for [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
 
 ### Installation
 
@@ -147,8 +147,8 @@ helm install cert-manager jetstack/cert-manager \
   --set prometheus.enabled=true
 
 # Verify installation
-[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get pods -n cert-manager
-[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get crds | grep cert-manager
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get pods -n cert-manager
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get crds | grep cert-manager
 ```
 
 ### ClusterIssuer Configurations
@@ -444,7 +444,7 @@ done
 ### Prometheus cert-manager Metrics
 
 ```yaml
-# Alert on expiring certificates in [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
+# Alert on expiring certificates in [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
 groups:
   - name: cert-manager
     rules:
@@ -471,7 +471,7 @@ groups:
 |---------|-------|----------|
 | Certbot fails with "connection refused" | Port 80 blocked by firewall | Open port 80 for ACME HTTP-01 challenge |
 | "Too many certificates already issued" | Let's Encrypt rate limit hit | Use staging endpoint for testing; wait for rate limit reset |
-| cert-manager challenge stuck pending | Ingress or DNS misconfigured | Check `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) describe challenge`; verify DNS records |
+| cert-manager challenge stuck pending | Ingress or DNS misconfigured | Check `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) describe challenge`; verify DNS records |
 | Mixed content warnings | HTTP resources on HTTPS page | Update all asset URLs to HTTPS; use CSP headers |
 | OCSP stapling not working | Resolver not configured | Add `resolver` directive in nginx; verify outbound DNS |
 | Intermediate cert missing | Incomplete chain served | Use `fullchain.pem` not `cert.pem`; verify with `openssl s_client -showcerts` |

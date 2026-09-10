@@ -39,7 +39,7 @@ User request includes: `monitoring`, `prometheus`, `grafana`, `loki`, `elk`, `el
 
 ### Input Context
 - Current monitoring setup (if any)
-- Infrastructure ([Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md), bare metal, cloud)
+- Infrastructure ([Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), bare metal, cloud)
 - Scale (number of nodes/services)
 - Budget (open-source vs enterprise)
 - Required integrations (Slack, PagerDuty, Opsgenie)
@@ -74,12 +74,12 @@ Produce the artifact directly. No preamble, no postamble, no explanations. No fi
 
 | Tool | Purpose | When |
 |---|---|---|
-| **Prometheus** | Metrics collection + [alerting](../alerting/SKILL.md) | [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md), dynamic workloads |
+| **Prometheus** | Metrics collection + [alerting](../alerting/SKILL.md) | [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), dynamic workloads |
 | **Grafana** | [Dashboards](../dashboards/SKILL.md) + visualization | Universal (any data source) |
-| **Loki** | Log aggregation (K8s native) | [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md), Prometheus ecosystem |
+| **Loki** | Log aggregation (K8s native) | [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), Prometheus ecosystem |
 | **ELK (Elasticsearch + Logstash + Kibana)** | Log aggregation + search | Complex log parsing, full-text search, SIEM |
 | **Tempo** | Distributed tracing | Need traces correlated with metrics/logs |
-| **Promtail** | Log shipping → Loki | [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) log collection |
+| **Promtail** | Log shipping → Loki | [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) log collection |
 | **Filebeat** | Log shipping → ELK | Lightweight, wide format support |
 | **Metricbeat** | System metrics → ELK | Infrastructure metrics |
 
@@ -94,7 +94,7 @@ global:
   evaluation_interval: 15s
 
 scrape_configs:
-  - job_name: '[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-pods'
+  - job_name: '[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-pods'
     kubernetes_sd_configs:
       - role: pod
     relabel_configs:
@@ -195,7 +195,7 @@ groups:
         annotations:
           summary: "Memory < 10% available on {{ $labels.instance }}"
 
-  - name: [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)
+  - name: [kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
     interval: 30s
     rules:
       - alert: PodCrashLooping
@@ -364,7 +364,7 @@ inhibit_rules:
 /
 ├── Infrastructure/
 │   ├── Node Exporter / CPU, Memory, Disk, Network
-│   └── [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) / Cluster, Nodes, Pods
+│   └── [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) / Cluster, Nodes, Pods
 ├── Applications/
 │   ├── {service-name} / RED metrics
 │   └── Databases / Query latency, connections
@@ -509,7 +509,7 @@ output.elasticsearch:
 | **Alert delivery** | <1 min | Alert fired → notification received |
 
 ## Rules
-- Prometheus scrape configs use relabeling for [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) service discovery — never static targets for K8s workloads.
+- Prometheus scrape configs use relabeling for [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) service discovery — never static targets for K8s workloads.
 - Grafana [dashboards](../dashboards/SKILL.md) organized by folder hierarchy: Infrastructure → Applications → Business → SLOs. No unorganized [dashboards](../dashboards/SKILL.md).
 - Loki labels limited to low-cardinality values — never use `pod` or `traceID` as mandatory labels.
 - Alertmanager routes segregated by severity: P0 → PagerDuty, P1 → Slack warning, P2 → Slack info, P3 → suppressed.
@@ -529,5 +529,5 @@ output.elasticsearch:
   - ../../../Global_References/prometheus-setup.md — Prometheus Setup Reference
 ## Handoff
 
-Hand off to `management/[alerting](../alerting/SKILL.md)/SKILL.md` for alert rule configuration. Hand off to `devops/[helm-patterns](../../Containers_and_Orchestration/helm-patterns/SKILL.md)/SKILL.md` for deploying monitoring stack on [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md). Hand off to `devops/terraform/SKILL.md` for provisioning monitoring infrastructure.
+Hand off to `management/[alerting](../alerting/SKILL.md)/SKILL.md` for alert rule configuration. Hand off to `devops/[helm-patterns](../../../containers-orchestration/helm/other/helm-patterns/SKILL.md)/SKILL.md` for deploying monitoring stack on [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md). Hand off to `devops/terraform/SKILL.md` for provisioning monitoring infrastructure.
 

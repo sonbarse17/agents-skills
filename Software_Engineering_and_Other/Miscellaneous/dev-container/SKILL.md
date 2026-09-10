@@ -30,12 +30,12 @@ depends_on:
 # Dev Container
 
 ## Purpose
-Create and configure development containers — [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-based, consistent development environments defined by a `devcontainer.json` and Dockerfile. Dev containers ensure all team members (and CI) use identical tools, runtimes, and configurations, eliminating "works on my machine" issues.
+Create and configure development containers — [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-based, consistent development environments defined by a `devcontainer.json` and Dockerfile. Dev containers ensure all team members (and CI) use identical tools, runtimes, and configurations, eliminating "works on my machine" issues.
 
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "dev container", "devcontainer.json", "development container", "VS Code Dev Container", "[GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Codespaces", "dev environment setup", "reproducible dev environment", "containerized dev", "[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) dev environment", "remote container".
+Exact user phrases: "dev container", "devcontainer.json", "development container", "VS Code Dev Container", "[GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Codespaces", "dev environment setup", "reproducible dev environment", "containerized dev", "[Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) dev environment", "remote container".
 
 ### Input Context
 - Language runtime (Node.js, [Python](../../Languages/python/SKILL.md), Go, Rust, Java, .NET, Ruby, PHP)
@@ -47,7 +47,7 @@ Exact user phrases: "dev container", "devcontainer.json", "development container
 - Base image preference (mcr.microsoft.com/devcontainers/*, debian, ubuntu, alpine)
 
 ### Output Artifact
-Complete dev container configuration with Dockerfile, devcontainer.json, and [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose (if multi-service).
+Complete dev container configuration with Dockerfile, devcontainer.json, and [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Compose (if multi-service).
 
 ### Completion Criteria
 - [ ] devcontainer.json configured with image or Dockerfile
@@ -57,7 +57,7 @@ Complete dev container configuration with Dockerfile, devcontainer.json, and [Do
 - [ ] Port forwarding configured for application and services
 - [ ] Environment variables set (or .env file reference)
 - [ ] Post-create command configured (install dependencies)
-- [ ] Multi-service setup via [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose (if needed)
+- [ ] Multi-service setup via [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Compose (if needed)
 - [ ] Container user permissions configured (avoid root)
 - [ ] Git credential forwarding configured
 - [ ] Features selected from devcontainer-features registry
@@ -73,7 +73,7 @@ What is the project type?
 ├── Single runtime, no services → Dockerfile-based
 │   base: mcr.microsoft.com/devcontainers/[typescript](../../Frontend/typescript/SKILL.md)-node:20
 │   → apt install tools → npm install → done
-├── Single runtime + databases → [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose
+├── Single runtime + databases → [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Compose
 │   app container + postgres + redis containers
 │   → depends_on, network, healthcheck
 ├── Polyglot / multiple runtimes → Feature-based
@@ -81,7 +81,7 @@ What is the project type?
 │   → ghcr.io/devcontainers/features/*
 ├── GPU / CUDA development → GPU-enabled base
 │   base: mcr.microsoft.com/devcontainers/cuda
-│   → nvidia-[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) runtime
+│   → nvidia-[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) runtime
 └── Embedded / IoT (Rust, C++) → Cross-compilation tools
     → arm-none-eabi-gcc, QEMU, platformio feature
 ```
@@ -90,7 +90,7 @@ What is the project type?
 ```
 Host Machine (VS Code, Codespaces, JetBrains)
     ↕ Remote-SSH or Remote-Containers
-Container ([Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md))
+Container ([Docker](../../../containers-orchestration/docker/other/docker/SKILL.md))
 ├── Application code (mounted volume)
 ├── Language runtime (Node, [Python](../../Languages/python/SKILL.md), Go, etc.)
 ├── Build tools (npm, cargo, make, etc.)
@@ -98,9 +98,9 @@ Container ([Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docke
 ├── Git credentials forwarded
 ├── SSH agent forwarded
 ├── Ports forwarded (app, debugger, services)
-└── [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-outside-[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) (optional)
+└── [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-outside-[Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) (optional)
     ↓
-[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose (optional multi-service)
+[Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Compose (optional multi-service)
 ├── App container
 ├── [PostgreSQL](../../Backend/postgresql/SKILL.md) / [MySQL](../../Backend/mysql/SKILL.md) / [MongoDB](../../Backend/mongodb/SKILL.md)
 ├── Redis / Memcached
@@ -125,7 +125,7 @@ Container ([Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docke
   //   "args": { "VARIANT": "20" }
   // },
 
-  // Option C: Use [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose
+  // Option C: Use [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Compose
   // "dockerComposeFile": "[docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml",
   // "service": "app",
   // "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
@@ -135,7 +135,7 @@ Container ([Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docke
     "ghcr.io/devcontainers/features/node:1": {
       "version": "20"
     },
-    "ghcr.io/devcontainers/features/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-outside-of-[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md):1": {},
+    "ghcr.io/devcontainers/features/[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-outside-of-[docker](../../../containers-orchestration/docker/other/docker/SKILL.md):1": {},
     "ghcr.io/devcontainers/features/git:1": {},
     "ghcr.io/devcontainers/features/[github](../../../ci-cd/github-actions/other/github/SKILL.md)-cli:1": {}
   },
@@ -147,7 +147,7 @@ Container ([Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docke
     "bradlc.vscode-tailwindcss",
     "ms-vscode.vscode-[typescript](../../Frontend/typescript/SKILL.md)-next",
     "[github](../../../ci-cd/github-actions/other/github/SKILL.md).vscode-[github-actions](../../../DevOps_and_Cloud/CI_CD/[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-actions/SKILL.md)",
-    "ms-azuretools.vscode-[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)"
+    "ms-azuretools.vscode-[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)"
   ],
 
   // Settings to apply
@@ -208,7 +208,7 @@ RUN su node -c "npm install -g pnpm tsx eslint prettier"
 COPY --chown=node:node .zshrc /home/node/.zshrc
 ```
 
-### Step 3: [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose for Multi-Service
+### Step 3: [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Compose for Multi-Service
 
 ```yaml
 # .devcontainer/[docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml
@@ -323,7 +323,7 @@ echo "✅ Development environment ready!"
   },
 
   "features": {
-    "ghcr.io/devcontainers/features/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-outside-of-[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md):1": {}
+    "ghcr.io/devcontainers/features/[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-outside-of-[docker](../../../containers-orchestration/docker/other/docker/SKILL.md):1": {}
   },
 
   "forwardPorts": [3000],
@@ -393,7 +393,7 @@ jobs:
           cacheFrom: ghcr.io/myorg/devcontainer
           push: never
       - name: Run post-create
-        run: [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) run --rm ghcr.io/myorg/devcontainer /bin/bash -c ".devcontainer/post-create.sh && npm test"
+        run: [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run --rm ghcr.io/myorg/devcontainer /bin/bash -c ".devcontainer/post-create.sh && npm test"
 ```
 
 ## Common Pitfalls
@@ -402,8 +402,8 @@ jobs:
 |---------|-------------|------------|
 | Running as root | Container user has file permission issues | Use `remoteUser` in devcontainer.json, match host UID |
 | No git credential forwarding | Can't push to remote from container | Configure Git credential helper, SSH agent |
-| State loss on rebuild | Database data lost when container rebuilds | Use [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) volumes for persistent data |
-| Slow rebuilds | Installing everything from scratch | Use [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) layer caching, feature cache |
+| State loss on rebuild | Database data lost when container rebuilds | Use [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) volumes for persistent data |
+| Slow rebuilds | Installing everything from scratch | Use [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) layer caching, feature cache |
 | Port conflicts | Multiple projects on same ports | Use different ports per project |
 | Missing features | Common tools not installed | Use devcontainer-features registry |
 | Large image size | GB-sized images slow to pull | Use slim base images, multi-stage builds |
@@ -415,7 +415,7 @@ jobs:
 
 | Practice | Rationale |
 |----------|-----------|
-| Use [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose for multi-service | DB, cache, and other services in isolated containers |
+| Use [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Compose for multi-service | DB, cache, and other services in isolated containers |
 | Use devcontainer-features | Community-maintained, versioned tool installations |
 | Pin base image tags | Avoid unexpected breaking changes from :latest |
 | Set remoteUser | Match host file permissions |
@@ -434,9 +434,9 @@ jobs:
 ```jsonc
 {
   "features": {
-    "ghcr.io/devcontainers/features/[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md):1": {},
+    "ghcr.io/devcontainers/features/[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md):1": {},
     "ghcr.io/devcontainers/features/helm:1": {},
-    "ghcr.io/devcontainers/features/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-from-[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md):1": {},
+    "ghcr.io/devcontainers/features/[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-from-[docker](../../../containers-orchestration/docker/other/docker/SKILL.md):1": {},
     "ghcr.io/devcontainers/features/k3d:1": {}
   },
   "postCreateCommand": "k3d cluster create dev"
@@ -474,8 +474,8 @@ Hand off to `dev-loop-[git-workflow](../../../ci-cd/common/git-workflow/git-work
 
 ### Multi-Service Topology
 - **[Monorepo](../../Frontend/monorepo/SKILL.md) single container**: Simple, one DevContainer.json. Good for small projects.
-- **[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose multi-container**: Service-per-container with depends_on. Use for [microservices](../../Patterns/microservices/SKILL.md).
-- **[Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Dev environment**: Dev runs in-cluster with hot-reload. For cloud-native teams.
+- **[Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Compose multi-container**: Service-per-container with depends_on. Use for [microservices](../../Patterns/microservices/SKILL.md).
+- **[Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Dev environment**: Dev runs in-cluster with hot-reload. For cloud-native teams.
 
 ## Implementation Patterns
 
@@ -503,7 +503,7 @@ CMD ["node", "dist/server.js"]
   "name": "Full Stack Dev Container",
   "image": "mcr.microsoft.com/devcontainers/[typescript](../../Frontend/typescript/SKILL.md)-node:20",
   "features": {
-    "ghcr.io/devcontainers/features/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-in-[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md):2": {},
+    "ghcr.io/devcontainers/features/[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-in-[docker](../../../containers-orchestration/docker/other/docker/SKILL.md):2": {},
     "ghcr.io/devcontainers/features/git-lfs:1": {},
     "ghcr.io/devcontainers/features/sshd:1": {}
   },
@@ -524,7 +524,7 @@ CMD ["node", "dist/server.js"]
 
 ### Reliability
 - **Health checks**: Add HEALTHCHECK to Dockerfile. Configure restart policies in compose.
-- **Resource limits**: Set CPU and memory limits per container. Use [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) stats for [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
+- **Resource limits**: Set CPU and memory limits per container. Use [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) stats for [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md).
 - **Persistence**: Use named volumes for databases. Bind mounts for configuration.
 
 ## Anti-Patterns
@@ -541,12 +541,12 @@ CMD ["node", "dist/server.js"]
 
 ### Build Speed
 - **Remote build cache**: Use BuildKit cache mounts and remote registry cache. Share layers across team.
-- **Parallel builds**: Use [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) buildx bake for multi-service builds. Leverage --parallel flag.
+- **Parallel builds**: Use [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) buildx bake for multi-service builds. Leverage --parallel flag.
 - **Selective rebuild**: Mount source as volume in dev. Only rebuild when dependencies change.
 
 ### Runtime Speed
 - **Hot reload**: Use nodemon/air for auto-restart. Reduce feedback loop to < 2 seconds.
-- **Startup [profiling](../../Frontend/profiling/SKILL.md)**: Profile container startup with [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) events. Identify slow initialization.
+- **Startup [profiling](../../Frontend/profiling/SKILL.md)**: Profile container startup with [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) events. Identify slow initialization.
 - **Volume performance**: Use delegated/consistent mount config on macOS. Prefer named volumes for databases.
 
 ## Security Considerations
@@ -559,10 +559,10 @@ CMD ["node", "dist/server.js"]
 ### Supply Chain
 - **Image scanning**: Scan base images with Trivy/Snyk before use. Pin to digest, not tag.
 - **Dependency [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)**: Run npm [audit](../../../AI_and_Agents/Operations/audit/SKILL.md)/pip [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) in postCreateCommand. Fail on critical vulnerabilities.
-- **Signature verification**: Verify image signatures with cosign. Use [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Content Trust for pull.
+- **Signature verification**: Verify image signatures with cosign. Use [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Content Trust for pull.
 
 ### Secrets Management
-- **Never in image**: Use [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) secrets or .env files mounted at runtime. Never COPY secrets into image.
+- **Never in image**: Use [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) secrets or .env files mounted at runtime. Never COPY secrets into image.
 - **Secret scanning**: Scan for hardcoded secrets in git pre-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) hooks. Use tools like git-secrets or truffleHog.
 - **Ephemeral credentials**: Use short-lived tokens with automatic rotation. Integrate with OIDC providers.
 

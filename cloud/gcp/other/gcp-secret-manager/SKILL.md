@@ -171,17 +171,17 @@ gcloud secrets add-iam-policy-binding db-password \
   --member="serviceAccount:myapp-gke-sa@my-project.iam.gserviceaccount.com" \
   --role="roles/secretmanager.secretAccessor"
 
-# Bind [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) SA to GCP SA
+# Bind [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) SA to GCP SA
 gcloud iam service-accounts add-iam-policy-binding \
   myapp-gke-sa@my-project.iam.gserviceaccount.com \
   --role="roles/iam.workloadIdentityUser" \
   --member="serviceAccount:my-project.svc.id.goog[production/myapp-sa]"
 ```
 
-### [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Manifests
+### [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Manifests
 
 ```yaml
-# [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) service account annotated with GCP SA
+# [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) service account annotated with GCP SA
 apiVersion: v1
 kind: ServiceAccount
 metadata:

@@ -37,8 +37,8 @@ granting `*:*`, or an unencrypted RDS instance — none of which Terraform
 itself will refuse to apply, and none of which a dependency scanner or a
 [code-quality](../../../Software_Engineering_and_Other/Miscellaneous/skills-main/skills/[code-quality](../../../Software_Engineering_and_Other/Patterns/code-quality/SKILL.md)/SKILL.md) linter is positioned to catch. **Checkov** and **tfsec** are
 purpose-built, static-analysis scanners for exactly this: they parse
-Terraform (and, for Checkov, [CloudFormation](../cloudformation/SKILL.md), [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) manifests, ARM/Bicep,
-[Serverless](../../Containers_and_Orchestration/serverless/SKILL.md) Framework, and Dockerfiles) *before* any resource is provisioned,
+Terraform (and, for Checkov, [CloudFormation](../cloudformation/SKILL.md), [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) manifests, ARM/Bicep,
+[Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) Framework, and Dockerfiles) *before* any resource is provisioned,
 and check it against a large ruleset of cloud-security best practices. This
 is a narrower, IaC-specific scope than Snyk's multi-product platform
 (`snyk iac test` covers similar ground as one of three Snyk scan types
@@ -74,12 +74,12 @@ full per-seat licensing for that purpose alone.
 ## Prerequisites & environment
 
 - The IaC source tree itself (Terraform `.tf`/`.tfvars`, [CloudFormation](../cloudformation/SKILL.md)
-  YAML/JSON templates, [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) manifests, or Helm charts) — neither tool
+  YAML/JSON templates, [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) manifests, or Helm charts) — neither tool
   needs a live cloud connection or a deployed environment; both scan source
   statically.
 - **Checkov** (`pip install checkov` or the container image
   `bridgecrew/checkov`) — [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)-based, broadest format coverage
-  (Terraform, [CloudFormation](../cloudformation/SKILL.md), [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md), Helm, ARM/Bicep, [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md)
+  (Terraform, [CloudFormation](../cloudformation/SKILL.md), [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), Helm, ARM/Bicep, [Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)
   Framework, Dockerfile, and plain YAML/JSON for some checks).
 - **tfsec** (a standalone Go binary, or via `brew install tfsec` /
   container image) — Terraform-only, narrower format scope but often

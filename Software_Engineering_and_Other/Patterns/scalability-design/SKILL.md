@@ -46,7 +46,7 @@ that can't share the load.
 - **Avoid sticky routing as the default fix** — it papers over statefulness instead of removing
   it, and it reintroduces a single point of failure per session.
 - **Treat local disk as ephemeral** — anything written locally disappears when the instance is
-  replaced; see `[stateful-workloads](../../../DevOps_and_Cloud/Containers_and_Orchestration/stateful-workloads/SKILL.md)` for components that must genuinely hold state.
+  replaced; see `[stateful-workloads](../../../containers-orchestration/kubernetes/workloads/stateful-workloads/SKILL.md)` for components that must genuinely hold state.
 
 **Done when:** any request can be served by any instance of the stateless tier, verified by
 killing an instance mid-traffic without a user-visible failure.

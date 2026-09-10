@@ -146,7 +146,7 @@ spark.openlineage.parentRunId=run-uuid-here
 
 ## Marquez Deployment
 
-### [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose
+### [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) Compose
 ```yaml
 version: '3.8'
 services:

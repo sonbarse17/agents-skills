@@ -80,7 +80,7 @@ After Switch:
                 └───────────────┘
 ```
 
-### [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Implementation
+### [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Implementation
 
 ```yaml
 # blue-deployment.yaml
@@ -167,24 +167,24 @@ spec:
 #!/bin/bash
 # blue-green-switch.sh
 
-CURRENT=$([kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get svc myapp -o jsonpath='{.spec.selector.version}')
+CURRENT=$([kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get svc myapp -o jsonpath='{.spec.selector.version}')
 NEW_VERSION=$1
 
 echo "Current version: $CURRENT"
 echo "Switching to: $NEW_VERSION"
 
 # Verify new deployment is ready
-[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) rollout status deployment/myapp-$NEW_VERSION
+[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) rollout status deployment/myapp-$NEW_VERSION
 
 # Check health
-HEALTH=$([kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) exec -it deployment/myapp-$NEW_VERSION -- curl -s localhost:8080/health)
+HEALTH=$([kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) exec -it deployment/myapp-$NEW_VERSION -- curl -s localhost:8080/health)
 if [ "$HEALTH" != "ok" ]; then
   echo "Health check failed"
   exit 1
 fi
 
 # Switch traffic
-[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) patch svc myapp -p "{\"spec\":{\"selector\":{\"version\":\"$NEW_VERSION\"}}}"
+[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) patch svc myapp -p "{\"spec\":{\"selector\":{\"version\":\"$NEW_VERSION\"}}}"
 
 echo "Switched to $NEW_VERSION"
 ```
@@ -212,7 +212,7 @@ Hooks:
 
 ## Canary Deployment
 
-### [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) with Istio
+### [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) with Istio
 
 ```yaml
 # VirtualService for traffic splitting
@@ -321,7 +321,7 @@ spec:
 
 ## Rolling Deployment
 
-### [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Default
+### [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Default
 
 ```yaml
 apiVersion: apps/v1
@@ -366,25 +366,25 @@ spec:
 
 ```bash
 # Update image
-[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) set image deployment/myapp myapp=myapp:v2.0.0
+[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) set image deployment/myapp myapp=myapp:v2.0.0
 
 # Watch rollout
-[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) rollout status deployment/myapp
+[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) rollout status deployment/myapp
 
 # Pause rollout
-[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) rollout pause deployment/myapp
+[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) rollout pause deployment/myapp
 
 # Resume rollout
-[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) rollout resume deployment/myapp
+[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) rollout resume deployment/myapp
 
 # Rollback
-[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) rollout undo deployment/myapp
+[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) rollout undo deployment/myapp
 
 # Rollback to specific revision
-[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) rollout undo deployment/myapp --to-revision=2
+[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) rollout undo deployment/myapp --to-revision=2
 
 # View history
-[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) rollout history deployment/myapp
+[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) rollout history deployment/myapp
 ```
 
 ## Health Checks
@@ -452,7 +452,7 @@ while true; do
   
   if (( $(echo "$SUCCESS_RATE < $THRESHOLD" | bc -l) )); then
     echo "Success rate below threshold! Rolling back..."
-    [kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) rollout undo deployment/$DEPLOYMENT
+    [kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) rollout undo deployment/$DEPLOYMENT
     exit 1
   fi
   
@@ -509,5 +509,5 @@ done
 ## Related Skills
 
 - [kubernetes-ops](../../orchestration/[kubernetes-ops](../../Containers_and_Orchestration/[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-ops/SKILL.md)/) - K8s deployment basics
-- [argocd-gitops](../../orchestration/[argocd-gitops](../../Containers_and_Orchestration/[argocd](../../Containers_and_Orchestration/argocd/SKILL.md)-[gitops](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)/SKILL.md)/) - [GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) deployments
+- [argocd-gitops](../../orchestration/[argocd-gitops](../../Containers_and_Orchestration/[argocd](../../Containers_and_Orchestration/argocd/SKILL.md)-[gitops](../../../../containers-orchestration/common/gitops/gitops/SKILL.md)/SKILL.md)/) - [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md) deployments
 - [feature-flags](../[feature-flags](../feature-flags/SKILL.md)/) - Progressive rollout

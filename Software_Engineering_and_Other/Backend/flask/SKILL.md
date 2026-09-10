@@ -42,7 +42,7 @@ User request includes: `flask`, `flask backend`, `flask blueprint`, `flask app f
 - Database ORM (SQLAlchemy, Peewee)
 - API style (REST, Flask-RESTx)
 - Template engine (Jinja2, none for SPA)
-- Deployment (Gunicorn, uWSGI, [serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md))
+- Deployment (Gunicorn, uWSGI, [serverless](../../Patterns/serverless/SKILL.md))
 
 ### Output Artifact
 A markdown document containing:
@@ -531,7 +531,7 @@ Server-rendered HTML?
 | **Ruff** | Linting (replaces Flake8) |
 | **Mypy** | Type checking |
 | **Gunicorn** | Production WSGI server |
-| **[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)** | [Containerization](../../../DevOps_and_Cloud/Containers_and_Orchestration/containerization/SKILL.md) |
+| **[Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)** | [Containerization](../../../containers-orchestration/docker/other/containerization/SKILL.md) |
 | **Poetry / pip-tools** | Dependency management |
 | **Flask-DebugToolbar** | Development debugging |
 

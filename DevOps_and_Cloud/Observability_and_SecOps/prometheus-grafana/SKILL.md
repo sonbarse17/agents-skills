@@ -30,17 +30,17 @@ Use this skill when:
 - Creating [monitoring](../monitoring/SKILL.md) [dashboards](../dashboards/SKILL.md)
 - Writing PromQL queries for analysis
 - Configuring [alerting](../alerting/SKILL.md) rules
-- [Monitoring](../monitoring/SKILL.md) [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) clusters
+- [Monitoring](../monitoring/SKILL.md) [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) clusters
 
 ## Prerequisites
 
-- [Docker](../../Containers_and_Orchestration/docker/SKILL.md) or [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) for deployment
+- [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) or [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) for deployment
 - Network access to monitored targets
 - Basic understanding of metrics concepts
 
 ## Prometheus Setup
 
-### [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Deployment
+### [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Deployment
 
 ```yaml
 # [docker-compose](../../Containers_and_Orchestration/[docker](../../Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml
@@ -109,13 +109,13 @@ scrape_configs:
     metrics_path: /metrics
 ```
 
-## [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Deployment
+## [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Deployment
 
 ### Using Helm
 
 ```bash
 # Add Prometheus community Helm repo
-helm repo add prometheus-community https://prometheus-community.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/[helm-charts](../../Containers_and_Orchestration/helm-charts/SKILL.md)
+helm repo add prometheus-community https://prometheus-community.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/[helm-charts](../../../containers-orchestration/helm/charts/helm-charts/SKILL.md)
 
 # Install kube-prometheus-stack
 helm install prometheus prometheus-community/kube-prometheus-stack \

@@ -64,7 +64,7 @@ Key concepts:
 Start DefectDojo locally:
 ```bash
 git clone https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/DefectDojo/django-DefectDojo.git
-cd django-DefectDojo && [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) compose up -d
+cd django-DefectDojo && [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) compose up -d
 # Access at http://localhost:8080 — change admin/admin password immediately
 ```
 

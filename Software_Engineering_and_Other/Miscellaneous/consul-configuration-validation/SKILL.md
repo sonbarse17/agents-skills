@@ -70,8 +70,8 @@ place.
   instance (`consul agent -dev`) to apply candidate config entries
   against, or a non-production [datacenter](../datacenter/SKILL.md) that mirrors production
   topology closely enough that subset/intention checks are meaningful.
-- `consul-k8s`-managed CRDs (on [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)) can additionally be
-  validated with standard `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply --dry-run=server`, which
+- `consul-k8s`-managed CRDs (on [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)) can additionally be
+  validated with standard `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply --dry-run=server`, which
   catches schema errors but not the semantic gaps (subset mismatches,
   unreachable intentions) that need a live `consul intention check`.
 
@@ -155,19 +155,19 @@ place.
 
 8. **For `consul-k8s` CRDs, dry-run against the API server first**, then
    confirm the Consul side actually reflects the intended state (CRD
-   acceptance by [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) doesn't guarantee the `consul-k8s` controller
+   acceptance by [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) doesn't guarantee the `consul-k8s` controller
    successfully reconciled it into Consul's catalog):
    ```bash
-   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply --dry-run=server -f service-intentions.yaml
-   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f service-intentions.yaml
-   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get serviceintentions payments-api -o yaml | \
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply --dry-run=server -f service-intentions.yaml
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f service-intentions.yaml
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get serviceintentions payments-api -o yaml | \
      grep -A3 status
    ```
 
 ## Best practices
 
 - Always follow `consul config write` with `consul config read` (or the
-  [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) CRD's `status` field) to confirm the entry landed as
+  [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) CRD's `status` field) to confirm the entry landed as
   intended — successful write acceptance and correct runtime effect are
   different things.
 - Use `consul intention check` as the authoritative answer to "will this
@@ -214,13 +214,13 @@ place.
   all.
 
 - **Symptom:** A `consul-k8s` `ServiceIntentions` CRD applies cleanly per
-  `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply` with no errors, but the corresponding Consul intention
+  `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply` with no errors, but the corresponding Consul intention
   never takes effect.
-  **Fix:** CRD acceptance by the [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) API server only confirms
+  **Fix:** CRD acceptance by the [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) API server only confirms
   schema validity, not that the `consul-k8s` controller successfully
   reconciled it into Consul — check the CRD's `status` field and the
   `consul-k8s` controller pod's logs, and confirm with `consul intention
-  get` directly against Consul, not just `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get`.
+  get` directly against Consul, not just `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get`.
 
 - **Symptom:** To unblock a failing intention check during
   troubleshooting, someone applies a temporary wildcard

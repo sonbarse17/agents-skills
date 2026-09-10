@@ -42,7 +42,7 @@ Exact user phrases: "cron", "schedule", "scheduled task", "cron job", "job sched
 
 ### Input Context
 - Job definitions and their schedule (cron expressions).
-- Distributed environment ([Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md), multi-instance).
+- Distributed environment ([Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), multi-instance).
 - Existing infrastructure (Redis, [PostgreSQL](../../Backend/postgresql/SKILL.md), ZooKeeper).
 
 ### Output Artifact
@@ -96,7 +96,7 @@ What infrastructure is available?
   ├── ZooKeeper/etcd → Ephemeral znodes for leader election
   │   ├── PRO: Strong consistency, automatic lease renewal
   │   └── CON: Operational complexity, extra infra
-  └── [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) → CronJob resource (native)
+  └── [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) → CronJob resource (native)
       ├── PRO: No code needed, self-healing
       └── CON: No intra-job coordination, at-most-once
 ```
@@ -189,7 +189,7 @@ async function executeWithPgLock(job: Job): Promise<void> {
   }
 }
 
-// Option C: [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) CronJob
+// Option C: [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) CronJob
 // apiVersion: batch/v1
 // kind: CronJob
 // spec:
@@ -345,7 +345,7 @@ Common expressions:
 | Platform | Approach | HA | Exactness | Best For |
 |----------|----------|----|-----------|----------|
 | Linux cron | OS-level | Single node | Minute | Simple, single-node |
-| [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) CronJob | K8s-native | Multi-node | At-least-once | K8s workloads |
+| [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) CronJob | K8s-native | Multi-node | At-least-once | K8s workloads |
 | Quartz (Java) | DB-backed | Multi-node | Exactly-once | Java ecosystem |
 | Temporal | Workflow engine | Multi-node | Exactly-once | Complex workflows |
 | Airflow | DAG scheduler | Multi-node | At-least-once | Data pipelines |
@@ -414,7 +414,7 @@ Common expressions:
   - ../../../Global_References/scheduling-security.md — Scheduling Security
 ## Handoff
 No artifact produced unless requested.
-Next skill: [multi-tenancy](../../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md) — segregate data for different tenants using the scheduled jobs.
+Next skill: [multi-tenancy](../../../containers-orchestration/common/other/multi-tenancy/SKILL.md) — segregate data for different tenants using the scheduled jobs.
 Carry forward: job definitions, cron expressions, lock provider.
 ## Implementation Patterns
 

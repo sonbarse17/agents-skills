@@ -113,7 +113,7 @@ What are your latency and consistency requirements?
   │   ├── PRO: ACID compliant, survives crashes
   │   ├── CON: Slower (~5-10ms), requires cleanup job
   │   └── Use when: Financial operations, long TTL (> 24h)
-  └── DynamoDB → [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md), auto-scaling, TTL built-in
+  └── DynamoDB → [Serverless](../../Patterns/serverless/SKILL.md), auto-scaling, TTL built-in
       ├── PRO: No ops, pay-per-use
       ├── CON: Eventually consistent by default
       └── Use when: AWS ecosystem, variable throughput
@@ -307,7 +307,7 @@ class PostgresIdempotencyStore {
 | In-memory (Map) | <1μs | None | Manual | Free | Single-node, dev |
 | Redis | ~1ms | Configurable | Built-in | Low-Med | High-throughput |
 | [PostgreSQL](../postgresql/SKILL.md) | ~5ms | Full | Manual | Low | Financial, durable |
-| DynamoDB | ~10ms | Full | Built-in | Per-use | [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md), AWS |
+| DynamoDB | ~10ms | Full | Built-in | Per-use | [Serverless](../../Patterns/serverless/SKILL.md), AWS |
 | Memcached | ~1ms | None | Built-in | Low | Simple caching |
 
 ### Race Condition Handling

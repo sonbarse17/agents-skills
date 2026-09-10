@@ -190,7 +190,7 @@ State: User asks about [monitoring](../../DevOps_and_Cloud/Observability_and_Sec
   Reason: "[Monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) stack configuration request."
 
 State: User asks about Helm, Helm chart, values management, chart deployment.
-  Route: [helm-patterns](../../DevOps_and_Cloud/Containers_and_Orchestration/helm-patterns/SKILL.md)
+  Route: [helm-patterns](../../containers-orchestration/helm/other/helm-patterns/SKILL.md)
   Reason: "Helm chart patterns request."
 
 State: User asks about Terraform, IaC, infrastructure provisioning.
@@ -396,25 +396,25 @@ State: Remix detected and user asks about Remix patterns, Remix loaders.
   Route: remix-patterns
   Reason: "Remix patterns request."
 
-State: User asks about [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md), Dockerfile, [docker-compose](../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md), [containerization](../../DevOps_and_Cloud/Containers_and_Orchestration/containerization/SKILL.md).
+State: User asks about [Docker](../../containers-orchestration/docker/other/docker/SKILL.md), Dockerfile, [docker-compose](../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md), [containerization](../../containers-orchestration/docker/other/containerization/SKILL.md).
   Route: [docker-patterns](../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-patterns/SKILL.md)
-  Reason: "[Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) [containerization](../../DevOps_and_Cloud/Containers_and_Orchestration/containerization/SKILL.md) request."
+  Reason: "[Docker](../../containers-orchestration/docker/other/docker/SKILL.md) [containerization](../../containers-orchestration/docker/other/containerization/SKILL.md) request."
 
 State: User says deploy, CI/CD, [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, pipeline automation.
   Route: [cicd-pipeline](../../ci-cd/common/pipeline-design/cicd-pipeline/SKILL.md)
   Reason: "CI/CD pipeline request."
 
-State: User asks about [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md), k8s, pods, deployments, services, ingress.
-  Route: [kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-patterns
-  Reason: "[Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) orchestration request."
+State: User asks about [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), k8s, pods, deployments, services, ingress.
+  Route: [kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-patterns
+  Reason: "[Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) orchestration request."
 
 State: User asks about [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions, CI/CD workflow, pipeline automation.
   Route: [github-actions](../../DevOps_and_Cloud/CI_CD/[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-actions/SKILL.md)
   Reason: "[GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions CI/CD request."
 
-State: User asks about [GitOps](../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md), [ArgoCD](../../ci-cd/argocd/other/argocd/SKILL.md), Flux, Git-based deployment.
-  Route: devops-[gitops](../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)
-  Reason: "[GitOps](../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) deployment strategy request."
+State: User asks about [GitOps](../../containers-orchestration/common/gitops/gitops/SKILL.md), [ArgoCD](../../containers-orchestration/argocd/other/argocd/SKILL.md), Flux, Git-based deployment.
+  Route: devops-[gitops](../../containers-orchestration/common/gitops/gitops/SKILL.md)
+  Reason: "[GitOps](../../containers-orchestration/common/gitops/gitops/SKILL.md) deployment strategy request."
 
 State: User asks about [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), secrets management, HashiCorp [Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), secret storage.
   Route: devops-[vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md)
@@ -424,9 +424,9 @@ State: User asks about AWS, EC2, S3, Lambda, RDS, cloud infrastructure.
   Route: devops-aws
   Reason: "AWS cloud infrastructure request."
 
-State: User asks about [serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md), Lambda, Cloud Functions, FaaS.
-  Route: devops-[serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)
-  Reason: "[Serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) architecture request."
+State: User asks about [serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md), Lambda, Cloud Functions, FaaS.
+  Route: devops-[serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)
+  Reason: "[Serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) architecture request."
 
 State: User asks about [monorepo](../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md), Nx, Turborepo, workspace organization.
   Route: devops-[monorepo](../../Software_Engineering_and_Other/Frontend/monorepo/SKILL.md)
@@ -625,7 +625,7 @@ State: User asks about [observability](../../DevOps_and_Cloud/Observability_and_
   Reason: "[Observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) request."
 
 State: User asks about resilience, circuit breaker, retry, bulkhead, rate limiting.
-  Route: [backend-resilience-patterns](../../DevOps_and_Cloud/Containers_and_Orchestration/resilience-patterns/SKILL.md)
+  Route: [backend-resilience-patterns](../../containers-orchestration/common/other/resilience-patterns/SKILL.md)
   Reason: "Resilience patterns request."
 
 State: User asks about OpenAPI, Swagger, API specification.
@@ -656,9 +656,9 @@ State: User asks about scheduled tasks, cron jobs, Quartz, job scheduling.
   Route: [backend-scheduling-cron](../../Software_Engineering_and_Other/Patterns/scheduling-cron/SKILL.md)
   Reason: "Scheduling/cron request."
 
-State: User asks about [multi-tenancy](../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md), multi-tenant architecture, tenant isolation backend.
-  Route: backend-[multi-tenancy](../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md)
-  Reason: "[Multi-tenancy](../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md) request."
+State: User asks about [multi-tenancy](../../containers-orchestration/common/other/multi-tenancy/SKILL.md), multi-tenant architecture, tenant isolation backend.
+  Route: backend-[multi-tenancy](../../containers-orchestration/common/other/multi-tenancy/SKILL.md)
+  Reason: "[Multi-tenancy](../../containers-orchestration/common/other/multi-tenancy/SKILL.md) request."
 
 State: User asks about BFF, Backend for Frontend, BFF pattern.
   Route: [backend-bff-pattern](../../Software_Engineering_and_Other/Backend/bff-pattern/SKILL.md)
@@ -724,9 +724,9 @@ State: User asks about AR/VR, augmented reality, virtual reality, WebXR.
   Route: [mobile-ar-vr](../../Mobile/ar-vr/SKILL.md)
   Reason: "AR/VR request."
 
-State: User asks about [Nomad](../../DevOps_and_Cloud/Containers_and_Orchestration/nomad/SKILL.md), HashiCorp [Nomad](../../DevOps_and_Cloud/Containers_and_Orchestration/nomad/SKILL.md), job scheduling.
-  Route: devops-[nomad](../../DevOps_and_Cloud/Containers_and_Orchestration/nomad/SKILL.md)
-  Reason: "[Nomad](../../DevOps_and_Cloud/Containers_and_Orchestration/nomad/SKILL.md) request."
+State: User asks about [Nomad](../../containers-orchestration/nomad/other/nomad/SKILL.md), HashiCorp [Nomad](../../containers-orchestration/nomad/other/nomad/SKILL.md), job scheduling.
+  Route: devops-[nomad](../../containers-orchestration/nomad/other/nomad/SKILL.md)
+  Reason: "[Nomad](../../containers-orchestration/nomad/other/nomad/SKILL.md) request."
 
 State: User asks about [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) response, on-call, PagerDuty, [incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) management.
   Route: devops-[incident-response](../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)
@@ -972,9 +972,9 @@ State: User asks about MLOps, ML operations, model deployment pipeline, model [m
   Route: [devops-mlops](../../AI_and_Agents/Models_and_FineTuning/mlops/SKILL.md)
   Reason: "MLOps request."
 
-State: User asks about [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) for data, K8s data workloads, Spark on K8s, data on [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).
-  Route: [kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-for-data
-  Reason: "[Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) for data request."
+State: User asks about [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) for data, K8s data workloads, Spark on K8s, data on [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).
+  Route: [kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-for-data
+  Reason: "[Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) for data request."
 
 State: User asks about cloud cost optimization, cloud spend, cost reduction, cloud billing.
   Route: [cloud-cost-optimization](../../DevOps_and_Cloud/Cloud_Providers/cloud-[cost-optimization](../../DevOps_and_Cloud/Cloud_Providers/cost-optimization/SKILL.md)/SKILL.md)
@@ -996,13 +996,13 @@ State: User asks about internal developer platform deep dive, Backstage plugins,
   Route: devops-[internal-developer-platform](../internal-developer-platform/SKILL.md)
   Reason: "Internal developer platform request."
 
-State: User asks about [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) operator, custom controller, CRD, Kubebuilder, operator pattern, reconciliation loop.
-  Route: [devops-[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-operators](../../DevOps_and_Cloud/Containers_and_Orchestration/[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-operators/SKILL.md)
-  Reason: "[Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) operators request."
+State: User asks about [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) operator, custom controller, CRD, Kubebuilder, operator pattern, reconciliation loop.
+  Route: [devops-[kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-operators](../../DevOps_and_Cloud/Containers_and_Orchestration/[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-operators/SKILL.md)
+  Reason: "[Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) operators request."
 
-State: User asks about advanced [GitOps](../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md), multi-cluster [GitOps](../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md), ApplicationSet, [ArgoCD](../../ci-cd/argocd/other/argocd/SKILL.md) sync waves, cluster bootstrapping, [GitOps](../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) at scale.
-  Route: [devops-[gitops](../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)-advanced](../../DevOps_and_Cloud/Containers_and_Orchestration/[gitops](../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)-advanced/SKILL.md)
-  Reason: "Advanced [GitOps](../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) request."
+State: User asks about advanced [GitOps](../../containers-orchestration/common/gitops/gitops/SKILL.md), multi-cluster [GitOps](../../containers-orchestration/common/gitops/gitops/SKILL.md), ApplicationSet, [ArgoCD](../../containers-orchestration/argocd/other/argocd/SKILL.md) sync waves, cluster bootstrapping, [GitOps](../../containers-orchestration/common/gitops/gitops/SKILL.md) at scale.
+  Route: [devops-[gitops](../../containers-orchestration/common/gitops/gitops/SKILL.md)-advanced](../../DevOps_and_Cloud/Containers_and_Orchestration/[gitops](../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)-advanced/SKILL.md)
+  Reason: "Advanced [GitOps](../../containers-orchestration/common/gitops/gitops/SKILL.md) request."
 
 State: User asks about progressive delivery, canary deployment, blue-green, traffic shifting, Flagger, Argo Rollouts, gradual rollout, deploy strategy.
   Route: devops-[progressive-delivery](../../ci-cd/common/deployment/progressive-delivery/SKILL.md)
@@ -1032,31 +1032,31 @@ State: User asks about [CircleCI](../../ci-cd/circleci/other/circleci/SKILL.md),
   Route: devops-[circleci](../../ci-cd/circleci/other/circleci/SKILL.md)
   Reason: "[CircleCI](../../ci-cd/circleci/other/circleci/SKILL.md) request."
 
-State: User asks about [autoscaling](../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md), HPA, VPA, Keda, Cluster Autoscaler, pod [autoscaling](../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md), node [autoscaling](../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md), [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) scaling.
-  Route: [devops-[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-autoscaling](../../DevOps_and_Cloud/Containers_and_Orchestration/[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-[autoscaling](../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/SKILL.md)
-  Reason: "[Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) [autoscaling](../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) request."
+State: User asks about [autoscaling](../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md), HPA, VPA, Keda, Cluster Autoscaler, pod [autoscaling](../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md), node [autoscaling](../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md), [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) scaling.
+  Route: [devops-[kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-autoscaling](../../DevOps_and_Cloud/Containers_and_Orchestration/[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-[autoscaling](../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/SKILL.md)
+  Reason: "[Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) [autoscaling](../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) request."
 
 State: User asks about APM, [Datadog](../../DevOps_and_Cloud/Observability_and_SecOps/datadog/SKILL.md), New Relic, application [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), APM instrumentation, synthetic [monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) platform.
   Route: devops-[apm-observability](../../AI_and_Agents/Operations/apm-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)
   Reason: "APM and [observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) platform request."
 
 State: User asks about Cilium, eBPF, Cilium network policy, Hubble, Cilium cluster mesh, cloud-native networking.
-  Route: devops-[cilium-ebpf](../../DevOps_and_Cloud/Containers_and_Orchestration/cilium-ebpf/SKILL.md)
+  Route: devops-[cilium-ebpf](../../containers-orchestration/kubernetes/networking/cilium-ebpf/SKILL.md)
   Reason: "Cilium/eBPF networking request."
 
 State: User asks about [OpenTelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md), OTel collector, distributed tracing, [OpenTelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) instrumentation, trace sampling.
   Route: devops-[opentelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)
   Reason: "[OpenTelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) request."
 
-State: User asks about Oracle Cloud, OCI, OKE, Oracle [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Engine, Oracle database cloud.
+State: User asks about Oracle Cloud, OCI, OKE, Oracle [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Engine, Oracle database cloud.
   Route: devops-[oracle-cloud](../../cloud/oracle/oracle-cloud/SKILL.md)
   Reason: "Oracle Cloud request."
 
-State: User asks about [DigitalOcean](../../cloud/digitalocean/digitalocean/SKILL.md), DOKS, [DigitalOcean](../../cloud/digitalocean/digitalocean/SKILL.md) App Platform, Droplet, [DigitalOcean](../../cloud/digitalocean/digitalocean/SKILL.md) [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).
+State: User asks about [DigitalOcean](../../cloud/digitalocean/digitalocean/SKILL.md), DOKS, [DigitalOcean](../../cloud/digitalocean/digitalocean/SKILL.md) App Platform, Droplet, [DigitalOcean](../../cloud/digitalocean/digitalocean/SKILL.md) [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).
   Route: devops-[digitalocean](../../cloud/digitalocean/digitalocean/SKILL.md)
   Reason: "[DigitalOcean](../../cloud/digitalocean/digitalocean/SKILL.md) request."
 
-State: User asks about IBM Cloud, IBM [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Service, IBM Cloud Foundry, IBM Cloud VPC.
+State: User asks about IBM Cloud, IBM [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Service, IBM Cloud Foundry, IBM Cloud VPC.
   Route: devops-[ibm-cloud](../../cloud/ibm/ibm-cloud/SKILL.md)
   Reason: "IBM Cloud request."
 
@@ -1064,7 +1064,7 @@ State: User asks about Alibaba Cloud, Aliyun, ACK, Alibaba Cloud ECS, ApsaraDB.
   Route: devops-[alibaba-cloud](../../cloud/alibaba/alibaba-cloud/SKILL.md)
   Reason: "Alibaba Cloud request."
 
-State: User asks about Hetzner, Hetzner Cloud, Hetzner dedicated server, Hetzner [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).
+State: User asks about Hetzner, Hetzner Cloud, Hetzner dedicated server, Hetzner [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).
   Route: devops-hetzner
   Reason: "Hetzner request."
 
@@ -1210,9 +1210,9 @@ State: User asks about analytics, event tracking, [Firebase](../../Software_Engi
   Route: mobile-analytics
   Reason: "Analytics request."
 
-State: User asks about [ArgoCD](../../ci-cd/argocd/other/argocd/SKILL.md), [GitOps](../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md), [ArgoCD](../../ci-cd/argocd/other/argocd/SKILL.md) sync.
-  Route: devops-[argo-cd](../../ci-cd/argocd/other/argo-cd/SKILL.md)
-  Reason: "[ArgoCD](../../ci-cd/argocd/other/argocd/SKILL.md)/[GitOps](../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) request."
+State: User asks about [ArgoCD](../../containers-orchestration/argocd/other/argocd/SKILL.md), [GitOps](../../containers-orchestration/common/gitops/gitops/SKILL.md), [ArgoCD](../../containers-orchestration/argocd/other/argocd/SKILL.md) sync.
+  Route: devops-[argo-cd](../../containers-orchestration/argocd/other/argo-cd/SKILL.md)
+  Reason: "[ArgoCD](../../containers-orchestration/argocd/other/argocd/SKILL.md)/[GitOps](../../containers-orchestration/common/gitops/gitops/SKILL.md) request."
 
 State: User asks about Azure, Microsoft Azure, AKS.
   Route: [devops-azure](../../cloud/azure/other/azure/SKILL.md)
@@ -1391,7 +1391,7 @@ State: User asks about secrets management, secret scanning, GitLeaks, [vault](..
   Reason: "Secrets management request."
 
 State: User asks about container security, image scanning, Trivy, admission control.
-  Route: [security-container-security](../../DevOps_and_Cloud/Containers_and_Orchestration/container-security/SKILL.md)
+  Route: [security-container-security](../../containers-orchestration/docker/security/container-security/SKILL.md)
   Reason: "Container security request."
 
 State: User asks about API security, OWASP API top 10, rate limiting.

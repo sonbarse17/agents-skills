@@ -239,7 +239,7 @@ modelscan scan -p "$MODEL_DIR"
 ## Network Isolation for AI Services
 
 ```yaml
-# [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) NetworkPolicy — isolate LLM API
+# [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) NetworkPolicy — isolate LLM API
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:

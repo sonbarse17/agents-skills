@@ -459,7 +459,7 @@ Use a dedicated admin user or API key with `manage` privileges. Reserve `elastic
 
 ## Deployment Compatibility
 
-| Capability                           | Self-managed | ECH          | [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md)    |
+| Capability                           | Self-managed | ECH          | [Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)    |
 | ------------------------------------ | ------------ | ------------ | ------------- |
 | ES [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) via cluster settings        | Yes          | Yes          | Not available |
 | ES logfile output                    | Yes          | Via Cloud UI | Not available |
@@ -470,8 +470,8 @@ Use a dedicated admin user or API key with `manage` privileges. Reserve `elastic
 **ECH notes:** ES [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) is configured via the cluster settings API. Logfile output is accessible through the Cloud
 console deployment logs. Index output works the same as self-managed.
 
-**[Serverless](../../Containers_and_Orchestration/serverless/SKILL.md) notes:**
+**[Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) notes:**
 
-- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging is not user-configurable on [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md). Security events are managed by Elastic as part of the platform.
-- If a user asks about auditing on [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md), direct them to the Elastic Cloud console or their account team.
+- [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) logging is not user-configurable on [Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md). Security events are managed by Elastic as part of the platform.
+- If a user asks about auditing on [Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md), direct them to the Elastic Cloud console or their account team.
 

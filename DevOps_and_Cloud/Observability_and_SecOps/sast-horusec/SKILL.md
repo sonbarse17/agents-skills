@@ -47,15 +47,15 @@ Horusec is an open-source security analysis tool that performs static code analy
 
 ## Supported Languages
 
-C#, Java, Kotlin, [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md), Ruby, Golang, Terraform, JavaScript, [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md), [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md), PHP, C, HTML, JSON, Dart, [Elixir](../../../Software_Engineering_and_Other/Languages/elixir/SKILL.md), Shell, Nginx
+C#, Java, Kotlin, [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md), Ruby, Golang, Terraform, JavaScript, [TypeScript](../../../Software_Engineering_and_Other/Frontend/typescript/SKILL.md), [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), PHP, C, HTML, JSON, Dart, [Elixir](../../../Software_Engineering_and_Other/Languages/elixir/SKILL.md), Shell, Nginx
 
 ## Quick Start
 
 Run Horusec scan on current project:
 
 ```bash
-# Using [Docker](../../Containers_and_Orchestration/docker/SKILL.md) (recommended)
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) run -v /var/run/[docker](../../Containers_and_Orchestration/docker/SKILL.md).sock:/var/run/[docker](../../Containers_and_Orchestration/docker/SKILL.md).sock \
+# Using [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) (recommended)
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run -v /var/run/[docker](../../../containers-orchestration/docker/other/docker/SKILL.md).sock:/var/run/[docker](../../../containers-orchestration/docker/other/docker/SKILL.md).sock \
   -v $(pwd):/src horuszup/horusec-cli:latest horusec start -p /src -P $(pwd)
 
 # Local installation
@@ -216,7 +216,7 @@ Add custom security rules:
 ## Security Considerations
 
 - **Sensitive Data Handling**: Horusec scans for exposed secrets. Ensure scan results are stored securely and access is restricted to authorized personnel only
-- **Access Control**: Limit access to Horusec configuration files and scan results. Use read-only mounts in [Docker](../../Containers_and_Orchestration/docker/SKILL.md) for source code scanning
+- **Access Control**: Limit access to Horusec configuration files and scan results. Use read-only mounts in [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) for source code scanning
 - **[Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logging**: Log all scan executions, findings, and risk acceptance decisions for compliance auditing
 - **Compliance**: Integrates with SOC2, PCI-DSS, and GDPR compliance by identifying vulnerabilities and tracking remediation
 - **Safe Defaults**: Configure severity thresholds appropriate for your risk tolerance. Start with MEDIUM or HIGH to reduce noise
@@ -229,7 +229,7 @@ Add custom security rules:
 ```yaml
 - name: Run Horusec Security Scan
   run: |
-    [docker](../../Containers_and_Orchestration/docker/SKILL.md) run -v /var/run/[docker](../../Containers_and_Orchestration/docker/SKILL.md).sock:/var/run/[docker](../../Containers_and_Orchestration/docker/SKILL.md).sock \
+    [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run -v /var/run/[docker](../../../containers-orchestration/docker/other/docker/SKILL.md).sock:/var/run/[docker](../../../containers-orchestration/docker/other/docker/SKILL.md).sock \
       -v $(pwd):/src horuszup/horusec-cli:latest \
       horusec start -p /src -o json -O horusec-report.json \
       --return-error-if-found-vulnerability
@@ -250,7 +250,7 @@ horusec-scan:
 ```groovy
 stage('Security Scan') {
   steps {
-    sh '[docker](../../Containers_and_Orchestration/docker/SKILL.md) run -v $(pwd):/src horuszup/horusec-cli:latest horusec start -p /src'
+    sh '[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run -v $(pwd):/src horuszup/horusec-cli:latest horusec start -p /src'
   }
 }
 ```
@@ -268,11 +268,11 @@ Horusec can integrate with centralized vulnerability management platforms via:
 
 ## Troubleshooting
 
-### Issue: [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Socket Permission Denied
+### Issue: [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Socket Permission Denied
 
-**Solution**: Ensure [Docker](../../Containers_and_Orchestration/docker/SKILL.md) socket has proper permissions:
+**Solution**: Ensure [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) socket has proper permissions:
 ```bash
-sudo chmod 666 /var/run/[docker](../../Containers_and_Orchestration/docker/SKILL.md).sock
+sudo chmod 666 /var/run/[docker](../../../containers-orchestration/docker/other/docker/SKILL.md).sock
 # Or run with sudo (not recommended for CI/CD)
 ```
 
@@ -297,15 +297,15 @@ sudo chmod 666 /var/run/[docker](../../Containers_and_Orchestration/docker/SKILL
 
 ### Issue: Missing Vulnerabilities for Specific Language
 
-**Solution**: Verify language is supported and [Docker](../../Containers_and_Orchestration/docker/SKILL.md) images are available:
+**Solution**: Verify language is supported and [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) images are available:
 ```bash
 horusec version --check-for-updates
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) pull horuszup/horusec-cli:latest
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) pull horuszup/horusec-cli:latest
 ```
 
 ## Advanced Usage
 
-### Running Without [Docker](../../Containers_and_Orchestration/docker/SKILL.md)
+### Running Without [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
 
 Install Horusec CLI directly (requires all security tool dependencies):
 
@@ -322,10 +322,10 @@ curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/main/deployments/scri
 
 Then run:
 ```bash
-horusec start -p . --disable-[docker](../../Containers_and_Orchestration/docker/SKILL.md)
+horusec start -p . --disable-[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
 ```
 
-**Note**: Running without [Docker](../../Containers_and_Orchestration/docker/SKILL.md) requires manual installation of all security analysis tools (Bandit, Brakeman, GoSec, etc.)
+**Note**: Running without [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) requires manual installation of all security analysis tools (Bandit, Brakeman, GoSec, etc.)
 
 ### Severity Filtering
 
@@ -339,7 +339,7 @@ horusec start -p . --severity-threshold="HIGH"
 horusec start -p . --severity-threshold="INFO"
 ```
 
-### Custom [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Images
+### Custom [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Images
 
 Override default security tool images in configuration:
 

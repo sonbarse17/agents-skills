@@ -57,7 +57,7 @@ systemctl start datadog-agent
 systemctl enable datadog-agent
 ```
 
-### [Docker](../../Containers_and_Orchestration/docker/SKILL.md)
+### [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
 
 ```yaml
 # [docker-compose](../../Containers_and_Orchestration/[docker](../../Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml
@@ -73,7 +73,7 @@ services:
       - DD_APM_ENABLED=true
       - DD_PROCESS_AGENT_ENABLED=true
     volumes:
-      - /var/run/[docker](../../Containers_and_Orchestration/docker/SKILL.md).sock:/var/run/[docker](../../Containers_and_Orchestration/docker/SKILL.md).sock:ro
+      - /var/run/[docker](../../../containers-orchestration/docker/other/docker/SKILL.md).sock:/var/run/[docker](../../../containers-orchestration/docker/other/docker/SKILL.md).sock:ro
       - /proc/:/host/proc/:ro
       - /sys/fs/cgroup/:/host/sys/fs/cgroup:ro
     ports:
@@ -81,7 +81,7 @@ services:
       - "8125:8125/udp"  # DogStatsD
 ```
 
-### [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)
+### [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
 
 ```bash
 # Using Helm
@@ -205,7 +205,7 @@ logs:
         pattern: health_check
 ```
 
-### [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Logs
+### [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Logs
 
 ```yaml
 # [docker-compose](../../Containers_and_Orchestration/[docker](../../Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml
@@ -215,7 +215,7 @@ services:
       com.datadoghq.ad.logs: '[{"source": "[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md)", "service": "myapp"}]'
 ```
 
-### [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Logs
+### [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Logs
 
 ```yaml
 # Pod annotation

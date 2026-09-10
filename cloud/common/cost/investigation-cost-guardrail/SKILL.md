@@ -59,7 +59,7 @@ Before Layer 1 heuristics, classify the agent's own tools. These are NOT `use_aw
 | `use_datadog` | **CAUTION** | [Datadog](../../../../DevOps_and_Cloud/Observability_and_SecOps/datadog/SKILL.md) API rate limits (no per-call $ cost, but may throttle) | Track count, warn at 100+ |
 | `use_splunk` | **PAID** | Splunk search license (per GB ingested/searched) | Treat like CW Logs StartQuery |
 | `use_pagerduty` | **FREE** | PagerDuty API (rate limited, not per-call billed) | Track count only |
-| `shell` | **CAUTION** | May invoke `aws`, `az`, `[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)` — untracked by Layers 1–3 | Log commands, warn if aws/az detected |
+| `shell` | **CAUTION** | May invoke `aws`, `az`, `[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md)` — untracked by Layers 1–3 | Log commands, warn if aws/az detected |
 | `subagent` | **PAID** | Counts toward agent-seconds billing ($0.0083/sec) | Track spawns, enforce total time |
 | `fs_read`, `fs_write`, `fs_tree` | **FREE** | Local file I/O | No guardrail needed |
 | `datetime` | **FREE** | Internal state ops | No guardrail needed |

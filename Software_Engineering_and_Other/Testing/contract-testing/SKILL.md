@@ -83,7 +83,7 @@ Consumer tests define the expected request and response for each API interaction
 Provider tests fetch the latest consumer contracts from the Pact Broker and verify each interaction against the provider's actual API. The provider starts a test server, runs the contract verifier, and checks that each consumer interaction's response matches the actual response. Provider states are set up via API calls to the provider's test endpoints or database seeding.
 
 ### Pact Broker Deployment
-The Pact Broker stores contracts, verification results, and matrices of compatible versions. It can be self-hosted via [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose or used as a SaaS product (PactFlow). The Broker exposes a web UI showing the network diagram of all service dependencies. Webhooks can be configured to notify consumers when a provider publishes a new verification result or whena contract changes.
+The Pact Broker stores contracts, verification results, and matrices of compatible versions. It can be self-hosted via [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Compose or used as a SaaS product (PactFlow). The Broker exposes a web UI showing the network diagram of all service dependencies. Webhooks can be configured to notify consumers when a provider publishes a new verification result or whena contract changes.
 
 ### Versioning and Compatibility
 Contracts are versioned by the consumer's application version (Git [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) SHA). Tags identify which version is deployed to each environment (dev, staging, production). The can-i-deploy tool checks the Pact Broker for compatibility before any deployment. The Broker maintains a matrix of compatible consumer and provider versions.
@@ -389,7 +389,7 @@ jobs:
 ## Contract Testing Anti-Patterns
 
 ### Anti-Pattern: No Pact Broker
-Sharing contract files via email, shared drives, or Git submodules instead of using a Pact Broker. Without a broker, there's no central source of truth, no verification matrix, and no can-i-deploy capability. Deploy the Pact Broker (OSS [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose) or use PactFlow SaaS.
+Sharing contract files via email, shared drives, or Git submodules instead of using a Pact Broker. Without a broker, there's no central source of truth, no verification matrix, and no can-i-deploy capability. Deploy the Pact Broker (OSS [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Compose) or use PactFlow SaaS.
 
 ### Anti-Pattern: Testing Everything with Contracts
 Writing Pact tests for every single API endpoint creates maintenance overhead without proportional benefit. Use contracts for inter-service boundaries where changes in one service could break another. Monolith internal modules and third-party APIs with stable contracts don't need Pact.
@@ -422,7 +422,7 @@ When a provider verification fails, the affected consumer team must be notified 
 - Pact Broker operations: publish (< 500ms), verify CAN-I-DEPLOY (< 200ms), fetch contracts (< 200ms).
 - Pact Broker storage: contracts are JSON files 2-50KB each. 1000 contracts = 50MB.
 - CI pipeline impact: consumer contract tests add < 2 minutes. Provider verification adds < 5 minutes.
-- Pact Broker deployment: [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose with [PostgreSQL](../../Backend/postgresql/SKILL.md) backend. Minimum 1GB RAM, 2 CPU cores.
+- Pact Broker deployment: [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Compose with [PostgreSQL](../../Backend/postgresql/SKILL.md) backend. Minimum 1GB RAM, 2 CPU cores.
 
 ## Rules
 - Every consumer-provider pair has its own Pact contract file

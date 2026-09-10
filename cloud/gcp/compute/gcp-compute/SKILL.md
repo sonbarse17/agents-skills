@@ -310,5 +310,5 @@ gcloud compute instances get-serial-port-output web-server --zone=us-central1-a
 
 - **[gcp-networking](../../networking/gcp-networking/SKILL.md)** - VPC, firewall rules, and load balancers for Compute Engine
 - **[terraform-gcp](../../iac/terraform-gcp/SKILL.md)** - Provision Compute Engine resources with Infrastructure as Code
-- **[gcp-gke](../../containers/gcp-gke/SKILL.md)** - When workloads are better suited for containers than VMs
+- **[gcp-gke](../../../../containers-orchestration/gke/cluster-management/gcp-gke/SKILL.md)** - When workloads are better suited for containers than VMs
 - **[gcp-cloud-sql](../../database/gcp-cloud-sql/SKILL.md)** - Managed databases that Compute Engine applications connect to

@@ -57,7 +57,7 @@ which apply here too but aren't repeated.
 ## Prerequisites & environment
 
 - An Azure DevOps organization and project, with a service connection
-  configured for any external target (Azure subscription, [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
+  configured for any external target (Azure subscription, [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
   cluster, container registry) the pipeline deploys to.
 - Pipeline permissions: the pipeline's identity (or the service connection
   it uses) needs least-privilege access to only the resources it deploys

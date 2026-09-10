@@ -29,7 +29,7 @@ Design robust, secure deployment pipelines that balance speed with safety throug
 ### What You Provide
 
 - **Application type**: Language/runtime, containerized or [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md), monolith or [microservices](../../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md)
-- **Deployment target**: [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md), ECS, VMs, [serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md), or platform-as-a-service
+- **Deployment target**: [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), ECS, VMs, [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md), or platform-as-a-service
 - **Environment topology**: Number of environments (dev/staging/prod), region layout, air-gap requirements
 - **Rollout requirements**: Acceptable downtime, rollback SLA, traffic splitting needs, canary vs blue-green preference
 - **Gate constraints**: Approval teams, required test coverage thresholds, compliance scans (SAST, DAST, SCA)
@@ -83,7 +83,7 @@ spec:
 
 Check that production environment protection rules are configured — a missing reviewer assignment means the approval gate waits indefinitely with no notification. In [GitHub](../../../github-actions/other/github/SKILL.md) Actions, ensure `Required reviewers` is set to an existing user or team in **Settings → Environments → production**.
 
-### [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) layer cache busted on every run causing slow builds
+### [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) layer cache busted on every run causing slow builds
 
 If `COPY . .` appears before dependency installation, any source file change invalidates the dependency layer. Reorder to copy dependency manifests first:
 

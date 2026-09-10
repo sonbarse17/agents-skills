@@ -20,21 +20,21 @@ depends_on:
 
 # LLM Inference Scaling
 
-Scale LLM inference horizontally on [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) with GPU-aware [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md), request queuing, and cost-efficient spot instance strategies.
+Scale LLM inference horizontally on [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) with GPU-aware [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md), request queuing, and cost-efficient spot instance strategies.
 
 ## When to Use This Skill
 
 Use this skill when:
 - LLM API traffic is unpredictable and you need to scale up/down automatically
-- Managing a fleet of vLLM or TGI inference pods on [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
+- Managing a fleet of vLLM or TGI inference pods on [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
 - Reducing inference costs with spot/preemptible GPU instances
 - Implementing queue-based [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) for batch inference jobs
 - Building a multi-model serving platform that shares GPU resources
 
 ## Prerequisites
 
-- [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cluster with GPU nodes (NVIDIA operator installed)
-- KEDA ([Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Event-Driven Autoscaler) installed
+- [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster with GPU nodes (NVIDIA operator installed)
+- KEDA ([Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Event-Driven Autoscaler) installed
 - Prometheus with GPU metrics (`dcgm-exporter` or `gpu-operator`)
 - Helm 3+ for chart deployments
 
@@ -53,8 +53,8 @@ helm install gpu-operator nvidia/gpu-operator \
   --set devicePlugin.enabled=true
 
 # Verify GPU nodes are recognized
-[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get nodes -l nvidia.com/gpu.present=true
-[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) describe node <gpu-node> | grep nvidia
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get nodes -l nvidia.com/gpu.present=true
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) describe node <gpu-node> | grep nvidia
 ```
 
 ## vLLM Deployment with GPU Resources
@@ -209,13 +209,13 @@ spec:
       - weight: 80
         preference:
           matchExpressions:
-          - key: node.[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).io/lifecycle
+          - key: node.[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).io/lifecycle
             operator: In
             values: [spot]
       - weight: 20
         preference:
           matchExpressions:
-          - key: node.[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).io/lifecycle
+          - key: node.[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).io/lifecycle
             operator: In
             values: [on-demand]
 ```
@@ -233,8 +233,8 @@ helm install cluster-autoscaler autoscaler/cluster-autoscaler \
   --set extraArgs.expander=least-waste
 
 # Annotate GPU node group for autoscaler
-[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) annotate node <node> \
-  cluster-autoscaler.[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).io/safe-to-evict="false"
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) annotate node <node> \
+  cluster-autoscaler.[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).io/safe-to-evict="false"
 ```
 
 ## Scaling Metrics to Monitor
@@ -270,12 +270,12 @@ histogram_quantile(0.99, rate(vllm:time_to_first_token_seconds_bucket[5m]))
 - Use `PodDisruptionBudget` with `minAvailable: 1` to survive spot evictions.
 - Pre-pull model weights into a shared PVC to speed up pod startup by 5–10×.
 - Separate model families across node pools (A10G for 7B, A100 for 70B).
-- Use [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) VPA for CPU/memory right-sizing alongside KEDA for replica count.
+- Use [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) VPA for CPU/memory right-sizing alongside KEDA for replica count.
 
 ## Related Skills
 
 - [vllm-server](../[vllm-server](../vllm-server/SKILL.md)/) - vLLM configuration and tuning
 - [gpu-server-management](../../servers/[gpu-server-management](../gpu-server-management/SKILL.md)/) - GPU node setup
 - [model-serving-kubernetes](../../../devops/orchestration/[model-serving-kubernetes](../model-serving-[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)/SKILL.md)/) - KServe
-- [kubernetes-ops](../../../devops/orchestration/[kubernetes-ops](../../../DevOps_and_Cloud/Containers_and_Orchestration/[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-ops/SKILL.md)/) - Core [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
+- [kubernetes-ops](../../../devops/orchestration/[kubernetes-ops](../../../DevOps_and_Cloud/Containers_and_Orchestration/[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-ops/SKILL.md)/) - Core [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
 - [llm-cost-optimization](../../../devops/ai/[llm-cost-optimization](../llm-[cost-optimization](../../../DevOps_and_Cloud/Cloud_Providers/cost-optimization/SKILL.md)/SKILL.md)/) - Cost strategies

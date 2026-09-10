@@ -152,7 +152,7 @@ security_questionnaire:
       - "In which geographic regions is our data stored?"
       - "Do you use sub-processors? If so, provide a list."
       - "What is your data retention policy?"
-      - "How is our data isolated from other customers? ([multi-tenancy](../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md) model)"
+      - "How is our data isolated from other customers? ([multi-tenancy](../../containers-orchestration/common/other/multi-tenancy/SKILL.md) model)"
       - "Can you provide data export in standard formats upon request?"
       - "What is your data destruction process at contract end?"
     evidence_requested:

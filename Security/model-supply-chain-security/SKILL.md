@@ -334,7 +334,7 @@ if __name__ == "__main__":
 - Use `safetensors` format instead of pickle to prevent deserialization attacks.
 
 ```yaml
-# [kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) deployment hardening
+# [kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) deployment hardening
 apiVersion: apps/v1
 kind: Deployment
 metadata:

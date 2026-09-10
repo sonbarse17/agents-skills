@@ -28,10 +28,10 @@ SLOs, firing alerts, ML anomalies, throughput, latency (avg/p95/p99), error rate
 
 - **[Observability](../observability/SKILL.md) APIs** ([Observability APIs](https://www.elastic.co/docs/solutions/[observability](../observability/SKILL.md)/apis)): Use the
   **SLOs API** ([Stack](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-slo) |
-  [Serverless](https://www.elastic.co/docs/api/doc/[serverless](../../Containers_and_Orchestration/serverless/SKILL.md)/group/endpoint-slo)) to get SLO definitions, status, burn
+  [Serverless](https://www.elastic.co/docs/api/doc/[serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)/group/endpoint-slo)) to get SLO definitions, status, burn
   rate, and error budget. Use the **[Alerting](../alerting/SKILL.md) API**
   ([Stack](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-[alerting](../alerting/SKILL.md)) |
-  [Serverless](https://www.elastic.co/docs/api/doc/[serverless](../../Containers_and_Orchestration/serverless/SKILL.md)/group/endpoint-[alerting](../alerting/SKILL.md))) to list and manage [alerting](../alerting/SKILL.md)
+  [Serverless](https://www.elastic.co/docs/api/doc/[serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)/group/endpoint-[alerting](../alerting/SKILL.md))) to list and manage [alerting](../alerting/SKILL.md)
   rules and their alerts for the service. Use **APM annotations API** to create or search annotations when needed.
 - **ES|QL and Elasticsearch:** Query `traces*apm*,traces*otel*` and `metrics*apm*,metrics*otel*` with **ES|QL** (see
   [Using ES|QL for APM metrics](#using-esql-for-apm-metrics)) for throughput, latency, error rate, and dependency-style
@@ -76,7 +76,7 @@ default** where available.
 
 - **Availability:** ES|QL is available in **Elasticsearch 8.11+** (technical preview; GA in 8.14). It is **always
   available** in
-  [Elastic [Observability](../observability/SKILL.md) [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md) Complete tier](https://www.elastic.co/docs/solutions/[observability](../observability/SKILL.md)/[observability](../observability/SKILL.md)-[serverless](../../Containers_and_Orchestration/serverless/SKILL.md)-feature-tiers).
+  [Elastic [Observability](../observability/SKILL.md) [Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) Complete tier](https://www.elastic.co/docs/solutions/[observability](../observability/SKILL.md)/[observability](../observability/SKILL.md)-[serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-feature-tiers).
 - **Scoping to a service:** Always filter by `service.name` (and `service.environment` when relevant). Combine with a
   time range on `@timestamp`:
 
@@ -237,7 +237,7 @@ To understand behavior for a specific service or a single trace, filter logs acc
 
 - Use **[Observability](../observability/SKILL.md) APIs** ([SLOs API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-slo),
   [Alerting API](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-[alerting](../alerting/SKILL.md))) and **ES|QL** on
-  `traces*apm*,traces*otel*`/`metrics*apm*,metrics*otel*` (8.11+ or [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md)), filtering by `service.name` (and
+  `traces*apm*,traces*otel*`/`metrics*apm*,metrics*otel*` (8.11+ or [Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)), filtering by `service.name` (and
   `service.environment` when relevant). For active APM alerts, call
   `/api/[alerting](../alerting/SKILL.md)/rules/_find?search=apm&search_fields=tags&per_page=100&filter=alert.attributes.executionStatus.status:active`.
   When checking one service, evaluate both rule types: rules where `params.serviceName` matches the target service, and
@@ -251,5 +251,5 @@ To understand behavior for a specific service or a single trace, filter logs acc
   throughput, latency, error rate, and dependencies.
 - When analyzing **only application metrics ingested via [OpenTelemetry](../opentelemetry/SKILL.md)**, use the ES|QL **TS** (time series) command for
   efficient metrics queries. The TS command is available in **Elasticsearch 9.3+** and is **always available** in
-  Elastic [Observability](../observability/SKILL.md) [Serverless](../../Containers_and_Orchestration/serverless/SKILL.md).
+  Elastic [Observability](../observability/SKILL.md) [Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md).
 - Summary: one short health verdict plus bullet points for evidence and next steps.

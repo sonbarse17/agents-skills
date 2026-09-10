@@ -26,34 +26,34 @@ depends_on:
   - git
 ---
 
-# Complete CI/CD Pipeline Deployment for [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md), From Scratch
+# Complete CI/CD Pipeline Deployment for [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), From Scratch
 
 ## Purpose
 
-A [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-targeted pipeline's defining mechanical trait is **where its
+A [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-targeted pipeline's defining mechanical trait is **where its
 job ends**: it builds a container image, gates it, and pushes it to a
 registry — but it does *not* touch the cluster. The last step is a Git
 [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) (a new image tag in a manifests/config repo), and a separate
-in-cluster [GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) operator (Argo CD/Flux) performs the actual apply. This
-is the opposite shape from the VM-based and [serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) variants of this
+in-cluster [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md) operator (Argo CD/Flux) performs the actual apply. This
+is the opposite shape from the VM-based and [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) variants of this
 skill, both of which end with the pipeline itself calling a deploy API
 against live infrastructure. Every individual mechanic here — the
-Dockerfile, the SAST/SCA tool invocations, the [GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) repo structure —
+Dockerfile, the SAST/SCA tool invocations, the [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md) repo structure —
 already has its own deep skill; this one sequences them into one coherent
-"empty repo to running-via-[GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)" walkthrough and is explicit about the
+"empty repo to running-via-[GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md)" walkthrough and is explicit about the
 handoff boundary so a well-meaning "just add a deploy step" doesn't
 reintroduce direct cluster credentials into CI.
 
 ## When to use
 
-- A new [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-targeted service has no pipeline yet, and the team
-  wants source-to-[GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)-handoff wired up in one pass rather than
+- A new [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-targeted service has no pipeline yet, and the team
+  wants source-to-[GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md)-handoff wired up in one pass rather than
   individually bolting on build, scan, and deploy steps over time.
-- An existing pipeline currently ends with `[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply`/`helm upgrade`
-  run directly from CI, and the user wants to migrate it to a [GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)
+- An existing pipeline currently ends with `[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply`/`helm upgrade`
+  run directly from CI, and the user wants to migrate it to a [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md)
   handoff instead.
 - The user wants to understand exactly where CI's responsibility ends and
-  the [GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) operator's begins for a containerized workload.
+  the [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md) operator's begins for a containerized workload.
 - Standing up the SAST/SCA gate sequence specifically for a
   container-image build (as opposed to a zip/layer or AMI-baking build).
 
@@ -69,12 +69,12 @@ reintroduce direct cluster credentials into CI.
 - A container registry the pipeline can push to (GHCR, ECR, ACR, Artifact
   Registry, or a self-hosted Harbor) with least-privilege push credentials
   stored as CI secrets.
-- A **separate** [GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) config/manifests repo already set up — per
+- A **separate** [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md) config/manifests repo already set up — per
   [gitops-workflow](../../../devops/skills/[gitops-workflow](../../Containers_and_Orchestration/[gitops](../../Containers_and_Orchestration/gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md) — with
   an Argo CD `Application`/`ApplicationSet` (or Flux `Kustomization`)
   already watching it. This skill assumes that operator-side setup exists;
-  see the four `complete-[gitops](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)-[argocd](../../../../ci-cd/argocd/other/argocd/SKILL.md)-deployment-on-*-from-scratch`
-  skills in `[gitops](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)-argo-ecosystem` if it doesn't yet.
+  see the four `complete-[gitops](../../../../containers-orchestration/common/gitops/gitops/SKILL.md)-[argocd](../../../../containers-orchestration/argocd/other/argocd/SKILL.md)-deployment-on-*-from-scratch`
+  skills in `[gitops](../../../../containers-orchestration/common/gitops/gitops/SKILL.md)-argo-ecosystem` if it doesn't yet.
 - Write access (a bot/service account, ideally opening a PR rather than
   pushing directly) from the application repo's CI to the config repo.
 - SAST/SCA tooling chosen per
@@ -98,8 +98,8 @@ run the full pipeline on PRs and pushes to `main`, path-filtered in a
 Follow
 [container-build-and-release](../../../devops/skills/[container-build-and-release](../../Containers_and_Orchestration/container-build-and-release/SKILL.md)/SKILL.md)
 in full for the Dockerfile itself (multi-stage, non-root, pinned base
-image, immutable tagging by [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) SHA). This is the [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-specific
-build artifact — contrast with Phase 2 of the [serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) variant of this
+image, immutable tagging by [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) SHA). This is the [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-specific
+build artifact — contrast with Phase 2 of the [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) variant of this
 skill (a zip/layer, no Dockerfile at all) and the VM variant (a full
 machine image, not a container layer).
 
@@ -139,10 +139,10 @@ Only after Phase 3 passes:
     permissions: { contents: read, packages: write }
     steps:
       - uses: actions/checkout@v4
-      - uses: [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)/setup-buildx-action@v3
-      - uses: [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)/login-action@v3
+      - uses: [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)/setup-buildx-action@v3
+      - uses: [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)/login-action@v3
         with: { registry: ghcr.io, username: "${{ [github](../../../../ci-cd/github-actions/other/github/SKILL.md).actor }}", password: "${{ secrets.GITHUB_TOKEN }}" }
-      - uses: [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)/build-push-action@v6
+      - uses: [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)/build-push-action@v6
         with:
           context: .
           push: true
@@ -154,11 +154,11 @@ A follow-on image scan (per
 container-image scanning step) on the pushed digest catches base-image
 CVEs the filesystem scan in Phase 3 couldn't see.
 
-### Phase 5 — The deploy step: a [GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) handoff, not a cluster touch
+### Phase 5 — The deploy step: a [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md) handoff, not a cluster touch
 
 This is the defining step. The pipeline's last action is a **Git [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)**
 against the manifests repo, bumping the image tag/digest in the relevant
-overlay — never a direct `[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply`, `helm upgrade`, or any command
+overlay — never a direct `[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply`, `helm upgrade`, or any command
 carrying a cluster credential:
 ```yaml
   update-manifests:
@@ -168,11 +168,11 @@ carrying a cluster credential:
     steps:
       - uses: actions/checkout@v4
         with:
-          repository: example/[gitops](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)-config
+          repository: example/[gitops](../../../../containers-orchestration/common/gitops/gitops/SKILL.md)-config
           token: ${{ secrets.GITOPS_REPO_TOKEN }}
       - run: |
           cd apps/payments-api/overlays/staging
-          [kustomize](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md) edit set image payments-api=ghcr.io/example/payments-api:${{ [github](../../../../ci-cd/github-actions/other/github/SKILL.md).sha }}
+          [kustomize](../../../../containers-orchestration/kustomize/other/kustomize/SKILL.md) edit set image payments-api=ghcr.io/example/payments-api:${{ [github](../../../../ci-cd/github-actions/other/github/SKILL.md).sha }}
           git config user.name "ci-bot"
           git config user.email "ci-bot@example.com"
           git [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) -am "payments-api: bump to ${{ [github](../../../../ci-cd/github-actions/other/github/SKILL.md).sha }}"
@@ -181,8 +181,8 @@ carrying a cluster credential:
 `GITOPS_REPO_TOKEN` is scoped **only** to the manifests repo (never a
 cluster kubeconfig or cloud credential) — the in-cluster Argo CD
 `Application`/`ApplicationSet` (see the relevant
-`complete-[gitops](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)-[argocd](../../../../ci-cd/argocd/other/argocd/SKILL.md)-deployment-on-*-from-scratch` skill) picks up this
-[commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) and performs the actual `[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply` on its own reconciliation
+`complete-[gitops](../../../../containers-orchestration/common/gitops/gitops/SKILL.md)-[argocd](../../../../containers-orchestration/argocd/other/argocd/SKILL.md)-deployment-on-*-from-scratch` skill) picks up this
+[commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) and performs the actual `[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply` on its own reconciliation
 loop, per
 [gitops-workflow](../../../devops/skills/[gitops-workflow](../../Containers_and_Orchestration/[gitops](../../Containers_and_Orchestration/gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md).
 
@@ -190,15 +190,15 @@ loop, per
 
 The pipeline's own success/failure only reflects "the manifests repo was
 updated correctly" — it cannot and should not report "the cluster is
-running the new version," since that's the [GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) operator's job.
-Separately, monitor `[argocd](../../../../ci-cd/argocd/other/argocd/SKILL.md) app get payments-api-staging` (or a
+running the new version," since that's the [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md) operator's job.
+Separately, monitor `[argocd](../../../../containers-orchestration/argocd/other/argocd/SKILL.md) app get payments-api-staging` (or a
 notification wired from Argo CD/Flux) for the actual rollout outcome.
 
 ## Best practices
 
 - Never let this pipeline hold a cluster kubeconbig, a cloud IAM role with
   cluster-apply permissions, or any credential capable of a direct
-  `[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply` — the entire point of the [GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) handoff is that CI's
+  `[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply` — the entire point of the [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md) handoff is that CI's
   blast radius, if compromised, is "can propose a manifest change," not
   "can directly mutate the cluster."
 - Prefer opening a PR against the manifests repo (with required review)
@@ -219,13 +219,13 @@ notification wired from Argo CD/Flux) for the actual rollout outcome.
 
 ## Common pitfalls
 
-- **Symptom:** Someone adds a "quick fix" `[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply` step directly to
+- **Symptom:** Someone adds a "quick fix" `[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply` step directly to
   the pipeline "just for this one hotfix," and it works — until the next
-  regular [GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) sync reverts the hotfix moments later because the config
+  regular [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md) sync reverts the hotfix moments later because the config
   repo was never updated to match.
   **Fix:** This is exactly the sequencing failure this skill exists to
   prevent — any change to what's running must go through the manifests
-  repo [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) (Phase 5), even for an emergency fix; a direct `[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)
+  repo [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) (Phase 5), even for an emergency fix; a direct `[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md)
   apply` against a `selfHeal: true` `Application` is reverted on the next
   reconciliation, per the drift-handling behavior in
   [gitops-workflow](../../../devops/skills/[gitops-workflow](../../Containers_and_Orchestration/[gitops](../../Containers_and_Orchestration/gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md).
@@ -234,8 +234,8 @@ notification wired from Argo CD/Flux) for the actual rollout outcome.
   service in the cluster is still running the old version an hour later.
   **Fix:** "Pipeline green" here only means the manifests-repo [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)
   landed — it says nothing about whether Argo CD/Flux actually
-  reconciled it. Check `[argocd](../../../../ci-cd/argocd/other/argocd/SKILL.md) app get <app>` (or Flux's equivalent)
-  separately; if it's `OutOfSync`/stuck, that's a [GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)-operator issue
+  reconciled it. Check `[argocd](../../../../containers-orchestration/argocd/other/argocd/SKILL.md) app get <app>` (or Flux's equivalent)
+  separately; if it's `OutOfSync`/stuck, that's a [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md)-operator issue
   (see
   [argocd-application-configuration](../../../[gitops](../../Containers_and_Orchestration/gitops/SKILL.md)-argo-ecosystem/skills/[argocd-application-configuration](../../Containers_and_Orchestration/[argocd](../../Containers_and_Orchestration/argocd/SKILL.md)-application-configuration/SKILL.md)/SKILL.md)),
   not a pipeline bug.
@@ -257,14 +257,14 @@ notification wired from Argo CD/Flux) for the actual rollout outcome.
   **Fix:** Order gates before the push, not after — a failed post-push
   gate still leaves a bad image in the registry for however long it takes
   to notice and delete it; scanning the filesystem/dependencies before
-  `[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) build`/`push` (Phase 3 before Phase 4) means a failing gate
+  `[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) build`/`push` (Phase 3 before Phase 4) means a failing gate
   never produces a pushed artifact at all.
 
 ## Worked example
 
 **Scenario:** `payments-api`, a Node.js service, gets its first full
 pipeline: PR-time SAST/SCA, main-branch image build/push to GHCR, and a
-[GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) handoff bumping the staging overlay in `example/[gitops](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)-config`.
+[GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md) handoff bumping the staging overlay in `example/[gitops](../../../../containers-orchestration/common/gitops/gitops/SKILL.md)-config`.
 
 `.[github](../../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/ci-cd.yml` (abbreviated to the phases above; full
 Dockerfile/scan config lives in the linked skills):
@@ -296,9 +296,9 @@ jobs:
     permissions: { contents: read, packages: write }
     steps:
       - uses: actions/checkout@v4
-      - uses: [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)/login-action@v3
+      - uses: [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)/login-action@v3
         with: { registry: ghcr.io, username: "${{ [github](../../../../ci-cd/github-actions/other/github/SKILL.md).actor }}", password: "${{ secrets.GITHUB_TOKEN }}" }
-      - uses: [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)/build-push-action@v6
+      - uses: [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)/build-push-action@v6
         with: { push: true, tags: "ghcr.io/example/payments-api:${{ [github](../../../../ci-cd/github-actions/other/github/SKILL.md).sha }}" }
 
   update-manifests:
@@ -307,10 +307,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with: { repository: example/[gitops](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)-config, token: "${{ secrets.GITOPS_REPO_TOKEN }}" }
+        with: { repository: example/[gitops](../../../../containers-orchestration/common/gitops/gitops/SKILL.md)-config, token: "${{ secrets.GITOPS_REPO_TOKEN }}" }
       - run: |
           cd apps/payments-api/overlays/staging
-          [kustomize](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md) edit set image payments-api=ghcr.io/example/payments-api:${{ [github](../../../../ci-cd/github-actions/other/github/SKILL.md).sha }}
+          [kustomize](../../../../containers-orchestration/kustomize/other/kustomize/SKILL.md) edit set image payments-api=ghcr.io/example/payments-api:${{ [github](../../../../ci-cd/github-actions/other/github/SKILL.md).sha }}
           git config user.name "ci-bot" && git config user.email "ci-bot@example.com"
           git [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) -am "payments-api: bump to ${{ [github](../../../../ci-cd/github-actions/other/github/SKILL.md).sha }}"
           git push
@@ -326,7 +326,7 @@ the CI pipeline itself never held a cluster credential at any point.
 - [container-build-and-release](../../../devops/skills/[container-build-and-release](../../Containers_and_Orchestration/container-build-and-release/SKILL.md)/SKILL.md) — Dockerfile/image-build mechanics used in Phase 2.
 - [sast-integration](../../../../Security/devsecops/SKILL.md)/skills/[sast-integration](../../../../Security/sast-integration/SKILL.md)/SKILL.md) and [software-composition-analysis-sca](../../../../Security/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../../Software_Engineering_and_Other/Frontend/software-composition-analysis-sca/SKILL.md)/SKILL.md) — the Phase 3 scan mechanics.
 - [github-actions-single-repo-workflows](../[github-actions-single-repo-workflows](../../CI_CD/[github-actions](../../CI_CD/[github](../../CI_CD/github/SKILL.md)-actions/SKILL.md)-single-repo-workflows/SKILL.md)/SKILL.md) and [jenkins-declarative-pipeline-per-repo](../[jenkins-declarative-pipeline-per-repo](../../CI_CD/[jenkins](../../CI_CD/jenkins/SKILL.md)-declarative-pipeline-per-repo/SKILL.md)/SKILL.md) — the concrete pipeline-authoring syntax this skill sequences.
-- [gitops-workflow](../../../devops/skills/[gitops-workflow](../../Containers_and_Orchestration/[gitops](../../Containers_and_Orchestration/gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md) — the [GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) handoff concept Phase 5 implements.
+- [gitops-workflow](../../../devops/skills/[gitops-workflow](../../Containers_and_Orchestration/[gitops](../../Containers_and_Orchestration/gitops/SKILL.md)-workflow/SKILL.md)/SKILL.md) — the [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md) handoff concept Phase 5 implements.
 - [argocd-application-configuration](../../../[gitops](../../Containers_and_Orchestration/gitops/SKILL.md)-argo-ecosystem/skills/[argocd-application-configuration](../../Containers_and_Orchestration/[argocd](../../Containers_and_Orchestration/argocd/SKILL.md)-application-configuration/SKILL.md)/SKILL.md) — the operator-side reconciliation that consumes this pipeline's manifests-repo [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md).
 - [secure-cicd-gates](../../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — orchestrating the Phase 3 gates alongside other security checks without duplication.
-- [complete-[cicd-pipeline](../../../../ci-cd/common/pipeline-design/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)-from-scratch](../[complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)-from-scratch](../complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)-from-scratch/SKILL.md)/SKILL.md) and [complete-[cicd-pipeline](../../../../ci-cd/common/pipeline-design/cicd-pipeline/SKILL.md)-for-vm-based-workloads-from-scratch](../[complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-for-vm-based-workloads-from-scratch](../../CI_CD/complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-for-vm-based-workloads-from-scratch/SKILL.md)/SKILL.md) — the same source-to-deploy shape for a fundamentally different build artifact and deploy mechanism.
+- [complete-[cicd-pipeline](../../../../ci-cd/common/pipeline-design/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-from-scratch](../[complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-from-scratch](../complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-deployment-for-[serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-from-scratch/SKILL.md)/SKILL.md) and [complete-[cicd-pipeline](../../../../ci-cd/common/pipeline-design/cicd-pipeline/SKILL.md)-for-vm-based-workloads-from-scratch](../[complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-for-vm-based-workloads-from-scratch](../../CI_CD/complete-[cicd-pipeline](../../CI_CD/cicd-pipeline/SKILL.md)-for-vm-based-workloads-from-scratch/SKILL.md)/SKILL.md) — the same source-to-deploy shape for a fundamentally different build artifact and deploy mechanism.

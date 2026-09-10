@@ -94,7 +94,7 @@ what gates the release.
 A deploy pipeline that behaves differently on retry, or that can't be re-run safely after a
 partial failure, turns every [incident](../../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) into a pipeline debugging session on top of the actual
 outage. Deploys should be idempotent (running the same deploy twice produces the same end state)
-and the pipeline should be the *only* way production changes — no manual [kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply or console
+and the pipeline should be the *only* way production changes — no manual [kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply or console
 click that the pipeline doesn't know about, or your "always releasable main" claim stops being
 true the moment someone bypasses it.
 

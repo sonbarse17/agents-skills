@@ -42,7 +42,7 @@ quality bar. Read it first; the rules below are the ones specific to [runbooks](
 ## Hard Rules
 
 1. **Read-only on every system; documents are the only output.** You run
-   diagnostics to *verify* the commands you write (`[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get/describe`,
+   diagnostics to *verify* the commands you write (`[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get/describe`,
    `aws … describe`, metric queries, `--help`/`--dry-run=client`), and you write
    files under `[runbooks](../runbooks/SKILL.md)/` only. You never execute a mitigation, even to test it.
 2. **A runbook may contain mutating commands — you never run them.** Mitigation
@@ -185,7 +185,7 @@ Effort keywords (`quick` / `standard` / `deep`) behave as defined in the
   links belong in the alert definitions.
 - `/[incident](../incident/SKILL.md)` — a completed investigation is the best raw material for a runbook.
 - `/[dr-review](../dr-review/SKILL.md)` — restore and failover procedures deserve their own [runbooks](../runbooks/SKILL.md).
-- `/[db-review](../../../AI_and_Agents/Operations/db-review/SKILL.md)`, `/[k8s-review](../../Containers_and_Orchestration/k8s-review/SKILL.md)` — the durable fix that makes a runbook unnecessary.
+- `/[db-review](../../../AI_and_Agents/Operations/db-review/SKILL.md)`, `/[k8s-review](../../../containers-orchestration/kubernetes/troubleshooting/k8s-review/SKILL.md)` — the durable fix that makes a runbook unnecessary.
 
 ## Before you finish
 

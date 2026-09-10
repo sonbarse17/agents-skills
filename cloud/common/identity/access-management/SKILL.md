@@ -26,7 +26,7 @@ depends_on:
 
 # Cloud Access Management
 
-Manage identity and access for an Elastic Cloud organization and its [Serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) projects: invite users, assign
+Manage identity and access for an Elastic Cloud organization and its [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) projects: invite users, assign
 predefined or custom roles, and manage Cloud API keys.
 
 > **Prerequisite:** This skill assumes the **[cloud-setup](../../other/setup/SKILL.md)** skill has already run — `EC_API_KEY` is set in the
@@ -41,15 +41,15 @@ For detailed API endpoints and request schemas, see [../../../Global_References/
 
 ## Jobs to Be Done
 
-- Invite a user to the organization and assign them a [Serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) project role
+- Invite a user to the organization and assign them a [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) project role
 - List organization members and their current role assignments
 - Update a user's roles (org-level or project-level)
 - Remove a user from the organization
 - Create an additional Cloud API key with scoped roles and expiration
-- Create a Cloud API key that can also call Elasticsearch and Kibana APIs on [Serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) projects
+- Create a Cloud API key that can also call Elasticsearch and Kibana APIs on [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) projects
 - List and revoke Cloud API keys
-- Create a custom role inside a [Serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) project with ES cluster, index, and Kibana privileges
-- Assign or remove a custom role for a user on a [Serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) project using the Cloud API's `application_roles`
+- Create a custom role inside a [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) project with ES cluster, index, and Kibana privileges
+- Assign or remove a custom role for a user on a [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) project using the Cloud API's `application_roles`
 - Translate a natural-language access request into invite, role, and API key tasks
 
 ## Prerequisites and permissions
@@ -58,7 +58,7 @@ For detailed API endpoints and request schemas, see [../../../Global_References/
 | -------------------- | ------------------------------------------------------------------------------------------------------- |
 | **EC_API_KEY**       | Cloud API key (set by **[cloud-setup](../../other/setup/SKILL.md)**). Required for all operations.                                    |
 | **Organization ID**  | Auto-discovered using `GET /organizations`. Do not ask the user for it.                                 |
-| **Project endpoint** | Elasticsearch endpoint of a [Serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) project. Required only for custom role operations.               |
+| **Project endpoint** | Elasticsearch endpoint of a [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) project. Required only for custom role operations.               |
 | **ES credentials**   | API key or credentials with `manage_security` privilege on the project. Required only for custom roles. |
 | **Org owner role**   | Only Organization owners can create and manage Cloud API keys. Required for API key operations.         |
 
@@ -67,7 +67,7 @@ and auto-discover the org ID before proceeding with any operation.
 
 ### Operation-level permissions
 
-The following permissions are required for common access management operations in Elastic Cloud [Serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md).
+The following permissions are required for common access management operations in Elastic Cloud [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md).
 
 | Operation                          | Required permission                                            |
 | ---------------------------------- | -------------------------------------------------------------- |
@@ -131,7 +131,7 @@ the request into discrete tasks before executing.
 | Component        | Question to answer                                                  |
 | ---------------- | ------------------------------------------------------------------- |
 | **Who**          | New org member (invite) or existing member (role update)?           |
-| **What**         | Which [Serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) project(s) or org-level access?                    |
+| **What**         | Which [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) project(s) or org-level access?                    |
 | **Access level** | Predefined role (Admin/Developer/Viewer/Editor) or custom role?     |
 | **API key?**     | Does the request also need a Cloud API key for programmatic access? |
 
@@ -176,7 +176,7 @@ After execution, list members or keys again to confirm the change took effect.
 | Organization owner | `organization-admin` | Full admin over org, deployments, projects |
 | Billing admin      | `billing-admin`      | Manage billing details only                |
 
-### [Serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) project-level roles
+### [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) project-level roles
 
 | Role           | Cloud API `role_id` | Available on          | Description                                          |
 | -------------- | ------------------- | --------------------- | ---------------------------------------------------- |
@@ -195,9 +195,9 @@ assignment update (`POST /users/{user_id}/role_assignments`). See
 [../../../Global_References/access-management_api-reference.md](../../../../Global_References/access-management_api-reference.md) for the `role_assignments` JSON schema including the
 `project` scope.
 
-## Custom Roles ([Serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md))
+## Custom Roles ([Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md))
 
-When predefined roles lack the required granularity, create a custom role inside the [Serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) project using the
+When predefined roles lack the required granularity, create a custom role inside the [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) project using the
 Elasticsearch security API and assign it to users through the Cloud API's `application_roles` field.
 
 > **Security: do not assign a predefined Cloud role separately when using a custom role.** Custom roles implicitly grant
@@ -217,7 +217,7 @@ Elasticsearch security API and assign it to users through the Cloud API's `appli
   `[observability](../../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-viewer`, or `security-viewer`) and sets `application_roles` to the custom role name. This ensures the
   user can see and access the project in the Cloud console but receives only the custom role's restricted permissions
   inside the project.
-- Cloud API keys can also use `application_roles` to gain ES/Kibana API access on [Serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) projects. See
+- Cloud API keys can also use `application_roles` to gain ES/Kibana API access on [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) projects. See
   [Cloud API Keys — ES and Kibana API Access](#cloud-api-keys--es-and-kibana-api-access) below for details.
 
 ### Canonical custom-role onboarding flow
@@ -241,7 +241,7 @@ This calls `PUT /_security/role/{name}` on the project Elasticsearch endpoint.
 ### Naming constraints
 
 Role names must begin with a letter or digit and contain only letters, digits, `_`, `-`, and `.`. Run-as privileges are
-not available in [Serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md).
+not available in [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md).
 
 ### When to use custom roles versus predefined
 
@@ -256,7 +256,7 @@ For advanced DLS/FLS patterns (templated queries, ABAC), see the **[elasticsearc
 
 ## Cloud API Keys — ES and Kibana API Access
 
-Cloud API keys can now optionally access Elasticsearch and Kibana APIs on [Serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) projects, in addition to the Cloud
+Cloud API keys can now optionally access Elasticsearch and Kibana APIs on [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) projects, in addition to the Cloud
 API. This enables a single credential for both control plane (Cloud API) and data plane (ES/Kibana API) operations — for
 example, a CI pipeline that creates a project via Cloud API and then indexes data via ES API.
 
@@ -481,6 +481,6 @@ The output includes each member's user ID, email, and assigned roles.
 - If a custom role exists but the user cannot access the project, verify the role was assigned with `assign-custom-role`
   (which uses `application_roles` in the Cloud API). Creating a custom role alone does not grant project access — the
   Cloud API assignment is required.
-- For network-level security (traffic filters, private links), see the **cloud-[network-security](../../../../DevOps_and_Cloud/Containers_and_Orchestration/network-security/SKILL.md)** skill.
+- For network-level security (traffic filters, private links), see the **cloud-[network-security](../../../../containers-orchestration/common/other/network-security/SKILL.md)** skill.
 - For ES-level role management beyond Cloud roles (native users, DLS/FLS), see **[elasticsearch-authz](../../../../DevOps_and_Cloud/Observability_and_SecOps/elasticsearch-authz/SKILL.md)**.
 

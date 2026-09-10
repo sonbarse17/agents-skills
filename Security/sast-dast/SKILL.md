@@ -120,7 +120,7 @@ What type of application?
 └── Internal enterprise app → Acunetix (macro auth)
 
 What is the scan target?
-├── CI/CD (automated, pipeline) → ZAP [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) (best CI integration)
+├── CI/CD (automated, pipeline) → ZAP [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) (best CI integration)
 ├── Manual penetration testing → Burp Suite (best manual workflow)
 ├── Compliance scanning → Acunetix (comprehensive reporting)
 └── Production passive scanning → ZAP baseline (safe, read-only)
@@ -172,7 +172,7 @@ Snyk Code is a SAST tool integrated into the Snyk platform. It is particularly s
 ## DAST Tool Details
 
 ### OWASP ZAP
-OWASP ZAP (Zed Attack Proxy) is the recommended default DAST tool. It is free, open-source, and community-maintained. ZAP can be run as a desktop application, a daemon for CI integration, or a [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) container. Scan modes: automated scan (spider → passive → active), API scan (import OpenAPI/GraphQL schema), and baseline scan (passive-only, safe for production). ZAP supports authenticated scanning via context-based session management, bearer token injection, and form-based authentication. The HUD (Heads-Up Display) mode provides browser-based interaction for manual testing. Key strengths: free and open-source, extensive active scan rules, API scanning, and [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-native CI integration.
+OWASP ZAP (Zed Attack Proxy) is the recommended default DAST tool. It is free, open-source, and community-maintained. ZAP can be run as a desktop application, a daemon for CI integration, or a [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) container. Scan modes: automated scan (spider → passive → active), API scan (import OpenAPI/GraphQL schema), and baseline scan (passive-only, safe for production). ZAP supports authenticated scanning via context-based session management, bearer token injection, and form-based authentication. The HUD (Heads-Up Display) mode provides browser-based interaction for manual testing. Key strengths: free and open-source, extensive active scan rules, API scanning, and [Docker](../../containers-orchestration/docker/other/docker/SKILL.md)-native CI integration.
 
 ### Burp Suite
 Burp Suite is the professional standard for web application security testing. The Community Edition includes an HTTP proxy, repeater, decoder, and scanner. The Professional Edition adds automated scanning, advanced vulnerability detection, and CI integration. Burp's scanning phases: crawl (discover all endpoints), [audit](../../AI_and_Agents/Operations/audit/SKILL.md) (automated vulnerability checks), and intruder (targeted fuzzing). Extensions from the BApp Store extend functionality: Autorize for auth bypass detection, JSON Web Tokens for JWT manipulation, and ActiveScan++ for enhanced scan coverage. Key strengths: manual testing workflow, extensive extension ecosystem, and industry-standard tooling.
@@ -228,7 +228,7 @@ Map SAST findings to affected endpoints in DAST scope. Prioritize findings that 
 |---|---|---|---|
 | Cost | Free | Community: free, Pro: $449/year | Commercial (custom pricing) |
 | Scan modes | Automated, API, Baseline | Crawl, [Audit](../../AI_and_Agents/Operations/audit/SKILL.md), Intruder | DeepScan, QuickScan |
-| CI integration | [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) + CLI action | Pro only (REST API) | Yes (CLI + REST API) |
+| CI integration | [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) + CLI action | Pro only (REST API) | Yes (CLI + REST API) |
 | Authentication | Context-based, form, token | Macro-based, form, token | Macro recording |
 | API scanning | OpenAPI, GraphQL, SOAP | OpenAPI via extension | OpenAPI, GraphQL |
 | WebSocket testing | Limited | Yes (via extension) | Yes |
@@ -329,7 +329,7 @@ Semgrep is faster and easier for custom rule writing (YAML patterns, simple synt
 Semgrep focuses on finding vulnerabilities with custom patterns. SonarQube tracks overall code health: coverage, duplication, code smells, technical debt. They are complementary. Use Semgrep for SAST detection. Use SonarQube for quality gates and trends.
 
 ### ZAP vs Burp Suite
-ZAP is free, open-source, and CI-friendly ([Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md), CLI). Burp Suite Pro offers better manual testing workflows and a rich extension ecosystem. Use ZAP for CI/CD automation. Use Burp for professional manual [pentesting](../../DevOps_and_Cloud/Observability_and_SecOps/pentesting/SKILL.md).
+ZAP is free, open-source, and CI-friendly ([Docker](../../containers-orchestration/docker/other/docker/SKILL.md), CLI). Burp Suite Pro offers better manual testing workflows and a rich extension ecosystem. Use ZAP for CI/CD automation. Use Burp for professional manual [pentesting](../../DevOps_and_Cloud/Observability_and_SecOps/pentesting/SKILL.md).
 
 ### ZAP vs Acunetix
 ZAP is free with community support. Acunetix is commercial with deeper scanning, macro auth recording, and enterprise compliance reporting. Use ZAP for regular CI scanning. Use Acunetix for quarterly compliance scans.
@@ -506,7 +506,7 @@ Default scan speeds can overwhelm staging environments. Configure delays: `-t` f
 ## SRE/Operations Considerations
 
 - SAST runner memory: 2-4GB RAM minimum for full codebase scans. Diff scans need <1GB.
-- ZAP [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) container: 2-4GB RAM for active scans, 1GB for baseline. CPU: 2-4 cores.
+- ZAP [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) container: 2-4GB RAM for active scans, 1GB for baseline. CPU: 2-4 cores.
 - Scan duration budgets: SAST diff <5min, SAST full <60min, ZAP baseline <30min, ZAP active <4h.
 - Schedule full SAST and DAST scans during off-peak hours to avoid CI congestion.
 - Store scan artifacts (SARIF, HTML reports, raw logs) for 90 days minimum for compliance.

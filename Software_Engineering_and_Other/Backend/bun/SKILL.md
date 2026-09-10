@@ -46,7 +46,7 @@ Build high-performance [TypeScript](../../Frontend/typescript/SKILL.md)/JavaScri
 | Package manager | Built-in (10x faster) | npm/pnpm/yarn | Custom |
 | Shell scripting | Bun.shell (built-in) | execa/child_process | Deno.Command |
 | Windows support | Experimental (native) | Mature | Mature |
-| [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) image size | ~200MB | ~350MB | ~200MB |
+| [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) image size | ~200MB | ~350MB | ~200MB |
 
 Decision: Bun for new projects prioritizing DX and speed. Node.js for max ecosystem compatibility. Deno for security-first or edge computing.
 
@@ -82,7 +82,7 @@ Decision: Bun.sqlite for single-server, embedded, or dev. [PostgreSQL](../postgr
 User request includes: `Bun`, `bun runtime`, `bun.sh`, `bun run`, `bun test`, `bun install`, `bun build`, `bunx`, `hot reload`, `bun --watch`, `Bun.file`, `Bun.write`, `Bun.serve`, `Bun.sqlite`, `Bun.shell`.
 
 ### Input Context
-- Runtime (Bun, Bun in [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md))
+- Runtime (Bun, Bun in [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md))
 - Framework (Elysia, Hono, Express compatibility)
 - Database (Bun SQLite, [PostgreSQL](../postgresql/SKILL.md), [MySQL](../mysql/SKILL.md))
 - Build target (API, CLI tool, script)
@@ -424,11 +424,11 @@ async function buildAndDeploy() {
   const testResult = await $`bun test`.text();
   console.log('Tests:', testResult);
 
-  // Build [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) image
-  await $`[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) build -t my-app:latest .`;
+  // Build [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) image
+  await $`[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) build -t my-app:latest .`;
 
   // Deploy
-  await $`[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) push my-app:latest`;
+  await $`[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) push my-app:latest`;
 
   // Chained commands
   const [gitBranch, gitHash] = await Promise.all([
@@ -508,7 +508,7 @@ program.parse();
 - Cluster: use `Bun.spawn` to fork workers; built-in cluster module not yet available
 
 ### Deployment
-- [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md): `oven/bun:latest` base image; multi-stage build for production
+- [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md): `oven/bun:latest` base image; multi-stage build for production
 - Binary compilation: use `--compile` flag to produce standalone binary (no runtime deps)
 - CI: use `bun install --frozen-lockfile` for reproducible installs
 - Environment variables: validated at startup with `.env` + Zod schema
@@ -534,7 +534,7 @@ program.parse();
 ## Security Considerations
 - Bun's built-in `password.hash` uses bcrypt by default (not pbkdf2 like Node.js) — set cost >= 10
 - Bun stores .bun install cache at `~/.bun/install/cache/` — clear in CI environments
-- Use `--smol` option in [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) to limit memory; set `BUN_RUNTIME_TRANSPILER_CACHE_PATH` to /tmp
+- Use `--smol` option in [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) to limit memory; set `BUN_RUNTIME_TRANSPILER_CACHE_PATH` to /tmp
 - Bun's `fetch` supports `credentials: 'omit'` by default (safer than Node.js undici defaults)
 - Validate `req.param()` in Bun.serve — Bun returns string not string | undefined like Express
 - Bun has no built-in `helmet` equivalent — add security headers manually in `fetch` handler

@@ -433,7 +433,7 @@ async function breakGlassAccess(userId, resourceId, reason) {
 |--------|----------|-------|------------|----------|
 | **Casbin** | Go, Node.js, [Python](../../Languages/python/SKILL.md), Java, .NET, Rust | PERM metamodel | In-app library | RBAC/ABAC/ACL in any language |
 | **OPA/Rego** | Rego | Declarative policies | Sidecar/bundle | Cloud-native, K8s, multi-service |
-| **Cerbos** | YAML | Resource policies | Sidecar/[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) | Fine-grained, user-friendly |
+| **Cerbos** | YAML | Resource policies | Sidecar/[Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) | Fine-grained, user-friendly |
 | **Permit.io** | [Python](../../Languages/python/SKILL.md), Node.js, Go, REST | RBAC/ABAC/ReBAC | SaaS/self-hosted | Rapid deployment, GUI policy editor |
 | **AuthZed/SpiceDB** | Zanzibar | Relationship tuples | gRPC API | ReBAC at scale |
 
@@ -719,7 +719,7 @@ func Authorize(engine *casbin.Enforcer) func(http.Handler) http.Handler {
 ## Handoff
 No artifact produced unless requested.
 Next skill: authentication (frontend) — implement login UI, route guards, token storage for the auth system.
-Next skill: [multi-tenancy](../../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md) — combine authorization with tenant isolation for SaaS apps.
+Next skill: [multi-tenancy](../../../containers-orchestration/common/other/multi-tenancy/SKILL.md) — combine authorization with tenant isolation for SaaS apps.
 Next skill: api-security — apply authorization to API endpoints with rate limiting and WAF.
 Carry forward: authorization model, role tree, permission matrix, policy engine choice.
 

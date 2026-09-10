@@ -64,7 +64,7 @@ before rollout, not about designing it from scratch.
 
 ## Prerequisites & environment
 
-- The `loki` binary (or `[docker](../../Containers_and_Orchestration/docker/SKILL.md) run grafana/loki:<version> -verify-config
+- The `loki` binary (or `[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run grafana/loki:<version> -verify-config
   -config.file=...`) available locally or in CI to run structural
   validation without needing a full running cluster.
 - The candidate config file(s) — base config plus any per-environment
@@ -90,7 +90,7 @@ before rollout, not about designing it from scratch.
    ```bash
    loki -config.file=loki-config.yaml -verify-config
    # or, without a local binary:
-   [docker](../../Containers_and_Orchestration/docker/SKILL.md) run --rm -v "$(pwd)/loki-config.yaml:/etc/loki/config.yaml" \
+   [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run --rm -v "$(pwd)/loki-config.yaml:/etc/loki/config.yaml" \
      grafana/loki:3.1.0 -config.file=/etc/loki/config.yaml -verify-config
    ```
    For Helm-deployed Loki, render the final config first — validating
@@ -168,7 +168,7 @@ before rollout, not about designing it from scratch.
    # [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions example
    - name: Validate Loki config
      run: |
-       [docker](../../Containers_and_Orchestration/docker/SKILL.md) run --rm -v "${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).workspace }}/loki-config.yaml:/etc/loki/config.yaml" \
+       [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run --rm -v "${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).workspace }}/loki-config.yaml:/etc/loki/config.yaml" \
          grafana/loki:3.1.0 -config.file=/etc/loki/config.yaml -verify-config
    ```
    Pair with a simple script/lint step asserting `schema_config.configs`
@@ -189,7 +189,7 @@ before rollout, not about designing it from scratch.
 
 ## Best practices
 
-- Run `-verify-config` (or the [Docker](../../Containers_and_Orchestration/docker/SKILL.md) equivalent) in CI on every PR
+- Run `-verify-config` (or the [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) equivalent) in CI on every PR
   touching Loki config — treat a failing structural check the same as a
   failing unit test, not a manual pre-deploy step someone might skip.
 - Never validate a Helm `values.yaml` directly — always render the

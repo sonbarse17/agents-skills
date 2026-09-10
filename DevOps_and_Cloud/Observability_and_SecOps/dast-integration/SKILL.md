@@ -112,7 +112,7 @@ every staging deploy.
 2. **Seed the scan with an API spec** for better coverage of non-linked
    endpoints:
    ```bash
-   [docker](../../Containers_and_Orchestration/docker/SKILL.md) run --rm -v "$(pwd)":/zap/wrk/:rw \
+   [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run --rm -v "$(pwd)":/zap/wrk/:rw \
      -t zaproxy/zap-stable zap-api-scan.py \
      -t https://staging.example.internal/openapi.json \
      -f openapi \

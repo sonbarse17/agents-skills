@@ -82,7 +82,7 @@ Error strategy?
 go mod init [github](../../../ci-cd/github-actions/other/github/SKILL.md).com/org/myproject
 go mod tidy                # Clean dependencies
 go mod verify              # Verify checksums
-go mod download            # Pre-download for [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
+go mod download            # Pre-download for [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
 go work init ./cmd ./pkg   # [Monorepo](../monorepo/SKILL.md) workspace
 ```
 
@@ -343,12 +343,12 @@ Use `slog` (Go 1.21+ standard library) or `zap` for structured logging with leve
 
 ```
 Deployment target?
-├── [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) compose / bare metal → Binary on host + systemd
+├── [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) compose / bare metal → Binary on host + systemd
 │   Build: CGO_ENABLED=0 go build -ldflags="-s -w" -o bin/server
-├── [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) → Distroless [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) image
+├── [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) → Distroless [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) image
 │   Health: /healthz and /readyz endpoints
 │   Graceful shutdown with signal handling
-├── [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) → AWS Lambda ([aws-lambda](../../../cloud/aws/compute/aws-lambda/SKILL.md)-go) / Cloud Functions
+├── [Serverless](../../Patterns/serverless/SKILL.md) → AWS Lambda ([aws-lambda](../../../cloud/aws/compute/aws-lambda/SKILL.md)-go) / Cloud Functions
 │   Stateless handlers, no long-running goroutines
 └── Edge → WASM target or tinygo for WebAssembly
 ```

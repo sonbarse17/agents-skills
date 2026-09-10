@@ -120,8 +120,8 @@ networkQuality -s              # macOS 12+ bufferbloat test
 ```bash
 df -h                                    # volume overview
 du -sh ~/* | sort -rh | head -15         # biggest dirs in home
-[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) system df                         # [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) disk usage (common culprit)
-[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) system prune -a --volumes         # reclaim [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) space
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) system df                         # [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) disk usage (common culprit)
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) system prune -a --volumes         # reclaim [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) space
 brew cleanup --prune=all                 # macOS Homebrew cleanup
 ```
 
@@ -170,7 +170,7 @@ sudo systemsetup -setremotelogin on       # enable SSH for remote admin
 # Homebrew fleet setup — standard Brewfile
 cat > Brewfile <<'EOF'
 brew "git"; brew "node"; brew "[python](../../Languages/python/SKILL.md)@3.12"; brew "awscli"; brew "jq"; brew "gh"
-cask "google-chrome"; cask "slack"; cask "1password"; cask "visual-studio-code"; cask "[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)"; cask "zoom"
+cask "google-chrome"; cask "slack"; cask "1password"; cask "visual-studio-code"; cask "[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)"; cask "zoom"
 EOF
 brew bundle install --file=Brewfile
 brew bundle dump --file=~/Brewfile --force  # export current setup

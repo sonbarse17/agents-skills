@@ -65,7 +65,7 @@ the initial `if (flag.isEnabled())` wiring.
 
 - A flagging platform account/instance: LaunchDarkly (SaaS, requires an
   SDK key per environment and a project/environment hierarchy) or Unleash
-  (open-source; self-hosted via [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)/Helm, or Unleash's own hosted
+  (open-source; self-hosted via [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)/Helm, or Unleash's own hosted
   offering — requires a running Unleash server plus a client/frontend API
   token).
 - An SDK for each language/runtime that evaluates flags — both platforms

@@ -127,7 +127,7 @@ const orderSaga = [reserveInventoryStep, chargePaymentStep, scheduleShipmentStep
 await runSaga(orderSaga, { orderId, customerId, items });
 ```
 
-### Health & Readiness Probe ([Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md))
+### Health & Readiness Probe ([Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md))
 ```yaml
 livenessProbe:
   httpGet:
@@ -178,7 +178,7 @@ When designing [microservices](../microservices/SKILL.md) architecture, provide:
 
 ## Knowledge Reference
 
-Domain-driven design, bounded contexts, event storming, REST/gRPC, message queues (Kafka, RabbitMQ), service mesh (Istio, Linkerd), [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md), circuit breakers, saga patterns, event sourcing, CQRS, distributed tracing (Jaeger, Zipkin), API gateways, eventual consistency, CAP theorem
+Domain-driven design, bounded contexts, event storming, REST/gRPC, message queues (Kafka, RabbitMQ), service mesh (Istio, Linkerd), [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), circuit breakers, saga patterns, event sourcing, CQRS, distributed tracing (Jaeger, Zipkin), API gateways, eventual consistency, CAP theorem
 
 [Documentation](https://jeffallan.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/api-architecture/[microservices](../microservices/SKILL.md)-architect/)
 

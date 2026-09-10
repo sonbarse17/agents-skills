@@ -48,9 +48,9 @@ discover what is available before querying.
   against `traces*` or metrics data streams.
 - **Alerts and SLOs:** Use the [Observability APIs](https://www.elastic.co/docs/solutions/[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/apis) **SLOs
   API** ([Stack](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-slo) |
-  [Serverless](https://www.elastic.co/docs/api/doc/[serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)/group/endpoint-slo)) and **[Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) API**
+  [Serverless](https://www.elastic.co/docs/api/doc/[serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)/group/endpoint-slo)) and **[Alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) API**
   ([Stack](https://www.elastic.co/docs/api/doc/kibana/group/endpoint-[alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)) |
-  [Serverless](https://www.elastic.co/docs/api/doc/[serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)/group/endpoint-[alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md))) to find SLOs and [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) rules
+  [Serverless](https://www.elastic.co/docs/api/doc/[serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)/group/endpoint-[alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md))) to find SLOs and [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) rules
   that target LLM-related data (e.g. services backed by `traces*`, or integration metrics). Firing alerts or
   violated/degrading SLOs point to potential degraded performance.
 
@@ -137,7 +137,7 @@ stream mapping.
 
 ## Using ES|QL for LLM data
 
-- **Availability:** ES|QL is available in Elasticsearch 8.11+ (GA in 8.14) and in Elastic [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md).
+- **Availability:** ES|QL is available in Elasticsearch 8.11+ (GA in 8.14) and in Elastic [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) [Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md).
 - **Scoping:** Always restrict by time range (`@timestamp`). When present, add `service.name` and optionally
   `service.environment`. For LLM-specific spans, filter by span attributes once you know the field names (e.g. a keyword
   field for `gen_ai.provider.name` or `gen_ai.operation.name`).
@@ -246,6 +246,6 @@ Vertex AI, etc.), use that integration’s data stream index pattern and field n
   [OpenTelemetry GenAI spans](https://[opentelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md).io/docs/specs/semconv/gen-ai/gen-ai-spans/). For ES|QL syntax and
   query patterns, use the **[elasticsearch-esql](../../../DevOps_and_Cloud/Observability_and_SecOps/elasticsearch-esql/SKILL.md)** skill, or look through
   [ES|QL TS command reference](https://www.elastic.co/docs/reference/query-languages/esql/commands/ts) for Elastic v9.3
-  or higher and for [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md), and look through
+  or higher and for [Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md), and look through
   [ES|QL FROM command reference](https://www.elastic.co/docs/reference/query-languages/esql/commands/from) for other
   Elastic versions.

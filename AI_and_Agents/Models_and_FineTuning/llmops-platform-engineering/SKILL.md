@@ -27,12 +27,12 @@ Design and operate an internal LLM platform that supports rapid experimentation 
 - Building an internal platform for teams to deploy and manage LLM-powered features
 - Designing CI/CD pipelines that include model evaluation gates
 - Setting up A/B testing infrastructure for model versions
-- Creating [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-based model serving infrastructure
+- Creating [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-based model serving infrastructure
 - Establishing governance workflows for model promotion
 
 ## Prerequisites
 
-- [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cluster with GPU node pools (or cloud inference API access)
+- [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster with GPU node pools (or cloud inference API access)
 - Container registry (Harbor, ECR, GCR, or ACR)
 - CI/CD system ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, or Argo Workflows)
 - [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) stack (Prometheus + Grafana + [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md))
@@ -144,7 +144,7 @@ jobs:
 
       - name: Deploy canary
         run: |
-          [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) set image deployment/${{ inputs.model_name }}-canary \
+          [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) set image deployment/${{ inputs.model_name }}-canary \
             model=${{ inputs.model_name }}:${{ inputs.model_version }} \
             -n ai-${{ inputs.target_env }}
 
@@ -159,10 +159,10 @@ jobs:
 
       - name: Promote to full rollout
         run: |
-          [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) set image deployment/${{ inputs.model_name }} \
+          [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) set image deployment/${{ inputs.model_name }} \
             model=${{ inputs.model_name }}:${{ inputs.model_version }} \
             -n ai-${{ inputs.target_env }}
-          [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) rollout status deployment/${{ inputs.model_name }} \
+          [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) rollout status deployment/${{ inputs.model_name }} \
             -n ai-${{ inputs.target_env }} --timeout=300s
 ```
 
@@ -248,7 +248,7 @@ spec:
     hash_key: user_id
 ```
 
-## [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Model Serving Deployment
+## [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Model Serving Deployment
 
 ```yaml
 # model-serving-deployment.yaml
@@ -283,7 +283,7 @@ spec:
     spec:
       topologySpreadConstraints:
         - maxSkew: 1
-          topologyKey: topology.[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).io/zone
+          topologyKey: topology.[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).io/zone
           whenUnsatisfiable: DoNotSchedule
           labelSelector:
             matchLabels:

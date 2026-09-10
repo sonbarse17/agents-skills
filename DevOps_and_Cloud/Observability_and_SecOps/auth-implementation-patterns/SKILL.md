@@ -28,7 +28,7 @@ Build secure, scalable authentication and authorization systems using industry-s
 - Designing session management
 - Migrating authentication systems
 - Debugging auth issues
-- Implementing SSO or [multi-tenancy](../../Containers_and_Orchestration/multi-tenancy/SKILL.md)
+- Implementing SSO or [multi-tenancy](../../../containers-orchestration/common/other/multi-tenancy/SKILL.md)
 
 ## Core Concepts
 

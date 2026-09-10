@@ -57,7 +57,7 @@ already unhealthy in production is covered separately in
   Airflow 1.x, and some syntax here — e.g. `@task` decorators — isn't
   available before 2.0).
 - A local or CI-accessible Airflow environment (even a minimal
-  `airflow standalone` or the `astro` / `[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) compose` based local
+  `airflow standalone` or the `astro` / `[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) compose` based local
   dev setups most distributions provide) to actually run `airflow dags
   test`, not just visually review the DAG file.
 - Access to whatever the DAG's tasks actually depend on in a test/staging

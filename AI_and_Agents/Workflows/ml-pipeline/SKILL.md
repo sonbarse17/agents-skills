@@ -175,7 +175,7 @@ When implementing a pipeline, provide:
 
 ## Knowledge Reference
 
-MLflow, Kubeflow Pipelines, Apache Airflow, Prefect, Feast, Weights & Biases, Neptune, DVC, Great Expectations, Ray, Horovod, [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md), [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md), S3/GCS/Azure Blob, model registry patterns, feature store architecture, distributed training, hyperparameter optimization
+MLflow, Kubeflow Pipelines, Apache Airflow, Prefect, Feast, Weights & Biases, Neptune, DVC, Great Expectations, Ray, Horovod, [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md), S3/GCS/Azure Blob, model registry patterns, feature store architecture, distributed training, hyperparameter optimization
 
 [Documentation](https://jeffallan.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/data-ml/ml-pipeline/)
 

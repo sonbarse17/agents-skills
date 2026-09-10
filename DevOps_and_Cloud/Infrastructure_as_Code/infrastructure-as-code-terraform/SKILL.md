@@ -39,7 +39,7 @@ itself.
 ## When to use
 
 - Provisioning new cloud infrastructure (VPCs, compute, managed databases,
-  [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) clusters, IAM) that should be reproducible across
+  [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) clusters, IAM) that should be reproducible across
   environments.
 - Structuring a Terraform codebase into reusable modules instead of one
   large monolithic configuration.

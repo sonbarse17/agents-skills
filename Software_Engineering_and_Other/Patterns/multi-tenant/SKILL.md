@@ -146,7 +146,7 @@ Every request must carry tenant context through all layers:
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: multi-tenant, [multi-tenancy](../../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md), SaaS architecture, tenant isolation, tenant onboarding, tenant data, tenant migration, per-tenant config, tenant scaling, tenancy model, tenant routing, data isolation.
+Exact user phrases: multi-tenant, [multi-tenancy](../../../containers-orchestration/common/other/multi-tenancy/SKILL.md), SaaS architecture, tenant isolation, tenant onboarding, tenant data, tenant migration, per-tenant config, tenant scaling, tenancy model, tenant routing, data isolation.
 
 ### Input Context
 Before activating, verify:
@@ -239,7 +239,7 @@ Infrastructure isolation considerations:
 - Cache: Redis key prefix per tenant, or separate Redis instance for large tenants. Cache eviction policies must not evict data across tenant boundaries.
 - Queues: Tenant-tagged messages. Fair queue processing (one noisy tenant should not starve others).
 - Rate Limiting: Per-tenant rate limits, separate from global limits. Burst allowance based on plan tier.
-- Compute: [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) with tenant-affinity scheduling for noisy-neighbor prevention. Resource quotas per namespace.
+- Compute: [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) with tenant-affinity scheduling for noisy-neighbor prevention. Resource quotas per namespace.
 - Storage: Per-tenant buckets/folders with IAM policies. S3 bucket policy per tenant for direct access.
 
 Tenant-level [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md): track requests, errors, latency, and resource usage per tenant. Dashboard for customer-facing health. Tenant-level [alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md) on anomalies.
@@ -414,7 +414,7 @@ Estimated time: 3-5 minutes
 
 ### Tools Reference
 - Terraform for tenant infrastructure provisioning
-- [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) with tenant namespaces for compute isolation
+- [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) with tenant namespaces for compute isolation
 - AWS KMS / Azure Key [Vault](../../Miscellaneous/vault/SKILL.md) for per-tenant encryption key management
 - [PostgreSQL](../../Backend/postgresql/SKILL.md) Row-Level Security for database isolation
 - Redis with tenant key prefixes for cache isolation

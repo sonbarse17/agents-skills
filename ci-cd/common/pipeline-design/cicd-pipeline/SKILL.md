@@ -42,7 +42,7 @@ Design and implement CI/CD pipelines with proper stages, dependency caching, par
 | Hosted runners | Linux, macOS, Windows | Linux, macOS, Windows | N/A (self-hosted) | Linux, macOS, Windows |
 | Self-hosted runners | Yes | Yes | Native | Yes |
 | Reusable configs | Composite actions + reusable workflows | Include templates + CI components | Shared libraries | Orbs |
-| Container support | Native (service containers) | Native (services) | [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) plugin | Native |
+| Container support | Native (service containers) | Native (services) | [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) plugin | Native |
 | Secret management | [GitHub](../../../github-actions/other/github/SKILL.md) Secrets | CI/CD Variables | Credentials plugin | Project env vars |
 | Parallelism | Matrix strategy | Parallel keyword | Parallel stages | Parallelism × resource class |
 | Cache | actions/cache | cache: keyword | Plugin | Store/cache |
@@ -58,7 +58,7 @@ Design and implement CI/CD pipelines with proper stages, dependency caching, par
 | Build | Always | 1-30 min | Yes |
 | Integration tests | Code changes affect DB/external | 5-30 min | After build |
 | Security scan | Production branches | 2-15 min | Yes (high vulns) |
-| [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) build | Containerized apps | 2-10 min | Yes |
+| [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) build | Containerized apps | 2-10 min | Yes |
 | Deploy staging | PR to main/develop | 1-10 min | No (non-blocking) |
 | E2E tests | Before production deployment | 10-30 min | On staging |
 | Deploy production | Main branch merge | 1-15 min | With approval gate |
@@ -90,7 +90,7 @@ Design and implement CI/CD pipelines with proper stages, dependency caching, par
 | SAST (Static Analysis) | SonarQube, Semgrep, CodeQL, Snyk Code | After checkout | 5-15 min |
 | DAST (Dynamic) | OWASP ZAP, Burp Suite | After deploy to staging | 10-30 min |
 | Dependency scan | OWASP DC, Snyk, Trivy, npm [audit](../../../../AI_and_Agents/Operations/audit/SKILL.md) | After install | 2-5 min |
-| Container scan | Trivy, Clair, Snyk Container, Grype | After [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) build | 2-10 min |
+| Container scan | Trivy, Clair, Snyk Container, Grype | After [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) build | 2-10 min |
 | IaC scan | Checkov, tfsec, KICS, Terrascan | After infrastructure code | 1-3 min |
 | Secret scan | Gitleaks, TruffleHog, GitGuardian | On every [commit](../../git-workflow/commit/SKILL.md) | 1-3 min |
 
@@ -165,12 +165,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: npm ci && npm run build
-      - uses: [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)/setup-buildx-action@v3
-      - uses: [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)/login-action@v3
+      - uses: [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)/setup-buildx-action@v3
+      - uses: [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)/login-action@v3
         with: { registry: ghcr.io, username: ${{ [github](../../../github-actions/other/github/SKILL.md).actor }},
           password: ${{ secrets.GITHUB_TOKEN }} }
       - id: build
-        uses: [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)/build-push-action@v5
+        uses: [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)/build-push-action@v5
         with:
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ [github](../../../github-actions/other/github/SKILL.md).sha }}
@@ -244,12 +244,12 @@ security:
 
 build:
   stage: build
-  image: [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md):latest
+  image: [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md):latest
   services:
-    - [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md):dind
+    - [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md):dind
   script:
-    - [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) build -t $DOCKER_IMAGE .
-    - [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) push $DOCKER_IMAGE
+    - [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) build -t $DOCKER_IMAGE .
+    - [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) push $DOCKER_IMAGE
 
 .deploy:
   stage: deploy
@@ -276,9 +276,9 @@ deploy-production:
   needs: [deploy-staging]
 ```
 
-### Step 3: Canary Deployment with [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
+### Step 3: Canary Deployment with [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
 ```yaml
-# [kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)/canary-deploy.yaml
+# [kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)/canary-deploy.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -365,7 +365,7 @@ export DEPLOY_LOCK=true
 
 # 2. Rollback application
 echo "Redeploying previous version..."
-[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) set image deployment/myapp \
+[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) set image deployment/myapp \
   app=myapp:"$IMAGE_TAG" \
   -n "$ENVIRONMENT"
 
@@ -422,8 +422,8 @@ Pipeline runs for 30+ min before failing at end. Fail fast: lint first, then bui
 
 ### Performance
 - Use matrix builds to run tests in parallel.
-- Cache dependencies and [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) layers.
-- Use buildx with cache-from for faster [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) builds.
+- Cache dependencies and [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) layers.
+- Use buildx with cache-from for faster [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) builds.
 - Run integration tests with service containers.
 - Use deployment environments for targeted rollouts.
 
@@ -446,7 +446,7 @@ Pipeline runs for 30+ min before failing at end. Fail fast: lint first, then bui
   - ../../../Global_References/[caching-strategies](../../../../Software_Engineering_and_Other/Miscellaneous/caching-strategies/SKILL.md).md
   - ../../../Global_References/cicd-pipeline-advanced.md
   - ../../../Global_References/cicd-pipeline-fundamentals.md
-  - ../../../Global_References/[deployment-strategies](../../../../DevOps_and_Cloud/Containers_and_Orchestration/deployment-strategies/SKILL.md).md
+  - ../../../Global_References/[deployment-strategies](../../deployment/deployment-strategies/SKILL.md).md
   - ../../../Global_References/[github-actions](../[github](../github/SKILL.md)-actions/SKILL.md)-guide.md
   - ../../../Global_References/matrix-strategies.md
   - ../../../Global_References/multi-environment.md
@@ -455,7 +455,7 @@ Pipeline runs for 30+ min before failing at end. Fail fast: lint first, then bui
   - references/canary-deployment-guide.md
 
 ## Handoff
-Next: **[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-patterns** — K8s deployment for pipeline output.
+Next: **[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-patterns** — K8s deployment for pipeline output.
 
 ## Implementation Patterns
 
@@ -490,8 +490,8 @@ test-job:
 build-job:
   stage: build
   script:
-    - [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA .
-    - [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+    - [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA .
+    - [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
   only:
     - main
     - tags
@@ -499,7 +499,7 @@ build-job:
 deploy-staging:
   stage: deploy
   script:
-    - [kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) set image deployment/app app=$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+    - [kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) set image deployment/app app=$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
   environment: staging
   only:
     - main
@@ -524,12 +524,12 @@ promote_to_prod() {
   fi
 
   # Deploy to production
-  [kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) set image deployment/app \
+  [kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) set image deployment/app \
     "app=${CI_REGISTRY_IMAGE}:${tag}" \
     --namespace production
 
   # Monitor rollout
-  [kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) rollout status deployment/app \
+  [kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) rollout status deployment/app \
     --namespace production --timeout=5m
 }
 
@@ -553,7 +553,7 @@ promote_to_prod "$@"
 - Ignoring **pipeline failures** on non-critical jobs — fail the pipeline by default, opt-in for soft failures
 - Running **all stages sequentially** when they could run in parallel — increases feedback time
 - Deploying directly to **production without staging** validation — always promote through environments
-- Using **`latest` tag** for [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) images — always pin to semantic version or [commit](../../git-workflow/commit/SKILL.md) SHA
+- Using **`latest` tag** for [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) images — always pin to semantic version or [commit](../../git-workflow/commit/SKILL.md) SHA
 - Neglecting **pipeline cleanup** — stale artifacts, caches, and workspaces waste storage
 
 ## Performance Optimization
@@ -562,7 +562,7 @@ promote_to_prod "$@"
 - Enable **parallel job execution** for independent stages (lint, test, security scan)
 - Split **test suites** into shards and run them concurrently to reduce wall-clock time
 - Use **self-hosted runners** with warm caches instead of ephemeral cloud runners
-- Optimize **[Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) layer caching** — order RUN commands from least to most frequently changing
+- Optimize **[Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) layer caching** — order RUN commands from least to most frequently changing
 - Implement **conditional stage skipping** — skip build if only docs changed
 - Use **build matrix** for multi-version testing instead of sequential jobs
 

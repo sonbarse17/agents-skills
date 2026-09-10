@@ -28,7 +28,7 @@ Use this skill when:
 - Building mobile or web apps with real-time data sync
 - Need authentication with minimal backend code
 - Prototyping quickly with managed infrastructure
-- Building [serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) APIs with Cloud Functions
+- Building [serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) APIs with Cloud Functions
 - Hosting static sites or SPAs with CDN
 
 ## Prerequisites

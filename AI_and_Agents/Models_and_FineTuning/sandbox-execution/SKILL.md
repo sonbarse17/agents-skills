@@ -545,11 +545,11 @@ What's the trust level of the code being executed?
 │       └── Filesystem read-only
 │
 ├── Semi-trusted code (third-party, OSS)
-│   └── Container sandbox ([Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md))
+│   └── Container sandbox ([Docker](../../../containers-orchestration/docker/other/docker/SKILL.md))
 │       ├── Full container isolation
 │       ├── Network policy (egress only to allowed domains)
 │       ├── Read-only root filesystem
-│       └── Memory/CPU limits via [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
+│       └── Memory/CPU limits via [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
 │
 ├── Untrusted code (user-submitted, AI-generated)
 │   └── MicroVM sandbox (Firecracker, gVisor)

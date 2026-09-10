@@ -104,11 +104,11 @@ az vm create \
 # package_update: true
 # packages:
 #   - nginx
-#   - [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).io
+#   - [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md).io
 # runcmd:
 #   - systemctl enable nginx
 #   - systemctl start nginx
-#   - usermod -aG [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) azureuser
+#   - usermod -aG [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) azureuser
 
 az vm create \
   --resource-group compute-rg \
@@ -513,6 +513,6 @@ resource "azurerm_linux_virtual_machine_scale_set" "main" {
 ## Related Skills
 
 - `[azure-networking](../../networking/azure-networking/SKILL.md)` -- VNet and NSG configuration for VM connectivity.
-- `[azure-aks](../../containers/azure-aks/SKILL.md)` -- Container alternative when VMs are not required.
+- `[azure-aks](../../../../containers-orchestration/aks/cluster-management/azure-aks/SKILL.md)` -- Container alternative when VMs are not required.
 - `[arm-templates](../../iac/arm-templates/SKILL.md)` -- Bicep-based VM deployment templates.
 - `[terraform-azure](../../iac/terraform-azure/SKILL.md)` -- Terraform-based VM and VMSS provisioning.

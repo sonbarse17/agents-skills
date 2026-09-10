@@ -379,7 +379,7 @@ Scalability considerations: Bronze layer scales horizontally with object storage
 # Query engine optimization by workload
 optimization:
   bi_dashboards:
-    engine: "Databricks SQL Warehouse ([serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md))"
+    engine: "Databricks SQL Warehouse ([serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md))"
     config:
       - use_photon: true  # Vectorized engine (2-10x faster)
       - warehouse_size: "SMALL to LARGE"  # Scale based on concurrency
@@ -454,7 +454,7 @@ lakehouse_platforms:
     formats: "Iceberg (via Athena), Delta (via Spark)"
     engines: "Athena, Spark on EMR, Redshift Spectrum"
     ml_integration: "SageMaker"
-    strengths: ["AWS-native", "[Serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) Athena queries", "Low cost"]
+    strengths: ["AWS-native", "[Serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) Athena queries", "Low cost"]
     weaknesses: ["Decoupled components", "Less integrated than Databricks"]
 ```
 

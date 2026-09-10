@@ -201,7 +201,7 @@ import torch; print(torch.cuda.get_device_capability())  # expect (12, 1) (G7)
 ```
 
 ```bash
-{ [ -f /.dockerenv -o -f /run/.containerenv ] || grep -qE '[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)|containerd' /proc/1/cgroup; } 2>/dev/null && echo container || echo unknown  # G9
+{ [ -f /.dockerenv -o -f /run/.containerenv ] || grep -qE '[docker](../../containers-orchestration/docker/other/docker/SKILL.md)|containerd' /proc/1/cgroup; } 2>/dev/null && echo container || echo unknown  # G9
 ```
 
 `assets/preflight.sh` runs G1, G3, G4, G7, G9 and produces one

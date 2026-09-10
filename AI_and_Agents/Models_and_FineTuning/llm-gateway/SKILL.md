@@ -34,7 +34,7 @@ Use this skill when:
 
 ## Prerequisites
 
-- [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) and [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose
+- [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) and [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Compose
 - A [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) or SQLite database (for LiteLLM state)
 - LLM API keys (OpenAI, Anthropic, etc.) or self-hosted vLLM endpoints
 - Optional: Redis for caching and rate limiting
@@ -44,8 +44,8 @@ Use this skill when:
 LiteLLM is the de facto open-source LLM gateway with OpenAI-compatible API.
 
 ```bash
-# Run with [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
-[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) run -d \
+# Run with [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run -d \
   --name litellm-proxy \
   -p 4000:4000 \
   -e OPENAI_API_KEY=$OPENAI_API_KEY \
@@ -131,7 +131,7 @@ general_settings:
   store_model_in_db: true
 ```
 
-## [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose: Full Gateway Stack
+## [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Compose: Full Gateway Stack
 
 ```yaml
 services:

@@ -50,7 +50,7 @@ nothing depends on it anymore.
   observation period, remove the old column, table, or field.
 
 Each phase ships as its own deploy, sequenced with normal rollout controls — see
-`[deployment-strategies](../../DevOps_and_Cloud/Containers_and_Orchestration/deployment-strategies/SKILL.md)` for how to stage and gate a rollout, since migration phases are just
+`[deployment-strategies](../../ci-cd/common/deployment/deployment-strategies/SKILL.md)` for how to stage and gate a rollout, since migration phases are just
 deploys with an extra constraint: the previous phase must already be stable in production.
 
 **Done when:** the migration is written as three separate, independently deployable changes,

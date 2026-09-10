@@ -52,7 +52,7 @@ Load detailed guidance based on context:
 | Server Components | `../../../Global_References/nextjs-developer_server-components.md` | RSC patterns, streaming, client boundaries |
 | Server Actions | `../../../Global_References/server-actions.md` | Form handling, mutations, revalidation |
 | Data Fetching | `../../../Global_References/data-fetching.md` | fetch, caching, ISR, on-demand revalidation |
-| Deployment | `../../../Global_References/nextjs-developer_deployment.md` | Vercel, self-hosting, [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md), optimization |
+| Deployment | `../../../Global_References/nextjs-developer_deployment.md` | Vercel, self-hosting, [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md), optimization |
 
 ## Constraints
 

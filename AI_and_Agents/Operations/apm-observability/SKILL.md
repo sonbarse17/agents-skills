@@ -45,7 +45,7 @@ Exact user phrases: "APM", "[observability](../../../DevOps_and_Cloud/Observabil
 ### Input Context
 Before activating, verify:
 - Stack/language (for SDK selection: Java, [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md), Go, Node.js, .NET).
-- Infrastructure type ([Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md), VMs, [serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)).
+- Infrastructure type ([Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), VMs, [serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)).
 - Existing [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) tools (if migrating from legacy).
 - Budget constraints ([observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) tools can be expensive).
 - Compliance requirements (log retention, [audit](../audit/SKILL.md) trails, PII masking).
@@ -75,7 +75,7 @@ Direct file write. No response text.
 | Tool | Best For | Cost | Self-Hosted |
 |---|---|---|---|
 | [Datadog](../../../DevOps_and_Cloud/Observability_and_SecOps/datadog/SKILL.md) | Full-stack [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md), large enterprises | $$$ (per-host + per-event) | No |
-| Grafana + Prometheus | Metrics-first, [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-native | Free (OSS) / $$ (Grafana Cloud) | Yes |
+| Grafana + Prometheus | Metrics-first, [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-native | Free (OSS) / $$ (Grafana Cloud) | Yes |
 | New Relic | APM-focused, polyglot apps | $$ (per-host + data ingested) | No |
 | [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) | Vendor-neutral instrumentation | Free (standards) | N/A |
 | Elastic (ELK) | Log-centric, search-heavy | $ (self-hosted) / $$ (cloud) | Yes |
@@ -562,7 +562,7 @@ formatters:
 | Cost per host | ~$15-23/host/month | ~$8-16/host/month | ~$10-20/host/month | Infrastructure only |
 | Learning curve | Medium | Medium | Medium | High |
 | [Multi-cloud](../../../cloud/common/other/multi-cloud/SKILL.md) | Excellent | Excellent | Excellent | Excellent |
-| [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) support | Native | Native | Native | Native |
+| [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) support | Native | Native | Native | Native |
 | [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) support | Native | Native | Native | Native |
 
 ## Anti-Patterns

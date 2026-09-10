@@ -81,7 +81,7 @@ production is covered separately in
 ## Prerequisites & environment
 
 - A running **Temporal Server** (Temporal Cloud, or self-hosted via
-  `[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) compose` / the `temporal` Helm chart) reachable from worker
+  `[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) compose` / the `temporal` Helm chart) reachable from worker
   processes — self-hosted deployments also need a supported persistence
   store ([PostgreSQL](../../Backend/postgresql/SKILL.md), [MySQL](../../Backend/mysql/SKILL.md), or Cassandra) and, for production, Elasticsearch
   or OpenSearch if visibility/advanced search (`temporal workflow list`

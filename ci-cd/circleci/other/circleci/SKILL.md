@@ -47,11 +47,11 @@ version: 2.1
 
 orbs:
   node: circleci/node@5.2
-  [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md): circleci/[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)@2.4
+  [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md): circleci/[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)@2.4
 
 executors:
   default:
-    [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md):
+    [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md):
       - image: cimg/node:20.10
     working_directory: ~/project
 
@@ -107,12 +107,12 @@ workflows:
 
 ## Executors
 
-### [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Executor
+### [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) Executor
 
 ```yaml
 executors:
   node:
-    [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md):
+    [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md):
       - image: cimg/node:20.10
       - image: cimg/postgres:15.0
         environment:
@@ -313,7 +313,7 @@ version: 2.1
 
 orbs:
   aws-cli: circleci/aws-cli@4.1
-  [kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md): circleci/[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)@1.3
+  [kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md): circleci/[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)@1.3
 
 jobs:
   deploy:
@@ -322,8 +322,8 @@ jobs:
       - aws-cli/setup:
           aws_access_key_id: AWS_ACCESS_KEY_ID
           aws_secret_access_key: AWS_SECRET_ACCESS_KEY
-      - [kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)/install-[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)
-      - run: [kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f k8s/
+      - [kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)/install-[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md)
+      - run: [kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f k8s/
 ```
 
 ### Common Orbs
@@ -331,35 +331,35 @@ jobs:
 ```yaml
 orbs:
   node: circleci/node@5.2              # Node.js
-  [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md): circleci/[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)@2.4          # [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) builds
+  [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md): circleci/[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)@2.4          # [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) builds
   aws-cli: circleci/aws-cli@4.1        # AWS CLI
   aws-ecr: circleci/aws-ecr@9.0        # ECR push
   aws-ecs: circleci/aws-ecs@4.0        # ECS deploy
   gcp-cli: circleci/gcp-cli@3.1        # GCP CLI
-  [kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md): circleci/[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)@1.3  # K8s deploy
+  [kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md): circleci/[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)@1.3  # K8s deploy
   slack: circleci/slack@4.12           # Notifications
 ```
 
-## [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Builds
+## [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) Builds
 
 ```yaml
 version: 2.1
 
 orbs:
-  [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md): circleci/[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)@2.4
+  [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md): circleci/[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)@2.4
 
 jobs:
   build-and-push:
-    executor: [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)/[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
+    executor: [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)/[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)
     steps:
       - setup_remote_docker:
           version: 20.10.24
       - checkout
-      - [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)/check
-      - [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)/build:
+      - [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)/check
+      - [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)/build:
           image: myorg/myapp
           tag: $CIRCLE_SHA1
-      - [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)/push:
+      - [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)/push:
           image: myorg/myapp
           tag: $CIRCLE_SHA1
 ```
@@ -417,7 +417,7 @@ jobs:
 ```yaml
 jobs:
   build:
-    [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md):
+    [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md):
       - image: cimg/node:20.10
     resource_class: large  # 4 vCPU, 8GB RAM
     steps:
@@ -441,9 +441,9 @@ jobs:
 **Problem**: Cannot find persisted workspace
 **Solution**: Ensure persist_to_workspace job completed, check paths
 
-### Issue: [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Layer Caching
-**Problem**: [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) builds are slow
-**Solution**: Enable [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Layer Caching in project settings (paid feature)
+### Issue: [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) Layer Caching
+**Problem**: [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) builds are slow
+**Solution**: Enable [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) Layer Caching in project settings (paid feature)
 
 ## Best Practices
 

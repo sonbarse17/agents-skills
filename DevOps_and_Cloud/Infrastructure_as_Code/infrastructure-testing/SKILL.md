@@ -23,7 +23,7 @@ depends_on:
 # Infrastructure Testing
 
 Infrastructure changes fail differently than application code — a syntactically valid Terraform
-plan can still delete a production database, and a [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) manifest that passes schema
+plan can still delete a production database, and a [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) manifest that passes schema
 validation can still deploy a container that can't reach anything it needs. "It applied without
 error" is not evidence of correctness; it's evidence the tool understood the syntax.
 
@@ -56,7 +56,7 @@ provisions anything real.
 
 ## 2. Never trust a plan you haven't diffed against intent
 
-A `terraform plan` or `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) diff` tells you what will change, not whether that change is what
+A `terraform plan` or `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) diff` tells you what will change, not whether that change is what
 you meant. The dangerous failure is a plan that's technically correct but does something the
 author didn't intend — a renamed resource that Terraform reads as delete-then-recreate, a changed
 selector that silently orphans running pods.

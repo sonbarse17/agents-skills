@@ -30,7 +30,7 @@ Comprehensive guide to using uv, an extremely fast [Python](../python/SKILL.md) 
 - Speeding up CI/CD pipelines
 - Managing [monorepo](../../Frontend/monorepo/SKILL.md) [Python](../python/SKILL.md) projects
 - Working with lockfiles for reproducible builds
-- Optimizing [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) builds with [Python](../python/SKILL.md) dependencies
+- Optimizing [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) builds with [Python](../python/SKILL.md) dependencies
 
 ## Core Concepts
 
@@ -354,5 +354,5 @@ uv pip freeze > requirements.txt
 uv pip freeze --require-hashes > requirements.txt
 ```
 
-For advanced workflows including [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) integration, lockfile management, performance optimization, tool comparison, common workflows, tool integration, troubleshooting, best practices, migration guides, and command reference, see [../../../Global_References/uv-package-manager_advanced-patterns.md](../../../Global_References/uv-package-manager_advanced-patterns.md)
+For advanced workflows including [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) integration, lockfile management, performance optimization, tool comparison, common workflows, tool integration, troubleshooting, best practices, migration guides, and command reference, see [../../../Global_References/uv-package-manager_advanced-patterns.md](../../../Global_References/uv-package-manager_advanced-patterns.md)
 

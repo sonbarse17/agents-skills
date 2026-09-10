@@ -161,7 +161,7 @@ artifact was built, not that the code it contains is safe.
      --certificate-oidc-issuer https://token.actions.githubusercontent.com \
      myorg/myapp:1.4.2
    ```
-   In [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md), enforce this at admission time with a policy engine
+   In [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), enforce this at admission time with a policy engine
    (see [policy-as-code-guardrails](../[policy-as-code-guardrails](../[policy-as-code](../policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md))
    such as Sigstore's `policy-controller` or Kyverno's `verifyImages`
    rule, rather than relying on a human running `cosign verify` manually.
@@ -260,7 +260,7 @@ artifact was built, not that the code it contains is safe.
 ## Worked example
 
 A container-image release pipeline adds SBOM generation, keyless
-signing, and SLSA provenance, then a [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) admission policy enforces
+signing, and SLSA provenance, then a [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) admission policy enforces
 verification before deploy.
 
 `.[github](../../ci-cd/github-actions/other/github/SKILL.md)/workflows/release.yml` (build/sign/attest stage):
@@ -286,9 +286,9 @@ jobs:
       - name: Build and push
         id: push
         run: |
-          [docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) build -t ghcr.io/myorg/myapp:${{ [github](../../ci-cd/github-actions/other/github/SKILL.md).ref_name }} .
-          [docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) push ghcr.io/myorg/myapp:${{ [github](../../ci-cd/github-actions/other/github/SKILL.md).ref_name }}
-          echo "digest=$([docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) inspect --format='{{index .RepoDigests 0}}' ghcr.io/myorg/myapp:${{ [github](../../ci-cd/github-actions/other/github/SKILL.md).ref_name }} | cut -d@ -f2)" >> "$GITHUB_OUTPUT"
+          [docker](../../containers-orchestration/docker/other/docker/SKILL.md) build -t ghcr.io/myorg/myapp:${{ [github](../../ci-cd/github-actions/other/github/SKILL.md).ref_name }} .
+          [docker](../../containers-orchestration/docker/other/docker/SKILL.md) push ghcr.io/myorg/myapp:${{ [github](../../ci-cd/github-actions/other/github/SKILL.md).ref_name }}
+          echo "digest=$([docker](../../containers-orchestration/docker/other/docker/SKILL.md) inspect --format='{{index .RepoDigests 0}}' ghcr.io/myorg/myapp:${{ [github](../../ci-cd/github-actions/other/github/SKILL.md).ref_name }} | cut -d@ -f2)" >> "$GITHUB_OUTPUT"
 
       - name: Generate SBOM
         run: syft ghcr.io/myorg/myapp:${{ [github](../../ci-cd/github-actions/other/github/SKILL.md).ref_name }} -o cyclonedx-json=sbom.cdx.json

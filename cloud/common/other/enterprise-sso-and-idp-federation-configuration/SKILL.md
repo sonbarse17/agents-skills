@@ -34,7 +34,7 @@ depends_on:
 
 Enterprise single sign-on lets a workforce authenticate once against a
 central identity provider (IdP) and reach every downstream application
-(a SaaS tool, an internal admin console, a [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) dashboard) without
+(a SaaS tool, an internal admin console, a [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) dashboard) without
 a separate password for each — but that convenience only holds up if the
 federation trust between IdP and service provider (SP) is configured
 correctly. A SAML assertion with the wrong `NameID` format, an OIDC

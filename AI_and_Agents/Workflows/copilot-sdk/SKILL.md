@@ -776,7 +776,7 @@ Ship CLI binary with your app:
 const client = new CopilotClient({ cliPath: path.join(__dirname, "vendor", "copilot") });
 ```
 
-### [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose
+### [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Compose
 
 ```yaml
 services:

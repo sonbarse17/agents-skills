@@ -26,9 +26,9 @@ depends_on:
   - serverless
 ---
 
-# Manage [Serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) Project
+# Manage [Serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) Project
 
-Perform day-2 operations on Elastic Cloud [Serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) projects using the [Serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) REST API.
+Perform day-2 operations on Elastic Cloud [Serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) projects using the [Serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) REST API.
 
 ## Prerequisites and permissions
 
@@ -98,9 +98,9 @@ an agent.
 Use this workflow when the user asks to query or manage a project the agent did not create in the current session. It
 resolves the project, saves its endpoints, and ensures working Elasticsearch credentials before proceeding.
 
-This workflow only applies to **Elastic Cloud [Serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) projects**. If the user's Elasticsearch instance is
+This workflow only applies to **Elastic Cloud [Serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) projects**. If the user's Elasticsearch instance is
 self-managed or Elastic Cloud Hosted, this skill does not apply — skip it and proceed with the relevant skill directly.
-If unsure, ask the user: **"Is your Elasticsearch instance an Elastic Cloud [Serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) project?"**
+If unsure, ask the user: **"Is your Elasticsearch instance an Elastic Cloud [Serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) project?"**
 
 ```text
 Connect to Existing Project:
@@ -561,7 +561,7 @@ python3 skills/cloud/manage-project/scripts/manage-project.py delete \
 ## Additional resources
 
 - For full API details, request/response schemas, and project-type options, see the
-  [Serverless Projects API](https://www.elastic.co/docs/api/doc/elastic-cloud-[serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md))
+  [Serverless Projects API](https://www.elastic.co/docs/api/doc/elastic-cloud-[serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md))
 - For official documentation on Search AI Lake settings, data retention, and project features, see
   [Project settings](https://www.elastic.co/docs/deploy-manage/deploy/elastic-cloud/project-settings)
 

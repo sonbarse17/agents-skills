@@ -180,7 +180,7 @@ Source finality model:
 | Wormhole | Wormhole | $326M | Guardian signature compromise | Feb 2022 |
 | Ronin | Ronin | $624M | Private key compromise of 5/9 validators | Mar 2022 |
 | BNB Chain | BSC Token Hub | $570M | Light client proof verification bug | Oct 2022 |
-| [Nomad](../../DevOps_and_Cloud/Containers_and_Orchestration/nomad/SKILL.md) | [Nomad](../../DevOps_and_Cloud/Containers_and_Orchestration/nomad/SKILL.md) | $190M | Trusted root not initialized (default = zero) | Aug 2022 |
+| [Nomad](../../containers-orchestration/nomad/other/nomad/SKILL.md) | [Nomad](../../containers-orchestration/nomad/other/nomad/SKILL.md) | $190M | Trusted root not initialized (default = zero) | Aug 2022 |
 | Multichain | Multichain | $1.5B | Private key compromise, bridge halted | Jul 2023 |
 | Orbit Bridge | Orbit | $81M | Smart contract vulnerability | Jan 2024 |
 
@@ -423,7 +423,7 @@ Cross-Chain Bridge Selection
 │   ├── External validator → PoS oracle bridge (LayerZero, Wormhole)
 │   └── Liquidity network → Atomic swap / HTLC-based (ThorChain, Connext)
 ├── Finality requirement?
-│   ├── Fast (< 30 min) → Optimistic bridge ([Nomad](../../DevOps_and_Cloud/Containers_and_Orchestration/nomad/SKILL.md), Synapse)
+│   ├── Fast (< 30 min) → Optimistic bridge ([Nomad](../../containers-orchestration/nomad/other/nomad/SKILL.md), Synapse)
 │   ├── Instant → Liquidity network (Celer, Connext)
 │   └── Slow but secure → ZK bridge with light client verification
 ├── Asset type?

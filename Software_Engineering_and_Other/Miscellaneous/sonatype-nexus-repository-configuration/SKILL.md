@@ -29,11 +29,11 @@ depends_on:
 ## Purpose
 
 Nexus Repository Manager is a self-hostable artifact registry that unifies
-otherwise-separate package ecosystems (npm, Maven/Java, [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md), PyPI, NuGet,
+otherwise-separate package ecosystems (npm, Maven/Java, [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md), PyPI, NuGet,
 and more) behind one server, one authentication model, and one storage
 layer. Its core configuration abstraction is the **repository type**:
 **hosted** (a repository you publish your own artifacts to), **proxy** (a
-caching pass-through to a remote registry like npmjs.org or [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Hub),
+caching pass-through to a remote registry like npmjs.org or [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Hub),
 and **group** (a single virtual endpoint that aggregates one or more
 hosted/proxy repositories into one URL for clients to point at). Getting
 this three-way distinction right — and configuring cleanup policies and
@@ -51,14 +51,14 @@ and for a direct product comparison see
 - Standing up a new Nexus Repository Manager instance to serve as a private
   package registry and/or pull-through proxy in front of public registries.
 - Deciding whether a given use case needs a hosted, proxy, or group
-  repository (or which combination), for npm, Maven, [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md), or another
+  repository (or which combination), for npm, Maven, [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md), or another
   supported format.
 - Writing or debugging a cleanup policy so old snapshot builds, untagged
-  [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) images, or superseded npm/Maven artifacts don't accumulate
+  [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) images, or superseded npm/Maven artifacts don't accumulate
   indefinitely.
 - Sizing or troubleshooting a Nexus blob store that's approaching disk
   [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), or planning blob store layout before initial rollout.
-- Configuring the [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) registry realm in Nexus (repository connectors,
+- Configuring the [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) registry realm in Nexus (repository connectors,
   port assignment, HTTPS) for a private container registry.
 - Comparing Nexus Repository Manager (including the free Community Edition
   vs. paid Pro tier) against JFrog Artifactory for a registry decision.
@@ -99,8 +99,8 @@ and for a direct product comparison see
      Path: /nexus-data/blobs/npm    (File type)
    ```
    Use **separate blob stores per format or per team** (`npm-blobs`,
-   `maven-blobs`, `[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-blobs`) rather than one shared blob store — this
-   isolates disk pressure from one format's growth ([Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) layers are
+   `maven-blobs`, `[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-blobs`) rather than one shared blob store — this
+   isolates disk pressure from one format's growth ([Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) layers are
    usually the biggest) from starving another format's repositories, and
    makes [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) planning per-format tractable.
 
@@ -113,18 +113,18 @@ and for a direct product comparison see
      Blob store: npm-blobs
      Negative cache enabled: true, TTL 1440 min   (cache "not found" too, avoid repeat misses)
    ```
-   Equivalent for [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Hub:
+   Equivalent for [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Hub:
    ```
-   Repository → Create repository → [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) (proxy)
-     Name: [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-hub-proxy
-     Remote storage: https://registry-1.[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).io
-     [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Index: Use [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Hub
-     HTTP port: 8082    ([Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) requires a dedicated connector port per repo, unlike npm/Maven which share the base URL path)
+   Repository → Create repository → [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) (proxy)
+     Name: [docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-hub-proxy
+     Remote storage: https://registry-1.[docker](../../../containers-orchestration/docker/other/docker/SKILL.md).io
+     [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Index: Use [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Hub
+     HTTP port: 8082    ([Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) requires a dedicated connector port per repo, unlike npm/Maven which share the base URL path)
    ```
-   [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)'s requirement for a dedicated repository connector port (rather
+   [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)'s requirement for a dedicated repository connector port (rather
    than a path-based route like npm/Maven) is a frequent point of confusion
    when migrating from a different registry product — plan port allocation
-   for every [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) (proxy, hosted, and group) repository up front.
+   for every [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) (proxy, hosted, and group) repository up front.
 
 3. **Create a hosted repository** for artifacts your own builds publish:
    ```
@@ -200,13 +200,13 @@ and for a direct product comparison see
    > of the blob store/data directory exists before running compaction for
    > the first time against a production instance.
 
-7. **Configure [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-specific cleanup separately**, since untagged/
+7. **Configure [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-specific cleanup separately**, since untagged/
    superseded image layers are usually the fastest-growing storage
    category:
    ```
    Cleanup Policies → Create cleanup policy
-     Name: [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-untagged-30d
-     Format: [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
+     Name: [docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-untagged-30d
+     Format: [docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
      Criteria: Component age (30 days)
    ```
    Follow cleanup with the separate **compact blob store** task — Nexus
@@ -215,7 +215,7 @@ and for a direct product comparison see
    afterward:
    ```
    Administration → System → Tasks → Create task → Admin - Compact blob store
-     Blob store: [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-blobs
+     Blob store: [docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-blobs
    ```
 
 8. **Size the blob store with real numbers, not a guess** — estimate
@@ -255,12 +255,12 @@ and for a direct product comparison see
 
 ## Common pitfalls
 
-- **Symptom:** A [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) pull through Nexus returns "no matching manifest"
+- **Symptom:** A [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) pull through Nexus returns "no matching manifest"
   or connects to the wrong repository entirely.
   **Fix:** Confirm the client is pointed at the correct repository
-  connector port — unlike npm/Maven, each [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) repository (hosted, proxy,
+  connector port — unlike npm/Maven, each [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) repository (hosted, proxy,
   and group) in Nexus needs its own dedicated HTTP/HTTPS connector port,
-  and a misconfigured or reused port is the most common cause of [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
+  and a misconfigured or reused port is the most common cause of [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
   registry connectivity issues in Nexus specifically.
 
 - **Symptom:** Disk usage keeps climbing even after a cleanup policy is
@@ -291,18 +291,18 @@ and for a direct product comparison see
 - **Symptom:** The Nexus blob store fills to [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) unexpectedly, causing
   publish failures across every format sharing that blob store.
   **Fix:** This is the direct consequence of not separating blob stores per
-  format — split high-growth formats (typically [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)) into their own
+  format — split high-growth formats (typically [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)) into their own
   dedicated blob store going forward, and in the immediate term, run
   cleanup + compaction against the offending format's oldest/least-used
   components to free emergency headroom.
 
 ## Worked example
 
-**Scenario:** Standing up Nexus to serve as the private npm and [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
+**Scenario:** Standing up Nexus to serve as the private npm and [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
 registry for a mid-size engineering org, with a 30-day cleanup policy on
 snapshots/untagged images and separate blob stores per format.
 
-Blob stores created: `npm-blobs`, `[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-blobs` (each a `File` type blob
+Blob stores created: `npm-blobs`, `[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-blobs` (each a `File` type blob
 store on its own disk volume, sized independently).
 
 Repositories:
@@ -311,30 +311,30 @@ npm-hosted   (hosted, blob store: npm-blobs)   — internal packages
 npm-proxy    (proxy → registry.npmjs.org, blob store: npm-blobs)
 npm-group    (group: [npm-hosted, npm-proxy])  — what CI/devs actually use
 
-[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-hosted (hosted, blob store: [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-blobs, connector port 8081)
-[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-proxy  (proxy → registry-1.[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).io, blob store: [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-blobs, connector port 8082)
-[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-group  (group: [docker-hosted, [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-proxy], connector port 8083)
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-hosted (hosted, blob store: [docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-blobs, connector port 8081)
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-proxy  (proxy → registry-1.[docker](../../../containers-orchestration/docker/other/docker/SKILL.md).io, blob store: [docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-blobs, connector port 8082)
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-group  (group: [docker-hosted, [docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-proxy], connector port 8083)
 ```
 
 Cleanup policies:
 ```
 npm-untagged-90d    → format: npm,    criteria: component age 90 days
                        (attached to npm-proxy cache only, not npm-hosted)
-[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-untagged-30d → format: [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md), criteria: component age 30 days
-                       (attached to [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-proxy cache only, not [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-hosted)
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-untagged-30d → format: [docker](../../../containers-orchestration/docker/other/docker/SKILL.md), criteria: component age 30 days
+                       (attached to [docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-proxy cache only, not [docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-hosted)
 ```
 
 Scheduled task: `Admin - Cleanup repositories using their associated
 policy` weekly, followed by `Admin - Compact blob store` for both
-`npm-blobs` and `[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-blobs`, so metadata cleanup and actual disk
+`npm-blobs` and `[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-blobs`, so metadata cleanup and actual disk
 reclamation both run on the same weekly cadence rather than metadata being
 cleaned while disk usage keeps climbing.
 
-CI configuration points at `npm-group` and `[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-group` exclusively:
+CI configuration points at `npm-group` and `[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-group` exclusively:
 ```bash
 npm config set registry https://nexus.example.com/repository/npm-group/
-[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) login nexus.example.com:8083
-[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) pull nexus.example.com:8083/library/alpine:3.20
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) login nexus.example.com:8083
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) pull nexus.example.com:8083/library/alpine:3.20
 ```
 
 Six months later, when a new internal team's build system needs the same
@@ -346,5 +346,5 @@ addition transparent to every existing consumer.
 
 - [jfrog-artifactory-configuration](../[jfrog-artifactory-configuration](../jfrog-artifactory-configuration/SKILL.md)/SKILL.md) — the comparable commercial alternative, including where Artifactory's repository model and Xray [security-scanning](../../../Security/security-scanning/SKILL.md) integration differ from Nexus's approach.
 - [artifact-and-dependency-management](../[artifact-and-dependency-management](../../Frontend/artifact-and-[dependency-management](../dependency-management/SKILL.md)/SKILL.md)/SKILL.md) — the vendor-neutral concepts (why a private registry matters, lockfile discipline, retention policy design, publish/read credential separation) that this skill implements concretely in Nexus.
-- [container-build-and-release](../[container-build-and-release](../../../DevOps_and_Cloud/Containers_and_Orchestration/container-build-and-release/SKILL.md)/SKILL.md) — the container build workflow that publishes to a [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) hosted repository configured here.
+- [container-build-and-release](../[container-build-and-release](../../../DevOps_and_Cloud/Containers_and_Orchestration/container-build-and-release/SKILL.md)/SKILL.md) — the container build workflow that publishes to a [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) hosted repository configured here.
 - [ci-cd-pipeline-design](../[ci-cd-pipeline-design](../../../DevOps_and_Cloud/CI_CD/ci-cd-pipeline-design/SKILL.md)/SKILL.md) — where registry configuration fits into the broader build/publish pipeline stage sequence.

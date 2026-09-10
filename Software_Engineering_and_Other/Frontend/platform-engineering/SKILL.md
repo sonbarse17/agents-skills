@@ -56,7 +56,7 @@ cd internal-platform
 yarn dev
 ```
 
-### Production [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Build
+### Production [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Build
 
 ```dockerfile
 # Dockerfile for Backstage production image
@@ -127,7 +127,7 @@ catalog:
 
 ## 3. Crossplane for Self-Service Infrastructure
 
-Crossplane extends [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) to provision and manage cloud infrastructure through declarative YAML.
+Crossplane extends [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) to provision and manage cloud infrastructure through declarative YAML.
 
 ### Install Crossplane
 
@@ -143,7 +143,7 @@ helm install crossplane crossplane-stable/crossplane \
   --set args='{"--enable-composition-revisions"}'
 
 # Install the AWS provider
-[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f - <<EOF
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f - <<EOF
 apiVersion: pkg.crossplane.io/v1
 kind: Provider
 metadata:
@@ -153,11 +153,11 @@ spec:
 EOF
 
 # Configure AWS credentials
-[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) create secret generic aws-creds \
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) create secret generic aws-creds \
   -n crossplane-system \
   --from-file=creds=./aws-credentials.txt
 
-[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f - <<EOF
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f - <<EOF
 apiVersion: aws.upbound.io/v1beta1
 kind: ProviderConfig
 metadata:
@@ -334,7 +334,7 @@ kind: Template
 metadata:
   name: nodejs-service
   title: Node.js Microservice
-  description: Create a production-ready Node.js service with CI/CD, [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), and [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) manifests.
+  description: Create a production-ready Node.js service with CI/CD, [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), and [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) manifests.
   tags:
     - recommended
     - nodejs
@@ -410,9 +410,9 @@ spec:
         defaultBranch: main
         protectDefaultBranch: true
         requireCodeOwnerReviews: true
-    - id: create-[argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)-app
-      name: Register with [ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md)
-      action: [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md):create-resources
+    - id: create-[argocd](../../../containers-orchestration/argocd/other/argocd/SKILL.md)-app
+      name: Register with [ArgoCD](../../../containers-orchestration/argocd/other/argocd/SKILL.md)
+      action: [argocd](../../../containers-orchestration/argocd/other/argocd/SKILL.md):create-resources
       input:
         appName: ${{ parameters.name }}
         argoInstance: main
@@ -486,9 +486,9 @@ metadata:
   annotations:
     backstage.io/techdocs-ref: dir:.
     [github](../../../ci-cd/github-actions/other/github/SKILL.md).com/project-slug: myorg/orders-service
-    backstage.io/[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-id: orders-service
-    backstage.io/[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-namespace: team-commerce
-    [argocd](../../../ci-cd/argocd/other/argocd/SKILL.md)/app-name: orders-service
+    backstage.io/[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-id: orders-service
+    backstage.io/[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-namespace: team-commerce
+    [argocd](../../../containers-orchestration/argocd/other/argocd/SKILL.md)/app-name: orders-service
     pagerduty.com/integration-key: ${PAGERDUTY_KEY}
     grafana/dashboard-selector: "app=orders-service"
   tags:
@@ -570,7 +570,7 @@ Enable TechDocs in `app-config.yaml`:
 techdocs:
   builder: external
   generator:
-    runIn: [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
+    runIn: [docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
   publisher:
     type: awsS3
     awsS3:
@@ -584,18 +584,18 @@ techdocs:
 
 ## 6. Developer Portal -- Backstage Plugins
 
-### [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Plugin
+### [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Plugin
 
 ```bash
-# Install [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) plugin
-yarn --cwd packages/app add @backstage/plugin-[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
-yarn --cwd packages/backend add @backstage/plugin-[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-backend
+# Install [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) plugin
+yarn --cwd packages/app add @backstage/plugin-[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
+yarn --cwd packages/backend add @backstage/plugin-[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-backend
 ```
 
 Backend configuration in `app-config.yaml`:
 
 ```yaml
-[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md):
+[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md):
   serviceLocatorMethod:
     type: multiTenant
   clusterLocatorMethods:
@@ -734,10 +734,10 @@ brew install score-spec/tap/score-compose
 score-compose init
 score-compose generate score.yaml
 
-# Install score-k8s for [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) targets
+# Install score-k8s for [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) targets
 brew install score-spec/tap/score-k8s
 
-# Generate [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) manifests from score.yaml
+# Generate [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) manifests from score.yaml
 score-k8s init
 score-k8s generate score.yaml
 ```
@@ -811,11 +811,11 @@ output "namespace" {
 }
 
 output "kubeconfig_command" {
-  value = "[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) config set-context ${var.team_name}-${var.environment} --namespace=${module.namespace.name}"
+  value = "[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) config set-context ${var.team_name}-${var.environment} --namespace=${module.namespace.name}"
 }
 ```
 
-### Environment Request CRD ([Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Operator Pattern)
+### Environment Request CRD ([Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Operator Pattern)
 
 ```yaml
 # environment-request.yaml

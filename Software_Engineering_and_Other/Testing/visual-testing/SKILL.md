@@ -270,8 +270,8 @@ When UI changes are intentionally made, developers must update baselines via the
 | Applitools (cloud SaaS) | AI-powered matching, Ultrafast Grid, layout matching modes | Expensive, complex setup | Enterprise cross-browser visual testing |
 | Playwright built-in | Free, no external dependency, fast | Manual review, no cloud dashboard, local baseline storage | Teams already using Playwright, no budget |
 | Cypress screenshot diff | Free, Cypress-native | Manual review, no cloud dashboard | Teams already using Cypress exclusively |
-| BackstopJS (open source) | Free, configurable, [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) support | Manual review, HTML report only, no cloud | Open source projects, no budget |
-| Loki (open source) | [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-based, Storybook integration | [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) dependency, CLI only | Component library visual testing |
+| BackstopJS (open source) | Free, configurable, [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) support | Manual review, HTML report only, no cloud | Open source projects, no budget |
+| Loki (open source) | [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-based, Storybook integration | [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) dependency, CLI only | Component library visual testing |
 | Happo (cloud SaaS) | Animation GIF diff, cross-browser | Paid, smaller ecosystem | Animation-heavy applications |
 
 For most projects: use Percy (Playwright/Cypress) or Chromatic (Storybook). For advanced needs: Applitools. For zero budget: Playwright built-in screenshots. For animation testing: Happo.
@@ -329,8 +329,8 @@ Stringent thresholds (0%) catch all visual changes but increase false positives 
 
 - **Playwright**: Built-in `toHaveScreenshot` with `maxDiffPixelRatio` and `threshold` options. Baseline storage in repository. No external dependency. Use with `@playwright/test` for zero-cost visual testing.
 - **Cypress**: `cy.screenshot()` with `cy.task` for diff comparison. No built-in visual testing -- requires community plugins or custom setup.
-- **BackstopJS**: CLI tool with [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) support. HTML report with side-by-side diff view. Supports Playwright and Puppeteer engines. JSON configuration for scenarios and viewports.
-- **Loki**: [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-based Storybook visual testing. CLI commands for update, test, and approve. Pixelmatch-based comparison.
+- **BackstopJS**: CLI tool with [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) support. HTML report with side-by-side diff view. Supports Playwright and Puppeteer engines. JSON configuration for scenarios and viewports.
+- **Loki**: [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-based Storybook visual testing. CLI commands for update, test, and approve. Pixelmatch-based comparison.
 - **Pixelmatch**: Low-level pixel comparison library. Used internally by many visual testing tools. Accepts raw PNG buffers, returns mismatched pixel count and diff image.
 
 ### Related Testing Tools

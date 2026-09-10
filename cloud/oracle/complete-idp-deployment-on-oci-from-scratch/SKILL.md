@@ -35,7 +35,7 @@ depends_on:
 ## Purpose
 
 An OCI-hosted Internal Developer Platform touches a compartment/Identity
-Domain hierarchy, an OKE (Oracle [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Engine) cluster, a Backstage
+Domain hierarchy, an OKE (Oracle [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Engine) cluster, a Backstage
 instance, a managed Postgres catalog database, a scaffolding template, a
 provisioning API, and a scorecard model. Most of these phases are covered
 in depth elsewhere in this repo — but this repo does not currently carry a
@@ -67,7 +67,7 @@ everything else defers to the skill it links to.
   CIS OCI Landing Zone.
 - Terraform maturity — every phase below is expressed as IaC via the CIS
   OCI Landing Zone Terraform reference, not manual OCI Console clicks.
-- `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)`, `helm` ≥ 3.8, and the OCI CLI (`oci ce cluster ...`) for
+- `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md)`, `helm` ≥ 3.8, and the OCI CLI (`oci ce cluster ...`) for
   cluster provisioning and kubeconfig retrieval.
 - A Node.js/Yarn toolchain to build and [customize](../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) the Backstage app.
 - A registered domain and OCI DNS zone (or delegated subdomain) for
@@ -78,7 +78,7 @@ everything else defers to the skill it links to.
 - A named approver for the Phase 6 self-service gate, in place before that
   phase goes live.
 - **A known gap to plan around:** this repo's
-  [managed-[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../../Containers_and_Orchestration/managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md)
+  [managed-[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-eks-aks-gke](../../Containers_and_Orchestration/managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md)
   skill covers EKS/AKS/GKE only, not OKE. Phase 2 below gives the OKE
   equivalent directly; use the EKS/AKS/GKE skill only for its
   cloud-agnostic node-pool-sizing and workload-identity *concepts*, not
@@ -99,9 +99,9 @@ balancer) already in use by Phase 2's cluster forces avoidable rework.
 **Phase 2 — OKE cluster with Dynamic-Group-based workload identity.**
 Because this repo has no dedicated OKE skill, provision the cluster
 directly: create the OKE cluster in the `platform` compartment with a
-pinned [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) version and a managed node pool sized for Backstage's
+pinned [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) version and a managed node pool sized for Backstage's
 steady backend load (OKE also offers virtual node pools for
-[serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)-style scaling, worth considering for bursty CI workloads
+[serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-style scaling, worth considering for bursty CI workloads
 scaffolded later, but the platform-tooling node pool itself should be
 sized for predictable steady load). Configure workload identity using
 OCI's **Dynamic Groups** and **Resource Principals** — the OCI analog to
@@ -116,7 +116,7 @@ secret-family in compartment platform where target.secret.name=
 convenience). Record the Dynamic Group's OCID — Phase 3 and Phase 6 both
 reference it. For general node-pool-sizing and workload-identity-as-a-
 *concept* framing (not OCI syntax), the shape of
-[managed-[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../../Containers_and_Orchestration/managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md)'s
+[managed-[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-eks-aks-gke](../../Containers_and_Orchestration/managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md)'s
 node-group and workload-identity guidance still applies by analogy.
 
 **Phase 3 — Backstage on OKE, backed by OCI Database with [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md).**
@@ -126,7 +126,7 @@ the catalog database, with the Backstage backend pod's node covered by
 the Phase 2 Dynamic Group so it can call
 `secrets-retrieval` on OCI [Vault](../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) for the DB credential via a Resource
 Principal — never an embedded connection string. Chart packaging follows
-[helm-chart-authoring](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[helm-chart-authoring](../../../DevOps_and_Cloud/Containers_and_Orchestration/helm-chart-authoring/SKILL.md)/SKILL.md);
+[helm-chart-authoring](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[helm-chart-authoring](../../../containers-orchestration/helm/charts/helm-chart-authoring/SKILL.md)/SKILL.md);
 custom backend/frontend logic follows
 [backstage-plugin-development](../[backstage-plugin-development](../../../Software_Engineering_and_Other/Backend/backstage-plugin-development/SKILL.md)/SKILL.md).
 
@@ -170,7 +170,7 @@ for the service's compartment, is the compartment tagged per the Phase 1
 tagging policy. See
 [service-scorecards-and-maturity-model-design](../[service-scorecards-and-maturity-model-design](../../../Product_and_Business/service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md).
 
-**Phase 8 — [Multi-tenancy](../../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md).** If more than one team shares the Phase 2
+**Phase 8 — [Multi-tenancy](../../../containers-orchestration/common/other/multi-tenancy/SKILL.md).** If more than one team shares the Phase 2
 cluster, decide namespace-per-team vs. compartment-per-team (OCI's
 compartment model, from Phase 1, makes compartment-per-team relatively
 cheap and gives cleaner IAM policy boundaries than namespace RBAC alone),
@@ -295,8 +295,8 @@ one quarter.
 ## Cross-references
 
 - [oci-landing-zone-setup](../../../cloud/skills/[oci-landing-zone-setup](../oci-landing-zone-setup/SKILL.md)/SKILL.md) — Phase 1.
-- [managed-[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../../Containers_and_Orchestration/managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md) — Phase 2 conceptual analog only (this repo has no dedicated OKE skill).
-- [helm-chart-authoring](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[helm-chart-authoring](../../../DevOps_and_Cloud/Containers_and_Orchestration/helm-chart-authoring/SKILL.md)/SKILL.md) — Phase 3 chart packaging.
+- [managed-[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-eks-aks-gke](../../Containers_and_Orchestration/managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md) — Phase 2 conceptual analog only (this repo has no dedicated OKE skill).
+- [helm-chart-authoring](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[helm-chart-authoring](../../../containers-orchestration/helm/charts/helm-chart-authoring/SKILL.md)/SKILL.md) — Phase 3 chart packaging.
 - [backstage-plugin-development](../[backstage-plugin-development](../../../Software_Engineering_and_Other/Backend/backstage-plugin-development/SKILL.md)/SKILL.md) — Phase 3 custom backend/frontend logic.
 - [golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../../../Product_and_Business/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md) — Phase 4.
 - [golden-path-template-validation-and-testing](../[golden-path-template-validation-and-testing](../../CI_CD/golden-path-template-validation-and-testing/SKILL.md)/SKILL.md) — Phase 5.

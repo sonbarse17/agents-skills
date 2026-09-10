@@ -561,7 +561,7 @@ for epoch in range(num_epochs):
 ### Reproducibility
 - **Seed everything**: Set seeds for all random generators. Log seed with each experiment in MLflow.
 - **Deterministic algorithms**: Use torch.backends.cudnn.deterministic = True. Accept potential 10-20% training slowdown.
-- **Environment pinning**: Pin CUDA, cuDNN, PyTorch minor versions. Use [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) container for consistent environment.
+- **Environment pinning**: Pin CUDA, cuDNN, PyTorch minor versions. Use [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) container for consistent environment.
 
 ## Anti-Patterns
 

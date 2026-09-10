@@ -73,7 +73,7 @@ indicator into an operating input.
   per instance family/region to size commitments against real, not
   guessed, baseline usage.
 - Optional but recommended: a FinOps tool (CloudHealth, Cloudability,
-  Kubecost for [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-specific allocation, or the open-source
+  Kubecost for [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-specific allocation, or the open-source
   OpenCost) if spend is complex enough that native cost-explorer tools
   become unwieldy across multiple accounts/subscriptions/projects.
 
@@ -165,7 +165,7 @@ indicator into an operating input.
 - **Separate showback (visibility) from chargeback (billing)** —
   chargeback without mature, trusted tagging data creates disputes that
   undermine the whole program.
-- Treat **[Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)/container cost allocation as its own problem** —
+- Treat **[Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)/container cost allocation as its own problem** —
   node-level cloud billing does not natively reflect per-pod or
   per-namespace cost; use a tool like OpenCost/Kubecost if container
   spend is material.
@@ -206,7 +206,7 @@ indicator into an operating input.
   [rightsizing](../rightsizing/SKILL.md) recommendations, and roll out during a low-traffic window
   with fast rollback available.
 
-- **Symptom:** [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cluster shows a flat, high cloud compute bill
+- **Symptom:** [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster shows a flat, high cloud compute bill
   regardless of which team scales its workloads up or down.
   **Fix:** Cost is being measured at the node level, not attributed
   per-namespace/pod. Deploy a cost-allocation tool (OpenCost/Kubecost) to

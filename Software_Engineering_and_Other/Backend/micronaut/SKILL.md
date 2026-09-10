@@ -449,7 +449,7 @@ public class DatabaseHealthIndicator implements HealthIndicator {
 - CORS: configure in `application.yml` with `micronaut.server.cors`
 - Rate limiting: `micronaut-ratelimiter-core` or gateway-level
 - Input validation: `@Valid` + Jakarta Validation annotations
-- Secrets: `micronaut-config-[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)` or environment variables; never hardcoded
+- Secrets: `micronaut-config-[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)` or environment variables; never hardcoded
 
 ## Testing Strategies
 

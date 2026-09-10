@@ -39,12 +39,12 @@ Design, deploy, and manage Alibaba Cloud infrastructure using Terraform/Alibaba 
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "Alibaba Cloud", "Aliyun", "ECS", "ACK", "OSS", "SLB", "RDS", "ApsaraDB", "Alibaba Cloud [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)", "Container Service", "VPC", "RAM", "terraform alicloud", "aliyun cli".
+Exact user phrases: "Alibaba Cloud", "Aliyun", "ECS", "ACK", "OSS", "SLB", "RDS", "ApsaraDB", "Alibaba Cloud [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)", "Container Service", "VPC", "RAM", "terraform alicloud", "aliyun cli".
 
 ### Input Context
 Before activating, verify:
 - Region and zone preference (Alibaba Cloud has 30+ regions; China regions require ICP license).
-- Service type needed: compute (ECS/ECI), container (ACK/ASK), [serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) (FC/SAE).
+- Service type needed: compute (ECS/ECI), container (ACK/ASK), [serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) (FC/SAE).
 - Authentication method (RAM user key, STS token, RAM role).
 - Compliance requirements (ISO 27001, SOC 2, PCI DSS, MLPS in China).
 - Network topology (VPC with NAT gateway vs Internet gateway, VPN/CEN for hybrid).
@@ -73,10 +73,10 @@ Direct file write. No response text.
 | Workload Profile | Recommended Service | Key Consideration |
 |---|---|---|
 | Stateful VM, custom OS | ECS (Elastic Compute Service) | Full OS control, dedicated instance |
-| Batch job, short-lived container | ECI (Elastic Container Instance) | [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) container, pay-per-second |
-| [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) orchestration | ACK (Container Service for K8s) | Managed K8s, integrates with SLB/NAS |
-| [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) K8s (no nodes) | ASK ([Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) K8s) | No node management, auto-scaling |
-| [Microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) on K8s | SAE ([Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) App Engine) | War/Jar/Image deploy, auto-scaling |
+| Batch job, short-lived container | ECI (Elastic Container Instance) | [Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) container, pay-per-second |
+| [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) orchestration | ACK (Container Service for K8s) | Managed K8s, integrates with SLB/NAS |
+| [Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) K8s (no nodes) | ASK ([Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) K8s) | No node management, auto-scaling |
+| [Microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) on K8s | SAE ([Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) App Engine) | War/Jar/Image deploy, auto-scaling |
 | Event-driven function | FC (Function Compute) | Pay-per-invocation, HTTP/OSS triggers |
 
 ### Database: RDS vs PolarDB vs Redis vs [MongoDB](../../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md) vs HBase
@@ -260,7 +260,7 @@ resource "alicloud_oss_bucket_public_access_block" "assets" {
 }
 ```
 
-### Step 5: Container Service for [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) (ACK)
+### Step 5: Container Service for [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) (ACK)
 ```hcl
 resource "alicloud_cs_managed_kubernetes" "ack" {
   name                   = "my-ack-cluster"
@@ -340,8 +340,8 @@ resource "alicloud_cms_alarm" "disk_usage" {
 |---|---|---|---|
 | Compute VM | ECS | EC2 | Compute Engine |
 | Container K8s | ACK | EKS | GKE |
-| [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) Container | ASK ([Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) K8s) | Fargate | Cloud Run |
-| [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) Function | FC (Function Compute) | Lambda | Cloud Functions |
+| [Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) Container | ASK ([Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) K8s) | Fargate | Cloud Run |
+| [Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) Function | FC (Function Compute) | Lambda | Cloud Functions |
 | Object Storage | OSS | S3 | Cloud Storage |
 | RDBMS | RDS / PolarDB | RDS / Aurora | Cloud SQL |
 | NoSQL (document) | [MongoDB](../../../Software_Engineering_and_Other/Backend/mongodb/SKILL.md) | DynamoDB | Firestore |
@@ -430,7 +430,7 @@ Terraform HCL (alicloud provider), Alibaba Cloud CLI commands, RAM policy JSON, 
   - ../../../Global_References/alibaba-cloud-fundamentals.md
   - ../../../Global_References/aliyun-database.md
   - ../../../Global_References/aliyun-ecs-vpc.md
-  - ../../../Global_References/aliyun-[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).md
+  - ../../../Global_References/aliyun-[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).md
   - ../../../Global_References/aliyun-security.md
   - references/network-comparison.md
 
@@ -513,7 +513,7 @@ PolicyDocument:
 - Configure **SLB connection draining** and health checks for zero-downtime deployments
 - Use **Redis Tair** for session caching instead of local ECS memory (survives restarts)
 - Tune **RDS PG/[MySQL](../../../Software_Engineering_and_Other/Backend/mysql/SKILL.md)** connection pools with `max_connections = 200` and `innodb_buffer_pool_size = 70% of RAM`
-- Deploy **Container Service for [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) (ACK)** with cluster autoscaler for burst workloads
+- Deploy **Container Service for [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) (ACK)** with cluster autoscaler for burst workloads
 - Set **ECS hibernate** for non-production instances to save compute costs while idle
 
 ## Security Considerations

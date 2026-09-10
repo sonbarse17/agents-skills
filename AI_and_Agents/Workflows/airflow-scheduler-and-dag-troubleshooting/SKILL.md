@@ -61,13 +61,13 @@ rather than re-deriving them.
   raising an intermittent import error) show up in scheduler logs before
   they show up as a visibly stuck task in the UI.
 - CLI access (`airflow tasks state`, `airflow dags state`,
-  `airflow celery`/`airflow [kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)` subcommands depending on
+  `airflow celery`/`airflow [kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)` subcommands depending on
   executor) or equivalent read access to the metadata database.
 - Knowledge of the deployed executor (`CeleryExecutor`,
   `KubernetesExecutor`, `LocalExecutor`) — the diagnostic steps for a
   stuck-in-queued task differ meaningfully by executor, since the reason a
   task can't move from `queued` to `running` depends on what's actually
-  responsible for picking it up (a Celery worker pool vs. the [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
+  responsible for picking it up (a Celery worker pool vs. the [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
   API scheduling a pod).
 - Familiarity with the specific DAG's task idempotency (established per
   [airflow-dag-authoring-and-validation](../[airflow-dag-authoring-and-validation](../airflow-dag-authoring-and-validation/SKILL.md)/SKILL.md))
@@ -112,7 +112,7 @@ rather than re-deriving them.
    # CeleryExecutor: check worker pool [capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) and queue routing
    airflow celery flower  # or: check active/reserved task counts on workers
    # KubernetesExecutor: check whether a pod was ever actually scheduled
-   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get pods -n airflow -l dag_id=orders_daily_rollup
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get pods -n airflow -l dag_id=orders_daily_rollup
    ```
    - `CeleryExecutor`: a task can sit in `queued` indefinitely if the
      worker pool is fully occupied by other tasks (check
@@ -120,7 +120,7 @@ rather than re-deriving them.
      the task was queued to a specific queue name no active worker is
      listening on.
    - `KubernetesExecutor`: check whether a pod was ever created for the
-     task — if not, this is a scheduler-to-[Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-API problem
+     task — if not, this is a scheduler-to-[Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-API problem
      (permissions, resource quota); if a pod exists but is `Pending`,
      it's a cluster-[capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)/scheduling problem (insufficient node
      resources, an unsatisfiable node selector/toleration), not an
@@ -231,7 +231,7 @@ rather than re-deriving them.
   DAG-specific symptoms.
 - Match diagnostic steps to the actual executor in use (`CeleryExecutor`
   vs. `KubernetesExecutor`) rather than applying Celery-specific
-  troubleshooting to a [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-executor deployment or vice versa.
+  troubleshooting to a [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-executor deployment or vice versa.
 
 ## Common pitfalls
 

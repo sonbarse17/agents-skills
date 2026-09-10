@@ -36,7 +36,7 @@ blocks the pipeline is a guardrail. Prefer the guardrail.**
 ## 1. Put the check where the change is still reversible
 
 The cheapest place to reject a bad change is before it's ever applied — evaluate policy against
-the Terraform plan output or the [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) admission request, not against resources that already
+the Terraform plan output or the [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) admission request, not against resources that already
 exist. By the time a nightly scan finds a public bucket, it's been public for up to a day.
 
 ```rego

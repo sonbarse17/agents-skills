@@ -92,5 +92,5 @@ All workflows must be in `.[github](../github/SKILL.md)/workflows/` directory wi
 Validate YAML syntax before pushing:
 
 ```bash
-[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) run --rm -v "$(pwd):/data" pipelinecomponents/yamllint yamllint /data/.[github](../github/SKILL.md)/workflows/
+[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) run --rm -v "$(pwd):/data" pipelinecomponents/yamllint yamllint /data/.[github](../github/SKILL.md)/workflows/
 ```

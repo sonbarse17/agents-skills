@@ -378,7 +378,7 @@ toil_assessment:
     manual_deployments:
       description: "Deploying via SSH or clicking buttons in console"
       current_hours_week: 8
-      automation_strategy: "CI/CD pipeline with [GitOps](../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)"
+      automation_strategy: "CI/CD pipeline with [GitOps](../../../containers-orchestration/common/gitops/gitops/SKILL.md)"
       target_hours_week: 1
       effort_estimate: "2 weeks"
       priority: P0

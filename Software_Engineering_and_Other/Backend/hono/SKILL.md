@@ -83,7 +83,7 @@ Decision: Edge deployment or ultra-light → Hono. Full ecosystem → Express. P
 | Cloudflare Workers | `hono` (native) | Edge compute, D1, KV |
 | Bun | `hono` (native) | Fast startup, [TypeScript](../../Frontend/typescript/SKILL.md) native |
 | Deno | `hono` (npm/JSR) | Deno Deploy, permissions |
-| Vercel | `@hono/vercel` | [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md), Next.js BFF |
+| Vercel | `@hono/vercel` | [Serverless](../../Patterns/serverless/SKILL.md), Next.js BFF |
 | AWS Lambda | `@hono/[aws-lambda](../../../cloud/aws/compute/aws-lambda/SKILL.md)` | Lambda + API Gateway |
 
 ## Workflow

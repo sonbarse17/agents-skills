@@ -63,7 +63,7 @@ AKS, or Backstage mechanics.
 - Access to (or authority to create) the Azure tenant's root Management
   Group, sufficient to design and apply the landing zone hierarchy.
 - Terraform or Bicep maturity — every phase below is expressed as IaC.
-- `[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)`, `helm` ≥ 3.8, and `az aks` CLI access for cluster
+- `[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md)`, `helm` ≥ 3.8, and `az aks` CLI access for cluster
   provisioning.
 - A Node.js/Yarn toolchain to build and [customize](../../../AI_and_Agents/Infrastructure/deploy-model/[customize](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[customize](../../../Software_Engineering_and_Other/Miscellaneous/customize/SKILL.md)/SKILL.md)/SKILL.md) the Backstage app itself
   (Backstage ships as source, not a pre-built configurable image).
@@ -90,28 +90,28 @@ tighten (e.g., a "deny public IP" policy added after the cluster's load
 balancer is already provisioned) forces avoidable rework in Phase 2.
 
 **Phase 2 — AKS cluster with Azure AD Workload Identity.** Provision the
-platform subscription's AKS cluster with a pinned [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) version,
+platform subscription's AKS cluster with a pinned [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) version,
 node pools sized for Backstage's steady backend load, and Azure AD
 Workload Identity (OIDC issuer + federated credentials) enabled before any
 workload is deployed. Record the cluster's OIDC issuer URL — Phase 3 and
 Phase 6 both construct federated credentials against it. See
-[managed-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md)
+[managed-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md)
 for AKS provisioning, node pool design, and the Workload Identity
 walkthrough specifically.
 
 **Phase 3 — Backstage on AKS, backed by Azure Database for [PostgreSQL](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)
 Flexible Server.** Package Backstage as a Helm chart and deploy it against
 a Flexible Server instance (zone-redundant HA beyond a pilot) as the
-catalog database, with the Backstage pod's [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) ServiceAccount
+catalog database, with the Backstage pod's [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) ServiceAccount
 federated to a Microsoft Entra ID (Azure AD) application that has
 `Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Secrets User` on the [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) holding the database credential —
 never a connection string in a plain Secret. Chart packaging and
 values-schema design follow
-[helm-chart-authoring](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[helm-chart-authoring](../../../../DevOps_and_Cloud/Containers_and_Orchestration/helm-chart-authoring/SKILL.md)/SKILL.md);
+[helm-chart-authoring](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[helm-chart-authoring](../../../../containers-orchestration/helm/charts/helm-chart-authoring/SKILL.md)/SKILL.md);
 any custom auth provider or backend plugin follows
 [backstage-plugin-development](../[backstage-plugin-development](../../../Software_Engineering_and_Other/Backend/backstage-plugin-development/SKILL.md)/SKILL.md).
 Mount the credential via the Azure Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) Provider for Secrets Store
-CSI Driver rather than syncing it into a [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Secret at rest.
+CSI Driver rather than syncing it into a [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Secret at rest.
 
 **Phase 4 — Golden-path template design.** Author the first golden-path
 template producing a Dockerfile, a CI workflow ([GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions or Azure
@@ -150,7 +150,7 @@ automated backups and (production tier) zone redundancy enabled, is the
 resource group tagged per the Phase 1 tagging policy. See
 [service-scorecards-and-maturity-model-design](../[service-scorecards-and-maturity-model-design](../../../Product_and_Business/service-scorecards-and-maturity-model-design/SKILL.md)/SKILL.md).
 
-**Phase 8 — [Multi-tenancy](../../../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md).** If more than one team shares the Phase 2
+**Phase 8 — [Multi-tenancy](../../../../containers-orchestration/common/other/multi-tenancy/SKILL.md).** If more than one team shares the Phase 2
 cluster, decide namespace-per-team vs. dedicated clusters (or dedicated
 subscriptions, an Azure-specific option worth weighing given how cheap
 subscription vending is under Phase 1's landing zone), scope each
@@ -278,8 +278,8 @@ over one quarter.
 ## Cross-references
 
 - [azure-landing-zone-setup](../../../cloud/skills/[azure-landing-zone-setup](../../Cloud_Providers/azure-landing-zone-setup/SKILL.md)/SKILL.md) — Phase 1.
-- [managed-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md) — Phase 2.
-- [helm-chart-authoring](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[helm-chart-authoring](../../../../DevOps_and_Cloud/Containers_and_Orchestration/helm-chart-authoring/SKILL.md)/SKILL.md) — Phase 3 chart packaging.
+- [managed-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-eks-aks-gke](../managed-[kubernetes](../kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md) — Phase 2.
+- [helm-chart-authoring](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[helm-chart-authoring](../../../../containers-orchestration/helm/charts/helm-chart-authoring/SKILL.md)/SKILL.md) — Phase 3 chart packaging.
 - [backstage-plugin-development](../[backstage-plugin-development](../../../Software_Engineering_and_Other/Backend/backstage-plugin-development/SKILL.md)/SKILL.md) — Phase 3 custom backend/frontend logic.
 - [golden-path-template-design-for-developer-platforms](../[golden-path-template-design-for-developer-platforms](../../../Product_and_Business/golden-path-template-design-for-developer-platforms/SKILL.md)/SKILL.md) — Phase 4.
 - [golden-path-template-validation-and-testing](../[golden-path-template-validation-and-testing](../../CI_CD/golden-path-template-validation-and-testing/SKILL.md)/SKILL.md) — Phase 5.

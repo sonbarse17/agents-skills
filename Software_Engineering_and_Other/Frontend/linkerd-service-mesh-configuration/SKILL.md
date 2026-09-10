@@ -67,9 +67,9 @@ separate, deeper topic — see
 - The `linkerd` CLI installed locally, matching (or within one minor
   version of) the control plane version you intend to run — check with
   `linkerd version` before installing.
-- A [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cluster meeting Linkerd's minimum supported [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
+- A [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster meeting Linkerd's minimum supported [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
   version for your chosen Linkerd release (check the release's install
-  docs; Linkerd tracks a rolling window of recent [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) minor
+  docs; Linkerd tracks a rolling window of recent [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) minor
   versions, not every version indefinitely).
 - Cluster-admin access to install CRDs (`linkerd install --crds`) before
   the control plane itself — recent Linkerd versions split CRD
@@ -90,8 +90,8 @@ separate, deeper topic — see
 1. **Install CRDs, then the control plane, as separate steps**, and
    verify each before moving to the next:
    ```bash
-   linkerd install --crds | [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f -
-   linkerd install | [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f -
+   linkerd install --crds | [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f -
+   linkerd install | [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f -
    linkerd check
    ```
    `linkerd check` validates the control plane is healthy, certificates
@@ -101,7 +101,7 @@ separate, deeper topic — see
 2. **Install the `viz` extension** if you need metrics, the dashboard, or
    `linkerd viz stat`/`tap` for day-to-day operation:
    ```bash
-   linkerd viz install | [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f -
+   linkerd viz install | [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f -
    linkerd viz check
    linkerd viz dashboard &
    ```
@@ -114,7 +114,7 @@ separate, deeper topic — see
      --identity-trust-anchors-file ca.crt \
      --identity-issuer-certificate-file issuer.crt \
      --identity-issuer-key-file issuer.key \
-     | [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f -
+     | [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f -
    ```
    The issuer certificate has a limited validity window (Linkerd rotates
    the leaf identity certs it issues to workloads automatically, but the
@@ -124,13 +124,13 @@ separate, deeper topic — see
 4. **Enable proxy injection per namespace**, not cluster-wide, so rollout
    stays deliberate and reversible per team:
    ```bash
-   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) annotate namespace payments linkerd.io/inject=enabled
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) annotate namespace payments linkerd.io/inject=enabled
    ```
    As with any mesh, labeling/annotating a namespace only affects *new*
    pod admissions through the injector webhook — existing pods need a
    rollout to actually get the proxy container:
    ```bash
-   [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) rollout restart deployment -n payments
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) rollout restart deployment -n payments
    ```
    To inject a single workload instead of a whole namespace, annotate the
    pod template directly (`spec.template.metadata.annotations`) with the
@@ -278,11 +278,11 @@ separate, deeper topic — see
   before the warning becomes an outage.
 
 - **Symptom:** A namespace was annotated `linkerd.io/inject=enabled` but
-  a `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get pods` shows only one container per pod, no
+  a `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get pods` shows only one container per pod, no
   `linkerd-proxy`.
   **Fix:** The annotation only affects pods created *after* it's applied,
   through the mutating webhook — existing pods must be recreated
-  (`[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) rollout restart deployment -n <ns>`) to actually get injected.
+  (`[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) rollout restart deployment -n <ns>`) to actually get injected.
 
 - **Symptom:** A `TrafficSplit` is applied but 100% of traffic keeps
   going to the original backend regardless of the configured weights.
@@ -309,17 +309,17 @@ mTLS in the `payments` namespace, with only `checkout-service` authorized
 to call it.
 
 ```bash
-linkerd install --crds | [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f -
+linkerd install --crds | [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f -
 linkerd install \
   --identity-trust-anchors-file ca.crt \
   --identity-issuer-certificate-file issuer.crt \
   --identity-issuer-key-file issuer.key \
-  | [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f -
+  | [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f -
 linkerd check
-linkerd viz install | [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f -
+linkerd viz install | [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f -
 
-[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) annotate namespace payments linkerd.io/inject=enabled
-[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) rollout restart deployment -n payments
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) annotate namespace payments linkerd.io/inject=enabled
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) rollout restart deployment -n payments
 ```
 
 ```yaml
@@ -363,7 +363,7 @@ spec:
 ```
 
 ```bash
-[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f canary.yaml
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f canary.yaml
 linkerd viz edges deployment -n payments
 linkerd viz stat trafficsplit -n payments
 ```

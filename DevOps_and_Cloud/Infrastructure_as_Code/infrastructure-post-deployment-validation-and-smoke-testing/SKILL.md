@@ -69,7 +69,7 @@ conflated until an [incident](../../Observability_and_SecOps/incident/SKILL.md) 
 ## Prerequisites & environment
 
 - Read access to whichever cloud/API surface is being validated (AWS
-  CLI/SDK, `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md)`, a database client) with credentials scoped to
+  CLI/SDK, `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md)`, a database client) with credentials scoped to
   read-only where the validation itself doesn't need write access.
 - The deployment tool's own state/output as the source of truth for
   *what* to check: Terraform outputs (`terraform output -json`),
@@ -256,7 +256,7 @@ conflated until an [incident](../../Observability_and_SecOps/incident/SKILL.md) 
   no longer exists gives false green just as dangerously as no smoke
   test at all.
 - Where the platform supports it (CodeDeploy's `ValidateService`,
-  [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) readiness probes), wire the smoke test into the deployment
+  [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) readiness probes), wire the smoke test into the deployment
   tool's own gating mechanism rather than only as an after-the-fact CI
   step, so a failing check can block traffic shift automatically.
 

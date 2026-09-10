@@ -71,7 +71,7 @@ not the whole tree.
 ## 3. Layer caches from local to remote, and key them on content
 
 Local caches (a developer's machine) are fast but useless across CI runners or team members;
-remote/shared caches (a build cache server, Bazel remote cache, [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) registry as layer cache)
+remote/shared caches (a build cache server, Bazel remote cache, [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) registry as layer cache)
 let a build done once by anyone benefit everyone. Key cache entries on a hash of the actual
 inputs — source content, dependency versions, compiler flags — never on a branch name, timestamp,
 or manually incremented cache version, which are exactly the things that drift out of sync with

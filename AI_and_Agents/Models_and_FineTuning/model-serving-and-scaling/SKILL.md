@@ -41,7 +41,7 @@ rollout to 100% of traffic) actually live.
 - The user is choosing a serving pattern (online/real-time, batch, or
   streaming) for a model or deciding between them for a given use case.
 - The user needs to set up or tune [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) for a model inference
-  endpoint ([Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) HPA, KServe, SageMaker endpoints, Vertex AI
+  endpoint ([Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) HPA, KServe, SageMaker endpoints, Vertex AI
   endpoints, or a custom autoscaler).
 - The user is trying to reduce inference latency (cold start, batching,
   quantization, hardware choice) or inference cost.
@@ -60,7 +60,7 @@ rollout to 100% of traffic) actually live.
   a cloud-managed endpoint (SageMaker, Vertex AI, Azure ML), or, for LLMs,
   vLLM/TGI (Text Generation Inference) for high-throughput batched
   inference.
-- A container/orchestration platform ([Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) ≥ 1.25 typical for
+- A container/orchestration platform ([Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) ≥ 1.25 typical for
   self-managed serving) or a managed inference service.
 - Defined latency and throughput SLOs for the use case (e.g. p95 ≤ 200 ms
   for a synchronous user-facing call) before choosing hardware/batching
@@ -92,7 +92,7 @@ rollout to 100% of traffic) actually live.
    warm request.
 3. **Configure [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) on a signal that reflects actual load**, not just
    CPU utilization for GPU-bound or I/O-bound inference workloads. Example
-   [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) HPA using a custom metric (requests-in-flight or queue depth):
+   [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) HPA using a custom metric (requests-in-flight or queue depth):
    ```yaml
    apiVersion: [autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/v2
    kind: HorizontalPodAutoscaler

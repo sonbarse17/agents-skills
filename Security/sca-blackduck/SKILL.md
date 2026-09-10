@@ -167,7 +167,7 @@ Black Duck Detect automatically identifies and scans:
 - **PHP**: Composer
 - **Rust**: Cargo
 - **C/C++**: Conan, vcpkg
-- **[Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)**: Container image layers
+- **[Docker](../../containers-orchestration/docker/other/docker/SKILL.md)**: Container image layers
 
 ## Bundled Resources
 

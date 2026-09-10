@@ -276,7 +276,7 @@ source = products
 ```
 
 ### Step 8: Meilisearch
-Meilisearch is a lightweight search engine in Rust providing instant search-as-you-type (sub-50ms), typo tolerance out of the box, and an intuitive REST API. Features: automatic indexing (no explicit schema), faceted search with filters/ranges, synonym management, geo-search, [multi-tenancy](../../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md) via API key scoping. Uses milli (Rust) core with LMDB key-value storage. Single-node only — data must fit on one instance. Use for datasets up to 10M docs, site search, ecommerce product search, and rapid setup.
+Meilisearch is a lightweight search engine in Rust providing instant search-as-you-type (sub-50ms), typo tolerance out of the box, and an intuitive REST API. Features: automatic indexing (no explicit schema), faceted search with filters/ranges, synonym management, geo-search, [multi-tenancy](../../../containers-orchestration/common/other/multi-tenancy/SKILL.md) via API key scoping. Uses milli (Rust) core with LMDB key-value storage. Single-node only — data must fit on one instance. Use for datasets up to 10M docs, site search, ecommerce product search, and rapid setup.
 
 ```json
 // Meilisearch: index creation with searchable attributes
@@ -307,7 +307,7 @@ PATCH /indexes/products/settings
 ```
 
 ### Step 9: Typesense
-Typesense is an open-source, typo-tolerant search engine in C++ for sub-50ms search on TB-scale data. Configurable ranking combining text relevance, numeric fields, and custom formulas. Key features: built-in vector search for semantic/embedding-based retrieval alongside full-text, scoped API keys for [multi-tenancy](../../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md), curation rules (pin/boost results), query suggestions via synonyms. High availability via replication-based cluster. Use for apps needing both full-text and vector search in one system, ecommerce with curation, or as an Elasticsearch alternative with simpler ops and better per-node performance.
+Typesense is an open-source, typo-tolerant search engine in C++ for sub-50ms search on TB-scale data. Configurable ranking combining text relevance, numeric fields, and custom formulas. Key features: built-in vector search for semantic/embedding-based retrieval alongside full-text, scoped API keys for [multi-tenancy](../../../containers-orchestration/common/other/multi-tenancy/SKILL.md), curation rules (pin/boost results), query suggestions via synonyms. High availability via replication-based cluster. Use for apps needing both full-text and vector search in one system, ecommerce with curation, or as an Elasticsearch alternative with simpler ops and better per-node performance.
 
 ```json
 // Typesense: schema with vector search

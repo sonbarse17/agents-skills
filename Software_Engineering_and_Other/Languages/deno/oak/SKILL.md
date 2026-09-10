@@ -408,7 +408,7 @@ app.use(async (ctx, next) => {
 
 ### Deployment
 - Deno Deploy: entrypoint is `src/app.ts` exporting `app.handle` not `app.listen`
-- [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md): user `deno:alpine` image, run as non-root user
+- [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md): user `deno:alpine` image, run as non-root user
 - PM2 alternative: systemd service with `Restart=always`
 
 ## Anti-Patterns

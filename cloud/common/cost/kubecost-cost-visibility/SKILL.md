@@ -30,18 +30,18 @@ depends_on:
 ## Purpose
 
 Cloud billing is emitted per node, per disk, per load balancer — never
-per pod, per namespace, or per team. On a shared [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cluster
+per pod, per namespace, or per team. On a shared [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster
 running dozens of workloads on the same node pool, that means the
 provider's cost dashboard tells you the cluster costs $40k/month but
 cannot tell you which of twenty teams' namespaces is responsible for how
 much of it. Kubecost closes that gap: it correlates node/PV/load-balancer
 pricing (from cloud provider billing APIs or custom pricing sheets) with
-actual [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) resource **requests and usage** at the pod/container
+actual [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) resource **requests and usage** at the pod/container
 level, then rolls that up by namespace, label, deployment, or any other
-[Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) concept — turning an opaque node-level bill into per-team
+[Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) concept — turning an opaque node-level bill into per-team
 showback and chargeback numbers, and giving [rightsizing](../rightsizing/SKILL.md) and [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)
 decisions a cost dimension instead of just a utilization one. This skill
-is [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-specific allocation; for the broader cross-cloud FinOps
+is [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-specific allocation; for the broader cross-cloud FinOps
 practices (tagging discipline, commitment discounts, anomaly response)
 that Kubecost data feeds into, see the general FinOps skill referenced
 below.
@@ -49,11 +49,11 @@ below.
 ## When to use
 
 - Standing up per-namespace/per-team cost visibility on a shared
-  [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cluster for the first time.
+  [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster for the first time.
 - Building a showback (visibility) or chargeback (internal billing)
   report broken down by namespace, label, deployment, or annotation.
 - Investigating which workload, team, or environment is driving an
-  unexpected increase in [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-hosted cloud spend.
+  unexpected increase in [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-hosted cloud spend.
 - Deciding whether to rightsize a workload's CPU/memory requests based
   on the gap between requested and actually-used resources (idle cost).
 - Feeding cost-per-node-shape data into cluster autoscaler/Karpenter
@@ -66,7 +66,7 @@ below.
 
 ## Prerequisites & environment
 
-- A running [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cluster (EKS, AKS, GKE, or self-managed) with
+- A running [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster (EKS, AKS, GKE, or self-managed) with
   metrics-server and, ideally, the kube-prometheus-stack already
   installed — Kubecost ships its own bundled Prometheus but can instead
   federate from an existing one to avoid running two metrics stacks.
@@ -82,10 +82,10 @@ below.
   install the `cost-analyzer` Helm chart into a `kubecost` namespace.
 - A tagging/labeling convention already applied to namespaces/workloads
   (e.g. `team`, `cost-center`, `environment` labels) — Kubecost allocates
-  by whatever [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) labels/annotations exist, so allocation quality
+  by whatever [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) labels/annotations exist, so allocation quality
   is only as good as label coverage. Reuse the same taxonomy as the
   cross-cloud FinOps tagging convention rather than inventing a
-  [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-only one.
+  [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-only one.
 - Kubecost Free tier covers single-cluster allocation and is sufficient
   for the guidance in this skill; multi-cluster aggregation and
   SSO/RBAC require Kubecost Enterprise — confirm licensing needs before
@@ -122,7 +122,7 @@ below.
 
 2. **Confirm allocation data is flowing** before building reports:
    ```bash
-   [kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) port-forward -n kubecost svc/kubecost-cost-analyzer 9090:9090
+   [kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) port-forward -n kubecost svc/kubecost-cost-analyzer 9090:9090
    curl "http://localhost:9090/model/allocation?window=1d&aggregate=namespace"
    ```
    A response with non-zero `cpuCost`/`ramCost`/`totalCost` per namespace
@@ -158,7 +158,7 @@ below.
    Grafana via Kubecost's Prometheus metrics `kubecost_cluster_management_cost`,
    `container_cpu_allocation`, etc.) broken down by the same `team`/
    `cost-center` labels used in the cross-cloud FinOps showback view, so
-   [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cost isn't a separate silo from the rest of cloud spend.
+   [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cost isn't a separate silo from the rest of cloud spend.
 
 6. **Set up chargeback only once label coverage is reliably high**
    (>95% of pods carry the `team`/`cost-center` label) — enable
@@ -203,8 +203,8 @@ below.
   undocumented default confuses teams when their showback number moves
   for reasons unrelated to anything they changed.
 - **Tie chargeback to the same tagging/labeling taxonomy used for
-  cross-cloud FinOps**, not a [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-only one, so a team's total
-  cost story (VMs + [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) + managed services) is coherent in one
+  cross-cloud FinOps**, not a [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-only one, so a team's total
+  cost story (VMs + [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) + managed services) is coherent in one
   place.
 - **Report cost alongside efficiency (requested vs. used), not cost
   alone** — a namespace's bill going up because it's serving more

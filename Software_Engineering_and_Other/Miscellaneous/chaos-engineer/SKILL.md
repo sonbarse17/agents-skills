@@ -57,7 +57,7 @@ Load detailed guidance based on context:
 |-------|-----------|-----------|
 | Experiments | `../../../Global_References/chaos-engineer_experiment-design.md` | Designing hypothesis, blast radius, rollback |
 | Infrastructure | `../../../Global_References/infrastructure-chaos.md` | Server, network, zone, region failures |
-| [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) | `../../../Global_References/[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-chaos.md` | Pod, node, Litmus, chaos mesh experiments |
+| [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) | `../../../Global_References/[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-chaos.md` | Pod, node, Litmus, chaos mesh experiments |
 | Tools & Automation | `../../../Global_References/chaos-tools.md` | Chaos Monkey, Gremlin, Pumba, CI/CD integration |
 | Game Days | `../../../Global_References/game-days.md` | Planning, executing, learning from game days |
 
@@ -83,14 +83,14 @@ When implementing chaos engineering, provide:
 
 ## Concrete Example: Pod Failure Experiment (Litmus Chaos)
 
-The following shows a complete experiment — from hypothesis to rollback — using Litmus Chaos on [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).
+The following shows a complete experiment — from hypothesis to rollback — using Litmus Chaos on [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).
 
 ### Step 1 — Define steady state and apply the experiment
 
 ```bash
 # Verify baseline: p99 latency < 200ms, error rate < 0.1%
-[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get deploy my-service -n production
-[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) top pods -n production -l app=my-service
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get deploy my-service -n production
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) top pods -n production -l app=my-service
 ```
 
 ### Step 2 — Create and apply a Litmus ChaosEngine manifest
@@ -127,21 +127,21 @@ spec:
 
 ```bash
 # Apply the experiment
-[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f chaos-pod-delete.yaml
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f chaos-pod-delete.yaml
 
 # Watch experiment status
-[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) describe chaosengine my-service-pod-delete -n production
-[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get chaosresult my-service-pod-delete-pod-delete -n production -w
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) describe chaosengine my-service-pod-delete -n production
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get chaosresult my-service-pod-delete-pod-delete -n production -w
 ```
 
 ### Step 3 — Monitor during the experiment
 
 ```bash
 # Tail application logs for errors
-[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) logs -l app=my-service -n production --since=2m -f
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) logs -l app=my-service -n production --since=2m -f
 
 # Check ChaosResult verdict when complete
-[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get chaosresult my-service-pod-delete-pod-delete \
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get chaosresult my-service-pod-delete-pod-delete \
   -n production -o jsonpath='{.status.experimentStatus.verdict}'
 ```
 
@@ -149,11 +149,11 @@ spec:
 
 ```bash
 # Immediately stop the experiment
-[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) patch chaosengine my-service-pod-delete \
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) patch chaosengine my-service-pod-delete \
   -n production --type merge -p '{"spec":{"engineState":"stop"}}'
 
 # Confirm all pods are healthy
-[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) rollout status deployment/my-service -n production
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) rollout status deployment/my-service -n production
 ```
 
 ## Concrete Example: Network Latency with toxiproxy

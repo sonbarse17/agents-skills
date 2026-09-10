@@ -57,7 +57,7 @@ guidance in
   for values that are either dangerously loose (retrying forever) or
   dangerously tight (failing fast on normal latency variance).
 - Setting up a new Temporal namespace and deciding retention,
-  archival, and [multi-tenancy](../../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md) boundaries before workflows start
+  archival, and [multi-tenancy](../../../containers-orchestration/common/other/multi-tenancy/SKILL.md) boundaries before workflows start
   running in it.
 - Adding a CI check that catches a missing timeout, an unset retry
   policy, or a task queue name mismatch before merge, rather than
@@ -206,7 +206,7 @@ guidance in
    already gone by the time someone asks — validate this against a real
    organizational requirement, not the server's out-of-the-box default.
 
-7. **Validate namespace-level [multi-tenancy](../../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md) boundaries** — confirm
+7. **Validate namespace-level [multi-tenancy](../../../containers-orchestration/common/other/multi-tenancy/SKILL.md) boundaries** — confirm
    distinct environments (staging, production) and, where relevant,
    distinct customer-facing tenants use separate namespaces rather than
    sharing one namespace distinguished only by a naming convention in

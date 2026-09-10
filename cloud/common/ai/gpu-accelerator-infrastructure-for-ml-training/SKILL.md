@@ -33,7 +33,7 @@ depends_on:
 GPUs are the single most expensive line item in most ML platforms, and they
 are also the resource most likely to sit idle or fragmented if the
 underlying infrastructure isn't deliberately designed. This skill covers
-building the [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-native GPU platform layer: installing the NVIDIA
+building the [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-native GPU platform layer: installing the NVIDIA
 GPU Operator so nodes expose `nvidia.com/gpu` as a schedulable resource,
 partitioning large GPUs (A100/H100) into right-sized Multi-Instance GPU
 (MIG) slices instead of handing a whole 80GB card to a job that needs 10GB,
@@ -50,7 +50,7 @@ that infrastructure is covered by
 
 ## When to use
 
-- Standing up GPU support on a new or existing [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cluster (on-prem,
+- Standing up GPU support on a new or existing [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster (on-prem,
   EKS/AKS/GKE, or a [bare-metal](../../../../AI_and_Agents/Models_and_FineTuning/bare-metal/SKILL.md) cluster) for the first time.
 - Installing or upgrading the NVIDIA GPU Operator, device plugin, or DCGM
   (Data Center GPU Manager) exporter.
@@ -68,7 +68,7 @@ that infrastructure is covered by
 
 ## Prerequisites & environment
 
-- [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) ≥ 1.24 with Helm ≥ 3.8 for installing the GPU Operator chart.
+- [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) ≥ 1.24 with Helm ≥ 3.8 for installing the GPU Operator chart.
 - Nodes with NVIDIA GPUs (data-center class: A100, H100, H200, L4, L40S,
   or older V100/T4) and a supported host OS (Ubuntu 20.04/22.04, RHEL 8/9,
   or a cloud provider's GPU-optimized AMI/image).
@@ -81,7 +81,7 @@ that infrastructure is covered by
   T4/L4/V100) and a driver version compatible with the desired MIG profile
   set — check the NVIDIA GPU Operator release notes for the driver/MIG
   compatibility matrix before choosing profiles.
-- For managed [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) (EKS/AKS/GKE), decide whether to use the cloud
+- For managed [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) (EKS/AKS/GKE), decide whether to use the cloud
   provider's own GPU device plugin/AMI or the NVIDIA GPU Operator — mixing
   both on the same node causes device plugin conflicts (see Common
   pitfalls).
@@ -110,8 +110,8 @@ that infrastructure is covered by
 2. **Verify the device plugin is healthy and GPUs are schedulable** before
    trusting the cluster to run anything on them:
    ```bash
-   [kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get pods -n gpu-operator
-   [kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get nodes -o json | jq '.items[].status.[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) | select(.["nvidia.com/gpu"])'
+   [kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get pods -n gpu-operator
+   [kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get nodes -o json | jq '.items[].status.[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) | select(.["nvidia.com/gpu"])'
    ```
    A node with a physically present GPU but no `nvidia.com/gpu` entry in
    `status.[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)` means the device plugin isn't running correctly on
@@ -145,7 +145,7 @@ that infrastructure is covered by
                "1g.10gb": 7      # max 1g.10gb slices on an 80GB A100
    ```
    ```bash
-   [kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) label node gpu-node-a100-01 nvidia.com/mig.config=all-3g.20gb --overwrite
+   [kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) label node gpu-node-a100-01 nvidia.com/mig.config=all-3g.20gb --overwrite
    ```
    Larger profiles (`7g.80gb`, a whole card) suit large training jobs;
    smaller profiles (`1g.10gb`, `2g.20gb`) suit inference and notebooks.
@@ -161,19 +161,19 @@ that infrastructure is covered by
    ```yaml
    # Example node pool taint/label convention
    # Training pool: full A100s, tainted so only training jobs land here
-   [kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) taint nodes gpu-node-a100-01 workload=training:NoSchedule
-   [kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) label nodes gpu-node-a100-01 gpu-pool=training gpu-sku=a100-80gb
+   [kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) taint nodes gpu-node-a100-01 workload=training:NoSchedule
+   [kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) label nodes gpu-node-a100-01 gpu-pool=training gpu-sku=a100-80gb
 
    # Serving pool: MIG-partitioned L4/A100 slices for inference
-   [kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) taint nodes gpu-node-l4-01 workload=serving:NoSchedule
-   [kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) label nodes gpu-node-l4-01 gpu-pool=serving gpu-sku=l4
+   [kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) taint nodes gpu-node-l4-01 workload=serving:NoSchedule
+   [kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) label nodes gpu-node-l4-01 gpu-pool=serving gpu-sku=l4
    ```
    Pods then carry matching `tolerations` and `nodeSelector`/`nodeAffinity`
    — see the worked example below for the full pod spec.
 
 5. **Bin-pack deliberately** rather than letting the default scheduler
    spread pods across nodes. For MIG slices and fractional GPU workloads,
-   use a `PriorityClass` plus the [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) scheduler's default bin-packing
+   use a `PriorityClass` plus the [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) scheduler's default bin-packing
    behavior on `nvidia.com/gpu` requests, or adopt a batch scheduler (Kueue,
    Volcano, or YuniKorn) for gang-scheduling and queueing when many small
    jobs compete for a fixed pool:
@@ -265,7 +265,7 @@ that infrastructure is covered by
   instance type in almost every cloud's catalog.
 - Label node pools with the GPU SKU and MIG profile explicitly
   (`gpu-sku=a100-80gb`, `mig-profile=3g.20gb`) so scheduling decisions and
-  cost attribution are visible from `[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get nodes --show-labels`
+  cost attribution are visible from `[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get nodes --show-labels`
   rather than tribal knowledge.
 
 ## Common pitfalls
@@ -287,7 +287,7 @@ that infrastructure is covered by
   request, which independently catches drivers/toolkit mismatches that let
   a pod schedule onto a GPU node but silently execute CPU-only kernels.
 
-- **Symptom:** Installing the NVIDIA GPU Operator on a managed [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
+- **Symptom:** Installing the NVIDIA GPU Operator on a managed [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
   cluster (EKS/AKS/GKE) that already ships its own GPU device plugin or
   pre-installed driver results in two device plugins registering the same
   `nvidia.com/gpu` resource, causing pods to schedule but fail at
@@ -305,7 +305,7 @@ that infrastructure is covered by
   on that node's existing MIG instances, and those pods are evicted
   mid-training with no checkpoint saved.
   **Fix:** Cordon and drain the node before changing its MIG profile label
-  (`[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) cordon` then `[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) drain --ignore-daemonsets`) — the GPU
+  (`[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) cordon` then `[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) drain --ignore-daemonsets`) — the GPU
   Operator's MIG manager reconfigures the physical GPU when the label
   changes, which requires resetting any GPU currently in use, destroying
   the state of anything running on it.
@@ -341,9 +341,9 @@ catch idle [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capaci
 
 Training node pool (full A100, no MIG):
 ```bash
-[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) label nodes gpu-node-a100-01 gpu-node-a100-02 \
+[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) label nodes gpu-node-a100-01 gpu-node-a100-02 \
   gpu-pool=training gpu-sku=a100-80gb
-[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) taint nodes gpu-node-a100-01 gpu-node-a100-02 \
+[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) taint nodes gpu-node-a100-01 gpu-node-a100-02 \
   workload=training:NoSchedule
 ```
 
@@ -365,9 +365,9 @@ data:
             "1g.10gb": 7
 ```
 ```bash
-[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) label nodes gpu-node-a100-03 gpu-node-a100-04 \
+[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) label nodes gpu-node-a100-03 gpu-node-a100-04 \
   gpu-pool=serving nvidia.com/mig.config=all-1g.10gb --overwrite
-[kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) taint nodes gpu-node-a100-03 gpu-node-a100-04 \
+[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) taint nodes gpu-node-a100-03 gpu-node-a100-04 \
   workload=serving:NoSchedule
 ```
 
@@ -427,4 +427,4 @@ spread thin across more nodes than needed.
 - [model-serving-and-scaling](../[model-serving-and-scaling](../../../AI_and_Agents/Models_and_FineTuning/model-serving-and-scaling/SKILL.md)/SKILL.md) — serving-side [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) and latency concerns for workloads running on the serving GPU pool.
 - [ray-distributed-ml-orchestration](../[ray-distributed-ml-orchestration](../../../Data_Engineering/ray-distributed-ml-orchestration/SKILL.md)/SKILL.md) and [kubeflow-[ml-pipeline](../../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../[kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../../Containers_and_Orchestration/kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md) — orchestration tools that schedule distributed training/serving workloads onto this GPU infrastructure.
 - [karpenter-cluster-autoscaling](../../../[observability](../../Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[karpenter-cluster-autoscaling](../../Containers_and_Orchestration/karpenter-cluster-[autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md)/SKILL.md)/SKILL.md) — node-level [autoscaling](../../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) and consolidation that complements the bin-packing strategy here.
-- [managed-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke](../../Containers_and_Orchestration/managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md) — cloud-provider-specific GPU node pool/AMI considerations that interact with the GPU Operator install choice.
+- [managed-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-eks-aks-gke](../../Containers_and_Orchestration/managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md) — cloud-provider-specific GPU node pool/AMI considerations that interact with the GPU Operator install choice.

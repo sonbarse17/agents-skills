@@ -87,7 +87,7 @@ This skill provides detailed guidance through progressive disclosure. Load speci
 **When to load**: Setting up development environment
 **Contains**:
 
-- [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose configuration
+- [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Compose configuration
 - pytest setup and configuration
 - Coverage tool integration
 - Development workflow

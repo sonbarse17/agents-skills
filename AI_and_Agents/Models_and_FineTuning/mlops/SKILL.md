@@ -535,5 +535,5 @@ mlflow.log_artifact("artifacts/shap_values.pkl")
   - ../../../Global_References/mlops-pipeline-automation.md — MLOps Pipeline Automation
   - ../../../Global_References/mlops-model-governance.md — MLOps Model Governance
 ## Handoff
-For data pipeline CI/CD: `[devops-dataops](../../../Data_Engineering/dataops/SKILL.md)`. For [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) deployment: `[devops-[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-for-data](../../../DevOps_and_Cloud/Containers_and_Orchestration/[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-for-data/SKILL.md)`.
+For data pipeline CI/CD: `[devops-dataops](../../../Data_Engineering/dataops/SKILL.md)`. For [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) deployment: `[devops-[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-for-data](../../../DevOps_and_Cloud/Containers_and_Orchestration/[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-for-data/SKILL.md)`.
 

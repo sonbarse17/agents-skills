@@ -91,9 +91,9 @@ No preamble. No postamble. No explanations.
 |---|---|---|---|---|
 | VMware HCX | vSphere | AWS VMC, Azure VMware | L2 stretch, bulk migration | VMware-centric orgs |
 | Google Anthos | GKE on-prem | GKE, GCP | Config Management, Service Mesh | K8s-native hybrid |
-| Azure Arc | Any K8s, Linux/Windows | Azure | Azure Policy, [GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) | Azure-first hybrid |
+| Azure Arc | Any K8s, Linux/Windows | Azure | Azure Policy, [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md) | Azure-first hybrid |
 | AWS Outposts | Native AWS HW | AWS | Same APIs as cloud | AWS extension |
-| EKS Anywhere | EKS on-prem | EKS | [GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md), Curated packages | K8s hybrid |
+| EKS Anywhere | EKS on-prem | EKS | [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md), Curated packages | K8s hybrid |
 | Nutanix Cloud Clusters | AHV | AWS, Azure | Single management | Nutanix shops |
 
 ### Identity Federation Comparison
@@ -229,7 +229,7 @@ Migration types:
 ### Step 5: Hybrid Compute — Google Anthos
 ```yaml
 # Google Anthos (GKE on-prem + cloud)
-- GKE on VMware for on-premises [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
+- GKE on VMware for on-premises [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
 - Cloud Run for Anthos
 - Config Management (sync from Cloud Source Repositories or GitLab)
 - Service Mesh (Anthos Service Mesh, Istio-based)
@@ -243,7 +243,7 @@ Migration types:
 # Azure Arc / AWS Outposts
 Azure Arc:
   - Servers: Any Linux/Windows VM on-prem
-  - [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md): AKS hybrid, K3s, Rancher
+  - [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md): AKS hybrid, K3s, Rancher
   - Data: SQL Managed Instance, [PostgreSQL](../../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) Hyperscale
   - Policies: Azure Policy + Guest Configuration
   - Extensions: [Monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), security, custom scripts
@@ -316,7 +316,7 @@ Key metrics to monitor:
   - Queue depth for async workloads
 ```
 
-### Step 10: Hybrid [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) (EKS Anywhere)
+### Step 10: Hybrid [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) (EKS Anywhere)
 ```yaml
 # EKS Anywhere cluster on-prem
 apiVersion: anywhere.eks.amazonaws.com/v1alpha1
@@ -339,17 +339,17 @@ spec:
   managementCluster:
     name: hybrid-cluster
 ---
-# [GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) sync to cloud
+# [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md) sync to cloud
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: hybrid-apps
 spec:
   source:
-    repoURL: https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/org/hybrid-[gitops](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md)
+    repoURL: https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/org/hybrid-[gitops](../../../../containers-orchestration/common/gitops/gitops/SKILL.md)
     path: environments/production
   destination:
-    server: https://[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).default.svc
+    server: https://[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).default.svc
   syncPolicy:
     automated:
       prune: true
@@ -446,7 +446,7 @@ Optimization strategies:
   - references/hybrid-storage.md — Hybrid Storage Patterns
   - references/[disaster-recovery](../../../../DevOps_and_Cloud/Observability_and_SecOps/disaster-recovery/SKILL.md)-hybrid.md — Hybrid DR Strategies
   - references/repatriation.md — Cloud Repatriation Guide
-  - references/hybrid-[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).md — Hybrid [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) with EKS Anywhere
+  - references/hybrid-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).md — Hybrid [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) with EKS Anywhere
 ## Handoff
 - `devops-aws` for native AWS services integration.
 - `[devops-azure](../../../azure/other/azure/SKILL.md)` for Azure Arc and ExpressRoute depth.
@@ -482,7 +482,7 @@ resource "aws_ec2_transit_gateway" "main" {
 }
 ```
 
-### YAML: Azure Arc-enabled [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Cluster
+### YAML: Azure Arc-enabled [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Cluster
 
 ```yaml
 apiVersion: arc.azure.com/v1
@@ -547,7 +547,7 @@ sync_dns_zones() {
 - Establish **dedicated connectivity** (AWS Direct Connect, Azure ExpressRoute, GCP Interconnect) for reliable hybrid networking
 - Use **shared DNS resolution** across environments with Route53 Resolver or Azure DNS Private Resolver
 - Implement **centralized identity** (Azure AD / Okta) with federation to on-prem AD for consistent auth
-- Deploy **hybrid [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)** (EKS Anywhere, AKS on HCI, GKE on-prem) for consistent container orchestration
+- Deploy **hybrid [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)** (EKS Anywhere, AKS on HCI, GKE on-prem) for consistent container orchestration
 - Monitor **circuit health** from both sides with BGP session [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) and synthetic probes
 - Use **cloud-agnostic IaC** (Terraform, [Pulumi](../../../../DevOps_and_Cloud/Infrastructure_as_Code/pulumi/SKILL.md)) with provider abstraction for [multi-cloud](../multi-cloud/SKILL.md) portability
 - Implement **failover** with Route53 ARC (Application Recovery Controller) or Azure Traffic Manager

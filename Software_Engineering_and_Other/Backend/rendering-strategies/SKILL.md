@@ -48,7 +48,7 @@ Exact phrases: "rendering strategy", "CSR", "SSR", "SSG", "ISR", "RSC", "React S
 - Framework (Next.js, Astro, Nuxt, Remix, Gatsby, [SvelteKit](../../Frontend/sveltekit/SKILL.md), vanilla)
 - Per-route requirements: data freshness, SEO significance, interactivity level
 - Authentication requirements (SSR for personalized, SSG for public pages)
-- Hosting/deployment platform capabilities ([serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md), edge, static)
+- Hosting/deployment platform capabilities ([serverless](../../Patterns/serverless/SKILL.md), edge, static)
 - Team familiarity with server components
 
 ### Output Artifact
@@ -393,7 +393,7 @@ function CommentSection({ postId }: { postId: string }) {
 |----------|--------|---------|-------------|-------------------|
 | SSG | ✓ | ✓ | ✓ | ✓ Best |
 | ISR | ✓ (built-in) | Partial | Manual Lambda | ✗ |
-| SSR | ✓ ([serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)) | ✓ ([serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)) | ✓ (Lambda) | ✗ |
+| SSR | ✓ ([serverless](../../Patterns/serverless/SKILL.md)) | ✓ ([serverless](../../Patterns/serverless/SKILL.md)) | ✓ (Lambda) | ✗ |
 | CSR | ✓ | ✓ | ✓ | ✓ |
 
 ## Common Pitfalls

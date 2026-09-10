@@ -64,15 +64,15 @@ choice rather than defaulting to copy-paste.
   with "Pipeline script from SCM"** pointing at `Jenkinsfile` in the repo
   root (or a path configured in the job) — the Jenkinsfile is not useful
   without a job/multibranch config that reads it from SCM.
-- Build agents (nodes) with the required labels available — e.g. a `[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)`
+- Build agents (nodes) with the required labels available — e.g. a `[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)`
   or `linux-x64` label matching what the Jenkinsfile's `agent` block
   requests. Confirm labels via **Manage [Jenkins](../../other/jenkins/SKILL.md) → Nodes**.
 - Credentials (SSH keys, registry tokens, cloud creds) already created in
   **Manage [Jenkins](../../other/jenkins/SKILL.md) → Credentials** with known IDs — a Jenkinsfile only
   references a credential ID (`${JENKINS_CRED_ID}`), it never stores the
   secret value itself.
-- For [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-based agents: the controller/agent has [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) available and
-  the `[Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Pipeline` plugin installed if using `agent { [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) { ... } }`.
+- For [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)-based agents: the controller/agent has [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) available and
+  the `[Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) Pipeline` plugin installed if using `agent { [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) { ... } }`.
 
 ## Step-by-step guidance
 
@@ -102,19 +102,19 @@ choice rather than defaulting to copy-paste.
    ```
 
 2. **Pin `agent` precisely, not just `agent any`.** Use a label for a
-   specific node pool, or a `[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)` agent for a reproducible toolchain
+   specific node pool, or a `[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)` agent for a reproducible toolchain
    pinned by image tag:
 
    ```groovy
    agent {
-       [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) {
+       [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) {
            image 'node:20.11-bullseye'
            args '-v $HOME/.npm:/home/node/.npm'
        }
    }
    ```
    `agent any` is fine for a small team with a homogeneous fleet; pin a
-   label or [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) image once tooling versions must be reproducible or
+   label or [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) image once tooling versions must be reproducible or
    multiple agent types exist.
 
 3. **Model real stages, not one giant `script` block.** Each logical phase
@@ -136,7 +136,7 @@ choice rather than defaulting to copy-paste.
        }
        stage('Package') {
            steps {
-               sh '[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) build -t ${IMAGE_NAME}:${GIT_COMMIT} .'
+               sh '[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) build -t ${IMAGE_NAME}:${GIT_COMMIT} .'
            }
        }
        stage('Deploy to staging') {
@@ -148,8 +148,8 @@ choice rather than defaulting to copy-paste.
                                                   usernameVariable: 'REG_USER',
                                                   passwordVariable: 'REG_PASS')]) {
                    sh '''
-                     echo "$REG_PASS" | [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) login registry.example.com -u "$REG_USER" --password-stdin
-                     [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) push ${IMAGE_NAME}:${GIT_COMMIT}
+                     echo "$REG_PASS" | [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) login registry.example.com -u "$REG_USER" --password-stdin
+                     [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) push ${IMAGE_NAME}:${GIT_COMMIT}
                    '''
                }
            }
@@ -280,14 +280,14 @@ choice rather than defaulting to copy-paste.
 ## Worked example
 
 **Scenario:** A single Node.js service repo needs its own Jenkinsfile:
-lint/test on every branch and PR, [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) build + push to a registry only on
+lint/test on every branch and PR, [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) build + push to a registry only on
 `main`, with Slack notification on failure.
 
 `Jenkinsfile` (repo root):
 ```groovy
 pipeline {
     agent {
-        [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) { image 'node:20.11-bullseye' }
+        [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) { image 'node:20.11-bullseye' }
     }
     options {
         timestamps()
@@ -315,13 +315,13 @@ pipeline {
         stage('Build & Push image') {
             when { branch 'main' }
             steps {
-                sh '[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) build -t ${IMAGE_NAME}:${GIT_COMMIT} .'
+                sh '[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) build -t ${IMAGE_NAME}:${GIT_COMMIT} .'
                 withCredentials([usernamePassword(credentialsId: '${JENKINS_CRED_ID}',
                                                    usernameVariable: 'REG_USER',
                                                    passwordVariable: 'REG_PASS')]) {
                     sh '''
-                      echo "$REG_PASS" | [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) login registry.example.com -u "$REG_USER" --password-stdin
-                      [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) push ${IMAGE_NAME}:${GIT_COMMIT}
+                      echo "$REG_PASS" | [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) login registry.example.com -u "$REG_USER" --password-stdin
+                      [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) push ${IMAGE_NAME}:${GIT_COMMIT}
                     '''
                 }
             }
@@ -347,4 +347,4 @@ registry credential scoped to the one `withCredentials` block that needs it.
 - [jenkins-centralized-shared-library](../[jenkins-centralized-shared-library](../[jenkins](../jenkins/SKILL.md)-centralized-shared-library/SKILL.md)/SKILL.md) — extract logic here into an org-wide shared library once it's duplicated across repos.
 - [jenkins-groovy-scripting-best-practices](../[jenkins-groovy-scripting-best-practices](../[jenkins](../jenkins/SKILL.md)-groovy-scripting-best-practices/SKILL.md)/SKILL.md) — writing safe, testable Groovy inside `script {}` blocks.
 - [ci-cd-pipeline-design](../../../devops/skills/[ci-cd-pipeline-design](../ci-cd-pipeline-design/SKILL.md)/SKILL.md) — vendor-neutral stage layout, caching, and gating concepts this Jenkinsfile implements.
-- [secure-cicd-gates](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — designing the security scan stages to add into this pipeline.
+- [secure-cicd-gates](../../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — designing the security scan stages to add into this pipeline.

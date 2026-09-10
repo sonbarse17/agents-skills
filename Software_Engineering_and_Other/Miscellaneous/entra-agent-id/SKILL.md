@@ -256,7 +256,7 @@ requests.delete(f"{GRAPH}/applications/{blueprint_obj_id}", headers=headers)
 |------|----------|
 | [../../../Global_References/oauth2-token-flow.md](../../../Global_References/oauth2-token-flow.md) | Production (Managed Identity + WIF) and local dev (client secret) token flows |
 | [../../../Global_References/known-limitations.md](../../../Global_References/known-limitations.md) | 29 known issues organized by category (from official preview known-issues page) |
-| [../../../Global_References/sdk-sidecar.md](../../../Global_References/sdk-sidecar.md) | Microsoft Entra SDK for AgentID — endpoints, 3P agent patterns, [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)/K8s deployment, security |
+| [../../../Global_References/sdk-sidecar.md](../../../Global_References/sdk-sidecar.md) | Microsoft Entra SDK for AgentID — endpoints, 3P agent patterns, [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)/K8s deployment, security |
 
 ### External Links
 

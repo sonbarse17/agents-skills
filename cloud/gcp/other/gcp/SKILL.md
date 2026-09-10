@@ -60,12 +60,12 @@ GKE cluster running, Cloud Run service deployed, networking secured, CI/CD pipel
 | Stateful / complex | GKE (Standard) | Custom node pools, GPUs, StatefulSets |
 | Simple event-driven | Cloud Functions (2nd gen) | Eventarc, Pub/Sub, Storage triggers |
 | Batch / background | Cloud Run Jobs | Containerized batch, retries, timeout |
-| Data warehouse | BigQuery | [Serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md), slot commitments, BI Engine |
+| Data warehouse | BigQuery | [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md), slot commitments, BI Engine |
 | ML training | GKE with GPUs | Custom hardware, distributed training |
 | Web hosting | Cloud Storage + LB | Static sites, CDN, global LB |
 
 ### GKE Cluster Mode Decision Tree
-- Small team, no node management: Autopilot ([serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md), PSA enforced, pay-per-pod).
+- Small team, no node management: Autopilot ([serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md), PSA enforced, pay-per-pod).
 - Full control, custom hardware: Standard with node pools, taints, GPUs.
 - Multi-region HA: Regional cluster in 3 zones.
 - Cost-sensitive: Preemptible/Spot node pools for batch.
@@ -280,7 +280,7 @@ resource "google_cloud_run_v2_service" "api" {
     revision = "api-v1"
 
     containers {
-      image = "us-central1-[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).pkg.dev/${google_project.production.project_id}/app-repo/api:latest"
+      image = "us-central1-[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md).pkg.dev/${google_project.production.project_id}/app-repo/api:latest"
 
       resources {
         limits = {
@@ -408,27 +408,27 @@ resource "google_sql_database_instance" "postgres" {
 ### Step 6: Cloud Build CI/CD
 ```yaml
 steps:
-  - name: "gcr.io/cloud-builders/[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)"
+  - name: "gcr.io/cloud-builders/[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)"
     args:
       - build
       - -t
-      - "us-central1-[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).pkg.dev/$PROJECT_ID/app-repo/api:$SHORT_SHA"
+      - "us-central1-[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md).pkg.dev/$PROJECT_ID/app-repo/api:$SHORT_SHA"
       - .
-  - name: "gcr.io/cloud-builders/[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)"
+  - name: "gcr.io/cloud-builders/[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)"
     args:
       - push
-      - "us-central1-[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).pkg.dev/$PROJECT_ID/app-repo/api:$SHORT_SHA"
+      - "us-central1-[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md).pkg.dev/$PROJECT_ID/app-repo/api:$SHORT_SHA"
   - name: "gcr.io/google.com/cloudsdktool/google-cloud-cli:stable"
     entrypoint: gcloud
     args:
       - run
       - deploy
       - api-service
-      - --image=us-central1-[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).pkg.dev/$PROJECT_ID/app-repo/api:$SHORT_SHA
+      - --image=us-central1-[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md).pkg.dev/$PROJECT_ID/app-repo/api:$SHORT_SHA
       - --region=us-central1
       - --platform=managed
 images:
-  - "us-central1-[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).pkg.dev/$PROJECT_ID/app-repo/api:$SHORT_SHA"
+  - "us-central1-[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md).pkg.dev/$PROJECT_ID/app-repo/api:$SHORT_SHA"
 ```
 
 ### Step 7: IAM and Security
@@ -480,7 +480,7 @@ data "google_iam_policy" "restricted" {
 ## Anti-Patterns
 
 ### Anti-Pattern 1: Service Account Keys in Pods
-Storing GCP service account keys as [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) secrets creates credential management burden and rotation complexity. Use Workload Identity: annotate K8s SA with IAM SA email -- no keys needed.
+Storing GCP service account keys as [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) secrets creates credential management burden and rotation complexity. Use Workload Identity: annotate K8s SA with IAM SA email -- no keys needed.
 
 ### Anti-Pattern 2: Public IP on GKE Nodes
 Assigning public IPs to GKE node pools exposes attack surface. Use Cloud NAT for egress, private nodes for workloads. All node-to-node traffic stays within VPC.
@@ -551,10 +551,10 @@ Setting max-instances too high risks cost spikes under load. Setting min-instanc
 - ../../../Global_References/gcp-data-ai.md -- GCP Data and AI
 - ../../../Global_References/gcp-devops.md -- Google Cloud DevOps
 - ../../../Global_References/gcp-fundamentals.md -- Gcp Fundamentals
-- ../../../Global_References/[gcp-gke](../../containers/gcp-gke/SKILL.md).md -- GCP GKE
+- ../../../Global_References/[gcp-gke](../../../../containers-orchestration/gke/cluster-management/gcp-gke/SKILL.md).md -- GCP GKE
 - ../../../Global_References/gcp-infrastructure.md -- Google Cloud Infrastructure
-- ../../../Global_References/gcp-[serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md).md -- GCP [Serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)
+- ../../../Global_References/gcp-[serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md).md -- GCP [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)
 
 ## Handoff
-Hand off to GCP for Google Cloud-specific provisioning or CI/CD. Hand off to terraform for [multi-cloud](../../../common/other/multi-cloud/SKILL.md) IaC. Hand off to [kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-patterns for workload manifests on GKE.
+Hand off to GCP for Google Cloud-specific provisioning or CI/CD. Hand off to terraform for [multi-cloud](../../../common/other/multi-cloud/SKILL.md) IaC. Hand off to [kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-patterns for workload manifests on GKE.
 

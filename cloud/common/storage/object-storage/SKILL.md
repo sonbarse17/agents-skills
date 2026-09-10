@@ -33,7 +33,7 @@ Configure and manage object storage solutions including AWS S3, MinIO (self-host
 ## Prerequisites
 
 - AWS CLI v2 installed and configured (`aws configure`) for S3 operations
-- [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) installed for MinIO self-hosted setup
+- [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) installed for MinIO self-hosted setup
 - MinIO client (`mc`) installed for MinIO management
 - IAM credentials with appropriate S3 permissions
 - Network access to the object storage endpoint
@@ -237,11 +237,11 @@ aws s3api put-bucket-logging --bucket my-app-assets-prod --bucket-logging-status
 
 ## MinIO Self-Hosted Setup
 
-### [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Deployment
+### [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) Deployment
 
 ```bash
 # Single-node MinIO with persistent storage
-[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) run -d \
+[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) run -d \
   --name minio \
   --restart unless-stopped \
   -p 9000:9000 \
@@ -252,7 +252,7 @@ aws s3api put-bucket-logging --bucket my-app-assets-prod --bucket-logging-status
   minio/minio server /data --console-address ":9001"
 ```
 
-### [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose (Multi-Drive)
+### [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) Compose (Multi-Drive)
 
 ```yaml
 # [docker-compose](../../Containers_and_Orchestration/[docker](../../Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml
@@ -289,10 +289,10 @@ volumes:
 
 ```bash
 # Start the stack
-[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) compose up -d
+[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) compose up -d
 
 # Check health
-[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) compose ps
+[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) compose ps
 curl -s http://localhost:9000/minio/health/live
 ```
 

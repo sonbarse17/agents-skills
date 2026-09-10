@@ -60,7 +60,7 @@ a fragile script that only the original author can rerun correctly.
   Kubeflow Pipelines ≥ 2.0 (KFP SDK v2, component-based), Argo Workflows
   ≥ 3.4, or a managed equivalent (Vertex AI Pipelines, SageMaker Pipelines).
 - Containerized or environment-pinned execution for each pipeline step so
-  "works on my machine" doesn't leak into the DAG ([Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) images or a locked
+  "works on my machine" doesn't leak into the DAG ([Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) images or a locked
   dependency file per step).
 - Access to the data source(s), feature store (see
   [feature-store-design](../[feature-store-design](../../../Data_Engineering/feature-store-design/SKILL.md)/SKILL.md)), and experiment

@@ -381,8 +381,8 @@ risk_treatment:
 ## OWASP Threat Dragon Setup
 
 ```bash
-# Run Threat Dragon locally with [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
-[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) run -d \
+# Run Threat Dragon locally with [Docker](../../containers-orchestration/docker/other/docker/SKILL.md)
+[docker](../../containers-orchestration/docker/other/docker/SKILL.md) run -d \
   --name threat-dragon \
   -p 3000:3000 \
   -e ENCRYPTION_KEYS='["threat-dragon-encryption-key-change-me"]' \

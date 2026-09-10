@@ -80,7 +80,7 @@ az sql db create \
   --server myapp-sqlserver \
   --name myapp-db \
   --edition GeneralPurpose \
-  --compute-model [Serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) \
+  --compute-model [Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) \
   --auto-pause-delay 60 \
   --min-[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) 0.5 \
   --max-size 32GB \
@@ -502,6 +502,6 @@ resource "azurerm_private_endpoint" "sql" {
 ## Related Skills
 
 - `[azure-networking](../../networking/azure-networking/SKILL.md)` -- Private endpoints and VNet rules for SQL access.
-- `[azure-functions](../../compute/azure-functions/SKILL.md)` -- SQL bindings for [serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) data access.
+- `[azure-functions](../../compute/azure-functions/SKILL.md)` -- SQL bindings for [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) data access.
 - `[terraform-azure](../../iac/terraform-azure/SKILL.md)` -- Terraform-based SQL infrastructure provisioning.
 - `[arm-templates](../../iac/arm-templates/SKILL.md)` -- Bicep templates for SQL deployments.

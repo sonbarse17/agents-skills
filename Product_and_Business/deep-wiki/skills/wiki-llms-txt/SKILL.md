@@ -77,7 +77,7 @@ The file follows the [llms.txt specification](https://llmstxt.org/):
 | ❌ Bad | ✅ Good |
 |--------|---------|
 | "Architecture overview" | "System architecture showing how Orleans grains communicate via message passing with at-least-once delivery" |
-| "Getting started guide" | "Prerequisites, local dev setup with [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose, and first API call walkthrough" |
+| "Getting started guide" | "Prerequisites, local dev setup with [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) Compose, and first API call walkthrough" |
 | "The API reference" | "REST endpoints with auth requirements, rate limits, and request/response schemas" |
 
 ## llms-full.txt Format

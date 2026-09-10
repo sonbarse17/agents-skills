@@ -568,7 +568,7 @@ class ReportTemplateManager {
 | Storing files in DB | DB bloat; slow backups | Object storage with metadata pointer |
 | Hardcoded page size | A4 and Letter differ; layout breaks | Dynamic page size based on locale/request |
 | Not setting PDF timeout | Infinite hang on slow page load | Always set 30s timeout on page.goto and page.pdf |
-| [Serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) for PDF | Cold start + 15min limit + heavy Chromium | Use long-running worker or dedicated service |
+| [Serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) for PDF | Cold start + 15min limit + heavy Chromium | Use long-running worker or dedicated service |
 | No progress tracking | Users don't know if report is stuck | Update status via queue → DB → poll endpoint |
 
 ## Security Considerations

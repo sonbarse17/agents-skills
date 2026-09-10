@@ -403,7 +403,7 @@ SELECT id, data->>'customer_id' AS customer_id,
 FROM orders_canonical;
 ```
 
-### [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Version Routing
+### [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Version Routing
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress

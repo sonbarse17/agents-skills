@@ -62,7 +62,7 @@ Before activating, verify:
 - Current architecture: single node? master-slave? multi-AZ? multi-region?
 - Database engine + replication mode (sync, semi-sync, async)
 - Load balancer layer (L4 TCP, L7 HTTP) and current health-check semantics
-- Deployment model (bare metal, VM, [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md), [serverless](../../Containers_and_Orchestration/serverless/SKILL.md))
+- Deployment model (bare metal, VM, [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), [serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md))
 - Migration cadence (per-day / per-week) and current downtime per release
 - Read/write ratio, peak TPS, dataset size, max acceptable replication lag
 - Team size and on-call [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) (drives automation vs manual [runbook](../runbook/SKILL.md) split)
@@ -227,7 +227,7 @@ Canary       → safest, gradual % shift (1 → 5 → 25 → 50 → 100), needs 
 Shadow       → mirror prod traffic to new version, compare results, zero user impact.
 ```
 ```yaml
-# [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) rolling — surge 25% / unavailable 0, preStop drain
+# [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) rolling — surge 25% / unavailable 0, preStop drain
 apiVersion: apps/v1
 kind: Deployment
 metadata: {name: api}
@@ -404,7 +404,7 @@ Required signals (alert before users notice):
 - App releases MUST be backward + forward compatible across one release boundary.
 - Schema migrations MUST follow expand-contract; no in-place rename / drop in same release.
 - Every destructive DDL has a bake window ≥ 1 release before contract phase.
-- Connection draining ≥ 15s, terminationGracePeriod ≥ 60s on [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md).
+- Connection draining ≥ 15s, terminationGracePeriod ≥ 60s on [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).
 - All auto-failover paths drilled quarterly with real traffic for ≥99.99%.
 - Burn-rate alerts use multi-window (fast + slow burn), never single-threshold.
 - Never deploy on Friday afternoon to a 99.99% system without senior approval.

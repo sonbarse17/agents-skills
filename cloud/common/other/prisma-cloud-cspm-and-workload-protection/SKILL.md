@@ -43,7 +43,7 @@ scanning** evaluates the same class of misconfiguration *before* it's
 ever deployed, against Terraform/[CloudFormation](../../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md)/ARM source, using an
 engine built on the open-source Checkov project. **Workload Protection**
 requires installing a Defender agent onto hosts, container runtimes, or
-[serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) functions to observe and enforce behavior at runtime — a
+[serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) functions to observe and enforce behavior at runtime — a
 fundamentally different data source (agent telemetry) from CSPM's
 API-polling model. A team that stops at CSPM alone has visibility into
 *configuration* drift but zero visibility into what's actually happening
@@ -61,7 +61,7 @@ capabilities and where each one's blind spots require the others.
   before merge/apply, using Prisma Cloud's IaC scanning (`checkov` CLI
   or the Prisma Cloud IaC scan API/[GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) App).
 - The user wants to deploy Prisma Cloud **Defender agents** to hosts,
-  a [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cluster, or [serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) functions for runtime workload
+  a [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster, or [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) functions for runtime workload
   protection, and needs to understand what that adds beyond CSPM alone.
 - The user is triaging a Prisma Cloud alert and needs to know whether
   it's a posture (CSPM) finding, an IaC finding, or a runtime
@@ -92,8 +92,8 @@ capabilities and where each one's blind spots require the others.
 - For Workload Protection: outbound network connectivity from each
   host/cluster to the Prisma Cloud Compute console (self-hosted
   Compute console or the SaaS one), and sufficient privilege to deploy
-  a DaemonSet ([Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)), a host agent package, or a Lambda
-  layer/extension ([serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)) — Defender agents typically need
+  a DaemonSet ([Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)), a host agent package, or a Lambda
+  layer/extension ([serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)) — Defender agents typically need
   elevated (often privileged, for container-runtime visibility) access
   on the host, which is a materially different trust boundary than
   CSPM's read-only cloud API access and should be reviewed accordingly.
@@ -178,12 +178,12 @@ capabilities and where each one's blind spots require the others.
    fleet-wide rollout on day one, given the elevated host/runtime
    access Defender requires:
    ```bash
-   # [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Defender DaemonSet (illustrative install pattern)
-   twistcli defender export [kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) \
+   # [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Defender DaemonSet (illustrative install pattern)
+   twistcli defender export [kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) \
      --address https://<prisma-compute-console> \
      --cluster-address <cluster-endpoint> \
      > defender.yaml
-   [kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f defender.yaml
+   [kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f defender.yaml
    ```
 
 7. **Use Defender for runtime + image scanning together**, not CSPM
@@ -252,7 +252,7 @@ capabilities and where each one's blind spots require the others.
   resources only, and schedule the rest as a longer-term paydown rather
   than an all-at-once effort.
 
-- **Symptom:** Defender agent deployment to a [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cluster is
+- **Symptom:** Defender agent deployment to a [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster is
   blocked or delayed pending a lengthy security review, because it
   requests privileged/host-level access that the platform team wasn't
   expecting from what they assumed was "just another [monitoring](../../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) agent."
@@ -327,6 +327,6 @@ production EKS cluster.
 - [sysdig-secure-runtime-security](../[sysdig-secure-runtime-security](../../../AI_and_Agents/Workflows/sysdig-secure-runtime-security/SKILL.md)/SKILL.md) —
   a comparable runtime-protection approach (Falco-rule-based) worth
   understanding alongside Prisma's Defender agent model.
-- [container-image-hardening](../../../../Security/devsecops/SKILL.md)/skills/[container-image-hardening](../../../../DevOps_and_Cloud/Containers_and_Orchestration/container-image-hardening/SKILL.md)/SKILL.md) —
+- [container-image-hardening](../../../../Security/devsecops/SKILL.md)/skills/[container-image-hardening](../../../../containers-orchestration/docker/security/container-image-hardening/SKILL.md)/SKILL.md) —
   reducing what both Defender's image scanning and CSPM have to find in
   workload images in the first place.

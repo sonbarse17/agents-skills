@@ -33,7 +33,7 @@ depends_on:
 # Firebase
 
 ## Purpose
-Architect [serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) backends on Firebase — Firestore document modeling, Authentication providers, Cloud Functions triggers, Storage security, Hosting configuration, and operational best practices.
+Architect [serverless](../../Patterns/serverless/SKILL.md) backends on Firebase — Firestore document modeling, Authentication providers, Cloud Functions triggers, Storage security, Hosting configuration, and operational best practices.
 
 ## Agent Protocol
 

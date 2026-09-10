@@ -759,7 +759,7 @@ export async function traceToolCall<T>(
 
 ## 10. Deployment Hardening
 
-### 10.1 [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Container Configuration
+### 10.1 [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) Container Configuration
 
 ```dockerfile
 # Dockerfile.mcp-server
@@ -797,7 +797,7 @@ EXPOSE 3001
 CMD ["node", "dist/index.js"]
 ```
 
-### 10.2 [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Network Policy
+### 10.2 [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Network Policy
 
 ```yaml
 # k8s/network-policy.yaml
@@ -876,7 +876,7 @@ spec:
 }
 ```
 
-Apply the seccomp profile in your [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) pod spec:
+Apply the seccomp profile in your [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) pod spec:
 
 ```yaml
 # k8s/deployment.yaml (relevant snippet)

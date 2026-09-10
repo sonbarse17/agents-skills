@@ -165,7 +165,7 @@ Neo4j: causal clustering, read replicas. Neptune: auto-scaling storage. JanusGra
 
 Neo4j causal clustering: core servers handle writes (RAFT consensus), read replicas handle reads. Minimum 3 core servers for production. Read replicas auto-scale based on query load.
 
-Neptune: [serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) or provisioned. Storage auto-scales to 128TB. Use Neptune Streams for change data capture. Enable DFE (Data Format Efficiency) for faster query execution.
+Neptune: [serverless](../../Patterns/serverless/SKILL.md) or provisioned. Storage auto-scales to 128TB. Use Neptune Streams for change data capture. Enable DFE (Data Format Efficiency) for faster query execution.
 
 JanusGraph: partition graph across Cassandra nodes. Configure `ids.block-size` based on write rate. Use `storage.lock.wait-time` for transaction conflict handling.
 

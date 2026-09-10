@@ -66,7 +66,7 @@ place.
 - Loki 2.9+ assumed (TSDB index format, the current recommended schema,
   became stable/default-recommended from 2.9; earlier `boltdb-shipper`
   schema configs still work but TSDB is preferred for new deployments).
-- A deployment target: [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) (via the `loki` or
+- A deployment target: [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) (via the `loki` or
   `loki-distributed`/`loki-simple-scalable` Helm charts) or bare
   VMs/containers running the Loki binary directly.
 - An object storage backend for anything beyond a small/test setup —
@@ -89,7 +89,7 @@ place.
      etc.) run in one process.
    - **Simple scalable (`-target=read` / `-target=write` / `-target=backend`):**
      splits the read and write paths into independently scaled
-     deployments — the right default for most production [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)
+     deployments — the right default for most production [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
      setups once volume grows past what single-binary comfortably
      handles.
    - **[Microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md):** every Loki component (distributor, ingester,
@@ -245,7 +245,7 @@ place.
   deployment — it has better query performance and is the schema Loki
   development is focused on going forward.
 - Choose simple-scalable mode as the default production target on
-  [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) rather than jumping straight to full [microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) mode —
+  [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) rather than jumping straight to full [microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) mode —
   most teams never need the extra operational surface area
   [microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md) mode adds.
 - Monitor `loki_discarded_samples_total` by `reason` as a standing
@@ -283,7 +283,7 @@ place.
 - **Symptom:** Loki ingesters intermittently lose recent (not-yet-
   flushed) log data during pod restarts/rolling upgrades.
   **Fix:** The write-ahead log (WAL) wasn't enabled, or its volume isn't
-  actually persistent (e.g. backed by ephemeral storage in [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)
+  actually persistent (e.g. backed by ephemeral storage in [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
   instead of a PersistentVolume). Enable `ingester.wal.enabled: true`
   with a real persistent volume backing `wal.dir`, and confirm
   `replication_factor` is set high enough that a single ingester's loss
@@ -316,7 +316,7 @@ place.
 
 ## Worked example
 
-**Scenario:** Standing up Loki on [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) in simple-scalable mode for
+**Scenario:** Standing up Loki on [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) in simple-scalable mode for
 a multi-team platform, backed by S3, with a 30-day default retention and
 a stricter cardinality ceiling after an earlier [incident](../incident/SKILL.md) where a team's
 new field caused stream-count explosion.

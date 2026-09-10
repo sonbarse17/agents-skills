@@ -43,7 +43,7 @@ specific to recovery work.
 
 1. **Read-only.** Allowed: read IaC/backup config, `aws rds describe-db-snapshots`,
    `aws backup list-*`, `aws s3api get-bucket-versioning/get-object-lock-configuration`,
-   `gcloud/az` equivalents, `velero get backups`, `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get volumesnapshot`,
+   `gcloud/az` equivalents, `velero get backups`, `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get volumesnapshot`,
    `terraform plan`, reading restore-test records and [runbooks](../runbooks/SKILL.md). **Never** run a
    restore, promote a replica, fail over, delete or copy a snapshot, or change a
    retention policy — even in non-prod.

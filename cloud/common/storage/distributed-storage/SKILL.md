@@ -230,7 +230,7 @@ Cloud adoption strategy?
 ├── [Multi-cloud](../../other/multi-cloud/SKILL.md) → MinIO (abstraction layer)
 ├── On-premise
 │   ├── Hadoop ecosystem → HDFS
-│   └── [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-native → MinIO (S3-compatible)
+│   └── [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-native → MinIO (S3-compatible)
 └── Edge / IoT → MinIO (lightweight, S3 API)
 ```
 
@@ -246,10 +246,10 @@ Data access pattern?
 ### MinIO Deployment Architecture
 
 #### Multi-Node Setup
-MinIO runs as a distributed system across multiple nodes. Minimum 4 nodes for erasure coding protection. Each node: 4+ drives, SSD/NVMe preferred for performance. Deployed via: [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose (dev/tiny), [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Operator (production), bare metal (HPC).
+MinIO runs as a distributed system across multiple nodes. Minimum 4 nodes for erasure coding protection. Each node: 4+ drives, SSD/NVMe preferred for performance. Deployed via: [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) Compose (dev/tiny), [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Operator (production), bare metal (HPC).
 
 ```yaml
-# MinIO [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Operator
+# MinIO [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Operator
 apiVersion: minio.min.io/v2
 kind: Tenant
 metadata:

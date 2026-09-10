@@ -144,7 +144,7 @@ chmod +x cloud-sql-proxy
 
 ./cloud-sql-proxy ${PROJECT_ID}:us-central1:prod-db --port=5432 --auto-iam-authn
 
-# Unix socket (for [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) sidecar pattern)
+# Unix socket (for [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) sidecar pattern)
 ./cloud-sql-proxy ${PROJECT_ID}:us-central1:prod-db --unix-socket=/tmp/cloudsql
 psql "host=/tmp/cloudsql/${PROJECT_ID}:us-central1:prod-db user=appuser dbname=myapp"
 ```
@@ -268,5 +268,5 @@ gcloud sql instances restart prod-db
 
 - **[gcp-networking](../../networking/gcp-networking/SKILL.md)** - VPC and private service connect for Cloud SQL private IP
 - **[terraform-gcp](../../iac/terraform-gcp/SKILL.md)** - Provision Cloud SQL with Infrastructure as Code
-- **[gcp-gke](../../containers/gcp-gke/SKILL.md)** - Connecting [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) workloads to Cloud SQL via sidecar proxy
+- **[gcp-gke](../../../../containers-orchestration/gke/cluster-management/gcp-gke/SKILL.md)** - Connecting [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) workloads to Cloud SQL via sidecar proxy
 - **[gcp-compute](../../compute/gcp-compute/SKILL.md)** - Running applications on Compute Engine that connect to Cloud SQL

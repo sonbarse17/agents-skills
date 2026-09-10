@@ -175,7 +175,7 @@ of hand-rolling client-side retry/[load-balancing](../../../Software_Engineering
    sends every RPC to whichever single backend that connection landed
    on:
    ```bash
-   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) top pods -n payments -l app=payments-api
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) top pods -n payments -l app=payments-api
    # one pod consistently far hotter than its siblings under equal client load
    ```
    Fix by moving to client-side (per-RPC) load balancing — a gRPC
@@ -334,7 +334,7 @@ of hand-rolling client-side retry/[load-balancing](../../../Software_Engineering
 **Scenario:** `checkout-service` calls `payments-api` via gRPC and
 intermittently sees `DEADLINE_EXCEEDED`; separately, `payments-api`'s
 pods show uneven CPU load despite three healthy replicas behind the
-same [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Service.
+same [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Service.
 
 ```bash
 # 1. Isolate whether it's a real backend slowness or a deadline issue
@@ -349,7 +349,7 @@ grpcurl -max-time 30 -d '{"id":"123"}' payments-api.payments.svc.cluster.local:8
 # of the budget before calling payments-api at all
 
 # 3. Confirm the uneven-load symptom is HTTP/2 connection reuse
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) top pods -n payments -l app=payments-api
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) top pods -n payments -l app=payments-api
 # payments-api-7f9...-abcde consistently 3x the CPU of its siblings
 ```
 
@@ -365,11 +365,11 @@ Root causes and fixes:
    target address and no [load-balancing](../../../Software_Engineering_and_Other/Backend/load-balancing/SKILL.md) policy, so its one long-lived
    HTTP/2 connection to `payments-api` pinned all traffic to whichever
    pod it first connected to. Fix: configure the client with a
-   [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-DNS-based resolver returning all backend pod IPs and
+   [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-DNS-based resolver returning all backend pod IPs and
    `grpc.WithDefaultServiceConfig` set to `round_robin`, so each new RPC
    (not just each new connection) can land on a different backend.
 
-Re-running the `grpcurl` deadline test and `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) top pods` after both
+Re-running the `grpcurl` deadline test and `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) top pods` after both
 fixes confirms `payments-api` now sees a healthy ~1.5s deadline budget
 and CPU load spread evenly across all three replicas.
 

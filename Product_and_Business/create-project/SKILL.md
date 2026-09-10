@@ -24,9 +24,9 @@ depends_on:
   - serverless
 ---
 
-# Create [Serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) Project
+# Create [Serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) Project
 
-Create Elastic Cloud [Serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) projects using the [Serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) REST API. Use the `[cloud-manage-project](../manage-project/SKILL.md)` skill for day-2
+Create Elastic Cloud [Serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) projects using the [Serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) REST API. Use the `[cloud-manage-project](../manage-project/SKILL.md)` skill for day-2
 operations like listing, updating, or deleting projects.
 
 ## Prerequisites and permissions
@@ -80,7 +80,7 @@ an agent.
 - **Confirm before creating.** Always present the project configuration to the user and ask for confirmation before
   running the creation script.
 - **Admin credentials are for API key creation only.** The script saves the `admin` password to `.elastic-credentials`
-  for bootstrapping a scoped API key. The `admin` user has full privileges and cannot be modified in [serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md). Never
+  for bootstrapping a scoped API key. The `admin` user has full privileges and cannot be modified in [serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md). Never
   use admin credentials for direct Elasticsearch operations (querying, indexing, etc.) — always create a scoped API key
   first (see Step 8). The `load-credentials` command excludes admin credentials by default — use `--include-admin`
   **only** during Step 7/8, then reload without it once the API key is created. Never read or display the contents of
@@ -289,7 +289,7 @@ admin `ELASTICSEARCH_USERNAME`/`ELASTICSEARCH_PASSWORD` needed to bootstrap an A
 
 ### Step 8: Create a scoped API key
 
-The `admin` user has full privileges and cannot be modified in [serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) projects. **Do not proceed with Elasticsearch
+The `admin` user has full privileges and cannot be modified in [serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) projects. **Do not proceed with Elasticsearch
 operations using admin credentials.** Create a scoped Elasticsearch API key with only the permissions the user needs.
 
 If the `[elasticsearch-authn](../../Software_Engineering_and_Other/Databases/elasticsearch-authn/SKILL.md)` skill is available, use it for API key creation — it covers the full lifecycle (create,
@@ -356,7 +356,7 @@ python3 skills/cloud/create-project/scripts/create-project.py create \
 
 | Command        | Description                       |
 | -------------- | --------------------------------- |
-| `create`       | Create a new [serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) project   |
+| `create`       | Create a new [serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) project   |
 | `status`       | Get project initialization status |
 | `list-regions` | List available regions            |
 

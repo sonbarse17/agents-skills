@@ -101,7 +101,7 @@ API style preference?
 ├── REST (simpler, broader client compatibility)
 │   ├── [PostgreSQL](../postgresql/SKILL.md) only → PostgREST
 │   └── [PostgreSQL](../postgresql/SKILL.md) with GraphQL also → Hasura (also serves REST)
-└── RPC / [serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) functions
+└── RPC / [serverless](../../Patterns/serverless/SKILL.md) functions
     ├── Database-centric → PostgREST with stored procedures
     └── Polyglot → WunderGraph with [TypeScript](../../Frontend/typescript/SKILL.md) operations
 ```

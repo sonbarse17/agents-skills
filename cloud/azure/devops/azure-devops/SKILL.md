@@ -356,7 +356,7 @@ jobs:
     imageToDeploy: 'myregistry.azurecr.io/myapp:$(Build.BuildId)'
 ```
 
-### Azure [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Service
+### Azure [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Service
 
 ```yaml
 - task: KubernetesManifest@0
@@ -371,10 +371,10 @@ jobs:
       myregistry.azurecr.io/myapp:$(Build.BuildId)
 ```
 
-## [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Builds
+## [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) Builds
 
 ```yaml
-- task: [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)@2
+- task: [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)@2
   inputs:
     containerRegistry: 'my-acr-connection'
     repository: 'myapp'
@@ -409,7 +409,7 @@ sudo ./svc.sh start
 pool:
   name: 'my-self-hosted-pool'
   demands:
-    - [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
+    - [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)
     - Agent.OS -equals Linux
 ```
 

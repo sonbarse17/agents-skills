@@ -211,7 +211,7 @@ Primary workload?
 ├── Batch ETL, large-scale transformations
 │   └── Apache Spark
 │       ├── Databricks platform → Delta + Photon
-│       ├── [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) → Spark Operator
+│       ├── [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) → Spark Operator
 │       └── EMR → Spark + Hive Metastore
 ├── Interactive SQL, ad-hoc analytics
 │   ├── Open-source → Trino
@@ -223,7 +223,7 @@ Primary workload?
     └── Spark for feature engineering, dedicated ML framework for training
 ```
 
-#### Spark Deployment Config ([Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md))
+#### Spark Deployment Config ([Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md))
 
 ```yaml
 # spark-operator config
@@ -486,7 +486,7 @@ Metrics: Prometheus + Grafana [dashboards](../../DevOps_and_Cloud/Observability_
   - ../../../Global_References/data-platform-advanced.md — Data Platform Advanced Topics
   - ../../../Global_References/data-platform-architecture.md — Data Platform Architecture
   - ../../../Global_References/data-platform-fundamentals.md — Data Platform Fundamentals
-  - ../../../Global_References/k8s-for-data.md — [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) for Data Workloads
+  - ../../../Global_References/k8s-for-data.md — [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) for Data Workloads
   - ../../../Global_References/platform-architecture.md — Data Platform Architecture
   - ../../../Global_References/platform-decision-tree.md — Platform Decision Tree
   - ../../../Global_References/platform-tools-comparison.md — Platform Tools Comparison
@@ -569,7 +569,7 @@ stack:
 ## Production Considerations
 
 - **Cost governance**: Tag all resources with cost center, domain, and environment; alert on cost anomalies.
-- **[Multi-tenancy](../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md)**: Isolate compute resources per domain using virtual clusters (Trino resource groups, Spark pools).
+- **[Multi-tenancy](../../containers-orchestration/common/other/multi-tenancy/SKILL.md)**: Isolate compute resources per domain using virtual clusters (Trino resource groups, Spark pools).
 - **Provisioning automation**: [Infrastructure-as-code](../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md) (Terraform) for all platform components; self-serve via API.
 - **[Observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)**: Centralized logging (ELK), metrics (Prometheus/Grafana), and tracing ([OpenTelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md)) across platform.
 - **Backup & DR**: Cross-region replication for catalog metadata; daily backups of Hive Metastore/Nessie.

@@ -32,7 +32,7 @@ Microsoft provides extensive MCP infrastructure for Azure and Foundry services. 
 
 | Type | Transport | Use Case | Example |
 |------|-----------|----------|---------|
-| **Local** | stdio | Desktop apps, single-user, local dev | Azure MCP Server via NPM/[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) |
+| **Local** | stdio | Desktop apps, single-user, local dev | Azure MCP Server via NPM/[Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) |
 | **Remote** | Streamable HTTP | Cloud services, multi-tenant, Agent Service | `https://mcp.ai.azure.com` (Foundry) |
 
 ### Microsoft MCP Servers

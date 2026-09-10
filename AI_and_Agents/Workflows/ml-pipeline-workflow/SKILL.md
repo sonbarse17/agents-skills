@@ -167,7 +167,7 @@ stages = [
 
 - **Apache Airflow**: DAG-based workflow orchestration
 - **Dagster**: Asset-based pipeline orchestration
-- **Kubeflow Pipelines**: [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-native ML workflows
+- **Kubeflow Pipelines**: [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-native ML workflows
 - **Prefect**: Modern dataflow automation
 
 ### Experiment Tracking
@@ -182,7 +182,7 @@ stages = [
 - Google Vertex AI for GCP deployments
 - Azure ML for Azure cloud
 - OCI Data Science for Oracle Cloud Infrastructure deployments
-- [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) + KServe for cloud-agnostic serving
+- [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) + KServe for cloud-agnostic serving
 
 ## Progressive Disclosure
 

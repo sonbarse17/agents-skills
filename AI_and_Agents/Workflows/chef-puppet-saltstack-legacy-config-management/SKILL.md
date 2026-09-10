@@ -71,7 +71,7 @@ should default to today unless a specific existing estate says otherwise.
 - **Chef**: a Chef Infra Server (or Chef Infra Client in solo/zero mode)
   and `chef-client` installed on managed nodes; cookbooks written in a
   Ruby-based DSL, tested with `cookstyle` (linting) and Test Kitchen (`kitchen
-  converge`) against a driver ([Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md), Vagrant). Chef's ecosystem has
+  converge`) against a driver ([Docker](../../../containers-orchestration/docker/other/docker/SKILL.md), Vagrant). Chef's ecosystem has
   consolidated significantly — confirm whether an estate is on the
   original Chef Infra product or has moved to Progress Chef's current
   packaging before assuming tooling/support availability.
@@ -178,7 +178,7 @@ should default to today unless a specific existing estate says otherwise.
    each tool's own convergence-testing pattern rather than editing
    directly against production nodes:
    ```bash
-   # Chef: Test Kitchen against a [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)/Vagrant driver
+   # Chef: Test Kitchen against a [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)/Vagrant driver
    kitchen converge
    kitchen verify   # runs InSpec/Serverspec assertions
 

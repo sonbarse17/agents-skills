@@ -423,7 +423,7 @@ siem_integration:
     - [ ] Cloud provider [audit](../../../AI_and_Agents/Operations/audit/SKILL.md) trails (CloudTrail, Activity Log, [Audit](../../../AI_and_Agents/Operations/audit/SKILL.md) Logs)
     - [ ] Database query and access logs
     - [ ] Network flow logs and firewall logs
-    - [ ] Container and orchestrator logs ([Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) [audit](../../../AI_and_Agents/Operations/audit/SKILL.md))
+    - [ ] Container and orchestrator logs ([Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) [audit](../../../AI_and_Agents/Operations/audit/SKILL.md))
     - [ ] WAF and CDN access logs
     - [ ] VPN and remote access logs
 

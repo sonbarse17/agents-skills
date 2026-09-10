@@ -45,7 +45,7 @@ Exact user phrases: "backup", "disaster recovery", "DR", "RPO", "RTO", "backup s
 
 ### Input Context
 Before activating, verify:
-- Infrastructure type (on-prem VMs, cloud instances, [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md), databases, files).
+- Infrastructure type (on-prem VMs, cloud instances, [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), databases, files).
 - Current RPO/RTO targets (recovery point/time objectives).
 - Compliance requirements (HIPAA, PCI, SOC 2, GDPR — determines retention).
 - Budget for backup storage and DR infrastructure.

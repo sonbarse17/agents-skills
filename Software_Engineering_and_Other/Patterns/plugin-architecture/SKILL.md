@@ -107,7 +107,7 @@ Who writes the plugins?
   │   ├── IPC for communication
   │   └── Risk: Performance overhead
   └── Third-party (untrusted) → Container or sandbox isolation
-      ├── [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md), WASM, or sandboxed environment
+      ├── [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md), WASM, or sandboxed environment
       ├── Resource limits enforced at OS level
       └── Highest security, highest overhead
 ```
@@ -488,7 +488,7 @@ class PluginResourceLimiter {
 |----------|-----------|--------|
 | Same process (JS/[Python](../../Languages/python/SKILL.md)) | 10-100ms per plugin | Module code in memory |
 | Subprocess (Node fork) | 50-200ms per plugin | ~10-30MB per instance |
-| Container ([Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)) | 1-5s per plugin | 50-200MB per container |
+| Container ([Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)) | 1-5s per plugin | 50-200MB per container |
 
 ### Runtime Overhead
 - Same process: <1μs per plugin call (direct function call)

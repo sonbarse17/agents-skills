@@ -489,7 +489,7 @@ app.post('/api/orders', zValidator('json', OrderSchema), async (c) => {
 });
 ```
 
-Use for: [serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) APIs, edge functions, middleware chains, WebSocket servers. Hono middleware: auth, CORS, rate limiting, JWT validation — all available as npm packages.
+Use for: [serverless](../../Patterns/serverless/SKILL.md) APIs, edge functions, middleware chains, WebSocket servers. Hono middleware: auth, CORS, rate limiting, JWT validation — all available as npm packages.
 
 ## Code Examples — Generic Repository Pattern
 ```typescript

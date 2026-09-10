@@ -20,7 +20,7 @@ depends_on:
 
 # AWS Lambda
 
-Build [serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) applications with AWS Lambda, covering function creation, event sources, layers, SAM templates, and cold start optimization.
+Build [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) applications with AWS Lambda, covering function creation, event sources, layers, SAM templates, and cold start optimization.
 
 ## When to Use This Skill
 
@@ -300,8 +300,8 @@ Cold start reduction tips:
 ```yaml
 # template.yaml - AWS SAM application
 AWSTemplateFormatVersion: '2010-09-09'
-Transform: AWS::[Serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)-2016-10-31
-Description: My [serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) API
+Transform: AWS::[Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)-2016-10-31
+Description: My [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) API
 
 Globals:
   Function:
@@ -323,7 +323,7 @@ Parameters:
 
 Resources:
   ApiFunction:
-    Type: AWS::[Serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)::Function
+    Type: AWS::[Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)::Function
     Properties:
       FunctionName: !Sub "${Stage}-api-handler"
       Handler: app.handler
@@ -346,7 +346,7 @@ Resources:
             TableName: !Ref ItemsTable
 
   QueueProcessor:
-    Type: AWS::[Serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)::Function
+    Type: AWS::[Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)::Function
     Properties:
       FunctionName: !Sub "${Stage}-queue-processor"
       Handler: sqs_processor.handler
@@ -361,7 +361,7 @@ Resources:
               - ReportBatchItemFailures
 
   DepsLayer:
-    Type: AWS::[Serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md)::LayerVersion
+    Type: AWS::[Serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)::LayerVersion
     Properties:
       LayerName: common-deps
       ContentUri: layer/

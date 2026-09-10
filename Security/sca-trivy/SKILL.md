@@ -63,7 +63,7 @@ Scan a container image for vulnerabilities:
 # Install Trivy
 brew install trivy  # macOS
 # or: apt-get install trivy  # Debian/Ubuntu
-# or: [docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) pull aquasec/trivy:latest
+# or: [docker](../../containers-orchestration/docker/other/docker/SKILL.md) pull aquasec/trivy:latest
 
 # Scan container image
 trivy image nginx:latest
@@ -125,7 +125,7 @@ Detect misconfigurations in IaC files:
 # Scan Terraform configurations
 trivy config ./terraform --severity CRITICAL,HIGH
 
-# Scan [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) manifests
+# Scan [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) manifests
 trivy config ./k8s --severity CRITICAL,HIGH
 
 # Scan Dockerfile best practices
@@ -237,7 +237,7 @@ Log the following for compliance and [incident](../../DevOps_and_Cloud/Observabi
 - **PCI-DSS 6.2**: Ensure system components protected from known vulnerabilities
 - **SOC2 CC7.1**: Detect and act upon changes that could affect security
 - **NIST 800-53 SI-2**: Flaw remediation and vulnerability scanning
-- **CIS Benchmarks**: Container and [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) security hardening
+- **CIS Benchmarks**: Container and [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) security hardening
 - **OWASP Top 10 A06**: Vulnerable and Outdated Components
 - **CWE-1104**: Use of Unmaintained Third-Party Components
 
@@ -337,14 +337,14 @@ trivy image --ignore-policy assets/policy_template.rego myapp:latest
 
 - **[GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions**: Native `aquasecurity/trivy-action` with SARIF upload to Security tab
 - **GitLab CI**: Dependency scanning report format for Security Dashboard
-- **[Jenkins](../../ci-cd/jenkins/other/jenkins/SKILL.md)**: [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-based scanning with JUnit XML report generation
-- **[CircleCI](../../ci-cd/circleci/other/circleci/SKILL.md)**: [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) executor with artifact storage
+- **[Jenkins](../../ci-cd/jenkins/other/jenkins/SKILL.md)**: [Docker](../../containers-orchestration/docker/other/docker/SKILL.md)-based scanning with JUnit XML report generation
+- **[CircleCI](../../ci-cd/circleci/other/circleci/SKILL.md)**: [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) executor with artifact storage
 - **Azure Pipelines**: Task-based integration with results publishing
 
 ### Container Platforms
 
-- **[Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)**: Image scanning before push to registry
-- **[Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)**: Admission controllers with trivy-operator for runtime scanning
+- **[Docker](../../containers-orchestration/docker/other/docker/SKILL.md)**: Image scanning before push to registry
+- **[Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)**: Admission controllers with trivy-operator for runtime scanning
 - **Harbor**: Built-in Trivy integration for registry scanning
 - **AWS ECR**: Scan images on push with enhanced scanning
 - **Google Artifact Registry**: Vulnerability scanning integration
@@ -397,8 +397,8 @@ trivy image --ignore-policy assets/policy_template.rego myapp:latest
 
 **Solution**:
 ```bash
-# Use [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) credential helper
-[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) login registry.example.com
+# Use [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) credential helper
+[docker](../../containers-orchestration/docker/other/docker/SKILL.md) login registry.example.com
 trivy image registry.example.com/private/image:tag
 
 # Or use environment variables

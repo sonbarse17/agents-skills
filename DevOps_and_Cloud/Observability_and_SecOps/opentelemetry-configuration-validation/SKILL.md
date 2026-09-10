@@ -202,7 +202,7 @@ and assumed already understood here.
    # [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions example
    - name: Validate OTel Collector config
      run: |
-       [docker](../../Containers_and_Orchestration/docker/SKILL.md) run --rm -v "${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).workspace }}/otel-collector-config.yaml:/etc/otelcol/config.yaml" \
+       [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run --rm -v "${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).workspace }}/otel-collector-config.yaml:/etc/otelcol/config.yaml" \
          otel/[opentelemetry](../opentelemetry/SKILL.md)-collector-contrib:0.105.0 validate --config=/etc/otelcol/config.yaml
    - name: Check every component is pipeline-wired
      run: ./scripts/check_otel_pipeline_wiring.sh otel-collector-config.yaml
@@ -230,7 +230,7 @@ and assumed already understood here.
 
 ## Best practices
 
-- Run `validate` (or the [Docker](../../Containers_and_Orchestration/docker/SKILL.md) equivalent) in CI on every PR touching
+- Run `validate` (or the [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) equivalent) in CI on every PR touching
   Collector config — treat a failing structural check the same as a
   failing unit test.
 - Never validate a Helm `values.yaml` directly — always render the

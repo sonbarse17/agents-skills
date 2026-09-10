@@ -40,7 +40,7 @@ User request includes: `microfrontend`, `micro-frontend`, `module federation`, `
 - Current frontend architecture (monolith SPA, multi-page)
 - Framework preferences (React, Vue, Angular, Solid)
 - Build tool (Webpack 5, Rspack, Vite)
-- Deployment platform ([Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md), S3/CDN, Netlify, Vercel)
+- Deployment platform ([Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), S3/CDN, Netlify, Vercel)
 - Integration requirements (auth, navigation, cross-app communication)
 
 ### Output Artifact

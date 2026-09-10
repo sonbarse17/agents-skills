@@ -46,8 +46,8 @@ You are a senior DevOps engineer with 10+ years of experience. You operate with 
 ## When to Use This Skill
 
 - Setting up CI/CD pipelines ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md))
-- Containerizing applications ([Docker](../../Containers_and_Orchestration/docker/SKILL.md), [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Compose)
-- [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) deployments and configurations
+- Containerizing applications ([Docker](../../../containers-orchestration/docker/other/docker/SKILL.md), [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Compose)
+- [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) deployments and configurations
 - Infrastructure as code (Terraform, [Pulumi](../../Infrastructure_as_Code/pulumi/SKILL.md))
 - Cloud platform configuration (AWS, GCP, Azure)
 - Deployment strategies (blue-green, canary, rolling)
@@ -73,8 +73,8 @@ Load detailed guidance based on context:
 |-------|-----------|-----------|
 | [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions | `../../../Global_References/devops-engineer_github-actions.md` | Setting up CI/CD pipelines, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) workflows |
 | GitLab CI/CD | `../../../Global_References/[gitlab-ci](../../../ci-cd/gitlab-ci/pipelines/gitlab-ci/SKILL.md).md` | Setting up GitLab pipelines, `.[gitlab-ci](../../../ci-cd/gitlab-ci/pipelines/gitlab-ci/SKILL.md).yml`, DAG/`needs`, environments, runners |
-| [Docker](../../Containers_and_Orchestration/docker/SKILL.md) | `../../../Global_References/[docker-patterns](../../Containers_and_Orchestration/[docker](../../Containers_and_Orchestration/docker/SKILL.md)-patterns/SKILL.md).md` | Containerizing applications, writing Dockerfiles |
-| [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) | `../../../Global_References/[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md).md` | K8s deployments, services, ingress, pods |
+| [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) | `../../../Global_References/[docker-patterns](../../Containers_and_Orchestration/[docker](../../Containers_and_Orchestration/docker/SKILL.md)-patterns/SKILL.md).md` | Containerizing applications, writing Dockerfiles |
+| [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) | `../../../Global_References/[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).md` | K8s deployments, services, ingress, pods |
 | Terraform | `../../../Global_References/terraform-iac.md` | Infrastructure as code, AWS/GCP provisioning |
 | Deployment | `../../../Global_References/devops-engineer_deployment-strategies.md` | Blue-green, canary, rolling updates, rollback |
 | Platform | `../../../Global_References/[platform-engineering](../../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md).md` | Self-service infra, developer portals, golden paths, Backstage |
@@ -89,7 +89,7 @@ Load detailed guidance based on context:
 - Store secrets in secret managers (not env files)
 - Enable container scanning in CI/CD
 - Document rollback procedures
-- Use [GitOps](../../Containers_and_Orchestration/gitops/SKILL.md) for [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) ([ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md), Flux)
+- Use [GitOps](../../../containers-orchestration/common/gitops/gitops/SKILL.md) for [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) ([ArgoCD](../../../containers-orchestration/argocd/other/argocd/SKILL.md), Flux)
 
 ### MUST NOT DO
 - Deploy to production without explicit approval
@@ -116,17 +116,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Build image
-        run: [docker](../../Containers_and_Orchestration/docker/SKILL.md) build -t myapp:${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).sha }} .
+        run: [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) build -t myapp:${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).sha }} .
       - name: Run tests
-        run: [docker](../../Containers_and_Orchestration/docker/SKILL.md) run --rm myapp:${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).sha }} pytest
+        run: [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run --rm myapp:${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).sha }} pytest
       - name: Scan image
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: myapp:${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).sha }}
       - name: Push to registry
         run: |
-          [docker](../../Containers_and_Orchestration/docker/SKILL.md) tag myapp:${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).sha }} ghcr.io/org/myapp:${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).sha }}
-          [docker](../../Containers_and_Orchestration/docker/SKILL.md) push ghcr.io/org/myapp:${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).sha }}
+          [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) tag myapp:${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).sha }} ghcr.io/org/myapp:${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).sha }}
+          [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) push ghcr.io/org/myapp:${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).sha }}
 ```
 
 ### Minimal Dockerfile Example
@@ -149,12 +149,12 @@ CMD ["[python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md
 ### Rollback Procedure Example
 
 ```bash
-# [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md): roll back to previous deployment revision
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) rollout undo deployment/myapp -n production
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) rollout status deployment/myapp -n production
+# [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md): roll back to previous deployment revision
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) rollout undo deployment/myapp -n production
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) rollout status deployment/myapp -n production
 
 # Verify rollback succeeded
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get pods -n production -l app=myapp
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get pods -n production -l app=myapp
 curl -f https://myapp.example.com/health
 ```
 
@@ -162,7 +162,7 @@ Always document the rollback command and verification step in the PR or change t
 
 ## Knowledge Reference
 
-[GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md), [CircleCI](../../../ci-cd/circleci/other/circleci/SKILL.md), [Docker](../../Containers_and_Orchestration/docker/SKILL.md), [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md), Helm, [ArgoCD](../../../ci-cd/argocd/other/argocd/SKILL.md), Flux, Terraform, [Pulumi](../../Infrastructure_as_Code/pulumi/SKILL.md), Crossplane, AWS/GCP/Azure, Prometheus, Grafana, PagerDuty, Backstage, LaunchDarkly, Flagger
+[GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md), [CircleCI](../../../ci-cd/circleci/other/circleci/SKILL.md), [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md), [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), Helm, [ArgoCD](../../../containers-orchestration/argocd/other/argocd/SKILL.md), Flux, Terraform, [Pulumi](../../Infrastructure_as_Code/pulumi/SKILL.md), Crossplane, AWS/GCP/Azure, Prometheus, Grafana, PagerDuty, Backstage, LaunchDarkly, Flagger
 
 [Documentation](https://jeffallan.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/devops/devops-engineer/)
 

@@ -48,7 +48,7 @@ someone asking "why not just use one?"
 Building only on the intersection of features every provider supports means giving up each
 provider's best managed offerings — a managed database with strong consistency guarantees, a
 purpose-built queue — in favor of something you self-run so it's portable. That trade is
-sometimes right and often isn't; know which one you're making. A portability layer like [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
+sometimes right and often isn't; know which one you're making. A portability layer like [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
 gets you portable compute, not portable everything — data services, IAM, and networking still
 differ underneath. See `[kubernetes-operations](../../Containers_and_Orchestration/[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-operations/SKILL.md)` for running that layer, and `[cloud-architecture](../../architecture/cloud-architecture/SKILL.md)`
 for the managed-vs-self-run tradeoff this decision is really an instance of.

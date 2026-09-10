@@ -171,7 +171,7 @@ find / -name "id_rsa" -o -name "id_ecdsa" 2>/dev/null
 
 ```bash
 # Detect container environment
-cat /proc/1/cgroup | grep -i [docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
+cat /proc/1/cgroup | grep -i [docker](../../containers-orchestration/docker/other/docker/SKILL.md)
 ls /.dockerenv 2>/dev/null
 env | grep -i kube
 

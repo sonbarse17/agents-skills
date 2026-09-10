@@ -50,7 +50,7 @@ system, a compliance reviewer, and an on-call engineer can all reason about.
 - The user is designing a promotion workflow (dev → staging → canary →
   production) with approval gates.
 - The user needs to package a model for a specific serving runtime (ONNX,
-  TorchScript, TensorFlow SavedModel, a [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)/OCI image, a `.tar.gz` bundle
+  TorchScript, TensorFlow SavedModel, a [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)/OCI image, a `.tar.gz` bundle
   for SageMaker/Vertex).
 - The user asks how to roll back a bad model deployment quickly and safely.
 - The user is building CI/CD for models and wants packaging to be a pipeline
@@ -67,7 +67,7 @@ system, a compliance reviewer, and an on-call engineer can all reason about.
 - Framework export tooling as applicable: `torch.jit.trace`/`torch.onnx.export`
   (PyTorch ≥ 2.0), `tf.saved_model.save` (TensorFlow ≥ 2.x), `optimum`/`onnxruntime`
   for transformer export.
-- Container tooling ([Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) or equivalent OCI builder) if packaging as an
+- Container tooling ([Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) or equivalent OCI builder) if packaging as an
   image for serving.
 - CI/CD system with the ability to run build steps, store artifacts, and gate
   promotions ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md), Argo Workflows).

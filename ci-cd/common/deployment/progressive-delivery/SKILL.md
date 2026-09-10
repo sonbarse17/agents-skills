@@ -23,7 +23,7 @@ depends_on:
 
 # Progressive Delivery
 
-Progressive delivery takes strategies covered in `[deployment-strategies](../../../../DevOps_and_Cloud/Containers_and_Orchestration/deployment-strategies/SKILL.md)` — canary, blue-green — and
+Progressive delivery takes strategies covered in `[deployment-strategies](../deployment-strategies/SKILL.md)` — canary, blue-green — and
 makes the promotion decision automatic and metric-driven instead of manual or time-based. A canary
 that "runs for ten minutes then goes to 100%" is not progressive delivery, it's a timer with extra
 steps: if the ten minutes happened not to expose the regression, you ship it anyway. The controller
@@ -97,7 +97,7 @@ manual intervention, and someone is notified that it happened.
 A Rollout resource under Argo CD is still declarative, but the controller mutates replica counts and
 traffic weights as it steps through analysis — the exact kind of drift `[argocd-operations](../../Observability_and_SecOps/[argocd](../../Containers_and_Orchestration/argocd/SKILL.md)-operations/SKILL.md)` normally
 flags. Exclude the fields the Rollouts/Flagger controller owns (via `ignoreDifferences` or the
-resource's own CRD status conventions) so the [GitOps](../../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) reconciler doesn't fight the rollout by trying
+resource's own CRD status conventions) so the [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md) reconciler doesn't fight the rollout by trying
 to sync it back to the committed replica count mid-canary.
 
 **Done when:** a canary can run to completion without Argo CD reporting OutOfSync on the fields the

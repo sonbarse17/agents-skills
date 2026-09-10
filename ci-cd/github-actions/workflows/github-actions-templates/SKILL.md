@@ -26,8 +26,8 @@ Create efficient, secure [GitHub](../../other/github/SKILL.md) Actions workflows
 ## When to Use
 
 - Automate testing and deployment
-- Build [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) images and push to registries
-- Deploy to [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) clusters
+- Build [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) images and push to registries
+- Deploy to [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) clusters
 - Run security scans
 - Implement matrix builds for multiple environments
 
@@ -78,7 +78,7 @@ jobs:
 
 **Reference:** See `assets/test-workflow.yml`
 
-### Pattern 2: Build and Push [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Image
+### Pattern 2: Build and Push [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) Image
 
 ```yaml
 name: Build and Push
@@ -103,7 +103,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Log in to Container Registry
-        uses: [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)/login-action@v3
+        uses: [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)/login-action@v3
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ [github](../../other/github/SKILL.md).actor }}
@@ -111,7 +111,7 @@ jobs:
 
       - name: Extract metadata
         id: meta
-        uses: [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)/metadata-action@v5
+        uses: [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)/metadata-action@v5
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
@@ -121,7 +121,7 @@ jobs:
             type=semver,pattern={{major}}.{{minor}}
 
       - name: Build and push
-        uses: [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)/build-push-action@v5
+        uses: [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)/build-push-action@v5
         with:
           context: .
           push: true
@@ -133,10 +133,10 @@ jobs:
 
 **Reference:** See `assets/deploy-workflow.yml`
 
-### Pattern 3: Deploy to [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
+### Pattern 3: Deploy to [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
 
 ```yaml
-name: Deploy to [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
+name: Deploy to [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
 
 on:
   push:
@@ -160,16 +160,16 @@ jobs:
         run: |
           aws eks update-kubeconfig --name production-cluster --region us-west-2
 
-      - name: Deploy to [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
+      - name: Deploy to [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
         run: |
-          [kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) apply -f k8s/
-          [kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) rollout status deployment/my-app -n production
-          [kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get services -n production
+          [kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f k8s/
+          [kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) rollout status deployment/my-app -n production
+          [kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get services -n production
 
       - name: Verify deployment
         run: |
-          [kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get pods -n production
-          [kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) describe deployment my-app -n production
+          [kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get pods -n production
+          [kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) describe deployment my-app -n production
 ```
 
 ### Pattern 4: Matrix Build

@@ -206,19 +206,19 @@ az network vnet subnet update \
   --resource-group networking-rg \
   --vnet-name spoke-prod-vnet \
   --name web-subnet \
-  --[network-security](../../../../DevOps_and_Cloud/Containers_and_Orchestration/network-security/SKILL.md)-group web-nsg
+  --[network-security](../../../../containers-orchestration/common/other/network-security/SKILL.md)-group web-nsg
 
 az network vnet subnet update \
   --resource-group networking-rg \
   --vnet-name spoke-prod-vnet \
   --name app-subnet \
-  --[network-security](../../../../DevOps_and_Cloud/Containers_and_Orchestration/network-security/SKILL.md)-group app-nsg
+  --[network-security](../../../../containers-orchestration/common/other/network-security/SKILL.md)-group app-nsg
 
 az network vnet subnet update \
   --resource-group networking-rg \
   --vnet-name spoke-prod-vnet \
   --name data-subnet \
-  --[network-security](../../../../DevOps_and_Cloud/Containers_and_Orchestration/network-security/SKILL.md)-group data-nsg
+  --[network-security](../../../../containers-orchestration/common/other/network-security/SKILL.md)-group data-nsg
 
 # View effective NSG rules
 az network nic list-effective-nsg \
@@ -559,7 +559,7 @@ resource "azurerm_private_endpoint" "sql" {
 ## Related Skills
 
 - `[azure-vms](../../compute/azure-vms/SKILL.md)` -- VM network interface and NSG configuration.
-- `[azure-aks](../../containers/azure-aks/SKILL.md)` -- AKS VNet integration with Azure CNI.
+- `[azure-aks](../../../../containers-orchestration/aks/cluster-management/azure-aks/SKILL.md)` -- AKS VNet integration with Azure CNI.
 - `[azure-sql](../../database/azure-sql/SKILL.md)` -- Private endpoint configuration for database access.
 - `[terraform-azure](../../iac/terraform-azure/SKILL.md)` -- Network infrastructure provisioning with Terraform.
 - `[azure-functions](../../compute/azure-functions/SKILL.md)` -- VNet integration for Premium plan functions.

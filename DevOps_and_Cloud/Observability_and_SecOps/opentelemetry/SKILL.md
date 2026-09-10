@@ -36,7 +36,7 @@ Adopt vendor-neutral telemetry with consistent instrumentation across services.
 - Application services running in containers or on VMs
 - Backend for traces (Jaeger, Tempo, [Datadog](../datadog/SKILL.md), or any OTLP receiver)
 - Backend for metrics (Prometheus, Mimir, or OTLP receiver)
-- [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) cluster (for collector deployment) or VM with systemd
+- [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster (for collector deployment) or VM with systemd
 - Network access from services to collector, and collector to backends
 
 ## Core Workflow
@@ -63,7 +63,7 @@ receivers:
   prometheus:
     config:
       scrape_configs:
-        - job_name: "[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-pods"
+        - job_name: "[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-pods"
           kubernetes_sd_configs:
             - role: pod
           relabel_configs:
@@ -166,7 +166,7 @@ service:
       exporters: [otlp/logs]
 ```
 
-## Collector [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Deployment
+## Collector [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Deployment
 
 ```yaml
 # otel-collector-deployment.yaml
@@ -353,7 +353,7 @@ sdk.start();
 process.on("SIGTERM", () => sdk.shutdown());
 ```
 
-## Auto-Instrumentation with [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Operator
+## Auto-Instrumentation with [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Operator
 
 ```yaml
 # otel-auto-instrumentation.yaml

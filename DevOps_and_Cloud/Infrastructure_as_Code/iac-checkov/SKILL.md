@@ -49,7 +49,7 @@ depends_on:
 
 Checkov is a static code analysis tool that scans Infrastructure as Code (IaC) files for security misconfigurations
 and compliance violations before deployment. With 750+ built-in policies, Checkov helps prevent cloud security issues
-by detecting problems in Terraform, [CloudFormation](../cloudformation/SKILL.md), [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md), Dockerfiles, Helm charts, and ARM templates.
+by detecting problems in Terraform, [CloudFormation](../cloudformation/SKILL.md), [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), Dockerfiles, Helm charts, and ARM templates.
 
 Checkov performs graph-based scanning to understand resource relationships and detect complex misconfigurations that
 span multiple resources, making it more powerful than simple pattern matching.
@@ -65,8 +65,8 @@ pip install checkov
 # Via Homebrew (macOS)
 brew install checkov
 
-# Via [Docker](../../Containers_and_Orchestration/docker/SKILL.md)
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) pull bridgecrew/checkov
+# Via [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) pull bridgecrew/checkov
 ```
 
 ### Scan Terraform Directory
@@ -82,11 +82,11 @@ checkov -f ./terraform/main.tf
 checkov -d ./infrastructure --framework terraform
 ```
 
-### Scan [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Manifests
+### Scan [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Manifests
 
 ```bash
-# Scan [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) YAML files
-checkov -d ./k8s --framework [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)
+# Scan [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) YAML files
+checkov -d ./k8s --framework [kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
 
 # Scan Helm chart
 checkov -d ./helm-chart --framework helm
@@ -110,8 +110,8 @@ Identify IaC files and frameworks to scan:
 checkov --list-frameworks
 
 # Output:
-# terraform, [cloudformation](../cloudformation/SKILL.md), [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md), dockerfile, helm,
-# [serverless](../../Containers_and_Orchestration/serverless/SKILL.md), arm, secrets, [ansible](../ansible/SKILL.md), github_actions, gitlab_ci
+# terraform, [cloudformation](../cloudformation/SKILL.md), [kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), dockerfile, helm,
+# [serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md), arm, secrets, [ansible](../ansible/SKILL.md), github_actions, gitlab_ci
 ```
 
 **Scope Considerations:**
@@ -185,7 +185,7 @@ resource "aws_s3_bucket" "example" {
 ```
 
 ```yaml
-# [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) example
+# [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) example
 apiVersion: v1
 kind: Pod
 metadata:
@@ -389,22 +389,22 @@ checkov -d ./terraform --skip-path terraform.tfstate
 - CKV_AWS_40: Ensure IAM policies don't use wildcard actions
 - CKV_AWS_61: Ensure RDS database has encryption at rest enabled
 
-### [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)
+### [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
 
-**Scan [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Manifests:**
+**Scan [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Manifests:**
 
 ```bash
 # Scan all YAML manifests
-checkov -d ./k8s --framework [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)
+checkov -d ./k8s --framework [kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
 
 # Scan Helm chart
 checkov -d ./helm-chart --framework helm
 
-# Scan [kustomize](../../Containers_and_Orchestration/kustomize/SKILL.md) output
-[kustomize](../../Containers_and_Orchestration/kustomize/SKILL.md) build ./overlay/prod | checkov -f - --framework [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)
+# Scan [kustomize](../../../containers-orchestration/kustomize/other/kustomize/SKILL.md) output
+[kustomize](../../../containers-orchestration/kustomize/other/kustomize/SKILL.md) build ./overlay/prod | checkov -f - --framework [kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
 ```
 
-**Common [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Checks:**
+**Common [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Checks:**
 - CKV_K8S_8: Ensure Liveness Probe is configured
 - CKV_K8S_10: Ensure CPU requests are set
 - CKV_K8S_11: Ensure CPU limits are set
@@ -422,7 +422,7 @@ checkov -d ./helm-chart --framework helm
 checkov -f ./[cloudformation](../cloudformation/SKILL.md)/stack.yaml --framework [cloudformation](../cloudformation/SKILL.md)
 
 # Scan AWS SAM template
-checkov -f ./sam-template.yaml --framework [serverless](../../Containers_and_Orchestration/serverless/SKILL.md)
+checkov -f ./sam-template.yaml --framework [serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md)
 ```
 
 ### Dockerfile
@@ -502,7 +502,7 @@ checkov -d ./terraform --framework secrets
 
 - `checkov_scan.py` - Comprehensive scanning script with multiple frameworks and output formats
 - `checkov_terraform_scan.sh` - Terraform-specific scanning with variable file support
-- `checkov_k8s_scan.sh` - [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) manifest scanning with cluster comparison
+- `checkov_k8s_scan.sh` - [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) manifest scanning with cluster comparison
 - `checkov_baseline_create.sh` - Baseline creation and drift detection workflow
 - `checkov_compliance_report.py` - Generate compliance reports (CIS, PCI-DSS, HIPAA, SOC2)
 - `ci_integration.sh` - CI/CD integration examples for multiple platforms
@@ -513,7 +513,7 @@ checkov -d ./terraform --framework secrets
 - `custom_policies.md` - Guide for writing custom [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) and YAML policies
 - `suppression_guide.md` - Best practices for suppressing false positives
 - `terraform_checks.md` - Comprehensive list of Terraform checks with remediation
-- `kubernetes_checks.md` - [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) security checks and pod security standards
+- `kubernetes_checks.md` - [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) security checks and pod security standards
 - `cloudformation_checks.md` - [CloudFormation](../cloudformation/SKILL.md) security checks with examples
 
 ### Assets (`assets/`)
@@ -554,7 +554,7 @@ Scan complete infrastructure stack:
 # Use bundled script for comprehensive scanning
 python3 scripts/checkov_scan.py \
   --infrastructure-dir ./infrastructure \
-  --frameworks terraform,[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md),dockerfile \
+  --frameworks terraform,[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md),dockerfile \
   --output-dir ./security-reports \
   --compliance CIS,PCI-DSS
 ```
@@ -569,7 +569,7 @@ policies/
 │   ├── aws/
 │   │   ├── require_encryption.py
 │   │   └── require_tags.py
-│   ├── [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)/
+│   ├── [kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)/
 │   │   └── require_psp.py
 ├── .checkov.yaml          # Global config
 └── suppression_list.txt   # Approved suppressions
@@ -599,7 +599,7 @@ checkov -d ./terraform --framework terraform \
 - **Version Control**: Pre-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) hooks, pull request checks, branch protection rules
 - **Cloud Platforms**: AWS, Azure, GCP, OCI, Alibaba Cloud
 - **IaC Tools**: Terraform, Terragrunt, [CloudFormation](../cloudformation/SKILL.md), ARM, [Pulumi](../pulumi/SKILL.md)
-- **Container Orchestration**: [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md), [OpenShift](../../Containers_and_Orchestration/openshift/SKILL.md), EKS, GKE, AKS
+- **Container Orchestration**: [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), [OpenShift](../../../containers-orchestration/openshift/other/openshift/SKILL.md), EKS, GKE, AKS
 - **Policy Engines**: OPA (Open Policy Agent), Sentinel
 - **Security Platforms**: Prisma Cloud, Bridgecrew Platform
 - **SIEM/Logging**: Export findings to Splunk, Elasticsearch, CloudWatch
@@ -689,6 +689,6 @@ checkov -d .
 - [Checkov [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Repository](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/bridgecrewio/checkov)
 - [CIS Benchmarks](https://www.cisecurity.org/[cis-benchmarks](../../Observability_and_SecOps/cis-benchmarks/SKILL.md)/)
 - [Terraform Security Best Practices](https://www.terraform.io/docs/cloud/guides/recommended-practices/index.html)
-- [Kubernetes Pod Security Standards](https://[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md).io/docs/concepts/security/pod-security-standards/)
+- [Kubernetes Pod Security Standards](https://[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).io/docs/concepts/security/pod-security-standards/)
 - [AWS Security Best Practices](https://aws.amazon.com/security/security-resources/)
 

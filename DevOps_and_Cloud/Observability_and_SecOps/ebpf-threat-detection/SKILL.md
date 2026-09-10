@@ -37,7 +37,7 @@ Syscalls are the interface between user-space and kernel-space. [Monitoring](../
 ## Falco: Behavioral Threat Detection
 
 Falco acts as an intrusion detection system for cloud-native environments.
-*   **Mechanism**: Originally relied on a kernel module or eBPF probe to capture system calls. It streams these events (contextualized with container/[Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) metadata) to a user-space rules engine.
+*   **Mechanism**: Originally relied on a kernel module or eBPF probe to capture system calls. It streams these events (contextualized with container/[Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) metadata) to a user-space rules engine.
 *   **Rules**: Uses a domain-specific language (YAML) to define anomalous behavior (e.g., "A shell was spawned inside a container").
 *   **Limitation**: Historically focused on detection ([alerting](../alerting/SKILL.md)) rather than enforcement (blocking), though integrations exist for response. It captures events asynchronously, meaning a malicious action might complete before the alert is processed.
 

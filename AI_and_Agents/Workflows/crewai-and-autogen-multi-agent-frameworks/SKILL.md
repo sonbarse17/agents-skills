@@ -87,7 +87,7 @@ all" justification, which lives in
   versions; confirm the current package name and API surface before
   starting a new project) plus an LLM config dict per agent.
 - For AutoGen's `UserProxyAgent` with code execution enabled: a sandboxed
-  execution environment ([Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) container or restricted subprocess) — never
+  execution environment ([Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) container or restricted subprocess) — never
   enable `code_execution_config` against an unsandboxed host process for
   agent-generated code you have not reviewed.
 - A concrete task decomposition already justified via
@@ -256,7 +256,7 @@ all" justification, which lives in
   fixed-role guidance in
   [multi-agent-orchestration](../[multi-agent-orchestration](../multi-agent-orchestration/SKILL.md)/SKILL.md).
 - Never enable AutoGen code execution against a real filesystem, network,
-  or credential set without [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) (or an equivalent) sandbox — this is a
+  or credential set without [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) (or an equivalent) sandbox — this is a
   destructive-action risk, not a convenience trade-off to skip under time
   pressure.
 - Use a cheaper/faster model for narrowly-scoped worker roles (a
@@ -303,7 +303,7 @@ all" justification, which lives in
   prompt.
   **Fix:** This is a real [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md), not a tooling quirk — code execution
   with no human checkpoint should only ever run inside a disposable,
-  network-isolated sandbox ([Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) with no mounted credentials or
+  network-isolated sandbox ([Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) with no mounted credentials or
   production filesystem access); if that constraint can't be met, set
   `human_input_mode="ALWAYS"` or `"TERMINATE"` so a human reviews commands
   before they run.

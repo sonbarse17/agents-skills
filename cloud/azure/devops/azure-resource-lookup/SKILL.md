@@ -78,7 +78,7 @@ For single-resource-type queries, check if a dedicated MCP tool can handle it:
 | Key [Vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) | `keyvault` | ⚠️ Partial — secrets/keys only, no [vault](../../../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) listing |
 | SQL Databases | `sql` | ⚠️ Partial — requires resource group name |
 | Container Registries | `acr` | ✅ Full — list registries |
-| [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) (AKS) | `aks` | ✅ Full — clusters, node pools |
+| [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) (AKS) | `aks` | ✅ Full — clusters, node pools |
 | App Service / Web Apps | `appservice` | ❌ No list command — use ARG |
 | Container Apps | — | ❌ No MCP tool — use ARG |
 | Event Hubs | `eventhubs` | ✅ Full — namespaces, hubs |

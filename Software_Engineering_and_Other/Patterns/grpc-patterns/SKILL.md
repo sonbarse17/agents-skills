@@ -370,7 +370,7 @@ Client migration: run both versions simultaneously, migrate clients one by one
 |---------|----------|
 | Timeouts | Every RPC must have a deadline. Server enforces; client sets |
 | Connection management | Keep-alive pings (server: 1h idle, client: 30s). gRPC connection pooling |
-| TLS | mTLS for inter-service. Use [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cert-manager or SPIFFE |
+| TLS | mTLS for inter-service. Use [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cert-manager or SPIFFE |
 | Load balancing | Client-side load balancing (lookaside) or proxy (Envoy, Linkerd). Avoid random LB |
 | Max message size | Default 4MB. Increase if needed, but prefer streaming for large payloads |
 | Flow control | HTTP/2 flow control is automatic. Monitor `GOAWAY` frames for connection issues |

@@ -278,7 +278,7 @@ await service.RestoreAsync(WaitUntil.Completed, backupParams);
 | `Basic` | Entry-level production | 1-2 |
 | `Standard` | Medium workloads | 1-4 |
 | `Premium` | High availability, multi-region | 1-12 per region |
-| `Consumption` | [Serverless](../../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md), pay-per-call | N/A |
+| `Consumption` | [Serverless](../../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md), pay-per-call | N/A |
 
 ## Best Practices
 

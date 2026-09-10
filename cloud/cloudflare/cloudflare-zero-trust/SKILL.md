@@ -46,8 +46,8 @@ curl -fsSL https://pkg.cloudflare.com/cloudflare-main.gpg | sudo tee /usr/share/
 echo "deb [signed-by=/usr/share/keyrings/cloudflare-main.gpg] https://pkg.cloudflare.com/cloudflared $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/cloudflared.list
 sudo apt update && sudo apt install -y cloudflared
 
-# [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
-[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) pull cloudflare/cloudflared:latest
+# [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) pull cloudflare/cloudflared:latest
 ```
 
 ## Cloudflare Tunnel Setup
@@ -115,15 +115,15 @@ sudo cloudflared service install
 sudo systemctl enable cloudflared
 sudo systemctl start cloudflared
 
-# Or run via [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
-[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) run -d --name cloudflared \
+# Or run via [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run -d --name cloudflared \
   --restart unless-stopped \
   -v /home/deploy/.cloudflared:/etc/cloudflared \
   cloudflare/cloudflared:latest \
   tunnel run internal-apps
 ```
 
-### [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose with Tunnel
+### [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Compose with Tunnel
 
 ```yaml
 # [docker-compose](../../Containers_and_Orchestration/[docker](../../Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml

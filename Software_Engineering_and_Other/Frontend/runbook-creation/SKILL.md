@@ -156,8 +156,8 @@ psql -h replica.db.internal -U dba -d postgres -c \
 ### Step 2 — Stop Application Writes
 
 ```bash
-[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) scale deployment api-server --replicas=0 -n production
-[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) scale deployment worker --replicas=0 -n production
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) scale deployment api-server --replicas=0 -n production
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) scale deployment worker --replicas=0 -n production
 ```
 
 **Expected output:** Deployments scaled to 0 pods.
@@ -206,8 +206,8 @@ aws route53 change-resource-record-sets \
 ### Step 6 — Restart Application
 
 ```bash
-[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) scale deployment api-server --replicas=6 -n production
-[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) scale deployment worker --replicas=4 -n production
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) scale deployment api-server --replicas=6 -n production
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) scale deployment worker --replicas=4 -n production
 ```
 
 ## Verification
@@ -278,8 +278,8 @@ mkdir -p "$OUTDIR"
 
 echo "Collecting logs for [incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md) $INCIDENT_ID..."
 
-# [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) pod logs (last 30 min)
-[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) logs -l app=api-server -n production --since=30m \
+# [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) pod logs (last 30 min)
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) logs -l app=api-server -n production --since=30m \
   > "${OUTDIR}/api-server-pods.log" 2>&1
 
 # CloudWatch Logs (last 30 min)
@@ -294,7 +294,7 @@ psql -h db.internal -U dba -d postgres -c \
   > "${OUTDIR}/db-active-queries.log" 2>&1
 
 # System resource snapshot
-[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) top pods -n production > "${OUTDIR}/pod-resources.log" 2>&1
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) top pods -n production > "${OUTDIR}/pod-resources.log" 2>&1
 
 echo "Logs saved to $OUTDIR"
 tar czf "${OUTDIR}.tar.gz" -C /tmp "[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-${INCIDENT_ID}"
@@ -348,8 +348,8 @@ df -h /
 # Remove old journal logs (> 7 days)
 journalctl --vacuum-time=7d 2>/dev/null || true
 
-# Clean [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) artifacts
-[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) system prune -f --volumes 2>/dev/null || true
+# Clean [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) artifacts
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) system prune -f --volumes 2>/dev/null || true
 
 # Remove old log files
 find /var/log -name "*.gz" -mtime +7 -delete 2>/dev/null || true

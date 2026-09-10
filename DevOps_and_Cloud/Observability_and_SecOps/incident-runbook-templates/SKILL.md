@@ -84,9 +84,9 @@ Steps often assume preconditions that are true in a healthy environment but not 
 
 ```bash
 # Step: Check pod status
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get pods -n payments
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get pods -n payments
 
-# Prerequisites: [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) configured, kubeconfig points to correct cluster
+# Prerequisites: [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) configured, kubeconfig points to correct cluster
 # If this fails: run `aws eks update-kubeconfig --name prod-cluster --region us-east-1`
 # Expected output: pods in Running state
 ```
@@ -107,7 +107,7 @@ Add a numbered checklist at the top of the [runbook](../runbook/SKILL.md) that m
 
 ### [Runbook](../runbook/SKILL.md) is outdated — commands reference old cluster names or endpoints
 
-[Runbooks](../runbooks/SKILL.md) rot because they're updated manually. Include a "Last Verified" date and owner at the top, and add a CI check that validates all `curl` endpoints and `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md)` context names are still valid:
+[Runbooks](../runbooks/SKILL.md) rot because they're updated manually. Include a "Last Verified" date and owner at the top, and add a CI check that validates all `curl` endpoints and `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md)` context names are still valid:
 
 ```markdown
 ## [Runbook](../runbook/SKILL.md) Metadata

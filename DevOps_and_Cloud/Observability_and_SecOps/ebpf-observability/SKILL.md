@@ -92,7 +92,7 @@ sudo bpftrace -e 'BEGIN { printf("eBPF is working\n"); exit(); }'
 
 Cilium replaces kube-proxy with eBPF-based networking, providing identity-aware security and deep network [observability](../observability/SKILL.md) via Hubble.
 
-### Install Cilium on [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)
+### Install Cilium on [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
 
 ```bash
 # Add the Cilium Helm repo
@@ -160,7 +160,7 @@ hubble observe --output json --last 1000 > flows.json
 
 ```bash
 # Port-forward the Hubble UI
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) port-forward -n kube-system svc/hubble-ui 12000:80
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) port-forward -n kube-system svc/hubble-ui 12000:80
 
 # Access at http://localhost:12000 -- provides a real-time service dependency map
 ```
@@ -207,10 +207,10 @@ spec:
 
 ```bash
 # Watch all process executions cluster-wide
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) exec -n kube-system ds/tetragon -c tetragon -- tetra getevents -o compact --process-exec
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) exec -n kube-system ds/tetragon -c tetragon -- tetra getevents -o compact --process-exec
 
 # Filter to a specific namespace
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) exec -n kube-system ds/tetragon -c tetragon -- tetra getevents -o compact \
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) exec -n kube-system ds/tetragon -c tetragon -- tetra getevents -o compact \
   --namespace production
 ```
 
@@ -236,16 +236,16 @@ spec:
               values:
                 - "/etc/shadow"
                 - "/etc/passwd"
-                - "/etc/[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)/pki"
-                - "/var/run/secrets/[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md).io"
+                - "/etc/[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)/pki"
+                - "/var/run/secrets/[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).io"
                 - "/root/.ssh"
 ```
 
 ```bash
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply -f file-access-policy.yaml
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f file-access-policy.yaml
 
 # Observe file access events
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) exec -n kube-system ds/tetragon -c tetragon -- tetra getevents -o compact \
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) exec -n kube-system ds/tetragon -c tetragon -- tetra getevents -o compact \
   | grep "sensitive-file-access"
 ```
 
@@ -280,7 +280,7 @@ spec:
 ```
 
 ```bash
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply -f restrict-egress.yaml
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f restrict-egress.yaml
 ```
 
 ### Privileged Escalation Detection
@@ -318,7 +318,7 @@ spec:
 ```
 
 ```bash
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply -f detect-privilege-escalation.yaml
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f detect-privilege-escalation.yaml
 ```
 
 ---
@@ -419,7 +419,7 @@ Hubble automatically exposes Prometheus metrics when configured in the Cilium He
 
 ```bash
 # Check that Hubble metrics are being served
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) exec -n kube-system ds/cilium -- curl -s http://localhost:9965/metrics | head -50
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) exec -n kube-system ds/cilium -- curl -s http://localhost:9965/metrics | head -50
 ```
 
 Create a ServiceMonitor for Prometheus Operator:
@@ -496,12 +496,12 @@ Import these community [dashboards](../dashboards/SKILL.md) for eBPF metrics:
 # Cilium Operator dashboard -- Grafana dashboard ID 16613
 
 # Or create a ConfigMap for automatic provisioning
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) create configmap grafana-cilium-dashboard \
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) create configmap grafana-cilium-dashboard \
   --from-file=cilium-dashboard.json \
   --namespace [monitoring](../monitoring/SKILL.md) \
   -o yaml --dry-run=client | \
-  [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) label --local -f - grafana_dashboard=1 -o yaml | \
-  [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply -f -
+  [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) label --local -f - grafana_dashboard=1 -o yaml | \
+  [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f -
 ```
 
 Key Prometheus queries for eBPF-sourced metrics:
@@ -655,7 +655,7 @@ spec:
 ```
 
 ```bash
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply -f container-escape-detection.yaml
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f container-escape-detection.yaml
 ```
 
 ### Unexpected Syscall Detection
@@ -738,10 +738,10 @@ spec:
 ```
 
 ```bash
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply -f file-integrity-monitor.yaml
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f file-integrity-monitor.yaml
 
 # Stream events to your SIEM
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) logs -n kube-system ds/tetragon -c export-stdout -f | \
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) logs -n kube-system ds/tetragon -c export-stdout -f | \
   jq 'select(.process_kprobe.policy_name == "file-integrity-monitor")' | \
   tee /dev/stderr | \
   curl -X POST -H "Content-Type: application/json" -d @- https://siem.internal/api/events
@@ -757,7 +757,7 @@ Parca uses eBPF to collect CPU profiles continuously with minimal overhead.
 
 ```bash
 # Install Parca Agent via Helm
-helm repo add parca https://parca-dev.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/[helm-charts](../../Containers_and_Orchestration/helm-charts/SKILL.md)
+helm repo add parca https://parca-dev.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/[helm-charts](../../../containers-orchestration/helm/charts/helm-charts/SKILL.md)
 helm repo update
 
 helm install parca-agent parca/parca-agent \
@@ -774,7 +774,7 @@ helm install parca-agent parca/parca-agent \
 
 ```bash
 # Install Grafana Pyroscope with eBPF [profiling](../../../Software_Engineering_and_Other/Frontend/profiling/SKILL.md)
-helm repo add grafana https://grafana.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/[helm-charts](../../Containers_and_Orchestration/helm-charts/SKILL.md)
+helm repo add grafana https://grafana.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/[helm-charts](../../../containers-orchestration/helm/charts/helm-charts/SKILL.md)
 helm repo update
 
 helm install pyroscope grafana/pyroscope \
@@ -885,10 +885,10 @@ capsh --decode=$(cat /proc/self/status | grep CapEff | awk '{print $2}')
 
 ```bash
 # Check Cilium agent logs
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) logs -n kube-system -l k8s-app=cilium --tail=100
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) logs -n kube-system -l k8s-app=cilium --tail=100
 
 # Verify BPF filesystem
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) exec -n kube-system ds/cilium -- mount | grep bpf
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) exec -n kube-system ds/cilium -- mount | grep bpf
 
 # Check for conflicting CNIs
 ls /etc/cni/net.d/
@@ -901,13 +901,13 @@ cilium connectivity test
 
 ```bash
 # Verify TracingPolicy is loaded
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get tracingpolicies
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get tracingpolicies
 
 # Check Tetragon agent logs for verifier errors
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) logs -n kube-system ds/tetragon -c tetragon --tail=200 | grep -i error
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) logs -n kube-system ds/tetragon -c tetragon --tail=200 | grep -i error
 
 # Verify the kprobe is attached
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) exec -n kube-system ds/tetragon -c tetragon -- \
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) exec -n kube-system ds/tetragon -c tetragon -- \
   cat /sys/kernel/debug/kprobes/list | grep your_function
 ```
 

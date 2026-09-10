@@ -34,9 +34,9 @@ Use this skill when:
 ## Prerequisites
 
 - NVIDIA GPU(s) with CUDA 12.1+ (A100/H100 recommended for production)
-- [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) or [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) 3.9+ with pip
+- [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) or [Python](../../../Software_Engineering_and_Other/Languages/python/SKILL.md) 3.9+ with pip
 - 40GB+ VRAM for 70B models; 8GB+ for 7B models
-- `nvidia-container-toolkit` for [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) GPU passthrough
+- `nvidia-container-toolkit` for [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) GPU passthrough
 
 ## Quick Start
 
@@ -60,10 +60,10 @@ curl http://localhost:8000/v1/chat/completions \
   }'
 ```
 
-## [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Deployment
+## [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Deployment
 
 ```bash
-[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) run --runtime nvidia --gpus all \
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run --runtime nvidia --gpus all \
   -v ~/.cache/huggingface:/root/.cache/huggingface \
   -p 8000:8000 \
   --ipc=host \
@@ -72,7 +72,7 @@ curl http://localhost:8000/v1/chat/completions \
   --api-key your-secret-key
 ```
 
-## [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose (Production)
+## [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Compose (Production)
 
 ```yaml
 services:

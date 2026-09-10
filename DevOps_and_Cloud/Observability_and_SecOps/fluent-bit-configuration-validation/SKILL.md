@@ -132,7 +132,7 @@ which this skill assumes is already designed and does not repeat.
    fluent-bit -c rendered-fluent-bit.yaml -o stdout -m '*' 2>&1 | grep -E '^\[.*\]'
    ```
    Confirm specifically: does `kube.payments.*` catch every payments
-   pod's tag after the `[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)` filter's `kube_tag_prefix`
+   pod's tag after the `[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)` filter's `kube_tag_prefix`
    rewrites it? Does `kube.security-[audit](../../../AI_and_Agents/Operations/audit/SKILL.md).*` **not** also catch
    payments logs (an overly broad pattern silently duplicating output
    across destinations)? Verify both directions — under-matching
@@ -141,13 +141,13 @@ which this skill assumes is already designed and does not repeat.
 
 5. **Verify filter ordering produces the field set each downstream
    stage actually expects** — a `parser`/`modify`/`grep` filter placed
-   before the `[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)` enrichment filter won't have [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)
+   before the `[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)` enrichment filter won't have [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
    metadata available yet to filter or route on, and a filter placed
    after a redaction step can't act on a field that was already
    removed:
    ```bash
    fluent-bit -c rendered-fluent-bit.yaml -o stdout -m '*' | \
-     jq 'select(.[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) == null)'   # should be empty after the [kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) filter runs
+     jq 'select(.[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) == null)'   # should be empty after the [kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) filter runs
    ```
 
 6. **Confirm redaction filters actually remove the intended fields**
@@ -180,7 +180,7 @@ which this skill assumes is already designed and does not repeat.
      run: helm template fluent-bit fluent/fluent-bit -f values-production.yaml --show-only templates/fluent-bit-configmap.yaml > rendered.yaml
    - name: Dry-run against fixture logs
      run: |
-       [docker](../../Containers_and_Orchestration/docker/SKILL.md) run --rm -i \
+       [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run --rm -i \
          -v "${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).workspace }}/rendered.yaml:/fluent-bit/etc/fluent-bit.yaml" \
          -v "${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).workspace }}/fixtures:/fixtures" \
          fluent/fluent-bit:3.1.9 \
@@ -198,7 +198,7 @@ which this skill assumes is already designed and does not repeat.
    validated dry-run** — static validation reduces but does not
    eliminate risk from something the fixture set didn't cover:
    ```bash
-   [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) logs -n [monitoring](../monitoring/SKILL.md) -l app=fluent-bit --tail=200 | grep -i error
+   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) logs -n [monitoring](../monitoring/SKILL.md) -l app=fluent-bit --tail=200 | grep -i error
    ```
    A spike in Fluent Bit's own internal error/retry metrics
    immediately after a config rollout is the final real-world

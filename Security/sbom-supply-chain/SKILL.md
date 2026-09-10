@@ -81,7 +81,7 @@ syft ghcr.io/acme/api:v1.2.3 -o spdx-json > sbom-spdx.json
 syft dir:. -o cyclonedx-json > sbom-source.json
 
 # Generate SBOM from a Dockerfile/built image
-syft [docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md):my-local-image:latest -o cyclonedx-json > sbom-local.json
+syft [docker](../../containers-orchestration/docker/other/docker/SKILL.md):my-local-image:latest -o cyclonedx-json > sbom-local.json
 
 # Generate SBOM for a specific package ecosystem
 syft dir:. --catalogers [python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) -o cyclonedx-json > sbom-[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md).json
@@ -115,7 +115,7 @@ cdxgen -t go -o sbom-go.json .
 cdxgen --evidence -o sbom-with-evidence.json .
 
 # Generate for a container image
-cdxgen -t [docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) -o sbom-container.json ghcr.io/acme/api:v1.2.3
+cdxgen -t [docker](../../containers-orchestration/docker/other/docker/SKILL.md) -o sbom-container.json ghcr.io/acme/api:v1.2.3
 
 # Generate with deep analysis (slower but more accurate)
 cdxgen --deep -o sbom-deep.json .
@@ -226,7 +226,7 @@ cat > provenance.json << 'EOF'
       "digest": { "sha1": "abc123def456" }
     },
     {
-      "uri": "pkg:[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)/[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)@3.11-slim",
+      "uri": "pkg:[docker](../../containers-orchestration/docker/other/docker/SKILL.md)/[python](../../Software_Engineering_and_Other/Languages/python/SKILL.md)@3.11-slim",
       "digest": { "sha256": "def456..." }
     }
   ]
@@ -259,11 +259,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Buildx
-        uses: [docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)/setup-buildx-action@v3
+      - name: Set up [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) Buildx
+        uses: [docker](../../containers-orchestration/docker/other/docker/SKILL.md)/setup-buildx-action@v3
 
       - name: Login to GHCR
-        uses: [docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)/login-action@v3
+        uses: [docker](../../containers-orchestration/docker/other/docker/SKILL.md)/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ [github](../../ci-cd/github-actions/other/github/SKILL.md).actor }}
@@ -271,7 +271,7 @@ jobs:
 
       - name: Build and push image
         id: build
-        uses: [docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)/build-push-action@v5
+        uses: [docker](../../containers-orchestration/docker/other/docker/SKILL.md)/build-push-action@v5
         with:
           push: true
           tags: ghcr.io/${{ [github](../../ci-cd/github-actions/other/github/SKILL.md).repository }}:${{ [github](../../ci-cd/github-actions/other/github/SKILL.md).ref_name }}

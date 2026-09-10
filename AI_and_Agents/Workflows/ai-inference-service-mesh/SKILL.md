@@ -39,8 +39,8 @@ istioctl install --set profile=default \
   --set meshConfig.defaultConfig.holdApplicationUntilProxyStarts=true
 
 # Label inference namespace for sidecar injection
-[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) create namespace ai-inference
-[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) label namespace ai-inference istio-injection=enabled
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) create namespace ai-inference
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) label namespace ai-inference istio-injection=enabled
 
 # Verify installation
 istioctl verify-install
@@ -410,7 +410,7 @@ spec:
 
 ```bash
 # Port-forward Kiali
-[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) port-forward svc/kiali -n istio-system 20001:20001 &
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) port-forward svc/kiali -n istio-system 20001:20001 &
 
 # Verify mesh health via API
 curl -s http://localhost:20001/kiali/api/namespaces/ai-inference/health | jq .

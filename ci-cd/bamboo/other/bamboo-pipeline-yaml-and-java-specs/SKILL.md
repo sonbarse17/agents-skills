@@ -339,4 +339,4 @@ expressed in Bamboo's own stage-level construct.
 
 - [ci-cd-pipeline-design](../../../devops/skills/[ci-cd-pipeline-design](../ci-cd-pipeline-design/SKILL.md)/SKILL.md) — vendor-neutral stage/gate design this Bamboo plan structure implements.
 - [jenkins-centralized-shared-library](../[jenkins-centralized-shared-library](../[jenkins](../jenkins/SKILL.md)-centralized-shared-library/SKILL.md)/SKILL.md) — a comparable "logic centralized, consumers thin" pattern on a different CI platform, useful when migrating between the two.
-- [secure-cicd-gates](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — designing the severity/blocking policy for any scan tasks added into this plan.
+- [secure-cicd-gates](../../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — designing the severity/blocking policy for any scan tasks added into this plan.

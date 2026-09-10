@@ -625,7 +625,7 @@ Need message persistence and guaranteed delivery?
 | **Rate Limiter** | API rate limiting |
 | **Security Bundle** | Auth, ACL, voters |
 | **Monolog** | Logging |
-| **[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)** | [Containerization](../../../DevOps_and_Cloud/Containers_and_Orchestration/containerization/SKILL.md) |
+| **[Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)** | [Containerization](../../../containers-orchestration/docker/other/containerization/SKILL.md) |
 | **PHP-CS-Fixer** | Code style |
 
 ## Rules

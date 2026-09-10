@@ -21,7 +21,7 @@ depends_on:
 
 # Autoscaling
 
-Autoscaling in [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) is a control loop stacked on a control loop: the HPA watches a metric and
+Autoscaling in [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) is a control loop stacked on a control loop: the HPA watches a metric and
 adjusts replica count, the scheduler places those replicas, and the cluster autoscaler watches for
 unschedulable pods and adds nodes. Every layer depends on the one below reporting truthfully — an
 HPA scaling on a metric that doesn't reflect real load, or replicas whose requests don't reflect

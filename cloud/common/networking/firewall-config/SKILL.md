@@ -438,7 +438,7 @@ fi
 |---------|-------|----------|
 | Locked out of SSH | Rule order or default deny applied before allow | Use out-of-band console access; add SSH allow rule first |
 | Rules lost after reboot | Rules not persisted | Install `iptables-persistent` or save to `/etc/nftables.conf` |
-| [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) bypasses iptables | [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) modifies iptables FORWARD chain | Use `[DOCKER](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-USER` chain for custom rules; set `"iptables": false` in daemon.json |
+| [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) bypasses iptables | [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) modifies iptables FORWARD chain | Use `[DOCKER](../../../../containers-orchestration/docker/other/docker/SKILL.md)-USER` chain for custom rules; set `"iptables": false` in daemon.json |
 | nftables and iptables conflict | Both running simultaneously | Migrate fully to nftables; remove iptables packages |
 | AWS SG rule limit reached | Max 60 inbound rules per SG | Use prefix lists or consolidate CIDR ranges |
 | Legitimate traffic blocked | Rule ordering issue | Place more specific allow rules before general deny rules |

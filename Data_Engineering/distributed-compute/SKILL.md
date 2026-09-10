@@ -366,11 +366,11 @@ spark.kryoserializer.buffer: 64k
 
 ### Resource Manager Comparison
 
-| Feature | YARN | [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) | Standalone | Slurm |
+| Feature | YARN | [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) | Standalone | Slurm |
 |---|---|---|---|---|
 | Maturity | Very high | High | Medium | High |
 | Spark support | Native | Spark Operator | Native | Via wrapper |
-| [Multi-tenancy](../../DevOps_and_Cloud/Containers_and_Orchestration/multi-tenancy/SKILL.md) | Queues + ACLs | Namespaces + RBAC | None | Partitions |
+| [Multi-tenancy](../../containers-orchestration/common/other/multi-tenancy/SKILL.md) | Queues + ACLs | Namespaces + RBAC | None | Partitions |
 | Auto-scaling | Limited | Horizontal Pod Autoscaler | No | No |
 | GPU support | Yes (via YARN) | Native (device plugin) | Limited | Native |
 | Dynamic allocation | Requires shuffle service | Supports | Supports | N/A |
@@ -431,7 +431,7 @@ spark.executor.extraJavaOptions: >
 # Full GC symptoms: task timeouts, executor heartbeats missed
 ```
 
-### Spark on [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
+### Spark on [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
 
 ```yaml
 # Spark Operator deployment
@@ -441,14 +441,14 @@ metadata:
   name: etl-pipeline
 spec:
   sparkConf:
-    spark.[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).container.image: ghcr.io/org/spark:3.5.0
-    spark.[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).authenticate.driver.serviceAccountName: spark
-    spark.[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).allocation.maxExecutors: 50
-    spark.[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).executor.deleteOnTermination: true
-    spark.[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).memoryOverheadFactor: 0.1
-    spark.[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).node.selector.role: spark-worker
-    spark.[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).executor.label.app: spark-job
-    spark.[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).driver.label.app: spark-job
+    spark.[kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).container.image: ghcr.io/org/spark:3.5.0
+    spark.[kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).authenticate.driver.serviceAccountName: spark
+    spark.[kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).allocation.maxExecutors: 50
+    spark.[kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).executor.deleteOnTermination: true
+    spark.[kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).memoryOverheadFactor: 0.1
+    spark.[kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).node.selector.role: spark-worker
+    spark.[kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).executor.label.app: spark-job
+    spark.[kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).driver.label.app: spark-job
   driver:
     cores: 4
     memory: "16g"
@@ -560,10 +560,10 @@ t_env.execute_sql("""
 
 ## Security Considerations
 
-- **Cluster isolation**: Use separate Spark/Flink clusters per environment (dev, staging, prod) via [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) namespaces.
+- **Cluster isolation**: Use separate Spark/Flink clusters per environment (dev, staging, prod) via [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) namespaces.
 - **Job authentication**: Require service accounts for job submission; [audit](../../AI_and_Agents/Operations/audit/SKILL.md) who submits which job.
 - **Data access control**: Enforce Spark SQL `GRANT/REVOKE` via Apache Ranger for table-level access.
-- **Credential injection**: Pass storage credentials via [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) secrets, never in code; use IAM roles.
+- **Credential injection**: Pass storage credentials via [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) secrets, never in code; use IAM roles.
 - **Network security**: Restrict cluster communication to private VPC; no public endpoints for Spark UI.
 
 ## Handoff

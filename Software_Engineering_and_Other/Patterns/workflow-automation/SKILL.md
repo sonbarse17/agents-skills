@@ -35,7 +35,7 @@ sequence of commands.**
 
 Polling wastes cycles and adds latency proportional to the poll interval; it also invites a race
 where two pollers both see the same unhandled condition. An event-driven trigger — a webhook, a
-queue message, a [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) watch — reacts immediately and, if built on an at-least-once delivery
+queue message, a [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) watch — reacts immediately and, if built on an at-least-once delivery
 system, gives you an explicit signal to deduplicate against instead of an implicit one you have to
 infer from timing.
 

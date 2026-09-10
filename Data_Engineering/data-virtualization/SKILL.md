@@ -96,7 +96,7 @@ Primary requirement?
 │   └── Trino (vanilla)
 ├── Enterprise security, caching, managed service
 │   ├── On-prem / self-managed → Starburst Enterprise
-│   └── [Serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) [multi-cloud](../../cloud/common/other/multi-cloud/SKILL.md) → Starburst Galaxy
+│   └── [Serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) [multi-cloud](../../cloud/common/other/multi-cloud/SKILL.md) → Starburst Galaxy
 ├── BI optimization, acceleration, self-service
 │   └── Dremio (Reflections, VDS, lineage)
 ├── Hadoop-native, older ecosystem
@@ -185,7 +185,7 @@ elasticsearch.query-timeout=30s
 ```
 
 #### Connector Security Best Practices
-Credentials stored in secrets manager ([Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS Secrets Manager, [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) secrets). Never hardcode passwords in property files. Use `${VARIABLE}` substitution for environment variables or encrypted secrets. TLS enabled for all JDBC connections. Read-only access for production connectors wherever possible.
+Credentials stored in secrets manager ([Vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md), AWS Secrets Manager, [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) secrets). Never hardcode passwords in property files. Use `${VARIABLE}` substitution for environment variables or encrypted secrets. TLS enabled for all JDBC connections. Read-only access for production connectors wherever possible.
 
 ### Step 4: Query Pushdown
 
@@ -424,7 +424,7 @@ JOIN "s3"."lake"."orders" o ON c.customer_id = o.customer_id;
 ```
 
 #### Starburst Enterprise Features
-Data lake caching: auto-caches hot data from S3/ADLS/GCS to local SSD. Built-in RBAC: table/row/column-level via Ranger. Warp Speed native engine for faster queries. Security: Kerberos, LDAP, OAuth, TLS. Starburst Galaxy offers [serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) [multi-cloud](../../cloud/common/other/multi-cloud/SKILL.md) managed service. Use Starburst for regulated enterprises needing enterprise security or [multi-cloud](../../cloud/common/other/multi-cloud/SKILL.md) analytics with caching.
+Data lake caching: auto-caches hot data from S3/ADLS/GCS to local SSD. Built-in RBAC: table/row/column-level via Ranger. Warp Speed native engine for faster queries. Security: Kerberos, LDAP, OAuth, TLS. Starburst Galaxy offers [serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) [multi-cloud](../../cloud/common/other/multi-cloud/SKILL.md) managed service. Use Starburst for regulated enterprises needing enterprise security or [multi-cloud](../../cloud/common/other/multi-cloud/SKILL.md) analytics with caching.
 
 #### Alluxio — Data Virtualization Layer
 Alluxio is a virtual distributed file system that unifies data access across disparate storage. Acts as caching and metadata layer between compute engines and storage backends. Caches hot data on local SSDs/memory for 10-100x faster data access on repeated queries. Supports any storage (S3, ADLS, GCS, HDFS, NFS) and any compute (Spark, Trino, MapReduce, Flink). Namespace service provides a single mounted namespace across storage systems.

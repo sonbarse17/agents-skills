@@ -137,13 +137,13 @@ what turns [runbook](../runbook/SKILL.md)-following into real operational judgme
    1. Confirm the alert is real: check the "Memory Usage" panel on the
       `payments-api` Grafana dashboard. Expected: sustained >85% for the
       affected pod(s).
-   2. Check for a recent deploy: `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) rollout history deployment/payments-api -n payments`.
+   2. Check for a recent deploy: `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) rollout history deployment/payments-api -n payments`.
       If a deploy occurred in the last 2 hours, STOP here and escalate
       per the "Escalation triggers" section below — do not proceed to
       step 3. A memory regression tied to a recent deploy needs the
       deploying engineer or a senior engineer, not a restart.
    3. If no recent deploy, restart the affected pod:
-      `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) delete pod <pod-name> -n payments` (the Deployment will
+      `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) delete pod <pod-name> -n payments` (the Deployment will
       recreate it — this is a documented, approved action for this
       alert, not an ad hoc restart).
    4. Verify: memory usage on the new pod stays under 70% for 15 minutes
@@ -245,7 +245,7 @@ what turns [runbook](../runbook/SKILL.md)-following into real operational judgme
 
 - **Symptom:** A responder performs an action that isn't in the [runbook](../runbook/SKILL.md)
   at all — for example, restarting a production database, force-deleting
-  a stuck [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) resource, or manually editing data — because it
+  a stuck [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) resource, or manually editing data — because it
   "should" fix the symptom, without any documented approval for that
   specific action.
   **Fix:** This is a destructive-action risk, not routine

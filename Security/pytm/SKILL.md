@@ -354,7 +354,7 @@ tm = TM("Cloud [Microservices](../../Software_Engineering_and_Other/Patterns/mic
 cloud = Boundary("Cloud Provider VPC")
 user = Actor("Mobile App")
 
-# [Serverless](../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) functions
+# [Serverless](../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) functions
 api_gateway = Lambda("API Gateway")
 api_gateway.inBoundary = cloud
 api_gateway.implementsAPI = True

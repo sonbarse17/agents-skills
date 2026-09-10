@@ -59,7 +59,7 @@ useradd -r -s /usr/sbin/nologin -d /opt/myapp -c "MyApp Service Account" myapp
 useradd -m -s /bin/bash -e 2025-12-31 -c "Contractor - Bob Lee" blee
 
 # Create user and add to multiple supplementary groups at creation time
-useradd -m -s /bin/bash -G [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md),developers,ssh-users -c "Dev User" devuser
+useradd -m -s /bin/bash -G [docker](../../../containers-orchestration/docker/other/docker/SKILL.md),developers,ssh-users -c "Dev User" devuser
 ```
 
 ### Modifying Users
@@ -67,7 +67,7 @@ useradd -m -s /bin/bash -G [docker](../../../DevOps_and_Cloud/Containers_and_Orc
 ```bash
 # Add a user to a supplementary group (preserving existing groups with -a)
 usermod -aG sudo jsmith
-usermod -aG [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md),developers jsmith
+usermod -aG [docker](../../../containers-orchestration/docker/other/docker/SKILL.md),developers jsmith
 
 # Change the user's login shell
 usermod -s /bin/zsh jsmith
@@ -163,8 +163,8 @@ visudo -f /etc/sudoers.d/developers
 # Allow a deploy user full sudo with no password
 deploy ALL=(ALL) NOPASSWD: ALL
 
-# Allow ops team to run [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) commands only
-%ops ALL=(ALL) NOPASSWD: /usr/bin/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md), /usr/bin/[docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md)
+# Allow ops team to run [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) commands only
+%ops ALL=(ALL) NOPASSWD: /usr/bin/[docker](../../../containers-orchestration/docker/other/docker/SKILL.md), /usr/bin/[docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md)
 
 # Allow a user to run commands as a specific service account
 jsmith ALL=(myapp) NOPASSWD: /opt/myapp/bin/*
@@ -314,7 +314,7 @@ echo '%linux\ admins ALL=(ALL) ALL' > /etc/sudoers.d/ad-admins
 #!/bin/bash
 # bulk-create-users.sh
 # CSV format: username,fullname,groups,shell
-# Example: jsmith,Jane Smith,developers;[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md),/bin/bash
+# Example: jsmith,Jane Smith,developers;[docker](../../../containers-orchestration/docker/other/docker/SKILL.md),/bin/bash
 
 CSV_FILE="${1:?Usage: $0 <users.csv>}"
 

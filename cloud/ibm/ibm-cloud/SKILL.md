@@ -38,12 +38,12 @@ depends_on:
 # IBM Cloud
 
 ## Purpose
-Manage IBM Cloud resources: VPC infrastructure, IKS ([Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)), Object Storage, IAM, networking, and automation with Terraform and Schematics.
+Manage IBM Cloud resources: VPC infrastructure, IKS ([Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)), Object Storage, IAM, networking, and automation with Terraform and Schematics.
 
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "ibm cloud", "iks", "ibm [kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)", "ibm vpc", "ibm cloud terraform", "ibm schematics", "ibm satellite", "ibm direct link", "ibm cloud object storage", "ibm cloud databases".
+Exact user phrases: "ibm cloud", "iks", "ibm [kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)", "ibm vpc", "ibm cloud terraform", "ibm schematics", "ibm satellite", "ibm direct link", "ibm cloud object storage", "ibm cloud databases".
 
 ### Input Context
 - IBM Cloud account and resource group structure.
@@ -76,8 +76,8 @@ Create VPC with public/private subnets → Deploy IKS cluster with 3 worker node
 ## Decision Tree: IBM Cloud Compute Options
 | Option | Use Case | Management |
 |--------|----------|------------|
-| **IKS (IBM [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Service)** | Containerized workloads | Managed control plane |
-| **Code Engine** | [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) containers, batch jobs | Fully managed, scale-to-zero |
+| **IKS (IBM [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Service)** | Containerized workloads | Managed control plane |
+| **Code Engine** | [Serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) containers, batch jobs | Fully managed, scale-to-zero |
 | **VSI (Virtual Server Instance)** | Traditional apps, legacy | Self-managed OS |
 | **Bare Metal** | High-performance, licensed DBs | Self-managed, dedicated |
 | **Cloud Foundry** | PaaS apps (legacy) | Managed runtime |
@@ -165,7 +165,7 @@ resource "ibm_is_network_acl" "nacl" {
 }
 ```
 
-### Step 3: IKS (IBM [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Service)
+### Step 3: IKS (IBM [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Service)
 ```hcl
 resource "ibm_container_vpc_cluster" "cluster" {
   name              = "iks-prod"
@@ -420,7 +420,7 @@ resource "ibm_en_destination" "pagerduty" {
 - Satellite locations require 3+ hosts for control plane HA.
 - Direct Link supports 1 Gbps, 5 Gbps, and 10 Gbps connections at minimum.
 - IBM Cloud Databases for [PostgreSQL](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md) supports read replicas across zones.
-- Use Code Engine for batch jobs and [serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) workloads to reduce compute costs.
+- Use Code Engine for batch jobs and [serverless](../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) workloads to reduce compute costs.
 - VPC file shares are available via VPC file storage service (NFS).
 - IAM trusted profiles allow assigning service IDs based on conditions.
 - Activity Tracker routing: send to COS bucket for long-term retention.
@@ -438,14 +438,14 @@ resource "ibm_en_destination" "pagerduty" {
 - Ignoring IBM Cloud Secrets Manager — plaintext API keys in code.
 
 ## References
-  - references/iks-[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md).md — IKS Cluster and Worker Pool Management
+  - references/iks-[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).md — IKS Cluster and Worker Pool Management
   - references/ibm-vpc-networking.md — VPC, Subnets, ACLs, Security Groups
   - ../../../Global_References/ibm-cloud-advanced.md — IBM Cloud Advanced Topics
   - ../../../Global_References/ibm-cloud-fundamentals.md — IBM Cloud Fundamentals
   - references/ibm-satellite.md — Satellite for Hybrid Deployments
   - references/ibm-cos.md — Cloud Object Storage Configuration
 ## Handoff
-- `devops-[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)` for workload deployment on IKS clusters.
+- `devops-[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)` for workload deployment on IKS clusters.
 - `devops-terraform` for Terraform state and module patterns for IBM Cloud.
 - `devops-[hybrid-cloud](../../common/other/hybrid-cloud/SKILL.md)` for connectivity between IBM Cloud and on-prem/other clouds.
 - `devops-[backup-dr](../../../Software_Engineering_and_Other/Frontend/backup-dr/SKILL.md)` for backup strategies using IBM Cloud services.
@@ -453,14 +453,14 @@ resource "ibm_en_destination" "pagerduty" {
 
 ## Architecture Decision Trees
 
-### IBM Cloud IKS vs [OpenShift](../../../DevOps_and_Cloud/Containers_and_Orchestration/openshift/SKILL.md)
+### IBM Cloud IKS vs [OpenShift](../../../containers-orchestration/openshift/other/openshift/SKILL.md)
 
-| Decision | IKS (IBM [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Service) | [OpenShift](../../../DevOps_and_Cloud/Containers_and_Orchestration/openshift/SKILL.md) (ROKS) |
+| Decision | IKS (IBM [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Service) | [OpenShift](../../../containers-orchestration/openshift/other/openshift/SKILL.md) (ROKS) |
 |---|---|---|
 | Management | IBM-managed control plane | Red Hat managed |
-| Container runtime | containerd | CRI-O ([OpenShift](../../../DevOps_and_Cloud/Containers_and_Orchestration/openshift/SKILL.md)) |
-| Networking | IBM Cloud VLAN + Calico | [OpenShift](../../../DevOps_and_Cloud/Containers_and_Orchestration/openshift/SKILL.md) SDN (OVN-K8s) |
-| Developer tooling | [kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md), standard K8s | oc, Web Console, Operators |
+| Container runtime | containerd | CRI-O ([OpenShift](../../../containers-orchestration/openshift/other/openshift/SKILL.md)) |
+| Networking | IBM Cloud VLAN + Calico | [OpenShift](../../../containers-orchestration/openshift/other/openshift/SKILL.md) SDN (OVN-K8s) |
+| Developer tooling | [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md), standard K8s | oc, Web Console, Operators |
 | Security | IBM Cloud IAM + RBAC | SCC + built-in cert rotation |
 | Best for | Standard K8s workloads | Enterprise, compliance-heavy |
 

@@ -20,7 +20,7 @@ depends_on:
 
 # GCP Cloud Functions
 
-Build and deploy event-driven [serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) applications with Google Cloud Functions (Gen1 and Gen2).
+Build and deploy event-driven [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) applications with Google Cloud Functions (Gen1 and Gen2).
 
 ## When to Use
 
@@ -276,4 +276,4 @@ resource "google_cloudfunctions2_function" "processor" {
 - **[gcp-networking](../../networking/gcp-networking/SKILL.md)** - VPC connectors for accessing private resources from functions
 - **[gcp-cloud-sql](../../database/gcp-cloud-sql/SKILL.md)** - Connecting Cloud Functions to managed databases
 - **[terraform-gcp](../../iac/terraform-gcp/SKILL.md)** - Deploy Cloud Functions with Infrastructure as Code
-- **[gcp-gke](../../containers/gcp-gke/SKILL.md)** - When workloads outgrow [serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) and need [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)
+- **[gcp-gke](../../../../containers-orchestration/gke/cluster-management/gcp-gke/SKILL.md)** - When workloads outgrow [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) and need [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)

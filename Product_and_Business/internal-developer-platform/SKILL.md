@@ -22,7 +22,7 @@ depends_on:
 
 # Internal Developer Platform
 
-An IDP is not "[Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) with a UI bolted on." It is a product, built by a team, for one customer
+An IDP is not "[Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) with a UI bolted on." It is a product, built by a team, for one customer
 segment: the engineers who have to ship through it every day. Platform teams that forget this build
 infrastructure nobody asked for, then wonder why adoption stalls and shadow processes reappear.
 
@@ -67,8 +67,8 @@ running when something breaks at 2 a.m. If a developer can't answer "what actual
 click deploy" in one sentence, the platform has hidden something it shouldn't have.
 
 - **Show the generated manifest**, don't just apply it silently — link to the Terraform plan or
-  [Kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) YAML the platform produced.
-- **Keep debugging primitives available**: logs, `[kubectl](../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)`, and direct dashboard access should
+  [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) YAML the platform produced.
+- **Keep debugging primitives available**: logs, `[kubectl](../../containers-orchestration/kubernetes/other/kubectl/SKILL.md)`, and direct dashboard access should
   never require a platform-team ticket to reach.
 - **Never abstract security boundaries** into invisibility — see `[policy-as-code](../../Security/policy-as-code/SKILL.md)` for keeping
   guardrails legible instead of magic.

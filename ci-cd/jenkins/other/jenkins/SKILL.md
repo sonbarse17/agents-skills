@@ -92,12 +92,12 @@ pipeline {
 
 ## Agent Configuration
 
-### [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Agent
+### [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) Agent
 
 ```groovy
 pipeline {
     agent {
-        [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) {
+        [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) {
             image 'node:20'
             args '-v /tmp:/tmp'
         }
@@ -112,12 +112,12 @@ pipeline {
 }
 ```
 
-### [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Agent
+### [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Agent
 
 ```groovy
 pipeline {
     agent {
-        [kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) {
+        [kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) {
             yaml '''
                 apiVersion: v1
                 kind: Pod
@@ -129,8 +129,8 @@ pipeline {
                     - sleep
                     args:
                     - infinity
-                  - name: [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
-                    image: [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md):24-dind
+                  - name: [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)
+                    image: [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md):24-dind
                     securityContext:
                       privileged: true
             '''
@@ -152,7 +152,7 @@ pipeline {
 
 ```groovy
 pipeline {
-    agent { label 'linux && [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)' }
+    agent { label 'linux && [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)' }
     stages {
         stage('Build') {
             steps {
@@ -198,7 +198,7 @@ pipeline {
     
     environment {
         AWS_CREDS = credentials('aws-credentials')
-        DOCKER_CREDS = credentials('[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-hub')
+        DOCKER_CREDS = credentials('[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)-hub')
     }
     
     stages {
@@ -273,7 +273,7 @@ resources/
 def call(Map config = [:]) {
     def nodeVersion = config.nodeVersion ?: '20'
     
-    [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).image("node:${nodeVersion}").inside {
+    [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md).image("node:${nodeVersion}").inside {
         sh 'npm ci'
         sh 'npm run build'
     }
@@ -319,7 +319,7 @@ node('linux') {
         }
         
         stage('Build') {
-            [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).image('node:20').inside {
+            [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md).image('node:20').inside {
                 sh 'npm ci'
                 sh 'npm run build'
             }
@@ -352,8 +352,8 @@ node('linux') {
 def plugins = [
     'workflow-aggregator',      // Pipeline
     'git',                      // Git integration
-    '[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-workflow',          // [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Pipeline
-    '[kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)',               // [Kubernetes](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) agent
+    '[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)-workflow',          // [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) Pipeline
+    '[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)',               // [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) agent
     'credentials-binding',      // Credentials
     'blueocean',               // Blue Ocean UI
     'job-dsl',                 // Job DSL
@@ -386,7 +386,7 @@ credentials:
     domainCredentials:
       - credentials:
           - usernamePassword:
-              id: "[docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-hub"
+              id: "[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)-hub"
               username: "user"
               password: ${DOCKER_PASSWORD}
 ```

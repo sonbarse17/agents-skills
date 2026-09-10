@@ -73,7 +73,7 @@ freeze window short enough to be acceptable to the business.
 A cutover plan without a tested rollback is a bet with no exit. Know exactly how to redirect
 traffic back to the old environment, how stale the old environment's data will be if you do, and
 how long that rollback takes — before you need any of that under pressure. This is the same
-discipline as `[deployment-strategies](../../../../DevOps_and_Cloud/Containers_and_Orchestration/deployment-strategies/SKILL.md)`, applied to an environment-level cutover instead of a
+discipline as `[deployment-strategies](../../../../ci-cd/common/deployment/deployment-strategies/SKILL.md)`, applied to an environment-level cutover instead of a
 release.
 
 ```

@@ -137,8 +137,8 @@ nancy go.sum                 # Go dependency vulnerability scanner
 # .NET
 dotnet list package --vulnerable  # List vulnerable NuGet packages
 
-# [Docker](../../Containers_and_Orchestration/docker/SKILL.md)
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) scout quick <image>   # [Docker](../../Containers_and_Orchestration/docker/SKILL.md) image vulnerability scan
+# [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) scout quick <image>   # [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) image vulnerability scan
 trivy image <image>          # Trivy container scanner
 ```
 
@@ -541,7 +541,7 @@ What do you need to test?
 │   └── Fuzzing → AFL, libFuzzer, RESTler
 │
 └── Infrastructure vulnerabilities
-    ├── Container scanning → Trivy, Clair, [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Scout
+    ├── Container scanning → Trivy, Clair, [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Scout
     ├── IaC scanning → Checkov, tfsec, cfn-nag
     └── Cloud posture → Prowler, ScoutSuite
 ```

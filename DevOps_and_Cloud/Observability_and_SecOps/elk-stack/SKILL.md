@@ -34,11 +34,11 @@ Use this skill when:
 
 ## Prerequisites
 
-- [Docker](../../Containers_and_Orchestration/docker/SKILL.md) or server infrastructure
+- [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) or server infrastructure
 - Sufficient disk space for log storage
 - Network access from log sources
 
-## [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Deployment
+## [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Deployment
 
 ```yaml
 # [docker-compose](../../Containers_and_Orchestration/[docker](../../Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml
@@ -46,7 +46,7 @@ version: '3.8'
 
 services:
   elasticsearch:
-    image: [docker](../../Containers_and_Orchestration/docker/SKILL.md).elastic.co/elasticsearch/elasticsearch:8.11.0
+    image: [docker](../../../containers-orchestration/docker/other/docker/SKILL.md).elastic.co/elasticsearch/elasticsearch:8.11.0
     environment:
       - discovery.type=single-node
       - xpack.security.enabled=false
@@ -57,7 +57,7 @@ services:
       - elasticsearch-data:/usr/share/elasticsearch/data
 
   logstash:
-    image: [docker](../../Containers_and_Orchestration/docker/SKILL.md).elastic.co/logstash/logstash:8.11.0
+    image: [docker](../../../containers-orchestration/docker/other/docker/SKILL.md).elastic.co/logstash/logstash:8.11.0
     volumes:
       - ./logstash/pipeline:/usr/share/logstash/pipeline
       - ./logstash/config:/usr/share/logstash/config
@@ -68,7 +68,7 @@ services:
       - elasticsearch
 
   kibana:
-    image: [docker](../../Containers_and_Orchestration/docker/SKILL.md).elastic.co/kibana/kibana:8.11.0
+    image: [docker](../../../containers-orchestration/docker/other/docker/SKILL.md).elastic.co/kibana/kibana:8.11.0
     ports:
       - "5601:5601"
     environment:
@@ -77,12 +77,12 @@ services:
       - elasticsearch
 
   filebeat:
-    image: [docker](../../Containers_and_Orchestration/docker/SKILL.md).elastic.co/beats/filebeat:8.11.0
+    image: [docker](../../../containers-orchestration/docker/other/docker/SKILL.md).elastic.co/beats/filebeat:8.11.0
     user: root
     volumes:
       - ./filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
-      - /var/lib/[docker](../../Containers_and_Orchestration/docker/SKILL.md)/containers:/var/lib/[docker](../../Containers_and_Orchestration/docker/SKILL.md)/containers:ro
-      - /var/run/[docker](../../Containers_and_Orchestration/docker/SKILL.md).sock:/var/run/[docker](../../Containers_and_Orchestration/docker/SKILL.md).sock:ro
+      - /var/lib/[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)/containers:/var/lib/[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)/containers:ro
+      - /var/run/[docker](../../../containers-orchestration/docker/other/docker/SKILL.md).sock:/var/run/[docker](../../../containers-orchestration/docker/other/docker/SKILL.md).sock:ro
     depends_on:
       - logstash
 
@@ -263,10 +263,10 @@ filter {
 filebeat.inputs:
   - type: container
     paths:
-      - '/var/lib/[docker](../../Containers_and_Orchestration/docker/SKILL.md)/containers/*/*.log'
+      - '/var/lib/[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)/containers/*/*.log'
     processors:
       - add_docker_metadata:
-          host: "unix:///var/run/[docker](../../Containers_and_Orchestration/docker/SKILL.md).sock"
+          host: "unix:///var/run/[docker](../../../containers-orchestration/docker/other/docker/SKILL.md).sock"
 
   - type: log
     enabled: true

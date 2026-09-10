@@ -51,22 +51,22 @@ Syft is a CLI tool and Go library for generating comprehensive Software Bills of
 Alpine (apk), C/C++ (conan), Dart (pub), Debian/Ubuntu (dpkg), Dotnet (deps.json), Go (go.mod), Java (JAR/WAR/EAR/Maven/Gradle), JavaScript (npm/yarn), PHP (composer), [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) (pip/poetry/setup.py), Red Hat (RPM), Ruby (gem), Rust (cargo), Swift (cocoapods)
 
 **Container & System:**
-OCI images, [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) images, Singularity, container layers, Linux distributions
+OCI images, [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) images, Singularity, container layers, Linux distributions
 
 ## Quick Start
 
 Generate SBOM for container image:
 
 ```bash
-# Using [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
-[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) run --rm -v $(pwd):/out anchore/syft:latest <image> -o cyclonedx-json=/out/sbom.json
+# Using [Docker](../../containers-orchestration/docker/other/docker/SKILL.md)
+[docker](../../containers-orchestration/docker/other/docker/SKILL.md) run --rm -v $(pwd):/out anchore/syft:latest <image> -o cyclonedx-json=/out/sbom.json
 
 # Local installation
 syft <image> -o cyclonedx-json=sbom.json
 
 # Examples
 syft alpine:latest -o cyclonedx-json
-syft [docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).io/nginx:latest -o spdx-json
+syft [docker](../../containers-orchestration/docker/other/docker/SKILL.md).io/nginx:latest -o spdx-json
 syft dir:/path/to/project -o cyclonedx-json
 ```
 
@@ -247,8 +247,8 @@ syft <image> --platform all -o cyclonedx-json
 Access images from private registries:
 
 ```bash
-# Using [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) credentials
-[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) login registry.example.com
+# Using [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) credentials
+[docker](../../containers-orchestration/docker/other/docker/SKILL.md) login registry.example.com
 syft registry.example.com/private/image:tag -o cyclonedx-json
 
 # Using environment variables
@@ -263,17 +263,17 @@ syft registry.example.com/private/image:tag -o cyclonedx-json
 
 ### Pattern 3: OCI Archive Scanning
 
-Scan saved container images (OCI or [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) format):
+Scan saved container images (OCI or [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) format):
 
 ```bash
 # Save image to archive
-[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) save nginx:latest -o nginx.tar
+[docker](../../containers-orchestration/docker/other/docker/SKILL.md) save nginx:latest -o nginx.tar
 
 # Scan archive
 syft oci-archive:nginx.tar -o cyclonedx-json=sbom.json
 
-# Or scan [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) archive
-syft [docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-archive:nginx.tar -o cyclonedx-json=sbom.json
+# Or scan [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) archive
+syft [docker](../../containers-orchestration/docker/other/docker/SKILL.md)-archive:nginx.tar -o cyclonedx-json=sbom.json
 ```
 
 ### Pattern 4: Comparing SBOMs Between Versions
@@ -375,7 +375,7 @@ Attach SBOMs to container images:
 # Using ORAS
 oras attach <image> --artifact-type application/vnd.cyclonedx+json sbom.json
 
-# Using [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) manifest
+# Using [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) manifest
 # Store SBOM as additional layer or separate artifact
 ```
 
@@ -435,9 +435,9 @@ Verify package manifest files exist (package.json, requirements.txt, go.mod, etc
 
 ### Issue: Registry Authentication Failure
 
-**Solution**: Ensure [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) credentials are configured or use explicit auth:
+**Solution**: Ensure [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) credentials are configured or use explicit auth:
 ```bash
-[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) login <registry>
+[docker](../../containers-orchestration/docker/other/docker/SKILL.md) login <registry>
 # Then run syft
 syft <registry>/<image> -o cyclonedx-json
 ```

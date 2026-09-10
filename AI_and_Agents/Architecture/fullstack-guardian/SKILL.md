@@ -61,7 +61,7 @@ Load detailed guidance based on context:
 | Security Checklist | `../../../Global_References/security-checklist.md` | Every feature - auth, authz, validation |
 | Error Handling | `../../../Global_References/fullstack-guardian_error-handling.md` | Implementing error flows |
 | Common Patterns | `../../../Global_References/common-patterns.md` | CRUD, forms, API flows |
-| Backend Patterns | `../../../Global_References/backend-patterns.md` | [Microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md), queues, [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md), [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) |
+| Backend Patterns | `../../../Global_References/backend-patterns.md` | [Microservices](../../../Software_Engineering_and_Other/Patterns/microservices/SKILL.md), queues, [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md), [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) |
 | Frontend Patterns | `../../../Global_References/frontend-patterns.md` | Real-time, optimization, accessibility, testing |
 | Integration Patterns | `../../../Global_References/integration-patterns.md` | Type sharing, deployment, architecture decisions |
 | API Design | `../../../Global_References/api-design-standards.md` | REST/GraphQL APIs, versioning, CORS, validation |

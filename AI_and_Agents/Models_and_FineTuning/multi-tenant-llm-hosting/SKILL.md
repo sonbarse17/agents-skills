@@ -32,7 +32,7 @@ Host many teams/customers on shared inference infrastructure without sacrificing
 
 ## Prerequisites
 
-- [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) cluster with GPU node pools
+- [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster with GPU node pools
 - API gateway or LLM gateway (LiteLLM, Envoy, Kong)
 - Prometheus + Grafana for per-tenant [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
 - Redis or equivalent for rate limiting state
@@ -614,5 +614,5 @@ groups:
 - [llm-gateway](../../networking/[llm-gateway](../llm-gateway/SKILL.md)/) - Key management and traffic routing
 - [llm-cost-optimization](../../../devops/ai/[llm-cost-optimization](../llm-[cost-optimization](../../../DevOps_and_Cloud/Cloud_Providers/cost-optimization/SKILL.md)/SKILL.md)/) - Cost controls and optimization tactics
 - [zero-trust](../../../security/network/[zero-trust](../../../Security/zero-trust/SKILL.md)/) - Identity-centric network and access patterns
-- [gpu-[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-operations](../[gpu-[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-operations](../../../DevOps_and_Cloud/Containers_and_Orchestration/gpu-[kubernetes-operations](../../../DevOps_and_Cloud/Containers_and_Orchestration/[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-operations/SKILL.md)/SKILL.md)/) - GPU cluster management
+- [gpu-[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-operations](../[gpu-[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-operations](../../../DevOps_and_Cloud/Containers_and_Orchestration/gpu-[kubernetes-operations](../../../DevOps_and_Cloud/Containers_and_Orchestration/[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-operations/SKILL.md)/SKILL.md)/) - GPU cluster management
 - [llm-inference-scaling](../[llm-inference-scaling](../llm-inference-scaling/SKILL.md)/) - [Autoscaling](../../../Software_Engineering_and_Other/Backend/autoscaling/SKILL.md) inference workloads

@@ -37,7 +37,7 @@ Use this skill when:
 ## Prerequisites
 
 - [Python](../../Software_Engineering_and_Other/Languages/python/SKILL.md) 3.10+ for guardrail code examples
-- [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) or [Podman](../../DevOps_and_Cloud/Containers_and_Orchestration/podman/SKILL.md) for sandbox execution
+- [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) or [Podman](../../containers-orchestration/podman/other/podman/SKILL.md) for sandbox execution
 - [OpenTelemetry](../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) collector for [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logging
 - Familiarity with your agent framework (LangChain, CrewAI, Autogen, custom)
 - Access to policy engine (OPA/Cedar) for permission boundaries
@@ -192,7 +192,7 @@ async def handle_user_message(message: str, session_id: str, **kwargs):
 
 Never let an agent execute tools directly on the host. Isolate every tool invocation inside a sandbox.
 
-### [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Sandbox Configuration
+### [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) Sandbox Configuration
 
 ```yaml
 # [docker-compose](../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).agent-sandbox.yml
@@ -242,8 +242,8 @@ echo "deb [signed-by=/usr/share/keyrings/gvisor-archive-keyring.gpg] https://sto
   sudo tee /etc/apt/sources.list.d/gvisor.list
 sudo apt-get update && sudo apt-get install -y runsc
 
-# Configure [Docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) to use gVisor
-cat <<'EOF' | sudo tee /etc/[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)/daemon.json
+# Configure [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) to use gVisor
+cat <<'EOF' | sudo tee /etc/[docker](../../containers-orchestration/docker/other/docker/SKILL.md)/daemon.json
 {
   "runtimes": {
     "runsc": {
@@ -256,10 +256,10 @@ cat <<'EOF' | sudo tee /etc/[docker](../../DevOps_and_Cloud/Containers_and_Orche
   }
 }
 EOF
-sudo systemctl restart [docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
+sudo systemctl restart [docker](../../containers-orchestration/docker/other/docker/SKILL.md)
 
 # Run agent sandbox with gVisor
-[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) run --runtime=runsc --rm \
+[docker](../../containers-orchestration/docker/other/docker/SKILL.md) run --runtime=runsc --rm \
   --read-only \
   --memory=512m \
   --cpus=0.5 \
@@ -1147,10 +1147,10 @@ mkdir -p "/var/log/agent-incidents/${INCIDENT_ID}"
 INCIDENT_DIR="/var/log/agent-incidents/${INCIDENT_ID}"
 
 # Capture running containers
-[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) ps --filter "label=component=agent" --format json > "${INCIDENT_DIR}/containers.json"
+[docker](../../containers-orchestration/docker/other/docker/SKILL.md) ps --filter "label=component=agent" --format json > "${INCIDENT_DIR}/containers.json"
 
 # Capture recent logs (last 30 minutes)
-[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) logs agent-platform --since 30m > "${INCIDENT_DIR}/agent-logs.txt" 2>&1 || true
+[docker](../../containers-orchestration/docker/other/docker/SKILL.md) logs agent-platform --since 30m > "${INCIDENT_DIR}/agent-logs.txt" 2>&1 || true
 
 # Export Redis state
 redis-cli --rdb "${INCIDENT_DIR}/redis-snapshot.rdb" || true
@@ -1160,8 +1160,8 @@ echo "[+] Revoking agent [Vault](../../Software_Engineering_and_Other/Miscellane
 [vault](../../Software_Engineering_and_Other/Miscellaneous/vault/SKILL.md) token revoke -mode=orphan -prefix "agent-" || true
 
 # 4. Capture [audit](../../AI_and_Agents/Operations/audit/SKILL.md) logs for forensics
-if command -v [kubectl](../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) &> /dev/null; then
-    [kubectl](../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) logs -l app=agent-platform --since=1h --all-containers \
+if command -v [kubectl](../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) &> /dev/null; then
+    [kubectl](../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) logs -l app=agent-platform --since=1h --all-containers \
       > "${INCIDENT_DIR}/k8s-agent-logs.txt" 2>&1 || true
 fi
 
@@ -1228,7 +1228,7 @@ redis-cli KEYS "agent:killswitch:*" | xargs -r redis-cli DEL
 ### Problem: Sandbox Container Keeps Crashing
 
 **Symptoms**: Tool execution fails with OOM or timeout errors
-**Diagnosis**: Check `[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) stats` for resource usage; review `pids_limit` setting
+**Diagnosis**: Check `[docker](../../containers-orchestration/docker/other/docker/SKILL.md) stats` for resource usage; review `pids_limit` setting
 **Fix**: Increase `mem_limit` if legitimate tools need more memory; tighten `pids_limit` if fork bombs are the issue
 
 ### Problem: Kill Switch Not Propagating

@@ -587,8 +587,8 @@ interface BffLogContext {
 | **Axios / node-fetch** | HTTP client for backing services |
 | **opossum** | Circuit breaker |
 | **pino** | Structured logging with request tracing |
-| **[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)** | Per-BFF [containerization](../../../DevOps_and_Cloud/Containers_and_Orchestration/containerization/SKILL.md) |
-| **[Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)** | BFF deployment and scaling |
+| **[Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)** | Per-BFF [containerization](../../../containers-orchestration/docker/other/containerization/SKILL.md) |
+| **[Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)** | BFF deployment and scaling |
 | **Prometheus** | BFF metrics (latency, error rate) |
 | **Grafana** | BFF [monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md) [dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/dashboards/SKILL.md) |
 | **jaeger/zipkin** | Distributed tracing |

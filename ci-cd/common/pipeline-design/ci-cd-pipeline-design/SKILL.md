@@ -124,7 +124,7 @@ change.
        runs-on: ubuntu-latest
        steps:
          - uses: actions/checkout@v4
-         - run: [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) build -t myapp:${{ [github](../../../github-actions/other/github/SKILL.md).sha }} .
+         - run: [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) build -t myapp:${{ [github](../../../github-actions/other/github/SKILL.md).sha }} .
    ```
 
    GitLab CI equivalent (`.[gitlab-ci](../../../gitlab-ci/pipelines/gitlab-ci/SKILL.md).yml`):
@@ -153,7 +153,7 @@ change.
      stage: build
      needs: ["test"]
      script:
-       - [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) build -t myapp:$CI_COMMIT_SHORT_SHA .
+       - [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) build -t myapp:$CI_COMMIT_SHORT_SHA .
    ```
 
 3. **Cache dependencies, not build output you can't trust.** Cache package
@@ -250,7 +250,7 @@ change.
 - **Symptom:** Self-hosted runner has stale tooling and pipeline behavior
   differs from [GitHub](../../../github-actions/other/github/SKILL.md)-hosted runners used elsewhere.
   **Fix:** Pin the runner image/tooling versions explicitly in the
-  workflow (language runtime, [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) version) rather than relying on
+  workflow (language runtime, [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) version) rather than relying on
   whatever happens to be installed on the runner host.
 
 ## Worked example
@@ -294,9 +294,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
-          [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) build -t ghcr.io/${{ [github](../../../github-actions/other/github/SKILL.md).repository }}:${{ [github](../../../github-actions/other/github/SKILL.md).sha }} .
-          echo "${{ secrets.GITHUB_TOKEN }}" | [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) login ghcr.io -u ${{ [github](../../../github-actions/other/github/SKILL.md).actor }} --password-stdin
-          [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) push ghcr.io/${{ [github](../../../github-actions/other/github/SKILL.md).repository }}:${{ [github](../../../github-actions/other/github/SKILL.md).sha }}
+          [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) build -t ghcr.io/${{ [github](../../../github-actions/other/github/SKILL.md).repository }}:${{ [github](../../../github-actions/other/github/SKILL.md).sha }} .
+          echo "${{ secrets.GITHUB_TOKEN }}" | [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) login ghcr.io -u ${{ [github](../../../github-actions/other/github/SKILL.md).actor }} --password-stdin
+          [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) push ghcr.io/${{ [github](../../../github-actions/other/github/SKILL.md).repository }}:${{ [github](../../../github-actions/other/github/SKILL.md).sha }}
 
   deploy-staging:
     needs: build-image

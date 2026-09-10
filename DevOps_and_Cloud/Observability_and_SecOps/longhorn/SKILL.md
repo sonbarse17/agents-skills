@@ -39,7 +39,7 @@ Define and enforce Longhorn distributed storage patterns for installation, volum
 User request includes: `longhorn`, `distributed storage`, `block storage`, `rancher longhorn`, `persistent volume`, `storageclass`, `backup target`, `disaster recovery`, `volume snapshot`, `longhorn replication`.
 
 ### Input Context
-- [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) cluster version and size
+- [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster version and size
 - Existing storage solution (if migrating)
 - Storage requirements (IOPS, [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md), replication factor)
 - Backup target (S3, NFS, SMB)
@@ -88,7 +88,7 @@ helm install longhorn longhorn/longhorn \
 
 | Requirement | Minimum | Recommended |
 |---|---|---|
-| **[Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)** | 1.21+ | 1.28+ |
+| **[Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)** | 1.21+ | 1.28+ |
 | **Nodes** | 3 (for HA) | 3+ |
 | **CPU per node** | 1 core | 4 cores |
 | **RAM per node** | 2 GB | 8 GB |
@@ -264,7 +264,7 @@ helm upgrade longhorn longhorn/longhorn \
   --version 1.6.1
 
 # 4. Verify
-[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n longhorn-system get pods -w
+[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) -n longhorn-system get pods -w
 ```
 
 **Rules**: Always upgrade one minor version at a time. Check release notes for breaking changes. Test upgrade on non-production first.
@@ -394,7 +394,7 @@ Cloud storage: higher cost per GB, no replica management, built-in HA (AWS handl
 2. Install prerequisites (open-iscsi, nfs-common)
 3. Add disk to Longhorn via UI or CRD
 4. Set `replicaAutoBalance: immediate` to distribute replicas
-5. Drain old node: `[kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) cordon <old-node>`
+5. Drain old node: `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) cordon <old-node>`
 6. Wait for all replicas to move
 7. Remove old node from cluster
 
@@ -442,7 +442,7 @@ Cloud storage: higher cost per GB, no replica management, built-in HA (AWS handl
 - ../../../Global_References/longhorn-[performance-tuning](../../../Software_Engineering_and_Other/Frontend/performance-tuning/SKILL.md).md -- Longhorn Performance Tuning
 
 ## Handoff
-Hand off to `devops/[monitoring](../monitoring/SKILL.md)/SKILL.md` for [monitoring](../monitoring/SKILL.md) integration. Hand off to `devops/[helm-patterns](../../Containers_and_Orchestration/helm-patterns/SKILL.md)/SKILL.md` for Helm deployment best practices.
+Hand off to `devops/[monitoring](../monitoring/SKILL.md)/SKILL.md` for [monitoring](../monitoring/SKILL.md) integration. Hand off to `devops/[helm-patterns](../../../containers-orchestration/helm/other/helm-patterns/SKILL.md)/SKILL.md` for Helm deployment best practices.
 
 ## Architecture Decision Trees
 
@@ -506,7 +506,7 @@ create_longhorn_backup() {
   local volume=$1
   local backup_target=${2:-"s3://backups/longhorn"}
 
-  [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) -n longhorn-system create job \
+  [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) -n longhorn-system create job \
     "manual-backup-$(date +%s)" \
     --image=longhornio/longhorn-engine:v1.7.0 \
     --command -- \
@@ -519,7 +519,7 @@ restore_from_backup() {
   local backup_url=$1
   local pvc_name=$2
 
-  [kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) apply -f - <<EOF
+  [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f - <<EOF
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -540,7 +540,7 @@ EOF
 
 monitor_longhorn_health() {
   while true; do
-    for node in $([kubectl](../../Containers_and_Orchestration/kubectl/SKILL.md) get nodes -o name); do
+    for node in $([kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get nodes -o name); do
       HEALTH=$(curl -sf "http://${node}:9500/v1/health" || echo "DOWN")
       echo "$(date): $node → $HEALTH"
     done
@@ -556,7 +556,7 @@ monitor_longhorn_health() {
 - Set **`replica-auto-balance: best-effort`** to automatically redistribute replicas when nodes join/leave
 - Enable **snapshot pruning** with recurring jobs to prevent disk exhaustion (keep last 7 daily snapshots)
 - Deploy **Longhorn in dedicated nodes** with taints and tolerations for stable storage performance
-- Configure **Storage Network** (separate from [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) cluster network) for replica traffic
+- Configure **Storage Network** (separate from [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster network) for replica traffic
 - Set **Orphaned Replica** auto-cleanup interval to 1 hour to reclaim space from failed nodes
 
 ## Anti-Patterns
@@ -582,7 +582,7 @@ monitor_longhorn_health() {
 ## Security Considerations
 
 - Enable **Longhorn encryption** at the StorageClass level — uses LUKS with per-volume keys
-- Restrict **Longhorn UI** access to cluster admins only via [Kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md) Ingress with OIDC auth
+- Restrict **Longhorn UI** access to cluster admins only via [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Ingress with OIDC auth
 - Use **RBAC** to limit who can create/modify Longhorn volumes, snapshots, backups
 - Configure **backup target** with IAM roles (S3) or service principal (Azure Blob) — never use access keys
 - Encrypt **backup targets** with server-side encryption (SSE-S3 for AWS, AES-256 for Azure)

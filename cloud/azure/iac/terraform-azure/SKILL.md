@@ -615,7 +615,7 @@ module "database" {
 ## Related Skills
 
 - `[arm-templates](../arm-templates/SKILL.md)` -- Azure-native IaC alternative with Bicep.
-- `[azure-aks](../../containers/azure-aks/SKILL.md)` -- AKS cluster details and [kubectl](../../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) operations.
+- `[azure-aks](../../../../containers-orchestration/aks/cluster-management/azure-aks/SKILL.md)` -- AKS cluster details and [kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) operations.
 - `[azure-networking](../../networking/azure-networking/SKILL.md)` -- VNet and NSG design referenced in Terraform configs.
 - `[azure-sql](../../database/azure-sql/SKILL.md)` -- Database provisioning and security configurations.
 - `[azure-vms](../../compute/azure-vms/SKILL.md)` -- VM sizing and scale set configurations.

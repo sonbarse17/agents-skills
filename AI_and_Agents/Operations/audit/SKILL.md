@@ -30,7 +30,7 @@ not an operator**. Your job is to map what exists (IaC, clusters, pipelines,
 cloud accounts, [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)), find the highest-leverage risks and waste, and
 write remediation plans a *different, less capable agent with zero context* can
 execute. The audit is broad; deep domain dives delegate to the focused skills
-(`/[k8s-review](../../../DevOps_and_Cloud/Containers_and_Orchestration/k8s-review/SKILL.md)`, `/[terraform-review](../../../DevOps_and_Cloud/Infrastructure_as_Code/terraform-review/SKILL.md)`, etc.).
+(`/[k8s-review](../../../containers-orchestration/kubernetes/troubleshooting/k8s-review/SKILL.md)`, `/[terraform-review](../../../DevOps_and_Cloud/Infrastructure_as_Code/terraform-review/SKILL.md)`, etc.).
 
 Shared contract: [../docs/skill-contract.md](../docs/skill-contract.md) — hard
 rules, environment preflight, effort levels, output paths, the findings table,
@@ -40,8 +40,8 @@ specific to a broad estate audit.
 ## Hard Rules
 
 1. **Read-only everywhere.** Read IaC and configs; run only read-only commands
-   (`terraform plan/validate`, `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md) get/describe`, `aws ... describe/get/list`,
-   `[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) inspect`). Never `apply`, `delete`, `scale`, `push`, or edit anything.
+   (`terraform plan/validate`, `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get/describe`, `aws ... describe/get/list`,
+   `[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) inspect`). Never `apply`, `delete`, `scale`, `push`, or edit anything.
 2. **Every finding needs evidence** — a `file:line` or a command + its output.
    No vibes-only findings. See [../docs/finding-format.md](../docs/finding-format.md).
 3. **Never reproduce secret values** — reference location and credential type
@@ -58,7 +58,7 @@ specific to a broad estate audit.
 
 Map the estate before judging it:
 
-- Inventory what is present: IaC (`*.tf`, `*.yaml`, Helm charts, [Kustomize](../../../DevOps_and_Cloud/Containers_and_Orchestration/kustomize/SKILL.md),
+- Inventory what is present: IaC (`*.tf`, `*.yaml`, Helm charts, [Kustomize](../../../containers-orchestration/kustomize/other/kustomize/SKILL.md),
   [CloudFormation](../../../DevOps_and_Cloud/Infrastructure_as_Code/cloudformation/SKILL.md), [Pulumi](../../../DevOps_and_Cloud/Infrastructure_as_Code/pulumi/SKILL.md)), CI/CD config, container definitions, cloud accounts
   and regions in scope, [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) stack.
 - Identify environments (prod/staging/dev), the deployment model, and the blast
@@ -128,7 +128,7 @@ Effort keywords (`quick` / `standard` / `deep`) and the shared `<focus>` and
 
 This skill is the front door; depth belongs to the specialists. Route per the
 [contract's routing table](../docs/skill-contract.md#6-cross-skill-routing) —
-`/[k8s-review](../../../DevOps_and_Cloud/Containers_and_Orchestration/k8s-review/SKILL.md)`, `/[terraform-review](../../../DevOps_and_Cloud/Infrastructure_as_Code/terraform-review/SKILL.md)`, `/[pipeline-review](../../../ci-cd/common/pipeline-design/pipeline-review/SKILL.md)`, `/[docker-review](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-review/SKILL.md)`,
+`/[k8s-review](../../../containers-orchestration/kubernetes/troubleshooting/k8s-review/SKILL.md)`, `/[terraform-review](../../../DevOps_and_Cloud/Infrastructure_as_Code/terraform-review/SKILL.md)`, `/[pipeline-review](../../../ci-cd/common/pipeline-design/pipeline-review/SKILL.md)`, `/[docker-review](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-review/SKILL.md)`,
 `/[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)`, `/[security-review](../../../Security/security-review/SKILL.md)`, `/cost`, `/[dr-review](../../../DevOps_and_Cloud/Observability_and_SecOps/dr-review/SKILL.md)`, `/[db-review](../db-review/SKILL.md)`. If
 production is broken right now, stop and use `/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)` instead.
 

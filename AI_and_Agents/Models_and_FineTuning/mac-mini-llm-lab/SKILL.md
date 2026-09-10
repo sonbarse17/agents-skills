@@ -100,7 +100,7 @@ uv pip install mlx mlx-lm
 python3 -c "
 from mlx_lm import load, generate
 model, tokenizer = load('mlx-community/Llama-3.1-8B-Instruct-4bit')
-response = generate(model, tokenizer, prompt='Explain [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) in 3 sentences', max_tokens=200)
+response = generate(model, tokenizer, prompt='Explain [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) in 3 sentences', max_tokens=200)
 print(response)
 "
 
@@ -236,18 +236,18 @@ brew services start caddy
 ## Open WebUI Setup
 
 ```bash
-# Run Open WebUI via [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
-[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) run -d \
+# Run Open WebUI via [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run -d \
   --name open-webui \
   -p 3000:8080 \
-  -e OLLAMA_BASE_URL=http://host.[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md).internal:11434 \
+  -e OLLAMA_BASE_URL=http://host.[docker](../../../containers-orchestration/docker/other/docker/SKILL.md).internal:11434 \
   -e WEBUI_AUTH=true \
   -v open-webui:/app/backend/data \
   --restart unless-stopped \
   ghcr.io/open-webui/open-webui:main
 
-# Or install [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) first if not available
-brew install --cask [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
+# Or install [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) first if not available
+brew install --cask [docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
 ```
 
 ## [Monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)
@@ -339,6 +339,6 @@ mdutil -i off ~/.ollama
 
 ## Related Skills
 
-- [ollama-stack](../[ollama-stack](../ollama-stack/SKILL.md)/) — Software stack with [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) Compose and LiteLLM
+- [ollama-stack](../[ollama-stack](../ollama-stack/SKILL.md)/) — Software stack with [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Compose and LiteLLM
 - [ssh-configuration](../../servers/[ssh-configuration](../../../Software_Engineering_and_Other/Miscellaneous/ssh-configuration/SKILL.md)/) — Secure remote access
 - [vpn-setup](../../../security/network/[vpn-setup](../../../DevOps_and_Cloud/Cloud_Providers/vpn-setup/SKILL.md)/) — Remote access via WireGuard/Tailscale

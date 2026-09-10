@@ -50,7 +50,7 @@ rather than repeating them.
 - Auditing an existing cluster's topics for configuration drift from the
   organization's durability/retention standards.
 - As a gate in a CI/CD pipeline that provisions Kafka topics via
-  Terraform, a [GitOps](../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) operator, or a custom provisioning script.
+  Terraform, a [GitOps](../../../containers-orchestration/common/gitops/gitops/SKILL.md) operator, or a custom provisioning script.
 
 ## Prerequisites & environment
 
@@ -163,7 +163,7 @@ rather than repeating them.
    [kafka-consumer-lag-and-partition-troubleshooting](../[kafka-consumer-lag-and-partition-troubleshooting](../../../DevOps_and_Cloud/Containers_and_Orchestration/kafka-consumer-lag-and-partition-troubleshooting/SKILL.md)/SKILL.md),
    but they should be caught here, before go-live, not after.
 
-7. **If topics are provisioned via Terraform or a [GitOps](../../../DevOps_and_Cloud/Containers_and_Orchestration/gitops/SKILL.md) operator, run
+7. **If topics are provisioned via Terraform or a [GitOps](../../../containers-orchestration/common/gitops/gitops/SKILL.md) operator, run
    the plan/diff as an explicit CI gate** rather than trusting manual CLI
    review alone:
    ```hcl

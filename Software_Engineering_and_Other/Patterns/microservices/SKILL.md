@@ -163,9 +163,9 @@ What does the caller need?
 |---|---|
 | **Client-side Discovery** | Client queries registry, load-balances directly |
 | **Server-side Discovery** | Load balancer queries registry, routes request |
-| **Service Registry** | DNS-based (Consul, Eureka, [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) DNS) |
+| **Service Registry** | DNS-based (Consul, Eureka, [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) DNS) |
 
-**Recommendation**: [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-native (DNS for discovery, Service for load balancing). Only use external registry if running outside K8s.
+**Recommendation**: [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-native (DNS for discovery, Service for load balancing). Only use external registry if running outside K8s.
 
 ### Step 5: Implement [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
 
@@ -397,7 +397,7 @@ class CircuitBreaker {
 
 ## Service Discovery
 ```yaml
-# [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Headless Service for DNS-based discovery
+# [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Headless Service for DNS-based discovery
 # Services discover peers via SRV DNS lookups
 apiVersion: v1
 kind: Service
@@ -436,7 +436,7 @@ async function resolveService(name: string): Promise<string> {
 | Team autonomy vs consistency | Balance: shared infrastructure ([monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md), CI) without coupling service decisions |
 | Testing | Unit (service-local) + Integration (per service) + Contract (per API pair) + E2E (minimal) |
 | [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) | Must be in place before going live. Debugging without it is guesswork |
-| Cold start latency | [Serverless](../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) services (Lambda) add 200ms-5s cold start — keep latency-critical services on persistent compute |
+| Cold start latency | [Serverless](../serverless/SKILL.md) services (Lambda) add 200ms-5s cold start — keep latency-critical services on persistent compute |
 | Inter-service auth overhead | mTLS handshake adds ~10-50ms per connection — use connection pooling and keepalive |
 | Schema changes | Independent DB migrations per service — coordination needed for cross-service schema changes |
 | Backup and restore | Each service has independent backup strategy — test restore procedure quarterly |
@@ -498,7 +498,7 @@ const client = new PaymentServiceClient('payment-service:443', channelCredential
 - No shared databases between services — ever.
 - Each service independently deployable with its own CI/CD.
 - 3+ services in a saga? Use orchestration.
-- [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-native discovery preferred over external registries.
+- [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-native discovery preferred over external registries.
 - [OpenTelemetry](../../../DevOps_and_Cloud/Observability_and_SecOps/opentelemetry/SKILL.md) for all [observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md) pillars.
 - No service calls another service's database directly.
 - Strangler Fig for monolith migration — no big-bang rewrites.
@@ -519,7 +519,7 @@ const client = new PaymentServiceClient('payment-service:443', channelCredential
   - ../../../Global_References/microservices-[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md).md — Microservices [Observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)
   - ../../../Global_References/microservices-testing.md — Microservices Testing
 ## Handoff
-Hand off to `devops/[containerization](../../../DevOps_and_Cloud/Containers_and_Orchestration/containerization/SKILL.md)/SKILL.md` for container orchestration setup. Hand off to `backend/universal/event-driven/SKILL.md` for detailed event-driven patterns. Hand off to `backend/universal/database-patterns/SKILL.md` for data consistency strategies.
+Hand off to `devops/[containerization](../../../containers-orchestration/docker/other/containerization/SKILL.md)/SKILL.md` for container orchestration setup. Hand off to `backend/universal/event-driven/SKILL.md` for detailed event-driven patterns. Hand off to `backend/universal/database-patterns/SKILL.md` for data consistency strategies.
 ## Implementation Patterns
 
 ### Observer Pattern for Event Handling

@@ -51,11 +51,11 @@ Use this skill when:
 
 ## OWASP ZAP
 
-### [Docker](../../Containers_and_Orchestration/docker/SKILL.md) Setup
+### [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Setup
 
 ```bash
 # Run ZAP in daemon mode
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) run -d --name zap \
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run -d --name zap \
   -p 8080:8080 \
   -v $(pwd)/reports:/zap/reports \
   ghcr.io/zaproxy/zaproxy:stable \
@@ -68,13 +68,13 @@ Use this skill when:
 
 ```bash
 # Quick baseline scan
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) run --rm -v $(pwd):/zap/wrk \
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run --rm -v $(pwd):/zap/wrk \
   ghcr.io/zaproxy/zaproxy:stable \
   zap-baseline.py -t https://target.example.com \
   -r baseline-report.html
 
 # With authentication
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) run --rm -v $(pwd):/zap/wrk \
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run --rm -v $(pwd):/zap/wrk \
   ghcr.io/zaproxy/zaproxy:stable \
   zap-baseline.py -t https://target.example.com \
   -r report.html \
@@ -87,7 +87,7 @@ Use this skill when:
 
 ```bash
 # Comprehensive scan
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) run --rm -v $(pwd):/zap/wrk \
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run --rm -v $(pwd):/zap/wrk \
   ghcr.io/zaproxy/zaproxy:stable \
   zap-full-scan.py -t https://target.example.com \
   -r full-report.html \
@@ -98,7 +98,7 @@ Use this skill when:
 
 ```bash
 # OpenAPI specification scan
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) run --rm -v $(pwd):/zap/wrk \
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run --rm -v $(pwd):/zap/wrk \
   ghcr.io/zaproxy/zaproxy:stable \
   zap-api-scan.py -t https://target.example.com/openapi.json \
   -f openapi \
@@ -164,7 +164,7 @@ jobs:
 
 ```bash
 # Run automation
-[docker](../../Containers_and_Orchestration/docker/SKILL.md) run --rm -v $(pwd):/zap/wrk \
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run --rm -v $(pwd):/zap/wrk \
   ghcr.io/zaproxy/zaproxy:stable \
   zap.sh -cmd -autorun /zap/wrk/zap-automation.yaml
 ```

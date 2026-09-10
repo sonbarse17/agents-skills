@@ -96,7 +96,7 @@ re-running around it.
      times; if it passes without any code change, it's flaky.
    - **Environmental/infrastructure** — package registry timeout, runner
      out of disk space, transient network error to an external service,
-     [Docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) daemon not ready yet. Usually has a recognizable
+     [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) daemon not ready yet. Usually has a recognizable
      infrastructure-level error message (`ECONNRESET`, `429 Too Many
      Requests`, `no space left on device`) rather than an assertion
      failure.

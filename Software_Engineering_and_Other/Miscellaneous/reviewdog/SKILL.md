@@ -103,8 +103,8 @@ go install [github](../../../ci-cd/github-actions/other/github/SKILL.md).com/rev
 # Via Homebrew (macOS/Linux)
 brew install reviewdog
 
-# Via [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
-[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) pull reviewdog/reviewdog:latest
+# Via [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) pull reviewdog/reviewdog:latest
 ```
 
 ### Step 2: Configure Security Tools

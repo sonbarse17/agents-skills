@@ -66,8 +66,8 @@ npm install -g @stoplight/spectral-cli
 # Or using Yarn
 yarn global add @stoplight/spectral-cli
 
-# Or using [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
-[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) pull stoplight/spectral
+# Or using [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) pull stoplight/spectral
 
 # Verify installation
 spectral --version
@@ -377,10 +377,10 @@ api-security-lint:
       junit: spectral-report.xml
 ```
 
-**[Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-Based Pipeline:**
+**[Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-Based Pipeline:**
 ```bash
-# Run in CI/CD with [Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)
-[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) run --rm \
+# Run in CI/CD with [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run --rm \
   -v $(pwd):/work \
   stoplight/spectral lint /work/openapi.yaml \
   --ruleset /work/.spectral.yaml \

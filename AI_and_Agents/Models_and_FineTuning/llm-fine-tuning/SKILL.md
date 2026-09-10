@@ -244,7 +244,7 @@ tokenizer.save_pretrained("./merged-model")
 merged_model.push_to_hub("your-org/your-fine-tuned-model")
 ```
 
-## [Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md) Training Job
+## [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Training Job
 
 ```yaml
 apiVersion: batch/v1

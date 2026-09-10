@@ -20,7 +20,7 @@ depends_on:
 
 # Azure Functions
 
-Build and deploy [serverless](../../../../DevOps_and_Cloud/Containers_and_Orchestration/serverless/SKILL.md) applications with Azure Functions. Covers function app creation, trigger and binding configuration, deployment strategies, real code examples in [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) and Node.js, and production best practices.
+Build and deploy [serverless](../../../../Software_Engineering_and_Other/Patterns/serverless/SKILL.md) applications with Azure Functions. Covers function app creation, trigger and binding configuration, deployment strategies, real code examples in [Python](../../../../Software_Engineering_and_Other/Languages/python/SKILL.md) and Node.js, and production best practices.
 
 ## When to Use
 

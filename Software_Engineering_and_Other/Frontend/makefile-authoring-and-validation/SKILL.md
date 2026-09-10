@@ -75,7 +75,7 @@ automation, not the C/C++ compiled-build use case Make originated for.
   matters for anything using `cd`, `set -e`, or shell variables across
   lines (see pitfalls).
 - Nothing runtime-specific beyond whatever the targets themselves invoke
-  ([Docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md), a compiler, `terraform`, `[kubectl](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubectl/SKILL.md)`, etc.) — Make itself has no
+  ([Docker](../../../containers-orchestration/docker/other/docker/SKILL.md), a compiler, `terraform`, `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md)`, etc.) — Make itself has no
   dependencies beyond being installed.
 
 ## Step-by-step guidance
@@ -130,9 +130,9 @@ automation, not the C/C++ compiled-build use case Make originated for.
    GIT_SHA := $(shell git rev-parse --short HEAD)
    IMAGE_TAG := myapp:$(GIT_SHA)
 
-   .PHONY: [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-build
-   [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-build:
-   	[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) build -t $(IMAGE_TAG) .
+   .PHONY: [docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-build
+   [docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-build:
+   	[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) build -t $(IMAGE_TAG) .
    ```
    With `=` instead of `:=`, `$(shell git rev-parse ...)` would re-run on
    every reference to `GIT_SHA`, not just once — usually not what's
@@ -292,7 +292,7 @@ GIT_SHA := $(shell git rev-parse --short HEAD)
 IMAGE_TAG := checkout-api:$(GIT_SHA)
 ENV ?= dev
 
-.PHONY: help build test lint [docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-build deploy clean
+.PHONY: help build test lint [docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-build deploy clean
 
 help: ## Show available targets
 	@grep -E '^[a-zA-Z0-9_-]+:.*##' $(MAKEFILE_LIST) | \
@@ -309,8 +309,8 @@ test: ## Run the test suite
 lint: ## Run static analysis
 	golangci-lint run ./...
 
-[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-build: ## Build a tagged container image
-	[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) build -t $(IMAGE_TAG) .
+[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-build: ## Build a tagged container image
+	[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) build -t $(IMAGE_TAG) .
 
 deploy: build test ## Deploy to ENV (default: dev; override with ENV=staging|prod)
 	@echo "Deploying $(IMAGE_TAG) to $(ENV)"

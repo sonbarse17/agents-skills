@@ -77,7 +77,7 @@ Direct file write. No response text.
 | Legacy PXE | Slow | Low | Minimal | Simple environments, <10 servers |
 | iPXE (scriptable) | Fast | Medium | Good (HTTP boot, scripting) | Most environments |
 | MAAS (Metal as a Service) | Fast | High | Excellent (DHCP, DNS, imaging, IPMI) | Ubuntu-focused shops |
-| Metal3 ([Kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-native) | Medium | Medium | Good (K8s CRDs for bare metal) | [OpenShift](../../../DevOps_and_Cloud/Containers_and_Orchestration/openshift/SKILL.md)/K8s environments |
+| Metal3 ([Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-native) | Medium | Medium | Good (K8s CRDs for bare metal) | [OpenShift](../../../containers-orchestration/openshift/other/openshift/SKILL.md)/K8s environments |
 | Foreman + Katello | Medium | Medium | Excellent (full lifecycle mgmt) | RHEL-focused shops |
 | RackN (Digital Rebar) | Fast | Medium | Excellent (multi-vendor) | Hybrid/multi-DC |
 

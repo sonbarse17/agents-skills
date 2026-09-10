@@ -283,7 +283,7 @@ def call(Map config = [:]) {
         error "nodeServicePipeline: 'serviceName' is required"
     }
     pipeline {
-        agent { [docker](../../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md) { image config.nodeImage ?: 'node:20.11-bullseye' } }
+        agent { [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) { image config.nodeImage ?: 'node:20.11-bullseye' } }
         options { timeout(time: 20, unit: 'MINUTES') }
         stages {
             stage('Install & Test') {
@@ -326,4 +326,4 @@ on its own schedule instead of 30 separate Jenkinsfile edits.
 - [jenkins-declarative-pipeline-per-repo](../[jenkins-declarative-pipeline-per-repo](../[jenkins](../jenkins/SKILL.md)-declarative-pipeline-per-repo/SKILL.md)/SKILL.md) — the thin consumer-side Jenkinsfile pattern this library is called from.
 - [jenkins-groovy-scripting-best-practices](../[jenkins-groovy-scripting-best-practices](../[jenkins](../jenkins/SKILL.md)-groovy-scripting-best-practices/SKILL.md)/SKILL.md) — sandbox approvals, `Serializable` requirements, and unit-testing `vars/`/`src/` code.
 - [github-actions-centralized-reusable-workflows](../[github-actions-centralized-reusable-workflows](../[github-actions](../[github](../github/SKILL.md)-actions/SKILL.md)-centralized-reusable-workflows/SKILL.md)/SKILL.md) — the equivalent centralization pattern on [GitHub](../../../github-actions/other/github/SKILL.md) Actions.
-- [secure-cicd-gates](../../../[devsecops](../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — designing the security gates a shared library's stages should enforce consistently across all consumers.
+- [secure-cicd-gates](../../../../Security/devsecops/SKILL.md)/skills/[secure-cicd-gates](../../../../Security/secure-cicd-gates/SKILL.md)/SKILL.md) — designing the security gates a shared library's stages should enforce consistently across all consumers.
