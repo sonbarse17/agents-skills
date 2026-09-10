@@ -442,14 +442,14 @@ class ConnectionRateLimiter {
 - Use external pub/sub (Redis) for multi-node deployments — never rely on sticky sessions alone.
 
 ## References
-  - ../../../Global_References/reconnection-strategy.md — Reconnection Strategy
-  - ../../../Global_References/socket-io-patterns.md — Socket.IO Patterns
-  - ../../../Global_References/websocket-auth.md — WebSocket Authentication
+  - ../../../../Global_References/Software_Engineering_and_Other/reconnection-strategy.md — Reconnection Strategy
+  - ../../../../Global_References/Software_Engineering_and_Other/socket-io-patterns.md — Socket.IO Patterns
+  - ../../../../Global_References/Software_Engineering_and_Other/websocket-auth.md — WebSocket Authentication
   - references/websocket-basics.md — WebSocket Basics
-  - ../../../Global_References/websocket-implementation.md — WebSocket Implementation Patterns
+  - ../../../../Global_References/Software_Engineering_and_Other/websocket-implementation.md — WebSocket Implementation Patterns
   - ../../../Global_References/websocket-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — WebSocket [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
-  - ../../../Global_References/websocket-patterns.md — WebSocket Message Protocol
-  - ../../../Global_References/ws-vs-sse.md — WebSocket vs SSE (Server-Sent Events)
+  - ../../../../Global_References/Software_Engineering_and_Other/websocket-patterns.md — WebSocket Message Protocol
+  - ../../../../Global_References/Software_Engineering_and_Other/ws-vs-sse.md — WebSocket vs SSE (Server-Sent Events)
 ## Handoff
 No artifact produced unless requested.
 Next skill: [backend-message-queue](../../../Patterns/distributed-systems/message-queue/SKILL.md) — if real-time events need to be persisted or fanned out to other services.

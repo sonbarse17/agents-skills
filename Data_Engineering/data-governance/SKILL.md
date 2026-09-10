@@ -563,15 +563,15 @@ Trying to capture lineage for every column in every table. Teams burn out mainta
 - All purge operations logged with immutable [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) trail
 
 ## References
-- ../../../Global_References/data-governance-fundamentals.md -- Data Governance Fundamentals
-- ../../../Global_References/data-governance-advanced.md -- Data Governance Advanced Topics
-- ../../../Global_References/data-governance_data-classification.md -- Data Classification Framework
+- ../../Global_References/Data_Engineering/data-governance-fundamentals.md -- Data Governance Fundamentals
+- ../../Global_References/Data_Engineering/data-governance-advanced.md -- Data Governance Advanced Topics
+- ../../Global_References/Data_Engineering/data-governance_data-classification.md -- Data Classification Framework
 - ../../../Global_References/[data-lineage](../data-lineage/SKILL.md).md -- Data Lineage Tracking
-- ../../../Global_References/data-policies.md -- Data Policies Framework
+- ../../Global_References/Data_Engineering/data-policies.md -- Data Policies Framework
 - references/data-governance-framework.md -- Data Governance Framework
 - references/data-governance-framework-implementation.md -- Governance Framework Implementation
   - references/data-governance-tools.md -- Data Governance Tools
-  - ../../../Global_References/data-contracts.md -- Data Contracts and Sharing Agreements
+  - ../../Global_References/Data_Engineering/data-contracts.md -- Data Contracts and Sharing Agreements
 
 ## Handoff
 For compliance requirements on data handling, hand off to `[enterprise-compliance-audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)/SKILL.md)`. For multi-tenant data isolation, hand off to `[enterprise-multi-tenant](../../Software_Engineering_and_Other/Patterns/distributed-systems/multi-tenant/SKILL.md)`.

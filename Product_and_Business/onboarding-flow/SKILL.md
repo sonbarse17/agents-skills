@@ -403,12 +403,12 @@ Impact: Activation 12% to 34%, D30 retention improved 25%
 - Onboarding data must be reviewed weekly during the first month of a new flow.
 
 ## References
-  - ../../../Global_References/activation-design.md — Activation Design
-  - ../../../Global_References/activation-funnels.md — Activation Funnels
-  - ../../../Global_References/onboarding-experiments.md — Onboarding Experiments
-  - ../../../Global_References/onboarding-flow-advanced.md — Onboarding Flow Advanced Topics
-  - ../../../Global_References/onboarding-flow-fundamentals.md — Onboarding Flow Fundamentals
-  - ../../../Global_References/onboarding-patterns.md — Onboarding Patterns
+  - ../../Global_References/Product_and_Business/activation-design.md — Activation Design
+  - ../../Global_References/Product_and_Business/activation-funnels.md — Activation Funnels
+  - ../../Global_References/Product_and_Business/onboarding-experiments.md — Onboarding Experiments
+  - ../../Global_References/Product_and_Business/onboarding-flow-advanced.md — Onboarding Flow Advanced Topics
+  - ../../Global_References/Product_and_Business/onboarding-flow-fundamentals.md — Onboarding Flow Fundamentals
+  - ../../Global_References/Product_and_Business/onboarding-patterns.md — Onboarding Patterns
   - references/onboarding-flow-[design-patterns](../../Software_Engineering_and_Other/Patterns/architecture/design-patterns/SKILL.md).md — Onboarding Flow Design Patterns
   - references/onboarding-metrics-optimization.md — Onboarding Metrics and Optimization
 ## Handoff

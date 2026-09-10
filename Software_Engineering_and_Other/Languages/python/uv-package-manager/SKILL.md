@@ -354,5 +354,5 @@ uv pip freeze > requirements.txt
 uv pip freeze --require-hashes > requirements.txt
 ```
 
-For advanced workflows including [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) integration, lockfile management, performance optimization, tool comparison, common workflows, tool integration, troubleshooting, best practices, migration guides, and command reference, see [../../../Global_References/uv-package-manager_advanced-patterns.md](../../../../Global_References/uv-package-manager_advanced-patterns.md)
+For advanced workflows including [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) integration, lockfile management, performance optimization, tool comparison, common workflows, tool integration, troubleshooting, best practices, migration guides, and command reference, see [../../../../Global_References/Software_Engineering_and_Other/uv-package-manager_advanced-patterns.md](../../../../Global_References/Software_Engineering_and_Other/uv-package-manager_advanced-patterns.md)
 

@@ -622,12 +622,12 @@ The spec describes one solution as if it's the only option. No mention of altern
 - [ ] Spec size is proportional to feature complexity
 
 ## References
-  - ../../../Global_References/create-tech-spec-fundamentals.md — Tech Spec Fundamentals
-  - ../../../Global_References/create-tech-spec-advanced.md — Tech Spec Advanced Topics
-  - ../../../Global_References/tech-spec-examples.md — Tech Spec Examples
-  - ../../../Global_References/tech-spec-review-checklist.md — Tech Spec Review Checklist
-  - ../../../Global_References/tech-spec-template.md — Technical Specification Template
-  - ../../../Global_References/tech-spec-templates.md — Technical Specification Templates
+  - ../../Global_References/Product_and_Business/create-tech-spec-fundamentals.md — Tech Spec Fundamentals
+  - ../../Global_References/Product_and_Business/create-tech-spec-advanced.md — Tech Spec Advanced Topics
+  - ../../Global_References/Product_and_Business/tech-spec-examples.md — Tech Spec Examples
+  - ../../Global_References/Product_and_Business/tech-spec-review-checklist.md — Tech Spec Review Checklist
+  - ../../Global_References/Product_and_Business/tech-spec-template.md — Technical Specification Template
+  - ../../Global_References/Product_and_Business/tech-spec-templates.md — Technical Specification Templates
 
 ## Handoff
 Output: `docs/specs/{feature-name}-spec.md`

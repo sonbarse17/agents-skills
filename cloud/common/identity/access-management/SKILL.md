@@ -37,7 +37,7 @@ For project creation, see the **[cloud-create-project](../../../../Product_and_B
 **[cloud-manage-project](../../../../Product_and_Business/manage-project/SKILL.md)**. For Elasticsearch-level role management (native users, role mappings, DLS/FLS), see the
 **[elasticsearch-authz](../../../../observability-monitoring-logging/elasticsearch/other/elasticsearch-authz/SKILL.md)** skill.
 
-For detailed API endpoints and request schemas, see [../../../Global_References/access-management_api-reference.md](../../../../Global_References/access-management_api-reference.md).
+For detailed API endpoints and request schemas, see [../../../../Global_References/cloud/access-management_api-reference.md](../../../../Global_References/cloud/access-management_api-reference.md).
 
 ## Jobs to Be Done
 
@@ -192,7 +192,7 @@ After execution, list members or keys again to confirm the change took effect.
 
 Project-level roles are assigned during invitation (`POST /organizations/{org_id}/invitations`) or using the role
 assignment update (`POST /users/{user_id}/role_assignments`). See
-[../../../Global_References/access-management_api-reference.md](../../../../Global_References/access-management_api-reference.md) for the `role_assignments` JSON schema including the
+[../../../../Global_References/cloud/access-management_api-reference.md](../../../../Global_References/cloud/access-management_api-reference.md) for the `role_assignments` JSON schema including the
 `project` scope.
 
 ## Custom Roles ([Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md))

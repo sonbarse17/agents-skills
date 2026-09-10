@@ -53,7 +53,7 @@ Employment Relationship:
 
 ## Templates and detailed worked examples
 
-Full template library and detailed worked examples live in `../../../Global_References/employment-contract-templates_details.md`. Read that file when you need the concrete templates.
+Full template library and detailed worked examples live in `../../Global_References/Product_and_Business/employment-contract-templates_details.md`. Read that file when you need the concrete templates.
 
 ## Best Practices
 

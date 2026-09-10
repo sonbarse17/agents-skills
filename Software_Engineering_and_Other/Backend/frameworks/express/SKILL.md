@@ -523,10 +523,10 @@ Use `testcontainers` for DB integration. Mock HTTP with `nock`. Use `jest` with 
 - Graceful shutdown on SIGTERM/SIGINT. Close server + DB connections.
 
 ## References
-  - ../../../Global_References/app-structure.md — App Structure
-  - ../../../Global_References/express-error-handling.md — Express Error Handling Reference
-  - ../../../Global_References/express-security.md — Express Security Reference
-  - ../../../Global_References/middleware-patterns.md — Middleware Patterns
+  - ../../../../Global_References/Software_Engineering_and_Other/app-structure.md — App Structure
+  - ../../../../Global_References/Software_Engineering_and_Other/express-error-handling.md — Express Error Handling Reference
+  - ../../../../Global_References/Software_Engineering_and_Other/express-security.md — Express Security Reference
+  - ../../../../Global_References/Software_Engineering_and_Other/middleware-patterns.md — Middleware Patterns
   - references/[performance-optimization](../../patterns/performance-optimization/SKILL.md).md — Express Performance Optimization
   - references/testing-strategies.md — Express Testing Strategies
 ## Handoff

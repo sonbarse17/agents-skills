@@ -540,16 +540,16 @@ Does the change break existing consumers?
 - Document consumer acceptance criteria before breaking changes
 
 ## References
-  - ../../../Global_References/contract-definition.md — Data Contract Definition
-  - ../../../Global_References/contract-enforcement.md — Contract Enforcement
-  - ../../../Global_References/contract-examples.md — Data Contract Examples
-  - ../../../Global_References/contract-integration-patterns.md — Contract Integration Patterns
-  - ../../../Global_References/contract-lifecycle-management.md — Contract Lifecycle Management
-  - ../../../Global_References/contract-migration-strategies.md — Contract Migration Strategies
+  - ../../Global_References/Data_Engineering/contract-definition.md — Data Contract Definition
+  - ../../Global_References/Data_Engineering/contract-enforcement.md — Contract Enforcement
+  - ../../Global_References/Data_Engineering/contract-examples.md — Data Contract Examples
+  - ../../Global_References/Data_Engineering/contract-integration-patterns.md — Contract Integration Patterns
+  - ../../Global_References/Data_Engineering/contract-lifecycle-management.md — Contract Lifecycle Management
+  - ../../Global_References/Data_Engineering/contract-migration-strategies.md — Contract Migration Strategies
   - ../../../Global_References/contract-[monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-enforcement.md — Contract [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and Enforcement
-  - ../../../Global_References/schema-evolution-policies.md — Schema Evolution Policies
-  - ../../../Global_References/data-contracts-schema-evolution.md — Schema Evolution in Contracts
-  - ../../../Global_References/data-contracts-governance.md — Contract Governance Reference
+  - ../../Global_References/Data_Engineering/schema-evolution-policies.md — Schema Evolution Policies
+  - ../../Global_References/Data_Engineering/data-contracts-schema-evolution.md — Schema Evolution in Contracts
+  - ../../Global_References/Data_Engineering/data-contracts-governance.md — Contract Governance Reference
 ## Handoff
 `[data-data-quality](../data-quality/SKILL.md)` for quality dimension enforcement in contracts. `[data-data-catalog](../data-catalog/SKILL.md)` for contract metadata. `[data-data-observability](../data-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)` for SLA [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md). `[data-schema-registry](../schema-registry/SKILL.md)` for schema registry integration.
 

@@ -442,14 +442,14 @@ An experimentation platform failed its AA test: one variant showed 3.2% conversi
 Fix: invalidated caches on experiment launch, added cache-busting parameters, and implemented server-side assignment verification. AA test passed on re-run. This case demonstrates why AA tests must precede every significant experiment.
 
 ## References
-  - ../../../Global_References/ab-testing-advanced.md — A/B Testing Advanced Topics
-  - ../../../Global_References/ab-testing-fundamentals.md — A/B Testing Fundamentals
-  - ../../../Global_References/ab-testing-statistics.md — A/B Testing Statistics
-  - ../../../Global_References/ab-testing-statistical-methods.md — Statistical Methods for A/B Testing
-  - ../../../Global_References/ab-testing-infrastructure.md — A/B Testing Infrastructure and Operations
-  - ../../../Global_References/ab-testing_experiment-design.md — Experiment Design
-  - ../../../Global_References/statistical-analysis.md — Statistical Analysis
-  - ../../../Global_References/ab-testing_statistical-methods.md — Statistical Methods
+  - ../../Global_References/Product_and_Business/ab-testing-advanced.md — A/B Testing Advanced Topics
+  - ../../Global_References/Product_and_Business/ab-testing-fundamentals.md — A/B Testing Fundamentals
+  - ../../Global_References/Product_and_Business/ab-testing-statistics.md — A/B Testing Statistics
+  - ../../Global_References/Product_and_Business/ab-testing-statistical-methods.md — Statistical Methods for A/B Testing
+  - ../../Global_References/Product_and_Business/ab-testing-infrastructure.md — A/B Testing Infrastructure and Operations
+  - ../../Global_References/Product_and_Business/ab-testing_experiment-design.md — Experiment Design
+  - ../../Global_References/Product_and_Business/statistical-analysis.md — Statistical Analysis
+  - ../../Global_References/Product_and_Business/ab-testing_statistical-methods.md — Statistical Methods
 
 ## Handoff
 For product analytics event tracking to inform metrics, hand off to `[product-analytics](../analytics/SKILL.md)`. For user research insights to inform hypotheses, hand off to `[product-user-research](../user-research/SKILL.md)`. For customer journey touchpoints to test, hand off to `[product-customer-journey](../customer-journey/SKILL.md)`. For growth metric experiment design, hand off to `[product-growth-engineering](../growth-engineering/SKILL.md)`.

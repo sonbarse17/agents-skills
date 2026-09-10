@@ -161,12 +161,12 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Pydantic V2 | `../../../Global_References/pydantic-v2.md` | Creating schemas, validation, model_config |
-| SQLAlchemy | `../../../Global_References/async-sqlalchemy.md` | Async database, models, CRUD operations |
-| Endpoints | `../../../Global_References/endpoints-routing.md` | APIRouter, dependencies, routing |
-| Authentication | `../../../Global_References/fastapi-expert_authentication.md` | JWT, OAuth2, get_current_user |
-| Testing | `../../../Global_References/testing-async.md` | pytest-asyncio, httpx, fixtures |
-| Django Migration | `../../../Global_References/migration-from-django.md` | Migrating from Django/DRF to FastAPI |
+| Pydantic V2 | `../../../../Global_References/Software_Engineering_and_Other/pydantic-v2.md` | Creating schemas, validation, model_config |
+| SQLAlchemy | `../../../../Global_References/Software_Engineering_and_Other/async-sqlalchemy.md` | Async database, models, CRUD operations |
+| Endpoints | `../../../../Global_References/Software_Engineering_and_Other/endpoints-routing.md` | APIRouter, dependencies, routing |
+| Authentication | `../../../../Global_References/Software_Engineering_and_Other/fastapi-expert_authentication.md` | JWT, OAuth2, get_current_user |
+| Testing | `../../../../Global_References/Software_Engineering_and_Other/testing-async.md` | pytest-asyncio, httpx, fixtures |
+| Django Migration | `../../../../Global_References/Software_Engineering_and_Other/migration-from-django.md` | Migrating from Django/DRF to FastAPI |
 
 ## Constraints
 

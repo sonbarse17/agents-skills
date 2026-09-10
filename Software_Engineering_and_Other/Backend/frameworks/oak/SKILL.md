@@ -455,12 +455,12 @@ Use in-memory KV for test isolation. Mock external HTTP calls via `std/testing/m
 - Never read `ctx.request.body` more than once per request.
 
 ## References
-  - ../../../Global_References/deno-runtime-guide.md — Deno Runtime Guide
-  - ../../../Global_References/oak-middleware.md — Oak Middleware
-  - ../../../Global_References/oak-performance.md — Oak Performance Optimization
-  - ../../../Global_References/oak-routing-deployment.md — Oak Routing and Deployment
-  - ../../../Global_References/oak-setup.md — Oak Setup Guide
-  - ../../../Global_References/oak-testing.md — Oak Testing
+  - ../../../../Global_References/Software_Engineering_and_Other/deno-runtime-guide.md — Deno Runtime Guide
+  - ../../../../Global_References/Software_Engineering_and_Other/oak-middleware.md — Oak Middleware
+  - ../../../../Global_References/Software_Engineering_and_Other/oak-performance.md — Oak Performance Optimization
+  - ../../../../Global_References/Software_Engineering_and_Other/oak-routing-deployment.md — Oak Routing and Deployment
+  - ../../../../Global_References/Software_Engineering_and_Other/oak-setup.md — Oak Setup Guide
+  - ../../../../Global_References/Software_Engineering_and_Other/oak-testing.md — Oak Testing
 ## Handoff
 Hand off to `backend/universal/api-response/SKILL.md` for API response standards.
 ## Implementation Patterns

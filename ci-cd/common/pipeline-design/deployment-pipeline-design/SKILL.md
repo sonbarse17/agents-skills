@@ -54,7 +54,7 @@ Design robust, secure deployment pipelines that balance speed with safety throug
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../../Global_References/deployment-pipeline-design_details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../../Global_References/ci-cd/deployment-pipeline-design_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Troubleshooting
 
@@ -110,7 +110,7 @@ Never run destructive migrations (DROP COLUMN, ALTER NOT NULL) until the old cod
 
 For platform-specific pipeline configurations, multi-region promotion workflows, and advanced Argo Rollouts patterns, see:
 
-- [`../../../Global_References/advanced-strategies.md`](../../../../Global_References/advanced-strategies.md) — Extended YAML examples, platform-specific configs ([GitHub](../../../github-actions/other/github/SKILL.md) Actions, GitLab CI, Azure Pipelines), multi-region canary patterns, and database migration rollback strategies
+- [`../../../../Global_References/ci-cd/advanced-strategies.md`](../../../../Global_References/ci-cd/advanced-strategies.md) — Extended YAML examples, platform-specific configs ([GitHub](../../../github-actions/other/github/SKILL.md) Actions, GitLab CI, Azure Pipelines), multi-region canary patterns, and database migration rollback strategies
 
 ## Related Skills
 

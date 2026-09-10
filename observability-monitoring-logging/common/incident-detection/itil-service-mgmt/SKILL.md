@@ -543,13 +543,13 @@ problem_management:
 ```
 
 ## References
-  - ../../../Global_References/change-release-mgmt.md -- Change and Release Management
+  - ../../../../Global_References/observability-monitoring-logging/change-release-mgmt.md -- Change and Release Management
   - ../../../Global_References/[incident](../incident/SKILL.md)-problem-mgmt.md -- [Incident](../incident/SKILL.md) and Problem Management
-  - ../../../Global_References/itil-service-mgmt-advanced.md -- ITIL Service Management Advanced Topics
-  - ../../../Global_References/itil-service-mgmt-fundamentals.md -- ITIL Service Management Fundamentals
+  - ../../../../Global_References/observability-monitoring-logging/itil-service-mgmt-advanced.md -- ITIL Service Management Advanced Topics
+  - ../../../../Global_References/observability-monitoring-logging/itil-service-mgmt-fundamentals.md -- ITIL Service Management Fundamentals
   - references/itil-service-transition.md -- ITIL Service Transition Reference
   - references/itil-service-operation.md -- ITIL Service Operation Reference
-  - ../../../Global_References/service-level-mgmt.md -- Service Level Management
+  - ../../../../Global_References/observability-monitoring-logging/service-level-mgmt.md -- Service Level Management
   - references/service-lifecycle.md -- ITIL Service Lifecycle
   - ../../../Global_References/[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-availability-management.md -- [Capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) and Availability Management
 ## Handoff

@@ -330,9 +330,9 @@ catch (RequestFailedException ex)
 
 | File | When to Read |
 |------|--------------|
-| [../../../Global_References/server-management.md](../../../../../Global_References/server-management.md) | Server CRUD, admin credentials, Azure AD auth, networking |
+| [../../../../../Global_References/cloud/server-management.md](../../../../../Global_References/cloud/server-management.md) | Server CRUD, admin credentials, Azure AD auth, networking |
 | [../../../Global_References/[database-operations](../../../../../Software_Engineering_and_Other/Databases/common/database-operations/SKILL.md).md](../../../../../Software_Engineering_and_Other/Databases/common/database-operations/SKILL.md).md) | Database CRUD, scaling, backup, restore, copy |
-| [../../../Global_References/elastic-pools.md](../../../../../Global_References/elastic-pools.md) | Pool management, adding/removing databases, scaling |
+| [../../../../../Global_References/cloud/elastic-pools.md](../../../../../Global_References/cloud/elastic-pools.md) | Pool management, adding/removing databases, scaling |
 
 ## Related SDKs
 

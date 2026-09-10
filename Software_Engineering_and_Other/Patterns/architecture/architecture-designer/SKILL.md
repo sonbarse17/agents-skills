@@ -63,10 +63,10 @@ Load detailed guidance based on context:
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
 | Architecture Patterns | `../../../Global_References/[architecture-patterns](../architecture-patterns/SKILL.md).md` | Choosing monolith vs [microservices](../../distributed-systems/microservices/SKILL.md) |
-| ADR Template | `../../../Global_References/adr-template.md` | Documenting decisions |
-| System Design | `../../../Global_References/system-design.md` | Full system design template |
-| Database Selection | `../../../Global_References/database-selection.md` | Choosing database technology |
-| NFR Checklist | `../../../Global_References/nfr-checklist.md` | Gathering non-functional requirements |
+| ADR Template | `../../../../Global_References/Software_Engineering_and_Other/adr-template.md` | Documenting decisions |
+| System Design | `../../../../Global_References/Software_Engineering_and_Other/system-design.md` | Full system design template |
+| Database Selection | `../../../../Global_References/Software_Engineering_and_Other/database-selection.md` | Choosing database technology |
+| NFR Checklist | `../../../../Global_References/Software_Engineering_and_Other/nfr-checklist.md` | Gathering non-functional requirements |
 
 ## Constraints
 

@@ -603,12 +603,12 @@ describe('Bun-specific tests', () => {
 - Benchmark performance with `Bun.nanoseconds()` for precise timing
 
 ## Rules
-  - ../../../Global_References/bun-advanced.md — Bun Advanced Topics
-  - ../../../Global_References/bun-deployment.md — Bun Deployment
-  - ../../../Global_References/bun-ecosystem.md — Bun Ecosystem
-  - ../../../Global_References/bun-essentials.md — Bun Essentials
-  - ../../../Global_References/bun-fundamentals.md — Bun Fundamentals
-  - ../../../Global_References/bun-tooling.md — Bun Tooling
+  - ../../../../Global_References/Software_Engineering_and_Other/bun-advanced.md — Bun Advanced Topics
+  - ../../../../Global_References/Software_Engineering_and_Other/bun-deployment.md — Bun Deployment
+  - ../../../../Global_References/Software_Engineering_and_Other/bun-ecosystem.md — Bun Ecosystem
+  - ../../../../Global_References/Software_Engineering_and_Other/bun-essentials.md — Bun Essentials
+  - ../../../../Global_References/Software_Engineering_and_Other/bun-fundamentals.md — Bun Fundamentals
+  - ../../../../Global_References/Software_Engineering_and_Other/bun-tooling.md — Bun Tooling
 ## Handoff
 Hand off to `backend/elysia/SKILL.md` for Elysia framework or `backend/universal/testing/SKILL.md` for testing patterns.
 

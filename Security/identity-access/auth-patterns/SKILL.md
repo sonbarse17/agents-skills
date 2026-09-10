@@ -498,15 +498,15 @@ Cache-Control: no-store  (never cache auth responses)
 - Password reset tokens expire in 15 minutes and are single-use.
 
 ## References
-  - ../../../Global_References/auth-oauth2.md — OAuth2 Flows
-  - ../../../Global_References/auth-passwordless.md — Passwordless Authentication
-  - ../../../Global_References/auth-testing.md — Authentication Testing
-  - ../../../Global_References/jwt-oauth-guide.md — JWT and OAuth Guide
-  - ../../../Global_References/oidc-flows.md — OIDC Flows
-  - ../../../Global_References/rbac-abac.md — RBAC vs ABAC
-  - ../../../Global_References/auth-patterns-fundamentals.md — Auth Patterns Fundamentals
-  - ../../../Global_References/auth-patterns-advanced.md — Auth Patterns Advanced
-  - ../../../Global_References/auth-patterns-provider-comparison.md — Auth Provider Comparison
+  - ../../../Global_References/Security/auth-oauth2.md — OAuth2 Flows
+  - ../../../Global_References/Security/auth-passwordless.md — Passwordless Authentication
+  - ../../../Global_References/Security/auth-testing.md — Authentication Testing
+  - ../../../Global_References/Security/jwt-oauth-guide.md — JWT and OAuth Guide
+  - ../../../Global_References/Security/oidc-flows.md — OIDC Flows
+  - ../../../Global_References/Security/rbac-abac.md — RBAC vs ABAC
+  - ../../../Global_References/Security/auth-patterns-fundamentals.md — Auth Patterns Fundamentals
+  - ../../../Global_References/Security/auth-patterns-advanced.md — Auth Patterns Advanced
+  - ../../../Global_References/Security/auth-patterns-provider-comparison.md — Auth Provider Comparison
 
 ## Handoff
 No artifact produced.

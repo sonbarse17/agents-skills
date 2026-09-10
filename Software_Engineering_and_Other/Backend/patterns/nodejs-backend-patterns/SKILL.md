@@ -33,7 +33,7 @@ Comprehensive guidance for building scalable, maintainable, and production-ready
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../../Global_References/nodejs-backend-patterns_details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../../Global_References/Software_Engineering_and_Other/nodejs-backend-patterns_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 

@@ -253,14 +253,14 @@ Before delivering compressed summary, verify:
 - **Round-trip safe** — Summary + one new exchange must allow full continuation
 
 ## References
-  - ../../../Global_References/compression-strategies.md — Compression Strategies
-  - ../../../Global_References/context-compressor-advanced.md — Context Compressor Advanced Topics
-  - ../../../Global_References/context-compressor-fundamentals.md — Context Compressor Fundamentals
-  - ../../../Global_References/context-retrieval.md — Context Retrieval System
-  - ../../../Global_References/context-compressor_context-window-management.md — Context Window Management
+  - ../../../../Global_References/Software_Engineering_and_Other/compression-strategies.md — Compression Strategies
+  - ../../../../Global_References/Software_Engineering_and_Other/context-compressor-advanced.md — Context Compressor Advanced Topics
+  - ../../../../Global_References/Software_Engineering_and_Other/context-compressor-fundamentals.md — Context Compressor Fundamentals
+  - ../../../../Global_References/Software_Engineering_and_Other/context-retrieval.md — Context Retrieval System
+  - ../../../../Global_References/Software_Engineering_and_Other/context-compressor_context-window-management.md — Context Window Management
   - references/state-management.md — State Management
-  - ../../../Global_References/summary-templates.md — Summary Templates
-  - ../../../Global_References/context-compressor_token-management.md — Token Management
+  - ../../../../Global_References/Software_Engineering_and_Other/summary-templates.md — Summary Templates
+  - ../../../../Global_References/Software_Engineering_and_Other/context-compressor_token-management.md — Token Management
 
 ## Summary Structure & Format
 

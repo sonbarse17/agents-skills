@@ -425,14 +425,14 @@ class Indexer:
 15. **Schema evolution** must handle backward-compatible changes (add nullable columns, not remove)
 
 ## References
-  - ../../../Global_References/blockchain-data-indexing-advanced.md — Blockchain Data Indexing Advanced Topics
-  - ../../../Global_References/blockchain-data-indexing-fundamentals.md — Blockchain Data Indexing Fundamentals
-  - ../../../Global_References/blockchain-data-query.md — Blockchain Data Query Patterns
-  - ../../../Global_References/dune-analytics.md — Dune Analytics Reference
-  - ../../../Global_References/blockchain-data-indexing_event-processing.md — Blockchain Event Processing
-  - ../../../Global_References/goldsky-chainindex.md — Goldsky & ChainIndex Reference
-  - ../../../Global_References/indexer-architecture.md — Indexer Architecture Patterns
-  - ../../../Global_References/the-graph-subgraph.md — The Graph — Subgraph Reference
+  - ../../Global_References/Blockchain_and_Web3/blockchain-data-indexing-advanced.md — Blockchain Data Indexing Advanced Topics
+  - ../../Global_References/Blockchain_and_Web3/blockchain-data-indexing-fundamentals.md — Blockchain Data Indexing Fundamentals
+  - ../../Global_References/Blockchain_and_Web3/blockchain-data-query.md — Blockchain Data Query Patterns
+  - ../../Global_References/Blockchain_and_Web3/dune-analytics.md — Dune Analytics Reference
+  - ../../Global_References/Blockchain_and_Web3/blockchain-data-indexing_event-processing.md — Blockchain Event Processing
+  - ../../Global_References/Blockchain_and_Web3/goldsky-chainindex.md — Goldsky & ChainIndex Reference
+  - ../../Global_References/Blockchain_and_Web3/indexer-architecture.md — Indexer Architecture Patterns
+  - ../../Global_References/Blockchain_and_Web3/the-graph-subgraph.md — The Graph — Subgraph Reference
   - references/subgraph-[performance-tuning](../../Software_Engineering_and_Other/Frontend/performance/performance-tuning/SKILL.md).md — Subgraph Performance Tuning
   - references/multi-chain-indexing.md — Multi-Chain Indexing Strategies
   - references/custom-indexer-patterns.md — Custom Indexer Patterns

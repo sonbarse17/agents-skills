@@ -101,7 +101,7 @@ models/
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../../Global_References/dbt-transformation-patterns_details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../Global_References/Data_Engineering/dbt-transformation-patterns_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 

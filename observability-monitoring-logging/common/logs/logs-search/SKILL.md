@@ -234,7 +234,7 @@ Escaping: wrap the KQL string in `\"...\"` in the JSON; for quoted phrases insid
 - Use Elasticsearch date math for `start` and `end` (e.g. `now-1h`, `now-15m`) when building queries programmatically.
 - Choose bucket size from the time range: aim for roughly 20–50 buckets (e.g. 1h window → `1m` or `2m`).
 - Prefer ECS field names. In [Observability](../../fundamentals/observability/SKILL.md) index templates, OTel fields are aliased to ECS; see
-  [../../../Global_References/log-search-reference.md](../../../../Global_References/log-search-reference.md) for resource metadata field fallbacks
+  [../../../../Global_References/observability-monitoring-logging/log-search-reference.md](../../../../Global_References/observability-monitoring-logging/log-search-reference.md) for resource metadata field fallbacks
   (container, host, cluster, namespace, pod, workload).
 - **`log.level`:** Filtering or grouping by it can be OK but is often unreliable when levels are missing or mis-set;
   prefer message content or `error.message` for finding failures.
@@ -243,5 +243,5 @@ Escaping: wrap the KQL string in `\"...\"` in the JSON; for quoted phrases insid
 
 ## References
 
-- [../../../Global_References/log-search-reference.md](../../../../Global_References/log-search-reference.md) — ECS/OTel field mapping and index patterns
+- [../../../../Global_References/observability-monitoring-logging/log-search-reference.md](../../../../Global_References/observability-monitoring-logging/log-search-reference.md) — ECS/OTel field mapping and index patterns
 

@@ -52,7 +52,7 @@ components:
 
 ## Templates and detailed worked examples
 
-Full template library and detailed worked examples live in `../../../Global_References/openapi-spec-generation_details.md`. Read that file when you need the concrete templates.
+Full template library and detailed worked examples live in `../../../../Global_References/Software_Engineering_and_Other/openapi-spec-generation_details.md`. Read that file when you need the concrete templates.
 
 ## Best Practices
 

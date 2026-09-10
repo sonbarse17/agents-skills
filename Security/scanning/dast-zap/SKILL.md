@@ -90,7 +90,7 @@ Identify the target application URL and define scope:
 TARGET_URL="https://target-app.com"
 
 # For authenticated scans, prepare authentication context
-# See ../../../Global_References/authentication_guide.md for detailed setup
+# See ../../../Global_References/Security/authentication_guide.md for detailed setup
 ```
 
 **Scope Considerations:**
@@ -161,7 +161,7 @@ Scan REST, GraphQL, and SOAP APIs:
   -r /zap/wrk/graphql-report.html
 ```
 
-Consult `../../../Global_References/api_testing_guide.md` for advanced API testing patterns including authentication and rate limiting.
+Consult `../../../Global_References/Security/api_testing_guide.md` for advanced API testing patterns including authentication and rate limiting.
 
 ### Step 5: Handle Authentication
 
@@ -185,7 +185,7 @@ Authentication methods supported:
 - API key/token authentication
 - Script-based custom authentication
 
-See `../../../Global_References/authentication_guide.md` for detailed authentication configuration.
+See `../../../Global_References/Security/authentication_guide.md` for detailed authentication configuration.
 
 ### Step 6: Analyze Results and Generate Reports
 
@@ -206,7 +206,7 @@ Review findings by risk level:
 - **Low**: Security concerns with lower exploitability (information disclosure, minor misconfigurations)
 - **Informational**: Security best practices and observations
 
-Map findings to OWASP Top 10 using `../../../Global_References/dast-zap_owasp_mapping.md`.
+Map findings to OWASP Top 10 using `../../../Global_References/Security/dast-zap_owasp_mapping.md`.
 
 ## Automation & CI/CD Integration
 
@@ -419,7 +419,7 @@ For JavaScript-heavy applications, use AJAX spider or Automation Framework.
 
 ```bash
 # Use bundled false positive handling guide
-# See ../../../Global_References/false_positive_handling.md
+# See ../../../Global_References/Security/false_positive_handling.md
 
 # Generate rules file to suppress false positives
 # Format: alert_id  URL_pattern  parameter  CWE_id  WARN|IGNORE|FAIL

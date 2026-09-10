@@ -48,13 +48,13 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Composition API | `../../../Global_References/vue-expert_composition-api.md` | ref, reactive, computed, watch, lifecycle |
-| Components | `../../../Global_References/vue-expert_components.md` | Props, emits, slots, provide/inject |
-| State Management | `../../../Global_References/vue-expert_state-management.md` | Pinia stores, actions, getters |
-| Nuxt 3 | `../../../Global_References/nuxt.md` | SSR, file-based routing, useFetch, Fastify, hydration |
+| Composition API | `../../../../Global_References/Software_Engineering_and_Other/vue-expert_composition-api.md` | ref, reactive, computed, watch, lifecycle |
+| Components | `../../../../Global_References/Software_Engineering_and_Other/vue-expert_components.md` | Props, emits, slots, provide/inject |
+| State Management | `../../../../Global_References/Software_Engineering_and_Other/vue-expert_state-management.md` | Pinia stores, actions, getters |
+| Nuxt 3 | `../../../../Global_References/Software_Engineering_and_Other/nuxt.md` | SSR, file-based routing, useFetch, Fastify, hydration |
 | [TypeScript](../../common/typescript/SKILL.md) | `../../../Global_References/[typescript](../../common/typescript/SKILL.md).md` | Typing props, generic components, type safety |
-| Mobile & Hybrid | `../../../Global_References/mobile-hybrid.md` | Quasar, Capacitor, PWA, service worker, mobile |
-| Build Tooling | `../../../Global_References/build-tooling.md` | Vite config, sourcemaps, optimization, bundling |
+| Mobile & Hybrid | `../../../../Global_References/Software_Engineering_and_Other/mobile-hybrid.md` | Quasar, Capacitor, PWA, service worker, mobile |
+| Build Tooling | `../../../../Global_References/Software_Engineering_and_Other/build-tooling.md` | Vite config, sourcemaps, optimization, bundling |
 
 ## Quick Example
 

@@ -439,11 +439,11 @@ npm (package-lock.json): npm standard, deterministic. yarn (yarn.lock): yarn spe
 - Test rollback of dependency update scenarios.
 
 ## References
-- ../../../Global_References/dependabot-setup.md -- Dependabot Setup
-- ../../../Global_References/dependency-management-advanced.md -- Dependency Management Advanced Topics
-- ../../../Global_References/dependency-management-fundamentals.md -- Dependency Management Fundamentals
-- ../../../Global_References/renovate-config.md -- Renovate Configuration
-- ../../../Global_References/update-strategies.md -- Update Strategies
+- ../../../../Global_References/ci-cd/dependabot-setup.md -- Dependabot Setup
+- ../../../../Global_References/ci-cd/dependency-management-advanced.md -- Dependency Management Advanced Topics
+- ../../../../Global_References/ci-cd/dependency-management-fundamentals.md -- Dependency Management Fundamentals
+- ../../../../Global_References/ci-cd/renovate-config.md -- Renovate Configuration
+- ../../../../Global_References/ci-cd/update-strategies.md -- Update Strategies
 - ../../../Global_References/[vulnerability-scanning](../../../../Security/scanning/vulnerability-scanning/SKILL.md).md -- Vulnerability Scanning
 
 ## Handoff

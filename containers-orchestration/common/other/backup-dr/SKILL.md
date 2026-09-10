@@ -702,14 +702,14 @@ Silent backup failures going undetected for weeks. Monitor backup success rates,
 Backup automation scripts ([Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/Bash), Terraform for backup infrastructure, [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) markdown, CI/CD validation pipeline.
 
 ## References
-  - ../../../Global_References/backup-3-2-1.md
-  - ../../../Global_References/backup-automation.md
+  - ../../../../Global_References/containers-orchestration/backup-3-2-1.md
+  - ../../../../Global_References/containers-orchestration/backup-automation.md
   - ../../../Global_References/backup-[disaster-recovery](../disaster-recovery/SKILL.md).md
-  - ../../../Global_References/backup-dr-advanced.md
-  - ../../../Global_References/backup-dr-fundamentals.md
-  - ../../../Global_References/backup-strategies.md
+  - ../../../../Global_References/containers-orchestration/backup-dr-advanced.md
+  - ../../../../Global_References/containers-orchestration/backup-dr-fundamentals.md
+  - ../../../../Global_References/containers-orchestration/backup-strategies.md
   - ../../../Global_References/[disaster-recovery](../disaster-recovery/SKILL.md).md
-  - ../../../Global_References/dr-recovery.md
+  - ../../../../Global_References/containers-orchestration/dr-recovery.md
   - references/ransomware-protection-guide.md
 
 ## Handoff

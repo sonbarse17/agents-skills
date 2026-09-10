@@ -54,11 +54,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| OWASP | `../../../Global_References/owasp-prevention.md` | OWASP Top 10 patterns |
-| Authentication | `../../../Global_References/secure-code-guardian_authentication.md` | Password hashing, JWT |
-| Input Validation | `../../../Global_References/input-validation.md` | Zod, SQL injection |
-| XSS/CSRF | `../../../Global_References/xss-csrf.md` | XSS prevention, CSRF |
-| Headers | `../../../Global_References/security-headers.md` | Helmet, rate limiting |
+| OWASP | `../../../Global_References/Security/owasp-prevention.md` | OWASP Top 10 patterns |
+| Authentication | `../../../Global_References/Security/secure-code-guardian_authentication.md` | Password hashing, JWT |
+| Input Validation | `../../../Global_References/Security/input-validation.md` | Zod, SQL injection |
+| XSS/CSRF | `../../../Global_References/Security/xss-csrf.md` | XSS prevention, CSRF |
+| Headers | `../../../Global_References/Security/security-headers.md` | Helmet, rate limiting |
 
 ## Constraints
 

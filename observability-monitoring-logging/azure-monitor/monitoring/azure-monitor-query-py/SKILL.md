@@ -281,6 +281,6 @@ AppExceptions
 
 | File | Contents |
 |------|----------|
-| [../../../Global_References/azure-monitor-query-py_capabilities.md](../../../../Global_References/azure-monitor-query-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
-| [../../../Global_References/azure-monitor-query-py_non-hero-scenarios.md](../../../../Global_References/azure-monitor-query-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
+| [../../../../Global_References/observability-monitoring-logging/azure-monitor-query-py_capabilities.md](../../../../Global_References/observability-monitoring-logging/azure-monitor-query-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
+| [../../../../Global_References/observability-monitoring-logging/azure-monitor-query-py_non-hero-scenarios.md](../../../../Global_References/observability-monitoring-logging/azure-monitor-query-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
 

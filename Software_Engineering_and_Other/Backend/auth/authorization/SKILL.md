@@ -703,19 +703,19 @@ func Authorize(engine *casbin.Enforcer) func(http.Handler) http.Handler {
 
 ## References
   - ../../../Global_References/authorization-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md).md — Authorization [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)
-  - ../../../Global_References/authorization-delegation.md — Authorization Delegation
-  - ../../../Global_References/authorization-fundamentals.md — Authorization Fundamentals
-  - ../../../Global_References/authorization-advanced.md — Authorization Advanced
-  - ../../../Global_References/authorization-middleware.md — Authorization Middleware — Framework Integration
-  - ../../../Global_References/authorization-models.md — Authorization Models Comparison
-  - ../../../Global_References/authorization-policy-distribution.md — Policy Distribution and Synchronization
-  - ../../../Global_References/authorization-testing.md — Authorization Testing
-  - ../../../Global_References/data-level-authorization.md — Data-Level Authorization
-  - ../../../Global_References/fine-grained-policies.md — Fine-Grained Access Policies (ABAC)
-  - ../../../Global_References/permission-architecture.md — Permission Architecture
-  - ../../../Global_References/policy-engines-comparison.md — Policy Engines Comparison
-  - ../../../Global_References/rbac-hierarchy.md — RBAC Hierarchy & Admin Patterns
-  - ../../../Global_References/temporary-delegated-access.md — Temporary & Delegated Access
+  - ../../../../Global_References/Software_Engineering_and_Other/authorization-delegation.md — Authorization Delegation
+  - ../../../../Global_References/Software_Engineering_and_Other/authorization-fundamentals.md — Authorization Fundamentals
+  - ../../../../Global_References/Software_Engineering_and_Other/authorization-advanced.md — Authorization Advanced
+  - ../../../../Global_References/Software_Engineering_and_Other/authorization-middleware.md — Authorization Middleware — Framework Integration
+  - ../../../../Global_References/Software_Engineering_and_Other/authorization-models.md — Authorization Models Comparison
+  - ../../../../Global_References/Software_Engineering_and_Other/authorization-policy-distribution.md — Policy Distribution and Synchronization
+  - ../../../../Global_References/Software_Engineering_and_Other/authorization-testing.md — Authorization Testing
+  - ../../../../Global_References/Software_Engineering_and_Other/data-level-authorization.md — Data-Level Authorization
+  - ../../../../Global_References/Software_Engineering_and_Other/fine-grained-policies.md — Fine-Grained Access Policies (ABAC)
+  - ../../../../Global_References/Software_Engineering_and_Other/permission-architecture.md — Permission Architecture
+  - ../../../../Global_References/Software_Engineering_and_Other/policy-engines-comparison.md — Policy Engines Comparison
+  - ../../../../Global_References/Software_Engineering_and_Other/rbac-hierarchy.md — RBAC Hierarchy & Admin Patterns
+  - ../../../../Global_References/Software_Engineering_and_Other/temporary-delegated-access.md — Temporary & Delegated Access
 ## Handoff
 No artifact produced unless requested.
 Next skill: authentication (frontend) — implement login UI, route guards, token storage for the auth system.

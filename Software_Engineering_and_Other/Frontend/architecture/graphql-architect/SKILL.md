@@ -45,12 +45,12 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Schema Design | `../../../Global_References/schema-design.md` | Types, interfaces, unions, enums, input types |
-| Resolvers | `../../../Global_References/resolvers.md` | Resolver patterns, context, DataLoader, N+1 |
-| Federation | `../../../Global_References/federation.md` | Apollo Federation, subgraphs, entities, directives |
-| Subscriptions | `../../../Global_References/subscriptions.md` | Real-time updates, WebSocket, pub/sub patterns |
-| Security | `../../../Global_References/graphql-architect_security.md` | Query depth, complexity analysis, authentication |
-| REST Migration | `../../../Global_References/migration-from-rest.md` | Migrating REST APIs to GraphQL |
+| Schema Design | `../../../../Global_References/Software_Engineering_and_Other/schema-design.md` | Types, interfaces, unions, enums, input types |
+| Resolvers | `../../../../Global_References/Software_Engineering_and_Other/resolvers.md` | Resolver patterns, context, DataLoader, N+1 |
+| Federation | `../../../../Global_References/Software_Engineering_and_Other/federation.md` | Apollo Federation, subgraphs, entities, directives |
+| Subscriptions | `../../../../Global_References/Software_Engineering_and_Other/subscriptions.md` | Real-time updates, WebSocket, pub/sub patterns |
+| Security | `../../../../Global_References/Software_Engineering_and_Other/graphql-architect_security.md` | Query depth, complexity analysis, authentication |
+| REST Migration | `../../../../Global_References/Software_Engineering_and_Other/migration-from-rest.md` | Migrating REST APIs to GraphQL |
 
 ## Constraints
 

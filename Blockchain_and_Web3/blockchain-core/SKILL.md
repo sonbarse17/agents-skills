@@ -447,17 +447,17 @@ func (mp *Mempool) Add(tx *Transaction) bool {
 ```
 
 ## References
-  - ../../../Global_References/blockchain-core-advanced.md — Blockchain Core Advanced Topics
-  - ../../../Global_References/blockchain-core-fundamentals.md — Blockchain Core Fundamentals
-  - ../../../Global_References/blockchain-data-structures.md — Blockchain Data Structures
-  - ../../../Global_References/consensus-deep-dive.md — Consensus Mechanisms Deep Dive
-  - ../../../Global_References/cryptography-foundations.md — Cryptography Foundations for Blockchain
-  - ../../../Global_References/dag-consensus.md — DAG-Based Consensus
-  - ../../../Global_References/economic-security-mev.md — Economic Security & MEV
-  - ../../../Global_References/gas-and-staking.md — Gas, Fees & Staking Mechanics
-  - ../../../Global_References/node-implementation.md — Node Implementation Deep Dive
-  - ../../../Global_References/p2p-networking.md — P2P Networking for Blockchain
-  - ../../../Global_References/state-machines.md — Blockchain State Machine Design
+  - ../../Global_References/Blockchain_and_Web3/blockchain-core-advanced.md — Blockchain Core Advanced Topics
+  - ../../Global_References/Blockchain_and_Web3/blockchain-core-fundamentals.md — Blockchain Core Fundamentals
+  - ../../Global_References/Blockchain_and_Web3/blockchain-data-structures.md — Blockchain Data Structures
+  - ../../Global_References/Blockchain_and_Web3/consensus-deep-dive.md — Consensus Mechanisms Deep Dive
+  - ../../Global_References/Blockchain_and_Web3/cryptography-foundations.md — Cryptography Foundations for Blockchain
+  - ../../Global_References/Blockchain_and_Web3/dag-consensus.md — DAG-Based Consensus
+  - ../../Global_References/Blockchain_and_Web3/economic-security-mev.md — Economic Security & MEV
+  - ../../Global_References/Blockchain_and_Web3/gas-and-staking.md — Gas, Fees & Staking Mechanics
+  - ../../Global_References/Blockchain_and_Web3/node-implementation.md — Node Implementation Deep Dive
+  - ../../Global_References/Blockchain_and_Web3/p2p-networking.md — P2P Networking for Blockchain
+  - ../../Global_References/Blockchain_and_Web3/state-machines.md — Blockchain State Machine Design
   - references/blockchain-fork-choice.md — Fork Choice Rules
   - references/light-client-protocols.md — Light Client Protocols
   - references/transaction-ordering-policies.md — Transaction Ordering Policies

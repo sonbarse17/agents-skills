@@ -526,12 +526,12 @@ BGP hold timers alone (30-120s) are too slow for modern DC failover. Always enab
 - NetFlow/sFlow export from every ToR for [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) planning + DDoS detection.
 
 ## References
-  - ../../../Global_References/bgp-anycast.md — BGP + Anycast — Policy, RPKI, Multi-Homing
-  - ../../../Global_References/leaf-spine.md — Leaf-Spine — Clos Fabric, ECMP, EVPN/VXLAN
-  - ../../../Global_References/network-infrastructure-advanced.md — Network Infrastructure Advanced Topics
-  - ../../../Global_References/network-infrastructure-fundamentals.md — Network Infrastructure Fundamentals
+  - ../../../../Global_References/Software_Engineering_and_Other/bgp-anycast.md — BGP + Anycast — Policy, RPKI, Multi-Homing
+  - ../../../../Global_References/Software_Engineering_and_Other/leaf-spine.md — Leaf-Spine — Clos Fabric, ECMP, EVPN/VXLAN
+  - ../../../../Global_References/Software_Engineering_and_Other/network-infrastructure-advanced.md — Network Infrastructure Advanced Topics
+  - ../../../../Global_References/Software_Engineering_and_Other/network-infrastructure-fundamentals.md — Network Infrastructure Fundamentals
   - references/sd-wan-mpls.md — SD-WAN vs MPLS — Branch + Hybrid Connectivity
-  - ../../../Global_References/vrrp-hsrp.md — L2 Redundancy — VRRP / HSRP / CARP / MLAG
+  - ../../../../Global_References/Software_Engineering_and_Other/vrrp-hsrp.md — L2 Redundancy — VRRP / HSRP / CARP / MLAG
   - references/evpn-vxlan-deep-dive.md — EVPN/VXLAN Deep Dive
   - references/bgp-automation.md — BGP Automation with [Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md)
 ## Handoff

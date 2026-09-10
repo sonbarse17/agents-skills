@@ -400,17 +400,17 @@ Relayer sustainability:
 15. **Token pairs on bridges must be verified**: Only allow canonical + verified wrapped token lists
 
 ## References
-  - ../../../Global_References/atomic-composability.md — Atomic Composability Across Chains
-  - ../../../Global_References/blockchain-cross-chain-advanced.md — Blockchain Cross Chain Advanced Topics
-  - ../../../Global_References/blockchain-cross-chain-fundamentals.md — Blockchain Cross Chain Fundamentals
+  - ../../Global_References/Blockchain_and_Web3/atomic-composability.md — Atomic Composability Across Chains
+  - ../../Global_References/Blockchain_and_Web3/blockchain-cross-chain-advanced.md — Blockchain Cross Chain Advanced Topics
+  - ../../Global_References/Blockchain_and_Web3/blockchain-cross-chain-fundamentals.md — Blockchain Cross Chain Fundamentals
   - ../../../Global_References/bridge-[incident-response](../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md).md — Bridge [Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response
   - ../../../Global_References/bridge-[monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-[alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md).md — Bridge [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
-  - ../../../Global_References/bridge-security.md — Bridge Security
-  - ../../../Global_References/ccip-chainlink.md — Chainlink CCIP (Cross-Chain Interoperability Protocol)
-  - ../../../Global_References/ibc-deep.md — IBC (Inter-Blockchain Communication) Deep Dive
-  - ../../../Global_References/layerzero-wormhole.md — LayerZero, Wormhole, Axelar
-  - ../../../Global_References/message-replay-protection.md — Message Replay Protection
-  - ../../../Global_References/shared-sequencer.md — Shared Sequencing
+  - ../../Global_References/Blockchain_and_Web3/bridge-security.md — Bridge Security
+  - ../../Global_References/Blockchain_and_Web3/ccip-chainlink.md — Chainlink CCIP (Cross-Chain Interoperability Protocol)
+  - ../../Global_References/Blockchain_and_Web3/ibc-deep.md — IBC (Inter-Blockchain Communication) Deep Dive
+  - ../../Global_References/Blockchain_and_Web3/layerzero-wormhole.md — LayerZero, Wormhole, Axelar
+  - ../../Global_References/Blockchain_and_Web3/message-replay-protection.md — Message Replay Protection
+  - ../../Global_References/Blockchain_and_Web3/shared-sequencer.md — Shared Sequencing
   - references/cross-chain-token-representation.md — Cross-Chain Token Standards & Representation
   - references/bridge-fee-models.md — Bridge Fee Models & Relayer Economics
 

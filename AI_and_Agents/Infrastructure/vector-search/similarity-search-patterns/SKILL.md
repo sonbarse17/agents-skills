@@ -51,7 +51,7 @@ Patterns for implementing efficient similarity search in production systems.
 
 ## Templates and detailed worked examples
 
-Full template library and detailed worked examples live in `../../../Global_References/similarity-search-patterns_details.md`. Read that file when you need the concrete templates.
+Full template library and detailed worked examples live in `../../../../Global_References/AI_and_Agents/similarity-search-patterns_details.md`. Read that file when you need the concrete templates.
 
 ## Best Practices
 

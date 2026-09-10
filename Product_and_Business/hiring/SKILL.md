@@ -421,14 +421,14 @@ Candidate: __________  Reference: __________  Relationship: __________
 - Score first, discuss second in every debrief session.
 
 ## References
-  - ../../../Global_References/evaluation-rubric.md -- Evaluation Rubric
-  - ../../../Global_References/hiring-advanced.md -- Hiring Advanced Topics
-  - ../../../Global_References/hiring-fundamentals.md -- Hiring Fundamentals
-  - ../../../Global_References/interview-process.md -- Interview Process Design
-  - ../../../Global_References/interview-questions.md -- Interview Questions
-  - ../../../Global_References/interview-rubrics.md -- Interview Rubrics
-  - ../../../Global_References/hiring-interview-frameworks.md -- Hiring Interview Frameworks
-  - ../../../Global_References/hiring-evaluation-decision.md -- Hiring Evaluation and Decision
+  - ../../Global_References/Product_and_Business/evaluation-rubric.md -- Evaluation Rubric
+  - ../../Global_References/Product_and_Business/hiring-advanced.md -- Hiring Advanced Topics
+  - ../../Global_References/Product_and_Business/hiring-fundamentals.md -- Hiring Fundamentals
+  - ../../Global_References/Product_and_Business/interview-process.md -- Interview Process Design
+  - ../../Global_References/Product_and_Business/interview-questions.md -- Interview Questions
+  - ../../Global_References/Product_and_Business/interview-rubrics.md -- Interview Rubrics
+  - ../../Global_References/Product_and_Business/hiring-interview-frameworks.md -- Hiring Interview Frameworks
+  - ../../Global_References/Product_and_Business/hiring-evaluation-decision.md -- Hiring Evaluation and Decision
 
 ## Handoff
 `management/[team-rules](../team-rules/SKILL.md)` for onboarding new hires

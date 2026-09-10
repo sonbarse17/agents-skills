@@ -21,7 +21,7 @@ This document is the authoritative reference for how PluginEval measures plugin 
 It covers the three evaluation layers, all ten scoring dimensions, the composite formula, badge
 thresholds, anti-pattern flags, Elo ranking, and actionable improvement tips.
 
-Related: [Full rubric anchors](../../../../Global_References/rubrics.md)
+Related: [Full rubric anchors](../../../../Global_References/AI_and_Agents/rubrics.md)
 
 ---
 
@@ -64,7 +64,7 @@ Each additional detected anti-pattern reduces the score by 5%, flooring at 50%.
 **Speed:** 30–90 seconds. One or more LLM calls (Sonnet by default). Non-deterministic.
 
 The `eval-judge` agent reads the SKILL.md and any `references/` files, then scores four
-dimensions using anchored rubrics (see [../../../Global_References/rubrics.md](../../../../Global_References/rubrics.md)):
+dimensions using anchored rubrics (see [../../../../Global_References/AI_and_Agents/rubrics.md](../../../../Global_References/AI_and_Agents/rubrics.md)):
 
 1. **Triggering accuracy** — F1 score derived from 10 mental test prompts
 2. **Orchestration fitness** — Worker purity assessment (0–1 rubric)
@@ -246,7 +246,7 @@ explaining badge thresholds to a team."
 wasting tokens on content only needed in edge cases.
 
 **Fix:** Create a `references/` directory and move supporting material there:
-- Detailed rubrics → `../../../Global_References/rubrics.md`
+- Detailed rubrics → `../../../../Global_References/AI_and_Agents/rubrics.md`
 - Extended examples → `references/examples.md`
 - Configuration reference → `references/config.md`
 
@@ -550,7 +550,7 @@ that includes the LLM judge's assessment of content quality.
 
 ## References
 
-- [Full Rubric Anchors — all 4 judge dimensions](../../../../Global_References/rubrics.md)
+- [Full Rubric Anchors — all 4 judge dimensions](../../../../Global_References/AI_and_Agents/rubrics.md)
 
 ### Related Agents
 

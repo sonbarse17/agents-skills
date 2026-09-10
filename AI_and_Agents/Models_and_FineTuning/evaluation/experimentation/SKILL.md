@@ -449,8 +449,8 @@ When can we stop the experiment?
 - Log experiment assignments and metrics to data warehouse for meta-analysis
 
 ## References
-  - ../../../Global_References/experimentation-fundamentals.md — Experimentation Fundamentals
-  - ../../../Global_References/experimentation-advanced.md — Experimentation Advanced Topics
+  - ../../../../Global_References/AI_and_Agents/experimentation-fundamentals.md — Experimentation Fundamentals
+  - ../../../../Global_References/AI_and_Agents/experimentation-advanced.md — Experimentation Advanced Topics
 
 ## Architecture Decision Trees
 

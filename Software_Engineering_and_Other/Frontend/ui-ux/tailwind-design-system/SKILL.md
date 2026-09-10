@@ -189,6 +189,6 @@ Base styles → Variants → Sizes → States → Overrides
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../../Global_References/tailwind-design-system_details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../../Global_References/Software_Engineering_and_Other/tailwind-design-system_details.md`. Read that file when the navigation tier above is insufficient.
 
 

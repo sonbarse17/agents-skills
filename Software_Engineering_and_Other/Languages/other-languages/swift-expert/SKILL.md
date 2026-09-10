@@ -44,11 +44,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| SwiftUI | `../../../Global_References/swift-expert_swiftui-patterns.md` | Building views, state management, modifiers |
-| Concurrency | `../../../Global_References/async-concurrency.md` | async/await, actors, structured concurrency |
-| Protocols | `../../../Global_References/protocol-oriented.md` | Protocol design, generics, type erasure |
-| Memory | `../../../Global_References/memory-performance.md` | ARC, weak/unowned, performance optimization |
-| Testing | `../../../Global_References/swift-expert_testing-patterns.md` | XCTest, async tests, mocking strategies |
+| SwiftUI | `../../../../Global_References/Software_Engineering_and_Other/swift-expert_swiftui-patterns.md` | Building views, state management, modifiers |
+| Concurrency | `../../../../Global_References/Software_Engineering_and_Other/async-concurrency.md` | async/await, actors, structured concurrency |
+| Protocols | `../../../../Global_References/Software_Engineering_and_Other/protocol-oriented.md` | Protocol design, generics, type erasure |
+| Memory | `../../../../Global_References/Software_Engineering_and_Other/memory-performance.md` | ARC, weak/unowned, performance optimization |
+| Testing | `../../../../Global_References/Software_Engineering_and_Other/swift-expert_testing-patterns.md` | XCTest, async tests, mocking strategies |
 
 ## Code Patterns
 

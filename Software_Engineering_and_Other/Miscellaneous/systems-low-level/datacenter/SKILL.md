@@ -611,14 +611,14 @@ Only [monitoring](../../../../observability-monitoring-logging/common/monitoring
 - BMC ports restricted to management VLAN only.
 
 ## References
-  - ../../../Global_References/cabling.md
-  - ../../../Global_References/datacenter-advanced.md
+  - ../../../../Global_References/Software_Engineering_and_Other/cabling.md
+  - ../../../../Global_References/Software_Engineering_and_Other/datacenter-advanced.md
   - ../../../Global_References/datacenter-[capacity-planning](../../../DevOps_and_Cloud/Observability_and_SecOps/[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-planning/SKILL.md).md
-  - ../../../Global_References/datacenter-fundamentals.md
-  - ../../../Global_References/datacenter-networking-storage.md
-  - ../../../Global_References/dcim.md
-  - ../../../Global_References/rack-power-cooling.md
-  - ../../../Global_References/tier-classification.md
+  - ../../../../Global_References/Software_Engineering_and_Other/datacenter-fundamentals.md
+  - ../../../../Global_References/Software_Engineering_and_Other/datacenter-networking-storage.md
+  - ../../../../Global_References/Software_Engineering_and_Other/dcim.md
+  - ../../../../Global_References/Software_Engineering_and_Other/rack-power-cooling.md
+  - ../../../../Global_References/Software_Engineering_and_Other/tier-classification.md
   - references/ashrae-guidelines.md
 
 ## Handoff

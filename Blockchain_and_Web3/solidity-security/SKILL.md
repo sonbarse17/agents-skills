@@ -30,7 +30,7 @@ Master smart contract security best practices, vulnerability prevention, and sec
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../../Global_References/solidity-security_details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../Global_References/Blockchain_and_Web3/solidity-security_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Testing for Security
 

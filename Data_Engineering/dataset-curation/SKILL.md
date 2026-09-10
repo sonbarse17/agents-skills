@@ -51,7 +51,7 @@ training.
   verified, deduplicated set beats a larger noisy one.
 - The ChatML shape, for orientation; the other four
   formats plus a ShareGPT conversion note live in
-  `../../../Global_References/formats-and-templates.md`:
+  `../../Global_References/Data_Engineering/formats-and-templates.md`:
 
   ```json
   {"messages": [
@@ -83,7 +83,7 @@ the wrong place relative to each example.
   (`assistant_only_loss=True` in current TRL) —
   pre-rendering to a flat text field destroys the
   turn boundaries masking needs. Full code sketch:
-  `../../../Global_References/formats-and-templates.md`. Sanity-check
+  `../../Global_References/Data_Engineering/formats-and-templates.md`. Sanity-check
   before training — decode only unmasked positions;
   expect only assistant text:
 
@@ -135,7 +135,7 @@ up to the max length, cutting most of that waste.
   An all-synthetic-by-construction
   dataset can meet the ≥25% floor
   through replay alone (see
-  `../../../Global_References/synthetic-data.md`'s
+  `../../Global_References/Data_Engineering/synthetic-data.md`'s
   Replay-Mix Construction recipe);
   state which rows count as "real"
   in the dataset card rather than
@@ -156,7 +156,7 @@ up to the max length, cutting most of that waste.
   target at 15% accept needs ~65,000+ raw generations.
 - Generation-method ranking, filter funnel, replay-
   mix construction, and distillation pattern:
-  `../../../Global_References/synthetic-data.md`.
+  `../../Global_References/Data_Engineering/synthetic-data.md`.
 
 ## The Dataset Card
 
@@ -174,7 +174,7 @@ documentation; it MUST carry these fields:
   checked against the ≥25% real floor above.
 - **Dedup method** — exact-match, semantic
   (embedding threshold), or both; see the filter
-  funnel in `../../../Global_References/synthetic-data.md`.
+  funnel in `../../Global_References/Data_Engineering/synthetic-data.md`.
 - **Template used** — the exact chat template
   string/identifier, kept consistent through
   inference and eval — this is what ties an
@@ -200,10 +200,10 @@ Before handing off to `/finetune`, confirm:
 
 ## References
 
-- `../../../Global_References/formats-and-templates.md` — JSONL
+- `../../Global_References/Data_Engineering/formats-and-templates.md` — JSONL
   examples per format, current-TRL masking code,
   and the ShareGPT conversion note.
-- `../../../Global_References/synthetic-data.md` — generation-method
+- `../../Global_References/Data_Engineering/synthetic-data.md` — generation-method
   ranking, filter funnel, replay-mix construction,
   and teacher→student distillation pattern.
 

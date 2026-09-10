@@ -466,12 +466,12 @@ Use `app.inject()` for HTTP testing without a server. Use `@fastify/test-helper`
 - Graceful shutdown via `app.close()` in signal handlers.
 
 ## References
-  - ../../../Global_References/fastify-advanced-plugins.md — Advanced Plugin Patterns
-  - ../../../Global_References/fastify-hooks.md — Lifecycle Hooks
-  - ../../../Global_References/fastify-plugins.md — Plugin System
-  - ../../../Global_References/fastify-setup.md — Setup Guide
-  - ../../../Global_References/fastify-testing.md — Testing
-  - ../../../Global_References/fastify-validation.md — Validation and Serialization
+  - ../../../../Global_References/Software_Engineering_and_Other/fastify-advanced-plugins.md — Advanced Plugin Patterns
+  - ../../../../Global_References/Software_Engineering_and_Other/fastify-hooks.md — Lifecycle Hooks
+  - ../../../../Global_References/Software_Engineering_and_Other/fastify-plugins.md — Plugin System
+  - ../../../../Global_References/Software_Engineering_and_Other/fastify-setup.md — Setup Guide
+  - ../../../../Global_References/Software_Engineering_and_Other/fastify-testing.md — Testing
+  - ../../../../Global_References/Software_Engineering_and_Other/fastify-validation.md — Validation and Serialization
 ## Handoff
 Hand off to `backend/universal/api-response/SKILL.md` for API response formatting or `backend/nodejs/patterns/SKILL.md` for Node.js patterns.
 ## Implementation Patterns

@@ -27,7 +27,7 @@ Guide for creating, managing, and completing Conductor tracks - the logical work
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../../Global_References/track-management_details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../Global_References/Product_and_Business/track-management_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 

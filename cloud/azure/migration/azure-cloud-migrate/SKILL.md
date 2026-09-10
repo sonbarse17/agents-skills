@@ -34,7 +34,7 @@ depends_on:
 4. Use `mcp_azure_mcp_get_azure_bestpractices` and `mcp_azure_mcp_documentation` MCP tools
 5. Use the latest supported runtime for the target service
 6. Destructive actions require `ask_user` — [functions global-rules](references/services/functions/global-rules.md) | [app-service global-rules](references/services/app-service/global-rules.md)
-7. **Report progress to user** — During long-running operations (deployments, image pushes), provide resource-level status updates so the user is never left waiting without feedback — see [workflow-details.md](../../../../Global_References/workflow-details.md)
+7. **Report progress to user** — During long-running operations (deployments, image pushes), provide resource-level status updates so the user is never left waiting without feedback — see [workflow-details.md](../../../../Global_References/cloud/workflow-details.md)
 8. **[Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) service discovery in app code** — [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) DNS names (e.g., `http://order-service:3001`) do not resolve in Container Apps. During assessment, scan source code for hardcoded hostnames/ports in HTTP clients and flag them for env-var-driven URL injection
 
 ## Migration Scenarios
@@ -64,5 +64,5 @@ All output goes to `<workspace-root-basename>-azure/` at workspace root, where `
 4. **Ask User** — "Migration complete. Test locally or deploy to Azure?"
 5. **Hand off** to [azure-prepare](../[azure-prepare](../azure-skills/skills/azure-prepare/SKILL.md)/SKILL.md) for infrastructure, testing, and deployment
 
-Track progress in `migration-status.md` — see [workflow-details.md](../../../../Global_References/workflow-details.md).
+Track progress in `migration-status.md` — see [workflow-details.md](../../../../Global_References/cloud/workflow-details.md).
 

@@ -539,14 +539,14 @@ def custom_prune_callback(study, trial):
 - Store study database durably.
 
 ## References
-  - ../../../Global_References/automl-tuning.md — AutoML Tuning
-  - ../../../Global_References/hyperparameter-tuning-advanced.md — Hyperparameter Tuning Advanced Topics
-  - ../../../Global_References/hyperparameter-tuning-fundamentals.md — Hyperparameter Tuning Fundamentals
-  - ../../../Global_References/multi-fidelity.md — Multi-Fidelity Optimization
-  - ../../../Global_References/optimization-methods.md — Hyperparameter Optimization
-  - ../../../Global_References/search-strategies.md — Search Strategies
-  - ../../../Global_References/tuning-at-scale.md — Distributed Tuning
-  - ../../../Global_References/tuning-frameworks.md — Tuning Frameworks
+  - ../../../../Global_References/AI_and_Agents/automl-tuning.md — AutoML Tuning
+  - ../../../../Global_References/AI_and_Agents/hyperparameter-tuning-advanced.md — Hyperparameter Tuning Advanced Topics
+  - ../../../../Global_References/AI_and_Agents/hyperparameter-tuning-fundamentals.md — Hyperparameter Tuning Fundamentals
+  - ../../../../Global_References/AI_and_Agents/multi-fidelity.md — Multi-Fidelity Optimization
+  - ../../../../Global_References/AI_and_Agents/optimization-methods.md — Hyperparameter Optimization
+  - ../../../../Global_References/AI_and_Agents/search-strategies.md — Search Strategies
+  - ../../../../Global_References/AI_and_Agents/tuning-at-scale.md — Distributed Tuning
+  - ../../../../Global_References/AI_and_Agents/tuning-frameworks.md — Tuning Frameworks
 ## Handoff
 Pass tuned hyperparameters to ml-[experiment-tracking](../../../../Data_Engineering/experiment-tracking/SKILL.md) for logging. Hand off to [ml-model-evaluation](../../evaluation/model-evaluation/SKILL.md) for evaluating tuned model.
 

@@ -745,14 +745,14 @@ try url.setResourceValues(resourceValues)
 - Security findings must be tracked with severity, remediation steps, and re-test date
 
 ## References
-  - ../../../Global_References/auth.md — Mobile Authentication
-  - ../../../Global_References/data-protection.md — Mobile Data Protection
-  - ../../../Global_References/mobile-security-best-practices.md — Mobile Security Best Practices
-  - ../../../Global_References/mobile-security.md — Mobile Security Fundamentals
+  - ../../../Global_References/Security/auth.md — Mobile Authentication
+  - ../../../Global_References/Security/data-protection.md — Mobile Data Protection
+  - ../../../Global_References/Security/mobile-security-best-practices.md — Mobile Security Best Practices
+  - ../../../Global_References/Security/mobile-security.md — Mobile Security Fundamentals
   - ../../../Global_References/[network-security](../../../containers-orchestration/common/other/network-security/SKILL.md).md — Mobile Network Security
-  - ../../../Global_References/security-hardening.md — Mobile Security Hardening
+  - ../../../Global_References/Security/security-hardening.md — Mobile Security Hardening
   - ../../../Global_References/mobile-security-[penetration-testing](../../pentest-redteam/penetration-testing/SKILL.md).md — Mobile Security Penetration Testing
-  - ../../../Global_References/mobile-security-compliance.md — Mobile Security Compliance
+  - ../../../Global_References/Security/mobile-security-compliance.md — Mobile Security Compliance
 ## Handoff
 
 Hand off to stack-specific skill for implementation.

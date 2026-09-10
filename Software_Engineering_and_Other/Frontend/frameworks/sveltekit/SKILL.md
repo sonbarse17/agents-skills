@@ -404,14 +404,14 @@ export const handle: Handle = async ({ event, resolve }) => {
 - Always set cache headers for public data.
 
 ## References
-  - ../../../Global_References/endpoints-loading.md
-  - ../../../Global_References/stores-context.md
-  - ../../../Global_References/sveltekit-auth.md
-  - ../../../Global_References/sveltekit-data.md
-  - ../../../Global_References/sveltekit-deployment.md
-  - ../../../Global_References/sveltekit-routing.md
-  - ../../../Global_References/sveltekit-form-actions.md
-  - ../../../Global_References/sveltekit-deployment-adapters.md
+  - ../../../../Global_References/Software_Engineering_and_Other/endpoints-loading.md
+  - ../../../../Global_References/Software_Engineering_and_Other/stores-context.md
+  - ../../../../Global_References/Software_Engineering_and_Other/sveltekit-auth.md
+  - ../../../../Global_References/Software_Engineering_and_Other/sveltekit-data.md
+  - ../../../../Global_References/Software_Engineering_and_Other/sveltekit-deployment.md
+  - ../../../../Global_References/Software_Engineering_and_Other/sveltekit-routing.md
+  - ../../../../Global_References/Software_Engineering_and_Other/sveltekit-form-actions.md
+  - ../../../../Global_References/Software_Engineering_and_Other/sveltekit-deployment-adapters.md
 
 ## Handoff
 Hand off to `frontend/universal/state-management/SKILL.md` or `frontend/universal/performance/SKILL.md`.

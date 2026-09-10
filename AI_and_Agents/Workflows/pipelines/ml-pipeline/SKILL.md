@@ -52,11 +52,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Feature Engineering | `../../../Global_References/ml-pipeline_feature-engineering.md` | Feature pipelines, transformations, feature stores, Feast, data validation |
-| Training Pipelines | `../../../Global_References/training-pipelines.md` | Training orchestration, distributed training, hyperparameter tuning, resource management |
+| Feature Engineering | `../../../../Global_References/AI_and_Agents/ml-pipeline_feature-engineering.md` | Feature pipelines, transformations, feature stores, Feast, data validation |
+| Training Pipelines | `../../../../Global_References/AI_and_Agents/training-pipelines.md` | Training orchestration, distributed training, hyperparameter tuning, resource management |
 | Experiment Tracking | `../../../Global_References/[experiment-tracking](../../../../Data_Engineering/experiment-tracking/SKILL.md).md` | MLflow, Weights & Biases, experiment logging, model registry |
-| Pipeline Orchestration | `../../../Global_References/pipeline-orchestration.md` | Kubeflow Pipelines, Airflow, Prefect, DAG design, workflow automation |
-| Model Validation | `../../../Global_References/model-validation.md` | Evaluation strategies, validation workflows, A/B testing, shadow deployment |
+| Pipeline Orchestration | `../../../../Global_References/AI_and_Agents/pipeline-orchestration.md` | Kubeflow Pipelines, Airflow, Prefect, DAG design, workflow automation |
+| Model Validation | `../../../../Global_References/AI_and_Agents/model-validation.md` | Evaluation strategies, validation workflows, A/B testing, shadow deployment |
 
 ## Code Templates
 

@@ -455,8 +455,8 @@ resource "oci_monitoring_alarm" "cpu_high" {
   - references/oci-networking.md — VCN, Subnets, Security Lists, DRG
   - references/oci-storage.md — Object Storage, Block Volume, File Storage
   - references/oci-oke.md — OKE Cluster and Node Pool Management
-  - ../../../Global_References/oracle-cloud-advanced.md — Oracle Cloud Advanced Topics
-  - ../../../Global_References/oracle-cloud-fundamentals.md — Oracle Cloud Fundamentals
+  - ../../../Global_References/cloud/oracle-cloud-advanced.md — Oracle Cloud Advanced Topics
+  - ../../../Global_References/cloud/oracle-cloud-fundamentals.md — Oracle Cloud Fundamentals
 ## Handoff
 - `devops-terraform` for Terraform state and module patterns for OCI.
 - `devops-[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)` for workload deployment on OKE clusters.

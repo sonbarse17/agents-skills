@@ -532,14 +532,14 @@ Messages fail, go to DLQ, but nobody monitors it. DLQ messages accumulate and ev
 - Integration deprecation follows documented lifecycle with consumer notification
 
 ## References
-- ../../../Global_References/integration-patterns-fundamentals.md -- Integration Patterns Fundamentals
-- ../../../Global_References/integration-patterns-advanced.md -- Integration Patterns Advanced Topics
-- ../../../Global_References/integration-styles.md -- Enterprise Integration Styles
-- ../../../Global_References/message-routing.md -- Message Routing Patterns
-- ../../../Global_References/integration-architectures.md -- Integration Architectures
-- ../../../Global_References/etl-integration.md -- ETL Integration Patterns
-- ../../../Global_References/enterprise-integration-architecture.md -- Enterprise Integration Architecture
-  - ../../../Global_References/event-driven-integration.md -- Event-Driven Integration
+- ../../../../Global_References/Software_Engineering_and_Other/integration-patterns-fundamentals.md -- Integration Patterns Fundamentals
+- ../../../../Global_References/Software_Engineering_and_Other/integration-patterns-advanced.md -- Integration Patterns Advanced Topics
+- ../../../../Global_References/Software_Engineering_and_Other/integration-styles.md -- Enterprise Integration Styles
+- ../../../../Global_References/Software_Engineering_and_Other/message-routing.md -- Message Routing Patterns
+- ../../../../Global_References/Software_Engineering_and_Other/integration-architectures.md -- Integration Architectures
+- ../../../../Global_References/Software_Engineering_and_Other/etl-integration.md -- ETL Integration Patterns
+- ../../../../Global_References/Software_Engineering_and_Other/enterprise-integration-architecture.md -- Enterprise Integration Architecture
+  - ../../../../Global_References/Software_Engineering_and_Other/event-driven-integration.md -- Event-Driven Integration
   - ../../../Global_References/[api-gateway](../../../Backend/api-gateway/api-gateway/SKILL.md)-patterns.md -- API Gateway Patterns
 
 ## Handoff

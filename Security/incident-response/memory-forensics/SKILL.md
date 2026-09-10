@@ -85,7 +85,7 @@ virsh dump <domain> memory.raw --memory-only
 
 ## Detailed section: Volatility 3 Framework
 
-Originally a 2680-byte section in this SKILL.md. Moved to `../../../Global_References/memory-forensics_details.md` to fit Codex's 8 KB skill body cap.
+Originally a 2680-byte section in this SKILL.md. Moved to `../../../Global_References/Security/memory-forensics_details.md` to fit Codex's 8 KB skill body cap.
 
 ## Analysis Workflows
 

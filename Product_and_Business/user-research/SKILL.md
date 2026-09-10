@@ -413,13 +413,13 @@ Result: 15% conversion increase, 40% session time increase
 - Always ask "what did we miss?" in the last question of every interview.
 
 ## References
-  - ../../../Global_References/interview-guide.md — User Interview Guide
-  - ../../../Global_References/user-research_research-methods.md — Research Methods
-  - ../../../Global_References/user-research_synthesis-frameworks.md — Synthesis Frameworks
-  - ../../../Global_References/user-research-advanced.md — User Research Advanced Topics
-  - ../../../Global_References/user-research-fundamentals.md — User Research Fundamentals
-  - ../../../Global_References/user-research-methods.md — User Research Methods
-  - ../../../Global_References/user-research-method-selection.md — User Research Method Selection
+  - ../../Global_References/Product_and_Business/interview-guide.md — User Interview Guide
+  - ../../Global_References/Product_and_Business/user-research_research-methods.md — Research Methods
+  - ../../Global_References/Product_and_Business/user-research_synthesis-frameworks.md — Synthesis Frameworks
+  - ../../Global_References/Product_and_Business/user-research-advanced.md — User Research Advanced Topics
+  - ../../Global_References/Product_and_Business/user-research-fundamentals.md — User Research Fundamentals
+  - ../../Global_References/Product_and_Business/user-research-methods.md — User Research Methods
+  - ../../Global_References/Product_and_Business/user-research-method-selection.md — User Research Method Selection
   - references/user-research-synthesis-reporting.md — User Research Synthesis and Reporting
 ## Handoff
 For quantitative validation of insights, hand off to `[product-analytics](../analytics/SKILL.md)`. For running experiments based on findings, hand off to `[product-ab-testing](../ab-testing/SKILL.md)`.

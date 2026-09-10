@@ -88,7 +88,7 @@ results = context.run_checkpoint(checkpoint_name="daily_orders")
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../../Global_References/data-quality-frameworks_details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../Global_References/Data_Engineering/data-quality-frameworks_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Summary: {total_passed}/{total_tables} tables passed")
         report.append("")

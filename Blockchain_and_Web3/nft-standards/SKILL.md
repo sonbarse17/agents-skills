@@ -266,6 +266,6 @@ contract NFTWithRoyalties is ERC721, IERC2981 {
 
 ## Additional patterns and templates
 
-More detailed templates and worked examples live in `../../../Global_References/nft-standards_details.md`. Read that file for the full pattern library.
+More detailed templates and worked examples live in `../../Global_References/Blockchain_and_Web3/nft-standards_details.md`. Read that file for the full pattern library.
 
 

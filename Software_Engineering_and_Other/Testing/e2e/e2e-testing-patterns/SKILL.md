@@ -72,7 +72,7 @@ Build reliable, fast, and maintainable end-to-end test suites that provide confi
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../../Global_References/e2e-testing-patterns_details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../../Global_References/Software_Engineering_and_Other/e2e-testing-patterns_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 

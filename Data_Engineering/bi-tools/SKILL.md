@@ -461,14 +461,14 @@ Key question: centralized vs decentralized?
 - Automate dashboard generation from semantic layer definitions
 
 ## References
-  - ../../../Global_References/bi-security-governance.md — BI Security and Governance
-  - ../../../Global_References/bi-tools-architecture.md — BI Tools Architecture
-  - ../../../Global_References/bi-tools-performance.md — BI Tools Performance Optimization
+  - ../../Global_References/Data_Engineering/bi-security-governance.md — BI Security and Governance
+  - ../../Global_References/Data_Engineering/bi-tools-architecture.md — BI Tools Architecture
+  - ../../Global_References/Data_Engineering/bi-tools-performance.md — BI Tools Performance Optimization
   - references/dashboard-design.md — Dashboard Design
-  - ../../../Global_References/embedding-analytics.md — Embedded Analytics
-  - ../../../Global_References/lookml-examples.md — LookML Examples
-  - ../../../Global_References/semantic-layer-patterns.md — Semantic Layer Patterns
-  - ../../../Global_References/tool-selection.md — BI Tool Selection
+  - ../../Global_References/Data_Engineering/embedding-analytics.md — Embedded Analytics
+  - ../../Global_References/Data_Engineering/lookml-examples.md — LookML Examples
+  - ../../Global_References/Data_Engineering/semantic-layer-patterns.md — Semantic Layer Patterns
+  - ../../Global_References/Data_Engineering/tool-selection.md — BI Tool Selection
 ## Architecture Decision Trees
 
 ```

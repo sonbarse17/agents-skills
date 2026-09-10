@@ -441,12 +441,12 @@ When a provider verification fails, the affected consumer team must be notified 
 - Contract changes follow API versioning policy — no breaking changes without migration
 
 ## References
-  - ../../../Global_References/contract-testing-advanced.md — Contract Testing Advanced Topics
-  - ../../../Global_References/contract-testing-fundamentals.md — Contract Testing Fundamentals
-  - ../../../Global_References/contract-testing-strategies.md — Contract Testing Strategies
-  - ../../../Global_References/pact-patterns.md — Pact Patterns
-  - ../../../Global_References/pact-setup.md — Pact Setup
-  - ../../../Global_References/provider-verification.md — Provider Verification
+  - ../../../../Global_References/Software_Engineering_and_Other/contract-testing-advanced.md — Contract Testing Advanced Topics
+  - ../../../../Global_References/Software_Engineering_and_Other/contract-testing-fundamentals.md — Contract Testing Fundamentals
+  - ../../../../Global_References/Software_Engineering_and_Other/contract-testing-strategies.md — Contract Testing Strategies
+  - ../../../../Global_References/Software_Engineering_and_Other/pact-patterns.md — Pact Patterns
+  - ../../../../Global_References/Software_Engineering_and_Other/pact-setup.md — Pact Setup
+  - ../../../../Global_References/Software_Engineering_and_Other/provider-verification.md — Provider Verification
 ## Handoff
 `[quality-e2e-testing](../../e2e/e2e-testing/SKILL.md)` for E2E tests that complement contract tests.
 `devops-[observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)` for [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) contract verification in CI/CD.

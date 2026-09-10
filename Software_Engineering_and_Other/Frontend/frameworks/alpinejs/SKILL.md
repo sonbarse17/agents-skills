@@ -462,14 +462,14 @@ If migrating a simple Vue app that doesn't need SPA features:
 - Keep x-data expressions simple; extract complex logic into methods.
 
 ## References
-  - ../../../Global_References/alpine-patterns.md — Alpine.js Patterns & Best Practices
-  - ../../../Global_References/alpine-setup.md — Alpine.js Setup Guide
-  - ../../../Global_References/alpinejs-advanced.md — Alpine.js Advanced Patterns
-  - ../../../Global_References/alpinejs-deployment.md — Alpine.js Deployment
-  - ../../../Global_References/alpinejs-fundamentals.md — Alpinejs Fundamentals
-  - ../../../Global_References/alpinejs-testing.md — Alpine.js Testing Reference
-  - ../../../Global_References/alpinejs-component-patterns.md — Alpine.js Component Patterns
-  - ../../../Global_References/alpinejs-state-management.md — Alpine.js State Management Reference
+  - ../../../../Global_References/Software_Engineering_and_Other/alpine-patterns.md — Alpine.js Patterns & Best Practices
+  - ../../../../Global_References/Software_Engineering_and_Other/alpine-setup.md — Alpine.js Setup Guide
+  - ../../../../Global_References/Software_Engineering_and_Other/alpinejs-advanced.md — Alpine.js Advanced Patterns
+  - ../../../../Global_References/Software_Engineering_and_Other/alpinejs-deployment.md — Alpine.js Deployment
+  - ../../../../Global_References/Software_Engineering_and_Other/alpinejs-fundamentals.md — Alpinejs Fundamentals
+  - ../../../../Global_References/Software_Engineering_and_Other/alpinejs-testing.md — Alpine.js Testing Reference
+  - ../../../../Global_References/Software_Engineering_and_Other/alpinejs-component-patterns.md — Alpine.js Component Patterns
+  - ../../../../Global_References/Software_Engineering_and_Other/alpinejs-state-management.md — Alpine.js State Management Reference
 
 ## Handoff
 No artifact produced.

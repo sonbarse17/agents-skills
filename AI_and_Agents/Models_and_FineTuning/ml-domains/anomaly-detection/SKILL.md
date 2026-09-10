@@ -436,14 +436,14 @@ class RealTimeAnomalyDetector:
 - Document expected anomaly rate and threshold methodology.
 
 ## References
-  - ../../../Global_References/anomaly-detection-advanced.md — Anomaly Detection Advanced Topics
-  - ../../../Global_References/anomaly-detection-fundamentals.md — Anomaly Detection Fundamentals
-  - ../../../Global_References/anomaly-evaluation.md — Anomaly Detection Evaluation
-  - ../../../Global_References/classical-anomaly.md — Classical Anomaly Detection
-  - ../../../Global_References/deep-learning-anomaly.md — Deep Learning Anomaly Detection
-  - ../../../Global_References/ml-based-detection.md — ML-Based Anomaly Detection
-  - ../../../Global_References/online-anomaly.md — Online Anomaly Detection
-  - ../../../Global_References/statistical-methods.md — Statistical Anomaly Detection
+  - ../../../../Global_References/AI_and_Agents/anomaly-detection-advanced.md — Anomaly Detection Advanced Topics
+  - ../../../../Global_References/AI_and_Agents/anomaly-detection-fundamentals.md — Anomaly Detection Fundamentals
+  - ../../../../Global_References/AI_and_Agents/anomaly-evaluation.md — Anomaly Detection Evaluation
+  - ../../../../Global_References/AI_and_Agents/classical-anomaly.md — Classical Anomaly Detection
+  - ../../../../Global_References/AI_and_Agents/deep-learning-anomaly.md — Deep Learning Anomaly Detection
+  - ../../../../Global_References/AI_and_Agents/ml-based-detection.md — ML-Based Anomaly Detection
+  - ../../../../Global_References/AI_and_Agents/online-anomaly.md — Online Anomaly Detection
+  - ../../../../Global_References/AI_and_Agents/statistical-methods.md — Statistical Anomaly Detection
 ## Handoff
 Hand off to devops-[observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) for [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) and [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) infrastructure. For time-series forecasting to model normal behavior first, hand off to [ml-time-series](../time-series/SKILL.md).
 

@@ -81,7 +81,7 @@ Proper async/await usage:
 
 ## Detailed worked examples and patterns
 
-Detailed sections (starting with `## Implementation Patterns`) live in `../../../Global_References/fastapi-templates_details.md`. Read that file when the navigation summary above is insufficient.
+Detailed sections (starting with `## Implementation Patterns`) live in `../../../../Global_References/Software_Engineering_and_Other/fastapi-templates_details.md`. Read that file when the navigation summary above is insufficient.
 
 ## Testing
 

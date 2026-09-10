@@ -32,9 +32,9 @@ with the [Plugin Framework](https://[github](../../../../ci-cd/github-actions/ot
 Source: [HashiCorp Testing Patterns](https://developer.hashicorp.com/terraform/plugin/testing/testing-patterns)
 
 **References** (load when needed):
-- `../../../Global_References/checks.md` — statecheck, plancheck, knownvalue types, tfjsonpath, comparers
-- `../../../Global_References/sweepers.md` — sweeper setup, TestMain, dependencies
-- `../../../Global_References/ephemeral.md` — ephemeral resource testing, echoprovider, multi-step patterns
+- `../../../../Global_References/infrastructure-as-code/checks.md` — statecheck, plancheck, knownvalue types, tfjsonpath, comparers
+- `../../../../Global_References/infrastructure-as-code/sweepers.md` — sweeper setup, TestMain, dependencies
+- `../../../../Global_References/infrastructure-as-code/ephemeral.md` — ephemeral resource testing, echoprovider, multi-step patterns
 
 ---
 
@@ -138,7 +138,7 @@ var testAccProtoV6ProviderFactories = map[string]func() (tfprotov6.ProviderServe
 ### Modern: ConfigStateChecks (preferred)
 
 Type-safe with aggregated error reporting. Compose built-in checks with custom
-`statecheck.StateCheck` implementations. See `../../../Global_References/checks.md` for full
+`statecheck.StateCheck` implementations. See `../../../../Global_References/infrastructure-as-code/checks.md` for full
 knownvalue types, tfjsonpath navigation, and comparers.
 
 ```go

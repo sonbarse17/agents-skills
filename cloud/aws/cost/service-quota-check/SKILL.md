@@ -356,7 +356,7 @@ at 70%+ utilization as part of a comprehensive [capacity](../../../AI_and_Agents
 
 ## Common Quota Codes Reference
 
-See [../../../Global_References/common-quota-codes.md](../../../../Global_References/common-quota-codes.md) for a table of
+See [../../../../Global_References/cloud/common-quota-codes.md](../../../../Global_References/cloud/common-quota-codes.md) for a table of
 frequently checked quota codes by service.
 
 ---

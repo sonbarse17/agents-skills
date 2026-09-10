@@ -444,13 +444,13 @@ Pipeline runs for 30+ min before failing at end. Fail fast: lint first, then bui
 
 ## References
   - ../../../Global_References/[caching-strategies](../../../../Software_Engineering_and_Other/Backend/patterns/caching-strategies/SKILL.md).md
-  - ../../../Global_References/cicd-pipeline-advanced.md
-  - ../../../Global_References/cicd-pipeline-fundamentals.md
+  - ../../../../Global_References/ci-cd/cicd-pipeline-advanced.md
+  - ../../../../Global_References/ci-cd/cicd-pipeline-fundamentals.md
   - ../../../Global_References/[deployment-strategies](../../deployment/deployment-strategies/SKILL.md).md
   - ../../../Global_References/[github-actions](../[github](../github/SKILL.md)-actions/SKILL.md)-guide.md
-  - ../../../Global_References/matrix-strategies.md
-  - ../../../Global_References/multi-environment.md
-  - ../../../Global_References/pipeline-optimization.md
+  - ../../../../Global_References/ci-cd/matrix-strategies.md
+  - ../../../../Global_References/ci-cd/multi-environment.md
+  - ../../../../Global_References/ci-cd/pipeline-optimization.md
   - ../../../Global_References/[pipeline-security](../pipeline-security/SKILL.md).md
   - references/canary-deployment-guide.md
 

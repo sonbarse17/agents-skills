@@ -39,11 +39,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Minimal APIs | `../../../Global_References/minimal-apis.md` | Creating endpoints, routing, middleware |
-| Clean Architecture | `../../../Global_References/clean-architecture.md` | CQRS, MediatR, layers, DI patterns |
-| Entity Framework | `../../../Global_References/entity-framework.md` | DbContext, migrations, relationships |
-| Authentication | `../../../Global_References/authentication.md` | JWT, Identity, authorization policies |
-| Cloud-Native | `../../../Global_References/cloud-native.md` | [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md), health checks, configuration |
+| Minimal APIs | `../../../../Global_References/Software_Engineering_and_Other/minimal-apis.md` | Creating endpoints, routing, middleware |
+| Clean Architecture | `../../../../Global_References/Software_Engineering_and_Other/clean-architecture.md` | CQRS, MediatR, layers, DI patterns |
+| Entity Framework | `../../../../Global_References/Software_Engineering_and_Other/entity-framework.md` | DbContext, migrations, relationships |
+| Authentication | `../../../../Global_References/Software_Engineering_and_Other/authentication.md` | JWT, Identity, authorization policies |
+| Cloud-Native | `../../../../Global_References/Software_Engineering_and_Other/cloud-native.md` | [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md), health checks, configuration |
 
 ## Constraints
 

@@ -439,12 +439,12 @@ Use `pytest-django` for faster test discovery and fixtures. Use `factory_boy` fo
 - `@transaction.atomic` on service methods, not in views or models.
 
 ## References
-  - ../../../Global_References/django-advanced.md — Django Advanced Patterns
-  - ../../../Global_References/django-celery.md — Django Celery Integration
-  - ../../../Global_References/django-orm-patterns.md — Django ORM Patterns
-  - ../../../Global_References/django-rest-framework.md — Django REST Framework Patterns
-  - ../../../Global_References/django-signals.md — Django Signal Patterns
-  - ../../../Global_References/django-structure.md — Django Project Structure
+  - ../../../../Global_References/Software_Engineering_and_Other/django-advanced.md — Django Advanced Patterns
+  - ../../../../Global_References/Software_Engineering_and_Other/django-celery.md — Django Celery Integration
+  - ../../../../Global_References/Software_Engineering_and_Other/django-orm-patterns.md — Django ORM Patterns
+  - ../../../../Global_References/Software_Engineering_and_Other/django-rest-framework.md — Django REST Framework Patterns
+  - ../../../../Global_References/Software_Engineering_and_Other/django-signals.md — Django Signal Patterns
+  - ../../../../Global_References/Software_Engineering_and_Other/django-structure.md — Django Project Structure
 ## Handoff
 No artifact produced.
 Next skill: backend-testing — test Django with pytest.

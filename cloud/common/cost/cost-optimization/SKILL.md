@@ -35,7 +35,7 @@ already stale by the next billing cycle.
 **Find the biggest lever with data, pull it, then come back for the next one.**
 
 For a ranked catalog of savings levers and how to find candidates, read
-`../../../Global_References/savings-levers.md`.
+`../../../../Global_References/cloud/savings-levers.md`.
 
 ## 1. Rank levers by dollar impact before touching anything
 

@@ -529,14 +529,14 @@ export default defineNuxtConfig({
 - Use $fetch for client-to-server calls, useFetch for SSR data loading.
 
 ## References
-  - ../../../Global_References/composables-autoimport.md
-  - ../../../Global_References/nuxt-auth.md
-  - ../../../Global_References/nuxt-conventions.md
-  - ../../../Global_References/nuxt-deployment.md
-  - ../../../Global_References/nuxt-modules.md
-  - ../../../Global_References/nuxt-performance.md
-  - ../../../Global_References/nuxt-testing.md
-  - ../../../Global_References/server-routes.md
+  - ../../../../Global_References/Software_Engineering_and_Other/composables-autoimport.md
+  - ../../../../Global_References/Software_Engineering_and_Other/nuxt-auth.md
+  - ../../../../Global_References/Software_Engineering_and_Other/nuxt-conventions.md
+  - ../../../../Global_References/Software_Engineering_and_Other/nuxt-deployment.md
+  - ../../../../Global_References/Software_Engineering_and_Other/nuxt-modules.md
+  - ../../../../Global_References/Software_Engineering_and_Other/nuxt-performance.md
+  - ../../../../Global_References/Software_Engineering_and_Other/nuxt-testing.md
+  - ../../../../Global_References/Software_Engineering_and_Other/server-routes.md
 
 ## Handoff
 No artifact produced.

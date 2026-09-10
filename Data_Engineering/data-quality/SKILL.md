@@ -438,16 +438,16 @@ Combine re_data (baseline tracking) + dbt-[audit](../../AI_and_Agents/Operations
 - Referential integrity verified across all related tables
 
 ## References
-  - ../../../Global_References/data-quality-automation.md — Data Quality Automation
-  - ../../../Global_References/data-quality-ecosystem.md — Data Quality Ecosystem Tools
+  - ../../Global_References/Data_Engineering/data-quality-automation.md — Data Quality Automation
+  - ../../Global_References/Data_Engineering/data-quality-ecosystem.md — Data Quality Ecosystem Tools
   - ../../../Global_References/data-quality-[incident-management](../../Software_Engineering_and_Other/Miscellaneous/[incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-management/SKILL.md).md — Data Quality [Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Management
-  - ../../../Global_References/data-quality-management.md — Data Quality Management
-  - ../../../Global_References/data-quality-metrics.md — Data Quality Metrics
+  - ../../Global_References/Data_Engineering/data-quality-management.md — Data Quality Management
+  - ../../Global_References/Data_Engineering/data-quality-metrics.md — Data Quality Metrics
   - ../../../Global_References/data-quality-[monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Data Quality [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
-  - ../../../Global_References/ge-advanced-patterns.md — Great Expectations Advanced Patterns
-  - ../../../Global_References/quality-automation.md — Quality Automation
-  - ../../../Global_References/quality-dimensions.md — Data Quality Dimensions
-  - ../../../Global_References/soda-check-examples.md — Soda Check Examples
+  - ../../Global_References/Data_Engineering/ge-advanced-patterns.md — Great Expectations Advanced Patterns
+  - ../../Global_References/Data_Engineering/quality-automation.md — Quality Automation
+  - ../../Global_References/Data_Engineering/quality-dimensions.md — Data Quality Dimensions
+  - ../../Global_References/Data_Engineering/soda-check-examples.md — Soda Check Examples
 ## Architecture Decision Trees
 
 ```

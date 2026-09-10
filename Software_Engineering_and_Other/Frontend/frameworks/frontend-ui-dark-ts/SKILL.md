@@ -599,7 +599,7 @@ export function PageTransition({ children }: PageTransitionProps) {
 
 ## Related Files
 
-- [Design Tokens](../../../../Global_References/frontend-ui-dark-ts_design-tokens.md) — Complete color system, spacing, typography scales
-- [Components](../../../../Global_References/components.md) — Button, Card, Input, Dialog, Tabs, and more
-- [Patterns](../../../../Global_References/frontend-ui-dark-ts_patterns.md) — Page layouts, navigation, lists, forms
+- [Design Tokens](../../../../Global_References/Software_Engineering_and_Other/frontend-ui-dark-ts_design-tokens.md) — Complete color system, spacing, typography scales
+- [Components](../../../../Global_References/Software_Engineering_and_Other/components.md) — Button, Card, Input, Dialog, Tabs, and more
+- [Patterns](../../../../Global_References/Software_Engineering_and_Other/frontend-ui-dark-ts_patterns.md) — Page layouts, navigation, lists, forms
 

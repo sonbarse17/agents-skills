@@ -31,7 +31,7 @@ guessing session into a bounded diagnosis.
 next person's investigation.**
 
 For a symptom-driven command cookbook (dig, curl, traceroute, ss, tcpdump), read
-`../../../Global_References/diagnostic-commands.md`.
+`../../../../Global_References/containers-orchestration/diagnostic-commands.md`.
 
 ## 1. Confirm DNS resolves to what you expect before touching anything else
 

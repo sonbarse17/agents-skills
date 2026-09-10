@@ -498,14 +498,14 @@ Decision log:
 ```
 
 ## References
-  - ../../../Global_References/mitigation-strategies.md — Mitigation Strategies
-  - ../../../Global_References/risk-assessment-matrix.md — Risk Assessment Matrix
-  - ../../../Global_References/risk-management-advanced.md — Risk Management Advanced
-  - ../../../Global_References/risk-management-framework.md — Risk Management Framework
-  - ../../../Global_References/risk-management-fundamentals.md — Risk Management Fundamentals
+  - ../../../Global_References/Security/mitigation-strategies.md — Mitigation Strategies
+  - ../../../Global_References/Security/risk-assessment-matrix.md — Risk Assessment Matrix
+  - ../../../Global_References/Security/risk-management-advanced.md — Risk Management Advanced
+  - ../../../Global_References/Security/risk-management-framework.md — Risk Management Framework
+  - ../../../Global_References/Security/risk-management-fundamentals.md — Risk Management Fundamentals
   - ../../../Global_References/risk-[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Risk [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
-  - ../../../Global_References/risk-register.md — Risk Register Template
-  - ../../../Global_References/risk-reporting.md — Risk Reporting
+  - ../../../Global_References/Security/risk-register.md — Risk Register Template
+  - ../../../Global_References/Security/risk-reporting.md — Risk Reporting
 
 ## Handoff
 sprint-retro (the risk register is reviewed at every sprint retro), create-roadmap (risk scores inform timeline adjustments and buffer allocation on the roadmap).

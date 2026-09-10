@@ -53,7 +53,7 @@ E - Elevation of   → Authorization threats
 
 ## Templates and detailed worked examples
 
-Full template library lives in `../../../Global_References/stride-analysis-patterns_details.md`. Read that file when you need concrete templates for this skill.
+Full template library lives in `../../../Global_References/Security/stride-analysis-patterns_details.md`. Read that file when you need concrete templates for this skill.
 
 ## Best Practices
 

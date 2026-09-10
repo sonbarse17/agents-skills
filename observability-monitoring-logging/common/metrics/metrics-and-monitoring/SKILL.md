@@ -29,7 +29,7 @@ Prometheus's pull-based model made this trade-off explicit for a generation of t
 
 **A metric earns its cost by staying cheap to query at 3am, six months from now, with a year of history behind it.**
 
-For PromQL patterns — rate, histogram quantiles, RED/USE queries, and recording rules — read `../../../Global_References/promql.md`.
+For PromQL patterns — rate, histogram quantiles, RED/USE queries, and recording rules — read `../../../../Global_References/observability-monitoring-logging/promql.md`.
 
 ## 1. Pick the metric type the query needs, not the one that's easiest to emit
 

@@ -152,7 +152,7 @@ git branch deleted-branch abc123
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../../Global_References/git-advanced-workflows_details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../../Global_References/ci-cd/git-advanced-workflows_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 

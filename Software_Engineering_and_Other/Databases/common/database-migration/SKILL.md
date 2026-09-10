@@ -339,6 +339,6 @@ module.exports = {
 
 ## Additional patterns and templates
 
-More detailed templates and worked examples live in `../../../Global_References/database-migration_details.md`. Read that file for the full pattern library.
+More detailed templates and worked examples live in `../../../../Global_References/Software_Engineering_and_Other/database-migration_details.md`. Read that file for the full pattern library.
 
 

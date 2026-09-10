@@ -469,12 +469,12 @@ Quarterly activity:
 - Cognitive load reduction is a continuous practice, not a one-time fix
 
 ## References
-  - ../../../Global_References/org-design.md — Organizational Design
-  - ../../../Global_References/squad-health.md — Squad Health
-  - ../../../Global_References/team-topology-advanced.md — Team Topology Advanced
-  - ../../../Global_References/team-topology-fundamentals.md — Team Topology Fundamentals
-  - ../../../Global_References/team-types.md — Team Types
-  - ../../../Global_References/topology-patterns.md — Topology Patterns
+  - ../../Global_References/Product_and_Business/org-design.md — Organizational Design
+  - ../../Global_References/Product_and_Business/squad-health.md — Squad Health
+  - ../../Global_References/Product_and_Business/team-topology-advanced.md — Team Topology Advanced
+  - ../../Global_References/Product_and_Business/team-topology-fundamentals.md — Team Topology Fundamentals
+  - ../../Global_References/Product_and_Business/team-types.md — Team Types
+  - ../../Global_References/Product_and_Business/topology-patterns.md — Topology Patterns
 
 ## Handoff
 For OKR alignment with team topology, hand off to [management-okr-kpi](../okr-kpi/SKILL.md). For agile process design, hand off to management-[agile-scrum-kanban](../[agile-scrum](../agile-scrum/SKILL.md)-kanban/SKILL.md). For hiring to fill team gaps, hand off to [management-hiring](../hiring/SKILL.md).

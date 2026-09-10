@@ -748,14 +748,14 @@ traceability_matrix:
 ```
 
 ## References
-- [Roadmapping Fundamentals](../../../Global_References/roadmapping-fundamentals.md) — Core frameworks, data model, horizon planning, quarterly process
-- [Roadmapping Advanced](../../../Global_References/roadmapping-advanced.md) — Advanced prioritization (MCDA, CD3), OKR cascades, dependency management
-- [Roadmapping Prioritization](../../../Global_References/roadmapping-prioritization.md) — Prioritization models deep dive: RICE, WSJF, MoSCoW, Kano, ICE
-- [Roadmapping Communication](../../../Global_References/roadmapping-communication.md) — Audience-specific views, stakeholder alignment, trade-off communication
-- [Roadmapping Tools & Integrations](../../../Global_References/roadmapping-tools-integrations.md) — Jira/Linear automated syncing webhooks and APIs
-- [Roadmapping Dependency & Risk Management](../../../Global_References/roadmapping-dependency-risk.md) — Dependency graph DAG, topological sorting, risk matrix and statistical buffers
-- [Roadmapping Scenario Planning](../../../Global_References/roadmapping-scenario-planning.md) — Multitrack planning (pessimistic, target, optimistic), scenario decision trees, and pivot triggers
-- [Roadmapping Metrics & Outcomes](../../../Global_References/roadmapping-metrics-outcomes.md) — OKR alignment schemas, accuracy tracking, closed-loop priority tuning feedback
+- [Roadmapping Fundamentals](../../Global_References/Product_and_Business/roadmapping-fundamentals.md) — Core frameworks, data model, horizon planning, quarterly process
+- [Roadmapping Advanced](../../Global_References/Product_and_Business/roadmapping-advanced.md) — Advanced prioritization (MCDA, CD3), OKR cascades, dependency management
+- [Roadmapping Prioritization](../../Global_References/Product_and_Business/roadmapping-prioritization.md) — Prioritization models deep dive: RICE, WSJF, MoSCoW, Kano, ICE
+- [Roadmapping Communication](../../Global_References/Product_and_Business/roadmapping-communication.md) — Audience-specific views, stakeholder alignment, trade-off communication
+- [Roadmapping Tools & Integrations](../../Global_References/Product_and_Business/roadmapping-tools-integrations.md) — Jira/Linear automated syncing webhooks and APIs
+- [Roadmapping Dependency & Risk Management](../../Global_References/Product_and_Business/roadmapping-dependency-risk.md) — Dependency graph DAG, topological sorting, risk matrix and statistical buffers
+- [Roadmapping Scenario Planning](../../Global_References/Product_and_Business/roadmapping-scenario-planning.md) — Multitrack planning (pessimistic, target, optimistic), scenario decision trees, and pivot triggers
+- [Roadmapping Metrics & Outcomes](../../Global_References/Product_and_Business/roadmapping-metrics-outcomes.md) — OKR alignment schemas, accuracy tracking, closed-loop priority tuning feedback
 
 <!-- COMPRESSION FOOTER -->
 <!--

@@ -385,5 +385,5 @@ python3 skills/cloud/create-project/scripts/create-project.py create \
 ## Additional resources
 
 - For full API details, request/response schemas, and project-type options, see
-  [../../../Global_References/create-project_api-reference.md](../../../Global_References/create-project_api-reference.md)
+  [../../Global_References/Product_and_Business/create-project_api-reference.md](../../Global_References/Product_and_Business/create-project_api-reference.md)
 

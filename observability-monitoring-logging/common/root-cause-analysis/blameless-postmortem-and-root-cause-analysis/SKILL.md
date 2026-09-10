@@ -68,7 +68,7 @@ nobody revisits.
   [incident-response-and-on-call-management](../[incident-response-and-on-call-management](../[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../alerting/on-call-management/SKILL.md)/SKILL.md)/SKILL.md)
   for how this is captured during the [incident](../../incident-detection/incident/SKILL.md) itself).
 - A shared, versioned template — see
-  [../../../Global_References/postmortem-template.md](../../../../Global_References/postmortem-template.md)
+  [../../../../Global_References/observability-monitoring-logging/postmortem-template.md](../../../../Global_References/observability-monitoring-logging/postmortem-template.md)
   in this skill for a ready-to-use starting point.
 - An issue tracker (Jira, [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Issues, Linear, or equivalent) to hold
   action items as real, assignable, trackable tickets rather than bullet
@@ -87,7 +87,7 @@ nobody revisits.
    stopped so people can think clearly rather than react.
 
 2. **Fill out the template** (see
-   [../../../Global_References/postmortem-template.md](../../../../Global_References/postmortem-template.md)):
+   [../../../../Global_References/observability-monitoring-logging/postmortem-template.md](../../../../Global_References/observability-monitoring-logging/postmortem-template.md)):
    Summary, Impact, Timeline (UTC timestamps), Root cause, Contributing
    factors, What went well, What went poorly, Where we got lucky, Action
    items (owner + ticket + due date), Lessons. Draft it from the scribe's
@@ -220,7 +220,7 @@ nobody revisits.
 
 ## Worked example
 
-Using [../../../Global_References/postmortem-template.md](../../../../Global_References/postmortem-template.md)
+Using [../../../../Global_References/observability-monitoring-logging/postmortem-template.md](../../../../Global_References/observability-monitoring-logging/postmortem-template.md)
 for the `payments-api` checkout outage from the [incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)
 worked example:
 

@@ -77,16 +77,16 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Unit Testing | `../../../Global_References/unit-testing.md` | Jest, Vitest, pytest patterns |
-| Integration | `../../../Global_References/integration-testing.md` | API testing, Supertest |
-| E2E | `../../../Global_References/e2e-testing.md` | E2E strategy, user flows |
-| Performance | `../../../Global_References/performance-testing.md` | k6, load testing |
-| Security | `../../../Global_References/security-testing.md` | Security test checklist |
-| Reports | `../../../Global_References/test-reports.md` | Report templates, findings |
-| QA Methodology | `../../../Global_References/qa-methodology.md` | Manual testing, quality advocacy, shift-left, continuous testing |
-| Automation | `../../../Global_References/automation-frameworks.md` | Framework patterns, scaling, maintenance, team enablement |
-| TDD Iron Laws | `../../../Global_References/tdd-iron-laws.md` | TDD methodology, test-first development, red-green-refactor |
-| Testing Anti-Patterns | `../../../Global_References/testing-anti-patterns.md` | Test review, mock issues, test quality problems |
+| Unit Testing | `../../../../Global_References/Software_Engineering_and_Other/unit-testing.md` | Jest, Vitest, pytest patterns |
+| Integration | `../../../../Global_References/Software_Engineering_and_Other/integration-testing.md` | API testing, Supertest |
+| E2E | `../../../../Global_References/Software_Engineering_and_Other/e2e-testing.md` | E2E strategy, user flows |
+| Performance | `../../../../Global_References/Software_Engineering_and_Other/performance-testing.md` | k6, load testing |
+| Security | `../../../../Global_References/Software_Engineering_and_Other/security-testing.md` | Security test checklist |
+| Reports | `../../../../Global_References/Software_Engineering_and_Other/test-reports.md` | Report templates, findings |
+| QA Methodology | `../../../../Global_References/Software_Engineering_and_Other/qa-methodology.md` | Manual testing, quality advocacy, shift-left, continuous testing |
+| Automation | `../../../../Global_References/Software_Engineering_and_Other/automation-frameworks.md` | Framework patterns, scaling, maintenance, team enablement |
+| TDD Iron Laws | `../../../../Global_References/Software_Engineering_and_Other/tdd-iron-laws.md` | TDD methodology, test-first development, red-green-refactor |
+| Testing Anti-Patterns | `../../../../Global_References/Software_Engineering_and_Other/testing-anti-patterns.md` | Test review, mock issues, test quality problems |
 
 ## Constraints
 

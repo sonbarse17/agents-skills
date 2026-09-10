@@ -60,7 +60,7 @@ Quarterly: Review patterns across incidents
 
 ## Templates and detailed worked examples
 
-Full template library and detailed worked examples live in `../../../Global_References/postmortem-writing_details.md`. Read that file when you need the concrete templates.
+Full template library and detailed worked examples live in `../../../../Global_References/observability-monitoring-logging/postmortem-writing_details.md`. Read that file when you need the concrete templates.
 
 ## References
 - [Connection Pool Best Practices](internal-wiki/connection-pools)

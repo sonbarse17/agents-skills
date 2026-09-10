@@ -31,9 +31,9 @@ base recipe misbehaves.
 plus a verifier (code executor, test suite,
 schema checker, or grader) for the target task.
 **Output format:** a validated GRPO config — the
-kwarg values in `../../../Global_References/grpo-memory.md` and
+kwarg values in `../../../../Global_References/AI_and_Agents/grpo-memory.md` and
 the reward functions in
-`../../../Global_References/reward-functions.md`, not free-form
+`../../../../Global_References/AI_and_Agents/reward-functions.md`, not free-form
 advice — that `[llm-finetuning](../llm-[finetuning](../[finetuning](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/finetuning/SKILL.md)/SKILL.md)/SKILL.md)-training-engineer`
 consumes directly.
 
@@ -95,7 +95,7 @@ grpo_args = GRPOConfig(
 trainer = GRPOTrainer(
     model=SFT_CHECKPOINT,
     args=grpo_args,
-    reward_funcs=[format_reward, correctness_reward],   # ../../../Global_References/reward-functions.md
+    reward_funcs=[format_reward, correctness_reward],   # ../../../../Global_References/AI_and_Agents/reward-functions.md
     train_dataset=prompts,       # prompt-only — GRPO generates its own completions
     processing_class=tokenizer,
 )
@@ -127,7 +127,7 @@ trainer.train()
   (below).
 
 Memory sizing for this recipe by target size
-class: `../../../Global_References/grpo-memory.md`.
+class: `../../../../Global_References/AI_and_Agents/grpo-memory.md`.
 
 ## The Inspection Rule
 
@@ -155,7 +155,7 @@ Complete reward function implementations to
 inspect against — exact-match, schema-validation,
 unit-test-execution, a length-penalty wrapper, and
 a rubric-as-reward judge pattern:
-`../../../Global_References/reward-functions.md`.
+`../../../../Global_References/AI_and_Agents/reward-functions.md`.
 
 ## Variant Selection
 
@@ -193,13 +193,13 @@ above.
 
 ## References
 
-- `../../../Global_References/reward-functions.md` — complete
+- `../../../../Global_References/AI_and_Agents/reward-functions.md` — complete
   [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) reward functions (exact-match
   correctness, schema validation, unit-test
   execution, a length-penalty wrapper, and a
   rubric-as-reward judge pattern) to inspect under
   The Inspection Rule before any training run.
-- `../../../Global_References/grpo-memory.md` — memory sizing by
+- `../../../../Global_References/AI_and_Agents/grpo-memory.md` — memory sizing by
   target size class, vLLM sleep-mode and
   optimizer-state tactics, Unsloth's long-context
   RL chunking, and the DGX Spark bandwidth caveat

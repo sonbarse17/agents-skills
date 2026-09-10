@@ -44,11 +44,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Eloquent ORM | `../../../Global_References/eloquent.md` | Models, relationships, scopes, query optimization |
-| Routing & APIs | `../../../Global_References/routing.md` | Routes, controllers, middleware, API resources |
-| Queue System | `../../../Global_References/queues.md` | Jobs, workers, Horizon, failed jobs, batching |
-| Livewire | `../../../Global_References/livewire.md` | Components, wire:model, actions, real-time |
-| Testing | `../../../Global_References/laravel-specialist_testing.md` | Feature tests, factories, mocking, Pest PHP |
+| Eloquent ORM | `../../../../Global_References/Software_Engineering_and_Other/eloquent.md` | Models, relationships, scopes, query optimization |
+| Routing & APIs | `../../../../Global_References/Software_Engineering_and_Other/routing.md` | Routes, controllers, middleware, API resources |
+| Queue System | `../../../../Global_References/Software_Engineering_and_Other/queues.md` | Jobs, workers, Horizon, failed jobs, batching |
+| Livewire | `../../../../Global_References/Software_Engineering_and_Other/livewire.md` | Components, wire:model, actions, real-time |
+| Testing | `../../../../Global_References/Software_Engineering_and_Other/laravel-specialist_testing.md` | Feature tests, factories, mocking, Pest PHP |
 
 ## Constraints
 

@@ -570,11 +570,11 @@ jobs:
 - Every pipeline has a documented owner and on-call rotation
 
 ## References
-  - ../../../Global_References/cloud-etl-services.md — Cloud ETL Services
+  - ../../Global_References/Data_Engineering/cloud-etl-services.md — Cloud ETL Services
   - ../../../Global_References/[data-pipeline-cicd](../../ci-cd/common/data-pipeline/data-pipeline-cicd/SKILL.md).md — Data Pipeline CI/CD
-  - ../../../Global_References/etl-elt-patterns.md — ETL/ELT Patterns
-  - ../../../Global_References/etl-pipeline-design.md — ETL Pipeline Design
-  - ../../../Global_References/nifi-mage-patterns.md — Apache NiFi and Mage.ai ETL Patterns
+  - ../../Global_References/Data_Engineering/etl-elt-patterns.md — ETL/ELT Patterns
+  - ../../Global_References/Data_Engineering/etl-pipeline-design.md — ETL Pipeline Design
+  - ../../Global_References/Data_Engineering/nifi-mage-patterns.md — Apache NiFi and Mage.ai ETL Patterns
   - ../../../Global_References/pipeline-[monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Pipeline [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 ## Handoff
 `[data-data-quality](../data-quality/SKILL.md)` for validation rules and data contract enforcement

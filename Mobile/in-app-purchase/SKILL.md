@@ -638,14 +638,14 @@ fun purchaseWithOffer(activity: Activity, product: ProductDetails, offerToken: S
 - Grace period status reflected in UI (user can still access content)
 
 ## References
-- `../../../Global_References/in-app-purchase.md` — In-App Purchase Integration Guide
-- `../../../Global_References/play-billing-guide.md` — Google Play Billing 5+ Implementation
-- `../../../Global_References/receipt-validation.md` — Server-Side Receipt Validation
-- `../../../Global_References/storekit-guide.md` — App Store StoreKit 2 Guide
-- `../../../Global_References/subscription-management.md` — Subscription Lifecycle Management
-- `../../../Global_References/subscription-models.md` — Subscription Pricing Models
-- `../../../Global_References/iap-receipt-validation-server.md` — Receipt validation server
-- `../../../Global_References/iap-subscription-lifecycle.md` — Subscription lifecycle
+- `../../Global_References/Mobile/in-app-purchase.md` — In-App Purchase Integration Guide
+- `../../Global_References/Mobile/play-billing-guide.md` — Google Play Billing 5+ Implementation
+- `../../Global_References/Mobile/receipt-validation.md` — Server-Side Receipt Validation
+- `../../Global_References/Mobile/storekit-guide.md` — App Store StoreKit 2 Guide
+- `../../Global_References/Mobile/subscription-management.md` — Subscription Lifecycle Management
+- `../../Global_References/Mobile/subscription-models.md` — Subscription Pricing Models
+- `../../Global_References/Mobile/iap-receipt-validation-server.md` — Receipt validation server
+- `../../Global_References/Mobile/iap-subscription-lifecycle.md` — Subscription lifecycle
 
 ## Handoff
 After IAP integration, hand off to:

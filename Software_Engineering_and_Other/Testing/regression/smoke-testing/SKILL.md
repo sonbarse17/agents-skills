@@ -405,16 +405,16 @@ smoke_metrics:
 20. Smoke test results must feed into deployment health [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) automatically
 
 ## References
-- ../../../Global_References/bvt-strategy.md — Build Verification Testing (BVT)
-- ../../../Global_References/canary-testing.md — Canary Testing
-- ../../../Global_References/deployment-health.md — Deployment Health Checks
-- ../../../Global_References/smoke-testing_health-check-patterns.md — Health Check Patterns
-- ../../../Global_References/smoke-automation.md — Smoke Test Automation
-- ../../../Global_References/smoke-testing-advanced.md — Smoke Testing Advanced Topics
-- ../../../Global_References/smoke-testing-architecture.md — Smoke Testing Architecture and System Design
-- ../../../Global_References/smoke-testing-fundamentals.md — Smoke Testing Fundamentals
-- ../../../Global_References/smoke-testing-strategies.md — Smoke Testing Strategies
-- ../../../Global_References/smoke-testing-strategy.md — Smoke Testing Strategy and Decision Frameworks
+- ../../../../Global_References/Software_Engineering_and_Other/bvt-strategy.md — Build Verification Testing (BVT)
+- ../../../../Global_References/Software_Engineering_and_Other/canary-testing.md — Canary Testing
+- ../../../../Global_References/Software_Engineering_and_Other/deployment-health.md — Deployment Health Checks
+- ../../../../Global_References/Software_Engineering_and_Other/smoke-testing_health-check-patterns.md — Health Check Patterns
+- ../../../../Global_References/Software_Engineering_and_Other/smoke-automation.md — Smoke Test Automation
+- ../../../../Global_References/Software_Engineering_and_Other/smoke-testing-advanced.md — Smoke Testing Advanced Topics
+- ../../../../Global_References/Software_Engineering_and_Other/smoke-testing-architecture.md — Smoke Testing Architecture and System Design
+- ../../../../Global_References/Software_Engineering_and_Other/smoke-testing-fundamentals.md — Smoke Testing Fundamentals
+- ../../../../Global_References/Software_Engineering_and_Other/smoke-testing-strategies.md — Smoke Testing Strategies
+- ../../../../Global_References/Software_Engineering_and_Other/smoke-testing-strategy.md — Smoke Testing Strategy and Decision Frameworks
 
 ## Handoff
 After smoke testing, hand off to:

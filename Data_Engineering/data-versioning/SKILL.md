@@ -492,16 +492,16 @@ Scale and workflow?
 - Define branching strategy (main/dev/exp) before adopting versioning tool
 
 ## References
-  - ../../../Global_References/data-versioning-branching.md — Data Versioning Branching
-  - ../../../Global_References/data-versioning-gc-retention.md — Data Versioning GC and Retention
-  - ../../../Global_References/data-versioning-strategy.md — Data Versioning Strategy
-  - ../../../Global_References/data-versioning-tools.md — Data Versioning Tools Reference
-  - ../../../Global_References/delta-lake-time-travel.md — Delta Lake Time Travel
-  - ../../../Global_References/dvc-patterns.md — DVC Patterns
-  - ../../../Global_References/lakefs-patterns.md — LakeFS Patterns
-  - ../../../Global_References/nessie-iceberg-versioning.md — Nessie — Git for Iceberg
-  - ../../../Global_References/data-versioning-delta-lake.md — Delta Lake Deep Dive
-  - ../../../Global_References/data-versioning-lineage-tracking.md — Lineage Tracking Reference
+  - ../../Global_References/Data_Engineering/data-versioning-branching.md — Data Versioning Branching
+  - ../../Global_References/Data_Engineering/data-versioning-gc-retention.md — Data Versioning GC and Retention
+  - ../../Global_References/Data_Engineering/data-versioning-strategy.md — Data Versioning Strategy
+  - ../../Global_References/Data_Engineering/data-versioning-tools.md — Data Versioning Tools Reference
+  - ../../Global_References/Data_Engineering/delta-lake-time-travel.md — Delta Lake Time Travel
+  - ../../Global_References/Data_Engineering/dvc-patterns.md — DVC Patterns
+  - ../../Global_References/Data_Engineering/lakefs-patterns.md — LakeFS Patterns
+  - ../../Global_References/Data_Engineering/nessie-iceberg-versioning.md — Nessie — Git for Iceberg
+  - ../../Global_References/Data_Engineering/data-versioning-delta-lake.md — Delta Lake Deep Dive
+  - ../../Global_References/Data_Engineering/data-versioning-lineage-tracking.md — Lineage Tracking Reference
 ## Architecture Decision Trees
 
 ```

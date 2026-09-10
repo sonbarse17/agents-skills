@@ -46,12 +46,12 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Controllers | `../../../Global_References/controllers-routing.md` | Creating controllers, routing, Swagger docs |
-| Services | `../../../Global_References/services-di.md` | Services, dependency injection, providers |
-| DTOs | `../../../Global_References/dtos-validation.md` | Validation, class-validator, DTOs |
-| Authentication | `../../../Global_References/nestjs-expert_authentication.md` | JWT, Passport, guards, authorization |
-| Testing | `../../../Global_References/testing-patterns.md` | Unit tests, E2E tests, mocking |
-| Express Migration | `../../../Global_References/migration-from-express.md` | Migrating from Express.js to NestJS |
+| Controllers | `../../../../Global_References/Software_Engineering_and_Other/controllers-routing.md` | Creating controllers, routing, Swagger docs |
+| Services | `../../../../Global_References/Software_Engineering_and_Other/services-di.md` | Services, dependency injection, providers |
+| DTOs | `../../../../Global_References/Software_Engineering_and_Other/dtos-validation.md` | Validation, class-validator, DTOs |
+| Authentication | `../../../../Global_References/Software_Engineering_and_Other/nestjs-expert_authentication.md` | JWT, Passport, guards, authorization |
+| Testing | `../../../../Global_References/Software_Engineering_and_Other/testing-patterns.md` | Unit tests, E2E tests, mocking |
+| Express Migration | `../../../../Global_References/Software_Engineering_and_Other/migration-from-express.md` | Migrating from Express.js to NestJS |
 
 ## Code Examples
 

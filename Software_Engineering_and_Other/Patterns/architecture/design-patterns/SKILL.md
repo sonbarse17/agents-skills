@@ -407,18 +407,18 @@ class Order {
 - Never apply a pattern just because it exists — always have a concrete problem.
 
 ## References
-  - ../../../Global_References/design-patterns_anti-patterns.md — Anti-Patterns Reference
-  - ../../../Global_References/concurrency-patterns.md — Concurrency Patterns
-  - ../../../Global_References/design-patterns-fundamentals.md — Design Patterns Fundamentals
+  - ../../../../Global_References/Software_Engineering_and_Other/design-patterns_anti-patterns.md — Anti-Patterns Reference
+  - ../../../../Global_References/Software_Engineering_and_Other/concurrency-patterns.md — Concurrency Patterns
+  - ../../../../Global_References/Software_Engineering_and_Other/design-patterns-fundamentals.md — Design Patterns Fundamentals
   - references/design-patterns-advanced.md — Design Patterns Advanced
-  - ../../../Global_References/domain-driven-design-patterns.md — Domain-Driven Design Patterns
-  - ../../../Global_References/enterprise-patterns.md — Enterprise & Architectural Patterns
-  - ../../../Global_References/gof-patterns.md — GoF Design Patterns Reference
-  - ../../../Global_References/design-patterns_integration-patterns.md — Enterprise Integration Patterns Reference
+  - ../../../../Global_References/Software_Engineering_and_Other/domain-driven-design-patterns.md — Domain-Driven Design Patterns
+  - ../../../../Global_References/Software_Engineering_and_Other/enterprise-patterns.md — Enterprise & Architectural Patterns
+  - ../../../../Global_References/Software_Engineering_and_Other/gof-patterns.md — GoF Design Patterns Reference
+  - ../../../../Global_References/Software_Engineering_and_Other/design-patterns_integration-patterns.md — Enterprise Integration Patterns Reference
   - references/pattern-catalog.md — Pattern Catalog
-  - ../../../Global_References/pattern-relationships.md — Pattern Relationships & Selection Reference
-  - ../../../Global_References/selection-decision-tree.md — Pattern Selection Decision Tree
-  - ../../../Global_References/design-patterns_testing-patterns.md — Testing Design Patterns
+  - ../../../../Global_References/Software_Engineering_and_Other/pattern-relationships.md — Pattern Relationships & Selection Reference
+  - ../../../../Global_References/Software_Engineering_and_Other/selection-decision-tree.md — Pattern Selection Decision Tree
+  - ../../../../Global_References/Software_Engineering_and_Other/design-patterns_testing-patterns.md — Testing Design Patterns
 ## Handoff
 Hand off to `backend/universal/[microservices](../../distributed-systems/microservices/SKILL.md)/SKILL.md` if distributed system patterns need implementation details. Hand off to `backend/universal/clean-architecture/SKILL.md` if structuring the entire application. Hand off to `backend/universal/event-driven/SKILL.md` if event-driven patterns need elaboration.
 ## Implementation Patterns

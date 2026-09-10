@@ -33,7 +33,7 @@ Configure Prometheus for comprehensive metric collection, [alerting](../../../co
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../../Global_References/prometheus-configuration_details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../../Global_References/observability-monitoring-logging/prometheus-configuration_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 

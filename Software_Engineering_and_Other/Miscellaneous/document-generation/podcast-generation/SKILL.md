@@ -126,7 +126,7 @@ new Audio(audioUrl).play();
 
 ## References
 
-- **Full architecture**: See [../../../Global_References/architecture.md](../../../../Global_References/architecture.md) for complete stack design
-- **Code examples**: See [../../../Global_References/podcast-generation_code-examples.md](../../../../Global_References/podcast-generation_code-examples.md) for production patterns
+- **Full architecture**: See [../../../../Global_References/Software_Engineering_and_Other/architecture.md](../../../../Global_References/Software_Engineering_and_Other/architecture.md) for complete stack design
+- **Code examples**: See [../../../../Global_References/Software_Engineering_and_Other/podcast-generation_code-examples.md](../../../../Global_References/Software_Engineering_and_Other/podcast-generation_code-examples.md) for production patterns
 - **PCM conversion**: Use [scripts/pcm_to_wav.py](scripts/pcm_to_wav.py) for audio format conversion
 

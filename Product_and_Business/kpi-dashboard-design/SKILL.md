@@ -69,7 +69,7 @@ Time-bound: Defined period
 
 ## Detailed worked examples and patterns
 
-Detailed sections (starting with `## Common KPIs by Department`) live in `../../../Global_References/kpi-dashboard-design_details.md`. Read that file when the navigation summary above is insufficient.
+Detailed sections (starting with `## Common KPIs by Department`) live in `../../Global_References/Product_and_Business/kpi-dashboard-design_details.md`. Read that file when the navigation summary above is insufficient.
 
 ## Best Practices
 

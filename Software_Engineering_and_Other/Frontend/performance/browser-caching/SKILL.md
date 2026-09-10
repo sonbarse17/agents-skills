@@ -498,14 +498,14 @@ Use `navigator.storage.estimate()` to check available and used storage.
 
 ## References
 
-- `../../../Global_References/browser-caching_cache-strategies.md` -- Cache Strategies
-- `../../../Global_References/caching-headers.md` -- Caching Headers
-- `../../../Global_References/browser-caching_caching-strategies.md` -- Caching Strategies
-- `../../../Global_References/local-storage-strategies.md` -- Local Storage and Cache Strategies
-- `../../../Global_References/service-worker-caching.md` -- Service Worker Caching
-- `../../../Global_References/sw-caching.md` -- Service Worker Caching
-- `../../../Global_References/service-worker-caching.md` -- Service Worker Caching Patterns
-- `../../../Global_References/cache-invalidation-strategies.md` -- Cache Invalidation Strategies
+- `../../../../Global_References/Software_Engineering_and_Other/browser-caching_cache-strategies.md` -- Cache Strategies
+- `../../../../Global_References/Software_Engineering_and_Other/caching-headers.md` -- Caching Headers
+- `../../../../Global_References/Software_Engineering_and_Other/browser-caching_caching-strategies.md` -- Caching Strategies
+- `../../../../Global_References/Software_Engineering_and_Other/local-storage-strategies.md` -- Local Storage and Cache Strategies
+- `../../../../Global_References/Software_Engineering_and_Other/service-worker-caching.md` -- Service Worker Caching
+- `../../../../Global_References/Software_Engineering_and_Other/sw-caching.md` -- Service Worker Caching
+- `../../../../Global_References/Software_Engineering_and_Other/service-worker-caching.md` -- Service Worker Caching Patterns
+- `../../../../Global_References/Software_Engineering_and_Other/cache-invalidation-strategies.md` -- Cache Invalidation Strategies
 
 ## Handoff
 No artifact produced.

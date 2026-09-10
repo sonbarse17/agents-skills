@@ -28,7 +28,7 @@ Guide for implementing tasks using Conductor's TDD workflow, managing phase chec
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../../Global_References/workflow-patterns_details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../../Global_References/Software_Engineering_and_Other/workflow-patterns_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 

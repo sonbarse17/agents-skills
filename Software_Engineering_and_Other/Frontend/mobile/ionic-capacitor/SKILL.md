@@ -489,14 +489,14 @@ export class BackgroundGeolocationWeb
 - **E2E**: Maestro or Detox — test plugin calls from the web layer verify native behavior. Run on real devices for hardware-dependent plugins (camera, geolocation, biometrics).
 
 ## References
-  - ../../../Global_References/capacitor-plugins.md — Capacitor Plugins
-  - ../../../Global_References/ionic-capacitor-advanced.md — Ionic Capacitor Advanced Topics
-  - ../../../Global_References/ionic-capacitor-fundamentals.md — Ionic Capacitor Fundamentals
-  - ../../../Global_References/ionic-capacitor-plugins.md — Ionic Capacitor Plugins
-  - ../../../Global_References/ionic-cli.md — Ionic CLI Reference
-  - ../../../Global_References/ionic-deployment.md — Ionic Deployment
-  - ../../../Global_References/ionic-capacitor-plugins.md — Ionic Capacitor Plugins Reference
-  - ../../../Global_References/ionic-capacitor-performance.md — Ionic Capacitor Performance Optimization
+  - ../../../../Global_References/Software_Engineering_and_Other/capacitor-plugins.md — Capacitor Plugins
+  - ../../../../Global_References/Software_Engineering_and_Other/ionic-capacitor-advanced.md — Ionic Capacitor Advanced Topics
+  - ../../../../Global_References/Software_Engineering_and_Other/ionic-capacitor-fundamentals.md — Ionic Capacitor Fundamentals
+  - ../../../../Global_References/Software_Engineering_and_Other/ionic-capacitor-plugins.md — Ionic Capacitor Plugins
+  - ../../../../Global_References/Software_Engineering_and_Other/ionic-cli.md — Ionic CLI Reference
+  - ../../../../Global_References/Software_Engineering_and_Other/ionic-deployment.md — Ionic Deployment
+  - ../../../../Global_References/Software_Engineering_and_Other/ionic-capacitor-plugins.md — Ionic Capacitor Plugins Reference
+  - ../../../../Global_References/Software_Engineering_and_Other/ionic-capacitor-performance.md — Ionic Capacitor Performance Optimization
 ## Handoff
 Hand off to native iOS/[Android](../../../../Mobile/android/SKILL.md) skills when custom plugin development needs deep platform API access beyond Capacitor's bridge.
 ## Implementation Patterns

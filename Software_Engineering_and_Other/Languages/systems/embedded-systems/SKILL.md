@@ -44,11 +44,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| RTOS Patterns | `../../../Global_References/rtos-patterns.md` | FreeRTOS tasks, queues, synchronization |
-| Microcontroller | `../../../Global_References/microcontroller-programming.md` | [Bare-metal](../../../Miscellaneous/systems-low-level/bare-metal/SKILL.md), registers, peripherals, interrupts |
-| Power Management | `../../../Global_References/power-optimization.md` | Sleep modes, low-power design, battery life |
-| Communication | `../../../Global_References/communication-protocols.md` | I2C, SPI, UART, CAN implementation |
-| Memory & Performance | `../../../Global_References/memory-optimization.md` | Code size, RAM usage, flash management |
+| RTOS Patterns | `../../../../Global_References/Software_Engineering_and_Other/rtos-patterns.md` | FreeRTOS tasks, queues, synchronization |
+| Microcontroller | `../../../../Global_References/Software_Engineering_and_Other/microcontroller-programming.md` | [Bare-metal](../../../Miscellaneous/systems-low-level/bare-metal/SKILL.md), registers, peripherals, interrupts |
+| Power Management | `../../../../Global_References/Software_Engineering_and_Other/power-optimization.md` | Sleep modes, low-power design, battery life |
+| Communication | `../../../../Global_References/Software_Engineering_and_Other/communication-protocols.md` | I2C, SPI, UART, CAN implementation |
+| Memory & Performance | `../../../../Global_References/Software_Engineering_and_Other/memory-optimization.md` | Code size, RAM usage, flash management |
 
 ## Constraints
 

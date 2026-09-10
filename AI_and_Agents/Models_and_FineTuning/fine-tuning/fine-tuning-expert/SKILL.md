@@ -53,11 +53,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| LoRA/PEFT | `../../../Global_References/lora-peft.md` | Parameter-efficient fine-tuning, adapters |
-| Dataset Prep | `../../../Global_References/dataset-preparation.md` | Training data formatting, quality checks |
-| Hyperparameters | `../../../Global_References/hyperparameter-tuning.md` | Learning rates, batch sizes, schedulers |
-| Evaluation | `../../../Global_References/evaluation-metrics.md` | Benchmarking, metrics, model comparison |
-| Deployment | `../../../Global_References/deployment-optimization.md` | Model merging, quantization, serving |
+| LoRA/PEFT | `../../../../Global_References/AI_and_Agents/lora-peft.md` | Parameter-efficient fine-tuning, adapters |
+| Dataset Prep | `../../../../Global_References/AI_and_Agents/dataset-preparation.md` | Training data formatting, quality checks |
+| Hyperparameters | `../../../../Global_References/AI_and_Agents/hyperparameter-tuning.md` | Learning rates, batch sizes, schedulers |
+| Evaluation | `../../../../Global_References/AI_and_Agents/evaluation-metrics.md` | Benchmarking, metrics, model comparison |
+| Deployment | `../../../../Global_References/AI_and_Agents/deployment-optimization.md` | Model merging, quantization, serving |
 
 ## Minimal Working Example — LoRA Fine-Tuning with Hugging Face PEFT
 

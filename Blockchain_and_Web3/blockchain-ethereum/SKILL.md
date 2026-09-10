@@ -439,16 +439,16 @@ func (api *EthAPI) Call(args TransactionArgs, blockNrOrHash *rpc.BlockNumberOrHa
 15. Blob transactions (EIP-4844) are temporary — full danksharding is the long-term goal
 
 ## References
-  - ../../../Global_References/account-abstraction-erc4337.md — Account Abstraction (ERC-4337) Deep Dive
-  - ../../../Global_References/blockchain-ethereum-advanced.md — Blockchain Ethereum Advanced Topics
-  - ../../../Global_References/blockchain-ethereum-fundamentals.md — Blockchain Ethereum Fundamentals
-  - ../../../Global_References/eips-deep-dive.md — Critical EIPs Deep Dive
-  - ../../../Global_References/eth-consensus-layer.md — Ethereum Consensus Layer (Beacon Chain)
-  - ../../../Global_References/evm-deep-dive.md — EVM Deep Dive
-  - ../../../Global_References/execution-clients.md — Execution Clients
-  - ../../../Global_References/layer2-scaling.md — Layer-2 Scaling
-  - ../../../Global_References/pbs-mev-boost.md — Proposer-Builder Separation & MEV-Boost
-  - ../../../Global_References/staking-and-validator.md — Staking and Validators
+  - ../../Global_References/Blockchain_and_Web3/account-abstraction-erc4337.md — Account Abstraction (ERC-4337) Deep Dive
+  - ../../Global_References/Blockchain_and_Web3/blockchain-ethereum-advanced.md — Blockchain Ethereum Advanced Topics
+  - ../../Global_References/Blockchain_and_Web3/blockchain-ethereum-fundamentals.md — Blockchain Ethereum Fundamentals
+  - ../../Global_References/Blockchain_and_Web3/eips-deep-dive.md — Critical EIPs Deep Dive
+  - ../../Global_References/Blockchain_and_Web3/eth-consensus-layer.md — Ethereum Consensus Layer (Beacon Chain)
+  - ../../Global_References/Blockchain_and_Web3/evm-deep-dive.md — EVM Deep Dive
+  - ../../Global_References/Blockchain_and_Web3/execution-clients.md — Execution Clients
+  - ../../Global_References/Blockchain_and_Web3/layer2-scaling.md — Layer-2 Scaling
+  - ../../Global_References/Blockchain_and_Web3/pbs-mev-boost.md — Proposer-Builder Separation & MEV-Boost
+  - ../../Global_References/Blockchain_and_Web3/staking-and-validator.md — Staking and Validators
   - references/ethereum-light-clients.md — Ethereum Light Clients
   - references/blob-transactions-4844.md — Blob Transactions (EIP-4844)
   - references/optimistic-vs-zk-rollups.md — Optimistic vs ZK Rollup Comparison

@@ -103,7 +103,7 @@ ransomware kill chain. Synthetic alert documents are indexed into `.alerts-secur
 mappings, severity levels, and risk scores.
 
 All events use RFC 5737 / RFC 2606 safe addresses. For full tables of packages, scenarios, and alerts see
-[../../../Global_References/sample-data-reference.md](../../../Global_References/sample-data-reference.md).
+[../../../Global_References/Security/sample-data-reference.md](../../../Global_References/Security/sample-data-reference.md).
 
 ## Continuous mode
 

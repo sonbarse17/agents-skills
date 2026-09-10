@@ -574,10 +574,10 @@ spec:
 - Strimzi cluster not stabilizing: check ZooKeeper quorum, verify storage class.
 
 ## References
-  - ../../../Global_References/data-infrastructure-k8s.md — Data Infrastructure on [Kubernetes](../../other/kubernetes/SKILL.md)
-  - ../../../Global_References/data-processing-k8s.md — Data Processing on [Kubernetes](../../other/kubernetes/SKILL.md)
-  - ../../../Global_References/data-workloads-k8s.md — Data Workloads on [Kubernetes](../../other/kubernetes/SKILL.md)
-  - ../../../Global_References/gpu-storage-k8s.md — GPU & Storage for [Kubernetes](../../other/kubernetes/SKILL.md) Data Workloads
+  - ../../../../Global_References/containers-orchestration/data-infrastructure-k8s.md — Data Infrastructure on [Kubernetes](../../other/kubernetes/SKILL.md)
+  - ../../../../Global_References/containers-orchestration/data-processing-k8s.md — Data Processing on [Kubernetes](../../other/kubernetes/SKILL.md)
+  - ../../../../Global_References/containers-orchestration/data-workloads-k8s.md — Data Workloads on [Kubernetes](../../other/kubernetes/SKILL.md)
+  - ../../../../Global_References/containers-orchestration/gpu-storage-k8s.md — GPU & Storage for [Kubernetes](../../other/kubernetes/SKILL.md) Data Workloads
   - ../../../Global_References/[kubernetes](../../other/kubernetes/SKILL.md)-for-data-advanced.md — [Kubernetes](../../other/kubernetes/SKILL.md) For Data Advanced Topics
   - ../../../Global_References/[kubernetes](../../other/kubernetes/SKILL.md)-for-data-fundamentals.md — [Kubernetes](../../other/kubernetes/SKILL.md) For Data Fundamentals
 ## Handoff

@@ -509,12 +509,12 @@ describe('ThemeProvider', () => {
 ---
 
 ## References
-  - ../../../Global_References/theming_design-tokens.md — Design Tokens
-  - ../../../Global_References/theming_theme-implementation.md — Theme Implementation
-  - ../../../Global_References/theme-performance.md — Theme Performance
-  - ../../../Global_References/theme-testing.md — Theme Testing
-  - ../../../Global_References/theming_theming-architecture.md — Theming Architecture
-  - ../../../Global_References/theming-tokens.md — Theming Tokens
+  - ../../../../Global_References/Software_Engineering_and_Other/theming_design-tokens.md — Design Tokens
+  - ../../../../Global_References/Software_Engineering_and_Other/theming_theme-implementation.md — Theme Implementation
+  - ../../../../Global_References/Software_Engineering_and_Other/theme-performance.md — Theme Performance
+  - ../../../../Global_References/Software_Engineering_and_Other/theme-testing.md — Theme Testing
+  - ../../../../Global_References/Software_Engineering_and_Other/theming_theming-architecture.md — Theming Architecture
+  - ../../../../Global_References/Software_Engineering_and_Other/theming-tokens.md — Theming Tokens
 ## Handoff
 
 If project requires complex design token management tooling (Style Dictionary, Token Studio) or multi-brand theming (3+ themes), flag for design systems handoff. Otherwise implement complete theming system.

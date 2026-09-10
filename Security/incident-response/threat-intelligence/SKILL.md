@@ -700,13 +700,13 @@ Without purple team validation, you don't know if intelligence has improved dete
 - Threat actor profiles must be updated within 30 days of significant TTP changes
 
 ## References
-  - ../../../Global_References/cti-lifecycle.md — Threat Intelligence Lifecycle
-  - ../../../Global_References/osint-collection.md — OSINT Collection
-  - ../../../Global_References/threat-intelligence_threat-hunting.md — Threat Hunting
-  - ../../../Global_References/threat-intelligence-advanced.md — Threat Intelligence Advanced Topics
-  - ../../../Global_References/threat-intelligence-fundamentals.md — Threat Intelligence Fundamentals
-  - ../../../Global_References/ti-platforms.md — Threat Intelligence Platforms
-  - ../../../Global_References/ti-sharing.md — Threat Intelligence Sharing
+  - ../../../Global_References/Security/cti-lifecycle.md — Threat Intelligence Lifecycle
+  - ../../../Global_References/Security/osint-collection.md — OSINT Collection
+  - ../../../Global_References/Security/threat-intelligence_threat-hunting.md — Threat Hunting
+  - ../../../Global_References/Security/threat-intelligence-advanced.md — Threat Intelligence Advanced Topics
+  - ../../../Global_References/Security/threat-intelligence-fundamentals.md — Threat Intelligence Fundamentals
+  - ../../../Global_References/Security/ti-platforms.md — Threat Intelligence Platforms
+  - ../../../Global_References/Security/ti-sharing.md — Threat Intelligence Sharing
 ## Handoff
 IoC feeds integrated with [siem-engineering](../siem-engineering/SKILL.md) for detection rules. TTP mapping informs [soc-operations](../soc-operations/SKILL.md) for analyst workflows.
 

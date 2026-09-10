@@ -199,7 +199,7 @@ spec:
       privileged: true
 ```
 
-See `../../../Global_References/suppression_guide.md` for comprehensive suppression strategies.
+See `../../../../Global_References/infrastructure-as-code/suppression_guide.md` for comprehensive suppression strategies.
 
 ### Step 5: Create Custom Policies
 
@@ -234,7 +234,7 @@ Run with custom policies:
 checkov -d ./terraform --external-checks-dir ./custom_checks
 ```
 
-See `../../../Global_References/custom_policies.md` for advanced policy development.
+See `../../../../Global_References/infrastructure-as-code/custom_policies.md` for advanced policy development.
 
 ### Step 6: Generate Compliance Reports
 
@@ -262,7 +262,7 @@ checkov -d ./terraform -o sarif --output-file-path ./sarif-report.json
 - **SARIF**: [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md)/Azure DevOps Security tab
 - **CycloneDX**: Software Bill of Materials for IaC
 
-Map findings to compliance frameworks using `../../../Global_References/iac-checkov_compliance_mapping.md`.
+Map findings to compliance frameworks using `../../../../Global_References/infrastructure-as-code/iac-checkov_compliance_mapping.md`.
 
 ## CI/CD Integration
 

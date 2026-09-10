@@ -508,14 +508,14 @@ The browser promotes elements to GPU compositor layers when `will-change`, 3D tr
 
 ## References
 
-- `../../../Global_References/animation-accessibility.md` -- Animation Accessibility
-- `../../../Global_References/animation-anatomy.md` -- Animation Anatomy
-- `../../../Global_References/animation_animation-libraries.md` -- Animation Libraries
-- `../../../Global_References/animation-performance.md` -- Animation Performance
-- `../../../Global_References/animation-techniques.md` -- Animation Techniques
-- `../../../Global_References/animation-tools.md` -- Animation Tools Reference
-- `../../../Global_References/web-animation-performance.md` -- Web Animation Performance & Compositing Deep Dive
-- `../../../Global_References/spring-gesture-animation.md` -- Spring Physics & Gesture Animation Patterns
+- `../../../../Global_References/Software_Engineering_and_Other/animation-accessibility.md` -- Animation Accessibility
+- `../../../../Global_References/Software_Engineering_and_Other/animation-anatomy.md` -- Animation Anatomy
+- `../../../../Global_References/Software_Engineering_and_Other/animation_animation-libraries.md` -- Animation Libraries
+- `../../../../Global_References/Software_Engineering_and_Other/animation-performance.md` -- Animation Performance
+- `../../../../Global_References/Software_Engineering_and_Other/animation-techniques.md` -- Animation Techniques
+- `../../../../Global_References/Software_Engineering_and_Other/animation-tools.md` -- Animation Tools Reference
+- `../../../../Global_References/Software_Engineering_and_Other/web-animation-performance.md` -- Web Animation Performance & Compositing Deep Dive
+- `../../../../Global_References/Software_Engineering_and_Other/spring-gesture-animation.md` -- Spring Physics & Gesture Animation Patterns
 
 ## Handoff
 

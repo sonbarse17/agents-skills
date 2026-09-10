@@ -586,17 +586,17 @@ groups:
 ```
 
 ## References
-  - ../../../Global_References/blockchain-infrastructure-advanced.md — Blockchain Infrastructure Advanced Topics
-  - ../../../Global_References/blockchain-infrastructure-fundamentals.md — Blockchain Infrastructure Fundamentals
-  - ../../../Global_References/ci-cd-smart-contracts.md — CI/CD for Smart Contracts
+  - ../../Global_References/Blockchain_and_Web3/blockchain-infrastructure-advanced.md — Blockchain Infrastructure Advanced Topics
+  - ../../Global_References/Blockchain_and_Web3/blockchain-infrastructure-fundamentals.md — Blockchain Infrastructure Fundamentals
+  - ../../Global_References/Blockchain_and_Web3/ci-cd-smart-contracts.md — CI/CD for Smart Contracts
   - ../../../Global_References/[disaster-recovery](../../containers-orchestration/common/other/disaster-recovery/SKILL.md)-backup.md — Disaster Recovery & Backup
-  - ../../../Global_References/environment-mgmt.md — Environment Management
-  - ../../../Global_References/kms-hsm.md — KMS & HSM for Blockchain
-  - ../../../Global_References/mev-infrastructure.md — MEV Infrastructure
+  - ../../Global_References/Blockchain_and_Web3/environment-mgmt.md — Environment Management
+  - ../../Global_References/Blockchain_and_Web3/kms-hsm.md — KMS & HSM for Blockchain
+  - ../../Global_References/Blockchain_and_Web3/mev-infrastructure.md — MEV Infrastructure
   - ../../../Global_References/blockchain-infrastructure_monitoring-[alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md).md — [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
-  - ../../../Global_References/node-deployment.md — Node Deployment
-  - ../../../Global_References/performance-benchmarking.md — Performance Benchmarking
-  - ../../../Global_References/rpc-infrastructure.md — RPC Infrastructure
+  - ../../Global_References/Blockchain_and_Web3/node-deployment.md — Node Deployment
+  - ../../Global_References/Blockchain_and_Web3/performance-benchmarking.md — Performance Benchmarking
+  - ../../Global_References/Blockchain_and_Web3/rpc-infrastructure.md — RPC Infrastructure
   - references/validator-operations.md — Validator Operations Guide
   - references/blockchain-devops-tooling.md — Blockchain DevOps Tooling
 

@@ -105,7 +105,7 @@ score hides which bucket regressed.
   that preamble, conflating format compliance with
   the knowledge being measured. Templates for all
   four grader shapes and this scoring note:
-  `../../../Global_References/grader-templates.md`.
+  `../../../../Global_References/AI_and_Agents/grader-templates.md`.
 
 ## Judge Calibration Is a Prerequisite
 
@@ -131,7 +131,7 @@ section unaddressed.
   **advisory-only** — flags for human review, never
   gates a promotion. Full protocol, bias correction,
   and recalibration checklist:
-  `../../../Global_References/judge-calibration.md`.
+  `../../../../Global_References/AI_and_Agents/judge-calibration.md`.
 
 ## The Baseline
 
@@ -213,10 +213,10 @@ the baseline that gates a checkpoint.
 
 ## References
 
-- `../../../Global_References/grader-templates.md` — runnable grader
+- `../../../../Global_References/AI_and_Agents/grader-templates.md` — runnable grader
   examples per shape, plus a `drift-suite.yaml`
   example and MMLU logprob-scoring note.
-- `../../../Global_References/judge-calibration.md` — the
+- `../../../../Global_References/AI_and_Agents/judge-calibration.md` — the
   calibration protocol, including the all-
   deterministic N/A path.
 

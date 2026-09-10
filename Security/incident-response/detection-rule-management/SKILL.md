@@ -188,7 +188,7 @@ node skills/security/detection-rule-management/scripts/rule-manager.js create \
 ```
 
 For complex rules (EQL sequences, MITRE mappings, alert suppression), use `create --from-file rule_definition.json` and
-`--threat-file`. See [../../../Global_References/detection-api-reference.md](../../../Global_References/detection-api-reference.md) for schema.
+`--threat-file`. See [../../../Global_References/Security/detection-api-reference.md](../../../Global_References/Security/detection-api-reference.md) for schema.
 
 ### Step 5: Monitor and iterate
 
@@ -209,9 +209,9 @@ before any exception. Simulate impact (Step 5b) and aim for ≥60% noise reducti
 Exception List; rule.id/rule.name required), `check-exclusion-best-practices.js`.
 
 For the full step-by-step workflow (Steps 1–6), queries, and simulation templates, see
-[../../../Global_References/endpoint-behavior-tuning-workflow.md](../../../Global_References/endpoint-behavior-tuning-workflow.md). For exclusion best
+[../../../Global_References/Security/endpoint-behavior-tuning-workflow.md](../../../Global_References/Security/endpoint-behavior-tuning-workflow.md). For exclusion best
 practices, see
-[../../../Global_References/endpoint-rule-exclusion-best-practices.md](../../../Global_References/endpoint-rule-exclusion-best-practices.md).
+[../../../Global_References/Security/endpoint-rule-exclusion-best-practices.md](../../../Global_References/Security/endpoint-rule-exclusion-best-practices.md).
 
 ---
 
@@ -249,9 +249,9 @@ Pass entries as `field:operator:value`. Operators: `is`, `is_not`, `is_one_of`, 
 
 ## Additional resources
 
-- For full API schema details, see [../../../Global_References/detection-api-reference.md](../../../Global_References/detection-api-reference.md)
-- For **endpoint behavior** tuning: [../../../Global_References/endpoint-exceptions-guide.md](../../../Global_References/endpoint-exceptions-guide.md),
-  [../../../Global_References/endpoint-rule-exclusion-best-practices.md](../../../Global_References/endpoint-rule-exclusion-best-practices.md)
+- For full API schema details, see [../../../Global_References/Security/detection-api-reference.md](../../../Global_References/Security/detection-api-reference.md)
+- For **endpoint behavior** tuning: [../../../Global_References/Security/endpoint-exceptions-guide.md](../../../Global_References/Security/endpoint-exceptions-guide.md),
+  [../../../Global_References/Security/endpoint-rule-exclusion-best-practices.md](../../../Global_References/Security/endpoint-rule-exclusion-best-practices.md)
 - For alert investigation during tuning, use the `alert-triage` skill
 - For documenting tuning actions in cases, use the `case-management` skill
 

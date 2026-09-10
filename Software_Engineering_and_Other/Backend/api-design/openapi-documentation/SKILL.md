@@ -473,12 +473,12 @@ components:
 - Every spec change must be reviewed and validated in CI.
 
 ## References
-  - ../../../Global_References/openapi-codegen.md — OpenAPI Code Generation
-  - ../../../Global_References/openapi-security.md — OpenAPI Security
-  - ../../../Global_References/openapi-setup.md — OpenAPI Project Setup Guide
-  - ../../../Global_References/openapi-testing.md — OpenAPI Testing
-  - ../../../Global_References/openapi-tools.md — OpenAPI Tools
-  - ../../../Global_References/openapi-versioning-strategies.md — OpenAPI Versioning Strategies
+  - ../../../../Global_References/Software_Engineering_and_Other/openapi-codegen.md — OpenAPI Code Generation
+  - ../../../../Global_References/Software_Engineering_and_Other/openapi-security.md — OpenAPI Security
+  - ../../../../Global_References/Software_Engineering_and_Other/openapi-setup.md — OpenAPI Project Setup Guide
+  - ../../../../Global_References/Software_Engineering_and_Other/openapi-testing.md — OpenAPI Testing
+  - ../../../../Global_References/Software_Engineering_and_Other/openapi-tools.md — OpenAPI Tools
+  - ../../../../Global_References/Software_Engineering_and_Other/openapi-versioning-strategies.md — OpenAPI Versioning Strategies
 ## Handoff
 No artifact produced unless requested.
 Next skill: contract-testing — verify the OpenAPI spec against provider behavior.

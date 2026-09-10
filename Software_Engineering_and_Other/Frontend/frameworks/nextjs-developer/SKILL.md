@@ -48,11 +48,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| App Router | `../../../Global_References/nextjs-developer_app-router.md` | File-based routing, layouts, templates, route groups |
-| Server Components | `../../../Global_References/nextjs-developer_server-components.md` | RSC patterns, streaming, client boundaries |
-| Server Actions | `../../../Global_References/server-actions.md` | Form handling, mutations, revalidation |
-| Data Fetching | `../../../Global_References/data-fetching.md` | fetch, caching, ISR, on-demand revalidation |
-| Deployment | `../../../Global_References/nextjs-developer_deployment.md` | Vercel, self-hosting, [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md), optimization |
+| App Router | `../../../../Global_References/Software_Engineering_and_Other/nextjs-developer_app-router.md` | File-based routing, layouts, templates, route groups |
+| Server Components | `../../../../Global_References/Software_Engineering_and_Other/nextjs-developer_server-components.md` | RSC patterns, streaming, client boundaries |
+| Server Actions | `../../../../Global_References/Software_Engineering_and_Other/server-actions.md` | Form handling, mutations, revalidation |
+| Data Fetching | `../../../../Global_References/Software_Engineering_and_Other/data-fetching.md` | fetch, caching, ISR, on-demand revalidation |
+| Deployment | `../../../../Global_References/Software_Engineering_and_Other/nextjs-developer_deployment.md` | Vercel, self-hosting, [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md), optimization |
 
 ## Constraints
 

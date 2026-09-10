@@ -460,12 +460,12 @@ module('Acceptance | posts', function (hooks) {
 - Follow the `app/` folder convention: routes/, components/, services/, models/, modifiers/.
 
 ## References
-  - ../../../Global_References/ember-advanced.md — Ember Advanced Topics
-  - ../../../Global_References/ember-architecture.md — Ember.js Architecture Patterns
-  - ../../../Global_References/ember-deployment.md — Ember.js Deployment
-  - ../../../Global_References/ember-fundamentals.md — Ember Fundamentals
-  - ../../../Global_References/ember-patterns.md — Ember.js Patterns & Best Practices
-  - ../../../Global_References/ember-setup.md — Ember.js Setup Guide
+  - ../../../../Global_References/Software_Engineering_and_Other/ember-advanced.md — Ember Advanced Topics
+  - ../../../../Global_References/Software_Engineering_and_Other/ember-architecture.md — Ember.js Architecture Patterns
+  - ../../../../Global_References/Software_Engineering_and_Other/ember-deployment.md — Ember.js Deployment
+  - ../../../../Global_References/Software_Engineering_and_Other/ember-fundamentals.md — Ember Fundamentals
+  - ../../../../Global_References/Software_Engineering_and_Other/ember-patterns.md — Ember.js Patterns & Best Practices
+  - ../../../../Global_References/Software_Engineering_and_Other/ember-setup.md — Ember.js Setup Guide
 
 ## Handoff
 No artifact produced.

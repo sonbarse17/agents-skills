@@ -501,13 +501,13 @@ com.example.app/
 - ProGuard rules must keep all Moshi/Retrofit/Kotlin serialization classes
 
 ## References
-  - ../../../Global_References/android-advanced.md — Android Advanced Topics
-  - ../../../Global_References/android-architecture.md — Android Architecture — MVVM + Clean Architecture
-  - ../../../Global_References/android-fundamentals.md — Android Fundamentals
-  - ../../../Global_References/compose-performance.md — Jetpack Compose Performance Optimization
-  - ../../../Global_References/hilt-di.md — Hilt Dependency Injection
-  - ../../../Global_References/jetpack-compose.md — Jetpack Compose
-  - ../../../Global_References/testing.md — Android Testing
+  - ../../Global_References/Mobile/android-advanced.md — Android Advanced Topics
+  - ../../Global_References/Mobile/android-architecture.md — Android Architecture — MVVM + Clean Architecture
+  - ../../Global_References/Mobile/android-fundamentals.md — Android Fundamentals
+  - ../../Global_References/Mobile/compose-performance.md — Jetpack Compose Performance Optimization
+  - ../../Global_References/Mobile/hilt-di.md — Hilt Dependency Injection
+  - ../../Global_References/Mobile/jetpack-compose.md — Jetpack Compose
+  - ../../Global_References/Mobile/testing.md — Android Testing
 ## Handoff
 
 Hand off to `mobile/universal/deployment/SKILL.md` for deployment.

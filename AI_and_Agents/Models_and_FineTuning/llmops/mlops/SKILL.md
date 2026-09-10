@@ -527,13 +527,13 @@ mlflow.log_artifact("artifacts/shap_values.pkl")
 
 ## References
   - ../../../Global_References/ml-[cicd-pipeline](../../../../ci-cd/common/pipeline-design/cicd-pipeline/SKILL.md).md — ML CI/CD Pipeline
-  - ../../../Global_References/ml-deployment.md — ML Deployment & [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+  - ../../../../Global_References/AI_and_Agents/ml-deployment.md — ML Deployment & [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
   - ../../../Global_References/ml-[experiment-tracking](../../../../Data_Engineering/experiment-tracking/SKILL.md).md — ML Experiment Tracking
-  - ../../../Global_References/ml-retraining.md — ML Model Retraining
-  - ../../../Global_References/mlops-advanced.md — Mlops Advanced Topics
-  - ../../../Global_References/mlops-fundamentals.md — Mlops Fundamentals
-  - ../../../Global_References/mlops-pipeline-automation.md — MLOps Pipeline Automation
-  - ../../../Global_References/mlops-model-governance.md — MLOps Model Governance
+  - ../../../../Global_References/AI_and_Agents/ml-retraining.md — ML Model Retraining
+  - ../../../../Global_References/AI_and_Agents/mlops-advanced.md — Mlops Advanced Topics
+  - ../../../../Global_References/AI_and_Agents/mlops-fundamentals.md — Mlops Fundamentals
+  - ../../../../Global_References/AI_and_Agents/mlops-pipeline-automation.md — MLOps Pipeline Automation
+  - ../../../../Global_References/AI_and_Agents/mlops-model-governance.md — MLOps Model Governance
 ## Handoff
 For data pipeline CI/CD: `[devops-dataops](../../../../Data_Engineering/dataops/SKILL.md)`. For [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) deployment: `[devops-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-for-data](../../../DevOps_and_Cloud/Containers_and_Orchestration/[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-for-data/SKILL.md)`.
 

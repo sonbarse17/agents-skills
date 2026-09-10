@@ -434,12 +434,12 @@ Impact: Findability 35% to 78%, task time -60%
 - IA governance must be established with a designated owner and review cadence.
 
 ## References
-  - ../../../Global_References/content-modeling.md — Content Modeling Reference
-  - ../../../Global_References/ia-methods.md — Information Architecture Methods Reference
-  - ../../../Global_References/information-architecture-advanced.md — Information Architecture Advanced Topics
-  - ../../../Global_References/information-architecture-fundamentals.md — Information Architecture Fundamentals
-  - ../../../Global_References/navigation-design.md — Navigation Design Reference
-  - ../../../Global_References/sitemap-taxonomy.md — Sitemaps and Taxonomy Reference
+  - ../../Global_References/Product_and_Business/content-modeling.md — Content Modeling Reference
+  - ../../Global_References/Product_and_Business/ia-methods.md — Information Architecture Methods Reference
+  - ../../Global_References/Product_and_Business/information-architecture-advanced.md — Information Architecture Advanced Topics
+  - ../../Global_References/Product_and_Business/information-architecture-fundamentals.md — Information Architecture Fundamentals
+  - ../../Global_References/Product_and_Business/navigation-design.md — Navigation Design Reference
+  - ../../Global_References/Product_and_Business/sitemap-taxonomy.md — Sitemaps and Taxonomy Reference
   - references/ia-card-sorting-tree-testing.md — IA Card Sorting and Tree Testing
   - references/ia-navigation-design.md — IA Navigation Design
 ## Implementation Patterns

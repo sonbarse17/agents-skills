@@ -419,12 +419,12 @@ export default defineConfig({
 - E2E suite must complete in under 20 minutes — optimize or prune
 
 ## References
-  - ../../../Global_References/cypress-guide.md — Cypress Guide
-  - ../../../Global_References/e2e-testing-advanced.md — E2e Testing Advanced Topics
-  - ../../../Global_References/e2e-testing-fundamentals.md — E2e Testing Fundamentals
-  - ../../../Global_References/framework-selection.md — Framework Selection
-  - ../../../Global_References/playwright-guide.md — Playwright Guide
-  - ../../../Global_References/test-patterns.md — Test Patterns
+  - ../../../../Global_References/Software_Engineering_and_Other/cypress-guide.md — Cypress Guide
+  - ../../../../Global_References/Software_Engineering_and_Other/e2e-testing-advanced.md — E2e Testing Advanced Topics
+  - ../../../../Global_References/Software_Engineering_and_Other/e2e-testing-fundamentals.md — E2e Testing Fundamentals
+  - ../../../../Global_References/Software_Engineering_and_Other/framework-selection.md — Framework Selection
+  - ../../../../Global_References/Software_Engineering_and_Other/playwright-guide.md — Playwright Guide
+  - ../../../../Global_References/Software_Engineering_and_Other/test-patterns.md — Test Patterns
 ## Handoff
 `[quality-visual-testing](../visual-testing/SKILL.md)` for visual regression setup alongside E2E tests.
 `[quality-contract-testing](../../contract/contract-testing/SKILL.md)` for API contract verification.

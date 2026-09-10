@@ -77,5 +77,5 @@ class MyInDB(MyResponse):
 
 | File | Contents |
 |------|----------|
-| [../../../Global_References/pydantic-models-py_capabilities.md](../../../../Global_References/pydantic-models-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
+| [../../../../Global_References/Software_Engineering_and_Other/pydantic-models-py_capabilities.md](../../../../Global_References/Software_Engineering_and_Other/pydantic-models-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
 

@@ -59,12 +59,12 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Review Checklist | `../../../Global_References/code-reviewer_review-checklist.md` | Starting a review, categories |
-| Common Issues | `../../../Global_References/common-issues.md` | N+1 queries, magic numbers, patterns |
-| Feedback Examples | `../../../Global_References/feedback-examples.md` | Writing good feedback |
-| Report Template | `../../../Global_References/report-template.md` | Writing final review report |
-| Spec Compliance | `../../../Global_References/spec-compliance-review.md` | Reviewing implementations, PR review, spec verification |
-| Receiving Feedback | `../../../Global_References/receiving-feedback.md` | Responding to review comments, handling feedback |
+| Review Checklist | `../../../../Global_References/ci-cd/code-reviewer_review-checklist.md` | Starting a review, categories |
+| Common Issues | `../../../../Global_References/ci-cd/common-issues.md` | N+1 queries, magic numbers, patterns |
+| Feedback Examples | `../../../../Global_References/ci-cd/feedback-examples.md` | Writing good feedback |
+| Report Template | `../../../../Global_References/ci-cd/report-template.md` | Writing final review report |
+| Spec Compliance | `../../../../Global_References/ci-cd/spec-compliance-review.md` | Reviewing implementations, PR review, spec verification |
+| Receiving Feedback | `../../../../Global_References/ci-cd/receiving-feedback.md` | Responding to review comments, handling feedback |
 
 ## Review Patterns (Quick Reference)
 

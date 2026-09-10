@@ -865,13 +865,13 @@ func init() {
 | Performance | Best | Best | Moderate | Moderate |
 
 ## References
-- ../../../Global_References/controller-runtime.md — Controller Runtime Deep Dive
-- ../../../Global_References/finalizers-garbage.md — Finalizers, Garbage Collection, and Owner References
+- ../../../../Global_References/containers-orchestration/controller-runtime.md — Controller Runtime Deep Dive
+- ../../../../Global_References/containers-orchestration/finalizers-garbage.md — Finalizers, Garbage Collection, and Owner References
 - ../../../Global_References/[kubernetes](../../other/kubernetes/SKILL.md)-operators-advanced.md — [Kubernetes](../../other/kubernetes/SKILL.md) Operators Advanced Topics
 - ../../../Global_References/[kubernetes](../../other/kubernetes/SKILL.md)-operators-fundamentals.md — [Kubernetes](../../other/kubernetes/SKILL.md) Operators Fundamentals
-- ../../../Global_References/operator-patterns.md — [Kubernetes](../../other/kubernetes/SKILL.md) Operator Design Patterns
-- ../../../Global_References/operator-sdk-guide.md — Operator SDK Guide
-- ../../../Global_References/testing-operators.md — Operator Testing
+- ../../../../Global_References/containers-orchestration/operator-patterns.md — [Kubernetes](../../other/kubernetes/SKILL.md) Operator Design Patterns
+- ../../../../Global_References/containers-orchestration/operator-sdk-guide.md — Operator SDK Guide
+- ../../../../Global_References/containers-orchestration/testing-operators.md — Operator Testing
 - references/conversion-webhooks.md — Multi-Version CRD with Conversion Webhooks
 - references/operator-metrics.md — Operator Metrics and [Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
 - references/olm-deployment.md — OLM Operator Deployment

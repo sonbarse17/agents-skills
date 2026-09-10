@@ -792,11 +792,11 @@ final class OrderViewModelTests: XCTestCase {
 
 ## References
 - `references/[architecture-patterns](../../Software_Engineering_and_Other/Patterns/architecture/architecture-patterns/SKILL.md).md` — Mobile Architecture Patterns
-- `../../../Global_References/clean-arch.md` — Clean Architecture for Mobile
-- `../../../Global_References/coordinator.md` — Coordinator / Navigator
-- `../../../Global_References/patterns_design-patterns.md` — Mobile Design Patterns
+- `../../Global_References/Mobile/clean-arch.md` — Clean Architecture for Mobile
+- `../../Global_References/Mobile/coordinator.md` — Coordinator / Navigator
+- `../../Global_References/Mobile/patterns_design-patterns.md` — Mobile Design Patterns
 - `../../../Global_References/mobile-[architecture-patterns](../../Software_Engineering_and_Other/Patterns/architecture/architecture-patterns/SKILL.md).md` — Mobile Architecture Patterns
-- `../../../Global_References/mvvm-mvi.md` — MVVM vs MVI
+- `../../Global_References/Mobile/mvvm-mvi.md` — MVVM vs MVI
 
 ## Handoff
 After architecture selection, hand off to:

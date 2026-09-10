@@ -416,14 +416,14 @@ Performance tips: pre-allocate structured fields (avoid dynamic object creation 
 - Log at most once per error — choose the boundary layer (controller or use case)
 
 ## References
-  - ../../../Global_References/log-aggregation.md — Log Aggregation and Analysis
-  - ../../../Global_References/log-correlation-tracing.md — Log Correlation and Tracing
-  - ../../../Global_References/log-format.md — Log Format Schema
-  - ../../../Global_References/log-sampling-strategies.md — Log Sampling Strategies
-  - ../../../Global_References/log-shipping.md — Log Shipping
-  - ../../../Global_References/logging-aggregation.md — Logging Aggregation
-  - ../../../Global_References/logging-architecture.md — Logging Architecture
-  - ../../../Global_References/structured-logging-implementation.md — Structured Logging Patterns
+  - ../../../../Global_References/observability-monitoring-logging/log-aggregation.md — Log Aggregation and Analysis
+  - ../../../../Global_References/observability-monitoring-logging/log-correlation-tracing.md — Log Correlation and Tracing
+  - ../../../../Global_References/observability-monitoring-logging/log-format.md — Log Format Schema
+  - ../../../../Global_References/observability-monitoring-logging/log-sampling-strategies.md — Log Sampling Strategies
+  - ../../../../Global_References/observability-monitoring-logging/log-shipping.md — Log Shipping
+  - ../../../../Global_References/observability-monitoring-logging/logging-aggregation.md — Logging Aggregation
+  - ../../../../Global_References/observability-monitoring-logging/logging-architecture.md — Logging Architecture
+  - ../../../../Global_References/observability-monitoring-logging/structured-logging-implementation.md — Structured Logging Patterns
 ## Handoff
 `devops-[observability](../../fundamentals/observability/SKILL.md)` for metrics collection and distributed tracing setup
 ## Implementation Patterns

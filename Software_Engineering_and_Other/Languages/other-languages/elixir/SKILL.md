@@ -496,11 +496,11 @@ end
 ```
 
 ## References
-- `../../../Global_References/otp-supervision.md` — Supervision trees, GenServer, Task, Agent
-- `../../../Global_References/phoenix-live-view.md` — Phoenix LiveView, Channels, PubSub
-- `../../../Global_References/elixir-fundamentals.md` — Elixir Fundamentals
-- `../../../Global_References/elixir-advanced.md` — Advanced Elixir Patterns
-- `../../../Global_References/elixir-deployment.md` — Elixir Deployment Guide
+- `../../../../Global_References/Software_Engineering_and_Other/otp-supervision.md` — Supervision trees, GenServer, Task, Agent
+- `../../../../Global_References/Software_Engineering_and_Other/phoenix-live-view.md` — Phoenix LiveView, Channels, PubSub
+- `../../../../Global_References/Software_Engineering_and_Other/elixir-fundamentals.md` — Elixir Fundamentals
+- `../../../../Global_References/Software_Engineering_and_Other/elixir-advanced.md` — Advanced Elixir Patterns
+- `../../../../Global_References/Software_Engineering_and_Other/elixir-deployment.md` — Elixir Deployment Guide
 
 ## Implementation Patterns
 

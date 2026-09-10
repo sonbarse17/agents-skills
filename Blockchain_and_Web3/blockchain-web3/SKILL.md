@@ -483,16 +483,16 @@ function handleError(error: unknown) {
 15. Gas estimation should include 10-20% buffer to prevent out-of-gas errors
 
 ## References
-  - ../../../Global_References/blockchain-web3-advanced.md — Blockchain Web3 Advanced Topics
-  - ../../../Global_References/blockchain-web3-fundamentals.md — Blockchain Web3 Fundamentals
-  - ../../../Global_References/cross-chain-dapp-patterns.md — Cross-Chain dApp Patterns
-  - ../../../Global_References/dapp-architecture.md — dApp Architecture
-  - ../../../Global_References/ethers-viem-wagmi.md — ethers.js, viem & wagmi
-  - ../../../Global_References/gas-optimization-management.md — Gas Optimization & Management
-  - ../../../Global_References/providers-rpc.md — Providers & RPC
-  - ../../../Global_References/wallet-integration.md — Wallet Integration
-  - ../../../Global_References/web3-hooks.md — Web3 React Hooks
-  - ../../../Global_References/web3-react-patterns.md — Web3 React Integration
+  - ../../Global_References/Blockchain_and_Web3/blockchain-web3-advanced.md — Blockchain Web3 Advanced Topics
+  - ../../Global_References/Blockchain_and_Web3/blockchain-web3-fundamentals.md — Blockchain Web3 Fundamentals
+  - ../../Global_References/Blockchain_and_Web3/cross-chain-dapp-patterns.md — Cross-Chain dApp Patterns
+  - ../../Global_References/Blockchain_and_Web3/dapp-architecture.md — dApp Architecture
+  - ../../Global_References/Blockchain_and_Web3/ethers-viem-wagmi.md — ethers.js, viem & wagmi
+  - ../../Global_References/Blockchain_and_Web3/gas-optimization-management.md — Gas Optimization & Management
+  - ../../Global_References/Blockchain_and_Web3/providers-rpc.md — Providers & RPC
+  - ../../Global_References/Blockchain_and_Web3/wallet-integration.md — Wallet Integration
+  - ../../Global_References/Blockchain_and_Web3/web3-hooks.md — Web3 React Hooks
+  - ../../Global_References/Blockchain_and_Web3/web3-react-patterns.md — Web3 React Integration
   - references/account-abstraction-web3.md — Account Abstraction for Web3 Frontends
   - references/web3-error-handling.md — Web3 Error Handling Patterns
   - references/multicall-batching.md — Multicall & RPC Batching

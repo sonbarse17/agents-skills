@@ -577,13 +577,13 @@ monitored. Continuous improvement from retros.
 - Rules apply equally to all team members regardless of seniority
 
 ## References
-  - ../../../Global_References/branch-strategy.md — Branch Strategy Reference
+  - ../../Global_References/Product_and_Business/branch-strategy.md — Branch Strategy Reference
   - ../../../Global_References/[code-review](../../ci-cd/common/other/code-review/SKILL.md)-protocol.md — Code Review Protocol Reference
-  - ../../../Global_References/communication-protocol.md — Communication Protocol Reference
-  - ../../../Global_References/team-rules_conflict-resolution.md — Conflict Resolution
-  - ../../../Global_References/team-rules-advanced.md — Team Rules Advanced Topics
-  - ../../../Global_References/team-rules-fundamentals.md — Team Rules Fundamentals
-  - ../../../Global_References/working-agreements.md — Working Agreements
+  - ../../Global_References/Product_and_Business/communication-protocol.md — Communication Protocol Reference
+  - ../../Global_References/Product_and_Business/team-rules_conflict-resolution.md — Conflict Resolution
+  - ../../Global_References/Product_and_Business/team-rules-advanced.md — Team Rules Advanced Topics
+  - ../../Global_References/Product_and_Business/team-rules-fundamentals.md — Team Rules Fundamentals
+  - ../../Global_References/Product_and_Business/working-agreements.md — Working Agreements
 ## Handoff
 
 Hand off to `management/pm/SKILL.md` for sprint planning and estimation ceremonies. Hand off to `management/qc/SKILL.md` for quality gates integration in CI pipeline.

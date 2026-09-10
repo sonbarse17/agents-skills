@@ -510,12 +510,12 @@ export const useAuthStore = defineStore('auth', () => {
 - Components under 200 lines. Split early.
 
 ## References
-  - ../../../Global_References/composition-api.md
-  - ../../../Global_References/folder-structure.md
-  - ../../../Global_References/vue-composition.md
-  - ../../../Global_References/vue-error-handling.md
-  - ../../../Global_References/vue-optimization.md
-  - ../../../Global_References/vue-testing.md
+  - ../../../../Global_References/Software_Engineering_and_Other/composition-api.md
+  - ../../../../Global_References/Software_Engineering_and_Other/folder-structure.md
+  - ../../../../Global_References/Software_Engineering_and_Other/vue-composition.md
+  - ../../../../Global_References/Software_Engineering_and_Other/vue-error-handling.md
+  - ../../../../Global_References/Software_Engineering_and_Other/vue-optimization.md
+  - ../../../../Global_References/Software_Engineering_and_Other/vue-testing.md
 
 ## Handoff
 Next skill: [vue-nuxt](../../../Frontend/frameworks/nuxt/SKILL.md) (if using Nuxt) or frontend-testing.

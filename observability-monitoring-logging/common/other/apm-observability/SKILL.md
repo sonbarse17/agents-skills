@@ -635,11 +635,11 @@ Letting [observability](../../fundamentals/observability/SKILL.md) spend grow un
 [OpenTelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md) collector config, Prometheus rules, Grafana dashboard JSON, SLI/SLO definitions, instrumentation code snippets.
 
 ## References
-  - ../../../Global_References/apm-instrumentation.md
+  - ../../../../Global_References/observability-monitoring-logging/apm-instrumentation.md
   - ../../../Global_References/apm-[observability](../../fundamentals/observability/SKILL.md)-advanced.md
   - ../../../Global_References/apm-[observability](../../fundamentals/observability/SKILL.md)-fundamentals.md
   - ../../../Global_References/[datadog](../../../datadog/other/datadog/SKILL.md)-setup.md
-  - ../../../Global_References/grafana-cloud.md
+  - ../../../../Global_References/observability-monitoring-logging/grafana-cloud.md
   - ../../../Global_References/[new-relic](../../../new-relic/other/new-relic/SKILL.md)-setup.md
   - ../../../Global_References/synthetic-[monitoring](../../monitoring-strategy/monitoring/SKILL.md).md
   - references/otel-sampling-guide.md

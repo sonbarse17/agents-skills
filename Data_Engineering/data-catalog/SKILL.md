@@ -498,16 +498,16 @@ Team size and metadata requirements?
 - Expose catalog via API for integration with other tools
 
 ## References
-  - ../../../Global_References/catalog-api-examples.md — Catalog API Examples
-  - ../../../Global_References/catalog-data-discovery.md — Catalog Data Discovery
-  - ../../../Global_References/catalog-governance.md — Catalog Governance
-  - ../../../Global_References/catalog-metadata-automation.md — Catalog Metadata Automation
-  - ../../../Global_References/catalog-platforms.md — Catalog Platforms Comparison
-  - ../../../Global_References/catalog-search-discovery.md — Catalog Search and Discovery
-  - ../../../Global_References/metadata-ingestion-patterns.md — Metadata Ingestion Patterns
-  - ../../../Global_References/metadata-management.md — Metadata Management
-  - ../../../Global_References/data-catalog-metadata-management.md — Metadata Management Deep Dive
-  - ../../../Global_References/data-catalog-search-discovery.md — Search Discovery Reference
+  - ../../Global_References/Data_Engineering/catalog-api-examples.md — Catalog API Examples
+  - ../../Global_References/Data_Engineering/catalog-data-discovery.md — Catalog Data Discovery
+  - ../../Global_References/Data_Engineering/catalog-governance.md — Catalog Governance
+  - ../../Global_References/Data_Engineering/catalog-metadata-automation.md — Catalog Metadata Automation
+  - ../../Global_References/Data_Engineering/catalog-platforms.md — Catalog Platforms Comparison
+  - ../../Global_References/Data_Engineering/catalog-search-discovery.md — Catalog Search and Discovery
+  - ../../Global_References/Data_Engineering/metadata-ingestion-patterns.md — Metadata Ingestion Patterns
+  - ../../Global_References/Data_Engineering/metadata-management.md — Metadata Management
+  - ../../Global_References/Data_Engineering/data-catalog-metadata-management.md — Metadata Management Deep Dive
+  - ../../Global_References/Data_Engineering/data-catalog-search-discovery.md — Search Discovery Reference
 ## Architecture Decision Trees
 
 ```

@@ -43,11 +43,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Apex Development | `../../../Global_References/apex-development.md` | Classes, triggers, async patterns, batch processing |
-| Lightning Web Components | `../../../Global_References/lightning-web-components.md` | LWC framework, component design, events, wire service |
-| SOQL/SOSL | `../../../Global_References/soql-sosl.md` | Query optimization, relationships, governor limits |
-| Integration Patterns | `../../../Global_References/salesforce-developer_integration-patterns.md` | REST/SOAP APIs, platform events, external services |
-| Deployment & DevOps | `../../../Global_References/deployment-devops.md` | Salesforce DX, CI/CD, scratch orgs, metadata API |
+| Apex Development | `../../../../Global_References/Software_Engineering_and_Other/apex-development.md` | Classes, triggers, async patterns, batch processing |
+| Lightning Web Components | `../../../../Global_References/Software_Engineering_and_Other/lightning-web-components.md` | LWC framework, component design, events, wire service |
+| SOQL/SOSL | `../../../../Global_References/Software_Engineering_and_Other/soql-sosl.md` | Query optimization, relationships, governor limits |
+| Integration Patterns | `../../../../Global_References/Software_Engineering_and_Other/salesforce-developer_integration-patterns.md` | REST/SOAP APIs, platform events, external services |
+| Deployment & DevOps | `../../../../Global_References/Software_Engineering_and_Other/deployment-devops.md` | Salesforce DX, CI/CD, scratch orgs, metadata API |
 
 ## Constraints
 

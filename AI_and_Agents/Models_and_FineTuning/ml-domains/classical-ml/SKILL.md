@@ -451,14 +451,14 @@ Classical ML vs rule-based: rule-based systems are fully interpretable but don't
 - Never apply SMOTE before train/test split
 
 ## References
-  - ../../../Global_References/classical-ml-advanced.md — Classical Ml Advanced Topics
-  - ../../../Global_References/classical-ml-fundamentals.md — Classical Ml Fundamentals
-  - ../../../Global_References/imbalanced-learn.md — Handling Imbalanced Data
-  - ../../../Global_References/interpretable-ml.md — Interpretable Classical ML
-  - ../../../Global_References/supervised-learning.md — Supervised Learning Reference
-  - ../../../Global_References/unsupervised-pipeline.md — Unsupervised Learning and Pipelines
+  - ../../../../Global_References/AI_and_Agents/classical-ml-advanced.md — Classical Ml Advanced Topics
+  - ../../../../Global_References/AI_and_Agents/classical-ml-fundamentals.md — Classical Ml Fundamentals
+  - ../../../../Global_References/AI_and_Agents/imbalanced-learn.md — Handling Imbalanced Data
+  - ../../../../Global_References/AI_and_Agents/interpretable-ml.md — Interpretable Classical ML
+  - ../../../../Global_References/AI_and_Agents/supervised-learning.md — Supervised Learning Reference
+  - ../../../../Global_References/AI_and_Agents/unsupervised-pipeline.md — Unsupervised Learning and Pipelines
   - ../../../Global_References/classical-[ml-feature-engineering](../../../../Data_Engineering/feature-engineering/SKILL.md).md — Feature Engineering Reference
-  - ../../../Global_References/classical-ml-model-selection.md — Model Selection Reference
+  - ../../../../Global_References/AI_and_Agents/classical-ml-model-selection.md — Model Selection Reference
 ## Handoff
 `[ml-deep-learning](../../../Architecture/ml-foundations/deep-learning/SKILL.md)` for deep learning/neural network methods
 `[ml-feature-engineering](../../../../Data_Engineering/feature-engineering/SKILL.md)` for feature extraction and selection

@@ -56,11 +56,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Server Setup | `../../../Global_References/mcp-server-setup.md` | Installation, choosing servers, configuration |
-| Jira Operations | `../../../Global_References/jira-queries.md` | JQL syntax, issue CRUD, sprints, boards, issue linking |
-| Confluence Ops | `../../../Global_References/confluence-operations.md` | CQL search, page creation, spaces, comments |
-| Authentication | `../../../Global_References/authentication-patterns.md` | OAuth 2.0, API tokens, permission scopes |
-| Common Workflows | `../../../Global_References/common-workflows.md` | Issue triage, doc sync, sprint automation |
+| Server Setup | `../../../../Global_References/AI_and_Agents/mcp-server-setup.md` | Installation, choosing servers, configuration |
+| Jira Operations | `../../../../Global_References/AI_and_Agents/jira-queries.md` | JQL syntax, issue CRUD, sprints, boards, issue linking |
+| Confluence Ops | `../../../../Global_References/AI_and_Agents/confluence-operations.md` | CQL search, page creation, spaces, comments |
+| Authentication | `../../../../Global_References/AI_and_Agents/authentication-patterns.md` | OAuth 2.0, API tokens, permission scopes |
+| Common Workflows | `../../../../Global_References/AI_and_Agents/common-workflows.md` | Issue triage, doc sync, sprint automation |
 
 ## Quick-Start Examples
 

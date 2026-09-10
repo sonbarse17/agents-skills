@@ -245,7 +245,7 @@ requests.delete(f"{GRAPH}/applications/{blueprint_obj_id}", headers=headers)
 2. **Use User objects as sponsors** — ServicePrincipals and Groups are rejected
 3. **Handle permission propagation delays** — after admin consent, wait 30–120s; retry with backoff on 403
 4. **Include `OData-Version: 4.0` header** on every Graph request
-5. **Use Workload Identity Federation for production auth** — for local dev, use a client secret on the Blueprint (see [../../../Global_References/oauth2-token-flow.md](../../../Global_References/oauth2-token-flow.md))
+5. **Use Workload Identity Federation for production auth** — for local dev, use a client secret on the Blueprint (see [../../../Global_References/Software_Engineering_and_Other/oauth2-token-flow.md](../../../Global_References/Software_Engineering_and_Other/oauth2-token-flow.md))
 6. **Set `identifierUris` on Blueprint** before using OAuth2 scoping (`api://{app-id}`)
 7. **Never use Azure CLI tokens** for API calls — they contain `Directory.AccessAsUser.All` which is hard-rejected
 8. **Check for existing resources** before creating — implement idempotent provisioning
@@ -254,9 +254,9 @@ requests.delete(f"{GRAPH}/applications/{blueprint_obj_id}", headers=headers)
 
 | File | Contents |
 |------|----------|
-| [../../../Global_References/oauth2-token-flow.md](../../../Global_References/oauth2-token-flow.md) | Production (Managed Identity + WIF) and local dev (client secret) token flows |
-| [../../../Global_References/known-limitations.md](../../../Global_References/known-limitations.md) | 29 known issues organized by category (from official preview known-issues page) |
-| [../../../Global_References/sdk-sidecar.md](../../../Global_References/sdk-sidecar.md) | Microsoft Entra SDK for AgentID — endpoints, 3P agent patterns, [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)/K8s deployment, security |
+| [../../../Global_References/Software_Engineering_and_Other/oauth2-token-flow.md](../../../Global_References/Software_Engineering_and_Other/oauth2-token-flow.md) | Production (Managed Identity + WIF) and local dev (client secret) token flows |
+| [../../../Global_References/Software_Engineering_and_Other/known-limitations.md](../../../Global_References/Software_Engineering_and_Other/known-limitations.md) | 29 known issues organized by category (from official preview known-issues page) |
+| [../../../Global_References/Software_Engineering_and_Other/sdk-sidecar.md](../../../Global_References/Software_Engineering_and_Other/sdk-sidecar.md) | Microsoft Entra SDK for AgentID — endpoints, 3P agent patterns, [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)/K8s deployment, security |
 
 ### External Links
 

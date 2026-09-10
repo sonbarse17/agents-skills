@@ -638,12 +638,12 @@ No deprecation policy or sunset headers. Consumers get no warning before breakin
 OpenAPI 3.x YAML/JSON specification, Spectral lint config, CI workflow YAML for docs pipeline.
 
 ## References
-  - ../../../Global_References/api-documentation-advanced.md
-  - ../../../Global_References/api-documentation-fundamentals.md
-  - ../../../Global_References/code-first.md
-  - ../../../Global_References/design-first.md
-  - ../../../Global_References/documentation-tools.md
-  - ../../../Global_References/openapi-basics.md
+  - ../../../../Global_References/Software_Engineering_and_Other/api-documentation-advanced.md
+  - ../../../../Global_References/Software_Engineering_and_Other/api-documentation-fundamentals.md
+  - ../../../../Global_References/Software_Engineering_and_Other/code-first.md
+  - ../../../../Global_References/Software_Engineering_and_Other/design-first.md
+  - ../../../../Global_References/Software_Engineering_and_Other/documentation-tools.md
+  - ../../../../Global_References/Software_Engineering_and_Other/openapi-basics.md
   - references/api-changelog-guide.md
 
 ## Handoff

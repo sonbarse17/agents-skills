@@ -593,12 +593,12 @@ Use start message events and intermediate message events to model event-driven c
 Use data stores visible to multiple pools when participants share data. Define read/write permissions per pool. Use data associations to show which data is read or written by each activity. This pattern helps identify data ownership and access control requirements before implementation.
 
 ## References
-  - ../../../Global_References/bpmn-elements.md — BPMN 2.0 Elements
-  - ../../../Global_References/bpmn-patterns.md — BPMN Patterns
-  - ../../../Global_References/process-automation.md — Process Automation
-  - ../../../Global_References/process-modeling.md — Process Modeling
-  - ../../../Global_References/bpmn-modeling-advanced.md — Bpmn Modeling Advanced Topics
-  - ../../../Global_References/bpmn-modeling-fundamentals.md — Bpmn Modeling Fundamentals
+  - ../../../../Global_References/AI_and_Agents/bpmn-elements.md — BPMN 2.0 Elements
+  - ../../../../Global_References/AI_and_Agents/bpmn-patterns.md — BPMN Patterns
+  - ../../../../Global_References/AI_and_Agents/process-automation.md — Process Automation
+  - ../../../../Global_References/AI_and_Agents/process-modeling.md — Process Modeling
+  - ../../../../Global_References/AI_and_Agents/bpmn-modeling-advanced.md — Bpmn Modeling Advanced Topics
+  - ../../../../Global_References/AI_and_Agents/bpmn-modeling-fundamentals.md — Bpmn Modeling Fundamentals
   - references/dmn-decision-tables.md — DMN Decision Tables
   - references/process-discovery-guide.md — Process Discovery Guide
   - references/bpmn-automation-patterns.md — BPMN to Automation Patterns

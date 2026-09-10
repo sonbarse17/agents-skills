@@ -441,13 +441,13 @@ kotlin {
 ```
 
 ## References
-  - ../../../Global_References/kmm-concurrency.md — KMM Concurrency — Coroutines, Flows, and Threading
-  - ../../../Global_References/kmm-networking.md — KMM Networking — Ktor, SQLDelight, Serialization
-  - ../../../Global_References/kmp-compose.md — Compose Multiplatform
-  - ../../../Global_References/kmp-structure.md — KMP Module Structure
-  - ../../../Global_References/kotlin-multiplatform-advanced.md — Kotlin Multiplatform Advanced Topics
-  - ../../../Global_References/kotlin-multiplatform-fundamentals.md — Kotlin Multiplatform Fundamentals
-  - ../../../Global_References/platform-specific.md — Platform-Specific Implementations
+  - ../../../../Global_References/Software_Engineering_and_Other/kmm-concurrency.md — KMM Concurrency — Coroutines, Flows, and Threading
+  - ../../../../Global_References/Software_Engineering_and_Other/kmm-networking.md — KMM Networking — Ktor, SQLDelight, Serialization
+  - ../../../../Global_References/Software_Engineering_and_Other/kmp-compose.md — Compose Multiplatform
+  - ../../../../Global_References/Software_Engineering_and_Other/kmp-structure.md — KMP Module Structure
+  - ../../../../Global_References/Software_Engineering_and_Other/kotlin-multiplatform-advanced.md — Kotlin Multiplatform Advanced Topics
+  - ../../../../Global_References/Software_Engineering_and_Other/kotlin-multiplatform-fundamentals.md — Kotlin Multiplatform Fundamentals
+  - ../../../../Global_References/Software_Engineering_and_Other/platform-specific.md — Platform-Specific Implementations
 ## Handoff
 Hand off to platform-specific iOS or [Android](../../../Mobile/android/SKILL.md) skills when expect/actual implementations need deep platform API knowledge.
 ## Implementation Patterns

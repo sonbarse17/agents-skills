@@ -480,16 +480,16 @@ Use `httpx.AsyncClient` with ASGI transport for integration tests. Use `pytest-a
 - Type-annotate all function parameters and return types.
 
 ## References
-  - ../../../Global_References/dependency-injection-patterns.md — FastAPI Dependency Injection Patterns
-  - ../../../Global_References/fastapi-advanced.md — FastAPI Advanced Patterns
-  - ../../../Global_References/fastapi-background.md — FastAPI Background Tasks
-  - ../../../Global_References/fastapi-dependency-injection.md — FastAPI Dependency Injection
-  - ../../../Global_References/fastapi-routing-patterns.md — FastAPI Routing Patterns
-  - ../../../Global_References/fastapi-structure.md — FastAPI Project Structure
-  - ../../../Global_References/fastapi-testing.md — FastAPI Testing
-  - ../../../Global_References/fastapi-websocket.md — FastAPI WebSocket and Real-Time Patterns
-  - ../../../Global_References/middleware-background.md — Middleware, Background Tasks, and WebSockets in FastAPI
-  - ../../../Global_References/testing-debugging.md — Testing and Debugging FastAPI Applications
+  - ../../../../Global_References/Software_Engineering_and_Other/dependency-injection-patterns.md — FastAPI Dependency Injection Patterns
+  - ../../../../Global_References/Software_Engineering_and_Other/fastapi-advanced.md — FastAPI Advanced Patterns
+  - ../../../../Global_References/Software_Engineering_and_Other/fastapi-background.md — FastAPI Background Tasks
+  - ../../../../Global_References/Software_Engineering_and_Other/fastapi-dependency-injection.md — FastAPI Dependency Injection
+  - ../../../../Global_References/Software_Engineering_and_Other/fastapi-routing-patterns.md — FastAPI Routing Patterns
+  - ../../../../Global_References/Software_Engineering_and_Other/fastapi-structure.md — FastAPI Project Structure
+  - ../../../../Global_References/Software_Engineering_and_Other/fastapi-testing.md — FastAPI Testing
+  - ../../../../Global_References/Software_Engineering_and_Other/fastapi-websocket.md — FastAPI WebSocket and Real-Time Patterns
+  - ../../../../Global_References/Software_Engineering_and_Other/middleware-background.md — Middleware, Background Tasks, and WebSockets in FastAPI
+  - ../../../../Global_References/Software_Engineering_and_Other/testing-debugging.md — Testing and Debugging FastAPI Applications
 ## Handoff
 No artifact produced.
 Next skill: backend-testing — test FastAPI with pytest.

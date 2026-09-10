@@ -36,9 +36,9 @@ provider from a demo. The examples use a fictional `examplecloud` provider
 and the [Plugin Framework](https://developer.hashicorp.com/terraform/plugin/framework/providers).
 
 **References** (load when needed):
-- `../../../Global_References/credential-chain.md` — complete, compilable credential chain
+- `../../../../Global_References/infrastructure-as-code/credential-chain.md` — complete, compilable credential chain
   implementation (providers, chain, file profiles, Configure wiring, tests)
-- `../../../Global_References/case-studies.md` — how the AWS provider (`aws-sdk-go-base`)
+- `../../../../Global_References/infrastructure-as-code/case-studies.md` — how the AWS provider (`aws-sdk-go-base`)
   and smaller providers structure real credential chains
 
 ---
@@ -151,7 +151,7 @@ cleanly — so `Configure` can tell "nothing supplied" from "something
 supplied but broken" with one check. The full implementation — the chain
 loop, the static, environment, and file providers, and the
 `NewDefaultChain` constructor that owns the canonical order — lives in
-`../../../Global_References/credential-chain.md`.
+`../../../../Global_References/infrastructure-as-code/credential-chain.md`.
 
 ## Wiring the Chain into Configure
 
@@ -285,7 +285,7 @@ tests that matter:
 - **Redaction**: `fmt.Sprintf("%v")` and `%+v` of a `Credentials` value
   never contain the secret.
 
-Full test examples are in `../../../Global_References/credential-chain.md`.
+Full test examples are in `../../../../Global_References/infrastructure-as-code/credential-chain.md`.
 
 ## Checklist
 

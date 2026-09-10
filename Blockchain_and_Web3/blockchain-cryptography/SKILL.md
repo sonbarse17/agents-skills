@@ -643,16 +643,16 @@ Key concern: Harvest now, decrypt later attacks
 ```
 
 ## References
-- ../../../Global_References/blockchain-cryptography-advanced.md — Blockchain Cryptography Advanced Topics
-- ../../../Global_References/blockchain-cryptography-fundamentals.md — Blockchain Cryptography Fundamentals
-- ../../../Global_References/elliptic-curve-crypto.md — Elliptic Curve Cryptography for Blockchain
-- ../../../Global_References/hash-functions.md — Hash Functions in Blockchain
-- ../../../Global_References/key-derivation-management.md — Key Derivation and Management
-- ../../../Global_References/merkle-trees.md — Merkle Trees in Blockchain
-- ../../../Global_References/pairing-based-cryptography.md — Pairing-Based Cryptography
-- ../../../Global_References/post-quantum-blockchain-crypto.md — Post-Quantum Blockchain Cryptography
-- ../../../Global_References/signature-schemes.md — Signature Schemes in Blockchain
-- ../../../Global_References/zero-knowledge-deep.md — Zero-Knowledge Proofs in Blockchain
+- ../../Global_References/Blockchain_and_Web3/blockchain-cryptography-advanced.md — Blockchain Cryptography Advanced Topics
+- ../../Global_References/Blockchain_and_Web3/blockchain-cryptography-fundamentals.md — Blockchain Cryptography Fundamentals
+- ../../Global_References/Blockchain_and_Web3/elliptic-curve-crypto.md — Elliptic Curve Cryptography for Blockchain
+- ../../Global_References/Blockchain_and_Web3/hash-functions.md — Hash Functions in Blockchain
+- ../../Global_References/Blockchain_and_Web3/key-derivation-management.md — Key Derivation and Management
+- ../../Global_References/Blockchain_and_Web3/merkle-trees.md — Merkle Trees in Blockchain
+- ../../Global_References/Blockchain_and_Web3/pairing-based-cryptography.md — Pairing-Based Cryptography
+- ../../Global_References/Blockchain_and_Web3/post-quantum-blockchain-crypto.md — Post-Quantum Blockchain Cryptography
+- ../../Global_References/Blockchain_and_Web3/signature-schemes.md — Signature Schemes in Blockchain
+- ../../Global_References/Blockchain_and_Web3/zero-knowledge-deep.md — Zero-Knowledge Proofs in Blockchain
 
 ## Handoff
 blockchain-cryptography → [blockchain-core](../blockchain-core/SKILL.md) (for protocol-level crypto integration)

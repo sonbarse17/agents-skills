@@ -168,8 +168,8 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Logging | `../../../Global_References/structured-logging.md` | Pino, JSON logging |
-| Metrics | `../../../Global_References/prometheus-metrics.md` | Counter, Histogram, Gauge |
+| Logging | `../../../../Global_References/observability-monitoring-logging/structured-logging.md` | Pino, JSON logging |
+| Metrics | `../../../../Global_References/observability-monitoring-logging/prometheus-metrics.md` | Counter, Histogram, Gauge |
 | Tracing | `../../../Global_References/[opentelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md).md` | [OpenTelemetry](../../../opentelemetry/other/opentelemetry/SKILL.md), spans |
 | [Alerting](../../alerting/alerting/SKILL.md) | `../../../Global_References/[alerting](../../alerting/alerting/SKILL.md)-rules.md` | Prometheus alerts |
 | [Dashboards](../../dashboard-design/dashboards/SKILL.md) | `../../../Global_References/[dashboards](../../dashboard-design/dashboards/SKILL.md).md` | RED/USE method, Grafana |

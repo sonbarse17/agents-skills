@@ -56,11 +56,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| EARS Syntax | `../../../Global_References/ears-syntax.md` | Writing functional requirements |
-| Interview Questions | `../../../Global_References/feature-forge_interview-questions.md` | Gathering requirements |
-| Specification Template | `../../../Global_References/feature-forge_specification-template.md` | Writing final spec document |
-| Acceptance Criteria | `../../../Global_References/feature-forge_acceptance-criteria.md` | Given/When/Then format |
-| Pre-Discovery Subagents | `../../../Global_References/pre-discovery-subagents.md` | Multi-domain features needing front-loaded context |
+| EARS Syntax | `../../../../Global_References/cloud/ears-syntax.md` | Writing functional requirements |
+| Interview Questions | `../../../../Global_References/cloud/feature-forge_interview-questions.md` | Gathering requirements |
+| Specification Template | `../../../../Global_References/cloud/feature-forge_specification-template.md` | Writing final spec document |
+| Acceptance Criteria | `../../../../Global_References/cloud/feature-forge_acceptance-criteria.md` | Given/When/Then format |
+| Pre-Discovery Subagents | `../../../../Global_References/cloud/pre-discovery-subagents.md` | Multi-domain features needing front-loaded context |
 
 ## Constraints
 
@@ -92,14 +92,14 @@ The final specification must include:
 5. Error handling table
 6. Implementation TODO checklist
 
-**Inline EARS format examples** (load `../../../Global_References/ears-syntax.md` for full syntax):
+**Inline EARS format examples** (load `../../../../Global_References/cloud/ears-syntax.md` for full syntax):
 ```
 When <trigger>, the <system> shall <response>.
 Where <feature> is active, the <system> shall <behaviour>.
 The <system> shall <action> within <measure>.
 ```
 
-**Inline acceptance criteria example** (load `../../../Global_References/feature-forge_acceptance-criteria.md` for full format):
+**Inline acceptance criteria example** (load `../../../../Global_References/cloud/feature-forge_acceptance-criteria.md` for full format):
 ```
 Given a registered user is on the login page,
 When they submit valid credentials,

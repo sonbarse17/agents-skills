@@ -667,8 +667,8 @@ Key metrics to alert on:
 - No [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging — compliance violations go undetected.
 
 ## References
-  - ../../../Global_References/nomad-advanced.md — Nomad Advanced Topics
-  - ../../../Global_References/nomad-fundamentals.md — Nomad Fundamentals
+  - ../../../../Global_References/containers-orchestration/nomad-advanced.md — Nomad Advanced Topics
+  - ../../../../Global_References/containers-orchestration/nomad-fundamentals.md — Nomad Fundamentals
   - references/nomad-cluster-setup.md — Nomad Cluster Configuration
   - references/nomad-job-spec.md — Nomad Job Specification Reference
   - references/nomad-consul-connect.md — Consul Connect with Nomad

@@ -57,8 +57,8 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Query Optimization | `../../../Global_References/database-optimizer_query-optimization.md` | Analyzing slow queries, execution plans |
-| Index Strategies | `../../../Global_References/index-strategies.md` | Designing indexes, covering indexes |
+| Query Optimization | `../../../../Global_References/Software_Engineering_and_Other/database-optimizer_query-optimization.md` | Analyzing slow queries, execution plans |
+| Index Strategies | `../../../../Global_References/Software_Engineering_and_Other/index-strategies.md` | Designing indexes, covering indexes |
 | [PostgreSQL](../../relational/postgresql/SKILL.md) Tuning | `../../../Global_References/[postgresql](../../relational/postgresql/SKILL.md)-tuning.md` | [PostgreSQL](../../relational/postgresql/SKILL.md)-specific optimizations |
 | [MySQL](../../relational/mysql/SKILL.md) Tuning | `../../../Global_References/[mysql](../../relational/mysql/SKILL.md)-tuning.md` | [MySQL](../../relational/mysql/SKILL.md)-specific optimizations |
 | [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) & Analysis | `../../../Global_References/[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-analysis.md` | Performance metrics, diagnostics |

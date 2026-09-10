@@ -264,7 +264,7 @@ with producer:
 
 | File | Contents |
 |------|----------|
-| [../../../Global_References/azure-eventhub-py_checkpointing.md](../../../../../Global_References/azure-eventhub-py_checkpointing.md) | Checkpoint store patterns, blob checkpointing, checkpoint strategies |
-| [../../../Global_References/partitions.md](../../../../../Global_References/partitions.md) | Partition management, load balancing, starting positions |
+| [../../../../../Global_References/cloud/azure-eventhub-py_checkpointing.md](../../../../../Global_References/cloud/azure-eventhub-py_checkpointing.md) | Checkpoint store patterns, blob checkpointing, checkpoint strategies |
+| [../../../../../Global_References/cloud/partitions.md](../../../../../Global_References/cloud/partitions.md) | Partition management, load balancing, starting positions |
 | [scripts/setup_consumer.py](scripts/setup_consumer.py) | CLI for Event Hub info, consumer setup, and event sending/receiving |
 

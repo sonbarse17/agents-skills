@@ -392,16 +392,16 @@ Relying on manual testing for regression sign-off. Manual regression is slow, er
 20. Flaky tests are quarantined within 24 hours, fixed within 5 days, or deleted
 
 ## References
-- ../../../Global_References/automation-maintenance.md — Test Automation Maintenance
-- ../../../Global_References/flaky-test-management.md — Flaky Test Management
-- ../../../Global_References/regression-metrics.md — Regression Metrics
-- ../../../Global_References/regression-suites.md — Regression Suite Design
-- ../../../Global_References/regression-testing-advanced.md — Regression Testing Advanced Topics
-- ../../../Global_References/regression-testing-architecture.md — Regression Testing Architecture and System Design
-- ../../../Global_References/regression-testing-fundamentals.md — Regression Testing Fundamentals
-- ../../../Global_References/regression-testing-strategy.md — Regression Testing Strategy and Decision Frameworks
-- ../../../Global_References/risk-based-selection.md — Risk-Based Test Selection
-- ../../../Global_References/test-selection.md — Regression Test Selection
+- ../../../../Global_References/Software_Engineering_and_Other/automation-maintenance.md — Test Automation Maintenance
+- ../../../../Global_References/Software_Engineering_and_Other/flaky-test-management.md — Flaky Test Management
+- ../../../../Global_References/Software_Engineering_and_Other/regression-metrics.md — Regression Metrics
+- ../../../../Global_References/Software_Engineering_and_Other/regression-suites.md — Regression Suite Design
+- ../../../../Global_References/Software_Engineering_and_Other/regression-testing-advanced.md — Regression Testing Advanced Topics
+- ../../../../Global_References/Software_Engineering_and_Other/regression-testing-architecture.md — Regression Testing Architecture and System Design
+- ../../../../Global_References/Software_Engineering_and_Other/regression-testing-fundamentals.md — Regression Testing Fundamentals
+- ../../../../Global_References/Software_Engineering_and_Other/regression-testing-strategy.md — Regression Testing Strategy and Decision Frameworks
+- ../../../../Global_References/Software_Engineering_and_Other/risk-based-selection.md — Risk-Based Test Selection
+- ../../../../Global_References/Software_Engineering_and_Other/test-selection.md — Regression Test Selection
 
 ## Handoff
 After regression testing, hand off to:

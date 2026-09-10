@@ -404,7 +404,7 @@ tags = ["password", "database", "acme-internal"]
    [allowlist]
    commits = ["[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)-sha-here"]
    ```
-4. Consult `../../../Global_References/false_positives.md` for common patterns
+4. Consult `../../../Global_References/Security/false_positives.md` for common patterns
 
 ### Issue: Performance Issues on Large Repositories
 
@@ -439,7 +439,7 @@ tags = ["password", "database", "acme-internal"]
    - BFG Repo-Cleaner: `bfg --delete-files credentials.json`
 3. Force-push cleaned history: `git push --force`
 4. Notify all contributors to rebase/re-clone
-5. See `../../../Global_References/remediation_guide.md` for detailed procedures
+5. See `../../../Global_References/Security/remediation_guide.md` for detailed procedures
 6. Document [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) in security [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) log
 
 ### Issue: Custom Secret Patterns Not Detected

@@ -605,6 +605,6 @@ Data characteristics?
 - Diagnose residuals — a good model has white-noise residuals
 
 ## References
-  - ../../../Global_References/statistical-analysis-fundamentals.md — Statistical Analysis Fundamentals
-  - ../../../Global_References/statistical-analysis-advanced.md — Statistical Analysis Advanced Topics
+  - ../../Global_References/Data_Engineering/statistical-analysis-fundamentals.md — Statistical Analysis Fundamentals
+  - ../../Global_References/Data_Engineering/statistical-analysis-advanced.md — Statistical Analysis Advanced Topics
 

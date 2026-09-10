@@ -26,26 +26,26 @@ function walkMd(dir, out) {
 const allMd = walkMd(REPO_ROOT, []);
 let filesChanged = 0, linksFixed = 0, alreadyCorrect = 0;
 
-// Matches a markdown link path ending in Global_References/<filename>, where
-// filename is anything up to the closing paren (old flat layout, one level
-// under Global_References with no further subfolder).
-const linkRe = /\]\(([^)\s]*Global_References\/([^\/)\s]+\.(?:md|ts|json|bicep|yaml)))\)/g;
+// Matches the bare relative path fragment "(../)*Global_References/<filename>"
+// regardless of surrounding syntax - markdown link, backtick code span, or
+// plain prose all contain this same literal substring, so replacing just the
+// path fragment (not the wrapper) is style-agnostic and safe.
+const pathRe = /((?:\.\.\/)*|\.\/)?Global_References\/([^\/)\s`\]]+\.(?:md|ts|json|bicep|yaml))/g;
 
 for (const f of allMd) {
   const rel = path.relative(REPO_ROOT, f).split(path.sep).join('/');
-  if (rel.startsWith('Global_References/')) continue; // don't rewrite files inside GR referencing siblings differently; handled generically below anyway
   let content = fs.readFileSync(f, 'utf-8');
   const fileDirPosix = path.dirname(rel);
   let changed = false;
-  content = content.replace(linkRe, (full, oldLinkPath, filename) => {
+  content = content.replace(pathRe, (full, prefix, filename) => {
     const newPath = nameToNew.get(filename);
     if (!newPath) return full; // not one of ours (already fixed, or genuinely missing - leave alone)
     let relPath = path.posix.relative(fileDirPosix, newPath);
     if (!relPath.startsWith('.')) relPath = './' + relPath;
-    if (relPath === oldLinkPath) { alreadyCorrect++; return full; }
+    if (relPath === full) { alreadyCorrect++; return full; }
     changed = true;
     linksFixed++;
-    return `](${relPath})`;
+    return relPath;
   });
   if (changed) {
     filesChanged++;

@@ -47,7 +47,7 @@ Security-focused full-stack developer implementing features across the entire ap
 1. **Gather requirements** - Understand feature scope and acceptance criteria
 2. **Design solution** - Consider all three perspectives (Frontend/Backend/Security)
 3. **Write technical design** - Document approach in `specs/{feature}_design.md`
-4. **Security checkpoint** - Run through `../../../Global_References/security-checklist.md` before writing any code; confirm auth, authz, validation, and output encoding are addressed
+4. **Security checkpoint** - Run through `../../../../Global_References/AI_and_Agents/security-checklist.md` before writing any code; confirm auth, authz, validation, and output encoding are addressed
 5. **Implement** - Build incrementally, testing each component as you go
 6. **Hand off** - Pass to Test Master for QA, DevOps for deployment
 
@@ -57,16 +57,16 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Design Template | `../../../Global_References/design-template.md` | Starting feature, three-perspective design |
-| Security Checklist | `../../../Global_References/security-checklist.md` | Every feature - auth, authz, validation |
-| Error Handling | `../../../Global_References/fullstack-guardian_error-handling.md` | Implementing error flows |
-| Common Patterns | `../../../Global_References/common-patterns.md` | CRUD, forms, API flows |
-| Backend Patterns | `../../../Global_References/backend-patterns.md` | [Microservices](../../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md), queues, [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md), [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) |
-| Frontend Patterns | `../../../Global_References/frontend-patterns.md` | Real-time, optimization, accessibility, testing |
-| Integration Patterns | `../../../Global_References/integration-patterns.md` | Type sharing, deployment, architecture decisions |
-| API Design | `../../../Global_References/api-design-standards.md` | REST/GraphQL APIs, versioning, CORS, validation |
-| Architecture Decisions | `../../../Global_References/architecture-decisions.md` | Tech selection, monolith vs [microservices](../../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md) |
-| Deliverables Checklist | `../../../Global_References/deliverables-checklist.md` | Completing features, preparing handoff |
+| Design Template | `../../../../Global_References/AI_and_Agents/design-template.md` | Starting feature, three-perspective design |
+| Security Checklist | `../../../../Global_References/AI_and_Agents/security-checklist.md` | Every feature - auth, authz, validation |
+| Error Handling | `../../../../Global_References/AI_and_Agents/fullstack-guardian_error-handling.md` | Implementing error flows |
+| Common Patterns | `../../../../Global_References/AI_and_Agents/common-patterns.md` | CRUD, forms, API flows |
+| Backend Patterns | `../../../../Global_References/AI_and_Agents/backend-patterns.md` | [Microservices](../../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md), queues, [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md), [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) |
+| Frontend Patterns | `../../../../Global_References/AI_and_Agents/frontend-patterns.md` | Real-time, optimization, accessibility, testing |
+| Integration Patterns | `../../../../Global_References/AI_and_Agents/integration-patterns.md` | Type sharing, deployment, architecture decisions |
+| API Design | `../../../../Global_References/AI_and_Agents/api-design-standards.md` | REST/GraphQL APIs, versioning, CORS, validation |
+| Architecture Decisions | `../../../../Global_References/AI_and_Agents/architecture-decisions.md` | Tech selection, monolith vs [microservices](../../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md) |
+| Deliverables Checklist | `../../../../Global_References/AI_and_Agents/deliverables-checklist.md` | Completing features, preparing handoff |
 
 ## Constraints
 

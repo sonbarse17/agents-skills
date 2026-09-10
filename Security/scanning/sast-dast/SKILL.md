@@ -524,14 +524,14 @@ Default scan speeds can overwhelm staging environments. Configure delays: `-t` f
 - Container image scanning is handled by a separate skill
 
 ## References
-  - ../../../Global_References/dast-automation.md — DAST Automation
-  - ../../../Global_References/dast-tools.md — DAST Tools
-  - ../../../Global_References/sast-dast-advanced.md — Sast Dast Advanced Topics
-  - ../../../Global_References/sast-dast-fundamentals.md — Sast Dast Fundamentals
-  - ../../../Global_References/sast-rules-customization.md — SAST Rule Customization
-  - ../../../Global_References/sast-tools.md — SAST Tools
-  - ../../../Global_References/sast-tool-selection-integration.md — SAST tool selection and CI integration guide
-  - ../../../Global_References/dast-scoping-execution.md — DAST scoping, execution, and reporting patterns
+  - ../../../Global_References/Security/dast-automation.md — DAST Automation
+  - ../../../Global_References/Security/dast-tools.md — DAST Tools
+  - ../../../Global_References/Security/sast-dast-advanced.md — Sast Dast Advanced Topics
+  - ../../../Global_References/Security/sast-dast-fundamentals.md — Sast Dast Fundamentals
+  - ../../../Global_References/Security/sast-rules-customization.md — SAST Rule Customization
+  - ../../../Global_References/Security/sast-tools.md — SAST Tools
+  - ../../../Global_References/Security/sast-tool-selection-integration.md — SAST tool selection and CI integration guide
+  - ../../../Global_References/Security/dast-scoping-execution.md — DAST scoping, execution, and reporting patterns
 ## Handoff
 `[security-api-security](../../app-security/api-security/SKILL.md)` for API-specific scanning and protection rules
 `devops-ci-cd` for pipeline integration and deployment gates

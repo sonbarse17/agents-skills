@@ -546,13 +546,13 @@ Setting max-instances too high risks cost spikes under load. Setting min-instanc
 - Secret Manager for secrets.
 
 ## References
-- ../../../Global_References/gcp-advanced.md -- Gcp Advanced Topics
+- ../../../../Global_References/cloud/gcp-advanced.md -- Gcp Advanced Topics
 - ../../../Global_References/[gcp-compute](../../compute/gcp-compute/SKILL.md).md -- GCP Compute
-- ../../../Global_References/gcp-data-ai.md -- GCP Data and AI
-- ../../../Global_References/gcp-devops.md -- Google Cloud DevOps
-- ../../../Global_References/gcp-fundamentals.md -- Gcp Fundamentals
+- ../../../../Global_References/cloud/gcp-data-ai.md -- GCP Data and AI
+- ../../../../Global_References/cloud/gcp-devops.md -- Google Cloud DevOps
+- ../../../../Global_References/cloud/gcp-fundamentals.md -- Gcp Fundamentals
 - ../../../Global_References/[gcp-gke](../../../../containers-orchestration/gke/cluster-management/gcp-gke/SKILL.md).md -- GCP GKE
-- ../../../Global_References/gcp-infrastructure.md -- Google Cloud Infrastructure
+- ../../../../Global_References/cloud/gcp-infrastructure.md -- Google Cloud Infrastructure
 - ../../../Global_References/gcp-[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md).md -- GCP [Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)
 
 ## Handoff

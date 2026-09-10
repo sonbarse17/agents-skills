@@ -805,12 +805,12 @@ Future<void> downloadFile(String url, String savePath) async {
 - **One-size-fits-all base URL**: Dev/staging/prod configs leak to production. Use build configs
 
 ## References
-- `../../../Global_References/caching.md` — Mobile Caching
-- `../../../Global_References/graphql-mobile.md` — Mobile GraphQL Integration
-- `../../../Global_References/mobile-networking-patterns.md` — Mobile Networking Patterns
-- `../../../Global_References/network-layer-architecture.md` — Cross-Platform Network Layer Architecture
-- `../../../Global_References/offline-first.md` — Offline-First Architecture
-- `../../../Global_References/rest-client.md` — REST Client Setup
+- `../../Global_References/Mobile/caching.md` — Mobile Caching
+- `../../Global_References/Mobile/graphql-mobile.md` — Mobile GraphQL Integration
+- `../../Global_References/Mobile/mobile-networking-patterns.md` — Mobile Networking Patterns
+- `../../Global_References/Mobile/network-layer-architecture.md` — Cross-Platform Network Layer Architecture
+- `../../Global_References/Mobile/offline-first.md` — Offline-First Architecture
+- `../../Global_References/Mobile/rest-client.md` — REST Client Setup
 
 ## Handoff
 After networking setup, hand off to:

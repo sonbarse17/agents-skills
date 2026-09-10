@@ -621,16 +621,16 @@ contract WalletFactory {
 - **EIP-2535 diamond storage**: No collision risk, but ~5000 gas per namespace registration
 
 ## References
-- ../../../Global_References/advanced-token-standards.md — Advanced Token Standards
-- ../../../Global_References/blockchain-patterns-advanced.md — Blockchain Patterns Advanced Topics
-- ../../../Global_References/blockchain-patterns-fundamentals.md — Blockchain Patterns Fundamentals
-- ../../../Global_References/cross-chain-communication-patterns.md — Cross-Chain Communication Patterns
+- ../../Global_References/Blockchain_and_Web3/advanced-token-standards.md — Advanced Token Standards
+- ../../Global_References/Blockchain_and_Web3/blockchain-patterns-advanced.md — Blockchain Patterns Advanced Topics
+- ../../Global_References/Blockchain_and_Web3/blockchain-patterns-fundamentals.md — Blockchain Patterns Fundamentals
+- ../../Global_References/Blockchain_and_Web3/cross-chain-communication-patterns.md — Cross-Chain Communication Patterns
 - ../../../Global_References/erc-4626-[vault](../../Security/cryptography-secrets/vault/SKILL.md).md — ERC-4626 Yield-Bearing [Vault](../../Security/cryptography-secrets/vault/SKILL.md) Standard
-- ../../../Global_References/layer2-scaling-patterns.md — Layer-2 Scaling Patterns
-- ../../../Global_References/mev-and-order-flow.md — MEV & Order Flow Patterns
-- ../../../Global_References/oracle-and-bridge-patterns.md — Oracle & Bridge Patterns
-- ../../../Global_References/token-standards.md — Token Standards & Contracts
-- ../../../Global_References/upgradeable-contracts.md — Upgradeable Contract Patterns
+- ../../Global_References/Blockchain_and_Web3/layer2-scaling-patterns.md — Layer-2 Scaling Patterns
+- ../../Global_References/Blockchain_and_Web3/mev-and-order-flow.md — MEV & Order Flow Patterns
+- ../../Global_References/Blockchain_and_Web3/oracle-and-bridge-patterns.md — Oracle & Bridge Patterns
+- ../../Global_References/Blockchain_and_Web3/token-standards.md — Token Standards & Contracts
+- ../../Global_References/Blockchain_and_Web3/upgradeable-contracts.md — Upgradeable Contract Patterns
 
 ## Handoff
 blockchain-patterns → [blockchain-application](../blockchain-application/SKILL.md) (for pattern implementation in code)

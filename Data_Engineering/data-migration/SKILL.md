@@ -34,7 +34,7 @@ each individually safe, each individually undoable.
 not actually a migration — it is a scheduled outage with a script attached.**
 
 For a worked SQL walkthrough of the expand, backfill, and contract phases, read
-`../../../Global_References/expand-contract.md`.
+`../../Global_References/Data_Engineering/expand-contract.md`.
 
 ## 1. Split every migration into expand, migrate, contract
 

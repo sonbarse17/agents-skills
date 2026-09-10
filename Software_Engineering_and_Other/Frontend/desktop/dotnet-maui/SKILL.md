@@ -429,12 +429,12 @@ builder.Services.AddSingleton<IDeviceInfo, IosDeviceInfo>();
 ```
 
 ## References
-  - ../../../Global_References/dotnet-maui-advanced.md — Dotnet Maui Advanced Topics
-  - ../../../Global_References/dotnet-maui-fundamentals.md — Dotnet Maui Fundamentals
-  - ../../../Global_References/maui-architecture.md — MAUI Architecture
-  - ../../../Global_References/maui-controls.md — MAUI Controls
-  - ../../../Global_References/maui-mvvm.md — MAUI MVVM with CommunityToolkit
-  - ../../../Global_References/maui-structure.md — MAUI Project Structure
+  - ../../../../Global_References/Software_Engineering_and_Other/dotnet-maui-advanced.md — Dotnet Maui Advanced Topics
+  - ../../../../Global_References/Software_Engineering_and_Other/dotnet-maui-fundamentals.md — Dotnet Maui Fundamentals
+  - ../../../../Global_References/Software_Engineering_and_Other/maui-architecture.md — MAUI Architecture
+  - ../../../../Global_References/Software_Engineering_and_Other/maui-controls.md — MAUI Controls
+  - ../../../../Global_References/Software_Engineering_and_Other/maui-mvvm.md — MAUI MVVM with CommunityToolkit
+  - ../../../../Global_References/Software_Engineering_and_Other/maui-structure.md — MAUI Project Structure
 ## Handoff
 Hand off to iOS/[Android](../../../../Mobile/android/SKILL.md) native skills when platform handler customization requires deep UIKit or [Android](../../../../Mobile/android/SKILL.md) Views API knowledge.
 ## Implementation Patterns

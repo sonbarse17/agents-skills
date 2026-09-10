@@ -390,12 +390,12 @@ Arbitrary values should be reserved for truly one-off cases (e.g., a specific me
 
 ## References
 
-- `../../../Global_References/tailwind-css_component-patterns.md` -- Component Patterns Reference
-- `../../../Global_References/tailwind-css_configuration.md` -- Tailwind Configuration Reference
-- `../../../Global_References/tailwind-css_design-tokens.md` -- Design Tokens Reference
-- `../../../Global_References/tailwind-css_performance.md` -- Tailwind CSS Performance Reference
-- `../../../Global_References/responsive-patterns.md` -- Responsive Patterns Reference
-- `../../../Global_References/utility-first.md` -- Utility-First CSS Reference
+- `../../../../Global_References/Software_Engineering_and_Other/tailwind-css_component-patterns.md` -- Component Patterns Reference
+- `../../../../Global_References/Software_Engineering_and_Other/tailwind-css_configuration.md` -- Tailwind Configuration Reference
+- `../../../../Global_References/Software_Engineering_and_Other/tailwind-css_design-tokens.md` -- Design Tokens Reference
+- `../../../../Global_References/Software_Engineering_and_Other/tailwind-css_performance.md` -- Tailwind CSS Performance Reference
+- `../../../../Global_References/Software_Engineering_and_Other/responsive-patterns.md` -- Responsive Patterns Reference
+- `../../../../Global_References/Software_Engineering_and_Other/utility-first.md` -- Utility-First CSS Reference
 - `references/[tailwind-design-system](../tailwind-design-system/SKILL.md).md` -- Tailwind Design System Integration
 - `../../../Global_References/tailwind-[performance-optimization](../../../Backend/patterns/performance-optimization/SKILL.md).md` -- Tailwind Performance & Build Optimization
 

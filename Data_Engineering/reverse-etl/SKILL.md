@@ -447,11 +447,11 @@ Destination type?
 - Monitor destination API changes that may break field mappings
 
 ## References
-  - ../../../Global_References/identity-resolution.md — Identity Resolution Reference
-  - ../../../Global_References/identity-strategies.md — Identity Strategies for Reverse ETL
+  - ../../Global_References/Data_Engineering/identity-resolution.md — Identity Resolution Reference
+  - ../../Global_References/Data_Engineering/identity-strategies.md — Identity Strategies for Reverse ETL
   - ../../../Global_References/reverse-etl-[monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Reverse ETL [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
-  - ../../../Global_References/reverse-etl-patterns.md — Reverse ETL Patterns
-  - ../../../Global_References/sync-config-examples.md — Sync Configuration Examples
+  - ../../Global_References/Data_Engineering/reverse-etl-patterns.md — Reverse ETL Patterns
+  - ../../Global_References/Data_Engineering/sync-config-examples.md — Sync Configuration Examples
   - references/warehouse-activation.md — Warehouse Activation Reference
 ## Architecture Decision Trees
 

@@ -469,14 +469,14 @@ const suggestQuery = {
 - Use search-as-you-type or completion suggester for autocomplete, not wildcard prefix queries
 
 ## References
-  - ../../../Global_References/search-patterns_indexing-strategies.md — Indexing Strategies and Relevance
-  - ../../../Global_References/search-architecture.md — Search Architecture
-  - ../../../Global_References/search-engines.md — Search Engines Reference
-  - ../../../Global_References/search-faceted-navigation.md — Faceted Search Navigation
-  - ../../../Global_References/search-implementation.md — Search Implementation Patterns
-  - ../../../Global_References/search-optimization.md — Search Optimization and Performance
-  - ../../../Global_References/search-performance.md — Search Performance
-  - ../../../Global_References/search-synonyms.md — Search Synonyms
+  - ../../../../Global_References/Software_Engineering_and_Other/search-patterns_indexing-strategies.md — Indexing Strategies and Relevance
+  - ../../../../Global_References/Software_Engineering_and_Other/search-architecture.md — Search Architecture
+  - ../../../../Global_References/Software_Engineering_and_Other/search-engines.md — Search Engines Reference
+  - ../../../../Global_References/Software_Engineering_and_Other/search-faceted-navigation.md — Faceted Search Navigation
+  - ../../../../Global_References/Software_Engineering_and_Other/search-implementation.md — Search Implementation Patterns
+  - ../../../../Global_References/Software_Engineering_and_Other/search-optimization.md — Search Optimization and Performance
+  - ../../../../Global_References/Software_Engineering_and_Other/search-performance.md — Search Performance
+  - ../../../../Global_References/Software_Engineering_and_Other/search-synonyms.md — Search Synonyms
 ## Handoff
 `[backend-database-patterns](../../../Databases/common/database-patterns/SKILL.md)` for indexing source data schema design
 ## Implementation Patterns

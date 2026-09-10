@@ -18,7 +18,7 @@ depends_on:
 
 # [terraform-policy](../../../Software_Engineering_and_Other/Miscellaneous/agent-skills-main/plugins/terraform/skills/terraform-policy/SKILL.md)
 
-**UTILITY SKILL** — INVOKES: [tfpolicy-author](../../../../Global_References/tfpolicy-author.md) | [tfpolicy-test](../../../../Global_References/tfpolicy-test.md)
+**UTILITY SKILL** — INVOKES: [tfpolicy-author](../../../../Global_References/infrastructure-as-code/tfpolicy-author.md) | [tfpolicy-test](../../../../Global_References/infrastructure-as-code/tfpolicy-test.md)
 
 ## USE FOR:
 
@@ -36,14 +36,14 @@ depends_on:
 
 | Task | Sub-skill |
 |------|-----------|
-| Write or convert a `.policy.hcl` policy | [tfpolicy-author](../../../../Global_References/tfpolicy-author.md) |
-| Write or debug a `.policytest.hcl` test | [tfpolicy-test](../../../../Global_References/tfpolicy-test.md) |
+| Write or convert a `.policy.hcl` policy | [tfpolicy-author](../../../../Global_References/infrastructure-as-code/tfpolicy-author.md) |
+| Write or debug a `.policytest.hcl` test | [tfpolicy-test](../../../../Global_References/infrastructure-as-code/tfpolicy-test.md) |
 
 ## Examples
 
-- "Block EC2 instances without encryption" → [tfpolicy-author](../../../../Global_References/tfpolicy-author.md)
-- "Convert this Sentinel policy to tfpolicy" → [tfpolicy-author](../../../../Global_References/tfpolicy-author.md)
-- "Write a policytest for my EBS policy" → [tfpolicy-test](../../../../Global_References/tfpolicy-test.md)
+- "Block EC2 instances without encryption" → [tfpolicy-author](../../../../Global_References/infrastructure-as-code/tfpolicy-author.md)
+- "Convert this Sentinel policy to tfpolicy" → [tfpolicy-author](../../../../Global_References/infrastructure-as-code/tfpolicy-author.md)
+- "Write a policytest for my EBS policy" → [tfpolicy-test](../../../../Global_References/infrastructure-as-code/tfpolicy-test.md)
 
 ## Troubleshooting
 

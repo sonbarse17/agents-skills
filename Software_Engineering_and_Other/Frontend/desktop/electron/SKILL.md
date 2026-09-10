@@ -413,10 +413,10 @@ ipcMain.handle('file:watch', async (_event, filePath) => {
 ```
 
 ## References
-  - ../../../Global_References/electron-advanced.md — Electron Advanced Topics
-  - ../../../Global_References/electron-fundamentals.md — Electron Fundamentals
+  - ../../../../Global_References/Software_Engineering_and_Other/electron-advanced.md — Electron Advanced Topics
+  - ../../../../Global_References/Software_Engineering_and_Other/electron-fundamentals.md — Electron Fundamentals
   - references/electron-ipc-patterns.md — Electron IPC Patterns Reference
-  - ../../../Global_References/electron-security.md — Electron Security Reference
+  - ../../../../Global_References/Software_Engineering_and_Other/electron-security.md — Electron Security Reference
 ## Handoff
 Hand off to `dev-loop-[code-review](../../../../ci-cd/common/other/code-review/SKILL.md)` for security [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) of preload scripts. Hand off to `desktop-tauri` if native performance is critical.
 ## Implementation Patterns

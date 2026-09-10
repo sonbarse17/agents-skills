@@ -672,12 +672,12 @@ On release candidate: all tags (comprehensive)
 ```
 
 ## References
-  - ../../../Global_References/gherkin-deep-dive.md — Gherkin Deep Dive
-  - ../../../Global_References/spec-example.md — Specification by Example
-  - ../../../Global_References/bdd-tools.md — BDD Tools
-  - ../../../Global_References/atdd-workflow.md — ATDD Workflow
-  - ../../../Global_References/bdd-atdd-advanced.md — Bdd Atdd Advanced Topics
-  - ../../../Global_References/bdd-atdd-fundamentals.md — Bdd Atdd Fundamentals
+  - ../../../../Global_References/Software_Engineering_and_Other/gherkin-deep-dive.md — Gherkin Deep Dive
+  - ../../../../Global_References/Software_Engineering_and_Other/spec-example.md — Specification by Example
+  - ../../../../Global_References/Software_Engineering_and_Other/bdd-tools.md — BDD Tools
+  - ../../../../Global_References/Software_Engineering_and_Other/atdd-workflow.md — ATDD Workflow
+  - ../../../../Global_References/Software_Engineering_and_Other/bdd-atdd-advanced.md — Bdd Atdd Advanced Topics
+  - ../../../../Global_References/Software_Engineering_and_Other/bdd-atdd-fundamentals.md — Bdd Atdd Fundamentals
   - references/gherkin-patterns-catalog.md — Gherkin Patterns Catalog
   - references/step-definition-guide.md — Step Definition Implementation Guide
   - references/bdd-ci-pipeline.md — BDD CI Pipeline Setup

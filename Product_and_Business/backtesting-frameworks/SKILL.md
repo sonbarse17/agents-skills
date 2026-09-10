@@ -76,7 +76,7 @@ Window 4:             [Train──────][Test]
 
 ## Detailed worked examples and patterns
 
-Detailed sections (starting with `## Implementation Patterns`) live in `../../../Global_References/backtesting-frameworks_details.md`. Read that file when the navigation summary above is insufficient.
+Detailed sections (starting with `## Implementation Patterns`) live in `../../Global_References/Product_and_Business/backtesting-frameworks_details.md`. Read that file when the navigation summary above is insufficient.
 
 ## Best Practices
 

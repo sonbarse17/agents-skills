@@ -418,14 +418,14 @@ print(f"Result: {table.num_rows} rows, {table.num_columns} columns")
 - Use RLE encoding for boolean and low-cardinality enum columns
 
 ## References
-  - ../../../Global_References/arrow-flight-protocol.md — Arrow Flight Protocol
-  - ../../../Global_References/columnar-format-guide.md — Columnar Format Guide
-  - ../../../Global_References/columnar-formats.md — Columnar Formats Deep Dive Reference
-  - ../../../Global_References/compression-encoding.md — Compression and Encoding
-  - ../../../Global_References/data-serialization-patterns.md — Data Serialization Patterns
-  - ../../../Global_References/file-format-benchmarks.md — File Format Benchmarks
-  - ../../../Global_References/format-migration-strategies.md — Format Migration Strategies
-  - ../../../Global_References/data-formats_schema-evolution.md — Schema Evolution Reference
+  - ../../Global_References/Data_Engineering/arrow-flight-protocol.md — Arrow Flight Protocol
+  - ../../Global_References/Data_Engineering/columnar-format-guide.md — Columnar Format Guide
+  - ../../Global_References/Data_Engineering/columnar-formats.md — Columnar Formats Deep Dive Reference
+  - ../../Global_References/Data_Engineering/compression-encoding.md — Compression and Encoding
+  - ../../Global_References/Data_Engineering/data-serialization-patterns.md — Data Serialization Patterns
+  - ../../Global_References/Data_Engineering/file-format-benchmarks.md — File Format Benchmarks
+  - ../../Global_References/Data_Engineering/format-migration-strategies.md — Format Migration Strategies
+  - ../../Global_References/Data_Engineering/data-formats_schema-evolution.md — Schema Evolution Reference
 ## Architecture Decision Trees
 
 ```

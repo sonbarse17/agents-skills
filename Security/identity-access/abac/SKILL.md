@@ -678,14 +678,14 @@ function logABACDecision(user, action, resource, env, result, matchedPolicies) {
 - Risk-based policies must have a floor: never allow if risk > 90 regardless of other attributes.
 
 ## References
-  - ../../../Global_References/abac-advanced.md — Abac Advanced Topics
-  - ../../../Global_References/abac-envoy-deployment.md — OPA + Envoy Deployment
-  - ../../../Global_References/abac-fundamentals.md — Abac Fundamentals
-  - ../../../Global_References/abac-policy-management.md — ABAC Policy Lifecycle Management
-  - ../../../Global_References/abac-policy-structure.md — ABAC Policy Structure
-  - ../../../Global_References/abac-testing.md — ABAC Testing
-  - ../../../Global_References/hybrid-rbac-abac.md — Hybrid RBAC-ABAC Models
-  - ../../../Global_References/opa-abac-implementation.md — OPA/Rego ABAC Implementation
+  - ../../../Global_References/Security/abac-advanced.md — Abac Advanced Topics
+  - ../../../Global_References/Security/abac-envoy-deployment.md — OPA + Envoy Deployment
+  - ../../../Global_References/Security/abac-fundamentals.md — Abac Fundamentals
+  - ../../../Global_References/Security/abac-policy-management.md — ABAC Policy Lifecycle Management
+  - ../../../Global_References/Security/abac-policy-structure.md — ABAC Policy Structure
+  - ../../../Global_References/Security/abac-testing.md — ABAC Testing
+  - ../../../Global_References/Security/hybrid-rbac-abac.md — Hybrid RBAC-ABAC Models
+  - ../../../Global_References/Security/opa-abac-implementation.md — OPA/Rego ABAC Implementation
 ## Handoff
 No artifact produced unless requested.
 Next skill: authorization (backend) — integrate ABAC into the overall authorization architecture.

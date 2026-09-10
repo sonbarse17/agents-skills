@@ -628,13 +628,13 @@ For each force, assess with evidence and derive strategic implications:
 Score each force: 1 (weak/benign) to 5 (strong/threatening). Total score reveals market attractiveness. For scoring, use evidence not intuition. Validate with market participants. A score of 20-25 = highly attractive market, 10-15 = moderately attractive, 5-9 = unattractive.
 
 ## References
-  - ../../../Global_References/market-analysis-fundamentals.md — Market Analysis Fundamentals
-  - ../../../Global_References/market-analysis-advanced.md — Market Analysis Advanced Topics
-  - ../../../Global_References/competitive-analysis.md — Competitive Analysis Guide
-  - ../../../Global_References/market-analysis-frameworks.md — Market Analysis Frameworks
-  - ../../../Global_References/market-analysis-template.md — Market Analysis Template
-  - ../../../Global_References/market-sizing.md — Market Sizing Guide
-  - ../../../Global_References/market-analysis-data-synthesis.md — Market Analysis Data Synthesis
+  - ../../Global_References/Product_and_Business/market-analysis-fundamentals.md — Market Analysis Fundamentals
+  - ../../Global_References/Product_and_Business/market-analysis-advanced.md — Market Analysis Advanced Topics
+  - ../../Global_References/Product_and_Business/competitive-analysis.md — Competitive Analysis Guide
+  - ../../Global_References/Product_and_Business/market-analysis-frameworks.md — Market Analysis Frameworks
+  - ../../Global_References/Product_and_Business/market-analysis-template.md — Market Analysis Template
+  - ../../Global_References/Product_and_Business/market-sizing.md — Market Sizing Guide
+  - ../../Global_References/Product_and_Business/market-analysis-data-synthesis.md — Market Analysis Data Synthesis
 
 ## Handoff
 create-roadmap, create-pitch-deck

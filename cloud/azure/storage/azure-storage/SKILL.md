@@ -112,9 +112,9 @@ For building applications with Azure Storage SDKs, see the condensed guides:
 - **Data Lake**: [Python](references/sdk/[azure-storage-file-datalake-py](../azure-sdk-[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/skills/[azure-storage-file-datalake-py](../[azure-storage](../azure-skills/skills/azure-storage/SKILL.md)-file-datalake-py/SKILL.md)/SKILL.md).md)
 - **Tables**: [Python](references/sdk/[azure-data-tables-py](../[azure-data-tables-py](../azure-sdk-[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/skills/azure-data-tables-py/SKILL.md)/SKILL.md).md) | [Java](references/sdk/[azure-data-tables-java](../[azure-data-tables-java](../azure-sdk-java/skills/azure-data-tables-java/SKILL.md)/SKILL.md).md)
 
-For full package listing across all languages, see [SDK Usage Guide](../../../../Global_References/sdk-usage.md).
+For full package listing across all languages, see [SDK Usage Guide](../../../../Global_References/cloud/sdk-usage.md).
 
 ## Azure SDKs
 
-For building applications that interact with Azure Storage programmatically, Azure provides SDK packages in multiple languages (.NET, Java, JavaScript, [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md), Go, Rust). See [SDK Usage Guide](../../../../Global_References/sdk-usage.md) for package names, installation commands, and quick start examples.
+For building applications that interact with Azure Storage programmatically, Azure provides SDK packages in multiple languages (.NET, Java, JavaScript, [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md), Go, Rust). See [SDK Usage Guide](../../../../Global_References/cloud/sdk-usage.md) for package names, installation commands, and quick start examples.
 

@@ -49,11 +49,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Theme Development | `../../../Global_References/theme-development.md` | Templates, hierarchy, child themes, FSE |
-| Plugin Architecture | `../../../Global_References/plugin-architecture.md` | Structure, activation, settings API, updates |
-| Gutenberg Blocks | `../../../Global_References/gutenberg-blocks.md` | Block dev, patterns, FSE, dynamic blocks |
-| Hooks & Filters | `../../../Global_References/hooks-filters.md` | Actions, filters, custom hooks, priorities |
-| Performance & Security | `../../../Global_References/performance-security.md` | Caching, optimization, hardening, backups |
+| Theme Development | `../../../../Global_References/Software_Engineering_and_Other/theme-development.md` | Templates, hierarchy, child themes, FSE |
+| Plugin Architecture | `../../../../Global_References/Software_Engineering_and_Other/plugin-architecture.md` | Structure, activation, settings API, updates |
+| Gutenberg Blocks | `../../../../Global_References/Software_Engineering_and_Other/gutenberg-blocks.md` | Block dev, patterns, FSE, dynamic blocks |
+| Hooks & Filters | `../../../../Global_References/Software_Engineering_and_Other/hooks-filters.md` | Actions, filters, custom hooks, priorities |
+| Performance & Security | `../../../../Global_References/Software_Engineering_and_Other/performance-security.md` | Caching, optimization, hardening, backups |
 
 ## Key Implementation Patterns
 

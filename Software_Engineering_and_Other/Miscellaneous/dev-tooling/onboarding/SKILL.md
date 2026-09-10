@@ -196,14 +196,14 @@ After 4 weeks, final check-in. Buddy writes handoff note for manager: areas of s
 Each retro produces actionable items: doc updates (assigned to buddy as ticket), process changes (escalated to EM for next sprint), tool improvements (infrastructure backlog), team practice updates (next retro/team meeting). After 3 new hires, review all findings for systemic issues.
 
 ## References
-  - ../../../Global_References/buddy-system-guide.md — Buddy System Guide
-  - ../../../Global_References/dev-environment-automation.md — Dev Environment Automation
-  - ../../../Global_References/onboarding-advanced.md — Onboarding Advanced Topics
-  - ../../../Global_References/onboarding-flow.md — Onboarding Flow
-  - ../../../Global_References/onboarding-fundamentals.md — Onboarding Fundamentals
-  - ../../../Global_References/onboarding-templates.md — Onboarding Templates
-  - ../../../Global_References/ramp-up-plan.md — Ramp-Up Plan
-  - ../../../Global_References/setup-checklist.md — Setup Checklist
+  - ../../../../Global_References/Software_Engineering_and_Other/buddy-system-guide.md — Buddy System Guide
+  - ../../../../Global_References/Software_Engineering_and_Other/dev-environment-automation.md — Dev Environment Automation
+  - ../../../../Global_References/Software_Engineering_and_Other/onboarding-advanced.md — Onboarding Advanced Topics
+  - ../../../../Global_References/Software_Engineering_and_Other/onboarding-flow.md — Onboarding Flow
+  - ../../../../Global_References/Software_Engineering_and_Other/onboarding-fundamentals.md — Onboarding Fundamentals
+  - ../../../../Global_References/Software_Engineering_and_Other/onboarding-templates.md — Onboarding Templates
+  - ../../../../Global_References/Software_Engineering_and_Other/ramp-up-plan.md — Ramp-Up Plan
+  - ../../../../Global_References/Software_Engineering_and_Other/setup-checklist.md — Setup Checklist
 
 ## Remote & Distributed Onboarding Patterns
 

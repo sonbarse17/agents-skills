@@ -476,13 +476,13 @@ Build-time SBOM includes dev dependencies not present in production. Generate se
 
 ## References
   - ../../../Global_References/[dependency-management](../../../ci-cd/common/build/dependency-management/SKILL.md).md — Dependency Management
-  - ../../../Global_References/sbom-advanced.md — Sbom Advanced Topics
-  - ../../../Global_References/sbom-attestation.md — SBOM Attestation
-  - ../../../Global_References/sbom-formats.md — SBOM Formats
-  - ../../../Global_References/sbom-fundamentals.md — Sbom Fundamentals
-  - ../../../Global_References/sbom-generation-tools.md — SBOM Generation Tools Comparison
-  - ../../../Global_References/sbom-policy-enforcement.md — SBOM Policy Enforcement Guide
-  - ../../../Global_References/supply-chain-attacks.md — Supply Chain Attack Patterns
+  - ../../../Global_References/Security/sbom-advanced.md — Sbom Advanced Topics
+  - ../../../Global_References/Security/sbom-attestation.md — SBOM Attestation
+  - ../../../Global_References/Security/sbom-formats.md — SBOM Formats
+  - ../../../Global_References/Security/sbom-fundamentals.md — Sbom Fundamentals
+  - ../../../Global_References/Security/sbom-generation-tools.md — SBOM Generation Tools Comparison
+  - ../../../Global_References/Security/sbom-policy-enforcement.md — SBOM Policy Enforcement Guide
+  - ../../../Global_References/Security/supply-chain-attacks.md — Supply Chain Attack Patterns
 ## Handoff
 `[security-container-security](../../../containers-orchestration/docker/security/container-security/SKILL.md)` for image scanning integration
 `devops-ci-cd` for pipeline configuration and artifact storage

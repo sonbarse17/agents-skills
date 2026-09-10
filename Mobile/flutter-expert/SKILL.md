@@ -53,12 +53,12 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Riverpod | `../../../Global_References/riverpod-state.md` | State management, providers, notifiers |
-| Bloc | `../../../Global_References/bloc-state.md` | Bloc, Cubit, event-driven state, complex business logic |
-| GoRouter | `../../../Global_References/gorouter-navigation.md` | Navigation, routing, deep linking |
-| Widgets | `../../../Global_References/flutter-expert_widget-patterns.md` | Building UI components, const optimization |
-| Structure | `../../../Global_References/flutter-expert_project-structure.md` | Setting up project, architecture |
-| Performance | `../../../Global_References/flutter-expert_performance.md` | Optimization, [profiling](../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md), jank fixes |
+| Riverpod | `../../Global_References/Mobile/riverpod-state.md` | State management, providers, notifiers |
+| Bloc | `../../Global_References/Mobile/bloc-state.md` | Bloc, Cubit, event-driven state, complex business logic |
+| GoRouter | `../../Global_References/Mobile/gorouter-navigation.md` | Navigation, routing, deep linking |
+| Widgets | `../../Global_References/Mobile/flutter-expert_widget-patterns.md` | Building UI components, const optimization |
+| Structure | `../../Global_References/Mobile/flutter-expert_project-structure.md` | Setting up project, architecture |
+| Performance | `../../Global_References/Mobile/flutter-expert_performance.md` | Optimization, [profiling](../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md), jank fixes |
 
 ## Code Examples
 

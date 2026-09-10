@@ -93,7 +93,7 @@ func worker(ctx context.Context, id int, results chan<- string, wg *sync.WaitGro
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../../Global_References/go-concurrency-patterns_details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../../Global_References/Software_Engineering_and_Other/go-concurrency-patterns_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 

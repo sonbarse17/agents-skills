@@ -419,14 +419,14 @@ Starting a story without knowing what it depends on leads to blocked developers 
 - **Workflow**: Todo -> In Progress -> Review -> Done (or similar Kanban states).
 
 ## References
-  - ../../../Global_References/create-story-fundamentals.md — Story Fundamentals
-  - ../../../Global_References/create-story-advanced.md — Story Advanced Topics
-  - ../../../Global_References/acceptance-criteria.md — Acceptance Criteria Guide
-  - ../../../Global_References/story-examples.md — Story Examples
-  - ../../../Global_References/story-refinement.md — Story Refinement
-  - ../../../Global_References/story-template.md — Story Template
-  - ../../../Global_References/user-story-splitting.md — User Story Splitting
-  - ../../../Global_References/user-story-acceptance-criteria.md — User Story Acceptance Criteria
+  - ../../Global_References/Product_and_Business/create-story-fundamentals.md — Story Fundamentals
+  - ../../Global_References/Product_and_Business/create-story-advanced.md — Story Advanced Topics
+  - ../../Global_References/Product_and_Business/acceptance-criteria.md — Acceptance Criteria Guide
+  - ../../Global_References/Product_and_Business/story-examples.md — Story Examples
+  - ../../Global_References/Product_and_Business/story-refinement.md — Story Refinement
+  - ../../Global_References/Product_and_Business/story-template.md — Story Template
+  - ../../Global_References/Product_and_Business/user-story-splitting.md — User Story Splitting
+  - ../../Global_References/Product_and_Business/user-story-acceptance-criteria.md — User Story Acceptance Criteria
 
 ## Handoff
 Output: `docs/stories/STORY-{NNN}.md`

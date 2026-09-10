@@ -491,15 +491,15 @@ Thread.setDefaultUncaughtExceptionHandler(
 ```
 
 ## References
-  - ../../../Global_References/breadcrumbs.md — Breadcrumbs
-  - ../../../Global_References/crash-analysis-workflow.md — Crash Analysis Workflow
-  - ../../../Global_References/crash-reporting-architecture.md — Crash Reporting Architecture
-  - ../../../Global_References/crashlytics-setup.md — Crashlytics Setup
+  - ../../../../Global_References/observability-monitoring-logging/breadcrumbs.md — Breadcrumbs
+  - ../../../../Global_References/observability-monitoring-logging/crash-analysis-workflow.md — Crash Analysis Workflow
+  - ../../../../Global_References/observability-monitoring-logging/crash-reporting-architecture.md — Crash Reporting Architecture
+  - ../../../../Global_References/observability-monitoring-logging/crashlytics-setup.md — Crashlytics Setup
   - ../../../Global_References/[sentry](../../../sentry/other/sentry/SKILL.md)-setup.md — [Sentry](../../../sentry/other/sentry/SKILL.md) Setup
-  - ../../../Global_References/symbolication.md — Symbolication
-  - ../../../Global_References/crash-reporting-fundamentals.md — Crash Reporting Fundamentals
-  - ../../../Global_References/crash-reporting-advanced.md — Advanced Crash Reporting
-  - ../../../Global_References/crash-reporting-ci.md — Crash Reporting CI/CD Integration
+  - ../../../../Global_References/observability-monitoring-logging/symbolication.md — Symbolication
+  - ../../../../Global_References/observability-monitoring-logging/crash-reporting-fundamentals.md — Crash Reporting Fundamentals
+  - ../../../../Global_References/observability-monitoring-logging/crash-reporting-advanced.md — Advanced Crash Reporting
+  - ../../../../Global_References/observability-monitoring-logging/crash-reporting-ci.md — Crash Reporting CI/CD Integration
 
 ## Handoff
 No further handoff. Crash reporting is self-contained after initial setup.

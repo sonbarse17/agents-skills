@@ -36,7 +36,7 @@ Use this skill when you need to:
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../../Global_References/helm-chart-scaffolding_details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../../Global_References/containers-orchestration/helm-chart-scaffolding_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 

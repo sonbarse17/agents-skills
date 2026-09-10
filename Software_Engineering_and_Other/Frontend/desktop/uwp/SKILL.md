@@ -426,9 +426,9 @@ builder.Show();
 ```
 
 ## References
-  - ../../../Global_References/uwp-advanced.md — UWP Advanced Topics
-  - ../../../Global_References/uwp-fundamentals.md — UWP Fundamentals
-  - ../../../Global_References/uwp-lifecycle.md — UWP Lifecycle Reference
+  - ../../../../Global_References/Software_Engineering_and_Other/uwp-advanced.md — UWP Advanced Topics
+  - ../../../../Global_References/Software_Engineering_and_Other/uwp-fundamentals.md — UWP Fundamentals
+  - ../../../../Global_References/Software_Engineering_and_Other/uwp-lifecycle.md — UWP Lifecycle Reference
   - references/uwp-xaml-patterns.md — UWP XAML Patterns Reference
 ## Handoff
 Hand off to `desktop-winui3` for WinUI 3 migration. Hand off to `design-accessibility` for UIA/Narrator testing.

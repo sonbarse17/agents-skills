@@ -506,14 +506,14 @@ rollback:
 - Use `data-diff` in staging to detect unexpected data changes before prod promotion
 
 ## References
-  - ../../../Global_References/cicd-for-data-pipelines.md — CI/CD for Data Pipelines
-  - ../../../Global_References/data-diff-testing.md — Data Diff Testing Reference
-  - ../../../Global_References/data-quality-ci.md — Data Quality in CI/CD Reference
-  - ../../../Global_References/dbt-ci-cd-pipeline.md — dbt CI/CD Pipeline
-  - ../../../Global_References/pipeline-cicd-environments.md — Pipeline CI/CD Environment Management
-  - ../../../Global_References/pipeline-cicd-secrets.md — Pipeline CI/CD Secrets Management
-  - ../../../Global_References/pipeline-test-automation.md — Pipeline Test Automation
-  - ../../../Global_References/sql-linting-and-testing.md — SQL Linting and Testing
+  - ../../../../Global_References/ci-cd/cicd-for-data-pipelines.md — CI/CD for Data Pipelines
+  - ../../../../Global_References/ci-cd/data-diff-testing.md — Data Diff Testing Reference
+  - ../../../../Global_References/ci-cd/data-quality-ci.md — Data Quality in CI/CD Reference
+  - ../../../../Global_References/ci-cd/dbt-ci-cd-pipeline.md — dbt CI/CD Pipeline
+  - ../../../../Global_References/ci-cd/pipeline-cicd-environments.md — Pipeline CI/CD Environment Management
+  - ../../../../Global_References/ci-cd/pipeline-cicd-secrets.md — Pipeline CI/CD Secrets Management
+  - ../../../../Global_References/ci-cd/pipeline-test-automation.md — Pipeline Test Automation
+  - ../../../../Global_References/ci-cd/sql-linting-and-testing.md — SQL Linting and Testing
 ## Handoff
 `[data-data-quality](../../../../Data_Engineering/data-quality/SKILL.md)` for data quality [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) in production
 `[data-etl-pipeline](../../../../Data_Engineering/etl-pipeline/SKILL.md)` for pipeline orchestration and execution

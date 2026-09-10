@@ -120,14 +120,14 @@ Start -> Mock -> Test -> Success -> End
 5. Use page object model.
 
 ## Reference Guides
-- [Playwright Mocking](../../../../Global_References/playwright-mocking.md)
+- [Playwright Mocking](../../../../Global_References/Software_Engineering_and_Other/playwright-mocking.md)
 - [Chaos Engineering](../../../../containers-orchestration/common/other/chaos-engineering/SKILL.md).md)
-- [Network Throttling](../../../../Global_References/network-throttling.md)
-- [Flaky Test Mitigation](../../../../Global_References/flaky-test-mitigation.md)
-- [Visual Regression](../../../../Global_References/visual-regression.md)
-- [A11Y Testing](../../../../Global_References/a11y-testing.md)
-- [Test Data](../../../../Global_References/test-data-generation.md)
-- [CI CD](../../../../Global_References/ci-cd-integration.md)
+- [Network Throttling](../../../../Global_References/Software_Engineering_and_Other/network-throttling.md)
+- [Flaky Test Mitigation](../../../../Global_References/Software_Engineering_and_Other/flaky-test-mitigation.md)
+- [Visual Regression](../../../../Global_References/Software_Engineering_and_Other/visual-regression.md)
+- [A11Y Testing](../../../../Global_References/Software_Engineering_and_Other/a11y-testing.md)
+- [Test Data](../../../../Global_References/Software_Engineering_and_Other/test-data-generation.md)
+- [CI CD](../../../../Global_References/Software_Engineering_and_Other/ci-cd-integration.md)
 
 ## Handoff
 See `ci-integration` for pipelines.

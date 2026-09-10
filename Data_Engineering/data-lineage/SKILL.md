@@ -493,14 +493,14 @@ Data processing tool?
 - Re-scrape lineage after schema changes
 
 ## References
-  - ../../../Global_References/column-lineage.md — Column-Level Lineage Reference
-  - ../../../Global_References/lineage-automation.md — Lineage Automation
-  - ../../../Global_References/lineage-governance.md — Lineage for Governance
-  - ../../../Global_References/lineage-graph-model.md — Lineage Graph Model
-  - ../../../Global_References/lineage-impact-analysis.md — Lineage Impact Analysis
-  - ../../../Global_References/lineage-tools.md — Lineage Tools Integration Reference
-  - ../../../Global_References/lineage-visualization.md — Lineage Visualization
-  - ../../../Global_References/openlineage-integration.md — OpenLineage Integration
+  - ../../Global_References/Data_Engineering/column-lineage.md — Column-Level Lineage Reference
+  - ../../Global_References/Data_Engineering/lineage-automation.md — Lineage Automation
+  - ../../Global_References/Data_Engineering/lineage-governance.md — Lineage for Governance
+  - ../../Global_References/Data_Engineering/lineage-graph-model.md — Lineage Graph Model
+  - ../../Global_References/Data_Engineering/lineage-impact-analysis.md — Lineage Impact Analysis
+  - ../../Global_References/Data_Engineering/lineage-tools.md — Lineage Tools Integration Reference
+  - ../../Global_References/Data_Engineering/lineage-visualization.md — Lineage Visualization
+  - ../../Global_References/Data_Engineering/openlineage-integration.md — OpenLineage Integration
 ## Architecture Decision Trees
 
 ```

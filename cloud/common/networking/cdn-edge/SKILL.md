@@ -536,12 +536,12 @@ Serving uncompressed content increases egress costs and hurts performance. Enabl
 - Monitor cache hit ratio and alert below 80%.
 
 ## References
-  - ../../../Global_References/cdn-edge-advanced.md
-  - ../../../Global_References/cdn-edge-fundamentals.md
-  - ../../../Global_References/cdn-providers.md
-  - ../../../Global_References/ddos-mitigation.md
-  - ../../../Global_References/cdn-edge_edge-functions.md
-  - ../../../Global_References/waf-rules.md
+  - ../../../../Global_References/cloud/cdn-edge-advanced.md
+  - ../../../../Global_References/cloud/cdn-edge-fundamentals.md
+  - ../../../../Global_References/cloud/cdn-providers.md
+  - ../../../../Global_References/cloud/ddos-mitigation.md
+  - ../../../../Global_References/cloud/cdn-edge_edge-functions.md
+  - ../../../../Global_References/cloud/waf-rules.md
   - references/signed-urls-guide.md
   - references/multi-cdn-strategy.md
   - references/cdn-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md

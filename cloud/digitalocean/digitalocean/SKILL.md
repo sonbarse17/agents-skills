@@ -528,13 +528,13 @@ Without tags (environment, project, team), cost allocation and resource manageme
 - Use Floating IP for zero-downtime manual failover scenarios.
 
 ## References
-- ../../../Global_References/app-platform.md -- App Platform
-- ../../../Global_References/digitalocean-advanced.md -- Digitalocean Advanced Topics
-- ../../../Global_References/digitalocean-fundamentals.md -- Digitalocean Fundamentals
-- ../../../Global_References/droplets-networking.md -- Droplets and Networking
-- ../../../Global_References/infrastructure-tools.md -- Infrastructure Tooling
+- ../../../Global_References/cloud/app-platform.md -- App Platform
+- ../../../Global_References/cloud/digitalocean-advanced.md -- Digitalocean Advanced Topics
+- ../../../Global_References/cloud/digitalocean-fundamentals.md -- Digitalocean Fundamentals
+- ../../../Global_References/cloud/droplets-networking.md -- Droplets and Networking
+- ../../../Global_References/cloud/infrastructure-tools.md -- Infrastructure Tooling
 - ../../../Global_References/[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-doks.md -- DOKS (DigitalOcean [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md))
-- ../../../Global_References/managed-databases.md -- Managed Databases
+- ../../../Global_References/cloud/managed-databases.md -- Managed Databases
 
 ## Handoff
 After completing this skill:

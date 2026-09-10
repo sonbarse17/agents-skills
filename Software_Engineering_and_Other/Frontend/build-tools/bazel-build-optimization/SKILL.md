@@ -56,7 +56,7 @@ workspace/
 
 ## Templates and detailed worked examples
 
-Full template library and detailed worked examples live in `../../../Global_References/bazel-build-optimization_details.md`. Read that file when you need the concrete templates.
+Full template library and detailed worked examples live in `../../../../Global_References/Software_Engineering_and_Other/bazel-build-optimization_details.md`. Read that file when you need the concrete templates.
 
 ## Best Practices
 

@@ -55,7 +55,7 @@ Resolution: Insights and recommendations
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../../Global_References/data-storytelling_details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../Global_References/Product_and_Business/data-storytelling_details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Best Practices
 

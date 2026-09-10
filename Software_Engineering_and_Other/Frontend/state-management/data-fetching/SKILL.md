@@ -440,14 +440,14 @@ Does the data need to update in real-time?
 10. Queries never write to server state directly — use mutation hooks.
 
 ## References
-  - ../../../Global_References/data-fetching-caching.md — Data Fetching Caching
-  - ../../../Global_References/data-fetching-patterns.md — Data Fetching Patterns
-  - ../../../Global_References/fetching-patterns.md — Fetching Patterns
-  - ../../../Global_References/react-query-patterns.md — React Query Patterns
-  - ../../../Global_References/swr-patterns.md — SWR Patterns
-  - ../../../Global_References/tanstack-query.md — TanStack Query
+  - ../../../../Global_References/Software_Engineering_and_Other/data-fetching-caching.md — Data Fetching Caching
+  - ../../../../Global_References/Software_Engineering_and_Other/data-fetching-patterns.md — Data Fetching Patterns
+  - ../../../../Global_References/Software_Engineering_and_Other/fetching-patterns.md — Fetching Patterns
+  - ../../../../Global_References/Software_Engineering_and_Other/react-query-patterns.md — React Query Patterns
+  - ../../../../Global_References/Software_Engineering_and_Other/swr-patterns.md — SWR Patterns
+  - ../../../../Global_References/Software_Engineering_and_Other/tanstack-query.md — TanStack Query
   - ../../../Global_References/data-fetching-[caching-strategies](../../../Backend/patterns/caching-strategies/SKILL.md).md — Caching Strategies Reference
-  - ../../../Global_References/data-fetching-error-handling.md — Error Handling Reference
+  - ../../../../Global_References/Software_Engineering_and_Other/data-fetching-error-handling.md — Error Handling Reference
 
 ## Handoff
 If data fetching requires complex WebSocket sync, optimistic offline queue with conflict resolution, or server-side data hydration beyond basic SSR, flag for senior engineer review. Otherwise implement complete fetching layer.

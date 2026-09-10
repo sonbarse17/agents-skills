@@ -188,7 +188,7 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 ```
 
-**Reference:** See `../../../Global_References/rbac-patterns.md`
+**Reference:** See `../../../../Global_References/containers-orchestration/rbac-patterns.md`
 
 ## Pod Security Context
 

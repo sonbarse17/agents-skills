@@ -521,12 +521,12 @@ output.elasticsearch:
 - Alert delivery verified with synthetic tests — never trust [alerting](../../alerting/alerting/SKILL.md) without validation.
 
 ## References
-  - ../../../Global_References/elk-setup.md — ELK Stack Setup Reference
+  - ../../../../Global_References/observability-monitoring-logging/elk-setup.md — ELK Stack Setup Reference
   - ../../../Global_References/[grafana-dashboards](../grafana-[dashboards](../../Cloud_Providers/dashboards/SKILL.md)/SKILL.md).md — Grafana Dashboard Design
-  - ../../../Global_References/loki-setup.md — Loki Setup Reference
-  - ../../../Global_References/monitoring-advanced.md — Monitoring Advanced Topics
-  - ../../../Global_References/monitoring-fundamentals.md — Monitoring Fundamentals
-  - ../../../Global_References/prometheus-setup.md — Prometheus Setup Reference
+  - ../../../../Global_References/observability-monitoring-logging/loki-setup.md — Loki Setup Reference
+  - ../../../../Global_References/observability-monitoring-logging/monitoring-advanced.md — Monitoring Advanced Topics
+  - ../../../../Global_References/observability-monitoring-logging/monitoring-fundamentals.md — Monitoring Fundamentals
+  - ../../../../Global_References/observability-monitoring-logging/prometheus-setup.md — Prometheus Setup Reference
 ## Handoff
 
 Hand off to `management/[alerting](../../alerting/alerting/SKILL.md)/SKILL.md` for alert rule configuration. Hand off to `devops/[helm-patterns](../../../../containers-orchestration/helm/other/helm-patterns/SKILL.md)/SKILL.md` for deploying monitoring stack on [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md). Hand off to `devops/terraform/SKILL.md` for provisioning monitoring infrastructure.

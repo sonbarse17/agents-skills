@@ -211,7 +211,7 @@ FROM read_reg_key(globs="HKEY_LOCAL_MACHINE/SOFTWARE/Microsoft/Windows/CurrentVe
 WHERE ValueData =~ "(?i)(powershell|cmd|wscript|rundll32)"
 ```
 
-For comprehensive VQL patterns and advanced queries, see [../../../Global_References/vql-patterns.md](../../../Global_References/vql-patterns.md)
+For comprehensive VQL patterns and advanced queries, see [../../../Global_References/Security/vql-patterns.md](../../../Global_References/Security/vql-patterns.md)
 
 ## Custom Artifact Development
 
@@ -240,7 +240,7 @@ sources:
 
 Save artifacts in YAML format and import via Velociraptor UI or command line.
 
-**For artifact development guidance**, see [../../../Global_References/artifact-development.md](../../../Global_References/artifact-development.md)
+**For artifact development guidance**, see [../../../Global_References/Security/artifact-development.md](../../../Global_References/Security/artifact-development.md)
 
 ## Security Considerations
 

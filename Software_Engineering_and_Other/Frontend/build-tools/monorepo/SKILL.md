@@ -552,12 +552,12 @@ jobs:
 - No `.nxignore` — caching node_modules or dist archives with secrets.
 
 ## References
-  - ../../../Global_References/monorepo_dependency-management.md — Dependency Management
-  - ../../../Global_References/monorepo-advanced.md — Monorepo Advanced Topics
-  - ../../../Global_References/monorepo-fundamentals.md — Monorepo Fundamentals
-  - ../../../Global_References/monorepo-tools.md — Monorepo Tools
-  - ../../../Global_References/nx-guide.md — Nx Guide
-  - ../../../Global_References/turborepo-guide.md — Turborepo Guide
+  - ../../../../Global_References/Software_Engineering_and_Other/monorepo_dependency-management.md — Dependency Management
+  - ../../../../Global_References/Software_Engineering_and_Other/monorepo-advanced.md — Monorepo Advanced Topics
+  - ../../../../Global_References/Software_Engineering_and_Other/monorepo-fundamentals.md — Monorepo Fundamentals
+  - ../../../../Global_References/Software_Engineering_and_Other/monorepo-tools.md — Monorepo Tools
+  - ../../../../Global_References/Software_Engineering_and_Other/nx-guide.md — Nx Guide
+  - ../../../../Global_References/Software_Engineering_and_Other/turborepo-guide.md — Turborepo Guide
 ## Handoff
 After completing this skill:
 - Next skill: **[dependency-management](../../../../ci-cd/common/build/dependency-management/SKILL.md)** — Dependabot, Renovate for mono-repo deps

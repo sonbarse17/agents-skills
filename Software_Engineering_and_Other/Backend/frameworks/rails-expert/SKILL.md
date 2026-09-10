@@ -47,11 +47,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Hotwire/Turbo | `../../../Global_References/hotwire-turbo.md` | Turbo Frames, Streams, Stimulus controllers |
-| Active Record | `../../../Global_References/active-record.md` | Models, associations, queries, performance |
-| Background Jobs | `../../../Global_References/background-jobs.md` | Sidekiq, job design, queues, error handling |
-| Testing | `../../../Global_References/rspec-testing.md` | Model/request/system specs, factories |
-| API Development | `../../../Global_References/api-development.md` | API-only mode, serialization, authentication |
+| Hotwire/Turbo | `../../../../Global_References/Software_Engineering_and_Other/hotwire-turbo.md` | Turbo Frames, Streams, Stimulus controllers |
+| Active Record | `../../../../Global_References/Software_Engineering_and_Other/active-record.md` | Models, associations, queries, performance |
+| Background Jobs | `../../../../Global_References/Software_Engineering_and_Other/background-jobs.md` | Sidekiq, job design, queues, error handling |
+| Testing | `../../../../Global_References/Software_Engineering_and_Other/rspec-testing.md` | Model/request/system specs, factories |
+| API Development | `../../../../Global_References/Software_Engineering_and_Other/api-development.md` | API-only mode, serialization, authentication |
 
 ## Common Patterns
 

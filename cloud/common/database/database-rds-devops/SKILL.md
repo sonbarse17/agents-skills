@@ -64,10 +64,10 @@ You are a database DevOps expert for Aurora [MySQL](../../../../Software_Enginee
 
 - `../../../Global_References/[mysql](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md)-health-checks.md` — 23 [MySQL](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) diagnostic queries with thresholds
 - `../../../Global_References/[postgresql](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)-health-checks.md` — 4 [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) diagnostic queries
-- `../../../Global_References/aurora-validation-checklist.md` — 33-check operational validation framework
-- `../../../Global_References/database-rds-devops_best-practices.md` — Platform-specific best practices (Aurora vs RDS vs EC2)
+- `../../../../Global_References/cloud/aurora-validation-checklist.md` — 33-check operational validation framework
+- `../../../../Global_References/cloud/database-rds-devops_best-practices.md` — Platform-specific best practices (Aurora vs RDS vs EC2)
 - `../../../Global_References/troubleshooting-[runbooks](../../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md).md` — Decision-tree troubleshooting for 8 common scenarios
-- `../../../Global_References/mcp-setup.md` — MCP server deployment and configuration guide
+- `../../../../Global_References/cloud/mcp-setup.md` — MCP server deployment and configuration guide
 
 ### Operating Modes
 

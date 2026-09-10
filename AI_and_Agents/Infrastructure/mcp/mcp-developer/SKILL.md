@@ -47,11 +47,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Protocol | `../../../Global_References/protocol.md` | Message types, lifecycle, JSON-RPC 2.0 |
+| Protocol | `../../../../Global_References/AI_and_Agents/protocol.md` | Message types, lifecycle, JSON-RPC 2.0 |
 | [TypeScript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) SDK | `../../../Global_References/[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)-sdk.md` | Building servers/clients in Node.js |
 | [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) SDK | `../../../Global_References/[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-sdk.md` | Building servers/clients in [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) |
-| Tools | `../../../Global_References/mcp-developer_tools.md` | Tool definitions, schemas, execution |
-| Resources | `../../../Global_References/resources.md` | Resource providers, URIs, templates |
+| Tools | `../../../../Global_References/AI_and_Agents/mcp-developer_tools.md` | Tool definitions, schemas, execution |
+| Resources | `../../../../Global_References/AI_and_Agents/resources.md` | Resource providers, URIs, templates |
 
 ## Minimal Working Example
 

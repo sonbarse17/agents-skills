@@ -51,11 +51,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Navigation | `../../../Global_References/expo-router.md` | Expo Router, tabs, stacks, deep linking |
-| Platform | `../../../Global_References/platform-handling.md` | iOS/[Android](../../../../Mobile/android/SKILL.md) code, SafeArea, keyboard |
-| Lists | `../../../Global_References/list-optimization.md` | FlatList, performance, memo |
-| Storage | `../../../Global_References/storage-hooks.md` | AsyncStorage, MMKV, persistence |
-| Structure | `../../../Global_References/react-native-expert_project-structure.md` | Project setup, architecture |
+| Navigation | `../../../../Global_References/Software_Engineering_and_Other/expo-router.md` | Expo Router, tabs, stacks, deep linking |
+| Platform | `../../../../Global_References/Software_Engineering_and_Other/platform-handling.md` | iOS/[Android](../../../../Mobile/android/SKILL.md) code, SafeArea, keyboard |
+| Lists | `../../../../Global_References/Software_Engineering_and_Other/list-optimization.md` | FlatList, performance, memo |
+| Storage | `../../../../Global_References/Software_Engineering_and_Other/storage-hooks.md` | AsyncStorage, MMKV, persistence |
+| Structure | `../../../../Global_References/Software_Engineering_and_Other/react-native-expert_project-structure.md` | Project setup, architecture |
 
 ## Constraints
 

@@ -483,9 +483,9 @@ watcher->setFuture(future);
 ```
 
 ## References
-  - ../../../Global_References/qt-advanced.md — Qt Advanced Topics
+  - ../../../../Global_References/Software_Engineering_and_Other/qt-advanced.md — Qt Advanced Topics
   - references/qt-deployment.md — Qt Deployment Reference
-  - ../../../Global_References/qt-fundamentals.md — Qt Fundamentals
+  - ../../../../Global_References/Software_Engineering_and_Other/qt-fundamentals.md — Qt Fundamentals
   - references/qt-qml-patterns.md — Qt QML Architecture Patterns Reference
 ## Handoff
 Hand off to `desktop-kde` for KDE Frameworks integration. Hand off to `design-accessibility` for Qt accessibility testing.

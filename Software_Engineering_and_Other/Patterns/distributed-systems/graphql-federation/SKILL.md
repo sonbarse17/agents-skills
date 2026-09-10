@@ -752,20 +752,20 @@ const resolvers = {
 ```
 
 ## References
-- [GraphQL Federation Fundamentals](../../../../Global_References/graphql-federation-fundamentals.md) — Federation v2 core concepts, directives, entity types, subgraph design
-- [GraphQL Federation Advanced](../../../../Global_References/graphql-federation-advanced.md) — Advanced topics: cost analysis, contract testing, migration strategies, multi-region
-- [Entity Resolution](../../../../Global_References/entity-resolution.md) — Entity resolution patterns, __resolveReference, @requires, @provides flow
-- [Federation Architecture](../../../../Global_References/federation-architecture.md) — Subgraph design principles, Fed 1 vs Fed 2 comparison
-- [Federation Deployment](../../../../Global_References/graphql-federation_federation-deployment.md) — Production deployment, CI/CD, rollback procedures
-- [Federation Performance](../../../../Global_References/federation-performance.md) — Query planning, caching, DataLoader, performance budgets
-- [Federation Security](../../../../Global_References/federation-security.md) — AuthN at router, authZ at subgraph, rate limiting, DoS protection
-- [Federation Testing](../../../../Global_References/federation-testing.md) — Unit, integration, contract testing patterns
-- [Supergraph Composition](../../../../Global_References/supergraph-composition.md) — Composition pipeline, directives, CI/CD
-- [Supergraph Config](../../../../Global_References/supergraph-config.md) — Router configuration, traffic shaping, query plans
-- [Federation vs Mesh](../../../../Global_References/federation-vs-mesh.md) — Apollo Federation vs GraphQL Mesh comparison
-- [Federated Tracing](../../../../Global_References/federated-tracing.md) — [OpenTelemetry](../../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md), Studio integration, distributed tracing
-- [Federation Migration Monolith](../../../../Global_References/federation-migration-monolith.md) — Migrating from monolithic GraphQL to federation (Strangler Fig)
-- [Federation Cost Management](../../../../Global_References/federation-cost-management.md) — Cost analysis, demand control, entity resolution cost optimization
+- [GraphQL Federation Fundamentals](../../../../Global_References/Software_Engineering_and_Other/graphql-federation-fundamentals.md) — Federation v2 core concepts, directives, entity types, subgraph design
+- [GraphQL Federation Advanced](../../../../Global_References/Software_Engineering_and_Other/graphql-federation-advanced.md) — Advanced topics: cost analysis, contract testing, migration strategies, multi-region
+- [Entity Resolution](../../../../Global_References/Software_Engineering_and_Other/entity-resolution.md) — Entity resolution patterns, __resolveReference, @requires, @provides flow
+- [Federation Architecture](../../../../Global_References/Software_Engineering_and_Other/federation-architecture.md) — Subgraph design principles, Fed 1 vs Fed 2 comparison
+- [Federation Deployment](../../../../Global_References/Software_Engineering_and_Other/graphql-federation_federation-deployment.md) — Production deployment, CI/CD, rollback procedures
+- [Federation Performance](../../../../Global_References/Software_Engineering_and_Other/federation-performance.md) — Query planning, caching, DataLoader, performance budgets
+- [Federation Security](../../../../Global_References/Software_Engineering_and_Other/federation-security.md) — AuthN at router, authZ at subgraph, rate limiting, DoS protection
+- [Federation Testing](../../../../Global_References/Software_Engineering_and_Other/federation-testing.md) — Unit, integration, contract testing patterns
+- [Supergraph Composition](../../../../Global_References/Software_Engineering_and_Other/supergraph-composition.md) — Composition pipeline, directives, CI/CD
+- [Supergraph Config](../../../../Global_References/Software_Engineering_and_Other/supergraph-config.md) — Router configuration, traffic shaping, query plans
+- [Federation vs Mesh](../../../../Global_References/Software_Engineering_and_Other/federation-vs-mesh.md) — Apollo Federation vs GraphQL Mesh comparison
+- [Federated Tracing](../../../../Global_References/Software_Engineering_and_Other/federated-tracing.md) — [OpenTelemetry](../../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md), Studio integration, distributed tracing
+- [Federation Migration Monolith](../../../../Global_References/Software_Engineering_and_Other/federation-migration-monolith.md) — Migrating from monolithic GraphQL to federation (Strangler Fig)
+- [Federation Cost Management](../../../../Global_References/Software_Engineering_and_Other/federation-cost-management.md) — Cost analysis, demand control, entity resolution cost optimization
 
 <!-- COMPRESSION FOOTER -->
 <!--

@@ -317,8 +317,8 @@ labels: ["tech-debt", "needs-triage"]
 | Distinguish intentional from accidental | Not all debt is bad — some is strategic |
 
 ## References
-  - ../../../Global_References/tech-debt-tracker-advanced.md — Tech Debt Tracker Advanced Topics
-  - ../../../Global_References/tech-debt-tracker-fundamentals.md — Tech Debt Tracker Fundamentals
+  - ../../../../Global_References/Software_Engineering_and_Other/tech-debt-tracker-advanced.md — Tech Debt Tracker Advanced Topics
+  - ../../../../Global_References/Software_Engineering_and_Other/tech-debt-tracker-fundamentals.md — Tech Debt Tracker Fundamentals
   - references/tech-debt-tracker-metrics.md — Tech Debt Metrics Reference
   - references/tech-debt-tracker-prioritization.md — Tech Debt Prioritization Reference
 ## Handoff

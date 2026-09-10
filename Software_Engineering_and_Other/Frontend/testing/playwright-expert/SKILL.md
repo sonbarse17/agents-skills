@@ -43,11 +43,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Selectors | `../../../Global_References/selectors-locators.md` | Writing selectors, locator priority |
-| Page Objects | `../../../Global_References/page-object-model.md` | POM patterns, fixtures |
-| API Mocking | `../../../Global_References/api-mocking.md` | Route interception, mocking |
-| Configuration | `../../../Global_References/playwright-expert_configuration.md` | playwright.config.ts setup |
-| Debugging | `../../../Global_References/debugging-flaky.md` | Flaky tests, trace viewer |
+| Selectors | `../../../../Global_References/Software_Engineering_and_Other/selectors-locators.md` | Writing selectors, locator priority |
+| Page Objects | `../../../../Global_References/Software_Engineering_and_Other/page-object-model.md` | POM patterns, fixtures |
+| API Mocking | `../../../../Global_References/Software_Engineering_and_Other/api-mocking.md` | Route interception, mocking |
+| Configuration | `../../../../Global_References/Software_Engineering_and_Other/playwright-expert_configuration.md` | playwright.config.ts setup |
+| Debugging | `../../../../Global_References/Software_Engineering_and_Other/debugging-flaky.md` | Flaky tests, trace viewer |
 
 ## Constraints
 

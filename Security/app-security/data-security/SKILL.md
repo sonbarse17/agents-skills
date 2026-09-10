@@ -488,12 +488,12 @@ Applying k-anonymity or differential privacy without testing against known attac
 - Privacy-by-design must be integrated from system design phase, not retrofitted
 
 ## References
-  - ../../../Global_References/data-loss-prevention.md — Data Loss Prevention (DLP)
-  - ../../../Global_References/data-masking-classification.md — Data Masking, Classification & Compliance
-  - ../../../Global_References/data-privacy-compliance.md — Data Privacy Compliance
-  - ../../../Global_References/data-security-advanced.md — Data Security Advanced Topics
-  - ../../../Global_References/data-security-fundamentals.md — Data Security Fundamentals
-  - ../../../Global_References/encryption-key-mgmt.md — Encryption & Key Management
+  - ../../../Global_References/Security/data-loss-prevention.md — Data Loss Prevention (DLP)
+  - ../../../Global_References/Security/data-masking-classification.md — Data Masking, Classification & Compliance
+  - ../../../Global_References/Security/data-privacy-compliance.md — Data Privacy Compliance
+  - ../../../Global_References/Security/data-security-advanced.md — Data Security Advanced Topics
+  - ../../../Global_References/Security/data-security-fundamentals.md — Data Security Fundamentals
+  - ../../../Global_References/Security/encryption-key-mgmt.md — Encryption & Key Management
 ## Handoff
 For infrastructure security controls, hand off to `devops-[cloud-cost-optimization](../../DevOps_and_Cloud/Cloud_Providers/cloud-[cost-optimization](../../DevOps_and_Cloud/Cloud_Providers/cost-optimization/SKILL.md)/SKILL.md)`. For data quality and governance, hand off to `data-quality`.
 ## Implementation Patterns

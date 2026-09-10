@@ -379,5 +379,5 @@ asyncio.run(main())
 
 | File | Contents |
 |------|----------|
-| [../../../../../Global_References/m365-agents-py_capabilities.md](../../../../Global_References/m365-agents-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
+| [../../../../Global_References/AI_and_Agents/m365-agents-py_capabilities.md](../../../../Global_References/AI_and_Agents/m365-agents-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
 

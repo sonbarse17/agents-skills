@@ -444,11 +444,11 @@ invariant solvency()
     totalAssets() >= totalSupply()
     filtered on f { f.contract != currentContract }
 ```
-  - ../../../Global_References/bug-bounty-program.md — Bug Bounty Programs for Blockchain Projects
-  - ../../../Global_References/economic-security.md — Economic Security in Blockchain Systems
-  - ../../../Global_References/formal-verification-deep.md — Formal Verification for Smart Contracts
+  - ../../Global_References/Blockchain_and_Web3/bug-bounty-program.md — Bug Bounty Programs for Blockchain Projects
+  - ../../Global_References/Blockchain_and_Web3/economic-security.md — Economic Security in Blockchain Systems
+  - ../../Global_References/Blockchain_and_Web3/formal-verification-deep.md — Formal Verification for Smart Contracts
   - ../../../Global_References/[incident-response](../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md).md — Blockchain [Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response
-  - ../../../Global_References/smart-contract-security.md — Smart Contract Security
+  - ../../Global_References/Blockchain_and_Web3/smart-contract-security.md — Smart Contract Security
   - ../../../Global_References/[threat-modeling](../../Security/threat-modeling/threat-modeling/SKILL.md).md — Threat Modeling for Blockchain Systems
   - references/blockchain-vulnerability-catalog.md — Common Blockchain Vulnerabilities Catalog
   - references/cross-chain-security.md — Cross-Chain Security Considerations

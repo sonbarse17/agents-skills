@@ -213,14 +213,14 @@ docs/
 - Add `Dockerfile` placeholder for containerized deployments
 
 ## References
-  - ../../../Global_References/boilerplate-generation.md — Boilerplate Generation
-  - ../../../Global_References/config-reference.md — Config File Reference
-  - ../../../Global_References/config-templates.md — Config Templates Reference
-  - ../../../Global_References/project-init-advanced.md — Project Init Advanced Topics
-  - ../../../Global_References/project-init-checklist.md — Project Init Checklist
-  - ../../../Global_References/project-init-fundamentals.md — Project Init Fundamentals
-  - ../../../Global_References/project-scaffold.md — Project Scaffolding Reference
-  - ../../../Global_References/stack-templates.md — Stack Templates
+  - ../../../../Global_References/Software_Engineering_and_Other/boilerplate-generation.md — Boilerplate Generation
+  - ../../../../Global_References/Software_Engineering_and_Other/config-reference.md — Config File Reference
+  - ../../../../Global_References/Software_Engineering_and_Other/config-templates.md — Config Templates Reference
+  - ../../../../Global_References/Software_Engineering_and_Other/project-init-advanced.md — Project Init Advanced Topics
+  - ../../../../Global_References/Software_Engineering_and_Other/project-init-checklist.md — Project Init Checklist
+  - ../../../../Global_References/Software_Engineering_and_Other/project-init-fundamentals.md — Project Init Fundamentals
+  - ../../../../Global_References/Software_Engineering_and_Other/project-scaffold.md — Project Scaffolding Reference
+  - ../../../../Global_References/Software_Engineering_and_Other/stack-templates.md — Stack Templates
 
 ## Project Kickoff Checklist
 

@@ -241,7 +241,7 @@ rules:
 spectral lint openapi.yaml --ruleset .spectral-owasp.yaml
 ```
 
-For complete OWASP API Security Top 10 rule mappings, see `../../../Global_References/owasp_api_mappings.md`.
+For complete OWASP API Security Top 10 rule mappings, see `../../../../Global_References/Software_Engineering_and_Other/owasp_api_mappings.md`.
 
 ### Step 4: Custom Security Rule Development
 
@@ -310,7 +310,7 @@ rules:
 ```
 
 **Custom Rule Development Resources:**
-- `../../../Global_References/custom_rules_guide.md` - Complete rule authoring guide with functions
+- `../../../../Global_References/Software_Engineering_and_Other/custom_rules_guide.md` - Complete rule authoring guide with functions
 - `references/custom_functions.md` - Creating custom JavaScript/[TypeScript](../../../Frontend/common/typescript/SKILL.md) functions
 - `assets/rule-templates/` - Reusable rule templates for common security patterns
 

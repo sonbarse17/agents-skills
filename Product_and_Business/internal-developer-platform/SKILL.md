@@ -31,7 +31,7 @@ they don't have to. **A platform earns adoption by being the fastest path to don
 path allowed.**
 
 For standing up a portal — catalog, scaffolder templates, and adoption metrics — read
-`../../../Global_References/building-a-portal.md`.
+`../../Global_References/Product_and_Business/building-a-portal.md`.
 
 ## 1. Treat the platform as a product with real users
 

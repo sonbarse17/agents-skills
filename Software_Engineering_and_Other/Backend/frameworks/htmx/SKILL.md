@@ -389,14 +389,14 @@ app.get('/contacts', (req, res) => {
 - Keep server endpoints idempotent when possible.
 
 ## References
-  - ../../../Global_References/htmx-advanced.md — htmx Advanced Patterns
-  - ../../../Global_References/htmx-deployment.md — htmx Deployment
-  - ../../../Global_References/htmx-fundamentals.md — Htmx Fundamentals
-  - ../../../Global_References/htmx-patterns.md — htmx Patterns & Best Practices
-  - ../../../Global_References/htmx-setup.md — htmx Setup Guide
-  - ../../../Global_References/htmx-testing.md — htmx Testing Reference
-  - ../../../Global_References/htmx-advanced-patterns.md — Advanced htmx Patterns
-  - ../../../Global_References/htmx-server-integration.md — htmx Server Integration Reference
+  - ../../../../Global_References/Software_Engineering_and_Other/htmx-advanced.md — htmx Advanced Patterns
+  - ../../../../Global_References/Software_Engineering_and_Other/htmx-deployment.md — htmx Deployment
+  - ../../../../Global_References/Software_Engineering_and_Other/htmx-fundamentals.md — Htmx Fundamentals
+  - ../../../../Global_References/Software_Engineering_and_Other/htmx-patterns.md — htmx Patterns & Best Practices
+  - ../../../../Global_References/Software_Engineering_and_Other/htmx-setup.md — htmx Setup Guide
+  - ../../../../Global_References/Software_Engineering_and_Other/htmx-testing.md — htmx Testing Reference
+  - ../../../../Global_References/Software_Engineering_and_Other/htmx-advanced-patterns.md — Advanced htmx Patterns
+  - ../../../../Global_References/Software_Engineering_and_Other/htmx-server-integration.md — htmx Server Integration Reference
 
 ## Handoff
 No artifact produced.

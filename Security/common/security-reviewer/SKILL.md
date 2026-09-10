@@ -64,12 +64,12 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| SAST Tools | `../../../Global_References/security-reviewer_sast-tools.md` | Running automated scans |
-| Vulnerability Patterns | `../../../Global_References/vulnerability-patterns.md` | SQL injection, XSS, manual review |
-| Secret Scanning | `../../../Global_References/secret-scanning.md` | Gitleaks, finding hardcoded secrets |
+| SAST Tools | `../../../Global_References/Security/security-reviewer_sast-tools.md` | Running automated scans |
+| Vulnerability Patterns | `../../../Global_References/Security/vulnerability-patterns.md` | SQL injection, XSS, manual review |
+| Secret Scanning | `../../../Global_References/Security/secret-scanning.md` | Gitleaks, finding hardcoded secrets |
 | Penetration Testing | `../../../Global_References/[penetration-testing](../../pentest-redteam/penetration-testing/SKILL.md).md` | Active testing, reconnaissance, exploitation |
-| Infrastructure Security | `../../../Global_References/infrastructure-security.md` | [DevSecOps](../devsecops/SKILL.md), cloud security, compliance |
-| Report Template | `../../../Global_References/security-reviewer_report-template.md` | Writing security report |
+| Infrastructure Security | `../../../Global_References/Security/infrastructure-security.md` | [DevSecOps](../devsecops/SKILL.md), cloud security, compliance |
+| Report Template | `../../../Global_References/Security/security-reviewer_report-template.md` | Writing security report |
 
 ## Constraints
 

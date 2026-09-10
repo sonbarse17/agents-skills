@@ -427,12 +427,12 @@ it('dispatches custom event on button click', async () => {
 - Use lit-html directives (`repeat`, `classMap`, `ifDefined`, `when`) over imperative DOM.
 
 ## References
-  - ../../../Global_References/lit-advanced.md — Lit Advanced
-  - ../../../Global_References/lit-architecture.md — Lit Architecture Patterns
-  - ../../../Global_References/lit-deployment.md — Lit Deployment
-  - ../../../Global_References/lit-essentials.md — Lit Essentials
-  - ../../../Global_References/lit-fundamentals.md — Lit Fundamentals
-  - ../../../Global_References/lit-testing.md — Lit Testing Reference
+  - ../../../../Global_References/Software_Engineering_and_Other/lit-advanced.md — Lit Advanced
+  - ../../../../Global_References/Software_Engineering_and_Other/lit-architecture.md — Lit Architecture Patterns
+  - ../../../../Global_References/Software_Engineering_and_Other/lit-deployment.md — Lit Deployment
+  - ../../../../Global_References/Software_Engineering_and_Other/lit-essentials.md — Lit Essentials
+  - ../../../../Global_References/Software_Engineering_and_Other/lit-fundamentals.md — Lit Fundamentals
+  - ../../../../Global_References/Software_Engineering_and_Other/lit-testing.md — Lit Testing Reference
 
 ## Handoff
 No artifact produced.

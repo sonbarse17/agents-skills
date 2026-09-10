@@ -575,14 +575,14 @@ Primary use case?
 - Validate schemas in CI/CD before merging PRs
 
 ## References
-  - ../../../Global_References/registry-setup.md — Schema Registry Setup
-  - ../../../Global_References/schema-evolution.md — Schema Evolution
-  - ../../../Global_References/schema-governance.md — Schema Governance
-  - ../../../Global_References/schema-migration-strategies.md — Schema Migration Strategies
-  - ../../../Global_References/schema-registry-operations.md — Schema Registry Operations Reference
-  - ../../../Global_References/schema-registry-tools.md — Schema Registry Ecosystem Tools
-  - ../../../Global_References/schema-registry-evolution.md — Schema Registry Evolution Deep Dive
-  - ../../../Global_References/schema-registry-integration-patterns.md — Integration Patterns Reference
+  - ../../Global_References/Data_Engineering/registry-setup.md — Schema Registry Setup
+  - ../../Global_References/Data_Engineering/schema-evolution.md — Schema Evolution
+  - ../../Global_References/Data_Engineering/schema-governance.md — Schema Governance
+  - ../../Global_References/Data_Engineering/schema-migration-strategies.md — Schema Migration Strategies
+  - ../../Global_References/Data_Engineering/schema-registry-operations.md — Schema Registry Operations Reference
+  - ../../Global_References/Data_Engineering/schema-registry-tools.md — Schema Registry Ecosystem Tools
+  - ../../Global_References/Data_Engineering/schema-registry-evolution.md — Schema Registry Evolution Deep Dive
+  - ../../Global_References/Data_Engineering/schema-registry-integration-patterns.md — Integration Patterns Reference
 ## Handoff
 `[data-data-platform](../data-platform/SKILL.md)` for registry deployment. `[data-data-catalog](../data-catalog/SKILL.md)` for schema metadata. `[data-data-contracts](../data-contracts/SKILL.md)` for data contract schema integration. `[data-data-observability](../data-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)` for schema drift [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
 

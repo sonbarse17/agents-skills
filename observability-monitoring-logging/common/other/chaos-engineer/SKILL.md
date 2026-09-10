@@ -55,11 +55,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Experiments | `../../../Global_References/chaos-engineer_experiment-design.md` | Designing hypothesis, blast radius, rollback |
-| Infrastructure | `../../../Global_References/infrastructure-chaos.md` | Server, network, zone, region failures |
+| Experiments | `../../../../Global_References/observability-monitoring-logging/chaos-engineer_experiment-design.md` | Designing hypothesis, blast radius, rollback |
+| Infrastructure | `../../../../Global_References/observability-monitoring-logging/infrastructure-chaos.md` | Server, network, zone, region failures |
 | [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) | `../../../Global_References/[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-chaos.md` | Pod, node, Litmus, chaos mesh experiments |
-| Tools & Automation | `../../../Global_References/chaos-tools.md` | Chaos Monkey, Gremlin, Pumba, CI/CD integration |
-| Game Days | `../../../Global_References/game-days.md` | Planning, executing, learning from game days |
+| Tools & Automation | `../../../../Global_References/observability-monitoring-logging/chaos-tools.md` | Chaos Monkey, Gremlin, Pumba, CI/CD integration |
+| Game Days | `../../../../Global_References/observability-monitoring-logging/game-days.md` | Planning, executing, learning from game days |
 
 ## Safety Checklist
 

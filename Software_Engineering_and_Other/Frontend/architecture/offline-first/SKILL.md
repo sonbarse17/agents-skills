@@ -547,12 +547,12 @@ fun threeWayMerge(base: Document, local: Document, remote: Document): Document {
 - Concurrent sync: same account on multiple devices, verify eventual consistency
 
 ## References
-- `../../../Global_References/conflict-resolution.md` — Conflict Resolution for Offline-First
-- `../../../Global_References/local-storage.md` — Local Storage
-- `../../../Global_References/mobile-database.md` — Mobile Local Database
-- `../../../Global_References/offline-first_offline-first-architecture.md` — Offline-First Architecture
-- `../../../Global_References/offline-sync.md` — Offline Sync
-- `../../../Global_References/sync-strategies.md` — Sync Strategies
+- `../../../../Global_References/Software_Engineering_and_Other/conflict-resolution.md` — Conflict Resolution for Offline-First
+- `../../../../Global_References/Software_Engineering_and_Other/local-storage.md` — Local Storage
+- `../../../../Global_References/Software_Engineering_and_Other/mobile-database.md` — Mobile Local Database
+- `../../../../Global_References/Software_Engineering_and_Other/offline-first_offline-first-architecture.md` — Offline-First Architecture
+- `../../../../Global_References/Software_Engineering_and_Other/offline-sync.md` — Offline Sync
+- `../../../../Global_References/Software_Engineering_and_Other/sync-strategies.md` — Sync Strategies
 
 ## Handoff
 After offline-first setup, hand off to:

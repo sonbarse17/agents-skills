@@ -42,11 +42,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Protocol | `../../../Global_References/websocket-engineer_protocol.md` | WebSocket handshake, frames, ping/pong, close codes |
-| Scaling | `../../../Global_References/scaling.md` | Horizontal scaling, Redis pub/sub, sticky sessions |
-| Patterns | `../../../Global_References/websocket-engineer_patterns.md` | Rooms, namespaces, broadcasting, acknowledgments |
-| Security | `../../../Global_References/websocket-engineer_security.md` | Authentication, authorization, rate limiting, CORS |
-| Alternatives | `../../../Global_References/alternatives.md` | SSE, long polling, when to choose WebSockets |
+| Protocol | `../../../../Global_References/Software_Engineering_and_Other/websocket-engineer_protocol.md` | WebSocket handshake, frames, ping/pong, close codes |
+| Scaling | `../../../../Global_References/Software_Engineering_and_Other/scaling.md` | Horizontal scaling, Redis pub/sub, sticky sessions |
+| Patterns | `../../../../Global_References/Software_Engineering_and_Other/websocket-engineer_patterns.md` | Rooms, namespaces, broadcasting, acknowledgments |
+| Security | `../../../../Global_References/Software_Engineering_and_Other/websocket-engineer_security.md` | Authentication, authorization, rate limiting, CORS |
+| Alternatives | `../../../../Global_References/Software_Engineering_and_Other/alternatives.md` | SSE, long polling, when to choose WebSockets |
 
 ## Code Examples
 

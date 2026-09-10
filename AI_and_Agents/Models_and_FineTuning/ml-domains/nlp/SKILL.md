@@ -525,14 +525,14 @@ tokenizer.save("domain_tokenizer.json")
 - Save best checkpoint by validation metric.
 
 ## References
-  - ../../../Global_References/huggingface-transformers.md — HuggingFace Transformers
-  - ../../../Global_References/nlp-advanced.md — NLP Advanced Topics
-  - ../../../Global_References/nlp-fundamentals.md — NLP Fundamentals
-  - ../../../Global_References/nlp-model-training.md — NLP Model Training
-  - ../../../Global_References/nlp-pipeline.md — NLP Pipeline
-  - ../../../Global_References/nlp-production.md — NLP Production Deployment
-  - ../../../Global_References/prompt-engineering.md — Prompt Engineering for NLP
-  - ../../../Global_References/text-processing.md — NLP Text Processing
+  - ../../../../Global_References/AI_and_Agents/huggingface-transformers.md — HuggingFace Transformers
+  - ../../../../Global_References/AI_and_Agents/nlp-advanced.md — NLP Advanced Topics
+  - ../../../../Global_References/AI_and_Agents/nlp-fundamentals.md — NLP Fundamentals
+  - ../../../../Global_References/AI_and_Agents/nlp-model-training.md — NLP Model Training
+  - ../../../../Global_References/AI_and_Agents/nlp-pipeline.md — NLP Pipeline
+  - ../../../../Global_References/AI_and_Agents/nlp-production.md — NLP Production Deployment
+  - ../../../../Global_References/AI_and_Agents/prompt-engineering.md — Prompt Engineering for NLP
+  - ../../../../Global_References/AI_and_Agents/text-processing.md — NLP Text Processing
 ## Handoff
 Hand off to ml-[experiment-tracking](../../../../Data_Engineering/experiment-tracking/SKILL.md) for training runs. For LLM-specific optimization (prompting, RAG), hand off to ai-prompt-engineering.
 

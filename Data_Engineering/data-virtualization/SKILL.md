@@ -495,14 +495,14 @@ WHERE o.total_amount > 1000;
 - Budget 20% overhead on worker memory for query peak usage
 
 ## References
-  - ../../../Global_References/federation-deployment.md — Federation Deployment
-  - ../../../Global_References/federation-optimization.md — Federation Query Optimization Reference
-  - ../../../Global_References/trino-architecture.md — Trino Architecture
-  - ../../../Global_References/virtualization-connectors.md — Virtualization Connectors
-  - ../../../Global_References/virtualization-cost-analysis.md — Virtualization Cost Analysis
-  - ../../../Global_References/virtualization-platforms.md — Data Virtualization Platforms
-  - ../../../Global_References/virtualization-query-optimization.md — Virtualization Query Optimization
-  - ../../../Global_References/virtualization-security.md — Virtualization Security Reference
+  - ../../Global_References/Data_Engineering/federation-deployment.md — Federation Deployment
+  - ../../Global_References/Data_Engineering/federation-optimization.md — Federation Query Optimization Reference
+  - ../../Global_References/Data_Engineering/trino-architecture.md — Trino Architecture
+  - ../../Global_References/Data_Engineering/virtualization-connectors.md — Virtualization Connectors
+  - ../../Global_References/Data_Engineering/virtualization-cost-analysis.md — Virtualization Cost Analysis
+  - ../../Global_References/Data_Engineering/virtualization-platforms.md — Data Virtualization Platforms
+  - ../../Global_References/Data_Engineering/virtualization-query-optimization.md — Virtualization Query Optimization
+  - ../../Global_References/Data_Engineering/virtualization-security.md — Virtualization Security Reference
 ## Architecture Decision Trees
 
 ```

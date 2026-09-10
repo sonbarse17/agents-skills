@@ -514,17 +514,17 @@ Conjugate Gradient: H * p = -grad, solve iteratively
 ```
 
 ## References
-  - ../../../Global_References/calculus.md — Calculus for Machine Learning
-  - ../../../Global_References/deep-learning-math.md — Deep Learning Mathematics
-  - ../../../Global_References/information-theory.md — Information Theory for Machine Learning
-  - ../../../Global_References/linear-algebra.md — Linear Algebra for Machine Learning
-  - ../../../Global_References/loss-functions.md — Loss Functions for Machine Learning
-  - ../../../Global_References/math-foundations-advanced.md — Math Foundations Advanced Topics
-  - ../../../Global_References/math-foundations-fundamentals.md — Math Foundations Fundamentals
-  - ../../../Global_References/ml-algorithms.md — Machine Learning Algorithms — Mathematical Derivations
-  - ../../../Global_References/notation-reference.md — Notation Reference for Machine Learning Mathematics
-  - ../../../Global_References/math-foundations_optimization.md — Optimization for Machine Learning
-  - ../../../Global_References/probability-statistics.md — Probability and Statistics for Machine Learning
+  - ../../../../Global_References/Software_Engineering_and_Other/calculus.md — Calculus for Machine Learning
+  - ../../../../Global_References/Software_Engineering_and_Other/deep-learning-math.md — Deep Learning Mathematics
+  - ../../../../Global_References/Software_Engineering_and_Other/information-theory.md — Information Theory for Machine Learning
+  - ../../../../Global_References/Software_Engineering_and_Other/linear-algebra.md — Linear Algebra for Machine Learning
+  - ../../../../Global_References/Software_Engineering_and_Other/loss-functions.md — Loss Functions for Machine Learning
+  - ../../../../Global_References/Software_Engineering_and_Other/math-foundations-advanced.md — Math Foundations Advanced Topics
+  - ../../../../Global_References/Software_Engineering_and_Other/math-foundations-fundamentals.md — Math Foundations Fundamentals
+  - ../../../../Global_References/Software_Engineering_and_Other/ml-algorithms.md — Machine Learning Algorithms — Mathematical Derivations
+  - ../../../../Global_References/Software_Engineering_and_Other/notation-reference.md — Notation Reference for Machine Learning Mathematics
+  - ../../../../Global_References/Software_Engineering_and_Other/math-foundations_optimization.md — Optimization for Machine Learning
+  - ../../../../Global_References/Software_Engineering_and_Other/probability-statistics.md — Probability and Statistics for Machine Learning
 ## Handoff
 Hand off to `ml/classical-ml/SKILL.md` if the user needs implementation rather than mathematical understanding. Hand off to `ml/deep-learning/SKILL.md` for DL-specific implementation patterns.
 

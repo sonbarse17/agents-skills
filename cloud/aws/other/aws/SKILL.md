@@ -532,14 +532,14 @@ Storing AWS access keys in code, config files, or environment variables. Use IAM
 Terraform HCL, [CloudFormation](../../../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md) YAML, AWS CLI commands, or IAM policy JSON.
 
 ## References
-  - ../../../Global_References/aws-advanced.md
-  - ../../../Global_References/aws-fundamentals.md
-  - ../../../Global_References/core-services.md
-  - ../../../Global_References/ecs-architecture.md
-  - ../../../Global_References/iam-policies.md
-  - ../../../Global_References/lambda-triggers.md
-  - ../../../Global_References/networking.md
-  - ../../../Global_References/well-architected.md
+  - ../../../../Global_References/cloud/aws-advanced.md
+  - ../../../../Global_References/cloud/aws-fundamentals.md
+  - ../../../../Global_References/cloud/core-services.md
+  - ../../../../Global_References/cloud/ecs-architecture.md
+  - ../../../../Global_References/cloud/iam-policies.md
+  - ../../../../Global_References/cloud/lambda-triggers.md
+  - ../../../../Global_References/cloud/networking.md
+  - ../../../../Global_References/cloud/well-architected.md
   - references/service-comparison-guide.md
 
 ## Handoff

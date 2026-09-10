@@ -1558,14 +1558,14 @@ Read project files:
 - If the user asks a question outside routing (e.g., "how do I do X"), respond with: "That question should be handled by {[skill-name](../../DevOps_and_Cloud/Observability_and_SecOps/_template/SKILL.md)}. Activate that skill with: {trigger phrase}"
 
 ## References
-  - ../../../Global_References/master-orchestrator-advanced.md — Master Orchestrator Advanced Topics
-  - ../../../Global_References/master-orchestrator-fundamentals.md — Master Orchestrator Fundamentals
-  - ../../../Global_References/orchestration-engine.md — Master Orchestrator
-  - ../../../Global_References/orchestrator-registration.md — Orchestrator Registration
-  - ../../../Global_References/phase-workflow.md — Phase Workflow Reference
-  - ../../../Global_References/routing-decision-tree.md — Routing Decision Tree
-  - ../../../Global_References/skill-registry.md — Skill Registry
-  - ../../../Global_References/skill-routing.md — Skill Routing Reference
+  - ../../Global_References/Product_and_Business/master-orchestrator-advanced.md — Master Orchestrator Advanced Topics
+  - ../../Global_References/Product_and_Business/master-orchestrator-fundamentals.md — Master Orchestrator Fundamentals
+  - ../../Global_References/Product_and_Business/orchestration-engine.md — Master Orchestrator
+  - ../../Global_References/Product_and_Business/orchestrator-registration.md — Orchestrator Registration
+  - ../../Global_References/Product_and_Business/phase-workflow.md — Phase Workflow Reference
+  - ../../Global_References/Product_and_Business/routing-decision-tree.md — Routing Decision Tree
+  - ../../Global_References/Product_and_Business/skill-registry.md — Skill Registry
+  - ../../Global_References/Product_and_Business/skill-routing.md — Skill Routing Reference
 ## Handoff
 This skill does not produce artifacts. It routes to the appropriate next skill.
 Carry forward: routing decision, detected stack, detected framework, existing artifacts found.

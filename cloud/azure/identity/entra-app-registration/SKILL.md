@@ -58,8 +58,8 @@ Create an app registration in the Azure portal or using Azure CLI.
 3. Provide name, supported account types, and redirect URI
 4. Click "Register"
 
-**CLI Method:** See [../../../Global_References/cli-commands.md](../../../../Global_References/cli-commands.md)
-**IaC Method:** See [../../../Global_References/BICEP-EXAMPLE.bicep](../../../../Global_References/BICEP-EXAMPLE.bicep)
+**CLI Method:** See [../../../../Global_References/cloud/cli-commands.md](../../../../Global_References/cloud/cli-commands.md)
+**IaC Method:** See [../../../../Global_References/cloud/BICEP-EXAMPLE.bicep](../../../../Global_References/cloud/BICEP-EXAMPLE.bicep)
 
 It's highly recommended to use the IaC to manage Entra app registration if you already use IaC in your project, need a scalable solution for managing lots of app registrations or need fine-grained [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) history of the configuration changes. 
 
@@ -82,7 +82,7 @@ Grant your application permission to access Microsoft APIs or your own APIs.
 - `Directory.Read.All` - Read directory data
 - `Mail.Send` - Send mail as a user
 
-**Details:** See [../../../Global_References/api-permissions.md](../../../../Global_References/api-permissions.md)
+**Details:** See [../../../../Global_References/cloud/api-permissions.md](../../../../Global_References/cloud/api-permissions.md)
 
 ### Step 4: Create Client Credentials (if needed)
 
@@ -103,8 +103,8 @@ For confidential client applications (web apps, services), create a client secre
 Integrate the OAuth flow into your application code.
 
 **See:**
-- [../../../Global_References/oauth-flows.md](../../../../Global_References/oauth-flows.md) - OAuth 2.0 flow details
-- [../../../Global_References/console-app-example.md](../../../../Global_References/console-app-example.md) - Console app implementation
+- [../../../../Global_References/cloud/oauth-flows.md](../../../../Global_References/cloud/oauth-flows.md) - OAuth 2.0 flow details
+- [../../../../Global_References/cloud/console-app-example.md](../../../../Global_References/cloud/console-app-example.md) - Console app implementation
 
 ## Common Patterns
 
@@ -118,7 +118,7 @@ Walk user through their first app registration step-by-step.
 - Redirect URIs (if applicable)
 - Required permissions
 
-**Script:** See [../../../Global_References/first-app-registration.md](../../../../Global_References/first-app-registration.md)
+**Script:** See [../../../../Global_References/cloud/first-app-registration.md](../../../../Global_References/cloud/first-app-registration.md)
 
 ### Pattern 2: Console Application with User Authentication
 
@@ -129,7 +129,7 @@ Create a .NET/[Python](../../../../Software_Engineering_and_Other/Languages/pyth
 - Authentication library (MSAL recommended)
 - Required permissions
 
-**Example:** See [../../../Global_References/console-app-example.md](../../../../Global_References/console-app-example.md)
+**Example:** See [../../../../Global_References/cloud/console-app-example.md](../../../../Global_References/cloud/console-app-example.md)
 
 ### Pattern 3: Service-to-Service Authentication
 
@@ -140,7 +140,7 @@ Set up daemon/service authentication without user interaction.
 - Target API/resource
 - Whether to use secret or certificate
 
-**Implementation:** Use Client Credentials flow (see [../../../Global_References/oauth-flows.md#client-credentials-flow](../../../../Global_References/oauth-flows.md#client-credentials-flow))
+**Implementation:** Use Client Credentials flow (see [../../../../Global_References/cloud/oauth-flows.md#client-credentials-flow](../../../../Global_References/cloud/oauth-flows.md#client-credentials-flow))
 
 ## MCP Tools and CLI
 
@@ -155,7 +155,7 @@ Set up daemon/service authentication without user interaction.
 | `az ad app credential reset` | Generate new client secret |
 | `az ad sp create` | Create service principal |
 
-**Complete reference:** See [../../../Global_References/cli-commands.md](../../../../Global_References/cli-commands.md)
+**Complete reference:** See [../../../../Global_References/cloud/cli-commands.md](../../../../Global_References/cloud/cli-commands.md)
 
 ### Microsoft Authentication Library (MSAL)
 
@@ -166,7 +166,7 @@ MSAL is the recommended library for integrating Microsoft identity platform.
 - JavaScript/[TypeScript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) - `@azure/msal-browser`, `@azure/msal-node`
 - [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) - `msal`
 
-**Examples:** See [../../../Global_References/console-app-example.md](../../../../Global_References/console-app-example.md)
+**Examples:** See [../../../../Global_References/cloud/console-app-example.md](../../../../Global_References/cloud/console-app-example.md)
 
 ## Security Best Practices
 
@@ -190,12 +190,12 @@ MSAL is the recommended library for integrating Microsoft identity platform.
 
 ## References
 
-- [OAuth Flows](../../../../Global_References/oauth-flows.md) - Detailed OAuth 2.0 flow explanations
-- [CLI Commands](../../../../Global_References/cli-commands.md) - Azure CLI reference for app registrations
-- [Console App Example](../../../../Global_References/console-app-example.md) - Complete working examples
-- [First App Registration](../../../../Global_References/first-app-registration.md) - Step-by-step guide for beginners
-- [API Permissions](../../../../Global_References/api-permissions.md) - Understanding and configuring permissions
-- [Troubleshooting](../../../../Global_References/entra-app-registration_troubleshooting.md) - Common issues and solutions
+- [OAuth Flows](../../../../Global_References/cloud/oauth-flows.md) - Detailed OAuth 2.0 flow explanations
+- [CLI Commands](../../../../Global_References/cloud/cli-commands.md) - Azure CLI reference for app registrations
+- [Console App Example](../../../../Global_References/cloud/console-app-example.md) - Complete working examples
+- [First App Registration](../../../../Global_References/cloud/first-app-registration.md) - Step-by-step guide for beginners
+- [API Permissions](../../../../Global_References/cloud/api-permissions.md) - Understanding and configuring permissions
+- [Troubleshooting](../../../../Global_References/cloud/entra-app-registration_troubleshooting.md) - Common issues and solutions
 
 ## External Resources
 

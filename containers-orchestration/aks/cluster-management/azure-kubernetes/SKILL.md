@@ -28,7 +28,7 @@ depends_on:
 
 > **AUTHORITATIVE GUIDANCE — MANDATORY COMPLIANCE**
 >
-> This skill produces a **recommended AKS cluster configuration** based on user requirements, distinguishing **Day-0 decisions** (networking, API server — hard to change later) from **Day-1 features** (can enable post-creation). See [CLI reference](../../../../Global_References/cli-reference.md) for commands.
+> This skill produces a **recommended AKS cluster configuration** based on user requirements, distinguishing **Day-0 decisions** (networking, API server — hard to change later) from **Day-1 features** (can enable post-creation). See [CLI reference](../../../../Global_References/containers-orchestration/cli-reference.md) for commands.
 
 ## Quick Reference
 | Property | Value |

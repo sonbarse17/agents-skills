@@ -349,7 +349,7 @@ except ConnectionError as e:
 
 ## References
 
-- **Detailed API Reference**: See [../../../Global_References/api-reference.md](../../../../../Global_References/api-reference.md)
+- **Detailed API Reference**: See [../../../../../Global_References/cloud/api-reference.md](../../../../../Global_References/cloud/api-reference.md)
 - **Complete Examples**: See [../../../Global_References/[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-voicelive-py_examples.md](../../../Global_References/[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-voicelive-py_examples.md)
-- **All Models & Types**: See [../../../Global_References/models.md](../../../../../Global_References/models.md)
+- **All Models & Types**: See [../../../../../Global_References/cloud/models.md](../../../../../Global_References/cloud/models.md)
 

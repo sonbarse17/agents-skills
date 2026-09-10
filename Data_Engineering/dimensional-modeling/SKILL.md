@@ -536,12 +536,12 @@ Symptom: every dimension normalized into 5-10 tables. Fix: denormalize into sing
 
 ## References
   - ../../../Global_References/data-[vault](../../Security/cryptography-secrets/vault/SKILL.md).md — Data [Vault](../../Security/cryptography-secrets/vault/SKILL.md) 2.0 Reference
-  - ../../../Global_References/dimensional-modeling-etl.md — Dimensional Modeling ETL
-  - ../../../Global_References/dimensional-modeling-performance.md — Dimensional Modeling Performance
-  - ../../../Global_References/fact-table-design.md — Fact Table Design Reference
-  - ../../../Global_References/kimball-methodology.md — Kimball Methodology Reference
-  - ../../../Global_References/scd-types.md — Slowly Changing Dimensions Reference
-  - ../../../Global_References/star-schema.md — Star Schema Design Reference
+  - ../../Global_References/Data_Engineering/dimensional-modeling-etl.md — Dimensional Modeling ETL
+  - ../../Global_References/Data_Engineering/dimensional-modeling-performance.md — Dimensional Modeling Performance
+  - ../../Global_References/Data_Engineering/fact-table-design.md — Fact Table Design Reference
+  - ../../Global_References/Data_Engineering/kimball-methodology.md — Kimball Methodology Reference
+  - ../../Global_References/Data_Engineering/scd-types.md — Slowly Changing Dimensions Reference
+  - ../../Global_References/Data_Engineering/star-schema.md — Star Schema Design Reference
 ## Handoff
 `[data-etl-pipeline](../etl-pipeline/SKILL.md)` for ETL/ELT implementation of dimensional models
 `[data-data-warehouse](../data-warehouse/SKILL.md)` for warehouse platform-specific optimizations

@@ -623,7 +623,7 @@ jobs:
   - references/helm-secrets.md — SOPS and SealedSecrets for Helm
   - references/helm-ci-cd.md — Helm CI/CD Pipeline Patterns
   - references/helm-testing.md — Helm Unit and Integration Testing
-  - ../../../Global_References/helm-security.md — Chart Signing and Supply Chain Security
+  - ../../../../Global_References/containers-orchestration/helm-security.md — Chart Signing and Supply Chain Security
 ## Handoff
 - `devops-[kubernetes](../../../kubernetes/other/kubernetes/SKILL.md)` for deploying Helm charts to [Kubernetes](../../../kubernetes/other/kubernetes/SKILL.md) clusters.
 - `devops-[argo-cd](../../../argocd/other/argo-cd/SKILL.md)` for [GitOps](../../../common/gitops/gitops/SKILL.md) deployment of Helm charts via [ArgoCD](../../../argocd/other/argocd/SKILL.md).

@@ -457,14 +457,14 @@ A cybersecurity startup launched a new compliance tool. Two-channel experiment: 
 Decision: maintained both channels but invested differently. Allocated 70% of GTM budget to sales-led (higher ROI despite higher CAC) and 30% to product-led (growth potential, lower touch). Lesson: channel selection depends on ICP ACV and conversion economics, not just reach.
 
 ## References
-  - ../../../Global_References/channel-strategy.md — Channel Strategy
-  - ../../../Global_References/go-to-market-advanced.md — Go To Market Advanced Topics
-  - ../../../Global_References/go-to-market-fundamentals.md — Go To Market Fundamentals
-  - ../../../Global_References/gtm-launch-execution.md — GTM Launch Execution Playbook
-  - ../../../Global_References/gtm-strategy-playbook.md — GTM Strategy Playbook
-  - ../../../Global_References/launch-checklist.md — Launch Checklist
-  - ../../../Global_References/launch-tiers.md — Launch Tiers
-  - ../../../Global_References/positioning-guide.md — Product Positioning Guide
+  - ../../Global_References/Product_and_Business/channel-strategy.md — Channel Strategy
+  - ../../Global_References/Product_and_Business/go-to-market-advanced.md — Go To Market Advanced Topics
+  - ../../Global_References/Product_and_Business/go-to-market-fundamentals.md — Go To Market Fundamentals
+  - ../../Global_References/Product_and_Business/gtm-launch-execution.md — GTM Launch Execution Playbook
+  - ../../Global_References/Product_and_Business/gtm-strategy-playbook.md — GTM Strategy Playbook
+  - ../../Global_References/Product_and_Business/launch-checklist.md — Launch Checklist
+  - ../../Global_References/Product_and_Business/launch-tiers.md — Launch Tiers
+  - ../../Global_References/Product_and_Business/positioning-guide.md — Product Positioning Guide
 
 ## Handoff
 For pricing strategy support, hand off to `[product-pricing-strategy](../pricing-strategy/SKILL.md)`. For growth experiments post-launch, hand off to `[product-growth-engineering](../growth-engineering/SKILL.md)`. For customer journey analysis to inform GTM touchpoints, hand off to `[product-customer-journey](../customer-journey/SKILL.md)`. For experiment design on launch messaging, hand off to `[product-ab-testing](../ab-testing/SKILL.md)`.

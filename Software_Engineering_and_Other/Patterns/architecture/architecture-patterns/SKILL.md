@@ -83,7 +83,7 @@ Master proven backend architecture patterns including Clean Architecture, Hexago
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../../Global_References/details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../../Global_References/Software_Engineering_and_Other/details.md`. Read that file when the navigation tier above is insufficient.
 
 ## Testing — In-Memory Adapters
 
@@ -168,7 +168,7 @@ If the `Order` context is importing `User` entities from the `Identity` context,
 
 For detailed DDD bounded context mapping, full multi-service project trees, Anti-Corruption Layer implementations, and Onion Architecture comparisons, see:
 
-- [`../../../Global_References/advanced-patterns.md`](../../../../Global_References/advanced-patterns.md)
+- [`../../../../Global_References/Software_Engineering_and_Other/advanced-patterns.md`](../../../../Global_References/Software_Engineering_and_Other/advanced-patterns.md)
 
 ## Related Skills
 

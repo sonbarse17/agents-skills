@@ -512,12 +512,12 @@ const client = new PaymentServiceClient('payment-service:443', channelCredential
 - Every service must have independent backup and restore tested quarterly.
 
 ## References
-  - ../../../Global_References/communication-patterns.md — Communication Patterns
-  - ../../../Global_References/data-patterns.md — Data Patterns
-  - ../../../Global_References/decomposition-patterns.md — Decomposition Patterns
-  - ../../../Global_References/microservices-communication.md — Microservices Communication
+  - ../../../../Global_References/Software_Engineering_and_Other/communication-patterns.md — Communication Patterns
+  - ../../../../Global_References/Software_Engineering_and_Other/data-patterns.md — Data Patterns
+  - ../../../../Global_References/Software_Engineering_and_Other/decomposition-patterns.md — Decomposition Patterns
+  - ../../../../Global_References/Software_Engineering_and_Other/microservices-communication.md — Microservices Communication
   - ../../../Global_References/microservices-[observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md).md — Microservices [Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
-  - ../../../Global_References/microservices-testing.md — Microservices Testing
+  - ../../../../Global_References/Software_Engineering_and_Other/microservices-testing.md — Microservices Testing
 ## Handoff
 Hand off to `devops/[containerization](../../../../containers-orchestration/docker/other/containerization/SKILL.md)/SKILL.md` for container orchestration setup. Hand off to `backend/universal/event-driven/SKILL.md` for detailed event-driven patterns. Hand off to `backend/universal/database-patterns/SKILL.md` for data consistency strategies.
 ## Implementation Patterns

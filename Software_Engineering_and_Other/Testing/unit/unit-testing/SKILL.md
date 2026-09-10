@@ -399,16 +399,16 @@ Testing only the happy path (correct input, expected behavior) misses null/undef
 18. Console.log assertions in tests must be removed before committing — use spy on console
 
 ## References
-- ../../../Global_References/mocking-strategies.md — Mocking Strategies
-- ../../../Global_References/tdd-guide.md — TDD Guide
-- ../../../Global_References/test-doubles.md — Test Doubles Guide
-- ../../../Global_References/test-organization.md — Test Organization
-- ../../../Global_References/unit-testing_test-patterns.md — Unit Test Patterns
-- ../../../Global_References/unit-testing-advanced.md — Unit Testing Advanced Topics
-- ../../../Global_References/unit-testing-architecture.md — Unit Testing Architecture and System Design
-- ../../../Global_References/unit-testing-fundamentals.md — Unit Testing Fundamentals
-- ../../../Global_References/unit-testing-patterns.md — Unit Testing Patterns
-- ../../../Global_References/unit-testing-workflow-strategies.md — Unit Testing Workflow Strategies and Decision Frameworks
+- ../../../../Global_References/Software_Engineering_and_Other/mocking-strategies.md — Mocking Strategies
+- ../../../../Global_References/Software_Engineering_and_Other/tdd-guide.md — TDD Guide
+- ../../../../Global_References/Software_Engineering_and_Other/test-doubles.md — Test Doubles Guide
+- ../../../../Global_References/Software_Engineering_and_Other/test-organization.md — Test Organization
+- ../../../../Global_References/Software_Engineering_and_Other/unit-testing_test-patterns.md — Unit Test Patterns
+- ../../../../Global_References/Software_Engineering_and_Other/unit-testing-advanced.md — Unit Testing Advanced Topics
+- ../../../../Global_References/Software_Engineering_and_Other/unit-testing-architecture.md — Unit Testing Architecture and System Design
+- ../../../../Global_References/Software_Engineering_and_Other/unit-testing-fundamentals.md — Unit Testing Fundamentals
+- ../../../../Global_References/Software_Engineering_and_Other/unit-testing-patterns.md — Unit Testing Patterns
+- ../../../../Global_References/Software_Engineering_and_Other/unit-testing-workflow-strategies.md — Unit Testing Workflow Strategies and Decision Frameworks
 
 ## Handoff
 After unit testing, hand off to:

@@ -412,14 +412,14 @@ Relational vs NoSQL: relational databases provide ACID transactions, strong cons
 - Use TIMESTAMPTZ, never TIMESTAMP without timezone
 
 ## References
-  - ../../../Global_References/cockroachdb-yugabyte.md — CockroachDB and YugabyteDB Operational Guide
-  - ../../../Global_References/database-indexing.md — Database Indexing Reference
+  - ../../../../Global_References/Software_Engineering_and_Other/cockroachdb-yugabyte.md — CockroachDB and YugabyteDB Operational Guide
+  - ../../../../Global_References/Software_Engineering_and_Other/database-indexing.md — Database Indexing Reference
   - ../../../Global_References/[database-migration](../../common/database-migration/SKILL.md)-strategies.md — Database Migration Strategies Reference
-  - ../../../Global_References/distributed-sql-databases.md — Distributed SQL Databases
-  - ../../../Global_References/postgres-advanced.md — [PostgreSQL](../postgresql/SKILL.md) Advanced Internals
-  - ../../../Global_References/query-optimization.md — Query Optimization
-  - ../../../Global_References/relational-database-query-optimization.md — Query Optimization Deep Dive
-  - ../../../Global_References/relational-database-high-availability.md — High Availability Reference
+  - ../../../../Global_References/Software_Engineering_and_Other/distributed-sql-databases.md — Distributed SQL Databases
+  - ../../../../Global_References/Software_Engineering_and_Other/postgres-advanced.md — [PostgreSQL](../postgresql/SKILL.md) Advanced Internals
+  - ../../../../Global_References/Software_Engineering_and_Other/query-optimization.md — Query Optimization
+  - ../../../../Global_References/Software_Engineering_and_Other/relational-database-query-optimization.md — Query Optimization Deep Dive
+  - ../../../../Global_References/Software_Engineering_and_Other/relational-database-high-availability.md — High Availability Reference
 ## Architecture Decision Trees
 
 ```

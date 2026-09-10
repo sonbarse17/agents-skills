@@ -592,12 +592,12 @@ Use `RefreshDatabase` or `DatabaseTransactions` trait for isolation. Use `Http` 
 - Migrations are always backward-compatible — never drop columns without deprecation.
 
 ## References
-  - ../../../Global_References/artisan-commands.md — Artisan Commands
-  - ../../../Global_References/eloquent-orm.md — Eloquent ORM Patterns
-  - ../../../Global_References/laravel-middleware-validation.md — Middleware and Validation
-  - ../../../Global_References/laravel-queues.md — Queue Configuration
-  - ../../../Global_References/laravel-service-layer.md — Service Layer Pattern
-  - ../../../Global_References/laravel-testing.md — Testing Laravel
+  - ../../../../Global_References/Software_Engineering_and_Other/artisan-commands.md — Artisan Commands
+  - ../../../../Global_References/Software_Engineering_and_Other/eloquent-orm.md — Eloquent ORM Patterns
+  - ../../../../Global_References/Software_Engineering_and_Other/laravel-middleware-validation.md — Middleware and Validation
+  - ../../../../Global_References/Software_Engineering_and_Other/laravel-queues.md — Queue Configuration
+  - ../../../../Global_References/Software_Engineering_and_Other/laravel-service-layer.md — Service Layer Pattern
+  - ../../../../Global_References/Software_Engineering_and_Other/laravel-testing.md — Testing Laravel
 ## Handoff
 Hand off to `backend/php/pure/SKILL.md` for non-Laravel PHP patterns or `backend/universal/api-response/SKILL.md` for API response formatting.
 

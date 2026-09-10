@@ -42,11 +42,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Design Patterns | `../../../Global_References/cli-developer_design-patterns.md` | Subcommands, flags, config, architecture |
-| Node.js CLIs | `../../../Global_References/node-cli.md` | commander, yargs, inquirer, chalk |
+| Design Patterns | `../../../../Global_References/Software_Engineering_and_Other/cli-developer_design-patterns.md` | Subcommands, flags, config, architecture |
+| Node.js CLIs | `../../../../Global_References/Software_Engineering_and_Other/node-cli.md` | commander, yargs, inquirer, chalk |
 | [Python](../../../Languages/python/python/SKILL.md) CLIs | `../../../Global_References/[python](../../../Languages/python/python/SKILL.md)-cli.md` | click, typer, argparse, rich |
-| Go CLIs | `../../../Global_References/go-cli.md` | cobra, viper, bubbletea |
-| UX Patterns | `../../../Global_References/ux-patterns.md` | Progress bars, colors, help text |
+| Go CLIs | `../../../../Global_References/Software_Engineering_and_Other/go-cli.md` | cobra, viper, bubbletea |
+| UX Patterns | `../../../../Global_References/Software_Engineering_and_Other/ux-patterns.md` | Progress bars, colors, help text |
 
 ## Quick-Start Example
 
@@ -74,7 +74,7 @@ program
 program.parse();
 ```
 
-For [Python](../../../Languages/python/python/SKILL.md) (click/typer) and Go (cobra) quick-start examples, see `../../../Global_References/[python](../../../Languages/python/python/SKILL.md)-cli.md` and `../../../Global_References/go-cli.md`.
+For [Python](../../../Languages/python/python/SKILL.md) (click/typer) and Go (cobra) quick-start examples, see `../../../Global_References/[python](../../../Languages/python/python/SKILL.md)-cli.md` and `../../../../Global_References/Software_Engineering_and_Other/go-cli.md`.
 
 ## Constraints
 

@@ -172,11 +172,11 @@ way around.
 
 Base-model choice is size-class first, family
 second, and it goes stale fast — so it lives in
-exactly one place: `../../../Global_References/model-catalog.md`.
+exactly one place: `../../../../Global_References/AI_and_Agents/model-catalog.md`.
 That file is the only place in this plugin (and
 in the DGX Spark ops plugin) that names a base
 model family. Neither this skill nor
-`../../../Global_References/memory-math.md` names one; both
+`../../../../Global_References/AI_and_Agents/memory-math.md` names one; both
 describe models by size class only (for example,
 "8B-class LoRA," not a model name).
 
@@ -202,7 +202,7 @@ state + gradients + activations**. Work each
 term for the chosen dtype and method (full
 fine-tune, LoRA, or QLoRA) — worked worksheets
 and size-class examples live in
-`../../../Global_References/memory-math.md`.
+`../../../../Global_References/AI_and_Agents/memory-math.md`.
 
 On DGX Spark specifically, unified-memory
 behavior breaks the naive estimate (transient

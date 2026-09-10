@@ -28,5 +28,5 @@ Use visual assets to support a slide's message, never to flatten or replace edit
 - If rights, provenance, or a suitable asset are unavailable, omit the asset and report the gap. Never add a placeholder as a finished visual.
 - Record provider or source details in the source manifest. Never request secrets in chat.
 
-See `../../../../../Global_References/asset-guidance.md` for licensing, placement, and SVG constraints.
+See `../../../../../../Global_References/Software_Engineering_and_Other/asset-guidance.md` for licensing, placement, and SVG constraints.
 

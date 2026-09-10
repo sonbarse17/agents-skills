@@ -376,12 +376,12 @@ test('signal computed values', () => {
 - Bundle target: keep preact-specific code under 3kB total.
 
 ## References
-  - ../../../Global_References/preact-advanced.md — Preact Advanced Topics
-  - ../../../Global_References/preact-architecture.md — Preact Architecture Patterns
-  - ../../../Global_References/preact-deployment.md — Preact Deployment
-  - ../../../Global_References/preact-fundamentals.md — Preact Fundamentals
-  - ../../../Global_References/preact-setup.md — Preact Setup Guide
-  - ../../../Global_References/preact-vs-react.md — Preact vs React: Differences & Migration
+  - ../../../../Global_References/Software_Engineering_and_Other/preact-advanced.md — Preact Advanced Topics
+  - ../../../../Global_References/Software_Engineering_and_Other/preact-architecture.md — Preact Architecture Patterns
+  - ../../../../Global_References/Software_Engineering_and_Other/preact-deployment.md — Preact Deployment
+  - ../../../../Global_References/Software_Engineering_and_Other/preact-fundamentals.md — Preact Fundamentals
+  - ../../../../Global_References/Software_Engineering_and_Other/preact-setup.md — Preact Setup Guide
+  - ../../../../Global_References/Software_Engineering_and_Other/preact-vs-react.md — Preact vs React: Differences & Migration
 
 ## Handoff
 No artifact produced.

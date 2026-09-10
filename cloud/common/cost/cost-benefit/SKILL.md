@@ -579,13 +579,13 @@ Showing 5-year projections with dollar precision when year 5 estimates are essen
 Threshold: > 4.0 — Proceed. 3.0-4.0 — Revise. < 3.0 — Reject.
 
 ## References
-  - ../../../Global_References/benefit-analysis.md — Benefit Analysis
-  - ../../../Global_References/cba-templates.md — CBA Templates
-  - ../../../Global_References/cost-estimation.md — Cost Estimation
-  - ../../../Global_References/portfolio-prioritization.md — Portfolio Prioritization
-  - ../../../Global_References/project-valuation.md — Project Valuation
-  - ../../../Global_References/cost-benefit-advanced.md — Cost Benefit Advanced Topics
-  - ../../../Global_References/cost-benefit-fundamentals.md — Cost Benefit Fundamentals
+  - ../../../../Global_References/cloud/benefit-analysis.md — Benefit Analysis
+  - ../../../../Global_References/cloud/cba-templates.md — CBA Templates
+  - ../../../../Global_References/cloud/cost-estimation.md — Cost Estimation
+  - ../../../../Global_References/cloud/portfolio-prioritization.md — Portfolio Prioritization
+  - ../../../../Global_References/cloud/project-valuation.md — Project Valuation
+  - ../../../../Global_References/cloud/cost-benefit-advanced.md — Cost Benefit Advanced Topics
+  - ../../../../Global_References/cloud/cost-benefit-fundamentals.md — Cost Benefit Fundamentals
   - references/sensitivity-analysis.md — Sensitivity Analysis Guide
 ## Handoff
 `planning/create-pitch-deck` for business case presentation with ROI and NPV highlights

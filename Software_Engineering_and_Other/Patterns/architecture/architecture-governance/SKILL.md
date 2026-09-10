@@ -399,14 +399,14 @@ A technology company used its architecture principles to make a difficult build-
 - Governance process reviewed annually for effectiveness and efficiency.
 
 ## References
-  - ../../../Global_References/architecture-board.md -- Architecture Review Board (ARB)
-  - ../../../Global_References/architecture-governance-advanced.md -- Architecture Governance Advanced Topics
+  - ../../../../Global_References/Software_Engineering_and_Other/architecture-board.md -- Architecture Review Board (ARB)
+  - ../../../../Global_References/Software_Engineering_and_Other/architecture-governance-advanced.md -- Architecture Governance Advanced Topics
   - references/architecture-governance-board.md -- Architecture Governance Board Reference
   - references/architecture-governance-review.md -- Architecture Governance Review Process
-  - ../../../Global_References/architecture-governance-fundamentals.md -- Architecture Governance Fundamentals
-  - ../../../Global_References/architecture-principles.md -- Architecture Principles
-  - ../../../Global_References/architecture-reviews.md -- Architecture Review Process
-  - ../../../Global_References/decision-rights.md -- Architecture Decision Rights
+  - ../../../../Global_References/Software_Engineering_and_Other/architecture-governance-fundamentals.md -- Architecture Governance Fundamentals
+  - ../../../../Global_References/Software_Engineering_and_Other/architecture-principles.md -- Architecture Principles
+  - ../../../../Global_References/Software_Engineering_and_Other/architecture-reviews.md -- Architecture Review Process
+  - ../../../../Global_References/Software_Engineering_and_Other/decision-rights.md -- Architecture Decision Rights
 ## Implementation Patterns
 
 ### Pattern: Automated Compliance Gate in CI/CD

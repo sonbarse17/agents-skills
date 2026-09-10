@@ -26,7 +26,7 @@ failures, and license-expiry lockouts.
 For authentication methods and API key management, see the **[elasticsearch-authn](../elasticsearch-authn/SKILL.md)** skill. For roles, users, and role
 mappings, see the **[elasticsearch-authz](../elasticsearch-authz/SKILL.md)** skill. For license management, see the **elasticsearch-license** skill.
 
-For diagnostic API endpoints, see [../../../Global_References/elasticsearch-security-troubleshooting_api-reference.md](../../../../Global_References/elasticsearch-security-troubleshooting_api-reference.md).
+For diagnostic API endpoints, see [../../../../Global_References/observability-monitoring-logging/elasticsearch-security-troubleshooting_api-reference.md](../../../../Global_References/observability-monitoring-logging/elasticsearch-security-troubleshooting_api-reference.md).
 
 > **Deployment note:** Diagnostic API availability differs between self-managed, ECH, and [Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md). See
 > [Deployment Compatibility](#deployment-compatibility) for details.

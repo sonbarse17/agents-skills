@@ -226,7 +226,7 @@ var suggestions = await searchClient.SuggestAsync<Hotel>("lux", "suggester-name"
 
 ## Vector Search
 
-See [../../../Global_References/vector-search.md](../../../../../Global_References/vector-search.md) for detailed patterns.
+See [../../../../../Global_References/cloud/vector-search.md](../../../../../Global_References/cloud/vector-search.md) for detailed patterns.
 
 ```csharp
 using Azure.Search.Documents.Models;
@@ -251,7 +251,7 @@ var results = await searchClient.SearchAsync<Hotel>(null, options);
 
 ## Semantic Search
 
-See [../../../Global_References/semantic-search.md](../../../../../Global_References/semantic-search.md) for detailed patterns.
+See [../../../../../Global_References/cloud/semantic-search.md](../../../../../Global_References/cloud/semantic-search.md) for detailed patterns.
 
 ```csharp
 var options = new SearchOptions
@@ -354,6 +354,6 @@ catch (RequestFailedException ex)
 
 | File | Contents |
 |------|----------|
-| [../../../Global_References/vector-search.md](../../../../../Global_References/vector-search.md) | Vector search, hybrid search, vectorizers |
-| [../../../Global_References/semantic-search.md](../../../../../Global_References/semantic-search.md) | Semantic ranking, captions, answers |
+| [../../../../../Global_References/cloud/vector-search.md](../../../../../Global_References/cloud/vector-search.md) | Vector search, hybrid search, vectorizers |
+| [../../../../../Global_References/cloud/semantic-search.md](../../../../../Global_References/cloud/semantic-search.md) | Semantic ranking, captions, answers |
 

@@ -61,7 +61,7 @@ Design cloud-agnostic architectures and make informed decisions about service se
 | Aurora      | [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)/[MySQL](../../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) | Cloud Spanner | Autonomous Database | Distributed SQL |
 | ElastiCache | Cache for Redis  | Memorystore   | OCI Cache           | Caching         |
 
-**Reference:** See `../../../Global_References/service-comparison.md` for complete comparison
+**Reference:** See `../../../../Global_References/cloud/service-comparison.md` for complete comparison
 
 ## [Multi-Cloud](../../other/multi-cloud/SKILL.md) Patterns
 

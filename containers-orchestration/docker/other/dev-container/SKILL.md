@@ -455,8 +455,8 @@ jobs:
 ```
 
 ## References
-  - ../../../Global_References/dev-container-advanced.md — Dev Container Advanced Topics
-  - ../../../Global_References/dev-container-fundamentals.md — Dev Container Fundamentals
+  - ../../../../Global_References/containers-orchestration/dev-container-advanced.md — Dev Container Advanced Topics
+  - ../../../../Global_References/containers-orchestration/dev-container-fundamentals.md — Dev Container Fundamentals
   - references/dev-container-features.md — Dev Container Features Reference
   - references/dev-container-multi-service.md — Multi-Service Dev Container Reference
 ## Handoff

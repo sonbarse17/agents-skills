@@ -566,11 +566,11 @@ Both provide incremental materialized views on streaming data using [PostgreSQL]
 - Every topic must have documented owner and retention policy
 
 ## References
-  - ../../../Global_References/flink-streaming.md — Flink Streaming
-  - ../../../Global_References/kafka-architecture.md — Kafka Architecture
-  - ../../../Global_References/pulsar-patterns.md — Apache Pulsar Patterns
-  - ../../../Global_References/streaming-architecture.md — Streaming Architecture
-  - ../../../Global_References/streaming-databases.md — Streaming Databases
+  - ../../Global_References/Data_Engineering/flink-streaming.md — Flink Streaming
+  - ../../Global_References/Data_Engineering/kafka-architecture.md — Kafka Architecture
+  - ../../Global_References/Data_Engineering/pulsar-patterns.md — Apache Pulsar Patterns
+  - ../../Global_References/Data_Engineering/streaming-architecture.md — Streaming Architecture
+  - ../../Global_References/Data_Engineering/streaming-databases.md — Streaming Databases
   - ../../../Global_References/streaming-[monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Streaming [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 ## Handoff
 `[data-data-warehouse](../data-warehouse/SKILL.md)` for streaming data landing in the warehouse

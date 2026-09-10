@@ -56,11 +56,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| DataFrame Operations | `../../../Global_References/dataframe-operations.md` | Indexing, selection, filtering, sorting |
-| Data Cleaning | `../../../Global_References/data-cleaning.md` | Missing values, duplicates, type conversion |
-| Aggregation & GroupBy | `../../../Global_References/aggregation-groupby.md` | GroupBy, pivot, crosstab, aggregation |
-| Merging & Joining | `../../../Global_References/merging-joining.md` | Merge, join, concat, combine strategies |
-| Performance Optimization | `../../../Global_References/pandas-pro_performance-optimization.md` | Memory usage, vectorization, chunking |
+| DataFrame Operations | `../../Global_References/Data_Engineering/dataframe-operations.md` | Indexing, selection, filtering, sorting |
+| Data Cleaning | `../../Global_References/Data_Engineering/data-cleaning.md` | Missing values, duplicates, type conversion |
+| Aggregation & GroupBy | `../../Global_References/Data_Engineering/aggregation-groupby.md` | GroupBy, pivot, crosstab, aggregation |
+| Merging & Joining | `../../Global_References/Data_Engineering/merging-joining.md` | Merge, join, concat, combine strategies |
+| Performance Optimization | `../../Global_References/Data_Engineering/pandas-pro_performance-optimization.md` | Memory usage, vectorization, chunking |
 
 ## Code Patterns
 

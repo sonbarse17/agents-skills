@@ -48,11 +48,11 @@ Load detailed guidance based on context:
 
 | Topic | Reference | Load When |
 |-------|-----------|-----------|
-| Debugging Tools | `../../../Global_References/debugging-tools.md` | Setting up debuggers by language |
-| Common Patterns | `../../../Global_References/debugging-wizard_common-patterns.md` | Recognizing bug patterns |
-| Strategies | `../../../Global_References/strategies.md` | Binary search, git bisect, time travel |
-| Quick Fixes | `../../../Global_References/quick-fixes.md` | Common error solutions |
-| Systematic Debugging | `../../../Global_References/systematic-debugging.md` | Complex bugs, multiple failed fixes, root cause analysis |
+| Debugging Tools | `../../../../Global_References/Software_Engineering_and_Other/debugging-tools.md` | Setting up debuggers by language |
+| Common Patterns | `../../../../Global_References/Software_Engineering_and_Other/debugging-wizard_common-patterns.md` | Recognizing bug patterns |
+| Strategies | `../../../../Global_References/Software_Engineering_and_Other/strategies.md` | Binary search, git bisect, time travel |
+| Quick Fixes | `../../../../Global_References/Software_Engineering_and_Other/quick-fixes.md` | Common error solutions |
+| Systematic Debugging | `../../../../Global_References/Software_Engineering_and_Other/systematic-debugging.md` | Complex bugs, multiple failed fixes, root cause analysis |
 
 ## Constraints
 

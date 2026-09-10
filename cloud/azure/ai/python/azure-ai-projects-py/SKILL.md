@@ -155,7 +155,7 @@ agent_version = client.agents.create_version(
 )
 ```
 
-See [../../../Global_References/agents.md](../../../../../Global_References/agents.md) for detailed agent patterns.
+See [../../../../../Global_References/cloud/agents.md](../../../../../Global_References/cloud/agents.md) for detailed agent patterns.
 
 ## Tools Overview
 
@@ -212,7 +212,7 @@ for conn in connections:
 connection = client.connections.get(connection_name="my-search-connection")
 ```
 
-See [../../../Global_References/connections.md](../../../../../Global_References/connections.md) for connection patterns.
+See [../../../../../Global_References/cloud/connections.md](../../../../../Global_References/cloud/connections.md) for connection patterns.
 
 ## Deployments
 
@@ -223,7 +223,7 @@ for deployment in deployments:
     print(f"{deployment.name}: {deployment.model}")
 ```
 
-See [../../../Global_References/deployments.md](../../../../../Global_References/deployments.md) for deployment patterns.
+See [../../../../../Global_References/cloud/deployments.md](../../../../../Global_References/cloud/deployments.md) for deployment patterns.
 
 ## Datasets and Indexes
 
@@ -235,7 +235,7 @@ datasets = client.datasets.list()
 indexes = client.indexes.list()
 ```
 
-See [../../../Global_References/datasets-indexes.md](../../../../../Global_References/datasets-indexes.md) for data operations.
+See [../../../../../Global_References/cloud/datasets-indexes.md](../../../../../Global_References/cloud/datasets-indexes.md) for data operations.
 
 ## Evaluation
 
@@ -258,7 +258,7 @@ eval_run = openai_client.evals.runs.create(
 )
 ```
 
-See [../../../Global_References/evaluation.md](../../../../../Global_References/evaluation.md) for evaluation patterns.
+See [../../../../../Global_References/cloud/evaluation.md](../../../../../Global_References/cloud/evaluation.md) for evaluation patterns.
 
 ## Async Client
 
@@ -273,7 +273,7 @@ async with AIProjectClient(
     # ... async operations
 ```
 
-See [../../../Global_References/async-patterns.md](../../../../../Global_References/async-patterns.md) for async patterns.
+See [../../../../../Global_References/cloud/async-patterns.md](../../../../../Global_References/cloud/async-patterns.md) for async patterns.
 
 ## Memory Stores
 
@@ -316,15 +316,15 @@ agent = client.agents.create_agent(
 
 ## Reference Files
 
-- [../../../Global_References/agents.md](../../../../../Global_References/agents.md): Agent operations with PromptAgentDefinition
+- [../../../../../Global_References/cloud/agents.md](../../../../../Global_References/cloud/agents.md): Agent operations with PromptAgentDefinition
 - [../../../Global_References/[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-projects-py_tools.md](../../../Global_References/[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-projects-py_tools.md): All agent tools with examples
-- [../../../Global_References/evaluation.md](../../../../../Global_References/evaluation.md): Evaluation operations overview
-- [../../../Global_References/built-in-evaluators.md](../../../../../Global_References/built-in-evaluators.md): Complete built-in evaluator reference
-- [../../../Global_References/custom-evaluators.md](../../../../../Global_References/custom-evaluators.md): Code and prompt-based evaluator patterns
-- [../../../Global_References/connections.md](../../../../../Global_References/connections.md): Connection operations
-- [../../../Global_References/deployments.md](../../../../../Global_References/deployments.md): Deployment enumeration
-- [../../../Global_References/datasets-indexes.md](../../../../../Global_References/datasets-indexes.md): Dataset and index operations
-- [../../../Global_References/async-patterns.md](../../../../../Global_References/async-patterns.md): Async client usage
+- [../../../../../Global_References/cloud/evaluation.md](../../../../../Global_References/cloud/evaluation.md): Evaluation operations overview
+- [../../../../../Global_References/cloud/built-in-evaluators.md](../../../../../Global_References/cloud/built-in-evaluators.md): Complete built-in evaluator reference
+- [../../../../../Global_References/cloud/custom-evaluators.md](../../../../../Global_References/cloud/custom-evaluators.md): Code and prompt-based evaluator patterns
+- [../../../../../Global_References/cloud/connections.md](../../../../../Global_References/cloud/connections.md): Connection operations
+- [../../../../../Global_References/cloud/deployments.md](../../../../../Global_References/cloud/deployments.md): Deployment enumeration
+- [../../../../../Global_References/cloud/datasets-indexes.md](../../../../../Global_References/cloud/datasets-indexes.md): Dataset and index operations
+- [../../../../../Global_References/cloud/async-patterns.md](../../../../../Global_References/cloud/async-patterns.md): Async client usage
 - [../../../Global_References/[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-projects-py_api-reference.md](../../../Global_References/[azure-ai](../[azure-ai](../azure-skills/skills/azure-ai/SKILL.md)/SKILL.md)-projects-py_api-reference.md): Complete API reference for all 373 SDK exports (v2.0.0b4)
 - [scripts/run_batch_evaluation.py](scripts/run_batch_evaluation.py): CLI tool for batch evaluations
 

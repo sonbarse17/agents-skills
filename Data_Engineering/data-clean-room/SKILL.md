@@ -417,14 +417,14 @@ GROUP BY requesting_party;
 - Support revocation of data contribution; party can withdraw data at any time
 
 ## References
-  - ../../../Global_References/clean-room-architecture.md — Clean Room Architecture
-  - ../../../Global_References/clean-room-data-types.md — Clean Room Supported Data Types
-  - ../../../Global_References/clean-room-deployment.md — Clean Room Deployment
-  - ../../../Global_References/clean-room-ops.md — Clean Room Operations Reference
-  - ../../../Global_References/clean-room-performance.md — Clean Room Performance Optimization
-  - ../../../Global_References/clean-room-use-cases.md — Clean Room Use Cases
-  - ../../../Global_References/privacy-compute-patterns.md — Privacy Compute Patterns
-  - ../../../Global_References/privacy-compute.md — Privacy Compute Patterns Reference
+  - ../../Global_References/Data_Engineering/clean-room-architecture.md — Clean Room Architecture
+  - ../../Global_References/Data_Engineering/clean-room-data-types.md — Clean Room Supported Data Types
+  - ../../Global_References/Data_Engineering/clean-room-deployment.md — Clean Room Deployment
+  - ../../Global_References/Data_Engineering/clean-room-ops.md — Clean Room Operations Reference
+  - ../../Global_References/Data_Engineering/clean-room-performance.md — Clean Room Performance Optimization
+  - ../../Global_References/Data_Engineering/clean-room-use-cases.md — Clean Room Use Cases
+  - ../../Global_References/Data_Engineering/privacy-compute-patterns.md — Privacy Compute Patterns
+  - ../../Global_References/Data_Engineering/privacy-compute.md — Privacy Compute Patterns Reference
 ## Architecture Decision Trees
 
 ```

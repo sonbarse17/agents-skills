@@ -513,15 +513,15 @@ Scheduling the cutover during end-of-quarter close, Black Friday, or product lau
 - Post-migration performance [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) must continue for minimum 30 days.
 
 ## References
-  - ../../../Global_References/legacy-migration-advanced.md -- Legacy Migration Advanced
-  - ../../../Global_References/strangler-fig-implementation.md -- Strangler Fig Implementation Patterns Topics
-  - ../../../Global_References/legacy-migration-fundamentals.md -- Legacy Migration Fundamentals
-  - ../../../Global_References/legacy-migration-patterns.md -- Legacy Migration Patterns
-  - ../../../Global_References/legacy-migration-strategies.md -- Legacy Migration Strategies Reference
-  - ../../../Global_References/legacy-migration-risk-management.md -- Legacy Migration Risk Management
-  - ../../../Global_References/legacy-migration_migration-strategies.md -- Migration Strategies
-  - ../../../Global_References/strangler-fig.md -- Strangler Fig Pattern
-  - ../../../Global_References/testing-migration.md -- Testing Legacy Migrations
+  - ../../../../Global_References/ci-cd/legacy-migration-advanced.md -- Legacy Migration Advanced
+  - ../../../../Global_References/ci-cd/strangler-fig-implementation.md -- Strangler Fig Implementation Patterns Topics
+  - ../../../../Global_References/ci-cd/legacy-migration-fundamentals.md -- Legacy Migration Fundamentals
+  - ../../../../Global_References/ci-cd/legacy-migration-patterns.md -- Legacy Migration Patterns
+  - ../../../../Global_References/ci-cd/legacy-migration-strategies.md -- Legacy Migration Strategies Reference
+  - ../../../../Global_References/ci-cd/legacy-migration-risk-management.md -- Legacy Migration Risk Management
+  - ../../../../Global_References/ci-cd/legacy-migration_migration-strategies.md -- Migration Strategies
+  - ../../../../Global_References/ci-cd/strangler-fig.md -- Strangler Fig Pattern
+  - ../../../../Global_References/ci-cd/testing-migration.md -- Testing Legacy Migrations
 ## Handoff
 For integration patterns during strangler fig, hand off to `[enterprise-integration-patterns](../../../../Software_Engineering_and_Other/Patterns/dev-practice/integration-patterns/SKILL.md)`. For data governance during migration, hand off to `[enterprise-data-governance](../../../../Data_Engineering/data-governance/SKILL.md)`.
 

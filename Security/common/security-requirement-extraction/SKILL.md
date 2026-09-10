@@ -52,7 +52,7 @@ Business Requirements → Security Requirements → Technical Controls
 
 ## Templates and detailed worked examples
 
-Full template library lives in `../../../Global_References/security-requirement-extraction_details.md`. Read that file when you need concrete templates for this skill.
+Full template library lives in `../../../Global_References/Security/security-requirement-extraction_details.md`. Read that file when you need concrete templates for this skill.
 
 ## Best Practices
 

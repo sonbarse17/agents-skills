@@ -296,7 +296,7 @@ with ServiceBusClient(
 
 | File | Contents |
 |------|----------|
-| [../../../Global_References/azure-servicebus-py_patterns.md](../../../../../Global_References/azure-servicebus-py_patterns.md) | Competing consumers, sessions, retry patterns, request-response, transactions |
-| [../../../Global_References/dead-letter.md](../../../../../Global_References/dead-letter.md) | DLQ handling, poison messages, reprocessing strategies |
+| [../../../../../Global_References/cloud/azure-servicebus-py_patterns.md](../../../../../Global_References/cloud/azure-servicebus-py_patterns.md) | Competing consumers, sessions, retry patterns, request-response, transactions |
+| [../../../../../Global_References/cloud/dead-letter.md](../../../../../Global_References/cloud/dead-letter.md) | DLQ handling, poison messages, reprocessing strategies |
 | [scripts/setup_servicebus.py](scripts/setup_servicebus.py) | CLI for queue/topic/subscription management and DLQ [monitoring](../../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) |
 

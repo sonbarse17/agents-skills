@@ -146,6 +146,6 @@ print(result["answer"])
 
 ## Detailed patterns and worked examples
 
-Detailed pattern documentation lives in `../../../Global_References/rag-implementation_details.md`. Read that file when the navigation tier above is insufficient.
+Detailed pattern documentation lives in `../../../../Global_References/AI_and_Agents/rag-implementation_details.md`. Read that file when the navigation tier above is insufficient.
 
 

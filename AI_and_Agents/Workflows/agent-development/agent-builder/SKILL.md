@@ -370,9 +370,9 @@ node skills/kibana/agent-builder/scripts/agent-builder.js create-tool \
 
 Read these for detailed guidance:
 
-- `../../../Global_References/architecture-guide.md` — Core concepts, built-in tools, context engineering, best practices, token
+- `../../../../Global_References/AI_and_Agents/architecture-guide.md` — Core concepts, built-in tools, context engineering, best practices, token
   optimization, REST API endpoints, MCP/A2A integration, permissions
-- `../../../Global_References/use-cases.md` — Full playbooks for Customer Feedback Analysis, Marketing Campaign Analysis, and Contract
+- `../../../../Global_References/AI_and_Agents/use-cases.md` — Full playbooks for Customer Feedback Analysis, Marketing Campaign Analysis, and Contract
   Analysis agents
 
 For ES|QL syntax, functions, operators, and parameter rules, use the `[elasticsearch-esql](../../../../observability-monitoring-logging/elasticsearch/queries/elasticsearch-esql/SKILL.md)` skill. For workflow YAML

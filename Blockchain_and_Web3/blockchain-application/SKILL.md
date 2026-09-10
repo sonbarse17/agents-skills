@@ -386,16 +386,16 @@ pub struct User {
 20. Always include reentrancy guards on cross-chain message handlers
 
 ## References
-  - ../../../Global_References/blockchain-application-advanced.md — Blockchain Application Advanced Topics
-  - ../../../Global_References/blockchain-application-fundamentals.md — Blockchain Application Fundamentals
-  - ../../../Global_References/cairo-language.md — Cairo Language (StarkNet)
-  - ../../../Global_References/contract-security.md — Smart Contract Security
-  - ../../../Global_References/haskell-plutus.md — Haskell & Plutus (Cardano)
-  - ../../../Global_References/move-language.md — Move Language (Sui & Aptos)
-  - ../../../Global_References/rust-smart-contracts.md — Rust Smart Contracts
-  - ../../../Global_References/smart-contract-patterns.md — Smart Contract Design Patterns
-  - ../../../Global_References/solidity-evm.md — Solidity & EVM Deep Dive
-  - ../../../Global_References/vyper-language.md — Vyper Language
+  - ../../Global_References/Blockchain_and_Web3/blockchain-application-advanced.md — Blockchain Application Advanced Topics
+  - ../../Global_References/Blockchain_and_Web3/blockchain-application-fundamentals.md — Blockchain Application Fundamentals
+  - ../../Global_References/Blockchain_and_Web3/cairo-language.md — Cairo Language (StarkNet)
+  - ../../Global_References/Blockchain_and_Web3/contract-security.md — Smart Contract Security
+  - ../../Global_References/Blockchain_and_Web3/haskell-plutus.md — Haskell & Plutus (Cardano)
+  - ../../Global_References/Blockchain_and_Web3/move-language.md — Move Language (Sui & Aptos)
+  - ../../Global_References/Blockchain_and_Web3/rust-smart-contracts.md — Rust Smart Contracts
+  - ../../Global_References/Blockchain_and_Web3/smart-contract-patterns.md — Smart Contract Design Patterns
+  - ../../Global_References/Blockchain_and_Web3/solidity-evm.md — Solidity & EVM Deep Dive
+  - ../../Global_References/Blockchain_and_Web3/vyper-language.md — Vyper Language
   - references/cross-chain-deployment.md — Cross-Chain Deployment Strategy
   - references/gas-optimization-patterns.md — Gas Optimization Techniques
 

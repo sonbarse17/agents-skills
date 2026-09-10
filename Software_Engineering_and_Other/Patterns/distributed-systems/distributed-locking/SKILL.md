@@ -397,15 +397,15 @@ Redlock assumes synchronized clocks. In practice:
 - Test lock scenarios: timeout, contention, crash during hold, network partition.
 
 ## References
-  - ../../../Global_References/distributed-locking-fundamentals.md — Distributed Locking Fundamentals
-  - ../../../Global_References/distributed-locking-advanced.md — Distributed Locking Advanced
-  - ../../../Global_References/fencing-tokens-deep.md — Fencing Token Deep Dive
-  - ../../../Global_References/lock-contention-analysis.md — Lock Contention Analysis
-  - ../../../Global_References/lock-deep-dive.md — Distributed Locking Deep Dive
-  - ../../../Global_References/lock-implementations.md — Distributed Lock Implementations
-  - ../../../Global_References/lock-providers.md — Lock Provider Implementation Notes
-  - ../../../Global_References/lock-strategies.md — Distributed Lock Strategies
-  - ../../../Global_References/lock-testing.md — Lock Testing
+  - ../../../../Global_References/Software_Engineering_and_Other/distributed-locking-fundamentals.md — Distributed Locking Fundamentals
+  - ../../../../Global_References/Software_Engineering_and_Other/distributed-locking-advanced.md — Distributed Locking Advanced
+  - ../../../../Global_References/Software_Engineering_and_Other/fencing-tokens-deep.md — Fencing Token Deep Dive
+  - ../../../../Global_References/Software_Engineering_and_Other/lock-contention-analysis.md — Lock Contention Analysis
+  - ../../../../Global_References/Software_Engineering_and_Other/lock-deep-dive.md — Distributed Locking Deep Dive
+  - ../../../../Global_References/Software_Engineering_and_Other/lock-implementations.md — Distributed Lock Implementations
+  - ../../../../Global_References/Software_Engineering_and_Other/lock-providers.md — Lock Provider Implementation Notes
+  - ../../../../Global_References/Software_Engineering_and_Other/lock-strategies.md — Distributed Lock Strategies
+  - ../../../../Global_References/Software_Engineering_and_Other/lock-testing.md — Lock Testing
 ## Handoff
 No artifact produced unless requested.
 Next skill: webhooks — deliver events from the service to external subscribers.

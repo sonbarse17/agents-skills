@@ -548,12 +548,12 @@ Dependency Health Check:
 ```
 
 ## References
-  - ../../../Global_References/ceremony-guide.md — Agile Ceremony Guide
-  - ../../../Global_References/estimation-guide.md — Estimation Guide
-  - ../../../Global_References/estimation-techniques.md — Estimation Techniques
-  - ../../../Global_References/pm-advanced.md — Pm Advanced Topics
-  - ../../../Global_References/pm-fundamentals.md — Pm Fundamentals
-  - ../../../Global_References/risk-register-template.md — Risk Register Template
+  - ../../Global_References/Product_and_Business/ceremony-guide.md — Agile Ceremony Guide
+  - ../../Global_References/Product_and_Business/estimation-guide.md — Estimation Guide
+  - ../../Global_References/Product_and_Business/estimation-techniques.md — Estimation Techniques
+  - ../../Global_References/Product_and_Business/pm-advanced.md — Pm Advanced Topics
+  - ../../Global_References/Product_and_Business/pm-fundamentals.md — Pm Fundamentals
+  - ../../Global_References/Product_and_Business/risk-register-template.md — Risk Register Template
 
 ## Handoff
 After completing this skill:

@@ -297,6 +297,6 @@ while not poller.done():
 
 | File | Contents |
 |------|----------|
-| [../../../Global_References/azure-mgmt-fabric-py_capabilities.md](../../../../../Global_References/azure-mgmt-fabric-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
-| [../../../Global_References/azure-mgmt-fabric-py_non-hero-scenarios.md](../../../../../Global_References/azure-mgmt-fabric-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
+| [../../../../../Global_References/cloud/azure-mgmt-fabric-py_capabilities.md](../../../../../Global_References/cloud/azure-mgmt-fabric-py_capabilities.md) | Additional non-hero capabilities, operation-group coverage, and production checklists. |
+| [../../../../../Global_References/cloud/azure-mgmt-fabric-py_non-hero-scenarios.md](../../../../../Global_References/cloud/azure-mgmt-fabric-py_non-hero-scenarios.md) | Dedicated non-hero examples for secondary/advanced scenarios. |
 
