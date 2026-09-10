@@ -1,6 +1,8 @@
-# mcp-server (Node/TypeScript) build artifacts and dependencies
-mcp-server/node_modules/
-mcp-server/build/
+# Node/TypeScript build artifacts and dependencies (mcp-server, docs-site, etc.
+# already have their own local .gitignore for this - this is a repo-wide backstop)
+node_modules/
+build/
+dist/
 
 # OS and editor cruft
 .DS_Store
