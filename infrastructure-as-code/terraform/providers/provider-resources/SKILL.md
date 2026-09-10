@@ -466,7 +466,7 @@ Use the `[provider-test-patterns](../[provider-test-patterns](../../../Software_
 treatment: config helper style (`%[1]q` indexed verbs), statecheck/plancheck,
 CompareValue, custom StateCheck implementations for exists/disappears
 helpers, sweepers, and ephemeral resource testing. Use the
-`[run-acceptance-tests](../../../Software_Engineering_and_Other/Miscellaneous/agent-skills-main/plugins/terraform/skills/[run-acceptance-tests](../../../Software_Engineering_and_Other/Testing/run-acceptance-tests/SKILL.md)/SKILL.md)` skill for executing and debugging test runs.
+`[run-acceptance-tests](../../../../Software_Engineering_and_Other/Testing/acceptance/run-acceptance-tests/SKILL.md)/SKILL.md)` skill for executing and debugging test runs.
 
 ## Error Handling
 

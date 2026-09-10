@@ -385,5 +385,5 @@ unmodified throughout.
 ## Cross-references
 
 - [feature-flag-configuration-launchdarkly-and-unleash](../../../../ci-cd/common/deployment/feature-flag-configuration-launchdarkly-and-unleash/SKILL.md)/SKILL.md) — the flag lifecycle, rollout, and kill-switch discipline that applies underneath OpenFeature regardless of which provider is active; this skill is the abstraction layer on top, not a replacement for that operational discipline.
-- [pact-contract-testing-configuration](../../../Testing/pact-contract-testing-configuration/SKILL.md)/SKILL.md) — a comparable "avoid coupling to one specific implementation's exact interface" discipline, applied to service contracts rather than flag providers.
+- [pact-contract-testing-configuration](../../../Testing/contract/pact-contract-testing-configuration/SKILL.md)/SKILL.md) — a comparable "avoid coupling to one specific implementation's exact interface" discipline, applied to service contracts rather than flag providers.
 - [infrastructure-post-deployment-validation-and-smoke-testing](../[infrastructure-post-deployment-validation-and-smoke-testing](../../Infrastructure_as_Code/infrastructure-post-deployment-validation-and-smoke-testing/SKILL.md)/SKILL.md) — where a provider-status/evaluation-health check from this skill's hooks could be wired into a post-deploy smoke test.

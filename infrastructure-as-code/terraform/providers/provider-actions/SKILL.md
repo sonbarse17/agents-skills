@@ -444,7 +444,7 @@ go test -c -o /dev/null ./internal/provider
 TF_ACC=1 go test ./internal/provider -run TestAccExampleAction_ -timeout 60m
 ```
 
-Use the `[run-acceptance-tests](../../../Software_Engineering_and_Other/Miscellaneous/agent-skills-main/plugins/terraform/skills/[run-acceptance-tests](../../../Software_Engineering_and_Other/Testing/run-acceptance-tests/SKILL.md)/SKILL.md)` skill (if available) for environment variable
+Use the `[run-acceptance-tests](../../../../Software_Engineering_and_Other/Testing/acceptance/run-acceptance-tests/SKILL.md)/SKILL.md)` skill (if available) for environment variable
 setup, debugging failing tests, and sweeper runs.
 
 ## Documentation Standards

@@ -413,9 +413,9 @@ Stateful property tests that share mutable state between command sequences produ
 
 ## Handoff
 After property-based testing, hand off to:
-- `[quality-unit-testing](../../../Testing/unit-testing/SKILL.md)` — for example-based tests that complement properties
-- `[quality-integration-testing](../../../Testing/integration-testing/SKILL.md)` — for verifying properties at system boundaries
-- `[quality-regression-testing](../../../Testing/regression-testing/SKILL.md)` — for adding discovered counterexamples to regression suites
+- `[quality-unit-testing](../../../Testing/unit/unit-testing/SKILL.md)` — for example-based tests that complement properties
+- `[quality-integration-testing](../../../Testing/integration/integration-testing/SKILL.md)` — for verifying properties at system boundaries
+- `[quality-regression-testing](../../../Testing/regression/regression-testing/SKILL.md)` — for adding discovered counterexamples to regression suites
 - `quality-[load-testing](../../../../observability-monitoring-logging/common/capacity-monitoring/load-testing/SKILL.md)` — for performance property validation under load
 ## Implementation Patterns
 

@@ -545,7 +545,7 @@ State: User asks about mobile pattern, mobile architecture, MVVM, MVI, mobile pr
   Reason: "Mobile architecture pattern request."
 
 State: User asks about mobile testing, widget test, component test mobile, golden test, XCUITest, Espresso, Detox.
-  Route: [mobile-testing](../../Software_Engineering_and_Other/Testing/testing/SKILL.md)
+  Route: [mobile-testing](../../Mobile/testing/SKILL.md)
   Reason: "Mobile testing strategy request."
 
 State: User asks about mobile performance, app slow, jank, frame drop, memory leak mobile, app startup.
@@ -1447,11 +1447,11 @@ State: User asks about motion design, UI animation, micro-interaction, Lottie, t
   Reason: "Motion design request."
 
 State: User asks about E2E test, Playwright, Cypress, browser test.
-  Route: [quality-e2e-testing](../../Software_Engineering_and_Other/Testing/e2e-testing/SKILL.md)
+  Route: [quality-e2e-testing](../../Software_Engineering_and_Other/Testing/e2e/e2e-testing/SKILL.md)
   Reason: "E2E testing request."
 
 State: User asks about visual testing, visual regression, Percy, Chromatic.
-  Route: [quality-visual-testing](../../Software_Engineering_and_Other/Testing/visual-testing/SKILL.md)
+  Route: [quality-visual-testing](../../Software_Engineering_and_Other/Testing/e2e/visual-testing/SKILL.md)
   Reason: "Visual testing request."
 
 State: User asks about load testing, k6, Locust, performance test.
@@ -1459,15 +1459,15 @@ State: User asks about load testing, k6, Locust, performance test.
   Reason: "Load testing request."
 
 State: User asks about contract testing, Pact, consumer-driven contract.
-  Route: [quality-contract-testing](../../Software_Engineering_and_Other/Testing/contract-testing/SKILL.md)
+  Route: [quality-contract-testing](../../Software_Engineering_and_Other/Testing/contract/contract-testing/SKILL.md)
   Reason: "Contract testing request."
 
 State: User asks about unit testing, unit test, TDD, test doubles, mocking, stubbing, FIRST principles, AAA pattern, code coverage.
-  Route: [quality-unit-testing](../../Software_Engineering_and_Other/Testing/unit-testing/SKILL.md)
+  Route: [quality-unit-testing](../../Software_Engineering_and_Other/Testing/unit/unit-testing/SKILL.md)
   Reason: "Unit testing request."
 
 State: User asks about integration testing, API testing, database testing, TestContainers, WireMock, component testing, service testing.
-  Route: [quality-integration-testing](../../Software_Engineering_and_Other/Testing/integration-testing/SKILL.md)
+  Route: [quality-integration-testing](../../Software_Engineering_and_Other/Testing/integration/integration-testing/SKILL.md)
   Reason: "Integration testing request."
 
 State: User asks about property-based testing, fuzzing, generative testing, fast-check, QuickCheck, invariant testing, random testing.
