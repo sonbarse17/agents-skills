@@ -1,0 +1,15 @@
+# mcp-server (Node/TypeScript) build artifacts and dependencies
+mcp-server/node_modules/
+mcp-server/build/
+
+# OS and editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+
+# Reorg scratch files (this repo's skill-migration scripts write these as
+# working state, always deleted before a round is reported done - ignored
+# here as a backstop, not because they're expected to linger)
+scripts/.*.json
+scripts/.*.tsv
+scripts/.*.txt
