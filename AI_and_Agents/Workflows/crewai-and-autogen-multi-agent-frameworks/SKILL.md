@@ -198,7 +198,7 @@ all" justification, which lives in
    manager = GroupChatManager(groupchat=groupchat, llm_config=researcher.llm_config)
    ```
    `max_round` is AutoGen's equivalent of the hard iteration cap described
-   in [agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md) —
+   in [agent-architecture-design](../../Architecture/agent-patterns/agent-architecture-design/SKILL.md)/SKILL.md) —
    set it explicitly rather than trusting the conversation to converge on
    its own.
 
@@ -223,7 +223,7 @@ all" justification, which lives in
    > sandboxed, disposable environment with no access to real credentials
    > or production systems — treat it the same as any irreversible-action
    > tool per
-   > [agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md).
+   > [agent-architecture-design](../../Architecture/agent-patterns/agent-architecture-design/SKILL.md)/SKILL.md).
 
 7. **Cap delegation depth in CrewAI's hierarchical process and AutoGen's
    nested chats** — both frameworks support an agent's task spawning
@@ -379,5 +379,5 @@ contract.
 
 - [multi-agent-orchestration](../[multi-agent-orchestration](../multi-agent-orchestration/SKILL.md)/SKILL.md) — the vendor-neutral topologies (supervisor/worker, pipeline, parallel/aggregation, critic/debate) and coordination pitfalls that CrewAI and AutoGen each implement in their own opinionated way.
 - [langchain-and-langgraph-agent-orchestration](../[langchain-and-langgraph-agent-orchestration](../../Models_and_FineTuning/langchain-and-langgraph-agent-orchestration/SKILL.md)/SKILL.md) — a lower-level, graph-based alternative when a task outgrows CrewAI/AutoGen's role-based abstraction and needs explicit cyclical control flow or durable checkpointing.
-- [agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md) — the single-agent control-loop fundamentals (iteration caps, tool boundaries, human checkpoints) that still apply inside each individual CrewAI/AutoGen agent.
+- [agent-architecture-design](../../Architecture/agent-patterns/agent-architecture-design/SKILL.md)/SKILL.md) — the single-agent control-loop fundamentals (iteration caps, tool boundaries, human checkpoints) that still apply inside each individual CrewAI/AutoGen agent.
 - [mcp-server-development](../[mcp-server-development](../../Infrastructure/mcp-server-development/SKILL.md)/SKILL.md) — building the tool-serving side that CrewAI/AutoGen agents call into, rather than defining every tool as an in-framework [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) function.

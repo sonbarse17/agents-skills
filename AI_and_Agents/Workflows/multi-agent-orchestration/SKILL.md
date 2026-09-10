@@ -43,7 +43,7 @@ single agent, and how to keep hand-offs between agents reliable.
 - A single agent's context or tool set has grown large enough that it
   shows role confusion or degraded performance on any one sub-task (a
   concrete threshold to check, established in
-  [agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md), before
+  [agent-architecture-design](../../Architecture/agent-patterns/agent-architecture-design/SKILL.md)/SKILL.md), before
   reaching for multi-agent as a fix).
 - A task naturally decomposes into independent workstreams that can run in
   parallel (e.g. researching three unrelated topics before synthesizing).
@@ -146,7 +146,7 @@ single agent, and how to keep hand-offs between agents reliable.
    levels of delegation are allowed (avoid a supervisor's worker itself
    spawning further workers unbounded), independent of any single agent's
    own loop cap (see
-   [agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md)).
+   [agent-architecture-design](../../Architecture/agent-patterns/agent-architecture-design/SKILL.md)/SKILL.md)).
 
 7. **Decide where shared state lives** — a common data store both agents
    read/write, or strictly message-passing hand-offs with no shared
@@ -252,6 +252,6 @@ from each sub-agent's own eval suite.
 
 ## Cross-references
 
-- [agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md)
+- [agent-architecture-design](../../Architecture/agent-patterns/agent-architecture-design/SKILL.md)/SKILL.md)
 - [agent-tool-use-patterns](../[agent-tool-use-patterns](../../Models_and_FineTuning/agent-tool-use-patterns/SKILL.md)/SKILL.md)
 - [agent-evaluation-and-guardrails](../[agent-evaluation-and-guardrails](../../Models_and_FineTuning/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md)

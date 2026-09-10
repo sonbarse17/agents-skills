@@ -116,7 +116,7 @@ decisions between phases.
    (ReAct-style, plan-and-execute, or finite-state), termination
    condition, iteration cap, and tool-boundary classification (read-only
    vs. reversible-write vs. irreversible-write) per
-   [agent-architecture-design](../[agent-architecture-design](../../../AI_and_Agents/Architecture/agent-architecture-design/SKILL.md)/SKILL.md)
+   [agent-architecture-design](../../../../AI_and_Agents/Architecture/agent-patterns/agent-architecture-design/SKILL.md)/SKILL.md)
    **before** wiring any specific LLM provider SDK directly into the
    agent's code — hardcoding a provider SDK call at this stage is exactly
    what Phase 3's gateway exists to avoid retrofitting later.
@@ -317,7 +317,7 @@ this skill are designed to produce.
 ## Cross-references
 
 - [aws-landing-zone-setup](../../../cloud/skills/[aws-landing-zone-setup](../aws-landing-zone-setup/SKILL.md)/SKILL.md), [azure-landing-zone-setup](../../../cloud/skills/[azure-landing-zone-setup](../azure-landing-zone-setup/SKILL.md)/SKILL.md), [gcp-landing-zone-setup](../../../cloud/skills/[gcp-landing-zone-setup](../gcp-landing-zone-setup/SKILL.md)/SKILL.md) — Phase 1's account/subscription/project and network-guardrail foundation.
-- [agent-architecture-design](../[agent-architecture-design](../../../AI_and_Agents/Architecture/agent-architecture-design/SKILL.md)/SKILL.md) — Phase 2's control-loop, termination, and tool-boundary design.
+- [agent-architecture-design](../../../../AI_and_Agents/Architecture/agent-patterns/agent-architecture-design/SKILL.md)/SKILL.md) — Phase 2's control-loop, termination, and tool-boundary design.
 - [llm-gateway-and-multi-provider-routing](../[llm-gateway-and-multi-provider-routing](../../../AI_and_Agents/Models_and_FineTuning/[llm-gateway](../../../AI_and_Agents/Models_and_FineTuning/llm-gateway/SKILL.md)-and-multi-provider-routing/SKILL.md)/SKILL.md) — Phase 3's gateway/fallback configuration.
 - [rag-pipeline-design](../[rag-pipeline-design](../../../AI_and_Agents/Models_and_FineTuning/rag-pipeline-design/SKILL.md)/SKILL.md) — Phase 4's chunking/embedding/retrieval design.
 - [vector-[database-operations](../../../../Software_Engineering_and_Other/Databases/common/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../../../AI_and_Agents/Infrastructure/vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md) — Phase 4's managed vector index configuration and scaling.

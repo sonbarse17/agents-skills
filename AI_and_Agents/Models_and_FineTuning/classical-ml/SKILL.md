@@ -460,7 +460,7 @@ Classical ML vs rule-based: rule-based systems are fully interpretable but don't
   - ../../../Global_References/classical-[ml-feature-engineering](../../../Data_Engineering/feature-engineering/SKILL.md).md — Feature Engineering Reference
   - ../../../Global_References/classical-ml-model-selection.md — Model Selection Reference
 ## Handoff
-`[ml-deep-learning](../../Architecture/deep-learning/SKILL.md)` for deep learning/neural network methods
+`[ml-deep-learning](../../Architecture/ml-foundations/deep-learning/SKILL.md)` for deep learning/neural network methods
 `[ml-feature-engineering](../../../Data_Engineering/feature-engineering/SKILL.md)` for feature extraction and selection
 
 ## Architecture Decision Trees

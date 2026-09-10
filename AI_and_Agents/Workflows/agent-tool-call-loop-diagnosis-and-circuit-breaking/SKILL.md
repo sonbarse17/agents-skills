@@ -34,7 +34,7 @@ the most common and most expensive agent failure modes in production: it
 burns tokens and API quota, can hammer a downstream system, and often goes
 unnoticed until a bill or a rate-limit alert fires. Preventing loops at
 design time (a hard iteration cap, stall detection in the dispatcher) is
-covered in [agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md)
+covered in [agent-architecture-design](../../Architecture/agent-patterns/agent-architecture-design/SKILL.md)/SKILL.md)
 and [agent-tool-use-patterns](../[agent-tool-use-patterns](../../Models_and_FineTuning/agent-tool-use-patterns/SKILL.md)/SKILL.md); this
 skill is the *operational* companion — what to do when a loop is actually
 happening or has already happened: how to confirm it's really a loop and
@@ -206,7 +206,7 @@ stop the loop — it makes the loop more expensive before it stops.
 - Treat the circuit breaker's hard ceiling as safety-critical
   configuration, reviewed with the same scrutiny as the agent's main loop
   iteration cap in
-  [agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md) — the
+  [agent-architecture-design](../../Architecture/agent-patterns/agent-architecture-design/SKILL.md)/SKILL.md) — the
   two caps overlap in purpose but operate at different layers (overall
   loop vs. per-tool-signature).
 - Set a `max_total_calls` ceiling generously above legitimate peak usage,
@@ -318,7 +318,7 @@ Diagnosis:
 ## Cross-references
 
 - [agent-tool-use-patterns](../[agent-tool-use-patterns](../../Models_and_FineTuning/agent-tool-use-patterns/SKILL.md)/SKILL.md) — the design-time stall detection and tool-risk classification this skill's operational diagnosis builds on.
-- [agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md) — the overall loop's hard iteration cap and timeout, which operate alongside (not instead of) the per-tool circuit breaker here.
+- [agent-architecture-design](../../Architecture/agent-patterns/agent-architecture-design/SKILL.md)/SKILL.md) — the overall loop's hard iteration cap and timeout, which operate alongside (not instead of) the per-tool circuit breaker here.
 - [agent-cost-and-latency-spike-investigation](../[agent-cost-and-latency-spike-investigation](../agent-cost-and-latency-spike-investigation/SKILL.md)/SKILL.md) — loops are one of the most common root causes of a single-workflow cost/latency spike.
 - [agent-bad-response-triage-and-root-cause-classification](../[agent-bad-response-triage-and-root-cause-classification](../agent-bad-response-triage-and-root-cause-classification/SKILL.md)/SKILL.md) — when a loop also produces a bad final answer, not just wasted cost.
 - [agent-evaluation-and-guardrails](../[agent-evaluation-and-guardrails](../../Models_and_FineTuning/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md) — turning a confirmed loop trigger into a permanent regression case.

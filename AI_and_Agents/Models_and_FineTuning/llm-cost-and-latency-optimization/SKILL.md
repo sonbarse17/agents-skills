@@ -253,4 +253,4 @@ quality gap there.
 
 - [prompt-and-context-engineering](../[prompt-and-context-engineering](../../Workflows/prompt-and-[context-engineering](../../Workflows/context-engineering/SKILL.md)/SKILL.md)/SKILL.md)
 - [rag-pipeline-design](../[rag-pipeline-design](../rag-pipeline-design/SKILL.md)/SKILL.md)
-- [agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md)
+- [agent-architecture-design](../../Architecture/agent-patterns/agent-architecture-design/SKILL.md)/SKILL.md)

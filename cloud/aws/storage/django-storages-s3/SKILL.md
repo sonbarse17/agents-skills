@@ -145,7 +145,7 @@ django-storages, S3Boto3Storage, S3StaticStorage, boto3, STORAGES dict, presigne
 ## Related Skills
 
 - `[django-expert](../../../../Software_Engineering_and_Other/Backend/frameworks/django-expert/SKILL.md)` — core Django models, DRF, and ORM that produce the files this skill persists to S3
-- `[fullstack-guardian](../../../../AI_and_Agents/Architecture/fullstack-guardian/SKILL.md)` — secure end-to-end upload flows and access control around stored files
+- `[fullstack-guardian](../../../../AI_and_Agents/Architecture/common/fullstack-guardian/SKILL.md)` — secure end-to-end upload flows and access control around stored files
 - `[devops-engineer](../../../../ci-cd/common/other/devops-engineer/SKILL.md)` — provisioning the S3 buckets, IAM roles, and CloudFront distributions this skill targets
 
 [Documentation](https://jeffallan.[github](../../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/backend/django-storages-s3/)

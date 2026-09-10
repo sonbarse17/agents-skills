@@ -153,7 +153,7 @@ and the operational burden each phase adds versus a managed alternative.
 3. **Phase 3 — agent architecture design.** Design the control loop,
    termination condition, iteration cap, wall-clock timeout, and tool-
    boundary classification per
-   [agent-architecture-design](../[agent-architecture-design](../../../AI_and_Agents/Architecture/agent-architecture-design/SKILL.md)/SKILL.md),
+   [agent-architecture-design](../../../../AI_and_Agents/Architecture/agent-patterns/agent-architecture-design/SKILL.md)/SKILL.md),
    using the Phase 2 measured latency (not an assumed managed-API
    latency figure) to set realistic per-call timeouts and the overall
    loop's wall-clock budget.
@@ -332,7 +332,7 @@ flags as catastrophic on a single-replica self-hosted deployment.
 
 - [gpu-accelerator-infrastructure-for-ml-training](../../../mlops/skills/[gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md)/SKILL.md) — Phase 1's GPU Operator install and serving node pool design (its guidance applies to inference-serving [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), not only training).
 - [model-serving-and-scaling](../../../mlops/skills/[model-serving-and-scaling](../../../AI_and_Agents/Models_and_FineTuning/model-serving-and-scaling/SKILL.md)/SKILL.md) — Phase 2's vLLM/TGI batching-aware LLM serving mechanics.
-- [agent-architecture-design](../[agent-architecture-design](../../../AI_and_Agents/Architecture/agent-architecture-design/SKILL.md)/SKILL.md) — Phase 3's control-loop, termination, and tool-boundary design.
+- [agent-architecture-design](../../../../AI_and_Agents/Architecture/agent-patterns/agent-architecture-design/SKILL.md)/SKILL.md) — Phase 3's control-loop, termination, and tool-boundary design.
 - [rag-pipeline-design](../[rag-pipeline-design](../../../AI_and_Agents/Models_and_FineTuning/rag-pipeline-design/SKILL.md)/SKILL.md) — Phase 4's chunking/embedding/retrieval design.
 - [vector-[database-operations](../../../../Software_Engineering_and_Other/Databases/common/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../../../AI_and_Agents/Infrastructure/vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md) — Phase 4's self-hosted Weaviate/Milvus sizing, sharding, and replication.
 - [mcp-server-development](../[mcp-server-development](../../../AI_and_Agents/Infrastructure/mcp-server-development/SKILL.md)/SKILL.md) — Phase 5's tool-server build, network segmentation, and credential scoping.

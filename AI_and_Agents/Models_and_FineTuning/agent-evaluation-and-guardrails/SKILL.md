@@ -231,7 +231,7 @@ them as complementary, not interchangeable.
 ## Worked example
 
 **Task:** evaluating a prompt change to the ticket-triage agent from
-[agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md) before
+[agent-architecture-design](../../Architecture/agent-patterns/agent-architecture-design/SKILL.md)/SKILL.md) before
 shipping it.
 
 Eval suite: 60 cases — 40 real historical tickets with known correct

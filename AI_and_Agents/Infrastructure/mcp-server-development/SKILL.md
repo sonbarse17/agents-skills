@@ -164,7 +164,7 @@ server side of that pairing.
 
 7. **Add rate limiting and timeouts** on every backend call the server
    makes, so a runaway agent loop (see
-   [agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md))
+   [agent-architecture-design](../../Architecture/agent-patterns/agent-architecture-design/SKILL.md)/SKILL.md))
    cannot turn into a backend outage.
 
 8. **Test against a real client, not just unit tests.** Connect the server
@@ -225,7 +225,7 @@ server side of that pairing.
   rate limit or racking up cost.
   **Fix:** Add server-side rate limiting and timeouts independent of the
   client; don't rely on the agent's own loop bound as your only defense
-  (see [agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md)).
+  (see [agent-architecture-design](../../Architecture/agent-patterns/agent-architecture-design/SKILL.md)/SKILL.md)).
 
 - **Symptom:** A schema change (e.g. renaming a required field) silently
   breaks agent sessions that cached the old tool definition, producing
@@ -295,5 +295,5 @@ consulted separately since that part is not standardized by MCP itself.
 ## Cross-references
 
 - [agent-tool-use-patterns](../[agent-tool-use-patterns](../../Models_and_FineTuning/agent-tool-use-patterns/SKILL.md)/SKILL.md)
-- [agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md)
+- [agent-architecture-design](../../Architecture/agent-patterns/agent-architecture-design/SKILL.md)/SKILL.md)
 - [agent-evaluation-and-guardrails](../[agent-evaluation-and-guardrails](../../Models_and_FineTuning/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md)

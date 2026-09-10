@@ -44,7 +44,7 @@ a known procedure precisely (see
 or whether there even should be one. This skill covers designing within
 architectural constraints (not designing the constraints themselves —
 that's the architect-level work in
-[system-design-technology-selection-and-decision-records](../[system-design-technology-selection-and-decision-records](../../../AI_and_Agents/Architecture/system-design-technology-selection-and-decision-records/SKILL.md)/SKILL.md)),
+[system-design-technology-selection-and-decision-records](../../../../AI_and_Agents/Architecture/enterprise-architecture/system-design-technology-selection-and-decision-records/SKILL.md)/SKILL.md)),
 running a code/design review that goes past style into correctness and
 failure modes, leading ambiguous root-cause investigations, and
 mentoring through the review and pairing process itself.
@@ -77,7 +77,7 @@ mentoring through the review and pairing process itself.
   reopening or ignoring them; if a design genuinely can't be met within
   the given constraints, that's an escalation to the architecture-level
   process in
-  [system-design-technology-selection-and-decision-records](../[system-design-technology-selection-and-decision-records](../../../AI_and_Agents/Architecture/system-design-technology-selection-and-decision-records/SKILL.md)/SKILL.md),
+  [system-design-technology-selection-and-decision-records](../../../../AI_and_Agents/Architecture/enterprise-architecture/system-design-technology-selection-and-decision-records/SKILL.md)/SKILL.md),
   not something to route around unilaterally.
 - Read/write access to the codebase, its test suite, and its CI pipeline
   (see
@@ -229,7 +229,7 @@ mentoring through the review and pairing process itself.
 - Escalate to the architecture level (rather than quietly reinterpreting
   a constraint yourself) when a design genuinely can't meet its
   requirements within the given constraints — see
-  [system-design-technology-selection-and-decision-records](../[system-design-technology-selection-and-decision-records](../../../AI_and_Agents/Architecture/system-design-technology-selection-and-decision-records/SKILL.md)/SKILL.md).
+  [system-design-technology-selection-and-decision-records](../../../../AI_and_Agents/Architecture/enterprise-architecture/system-design-technology-selection-and-decision-records/SKILL.md)/SKILL.md).
 
 ## Common pitfalls
 

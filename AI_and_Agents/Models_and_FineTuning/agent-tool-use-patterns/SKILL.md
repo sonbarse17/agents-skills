@@ -66,7 +66,7 @@ wiring is used underneath.
   itself.
 - Clarity on which tools are read-only vs. reversible-write vs.
   irreversible-write, established during
-  [agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md).
+  [agent-architecture-design](../../Architecture/agent-patterns/agent-architecture-design/SKILL.md)/SKILL.md).
 
 ## Step-by-step guidance
 
@@ -121,7 +121,7 @@ wiring is used underneath.
 
 4. **Add loop detection to the dispatch layer**, independent of the
    iteration cap already set in the agent's main loop
-   ([agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md)):
+   ([agent-architecture-design](../../Architecture/agent-patterns/agent-architecture-design/SKILL.md)/SKILL.md)):
    track recent (tool name, arguments) pairs and flag/break on exact
    repeats, since a repeated identical call with no new information is
    almost never intentional progress.
@@ -266,5 +266,5 @@ proceeds on an actual external confirmation event.
 ## Cross-references
 
 - [mcp-server-development](../[mcp-server-development](../../Infrastructure/mcp-server-development/SKILL.md)/SKILL.md)
-- [agent-architecture-design](../[agent-architecture-design](../../Architecture/agent-architecture-design/SKILL.md)/SKILL.md)
+- [agent-architecture-design](../../Architecture/agent-patterns/agent-architecture-design/SKILL.md)/SKILL.md)
 - [agent-evaluation-and-guardrails](../[agent-evaluation-and-guardrails](../agent-evaluation-and-guardrails/SKILL.md)/SKILL.md)

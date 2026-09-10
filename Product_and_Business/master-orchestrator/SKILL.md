@@ -755,7 +755,7 @@ State: User asks about classical ML, scikit-learn, sklearn, regression, classifi
   Reason: "Classical ML request."
 
 State: User asks about deep learning, PyTorch, TensorFlow, neural networks, CNN, RNN, transformer.
-  Route: [ml-deep-learning](../../AI_and_Agents/Architecture/deep-learning/SKILL.md)
+  Route: [ml-deep-learning](../../AI_and_Agents/Architecture/ml-foundations/deep-learning/SKILL.md)
   Reason: "Deep learning request."
 
 State: User asks about feature engineering, feature creation, feature selection, feature transformation.
