@@ -14,6 +14,6 @@ Thumbs.db
 # Reorg scratch files (this repo's skill-migration scripts write these as
 # working state, always deleted before a round is reported done - ignored
 # here as a backstop, not because they're expected to linger)
-scripts/.*.json
-scripts/.*.tsv
-scripts/.*.txt
+/scripts/.*.json
+/scripts/.*.tsv
+/scripts/.*.txt
