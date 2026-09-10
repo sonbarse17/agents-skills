@@ -401,7 +401,7 @@ doesn't need a separate lookup to start triage.
   admission-time policy enforcement, complementary to (not a substitute
   for) Falco's runtime detection; a resource can pass admission and
   still misbehave at runtime, which is exactly what Falco catches.
-- [sysdig-secure-runtime-security](../../../AI_and_Agents/Workflows/sysdig-secure-runtime-security/SKILL.md)/SKILL.md) —
+- [sysdig-secure-runtime-security](../sysdig-secure-runtime-security/SKILL.md)/SKILL.md) —
   a commercial runtime-security platform built on the same underlying
   detection concepts (Sysdig originated Falco), for teams wanting a
   managed alternative to self-hosting the OSS Falco stack.

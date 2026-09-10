@@ -45,7 +45,7 @@ chains, load balancing, and unified rate-limit/cost tracking — not the
 per-workflow cost/latency tuning of what you send to a model (see
 [llm-cost-and-latency-optimization](../[llm-cost-and-latency-optimization](../llm-cost-and-latency-optimization/SKILL.md)/SKILL.md))
 or the fast triage of a single workflow's cost/latency spike (see
-[agent-cost-and-latency-spike-investigation](../[agent-cost-and-latency-spike-investigation](../../Workflows/agent-cost-and-latency-spike-investigation/SKILL.md)/SKILL.md)),
+[agent-cost-and-latency-spike-investigation](../../../Workflows/agent-diagnostics/agent-cost-and-latency-spike-investigation/SKILL.md)/SKILL.md)),
 both of which assume a gateway (if one exists) is already routing
 correctly.
 
@@ -236,7 +236,7 @@ correctly.
 8. **Pin gateway config as version-controlled infrastructure**, not
    console-clicked state, so a routing/fallback change is reviewable and
    revertible exactly like the rollback guidance in
-   [agent-cost-and-latency-spike-investigation](../[agent-cost-and-latency-spike-investigation](../../Workflows/agent-cost-and-latency-spike-investigation/SKILL.md)/SKILL.md) —
+   [agent-cost-and-latency-spike-investigation](../../../Workflows/agent-diagnostics/agent-cost-and-latency-spike-investigation/SKILL.md)/SKILL.md) —
    a hand-edited routing config with no previous version saved turns a
    bad routing change into its own [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 
@@ -305,7 +305,7 @@ correctly.
   **Fix:** Treat gateway config as version-controlled infrastructure
   (git-tracked YAML/JSON deployed via CI), the same discipline applied
   to prompt/routing rollbacks in
-  [agent-cost-and-latency-spike-investigation](../[agent-cost-and-latency-spike-investigation](../../Workflows/agent-cost-and-latency-spike-investigation/SKILL.md)/SKILL.md) —
+  [agent-cost-and-latency-spike-investigation](../../../Workflows/agent-diagnostics/agent-cost-and-latency-spike-investigation/SKILL.md)/SKILL.md) —
   never hand-edit a live gateway config as the only copy of a change.
 
 - **Symptom:** A "failover test" performed by revoking or rotating a
@@ -380,7 +380,7 @@ directly instead of silently failing every downstream agent.
 ## Cross-references
 
 - [llm-cost-and-latency-optimization](../[llm-cost-and-latency-optimization](../llm-cost-and-latency-optimization/SKILL.md)/SKILL.md) — the deliberate cost/latency tuning layer above routing; this skill only covers moving traffic between providers, not shrinking what's sent per call.
-- [agent-cost-and-latency-spike-investigation](../[agent-cost-and-latency-spike-investigation](../../Workflows/agent-cost-and-latency-spike-investigation/SKILL.md)/SKILL.md) — the fast-triage workflow to run when a spike is provider- or routing-correlated rather than workflow-specific.
+- [agent-cost-and-latency-spike-investigation](../../../Workflows/agent-diagnostics/agent-cost-and-latency-spike-investigation/SKILL.md)/SKILL.md) — the fast-triage workflow to run when a spike is provider- or routing-correlated rather than workflow-specific.
 - [agent-architecture-design](../../../Architecture/agent-patterns/agent-architecture-design/SKILL.md)/SKILL.md) — where gateway placement fits into an agent system's overall architecture.
 - [secrets-management](../../../../Security/common/devsecops/SKILL.md)/skills/[secrets-management](../../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md) — storing and rotating the provider credentials a gateway holds.
 - [prometheus-and-grafana-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md) — wiring the gateway's routing/cost/error metrics into [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) and alerts.

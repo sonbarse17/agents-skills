@@ -28,7 +28,7 @@ depends_on:
 
 ## Purpose
 
-[kubeflow-[ml-pipeline](../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../[kubeflow-[ml-pipeline](../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../../DevOps_and_Cloud/Containers_and_Orchestration/kubeflow-[ml-pipeline](../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md)
+[kubeflow-[ml-pipeline](../../AI_and_Agents/Workflows/pipelines/ml-pipeline/SKILL.md)-orchestration](../../AI_and_Agents/Workflows/pipelines/ml-pipeline/SKILL.md)-orchestration](../../AI_and_Agents/Workflows/pipelines/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md)
 models an ML workflow as a graph of containerized steps; Ray takes a
 fundamentally different approach — it's a [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-native distributed
 computing runtime where a cluster of workers executes ordinary [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
@@ -418,7 +418,7 @@ of no hard memory isolation between them.
 
 ## Cross-references
 
-- [kubeflow-[ml-pipeline](../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../[kubeflow-[ml-pipeline](../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../../DevOps_and_Cloud/Containers_and_Orchestration/kubeflow-[ml-pipeline](../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md) — the graph-based orchestration alternative to Ray's task/actor model; read both before choosing.
+- [kubeflow-[ml-pipeline](../../AI_and_Agents/Workflows/pipelines/ml-pipeline/SKILL.md)-orchestration](../../AI_and_Agents/Workflows/pipelines/ml-pipeline/SKILL.md)-orchestration](../../AI_and_Agents/Workflows/pipelines/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md) — the graph-based orchestration alternative to Ray's task/actor model; read both before choosing.
 - [training-pipeline-orchestration](../../AI_and_Agents/Models_and_FineTuning/llmops/training-pipeline-orchestration/SKILL.md)/SKILL.md) — vendor-neutral pipeline design concepts (gates, reproducibility) that still apply when Ray is the execution engine for a training step.
 - [model-serving-and-scaling](../../AI_and_Agents/Models_and_FineTuning/inference-serving/model-serving-and-scaling/SKILL.md)/SKILL.md) — general serving/[autoscaling](../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) concepts (canary rollout, latency budgets) that apply to a Ray Serve deployment specifically.
 - [gpu-accelerator-infrastructure-for-ml-training](../[gpu-accelerator-infrastructure-for-ml-training](../../DevOps_and_Cloud/Cloud_Providers/gpu-accelerator-infrastructure-for-ml-training/SKILL.md)/SKILL.md) and [gpu-accelerator-configuration-validation](../[gpu-accelerator-configuration-validation](../../DevOps_and_Cloud/Cloud_Providers/gpu-accelerator-configuration-validation/SKILL.md)/SKILL.md) — the [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-level GPU scheduling layer that Ray's own resource requests (`num_gpus`) sit on top of.

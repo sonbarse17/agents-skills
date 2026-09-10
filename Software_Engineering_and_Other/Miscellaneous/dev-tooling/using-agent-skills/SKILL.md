@@ -34,7 +34,7 @@ Task arrives
     ├── Implementing code? ────────────→ [incremental-implementation](../../../Patterns/dev-practice/incremental-implementation/SKILL.md)
     │   ├── UI work? ─────────────────→ [frontend-ui-engineering](../../../Frontend/architecture/frontend-ui-engineering/SKILL.md)
     │   ├── API work? ────────────────→ [api-and-interface-design](../../../Backend/api-design/api-and-interface-design/SKILL.md)
-    │   ├── Need better context? ─────→ [context-engineering](../../../../AI_and_Agents/Workflows/context-engineering/SKILL.md)
+    │   ├── Need better context? ─────→ [context-engineering](../../../../AI_and_Agents/Workflows/prompt-engineering/context-engineering/SKILL.md)
     │   ├── Need doc-verified code? ───→ [source-driven-development](../../../Patterns/dev-practice/source-driven-development/SKILL.md)
     │   └── Stakes high / unfamiliar code? ──→ [doubt-driven-development](../../../Patterns/dev-practice/doubt-driven-development/SKILL.md)
     ├── Writing/running tests? ────────→ [test-driven-development](../../../Patterns/dev-practice/test-driven-development/SKILL.md)
@@ -157,7 +157,7 @@ For a complete feature, the typical skill sequence is:
 2.  [idea-refine](../../../../Product_and_Business/idea-refine/SKILL.md)                 → Refine vague ideas
 3.  [spec-driven-development](../../../Patterns/dev-practice/spec-driven-development/SKILL.md)     → Define what we're building
 4.  [planning-and-task-breakdown](../../../Patterns/dev-practice/planning-and-task-breakdown/SKILL.md) → Break into verifiable chunks
-5.  [context-engineering](../../../../AI_and_Agents/Workflows/context-engineering/SKILL.md)         → Load the right context
+5.  [context-engineering](../../../../AI_and_Agents/Workflows/prompt-engineering/context-engineering/SKILL.md)         → Load the right context
 6.  [source-driven-development](../../../Patterns/dev-practice/source-driven-development/SKILL.md)   → Verify against official docs
 7.  [incremental-implementation](../../../Patterns/dev-practice/incremental-implementation/SKILL.md)  → Build slice by slice
 8.  [observability-and-instrumentation](../../../DevOps_and_Cloud/Observability_and_SecOps/[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-instrumentation/SKILL.md) → Instrument as you build (runs parallel with 7-9, not after)
@@ -184,7 +184,7 @@ Not every task needs every skill. A bug fix might only need: `[debugging-and-err
 | Build | [incremental-implementation](../../../Patterns/dev-practice/incremental-implementation/SKILL.md) | Thin vertical slices, test each before expanding |
 | Build | [source-driven-development](../../../Patterns/dev-practice/source-driven-development/SKILL.md) | Verify against official docs before implementing |
 | Build | [doubt-driven-development](../../../Patterns/dev-practice/doubt-driven-development/SKILL.md) | Adversarial fresh-context review of every non-trivial decision |
-| Build | [context-engineering](../../../../AI_and_Agents/Workflows/context-engineering/SKILL.md) | Right context at the right time |
+| Build | [context-engineering](../../../../AI_and_Agents/Workflows/prompt-engineering/context-engineering/SKILL.md) | Right context at the right time |
 | Build | [frontend-ui-engineering](../../../Frontend/architecture/frontend-ui-engineering/SKILL.md) | Production-quality UI with accessibility |
 | Build | [api-and-interface-design](../../../Backend/api-design/api-and-interface-design/SKILL.md) | Stable interfaces with clear contracts |
 | Verify | [test-driven-development](../../../Patterns/dev-practice/test-driven-development/SKILL.md) | Failing test first, then make it pass |

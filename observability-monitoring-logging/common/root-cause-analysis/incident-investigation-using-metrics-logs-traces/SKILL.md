@@ -46,7 +46,7 @@ traces to find the specific slow/failing span, logs to get the
 concrete error detail at that span — as distinct from the setup and
 query-authoring skills for each signal individually (see
 [prometheus-and-grafana-[monitoring](../../monitoring-strategy/monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack](../../Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md),
-[promql-query-authoring](../[promql-query-authoring](../../../AI_and_Agents/Workflows/promql-query-authoring/SKILL.md)/SKILL.md), and
+[promql-query-authoring](../../../prometheus/configuration/promql-query-authoring/SKILL.md)/SKILL.md), and
 [logql-query-authoring](../[logql-query-authoring](../logql-query-authoring/SKILL.md)/SKILL.md)), which this
 skill assumes are already in place and doesn't repeat.
 
@@ -81,7 +81,7 @@ skill assumes are already in place and doesn't repeat.
 - A metrics stack (Prometheus/Grafana, see
   [prometheus-and-grafana-[monitoring](../../monitoring-strategy/monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack](../../Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md))
   and comfort writing ad hoc PromQL (see
-  [promql-query-authoring](../[promql-query-authoring](../../../AI_and_Agents/Workflows/promql-query-authoring/SKILL.md)/SKILL.md)).
+  [promql-query-authoring](../../../prometheus/configuration/promql-query-authoring/SKILL.md)/SKILL.md)).
 - A log aggregation backend (Loki or equivalent) and comfort writing ad
   hoc LogQL/query-language queries (see
   [logql-query-authoring](../[logql-query-authoring](../logql-query-authoring/SKILL.md)/SKILL.md)).
@@ -337,7 +337,7 @@ between the edge gateway and the actual payments-processing backend.
 
 7. **Action:** `payments-processing` is rolled back to the previous
    version (matching the rollback discipline in
-   [agent-cost-and-latency-spike-investigation](../../../ai-agent/skills/[agent-cost-and-latency-spike-investigation](../../../AI_and_Agents/Workflows/agent-cost-and-latency-spike-investigation/SKILL.md)/SKILL.md)
+   [agent-cost-and-latency-spike-investigation](../../../../AI_and_Agents/Workflows/agent-diagnostics/agent-cost-and-latency-spike-investigation/SKILL.md)/SKILL.md)
    for a comparable "revert the specific correlated change" pattern);
    error rate returns to baseline within minutes.
 
@@ -350,7 +350,7 @@ between the edge gateway and the actual payments-processing backend.
 ## Cross-references
 
 - [prometheus-and-grafana-[monitoring](../../monitoring-strategy/monitoring/SKILL.md)-stack](../[prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack](../../Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md) — setting up the scrape/dashboard/[alerting](../../alerting/alerting/SKILL.md) layer this investigation's metrics queries run against.
-- [promql-query-authoring](../[promql-query-authoring](../../../AI_and_Agents/Workflows/promql-query-authoring/SKILL.md)/SKILL.md) — writing the specific PromQL used for the scoping/localization step of this workflow.
+- [promql-query-authoring](../../../prometheus/configuration/promql-query-authoring/SKILL.md)/SKILL.md) — writing the specific PromQL used for the scoping/localization step of this workflow.
 - [logql-query-authoring](../[logql-query-authoring](../logql-query-authoring/SKILL.md)/SKILL.md) — writing the specific LogQL used for the log-pivot step, including the unbounded-query risk this workflow's scoping discipline avoids.
 - [blameless-postmortem-and-root-cause-analysis](../../../site-reliability-engineering/skills/[blameless-postmortem-and-root-cause-analysis](../../../Software_Engineering_and_Other/Frontend/blameless-postmortem-and-[root-cause-analysis](../root-cause-analysis/SKILL.md)/SKILL.md)/SKILL.md) — where this investigation's documented cross-signal trail feeds into the formal postmortem.
 - [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../../Software_Engineering_and_Other/Frontend/[incident-response](../[incident](../incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../alerting/on-call-management/SKILL.md)/SKILL.md)/SKILL.md) — the broader [incident-response](../[incident](../incident/SKILL.md)-response/SKILL.md) process (roles, communication, severity) this investigative workflow operates within.

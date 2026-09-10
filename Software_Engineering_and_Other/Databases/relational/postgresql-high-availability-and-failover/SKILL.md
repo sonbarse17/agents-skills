@@ -24,11 +24,11 @@ depends_on:
   - monitoring
 ---
 
-# [PostgreSQL](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) High Availability and Failover
+# [PostgreSQL](../postgresql/SKILL.md) High Availability and Failover
 
 ## Purpose
 
-[PostgreSQL](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) has no built-in automatic failover — a standalone streaming
+[PostgreSQL](../postgresql/SKILL.md) has no built-in automatic failover — a standalone streaming
 replica will happily keep serving stale reads forever if the primary
 dies, with nothing promoting it unless something external decides to and
 does so safely. This skill covers designing that "something external":
@@ -36,14 +36,14 @@ most commonly **Patroni** (a consensus-store-backed HA agent that
 manages `pg_ctl`, `recovery.conf`/`standby.signal`, and a fencing
 mechanism), the split-brain risks any automatic-failover design must
 close off, and how to test failover realistically without it becoming an
-actual [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md). It builds on the replication mechanics covered in
-[postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../../Software_Engineering_and_Other/Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md);
+actual [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md). It builds on the replication mechanics covered in
+[postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../../Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md);
 this skill is specifically about the failover decision-making and
 safety layer on top of that replication.
 
 ## When to use
 
-- Designing a new [PostgreSQL](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) HA topology that needs automatic failover
+- Designing a new [PostgreSQL](../postgresql/SKILL.md) HA topology that needs automatic failover
   (not just a manually-promoted standby) for RTO reasons.
 - Standing up or troubleshooting Patroni (or an equivalent, e.g.
   `pg_auto_failover`, `repmgr` with fencing) — cluster bootstrap,
@@ -62,14 +62,14 @@ safety layer on top of that replication.
 ## Prerequisites & environment
 
 - A working streaming replication topology already in place (see
-  [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../../Software_Engineering_and_Other/Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md)
+  [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../../Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md)
   for setup) — this skill assumes replication mechanics are understood
   and focuses on the failover/fencing layer on top.
 - For Patroni: a distributed consensus store — etcd, Consul, or
   ZooKeeper — with an odd number of nodes (3 or 5) across separate
   failure domains, since Patroni's leader election correctness depends
   on that store's own quorum guarantees, not on Patroni itself.
-- Patroni installed on each [PostgreSQL](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) node, configured with a REST API
+- Patroni installed on each [PostgreSQL](../postgresql/SKILL.md) node, configured with a REST API
   endpoint and (strongly recommended) a fencing/watchdog mechanism —
   either a hardware/software watchdog device (`/dev/watchdog`) or a
   network fencing script that can guarantee a demoted-but-unresponsive
@@ -105,7 +105,7 @@ Leader election alone is not sufficient to prevent split-brain — it
 prevents two nodes from *believing* they should be primary at the same
 moment, but does not guarantee a demoted node has actually *stopped*
 accepting writes (e.g. if it's hung, or its Patroni agent has crashed
-while [PostgreSQL](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) itself is still running and accepting connections).
+while [PostgreSQL](../postgresql/SKILL.md) itself is still running and accepting connections).
 Configure a `watchdog` device so a node that loses its leader lease and
 cannot confirm its own demotion self-fences (reboots) rather than
 continuing to run as an unmanaged primary:
@@ -116,7 +116,7 @@ watchdog:
   device: /dev/watchdog
   safety_margin: 5
 
-[postgresql](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md):
+[postgresql](../postgresql/SKILL.md):
   parameters:
     synchronous_commit: "on"
   use_pg_rewind: true
@@ -129,7 +129,7 @@ bootstrap:
     maximum_lag_on_failover: 1048576   # bytes; skip a candidate this far behind
     synchronous_mode: false
 ```
-`mode: required` means Patroni refuses to start [PostgreSQL](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) at all if it
+`mode: required` means Patroni refuses to start [PostgreSQL](../postgresql/SKILL.md) at all if it
 cannot arm the watchdog — a stricter but safer default than `mode:
 automatic`, which degrades to running without fencing if the watchdog
 device is unavailable.
@@ -139,7 +139,7 @@ device is unavailable.
 `synchronous_mode: true` in Patroni (paired with
 `synchronous_commit: on` and Postgres's own
 `synchronous_standby_names`) guarantees a promoted replica never loses a
-committed transaction, at the cost of every [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) on the primary
+committed transaction, at the cost of every [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) on the primary
 waiting for at least one synchronous replica's ACK — a slow or
 partitioned replica directly increases primary write latency, and in the
 worst case (`synchronous_mode_strict`) can block all writes if no
@@ -214,9 +214,9 @@ enough).
 
 - Run the consensus store (etcd/Consul/ZooKeeper) with an odd number of
   nodes across genuinely independent failure domains (separate racks/AZs),
-  never colocated 1:1 with the [PostgreSQL](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) nodes it's making decisions
+  never colocated 1:1 with the [PostgreSQL](../postgresql/SKILL.md) nodes it's making decisions
   about — if the consensus store loses quorum at the same time as a
-  [PostgreSQL](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) node failure, Patroni cannot safely fail over at all (a
+  [PostgreSQL](../postgresql/SKILL.md) node failure, Patroni cannot safely fail over at all (a
   correct, conservative failure mode, but one worth designing to avoid).
 - Always configure a real fencing mechanism (watchdog or STONITH-style
   network fencing), not leader election alone — leader election prevents
@@ -291,10 +291,10 @@ enough).
 
 ## Worked example
 
-**Scenario:** A 3-node [PostgreSQL](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) cluster (pg1 primary, pg2/pg3
+**Scenario:** A 3-node [PostgreSQL](../postgresql/SKILL.md) cluster (pg1 primary, pg2/pg3
 replicas) managed by Patroni with a 3-node etcd cluster, behind HAProxy.
 A quarterly failover game-day is scheduled to validate the setup ahead
-of a compliance [audit](../../Operations/common/audit/SKILL.md).
+of a compliance [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md).
 
 1. Pre-checks in the maintenance window: confirm all three nodes are
    healthy and near-zero lag (`patronictl list` shows Leader=pg1,
@@ -314,7 +314,7 @@ of a compliance [audit](../../Operations/common/audit/SKILL.md).
    show a rewind operation, not a full basebackup) and is catching up
    normally.
 5. Simulate an actual failure for a more realistic test: hard-kill the
-   [PostgreSQL](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) process on pg2 (now primary) without going through
+   [PostgreSQL](../postgresql/SKILL.md) process on pg2 (now primary) without going through
    Patroni, and confirm etcd's lease expiry plus Patroni's health checks
    on pg3 (or pg1) trigger an automatic `failover` (not `switchover`,
    since this wasn't graceful) to the next best candidate within the
@@ -327,6 +327,6 @@ of a compliance [audit](../../Operations/common/audit/SKILL.md).
 
 ## Cross-references
 
-- [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../../Software_Engineering_and_Other/Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — the streaming replication mechanics (WAL shipping, replication slots, lag [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)) this HA design is built on top of.
+- [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../../Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — the streaming replication mechanics (WAL shipping, replication slots, lag [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)) this HA design is built on top of.
 - [postgresql-configuration-validation](../[postgresql-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-configuration-validation/SKILL.md)/SKILL.md) — validates `synchronous_standby_names` and replication-slot settings referenced here before they're applied to a live topology.
 - [database-schema-migration-with-liquibase-and-flyway](../[database-schema-migration-with-liquibase-and-flyway](../../../DevOps_and_Cloud/Observability_and_SecOps/database-schema-migration-with-liquibase-and-flyway/SKILL.md)/SKILL.md) — schema migrations need their own coordination with a Patroni-managed cluster (e.g. always targeting the current leader via the same HAProxy/VIP layer, never a specific node hostname).

@@ -37,7 +37,7 @@ retries and dynamic task generation. Neither is a strict upgrade over
 Airflow — each fits certain pipeline shapes and team preferences better.
 This skill covers authoring in both and a decision framework for
 choosing, alongside Airflow's task-based approach covered in
-[airflow-dag-authoring-and-validation](../[airflow-dag-authoring-and-validation](../../AI_and_Agents/Workflows/airflow-dag-authoring-and-validation/SKILL.md)/SKILL.md).
+[airflow-dag-authoring-and-validation](../../AI_and_Agents/Workflows/pipelines/airflow-dag-authoring-and-validation/SKILL.md)/SKILL.md).
 
 ## When to use
 
@@ -217,7 +217,7 @@ choosing, alongside Airflow's task-based approach covered in
    # make a naive append-only write safe to retry.
    ```
    The idempotency guidance in
-   [airflow-dag-authoring-and-validation](../[airflow-dag-authoring-and-validation](../../AI_and_Agents/Workflows/airflow-dag-authoring-and-validation/SKILL.md)/SKILL.md)
+   [airflow-dag-authoring-and-validation](../../AI_and_Agents/Workflows/pipelines/airflow-dag-authoring-and-validation/SKILL.md)/SKILL.md)
    applies unchanged regardless of which orchestrator executes the task.
 
 8. **Validate Dagster assets and Prefect flows before deploy** — each has
@@ -376,6 +376,6 @@ for Dagster's asset model.
 
 ## Cross-references
 
-- [airflow-dag-authoring-and-validation](../[airflow-dag-authoring-and-validation](../../AI_and_Agents/Workflows/airflow-dag-authoring-and-validation/SKILL.md)/SKILL.md) — the task-based authoring model this skill compares against, including the idempotency discipline that applies unchanged across all three tools.
-- [airflow-scheduler-and-dag-troubleshooting](../[airflow-scheduler-and-dag-troubleshooting](../../AI_and_Agents/Workflows/airflow-scheduler-and-dag-troubleshooting/SKILL.md)/SKILL.md) — the retry/backfill risk considerations here (idempotency before re-running) map directly onto Dagster partition re-materialization and Prefect flow re-runs.
+- [airflow-dag-authoring-and-validation](../../AI_and_Agents/Workflows/pipelines/airflow-dag-authoring-and-validation/SKILL.md)/SKILL.md) — the task-based authoring model this skill compares against, including the idempotency discipline that applies unchanged across all three tools.
+- [airflow-scheduler-and-dag-troubleshooting](../../AI_and_Agents/Workflows/pipelines/airflow-scheduler-and-dag-troubleshooting/SKILL.md)/SKILL.md) — the retry/backfill risk considerations here (idempotency before re-running) map directly onto Dagster partition re-materialization and Prefect flow re-runs.
 - [kafka-schema-registry-and-compatibility-management](../../Software_Engineering_and_Other/Databases/messaging/kafka-schema-registry-and-compatibility-management/SKILL.md)/SKILL.md) — schema-evolution discipline relevant to any asset/flow that consumes messages from a Kafka topic as one of its upstream dependencies.

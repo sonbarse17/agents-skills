@@ -1088,5 +1088,5 @@ logger.addFilter(PIIRedactingFilter())
 ## Related Skills
 
 - [alerting-oncall](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)/[alerting-oncall](../../../DevOps_and_Cloud/Observability_and_SecOps/[alerting](../../../DevOps_and_Cloud/Observability_and_SecOps/alerting/SKILL.md)-oncall/SKILL.md)/) - Alert workflows and on-call routing
-- [agent-evals](../[agent-evals](../../Workflows/agent-evals/SKILL.md)/) - Quality verification and evaluation pipelines
+- [agent-evals](../../../Workflows/evaluation/agent-evals/SKILL.md)/) - Quality verification and evaluation pipelines
 - [sre-dashboards](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)/[sre-dashboards](../../../DevOps_and_Cloud/Observability_and_SecOps/sre-[dashboards](../../../DevOps_and_Cloud/Cloud_Providers/dashboards/SKILL.md)/SKILL.md)/) - General SRE dashboard patterns

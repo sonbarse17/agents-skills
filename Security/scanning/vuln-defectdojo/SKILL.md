@@ -173,8 +173,8 @@ After import in the DefectDojo UI:
 
 - **Sensitive Data Handling**: DefectDojo stores vulnerability details that reveal application internals. Restrict access by role. Enable HTTPS and use SSO/LDAP for authentication in production.
 - **Access Control**: Issue separate API keys per pipeline with minimum `importer` role. Use `security lead` role for triage operations. Rotate keys quarterly.
-- **[Audit](../../Operations/common/audit/SKILL.md) Logging**: DefectDojo logs all finding status changes. Export [audit](../../Operations/common/audit/SKILL.md) logs as SOC2 CC7.1 and PCI-DSS 6.3.3 compliance evidence.
-- **Compliance**: SLA tracking and risk acceptance workflows directly satisfy SOC2, PCI-DSS, and GDPR vulnerability management requirements. Tag findings with compliance controls for filtered [audit](../../Operations/common/audit/SKILL.md) exports.
+- **[Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logging**: DefectDojo logs all finding status changes. Export [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs as SOC2 CC7.1 and PCI-DSS 6.3.3 compliance evidence.
+- **Compliance**: SLA tracking and risk acceptance workflows directly satisfy SOC2, PCI-DSS, and GDPR vulnerability management requirements. Tag findings with compliance controls for filtered [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) exports.
 - **Safe Defaults**: Enable 2FA, change default admin/admin credentials immediately, enable HTTPS via the override compose file (`[docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).override.https.yml`).
 
 ## Bundled Resources
@@ -201,9 +201,9 @@ Create one persistent `CI/CD` engagement per branch. Re-import on every merge to
 
 Import all scanner outputs at end of sprint into a single time-boxed engagement. Review combined risk posture in one place; assign findings to the next sprint backlog.
 
-### Pattern 3: Compliance [Audit](../../Operations/common/audit/SKILL.md) Export
+### Pattern 3: Compliance [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Export
 
-Before an [audit](../../Operations/common/audit/SKILL.md), filter findings by compliance tag (e.g., `pci-dss`), include risk acceptances and closure timestamps. Export as the vulnerability management evidence package.
+Before an [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md), filter findings by compliance tag (e.g., `pci-dss`), include risk acceptances and closure timestamps. Export as the vulnerability management evidence package.
 
 ## Integration Points
 

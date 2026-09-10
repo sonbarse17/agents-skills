@@ -44,7 +44,7 @@ Load detailed guidance based on context:
 |-------|-----------|-----------|
 | Design Patterns | `../../../Global_References/cli-developer_design-patterns.md` | Subcommands, flags, config, architecture |
 | Node.js CLIs | `../../../Global_References/node-cli.md` | commander, yargs, inquirer, chalk |
-| [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) CLIs | `../../../Global_References/[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-cli.md` | click, typer, argparse, rich |
+| [Python](../../../Languages/python/python/SKILL.md) CLIs | `../../../Global_References/[python](../../../Languages/python/python/SKILL.md)-cli.md` | click, typer, argparse, rich |
 | Go CLIs | `../../../Global_References/go-cli.md` | cobra, viper, bubbletea |
 | UX Patterns | `../../../Global_References/ux-patterns.md` | Progress bars, colors, help text |
 
@@ -74,7 +74,7 @@ program
 program.parse();
 ```
 
-For [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) (click/typer) and Go (cobra) quick-start examples, see `../../../Global_References/[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-cli.md` and `../../../Global_References/go-cli.md`.
+For [Python](../../../Languages/python/python/SKILL.md) (click/typer) and Go (cobra) quick-start examples, see `../../../Global_References/[python](../../../Languages/python/python/SKILL.md)-cli.md` and `../../../Global_References/go-cli.md`.
 
 ## Constraints
 
@@ -97,8 +97,8 @@ For [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKI
   // Node.js
   const useColor = process.stdout.isTTY;
   ```
-  ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
-  # [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
+  ```[python](../../../Languages/python/python/SKILL.md)
+  # [Python](../../../Languages/python/python/SKILL.md)
   import sys
   use_color = sys.stdout.isatty()
   ```
@@ -125,5 +125,5 @@ When implementing CLI features, provide:
 
 CLI frameworks (commander, yargs, oclif, click, typer, argparse, cobra, viper), terminal UI (chalk, inquirer, rich, bubbletea), testing (snapshot testing, E2E), distribution (npm, pip, homebrew, releases), performance optimization
 
-[Documentation](https://jeffallan.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/devops/cli-developer/)
+[Documentation](https://jeffallan.[github](../../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/devops/cli-developer/)
 

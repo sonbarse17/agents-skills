@@ -466,7 +466,7 @@ is passing for all existing Pods before the team flips it from `[Audit](../../..
   the Rego-based alternative; read this to decide which engine fits a
   given team/use case, especially for non-[Kubernetes](../../other/kubernetes/SKILL.md) (CI/IaC) policy
   needs Kyverno doesn't cover.
-- [fairwinds-polaris-and-goldilocks](../[fairwinds-polaris-and-goldilocks](../../../AI_and_Agents/Workflows/fairwinds-polaris-and-goldilocks/SKILL.md)/SKILL.md) —
+- [fairwinds-polaris-and-goldilocks](../fairwinds-polaris-and-goldilocks/SKILL.md)/SKILL.md) —
   a lighter-weight, no-authoring-required option for common workload
   configuration checks (resource limits, probes, security context) that
   may cover a policy before it's worth writing a custom Kyverno rule for

@@ -293,7 +293,7 @@ skill does not repeat.
    ```
 3. Turn it into a rate for a dashboard panel/alert, matching the same
    service/label breakdown used in the PromQL error-rate query from
-   [promql-query-authoring](../[promql-query-authoring](../../../AI_and_Agents/Workflows/promql-query-authoring/SKILL.md)/SKILL.md):
+   [promql-query-authoring](../../../prometheus/configuration/promql-query-authoring/SKILL.md)/SKILL.md):
    ```logql
    sum by (app) (
      rate(
@@ -324,5 +324,5 @@ skill does not repeat.
 
 - [loki-log-aggregation-configuration](../[loki-log-aggregation-configuration](../loki-log-aggregation-configuration/SKILL.md)/SKILL.md) — configuring Loki's ingestion, retention, and storage backend; label cardinality decisions referenced above belong there.
 - [loki-configuration-validation](../[loki-configuration-validation](../loki-configuration-validation/SKILL.md)/SKILL.md) — validating limits/schema config before deploying so ingestion isn't silently rejected for logs these queries need.
-- [promql-query-authoring](../[promql-query-authoring](../../../AI_and_Agents/Workflows/promql-query-authoring/SKILL.md)/SKILL.md) — the equivalent query-authoring depth for Prometheus/PromQL; LogQL's metric-query functions are deliberately modeled on it.
+- [promql-query-authoring](../../../prometheus/configuration/promql-query-authoring/SKILL.md)/SKILL.md) — the equivalent query-authoring depth for Prometheus/PromQL; LogQL's metric-query functions are deliberately modeled on it.
 - [incident-investigation-using-metrics-logs-traces](../[incident-investigation-using-metrics-logs-traces](../[incident](../incident/SKILL.md)-investigation-using-metrics-logs-traces/SKILL.md)/SKILL.md) — using LogQL queries like these as one leg of a live cross-signal investigation, correlated with metrics and traces.

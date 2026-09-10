@@ -36,20 +36,20 @@ identical on the surface regardless of why it happened, but the fix is
 completely different depending on the cause. Patching a prompt in response
 to what was actually a tool timeout fixes nothing and adds prompt cruft;
 rolling back a model version in response to what was actually a stale
-retrieval index wastes an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) cycle and hides the real problem. This
-skill is a triage [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md): reproduce the exact conditions that produced the
+retrieval index wastes an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) cycle and hides the real problem. This
+skill is a triage [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md): reproduce the exact conditions that produced the
 bad response, then work through a deliberate decision tree to classify the
 root cause into one of five buckets — **prompt issue**, **tool failure**,
 **retrieval issue**, **model behavior change**, or **genuine edge case** —
 before deciding on a fix. It assumes an eval harness and guardrail layer
 already exist (or should); this skill is what happens *between* "someone
 reported a bad response" and "here's the regression case and the fix,"
-which [agent-evaluation-and-guardrails](../../Models_and_FineTuning/evaluation/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md)
+which [agent-evaluation-and-guardrails](../../../Models_and_FineTuning/evaluation/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md)
 covers on the prevention side.
 
 ## When to use
 
-- A user, support ticket, or [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) alert reports one specific bad,
+- A user, support ticket, or [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) alert reports one specific bad,
   wrong, or harmful agent response and it needs root-causing before a fix
   is proposed.
 - Deciding whether an observed failure is a one-off (genuine edge case) or
@@ -59,7 +59,7 @@ covers on the prevention side.
 - After a model provider version bump, a tool schema change, or a
   retrieval-index update, and a report comes in that might be linked to
   that change.
-- Building or refining an [incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md) [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) specifically for
+- Building or refining an [incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md) [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) specifically for
   agent/LLM output issues, distinct from traditional application incidents.
 
 ## Prerequisites & environment
@@ -78,7 +78,7 @@ covers on the prevention side.
   ingestion/re-indexing runs — with timestamps, so they can be correlated
   against when the bad response occurred.
 - Access to the eval suite (see
-  [agent-evaluation-and-guardrails](../../Models_and_FineTuning/evaluation/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md))
+  [agent-evaluation-and-guardrails](../../../Models_and_FineTuning/evaluation/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md))
   so a confirmed root cause can be turned into a permanent regression case.
 
 ## Step-by-step guidance
@@ -125,7 +125,7 @@ covers on the prevention side.
    | **Model behavior change** | The prompt, tools, and retrieval are all unchanged and were confirmed working before a specific date/model version, and the failure correlates with a provider-side model update or your own version bump. |
    | **Genuine edge case** | Reproduces deterministically, every upstream component (tools, retrieval, prompt) is confirmed correct and unambiguous, and the input is a legitimately novel scenario the system was never designed to handle. |
 
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
+   ```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    def classify_root_cause(transcript, changelog):
        if any(t.tool_result.error or t.tool_result.is_stale for t in transcript.tool_calls):
            return "tool_failure"
@@ -145,7 +145,7 @@ covers on the prevention side.
 5. **For a tool failure**, check whether the dispatcher surfaced the
    failure as a structured error the model could react to, or let it look
    like success (see
-   [agent-tool-use-patterns](../../Models_and_FineTuning/agent-patterns/agent-tool-use-patterns/SKILL.md)/SKILL.md)). If the
+   [agent-tool-use-patterns](../../../Models_and_FineTuning/agent-patterns/agent-tool-use-patterns/SKILL.md)/SKILL.md)). If the
    agent got stuck retrying the same failing call, this may overlap with a
    tool-call loop — see
    [agent-tool-call-loop-diagnosis-and-circuit-breaking](../[agent-tool-call-loop-diagnosis-and-circuit-breaking](../agent-tool-call-loop-diagnosis-and-circuit-breaking/SKILL.md)/SKILL.md).
@@ -154,29 +154,29 @@ covers on the prevention side.
    *recall* problem (right chunk exists but wasn't retrieved in top-k) or
    a *freshness* problem (index is stale relative to the source) — the
    fixes differ (re-ranking/chunking tuning vs. re-indexing cadence). See
-   [rag-pipeline-design](../../Models_and_FineTuning/rag-embeddings/rag-pipeline-design/SKILL.md)/SKILL.md) for the
+   [rag-pipeline-design](../../../Models_and_FineTuning/rag-embeddings/rag-pipeline-design/SKILL.md)/SKILL.md) for the
    retrieval-quality pattern and
-   [vector-database-ingestion-pipeline-for-rag](../../Infrastructure/vector-search/vector-database-ingestion-pipeline-for-rag/SKILL.md)/SKILL.md)
+   [vector-database-ingestion-pipeline-for-rag](../../../Infrastructure/vector-search/vector-database-ingestion-pipeline-for-rag/SKILL.md)/SKILL.md)
    for freshness/re-indexing mechanics.
 
 7. **For a prompt issue**, resist the urge to patch the live production
    prompt immediately.
 
    > **Warning:** Editing a production system prompt directly in response
-   > to one [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), with no staged rollout and no rollback path, risks
+   > to one [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), with no staged rollout and no rollback path, risks
    > trading one failure mode for another that a quick spot-check won't
    > catch. Change the prompt in a branch/staging config, re-run the full
    > eval suite (not just the failing case) against it, and only then
    > promote it — with the previous version kept as an immediate rollback
    > target — per
-   > [agent-evaluation-and-guardrails](../../Models_and_FineTuning/evaluation/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md).
+   > [agent-evaluation-and-guardrails](../../../Models_and_FineTuning/evaluation/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md).
 
 8. **For a model behavior change**, confirm the correlation with actual
    evidence (a version/date match in provider release notes or your own
    deployment log), not just suspicion after ruling out other causes.
    Where the model version is pinnable, that pin itself is the immediate
    mitigation; where it isn't (a "latest" alias endpoint), treat the lack
-   of pinning as a finding to fix independent of this specific [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
+   of pinning as a finding to fix independent of this specific [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 
 9. **For a genuine edge case**, do not treat "nothing is broken" as
    closing the ticket. A genuine edge case still needs a decision: is this
@@ -185,12 +185,12 @@ covers on the prevention side.
 
 10. **Regardless of root cause, add the case to the eval suite** as a
     permanent regression test (see
-    [agent-evaluation-and-guardrails](../../Models_and_FineTuning/evaluation/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md))
+    [agent-evaluation-and-guardrails](../../../Models_and_FineTuning/evaluation/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md))
     and, if the response was unsafe or policy-violating rather than merely
     low-quality, add or tighten a runtime guardrail as defense-in-depth
     independent of whatever upstream fix is applied.
 
-11. **Track root-cause category over time**, not just per-[incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) fixes.
+11. **Track root-cause category over time**, not just per-[incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) fixes.
     If "tool failure" or "retrieval issue" keeps recurring as the
     classification, that's a signal the underlying tool reliability or
     index freshness needs a structural fix, not another one-off patch.
@@ -202,11 +202,11 @@ covers on the prevention side.
   wrong fix costs more triage time later than a slightly slower right one.
 - Keep the pinned-reproduction environment (versioned prompts, tool
   schemas, model identifiers, index snapshots) as a standing capability,
-  not something assembled ad hoc during each [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
+  not something assembled ad hoc during each [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 - Prefer the cheapest, most falsifiable checks first (tool errors in the
   transcript, retrieval top-k contents) before reaching for the more
   expensive and less certain "maybe the model changed" explanation.
-- Write the root-cause classification and evidence into the [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
+- Write the root-cause classification and evidence into the [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
   record even when the fix is obvious — the pattern across many incidents
   is often more valuable than any single fix.
 - Treat "genuine edge case" as a real category with its own decision (ship
@@ -243,7 +243,7 @@ covers on the prevention side.
   version/date correlation before rolling back — check tool failures and
   retrieval quality first, since both are far more common causes than an
   actual model regression and a rollback that doesn't fix anything wastes
-  an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) cycle while hiding the real cause.
+  an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) cycle while hiding the real cause.
 
 - **Symptom:** A tool silently returned stale or partially-truncated data
   (no error raised), the model reasoned over it as if correct, and the
@@ -253,7 +253,7 @@ covers on the prevention side.
   concluding the model fabricated something — a model that accurately
   reports bad tool data isn't hallucinating, and the fix belongs in the
   tool/dispatcher layer (see
-  [agent-tool-use-patterns](../../Models_and_FineTuning/agent-patterns/agent-tool-use-patterns/SKILL.md)/SKILL.md)), not the
+  [agent-tool-use-patterns](../../../Models_and_FineTuning/agent-patterns/agent-tool-use-patterns/SKILL.md)/SKILL.md)), not the
   prompt.
 
 - **Symptom:** The same reported issue is re-triaged from scratch multiple
@@ -291,7 +291,7 @@ Triage:
    rather than patching the prompt (which would have wrongly targeted a
    prompt issue that wasn't the cause).
 6. Structural fix: per
-   [vector-database-ingestion-pipeline-for-rag](../../Infrastructure/vector-search/vector-database-ingestion-pipeline-for-rag/SKILL.md)/SKILL.md),
+   [vector-database-ingestion-pipeline-for-rag](../../../Infrastructure/vector-search/vector-database-ingestion-pipeline-for-rag/SKILL.md)/SKILL.md),
    move ingestion from a weekly batch schedule to the CMS's
    on-publish webhook so policy changes are searchable within minutes, not
    up to a week later.
@@ -301,8 +301,8 @@ Triage:
 
 ## Cross-references
 
-- [agent-evaluation-and-guardrails](../../Models_and_FineTuning/evaluation/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md) — where the confirmed root cause becomes a permanent regression case and, for unsafe outputs, a runtime guardrail.
-- [agent-tool-use-patterns](../../Models_and_FineTuning/agent-patterns/agent-tool-use-patterns/SKILL.md)/SKILL.md) — tool-failure classification depends on how tool errors are surfaced (or swallowed) by the dispatcher.
-- [rag-pipeline-design](../../Models_and_FineTuning/rag-embeddings/rag-pipeline-design/SKILL.md)/SKILL.md) and [vector-database-ingestion-pipeline-for-rag](../../Infrastructure/vector-search/vector-database-ingestion-pipeline-for-rag/SKILL.md)/SKILL.md) — retrieval-issue root causes split between retrieval-pattern tuning and ingestion freshness.
+- [agent-evaluation-and-guardrails](../../../Models_and_FineTuning/evaluation/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md) — where the confirmed root cause becomes a permanent regression case and, for unsafe outputs, a runtime guardrail.
+- [agent-tool-use-patterns](../../../Models_and_FineTuning/agent-patterns/agent-tool-use-patterns/SKILL.md)/SKILL.md) — tool-failure classification depends on how tool errors are surfaced (or swallowed) by the dispatcher.
+- [rag-pipeline-design](../../../Models_and_FineTuning/rag-embeddings/rag-pipeline-design/SKILL.md)/SKILL.md) and [vector-database-ingestion-pipeline-for-rag](../../../Infrastructure/vector-search/vector-database-ingestion-pipeline-for-rag/SKILL.md)/SKILL.md) — retrieval-issue root causes split between retrieval-pattern tuning and ingestion freshness.
 - [agent-tool-call-loop-diagnosis-and-circuit-breaking](../[agent-tool-call-loop-diagnosis-and-circuit-breaking](../agent-tool-call-loop-diagnosis-and-circuit-breaking/SKILL.md)/SKILL.md) — when a tool failure manifests as a stuck retry loop rather than a single bad answer.
 - [prompt-and-context-engineering](../[prompt-and-context-engineering](../prompt-and-[context-engineering](../context-engineering/SKILL.md)/SKILL.md)/SKILL.md) — fixing a confirmed prompt-issue root cause.

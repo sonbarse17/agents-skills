@@ -169,7 +169,7 @@ for user-supplied instructions.
 - Cap the number and total token size of chunks injected per query — more
   context is not strictly better past a point, and irrelevant chunks
   measurably distract the model even when a relevant one is also present
-  (see [prompt-and-context-engineering](../[prompt-and-context-engineering](../../Workflows/prompt-and-[context-engineering](../../Workflows/context-engineering/SKILL.md)/SKILL.md)/SKILL.md)).
+  (see [prompt-and-context-engineering](../../../Workflows/prompt-engineering/context-engineering/SKILL.md)/SKILL.md)/SKILL.md)).
 - Version your chunking/embedding pipeline configuration; changing chunk
   size or the embedding model is effectively a new index and should be
   evaluated as such before replacing production.
@@ -270,6 +270,6 @@ the model from injecting unsolicited recommendations not asked for.
 
 ## Cross-references
 
-- [prompt-and-context-engineering](../[prompt-and-context-engineering](../../Workflows/prompt-and-[context-engineering](../../Workflows/context-engineering/SKILL.md)/SKILL.md)/SKILL.md)
+- [prompt-and-context-engineering](../../../Workflows/prompt-engineering/context-engineering/SKILL.md)/SKILL.md)/SKILL.md)
 - [agent-evaluation-and-guardrails](../[agent-evaluation-and-guardrails](../agent-evaluation-and-guardrails/SKILL.md)/SKILL.md)
 - [llm-cost-and-latency-optimization](../[llm-cost-and-latency-optimization](../llm-cost-and-latency-optimization/SKILL.md)/SKILL.md)

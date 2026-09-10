@@ -47,7 +47,7 @@ dig api.example.com NS                    # who is authoritative
 ```
 
 - **A mismatch between the two queries above** means propagation lag or a stale local cache, not a
-  wrong record — see `[dns-management](../../../../AI_and_Agents/Workflows/dns-management/SKILL.md)` for TTL behavior.
+  wrong record — see `[dns-management](../../../common/other/dns-management/SKILL.md)` for TTL behavior.
 - **`NXDOMAIN` from the authoritative server itself** means the record genuinely doesn't exist;
   stop looking downstream and fix the zone.
 

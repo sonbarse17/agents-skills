@@ -12,9 +12,9 @@ depends_on:
   - deploy
 ---
 
-# [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Issue Creator
+# [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Issue Creator
 
-Transform messy input (error logs, voice notes, screenshots) into clean, actionable [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) issues.
+Transform messy input (error logs, voice notes, screenshots) into clean, actionable [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) issues.
 
 ## Output Template
 

@@ -62,7 +62,7 @@ To optimize **Skill**, we enforce the following foundational rules:
 - **RAG Architecture**: Retrieval-Augmented Generation feeding context chunks to LLMs to prevent hallucinations.
 
 ### System Architecture
-```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
+```[mermaid](../../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 sequenceDiagram
     participant User
@@ -100,7 +100,7 @@ To optimize **Skill**, we enforce the following foundational rules:
 - **Cosine Similarity**: Measuring the angle between embeddings to determine semantic closeness.
 
 ### Core Implementation
-```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import faiss
 import numpy as np
 d = 768 # vector dimension
@@ -122,7 +122,7 @@ To optimize **Skill**, we enforce the following foundational rules:
 - **Cosine Similarity**: Measuring the angle between embeddings to determine semantic closeness.
 
 ### System Architecture
-```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
+```[mermaid](../../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 sequenceDiagram
     participant User
@@ -146,7 +146,7 @@ To optimize **Skill**, we enforce the following foundational rules:
 - **Embedding Models**: Leveraging BERT or text-embedding-ada-002 to map semantic meaning to dense vector spaces.
 
 ### Core Implementation
-```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import faiss
 import numpy as np
 d = 768 # vector dimension
@@ -184,7 +184,7 @@ To optimize **Skill**, we enforce the following foundational rules:
 - **Embedding Models**: Leveraging BERT or text-embedding-ada-002 to map semantic meaning to dense vector spaces.
 
 ### System Architecture
-```[mermaid](../../../Product_and_Business/mermaid/SKILL.md)
+```[mermaid](../../../../Product_and_Business/mermaid/SKILL.md)
 %%{init: {"theme": "default", "flowchart": {"useMaxWidth": false}}}%%
 sequenceDiagram
     participant User
@@ -220,7 +220,7 @@ To optimize **Skill**, we enforce the following foundational rules:
 - **RAG Architecture**: Retrieval-Augmented Generation feeding context chunks to LLMs to prevent hallucinations.
 
 ### Core Implementation
-```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import faiss
 import numpy as np
 d = 768 # vector dimension

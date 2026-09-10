@@ -483,7 +483,7 @@ feature_3          | 15.0%    | NA          | -0.1 | 0.8 | -3  | 4   | YES - KS=
   - ../../../Global_References/feature-store-advanced.md — Feature Store Advanced Topics
   - ../../../Global_References/feature-store-fundamentals.md — Feature Store Fundamentals
 ## Handoff
-For model training with feature store integration, hand off to `ml-[ml-pipeline](../../../Workflows/ml-pipeline/SKILL.md)`. For serving infrastructure, hand off to `[ml-model-serving](../../inference-serving/model-serving/SKILL.md)`.
+For model training with feature store integration, hand off to `ml-[ml-pipeline](../../../Workflows/pipelines/ml-pipeline/SKILL.md)`. For serving infrastructure, hand off to `[ml-model-serving](../../inference-serving/model-serving/SKILL.md)`.
 
 ## Architecture Decision Trees
 

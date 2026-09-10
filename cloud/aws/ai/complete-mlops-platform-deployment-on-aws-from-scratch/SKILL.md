@@ -182,7 +182,7 @@ integration decisions between phases.
    [training-pipeline-orchestration](../../../../AI_and_Agents/Models_and_FineTuning/llmops/training-pipeline-orchestration/SKILL.md)/SKILL.md)'s
    vendor-neutral gate/reproducibility principles, implemented concretely
    with the KFP SDK per
-   [kubeflow-[ml-pipeline](../../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../[kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../../Containers_and_Orchestration/kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md):
+   [kubeflow-[ml-pipeline](../../../../AI_and_Agents/Workflows/pipelines/ml-pipeline/SKILL.md)-orchestration](../../../../AI_and_Agents/Workflows/pipelines/ml-pipeline/SKILL.md)-orchestration](../../../../AI_and_Agents/Workflows/pipelines/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md):
    ```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    train_task = train(processed=preprocess_task.outputs["processed"], epochs=20)
    train_task.set_accelerator_type("nvidia.com/gpu").set_accelerator_limit(1)
@@ -381,7 +381,7 @@ minutes.
 - [experiment-tracking](../[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)/SKILL.md) — Phase 4's MLflow setup and run-logging discipline.
 - [feature-store-design](../[feature-store-design](../../../Data_Engineering/feature-store-design/SKILL.md)/SKILL.md) — Phase 5's optional feature layer.
 - [training-pipeline-orchestration](../../../../AI_and_Agents/Models_and_FineTuning/llmops/training-pipeline-orchestration/SKILL.md)/SKILL.md) — Phase 6's vendor-neutral DAG/gate principles.
-- [kubeflow-[ml-pipeline](../../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../[kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../../Containers_and_Orchestration/kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md) — Phase 6's KFP-specific implementation.
+- [kubeflow-[ml-pipeline](../../../../AI_and_Agents/Workflows/pipelines/ml-pipeline/SKILL.md)-orchestration](../../../../AI_and_Agents/Workflows/pipelines/ml-pipeline/SKILL.md)-orchestration](../../../../AI_and_Agents/Workflows/pipelines/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md) — Phase 6's KFP-specific implementation.
 - [model-packaging-and-versioning](../../../../AI_and_Agents/Models_and_FineTuning/llmops/model-packaging-and-versioning/SKILL.md)/SKILL.md) — Phase 7's registry and promotion gates.
 - [model-serving-and-scaling](../../../../AI_and_Agents/Models_and_FineTuning/inference-serving/model-serving-and-scaling/SKILL.md)/SKILL.md) — Phase 8's KServe canary/shadow rollout.
 - [model-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md) — Phase 9's drift/quality [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).

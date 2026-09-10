@@ -212,7 +212,7 @@ Break the plan into discrete, implementable tasks:
 
 ### Phase 4: Implement
 
-Execute tasks one at a time following `skills/[incremental-implementation](../incremental-implementation/SKILL.md)/SKILL.md` (`[incremental-implementation](../incremental-implementation/SKILL.md)`) and `skills/[test-driven-development](../test-driven-development/SKILL.md)/SKILL.md` (`[test-driven-development](../test-driven-development/SKILL.md)`). Use `skills/[context-engineering](../../../../AI_and_Agents/Workflows/context-engineering/SKILL.md)/SKILL.md` (`[context-engineering](../../../../AI_and_Agents/Workflows/context-engineering/SKILL.md)`) to load the right spec sections and source files at each step rather than flooding the agent with the entire spec.
+Execute tasks one at a time following `skills/[incremental-implementation](../incremental-implementation/SKILL.md)/SKILL.md` (`[incremental-implementation](../incremental-implementation/SKILL.md)`) and `skills/[test-driven-development](../test-driven-development/SKILL.md)/SKILL.md` (`[test-driven-development](../test-driven-development/SKILL.md)`). Use `skills/[context-engineering](../../../../AI_and_Agents/Workflows/prompt-engineering/context-engineering/SKILL.md)/SKILL.md` (`[context-engineering](../../../../AI_and_Agents/Workflows/prompt-engineering/context-engineering/SKILL.md)`) to load the right spec sections and source files at each step rather than flooding the agent with the entire spec.
 
 ## Keeping the Spec Alive
 

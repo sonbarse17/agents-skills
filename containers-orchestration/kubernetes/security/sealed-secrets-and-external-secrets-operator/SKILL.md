@@ -464,7 +464,7 @@ the "no plaintext secrets in git" requirement simultaneously.
   Trivy's secret-scanner mode can catch an accidentally-plaintext
   [Kubernetes](../../other/kubernetes/SKILL.md) `Secret` committed alongside `SealedSecret`/`ExternalSecret`
   manifests as a safety net.
-- [sysdig-secure-runtime-security](../[sysdig-secure-runtime-security](../../../AI_and_Agents/Workflows/sysdig-secure-runtime-security/SKILL.md)/SKILL.md) —
+- [sysdig-secure-runtime-security](../../../../Security/incident-response/sysdig-secure-runtime-security/SKILL.md)/SKILL.md) —
   runtime detection can flag unexpected in-cluster access to secret
   material (e.g. an unusual process reading a mounted secret volume)
   as a complementary, after-the-fact control.

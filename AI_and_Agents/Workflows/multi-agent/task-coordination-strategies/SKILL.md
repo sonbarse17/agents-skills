@@ -16,14 +16,14 @@ depends_on:
 
 # Task Coordination Strategies
 
-Strategies for decomposing complex tasks into parallelizable units, designing dependency graphs, writing effective task descriptions, and [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) workload across agent teams.
+Strategies for decomposing complex tasks into parallelizable units, designing dependency graphs, writing effective task descriptions, and [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) workload across agent teams.
 
 ## When to Use This Skill
 
 - Breaking down a complex task for parallel execution
 - Designing task dependency relationships (blockedBy/blocks)
 - Writing task descriptions with clear acceptance criteria
-- [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and rebalancing workload across teammates
+- [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and rebalancing workload across teammates
 - Identifying the critical path in a multi-task workflow
 
 ## Task Decomposition Strategies
@@ -47,7 +47,7 @@ Split work by functional component:
 - User profile module
 - Notification module
 
-**Best for**: [Microservices](../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md), modular architectures
+**Best for**: [Microservices](../../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md), modular architectures
 
 ### By Concern
 
@@ -153,7 +153,7 @@ Build the user authentication API endpoints.
 - Rate limiting
 ```
 
-## Workload [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+## Workload [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 ### Indicators of Imbalance
 

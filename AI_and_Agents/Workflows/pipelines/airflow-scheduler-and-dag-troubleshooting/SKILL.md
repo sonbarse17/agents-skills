@@ -61,13 +61,13 @@ rather than re-deriving them.
   raising an intermittent import error) show up in scheduler logs before
   they show up as a visibly stuck task in the UI.
 - CLI access (`airflow tasks state`, `airflow dags state`,
-  `airflow celery`/`airflow [kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)` subcommands depending on
+  `airflow celery`/`airflow [kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)` subcommands depending on
   executor) or equivalent read access to the metadata database.
 - Knowledge of the deployed executor (`CeleryExecutor`,
   `KubernetesExecutor`, `LocalExecutor`) — the diagnostic steps for a
   stuck-in-queued task differ meaningfully by executor, since the reason a
   task can't move from `queued` to `running` depends on what's actually
-  responsible for picking it up (a Celery worker pool vs. the [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
+  responsible for picking it up (a Celery worker pool vs. the [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
   API scheduling a pod).
 - Familiarity with the specific DAG's task idempotency (established per
   [airflow-dag-authoring-and-validation](../[airflow-dag-authoring-and-validation](../airflow-dag-authoring-and-validation/SKILL.md)/SKILL.md))
@@ -97,7 +97,7 @@ rather than re-deriving them.
    ```bash
    airflow dags list-import-errors
    ```
-   An import error here (e.g. a bad Jinja template reference, a [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
+   An import error here (e.g. a bad Jinja template reference, a [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    exception from a top-level call the way
    [airflow-dag-authoring-and-validation](../[airflow-dag-authoring-and-validation](../airflow-dag-authoring-and-validation/SKILL.md)/SKILL.md)
    warns against) means the scheduler literally cannot see the current
@@ -112,7 +112,7 @@ rather than re-deriving them.
    # CeleryExecutor: check worker pool [capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) and queue routing
    airflow celery flower  # or: check active/reserved task counts on workers
    # KubernetesExecutor: check whether a pod was ever actually scheduled
-   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get pods -n airflow -l dag_id=orders_daily_rollup
+   [kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get pods -n airflow -l dag_id=orders_daily_rollup
    ```
    - `CeleryExecutor`: a task can sit in `queued` indefinitely if the
      worker pool is fully occupied by other tasks (check
@@ -120,7 +120,7 @@ rather than re-deriving them.
      the task was queued to a specific queue name no active worker is
      listening on.
    - `KubernetesExecutor`: check whether a pod was ever created for the
-     task — if not, this is a scheduler-to-[Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-API problem
+     task — if not, this is a scheduler-to-[Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-API problem
      (permissions, resource quota); if a pod exists but is `Pending`,
      it's a cluster-[capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)/scheduling problem (insufficient node
      resources, an unsatisfiable node selector/toleration), not an
@@ -129,7 +129,7 @@ rather than re-deriving them.
 4. **Check `pool` and `max_active_tasks`/`max_active_runs` settings** if
    tasks are queued but concurrency limits — not raw worker [capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) —
    are the actual constraint:
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
+   ```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    @dag(
        max_active_runs=1,       # only one run of this DAG in flight at a time
        max_active_tasks=8,      # cap on concurrent task instances for this DAG
@@ -195,7 +195,7 @@ rather than re-deriving them.
 
 8. **For a repeatedly-failing task, check retry/backoff configuration
    before assuming manual intervention is the only path**:
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
+   ```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    default_args = {
        "retries": 3,
        "retry_delay": timedelta(minutes=5),
@@ -231,7 +231,7 @@ rather than re-deriving them.
   DAG-specific symptoms.
 - Match diagnostic steps to the actual executor in use (`CeleryExecutor`
   vs. `KubernetesExecutor`) rather than applying Celery-specific
-  troubleshooting to a [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-executor deployment or vice versa.
+  troubleshooting to a [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-executor deployment or vice versa.
 
 ## Common pitfalls
 
@@ -240,7 +240,7 @@ rather than re-deriving them.
   **Fix:** Check `airflow dags list-import-errors` first — the DAG file
   almost certainly fails to import after the edit, and the scheduler
   can't create new runs for a DAG it can't parse. Fix the import error
-  (often a [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) exception in top-level code, per
+  (often a [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) exception in top-level code, per
   [airflow-dag-authoring-and-validation](../[airflow-dag-authoring-and-validation](../airflow-dag-authoring-and-validation/SKILL.md)/SKILL.md))
   rather than looking for a scheduling-configuration problem.
 
@@ -261,7 +261,7 @@ rather than re-deriving them.
   check what it actually does on re-run — this is exactly the idempotency
   property [airflow-dag-authoring-and-validation](../[airflow-dag-authoring-and-validation](../airflow-dag-authoring-and-validation/SKILL.md)/SKILL.md)
   calls out as the most important thing to get right at authoring time,
-  and its absence is what makes [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response risky rather than
+  and its absence is what makes [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response risky rather than
   routine.
 
 - **Symptom:** Someone runs `airflow dags backfill` for a multi-week date
@@ -299,18 +299,18 @@ $ airflow dags list-import-errors
 filepath                          error
 dags/orders_daily_rollup.py       ModuleNotFoundError: No module named 'orders_utils'
 ```
-A recent [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) added a helper import (`orders_utils`) that isn't
-installed in the scheduler's [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) environment. The scheduler has been
+A recent [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) added a helper import (`orders_utils`) that isn't
+installed in the scheduler's [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) environment. The scheduler has been
 silently failing to parse this DAG file since that deploy — there are no
 new DAG runs because the scheduler literally can't see an up-to-date,
 importable version of the DAG, which explains the "stopped running"
 symptom far better than a scheduler outage would.
 
-Fix: revert the dependency-adding [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) (or fix the deployment's
+Fix: revert the dependency-adding [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) (or fix the deployment's
 dependency installation step) so the file imports cleanly again, verified
 with:
 ```bash
-$ [python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) -c "from airflow.models import DagBag; db = DagBag(dag_folder='dags/', include_examples=False); assert not db.import_errors, db.import_errors"
+$ [python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) -c "from airflow.models import DagBag; db = DagBag(dag_folder='dags/', include_examples=False); assert not db.import_errors, db.import_errors"
 ```
 Once the import error clears, the scheduler resumes creating DAG runs for
 `orders_daily_rollup` on its normal `@daily` schedule. Because
@@ -328,4 +328,4 @@ it.
 
 - [airflow-dag-authoring-and-validation](../[airflow-dag-authoring-and-validation](../airflow-dag-authoring-and-validation/SKILL.md)/SKILL.md) — the idempotency, sensor, and `catchup` authoring practices that determine whether the retry/backfill actions here are safe.
 - [dagster-and-prefect-pipeline-authoring](../[dagster-and-prefect-pipeline-authoring](../../../Data_Engineering/dagster-and-prefect-pipeline-authoring/SKILL.md)/SKILL.md) — how comparable re-run/backfill risk is handled in asset-based orchestrators, relevant if considering a migration away from Airflow.
-- [kafka-consumer-lag-and-partition-troubleshooting](../[kafka-consumer-lag-and-partition-troubleshooting](../../../DevOps_and_Cloud/Containers_and_Orchestration/kafka-consumer-lag-and-partition-troubleshooting/SKILL.md)/SKILL.md) — a similarly structured live-[incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) diagnostic playbook (distinguish "nothing is happening" causes before acting) for the messaging side of a data platform.
+- [kafka-consumer-lag-and-partition-troubleshooting](../[kafka-consumer-lag-and-partition-troubleshooting](../../../DevOps_and_Cloud/Containers_and_Orchestration/kafka-consumer-lag-and-partition-troubleshooting/SKILL.md)/SKILL.md) — a similarly structured live-[incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) diagnostic playbook (distinguish "nothing is happening" causes before acting) for the messaging side of a data platform.

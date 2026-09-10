@@ -193,4 +193,4 @@ This is a deadlock: both are blocked waiting for the other to finish first. The 
 ## Related Skills
 
 - [team-composition-patterns](../[team-composition-patterns](../../AI_and_Agents/Workflows/agent-teams/skills/[team-composition-patterns](../team-composition-patterns/SKILL.md)/SKILL.md)/SKILL.md) — Select agent types and team size before establishing communication norms
-- [parallel-feature-development](../[parallel-feature-development](../../AI_and_Agents/Workflows/agent-teams/skills/[parallel-feature-development](../../AI_and_Agents/Workflows/parallel-feature-development/SKILL.md)/SKILL.md)/SKILL.md) — Use communication protocols to coordinate integration handoffs between parallel implementers
+- [parallel-feature-development](../../AI_and_Agents/Workflows/multi-agent/parallel-feature-development/SKILL.md)/SKILL.md)/SKILL.md) — Use communication protocols to coordinate integration handoffs between parallel implementers

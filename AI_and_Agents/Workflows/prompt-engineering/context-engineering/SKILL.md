@@ -55,8 +55,8 @@ Create a rules file that persists across sessions. This is the highest-leverage 
 # Project: [Name]
 
 ## Tech Stack
-- React 18, [TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) 5, Vite, Tailwind CSS 4
-- Node.js 22, Express, [PostgreSQL](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md), Prisma
+- React 18, [TypeScript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) 5, Vite, Tailwind CSS 4
+- Node.js 22, Express, [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md), Prisma
 
 ## Commands
 - Build: `npm run build`
@@ -73,7 +73,7 @@ Create a rules file that persists across sessions. This is the highest-leverage 
 - Error boundaries at route level
 
 ## Boundaries
-- Never [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) .env files or secrets
+- Never [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) .env files or secrets
 - Never add dependencies without checking bundle size impact
 - Ask before modifying database schema
 - Always run tests before committing
@@ -85,7 +85,7 @@ Create a rules file that persists across sessions. This is the highest-leverage 
 **Equivalent files for other tools:**
 - `.cursorrules` or `.cursor/rules/*.md` (Cursor)
 - `.windsurfrules` (Windsurf)
-- `.[github](../../../ci-cd/github-actions/other/github/SKILL.md)/copilot-instructions.md` ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Copilot)
+- `.[github](../../../../ci-cd/github-actions/other/github/SKILL.md)/copilot-instructions.md` ([GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Copilot)
 - `AGENTS.md` (OpenAI Codex)
 
 ### Level 2: Specs and Architecture
@@ -196,9 +196,9 @@ For richer context, use Model Context Protocol servers:
 |-----------|-----------------|
 | **Context7** | Auto-fetches relevant documentation for libraries |
 | **Chrome DevTools** | Live browser state, DOM, console, network |
-| **[PostgreSQL](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)** | Direct database schema and query results |
+| **[PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)** | Direct database schema and query results |
 | **Filesystem** | Project file access and search |
-| **[GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)** | Issue, PR, and repository context |
+| **[GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md)** | Issue, PR, and repository context |
 
 ## Confusion Management
 

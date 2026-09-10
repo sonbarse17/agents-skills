@@ -94,7 +94,7 @@ the same direction.
    fix.** [Audit](../../../Operations/common/audit/SKILL.md) what's actually being sent on each call: full conversation
    history with no windowing, full raw tool outputs instead of trimmed
    results, duplicated retrieved chunks across turns. See
-   [prompt-and-context-engineering](../[prompt-and-context-engineering](../../Workflows/prompt-and-[context-engineering](../../Workflows/context-engineering/SKILL.md)/SKILL.md)/SKILL.md)
+   [prompt-and-context-engineering](../../../Workflows/prompt-engineering/context-engineering/SKILL.md)/SKILL.md)/SKILL.md)
    for concrete history-management and budgeting techniques — this is
    usually higher-leverage than model choice.
 
@@ -125,7 +125,7 @@ the same direction.
 5. **Parallelize independent calls instead of serializing them.** If a
    task requires several independent tool calls or sub-agent calls with no
    data dependency between them (see
-   [multi-agent-orchestration](../[multi-agent-orchestration](../../Workflows/multi-agent-orchestration/SKILL.md)/SKILL.md)),
+   [multi-agent-orchestration](../../../Workflows/multi-agent/multi-agent-orchestration/SKILL.md)/SKILL.md)),
    issue them concurrently rather than one after another — this reduces
    wall-clock latency without changing total token cost.
 
@@ -180,7 +180,7 @@ the same direction.
 - **Symptom:** Per-conversation cost grows steadily over a session's
   lifetime even though user requests stay similarly sized.
   **Fix:** This is almost always uncontrolled context growth (see
-  [prompt-and-context-engineering](../[prompt-and-context-engineering](../../Workflows/prompt-and-[context-engineering](../../Workflows/context-engineering/SKILL.md)/SKILL.md)/SKILL.md))
+  [prompt-and-context-engineering](../../../Workflows/prompt-engineering/context-engineering/SKILL.md)/SKILL.md)/SKILL.md))
   — [audit](../../../Operations/common/audit/SKILL.md) what's actually in the context at each turn rather than assuming
   it's a model-pricing issue.
 
@@ -251,6 +251,6 @@ quality gap there.
 
 ## Cross-references
 
-- [prompt-and-context-engineering](../[prompt-and-context-engineering](../../Workflows/prompt-and-[context-engineering](../../Workflows/context-engineering/SKILL.md)/SKILL.md)/SKILL.md)
+- [prompt-and-context-engineering](../../../Workflows/prompt-engineering/context-engineering/SKILL.md)/SKILL.md)/SKILL.md)
 - [rag-pipeline-design](../[rag-pipeline-design](../rag-pipeline-design/SKILL.md)/SKILL.md)
 - [agent-architecture-design](../../../Architecture/agent-patterns/agent-architecture-design/SKILL.md)/SKILL.md)

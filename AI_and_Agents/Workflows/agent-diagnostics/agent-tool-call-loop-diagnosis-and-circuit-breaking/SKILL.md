@@ -34,8 +34,8 @@ the most common and most expensive agent failure modes in production: it
 burns tokens and API quota, can hammer a downstream system, and often goes
 unnoticed until a bill or a rate-limit alert fires. Preventing loops at
 design time (a hard iteration cap, stall detection in the dispatcher) is
-covered in [agent-architecture-design](../../Architecture/agent-patterns/agent-architecture-design/SKILL.md)/SKILL.md)
-and [agent-tool-use-patterns](../../Models_and_FineTuning/agent-patterns/agent-tool-use-patterns/SKILL.md)/SKILL.md); this
+covered in [agent-architecture-design](../../../Architecture/agent-patterns/agent-architecture-design/SKILL.md)/SKILL.md)
+and [agent-tool-use-patterns](../../../Models_and_FineTuning/agent-patterns/agent-tool-use-patterns/SKILL.md)/SKILL.md); this
 skill is the *operational* companion — what to do when a loop is actually
 happening or has already happened: how to confirm it's really a loop and
 not a legitimate long-running task, how to stop an in-flight session
@@ -69,7 +69,7 @@ stop the loop — it makes the loop more expensive before it stops.
   the orchestration layer, not just "stop sending it new input") — see
   step 3 for why cancellation timing matters.
 - The tool risk classification already established in
-  [agent-tool-use-patterns](../../Models_and_FineTuning/agent-patterns/agent-tool-use-patterns/SKILL.md)/SKILL.md)
+  [agent-tool-use-patterns](../../../Models_and_FineTuning/agent-patterns/agent-tool-use-patterns/SKILL.md)/SKILL.md)
   (read-only / reversible / irreversible), since safe cancellation and
   circuit-breaker design depend on knowing which in-flight call, if any,
   has a side effect that can't simply be abandoned mid-call.
@@ -85,7 +85,7 @@ stop the loop — it makes the loop more expensive before it stops.
    times) can also produce a high call count. The distinguishing signal is
    whether each call carries *new information* toward the goal:
 
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
+   ```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    def is_loop(call_history, window=5):
        recent = call_history[-window:]
        signatures = [(c.tool_name, json.dumps(c.arguments, sort_keys=True)) for c in recent]
@@ -133,7 +133,7 @@ stop the loop — it makes the loop more expensive before it stops.
    cost if nothing ever forces a stop; a hard ceiling is the actual safety
    property.
 
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
+   ```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    class CircuitBreaker:
        def __init__(self, max_attempts_per_signature=3, max_total_calls=25,
                     cooldown_seconds=30):
@@ -167,7 +167,7 @@ stop the loop — it makes the loop more expensive before it stops.
    alone would miss.
 
    > **Warning:** Raising `max_attempts_per_signature` or
-   > `max_total_calls` in response to a loop [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), without fixing the
+   > `max_total_calls` in response to a loop [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), without fixing the
    > underlying trigger (step 6) and without keeping *some* hard ceiling
    > in place, is not a fix — it is choosing to pay more before the same
    > failure stops. Every ceiling raise should come with a stated reason
@@ -186,11 +186,11 @@ stop the loop — it makes the loop more expensive before it stops.
    cost.
 
 7. **Add the trapped case to the eval suite** (see
-   [agent-evaluation-and-guardrails](../../Models_and_FineTuning/evaluation/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md))
+   [agent-evaluation-and-guardrails](../../../Models_and_FineTuning/evaluation/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md))
    so a fix to the tool schema, error message, or prompt can be validated
    against the exact scenario that caused the loop, not just spot-checked.
 
-8. **Add session-level [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) on tool-call count and distinct-signature
+8. **Add session-level [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) on tool-call count and distinct-signature
    ratio**, not just on total cost or latency — a loop is visible in call
    count and repetition well before it shows up as a cost anomaly large
    enough to alert on its own (see
@@ -206,7 +206,7 @@ stop the loop — it makes the loop more expensive before it stops.
 - Treat the circuit breaker's hard ceiling as safety-critical
   configuration, reviewed with the same scrutiny as the agent's main loop
   iteration cap in
-  [agent-architecture-design](../../Architecture/agent-patterns/agent-architecture-design/SKILL.md)/SKILL.md) — the
+  [agent-architecture-design](../../../Architecture/agent-patterns/agent-architecture-design/SKILL.md)/SKILL.md) — the
   two caps overlap in purpose but operate at different layers (overall
   loop vs. per-tool-signature).
 - Set a `max_total_calls` ceiling generously above legitimate peak usage,
@@ -225,13 +225,13 @@ stop the loop — it makes the loop more expensive before it stops.
   that never trip a cost alert; per-signature alone misses oscillation
   across 3+ varying calls.
 - Periodically review which ceilings have been raised and why; a ceiling
-  raised during an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) and never revisited is effectively a silently
+  raised during an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) and never revisited is effectively a silently
   weakened safety control.
 
 ## Common pitfalls
 
 - **Symptom:** An on-call engineer raises `MAX_ITERATIONS` from 12 to 100
-  during an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) to "unblock" a stuck workflow, the workflow completes
+  during an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) to "unblock" a stuck workflow, the workflow completes
   once, and the same loop recurs at higher cost the following week.
   **Fix:** Treat a raised ceiling as a temporary, tracked exception with an
   explicit expiry and a linked root-cause ticket, not a permanent
@@ -261,12 +261,12 @@ stop the loop — it makes the loop more expensive before it stops.
   trips.
   **Fix:** This is a dispatcher problem, not a model problem — return a
   structured, specific error (see
-  [agent-tool-use-patterns](../../Models_and_FineTuning/agent-patterns/agent-tool-use-patterns/SKILL.md)/SKILL.md)) that
+  [agent-tool-use-patterns](../../../Models_and_FineTuning/agent-patterns/agent-tool-use-patterns/SKILL.md)/SKILL.md)) that
   distinguishes "transient, retry may help" from "deterministic failure,
   retrying with the same arguments cannot succeed," so the model (and the
   breaker's own logic) can react appropriately.
 
-- **Symptom:** Cost/latency [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) only alerts on aggregate spend, so a
+- **Symptom:** Cost/latency [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) only alerts on aggregate spend, so a
   loop that runs cheap, fast tool calls thousands of times goes unnoticed
   until a downstream rate limit or quota is exhausted.
   **Fix:** Alert on tool-call count and distinct-signature ratio per
@@ -288,7 +288,7 @@ Diagnosis:
 2. This is an **error-retry storm**: the tool is failing deterministically
    (the instance is still running — `resize_instance` requires a stopped
    instance per its schema description — see
-   [agent-tool-use-patterns](../../Models_and_FineTuning/agent-patterns/agent-tool-use-patterns/SKILL.md)/SKILL.md)), and
+   [agent-tool-use-patterns](../../../Models_and_FineTuning/agent-patterns/agent-tool-use-patterns/SKILL.md)/SKILL.md)), and
    the dispatcher's `"invalid state"` message gives the model no
    actionable detail to self-correct.
 3. Immediate containment: the session's circuit breaker (per-signature
@@ -310,15 +310,15 @@ Diagnosis:
    `resize_instance` failure and completes successfully in 3 tool calls;
    a new eval case captures this exact sequence
    (`resize before stop → expect stop_instance next`) per
-   [agent-evaluation-and-guardrails](../../Models_and_FineTuning/evaluation/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md).
-7. [Alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md): a new per-session alert on `tool_call_count > 15` for this
+   [agent-evaluation-and-guardrails](../../../Models_and_FineTuning/evaluation/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md).
+7. [Alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md): a new per-session alert on `tool_call_count > 15` for this
    agent type is added, so a future recurrence pages before running to the
    ceiling silently.
 
 ## Cross-references
 
-- [agent-tool-use-patterns](../../Models_and_FineTuning/agent-patterns/agent-tool-use-patterns/SKILL.md)/SKILL.md) — the design-time stall detection and tool-risk classification this skill's operational diagnosis builds on.
-- [agent-architecture-design](../../Architecture/agent-patterns/agent-architecture-design/SKILL.md)/SKILL.md) — the overall loop's hard iteration cap and timeout, which operate alongside (not instead of) the per-tool circuit breaker here.
+- [agent-tool-use-patterns](../../../Models_and_FineTuning/agent-patterns/agent-tool-use-patterns/SKILL.md)/SKILL.md) — the design-time stall detection and tool-risk classification this skill's operational diagnosis builds on.
+- [agent-architecture-design](../../../Architecture/agent-patterns/agent-architecture-design/SKILL.md)/SKILL.md) — the overall loop's hard iteration cap and timeout, which operate alongside (not instead of) the per-tool circuit breaker here.
 - [agent-cost-and-latency-spike-investigation](../[agent-cost-and-latency-spike-investigation](../agent-cost-and-latency-spike-investigation/SKILL.md)/SKILL.md) — loops are one of the most common root causes of a single-workflow cost/latency spike.
 - [agent-bad-response-triage-and-root-cause-classification](../[agent-bad-response-triage-and-root-cause-classification](../agent-bad-response-triage-and-root-cause-classification/SKILL.md)/SKILL.md) — when a loop also produces a bad final answer, not just wasted cost.
-- [agent-evaluation-and-guardrails](../../Models_and_FineTuning/evaluation/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md) — turning a confirmed loop trigger into a permanent regression case.
+- [agent-evaluation-and-guardrails](../../../Models_and_FineTuning/evaluation/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md) — turning a confirmed loop trigger into a permanent regression case.

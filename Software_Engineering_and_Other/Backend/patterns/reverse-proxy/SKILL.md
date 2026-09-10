@@ -410,5 +410,5 @@ location /admin/ {
 
 - [load-balancing](../[load-balancing](../../Backend/load-balancing/SKILL.md)/) - Multi-backend traffic distribution
 - [cdn-setup](../[cdn-setup](../../../DevOps_and_Cloud/Cloud_Providers/cdn-setup/SKILL.md)/) - CDN in front of reverse proxy
-- [dns-management](../[dns-management](../../../AI_and_Agents/Workflows/dns-management/SKILL.md)/) - DNS records for proxy domains
+- [dns-management](../../../../containers-orchestration/common/other/dns-management/SKILL.md)/) - DNS records for proxy domains
 - [service-mesh](../[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)/) - Service-level routing in [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)

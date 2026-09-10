@@ -262,4 +262,4 @@ volumes:
 - [vector-database-ops](../../databases/[vector-database-ops](../vector-database-ops/SKILL.md)/) - Qdrant/Weaviate management
 - [vllm-server](../../../Models_and_FineTuning/inference-serving/vllm-server/SKILL.md)/) - Self-hosted LLM endpoint
 - [ollama-stack](../../../Models_and_FineTuning/llm-platform/ollama-stack/SKILL.md)/) - Local LLM for development
-- [ai-pipeline-orchestration](../../../devops/ai/[ai-pipeline-orchestration](../../Workflows/ai-pipeline-orchestration/SKILL.md)/) - Ingestion pipelines
+- [ai-pipeline-orchestration](../../../Workflows/pipelines/ai-pipeline-orchestration/SKILL.md)/) - Ingestion pipelines

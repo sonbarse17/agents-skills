@@ -121,7 +121,7 @@ integration decisions between phases.
      [managed-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-eks-aks-gke](../../Containers_and_Orchestration/managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md)
      (Azure AD Workload Identity for pod-level access to Blob Storage/Key
      [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md)) and run Kubeflow Pipelines per
-     [kubeflow-[ml-pipeline](../../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../[kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../../Containers_and_Orchestration/kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md)
+     [kubeflow-[ml-pipeline](../../../../AI_and_Agents/Workflows/pipelines/ml-pipeline/SKILL.md)-orchestration](../../../../AI_and_Agents/Workflows/pipelines/ml-pipeline/SKILL.md)-orchestration](../../../../AI_and_Agents/Workflows/pipelines/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md)
      on top, with GPU node pools per
      [gpu-accelerator-infrastructure-for-ml-training](../[gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md)/SKILL.md)
      — the right choice when the team needs MIG partitioning, custom
@@ -189,7 +189,7 @@ integration decisions between phases.
    placeholder compute name) and that logging calls resolve to the Phase
    4 workspace tracking URI. (AKS+Kubeflow alternative: author with the
    KFP SDK per
-   [kubeflow-[ml-pipeline](../../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../[kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../../Containers_and_Orchestration/kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md).)
+   [kubeflow-[ml-pipeline](../../../../AI_and_Agents/Workflows/pipelines/ml-pipeline/SKILL.md)-orchestration](../../../../AI_and_Agents/Workflows/pipelines/ml-pipeline/SKILL.md)-orchestration](../../../../AI_and_Agents/Workflows/pipelines/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md).)
 
 7. **Phase 7 — model registry and packaging.** Register the pipeline's
    output model to the Azure ML Model Registry, applying the promotion-
@@ -361,7 +361,7 @@ following the same soak-period discipline described in
 - [azure-landing-zone-setup](../../../cloud/skills/[azure-landing-zone-setup](../azure-landing-zone-setup/SKILL.md)/SKILL.md) — Phase 1's Management Group/subscription/policy foundation.
 - [managed-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-eks-aks-gke](../../Containers_and_Orchestration/managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md) — the AKS cluster/workload-identity setup for the Phase 2 AKS+Kubeflow alternative.
 - [gpu-accelerator-infrastructure-for-ml-training](../[gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md)/SKILL.md) — GPU node pool design for the AKS+Kubeflow alternative to Phase 3.
-- [kubeflow-[ml-pipeline](../../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../[kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../../Containers_and_Orchestration/kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md) — the KFP-specific implementation for the AKS+Kubeflow alternative to Phase 6.
+- [kubeflow-[ml-pipeline](../../../../AI_and_Agents/Workflows/pipelines/ml-pipeline/SKILL.md)-orchestration](../../../../AI_and_Agents/Workflows/pipelines/ml-pipeline/SKILL.md)-orchestration](../../../../AI_and_Agents/Workflows/pipelines/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md) — the KFP-specific implementation for the AKS+Kubeflow alternative to Phase 6.
 - [experiment-tracking](../[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)/SKILL.md) — Phase 4's logging discipline, applied to Azure ML's built-in MLflow-compatible tracking.
 - [feature-store-design](../[feature-store-design](../../../Data_Engineering/feature-store-design/SKILL.md)/SKILL.md) — Phase 5's optional feature layer.
 - [training-pipeline-orchestration](../../../../AI_and_Agents/Models_and_FineTuning/llmops/training-pipeline-orchestration/SKILL.md)/SKILL.md) — Phase 6's vendor-neutral DAG/gate principles.

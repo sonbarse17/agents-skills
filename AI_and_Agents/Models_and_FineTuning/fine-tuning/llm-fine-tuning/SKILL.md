@@ -320,4 +320,4 @@ spec:
 - [vllm-server](../[vllm-server](../vllm-server/SKILL.md)/) - Serve fine-tuned models
 - [gpu-server-management](../../servers/[gpu-server-management](../gpu-server-management/SKILL.md)/) - GPU setup
 - [llm-inference-scaling](../[llm-inference-scaling](../llm-inference-scaling/SKILL.md)/) - Deploy at scale
-- [ai-pipeline-orchestration](../../../devops/ai/[ai-pipeline-orchestration](../../Workflows/ai-pipeline-orchestration/SKILL.md)/) - Training pipelines
+- [ai-pipeline-orchestration](../../../Workflows/pipelines/ai-pipeline-orchestration/SKILL.md)/) - Training pipelines

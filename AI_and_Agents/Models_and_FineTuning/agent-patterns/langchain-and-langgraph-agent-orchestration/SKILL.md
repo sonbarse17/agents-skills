@@ -248,7 +248,7 @@ rather than repeating.
    than hand-rolling a supervisor loop, when the task genuinely needs
    multiple specialized roles — a compiled graph can itself be a node in a
    parent graph. Confirm this split is justified per
-   [multi-agent-orchestration](../[multi-agent-orchestration](../../Workflows/multi-agent-orchestration/SKILL.md)/SKILL.md) before
+   [multi-agent-orchestration](../../../Workflows/multi-agent/multi-agent-orchestration/SKILL.md)/SKILL.md) before
    introducing it; LangGraph makes multi-agent easy to wire, not automatically
    the right call.
 
@@ -385,7 +385,7 @@ deployment) still resumes correctly from the same `thread_id`, which a
 ## Cross-references
 
 - [agent-architecture-design](../../../Architecture/agent-patterns/agent-architecture-design/SKILL.md)/SKILL.md) — the vendor-neutral control-flow patterns (ReAct loop, plan-and-execute, finite-state/graph) that LangGraph implements concretely; read this first for the underlying design principles.
-- [multi-agent-orchestration](../[multi-agent-orchestration](../../Workflows/multi-agent-orchestration/SKILL.md)/SKILL.md) — when to compose multiple LangGraph graphs into a supervisor/worker or pipeline topology, and the coordination pitfalls that apply regardless of framework.
+- [multi-agent-orchestration](../../../Workflows/multi-agent/multi-agent-orchestration/SKILL.md)/SKILL.md) — when to compose multiple LangGraph graphs into a supervisor/worker or pipeline topology, and the coordination pitfalls that apply regardless of framework.
 - [mcp-server-development](../../../Infrastructure/mcp/mcp-server-development/SKILL.md)/SKILL.md) — building the tool-serving side an agent calls into; this skill covers wiring those tools into a LangChain/LangGraph agent, not building the MCP server itself.
-- [crewai-and-autogen-multi-agent-frameworks](../[crewai-and-autogen-multi-agent-frameworks](../../Workflows/crewai-and-autogen-multi-agent-frameworks/SKILL.md)/SKILL.md) — alternative higher-level multi-agent frameworks with a role-based abstraction, contrasted with LangGraph's lower-level graph model.
+- [crewai-and-autogen-multi-agent-frameworks](../../../Workflows/multi-agent/crewai-and-autogen-multi-agent-frameworks/SKILL.md)/SKILL.md) — alternative higher-level multi-agent frameworks with a role-based abstraction, contrasted with LangGraph's lower-level graph model.
 - [agent-tool-use-patterns](../[agent-tool-use-patterns](../agent-tool-use-patterns/SKILL.md)/SKILL.md) — general tool-design principles (single-purpose tools, schema clarity) that apply to `@tool`-decorated functions in LangChain the same as any other agent tool surface.

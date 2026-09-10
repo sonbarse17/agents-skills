@@ -54,7 +54,7 @@ Load detailed guidance based on context:
 |-------|-----------|-----------|
 | Feature Engineering | `../../../Global_References/ml-pipeline_feature-engineering.md` | Feature pipelines, transformations, feature stores, Feast, data validation |
 | Training Pipelines | `../../../Global_References/training-pipelines.md` | Training orchestration, distributed training, hyperparameter tuning, resource management |
-| Experiment Tracking | `../../../Global_References/[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md).md` | MLflow, Weights & Biases, experiment logging, model registry |
+| Experiment Tracking | `../../../Global_References/[experiment-tracking](../../../../Data_Engineering/experiment-tracking/SKILL.md).md` | MLflow, Weights & Biases, experiment logging, model registry |
 | Pipeline Orchestration | `../../../Global_References/pipeline-orchestration.md` | Kubeflow Pipelines, Airflow, Prefect, DAG design, workflow automation |
 | Model Validation | `../../../Global_References/model-validation.md` | Evaluation strategies, validation workflows, A/B testing, shadow deployment |
 
@@ -62,7 +62,7 @@ Load detailed guidance based on context:
 
 ### MLflow Experiment Logging (minimal reproducible example)
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import mlflow
 import mlflow.sklearn
 from sklearn.ensemble import RandomForestClassifier
@@ -96,11 +96,11 @@ with mlflow.start_run():
 
 ### Kubeflow Pipeline Component (single-step template)
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from kfp.v2 import dsl
 from kfp.v2.dsl import component, Input, Output, Dataset, Model, Metrics
 
-@component(base_image="[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md):3.10", packages_to_install=["scikit-learn", "mlflow"])
+@component(base_image="[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md):3.10", packages_to_install=["scikit-learn", "mlflow"])
 def train_model(
     train_data: Input[Dataset],
     model_output: Output[Model],
@@ -132,7 +132,7 @@ def training_pipeline(data_path: str, n_estimators: int = 100):
 
 ### Data Validation Checkpoint (Great Expectations style)
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 import great_expectations as ge
 
 def validate_training_data(df):
@@ -154,7 +154,7 @@ def validate_training_data(df):
 - Log all hyperparameters, metrics, and artifacts to experiment tracking
 - Validate data schema and distribution before training begins
 - Use containerized environments; store credentials in secrets managers, never in code
-- Implement error handling, retry logic, and pipeline [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
+- Implement error handling, retry logic, and pipeline [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 - Separate training and inference code clearly
 
 **Never:**
@@ -175,7 +175,7 @@ When implementing a pipeline, provide:
 
 ## Knowledge Reference
 
-MLflow, Kubeflow Pipelines, Apache Airflow, Prefect, Feast, Weights & Biases, Neptune, DVC, Great Expectations, Ray, Horovod, [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md), S3/GCS/Azure Blob, model registry patterns, feature store architecture, distributed training, hyperparameter optimization
+MLflow, Kubeflow Pipelines, Apache Airflow, Prefect, Feast, Weights & Biases, Neptune, DVC, Great Expectations, Ray, Horovod, [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md), S3/GCS/Azure Blob, model registry patterns, feature store architecture, distributed training, hyperparameter optimization
 
-[Documentation](https://jeffallan.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/data-ml/ml-pipeline/)
+[Documentation](https://jeffallan.[github](../../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/data-ml/ml-pipeline/)
 

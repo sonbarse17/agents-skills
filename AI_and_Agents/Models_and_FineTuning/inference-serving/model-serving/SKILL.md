@@ -546,5 +546,5 @@ class PredictionCache:
   - ../../../Global_References/[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-inference.md — [Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) Model Inference
   - ../../../Global_References/serving-frameworks.md — Serving Frameworks Comparison
 ## Handoff
-For model building and packaging, hand off to `ml-[ml-pipeline](../../../Workflows/ml-pipeline/SKILL.md)`. For [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) inference metrics, hand off to `devops/[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)`.
+For model building and packaging, hand off to `ml-[ml-pipeline](../../../Workflows/pipelines/ml-pipeline/SKILL.md)`. For [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) inference metrics, hand off to `devops/[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)`.
 

@@ -21,7 +21,7 @@ This document is the authoritative reference for how PluginEval measures plugin 
 It covers the three evaluation layers, all ten scoring dimensions, the composite formula, badge
 thresholds, anti-pattern flags, Elo ranking, and actionable improvement tips.
 
-Related: [Full rubric anchors](../../../Global_References/rubrics.md)
+Related: [Full rubric anchors](../../../../Global_References/rubrics.md)
 
 ---
 
@@ -64,7 +64,7 @@ Each additional detected anti-pattern reduces the score by 5%, flooring at 50%.
 **Speed:** 30–90 seconds. One or more LLM calls (Sonnet by default). Non-deterministic.
 
 The `eval-judge` agent reads the SKILL.md and any `references/` files, then scores four
-dimensions using anchored rubrics (see [../../../Global_References/rubrics.md](../../../Global_References/rubrics.md)):
+dimensions using anchored rubrics (see [../../../Global_References/rubrics.md](../../../../Global_References/rubrics.md)):
 
 1. **Triggering accuracy** — F1 score derived from 10 mental test prompts
 2. **Orchestration fitness** — Worker purity assessment (0–1 rubric)
@@ -211,7 +211,7 @@ into the penalty formula.
 and signal that the author is trying to micromanage every output rather than providing
 principled guidance.
 
-**Fix:** [Audit](../../Operations/common/audit/SKILL.md) every MUST/ALWAYS/NEVER. Replace directive language with explanatory framing
+**Fix:** [Audit](../../../Operations/common/audit/SKILL.md) every MUST/ALWAYS/NEVER. Replace directive language with explanatory framing
 where possible. Reserve hard constraints for genuine safety or correctness requirements. Target
 fewer than 10 such directives per 100 lines.
 
@@ -369,9 +369,9 @@ Builds the local corpus index at `~/.plugineval/corpus`. Required before Elo ran
 
 ### Scripting the Composite Formula
 
-Reproduce the composite score offline (pre-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) hook, CI gate):
+Reproduce the composite score offline (pre-[commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) hook, CI gate):
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 def composite_score(dimension_scores: dict, anti_pattern_count: int = 0) -> float:
     """Replicate the PluginEval composite formula."""
     WEIGHTS = {
@@ -488,7 +488,7 @@ more composite-score gain per hour than all low-weight dimensions combined.
 
 ### Token Efficiency (weight 0.06)
 
-- [Audit](../../Operations/common/audit/SKILL.md) MUST/ALWAYS/NEVER count. Target < 1 per 10 lines.
+- [Audit](../../../Operations/common/audit/SKILL.md) MUST/ALWAYS/NEVER count. Target < 1 per 10 lines.
 - Consolidate near-duplicate bullet points and repeated-structure tables.
 
 ### Robustness (weight 0.05)
@@ -550,7 +550,7 @@ that includes the LLM judge's assessment of content quality.
 
 ## References
 
-- [Full Rubric Anchors — all 4 judge dimensions](../../../Global_References/rubrics.md)
+- [Full Rubric Anchors — all 4 judge dimensions](../../../../Global_References/rubrics.md)
 
 ### Related Agents
 

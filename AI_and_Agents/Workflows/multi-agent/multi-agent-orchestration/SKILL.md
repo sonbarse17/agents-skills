@@ -43,11 +43,11 @@ single agent, and how to keep hand-offs between agents reliable.
 - A single agent's context or tool set has grown large enough that it
   shows role confusion or degraded performance on any one sub-task (a
   concrete threshold to check, established in
-  [agent-architecture-design](../../Architecture/agent-patterns/agent-architecture-design/SKILL.md)/SKILL.md), before
+  [agent-architecture-design](../../../Architecture/agent-patterns/agent-architecture-design/SKILL.md)/SKILL.md), before
   reaching for multi-agent as a fix).
 - A task naturally decomposes into independent workstreams that can run in
   parallel (e.g. researching three unrelated topics before synthesizing).
-- A task benefits from specialist framing — a [code-review](../../../ci-cd/common/other/code-review/SKILL.md) sub-agent with a
+- A task benefits from specialist framing — a [code-review](../../../../ci-cd/common/other/code-review/SKILL.md) sub-agent with a
   narrow reviewer persona genuinely produces better reviews than one
   generalist agent asked to "also review code" among ten other jobs.
 - You need a distinct verification/critic role separate from the agent that
@@ -70,7 +70,7 @@ single agent, and how to keep hand-offs between agents reliable.
 - Cost/latency budget awareness: N agents each making LLM calls costs
   roughly N× a single agent's calls for the same step, before accounting
   for coordination overhead (see
-  [llm-cost-and-latency-optimization](../../Models_and_FineTuning/llm-platform/llm-cost-and-latency-optimization/SKILL.md)/SKILL.md)).
+  [llm-cost-and-latency-optimization](../../../Models_and_FineTuning/llm-platform/llm-cost-and-latency-optimization/SKILL.md)/SKILL.md)).
 
 ## Step-by-step guidance
 
@@ -78,7 +78,7 @@ single agent, and how to keep hand-offs between agents reliable.
    introducing a second agent, write down what specifically breaks with
    one agent: context window pressure, measurable role confusion in
    evaluation results (see
-   [agent-evaluation-and-guardrails](../../Models_and_FineTuning/evaluation/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md)),
+   [agent-evaluation-and-guardrails](../../../Models_and_FineTuning/evaluation/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md)),
    or a genuine need for parallel independent work. "It felt cleaner to
    split it" is not sufficient justification given the added coordination
    cost.
@@ -128,7 +128,7 @@ single agent, and how to keep hand-offs between agents reliable.
    and addresses the delegated sub-task before passing it downstream or
    integrating it, rather than assuming compliance.
 
-   ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
+   ```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
    def supervisor_step(task):
        plan = supervisor_llm.plan(task)
        results = {}
@@ -146,7 +146,7 @@ single agent, and how to keep hand-offs between agents reliable.
    levels of delegation are allowed (avoid a supervisor's worker itself
    spawning further workers unbounded), independent of any single agent's
    own loop cap (see
-   [agent-architecture-design](../../Architecture/agent-patterns/agent-architecture-design/SKILL.md)/SKILL.md)).
+   [agent-architecture-design](../../../Architecture/agent-patterns/agent-architecture-design/SKILL.md)/SKILL.md)).
 
 7. **Decide where shared state lives** — a common data store both agents
    read/write, or strictly message-passing hand-offs with no shared
@@ -174,7 +174,7 @@ single agent, and how to keep hand-offs between agents reliable.
 - Evaluate the multi-agent system end-to-end, not only per-agent — a
   system where every individual agent passes its own eval can still fail
   at the integration points (see
-  [agent-evaluation-and-guardrails](../../Models_and_FineTuning/evaluation/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md)).
+  [agent-evaluation-and-guardrails](../../../Models_and_FineTuning/evaluation/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md)).
 - Re-check the single-agent alternative periodically as models improve —
   a split justified by a smaller/older model's context limits may no
   longer be necessary.
@@ -243,7 +243,7 @@ fan-in:
 ```
 
 Each sub-agent gets a narrow prompt and only the 1–2 tools its section
-needs — the PR summarizer never sees [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) tools or vice versa — and
+needs — the PR summarizer never sees [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) tools or vice versa — and
 the whole run is capped at exactly 3 parallel sub-agents with no further
 delegation allowed, keeping cost bounded and predictable per digest run.
 The aggregator is evaluated separately (does it preserve every source
@@ -252,6 +252,6 @@ from each sub-agent's own eval suite.
 
 ## Cross-references
 
-- [agent-architecture-design](../../Architecture/agent-patterns/agent-architecture-design/SKILL.md)/SKILL.md)
-- [agent-tool-use-patterns](../../Models_and_FineTuning/agent-patterns/agent-tool-use-patterns/SKILL.md)/SKILL.md)
-- [agent-evaluation-and-guardrails](../../Models_and_FineTuning/evaluation/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md)
+- [agent-architecture-design](../../../Architecture/agent-patterns/agent-architecture-design/SKILL.md)/SKILL.md)
+- [agent-tool-use-patterns](../../../Models_and_FineTuning/agent-patterns/agent-tool-use-patterns/SKILL.md)/SKILL.md)
+- [agent-evaluation-and-guardrails](../../../Models_and_FineTuning/evaluation/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md)

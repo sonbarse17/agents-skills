@@ -354,10 +354,10 @@ Requires Node.js 18+. Defaults to `elastic`/`changeme` when no credentials are s
 cd skills/kibana/kibana-anomaly-detection
 
 # tools → workflows → skills
-node scripts/[kibana-agent-builder](../../../../AI_and_Agents/Workflows/agent-builder/SKILL.md).mjs all register --kibana-url http://localhost:5601
+node scripts/[kibana-agent-builder](../../../../AI_and_Agents/Workflows/agent-development/agent-builder/SKILL.md).mjs all register --kibana-url http://localhost:5601
 
 # HTTPS with self-signed cert
-node scripts/[kibana-agent-builder](../../../../AI_and_Agents/Workflows/agent-builder/SKILL.md).mjs all register --kibana-url https://localhost:5601 --insecure
+node scripts/[kibana-agent-builder](../../../../AI_and_Agents/Workflows/agent-development/agent-builder/SKILL.md).mjs all register --kibana-url https://localhost:5601 --insecure
 ```
 
 `all register` runs `tools register`, then `workflows register`, then `skills register`. Kibana allows **at most five**

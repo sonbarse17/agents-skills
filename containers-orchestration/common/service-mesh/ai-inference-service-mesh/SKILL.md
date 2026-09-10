@@ -19,7 +19,7 @@ depends_on:
 
 # AI Inference Service Mesh
 
-Apply Istio/Linkerd mesh controls to secure and optimize east-west AI traffic across inference [microservices](../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md).
+Apply Istio/Linkerd mesh controls to secure and optimize east-west AI traffic across inference [microservices](../../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md).
 
 ## Why Mesh for AI
 
@@ -39,8 +39,8 @@ istioctl install --set profile=default \
   --set meshConfig.defaultConfig.holdApplicationUntilProxyStarts=true
 
 # Label inference namespace for sidecar injection
-[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) create namespace ai-inference
-[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) label namespace ai-inference istio-injection=enabled
+[kubectl](../../../kubernetes/other/kubectl/SKILL.md) create namespace ai-inference
+[kubectl](../../../kubernetes/other/kubectl/SKILL.md) label namespace ai-inference istio-injection=enabled
 
 # Verify installation
 istioctl verify-install
@@ -96,7 +96,7 @@ spec:
   - from:
     - source:
         principals:
-        - "cluster.local/ns/ai-inference/sa/[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/api-gateway/SKILL.md)"
+        - "cluster.local/ns/ai-inference/sa/[api-gateway](../../../../Software_Engineering_and_Other/Backend/api-gateway/api-gateway/SKILL.md)"
         - "cluster.local/ns/ai-inference/sa/orchestrator"
     to:
     - operation:
@@ -376,7 +376,7 @@ spec:
       baseEjectionTime: 30s
 ```
 
-## [Observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
+## [Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
 
 ```yaml
 # Telemetry resource for custom metrics on inference services
@@ -410,7 +410,7 @@ spec:
 
 ```bash
 # Port-forward Kiali
-[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) port-forward svc/kiali -n istio-system 20001:20001 &
+[kubectl](../../../kubernetes/other/kubectl/SKILL.md) port-forward svc/kiali -n istio-system 20001:20001 &
 
 # Verify mesh health via API
 curl -s http://localhost:20001/kiali/api/namespaces/ai-inference/health | jq .
@@ -435,5 +435,5 @@ istioctl proxy-config cluster deploy/model-server -n ai-inference
 ## Related Skills
 
 - [service-mesh](../[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)/) - Foundational mesh concepts
-- [llm-gateway](../../Models_and_FineTuning/llm-platform/llm-gateway/SKILL.md)/) - North-south API gateway controls
-- [opentelemetry](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)/[opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)/) - End-to-end tracing and metrics
+- [llm-gateway](../../../../AI_and_Agents/Models_and_FineTuning/llm-platform/llm-gateway/SKILL.md)/) - North-south API gateway controls
+- [opentelemetry](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)/[opentelemetry](../../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)/) - End-to-end tracing and metrics

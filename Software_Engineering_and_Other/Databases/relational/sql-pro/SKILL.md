@@ -50,7 +50,7 @@ Load detailed guidance based on context:
 | Window Functions | `../../../Global_References/window-functions.md` | ROW_NUMBER, RANK, LAG/LEAD, analytics |
 | Optimization | `../../../Global_References/optimization.md` | EXPLAIN plans, indexes, statistics, tuning |
 | Database Design | `../../../Global_References/database-design.md` | Normalization, keys, constraints, schemas |
-| Dialect Differences | `../../../Global_References/dialect-differences.md` | [PostgreSQL](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) vs [MySQL](../../../Software_Engineering_and_Other/Databases/relational/mysql/SKILL.md) vs SQL Server specifics |
+| Dialect Differences | `../../../Global_References/dialect-differences.md` | [PostgreSQL](../postgresql/SKILL.md) vs [MySQL](../mysql/SKILL.md) vs SQL Server specifics |
 
 ## Quick-Reference Examples
 
@@ -85,7 +85,7 @@ FROM employees;
 
 ### EXPLAIN ANALYZE Interpretation
 ```sql
--- [PostgreSQL](../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md): always use ANALYZE to see actual row counts vs. estimates
+-- [PostgreSQL](../postgresql/SKILL.md): always use ANALYZE to see actual row counts vs. estimates
 EXPLAIN (ANALYZE, BUFFERS, FORMAT TEXT)
 SELECT *
 FROM orders o
@@ -145,5 +145,5 @@ When implementing SQL solutions, provide:
 4. Performance metrics (before/after)
 5. Platform-specific notes if applicable
 
-[Documentation](https://jeffallan.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/language/sql-pro/)
+[Documentation](https://jeffallan.[github](../../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/language/sql-pro/)
 

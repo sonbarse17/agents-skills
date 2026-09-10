@@ -228,7 +228,7 @@ capabilities and where each one's blind spots require the others.
 - Don't treat a clean CSPM dashboard as "no runtime risk" — CSPM cannot
   see a compromised process inside a correctly-configured container;
   pair it with
-  [sysdig-secure-runtime-security](../[sysdig-secure-runtime-security](../../../AI_and_Agents/Workflows/sysdig-secure-runtime-security/SKILL.md)/SKILL.md)
+  [sysdig-secure-runtime-security](../../../../Security/incident-response/sysdig-secure-runtime-security/SKILL.md)/SKILL.md)
   or Prisma's own Defender runtime detection for that layer.
 
 ## Common pitfalls
@@ -324,7 +324,7 @@ production EKS cluster.
 - [trivy-vulnerability-scanning](../[trivy-vulnerability-scanning](../../../Security/trivy-[vulnerability-scanning](../../Observability_and_SecOps/vulnerability-scanning/SKILL.md)/SKILL.md)/SKILL.md) —
   a lighter-weight, self-hosted alternative/complement for IaC and
   image scanning at a smaller scale than Prisma's full CNAPP.
-- [sysdig-secure-runtime-security](../[sysdig-secure-runtime-security](../../../AI_and_Agents/Workflows/sysdig-secure-runtime-security/SKILL.md)/SKILL.md) —
+- [sysdig-secure-runtime-security](../../../../Security/incident-response/sysdig-secure-runtime-security/SKILL.md)/SKILL.md) —
   a comparable runtime-protection approach (Falco-rule-based) worth
   understanding alongside Prisma's Defender agent model.
 - [container-image-hardening](../../../../Security/common/devsecops/SKILL.md)/skills/[container-image-hardening](../../../../containers-orchestration/docker/security/container-image-hardening/SKILL.md)/SKILL.md) —

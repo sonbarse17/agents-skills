@@ -41,7 +41,7 @@ crash, a deploy, or a deliberate worker restart. This makes a workflow
 that runs for minutes, days, or months as durable as a single
 transaction, with no external database, message queue, or scheduler of
 its own to build and operate. This is a fundamentally different tool
-than [airflow-dag-authoring-and-validation](../[airflow-dag-authoring-and-validation](../../../AI_and_Agents/Workflows/airflow-dag-authoring-and-validation/SKILL.md)/SKILL.md)
+than [airflow-dag-authoring-and-validation](../../../../AI_and_Agents/Workflows/pipelines/airflow-dag-authoring-and-validation/SKILL.md)/SKILL.md)
 or [dagster-and-prefect-pipeline-authoring](../[dagster-and-prefect-pipeline-authoring](../../../Data_Engineering/dagster-and-prefect-pipeline-authoring/SKILL.md)/SKILL.md):
 those orchestrate *batch data pipelines* on a schedule, where a "task"
 is typically a bounded unit of data processing and the unit of state is
@@ -442,6 +442,6 @@ duplicate inventory reservation.
 ## Cross-references
 
 - [temporal-configuration-validation](../../../Databases/messaging/temporal-configuration-validation/SKILL.md)/SKILL.md) — validating this workflow's task queue, timeout/retry, and namespace configuration before it reaches production.
-- [airflow-dag-authoring-and-validation](../[airflow-dag-authoring-and-validation](../../../AI_and_Agents/Workflows/airflow-dag-authoring-and-validation/SKILL.md)/SKILL.md) — the scheduled, tabular batch-pipeline model to reach for instead of Temporal when the problem is a recurring data job, not a long-running stateful application process.
+- [airflow-dag-authoring-and-validation](../../../../AI_and_Agents/Workflows/pipelines/airflow-dag-authoring-and-validation/SKILL.md)/SKILL.md) — the scheduled, tabular batch-pipeline model to reach for instead of Temporal when the problem is a recurring data job, not a long-running stateful application process.
 - [dagster-and-prefect-pipeline-authoring](../[dagster-and-prefect-pipeline-authoring](../../../Data_Engineering/dagster-and-prefect-pipeline-authoring/SKILL.md)/SKILL.md) — the asset-based batch-orchestration alternative, with the same scheduled-data-pipeline scope distinction from Temporal described in this skill's Purpose section.
 - [rabbitmq-configuration](../[rabbitmq-configuration](../../Databases/rabbitmq-configuration/SKILL.md)/SKILL.md) — a message-broker-based alternative worth comparing against Temporal's signal mechanism when the interaction is a simple fire-and-forget event rather than a durable, replayable workflow step.

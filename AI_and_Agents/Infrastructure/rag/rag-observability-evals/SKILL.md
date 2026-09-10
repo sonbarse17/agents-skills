@@ -500,6 +500,6 @@ groups:
 
 - [rag-infrastructure](../../../infrastructure/local-ai/[rag-infrastructure](../rag-infrastructure/SKILL.md)/) - Deploy robust RAG backends
 - [agent-observability](../[agent-observability](../../Operations/agent-[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)/) - Instrument requests, traces, and costs
-- [agent-evals](../[agent-evals](../../Workflows/agent-evals/SKILL.md)/) - Build repeatable eval suites
+- [agent-evals](../../../Workflows/evaluation/agent-evals/SKILL.md)/) - Build repeatable eval suites
 - [ai-sre-[incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-response](../[ai-sre-[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response](../../../DevOps_and_Cloud/Observability_and_SecOps/ai-sre-[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)/SKILL.md)/) - [Incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response for quality regressions
 - [opentelemetry](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)/[opentelemetry](../../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)/) - Distributed tracing for RAG pipelines

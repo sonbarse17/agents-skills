@@ -212,7 +212,7 @@ unreliable.
    A sudden jump in chunks-per-document without a corresponding source
    content change usually indicates a chunking regression (e.g. a
    parser change that stopped detecting section boundaries) — see
-   [agent-cost-and-latency-spike-investigation](../[agent-cost-and-latency-spike-investigation](../../Workflows/agent-cost-and-latency-spike-investigation/SKILL.md)/SKILL.md)
+   [agent-cost-and-latency-spike-investigation](../../../Workflows/agent-diagnostics/agent-cost-and-latency-spike-investigation/SKILL.md)/SKILL.md)
    for the general shape of this kind of correlation-against-recent-
    changes investigation, applied here to the ingestion pipeline
    specifically.
@@ -364,4 +364,4 @@ before the application's index alias is repointed.
 - [vector-[database-operations](../../../../Software_Engineering_and_Other/Databases/common/database-operations/SKILL.md)-pinecone-weaviate-milvus](../[vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus](../vector-[database-operations](../../../Software_Engineering_and_Other/Databases/database-operations/SKILL.md)-pinecone-weaviate-milvus/SKILL.md)/SKILL.md) — index-side write-path tuning (batch upsert sizing, avoiding hot partitions) that this pipeline's batching and throttling steps feed into.
 - [vector-database-configuration-validation](../[vector-database-configuration-validation](../vector-database-configuration-validation/SKILL.md)/SKILL.md) — the pre-cutover recall/latency validation gate to run before repointing traffic to a corpus this pipeline fully re-processed.
 - [llm-cost-and-latency-optimization](../../../Models_and_FineTuning/llm-platform/llm-cost-and-latency-optimization/SKILL.md)/SKILL.md) — the batch-vs-synchronous cost/latency trade-off referenced in step 4, applied there to generation calls and here to embedding calls.
-- [agent-cost-and-latency-spike-investigation](../[agent-cost-and-latency-spike-investigation](../../Workflows/agent-cost-and-latency-spike-investigation/SKILL.md)/SKILL.md) — triaging a RAG workflow's cost/latency spike that correlates with a recent re-indexing run from this pipeline.
+- [agent-cost-and-latency-spike-investigation](../../../Workflows/agent-diagnostics/agent-cost-and-latency-spike-investigation/SKILL.md)/SKILL.md) — triaging a RAG workflow's cost/latency spike that correlates with a recent re-indexing run from this pipeline.

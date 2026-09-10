@@ -128,7 +128,7 @@ integration decisions between phases.
      [managed-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-eks-aks-gke](../../Containers_and_Orchestration/managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md)
      (Workload Identity Federation for pod-level access to Cloud Storage/
      BigQuery) and run Kubeflow Pipelines per
-     [kubeflow-[ml-pipeline](../../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../[kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../../Containers_and_Orchestration/kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md)
+     [kubeflow-[ml-pipeline](../../../../AI_and_Agents/Workflows/pipelines/ml-pipeline/SKILL.md)-orchestration](../../../../AI_and_Agents/Workflows/pipelines/ml-pipeline/SKILL.md)-orchestration](../../../../AI_and_Agents/Workflows/pipelines/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md)
      on top, with GPU node pools per
      [gpu-accelerator-infrastructure-for-ml-training](../[gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md)/SKILL.md)
      — worth noting that Kubeflow originated as a GKE-native project, so
@@ -185,7 +185,7 @@ integration decisions between phases.
    reproducibility principles from
    [training-pipeline-orchestration](../../../../AI_and_Agents/Models_and_FineTuning/llmops/training-pipeline-orchestration/SKILL.md)/SKILL.md)
    and the KFP authoring patterns from
-   [kubeflow-[ml-pipeline](../../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../[kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../../Containers_and_Orchestration/kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md)
+   [kubeflow-[ml-pipeline](../../../../AI_and_Agents/Workflows/pipelines/ml-pipeline/SKILL.md)-orchestration](../../../../AI_and_Agents/Workflows/pipelines/ml-pipeline/SKILL.md)-orchestration](../../../../AI_and_Agents/Workflows/pipelines/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md)
    (Vertex AI Pipelines uses the same KFP SDK, targeting a different
    backend):
    ```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
@@ -378,7 +378,7 @@ mirroring the soak-period discipline in
 - [gcp-landing-zone-setup](../../../cloud/skills/[gcp-landing-zone-setup](../gcp-landing-zone-setup/SKILL.md)/SKILL.md) — Phase 1's folder/policy/Shared VPC foundation.
 - [managed-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-eks-aks-gke](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[managed-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-eks-aks-gke](../../Containers_and_Orchestration/managed-[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-eks-aks-gke/SKILL.md)/SKILL.md) — the GKE cluster/Workload Identity Federation setup for the Phase 2 GKE+Kubeflow alternative.
 - [gpu-accelerator-infrastructure-for-ml-training](../[gpu-accelerator-infrastructure-for-ml-training](../gpu-accelerator-infrastructure-for-ml-training/SKILL.md)/SKILL.md) — GPU node pool design for the GKE+Kubeflow alternative to Phase 3.
-- [kubeflow-[ml-pipeline](../../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../[kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration](../../Containers_and_Orchestration/kubeflow-[ml-pipeline](../../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md) — the KFP SDK patterns Phase 6's Vertex AI Pipelines and the GKE+Kubeflow alternative both build on.
+- [kubeflow-[ml-pipeline](../../../../AI_and_Agents/Workflows/pipelines/ml-pipeline/SKILL.md)-orchestration](../../../../AI_and_Agents/Workflows/pipelines/ml-pipeline/SKILL.md)-orchestration](../../../../AI_and_Agents/Workflows/pipelines/ml-pipeline/SKILL.md)-orchestration/SKILL.md)/SKILL.md) — the KFP SDK patterns Phase 6's Vertex AI Pipelines and the GKE+Kubeflow alternative both build on.
 - [experiment-tracking](../[experiment-tracking](../../../Data_Engineering/experiment-tracking/SKILL.md)/SKILL.md) — Phase 4's logging discipline, applied to Vertex AI Experiments.
 - [feature-store-design](../[feature-store-design](../../../Data_Engineering/feature-store-design/SKILL.md)/SKILL.md) — Phase 5's optional feature layer.
 - [training-pipeline-orchestration](../../../../AI_and_Agents/Models_and_FineTuning/llmops/training-pipeline-orchestration/SKILL.md)/SKILL.md) — Phase 6's vendor-neutral DAG/gate principles.

@@ -48,7 +48,7 @@ model, which is usually the highest-leverage, lowest-cost lever available.
 - Deciding what belongs in the system prompt vs. a per-turn user message
   vs. a tool result vs. retrieved (RAG) content.
 - Reducing token usage / latency / cost on a working agent (also see
-  [llm-cost-and-latency-optimization](../../Models_and_FineTuning/llm-platform/llm-cost-and-latency-optimization/SKILL.md)/SKILL.md)).
+  [llm-cost-and-latency-optimization](../../../Models_and_FineTuning/llm-platform/llm-cost-and-latency-optimization/SKILL.md)/SKILL.md)).
 - Designing how conversation history is truncated, summarized, or windowed
   for a long-running session.
 - Debugging why the model's output format doesn't match what was
@@ -66,7 +66,7 @@ model, which is usually the highest-leverage, lowest-cost lever available.
 - A test harness or even a handful of representative transcripts you can
   re-run after each prompt change — prompt engineering without a way to
   check for regressions is guesswork (see
-  [agent-evaluation-and-guardrails](../../Models_and_FineTuning/evaluation/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md)).
+  [agent-evaluation-and-guardrails](../../../Models_and_FineTuning/evaluation/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md)).
 
 ## Step-by-step guidance
 
@@ -74,7 +74,7 @@ model, which is usually the highest-leverage, lowest-cost lever available.
    - **System prompt** — stable instructions: role, constraints, output
      format, tool-use policy. Changes rarely, applies to every turn.
    - **Tool/function descriptions** — what each tool does and when to use
-     it (see [agent-tool-use-patterns](../../Models_and_FineTuning/agent-patterns/agent-tool-use-patterns/SKILL.md)/SKILL.md)).
+     it (see [agent-tool-use-patterns](../../../Models_and_FineTuning/agent-patterns/agent-tool-use-patterns/SKILL.md)/SKILL.md)).
      These are also "context" and count against the budget even though
      they're not prose.
    - **Conversation history** — prior turns; grows over time and is the
@@ -82,7 +82,7 @@ model, which is usually the highest-leverage, lowest-cost lever available.
    - **Retrieved/dynamic content** — RAG chunks, tool results, file
      contents; changes every turn and is usually the largest and least
      trustworthy of the four (see
-     [rag-pipeline-design](../../Models_and_FineTuning/rag-embeddings/rag-pipeline-design/SKILL.md)/SKILL.md)).
+     [rag-pipeline-design](../../../Models_and_FineTuning/rag-embeddings/rag-pipeline-design/SKILL.md)/SKILL.md)).
 
 2. **Structure the system prompt with clear sections, not one paragraph.**
    A common, effective ordering:
@@ -152,8 +152,8 @@ model, which is usually the highest-leverage, lowest-cost lever available.
 
    This does not make prompt injection impossible, but it materially
    reduces the model's tendency to treat embedded imperative text as a
-   command (see [agent-tool-use-patterns](../../Models_and_FineTuning/agent-patterns/agent-tool-use-patterns/SKILL.md)/SKILL.md)
-   and [rag-pipeline-design](../../Models_and_FineTuning/rag-embeddings/rag-pipeline-design/SKILL.md)/SKILL.md) for the
+   command (see [agent-tool-use-patterns](../../../Models_and_FineTuning/agent-patterns/agent-tool-use-patterns/SKILL.md)/SKILL.md)
+   and [rag-pipeline-design](../../../Models_and_FineTuning/rag-embeddings/rag-pipeline-design/SKILL.md)/SKILL.md) for the
    broader defense-in-depth around this).
 
 8. **Test prompt changes against fixed transcripts before shipping.**
@@ -176,7 +176,7 @@ model, which is usually the highest-leverage, lowest-cost lever available.
   your provider's prompt-caching feature if available, and put frequently
   changing content (this turn's user message, retrieved chunks) after the
   cached prefix — this is a major cost and latency lever, covered in
-  [llm-cost-and-latency-optimization](../../Models_and_FineTuning/llm-platform/llm-cost-and-latency-optimization/SKILL.md)/SKILL.md).
+  [llm-cost-and-latency-optimization](../../../Models_and_FineTuning/llm-platform/llm-cost-and-latency-optimization/SKILL.md)/SKILL.md).
 - Measure token usage per section (system, tools, history, retrieval) so
   you know which part of the budget is actually growing when a session
   gets expensive.
@@ -216,13 +216,13 @@ model, which is usually the highest-leverage, lowest-cost lever available.
 
 - **Symptom:** Token costs per conversation grow noticeably over a
   session's lifetime even though the user's requests stay similarly sized.
-  **Fix:** [Audit](../../Operations/common/audit/SKILL.md) what's actually in the context window at each turn — this
+  **Fix:** [Audit](../../../Operations/common/audit/SKILL.md) what's actually in the context window at each turn — this
   is almost always uncontrolled history growth or duplicated retrieval
   results being re-appended rather than deduplicated.
 
 ## Worked example
 
-**Task:** a [code-review](../../../ci-cd/common/other/code-review/SKILL.md) assistant agent's system prompt was producing
+**Task:** a [code-review](../../../../ci-cd/common/other/code-review/SKILL.md) assistant agent's system prompt was producing
 inconsistent review formats and occasionally very long, rambling reviews on
 large PRs.
 
@@ -235,7 +235,7 @@ thorough but not annoying about it.
 After (structured, bounded, testable):
 ```
 # Role
-You are a [code-review](../../../ci-cd/common/other/code-review/SKILL.md) assistant for the Payments team's [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) services.
+You are a [code-review](../../../../ci-cd/common/other/code-review/SKILL.md) assistant for the Payments team's [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) services.
 
 # Task
 Given a unified diff, identify correctness bugs, security issues, and
@@ -255,7 +255,7 @@ style violations of the team's PEP8 + type-hints convention.
 ```
 
 This version pairs with an evaluation check (see
-[agent-evaluation-and-guardrails](../../Models_and_FineTuning/evaluation/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md))
+[agent-evaluation-and-guardrails](../../../Models_and_FineTuning/evaluation/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md))
 that parses the output table and fails the run if it doesn't match the
 schema, and with a context budget of "diff content capped at 400 changed
 lines" enforced in code before the prompt is ever assembled, rather than
@@ -263,6 +263,6 @@ trusting the model to self-limit.
 
 ## Cross-references
 
-- [agent-evaluation-and-guardrails](../../Models_and_FineTuning/evaluation/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md)
-- [rag-pipeline-design](../../Models_and_FineTuning/rag-embeddings/rag-pipeline-design/SKILL.md)/SKILL.md)
-- [llm-cost-and-latency-optimization](../../Models_and_FineTuning/llm-platform/llm-cost-and-latency-optimization/SKILL.md)/SKILL.md)
+- [agent-evaluation-and-guardrails](../../../Models_and_FineTuning/evaluation/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md)
+- [rag-pipeline-design](../../../Models_and_FineTuning/rag-embeddings/rag-pipeline-design/SKILL.md)/SKILL.md)
+- [llm-cost-and-latency-optimization](../../../Models_and_FineTuning/llm-platform/llm-cost-and-latency-optimization/SKILL.md)/SKILL.md)

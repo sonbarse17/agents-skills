@@ -49,7 +49,7 @@ For each pillar, ask what actually happens, not what the design intends:
 - **Reliability** — has the stated failure domain (see `[cloud-architecture](../../../../cloud/common/architecture/cloud-architecture/SKILL.md)`) actually been tested,
   and does `[disaster-recovery](../../../../containers-orchestration/common/other/disaster-recovery/SKILL.md)` and `[chaos-engineering](../../../../containers-orchestration/common/other/chaos-engineering/SKILL.md)` coverage exist for it?
 - **Security** — is access scoped by `[iam-access-management](../../../../cloud/common/identity/iam-access-management/SKILL.md)`, are secrets handled per
-  `[secrets-management](../../../../cloud/common/security/secrets-management/SKILL.md)`, has `[vulnerability-management](../../../Workflows/vulnerability-management/SKILL.md)` run recently?
+  `[secrets-management](../../../../cloud/common/security/secrets-management/SKILL.md)`, has `[vulnerability-management](../../../../Security/scanning/vulnerability-management/SKILL.md)` run recently?
 - **Cost** — does spend match the `[cost-optimization](../../../../cloud/common/cost/cost-optimization/SKILL.md)` and `[resource-tagging](../../../../cloud/common/other/resource-tagging/SKILL.md)` expectations, or has
   it drifted?
 - **Performance** — is there `[load-testing](../../../../observability-monitoring-logging/common/capacity-monitoring/load-testing/SKILL.md)` evidence at expected peak, not just steady state?

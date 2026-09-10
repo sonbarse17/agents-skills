@@ -795,7 +795,7 @@ State: User asks about anomaly detection, outlier detection, fraud detection, no
   Reason: "Anomaly detection request."
 
 State: User asks about ML pipeline, Kubeflow, ML workflow, model training pipeline.
-  Route: ml-[ml-pipeline](../../AI_and_Agents/Workflows/ml-pipeline/SKILL.md)
+  Route: ml-[ml-pipeline](../../AI_and_Agents/Workflows/pipelines/ml-pipeline/SKILL.md)
   Reason: "ML pipeline request."
 
 State: User asks about feature store, Feast, feature serving, feature registry.

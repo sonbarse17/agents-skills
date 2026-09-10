@@ -30,8 +30,8 @@ depends_on:
 
 ## Purpose
 
-Chef, Puppet, and SaltStack were the dominant [configuration-management](../../../cloud/common/other/configuration-management/SKILL.md)
-tools before [Ansible](../../../infrastructure-as-code/ansible/other/ansible/SKILL.md)'s agentless, push-based model took over most new
+Chef, Puppet, and SaltStack were the dominant [configuration-management](../../../../cloud/common/other/configuration-management/SKILL.md)
+tools before [Ansible](../ansible/SKILL.md)'s agentless, push-based model took over most new
 projects. All three are still running in production at plenty of large
 enterprises — often on systems that predate anyone currently on the team
 — and the honest operational reality is that most of them are in
@@ -40,11 +40,11 @@ running because a full migration is expensive and risky, not because
 they're the tool a team would choose today. This skill is deliberately
 scoped to that reality — how to safely operate and extend an *existing*
 Chef/Puppet/Salt estate, how the three differ from each other and from
-[Ansible](../../../infrastructure-as-code/ansible/other/ansible/SKILL.md), and how to reason about whether/when migrating off one of them
+[Ansible](../ansible/SKILL.md), and how to reason about whether/when migrating off one of them
 is actually worth it. It is not a pitch for greenfield adoption of any of
 the three; for that, see
 [ansible-playbook-and-role-design](../[ansible-playbook-and-role-design](../../../DevOps_and_Cloud/Infrastructure_as_Code/[ansible](../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md)-playbook-and-role-design/SKILL.md)/SKILL.md),
-which is the tool most new [configuration-management](../../../cloud/common/other/configuration-management/SKILL.md) work in this space
+which is the tool most new [configuration-management](../../../../cloud/common/other/configuration-management/SKILL.md) work in this space
 should default to today unless a specific existing estate says otherwise.
 
 ## When to use
@@ -56,9 +56,9 @@ should default to today unless a specific existing estate says otherwise.
   `salt-minion`) that applied an unexpected change, drifted from the last
   known-good state, or failed a periodic scheduled run silently.
 - Deciding whether a team should keep maintaining Chef/Puppet/Salt for a
-  given estate, migrate it to [Ansible](../../../infrastructure-as-code/ansible/other/ansible/SKILL.md), or (more commonly, and often more
+  given estate, migrate it to [Ansible](../ansible/SKILL.md), or (more commonly, and often more
   realistically) let it run largely untouched while all *new*
-  configuration management work happens in [Ansible](../../../infrastructure-as-code/ansible/other/ansible/SKILL.md).
+  configuration management work happens in [Ansible](../ansible/SKILL.md).
 - Understanding the DSL/resource model of whichever of the three a legacy
   estate uses, when the team maintaining it didn't originally write it.
 - Explaining to stakeholders, in concrete terms, what "legacy config
@@ -71,7 +71,7 @@ should default to today unless a specific existing estate says otherwise.
 - **Chef**: a Chef Infra Server (or Chef Infra Client in solo/zero mode)
   and `chef-client` installed on managed nodes; cookbooks written in a
   Ruby-based DSL, tested with `cookstyle` (linting) and Test Kitchen (`kitchen
-  converge`) against a driver ([Docker](../../../containers-orchestration/docker/other/docker/SKILL.md), Vagrant). Chef's ecosystem has
+  converge`) against a driver ([Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md), Vagrant). Chef's ecosystem has
   consolidated significantly — confirm whether an estate is on the
   original Chef Infra product or has moved to Progress Chef's current
   packaging before assuming tooling/support availability.
@@ -85,7 +85,7 @@ should default to today unless a specific existing estate says otherwise.
   masterless `salt-call --local`), using YAML state files (SLS) rendered
   through Jinja templating by default, with pillar data for
   environment/host-specific variables kept separate from state logic —
-  conceptually close to [Ansible](../../../infrastructure-as-code/ansible/other/ansible/SKILL.md)'s `group_vars`/`host_vars` split. Salt
+  conceptually close to [Ansible](../ansible/SKILL.md)'s `group_vars`/`host_vars` split. Salt
   also supports an event-driven reactor system and fast parallel
   execution over its own ZeroMQ/message-bus transport, which is genuinely
   differentiated from the other two for very large, low-latency fleets.
@@ -169,7 +169,7 @@ should default to today unless a specific existing estate says otherwise.
        - enable: True
    ```
    All three converge toward the same idempotent end state as the
-   [Ansible](../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) equivalent in
+   [Ansible](../ansible/SKILL.md) equivalent in
    [ansible-playbook-and-role-design](../[ansible-playbook-and-role-design](../../../DevOps_and_Cloud/Infrastructure_as_Code/[ansible](../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md)-playbook-and-role-design/SKILL.md)/SKILL.md)
    — the difference is the pull/agent architecture and DSL, not the
    underlying idempotency goal.
@@ -178,7 +178,7 @@ should default to today unless a specific existing estate says otherwise.
    each tool's own convergence-testing pattern rather than editing
    directly against production nodes:
    ```bash
-   # Chef: Test Kitchen against a [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)/Vagrant driver
+   # Chef: Test Kitchen against a [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)/Vagrant driver
    kitchen converge
    kitchen verify   # runs InSpec/Serverspec assertions
 
@@ -189,11 +189,11 @@ should default to today unless a specific existing estate says otherwise.
    salt 'web-*' state.apply app test=True
    ```
    `puppet apply --noop` and Salt's `test=True` are the closest
-   equivalents to [Ansible](../../../infrastructure-as-code/ansible/other/ansible/SKILL.md)'s `--check --diff` — review what *would*
+   equivalents to [Ansible](../ansible/SKILL.md)'s `--check --diff` — review what *would*
    change before letting a scheduled agent run apply it for real.
 
 4. **Understand each tool's run/convergence schedule**, since none of
-   these push changes on-demand by default the way an [Ansible](../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) playbook
+   these push changes on-demand by default the way an [Ansible](../ansible/SKILL.md) playbook
    run does:
    - Chef and Puppet agents typically run on a periodic interval (commonly
      configured in the 15-30 minute range) pulling and applying the
@@ -215,7 +215,7 @@ should default to today unless a specific existing estate says otherwise.
    puppet catalog compile <node-name>
 
    # Chef: run in why-run mode (best-effort dry-run; not all resources
-   # support it accurately, similar caveat to [Ansible](../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) --check)
+   # support it accurately, similar caveat to [Ansible](../ansible/SKILL.md) --check)
    chef-client --why-run
 
    # Salt: show the compiled low-state without applying
@@ -230,7 +230,7 @@ should default to today unless a specific existing estate says otherwise.
    blanket policy.** A small, stable, rarely-touched Puppet estate
    managing a handful of legacy hosts is often cheaper to leave alone
    than to migrate; a large, actively-changing Chef estate with frequent
-   cookbook churn and a team that already knows [Ansible](../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) better is a
+   cookbook churn and a team that already knows [Ansible](../ansible/SKILL.md) better is a
    stronger migration candidate. Weigh:
    - **Migration cost**: rewriting and re-testing every
      cookbook/manifest/state, plus the risk window while both systems
@@ -241,27 +241,27 @@ should default to today unless a specific existing estate says otherwise.
      elsewhere.
    - A common pragmatic middle path: freeze the legacy tool's scope
      (stop adding new nodes/cookbooks to it), route all *new*
-     [configuration-management](../../../cloud/common/other/configuration-management/SKILL.md) work through [Ansible](../../../infrastructure-as-code/ansible/other/ansible/SKILL.md), and let the legacy
+     [configuration-management](../../../../cloud/common/other/configuration-management/SKILL.md) work through [Ansible](../ansible/SKILL.md), and let the legacy
      estate shrink by attrition as nodes are decommissioned/replaced,
      rather than committing to a big-bang rewrite.
 
 ## Best practices
 
 - Never assume Chef/Puppet/Salt syntax patterns transfer directly from
-  [Ansible](../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) experience (or between each other) — the resource/state
+  [Ansible](../ansible/SKILL.md) experience (or between each other) — the resource/state
   ordering and dependency models (Puppet's dependency graph and
   notify/require chains, Chef's sequential resource execution with
   explicit `notifies`/`subscribes`, Salt's `require`/`watch`/`onchanges`)
   are each their own model and behave subtly differently under the same-
   looking code.
 - Version-pin cookbook/module/formula dependencies the same way
-  `requirements.yml` pins [Ansible](../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) roles/collections
+  `requirements.yml` pins [Ansible](../ansible/SKILL.md) roles/collections
   (`metadata.rb`'s `depends`, a Puppetfile's module refs, a Salt
   `fileserver`/GitFS pinned ref) so an upstream dependency doesn't
   silently change behavior on the next agent run.
 - Keep environment-specific data (Hiera for Puppet, data bags/roles for
   Chef, pillar for Salt) separate from the logic that consumes it — the
-  same separation [Ansible](../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) enforces via `group_vars`/`host_vars`, and for
+  same separation [Ansible](../ansible/SKILL.md) enforces via `group_vars`/`host_vars`, and for
   the same reason: the same code should run unmodified across
   environments with only the data differing.
 - Treat a legacy estate's server/master as a real piece of
@@ -280,10 +280,10 @@ should default to today unless a specific existing estate says otherwise.
 ## Common pitfalls
 
 - **Symptom:** A scheduled Puppet/Chef agent run applies a change nobody
-  intended, hours after a seemingly unrelated [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) merged elsewhere in
+  intended, hours after a seemingly unrelated [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) merged elsewhere in
   the repo.
   **Fix:** Check for a shared data source (Hiera hierarchy, a role
-  cookbook, a common pillar file) that the seemingly unrelated [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)
+  cookbook, a common pillar file) that the seemingly unrelated [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)
   actually touched — in all three tools, data/role layers are frequently
   shared across many manifests/recipes/states, so a change to shared
   data can silently ripple into many nodes' next scheduled run. Compile
@@ -303,19 +303,19 @@ should default to today unless a specific existing estate says otherwise.
   make the migration decision deliberately with real cost estimates
   rather than out of unfamiliarity-driven frustration.
 
-- **Symptom:** Two [configuration-management](../../../cloud/common/other/configuration-management/SKILL.md) tools (e.g. a legacy Puppet
-  estate and a newer [Ansible](../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) rollout) both manage the same node, and
+- **Symptom:** Two [configuration-management](../../../../cloud/common/other/configuration-management/SKILL.md) tools (e.g. a legacy Puppet
+  estate and a newer [Ansible](../ansible/SKILL.md) rollout) both manage the same node, and
   changes made by one get silently reverted by the other's next
   scheduled/triggered run.
   **Fix:** Assign exactly one tool ownership per node/resource, the same
-  single-owner principle as the Terraform/[Ansible](../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) split in
+  single-owner principle as the Terraform/[Ansible](../ansible/SKILL.md) split in
   [ansible-playbook-and-role-design](../[ansible-playbook-and-role-design](../../../DevOps_and_Cloud/Infrastructure_as_Code/[ansible](../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md)-playbook-and-role-design/SKILL.md)/SKILL.md)
   — during a migration, move a node's ownership atomically (disable the
-  old agent on that node before [Ansible](../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) starts managing it), rather than
+  old agent on that node before [Ansible](../ansible/SKILL.md) starts managing it), rather than
   running both indefinitely against the same host.
 
 - **Symptom:** An agent on a managed node hasn't successfully checked in
-  for months, and nobody noticed because there's no [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) on stale
+  for months, and nobody noticed because there's no [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) on stale
   runs.
   **Fix:** A silently-stopped agent means that node has been drifting
   unmanaged (and unpatched via the config-management path) for as long as
@@ -328,7 +328,7 @@ should default to today unless a specific existing estate says otherwise.
 - **Symptom:** A `puppet apply --noop`/`salt ... test=True` dry-run shows
   no changes, but the same run applied for real changes something
   unexpected.
-  **Fix:** Similar to [Ansible](../../../infrastructure-as-code/ansible/other/ansible/SKILL.md)'s `--check` limitation, no-op/test modes
+  **Fix:** Similar to [Ansible](../ansible/SKILL.md)'s `--check` limitation, no-op/test modes
   can't always accurately predict resources whose behavior depends on
   runtime state produced earlier in the same run, or on external systems
   the dry-run doesn't query identically to a real run. Treat dry-run
@@ -340,13 +340,13 @@ should default to today unless a specific existing estate says otherwise.
 
 **Scenario:** A team inherits a Puppet estate managing 40 legacy hosts.
 They need to add a new nginx `client_max_body_size` setting (mirroring
-the [Ansible](../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) worked example in
+the [Ansible](../ansible/SKILL.md) worked example in
 [ansible-playbook-and-role-design](../[ansible-playbook-and-role-design](../../../DevOps_and_Cloud/Infrastructure_as_Code/[ansible](../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md)-playbook-and-role-design/SKILL.md)/SKILL.md))
 without disrupting the existing agent-based rollout, and they want to
 confirm the change before letting the fleet's next scheduled run apply
 it everywhere.
 
-`hieradata/common.yaml` (environment data, analogous to [Ansible](../../../infrastructure-as-code/ansible/other/ansible/SKILL.md)'s
+`hieradata/common.yaml` (environment data, analogous to [Ansible](../ansible/SKILL.md)'s
 `group_vars`):
 ```yaml
 app::nginx_client_max_body_size: "10m"
@@ -394,7 +394,7 @@ puppet apply --noop --modulepath=/etc/puppetlabs/code/environments/production/mo
 ```
 Reviewing that no-op diff confirms only the intended node-specific
 override changes, the same "review before it's live" discipline as
-`[ansible](../../../infrastructure-as-code/ansible/other/ansible/SKILL.md)-playbook --check --diff`, before the change is merged and
+`[ansible](../ansible/SKILL.md)-playbook --check --diff`, before the change is merged and
 picked up by `web-prod-01`'s next scheduled Puppet agent run (and
 propagated to the rest of the `web-prod` node group on their own
 schedules, batch-verified via PuppetDB report staleness rather than a
@@ -402,6 +402,6 @@ single fleet-wide push).
 
 ## Cross-references
 
-- [ansible-playbook-and-role-design](../[ansible-playbook-and-role-design](../../../DevOps_and_Cloud/Infrastructure_as_Code/[ansible](../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md)-playbook-and-role-design/SKILL.md)/SKILL.md) — the agentless, push-based default this skill assumes new [configuration-management](../../../cloud/common/other/configuration-management/SKILL.md) work should target; the closest cross-tool comparison for idempotency and data/logic separation patterns.
-- [infrastructure-as-code-terraform](../../../devops/skills/[infrastructure-as-code-terraform](../../../DevOps_and_Cloud/Infrastructure_as_Code/[infrastructure-as-code](../../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md)-terraform/SKILL.md)/SKILL.md) — the provisioning-layer counterpart; Chef/Puppet/Salt (like [Ansible](../../../infrastructure-as-code/ansible/other/ansible/SKILL.md)) configure hosts that already exist rather than creating/destroying infrastructure.
+- [ansible-playbook-and-role-design](../[ansible-playbook-and-role-design](../../../DevOps_and_Cloud/Infrastructure_as_Code/[ansible](../../../DevOps_and_Cloud/Infrastructure_as_Code/ansible/SKILL.md)-playbook-and-role-design/SKILL.md)/SKILL.md) — the agentless, push-based default this skill assumes new [configuration-management](../../../../cloud/common/other/configuration-management/SKILL.md) work should target; the closest cross-tool comparison for idempotency and data/logic separation patterns.
+- [infrastructure-as-code-terraform](../../../devops/skills/[infrastructure-as-code-terraform](../../../DevOps_and_Cloud/Infrastructure_as_Code/[infrastructure-as-code](../../../DevOps_and_Cloud/Infrastructure_as_Code/infrastructure-as-code/SKILL.md)-terraform/SKILL.md)/SKILL.md) — the provisioning-layer counterpart; Chef/Puppet/Salt (like [Ansible](../ansible/SKILL.md)) configure hosts that already exist rather than creating/destroying infrastructure.
 - [python-automation-scripting-for-ops](../[python-automation-scripting-for-ops](../../../DevOps_and_Cloud/Cloud_Providers/[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-automation-scripting-for-ops/SKILL.md)/SKILL.md) — a lighter-weight alternative worth considering for narrow one-off automation that doesn't justify a full config-management tool's agent/server overhead.

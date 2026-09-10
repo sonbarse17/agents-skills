@@ -263,4 +263,4 @@ regression class is caught automatically on every future change.
 
 - [agent-tool-use-patterns](../[agent-tool-use-patterns](../agent-tool-use-patterns/SKILL.md)/SKILL.md)
 - [rag-pipeline-design](../[rag-pipeline-design](../rag-pipeline-design/SKILL.md)/SKILL.md)
-- [prompt-and-context-engineering](../[prompt-and-context-engineering](../../Workflows/prompt-and-[context-engineering](../../Workflows/context-engineering/SKILL.md)/SKILL.md)/SKILL.md)
+- [prompt-and-context-engineering](../../../Workflows/prompt-engineering/context-engineering/SKILL.md)/SKILL.md)/SKILL.md)

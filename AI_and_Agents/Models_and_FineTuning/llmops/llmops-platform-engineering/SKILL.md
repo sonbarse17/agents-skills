@@ -451,8 +451,8 @@ spec:
 
 ## Related Skills
 
-- [ai-pipeline-orchestration](../[ai-pipeline-orchestration](../../Workflows/ai-pipeline-orchestration/SKILL.md)/) - Orchestrate ingestion and inference workflows
-- [agent-evals](../[agent-evals](../../Workflows/agent-evals/SKILL.md)/) - Build evaluation gates for releases
+- [ai-pipeline-orchestration](../../../Workflows/pipelines/ai-pipeline-orchestration/SKILL.md)/) - Orchestrate ingestion and inference workflows
+- [agent-evals](../../../Workflows/evaluation/agent-evals/SKILL.md)/) - Build evaluation gates for releases
 - [llm-gateway](../../../infrastructure/networking/[llm-gateway](../llm-gateway/SKILL.md)/) - Route and control LLM traffic
 - [model-registry-governance](../[model-registry-governance](../model-registry-governance/SKILL.md)/) - Model lifecycle and approval workflows
 - [ai-sre-[incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-response](../[ai-sre-[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response](../../../DevOps_and_Cloud/Observability_and_SecOps/ai-sre-[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)/SKILL.md)/) - AI-specific [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response

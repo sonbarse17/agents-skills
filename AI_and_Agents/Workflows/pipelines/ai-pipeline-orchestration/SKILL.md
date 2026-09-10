@@ -35,7 +35,7 @@ Use this skill when:
 
 | Tool | Best For | Complexity | GPU Jobs |
 |------|----------|------------|----------|
-| **Prefect** | Modern [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-first; easy to adopt | Low | Good |
+| **Prefect** | Modern [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-first; easy to adopt | Low | Good |
 | **Airflow** | Complex DAGs; large teams; existing usage | High | Good |
 | **Dagster** | Asset-centric; strong data lineage | Medium | Excellent |
 | **Temporal** | Long-running workflows; reliability-first | Medium | Good |
@@ -43,7 +43,7 @@ Use this skill when:
 ## Prefect — Quick Start
 
 ```bash
-pip install prefect prefect-[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
+pip install prefect prefect-[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
 
 # Start Prefect server (or use Prefect Cloud)
 prefect server start
@@ -54,7 +54,7 @@ prefect worker start --pool default-agent-pool
 
 ## Prefect: RAG Ingestion Pipeline
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from prefect import flow, task, get_run_logger
 from prefect.tasks import task_input_hash
 from datetime import timedelta
@@ -113,7 +113,7 @@ if __name__ == "__main__":
 
 ## Prefect: Batch LLM Inference Pipeline
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from prefect import flow, task
 from prefect.concurrency.sync import concurrency
 import asyncio
@@ -161,11 +161,11 @@ async def batch_inference_flow(input_file: str, output_file: str, batch_size: in
 
 ## Airflow: Model Training DAG
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from airflow.decorators import dag, task
-from airflow.providers.cncf.[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).operators.pod import KubernetesPodOperator
+from airflow.providers.cncf.[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).operators.pod import KubernetesPodOperator
 from datetime import datetime
-from [kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).client import models as k8s
+from [kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).client import models as k8s
 
 @dag(
     dag_id="llm_fine_tuning",
@@ -223,7 +223,7 @@ llm_fine_tuning_dag()
 
 ## Dagster: Asset-Based AI Pipeline
 
-```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
+```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 from dagster import asset, AssetExecutionContext, define_asset_job, ScheduleDefinition
 
 @asset(description="Raw documents fetched from knowledge sources")
@@ -261,13 +261,13 @@ nightly_refresh = ScheduleDefinition(
 
 - Use task-level retries for API calls; use flow-level retries for transient infra failures.
 - Cache expensive steps (embedding generation, data fetching) to speed up reruns.
-- Emit custom metrics from pipelines (chunk count, error rate, cost) to your [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) stack.
+- Emit custom metrics from pipelines (chunk count, error rate, cost) to your [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) stack.
 - Use `concurrency` limits in Prefect or `pool` slots in Airflow to respect external rate limits.
 - Separate ingestion, training, and deployment pipelines — don't couple them in one giant DAG.
 
 ## Related Skills
 
-- [rag-infrastructure](../../Infrastructure/rag/rag-infrastructure/SKILL.md)/) - RAG system setup
-- [llm-fine-tuning](../../Models_and_FineTuning/fine-tuning/llm-fine-tuning/SKILL.md)/) - Training jobs
-- [agent-observability](../[agent-observability](../../Operations/agent-[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)/) - Pipeline [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+- [rag-infrastructure](../../../Infrastructure/rag/rag-infrastructure/SKILL.md)/) - RAG system setup
+- [llm-fine-tuning](../../../Models_and_FineTuning/fine-tuning/llm-fine-tuning/SKILL.md)/) - Training jobs
+- [agent-observability](../[agent-observability](../../Operations/agent-[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)/) - Pipeline [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - [kubernetes-ops](../../orchestration/[kubernetes-ops](../../../DevOps_and_Cloud/Containers_and_Orchestration/[kubernetes](../../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-ops/SKILL.md)/) - Running pipeline pods on K8s

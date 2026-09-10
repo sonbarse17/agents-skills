@@ -430,7 +430,7 @@ from CI or a direct `[kubectl](../../../containers-orchestration/kubernetes/othe
   the YAML-native alternative to writing Rego for the same class of
   [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) admission policies; read this to decide which engine fits a
   given team/use case.
-- [fairwinds-polaris-and-goldilocks](../[fairwinds-polaris-and-goldilocks](../../AI_and_Agents/Workflows/fairwinds-polaris-and-goldilocks/SKILL.md)/SKILL.md) —
+- [fairwinds-polaris-and-goldilocks](../../../containers-orchestration/kubernetes/security/fairwinds-polaris-and-goldilocks/SKILL.md)/SKILL.md) —
   a lighter-weight, opinionated tool for workload configuration scoring
   and right-sizing that complements (and can precede) writing custom
   Gatekeeper policies for the same properties.

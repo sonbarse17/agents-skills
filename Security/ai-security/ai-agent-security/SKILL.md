@@ -1260,6 +1260,6 @@ redis-cli KEYS "agent:killswitch:*" | xargs -r redis-cli DEL
 - [llm-app-security](../[llm-app-security](../llm-app-security/SKILL.md)/) - Application-layer LLM defenses
 - [threat-modeling](../../operations/[threat-modeling](../threat-modeling/SKILL.md)/) - Structured risk analysis
 - [agent-observability](../../../devops/ai/[agent-observability](../../AI_and_Agents/Operations/agent-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)/) - [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) agent systems
-- [agent-evals](../../../devops/ai/[agent-evals](../../AI_and_Agents/Workflows/agent-evals/SKILL.md)/) - Testing agent behavior
+- [agent-evals](../../../AI_and_Agents/Workflows/evaluation/agent-evals/SKILL.md)/) - Testing agent behavior
 - [audit-logging](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-logging/SKILL.md)/) - Compliance [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) trails
 - [policy-as-code](../../../compliance/governance/[policy-as-code](../policy-as-code/SKILL.md)/) - Automated policy enforcement

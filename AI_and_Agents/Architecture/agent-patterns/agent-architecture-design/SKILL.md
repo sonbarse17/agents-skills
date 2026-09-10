@@ -47,7 +47,7 @@ vendor SDK is driving it.
 - An existing agent occasionally loops, stalls, or takes an unexpected
   destructive action, and you need to redesign its control flow.
 - Deciding whether a task needs one agent with many tools or several
-  narrower agents (see [multi-agent-orchestration](../[multi-agent-orchestration](../../Workflows/multi-agent-orchestration/SKILL.md)/SKILL.md)).
+  narrower agents (see [multi-agent-orchestration](../../../Workflows/multi-agent/multi-agent-orchestration/SKILL.md)/SKILL.md)).
 - Designing how an agent's memory persists across sessions (vs. what lives
   only in the current context window).
 - Code review of an agent's main loop before it is given write access to
@@ -144,7 +144,7 @@ vendor SDK is driving it.
    simplest single agent with a well-scoped tool set; only split into
    multiple agents once you have concrete evidence of context overload,
    role confusion, or the need for parallel independent workstreams (see
-   [multi-agent-orchestration](../[multi-agent-orchestration](../../Workflows/multi-agent-orchestration/SKILL.md)/SKILL.md) for
+   [multi-agent-orchestration](../../../Workflows/multi-agent/multi-agent-orchestration/SKILL.md)/SKILL.md) for
    when that split is justified).
 
 ## Best practices
@@ -245,6 +245,6 @@ send from an earlier state — the tool literally isn't offered.
 ## Cross-references
 
 - [agent-tool-use-patterns](../../../Models_and_FineTuning/agent-patterns/agent-tool-use-patterns/SKILL.md)/SKILL.md)
-- [multi-agent-orchestration](../[multi-agent-orchestration](../../Workflows/multi-agent-orchestration/SKILL.md)/SKILL.md)
+- [multi-agent-orchestration](../../../Workflows/multi-agent/multi-agent-orchestration/SKILL.md)/SKILL.md)
 - [agent-evaluation-and-guardrails](../../../Models_and_FineTuning/evaluation/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md)
 - [mcp-server-development](../../../Infrastructure/mcp/mcp-server-development/SKILL.md)/SKILL.md)
