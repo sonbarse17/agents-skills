@@ -551,6 +551,37 @@ jobs:
 - Storing tokens in `nx.json` — CI secret exposure.
 - No `.nxignore` — caching node_modules or dist archives with secrets.
 
+## Publishing Packages (Changesets)
+
+For monorepos that publish packages to npm, Changesets tracks which packages changed and
+generates version bumps + changelogs from per-PR changeset files, avoiding manual version
+coordination across packages.
+
+```bash
+pnpm add -Dw @changesets/cli
+pnpm changeset init
+
+# Each PR that changes a published package adds a changeset describing the bump
+pnpm changeset
+
+# Consume changesets: bump versions, update changelogs
+pnpm changeset version
+
+# Publish bumped packages to npm
+pnpm changeset publish
+```
+
+```yaml
+# .github/workflows/release.yml
+- name: Create Release Pull Request or Publish
+  uses: changesets/action@v1
+  with:
+    publish: pnpm release
+  env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+```
+
 ## References
   - ../../../references/monorepo_dependency-management.md — Dependency Management
   - ../../../references/monorepo-advanced.md — Monorepo Advanced Topics

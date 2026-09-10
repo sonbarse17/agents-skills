@@ -419,7 +419,7 @@ public class NumericStepper : UserControl
   - ../../../references/winforms-fundamentals.md — WinForms Fundamentals
   - references/winforms-performance.md — WinForms Performance Reference
 ## Handoff
-Hand off to `desktop-winui3` for modern Windows UI migration. Hand off to `[desktop-wpf](../../../Frontend/desktop/wpf/SKILL.md)` for richer UI capabilities.
+Hand off to `desktop-winui3` for modern Windows UI migration. Hand off to `[desktop-wpf](../../../Desktop/wpf/SKILL.md)` for richer UI capabilities.
 ## Implementation Patterns
 
 ### Observer Pattern for Event Handling

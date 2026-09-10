@@ -1183,7 +1183,7 @@ State: User asks about Ionic, Capacitor, hybrid mobile.
   Reason: "Ionic/Capacitor request."
 
 State: User asks about .NET MAUI, MAUI app, Xamarin.
-  Route: [mobile-dotnet-maui](../../../Software_Engineering_and_Other/Frontend/desktop/dotnet-maui/SKILL.md)
+  Route: [mobile-dotnet-maui](../../../Software_Engineering_and_Other/Desktop/dotnet-maui/SKILL.md)
   Reason: ".NET MAUI request."
 
 State: User asks about deep linking, universal links, app links.
@@ -1191,7 +1191,7 @@ State: User asks about deep linking, universal links, app links.
   Reason: "Deep linking request."
 
 State: User asks about offline-first, offline sync, connectivity.
-  Route: [mobile-offline-first](../../../Software_Engineering_and_Other/Frontend/architecture/offline-first/SKILL.md)
+  Route: [mobile-offline-first](../../../Mobile/features/offline-first/SKILL.md)
   Reason: "Offline-first request."
 
 State: User asks about biometrics, Face ID, fingerprint, local auth.
@@ -1545,7 +1545,7 @@ Read project files:
 - None detected -> skip mobile stack
 
 ### Step 6: Detect Desktop Stack
-- package.json: if electron present -> [desktop-electron](../../../Software_Engineering_and_Other/Frontend/desktop/electron/SKILL.md)
+- package.json: if electron present -> [desktop-electron](../../../Software_Engineering_and_Other/Desktop/electron/SKILL.md)
 - Cargo.toml: if tauri in deps -> desktop-tauri
 - None detected -> skip desktop stack
 

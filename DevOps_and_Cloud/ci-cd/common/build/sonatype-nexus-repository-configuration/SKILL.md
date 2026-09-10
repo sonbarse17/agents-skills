@@ -42,7 +42,7 @@ Nexus instance that stays fast and manageable from one that silently fills
 disk or serves stale/duplicate artifacts. This skill covers Nexus
 specifically; for the vendor-neutral concepts (why a private registry
 matters, lockfile/version-pinning discipline, retention policy design) see
-[artifact-and-dependency-management](../[artifact-and-dependency-management](../../Frontend/artifact-and-[dependency-management](../dependency-management/SKILL.md)/SKILL.md)/SKILL.md),
+[artifact-and-dependency-management](../artifact-and-dependency-management/SKILL.md),
 and for a direct product comparison see
 [jfrog-artifactory-configuration](../[jfrog-artifactory-configuration](../jfrog-artifactory-configuration/SKILL.md)/SKILL.md).
 
@@ -169,7 +169,7 @@ and for a direct product comparison see
    ```
    Pointing at the group repository is what gives you the resilience and
    single-point-of-scanning benefits described generically in
-   [artifact-and-dependency-management](../[artifact-and-dependency-management](../../Frontend/artifact-and-[dependency-management](../dependency-management/SKILL.md)/SKILL.md)/SKILL.md)
+   [artifact-and-dependency-management](../artifact-and-dependency-management/SKILL.md)
    — changing or adding a member repository later requires no client-side
    reconfiguration.
 
@@ -239,7 +239,7 @@ and for a direct product comparison see
   (`Deployment policy: Disable redeploy`) so a published release version's
   artifact is immutable — silently overwriting a released version breaks
   the "same version means same bytes" guarantee that
-  [artifact-and-dependency-management](../[artifact-and-dependency-management](../../Frontend/artifact-and-[dependency-management](../dependency-management/SKILL.md)/SKILL.md)/SKILL.md)
+  [artifact-and-dependency-management](../artifact-and-dependency-management/SKILL.md)
   depends on for reproducible builds.
 - Always run blob store compaction after a cleanup task if disk space
   needs to be reclaimed promptly — cleanup alone only removes component
@@ -248,7 +248,7 @@ and for a direct product comparison see
 - Scope publish credentials (write access to hosted repositories) separately
   from the broad, org-wide read access most CI jobs and developers need to
   pull dependencies — mirrors the least-privilege publish/read separation
-  in [artifact-and-dependency-management](../[artifact-and-dependency-management](../../Frontend/artifact-and-[dependency-management](../dependency-management/SKILL.md)/SKILL.md)/SKILL.md).
+  in [artifact-and-dependency-management](../artifact-and-dependency-management/SKILL.md).
 - Enable negative caching on proxy repositories (cache "not found" results
   for a bounded TTL) so a burst of requests for a nonexistent/mistyped
   package doesn't repeatedly hit the remote registry.
@@ -345,6 +345,6 @@ addition transparent to every existing consumer.
 ## Cross-references
 
 - [jfrog-artifactory-configuration](../[jfrog-artifactory-configuration](../jfrog-artifactory-configuration/SKILL.md)/SKILL.md) — the comparable commercial alternative, including where Artifactory's repository model and Xray [security-scanning](../../../../Security/scanning/security-scanning/SKILL.md) integration differ from Nexus's approach.
-- [artifact-and-dependency-management](../[artifact-and-dependency-management](../../Frontend/artifact-and-[dependency-management](../dependency-management/SKILL.md)/SKILL.md)/SKILL.md) — the vendor-neutral concepts (why a private registry matters, lockfile discipline, retention policy design, publish/read credential separation) that this skill implements concretely in Nexus.
+- [artifact-and-dependency-management](../artifact-and-dependency-management/SKILL.md) — the vendor-neutral concepts (why a private registry matters, lockfile discipline, retention policy design, publish/read credential separation) that this skill implements concretely in Nexus.
 - [container-build-and-release](../[container-build-and-release](../../../DevOps_and_Cloud/Containers_and_Orchestration/container-build-and-release/SKILL.md)/SKILL.md) — the container build workflow that publishes to a [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) hosted repository configured here.
 - [ci-cd-pipeline-design](../[ci-cd-pipeline-design](../../../DevOps_and_Cloud/CI_CD/ci-cd-pipeline-design/SKILL.md)/SKILL.md) — where registry configuration fits into the broader build/publish pipeline stage sequence.

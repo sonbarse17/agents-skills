@@ -224,7 +224,7 @@ Need native device access?
 | Appflow | CI/CD | Cloud build, live deploy, package |
 | EAS Build (Expo) | CI/CD alternative | Cloud builds for Capacitor apps |
 | capacitor-assets | Asset generation | Auto-generate icons and splash screens |
-| Portals (Ionic) | [Micro-frontends](../../architecture/micro-frontends/SKILL.md) | Embed web apps in native apps |
+| Portals (Ionic) | [Microfrontend](../../architecture/microfrontend/SKILL.md) | Embed web apps in native apps |
 | Cordova Plugin Compat | Migration | Run Cordova plugins in Capacitor |
 | Safari Web Inspector | Debugging | iOS WebView JS console, network, elements |
 | Chrome DevTools | Debugging | [Android](../../../../Mobile/platforms/android/SKILL.md) WebView JS console, network, elements |

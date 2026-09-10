@@ -43,7 +43,7 @@ distributed Artifactory instances) and its tight, same-vendor integration
 with **JFrog Xray** for security and license scanning of stored artifacts.
 This skill covers configuring Artifactory itself — for the vendor-neutral
 registry concepts this applies to, see
-[artifact-and-dependency-management](../[artifact-and-dependency-management](../../Frontend/artifact-and-[dependency-management](../dependency-management/SKILL.md)/SKILL.md)/SKILL.md),
+[artifact-and-dependency-management](../artifact-and-dependency-management/SKILL.md),
 and for the comparable open-source-rooted alternative, see
 [sonatype-nexus-repository-configuration](../[sonatype-nexus-repository-configuration](../sonatype-nexus-repository-configuration/SKILL.md)/SKILL.md),
 which this skill cross-references throughout rather than repeating.
@@ -173,7 +173,7 @@ which this skill cross-references throughout rather than repeating.
    Exclude explicitly-tagged release versions (`v*`, `stable`, `latest` if
    meaningful in your workflow) from any age/pull-based cleanup rule, the
    same exclusion discipline described in
-   [artifact-and-dependency-management](../[artifact-and-dependency-management](../../Frontend/artifact-and-[dependency-management](../dependency-management/SKILL.md)/SKILL.md)/SKILL.md).
+   [artifact-and-dependency-management](../artifact-and-dependency-management/SKILL.md).
 
 7. **Connect JFrog Xray for scanning artifacts already in Artifactory** —
    mention this as a distinct capability rather than assuming it's
@@ -194,7 +194,7 @@ which this skill cross-references throughout rather than repeating.
    permissions** via Artifactory's permission-target model, applied
    per-repository or per-repository-pattern, mirroring the least-privilege
    publish/read separation in
-   [artifact-and-dependency-management](../[artifact-and-dependency-management](../../Frontend/artifact-and-[dependency-management](../dependency-management/SKILL.md)/SKILL.md)/SKILL.md).
+   [artifact-and-dependency-management](../artifact-and-dependency-management/SKILL.md).
 
 ## Best practices
 
@@ -313,7 +313,7 @@ remediation/triage workflow instead of being retroactively purged.
 ## Cross-references
 
 - [sonatype-nexus-repository-configuration](../[sonatype-nexus-repository-configuration](../sonatype-nexus-repository-configuration/SKILL.md)/SKILL.md) — the comparable open-source-rooted alternative; this skill maps Artifactory's local/remote/virtual model directly onto Nexus's hosted/proxy/group model throughout.
-- [artifact-and-dependency-management](../[artifact-and-dependency-management](../../Frontend/artifact-and-[dependency-management](../dependency-management/SKILL.md)/SKILL.md)/SKILL.md) — the vendor-neutral registry concepts (retention policy design, publish/read credential separation, lockfile discipline) this skill implements concretely in Artifactory.
+- [artifact-and-dependency-management](../artifact-and-dependency-management/SKILL.md) — the vendor-neutral registry concepts (retention policy design, publish/read credential separation, lockfile discipline) this skill implements concretely in Artifactory.
 - [software-composition-analysis-sca](../../../../Security/common/devsecops/SKILL.md)/skills/[software-composition-analysis-sca](../../../../Security/scanning/software-composition-analysis-sca/SKILL.md)/SKILL.md) — the vendor-neutral [dependency-scanning](../../../../Security/scanning/dependency-scanning/SKILL.md) concept that Xray implements for artifacts already stored in Artifactory.
 - [snyk-vulnerability-and-license-scanning](../../../../Security/common/devsecops/SKILL.md)/skills/[snyk-vulnerability-and-license-scanning](../../../../Security/scanning/snyk-vulnerability-and-license-scanning/SKILL.md)/SKILL.md) — a comparable commercial scanner covering similar vulnerability/license-policy ground as Xray, useful for a direct feature/cost comparison.
 - [container-build-and-release](../[container-build-and-release](../../../DevOps_and_Cloud/Containers_and_Orchestration/container-build-and-release/SKILL.md)/SKILL.md) — the container build workflow that publishes to an Artifactory [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) local repository configured here.

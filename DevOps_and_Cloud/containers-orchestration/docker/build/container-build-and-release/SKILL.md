@@ -281,4 +281,4 @@ then references that immutable tag, never `latest`.
 
 - [blue-green-canary-deployments](../[blue-green-canary-deployments](../../CI_CD/blue-green-canary-deployments/SKILL.md)/SKILL.md)
 - [release-versioning-and-changelog-automation](../../../../ci-cd/common/other/changelog-automation/SKILL.md)/SKILL.md)/SKILL.md)
-- [artifact-and-dependency-management](../../../../ci-cd/common/build/dependency-management/SKILL.md)/SKILL.md)/SKILL.md)
+- [artifact-and-dependency-management](../../../../ci-cd/common/build/artifact-and-dependency-management/SKILL.md)

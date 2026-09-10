@@ -265,7 +265,7 @@ API, while the `test-unit` job in the same run passes.
 - [ci-cd-pipeline-design](../[ci-cd-pipeline-design](../ci-cd-pipeline-design/SKILL.md)/SKILL.md) — where
   quality gates and required checks sit in the overall pipeline; this
   skill covers what to do when one of those gates fails or flakes.
-- [artifact-and-dependency-management](../../build/dependency-management/SKILL.md)/SKILL.md)/SKILL.md) —
+- [artifact-and-dependency-management](../../build/artifact-and-dependency-management/SKILL.md) —
   lockfile/version-pinning discipline that prevents the dependency-drift
   class of cache corruption covered in step 4.
 - [devops-delivery-metrics-and-dora-analysis](../[devops-delivery-metrics-and-dora-analysis](../../Observability_and_SecOps/devops-delivery-metrics-and-dora-analysis/SKILL.md)/SKILL.md) —
