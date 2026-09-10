@@ -213,7 +213,7 @@ CREATE TABLE orders_by_customer (
 ```
 
 ### Step 5: Consistency and CAP
-CAP trade-off: partition tolerance is mandatory (P), choose consistency (CP) or availability (AP). [MongoDB](../mongodb/SKILL.md): primary reads (strong), secondary reads (eventual), majority write concern. Cassandra: ONE (high availability), QUORUM (balanced), ALL (strong). DynamoDB: eventually consistent reads (default), strongly consistent reads (1 WCU headroom). Use quorum-based reads for critical data, eventual for [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md).
+CAP trade-off: partition tolerance is mandatory (P), choose consistency (CP) or availability (AP). [MongoDB](../mongodb/SKILL.md): primary reads (strong), secondary reads (eventual), majority write concern. Cassandra: ONE (high availability), QUORUM (balanced), ALL (strong). DynamoDB: eventually consistent reads (default), strongly consistent reads (1 WCU headroom). Use quorum-based reads for critical data, eventual for [dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md).
 
 ```yaml
 # [MongoDB](../mongodb/SKILL.md) write concern
@@ -267,7 +267,7 @@ db.orders.aggregate([
 ```
 
 ### Step 8: Backup and Restoration Strategies
-[MongoDB](../mongodb/SKILL.md): mongodump for logical backups (slower, cross-version), file-system snapshots for fast physical backups (EBS snapshots, LVM), Ops Manager for continuous backup with point-in-time recovery. Cassandra: nodetool snapshot for hard-link snapshots, incremental backups with incremental_backups=true, [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) log archiving for point-in-time recovery. DynamoDB: on-demand backup (full copy), point-in-time recovery (PITR) for last 35 days, cross-region replication for DR.
+[MongoDB](../mongodb/SKILL.md): mongodump for logical backups (slower, cross-version), file-system snapshots for fast physical backups (EBS snapshots, LVM), Ops Manager for continuous backup with point-in-time recovery. Cassandra: nodetool snapshot for hard-link snapshots, incremental backups with incremental_backups=true, [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) log archiving for point-in-time recovery. DynamoDB: on-demand backup (full copy), point-in-time recovery (PITR) for last 35 days, cross-region replication for DR.
 
 ```yaml
 # Cassandra backup configuration
@@ -504,7 +504,7 @@ cassandra_modeling:
 - Embed in [MongoDB](../mongodb/SKILL.md) when sub-documents are accessed together
 - Shard key must have high cardinality and even distribution
 - Hashed shard keys for time-series to prevent hot spots
-- Use eventual consistency for read-heavy [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)
+- Use eventual consistency for read-heavy [dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)
 - Strong consistency for critical financial data
 - Denormalize to avoid reads spanning partitions
 - No cross-partition queries in Cassandra

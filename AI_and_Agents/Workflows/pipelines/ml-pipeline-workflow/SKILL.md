@@ -21,7 +21,7 @@ Complete end-to-end MLOps pipeline orchestration from data preparation through m
 
 ## Overview
 
-This skill provides comprehensive guidance for building production ML pipelines that handle the full lifecycle: data ingestion → preparation → training → validation → deployment → [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
+This skill provides comprehensive guidance for building production ML pipelines that handle the full lifecycle: data ingestion → preparation → training → validation → deployment → [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
 
 ## When to Use This Skill
 
@@ -125,7 +125,7 @@ stages = [
 4. **Deployment Phase**
    - Package model artifacts
    - Deploy to serving infrastructure
-   - Configure [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+   - Configure [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
    - Validate production traffic
 
 ## Best Practices
@@ -134,9 +134,9 @@ stages = [
 
 - **Modularity**: Each stage should be independently testable
 - **Idempotency**: Re-running stages should be safe
-- **[Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)**: Log metrics at every stage
+- **[Observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md)**: Log metrics at every stage
 - **Versioning**: Track data, code, and model versions
-- **Failure Handling**: Implement retry logic and [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
+- **Failure Handling**: Implement retry logic and [alerting](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 
 ### Data Management
 
@@ -167,7 +167,7 @@ stages = [
 
 - **Apache Airflow**: DAG-based workflow orchestration
 - **Dagster**: Asset-based pipeline orchestration
-- **Kubeflow Pipelines**: [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-native ML workflows
+- **Kubeflow Pipelines**: [Kubernetes](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-native ML workflows
 - **Prefect**: Modern dataflow automation
 
 ### Experiment Tracking
@@ -182,14 +182,14 @@ stages = [
 - Google Vertex AI for GCP deployments
 - Azure ML for Azure cloud
 - OCI Data Science for Oracle Cloud Infrastructure deployments
-- [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) + KServe for cloud-agnostic serving
+- [Kubernetes](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) + KServe for cloud-agnostic serving
 
 ## Progressive Disclosure
 
 Start with the basics and gradually add complexity:
 
 1. **Level 1**: Simple linear pipeline (data → train → deploy)
-2. **Level 2**: Add validation and [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) stages
+2. **Level 2**: Add validation and [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) stages
 3. **Level 3**: Implement hyperparameter tuning
 4. **Level 4**: Add A/B testing and gradual rollouts
 5. **Level 5**: Multi-model pipelines with ensemble strategies
@@ -251,7 +251,7 @@ After setting up your pipeline:
 1. Explore **hyperparameter-tuning** skill for optimization
 2. Learn **[experiment-tracking](../../../../Data_Engineering/experiment-tracking/SKILL.md)-setup** for MLflow/W&B
 3. Review **model-deployment-patterns** for serving strategies
-4. Implement [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) with [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) tools
+4. Implement [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) with [observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) tools
 
 ## Related Skills
 

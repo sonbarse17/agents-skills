@@ -27,7 +27,7 @@ Implement comprehensive, automated database backup strategies with tested recove
 - You are deploying a new database and need a backup plan from day one.
 - You need to automate nightly or hourly backups for [PostgreSQL](../../relational/postgresql/SKILL.md), [MySQL](../../relational/mysql/SKILL.md), or [MongoDB](../../nosql/mongodb/SKILL.md).
 - You want to ship backups to S3-compatible object storage with retention policies.
-- You are building or verifying disaster recovery [runbooks](../../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md).
+- You are building or verifying disaster recovery [runbooks](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md).
 
 ## Prerequisites
 
@@ -317,7 +317,7 @@ BACKUP_FILE=$(ls -t /backups/postgres/mydb_*.dump | head -1)
 echo "[$(date)] Starting backup verification with $BACKUP_FILE"
 
 # Spin up a temporary [PostgreSQL](../../relational/postgresql/SKILL.md) container
-[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) run -d --name pg-restore-test \
+[docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) run -d --name pg-restore-test \
   -e POSTGRES_USER=testuser \
   -e POSTGRES_PASSWORD=testpass \
   -e POSTGRES_DB=testdb \
@@ -325,22 +325,22 @@ echo "[$(date)] Starting backup verification with $BACKUP_FILE"
 
 # Wait for container to be ready
 sleep 5
-until [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) exec pg-restore-test pg_isready -U testuser; do
+until [docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) exec pg-restore-test pg_isready -U testuser; do
   sleep 2
 done
 
 # Copy backup into container and restore
-[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) cp "$BACKUP_FILE" pg-restore-test:/tmp/backup.dump
-[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) exec pg-restore-test pg_restore -U testuser -d testdb --clean --if-exists /tmp/backup.dump
+[docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) cp "$BACKUP_FILE" pg-restore-test:/tmp/backup.dump
+[docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) exec pg-restore-test pg_restore -U testuser -d testdb --clean --if-exists /tmp/backup.dump
 
 # Run verification queries
-USERS_COUNT=$([docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) exec pg-restore-test psql -U testuser -d testdb -tAc "SELECT COUNT(*) FROM users;")
-ORDERS_COUNT=$([docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) exec pg-restore-test psql -U testuser -d testdb -tAc "SELECT COUNT(*) FROM orders;")
+USERS_COUNT=$([docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) exec pg-restore-test psql -U testuser -d testdb -tAc "SELECT COUNT(*) FROM users;")
+ORDERS_COUNT=$([docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) exec pg-restore-test psql -U testuser -d testdb -tAc "SELECT COUNT(*) FROM orders;")
 
 echo "[$(date)] Verification: users=$USERS_COUNT, orders=$ORDERS_COUNT"
 
 # Cleanup
-[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) rm -f pg-restore-test
+[docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) rm -f pg-restore-test
 
 # Alert on failure
 if [ "$USERS_COUNT" -lt 1 ]; then

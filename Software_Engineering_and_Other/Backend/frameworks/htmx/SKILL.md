@@ -79,7 +79,7 @@ No preamble. No postamble. No explanations. Compress output — why use many tok
 | hx-get fragment swap | Simple data fetch, GET semantics | Read operations, lazy load |
 | hx-post form with validation | Form submission, 422 errors | Mutations with validation |
 | hx-boost on links/forms | Full-page SPA-like navigation | Enhancing existing HTML |
-| hx-trigger="every 10s" | Polling for updates | Real-time-ish [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) |
+| hx-trigger="every 10s" | Polling for updates | Real-time-ish [dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) |
 | hx-trigger="revealed" | Lazy load below fold | Performance optimization |
 | hx-trigger="intersect" | Viewport-based loading | Infinite scroll |
 | Server-Sent Events (hx-sse) | Server push | Real-time notifications |

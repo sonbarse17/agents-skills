@@ -103,7 +103,7 @@ A05: Security Misconfiguration
 A06: Vulnerable and Outdated Components
 A07: Identification and Authentication Failures
 A08: Software and Data Integrity Failures
-A09: Security Logging and [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Failures
+A09: Security Logging and [Monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Failures
 A10: Server-Side Request Forgery (SSRF)
 ```
 
@@ -120,7 +120,7 @@ npm [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) fix --force
 
 # Better: npm [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) + snyk
 npx snyk test                # Deep dependency analysis
-npx snyk monitor             # Continuous [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+npx snyk monitor             # Continuous [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 # pip
 pip-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)                    # Scan [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) dependencies
@@ -137,8 +137,8 @@ nancy go.sum                 # Go dependency vulnerability scanner
 # .NET
 dotnet list package --vulnerable  # List vulnerable NuGet packages
 
-# [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
-[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) scout quick <image>   # [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) image vulnerability scan
+# [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)
+[docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) scout quick <image>   # [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) image vulnerability scan
 trivy image <image>          # Trivy container scanner
 ```
 
@@ -151,7 +151,7 @@ tools:
     usage: "semgrep --config=auto --config=./.semgrep/ ."
     strengths: "Custom rules, CI-friendly, fast"
   codeql:
-    description: "[GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)'s deep code analysis"
+    description: "[GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)'s deep code analysis"
     usage: "codeql database create --language=[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) ./db && codeql analyze ./db --format=sarifv2"
     strengths: "Deep flow analysis, accurate"
   eslint-plugin-security:
@@ -257,7 +257,7 @@ curl -X POST https://api.example.com/profile \
 ### Step 5: CI/CD Security Integration
 
 ```yaml
-# .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/security-scan.yml
+# .[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/workflows/security-scan.yml
 name: Security Scan
 on:
   pull_request:
@@ -291,7 +291,7 @@ jobs:
         uses: trufflesecurity/trufflehog@main
         with:
           path: ./
-          base: ${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).event.repository.default_branch }}
+          base: ${{ [github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).event.repository.default_branch }}
           head: HEAD
 ```
 
@@ -328,9 +328,9 @@ priority_matrix:
 | False positives from scanners | Wasting time on non-exploitable findings | Triage findings, suppress with evidence |
 | No reproducible scan | Different results each run | Lock dependency versions, pin scanner version |
 | Only scanning at release | Vulnerabilities introduced between releases | PR-level scanning + weekly full scans |
-| No secrets scanning in CI | Hardcoded credentials committed | Pre-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) hooks + CI secrets scanner |
+| No secrets scanning in CI | Hardcoded credentials committed | Pre-[commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) hooks + CI secrets scanner |
 | Ignoring container images | App is clean, base image is vulnerable | Scan all container layers |
-| Missing dependency lock files | Non-deterministic installs, different vulns | [Commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) lock files (package-lock.json, Cargo.lock) |
+| Missing dependency lock files | Non-deterministic installs, different vulns | [Commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) lock files (package-lock.json, Cargo.lock) |
 | Over-relying on scanners | Automated tools miss business logic flaws | Manual review for access control, auth |
 
 ## Best Practices
@@ -338,7 +338,7 @@ priority_matrix:
 | Practice | Rationale |
 |----------|-----------|
 | Shift security left | Catch vulnerabilities earlier in development |
-| Automate dependency scanning | Every PR, every [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) — not just releases |
+| Automate dependency scanning | Every PR, every [commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) — not just releases |
 | Use lock files | Deterministic installs, auditable dependencies |
 | Segment scanning by severity | Critical = block PR, Low = report only |
 | Pin base image versions | Avoid unexpected OS-level vulnerabilities |
@@ -467,7 +467,7 @@ class SecretsScanner:
     def __init__(self):
         self.patterns = {
             "AWS Access Key": r"AKIA[0-9A-Z]{16}",
-            "[GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Token": r"gh[pousr]_[A-Za-z0-9_]{36,}",
+            "[GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Token": r"gh[pousr]_[A-Za-z0-9_]{36,}",
             "Private Key": r"-----BEGIN (RSA |EC |DSA |OPENSSH )?PRIVATE KEY-----",
             "JWT Token": r"eyJ[A-Za-z0-9_-]+\.eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+",
             "Generic Secret": r"(secret|password|token|api.?key)\s*[:=]\s*['\"][A-Za-z0-9_!@#$%^&*()=+]{16,}['\"]",
@@ -541,7 +541,7 @@ What do you need to test?
 │   └── Fuzzing → AFL, libFuzzer, RESTler
 │
 └── Infrastructure vulnerabilities
-    ├── Container scanning → Trivy, Clair, [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Scout
+    ├── Container scanning → Trivy, Clair, [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) Scout
     ├── IaC scanning → Checkov, tfsec, cfn-nag
     └── Cloud posture → Prowler, ScoutSuite
 ```
@@ -562,9 +562,9 @@ What do you need to test?
 | Relying solely on automated scanners | Miss business logic flaws, auth issues | Automated scan + manual pen testing |
 | No severity-based triage | Everything gets equal urgency | Severity-gated SLA for remediation |
 | Running outdated scanner versions | Misses new vulnerability signatures | Pin scanner version, update weekly |
-| No lock files | Non-deterministic installs, different vulns | [Commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) all lock files (package-lock, Cargo.lock, go.sum) |
+| No lock files | Non-deterministic installs, different vulns | [Commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) all lock files (package-lock, Cargo.lock, go.sum) |
 | One-size-fits-all security policy | Different services have different risk profiles | Risk-classify services, apply proportional controls |
-| Not [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) for new CVEs | Vulnerabilities discovered after scan | Subscribe to GHSA, NVD feeds, Dependabot alerts |
+| Not [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) for new CVEs | Vulnerabilities discovered after scan | Subscribe to GHSA, NVD feeds, Dependabot alerts |
 
 ## Performance Optimization
 
@@ -574,5 +574,5 @@ What do you need to test?
 - **SBOM generation**: Generate a Software Bill of Materials (SPDX or CycloneDX format) after each build. Use SBOM for post-deployment vulnerability correlation without re-scanning.
 
 ## Handoff
-Hand off to `dev-loop-[code-review](../../../ci-cd/common/other/code-review/SKILL.md)` for secure code review. Hand off to `[dev-loop-tech-debt-tracker](../../../Software_Engineering_and_Other/Patterns/dev-practice/tech-debt-tracker/SKILL.md)` for security debt tracking.
+Hand off to `dev-loop-[code-review](../../../DevOps_and_Cloud/ci-cd/common/other/code-review/SKILL.md)` for secure code review. Hand off to `[dev-loop-tech-debt-tracker](../../../Software_Engineering_and_Other/Patterns/dev-practice/tech-debt-tracker/SKILL.md)` for security debt tracking.
 

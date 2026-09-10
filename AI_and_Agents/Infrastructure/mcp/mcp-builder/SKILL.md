@@ -32,7 +32,7 @@ Microsoft provides extensive MCP infrastructure for Azure and Foundry services. 
 
 | Type | Transport | Use Case | Example |
 |------|-----------|----------|---------|
-| **Local** | stdio | Desktop apps, single-user, local dev | Azure MCP Server via NPM/[Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) |
+| **Local** | stdio | Desktop apps, single-user, local dev | Azure MCP Server via NPM/[Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) |
 | **Remote** | Streamable HTTP | Cloud services, multi-tenant, Agent Service | `https://mcp.ai.azure.com` (Foundry) |
 
 ### Microsoft MCP Servers
@@ -45,7 +45,7 @@ Before building a custom server, check if Microsoft already provides one:
 | **Foundry MCP** | Remote | `https://mcp.ai.azure.com` - Models, deployments, evals, agents |
 | **Fabric MCP** | Local | Microsoft Fabric APIs, OneLake, item definitions |
 | **Playwright MCP** | Local | Browser automation and testing |
-| **[GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) MCP** | Remote | `https://api.githubcopilot.com/mcp` |
+| **[GitHub](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) MCP** | Remote | `https://api.githubcopilot.com/mcp` |
 
 **Full ecosystem:** See [🔷 Microsoft MCP Patterns](./reference/microsoft_mcp_patterns.md) for complete server catalog and patterns.
 

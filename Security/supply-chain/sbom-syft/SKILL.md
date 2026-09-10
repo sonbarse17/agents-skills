@@ -51,22 +51,22 @@ Syft is a CLI tool and Go library for generating comprehensive Software Bills of
 Alpine (apk), C/C++ (conan), Dart (pub), Debian/Ubuntu (dpkg), Dotnet (deps.json), Go (go.mod), Java (JAR/WAR/EAR/Maven/Gradle), JavaScript (npm/yarn), PHP (composer), [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) (pip/poetry/setup.py), Red Hat (RPM), Ruby (gem), Rust (cargo), Swift (cocoapods)
 
 **Container & System:**
-OCI images, [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) images, Singularity, container layers, Linux distributions
+OCI images, [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) images, Singularity, container layers, Linux distributions
 
 ## Quick Start
 
 Generate SBOM for container image:
 
 ```bash
-# Using [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
-[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run --rm -v $(pwd):/out anchore/syft:latest <image> -o cyclonedx-json=/out/sbom.json
+# Using [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)
+[docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) run --rm -v $(pwd):/out anchore/syft:latest <image> -o cyclonedx-json=/out/sbom.json
 
 # Local installation
 syft <image> -o cyclonedx-json=sbom.json
 
 # Examples
 syft alpine:latest -o cyclonedx-json
-syft [docker](../../../containers-orchestration/docker/other/docker/SKILL.md).io/nginx:latest -o spdx-json
+syft [docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md).io/nginx:latest -o spdx-json
 syft dir:/path/to/project -o cyclonedx-json
 ```
 
@@ -152,7 +152,7 @@ For creating cryptographically signed SBOM attestations:
    brew install cosign
 
    # Linux
-   wget https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/sigstore/cosign/releases/latest/download/cosign-linux-amd64
+   wget https://[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/sigstore/cosign/releases/latest/download/cosign-linux-amd64
    chmod +x cosign-linux-amd64
    mv cosign-linux-amd64 /usr/local/bin/cosign
    ```
@@ -182,7 +182,7 @@ Syft supports multiple SBOM formats for different use cases:
 | `spdx-tag-value` | SPDX text format | SPDX 2.3 |
 | `syft-json` | Syft native format (most detail) | Syft-specific |
 | `syft-text` | Human-readable console output | Syft-specific |
-| `[github](../../../ci-cd/github-actions/other/github/SKILL.md)-json` | [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) dependency submission | [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)-specific |
+| `[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)-json` | [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) dependency submission | [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)-specific |
 | `template` | Custom Go template output | User-defined |
 
 Specify with `-o` flag:
@@ -247,8 +247,8 @@ syft <image> --platform all -o cyclonedx-json
 Access images from private registries:
 
 ```bash
-# Using [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) credentials
-[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) login registry.example.com
+# Using [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) credentials
+[docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) login registry.example.com
 syft registry.example.com/private/image:tag -o cyclonedx-json
 
 # Using environment variables
@@ -263,17 +263,17 @@ syft registry.example.com/private/image:tag -o cyclonedx-json
 
 ### Pattern 3: OCI Archive Scanning
 
-Scan saved container images (OCI or [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) format):
+Scan saved container images (OCI or [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) format):
 
 ```bash
 # Save image to archive
-[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) save nginx:latest -o nginx.tar
+[docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) save nginx:latest -o nginx.tar
 
 # Scan archive
 syft oci-archive:nginx.tar -o cyclonedx-json=sbom.json
 
-# Or scan [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) archive
-syft [docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-archive:nginx.tar -o cyclonedx-json=sbom.json
+# Or scan [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) archive
+syft [docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)-archive:nginx.tar -o cyclonedx-json=sbom.json
 ```
 
 ### Pattern 4: Comparing SBOMs Between Versions
@@ -320,12 +320,12 @@ cat full-sbom.json | jq '.artifacts | group_by(.type) | map({type: .[0].type, co
 
 ### CI/CD Integration
 
-**[GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions:**
+**[GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions:**
 ```yaml
 - name: Generate SBOM with Syft
   uses: anchore/sbom-action@v0
   with:
-    image: ${{ env.IMAGE_NAME }}:${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).sha }}
+    image: ${{ env.IMAGE_NAME }}:${{ [github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).sha }}
     format: cyclonedx-json
     output-file: sbom.json
 
@@ -347,7 +347,7 @@ sbom-generation:
       cyclonedx: sbom.json
 ```
 
-**[Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md):**
+**[Jenkins](../../../DevOps_and_Cloud/ci-cd/jenkins/other/jenkins/SKILL.md):**
 ```groovy
 stage('Generate SBOM') {
   steps {
@@ -375,7 +375,7 @@ Attach SBOMs to container images:
 # Using ORAS
 oras attach <image> --artifact-type application/vnd.cyclonedx+json sbom.json
 
-# Using [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) manifest
+# Using [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) manifest
 # Store SBOM as additional layer or separate artifact
 ```
 
@@ -435,9 +435,9 @@ Verify package manifest files exist (package.json, requirements.txt, go.mod, etc
 
 ### Issue: Registry Authentication Failure
 
-**Solution**: Ensure [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) credentials are configured or use explicit auth:
+**Solution**: Ensure [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) credentials are configured or use explicit auth:
 ```bash
-[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) login <registry>
+[docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) login <registry>
 # Then run syft
 syft <registry>/<image> -o cyclonedx-json
 ```
@@ -503,7 +503,7 @@ Work through each step systematically. Check off completed items.
 
 ## References
 
-- [Syft [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Repository](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/anchore/syft)
+- [Syft [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Repository](https://[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/anchore/syft)
 - [Anchore SBOM Documentation](https://anchore.com/sbom/)
 - [CycloneDX Specification](https://cyclonedx.org/)
 - [SPDX Specification](https://spdx.dev/)

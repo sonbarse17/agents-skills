@@ -36,7 +36,7 @@ Senior [PostgreSQL](../postgresql/SKILL.md) expert with deep expertise in databa
 - Setting up streaming or logical replication
 - Configuring and using [PostgreSQL](../postgresql/SKILL.md) extensions
 - Tuning VACUUM, ANALYZE, and autovacuum
-- [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) database health with pg_stat views
+- [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) database health with pg_stat views
 - Designing indexes for optimal performance
 
 ## Core Workflow
@@ -85,7 +85,7 @@ Load detailed guidance based on context:
 | JSONB | `../../../../Global_References/Software_Engineering_and_Other/jsonb.md` | JSONB operators, indexing, GIN indexes, containment |
 | Extensions | `../../../../Global_References/Software_Engineering_and_Other/extensions.md` | PostGIS, pg_trgm, pgvector, uuid-ossp, pg_stat_statements |
 | Replication | `../../../../Global_References/Software_Engineering_and_Other/replication.md` | Streaming replication, logical replication, failover |
-| Maintenance | `../../../../Global_References/Software_Engineering_and_Other/maintenance.md` | VACUUM, ANALYZE, pg_stat views, [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), bloat |
+| Maintenance | `../../../../Global_References/Software_Engineering_and_Other/maintenance.md` | VACUUM, ANALYZE, pg_stat views, [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), bloat |
 
 ## Common Patterns
 
@@ -104,7 +104,7 @@ FROM events
 WHERE payload @> '{"type": "login"}';
 ```
 
-### VACUUM and Bloat [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+### VACUUM and Bloat [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 ```sql
 -- Check tables with high dead tuple counts
@@ -119,7 +119,7 @@ LIMIT 20;
 VACUUM (ANALYZE, VERBOSE) orders;
 ```
 
-### Replication Lag [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+### Replication Lag [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 ```sql
 -- On primary: check standby lag
@@ -156,12 +156,12 @@ When implementing [PostgreSQL](../postgresql/SKILL.md) solutions, provide:
 1. Query with `EXPLAIN (ANALYZE, BUFFERS)` output and interpretation
 2. Index definitions with rationale and pre/post verification
 3. Configuration changes with before/after values
-4. [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) queries for ongoing health checks
+4. [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) queries for ongoing health checks
 5. Brief explanation of performance impact
 
 ## Knowledge Reference
 
 [PostgreSQL](../postgresql/SKILL.md) 12-16, EXPLAIN ANALYZE, B-tree/GIN/GiST/BRIN indexes, JSONB operators, streaming replication, logical replication, VACUUM/ANALYZE, pg_stat views, PostGIS, pgvector, pg_trgm, WAL archiving, PITR
 
-[Documentation](https://jeffallan.[github](../../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/infrastructure/postgres-pro/)
+[Documentation](https://jeffallan.[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/infrastructure/postgres-pro/)
 

@@ -21,7 +21,7 @@ Production patterns for implementing data quality with Great Expectations, dbt t
 - Setting up Great Expectations validation
 - Building comprehensive dbt test suites
 - Establishing data contracts between teams
-- [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) data quality metrics
+- [Monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) data quality metrics
 - Automating data validation in CI/CD
 
 ## Core Concepts
@@ -134,7 +134,7 @@ if not all(r.passed for r in results.values()):
 - **Test early** - Validate source data before transformations
 - **Test incrementally** - Add tests as you find issues
 - **Document expectations** - Clear descriptions for each test
-- **Alert on failures** - Integrate with [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+- **Alert on failures** - Integrate with [monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - **Version contracts** - Track schema changes
 
 ### Don'ts

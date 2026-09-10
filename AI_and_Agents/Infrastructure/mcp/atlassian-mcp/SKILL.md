@@ -82,7 +82,7 @@ project = PROJ AND sprint in openSprints() AND status = Open ORDER BY created DE
 space = "ENG" AND type = page AND lastModified >= "2024-01-01" ORDER BY lastModified DESC
 
 # Search page text for a keyword
-space = "ENG" AND type = page AND text ~ "deployment [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)"
+space = "ENG" AND type = page AND text ~ "deployment [runbook](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)"
 ```
 
 ### Minimal MCP Server Configuration
@@ -138,5 +138,5 @@ When implementing Atlassian MCP features, provide:
 4. Authentication setup instructions
 5. Brief explanation of permission requirements
 
-[Documentation](https://jeffallan.[github](../../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/platform/atlassian-mcp/)
+[Documentation](https://jeffallan.[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/platform/atlassian-mcp/)
 

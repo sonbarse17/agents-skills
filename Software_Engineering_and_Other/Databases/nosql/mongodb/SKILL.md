@@ -30,7 +30,7 @@ Administer, optimize, and secure MongoDB NoSQL databases in development and prod
 
 ## Prerequisites
 
-- Linux server (Debian/Ubuntu or RHEL-based) or [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md).
+- Linux server (Debian/Ubuntu or RHEL-based) or [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md).
 - Root or sudo access for package installation.
 - MongoDB 7.x recommended for production (6.x still supported).
 
@@ -278,7 +278,7 @@ mongorestore --uri="mongodb://admin:secret@localhost:27017" \
 mongorestore --uri="mongodb://admin:secret@localhost:27017" --gzip /backups/gz_2025-01-15/
 ```
 
-## [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) Compose Setup
+## [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) Compose Setup
 
 ```yaml
 # [docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml
@@ -360,13 +360,13 @@ volumes:
 openssl rand -base64 756 > mongo-keyfile
 chmod 400 mongo-keyfile
 
-[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) compose up -d
+[docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) compose up -d
 
 # Connect
 mongosh "mongodb://admin:secret@127.0.0.1:27017/?replicaSet=rs0&authSource=admin"
 ```
 
-## [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Queries
+## [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Queries
 
 ```javascript
 // Server status summary

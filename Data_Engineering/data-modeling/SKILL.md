@@ -498,7 +498,7 @@ Symptom: 50 indexes on a table, all used in different queries. Consequence: writ
 ## Performance Patterns
 
 ### Read Replicas
-Route read queries to replicas, writes to primary. Use for: reporting workloads, dashboard queries, read-heavy APIs. Ensure: replication lag [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), tolerate stale reads.
+Route read queries to replicas, writes to primary. Use for: reporting workloads, dashboard queries, read-heavy APIs. Ensure: replication lag [monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), tolerate stale reads.
 
 ### Partitioning
 Range partitioning by time (orders by month) for natural data lifecycle management. List partitioning by category (region, status). Hash partitioning for even distribution. Benefits: partition pruning for faster queries, easy data archival (detach partition).
@@ -526,7 +526,7 @@ Application-level cache (Redis) for frequently-read, infrequently-updated data. 
 Structural tests: all tables have primary keys, all FKs are indexed, no duplicate indexes, column types match application expectations. Integrity tests: FK constraints are not violated, unique constraints hold, check constraints validate data. Migration tests: migrations run forward and backward, rollback produces original state, no data loss on migration.
 
 ### CI Pipeline for Schema Changes
-Check [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) → lint SQL (sqlfluff) → run on ephemeral DB → verify schema → run migration test → run integration tests → deploy to staging. Use tools like pgTAP, Sqitch, or custom scripts.
+Check [commit](../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) → lint SQL (sqlfluff) → run on ephemeral DB → verify schema → run migration test → run integration tests → deploy to staging. Use tools like pgTAP, Sqitch, or custom scripts.
 
 ## Rules
 - 3NF is the default. Denormalize only when performance-measured.
@@ -548,7 +548,7 @@ Check [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) → lint SQL (sq
   - ../../Global_References/Data_Engineering/domain-driven-data-modeling.md — Domain-Driven Data Modeling
   - ../../Global_References/Data_Engineering/data-modeling_graph-modeling.md — Graph Modeling
   - ../../Global_References/Data_Engineering/modeling-best-practices.md — Data Modeling Best Practices
-  - ../../../Global_References/modeling-[change-management](../../observability-monitoring-logging/common/other/change-management/SKILL.md).md — Model Change Management
+  - ../../../Global_References/modeling-[change-management](../../DevOps_and_Cloud/observability-monitoring-logging/common/other/change-management/SKILL.md).md — Model Change Management
   - ../../Global_References/Data_Engineering/modeling-data-contracts.md — Data Contracts in Modeling
   - ../../Global_References/Data_Engineering/relational-modeling.md — Relational Modeling
 ## Handoff

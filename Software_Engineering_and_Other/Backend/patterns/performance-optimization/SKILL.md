@@ -25,7 +25,7 @@ Measure before optimizing. Performance work without measurement is guessing — 
 ## When to Use
 
 - Performance requirements exist in the spec (load time budgets, response time SLAs)
-- Users or [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) report slow behavior
+- Users or [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) report slow behavior
 - Core Web Vitals scores are below thresholds
 - You suspect a change introduced a regression
 - Building features that handle large datasets or high traffic
@@ -47,7 +47,7 @@ Measure before optimizing. Performance work without measurement is guessing — 
 2. IDENTIFY → Find the actual bottleneck (not assumed)
 3. FIX      → Address the specific bottleneck
 4. VERIFY   → Measure again; keep or revert
-5. GUARD    → Add [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) or tests to prevent regression
+5. GUARD    → Add [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) or tests to prevent regression
 ```
 
 ### Step 1: Measure
@@ -74,7 +74,7 @@ onCLS(console.log);
 **Backend:**
 ```bash
 # Response time logging
-# Application Performance [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (APM)
+# Application Performance [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (APM)
 # Database query logging with timing
 
 # Simple timing
@@ -316,7 +316,7 @@ Then decide, strictly:
 
 | Result vs. baseline | Action |
 |---|---|
-| Past the threshold, tests green | **Keep.** [Commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) with the before/after numbers in the message. |
+| Past the threshold, tests green | **Keep.** [Commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) with the before/after numbers in the message. |
 | Within noise (no measurable change) | **Revert.** |
 | Worse | **Revert.** |
 | Improved, but a test went red | **Revert.** A regression wearing a win's clothing. |
@@ -385,7 +385,7 @@ For detailed performance checklists, optimization commands, and anti-pattern ref
 - List endpoints without pagination
 - Images without dimensions, lazy loading, or responsive sizes
 - Bundle size growing without review
-- No performance [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) in production
+- No performance [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) in production
 - `React.memo` and `useMemo` everywhere (overusing is as bad as underusing)
 - Optimizations kept without a re-measurement that justifies them
 - Several optimizations bundled into one measurement, so no single change can be attributed

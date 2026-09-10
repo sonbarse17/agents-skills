@@ -56,7 +56,7 @@ Structured property test suite with:
 - Properties defined for all identified invariants
 - Generators produce valid domain inputs with < 10% rejection rate
 - Shrinking produces minimal counterexamples
-- CI integration with adaptive run depth (fast on [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md), thorough nightly)
+- CI integration with adaptive run depth (fast on [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md), thorough nightly)
 - Failing seeds captured and counterexamples added as regression tests
 
 ## Workflow
@@ -67,7 +67,7 @@ Structured property test suite with:
 4. **Run and shrink**: Execute with default run count (100). Verify shrinking produces actionable minimal counterexamples
 5. **Analyze failures**: Inspect shrunk inputs. Add counterexamples as regression tests. Store seeds for reproduction
 6. **Optimize generators**: Profile generation and shrinking performance. Replace filters with constrained generation. Reduce rejection rate
-7. **Integrate CI**: Configure CI with adaptive depth. Fast run (100 runs) on every [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md). Thorough run (1000+ runs) nightly. Store seeds in build artifacts
+7. **Integrate CI**: Configure CI with adaptive depth. Fast run (100 runs) on every [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md). Thorough run (1000+ runs) nightly. Store seeds in build artifacts
 8. **Add stateful models**: For stateful systems, implement command-based models with preconditions, postconditions, and invariants
 9. **Track metrics**: Monitor property coverage, shrinking efficiency, counterexample discovery rate, and generator rejection rate
 10. **Maintain property suite**: Review properties during refactoring. Remove obsolete properties. Add new properties for modified code
@@ -297,7 +297,7 @@ test("counter behaves correctly under random commands", async () => {
 ## CI Integration for Property-Based Tests
 
 ```yaml
-# .[github](../../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/pbt.yml
+# .[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/workflows/pbt.yml
 name: Property-Based Tests
 on:
   pull_request:
@@ -307,7 +307,7 @@ on:
 
 jobs:
   fast:
-    if: [github](../../../../ci-cd/github-actions/other/github/SKILL.md).event_name == 'pull_request'
+    if: [github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -323,7 +323,7 @@ jobs:
           path: seeds/*.txt
 
   thorough:
-    if: [github](../../../../ci-cd/github-actions/other/github/SKILL.md).event_name == 'schedule'
+    if: [github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).event_name == 'schedule'
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
@@ -396,7 +396,7 @@ Stateful property tests that share mutable state between command sequences produ
 13. Input size bounds must be set on all collection generators (maxLength, maxDepth)
 14. Performance properties must include baseline thresholds and alert on regression
 15. Resources (database connections, file handles) must be cleaned up after each property test
-16. CI must have separate fast (every [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)) and thorough (nightly) property test stages
+16. CI must have separate fast (every [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md)) and thorough (nightly) property test stages
 17. Failing seeds must be committed alongside counterexample regression tests
 18. Generator complexity must be documented — understand what shapes your generators produce
 
@@ -416,7 +416,7 @@ After property-based testing, hand off to:
 - `[quality-unit-testing](../../../Testing/unit/unit-testing/SKILL.md)` — for example-based tests that complement properties
 - `[quality-integration-testing](../../../Testing/integration/integration-testing/SKILL.md)` — for verifying properties at system boundaries
 - `[quality-regression-testing](../../../Testing/regression/regression-testing/SKILL.md)` — for adding discovered counterexamples to regression suites
-- `quality-[load-testing](../../../../observability-monitoring-logging/common/capacity-monitoring/load-testing/SKILL.md)` — for performance property validation under load
+- `quality-[load-testing](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/capacity-monitoring/load-testing/SKILL.md)` — for performance property validation under load
 ## Implementation Patterns
 
 ### Observer Pattern for Event Handling
@@ -469,7 +469,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
+### [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -504,7 +504,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing ([OpenTelemetry](../../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../../DevOps_and_Cloud/observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -521,7 +521,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) signing
+- Signed commits: GPG or SSH [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
@@ -538,7 +538,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - Fail securely — errors default to safe behavior.
 - Log security-relevant events for [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
+- Design for [observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.
 ## Architecture Decision Trees

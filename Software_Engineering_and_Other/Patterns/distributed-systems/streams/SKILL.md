@@ -32,7 +32,7 @@ For detailed endpoints and parameters, see [../../../../Global_References/Softwa
 - Reading a stream's ingest or query settings
 - Listing a stream's queries
 - Reading significant events for a stream
-- Listing attachments ([dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), rules, SLOs) linked to a stream
+- Listing attachments ([dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), rules, SLOs) linked to a stream
 - Enabling, disabling, or resyncing streams
 
 ## Prerequisites
@@ -40,12 +40,12 @@ For detailed endpoints and parameters, see [../../../../Global_References/Softwa
 | Item               | Description                                                               |
 | ------------------ | ------------------------------------------------------------------------- |
 | **Kibana URL**     | Kibana endpoint (e.g. `https://localhost:5601` or a Cloud deployment URL) |
-| **Authentication** | API key or basic auth (see the [elasticsearch-authn](../../../../observability-monitoring-logging/elasticsearch/other/elasticsearch-authn/SKILL.md) skill)                 |
+| **Authentication** | API key or basic auth (see the [elasticsearch-authn](../../../../DevOps_and_Cloud/observability-monitoring-logging/elasticsearch/other/elasticsearch-authn/SKILL.md) skill)                 |
 | **Privileges**     | `read_stream` for read operations; `manage_stream` for lifecycle APIs     |
 
 Use the space-scoped path `/s/{space_id}/api/streams` when operating in a non-default space. For role configuration
 (Kibana feature privileges and Elasticsearch-level permissions), refer to
-[Streams required permissions](https://www.elastic.co/docs/solutions/[observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)/streams/streams#streams-required-permissions).
+[Streams required permissions](https://www.elastic.co/docs/solutions/[observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md)/streams/streams#streams-required-permissions).
 
 ## API base and headers
 
@@ -123,7 +123,7 @@ curl -X GET "${KIBANA_URL}/api/streams/my-stream/queries" \
 curl -X GET "${KIBANA_URL}/api/streams/my-stream/significant_events" \
   -H "Authorization: ApiKey <base64-api-key>"
 
-# Attachments ([dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), rules, SLOs linked to the stream)
+# Attachments ([dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), rules, SLOs linked to the stream)
 curl -X GET "${KIBANA_URL}/api/streams/my-stream/attachments" \
   -H "Authorization: ApiKey <base64-api-key>"
 ```

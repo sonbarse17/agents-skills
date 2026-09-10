@@ -52,7 +52,7 @@ type Fiber = {
 };
 ```
 
-## 2. Rendering Phases: Render vs. [Commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)
+## 2. Rendering Phases: Render vs. [Commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md)
 
 The React reconciliation process is strictly divided into two distinct phases:
 
@@ -61,8 +61,8 @@ The Render phase traverses the Fiber tree, calling `beginWork` and `completeWork
 - **Work Loop:** React utilizes a `workLoop` that continuously checks `shouldYield()` to allow the main thread to handle high-priority events (e.g., user inputs, animations).
 - **Output:** The output is a list of side-effects (the Effect List), attached to the root Fiber.
 
-### Phase 2: The [Commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) Phase (Uninterruptible)
-The [Commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) phase takes the generated Effect List and applies the mutations to the DOM (or other host environment) synchronously. It cannot be interrupted, ensuring UI consistency.
+### Phase 2: The [Commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) Phase (Uninterruptible)
+The [Commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) phase takes the generated Effect List and applies the mutations to the DOM (or other host environment) synchronously. It cannot be interrupted, ensuring UI consistency.
 - It invokes lifecycle methods (`componentDidMount`, `componentDidUpdate`) and `useEffect` / `useLayoutEffect` callbacks.
 
 ## 3. Concurrent Mode & Cooperative Scheduling
@@ -92,7 +92,7 @@ flowchart TD
     
     CompleteWork --> CommitPhase
     
-    subgraph CommitPhaseCommitPhaseSynchronousCommitPhaseCommitPhaseSynchronous ["CommitPhase ['[Commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) Phase (Synchronous)<br><br><br>"]
+    subgraph CommitPhaseCommitPhaseSynchronousCommitPhaseCommitPhaseSynchronous ["CommitPhase ['[Commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) Phase (Synchronous)<br><br><br>"]
         CommitPhase --> DOMMutations[Mutate DOM]
         DOMMutations --> LifecycleHooks[Fire useLayoutEffect/useEffect]
     end

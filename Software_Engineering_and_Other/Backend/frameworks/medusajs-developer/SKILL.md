@@ -225,7 +225,7 @@ export const config = {
 2. Create necessary data models
 3. Implement workflow orchestration
 4. Add event handlers for state changes
-5. Create [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
+5. Create [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [alerting](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 6. Document workflow behavior
 
 ## Troubleshooting
@@ -310,7 +310,7 @@ Scheduled job patterns:
 # Copy template to your project
 cp templates/module-complete.ts src/modules/brand/
 
-# [Customize](../../../../cloud/azure/ai/customize/SKILL.md)/SKILL.md)/SKILL.md) for your needs
+# [Customize](../../../../DevOps_and_Cloud/cloud/azure/ai/customize/SKILL.md)/SKILL.md)/SKILL.md) for your needs
 # - Rename identifiers
 # - Add/remove properties
 # - Implement business logic
@@ -593,7 +593,7 @@ npx create-medusa-app@latest my-store
 
 - Official MedusaJS Documentation
 - Community Discord and Forums
-- [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Repository and Examples
+- [GitHub](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Repository and Examples
 - Plugin Marketplace
 - Developer Tools and CLI Commands
 

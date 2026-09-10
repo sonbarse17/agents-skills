@@ -396,7 +396,7 @@ CSS logical properties have negligible performance cost. Flipping layout on loca
 10. Translation interpolation escapes HTML by default to prevent XSS.
 
 ## References
-  - ../../../Global_References/i18n-[build-optimization](../../../../ci-cd/common/build/build-optimization/SKILL.md).md — i18n Build Optimization
+  - ../../../Global_References/i18n-[build-optimization](../../../../DevOps_and_Cloud/ci-cd/common/build/build-optimization/SKILL.md).md — i18n Build Optimization
   - ../../../../Global_References/Software_Engineering_and_Other/i18n-implementation.md — i18n Implementation
   - ../../../../Global_References/Software_Engineering_and_Other/i18n-libraries.md — i18n Libraries
   - ../../../../Global_References/Software_Engineering_and_Other/i18n-testing.md — i18n Testing
@@ -528,7 +528,7 @@ What framework and requirements?
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
+### [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |

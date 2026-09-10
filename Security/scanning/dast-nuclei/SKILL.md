@@ -60,10 +60,10 @@ provides efficient automated security testing with minimal false positives.
 
 ```bash
 # Install via Go
-go install -v [github](../../../ci-cd/github-actions/other/github/SKILL.md).com/projectdiscovery/nuclei/v3/cmd/nuclei@latest
+go install -v [github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/projectdiscovery/nuclei/v3/cmd/nuclei@latest
 
-# Or using [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
-[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) pull projectdiscovery/nuclei:latest
+# Or using [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)
+[docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) pull projectdiscovery/nuclei:latest
 
 # Update templates (automatically downloads 7000+ community templates)
 nuclei -update-templates
@@ -286,20 +286,20 @@ python3 scripts/nuclei_report_generator.py \
   --include-remediation \
   --map-frameworks owasp,cwe
 
-# Export to SARIF for [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Security tab
+# Export to SARIF for [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Security tab
 nuclei -u https://target-app.com \
   -severity critical,high \
-  -sarif-export [github](../../../ci-cd/github-actions/other/github/SKILL.md)-sarif.json
+  -sarif-export [github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)-sarif.json
 ```
 
 See `assets/report_templates/` for customizable report formats.
 
 ## Automation & CI/CD Integration
 
-### [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions Integration
+### [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions Integration
 
 ```yaml
-# .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/nuclei-scan.yml
+# .[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/workflows/nuclei-scan.yml
 name: Nuclei Security Scan
 on: [push, pull_request]
 
@@ -317,16 +317,16 @@ jobs:
           templates: cves,owasp,misconfig
 
       - name: Upload Results
-        uses: [github](../../../ci-cd/github-actions/other/github/SKILL.md)/codeql-action/upload-sarif@v2
+        uses: [github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/codeql-action/upload-sarif@v2
         with:
           sarif_file: nuclei.sarif
 ```
 
-### [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-Based CI/CD Scanning
+### [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)-Based CI/CD Scanning
 
 ```bash
-# Run in CI/CD pipeline with [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
-[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run --rm \
+# Run in CI/CD pipeline with [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)
+[docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) run --rm \
   -v $(pwd):/reports \
   projectdiscovery/nuclei:latest \
   -u $TARGET_URL \
@@ -350,7 +350,7 @@ fi
   --slack-webhook $SLACK_WEBHOOK \
   --output-dir scan-reports/
 
-# Scheduled vulnerability [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+# Scheduled vulnerability [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 ./scripts/nuclei_scheduler.sh \
   --schedule daily \
   --targets targets.txt \
@@ -423,7 +423,7 @@ http:
 - `nuclei_ci.sh` - CI/CD integration wrapper with exit code handling and artifact generation
 - `nuclei_auth_scan.py` - Authenticated scanning with multiple authentication methods (Bearer, API key, Cookie)
 - `nuclei_bulk_scanner.sh` - Parallel scanning of multiple targets with aggregated reporting
-- `nuclei_scheduler.sh` - Scheduled scanning with diff detection and [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
+- `nuclei_scheduler.sh` - Scheduled scanning with diff detection and [alerting](../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 - `parse_nuclei_results.py` - JSON/JSONL parser for generating HTML/CSV reports with severity grouping
 - `nuclei_report_generator.py` - Comprehensive report generator with OWASP/CWE mappings and remediation guidance
 - `template_validator.py` - Custom template validation and testing framework
@@ -437,7 +437,7 @@ http:
 
 ### Assets (`assets/`)
 
-- `github_actions.yml` - [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions workflow with SARIF export
+- `github_actions.yml` - [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions workflow with SARIF export
 - `nuclei_config.yaml` - Comprehensive configuration template
 
 ## Common Patterns
@@ -494,7 +494,7 @@ nuclei -u https://api.target.com -tags api,cve -severity critical,high -o api-cv
 nuclei -u https://api.target.com -t custom-templates/api/ -o api-custom.txt
 ```
 
-### Pattern 4: Continuous Security [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+### Pattern 4: Continuous Security [Monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 ```bash
 # Daily scan with diff detection
@@ -502,16 +502,16 @@ nuclei -u https://production-app.com \
   -severity critical,high -tags cve \
   -json -jsonl-export scan-$(date +%Y%m%d).jsonl
 
-# Use bundled scripts for diff analysis and [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
+# Use bundled scripts for diff analysis and [alerting](../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 ```
 
 ## Integration Points
 
-- **CI/CD**: [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md), [CircleCI](../../../ci-cd/circleci/other/circleci/SKILL.md), Azure DevOps, Travis CI
-- **Issue Tracking**: Jira, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Issues, ServiceNow, Linear (via SARIF or custom scripts)
+- **CI/CD**: [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../../DevOps_and_Cloud/ci-cd/jenkins/other/jenkins/SKILL.md), [CircleCI](../../../DevOps_and_Cloud/ci-cd/circleci/other/circleci/SKILL.md), Azure DevOps, Travis CI
+- **Issue Tracking**: Jira, [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Issues, ServiceNow, Linear (via SARIF or custom scripts)
 - **Security Platforms**: Defect Dojo, Splunk, ELK Stack, SIEM platforms (via JSON export)
 - **Notification**: Slack, Microsoft Teams, Discord, PagerDuty, email (via webhook scripts)
-- **SDLC**: Pre-deployment scanning, security regression testing, vulnerability [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+- **SDLC**: Pre-deployment scanning, security regression testing, vulnerability [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - **Cloud Platforms**: AWS Lambda, Google Cloud Functions, Azure Functions ([serverless](../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) scanning)
 - **Reporting**: HTML, JSON, JSONL, SARIF, Markdown, CSV formats
 
@@ -528,7 +528,7 @@ Common issues and solutions:
 ## References
 
 - [Nuclei Documentation](https://docs.projectdiscovery.io/tools/nuclei/overview)
-- [Nuclei Templates Repository](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/projectdiscovery/nuclei-templates)
+- [Nuclei Templates Repository](https://[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/projectdiscovery/nuclei-templates)
 - [OWASP Top 10](https://owasp.org/Top10/)
 - [CWE Database](https://cwe.mitre.org/)
 

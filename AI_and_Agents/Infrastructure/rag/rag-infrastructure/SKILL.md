@@ -38,7 +38,7 @@ Use this skill when:
 - A vector database (Qdrant, Weaviate, Pinecone, or pgvector)
 - An embedding model (OpenAI, Cohere, or local via `sentence-transformers`)
 - An LLM endpoint (OpenAI API or self-hosted vLLM)
-- [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) for local vector DB deployment
+- [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) for local vector DB deployment
 
 ## Architecture Overview
 
@@ -198,7 +198,7 @@ def rag_query(user_question: str) -> str:
     return response.choices[0].message.content
 ```
 
-## [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) Compose: Full RAG Stack
+## [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) Compose: Full RAG Stack
 
 ```yaml
 services:

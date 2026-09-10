@@ -42,10 +42,10 @@ Great onboarding is a competitive advantage for engineering organizations. New h
 - Project repository URL and default branch (main, master, develop)
 - Technology stack: primary language(s) and versions, framework(s), database(s), queue, cache, cloud platform
 - Team structure: EM, tech lead, assigned buddy, DevOps contact, PM, designer
-- CI/CD details: provider ([GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, [CircleCI](../../../../ci-cd/circleci/other/circleci/SKILL.md), [Jenkins](../../../../ci-cd/jenkins/other/jenkins/SKILL.md)), lint/typecheck/test/build commands, deployment targets and environments
+- CI/CD details: provider ([GitHub](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, [CircleCI](../../../../DevOps_and_Cloud/ci-cd/circleci/other/circleci/SKILL.md), [Jenkins](../../../../DevOps_and_Cloud/ci-cd/jenkins/other/jenkins/SKILL.md)), lint/typecheck/test/build commands, deployment targets and environments
 - Development workflow: branch naming convention, PR template, required reviewers, CI checks, merge strategy, release cadence
 - Environment requirements: supported host OS, minimum hardware, reserved ports, system dependencies
-- Documentation paths: ADRs, API docs, [runbooks](../../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md), [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response guides, architecture diagrams
+- Documentation paths: ADRs, API docs, [runbooks](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md), [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response guides, architecture diagrams
 
 ### Output Artifact
 Onboarding plan with day-by-day checklist, environment setup commands in executable order, architecture overview with key directories and request flow, and team practices reference guide.
@@ -66,13 +66,13 @@ Complete onboarding checklist verified. Dev server running (health endpoint HTTP
 ## Onboarding Flow Design
 
 ### Day 1 — Welcome and Environment
-Before developer arrives: send [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md)/GitLab invite, provision cloud IAM (read-only), create shared credential entry, block buddy's calendar for pairing. Developer: clone repo, read README, run setup script. Buddy pairs on first setup run. End of day: dev server running, health endpoint returns 200. Any missing step → file as issue → developer's first Day 2 task.
+Before developer arrives: send [GitHub](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/GitLab invite, provision cloud IAM (read-only), create shared credential entry, block buddy's calendar for pairing. Developer: clone repo, read README, run setup script. Buddy pairs on first setup run. End of day: dev server running, health endpoint returns 200. Any missing step → file as issue → developer's first Day 2 task.
 
 ### Day 2 — Architecture Tour
-Buddy or tech lead leads 60-min walkthrough: directory structure (src, tests, docs, scripts, infra), request flow client→DB→back, deployment pipeline ([commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)→CI→build→staging→prod), event/message topology (queues, topics, streams), key infra dependencies (DBs, caches, search, CDNs). Developer draws request flow from memory at end. Gaps inform Day 3 focus.
+Buddy or tech lead leads 60-min walkthrough: directory structure (src, tests, docs, scripts, infra), request flow client→DB→back, deployment pipeline ([commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md)→CI→build→staging→prod), event/message topology (queues, topics, streams), key infra dependencies (DBs, caches, search, CDNs). Developer draws request flow from memory at end. Gaps inform Day 3 focus.
 
 ### Day 3 — First Code Change
-Pick small, well-scoped ticket (docs fix, minor bug, small feature with clear AC). Buddy pairs on full workflow: branch from main, make change, write tests, run suite locally, push, open draft PR. Focus on workflow correctness (branch name, [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) messages, PR format, CI) not code quality. End of day: draft PR exists with green CI.
+Pick small, well-scoped ticket (docs fix, minor bug, small feature with clear AC). Buddy pairs on full workflow: branch from main, make change, write tests, run suite locally, push, open draft PR. Focus on workflow correctness (branch name, [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) messages, PR format, CI) not code quality. End of day: draft PR exists with green CI.
 
 ### Day 4 — PR Review and Merge
 Buddy + second reviewer perform thorough review: logic, correctness, design, security, tests. Developer responds to each comment, pushes fixes. Buddy ensures developer understands every comment. PR merged with team's standard strategy (squash by default). Developer verifies change in staging.
@@ -121,13 +121,13 @@ Setup approach:
 Produce step-by-step instructions as executable command blocks in strict order. Clone → install runtime → install deps → configure env → start dev server → verify health → run tests. If project lacks `bin/setup` or equivalent automation, create one as part of onboarding PR.
 
 ### Step 2: Architecture Overview
-Walk directory structure. `src/` or `app/` = application source by feature module or bounded context. `tests/` or `spec/` = all automated tests mirroring source. `docs/` = ADRs, API docs, [runbooks](../../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md), diagrams. `scripts/` = automation (setup, DB ops, deploy). `infra/` or `ops/` = IaC (Terraform, K8s, [CloudFormation](../../../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md), [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) Compose). Describe request flow: CDN → load balancer → API gateway (routing + auth) → service → DB (optional cache) → optional queue → response. Deployment pipeline: push → CI (lint, typecheck, unit, int, security, build) → registry → staging → smoke tests → prod (blue-green or canary).
+Walk directory structure. `src/` or `app/` = application source by feature module or bounded context. `tests/` or `spec/` = all automated tests mirroring source. `docs/` = ADRs, API docs, [runbooks](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md), diagrams. `scripts/` = automation (setup, DB ops, deploy). `infra/` or `ops/` = IaC (Terraform, K8s, [CloudFormation](../../../../DevOps_and_Cloud/infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md), [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) Compose). Describe request flow: CDN → load balancer → API gateway (routing + auth) → service → DB (optional cache) → optional queue → response. Deployment pipeline: push → CI (lint, typecheck, unit, int, security, build) → registry → staging → smoke tests → prod (blue-green or canary).
 
 ### Step 3: Development Workflow
 Branch strategy: all feature branches from main (never other feature branches). Naming: `feature/user-login`, `fix/PROJ-123-null-pointer`, `chore/upgrade-deps`. PR workflow: draft PR early for intent signal → self-review before requesting → request reviewers → address feedback with additional commits (no force-push during review) → squash merge. CI: every push triggers lint → typecheck → unit → integration → security scan → build. Fix failures at each stage before proceeding. Testing: features need unit tests, bug fixes need reproduction test, API changes need integration tests, critical paths need E2E. Min 80% coverage on new code. Code review culture: respond within 4 business hours, focus on logic/correctness/design/security (linters handle style), explicit approve or request changes (no passive comments-only).
 
 ### Step 4: Team Practices
-Standup: same time daily, same platform, same format (yesterday/today/blocks), ≤15 min for teams ≤10. Communication: Slack/Discord by topic channels (#engineering, #incidents, #releases), scheduled video for agile ceremonies, [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) for code discussions, dedicated on-call channel. Documentation conventions: ADRs per template (title, status, context, decision, consequences) as markdown with sequential ID in `docs/adr/`. API docs as OpenAPI alongside source. Architecture diagrams in `docs/diagrams/` ([Mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md), Draw.io, Excalidraw). [Runbooks](../../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md) in `docs/[runbooks](../../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md)/` (deploy, rollback, [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response, troubleshooting).
+Standup: same time daily, same platform, same format (yesterday/today/blocks), ≤15 min for teams ≤10. Communication: Slack/Discord by topic channels (#engineering, #incidents, #releases), scheduled video for agile ceremonies, [GitHub](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) for code discussions, dedicated on-call channel. Documentation conventions: ADRs per template (title, status, context, decision, consequences) as markdown with sequential ID in `docs/adr/`. API docs as OpenAPI alongside source. Architecture diagrams in `docs/diagrams/` ([Mermaid](../../../../Product_and_Business/content-and-docs/mermaid/SKILL.md), Draw.io, Excalidraw). [Runbooks](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md) in `docs/[runbooks](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md)/` (deploy, rollback, [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response, troubleshooting).
 
 ## Models
 
@@ -228,7 +228,7 @@ For fully remote teams without synchronous pairing:
 ### Documentation Requirements
 Before onboarding a new engineer, ensure:
 - [ ] `README.md` has: prerequisites, setup steps, architecture overview
-- [ ] `CONTRIBUTING.md` has: PR process, code review checklist, [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) conventions
+- [ ] `CONTRIBUTING.md` has: PR process, code review checklist, [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) conventions
 - [ ] `docs/architecture.md` has: system diagram, key decisions, data flow
 - [ ] `docs/setup.md` has: exact commands, expected outputs, troubleshooting table
 - [ ] `docs/deployment.md` has: CI/CD pipeline, environment promotion, rollback process
@@ -262,11 +262,11 @@ Before onboarding a new engineer, ensure:
 - Missing packages: delete `node_modules` + `package-lock.json` → reinstall
 - Global tools not found: PATH doesn't include `~/.npm-global/bin`
 
-**[Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) issues:**
-- [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) daemon not running: `systemctl start [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)` (Linux), start [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) Desktop (macOS/Windows)
+**[Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) issues:**
+- [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) daemon not running: `systemctl start [docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)` (Linux), start [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) Desktop (macOS/Windows)
 - Port conflicts: `lsof -i :PORT` to find what's using the port
 - Volume mount permissions: `:delegated` on macOS for faster mounts
-- Container logs: `[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) compose logs -f service-name`
+- Container logs: `[docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) compose logs -f service-name`
 
 **Database issues:**
 - Connection refused: check `.env` values, DB host, port
@@ -356,7 +356,7 @@ Month 3: Autonomous — lead features, influence architecture
 15:00 — First PR preparation
   - Create a branch, make a trivial change (update README)
   - Open first PR
-  - Learn: branch naming, [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) conventions, PR template
+  - Learn: branch naming, [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) conventions, PR template
 
 16:30 — Retro on day 1 (new hire + buddy)
   - What was confusing?
@@ -372,7 +372,7 @@ Session 1 — Editor mastery (buddy demos)
   - Git integration (blame, history, stash)
 
 Session 2 — CI/CD pipeline walkthrough
-  - [Commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) → CI → Review → Merge → Deploy flow
+  - [Commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) → CI → Review → Merge → Deploy flow
   - How to read CI logs, rerun failed jobs
   - Feature flags and canary deployments
   - Rollback procedure
@@ -426,10 +426,10 @@ Day 5 — First feature (part 3)
 winget install Microsoft.PowerShell
 winget install Git.Git
 winget install OpenJS.NodeJS.LTS
-winget install [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md).DockerDesktop
+winget install [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md).DockerDesktop
 winget install Microsoft.VisualStudioCode
 
-# WSL2 (for [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) compatibility)
+# WSL2 (for [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) compatibility)
 wsl --install -d Ubuntu-24.04
 
 # Path configuration (add these to $PROFILE)
@@ -443,7 +443,7 @@ $env:Path += ";$env:USERPROFILE\.local\bin"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Core tools
-brew install git node pnpm [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) colima gh
+brew install git node pnpm [docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) colima gh
 brew install --cask visual-studio-code
 
 # ASDF (version manager for all languages)
@@ -458,7 +458,7 @@ asdf global [python](../../../Languages/python/python/SKILL.md) latest
 ```bash
 # System packages
 sudo apt update && sudo apt install -y \
-  git curl wget build-essential [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md).io [docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md)-v2
+  git curl wget build-essential [docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md).io [docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md)-v2
 
 # Node.js via NodeSource
 curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
@@ -510,17 +510,17 @@ sudo apt install -y code
 ## Security Onboarding
 
 ### Day 1 Security Checklist
-- [ ] Enable 2FA on [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md)/GitLab/Bitbucket
+- [ ] Enable 2FA on [GitHub](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/GitLab/Bitbucket
 - [ ] Generate and register SSH key (ed25519)
 - [ ] Set up GPG key for signed commits
 - [ ] Install password manager (1Password/Bitwarden)
-- [ ] Request access to: production logs (read-only), staging environment, CI/CD console, [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response tools
+- [ ] Request access to: production logs (read-only), staging environment, CI/CD console, [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response tools
 - [ ] Review security policy: reporting process, responsible disclosure, PII handling
-- [ ] Review `.env` requirements — never [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) secrets
+- [ ] Review `.env` requirements — never [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) secrets
 
 ### Secure Development Practices
 ```bash
-# Git secrets pre-[commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) hook
+# Git secrets pre-[commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) hook
 # Prevent committing passwords, keys, tokens
 git secrets --install
 git secrets --register-aws
@@ -550,9 +550,9 @@ git secrets --register-aws
 - Architecture deep-dive: Event-driven architecture, CQRS, saga patterns
 
 ### DevOps / Platform Engineer
-- Week 1 focus: [Infrastructure-as-code](../../../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md), CI/CD pipelines, [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) stack
-- Key concepts: [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) clusters, service mesh, [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) (logs/metrics/traces)
-- First PR: Add a [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) dashboard or update a CI workflow
+- Week 1 focus: [Infrastructure-as-code](../../../../DevOps_and_Cloud/infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md), CI/CD pipelines, [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) stack
+- Key concepts: [Kubernetes](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) clusters, service mesh, [observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) (logs/metrics/traces)
+- First PR: Add a [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) dashboard or update a CI workflow
 - Architecture deep-dive: Cluster topology, network policy, disaster recovery
 
 ### ML / Data Engineer
@@ -573,14 +573,14 @@ git secrets --register-aws
 |-------|-------------|-----|
 | Node.js | EACCES: permission denied for global install | Use `nvm` or `pnpm setup` — never `sudo npm install -g` |
 | Node.js | Module not found after pull | `rm -rf node_modules && pnpm install` |
-| [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) | Volume mounts empty on macOS | Add `:delegated` suffix to mount: `./src:/app/src:delegated` |
-| [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) | Port already allocated | `lsof -ti:3000 | xargs kill` or change `[docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).ports` |
+| [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) | Volume mounts empty on macOS | Add `:delegated` suffix to mount: `./src:/app/src:delegated` |
+| [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) | Port already allocated | `lsof -ti:3000 | xargs kill` or change `[docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).ports` |
 | [Python](../../../Languages/python/python/SKILL.md) | `pip install` fails with SSL | Upgrade pip: `pip install --upgrade pip setuptools wheel` |
 | [Python](../../../Languages/python/python/SKILL.md) | `ModuleNotFoundError` | Ensure virtual env is activated and `pip install -e .` for local packages |
 | Rust | `linker `cc` not found` | Install build tools: `brew install llvm` (macOS), `apt install build-essential` (Linux) |
-| Rust | Slow compile times | Use `mold` linker, `cargo-chef` for [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) builds |
+| Rust | Slow compile times | Use `mold` linker, `cargo-chef` for [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) builds |
 | Java | `Unsupported class file major version` | Mismatched JDK version — use `sdk use java 21.0.1` |
-| [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) | `context was canceled` | Check kubeconfig context: `[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) config current-context`, increase `--request-timeout` |
+| [Kubernetes](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) | `context was canceled` | Check kubeconfig context: `[kubectl](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubectl/SKILL.md) config current-context`, increase `--request-timeout` |
 | [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md) | `role "user" does not exist` | `createuser -s postgres` or set `PGUSER=postgres` in .env |
 | Redis | `NOAUTH Authentication required` | Set `REDIS_PASSWORD` in .env or disable password in dev |
 | Git | `fatal: refusing to merge unrelated histories` | `git pull origin main --allow-unrelated-histories` (one-time) |
@@ -608,7 +608,7 @@ For teams across 8+ time zones:
 - Record architecture decisions (Loom or screen recording, < 15 min)
 - Leave detailed PR comments with code contexts and reasoning
 - Document pairing session outcomes in shared doc (who, what, decisions, action items)
-- Use [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md)/Linear issues with acceptance criteria for handoffs
+- Use [GitHub](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/Linear issues with acceptance criteria for handoffs
 - "Follow the sun" handoff: document state clearly so next time zone can pick up
 
 ## Onboarding Metrics & Success Criteria

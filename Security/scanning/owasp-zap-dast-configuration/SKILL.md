@@ -80,7 +80,7 @@ relative to SAST/SCA, and vendor-neutral CI wiring — see
   for the fuller rationale and environment-isolation guidance.
 - A dedicated test account (never a real customer or admin credential)
   for authenticated scanning, sourced from a secrets manager in CI —
-  see [secrets-management](../../common/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md).
+  see [secrets-management](../../common/devsecops/SKILL.md)/skills/[secrets-management](../../../DevOps_and_Cloud/cloud/common/security/secrets-management/SKILL.md)/SKILL.md).
 - An OpenAPI/Swagger JSON/YAML spec or GraphQL introspection endpoint,
   if scanning an API — improves coverage dramatically over spider-only
   discovery for endpoints with no HTML links pointing to them.
@@ -164,7 +164,7 @@ relative to SAST/SCA, and vendor-neutral CI wiring — see
    ```
    Run it:
    ```bash
-   [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run --rm -v "$(pwd)/zap:/zap/wrk:rw" \
+   [docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) run --rm -v "$(pwd)/zap:/zap/wrk:rw" \
      -e DAST_TEST_USER -e DAST_TEST_PASSWORD \
      -t zaproxy/zap-stable zap.sh -cmd \
      -autorun /zap/wrk/zap-plan.yaml
@@ -198,7 +198,7 @@ relative to SAST/SCA, and vendor-neutral CI wiring — see
 4. **Seed API scans from an OpenAPI spec** instead of relying on the
    spider to discover routes with no HTML links:
    ```bash
-   [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run --rm -v "$(pwd)":/zap/wrk/:rw \
+   [docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) run --rm -v "$(pwd)":/zap/wrk/:rw \
      -t zaproxy/zap-stable zap-api-scan.py \
      -t https://staging.example.internal/openapi.json \
      -f openapi \
@@ -351,7 +351,7 @@ jobs:
       errorLevel: "High"
 ```
 
-`.[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/[dast-zap](../dast-zap/SKILL.md).yml`:
+`.[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/workflows/[dast-zap](../dast-zap/SKILL.md).yml`:
 ```yaml
 name: [dast-zap](../dast-zap/SKILL.md)
 on:
@@ -361,18 +361,18 @@ on:
 
 jobs:
   baseline:
-    if: [github](../../../ci-cd/github-actions/other/github/SKILL.md).event_name == 'pull_request'
+    if: [github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: ZAP baseline (Automation Framework)
         run: |
-          [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run --rm -v "$(pwd)/.zap:/zap/wrk:rw" \
+          [docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) run --rm -v "$(pwd)/.zap:/zap/wrk:rw" \
             -t zaproxy/zap-stable:2.15.0 zap.sh -cmd \
             -autorun /zap/wrk/baseline-plan.yaml
 
   full-scan-nightly:
-    if: [github](../../../ci-cd/github-actions/other/github/SKILL.md).event_name == 'schedule'
+    if: [github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).event_name == 'schedule'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -381,7 +381,7 @@ jobs:
           DAST_TEST_USER: ${{ secrets.DAST_TEST_USER }}
           DAST_TEST_PASSWORD: ${{ secrets.DAST_TEST_PASSWORD }}
         run: |
-          [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run --rm -v "$(pwd)/.zap:/zap/wrk:rw" \
+          [docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) run --rm -v "$(pwd)/.zap:/zap/wrk:rw" \
             -e DAST_TEST_USER -e DAST_TEST_PASSWORD \
             -t zaproxy/zap-stable:2.15.0 zap.sh -cmd \
             -autorun /zap/wrk/full-scan-plan.yaml
@@ -404,7 +404,7 @@ the finding clears before merge.
 - [dast-integration](../../common/devsecops/SKILL.md)/skills/[dast-integration](../dast-integration/SKILL.md)/SKILL.md) —
   the tool-agnostic DAST concept, environment-isolation rationale, and
   CI cadence pattern this skill goes deep on for ZAP specifically.
-- [secrets-management](../../common/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md) —
+- [secrets-management](../../common/devsecops/SKILL.md)/skills/[secrets-management](../../../DevOps_and_Cloud/cloud/common/security/secrets-management/SKILL.md)/SKILL.md) —
   sourcing the dedicated test credentials used for authenticated
   scanning from a secrets manager instead of inline CI variables.
 - [trivy-vulnerability-scanning](../[trivy-vulnerability-scanning](../../../Security/trivy-[vulnerability-scanning](../../../DevOps_and_Cloud/Observability_and_SecOps/vulnerability-scanning/SKILL.md)/SKILL.md)/SKILL.md) —

@@ -18,16 +18,16 @@ depends_on:
   - monitoring
 ---
 
-# RAG [Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) and Evaluations
+# RAG [Observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) and Evaluations
 
 Run retrieval-augmented generation like a measurable production system, not a black box.
 
 ## When to Use This Skill
 
-- Deploying a RAG system to production and need quality [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+- Deploying a RAG system to production and need quality [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - Setting up automated evaluation pipelines for retrieval and generation
 - Debugging hallucination or relevance regressions
-- Building [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) for RAG-specific golden signals
+- Building [dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) for RAG-specific golden signals
 - Establishing quality gates for RAG pipeline changes
 
 ## Prerequisites
@@ -36,7 +36,7 @@ Run retrieval-augmented generation like a measurable production system, not a bl
 - [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) 3.10+ with evaluation libraries (ragas, langchain, openai)
 - Prometheus endpoint for custom metrics export
 - Benchmark dataset with gold-standard question/answer/source triples
-- [OpenTelemetry](../../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) SDK integrated into the RAG service
+- [OpenTelemetry](../../../../DevOps_and_Cloud/observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) SDK integrated into the RAG service
 
 ## What to Measure
 
@@ -420,7 +420,7 @@ spec:
           restartPolicy: OnFailure
 ```
 
-## [Alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) Strategy
+## [Alerting](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md) Strategy
 
 ```yaml
 # rag-alerts.yaml
@@ -476,7 +476,7 @@ groups:
 - Re-rank retrieved chunks before final generation.
 - Use query rewriting only with strict regression tests.
 
-## [Incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Triage Checklist
+## [Incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Triage Checklist
 
 | Symptom | Check First | Check Second |
 |---------|-------------|--------------|
@@ -501,5 +501,5 @@ groups:
 - [rag-infrastructure](../../../infrastructure/local-ai/[rag-infrastructure](../rag-infrastructure/SKILL.md)/) - Deploy robust RAG backends
 - [agent-observability](../[agent-observability](../../Operations/agent-[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)/) - Instrument requests, traces, and costs
 - [agent-evals](../../../Workflows/evaluation/agent-evals/SKILL.md)/) - Build repeatable eval suites
-- [ai-sre-[incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-response](../[ai-sre-[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response](../../../DevOps_and_Cloud/Observability_and_SecOps/ai-sre-[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)/SKILL.md)/) - [Incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response for quality regressions
-- [opentelemetry](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)/[opentelemetry](../../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)/) - Distributed tracing for RAG pipelines
+- [ai-sre-[incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-response](../[ai-sre-[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response](../../../DevOps_and_Cloud/Observability_and_SecOps/ai-sre-[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)/SKILL.md)/) - [Incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response for quality regressions
+- [opentelemetry](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md)/[opentelemetry](../../../../DevOps_and_Cloud/observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)/) - Distributed tracing for RAG pipelines

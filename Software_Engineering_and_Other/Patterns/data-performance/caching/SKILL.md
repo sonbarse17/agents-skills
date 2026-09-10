@@ -33,7 +33,7 @@ depends_on:
 # Backend Caching
 
 ## Purpose
-Design consistent, production-grade caching layers. Every cache must follow the same conventions for strategy selection, data flow, invalidation, stampede prevention, TTL management, and [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
+Design consistent, production-grade caching layers. Every cache must follow the same conventions for strategy selection, data flow, invalidation, stampede prevention, TTL management, and [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
 
 ## Agent Protocol
 
@@ -69,7 +69,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions.
 - [ ] Stale data tolerance documented
 - [ ] Invalidation strategy defined (TTL and/or event-driven)
 - [ ] Cache stampede prevention in place for high-traffic keys
-- [ ] [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) plan (hit ratio, latency, memory) defined
+- [ ] [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) plan (hit ratio, latency, memory) defined
 
 ## Architecture Decision Trees
 
@@ -576,7 +576,7 @@ Fix: Cache individual entities, compose at read time. Or use short TTL for query
 - Monitor memory fragmentation: `INFO MEMORY`
 - Redis 7.4+ has better memory efficiency with new serialization
 
-### [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Key Metrics
+### [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Key Metrics
 | Metric | Warning | Critical | Action |
 |--------|---------|----------|--------|
 | Hit ratio | <90% | <80% | Review caching strategy |
@@ -601,7 +601,7 @@ Fix: Cache individual entities, compose at read time. Or use short TTL for query
 
 ## References
   - ../../../../Global_References/Software_Engineering_and_Other/cache-invalidation.md — Cache Invalidation
-  - ../../../Global_References/cache-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Cache [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+  - ../../../Global_References/cache-[monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Cache [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
   - ../../../../Global_References/Software_Engineering_and_Other/cache-strategies.md — Cache Strategies
   - ../../../../Global_References/Software_Engineering_and_Other/cache-testing.md — Cache Testing
   - ../../../../Global_References/Software_Engineering_and_Other/cdn-caching.md — CDN Caching

@@ -32,16 +32,16 @@ depends_on:
 # Data Data Lakehouse
 
 ## Purpose
-Design lakehouse architectures that merge data lake flexibility with warehouse reliability. Implement medallion architecture for data quality progression, [Unity](../../Game_Development/unity/SKILL.md) Catalog for governance, Delta Sharing for data collaboration, and [multi-cloud](../../cloud/common/other/multi-cloud/SKILL.md) deployment patterns.
+Design lakehouse architectures that merge data lake flexibility with warehouse reliability. Implement medallion architecture for data quality progression, [Unity](../../Game_Development/unity/SKILL.md) Catalog for governance, Delta Sharing for data collaboration, and [multi-cloud](../../DevOps_and_Cloud/cloud/common/other/multi-cloud/SKILL.md) deployment patterns.
 
 ## Agent Protocol
 
 ### Trigger
-Exact user phrases: "lakehouse", "medallion architecture", "bronze", "silver", "gold", "Databricks", "[Unity](../../Game_Development/unity/SKILL.md) Catalog", "Delta Sharing", "Apache Paimon", "[multi-cloud](../../cloud/common/other/multi-cloud/SKILL.md) lakehouse", "open formats", "lakehouse governance", "data mesh lakehouse".
+Exact user phrases: "lakehouse", "medallion architecture", "bronze", "silver", "gold", "Databricks", "[Unity](../../Game_Development/unity/SKILL.md) Catalog", "Delta Sharing", "Apache Paimon", "[multi-cloud](../../DevOps_and_Cloud/cloud/common/other/multi-cloud/SKILL.md) lakehouse", "open formats", "lakehouse governance", "data mesh lakehouse".
 
 ### Input Context
 Before activating, verify:
-- Cloud provider (AWS, Azure, GCP, [multi-cloud](../../cloud/common/other/multi-cloud/SKILL.md))
+- Cloud provider (AWS, Azure, GCP, [multi-cloud](../../DevOps_and_Cloud/cloud/common/other/multi-cloud/SKILL.md))
 - Lakehouse platform (Databricks, AWS EMR, Azure Synapse, GCP Dataproc)
 - Table format (Delta, Iceberg, Paimon)
 - Data sources volume and types
@@ -73,7 +73,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 - [ ] RBAC and column-level security defined
 - [ ] Delta Sharing setup for cross-team/partner data access
 - [ ] Table format selected with interoperability plan
-- [ ] [Multi-cloud](../../cloud/common/other/multi-cloud/SKILL.md) or cross-region replication strategy
+- [ ] [Multi-cloud](../../DevOps_and_Cloud/cloud/common/other/multi-cloud/SKILL.md) or cross-region replication strategy
 - [ ] Data quality checks at each medallion layer
 - [ ] Platform deployment topology (compute, storage, catalog)
 
@@ -164,7 +164,7 @@ CREATE TABLE paimon.orders (
 
 Paimon bucket count should be a factor of the parallelism. Bucket = max(parallelism / 2, 1). For append-only tables, use no bucket key and higher bucket count for write parallelism.
 
-### Step 5: [Multi-Cloud](../../cloud/common/other/multi-cloud/SKILL.md) Lakehouse
+### Step 5: [Multi-Cloud](../../DevOps_and_Cloud/cloud/common/other/multi-cloud/SKILL.md) Lakehouse
 Single pane of glass across AWS, Azure, GCP. Delta as universal format, [Unity](../../Game_Development/unity/SKILL.md) Catalog as centralized metadata, object store replication (S3 -> ADLS -> GCS).
 
 ```yaml
@@ -224,7 +224,7 @@ LSM flow: MemTable -> flush to L0 -> compaction into sorted L1+ runs. Merge engi
 
 Paimon's LSM compaction is configurable: num-sorted-run-stop-trigger (default 5), num-sorted-run-max-size (default 50), max-compacted-files (default 50). Tune for write-heavy vs read-heavy workloads. Write-heavy: increase stop-trigger, reduce max-compacted-files. Read-heavy: decrease stop-trigger, increase max-compacted-files.
 
-### Step 10: Lakehouse [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+### Step 10: Lakehouse [Monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 Track bronze ingestion lag, silver dedup rate, gold freshness compliance, query latency per engine, storage cost per layer, and [Unity](../../Game_Development/unity/SKILL.md) Catalog access patterns.
 
 ```sql
@@ -281,7 +281,7 @@ Deploy lakehouse
   ├── Already on GCP
   │   ├── Need managed? → Databricks on GCP
   │   └── Prefer native? → Dataproc + Iceberg
-  └── [Multi-cloud](../../cloud/common/other/multi-cloud/SKILL.md) → Databricks + Delta + [Unity](../../Game_Development/unity/SKILL.md) Catalog
+  └── [Multi-cloud](../../DevOps_and_Cloud/cloud/common/other/multi-cloud/SKILL.md) → Databricks + Delta + [Unity](../../Game_Development/unity/SKILL.md) Catalog
 ```
 
 ## Common Pitfalls
@@ -304,15 +304,15 @@ Deploy lakehouse
 ## Best Practices
 
 - Keep bronze in original format with schema-on-read. Silver converts to optimized Parquet.
-- Each medallion transition is a quality gate with [alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md).
+- Each medallion transition is a quality gate with [alerting](../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md).
 - [Unity](../../Game_Development/unity/SKILL.md) Catalog secures at catalog/schema/table/column level. Grant minimum permissions.
 - Delta Sharing recipients get pre-signed URLs valid for 7 days, auto-refreshed.
 - Vacuum with 7-day minimum to preserve time travel capability.
 - Use liquid clustering over manual partitioning for adaptive performance.
 - Run OPTIMIZE on tables after large data loads.
 - Monitor file sizes: target 256MB-1GB per file for optimal read performance.
-- [Multi-cloud](../../cloud/common/other/multi-cloud/SKILL.md) lakehouse requires consistent cloud permissions and network connectivity.
-- Enable [Unity](../../Game_Development/unity/SKILL.md) Catalog system tables for [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and auditing.
+- [Multi-cloud](../../DevOps_and_Cloud/cloud/common/other/multi-cloud/SKILL.md) lakehouse requires consistent cloud permissions and network connectivity.
+- Enable [Unity](../../Game_Development/unity/SKILL.md) Catalog system tables for [monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and auditing.
 - Use Delta Lake change data feed for streaming consumers instead of re-reading full tables.
 - Set bronze retention to match SLA of longest-running pipeline that reads it.
 - Use column mapping with Delta Lake to rename or drop columns without rewriting data.
@@ -327,7 +327,7 @@ Deploy lakehouse
 | Table format | Delta Lake | Parquet + Glue | Delta | Iceberg |
 | Catalog | [Unity](../../Game_Development/unity/SKILL.md) Catalog | AWS Glue | Purview | Hive Metastore / Dataproc |
 | Sharing | Delta Sharing | LF-Tagged | Azure Data Share | BigQuery Analytics Hub |
-| [Multi-cloud](../../cloud/common/other/multi-cloud/SKILL.md) | Yes | No | No | No |
+| [Multi-cloud](../../DevOps_and_Cloud/cloud/common/other/multi-cloud/SKILL.md) | Yes | No | No | No |
 | Streaming | Structured Streaming | Kinesis | Stream Analytics | Dataflow |
 | ML integration | MLflow, Feature Store | SageMaker | Azure ML | Vertex AI |
 | RBAC | Catalog-level | Lake Formation | AAD RBAC | IAM + Dataproc |
@@ -370,7 +370,7 @@ Scalability considerations: Bronze layer scales horizontally with object storage
 | Apache Flink | Streaming engine for Paimon |
 | Trino / Starburst | Federated SQL query engine |
 | dbt | Data transformation, contract enforcement |
-| Soda / Monte Carlo | Data [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) and quality |
+| Soda / Monte Carlo | Data [observability](../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) and quality |
 | Delta Live Tables (DLT) | Declarative ETL pipelines |
 
 ### Lakehouse Query Engine Optimization
@@ -471,7 +471,7 @@ Primary ecosystem?
 │   └── AWS Lake Formation + Iceberg + Athena/EMR
 ├── Google Cloud-native
 │   └── BigLake + Iceberg + BigQuery/Dataproc
-└── [Multi-cloud](../../cloud/common/other/multi-cloud/SKILL.md), avoid vendor lock-in
+└── [Multi-cloud](../../DevOps_and_Cloud/cloud/common/other/multi-cloud/SKILL.md), avoid vendor lock-in
     └── Apache Iceberg (most portable table format)
 ```
 
@@ -501,7 +501,7 @@ Primary ecosystem?
   - ../../Global_References/Data_Engineering/lakehouse-catalog-integration.md — Lakehouse Catalog Integration
   - ../../Global_References/Data_Engineering/lakehouse-ecosystem-tools.md — Lakehouse Ecosystem Tools
   - ../../Global_References/Data_Engineering/lakehouse-format-deep-dive.md — Lakehouse Format Deep Dive
-  - ../../../Global_References/lakehouse-[monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Lakehouse [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+  - ../../../Global_References/lakehouse-[monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Lakehouse [Monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
   - ../../Global_References/Data_Engineering/lakehouse-platform.md — Lakehouse Platform Reference
   - ../../Global_References/Data_Engineering/lakehouse-query-engines.md — Lakehouse Query Engines
   - ../../Global_References/Data_Engineering/medallion-architecture.md — Medallion Architecture Reference
@@ -514,7 +514,7 @@ Lakehouse Architecture Selection
 ├── Medallion architecture (bronze/silver/gold)?
 │   ├── Yes → Delta Lake / Iceberg with medallion layers
 │   └── No → Direct ingestion to gold/pre-aggregated
-├── [Multi-cloud](../../cloud/common/other/multi-cloud/SKILL.md) or hybrid?
+├── [Multi-cloud](../../DevOps_and_Cloud/cloud/common/other/multi-cloud/SKILL.md) or hybrid?
 │   ├── Yes → Iceberg (cloud-agnostic)
 │   ├── AWS-native → Delta Lake on S3
 │   └── Azure-native → Delta Lake on ADLS
@@ -600,7 +600,7 @@ sync:
 - **Z-order clustering**: Apply Z-ordering on frequently filtered columns in silver/gold tables.
 - **File compaction**: Rewrite small files into 256 MB–1 GB targets; trigger after large ingest batches.
 - **Incremental queries**: Use Iceberg incremental reads (`table_changes`) for downstream consumers instead of full scans.
-- **Materialized views**: Create materialized views (Trino, Spark) for gold-level [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md); refresh on schedule.
+- **Materialized views**: Create materialized views (Trino, Spark) for gold-level [dashboards](../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md); refresh on schedule.
 - **Data skipping**: Enable Iceberg/Delta statistics collection for better data skipping in WHERE clauses.
 
 ## Security Considerations
@@ -613,6 +613,6 @@ sync:
 
 ## Handoff
 `[data-data-lake](../../Software_Engineering_and_Other/Databases/analytical/data-lake/SKILL.md)` for underlying table format operations (compaction, vacuum, Z-order)
-`[data-distributed-storage](../../cloud/common/storage/distributed-storage/SKILL.md)` for S3-compatible storage backend configuration
+`[data-distributed-storage](../../DevOps_and_Cloud/cloud/common/storage/distributed-storage/SKILL.md)` for S3-compatible storage backend configuration
 `[data-data-quality](../data-quality/SKILL.md)` for validation rules and data contract enforcement
 

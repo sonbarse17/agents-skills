@@ -167,5 +167,5 @@ When implementing Rails features, provide:
 5. Spec files for models and requests
 6. Brief explanation of architectural decisions
 
-[Documentation](https://jeffallan.[github](../../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/backend/rails-expert/)
+[Documentation](https://jeffallan.[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/backend/rails-expert/)
 

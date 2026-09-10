@@ -87,7 +87,7 @@ This skill provides detailed guidance through progressive disclosure. Load speci
 **When to load**: Setting up development environment
 **Contains**:
 
-- [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) Compose configuration
+- [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) Compose configuration
 - pytest setup and configuration
 - Coverage tool integration
 - Development workflow
@@ -164,5 +164,5 @@ async def test_activity():
 ## Additional References
 
 - [Python](../../../Languages/python/python/SKILL.md) SDK Testing: docs.temporal.io/develop/[python](../../../Languages/python/python/SKILL.md)/testing-suite
-- Testing Patterns: [github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/temporalio/temporal/blob/main/docs/development/testing.md
-- [Python](../../../Languages/python/python/SKILL.md) Samples: [github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/temporalio/samples-[python](../../../Languages/python/python/SKILL.md)
+- Testing Patterns: [github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/temporalio/temporal/blob/main/docs/development/testing.md
+- [Python](../../../Languages/python/python/SKILL.md) Samples: [github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/temporalio/samples-[python](../../../Languages/python/python/SKILL.md)

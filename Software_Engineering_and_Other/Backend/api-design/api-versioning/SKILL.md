@@ -366,7 +366,7 @@ app.use('/api', versionRouter.getRouter());
 
 ## Production Considerations
 
-### Version Adoption [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+### Version Adoption [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - Track active consumers per version via API analytics
 - Alert when version usage drops below migration targets
 - Weekly adoption reports to stakeholders
@@ -403,7 +403,7 @@ SELECT id, data->>'customer_id' AS customer_id,
 FROM orders_canonical;
 ```
 
-### [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Version Routing
+### [Kubernetes](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Version Routing
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -509,7 +509,7 @@ Versioning every single endpoint independently. Version at API level, not endpoi
 - Additive changes within a version are always backward compatible
 - Deprecation period: 12 months minimum for public, 6 for B2B, 3 for internal
 - After sunset, return 410 Gone with migration instructions
-- Log the version used in every request for [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
+- Log the version used in every request for [observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
 - Use consumer-driven contracts to detect breaking changes before production
 
 ## References

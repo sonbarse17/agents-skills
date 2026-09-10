@@ -150,7 +150,7 @@ Layer 4 (Extended): 2-8 hours, run pre-release
 - Risk scoring: lightweight (file-level analysis) vs heavy (ML-based scoring for 10000+ tests)
 - Parallel execution: N-cores speedup, but consider shared resource contention
 - Flaky test re-runs: add 2x execution time for flaky detection. Reduce by quarantining flaky tests
-- Time budget: allocate based on pipeline criticality. [Commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) stage: < 5 min. Merge stage: < 30 min
+- Time budget: allocate based on pipeline criticality. [Commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) stage: < 5 min. Merge stage: < 30 min
 
 ## Regression Test Selection Examples
 
@@ -208,7 +208,7 @@ risk_scoring:
 
 ## CI Integration for Regression Testing
 
-### [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions — Tiered Regression Pipeline
+### [GitHub](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions — Tiered Regression Pipeline
 ```yaml
 name: Regression Tests
 on:
@@ -246,7 +246,7 @@ jobs:
           CI: true
 
   full-regression:
-    if: [github](../../../../ci-cd/github-actions/other/github/SKILL.md).event_name == 'schedule'
+    if: [github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).event_name == 'schedule'
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -259,7 +259,7 @@ jobs:
 ## Regression Testing Anti-Patterns
 
 ### Anti-Pattern: Running Everything Every Time
-Running the complete regression suite on every [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) wastes CI resources and slows feedback. Once a suite exceeds 100 tests, implement test selection. Start with dependency-graph-based selection, add risk scoring as historical data accumulates.
+Running the complete regression suite on every [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) wastes CI resources and slows feedback. Once a suite exceeds 100 tests, implement test selection. Start with dependency-graph-based selection, add risk scoring as historical data accumulates.
 
 ### Anti-Pattern: No Flaky Test Quarantine
 Failing to quarantine flaky tests erodes trust in the entire test suite. Developers start ignoring failures, including real regressions. Quarantine flaky tests within 24 hours. Fix within one sprint or delete the test.
@@ -361,7 +361,7 @@ test_data_principles:
 ## Regression Testing Anti-Patterns (Additional)
 
 ### Anti-Pattern: No Post-Release Validation
-Running regression tests only before release and not [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) production after deployment. The pre-release suite may pass while production has problems due to configuration differences, data volume, or real user behavior. Implement production health checks and canary analysis alongside pre-release regression.
+Running regression tests only before release and not [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) production after deployment. The pre-release suite may pass while production has problems due to configuration differences, data volume, or real user behavior. Implement production health checks and canary analysis alongside pre-release regression.
 
 ### Anti-Pattern: Skipping Security Regression
 Security regression tests are skipped to save time in the deployment pipeline. Security vulnerabilities re-emerge when changes inadvertently reintroduce previously fixed issues. Security regression tests must run on every deployment regardless of change scope.
@@ -371,7 +371,7 @@ Relying on manual testing for regression sign-off. Manual regression is slow, er
 
 ## Rules
 1. Every change must have at least a smoke test pass before regression is considered
-2. Do NOT run full regression on every [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) — select based on risk assessment and time budget
+2. Do NOT run full regression on every [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) — select based on risk assessment and time budget
 3. Flaky tests must be quarantined within 24 hours of detection — no false signals in main suite
 4. Regression suite must complete within the available deployment window. Use prioritization if constrained
 5. Test selection decisions must be documented with risk rationale — especially excluded tests

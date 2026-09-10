@@ -77,7 +77,7 @@ The file follows the [llms.txt specification](https://llmstxt.org/):
 | ❌ Bad | ✅ Good |
 |--------|---------|
 | "Architecture overview" | "System architecture showing how Orleans grains communicate via message passing with at-least-once delivery" |
-| "Getting started guide" | "Prerequisites, local dev setup with [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) Compose, and first API call walkthrough" |
+| "Getting started guide" | "Prerequisites, local dev setup with [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) Compose, and first API call walkthrough" |
 | "The API reference" | "REST endpoints with auth requirements, rate limits, and request/response schemas" |
 
 ## llms-full.txt Format
@@ -119,7 +119,7 @@ Generate three files:
 
 | File | Purpose | Discoverability |
 |------|---------|-----------------|
-| `./llms.txt` | Root discovery file | Standard path per llms.txt spec. [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) MCP `get_file_contents` and `search_code` find this first. |
+| `./llms.txt` | Root discovery file | Standard path per llms.txt spec. [GitHub](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) MCP `get_file_contents` and `search_code` find this first. |
 | `wiki/llms.txt` | Wiki-relative links | For VitePress deployment and wiki-internal navigation. |
 | `wiki/llms-full.txt` | Full inlined content | Comprehensive reference for agents needing all docs in one file. |
 

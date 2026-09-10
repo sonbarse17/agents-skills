@@ -71,7 +71,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 - [ ] Cross-source join strategy documented with cost model
 - [ ] Performance tuning parameters set (memory, concurrency, threads)
 - [ ] Security configured (TLS, auth, RBAC)
-- [ ] [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) dashboard for query performance
+- [ ] [Monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) dashboard for query performance
 - [ ] Resource groups and query queues configured
 
 ### Max Response Length
@@ -96,7 +96,7 @@ Primary requirement?
 │   └── Trino (vanilla)
 ├── Enterprise security, caching, managed service
 │   ├── On-prem / self-managed → Starburst Enterprise
-│   └── [Serverless](../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) [multi-cloud](../../cloud/common/other/multi-cloud/SKILL.md) → Starburst Galaxy
+│   └── [Serverless](../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) [multi-cloud](../../DevOps_and_Cloud/cloud/common/other/multi-cloud/SKILL.md) → Starburst Galaxy
 ├── BI optimization, acceleration, self-service
 │   └── Dremio (Reflections, VDS, lineage)
 ├── Hadoop-native, older ecosystem
@@ -185,7 +185,7 @@ elasticsearch.query-timeout=30s
 ```
 
 #### Connector Security Best Practices
-Credentials stored in secrets manager ([Vault](../../Security/cryptography-secrets/vault/SKILL.md), AWS Secrets Manager, [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) secrets). Never hardcode passwords in property files. Use `${VARIABLE}` substitution for environment variables or encrypted secrets. TLS enabled for all JDBC connections. Read-only access for production connectors wherever possible.
+Credentials stored in secrets manager ([Vault](../../Security/cryptography-secrets/vault/SKILL.md), AWS Secrets Manager, [Kubernetes](../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) secrets). Never hardcode passwords in property files. Use `${VARIABLE}` substitution for environment variables or encrypted secrets. TLS enabled for all JDBC connections. Read-only access for production connectors wherever possible.
 
 ### Step 4: Query Pushdown
 
@@ -376,7 +376,7 @@ access-control.config-file=etc/rules.json
 }
 ```
 
-### Step 8: [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+### Step 8: [Monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 #### Query Performance Metrics
 
@@ -424,7 +424,7 @@ JOIN "s3"."lake"."orders" o ON c.customer_id = o.customer_id;
 ```
 
 #### Starburst Enterprise Features
-Data lake caching: auto-caches hot data from S3/ADLS/GCS to local SSD. Built-in RBAC: table/row/column-level via Ranger. Warp Speed native engine for faster queries. Security: Kerberos, LDAP, OAuth, TLS. Starburst Galaxy offers [serverless](../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) [multi-cloud](../../cloud/common/other/multi-cloud/SKILL.md) managed service. Use Starburst for regulated enterprises needing enterprise security or [multi-cloud](../../cloud/common/other/multi-cloud/SKILL.md) analytics with caching.
+Data lake caching: auto-caches hot data from S3/ADLS/GCS to local SSD. Built-in RBAC: table/row/column-level via Ranger. Warp Speed native engine for faster queries. Security: Kerberos, LDAP, OAuth, TLS. Starburst Galaxy offers [serverless](../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) [multi-cloud](../../DevOps_and_Cloud/cloud/common/other/multi-cloud/SKILL.md) managed service. Use Starburst for regulated enterprises needing enterprise security or [multi-cloud](../../DevOps_and_Cloud/cloud/common/other/multi-cloud/SKILL.md) analytics with caching.
 
 #### Alluxio — Data Virtualization Layer
 Alluxio is a virtual distributed file system that unifies data access across disparate storage. Acts as caching and metadata layer between compute engines and storage backends. Caches hot data on local SSDs/memory for 10-100x faster data access on repeated queries. Supports any storage (S3, ADLS, GCS, HDFS, NFS) and any compute (Spark, Trino, MapReduce, Flink). Namespace service provides a single mounted namespace across storage systems.
@@ -568,7 +568,7 @@ virtual_dataset:
 - **Connection pooling**: Configure Trino data source connection pools; set `maxConnections` per connector.
 - **Query routing**: Route queries to source-optimized clusters (Trino resource groups per data source).
 - **Result caching**: Enable Trino result cache (TTL 5 min) for repeated queries; flush on data refresh.
-- **[Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**: Track per-source query latency, bytes scanned, and error rates in Grafana.
+- **[Monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**: Track per-source query latency, bytes scanned, and error rates in Grafana.
 - **[Capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) planning**: Size coordinator + workers based on concurrent query load (16GB RAM per worker minimum).
 
 ## Anti-Patterns
@@ -577,7 +577,7 @@ virtual_dataset:
 |---|---|---|
 | No predicate pushdown | Full table scan over network | Verify `EXPLAIN` shows source filters |
 | Too many live connections to sources | Source DB connection exhaustion | Use optimized connection pools |
-| No caching for BI [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) | Repeated expensive queries | Cache at virtualization layer |
+| No caching for BI [dashboards](../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) | Repeated expensive queries | Cache at virtualization layer |
 | Ignoring connector version compatibility | Query failures after upgrade | Test connector upgrades in staging |
 | Querying across cloud regions | High egress costs, slow | Co-locate engine with data sources |
 
@@ -598,5 +598,5 @@ virtual_dataset:
 - **TLS**: Enable TLS for all Trino client and interservice connections; mutual TLS for connector auth.
 
 ## Handoff
-`[data-data-platform](../data-platform/SKILL.md)` for Trino cluster deployment on K8s. `[data-data-catalog](../data-catalog/SKILL.md)` for registering engine as data source. `[data-data-observability](../data-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)` for query performance [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md). `data-data-security` for RBAC and TLS setup.
+`[data-data-platform](../data-platform/SKILL.md)` for Trino cluster deployment on K8s. `[data-data-catalog](../data-catalog/SKILL.md)` for registering engine as data source. `[data-data-observability](../data-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)` for query performance [monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md). `data-data-security` for RBAC and TLS setup.
 

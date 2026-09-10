@@ -559,8 +559,8 @@ stty raw -echo; fg
 
 Organizations can detect netcat activity by:
 
-- **Process [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**: Detect nc/ncat process execution
-- **Network [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**: Unusual outbound connections to non-standard ports
+- **Process [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**: Detect nc/ncat process execution
+- **Network [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**: Unusual outbound connections to non-standard ports
 - **Command-Line Auditing**: Monitor for -e flag usage
 - **Traffic Analysis**: Unencrypted shell traffic patterns
 - **File Integrity**: Detect unauthorized netcat binaries
@@ -577,7 +577,7 @@ Enhance defensive posture:
 ## References
 
 - [Ncat Users' Guide](https://nmap.org/ncat/guide/index.html)
-- [GTFOBins: netcat](https://gtfobins.[github](../../../../ci-cd/github-actions/other/github/SKILL.md).io/gtfobins/nc/)
+- [GTFOBins: netcat](https://gtfobins.[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).io/gtfobins/nc/)
 - [MITRE ATT&CK: Command and Scripting Interpreter](https://attack.mitre.org/techniques/T1059/)
 - [PTES: Post Exploitation](http://www.pentest-standard.org/index.php/Post_Exploitation)
-- [Reverse Shell Cheat Sheet](https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md)
+- [Reverse Shell Cheat Sheet](https://[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md)

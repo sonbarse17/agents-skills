@@ -527,7 +527,7 @@ const BLOCKED_CIDRS = [
 ];
 
 const ALLOWED_DOMAINS = [
-  "api.[github](../../../ci-cd/github-actions/other/github/SKILL.md).com",
+  "api.[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com",
   "registry.npmjs.org",
 ];
 
@@ -703,15 +703,15 @@ export function logToolInvocation(entry: Omit<AuditEntry, "id" | "timestamp">): 
 }
 ```
 
-### 9.2 [OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) Integration
+### 9.2 [OpenTelemetry](../../../DevOps_and_Cloud/observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) Integration
 
 ```[typescript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 // src/otelTracing.ts
-import { trace, SpanStatusCode, context, propagation } from "@[opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)/api";
-import { NodeTracerProvider } from "@[opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)/sdk-trace-node";
-import { OTLPTraceExporter } from "@[opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)/exporter-trace-otlp-http";
-import { BatchSpanProcessor } from "@[opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)/sdk-trace-base";
-import { Resource } from "@[opentelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)/resources";
+import { trace, SpanStatusCode, context, propagation } from "@[opentelemetry](../../../DevOps_and_Cloud/observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)/api";
+import { NodeTracerProvider } from "@[opentelemetry](../../../DevOps_and_Cloud/observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)/sdk-trace-node";
+import { OTLPTraceExporter } from "@[opentelemetry](../../../DevOps_and_Cloud/observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)/exporter-trace-otlp-http";
+import { BatchSpanProcessor } from "@[opentelemetry](../../../DevOps_and_Cloud/observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)/sdk-trace-base";
+import { Resource } from "@[opentelemetry](../../../DevOps_and_Cloud/observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)/resources";
 
 const provider = new NodeTracerProvider({
   resource: new Resource({
@@ -759,7 +759,7 @@ export async function traceToolCall<T>(
 
 ## 10. Deployment Hardening
 
-### 10.1 [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Container Configuration
+### 10.1 [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) Container Configuration
 
 ```dockerfile
 # Dockerfile.mcp-server
@@ -797,7 +797,7 @@ EXPOSE 3001
 CMD ["node", "dist/index.js"]
 ```
 
-### 10.2 [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Network Policy
+### 10.2 [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Network Policy
 
 ```yaml
 # k8s/network-policy.yaml
@@ -876,7 +876,7 @@ spec:
 }
 ```
 
-Apply the seccomp profile in your [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) pod spec:
+Apply the seccomp profile in your [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) pod spec:
 
 ```yaml
 # k8s/deployment.yaml (relevant snippet)
@@ -1007,7 +1007,7 @@ describe("Outbound URL Validation", () => {
   }
 
   it("should allow requests to explicitly allowed domains", () => {
-    expect(validateOutboundUrl("https://api.[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/repos").allowed).toBe(true);
+    expect(validateOutboundUrl("https://api.[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/repos").allowed).toBe(true);
     expect(validateOutboundUrl("https://registry.npmjs.org/express").allowed).toBe(true);
   });
 });
@@ -1058,7 +1058,7 @@ Use this checklist when deploying any MCP server to production:
 [ ] Outbound network requests limited to an allowlist (SSRF mitigation)
 [ ] Per-client rate limits and session token budgets enforced
 [ ] Every tool invocation logged with user, params (redacted), and result
-[ ] [OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) tracing integrated for [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
+[ ] [OpenTelemetry](../../../DevOps_and_Cloud/observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) tracing integrated for [observability](../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
 [ ] Container runs as non-root with read-only filesystem
 [ ] Seccomp profile applied to restrict syscalls
 [ ] Network policies restrict pod-to-pod communication

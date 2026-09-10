@@ -40,7 +40,7 @@ User request includes: `vapor`, `vapor backend`, `vapor swift`, `fluent`, `vapor
 - Swift version (5.9+)
 - Vapor version (4.x)
 - Database driver (Fluent — [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md), [MySQL](../../../Databases/relational/mysql/SKILL.md), SQLite, [MongoDB](../../../Databases/nosql/mongodb/SKILL.md))
-- Hosting (Vapor Cloud, [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md), bare metal)
+- Hosting (Vapor Cloud, [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md), bare metal)
 - Features (REST, WebSocket, APNs, Leaf templates)
 
 ### Output Artifact
@@ -83,9 +83,9 @@ mkdir OrderService && cd OrderService
 swift package init --type executable
 
 # Add Vapor and Fluent
-swift package add https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/vapor/vapor
-swift package add https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/vapor/fluent
-swift package add https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/vapor/fluent-postgres-driver
+swift package add https://[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/vapor/vapor
+swift package add https://[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/vapor/fluent
+swift package add https://[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/vapor/fluent-postgres-driver
 ```
 
 ### Step 2: Package.swift
@@ -97,11 +97,11 @@ let package = Package(
   name: "OrderService",
   platforms: [.macOS(.v13)],
   dependencies: [
-    .package(url: "https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/vapor/vapor", from: "4.90.0"),
-    .package(url: "https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/vapor/fluent", from: "4.9.0"),
-    .package(url: "https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/vapor/fluent-postgres-driver", from: "2.8.0"),
-    .package(url: "https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/vapor/leaf", from: "4.3.0"),
-    .package(url: "https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/vapor/jwt", from: "4.3.0"),
+    .package(url: "https://[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/vapor/vapor", from: "4.90.0"),
+    .package(url: "https://[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/vapor/fluent", from: "4.9.0"),
+    .package(url: "https://[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/vapor/fluent-postgres-driver", from: "2.8.0"),
+    .package(url: "https://[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/vapor/leaf", from: "4.3.0"),
+    .package(url: "https://[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/vapor/jwt", from: "4.3.0"),
   ],
   targets: [
     .executableTarget(
@@ -601,7 +601,7 @@ First-party mobile/web app?
 | **APNS** | Apple Push Notification service |
 | **Queues** | Background job processing (Redis, DB) |
 | **Redis** | Caching and session storage |
-| **[Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)** | Containerized deployment |
+| **[Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)** | Containerized deployment |
 | **SwiftLint** | Code style enforcement |
 | **swift-format** | Code formatting |
 

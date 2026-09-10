@@ -25,7 +25,7 @@ Automate security operations for scale and efficiency.
 ## Security Pipeline
 
 ```yaml
-# .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/security.yml
+# .[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/workflows/security.yml
 name: Security Pipeline
 
 on: [push, pull_request]

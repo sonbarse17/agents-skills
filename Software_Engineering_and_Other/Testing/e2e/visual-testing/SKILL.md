@@ -41,7 +41,7 @@ Exact user phrases: "visual testing", "visual regression", "screenshot diff", "P
 Before activating, verify:
 - Existing test framework (Playwright, Cypress, Storybook)
 - Deployment frequency and team size
-- CI platform ([GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, etc.)
+- CI platform ([GitHub](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, etc.)
 - Design system maturity (ad-hoc, partial, comprehensive)
 
 ### Output Artifact
@@ -259,7 +259,7 @@ When UI changes are intentionally made, developers must update baselines via the
 | Run on PR only | Running visual tests on every push wastes CI budget | Run on `pull_request` event, not `push` |
 | Cache dependencies | Speeds up CI visual test runs | Cache node_modules, Playwright browsers, Storybook build output |
 | Preview deployments | Visual tests against live preview environments for accuracy | Deploy preview on Vercel/Netlify, run visual tests against preview URL |
-| Review diffs in context | Cloud [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) with side-by-side view reduce decision time | Use Percy/Chromatic UI review workflows, not raw diff images |
+| Review diffs in context | Cloud [dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) with side-by-side view reduce decision time | Use Percy/Chromatic UI review workflows, not raw diff images |
 
 ## Compared With
 
@@ -270,8 +270,8 @@ When UI changes are intentionally made, developers must update baselines via the
 | Applitools (cloud SaaS) | AI-powered matching, Ultrafast Grid, layout matching modes | Expensive, complex setup | Enterprise cross-browser visual testing |
 | Playwright built-in | Free, no external dependency, fast | Manual review, no cloud dashboard, local baseline storage | Teams already using Playwright, no budget |
 | Cypress screenshot diff | Free, Cypress-native | Manual review, no cloud dashboard | Teams already using Cypress exclusively |
-| BackstopJS (open source) | Free, configurable, [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) support | Manual review, HTML report only, no cloud | Open source projects, no budget |
-| Loki (open source) | [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)-based, Storybook integration | [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) dependency, CLI only | Component library visual testing |
+| BackstopJS (open source) | Free, configurable, [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) support | Manual review, HTML report only, no cloud | Open source projects, no budget |
+| Loki (open source) | [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)-based, Storybook integration | [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) dependency, CLI only | Component library visual testing |
 | Happo (cloud SaaS) | Animation GIF diff, cross-browser | Paid, smaller ecosystem | Animation-heavy applications |
 
 For most projects: use Percy (Playwright/Cypress) or Chromatic (Storybook). For advanced needs: Applitools. For zero budget: Playwright built-in screenshots. For animation testing: Happo.
@@ -320,7 +320,7 @@ Stringent thresholds (0%) catch all visual changes but increase false positives 
 
 ### Cloud Visual Testing Services
 
-- **Percy** (BrowserStack): `@percy/cli`, `@percy/playwright`, `@percy/cypress`, `@percy/storybook`. PR integration via [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md)/GitLab/Bitbucket apps. Parallel builds via CLI flags. Per-component diff thresholds via Percy config.
+- **Percy** (BrowserStack): `@percy/cli`, `@percy/playwright`, `@percy/cypress`, `@percy/storybook`. PR integration via [GitHub](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/GitLab/Bitbucket apps. Parallel builds via CLI flags. Per-component diff thresholds via Percy config.
 - **Chromatic** (Chroma): `chromatic` CLI, Storybook addon. Git-native review workflow. Auto-accept changes on main branch. TurboSnap for smart snapshot filtering. Zero-config setup for Storybook projects.
 - **Applitools Eyes**: `@applitools/eyes-playwright`, `@applitools/eyes-cypress`, `@applitools/eyes-storybook`. Ultrafast Grid for parallel cross-browser rendering. AI-powered visual matching with layout, strict, and content match levels.
 - **Happo**: `happo-plugin-playwright`, `happo-plugin-cypress`, `happo-plugin-storybook`. Cross-browser and cross-platform snapshots. Animated GIF diff for motion testing.
@@ -329,15 +329,15 @@ Stringent thresholds (0%) catch all visual changes but increase false positives 
 
 - **Playwright**: Built-in `toHaveScreenshot` with `maxDiffPixelRatio` and `threshold` options. Baseline storage in repository. No external dependency. Use with `@playwright/test` for zero-cost visual testing.
 - **Cypress**: `cy.screenshot()` with `cy.task` for diff comparison. No built-in visual testing -- requires community plugins or custom setup.
-- **BackstopJS**: CLI tool with [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) support. HTML report with side-by-side diff view. Supports Playwright and Puppeteer engines. JSON configuration for scenarios and viewports.
-- **Loki**: [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)-based Storybook visual testing. CLI commands for update, test, and approve. Pixelmatch-based comparison.
+- **BackstopJS**: CLI tool with [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) support. HTML report with side-by-side diff view. Supports Playwright and Puppeteer engines. JSON configuration for scenarios and viewports.
+- **Loki**: [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)-based Storybook visual testing. CLI commands for update, test, and approve. Pixelmatch-based comparison.
 - **Pixelmatch**: Low-level pixel comparison library. Used internally by many visual testing tools. Accepts raw PNG buffers, returns mismatched pixel count and diff image.
 
 ### Related Testing Tools
 
 - **Storybook**: Component development environment. Chromatic integration for automatic snapshot capture. Visual testing addon for in-Storybook diff review.
-- **Argos CI**: Open-source visual testing with [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) integration. Git-lfs for baseline image storage. Self-hostable.
-- **Lost Pixel**: Open-source visual regression testing. Storybook and page-based testing. [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Action integration. Visual diff report with zoom and highlight.
+- **Argos CI**: Open-source visual testing with [GitHub](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) integration. Git-lfs for baseline image storage. Self-hostable.
+- **Lost Pixel**: Open-source visual regression testing. Storybook and page-based testing. [GitHub](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Action integration. Visual diff report with zoom and highlight.
 
 ## Visual Testing Examples
 
@@ -424,15 +424,15 @@ jobs:
         run: npx percy exec -- npx playwright test --grep @visual
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
-          PERCY_BRANCH: ${{ [github](../../../../ci-cd/github-actions/other/github/SKILL.md).head_ref }}
-          PERCY_TARGET_BRANCH: ${{ [github](../../../../ci-cd/github-actions/other/github/SKILL.md).base_ref }}
+          PERCY_BRANCH: ${{ [github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).head_ref }}
+          PERCY_TARGET_BRANCH: ${{ [github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).base_ref }}
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: visual-diffs
           path: __screenshots__/
   chromatic:
-    if: [github](../../../../ci-cd/github-actions/other/github/SKILL.md).event_name == 'pull_request'
+    if: [github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -557,7 +557,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
+### [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -592,7 +592,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing ([OpenTelemetry](../../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../../DevOps_and_Cloud/observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -609,7 +609,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) signing
+- Signed commits: GPG or SSH [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
@@ -626,6 +626,6 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - Fail securely — errors default to safe behavior.
 - Log security-relevant events for [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
+- Design for [observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

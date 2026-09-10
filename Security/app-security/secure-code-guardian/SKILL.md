@@ -206,5 +206,5 @@ When implementing security features, provide:
 
 OWASP Top 10, bcrypt/argon2, JWT, OAuth 2.0, OIDC, CSP, CORS, rate limiting, input validation, output encoding, encryption (AES, RSA), TLS, security headers
 
-[Documentation](https://jeffallan.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/security/secure-code-guardian/)
+[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/security/secure-code-guardian/)
 

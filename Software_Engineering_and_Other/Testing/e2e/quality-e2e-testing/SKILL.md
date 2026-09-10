@@ -121,7 +121,7 @@ Start -> Mock -> Test -> Success -> End
 
 ## Reference Guides
 - [Playwright Mocking](../../../../Global_References/Software_Engineering_and_Other/playwright-mocking.md)
-- [Chaos Engineering](../../../../containers-orchestration/common/other/chaos-engineering/SKILL.md).md)
+- [Chaos Engineering](../../../../DevOps_and_Cloud/containers-orchestration/common/other/chaos-engineering/SKILL.md).md)
 - [Network Throttling](../../../../Global_References/Software_Engineering_and_Other/network-throttling.md)
 - [Flaky Test Mitigation](../../../../Global_References/Software_Engineering_and_Other/flaky-test-mitigation.md)
 - [Visual Regression](../../../../Global_References/Software_Engineering_and_Other/visual-regression.md)

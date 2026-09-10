@@ -107,7 +107,7 @@ Who writes the plugins?
   │   ├── IPC for communication
   │   └── Risk: Performance overhead
   └── Third-party (untrusted) → Container or sandbox isolation
-      ├── [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md), WASM, or sandboxed environment
+      ├── [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md), WASM, or sandboxed environment
       ├── Resource limits enforced at OS level
       └── Highest security, highest overhead
 ```
@@ -122,7 +122,7 @@ extension-points:
   notification.channel:     Custom notification channel (SMS, push, Slack)
   pipeline.step:            Custom build/deploy pipeline step
   storage.backend:          Custom storage backend (S3, GCS, local)
-  exporter.metric:          Custom metric exporter (Prometheus, [Datadog](../../../../observability-monitoring-logging/datadog/other/datadog/SKILL.md))
+  exporter.metric:          Custom metric exporter (Prometheus, [Datadog](../../../../DevOps_and_Cloud/observability-monitoring-logging/datadog/other/datadog/SKILL.md))
   payment.gateway:          Custom payment gateway (Stripe, PayPal, Braintree)
 ```
 
@@ -488,7 +488,7 @@ class PluginResourceLimiter {
 |----------|-----------|--------|
 | Same process (JS/[Python](../../../Languages/python/python/SKILL.md)) | 10-100ms per plugin | Module code in memory |
 | Subprocess (Node fork) | 50-200ms per plugin | ~10-30MB per instance |
-| Container ([Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)) | 1-5s per plugin | 50-200MB per container |
+| Container ([Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)) | 1-5s per plugin | 50-200MB per container |
 
 ### Runtime Overhead
 - Same process: <1μs per plugin call (direct function call)
@@ -516,6 +516,6 @@ class PluginResourceLimiter {
   - ../../../../Global_References/Software_Engineering_and_Other/plugin-versioning.md — Plugin API Versioning
 ## Handoff
 No artifact produced unless requested.
-Next skill: [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) — add plugin lifecycle traces to the telemetry pipeline.
+Next skill: [observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) — add plugin lifecycle traces to the telemetry pipeline.
 Carry forward: extension points, SPI contracts, plugin manifest format.
 

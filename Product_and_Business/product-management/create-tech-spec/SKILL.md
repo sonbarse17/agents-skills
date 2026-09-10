@@ -246,7 +246,7 @@ DROP TABLE IF EXISTS {entity};
 | P95 latency | <200ms | Distributed tracing | 100 req/s steady |
 | P99 latency | <500ms | Distributed tracing | 100 req/s steady |
 | Throughput | 1000 req/s | Load testing | Peak traffic |
-| Availability | 99.95% | Uptime [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) | 30d rolling window |
+| Availability | 99.95% | Uptime [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) | 30d rolling window |
 
 **Performance target categories**:
 - **Latency**: P50, P95, P99 response times
@@ -311,7 +311,7 @@ Schema changes without migration plans are dangerous. Schema changes without rol
 "Fast" and "responsive" are not performance targets. Every target must be numeric and measurable. Anti-pattern signal: qualitative performance descriptions.
 
 ### Anti-Pattern 5: Ignoring Non-Functional Requirements
-The spec focuses only on functional behavior and ignores security, [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md), and operability. Anti-pattern signal: no auth section, no logging section, no [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) section.
+The spec focuses only on functional behavior and ignores security, [observability](../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md), and operability. Anti-pattern signal: no auth section, no logging section, no [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) section.
 
 ### Anti-Pattern 6: Spec Without Context
 The spec describes the solution without explaining the problem it solves. A new team member should understand WHY this feature exists from reading the context section. Anti-pattern signal: no context section or copy-pasted PRD.
@@ -462,9 +462,9 @@ How many instances are in production?
 
 ## Templates
 
-### [Observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) Specification Template
+### [Observability](../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) Specification Template
 ```markdown
-## [Observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
+## [Observability](../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
 
 ### Logging
 | Event | Log Level | Fields | PII |
@@ -616,7 +616,7 @@ The spec describes one solution as if it's the only option. No mention of altern
 - [ ] Error handling defined for every endpoint
 - [ ] Testing plan covers unit, integration, E2E scope
 - [ ] Security considerations documented
-- [ ] [Observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) (logging, metrics, tracing) defined
+- [ ] [Observability](../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) (logging, metrics, tracing) defined
 - [ ] Alternatives considered for non-trivial decisions
 - [ ] Spec is implementable as described (no open questions)
 - [ ] Spec size is proportional to feature complexity

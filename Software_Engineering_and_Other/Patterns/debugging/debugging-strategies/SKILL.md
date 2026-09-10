@@ -280,7 +280,7 @@ stats.print_stats(10)  # Top 10 slowest
 
 ```go
 // Delve debugger
-// Install: go install [github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/go-delve/delve/cmd/dlv@latest
+// Install: go install [github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/go-delve/delve/cmd/dlv@latest
 // Run: dlv debug main.go
 
 import (
@@ -329,10 +329,10 @@ defer pprof.StopCPUProfile()
 ```bash
 # Git bisect for finding regression
 git bisect start
-git bisect bad                    # Current [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) is bad
+git bisect bad                    # Current [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) is bad
 git bisect good v1.0.0            # v1.0.0 was good
 
-# Git checks out middle [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)
+# Git checks out middle [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md)
 # Test it, then:
 git bisect good   # if it works
 git bisect bad    # if it's broken
@@ -481,10 +481,10 @@ afterEach(() => {
 ## Production Debugging
 
 1. **Gather evidence**
-   - Error tracking ([Sentry](../../../../observability-monitoring-logging/sentry/other/sentry/SKILL.md), Bugsnag)
+   - Error tracking ([Sentry](../../../../DevOps_and_Cloud/observability-monitoring-logging/sentry/other/sentry/SKILL.md), Bugsnag)
    - Application logs
    - User reports
-   - Metrics/[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+   - Metrics/[monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 2. **Reproduce locally**
    - Use production data (anonymized)
@@ -494,7 +494,7 @@ afterEach(() => {
 3. **Safe investigation**
    - Don't change production
    - Use feature flags
-   - Add [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)/logging
+   - Add [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)/logging
    - Test fixes in staging
 ```
 

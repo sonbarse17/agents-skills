@@ -159,7 +159,7 @@ fixes it forward, rather than editing history.
 ```yaml
 # Example CI step (tool-neutral outline)
 - name: Start test database
-  run: [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) run -d --name pg-test -e POSTGRES_PASSWORD=<TEST_DB_PASSWORD> -p 5432:5432 postgres:16
+  run: [docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) run -d --name pg-test -e POSTGRES_PASSWORD=<TEST_DB_PASSWORD> -p 5432:5432 postgres:16
 
 - name: Apply migrations from clean state
   run: flyway -url=jdbc:[postgresql](../../relational/postgresql/SKILL.md)://localhost:5432/testdb -user=postgres migrate

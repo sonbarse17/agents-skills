@@ -100,7 +100,7 @@ what the script changed.
 
 A script accumulates flags, retries, and edge-case handling until it's effectively an application
 without the tests, ownership, or deployment story of one. That's the point to graduate it — into a
-proper CLI, a scheduled job with [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), or a service — rather than adding the twentieth flag.
+proper CLI, a scheduled job with [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), or a service — rather than adding the twentieth flag.
 
 - **Growing beyond a few hundred lines, or beyond one owner's head**, is a graduation signal.
 - **Needing its own test suite** to trust changes means it needs the structure a script directory

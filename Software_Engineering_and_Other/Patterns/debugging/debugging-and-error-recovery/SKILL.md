@@ -112,10 +112,10 @@ Which layer is failing?
 
 **Use bisection for regression bugs:**
 ```bash
-# Find which [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) introduced the bug
+# Find which [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) introduced the bug
 git bisect start
-git bisect bad                    # Current [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) is broken
-git bisect good <known-good-sha> # This [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) worked
+git bisect bad                    # Current [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) is broken
+git bisect good <known-good-sha> # This [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) worked
 # Git will checkout midpoint commits; run your test at each
 git bisect run npm test -- --grep "failing test"  # substitute the repository's focused-test command
 ```
@@ -258,7 +258,7 @@ Add logging only when it helps. Remove it when done.
 
 **When to add instrumentation:**
 - You can't localize the failure to a specific line
-- The issue is intermittent and needs [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+- The issue is intermittent and needs [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - The fix involves multiple interacting components
 
 **When to remove it:**
@@ -278,7 +278,7 @@ Add logging only when it helps. Remove it when done.
 | "I know what the bug is, I'll just fix it" | You might be right 70% of the time. The other 30% costs hours. Reproduce first. |
 | "The failing test is probably wrong" | Verify that assumption. If the test is wrong, fix the test. Don't just skip it. |
 | "It works on my machine" | Environments differ. Check CI, check config, check dependencies. |
-| "I'll fix it in the next [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)" | Fix it now. The next [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) will introduce new bugs on top of this one. |
+| "I'll fix it in the next [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md)" | Fix it now. The next [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) will introduce new bugs on top of this one. |
 | "This is a flaky test, ignore it" | Flaky tests mask real bugs. Fix the flakiness or understand why it's intermittent. |
 
 ## Treating Error Output as Untrusted Data

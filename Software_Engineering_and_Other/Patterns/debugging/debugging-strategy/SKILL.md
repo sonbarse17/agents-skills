@@ -110,7 +110,7 @@ reproduction_steps:
   environment: "Node.js 20, macOS 14.5, [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md) 16"
   prerequisites:
     - "npm install"
-    - "[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) compose up -d db"
+    - "[docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) compose up -d db"
   steps:
     - "Run: npm run dev"
     - "Navigate to /settings"
@@ -127,7 +127,7 @@ If not reproducible:
 - Check data differences (production data may trigger edge case)
 - Check timing (race condition, async timing)
 - Add extensive logging
-- Use session replay tools (FullStory, LogRocket, [Sentry](../../../../observability-monitoring-logging/sentry/other/sentry/SKILL.md))
+- Use session replay tools (FullStory, LogRocket, [Sentry](../../../../DevOps_and_Cloud/observability-monitoring-logging/sentry/other/sentry/SKILL.md))
 
 ### Step 2: Gather Data
 
@@ -137,15 +137,15 @@ If not reproducible:
 
 # Binary search commits (git bisect)
 git bisect start
-git bisect bad          # Current [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) is broken
+git bisect bad          # Current [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) is broken
 git bisect good v1.0.0  # Last known good
 # Git checks out the midpoint; test it:
 npm test
 git bisect good         # or git bisect bad
-# Repeat until [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) identified
+# Repeat until [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) identified
 
 # Log analysis
-[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) logs -l app=myapp --tail=100 --since=10m > logs.txt
+[kubectl](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubectl/SKILL.md) logs -l app=myapp --tail=100 --since=10m > logs.txt
 # Look for: error, exception, fatal, timeout, 500, stack trace, correlation ID
 
 # Thread dump analysis (Java)
@@ -264,11 +264,11 @@ fix:
 |----------|-----------|
 | Reproduce first, always | Without reproduction, you can't verify the fix |
 | One change at a time | Multiple changes = multiple unknowns |
-| Use git bisect for regressions | Fastest way to find the breaking [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) |
+| Use git bisect for regressions | Fastest way to find the breaking [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) |
 | Write the regression test first | Test-driven debugging confirms the fix |
 | Check assumptions about data | Null, empty, malformed data causes most bugs |
 | Read the error message completely | Often tells you exactly what's wrong |
-| Simplify the environment | [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md), fresh checkout, minimal config |
+| Simplify the environment | [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md), fresh checkout, minimal config |
 | Add logging at each decision point | Trace the execution path in production |
 | Use a debugger (not print statements) | Watch variables, step through execution |
 | Document root cause in the fix | git blame shows why the fix exists |
@@ -303,8 +303,8 @@ kill -USR2 <pid>  # Generates heap snapshot
 techniques:
   - Feature flags to enable debug logging remotely
   - Structured logging (JSON) to centralized log system
-  - Distributed tracing ([OpenTelemetry](../../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
-  - Crash reporting ([Sentry](../../../../observability-monitoring-logging/sentry/other/sentry/SKILL.md), Bugsnag, AppSignal)
+  - Distributed tracing ([OpenTelemetry](../../../../DevOps_and_Cloud/observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
+  - Crash reporting ([Sentry](../../../../DevOps_and_Cloud/observability-monitoring-logging/sentry/other/sentry/SKILL.md), Bugsnag, AppSignal)
   - Session replay (FullStory, LogRocket, Hotjar)
   - Health check endpoints (/health, /debug/vars)
   - Metrics-based debugging (Grafana dashboard per service)
@@ -314,9 +314,9 @@ techniques:
   - ../../../../Global_References/Software_Engineering_and_Other/debugging-strategy-advanced.md — Debugging Strategy Advanced Topics
   - ../../../../Global_References/Software_Engineering_and_Other/debugging-strategy-fundamentals.md — Debugging Strategy Fundamentals
   - references/debugging-tools.md — Debugging Tools Reference
-  - references/[root-cause-analysis](../../../../observability-monitoring-logging/common/root-cause-analysis/root-cause-analysis/SKILL.md).md — Root Cause Analysis Reference
+  - references/[root-cause-analysis](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/root-cause-analysis/root-cause-analysis/SKILL.md).md — Root Cause Analysis Reference
 ## Handoff
-Hand off to `[dev-loop-performance-profiler](../../../Backend/patterns/performance-profiler/SKILL.md)` if the bug is performance-related. Hand off to `dev-loop-[code-review](../../../../ci-cd/common/other/code-review/SKILL.md)` for security-related bugs.
+Hand off to `[dev-loop-performance-profiler](../../../Backend/patterns/performance-profiler/SKILL.md)` if the bug is performance-related. Hand off to `dev-loop-[code-review](../../../../DevOps_and_Cloud/ci-cd/common/other/code-review/SKILL.md)` for security-related bugs.
 
 ## Implementation Patterns
 
@@ -497,7 +497,7 @@ What language/platform?
 │
 ├── [Python](../../../Languages/python/python/SKILL.md)
 │   ├── Local → pdb / ipdb / breakpoint()
-│   └── Production → traceback + structured logging + [Sentry](../../../../observability-monitoring-logging/sentry/other/sentry/SKILL.md)
+│   └── Production → traceback + structured logging + [Sentry](../../../../DevOps_and_Cloud/observability-monitoring-logging/sentry/other/sentry/SKILL.md)
 │
 ├── Java / JVM
 │   ├── Local → IntelliJ debugger / JDB / VisualVM

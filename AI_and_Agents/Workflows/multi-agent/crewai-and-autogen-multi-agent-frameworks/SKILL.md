@@ -87,7 +87,7 @@ all" justification, which lives in
   versions; confirm the current package name and API surface before
   starting a new project) plus an LLM config dict per agent.
 - For AutoGen's `UserProxyAgent` with code execution enabled: a sandboxed
-  execution environment ([Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) container or restricted subprocess) — never
+  execution environment ([Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) container or restricted subprocess) — never
   enable `code_execution_config` against an unsandboxed host process for
   agent-generated code you have not reviewed.
 - A concrete task decomposition already justified via
@@ -256,12 +256,12 @@ all" justification, which lives in
   fixed-role guidance in
   [multi-agent-orchestration](../[multi-agent-orchestration](../multi-agent-orchestration/SKILL.md)/SKILL.md).
 - Never enable AutoGen code execution against a real filesystem, network,
-  or credential set without [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) (or an equivalent) sandbox — this is a
+  or credential set without [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) (or an equivalent) sandbox — this is a
   destructive-action risk, not a convenience trade-off to skip under time
   pressure.
 - Use a cheaper/faster model for narrowly-scoped worker roles (a
   researcher summarizing one document) and reserve the strongest available
-  model for planning/manager roles, the same [cost-optimization](../../../../cloud/common/cost/cost-optimization/SKILL.md) principle as
+  model for planning/manager roles, the same [cost-optimization](../../../../DevOps_and_Cloud/cloud/common/cost/cost-optimization/SKILL.md) principle as
   [llm-cost-and-latency-optimization](../../../Models_and_FineTuning/llm-platform/llm-cost-and-latency-optimization/SKILL.md)/SKILL.md).
 - Re-evaluate whether a CrewAI/AutoGen crew could be replaced by a single
   well-scoped agent periodically — both frameworks make it easy to declare
@@ -301,9 +301,9 @@ all" justification, which lives in
   `human_input_mode="NEVER"` executes a destructive shell command (e.g.
   deleting files) generated in response to a misleading or adversarial
   prompt.
-  **Fix:** This is a real [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), not a tooling quirk — code execution
+  **Fix:** This is a real [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md), not a tooling quirk — code execution
   with no human checkpoint should only ever run inside a disposable,
-  network-isolated sandbox ([Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) with no mounted credentials or
+  network-isolated sandbox ([Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) with no mounted credentials or
   production filesystem access); if that constraint can't be met, set
   `human_input_mode="ALWAYS"` or `"TERMINATE"` so a human reviews commands
   before they run.
@@ -336,7 +336,7 @@ pr_agent = Agent(
 )
 
 incident_agent = Agent(
-    role="[Incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Reporter",
+    role="[Incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Reporter",
     goal="Summarize currently open incidents",
     backstory="You report only open incidents with severity and age.",
     tools=[list_open_incidents_tool],
@@ -345,7 +345,7 @@ incident_agent = Agent(
 
 digest_writer = Agent(
     role="Digest Editor",
-    goal="Combine PR and [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) summaries into one Markdown digest",
+    goal="Combine PR and [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) summaries into one Markdown digest",
     backstory="You never invent content not present in the inputs you're given.",
     allow_delegation=False,
 )
@@ -353,7 +353,7 @@ digest_writer = Agent(
 pr_task = Task(description="List merged PRs from the last 7 days", expected_output="Bullet list with links", agent=pr_agent)
 incident_task = Task(description="List currently open incidents", expected_output="Bullet list with severity and age", agent=incident_agent)
 digest_task = Task(
-    description="Combine the PR and [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) summaries into one weekly digest",
+    description="Combine the PR and [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) summaries into one weekly digest",
     expected_output="A Markdown document with a PRs section and an Incidents section",
     agent=digest_writer,
     context=[pr_task, incident_task],

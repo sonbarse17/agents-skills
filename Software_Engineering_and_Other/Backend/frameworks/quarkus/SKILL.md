@@ -547,7 +547,7 @@ Container deployment with cold-start requirements?
 | **Hibernate Reactive** | Reactive database access |
 | **Testcontainers** | Integration test containers |
 | **GraalVM** | Native image compilation |
-| **Container-first [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)** | Optimized container images |
+| **Container-first [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)** | Optimized container images |
 
 ## Rules
 

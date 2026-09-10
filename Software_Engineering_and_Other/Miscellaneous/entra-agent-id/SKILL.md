@@ -33,7 +33,7 @@ Create and manage OAuth2-capable identities for AI agents using Microsoft Graph 
 
 ## Before You Start
 
-Search `[microsoft-docs](../../../cloud/azure/other/microsoft-docs/SKILL.md)` MCP for the latest Agent ID documentation:
+Search `[microsoft-docs](../../../DevOps_and_Cloud/cloud/azure/other/microsoft-docs/SKILL.md)` MCP for the latest Agent ID documentation:
 - Query: "Microsoft Entra agent identity setup"
 - Verify: API parameters match current preview behavior
 
@@ -256,7 +256,7 @@ requests.delete(f"{GRAPH}/applications/{blueprint_obj_id}", headers=headers)
 |------|----------|
 | [../../../Global_References/Software_Engineering_and_Other/oauth2-token-flow.md](../../../Global_References/Software_Engineering_and_Other/oauth2-token-flow.md) | Production (Managed Identity + WIF) and local dev (client secret) token flows |
 | [../../../Global_References/Software_Engineering_and_Other/known-limitations.md](../../../Global_References/Software_Engineering_and_Other/known-limitations.md) | 29 known issues organized by category (from official preview known-issues page) |
-| [../../../Global_References/Software_Engineering_and_Other/sdk-sidecar.md](../../../Global_References/Software_Engineering_and_Other/sdk-sidecar.md) | Microsoft Entra SDK for AgentID — endpoints, 3P agent patterns, [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)/K8s deployment, security |
+| [../../../Global_References/Software_Engineering_and_Other/sdk-sidecar.md](../../../Global_References/Software_Engineering_and_Other/sdk-sidecar.md) | Microsoft Entra SDK for AgentID — endpoints, 3P agent patterns, [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)/K8s deployment, security |
 
 ### External Links
 

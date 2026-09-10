@@ -318,4 +318,4 @@ tcp-keepalive 60
 - [llm-cost-optimization](../[llm-cost-optimization](../llm-[cost-optimization](../../../DevOps_and_Cloud/Cloud_Providers/cost-optimization/SKILL.md)/SKILL.md)/) - Full cost strategy
 - [llm-gateway](../../../infrastructure/networking/[llm-gateway](../llm-gateway/SKILL.md)/) - Gateway-level caching
 - [vector-database-ops](../../../Infrastructure/vector-search/vector-database-ops/SKILL.md)/) - Qdrant setup
-- [agent-observability](../[agent-observability](../../Operations/agent-[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)/) - Cache metrics [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)
+- [agent-observability](../[agent-observability](../../Operations/agent-[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)/) - Cache metrics [dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)

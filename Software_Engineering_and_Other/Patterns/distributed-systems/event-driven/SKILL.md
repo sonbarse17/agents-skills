@@ -165,7 +165,7 @@ Producer -> Exchange -> Queue -> Consumer
 
 - Retry: 3 attempts with exponential backoff (1s, 4s, 16s).
 - After 3 failures: move to DLQ with original event + error details.
-- DLQ [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md): alert if DLQ contains more than 10 messages.
+- DLQ [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md): alert if DLQ contains more than 10 messages.
 
 ### Step 6: Saga Pattern
 ```
@@ -371,7 +371,7 @@ class RetryableConsumer {
 
 ## Production Considerations
 
-### [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Events
+### [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Events
 ```[typescript](../../../Frontend/common/typescript/SKILL.md)
 interface EventMetrics {
   produced: number;
@@ -418,7 +418,7 @@ metrics.histogram('events.latency_ms', latency, { eventType });
   - ../../../../Global_References/Software_Engineering_and_Other/dead-letter-queue.md — Dead Letter Queue
   - ../../../../Global_References/Software_Engineering_and_Other/event-driven-fundamentals.md — Event-Driven Fundamentals
   - ../../../../Global_References/Software_Engineering_and_Other/event-driven-advanced.md — Event-Driven Advanced Patterns
-  - ../../../Global_References/event-driven-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Event-Driven [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+  - ../../../Global_References/event-driven-[monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Event-Driven [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
   - ../../../../Global_References/Software_Engineering_and_Other/event-driven-testing.md — Event-Driven Testing
   - ../../../../Global_References/Software_Engineering_and_Other/event-governance.md — Event Governance
   - ../../../../Global_References/Software_Engineering_and_Other/event-notification-patterns.md — Event Notification Patterns
@@ -481,7 +481,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
+### [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -516,7 +516,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing ([OpenTelemetry](../../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../../DevOps_and_Cloud/observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -533,7 +533,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) signing
+- Signed commits: GPG or SSH [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
@@ -550,6 +550,6 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - Fail securely — errors default to safe behavior.
 - Log security-relevant events for [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
+- Design for [observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

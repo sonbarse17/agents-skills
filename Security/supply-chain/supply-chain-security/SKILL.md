@@ -44,7 +44,7 @@ language-native tooling), not as a periodic manual exercise that's stale the mom
 produced.
 
 - **Store the SBOM alongside the artifact**, indexed by build ID, so it's queryable months
-  later during an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
+  later during an [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 - **Diff SBOMs between releases** to catch dependency changes that snuck in without review.
 
 **Done when:** every artifact in the registry has a corresponding SBOM you can query by package
@@ -67,7 +67,7 @@ FROM node:20.11.1-bookworm-slim@sha256:abc123...
 RUN npm ci   # honors package-lock.json exactly
 ```
 
-**Done when:** a build run twice from the same [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) produces byte-identical dependency
+**Done when:** a build run twice from the same [commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) produces byte-identical dependency
 versions.
 
 ## 3. Capture build provenance, aim for SLSA
@@ -79,14 +79,14 @@ that's non-forgeable by the build's own operator. Most teams don't need the top 
 immediately, but every level up removes a category of forgeable trust.
 
 **Done when:** you can produce a signed provenance statement linking a running artifact back to
-the exact source [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) and build system that made it.
+the exact source [commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) and build system that made it.
 
 ## 4. Sign every artifact you ship
 
 An unsigned artifact is indistinguishable from a tampered one once it leaves the build system.
 Sign container images, binaries, and packages (cosign/sigstore or equivalent) as a mandatory
 build step, using keys or an identity-based signing flow the build system controls — not a
-shared long-lived key sitting in a laptop. See `[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)` for how that signing key
+shared long-lived key sitting in a laptop. See `[secrets-management](../../../DevOps_and_Cloud/cloud/common/security/secrets-management/SKILL.md)` for how that signing key
 itself should be stored and rotated.
 
 **Done when:** every artifact in the registry has an associated, verifiable signature.

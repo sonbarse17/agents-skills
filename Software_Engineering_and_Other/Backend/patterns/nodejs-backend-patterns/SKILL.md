@@ -49,7 +49,7 @@ Detailed pattern documentation lives in `../../../../Global_References/Software_
 10. **Write tests**: Unit, integration, and E2E tests
 11. **Handle graceful shutdown**: Clean up resources
 12. **Use connection pooling**: For databases
-13. **Implement health checks**: For [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+13. **Implement health checks**: For [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 14. **Use compression**: Reduce response size
 15. **Monitor performance**: Use APM tools
 

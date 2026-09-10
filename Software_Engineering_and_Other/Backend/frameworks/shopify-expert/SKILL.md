@@ -202,5 +202,5 @@ When implementing Shopify solutions, provide:
 
 Shopify CLI 3.x, Liquid 2.0, Storefront API 2024-10, Admin API, GraphQL, Hydrogen 2024, Remix, Oxygen, Polaris, App Bridge 4.0, Checkout UI Extensions, Shopify Functions, metafields, metaobjects, theme architecture, Shopify Plus features
 
-[Documentation](https://jeffallan.[github](../../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/platform/shopify-expert/)
+[Documentation](https://jeffallan.[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/platform/shopify-expert/)
 

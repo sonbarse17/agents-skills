@@ -39,17 +39,17 @@ depends_on:
   - deploy
 ---
 
-# Velociraptor [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response
+# Velociraptor [Incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response
 
 ## Overview
 
 Velociraptor is an endpoint visibility and forensics platform for collecting host-based state information using Velociraptor Query Language (VQL). It operates in three core modes: **Collect** (targeted evidence gathering), **Monitor** (continuous event capture), and **Hunt** (proactive threat hunting).
 
 **When to use this skill**:
-- Active [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response requiring endpoint evidence collection
+- Active [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response requiring endpoint evidence collection
 - Threat hunting across enterprise infrastructure
 - Digital forensics investigations and timeline analysis
-- Endpoint [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and anomaly detection
+- Endpoint [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and anomaly detection
 - Custom forensic artifact development for specific threats
 
 ## Quick Start
@@ -58,7 +58,7 @@ Velociraptor is an endpoint visibility and forensics platform for collecting hos
 
 ```bash
 # Download Velociraptor binary for your platform
-# https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/Velocidex/velociraptor/releases
+# https://[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/Velocidex/velociraptor/releases
 
 # Run GUI mode for interactive investigation
 velociraptor gui
@@ -83,7 +83,7 @@ velociraptor --config server.config.yaml config client > client.config.yaml
 velociraptor --config client.config.yaml client
 ```
 
-## Core [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response Workflows
+## Core [Incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response Workflows
 
 ### Workflow 1: Initial Compromise Investigation
 
@@ -220,7 +220,7 @@ Create custom VQL artifacts for specific investigation needs:
 ```yaml
 name: Custom.Windows.SuspiciousProcess
 description: |
-  Detect processes with suspicious characteristics for [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response.
+  Detect processes with suspicious characteristics for [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response.
 
 parameters:
   - name: ProcessNameRegex
@@ -347,6 +347,6 @@ Save artifacts in YAML format and import via Velociraptor UI or command line.
 - [Velociraptor Documentation](https://docs.velociraptor.app/)
 - [VQL Reference](https://docs.velociraptor.app/vql_reference/)
 - [Artifact Exchange](https://docs.velociraptor.app/exchange/)
-- [GitHub Repository](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/Velocidex/velociraptor)
+- [GitHub Repository](https://[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/Velocidex/velociraptor)
 - [MITRE ATT&CK Framework](https://attack.mitre.org/)
 

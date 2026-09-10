@@ -57,7 +57,7 @@ against them before it's trusted with production traffic.
 - Before applying a `CONFIG SET` change (or an infra-as-code-managed
   `redis.conf` change) to a production instance, especially anything
   touching `maxmemory`, `appendfsync`, or `save`.
-- As a review gate for [infrastructure-as-code](../../../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) that provisions Redis
+- As a review gate for [infrastructure-as-code](../../../../DevOps_and_Cloud/infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) that provisions Redis
   Cluster/Sentinel topology.
 
 ## Prerequisites & environment
@@ -108,7 +108,7 @@ redis-cli CONFIG GET maxmemory
   a primary datastore (queues, non-cache session truth, rate-limit
   counters that must not silently disappear) — confirm the application
   has a real plan for handling `OOM command not allowed` errors (backoff,
-  [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)) rather than this being an unplanned failure mode discovered
+  [alerting](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md)) rather than this being an unplanned failure mode discovered
   in production.
 
 ### 2. Validate persistence settings match the actual recovery-time/data-loss tolerance
@@ -224,7 +224,7 @@ distribution, not just total dataset size.
 ## Common pitfalls
 
 - **Symptom:** A Redis instance is provisioned as "just a cache," but
-  months later an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) reveals it also stores rate-limit counters
+  months later an [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) reveals it also stores rate-limit counters
   that must not silently disappear, and a memory-pressure event evicted
   them under `allkeys-lru`.
   **Fix:** The `maxmemory-policy` was validated against an assumption
@@ -255,7 +255,7 @@ distribution, not just total dataset size.
   for the actual deployed count.
 
 - **Symptom:** A `CONFIG SET maxmemory-policy volatile-lru` change
-  applied via `redis-cli` during an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) works immediately, but
+  applied via `redis-cli` during an [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) works immediately, but
   reverts to the old (wrong) policy after the next routine restart/
   failover.
   **Fix:** `CONFIG REWRITE` was never run (or the infra-as-code

@@ -66,7 +66,7 @@ correctly.
 - [Load-balancing](../../../../Software_Engineering_and_Other/Backend/patterns/load-balancing/SKILL.md) traffic across multiple API keys/deployments of the
   same model to work around a single key's rate limit.
 - Needing one place to see aggregate spend and usage across providers,
-  rather than reconciling separate invoices/[dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) per vendor.
+  rather than reconciling separate invoices/[dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) per vendor.
 
 ## Prerequisites & environment
 
@@ -74,7 +74,7 @@ correctly.
   to, stored as secrets in your secrets manager and injected into the
   gateway's runtime — never committed to the gateway's config file in
   plaintext (see
-  [secrets-management](../../../../Security/common/devsecops/SKILL.md)/skills/[secrets-management](../../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md)).
+  [secrets-management](../../../../Security/common/devsecops/SKILL.md)/skills/[secrets-management](../../../../DevOps_and_Cloud/cloud/common/security/secrets-management/SKILL.md)/SKILL.md)).
 - A decision on gateway placement: a managed SaaS gateway (Portkey,
   OpenRouter) that calls providers on your behalf, versus a self-hosted
   proxy (LiteLLM proxy, or an internal equivalent) that you deploy and
@@ -82,13 +82,13 @@ correctly.
   request/response payloads transit, which matters for data-handling
   requirements.
 - Know each provider's actual rate limits (requests/minute,
-  tokens/minute) and current status/[incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) page URL ahead of time —
+  tokens/minute) and current status/[incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) page URL ahead of time —
   fallback logic is only as good as knowing what "the primary is down"
   actually looks like for that specific provider.
-- A [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) destination (see
-  [prometheus-and-grafana-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md))
+- A [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) destination (see
+  [prometheus-and-grafana-[monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md))
   for the gateway to export routing/cost/error metrics to — a gateway
-  with no [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) into its own routing decisions is difficult to
+  with no [observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) into its own routing decisions is difficult to
   debug when fallback behaves unexpectedly.
 - Application code updated to call the gateway's unified endpoint
   (commonly OpenAI-API-compatible across LiteLLM/Portkey/OpenRouter)
@@ -215,10 +215,10 @@ correctly.
      failure_callback: ["prometheus"]
    ```
    Track, per provider/deployment: request count, error rate, p95
-   latency, cost, and fallback-trigger count — wire [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) on
+   latency, cost, and fallback-trigger count — wire [alerting](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md) on
    fallback-trigger count so a fallback event pages someone even though
    requests are still succeeding (see
-   [prometheus-and-grafana-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)).
+   [prometheus-and-grafana-[monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md)).
 
 7. **Test failover deliberately before trusting it in production** —
    point a deployment's API key at an invalid value or a nonexistent
@@ -238,7 +238,7 @@ correctly.
    revertible exactly like the rollback guidance in
    [agent-cost-and-latency-spike-investigation](../../../Workflows/agent-diagnostics/agent-cost-and-latency-spike-investigation/SKILL.md)/SKILL.md) —
    a hand-edited routing config with no previous version saved turns a
-   bad routing change into its own [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
+   bad routing change into its own [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 
 ## Best practices
 
@@ -265,7 +265,7 @@ correctly.
 - Store every provider credential as a secret injected at runtime, and
   rotate gateway-held credentials on the same cadence as any other
   production API key (see
-  [secrets-management](../../../../Security/common/devsecops/SKILL.md)/skills/[secrets-management](../../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md)).
+  [secrets-management](../../../../Security/common/devsecops/SKILL.md)/skills/[secrets-management](../../../../DevOps_and_Cloud/cloud/common/security/secrets-management/SKILL.md)/SKILL.md)).
 - Treat a self-hosted gateway (LiteLLM proxy or equivalent) as a
   production service in its own right — give it its own health checks,
   its own on-call visibility, and redundancy, since it now sits on the
@@ -321,7 +321,7 @@ correctly.
 
 **Scenario:** An internal agent platform serving several teams currently
 calls Anthropic directly from each team's agent code. A recent
-Anthropic API [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) took down every team's agents simultaneously
+Anthropic API [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) took down every team's agents simultaneously
 with no fallback, and separately, one team's bulk-classification
 workflow occasionally exhausts the shared account's rate limit and
 starves an unrelated interactive support-bot workflow.
@@ -374,7 +374,7 @@ with an intentionally invalid Anthropic key (not the production key)
 before rollout, confirming requests land on the Azure fallback within
 an acceptable latency penalty. Fallback-trigger count is added as a
 Grafana panel and alert alongside per-key rate-limit-hit count, so the
-next Anthropic [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) degrades gracefully and pages the platform team
+next Anthropic [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) degrades gracefully and pages the platform team
 directly instead of silently failing every downstream agent.
 
 ## Cross-references
@@ -382,5 +382,5 @@ directly instead of silently failing every downstream agent.
 - [llm-cost-and-latency-optimization](../[llm-cost-and-latency-optimization](../llm-cost-and-latency-optimization/SKILL.md)/SKILL.md) — the deliberate cost/latency tuning layer above routing; this skill only covers moving traffic between providers, not shrinking what's sent per call.
 - [agent-cost-and-latency-spike-investigation](../../../Workflows/agent-diagnostics/agent-cost-and-latency-spike-investigation/SKILL.md)/SKILL.md) — the fast-triage workflow to run when a spike is provider- or routing-correlated rather than workflow-specific.
 - [agent-architecture-design](../../../Architecture/agent-patterns/agent-architecture-design/SKILL.md)/SKILL.md) — where gateway placement fits into an agent system's overall architecture.
-- [secrets-management](../../../../Security/common/devsecops/SKILL.md)/skills/[secrets-management](../../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md) — storing and rotating the provider credentials a gateway holds.
-- [prometheus-and-grafana-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md) — wiring the gateway's routing/cost/error metrics into [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) and alerts.
+- [secrets-management](../../../../Security/common/devsecops/SKILL.md)/skills/[secrets-management](../../../../DevOps_and_Cloud/cloud/common/security/secrets-management/SKILL.md)/SKILL.md) — storing and rotating the provider credentials a gateway holds.
+- [prometheus-and-grafana-[monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../../../[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)-and-platform-extras/skills/[prometheus-and-grafana-[monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-stack](../../../DevOps_and_Cloud/Containers_and_Orchestration/prometheus-and-grafana-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-stack/SKILL.md)/SKILL.md) — wiring the gateway's routing/cost/error metrics into [dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) and alerts.

@@ -79,7 +79,7 @@ Decision: Largest ecosystem / wide support → Express. Performance + schema-fir
 |-------|-----------|----------|
 | Security | Helmet, CORS, CSP | 1st (before any body) |
 | Parsing | JSON, URL-encoded | 2nd |
-| [Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) | Logger, request ID | 3rd |
+| [Observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) | Logger, request ID | 3rd |
 | Protection | Rate limiter | 4th |
 | Auth | JWT/Session check | 5th |
 | Routes | Domain routers | 6th |
@@ -154,7 +154,7 @@ export function createApp() {
   app.use(express.json({ limit: '1mb' }));
   app.use(express.urlencoded({ extended: true }));
 
-  // [Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
+  // [Observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
   app.use(requestLogger);
 
   // Rate limiting

@@ -63,8 +63,8 @@ Key concepts:
 
 Start DefectDojo locally:
 ```bash
-git clone https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/DefectDojo/django-DefectDojo.git
-cd django-DefectDojo && [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) compose up -d
+git clone https://[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/DefectDojo/django-DefectDojo.git
+cd django-DefectDojo && [docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) compose up -d
 # Access at http://localhost:8080 — change admin/admin password immediately
 ```
 
@@ -130,7 +130,7 @@ For the complete mapping of every SecOpsAgentKit tool to its DefectDojo parser n
 Add an import step after each scanner in any pipeline:
 
 ```yaml
-# [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions — add after each scanner step
+# [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions — add after each scanner step
 - name: Import findings to DefectDojo
   env:
     DD_HOST: ${{ secrets.DD_HOST }}
@@ -208,8 +208,8 @@ Before an [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md), filt
 ## Integration Points
 
 - **All SecOpsAgentKit scanners**: Parser names mapped in [../../../Global_References/Security/tool-parser-map.md](../../../Global_References/Security/tool-parser-map.md)
-- **CI/CD**: [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md), [CircleCI](../../../ci-cd/circleci/other/circleci/SKILL.md) — add import step after each scanner
-- **Issue Trackers**: DefectDojo pushes findings to JIRA, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Issues via built-in integrations
+- **CI/CD**: [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../../DevOps_and_Cloud/ci-cd/jenkins/other/jenkins/SKILL.md), [CircleCI](../../../DevOps_and_Cloud/ci-cd/circleci/other/circleci/SKILL.md) — add import step after each scanner
+- **Issue Trackers**: DefectDojo pushes findings to JIRA, [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Issues via built-in integrations
 - **Notifications**: Slack and email alerts for new Critical/High findings via DefectDojo notification rules
 - **SIEM**: Export findings as JSON for ingestion into Splunk, Elastic, or other SIEM platforms
 
@@ -229,8 +229,8 @@ Before an [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md), filt
 
 ## References
 
-- [DefectDojo Documentation](https://defectdojo.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/django-DefectDojo/)
-- [DefectDojo GitHub](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/DefectDojo/django-DefectDojo)
+- [DefectDojo Documentation](https://defectdojo.[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).io/django-DefectDojo/)
+- [DefectDojo GitHub](https://[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/DefectDojo/django-DefectDojo)
 - [OWASP DefectDojo Project](https://owasp.org/www-project-defectdojo/)
 - [DefectDojo API Reference](https://demo.defectdojo.org/api/v2/oa3/swagger-ui/)
 

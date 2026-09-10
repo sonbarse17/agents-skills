@@ -43,7 +43,7 @@ Use this skill when:
 | Tool | License | Languages | Best For |
 |------|---------|-----------|----------|
 | Semgrep | OSS/Commercial | 30+ | Custom rules, speed |
-| CodeQL | Free ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)) | 10+ | Deep analysis |
+| CodeQL | Free ([GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)) | 10+ | Deep analysis |
 | SonarQube | OSS/Commercial | 25+ | Quality + Security |
 | Bandit | OSS | [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) | [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) projects |
 | Brakeman | OSS | Ruby | Rails apps |
@@ -120,7 +120,7 @@ rules:
 ### CI Configuration
 
 ```yaml
-# .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/semgrep.yml
+# .[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/workflows/semgrep.yml
 name: Semgrep
 
 on:
@@ -147,7 +147,7 @@ jobs:
 ### Setup
 
 ```yaml
-# .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/codeql.yml
+# .[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/workflows/codeql.yml
 name: CodeQL Analysis
 
 on:
@@ -174,16 +174,16 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Initialize CodeQL
-        uses: [github](../../../ci-cd/github-actions/other/github/SKILL.md)/codeql-action/init@v3
+        uses: [github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/codeql-action/init@v3
         with:
           languages: ${{ matrix.language }}
           queries: +security-and-quality
 
       - name: Autobuild
-        uses: [github](../../../ci-cd/github-actions/other/github/SKILL.md)/codeql-action/autobuild@v3
+        uses: [github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/codeql-action/autobuild@v3
 
       - name: Perform CodeQL Analysis
-        uses: [github](../../../ci-cd/github-actions/other/github/SKILL.md)/codeql-action/analyze@v3
+        uses: [github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/codeql-action/analyze@v3
         with:
           category: "/language:${{ matrix.language }}"
 ```
@@ -215,7 +215,7 @@ select sink.getNode(), source, sink, "SQL injection from $@.", source.getNode(),
 
 ## SonarQube
 
-### [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Setup
+### [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) Setup
 
 ```yaml
 # [docker-compose](../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml
@@ -272,7 +272,7 @@ sonar.qualitygate.wait=true
 ### CI Integration
 
 ```yaml
-# [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions
+# [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions
 - name: SonarQube Scan
   uses: sonarsource/sonarqube-scan-action@master
   env:
@@ -415,7 +415,7 @@ exit 0
 
 ## Best Practices
 
-- Run on every PR/[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)
+- Run on every PR/[commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md)
 - Establish baseline for existing code
 - Prioritize by severity and exploitability
 - Maintain custom rules for your codebase

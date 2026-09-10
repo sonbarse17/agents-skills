@@ -187,7 +187,7 @@ Five-layer blueprint structure: physical evidence, customer actions, frontstage 
 Happiness: CSAT, NPS, satisfaction per stage. Engagement: session frequency, feature adoption, journey progress. Adoption: new user journey completion rate, feature discovery rate. Retention: repeat journey rate, time between journeys. Task Success: journey completion rate, error rate, time-on-task.
 
 ### Jobs-to-be-Done Journey Mapping
-Map journey around the functional, emotional, and social jobs the customer is trying to accomplish. Identify the progress the customer wants to make, not just the steps they take. Structure journey around the job lifecycle: defining, locating, preparing, confirming, executing, [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), modifying, maintaining.
+Map journey around the functional, emotional, and social jobs the customer is trying to accomplish. Identify the progress the customer wants to make, not just the steps they take. Structure journey around the job lifecycle: defining, locating, preparing, confirming, executing, [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), modifying, maintaining.
 
 ### Lean Service Design Methodology
 Build journey maps and service blueprints iteratively with minimal viable fidelity. Start with assumptions and validate with quick customer research rounds. Use the smallest possible scope to generate actionable insights. Prototype service improvements before full implementation. Measure before and after to confirm improvement.
@@ -260,7 +260,7 @@ Creating a journey map as a one-time exercise and never updating it. Customer be
 
 ### Measurement
 - Track both leading indicators (engagement, support volume, feature adoption) and lagging indicators (churn, LTV, NPS).
-- Design [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) with a hierarchy: overall health score → funnel metrics → stage-level CSAT → segment comparison.
+- Design [dashboards](../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) with a hierarchy: overall health score → funnel metrics → stage-level CSAT → segment comparison.
 - Set automated alerts for metrics dropping below threshold — intervene before churn accelerates.
 - Re-baseline after each optimization cycle to track improvement trajectory.
 - Document lessons learned from each experiment in a shared repository.
@@ -547,7 +547,7 @@ Journey owner authority: can block changes that negatively impact journey metric
 | 1 | Initial | No journey maps, ad-hoc optimization | Reactive fixes, no measurement |
 | 2 | Defined | Journey maps exist, basic funnel tracking | Quarterly reviews, pain point lists |
 | 3 | Managed | Service blueprints, segment analysis | Monthly reviews, experimentation |
-| 4 | Optimized | Journey health score, predictive analytics | Weekly [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), automated alerts |
+| 4 | Optimized | Journey health score, predictive analytics | Weekly [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), automated alerts |
 | 5 | Leading | AI-driven personalization, real-time optimization | Continuous experimentation, proactive |
 
 ## Expanded Case Studies

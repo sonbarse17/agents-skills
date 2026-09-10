@@ -25,7 +25,7 @@ depends_on:
 
 Manage SOC cases through the Kibana Cases API. All cases are scoped to `securitySolution` — this skill operates
 exclusively within Elastic Security. Cases appear in Kibana Security and can be assigned to analysts, linked to alerts,
-and pushed to external [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) management systems via connectors.
+and pushed to external [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) management systems via connectors.
 
 ## Prerequisites
 
@@ -52,7 +52,7 @@ export KIBANA_API_KEY="your-kibana-api-key"
 
 ## When NOT to use
 
-- Do not use this skill for [Observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) or Elasticsearch cases — it hardcodes `owner: securitySolution`
+- Do not use this skill for [Observability](../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) or Elasticsearch cases — it hardcodes `owner: securitySolution`
 - Do not use for cases outside the Security solution space
 
 ## Execution rules
@@ -189,7 +189,7 @@ For detailed API endpoints, request/response formats, and examples, see
 
 - Write operations (`create`, `update`) prompt for confirmation. Pass `--yes` or `-y` to skip when called by an agent.
 - Verify `KIBANA_URL` and `KIBANA_API_KEY` point to the intended cluster before running any command.
-- Cases are scoped to `securitySolution` — this skill does not affect [Observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) or other Kibana case owners.
+- Cases are scoped to `securitySolution` — this skill does not affect [Observability](../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) or other Kibana case owners.
 
 ## Environment variables
 

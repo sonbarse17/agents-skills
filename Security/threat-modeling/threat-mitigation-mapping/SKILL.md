@@ -34,10 +34,10 @@ Preventive ────► Stop attacks before they occur
    │              (Firewall, Input validation)
    │
 Detective ─────► Identify attacks in progress
-   │              (IDS, Log [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md))
+   │              (IDS, Log [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md))
    │
 Corrective ────► Respond and recover from attacks
-                  ([Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response, Backup restore)
+                  ([Incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response, Backup restore)
 ```
 
 ### 2. Control Layers
@@ -48,7 +48,7 @@ Corrective ────► Respond and recover from attacks
 | **Application** | Input validation, authentication     |
 | **Data**        | Encryption, access controls          |
 | **Endpoint**    | EDR, patch management                |
-| **Process**     | Security training, [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response |
+| **Process**     | Security training, [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response |
 
 ### 3. Defense in Depth
 

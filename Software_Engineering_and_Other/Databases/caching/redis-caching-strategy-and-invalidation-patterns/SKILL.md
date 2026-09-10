@@ -245,7 +245,7 @@ at the exact expiry instant.
   stale data can be served.
 - Add stampede protection (a lock/lease or probabilistic early refresh)
   for any key popular enough that its concurrent-miss rebuild load would
-  meaningfully spike backend load — don't wait for an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) to
+  meaningfully spike backend load — don't wait for an [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) to
   discover a hot key needs this.
 - Make cache keys carry a version or schema-revision component
   (`user:v2:{id}`) when the cached value's shape can change across a

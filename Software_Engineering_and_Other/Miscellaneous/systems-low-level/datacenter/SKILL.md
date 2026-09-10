@@ -315,7 +315,7 @@ class DCIMClient:
         return alarms
 
     def monitor_all_racks(self, rack_ids, interval_s=60):
-        """Continuous [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) loop."""
+        """Continuous [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) loop."""
         while True:
             for rack_id in rack_ids:
                 alarms = self.check_environmental_limits(rack_id)
@@ -324,9 +324,9 @@ class DCIMClient:
             time.sleep(interval_s)
 ```
 
-### Step 5: Environmental [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Configuration
+### Step 5: Environmental [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Configuration
 ```yaml
-# [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)/datacenter-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).yaml
+# [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)/datacenter-[monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).yaml
 sensor_thresholds:
   temperature:
     warning_c: 27    # ASHRAE recommended max inlet temp
@@ -431,7 +431,7 @@ cabling:
   server_to_leaf: "OM4 multimode, LC duplex or CAT6A copper"
   cross_connect: "OS2 singlemode, MPO-12 trunk cables"
 
-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md):
+[monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md):
   - "Interface utilization > 70% triggers [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) alert"
   - "Packet drop rate > 0.1% triggers investigation"
   - "sFlow data streamed to analytics pipeline"
@@ -507,7 +507,7 @@ echo "Transferring UPS input to generator..."
 timeout 30 ups-monitor --transfer-to-generator
 
 # Step 4: Monitor for 15 minutes
-echo "[Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) generator output..."
+echo "[Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) generator output..."
 for i in $(seq 1 15); do
   read voltage frequency phase_balance <<< $(generator_metrics)
   echo "Minute $i: ${voltage}V ${frequency}Hz balance:${phase_balance}%"
@@ -568,7 +568,7 @@ echo "=== Test Complete ==="
 - Test generator and UPS monthly under load with full run-down test annually
 - Maintain cable management to preserve airflow and reduce cooling costs
 - Redundant cooling paths: never route both CRAC units through same pipe
-- Power [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) per PDU phase prevents unbalanced load conditions
+- Power [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) per PDU phase prevents unbalanced load conditions
 - Floor loading: verify slab rating (usually 500-1000 kg/m²) before deploying heavy racks
 - Seismic bracing in earthquake-prone regions on all racks and overhead cable trays
 - FM-200/Novec fire suppression tested per NFPA 75 standards annually
@@ -595,14 +595,14 @@ Managing datacenter [capacity](../../../AI_and_Agents/Infrastructure/deploy-mode
 ### Anti-Pattern 6: Single Points of Failure in Cooling
 Running both CRAC units on the same electrical circuit or same chiller loop. Route redundant cooling from independent sources.
 
-### Anti-Pattern 7: No Environmental [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
-Only [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) at room level instead of at rack intake. Rack-level [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) catches hot spots before they cause failures.
+### Anti-Pattern 7: No Environmental [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+Only [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) at room level instead of at rack intake. Rack-level [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) catches hot spots before they cause failures.
 
 ## Rules & Constraints
 - Maintain hot aisle / cold aisle configuration at all times.
 - Leave 20% headroom on all power circuits.
 - All cabling must be labeled per TIA-606-B.
-- Environmental [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (temp/humidity/power) on every rack.
+- Environmental [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (temp/humidity/power) on every rack.
 - PUE should be < 1.6 for air-cooled DCs.
 - Test generator and UPS monthly under load.
 - Maintain cable management to preserve airflow.

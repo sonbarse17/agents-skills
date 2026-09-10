@@ -76,7 +76,7 @@ Detailed pattern documentation lives in `../../../../Global_References/Software_
 
 ### Operational Considerations
 
-**[Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**:
+**[Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**:
 
 - Workflow execution duration
 - Activity failure rates

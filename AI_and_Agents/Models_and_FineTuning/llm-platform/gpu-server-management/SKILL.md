@@ -27,7 +27,7 @@ Provision, configure, and monitor NVIDIA GPU servers for AI inference and traini
 Use this skill when:
 - Setting up a new GPU server for LLM inference or model training
 - Installing or upgrading NVIDIA drivers and CUDA toolkit
-- Configuring [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) with NVIDIA Container Toolkit for GPU workloads
+- Configuring [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) with NVIDIA Container Toolkit for GPU workloads
 - Partitioning A100/H100 GPUs with MIG for multi-tenant workloads
 - Troubleshooting GPU errors, driver issues, or thermal throttling
 
@@ -47,10 +47,10 @@ sudo apt autoremove -y
 
 # Add NVIDIA package repository
 distribution=$(. /etc/os-release; echo $ID$VERSION_ID)
-curl -fsSL https://nvidia.[github](../../../../ci-cd/github-actions/other/github/SKILL.md).io/libnvidia-container/gpgkey | \
+curl -fsSL https://nvidia.[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).io/libnvidia-container/gpgkey | \
   sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg
 
-curl -s -L https://nvidia.[github](../../../../ci-cd/github-actions/other/github/SKILL.md).io/libnvidia-container/$distribution/libnvidia-container.list | \
+curl -s -L https://nvidia.[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).io/libnvidia-container/$distribution/libnvidia-container.list | \
   sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
   sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
 
@@ -59,15 +59,15 @@ sudo apt update
 # Install latest driver (560.x as of 2025)
 sudo apt install -y nvidia-driver-560 cuda-toolkit-12-6
 
-# Install NVIDIA Container Toolkit ([Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) GPU support)
+# Install NVIDIA Container Toolkit ([Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) GPU support)
 sudo apt install -y nvidia-container-toolkit
-sudo nvidia-ctk runtime configure --runtime=[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)
-sudo systemctl restart [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)
+sudo nvidia-ctk runtime configure --runtime=[docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)
+sudo systemctl restart [docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)
 
 # Verify
 nvidia-smi
 nvcc --version
-[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) run --rm --gpus all nvidia/cuda:12.6.0-base-ubuntu22.04 nvidia-smi
+[docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) run --rm --gpus all nvidia/cuda:12.6.0-base-ubuntu22.04 nvidia-smi
 ```
 
 ## Post-Install Configuration
@@ -86,10 +86,10 @@ sudo nvidia-smi --ecc-config=0   # requires reboot
 sudo nvidia-smi topo -m          # check NVLink topology
 ```
 
-## GPU Health [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+## GPU Health [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 ```bash
-# Real-time [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (like htop for GPUs)
+# Real-time [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (like htop for GPUs)
 watch -n 1 nvidia-smi
 
 # Detailed stats
@@ -97,7 +97,7 @@ nvidia-smi --query-gpu=index,name,temperature.gpu,utilization.gpu,\
 utilization.memory,memory.used,memory.free,power.draw,clocks.current.graphics \
 --format=csv --loop=1
 
-# DCGM — production [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) daemon (for clusters)
+# DCGM — production [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) daemon (for clusters)
 sudo apt install -y [datacenter](../../../../Software_Engineering_and_Other/Miscellaneous/systems-low-level/datacenter/SKILL.md)-gpu-manager
 sudo systemctl start dcgm
 dcgmi discovery -l                # list GPUs
@@ -114,7 +114,7 @@ nvidia-smi --query-gpu=ecc.errors.corrected.volatile.total \
 
 ```bash
 # Deploy DCGM Exporter for Prometheus scraping
-[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) run -d \
+[docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) run -d \
   --name dcgm-exporter \
   --gpus all \
   --cap-add SYS_ADMIN \
@@ -155,8 +155,8 @@ sudo nvidia-smi mig -cgi 2g.20gb,2g.20gb,2g.20gb,2g.20gb -C
 nvidia-smi mig -lgi
 nvidia-smi mig -lcgi
 
-# Use in [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)
-[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) run --gpus '"device=MIG-GPU-xxx/0/0"' ...
+# Use in [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)
+[docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) run --gpus '"device=MIG-GPU-xxx/0/0"' ...
 
 # Disable MIG
 sudo nvidia-smi mig -i 0 -dci
@@ -213,7 +213,7 @@ nvidia-smi topo -m
 | Driver version mismatch | CUDA/driver incompatibility | Check compatibility matrix at developer.nvidia.com |
 | GPU temperature >85°C | Poor airflow or fan failure | Check `nvidia-smi -q -d TEMPERATURE`; reseat cooler |
 | XID 79 errors | GPU hardware error | Run `dcgmi diag -r 3`; may need GPU replacement |
-| `failed to open device` in container | Container toolkit not configured | Run `nvidia-ctk runtime configure --runtime=[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)` |
+| `failed to open device` in container | Container toolkit not configured | Run `nvidia-ctk runtime configure --runtime=[docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)` |
 | Low PCIe bandwidth | Wrong slot or power limit | Check `nvidia-smi -q | grep PCIe`; use x16 slot |
 
 ## Best Practices
@@ -229,4 +229,4 @@ nvidia-smi topo -m
 - [vllm-server](../../local-ai/[vllm-server](../vllm-server/SKILL.md)/) - LLM inference on GPUs
 - [llm-fine-tuning](../../local-ai/[llm-fine-tuning](../llm-fine-tuning/SKILL.md)/) - GPU training setup
 - [linux-hardening](../../../security/hardening/[linux-hardening](../../../DevOps_and_Cloud/Observability_and_SecOps/linux-hardening/SKILL.md)/) - Secure the host OS
-- [prometheus-grafana](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)/[prometheus-grafana](../../../../observability-monitoring-logging/common/other/prometheus-grafana/SKILL.md)/) - Metrics [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)
+- [prometheus-grafana](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md)/[prometheus-grafana](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/other/prometheus-grafana/SKILL.md)/) - Metrics [dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)

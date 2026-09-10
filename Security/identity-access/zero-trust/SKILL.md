@@ -48,7 +48,7 @@ segment it's still physically connected to.
 "It's an internal service call, so it's fine" is exactly the assumption zero trust exists to
 remove. Every service-to-service call should authenticate and authorize independently — mTLS
 with workload identity, short-lived tokens per call — the same as a call arriving from outside
-would. This is a meaningfully different bar than internal TLS alone (see `[network-security](../../../containers-orchestration/common/other/network-security/SKILL.md)` for
+would. This is a meaningfully different bar than internal TLS alone (see `[network-security](../../../DevOps_and_Cloud/containers-orchestration/common/other/network-security/SKILL.md)` for
 the wire-encryption piece); zero trust additionally requires each call to prove *who* is
 calling, not just that the channel is encrypted.
 
@@ -57,7 +57,7 @@ verifiable identity, even from an already-internal network path.
 
 ## 3. Microsegment down to the workload, not just the subnet
 
-Network segmentation by tier (see `[network-security](../../../containers-orchestration/common/other/network-security/SKILL.md)`) is a coarse first cut; zero trust pushes
+Network segmentation by tier (see `[network-security](../../../DevOps_and_Cloud/containers-orchestration/common/other/network-security/SKILL.md)`) is a coarse first cut; zero trust pushes
 the boundary down to individual workloads, where each workload has an explicit, minimal list of
 what it's allowed to talk to. This is what actually limits lateral movement — a compromised pod
 in the application tier still can't reach a database it was never authorized to reach, even
@@ -90,7 +90,7 @@ data, the ones with the widest current blast radius — and expand outward. A pa
 that covers the systems that matter most is worth far more than a stalled all-or-nothing plan.
 
 - **Keep perimeter controls during the transition**: zero trust is additive to the fundamentals
-  in `[network-security](../../../containers-orchestration/common/other/network-security/SKILL.md)`, not a replacement that lets you drop segmentation and egress control
+  in `[network-security](../../../DevOps_and_Cloud/containers-orchestration/common/other/network-security/SKILL.md)`, not a replacement that lets you drop segmentation and egress control
   early.
 
 **Done when:** the highest-value systems require verified identity for every access, even from

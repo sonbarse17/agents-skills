@@ -160,8 +160,8 @@ ten, and definitely not custom business-logic abuse.
 - Log security-relevant events (auth failures, access-control denials,
   input validation failures) with enough detail to support both
   detection and later forensic/[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) needs — this addresses "Security
-  Logging and [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Failures" directly and is also evidence
-  commonly requested for SOC 2/ISO 27001/PCI-DSS log-[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) criteria.
+  Logging and [Monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Failures" directly and is also evidence
+  commonly requested for SOC 2/ISO 27001/PCI-DSS log-[monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) criteria.
 - Revisit the guideline set when OWASP publishes a new Top 10 edition —
   category boundaries shift (e.g. deserialization getting folded into
   "Software and Data Integrity Failures" in 2021) and a stale reference
@@ -211,7 +211,7 @@ ten, and definitely not custom business-logic abuse.
   **Fix:** Log security-relevant *outcomes* explicitly (auth success/
   failure, access-control denial with the resource and requesting
   identity, input-validation rejection) and alert on anomalous patterns —
-  this is the actual intent of the "Security Logging and [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+  this is the actual intent of the "Security Logging and [Monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
   Failures" category, not just having logs at all.
 
 ## Worked example
@@ -222,14 +222,14 @@ coding practice and typical SAST/DAST tooling coverage:
 | OWASP Top 10 (2021) category | Secure coding practice | Typical SAST rule type | Typical DAST coverage | Tooling coverage confidence |
 |---|---|---|---|---|
 | A01: Broken Access Control | Centralized authorization layer; deny-by-default; per-object ownership checks | Rare/limited — some rules flag missing auth decorators/annotations | Can find some role-based bypass if scanner is configured with multiple privilege-level accounts | **Low** — mostly requires manual review/threat modeling |
-| A02: Cryptographic Failures | Use vetted libraries; enforce TLS 1.2+; never roll custom crypto; proper key management (see [secrets-management](../../common/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md)) | Rules for weak algorithms (MD5/SHA1 for security use), hardcoded keys, disabled cert validation | Can detect weak TLS config, missing HSTS | **Medium-High** for known-bad patterns |
+| A02: Cryptographic Failures | Use vetted libraries; enforce TLS 1.2+; never roll custom crypto; proper key management (see [secrets-management](../../common/devsecops/SKILL.md)/skills/[secrets-management](../../../DevOps_and_Cloud/cloud/common/security/secrets-management/SKILL.md)/SKILL.md)) | Rules for weak algorithms (MD5/SHA1 for security use), hardcoded keys, disabled cert validation | Can detect weak TLS config, missing HSTS | **Medium-High** for known-bad patterns |
 | A03: Injection (SQL, NoSQL, OS command, LDAP) | Parameterized queries/prepared statements; framework-level output encoding; input allow-listing | Strong — taint-tracking rules for unsanitized input reaching a sink | Strong — active injection payloads against forms/params | **High** |
 | A04: Insecure Design | Threat modeling during design; abuse-case test cases; secure design patterns/reference architectures | Very limited — SAST reviews code, not design intent | Very limited | **Low** — inherently a design/review-time activity |
-| A05: Security Misconfiguration | Hardened default configs (see [container-image-hardening](../../common/devsecops/SKILL.md)/skills/[container-image-hardening](../../../containers-orchestration/docker/security/container-image-hardening/SKILL.md)/SKILL.md), [cis-benchmarks-hardening](../[cis-benchmarks-hardening](../../../Security/[cis-benchmarks](../../Observability_and_SecOps/cis-benchmarks/SKILL.md)-hardening/SKILL.md)/SKILL.md)); no default credentials; minimal error verbosity in prod | Some — IaC/config scanning rules | Can detect verbose error messages, exposed debug endpoints, default credentials | **Medium** |
+| A05: Security Misconfiguration | Hardened default configs (see [container-image-hardening](../../common/devsecops/SKILL.md)/skills/[container-image-hardening](../../../DevOps_and_Cloud/containers-orchestration/docker/security/container-image-hardening/SKILL.md)/SKILL.md), [cis-benchmarks-hardening](../[cis-benchmarks-hardening](../../../Security/[cis-benchmarks](../../Observability_and_SecOps/cis-benchmarks/SKILL.md)-hardening/SKILL.md)/SKILL.md)); no default credentials; minimal error verbosity in prod | Some — IaC/config scanning rules | Can detect verbose error messages, exposed debug endpoints, default credentials | **Medium** |
 | A06: Vulnerable and Outdated Components | Dependency pinning, SCA scanning, patch SLAs (see [supply-chain-security-slsa-sbom](../../common/devsecops/SKILL.md)/skills/[supply-chain-security-slsa-sbom](../../supply-chain/supply-chain-security/SKILL.md)-slsa-sbom/SKILL.md)/SKILL.md)) | N/A for SAST proper — this is SCA's job, often bundled alongside SAST tools | Can sometimes fingerprint outdated library versions from responses | **High**, but only if SCA is actually running — not a SAST/DAST-native category |
 | A07: Identification and Authentication Failures | Strong password/session policy, MFA, secure session token generation, rate-limit login attempts | Some rules for weak session config, missing lockout | Can test for credential stuffing resistance, session fixation, missing rate limiting | **Medium** |
 | A08: Software and Data Integrity Failures | Verify signatures/checksums on dependencies and CI artifacts, avoid insecure deserialization of untrusted data | Rules for unsafe deserialization APIs | Limited — mostly a build/supply-chain-time concern | **Medium** for deserialization patterns, **Low** for CI/CD integrity overall |
-| A09: Security Logging and [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Failures | Log auth/authz outcomes with identity + resource; centralize logs; alert on anomalies | Rare — not typically a code-pattern SAST checks well | Can sometimes detect absence of logging indirectly (e.g. no lockout after repeated failures) | **Low** — mostly a design/ops verification |
+| A09: Security Logging and [Monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Failures | Log auth/authz outcomes with identity + resource; centralize logs; alert on anomalies | Rare — not typically a code-pattern SAST checks well | Can sometimes detect absence of logging indirectly (e.g. no lockout after repeated failures) | **Low** — mostly a design/ops verification |
 | A10: Server-Side Request Forgery (SSRF) | Allow-list outbound destinations; disable unnecessary URL-fetching features; validate/normalize user-supplied URLs before use | Some rules for unsanitized URL passed to HTTP client | Can actively probe for SSRF via out-of-band callback payloads | **Medium** |
 
 Illustrative finding triage using the table: a DAST scan flags "session
@@ -243,7 +243,7 @@ Illustrative coverage summary reported alongside a "0 open SAST/DAST
 findings" dashboard: "Automated tooling provides high-confidence coverage
 for A03 (Injection) and A06 (Vulnerable Components); medium confidence for
 A02, A05, A07, A10; low confidence for A01 (Broken Access Control), A04
-(Insecure Design), and A09 (Logging/[Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)) — these three are covered
+(Insecure Design), and A09 (Logging/[Monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)) — these three are covered
 instead by quarterly manual authorization review and design-time threat
 modeling, tracked separately in `<REVIEW_TRACKER_PLACEHOLDER>`."
 
@@ -254,6 +254,6 @@ modeling, tracked separately in `<REVIEW_TRACKER_PLACEHOLDER>`."
 - [cis-benchmarks-hardening](../[cis-benchmarks-hardening](../../../Security/[cis-benchmarks](../../Observability_and_SecOps/cis-benchmarks/SKILL.md)-hardening/SKILL.md)/SKILL.md) — infrastructure/platform-level hardening that complements application-layer OWASP practices (e.g. A05 Security Misconfiguration at the host/container level).
 - [sast-integration](../../common/devsecops/SKILL.md)/skills/[sast-integration](../../scanning/sast-integration/SKILL.md)/SKILL.md) — tool setup, tuning, and triage mechanics for static analysis referenced throughout this skill's coverage table.
 - [dast-integration](../../common/devsecops/SKILL.md)/skills/[dast-integration](../../scanning/dast-integration/SKILL.md)/SKILL.md) — tool setup and pipeline mechanics for dynamic scanning referenced throughout this skill's coverage table.
-- [secrets-management](../../common/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md) — key/credential handling underlying A02 (Cryptographic Failures) prevention.
+- [secrets-management](../../common/devsecops/SKILL.md)/skills/[secrets-management](../../../DevOps_and_Cloud/cloud/common/security/secrets-management/SKILL.md)/SKILL.md) — key/credential handling underlying A02 (Cryptographic Failures) prevention.
 - [supply-chain-security-slsa-sbom](../../common/devsecops/SKILL.md)/skills/[supply-chain-security-slsa-sbom](../../supply-chain/supply-chain-security/SKILL.md)-slsa-sbom/SKILL.md)/SKILL.md) — SBOM/provenance practices underlying A06 and A08 prevention.
-- [container-image-hardening](../../common/devsecops/SKILL.md)/skills/[container-image-hardening](../../../containers-orchestration/docker/security/container-image-hardening/SKILL.md)/SKILL.md) — hardened defaults underlying A05 (Security Misconfiguration) prevention at the container level.
+- [container-image-hardening](../../common/devsecops/SKILL.md)/skills/[container-image-hardening](../../../DevOps_and_Cloud/containers-orchestration/docker/security/container-image-hardening/SKILL.md)/SKILL.md) — hardened defaults underlying A05 (Security Misconfiguration) prevention at the container level.

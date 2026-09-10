@@ -369,7 +369,7 @@ Builds the local corpus index at `~/.plugineval/corpus`. Required before Elo ran
 
 ### Scripting the Composite Formula
 
-Reproduce the composite score offline (pre-[commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) hook, CI gate):
+Reproduce the composite score offline (pre-[commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) hook, CI gate):
 
 ```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 def composite_score(dimension_scores: dict, anti_pattern_count: int = 0) -> float:

@@ -30,7 +30,7 @@ A RabbitMQ queue declared without `durable=true`, without a queue type
 argument, or without any length/TTL bound will accept traffic happily in
 staging and only reveal the gap in production — as messages lost on a
 routine broker restart, a queue that isn't actually mirrored/replicated
-the way an on-call engineer assumes during an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), or an unbounded
+the way an on-call engineer assumes during an [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md), or an unbounded
 queue that eventually pushes the whole broker over its memory watermark.
 This skill is a concrete pre-production checklist for catching those gaps
 before go-live, building on the topology decisions made in
@@ -119,7 +119,7 @@ re-deriving them.
      pattern="^orders\.fulfillment\." apply-to=queues \
      definition='{"max-length":100000,"overflow":"reject-publish","message-ttl":86400000}'
    ```
-   An unbounded queue is a latent [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md): it will eventually either
+   An unbounded queue is a latent [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md): it will eventually either
    exhaust broker memory/disk (tripping the cluster-wide watermark
    described in
    [rabbitmq-configuration](../[rabbitmq-configuration](../../Databases/rabbitmq-configuration/SKILL.md)/SKILL.md)) or grow
@@ -129,7 +129,7 @@ re-deriving them.
 
 5. **Validate a dead-letter exchange is configured for any queue where
    poison messages are plausible**, rather than discovering the absence
-   during an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md):
+   during an [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md):
    ```bash
    rabbitmqadmin declare policy name=orders-fulfillment-dlx \
      pattern="^orders\.fulfillment\." apply-to=queues \
@@ -202,7 +202,7 @@ re-deriving them.
 
 - **Symptom:** A queue intended as highly available is declared with
   `x-queue-type: quorum` and passes a validation check that only greps
-  for the queue-type argument, but during an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) it turns out the
+  for the queue-type argument, but during an [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) it turns out the
   queue has a single member and goes fully unavailable when its one node
   restarts.
   **Fix:** Validation that checks only for the presence of

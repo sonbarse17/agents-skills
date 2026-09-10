@@ -373,7 +373,7 @@ XGBoost autologging and alias-based registry promotion.
    client.set_registered_model_alias("fraud-scorer", "champion", previous_champion.version)
    ```
    because step 3 captured the rollback target before promoting, this is
-   a one-line fix rather than an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-time scramble.
+   a one-line fix rather than an [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-time scramble.
 
 ## Cross-references
 

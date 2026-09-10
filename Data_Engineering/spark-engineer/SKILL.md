@@ -157,11 +157,11 @@ When implementing Spark solutions, provide:
 2. Configuration recommendations (executors, memory, shuffle partitions)
 3. Partitioning strategy explanation
 4. Performance analysis (expected shuffle size, memory usage)
-5. [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) recommendations (key Spark UI metrics to watch)
+5. [Monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) recommendations (key Spark UI metrics to watch)
 
 ## Knowledge Reference
 
 Spark DataFrame API, Spark SQL, RDD transformations/actions, catalyst optimizer, tungsten execution engine, partitioning strategies, broadcast variables, accumulators, structured streaming, watermarks, checkpointing, Spark UI analysis, memory management, shuffle optimization
 
-[Documentation](https://jeffallan.[github](../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/data-ml/spark-engineer/)
+[Documentation](https://jeffallan.[github](../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/data-ml/spark-engineer/)
 

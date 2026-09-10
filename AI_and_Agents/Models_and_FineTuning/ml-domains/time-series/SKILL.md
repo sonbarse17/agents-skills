@@ -385,7 +385,7 @@ def conformal_prediction(model, X_train, y_train, X_test, alpha=0.1):
 
 ## Production Considerations
 
-### [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+### [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - Track MASE/sMAPE over time, alert if >20% increase.
 - Monitor residual autocorrelation (Ljung-Box test).
 - Track prediction interval coverage.

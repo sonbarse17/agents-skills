@@ -85,7 +85,7 @@ every staging deploy.
   to seed the scanner's crawl instead of relying on link discovery alone.
 - CI runner with enough memory/CPU headroom — active scans against a
   non-trivial app can run 15-60+ minutes; budget pipeline time
-  accordingly or run on a schedule rather than every [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md).
+  accordingly or run on a schedule rather than every [commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md).
 
 ## Step-by-step guidance
 
@@ -93,7 +93,7 @@ every staging deploy.
    PR-preview environment — it only observes traffic and crawls
    passively, so it's safe to run frequently and unattended:
    ```yaml
-   # [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions
+   # [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions
    name: dast-baseline
    on:
      pull_request:
@@ -104,7 +104,7 @@ every staging deploy.
          - name: ZAP Baseline Scan
            uses: zaproxy/action-baseline@v0.12.0
            with:
-             target: 'https://pr-${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).event.number }}.staging.example.internal'
+             target: 'https://pr-${{ [github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).event.number }}.staging.example.internal'
              rules_file_name: '.zap/rules.tsv'
              cmd_options: '-a'
    ```
@@ -112,7 +112,7 @@ every staging deploy.
 2. **Seed the scan with an API spec** for better coverage of non-linked
    endpoints:
    ```bash
-   [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run --rm -v "$(pwd)":/zap/wrk/:rw \
+   [docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) run --rm -v "$(pwd)":/zap/wrk/:rw \
      -t zaproxy/zap-stable zap-api-scan.py \
      -t https://staging.example.internal/openapi.json \
      -f openapi \
@@ -163,7 +163,7 @@ every staging deploy.
 
 7. **Feed results into the same triage workflow as SAST/SCA** (SARIF
    export, ticket auto-creation, PR comments) so security findings live
-   in one place rather than three disconnected [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md).
+   in one place rather than three disconnected [dashboards](../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md).
 
 ## Best practices
 
@@ -178,7 +178,7 @@ every staging deploy.
   available — crawler-only discovery misses most API-only endpoints with
   no HTML links pointing to them.
 - Rate-limit and IP-allowlist the scanner in the target environment so it
-  doesn't trip WAF/bot-protection or DDoS-style [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) meant for real
+  doesn't trip WAF/bot-protection or DDoS-style [alerting](../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md) meant for real
   traffic.
 - Treat DAST findings as one input among several: it does not see source
   code, so pair it with
@@ -240,7 +240,7 @@ scheduled full scan against a dedicated DAST test environment.
 10096	WARN	Timestamp disclosure in response headers - internal env only
 ```
 
-`.[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/dast.yml`:
+`.[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/workflows/dast.yml`:
 ```yaml
 name: dast
 on:
@@ -250,19 +250,19 @@ on:
 
 jobs:
   baseline:
-    if: [github](../../../ci-cd/github-actions/other/github/SKILL.md).event_name == 'pull_request'
+    if: [github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: ZAP baseline scan against PR preview
         uses: zaproxy/action-baseline@v0.12.0
         with:
-          target: 'https://pr-${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).event.number }}.staging.example.internal'
+          target: 'https://pr-${{ [github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).event.number }}.staging.example.internal'
           rules_file_name: '.zap/rules.tsv'
           fail_action: true
 
   full-scan:
-    if: [github](../../../ci-cd/github-actions/other/github/SKILL.md).event_name == 'schedule'
+    if: [github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).event_name == 'schedule'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

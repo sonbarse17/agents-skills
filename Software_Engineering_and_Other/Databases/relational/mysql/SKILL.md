@@ -30,7 +30,7 @@ Administer, optimize, and secure MySQL and MariaDB databases in development and 
 
 ## Prerequisites
 
-- Linux server (Debian/Ubuntu or RHEL-based) or [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md).
+- Linux server (Debian/Ubuntu or RHEL-based) or [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md).
 - Root or sudo access for package installation.
 - Familiarity with SQL fundamentals.
 
@@ -257,7 +257,7 @@ SHOW REPLICA STATUS\G
 -- Check: Replica_IO_Running = Yes, Replica_SQL_Running = Yes, Seconds_Behind_Source = 0
 ```
 
-## [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Queries
+## [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Queries
 
 ```sql
 -- Connection statistics
@@ -291,7 +291,7 @@ SHOW REPLICA STATUS\G
 -- Look at Seconds_Behind_Source
 ```
 
-## [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) Compose Setup
+## [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) Compose Setup
 
 ```yaml
 # [docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml
@@ -310,7 +310,7 @@ services:
       MYSQL_PASSWORD: secret
     volumes:
       - mysql_data:/var/lib/mysql
-      - ./init.sql:/[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)-entrypoint-initdb.d/init.sql
+      - ./init.sql:/[docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)-entrypoint-initdb.d/init.sql
     command: >
       --innodb-buffer-pool-size=512M
       --max-connections=200
@@ -342,7 +342,7 @@ volumes:
 ```
 
 ```bash
-[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) compose up -d
+[docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) compose up -d
 mysql -h 127.0.0.1 -u myapp -psecret mydb
 ```
 

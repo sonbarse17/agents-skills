@@ -37,7 +37,7 @@ Build a data quality framework covering quality dimensions
 (completeness, accuracy, timeliness, consistency, uniqueness,
 integrity), automated validation tests (Great Expectations
 expectations suites, data docs, checkpoints; dbt singular,
-generic, freshness tests), data [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) (Soda, Monte Carlo,
+generic, freshness tests), data [observability](../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) (Soda, Monte Carlo,
 Elementary), data SLAs with escalation paths, and data contracts.
 
 ## Agent Protocol
@@ -45,8 +45,8 @@ Elementary), data SLAs with escalation paths, and data contracts.
 ### Trigger
 Exact user phrases: "data quality", "data validation",
 "data [profiling](../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md)", "Great Expectations", "dbt tests",
-"data [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)", "data contract", "schema validation",
-"data quality check", "data testing", "data [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)",
+"data [observability](../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md)", "data contract", "schema validation",
+"data quality check", "data testing", "data [monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)",
 "quality dimensions", "data freshness", "data completeness",
 "Soda", "Monte Carlo", "data SLA", "data integrity".
 
@@ -55,13 +55,13 @@ Before activating, verify:
 - Data stack (warehouse, lake, streaming platform)
 - Transformation tool (dbt, Spark, custom SQL)
 - Data sources and producers (internal, external, partner)
-- Existing [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) infrastructure
+- Existing [monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [alerting](../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md) infrastructure
 - Critical data assets for business operations
 - Data consumers and their quality SLAs
 
 ### Output Artifact
 Data quality framework with dimension definitions,
-test configurations, [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) setup, and contract templates.
+test configurations, [monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) setup, and contract templates.
 
 ### Response Format
 ```yaml
@@ -80,7 +80,7 @@ Compress output — why use many token when few do trick.
 - [ ] Quality dimensions defined with measurement approach
 - [ ] Automated validation suite (Great Expectations + dbt)
 - [ ] Data [profiling](../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md) established for baseline expectations
-- [ ] Data [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) with [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
+- [ ] Data [observability](../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) with [monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [alerting](../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 - [ ] Data contracts between producers and consumers
 - [ ] Quality SLAs documented with escalation paths
 - [ ] Soda checks configured for in-storage validation
@@ -261,7 +261,7 @@ missing percentage threshold, duplicate percentage equals 0,
 schema change detection.
 
 Execution: `soda scan -d warehouse -c config.yml checks.yml`.
-Soda Cloud for visualization and [alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md).
+Soda Cloud for visualization and [alerting](../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md).
 Open-source CLI for CI pipeline integration.
 
 Rules: every production table has checks before deployment.
@@ -340,7 +340,7 @@ Changes require both parties to approve.
 ### Step 5a: Automated Quality Gate CI Config
 
 ```yaml
-# .[github](../../ci-cd/github-actions/other/github/SKILL.md)/workflows/quality-gate.yml
+# .[github](../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/workflows/quality-gate.yml
 jobs:
   quality-gate:
     runs-on: ubuntu-latest
@@ -366,7 +366,7 @@ jobs:
 
 Gate blocks deploy on: critical GE expectation failure, dbt test failure on tag:critical, Soda scan finding invalid schema or referential integrity violation. Warnings pass through but log to quality dashboard.
 
-### Step 6: [Observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) (Monte Carlo / Elementary)
+### Step 6: [Observability](../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) (Monte Carlo / Elementary)
 Key metrics:
 Freshness: time since last successful load.
 Volume: row count versus expected range.
@@ -374,7 +374,7 @@ Schema: new, missing, or renamed columns.
 Quality: test pass rate over time.
 Lineage: data flow from source to consumption.
 
-Monte Carlo: SaaS end-to-end [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md).
+Monte Carlo: SaaS end-to-end [observability](../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md).
 ML-based anomaly detection, no manual config.
 
 Elementary: open-source, dbt-native.
@@ -392,7 +392,7 @@ Financial reporting, customer-facing data.
 PagerDuty notification.
 
 High: 99% quality score, 15-min alert SLA.
-Operational reports, team [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md).
+Operational reports, team [dashboards](../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md).
 Slack notification.
 
 Medium: 95% quality score, daily digest.
@@ -406,11 +406,11 @@ Test fails → team channel → on-call engineer → data quality lead.
 SLA breach documented in post-mortem with root cause.
 
 ### Step 8: Data Quality Ecosystem Tools
-re_data is an open-source framework that tracks row count, freshness, null rates, and distributions over time, building baselines for anomaly detection. Configure tables with YAML thresholds; auto-generates dbt tests from observed patterns. Use for automated baseline-driven quality [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) without manual expectations.
+re_data is an open-source framework that tracks row count, freshness, null rates, and distributions over time, building baselines for anomaly detection. Configure tables with YAML thresholds; auto-generates dbt tests from observed patterns. Use for automated baseline-driven quality [monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) without manual expectations.
 
 dbt-[audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)-helper is a dbt package that compares two relations row-by-row on specified columns, reporting differences, missing rows, and mismatches. Essential for validating refactored dbt models produce identical results to originals.
 
-ODD (Open Data Discovery) is an open-source [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) platform ingesting metadata from data sources, tracking quality scores over time, with catalog and lineage. Integrates with dbt, Airflow, and Great Expectations. Use for centralized quality metric aggregation.
+ODD (Open Data Discovery) is an open-source [observability](../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) platform ingesting metadata from data sources, tracking quality scores over time, with catalog and lineage. Integrates with dbt, Airflow, and Great Expectations. Use for centralized quality metric aggregation.
 
 data-diff is an open-source tool for diffing tables across databases using checksum-based algorithms. Reports added, removed, and changed rows. Supports cross-database comparison (Postgres vs Snowflake). Use for migration validation, ETL QA, and source-target reconciliation.
 
@@ -422,8 +422,8 @@ data-diff --dbs [postgresql](../../Software_Engineering_and_Other/Databases/rela
   --columns status,total_amount,updated_at
 ```
 
-### Step 9: Extended [Observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) Integration
-Combine re_data (baseline tracking) + dbt-[audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)-helper (migration validation) + ODD (centralized [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)) + data-diff (cross-database comparison). Pipeline: re_data profiles new tables → generates expectations → feeds ODD quality metrics → data-diff validates ETL output → dbt-[audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)-helper validates refactoring → ODD alerts on score regression. This stack provides automated baselining, migration safety nets, and cross-system reconciliation without SaaS [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) costs.
+### Step 9: Extended [Observability](../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) Integration
+Combine re_data (baseline tracking) + dbt-[audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)-helper (migration validation) + ODD (centralized [observability](../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md)) + data-diff (cross-database comparison). Pipeline: re_data profiles new tables → generates expectations → feeds ODD quality metrics → data-diff validates ETL output → dbt-[audit](../../AI_and_Agents/Operations/common/audit/SKILL.md)-helper validates refactoring → ODD alerts on score regression. This stack provides automated baselining, migration safety nets, and cross-system reconciliation without SaaS [observability](../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) costs.
 
 ## Rules
 - Every critical table has a data contract
@@ -440,10 +440,10 @@ Combine re_data (baseline tracking) + dbt-[audit](../../AI_and_Agents/Operations
 ## References
   - ../../Global_References/Data_Engineering/data-quality-automation.md — Data Quality Automation
   - ../../Global_References/Data_Engineering/data-quality-ecosystem.md — Data Quality Ecosystem Tools
-  - ../../../Global_References/data-quality-[incident-management](../../Software_Engineering_and_Other/Miscellaneous/[incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-management/SKILL.md).md — Data Quality [Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Management
+  - ../../../Global_References/data-quality-[incident-management](../../Software_Engineering_and_Other/Miscellaneous/[incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-management/SKILL.md).md — Data Quality [Incident](../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Management
   - ../../Global_References/Data_Engineering/data-quality-management.md — Data Quality Management
   - ../../Global_References/Data_Engineering/data-quality-metrics.md — Data Quality Metrics
-  - ../../../Global_References/data-quality-[monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Data Quality [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+  - ../../../Global_References/data-quality-[monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Data Quality [Monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
   - ../../Global_References/Data_Engineering/ge-advanced-patterns.md — Great Expectations Advanced Patterns
   - ../../Global_References/Data_Engineering/quality-automation.md — Quality Automation
   - ../../Global_References/Data_Engineering/quality-dimensions.md — Data Quality Dimensions
@@ -542,7 +542,7 @@ models:
 | Testing everything equally | Noise, ignored alerts | Tier quality checks by criticality |
 | No baseline for thresholds | False positives from unfamiliar data | Profile data first, set dynamic thresholds |
 | Quality checks on production only | Bad data reaches consumers | Block at staging/Bronze layer |
-| No [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) integration | Alerts with no context | Link to catalog, lineage, dashboard |
+| No [observability](../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) integration | Alerts with no context | Link to catalog, lineage, dashboard |
 | Ignoring data distribution drift | Static thresholds become obsolete | Periodic retraining of expectation baselines |
 
 ## Performance Optimization
@@ -563,5 +563,5 @@ models:
 
 ## Handoff
 `[data-etl-pipeline](../etl-pipeline/SKILL.md)` for embedding quality checks into pipeline
-`[data-bi-tools](../bi-tools/SKILL.md)` for displaying quality metadata on [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)
+`[data-bi-tools](../bi-tools/SKILL.md)` for displaying quality metadata on [dashboards](../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)
 

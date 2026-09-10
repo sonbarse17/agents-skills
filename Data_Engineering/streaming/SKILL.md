@@ -73,7 +73,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 - [ ] Stream processing job with exactly-once semantics
 - [ ] CDC pipeline from source database configured
 - [ ] Error handling with DLQ defined
-- [ ] [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and lag [alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) configured
+- [ ] [Monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and lag [alerting](../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md) configured
 - [ ] Security configured (TLS, auth, ACLs)
 - [ ] Data retention and compaction strategy defined
 
@@ -100,7 +100,7 @@ A consumer group divides topic partitions among its members. When a consumer joi
 acks=0: fire-and-forget, no acknowledgment, possible data loss. acks=1: leader acknowledges, possible leader failover loss. acks=all (with min.insync.replicas): leader + ISR acknowledge, no loss. Enable `enable.idempotence=true` to prevent duplicate produces within a session. Set `transactional.id` for exactly-once across partitions.
 
 #### Consumer Semantics
-At-most-once: [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) offset before processing (message may be lost on failure). At-least-once: [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) offset after processing (message may be reprocessed on failure). Exactly-once: process and [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) offset atomically via transactional API. Use `isolation.level=read_committed` to only read committed messages. Combine with idempotent sinks (upsert, idempotent operations) for pragmatic exactly-once.
+At-most-once: [commit](../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) offset before processing (message may be lost on failure). At-least-once: [commit](../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) offset after processing (message may be reprocessed on failure). Exactly-once: process and [commit](../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) offset atomically via transactional API. Use `isolation.level=read_committed` to only read committed messages. Combine with idempotent sinks (upsert, idempotent operations) for pragmatic exactly-once.
 
 #### Transactional API
 ```java
@@ -404,13 +404,13 @@ SSL client authentication: mutual TLS between clients and brokers. SASL/PLAIN: u
 ### Authorization
 Kafka ACLs: `--allow-principal User:app1 --operation read --topic orders`. Topic-level: read, write, create, describe, alter. Consumer group-level: read, describe. Cluster-level: create topics, describe configs. Use prefix ACLs for topic patterns: `--topic orders.*`. Prefer RBAC via Apache Ranger for multi-team clusters.
 
-## [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+## [Monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 ### Consumer Lag
 Consumer lag is the difference between the latest produced offset and the consumer's committed offset. High lag means the consumer is falling behind. Lag is the most critical streaming metric. Monitor lag every 60 seconds. Alert on lag > 1000 messages or lag growing steadily (indicates consumer cannot keep up).
 
 ### Key Metrics
-Producer metrics: request rate, error rate, compression ratio, batch size. Consumer metrics: lag, poll rate, processing time, [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) rate. Broker metrics: request rate, disk usage, network throughput, ISR count, under-replicated partitions. Flink metrics: checkpoint duration, state size, records processed per second, latency. All metrics should feed into a [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) dashboard with alerts for anomalous values.
+Producer metrics: request rate, error rate, compression ratio, batch size. Consumer metrics: lag, poll rate, processing time, [commit](../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) rate. Broker metrics: request rate, disk usage, network throughput, ISR count, under-replicated partitions. Flink metrics: checkpoint duration, state size, records processed per second, latency. All metrics should feed into a [monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) dashboard with alerts for anomalous values.
 
 ### Streaming Health Dashboard
 ```
@@ -436,7 +436,7 @@ Orders Streaming Pipeline
 | State management | Required (windowed, keyed) | Not needed |
 | Failure recovery | Checkpoint/savepoint | Re-run from start |
 | Cost | Higher (always-on infra) | Lower (scheduled compute) |
-| Use case | Real-time [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), alerts, CDC | Reports, ML training, backfill |
+| Use case | Real-time [dashboards](../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), alerts, CDC | Reports, ML training, backfill |
 
 ## Common Streaming Topology Patterns
 
@@ -529,7 +529,7 @@ Creating a topic per event type per entity (hundreds of topics). Leads to ZK ove
 Producing/consuming raw JSON without Schema Registry. Inevitably leads to deserialization failures when schema changes. Fix: enforce Schema Registry with Avro/Protobuf and BACKWARD compatibility.
 
 ### Ignoring Offset Management
-Auto-committing offsets with `enable.auto.[commit](../../ci-cd/common/git-workflow/commit/SKILL.md)=true` means processing state may not match committed offset. Fix: manual offset commits after processing complete, or use transactional API.
+Auto-committing offsets with `enable.auto.[commit](../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md)=true` means processing state may not match committed offset. Fix: manual offset commits after processing complete, or use transactional API.
 
 ### Synchronous Processing in Consumers
 Calling external APIs synchronously in consumer poll loop blocks the thread and causes rebalance timeouts. Fix: async processing with callbacks, or use a separate processing thread pool.
@@ -540,7 +540,7 @@ Setting partition count once and never reviewing it. As throughput grows, partit
 ## Streaming Platform Ecosystem
 
 ### Apache Pulsar
-Pulsar is a multi-tenant, high-throughput messaging platform with native geo-replication. Unlike Kafka, Pulsar separates serving (Brokers) from storage (Bookies via Apache BookKeeper), enabling elastic scaling without data rebalancing. Key features: segment-centric storage for unlimited log retention, tiered storage (offload to S3/GCS), built-in Pulsar Functions for lightweight processing, and native [multi-tenancy](../../containers-orchestration/common/other/multi-tenancy/SKILL.md). Topics are virtual and scale transparently. Use Pulsar for geo-distributed deployments, unlimited retention, or multi-tenant streaming.
+Pulsar is a multi-tenant, high-throughput messaging platform with native geo-replication. Unlike Kafka, Pulsar separates serving (Brokers) from storage (Bookies via Apache BookKeeper), enabling elastic scaling without data rebalancing. Key features: segment-centric storage for unlimited log retention, tiered storage (offload to S3/GCS), built-in Pulsar Functions for lightweight processing, and native [multi-tenancy](../../DevOps_and_Cloud/containers-orchestration/common/other/multi-tenancy/SKILL.md). Topics are virtual and scale transparently. Use Pulsar for geo-distributed deployments, unlimited retention, or multi-tenant streaming.
 
 ### Redpanda
 Redpanda is a Kafka-compatible streaming platform in C++ with a single binary (no ZooKeeper, no JVM). Achieves 10x lower latency and 6x higher throughput per node. Uses Raft-based consensus for HA, full Kafka API compatibility, and includes built-in Schema Registry, REST Proxy, and Connectors. Best for teams wanting Kafka compatibility with reduced ops overhead and lower TCO.
@@ -559,7 +559,7 @@ Both provide incremental materialized views on streaming data using [PostgreSQL]
 - Watermarks account for out-of-order events
 - Alert on lag > 1000 or lag growing for 5+ minutes
 - Set retention based on replay and [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) requirements
-- Never auto-[commit](../../ci-cd/common/git-workflow/commit/SKILL.md) offsets in production
+- Never auto-[commit](../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) offsets in production
 - Test checkpointing by simulating broker failures
 - Monitor rebalance frequency as cluster health indicator
 - Use TLS for all inter-component communication
@@ -571,7 +571,7 @@ Both provide incremental materialized views on streaming data using [PostgreSQL]
   - ../../Global_References/Data_Engineering/pulsar-patterns.md — Apache Pulsar Patterns
   - ../../Global_References/Data_Engineering/streaming-architecture.md — Streaming Architecture
   - ../../Global_References/Data_Engineering/streaming-databases.md — Streaming Databases
-  - ../../../Global_References/streaming-[monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Streaming [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+  - ../../../Global_References/streaming-[monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Streaming [Monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 ## Handoff
 `[data-data-warehouse](../data-warehouse/SKILL.md)` for streaming data landing in the warehouse
 `[data-etl-pipeline](../etl-pipeline/SKILL.md)` for batch processing of streamed data

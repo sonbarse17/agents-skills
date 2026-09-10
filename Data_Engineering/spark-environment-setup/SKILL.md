@@ -56,7 +56,7 @@ rather than hard-blocking on `25.11-py3`. NGC's tag is dated, so
 running it directly is fine:
 
 ```bash
-[docker](../../containers-orchestration/docker/other/docker/SKILL.md) run --runtime=nvidia --gpus all -it --rm \
+[docker](../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) run --runtime=nvidia --gpus all -it --rm \
   nvcr.io/nvidia/pytorch:25.09-py3
 ```
 
@@ -103,7 +103,7 @@ component the image already pins. Details on both paths:
 
 One more preflight: official DGX Spark playbooks have shipped
 broken before. Check recent issues on
-`[github](../../ci-cd/github-actions/other/github/SKILL.md).com/NVIDIA/dgx-spark-playbooks` (and the other
+`[github](../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/NVIDIA/dgx-spark-playbooks` (and the other
 resources in `../../Global_References/Data_Engineering/stack-matrix.md`) before trusting a
 recipe verbatim for a long run.
 

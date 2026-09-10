@@ -63,7 +63,7 @@ Scan a container image for vulnerabilities:
 # Install Trivy
 brew install trivy  # macOS
 # or: apt-get install trivy  # Debian/Ubuntu
-# or: [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) pull aquasec/trivy:latest
+# or: [docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) pull aquasec/trivy:latest
 
 # Scan container image
 trivy image nginx:latest
@@ -106,7 +106,7 @@ trivy fs --scanners vuln package-lock.json
 # Generate JSON report for analysis
 trivy fs --format json --output trivy-report.json .
 
-# Generate SARIF for [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)/GitLab integration
+# Generate SARIF for [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/GitLab integration
 trivy fs --format sarif --output trivy.sarif .
 ```
 
@@ -125,7 +125,7 @@ Detect misconfigurations in IaC files:
 # Scan Terraform configurations
 trivy config ./terraform --severity CRITICAL,HIGH
 
-# Scan [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) manifests
+# Scan [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) manifests
 trivy config ./k8s --severity CRITICAL,HIGH
 
 # Scan Dockerfile best practices
@@ -142,7 +142,7 @@ Review findings by category:
 
 ### Workflow 4: CI/CD Pipeline Integration
 
-#### [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions
+#### [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions
 
 ```yaml
 name: Trivy Security Scan
@@ -163,8 +163,8 @@ jobs:
           output: 'trivy-results.sarif'
           severity: 'CRITICAL,HIGH'
 
-      - name: Upload results to [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Security
-        uses: [github](../../../ci-cd/github-actions/other/github/SKILL.md)/codeql-action/upload-sarif@v2
+      - name: Upload results to [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Security
+        uses: [github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/codeql-action/upload-sarif@v2
         with:
           sarif_file: 'trivy-results.sarif'
 ```
@@ -225,7 +225,7 @@ SBOM use cases:
 
 ### [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logging
 
-Log the following for compliance and [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response:
+Log the following for compliance and [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response:
 - Scan execution timestamps and scope (image, filesystem, repository)
 - Vulnerability counts by severity level
 - Policy violations and blocking decisions
@@ -237,7 +237,7 @@ Log the following for compliance and [incident](../../../observability-monitorin
 - **PCI-DSS 6.2**: Ensure system components protected from known vulnerabilities
 - **SOC2 CC7.1**: Detect and act upon changes that could affect security
 - **NIST 800-53 SI-2**: Flaw remediation and vulnerability scanning
-- **CIS Benchmarks**: Container and [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) security hardening
+- **CIS Benchmarks**: Container and [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) security hardening
 - **OWASP Top 10 A06**: Vulnerable and Outdated Components
 - **CWE-1104**: Use of Unmaintained Third-Party Components
 
@@ -260,9 +260,9 @@ Log the following for compliance and [incident](../../../observability-monitorin
 ### Assets (`assets/`)
 
 - `trivy.yaml` - Custom Trivy configuration with security policies and ignore rules
-- `ci_integration/[github-actions](../../DevOps_and_Cloud/CI_CD/[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-actions/SKILL.md).yml` - Complete [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions workflow with security gates
-- `ci_integration/[gitlab-ci](../../../ci-cd/gitlab-ci/pipelines/gitlab-ci/SKILL.md).yml` - Complete GitLab CI pipeline with dependency scanning
-- `ci_integration/[jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md).groovy` - [Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md) pipeline with Trivy integration
+- `ci_integration/[github-actions](../../DevOps_and_Cloud/CI_CD/[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-actions/SKILL.md).yml` - Complete [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions workflow with security gates
+- `ci_integration/[gitlab-ci](../../../DevOps_and_Cloud/ci-cd/gitlab-ci/pipelines/gitlab-ci/SKILL.md).yml` - Complete GitLab CI pipeline with dependency scanning
+- `ci_integration/[jenkins](../../../DevOps_and_Cloud/ci-cd/jenkins/other/jenkins/SKILL.md).groovy` - [Jenkins](../../../DevOps_and_Cloud/ci-cd/jenkins/other/jenkins/SKILL.md) pipeline with Trivy integration
 - `policy_template.rego` - OPA policy template for custom vulnerability policies
 
 ## Common Patterns
@@ -335,23 +335,23 @@ trivy image --ignore-policy assets/policy_template.rego myapp:latest
 
 ### CI/CD Integration
 
-- **[GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions**: Native `aquasecurity/trivy-action` with SARIF upload to Security tab
+- **[GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions**: Native `aquasecurity/trivy-action` with SARIF upload to Security tab
 - **GitLab CI**: Dependency scanning report format for Security Dashboard
-- **[Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md)**: [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-based scanning with JUnit XML report generation
-- **[CircleCI](../../../ci-cd/circleci/other/circleci/SKILL.md)**: [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) executor with artifact storage
+- **[Jenkins](../../../DevOps_and_Cloud/ci-cd/jenkins/other/jenkins/SKILL.md)**: [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)-based scanning with JUnit XML report generation
+- **[CircleCI](../../../DevOps_and_Cloud/ci-cd/circleci/other/circleci/SKILL.md)**: [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) executor with artifact storage
 - **Azure Pipelines**: Task-based integration with results publishing
 
 ### Container Platforms
 
-- **[Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)**: Image scanning before push to registry
-- **[Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)**: Admission controllers with trivy-operator for runtime scanning
+- **[Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)**: Image scanning before push to registry
+- **[Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md)**: Admission controllers with trivy-operator for runtime scanning
 - **Harbor**: Built-in Trivy integration for registry scanning
 - **AWS ECR**: Scan images on push with enhanced scanning
 - **Google Artifact Registry**: Vulnerability scanning integration
 
 ### Security Tools Ecosystem
 
-- **SIEM Integration**: Export JSON findings to Splunk, ELK, or [Datadog](../../../observability-monitoring-logging/datadog/other/datadog/SKILL.md)
+- **SIEM Integration**: Export JSON findings to Splunk, ELK, or [Datadog](../../../DevOps_and_Cloud/observability-monitoring-logging/datadog/other/datadog/SKILL.md)
 - **Vulnerability Management**: Import SARIF/JSON into Snyk, Qualys, or Rapid7
 - **SBOM Tools**: CycloneDX and SPDX compatibility with dependency-track and GUAC
 - **Policy Enforcement**: OPA/Rego integration for custom policy as code
@@ -397,8 +397,8 @@ trivy image --ignore-policy assets/policy_template.rego myapp:latest
 
 **Solution**:
 ```bash
-# Use [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) credential helper
-[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) login registry.example.com
+# Use [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) credential helper
+[docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) login registry.example.com
 trivy image registry.example.com/private/image:tag
 
 # Or use environment variables
@@ -472,7 +472,7 @@ trivy image --skip-db-update --cache-dir /path/to/db --offline-scan myapp:latest
 
 ## References
 
-- [Trivy Official Documentation](https://aquasecurity.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/trivy/)
+- [Trivy Official Documentation](https://aquasecurity.[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).io/trivy/)
 - [OWASP Dependency Check](https://owasp.org/www-project-dependency-check/)
 - [NVD - National Vulnerability Database](https://nvd.nist.gov/)
 - [CISA SBOM Guidelines](https://www.cisa.gov/sbom)

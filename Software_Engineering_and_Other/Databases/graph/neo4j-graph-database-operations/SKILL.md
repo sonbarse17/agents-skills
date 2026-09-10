@@ -276,7 +276,7 @@ window on a large graph rather than assuming it's instantaneous.
   **Fix:** Read replicas replicate asynchronously and can genuinely
   fall behind under sustained high write volume, particularly if
   under-provisioned relative to the core servers. Check replica lag via
-  [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (transaction ID comparison between replica and leader),
+  [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (transaction ID comparison between replica and leader),
   scale the read replica's resources, or add more read replicas to
   spread read load rather than routing all reads to a single
   overloaded replica.
@@ -344,4 +344,4 @@ majority of users.
 
 - [arangodb-multi-model-database-operations](../[arangodb-multi-model-database-operations](../arangodb-multi-model-[database-operations](../database-operations/SKILL.md)/SKILL.md)/SKILL.md) — a distinct multi-model engine (graph plus document plus key-value in one database) rather than Neo4j's graph-only architecture — relevant when a workload needs both graph traversal and general document storage without running two separate databases.
 - [postgresql-high-availability-and-failover](../[postgresql-high-availability-and-failover](../../../AI_and_Agents/Workflows/[postgresql](../../Backend/postgresql/SKILL.md)-high-availability-and-failover/SKILL.md)/SKILL.md) — comparable quorum-based leader-election and failover concerns (Raft in Neo4j's causal cluster vs. Patroni/etcd-based failover in [PostgreSQL](../../relational/postgresql/SKILL.md)), useful as a conceptual parallel.
-- [database-[backup-and-restore](../../../../containers-orchestration/common/other/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies](../database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md) — backup/restore-testing discipline that should back up any destructive Cypher operation (`DETACH DELETE`, a dropped constraint) against a production graph.
+- [database-[backup-and-restore](../../../../DevOps_and_Cloud/containers-orchestration/common/other/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies](../database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md) — backup/restore-testing discipline that should back up any destructive Cypher operation (`DETACH DELETE`, a dropped constraint) against a production graph.

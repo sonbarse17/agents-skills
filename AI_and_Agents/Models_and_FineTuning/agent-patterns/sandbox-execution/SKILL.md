@@ -196,7 +196,7 @@ START: Agent requests execution environment
 │  │  Namespace     │  │  gVisor      │  │  Firecracker          │ │
 │  │  Sandbox       │  │  (runsc)     │  │  microVM              │ │
 │  │  ┌───────────┐ │  │  ┌────────┐  │  │  ┌─────────────────┐ │ │
-│  │  │ cgroups v2│ │  │  │ [Sentry](../../../../observability-monitoring-logging/sentry/other/sentry/SKILL.md) │  │  │  │ Guest Kernel    │ │ │
+│  │  │ cgroups v2│ │  │  │ [Sentry](../../../../DevOps_and_Cloud/observability-monitoring-logging/sentry/other/sentry/SKILL.md) │  │  │  │ Guest Kernel    │ │ │
 │  │  │ seccomp   │ │  │  │ Gofer  │  │  │  │ virtio-blk/net  │ │ │
 │  │  │ namespaces│ │  │  │ KVM    │  │  │  │ vsock/mmds      │ │ │
 │  │  └───────────┘ │  │  └────────┘  │  │  └─────────────────┘ │ │
@@ -243,10 +243,10 @@ START: Agent requests execution environment
 3. Mount filesystems according to the manifest (read-only rootfs, writable workspace, shared volumes).
 4. Apply network policies (iptables rules, eBPF programs, virtio-net filtering).
 
-### Phase 3: Execution & [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+### Phase 3: Execution & [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 1. Inject the agent's code and input artifacts into the sandbox workspace.
 2. Launch execution under the configured resource constraints with a wall-clock watchdog.
-3. Stream stdout/stderr and resource telemetry to the [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) pipeline.
+3. Stream stdout/stderr and resource telemetry to the [observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) pipeline.
 4. Enforce progressive resource warnings (80% memory → soft warning, 95% → hard throttle).
 
 ### Phase 4: State Persistence
@@ -258,7 +258,7 @@ START: Agent requests execution environment
 ### Phase 5: Fork & Speculative Execution
 1. Identify branch points in the agent's reasoning where multiple strategies should be explored.
 2. Create a snapshot at the branch point and fork N child sandboxes from that snapshot.
-3. Execute each branch in parallel with independent resource quotas and [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
+3. Execute each branch in parallel with independent resource quotas and [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
 4. Evaluate branch results using the agent's scoring function and select the optimal path.
 
 ### Phase 6: Cleanup & Teardown
@@ -359,7 +359,7 @@ Agent Request: "Execute [Python](../../../../Software_Engineering_and_Other/Lang
 
 ## Handoff
 
-- **[agent-observability](../../Operations/agent-[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)**: Sandbox telemetry feeds into the [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) pipeline for tracing and [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+- **[agent-observability](../../Operations/agent-[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)**: Sandbox telemetry feeds into the [observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) pipeline for tracing and [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - **tool-orchestration**: Sandboxes are invoked as tools within the broader tool orchestration framework
 - **safety-guardrails**: Sandbox policies enforce the safety constraints defined by the guardrails skill
 
@@ -545,11 +545,11 @@ What's the trust level of the code being executed?
 │       └── Filesystem read-only
 │
 ├── Semi-trusted code (third-party, OSS)
-│   └── Container sandbox ([Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md))
+│   └── Container sandbox ([Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md))
 │       ├── Full container isolation
 │       ├── Network policy (egress only to allowed domains)
 │       ├── Read-only root filesystem
-│       └── Memory/CPU limits via [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)
+│       └── Memory/CPU limits via [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)
 │
 ├── Untrusted code (user-submitted, AI-generated)
 │   └── MicroVM sandbox (Firecracker, gVisor)

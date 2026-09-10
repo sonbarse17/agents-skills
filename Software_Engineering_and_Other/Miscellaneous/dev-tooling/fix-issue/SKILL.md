@@ -22,4 +22,4 @@ depends_on:
 3. Implement the fix following codebase conventions
 4. Write tests matching existing test patterns
 5. Run tests to verify
-6. [Commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) with `Fixes #$issue` in message
+6. [Commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) with `Fixes #$issue` in message

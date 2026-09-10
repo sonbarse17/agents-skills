@@ -41,7 +41,7 @@ Use PlanetScale for [serverless](../../../Patterns/data-performance/serverless/S
 brew install planetscale/tap/pscale
 
 # Linux (deb)
-curl -fsSL https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/planetscale/cli/releases/latest/download/pscale_linux_amd64.deb -o pscale.deb
+curl -fsSL https://[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/planetscale/cli/releases/latest/download/pscale_linux_amd64.deb -o pscale.deb
 sudo dpkg -i pscale.deb
 
 # Verify installation
@@ -228,7 +228,7 @@ SHOW INDEX FROM users;
 EXPLAIN SELECT * FROM orders WHERE user_id = 42 AND status = 'paid';
 ```
 
-## [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) Setup for Local Development
+## [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) Setup for Local Development
 
 Use a plain [MySQL](../../relational/mysql/SKILL.md) 8 container to mirror PlanetScale locally when you are offline or want fast iteration without the CLI proxy.
 
@@ -249,7 +249,7 @@ services:
       MYSQL_PASSWORD: secret
     volumes:
       - mysql_data:/var/lib/[mysql](../../relational/mysql/SKILL.md)
-      - ./init.sql:/[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)-entrypoint-initdb.d/init.sql
+      - ./init.sql:/[docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)-entrypoint-initdb.d/init.sql
     command: >
       --default-authentication-plugin=mysql_native_password
       --character-set-server=utf8mb4
@@ -260,7 +260,7 @@ volumes:
 ```
 
 ```bash
-[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) compose up -d
+[docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) compose up -d
 [mysql](../../relational/mysql/SKILL.md) -h 127.0.0.1 -u myapp -psecret my-app
 ```
 

@@ -81,7 +81,7 @@ syft ghcr.io/acme/api:v1.2.3 -o spdx-json > sbom-spdx.json
 syft dir:. -o cyclonedx-json > sbom-source.json
 
 # Generate SBOM from a Dockerfile/built image
-syft [docker](../../../containers-orchestration/docker/other/docker/SKILL.md):my-local-image:latest -o cyclonedx-json > sbom-local.json
+syft [docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md):my-local-image:latest -o cyclonedx-json > sbom-local.json
 
 # Generate SBOM for a specific package ecosystem
 syft dir:. --catalogers [python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) -o cyclonedx-json > sbom-[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md).json
@@ -115,7 +115,7 @@ cdxgen -t go -o sbom-go.json .
 cdxgen --evidence -o sbom-with-evidence.json .
 
 # Generate for a container image
-cdxgen -t [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) -o sbom-container.json ghcr.io/acme/api:v1.2.3
+cdxgen -t [docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) -o sbom-container.json ghcr.io/acme/api:v1.2.3
 
 # Generate with deep analysis (slower but more accurate)
 cdxgen --deep -o sbom-deep.json .
@@ -160,7 +160,7 @@ cosign sign --key cosign.key ghcr.io/acme/api@sha256:abc123...
 
 # Verify keyless signature
 cosign verify \
-  --certificate-identity=https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/acme/api/.[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/build.yml@refs/heads/main \
+  --certificate-identity=https://[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/acme/api/.[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/workflows/build.yml@refs/heads/main \
   --certificate-oidc-issuer=https://token.actions.githubusercontent.com \
   ghcr.io/acme/api@sha256:abc123...
 
@@ -184,7 +184,7 @@ cosign attest --predicate sbom-spdx.json \
 # Verify SBOM attestation
 cosign verify-attestation \
   --type cyclonedx \
-  --certificate-identity=https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/acme/api/.[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/build.yml@refs/heads/main \
+  --certificate-identity=https://[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/acme/api/.[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/workflows/build.yml@refs/heads/main \
   --certificate-oidc-issuer=https://token.actions.githubusercontent.com \
   ghcr.io/acme/api@sha256:abc123...
 
@@ -200,15 +200,15 @@ cosign verify-attestation --type cyclonedx \
 # Create a custom provenance attestation
 cat > provenance.json << 'EOF'
 {
-  "buildType": "https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/acme/build-system@v1",
+  "buildType": "https://[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/acme/build-system@v1",
   "builder": {
-    "id": "https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/acme/api/.[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/build.yml@refs/heads/main"
+    "id": "https://[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/acme/api/.[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/workflows/build.yml@refs/heads/main"
   },
   "invocation": {
     "configSource": {
-      "uri": "git+https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/acme/api@refs/heads/main",
+      "uri": "git+https://[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/acme/api@refs/heads/main",
       "digest": { "sha1": "abc123def456" },
-      "entryPoint": ".[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/build.yml"
+      "entryPoint": ".[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/workflows/build.yml"
     }
   },
   "metadata": {
@@ -222,11 +222,11 @@ cat > provenance.json << 'EOF'
   },
   "materials": [
     {
-      "uri": "git+https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/acme/api@refs/heads/main",
+      "uri": "git+https://[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/acme/api@refs/heads/main",
       "digest": { "sha1": "abc123def456" }
     },
     {
-      "uri": "pkg:[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)/[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)@3.11-slim",
+      "uri": "pkg:[docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)/[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)@3.11-slim",
       "digest": { "sha256": "def456..." }
     }
   ]
@@ -242,7 +242,7 @@ cosign attest --predicate provenance.json \
 ## CI/CD Pipeline Integration
 
 ```yaml
-# .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/sbom-supply-chain.yml
+# .[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/workflows/sbom-supply-chain.yml
 name: Build with SBOM and Signing
 on:
   push:
@@ -259,22 +259,22 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Buildx
-        uses: [docker](../../../containers-orchestration/docker/other/docker/SKILL.md)/setup-buildx-action@v3
+      - name: Set up [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) Buildx
+        uses: [docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)/setup-buildx-action@v3
 
       - name: Login to GHCR
-        uses: [docker](../../../containers-orchestration/docker/other/docker/SKILL.md)/login-action@v3
+        uses: [docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)/login-action@v3
         with:
           registry: ghcr.io
-          username: ${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).actor }}
+          username: ${{ [github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push image
         id: build
-        uses: [docker](../../../containers-orchestration/docker/other/docker/SKILL.md)/build-push-action@v5
+        uses: [docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)/build-push-action@v5
         with:
           push: true
-          tags: ghcr.io/${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).repository }}:${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).ref_name }}
+          tags: ghcr.io/${{ [github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).repository }}:${{ [github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).ref_name }}
 
       - name: Install tools
         run: |
@@ -283,7 +283,7 @@ jobs:
 
       - name: Generate SBOM
         run: |
-          syft ghcr.io/${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).repository }}@${{ steps.build.outputs.digest }} \
+          syft ghcr.io/${{ [github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).repository }}@${{ steps.build.outputs.digest }} \
             -o cyclonedx-json=sbom-cdx.json \
             -o spdx-json=sbom-spdx.json
 
@@ -296,13 +296,13 @@ jobs:
 
       - name: Sign image (keyless)
         run: |
-          cosign sign ghcr.io/${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).repository }}@${{ steps.build.outputs.digest }}
+          cosign sign ghcr.io/${{ [github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).repository }}@${{ steps.build.outputs.digest }}
 
       - name: Attach SBOM attestation
         run: |
           cosign attest --predicate sbom-cdx.json \
             --type cyclonedx \
-            ghcr.io/${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).repository }}@${{ steps.build.outputs.digest }}
+            ghcr.io/${{ [github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).repository }}@${{ steps.build.outputs.digest }}
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
@@ -337,7 +337,7 @@ spec:
           attestors:
             - entries:
                 - keyless:
-                    subject: "https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/acme/*"
+                    subject: "https://[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/acme/*"
                     issuer: "https://token.actions.githubusercontent.com"
                     rekor:
                       url: "https://rekor.sigstore.dev"
@@ -382,7 +382,7 @@ any_critical if {
 
 signed_by_ci if {
     input.signature.issuer == "https://token.actions.githubusercontent.com"
-    startswith(input.signature.subject, "https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/acme/")
+    startswith(input.signature.subject, "https://[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/acme/")
 }
 ```
 
@@ -391,8 +391,8 @@ signed_by_ci if {
 | Problem | Cause | Solution |
 |---------|-------|----------|
 | Syft misses dependencies | Unsupported package manager or format | Check syft catalogers list; use `cdxgen` for deeper analysis; contribute upstream |
-| Cosign sign fails with "no identity token" | Missing OIDC provider in CI | Ensure `id-token: write` permission in [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions; check OIDC provider config |
-| Grype reports false positives | Package version detection incorrect | Verify SBOM accuracy; report to grype [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md); add ignore rules for confirmed FPs |
+| Cosign sign fails with "no identity token" | Missing OIDC provider in CI | Ensure `id-token: write` permission in [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions; check OIDC provider config |
+| Grype reports false positives | Package version detection incorrect | Verify SBOM accuracy; report to grype [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md); add ignore rules for confirmed FPs |
 | SBOM attestation too large | Large image with many dependencies | Compress SBOM; use SPDX compact format; consider splitting per layer |
 | Verification fails in admission controller | Wrong identity or issuer URL | Check exact `--certificate-identity` and `--certificate-oidc-issuer` values |
 | cdxgen produces empty SBOM | Project type not detected | Specify type explicitly with `-t`; ensure manifest files (package.json, etc.) exist |
@@ -403,7 +403,7 @@ signed_by_ci if {
 - Sign all release artifacts with keyless signing (Sigstore/Fulcio)
 - Attach SBOMs as in-toto attestations to container images
 - Scan SBOMs for vulnerabilities in CI and block on critical findings
-- Archive SBOMs for every release for [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) and [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response
+- Archive SBOMs for every release for [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) and [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response
 - Enforce signature verification in admission controllers (Kyverno, OPA)
 - Monitor for new CVEs against stored SBOMs continuously
 - Include SBOM generation in every build pipeline, not just releases

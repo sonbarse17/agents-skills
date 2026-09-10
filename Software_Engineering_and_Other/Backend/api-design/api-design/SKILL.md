@@ -873,7 +873,7 @@ async function fetchFromService(url: string): Promise<unknown> {
 | File upload | Multipart/form-data | Requires custom scalar or separate upload API |
 | Learning curve | Low | Moderate |
 | Performance | Predictable per-endpoint | Varies by query complexity |
-| [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) | Per-endpoint metrics | Per-resolver deep tracing |
+| [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) | Per-endpoint metrics | Per-resolver deep tracing |
 
 ### URI vs Header Versioning
 | Aspect | URI Versioning | Header Versioning |

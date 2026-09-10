@@ -302,7 +302,7 @@ Each role has veto power on ambiguity. If any amigo can't explain what a scenari
 | 1. Beginner | Writing basic Gherkin, no automation | Training on Gherkin syntax | Feature files written for 50%+ stories |
 | 2. Structured | Three amigos regular, automated step defs | Three amigos facilitation training | 80%+ stories with three amigos |
 | 3. Integrated | Scenarios drive development, CI execution | CI pipeline integration skills | 100% feature file coverage in CI |
-| 4. Optimized | Living documentation, metrics-driven | [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and reporting setup | Stakeholders read living docs monthly |
+| 4. Optimized | Living documentation, metrics-driven | [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and reporting setup | Stakeholders read living docs monthly |
 
 ### Common Adoption Challenges
 
@@ -312,11 +312,11 @@ Business stakeholders skip three amigos sessions. Scenario: BA says "developers 
 
 **Challenge: Test maintenance burden**
 As product evolves, features and step definitions need updates. Teams abandon BDD when maintenance exceeds creation effort.
-**Solution:** Refactor step definitions regularly. Use shared step libraries. Tag scenarios by frequency tier (@smoke runs on every [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md), @regression runs nightly). Budget 20% of sprint for test maintenance.
+**Solution:** Refactor step definitions regularly. Use shared step libraries. Tag scenarios by frequency tier (@smoke runs on every [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md), @regression runs nightly). Budget 20% of sprint for test maintenance.
 
 **Challenge: Slow execution time**
 BDD scenarios that hit real APIs, databases, or UIs become slow. Teams stop running them frequently. They break and stay broken.
-**Solution:** Use test doubles for most scenarios. Reserve end-to-end for critical paths marked @e2e. Run fast scenarios on every [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md), slow scenarios nightly. Parallelize execution.
+**Solution:** Use test doubles for most scenarios. Reserve end-to-end for critical paths marked @e2e. Run fast scenarios on every [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md), slow scenarios nightly. Parallelize execution.
 
 ## Living Documentation in Practice
 
@@ -338,7 +338,7 @@ Report should include: feature list with descriptions, scenario count by status 
 ### BDD in CI/CD Pipeline
 
 ```
-[Commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) → Build → Unit Tests → BDD Tests → Integration Tests → Deploy
+[Commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) → Build → Unit Tests → BDD Tests → Integration Tests → Deploy
                               ↓
                 Feature file execution
                 Generate living documentation
@@ -346,7 +346,7 @@ Report should include: feature list with descriptions, scenario count by status 
                 Fail build on P0 scenario failure
 ```
 
-Best practices: run smoke BDD tests on every [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) (tagged @smoke), run full BDD suite nightly, notify stakeholders on failure, maintain average execution time <30 seconds per feature, parallelize scenario execution for speed, use tags for selective execution by environment.
+Best practices: run smoke BDD tests on every [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) (tagged @smoke), run full BDD suite nightly, notify stakeholders on failure, maintain average execution time <30 seconds per feature, parallelize scenario execution for speed, use tags for selective execution by environment.
 
 ## BDD Tool Comparison
 
@@ -623,7 +623,7 @@ Using BDD for all testing needs including unit tests, integration tests, and per
 
 **Phase 3 — Standardize (Weeks 13-24):** Make BDD part of Definition of Ready (scenarios before development) and Definition of Done (scenarios passing in CI). Train all teams. Centralize step library governance. Measure: feature file coverage, scenario pass rate stability, time from scenario writing to automation.
 
-**Phase 4 — Optimize (Weeks 25+):** BDD metrics in team [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md). Living documentation as primary requirements reference. Automated traceability from scenarios to requirements. Measure: business stakeholder engagement with living docs, defect escape rate reduction, requirements ambiguity reduction.
+**Phase 4 — Optimize (Weeks 25+):** BDD metrics in team [dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md). Living documentation as primary requirements reference. Automated traceability from scenarios to requirements. Measure: business stakeholder engagement with living docs, defect escape rate reduction, requirements ambiguity reduction.
 
 ## Expansion Patterns for Gherkin
 
@@ -665,7 +665,7 @@ Feature: User Authentication
 
 CI execution strategy:
 ```
-On every [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md): @smoke (fast, <2 min)
+On every [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md): @smoke (fast, <2 min)
 On every merge to main: @regression (medium, <15 min)
 Nightly: @e2e (full suite, <30 min)
 On release candidate: all tags (comprehensive)

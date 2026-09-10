@@ -47,7 +47,7 @@ single agent, and how to keep hand-offs between agents reliable.
   reaching for multi-agent as a fix).
 - A task naturally decomposes into independent workstreams that can run in
   parallel (e.g. researching three unrelated topics before synthesizing).
-- A task benefits from specialist framing — a [code-review](../../../../ci-cd/common/other/code-review/SKILL.md) sub-agent with a
+- A task benefits from specialist framing — a [code-review](../../../../DevOps_and_Cloud/ci-cd/common/other/code-review/SKILL.md) sub-agent with a
   narrow reviewer persona genuinely produces better reviews than one
   generalist agent asked to "also review code" among ten other jobs.
 - You need a distinct verification/critic role separate from the agent that
@@ -243,7 +243,7 @@ fan-in:
 ```
 
 Each sub-agent gets a narrow prompt and only the 1–2 tools its section
-needs — the PR summarizer never sees [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) tools or vice versa — and
+needs — the PR summarizer never sees [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) tools or vice versa — and
 the whole run is capped at exactly 3 parallel sub-agents with no further
 delegation allowed, keeping cost bounded and predictable per digest run.
 The aggregator is evaluated separately (does it preserve every source

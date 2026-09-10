@@ -47,7 +47,7 @@ those changes, complementing the operational depth in
   collection.
 - Before changing `writeConcern`/`readConcern` defaults, or introducing a
   `readPreference` change to an application that reads from secondaries.
-- As a review gate for [infrastructure-as-code](../../../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) that manages [MongoDB](../mongodb/SKILL.md)
+- As a review gate for [infrastructure-as-code](../../../../DevOps_and_Cloud/infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) that manages [MongoDB](../mongodb/SKILL.md)
   replica set/sharding topology.
 
 ## Prerequisites & environment
@@ -184,7 +184,7 @@ key validation specifically) before scheduling the production change.
   durability requirements as a finding to flag, not a silent default to
   accept.
 - Bake shard-key and index-build validation into the review process for
-  [infrastructure-as-code](../../../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md)-managed [MongoDB](../mongodb/SKILL.md) schemas/topology, not just as
+  [infrastructure-as-code](../../../../DevOps_and_Cloud/infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md)-managed [MongoDB](../mongodb/SKILL.md) schemas/topology, not just as
   manual shell-command review.
 
 ## Common pitfalls
@@ -235,7 +235,7 @@ key validation specifically) before scheduling the production change.
   started — always validate the target shard key against real
   cardinality/skew data first (step 2 above), and schedule
   `reshardCollection` for a low-traffic maintenance window with
-  [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) on cluster resource usage throughout, since it competes
+  [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) on cluster resource usage throughout, since it competes
   for I/O and CPU with live traffic for its full duration.
 
 ## Worked example

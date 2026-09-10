@@ -22,7 +22,7 @@ Comprehensive guidance for writing production-ready Bash scripts using defensive
 - Developing error-resilient deployment automation
 - Writing scripts that must handle edge cases safely
 - Building maintainable shell script libraries
-- Implementing comprehensive logging and [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+- Implementing comprehensive logging and [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - Creating scripts that must work across different platforms
 
 ## Detailed patterns and worked examples

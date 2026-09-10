@@ -28,7 +28,7 @@ Use this skill when:
 - Hardening new Windows Server deployments
 - Implementing CIS benchmarks or Microsoft security baselines
 - Preparing for compliance audits (SOC2, PCI-DSS, HIPAA)
-- Configuring security features after a security [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
+- Configuring security features after a security [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
 - Setting up Windows Defender and advanced threat protection
 - Establishing Group Policy security standards for a domain
 

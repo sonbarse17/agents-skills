@@ -476,7 +476,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
+### [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -508,7 +508,7 @@ config:
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) signing
+- Signed commits: GPG or SSH [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management

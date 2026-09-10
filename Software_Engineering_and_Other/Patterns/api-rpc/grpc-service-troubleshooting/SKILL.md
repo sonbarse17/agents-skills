@@ -40,12 +40,12 @@ that concentrates all of a client's traffic onto one backend pod
 because a plain L4 load balancer has no visibility into the
 multiplexed streams inside it. This skill covers diagnosing these
 gRPC-specific issues directly — distinct from
-[ingress-nginx-configuration](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[ingress-nginx-configuration](../../../../containers-orchestration/kubernetes/networking/ingress-nginx-configuration/SKILL.md)/SKILL.md)-style
+[ingress-nginx-configuration](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[ingress-nginx-configuration](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/networking/ingress-nginx-configuration/SKILL.md)/SKILL.md)-style
 HTTP/1.1 ingress troubleshooting, and complementary to the
 mesh-level traffic policies covered in
 [service-mesh-istio](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[service-mesh-istio](../../../Software_Engineering_and_Other/Frontend/[service-mesh](../service-mesh/SKILL.md)-istio/SKILL.md)/SKILL.md)
 and
-[linkerd-[service-mesh](../../../../containers-orchestration/common/service-mesh/service-mesh/SKILL.md)-configuration](../[linkerd-[service-mesh](../service-mesh/SKILL.md)-configuration](../../../Software_Engineering_and_Other/Frontend/linkerd-[service-mesh](../service-mesh/SKILL.md)-configuration/SKILL.md)/SKILL.md),
+[linkerd-[service-mesh](../../../../DevOps_and_Cloud/containers-orchestration/common/service-mesh/service-mesh/SKILL.md)-configuration](../[linkerd-[service-mesh](../service-mesh/SKILL.md)-configuration](../../../Software_Engineering_and_Other/Frontend/linkerd-[service-mesh](../service-mesh/SKILL.md)-configuration/SKILL.md)/SKILL.md),
 both of which have first-class gRPC support worth reaching for instead
 of hand-rolling client-side retry/[load-balancing](../../../Backend/patterns/load-balancing/SKILL.md) logic.
 
@@ -175,7 +175,7 @@ of hand-rolling client-side retry/[load-balancing](../../../Backend/patterns/loa
    sends every RPC to whichever single backend that connection landed
    on:
    ```bash
-   [kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) top pods -n payments -l app=payments-api
+   [kubectl](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubectl/SKILL.md) top pods -n payments -l app=payments-api
    # one pod consistently far hotter than its siblings under equal client load
    ```
    Fix by moving to client-side (per-RPC) load balancing — a gRPC
@@ -263,7 +263,7 @@ of hand-rolling client-side retry/[load-balancing](../../../Backend/patterns/loa
   mesh is already in place — see
   [service-mesh-istio](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[service-mesh-istio](../../../Software_Engineering_and_Other/Frontend/[service-mesh](../service-mesh/SKILL.md)-istio/SKILL.md)/SKILL.md)
   and
-  [linkerd-[service-mesh](../../../../containers-orchestration/common/service-mesh/service-mesh/SKILL.md)-configuration](../[linkerd-[service-mesh](../service-mesh/SKILL.md)-configuration](../../../Software_Engineering_and_Other/Frontend/linkerd-[service-mesh](../service-mesh/SKILL.md)-configuration/SKILL.md)/SKILL.md)
+  [linkerd-[service-mesh](../../../../DevOps_and_Cloud/containers-orchestration/common/service-mesh/service-mesh/SKILL.md)-configuration](../[linkerd-[service-mesh](../service-mesh/SKILL.md)-configuration](../../../Software_Engineering_and_Other/Frontend/linkerd-[service-mesh](../service-mesh/SKILL.md)-configuration/SKILL.md)/SKILL.md)
   for the mesh-level configuration.
 - When fronting gRPC through a gateway (Kong, an Ingress controller),
   confirm gRPC/HTTP2 upstream support is explicitly enabled — it is
@@ -316,7 +316,7 @@ of hand-rolling client-side retry/[load-balancing](../../../Backend/patterns/loa
   `protoc --decode_raw` against a captured payload to see exactly what
   bytes an old client is misinterpreting.
 
-- **Symptom:** To "fix" a `DEADLINE_EXCEEDED` error during an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md),
+- **Symptom:** To "fix" a `DEADLINE_EXCEEDED` error during an [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md),
   someone doubles or removes the client's deadline entirely, the errors
   stop, and the change stays in place afterward.
   **Fix:** Removing or drastically extending a deadline masks whatever
@@ -334,7 +334,7 @@ of hand-rolling client-side retry/[load-balancing](../../../Backend/patterns/loa
 **Scenario:** `checkout-service` calls `payments-api` via gRPC and
 intermittently sees `DEADLINE_EXCEEDED`; separately, `payments-api`'s
 pods show uneven CPU load despite three healthy replicas behind the
-same [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Service.
+same [Kubernetes](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Service.
 
 ```bash
 # 1. Isolate whether it's a real backend slowness or a deadline issue
@@ -349,7 +349,7 @@ grpcurl -max-time 30 -d '{"id":"123"}' payments-api.payments.svc.cluster.local:8
 # of the budget before calling payments-api at all
 
 # 3. Confirm the uneven-load symptom is HTTP/2 connection reuse
-[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) top pods -n payments -l app=payments-api
+[kubectl](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubectl/SKILL.md) top pods -n payments -l app=payments-api
 # payments-api-7f9...-abcde consistently 3x the CPU of its siblings
 ```
 
@@ -365,16 +365,16 @@ Root causes and fixes:
    target address and no [load-balancing](../../../Backend/patterns/load-balancing/SKILL.md) policy, so its one long-lived
    HTTP/2 connection to `payments-api` pinned all traffic to whichever
    pod it first connected to. Fix: configure the client with a
-   [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-DNS-based resolver returning all backend pod IPs and
+   [Kubernetes](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-DNS-based resolver returning all backend pod IPs and
    `grpc.WithDefaultServiceConfig` set to `round_robin`, so each new RPC
    (not just each new connection) can land on a different backend.
 
-Re-running the `grpcurl` deadline test and `[kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) top pods` after both
+Re-running the `grpcurl` deadline test and `[kubectl](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubectl/SKILL.md) top pods` after both
 fixes confirms `payments-api` now sees a healthy ~1.5s deadline budget
 and CPU load spread evenly across all three replicas.
 
 ## Cross-references
 
 - [service-mesh-istio](../../../[kubernetes](../../Containers_and_Orchestration/kubernetes/SKILL.md)-platform/skills/[service-mesh-istio](../../../Software_Engineering_and_Other/Frontend/[service-mesh](../service-mesh/SKILL.md)-istio/SKILL.md)/SKILL.md) — mesh-level gRPC-aware timeout, retry, and [load-balancing](../../../Backend/patterns/load-balancing/SKILL.md) configuration (`VirtualService` timeout/retries, `DestinationRule` [load-balancing](../../../Backend/patterns/load-balancing/SKILL.md) policy) as an alternative to hand-rolled client-side logic.
-- [linkerd-[service-mesh](../../../../containers-orchestration/common/service-mesh/service-mesh/SKILL.md)-configuration](../[linkerd-[service-mesh](../service-mesh/SKILL.md)-configuration](../../../Software_Engineering_and_Other/Frontend/linkerd-[service-mesh](../service-mesh/SKILL.md)-configuration/SKILL.md)/SKILL.md) — Linkerd's `ServiceProfile`-based per-route timeout/retry configuration, which is gRPC-aware and solves the same class of problem at the mesh layer.
+- [linkerd-[service-mesh](../../../../DevOps_and_Cloud/containers-orchestration/common/service-mesh/service-mesh/SKILL.md)-configuration](../[linkerd-[service-mesh](../service-mesh/SKILL.md)-configuration](../../../Software_Engineering_and_Other/Frontend/linkerd-[service-mesh](../service-mesh/SKILL.md)-configuration/SKILL.md)/SKILL.md) — Linkerd's `ServiceProfile`-based per-route timeout/retry configuration, which is gRPC-aware and solves the same class of problem at the mesh layer.
 - [kong-[api-gateway](../../../Backend/api-gateway/api-gateway/SKILL.md)-configuration](../[kong-[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/api-gateway/SKILL.md)-configuration](../../../Software_Engineering_and_Other/Backend/kong-[api-gateway](../../../Software_Engineering_and_Other/Backend/api-gateway/api-gateway/SKILL.md)-configuration/SKILL.md)/SKILL.md) — configuring a gateway's upstream to actually speak gRPC/HTTP2 rather than falling back to HTTP/1.1, relevant to the intermediary-awareness check in step 6.

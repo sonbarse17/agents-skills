@@ -138,7 +138,7 @@ vendor SDK is driving it.
 7. **Instrument before you optimize.** Log, at minimum: the input to each
    LLM call, the tool calls it emitted, the tool results, and the final
    stop reason. Without this, pitfalls like loops and context bloat are
-   invisible until they cause an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
+   invisible until they cause an [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 
 8. **Decide single-agent vs multi-agent last, not first.** Start with the
    simplest single agent with a well-scoped tool set; only split into
@@ -235,7 +235,7 @@ transitions:
 Loop bound: max 6 state transitions per ticket, 60s timeout per LLM call.
 Every transition emits a `ticket.state_changed` event with ticket id, from
 state, to state, and the tool calls made in that state — this is what an
-[observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) dashboard and later
+[observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) dashboard and later
 [agent-evaluation-and-guardrails](../../../Models_and_FineTuning/evaluation/agent-evaluation-and-guardrails/SKILL.md)/SKILL.md)
 checks consume. The `send` state is the only place `send_reply` (an
 irreversible-write tool) is even present in the tool list passed to the

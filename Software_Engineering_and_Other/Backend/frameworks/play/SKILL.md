@@ -142,7 +142,7 @@ lazy val root = (project in file("."))
       "org.playframework" %% "play-slick-evolutions" % "6.0.0",
       "org.[postgresql](../../../Databases/relational/postgresql/SKILL.md)" % "[postgresql](../../../Databases/relational/postgresql/SKILL.md)" % "42.7.0",
       "org.mindrot" % "jbcrypt" % "0.4",
-      "com.[github](../../../../ci-cd/github-actions/other/github/SKILL.md).jwt-scala" %% "jwt-play" % "9.4.0",
+      "com.[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).jwt-scala" %% "jwt-play" % "9.4.0",
       "org.scalatestplus.play" %% "scalatestplus-play" % "7.0.0" % Test,
     )
   )

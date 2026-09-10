@@ -495,7 +495,7 @@ app.get('/api/web/checkout/:cartId', async (req, res) => {
 
 ## Production Considerations
 
-### [Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
+### [Observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
 ```[typescript](../../../Frontend/common/typescript/SKILL.md)
 // Structured BFF logging with request tracing
 interface BffLogContext {
@@ -587,10 +587,10 @@ interface BffLogContext {
 | **Axios / node-fetch** | HTTP client for backing services |
 | **opossum** | Circuit breaker |
 | **pino** | Structured logging with request tracing |
-| **[Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)** | Per-BFF [containerization](../../../../containers-orchestration/docker/other/containerization/SKILL.md) |
-| **[Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)** | BFF deployment and scaling |
+| **[Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)** | Per-BFF [containerization](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/containerization/SKILL.md) |
+| **[Kubernetes](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md)** | BFF deployment and scaling |
 | **Prometheus** | BFF metrics (latency, error rate) |
-| **Grafana** | BFF [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) |
+| **Grafana** | BFF [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) [dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) |
 | **jaeger/zipkin** | Distributed tracing |
 
 ## Rules

@@ -54,7 +54,7 @@ Sigma is to log detection what Snort is to network traffic and YARA is to files 
 - Validate rule syntax and logic
 - Map detections to MITRE ATT&CK framework
 - Build threat hunting queries
-- Implement compliance-based [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+- Implement compliance-based [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 ## Quick Start
 
@@ -176,11 +176,11 @@ Review conversion report for:
 
 ### Workflow 4: Compliance-Based Detection
 
-For implementing compliance [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (PCI-DSS, NIST, ISO 27001):
+For implementing compliance [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (PCI-DSS, NIST, ISO 27001):
 
 1. **Map Requirements to Detections**
    - Identify compliance control requirements
-   - Determine required log [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+   - Determine required log [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
    - See [../../../Global_References/Security/compliance-mappings.md](../../../Global_References/Security/compliance-mappings.md)
 
 2. **Create Detection Rules**
@@ -311,7 +311,7 @@ detection:
 
 - **[Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logging**: Log all rule deployments, modifications, and deletions. Track who deployed which rules to which systems. Maintain change history for compliance auditing.
 
-- **Compliance**: Sigma rules support compliance [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (PCI-DSS 10.2, NIST SP 800-53 AU family, ISO 27001 A.12.4). Document rule-to-control mappings for [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) evidence.
+- **Compliance**: Sigma rules support compliance [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (PCI-DSS 10.2, NIST SP 800-53 AU family, ISO 27001 A.12.4). Document rule-to-control mappings for [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) evidence.
 
 - **Safe Defaults**: Use conservative false positive filtering in production. Start rules at "experimental" status. Test thoroughly in test environment before production deployment.
 
@@ -341,13 +341,13 @@ detection:
   - `credential-access.yml` - Credential dumping detection template
 
 - `assets/compliance-rules/` - Compliance-focused rule templates
-  - `pci-dss-[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).yml` - PCI-DSS [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) requirements
+  - `pci-dss-[monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).yml` - PCI-DSS [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) requirements
   - `nist-800-53-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md).yml` - NIST 800-53 [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging requirements
-  - `iso27001-logging.yml` - ISO 27001 logging and [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+  - `iso27001-logging.yml` - ISO 27001 logging and [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 ## Common Detection Patterns
 
-### Pattern 1: Process Execution [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+### Pattern 1: Process Execution [Monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 Detect suspicious process creation with command-line analysis:
 
@@ -366,7 +366,7 @@ detection:
             - 'FromBase64String'
 ```
 
-### Pattern 2: Network Connection [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+### Pattern 2: Network Connection [Monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 Detect suspicious outbound connections:
 
@@ -389,7 +389,7 @@ detection:
     condition: selection and not filter
 ```
 
-### Pattern 3: File Event [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+### Pattern 3: File Event [Monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 Detect file creation in suspicious locations:
 
@@ -415,7 +415,7 @@ detection:
 Build detection-as-code pipelines:
 
 ```yaml
-# .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/sigma-validation.yml
+# .[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/workflows/sigma-validation.yml
 name: Sigma Rule Validation
 on: [push, pull_request]
 jobs:
@@ -509,7 +509,7 @@ For detailed technique mappings, see [../../../Global_References/Security/mitre-
 ## Best Practices
 
 1. **Start with Community Rules**: Use SigmaHQ repository (3000+ peer-reviewed rules) as foundation
-2. **Version Control**: Store rules in Git with meaningful [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) messages
+2. **Version Control**: Store rules in Git with meaningful [commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) messages
 3. **Test Before Deploy**: Validate against historical data in test environment
 4. **Document Tuning**: Track false positive patterns and tuning decisions
 5. **Map to Frameworks**: Tag all rules with MITRE ATT&CK and compliance mappings
@@ -519,9 +519,9 @@ For detailed technique mappings, see [../../../Global_References/Security/mitre-
 
 ## References
 
-- [Sigma Specification](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/SigmaHQ/sigma-specification)
-- [SigmaHQ Rule Repository](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/SigmaHQ/sigma/tree/master/rules)
-- [pySigma Documentation](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/SigmaHQ/pySigma)
+- [Sigma Specification](https://[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/SigmaHQ/sigma-specification)
+- [SigmaHQ Rule Repository](https://[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/SigmaHQ/sigma/tree/master/rules)
+- [pySigma Documentation](https://[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/SigmaHQ/pySigma)
 - [Sigma Converter Web Tool](https://sigconverter.io/)
 - [MITRE ATT&CK Framework](https://attack.mitre.org/)
 

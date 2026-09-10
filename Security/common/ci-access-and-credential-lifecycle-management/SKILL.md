@@ -51,7 +51,7 @@ and never removes them.
   contractor, a decommissioned integration, a one-off access grant that
   was never time-boxed).
 - Setting up a recurring process so credential rotation and access review
-  happen on a schedule instead of only reactively after an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) or
+  happen on a schedule instead of only reactively after an [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) or
   [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) finding.
 - Deciding between a long-lived static credential and a short-lived/
   federated one for a new CI integration.
@@ -62,12 +62,12 @@ and never removes them.
   grants (temporary group membership, an expiring repo collaborator
   invite, a just-in-time access tool) rather than only permanent
   add/remove.
-- A secrets manager or CI platform's native secret store ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions
+- A secrets manager or CI platform's native secret store ([GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions
   environment secrets, GitLab CI/CD variables scoped per environment,
   HashiCorp [Vault](../../cryptography-secrets/vault/SKILL.md)) capable of versioned secrets so a rotation doesn't
   require simultaneously updating every consumer at the exact same
   instant — see
-  [secrets-management](../devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md)
+  [secrets-management](../devsecops/SKILL.md)/skills/[secrets-management](../../../DevOps_and_Cloud/cloud/common/security/secrets-management/SKILL.md)/SKILL.md)
   for the broader secrets-handling discipline this builds on.
 - Where the CI/CD platform and cloud provider support it, OIDC-based
   federation for CI-to-cloud authentication instead of a long-lived
@@ -85,8 +85,8 @@ and never removes them.
    indefinite access "until someone remembers to remove it."** Prefer a
    platform mechanism that expires automatically over a manual reminder:
    ```bash
-   # [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md): repository collaborator invite (manually tracked expiry —
-   # [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) itself has no native invite TTL, so pair with a ticket/calendar
+   # [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md): repository collaborator invite (manually tracked expiry —
+   # [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) itself has no native invite TTL, so pair with a ticket/calendar
    # reminder or an org-level SAML/SCIM group with a time-boxed membership)
    gh api repos/<org>/<repo>/collaborators/<contractor-username> \
      -f permission=push
@@ -129,19 +129,19 @@ and never removes them.
    over a hard cutover that risks an outage if any consumer wasn't
    updated:
    ```bash
-   # Example: rotate a [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) App private key used by CI, keeping the
+   # Example: rotate a [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) App private key used by CI, keeping the
    # old key valid until the new one is confirmed working everywhere
    # that consumes it, then explicitly revoking the old key.
    gh api /app/installations/<id>/access_tokens   # verify new key works
    # ...only after confirming all consumers use the new key:
-   # revoke the old private key in the [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) App settings.
+   # revoke the old private key in the [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) App settings.
    ```
 
 5. **Prefer short-lived, federated credentials over long-lived static
    ones for new CI-to-cloud integrations**, so there is no long-lived
    secret to rotate at all:
    ```yaml
-   # [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions -> AWS via OIDC, no long-lived AWS access key stored
+   # [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions -> AWS via OIDC, no long-lived AWS access key stored
    # as a secret
    permissions:
      id-token: write
@@ -163,11 +163,11 @@ and never removes them.
    valid is a pure liability with no offsetting benefit. Cross-reference
    active tokens against active pipelines/integrations on a recurring
    schedule (quarterly is a reasonable default cadence), not only when
-   an [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) or [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) forces the question.
+   an [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) or [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) forces the question.
 
 7. **Log every grant and revocation** (who approved it, for what task,
    for how long, and when it was actually revoked) so an access review
-   or [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) investigation doesn't depend on anyone's memory.
+   or [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) investigation doesn't depend on anyone's memory.
 
 ## Best practices
 
@@ -231,8 +231,8 @@ and never removes them.
 ## Worked example
 
 **Scenario:** An external QA vendor needs temporary read/write access to
-a `checkout-api` repo's CI configuration for a two-week [load-testing](../../../observability-monitoring-logging/common/capacity-monitoring/load-testing/SKILL.md)
-engagement, and separately the team notices their [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) App's CI
+a `checkout-api` repo's CI configuration for a two-week [load-testing](../../../DevOps_and_Cloud/observability-monitoring-logging/common/capacity-monitoring/load-testing/SKILL.md)
+engagement, and separately the team notices their [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) App's CI
 deployment key expires in 45 days.
 
 1. **Grant, time-boxed:** access request ticket created with an explicit
@@ -246,12 +246,12 @@ deployment key expires in 45 days.
    is removed via `gh api repos/<org>/checkout-api/collaborators/<user> -X DELETE`,
    and the ticket is closed with a timestamped confirmation — not just
    assumed done because the engagement "should be" over.
-4. **Credential rotation, scheduled ahead of expiry:** with the [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)
+4. **Credential rotation, scheduled ahead of expiry:** with the [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)
    App deployment key expiring in 45 days, a new key is generated 30 days
    out, added to the CI secret store alongside the old one, and every
    consuming workflow is updated to reference the new key. Only after
    confirming (via a successful run of every consuming pipeline) that
-   the new key works is the old key explicitly revoked in the [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) App
+   the new key works is the old key explicitly revoked in the [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) App
    settings — 15 days before its natural expiry, with no last-minute
    scramble.
 5. **Quarterly [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md):** the next scheduled access review cross-references
@@ -262,7 +262,7 @@ deployment key expires in 45 days.
 
 ## Cross-references
 
-- [secrets-management](../devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md) —
+- [secrets-management](../devsecops/SKILL.md)/skills/[secrets-management](../../../DevOps_and_Cloud/cloud/common/security/secrets-management/SKILL.md)/SKILL.md) —
   the broader secrets-manager and secret-scanning discipline that CI
   credential storage and rotation build on.
 - [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../../../DevOps_and_Cloud/Cloud_Providers/cloud-iam-hardening/SKILL.md)/SKILL.md) —

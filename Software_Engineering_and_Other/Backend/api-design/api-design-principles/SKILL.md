@@ -106,7 +106,7 @@ Detailed pattern documentation lives in `../../../../Global_References/Software_
 4. **Error Handling**: Return structured errors in mutation payloads
 5. **Pagination**: Use cursor-based pagination (Relay spec)
 6. **Deprecation**: Use `@deprecated` directive for gradual migration
-7. **[Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**: Track query complexity and execution time
+7. **[Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**: Track query complexity and execution time
 
 ## Common Pitfalls
 

@@ -477,10 +477,10 @@ Not allowed: new Objective mid-quarter, lower target due to effort, remove KR wi
 
 ### Engineering Team
 ```
-Objective: Reduce production [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) impact on users
-KR 1: Decrease P0 [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) MTTR from 45min to 15min
+Objective: Reduce production [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) impact on users
+KR 1: Decrease P0 [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) MTTR from 45min to 15min
 KR 2: Achieve 99.95% uptime (from 99.8%)
-KR 3: Reduce [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-causing deploys from 3/mo to 0/mo
+KR 3: Reduce [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-causing deploys from 3/mo to 0/mo
 ```
 
 ### Product Team
@@ -493,7 +493,7 @@ KR 3: Achieve NPS > 40 for onboarding flow
 
 ### Marketing Team
 ```
-Objective: Establish category leadership in cloud [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+Objective: Establish category leadership in cloud [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 KR 1: Publish 4 thought leadership pieces in top-tier publications
 KR 2: Increase organic traffic from 10k to 25k/mo
 KR 3: Generate 200 qualified leads from content marketing

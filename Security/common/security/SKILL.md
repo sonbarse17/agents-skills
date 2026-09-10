@@ -245,7 +245,7 @@ await Keychain.setGenericPassword('token', token);
 
 ```xml
 <!-- [Android](../../../Mobile/platforms/android/SKILL.md): network_security_config.xml -->
-<[network-security](../../../containers-orchestration/common/other/network-security/SKILL.md)-config>
+<[network-security](../../../DevOps_and_Cloud/containers-orchestration/common/other/network-security/SKILL.md)-config>
     <domain-config cleartextTrafficPermitted="false">
         <domain includeSubdomains="true">api.example.com</domain>
         <pin-set expiration="2025-12-31">
@@ -258,7 +258,7 @@ await Keychain.setGenericPassword('token', token);
             <certificates src="system" />
         </trust-anchors>
     </domain-config>
-</[network-security](../../../containers-orchestration/common/other/network-security/SKILL.md)-config>
+</[network-security](../../../DevOps_and_Cloud/containers-orchestration/common/other/network-security/SKILL.md)-config>
 ```
 
 ```xml
@@ -749,7 +749,7 @@ try url.setResourceValues(resourceValues)
   - ../../../Global_References/Security/data-protection.md — Mobile Data Protection
   - ../../../Global_References/Security/mobile-security-best-practices.md — Mobile Security Best Practices
   - ../../../Global_References/Security/mobile-security.md — Mobile Security Fundamentals
-  - ../../../Global_References/[network-security](../../../containers-orchestration/common/other/network-security/SKILL.md).md — Mobile Network Security
+  - ../../../Global_References/[network-security](../../../DevOps_and_Cloud/containers-orchestration/common/other/network-security/SKILL.md).md — Mobile Network Security
   - ../../../Global_References/Security/security-hardening.md — Mobile Security Hardening
   - ../../../Global_References/mobile-security-[penetration-testing](../../pentest-redteam/penetration-testing/SKILL.md).md — Mobile Security Penetration Testing
   - ../../../Global_References/Security/mobile-security-compliance.md — Mobile Security Compliance

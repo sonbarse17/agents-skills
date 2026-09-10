@@ -224,7 +224,7 @@ alpha_test:
   feedback_channels:
     - "In-app feedback widget"
     - "Weekly sync with alpha testers"
-    - "Automated error tracking ([Sentry](../../../../observability-monitoring-logging/sentry/other/sentry/SKILL.md))"
+    - "Automated error tracking ([Sentry](../../../../DevOps_and_Cloud/observability-monitoring-logging/sentry/other/sentry/SKILL.md))"
   exit_criteria:
     - "No P0 or P1 bugs open"
     - "Core workflow completion rate > 90%"
@@ -293,7 +293,7 @@ Running UAT as a single event at the end of the sprint instead of continuous val
 | 2: Defined | Basic UAT with scripts | Manual UAT sessions, Gherkin scenarios for critical paths, spreadsheet tracking |
 | 3: Managed | Automated acceptance tests | pytest-bdd/SpecFlow/Cucumber, CI-gated acceptance, traceability matrix |
 | 4: Measured | Continuous acceptance validation | Automated acceptance in CI/CD pipeline, metric-driven sign-off, acceptance coverage > 80% |
-| 5: Optimized | Shift-left acceptance | Acceptance criteria as executable specifications, BDD-driven development, real-time stakeholder [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) |
+| 5: Optimized | Shift-left acceptance | Acceptance criteria as executable specifications, BDD-driven development, real-time stakeholder [dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) |
 
 ## Performance Considerations
 
@@ -526,7 +526,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
+### [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -561,7 +561,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing ([OpenTelemetry](../../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../../DevOps_and_Cloud/observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -578,7 +578,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) signing
+- Signed commits: GPG or SSH [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
@@ -595,7 +595,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - Fail securely — errors default to safe behavior.
 - Log security-relevant events for [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
+- Design for [observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.
 ## Architecture Decision Trees

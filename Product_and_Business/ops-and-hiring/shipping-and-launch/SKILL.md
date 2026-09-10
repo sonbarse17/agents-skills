@@ -19,7 +19,7 @@ depends_on:
 
 ## Overview
 
-Ship with confidence. The goal is not just to deploy — it's to deploy safely, with [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) in place, a rollback plan ready, and a clear understanding of what success looks like. Every launch should be reversible, observable, and incremental.
+Ship with confidence. The goal is not just to deploy — it's to deploy safely, with [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) in place, a rollback plan ready, and a clear understanding of what success looks like. Every launch should be reversible, observable, and incremental.
 
 ## When to Use
 
@@ -130,20 +130,20 @@ return null;
 
 2. DEPLOY to production (feature flag OFF)
    └── Verify deployment succeeded (health check)
-   └── Check error [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (no new errors)
+   └── Check error [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (no new errors)
 
 3. ENABLE for team (flag ON for internal users)
    └── Team uses the feature in production
-   └── 24-hour [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) window
+   └── 24-hour [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) window
 
 4. CANARY rollout (flag ON for 5% of users)
    └── Monitor error rates, latency, user behavior
    └── Compare metrics: canary vs. baseline
-   └── 24-48 hour [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) window
+   └── 24-48 hour [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) window
    └── Advance only if all thresholds pass (see table below)
 
 5. GRADUAL increase (25% -> 50% -> 100%)
-   └── Same [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) at each step
+   └── Same [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) at each step
    └── Ability to roll back to previous percentage at any point
 
 6. FULL rollout (flag ON for all users)
@@ -171,7 +171,7 @@ Roll back immediately if:
 - Data integrity issues detected
 - Security vulnerability discovered
 
-## [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
+## [Monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Observability](../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
 
 ### What to Monitor
 
@@ -240,7 +240,7 @@ In the first hour after launch:
 
 ```
 1. Check health endpoint returns 200
-2. Check error [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) dashboard (no new error types)
+2. Check error [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) dashboard (no new error types)
 3. Check latency dashboard (no regression)
 4. Test the critical user flow manually
 5. Verify logs are flowing and readable
@@ -262,8 +262,8 @@ Every deployment needs a rollback plan before it happens:
 ### Rollback Steps
 1. Disable feature flag (if applicable)
    OR
-1. Deploy previous version: `git revert <[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)> && git push`
-2. Verify rollback: health check, error [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+1. Deploy previous version: `git revert <[commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md)> && git push`
+2. Verify rollback: health check, error [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 3. Communicate: notify team of rollback
 
 ### Database Considerations
@@ -288,17 +288,17 @@ Every deployment needs a rollback plan before it happens:
 |---|---|
 | "It works in staging, it'll work in production" | Production has different data, traffic patterns, and edge cases. Monitor after deploy. |
 | "We don't need feature flags for this" | Every feature benefits from a kill switch. Even "simple" changes can break things. |
-| "[Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) is overhead" | Not having [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) means you discover problems from user complaints instead of [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md). |
-| "We'll add [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) later" | Add it before launch. You can't debug what you can't see. |
+| "[Monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) is overhead" | Not having [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) means you discover problems from user complaints instead of [dashboards](../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md). |
+| "We'll add [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) later" | Add it before launch. You can't debug what you can't see. |
 | "Rolling back is admitting failure" | Rolling back is responsible engineering. Shipping a broken feature is the failure. |
 
 ## Red Flags
 
 - Deploying without a rollback plan
-- No [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) or error reporting in production
+- No [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) or error reporting in production
 - Big-bang releases (everything at once, no staging)
 - Feature flags with no expiration or owner
-- No one [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) the deploy for the first hour
+- No one [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) the deploy for the first hour
 - Production environment configuration done by memory, not code
 - "It's Friday afternoon, let's ship it"
 
@@ -309,7 +309,7 @@ Before deploying:
 - [ ] Pre-launch checklist completed (all sections green)
 - [ ] Feature flag configured (if applicable)
 - [ ] Rollback plan documented
-- [ ] [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) set up
+- [ ] [Monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) [dashboards](../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) set up
 - [ ] Team notified of deployment
 
 After deploying:

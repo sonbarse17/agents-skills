@@ -103,7 +103,7 @@ connection multiplexer.
   one idle client still holds one backend connection.
 - **Transaction pooling**: a backend connection is assigned to a client
   only for the duration of a single transaction, returned to the pool
-  immediately on [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)/rollback. The dominant mode for high-
+  immediately on [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md)/rollback. The dominant mode for high-
   concurrency web workloads (many short transactions, most connections
   idle between requests) since it multiplexes far more client
   connections onto far fewer backend ones — but breaks anything that
@@ -297,7 +297,7 @@ database backend that more pooled connections would only make worse.
   rather than a static configuration that requires manual updating.
 
 - **Symptom:** Someone reconfigures a production pooler's pool size or
-  routing rules directly via the admin interface during an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md),
+  routing rules directly via the admin interface during an [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md),
   without saving to disk, "just to test something quickly."
   **Fix:** This is a risky, easy-to-forget action — the change works
   until the next restart, then silently reverts, which can reintroduce
@@ -305,7 +305,7 @@ database backend that more pooled connections would only make worse.
   debugging it later.
   > **Warning — avoid untracked production config drift.** Treat pooler
   > configuration (pool sizes, routing rules, hostgroup membership) as
-  > [infrastructure-as-code](../../../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) reviewed the same way as database
+  > [infrastructure-as-code](../../../../DevOps_and_Cloud/infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) reviewed the same way as database
   > configuration itself — see
   > [postgresql-configuration-validation](../[postgresql-configuration-validation](../../Miscellaneous/[postgresql](../../Backend/postgresql/SKILL.md)-configuration-validation/SKILL.md)/SKILL.md)
   > and
@@ -337,7 +337,7 @@ for pooling and read/write splitting.
 3. Size each hostgroup's connection pool against measured backend
    [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md): `max_connections = 60` for the writer hostgroup (well under
    the primary's `max_connections = 300`, leaving headroom for
-   replication threads and [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)), `max_connections = 40` per
+   replication threads and [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)), `max_connections = 40` per
    replica for the reader hostgroup.
 4. Repoint application connection strings at ProxySQL's stable endpoint
    instead of the primary's hostname directly.

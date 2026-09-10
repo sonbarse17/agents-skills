@@ -405,7 +405,7 @@ import re
 
 SECRET_PATTERNS = [
     (r"AKIA[0-9A-Z]{16}", "AWS Access Key"),
-    (r"ghp_[A-Za-z0-9_]{36}", "[GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) PAT"),
+    (r"ghp_[A-Za-z0-9_]{36}", "[GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) PAT"),
     (r"sk-[A-Za-z0-9]{48}", "OpenAI API Key"),
     (r"-----BEGIN (RSA |EC )?PRIVATE KEY-----", "Private Key"),
     (r"xox[bpsar]-[A-Za-z0-9-]+", "Slack Token"),
@@ -724,7 +724,7 @@ plugins:
 
 ---
 
-## [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
+## [Monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 
 Detecting attacks in real time is as important as preventing them. Instrument every stage of the LLM pipeline.
 
@@ -777,7 +777,7 @@ groups:
           severity: critical
         annotations:
           summary: "Tenant {{ $labels.tenant_id }} has >5% prompt injection rate"
-          [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md): "https://wiki.internal/[runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md)/llm-injection"
+          [runbook](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbook/SKILL.md): "https://wiki.internal/[runbooks](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md)/llm-injection"
 
       - alert: AnomalousCostSpike
         expr: |

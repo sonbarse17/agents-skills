@@ -552,7 +552,7 @@ Designing the process flow without considering performance, security, or complia
 Designing the TO-BE process by simply automating the AS-IS process without rethinking the flow. You automate inefficiency. Fix: after documenting AS-IS, step back and redesign the process from scratch. Remove unnecessary steps. Change the order. Eliminate handoffs. Then add automation.
 
 ### 12. Missing Process Governance
-No ownership, no [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), no version control for process models. BPMN diagrams become outdated within weeks. Nobody knows which version is deployed. Fix: assign a process owner for each major process. Store BPMN files in version control. Define a review cadence. Link process metrics to [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md).
+No ownership, no [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), no version control for process models. BPMN diagrams become outdated within weeks. Nobody knows which version is deployed. Fix: assign a process owner for each major process. Store BPMN files in version control. Define a review cadence. Link process metrics to [dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md).
 
 ### 13. Data Flow Neglect
 Modeling activity flow without specifying data flow. Service tasks have no defined inputs or outputs. The process works in theory but breaks in practice because data isn't available when needed. Fix: add data objects and data stores to every diagram. Define data mapping for each service task. Validate data flow end-to-end before implementation.
@@ -570,7 +570,7 @@ Run process simulation when: estimating [capacity](../../Infrastructure/deploy-m
 | Resource pool | Who or what performs each activity? | Org chart, system [capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) |
 | Cost per resource | Hourly cost of each resource | Finance data |
 | Rule probabilities | Which path is taken at each gateway? | Historical data |
-| Error rate | How often does each activity fail? | [Incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) logs |
+| Error rate | How often does each activity fail? | [Incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) logs |
 
 ### Simulation Output Analysis
 | Output | What It Tells You | Decision |

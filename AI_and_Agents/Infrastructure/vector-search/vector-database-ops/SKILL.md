@@ -45,8 +45,8 @@ Use this skill when:
 ## Qdrant — Production Deployment
 
 ```bash
-# [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) (single node)
-[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) run -d \
+# [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) (single node)
+[docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) run -d \
   --name qdrant \
   -p 6333:6333 \
   -p 6334:6334 \
@@ -54,7 +54,7 @@ Use this skill when:
   qdrant/qdrant:latest
 
 # With custom config
-[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) run -d \
+[docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) run -d \
   --name qdrant \
   -p 6333:6333 \
   -v $(pwd)/qdrant-data:/qdrant/storage \
@@ -195,8 +195,8 @@ LIMIT 10;
 ```
 
 ```bash
-# Deploy pgvector via [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)
-[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) run -d \
+# Deploy pgvector via [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)
+[docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) run -d \
   --name pgvector \
   -e POSTGRES_PASSWORD=secret \
   -e POSTGRES_DB=vectordb \

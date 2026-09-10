@@ -160,7 +160,7 @@ source:
       lineage_type: COLUMN
 ```
 
-Column-level lineage enables impact analysis: "which [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) break if I change this column?" and root cause analysis: "which source column caused this data quality issue?"
+Column-level lineage enables impact analysis: "which [dashboards](../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) break if I change this column?" and root cause analysis: "which source column caused this data quality issue?"
 
 ### Step 4: Business Glossary
 
@@ -266,7 +266,7 @@ Which sources first?
 6. **Permission model not defined**: catalog must respect data access policies or risk exposing sensitive metadata.
 7. **Lineage depth too shallow**: only table-level lineage without column-level for critical datasets.
 8. **No enforcement of metadata requirements**: datasets in catalog without required fields degrade trust.
-9. **Ingestion pipeline not [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) source changes**: schema changes in source break ingestion silently.
+9. **Ingestion pipeline not [monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) source changes**: schema changes in source break ingestion silently.
 10. **Search not optimized**: poor search rankings make catalog useless. Tune based on user behavior.
 
 ## Best Practices
@@ -277,13 +277,13 @@ Which sources first?
 - Monitor ingestion pipeline health and alert on failures within 24 hours.
 - Link business glossary terms to technical columns for complete discoverability.
 - Use catalog as the access request gateway for all data assets.
-- Tier data assets: Critical (C-level reports), Important (team [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)), Operational (internal tools).
+- Tier data assets: Critical (C-level reports), Important (team [dashboards](../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)), Operational (internal tools).
 - Purge metadata for deleted datasets within 30 days.
 - Catalog should support both push (real-time API) and pull (scheduled ingestion) metadata collection.
 - Implement metadata quality scoring to drive improvement.
 - Use catalog API for automated metadata operations in CI/CD.
 - Set up catalog access for all data consumers (analysts, engineers, scientists).
-- Publish catalog usage [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) to demonstrate ROI.
+- Publish catalog usage [dashboards](../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) to demonstrate ROI.
 
 ## Compared With
 
@@ -619,5 +619,5 @@ index:
 - **RBAC integration**: Sync catalog roles from enterprise IdP (Okta, Azure AD) via SCIM.
 
 ## Handoff
-`[data-data-platform](../data-platform/SKILL.md)` for platform infrastructure. `[data-data-quality](../data-quality/SKILL.md)` for linking quality metadata to catalog. `[data-data-observability](../data-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)` for freshness [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md). `[data-data-contracts](../data-contracts/SKILL.md)` for contract metadata in catalog.
+`[data-data-platform](../data-platform/SKILL.md)` for platform infrastructure. `[data-data-quality](../data-quality/SKILL.md)` for linking quality metadata to catalog. `[data-data-observability](../data-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)` for freshness [monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md). `[data-data-contracts](../data-contracts/SKILL.md)` for contract metadata in catalog.
 

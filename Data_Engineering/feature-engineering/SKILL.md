@@ -477,7 +477,7 @@ feature_engineering:
 - Memory: store engineered features in Parquet format (compression ratio ~5-10x vs CSV)
 - Time budget: set max_features=200 for DFS to prevent explosion, limit depth to 2
 
-### [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+### [Monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - Track feature distribution drift (PSI, KS test) per engineered feature
 - Monitor null ratio per feature after engineering
 - Log feature importance rankings per training run

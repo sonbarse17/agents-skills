@@ -77,7 +77,7 @@ If you can't name the trust boundaries for a feature, you're not ready to secure
 
 ### Never Do
 
-- **Never [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) secrets** to version control (API keys, passwords, tokens)
+- **Never [commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) secrets** to version control (API keys, passwords, tokens)
 - **Never log sensitive data** (passwords, tokens, full credit card numbers)
 - **Never trust client-side validation** as a security boundary
 - **Never disable security headers** for convenience
@@ -314,7 +314,7 @@ When you defer a fix, document the reason and set a review date.
 Do not assume npm or treat the nearest manifest as the install root. Apply this order:
 
 1. **Find the installation boundary and manager.** Use the workspace root that owns the lockfile, or an independent nested project only when it is outside that workspace. There, corroborate `packageManager` (when present), the lockfile, and CI; stop on disagreement or competing lockfiles. Pin the manager version and use the matrix in `../../references/security-checklist.md`.
-2. **Block dependency scripts before first execution.** Bootstrap with scripts disabled or a documented fail-closed policy, inspect the pending script source, approve only the minimum required packages, [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) the policy, then verify with a clean frozen/immutable install. Never blanket-approve scripts.
+2. **Block dependency scripts before first execution.** Bootstrap with scripts disabled or a documented fail-closed policy, inspect the pending script source, approve only the minimum required packages, [commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) the policy, then verify with a clean frozen/immutable install. Never blanket-approve scripts.
 
 Audits only find known advisories; they do not catch a newly malicious or typosquatted package. Therefore:
 
@@ -385,7 +385,7 @@ Securing data is "can an attacker read it?" Privacy is "should *we* even hold it
 - **Get consent before collection or third-party sharing**, and make it auditable. Sending PII to an analytics/ad/LLM vendor is "sharing" — the user's choice gates it, and the vendor needs a data-processing agreement.
 - **Localize defaults, don't hardcode one region's law.** Data-residency and rules differ by user location; make the policy a configurable boundary, not an assumption.
 
-When data crosses a trust boundary, validate it as untrusted (see Input Validation above); when a privacy [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) exposes personal data, the breach-notification clock is part of the postmortem — follow the `[debugging-and-error-recovery](../../../Software_Engineering_and_Other/Patterns/debugging/debugging-and-error-recovery/SKILL.md)` skill.
+When data crosses a trust boundary, validate it as untrusted (see Input Validation above); when a privacy [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) exposes personal data, the breach-notification clock is part of the postmortem — follow the `[debugging-and-error-recovery](../../../Software_Engineering_and_Other/Patterns/debugging/debugging-and-error-recovery/SKILL.md)` skill.
 
 ## Securing AI / LLM Features
 
@@ -461,7 +461,7 @@ container.textContent = await llm.reply(userMessage);
 ```
 ## See Also
 
-For detailed security checklists and pre-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) verification steps, see `../../references/security-checklist.md`.
+For detailed security checklists and pre-[commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) verification steps, see `../../references/security-checklist.md`.
 
 ## Common Rationalizations
 
@@ -482,7 +482,7 @@ For detailed security checklists and pre-[commit](../../../ci-cd/common/git-work
 ## Red Flags
 
 - User input passed directly to database queries, shell commands, or HTML rendering
-- Secrets in source code or [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) history
+- Secrets in source code or [commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) history
 - API endpoints without authentication or authorization checks
 - Missing CORS configuration or wildcard (`*`) origins
 - No rate limiting on authentication endpoints

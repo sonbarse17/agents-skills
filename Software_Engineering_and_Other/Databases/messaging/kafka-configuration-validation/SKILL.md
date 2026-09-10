@@ -45,12 +45,12 @@ rather than repeating them.
 - Reviewing a pull request or infra-as-code change that creates or alters
   Kafka topic configuration.
 - Onboarding a new consumer group and validating its `group.id`,
-  `auto.offset.reset`, and [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) strategy won't cause unexpected replay
+  `auto.offset.reset`, and [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) strategy won't cause unexpected replay
   or data loss.
 - Auditing an existing cluster's topics for configuration drift from the
   organization's durability/retention standards.
 - As a gate in a CI/CD pipeline that provisions Kafka topics via
-  Terraform, a [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md) operator, or a custom provisioning script.
+  Terraform, a [GitOps](../../../../DevOps_and_Cloud/containers-orchestration/common/gitops/gitops/SKILL.md) operator, or a custom provisioning script.
 
 ## Prerequisites & environment
 
@@ -69,7 +69,7 @@ rather than repeating them.
   one is the first real step.
 - For consumer-group validation: visibility into the consuming
   application's configuration (not just the broker side), since
-  `auto.offset.reset` and [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) mode are client-side settings.
+  `auto.offset.reset` and [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) mode are client-side settings.
 
 ## Step-by-step guidance
 
@@ -138,7 +138,7 @@ rather than repeating them.
    # consumer.properties for the new service
    group.id=order-fulfillment-service
    auto.offset.reset=earliest   # or 'latest' — validate deliberately, not by default
-   enable.auto.[commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)=false     # explicit offset [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) after processing, not before
+   enable.auto.[commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md)=false     # explicit offset [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) after processing, not before
    isolation.level=read_committed
    ```
    Confirm `auto.offset.reset` was chosen deliberately: `earliest` means
@@ -163,7 +163,7 @@ rather than repeating them.
    [kafka-consumer-lag-and-partition-troubleshooting](../[kafka-consumer-lag-and-partition-troubleshooting](../../../DevOps_and_Cloud/Containers_and_Orchestration/kafka-consumer-lag-and-partition-troubleshooting/SKILL.md)/SKILL.md),
    but they should be caught here, before go-live, not after.
 
-7. **If topics are provisioned via Terraform or a [GitOps](../../../../containers-orchestration/common/gitops/gitops/SKILL.md) operator, run
+7. **If topics are provisioned via Terraform or a [GitOps](../../../../DevOps_and_Cloud/containers-orchestration/common/gitops/gitops/SKILL.md) operator, run
    the plan/diff as an explicit CI gate** rather than trusting manual CLI
    review alone:
    ```hcl
@@ -190,7 +190,7 @@ rather than repeating them.
   machine-checkable policy (an OPA/Conftest policy over Terraform plan
   JSON, or a small validation script) rather than a checklist a human
   re-reads each time.
-- Validate consumer-side settings (`auto.offset.reset`, [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) mode,
+- Validate consumer-side settings (`auto.offset.reset`, [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) mode,
   `isolation.level`) with the same rigor as broker-side topic config —
   the broker's durability guarantees are irrelevant if the consumer reads
   data at the wrong offset or commits before processing completes.
@@ -267,7 +267,7 @@ Consumer configuration submitted with the PR:
 ```properties
 group.id=fraud-detection-service
 auto.offset.reset=latest
-enable.auto.[commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)=false
+enable.auto.[commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md)=false
 isolation.level=read_committed
 ```
 Review flags `auto.offset.reset=latest`: the fraud-detection service is

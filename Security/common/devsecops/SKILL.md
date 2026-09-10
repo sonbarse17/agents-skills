@@ -32,7 +32,7 @@ flowchart TD
     J --> K[Deploy]
 ```
 
-## [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions Example (SAST & Secrets)
+## [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions Example (SAST & Secrets)
 
 ```yaml
 name: DevSecOps Pipeline
@@ -49,7 +49,7 @@ jobs:
         uses: trufflesecurity/trufflehog@main
         with:
           path: ./
-          base: ${{ [github](../../../ci-cd/github-actions/other/github/SKILL.md).event.repository.default_branch }}
+          base: ${{ [github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).event.repository.default_branch }}
           head: HEAD
           extra_args: --only-verified
 

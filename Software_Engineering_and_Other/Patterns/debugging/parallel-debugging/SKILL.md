@@ -82,7 +82,7 @@ Generate hypotheses across 6 failure mode categories:
 | Evidence Type     | Strength | Example                                                         |
 | ----------------- | -------- | --------------------------------------------------------------- |
 | **Direct**        | Strong   | Code at `file.ts:42` shows `if (x > 0)` should be `if (x >= 0)` |
-| **Correlational** | Medium   | Error rate increased after [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) `abc123`                      |
+| **Correlational** | Medium   | Error rate increased after [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) `abc123`                      |
 | **Testimonial**   | Weak     | "It works on my machine"                                        |
 | **Absence**       | Variable | No null check found in the code path                            |
 

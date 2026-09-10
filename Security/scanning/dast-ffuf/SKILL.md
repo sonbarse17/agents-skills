@@ -47,7 +47,7 @@ ffuf is a fast web fuzzer written in Go designed for discovering hidden resource
 
 ```bash
 # Using Go
-go install [github](../../../ci-cd/github-actions/other/github/SKILL.md).com/ffuf/ffuf/v2@latest
+go install [github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/ffuf/ffuf/v2@latest
 
 # Using package managers
 # Debian/Ubuntu
@@ -56,7 +56,7 @@ apt install ffuf
 # macOS
 brew install ffuf
 
-# Or download pre-compiled binary from [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) releases
+# Or download pre-compiled binary from [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) releases
 ```
 
 ## Quick Start
@@ -489,6 +489,6 @@ Map ffuf usage to OWASP Testing Guide categories:
 
 ## References
 
-- [ffuf [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Repository](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/ffuf/ffuf)
-- [SecLists Wordlists](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/danielmiessler/SecLists)
+- [ffuf [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Repository](https://[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/ffuf/ffuf)
+- [SecLists Wordlists](https://[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/danielmiessler/SecLists)
 - [OWASP Web Security Testing Guide](https://owasp.org/www-project-web-security-testing-guide/)

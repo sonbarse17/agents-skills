@@ -36,8 +36,8 @@ identical on the surface regardless of why it happened, but the fix is
 completely different depending on the cause. Patching a prompt in response
 to what was actually a tool timeout fixes nothing and adds prompt cruft;
 rolling back a model version in response to what was actually a stale
-retrieval index wastes an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) cycle and hides the real problem. This
-skill is a triage [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md): reproduce the exact conditions that produced the
+retrieval index wastes an [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) cycle and hides the real problem. This
+skill is a triage [runbook](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbook/SKILL.md): reproduce the exact conditions that produced the
 bad response, then work through a deliberate decision tree to classify the
 root cause into one of five buckets — **prompt issue**, **tool failure**,
 **retrieval issue**, **model behavior change**, or **genuine edge case** —
@@ -49,7 +49,7 @@ covers on the prevention side.
 
 ## When to use
 
-- A user, support ticket, or [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) alert reports one specific bad,
+- A user, support ticket, or [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) alert reports one specific bad,
   wrong, or harmful agent response and it needs root-causing before a fix
   is proposed.
 - Deciding whether an observed failure is a one-off (genuine edge case) or
@@ -59,7 +59,7 @@ covers on the prevention side.
 - After a model provider version bump, a tool schema change, or a
   retrieval-index update, and a report comes in that might be linked to
   that change.
-- Building or refining an [incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md) [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) specifically for
+- Building or refining an [incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md) [runbook](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) specifically for
   agent/LLM output issues, distinct from traditional application incidents.
 
 ## Prerequisites & environment
@@ -163,7 +163,7 @@ covers on the prevention side.
    prompt immediately.
 
    > **Warning:** Editing a production system prompt directly in response
-   > to one [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), with no staged rollout and no rollback path, risks
+   > to one [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md), with no staged rollout and no rollback path, risks
    > trading one failure mode for another that a quick spot-check won't
    > catch. Change the prompt in a branch/staging config, re-run the full
    > eval suite (not just the failing case) against it, and only then
@@ -176,7 +176,7 @@ covers on the prevention side.
    deployment log), not just suspicion after ruling out other causes.
    Where the model version is pinnable, that pin itself is the immediate
    mitigation; where it isn't (a "latest" alias endpoint), treat the lack
-   of pinning as a finding to fix independent of this specific [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
+   of pinning as a finding to fix independent of this specific [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 
 9. **For a genuine edge case**, do not treat "nothing is broken" as
    closing the ticket. A genuine edge case still needs a decision: is this
@@ -190,7 +190,7 @@ covers on the prevention side.
     low-quality, add or tighten a runtime guardrail as defense-in-depth
     independent of whatever upstream fix is applied.
 
-11. **Track root-cause category over time**, not just per-[incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) fixes.
+11. **Track root-cause category over time**, not just per-[incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) fixes.
     If "tool failure" or "retrieval issue" keeps recurring as the
     classification, that's a signal the underlying tool reliability or
     index freshness needs a structural fix, not another one-off patch.
@@ -202,11 +202,11 @@ covers on the prevention side.
   wrong fix costs more triage time later than a slightly slower right one.
 - Keep the pinned-reproduction environment (versioned prompts, tool
   schemas, model identifiers, index snapshots) as a standing capability,
-  not something assembled ad hoc during each [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
+  not something assembled ad hoc during each [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 - Prefer the cheapest, most falsifiable checks first (tool errors in the
   transcript, retrieval top-k contents) before reaching for the more
   expensive and less certain "maybe the model changed" explanation.
-- Write the root-cause classification and evidence into the [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
+- Write the root-cause classification and evidence into the [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
   record even when the fix is obvious — the pattern across many incidents
   is often more valuable than any single fix.
 - Treat "genuine edge case" as a real category with its own decision (ship
@@ -243,7 +243,7 @@ covers on the prevention side.
   version/date correlation before rolling back — check tool failures and
   retrieval quality first, since both are far more common causes than an
   actual model regression and a rollback that doesn't fix anything wastes
-  an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) cycle while hiding the real cause.
+  an [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) cycle while hiding the real cause.
 
 - **Symptom:** A tool silently returned stale or partially-truncated data
   (no error raised), the model reasoned over it as if correct, and the

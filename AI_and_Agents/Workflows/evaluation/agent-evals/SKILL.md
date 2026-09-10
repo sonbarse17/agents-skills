@@ -129,7 +129,7 @@ from agent import Agent
 
 def test_multi_step_research():
     agent = Agent(model="claude-sonnet-4-6")
-    result = agent.run("Find the top 3 [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) web frameworks by [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) stars and compare them")
+    result = agent.run("Find the top 3 [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) web frameworks by [GitHub](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) stars and compare them")
 
     # Check the agent used search
     tool_names = [step.tool for step in result.steps if step.tool]
@@ -277,10 +277,10 @@ npx promptfoo view  # interactive comparison UI
 
 ## CI/CD Integration
 
-### [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions
+### [GitHub](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions
 
 ```yaml
-# .[github](../../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/agent-evals.yml
+# .[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/workflows/agent-evals.yml
 name: Agent Evals
 on:
   pull_request:
@@ -304,7 +304,7 @@ jobs:
         run: pytest evals/test_unit.py evals/test_safety.py -v --tb=short
 
       - name: Run regression evals
-        if: [github](../../../../ci-cd/github-actions/other/github/SKILL.md).event_name == 'pull_request'
+        if: [github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).event_name == 'pull_request'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
@@ -319,15 +319,15 @@ jobs:
           path: evals/results/
 
       - name: Comment PR with scores
-        if: [github](../../../../ci-cd/github-actions/other/github/SKILL.md).event_name == 'pull_request' && always()
-        uses: actions/[github](../../../../ci-cd/github-actions/other/github/SKILL.md)-script@v7
+        if: [github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).event_name == 'pull_request' && always()
+        uses: actions/[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)-script@v7
         with:
           script: |
             const fs = require('fs');
             const results = fs.readFileSync('evals/results/junit.xml', 'utf8');
             const passed = (results.match(/tests="(\d+)"/)||[])[1];
             const failed = (results.match(/failures="(\d+)"/)||[])[1];
-            [github](../../../../ci-cd/github-actions/other/github/SKILL.md).rest.issues.createComment({
+            [github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner, repo: context.repo.repo,
               body: `## Agent Eval Results\n✅ Passed: ${passed} | ❌ Failed: ${failed}`
@@ -391,7 +391,7 @@ if __name__ == "__main__":
 ## Best Practices
 
 - Version datasets with expected outputs alongside code
-- Track pass rates and score drift over time with [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)
+- Track pass rates and score drift over time with [dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)
 - Block deploys on critical safety regressions (safety score < 4)
 - Use deterministic settings (temperature=0) for reproducible evals
 - Run expensive E2E evals on merge, cheap unit evals on every push
@@ -402,4 +402,4 @@ if __name__ == "__main__":
 
 - [github-actions](../../ci-cd/[github-actions](../../../DevOps_and_Cloud/CI_CD/[github](../../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-actions/SKILL.md)/) — Eval automation in CI
 - [ai-agent-security](../../../../Security/ai-security/ai-agent-security/SKILL.md)/) — Security-focused eval cases
-- [agent-observability](../[agent-observability](../../Operations/agent-[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)/) — Production quality [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+- [agent-observability](../[agent-observability](../../Operations/agent-[observability](../../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)/) — Production quality [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)

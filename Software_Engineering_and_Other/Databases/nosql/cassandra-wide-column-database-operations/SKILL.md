@@ -206,7 +206,7 @@ nodetool ring
 Adding a node with `auto_bootstrap: true` (default) streams a share of
 existing data to it from current owners of the token ranges it takes
 over — this is I/O- and network-intensive and should be done one node
-at a time, [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) `nodetool netstats` for streaming progress, never
+at a time, [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) `nodetool netstats` for streaming progress, never
 multiple nodes joining concurrently in a way that could leave overlapping
 token ranges under-replicated during the transition.
 ```bash
@@ -247,7 +247,7 @@ nodetool decommission   # run on the node being removed — streams its data OUT
   routine tombstone GC into a data-resurrection bug.
 - Always `nodetool decommission` a node being removed (never just stop
   the process), and add/remove nodes to a live cluster strictly one at
-  a time, [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) streaming progress before proceeding to the next.
+  a time, [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) streaming progress before proceeding to the next.
 
 ## Common pitfalls
 
@@ -295,7 +295,7 @@ nodetool decommission   # run on the node being removed — streams its data OUT
   rebalancing alone will fix a skewed-key-driven imbalance.
 
 - **Symptom:** Someone runs `TRUNCATE` on a table, or `DROP KEYSPACE`,
-  directly against production to "reset" data during an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
+  directly against production to "reset" data during an [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
   **Fix:** Both are immediately destructive, cluster-wide operations —
   `TRUNCATE` in particular also forces a table-wide snapshot on all
   nodes by default (which is itself an I/O-heavy operation across the
@@ -304,7 +304,7 @@ nodetool decommission   # run on the node being removed — streams its data OUT
   > KEYSPACE` against a shared or production cluster without an
   > independently confirmed target and a verified, tested backup/snapshot
   > restore path (see
-  > [database-[backup-and-restore](../../../../containers-orchestration/common/other/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies](../database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md)),
+  > [database-[backup-and-restore](../../../../DevOps_and_Cloud/containers-orchestration/common/other/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies](../database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md)),
   > and restrict these operations via role-based access control to a
   > narrow admin role rather than general application credentials.
 
@@ -349,5 +349,5 @@ noticeably.
 ## Cross-references
 
 - [mongodb-operations-and-scaling](../[mongodb-operations-and-scaling](../[mongodb](../../Backend/mongodb/SKILL.md)-operations-and-scaling/SKILL.md)/SKILL.md) — comparable partition/shard-key design trade-offs (monotonic/unbounded keys creating hotspots) in a document-oriented distributed database, useful as a direct conceptual parallel.
-- [database-[backup-and-restore](../../../../containers-orchestration/common/other/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies](../database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md) — snapshot/restore tooling and testing discipline that should back up any destructive operation (`TRUNCATE`, `DROP KEYSPACE`, a failed node removal) against a Cassandra cluster.
+- [database-[backup-and-restore](../../../../DevOps_and_Cloud/containers-orchestration/common/other/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies](../database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md) — snapshot/restore tooling and testing discipline that should back up any destructive operation (`TRUNCATE`, `DROP KEYSPACE`, a failed node removal) against a Cassandra cluster.
 - [elasticsearch-opensearch-cluster-operations](../[elasticsearch-opensearch-cluster-operations](../../../DevOps_and_Cloud/Containers_and_Orchestration/elasticsearch-opensearch-cluster-operations/SKILL.md)/SKILL.md) — comparable distributed-cluster shard placement and rebalancing operational concerns for a different (search-oriented) data model.

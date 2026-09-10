@@ -32,7 +32,7 @@ wiring external tools, data sources, and prompt templates into AI agents
 over a common transport (stdio or HTTP with JSON-RPC framing). It solves the
 "N agents × M integrations" problem: one MCP server implementation for, say,
 a ticketing system or a database can be connected to Claude Code, Cursor,
-[GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Copilot, Gemini CLI, or any other MCP-compatible client without
+[GitHub](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Copilot, Gemini CLI, or any other MCP-compatible client without
 rewriting the integration per client. MCP is distinct from and complementary
 to the **Agent Skills** standard (SKILL.md packages of instructions and
 bundled resources, which is what this repository packages): MCP is the wire
@@ -257,7 +257,7 @@ Server manifest (conceptual, `stdio` transport):
   "tools": [
     {
       "name": "get_incident",
-      "description": "Fetch a single [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) by id, including timeline and current status.",
+      "description": "Fetch a single [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) by id, including timeline and current status.",
       "inputSchema": {
         "type": "object",
         "properties": { "incident_id": { "type": "string", "pattern": "^INC-[0-9]{6}$" } },
@@ -278,16 +278,16 @@ Server manifest (conceptual, `stdio` transport):
     }
   ],
   "resources": [
-    { "uriTemplate": "[incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-[runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)://{service}", "description": "Static [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) text for a given service, read-only" }
+    { "uriTemplate": "[incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-[runbook](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)://{service}", "description": "Static [runbook](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) text for a given service, read-only" }
   ]
 }
 ```
 
-Deployment: the server authenticates to the [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) backend with a
+Deployment: the server authenticates to the [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) backend with a
 read-only API token (`${INCIDENTS_API_TOKEN}`) scoped to that endpoint only
 — it has no credential capable of closing or mutating incidents, so even a
 fully hijacked agent session cannot take a destructive action through this
-server, regardless of what instructions might be embedded in [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) text
+server, regardless of what instructions might be embedded in [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) text
 it reads back. Client-side (Claude Code, Cursor, etc.) configuration points
 at the server's local command; each client's own config format is
 consulted separately since that part is not standardized by MCP itself.

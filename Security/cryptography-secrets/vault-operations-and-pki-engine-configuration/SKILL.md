@@ -34,10 +34,10 @@ depends_on:
 
 HashiCorp [Vault](../vault/SKILL.md) is itself a piece of critical infrastructure that has to
 be initialized, kept unsealed, made highly available, and operated with
-its own upgrade and [disaster-recovery](../../../containers-orchestration/common/other/disaster-recovery/SKILL.md) discipline — separate from the
+its own upgrade and [disaster-recovery](../../../DevOps_and_Cloud/containers-orchestration/common/other/disaster-recovery/SKILL.md) discipline — separate from the
 question of how applications *consume* secrets from it, which is
-covered in [secrets-management](../../common/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md)
-and, for the [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-native sync pattern, in
+covered in [secrets-management](../../common/devsecops/SKILL.md)/skills/[secrets-management](../../../DevOps_and_Cloud/cloud/common/security/secrets-management/SKILL.md)/SKILL.md)
+and, for the [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-native sync pattern, in
 [sealed-secrets-and-external-secrets-operator](../[sealed-secrets-and-external-secrets-operator](../sealed-secrets-and-external-secrets-operator/SKILL.md)/SKILL.md).
 This skill covers running [Vault](../vault/SKILL.md) as the platform team operating it:
 initialization and the seal/unseal lifecycle (Shamir key shares versus
@@ -289,15 +289,15 @@ across every system that depends on it.
 
 ## Common pitfalls
 
-- **Symptom:** A [Vault](../vault/SKILL.md) cluster restarts (node reboot, upgrade, [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md))
-  and comes back up `sealed`, and no on-call [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) exists for who
+- **Symptom:** A [Vault](../vault/SKILL.md) cluster restarts (node reboot, upgrade, [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md))
+  and comes back up `sealed`, and no on-call [runbook](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) exists for who
   holds the unseal shares.
   **Fix:** This is the exact failure mode auto-unseal exists to
   eliminate — migrate to cloud KMS/HSM-based auto-unseal for production
   clusters. If Shamir must be retained (e.g. a hard compliance
   requirement against auto-unseal), maintain a tested, on-call-visible
-  [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) naming which individuals hold shares and how to reach them
-  under [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) pressure.
+  [runbook](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) naming which individuals hold shares and how to reach them
+  under [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) pressure.
 
 - **Symptom:** A "highly available" [Vault](../vault/SKILL.md) cluster is actually 2 nodes,
   and a single node failure leaves the surviving node unable to reach
@@ -326,7 +326,7 @@ across every system that depends on it.
   access path than day-to-day PKI operations use.
 
 - **Symptom:** [Vault](../vault/SKILL.md) snapshots are taken but have never been restored
-  in a drill, and during an actual [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) the restore procedure turns
+  in a drill, and during an actual [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) the restore procedure turns
   out to be broken (wrong storage path, missing unseal material for the
   restored cluster).
   **Fix:** Schedule periodic restore drills against a non-production
@@ -407,18 +407,18 @@ handling required.
 - [vault-configuration-validation](../vault/SKILL.md)-configuration-validation/SKILL.md)/SKILL.md) —
   validating [Vault](../vault/SKILL.md) policies, auth methods, and seal configuration before
   rolling out changes to the operational cluster this skill sets up.
-- [secrets-management](../../common/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md) —
+- [secrets-management](../../common/devsecops/SKILL.md)/skills/[secrets-management](../../../DevOps_and_Cloud/cloud/common/security/secrets-management/SKILL.md)/SKILL.md) —
   the application-facing side of using [Vault](../vault/SKILL.md) as a secrets backend
   (KV engines, dynamic database secrets, rotation policy), which
   assumes the operational cluster this skill covers is already running.
 - [sealed-secrets-and-external-secrets-operator](../[sealed-secrets-and-external-secrets-operator](../sealed-secrets-and-external-secrets-operator/SKILL.md)/SKILL.md) —
-  syncing secrets *from* an operating [Vault](../vault/SKILL.md) cluster into [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
+  syncing secrets *from* an operating [Vault](../vault/SKILL.md) cluster into [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
   `Secret` objects via External Secrets Operator.
 - [certificate-lifecycle-management-at-scale](../[certificate-lifecycle-management-at-scale](../certificate-lifecycle-management-at-scale/SKILL.md)/SKILL.md) —
   rotating and automating certificates issued by this PKI engine (or an
-  enterprise CA) across many services beyond a single [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
+  enterprise CA) across many services beyond a single [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
   cluster's scope.
-- [cert-manager-tls-automation](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[cert-manager-tls-automation](../../../containers-orchestration/kubernetes/security/cert-manager-tls-automation/SKILL.md)/SKILL.md) —
+- [cert-manager-tls-automation](../../../[kubernetes](../kubernetes/SKILL.md)-platform/skills/[cert-manager-tls-automation](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/security/cert-manager-tls-automation/SKILL.md)/SKILL.md) —
   cert-manager can itself be configured to request certificates from
-  [Vault](../vault/SKILL.md)'s PKI engine as an `Issuer` backend for [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-native
+  [Vault](../vault/SKILL.md)'s PKI engine as an `Issuer` backend for [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-native
   automated issuance.

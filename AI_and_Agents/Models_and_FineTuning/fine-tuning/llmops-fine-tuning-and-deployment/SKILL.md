@@ -224,14 +224,14 @@ leaves cost and latency on the table.
   later (non-reproducible fine-tuning experiments).
   **Fix:** Version the exact training dataset (content hash or a dataset
   registry entry), log all hyperparameters and the base model's exact
-  revision/[commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) to the experiment tracker, and fix random seeds — treat
+  revision/[commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) to the experiment tracker, and fix random seeds — treat
   this with the same rigor as
   [training-pipeline-orchestration](../[training-pipeline-orchestration](../training-pipeline-orchestration/SKILL.md)/SKILL.md)
   recommends for any training pipeline.
 
 - **Symptom:** A fine-tuned model deployed straight to 100% of production
   traffic turns out to have a subtle format regression that breaks a
-  downstream parser, causing an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) before anyone notices via manual
+  downstream parser, causing an [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) before anyone notices via manual
   review.
   **Fix:** Always canary a newly fine-tuned model behind a small traffic
   percentage with automated output-format/quality checks before full

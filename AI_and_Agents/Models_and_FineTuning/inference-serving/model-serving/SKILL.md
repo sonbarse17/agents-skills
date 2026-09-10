@@ -135,7 +135,7 @@ No preamble. No postamble. No explanations. No filler. Compress output.
 
 ### Completion Criteria
 - [ ] Serving framework selected with rationale based on model type.
-- [ ] Deployment strategy defined with traffic split and [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
+- [ ] Deployment strategy defined with traffic split and [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
 - [ ] [Autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) configured with metrics and thresholds.
 - [ ] Model versioning scheme with rollback procedure.
 - [ ] Inference optimization applied (batching, quantization).
@@ -147,7 +147,7 @@ No preamble. No postamble. No explanations. No filler. Compress output.
 - **TorchServe**: PyTorch-native, built-in model archive, metrics. Best for PyTorch models.
 - **BentoML**: Framework-agnostic, [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-first, OpenAPI spec. Best for [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) ML ecosystem.
 - **Ray Serve**: Distributed, composition of models, [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-native. Best for complex pipelines.
-- **KServe**: [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-native, [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md), auto-scaling to zero. Best for K8s infra.
+- **KServe**: [Kubernetes](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-native, [serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md), auto-scaling to zero. Best for K8s infra.
 - **Seldon Core**: Multi-framework, explainability, outlier detection. Best for advanced ML features.
 
 ```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
@@ -246,9 +246,9 @@ torch.onnx.export(
 )
 ```
 
-### Step 6: Health Checks & [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+### Step 6: Health Checks & [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 ```yaml
-# [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) health probes
+# [Kubernetes](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) health probes
 readinessProbe:
   httpGet:
     path: /v1/models/my-model/ready
@@ -291,17 +291,17 @@ class ABTestRouter:
 - **Missing health endpoints**: Every serving endpoint needs /health and /ready.
 - **Not pinning framework versions**: ABI breaks when serving framework upgrades.
 - **100% inference logging**: Log overflow. Sample at <1% rate.
-- **Not [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) data drift**: Model degrades silently without drift detection.
+- **Not [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) data drift**: Model degrades silently without drift detection.
 
 ## Production Considerations
 
-### [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+### [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - p50/p95/p99 inference latency.
 - Error rate (HTTP 4xx/5xx).
 - Request throughput (RPS).
 - GPU utilization and memory.
 - Model version drift detection.
-- Prediction distribution [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
+- Prediction distribution [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
 
 ### Scaling
 - Horizontal Pod Autoscaler with custom metrics.
@@ -539,12 +539,12 @@ class PredictionCache:
 - Rollback validated with health checks.
 
 ## References
-  - ../../../../Global_References/AI_and_Agents/k8s-serving.md — [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-Native Serving
+  - ../../../../Global_References/AI_and_Agents/k8s-serving.md — [Kubernetes](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-Native Serving
   - ../../../../Global_References/AI_and_Agents/model-serving-advanced.md — Model Serving Advanced Topics
   - ../../../../Global_References/AI_and_Agents/model-serving-fundamentals.md — Model Serving Fundamentals
   - ../../../../Global_References/AI_and_Agents/model-versioning.md — Model Versioning & Deployment Strategies
   - ../../../Global_References/[serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md)-inference.md — [Serverless](../../../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) Model Inference
   - ../../../../Global_References/AI_and_Agents/serving-frameworks.md — Serving Frameworks Comparison
 ## Handoff
-For model building and packaging, hand off to `ml-[ml-pipeline](../../../Workflows/pipelines/ml-pipeline/SKILL.md)`. For [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) inference metrics, hand off to `devops/[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)`.
+For model building and packaging, hand off to `ml-[ml-pipeline](../../../Workflows/pipelines/ml-pipeline/SKILL.md)`. For [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) inference metrics, hand off to `devops/[monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)`.
 

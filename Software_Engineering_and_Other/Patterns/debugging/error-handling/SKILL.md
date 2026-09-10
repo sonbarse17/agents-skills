@@ -35,7 +35,7 @@ depends_on:
 # Frontend Error Handling
 
 ## Purpose
-Catch, report, and recover from frontend errors without crashing the entire app. Error boundaries isolate failures. Users always see a functional fallback UI. Every error is reported to the [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) service with context for debugging.
+Catch, report, and recover from frontend errors without crashing the entire app. Error boundaries isolate failures. Users always see a functional fallback UI. Every error is reported to the [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) service with context for debugging.
 
 ## Agent Protocol
 
@@ -45,7 +45,7 @@ Exact phrases: "error handling", "error boundary", "error recovery", "graceful d
 ### Input Context
 - Framework (React, Vue, Angular, Svelte)
 - Current error handling (if any) — try/catch patterns, boundaries
-- Error reporting service ([Sentry](../../../../observability-monitoring-logging/sentry/other/sentry/SKILL.md), [Datadog](../../../../observability-monitoring-logging/datadog/other/datadog/SKILL.md) RUM, LogRocket, custom)
+- Error reporting service ([Sentry](../../../../DevOps_and_Cloud/observability-monitoring-logging/sentry/other/sentry/SKILL.md), [Datadog](../../../../DevOps_and_Cloud/observability-monitoring-logging/datadog/other/datadog/SKILL.md) RUM, LogRocket, custom)
 - Critical vs non-critical components that need boundaries
 
 ### Output Artifact
@@ -71,7 +71,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 ### Completion Criteria
 - [ ] Error boundaries wrap: root layout, each major route, each standalone widget
 - [ ] Fallback UI provides: error message, retry action, and contact/support link
-- [ ] Errors reported to [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) service with stack trace, component stack, breadcrumbs
+- [ ] Errors reported to [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) service with stack trace, component stack, breadcrumbs
 - [ ] Non-critical resource failures degrade gracefully (hide widget vs crash page)
 - [ ] Async errors caught and displayed inline where they occur
 - [ ] Recovery mechanisms in place (retry, reset boundary, navigate away)
@@ -143,7 +143,7 @@ What type of error is this?
   |
   |-- AbortError (cancelled requests from rapid navigation) -->
         REPORT? NO -- this is normal user behavior
-        FILTER: return null in [Sentry](../../../../observability-monitoring-logging/sentry/other/sentry/SKILL.md) beforeSend
+        FILTER: return null in [Sentry](../../../../DevOps_and_Cloud/observability-monitoring-logging/sentry/other/sentry/SKILL.md) beforeSend
 ```
 
 ## Workflow
@@ -231,11 +231,11 @@ function DataComponent() {
 }
 ```
 
-### 5. Reporting Integration ([Sentry](../../../../observability-monitoring-logging/sentry/other/sentry/SKILL.md))
+### 5. Reporting Integration ([Sentry](../../../../DevOps_and_Cloud/observability-monitoring-logging/sentry/other/sentry/SKILL.md))
 ```[typescript](../../../Frontend/common/typescript/SKILL.md)
-import * as [Sentry](../../../../observability-monitoring-logging/sentry/other/sentry/SKILL.md) from '@[sentry](../../../../observability-monitoring-logging/sentry/other/sentry/SKILL.md)/react'
+import * as [Sentry](../../../../DevOps_and_Cloud/observability-monitoring-logging/sentry/other/sentry/SKILL.md) from '@[sentry](../../../../DevOps_and_Cloud/observability-monitoring-logging/sentry/other/sentry/SKILL.md)/react'
 
-[Sentry](../../../../observability-monitoring-logging/sentry/other/sentry/SKILL.md).init({
+[Sentry](../../../../DevOps_and_Cloud/observability-monitoring-logging/sentry/other/sentry/SKILL.md).init({
   dsn: process.env.SENTRY_DSN,
   environment: process.env.NODE_ENV,
   tracesSampleRate: 0.1,
@@ -246,10 +246,10 @@ import * as [Sentry](../../../../observability-monitoring-logging/sentry/other/s
   },
 })
 
-// Use [Sentry](../../../../observability-monitoring-logging/sentry/other/sentry/SKILL.md)'s ErrorBoundary
-<[Sentry](../../../../observability-monitoring-logging/sentry/other/sentry/SKILL.md).ErrorBoundary fallback={<ErrorFallback />}>
+// Use [Sentry](../../../../DevOps_and_Cloud/observability-monitoring-logging/sentry/other/sentry/SKILL.md)'s ErrorBoundary
+<[Sentry](../../../../DevOps_and_Cloud/observability-monitoring-logging/sentry/other/sentry/SKILL.md).ErrorBoundary fallback={<ErrorFallback />}>
   <App />
-</[Sentry](../../../../observability-monitoring-logging/sentry/other/sentry/SKILL.md).ErrorBoundary>
+</[Sentry](../../../../DevOps_and_Cloud/observability-monitoring-logging/sentry/other/sentry/SKILL.md).ErrorBoundary>
 ```
 
 ### 6. Graceful Degradation
@@ -352,7 +352,7 @@ function reportError(error: Error, context?: Record<string, unknown>) {
   }
 
   if (window.__SENTRY__) {
-    [Sentry](../../../../observability-monitoring-logging/sentry/other/sentry/SKILL.md).captureException(error, { extra: enrichedContext })
+    [Sentry](../../../../DevOps_and_Cloud/observability-monitoring-logging/sentry/other/sentry/SKILL.md).captureException(error, { extra: enrichedContext })
   } else {
     console.error('[ErrorReport]', error, enrichedContext)
   }
@@ -388,7 +388,7 @@ if (retryCount >= 3) return <PermanentError />
 ```
 
 ### 4. Leaking Sensitive Data in Error Reports
-Strip tokens, passwords, and PII before sending error reports. Use [Sentry](../../../../observability-monitoring-logging/sentry/other/sentry/SKILL.md)'s `beforeSend` to sanitize.
+Strip tokens, passwords, and PII before sending error reports. Use [Sentry](../../../../DevOps_and_Cloud/observability-monitoring-logging/sentry/other/sentry/SKILL.md)'s `beforeSend` to sanitize.
 
 ### 5. Blank Screen Fallback
 Never let a boundary render nothing. Always provide a meaningful fallback UI with recovery options.
@@ -398,7 +398,7 @@ Never let a boundary render nothing. Always provide a meaningful fallback UI wit
 | Approach | Rendering Impact | Recovery UX | Reporting | Setup Complexity |
 |----------|-----------------|-------------|-----------|------------------|
 | Error Boundaries (React) | Full subtree replaced | Retry/reset within boundary | Manual | Low (class component) |
-| [Sentry](../../../../observability-monitoring-logging/sentry/other/sentry/SKILL.md) ErrorBoundary | Full subtree replaced | Retry, feedback button | Automatic | Low (add wrapper) |
+| [Sentry](../../../../DevOps_and_Cloud/observability-monitoring-logging/sentry/other/sentry/SKILL.md) ErrorBoundary | Full subtree replaced | Retry, feedback button | Automatic | Low (add wrapper) |
 | Vue errorHandler | Global catch | Manual recovery in handler | Manual | Very low (config) |
 | Angular ErrorHandler | Global catch | Manual recovery | Manual | Very low (provider) |
 | Try/catch per component | No re-render | Inline error state | Manual | Medium (per-component) |
@@ -410,7 +410,7 @@ Never let a boundary render nothing. Always provide a meaningful fallback UI wit
 Error boundaries use a class component wrapper which adds minimal overhead (~0.1KB per boundary). The heavy cost is the component stack trace generation in development. In production builds, component stack traces are not available.
 
 ### Error Reporting Cost
-[Sentry](../../../../observability-monitoring-logging/sentry/other/sentry/SKILL.md)'s `captureException` is async and non-blocking. It does not affect rendering performance. However, breadcrumb collection adds ~50ms per interaction tracked. Configure breadcrumb limits to avoid memory growth.
+[Sentry](../../../../DevOps_and_Cloud/observability-monitoring-logging/sentry/other/sentry/SKILL.md)'s `captureException` is async and non-blocking. It does not affect rendering performance. However, breadcrumb collection adds ~50ms per interaction tracked. Configure breadcrumb limits to avoid memory growth.
 
 ### Retry Frequency
 Automatic retry should use exponential backoff. Retrying every 1s for 30 retries creates 30 failed requests. With backoff: 1s, 2s, 4s, 8s, 16s = only 5 retries in 31 seconds.
@@ -446,7 +446,7 @@ Automatic retry should use exponential backoff. Retrying every 1s for 30 retries
   - ../../../../Global_References/Software_Engineering_and_Other/error-boundaries.md — Error Boundaries
   - ../../../../Global_References/Software_Engineering_and_Other/error-boundary-patterns.md — Error Boundary Patterns
   - ../../../../Global_References/Software_Engineering_and_Other/error-logging-best-practices.md — Error Logging Best Practices
-  - ../../../Global_References/error-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Error [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+  - ../../../Global_References/error-[monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Error [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
   - ../../../../Global_References/Software_Engineering_and_Other/error-reporting.md — Error Reporting
   - ../../../../Global_References/Software_Engineering_and_Other/error-ui-patterns.md — Error UI Patterns
 ## Handoff
@@ -505,7 +505,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
+### [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -540,7 +540,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing ([OpenTelemetry](../../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../../DevOps_and_Cloud/observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 

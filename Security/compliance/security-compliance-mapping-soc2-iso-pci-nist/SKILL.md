@@ -84,7 +84,7 @@ specific framework version your auditor is using.
   technical control yet — so they can be prioritized as engineering work
   before an [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md), not discovered during one.
 - Building a repeatable, evidence-generating process (e.g. continuous
-  control [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)) rather than a one-time spreadsheet exercise that
+  control [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)) rather than a one-time spreadsheet exercise that
   goes stale.
 
 ## Prerequisites & environment
@@ -126,7 +126,7 @@ specific framework version your auditor is using.
 2. **Inventory the technical controls already implemented**, grounded in
    what actually exists (config, code, running services), not what the
    team intends to build. Pull from:
-   [secrets-management](../../common/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md),
+   [secrets-management](../../common/devsecops/SKILL.md)/skills/[secrets-management](../../../DevOps_and_Cloud/cloud/common/security/secrets-management/SKILL.md)/SKILL.md),
    [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../../Cloud_Providers/cloud-iam-hardening/SKILL.md)/SKILL.md),
    [sast-integration](../../common/devsecops/SKILL.md)/skills/[sast-integration](../../scanning/sast-integration/SKILL.md)/SKILL.md),
    [dast-integration](../../common/devsecops/SKILL.md)/skills/[dast-integration](../../scanning/dast-integration/SKILL.md)/SKILL.md),
@@ -134,7 +134,7 @@ specific framework version your auditor is using.
    [policy-as-code-guardrails](../../common/devsecops/SKILL.md)/skills/[policy-as-code-guardrails](../../policy-as-code/policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md),
    [disaster-recovery-and-backup-strategy](../../../cloud/skills/[disaster-recovery-and-backup-strategy](../../Cloud_Providers/[disaster-recovery](../disaster-recovery/SKILL.md)-and-backup-strategy/SKILL.md)/SKILL.md),
    [cis-benchmarks-hardening](../[cis-benchmarks-hardening](../../../Security/[cis-benchmarks](../cis-benchmarks/SKILL.md)-hardening/SKILL.md)/SKILL.md), and
-   the org's logging/[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) stack.
+   the org's logging/[monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) stack.
 3. **Map each technical control to one or more framework requirements**,
    citing the specific criteria/control/requirement ID at whatever
    precision you're confident in (see the illustrative table below) —
@@ -237,7 +237,7 @@ specific framework version your auditor is using.
   credible than one with confident wrong numbers.
 - **Symptom:** All effort goes into mapping controls that already exist
   and look good (e.g. encryption, SAST), while gaps (e.g. no formal
-  [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response plan, no quarterly access reviews) are left off the
+  [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response plan, no quarterly access reviews) are left off the
   matrix entirely because there's no existing control to map.
   **Fix:** Build the matrix from the framework's requirement list
   outward, not from the existing-controls list inward — every framework
@@ -252,12 +252,12 @@ numbering against the specific framework version and your auditor):
 
 | Technical control (existing implementation) | SOC 2 Trust Services Criteria | ISO/IEC 27001 Annex A (illustrative) | PCI-DSS (illustrative, v4.0-era) | NIST CSF 2.0 function/category | Evidence source | Frequency |
 |---|---|---|---|---|---|---|
-| [Vault](../../cryptography-secrets/vault/SKILL.md)-managed secret rotation, 90-day automatic rotation (see [secrets-management](../../common/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md)) | CC6.1 (logical access controls) | A.8.24 (use of cryptography) / A.5.17 (authentication information) | Req. 8 (identify users, authenticate access) | `PR.AA` (Identity Mgmt, Authentication & Access Control) | [Vault](../../cryptography-secrets/vault/SKILL.md) [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) log export showing rotation events; quarterly rotation report | Quarterly |
+| [Vault](../../cryptography-secrets/vault/SKILL.md)-managed secret rotation, 90-day automatic rotation (see [secrets-management](../../common/devsecops/SKILL.md)/skills/[secrets-management](../../../DevOps_and_Cloud/cloud/common/security/secrets-management/SKILL.md)/SKILL.md)) | CC6.1 (logical access controls) | A.8.24 (use of cryptography) / A.5.17 (authentication information) | Req. 8 (identify users, authenticate access) | `PR.AA` (Identity Mgmt, Authentication & Access Control) | [Vault](../../cryptography-secrets/vault/SKILL.md) [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) log export showing rotation events; quarterly rotation report | Quarterly |
 | Least-privilege IAM roles + quarterly access review (see [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../../Cloud_Providers/cloud-iam-hardening/SKILL.md)/SKILL.md)) | CC6.2, CC6.3 (access provisioning/removal) | A.5.15 (access control), A.5.18 (access rights) | Req. 7 (restrict access by need to know) | `PR.AA` | Access review sign-off tickets; IAM policy diff history | Quarterly |
-| Centralized log aggregation with 1-year retention | CC7.2 ([monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) for security events) | A.8.15 (logging) | Req. 10 (log and monitor access) | `DE.AE` (Adverse Event Analysis), `DE.CM` (Continuous [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)) | SIEM retention config; sample log query results | Continuous, reviewed monthly |
+| Centralized log aggregation with 1-year retention | CC7.2 ([monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) for security events) | A.8.15 (logging) | Req. 10 (log and monitor access) | `DE.AE` (Adverse Event Analysis), `DE.CM` (Continuous [Monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)) | SIEM retention config; sample log query results | Continuous, reviewed monthly |
 | TLS 1.2+ enforced in transit; KMS-managed encryption at rest | CC6.7 (data transmission/encryption) | A.8.24 (cryptography) | Req. 3 (protect stored account data), Req. 4 (protect data in transit) | `PR.DS` (Data Security) | TLS config scan results; KMS key policy export | Per release / quarterly |
 | SAST + DAST in CI/CD with tracked remediation SLA (see [sast-integration](../../common/devsecops/SKILL.md)/skills/[sast-integration](../../scanning/sast-integration/SKILL.md)/SKILL.md), [dast-integration](../../common/devsecops/SKILL.md)/skills/[dast-integration](../../scanning/dast-integration/SKILL.md)/SKILL.md)) | CC7.1 (vulnerability detection) | A.8.29 (security testing in development) | Req. 6 (develop/maintain secure systems) | `ID.RA` (Risk Assessment), `PR.PS` (Platform Security) | CI pipeline scan history; remediation ticket closure times | Continuous, reviewed monthly |
-| Tested cross-region backup + documented RTO/RPO (see [disaster-recovery-and-backup-strategy](../../../cloud/skills/[disaster-recovery-and-backup-strategy](../../Cloud_Providers/[disaster-recovery](../disaster-recovery/SKILL.md)-and-backup-strategy/SKILL.md)/SKILL.md)) | A1.2 (Availability — recovery) | A.5.29/A.5.30 (ICT readiness for business continuity — numbering varies by edition) | Req. 12 (support info security with policies; DR referenced under org policy) | `RC.RP` ([Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Recovery Plan Execution) | DR test report with timestamps and measured RTO/RPO vs target | Semi-annual test |
+| Tested cross-region backup + documented RTO/RPO (see [disaster-recovery-and-backup-strategy](../../../cloud/skills/[disaster-recovery-and-backup-strategy](../../Cloud_Providers/[disaster-recovery](../disaster-recovery/SKILL.md)-and-backup-strategy/SKILL.md)/SKILL.md)) | A1.2 (Availability — recovery) | A.5.29/A.5.30 (ICT readiness for business continuity — numbering varies by edition) | Req. 12 (support info security with policies; DR referenced under org policy) | `RC.RP` ([Incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Recovery Plan Execution) | DR test report with timestamps and measured RTO/RPO vs target | Semi-annual test |
 | **Gap (illustrative):** no formal quarterly access-recertification process, only ad hoc | CC6.2 | A.5.18 | Req. 7 | `PR.AA` | None yet | — |
 
 Illustrative summary handed to the compliance owner: "5 of 6 core control
@@ -273,9 +273,9 @@ with `<AUDIT_FIRM_OR_QSA_PLACEHOLDER>`."
 - [cis-benchmarks-hardening](../[cis-benchmarks-hardening](../../../Security/[cis-benchmarks](../cis-benchmarks/SKILL.md)-hardening/SKILL.md)/SKILL.md) — infrastructure/OS hardening scan evidence that commonly supports security-criteria mappings above.
 - [cloud-well-architected-framework-review](../[cloud-well-architected-framework-review](../../Cloud_Providers/cloud-well-architected-framework-review/SKILL.md)/SKILL.md) — broader architecture/risk review; its security-pillar findings often become gaps or controls in this matrix.
 - [owasp-top-10-secure-coding-standards](../[owasp-top-10-secure-coding-standards](../../Cloud_Providers/owasp-top-10-secure-coding-standards/SKILL.md)/SKILL.md) — application security practices and tooling that support PCI-DSS Requirement 6 and NIST CSF `PR.PS` mappings.
-- [secrets-management](../../common/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md) — the control implementation behind most access-control/authentication mappings.
+- [secrets-management](../../common/devsecops/SKILL.md)/skills/[secrets-management](../../../DevOps_and_Cloud/cloud/common/security/secrets-management/SKILL.md)/SKILL.md) — the control implementation behind most access-control/authentication mappings.
 - [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../../Cloud_Providers/cloud-iam-hardening/SKILL.md)/SKILL.md) — least-privilege and [access-review](../../identity-access/access-review/SKILL.md) controls mapped above.
 - [sast-integration](../../common/devsecops/SKILL.md)/skills/[sast-integration](../../scanning/sast-integration/SKILL.md)/SKILL.md) and [dast-integration](../../common/devsecops/SKILL.md)/skills/[dast-integration](../../scanning/dast-integration/SKILL.md)/SKILL.md) — secure-development-lifecycle evidence for PCI-DSS Req. 6 / NIST CSF `ID.RA`, `PR.PS`.
 - [supply-chain-security-slsa-sbom](../../common/devsecops/SKILL.md)/skills/[supply-chain-security-slsa-sbom](../../supply-chain/supply-chain-security/SKILL.md)-slsa-sbom/SKILL.md)/SKILL.md) — SBOM/provenance evidence increasingly requested in vendor security questionnaires and NIST supply-chain guidance.
 - [policy-as-code-guardrails](../../common/devsecops/SKILL.md)/skills/[policy-as-code-guardrails](../../policy-as-code/policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md) — automated enforcement that strengthens the "operates continuously" evidence story for many mapped controls.
-- [disaster-recovery-and-backup-strategy](../../../cloud/skills/[disaster-recovery-and-backup-strategy](../../Cloud_Providers/[disaster-recovery](../disaster-recovery/SKILL.md)-and-backup-strategy/SKILL.md)/SKILL.md) — availability/recovery control evidence for SOC 2 Availability criteria and PCI-DSS/ISO [business-continuity](../../../containers-orchestration/common/other/business-continuity/SKILL.md) references.
+- [disaster-recovery-and-backup-strategy](../../../cloud/skills/[disaster-recovery-and-backup-strategy](../../Cloud_Providers/[disaster-recovery](../disaster-recovery/SKILL.md)-and-backup-strategy/SKILL.md)/SKILL.md) — availability/recovery control evidence for SOC 2 Availability criteria and PCI-DSS/ISO [business-continuity](../../../DevOps_and_Cloud/containers-orchestration/common/other/business-continuity/SKILL.md) references.

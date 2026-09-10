@@ -30,7 +30,7 @@ Comprehensive guide to using uv, an extremely fast [Python](../python/SKILL.md) 
 - Speeding up CI/CD pipelines
 - Managing [monorepo](../../../Frontend/build-tools/monorepo/SKILL.md) [Python](../python/SKILL.md) projects
 - Working with lockfiles for reproducible builds
-- Optimizing [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) builds with [Python](../python/SKILL.md) dependencies
+- Optimizing [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) builds with [Python](../python/SKILL.md) dependencies
 
 ## Core Concepts
 
@@ -79,7 +79,7 @@ pip install uv
 brew install uv
 
 # Using cargo (if you have Rust)
-cargo install --git https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/astral-sh/uv uv
+cargo install --git https://[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/astral-sh/uv uv
 ```
 
 ### Verify Installation
@@ -200,10 +200,10 @@ uv add --dev pytest pytest-cov
 uv add --optional docs sphinx
 
 # Add from git
-uv add git+https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/user/repo.git
+uv add git+https://[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/user/repo.git
 
 # Add from git with specific ref
-uv add git+https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/user/repo.git@v1.0.0
+uv add git+https://[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/user/repo.git@v1.0.0
 
 # Add from local path
 uv add ./local-package
@@ -334,7 +334,7 @@ dev-dependencies = [
 
 [tool.uv.sources]
 # Custom package sources
-my-package = { git = "https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/user/repo.git" }
+my-package = { git = "https://[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/user/repo.git" }
 ```
 
 ### Pattern 11: Using uv with Existing Projects
@@ -354,5 +354,5 @@ uv pip freeze > requirements.txt
 uv pip freeze --require-hashes > requirements.txt
 ```
 
-For advanced workflows including [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) integration, lockfile management, performance optimization, tool comparison, common workflows, tool integration, troubleshooting, best practices, migration guides, and command reference, see [../../../../Global_References/Software_Engineering_and_Other/uv-package-manager_advanced-patterns.md](../../../../Global_References/Software_Engineering_and_Other/uv-package-manager_advanced-patterns.md)
+For advanced workflows including [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) integration, lockfile management, performance optimization, tool comparison, common workflows, tool integration, troubleshooting, best practices, migration guides, and command reference, see [../../../../Global_References/Software_Engineering_and_Other/uv-package-manager_advanced-patterns.md](../../../../Global_References/Software_Engineering_and_Other/uv-package-manager_advanced-patterns.md)
 

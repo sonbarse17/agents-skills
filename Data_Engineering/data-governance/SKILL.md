@@ -43,7 +43,7 @@ Pillar 2 - Catalog: Deploy data catalog with schema registry and business glossa
 
 Pillar 3 - Trace: Map end-to-end data lineage from source to consumption. Enable impact analysis for schema changes. Automate lineage capture in pipelines.
 
-Pillar 4 - Measure: Define quality dimensions and SLAs per dataset. Implement automated quality [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md). Report quality scorecards and alert on breaches.
+Pillar 4 - Measure: Define quality dimensions and SLAs per dataset. Implement automated quality [monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md). Report quality scorecards and alert on breaches.
 
 Pillar 5 - Retain: Define retention schedules per classification. Implement automated purge with dry-run mode. Support legal hold overrides. Maintain [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) trail.
 
@@ -132,7 +132,7 @@ Deploy schema registry (Schema Registry, Atlan, DataHub). Define business glossa
 ### Step 3: Data Lineage
 Map data flow from source -> transformation -> consumption. Capture at column level for critical data. Enable impact analysis for schema changes. Track upstream dependencies before migrations. Document transformation logic per pipeline step. Automate lineage capture using dbt docs, Airflow integration, or custom instrumentation. Maintain lineage artifact per environment.
 
-### Step 4: Data Quality [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+### Step 4: Data Quality [Monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 Define quality dimensions: completeness (no nulls required), accuracy (matches source of truth), timeliness (within SLA), consistency (same value across systems), uniqueness (no duplicates), validity (conforms to format). Set targets per dataset. Monitor with automated pipelines (Great Expectations, dbt tests, custom checks). Report quality scorecards. Alert on SLA breaches.
 
 ### Step 5: Data Retention and Purge
@@ -181,7 +181,7 @@ Define retention schedules per classification (PII: 6 years, logs: 90 days, busi
 ## Common Pitfalls
 
 ### Pitfall 1: Governance Without Automation
-Manual governance processes don't scale. Classification by hand, manual quality checks, and manual lineage capture fail as data volume grows. Automate classification scanning. Use dbt for lineage capture. Schedule quality [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md). Automate retention purge.
+Manual governance processes don't scale. Classification by hand, manual quality checks, and manual lineage capture fail as data volume grows. Automate classification scanning. Use dbt for lineage capture. Schedule quality [monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md). Automate retention purge.
 
 ### Pitfall 2: Over-Classification
 Classifying everything as Restricted renders classification meaningless. Reserve Restricted for actual sensitive data (PII, PHI, PCI, secrets). Default to Internal. Use data discovery to identify sensitive data. Periodically review classification assignments.
@@ -189,8 +189,8 @@ Classifying everything as Restricted renders classification meaningless. Reserve
 ### Pitfall 3: Neglecting Data Ownership
 Without clear data ownership, no one is accountable for quality, classification, or retention. Assign business owner (who defines what data means), technical steward (who implements pipelines), and data custodian (who manages storage) per dataset.
 
-### Pitfall 4: Quality [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Without SLAs
-Quality checks without targets are noise. Set specific SLAs: completeness > 99.9%, timeliness < 15min from source, accuracy matches source of truth > 99.99%. Track SLA adherence in [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md). Escalate breaches to data owners.
+### Pitfall 4: Quality [Monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Without SLAs
+Quality checks without targets are noise. Set specific SLAs: completeness > 99.9%, timeliness < 15min from source, accuracy matches source of truth > 99.99%. Track SLA adherence in [dashboards](../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md). Escalate breaches to data owners.
 
 ### Pitfall 5: Retention Without Purge Automation
 Defining retention policies without automated purge is just documentation. Data accumulates beyond retention. Implement automated purge pipelines. Dry-run mode for first month. Verify purge completeness. Maintain [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) trail.
@@ -219,10 +219,10 @@ Trying to capture lineage for every dataset is overwhelming. Start with critical
 - Catalog versions for schema evolution history
 - Enable self-service discovery for business users
 
-### Quality [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+### Quality [Monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - Define SLAs per dataset based on criticality
 - Automate quality checks in CI/CD
-- Schedule daily quality [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) for critical datasets
+- Schedule daily quality [monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) for critical datasets
 - Weekly quality scorecard for each domain
 - Monthly governance review with quality trends
 - Alert data owners on SLA breaches
@@ -261,7 +261,7 @@ Data Governance: policies for all data in the enterprise. MDM: specialized pract
 ## Operations & Maintenance
 
 ### Governance Review Cadence
-- Daily: automated quality [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), compliance scanning
+- Daily: automated quality [monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), compliance scanning
 - Weekly: data steward review of quality alerts and exceptions
 - Monthly: quality scorecards, retention compliance report
 - Quarterly: classification review, ownership review, policy updates
@@ -275,14 +275,14 @@ Data Governance: policies for all data in the enterprise. MDM: specialized pract
 - Maintain data documentation
 - Participate in quarterly governance review
 
-### [Incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response for Data Quality
-1. Detect: automated [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) triggers alert
+### [Incident](../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response for Data Quality
+1. Detect: automated [monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) triggers alert
 2. Assess: determine impact and affected consumers
 3. Contain: stop propagation of bad data
 4. Investigate: root cause analysis
 5. Remediate: fix source, recalculate derived data
 6. Verify: validate data is correct post-fix
-7. Document: [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) report and preventive measures
+7. Document: [incident](../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) report and preventive measures
 
 ### Data Contract Template (YAML)
 ```yaml
@@ -551,7 +551,7 @@ Trying to capture lineage for every column in every table. Teams burn out mainta
 - PII detection must be automated in CI/CD pipelines
 - Schema changes must pass through registry with backward compatibility check
 - Data lineage must be updated when pipelines change
-- Quality [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) visible to data owners and stewards
+- Quality [dashboards](../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) visible to data owners and stewards
 - Retention purge must have dry-run mode before execution
 - Legal hold must be irrevocable until manually removed
 - Data contracts enforced between producer and consumer services

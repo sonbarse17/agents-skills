@@ -61,7 +61,7 @@ Load detailed guidance based on context:
 | Security Checklist | `../../../../Global_References/AI_and_Agents/security-checklist.md` | Every feature - auth, authz, validation |
 | Error Handling | `../../../../Global_References/AI_and_Agents/fullstack-guardian_error-handling.md` | Implementing error flows |
 | Common Patterns | `../../../../Global_References/AI_and_Agents/common-patterns.md` | CRUD, forms, API flows |
-| Backend Patterns | `../../../../Global_References/AI_and_Agents/backend-patterns.md` | [Microservices](../../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md), queues, [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md), [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) |
+| Backend Patterns | `../../../../Global_References/AI_and_Agents/backend-patterns.md` | [Microservices](../../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md), queues, [observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md), [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) |
 | Frontend Patterns | `../../../../Global_References/AI_and_Agents/frontend-patterns.md` | Real-time, optimization, accessibility, testing |
 | Integration Patterns | `../../../../Global_References/AI_and_Agents/integration-patterns.md` | Type sharing, deployment, architecture decisions |
 | API Design | `../../../../Global_References/AI_and_Agents/api-design-standards.md` | REST/GraphQL APIs, versioning, CORS, validation |
@@ -129,5 +129,5 @@ When implementing features, provide:
 3. Frontend code (components, hooks, API calls)
 4. Brief security notes
 
-[Documentation](https://jeffallan.[github](../../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/security/fullstack-guardian/)
+[Documentation](https://jeffallan.[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/security/fullstack-guardian/)
 

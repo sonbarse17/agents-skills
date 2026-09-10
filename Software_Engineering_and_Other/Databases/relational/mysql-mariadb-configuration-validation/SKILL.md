@@ -50,7 +50,7 @@ doesn't produce an outage instead of an improvement.
   touching replication.
 - Before rolling out a new user grant or a change to `skip_name_resolve`/
   `bind_address`, to confirm it doesn't lock out an existing
-  application or [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) connection path.
+  application or [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) connection path.
 - Before enabling or reconfiguring replication (async, semi-sync, or
   GTID), to confirm `server_id`, `log_bin`, `gtid_mode`, and
   `enforce_gtid_consistency` are mutually consistent across every node
@@ -58,8 +58,8 @@ doesn't produce an outage instead of an improvement.
 - Before changing ProxySQL (or another [MySQL](../mysql/SKILL.md)-aware pooler) connection
   pool sizes, to confirm the new backend pool size still fits under the
   database's `max_connections` with headroom for replication and
-  [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) connections.
-- As a PR/change-review gate for [infrastructure-as-code](../../../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) that manages
+  [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) connections.
+- As a PR/change-review gate for [infrastructure-as-code](../../../../DevOps_and_Cloud/infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) that manages
   [MySQL](../mysql/SKILL.md)/MariaDB configuration.
 
 ## Prerequisites & environment
@@ -116,7 +116,7 @@ Validate the proposed `max_connections` against every real consumer, not
 just the application's pool: ProxySQL's backend connection pool(s)
 (summed across every hostgroup/user pair, since each maintains its own),
 replication I/O/SQL threads (each replica connection consumes a
-`max_connections` slot on the source), [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) agents, and any direct
+`max_connections` slot on the source), [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) agents, and any direct
 administrative connections. Also check `max_user_connections` per
 account if set — a per-user cap lower than the intended pool size will
 reject connections well before the global `max_connections` ceiling is
@@ -176,7 +176,7 @@ SELECT user, host FROM [mysql](../mysql/SKILL.md).user WHERE user = 'app_user';
 ```
 Before tightening a grant's host scope (e.g. from `'app_user'@'%'` to
 `'app_user'@'10.0.1.0/255.255.255.0'`), confirm every real connecting
-source IP (application hosts, ProxySQL instances, [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) agents,
+source IP (application hosts, ProxySQL instances, [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) agents,
 CI/migration runners) actually falls inside the proposed scope — check
 current connections via `SHOW PROCESSLIST` or
 `performance_schema.threads` for real `HOST` values rather than
@@ -197,7 +197,7 @@ production change in a maintenance window.
   a `SET GLOBAL` without a matching `SET PERSIST` or `my.cnf` edit
   reverts silently on the next restart.
 - Validate connection math holistically (application pool + ProxySQL
-  backend pools + replication threads + [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)) against
+  backend pools + replication threads + [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)) against
   `max_connections`, and check `max_user_connections` per account
   separately — a lower per-user cap causes errors well before the
   global ceiling is reached.
@@ -257,7 +257,7 @@ production change in a maintenance window.
   sources first.
   **Fix:** This risks a self-inflicted outage if any real connection
   source (a ProxySQL instance behind a NAT gateway, a CI runner, a
-  [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) agent) falls outside the assumed IP range.
+  [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) agent) falls outside the assumed IP range.
   > **Warning — potentially destructive to availability.** Before
   > tightening network/grant scope on a production account, enumerate
   > actual current connection sources via `performance_schema.threads`
@@ -286,7 +286,7 @@ replication.
    window even though no restart is required.
 2. Validate whether 800 connections is actually needed: ProxySQL's real
    backend demand is calculated at 120 connections across its hostgroups,
-   plus 2 replication threads and a handful of [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) connections —
+   plus 2 replication threads and a handful of [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) connections —
    nowhere near 800. The real reported exhaustion traces to a batch job
    connecting directly, bypassing ProxySQL. Recommendation: fix the
    bypass and set `max_connections = 300` (headroom, not 4x overcommit).

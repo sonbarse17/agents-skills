@@ -465,7 +465,7 @@ Ask:
 
 If "no" to any, it's not a sustainable advantage.
 
-## Competitive [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+## Competitive [Monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 ### What to Track
 
@@ -489,7 +489,7 @@ If "no" to any, it's not a sustainable advantage.
 - Growth rate
 - Market share estimates
 
-### [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Cadence
+### [Monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Cadence
 
 **Weekly:**
 

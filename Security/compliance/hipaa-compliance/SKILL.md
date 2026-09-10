@@ -57,10 +57,10 @@ security_rule:
     actions:
       - Security reminders (addressable)
       - Protection from malicious software (addressable)
-      - Log-in [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (addressable)
+      - Log-in [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (addressable)
       - Password management (addressable)
 
-    164.308_a_6: "Security [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Procedures"
+    164.308_a_6: "Security [Incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Procedures"
     actions:
       - Response and reporting procedures (required)
 
@@ -196,11 +196,11 @@ audit_controls:
     - [ ] Logs retained for minimum 6 years
     - [ ] Regular log review process documented
 
-  [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md):
-    - [ ] Real-time [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) on unauthorized PHI access attempts
+  [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md):
+    - [ ] Real-time [alerting](../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md) on unauthorized PHI access attempts
     - [ ] Anomaly detection for unusual data access patterns
-    - [ ] Privileged action [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
-    - [ ] Data export/download [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
+    - [ ] Privileged action [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+    - [ ] Data export/download [alerting](../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 ```
 
 ## AWS HIPAA-Eligible Architecture
@@ -420,7 +420,7 @@ hipaa_compliance_checklist:
     - [ ] Minimum necessary access enforced
     - [ ] Access reviews conducted quarterly
     - [ ] Vendor risk assessments current
-    - [ ] [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response plan tested annually
+    - [ ] [Incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response plan tested annually
     - [ ] Policies reviewed and updated annually
 ```
 
@@ -435,4 +435,4 @@ hipaa_compliance_checklist:
 - Test contingency plans (backup restore, DR failover, emergency access) at least annually
 - Track all Business Associate Agreements in a central registry with review dates
 - Document every addressable specification decision (implement, alternative, or not applicable with rationale)
-- Prepare breach notification templates and procedures before an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) occurs
+- Prepare breach notification templates and procedures before an [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) occurs

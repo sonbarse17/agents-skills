@@ -23,7 +23,7 @@ depends_on:
 # Generate Security Sample Data
 
 Generate ECS-compliant security events, multi-step attack scenarios, and synthetic alert documents that populate Elastic
-Security [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), the Alerts tab, and Attack Discovery.
+Security [dashboards](../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), the Alerts tab, and Attack Discovery.
 
 ## Quick start
 
@@ -164,7 +164,7 @@ node skills/security/generate-security-sample-data/scripts/sample-data.js \
 
 ### Simulating a live SOC
 
-> "Keep generating events so the [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) stay active during the demo."
+> "Keep generating events so the [dashboards](../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) stay active during the demo."
 
 ```bash
 node skills/security/generate-security-sample-data/scripts/demo-walkthrough.js --continuous
@@ -194,7 +194,7 @@ node skills/security/generate-security-sample-data/scripts/sample-data.js --clea
 ## Production use
 
 - **Do not run against production clusters** unless you intend to inject synthetic data alongside real alerts. Sample
-  events and alerts are tagged for cleanup but will appear in [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), the Alerts tab, and Attack Discovery alongside
+  events and alerts are tagged for cleanup but will appear in [dashboards](../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), the Alerts tab, and Attack Discovery alongside
   real data.
 - All write operations (`generate`, `--cleanup`, `--continuous`) prompt for confirmation. Pass `--yes` or `-y` to skip
   when called by an agent.

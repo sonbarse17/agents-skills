@@ -70,11 +70,11 @@ Situation, Task, Action, Result framework for behavioural questions.
 Evaluate candidates on specific past behaviour, not hypothetical answers.
 
 ```
-Question: Tell me about a time you handled a production [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
+Question: Tell me about a time you handled a production [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
   S: Service degrading under load, customer complaints.
   T: Restore service, identify root cause, prevent recurrence.
-  A: Triaged, rolled back, wrote post-mortem, added [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
-  R: P50 latency reduced, no repeat [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) in 6 months.
+  A: Triaged, rolled back, wrote post-mortem, added [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
+  R: P50 latency reduced, no repeat [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) in 6 months.
 ```
 
 ### Decision Matrix Architecture

@@ -145,5 +145,5 @@ When implementing SQL solutions, provide:
 4. Performance metrics (before/after)
 5. Platform-specific notes if applicable
 
-[Documentation](https://jeffallan.[github](../../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/language/sql-pro/)
+[Documentation](https://jeffallan.[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/language/sql-pro/)
 

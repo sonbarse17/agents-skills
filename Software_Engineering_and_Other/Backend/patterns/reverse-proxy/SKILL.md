@@ -233,7 +233,7 @@ certificatesResolvers:
         entryPoint: web
 
 providers:
-  [docker](../../../../containers-orchestration/docker/other/docker/SKILL.md):
+  [docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md):
     exposedByDefault: false
   file:
     directory: /etc/traefik/dynamic/
@@ -310,7 +310,7 @@ http:
         period: 1m
 ```
 
-### Traefik with [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) Labels
+### Traefik with [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) Labels
 
 ```yaml
 # [docker-compose](../../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml
@@ -323,7 +323,7 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - /var/run/[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md).sock:/var/run/[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md).sock:ro
+      - /var/run/[docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md).sock:/var/run/[docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md).sock:ro
       - ./traefik.yml:/etc/traefik/traefik.yml:ro
       - letsencrypt:/letsencrypt
 
@@ -403,12 +403,12 @@ location /admin/ {
 | WebSocket disconnects after 60s | Default proxy timeout expires | Set `proxy_read_timeout 86400s` for WebSocket locations |
 | Rate limit hits legitimate users | Zone rate too aggressive | Increase `rate` or `burst` values; use different zones per endpoint |
 | Let's Encrypt renewal fails | Port 80 blocked or wrong server block | Ensure `.well-known/acme-challenge/` is accessible |
-| Traefik shows 404 for all routes | [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) labels not detected | Verify [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) socket is mounted; check `exposedByDefault` setting |
+| Traefik shows 404 for all routes | [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) labels not detected | Verify [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) socket is mounted; check `exposedByDefault` setting |
 | TLS handshake failure | Certificate chain incomplete | Include intermediate certificates in `ssl_certificate` |
 
 ## Related Skills
 
 - [load-balancing](../[load-balancing](../../Backend/load-balancing/SKILL.md)/) - Multi-backend traffic distribution
 - [cdn-setup](../[cdn-setup](../../../DevOps_and_Cloud/Cloud_Providers/cdn-setup/SKILL.md)/) - CDN in front of reverse proxy
-- [dns-management](../../../../containers-orchestration/common/other/dns-management/SKILL.md)/) - DNS records for proxy domains
-- [service-mesh](../[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)/) - Service-level routing in [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
+- [dns-management](../../../../DevOps_and_Cloud/containers-orchestration/common/other/dns-management/SKILL.md)/) - DNS records for proxy domains
+- [service-mesh](../[service-mesh](../../../DevOps_and_Cloud/Observability_and_SecOps/service-mesh/SKILL.md)/) - Service-level routing in [Kubernetes](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md)

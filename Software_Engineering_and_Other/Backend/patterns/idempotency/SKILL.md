@@ -398,7 +398,7 @@ maxmemory: 512mb                # Cap idempotency storage
 4. **Application-level dedup only**: Idempotency must be enforced at the database level with unique constraints, not application-level locking.
 5. **Reusing keys across different requests**: Each unique operation gets its own idempotency key. Reusing keys across different request bodies causes false deduplication.
 6. **Idempotency on GET/HEAD**: These are naturally idempotent. Adding idempotency key requirements to read endpoints adds complexity with no benefit.
-7. **No [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) on deduplication rate**: A high deduplication rate indicates excessive client retries or network issues. Monitor idempotency key hit rate as a signal.
+7. **No [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) on deduplication rate**: A high deduplication rate indicates excessive client retries or network issues. Monitor idempotency key hit rate as a signal.
 
 ## Design Pattern Comparison
 
@@ -417,7 +417,7 @@ maxmemory: 512mb                # Cap idempotency storage
 - Return the same response for the same key within the TTL window — including error responses.
 - Use database-level uniqueness for the idempotency key column, not application-level locking.
 - Never reuse idempotency keys across different request bodies.
-- Log idempotency key hits for [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md).
+- Log idempotency key hits for [observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md).
 - GET, HEAD, OPTIONS are inherently idempotent — no key needed.
 - Validate idempotency key format before processing.
 - Monitor idempotency key hit rate as a signal of client reliability.
@@ -488,7 +488,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
+### [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -523,7 +523,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing ([OpenTelemetry](../../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../../DevOps_and_Cloud/observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -540,7 +540,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) signing
+- Signed commits: GPG or SSH [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
@@ -557,6 +557,6 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - Fail securely — errors default to safe behavior.
 - Log security-relevant events for [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
+- Design for [observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

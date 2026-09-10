@@ -21,7 +21,7 @@ depends_on:
 
 # Saga Orchestration
 
-Patterns for managing distributed transactions and long-running business processes without two-phase [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md).
+Patterns for managing distributed transactions and long-running business processes without two-phase [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md).
 
 ## Inputs and Outputs
 
@@ -37,7 +37,7 @@ Patterns for managing distributed transactions and long-running business process
 - Orchestrator or choreography implementation for your chosen pattern
 - Compensation logic for each participant service (idempotent, always-succeeds)
 - Step timeout configuration with per-step deadlines
-- [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) setup: state machine metrics, stuck saga detection, DLQ recovery
+- [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) setup: state machine metrics, stuck saga detection, DLQ recovery
 
 ---
 
@@ -48,7 +48,7 @@ Patterns for managing distributed transactions and long-running business process
 - Managing long-running business workflows (minutes to hours)
 - Handling failures in distributed systems where atomicity is required
 - Building order fulfillment, approval, or booking processes
-- Replacing fragile two-phase [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) with async compensation
+- Replacing fragile two-phase [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) with async compensation
 
 ---
 

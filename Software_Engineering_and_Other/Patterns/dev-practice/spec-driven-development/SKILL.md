@@ -64,7 +64,7 @@ Most requests describe one capability. If this one does, skip this phase and go 
 | identity | Accounts, sessions, SSO | — |
 | billing | Plans, invoices, payments | identity |
 | notifications | Email and webhook fan-out | identity |
-| reporting | Usage [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) | billing, notifications |
+| reporting | Usage [dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) | billing, notifications |
 
 Build order: identity → billing, notifications → reporting
 ```
@@ -123,7 +123,7 @@ Don't silently fill in ambiguous requirements. The spec's entire purpose is to s
 6. **Boundaries** — Three-tier system:
    - **Always do:** Run tests before commits, follow naming conventions, validate inputs
    - **Ask first:** Database schema changes, adding dependencies, changing CI config
-   - **Never do:** [Commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) secrets, edit vendor directories, remove failing tests without approval
+   - **Never do:** [Commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) secrets, edit vendor directories, remove failing tests without approval
 
 **Spec template:**
 
@@ -220,7 +220,7 @@ The spec is a living document, not a one-time artifact:
 
 - **Update when decisions change** — If you discover the data model needs to change, update the spec first, then implement.
 - **Update when scope changes** — Features added or cut should be reflected in the spec.
-- **[Commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) the spec** — The spec belongs in version control alongside the code.
+- **[Commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) the spec** — The spec belongs in version control alongside the code.
 - **Reference the spec in PRs** — Link back to the spec section that each PR implements.
 
 ## Common Rationalizations

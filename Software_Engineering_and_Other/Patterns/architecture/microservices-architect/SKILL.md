@@ -44,7 +44,7 @@ Senior distributed systems architect specializing in cloud-native [microservices
    - *Validation checkpoint:* No shared database schema exists between services; consistency boundaries align with bounded contexts.
 4. **Resilience** — Circuit breakers, retries, timeouts, bulkheads, fallbacks.
    - *Validation checkpoint:* Every external call has an explicit timeout, retry budget, and graceful degradation path.
-5. **[Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)** — Distributed tracing, correlation IDs, centralized logging.
+5. **[Observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md)** — Distributed tracing, correlation IDs, centralized logging.
    - *Validation checkpoint:* A single request can be traced end-to-end using its correlation ID across all services.
 6. **Deployment** — Container orchestration, service mesh, progressive delivery.
    - *Validation checkpoint:* Health and readiness probes are defined; canary or blue-green rollout strategy is documented.
@@ -59,7 +59,7 @@ Load detailed guidance based on context:
 | Communication | `../../../../Global_References/Software_Engineering_and_Other/communication.md` | REST vs gRPC, async messaging, event-driven |
 | Resilience Patterns | `../../../../Global_References/Software_Engineering_and_Other/patterns.md` | Circuit breakers, saga, bulkhead, retry strategies |
 | Data Management | `../../../../Global_References/Software_Engineering_and_Other/data.md` | Database per service, event sourcing, CQRS |
-| [Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) | `../../../Global_References/[observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md).md` | Distributed tracing, correlation IDs, metrics |
+| [Observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) | `../../../Global_References/[observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md).md` | Distributed tracing, correlation IDs, metrics |
 
 ## Implementation Examples
 
@@ -127,7 +127,7 @@ const orderSaga = [reserveInventoryStep, chargePaymentStep, scheduleShipmentStep
 await runSaga(orderSaga, { orderId, customerId, items });
 ```
 
-### Health & Readiness Probe ([Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md))
+### Health & Readiness Probe ([Kubernetes](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md))
 ```yaml
 livenessProbe:
   httpGet:
@@ -165,7 +165,7 @@ readinessProbe:
 - Ignore network latency and partial failures
 - Create chatty service interfaces
 - Store shared state without proper patterns
-- Deploy without [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
+- Deploy without [observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
 
 ## Output Templates
 
@@ -178,7 +178,7 @@ When designing [microservices](../../distributed-systems/microservices/SKILL.md)
 
 ## Knowledge Reference
 
-Domain-driven design, bounded contexts, event storming, REST/gRPC, message queues (Kafka, RabbitMQ), service mesh (Istio, Linkerd), [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), circuit breakers, saga patterns, event sourcing, CQRS, distributed tracing (Jaeger, Zipkin), API gateways, eventual consistency, CAP theorem
+Domain-driven design, bounded contexts, event storming, REST/gRPC, message queues (Kafka, RabbitMQ), service mesh (Istio, Linkerd), [Kubernetes](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md), circuit breakers, saga patterns, event sourcing, CQRS, distributed tracing (Jaeger, Zipkin), API gateways, eventual consistency, CAP theorem
 
-[Documentation](https://jeffallan.[github](../../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/api-architecture/[microservices](../../distributed-systems/microservices/SKILL.md)-architect/)
+[Documentation](https://jeffallan.[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/api-architecture/[microservices](../../distributed-systems/microservices/SKILL.md)-architect/)
 

@@ -40,7 +40,7 @@ Exact user phrases: "SAST", "DAST", "static analysis", "dynamic analysis", "code
 ### Input Context
 Before activating, verify:
 - Programming languages and frameworks in the codebase
-- CI/CD platform ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md), [CircleCI](../../../ci-cd/circleci/other/circleci/SKILL.md))
+- CI/CD platform ([GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../../DevOps_and_Cloud/ci-cd/jenkins/other/jenkins/SKILL.md), [CircleCI](../../../DevOps_and_Cloud/ci-cd/circleci/other/circleci/SKILL.md))
 - SAST tool preference or existing tool (Semgrep, SonarQube, CodeQL, Checkmarx)
 - DAST target environment (staging URL, authentication method, API endpoints)
 - Existing scan frequency and gate thresholds
@@ -86,7 +86,7 @@ What is the primary goal?
 
 Is the repo public or private?
 ├── Public → Semgrep (free) + CodeQL (free for public repos)
-├── Private with [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Advanced Security → CodeQL included
+├── Private with [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Advanced Security → CodeQL included
 └── Private without GHAS → Semgrep (free) + SonarQube Community (free)
 
 What languages are in the codebase?
@@ -120,7 +120,7 @@ What type of application?
 └── Internal enterprise app → Acunetix (macro auth)
 
 What is the scan target?
-├── CI/CD (automated, pipeline) → ZAP [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) (best CI integration)
+├── CI/CD (automated, pipeline) → ZAP [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) (best CI integration)
 ├── Manual penetration testing → Burp Suite (best manual workflow)
 ├── Compliance scanning → Acunetix (comprehensive reporting)
 └── Production passive scanning → ZAP baseline (safe, read-only)
@@ -158,10 +158,10 @@ Workflow:
 ## SAST Tool Details
 
 ### Semgrep
-Semgrep is the recommended default SAST tool for most projects. It is fast, multi-language, and excels at custom rule writing. Rule packs come from the Semgrep Registry. Rules are written in YAML with a pattern-matching syntax that can detect code patterns across function boundaries. Semgrep supports all major languages ([Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md), JavaScript/[TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md), Java, Go, Rust, Ruby, C#, PHP, Kotlin, Scala) and runs in CI with diff-aware scanning. Install via `pip install semgrep` or use the official [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Action. Key strengths: pattern-based matching that goes beyond regex, support for metavariables and ellipsis operators, community-maintained rule packs, and a built-in rule testing framework.
+Semgrep is the recommended default SAST tool for most projects. It is fast, multi-language, and excels at custom rule writing. Rule packs come from the Semgrep Registry. Rules are written in YAML with a pattern-matching syntax that can detect code patterns across function boundaries. Semgrep supports all major languages ([Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md), JavaScript/[TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md), Java, Go, Rust, Ruby, C#, PHP, Kotlin, Scala) and runs in CI with diff-aware scanning. Install via `pip install semgrep` or use the official [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Action. Key strengths: pattern-based matching that goes beyond regex, support for metavariables and ellipsis operators, community-maintained rule packs, and a built-in rule testing framework.
 
 ### CodeQL
-CodeQL is best for deep interprocedural analysis and variant analysis. Developed by [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md), it uses a declarative query language (QL) to find vulnerabilities across the codebase. A single CodeQL query can find all variants of a vulnerability pattern (e.g., all paths where user input reaches a SQL query). CodeQL requires a compiled database of the codebase, which is built during the CI scan step. It supports C/C++, C#, Go, Java/Kotlin, JavaScript/[TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md), [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md), and Ruby. CodeQL is free for public repositories and included in [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Advanced Security for private repos. Key strengths: variant analysis, data flow tracking across function and file boundaries, and deep semantic understanding of the code.
+CodeQL is best for deep interprocedural analysis and variant analysis. Developed by [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md), it uses a declarative query language (QL) to find vulnerabilities across the codebase. A single CodeQL query can find all variants of a vulnerability pattern (e.g., all paths where user input reaches a SQL query). CodeQL requires a compiled database of the codebase, which is built during the CI scan step. It supports C/C++, C#, Go, Java/Kotlin, JavaScript/[TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md), [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md), and Ruby. CodeQL is free for public repositories and included in [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Advanced Security for private repos. Key strengths: variant analysis, data flow tracking across function and file boundaries, and deep semantic understanding of the code.
 
 ### SonarQube
 SonarQube is the best tool for quality gates, technical debt tracking, and broad language support. It tracks code quality metrics over time: coverage, duplicated lines, code smells, bugs, vulnerabilities, and hotspots. The quality gate is a configurable policy that blocks PRs when predefined thresholds are exceeded. SonarQube can be self-hosted (Community Edition is free) or used as SonarCloud (SaaS). It supports 30+ languages. Key strengths: historical trend tracking, quality gates as a PR policy, security hotspots that require manual review, and broad ecosystem integrations.
@@ -172,13 +172,13 @@ Snyk Code is a SAST tool integrated into the Snyk platform. It is particularly s
 ## DAST Tool Details
 
 ### OWASP ZAP
-OWASP ZAP (Zed Attack Proxy) is the recommended default DAST tool. It is free, open-source, and community-maintained. ZAP can be run as a desktop application, a daemon for CI integration, or a [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) container. Scan modes: automated scan (spider → passive → active), API scan (import OpenAPI/GraphQL schema), and baseline scan (passive-only, safe for production). ZAP supports authenticated scanning via context-based session management, bearer token injection, and form-based authentication. The HUD (Heads-Up Display) mode provides browser-based interaction for manual testing. Key strengths: free and open-source, extensive active scan rules, API scanning, and [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-native CI integration.
+OWASP ZAP (Zed Attack Proxy) is the recommended default DAST tool. It is free, open-source, and community-maintained. ZAP can be run as a desktop application, a daemon for CI integration, or a [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) container. Scan modes: automated scan (spider → passive → active), API scan (import OpenAPI/GraphQL schema), and baseline scan (passive-only, safe for production). ZAP supports authenticated scanning via context-based session management, bearer token injection, and form-based authentication. The HUD (Heads-Up Display) mode provides browser-based interaction for manual testing. Key strengths: free and open-source, extensive active scan rules, API scanning, and [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)-native CI integration.
 
 ### Burp Suite
 Burp Suite is the professional standard for web application security testing. The Community Edition includes an HTTP proxy, repeater, decoder, and scanner. The Professional Edition adds automated scanning, advanced vulnerability detection, and CI integration. Burp's scanning phases: crawl (discover all endpoints), [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) (automated vulnerability checks), and intruder (targeted fuzzing). Extensions from the BApp Store extend functionality: Autorize for auth bypass detection, JSON Web Tokens for JWT manipulation, and ActiveScan++ for enhanced scan coverage. Key strengths: manual testing workflow, extensive extension ecosystem, and industry-standard tooling.
 
 ### Acunetix
-Acunetix is a commercial DAST tool with deep scanning capabilities. It is known for its comprehensive vulnerability database covering over 7000 vulnerabilities. Acunetix supports multi-step form authentication, macro recording for complex login sequences, and integration with issue trackers (Jira, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Issues). Key strengths: deep scanning for complex vulnerabilities, macro-based authentication, and enterprise reporting.
+Acunetix is a commercial DAST tool with deep scanning capabilities. It is known for its comprehensive vulnerability database covering over 7000 vulnerabilities. Acunetix supports multi-step form authentication, macro recording for complex login sequences, and integration with issue trackers (Jira, [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Issues). Key strengths: deep scanning for complex vulnerabilities, macro-based authentication, and enterprise reporting.
 
 ## Workflow
 
@@ -216,8 +216,8 @@ Map SAST findings to affected endpoints in DAST scope. Prioritize findings that 
 | Primary strength | Custom rules, speed | Deep interprocedural, variant analysis | Quality gates, tech debt tracking | Low FP rate, IDE integration |
 | Language support | 20+ languages | 7 languages | 30+ languages | 10+ languages |
 | Rule format | YAML patterns | QL queries | Built-in rules + plugin API | Built-in + custom |
-| CI integration | [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Action, CLI | [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Action | SonarScanner CLI, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Action | Snyk CLI, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Action |
-| Diff-aware | Yes (--baseline-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)) | Yes (PR analysis) | Yes (new code analysis) | Yes |
+| CI integration | [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Action, CLI | [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Action | SonarScanner CLI, [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Action | Snyk CLI, [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Action |
+| Diff-aware | Yes (--baseline-[commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md)) | Yes (PR analysis) | Yes (new code analysis) | Yes |
 | False positive rate | Low-Medium | Low | Medium | Very low |
 | Licensing | Open source (LGPL) | Free for public repos | Community (free), Developer (paid) | Free tier, paid plans |
 | Best for | General SAST + custom rules | Security research, variant analysis | Quality gates, coverage tracking | Platform approach (code + deps + containers) |
@@ -228,7 +228,7 @@ Map SAST findings to affected endpoints in DAST scope. Prioritize findings that 
 |---|---|---|---|
 | Cost | Free | Community: free, Pro: $449/year | Commercial (custom pricing) |
 | Scan modes | Automated, API, Baseline | Crawl, [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md), Intruder | DeepScan, QuickScan |
-| CI integration | [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) + CLI action | Pro only (REST API) | Yes (CLI + REST API) |
+| CI integration | [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) + CLI action | Pro only (REST API) | Yes (CLI + REST API) |
 | Authentication | Context-based, form, token | Macro-based, form, token | Macro recording |
 | API scanning | OpenAPI, GraphQL, SOAP | OpenAPI via extension | OpenAPI, GraphQL |
 | WebSocket testing | Limited | Yes (via extension) | Yes |
@@ -274,7 +274,7 @@ New Finding → Automated Dedup → Categorize Severity
 ## Common Pitfalls
 
 ### Pitfall 1: Running Full SAST on Every PR
-Full codebase scans take 30-60 minutes, blocking CI pipelines. Use diff-aware scanning for PRs (Semgrep `--baseline-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)`, SonarQube new code analysis). Save full scans for nightly builds.
+Full codebase scans take 30-60 minutes, blocking CI pipelines. Use diff-aware scanning for PRs (Semgrep `--baseline-[commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md)`, SonarQube new code analysis). Save full scans for nightly builds.
 
 ### Pitfall 2: DAST on Production Without Care
 Active DAST scanning sends malicious payloads that can corrupt data, trigger alerts, or crash services. Always target staging or a dedicated test environment. Production scans must be passive-only (ZAP baseline, read-only checks).
@@ -305,7 +305,7 @@ Without trend data, you cannot tell if security posture is improving or degradin
 
 ## Best Practices
 
-- Run SAST on every PR diff (Semgrep `--baseline-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)`). Full scan nightly.
+- Run SAST on every PR diff (Semgrep `--baseline-[commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md)`). Full scan nightly.
 - Use multiple SAST tools in combination: Semgrep (custom rules, speed) + SonarQube (quality gates, trends).
 - Run DAST on staging every full scan; quick baseline per deployment.
 - Correlate SAST and DAST findings. Prioritize issues confirmed by both.
@@ -329,7 +329,7 @@ Semgrep is faster and easier for custom rule writing (YAML patterns, simple synt
 Semgrep focuses on finding vulnerabilities with custom patterns. SonarQube tracks overall code health: coverage, duplication, code smells, technical debt. They are complementary. Use Semgrep for SAST detection. Use SonarQube for quality gates and trends.
 
 ### ZAP vs Burp Suite
-ZAP is free, open-source, and CI-friendly ([Docker](../../../containers-orchestration/docker/other/docker/SKILL.md), CLI). Burp Suite Pro offers better manual testing workflows and a rich extension ecosystem. Use ZAP for CI/CD automation. Use Burp for professional manual [pentesting](../../pentest-redteam/pentesting/SKILL.md).
+ZAP is free, open-source, and CI-friendly ([Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md), CLI). Burp Suite Pro offers better manual testing workflows and a rich extension ecosystem. Use ZAP for CI/CD automation. Use Burp for professional manual [pentesting](../../pentest-redteam/pentesting/SKILL.md).
 
 ### ZAP vs Acunetix
 ZAP is free with community support. Acunetix is commercial with deeper scanning, macro auth recording, and enterprise compliance reporting. Use ZAP for regular CI scanning. Use Acunetix for quarterly compliance scans.
@@ -403,9 +403,9 @@ rules:
 
 ## CI Pipeline Configuration Examples
 
-### [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions — SAST + DAST Pipeline
+### [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions — SAST + DAST Pipeline
 ```yaml
-# .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/security-scan.yml
+# .[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/workflows/security-scan.yml
 name: Security Scan
 on:
   pull_request:
@@ -427,7 +427,7 @@ jobs:
           auditOn: push
           generateSarif: true
       - name: Upload SARIF
-        uses: [github](../../../ci-cd/github-actions/other/github/SKILL.md)/codeql-action/upload-sarif@v3
+        uses: [github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/codeql-action/upload-sarif@v3
         with:
           sarif_file: semgrep.sarif
   dast:
@@ -444,7 +444,7 @@ jobs:
 
 ### Quality Gate Configuration
 ```yaml
-# .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/security-gates.yml
+# .[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/security-gates.yml
 quality_gates:
   sast:
     error_threshold: 0
@@ -470,7 +470,7 @@ SAST runs in CI on every PR. DAST runs weekly on staging. Basic severity-gated p
 Diff-aware SAST + full daily scan. DAST baseline per deployment + full DAST weekly. Custom rules for framework-specific patterns. SAST-DAST correlation with prioritized backlog. SLAs enforced with automated ticket creation.
 
 ### Level 4: Optimized (Continuous)
-Real-time scanning in IDE. AI-assisted false positive triage. Automated rule generation from [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) patterns. Runtime verification correlates SAST findings with live behavior. Supply chain + SAST + DAST unified risk scoring. Self-healing: auto-rollback on critical findings in production.
+Real-time scanning in IDE. AI-assisted false positive triage. Automated rule generation from [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) patterns. Runtime verification correlates SAST findings with live behavior. Supply chain + SAST + DAST unified risk scoring. Self-healing: auto-rollback on critical findings in production.
 
 ## SAST Anti-Patterns
 
@@ -506,7 +506,7 @@ Default scan speeds can overwhelm staging environments. Configure delays: `-t` f
 ## SRE/Operations Considerations
 
 - SAST runner memory: 2-4GB RAM minimum for full codebase scans. Diff scans need <1GB.
-- ZAP [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) container: 2-4GB RAM for active scans, 1GB for baseline. CPU: 2-4 cores.
+- ZAP [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) container: 2-4GB RAM for active scans, 1GB for baseline. CPU: 2-4 cores.
 - Scan duration budgets: SAST diff <5min, SAST full <60min, ZAP baseline <30min, ZAP active <4h.
 - Schedule full SAST and DAST scans during off-peak hours to avoid CI congestion.
 - Store scan artifacts (SARIF, HTML reports, raw logs) for 90 days minimum for compliance.

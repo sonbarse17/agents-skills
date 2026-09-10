@@ -363,7 +363,7 @@ payment_errors:
 - Monthly: Fraud loss report. Chargeback rate vs. threshold (1% of transactions).
 - Quarterly: Fraud prevention strategy review. ML model performance evaluation.
 
-#### Payment [Incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response
+#### Payment [Incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response
 - Critical (payment processing down): Immediate response. Operations team + gateway support. Target restoration within 30 minutes. Post-mortem within 24 hours.
 - High (elevated decline rate, gateway latency): Investigate within 1 hour. Root cause within 4 hours.
 - Medium (reconciliation discrepancies): Investigate within 24 hours. Resolve within 7 days.
@@ -375,7 +375,7 @@ Pitfall 1: Storing raw card numbers. Increases PCI DSS scope to SAQ D. Massive c
 
 Pitfall 2: Not handling webhook idempotency. Gateway may send the same webhook event multiple times. Processing twice results in double charge. Mitigation: idempotency key on webhook processing. Store processed event IDs.
 
-Pitfall 3: Ignoring webhook delivery failures. Gateway webhooks can fail to deliver. Order stays in pending state. Mitigation: build webhook retry with [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md). Implement fallback via scheduled API queries. Alert on webhook delivery failures.
+Pitfall 3: Ignoring webhook delivery failures. Gateway webhooks can fail to deliver. Order stays in pending state. Mitigation: build webhook retry with [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md). Implement fallback via scheduled API queries. Alert on webhook delivery failures.
 
 Pitfall 4: No payment method abstraction. Direct coupling to Stripe API makes switching gateways impossible without full rewrite. Mitigation: payment service abstraction layer with gateway adapters. All business logic uses generic interface.
 
@@ -444,9 +444,9 @@ Practice 8: Implement gateway failover for critical payments. If primary gateway
 - [ ] Security review of payment integration completed
 
 ### Production Readiness
-- [ ] [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) configured (success rate, decline rate, latency, webhook delivery)
+- [ ] [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) [dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) configured (success rate, decline rate, latency, webhook delivery)
 - [ ] Alerts configured (gateway down, elevated decline rate, reconciliation failures)
-- [ ] [Runbooks](../../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md) documented (payment [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response, gateway failover, manual refund process)
+- [ ] [Runbooks](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md) documented (payment [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response, gateway failover, manual refund process)
 - [ ] Reconciliation process automated
 - [ ] Operations team trained on payment support
 ```
@@ -570,5 +570,5 @@ async function handleStripeWebhook(req: Request, res: Response): Promise<void> {
 - Requirement 11: regularly test security systems. ASV scan quarterly. Penetration test annually.
 - Tokenization flow: card data → gateway token → your server (never card data). Token is useless if breached.
 - 3D Secure (SCA): required for EU transactions. Exemption for low-risk, low-value, or recurring.
-- Fraud [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md): velocity check (X attempts/hour), AVS mismatch, IP geo mismatch, card BIN country mismatch.
+- Fraud [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md): velocity check (X attempts/hour), AVS mismatch, IP geo mismatch, card BIN country mismatch.
 - Chargeback prevention: clear descriptor, delivery confirmation for physical goods, customer support contact visible.

@@ -401,7 +401,7 @@ Some npm packages export as CommonJS (`module.exports`). These cannot be tree-sh
 All node_modules in a single vendor chunk means a change to any dependency invalidates the entire cache. Split vendors by category: `react-vendor`, `ui-lib`, `utility`.
 
 ### 6. Source Maps in Production
-Generating full source maps in production slows the build and exposes source code. Use `hidden-source-map` for error [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) or disable entirely.
+Generating full source maps in production slows the build and exposes source code. Use `hidden-source-map` for error [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) or disable entirely.
 
 ### 7. Missing [TypeScript](../../common/typescript/SKILL.md) Path Aliases Resolution
 If you use `@/components/Button` in code, the bundler must resolve it. Vite: `resolve.alias`. Webpack: `resolve.alias`.
@@ -491,7 +491,7 @@ jobs:
 3. Set `"sideEffects": false` in library `package.json` for tree shaking.
 4. Avoid barrel `index.ts` files that re-export everything from a directory.
 5. Environment variables are build-time constants -- never reference runtime env in client code.
-6. Source maps only in development -- disable in production or use hidden source maps for error [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
+6. Source maps only in development -- disable in production or use hidden source maps for error [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
 7. Enable tree shaking at bundler level -- don't rely solely on minifier.
 8. Keep production entry chunk under 200KB (gzipped) for fast initial load.
 9. Separate vendor code from application code for cache optimization.

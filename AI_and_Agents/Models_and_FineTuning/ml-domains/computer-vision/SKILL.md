@@ -362,7 +362,7 @@ def optimize_tensorrt(onnx_path, engine_path, precision="fp16"):
 - Set up A/B testing for gradual rollout with automatic rollback.
 - Monitor for adversarial inputs using confidence thresholds.
 
-### [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+### [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - Track mAP@0.5:0.95 over time to detect performance regression.
 - Monitor inference latency (preprocessing + model + postprocessing).
 - Track per-class AP — specific classes may degrade while overall mAP stays stable.

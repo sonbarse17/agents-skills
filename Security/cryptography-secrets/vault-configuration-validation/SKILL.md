@@ -35,13 +35,13 @@ policies, auth-method role bindings, and seal configuration — a
 correctly-operated, highly-available [Vault](../vault/SKILL.md) cluster (see
 [vault-operations-and-pki-engine-configuration](../vault/SKILL.md)-operations-and-pki-engine-configuration/SKILL.md)/SKILL.md))
 still leaks broad access if a policy grants `path "secret/*" {
-capabilities = ["read"] }` instead of a scoped path, or if a [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
+capabilities = ["read"] }` instead of a scoped path, or if a [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
 auth-method role binds to `bound_service_account_names: ["*"]` instead
 of a specific service account. Because [Vault](../vault/SKILL.md) policy changes take effect
 immediately and apply broadly (a single policy can be attached to many
 tokens/roles), an overly broad or subtly wrong policy is a
-production-security-[incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-in-waiting the moment it's applied, not
-just a [code-review](../../../ci-cd/common/other/code-review/SKILL.md) nitpick. This skill covers validating policies, auth
+production-security-[incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-in-waiting the moment it's applied, not
+just a [code-review](../../../DevOps_and_Cloud/ci-cd/common/other/code-review/SKILL.md) nitpick. This skill covers validating policies, auth
 method bindings, and seal/storage configuration changes *before*
 rollout — via `[vault](../vault/SKILL.md) policy fmt`/`[vault](../vault/SKILL.md) policy read` inspection,
 automated linting in CI, least-privilege review of path grants, and a
@@ -56,7 +56,7 @@ storage backend changes).
 - The user wants CI-based linting/validation of [Vault](../vault/SKILL.md) policy files
   version-controlled alongside application code, rather than manual
   review only at apply time.
-- The user is configuring a new auth method ([Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), AWS IAM, OIDC,
+- The user is configuring a new auth method ([Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md), AWS IAM, OIDC,
   AppRole) and wants the role/binding reviewed for least privilege
   before workloads start authenticating against it.
 - The user is planning a seal migration (Shamir → auto-unseal, or
@@ -85,7 +85,7 @@ storage backend changes).
   point — see the worked example) wired into CI for automated checks
   ahead of manual review.
 - For auth-method review: read access to the specific auth method's
-  role configuration (`[vault](../vault/SKILL.md) read auth/[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)/role/<name>`,
+  role configuration (`[vault](../vault/SKILL.md) read auth/[kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md)/role/<name>`,
   `[vault](../vault/SKILL.md) read auth/aws/role/<name>`, etc.) to inspect bound
   constraints.
 - For seal-migration review: a maintenance window and a tested rollback
@@ -164,7 +164,7 @@ storage backend changes).
    exit $fail
    ```
    ```yaml
-   # .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/[vault](../vault/SKILL.md)-policy-lint.yml
+   # .[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/workflows/[vault](../vault/SKILL.md)-policy-lint.yml
    name: [vault](../vault/SKILL.md)-policy-lint
    on: [pull_request]
    jobs:
@@ -176,9 +176,9 @@ storage backend changes).
    ```
 
 5. **Validate auth-method role bindings scope to a specific identity**,
-   not a wildcard match. [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) auth method example:
+   not a wildcard match. [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) auth method example:
    ```bash
-   [vault](../vault/SKILL.md) read auth/[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)/role/payments-prod
+   [vault](../vault/SKILL.md) read auth/[kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md)/role/payments-prod
    ```
    ```hcl
    # Overly broad — any service account in any namespace can assume this role
@@ -197,7 +197,7 @@ storage backend changes).
    and policies — a long-lived, broadly-renewable token defeats much of
    the value of an auth method's identity binding:
    ```bash
-   [vault](../vault/SKILL.md) read auth/[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)/role/payments-prod | grep -E "ttl|max_ttl"
+   [vault](../vault/SKILL.md) read auth/[kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md)/role/payments-prod | grep -E "ttl|max_ttl"
    ```
    Flag `token_max_ttl` set to `0` (unlimited) or an unusually long
    duration (weeks/months) on a role meant to authenticate a
@@ -293,7 +293,7 @@ storage backend changes).
 
 - **Symptom:** Live [Vault](../vault/SKILL.md) policy state has drifted from what's in the
   version-controlled repo, because someone ran `[vault](../vault/SKILL.md) policy write`
-  directly during an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) and never backported the change.
+  directly during an [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) and never backported the change.
   **Fix:** Run a periodic diff of live policy/auth-method state against
   the repo (step 8) as a scheduled check, and require any emergency
   direct change to be backported to version control and reviewed
@@ -304,7 +304,7 @@ storage backend changes).
 ## Worked example
 
 A platform team reviews a pull request proposing a new [Vault](../vault/SKILL.md) policy and
-[Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) auth-method role for a `payments-svc` workload, before
+[Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) auth-method role for a `payments-svc` workload, before
 applying either to production.
 
 Proposed policy (`policies/payments-prod-read.hcl`):
@@ -361,7 +361,7 @@ of truth and the live cluster state in sync from the outset.
 - [vault-operations-and-pki-engine-configuration](../vault/SKILL.md)-operations-and-pki-engine-configuration/SKILL.md)/SKILL.md) —
   operating the [Vault](../vault/SKILL.md) cluster (seal/unseal, PKI engine, HA/DR topology)
   that this skill's policy and configuration validation protects.
-- [secrets-management](../../../[devsecops](../devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md) —
+- [secrets-management](../../../[devsecops](../devsecops/SKILL.md)/skills/[secrets-management](../../../DevOps_and_Cloud/cloud/common/security/secrets-management/SKILL.md)/SKILL.md) —
   the broader secrets-manager selection and least-privilege rationale
   this skill's [Vault](../vault/SKILL.md)-specific policy review implements in HCL terms.
 - [security-gate-exception-management](../../../[devsecops](../devsecops/SKILL.md)/skills/[security-gate-exception-management](../../common/security-gate-exception-management/SKILL.md)/SKILL.md) —
@@ -371,4 +371,4 @@ of truth and the live cluster state in sync from the outset.
   policy.
 - [opa-gatekeeper-policy-authoring](../../../policy-and-governance-tooling/skills/[opa-gatekeeper-policy-authoring](../opa-gatekeeper-policy-authoring/SKILL.md)/SKILL.md) —
   a comparable [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-before-enforce/least-privilege review discipline
-  applied to [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) admission policy rather than [Vault](../vault/SKILL.md) ACL policy.
+  applied to [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) admission policy rather than [Vault](../vault/SKILL.md) ACL policy.

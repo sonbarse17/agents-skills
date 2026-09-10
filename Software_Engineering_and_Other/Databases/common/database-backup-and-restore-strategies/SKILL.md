@@ -31,7 +31,7 @@ depends_on:
 
 A backup that has never been restored is a hypothesis, not a safety
 net — the single most common cause of a "we had backups but couldn't
-recover" [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) is a backup process that ran successfully (per its
+recover" [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) is a backup process that ran successfully (per its
 own logs/exit code) but produced an artifact that was never actually
 tested end-to-end against a real restore. This skill covers the
 dominant backup tooling for the three most common relational/document
@@ -100,7 +100,7 @@ row take time proportional to data volume, and a large logical restore
 can take hours where a physical restore of the same data takes minutes.
 
 **Physical backups** (`pg_basebackup`, Percona XtraBackup, filesystem/
-[block-storage](../../../../cloud/common/storage/block-storage/SKILL.md) snapshots) copy the database's actual on-disk files —
+[block-storage](../../../../DevOps_and_Cloud/cloud/common/storage/block-storage/SKILL.md) snapshots) copy the database's actual on-disk files —
 much faster for both backup and restore at scale, since they don't
 serialize/deserialize every row, but the resulting artifact is tied to
 the same major engine version and (for some tools) similar
@@ -262,13 +262,13 @@ from in practice.
 ## Common pitfalls
 
 - **Symptom:** A restore is attempted for the first time during a real
-  [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), and it fails, is missing data, or takes far longer than
+  [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md), and it fails, is missing data, or takes far longer than
   anyone expected.
   **Fix:** The backup process had never been validated with an actual
   restore — only its own success exit code was trusted. This is the
   single most common and most expensive backup failure mode; establish
   a recurring restore-test schedule immediately, even retroactively
-  after an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), and measure real restore time against the
+  after an [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md), and measure real restore time against the
   required RTO going forward.
 
 - **Symptom:** A `mysqldump`-based backup of a large production
@@ -321,10 +321,10 @@ from in practice.
 
 ## Worked example
 
-**Scenario:** A team discovers, during a post-[incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) review, that
+**Scenario:** A team discovers, during a post-[incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) review, that
 their [PostgreSQL](../../relational/postgresql/SKILL.md) production database (600GB) has been backed up nightly
 via `pg_dump` for two years, but no restore has ever been tested, and
-the last [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) took over 14 hours to (partially) recover from
+the last [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) took over 14 hours to (partially) recover from
 because the logical restore was far slower than anyone expected.
 
 1. Measure the actual problem: a test logical restore of the full
@@ -354,7 +354,7 @@ because the logical restore was far slower than anyone expected.
    retention requirement, confirmed with the compliance team rather
    than guessed at.
 6. Document the tested, timed restore procedure as the team's actual
-   [incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md) [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md), replacing the previous untested
+   [incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md) [runbook](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbook/SKILL.md), replacing the previous untested
    assumption that "we have nightly backups" was itself sufficient.
 
 ## Cross-references

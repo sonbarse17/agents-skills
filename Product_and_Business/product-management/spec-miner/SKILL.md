@@ -122,5 +122,5 @@ Include:
 6. Uncertainties and questions
 7. Recommendations
 
-[Documentation](https://jeffallan.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/workflow/spec-miner/)
+[Documentation](https://jeffallan.[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/workflow/spec-miner/)
 

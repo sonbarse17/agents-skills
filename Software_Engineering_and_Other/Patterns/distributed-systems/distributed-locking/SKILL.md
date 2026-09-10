@@ -143,8 +143,8 @@ async with lock:
 
 ```go
 // Go — Redis lock with go-redis
-import "[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/go-redsync/redsync/v4"
-import "[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/go-redsync/redsync/v4/redis/goredis/v9"
+import "[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/go-redsync/redsync/v4"
+import "[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/go-redsync/redsync/v4/redis/goredis/v9"
 
 func processOrder(ctx context.Context, orderId string) error {
     mutex := rs.NewMutex("resource:order-" + orderId, redsync.WithExpiry(5*time.Second))
@@ -227,7 +227,7 @@ interface LockMetrics {
   timeoutRate: number;       // how often locks expire before release
 }
 
-// Export metrics via your [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) system
+// Export metrics via your [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) system
 metrics.histogram('lock.acquisition_time', acquisitionTime);
 metrics.histogram('lock.hold_time', holdTime);
 metrics.counter('lock.contention', contentionCount);

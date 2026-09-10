@@ -87,7 +87,7 @@ behind upstream.
 
 A vulnerability scanner and a secret scanner look for different things and most tools need both
 enabled explicitly. A committed API key or private key baked into a layer is a more immediate risk
-than most CVEs, and it survives even a later `RUN rm` (see `[containerization](../../../containers-orchestration/docker/other/containerization/SKILL.md)` on why). Run
+than most CVEs, and it survives even a later `RUN rm` (see `[containerization](../../../DevOps_and_Cloud/containers-orchestration/docker/other/containerization/SKILL.md)` on why). Run
 secret-detection as part of the same pipeline step, and treat any hit as an automatic block plus
 a credential rotation, not just a finding to triage.
 
@@ -100,7 +100,7 @@ A scan result that lives only in a CI log disappears the moment anyone asks "was
 scanned before it deployed six weeks ago." Attach scan results and pass/fail status to the image
 as attestations or in an artifact store tied to the image digest, so provenance and [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
 questions can be answered later. Broader supply-chain provenance and signing live in
-`[supply-chain-security](../../supply-chain/supply-chain-security/SKILL.md)` and `[container-registry](../../../containers-orchestration/docker/registry/container-registry/SKILL.md)`; this step is only about not losing the scan
+`[supply-chain-security](../../supply-chain/supply-chain-security/SKILL.md)` and `[container-registry](../../../DevOps_and_Cloud/containers-orchestration/docker/registry/container-registry/SKILL.md)`; this step is only about not losing the scan
 evidence you already generated.
 
 **Done when:** a scan result for any deployed image digest can be retrieved after the fact.

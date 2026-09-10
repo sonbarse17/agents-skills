@@ -159,7 +159,7 @@ before a long run, not after hour six.
   the stack moves faster than the docs.
 - **CHECK:** `../../Global_References/Data_Engineering/gotcha-checks.md` G8 — the playbook
   repo's recent issues.
-- **FIX:** check `[github](../../ci-cd/github-actions/other/github/SKILL.md).com/NVIDIA/dgx-spark-playbooks` issues
+- **FIX:** check `[github](../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/NVIDIA/dgx-spark-playbooks` issues
   before trusting a recipe for an expensive run.
 
 ### G9: Container-First, Not Bare Pip
@@ -201,7 +201,7 @@ import torch; print(torch.cuda.get_device_capability())  # expect (12, 1) (G7)
 ```
 
 ```bash
-{ [ -f /.dockerenv -o -f /run/.containerenv ] || grep -qE '[docker](../../containers-orchestration/docker/other/docker/SKILL.md)|containerd' /proc/1/cgroup; } 2>/dev/null && echo container || echo unknown  # G9
+{ [ -f /.dockerenv -o -f /run/.containerenv ] || grep -qE '[docker](../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)|containerd' /proc/1/cgroup; } 2>/dev/null && echo container || echo unknown  # G9
 ```
 
 `assets/preflight.sh` runs G1, G3, G4, G7, G9 and produces one

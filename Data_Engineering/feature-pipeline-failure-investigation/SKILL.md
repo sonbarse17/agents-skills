@@ -60,7 +60,7 @@ safest thing to do with live traffic in the next fifteen minutes.
 - A feature store or materialization layer that exposes per-feature-view
   freshness metadata (last-successful-materialization timestamp, row
   counts) — Feast, Tecton, or a homegrown store with equivalent
-  [observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md). Without this, "how stale is it right now" requires manual
+  [observability](../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md). Without this, "how stale is it right now" requires manual
   querying under time pressure.
 - Access to the orchestrator's job run history and logs (Airflow, Kubeflow
   Pipelines, Argo Workflows, or equivalent) to see exactly which step
@@ -107,9 +107,9 @@ safest thing to do with live traffic in the next fifteen minutes.
    ```
 4. **Decide mitigation based on staleness severity and feature
    importance**, not a single blanket response:
-   - Within tolerance: no action needed beyond [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) the fix.
+   - Within tolerance: no action needed beyond [monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) the fix.
    - Beyond tolerance for a low-importance feature: flag predictions as
-     degraded in logs/[monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), but continue serving.
+     degraded in logs/[monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), but continue serving.
    - Beyond tolerance for a high-importance feature: serve last-known-good
      cached values with an explicit expiration, degrade to a simpler
      fallback (a rule-based heuristic or a simpler model less sensitive to
@@ -119,8 +119,8 @@ safest thing to do with live traffic in the next fifteen minutes.
    - Never silently continue serving indefinitely-staling features with no
      flag and no expiration on the mitigation.
 5. **Communicate the degraded state** to downstream consumers and, if
-   customer-facing impact is plausible, loop in [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response (see
-   [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../Software_Engineering_and_Other/Frontend/[incident-response](../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../observability-monitoring-logging/common/alerting/on-call-management/SKILL.md)/SKILL.md)/SKILL.md)).
+   customer-facing impact is plausible, loop in [incident](../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response (see
+   [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../Software_Engineering_and_Other/Frontend/[incident-response](../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/on-call-management/SKILL.md)/SKILL.md)/SKILL.md)).
 6. **Once the root cause is fixed, backfill the missed window
    idempotently** — rerun the materialization job for the exact gap,
    writing to a versioned output rather than mutating a shared location in
@@ -142,15 +142,15 @@ safest thing to do with live traffic in the next fifteen minutes.
 ## Best practices
 
 - Treat feature freshness as an explicit SLA with its own alert, separate
-  from model-quality [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) — staleness and drift look similar from a
+  from model-quality [monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) — staleness and drift look similar from a
   distance but need different responses.
 - Prefer explicitly flagging degraded predictions over silently serving
-  stale data with no signal to consumers or [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
+  stale data with no signal to consumers or [monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
 - Make backfills idempotent by construction (write to a run-scoped or
   timestamp-partitioned output), so a retried backfill after a second
   failure can't corrupt or duplicate data.
 - Rank features by importance to serving decisions ahead of time, so
-  mitigation urgency during an [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) is a quick lookup, not a debate.
+  mitigation urgency during an [incident](../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) is a quick lookup, not a debate.
 - Time-box and ticket any interim mitigation (cached fallback, paused
   segment) with an explicit expiration, and confirm removal once the real
   fix lands.
@@ -182,7 +182,7 @@ safest thing to do with live traffic in the next fifteen minutes.
   **Fix:** Always backfill the missed window explicitly and idempotently
   once the root cause is fixed, rather than only resuming forward
   execution; verify the backfill closes the gap before declaring the
-  [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) resolved.
+  [incident](../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) resolved.
 
 - **Symptom:** The fastest available "fix" is muting the freshness alert
   itself rather than addressing the actual feature computation problem,
@@ -192,7 +192,7 @@ safest thing to do with live traffic in the next fifteen minutes.
   should change.
 
 - **Symptom:** An emergency mitigation (serving cached last-known-good
-  values) is put in place during the [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) and is still running three
+  values) is put in place during the [incident](../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) and is still running three
   months later because nobody tracked it as temporary.
   **Fix:** Ticket every interim mitigation with an explicit owner and
   expiration date at the time it's applied, and confirm its removal once
@@ -219,7 +219,7 @@ fresher than 22:00 UTC the previous day by the time on-call is paged at
 4. **Mitigation:** on-call switches `fraud-scorer`'s serving path to serve
    the last-known-good cached `driver_stats` snapshot from 22:00 UTC with
    predictions explicitly flagged as `feature_staleness: degraded` in logs
-   and [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), rather than either serving silently or pausing scoring
+   and [monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), rather than either serving silently or pausing scoring
    entirely — chosen because a slightly stale fraud signal is safer than
    no fraud scoring at all for this use case. The mitigation is ticketed
    with a same-day expiration.
@@ -243,4 +243,4 @@ fresher than 22:00 UTC the previous day by the time on-call is paged at
 - [data-and-model-lineage](../[data-and-model-lineage](../data-and-model-lineage/SKILL.md)/SKILL.md) — tracing exactly which models and downstream artifacts consume the affected feature view.
 - [model-drift-alert-triage](../../AI_and_Agents/Models_and_FineTuning/llmops/model-drift-alert-triage/SKILL.md)/SKILL.md) — the triage process that often routes here when a drift alert turns out to be staleness, not drift.
 - [production-model-rollback-procedure](../../AI_and_Agents/Models_and_FineTuning/llmops/production-model-rollback-procedure/SKILL.md)/SKILL.md) — the escalation path if the pipeline outage's downstream impact is severe enough to warrant rolling back the model itself rather than mitigating features.
-- [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../Software_Engineering_and_Other/Frontend/[incident-response](../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../observability-monitoring-logging/common/alerting/on-call-management/SKILL.md)/SKILL.md)/SKILL.md) — [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) structure for customer-facing impact from a feature pipeline outage.
+- [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../Software_Engineering_and_Other/Frontend/[incident-response](../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/on-call-management/SKILL.md)/SKILL.md)/SKILL.md) — [incident](../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) structure for customer-facing impact from a feature pipeline outage.

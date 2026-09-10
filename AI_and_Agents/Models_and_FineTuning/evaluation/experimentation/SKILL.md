@@ -34,7 +34,7 @@ depends_on:
 # Experimentation
 
 ## Purpose
-Design and analyze rigorous A/B tests and experiments. Enforce proper sample size planning, pre-registration, statistical methods, guardrail [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), and decision frameworks.
+Design and analyze rigorous A/B tests and experiments. Enforce proper sample size planning, pre-registration, statistical methods, guardrail [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), and decision frameworks.
 
 ## Agent Protocol
 
@@ -218,7 +218,7 @@ High correlation between pre/post metric (r > 0.5). Stable user behavior (don't 
 ### Sequential Testing (Always Valid Inference)
 
 #### Mixture of Sequential Probability Ratio Test (mSPRT)
-Allows continuous [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) without inflating false positive rate. Uses a mixing distribution over effect sizes. Decision boundary widens over time, maintaining valid type I error at any stopping time.
+Allows continuous [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) without inflating false positive rate. Uses a mixing distribution over effect sizes. Decision boundary widens over time, maintaining valid type I error at any stopping time.
 
 ```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # mSPRT for normal data (continuous metrics)
@@ -413,7 +413,7 @@ Metric variability too high to detect MDE?
 │   └── Stratified randomization + stratified analysis
 ├── ML model predicting the metric available
 │   └── CUPED with model predictions as covariates
-└── Sequential [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) needed
+└── Sequential [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) needed
     └── mSPRT (always valid inference at any stopping time)
 ```
 

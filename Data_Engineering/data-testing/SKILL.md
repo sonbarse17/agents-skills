@@ -45,7 +45,7 @@ Exact user phrases: "data testing", "dbt testing", "dbt unit test", "data-diff",
 Before activating, verify:
 - Data transformation tool (dbt, SQLMesh, custom)
 - Testing infrastructure (Soda Cloud, Great Expectations, datafold, data-diff)
-- CI/CD platform ([GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../ci-cd/jenkins/other/jenkins/SKILL.md))
+- CI/CD platform ([GitHub](../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../DevOps_and_Cloud/ci-cd/jenkins/other/jenkins/SKILL.md))
 - Environments (dev, staging, prod) and data sources
 - Data contracts or SLAs in place
 - Existing test coverage and failure patterns
@@ -75,7 +75,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 - [ ] Soda or Great Expectations checks for row count, freshness, null rates, uniqueness
 - [ ] Data contract tests enforcing schema and shape on every deploy
 - [ ] CI pipeline runs tests and blocks on failures
-- [ ] [Alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) on test failure with Slack/PagerDuty integration
+- [ ] [Alerting](../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md) on test failure with Slack/PagerDuty integration
 - [ ] Test coverage measured and reported
 
 ### Max Response Length
@@ -312,9 +312,9 @@ def build_orders_suite():
 
 ## CI/CD Integration
 
-### [GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions
+### [GitHub](../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions
 ```yaml
-# .[github](../../ci-cd/github-actions/other/github/SKILL.md)/workflows/data-tests.yml
+# .[github](../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/workflows/data-tests.yml
 name: Data Tests
 on:
   pull_request:
@@ -356,8 +356,8 @@ jobs:
 
 ```
                     ┌────────────────────────────┐
-                    │  Production [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)     │  Anomaly detection,
-                    │  ([Observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) checks)    │  freshness alerts
+                    │  Production [Monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)     │  Anomaly detection,
+                    │  ([Observability](../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) checks)    │  freshness alerts
                     ├────────────────────────────┤
                     │  End-to-End Tests          │  Cross-system diffs,
                     │  (Soda/GE scans)           │  row counts, schema
@@ -442,8 +442,8 @@ What aspect of the data pipeline are we validating?
 │   ├── Row count consistency → equal_rowcount test
 │   └── Cross-environment consistency → DataDiff
 └── Production behavior
-    ├── Anomaly detection → Soda/Monte Carlo [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
-    └── SLA compliance → contract [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+    ├── Anomaly detection → Soda/Monte Carlo [monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+    └── SLA compliance → contract [monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 ```
 
 ## Rules
@@ -456,7 +456,7 @@ What aspect of the data pipeline are we validating?
 - Alert on test failure immediately, not next business day
 - Test coverage reports generated monthly
 - Cross-environment diffs limited to last 7 days of data for performance
-- Apply testing pyramid: unit > integration > regression > E2E > [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+- Apply testing pyramid: unit > integration > regression > E2E > [monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - Match test type to data risk — schema failures block, quality failures alert
 
 ## References
@@ -475,7 +475,7 @@ Data Testing Strategy
 ├── Pipeline testing approach?
 │   ├── SQL transformation tests → dbt tests (singular + generic)
 │   ├── [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) transformation tests → pytest + chispa (PySpark)
-│   └── End-to-end pipeline tests → [Jenkins](../../ci-cd/jenkins/other/jenkins/SKILL.md)/[GitHub](../../ci-cd/github-actions/other/github/SKILL.md) Actions with test datasets
+│   └── End-to-end pipeline tests → [Jenkins](../../DevOps_and_Cloud/ci-cd/jenkins/other/jenkins/SKILL.md)/[GitHub](../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions with test datasets
 ├── Data quality testing?
 │   ├── Row-level (not null, unique) → dbt generic tests
 │   ├── Statistical (distribution, outliers) → Great Expectations
@@ -549,14 +549,14 @@ WHERE total_amount < 0
 ## Performance Optimization
 
 - **Parallel test execution**: Use pytest-xdist or dbt `--threads` for parallel model testing.
-- **Test tiering**: Run fast (< 1 min) unit tests on every [commit](../../ci-cd/common/git-workflow/commit/SKILL.md); slow integration tests nightly.
+- **Test tiering**: Run fast (< 1 min) unit tests on every [commit](../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md); slow integration tests nightly.
 - **Data skipping**: Test only changed models + their downstream dependencies using `dbt test --select +model_name+`.
 - **Result caching**: Cache full-refresh model builds across test runs using ephemeral volumes.
 - **Minimal test data**: Design test cases with minimal row counts (3-10 rows per edge case).
 
 ## Security Considerations
 
-- **Test data de-identification**: Use synthetic or masked data in CI; never [commit](../../ci-cd/common/git-workflow/commit/SKILL.md) production PII to test seeds.
+- **Test data de-identification**: Use synthetic or masked data in CI; never [commit](../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) production PII to test seeds.
 - **Credential isolation**: Use separate test DB credentials with read-only access; rotate CI secrets.
 - **Test artifact storage**: Encrypt test result artifacts at rest; purge CI logs after 90 days.
 - **Access control**: Restrict test environment modification to pipeline maintainers; [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) test data changes.
@@ -564,5 +564,5 @@ WHERE total_amount < 0
 
 ## Handoff
 `[data-data-quality](../data-quality/SKILL.md)` for broader quality framework and data contract enforcement
-`[data-data-observability](../data-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)` for production [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and anomaly detection
+`[data-data-observability](../data-[observability](../../DevOps_and_Cloud/Observability_and_SecOps/observability/SKILL.md)/SKILL.md)` for production [monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and anomaly detection
 

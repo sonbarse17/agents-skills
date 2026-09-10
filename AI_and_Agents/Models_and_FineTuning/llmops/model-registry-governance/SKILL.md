@@ -424,7 +424,7 @@ Maintain immutable records of:
 |-------|-----------|------------|
 | Model registration fails | Check MLflow server connectivity and artifact store permissions | Verify S3/GCS credentials and bucket policy |
 | Promotion blocked by policy | Review OPA deny messages in CI output | Fix metadata gaps or request policy exception |
-| Stale models not auto-retiring | Lifecycle cron job not running | Check CronJob status in [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) |
+| Stale models not auto-retiring | Lifecycle cron job not running | Check CronJob status in [Kubernetes](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) |
 | Duplicate model versions | Race condition in CI pipeline | Add locking via registry API or database |
 | Missing eval evidence | Eval pipeline skipped or failed | Re-run eval suite and re-register |
 
@@ -434,4 +434,4 @@ Maintain immutable records of:
 - [policy-as-code](../../../../Security/policy-as-code/policy-as-code/SKILL.md)/) - Enforce governance with policy engines
 - [llm-fine-tuning](../../../infrastructure/local-ai/[llm-fine-tuning](../llm-fine-tuning/SKILL.md)/) - Version adapters and training outputs
 - [llmops-platform-engineering](../[llmops-platform-engineering](../llmops-[platform-engineering](../../../Software_Engineering_and_Other/Frontend/platform-engineering/SKILL.md)/SKILL.md)/) - Platform CI/CD and promotion workflows
-- [ai-sre-[incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-response](../[ai-sre-[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response](../../../DevOps_and_Cloud/Observability_and_SecOps/ai-sre-[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)/SKILL.md)/) - [Incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response for model issues
+- [ai-sre-[incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-response](../[ai-sre-[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response](../../../DevOps_and_Cloud/Observability_and_SecOps/ai-sre-[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)/SKILL.md)/) - [Incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response for model issues

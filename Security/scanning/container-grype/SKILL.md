@@ -64,10 +64,10 @@ grype <image-name>
 
 Examples:
 ```bash
-# Scan official [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) image
+# Scan official [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) image
 grype alpine:latest
 
-# Scan local [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) image
+# Scan local [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) image
 grype myapp:v1.2.3
 
 # Scan filesystem directory
@@ -226,11 +226,11 @@ grype <image> --db /path/to/database
 - **Sensitive Data Handling**: Scan results may contain package names and versions that reveal
   application architecture. Store results securely and limit access to authorized security personnel.
 
-- **Access Control**: Grype requires [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) socket access when scanning container images.
+- **Access Control**: Grype requires [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) socket access when scanning container images.
   Restrict permissions to prevent unauthorized image access.
 
 - **[Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logging**: Log all Grype scans with timestamps, target details, and operator identity
-  for compliance and [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response. Archive scan results for historical vulnerability tracking.
+  for compliance and [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response. Archive scan results for historical vulnerability tracking.
 
 - **Compliance**: Regular vulnerability scanning supports SOC2, PCI-DSS, NIST 800-53, and ISO 27001
   requirements. Document scan frequency and remediation SLAs.
@@ -264,13 +264,13 @@ Scan before pushing images to registry:
 
 ```bash
 # Build image
-[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) build -t myapp:latest .
+[docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) build -t myapp:latest .
 
 # Scan locally before push
 grype myapp:latest --fail-on critical
 
 # If scan passes, push to registry
-[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) push myapp:latest
+[docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) push myapp:latest
 ```
 
 ### Pattern 2: Scheduled Scanning
@@ -279,7 +279,7 @@ Re-scan existing images for newly disclosed vulnerabilities:
 
 ```bash
 # Scan all production images daily
-for image in $([docker](../../../containers-orchestration/docker/other/docker/SKILL.md) images --format '{{.Repository}}:{{.Tag}}' | grep prod); do
+for image in $([docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) images --format '{{.Repository}}:{{.Tag}}' | grep prod); do
   grype $image -o json >> daily-scan-$(date +%Y%m%d).json
 done
 ```
@@ -301,10 +301,10 @@ grype alpine:3.19
 
 ## Integration Points
 
-- **CI/CD**: Integrate with [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md), [CircleCI](../../../ci-cd/circleci/other/circleci/SKILL.md) using `--fail-on` thresholds
-- **Container Registries**: Scan images from [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Hub, ECR, GCR, ACR, Harbor
-- **Security Tools**: Export SARIF for [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Security, JSON for SIEM ingestion, CycloneDX for DependencyTrack
-- **SDLC**: Scan during build (shift-left), before deployment (quality gate), and scheduled (continuous [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md))
+- **CI/CD**: Integrate with [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../../DevOps_and_Cloud/ci-cd/jenkins/other/jenkins/SKILL.md), [CircleCI](../../../DevOps_and_Cloud/ci-cd/circleci/other/circleci/SKILL.md) using `--fail-on` thresholds
+- **Container Registries**: Scan images from [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) Hub, ECR, GCR, ACR, Harbor
+- **Security Tools**: Export SARIF for [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Security, JSON for SIEM ingestion, CycloneDX for DependencyTrack
+- **SDLC**: Scan during build (shift-left), before deployment (quality gate), and scheduled (continuous [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md))
 
 ## Troubleshooting
 
@@ -340,8 +340,8 @@ grype alpine:3.19
 
 ## References
 
-- [Grype [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Repository](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/anchore/grype)
-- [Grype Documentation](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/anchore/grype#getting-started)
+- [Grype [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Repository](https://[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/anchore/grype)
+- [Grype Documentation](https://[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/anchore/grype#getting-started)
 - [NIST National Vulnerability Database](https://nvd.nist.gov/)
 - [CISA Known Exploited Vulnerabilities](https://www.cisa.gov/known-exploited-vulnerabilities-catalog)
 - [FIRST EPSS (Exploit Prediction Scoring System)](https://www.first.org/epss/)

@@ -43,7 +43,7 @@ Use this skill when:
 | Tool | Type | Languages | Best For |
 |------|------|-----------|----------|
 | Snyk | Commercial/Free | Many | Comprehensive SCA |
-| Dependabot | Free ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)) | Many | Automated PRs |
+| Dependabot | Free ([GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)) | Many | Automated PRs |
 | OWASP Dep-Check | OSS | Many | Free scanning |
 | npm [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) | Built-in | Node.js | Quick checks |
 | pip-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) | OSS | [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) | [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) projects |
@@ -84,7 +84,7 @@ snyk ignore --id=SNYK-JS-LODASH-567746 --expiry=2024-12-31 --reason="No exploit 
 ### CI Integration
 
 ```yaml
-# .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/snyk.yml
+# .[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/workflows/snyk.yml
 name: Snyk Security
 
 on:
@@ -105,8 +105,8 @@ jobs:
         with:
           args: --severity-threshold=high
 
-      - name: Upload results to [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)
-        uses: [github](../../../ci-cd/github-actions/other/github/SKILL.md)/codeql-action/upload-sarif@v3
+      - name: Upload results to [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)
+        uses: [github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/codeql-action/upload-sarif@v3
         with:
           sarif_file: snyk.sarif
 ```
@@ -130,12 +130,12 @@ ignore:
 patch: {}
 ```
 
-## [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Dependabot
+## [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Dependabot
 
 ### Configuration
 
 ```yaml
-# .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/dependabot.yml
+# .[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/dependabot.yml
 version: 2
 updates:
   # JavaScript/Node.js
@@ -166,13 +166,13 @@ updates:
     schedule:
       interval: "daily"
     
-  # [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
-  - package-ecosystem: "[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)"
+  # [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)
+  - package-ecosystem: "[docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)"
     directory: "/"
     schedule:
       interval: "weekly"
     
-  # [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions
+  # [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions
   - package-ecosystem: "[github-actions](../../DevOps_and_Cloud/CI_CD/[github](../../DevOps_and_Cloud/CI_CD/github/SKILL.md)-actions/SKILL.md)"
     directory: "/"
     schedule:
@@ -197,7 +197,7 @@ updates:
 
 ```bash
 # Download
-wget https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/jeremylong/DependencyCheck/releases/download/v9.0.0/dependency-check-9.0.0-release.zip
+wget https://[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/jeremylong/DependencyCheck/releases/download/v9.0.0/dependency-check-9.0.0-release.zip
 unzip dependency-check-9.0.0-release.zip
 
 # Or via Homebrew
@@ -233,7 +233,7 @@ dependency-check --project "MyProject" \
 ```xml
 <!-- suppression.xml -->
 <?xml version="1.0" encoding="UTF-8"?>
-<suppressions xmlns="https://jeremylong.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/DependencyCheck/dependency-suppression.1.3.xsd">
+<suppressions xmlns="https://jeremylong.[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).io/DependencyCheck/dependency-suppression.1.3.xsd">
   <suppress>
     <notes>False positive - not using vulnerable function</notes>
     <packageUrl regex="true">^pkg:npm/lodash@.*$</packageUrl>
@@ -355,7 +355,7 @@ pip install cyclonedx-bom
 cyclonedx-py -o sbom.json
 
 # Go
-go install [github](../../../ci-cd/github-actions/other/github/SKILL.md).com/CycloneDX/cyclonedx-gomod/cmd/cyclonedx-gomod@latest
+go install [github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/CycloneDX/cyclonedx-gomod/cmd/cyclonedx-gomod@latest
 cyclonedx-gomod mod -json > sbom.json
 ```
 

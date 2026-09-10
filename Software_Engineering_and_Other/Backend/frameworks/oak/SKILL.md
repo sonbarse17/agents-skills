@@ -408,7 +408,7 @@ app.use(async (ctx, next) => {
 
 ### Deployment
 - Deno Deploy: entrypoint is `src/app.ts` exporting `app.handle` not `app.listen`
-- [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md): user `deno:alpine` image, run as non-root user
+- [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md): user `deno:alpine` image, run as non-root user
 - PM2 alternative: systemd service with `Restart=always`
 
 ## Anti-Patterns
@@ -492,7 +492,7 @@ class ConfigBuilder {
 - [ ] Production build with optimizations enabled
 - [ ] Environment variables configured per environment
 - [ ] Health check endpoint responds correctly
-- [ ] Error tracking and [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) integrated
+- [ ] Error tracking and [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) integrated
 - [ ] Logging level configured (not debug in production)
 - [ ] Resource limits configured
 - [ ] Database migrations applied
@@ -500,7 +500,7 @@ class ConfigBuilder {
 - [ ] Feature flags toggled appropriately
 - [ ] Rollback plan documented and tested
 
-### [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
+### [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% | Critical | Rollback or fix |

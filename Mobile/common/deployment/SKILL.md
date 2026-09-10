@@ -37,7 +37,7 @@ User request includes: `mobile deploy`, `app store`, `play store`, `testflight`,
 
 ### Input Context
 - Platform target (iOS, [Android](../../platforms/android/SKILL.md), or both)
-- CI/CD provider ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, Bitrise)
+- CI/CD provider ([GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, Bitrise)
 - Signing strategy (automatic, manual, match)
 - Distribution type (TestFlight, Play Internal, Production)
 
@@ -96,11 +96,11 @@ Which code signing approach?
 
 ```
 Which CI/CD provider?
-├── [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) project → [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions (macOS-14 for iOS, ubuntu-latest for [Android](../../platforms/android/SKILL.md))
+├── [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) project → [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions (macOS-14 for iOS, ubuntu-latest for [Android](../../platforms/android/SKILL.md))
 ├── Self-hosted / on-prem → GitLab CI (bring your own macOS runner)
 ├── Mobile-focused → Bitrise (optimized macOS VMs, built-in code signing)
-├── Cross-platform desktop → [CircleCI](../../../ci-cd/circleci/other/circleci/SKILL.md) (macOS M1 runner, [Android](../../platforms/android/SKILL.md) Linux)
-└── Fast feedback only → local Fastlane with pre-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) hooks
+├── Cross-platform desktop → [CircleCI](../../../DevOps_and_Cloud/ci-cd/circleci/other/circleci/SKILL.md) (macOS M1 runner, [Android](../../platforms/android/SKILL.md) Linux)
+└── Fast feedback only → local Fastlane with pre-[commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) hooks
 ```
 
 ## Workflow
@@ -120,7 +120,7 @@ Configure Fastfile with beta and release lanes for both iOS and [Android](../../
 Set up Fastlane Match for iOS code signing with encrypted certificates or manual signing for specific targets. Configure [Android](../../platforms/android/SKILL.md) keystore with env vars.
 
 ### Step 3: Set CI/CD Pipeline
-Create [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions workflows for iOS (macOS runner) and [Android](../../platforms/android/SKILL.md) (Ubuntu runner) with secrets management. Add GitLab CI, Bitrise, or [CircleCI](../../../ci-cd/circleci/other/circleci/SKILL.md) as needed.
+Create [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions workflows for iOS (macOS runner) and [Android](../../platforms/android/SKILL.md) (Ubuntu runner) with secrets management. Add GitLab CI, Bitrise, or [CircleCI](../../../DevOps_and_Cloud/ci-cd/circleci/other/circleci/SKILL.md) as needed.
 
 ### Step 4: Configure Distribution Tracks
 Set up TestFlight Internal/External for iOS and Internal Testing/Closed Alpha/Open Beta for [Android](../../platforms/android/SKILL.md). Configure phased releases and in-app updates.
@@ -130,13 +130,13 @@ Automate app metadata, screenshots, and pricing with Deliver (iOS) and Supply ([
 
 ## Rules
 
-- Never [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) code signing certificates or provisioning profiles to source
+- Never [commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) code signing certificates or provisioning profiles to source
 - Fastlane Match with encrypted git repo for iOS certificate management
 - CI/CD must run on macOS for iOS builds — no exceptions
 - [Android](../../platforms/android/SKILL.md) keystore must be base64-encoded in CI secrets, not in repo
 - TestFlight Internal (100 testers, no review) for rapid iteration
 - Phased releases always start at 1% and ramp based on crash metrics
-- Build number must be derived from [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) count for traceability
+- Build number must be derived from [commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) count for traceability
 - Store metadata (description, keywords, screenshots) version-controlled in Fastlane
 - In-app updates ([Android](../../platforms/android/SKILL.md)) must support both flexible and immediate flows
 - iOS app thinning asset packs must be tested on real devices before release
@@ -155,7 +155,7 @@ itc_team_id("123456789")                 # App Store Connect Team ID
 
 ### Matchfile
 ```ruby
-git_url("https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/org/certs.git")
+git_url("https://[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/org/certs.git")
 storage_mode("git")
 type("appstore")                          # or "development"
 app_identifier(["com.example.app", "com.example.app.widget"])
@@ -318,7 +318,7 @@ fastlane match nuke distribution
 fastlane match nuke development
 
 # Use in Matchfile
-git_url("https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/org/certs.git")
+git_url("https://[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/org/certs.git")
 type("appstore")
 app_identifier(["com.example.app"])
 ```
@@ -379,7 +379,7 @@ openssl base64 -in release.keystore > release.keystore.base64
 
 ## CI/CD Pipeline
 
-### [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions — iOS
+### [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions — iOS
 ```yaml
 name: iOS Beta
 on:
@@ -401,7 +401,7 @@ jobs:
           path: "*.ipa"
 ```
 
-### [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions — [Android](../../platforms/android/SKILL.md)
+### [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions — [Android](../../platforms/android/SKILL.md)
 ```yaml
 name: [Android](../../platforms/android/SKILL.md) Beta
 on:
@@ -498,14 +498,14 @@ Build number: auto-increment from git
 
 ### Fastlane Automatic Build Numbers
 ```ruby
-# iOS: derive from git [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) count
+# iOS: derive from git [commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) count
 lane :bump do
   increment_build_number(
     build_number: number_of_commits
   )
 end
 
-# [Android](../../platforms/android/SKILL.md): derive from git [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) count  
+# [Android](../../platforms/android/SKILL.md): derive from git [commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) count  
 lane :bump do
   increment_version_code(
     version_code: number_of_commits
@@ -773,7 +773,7 @@ BUNDLE_ID_SUFFIX =
 - **Checking certs into repo**: Exposes signing identities. Use Match with encrypted git repo
 - **Manual provisioning profile management**: Time-consuming and error-prone. Always automate with Match
 - **One cert for CI and local**: CI server generates new certs independently via Match
-- **Expired certs blocking builds**: Match nuke + re-gen; add cert expiry [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) to CI
+- **Expired certs blocking builds**: Match nuke + re-gen; add cert expiry [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) to CI
 - **Using distribution cert for dev**: Blocks debugging on device — use development certs
 - **Revokable enterprise cert shared widely**: One leak = all apps dead. Restrict cert access to 1-2 people
 
@@ -790,14 +790,14 @@ BUNDLE_ID_SUFFIX =
 - **Phased release at 100% immediately**: No gradual ramp. Always start at 1%
 - **No rollback plan**: App Store rejects can't revert. Maintain last-known-good binary
 - **Skipping beta testing**: Production bugs caught too late. Always TestFlight/Internal first
-- **Manual version bumps**: Inconsistent and error-prone. Automate via git tags or [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) count
-- **No crash [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) during phased release**: Can't detect regressions. Monitor crash rate vs baseline
+- **Manual version bumps**: Inconsistent and error-prone. Automate via git tags or [commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) count
+- **No crash [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) during phased release**: Can't detect regressions. Monitor crash rate vs baseline
 - **In-app update not tested for seamless install**: Users lose state. Test flexible/immediate flows
 
 ## Handoff
 
 After deployment, hand off to:
-- `mobile/universal/crash-reporting` — Crash [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) post-release
+- `mobile/universal/crash-reporting` — Crash [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) post-release
 - `mobile/universal/security` — Code signing security, cert rotation
 - `mobile/universal/testing` — Pre-release testing strategy
 - `mobile/universal/push-notifications` — Push notification certs

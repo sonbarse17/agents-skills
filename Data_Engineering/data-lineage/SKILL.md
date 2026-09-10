@@ -34,7 +34,7 @@ depends_on:
 # Data Lineage
 
 ## Purpose
-Capture, store, query, and visualize end-to-end data lineage from source systems through transformations to [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), supporting impact analysis, root cause investigation, and data governance compliance.
+Capture, store, query, and visualize end-to-end data lineage from source systems through transformations to [dashboards](../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), supporting impact analysis, root cause investigation, and data governance compliance.
 
 ## Agent Protocol
 
@@ -47,7 +47,7 @@ Before activating, verify:
 - Transformation tools (dbt, Airflow, Spark, custom SQL)
 - Existing lineage infrastructure (OpenLineage, DataHub, Amundsen, manual)
 - Compliance requirements (GDPR, SOX, BCBS 239)
-- Consumer tools (Looker, Tableau, custom [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md))
+- Consumer tools (Looker, Tableau, custom [dashboards](../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md))
 
 ### Output Artifact
 Lineage configuration with OpenLineage integration, Marquez deployment, column-level lineage SQL parser config, and impact analysis report.
@@ -146,7 +146,7 @@ spark.openlineage.parentRunId=run-uuid-here
 
 ## Marquez Deployment
 
-### [Docker](../../containers-orchestration/docker/other/docker/SKILL.md) Compose
+### [Docker](../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) Compose
 ```yaml
 version: '3.8'
 services:
@@ -421,7 +421,7 @@ lineage_ui:
     staging: "#2196F3"      # Blue — staging area
     intermediate: "#FF9800" # Orange — transformations
     mart: "#9C27B0"         # Purple — consumption layer
-    dashboard: "#F44336"    # Red — BI [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) / reports
+    dashboard: "#F44336"    # Red — BI [dashboards](../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) / reports
     failed: "#607D8B"       # Gray — failed dependencies
 ```
 
@@ -457,7 +457,7 @@ rca_workflow:
   step_5_prevent:
     - "Add lineage-based alert: if upstream schema changes, notify"
     - "Add quality check at the transformation output"
-    - "Document the [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) in the lineage metadata"
+    - "Document the [incident](../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) in the lineage metadata"
 ```
 
 ### Decision Tree
@@ -489,7 +489,7 @@ Data processing tool?
 - Use column-level lineage for precise impact analysis
 - Store lineage in graph-native storage for efficient traversal
 - Color-code lineage visualization by data lifecycle stage
-- Integrate lineage with [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response for faster root cause analysis
+- Integrate lineage with [incident](../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response for faster root cause analysis
 - Re-scrape lineage after schema changes
 
 ## References

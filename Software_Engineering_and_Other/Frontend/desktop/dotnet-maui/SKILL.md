@@ -105,9 +105,9 @@ Volume of platform code?
 
 5. **MAUI controls** — `CollectionView` (replaces ListView): vertical/horizontal grids, grouping via `IsGrouped`, `EmptyView` for no-data state, pull-to-refresh with `RefreshView` wrapper. `CarouselView` for swipeable cards with `PeekAreaInsets` and `Loop` properties. `Border` replaces Frame for rounded corners. `FlexLayout` for wrapping layouts. `GraphicsView` for custom 2D drawing. `BlazorWebView` for hybrid Blazor + MAUI apps. Handlers architecture replaces the old Custom Renderers system — each control has a mapper that maps cross-platform properties to native views.
 
-6. **Platform-specific code** — Three approaches: (a) `Platforms/` folder with conditional compilation — code files in `Platforms/[Android](../../../../Mobile/platforms/android/SKILL.md)/`, `Platforms/iOS/`, etc. are compiled only for the target platform. (b) `#if [ANDROID](../../../../Mobile/platforms/android/SKILL.md)`, `#if IOS`, `#if WINDOWS`, `#if MACCATALYST` preprocessor directives for inline platform branching. (c) Platform handlers in `MauiProgram.cs` via `ConfigureMauiHandlers()` — [customize](../../../../cloud/azure/ai/customize/SKILL.md)/SKILL.md)/SKILL.md) native controls (e.g., remove Entry underline on [Android](../../../../Mobile/platforms/android/SKILL.md), set border style on iOS). Map native events to MAUI events. Handler customization is the preferred approach over conditional compilation.
+6. **Platform-specific code** — Three approaches: (a) `Platforms/` folder with conditional compilation — code files in `Platforms/[Android](../../../../Mobile/platforms/android/SKILL.md)/`, `Platforms/iOS/`, etc. are compiled only for the target platform. (b) `#if [ANDROID](../../../../Mobile/platforms/android/SKILL.md)`, `#if IOS`, `#if WINDOWS`, `#if MACCATALYST` preprocessor directives for inline platform branching. (c) Platform handlers in `MauiProgram.cs` via `ConfigureMauiHandlers()` — [customize](../../../../DevOps_and_Cloud/cloud/azure/ai/customize/SKILL.md)/SKILL.md)/SKILL.md) native controls (e.g., remove Entry underline on [Android](../../../../Mobile/platforms/android/SKILL.md), set border style on iOS). Map native events to MAUI events. Handler customization is the preferred approach over conditional compilation.
 
-7. **Deployment and hot reload** — `dotnet build -t:Run -f net8.0-[android](../../../../Mobile/platforms/android/SKILL.md)` builds and deploys to [Android](../../../../Mobile/platforms/android/SKILL.md) emulator. XAML Hot Reload applies XAML changes instantly during debugging on emulator/simulator (not real-time on physical device). Code signing: [Android](../../../../Mobile/platforms/android/SKILL.md) via `.csproj` properties (`AndroidSigningKeyStore`, `AndroidSigningKeyAlias`), iOS via provisioning profile in Info.plist. CI/CD: Azure DevOps or [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions with `dotnet publish` and platform-specific build steps. App Center retired — migrate to [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions or self-hosted. Test Cloud via Xamarin.UITest or Appium.
+7. **Deployment and hot reload** — `dotnet build -t:Run -f net8.0-[android](../../../../Mobile/platforms/android/SKILL.md)` builds and deploys to [Android](../../../../Mobile/platforms/android/SKILL.md) emulator. XAML Hot Reload applies XAML changes instantly during debugging on emulator/simulator (not real-time on physical device). Code signing: [Android](../../../../Mobile/platforms/android/SKILL.md) via `.csproj` properties (`AndroidSigningKeyStore`, `AndroidSigningKeyAlias`), iOS via provisioning profile in Info.plist. CI/CD: Azure DevOps or [GitHub](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions with `dotnet publish` and platform-specific build steps. App Center retired — migrate to [GitHub](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions or self-hosted. Test Cloud via Xamarin.UITest or Appium.
 
 ## Platform Compatibility
 
@@ -231,7 +231,7 @@ MAUI app startup involves: native initialization, XAML parsing, Shell constructi
 </PropertyGroup>
 ```
 
-### CI/CD Pipeline ([GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions)
+### CI/CD Pipeline ([GitHub](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions)
 ```yaml
 name: Build and Deploy MAUI
 
@@ -301,7 +301,7 @@ jobs:
 
 **Apple App Store**: Build IPA with `dotnet publish -f net8.0-ios -c Release`. Requires Apple Developer Program membership ($99/year). Distribution via App Store Connect: Xcode Organizer → Distribute App → App Store Connect. Or use `Transporter` app for IPA upload. TestFlight for beta distribution before production release.
 
-**App Center** (retired): Migrate to [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions + App Center Distribute (still available for distribution). Alternative: [Firebase](../../../Databases/nosql/firebase/SKILL.md) App Distribution for [Android](../../../../Mobile/platforms/android/SKILL.md) beta testing, TestFlight for iOS.
+**App Center** (retired): Migrate to [GitHub](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions + App Center Distribute (still available for distribution). Alternative: [Firebase](../../../Databases/nosql/firebase/SKILL.md) App Distribution for [Android](../../../../Mobile/platforms/android/SKILL.md) beta testing, TestFlight for iOS.
 
 ### Versioning Strategy
 - `ApplicationVersion` ([Android](../../../../Mobile/platforms/android/SKILL.md)): integer, auto-increment per release.
@@ -409,7 +409,7 @@ builder.Services.AddSingleton<IDeviceInfo, IosDeviceInfo>();
 - **Missing `#if` on platform APIs**: `[Android](../../../../Mobile/platforms/android/SKILL.md).Graphics.Color` in shared code compiles on all targets but throws on iOS. Always guard platform-specific types with `#if [ANDROID](../../../../Mobile/platforms/android/SKILL.md)`, `#if IOS`.
 - **Nested layouts in ListView**: ListView/CollectionView with complex nested layouts (Grid in StackLayout in Frame) kills scroll performance. Flatten hierarchy for list items.
 - **No `x:DataType` on DataTemplate**: Reflection-based bindings in lists are 3-5x slower than compiled bindings. Always set `x:DataType` on ItemTemplate DataTemplate.
-- **Storing secrets in code**: API keys, connection strings in source code. Use Azure Key [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md), [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Secrets, or `Secrets.json` (user secrets in development). Never [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) secrets.
+- **Storing secrets in code**: API keys, connection strings in source code. Use Azure Key [Vault](../../../../Security/cryptography-secrets/vault/SKILL.md), [GitHub](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Secrets, or `Secrets.json` (user secrets in development). Never [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) secrets.
 - **Over-engineering with Prism**: Prism adds significant complexity for most apps. CommunityToolkit.Mvvm covers 90% of MVVM needs with less overhead.
 
 ## Configuration Reference
@@ -489,7 +489,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
+### [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -524,7 +524,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing ([OpenTelemetry](../../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../../DevOps_and_Cloud/observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -541,7 +541,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) signing
+- Signed commits: GPG or SSH [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
@@ -558,6 +558,6 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - Fail securely — errors default to safe behavior.
 - Log security-relevant events for [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
+- Design for [observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

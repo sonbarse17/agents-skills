@@ -75,8 +75,8 @@ operational trade-off.
   increasing the chance of an unresolvable 50/50 partition.
 - Low-latency, reliable network links between nodes — both technologies
   use certification-based replication that requires every node to agree
-  on transaction ordering before [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md), so cross-region deployments
-  with high inter-node latency will see materially higher [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) latency
+  on transaction ordering before [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md), so cross-region deployments
+  with high inter-node latency will see materially higher [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) latency
   and are more prone to flow-control throttling than a same-[datacenter](../../../Miscellaneous/systems-low-level/datacenter/SKILL.md)
   deployment.
 - For InnoDB Cluster specifically: [MySQL](../mysql/SKILL.md) Shell (`mysqlsh`) for cluster
@@ -98,9 +98,9 @@ which independently "certify" it (check for write-set conflicts against
 concurrently-committing transactions on other nodes) before applying it.
 If certification fails on a node — because a concurrent transaction on
 another node modified the same rows first — the *local* transaction
-[commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) is rolled back and returned to the client as a deadlock-style
+[commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) is rolled back and returned to the client as a deadlock-style
 error, even though from the client's perspective it just issued a
-normal `[COMMIT](../../../../ci-cd/common/git-workflow/commit/SKILL.md)`:
+normal `[COMMIT](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md)`:
 ```
 ERROR 1213 (40001): Deadlock found when trying to get lock; try restarting transaction
 ```
@@ -208,7 +208,7 @@ parallel, for any cluster size.
 
 Multi-master clustering (Galera/Group Replication) is the right choice
 when write availability across multiple nodes/AZs with no manual
-failover step is a hard requirement, and the team can [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) to the
+failover step is a hard requirement, and the team can [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) to the
 retry-on-deadlock application discipline in step 1. It is *not*
 automatically the safer or simpler choice: certification conflicts,
 flow control throttling, and SST/IST operational complexity are real,
@@ -224,7 +224,7 @@ since it avoids certification-conflict application complexity entirely.
 - Build retry-on-deadlock (specifically for error 1213/40001) into every
   application writing to a Galera or multi-primary Group Replication
   cluster as a first-class requirement, not an afterthought discovered
-  after a production [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
+  after a production [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 - Always run an odd number of nodes (3 or 5), and never bypass
   quorum-loss protection (`pc.ignore_quorum`, `pc.ignore_sb`) as a
   routine operational workaround — those settings exist for narrow,
@@ -325,7 +325,7 @@ across three AZs.
    failure — application connection strings point only at ProxySQL.
 4. [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) application code for retry-on-1213 handling; find the payment
    settlement service lacks it, add exponential-backoff retry around
-   the [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) path specifically for deadlock-class errors before
+   the [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) path specifically for deadlock-class errors before
    go-live.
 5. Load-test with concurrent writes to the same customer-account rows
    from different nodes to confirm certification conflicts are

@@ -17,24 +17,24 @@ depends_on:
   - python
 ---
 
-# [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Copilot SDK
+# [GitHub](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Copilot SDK
 
-Build applications that programmatically interact with [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Copilot. The SDK wraps the Copilot CLI via JSON-RPC, providing session management, custom tools, hooks, MCP server integration, and streaming across Node.js, [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md), Go, and .NET.
+Build applications that programmatically interact with [GitHub](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Copilot. The SDK wraps the Copilot CLI via JSON-RPC, providing session management, custom tools, hooks, MCP server integration, and streaming across Node.js, [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md), Go, and .NET.
 
 ## Prerequisites
 
-- **[GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Copilot CLI** installed and authenticated (`copilot --version`)
-- **[GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Copilot subscription** (Individual, Business, or Enterprise) — not required for BYOK
+- **[GitHub](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Copilot CLI** installed and authenticated (`copilot --version`)
+- **[GitHub](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Copilot subscription** (Individual, Business, or Enterprise) — not required for BYOK
 - **Runtime:** Node.js 18+ / [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) 3.8+ / Go 1.21+ / .NET 8.0+
 
 ## Installation
 
 | Language | Package | Install |
 |----------|---------|---------|
-| Node.js | `@[github](../../../../ci-cd/github-actions/other/github/SKILL.md)/copilot-sdk` | `npm install @[github](../../../../ci-cd/github-actions/other/github/SKILL.md)/copilot-sdk` |
-| [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) | `[github](../../../../ci-cd/github-actions/other/github/SKILL.md)-copilot-sdk` | `pip install [github](../../../../ci-cd/github-actions/other/github/SKILL.md)-copilot-sdk` |
-| Go | `[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/[github](../../../../ci-cd/github-actions/other/github/SKILL.md)/copilot-sdk/go` | `go get [github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/[github](../../../../ci-cd/github-actions/other/github/SKILL.md)/copilot-sdk/go` |
-| .NET | `[GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md).Copilot.SDK` | `dotnet add package [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md).Copilot.SDK` |
+| Node.js | `@[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/copilot-sdk` | `npm install @[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/copilot-sdk` |
+| [Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) | `[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)-copilot-sdk` | `pip install [github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)-copilot-sdk` |
+| Go | `[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/copilot-sdk/go` | `go get [github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/copilot-sdk/go` |
+| .NET | `[GitHub](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).Copilot.SDK` | `dotnet add package [GitHub](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).Copilot.SDK` |
 
 ## Architecture
 
@@ -62,7 +62,7 @@ All SDK usage follows: create a client, create a session, send messages.
 ### Node.js / [TypeScript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 
 ```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
-import { CopilotClient } from "@[github](../../../../ci-cd/github-actions/other/github/SKILL.md)/copilot-sdk";
+import { CopilotClient } from "@[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/copilot-sdk";
 
 const client = new CopilotClient();
 const session = await client.createSession({ model: "gpt-4.1" });
@@ -166,7 +166,7 @@ Define tools that Copilot can call to extend its capabilities.
 ### Node.js
 
 ```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
-import { CopilotClient, defineTool } from "@[github](../../../../ci-cd/github-actions/other/github/SKILL.md)/copilot-sdk";
+import { CopilotClient, defineTool } from "@[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/copilot-sdk";
 
 const getWeather = defineTool("get_weather", {
     description: "Get the current weather for a city",
@@ -244,7 +244,7 @@ await using var session = await client.CreateSessionAsync(new SessionConfig {
 
 ## Hooks
 
-Intercept and [customize](../../../../cloud/azure/ai/customize/SKILL.md)/SKILL.md)/SKILL.md) session behavior at key lifecycle points.
+Intercept and [customize](../../../../DevOps_and_Cloud/cloud/azure/ai/customize/SKILL.md)/SKILL.md)/SKILL.md) session behavior at key lifecycle points.
 
 | Hook | Trigger | Use Case |
 |------|---------|----------|
@@ -253,7 +253,7 @@ Intercept and [customize](../../../../cloud/azure/ai/customize/SKILL.md)/SKILL.m
 | `onUserPromptSubmitted` | User sends message | Prompt modification, filtering, context injection |
 | `onSessionStart` | Session begins (new or resumed) | Add context, configure session |
 | `onSessionEnd` | Session ends | Cleanup, analytics, metrics |
-| `onErrorOccurred` | Error happens | Custom error handling, retry logic, [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) |
+| `onErrorOccurred` | Error happens | Custom error handling, retry logic, [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) |
 
 ### Pre-Tool Use Hook
 
@@ -413,7 +413,7 @@ const session = await client.createSession({
 ```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const session = await client.createSession({
     mcpServers: {
-        [github](../../../../ci-cd/github-actions/other/github/SKILL.md): {
+        [github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md): {
             type: "http",
             url: "https://api.githubcopilot.com/mcp/",
             headers: { Authorization: "Bearer ${TOKEN}" },
@@ -477,7 +477,7 @@ npx @modelcontextprotocol/inspector /path/to/your/mcp-server
 3. **Direct API token** — `GITHUB_COPILOT_API_TOKEN` with `COPILOT_API_URL`
 4. **Environment variables** — `COPILOT_GITHUB_TOKEN` → `GH_TOKEN` → `GITHUB_TOKEN`
 5. **Stored OAuth** — From `copilot auth login`
-6. **[GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) CLI** — `gh auth` credentials
+6. **[GitHub](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) CLI** — `gh auth` credentials
 
 ### Programmatic Token
 
@@ -485,9 +485,9 @@ npx @modelcontextprotocol/inspector /path/to/your/mcp-server
 const client = new CopilotClient({ githubToken: process.env.GITHUB_TOKEN });
 ```
 
-### OAuth [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) App
+### OAuth [GitHub](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) App
 
-For multi-user apps where users sign in with [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md):
+For multi-user apps where users sign in with [GitHub](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md):
 
 ```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const client = new CopilotClient({
@@ -496,7 +496,7 @@ const client = new CopilotClient({
 });
 ```
 
-**Supported token types:** `gho_` (OAuth), `ghu_` ([GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) App), `github_pat_` (fine-grained PAT).
+**Supported token types:** `gho_` (OAuth), `ghu_` ([GitHub](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) App), `github_pat_` (fine-grained PAT).
 **Not supported:** `ghp_` (classic PAT — deprecated).
 
 ### Disable Auto-Login
@@ -697,7 +697,7 @@ Load skill directories to extend Copilot's capabilities:
 
 ```[typescript](../../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md)
 const session = await client.createSession({
-    skillDirectories: ["./skills/[code-review](../../../../ci-cd/common/other/code-review/SKILL.md)", "./skills/documentation"],
+    skillDirectories: ["./skills/[code-review](../../../../DevOps_and_Cloud/ci-cd/common/other/code-review/SKILL.md)", "./skills/documentation"],
     disabledSkills: ["experimental-feature"],
 });
 ```
@@ -776,12 +776,12 @@ Ship CLI binary with your app:
 const client = new CopilotClient({ cliPath: path.join(__dirname, "vendor", "copilot") });
 ```
 
-### [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) Compose
+### [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) Compose
 
 ```yaml
 services:
   copilot-cli:
-    image: ghcr.io/[github](../../../../ci-cd/github-actions/other/github/SKILL.md)/copilot-cli:latest
+    image: ghcr.io/[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/copilot-cli:latest
     command: ["--headless", "--port", "4321"]
     environment:
       - COPILOT_GITHUB_TOKEN=${COPILOT_GITHUB_TOKEN}
@@ -821,7 +821,7 @@ volumes:
 |--------|------|---------|-------------|
 | `cliPath` | string | Auto-detected | Path to Copilot CLI executable |
 | `cliUrl` | string | — | URL of external CLI server |
-| `githubToken` | string | — | [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) token for auth |
+| `githubToken` | string | — | [GitHub](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) token for auth |
 | `useLoggedInUser` | boolean | `true` | Use stored CLI credentials |
 | `logLevel` | string | `"none"` | `"none"` \| `"error"` \| `"warning"` \| `"info"` \| `"debug"` |
 | `autoRestart` | boolean | `true` | Auto-restart CLI on crash |
@@ -911,8 +911,8 @@ client.on("stateChange", (state) => console.log("Changed to:", state));
 
 ## References
 
-- [GitHub Copilot SDK](https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/[github](../../../../ci-cd/github-actions/other/github/SKILL.md)/copilot-sdk)
-- [Copilot CLI Installation](https://docs.[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/en/copilot/how-tos/set-up/install-copilot-cli)
+- [GitHub Copilot SDK](https://[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/copilot-sdk)
+- [Copilot CLI Installation](https://docs.[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/en/copilot/how-tos/set-up/install-copilot-cli)
 - [MCP Protocol Specification](https://modelcontextprotocol.io)
-- [MCP Servers Directory](https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/modelcontextprotocol/servers)
-- [GitHub MCP Server](https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/[github](../../../../ci-cd/github-actions/other/github/SKILL.md)/[github](../../../../ci-cd/github-actions/other/github/SKILL.md)-mcp-server)
+- [MCP Servers Directory](https://[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/modelcontextprotocol/servers)
+- [GitHub MCP Server](https://[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)-mcp-server)

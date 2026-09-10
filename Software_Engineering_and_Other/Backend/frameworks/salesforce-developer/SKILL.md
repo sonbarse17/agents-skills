@@ -215,5 +215,5 @@ export default class CounterComponent extends LightningElement {
 </LightningComponentBundle>
 ```
 
-[Documentation](https://jeffallan.[github](../../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/platform/salesforce-developer/)
+[Documentation](https://jeffallan.[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/platform/salesforce-developer/)
 

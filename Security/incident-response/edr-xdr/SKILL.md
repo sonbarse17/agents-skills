@@ -44,7 +44,7 @@ Phase 4 - Examine: Investigate alerts using EDR capabilities: process tree analy
 
 Phase 5 - Contain: Isolate affected endpoints. Block malicious indicators. Kill malicious processes. Remove persistence mechanisms. Apply containment actions proportionate to threat.
 
-Phase 6 - Treat: Remediate affected systems. Restore from clean backup if needed. Update detection rules. Deploy countermeasures. Conduct post-[incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) review. Feed intelligence back to detection pipeline.
+Phase 6 - Treat: Remediate affected systems. Restore from clean backup if needed. Update detection rules. Deploy countermeasures. Conduct post-[incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) review. Feed intelligence back to detection pipeline.
 
 ### MITRE ATT&CK Mapping for EDR
 
@@ -174,7 +174,7 @@ Tier 1 - Triage: Review alert details, verify alert validity, check historical c
 
 Tier 2 - Investigation: Deep dive into affected endpoints. Analyze process tree, parent-child relationships, network connections, file system changes, registry modifications. Determine scope (single endpoint vs lateral movement). Escalate to Tier 3 for complex incidents.
 
-Tier 3 - Advanced Forensics: Memory analysis, timeline reconstruction, reverse engineering, threat actor attribution. Full [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response including containment, eradication, and recovery.
+Tier 3 - Advanced Forensics: Memory analysis, timeline reconstruction, reverse engineering, threat actor attribution. Full [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response including containment, eradication, and recovery.
 
 Investigation playbook template:
 ```
@@ -221,7 +221,7 @@ Response SLAs:
 
 ### Step 5: Continuous Improvement
 
-Post-[incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) review questions:
+Post-[incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) review questions:
 - Should this alert have been caught earlier?
 - Are there gaps in detection coverage?
 - Did the response contain the threat quickly enough?
@@ -229,13 +229,13 @@ Post-[incident](../../../observability-monitoring-logging/common/incident-detect
 - What detection rules can be created or tuned?
 
 Detection engineering feedback loop:
-1. [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) occurs
+1. [Incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) occurs
 2. Identify detection gaps
 3. Create or tune detection rule
 4. Test in staging environment
 5. Deploy to production
 6. Monitor for false positives
-7. Validate effectiveness in next [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
+7. Validate effectiveness in next [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
 
 ## Common Pitfalls
 
@@ -249,7 +249,7 @@ Pitfall 4: Delayed response to automated alerts. Automated detection without aut
 
 Pitfall 5: Isolating endpoints without investigation. Blind isolation loses forensic data and may disrupt business operations. Investigate before containing unless immediate threat of data exfiltration.
 
-Pitfall 6: No exclusions for legitimate software. Security tools, admin tools, [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) agents, and backup software can trigger EDR alerts. Document and exclude known-good software to reduce noise.
+Pitfall 6: No exclusions for legitimate software. Security tools, admin tools, [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) agents, and backup software can trigger EDR alerts. Document and exclude known-good software to reduce noise.
 
 Pitfall 7: Ignoring Linux and macOS endpoints. Many organizations deploy EDR only on Windows, leaving Linux servers and macOS workstations unprotected. Extend coverage to all platforms.
 
@@ -304,7 +304,7 @@ Logic:
 - Test Result: {Detected correctly / Needs tuning}
 ```
 
-### [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Investigation Playbook Template
+### [Incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Investigation Playbook Template
 ```
 # Investigation Playbook: {Technique Name}
 
@@ -339,7 +339,7 @@ Logic:
 - [ ] Update detection rules
 - [ ] Document remediation steps
 
-## Post-[Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
+## Post-[Incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
 - [ ] Timeline reconstruction
 - [ ] Root cause analysis
 - [ ] Lessons learned
@@ -380,7 +380,7 @@ A manufacturing company with 5000 endpoints deployed CrowdStrike Falcon with ML-
 A financial services company built a detection engineering program from scratch, starting with 35 detection rules covering the top-10 MITRE ATT&CK techniques used against their industry. Over 18 months, they grew to 180 rules covering 110 techniques. Key success factors: dedicated detection engineering team (2 FTEs), bi-weekly purple team exercises, false positive rate target of 3%, and quarterly rule review and cleanup.
 
 ### Case Study 3: XDR Correlation Uncovers Advanced Persistent Threat
-A SaaS company using Microsoft 365 Defender (XDR) detected a low-confidence EDR alert on a developer workstation. XDR correlation revealed: the endpoint alert was preceded by a phishing email (MDO detected), followed by anomalous Azure AD authentication from a new location (identity layer). The XDR correlation created a high-confidence [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) that would have been missed by any single sensor. Investigation uncovered a sophisticated credential access campaign targeting 3 additional employees. All compromised accounts were secured within 2 hours.
+A SaaS company using Microsoft 365 Defender (XDR) detected a low-confidence EDR alert on a developer workstation. XDR correlation revealed: the endpoint alert was preceded by a phishing email (MDO detected), followed by anomalous Azure AD authentication from a new location (identity layer). The XDR correlation created a high-confidence [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) that would have been missed by any single sensor. Investigation uncovered a sophisticated credential access campaign targeting 3 additional employees. All compromised accounts were secured within 2 hours.
 
 ## Rules
 - Every endpoint must have EDR agent installed and reporting within 24 hours of provisioning.
@@ -393,8 +393,8 @@ A SaaS company using Microsoft 365 Defender (XDR) detected a low-confidence EDR 
 - Automated response actions tested in staging before production enablement.
 - Purple team exercises conducted quarterly to validate detection coverage.
 - Detection rules reviewed and tuned quarterly for continued effectiveness.
-- [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) investigation playbooks documented for top-20 ATT&CK techniques.
-- Post-[incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) reviews conducted within 5 business days of containment.
+- [Incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) investigation playbooks documented for top-20 ATT&CK techniques.
+- Post-[incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) reviews conducted within 5 business days of containment.
 - Intelligence from incidents fed back into detection engineering.
 - Endpoint coverage audited weekly with remediation for gaps.
 - EDR platform performance impact monitored and maintained under 3% CPU.
@@ -408,7 +408,7 @@ A SaaS company using Microsoft 365 Defender (XDR) detected a low-confidence EDR 
   - ../../../Global_References/Security/edr-platforms.md -- EDR/XDR Platform Comparison
   - ../../../Global_References/Security/edr-xdr-advanced.md -- EDR/XDR Advanced Topics
   - ../../../Global_References/Security/edr-xdr-fundamentals.md -- EDR/XDR Fundamentals
-  - ../../../Global_References/[incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-investigation.md -- EDR [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Investigation
+  - ../../../Global_References/[incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-investigation.md -- EDR [Incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Investigation
   - references/xdr-correlation-analytics.md -- XDR Correlation and Analytics Reference
 ## Handoff
 Alerts flow to [siem-engineering](../siem-engineering/SKILL.md) for correlation. Investigation results feed [threat-intelligence](../threat-intelligence/SKILL.md) for IoC extraction.
@@ -464,7 +464,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
+### [Monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -499,7 +499,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing ([OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../DevOps_and_Cloud/observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -516,7 +516,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) signing
+- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
@@ -533,6 +533,6 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - Fail securely — errors default to safe behavior.
 - Log security-relevant events for [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
+- Design for [observability](../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

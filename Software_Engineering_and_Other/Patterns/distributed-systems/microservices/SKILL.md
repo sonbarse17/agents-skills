@@ -163,17 +163,17 @@ What does the caller need?
 |---|---|
 | **Client-side Discovery** | Client queries registry, load-balances directly |
 | **Server-side Discovery** | Load balancer queries registry, routes request |
-| **Service Registry** | DNS-based (Consul, Eureka, [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) DNS) |
+| **Service Registry** | DNS-based (Consul, Eureka, [Kubernetes](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) DNS) |
 
-**Recommendation**: [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-native (DNS for discovery, Service for load balancing). Only use external registry if running outside K8s.
+**Recommendation**: [Kubernetes](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-native (DNS for discovery, Service for load balancing). Only use external registry if running outside K8s.
 
-### Step 5: Implement [Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
+### Step 5: Implement [Observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
 
 | Pillar | Tool (Language-agnostic) | What to Capture |
 |---|---|---|
 | **Logging** | Structured (JSON), centralized | Service ID, trace ID, span ID, severity, message |
 | **Metrics** | Prometheus + Grafana | RED (Rate, Errors, Duration) for every endpoint |
-| **Tracing** | [OpenTelemetry](../../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) | Request path across services, span timings |
+| **Tracing** | [OpenTelemetry](../../../../DevOps_and_Cloud/observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) | Request path across services, span timings |
 | **Health Checks** | Readiness + Liveness probes | Can serve traffic? Is process alive? |
 
 ### Step 6: Choose Deployment Strategy
@@ -181,7 +181,7 @@ What does the caller need?
 | Pattern | Strategy | Risk |
 |---|---|---|
 | **Blue/Green** | Two full environments, switch traffic | Low, double resources |
-| **Canary** | Gradual traffic shift | Medium, requires [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) |
+| **Canary** | Gradual traffic shift | Medium, requires [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) |
 | **Rolling** | Incremental instance replacement | Low, slow |
 | **Feature Flags** | Toggle features independently | Low, requires flag infrastructure |
 
@@ -283,7 +283,7 @@ spec:
         subset: v2
       weight: 10
 # Service mesh provides: mTLS, traffic shifting, fault injection,
-# circuit breaking, [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) — without changing application code
+# circuit breaking, [observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) — without changing application code
 ```
 
 ### Step 14: Database per Service Implementation
@@ -397,7 +397,7 @@ class CircuitBreaker {
 
 ## Service Discovery
 ```yaml
-# [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Headless Service for DNS-based discovery
+# [Kubernetes](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Headless Service for DNS-based discovery
 # Services discover peers via SRV DNS lookups
 apiVersion: v1
 kind: Service
@@ -433,9 +433,9 @@ async function resolveService(name: string): Promise<string> {
 | Service boundaries wrong | Expect to merge/split services as understanding grows. Plan for refactoring |
 | Network latency | Inter-service calls add 1-10ms. Batch queries where possible |
 | Data consistency | Eventual consistency is default. Accept it or use saga with compensating actions |
-| Team autonomy vs consistency | Balance: shared infrastructure ([monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), CI) without coupling service decisions |
+| Team autonomy vs consistency | Balance: shared infrastructure ([monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), CI) without coupling service decisions |
 | Testing | Unit (service-local) + Integration (per service) + Contract (per API pair) + E2E (minimal) |
-| [Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) | Must be in place before going live. Debugging without it is guesswork |
+| [Observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) | Must be in place before going live. Debugging without it is guesswork |
 | Cold start latency | [Serverless](../../data-performance/serverless/SKILL.md) services (Lambda) add 200ms-5s cold start — keep latency-critical services on persistent compute |
 | Inter-service auth overhead | mTLS handshake adds ~10-50ms per connection — use connection pooling and keepalive |
 | Schema changes | Independent DB migrations per service — coordination needed for cross-service schema changes |
@@ -474,7 +474,7 @@ const client = new PaymentServiceClient('payment-service:443', channelCredential
 | **Shared Database** | Multiple services same DB schema | Extract shared data into dedicated service |
 | **Too Fine-grained** | Excessive network calls, latency | Merge related services |
 | **God Service** | One service does everything | Decompose by capability |
-| **No [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)** | Cannot debug production issues | Add [OpenTelemetry](../../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) before going live |
+| **No [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)** | Cannot debug production issues | Add [OpenTelemetry](../../../../DevOps_and_Cloud/observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) before going live |
 | **Synchronous Chains** | A calls B calls C — high latency, fragile | Async where possible, parallel calls |
 | **Leaky Abstractions** | Service exposes internal DB schema in API | API is contract — hide implementation |
 | **Golden Hammer** | All problems solved with microservices | Consider monolith first, extract when needed |
@@ -498,8 +498,8 @@ const client = new PaymentServiceClient('payment-service:443', channelCredential
 - No shared databases between services — ever.
 - Each service independently deployable with its own CI/CD.
 - 3+ services in a saga? Use orchestration.
-- [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-native discovery preferred over external registries.
-- [OpenTelemetry](../../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) for all [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) pillars.
+- [Kubernetes](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-native discovery preferred over external registries.
+- [OpenTelemetry](../../../../DevOps_and_Cloud/observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) for all [observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) pillars.
 - No service calls another service's database directly.
 - Strangler Fig for monolith migration — no big-bang rewrites.
 - Communication patterns documented per service pair with rationale.
@@ -516,10 +516,10 @@ const client = new PaymentServiceClient('payment-service:443', channelCredential
   - ../../../../Global_References/Software_Engineering_and_Other/data-patterns.md — Data Patterns
   - ../../../../Global_References/Software_Engineering_and_Other/decomposition-patterns.md — Decomposition Patterns
   - ../../../../Global_References/Software_Engineering_and_Other/microservices-communication.md — Microservices Communication
-  - ../../../Global_References/microservices-[observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md).md — Microservices [Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
+  - ../../../Global_References/microservices-[observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md).md — Microservices [Observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
   - ../../../../Global_References/Software_Engineering_and_Other/microservices-testing.md — Microservices Testing
 ## Handoff
-Hand off to `devops/[containerization](../../../../containers-orchestration/docker/other/containerization/SKILL.md)/SKILL.md` for container orchestration setup. Hand off to `backend/universal/event-driven/SKILL.md` for detailed event-driven patterns. Hand off to `backend/universal/database-patterns/SKILL.md` for data consistency strategies.
+Hand off to `devops/[containerization](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/containerization/SKILL.md)/SKILL.md` for container orchestration setup. Hand off to `backend/universal/event-driven/SKILL.md` for detailed event-driven patterns. Hand off to `backend/universal/database-patterns/SKILL.md` for data consistency strategies.
 ## Implementation Patterns
 
 ### Observer Pattern for Event Handling
@@ -572,7 +572,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
+### [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -607,7 +607,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing ([OpenTelemetry](../../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../../DevOps_and_Cloud/observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -624,7 +624,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) signing
+- Signed commits: GPG or SSH [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
@@ -641,6 +641,6 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - Fail securely — errors default to safe behavior.
 - Log security-relevant events for [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
+- Design for [observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

@@ -328,7 +328,7 @@ from typing import Optional
 SECRET_PATTERNS = [
     (r'sk-[a-zA-Z0-9]{32,}', 'OpenAI API key'),
     (r'AKIA[0-9A-Z]{16}', 'AWS access key'),
-    (r'ghp_[a-zA-Z0-9]{36}', '[GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) personal access token'),
+    (r'ghp_[a-zA-Z0-9]{36}', '[GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) personal access token'),
     (r'(?i)password\s*[:=]\s*\S+', 'password in output'),
     (r'CNRY-[a-f0-9]{16}', 'canary token'),
 ]
@@ -419,7 +419,7 @@ test_cases:
 - Canary token trigger rate
 - Output redaction frequency
 
-## [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Dashboard Queries
+## [Monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Dashboard Queries
 
 ```yaml
 # prometheus alerts for prompt injection

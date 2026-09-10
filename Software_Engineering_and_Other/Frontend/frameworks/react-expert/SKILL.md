@@ -162,5 +162,5 @@ When implementing React features, provide:
 
 React 19, Server Components, use() hook, Suspense, [TypeScript](../../common/typescript/SKILL.md), TanStack Query, Zustand, Redux Toolkit, React Router, React Testing Library, Vitest/Jest, Next.js App Router, accessibility (WCAG)
 
-[Documentation](https://jeffallan.[github](../../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/frontend/react-expert/)
+[Documentation](https://jeffallan.[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/frontend/react-expert/)
 

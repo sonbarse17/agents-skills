@@ -113,5 +113,5 @@ When implementing Vue features, provide:
 
 Vue 3 Composition API, Pinia, Nuxt 3, Vue Router 4, Vite, VueUse, [TypeScript](../../common/typescript/SKILL.md), Vitest, Vue Test Utils, SSR/SSG, reactive programming, performance optimization
 
-[Documentation](https://jeffallan.[github](../../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/frontend/vue-expert/)
+[Documentation](https://jeffallan.[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/frontend/vue-expert/)
 

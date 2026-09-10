@@ -440,7 +440,7 @@ class WebhookRateLimiter {
 
 After 5 retries: send to DLQ and alert.
 
-### [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+### [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 | Metric | Alert Threshold | Action |
 |--------|----------------|--------|
 | Delivery failure rate | > 5% over 5 min | Investigate subscriber health |
@@ -463,7 +463,7 @@ After 5 retries: send to DLQ and alert.
 4. **Non-atomic secret rotation**: Updating the secret while a webhook is in flight causes verification failures. Support dual secrets during rotation.
 5. **No dead letter queue**: Failed deliveries are lost forever. Always have a DLQ for retry-exhausted webhooks.
 6. **Ignoring idempotency**: Webhook systems deliver at-least-once. Without idempotency handling, duplicates cause data corruption.
-7. **No consumer health [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**: A continuously failing consumer should be auto-disabled to prevent resource waste.
+7. **No consumer health [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**: A continuously failing consumer should be auto-disabled to prevent resource waste.
 
 ## Security
 
@@ -516,7 +516,7 @@ async function rotateSecret(subscriptionId: string): Promise<void> {
 
 ## References
   - ../../../../Global_References/Software_Engineering_and_Other/webhook-delivery.md — Webhook Delivery System
-  - ../../../Global_References/webhook-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Webhook [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and Reliability
+  - ../../../Global_References/webhook-[monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Webhook [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and Reliability
   - ../../../../Global_References/Software_Engineering_and_Other/webhook-rate-limiting.md — Webhook Rate Limiting
   - ../../../../Global_References/Software_Engineering_and_Other/webhook-scaling.md — Webhook Scaling
   - ../../../../Global_References/Software_Engineering_and_Other/webhook-security.md — Webhook Security

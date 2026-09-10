@@ -187,7 +187,7 @@ tm.process()
 Automate threat modeling in continuous integration:
 
 ```yaml
-# .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/threat-model.yml
+# .[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/workflows/threat-model.yml
 name: Threat Model Analysis
 on: [push, pull_request]
 
@@ -423,7 +423,7 @@ Trust boundary crossings require extra scrutiny:
 - Authentication and authorization mechanisms
 - Encryption in transit
 - Input validation and sanitization
-- Logging and [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+- Logging and [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 ## Integration Points
 
@@ -438,15 +438,15 @@ Trust boundary crossings require extra scrutiny:
 
 ### Security Tools Ecosystem
 
-- **Issue Tracking**: Export threats as Jira/[GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) issues for mitigation tracking
+- **Issue Tracking**: Export threats as Jira/[GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) issues for mitigation tracking
 - **Documentation**: Generate threat models for security documentation
-- **SIEM**: Map threats to detection rules and [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) alerts
+- **SIEM**: Map threats to detection rules and [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) alerts
 - **[Pentesting](../../pentest-redteam/pentesting/SKILL.md)**: Provide threat model to pentesters for targeted assessment
 - **Code Analysis**: Link SAST/DAST findings to threat model threats
 
 ### Cloud and DevOps
 
-- **Infrastructure as Code**: Threat model Terraform/[CloudFormation](../../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md) templates
+- **Infrastructure as Code**: Threat model Terraform/[CloudFormation](../../../DevOps_and_Cloud/infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md) templates
 - **Container Security**: Model container orchestration and service mesh
 - **API Design**: Threat model API gateway and [microservices](../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md) communication
 - **Secrets Management**: Model key management and secrets distribution
@@ -567,7 +567,7 @@ print(f"DREAD Score: {threat.dread_score()}/10")
 
 ### Diagram Customization
 
-[Customize](../../../cloud/azure/ai/customize/SKILL.md)/SKILL.md)/SKILL.md) DFD output with graphviz attributes:
+[Customize](../../../DevOps_and_Cloud/cloud/azure/ai/customize/SKILL.md)/SKILL.md)/SKILL.md) DFD output with graphviz attributes:
 
 ```[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Set custom colors for trust boundaries
@@ -575,7 +575,7 @@ internet.color = "red"
 dmz.color = "orange"
 internal.color = "green"
 
-# [Customize](../../../cloud/azure/ai/customize/SKILL.md)/SKILL.md)/SKILL.md) diagram output
+# [Customize](../../../DevOps_and_Cloud/cloud/azure/ai/customize/SKILL.md)/SKILL.md)/SKILL.md) diagram output
 tm.graph_options = {
     "rankdir": "LR",  # Left to right layout
     "bgcolor": "white",
@@ -586,7 +586,7 @@ tm.graph_options = {
 
 ## References
 
-- [pytm [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Repository](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/izar/pytm)
+- [pytm [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Repository](https://[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/izar/pytm)
 - [OWASP Threat Modeling](https://owasp.org/www-community/Threat_Modeling)
 - [Microsoft STRIDE Methodology](https://www.microsoft.com/en-us/security/blog/2007/09/11/stride-chart/)
 - [MITRE ATT&CK Framework](https://attack.mitre.org/)

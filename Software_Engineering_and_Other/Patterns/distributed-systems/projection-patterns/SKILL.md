@@ -19,7 +19,7 @@ Comprehensive guide to building projections and read models for event-sourced sy
 - Building CQRS read models
 - Creating materialized views from events
 - Optimizing query performance
-- Implementing real-time [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)
+- Implementing real-time [dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)
 - Building search indexes from events
 - Aggregating data across streams
 

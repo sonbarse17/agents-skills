@@ -94,7 +94,7 @@ Cluster) and split-brain prevention, see
 
 **Asynchronous** (the default): the source commits and returns to the
 client without waiting for any replica to acknowledge — fastest, but a
-source crash immediately after [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) can lose transactions that never
+source crash immediately after [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) can lose transactions that never
 reached a replica.
 
 **Semi-synchronous**: the source waits for at least one replica to
@@ -112,7 +112,7 @@ plugin_load = "rpl_semi_sync_replica=semisync_replica.so"
 rpl_semi_sync_replica_enabled = 1
 ```
 Semi-sync closes the "lost transaction on source crash" gap for
-acknowledged transactions, at the cost of added [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) latency
+acknowledged transactions, at the cost of added [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) latency
 (round-trip to at least one replica). It silently falls back to async if
 `rpl_semi_sync_source_timeout` is exceeded — monitor
 `Rpl_semi_sync_source_status` so a permanently-fallen-back-to-async
@@ -166,7 +166,7 @@ generated as of that check.
 innodb_buffer_pool_size = 24G      # commonly 60-75% of available RAM on a dedicated DB host
 innodb_buffer_pool_instances = 8   # split the pool to reduce mutex contention above a few GB
 innodb_log_file_size = 2G          # larger = fewer checkpoints, longer crash recovery
-innodb_flush_log_at_trx_commit = 1 # durable (fsync every [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)); = 2 trades durability for throughput
+innodb_flush_log_at_trx_commit = 1 # durable (fsync every [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md)); = 2 trades durability for throughput
 innodb_flush_method = O_DIRECT     # avoid double-buffering through the OS page cache
 ```
 `innodb_buffer_pool_size` is the single highest-leverage setting for read
@@ -177,7 +177,7 @@ Check the actual hit ratio before assuming a bigger pool is needed:
 SHOW STATUS LIKE 'Innodb_buffer_pool_read%';
 -- ratio of Innodb_buffer_pool_reads (disk) to Innodb_buffer_pool_read_requests (logical) should be very low (well under 1%) on a well-sized pool
 ```
-`innodb_flush_log_at_trx_commit = 1` (fsync the redo log on every [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md))
+`innodb_flush_log_at_trx_commit = 1` (fsync the redo log on every [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md))
 is the durable, ACID-compliant default — never change it to `0` or `2`
 fleet-wide to "improve throughput" without an explicit, deliberate
 decision that losing up to a second of committed transactions on an OS
@@ -243,7 +243,7 @@ low-impact operation the way a secondary index add can be.
   `gtid_strict_mode`) on any new topology — the operational cost of
   file/position-based replication (manually computing resume positions
   during failover) is avoidable and error-prone at the exact moment
-  (an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)) when mistakes are costliest.
+  (an [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md)) when mistakes are costliest.
 - Treat `innodb_flush_log_at_trx_commit = 1` and
   `sync_binlog = 1` as the production default for any data that must
   survive a crash without loss; only relax them for a specific,

@@ -32,15 +32,15 @@ Perform day-2 operations on Elastic Cloud [Serverless](../../../Software_Enginee
 
 ## Prerequisites and permissions
 
-- Ensure `EC_API_KEY` is configured. If not, run `[cloud-setup](../../../cloud/common/other/setup/SKILL.md)` skill first.
+- Ensure `EC_API_KEY` is configured. If not, run `[cloud-setup](../../../DevOps_and_Cloud/cloud/common/other/setup/SKILL.md)` skill first.
 - Updating project settings requires **Admin** or **Editor** role on the target project.
 - This skill does not perform a separate role pre-check. Attempt the requested operation and let the API enforce
   authorization. If the API returns an authorization error (for example, `403 Forbidden`), stop and ask the user to
   verify the provided API key permissions.
 
-### Manual setup fallback (when `[cloud-setup](../../../cloud/common/other/setup/SKILL.md)` is unavailable)
+### Manual setup fallback (when `[cloud-setup](../../../DevOps_and_Cloud/cloud/common/other/setup/SKILL.md)` is unavailable)
 
-If this skill is installed standalone and `[cloud-setup](../../../cloud/common/other/setup/SKILL.md)` is not available, instruct the user to configure Cloud
+If this skill is installed standalone and `[cloud-setup](../../../DevOps_and_Cloud/cloud/common/other/setup/SKILL.md)` is not available, instruct the user to configure Cloud
 environment variables manually before running commands. Never ask the user to paste API keys in chat.
 
 | Variable      | Required | Description                                                    |
@@ -85,7 +85,7 @@ an agent.
   `reset-credentials` exists solely to bootstrap a scoped API key — never use it for direct Elasticsearch operations.
   `load-credentials` excludes admin credentials by default; pass `--include-admin` only for key creation.
 - **Always prefer API keys.** Do not proceed with Elasticsearch operations until an `ELASTICSEARCH_API_KEY` is set. If
-  only admin credentials are available, create a scoped API key via `[elasticsearch-authn](../../../observability-monitoring-logging/elasticsearch/other/elasticsearch-authn/SKILL.md)`. If that skill is not
+  only admin credentials are available, create a scoped API key via `[elasticsearch-authn](../../../DevOps_and_Cloud/observability-monitoring-logging/elasticsearch/other/elasticsearch-authn/SKILL.md)`. If that skill is not
   installed, ask the user to install it or create the key manually in **Kibana > Stack Management > API keys**.
 - **Identify projects by type and ID.** Every command requires both `--type` and `--id` (except `list`, which only needs
   `--type`).
@@ -116,7 +116,7 @@ Ask the user for the **project name** if not already provided. Infer the project
 | User says                                                   | `--type`        |
 | ----------------------------------------------------------- | --------------- |
 | "search project", "elasticsearch project", vector search    | `elasticsearch` |
-| "[observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) project", "o11y", logs, metrics, traces, APM | `[observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)` |
+| "[observability](../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) project", "o11y", logs, metrics, traces, APM | `[observability](../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md)` |
 | "security project", "SIEM", detections, endpoint protection | `security`      |
 
 If the type is ambiguous, list all three types to find the project.
@@ -160,7 +160,7 @@ export ELASTICSEARCH_URL="<elasticsearch_endpoint>"
 export KIBANA_URL="<kibana_endpoint>"
 ```
 
-**[Observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) projects** (additional):
+**[Observability](../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) projects** (additional):
 
 ```bash
 export APM_URL="<apm_endpoint>"
@@ -218,7 +218,7 @@ curl -H "Authorization: ApiKey ${ELASTICSEARCH_API_KEY}" \
      --name "<project-name>" --include-admin)
    ```
 
-   Use the admin credentials to create a scoped Elasticsearch API key via `[elasticsearch-authn](../../../observability-monitoring-logging/elasticsearch/other/elasticsearch-authn/SKILL.md)` if available. If that
+   Use the admin credentials to create a scoped Elasticsearch API key via `[elasticsearch-authn](../../../DevOps_and_Cloud/observability-monitoring-logging/elasticsearch/other/elasticsearch-authn/SKILL.md)` if available. If that
    skill is not installed, ask the user to install it or create the key manually in **Kibana > Stack Management > API
    keys**. Scope the key to only the privileges the user needs.
 
@@ -264,7 +264,7 @@ python3 skills/cloud/manage-project/scripts/manage-project.py list \
   --type elasticsearch
 ```
 
-Use `--type [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)` or `--type security` to list other project types.
+Use `--type [observability](../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md)` or `--type security` to list other project types.
 
 ## Workflow: Get project details
 
@@ -441,17 +441,17 @@ python3 skills/cloud/manage-project/scripts/manage-project.py update \
 
 ```bash
 python3 skills/cloud/manage-project/scripts/manage-project.py update \
-  --type [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) \
+  --type [observability](../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) \
   --id abc123def456abc123def456abc12345 \
   --tag env:prod \
   --tag team:platform
 ```
 
-### Rename an [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) project
+### Rename an [observability](../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) project
 
 ```bash
 python3 skills/cloud/manage-project/scripts/manage-project.py update \
-  --type [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) \
+  --type [observability](../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) \
   --id abc123def456abc123def456abc12345 \
   --name "production-logs"
 ```
@@ -476,17 +476,17 @@ User: let's ingest some logs into my o11y project "siem-prod"
 Agent: Let me find that project.
        [runs: list --type observability]
        Found "siem-prod" (ID: def456...). No saved credentials found for this project.
-       [runs: get --type [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) --id def456...]
+       [runs: get --type [observability](../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) --id def456...]
        Endpoints set. Since there are no Elasticsearch credentials on file, I can reset the
        admin bootstrap password to get initial access. Shall I proceed?
 User: yes
-Agent: [runs: reset-credentials --type [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) --id def456...]
+Agent: [runs: reset-credentials --type [observability](../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) --id def456...]
        Credentials saved to .elastic-credentials — open that file to retrieve the password.
        [runs: eval $(load-credentials --name siem-prod --include-admin)]
        Admin credentials loaded for API key creation. Creating a scoped Elasticsearch API key
        now — what access does it need?
 User: read-only on logs-*
-Agent: [creates scoped API key via [elasticsearch-authn](../../../observability-monitoring-logging/elasticsearch/other/elasticsearch-authn/SKILL.md) using admin credentials]
+Agent: [creates scoped API key via [elasticsearch-authn](../../../DevOps_and_Cloud/observability-monitoring-logging/elasticsearch/other/elasticsearch-authn/SKILL.md) using admin credentials]
        [appends API key to .elastic-credentials with project header]
        [runs: eval $(load-credentials --name siem-prod)]
        [verifies against ELASTICSEARCH_URL]
@@ -509,7 +509,7 @@ python3 skills/cloud/manage-project/scripts/manage-project.py delete \
 
 ## Guidelines
 
-- Run the `[cloud-setup](../../../cloud/common/other/setup/SKILL.md)` skill first if `EC_API_KEY` is not set.
+- Run the `[cloud-setup](../../../DevOps_and_Cloud/cloud/common/other/setup/SKILL.md)` skill first if `EC_API_KEY` is not set.
 - Use the `[cloud-create-project](../create-project/SKILL.md)` skill to create new projects — this skill handles existing projects only.
 - When the user refers to a project the agent did not create, follow the "Connect to an existing project" workflow.
 - Deletion is permanent. Always confirm with the user before proceeding.
@@ -534,7 +534,7 @@ python3 skills/cloud/manage-project/scripts/manage-project.py delete \
 
 | Flag                       | Commands                                                         | Description                                                  |
 | -------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------ |
-| `--type`                   | list, get, update, reset-credentials, delete, resume             | Project type: `elasticsearch`, `[observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)`, `security`   |
+| `--type`                   | list, get, update, reset-credentials, delete, resume             | Project type: `elasticsearch`, `[observability](../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md)`, `security`   |
 | `--id`                     | get, update, reset-credentials, delete, resume, load-credentials | Project ID                                                   |
 | `--name`                   | update, load-credentials                                         | Project name (update: new name; load-credentials: lookup)    |
 | `--alias`                  | update                                                           | New project alias                                            |
@@ -554,8 +554,8 @@ python3 skills/cloud/manage-project/scripts/manage-project.py delete \
 | `EC_BASE_URL`           | No       | Cloud API base URL (default: `https://api.elastic-cloud.com`)           |
 | `ELASTICSEARCH_URL`     | Output   | Elasticsearch URL (set after resolving a project for downstream skills) |
 | `KIBANA_URL`            | Output   | Kibana URL (set after resolving a project for downstream skills)        |
-| `APM_URL`               | Output   | APM endpoint ([observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) projects only)                              |
-| `INGEST_URL`            | Output   | OTLP ingest endpoint ([observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) and security projects)              |
+| `APM_URL`               | Output   | APM endpoint ([observability](../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) projects only)                              |
+| `INGEST_URL`            | Output   | OTLP ingest endpoint ([observability](../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) and security projects)              |
 | `ELASTICSEARCH_API_KEY` | Output   | Elasticsearch API key (for stack-level operations)                      |
 
 ## Additional resources

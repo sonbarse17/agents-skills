@@ -183,5 +183,5 @@ When implementing Vue features in JavaScript:
 
 Vue 3 Composition API, JSDoc, ESM modules, Pinia, Vue Router 4, Vite, VueUse, Vitest, Vue Test Utils, JavaScript ES2022+
 
-[Documentation](https://jeffallan.[github](../../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/frontend/[vue-expert](../vue-expert/SKILL.md)-js/)
+[Documentation](https://jeffallan.[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/frontend/[vue-expert](../vue-expert/SKILL.md)-js/)
 

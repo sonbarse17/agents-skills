@@ -87,11 +87,11 @@ end
 inspec exec cis-profile -t ssh://user@target
 ```
 
-### [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) CIS
+### [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) CIS
 
 ```bash
 # kube-bench
-[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run --rm -v /etc:/etc:ro -v /var:/var:ro \
+[docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) run --rm -v /etc:/etc:ro -v /var:/var:ro \
   aquasec/kube-bench:latest run --targets node
 
 # Check specific sections

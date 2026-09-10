@@ -264,7 +264,7 @@ Hot phase: full indexing, high IOPS, many replicas. Warm phase: read-only, merge
 ```
 
 ### Step 7: OpenSearch Differences
-OpenSearch is the open-source fork of Elasticsearch 7.10. API compatibility: most endpoints are identical. Key differences: Opensearch uses `opensearch.yml` instead of `elasticsearch.yml`, security plugin built-in (not X-Pack), `k-NN` plugin for vector search, PPL (Piped Processing Language) for SQL-like queries, [Dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) replaces Kibana, [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) and anomaly detection plugins built-in.
+OpenSearch is the open-source fork of Elasticsearch 7.10. API compatibility: most endpoints are identical. Key differences: Opensearch uses `opensearch.yml` instead of `elasticsearch.yml`, security plugin built-in (not X-Pack), `k-NN` plugin for vector search, PPL (Piped Processing Language) for SQL-like queries, [Dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) replaces Kibana, [alerting](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md) and anomaly detection plugins built-in.
 
 ```sql
 -- OpenSearch PPL
@@ -276,7 +276,7 @@ source = products
 ```
 
 ### Step 8: Meilisearch
-Meilisearch is a lightweight search engine in Rust providing instant search-as-you-type (sub-50ms), typo tolerance out of the box, and an intuitive REST API. Features: automatic indexing (no explicit schema), faceted search with filters/ranges, synonym management, geo-search, [multi-tenancy](../../../../containers-orchestration/common/other/multi-tenancy/SKILL.md) via API key scoping. Uses milli (Rust) core with LMDB key-value storage. Single-node only — data must fit on one instance. Use for datasets up to 10M docs, site search, ecommerce product search, and rapid setup.
+Meilisearch is a lightweight search engine in Rust providing instant search-as-you-type (sub-50ms), typo tolerance out of the box, and an intuitive REST API. Features: automatic indexing (no explicit schema), faceted search with filters/ranges, synonym management, geo-search, [multi-tenancy](../../../../DevOps_and_Cloud/containers-orchestration/common/other/multi-tenancy/SKILL.md) via API key scoping. Uses milli (Rust) core with LMDB key-value storage. Single-node only — data must fit on one instance. Use for datasets up to 10M docs, site search, ecommerce product search, and rapid setup.
 
 ```json
 // Meilisearch: index creation with searchable attributes
@@ -307,7 +307,7 @@ PATCH /indexes/products/settings
 ```
 
 ### Step 9: Typesense
-Typesense is an open-source, typo-tolerant search engine in C++ for sub-50ms search on TB-scale data. Configurable ranking combining text relevance, numeric fields, and custom formulas. Key features: built-in vector search for semantic/embedding-based retrieval alongside full-text, scoped API keys for [multi-tenancy](../../../../containers-orchestration/common/other/multi-tenancy/SKILL.md), curation rules (pin/boost results), query suggestions via synonyms. High availability via replication-based cluster. Use for apps needing both full-text and vector search in one system, ecommerce with curation, or as an Elasticsearch alternative with simpler ops and better per-node performance.
+Typesense is an open-source, typo-tolerant search engine in C++ for sub-50ms search on TB-scale data. Configurable ranking combining text relevance, numeric fields, and custom formulas. Key features: built-in vector search for semantic/embedding-based retrieval alongside full-text, scoped API keys for [multi-tenancy](../../../../DevOps_and_Cloud/containers-orchestration/common/other/multi-tenancy/SKILL.md), curation rules (pin/boost results), query suggestions via synonyms. High availability via replication-based cluster. Use for apps needing both full-text and vector search in one system, ecommerce with curation, or as an Elasticsearch alternative with simpler ops and better per-node performance.
 
 ```json
 // Typesense: schema with vector search
@@ -382,7 +382,7 @@ Yellow cluster status (unassigned shards) degrades read [capacity](../../../AI_a
 ## Compared With
 
 ### Elasticsearch vs OpenSearch
-OpenSearch is a fork of Elasticsearch 7.10 with built-in security, k-NN vector search, PPL, and [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md). Elasticsearch 8.x has more advanced features (ELSER, vector search with HNSW, better performance). Choose OpenSearch for open-source commitment and built-in security. Choose Elasticsearch for the latest search and AI features.
+OpenSearch is a fork of Elasticsearch 7.10 with built-in security, k-NN vector search, PPL, and [alerting](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md). Elasticsearch 8.x has more advanced features (ELSER, vector search with HNSW, better performance). Choose OpenSearch for open-source commitment and built-in security. Choose Elasticsearch for the latest search and AI features.
 
 ### Elasticsearch vs Meilisearch
 Elasticsearch is a full-featured search and analytics engine for datasets from GB to PB. Meilisearch is lightweight (Rust, single-node, sub-50ms) for datasets up to 10M docs. Choose Elasticsearch for complex querying, aggregations, and large-scale analytics. Choose Meilisearch for simple, fast site search.
@@ -527,7 +527,7 @@ class HybridSearch:
 - **Refresh interval**: Increase `refresh_interval` to 30s for bulk indexing; revert to 1s for serving.
 - **Circuit breaker**: Set Elasticsearch circuit breaker limits (50% heap for fielddata, 40% for request).
 - **Snapshot backup**: Daily snapshots to S3; test restore with cross-region copy.
-- **Cluster [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**: Monitor heap usage, query latency (p99 < 100ms), merge rate, and GC pauses.
+- **Cluster [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**: Monitor heap usage, query latency (p99 < 100ms), merge rate, and GC pauses.
 
 ## Anti-Patterns
 

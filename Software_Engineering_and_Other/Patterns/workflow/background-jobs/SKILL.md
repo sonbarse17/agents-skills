@@ -30,7 +30,7 @@ depends_on:
 # Backend Background Jobs
 
 ## Purpose
-Design reliable background job processing with queue topology, retry, concurrency, and [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md). Every job must be idempotent, retryable, observable, and gracefully handled on failure.
+Design reliable background job processing with queue topology, retry, concurrency, and [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md). Every job must be idempotent, retryable, observable, and gracefully handled on failure.
 
 ## Agent Protocol
 
@@ -64,7 +64,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 - [ ] Retry strategy with exponential backoff and jitter configured
 - [ ] Queue topology defined (default, priority, dead letter, scheduling queues)
 - [ ] Worker concurrency and graceful shutdown configured
-- [ ] [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) hooks for success/failure/metrics
+- [ ] [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) hooks for success/failure/metrics
 - [ ] Scheduled/cron jobs defined with timezone and error notification
 
 ## Architecture Decision Trees
@@ -93,7 +93,7 @@ What infrastructure do you already have?
 Does the job need a response or callback?
 ├── Yes → Is it a multi-step workflow?
 │   ├── Yes → Chained jobs with compensation/rollback
-│   └── No → Fire-and-forget with [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+│   └── No → Fire-and-forget with [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 └── No → Should it run at a specific time?
     ├── Yes → Delayed job (scheduled execution)
     └── No → Should it run on a fixed schedule?
@@ -192,7 +192,7 @@ interface Job<T = unknown> {
   priority: 'high' | 'medium' | 'low';
   scheduledAt?: string;               // ISO 8601 for delayed execution
   idempotencyKey: string;             // Deduplication: "{job-type}:{entity-id}:{action}"
-  tags: string[];                     // Filtering and [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+  tags: string[];                     // Filtering and [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
   timeout: number;                    // Per-job timeout in ms
   createdAt: string;                  // ISO 8601
 }
@@ -254,7 +254,7 @@ def send_email(self, to: str, subject: str, template_id: str, variables: dict):
 
 **Go with asynq:**
 ```go
-import "[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/hibiken/asynq"
+import "[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/hibiken/asynq"
 
 type EmailPayload struct {
   To      string            `json:"to"`
@@ -452,9 +452,9 @@ async function processOrder(job: Job): Promise<void> {
 
 ## Production Considerations
 
-### Job [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Configuration
+### Job [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Configuration
 ```yaml
-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md):
+[monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md):
   metrics:
     - job_success_rate: "p99 > 99%"
     - queue_depth: "alert if > 10000"
@@ -646,7 +646,7 @@ Fix: Return 202 Accepted immediately. Use webhook or polling for result.
 - Always alert when DLQ receives a message
 
 ## References
-  - ../../../Global_References/job-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Background Job [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+  - ../../../Global_References/job-[monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Background Job [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
   - ../../../../Global_References/Software_Engineering_and_Other/job-patterns.md — Background Job Patterns
   - ../../../../Global_References/Software_Engineering_and_Other/job-scheduling.md — Background Job Scheduling
   - ../../../../Global_References/Software_Engineering_and_Other/job-testing.md — Background Job Testing

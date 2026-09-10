@@ -211,7 +211,7 @@ Primary workload?
 ├── Batch ETL, large-scale transformations
 │   └── Apache Spark
 │       ├── Databricks platform → Delta + Photon
-│       ├── [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) → Spark Operator
+│       ├── [Kubernetes](../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) → Spark Operator
 │       └── EMR → Spark + Hive Metastore
 ├── Interactive SQL, ad-hoc analytics
 │   ├── Open-source → Trino
@@ -223,7 +223,7 @@ Primary workload?
     └── Spark for feature engineering, dedicated ML framework for training
 ```
 
-#### Spark Deployment Config ([Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md))
+#### Spark Deployment Config ([Kubernetes](../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md))
 
 ```yaml
 # spark-operator config
@@ -455,16 +455,16 @@ Service accounts for cross-component auth (Spark → S3, Trino → Hive Metastor
 ### Data Encryption
 Encryption at rest: SSE-S3/KMS for object stores, envelope encryption for sensitive columns. Encryption in transit: TLS 1.3 for all component communication. Key management: KMS (AWS KMS, GCP Cloud KMS, Azure Key [Vault](../../Security/cryptography-secrets/vault/SKILL.md)). Bring Your Own Key (BYOK) for compliance.
 
-## Platform [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+## Platform [Monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
-### Infrastructure [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+### Infrastructure [Monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 Object store: request rates, error rates (4xx/5xx), latency p99, data transfer. Compute: CPU/memory/disk utilization, query concurrency, queue depth, job duration. Networking: bandwidth, connection counts, TLS handshake failures.
 
-### Data Pipeline [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+### Data Pipeline [Monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 Pipeline health: success rate, duration, rows processed. Data quality: row count anomalies, freshness lag, schema changes. Cost tracking: storage costs (per bucket), compute costs (per job/query), data transfer costs.
 
-### [Observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) Stack
-Metrics: Prometheus + Grafana [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md). Logs: ELK/Loki + structured logging. Tracing: [OpenTelemetry](../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) for pipeline traces. Alerts: Alertmanager with PagerDuty/Slack integration.
+### [Observability](../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) Stack
+Metrics: Prometheus + Grafana [dashboards](../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md). Logs: ELK/Loki + structured logging. Tracing: [OpenTelemetry](../../DevOps_and_Cloud/observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) for pipeline traces. Alerts: Alertmanager with PagerDuty/Slack integration.
 
 ## Rules
 - Open table formats are mandatory for data lakes — no raw Parquet.
@@ -481,12 +481,12 @@ Metrics: Prometheus + Grafana [dashboards](../../observability-monitoring-loggin
 - Automate platform provisioning with Infrastructure as Code.
 
 ## References
-  - ../../../Global_References/cross-[cloud-setup](../../cloud/common/other/setup/SKILL.md).md — Cross-Cloud Data Platform Setup
+  - ../../../Global_References/cross-[cloud-setup](../../DevOps_and_Cloud/cloud/common/other/setup/SKILL.md).md — Cross-Cloud Data Platform Setup
   - ../../Global_References/Data_Engineering/data-catalog-virtualization.md — Data Catalog & Virtualization
   - ../../Global_References/Data_Engineering/data-platform-advanced.md — Data Platform Advanced Topics
   - ../../Global_References/Data_Engineering/data-platform-architecture.md — Data Platform Architecture
   - ../../Global_References/Data_Engineering/data-platform-fundamentals.md — Data Platform Fundamentals
-  - ../../Global_References/Data_Engineering/k8s-for-data.md — [Kubernetes](../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) for Data Workloads
+  - ../../Global_References/Data_Engineering/k8s-for-data.md — [Kubernetes](../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) for Data Workloads
   - ../../Global_References/Data_Engineering/platform-architecture.md — Data Platform Architecture
   - ../../Global_References/Data_Engineering/platform-decision-tree.md — Platform Decision Tree
   - ../../Global_References/Data_Engineering/platform-tools-comparison.md — Platform Tools Comparison
@@ -498,7 +498,7 @@ Data Platform Architecture
 │   ├── SaaS → Snowflake / Databricks / BigQuery
 │   ├── Self-managed → Trino + Hive Metastore + Spark
 │   └── Hybrid → Managed storage + self-managed compute
-├── [Multi-cloud](../../cloud/common/other/multi-cloud/SKILL.md) required?
+├── [Multi-cloud](../../DevOps_and_Cloud/cloud/common/other/multi-cloud/SKILL.md) required?
 │   ├── Yes → Iceberg + Trino (cloud-agnostic)
 │   └── No → Cloud-native (Redshift, BigQuery, Synapse)
 ├── Streaming workloads?
@@ -559,7 +559,7 @@ stack:
     default_format: iceberg
   tools:
     - dbt (transformations)
-    - superset ([dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md))
+    - superset ([dashboards](../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md))
     - datahub (catalog)
   access:
     users: [team-marketing]
@@ -569,9 +569,9 @@ stack:
 ## Production Considerations
 
 - **Cost governance**: Tag all resources with cost center, domain, and environment; alert on cost anomalies.
-- **[Multi-tenancy](../../containers-orchestration/common/other/multi-tenancy/SKILL.md)**: Isolate compute resources per domain using virtual clusters (Trino resource groups, Spark pools).
-- **Provisioning automation**: [Infrastructure-as-code](../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) (Terraform) for all platform components; self-serve via API.
-- **[Observability](../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)**: Centralized logging (ELK), metrics (Prometheus/Grafana), and tracing ([OpenTelemetry](../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)) across platform.
+- **[Multi-tenancy](../../DevOps_and_Cloud/containers-orchestration/common/other/multi-tenancy/SKILL.md)**: Isolate compute resources per domain using virtual clusters (Trino resource groups, Spark pools).
+- **Provisioning automation**: [Infrastructure-as-code](../../DevOps_and_Cloud/infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) (Terraform) for all platform components; self-serve via API.
+- **[Observability](../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md)**: Centralized logging (ELK), metrics (Prometheus/Grafana), and tracing ([OpenTelemetry](../../DevOps_and_Cloud/observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md)) across platform.
 - **Backup & DR**: Cross-region replication for catalog metadata; daily backups of Hive Metastore/Nessie.
 - **Version upgrades**: Rolling upgrades for query engines; maintain compatibility matrix for dbt versions.
 

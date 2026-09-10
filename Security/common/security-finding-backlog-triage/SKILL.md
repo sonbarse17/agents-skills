@@ -75,7 +75,7 @@ expires.
 
 - At least one operating scanner producing findings in a
   queryable/exportable form (SARIF, tool-native JSON/API, or a
-  centralized AppSec dashboard such as DefectDojo, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) code scanning,
+  centralized AppSec dashboard such as DefectDojo, [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) code scanning,
   or a SIEM ingesting scan output). This skill triages what scanners
   already produce; if no scanning exists yet, start with
   [sast-integration](../[sast-integration](../sast-integration/SKILL.md)/SKILL.md),
@@ -85,7 +85,7 @@ expires.
   per finding — which services are internet-facing, which run with
   elevated privileges, which process untrusted input — typically an
   asset inventory or service catalog, even an informal one.
-- A ticketing system (Jira, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Issues, Linear) to assign owners and
+- A ticketing system (Jira, [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Issues, Linear) to assign owners and
   due dates per triage lane, rather than tracking decisions only inside
   the scanner's own UI comment field.
 - Organizational agreement on who has authority to move a finding into

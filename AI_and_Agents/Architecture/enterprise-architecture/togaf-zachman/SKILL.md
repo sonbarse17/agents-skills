@@ -90,7 +90,7 @@ Develop baseline and target architectures for each domain. Perform gap analysis.
 Identify implementation projects. Group into work packages. Create implementation roadmap. Estimate costs and benefits. Prioritize projects. Confirm architecture roadmap with stakeholders. Phase E: identify solutions and implementation strategy. Phase F: create detailed migration plan with phases and dependencies.
 
 ### Step 5: Phase G-H -- Implementation Governance and Change Management
-Govern implementation. Conduct architecture compliance reviews. Manage architecture changes. Update architecture repository. Monitor architecture context changes. Operate architecture governance framework. Phase G: architecture contract [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md). Phase H: architecture change management and continuous improvement.
+Govern implementation. Conduct architecture compliance reviews. Manage architecture changes. Update architecture repository. Monitor architecture context changes. Operate architecture governance framework. Phase G: architecture contract [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md). Phase H: architecture change management and continuous improvement.
 
 ### Step 6: Requirements Management
 Capture, track, and prioritize requirements throughout ADM. Assess requirements impact on all architecture domains. Maintain requirements traceability. Feed requirements back into phases. Requirements repository linked to architecture artifacts.
@@ -147,8 +147,8 @@ Capture, track, and prioritize requirements throughout ADM. Assess requirements 
    - Business Owner (Row 2): Business model conceptual. Processes, organization, locations. Deliverable: process models, org charts.
    - Architect (Row 3): System model logical. Requirements, data models, application logic. Deliverable: architecture specifications.
    - Engineer (Row 4): Technology model physical. Implementation details, platform specs. Deliverable: design documents.
-   - Technician (Row 5): Detailed specifications. Configuration, deployment, operation. Deliverable: [runbooks](../../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md), configs.
-   - User (Row 6): Functioning system. Runtime view, actual instances. Deliverable: system documentation, [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md).
+   - Technician (Row 5): Detailed specifications. Configuration, deployment, operation. Deliverable: [runbooks](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md), configs.
+   - User (Row 6): Functioning system. Runtime view, actual instances. Deliverable: system documentation, [dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md).
 
 2. Which interrogative (column) is the focus?
    - What (Data): Data entities, information architecture. Prioritize for data-intensive initiatives.
@@ -224,7 +224,7 @@ Phase E Gate: Implementation opportunities identified. Work packages defined. So
 
 Phase F Gate: Migration plan approved. Projects prioritized. Business case confirmed. Decision: proceed to Phase G or review priorities.
 
-Phase G Gate: Implementation compliance reviewed. Architecture contracts active. Changes managed. Decision: continue [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) or remediate.
+Phase G Gate: Implementation compliance reviewed. Architecture contracts active. Changes managed. Decision: continue [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) or remediate.
 
 Phase H Gate: Architecture repository updated. Context changes assessed. Next cycle planned. Decision: continue to next ADM iteration or close program.
 

@@ -54,7 +54,7 @@ depends_on:
 
 ## Overview
 
-This skill enables [policy-as-code](../policy-as-code/SKILL.md) enforcement using Open Policy Agent (OPA) for compliance validation, security policy enforcement, and configuration auditing. OPA provides a unified framework for policy evaluation across cloud-native environments, [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), CI/CD pipelines, and [infrastructure-as-code](../../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md).
+This skill enables [policy-as-code](../policy-as-code/SKILL.md) enforcement using Open Policy Agent (OPA) for compliance validation, security policy enforcement, and configuration auditing. OPA provides a unified framework for policy evaluation across cloud-native environments, [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md), CI/CD pipelines, and [infrastructure-as-code](../../../DevOps_and_Cloud/infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md).
 
 Use OPA to codify security requirements, compliance controls, and organizational standards as executable policies written in Rego. Automatically validate configurations, prevent misconfigurations, and maintain continuous compliance.
 
@@ -93,8 +93,8 @@ opa run --server --addr localhost:8181
 
 Identify compliance requirements and security controls to enforce:
 - Compliance frameworks (SOC2, PCI-DSS, GDPR, HIPAA, NIST)
-- [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) security policies (pod security, RBAC, network policies)
-- [Infrastructure-as-code](../../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) policies (Terraform, [CloudFormation](../../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md))
+- [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) security policies (pod security, RBAC, network policies)
+- [Infrastructure-as-code](../../../DevOps_and_Cloud/infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) policies (Terraform, [CloudFormation](../../../DevOps_and_Cloud/infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md))
 - Application security policies (API authorization, data access)
 - Organizational security standards
 
@@ -102,9 +102,9 @@ Identify compliance requirements and security controls to enforce:
 
 Create policy files in Rego language. Use the provided templates in `assets/` for common patterns:
 
-**Example: [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Pod Security Policy**
+**Example: [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Pod Security Policy**
 ```rego
-package [kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).admission
+package [kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md).admission
 
 import future.keywords.contains
 import future.keywords.if
@@ -141,7 +141,7 @@ deny[msg] {
 deny[msg] {
     input.kind == "Service"
     input.spec.type == "LoadBalancer"
-    not input.metadata.annotations["service.beta.[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).io/aws-load-balancer-ssl-cert"]
+    not input.metadata.annotations["service.beta.[kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md).io/aws-load-balancer-ssl-cert"]
     msg := "SOC2 CC6.6: LoadBalancer services must use SSL/TLS encryption"
 }
 ```
@@ -151,9 +151,9 @@ deny[msg] {
 Write comprehensive tests for policy validation:
 
 ```rego
-package [kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).admission_test
+package [kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md).admission_test
 
-import data.[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).admission
+import data.[kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md).admission
 
 test_deny_privileged_container {
     input := {
@@ -223,7 +223,7 @@ opa eval --bundle policies.tar.gz --input config.yaml 'data'
 
 Add policy validation to your CI/CD workflow:
 
-**[GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions Example:**
+**[GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions Example:**
 ```yaml
 - name: Validate Policies
   uses: open-policy-agent/setup-opa@v2
@@ -257,22 +257,22 @@ policy-validation:
       junit: test-results.xml
 ```
 
-### Step 6: Deploy as [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Admission Controller
+### Step 6: Deploy as [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Admission Controller
 
 Enforce policies at cluster level using OPA Gatekeeper:
 
 ```bash
 # Install OPA Gatekeeper
-[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/deploy/gatekeeper.yaml
+[kubectl](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper/master/deploy/gatekeeper.yaml
 
 # Apply constraint template
-[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f assets/k8s-constraint-template.yaml
+[kubectl](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f assets/k8s-constraint-template.yaml
 
 # Apply constraint
-[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f assets/k8s-constraint.yaml
+[kubectl](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f assets/k8s-constraint.yaml
 
 # Test admission control
-[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f test-pod.yaml  # Should be denied if violates policy
+[kubectl](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubectl/SKILL.md) apply -f test-pod.yaml  # Should be denied if violates policy
 ```
 
 ### Step 7: Monitor Policy Compliance
@@ -309,27 +309,27 @@ Generate compliance reports using the bundled reporting script:
 
 - `rego-patterns.md` - Common Rego patterns for security and compliance policies
 - `compliance-frameworks.md` - Policy templates mapped to SOC2, PCI-DSS, GDPR, HIPAA controls
-- `[kubernetes-security](../../DevOps_and_Cloud/Containers_and_Orchestration/[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-security/SKILL.md).md` - [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) security policies and admission control patterns
-- `iac-policies.md` - [Infrastructure-as-code](../../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) policy validation for Terraform, [CloudFormation](../../../infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md)
+- `[kubernetes-security](../../DevOps_and_Cloud/Containers_and_Orchestration/[kubernetes](../../DevOps_and_Cloud/Containers_and_Orchestration/kubernetes/SKILL.md)-security/SKILL.md).md` - [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) security policies and admission control patterns
+- `iac-policies.md` - [Infrastructure-as-code](../../../DevOps_and_Cloud/infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) policy validation for Terraform, [CloudFormation](../../../DevOps_and_Cloud/infrastructure-as-code/cloudformation/other/cloudformation/SKILL.md)
 
 ### Assets (`assets/`)
 
-- `k8s-pod-security.rego` - [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) pod security policy template
+- `k8s-pod-security.rego` - [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) pod security policy template
 - `k8s-constraint-template.yaml` - OPA Gatekeeper constraint template
 - `k8s-constraint.yaml` - Example Gatekeeper constraint configuration
 - `[soc2-compliance](../../compliance/soc2-compliance/SKILL.md).rego` - SOC2 compliance controls as OPA policies
-- `[pci-dss-compliance](../../../cloud/common/security/pci-dss-compliance/SKILL.md).rego` - PCI-DSS requirements as OPA policies
+- `[pci-dss-compliance](../../../DevOps_and_Cloud/cloud/common/security/pci-dss-compliance/SKILL.md).rego` - PCI-DSS requirements as OPA policies
 - `[gdpr-compliance](../../compliance/gdpr-compliance/SKILL.md).rego` - GDPR data protection policies
 - `terraform-security.rego` - Terraform security best practices policies
-- `ci-cd-pipeline.yaml` - CI/CD integration examples ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI)
+- `ci-cd-pipeline.yaml` - CI/CD integration examples ([GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI)
 
 ## Common Patterns
 
-### Pattern 1: [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Admission Control
+### Pattern 1: [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Admission Control
 
 Enforce security policies at pod creation time:
 ```rego
-package [kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).admission
+package [kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md).admission
 
 deny[msg] {
     input.request.kind.kind == "Pod"
@@ -338,7 +338,7 @@ deny[msg] {
 }
 ```
 
-### Pattern 2: [Infrastructure-as-Code](../../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) Validation
+### Pattern 2: [Infrastructure-as-Code](../../../DevOps_and_Cloud/infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) Validation
 
 Validate Terraform configurations before apply:
 ```rego
@@ -406,11 +406,11 @@ allow if {
 
 ## Integration Points
 
-- **CI/CD Pipelines**: [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md), [CircleCI](../../../ci-cd/circleci/other/circleci/SKILL.md) - validate policies before deployment
-- **[Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)**: OPA Gatekeeper admission controller for runtime policy enforcement
+- **CI/CD Pipelines**: [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, [Jenkins](../../../DevOps_and_Cloud/ci-cd/jenkins/other/jenkins/SKILL.md), [CircleCI](../../../DevOps_and_Cloud/ci-cd/circleci/other/circleci/SKILL.md) - validate policies before deployment
+- **[Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md)**: OPA Gatekeeper admission controller for runtime policy enforcement
 - **Terraform/IaC**: Pre-deployment validation using `conftest` or OPA CLI
 - **API Gateways**: Kong, Envoy, NGINX - authorize requests using OPA policies
-- **[Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)/SIEM**: Export policy violations to Splunk, ELK, [Datadog](../../../observability-monitoring-logging/datadog/other/datadog/SKILL.md) for security [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+- **[Monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)/SIEM**: Export policy violations to Splunk, ELK, [Datadog](../../../DevOps_and_Cloud/observability-monitoring-logging/datadog/other/datadog/SKILL.md) for security [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - **Compliance Tools**: Integrate with compliance platforms for control validation and [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) trails
 
 ## Troubleshooting
@@ -423,12 +423,12 @@ allow if {
 - Check for typos in policy rules or variable names
 - Use `opa fmt` to format policies and catch syntax errors
 
-### Issue: [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Admission Control Not Blocking Violations
+### Issue: [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Admission Control Not Blocking Violations
 
 **Solution**:
-- Verify Gatekeeper is running: `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get pods -n gatekeeper-system`
-- Check constraint status: `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) get constraints`
-- Review [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs: `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) logs -n gatekeeper-system -l control-plane=controller-manager`
+- Verify Gatekeeper is running: `[kubectl](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubectl/SKILL.md) get pods -n gatekeeper-system`
+- Check constraint status: `[kubectl](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubectl/SKILL.md) get constraints`
+- Review [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs: `[kubectl](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubectl/SKILL.md) logs -n gatekeeper-system -l control-plane=controller-manager`
 - Ensure constraint template is properly defined and matches policy expectations
 
 ### Issue: Policy Tests Failing
@@ -452,9 +452,9 @@ allow if {
 
 - [OPA Documentation](https://www.openpolicyagent.org/docs/latest/)
 - [Rego Language Reference](https://www.openpolicyagent.org/docs/latest/policy-language/)
-- [OPA Gatekeeper](https://open-policy-agent.[github](../../../ci-cd/github-actions/other/github/SKILL.md).io/gatekeeper/website/)
+- [OPA Gatekeeper](https://open-policy-agent.[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).io/gatekeeper/website/)
 - [Conftest](https://www.conftest.dev/)
-- [OPA [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Tutorial](https://www.openpolicyagent.org/docs/latest/[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-tutorial/)
+- [OPA [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Tutorial](https://www.openpolicyagent.org/docs/latest/[kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-tutorial/)
 - [SOC2 Security Controls](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html)
 - [PCI-DSS Requirements](https://www.pcisecuritystandards.org/)
 - [GDPR Compliance Guide](https://gdpr.eu/)

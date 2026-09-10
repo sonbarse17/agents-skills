@@ -27,7 +27,7 @@ Generate four audience-tailored onboarding documents in an `onboarding/` folder,
 Before generating any guides, you MUST determine the source repository context:
 
 1. **Check for git remote**: Run `git remote get-url origin` to detect if a remote exists
-2. **Ask the user**: _"Is this a local-only repository, or do you have a source repository URL (e.g., [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md), Azure DevOps)?"_
+2. **Ask the user**: _"Is this a local-only repository, or do you have a source repository URL (e.g., [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md), Azure DevOps)?"_
    - Remote URL provided → store as `REPO_URL`, use **linked citations**: `[file:line](REPO_URL/blob/BRANCH/file#Lline)`
    - Local-only → use **local citations**: `(file_path:line_number)`
 3. **Determine default branch**: Run `git rev-parse --abbrev-ref HEAD`
@@ -99,7 +99,7 @@ Scan the repository for build files to determine the primary language for code e
 **Part III: Getting Productive**
 8. **Prerequisites & Setup** — Table: Tool, Version, Install Command. Step-by-step with expected output at each step.
 9. **Your First Task** — End-to-end walkthrough of adding a simple feature
-10. **Development Workflow** — Branch strategy, [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) conventions, PR process. Use `flowchart` diagram.
+10. **Development Workflow** — Branch strategy, [commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) conventions, PR process. Use `flowchart` diagram.
 11. **Running Tests** — All tests, single file, single test, coverage commands
 12. **Debugging Guide** — Common issues table: Symptom, Cause, Fix
 13. **Common Pitfalls** — Mistakes every new contributor makes and how to avoid them
@@ -171,7 +171,7 @@ Scan the repository for build files to determine the primary language for code e
 6. **Risk Assessment** — Table: Risk, Likelihood, Impact, Mitigation, Owner. Cover reliability, security, scalability, compliance.
 7. **Cost & Scaling Model** — How costs scale with usage. What the bottlenecks are. When the next scaling investment is needed.
 8. **Dependency Map** — `graph TB` showing critical external dependencies. Table: Dependency, Type (Service/Library/Platform), Risk if Unavailable.
-9. **Key Metrics & [Observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)** — What's measured, what [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) exist, [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) coverage. Table: Metric, Current Value, Target, Source.
+9. **Key Metrics & [Observability](../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md)** — What's measured, what [dashboards](../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) exist, [alerting](../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md) coverage. Table: Metric, Current Value, Target, Source.
 10. **Roadmap Alignment** — Engineering workstreams mapped to business priorities. What's in progress, what's planned, what's blocked.
 11. **Technical Debt Summary** — Top 5 debt items with business impact. Table: Issue, Business Impact, Effort to Fix, Priority.
 12. **Recommendations** — 3-5 actionable recommendations for the next quarter, prioritized by impact.

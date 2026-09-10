@@ -121,7 +121,7 @@ Determine MDE based on business impact: what effect size would make implementati
 
 Use two-tailed test by default (tests for both positive and negative effects). One-tailed test only when there is strong prior evidence that the effect can only go in one direction and the opposite direction is not actionable.
 
-Apply sequential testing (group sequential design) for continuous [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) with pre-specified interim analysis points. Use alpha spending functions to maintain overall error rate. Do not use traditional p-value [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) without correction.
+Apply sequential testing (group sequential design) for continuous [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) with pre-specified interim analysis points. Use alpha spending functions to maintain overall error rate. Do not use traditional p-value [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) without correction.
 
 ### Step 4: AA Test Validation
 Run AA test before any treatment experiment. Split traffic equally between two identical variants (both receive control experience). Verify no statistically significant difference between the two groups.
@@ -171,7 +171,7 @@ Document learnings: hypothesis, design, results, decision, and what was learned 
 ## Framework / Methodologies
 
 ### Frequentist Hypothesis Testing Framework
-Standard approach for A/B testing. Null hypothesis significance testing (NHST) with p-values and confidence intervals. Pros: widely understood, computationally simple, well-established conventions. Cons: p-values are easily misinterpreted, no direct statement about probability of hypotheses being true, problematic with continuous [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
+Standard approach for A/B testing. Null hypothesis significance testing (NHST) with p-values and confidence intervals. Pros: widely understood, computationally simple, well-established conventions. Cons: p-values are easily misinterpreted, no direct statement about probability of hypotheses being true, problematic with continuous [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
 
 Key elements: pre-specified α and β, MDE-based sample size calculation, two-tailed tests by default, p-value threshold for significance, confidence intervals for effect size estimates. Report both statistical significance and practical significance.
 
@@ -180,7 +180,7 @@ Alternative approach that estimates the probability distribution of the effect s
 
 Key elements: prior distribution (informative or uninformative), likelihood function (based on observed data), posterior distribution (updated belief), credible intervals (Bayesian analog of confidence intervals), probability of superiority (Pr(treatment > control)), expected loss.
 
-Pros: interpretable results, natural handling of sequential [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), incorporates prior information, no p-value misinterpretation. Cons: requires specifying prior (subjective), computationally more intensive, less widely understood in organizations.
+Pros: interpretable results, natural handling of sequential [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), incorporates prior information, no p-value misinterpretation. Cons: requires specifying prior (subjective), computationally more intensive, less widely understood in organizations.
 
 ### Sequential Testing (Group Sequential Design)
 Multiple interim analyses with pre-specified stopping rules that maintain overall error rate. Use alpha spending functions (Pocock, O'Brien-Fleming, Haybittle-Peto) to distribute α across analyses.
@@ -246,7 +246,7 @@ Aggregate results show one direction but segment results show the opposite. Caus
 
 ### Statistical Rigor
 - Pre-register the experiment: hypothesis, metrics, sample size, duration, analysis plan.
-- Use sequential testing with alpha spending for continuous [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
+- Use sequential testing with alpha spending for continuous [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
 - Check assumptions (normality, equal variance, independence, SRM) before interpreting results.
 - Report confidence intervals alongside p-values for effect size interpretation.
 - Apply corrections for multiple comparisons in segment and secondary metric analysis.
@@ -505,7 +505,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
+### [Monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -540,7 +540,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing ([OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../DevOps_and_Cloud/observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -557,7 +557,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) signing
+- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
@@ -574,6 +574,6 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - Fail securely — errors default to safe behavior.
 - Log security-relevant events for [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
+- Design for [observability](../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

@@ -104,7 +104,7 @@ output "private_subnet_ids" {
 - Configuration with clear boundaries
 
 **What to Keep Separate:**
-- Cross-cutting concerns ([monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), tagging)
+- Cross-cutting concerns ([monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), tagging)
 - Resources with different lifecycles
 - Provider-specific configurations
 ```
@@ -537,7 +537,7 @@ terraform apply migration.tfplan
 ```hcl
 # Use semantic versioning for modules
 module "vpc" {
-  source  = "git::https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/org/[terraform-modules](../../../../infrastructure-as-code/terraform/modules/terraform-modules/SKILL.md).git//vpc?ref=v1.2.0"
+  source  = "git::https://[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/org/[terraform-modules](../../../../DevOps_and_Cloud/infrastructure-as-code/terraform/modules/terraform-modules/SKILL.md).git//vpc?ref=v1.2.0"
   version = "~> 1.2"
 }
 

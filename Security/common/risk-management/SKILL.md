@@ -107,7 +107,7 @@ What is the risk score (P x I)?
 | Schedule | Timeline, milestones, delivery | Aggressive estimates, dependency delays, scope creep |
 | Resource | People, budget, tools | Team member unavailability, skill gaps, key person dependency |
 | External | Vendors, market, regulations | API deprecation, framework abandonment, new regulations |
-| Operational | Process, deployment, incidents | Deployment failures, missing [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), backup gaps |
+| Operational | Process, deployment, incidents | Deployment failures, missing [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), backup gaps |
 | Strategic | Direction, alignment, competition | Wrong prioritization, competitor moves, market shifts |
 
 ### Risk Maturity Model
@@ -118,13 +118,13 @@ What is the risk score (P x I)?
 | 2 | Aware | Basic register exists, not regularly reviewed | 3-7 documented |
 | 3 | Managed | Register reviewed at sprint retro, owners assigned | 8-15 tracked |
 | 4 | Measured | Risk burndown tracked, trends analyzed, quantified | 10-20 active |
-| 5 | Optimizing | Predictive risk modeling, automated triggers, continuous [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) | 15-25 active |
+| 5 | Optimizing | Predictive risk modeling, automated triggers, continuous [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) | 15-25 active |
 
 ## Workflow
 
 ### Step 1: Identify Risks
 
-Conduct structured brainstorming across all risk categories. Technical: tech debt accumulation slowing feature velocity, performance degradation under load, security vulnerabilities in dependencies, architectural decisions that limit future options, data loss scenarios, single points of failure in the system. Schedule: aggressive timeline estimates, external dependency delays, resource availability gaps at critical milestones, scope creep from unclear requirements, cascading delays on the critical path. Resource: team member unavailability (vacation, sick leave, turnover), key person dependency (only one person knows X), skill gaps for new technology adoption, burnout risk from sustained high velocity. External: vendor API deprecation or breaking changes, ecosystem shifts (framework deprecation, library abandonment), market changes that reduce demand, partner delays or failures. Compliance: new regulations affecting data handling, [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) findings with remediation deadlines, privacy requirements changes, accessibility mandates. Operational: deployment failures, missing [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), insufficient [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response [runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md), backup and restore gaps.
+Conduct structured brainstorming across all risk categories. Technical: tech debt accumulation slowing feature velocity, performance degradation under load, security vulnerabilities in dependencies, architectural decisions that limit future options, data loss scenarios, single points of failure in the system. Schedule: aggressive timeline estimates, external dependency delays, resource availability gaps at critical milestones, scope creep from unclear requirements, cascading delays on the critical path. Resource: team member unavailability (vacation, sick leave, turnover), key person dependency (only one person knows X), skill gaps for new technology adoption, burnout risk from sustained high velocity. External: vendor API deprecation or breaking changes, ecosystem shifts (framework deprecation, library abandonment), market changes that reduce demand, partner delays or failures. Compliance: new regulations affecting data handling, [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) findings with remediation deadlines, privacy requirements changes, accessibility mandates. Operational: deployment failures, missing [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), insufficient [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response [runbooks](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md), backup and restore gaps.
 
 ### Step 2: Categorize
 
@@ -132,11 +132,11 @@ Tag each risk with exactly one primary category for consistent filtering and tre
 
 ### Step 3: Assess
 
-For each risk, assign two numerical values. Probability (P): 1 = rare (<10% chance), 2 = unlikely (10-25%), 3 = possible (25-50%), 4 = likely (50-90%), 5 = almost certain (>90%). Impact (I): 1 = negligible (minor inconvenience, no schedule effect), 2 = minor (small delay <1 week, easily recoverable), 3 = moderate (1-2 week delay, budget impact), 4 = major (2-4 week delay, feature may be cut), 5 = critical (project-threatening, >1 month delay, significant cost overrun). Calculate risk score = P x I (range 1-25). Map to priority: High = 15-25 (immediate response plan and active [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)), Medium = 6-14 (assign owner, monitor at sprint retro), Low = 1-5 (log and accept, review quarterly).
+For each risk, assign two numerical values. Probability (P): 1 = rare (<10% chance), 2 = unlikely (10-25%), 3 = possible (25-50%), 4 = likely (50-90%), 5 = almost certain (>90%). Impact (I): 1 = negligible (minor inconvenience, no schedule effect), 2 = minor (small delay <1 week, easily recoverable), 3 = moderate (1-2 week delay, budget impact), 4 = major (2-4 week delay, feature may be cut), 5 = critical (project-threatening, >1 month delay, significant cost overrun). Calculate risk score = P x I (range 1-25). Map to priority: High = 15-25 (immediate response plan and active [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)), Medium = 6-14 (assign owner, monitor at sprint retro), Low = 1-5 (log and accept, review quarterly).
 
 ### Step 4: Plan Response
 
-For every risk, select and document one of five response strategies. Avoid: change the project plan to eliminate the risk entirely — remove the risky feature, use a different technology, reschedule to avoid the conflict. Mitigate: take action to reduce the probability or impact — add redundancy, increase test coverage, implement feature flags for quick rollback, cross-train team members to reduce key person risk. Transfer: shift the risk to a third party who is better equipped to handle it — purchase insurance, use an SLA-backed vendor, outsource a high-risk component, use a managed service instead of self-hosting. Accept: document the risk and its score, monitor it regularly, but take no active mitigation — appropriate for low-score risks or risks where mitigation costs more than the expected impact. Contingency: pre-define a Plan B that triggers automatically if the risk materializes — rollback plan, fallback vendor, manual override process, [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md).
+For every risk, select and document one of five response strategies. Avoid: change the project plan to eliminate the risk entirely — remove the risky feature, use a different technology, reschedule to avoid the conflict. Mitigate: take action to reduce the probability or impact — add redundancy, increase test coverage, implement feature flags for quick rollback, cross-train team members to reduce key person risk. Transfer: shift the risk to a third party who is better equipped to handle it — purchase insurance, use an SLA-backed vendor, outsource a high-risk component, use a managed service instead of self-hosting. Accept: document the risk and its score, monitor it regularly, but take no active mitigation — appropriate for low-score risks or risks where mitigation costs more than the expected impact. Contingency: pre-define a Plan B that triggers automatically if the risk materializes — rollback plan, fallback vendor, manual override process, [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response [runbook](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbook/SKILL.md).
 
 ### Step 5: Monitor and Review
 
@@ -393,7 +393,7 @@ Trigger Condition:
 Residual Risk Score (after mitigation): P × I = {score}
 
 Owner: {name}
-Status: {Open | Mitigating | [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) | Closed | Realized}
+Status: {Open | Mitigating | [Monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) | Closed | Realized}
 Review Date: {date}
 ```
 
@@ -503,7 +503,7 @@ Decision log:
   - ../../../Global_References/Security/risk-management-advanced.md — Risk Management Advanced
   - ../../../Global_References/Security/risk-management-framework.md — Risk Management Framework
   - ../../../Global_References/Security/risk-management-fundamentals.md — Risk Management Fundamentals
-  - ../../../Global_References/risk-[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Risk [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+  - ../../../Global_References/risk-[monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Risk [Monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
   - ../../../Global_References/Security/risk-register.md — Risk Register Template
   - ../../../Global_References/Security/risk-reporting.md — Risk Reporting
 
@@ -517,7 +517,7 @@ sprint-retro (the risk register is reviewed at every sprint retro), create-roadm
 |---|---|---|---|
 | Risk severity | Accept (cost to fix > impact) | Mitigate (cost to fix < impact) | Budget, risk appetite, compliance |
 | Risk ownership | Assign to risk owner (accountable) | Transfer (insurance/outsource) | Expertise, financial [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) |
-| [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) frequency | Continuous (automated [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)) | Periodic (quarterly review) | Risk volatility, regulatory requirements |
+| [Monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) frequency | Continuous (automated [dashboards](../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)) | Periodic (quarterly review) | Risk volatility, regulatory requirements |
 
 ### Risk Assessment Framework Selection
 - Financial/quantitative → Monte Carlo simulation + NPV analysis
@@ -534,7 +534,7 @@ sprint-retro (the risk register is reviewed at every sprint retro), create-roadm
 | ID | Risk Description | Category | Probability | Impact | RPN | Owner | Response | Status |
 |---|---|---|---|---|---|---|---|---|
 | R-001 | Key developer leaving | Resource | 4/5 | 5/5 | 20 | @tech-lead | Mitigate - cross-train | Active |
-| R-002 | Vendor bankruptcy | External | 2/5 | 4/5 | 8 | @procurement | Transfer - escrow contract | [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) |
+| R-002 | Vendor bankruptcy | External | 2/5 | 4/5 | 8 | @procurement | Transfer - escrow contract | [Monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) |
 | R-003 | Data breach | Security | 3/5 | 5/5 | 15 | @cso | Mitigate - security [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) | Active |
 | R-004 | Schedule delay | Project | 4/5 | 3/5 | 12 | @pm | Accept - buffer in timeline | Active |
 `
@@ -576,7 +576,7 @@ sprint-retro (the risk register is reviewed at every sprint retro), create-roadm
 
 ### Tooling & Automation
 - **Risk dashboard**: Maintain real-time risk dashboard with RPN trends. Use color-coded heat maps for quick status.
-- **Automated triggers**: Link risk register to [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) tools. Auto-create risk tickets when incidents occur.
+- **Automated triggers**: Link risk register to [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) tools. Auto-create risk tickets when incidents occur.
 - **[Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) trail**: Log all risk register changes. Maintain version history for compliance audits.
 
 ## Anti-Patterns
@@ -593,13 +593,13 @@ sprint-retro (the risk register is reviewed at every sprint retro), create-roadm
 
 ### Risk Assessment Speed
 - **Risk library**: Maintain catalog of common risks with pre-assessed scores. Reduce time spent on recurring risk identification.
-- **Template risks**: Use industry risk templates (OWASP, ISO 31010). [Customize](../../../cloud/azure/ai/customize/SKILL.md)/SKILL.md)/SKILL.md) to org context rather than starting from zero.
+- **Template risks**: Use industry risk templates (OWASP, ISO 31010). [Customize](../../../DevOps_and_Cloud/cloud/azure/ai/customize/SKILL.md)/SKILL.md)/SKILL.md) to org context rather than starting from zero.
 - **Aggregate assessment**: Assess risks at program level, not per-task. Roll up to portfolio view for executive reporting.
 
 ### Response Efficiency
 - **Pre-approved responses**: Define standard responses for common risk categories. Reduce approval cycle for routine mitigations.
 - **Risk budget**: Allocate contingency budget proportional to risk exposure. Release budget on trigger, not on request.
-- **Automated [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**: Use automated KRI (Key Risk Indicator) tracking. Alert when KRIs approach thresholds.
+- **Automated [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**: Use automated KRI (Key Risk Indicator) tracking. Alert when KRIs approach thresholds.
 
 ## Security Considerations
 

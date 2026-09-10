@@ -37,11 +37,11 @@ A six-phase approach to achieving and maintaining [audit](../../../AI_and_Agents
 
 Phase 1 - Align: Identify applicable frameworks based on business domain, data types, customer requirements, and geographic presence. Map framework requirements to system architecture. Determine [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) scope (systems, data, regions, shared infrastructure).
 
-Phase 2 - Understand: Map controls to system components. Group by control domain (access control, encryption, logging, change management, [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response). Document inherited controls from cloud providers and vendors.
+Phase 2 - Understand: Map controls to system components. Group by control domain (access control, encryption, logging, change management, [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response). Document inherited controls from cloud providers and vendors.
 
 Phase 3 - Document: Create control implementation narratives. Define policies and procedures. Maintain evidence of operating effectiveness. Implement automated evidence collection where possible.
 
-Phase 4 - Implement: Deploy technical controls. Configure logging, [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), and [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md). Establish access review workflows. Implement change management and deployment pipelines with compliance gates.
+Phase 4 - Implement: Deploy technical controls. Configure logging, [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), and [alerting](../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md). Establish access review workflows. Implement change management and deployment pipelines with compliance gates.
 
 Phase 5 - Test: Conduct internal audits. Run penetration tests. Perform control testing (design and operating effectiveness). Remediate findings. Repeat until residual risk is acceptable.
 
@@ -53,11 +53,11 @@ Access Control (All frameworks): MFA, role-based access, least privilege, access
 
 Encryption (All frameworks): TLS for data in transit, AES-256 for data at rest, key management, certificate lifecycle management.
 
-Logging and [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (All frameworks): [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) trails for admin actions, data access, configuration changes. Log retention per framework. [Alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) on security events.
+Logging and [Monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (All frameworks): [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) trails for admin actions, data access, configuration changes. Log retention per framework. [Alerting](../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md) on security events.
 
 Change Management (SOC2, ISO 27001, PCI): Change approval workflow, separation of duties, emergency change process, back-out procedures, production access controls.
 
-[Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response (All frameworks): [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response plan, tested annually, documented procedures, communication plan, post-[incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) review.
+[Incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response (All frameworks): [Incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response plan, tested annually, documented procedures, communication plan, post-[incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) review.
 
 Vulnerability Management (SOC2, ISO 27001, PCI, HIPAA): Regular vulnerability scans, penetration testing annually, patch management SLAs, vulnerability tracking to closure.
 
@@ -92,8 +92,8 @@ Which industry/regulation applies?
 |-------|----------------|-----------------|
 | 1 - Reactive | No formal controls, ad-hoc evidence | Painful, many findings |
 | 2 - Documented | Controls documented, manual evidence | Manageable, repeat findings |
-| 3 - Automated | Automated evidence collection, continuous [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) | Smooth, few findings |
-| 4 - Integrated | Compliance built into [DevSecOps](../../common/devsecops/SKILL.md), real-time [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) | Effortless, proactive |
+| 3 - Automated | Automated evidence collection, continuous [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) | Smooth, few findings |
+| 4 - Integrated | Compliance built into [DevSecOps](../../common/devsecops/SKILL.md), real-time [dashboards](../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) | Effortless, proactive |
 | 5 - Predictive | Risk-based controls, automated remediation | [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) in hours, not weeks |
 
 ## Agent Protocol
@@ -136,7 +136,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions.
 - [ ] Control framework mapped to system architecture
 - [ ] Gap analysis completed with severity ratings
 - [ ] Evidence collection automated for all controls
-- [ ] Continuous [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) configured for critical controls
+- [ ] Continuous [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) configured for critical controls
 - [ ] Remediation plan with owners and deadlines
 - [ ] [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) evidence package assembled and verified
 - [ ] Annual penetration test scheduled
@@ -148,7 +148,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions.
 ## Workflow
 
 ### Step 1: Framework Selection and Control Mapping
-Identify the applicable compliance framework. Map each framework control to system components. Group by control domain (access control, encryption, logging, change management, [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response). Document inherited controls from cloud provider.
+Identify the applicable compliance framework. Map each framework control to system components. Group by control domain (access control, encryption, logging, change management, [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response). Document inherited controls from cloud provider.
 
 Framework selection criteria:
 - Customer contracts: which frameworks do your customers require?
@@ -174,9 +174,9 @@ Gap analysis output should be a prioritized remediation plan with assigned owner
 Configure structured logging at all system boundaries. Enable [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) trails for admin actions, data access, and configuration changes. Implement access review workflows. Automate evidence gathering scripts. Timestamp and hash all evidence for immutability.
 
 Evidence types:
-- Configuration snapshots: [Infrastructure-as-Code](../../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) state files, CI/CD pipeline definitions
+- Configuration snapshots: [Infrastructure-as-Code](../../../DevOps_and_Cloud/infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) state files, CI/CD pipeline definitions
 - Log exports: System logs, [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs, access logs, change logs
-- Policy documents: Signed policies, procedure documents, [runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md)
+- Policy documents: Signed policies, procedure documents, [runbooks](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md)
 - Review records: Access review sign-offs, change advisory board minutes, risk assessment reports
 - Training records: Security awareness training completions, role-based training records
 - Test results: Penetration test reports, vulnerability scan results, DR test reports
@@ -187,17 +187,17 @@ Evidence collection automation:
 - Tag and hash evidence for immutability verification
 - Maintain evidence index mapped to controls
 
-### Step 4: Continuous Compliance [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
-Deploy compliance [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) showing real-time control status. Configure alerts for control failures. Schedule periodic evidence collection. Monitor access logs for anomalous patterns. Track remediation progress.
+### Step 4: Continuous Compliance [Monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+Deploy compliance [dashboards](../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) showing real-time control status. Configure alerts for control failures. Schedule periodic evidence collection. Monitor access logs for anomalous patterns. Track remediation progress.
 
-Continuous [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) components:
+Continuous [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) components:
 - Compliance posture dashboard (per framework, per control)
 - Automated control testing (scheduled tests verify control effectiveness)
 - Configuration drift detection (alert when IaC-defined config differs from actual)
 - Access review automation (scheduled review reminders, automated certification)
 - Vulnerability pipeline (scan results -> ticket -> remediation -> verification)
 
-[Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) tools: AWS Config, Azure Policy, GCP Organization Policy, CSPM platforms (Wiz, Prisma Cloud, CrowdStrike), SIEM integration.
+[Monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) tools: AWS Config, Azure Policy, GCP Organization Policy, CSPM platforms (Wiz, Prisma Cloud, CrowdStrike), SIEM integration.
 
 ### Step 5: [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Preparation and Evidence Package
 Assemble evidence package mapped to each control. Prepare system description document. Conduct pre-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) walkthrough with stakeholders. Prepare evidence access for auditors. Schedule interview slots.
@@ -228,7 +228,7 @@ Track remediation metrics: open findings by severity, average time-to-close, fin
 
 ## Common Pitfalls
 
-Pitfall 1: Treating compliance as a point-in-time exercise. Compliance is not a project with an end date. It is an ongoing program. Controls degrade, personnel change, architecture evolves. Continuous [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) is essential.
+Pitfall 1: Treating compliance as a point-in-time exercise. Compliance is not a project with an end date. It is an ongoing program. Controls degrade, personnel change, architecture evolves. Continuous [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) is essential.
 
 Pitfall 2: Manual evidence collection. Gathering evidence manually before each [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) is time-consuming and error-prone. Automate evidence collection so it runs continuously. The [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) package should be available at all times.
 
@@ -244,7 +244,7 @@ Pitfall 7: No remediation follow-through. [Audit](../../../AI_and_Agents/Operati
 
 ## Best Practices
 
-Practice 1: Build compliance into development workflows. [Infrastructure-as-Code](../../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) templates should enforce compliance defaults. CI/CD pipelines should run compliance checks. Pull request templates should include compliance review checklist.
+Practice 1: Build compliance into development workflows. [Infrastructure-as-Code](../../../DevOps_and_Cloud/infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) templates should enforce compliance defaults. CI/CD pipelines should run compliance checks. Pull request templates should include compliance review checklist.
 
 Practice 2: Automate evidence collection as early as possible. The goal is to have an [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-ready evidence package available on demand, not assembled in a panic before each [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md).
 
@@ -252,7 +252,7 @@ Practice 3: Maintain a single source of truth for control status. A compliance d
 
 Practice 4: Run a pre-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) readiness assessment 60 days before the actual [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md). Use an internal team or external consultant. Identify gaps while there is still time to remediate.
 
-Practice 5: Train teams on compliance responsibilities. Developers should understand what controls apply to their code. Operations should understand evidence collection requirements. Security should understand [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) expectations.
+Practice 5: Train teams on compliance responsibilities. Developers should understand what controls apply to their code. Operations should understand evidence collection requirements. Security should understand [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) expectations.
 
 Practice 6: Conduct periodic tabletop audits. Walk through an [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) scenario with the team. Practice answering auditor questions, accessing evidence, and demonstrating controls.
 
@@ -264,7 +264,7 @@ Practice 6: Conduct periodic tabletop audits. Walk through an [audit](../../../A
 | Encryption | CC6.7 | A.8 | Art. 32 | 164.312(a)(2)(iv) | Req. 4 |
 | [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Logging | CC4.1 | A.12.4 | Art. 33 | 164.312(b) | Req. 10 |
 | Change Management | CC8.1 | A.12.1 | — | 164.310(a)(2) | Req. 6.4 |
-| [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response | CC7.3 | A.5.24 | Art. 33 | 164.308(a)(6) | Req. 12.10 |
+| [Incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response | CC7.3 | A.5.24 | Art. 33 | 164.308(a)(6) | Req. 12.10 |
 | Vulnerability Mgmt | CC7.1 | A.8.8 | Art. 32 | 164.308(a)(1)(ii) | Req. 6.3 |
 | Business Continuity | CC7.5 | A.5.29 | — | 164.308(a)(7)(i) | Req. 12.3 |
 
@@ -277,7 +277,7 @@ Practice 6: Conduct periodic tabletop audits. Walk through an [audit](../../../A
 - [ ] System description current and accurate
 - [ ] Control matrix mapped to framework requirements
 - [ ] Evidence collection automated for all controls
-- [ ] Continuous [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) operational
+- [ ] Continuous [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) [dashboards](../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) operational
 - [ ] Penetration test completed (within 12 months)
 - [ ] Vendor due diligence documents current
 - [ ] Internal readiness assessment completed
@@ -285,7 +285,7 @@ Practice 6: Conduct periodic tabletop audits. Walk through an [audit](../../../A
 
 ## Evidence Package
 - [ ] Policy documents (signed, dated, current)
-- [ ] Procedure documents (operating procedures, [runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md))
+- [ ] Procedure documents (operating procedures, [runbooks](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md))
 - [ ] Configuration evidence (IaC state, system configs)
 - [ ] Log evidence (access logs, [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs, change logs)
 - [ ] Review evidence (access review sign-offs, CAB minutes)
@@ -433,9 +433,9 @@ unified_controls:
 |------------------------|------|-----------|------|-------|---------|
 | Access Control         | Yes  | A.9       | Art 32| 164.312| Req 7  |
 | Encryption             | Yes  | A.10      | Art 32| 164.312| Req 4  |
-| Logging and [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) | Yes  | A.12      | Art 33| 164.312| Req 10 |
+| Logging and [Monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) | Yes  | A.12      | Art 33| 164.312| Req 10 |
 | Change Management      | Yes  | A.12      | -    | 164.310| Req 6  |
-| [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response      | Yes  | A.16      | Art 33| 164.308| Req 12 |
+| [Incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response      | Yes  | A.16      | Art 33| 164.308| Req 12 |
 | Vulnerability Mgmt     | Yes  | A.12      | Art 32| 164.308| Req 6  |
 | Business Continuity    | Yes  | A.17      | -    | 164.308| Req 12 |
 | Data Protection        | -    | A.8       | Art 5 | 164.514| Req 3  |
@@ -518,7 +518,7 @@ print(collector.snapshot_infra(infra_state))
 ## Anti-Patterns
 
 ### Anti-Pattern 1: Compliance Theater
-Implementing controls that look good in documentation but have no operational reality. Examples: writing an access control policy without enforcing MFA, having a password policy that allows `Password123!`, maintaining a [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) that no one follows. Auditors increasingly test operating effectiveness, not just design.
+Implementing controls that look good in documentation but have no operational reality. Examples: writing an access control policy without enforcing MFA, having a password policy that allows `Password123!`, maintaining a [runbook](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) that no one follows. Auditors increasingly test operating effectiveness, not just design.
 
 ### Anti-Pattern 2: Point-in-Time [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Prep
 Scrambling for 6 weeks before the [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) to collect evidence. This is stressful, error-prone, and creates a "cleanup" culture. Real compliance is 365-day continuous evidence collection with automated tooling.
@@ -550,7 +550,7 @@ A fintech company failed their SOC2 Type II [audit](../../../AI_and_Agents/Opera
 - Data retention and deletion policies must be enforced at application level.
 - Annual penetration test by independent third party is mandatory.
 - Vendor due diligence must be documented before data sharing.
-- [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response plan tested at least annually.
+- [Incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response plan tested at least annually.
 - All evidence collection must be automated where technically feasible.
 - Control implementation must be verified by test evidence, not just design documentation.
 - Compliance training conducted at onboarding and annually thereafter.
@@ -568,7 +568,7 @@ A fintech company failed their SOC2 Type II [audit](../../../AI_and_Agents/Opera
   - ../../../Global_References/Security/compliance-automation-tools.md -- Compliance Automation Tools Reference
   - ../../../Global_References/compliance-[audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)-fundamentals.md -- Compliance [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Fundamentals
   - ../../../Global_References/Security/compliance-audit_compliance-frameworks.md -- Compliance Frameworks Reference
-  - ../../../Global_References/compliance-[incident-response](../[incident](../incident/SKILL.md)-response/SKILL.md).md -- Compliance [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response and Breach Notification
+  - ../../../Global_References/compliance-[incident-response](../[incident](../incident/SKILL.md)-response/SKILL.md).md -- Compliance [Incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response and Breach Notification
 ## Handoff
-For remediation implementation, hand off to `[enterprise-sla-management](../../../observability-monitoring-logging/common/sli-slo-sla/sla-management/SKILL.md)` for tracking remediation SLAs, or `[enterprise-cost-governance](../../../cloud/common/cost/cost-governance/SKILL.md)` for budgeting remediation costs.
+For remediation implementation, hand off to `[enterprise-sla-management](../../../DevOps_and_Cloud/observability-monitoring-logging/common/sli-slo-sla/sla-management/SKILL.md)` for tracking remediation SLAs, or `[enterprise-cost-governance](../../../DevOps_and_Cloud/cloud/common/cost/cost-governance/SKILL.md)` for budgeting remediation costs.
 

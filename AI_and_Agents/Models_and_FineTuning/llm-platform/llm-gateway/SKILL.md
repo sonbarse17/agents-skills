@@ -34,7 +34,7 @@ Use this skill when:
 
 ## Prerequisites
 
-- [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) and [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) Compose
+- [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) and [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) Compose
 - A [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md) or SQLite database (for LiteLLM state)
 - LLM API keys (OpenAI, Anthropic, etc.) or self-hosted vLLM endpoints
 - Optional: Redis for caching and rate limiting
@@ -44,8 +44,8 @@ Use this skill when:
 LiteLLM is the de facto open-source LLM gateway with OpenAI-compatible API.
 
 ```bash
-# Run with [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)
-[docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) run -d \
+# Run with [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)
+[docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) run -d \
   --name litellm-proxy \
   -p 4000:4000 \
   -e OPENAI_API_KEY=$OPENAI_API_KEY \
@@ -131,7 +131,7 @@ general_settings:
   store_model_in_db: true
 ```
 
-## [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) Compose: Full Gateway Stack
+## [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) Compose: Full Gateway Stack
 
 ```yaml
 services:
@@ -234,7 +234,7 @@ server {
 }
 ```
 
-## [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Gateway Health
+## [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Gateway Health
 
 ```bash
 # Check LiteLLM health
@@ -267,7 +267,7 @@ curl http://localhost:4000/key/list \
 - Use virtual keys per team/app — never expose raw provider API keys.
 - Enable `cache: true` with Redis for repeated or similar queries; can cut costs 30–50%.
 - Set `num_retries: 3` with fallbacks to handle provider outages gracefully.
-- Log all requests to Langfuse or [OpenTelemetry](../../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) for cost attribution and debugging.
+- Log all requests to Langfuse or [OpenTelemetry](../../../../DevOps_and_Cloud/observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) for cost attribution and debugging.
 - Use `least-busy` routing strategy for self-hosted models to avoid GPU saturation.
 
 ## Related Skills

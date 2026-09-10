@@ -34,7 +34,7 @@ depends_on:
 
 A Falco rule that looks syntactically correct and conceptually sound —
 "alert on any shell spawned in a container" — can still be a
-production-alert-fatigue [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) waiting to happen the moment it's
+production-alert-fatigue [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) waiting to happen the moment it's
 enabled broadly, if a CI runner, an init container, or a debugging
 sidecar routinely spawns shells as part of completely normal operation.
 Because Falco evaluates every syscall event in near real time, a rule
@@ -66,7 +66,7 @@ to depend on before it's live.
   silently make a previously-quiet stock rule noisy for your specific
   workloads.
 - Investigating a spike in Falco alert volume to determine whether it
-  reflects a real change in behavior (a genuine [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), a new
+  reflects a real change in behavior (a genuine [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md), a new
   deployment doing something unexpected) or a rule that was always
   slightly too broad and just started matching more traffic.
 - Reviewing a rule set someone else wrote before it's trusted to page
@@ -88,13 +88,13 @@ to depend on before it's live.
   infrequent behavior (a weekly batch job, a monthly maintenance script)
   won't appear in a short window and would otherwise misfire the first
   time it runs after a rule goes live.
-- The ability to deploy a rule change in a **non-[alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) or
+- The ability to deploy a rule change in a **non-[alerting](../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md) or
   low-priority posture first** — either by setting `priority: NOTICE`
   (or below the threshold Falcosidekick routes to paging) during the
   validation window, or by running a parallel Falco instance/rule file
   that logs but doesn't feed the production alert-routing pipeline.
 - A way to trigger a deliberate, known-positive test case (e.g.
-  `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) exec` a shell into a test pod, or a scripted equivalent of
+  `[kubectl](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubectl/SKILL.md) exec` a shell into a test pod, or a scripted equivalent of
   the specific behavior a rule targets) to confirm the rule actually
   fires — false-positive testing alone doesn't prove a rule works; it
   only proves it isn't overly broad.
@@ -106,12 +106,12 @@ to depend on before it's live.
 ## Step-by-step guidance
 
 1. **Deploy the new/changed rule in a validation posture, not
-   production-[alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) posture, first.** The simplest approach: keep the
+   production-[alerting](../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md) posture, first.** The simplest approach: keep the
    rule's `priority` field as authored but route it to a
    validation-only destination in Falcosidekick (or a separate log
    file), rather than the destination that would otherwise page:
    ```yaml
-   # Falcosidekick config — validation window: cap outbound [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
+   # Falcosidekick config — validation window: cap outbound [alerting](../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md)
    # threshold above the new rule's priority until validation completes
    falcosidekick:
      config:
@@ -136,7 +136,7 @@ to depend on before it's live.
    traffic** — a minimum of several days, ideally a full week including
    any weekly/off-hours batch jobs, before drawing conclusions:
    ```bash
-   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) logs -n falco -l app.[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).io/name=falco --since=168h \
+   [kubectl](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubectl/SKILL.md) logs -n falco -l app.[kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md).io/name=falco --since=168h \
      | jq -c 'select(.rule == "Shell spawned in payments-api")' \
      > validation_matches.jsonl
    wc -l validation_matches.jsonl
@@ -166,7 +166,7 @@ to depend on before it's live.
    matched something genuinely suspicious that turned out to be
    benign-this-time."** The first calls for a permanent, documented
    exception; the second calls for leaving the rule as-is and treating
-   this specific match as a one-off investigated [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), not evidence
+   this specific match as a one-off investigated [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md), not evidence
    the rule itself is broken:
    ```
    187 matches, ci-runner-7d9f8, "sh -c npm install"  → legitimate, expected — exception warranted
@@ -178,8 +178,8 @@ to depend on before it's live.
    positives can accidentally also eliminate true positives if the
    exception is too broad:
    ```bash
-   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) exec -it test-pod -n payments -- /bin/sh
-   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) logs -n falco -l app.[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).io/name=falco --since=1m \
+   [kubectl](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubectl/SKILL.md) exec -it test-pod -n payments -- /bin/sh
+   [kubectl](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubectl/SKILL.md) logs -n falco -l app.[kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md).io/name=falco --since=1m \
      | jq -c 'select(.rule == "Shell spawned in payments-api")'
    ```
    An empty result here after tuning is a **false negative** introduced
@@ -326,7 +326,7 @@ falcosidekick:
 
 Day 7 — pull and summarize matches:
 ```bash
-[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) logs -n falco -l app.[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).io/name=falco --since=168h \
+[kubectl](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubectl/SKILL.md) logs -n falco -l app.[kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md).io/name=falco --since=168h \
   | jq -c 'select(.rule == "Shell spawned in payments-api")' > validation_matches.jsonl
 jq -r '.output_fields."k8s.pod.name"' validation_matches.jsonl | sort | uniq -c | sort -rn
 ```
@@ -337,12 +337,12 @@ jq -r '.output_fields."k8s.pod.name"' validation_matches.jsonl | sort | uniq -c 
 
 Investigation: `payments-api-debug-session-8f2a1` turns out to be a
 temporary debugging pod a developer spun up (with an approved,
-documented exception for a specific [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) investigation) using the
+documented exception for a specific [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) investigation) using the
 same image but a different pod-name pattern — not the production
 `payments-api` deployment the rule was actually meant to protect. The
 other 2 matches are investigated individually and confirmed to be an
 on-call engineer's authorized live debugging session during an
-unrelated [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), also approved and logged.
+unrelated [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md), also approved and logged.
 
 Fix: narrow the rule's condition to the actual production deployment's
 label rather than the whole image repository:
@@ -356,7 +356,7 @@ label rather than the whole image repository:
   priority: CRITICAL
 ```
 
-Positive-control re-test: `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) exec` into an actual
+Positive-control re-test: `[kubectl](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubectl/SKILL.md) exec` into an actual
 `payments-api-prod`-labeled pod confirms the rule still fires
 immediately. A second week of validation with the narrowed condition
 produces zero matches. The rule is promoted to route to PagerDuty, and
@@ -376,6 +376,6 @@ security team's rules repository.
 - [vault-configuration-validation](../[vault-configuration-validation](../../../Security/[vault](../vault/SKILL.md)-configuration-validation/SKILL.md)/SKILL.md) —
   the same "validate before it's trusted in production" philosophy
   applied to [Vault](../../cryptography-secrets/vault/SKILL.md) policy/auth configuration instead of Falco rules.
-- [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../Frontend/[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../observability-monitoring-logging/common/alerting/on-call-management/SKILL.md)/SKILL.md)/SKILL.md) —
+- [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../Frontend/[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/on-call-management/SKILL.md)/SKILL.md)/SKILL.md) —
   the on-call load and alert-fatigue concerns this validation discipline
   directly protects against.

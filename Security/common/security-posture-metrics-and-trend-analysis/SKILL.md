@@ -75,7 +75,7 @@ nobody trusts or acts on.
   date (or still-open status), severity, and source tool — exported from
   SAST/SCA/DAST tools' native history, a SARIF archive, or (preferably,
   at any real scale) a centralized AppSec/[vulnerability-management](../../scanning/vulnerability-management/SKILL.md)
-  platform such as DefectDojo, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) code scanning's API, or a
+  platform such as DefectDojo, [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) code scanning's API, or a
   dedicated GRC tool. Point-in-time-only tool UIs that don't retain
   history make trend analysis impossible without a separate store —
   export/archive scan results on every run if the native tool doesn't

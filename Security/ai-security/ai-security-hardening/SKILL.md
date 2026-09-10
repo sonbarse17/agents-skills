@@ -239,7 +239,7 @@ modelscan scan -p "$MODEL_DIR"
 ## Network Isolation for AI Services
 
 ```yaml
-# [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) NetworkPolicy — isolate LLM API
+# [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) NetworkPolicy — isolate LLM API
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
@@ -264,7 +264,7 @@ spec:
   - to:
     - namespaceSelector:
         matchLabels:
-          name: [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)        # metrics only
+          name: [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)        # metrics only
     ports:
     - protocol: TCP
       port: 9090

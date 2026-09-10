@@ -46,7 +46,7 @@ should never make one. This skill covers Falco's rule syntax (`macro`,
 `list`, `rule` with a `condition`/`output`/`priority`), writing rules
 tailored to a specific workload's actual known-good behavior rather than
 relying only on Falco's broad stock ruleset, tuning a rule that's
-[alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) on legitimate activity, and wiring detections to real
+[alerting](../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md) on legitimate activity, and wiring detections to real
 destinations via Falcosidekick. It does not cover the separate
 discipline of proving a rule set won't misfire before enabling it in
 blocking/enforce-adjacent configurations — see
@@ -79,14 +79,14 @@ required step before any new or changed rule goes live broadly.
 
 - Falco ≥ 0.36 for the `modern_ebpf` driver as the default/recommended
   option (no kernel headers required, works across a wider range of
-  managed [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) node images than the older kernel-module driver) —
+  managed [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) node images than the older kernel-module driver) —
   confirm the installed version and driver before assuming a rule syntax
   feature (e.g. certain `evt.type` fields or `k8s.*`/`container.*`
   fields) is available; Falco's rule field set has grown across
   versions.
-- A [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster (or bare VM fleet) with permission to run a
+- A [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster (or bare VM fleet) with permission to run a
   privileged/host-level DaemonSet (Falco needs kernel-level visibility)
-  — install via the official Helm chart for [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).
+  — install via the official Helm chart for [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md).
 - Familiarity with Falco's **rules YAML** structure: `macro` (reusable
   named conditions), `list` (reusable value sets), and `rule`
   (`condition` + `output` + `priority` + `tags`) — this is closer to a
@@ -204,7 +204,7 @@ required step before any new or changed rule goes live broadly.
    helm install falco falcosecurity/falco \
      --namespace falco --create-namespace \
      -f values.yaml
-   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) logs -n falco -l app.[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).io/name=falco | grep -i "driver"
+   [kubectl](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubectl/SKILL.md) logs -n falco -l app.[kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md).io/name=falco | grep -i "driver"
    ```
    Fall back to the kernel-module driver only on kernels too old for
    the eBPF probe, and track that as a node-image upgrade item rather
@@ -232,15 +232,15 @@ required step before any new or changed rule goes live broadly.
    trusting it's live:
    ```bash
    # deliberately trigger the "Terminal shell in container" rule in a test pod
-   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) exec -it test-pod -- /bin/sh
-   [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) logs -n falco -l app.[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).io/name=falco --since=1m | grep -i "shell was spawned"
+   [kubectl](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubectl/SKILL.md) exec -it test-pod -- /bin/sh
+   [kubectl](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubectl/SKILL.md) logs -n falco -l app.[kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md).io/name=falco --since=1m | grep -i "shell was spawned"
    ```
    Confirm the exact expected output line appears — a rule with a typo'd
    field path can pass Falco's YAML/syntax validation and still never
    actually fire, identically to the false-negative failure mode common
    in Rego/Kyverno admission policies.
 
-8. **Layer application-context enrichment** ([Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) metadata, image
+8. **Layer application-context enrichment** ([Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) metadata, image
    provenance) into the `output` template so an alert is actionable
    without a separate lookup:
    ```yaml
@@ -250,7 +250,7 @@ required step before any new or changed rule goes live broadly.
      image=%container.image.repository:%container.image.tag)
    ```
    An alert with only a container ID and no namespace/pod/image
-   forces whoever's on call to run a separate `[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md)` lookup before
+   forces whoever's on call to run a separate `[kubectl](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubectl/SKILL.md)` lookup before
    they can even start triaging — put the context in the alert itself.
 
 ## Best practices
@@ -279,7 +279,7 @@ required step before any new or changed rule goes live broadly.
   [falco-configuration-validation](../falco-configuration-validation/SKILL.md)/SKILL.md)
   — a noisy new rule that pages on-call for legitimate activity is how
   Falco itself earns a reputation for being safely ignorable.
-- Enrich alert `output` templates with [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)/image context so
+- Enrich alert `output` templates with [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md)/image context so
   triage doesn't require a separate lookup step under pressure.
 
 ## Common pitfalls
@@ -319,7 +319,7 @@ required step before any new or changed rule goes live broadly.
   **Fix:** Falcosidekick (or an equivalent router) either isn't
   installed or isn't configured with a real destination — Falco's
   default output is its own log stream, which is not equivalent to
-  [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md). Wire Falcosidekick to at least one monitored destination
+  [alerting](../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md). Wire Falcosidekick to at least one monitored destination
   (step 6) and verify with a deliberate test trigger that the alert
   actually arrives there.
 
@@ -387,7 +387,7 @@ the rule set runs for one week in log-only mode against real
 `payments-api` traffic, producing zero false-positive shell or outbound
 alerts (confirming the allowlist and shell-binary list are complete),
 before being promoted to page on-call via PagerDuty. A deliberate test —
-`[kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) exec` into a `payments-api` pod and running `sh` — confirms the
+`[kubectl](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubectl/SKILL.md) exec` into a `payments-api` pod and running `sh` — confirms the
 `CRITICAL` alert fires and reaches PagerDuty within seconds, with the
 pod name and image already in the alert body so the paged responder
 doesn't need a separate lookup to start triage.
@@ -405,6 +405,6 @@ doesn't need a separate lookup to start triage.
   a commercial runtime-security platform built on the same underlying
   detection concepts (Sysdig originated Falco), for teams wanting a
   managed alternative to self-hosting the OSS Falco stack.
-- [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../../Software_Engineering_and_Other/Frontend/[incident-response](../../Observability_and_SecOps/[incident](../../Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../observability-monitoring-logging/common/alerting/on-call-management/SKILL.md)/SKILL.md)/SKILL.md) —
-  the [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) process a `critical`-priority Falco detection routed to
+- [incident-response-and-on-call-management](../../../site-reliability-engineering/skills/[incident-response-and-on-call-management](../../../Software_Engineering_and_Other/Frontend/[incident-response](../../Observability_and_SecOps/[incident](../../Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)-and-[on-call-management](../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/on-call-management/SKILL.md)/SKILL.md)/SKILL.md) —
+  the [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) process a `critical`-priority Falco detection routed to
   paging should feed into.

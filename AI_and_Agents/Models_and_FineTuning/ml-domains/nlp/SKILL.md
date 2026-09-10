@@ -324,7 +324,7 @@ def compute_metrics(eval_pred, task="classification"):
 
 ## Production Considerations
 
-### [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+### [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - Inference latency (p50/p95/p99) per model endpoint.
 - Prediction confidence distribution drift.
 - Vocabulary coverage — increasing OOV rate signals distribution shift.

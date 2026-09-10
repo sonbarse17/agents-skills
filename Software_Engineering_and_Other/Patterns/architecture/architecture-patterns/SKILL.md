@@ -62,7 +62,7 @@ Master proven backend architecture patterns including Clean Architecture, Hexago
 **Benefits:**
 
 - Swap implementations without touching the core (e.g., replace [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md) with DynamoDB)
-- Use in-memory adapters in tests — no [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) required
+- Use in-memory adapters in tests — no [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) required
 - Technology decisions deferred to the edges
 
 ### 3. Domain-Driven Design (DDD)
@@ -87,7 +87,7 @@ Detailed pattern documentation lives in `../../../../Global_References/Software_
 
 ## Testing — In-Memory Adapters
 
-The hallmark of correctly applied Clean Architecture is that every use case can be exercised in a plain unit test with no real database, no [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md), and no network:
+The hallmark of correctly applied Clean Architecture is that every use case can be exercised in a plain unit test with no real database, no [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md), and no network:
 
 ```[python](../../../Languages/python/python/SKILL.md)
 # tests/unit/test_create_user.py

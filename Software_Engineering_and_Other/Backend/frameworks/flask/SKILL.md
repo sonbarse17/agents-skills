@@ -280,7 +280,7 @@ class OrderService:
     def create(self, data: dict) -> Order:
         order = Order(**data)
         db.session.add(order)
-        db.session.[commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)()
+        db.session.[commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md)()
         return order
 
     def get_by_id(self, order_id: str) -> Optional[Order]:
@@ -298,7 +298,7 @@ class OrderService:
             return None
         for key, value in data.items():
             setattr(order, key, value)
-        db.session.[commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)()
+        db.session.[commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md)()
         return order
 
     def delete(self, order_id: str) -> bool:
@@ -306,7 +306,7 @@ class OrderService:
         if not order:
             return False
         db.session.delete(order)
-        db.session.[commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)()
+        db.session.[commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md)()
         return True
 ```
 
@@ -469,7 +469,7 @@ Server-rendered HTML?
 
 5. **Not closing database connections**: Flask-SQLAlchemy handles this, but raw connections from `psycopg2` or direct engine usage must be closed.
 
-6. **Storing secrets in config files**: Environment variables for secrets. Use `.env` with [python](../../../Languages/python/python/SKILL.md)-dotenv. Never [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) secrets.
+6. **Storing secrets in config files**: Environment variables for secrets. Use `.env` with [python](../../../Languages/python/python/SKILL.md)-dotenv. Never [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) secrets.
 
 7. **No CORS configuration for API**: API consumed by browser-based SPA needs `flask-cors` with proper origin whitelist.
 
@@ -531,7 +531,7 @@ Server-rendered HTML?
 | **Ruff** | Linting (replaces Flake8) |
 | **Mypy** | Type checking |
 | **Gunicorn** | Production WSGI server |
-| **[Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)** | [Containerization](../../../../containers-orchestration/docker/other/containerization/SKILL.md) |
+| **[Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)** | [Containerization](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/containerization/SKILL.md) |
 | **Poetry / pip-tools** | Dependency management |
 | **Flask-DebugToolbar** | Development debugging |
 

@@ -150,7 +150,7 @@ classification_levels:
   restricted:
     description: "Data that would cause severe harm if exposed"
     examples: ["Passwords", "Payment card numbers", "Health records", "Trade secrets"]
-    controls: ["All confidential controls plus:", "Field-level encryption", "Strict access logging with [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)", "Quarterly access review", "HSM key management"]
+    controls: ["All confidential controls plus:", "Field-level encryption", "Strict access logging with [alerting](../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md)", "Quarterly access review", "HSM key management"]
     access: "Explicitly approved individuals, JIT access"
 ```
 
@@ -211,7 +211,7 @@ privacy_by_design:
     - "Consent refresh required if purpose changes"
     
   data_protection_impact_assessment_dpia:
-    triggers: ["Processing sensitive data", "Large-scale [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)", "Systematic [profiling](../../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md)", "New technology deployment"]
+    triggers: ["Processing sensitive data", "Large-scale [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)", "Systematic [profiling](../../../Software_Engineering_and_Other/Frontend/performance/profiling/SKILL.md)", "New technology deployment"]
     sections:
       - "System description and purpose"
       - "Data flow mapping"
@@ -452,7 +452,7 @@ Applying k-anonymity or differential privacy without testing against known attac
 - Anonymization re-validation
 - Privacy impact assessment updates
 
-### [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response
+### [Incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response
 1. Detect: DLP alert, anomalous data access, unauthorized data egress, encryption key compromise
 2. Assess: what data was exposed, classification level, affected users, regulatory implications
 3. Contain: revoke access, rotate keys, isolate affected data stores, block egress paths
@@ -548,7 +548,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
+### [Monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -583,7 +583,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing ([OpenTelemetry](../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../DevOps_and_Cloud/observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -600,7 +600,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) signing
+- Signed commits: GPG or SSH [commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
@@ -617,6 +617,6 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - Fail securely — errors default to safe behavior.
 - Log security-relevant events for [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for [observability](../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
+- Design for [observability](../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.

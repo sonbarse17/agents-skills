@@ -47,7 +47,7 @@ Before activating, verify:
 - Transformation tool (dbt, custom SQL, Spark)
 - Data volume and growth rate
 - SLAs for data freshness and availability
-- Existing [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) infrastructure
+- Existing [monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [alerting](../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md) infrastructure
 
 ### Output Artifact
 ETL pipeline design with DAG structure, transformation config, error handling as YAML and SQL.
@@ -73,7 +73,7 @@ No preamble. No postamble. No explanations. No filler/hedging/transitions. Compr
 - [ ] Incremental loading strategy selected and configured
 - [ ] Error handling with retry, dead-letter, and notification
 - [ ] Data validation checks on each stage
-- [ ] [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) configured
+- [ ] [Monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [alerting](../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md) configured
 - [ ] Data lineage tracking set up
 
 ### Max Response Length
@@ -263,7 +263,7 @@ models:
 | 2: Defined | + accepted_values, relationships | CI pipeline step | All columns on marts |
 | 3: Managed | + custom generic tests, freshness tests | Blocking CI gate | All models, all columns |
 | 4: Measured | + singular tests, data contract tests | CI gate + weekly full [audit](../../AI_and_Agents/Operations/common/audit/SKILL.md) | Staging + intermediate + marts |
-| 5: Optimized | + cross-model assertions, anomaly detection | CI gate + automated [alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) | Full lineage, all transforms |
+| 5: Optimized | + cross-model assertions, anomaly detection | CI gate + automated [alerting](../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md) | Full lineage, all transforms |
 
 ### Documentation
 
@@ -417,9 +417,9 @@ INSERT INTO staging_orders (
 );
 ```
 
-### [Alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
+### [Alerting](../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 
-| Event | Channel | Priority | [Runbook](../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) |
+| Event | Channel | Priority | [Runbook](../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) |
 |---|---|---|---|
 | Task failure | Slack #data-pipelines | Medium | Check task logs, review code |
 | 3 consecutive failures | PagerDuty | High | Investigate immediately |
@@ -437,7 +437,7 @@ INSERT INTO staging_orders (
 | Storage | Staging + warehouse | Raw + transformed | Raw + streaming | Kafka + warehouse |
 | Complexity | High (transform engine) | Low (SQL only) | Medium | High |
 | Cost | Medium (compute + storage) | Low (warehouse only) | Medium | High (streaming infra) |
-| Use case | On-prem sources, compliance | Cloud warehouse, agile schema | Near-real-time [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) | Real-time operations |
+| Use case | On-prem sources, compliance | Cloud warehouse, agile schema | Near-real-time [dashboards](../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) | Real-time operations |
 
 ## Common Airflow DAG Patterns
 
@@ -515,10 +515,10 @@ Source → Extract Task
 NiFi provides a visual, no-code approach to data routing and transformation. Drag-and-drop processor chaining, data provenance tracking, backpressure, and priority queuing. Ideal for ingestion from heterogeneous sources and protocol translation. Deploy as a standalone cluster with ZooKeeper.
 
 ### Mage.ai
-Mage.ai is a modern open-source ETL tool with [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-native pipeline definition. Pipelines are blocks connected in a DAG with `@transformer` and `@loader` decorators. Auto-generated UI, real-time [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), and built-in dbt/Spark/BigQuery integration.
+Mage.ai is a modern open-source ETL tool with [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)-native pipeline definition. Pipelines are blocks connected in a DAG with `@transformer` and `@loader` decorators. Auto-generated UI, real-time [monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), and built-in dbt/Spark/BigQuery integration.
 
 ### Kestra
-Kestra uses declarative YAML for pipeline definitions with a powerful orchestration engine. Supports batch and event-driven workflows with built-in error handling, retries, and SLA [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md). Plugin ecosystem covers ETL, dbt, [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md), and cloud services.
+Kestra uses declarative YAML for pipeline definitions with a powerful orchestration engine. Supports batch and event-driven workflows with built-in error handling, retries, and SLA [monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md). Plugin ecosystem covers ETL, dbt, [Python](../../Software_Engineering_and_Other/Languages/python/python/SKILL.md), and cloud services.
 
 ### Cloud ETL Services
 AWS Glue: [serverless](../../Software_Engineering_and_Other/Patterns/data-performance/serverless/SKILL.md) Spark-based ETL with schema crawler and auto-generated catalog. Azure Data Factory: 90+ built-in connectors with mapping data flows and trigger-based orchestration. GCP Dataflow: fully-managed Apache Beam for batch and streaming with auto-scaling and exactly-once semantics.
@@ -527,7 +527,7 @@ AWS Glue: [serverless](../../Software_Engineering_and_Other/Patterns/data-perfor
 
 ### Testing Pipeline
 ```yaml
-# .[github](../../ci-cd/github-actions/other/github/SKILL.md)/workflows/dbt-ci.yml
+# .[github](../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/workflows/dbt-ci.yml
 jobs:
   dbt-ci:
     runs-on: ubuntu-latest
@@ -571,11 +571,11 @@ jobs:
 
 ## References
   - ../../Global_References/Data_Engineering/cloud-etl-services.md — Cloud ETL Services
-  - ../../../Global_References/[data-pipeline-cicd](../../ci-cd/common/data-pipeline/data-pipeline-cicd/SKILL.md).md — Data Pipeline CI/CD
+  - ../../../Global_References/[data-pipeline-cicd](../../DevOps_and_Cloud/ci-cd/common/data-pipeline/data-pipeline-cicd/SKILL.md).md — Data Pipeline CI/CD
   - ../../Global_References/Data_Engineering/etl-elt-patterns.md — ETL/ELT Patterns
   - ../../Global_References/Data_Engineering/etl-pipeline-design.md — ETL Pipeline Design
   - ../../Global_References/Data_Engineering/nifi-mage-patterns.md — Apache NiFi and Mage.ai ETL Patterns
-  - ../../../Global_References/pipeline-[monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Pipeline [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+  - ../../../Global_References/pipeline-[monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Pipeline [Monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 ## Handoff
 `[data-data-quality](../data-quality/SKILL.md)` for validation rules and data contract enforcement
 `[data-data-warehouse](../data-warehouse/SKILL.md)` for target schema design and optimization

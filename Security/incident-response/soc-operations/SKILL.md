@@ -33,21 +33,21 @@ Define SOC structure, analyst workflows, tier responsibilities, escalation paths
 
 ### Trigger
 - "SOC", "security operations center", "SOC analyst", "SOC tier", "Tier 1", "Tier 2", "Tier 3"
-- "security [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)", "alert triage", "SOC workflow", "SOC [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)"
+- "security [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)", "alert triage", "SOC workflow", "SOC [runbook](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)"
 - "shift handover", "SOC dashboard", "SOC metrics", "MTTD", "MTTR"
-- "escalation path", "security [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) escalation", "SOC manager"
+- "escalation path", "security [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) escalation", "SOC manager"
 - "24/7 security coverage", "follow-the-sun", "SOC staffing"
 
 ### Input Context
 - Organization size, industry, and regulatory environment
 - Existing security tools (SIEM, EDR, SOAR, email security)
 - Current team size and skill levels (if any)
-- [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) volume: alerts per day, [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) types
+- [Incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) volume: alerts per day, [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) types
 - Coverage hours: 8x5, 24x7, follow-the-sun
-- Compliance requirements for [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response
+- Compliance requirements for [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response
 
 ### Output Artifact
-SOC structure definition, tier workflows, escalation matrices, shift handover templates, metrics [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md).
+SOC structure definition, tier workflows, escalation matrices, shift handover templates, metrics [dashboards](../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md).
 
 ### Response Format
 ```
@@ -66,7 +66,7 @@ SOC structure definition, tier workflows, escalation matrices, shift handover te
 - [ ] Escalation paths documented with objective criteria
 - [ ] Shift handover process defined with template
 - [ ] Metrics defined with targets and measurement methods
-- [ ] [Runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) structure defined for top [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) types
+- [ ] [Runbook](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) structure defined for top [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) types
 - [ ] Training and skill progression plan documented
 
 ## Architecture / Decision Trees
@@ -82,7 +82,7 @@ What is the organization size?
 
 What is the security maturity?
 ├── Level 1: Initial → Reactive, no SOC → Build Tier 1 triage capability
-├── Level 2: Defined → Basic [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) → Add Tier 2 investigation, SOAR automation
+├── Level 2: Defined → Basic [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) → Add Tier 2 investigation, SOAR automation
 ├── Level 3: Managed → Proactive detection → Add threat hunting, detection engineering
 ├── Level 4: Measured → Metrics-driven → Add purple team, threat intel integration
 └── Level 5: Optimized → Predictive → Full SOC with all tiers, automation, intelligence
@@ -120,12 +120,12 @@ Are there data sovereignty requirements?
 
 **Tier 1 — Triage Analyst:**
 Role: First line of defense. Monitor alert queue, validate alerts, close false positives, escalate confirmed events.
-- Skills: Basic security knowledge, SIEM query, log analysis, [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) following
+- Skills: Basic security knowledge, SIEM query, log analysis, [runbook](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) following
 - Ratio: 60-70% of SOC headcount
 - Metrics: Alerts triaged per shift, triage accuracy, time to triage
 - Escalation: Tier 2 for confirmed positives
 
-**Tier 2 — [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Responder:**
+**Tier 2 — [Incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Responder:**
 Role: Deep investigation of confirmed incidents. Scope determination, containment, evidence collection.
 - Skills: Advanced SIEM, EDR investigation, malware analysis, host/network forensics
 - Ratio: 20-25% of SOC headcount
@@ -140,7 +140,7 @@ Role: Advanced forensics, reverse engineering, threat hunting, detection enginee
 - Escalation: CISO / Legal / PR for major incidents
 
 **SOC Manager:**
-Role: Team management, resource planning, SLA [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), reporting, governance.
+Role: Team management, resource planning, SLA [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), reporting, governance.
 - Skills: Management, reporting, process improvement, vendor management
 - Metrics: SOC maturity score, SLA compliance, team retention, budget adherence
 
@@ -149,7 +149,7 @@ Role: Team management, resource planning, SLA [monitoring](../../../observabilit
 - Threat Intel Analyst: Manages intel feeds, produces CTI reports, supports hunting
 - SOAR Engineer: Develops and maintains automation playbooks
 - Forensic Analyst: Deep dive forensics (disk, memory, mobile, cloud)
-- SOC Trainer: Maintains training program, [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) updates, tabletop exercises
+- SOC Trainer: Maintains training program, [runbook](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) updates, tabletop exercises
 
 ### Step 2: Alert Triage Workflow
 
@@ -196,7 +196,7 @@ Alert Generated by SIEM/EDR
 | MEDIUM | 1 hour | 1 hour | 24 hours |
 | LOW | 24 hours | 24 hours | 72 hours |
 
-### Step 3: [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Investigation Process
+### Step 3: [Incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Investigation Process
 
 **Investigation Methodology (P.E.A.C.E.):**
 1. **Prepare**: Gather context — affected systems, users, data, timeline
@@ -253,7 +253,7 @@ investigation_playbook:
     - "Verify account security: password reset, MFA enforced"
     - "Restore any modified configurations"
     - "Monitor for 48 hours post-remediation"
-    - "Close [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) with lessons learned"
+    - "Close [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) with lessons learned"
 ```
 
 ### Step 4: Escalation Matrix
@@ -274,7 +274,7 @@ escalation_criteria:
     triggers:
       - "Confirmed APT or nation-state actor"
       - "Novel malware or zero-day exploit"
-      - "[Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) spanning 10+ endpoints"
+      - "[Incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) spanning 10+ endpoints"
       - "Evidence of data exfiltration"
       - "Ransomware with encryption in progress"
       - "Unable to determine scope with available tools"
@@ -288,9 +288,9 @@ escalation_criteria:
       - "Ransomware impacting business operations"
       - "Regulatory notification requirement (GDPR, CCPA)"
       - "Law enforcement involvement"
-      - "PR-sensitive [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)"
-      - "[Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) exceeding 4 hours containment SLA"
-    method: "Notify CISO, Legal, PR via [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) channel"
+      - "PR-sensitive [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md)"
+      - "[Incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) exceeding 4 hours containment SLA"
+    method: "Notify CISO, Legal, PR via [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) channel"
     sla: "Immediate for data breach, 15 minutes for other"
 
   soc_to_engineering:
@@ -298,7 +298,7 @@ escalation_criteria:
       - "Application vulnerability identified during investigation"
       - "Misconfiguration in cloud infrastructure"
       - "EDR/SIEM coverage gap preventing investigation"
-    method: "Create ticket, assign in [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) review"
+    method: "Create ticket, assign in [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) review"
     sla: "Next business day"
 ```
 
@@ -350,7 +350,7 @@ Handover To: Analyst Name
 ## Notes for Next Shift
 - Infrastructure maintenance window: 02:00-04:00 (firewall firmware)
   - Expected: increased firewall logs, possible brief connectivity issues
-- [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response drill tomorrow 10:00 (phishing scenario)
+- [Incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response drill tomorrow 10:00 (phishing scenario)
 ```
 
 **Handover checklist:**
@@ -359,7 +359,7 @@ Handover To: Analyst Name
 - Tools and infrastructure status communicated
 - Threat intelligence updates shared
 - Maintenance windows and known issues communicated
-- [Runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md) and documentation updated with new findings
+- [Runbooks](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md) and documentation updated with new findings
 - Shift report saved to shared SOC knowledge base
 
 ### Step 6: SOC Metrics and KPIs
@@ -374,7 +374,7 @@ Handover To: Analyst Name
 | Triage Accuracy | % of escalated alerts that are true positives | > 90% | Confirmed TPs / Total escalations |
 | False Positive Rate | % of alerts closed as benign | < 30% | FPs / Total alerts |
 | Alert Volume | Alerts per day per analyst | 50-100 per analyst | SIEM alert count / analyst headcount |
-| Mean Time to Close | Average time to close an [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) | < 24 hours MEDIUM, < 72 hours LOW | Open timestamp - close timestamp |
+| Mean Time to Close | Average time to close an [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) | < 24 hours MEDIUM, < 72 hours LOW | Open timestamp - close timestamp |
 | Backlog | Number of uninvestigated alerts | < 100 per shift | Queue depth in SIEM |
 | Coverage | % of MITRE ATT&CK techniques detected | > 50% | Techniques with detections / Total techniques |
 | Analyst Utilization | % of time on active investigation | > 70% | Investigation time / Total shift time |
@@ -463,7 +463,7 @@ With PTO, sick leave, training: 5 × 1.5 = 8 analysts recommended
 **SOC Knowledge Base Structure:**
 ```
 SOC-KB/
-├── 01-[Runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md)/
+├── 01-[Runbooks](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md)/
 │   ├── phishing.md
 │   ├── malware.md
 │   ├── ransomware.md
@@ -485,7 +485,7 @@ SOC-KB/
 │   ├── ioc-extraction-patterns.md
 │   └── splunk-kql-queries.md
 ├── 05-Lessons-Learned/
-│   ├── [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-post-mortems/
+│   ├── [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-post-mortems/
 │   └── quarterly-trend-reports/
 └── 06-Training/
     ├── new-analyst-onboarding.md
@@ -494,11 +494,11 @@ SOC-KB/
 ```
 
 **Training Program:**
-- Month 1-2: New analyst onboarding (tool training, [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) study, shadowing senior analysts)
+- Month 1-2: New analyst onboarding (tool training, [runbook](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) study, shadowing senior analysts)
 - Month 3-4: Supervised triage (reviewed by Tier 2, accuracy tracking)
 - Month 5-6: Independent triage (all alert types, escalation decisions)
-- Ongoing: Weekly training session (1 hour: new techniques, tool updates, [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) reviews)
-- Quarterly: Tabletop exercise (simulated [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), team response validation)
+- Ongoing: Weekly training session (1 hour: new techniques, tool updates, [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) reviews)
+- Quarterly: Tabletop exercise (simulated [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md), team response validation)
 - Annual: Certification support (SANS, CISSP, Security+, CEH)
 
 ### Step 9: Tabletop Exercises and Drills
@@ -510,7 +510,7 @@ SOC-KB/
 | Small tabletop | Monthly | 30 min | SOC team | Test specific playbook |
 | Full scenario | Quarterly | 2 hours | SOC + engineering + management | Test end-to-end response |
 | Purple team | Quarterly | 4 hours | SOC + red team | Test detection coverage |
-| Major [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) drill | Annually | 4 hours | All stakeholders | Test crisis response |
+| Major [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) drill | Annually | 4 hours | All stakeholders | Test crisis response |
 | Compliance drill | Annually | 2 hours | SOC + compliance | Test regulatory reporting |
 
 **Tabletop Scenario Template:**
@@ -531,7 +531,7 @@ phase2_expansion:
   inject: "Files with .encrypted extension appearing on share drive"
   expected_actions:
     tier2: "Confirm ransomware, isolate affected endpoints, initiate IR"
-    soc_manager: "Declare [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), assemble response team"
+    soc_manager: "Declare [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md), assemble response team"
 
 phase3_containment:
   time: "T+30"
@@ -545,7 +545,7 @@ phase4_recovery:
   inject: "Backup team confirms clean backups available"
   expected_actions:
     tier2: "Verify no lateral movement, begin restore process"
-    soc_manager: "Update stakeholders, prepare [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) report"
+    soc_manager: "Update stakeholders, prepare [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) report"
 
 phase5_debrief:
   time: "T+90"
@@ -569,7 +569,7 @@ Too many alerts desensitize analysts and cause real incidents to be missed. Inve
 Night shifts, rotating schedules, and high-pressure environments cause burnout. Rotate shifts every 2 weeks, provide shift differential, enforce PTO. Monitor for burnout indicators.
 
 ### Pitfall 5: No Knowledge Transfer
-Institutional knowledge lost when analysts leave. Maintain [runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md), document investigation techniques, record shift handovers. Require knowledge base contributions.
+Institutional knowledge lost when analysts leave. Maintain [runbooks](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md), document investigation techniques, record shift handovers. Require knowledge base contributions.
 
 ### Pitfall 6: Measuring Wrong Metrics
 Tracking volume only (alerts processed) without quality (accuracy, containment time) rewards speed over effectiveness. Balance volume and quality metrics.
@@ -580,8 +580,8 @@ SOC disconnected from threat intelligence misses relevant threats. Integrate CTI
 ### Pitfall 8: No Career Progression
 Without growth path, good analysts leave. Define Tier 1→2→3 progression with clear criteria. Support certifications and conference attendance.
 
-### Pitfall 9: [Runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md) Not Updated
-Outdated [runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md) cause investigation delays. [Runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md) reviewed quarterly and updated after each major [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md). Version-controlled in knowledge base.
+### Pitfall 9: [Runbooks](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md) Not Updated
+Outdated [runbooks](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md) cause investigation delays. [Runbooks](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md) reviewed quarterly and updated after each major [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md). Version-controlled in knowledge base.
 
 ### Pitfall 10: Understaffing During Peak Times
 Staffing for average volume fails during incidents or campaigns. Build in 30% [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) buffer. Have on-call escalation for surge events.
@@ -590,13 +590,13 @@ Staffing for average volume fails during incidents or campaigns. Build in 30% [c
 
 - Implement clear tier structure: Tier 1 (triage), Tier 2 (investigation), Tier 3 (advanced/specialized)
 - Automate triage for common alerts: known FPs auto-closed, known IoCs auto-escalated
-- Maintain [runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md) for top 20 [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) types with step-by-step investigation procedures
+- Maintain [runbooks](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md) for top 20 [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) types with step-by-step investigation procedures
 - Conduct bi-weekly purple team exercises to validate detection and response
 - Track analyst progression with skill matrix: SIEM, EDR, forensics, cloud, malware analysis
 - Implement shift handover with mandatory 15-minute overlap for knowledge transfer
 - Measure what matters: MTTA, MTTR, triage accuracy, false positive rate, SLA compliance
 - Invest in training: weekly 1-hour sessions, quarterly tabletops, annual certifications
-- Build knowledge base: document every investigation, update [runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md), share lessons learned
+- Build knowledge base: document every investigation, update [runbooks](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md), share lessons learned
 - Use threat intelligence in operations: brief analysts on current threats, integrate into SIEM
 - Plan for analyst burnout: rotate shifts, enforce breaks, monitor workload
 - Budget for 30% [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) buffer above average alert volume for surge events
@@ -604,7 +604,7 @@ Staffing for average volume fails during incidents or campaigns. Build in 30% [c
 ## Performance Considerations
 
 - Triage [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md): experienced Tier 1 handles 50-100 alerts per 8-hour shift
-- Investigation time: Tier 2 investigation averages 30-60 minutes per confirmed [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
+- Investigation time: Tier 2 investigation averages 30-60 minutes per confirmed [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
 - MTTR improvement: automation reduces containment time 40-60% for playbook-covered incidents
 - False positive reduction: mature tuning program reduces FP rate from 50%+ to under 30% in 6 months
 - Tool integration: integrated SIEM+SOAR reduces average investigation time 25-35%
@@ -615,8 +615,8 @@ Staffing for average volume fails during incidents or campaigns. Build in 30% [c
 | Level | Name | Characteristics | Metrics |
 |-------|------|----------------|---------|
 | 1 | Initial | Reactive, no defined process | MTTD: days-weeks, FP rate > 70%, no automation |
-| 2 | Defined | Basic processes, tool integration | MTTD: hours, Tier structure, basic [runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md) |
-| 3 | Managed | Proactive [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), SOAR automation | MTTD: minutes-hours, FP rate < 50%, automated triage |
+| 2 | Defined | Basic processes, tool integration | MTTD: hours, Tier structure, basic [runbooks](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md) |
+| 3 | Managed | Proactive [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), SOAR automation | MTTD: minutes-hours, FP rate < 50%, automated triage |
 | 4 | Measured | Metrics-driven, threat hunting | MTTD: minutes, FP rate < 30%, threat intel integrated, regular purple team |
 | 5 | Optimized | Predictive defense, full automation | MTTD: real-time, FP rate < 15%, AI-assisted analysis, automated containment |
 
@@ -626,22 +626,22 @@ Staffing for average volume fails during incidents or campaigns. Build in 30% [c
 - Tier 1 must not investigate for more than 15 minutes — escalate if not conclusive
 - All investigation steps must be documented in the case management system
 - Shift handover must include open incidents, pending actions, and tool status
-- [Runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md) must be updated within 5 business days after each major [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
+- [Runbooks](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md) must be updated within 5 business days after each major [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
 - False positive rate must be tracked per rule and per analyst
 - No alert should be closed without a documented disposition reason
 - Escalation criteria must be objective and documented — never subjective
 - Weekly SOC meeting: review top incidents, tuning opportunities, threat intel updates
-- Monthly trend report: alert volume, [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) types, SLA compliance, team performance
+- Monthly trend report: alert volume, [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) types, SLA compliance, team performance
 - Quarterly tabletop exercise with all tiers to validate processes
 
 ## References
   - ../../../Global_References/Security/soc-metrics.md — SOC Metrics and Reporting
   - ../../../Global_References/Security/soc-operations-advanced.md — Soc Operations Advanced Topics
   - ../../../Global_References/Security/soc-operations-fundamentals.md — Soc Operations Fundamentals
-  - ../../../Global_References/soc-[runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md).md — SOC [Runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) Templates
+  - ../../../Global_References/soc-[runbooks](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md).md — SOC [Runbook](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) Templates
   - ../../../Global_References/Security/soc-structure.md — SOC Structure
   - ../../../Global_References/Security/threat-hunting.md — Threat Hunting in SOC
   - ../../../Global_References/Security/triage-procedures.md — Alert Triage Procedures
 ## Handoff
-Output artifacts can be handed to devops-[monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) for SIEM integration, or management for org planning.
+Output artifacts can be handed to devops-[monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) for SIEM integration, or management for org planning.
 

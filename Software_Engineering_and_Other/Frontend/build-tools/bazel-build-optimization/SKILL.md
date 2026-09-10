@@ -71,7 +71,7 @@ Full template library and detailed worked examples live in `../../../../Global_R
 ### Don'ts
 
 - **Don't use glob for deps** - Explicit is better
-- **Don't [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) bazel-\* dirs** - Add to .gitignore
+- **Don't [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) bazel-\* dirs** - Add to .gitignore
 - **Don't skip WORKSPACE setup** - Foundation of build
 - **Don't ignore build warnings** - Technical debt
 

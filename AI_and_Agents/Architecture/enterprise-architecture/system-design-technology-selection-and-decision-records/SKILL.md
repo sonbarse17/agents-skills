@@ -84,7 +84,7 @@ ignoring the other.
   it" reference.
 - Visibility into the organization's actual operational maturity for a
   given technology choice: existing team skills, on-call [capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md),
-  [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) tooling maturity, and appetite for operating a new class
+  [observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) tooling maturity, and appetite for operating a new class
   of system — this is what "total cost of ownership" and "team maturity"
   mean concretely in the selection framework below, not an abstract
   concern.
@@ -172,7 +172,7 @@ ignoring the other.
    of [microservices](../../../../Software_Engineering_and_Other/Patterns/distributed-systems/microservices/SKILL.md) that no team is staffed to operate individually is a
    worse outcome than a coarser boundary matched to real team
    [capacity](../../Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), echoing the "thinnest viable" sizing discipline in
-   [platform-engineering-team-topology-and-operating-model](../../../../containers-orchestration/common/other/internal-developer-platform/SKILL.md)/skills/[platform-engineering-team-topology-and-operating-model](../../../../containers-orchestration/common/other/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md).
+   [platform-engineering-team-topology-and-operating-model](../../../../DevOps_and_Cloud/containers-orchestration/common/other/internal-developer-platform/SKILL.md)/skills/[platform-engineering-team-topology-and-operating-model](../../../../DevOps_and_Cloud/containers-orchestration/common/other/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md).
 
 6. **Write the ADR at decision time, not after the fact**, using a
    consistent template:
@@ -204,7 +204,7 @@ ignoring the other.
    - Producers/consumers must implement idempotent processing (at-least-
      once delivery, not exactly-once).
    - Introduces a new operational dependency (MSK) requiring on-call
-     familiarity; a Kafka fundamentals [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) and on-call training are
+     familiarity; a Kafka fundamentals [runbook](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) and on-call training are
      required before this ships to production (tracked in
      `PLAT-4821`).
    - Reversible in principle by migrating consumers back to direct calls
@@ -346,7 +346,7 @@ notifications) that currently communicate via brittle direct HTTP calls.
    each team also standing up its own Kafka-adjacent tooling, a single
    shared "event infrastructure" ownership sits with the platform team
    (see
-   [platform-engineering-team-topology-and-operating-model](../../../../containers-orchestration/common/other/internal-developer-platform/SKILL.md)/skills/[platform-engineering-team-topology-and-operating-model](../../../../containers-orchestration/common/other/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md)),
+   [platform-engineering-team-topology-and-operating-model](../../../../DevOps_and_Cloud/containers-orchestration/common/other/internal-developer-platform/SKILL.md)/skills/[platform-engineering-team-topology-and-operating-model](../../../../DevOps_and_Cloud/containers-orchestration/common/other/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md)),
    with checkout/fulfillment/notifications as X-as-a-Service consumers.
 6. **ADR 0007 written at decision time** (the template in step 6), stored
    in `docs/adr/0007-order-events-streaming.md`, reviewed by the
@@ -362,4 +362,4 @@ notifications) that currently communicate via brittle direct HTTP calls.
 - [technical-roadmap-ownership-and-cross-team-coordination](../../../../Product_and_Business/ops-and-hiring/technical-roadmap-ownership-and-cross-team-coordination/SKILL.md)/SKILL.md) — the lead-level work that sequences and resources implementation of the architecture and technology decisions made here across individual teams' roadmaps.
 - [independent-solution-design-and-technical-review](../../../../Software_Engineering_and_Other/Patterns/architecture/independent-solution-design-and-technical-review/SKILL.md)/SKILL.md) — the senior-level design work that operates within the architectural constraints and technology choices this skill sets, and the escalation source when a senior engineer's design can't be met within existing constraints.
 - [cloud-well-architected-framework-review](../../../standards-and-compliance-frameworks/skills/[cloud-well-architected-framework-review](../../../DevOps_and_Cloud/Cloud_Providers/cloud-well-architected-framework-review/SKILL.md)/SKILL.md) — a structured, pillar-based way to [audit](../../../Operations/common/audit/SKILL.md) an existing workload's architecture against reliability/cost/security/performance trade-offs, complementary to this skill's forward-looking design and technology-selection focus.
-- [platform-engineering-team-topology-and-operating-model](../../../../containers-orchestration/common/other/internal-developer-platform/SKILL.md)/skills/[platform-engineering-team-topology-and-operating-model](../../../../containers-orchestration/common/other/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md) — the team-ownership and "thinnest viable platform" sizing discipline this skill's service-boundary design (step 5) should align with.
+- [platform-engineering-team-topology-and-operating-model](../../../../DevOps_and_Cloud/containers-orchestration/common/other/internal-developer-platform/SKILL.md)/skills/[platform-engineering-team-topology-and-operating-model](../../../../DevOps_and_Cloud/containers-orchestration/common/other/platform-engineering/SKILL.md)-team-topology-and-operating-model/SKILL.md)/SKILL.md) — the team-ownership and "thinnest viable platform" sizing discipline this skill's service-boundary design (step 5) should align with.

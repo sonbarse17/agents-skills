@@ -67,7 +67,7 @@ NOW (Q2 2026)                    NEXT (Q3 2026)                  LATER (Q4 2026-
 │   ├── SDKs for TS/[Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)/Go    │   ├── [Android](../../../Mobile/platforms/android/SKILL.md) SDK v2           │   ├── APAC region
 │   └── Interactive docs         │   └── React Native             │   └── Local compliance
 └── Enterprise Features          └── Advanced Analytics           └── Ecosystem Platform
-    ├── SSO/SAML                     ├── Custom [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)            ├── Partner marketplace
+    ├── SSO/SAML                     ├── Custom [dashboards](../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)            ├── Partner marketplace
     ├── [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs                   ├── Export pipelines             ├── Developer community
     └── RBAC                         └── SLA reporting                └── Revenue sharing
 ```
@@ -128,7 +128,7 @@ Phase 1 (Weeks 1-6): RISKIEST ASSUMPTION
 
 Phase 2 (Weeks 7-12): NEXT RISKIEST
   → "Enterprises will pay for SLA-backed API access"
-  → Build: Enterprise tier with uptime [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+  → Build: Enterprise tier with uptime [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
   → Validate: 5 enterprise pilot customers
 
 Phase 3 (Weeks 13-18): SCALE

@@ -277,7 +277,7 @@ Current challenges:
 
 1. [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) requirements need complete order history
 2. "What was the order state at time X?" queries are impossible
-3. Analytics team needs event stream for real-time [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)
+3. Analytics team needs event stream for real-time [dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)
 4. Order state reconstruction for customer support is manual
 
 ## Detailed Design
@@ -328,7 +328,7 @@ OrderShipped { orderId, trackingNumber, timestamp }
 1. Prototype with single order type (2 weeks)
 2. Team training on event sourcing (1 week)
 3. Full implementation and migration (4 weeks)
-4. [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and optimization (ongoing)
+4. [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and optimization (ongoing)
 
 ## References
 

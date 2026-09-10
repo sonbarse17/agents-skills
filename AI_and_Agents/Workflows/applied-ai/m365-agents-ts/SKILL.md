@@ -28,7 +28,7 @@ Build enterprise agents for Microsoft 365, Teams, and Copilot Studio using the M
 
 ## Before implementation
 
-- Use the [microsoft-docs](../../../../cloud/azure/other/microsoft-docs/SKILL.md) MCP to verify the latest API signatures for AgentApplication, startServer, and CopilotStudioClient.
+- Use the [microsoft-docs](../../../../DevOps_and_Cloud/cloud/azure/other/microsoft-docs/SKILL.md) MCP to verify the latest API signatures for AgentApplication, startServer, and CopilotStudioClient.
 - Confirm package versions on npm before wiring up samples or templates.
 
 ## Installation
@@ -206,4 +206,4 @@ window.WebChat.renderWebChat(
 | @microsoft/agents-hosting-express      | https://learn.microsoft.com/en-us/javascript/api/%40microsoft/agents-hosting-express?view=agents-sdk-js-latest      |
 | @microsoft/agents-copilotstudio-client | https://learn.microsoft.com/en-us/javascript/api/%40microsoft/agents-copilotstudio-client?view=agents-sdk-js-latest |
 | Integrate with Copilot Studio          | https://learn.microsoft.com/en-us/microsoft-365/agents-sdk/integrate-with-mcs                                       |
-| [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) samples                         | https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/microsoft/Agents/tree/main/samples/nodejs                                                        |
+| [GitHub](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) samples                         | https://[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/microsoft/Agents/tree/main/samples/nodejs                                                        |

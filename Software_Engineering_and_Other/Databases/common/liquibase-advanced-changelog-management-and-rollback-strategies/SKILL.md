@@ -172,7 +172,7 @@ lost data:
   <rollback>
     <!-- Intentionally irreversible: legacy_notes data is not recoverable
          from this rollback. Restore from backup if this change needs
-         to be undone. See [database-[backup-and-restore](../../../../containers-orchestration/common/other/backup-and-restore/SKILL.md)-strategies](../../../Software_Engineering_and_Other/Databases/database-[backup-and-restore](../../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md). -->
+         to be undone. See [database-[backup-and-restore](../../../../DevOps_and_Cloud/containers-orchestration/common/other/backup-and-restore/SKILL.md)-strategies](../../../Software_Engineering_and_Other/Databases/database-[backup-and-restore](../../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md). -->
   </rollback>
 </changeSet>
 ```
@@ -180,7 +180,7 @@ An explicit, documented empty rollback is safer than either an
 auto-generated rollback that silently can't restore data, or no
 `<rollback>` block at all (which causes `liquibase rollback` to fail
 outright when it reaches this changeset, potentially mid-rollback-chain
-during an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) when clarity matters most).
+during an [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) when clarity matters most).
 
 ### 4. Organize a large changelog with includeAll and per-feature/per-team files
 
@@ -240,7 +240,7 @@ checksummed content, doesn't retroactively change what already ran).
 - Never leave a genuinely irreversible forward changeset without a
   `<rollback>` block — write an explicit, documented empty rollback
   rather than letting `liquibase rollback` fail unexpectedly mid-chain
-  during an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
+  during an [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 - Validate a hand-written rollback's correctness against the forward
   changeset's actual `WHERE`/scope logic, not just its surface
   resemblance to an "undo" — a rollback that looks plausible but
@@ -274,7 +274,7 @@ checksummed content, doesn't retroactively change what already ran).
   all, and Liquibase has no auto-generatable inverse for its operation.
   Add an explicit rollback (real or documented-empty) for every
   changeset as it's authored — discovering a missing rollback mid-
-  [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), with a rollback chain already partially applied, is the
+  [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md), with a rollback chain already partially applied, is the
   worst time to write one.
 
 - **Symptom:** A rollback that "looks correct" is run, and it restores
@@ -303,7 +303,7 @@ checksummed content, doesn't retroactively change what already ran).
 
 - **Symptom:** Someone runs `liquibase rollback-count 5` (or an
   equivalent bulk rollback) directly against production during an
-  [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md), without first confirming each of those five changesets'
+  [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md), without first confirming each of those five changesets'
   rollback definitions are genuinely safe and reversible.
   **Fix:** A bulk rollback applies every changeset's `<rollback>` block
   in reverse order without individually re-confirming each one is a true
@@ -316,7 +316,7 @@ checksummed content, doesn't retroactively change what already ran).
   > actual rollback definition individually (not just trust the command
   > succeeded), and confirm a tested, verified backup exists as the real
   > fallback — see
-  > [database-[backup-and-restore](../../../../containers-orchestration/common/other/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)-strategies](../../../Software_Engineering_and_Other/Databases/database-[backup-and-restore](../../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md) —
+  > [database-[backup-and-restore](../../../../DevOps_and_Cloud/containers-orchestration/common/other/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)-strategies](../../../Software_Engineering_and_Other/Databases/database-[backup-and-restore](../../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md) —
   > for any changeset in the rollback range whose forward operation was
   > genuinely destructive.
 
@@ -325,7 +325,7 @@ checksummed content, doesn't retroactively change what already ran).
 **Scenario:** A payments platform's Liquibase changelog has grown to
 over 300 changesets in a single flat XML file across three teams, with
 recurring confusion about which changesets are safe to run in staging
-versus production, and a recent [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) where a rollback failed
+versus production, and a recent [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) where a rollback failed
 partway through because an older changeset had no rollback defined.
 
 1. Restructure the changelog by year and owning team, converting the
@@ -341,9 +341,9 @@ partway through because an older changeset had no rollback defined.
 3. [Audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) all 300 changesets for missing `<rollback>` blocks; for
    genuinely irreversible ones (a handful of historical `DROP COLUMN`
    operations), add explicit documented-empty rollbacks referencing the
-   team's backup/restore [runbook](../../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) instead of leaving them undefined.
+   team's backup/restore [runbook](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbook/SKILL.md) instead of leaving them undefined.
 4. For the specific data-transformation changeset (an `UPDATE`
-   archiving old orders) whose rollback had caused the recent [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md),
+   archiving old orders) whose rollback had caused the recent [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md),
    rewrite its rollback to precisely mirror the forward changeset's
    `WHERE` clause, and add a test in CI that applies the changeset,
    applies the rollback, and asserts the resulting data state exactly
@@ -360,5 +360,5 @@ partway through because an older changeset had no rollback defined.
 ## Cross-references
 
 - [database-schema-migration-with-liquibase-and-flyway](../[database-schema-migration-with-liquibase-and-flyway](../database-schema-migration-with-liquibase-and-flyway/SKILL.md)/SKILL.md) — the foundational changeset/rollback/CI-testing basics this skill builds on rather than restates.
-- [database-[backup-and-restore](../../../../containers-orchestration/common/other/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)-strategies](../../../Software_Engineering_and_Other/Databases/database-[backup-and-restore](../../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md) — the restore-testing safety net that should back up any changeset whose forward operation is genuinely irreversible and documented as an empty rollback.
+- [database-[backup-and-restore](../../../../DevOps_and_Cloud/containers-orchestration/common/other/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)-strategies](../../../Software_Engineering_and_Other/Databases/database-[backup-and-restore](../../../Software_Engineering_and_Other/Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md) — the restore-testing safety net that should back up any changeset whose forward operation is genuinely irreversible and documented as an empty rollback.
 - [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../../Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — the lock/performance impact of the DDL a changeset actually runs, relevant when deciding how to scope a large data-transformation changeset's rollback and forward logic.

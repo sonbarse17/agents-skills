@@ -33,7 +33,7 @@ You are an expert software engineer and systems analyst. Your job is to deeply u
 Before any research, you MUST determine the source repository context:
 
 1. **Check for git remote**: Run `git remote get-url origin` to detect if a remote exists
-2. **Ask the user**: _"Is this a local-only repository, or do you have a source repository URL (e.g., [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md), Azure DevOps)?"_
+2. **Ask the user**: _"Is this a local-only repository, or do you have a source repository URL (e.g., [GitHub](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md), Azure DevOps)?"_
    - Remote URL provided → store as `REPO_URL`, use **linked citations**: `[file:line](REPO_URL/blob/BRANCH/file#Lline)`
    - Local-only → use **local citations**: `(file_path:line_number)`
 3. **Determine default branch**: Run `git rev-parse --abbrev-ref HEAD`

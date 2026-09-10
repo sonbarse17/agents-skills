@@ -84,7 +84,7 @@ What is the primary intelligence need?
 │   ├── Commercial feeds (Recorded Future, Anomali, ThreatConnect)
 │   ├── ISAC threat intelligence feeds
 │   ├── MISP sharing communities
-│   └── Dark web [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (Flashpoint, Digital Shadows)
+│   └── Dark web [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (Flashpoint, Digital Shadows)
 └── Tactical (IoCs: IPs, domains, hashes, YARA rules)
     ├── Open-source feeds (AlienVault OTX, URLhaus, PhishTank)
     ├── Commercial feeds (VirusTotal, Proofpoint ET Intelligence)
@@ -94,7 +94,7 @@ What is the primary intelligence need?
 What is the team's CTI maturity?
 ├── Level 1 (Initial): No dedicated CTI → Use open-source feeds + vendor reports
 ├── Level 2 (Defined): Part-time CTI → Add ISAC membership + commercial feeds
-├── Level 3 (Managed): Dedicated CTI analyst → Full TIP platform + dark web [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+├── Level 3 (Managed): Dedicated CTI analyst → Full TIP platform + dark web [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 ├── Level 4 (Measured): CTI team → Custom intelligence production + threat actor tracking
 └── Level 5 (Optimized): Intelligence-driven org → Automated intel-to-detection pipeline
 ```
@@ -131,7 +131,7 @@ priority_intelligence_requirements:
   pir_01:
     question: "Which threat actors are targeting our industry (financial services) in the current quarter?"
     priority: "P1"
-    source: "ISAC reports, vendor threat briefs, dark web [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)"
+    source: "ISAC reports, vendor threat briefs, dark web [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)"
     consumer: "CISO, risk management, SOC manager"
     update: "Monthly"
 
@@ -139,13 +139,13 @@ priority_intelligence_requirements:
     question: "What are the latest ransomware variants and TTPs affecting our region?"
     priority: "P1"
     source: "Ransomware tracking feeds, The DFIR Report, BleepingComputer"
-    consumer: "SOC, detection engineering, [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response"
+    consumer: "SOC, detection engineering, [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response"
     update: "Weekly"
 
   pir_03:
     question: "Are there active campaigns exploiting vulnerabilities in our technology stack?"
     priority: "P2"
-    source: "CISA KEV, vendor security advisories, exploit [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)"
+    source: "CISA KEV, vendor security advisories, exploit [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)"
     consumer: "Vulnerability management, detection engineering, IT operations"
     update: "Continuous (feeds) + Weekly summary"
 
@@ -159,7 +159,7 @@ priority_intelligence_requirements:
   pir_05:
     question: "What are the emerging TTPs for cloud infrastructure attacks?"
     priority: "P3"
-    source: "Cloud security research, vendor blogs, [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) reports"
+    source: "Cloud security research, vendor blogs, [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) reports"
     consumer: "Cloud security team, detection engineering"
     update: "Monthly"
 ```
@@ -171,7 +171,7 @@ priority_intelligence_requirements:
 ```yaml
 osint_sources:
   threat_actor_news:
-    - "The DFIR Report — detailed [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) reports with IOCs"
+    - "The DFIR Report — detailed [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) reports with IOCs"
     - "Mandiant Advantage — threat actor tracking"
     - "CrowdStrike blog — adversary profiles"
     - "VX Underground — malware source code and analysis"
@@ -192,13 +192,13 @@ osint_sources:
     - "CISA Known Exploited Vulnerabilities (KEV) — actively exploited CVEs"
     - "Exploit-DB — proof of concept exploits"
     - "Metasploit — module updates"
-    - "[GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) — PoC exploit discovery"
+    - "[GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) — PoC exploit discovery"
     - "Project Zero bug tracker — 90-day disclosure timeline"
 
   dark_web:
-    - "Flashpoint — dark web forum [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (commercial)"
+    - "Flashpoint — dark web forum [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (commercial)"
     - "Recorded Future — dark web intelligence (commercial)"
-    - "Digital Shadows — digital risk [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (commercial)"
+    - "Digital Shadows — digital risk [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (commercial)"
 ```
 
 **Automated Collection Pipeline:**
@@ -294,7 +294,7 @@ class ThreatIntelCollector:
 
 **IoC Lifecycle:**
 ```
-Collection → Normalization → Deduplication → Enrichment → Scoring → Distribution → [Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) → Retirement
+Collection → Normalization → Deduplication → Enrichment → Scoring → Distribution → [Monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) → Retirement
 ```
 
 **IoC Scoring and Prioritization:**
@@ -363,7 +363,7 @@ threat_actor_profile:
     initial_access:
       - technique: "T1566.001 — Spearphishing Attachment"
         observed: "Lure documents with malicious macros"
-        detection: "Email gateway macro detection, EDR macro execution [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)"
+        detection: "Email gateway macro detection, EDR macro execution [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)"
       - technique: "T1190 — Exploit Public-Facing Application"
         observed: "CVE-2023-XXXX exploitation in VPN appliances"
         detection: "NIDS signatures, vuln scanner, EDR post-exploit"
@@ -379,12 +379,12 @@ threat_actor_profile:
     persistence:
       - technique: "T1547.001 — Registry Run Keys / Startup Folder"
         observed: "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run"
-        detection: "EDR registry [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), Sysmon Event ID 13"
+        detection: "EDR registry [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), Sysmon Event ID 13"
 
     defense_evasion:
       - technique: "T1055.001 — Process Injection: DLL Injection"
         observed: "Inject into explorer.exe or svchost.exe"
-        detection: "EDR API call [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), memory scanning"
+        detection: "EDR API call [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), memory scanning"
       - technique: "T1027 — Obfuscated Files or Information"
         observed: "Base64-encoded PowerShell, XOR-encrypted payloads"
         detection: "Base64 decode patterns, entropy analysis"
@@ -392,7 +392,7 @@ threat_actor_profile:
     credential_access:
       - technique: "T1003.001 — LSASS Memory"
         observed: "Mimikatz or comsvcs.dll dump"
-        detection: "EDR LSASS access [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), Windows Defender Credential Guard"
+        detection: "EDR LSASS access [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), Windows Defender Credential Guard"
 
     lateral_movement:
       - technique: "T1021.006 — Windows Remote Management"

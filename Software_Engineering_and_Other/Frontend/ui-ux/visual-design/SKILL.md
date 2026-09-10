@@ -221,7 +221,7 @@ The 8px Grid System:
 Spacing Density:
 - **Comfortable**: Generous whitespace (32-48px between sections) — content-focused, reading
 - **Default**: Balanced (24-32px) — general purpose UI
-- **Compact**: Tighter (8-16px) — data-heavy [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), tables, dense tools
+- **Compact**: Tighter (8-16px) — data-heavy [dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), tables, dense tools
 
 Proximity Rule: Elements that are functionally related should be visually grouped through spacing. Items within a group use tighter spacing (8-16px); groups of items use more spacing (24-40px). This replaces visible borders in many cases.
 

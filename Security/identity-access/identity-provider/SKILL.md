@@ -294,14 +294,14 @@ SCIM: automated, standardized, real-time, reduces errors. Manual provisioning: e
 - Quarterly: access certifications, policy review, disaster recovery test
 - Annually: penetration test, compliance [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md), IdP version upgrade
 
-### [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response for IdP
-1. Detect: users unable to login, [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) alert, SIEM alert
+### [Incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response for IdP
+1. Detect: users unable to login, [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) alert, SIEM alert
 2. Assess: is this a provider outage or account compromise?
 3. For provider outage: failover to DR instance
 4. For account compromise: disable accounts, force password reset, revoke sessions
 5. Investigate scope: which accounts affected, what accessed
 6. Remediate: patch, rotate keys, update policies
-7. Document: [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) report, post-mortem
+7. Document: [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) report, post-mortem
 
 ### Access Certification Process
 1. Define certification campaign scope (applications, roles, users)
@@ -516,5 +516,5 @@ SCIM sync configured for user creation but not deactivation. When an employee le
   - ../../../Global_References/conditional-access-[zero-trust](../zero-trust/SKILL.md).md -- Conditional Access and [Zero-Trust](../zero-trust/SKILL.md) Identity
 
 ## Handoff
-For compliance requirements on identity governance, hand off to `[enterprise-compliance-audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)/SKILL.md)`. For cost tracking of IdP licensing, hand off to `[enterprise-cost-governance](../../../cloud/common/cost/cost-governance/SKILL.md)`.
+For compliance requirements on identity governance, hand off to `[enterprise-compliance-audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)/SKILL.md)`. For cost tracking of IdP licensing, hand off to `[enterprise-cost-governance](../../../DevOps_and_Cloud/cloud/common/cost/cost-governance/SKILL.md)`.
 

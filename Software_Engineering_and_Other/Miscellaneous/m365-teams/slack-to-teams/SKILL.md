@@ -95,7 +95,7 @@ Run these four sub-analyses **in parallel**:
 
 **Detect features** — Scan for slash commands, Block Kit/Adaptive Cards, action handlers, OAuth, file upload/download, scheduling, threading, AI/LLM calls, proactive messages.
 
-**Detect architecture** — Scan for web framework (Express, Fastify, etc.), hosting target (Azure, AWS, [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md)), cloud provider, architecture pattern (single bot, dual-bot, monolith).
+**Detect architecture** — Scan for web framework (Express, Fastify, etc.), hosting target (Azure, AWS, [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)), cloud provider, architecture pattern (single bot, dual-bot, monolith).
 
 #### 2b: Language gate
 

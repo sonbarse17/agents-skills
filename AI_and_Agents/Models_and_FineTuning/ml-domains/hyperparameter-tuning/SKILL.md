@@ -280,7 +280,7 @@ results = tuner.fit()
 ```
 
 ### Step 5: Distributed Execution
-Local multi-core: n_jobs=-1. Dask distributed: wrap Optuna with DaskStorage. Ray distributed: tune.run(resources_per_trial). [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md): each trial as K8s job. Fault tolerance: checkpoint to shared filesystem.
+Local multi-core: n_jobs=-1. Dask distributed: wrap Optuna with DaskStorage. Ray distributed: tune.run(resources_per_trial). [Kubernetes](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md): each trial as K8s job. Fault tolerance: checkpoint to shared filesystem.
 
 ```[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)
 # Optuna distributed with [PostgreSQL](../../../../Software_Engineering_and_Other/Databases/relational/postgresql/SKILL.md)
@@ -324,7 +324,7 @@ def analyze_study(study):
 
 ## Production Considerations
 
-### [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+### [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - Track objective value trend — if new runs produce worse results, data may have drifted.
 - Monitor trial failure rate (>10% indicates pipeline issues).
 - Track search space utilization — best params at boundary means space too narrow.

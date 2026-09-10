@@ -28,7 +28,7 @@ Build enterprise agents for Microsoft 365, Teams, and Copilot Studio using the M
 
 ## Before implementation
 
-- Use the [microsoft-docs](../../../../cloud/azure/other/microsoft-docs/SKILL.md) MCP to verify the latest API signatures for AgentApplication, start_agent_process, and authentication options.
+- Use the [microsoft-docs](../../../../DevOps_and_Cloud/cloud/azure/other/microsoft-docs/SKILL.md) MCP to verify the latest API signatures for AgentApplication, start_agent_process, and authentication options.
 - Confirm package versions on PyPI for the microsoft-agents-\* packages you plan to use.
 
 ## Important Notice - Import Changes
@@ -371,7 +371,7 @@ asyncio.run(main())
 | Resource                      | URL                                                                           |
 | ----------------------------- | ----------------------------------------------------------------------------- |
 | Microsoft 365 Agents SDK      | https://learn.microsoft.com/en-us/microsoft-365/agents-sdk/                   |
-| [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) samples ([Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md))       | https://[github](../../../../ci-cd/github-actions/other/github/SKILL.md).com/microsoft/Agents-for-[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)                                |
+| [GitHub](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) samples ([Python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md))       | https://[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/microsoft/Agents-for-[python](../../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)                                |
 | PyPI packages                 | https://pypi.org/search/?q=microsoft-agents                                   |
 | Integrate with Copilot Studio | https://learn.microsoft.com/en-us/microsoft-365/agents-sdk/integrate-with-mcs |
 

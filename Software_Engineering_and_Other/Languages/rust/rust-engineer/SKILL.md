@@ -182,5 +182,5 @@ When implementing Rust features, provide:
 
 Rust 2021, Cargo, ownership/borrowing, lifetimes, traits, generics, async/await, tokio, Result/Option, thiserror/anyhow, serde, clippy, rustfmt, cargo-test, criterion benchmarks, MIRI, unsafe Rust
 
-[Documentation](https://jeffallan.[github](../../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/language/rust-engineer/)
+[Documentation](https://jeffallan.[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/language/rust-engineer/)
 

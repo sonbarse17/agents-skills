@@ -177,7 +177,7 @@ prioritization_matrix:
 | T-004 | Standardize error handling across API | Architecture | 4 | 3 | 4.0 | IN PROGRESS |
 | T-005 | Remove dead code in user module | Code | 2 | 1 | 6.0 | TODO |
 | T-006 | Reduce flaky E2E tests | Test | 5 | 8 | 1.5 | PRIORITIZED |
-| T-007 | Update [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) base image | Infrastructure | 3 | 1 | 9.0 | DONE |
+| T-007 | Update [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) base image | Infrastructure | 3 | 1 | 9.0 | DONE |
 ```
 
 ### Step 4: Track Interest Rate
@@ -310,7 +310,7 @@ labels: ["tech-debt", "needs-triage"]
 | Dedicate 15-20% sprint [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) | Prevents debt from growing unsustainably |
 | Quantify interest rate | Stakeholders understand the cost of delay |
 | Fix debt near new code | Scout Rule: leave code cleaner than you found it |
-| Use automated tools | SonarQube, CodeClimate, or custom metric [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) |
+| Use automated tools | SonarQube, CodeClimate, or custom metric [dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) |
 | Label debt items consistently | Track trends over time |
 | Review debt quarterly | Reassess priorities, close completed items |
 | Celebrate debt reduction | Recognize cleanup work as valuable |
@@ -475,7 +475,7 @@ What's the nature of the issue?
 └── Infrastructure
     ├── Manual processes → Automate
     ├── Outdated config → Update
-    └── No [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) → Add [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
+    └── No [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) → Add [observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
 ```
 
 ### Prioritization Matrix
@@ -490,7 +490,7 @@ Impact × Frequency / Effort
 
 ## Production Considerations
 
-- **Automated debt discovery**: Integrate SonarQube/CodeClimate scans into CI pipeline. Fail builds when debt ratio increases beyond threshold. Publish trend data to [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md).
+- **Automated debt discovery**: Integrate SonarQube/CodeClimate scans into CI pipeline. Fail builds when debt ratio increases beyond threshold. Publish trend data to [dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md).
 - **Debt budgeting in sprint planning**: Reserve 15-20% of sprint [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) for tech debt before feature work is estimated. Make debt reduction visible in sprint reviews.
 - **Quarterly debt reviews**: Conduct a dedicated debt review session every quarter. Re-prioritize based on current development pain points. Archive or close items no longer relevant.
 - **Interest rate communication**: Express debt cost in terms stakeholders understand: "This debt costs us one developer day per sprint" rather than abstract quality metrics.
@@ -510,7 +510,7 @@ Impact × Frequency / Effort
 
 ## Performance Optimization
 
-- **Automated debt scanning**: Schedule weekly SonarQube scans. Use diff analysis to only re-scan changed files. Report debt ratio trend on team [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md).
+- **Automated debt scanning**: Schedule weekly SonarQube scans. Use diff analysis to only re-scan changed files. Report debt ratio trend on team [dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md).
 - **Debt interest computation**: Run automated interest calculation script at end of each sprint. Calculate total interest minutes across all open items.
 - **Git blame integration**: Link debt items to recent git history. Flag when a debt-laden file is being modified and suggest refactoring.
 - **CI pipeline debt gate**: Add debt ratio check to CI. If PR touches high-debt files and doesn't reduce debt, flag for review.

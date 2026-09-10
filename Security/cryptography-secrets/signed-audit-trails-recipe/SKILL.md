@@ -77,8 +77,8 @@ Create `.claude/settings.json` in your project root:
 ```
 
 The first run of `protect-mcp sign` generates `./protect-mcp.key` (Ed25519
-private key) if one does not exist. [Commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) the **public** key fingerprint
-(visible in any receipt's `public_key` field); do not [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) the private
+private key) if one does not exist. [Commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) the **public** key fingerprint
+(visible in any receipt's `public_key` field); do not [commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) the private
 key.
 
 Add the private key and receipt directory to `.gitignore`:
@@ -247,7 +247,7 @@ The receipt format has four independent implementations today:
 |----------------|----------|----------|
 | [protect-mcp](https://www.npmjs.com/package/protect-mcp) | [TypeScript](../../../Software_Engineering_and_Other/Frontend/common/typescript/SKILL.md) | Claude Code, Cursor, MCP hosts |
 | [protect-mcp-adk](https://pypi.org/project/protect-mcp-adk/) | [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) | Google Agent Development Kit |
-| [sb-runtime](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/ScopeBlind/sb-runtime) | Rust | OS-level sandbox (Landlock + seccomp) |
+| [sb-runtime](https://[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/ScopeBlind/sb-runtime) | Rust | OS-level sandbox (Landlock + seccomp) |
 | APS governance hook | [Python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md) | CrewAI, LangChain |
 
 A receipt produced by any of them verifies against
@@ -261,7 +261,7 @@ Gate merges on receipt chain verification so no build lands with a broken
 evidence chain:
 
 ```yaml
-# .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/verify-receipts.yml
+# .[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/workflows/verify-receipts.yml
 name: Verify Decision Receipts
 on: [push, pull_request]
 
@@ -297,7 +297,7 @@ per-step build log. SLSA Provenance v1 has an extension point for this: the
 `byproducts` field can reference the receipt chain alongside the build
 attestation.
 
-The [agent-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) build type](https://refs.arewm.com/agent-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)/v0.2)
+The [agent-[commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) build type](https://refs.arewm.com/agent-[commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md)/v0.2)
 documents the pattern using the ResourceDescriptor shape:
 
 ```json
@@ -315,7 +315,7 @@ documents the pattern using the ResourceDescriptor shape:
 The SLSA provenance is signed by the builder identity; the receipt
 attestation is signed by the supervisor-hook identity. Two trust domains,
 cross-referenced at the byproduct layer. See
-[slsa-framework/slsa#1594](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/slsa-framework/slsa/issues/1594)
+[slsa-framework/slsa#1594](https://[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/slsa-framework/slsa/issues/1594)
 for the composition discussion.
 
 ## Common pitfalls
@@ -352,7 +352,7 @@ missing policy is treated as a hard failure.
 - [Cedar policy language](https://docs.cedarpolicy.com/)
 - [protect-mcp on npm](https://www.npmjs.com/package/protect-mcp)
 - [@veritasacta/verify on npm](https://www.npmjs.com/package/@veritasacta/verify)
-- [in-toto/attestation#549](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/in-toto/attestation/pull/549) — Decision Receipt predicate proposal
-- [agent-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) build type](https://refs.arewm.com/agent-[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)/v0.2) — SLSA provenance for agent-produced commits
-- [Microsoft Agent Governance Toolkit](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/microsoft/agent-governance-toolkit) (`examples/protect-mcp-governed/`)
-- [AWS Cedar for Agents](https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/cedar-policy/cedar-for-agents)
+- [in-toto/attestation#549](https://[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/in-toto/attestation/pull/549) — Decision Receipt predicate proposal
+- [agent-[commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) build type](https://refs.arewm.com/agent-[commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md)/v0.2) — SLSA provenance for agent-produced commits
+- [Microsoft Agent Governance Toolkit](https://[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/microsoft/agent-governance-toolkit) (`examples/protect-mcp-governed/`)
+- [AWS Cedar for Agents](https://[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/cedar-policy/cedar-for-agents)

@@ -47,7 +47,7 @@ retention policies that a plain [PostgreSQL](../../relational/postgresql/SKILL.m
 - Query performance degrades as a hypertable grows, especially queries
   scanning a wide time range or aggregating across many chunks.
 - Setting up continuous aggregates to pre-compute rollups (hourly/daily
-  averages, downsampled [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)) instead of aggregating raw data on
+  averages, downsampled [dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)) instead of aggregating raw data on
   every query.
 - Configuring compression for older chunks to reduce storage footprint
   and improve scan performance on cold data.
@@ -173,7 +173,7 @@ the most recent bucket the policy will materialize — this accounts for
 late-arriving data (a common reality in IoT/metrics ingestion where
 devices buffer and batch-send) that would otherwise be missed by a
 policy that materializes right up to the current instant. Query the
-aggregate directly for [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) instead of re-aggregating raw data:
+aggregate directly for [dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) instead of re-aggregating raw data:
 ```sql
 SELECT bucket, avg_cpu FROM metrics_hourly
 WHERE device_id = 'device-42' AND bucket > now() - INTERVAL '7 days';
@@ -221,7 +221,7 @@ SELECT add_retention_policy('metrics', INTERVAL '90 days');
 > "however far back we currently look at"), and confirm any required
 > long-term archive (e.g. exporting older chunks to object storage
 > before they're dropped) is in place and tested first — see
-> [database-[backup-and-restore](../../../../containers-orchestration/common/other/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies](../database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md)
+> [database-[backup-and-restore](../../../../DevOps_and_Cloud/containers-orchestration/common/other/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies](../database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md)
 > for archive/restore-testing discipline. Retention drops whole chunks
 > at a time, which is efficient (equivalent to `DROP TABLE` on the
 > underlying chunk, not a scanning `DELETE`) but also means the
@@ -377,4 +377,4 @@ several billion rows over the past year.
 - [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../../Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — the underlying [PostgreSQL](../../relational/postgresql/SKILL.md) vacuum, replication, and query-tuning practice that still applies unchanged to a hypertable's constituent chunk tables.
 - [postgresql-configuration-validation](../[postgresql-configuration-validation](../../Miscellaneous/[postgresql](../../Backend/postgresql/SKILL.md)-configuration-validation/SKILL.md)/SKILL.md) — validates the `shared_preload_libraries`/memory settings change required to enable the TimescaleDB extension before it reaches production.
 - [clickhouse-analytical-database-operations](../[clickhouse-analytical-database-operations](../clickhouse-analytical-[database-operations](../database-operations/SKILL.md)/SKILL.md)/SKILL.md) — a purpose-built OLAP alternative for time-series/analytical workloads when a [PostgreSQL](../../relational/postgresql/SKILL.md)-based extension no longer scales for the required ingest rate or query concurrency.
-- [database-[backup-and-restore](../../../../containers-orchestration/common/other/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies](../database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md) — archive-before-drop discipline for data that a TimescaleDB retention policy would otherwise permanently delete.
+- [database-[backup-and-restore](../../../../DevOps_and_Cloud/containers-orchestration/common/other/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies](../database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md) — archive-before-drop discipline for data that a TimescaleDB retention policy would otherwise permanently delete.

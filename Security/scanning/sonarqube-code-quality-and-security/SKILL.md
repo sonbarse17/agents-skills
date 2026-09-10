@@ -56,7 +56,7 @@ selection, triage workflow, suppression policy — see
   condition tripped (coverage on new code, duplicated lines, security
   rating, reliability rating) and how to fix it.
 - The user wants pull requests decorated with inline SonarQube findings
-  ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)/GitLab/Bitbucket/Azure DevOps PR comments) rather than only a
+  ([GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/GitLab/Bitbucket/Azure DevOps PR comments) rather than only a
   dashboard.
 - The user needs to triage **security hotspots** — code SonarQube flags
   as security-sensitive but requiring human judgment to confirm as a
@@ -90,10 +90,10 @@ selection, triage workflow, suppression policy — see
 - A generated authentication token (user token or project analysis
   token) with `Execute Analysis` permission, stored in the CI secrets
   store — never inline in `sonar-project.properties`. See
-  [secrets-management](../../common/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md).
+  [secrets-management](../../common/devsecops/SKILL.md)/skills/[secrets-management](../../../DevOps_and_Cloud/cloud/common/security/secrets-management/SKILL.md)/SKILL.md).
 - For PR decoration: the SonarQube/SonarCloud instance needs network
   reachability to call back to the source-control platform's API
-  ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)/GitLab/Bitbucket/Azure DevOps App or PAT configured in
+  ([GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/GitLab/Bitbucket/Azure DevOps App or PAT configured in
   server-wide DevOps Platform Integration settings).
 - A defined baseline: a "new code" definition (since a fixed date, since
   the previous version, or since a reference branch) — the single most
@@ -118,7 +118,7 @@ selection, triage workflow, suppression policy — see
 2. **Run the scanner in CI**, feeding in the auth token as a secret,
    not a literal value:
    ```yaml
-   # [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Actions
+   # [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions
    name: sonarqube
    on:
      pull_request:
@@ -277,7 +277,7 @@ selection, triage workflow, suppression policy — see
   its own, and wire the coverage report path
   (`sonar.coverage.jacoco.xmlReportPaths`) explicitly.
 
-- **Symptom:** PR decoration comments never appear on [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)/GitLab
+- **Symptom:** PR decoration comments never appear on [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/GitLab
   pull requests even though the dashboard shows the analysis completed.
   **Fix:** DevOps Platform Integration isn't configured/bound for the
   project, or the token used lacks permission to post PR comments on
@@ -311,7 +311,7 @@ Security Rating             worse than A -> FAIL
 Security Hotspots Reviewed  < 100%     -> FAIL
 ```
 
-`.[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/sonar.yml`:
+`.[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/workflows/sonar.yml`:
 ```yaml
 name: sonarqube
 on:
@@ -352,9 +352,9 @@ New Code:
 ```
 Remediation: replace the hardcoded key with one sourced from the secrets
 manager (see
-[secrets-management](../../common/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md)),
+[secrets-management](../../common/devsecops/SKILL.md)/skills/[secrets-management](../../../DevOps_and_Cloud/cloud/common/security/secrets-management/SKILL.md)/SKILL.md)),
 add tests to cover `charge.py`'s new branch, push, and confirm the gate
-re-evaluates to passed on the updated [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md).
+re-evaluates to passed on the updated [commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md).
 
 ## Cross-references
 
@@ -368,6 +368,6 @@ re-evaluates to passed on the updated [commit](../../../ci-cd/common/git-workflo
 - [owasp-zap-dast-configuration](../owasp-zap-dast-configuration/SKILL.md)/SKILL.md) —
   runtime testing that catches issues SonarQube's static analysis
   cannot see.
-- [secrets-management](../../common/devsecops/SKILL.md)/skills/[secrets-management](../../../cloud/common/security/secrets-management/SKILL.md)/SKILL.md) —
+- [secrets-management](../../common/devsecops/SKILL.md)/skills/[secrets-management](../../../DevOps_and_Cloud/cloud/common/security/secrets-management/SKILL.md)/SKILL.md) —
   where a hardcoded-secret hotspot/finding should actually be remediated
   to (a secrets manager), not just suppressed.

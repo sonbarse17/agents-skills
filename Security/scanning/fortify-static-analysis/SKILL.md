@@ -56,7 +56,7 @@ tool with a mature [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.
 
 - The user asks to "run a Fortify scan" or configure the
   `sourceanalyzer` translate/scan build steps for a project.
-- The user needs to integrate Fortify into [Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md), Azure DevOps, or
+- The user needs to integrate Fortify into [Jenkins](../../../DevOps_and_Cloud/ci-cd/jenkins/other/jenkins/SKILL.md), Azure DevOps, or
   another enterprise CI system, uploading results to Fortify Software
   Security Center (SSC) for centralized tracking.
 - The user is triaging findings in Fortify [Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) Workbench and needs to
@@ -98,7 +98,7 @@ tool with a mature [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.
   update mechanism (`fortifyupdate` or equivalent), since stale
   rulepacks miss newer vulnerability patterns and language/framework
   versions.
-- CI/CD integration plugin matching the platform (Fortify [Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md)
+- CI/CD integration plugin matching the platform (Fortify [Jenkins](../../../DevOps_and_Cloud/ci-cd/jenkins/other/jenkins/SKILL.md)
   plugin, Azure DevOps extension, or a generic CLI invocation) and a
   service account/token with permission to publish results to SSC.
 - Enough build-time budget: a full translate+scan on a large [monorepo](../../../Software_Engineering_and_Other/Frontend/build-tools/monorepo/SKILL.md)
@@ -143,7 +143,7 @@ tool with a mature [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.
      -authtoken "${FORTIFY_SSC_TOKEN}"
    ```
 
-4. **Wire translate/scan/upload into CI** ([Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md) declarative example;
+4. **Wire translate/scan/upload into CI** ([Jenkins](../../../DevOps_and_Cloud/ci-cd/jenkins/other/jenkins/SKILL.md) declarative example;
    Azure DevOps uses the equivalent extension tasks):
    ```groovy
    pipeline {
@@ -202,7 +202,7 @@ tool with a mature [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.
 8. **Re-scan incrementally where supported** (Fortify's incremental
    analysis features vary by version and language) to keep scan time
    manageable on a large codebase — a full clean translate+scan on
-   every [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) is often impractical; consider a full scan on a nightly
+   every [commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) is often impractical; consider a full scan on a nightly
    or release-gate cadence with a lighter/faster complementary tool
    (e.g. [sonarqube-[code-quality](../../../Software_Engineering_and_Other/Patterns/dev-practice/code-quality/SKILL.md)/SKILL.md)-and-security](../../../Software_Engineering_and_Other/Patterns/dev-practice/code-quality/SKILL.md)/SKILL.md)-and-security](../../../Software_Engineering_and_Other/Patterns/dev-practice/code-quality/SKILL.md)/SKILL.md)-and-security/SKILL.md)/SKILL.md)
    or a Semgrep-based check per
@@ -268,9 +268,9 @@ tool with a mature [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.
   noisy rule's false-positive rate rather than disabling it outright.
 
 - **Symptom:** CI pipeline time balloons after adding Fortify, with the
-  translate+scan step taking 45+ minutes on every [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md).
+  translate+scan step taking 45+ minutes on every [commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md).
   **Fix:** Move the full translate+scan to a nightly or release-gate
-  schedule instead of every [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md), and use a faster, lighter SAST tool
+  schedule instead of every [commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md), and use a faster, lighter SAST tool
   for per-PR feedback (see
   [sast-integration](../../common/devsecops/SKILL.md)/skills/[sast-integration](../sast-integration/SKILL.md)/SKILL.md)),
   reserving Fortify's deeper analysis for a cadence where its runtime
@@ -299,7 +299,7 @@ tool with a mature [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.
 ## Worked example
 
 A financial-services team with an on-premises Java [monorepo](../../../Software_Engineering_and_Other/Frontend/build-tools/monorepo/SKILL.md) integrates
-Fortify SCA into [Jenkins](../../../ci-cd/jenkins/other/jenkins/SKILL.md) with a nightly full scan and SSC-based [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
+Fortify SCA into [Jenkins](../../../DevOps_and_Cloud/ci-cd/jenkins/other/jenkins/SKILL.md) with a nightly full scan and SSC-based [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md)
 workflow, alongside a faster per-PR Semgrep gate for quick feedback.
 
 Jenkinsfile (nightly full scan stage, abbreviated from step 4):

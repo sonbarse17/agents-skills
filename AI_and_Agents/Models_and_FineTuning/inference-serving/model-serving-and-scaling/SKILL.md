@@ -41,7 +41,7 @@ rollout to 100% of traffic) actually live.
 - The user is choosing a serving pattern (online/real-time, batch, or
   streaming) for a model or deciding between them for a given use case.
 - The user needs to set up or tune [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) for a model inference
-  endpoint ([Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) HPA, KServe, SageMaker endpoints, Vertex AI
+  endpoint ([Kubernetes](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) HPA, KServe, SageMaker endpoints, Vertex AI
   endpoints, or a custom autoscaler).
 - The user is trying to reduce inference latency (cold start, batching,
   quantization, hardware choice) or inference cost.
@@ -60,13 +60,13 @@ rollout to 100% of traffic) actually live.
   a cloud-managed endpoint (SageMaker, Vertex AI, Azure ML), or, for LLMs,
   vLLM/TGI (Text Generation Inference) for high-throughput batched
   inference.
-- A container/orchestration platform ([Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) ≥ 1.25 typical for
+- A container/orchestration platform ([Kubernetes](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) ≥ 1.25 typical for
   self-managed serving) or a managed inference service.
 - Defined latency and throughput SLOs for the use case (e.g. p95 ≤ 200 ms
   for a synchronous user-facing call) before choosing hardware/batching
   strategy — sizing decisions are meaningless without a target.
-- [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) already wired to track latency, error rate, and (per
-  [model-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md))
+- [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) already wired to track latency, error rate, and (per
+  [model-[monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md))
   prediction quality once deployed.
 - GPU or CPU inventory/quota appropriate to the model size — e.g. a 7B
   parameter LLM in fp16 needs roughly 14+ GB of GPU memory just for weights,
@@ -92,7 +92,7 @@ rollout to 100% of traffic) actually live.
    warm request.
 3. **Configure [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md) on a signal that reflects actual load**, not just
    CPU utilization for GPU-bound or I/O-bound inference workloads. Example
-   [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) HPA using a custom metric (requests-in-flight or queue depth):
+   [Kubernetes](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) HPA using a custom metric (requests-in-flight or queue depth):
    ```yaml
    apiVersion: [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md)/v2
    kind: HorizontalPodAutoscaler
@@ -169,7 +169,7 @@ rollout to 100% of traffic) actually live.
   version change, reserving instant blue/green cutover for cases where
   canarying isn't feasible (e.g. a hard schema break).
 - Separate the serving runtime's health (process up, responding) from model
-  health (predictions still good) in [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) — a healthy process serving
+  health (predictions still good) in [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) — a healthy process serving
   degraded predictions is the more dangerous failure mode.
 - Quantize or distill where quality tolerates it, particularly for LLMs —
   meaningful latency/cost reductions are often available at acceptable
@@ -245,11 +245,11 @@ to replace version 13 in production.
 6. **Post-cutover:** version 13's deployment is scaled down to a single
    standby replica (not deleted) for a two-week soak period, giving instant
    rollback capability while version 14 is monitored in production (see
-   [model-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md))
+   [model-[monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md))
    before version 13's resources are finally reclaimed.
 
 ## Cross-references
 
 - [model-packaging-and-versioning](../[model-packaging-and-versioning](../model-packaging-and-versioning/SKILL.md)/SKILL.md)
-- [model-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md)
+- [model-[monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../model-[monitoring](../../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md)
 - [llmops-fine-tuning-and-deployment](../[llmops-fine-tuning-and-deployment](../llmops-fine-tuning-and-deployment/SKILL.md)/SKILL.md)

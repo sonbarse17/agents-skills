@@ -109,7 +109,7 @@ the most familiar code.
 
 A change that helps one hand-run request can regress under concurrency — lock contention,
 connection pool limits, and GC pauses only appear under real traffic shape. Confirm the win with
-`[load-testing](../../../../observability-monitoring-logging/common/capacity-monitoring/load-testing/SKILL.md)` at production-like concurrency before calling it done.
+`[load-testing](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/capacity-monitoring/load-testing/SKILL.md)` at production-like concurrency before calling it done.
 
 - **Re-run the exact baseline scenario**, same load level and duration, not a friendlier one.
 - **Check for new bottlenecks introduced by the fix** — a bigger cache can trade latency for
@@ -126,7 +126,7 @@ An untracked tuning change looks like an arbitrary setting to the next person wh
 system, and they either revert it by accident or are afraid to touch it at all. Document the
 bottleneck found, the change made, and the measured effect next to the config itself.
 
-- **Link the change to its measurement**, not just a [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) message saying "perf improvements."
+- **Link the change to its measurement**, not just a [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) message saying "perf improvements."
 - **Note the load level the tuning was valid for** — a setting tuned for today's traffic may be
   wrong at 10x; flag it for revisit in `[capacity-planning](../../../DevOps_and_Cloud/Observability_and_SecOps/[capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md)-planning/SKILL.md)`.
 

@@ -41,7 +41,7 @@ MDM becomes essential when any of the following apply:
   increasingly ask for evidence of endpoint management.
 
 If you are still under 10 people and everyone is in-office, a simple checklist
-plus a configuration management tool ([Ansible](../../../infrastructure-as-code/ansible/other/ansible/SKILL.md)) may suffice — but plan for MDM
+plus a configuration management tool ([Ansible](../../../DevOps_and_Cloud/infrastructure-as-code/ansible/other/ansible/SKILL.md)) may suffice — but plan for MDM
 early so enrollment is painless when you scale.
 
 ---
@@ -54,7 +54,7 @@ early so enrollment is painless when you scale.
 | **Microsoft Intune** | Windows + M365 shops | Bundled w/ M365 E3/E5 | No | Seamless Azure AD + Autopilot |
 | **Kandji** | macOS-first startups | Per-device/yr | No | Pre-built compliance templates, fast setup |
 | **Mosyle** | Education & SMB Apple | Per-device/yr | No | Apple School/Business Manager integration |
-| **Fleet** | Cross-platform, eng-led | Free (OSS) / paid cloud | Yes | osquery-powered, [GitOps](../../../containers-orchestration/common/gitops/gitops/SKILL.md)-friendly, API-first |
+| **Fleet** | Cross-platform, eng-led | Free (OSS) / paid cloud | Yes | osquery-powered, [GitOps](../../../DevOps_and_Cloud/containers-orchestration/common/gitops/gitops/SKILL.md)-friendly, API-first |
 | **SimpleMDM** | Small Apple-only teams | Per-device/mo | No | Simple UI, quick onboarding |
 
 ### Decision heuristic
@@ -77,7 +77,7 @@ else:
 Fleet is the leading open-source MDM. It uses osquery under the hood and
 supports macOS, Windows, Linux, iOS, and [Android](../../platforms/android/SKILL.md).
 
-### 3.1 [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Compose deployment
+### 3.1 [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) Compose deployment
 
 ```yaml
 # [docker-compose](../../DevOps_and_Cloud/Containers_and_Orchestration/[docker](../../DevOps_and_Cloud/Containers_and_Orchestration/docker/SKILL.md)-compose/SKILL.md).yml
@@ -142,11 +142,11 @@ openssl req -x509 -newkey rsa:4096 -sha256 -days 365 \
   -subj "/CN=fleet.yourcompany.com"
 
 # Start services
-[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) compose up -d
+[docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) compose up -d
 
 # Create admin account
-[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) compose exec fleet fleet prepare db
-[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) compose exec fleet fleet setup \
+[docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) compose exec fleet fleet prepare db
+[docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) compose exec fleet fleet setup \
   --email admin@yourcompany.com \
   --name "IT Admin" \
   --password "${FLEET_ADMIN_PASSWORD}" \
@@ -467,7 +467,7 @@ cask "cloudflare-warp"
 # Development
 cask "visual-studio-code"
 cask "iterm2"
-cask "[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)"
+cask "[docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)"
 brew "node"
 brew "[python](../../../Software_Engineering_and_Other/Languages/python/python/SKILL.md)@3.12"
 
@@ -493,7 +493,7 @@ brew bundle --file=/path/to/Brewfile --no-lock
     "Packages": [
       { "PackageIdentifier": "Git.Git" },
       { "PackageIdentifier": "Microsoft.VisualStudioCode" },
-      { "PackageIdentifier": "[Docker](../../../containers-orchestration/docker/other/docker/SKILL.md).DockerDesktop" },
+      { "PackageIdentifier": "[Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md).DockerDesktop" },
       { "PackageIdentifier": "SlackTechnologies.Slack" },
       { "PackageIdentifier": "Zoom.Zoom" },
       { "PackageIdentifier": "Tailscale.Tailscale" },
@@ -622,7 +622,7 @@ Invoke-MgGraphRequest -Method POST `
   -Body $body -ContentType "application/json"
 ```
 
-### 9.3 Lost device [runbook](../../../observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)
+### 9.3 Lost device [runbook](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbook/SKILL.md)
 
 ```text
 1. Employee reports device lost/stolen via Slack #it-help or PagerDuty.
@@ -704,7 +704,7 @@ Write-Host "=== Starting onboarding $(Get-Date) ==="
 $packages = @(
     "Git.Git",
     "Microsoft.VisualStudioCode",
-    "[Docker](../../../containers-orchestration/docker/other/docker/SKILL.md).DockerDesktop",
+    "[Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md).DockerDesktop",
     "SlackTechnologies.Slack",
     "Tailscale.Tailscale",
     "AgileBits.1Password"
@@ -745,7 +745,7 @@ new_hire_onboarding:
   pre_day_one:
     - Purchase and ship device via CDW/Apple Business Manager
     - Assign device to MDM server in ABM/Autopilot
-    - Create accounts: Google Workspace / M365, Okta SSO, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md), Slack
+    - Create accounts: Google Workspace / M365, Okta SSO, [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md), Slack
     - Generate VPN invite (Tailscale, WireGuard)
     - Prepare welcome documentation link
 

@@ -33,7 +33,7 @@ Detailed pattern documentation lives in `../../../../Global_References/Software_
 ## Best Practices
 
 1. **Never skip RED**: Always write failing tests first
-2. **Small commits**: One logical change per [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)
+2. **Small commits**: One logical change per [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md)
 3. **Immediate updates**: Update plan.md right after task completion
 4. **Wait for approval**: Never skip checkpoint verification
 5. **Rich git notes**: Include context that helps future understanding
@@ -41,7 +41,7 @@ Detailed pattern documentation lives in `../../../../Global_References/Software_
 7. **Quality gates**: Check all gates before marking complete
 8. **Sequential phases**: Complete phases in order
 9. **Document deviations**: Note any changes from original plan
-10. **Clean state**: Each [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) should leave code in working state
+10. **Clean state**: Each [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) should leave code in working state
 11. **Fast feedback**: Run relevant tests frequently during development
 12. **Clear blockers**: Address blockers promptly, don't work around them
 

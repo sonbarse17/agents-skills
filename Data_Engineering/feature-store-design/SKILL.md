@@ -160,7 +160,7 @@ diagnose after the fact.
    online store (e.g. a materialization job silently failing) causes serving
    to use outdated features while nothing else in the system errors, which
    is a common source of silent degradation (see
-   [model-[monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md)).
+   [model-[monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md)).
 
 ## Best practices
 
@@ -203,7 +203,7 @@ diagnose after the fact.
   skew), traced to the online store returning slightly stale values because a
   materialization job has been silently failing for two days.
   **Fix:** Monitor feature freshness explicitly (max age since last
-  materialization per feature view) with [alerting](../../observability-monitoring-logging/common/alerting/alerting/SKILL.md), not just pipeline
+  materialization per feature view) with [alerting](../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md), not just pipeline
   success/failure status — a "successful" job that ran 0 rows still shows
   green in most schedulers.
 
@@ -257,5 +257,5 @@ A ride-hailing company builds a feature store for a driver-acceptance model.
 
 - [training-pipeline-orchestration](../../AI_and_Agents/Models_and_FineTuning/llmops/training-pipeline-orchestration/SKILL.md)/SKILL.md)
 - [data-and-model-lineage](../[data-and-model-lineage](../data-and-model-lineage/SKILL.md)/SKILL.md)
-- [model-[monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md)
+- [model-[monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)-and-drift-detection](../[model-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection](../../AI_and_Agents/Models_and_FineTuning/model-[monitoring](../../DevOps_and_Cloud/Observability_and_SecOps/monitoring/SKILL.md)-and-drift-detection/SKILL.md)/SKILL.md)
 - [experiment-tracking](../[experiment-tracking](../experiment-tracking/SKILL.md)/SKILL.md)

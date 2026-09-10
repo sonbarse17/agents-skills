@@ -37,7 +37,7 @@ depends_on:
 # Frontend Rendering Strategies
 
 ## Purpose
-Select and implement the correct rendering strategy for each route: CSR for highly interactive [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), SSR for personalized content, SSG for marketing pages, ISR for content that changes on a schedule, and RSC for React apps needing zero-bundle data fetching.
+Select and implement the correct rendering strategy for each route: CSR for highly interactive [dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), SSR for personalized content, SSG for marketing pages, ISR for content that changes on a schedule, and RSC for React apps needing zero-bundle data fetching.
 
 ## Agent Protocol
 

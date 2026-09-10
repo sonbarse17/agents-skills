@@ -218,9 +218,9 @@ rover subgraph publish my-graph@current \
 - Value type to entity conversion
 - Enum value additions/removals
 
-### Federated Tracing & [Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
+### Federated Tracing & [Observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
 
-#### [OpenTelemetry](../../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) in Apollo Router
+#### [OpenTelemetry](../../../../DevOps_and_Cloud/observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) in Apollo Router
 ```yaml
 # router.yaml — federated tracing
 telemetry:
@@ -644,9 +644,9 @@ schema_tags:
     updated_on: monthly
 ```
 
-## [Incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Management for Federated Graphs
+## [Incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Management for Federated Graphs
 
-### [Incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Classification
+### [Incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Classification
 | Severity | Definition | Response Time | Example |
 |----------|-----------|---------------|---------|
 | P0 | Complete supergraph outage | < 5 min | Router crash, composition failure |
@@ -654,7 +654,7 @@ schema_tags:
 | P2 | Isolated field errors | < 1 hour | Specific resolver returns errors |
 | P3 | Non-critical anomalies | < 1 day | Suboptimal query plan |
 
-### [Incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response Playbook
+### [Incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response Playbook
 ```yaml
 playbook:
   p0_outage:
@@ -763,7 +763,7 @@ const resolvers = {
 - [Supergraph Composition](../../../../Global_References/Software_Engineering_and_Other/supergraph-composition.md) — Composition pipeline, directives, CI/CD
 - [Supergraph Config](../../../../Global_References/Software_Engineering_and_Other/supergraph-config.md) — Router configuration, traffic shaping, query plans
 - [Federation vs Mesh](../../../../Global_References/Software_Engineering_and_Other/federation-vs-mesh.md) — Apollo Federation vs GraphQL Mesh comparison
-- [Federated Tracing](../../../../Global_References/Software_Engineering_and_Other/federated-tracing.md) — [OpenTelemetry](../../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md), Studio integration, distributed tracing
+- [Federated Tracing](../../../../Global_References/Software_Engineering_and_Other/federated-tracing.md) — [OpenTelemetry](../../../../DevOps_and_Cloud/observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md), Studio integration, distributed tracing
 - [Federation Migration Monolith](../../../../Global_References/Software_Engineering_and_Other/federation-migration-monolith.md) — Migrating from monolithic GraphQL to federation (Strangler Fig)
 - [Federation Cost Management](../../../../Global_References/Software_Engineering_and_Other/federation-cost-management.md) — Cost analysis, demand control, entity resolution cost optimization
 

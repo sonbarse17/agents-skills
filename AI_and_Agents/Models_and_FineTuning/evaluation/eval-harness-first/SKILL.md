@@ -79,7 +79,7 @@ source and the checkpoint's exit gate.
   persona) and sample the cross-product; free-
   generated prompts cluster around whatever's
   easiest to write.
-- **Goldens are versioned like code** — [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)
+- **Goldens are versioned like code** — [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md)
   `eval/goldens.jsonl`, diff it in review, tag it per
   release. It doubles as the CI regression suite.
 
@@ -195,7 +195,7 @@ file before a run.
 
 ## Related Skills
 
-General-purpose evaluation guidance ([dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), A/B
+General-purpose evaluation guidance ([dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), A/B
 testing, non-fine-tuning harnesses) lives in the
 `llm-application-dev` plugin's `[llm-evaluation](../llm-application-dev/skills/[llm-evaluation](../llm-evaluation/SKILL.md)/SKILL.md)`
 skill — this skill covers only the fine-tuning

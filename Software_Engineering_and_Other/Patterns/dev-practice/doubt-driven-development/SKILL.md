@@ -37,7 +37,7 @@ A decision is **non-trivial** when at least one of these is true:
 Apply the skill when:
 
 - About to make an architectural decision under uncertainty
-- About to [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) non-trivial code
+- About to [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) non-trivial code
 - About to claim a non-obvious fact ("this is safe", "this scales", "this matches the spec")
 - Working in code you don't fully understand
 
@@ -120,7 +120,7 @@ CONTRACT: <paste contract>
 
 In Claude Code, the role-based reviewers in `agents/` start with isolated context by design and are usable here — see `agents/` for the roster and per-domain match.
 
-**The adversarial prompt above takes precedence over the persona's default response shape.** Personas like `[code-reviewer](../../../../ci-cd/common/other/code-reviewer/SKILL.md)` are written to produce balanced verdicts with both strengths and weaknesses; doubt-driven needs issues-only output. Paste the adversarial prompt verbatim into the invocation so it overrides the persona's default. If a persona's response shape can't be overridden cleanly, fall back to a generic subagent with the adversarial prompt.
+**The adversarial prompt above takes precedence over the persona's default response shape.** Personas like `[code-reviewer](../../../../DevOps_and_Cloud/ci-cd/common/other/code-reviewer/SKILL.md)` are written to produce balanced verdicts with both strengths and weaknesses; doubt-driven needs issues-only output. Paste the adversarial prompt verbatim into the invocation so it overrides the persona's default. If a persona's response shape can't be overridden cleanly, fall back to a generic subagent with the adversarial prompt.
 
 #### Cross-model escalation
 
@@ -208,7 +208,7 @@ If 3 cycles is "obviously insufficient" because the artifact is large: the artif
 | Rationalization | Reality |
 |---|---|
 | "I'm confident, skip the doubt step" | Confidence correlates poorly with correctness on novel problems. Moments of certainty are exactly when blind spots hide. |
-| "Spawning a reviewer is expensive" | Debugging a wrong [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) in production is more expensive. The check is bounded; the bug isn't. |
+| "Spawning a reviewer is expensive" | Debugging a wrong [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) in production is more expensive. The check is bounded; the bug isn't. |
 | "The reviewer will just nitpick" | Only if unscoped. Constrain the prompt to "issues that would make this fail under the contract." |
 | "I'll do doubt at the end with `/review`" | `/review` is a final gate. Doubt-driven catches wrong directions early when course-correction is cheap. By PR time it's too late. |
 | "If I doubt every step I'll never ship" | The skill applies to non-trivial decisions, not every keystroke. Re-read "When NOT to Use." |

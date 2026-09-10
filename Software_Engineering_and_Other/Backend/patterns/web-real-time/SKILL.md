@@ -367,10 +367,10 @@ function generateTurnCredentials(sharedSecret: string, username: string, ttl = 8
 ### Deployment
 - Separate signaling and media planes — signaling can scale independently from media
 - Place TURN servers near users (edge locations) to minimize relay latency
-- Use [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) headless services for WebSocket signaling with session affinity
+- Use [Kubernetes](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) headless services for WebSocket signaling with session affinity
 - Monitor: ICE failures, TURN bandwidth, packet loss, jitter, round-trip time
 
-### [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+### [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - Key metrics: ICE connection time, call success rate, media bitrate, packet loss, jitter buffer delay
 - Alerts: elevated ICE failure rate >5%, TURN bandwidth >80% [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md), signaling latency >200ms
 - Logging: structured JSON logs for all signaling messages (type, roomId, peerId, duration)
@@ -471,7 +471,7 @@ describe('WebRTC Signaling Server', () => {
 ## Handoff
 - `backend/universal/websocket-patterns` — WebSocket fundamentals and optimizations
 - `backend/universal/[data-streaming](../../../../Data_Engineering/streaming/SKILL.md)` — Real-time data streaming patterns
-- `backend/universal/[load-testing](../../../../observability-monitoring-logging/common/capacity-monitoring/load-testing/SKILL.md)` — Load testing signaling and media infrastructure
+- `backend/universal/[load-testing](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/capacity-monitoring/load-testing/SKILL.md)` — Load testing signaling and media infrastructure
 - `security/network` — TURN/STUN firewall and network security
 
 ## Edge Cases
@@ -515,7 +515,7 @@ describe('WebRTC Signaling Server', () => {
 - **DoS prevention**: per-peer inbound bitrate cap (configurable, e.g. 10Mbps). Drop packets exceeding limit. Notify via signaling to reduce quality.
 - **Logging**: never log SDP payloads (may contain local IPs). Log message type, roomId, peerId, timestamps only.
 
-### Burn-Rate [Alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) Configuration
+### Burn-Rate [Alerting](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md) Configuration
 ```yaml
 alerts:
   ice_failure_rate:

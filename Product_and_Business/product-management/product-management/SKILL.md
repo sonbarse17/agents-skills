@@ -68,7 +68,7 @@ API Product Mission:
 
 | Model | Description | Example | Best For |
 |-------|-------------|---------|----------|
-| Free | No charge, drive ecosystem adoption | [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) API | Platform lock-in, ecosystem growth |
+| Free | No charge, drive ecosystem adoption | [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) API | Platform lock-in, ecosystem growth |
 | Usage-based | Pay per request/unit | Stripe ($0.025/call) | Variable usage patterns |
 | Tiered | Different plans with limits | Google Maps API | Predictable consumption segments |
 | Freemium | Free tier + paid premium | Slack API | Bottom-up adoption |
@@ -530,7 +530,7 @@ launch_day_checklist:
     - Deploy to production
     - Verify health check returns 200
     - Execute test queries against production
-    - Confirm [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) data flowing
+    - Confirm [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) data flowing
 
   communicate:
     - Publish blog post and changelog
@@ -632,7 +632,7 @@ tier_design:
 - [Developer Experience](../../ops-and-hiring/developer-experience/SKILL.md).md) — DX principles, SDKs, documentation, error messages
 - [Developer Portal](../../../Global_References/Product_and_Business/developer-portal.md) — Developer portal design, self-service onboarding, analytics
 - [Monetization](../../../Global_References/Product_and_Business/monetization.md) — Pricing models, usage tracking, rate limiting tiers
-- [Product Metrics](../../../Global_References/Product_and_Business/product-metrics.md) — Adoption, DX, reliability, and business metrics with [dashboards](../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)
+- [Product Metrics](../../../Global_References/Product_and_Business/product-metrics.md) — Adoption, DX, reliability, and business metrics with [dashboards](../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)
 - [API Consumer Insights](../../../Global_References/Product_and_Business/api-consumer-insights.md) — Consumer lifecycle, health scoring, churn prediction
 - [API Governance](../../../Global_References/Product_and_Business/api-governance.md) — Governance framework, API council, design standards
 - [API Stakeholder Management](../../../Global_References/Product_and_Business/api-stakeholder-management.md) — Stakeholder mapping, communication, escalation

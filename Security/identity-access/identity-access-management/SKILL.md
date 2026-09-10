@@ -32,7 +32,7 @@ Reach for this skill when:
 - **Compliance [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) preparation** -- SOC 2, ISO 27001, or HIPAA requires documented access controls, MFA enforcement, and [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs.
 - **Team growth inflection** -- You are crossing 15-20 employees and manual onboarding/offboarding is becoming error-prone.
 - **Vendor security questionnaires** -- Customers are asking about your identity posture and you need to demonstrate controls.
-- **[Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response** -- You need to revoke access quickly across all systems for a departing or compromised user.
+- **[Incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response** -- You need to revoke access quickly across all systems for a departing or compromised user.
 
 Signs you are overdue:
 
@@ -111,7 +111,7 @@ gam print samlappinfo "Internal Dashboard"
 ```bash
 # Enable auto-provisioning for supported apps
 # Google Workspace supports automatic user provisioning for apps like:
-# Slack, Zoom, Box, Dropbox, Asana, [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Enterprise
+# Slack, Zoom, Box, Dropbox, Asana, [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Enterprise
 
 # List provisioned apps
 gam print tokens
@@ -394,14 +394,14 @@ curl -s -H "Authorization: Bearer ${SLACK_SCIM_TOKEN}" \
   "https://api.slack.com/scim/v2/Users?count=5" | jq '.Resources[].userName'
 ```
 
-#### [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Organization SSO
+#### [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Organization SSO
 
 ```bash
-# Configure SAML for [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Org (requires [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Enterprise Cloud)
-# 1. [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) Org Settings > Authentication security > Enable SAML
+# Configure SAML for [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Org (requires [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Enterprise Cloud)
+# 1. [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Org Settings > Authentication security > Enable SAML
 # 2. Provide IdP SSO URL, IdP issuer, public certificate from your IdP
 
-# Use [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) CLI to verify SSO status
+# Use [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) CLI to verify SSO status
 gh api orgs/company/credential-authorizations --paginate \
   | jq '.[] | {login: .login, credential_type: .credential_type, authorized_at: .authorized_credential_note}'
 
@@ -615,8 +615,8 @@ Map every application permission to a group, never to an individual user.
 # Examples:
 #   aws-developer       -> AWS ReadOnly + deploy
 #   aws-admin           -> AWS AdministratorAccess
-#   [github](../../../ci-cd/github-actions/other/github/SKILL.md)-engineer     -> [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) write access
-#   [github](../../../ci-cd/github-actions/other/github/SKILL.md)-admin        -> [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) admin access
+#   [github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)-engineer     -> [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) write access
+#   [github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)-admin        -> [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) admin access
 #   slack-member        -> Slack standard member
 #   pagerduty-oncall    -> PagerDuty responder role
 
@@ -627,7 +627,7 @@ curl -s -X POST \
   "${OKTA_ORG_URL}/api/v1/groups/rules" \
   -d '{
     "type": "group_rule",
-    "name": "Auto-assign engineers to [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)",
+    "name": "Auto-assign engineers to [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)",
     "conditions": {
       "expression": {
         "value": "user.department == \"Engineering\"",
@@ -647,7 +647,7 @@ curl -s -X POST \
 # The user assumes a role that expires after a set duration
 aws sts assume-role \
   --role-arn "arn:aws:iam::123456789012:role/EmergencyAdmin" \
-  --role-session-name "alice-[incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-2026-03-24" \
+  --role-session-name "alice-[incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-2026-03-24" \
   --duration-seconds 3600 \
   | jq '{AccessKeyId: .Credentials.AccessKeyId, Expiration: .Credentials.Expiration}'
 
@@ -813,7 +813,7 @@ curl -s -H "Authorization: SSWS ${OKTA_API_TOKEN}" \
   done
 
 # Step 5: Revoke app-specific tokens
-# [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md): Remove from org
+# [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md): Remove from org
 gh api -X DELETE "orgs/company/members/${DEPARTING_USER}"
 
 # Slack: Deactivate via SCIM
@@ -856,8 +856,8 @@ curl -s -H "Authorization: SSWS ${OKTA_API_TOKEN}" \
   "${OKTA_ORG_URL}/api/v1/users/${DEPARTING_USER}" \
   | jq -r '.status' | grep -q "DEPROVISIONED" && echo "[OK] Okta deprovisioned" || echo "[FAIL] Okta still active"
 
-# [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md)
-gh api "orgs/company/members/${DEPARTING_USER}" 2>&1 | grep -q "404" && echo "[OK] [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) removed" || echo "[FAIL] [GitHub](../../../ci-cd/github-actions/other/github/SKILL.md) still member"
+# [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)
+gh api "orgs/company/members/${DEPARTING_USER}" 2>&1 | grep -q "404" && echo "[OK] [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) removed" || echo "[FAIL] [GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) still member"
 
 # Check for any remaining active sessions in [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) logs
 echo "=== Checking for post-offboard activity ==="

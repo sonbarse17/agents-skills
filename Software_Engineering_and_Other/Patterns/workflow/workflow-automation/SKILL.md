@@ -35,7 +35,7 @@ sequence of commands.**
 
 Polling wastes cycles and adds latency proportional to the poll interval; it also invites a race
 where two pollers both see the same unhandled condition. An event-driven trigger — a webhook, a
-queue message, a [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) watch — reacts immediately and, if built on an at-least-once delivery
+queue message, a [Kubernetes](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) watch — reacts immediately and, if built on an at-least-once delivery
 system, gives you an explicit signal to deduplicate against instead of an implicit one you have to
 infer from timing.
 
@@ -89,7 +89,7 @@ deserves a human checkpoint even if the automation to skip that checkpoint is ea
   doesn't wait for.
 
 See `[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)` for how this same human-in-the-loop judgment applies under time pressure,
-and `[runbooks](../../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md)` for documenting the manual fallback when automation isn't trusted yet.
+and `[runbooks](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md)` for documenting the manual fallback when automation isn't trusted yet.
 
 **Done when:** every workflow step is explicitly classified as auto-run or approval-required, and
 that classification is enforced by the workflow engine, not by convention.
@@ -97,7 +97,7 @@ that classification is enforced by the workflow engine, not by convention.
 ## 5. Instrument the workflow, not just its steps
 
 A workflow that logs each step's success but never records the whole chain's state leaves an
-operator reconstructing "where did this run get to" from scattered logs during an [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md). Treat
+operator reconstructing "where did this run get to" from scattered logs during an [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md). Treat
 the workflow instance itself as a first-class object with a status.
 
 - **Emit a start and end event for the whole workflow run**, correlated by the event ID from step 1.

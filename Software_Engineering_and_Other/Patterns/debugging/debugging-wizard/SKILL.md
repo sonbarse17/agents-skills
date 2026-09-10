@@ -95,11 +95,11 @@ node --inspect-brk script.js     # pause at first line, attach Chrome DevTools
 **Git bisect (regression hunting)**
 ```bash
 git bisect start
-git bisect bad                   # current [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) is broken
-git bisect good v1.2.0           # last known good tag/[commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)
+git bisect bad                   # current [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) is broken
+git bisect good v1.2.0           # last known good tag/[commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md)
 # Git checks out midpoint — test, then:
 git bisect good   # or: git bisect bad
-# Repeat until git identifies the first bad [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)
+# Repeat until git identifies the first bad [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md)
 git bisect reset
 ```
 
@@ -119,5 +119,5 @@ When debugging, provide:
 3. **Fix**: Code change that resolves it
 4. **Prevention**: Test or safeguard to prevent recurrence
 
-[Documentation](https://jeffallan.[github](../../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/quality/debugging-wizard/)
+[Documentation](https://jeffallan.[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/quality/debugging-wizard/)
 

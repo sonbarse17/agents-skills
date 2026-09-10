@@ -98,7 +98,7 @@ What are your requirements?
   ├── Fully managed, no ops, Lambda triggers, simple
   │   └── AWS SQS — auto-scale, limited features, 256KB max
   ├── High throughput, low latency, JVM-free
-  │   └── Pulsar — geo-replication, [multi-tenancy](../../../../containers-orchestration/common/other/multi-tenancy/SKILL.md), segment-based storage
+  │   └── Pulsar — geo-replication, [multi-tenancy](../../../../DevOps_and_Cloud/containers-orchestration/common/other/multi-tenancy/SKILL.md), segment-based storage
   └── Pub/sub with push delivery, mobile/web integration
       └── Google Pub/Sub — managed, exactly-once, push subscriptions
 ```
@@ -185,7 +185,7 @@ Exactly-once:     transactional producers + idempotent consumers + dedup.
 On receive message:
   1. Check if idempotency_key exists in processed set (Redis / DB).
   2. If exists → ack and skip (duplicate).
-  3. If not exists → process, store idempotency_key, [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) offset / ack.
+  3. If not exists → process, store idempotency_key, [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) offset / ack.
 
 Idempotency key = message.id or business_key + event_type
 Processed set TTL: match broker retention period
@@ -317,7 +317,7 @@ async function publishEvent(event: DomainEvent) {
 }
 ```
 
-### Step 9: [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
+### Step 9: [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
 
 | Metric | What It Tells | Alert Threshold |
 |--------|--------------|-----------------|
@@ -329,7 +329,7 @@ async function publishEvent(event: DomainEvent) {
 | Queue depth (SQS/Rabbit) | Backlog | Depth > 10000 |
 
 ```[typescript](../../../Frontend/common/typescript/SKILL.md)
-// Kafka lag [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+// Kafka lag [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 async function checkConsumerLag(admin: Admin, groupId: string): Promise<void> {
   const lag = await admin.fetchOffsets({ groupId });
   for (const partition of lag) {
@@ -368,8 +368,8 @@ async function checkConsumerLag(admin: Admin, groupId: string): Promise<void> {
 |-------------|-------------|-----|
 | Using MQ as a database | Storage grows unbounded, no query capability | Define retention limits, use DB for persistence |
 | Infinite retention | Storage explosion, slow rebalances | Set retention by time and size |
-| No DLQ [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) | Silent data loss | Alert on DLQ message production |
-| Committing offset before processing | Lost messages on crash | [Commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) after processing (at-least-once) |
+| No DLQ [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) | Silent data loss | Alert on DLQ message production |
+| Committing offset before processing | Lost messages on crash | [Commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) after processing (at-least-once) |
 | Too many partitions | Rebalance overhead, connection overhead | Partitions = consumers × 2-3 max |
 | Synchronous producing | Increases latency, reduces throughput | Batch or async produce |
 | Single consumer on partitioned topic | N-1 idle partitions | Match consumer count to partitions |
@@ -380,9 +380,9 @@ async function checkConsumerLag(admin: Admin, groupId: string): Promise<void> {
 - Every message must have a unique id and timestamp.
 - Always use key-based partitioning when message ordering matters.
 - Schema evolve via new version — never mutate existing message schemas.
-- DLQ must have [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md). Unattended DLQ = silent data loss.
+- DLQ must have [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [alerting](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md). Unattended DLQ = silent data loss.
 - Consumer lag must be monitored. Set alerts for lag > threshold.
-- Never [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) offsets before processing is complete (at-least-once).
+- Never [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) offsets before processing is complete (at-least-once).
 - Max message size: 1MB for Kafka, 256KB for SQS, unlimited for RabbitMQ (practical: 10MB).
 - Never produce to a topic that doesn't exist — create topics with proper config first.
 - Use idempotent producers for Kafka (exactly-once semantics to broker).
@@ -392,7 +392,7 @@ async function checkConsumerLag(admin: Admin, groupId: string): Promise<void> {
   - ../../../../Global_References/Software_Engineering_and_Other/consumer-patterns.md — Consumer Patterns
   - ../../../../Global_References/Software_Engineering_and_Other/kafka-patterns.md — Kafka Patterns
   - ../../../../Global_References/Software_Engineering_and_Other/message-design.md — Message Schema Design
-  - ../../../Global_References/message-queue-[monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Message Queue [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+  - ../../../Global_References/message-queue-[monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).md — Message Queue [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
   - ../../../../Global_References/Software_Engineering_and_Other/message-queue-security.md — Message Queue Security
   - ../../../../Global_References/Software_Engineering_and_Other/producer-patterns.md — Producer Patterns
   - ../../../../Global_References/Software_Engineering_and_Other/rabbitmq-patterns.md — RabbitMQ Patterns
@@ -451,7 +451,7 @@ class KafkaMessageConsumer:
             "bootstrap.servers": bootstrap_servers,
             "group.id": group_id,
             "auto.offset.reset": "earliest",
-            "enable.auto.[commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)": False,
+            "enable.auto.[commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md)": False,
             "max.poll.interval.ms": 300000,
         })
         self.consumer.subscribe(topics)
@@ -471,7 +471,7 @@ class KafkaMessageConsumer:
                 try:
                     value = json.loads(msg.value().decode())
                     handler(value, msg.key().decode() if msg.key() else None, msg.headers() or [])
-                    self.consumer.[commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)(msg)
+                    self.consumer.[commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md)(msg)
                 except Exception as e:
                     print(f"Processing error: {e}")
                     # Send to DLQ
@@ -484,7 +484,7 @@ class KafkaMessageConsumer:
     def _send_to_dlq(self, msg):
         dlq_topic = f"{msg.topic()}.dlq"
         self.consumer.produce(dlq_topic, key=msg.key(), value=msg.value())
-        self.consumer.[commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)(msg)
+        self.consumer.[commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md)(msg)
 ```
 
 ## Architecture Decision Trees
@@ -520,8 +520,8 @@ What are the requirements?
 | Anti-Pattern | Why It Fails | Correct Approach |
 |---|---|---|
 | Infinite retention | Storage explosion, slow rebalances | Set retention by time (7d default) and size |
-| No DLQ [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) | Silent data loss | Alert on DLQ message production |
-| Committing offset before processing | Lost messages on crash | [Commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) after processing (at-least-once) |
+| No DLQ [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) | Silent data loss | Alert on DLQ message production |
+| Committing offset before processing | Lost messages on crash | [Commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) after processing (at-least-once) |
 | Too many partitions | Rebalance overhead, connection overhead | Partitions = consumers x 2-3 max |
 
 ## Performance Optimization

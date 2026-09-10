@@ -154,7 +154,7 @@ def validate_training_data(df):
 - Log all hyperparameters, metrics, and artifacts to experiment tracking
 - Validate data schema and distribution before training begins
 - Use containerized environments; store credentials in secrets managers, never in code
-- Implement error handling, retry logic, and pipeline [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
+- Implement error handling, retry logic, and pipeline [alerting](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 - Separate training and inference code clearly
 
 **Never:**
@@ -175,7 +175,7 @@ When implementing a pipeline, provide:
 
 ## Knowledge Reference
 
-MLflow, Kubeflow Pipelines, Apache Airflow, Prefect, Feast, Weights & Biases, Neptune, DVC, Great Expectations, Ray, Horovod, [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md), S3/GCS/Azure Blob, model registry patterns, feature store architecture, distributed training, hyperparameter optimization
+MLflow, Kubeflow Pipelines, Apache Airflow, Prefect, Feast, Weights & Biases, Neptune, DVC, Great Expectations, Ray, Horovod, [Kubernetes](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md), [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md), S3/GCS/Azure Blob, model registry patterns, feature store architecture, distributed training, hyperparameter optimization
 
-[Documentation](https://jeffallan.[github](../../../../ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/data-ml/ml-pipeline/)
+[Documentation](https://jeffallan.[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).io/claude-skills/skills/data-ml/ml-pipeline/)
 

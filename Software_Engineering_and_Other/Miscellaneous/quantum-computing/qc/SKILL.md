@@ -224,7 +224,7 @@ Schedule recurring quality reviews:
 Define escalation path for quality violations:
 - Gate failure in PR: Blocked merge, author must fix
 - Repeated gate failure (3+ times): Team lead notified
-- Production [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) due to quality gap: Root cause analysis, process update
+- Production [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) due to quality gap: Root cause analysis, process update
 - Exception request: Requires documented justification, security review, expiry date
 
 ## Framework / Methodologies
@@ -267,7 +267,7 @@ What is your primary goal?
 | Level | Stage | Characteristics | Automation |
 |-------|-------|-----------------|------------|
 | 1 | Initial | No standards, manual reviews | None |
-| 2 | Managed | Basic linter, coverage targets | Pre-[commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) hooks |
+| 2 | Managed | Basic linter, coverage targets | Pre-[commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) hooks |
 | 3 | Defined | Quality gates in CI, rules defined | PR checks |
 | 4 | Measured | Dashboard, trend analysis, TD tracking | Automated reporting |
 | 5 | Optimizing | AI-assisted review, predictive quality | Continuous improvement |
@@ -277,11 +277,11 @@ What is your primary goal?
 | Phase | Gate | Minimum Pass |
 |-------|------|--------------|
 | Design | Architecture review, ADR | All concerns addressed |
-| Development | Pre-[commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) hooks, local lint | Zero errors |
+| Development | Pre-[commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) hooks, local lint | Zero errors |
 | Pull request | CI quality gates, peer review | All gates pass |
 | Staging | Integration tests, security scan | All critical pass |
 | Production | Smoke tests, canary analysis | Zero errors |
-| Post-release | [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), error budgets | SLO within budget |
+| Post-release | [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), error budgets | SLO within budget |
 
 ## Common Pitfalls
 
@@ -317,7 +317,7 @@ Automating every aspect of code review (format, lint, complexity, coverage) can 
 
 ## Best Practices
 
-- **Enforce gates at PR time, not at [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) time**: Developers should be able to [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) and push freely; gates block merge, not work.
+- **Enforce gates at PR time, not at [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) time**: Developers should be able to [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) and push freely; gates block merge, not work.
 - **Separate overall vs new code coverage**: New code should meet a higher threshold (90%) than legacy code (80%) to prevent quality drift.
 - **Use incremental analysis**: Only analyze changed files in PRs, not the entire codebase. Full analysis runs nightly.
 - **Track quality trends, not snapshots**: A single snapshot is misleading. Track 4-week rolling averages for coverage, defect density, and technical debt.
@@ -377,7 +377,7 @@ register:
 }
 ```
 
-### PR Quality Check [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Action
+### PR Quality Check [GitHub](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Action
 
 ```yaml
 name: Quality Gate
@@ -438,11 +438,11 @@ An open-source project with 500+ contributors needed consistent quality across P
 - ../../../../Global_References/Software_Engineering_and_Other/quality-gates-matrix.md — Quality gate definitions per language (JS, [Python](../../../Languages/python/python/SKILL.md), Go, Rust)
 - ../../../../Global_References/Software_Engineering_and_Other/technical-debt-register.md — Technical debt register template with severity and effort
 - ../../../../Global_References/Software_Engineering_and_Other/qc-process-framework.md — QC process framework and maturity model
-- ../../../../Global_References/Software_Engineering_and_Other/qc-metrics-dashboard.md — Metrics-driven quality [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) and KPIs
+- ../../../../Global_References/Software_Engineering_and_Other/qc-metrics-dashboard.md — Metrics-driven quality [dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) and KPIs
 
 ## Handoff
 After completing this skill:
-- Next skill: **[code-review](../../../../ci-cd/common/other/code-review/SKILL.md)** — detailed code review on the implementation
+- Next skill: **[code-review](../../../../DevOps_and_Cloud/ci-cd/common/other/code-review/SKILL.md)** — detailed code review on the implementation
 - Pass context: quality gate results, violation list, technical debt register
 
 ## Architecture Decision Trees
@@ -519,7 +519,7 @@ quality_gate:
 - **Tiered execution**: Fast checks (lint, unit tests) run on every push. Slow checks (SAST, full coverage) run on PR ready-for-review.
 
 ### Developer Experience
-- **Pre-[commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) hooks**: Run fast quality checks locally before push. Provide fix suggestions for auto-fixable issues.
+- **Pre-[commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) hooks**: Run fast quality checks locally before push. Provide fix suggestions for auto-fixable issues.
 - **IDE integration**: Provide IDE config files (ESLint, Prettier, EditorConfig). Reduce format/style discussions in code review.
 - **Self-service exemptions**: Allow developers to temporarily override non-critical gates. Auto-revert after 7 days.
 
@@ -527,7 +527,7 @@ quality_gate:
 
 ### Gate Security
 - **SAST integration**: Run static application security testing as mandatory gate. Block PRs with critical/high findings.
-- **Secret scanning**: Scan every [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) for hardcoded secrets. Alert security team on credential exposure.
+- **Secret scanning**: Scan every [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) for hardcoded secrets. Alert security team on credential exposure.
 - **License compliance**: Scan dependencies for license compatibility. Block open-source licenses not on approved list.
 
 ### Supply Chain

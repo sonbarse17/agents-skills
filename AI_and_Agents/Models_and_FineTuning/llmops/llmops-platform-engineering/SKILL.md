@@ -27,35 +27,35 @@ Design and operate an internal LLM platform that supports rapid experimentation 
 - Building an internal platform for teams to deploy and manage LLM-powered features
 - Designing CI/CD pipelines that include model evaluation gates
 - Setting up A/B testing infrastructure for model versions
-- Creating [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-based model serving infrastructure
+- Creating [Kubernetes](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-based model serving infrastructure
 - Establishing governance workflows for model promotion
 
 ## Prerequisites
 
-- [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster with GPU node pools (or cloud inference API access)
+- [Kubernetes](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster with GPU node pools (or cloud inference API access)
 - Container registry (Harbor, ECR, GCR, or ACR)
-- CI/CD system ([GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, or Argo Workflows)
-- [Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) stack (Prometheus + Grafana + [OpenTelemetry](../../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
+- CI/CD system ([GitHub](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions, GitLab CI, or Argo Workflows)
+- [Observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) stack (Prometheus + Grafana + [OpenTelemetry](../../../../DevOps_and_Cloud/observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
 - Model registry (MLflow or custom metadata store)
 
 ## Outcomes
 
 - Standardized path from experiment to production
 - Safe model rollout with quality and safety gates
-- Repeatable infra modules for inference, vector DB, and [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
+- Repeatable infra modules for inference, vector DB, and [observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
 - Clear ownership model across platform, app, and security teams
 
 ## Reference Architecture
 
 1. **Control Plane**: model registry, prompt/version catalog, policy checks, eval pipeline.
 2. **Data Plane**: inference gateway, vector database, cache, feature store.
-3. **Ops Plane**: telemetry, [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md), SLO [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), cost analytics.
+3. **Ops Plane**: telemetry, [alerting](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md), SLO [dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), cost analytics.
 4. **Security Plane**: IAM boundaries, secret rotation, content filters, [audit](../../../Operations/common/audit/SKILL.md) logs.
 
 ## Model Promotion Pipeline
 
 ```yaml
-# .[github](../../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/model-promotion.yaml
+# .[github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/workflows/model-promotion.yaml
 name: Model Promotion Pipeline
 on:
   workflow_dispatch:
@@ -131,7 +131,7 @@ jobs:
     steps:
       - name: Record approval
         run: |
-          echo "Approved by: ${{ [github](../../../../ci-cd/github-actions/other/github/SKILL.md).actor }}"
+          echo "Approved by: ${{ [github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).actor }}"
           echo "Model: ${{ inputs.model_name }}:${{ inputs.model_version }}"
           echo "Target: ${{ inputs.target_env }}"
           echo "Time: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
@@ -144,7 +144,7 @@ jobs:
 
       - name: Deploy canary
         run: |
-          [kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) set image deployment/${{ inputs.model_name }}-canary \
+          [kubectl](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubectl/SKILL.md) set image deployment/${{ inputs.model_name }}-canary \
             model=${{ inputs.model_name }}:${{ inputs.model_version }} \
             -n ai-${{ inputs.target_env }}
 
@@ -159,10 +159,10 @@ jobs:
 
       - name: Promote to full rollout
         run: |
-          [kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) set image deployment/${{ inputs.model_name }} \
+          [kubectl](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubectl/SKILL.md) set image deployment/${{ inputs.model_name }} \
             model=${{ inputs.model_name }}:${{ inputs.model_version }} \
             -n ai-${{ inputs.target_env }}
-          [kubectl](../../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) rollout status deployment/${{ inputs.model_name }} \
+          [kubectl](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubectl/SKILL.md) rollout status deployment/${{ inputs.model_name }} \
             -n ai-${{ inputs.target_env }} --timeout=300s
 ```
 
@@ -248,7 +248,7 @@ spec:
     hash_key: user_id
 ```
 
-## [Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Model Serving Deployment
+## [Kubernetes](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Model Serving Deployment
 
 ```yaml
 # model-serving-deployment.yaml
@@ -283,7 +283,7 @@ spec:
     spec:
       topologySpreadConstraints:
         - maxSkew: 1
-          topologyKey: topology.[kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).io/zone
+          topologyKey: topology.[kubernetes](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md).io/zone
           whenUnsatisfiable: DoNotSchedule
           labelSelector:
             matchLabels:
@@ -408,7 +408,7 @@ spec:
   - regression evals drop below baseline,
   - safety tests exceed risk threshold,
   - p95 latency exceeds SLO budget.
-- Store deployment evidence for audits ([commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) SHA, eval report, approver).
+- Store deployment evidence for audits ([commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) SHA, eval report, approver).
 
 ## Operational SLOs
 
@@ -431,10 +431,10 @@ spec:
 
 | Layer | Tools |
 |-------|-------|
-| Orchestration | Argo Workflows, [GitHub](../../../../ci-cd/github-actions/other/github/SKILL.md) Actions, Airflow |
+| Orchestration | Argo Workflows, [GitHub](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md) Actions, Airflow |
 | Model Registry | MLflow, custom metadata DB |
 | Gateway | LiteLLM, Envoy-based API gateway |
-| [Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) | [OpenTelemetry](../../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) + Prometheus + Grafana + Langfuse |
+| [Observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) | [OpenTelemetry](../../../../DevOps_and_Cloud/observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md) + Prometheus + Grafana + Langfuse |
 | Policy | OPA/Rego for deployment and runtime checks |
 | Evaluation | RAGAS, custom eval harness, Promptfoo |
 | Serving | vLLM, TGI, Triton Inference Server |
@@ -455,4 +455,4 @@ spec:
 - [agent-evals](../../../Workflows/evaluation/agent-evals/SKILL.md)/) - Build evaluation gates for releases
 - [llm-gateway](../../../infrastructure/networking/[llm-gateway](../llm-gateway/SKILL.md)/) - Route and control LLM traffic
 - [model-registry-governance](../[model-registry-governance](../model-registry-governance/SKILL.md)/) - Model lifecycle and approval workflows
-- [ai-sre-[incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-response](../[ai-sre-[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response](../../../DevOps_and_Cloud/Observability_and_SecOps/ai-sre-[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)/SKILL.md)/) - AI-specific [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response
+- [ai-sre-[incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md)-response](../[ai-sre-[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response](../../../DevOps_and_Cloud/Observability_and_SecOps/ai-sre-[incident-response](../../../DevOps_and_Cloud/Observability_and_SecOps/[incident](../../../DevOps_and_Cloud/Observability_and_SecOps/incident/SKILL.md)-response/SKILL.md)/SKILL.md)/) - AI-specific [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) response

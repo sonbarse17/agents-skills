@@ -29,7 +29,7 @@ Use this skill when:
 - Making significant architectural changes to existing systems
 - Onboarding a new third-party integration or dependency
 - Preparing for security audits or compliance reviews
-- Responding to a security [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) to improve defenses
+- Responding to a security [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) to improve defenses
 - Reviewing infrastructure changes that affect trust boundaries
 
 ## Prerequisites
@@ -258,7 +258,7 @@ categories:
       name: "Credential stuffing"
       description: "Attacker uses leaked credential databases to attempt logins"
       applicable_to: ["login endpoints", "API authentication"]
-      mitigations: ["MFA", "rate limiting", "credential breach [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)", "CAPTCHA"]
+      mitigations: ["MFA", "rate limiting", "credential breach [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)", "CAPTCHA"]
 
     - id: TL-AUTH-002
       name: "Session hijacking"
@@ -296,7 +296,7 @@ categories:
       name: "Dependency confusion"
       description: "Malicious package with internal name published to public registry"
       applicable_to: ["npm, pip, maven projects using private packages"]
-      mitigations: ["namespace scoping", "registry prioritization", "SBOM [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)"]
+      mitigations: ["namespace scoping", "registry prioritization", "SBOM [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)"]
 
     - id: TL-SC-002
       name: "Compromised CI/CD pipeline"
@@ -381,8 +381,8 @@ risk_treatment:
 ## OWASP Threat Dragon Setup
 
 ```bash
-# Run Threat Dragon locally with [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)
-[docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run -d \
+# Run Threat Dragon locally with [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)
+[docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) run -d \
   --name threat-dragon \
   -p 3000:3000 \
   -e ENCRYPTION_KEYS='["threat-dragon-encryption-key-change-me"]' \
@@ -392,13 +392,13 @@ risk_treatment:
 # Access at http://localhost:3000
 
 # Or install as desktop application
-# Download from: https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/OWASP/threat-dragon/releases
+# Download from: https://[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/OWASP/threat-dragon/releases
 ```
 
 ### Integration with CI/CD
 
 ```yaml
-# .[github](../../../ci-cd/github-actions/other/github/SKILL.md)/workflows/threat-model-review.yml
+# .[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md)/workflows/threat-model-review.yml
 name: Threat Model Review
 on:
   pull_request:

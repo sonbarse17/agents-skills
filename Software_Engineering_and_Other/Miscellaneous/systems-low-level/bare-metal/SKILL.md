@@ -35,7 +35,7 @@ depends_on:
 # Bare Metal Infrastructure
 
 ## Purpose
-Automate bare metal server lifecycle from provisioning and configuration to [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and decommissioning, using PXE boot, IPMI/BMC, MAAS, and [infrastructure-as-code](../../../../infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) approaches.
+Automate bare metal server lifecycle from provisioning and configuration to [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and decommissioning, using PXE boot, IPMI/BMC, MAAS, and [infrastructure-as-code](../../../../DevOps_and_Cloud/infrastructure-as-code/common/other/infrastructure-as-code/SKILL.md) approaches.
 
 ## Agent Protocol
 
@@ -52,7 +52,7 @@ Before activating, verify:
 - RAID controller model (PERC, Smart Array, MegaRAID, NVMe-native).
 
 ### Output Artifact
-Writes to PXE/iPXE config files, MAAS machine definitions, automation scripts ([Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md), [Python](../../../Languages/python/python/SKILL.md), Bash), BMC configuration scripts, firmware management playbooks.
+Writes to PXE/iPXE config files, MAAS machine definitions, automation scripts ([Ansible](../../../../DevOps_and_Cloud/infrastructure-as-code/ansible/other/ansible/SKILL.md), [Python](../../../Languages/python/python/SKILL.md), Bash), BMC configuration scripts, firmware management playbooks.
 
 ### Response Format
 Configuration files, scripts, and playbooks with no extraneous explanation.
@@ -77,7 +77,7 @@ Direct file write. No response text.
 | Legacy PXE | Slow | Low | Minimal | Simple environments, <10 servers |
 | iPXE (scriptable) | Fast | Medium | Good (HTTP boot, scripting) | Most environments |
 | MAAS (Metal as a Service) | Fast | High | Excellent (DHCP, DNS, imaging, IPMI) | Ubuntu-focused shops |
-| Metal3 ([Kubernetes](../../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-native) | Medium | Medium | Good (K8s CRDs for bare metal) | [OpenShift](../../../../containers-orchestration/openshift/other/openshift/SKILL.md)/K8s environments |
+| Metal3 ([Kubernetes](../../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md)-native) | Medium | Medium | Good (K8s CRDs for bare metal) | [OpenShift](../../../../DevOps_and_Cloud/containers-orchestration/openshift/other/openshift/SKILL.md)/K8s environments |
 | Foreman + Katello | Medium | Medium | Excellent (full lifecycle mgmt) | RHEL-focused shops |
 | RackN (Digital Rebar) | Fast | Medium | Excellent (multi-vendor) | Hybrid/multi-DC |
 
@@ -110,7 +110,7 @@ Direct file write. No response text.
 | BMC-based (iDRAC/iLO web) | Medium | Medium | Single-server |
 
 ## Quick Start
-Set up PXE/iPXE environment (DHCP + TFTP + HTTP) → Configure BMC networking (static IP on mgmt VLAN) → Define server profiles (BIOS, RAID, firmware) → Provision via MAAS/Foreman → Run burn-in tests → Deploy OS → Register in [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
+Set up PXE/iPXE environment (DHCP + TFTP + HTTP) → Configure BMC networking (static IP on mgmt VLAN) → Define server profiles (BIOS, RAID, firmware) → Provision via MAAS/Foreman → Run burn-in tests → Deploy OS → Register in [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
 
 ## Core Workflow
 
@@ -312,7 +312,7 @@ class BMCConfigurator:
         # Step 3: Configure BMC users and authentication
         self._configure_bmc_users(server)
 
-        # Step 4: Set BMC [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) (SNMP/Email)
+        # Step 4: Set BMC [alerting](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md) (SNMP/Email)
         self._configure_bmc_alerts(server)
 
         # Step 5: Enable serial console redirection
@@ -461,7 +461,7 @@ if __name__ == "__main__":
 
 ### Step 3: Burn-In Testing Playbook
 ```yaml
-# [ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md)/burn-in-test.yml
+# [ansible](../../../../DevOps_and_Cloud/infrastructure-as-code/ansible/other/ansible/SKILL.md)/burn-in-test.yml
 ---
 - name: Server Burn-In Testing
   hosts: new_servers
@@ -478,16 +478,16 @@ if __name__ == "__main__":
 
   tasks:
     - name: Record test start
-      [ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md).builtin.set_fact:
+      [ansible](../../../../DevOps_and_Cloud/infrastructure-as-code/ansible/other/ansible/SKILL.md).builtin.set_fact:
         test_start_time: "{{ ansible_date_time.iso8601 }}"
 
     - name: Install stress testing tools
-      [ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md).builtin.package:
+      [ansible](../../../../DevOps_and_Cloud/infrastructure-as-code/ansible/other/ansible/SKILL.md).builtin.package:
         name: "{{ stress_tools }}"
         state: present
 
     - name: Record baseline hardware info
-      [ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md).builtin.shell:
+      [ansible](../../../../DevOps_and_Cloud/infrastructure-as-code/ansible/other/ansible/SKILL.md).builtin.shell:
         cmd: |
           echo "=== CPU ===" && cat /proc/cpuinfo | grep "model name" | head -1
           echo "=== Memory ===" && free -h
@@ -495,25 +495,25 @@ if __name__ == "__main__":
           echo "=== Network ===" && ip addr show | grep "inet "
           echo "=== Temperature ===" && sensors 2>/dev/null || echo "No sensors"
       register: hardware_info
-    - [ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md).builtin.debug:
+    - [ansible](../../../../DevOps_and_Cloud/infrastructure-as-code/ansible/other/ansible/SKILL.md).builtin.debug:
         var: hardware_info.stdout
 
     - name: CPU stress test (all cores, 30 min)
-      [ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md).builtin.command:
+      [ansible](../../../../DevOps_and_Cloud/infrastructure-as-code/ansible/other/ansible/SKILL.md).builtin.command:
         cmd: stress-ng --cpu 0 --cpu-method matrixprod --timeout 1800s --metrics-brief
       async: 2000
       poll: 30
       register: cpu_stress
 
     - name: Memory stress test (80% RAM, 30 min)
-      [ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md).builtin.command:
+      [ansible](../../../../DevOps_and_Cloud/infrastructure-as-code/ansible/other/ansible/SKILL.md).builtin.command:
         cmd: stress-ng --vm 4 --vm-bytes 80% --timeout 1800s --metrics-brief
       async: 2000
       poll: 30
       register: mem_stress
 
     - name: Disk stress test (fio random read/write)
-      [ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md).builtin.command:
+      [ansible](../../../../DevOps_and_Cloud/infrastructure-as-code/ansible/other/ansible/SKILL.md).builtin.command:
         cmd: >
           fio --name=burnin --ioengine=libaio --iodepth=32
           --rw=randrw --rwmixread=70 --bs=4k --direct=1
@@ -524,43 +524,43 @@ if __name__ == "__main__":
       when: ansible_devices | length > 0
 
     - name: Check temperatures during test
-      [ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md).builtin.command:
+      [ansible](../../../../DevOps_and_Cloud/infrastructure-as-code/ansible/other/ansible/SKILL.md).builtin.command:
         cmd: sensors -u 2>/dev/null | grep -E "_input|_crit" || echo "temperature_ok"
       register: temps
       changed_when: false
 
     - name: Fail if CPU temperature exceeds threshold
-      [ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md).builtin.fail:
+      [ansible](../../../../DevOps_and_Cloud/infrastructure-as-code/ansible/other/ansible/SKILL.md).builtin.fail:
         msg: "CPU temperature exceeds {{ acceptable_temp_celsius }}°C threshold!"
       when: temps.stdout | int > acceptable_temp_celsius
 
     - name: Collect SMART health data
-      [ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md).builtin.shell:
+      [ansible](../../../../DevOps_and_Cloud/infrastructure-as-code/ansible/other/ansible/SKILL.md).builtin.shell:
         cmd: for disk in $(lsblk -dno NAME | grep -E '^(sd|nvme|vd)'); do
                smartctl -H /dev/$disk 2>/dev/null | grep "SMART overall-health"
              done
       register: smart_health
 
     - name: Network stress test
-      [ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md).builtin.command:
+      [ansible](../../../../DevOps_and_Cloud/infrastructure-as-code/ansible/other/ansible/SKILL.md).builtin.command:
         cmd: iperf3 -c {{ iperf_server }} -t 30 -P 4
       when: iperf_server is defined
       register: network_test
 
     - name: Check for hardware errors in dmesg
-      [ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md).builtin.shell:
+      [ansible](../../../../DevOps_and_Cloud/infrastructure-as-code/ansible/other/ansible/SKILL.md).builtin.shell:
         cmd: |
           dmesg --level=err,warn | grep -iE "error|fail|critical|temperature|hardware" \
             | tail -20
       register: dmesg_errors
 
     - name: Fail on critical hardware errors
-      [ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md).builtin.fail:
+      [ansible](../../../../DevOps_and_Cloud/infrastructure-as-code/ansible/other/ansible/SKILL.md).builtin.fail:
         msg: "Critical hardware errors detected: {{ dmesg_errors.stdout }}"
       when: dmesg_errors.stdout | length > 0
 
     - name: Generate burn-in report
-      [ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md).builtin.template:
+      [ansible](../../../../DevOps_and_Cloud/infrastructure-as-code/ansible/other/ansible/SKILL.md).builtin.template:
         src: burnin_report.j2
         dest: /tmp/burnin-report-{{ inventory_hostname }}.txt
       vars:
@@ -568,7 +568,7 @@ if __name__ == "__main__":
         all_passed: "{{ cpu_stress is success and mem_stress is success }}"
 
     - name: Final result
-      [ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md).builtin.debug:
+      [ansible](../../../../DevOps_and_Cloud/infrastructure-as-code/ansible/other/ansible/SKILL.md).builtin.debug:
         msg: >
           Server {{ inventory_hostname }} burn-in test
           {% if all_passed %}PASSED{% else %}FAILED{% endif %}
@@ -892,7 +892,7 @@ Running servers with OEM firmware for years. Critical security fixes and stabili
 - Enable BMC [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) logging and forward to SIEM.
 - Use SSH keys (not passwords) for server access.
 
-### [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+### [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - Monitor BMC health (temperature, voltage, fan speed, PSU status).
 - Monitor disk SMART status proactively (predictive failure analysis).
 - Track firmware versions in asset management system.
@@ -925,11 +925,11 @@ Running servers with OEM firmware for years. Critical security fixes and stabili
 - RAID configuration must follow workload profile (OS: RAID 1, DB: RAID 10, etc.).
 - Provisioning must be automated (PXE/iPXE/MAAS) — no manual USB installs.
 - All servers must have remote console access (serial over LAN).
-- Hardware [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) must be configured before production traffic.
+- Hardware [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) must be configured before production traffic.
 - Asset management database must be updated within 24h of new server deployment.
 
 ## Output Format
-PXE/iPXE configuration, BMC automation scripts ([Python](../../../Languages/python/python/SKILL.md)/Bash), [Ansible](../../../../infrastructure-as-code/ansible/other/ansible/SKILL.md) burn-in playbooks, MAAS API scripts, RAID configuration scripts.
+PXE/iPXE configuration, BMC automation scripts ([Python](../../../Languages/python/python/SKILL.md)/Bash), [Ansible](../../../../DevOps_and_Cloud/infrastructure-as-code/ansible/other/ansible/SKILL.md) burn-in playbooks, MAAS API scripts, RAID configuration scripts.
 
 ## References
   - ../../../../Global_References/Software_Engineering_and_Other/bare-metal-advanced.md

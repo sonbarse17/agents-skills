@@ -33,11 +33,11 @@ depends_on:
 ## Purpose
 
 The Center for Internet Security (CIS) publishes consensus-based, vendor-reviewed
-configuration benchmarks ([Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md), Linux distributions such as
+configuration benchmarks ([Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md), [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md), Linux distributions such as
 Ubuntu/RHEL/Amazon Linux, and cloud foundations benchmarks for AWS/Azure/GCP)
 that translate abstract "harden your systems" advice into specific, testable
 configuration checks. This skill guides running the right automated scanner
-for the target (kube-bench for [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Bench for Security for
+for the target (kube-bench for [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md), [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) Bench for Security for
 container hosts, CIS-CAT Pro or `oscap`/OpenSCAP for Linux OS, cloud-native
 tools or Prowler/ScoutSuite for cloud foundations benchmarks), reading the
 findings against the actual benchmark rationale (not just the pass/fail
@@ -52,16 +52,16 @@ attestation still comes from a separate [audit](../../../AI_and_Agents/Operation
 
 ## When to use
 
-- A user asks to "run a CIS benchmark scan against this [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster /
-  [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) host / Linux server."
-- Interpreting kube-bench, [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Bench, or CIS-CAT scan output and deciding
+- A user asks to "run a CIS benchmark scan against this [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) cluster /
+  [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) host / Linux server."
+- Interpreting kube-bench, [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) Bench, or CIS-CAT scan output and deciding
   what to fix first.
 - A security or compliance team requires "CIS Level 1" or "CIS Level 2"
   hardening evidence for an environment.
 - A specific benchmark control fails and the user asks "why did we fail
   control X.Y.Z" or "how do I fix this finding."
 - A finding is a false positive or genuinely inapplicable (e.g. a managed
-  [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) control plane check that only applies to self-managed
+  [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) control plane check that only applies to self-managed
   clusters) and needs a documented, approved waiver rather than silent
   suppression.
 - Building a recurring hardening/drift-detection pipeline so benchmark
@@ -69,8 +69,8 @@ attestation still comes from a separate [audit](../../../AI_and_Agents/Operation
 
 ## Prerequisites & environment
 
-- Know which CIS Benchmark and profile level applies: e.g. "CIS [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
-  Benchmark v1.9 (aligned to [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) 1.27+)", "CIS [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Benchmark
+- Know which CIS Benchmark and profile level applies: e.g. "CIS [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md)
+  Benchmark v1.9 (aligned to [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) 1.27+)", "CIS [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) Benchmark
   v1.6", "CIS Distribution Independent Linux Benchmark" or a distro-specific
   one (CIS Ubuntu 22.04 Benchmark, CIS Amazon Linux 2023 Benchmark), or a
   cloud foundations benchmark (CIS AWS Foundations Benchmark v3.0, CIS
@@ -84,14 +84,14 @@ attestation still comes from a separate [audit](../../../AI_and_Agents/Operation
   friction is accepted. Pick the profile deliberately, do not default to
   scanning both and treating every Level 2 finding as mandatory.
 - Tooling, matched to target:
-  - **kube-bench** (Aqua Security) for [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) control-plane and
+  - **kube-bench** (Aqua Security) for [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) control-plane and
     worker-node checks — run as a Job/DaemonSet inside the cluster or as a
-    standalone binary on each node. Note that managed [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) (EKS,
+    standalone binary on each node. Note that managed [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) (EKS,
     AKS, GKE) hides or manages the control-plane node, so most
     control-plane checks in the benchmark's "master node" section are
     the cloud provider's responsibility, not yours — this is one of the
     most common sources of "false fail."
-  - **[Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Bench for Security** for [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Engine hosts — shell script
+  - **[Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) Bench for Security** for [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) Engine hosts — shell script
     that inspects the daemon config, running containers, and host files.
   - **CIS-CAT Pro** or **OpenSCAP (`oscap`)** with a CIS SCAP profile for
     Linux OS-level benchmarks.
@@ -100,7 +100,7 @@ attestation still comes from a separate [audit](../../../AI_and_Agents/Operation
     [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../../DevOps_and_Cloud/Cloud_Providers/cloud-iam-hardening/SKILL.md)/SKILL.md)
     and the landing-zone skills).
   - Cluster/host access sufficient to read the relevant config files
-    (kubelet config, `/etc/[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)/daemon.json`, systemd unit files, etc.)
+    (kubelet config, `/etc/[docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)/daemon.json`, systemd unit files, etc.)
     — most checks are read-only inspection, not exploitation.
 - An exception/waiver tracking mechanism — a spreadsheet is a starting
   point, but a ticket system or a version-controlled YAML/JSON waiver file
@@ -113,22 +113,22 @@ attestation still comes from a separate [audit](../../../AI_and_Agents/Operation
    the target profile (Level 1 or Level 2). Record this decision — it is
    the baseline against which every future scan is compared.
 2. **Run the automated scan.**
-   - [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md), as a Job using the upstream kube-bench image against a
+   - [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md), as a Job using the upstream kube-bench image against a
      cluster node:
      ```bash
-     [kubectl](../../../containers-orchestration/kubernetes/other/kubectl/SKILL.md) run kube-bench --rm -it --restart=Never \
-       --image=[docker](../../../containers-orchestration/docker/other/docker/SKILL.md).io/aquasec/kube-bench:v0.9.3 \
-       --overrides='{"spec":{"hostPID":true,"nodeSelector":{"[kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md).io/os":"linux"}}}' \
+     [kubectl](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubectl/SKILL.md) run kube-bench --rm -it --restart=Never \
+       --image=[docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md).io/aquasec/kube-bench:v0.9.3 \
+       --overrides='{"spec":{"hostPID":true,"nodeSelector":{"[kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md).io/os":"linux"}}}' \
        -- --benchmark cis-1.24 --json > kube-bench-results.json
      ```
-   - [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) host:
+   - [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) host:
      ```bash
-     [docker](../../../containers-orchestration/docker/other/docker/SKILL.md) run --rm --net host --pid host --userns host --cap-add audit_control \
+     [docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) run --rm --net host --pid host --userns host --cap-add audit_control \
        -v /etc:/etc:ro -v /usr/bin/containerd:/usr/bin/containerd:ro \
        -v /usr/bin/runc:/usr/bin/runc:ro -v /usr/lib/systemd:/usr/lib/systemd:ro \
-       -v /var/lib:/var/lib:ro -v /var/run/[docker](../../../containers-orchestration/docker/other/docker/SKILL.md).sock:/var/run/[docker](../../../containers-orchestration/docker/other/docker/SKILL.md).sock:ro \
+       -v /var/lib:/var/lib:ro -v /var/run/[docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md).sock:/var/run/[docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md).sock:ro \
        --label docker_bench_security \
-       [docker](../../../containers-orchestration/docker/other/docker/SKILL.md)/[docker](../../../containers-orchestration/docker/other/docker/SKILL.md)-bench-security
+       [docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)/[docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)-bench-security
      ```
 3. **Read the raw output, not just the summary counts.** A `[WARN]` in
    kube-bench often means "requires manual verification" — the tool
@@ -143,12 +143,12 @@ attestation still comes from a separate [audit](../../../AI_and_Agents/Operation
    apply automatically.
 5. **Remediate what applies.** Common remediations: set kubelet
    `--anonymous-auth=false`, restrict `--protect-kernel-defaults=true`,
-   disable [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) legacy registry/`--insecure-registry` flags, set
-   `[docker](../../../containers-orchestration/docker/other/docker/SKILL.md).sock` permissions to non-world-writable, enable auditd rules
+   disable [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) legacy registry/`--insecure-registry` flags, set
+   `[docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md).sock` permissions to non-world-writable, enable auditd rules
    for Linux host benchmarks. Where remediation overlaps container image
    configuration (non-root user, read-only rootfs, dropped capabilities),
    apply it via
-   [container-image-hardening](../../../[devsecops](../devsecops/SKILL.md)/skills/[container-image-hardening](../../../containers-orchestration/docker/security/container-image-hardening/SKILL.md)/SKILL.md)
+   [container-image-hardening](../../../[devsecops](../devsecops/SKILL.md)/skills/[container-image-hardening](../../../DevOps_and_Cloud/containers-orchestration/docker/security/container-image-hardening/SKILL.md)/SKILL.md)
    rather than re-deriving it here.
 6. **For findings that do not apply, open a documented exception** — not
    a silent skip. Minimum fields: control ID and title, why it does not
@@ -177,7 +177,7 @@ attestation still comes from a separate [audit](../../../AI_and_Agents/Operation
 - Pin the scanner and benchmark version in CI (e.g. `kube-bench:v0.9.3`
   with `--benchmark cis-1.24`) so results are reproducible; an upgraded
   scanner can silently change which controls run.
-- Treat kube-bench/[Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) Bench findings on managed cloud services (EKS,
+- Treat kube-bench/[Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) Bench findings on managed cloud services (EKS,
   AKS, GKE, ECS) with skepticism for anything under the provider's
   shared-responsibility boundary — verify against the provider's own
   compliance documentation before spending remediation effort on
@@ -185,7 +185,7 @@ attestation still comes from a separate [audit](../../../AI_and_Agents/Operation
 - Automate remediation only for checks with a clearly safe, idempotent
   fix (e.g. a kubelet flag, a file permission) — checks whose remediation
   could break running workloads (e.g. tightening `NetworkPolicy` defaults,
-  disabling a needed [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) feature) need a change-managed rollout, not an
+  disabling a needed [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) feature) need a change-managed rollout, not an
   auto-apply script.
 - Keep the waiver file next to the scan configuration in version control
   and require peer review on any waiver change — this is what makes the
@@ -193,11 +193,11 @@ attestation still comes from a separate [audit](../../../AI_and_Agents/Operation
   "why is this failing check tolerated."
 - Re-run scans on every base image update and on a recurring schedule
   (e.g. nightly or on each cluster upgrade) — CIS Benchmark versions
-  themselves are periodically revised as new [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md)/[Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)/OS versions
+  themselves are periodically revised as new [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md)/[Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)/OS versions
   ship, so "we scanned it once" ages out.
 - Cross-check overlapping findings instead of fixing the same class of
   issue twice — a kube-bench "containers should not run as root" finding
-  and a [container-image-hardening](../../../containers-orchestration/docker/security/container-image-hardening/SKILL.md) non-root-user recommendation are the
+  and a [container-image-hardening](../../../DevOps_and_Cloud/containers-orchestration/docker/security/container-image-hardening/SKILL.md) non-root-user recommendation are the
   same underlying control; fix it once at the image/PodSecurity level.
 
 ## Common pitfalls
@@ -212,7 +212,7 @@ attestation still comes from a separate [audit](../../../AI_and_Agents/Operation
 - **Symptom:** kube-bench reports dozens of FAILs on a managed EKS/AKS/GKE
   cluster's control-plane checks, and the team spends days trying to
   "fix" settings they do not control.
-  **Fix:** Managed [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) control planes are operated by the cloud
+  **Fix:** Managed [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) control planes are operated by the cloud
   provider; most master/control-plane section checks are out of scope and
   should be recorded as "not applicable — managed service" exceptions
   citing the provider's shared-responsibility documentation, not chased
@@ -222,10 +222,10 @@ attestation still comes from a separate [audit](../../../AI_and_Agents/Operation
   **Fix:** Use a reviewed, version-controlled waiver file with
   justification, compensating control, approver, and expiry date per
   excluded check — not an undocumented scanner flag. An auditor (or a
-  future [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) responder) needs to be able to answer "was this
+  future [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) responder) needs to be able to answer "was this
   intentional and reviewed" without archaeology.
 - **Symptom:** A benchmark remediation (e.g. disabling anonymous kubelet
-  auth, tightening a [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md) daemon flag) is applied directly to production
+  auth, tightening a [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) daemon flag) is applied directly to production
   and breaks an in-cluster integration that depended on the old, insecure
   default.
   **Fix:** Test remediations in a non-production environment first and
@@ -244,8 +244,8 @@ attestation still comes from a separate [audit](../../../AI_and_Agents/Operation
 
 ## Worked example
 
-Illustrative kube-bench run against a self-managed [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) 1.27 cluster,
-CIS [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Benchmark v1.24 profile, Level 1:
+Illustrative kube-bench run against a self-managed [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) 1.27 cluster,
+CIS [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Benchmark v1.24 profile, Level 1:
 
 ```json
 {
@@ -287,7 +287,7 @@ Illustrative `waivers.yaml` entry:
 ```yaml
 waivers:
   - control_id: "1.3.7"
-    benchmark: "CIS [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Benchmark v1.24"
+    benchmark: "CIS [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Benchmark v1.24"
     reason: "Control-plane component managed by cloud provider; not accessible to customer."
     compensating_control: "Provider's own SOC 2 report covers this control (see vendor attestation)."
     approved_by: "<SECURITY_LEAD_PLACEHOLDER>"
@@ -296,7 +296,7 @@ waivers:
 ```
 
 Summary reported to the requester: "46 pass / 3 fail / 12 warn against CIS
-[Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Benchmark v1.24, Level 1. 2 of 3 fails remediated this sprint
+[Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Benchmark v1.24, Level 1. 2 of 3 fails remediated this sprint
 (1.2.1, 4.2.6); 1 fail converted to a reviewed, time-boxed exception
 (control-plane check, cloud-managed). This is a hardening baseline, not a
 compliance certification — see the compliance-mapping skill if this is
@@ -307,7 +307,7 @@ feeding a SOC 2 / ISO 27001 [audit](../../../AI_and_Agents/Operations/common/aud
 - [cloud-well-architected-framework-review](../[cloud-well-architected-framework-review](../../DevOps_and_Cloud/Cloud_Providers/cloud-well-architected-framework-review/SKILL.md)/SKILL.md) — broader workload review (security is one pillar) that CIS hardening findings feed into.
 - [security-compliance-mapping-soc2-iso-pci-nist](../[security-compliance-mapping-soc2-iso-pci-nist](../../DevOps_and_Cloud/Observability_and_SecOps/security-compliance-mapping-soc2-iso-pci-nist/SKILL.md)/SKILL.md) — mapping CIS scan evidence to formal framework controls for [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) readiness.
 - [owasp-top-10-secure-coding-standards](../[owasp-top-10-secure-coding-standards](../../DevOps_and_Cloud/Cloud_Providers/owasp-top-10-secure-coding-standards/SKILL.md)/SKILL.md) — application-layer counterpart; CIS Benchmarks cover infrastructure/OS/platform configuration, not app code.
-- [container-image-hardening](../../../[devsecops](../devsecops/SKILL.md)/skills/[container-image-hardening](../../../containers-orchestration/docker/security/container-image-hardening/SKILL.md)/SKILL.md) — non-root users, read-only rootfs, and capability drops that satisfy many [Docker](../../../containers-orchestration/docker/other/docker/SKILL.md)/[Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) CIS controls at the image level.
+- [container-image-hardening](../../../[devsecops](../devsecops/SKILL.md)/skills/[container-image-hardening](../../../DevOps_and_Cloud/containers-orchestration/docker/security/container-image-hardening/SKILL.md)/SKILL.md) — non-root users, read-only rootfs, and capability drops that satisfy many [Docker](../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md)/[Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) CIS controls at the image level.
 - [policy-as-code-guardrails](../../../[devsecops](../devsecops/SKILL.md)/skills/[policy-as-code-guardrails](../[policy-as-code](../policy-as-code/SKILL.md)-guardrails/SKILL.md)/SKILL.md) — enforcing CIS-derived rules automatically via OPA/Kyverno admission control instead of relying solely on point-in-time scans.
 - [cloud-iam-hardening](../../../cloud/skills/[cloud-iam-hardening](../../DevOps_and_Cloud/Cloud_Providers/cloud-iam-hardening/SKILL.md)/SKILL.md) — the IAM-specific controls underlying cloud foundations benchmark checks (AWS/Azure/GCP).
 - [aws-landing-zone-setup](../../../cloud/skills/[aws-landing-zone-setup](../../DevOps_and_Cloud/Cloud_Providers/aws-landing-zone-setup/SKILL.md)/SKILL.md), [azure-landing-zone-setup](../../../cloud/skills/[azure-landing-zone-setup](../../DevOps_and_Cloud/Cloud_Providers/azure-landing-zone-setup/SKILL.md)/SKILL.md), [gcp-landing-zone-setup](../../../cloud/skills/[gcp-landing-zone-setup](../../DevOps_and_Cloud/Cloud_Providers/gcp-landing-zone-setup/SKILL.md)/SKILL.md) — where cloud foundations benchmark guardrails are typically established organization-wide.

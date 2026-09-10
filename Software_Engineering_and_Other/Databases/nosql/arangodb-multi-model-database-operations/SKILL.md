@@ -284,7 +284,7 @@ curl -u <USER>:<PASSWORD> http://<COORDINATOR_HOST>:8529/_admin/cluster/health
   > first (`arangodump`), and restrict `_drop*` operations via
   > ArangoDB's database-level access control to a narrow admin role
   > rather than general application credentials — see
-  > [database-[backup-and-restore](../../../../containers-orchestration/common/other/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies](../database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md)
+  > [database-[backup-and-restore](../../../../DevOps_and_Cloud/containers-orchestration/common/other/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies](../database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md)
   > for restore-testing discipline that should back this up.
 
 ## Worked example
@@ -337,4 +337,4 @@ a single multi-model replacement.
 - [neo4j-graph-database-operations](../[neo4j-graph-database-operations](../neo4j-graph-[database-operations](../database-operations/SKILL.md)/SKILL.md)/SKILL.md) — a graph-only architecture, useful as a direct contrast when a workload is overwhelmingly graph-traversal-heavy and doesn't need ArangoDB's document/key-value multi-model flexibility.
 - [mongodb-operations-and-scaling](../[mongodb-operations-and-scaling](../[mongodb](../../Backend/mongodb/SKILL.md)-operations-and-scaling/SKILL.md)/SKILL.md) — comparable document-collection sharding-key design trade-offs, relevant when comparing ArangoDB's document model against [MongoDB](../mongodb/SKILL.md)'s.
 - [cassandra-wide-column-database-operations](../[cassandra-wide-column-database-operations](../cassandra-wide-column-[database-operations](../database-operations/SKILL.md)/SKILL.md)/SKILL.md) — comparable partition/shard-key hot-spotting failure mode, useful as a conceptual parallel to ArangoDB's `shardKeys` design.
-- [database-[backup-and-restore](../../../../containers-orchestration/common/other/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies](../database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md) — `arangodump`/`arangorestore` tooling and restore-testing discipline for ArangoDB backups.
+- [database-[backup-and-restore](../../../../DevOps_and_Cloud/containers-orchestration/common/other/backup-and-restore/SKILL.md)-strategies](../[database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies](../database-[backup-and-restore](../../Frontend/backup-and-restore/SKILL.md)-strategies/SKILL.md)/SKILL.md) — `arangodump`/`arangorestore` tooling and restore-testing discipline for ArangoDB backups.

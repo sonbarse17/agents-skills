@@ -36,7 +36,7 @@ most commonly **Patroni** (a consensus-store-backed HA agent that
 manages `pg_ctl`, `recovery.conf`/`standby.signal`, and a fencing
 mechanism), the split-brain risks any automatic-failover design must
 close off, and how to test failover realistically without it becoming an
-actual [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md). It builds on the replication mechanics covered in
+actual [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md). It builds on the replication mechanics covered in
 [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../../Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md);
 this skill is specifically about the failover decision-making and
 safety layer on top of that replication.
@@ -139,7 +139,7 @@ device is unavailable.
 `synchronous_mode: true` in Patroni (paired with
 `synchronous_commit: on` and Postgres's own
 `synchronous_standby_names`) guarantees a promoted replica never loses a
-committed transaction, at the cost of every [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) on the primary
+committed transaction, at the cost of every [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) on the primary
 waiting for at least one synchronous replica's ACK — a slow or
 partitioned replica directly increases primary write latency, and in the
 worst case (`synchronous_mode_strict`) can block all writes if no
@@ -327,6 +327,6 @@ of a compliance [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.
 
 ## Cross-references
 
-- [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../../Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — the streaming replication mechanics (WAL shipping, replication slots, lag [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)) this HA design is built on top of.
+- [postgresql-operations-and-performance-tuning](../[postgresql-operations-and-performance-tuning](../../../DevOps_and_Cloud/Observability_and_SecOps/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-operations-and-[performance-tuning](../../../Frontend/performance/performance-tuning/SKILL.md)/SKILL.md)/SKILL.md) — the streaming replication mechanics (WAL shipping, replication slots, lag [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)) this HA design is built on top of.
 - [postgresql-configuration-validation](../[postgresql-configuration-validation](../../../Software_Engineering_and_Other/Miscellaneous/[postgresql](../../../Software_Engineering_and_Other/Backend/postgresql/SKILL.md)-configuration-validation/SKILL.md)/SKILL.md) — validates `synchronous_standby_names` and replication-slot settings referenced here before they're applied to a live topology.
 - [database-schema-migration-with-liquibase-and-flyway](../[database-schema-migration-with-liquibase-and-flyway](../../../DevOps_and_Cloud/Observability_and_SecOps/database-schema-migration-with-liquibase-and-flyway/SKILL.md)/SKILL.md) — schema migrations need their own coordination with a Patroni-managed cluster (e.g. always targeting the current leader via the same HAProxy/VIP layer, never a specific node hostname).

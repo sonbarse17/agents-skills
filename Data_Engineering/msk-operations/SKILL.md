@@ -34,7 +34,7 @@ depends_on:
 
 Operate, troubleshoot, and assess Amazon MSK (Managed Streaming for Apache Kafka)
 Provisioned clusters — both Standard and Express broker types. This skill covers
-day-to-day operations (health assessments, [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) setup) and ad-hoc [incident](../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
+day-to-day operations (health assessments, [monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) setup) and ad-hoc [incident](../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md)
 response (performance degradation, consumer lag, storage full, unexpected broker
 reboots).
 
@@ -47,8 +47,8 @@ Activate this skill when the user asks to:
 - Troubleshoot an MSK cluster problem: high CPU, high produce/fetch latency,
   consumer lag, broker storage running out, TrafficShaping events, under-replicated
   partitions, or an unexpected broker restart.
-- Set up MSK [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md): choose a [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) level, create recommended CloudWatch
-  alarms and [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), understand the metrics available in the `AWS/Kafka`
+- Set up MSK [monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md): choose a [monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) level, create recommended CloudWatch
+  alarms and [dashboards](../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), understand the metrics available in the `AWS/Kafka`
   namespace.
 - Plan an MSK maintenance event: rolling restart, Kafka version upgrade, security
   patching, broker instance type change.
@@ -87,7 +87,7 @@ windows. Express enforces a fixed replication factor of 3 and
 
 - **This skill is read-only.** Every command in this file and in `references/`
   that mutates cluster state — `update-broker-storage`, `create-configuration`,
-  `update-cluster-configuration`, `update-[monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)`, `put-metric-alarm`,
+  `update-cluster-configuration`, `update-[monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)`, `put-metric-alarm`,
   `reboot-broker`, and any partition reassignment — is a **recommendation for
   the operator to run after review**. Present these as proposed remediations
   with expected impact and preconditions; do NOT execute them, and do NOT
@@ -113,7 +113,7 @@ These five checks cover the most common MSK issues. Use them before loading a
 reference file.
 
 1. **`CpuUser + CpuSystem` > 60%**: Check `RequestHandlerAvgIdlePercent`
-   (PER_BROKER [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) level). If < 30%, request threads are saturated. Check
+   (PER_BROKER [monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) level). If < 30%, request threads are saturated. Check
    client `batch.size` and `linger.ms` before recommending scaling.
 
 2. **`KafkaDataLogsDiskUsed` > 85%** (Standard only): **Recommend to the
@@ -131,7 +131,7 @@ reference file.
 4. **Consumer `OffsetLag` / `MaxOffsetLag` increasing**: Determine if broker-side
    (high `ProduceTotalTimeMsMean`, CPU saturation) or client-side (slow
    processing, insufficient consumers). Per-partition lag from
-   `PER_TOPIC_PER_PARTITION` [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) level helps isolate hot partitions.
+   `PER_TOPIC_PER_PARTITION` [monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) level helps isolate hot partitions.
 
 5. **`BytesInPerSec` near throughput ceiling**: For Standard, check EBS volume
    type and calculate: `BytesInPerSec × ReplicationFactor` vs volume throughput
@@ -148,7 +148,7 @@ full before answering — do not paraphrase from memory.
 | High CPU, high produce/fetch latency, slow cluster, TrafficShaping | `../../Global_References/Data_Engineering/troubleshoot-performance.md` |
 | Consumer lag increasing, rebalance storms, stuck consumer groups | `../../Global_References/Data_Engineering/troubleshoot-consumer-lag.md` |
 | Disk filling up, retention planning, tiered storage, EBS scaling | `../../Global_References/Data_Engineering/manage-storage.md` |
-| Setting up [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) level, [dashboards](../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), recommended CloudWatch alarms | `../../Global_References/Data_Engineering/monitor-and-alarm.md` |
+| Setting up [monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) level, [dashboards](../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), recommended CloudWatch alarms | `../../Global_References/Data_Engineering/monitor-and-alarm.md` |
 | Rolling restart impact, patching, Kafka version upgrades, maintenance resilience | `../../Global_References/Data_Engineering/maintenance-operations.md` |
 | Producer / consumer configuration, IAM / SCRAM / TLS auth for clients | `../../Global_References/Data_Engineering/configure-clients.md` |
 
@@ -163,7 +163,7 @@ assessment** of an MSK cluster. The routing table above handles ad-hoc
 troubleshooting; this section produces a consistent, comprehensive report.
 
 Follow the steps **in order** for each target cluster. Do not skip steps. If a
-step cannot be completed (e.g. a metric requires a higher [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) level
+step cannot be completed (e.g. a metric requires a higher [monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) level
 than the cluster has enabled), record the gap in the report rather than
 silently omitting the check.
 
@@ -215,17 +215,17 @@ Capture:
   `ClientAuthentication.Sasl.Scram.Enabled`, `ClientAuthentication.Tls.Enabled`,
   `ClientAuthentication.Unauthenticated.Enabled`.
 - **Public access:** `BrokerNodeGroupInfo.ConnectivityInfo.PublicAccess.Type`.
-- **[Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) level:** `EnhancedMonitoring` (`DEFAULT` / `PER_BROKER` /
+- **[Monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) level:** `EnhancedMonitoring` (`DEFAULT` / `PER_BROKER` /
   `PER_TOPIC_PER_BROKER` / `PER_TOPIC_PER_PARTITION`).
 - **Logging:** `LoggingInfo.BrokerLogs` (CloudWatch / S3 / Firehose destinations
   and their `Enabled` flags).
-- **Open [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md):** `OpenMonitoring.Prometheus.JmxExporter.EnabledInBroker`,
+- **Open [monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md):** `OpenMonitoring.Prometheus.JmxExporter.EnabledInBroker`,
   `NodeExporter.EnabledInBroker`.
 - **Recent operations:** From `list-cluster-operations-v2`, note any
   `SECURITY_PATCHING`, `BROKER_UPDATE`, `UPDATE_CLUSTER_CONFIGURATION`,
   `UPDATE_STORAGE`, or `UPDATE_MONITORING` events in the review window.
 
-### Step 4 — Detect [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Level and Gaps
+### Step 4 — Detect [Monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Level and Gaps
 
 The `EnhancedMonitoring` value from Step 3 determines which checks are
 available. At `DEFAULT`, most per-broker health metrics are still available
@@ -243,7 +243,7 @@ following checks are **not possible without upgrading**:
   only)
 - IAM connection metrics (`IAMTooManyConnections`)
 
-Record the [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) level and list any dimensions that will be scored
+Record the [monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) level and list any dimensions that will be scored
 partially or skipped. Recommend upgrading to `PER_BROKER` if any dimension is
 degraded by the current level.
 
@@ -338,7 +338,7 @@ inline.
   else is a finding.
 - Deployed across **3 AZs** (Standard: broker count multiple of AZ count).
 - Kafka version within N-2 of the latest supported.
-- Enhanced [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) at `PER_BROKER` or higher — `DEFAULT` → MEDIUM.
+- Enhanced [monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) at `PER_BROKER` or higher — `DEFAULT` → MEDIUM.
 - Storage mode: Tiered storage enabled for topics with long retention
   (Standard).
 
@@ -352,11 +352,11 @@ inline.
   `Unauthenticated.Enabled=true` in production → CRITICAL.
 - Public access: `SERVICE_PROVIDED_EIPS` in production → HIGH.
 
-#### 7.3 Logging & [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+#### 7.3 Logging & [Monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 - Broker logs enabled to at least one destination (CloudWatch / S3 / Firehose).
   All disabled → HIGH.
-- Open [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (Prometheus JMX + Node exporter) — informational.
+- Open [monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) (Prometheus JMX + Node exporter) — informational.
 - Alarm coverage from Step 6: missing alarms → MEDIUM each; missing critical
   alarms (Active Controller, Offline Partitions, Disk, CPU) → HIGH.
 - Any alarm currently in `ALARM` state → HIGH (surface in report header).
@@ -425,7 +425,7 @@ Report structure:
 # MSK Operational Review — <cluster-name>
 Account: <account-id> | Region: <region> | Date: <YYYY-MM-DD>
 Broker Type: Standard/Express | Instance Type: <type> | Broker Count: <n> | AZs: <n>
-Kafka Version: <version> | [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Level: <level>
+Kafka Version: <version> | [Monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Level: <level>
 ```
 
 #### Executive Summary
@@ -443,7 +443,7 @@ Kafka Version: <version> | [Monitoring](../../observability-monitoring-logging/c
 | Encryption | in-transit, in-cluster, at-rest (KMS) |
 | Authentication | IAM / SCRAM / mTLS / Unauthenticated flags |
 | Public access | DISABLED / SERVICE_PROVIDED_EIPS |
-| [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) level | DEFAULT / PER_BROKER / PER_TOPIC_PER_BROKER / PER_TOPIC_PER_PARTITION |
+| [Monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) level | DEFAULT / PER_BROKER / PER_TOPIC_PER_BROKER / PER_TOPIC_PER_PARTITION |
 | Logging | destinations enabled |
 
 #### Findings by Dimension
@@ -452,7 +452,7 @@ For each of the 7 dimensions (7.1-7.7):
 
 | # | Finding | Severity | Current State | Recommendation |
 
-If a dimension was skipped or partial due to [monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) level or broker type,
+If a dimension was skipped or partial due to [monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) level or broker type,
 say so explicitly in a note above the table for that dimension.
 
 #### CloudWatch Metrics (7-Day)
@@ -489,7 +489,7 @@ Sorted by severity.
 
 - [Amazon MSK best practices — Standard brokers](https://docs.aws.amazon.com/msk/latest/developerguide/bestpractices.html)
 - [Amazon MSK best practices — Express brokers](https://docs.aws.amazon.com/msk/latest/developerguide/bestpractices-express.html)
-- [Amazon MSK — [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) an MSK cluster](https://docs.aws.amazon.com/msk/latest/developerguide/[monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).html)
+- [Amazon MSK — [Monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) an MSK cluster](https://docs.aws.amazon.com/msk/latest/developerguide/[monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).html)
 - [Amazon MSK — CloudWatch metrics for Provisioned clusters](https://docs.aws.amazon.com/msk/latest/developerguide/metrics-details.html)
 - [Amazon MSK — Right-size your cluster](https://docs.aws.amazon.com/msk/latest/developerguide/bestpractices.html#bestpractices-right-size-cluster)
 - [Amazon MSK — Service quotas](https://docs.aws.amazon.com/msk/latest/developerguide/limits.html)
@@ -593,7 +593,7 @@ aws kafka create-configuration \
 - [Amazon MSK best practices — Standard brokers](https://docs.aws.amazon.com/msk/latest/developerguide/bestpractices.html)
 - [Amazon MSK best practices — Express brokers](https://docs.aws.amazon.com/msk/latest/developerguide/bestpractices-express.html)
 - [Amazon MSK — Apache Kafka client best practices](https://docs.aws.amazon.com/msk/latest/developerguide/bestpractices-kafka-client.html)
-- [Amazon MSK — [Monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) an MSK cluster](https://docs.aws.amazon.com/msk/latest/developerguide/[monitoring](../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).html)
+- [Amazon MSK — [Monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) an MSK cluster](https://docs.aws.amazon.com/msk/latest/developerguide/[monitoring](../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).html)
 - [Amazon MSK — CloudWatch metrics for Provisioned clusters](https://docs.aws.amazon.com/msk/latest/developerguide/metrics-details.html)
 - [Amazon MSK — Service quotas](https://docs.aws.amazon.com/msk/latest/developerguide/limits.html)
 - [Amazon MSK — Custom MSK configurations](https://docs.aws.amazon.com/msk/latest/developerguide/msk-configuration.html)

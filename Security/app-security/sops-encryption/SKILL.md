@@ -26,8 +26,8 @@ Encrypt secrets in configuration files while keeping structure visible.
 
 Use this skill when:
 - Encrypting secrets in Git
-- Implementing [GitOps](../../../containers-orchestration/common/gitops/gitops/SKILL.md) with secrets
-- Managing [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) secrets as code
+- Implementing [GitOps](../../../DevOps_and_Cloud/containers-orchestration/common/gitops/gitops/SKILL.md) with secrets
+- Managing [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) secrets as code
 - Encrypting configuration files
 
 ## Prerequisites
@@ -42,7 +42,7 @@ Use this skill when:
 brew install sops
 
 # Linux
-wget https://[github](../../../ci-cd/github-actions/other/github/SKILL.md).com/getsops/sops/releases/download/v3.8.0/sops-v3.8.0.linux.amd64
+wget https://[github](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).com/getsops/sops/releases/download/v3.8.0/sops-v3.8.0.linux.amd64
 chmod +x sops-v3.8.0.linux.amd64
 mv sops-v3.8.0.linux.amd64 /usr/local/bin/sops
 ```
@@ -76,7 +76,7 @@ creation_rules:
     pgp: fingerprint
 ```
 
-## [Kubernetes](../../../containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Integration
+## [Kubernetes](../../../DevOps_and_Cloud/containers-orchestration/kubernetes/other/kubernetes/SKILL.md) Integration
 
 ```yaml
 # encrypted secret
@@ -93,8 +93,8 @@ sops:
 ```
 
 ```bash
-# With [ArgoCD](../../../containers-orchestration/argocd/other/argocd/SKILL.md)
-# Install ksops plugin for [ArgoCD](../../../containers-orchestration/argocd/other/argocd/SKILL.md) to decrypt secrets
+# With [ArgoCD](../../../DevOps_and_Cloud/containers-orchestration/argocd/other/argocd/SKILL.md)
+# Install ksops plugin for [ArgoCD](../../../DevOps_and_Cloud/containers-orchestration/argocd/other/argocd/SKILL.md) to decrypt secrets
 ```
 
 ## Best Practices
@@ -102,10 +102,10 @@ sops:
 - Store .sops.yaml in repository
 - Use different keys per environment
 - Rotate encryption keys regularly
-- Never [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) unencrypted secrets
+- Never [commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) unencrypted secrets
 - Use key aliases for readability
 
 ## Related Skills
 
 - [hashicorp-vault](../../cryptography-secrets/vault/SKILL.md)/SKILL.md)/) - Centralized secrets
-- [argocd-gitops](../../../devops/orchestration/[argocd-gitops](../[argocd](../argocd/SKILL.md)-[gitops](../../../containers-orchestration/common/gitops/gitops/SKILL.md)/SKILL.md)/) - [GitOps](../../../containers-orchestration/common/gitops/gitops/SKILL.md) integration
+- [argocd-gitops](../../../devops/orchestration/[argocd-gitops](../[argocd](../argocd/SKILL.md)-[gitops](../../../DevOps_and_Cloud/containers-orchestration/common/gitops/gitops/SKILL.md)/SKILL.md)/) - [GitOps](../../../DevOps_and_Cloud/containers-orchestration/common/gitops/gitops/SKILL.md) integration

@@ -49,14 +49,14 @@ pdca_cycle:
     - Deploy technical security controls
     - Conduct security awareness training
     - Document all procedures and processes
-    - Implement [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) management process
+    - Implement [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) management process
     - Establish supplier security management
 
   check:
     - Conduct internal audits (at least annual)
     - Perform management review meetings
     - Monitor and measure control effectiveness
-    - Review [incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) trends and near misses
+    - Review [incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) trends and near misses
     - Assess compliance with legal requirements
     - Evaluate security metrics against objectives
 
@@ -100,7 +100,7 @@ isms_scope:
         - "AWS cloud infrastructure"
         - "SaaS application stack"
         - "Corporate IT systems (Google Workspace, Okta, Jira)"
-        - "Development tools ([GitHub](../../../ci-cd/github-actions/other/github/SKILL.md), CI/CD pipelines)"
+        - "Development tools ([GitHub](../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md), CI/CD pipelines)"
 
     excluded:
       - "Physical data center operations (inherited from AWS)"
@@ -145,7 +145,7 @@ risk_assessment:
     likelihood_1:  [1,   2,   3,   4,   5]
 
   risk_appetite:
-    accept: "Score 1-4 (low risk, accept with [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md))"
+    accept: "Score 1-4 (low risk, accept with [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md))"
     mitigate: "Score 5-14 (medium risk, implement controls to reduce)"
     escalate: "Score 15-25 (high/critical risk, immediate action required)"
 
@@ -221,7 +221,7 @@ soa_template:
       control: "Threat intelligence"
       applicable: true
       justification: "Required for proactive threat management"
-      implementation: "Subscribe to threat feeds, CVE [monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), vendor advisories"
+      implementation: "Subscribe to threat feeds, CVE [monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md), vendor advisories"
 
     "A.5.15":
       control: "Access control"
@@ -245,7 +245,7 @@ soa_template:
       control: "ICT readiness for business continuity"
       applicable: true
       justification: "Ensure technology supports continuity"
-      implementation: "DR [runbooks](../../../observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md), RTO/RPO defined, failover tested quarterly"
+      implementation: "DR [runbooks](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/runbooks/SKILL.md), RTO/RPO defined, failover tested quarterly"
 
   people_controls_6:
     "A.6.1":
@@ -296,9 +296,9 @@ soa_template:
       implementation: "Centralized logging via CloudWatch + SIEM, 12-month retention"
 
     "A.8.16":
-      control: "[Monitoring](../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) activities"
+      control: "[Monitoring](../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) activities"
       applicable: true
-      implementation: "SIEM [alerting](../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md), 24/7 on-call rotation, anomaly detection"
+      implementation: "SIEM [alerting](../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md), 24/7 on-call rotation, anomaly detection"
 
     "A.8.24":
       control: "Use of cryptography"
@@ -376,7 +376,7 @@ management_review:
     - "Changes in external and internal issues relevant to the ISMS"
     - "Information security performance (metrics and KPIs)"
     - "[Audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) results (internal and external)"
-    - "[Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) trends and nonconformities"
+    - "[Incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) trends and nonconformities"
     - "Risk assessment results and risk treatment plan status"
     - "Interested party feedback"
     - "Opportunities for continual improvement"
@@ -419,7 +419,7 @@ certification_checklist:
     - [ ] Evidence of control operation for 3+ months
     - [ ] Corrective actions from internal [audit](../../../AI_and_Agents/Operations/common/audit/SKILL.md) tracked and closed
     - [ ] Security awareness training delivered and recorded
-    - [ ] [Incident](../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) management process operational with records
+    - [ ] [Incident](../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) management process operational with records
     - [ ] Supplier security assessments performed
     - [ ] Business continuity plan tested
     - [ ] All mandatory documented information available

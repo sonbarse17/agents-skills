@@ -207,18 +207,18 @@ See `../../Global_References/Product_and_Business/er.md` for cardinality, identi
 
 ```
 gitGraph
-    [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)
-    [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)
+    [commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md)
+    [commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md)
     branch develop
     checkout develop
-    [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)
+    [commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md)
     checkout main
     merge develop
 ```
 
-Commands: `[commit](../../../ci-cd/common/git-workflow/commit/SKILL.md)`, `branch name`, `checkout name` (or `switch`), `merge name`, `cherry-pick id: "id"`. [Commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) attributes: `id: "custom_id"`, `type: NORMAL|REVERSE|HIGHLIGHT`, `tag: "v1.0"`. Merge attributes: same as [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md). Orientation: `gitGraph LR:` / `TB:` / `BT:`. Config: `showBranches`, `showCommitLabel`, `mainBranchName`, `parallelCommits`.
+Commands: `[commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md)`, `branch name`, `checkout name` (or `switch`), `merge name`, `cherry-pick id: "id"`. [Commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) attributes: `id: "custom_id"`, `type: NORMAL|REVERSE|HIGHLIGHT`, `tag: "v1.0"`. Merge attributes: same as [commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md). Orientation: `gitGraph LR:` / `TB:` / `BT:`. Config: `showBranches`, `showCommitLabel`, `mainBranchName`, `parallelCommits`.
 
-See `../../Global_References/Product_and_Business/gitgraph.md` for [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) types, cherry-pick, branch ordering, orientation, and theming.
+See `../../Global_References/Product_and_Business/gitgraph.md` for [commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) types, cherry-pick, branch ordering, orientation, and theming.
 
 ### User Journey
 
@@ -438,7 +438,7 @@ Load these when you need full syntax details, edge cases, or examples for a spec
 - `../../Global_References/Product_and_Business/class.md` — Visibility, generics, relationships, cardinality, namespaces, annotations, notes
 - `../../Global_References/Product_and_Business/state.md` — Composite states, choice, fork, concurrency, notes, direction, classDefs
 - `../../Global_References/Product_and_Business/er.md` — Cardinality, identification, attributes, keys, comments, aliases, subgraphs, direction
-- `../../Global_References/Product_and_Business/gitgraph.md` — [Commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) types, tags, cherry-pick, branch ordering, orientation, config, themes
+- `../../Global_References/Product_and_Business/gitgraph.md` — [Commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) types, tags, cherry-pick, branch ordering, orientation, config, themes
 - `../../Global_References/Product_and_Business/journey.md` — Sections, tasks, scores, actors
 - `../../Global_References/Product_and_Business/quadrant.md` — Axes, quadrants, points, styling, classes, config, theme variables
 - `../../Global_References/Product_and_Business/xychart.md` — Orientation, axes, line/bar plots, legends, data labels, config, theme variables

@@ -130,7 +130,7 @@ API: stale-while-revalidate
 ```
 
 **Option B: Network-first with cache fallback**
-Best for: Dynamic apps where freshness is critical ([dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), admin panels).
+Best for: Dynamic apps where freshness is critical ([dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md), admin panels).
 ```
 Install: precache shell (minimal HTML, CSS, JS)
 Fetch: HTML and API always from network
@@ -469,7 +469,7 @@ Use `navigator.storage.estimate()` to check available and used storage.
 - **AWS CloudFront** -- Lambda@Edge for custom caching logic.
 - **Nginx** -- `expires` and `add_header Cache-Control` directives.
 
-### [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+### [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - Chrome DevTools > Network > Size column shows cache source (memory cache / disk cache / service worker / network)
 - `navigator.storage.estimate()` shows storage usage
 - Workbox generates debug logs in development mode
@@ -563,7 +563,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
+### [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -598,7 +598,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing ([OpenTelemetry](../../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../../DevOps_and_Cloud/observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 

@@ -83,10 +83,10 @@ Consumer tests define the expected request and response for each API interaction
 Provider tests fetch the latest consumer contracts from the Pact Broker and verify each interaction against the provider's actual API. The provider starts a test server, runs the contract verifier, and checks that each consumer interaction's response matches the actual response. Provider states are set up via API calls to the provider's test endpoints or database seeding.
 
 ### Pact Broker Deployment
-The Pact Broker stores contracts, verification results, and matrices of compatible versions. It can be self-hosted via [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) Compose or used as a SaaS product (PactFlow). The Broker exposes a web UI showing the network diagram of all service dependencies. Webhooks can be configured to notify consumers when a provider publishes a new verification result or whena contract changes.
+The Pact Broker stores contracts, verification results, and matrices of compatible versions. It can be self-hosted via [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) Compose or used as a SaaS product (PactFlow). The Broker exposes a web UI showing the network diagram of all service dependencies. Webhooks can be configured to notify consumers when a provider publishes a new verification result or whena contract changes.
 
 ### Versioning and Compatibility
-Contracts are versioned by the consumer's application version (Git [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) SHA). Tags identify which version is deployed to each environment (dev, staging, production). The can-i-deploy tool checks the Pact Broker for compatibility before any deployment. The Broker maintains a matrix of compatible consumer and provider versions.
+Contracts are versioned by the consumer's application version (Git [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) SHA). Tags identify which version is deployed to each environment (dev, staging, production). The can-i-deploy tool checks the Pact Broker for compatibility before any deployment. The Broker maintains a matrix of compatible consumer and provider versions.
 
 ### Breaking Change Detection
 When a provider change breaks a consumer contract, the Broker shows exactly which consumer is affected, which interaction failed, and the exact response diff. The developer fixes the issue by making the change backward compatible (add new endpoint instead of modifying existing, add optional fields) or coordinating a multi-service deployment.
@@ -209,7 +209,7 @@ Provider Service Development
 | 2: Defined | Basic consumer tests | Single consumer, no broker, manual verification |
 | 3: Managed | Broker with CI integration | Pact Broker, CI verification, canary checks |
 | 4: Measured | Multi-service contracts | All services covered, webhook alerts, trend reports |
-| 5: Optimized | Cross-team contract governance | Contract review board, automated compatibility gates, SLA [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) |
+| 5: Optimized | Cross-team contract governance | Contract review board, automated compatibility gates, SLA [dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) |
 
 ## Contract Testing Examples
 
@@ -342,8 +342,8 @@ jobs:
       - name: Pact Publish
         run: |
           npx pact-broker publish ./pacts \
-            --consumer-app-version ${{ [github](../../../../ci-cd/github-actions/other/github/SKILL.md).sha }} \
-            --tag ${{ [github](../../../../ci-cd/github-actions/other/github/SKILL.md).head_ref || 'main' }} \
+            --consumer-app-version ${{ [github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).sha }} \
+            --tag ${{ [github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).head_ref || 'main' }} \
             --broker-base-url ${{ secrets.PACT_BROKER_URL }} \
             --broker-token ${{ secrets.PACT_BROKER_TOKEN }}
 
@@ -366,7 +366,7 @@ jobs:
         run: |
           npx pact-broker can-i-deploy \
             --pacticipant payment-service \
-            --version ${{ [github](../../../../ci-cd/github-actions/other/github/SKILL.md).sha }} \
+            --version ${{ [github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).sha }} \
             --to-environment production \
             --broker-base-url ${{ secrets.PACT_BROKER_URL }} \
             --broker-token ${{ secrets.PACT_BROKER_TOKEN }}
@@ -380,8 +380,8 @@ jobs:
         run: |
           npx pact-broker publish-provider-contracts \
             --provider payment-service \
-            --provider-app-version ${{ [github](../../../../ci-cd/github-actions/other/github/SKILL.md).sha }} \
-            --branch ${{ [github](../../../../ci-cd/github-actions/other/github/SKILL.md).head_ref || 'main' }} \
+            --provider-app-version ${{ [github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).sha }} \
+            --branch ${{ [github](../../../../DevOps_and_Cloud/ci-cd/github-actions/other/github/SKILL.md).head_ref || 'main' }} \
             --broker-base-url ${{ secrets.PACT_BROKER_URL }} \
             --broker-token ${{ secrets.PACT_BROKER_TOKEN }}
 ```
@@ -389,7 +389,7 @@ jobs:
 ## Contract Testing Anti-Patterns
 
 ### Anti-Pattern: No Pact Broker
-Sharing contract files via email, shared drives, or Git submodules instead of using a Pact Broker. Without a broker, there's no central source of truth, no verification matrix, and no can-i-deploy capability. Deploy the Pact Broker (OSS [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) Compose) or use PactFlow SaaS.
+Sharing contract files via email, shared drives, or Git submodules instead of using a Pact Broker. Without a broker, there's no central source of truth, no verification matrix, and no can-i-deploy capability. Deploy the Pact Broker (OSS [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) Compose) or use PactFlow SaaS.
 
 ### Anti-Pattern: Testing Everything with Contracts
 Writing Pact tests for every single API endpoint creates maintenance overhead without proportional benefit. Use contracts for inter-service boundaries where changes in one service could break another. Monolith internal modules and third-party APIs with stable contracts don't need Pact.
@@ -414,7 +414,7 @@ When a provider verification fails, the affected consumer team must be notified 
 | 2: Defined | Basic consumer contracts | Single consumer-provider pair, Pact tests for critical endpoints, no broker, manual verification |
 | 3: Managed | Broker with CI gates | Pact Broker deployed, consumer contracts published in CI, provider verification in CI, can-i-deploy gating deployments |
 | 4: Measured | Multi-service contract coverage | All inter-service boundaries covered, webhook alerts on failures, version compatibility matrix tracked, canary release supported |
-| 5: Optimized | Contract-driven architecture | Contracts defined before implementation (contract-first), automated compatibility gates across environments, cross-team contract review board, SLA [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) |
+| 5: Optimized | Contract-driven architecture | Contracts defined before implementation (contract-first), automated compatibility gates across environments, cross-team contract review board, SLA [dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) |
 
 ## Performance Considerations
 
@@ -422,7 +422,7 @@ When a provider verification fails, the affected consumer team must be notified 
 - Pact Broker operations: publish (< 500ms), verify CAN-I-DEPLOY (< 200ms), fetch contracts (< 200ms).
 - Pact Broker storage: contracts are JSON files 2-50KB each. 1000 contracts = 50MB.
 - CI pipeline impact: consumer contract tests add < 2 minutes. Provider verification adds < 5 minutes.
-- Pact Broker deployment: [Docker](../../../../containers-orchestration/docker/other/docker/SKILL.md) Compose with [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md) backend. Minimum 1GB RAM, 2 CPU cores.
+- Pact Broker deployment: [Docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) Compose with [PostgreSQL](../../../Databases/relational/postgresql/SKILL.md) backend. Minimum 1GB RAM, 2 CPU cores.
 
 ## Rules
 - Every consumer-provider pair has its own Pact contract file
@@ -449,7 +449,7 @@ When a provider verification fails, the affected consumer team must be notified 
   - ../../../../Global_References/Software_Engineering_and_Other/provider-verification.md — Provider Verification
 ## Handoff
 `[quality-e2e-testing](../../e2e/e2e-testing/SKILL.md)` for E2E tests that complement contract tests.
-`devops-[observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)` for [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) contract verification in CI/CD.
+`devops-[observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md)` for [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) contract verification in CI/CD.
 Carry forward: Pact contracts, broker configuration, CI pipeline config.
 ## Implementation Patterns
 
@@ -503,7 +503,7 @@ config:
 - [ ] Database migrations run as separate deployment step
 - [ ] Feature flags ready for gradual rollout
 
-### [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md)
+### [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Alerting](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md)
 | Metric | Threshold | Severity | Action |
 |--------|-----------|----------|--------|
 | Error rate | > 1% over 5min | Critical | Page on-call |
@@ -538,7 +538,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 2. Profile CPU with sampling profiler (pprof, perf, async-profiler)
 3. Profile memory with heap dumps and allocation tracking
 4. Profile I/O with strace/perf trace for syscall analysis
-5. Profile latency with distributed tracing ([OpenTelemetry](../../../../observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
+5. Profile latency with distributed tracing ([OpenTelemetry](../../../../DevOps_and_Cloud/observability-monitoring-logging/opentelemetry/other/opentelemetry/SKILL.md))
 6. Identify bottleneck, formulate hypothesis, implement fix
 7. Re-profile to verify improvement, repeat
 
@@ -555,7 +555,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 ### Supply Chain Security
 - Dependency scanning: Snyk, Dependabot, Trivy
 - SBOM generation: CycloneDX or SPDX format
-- Signed commits: GPG or SSH [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) signing
+- Signed commits: GPG or SSH [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) signing
 - Artifact verification: Checksum validation, signature verification
 
 ### Secrets Management
@@ -572,7 +572,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 - Fail securely — errors default to safe behavior.
 - Log security-relevant events for [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md) and investigation.
 - Keep dependencies updated — automate vulnerability scanning.
-- Design for [observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
+- Design for [observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md) from day one, not as an afterthought.
 - Document all architectural decisions with rationale.
 - Review code for security, performance, and correctness before merging.
 ## Architecture Decision Trees
@@ -583,7 +583,7 @@ Cache invalidation: TTL-based (simple, stale), event-based (complex, fresh), wri
 | Protocol | HTTP/REST (most common) | Async/Message queue (event-driven) | Service communication pattern |
 | Tool choice | Pact (mature, broad support) | Spring Cloud Contract (JVM-focused) | Tech stack, team familiarity |
 | Contract location | Pact Broker (shared, versioned) | Git repository (code-reviewed) | CI integration, cross-team visibility |
-| Verification timing | CI pipeline (every [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)) | Scheduled (nightly) | Change frequency, team coordination |
+| Verification timing | CI pipeline (every [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md)) | Scheduled (nightly) | Change frequency, team coordination |
 
 ### Provider Verification Scope
 - All consumer contracts → Full verification, safe but slower

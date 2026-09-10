@@ -194,7 +194,7 @@ WHERE status = 'pending'
 ORDER BY priority DESC
 LIMIT 10
 FOR UPDATE SKIP LOCKED;
-[COMMIT](../../../../ci-cd/common/git-workflow/commit/SKILL.md);
+[COMMIT](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md);
 ```
 
 ### Step 8: Migration Management
@@ -206,8 +206,8 @@ CREATE INDEX CONCURRENTLY ix_orders_new
     ON orders (customer_id, created_at DESC);
 ```
 
-### Step 9: [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Observability](../../../../observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
-pg_stat_statements for query performance tracking. pg_stat_activity for active connections and long-running queries. auto_explain for logging slow queries automatically. pg_stat_bgwriter for checkpoint and buffer management. pg_stat_replication for replication lag [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md). Set up [alerting](../../../../observability-monitoring-logging/common/alerting/alerting/SKILL.md) for: replication lag > 10 seconds, long-running queries > 30 seconds, deadlocks, connection pool exhaustion, WAL generation rate spikes.
+### Step 9: [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) and [Observability](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/fundamentals/observability/SKILL.md)
+pg_stat_statements for query performance tracking. pg_stat_activity for active connections and long-running queries. auto_explain for logging slow queries automatically. pg_stat_bgwriter for checkpoint and buffer management. pg_stat_replication for replication lag [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md). Set up [alerting](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/alerting/alerting/SKILL.md) for: replication lag > 10 seconds, long-running queries > 30 seconds, deadlocks, connection pool exhaustion, WAL generation rate spikes.
 
 ```sql
 -- Long running queries
@@ -479,7 +479,7 @@ class DatabasePool:
         conn = self.pool.getconn()
         try:
             yield conn
-            conn.[commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md)()
+            conn.[commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md)()
         except Exception:
             conn.rollback()
             raise
@@ -492,7 +492,7 @@ class DatabasePool:
 - **Backup strategy**: Use pgBackRest or WAL-G for [PostgreSQL](../postgresql/SKILL.md); PITR with 7-day window; test restore monthly.
 - **High availability**: Deploy Patroni/Stolon for auto-failover; 3-node cluster with synchronous replication.
 - **Migration management**: Use Sqitch or Flyway for versioned schema migrations; zero-downtime via `CREATE INDEX CONCURRENTLY`.
-- **Query [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**: Log slow queries (> 100ms) via `auto_explain`; monitor with pg_stat_statements.
+- **Query [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**: Log slow queries (> 100ms) via `auto_explain`; monitor with pg_stat_statements.
 - **Vacuum tuning**: Set auto-vacuum thresholds per table; monitor bloat with pgstattuple extension.
 - **Resource limits**: Set [PostgreSQL](../postgresql/SKILL.md) `max_connections = max_worker_processes * 2`; use PgBouncer for connection pooling.
 

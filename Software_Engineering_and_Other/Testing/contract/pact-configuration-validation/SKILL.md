@@ -71,7 +71,7 @@ verification passed at some point" as sufficient.
   language SDKs or installable standalone) available in the CI/CD
   pipeline's deploy stage.
 - A consistent versioning scheme for both consumer and provider
-  deployable artifacts ([commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) SHA or semantic version) used identically
+  deployable artifacts ([commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) SHA or semantic version) used identically
   when publishing contracts, publishing verification results, and
   running `can-i-deploy` — a mismatch in what "version" means at each
   step breaks the whole check.
@@ -229,8 +229,8 @@ verification passed at some point" as sufficient.
 
 - **Symptom:** Two services use different version identifiers when
   publishing contracts versus when running `can-i-deploy` (e.g., a
-  semantic version tag in one place and a [commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) SHA in another).
-  **Fix:** Standardize on one version identifier scheme ([commit](../../../../ci-cd/common/git-workflow/commit/SKILL.md) SHA is
+  semantic version tag in one place and a [commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) SHA in another).
+  **Fix:** Standardize on one version identifier scheme ([commit](../../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) SHA is
   simplest and always unique) and use it consistently across contract
   publish, verification publish, `can-i-deploy`, and
   `record-deployment` calls — a mismatch here makes the broker unable to
@@ -267,7 +267,7 @@ build `f9e8d7`.
    --to-environment production` and gets a failing result, naming the
    specific incompatible contract with `order-service`. The deploy is
    blocked automatically — the breaking change is caught before it ships,
-   not discovered as a production [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
+   not discovered as a production [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md).
 
 ## Cross-references
 

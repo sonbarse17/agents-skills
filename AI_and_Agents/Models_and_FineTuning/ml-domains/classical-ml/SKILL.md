@@ -547,7 +547,7 @@ search.fit(X_train, y_train, eval_set=[(X_val, y_val)])
 ### Model Deployment
 - **Versioning**: Version both model artifacts and preprocessing pipeline. Use MLflow or DVC for model registry.
 - **Feature validation**: Validate input features match training schema. Reject inference requests with missing/out-of-range features.
-- **Prediction [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**: Track prediction distribution drift vs training. Alert when serving distribution deviates significantly.
+- **Prediction [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)**: Track prediction distribution drift vs training. Alert when serving distribution deviates significantly.
 
 ### Infrastructure
 - **Scaling**: Batch predictions via async workers or streaming. Real-time predictions via REST endpoint with [autoscaling](../../../../Software_Engineering_and_Other/Backend/patterns/autoscaling/SKILL.md).

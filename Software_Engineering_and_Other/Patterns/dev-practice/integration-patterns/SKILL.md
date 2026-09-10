@@ -140,7 +140,7 @@ Exact user phrases: enterprise integration, system integration, legacy integrati
 - What error handling and retry policies exist?
 
 ### Output Artifact
-Integration architecture design with routing, transformation, error handling, and [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
+Integration architecture design with routing, transformation, error handling, and [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md).
 
 ### Response Format
 ```
@@ -157,8 +157,8 @@ Integration architecture design with routing, transformation, error handling, an
 ### Error Handling
 {retry: strategy, DLQ: location, alert: threshold}
 
-### [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
-{tracing, SLAs, [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)}
+### [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+{tracing, SLAs, [dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md)}
 ```
 
 No preamble. No postamble. No explanations.
@@ -169,7 +169,7 @@ No preamble. No postamble. No explanations.
 - [ ] Message routing rules documented
 - [ ] Protocol transformation mapped
 - [ ] Error handling and retry strategy designed
-- [ ] Dead letter queue [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) configured
+- [ ] Dead letter queue [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) configured
 - [ ] End-to-end tracing implemented
 - [ ] SLA metrics defined per integration
 
@@ -193,8 +193,8 @@ Transform between SOAP/WSDL to REST/JSON, fixed-width files to structured payloa
 ### Step 5: Error Handling and Retry
 Implement retry with exponential backoff (base delay 1s, max 30s, jitter 0.1). Dead letter queue for poison messages. Manual intervention queue for business errors. Idempotency keys for safe retries.
 
-### Step 6: [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Integration Flows
-End-to-end distributed tracing with trace ID propagation. SLA tracking (latency, throughput, error rate). Throughput [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) partitioned by integration flow. Alert on DLQ depth, latency spikes, error rate thresholds.
+### Step 6: [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) Integration Flows
+End-to-end distributed tracing with trace ID propagation. SLA tracking (latency, throughput, error rate). Throughput [dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) partitioned by integration flow. Alert on DLQ depth, latency spikes, error rate thresholds.
 
 ## Common Pitfalls
 
@@ -239,10 +239,10 @@ Producer changes message schema; consumer fails to deserialize. Always enforce s
 - Alert on DLQ depth exceeding threshold
 - Circuit breaker for all synchronous calls
 
-### [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+### [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - End-to-end distributed tracing with correlation IDs
-- SLA [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) per integration flow
-- DLQ [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) with automated reprocessing
+- SLA [dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) per integration flow
+- DLQ [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) with automated reprocessing
 - Alert on latency spikes and error rate thresholds
 - Throughput tracking for [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) planning
 
@@ -259,25 +259,25 @@ Integration: connecting systems, message routing, protocol transformation. Orche
 
 ## Operations & Maintenance
 
-### Integration Health [Monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+### Integration Health [Monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 - Daily: review DLQ depth, check throughput, verify SLA compliance
 - Weekly: analyze error patterns, review circuit breaker state
 - Monthly: [capacity](../../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../capacity/SKILL.md)/SKILL.md)/SKILL.md) review, schema compatibility [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)
 - Quarterly: integration [audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md), deprecation planning
 - As needed: update connection credentials, rotate certificates
 
-### [Incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response for Integration Failures
-1. Detect: [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) alert (DLQ growth, latency spike, error rate increase)
+### [Incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) Response for Integration Failures
+1. Detect: [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) alert (DLQ growth, latency spike, error rate increase)
 2. Assess: is this a producer issue or consumer issue?
 3. For producer issue: notify producer team, isolate failed messages
 4. For consumer issue: check consumer health, restart if needed
 5. For network issue: check connectivity, retry on recovery
 6. Reprocess DLQ messages after root cause fixed
-7. Document [incident](../../../../observability-monitoring-logging/common/incident-detection/incident/SKILL.md) and add preventive [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+7. Document [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) and add preventive [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 
 ### Integration Lifecycle Management
 1. Request: new integration request with SLAs
-2. Design: integration style, error handling, [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
+2. Design: integration style, error handling, [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md)
 3. Implement: build connectors, transformers, routing
 4. Test: integration tests covering failure modes
 5. Deploy: canary traffic, monitor for regressions
@@ -527,7 +527,7 @@ Messages fail, go to DLQ, but nobody monitors it. DLQ messages accumulate and ev
 - System of record defined per data domain -- no ambiguity
 - Protocol transformation documented at every integration boundary
 - Message brokers must have high-availability configuration
-- Integration [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) [dashboards](../../../../observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) visible to all consuming teams
+- Integration [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) [dashboards](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/dashboard-design/dashboards/SKILL.md) visible to all consuming teams
 - Schema registry used for all message serialization formats
 - Integration deprecation follows documented lifecycle with consumer notification
 
@@ -543,5 +543,5 @@ Messages fail, go to DLQ, but nobody monitors it. DLQ messages accumulate and ev
   - ../../../Global_References/[api-gateway](../../../Backend/api-gateway/api-gateway/SKILL.md)-patterns.md -- API Gateway Patterns
 
 ## Handoff
-For [monitoring](../../../../observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) integration SLAs, hand off to `[enterprise-sla-management](../../../../observability-monitoring-logging/common/sli-slo-sla/sla-management/SKILL.md)`. For data governance across integrations, hand off to `[enterprise-data-governance](../../../../Data_Engineering/data-governance/SKILL.md)`.
+For [monitoring](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/monitoring-strategy/monitoring/SKILL.md) integration SLAs, hand off to `[enterprise-sla-management](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/sli-slo-sla/sla-management/SKILL.md)`. For data governance across integrations, hand off to `[enterprise-data-governance](../../../../Data_Engineering/data-governance/SKILL.md)`.
 

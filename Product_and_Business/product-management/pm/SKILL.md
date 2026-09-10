@@ -262,7 +262,7 @@ delivery_risk:
 ## Common Pitfalls
 
 1. **Estimates treated as deadlines**: Estimates are ranges, not promises. Never treat estimates as deadlines.
-2. **No buffer in planning**: Teams [commit](../../../ci-cd/common/git-workflow/commit/SKILL.md) to 100% [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) leaving no room for unknowns. Always include 15-20% buffer.
+2. **No buffer in planning**: Teams [commit](../../../DevOps_and_Cloud/ci-cd/common/git-workflow/commit/SKILL.md) to 100% [capacity](../../AI_and_Agents/Infrastructure/deploy-model/[capacity](../../DevOps_and_Cloud/Cloud_Providers/azure-skills/skills/microsoft-foundry/models/deploy-model/[capacity](../../DevOps_and_Cloud/Observability_and_SecOps/capacity/SKILL.md)/SKILL.md)/SKILL.md) leaving no room for unknowns. Always include 15-20% buffer.
 3. **Velocity as performance metric**: Velocity is a planning tool, not a performance metric. Never use it to evaluate individuals.
 4. **Status reports without actions**: Reports that state facts but don't flag issues or propose solutions.
 5. **Stakeholders not identified early**: Missing stakeholders cause late-stage surprises.
