@@ -5,7 +5,7 @@ description: Implement WCAG 2.2 compliant interfaces with mobile accessibility,
   accessibility, implementing ARIA patterns, building for screen readers, or
   ensuring inclusive user experiences.
 tags:
-  - observability_and_secops
+  - frontend
   - accessibility-compliance
 depends_on:
   - ios

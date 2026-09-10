@@ -594,6 +594,47 @@ Dark mode requires independent color tokens, not simple inversion:
 | Icon system | Icon grid, stroke weights, sizing rules | Figma, Noun Project |
 | Dark mode spec | Color overrides for dark theme | Figma, Token Studio |
 
+## Iconography
+
+### Icon Sizing System
+
+```css
+:root {
+  --icon-xs: 12px;
+  --icon-sm: 16px;
+  --icon-md: 20px;
+  --icon-lg: 24px;
+  --icon-xl: 32px;
+}
+```
+
+### Icon Component
+
+```tsx
+interface IconProps {
+  name: string;
+  size?: "xs" | "sm" | "md" | "lg" | "xl";
+  className?: string;
+}
+
+const sizeMap = { xs: 12, sm: 16, md: 20, lg: 24, xl: 32 };
+
+export function Icon({ name, size = "md", className }: IconProps) {
+  return (
+    <svg
+      width={sizeMap[size]}
+      height={sizeMap[size]}
+      className={cn("inline-block flex-shrink-0", className)}
+      aria-hidden="true"
+    >
+      <use href={`/icons.svg#${name}`} />
+    </svg>
+  );
+}
+```
+
+Icons decorative-only (paired with visible text) get `aria-hidden="true"`; icon-only interactive controls need an `aria-label` on the parent button instead.
+
 ## References
   - ../../../references/visual-design_color-theory.md — Color Theory Reference
   - ../../../references/layout-principles.md — Layout Principles Guide

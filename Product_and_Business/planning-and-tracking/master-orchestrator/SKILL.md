@@ -1167,7 +1167,7 @@ State: User asks about bundler, Vite, Webpack, build tools.
   Reason: "Bundler/tools request."
 
 State: User asks about image optimization, responsive images, image CDN.
-  Route: frontend-[image-optimization](../../../Software_Engineering_and_Other/Frontend/ui-ux/image-optimization/SKILL.md)
+  Route: [responsive-design](../../../Software_Engineering_and_Other/Frontend/ui-ux/responsive-design/SKILL.md)
   Reason: "Image optimization request."
 
 State: User asks about theming, dark mode, design tokens.

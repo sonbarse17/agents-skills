@@ -66,10 +66,6 @@ Moderate:
 └── Improper heading hierarchy
 ```
 
-## Detailed patterns and worked examples
-
-Detailed pattern documentation lives in `../../../Global_References/wcag-[audit](../../../../AI_and_Agents/Operations/common/audit/SKILL.md)-patterns_details.md`. Read that file when the navigation tier above is insufficient.
-
 ## Best Practices
 
 ### Do's

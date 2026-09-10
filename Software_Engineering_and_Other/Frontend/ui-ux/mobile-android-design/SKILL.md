@@ -26,10 +26,6 @@ Master Material Design 3 (Material You) and Jetpack Compose to build modern, ada
 - Implementing [Android](../../../../Mobile/platforms/android/SKILL.md)-specific gestures and interactions
 - Designing for different screen configurations
 
-## Detailed section: Core Concepts
-
-Originally a 9201-byte section in this SKILL.md. Moved to `../../../Global_References/mobile-[android](../../../../Mobile/platforms/android/SKILL.md)-design_details.md` to fit Codex's 8 KB skill body cap.
-
 ## Quick Start Component
 
 ```kotlin

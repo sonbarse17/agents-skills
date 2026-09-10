@@ -1,113 +1,125 @@
 ---
-name: image-optimization
-description: Shrinks container image size and build time — base image choice,
-  layer minimization, dependency pruning, .dockerignore, multi-arch builds, and
-  measuring what actually ends up in the image. Use this whenever the user
-  complains an image is too large, a build or CI pipeline is slow, asks about
-  distroless or scratch images, wants multi-architecture support, or wants to
-  know what is actually inside a shipped image. For image structure and non-root
-  users use `containerization`; for build-cache design in CI use
-  `build-optimization`.
-license: MIT
+name: web-image-optimization
+description: Optimize images for the web — format selection (AVIF/WebP/JPEG),
+  responsive srcset/sizes, lazy loading, image CDNs, and Core Web Vitals
+  impact. Use when images are too large, LCP is slow because of a hero image,
+  or the user asks about responsive images, art direction, or an image CDN.
+  For Docker/container image size, use `image-optimization` in
+  containers-orchestration instead.
 tags:
   - frontend
   - image-optimization
 depends_on:
-  - git
-  - go
-  - commands
-  - incident
-  - docker
+  - responsive-design
+  - design-visual-design
 ---
 
-# Image Optimization
+# Web Image Optimization
 
-Size and build time are the same problem viewed from two angles: both come from carrying more
-into the image, and into the build, than the running application needs. A slow build is usually a
-large one — the layers you push are the layers a runner had to pull, unpack, and cache too.
+Images are usually the single largest contributor to page weight and the most common cause of a
+slow Largest Contentful Paint (LCP). Optimization means shipping the smallest correct image for
+each viewport and connection — not compressing everything harder after the fact.
 
-Optimize by removing, not by compressing after the fact. **The fastest layer to pull is the one
-that was never built.**
+## When to Use This Skill
 
-## 1. Choose the smallest base that still lets you debug
+- Choosing an image format (AVIF, WebP, JPEG, PNG, SVG) for a given asset
+- Implementing responsive images with `srcset`/`sizes` or `<picture>`
+- Diagnosing a slow LCP caused by a hero image or above-the-fold image
+- Setting up an image CDN (Cloudinary, Imgix, Cloudflare Images, `next/image`)
+- Implementing lazy loading for below-the-fold images
+- Handling art direction (different crops per breakpoint)
 
-`scratch` and distroless bases produce the smallest, lowest-attack-surface images, but they ship
-without a shell — a production [incident](../../../../DevOps_and_Cloud/observability-monitoring-logging/common/incident-detection/incident/SKILL.md) that needs `exec`-ing in becomes much harder. A
-distro-based "slim" variant is usually the right default: small enough to matter, still
-debuggable. Reserve `scratch` for statically-linked binaries (Go, Rust) where you genuinely never
-need a shell inside the container, and keep a debug-variant image or an ephemeral debug container
-available as a sidecar for when you do.
+## Format Selection
 
-- **Default to `-slim` or distroless** for interpreted-language runtimes.
-- **Use `scratch`** only for fully static binaries with no runtime dependency on libc or a shell.
-- **Keep a debug path** (ephemeral containers, sidecar) rather than adding shell tools "just in
-  case."
+| Format | Best for | Notes |
+|---|---|---|
+| AVIF | Photos, general use | Smallest file size (~50% smaller than JPEG); ~94% browser support; slower encode |
+| WebP | Photos, general use | ~30% smaller than JPEG; near-universal support; safe default |
+| JPEG | Photos (fallback) | Universal fallback for AVIF/WebP; no transparency |
+| PNG | Screenshots, transparency, sharp edges | Lossless; large for photos — avoid for photographic content |
+| SVG | Icons, logos, illustrations | Infinitely scalable, tiny for simple shapes; inline for critical icons |
 
-**Done when:** the base is the smallest variant that still supports your actual debugging
-workflow.
+Serve AVIF → WebP → JPEG as a fallback chain via `<picture>`; let the browser pick the smallest
+format it supports rather than shipping one format to everyone.
 
-## 2. Collapse and reorder layers deliberately
-
-Every `RUN`, `COPY`, and `ADD` is a layer, and layers do not shrink when a later layer deletes
-their contents — deleting a file in layer 5 does not reclaim the space it took in layer 3. Chain
-related commands with `&&` so temporary files never persist as their own layer, and clean package
-manager caches in the same `RUN` that created them:
-
-```dockerfile
-RUN apt-get update && apt-get install -y --no-install-recommends curl \
-    && rm -rf /var/lib/apt/lists/*
+```html
+<picture>
+  <source srcset="hero.avif" type="image/avif" />
+  <source srcset="hero.webp" type="image/webp" />
+  <img src="hero.jpg" alt="Product photo" width="1200" height="630" />
+</picture>
 ```
 
-Layer *order* still matters for cache reuse (see `[containerization](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/containerization/SKILL.md)`), but here the goal is layer
-*count and content* — fewer, tighter layers pull and unpack faster regardless of cache state.
+## Responsive Images
 
-**Done when:** no layer contains data a later layer only deletes.
+`srcset` + `sizes` lets the browser pick the right resolution for the viewport and device pixel
+ratio — never ship a 2400px image to a 400px mobile viewport.
 
-## 3. Prune dev dependencies before the final stage
+```html
+<img
+  srcset="photo-400.jpg 400w, photo-800.jpg 800w, photo-1200.jpg 1200w, photo-2400.jpg 2400w"
+  sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 800px"
+  src="photo-800.jpg"
+  alt="Descriptive text"
+  width="800"
+  height="600"
+  loading="lazy"
+/>
+```
 
-Lockfiles routinely pull in test frameworks, linters, and type-checking tools that the running
-application never touches. Install with a production flag (`npm ci --omit=dev`,
-`pip install --no-deps` plus an explicit runtime requirements file) or, better, install
-everything in a build stage and copy only `node_modules`'s production subset — or the compiled
-artifact — into the runtime stage. This is where multi-stage builds pay off twice: once for
-excluding compilers, again for excluding dev-only packages.
+- `sizes` describes the image's rendered width at each breakpoint, not the screen width — get this wrong and the browser picks the wrong candidate.
+- Use `<picture>` instead of plain `srcset` when the *crop* needs to change per breakpoint (art direction), not just the resolution.
+- Always set explicit `width`/`height` (or `aspect-ratio` in CSS) so the browser reserves layout space before the image loads — this is what prevents Cumulative Layout Shift.
 
-**Done when:** `npm ls --omit=dev` (or the language equivalent) matches what actually ships in the
-runtime image.
+## Lazy Loading
 
-## 4. Keep the build context and cache mounts tight
+- `loading="lazy"` on the native `<img>` element is sufficient for almost all below-the-fold images — no JS library needed.
+- Never lazy-load the LCP candidate (hero image, above-the-fold banner) — that delays the metric it's supposed to help. Use `fetchpriority="high"` on it instead.
+- For infinite-scroll galleries, combine native lazy loading with an `IntersectionObserver` only if you need custom placeholder/skeleton behavior beyond what the browser gives for free.
 
-A `.dockerignore` that excludes `.git`, `node_modules`, build output, and test fixtures shrinks
-both the context sent to the daemon and the chance of a stray `COPY . .` invalidating cache
-unnecessarily. For package managers, use BuildKit cache mounts (`RUN --mount=type=cache`) so
-dependency downloads persist across builds without polluting the final image layers — you get the
-speed of a warm cache without paying its size cost in the shipped artifact.
+```html
+<!-- LCP image: eager, high priority, never lazy -->
+<img src="hero.jpg" alt="..." fetchpriority="high" loading="eager" />
 
-**Done when:** repeat builds on an unchanged lockfile complete without re-downloading dependencies
-or bloating the image.
+<!-- Below the fold: lazy -->
+<img src="thumb.jpg" alt="..." loading="lazy" />
+```
 
-## 5. Build multi-arch without doubling maintenance
+## Image CDNs
 
-If the fleet runs on both amd64 and arm64 (mixed cloud instance types, Apple Silicon dev
-machines), build a single manifest list with `[docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) buildx build --platform linux/amd64,linux/arm64`
-rather than maintaining parallel Dockerfiles. Watch for base images or dependencies that only
-publish one architecture — that gap surfaces as a build failure on one platform, not a warning.
+An image CDN generates every size/format/crop on demand from one source image via URL parameters,
+instead of a build step pre-generating a fixed matrix of files.
 
-**Done when:** the pushed manifest resolves correctly on every target architecture without a
-platform-specific Dockerfile.
+| Tool | Approach |
+|---|---|
+| `next/image` (Next.js) | Built-in on-demand resizing, format negotiation, lazy loading, LCP hints |
+| Cloudinary / Imgix | URL-parameter-driven transforms (`?w=800&fm=webp&q=auto`), works with any framework |
+| Cloudflare Images | Edge-resized, cache-friendly, integrates with Cloudflare's CDN |
+| `astro:assets` | Build-time optimization for static sites |
 
-## 6. Measure the image, don't estimate it
+Prefer a CDN/framework solution over hand-rolling a `srcset` matrix for any site with more than a
+handful of images — manually maintaining N sizes × M formats per image doesn't scale.
 
-`[docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) history` and a layer-inspection tool (dive, or `[docker](../../../../DevOps_and_Cloud/containers-orchestration/docker/other/docker/SKILL.md) buildx imagetools inspect`) show
-exactly what each layer contributed and let you catch an accidental 200MB layer before it ships.
-Track image size in CI as a number that can regress, the same way you'd track a performance
-benchmark — a size budget that silently creeps up is a slow leak nobody notices until the pull
-timeout starts firing.
+## Core Web Vitals Impact
 
-**Done when:** you can name the largest layer in the image and justify why it's there.
+- **LCP**: the hero/above-the-fold image is frequently the LCP element. Preload it (`<link rel="preload" as="image">`), never lazy-load it, and serve it at the exact rendered size.
+- **CLS**: always reserve space via `width`/`height` or `aspect-ratio` — an image that loads and shifts content is the most common CLS cause.
+- **INP**: not directly image-related, but decoding very large images synchronously can block the main thread — use `decoding="async"`.
 
-## Report
+## Common Pitfalls
 
-State the before/after image size, the base image chosen and why, and which stage removed dev
-dependencies. Name the largest remaining layer and whether it can shrink further — an unexplained
-large layer is the honest gap, not a size number alone.
+1. **Shipping the source image untouched** — a 4000px camera photo displayed at 400px wastes ~90% of the transferred bytes.
+2. **Missing `width`/`height`** — causes layout shift as the image loads, hurting CLS.
+3. **Lazy-loading the LCP image** — directly delays the metric it should improve.
+4. **One `srcset` for all crops** — when the composition needs to change (portrait crop on mobile vs. wide crop on desktop), use `<picture>` with per-breakpoint `<source>`, not a single `srcset`.
+5. **No format fallback** — serving raw AVIF/WebP with no JPEG fallback breaks on the small remaining share of older browsers/tools (email clients, some scrapers).
+6. **Re-encoding already-lossy images** — repeatedly re-saving a JPEG degrades quality without shrinking file size proportionally; always optimize from the original/source asset.
+
+## Rules
+
+1. Never serve an image larger than its maximum rendered size at 2x DPR.
+2. The LCP image is never lazy-loaded and is preloaded when known ahead of render.
+3. Every `<img>` has explicit `width`/`height` or a CSS `aspect-ratio`.
+4. Prefer AVIF/WebP with a JPEG fallback over serving JPEG/PNG alone.
+5. Below-the-fold images use native `loading="lazy"` — no JS library unless custom placeholder behavior is required.
+6. SVG for icons and logos, never JPEG/PNG for content that needs to scale losslessly.
